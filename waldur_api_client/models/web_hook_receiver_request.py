@@ -1,0 +1,159 @@
+import json
+from typing import TYPE_CHECKING, Any, TypeVar, Union
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..models.webhook_event_enum import WebhookEventEnum
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.jira_changelog_request import JiraChangelogRequest
+    from ..models.jira_comment_request import JiraCommentRequest
+    from ..models.jira_issue_request import JiraIssueRequest
+
+
+T = TypeVar("T", bound="WebHookReceiverRequest")
+
+
+@_attrs_define
+class WebHookReceiverRequest:
+    """
+    Attributes:
+        webhook_event (WebhookEventEnum):
+        issue (JiraIssueRequest):
+        comment (Union[Unset, JiraCommentRequest]):
+        changelog (Union[Unset, JiraChangelogRequest]):
+        issue_event_type_name (Union[Unset, str]):
+    """
+
+    webhook_event: WebhookEventEnum
+    issue: "JiraIssueRequest"
+    comment: Union[Unset, "JiraCommentRequest"] = UNSET
+    changelog: Union[Unset, "JiraChangelogRequest"] = UNSET
+    issue_event_type_name: Union[Unset, str] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        webhook_event = self.webhook_event.value
+
+        issue = self.issue.to_dict()
+
+        comment: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.comment, Unset):
+            comment = self.comment.to_dict()
+
+        changelog: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.changelog, Unset):
+            changelog = self.changelog.to_dict()
+
+        issue_event_type_name = self.issue_event_type_name
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "webhookEvent": webhook_event,
+                "issue": issue,
+            }
+        )
+        if comment is not UNSET:
+            field_dict["comment"] = comment
+        if changelog is not UNSET:
+            field_dict["changelog"] = changelog
+        if issue_event_type_name is not UNSET:
+            field_dict["issue_event_type_name"] = issue_event_type_name
+
+        return field_dict
+
+    def to_multipart(self) -> dict[str, Any]:
+        webhook_event = (None, str(self.webhook_event.value).encode(), "text/plain")
+
+        issue = (None, json.dumps(self.issue.to_dict()).encode(), "application/json")
+
+        comment: Union[Unset, tuple[None, bytes, str]] = UNSET
+        if not isinstance(self.comment, Unset):
+            comment = (None, json.dumps(self.comment.to_dict()).encode(), "application/json")
+
+        changelog: Union[Unset, tuple[None, bytes, str]] = UNSET
+        if not isinstance(self.changelog, Unset):
+            changelog = (None, json.dumps(self.changelog.to_dict()).encode(), "application/json")
+
+        issue_event_type_name = (
+            self.issue_event_type_name
+            if isinstance(self.issue_event_type_name, Unset)
+            else (None, str(self.issue_event_type_name).encode(), "text/plain")
+        )
+
+        field_dict: dict[str, Any] = {}
+        for prop_name, prop in self.additional_properties.items():
+            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
+
+        field_dict.update(
+            {
+                "webhookEvent": webhook_event,
+                "issue": issue,
+            }
+        )
+        if comment is not UNSET:
+            field_dict["comment"] = comment
+        if changelog is not UNSET:
+            field_dict["changelog"] = changelog
+        if issue_event_type_name is not UNSET:
+            field_dict["issue_event_type_name"] = issue_event_type_name
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        from ..models.jira_changelog_request import JiraChangelogRequest
+        from ..models.jira_comment_request import JiraCommentRequest
+        from ..models.jira_issue_request import JiraIssueRequest
+
+        d = src_dict.copy()
+        webhook_event = WebhookEventEnum(d.pop("webhookEvent"))
+
+        issue = JiraIssueRequest.from_dict(d.pop("issue"))
+
+        _comment = d.pop("comment", UNSET)
+        comment: Union[Unset, JiraCommentRequest]
+        if isinstance(_comment, Unset):
+            comment = UNSET
+        else:
+            comment = JiraCommentRequest.from_dict(_comment)
+
+        _changelog = d.pop("changelog", UNSET)
+        changelog: Union[Unset, JiraChangelogRequest]
+        if isinstance(_changelog, Unset):
+            changelog = UNSET
+        else:
+            changelog = JiraChangelogRequest.from_dict(_changelog)
+
+        issue_event_type_name = d.pop("issue_event_type_name", UNSET)
+
+        web_hook_receiver_request = cls(
+            webhook_event=webhook_event,
+            issue=issue,
+            comment=comment,
+            changelog=changelog,
+            issue_event_type_name=issue_event_type_name,
+        )
+
+        web_hook_receiver_request.additional_properties = d
+        return web_hook_receiver_request
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties
