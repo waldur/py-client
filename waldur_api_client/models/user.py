@@ -26,6 +26,7 @@ class User:
         full_name (str):
         email (str):
         civil_number (Union[None, str]):
+        token (str):
         registration_method (str): Indicates what registration method was used.
         date_joined (datetime.datetime):
         agreement_date (Union[None, datetime.datetime]): Indicates when the user has agreed with the policy.
@@ -47,7 +48,6 @@ class User:
         is_active (Union[Unset, bool]): Designates whether this user should be treated as active. Unselect this instead
             of deleting accounts.
         is_support (Union[Unset, bool]): Designates whether the user is a global support user.
-        token (Union[Unset, str]):
         token_lifetime (Union[None, Unset, int]): Token lifetime in seconds.
         preferred_language (Union[Unset, str]):
         first_name (Union[Unset, str]):
@@ -62,6 +62,7 @@ class User:
     full_name: str
     email: str
     civil_number: Union[None, str]
+    token: str
     registration_method: str
     date_joined: datetime.datetime
     agreement_date: Union[None, datetime.datetime]
@@ -82,7 +83,6 @@ class User:
     is_staff: Union[Unset, bool] = UNSET
     is_active: Union[Unset, bool] = UNSET
     is_support: Union[Unset, bool] = UNSET
-    token: Union[Unset, str] = UNSET
     token_lifetime: Union[None, Unset, int] = UNSET
     preferred_language: Union[Unset, str] = UNSET
     first_name: Union[Unset, str] = UNSET
@@ -105,6 +105,8 @@ class User:
 
         civil_number: Union[None, str]
         civil_number = self.civil_number
+
+        token = self.token
 
         registration_method = self.registration_method
 
@@ -154,8 +156,6 @@ class User:
 
         is_support = self.is_support
 
-        token = self.token
-
         token_lifetime: Union[None, Unset, int]
         if isinstance(self.token_lifetime, Unset):
             token_lifetime = UNSET
@@ -185,6 +185,7 @@ class User:
                 "full_name": full_name,
                 "email": email,
                 "civil_number": civil_number,
+                "token": token,
                 "registration_method": registration_method,
                 "date_joined": date_joined,
                 "agreement_date": agreement_date,
@@ -215,8 +216,6 @@ class User:
             field_dict["is_active"] = is_active
         if is_support is not UNSET:
             field_dict["is_support"] = is_support
-        if token is not UNSET:
-            field_dict["token"] = token
         if token_lifetime is not UNSET:
             field_dict["token_lifetime"] = token_lifetime
         if preferred_language is not UNSET:
@@ -253,6 +252,8 @@ class User:
             return cast(Union[None, str], data)
 
         civil_number = _parse_civil_number(d.pop("civil_number"))
+
+        token = d.pop("token")
 
         registration_method = d.pop("registration_method")
 
@@ -317,8 +318,6 @@ class User:
 
         is_support = d.pop("is_support", UNSET)
 
-        token = d.pop("token", UNSET)
-
         def _parse_token_lifetime(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
@@ -351,6 +350,7 @@ class User:
             full_name=full_name,
             email=email,
             civil_number=civil_number,
+            token=token,
             registration_method=registration_method,
             date_joined=date_joined,
             agreement_date=agreement_date,
@@ -371,7 +371,6 @@ class User:
             is_staff=is_staff,
             is_active=is_active,
             is_support=is_support,
-            token=token,
             token_lifetime=token_lifetime,
             preferred_language=preferred_language,
             first_name=first_name,

@@ -547,10 +547,6 @@ from .offering_component_limit_request import OfferingComponentLimitRequest
 from .offering_component_request import OfferingComponentRequest
 from .offering_component_stat import OfferingComponentStat
 from .offering_country_stats import OfferingCountryStats
-from .offering_create import OfferingCreate
-from .offering_create_request import OfferingCreateRequest
-from .offering_create_request_limits import OfferingCreateRequestLimits
-from .offering_create_service_attributes import OfferingCreateServiceAttributes
 from .offering_description_update import OfferingDescriptionUpdate
 from .offering_description_update_request import OfferingDescriptionUpdateRequest
 from .offering_estimated_cost_policy import OfferingEstimatedCostPolicy
@@ -1706,10 +1702,6 @@ __all__ = (
     "OfferingComponentRequest",
     "OfferingComponentStat",
     "OfferingCountryStats",
-    "OfferingCreate",
-    "OfferingCreateRequest",
-    "OfferingCreateRequestLimits",
-    "OfferingCreateServiceAttributes",
     "OfferingDescriptionUpdate",
     "OfferingDescriptionUpdateRequest",
     "OfferingEstimatedCostPolicy",

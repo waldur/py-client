@@ -14,6 +14,7 @@ def _get_kwargs(
     *,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
     inet: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -26,6 +27,8 @@ def _get_kwargs(
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
     params["customer_uuid"] = json_customer_uuid
+
+    params["description"] = description
 
     params["inet"] = inet
 
@@ -80,6 +83,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
     inet: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -88,6 +92,7 @@ def sync_detailed(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
         inet (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -103,6 +108,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         customer=customer,
         customer_uuid=customer_uuid,
+        description=description,
         inet=inet,
         page=page,
         page_size=page_size,
@@ -120,6 +126,7 @@ def sync(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
     inet: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -128,6 +135,7 @@ def sync(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
         inet (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -144,6 +152,7 @@ def sync(
         client=client,
         customer=customer,
         customer_uuid=customer_uuid,
+        description=description,
         inet=inet,
         page=page,
         page_size=page_size,
@@ -155,6 +164,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
     inet: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -163,6 +173,7 @@ async def asyncio_detailed(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
         inet (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -178,6 +189,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         customer=customer,
         customer_uuid=customer_uuid,
+        description=description,
         inet=inet,
         page=page,
         page_size=page_size,
@@ -193,6 +205,7 @@ async def asyncio(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
     inet: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -201,6 +214,7 @@ async def asyncio(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
         inet (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -218,6 +232,7 @@ async def asyncio(
             client=client,
             customer=customer,
             customer_uuid=customer_uuid,
+            description=description,
             inet=inet,
             page=page,
             page_size=page_size,
