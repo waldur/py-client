@@ -15,10 +15,13 @@ def _get_kwargs(
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -35,6 +38,11 @@ def _get_kwargs(
 
     params["month"] = month
 
+    json_offering_uuid: Union[Unset, str] = UNSET
+    if not isinstance(offering_uuid, Unset):
+        json_offering_uuid = str(offering_uuid)
+    params["offering_uuid"] = json_offering_uuid
+
     params["page"] = page
 
     params["page_size"] = page_size
@@ -48,6 +56,10 @@ def _get_kwargs(
     if not isinstance(resource_uuid, Unset):
         json_resource_uuid = str(resource_uuid)
     params["resource_uuid"] = json_resource_uuid
+
+    params["start_month"] = start_month
+
+    params["start_year"] = start_year
 
     params["year"] = year
 
@@ -99,10 +111,13 @@ def sync_detailed(
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["InvoiceItemDetail"]]:
     """
@@ -110,10 +125,13 @@ def sync_detailed(
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         month (Union[Unset, int]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
         resource_uuid (Union[Unset, UUID]):
+        start_month (Union[Unset, float]):
+        start_year (Union[Unset, float]):
         year (Union[Unset, int]):
 
     Raises:
@@ -128,10 +146,13 @@ def sync_detailed(
         credit_uuid=credit_uuid,
         customer_uuid=customer_uuid,
         month=month,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
         resource_uuid=resource_uuid,
+        start_month=start_month,
+        start_year=start_year,
         year=year,
     )
 
@@ -148,10 +169,13 @@ def sync(
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Optional[list["InvoiceItemDetail"]]:
     """
@@ -159,10 +183,13 @@ def sync(
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         month (Union[Unset, int]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
         resource_uuid (Union[Unset, UUID]):
+        start_month (Union[Unset, float]):
+        start_year (Union[Unset, float]):
         year (Union[Unset, int]):
 
     Raises:
@@ -178,10 +205,13 @@ def sync(
         credit_uuid=credit_uuid,
         customer_uuid=customer_uuid,
         month=month,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
         resource_uuid=resource_uuid,
+        start_month=start_month,
+        start_year=start_year,
         year=year,
     ).parsed
 
@@ -192,10 +222,13 @@ async def asyncio_detailed(
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["InvoiceItemDetail"]]:
     """
@@ -203,10 +236,13 @@ async def asyncio_detailed(
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         month (Union[Unset, int]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
         resource_uuid (Union[Unset, UUID]):
+        start_month (Union[Unset, float]):
+        start_year (Union[Unset, float]):
         year (Union[Unset, int]):
 
     Raises:
@@ -221,10 +257,13 @@ async def asyncio_detailed(
         credit_uuid=credit_uuid,
         customer_uuid=customer_uuid,
         month=month,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
         resource_uuid=resource_uuid,
+        start_month=start_month,
+        start_year=start_year,
         year=year,
     )
 
@@ -239,10 +278,13 @@ async def asyncio(
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Optional[list["InvoiceItemDetail"]]:
     """
@@ -250,10 +292,13 @@ async def asyncio(
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         month (Union[Unset, int]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
         resource_uuid (Union[Unset, UUID]):
+        start_month (Union[Unset, float]):
+        start_year (Union[Unset, float]):
         year (Union[Unset, int]):
 
     Raises:
@@ -270,10 +315,13 @@ async def asyncio(
             credit_uuid=credit_uuid,
             customer_uuid=customer_uuid,
             month=month,
+            offering_uuid=offering_uuid,
             page=page,
             page_size=page_size,
             project_uuid=project_uuid,
             resource_uuid=resource_uuid,
+            start_month=start_month,
+            start_year=start_year,
             year=year,
         )
     ).parsed
