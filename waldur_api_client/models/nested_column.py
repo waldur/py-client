@@ -20,10 +20,6 @@ class NestedColumn:
         title (str): Title is rendered as column header.
         attribute (Union[Unset, str]): Resource attribute is rendered as table cell.
         widget (Union[BlankEnum, None, Unset, WidgetEnum]): Widget field allows to customise table cell rendering.
-
-            * `csv` - csv
-            * `filesize` - filesize
-            * `attached_instance` - attached_instance
     """
 
     uuid: UUID

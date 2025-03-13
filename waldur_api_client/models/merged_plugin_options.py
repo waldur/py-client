@@ -51,9 +51,6 @@ class MergedPluginOptions:
         flavors_regex (Union[Unset, str]): Regular expression to limit flavors list
         account_name_generation_policy (Union[AccountNameGenerationPolicyEnum, None, Unset]): Slurm account name
             generation policy
-
-            * `None` - None
-            * `project_slug` - project_slug
     """
 
     auto_approve_remote_orders: Union[Unset, bool] = UNSET
