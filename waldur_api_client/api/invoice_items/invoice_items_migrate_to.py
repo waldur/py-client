@@ -81,7 +81,8 @@ def sync_detailed(
         InvoiceItemMigrateToRequest,
     ],
 ) -> Response[InvoiceItemMigrateTo]:
-    """
+    """Move invoice item from one invoice to another one.
+
     Args:
         uuid (UUID):
         body (InvoiceItemMigrateToRequest):
@@ -118,7 +119,8 @@ def sync(
         InvoiceItemMigrateToRequest,
     ],
 ) -> Optional[InvoiceItemMigrateTo]:
-    """
+    """Move invoice item from one invoice to another one.
+
     Args:
         uuid (UUID):
         body (InvoiceItemMigrateToRequest):
@@ -150,7 +152,8 @@ async def asyncio_detailed(
         InvoiceItemMigrateToRequest,
     ],
 ) -> Response[InvoiceItemMigrateTo]:
-    """
+    """Move invoice item from one invoice to another one.
+
     Args:
         uuid (UUID):
         body (InvoiceItemMigrateToRequest):
@@ -185,7 +188,8 @@ async def asyncio(
         InvoiceItemMigrateToRequest,
     ],
 ) -> Optional[InvoiceItemMigrateTo]:
-    """
+    """Move invoice item from one invoice to another one.
+
     Args:
         uuid (UUID):
         body (InvoiceItemMigrateToRequest):

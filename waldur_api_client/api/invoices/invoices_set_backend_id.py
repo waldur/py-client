@@ -74,7 +74,8 @@ def sync_detailed(
         BackendIdRequest,
     ],
 ) -> Response[Any]:
-    """
+    """Set backend ID for invoice.
+
     Args:
         uuid (UUID):
         body (BackendIdRequest):
@@ -111,7 +112,8 @@ async def asyncio_detailed(
         BackendIdRequest,
     ],
 ) -> Response[Any]:
-    """
+    """Set backend ID for invoice.
+
     Args:
         uuid (UUID):
         body (BackendIdRequest):

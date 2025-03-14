@@ -43,7 +43,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Unlink a payment from an invoice. Remove connection between payment and existing linked invoice.
+
     Args:
         uuid (UUID):
 
@@ -71,7 +72,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Unlink a payment from an invoice. Remove connection between payment and existing linked invoice.
+
     Args:
         uuid (UUID):
 

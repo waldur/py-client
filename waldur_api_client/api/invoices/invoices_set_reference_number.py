@@ -74,7 +74,8 @@ def sync_detailed(
         ReferenceNumberRequest,
     ],
 ) -> Response[Any]:
-    """
+    """Set reference number for invoice.
+
     Args:
         uuid (UUID):
         body (ReferenceNumberRequest):
@@ -111,7 +112,8 @@ async def asyncio_detailed(
         ReferenceNumberRequest,
     ],
 ) -> Response[Any]:
-    """
+    """Set reference number for invoice.
+
     Args:
         uuid (UUID):
         body (ReferenceNumberRequest):

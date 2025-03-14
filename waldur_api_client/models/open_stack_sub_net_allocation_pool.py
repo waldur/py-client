@@ -1,45 +1,53 @@
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="PaymentURL")
+T = TypeVar("T", bound="OpenStackSubNetAllocationPool")
 
 
 @_attrs_define
-class PaymentURL:
+class OpenStackSubNetAllocationPool:
     """
     Attributes:
-        payment_url (Union[Unset, str]): URL for initiating payment via payment gateway.
+        start (str):
+        end (str):
     """
 
-    payment_url: Union[Unset, str] = UNSET
+    start: str
+    end: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        payment_url = self.payment_url
+        start = self.start
+
+        end = self.end
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if payment_url is not UNSET:
-            field_dict["payment_url"] = payment_url
+        field_dict.update(
+            {
+                "start": start,
+                "end": end,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         d = src_dict.copy()
-        payment_url = d.pop("payment_url", UNSET)
+        start = d.pop("start")
 
-        payment_url = cls(
-            payment_url=payment_url,
+        end = d.pop("end")
+
+        open_stack_sub_net_allocation_pool = cls(
+            start=start,
+            end=end,
         )
 
-        payment_url.additional_properties = d
-        return payment_url
+        open_stack_sub_net_allocation_pool.additional_properties = d
+        return open_stack_sub_net_allocation_pool
 
     @property
     def additional_keys(self) -> list[str]:

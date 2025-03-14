@@ -77,7 +77,9 @@ def sync_detailed(
         LinkToInvoiceRequest,
     ],
 ) -> Response[LinkToInvoice]:
-    """
+    """Link a payment to an invoice. Payment can be linked to an invoice only if they belong to the same
+    customer.
+
     Args:
         uuid (UUID):
         body (LinkToInvoiceRequest):
@@ -114,7 +116,9 @@ def sync(
         LinkToInvoiceRequest,
     ],
 ) -> Optional[LinkToInvoice]:
-    """
+    """Link a payment to an invoice. Payment can be linked to an invoice only if they belong to the same
+    customer.
+
     Args:
         uuid (UUID):
         body (LinkToInvoiceRequest):
@@ -146,7 +150,9 @@ async def asyncio_detailed(
         LinkToInvoiceRequest,
     ],
 ) -> Response[LinkToInvoice]:
-    """
+    """Link a payment to an invoice. Payment can be linked to an invoice only if they belong to the same
+    customer.
+
     Args:
         uuid (UUID):
         body (LinkToInvoiceRequest):
@@ -181,7 +187,9 @@ async def asyncio(
         LinkToInvoiceRequest,
     ],
 ) -> Optional[LinkToInvoice]:
-    """
+    """Link a payment to an invoice. Payment can be linked to an invoice only if they belong to the same
+    customer.
+
     Args:
         uuid (UUID):
         body (LinkToInvoiceRequest):

@@ -61,7 +61,9 @@ def sync_detailed(
     accounting_mode: Union[Unset, str] = UNSET,
     customers_count: Union[Unset, int] = UNSET,
 ) -> Response[InvoiceGrowth]:
-    """
+    """Analyze invoice trends over time by comparing monthly totals for major customers versus others over
+    the past year.
+
     Args:
         accounting_is_running (Union[Unset, bool]):
         accounting_mode (Union[Unset, str]):
@@ -95,7 +97,9 @@ def sync(
     accounting_mode: Union[Unset, str] = UNSET,
     customers_count: Union[Unset, int] = UNSET,
 ) -> Optional[InvoiceGrowth]:
-    """
+    """Analyze invoice trends over time by comparing monthly totals for major customers versus others over
+    the past year.
+
     Args:
         accounting_is_running (Union[Unset, bool]):
         accounting_mode (Union[Unset, str]):
@@ -124,7 +128,9 @@ async def asyncio_detailed(
     accounting_mode: Union[Unset, str] = UNSET,
     customers_count: Union[Unset, int] = UNSET,
 ) -> Response[InvoiceGrowth]:
-    """
+    """Analyze invoice trends over time by comparing monthly totals for major customers versus others over
+    the past year.
+
     Args:
         accounting_is_running (Union[Unset, bool]):
         accounting_mode (Union[Unset, str]):
@@ -156,7 +162,9 @@ async def asyncio(
     accounting_mode: Union[Unset, str] = UNSET,
     customers_count: Union[Unset, int] = UNSET,
 ) -> Optional[InvoiceGrowth]:
-    """
+    """Analyze invoice trends over time by comparing monthly totals for major customers versus others over
+    the past year.
+
     Args:
         accounting_is_running (Union[Unset, bool]):
         accounting_mode (Union[Unset, str]):

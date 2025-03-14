@@ -146,7 +146,8 @@ def sync_detailed(
     state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["InvoiceStatsOffering"]]:
-    """
+    """Spendings grouped by offerings and filtered by provider.
+
     Args:
         uuid (UUID):
         created (Union[Unset, datetime.date]):
@@ -216,7 +217,8 @@ def sync(
     state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Optional[list["InvoiceStatsOffering"]]:
-    """
+    """Spendings grouped by offerings and filtered by provider.
+
     Args:
         uuid (UUID):
         created (Union[Unset, datetime.date]):
@@ -281,7 +283,8 @@ async def asyncio_detailed(
     state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["InvoiceStatsOffering"]]:
-    """
+    """Spendings grouped by offerings and filtered by provider.
+
     Args:
         uuid (UUID):
         created (Union[Unset, datetime.date]):
@@ -349,7 +352,8 @@ async def asyncio(
     state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Optional[list["InvoiceStatsOffering"]]:
-    """
+    """Spendings grouped by offerings and filtered by provider.
+
     Args:
         uuid (UUID):
         created (Union[Unset, datetime.date]):

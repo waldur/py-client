@@ -81,7 +81,8 @@ def sync_detailed(
         InvoiceItemCompensationRequest,
     ],
 ) -> Response[InvoiceItemCompensation]:
-    """
+    """Create compensation invoice item for selected invoice item.
+
     Args:
         uuid (UUID):
         body (InvoiceItemCompensationRequest):
@@ -118,7 +119,8 @@ def sync(
         InvoiceItemCompensationRequest,
     ],
 ) -> Optional[InvoiceItemCompensation]:
-    """
+    """Create compensation invoice item for selected invoice item.
+
     Args:
         uuid (UUID):
         body (InvoiceItemCompensationRequest):
@@ -150,7 +152,8 @@ async def asyncio_detailed(
         InvoiceItemCompensationRequest,
     ],
 ) -> Response[InvoiceItemCompensation]:
-    """
+    """Create compensation invoice item for selected invoice item.
+
     Args:
         uuid (UUID):
         body (InvoiceItemCompensationRequest):
@@ -185,7 +188,8 @@ async def asyncio(
         InvoiceItemCompensationRequest,
     ],
 ) -> Optional[InvoiceItemCompensation]:
-    """
+    """Create compensation invoice item for selected invoice item.
+
     Args:
         uuid (UUID):
         body (InvoiceItemCompensationRequest):

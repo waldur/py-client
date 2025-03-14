@@ -77,7 +77,8 @@ def sync_detailed(
         PaidRequest,
     ],
 ) -> Response[Invoice]:
-    """
+    """Mark invoice as paid and optionally create payment record with proof of payment.
+
     Args:
         uuid (UUID):
         body (PaidRequest):
@@ -114,7 +115,8 @@ def sync(
         PaidRequest,
     ],
 ) -> Optional[Invoice]:
-    """
+    """Mark invoice as paid and optionally create payment record with proof of payment.
+
     Args:
         uuid (UUID):
         body (PaidRequest):
@@ -146,7 +148,8 @@ async def asyncio_detailed(
         PaidRequest,
     ],
 ) -> Response[Invoice]:
-    """
+    """Mark invoice as paid and optionally create payment record with proof of payment.
+
     Args:
         uuid (UUID):
         body (PaidRequest):
@@ -181,7 +184,8 @@ async def asyncio(
         PaidRequest,
     ],
 ) -> Optional[Invoice]:
-    """
+    """Mark invoice as paid and optionally create payment record with proof of payment.
+
     Args:
         uuid (UUID):
         body (PaidRequest):

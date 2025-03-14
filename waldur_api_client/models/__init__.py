@@ -289,6 +289,7 @@ from .invoice_item_detail import InvoiceItemDetail
 from .invoice_item_details import InvoiceItemDetails
 from .invoice_item_migrate_to import InvoiceItemMigrateTo
 from .invoice_item_migrate_to_request import InvoiceItemMigrateToRequest
+from .invoice_item_total_price import InvoiceItemTotalPrice
 from .invoice_item_update import InvoiceItemUpdate
 from .invoice_item_update_request import InvoiceItemUpdateRequest
 from .invoice_state_enum import InvoiceStateEnum
@@ -662,6 +663,8 @@ from .open_stack_snapshot_restoration_request import OpenStackSnapshotRestoratio
 from .open_stack_static_route import OpenStackStaticRoute
 from .open_stack_static_route_request import OpenStackStaticRouteRequest
 from .open_stack_sub_net import OpenStackSubNet
+from .open_stack_sub_net_allocation_pool import OpenStackSubNetAllocationPool
+from .open_stack_sub_net_allocation_pool_request import OpenStackSubNetAllocationPoolRequest
 from .open_stack_sub_net_marketplace_offering_plugin_options import OpenStackSubNetMarketplaceOfferingPluginOptions
 from .open_stack_sub_net_request import OpenStackSubNetRequest
 from .open_stack_tenant import OpenStackTenant
@@ -825,7 +828,6 @@ from .payment_profiles_list_o_item import PaymentProfilesListOItem
 from .payment_profiles_list_payment_type_item import PaymentProfilesListPaymentTypeItem
 from .payment_request import PaymentRequest
 from .payment_type_enum import PaymentTypeEnum
-from .payment_url import PaymentURL
 from .payment_url_request import PaymentURLRequest
 from .period_enum import PeriodEnum
 from .permission import Permission
@@ -1503,6 +1505,7 @@ __all__ = (
     "InvoiceItemDetails",
     "InvoiceItemMigrateTo",
     "InvoiceItemMigrateToRequest",
+    "InvoiceItemTotalPrice",
     "InvoiceItemUpdate",
     "InvoiceItemUpdateRequest",
     "InvoicesListFieldItem",
@@ -1849,6 +1852,8 @@ __all__ = (
     "OpenStackStaticRoute",
     "OpenStackStaticRouteRequest",
     "OpenStackSubNet",
+    "OpenStackSubNetAllocationPool",
+    "OpenStackSubNetAllocationPoolRequest",
     "OpenStackSubNetMarketplaceOfferingPluginOptions",
     "OpenStackSubNetRequest",
     "OpenstackSubnetsListFieldItem",
@@ -1977,7 +1982,6 @@ __all__ = (
     "PaymentProfilesListPaymentTypeItem",
     "PaymentRequest",
     "PaymentTypeEnum",
-    "PaymentURL",
     "PaymentURLRequest",
     "PeriodEnum",
     "Permission",

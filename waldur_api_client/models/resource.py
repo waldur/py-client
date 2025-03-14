@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.backend_metadata import BackendMetadata
     from ..models.nested_endpoint import NestedEndpoint
     from ..models.order_details import OrderDetails
+    from ..models.report_section import ReportSection
     from ..models.resource_attributes import ResourceAttributes
     from ..models.resource_current_usages import ResourceCurrentUsages
     from ..models.resource_limits import ResourceLimits
@@ -79,7 +80,7 @@ class Resource:
         slug (str):
         current_usages (ResourceCurrentUsages):
         can_terminate (bool):
-        report (Any):
+        report (list['ReportSection']):
         end_date_requested_by (Union[None, str]):
         username (Union[None, str]):
         limit_usage (Union[None, float]):
@@ -152,7 +153,7 @@ class Resource:
     slug: str
     current_usages: "ResourceCurrentUsages"
     can_terminate: bool
-    report: Any
+    report: list["ReportSection"]
     end_date_requested_by: Union[None, str]
     username: Union[None, str]
     limit_usage: Union[None, float]
@@ -284,7 +285,10 @@ class Resource:
 
         can_terminate = self.can_terminate
 
-        report = self.report
+        report = []
+        for report_item_data in self.report:
+            report_item = report_item_data.to_dict()
+            report.append(report_item)
 
         end_date_requested_by: Union[None, str]
         end_date_requested_by = self.end_date_requested_by
@@ -428,6 +432,7 @@ class Resource:
         from ..models.backend_metadata import BackendMetadata
         from ..models.nested_endpoint import NestedEndpoint
         from ..models.order_details import OrderDetails
+        from ..models.report_section import ReportSection
         from ..models.resource_attributes import ResourceAttributes
         from ..models.resource_current_usages import ResourceCurrentUsages
         from ..models.resource_limits import ResourceLimits
@@ -555,7 +560,12 @@ class Resource:
 
         can_terminate = d.pop("can_terminate")
 
-        report = d.pop("report")
+        report = []
+        _report = d.pop("report")
+        for report_item_data in _report:
+            report_item = ReportSection.from_dict(report_item_data)
+
+            report.append(report_item)
 
         def _parse_end_date_requested_by(data: object) -> Union[None, str]:
             if data is None:

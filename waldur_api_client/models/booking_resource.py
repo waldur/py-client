@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ..models.booking_slot import BookingSlot
     from ..models.nested_endpoint import NestedEndpoint
     from ..models.order_details import OrderDetails
+    from ..models.report_section import ReportSection
 
 
 T = TypeVar("T", bound="BookingResource")
@@ -80,7 +81,7 @@ class BookingResource:
         slug (str):
         current_usages (BookingResourceCurrentUsages):
         can_terminate (bool):
-        report (Any):
+        report (list['ReportSection']):
         end_date_requested_by (Union[None, str]):
         username (Union[None, str]):
         limit_usage (Union[None, float]):
@@ -162,7 +163,7 @@ class BookingResource:
     slug: str
     current_usages: "BookingResourceCurrentUsages"
     can_terminate: bool
-    report: Any
+    report: list["ReportSection"]
     end_date_requested_by: Union[None, str]
     username: Union[None, str]
     limit_usage: Union[None, float]
@@ -301,7 +302,10 @@ class BookingResource:
 
         can_terminate = self.can_terminate
 
-        report = self.report
+        report = []
+        for report_item_data in self.report:
+            report_item = report_item_data.to_dict()
+            report.append(report_item)
 
         end_date_requested_by: Union[None, str]
         end_date_requested_by = self.end_date_requested_by
@@ -473,6 +477,7 @@ class BookingResource:
         from ..models.booking_slot import BookingSlot
         from ..models.nested_endpoint import NestedEndpoint
         from ..models.order_details import OrderDetails
+        from ..models.report_section import ReportSection
 
         d = src_dict.copy()
         offering = d.pop("offering")
@@ -597,7 +602,12 @@ class BookingResource:
 
         can_terminate = d.pop("can_terminate")
 
-        report = d.pop("report")
+        report = []
+        _report = d.pop("report")
+        for report_item_data in _report:
+            report_item = ReportSection.from_dict(report_item_data)
+
+            report.append(report_item)
 
         def _parse_end_date_requested_by(data: object) -> Union[None, str]:
             if data is None:

@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.open_stack_static_route import OpenStackStaticRoute
+    from ..models.open_stack_sub_net_allocation_pool import OpenStackSubNetAllocationPool
     from ..models.open_stack_sub_net_marketplace_offering_plugin_options import (
         OpenStackSubNetMarketplaceOfferingPluginOptions,
     )
@@ -50,7 +51,7 @@ class OpenStackSubNet:
         tenant_name (str):
         network (str):
         network_name (str):
-        allocation_pools (Any):
+        allocation_pools (list['OpenStackSubNetAllocationPool']):
         ip_version (int):
         enable_dhcp (bool):
         is_connected (bool): Is subnet connected to the default tenant router.
@@ -68,7 +69,7 @@ class OpenStackSubNet:
         cidr (Union[Unset, str]):
         gateway_ip (Union[None, Unset, str]):
         disable_gateway (Union[Unset, bool]):
-        dns_nameservers (Union[Unset, Any]):
+        dns_nameservers (Union[Unset, list[str]]):
         host_routes (Union[Unset, list['OpenStackStaticRoute']]):
     """
 
@@ -99,7 +100,7 @@ class OpenStackSubNet:
     tenant_name: str
     network: str
     network_name: str
-    allocation_pools: Any
+    allocation_pools: list["OpenStackSubNetAllocationPool"]
     ip_version: int
     enable_dhcp: bool
     is_connected: bool
@@ -117,7 +118,7 @@ class OpenStackSubNet:
     cidr: Union[Unset, str] = UNSET
     gateway_ip: Union[None, Unset, str] = UNSET
     disable_gateway: Union[Unset, bool] = UNSET
-    dns_nameservers: Union[Unset, Any] = UNSET
+    dns_nameservers: Union[Unset, list[str]] = UNSET
     host_routes: Union[Unset, list["OpenStackStaticRoute"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -177,7 +178,10 @@ class OpenStackSubNet:
 
         network_name = self.network_name
 
-        allocation_pools = self.allocation_pools
+        allocation_pools = []
+        for allocation_pools_item_data in self.allocation_pools:
+            allocation_pools_item = allocation_pools_item_data.to_dict()
+            allocation_pools.append(allocation_pools_item)
 
         ip_version = self.ip_version
 
@@ -217,7 +221,9 @@ class OpenStackSubNet:
 
         disable_gateway = self.disable_gateway
 
-        dns_nameservers = self.dns_nameservers
+        dns_nameservers: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.dns_nameservers, Unset):
+            dns_nameservers = self.dns_nameservers
 
         host_routes: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.host_routes, Unset):
@@ -291,6 +297,7 @@ class OpenStackSubNet:
     @classmethod
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.open_stack_static_route import OpenStackStaticRoute
+        from ..models.open_stack_sub_net_allocation_pool import OpenStackSubNetAllocationPool
         from ..models.open_stack_sub_net_marketplace_offering_plugin_options import (
             OpenStackSubNetMarketplaceOfferingPluginOptions,
         )
@@ -355,7 +362,12 @@ class OpenStackSubNet:
 
         network_name = d.pop("network_name")
 
-        allocation_pools = d.pop("allocation_pools")
+        allocation_pools = []
+        _allocation_pools = d.pop("allocation_pools")
+        for allocation_pools_item_data in _allocation_pools:
+            allocation_pools_item = OpenStackSubNetAllocationPool.from_dict(allocation_pools_item_data)
+
+            allocation_pools.append(allocation_pools_item)
 
         ip_version = d.pop("ip_version")
 
@@ -400,7 +412,7 @@ class OpenStackSubNet:
 
         disable_gateway = d.pop("disable_gateway", UNSET)
 
-        dns_nameservers = d.pop("dns_nameservers", UNSET)
+        dns_nameservers = cast(list[str], d.pop("dns_nameservers", UNSET))
 
         host_routes = []
         _host_routes = d.pop("host_routes", UNSET)

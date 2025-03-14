@@ -21,7 +21,7 @@ class PatchedOpenStackSubNetRequest:
         description (Union[Unset, str]):
         gateway_ip (Union[None, Unset, str]):
         disable_gateway (Union[Unset, bool]):
-        dns_nameservers (Union[Unset, Any]):
+        dns_nameservers (Union[Unset, list[str]]):
         host_routes (Union[Unset, list['OpenStackStaticRouteRequest']]):
     """
 
@@ -29,7 +29,7 @@ class PatchedOpenStackSubNetRequest:
     description: Union[Unset, str] = UNSET
     gateway_ip: Union[None, Unset, str] = UNSET
     disable_gateway: Union[Unset, bool] = UNSET
-    dns_nameservers: Union[Unset, Any] = UNSET
+    dns_nameservers: Union[Unset, list[str]] = UNSET
     host_routes: Union[Unset, list["OpenStackStaticRouteRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -46,7 +46,9 @@ class PatchedOpenStackSubNetRequest:
 
         disable_gateway = self.disable_gateway
 
-        dns_nameservers = self.dns_nameservers
+        dns_nameservers: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.dns_nameservers, Unset):
+            dns_nameservers = self.dns_nameservers
 
         host_routes: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.host_routes, Unset):
@@ -97,11 +99,10 @@ class PatchedOpenStackSubNetRequest:
             else (None, str(self.disable_gateway).encode(), "text/plain")
         )
 
-        dns_nameservers = (
-            self.dns_nameservers
-            if isinstance(self.dns_nameservers, Unset)
-            else (None, str(self.dns_nameservers).encode(), "text/plain")
-        )
+        dns_nameservers: Union[Unset, tuple[None, bytes, str]] = UNSET
+        if not isinstance(self.dns_nameservers, Unset):
+            _temp_dns_nameservers = self.dns_nameservers
+            dns_nameservers = (None, json.dumps(_temp_dns_nameservers).encode(), "application/json")
 
         host_routes: Union[Unset, tuple[None, bytes, str]] = UNSET
         if not isinstance(self.host_routes, Unset):
@@ -151,7 +152,7 @@ class PatchedOpenStackSubNetRequest:
 
         disable_gateway = d.pop("disable_gateway", UNSET)
 
-        dns_nameservers = d.pop("dns_nameservers", UNSET)
+        dns_nameservers = cast(list[str], d.pop("dns_nameservers", UNSET))
 
         host_routes = []
         _host_routes = d.pop("host_routes", UNSET)

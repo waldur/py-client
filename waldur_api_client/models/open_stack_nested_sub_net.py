@@ -1,9 +1,13 @@
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.open_stack_sub_net_allocation_pool import OpenStackSubNetAllocationPool
+
 
 T = TypeVar("T", bound="OpenStackNestedSubNet")
 
@@ -13,7 +17,7 @@ class OpenStackNestedSubNet:
     """
     Attributes:
         name (str):
-        allocation_pools (Any):
+        allocation_pools (list['OpenStackSubNetAllocationPool']):
         description (Union[Unset, str]):
         cidr (Union[Unset, str]):
         gateway_ip (Union[None, Unset, str]):
@@ -22,7 +26,7 @@ class OpenStackNestedSubNet:
     """
 
     name: str
-    allocation_pools: Any
+    allocation_pools: list["OpenStackSubNetAllocationPool"]
     description: Union[Unset, str] = UNSET
     cidr: Union[Unset, str] = UNSET
     gateway_ip: Union[None, Unset, str] = UNSET
@@ -33,7 +37,10 @@ class OpenStackNestedSubNet:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        allocation_pools = self.allocation_pools
+        allocation_pools = []
+        for allocation_pools_item_data in self.allocation_pools:
+            allocation_pools_item = allocation_pools_item_data.to_dict()
+            allocation_pools.append(allocation_pools_item)
 
         description = self.description
 
@@ -72,10 +79,17 @@ class OpenStackNestedSubNet:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        from ..models.open_stack_sub_net_allocation_pool import OpenStackSubNetAllocationPool
+
         d = src_dict.copy()
         name = d.pop("name")
 
-        allocation_pools = d.pop("allocation_pools")
+        allocation_pools = []
+        _allocation_pools = d.pop("allocation_pools")
+        for allocation_pools_item_data in _allocation_pools:
+            allocation_pools_item = OpenStackSubNetAllocationPool.from_dict(allocation_pools_item_data)
+
+            allocation_pools.append(allocation_pools_item)
 
         description = d.pop("description", UNSET)
 

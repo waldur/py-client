@@ -1,8 +1,12 @@
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+if TYPE_CHECKING:
+    from ..models.open_stack_fixed_ip import OpenStackFixedIp
+
 
 T = TypeVar("T", bound="OpenStackNestedFloatingIP")
 
@@ -14,7 +18,7 @@ class OpenStackNestedFloatingIP:
         url (str):
         uuid (UUID):
         address (Union[None, str]):
-        port_fixed_ips (Any):
+        port_fixed_ips (list['OpenStackFixedIp']):
         port_mac_address (str):
         subnet (str):
         subnet_uuid (UUID):
@@ -26,7 +30,7 @@ class OpenStackNestedFloatingIP:
     url: str
     uuid: UUID
     address: Union[None, str]
-    port_fixed_ips: Any
+    port_fixed_ips: list["OpenStackFixedIp"]
     port_mac_address: str
     subnet: str
     subnet_uuid: UUID
@@ -43,7 +47,10 @@ class OpenStackNestedFloatingIP:
         address: Union[None, str]
         address = self.address
 
-        port_fixed_ips = self.port_fixed_ips
+        port_fixed_ips = []
+        for port_fixed_ips_item_data in self.port_fixed_ips:
+            port_fixed_ips_item = port_fixed_ips_item_data.to_dict()
+            port_fixed_ips.append(port_fixed_ips_item)
 
         port_mac_address = self.port_mac_address
 
@@ -78,6 +85,8 @@ class OpenStackNestedFloatingIP:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        from ..models.open_stack_fixed_ip import OpenStackFixedIp
+
         d = src_dict.copy()
         url = d.pop("url")
 
@@ -90,7 +99,12 @@ class OpenStackNestedFloatingIP:
 
         address = _parse_address(d.pop("address"))
 
-        port_fixed_ips = d.pop("port_fixed_ips")
+        port_fixed_ips = []
+        _port_fixed_ips = d.pop("port_fixed_ips")
+        for port_fixed_ips_item_data in _port_fixed_ips:
+            port_fixed_ips_item = OpenStackFixedIp.from_dict(port_fixed_ips_item_data)
+
+            port_fixed_ips.append(port_fixed_ips_item)
 
         port_mac_address = d.pop("port_mac_address")
 

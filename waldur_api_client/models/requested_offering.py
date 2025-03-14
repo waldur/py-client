@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.base_public_plan import BasePublicPlan
     from ..models.offering_component import OfferingComponent
+    from ..models.offering_options import OfferingOptions
 
 
 T = TypeVar("T", bound="RequestedOffering")
@@ -29,7 +30,7 @@ class RequestedOffering:
         category_name (str):
         call_managing_organisation (str):
         plan_details (BasePublicPlan):
-        options (Any):  Default: {'options': {}, 'order': []}.
+        options (OfferingOptions):
         components (list['OfferingComponent']):
         url (str):
         approved_by (Union[None, str]):
@@ -51,13 +52,13 @@ class RequestedOffering:
     category_name: str
     call_managing_organisation: str
     plan_details: "BasePublicPlan"
+    options: "OfferingOptions"
     components: list["OfferingComponent"]
     url: str
     approved_by: Union[None, str]
     created_by: Union[None, str]
     created_by_name: str
     approved_by_name: str
-    options: Any = {"options": {}, "order": []}
     attributes: Union[Unset, Any] = UNSET
     plan: Union[None, Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -84,7 +85,7 @@ class RequestedOffering:
 
         plan_details = self.plan_details.to_dict()
 
-        options = self.options
+        options = self.options.to_dict()
 
         components = []
         for components_item_data in self.components:
@@ -149,6 +150,7 @@ class RequestedOffering:
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.base_public_plan import BasePublicPlan
         from ..models.offering_component import OfferingComponent
+        from ..models.offering_options import OfferingOptions
 
         d = src_dict.copy()
         uuid = UUID(d.pop("uuid"))
@@ -171,7 +173,7 @@ class RequestedOffering:
 
         plan_details = BasePublicPlan.from_dict(d.pop("plan_details"))
 
-        options = d.pop("options")
+        options = OfferingOptions.from_dict(d.pop("options"))
 
         components = []
         _components = d.pop("components")
