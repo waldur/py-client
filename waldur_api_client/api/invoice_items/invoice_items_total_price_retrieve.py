@@ -1,18 +1,68 @@
 from http import HTTPStatus
 from typing import Any, Optional, Union
+from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.invoice_item_total_price import InvoiceItemTotalPrice
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
-def _get_kwargs() -> dict[str, Any]:
+def _get_kwargs(
+    *,
+    credit_uuid: Union[Unset, UUID] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
+    year: Union[Unset, int] = UNSET,
+) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    json_credit_uuid: Union[Unset, str] = UNSET
+    if not isinstance(credit_uuid, Unset):
+        json_credit_uuid = str(credit_uuid)
+    params["credit_uuid"] = json_credit_uuid
+
+    json_customer_uuid: Union[Unset, str] = UNSET
+    if not isinstance(customer_uuid, Unset):
+        json_customer_uuid = str(customer_uuid)
+    params["customer_uuid"] = json_customer_uuid
+
+    params["month"] = month
+
+    json_offering_uuid: Union[Unset, str] = UNSET
+    if not isinstance(offering_uuid, Unset):
+        json_offering_uuid = str(offering_uuid)
+    params["offering_uuid"] = json_offering_uuid
+
+    json_project_uuid: Union[Unset, str] = UNSET
+    if not isinstance(project_uuid, Unset):
+        json_project_uuid = str(project_uuid)
+    params["project_uuid"] = json_project_uuid
+
+    json_resource_uuid: Union[Unset, str] = UNSET
+    if not isinstance(resource_uuid, Unset):
+        json_resource_uuid = str(resource_uuid)
+    params["resource_uuid"] = json_resource_uuid
+
+    params["start_month"] = start_month
+
+    params["start_year"] = start_year
+
+    params["year"] = year
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/invoice-items/total_price/",
+        "params": params,
     }
 
     return _kwargs
@@ -45,8 +95,28 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    credit_uuid: Union[Unset, UUID] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
+    year: Union[Unset, int] = UNSET,
 ) -> Response[InvoiceItemTotalPrice]:
     """Calculate total price for filtered invoice items.
+
+    Args:
+        credit_uuid (Union[Unset, UUID]):
+        customer_uuid (Union[Unset, UUID]):
+        month (Union[Unset, int]):
+        offering_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        resource_uuid (Union[Unset, UUID]):
+        start_month (Union[Unset, float]):
+        start_year (Union[Unset, float]):
+        year (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -56,7 +126,17 @@ def sync_detailed(
         Response[InvoiceItemTotalPrice]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        credit_uuid=credit_uuid,
+        customer_uuid=customer_uuid,
+        month=month,
+        offering_uuid=offering_uuid,
+        project_uuid=project_uuid,
+        resource_uuid=resource_uuid,
+        start_month=start_month,
+        start_year=start_year,
+        year=year,
+    )
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -68,8 +148,28 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    credit_uuid: Union[Unset, UUID] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
+    year: Union[Unset, int] = UNSET,
 ) -> Optional[InvoiceItemTotalPrice]:
     """Calculate total price for filtered invoice items.
+
+    Args:
+        credit_uuid (Union[Unset, UUID]):
+        customer_uuid (Union[Unset, UUID]):
+        month (Union[Unset, int]):
+        offering_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        resource_uuid (Union[Unset, UUID]):
+        start_month (Union[Unset, float]):
+        start_year (Union[Unset, float]):
+        year (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -81,14 +181,43 @@ def sync(
 
     return sync_detailed(
         client=client,
+        credit_uuid=credit_uuid,
+        customer_uuid=customer_uuid,
+        month=month,
+        offering_uuid=offering_uuid,
+        project_uuid=project_uuid,
+        resource_uuid=resource_uuid,
+        start_month=start_month,
+        start_year=start_year,
+        year=year,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    credit_uuid: Union[Unset, UUID] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
+    year: Union[Unset, int] = UNSET,
 ) -> Response[InvoiceItemTotalPrice]:
     """Calculate total price for filtered invoice items.
+
+    Args:
+        credit_uuid (Union[Unset, UUID]):
+        customer_uuid (Union[Unset, UUID]):
+        month (Union[Unset, int]):
+        offering_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        resource_uuid (Union[Unset, UUID]):
+        start_month (Union[Unset, float]):
+        start_year (Union[Unset, float]):
+        year (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -98,7 +227,17 @@ async def asyncio_detailed(
         Response[InvoiceItemTotalPrice]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        credit_uuid=credit_uuid,
+        customer_uuid=customer_uuid,
+        month=month,
+        offering_uuid=offering_uuid,
+        project_uuid=project_uuid,
+        resource_uuid=resource_uuid,
+        start_month=start_month,
+        start_year=start_year,
+        year=year,
+    )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -108,8 +247,28 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    credit_uuid: Union[Unset, UUID] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
+    year: Union[Unset, int] = UNSET,
 ) -> Optional[InvoiceItemTotalPrice]:
     """Calculate total price for filtered invoice items.
+
+    Args:
+        credit_uuid (Union[Unset, UUID]):
+        customer_uuid (Union[Unset, UUID]):
+        month (Union[Unset, int]):
+        offering_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        resource_uuid (Union[Unset, UUID]):
+        start_month (Union[Unset, float]):
+        start_year (Union[Unset, float]):
+        year (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -122,5 +281,14 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            credit_uuid=credit_uuid,
+            customer_uuid=customer_uuid,
+            month=month,
+            offering_uuid=offering_uuid,
+            project_uuid=project_uuid,
+            resource_uuid=resource_uuid,
+            start_month=start_month,
+            start_year=start_year,
+            year=year,
         )
     ).parsed
