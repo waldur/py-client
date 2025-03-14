@@ -7,43 +7,17 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.detail_state import DetailState
-from ...models.provider_offering_details_request import ProviderOfferingDetailsRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
-    *,
-    body: Union[
-        ProviderOfferingDetailsRequest,
-        ProviderOfferingDetailsRequest,
-        ProviderOfferingDetailsRequest,
-    ],
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": f"/api/marketplace-provider-offerings/{uuid}/unpause/",
     }
 
-    if isinstance(body, ProviderOfferingDetailsRequest):
-        _json_body = body.to_dict()
-
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, ProviderOfferingDetailsRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, ProviderOfferingDetailsRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -71,18 +45,10 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProviderOfferingDetailsRequest,
-        ProviderOfferingDetailsRequest,
-        ProviderOfferingDetailsRequest,
-    ],
 ) -> Response[DetailState]:
     """
     Args:
         uuid (UUID):
-        body (ProviderOfferingDetailsRequest):
-        body (ProviderOfferingDetailsRequest):
-        body (ProviderOfferingDetailsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -94,7 +60,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -108,18 +73,10 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProviderOfferingDetailsRequest,
-        ProviderOfferingDetailsRequest,
-        ProviderOfferingDetailsRequest,
-    ],
 ) -> Optional[DetailState]:
     """
     Args:
         uuid (UUID):
-        body (ProviderOfferingDetailsRequest):
-        body (ProviderOfferingDetailsRequest):
-        body (ProviderOfferingDetailsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,7 +89,6 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
-        body=body,
     ).parsed
 
 
@@ -140,18 +96,10 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProviderOfferingDetailsRequest,
-        ProviderOfferingDetailsRequest,
-        ProviderOfferingDetailsRequest,
-    ],
 ) -> Response[DetailState]:
     """
     Args:
         uuid (UUID):
-        body (ProviderOfferingDetailsRequest):
-        body (ProviderOfferingDetailsRequest):
-        body (ProviderOfferingDetailsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -163,7 +111,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -175,18 +122,10 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProviderOfferingDetailsRequest,
-        ProviderOfferingDetailsRequest,
-        ProviderOfferingDetailsRequest,
-    ],
 ) -> Optional[DetailState]:
     """
     Args:
         uuid (UUID):
-        body (ProviderOfferingDetailsRequest):
-        body (ProviderOfferingDetailsRequest):
-        body (ProviderOfferingDetailsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -200,6 +139,5 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            body=body,
         )
     ).parsed

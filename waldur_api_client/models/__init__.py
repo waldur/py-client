@@ -172,6 +172,7 @@ from .costs_for_period import CostsForPeriod
 from .count_stats import CountStats
 from .country import Country
 from .country_enum import CountryEnum
+from .create_attachments_request import CreateAttachmentsRequest
 from .create_customer_credit import CreateCustomerCredit
 from .create_customer_credit_request import CreateCustomerCreditRequest
 from .create_feedback import CreateFeedback
@@ -1387,6 +1388,7 @@ __all__ = (
     "Country",
     "CountryEnum",
     "CountStats",
+    "CreateAttachmentsRequest",
     "CreateCustomerCredit",
     "CreateCustomerCreditRequest",
     "CreateFeedback",

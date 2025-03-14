@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.template_attachment_request import TemplateAttachmentRequest
+from ...models.create_attachments_request import CreateAttachmentsRequest
 from ...types import Response
 
 
@@ -14,9 +14,9 @@ def _get_kwargs(
     uuid: UUID,
     *,
     body: Union[
-        TemplateAttachmentRequest,
-        TemplateAttachmentRequest,
-        TemplateAttachmentRequest,
+        CreateAttachmentsRequest,
+        CreateAttachmentsRequest,
+        CreateAttachmentsRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -26,17 +26,17 @@ def _get_kwargs(
         "url": f"/api/support-templates/{uuid}/create_attachments/",
     }
 
-    if isinstance(body, TemplateAttachmentRequest):
+    if isinstance(body, CreateAttachmentsRequest):
         _json_body = body.to_dict()
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, TemplateAttachmentRequest):
+    if isinstance(body, CreateAttachmentsRequest):
         _data_body = body.to_dict()
 
         _kwargs["data"] = _data_body
         headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, TemplateAttachmentRequest):
+    if isinstance(body, CreateAttachmentsRequest):
         _files_body = body.to_multipart()
 
         _kwargs["files"] = _files_body
@@ -71,18 +71,18 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: Union[
-        TemplateAttachmentRequest,
-        TemplateAttachmentRequest,
-        TemplateAttachmentRequest,
+        CreateAttachmentsRequest,
+        CreateAttachmentsRequest,
+        CreateAttachmentsRequest,
     ],
 ) -> Response[Any]:
     """This view attaches documents to template.
 
     Args:
         uuid (UUID):
-        body (TemplateAttachmentRequest):
-        body (TemplateAttachmentRequest):
-        body (TemplateAttachmentRequest):
+        body (CreateAttachmentsRequest):
+        body (CreateAttachmentsRequest):
+        body (CreateAttachmentsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -109,18 +109,18 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: Union[
-        TemplateAttachmentRequest,
-        TemplateAttachmentRequest,
-        TemplateAttachmentRequest,
+        CreateAttachmentsRequest,
+        CreateAttachmentsRequest,
+        CreateAttachmentsRequest,
     ],
 ) -> Response[Any]:
     """This view attaches documents to template.
 
     Args:
         uuid (UUID):
-        body (TemplateAttachmentRequest):
-        body (TemplateAttachmentRequest):
-        body (TemplateAttachmentRequest):
+        body (CreateAttachmentsRequest):
+        body (CreateAttachmentsRequest):
+        body (CreateAttachmentsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
