@@ -1,5 +1,6 @@
 import datetime
 import json
+from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
@@ -163,8 +164,8 @@ class CreateCustomerCreditRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         customer = d.pop("customer")
 
         value = d.pop("value", UNSET)

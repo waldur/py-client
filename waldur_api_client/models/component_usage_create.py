@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
@@ -56,10 +57,10 @@ class ComponentUsageCreate:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.component_usage_item import ComponentUsageItem
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         usages = []
         _usages = d.pop("usages")
         for usages_item_data in _usages:

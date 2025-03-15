@@ -1,4 +1,5 @@
 import datetime
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -301,13 +302,13 @@ class Customer:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_price_estimate import NestedPriceEstimate
         from ..models.organization_group import OrganizationGroup
         from ..models.payment_profile import PaymentProfile
         from ..models.permission_project import PermissionProject
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         url = d.pop("url")
 
         uuid = UUID(d.pop("uuid"))

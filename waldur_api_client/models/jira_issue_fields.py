@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
@@ -45,11 +46,11 @@ class JiraIssueFields:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.jira_issue_fields_comment import JiraIssueFieldsComment
         from ..models.jira_issue_project import JiraIssueProject
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         project = JiraIssueProject.from_dict(d.pop("project"))
 
         _comment = d.pop("comment", UNSET)

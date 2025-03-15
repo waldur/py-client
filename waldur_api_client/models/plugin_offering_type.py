@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
@@ -47,10 +48,10 @@ class PluginOfferingType:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.plugin_component import PluginComponent
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         offering_type = d.pop("offering_type")
 
         components = []

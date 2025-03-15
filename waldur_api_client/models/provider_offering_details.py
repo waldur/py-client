@@ -1,4 +1,5 @@
 import datetime
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -457,7 +458,7 @@ class ProviderOfferingDetails:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.base_provider_plan import BaseProviderPlan
         from ..models.integration_status import IntegrationStatus
         from ..models.merged_plugin_options import MergedPluginOptions
@@ -473,7 +474,7 @@ class ProviderOfferingDetails:
         from ..models.provider_offering_details_service_attributes import ProviderOfferingDetailsServiceAttributes
         from ..models.quota import Quota
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         url = d.pop("url")
 
         uuid = UUID(d.pop("uuid"))

@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
@@ -52,10 +53,10 @@ class InvoiceGrowth:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.invoice_growth_customer_period import InvoiceGrowthCustomerPeriod
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         periods = cast(list[str], d.pop("periods"))
 
         total_periods = cast(list[float], d.pop("total_periods"))

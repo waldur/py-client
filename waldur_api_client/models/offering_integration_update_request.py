@@ -1,4 +1,5 @@
 import json
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
@@ -95,11 +96,11 @@ class OfferingIntegrationUpdateRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
         from ..models.merged_secret_options_request import MergedSecretOptionsRequest
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         _secret_options = d.pop("secret_options", UNSET)
         secret_options: Union[Unset, MergedSecretOptionsRequest]
         if isinstance(_secret_options, Unset):

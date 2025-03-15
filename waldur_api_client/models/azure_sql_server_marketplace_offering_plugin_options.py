@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -19,8 +20,8 @@ class AzureSqlServerMarketplaceOfferingPluginOptions:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         azure_sql_server_marketplace_offering_plugin_options = cls()
 
         azure_sql_server_marketplace_offering_plugin_options.additional_properties = d

@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
@@ -20,6 +21,7 @@ class MergedSecretOptionsRequest:
         heappe_cluster_password (Union[Unset, str]): HEAppE cluster password
         heappe_password (Union[Unset, str]): HEAppE password
         ipv4_external_ip_mapping (Union[Unset, list['IPMappingRequest']]): OpenStack IPv4 external IP mapping
+        openstack_api_tls_certificate (Union[Unset, str]):
         shared_user_password (Union[Unset, str]): GLAuth shared user password
         template_confirmation_comment (Union[Unset, str]): Template confirmation comment
         language (Union[Unset, str]): Script language: Python or Bash
@@ -36,6 +38,7 @@ class MergedSecretOptionsRequest:
     heappe_cluster_password: Union[Unset, str] = UNSET
     heappe_password: Union[Unset, str] = UNSET
     ipv4_external_ip_mapping: Union[Unset, list["IPMappingRequest"]] = UNSET
+    openstack_api_tls_certificate: Union[Unset, str] = UNSET
     shared_user_password: Union[Unset, str] = UNSET
     template_confirmation_comment: Union[Unset, str] = UNSET
     language: Union[Unset, str] = UNSET
@@ -60,6 +63,8 @@ class MergedSecretOptionsRequest:
             for ipv4_external_ip_mapping_item_data in self.ipv4_external_ip_mapping:
                 ipv4_external_ip_mapping_item = ipv4_external_ip_mapping_item_data.to_dict()
                 ipv4_external_ip_mapping.append(ipv4_external_ip_mapping_item)
+
+        openstack_api_tls_certificate = self.openstack_api_tls_certificate
 
         shared_user_password = self.shared_user_password
 
@@ -94,6 +99,8 @@ class MergedSecretOptionsRequest:
             field_dict["heappe_password"] = heappe_password
         if ipv4_external_ip_mapping is not UNSET:
             field_dict["ipv4_external_ip_mapping"] = ipv4_external_ip_mapping
+        if openstack_api_tls_certificate is not UNSET:
+            field_dict["openstack_api_tls_certificate"] = openstack_api_tls_certificate
         if shared_user_password is not UNSET:
             field_dict["shared_user_password"] = shared_user_password
         if template_confirmation_comment is not UNSET:
@@ -120,10 +127,10 @@ class MergedSecretOptionsRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.ip_mapping_request import IPMappingRequest
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         heappe_cluster_password = d.pop("heappe_cluster_password", UNSET)
 
         heappe_password = d.pop("heappe_password", UNSET)
@@ -134,6 +141,8 @@ class MergedSecretOptionsRequest:
             ipv4_external_ip_mapping_item = IPMappingRequest.from_dict(ipv4_external_ip_mapping_item_data)
 
             ipv4_external_ip_mapping.append(ipv4_external_ip_mapping_item)
+
+        openstack_api_tls_certificate = d.pop("openstack_api_tls_certificate", UNSET)
 
         shared_user_password = d.pop("shared_user_password", UNSET)
 
@@ -166,6 +175,7 @@ class MergedSecretOptionsRequest:
             heappe_cluster_password=heappe_cluster_password,
             heappe_password=heappe_password,
             ipv4_external_ip_mapping=ipv4_external_ip_mapping,
+            openstack_api_tls_certificate=openstack_api_tls_certificate,
             shared_user_password=shared_user_password,
             template_confirmation_comment=template_confirmation_comment,
             language=language,

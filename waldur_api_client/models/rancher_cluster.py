@@ -1,4 +1,5 @@
 import datetime
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -250,13 +251,13 @@ class RancherCluster:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.rancher_cluster_marketplace_offering_plugin_options import (
             RancherClusterMarketplaceOfferingPluginOptions,
         )
         from ..models.rancher_nested_node import RancherNestedNode
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         url = d.pop("url")
 
         uuid = UUID(d.pop("uuid"))

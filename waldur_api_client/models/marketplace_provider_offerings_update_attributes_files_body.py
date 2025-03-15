@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -26,8 +27,8 @@ class MarketplaceProviderOfferingsUpdateAttributesFilesBody:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         marketplace_provider_offerings_update_attributes_files_body = cls()
 
         marketplace_provider_offerings_update_attributes_files_body.additional_properties = d

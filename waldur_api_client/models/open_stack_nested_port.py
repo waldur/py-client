@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -96,11 +97,11 @@ class OpenStackNestedPort:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_allowed_address_pair import OpenStackAllowedAddressPair
         from ..models.open_stack_fixed_ip import OpenStackFixedIp
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         fixed_ips = []
         _fixed_ips = d.pop("fixed_ips")
         for fixed_ips_item_data in _fixed_ips:

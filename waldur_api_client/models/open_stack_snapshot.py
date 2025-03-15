@@ -1,4 +1,5 @@
 import datetime
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -274,13 +275,13 @@ class OpenStackSnapshot:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_snapshot_marketplace_offering_plugin_options import (
             OpenStackSnapshotMarketplaceOfferingPluginOptions,
         )
         from ..models.open_stack_snapshot_restoration import OpenStackSnapshotRestoration
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         url = d.pop("url")
 
         uuid = UUID(d.pop("uuid"))

@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
@@ -57,11 +58,11 @@ class OfferingIntegrationUpdate:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.merged_plugin_options import MergedPluginOptions
         from ..models.merged_secret_options import MergedSecretOptions
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         _secret_options = d.pop("secret_options", UNSET)
         secret_options: Union[Unset, MergedSecretOptions]
         if isinstance(_secret_options, Unset):

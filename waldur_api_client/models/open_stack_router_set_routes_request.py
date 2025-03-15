@@ -1,4 +1,5 @@
 import json
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -57,10 +58,10 @@ class OpenStackRouterSetRoutesRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_static_route_request import OpenStackStaticRouteRequest
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         routes = []
         _routes = d.pop("routes")
         for routes_item_data in _routes:

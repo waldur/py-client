@@ -1,4 +1,5 @@
 import datetime
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
@@ -95,12 +96,12 @@ class OpenStackBackupRestoration:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_nested_floating_ip import OpenStackNestedFloatingIP
         from ..models.open_stack_nested_port import OpenStackNestedPort
         from ..models.open_stack_nested_security_group import OpenStackNestedSecurityGroup
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
         instance = d.pop("instance")

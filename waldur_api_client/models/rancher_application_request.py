@@ -1,4 +1,5 @@
 import json
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
@@ -202,10 +203,10 @@ class RancherApplicationRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.rancher_application_request_answers import RancherApplicationRequestAnswers
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         name = d.pop("name")
 
         service_settings = d.pop("service_settings")
