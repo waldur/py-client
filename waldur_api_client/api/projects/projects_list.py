@@ -18,7 +18,7 @@ def _get_kwargs(
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
-    conceal_ended_projects: Union[Unset, bool] = UNSET,
+    conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
@@ -41,7 +41,7 @@ def _get_kwargs(
 
     params["can_manage"] = can_manage
 
-    params["conceal_ended_projects"] = conceal_ended_projects
+    params["conceal_finished_projects"] = conceal_finished_projects
 
     json_created: Union[Unset, str] = UNSET
     if not isinstance(created, Unset):
@@ -139,7 +139,7 @@ def sync_detailed(
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
-    conceal_ended_projects: Union[Unset, bool] = UNSET,
+    conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
@@ -159,7 +159,7 @@ def sync_detailed(
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
-        conceal_ended_projects (Union[Unset, bool]):
+        conceal_finished_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, list[UUID]]):
         customer_abbreviation (Union[Unset, str]):
@@ -186,7 +186,7 @@ def sync_detailed(
         backend_id=backend_id,
         can_admin=can_admin,
         can_manage=can_manage,
-        conceal_ended_projects=conceal_ended_projects,
+        conceal_finished_projects=conceal_finished_projects,
         created=created,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
@@ -215,7 +215,7 @@ def sync(
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
-    conceal_ended_projects: Union[Unset, bool] = UNSET,
+    conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
@@ -235,7 +235,7 @@ def sync(
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
-        conceal_ended_projects (Union[Unset, bool]):
+        conceal_finished_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, list[UUID]]):
         customer_abbreviation (Union[Unset, str]):
@@ -263,7 +263,7 @@ def sync(
         backend_id=backend_id,
         can_admin=can_admin,
         can_manage=can_manage,
-        conceal_ended_projects=conceal_ended_projects,
+        conceal_finished_projects=conceal_finished_projects,
         created=created,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
@@ -286,7 +286,7 @@ async def asyncio_detailed(
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
-    conceal_ended_projects: Union[Unset, bool] = UNSET,
+    conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
@@ -306,7 +306,7 @@ async def asyncio_detailed(
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
-        conceal_ended_projects (Union[Unset, bool]):
+        conceal_finished_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, list[UUID]]):
         customer_abbreviation (Union[Unset, str]):
@@ -333,7 +333,7 @@ async def asyncio_detailed(
         backend_id=backend_id,
         can_admin=can_admin,
         can_manage=can_manage,
-        conceal_ended_projects=conceal_ended_projects,
+        conceal_finished_projects=conceal_finished_projects,
         created=created,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
@@ -360,7 +360,7 @@ async def asyncio(
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
-    conceal_ended_projects: Union[Unset, bool] = UNSET,
+    conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
@@ -380,7 +380,7 @@ async def asyncio(
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
-        conceal_ended_projects (Union[Unset, bool]):
+        conceal_finished_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, list[UUID]]):
         customer_abbreviation (Union[Unset, str]):
@@ -409,7 +409,7 @@ async def asyncio(
             backend_id=backend_id,
             can_admin=can_admin,
             can_manage=can_manage,
-            conceal_ended_projects=conceal_ended_projects,
+            conceal_finished_projects=conceal_finished_projects,
             created=created,
             customer=customer,
             customer_abbreviation=customer_abbreviation,

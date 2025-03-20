@@ -15,23 +15,12 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     uuid: UUID,
     *,
-    abbreviation: Union[Unset, str] = UNSET,
-    agreement_number: Union[Unset, str] = UNSET,
-    archived: Union[Unset, bool] = UNSET,
-    backend_id: Union[Unset, str] = UNSET,
-    contact_details: Union[Unset, str] = UNSET,
     field: Union[Unset, list[CustomersListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[CustomersListUsersListOItem]] = UNSET,
-    organization_group_name: Union[Unset, str] = UNSET,
-    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    registration_code: Union[Unset, str] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -40,16 +29,6 @@ def _get_kwargs(
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["abbreviation"] = abbreviation
-
-    params["agreement_number"] = agreement_number
-
-    params["archived"] = archived
-
-    params["backend_id"] = backend_id
-
-    params["contact_details"] = contact_details
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -62,10 +41,6 @@ def _get_kwargs(
 
     params["full_name"] = full_name
 
-    params["name"] = name
-
-    params["name_exact"] = name_exact
-
     params["native_name"] = native_name
 
     json_o: Union[Unset, list[str]] = UNSET
@@ -77,24 +52,9 @@ def _get_kwargs(
 
     params["o"] = json_o
 
-    params["organization_group_name"] = organization_group_name
-
-    json_organization_group_uuid: Union[Unset, list[str]] = UNSET
-    if not isinstance(organization_group_uuid, Unset):
-        json_organization_group_uuid = []
-        for organization_group_uuid_item_data in organization_group_uuid:
-            organization_group_uuid_item = str(organization_group_uuid_item_data)
-            json_organization_group_uuid.append(organization_group_uuid_item)
-
-    params["organization_group_uuid"] = json_organization_group_uuid
-
     params["page"] = page
 
     params["page_size"] = page_size
-
-    params["query"] = query
-
-    params["registration_code"] = registration_code
 
     json_role: Union[Unset, str] = UNSET
     if not isinstance(role, Unset):
@@ -158,23 +118,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    abbreviation: Union[Unset, str] = UNSET,
-    agreement_number: Union[Unset, str] = UNSET,
-    archived: Union[Unset, bool] = UNSET,
-    backend_id: Union[Unset, str] = UNSET,
-    contact_details: Union[Unset, str] = UNSET,
     field: Union[Unset, list[CustomersListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[CustomersListUsersListOItem]] = UNSET,
-    organization_group_name: Union[Unset, str] = UNSET,
-    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    registration_code: Union[Unset, str] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -185,23 +134,12 @@ def sync_detailed(
     """
     Args:
         uuid (UUID):
-        abbreviation (Union[Unset, str]):
-        agreement_number (Union[Unset, str]):
-        archived (Union[Unset, bool]):
-        backend_id (Union[Unset, str]):
-        contact_details (Union[Unset, str]):
         field (Union[Unset, list[CustomersListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[CustomersListUsersListOItem]]):
-        organization_group_name (Union[Unset, str]):
-        organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        query (Union[Unset, str]):
-        registration_code (Union[Unset, str]):
         role (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
@@ -219,23 +157,12 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        abbreviation=abbreviation,
-        agreement_number=agreement_number,
-        archived=archived,
-        backend_id=backend_id,
-        contact_details=contact_details,
         field=field,
         full_name=full_name,
-        name=name,
-        name_exact=name_exact,
         native_name=native_name,
         o=o,
-        organization_group_name=organization_group_name,
-        organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
-        query=query,
-        registration_code=registration_code,
         role=role,
         search_string=search_string,
         user=user,
@@ -255,23 +182,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    abbreviation: Union[Unset, str] = UNSET,
-    agreement_number: Union[Unset, str] = UNSET,
-    archived: Union[Unset, bool] = UNSET,
-    backend_id: Union[Unset, str] = UNSET,
-    contact_details: Union[Unset, str] = UNSET,
     field: Union[Unset, list[CustomersListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[CustomersListUsersListOItem]] = UNSET,
-    organization_group_name: Union[Unset, str] = UNSET,
-    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    registration_code: Union[Unset, str] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -282,23 +198,12 @@ def sync(
     """
     Args:
         uuid (UUID):
-        abbreviation (Union[Unset, str]):
-        agreement_number (Union[Unset, str]):
-        archived (Union[Unset, bool]):
-        backend_id (Union[Unset, str]):
-        contact_details (Union[Unset, str]):
         field (Union[Unset, list[CustomersListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[CustomersListUsersListOItem]]):
-        organization_group_name (Union[Unset, str]):
-        organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        query (Union[Unset, str]):
-        registration_code (Union[Unset, str]):
         role (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
@@ -317,23 +222,12 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
-        abbreviation=abbreviation,
-        agreement_number=agreement_number,
-        archived=archived,
-        backend_id=backend_id,
-        contact_details=contact_details,
         field=field,
         full_name=full_name,
-        name=name,
-        name_exact=name_exact,
         native_name=native_name,
         o=o,
-        organization_group_name=organization_group_name,
-        organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
-        query=query,
-        registration_code=registration_code,
         role=role,
         search_string=search_string,
         user=user,
@@ -347,23 +241,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    abbreviation: Union[Unset, str] = UNSET,
-    agreement_number: Union[Unset, str] = UNSET,
-    archived: Union[Unset, bool] = UNSET,
-    backend_id: Union[Unset, str] = UNSET,
-    contact_details: Union[Unset, str] = UNSET,
     field: Union[Unset, list[CustomersListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[CustomersListUsersListOItem]] = UNSET,
-    organization_group_name: Union[Unset, str] = UNSET,
-    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    registration_code: Union[Unset, str] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -374,23 +257,12 @@ async def asyncio_detailed(
     """
     Args:
         uuid (UUID):
-        abbreviation (Union[Unset, str]):
-        agreement_number (Union[Unset, str]):
-        archived (Union[Unset, bool]):
-        backend_id (Union[Unset, str]):
-        contact_details (Union[Unset, str]):
         field (Union[Unset, list[CustomersListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[CustomersListUsersListOItem]]):
-        organization_group_name (Union[Unset, str]):
-        organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        query (Union[Unset, str]):
-        registration_code (Union[Unset, str]):
         role (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
@@ -408,23 +280,12 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        abbreviation=abbreviation,
-        agreement_number=agreement_number,
-        archived=archived,
-        backend_id=backend_id,
-        contact_details=contact_details,
         field=field,
         full_name=full_name,
-        name=name,
-        name_exact=name_exact,
         native_name=native_name,
         o=o,
-        organization_group_name=organization_group_name,
-        organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
-        query=query,
-        registration_code=registration_code,
         role=role,
         search_string=search_string,
         user=user,
@@ -442,23 +303,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    abbreviation: Union[Unset, str] = UNSET,
-    agreement_number: Union[Unset, str] = UNSET,
-    archived: Union[Unset, bool] = UNSET,
-    backend_id: Union[Unset, str] = UNSET,
-    contact_details: Union[Unset, str] = UNSET,
     field: Union[Unset, list[CustomersListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[CustomersListUsersListOItem]] = UNSET,
-    organization_group_name: Union[Unset, str] = UNSET,
-    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    registration_code: Union[Unset, str] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -469,23 +319,12 @@ async def asyncio(
     """
     Args:
         uuid (UUID):
-        abbreviation (Union[Unset, str]):
-        agreement_number (Union[Unset, str]):
-        archived (Union[Unset, bool]):
-        backend_id (Union[Unset, str]):
-        contact_details (Union[Unset, str]):
         field (Union[Unset, list[CustomersListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[CustomersListUsersListOItem]]):
-        organization_group_name (Union[Unset, str]):
-        organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        query (Union[Unset, str]):
-        registration_code (Union[Unset, str]):
         role (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
@@ -505,23 +344,12 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            abbreviation=abbreviation,
-            agreement_number=agreement_number,
-            archived=archived,
-            backend_id=backend_id,
-            contact_details=contact_details,
             field=field,
             full_name=full_name,
-            name=name,
-            name_exact=name_exact,
             native_name=native_name,
             o=o,
-            organization_group_name=organization_group_name,
-            organization_group_uuid=organization_group_uuid,
             page=page,
             page_size=page_size,
-            query=query,
-            registration_code=registration_code,
             role=role,
             search_string=search_string,
             user=user,

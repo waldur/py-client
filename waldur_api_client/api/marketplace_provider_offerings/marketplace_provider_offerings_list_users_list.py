@@ -12,9 +12,6 @@ from ...models.marketplace_provider_offerings_list_users_list_field_item import 
 from ...models.marketplace_provider_offerings_list_users_list_o_item import (
     MarketplaceProviderOfferingsListUsersListOItem,
 )
-from ...models.marketplace_provider_offerings_list_users_list_state_item import (
-    MarketplaceProviderOfferingsListUsersListStateItem,
-)
 from ...models.user_role_details import UserRoleDetails
 from ...types import UNSET, Response, Unset
 
@@ -22,70 +19,20 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     uuid: UUID,
     *,
-    accessible_via_calls: Union[Unset, bool] = UNSET,
-    allowed_customer_uuid: Union[Unset, UUID] = UNSET,
-    attributes: Union[Unset, str] = UNSET,
-    billable: Union[Unset, bool] = UNSET,
-    category_group_uuid: Union[Unset, UUID] = UNSET,
-    category_uuid: Union[Unset, UUID] = UNSET,
-    customer: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[MarketplaceProviderOfferingsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderOfferingsListUsersListOItem]] = UNSET,
-    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    parent_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, UUID] = UNSET,
     role: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
-    service_manager_uuid: Union[Unset, UUID] = UNSET,
-    shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsListUsersListStateItem]] = UNSET,
-    type_: Union[Unset, list[str]] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["accessible_via_calls"] = accessible_via_calls
-
-    json_allowed_customer_uuid: Union[Unset, str] = UNSET
-    if not isinstance(allowed_customer_uuid, Unset):
-        json_allowed_customer_uuid = str(allowed_customer_uuid)
-    params["allowed_customer_uuid"] = json_allowed_customer_uuid
-
-    params["attributes"] = attributes
-
-    params["billable"] = billable
-
-    json_category_group_uuid: Union[Unset, str] = UNSET
-    if not isinstance(category_group_uuid, Unset):
-        json_category_group_uuid = str(category_group_uuid)
-    params["category_group_uuid"] = json_category_group_uuid
-
-    json_category_uuid: Union[Unset, str] = UNSET
-    if not isinstance(category_uuid, Unset):
-        json_category_uuid = str(category_uuid)
-    params["category_uuid"] = json_category_uuid
-
-    params["customer"] = customer
-
-    json_customer_uuid: Union[Unset, str] = UNSET
-    if not isinstance(customer_uuid, Unset):
-        json_customer_uuid = str(customer_uuid)
-    params["customer_uuid"] = json_customer_uuid
-
-    params["description"] = description
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -98,12 +45,6 @@ def _get_kwargs(
 
     params["full_name"] = full_name
 
-    params["keyword"] = keyword
-
-    params["name"] = name
-
-    params["name_exact"] = name_exact
-
     params["native_name"] = native_name
 
     json_o: Union[Unset, list[str]] = UNSET
@@ -115,62 +56,16 @@ def _get_kwargs(
 
     params["o"] = json_o
 
-    json_organization_group_uuid: Union[Unset, list[str]] = UNSET
-    if not isinstance(organization_group_uuid, Unset):
-        json_organization_group_uuid = []
-        for organization_group_uuid_item_data in organization_group_uuid:
-            organization_group_uuid_item = str(organization_group_uuid_item_data)
-            json_organization_group_uuid.append(organization_group_uuid_item)
-
-    params["organization_group_uuid"] = json_organization_group_uuid
-
     params["page"] = page
 
     params["page_size"] = page_size
-
-    json_parent_uuid: Union[Unset, str] = UNSET
-    if not isinstance(parent_uuid, Unset):
-        json_parent_uuid = str(parent_uuid)
-    params["parent_uuid"] = json_parent_uuid
-
-    json_project_uuid: Union[Unset, str] = UNSET
-    if not isinstance(project_uuid, Unset):
-        json_project_uuid = str(project_uuid)
-    params["project_uuid"] = json_project_uuid
 
     json_role: Union[Unset, str] = UNSET
     if not isinstance(role, Unset):
         json_role = str(role)
     params["role"] = json_role
 
-    json_scope_uuid: Union[Unset, str] = UNSET
-    if not isinstance(scope_uuid, Unset):
-        json_scope_uuid = str(scope_uuid)
-    params["scope_uuid"] = json_scope_uuid
-
     params["search_string"] = search_string
-
-    json_service_manager_uuid: Union[Unset, str] = UNSET
-    if not isinstance(service_manager_uuid, Unset):
-        json_service_manager_uuid = str(service_manager_uuid)
-    params["service_manager_uuid"] = json_service_manager_uuid
-
-    params["shared"] = shared
-
-    json_state: Union[Unset, list[str]] = UNSET
-    if not isinstance(state, Unset):
-        json_state = []
-        for state_item_data in state:
-            state_item = state_item_data.value
-            json_state.append(state_item)
-
-    params["state"] = json_state
-
-    json_type_: Union[Unset, list[str]] = UNSET
-    if not isinstance(type_, Unset):
-        json_type_ = type_
-
-    params["type"] = json_type_
 
     json_user: Union[Unset, str] = UNSET
     if not isinstance(user, Unset):
@@ -227,34 +122,14 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    accessible_via_calls: Union[Unset, bool] = UNSET,
-    allowed_customer_uuid: Union[Unset, UUID] = UNSET,
-    attributes: Union[Unset, str] = UNSET,
-    billable: Union[Unset, bool] = UNSET,
-    category_group_uuid: Union[Unset, UUID] = UNSET,
-    category_uuid: Union[Unset, UUID] = UNSET,
-    customer: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[MarketplaceProviderOfferingsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderOfferingsListUsersListOItem]] = UNSET,
-    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    parent_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, UUID] = UNSET,
     role: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
-    service_manager_uuid: Union[Unset, UUID] = UNSET,
-    shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsListUsersListStateItem]] = UNSET,
-    type_: Union[Unset, list[str]] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -263,34 +138,14 @@ def sync_detailed(
     """
     Args:
         uuid (UUID):
-        accessible_via_calls (Union[Unset, bool]):
-        allowed_customer_uuid (Union[Unset, UUID]):
-        attributes (Union[Unset, str]):
-        billable (Union[Unset, bool]):
-        category_group_uuid (Union[Unset, UUID]):
-        category_uuid (Union[Unset, UUID]):
-        customer (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        description (Union[Unset, str]):
         field (Union[Unset, list[MarketplaceProviderOfferingsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        keyword (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceProviderOfferingsListUsersListOItem]]):
-        organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        parent_uuid (Union[Unset, UUID]):
-        project_uuid (Union[Unset, UUID]):
         role (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
-        service_manager_uuid (Union[Unset, UUID]):
-        shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceProviderOfferingsListUsersListStateItem]]):
-        type_ (Union[Unset, list[str]]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -306,34 +161,14 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        accessible_via_calls=accessible_via_calls,
-        allowed_customer_uuid=allowed_customer_uuid,
-        attributes=attributes,
-        billable=billable,
-        category_group_uuid=category_group_uuid,
-        category_uuid=category_uuid,
-        customer=customer,
-        customer_uuid=customer_uuid,
-        description=description,
         field=field,
         full_name=full_name,
-        keyword=keyword,
-        name=name,
-        name_exact=name_exact,
         native_name=native_name,
         o=o,
-        organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
-        parent_uuid=parent_uuid,
-        project_uuid=project_uuid,
         role=role,
-        scope_uuid=scope_uuid,
         search_string=search_string,
-        service_manager_uuid=service_manager_uuid,
-        shared=shared,
-        state=state,
-        type_=type_,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -351,34 +186,14 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    accessible_via_calls: Union[Unset, bool] = UNSET,
-    allowed_customer_uuid: Union[Unset, UUID] = UNSET,
-    attributes: Union[Unset, str] = UNSET,
-    billable: Union[Unset, bool] = UNSET,
-    category_group_uuid: Union[Unset, UUID] = UNSET,
-    category_uuid: Union[Unset, UUID] = UNSET,
-    customer: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[MarketplaceProviderOfferingsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderOfferingsListUsersListOItem]] = UNSET,
-    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    parent_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, UUID] = UNSET,
     role: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
-    service_manager_uuid: Union[Unset, UUID] = UNSET,
-    shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsListUsersListStateItem]] = UNSET,
-    type_: Union[Unset, list[str]] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -387,34 +202,14 @@ def sync(
     """
     Args:
         uuid (UUID):
-        accessible_via_calls (Union[Unset, bool]):
-        allowed_customer_uuid (Union[Unset, UUID]):
-        attributes (Union[Unset, str]):
-        billable (Union[Unset, bool]):
-        category_group_uuid (Union[Unset, UUID]):
-        category_uuid (Union[Unset, UUID]):
-        customer (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        description (Union[Unset, str]):
         field (Union[Unset, list[MarketplaceProviderOfferingsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        keyword (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceProviderOfferingsListUsersListOItem]]):
-        organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        parent_uuid (Union[Unset, UUID]):
-        project_uuid (Union[Unset, UUID]):
         role (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
-        service_manager_uuid (Union[Unset, UUID]):
-        shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceProviderOfferingsListUsersListStateItem]]):
-        type_ (Union[Unset, list[str]]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -431,34 +226,14 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
-        accessible_via_calls=accessible_via_calls,
-        allowed_customer_uuid=allowed_customer_uuid,
-        attributes=attributes,
-        billable=billable,
-        category_group_uuid=category_group_uuid,
-        category_uuid=category_uuid,
-        customer=customer,
-        customer_uuid=customer_uuid,
-        description=description,
         field=field,
         full_name=full_name,
-        keyword=keyword,
-        name=name,
-        name_exact=name_exact,
         native_name=native_name,
         o=o,
-        organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
-        parent_uuid=parent_uuid,
-        project_uuid=project_uuid,
         role=role,
-        scope_uuid=scope_uuid,
         search_string=search_string,
-        service_manager_uuid=service_manager_uuid,
-        shared=shared,
-        state=state,
-        type_=type_,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -470,34 +245,14 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    accessible_via_calls: Union[Unset, bool] = UNSET,
-    allowed_customer_uuid: Union[Unset, UUID] = UNSET,
-    attributes: Union[Unset, str] = UNSET,
-    billable: Union[Unset, bool] = UNSET,
-    category_group_uuid: Union[Unset, UUID] = UNSET,
-    category_uuid: Union[Unset, UUID] = UNSET,
-    customer: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[MarketplaceProviderOfferingsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderOfferingsListUsersListOItem]] = UNSET,
-    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    parent_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, UUID] = UNSET,
     role: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
-    service_manager_uuid: Union[Unset, UUID] = UNSET,
-    shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsListUsersListStateItem]] = UNSET,
-    type_: Union[Unset, list[str]] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -506,34 +261,14 @@ async def asyncio_detailed(
     """
     Args:
         uuid (UUID):
-        accessible_via_calls (Union[Unset, bool]):
-        allowed_customer_uuid (Union[Unset, UUID]):
-        attributes (Union[Unset, str]):
-        billable (Union[Unset, bool]):
-        category_group_uuid (Union[Unset, UUID]):
-        category_uuid (Union[Unset, UUID]):
-        customer (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        description (Union[Unset, str]):
         field (Union[Unset, list[MarketplaceProviderOfferingsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        keyword (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceProviderOfferingsListUsersListOItem]]):
-        organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        parent_uuid (Union[Unset, UUID]):
-        project_uuid (Union[Unset, UUID]):
         role (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
-        service_manager_uuid (Union[Unset, UUID]):
-        shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceProviderOfferingsListUsersListStateItem]]):
-        type_ (Union[Unset, list[str]]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -549,34 +284,14 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        accessible_via_calls=accessible_via_calls,
-        allowed_customer_uuid=allowed_customer_uuid,
-        attributes=attributes,
-        billable=billable,
-        category_group_uuid=category_group_uuid,
-        category_uuid=category_uuid,
-        customer=customer,
-        customer_uuid=customer_uuid,
-        description=description,
         field=field,
         full_name=full_name,
-        keyword=keyword,
-        name=name,
-        name_exact=name_exact,
         native_name=native_name,
         o=o,
-        organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
-        parent_uuid=parent_uuid,
-        project_uuid=project_uuid,
         role=role,
-        scope_uuid=scope_uuid,
         search_string=search_string,
-        service_manager_uuid=service_manager_uuid,
-        shared=shared,
-        state=state,
-        type_=type_,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -592,34 +307,14 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    accessible_via_calls: Union[Unset, bool] = UNSET,
-    allowed_customer_uuid: Union[Unset, UUID] = UNSET,
-    attributes: Union[Unset, str] = UNSET,
-    billable: Union[Unset, bool] = UNSET,
-    category_group_uuid: Union[Unset, UUID] = UNSET,
-    category_uuid: Union[Unset, UUID] = UNSET,
-    customer: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[MarketplaceProviderOfferingsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderOfferingsListUsersListOItem]] = UNSET,
-    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    parent_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, UUID] = UNSET,
     role: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
-    service_manager_uuid: Union[Unset, UUID] = UNSET,
-    shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsListUsersListStateItem]] = UNSET,
-    type_: Union[Unset, list[str]] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -628,34 +323,14 @@ async def asyncio(
     """
     Args:
         uuid (UUID):
-        accessible_via_calls (Union[Unset, bool]):
-        allowed_customer_uuid (Union[Unset, UUID]):
-        attributes (Union[Unset, str]):
-        billable (Union[Unset, bool]):
-        category_group_uuid (Union[Unset, UUID]):
-        category_uuid (Union[Unset, UUID]):
-        customer (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        description (Union[Unset, str]):
         field (Union[Unset, list[MarketplaceProviderOfferingsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        keyword (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceProviderOfferingsListUsersListOItem]]):
-        organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        parent_uuid (Union[Unset, UUID]):
-        project_uuid (Union[Unset, UUID]):
         role (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
-        service_manager_uuid (Union[Unset, UUID]):
-        shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceProviderOfferingsListUsersListStateItem]]):
-        type_ (Union[Unset, list[str]]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -673,34 +348,14 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            accessible_via_calls=accessible_via_calls,
-            allowed_customer_uuid=allowed_customer_uuid,
-            attributes=attributes,
-            billable=billable,
-            category_group_uuid=category_group_uuid,
-            category_uuid=category_uuid,
-            customer=customer,
-            customer_uuid=customer_uuid,
-            description=description,
             field=field,
             full_name=full_name,
-            keyword=keyword,
-            name=name,
-            name_exact=name_exact,
             native_name=native_name,
             o=o,
-            organization_group_uuid=organization_group_uuid,
             page=page,
             page_size=page_size,
-            parent_uuid=parent_uuid,
-            project_uuid=project_uuid,
             role=role,
-            scope_uuid=scope_uuid,
             search_string=search_string,
-            service_manager_uuid=service_manager_uuid,
-            shared=shared,
-            state=state,
-            type_=type_,
             user=user,
             user_slug=user_slug,
             user_url=user_url,

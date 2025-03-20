@@ -6,9 +6,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_service_providers_robot_account_projects_list_o_item import (
-    MarketplaceServiceProvidersRobotAccountProjectsListOItem,
-)
 from ...models.name_uuid import NameUUID
 from ...types import UNSET, Response, Unset
 
@@ -16,33 +13,11 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     uuid: UUID,
     *,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersRobotAccountProjectsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["customer"] = customer
-
-    params["customer_keyword"] = customer_keyword
-
-    json_customer_uuid: Union[Unset, str] = UNSET
-    if not isinstance(customer_uuid, Unset):
-        json_customer_uuid = str(customer_uuid)
-    params["customer_uuid"] = json_customer_uuid
-
-    json_o: Union[Unset, list[str]] = UNSET
-    if not isinstance(o, Unset):
-        json_o = []
-        for o_item_data in o:
-            o_item = o_item_data.value
-            json_o.append(o_item)
-
-    params["o"] = json_o
 
     params["page"] = page
 
@@ -94,10 +69,6 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersRobotAccountProjectsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
@@ -105,10 +76,6 @@ def sync_detailed(
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MarketplaceServiceProvidersRobotAccountProjectsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_name (Union[Unset, str]):
@@ -123,10 +90,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        customer=customer,
-        customer_keyword=customer_keyword,
-        customer_uuid=customer_uuid,
-        o=o,
         page=page,
         page_size=page_size,
         project_name=project_name,
@@ -143,10 +106,6 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersRobotAccountProjectsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
@@ -154,10 +113,6 @@ def sync(
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MarketplaceServiceProvidersRobotAccountProjectsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_name (Union[Unset, str]):
@@ -173,10 +128,6 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
-        customer=customer,
-        customer_keyword=customer_keyword,
-        customer_uuid=customer_uuid,
-        o=o,
         page=page,
         page_size=page_size,
         project_name=project_name,
@@ -187,10 +138,6 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersRobotAccountProjectsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
@@ -198,10 +145,6 @@ async def asyncio_detailed(
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MarketplaceServiceProvidersRobotAccountProjectsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_name (Union[Unset, str]):
@@ -216,10 +159,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        customer=customer,
-        customer_keyword=customer_keyword,
-        customer_uuid=customer_uuid,
-        o=o,
         page=page,
         page_size=page_size,
         project_name=project_name,
@@ -234,10 +173,6 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersRobotAccountProjectsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
@@ -245,10 +180,6 @@ async def asyncio(
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MarketplaceServiceProvidersRobotAccountProjectsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_name (Union[Unset, str]):
@@ -265,10 +196,6 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            customer=customer,
-            customer_keyword=customer_keyword,
-            customer_uuid=customer_uuid,
-            o=o,
             page=page,
             page_size=page_size,
             project_name=project_name,

@@ -8,7 +8,6 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.proposal_proposals_list_users_list_field_item import ProposalProposalsListUsersListFieldItem
 from ...models.proposal_proposals_list_users_list_o_item import ProposalProposalsListUsersListOItem
-from ...models.proposal_proposals_list_users_list_state_item import ProposalProposalsListUsersListStateItem
 from ...models.user_role_details import UserRoleDetails
 from ...types import UNSET, Response, Unset
 
@@ -16,30 +15,20 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     uuid: UUID,
     *,
-    call_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[ProposalProposalsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalProposalsListUsersListOItem]] = UNSET,
-    organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role: Union[Unset, UUID] = UNSET,
-    round_: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[ProposalProposalsListUsersListStateItem]] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    json_call_uuid: Union[Unset, str] = UNSET
-    if not isinstance(call_uuid, Unset):
-        json_call_uuid = str(call_uuid)
-    params["call_uuid"] = json_call_uuid
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -52,8 +41,6 @@ def _get_kwargs(
 
     params["full_name"] = full_name
 
-    params["name"] = name
-
     params["native_name"] = native_name
 
     json_o: Union[Unset, list[str]] = UNSET
@@ -65,11 +52,6 @@ def _get_kwargs(
 
     params["o"] = json_o
 
-    json_organization_uuid: Union[Unset, str] = UNSET
-    if not isinstance(organization_uuid, Unset):
-        json_organization_uuid = str(organization_uuid)
-    params["organization_uuid"] = json_organization_uuid
-
     params["page"] = page
 
     params["page_size"] = page_size
@@ -79,21 +61,7 @@ def _get_kwargs(
         json_role = str(role)
     params["role"] = json_role
 
-    json_round_: Union[Unset, str] = UNSET
-    if not isinstance(round_, Unset):
-        json_round_ = str(round_)
-    params["round"] = json_round_
-
     params["search_string"] = search_string
-
-    json_state: Union[Unset, list[str]] = UNSET
-    if not isinstance(state, Unset):
-        json_state = []
-        for state_item_data in state:
-            state_item = state_item_data.value
-            json_state.append(state_item)
-
-    params["state"] = json_state
 
     json_user: Union[Unset, str] = UNSET
     if not isinstance(user, Unset):
@@ -150,19 +118,14 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    call_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[ProposalProposalsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalProposalsListUsersListOItem]] = UNSET,
-    organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role: Union[Unset, UUID] = UNSET,
-    round_: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[ProposalProposalsListUsersListStateItem]] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -171,19 +134,14 @@ def sync_detailed(
     """
     Args:
         uuid (UUID):
-        call_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[ProposalProposalsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[ProposalProposalsListUsersListOItem]]):
-        organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role (Union[Unset, UUID]):
-        round_ (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
-        state (Union[Unset, list[ProposalProposalsListUsersListStateItem]]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -199,19 +157,14 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        call_uuid=call_uuid,
         field=field,
         full_name=full_name,
-        name=name,
         native_name=native_name,
         o=o,
-        organization_uuid=organization_uuid,
         page=page,
         page_size=page_size,
         role=role,
-        round_=round_,
         search_string=search_string,
-        state=state,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -229,19 +182,14 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    call_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[ProposalProposalsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalProposalsListUsersListOItem]] = UNSET,
-    organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role: Union[Unset, UUID] = UNSET,
-    round_: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[ProposalProposalsListUsersListStateItem]] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -250,19 +198,14 @@ def sync(
     """
     Args:
         uuid (UUID):
-        call_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[ProposalProposalsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[ProposalProposalsListUsersListOItem]]):
-        organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role (Union[Unset, UUID]):
-        round_ (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
-        state (Union[Unset, list[ProposalProposalsListUsersListStateItem]]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -279,19 +222,14 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
-        call_uuid=call_uuid,
         field=field,
         full_name=full_name,
-        name=name,
         native_name=native_name,
         o=o,
-        organization_uuid=organization_uuid,
         page=page,
         page_size=page_size,
         role=role,
-        round_=round_,
         search_string=search_string,
-        state=state,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -303,19 +241,14 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    call_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[ProposalProposalsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalProposalsListUsersListOItem]] = UNSET,
-    organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role: Union[Unset, UUID] = UNSET,
-    round_: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[ProposalProposalsListUsersListStateItem]] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -324,19 +257,14 @@ async def asyncio_detailed(
     """
     Args:
         uuid (UUID):
-        call_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[ProposalProposalsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[ProposalProposalsListUsersListOItem]]):
-        organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role (Union[Unset, UUID]):
-        round_ (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
-        state (Union[Unset, list[ProposalProposalsListUsersListStateItem]]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -352,19 +280,14 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        call_uuid=call_uuid,
         field=field,
         full_name=full_name,
-        name=name,
         native_name=native_name,
         o=o,
-        organization_uuid=organization_uuid,
         page=page,
         page_size=page_size,
         role=role,
-        round_=round_,
         search_string=search_string,
-        state=state,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -380,19 +303,14 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    call_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[ProposalProposalsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalProposalsListUsersListOItem]] = UNSET,
-    organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role: Union[Unset, UUID] = UNSET,
-    round_: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[ProposalProposalsListUsersListStateItem]] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -401,19 +319,14 @@ async def asyncio(
     """
     Args:
         uuid (UUID):
-        call_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[ProposalProposalsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[ProposalProposalsListUsersListOItem]]):
-        organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role (Union[Unset, UUID]):
-        round_ (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
-        state (Union[Unset, list[ProposalProposalsListUsersListStateItem]]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -431,19 +344,14 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            call_uuid=call_uuid,
             field=field,
             full_name=full_name,
-            name=name,
             native_name=native_name,
             o=o,
-            organization_uuid=organization_uuid,
             page=page,
             page_size=page_size,
             role=role,
-            round_=round_,
             search_string=search_string,
-            state=state,
             user=user,
             user_slug=user_slug,
             user_url=user_url,

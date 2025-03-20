@@ -7,39 +7,16 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.detailed_provider_user import DetailedProviderUser
-from ...models.marketplace_service_providers_users_list_o_item import MarketplaceServiceProvidersUsersListOItem
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersUsersListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["customer"] = customer
-
-    params["customer_keyword"] = customer_keyword
-
-    json_customer_uuid: Union[Unset, str] = UNSET
-    if not isinstance(customer_uuid, Unset):
-        json_customer_uuid = str(customer_uuid)
-    params["customer_uuid"] = json_customer_uuid
-
-    json_o: Union[Unset, list[str]] = UNSET
-    if not isinstance(o, Unset):
-        json_o = []
-        for o_item_data in o:
-            o_item = o_item_data.value
-            json_o.append(o_item)
-
-    params["o"] = json_o
 
     params["page"] = page
 
@@ -89,20 +66,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersUsersListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["DetailedProviderUser"]]:
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MarketplaceServiceProvidersUsersListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -116,10 +85,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        customer=customer,
-        customer_keyword=customer_keyword,
-        customer_uuid=customer_uuid,
-        o=o,
         page=page,
         page_size=page_size,
     )
@@ -135,20 +100,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersUsersListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Optional[list["DetailedProviderUser"]]:
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MarketplaceServiceProvidersUsersListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -163,10 +120,6 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
-        customer=customer,
-        customer_keyword=customer_keyword,
-        customer_uuid=customer_uuid,
-        o=o,
         page=page,
         page_size=page_size,
     ).parsed
@@ -176,20 +129,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersUsersListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["DetailedProviderUser"]]:
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MarketplaceServiceProvidersUsersListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -203,10 +148,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        customer=customer,
-        customer_keyword=customer_keyword,
-        customer_uuid=customer_uuid,
-        o=o,
         page=page,
         page_size=page_size,
     )
@@ -220,20 +161,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersUsersListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Optional[list["DetailedProviderUser"]]:
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MarketplaceServiceProvidersUsersListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -249,10 +182,6 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            customer=customer,
-            customer_keyword=customer_keyword,
-            customer_uuid=customer_uuid,
-            o=o,
             page=page,
             page_size=page_size,
         )

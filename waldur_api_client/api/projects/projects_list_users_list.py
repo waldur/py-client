@@ -1,4 +1,3 @@
-import datetime
 from http import HTTPStatus
 from typing import Any, Optional, Union
 from uuid import UUID
@@ -16,25 +15,12 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     uuid: UUID,
     *,
-    backend_id: Union[Unset, str] = UNSET,
-    can_admin: Union[Unset, bool] = UNSET,
-    can_manage: Union[Unset, bool] = UNSET,
-    conceal_ended_projects: Union[Unset, bool] = UNSET,
-    created: Union[Unset, datetime.datetime] = UNSET,
-    customer: Union[Unset, list[UUID]] = UNSET,
-    customer_abbreviation: Union[Unset, str] = UNSET,
-    customer_name: Union[Unset, str] = UNSET,
-    customer_native_name: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[ProjectsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProjectsListUsersListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    query: Union[Unset, str] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -43,36 +29,6 @@ def _get_kwargs(
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["backend_id"] = backend_id
-
-    params["can_admin"] = can_admin
-
-    params["can_manage"] = can_manage
-
-    params["conceal_ended_projects"] = conceal_ended_projects
-
-    json_created: Union[Unset, str] = UNSET
-    if not isinstance(created, Unset):
-        json_created = created.isoformat()
-    params["created"] = json_created
-
-    json_customer: Union[Unset, list[str]] = UNSET
-    if not isinstance(customer, Unset):
-        json_customer = []
-        for customer_item_data in customer:
-            customer_item = str(customer_item_data)
-            json_customer.append(customer_item)
-
-    params["customer"] = json_customer
-
-    params["customer_abbreviation"] = customer_abbreviation
-
-    params["customer_name"] = customer_name
-
-    params["customer_native_name"] = customer_native_name
-
-    params["description"] = description
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -84,10 +40,6 @@ def _get_kwargs(
     params["field"] = json_field
 
     params["full_name"] = full_name
-
-    params["name"] = name
-
-    params["name_exact"] = name_exact
 
     params["native_name"] = native_name
 
@@ -103,8 +55,6 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
-
-    params["query"] = query
 
     json_role: Union[Unset, str] = UNSET
     if not isinstance(role, Unset):
@@ -168,25 +118,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    backend_id: Union[Unset, str] = UNSET,
-    can_admin: Union[Unset, bool] = UNSET,
-    can_manage: Union[Unset, bool] = UNSET,
-    conceal_ended_projects: Union[Unset, bool] = UNSET,
-    created: Union[Unset, datetime.datetime] = UNSET,
-    customer: Union[Unset, list[UUID]] = UNSET,
-    customer_abbreviation: Union[Unset, str] = UNSET,
-    customer_name: Union[Unset, str] = UNSET,
-    customer_native_name: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[ProjectsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProjectsListUsersListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    query: Union[Unset, str] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -197,25 +134,12 @@ def sync_detailed(
     """
     Args:
         uuid (UUID):
-        backend_id (Union[Unset, str]):
-        can_admin (Union[Unset, bool]):
-        can_manage (Union[Unset, bool]):
-        conceal_ended_projects (Union[Unset, bool]):
-        created (Union[Unset, datetime.datetime]):
-        customer (Union[Unset, list[UUID]]):
-        customer_abbreviation (Union[Unset, str]):
-        customer_name (Union[Unset, str]):
-        customer_native_name (Union[Unset, str]):
-        description (Union[Unset, str]):
         field (Union[Unset, list[ProjectsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[ProjectsListUsersListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        query (Union[Unset, str]):
         role (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
@@ -233,25 +157,12 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        backend_id=backend_id,
-        can_admin=can_admin,
-        can_manage=can_manage,
-        conceal_ended_projects=conceal_ended_projects,
-        created=created,
-        customer=customer,
-        customer_abbreviation=customer_abbreviation,
-        customer_name=customer_name,
-        customer_native_name=customer_native_name,
-        description=description,
         field=field,
         full_name=full_name,
-        name=name,
-        name_exact=name_exact,
         native_name=native_name,
         o=o,
         page=page,
         page_size=page_size,
-        query=query,
         role=role,
         search_string=search_string,
         user=user,
@@ -271,25 +182,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    backend_id: Union[Unset, str] = UNSET,
-    can_admin: Union[Unset, bool] = UNSET,
-    can_manage: Union[Unset, bool] = UNSET,
-    conceal_ended_projects: Union[Unset, bool] = UNSET,
-    created: Union[Unset, datetime.datetime] = UNSET,
-    customer: Union[Unset, list[UUID]] = UNSET,
-    customer_abbreviation: Union[Unset, str] = UNSET,
-    customer_name: Union[Unset, str] = UNSET,
-    customer_native_name: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[ProjectsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProjectsListUsersListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    query: Union[Unset, str] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -300,25 +198,12 @@ def sync(
     """
     Args:
         uuid (UUID):
-        backend_id (Union[Unset, str]):
-        can_admin (Union[Unset, bool]):
-        can_manage (Union[Unset, bool]):
-        conceal_ended_projects (Union[Unset, bool]):
-        created (Union[Unset, datetime.datetime]):
-        customer (Union[Unset, list[UUID]]):
-        customer_abbreviation (Union[Unset, str]):
-        customer_name (Union[Unset, str]):
-        customer_native_name (Union[Unset, str]):
-        description (Union[Unset, str]):
         field (Union[Unset, list[ProjectsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[ProjectsListUsersListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        query (Union[Unset, str]):
         role (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
@@ -337,25 +222,12 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
-        backend_id=backend_id,
-        can_admin=can_admin,
-        can_manage=can_manage,
-        conceal_ended_projects=conceal_ended_projects,
-        created=created,
-        customer=customer,
-        customer_abbreviation=customer_abbreviation,
-        customer_name=customer_name,
-        customer_native_name=customer_native_name,
-        description=description,
         field=field,
         full_name=full_name,
-        name=name,
-        name_exact=name_exact,
         native_name=native_name,
         o=o,
         page=page,
         page_size=page_size,
-        query=query,
         role=role,
         search_string=search_string,
         user=user,
@@ -369,25 +241,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    backend_id: Union[Unset, str] = UNSET,
-    can_admin: Union[Unset, bool] = UNSET,
-    can_manage: Union[Unset, bool] = UNSET,
-    conceal_ended_projects: Union[Unset, bool] = UNSET,
-    created: Union[Unset, datetime.datetime] = UNSET,
-    customer: Union[Unset, list[UUID]] = UNSET,
-    customer_abbreviation: Union[Unset, str] = UNSET,
-    customer_name: Union[Unset, str] = UNSET,
-    customer_native_name: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[ProjectsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProjectsListUsersListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    query: Union[Unset, str] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -398,25 +257,12 @@ async def asyncio_detailed(
     """
     Args:
         uuid (UUID):
-        backend_id (Union[Unset, str]):
-        can_admin (Union[Unset, bool]):
-        can_manage (Union[Unset, bool]):
-        conceal_ended_projects (Union[Unset, bool]):
-        created (Union[Unset, datetime.datetime]):
-        customer (Union[Unset, list[UUID]]):
-        customer_abbreviation (Union[Unset, str]):
-        customer_name (Union[Unset, str]):
-        customer_native_name (Union[Unset, str]):
-        description (Union[Unset, str]):
         field (Union[Unset, list[ProjectsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[ProjectsListUsersListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        query (Union[Unset, str]):
         role (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
@@ -434,25 +280,12 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        backend_id=backend_id,
-        can_admin=can_admin,
-        can_manage=can_manage,
-        conceal_ended_projects=conceal_ended_projects,
-        created=created,
-        customer=customer,
-        customer_abbreviation=customer_abbreviation,
-        customer_name=customer_name,
-        customer_native_name=customer_native_name,
-        description=description,
         field=field,
         full_name=full_name,
-        name=name,
-        name_exact=name_exact,
         native_name=native_name,
         o=o,
         page=page,
         page_size=page_size,
-        query=query,
         role=role,
         search_string=search_string,
         user=user,
@@ -470,25 +303,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    backend_id: Union[Unset, str] = UNSET,
-    can_admin: Union[Unset, bool] = UNSET,
-    can_manage: Union[Unset, bool] = UNSET,
-    conceal_ended_projects: Union[Unset, bool] = UNSET,
-    created: Union[Unset, datetime.datetime] = UNSET,
-    customer: Union[Unset, list[UUID]] = UNSET,
-    customer_abbreviation: Union[Unset, str] = UNSET,
-    customer_name: Union[Unset, str] = UNSET,
-    customer_native_name: Union[Unset, str] = UNSET,
-    description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[ProjectsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    name: Union[Unset, str] = UNSET,
-    name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProjectsListUsersListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    query: Union[Unset, str] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -499,25 +319,12 @@ async def asyncio(
     """
     Args:
         uuid (UUID):
-        backend_id (Union[Unset, str]):
-        can_admin (Union[Unset, bool]):
-        can_manage (Union[Unset, bool]):
-        conceal_ended_projects (Union[Unset, bool]):
-        created (Union[Unset, datetime.datetime]):
-        customer (Union[Unset, list[UUID]]):
-        customer_abbreviation (Union[Unset, str]):
-        customer_name (Union[Unset, str]):
-        customer_native_name (Union[Unset, str]):
-        description (Union[Unset, str]):
         field (Union[Unset, list[ProjectsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
-        name (Union[Unset, str]):
-        name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[ProjectsListUsersListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        query (Union[Unset, str]):
         role (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
@@ -537,25 +344,12 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            backend_id=backend_id,
-            can_admin=can_admin,
-            can_manage=can_manage,
-            conceal_ended_projects=conceal_ended_projects,
-            created=created,
-            customer=customer,
-            customer_abbreviation=customer_abbreviation,
-            customer_name=customer_name,
-            customer_native_name=customer_native_name,
-            description=description,
             field=field,
             full_name=full_name,
-            name=name,
-            name_exact=name_exact,
             native_name=native_name,
             o=o,
             page=page,
             page_size=page_size,
-            query=query,
             role=role,
             search_string=search_string,
             user=user,

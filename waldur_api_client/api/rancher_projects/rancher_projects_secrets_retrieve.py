@@ -50,7 +50,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[RancherProject]:
-    """
+    """Returns project's secrets.
+
     Args:
         uuid (UUID):
 
@@ -78,7 +79,8 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[RancherProject]:
-    """
+    """Returns project's secrets.
+
     Args:
         uuid (UUID):
 
@@ -101,7 +103,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[RancherProject]:
-    """
+    """Returns project's secrets.
+
     Args:
         uuid (UUID):
 
@@ -127,7 +130,8 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[RancherProject]:
-    """
+    """Returns project's secrets.
+
     Args:
         uuid (UUID):
 

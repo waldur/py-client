@@ -17,9 +17,6 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     uuid: UUID,
     *,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -34,15 +31,6 @@ def _get_kwargs(
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["customer"] = customer
-
-    params["customer_keyword"] = customer_keyword
-
-    json_customer_uuid: Union[Unset, str] = UNSET
-    if not isinstance(customer_uuid, Unset):
-        json_customer_uuid = str(customer_uuid)
-    params["customer_uuid"] = json_customer_uuid
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -132,9 +120,6 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -151,9 +136,6 @@ def sync_detailed(
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -177,9 +159,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        customer=customer,
-        customer_keyword=customer_keyword,
-        customer_uuid=customer_uuid,
         field=field,
         full_name=full_name,
         native_name=native_name,
@@ -205,9 +184,6 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -224,9 +200,6 @@ def sync(
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -251,9 +224,6 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
-        customer=customer,
-        customer_keyword=customer_keyword,
-        customer_uuid=customer_uuid,
         field=field,
         full_name=full_name,
         native_name=native_name,
@@ -273,9 +243,6 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -292,9 +259,6 @@ async def asyncio_detailed(
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -318,9 +282,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        customer=customer,
-        customer_keyword=customer_keyword,
-        customer_uuid=customer_uuid,
         field=field,
         full_name=full_name,
         native_name=native_name,
@@ -344,9 +305,6 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -363,9 +321,6 @@ async def asyncio(
     """
     Args:
         uuid (UUID):
-        customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -391,9 +346,6 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            customer=customer,
-            customer_keyword=customer_keyword,
-            customer_uuid=customer_uuid,
             field=field,
             full_name=full_name,
             native_name=native_name,

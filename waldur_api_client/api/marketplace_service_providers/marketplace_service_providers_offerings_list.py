@@ -24,7 +24,6 @@ def _get_kwargs(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
@@ -64,8 +63,6 @@ def _get_kwargs(
     params["category_uuid"] = json_category_uuid
 
     params["customer"] = customer
-
-    params["customer_keyword"] = customer_keyword
 
     json_customer_uuid: Union[Unset, str] = UNSET
     if not isinstance(customer_uuid, Unset):
@@ -183,7 +180,6 @@ def sync_detailed(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
@@ -209,7 +205,6 @@ def sync_detailed(
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         keyword (Union[Unset, str]):
@@ -242,7 +237,6 @@ def sync_detailed(
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
         customer=customer,
-        customer_keyword=customer_keyword,
         customer_uuid=customer_uuid,
         description=description,
         keyword=keyword,
@@ -277,7 +271,6 @@ def sync(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
@@ -303,7 +296,6 @@ def sync(
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         keyword (Union[Unset, str]):
@@ -337,7 +329,6 @@ def sync(
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
         customer=customer,
-        customer_keyword=customer_keyword,
         customer_uuid=customer_uuid,
         description=description,
         keyword=keyword,
@@ -366,7 +357,6 @@ async def asyncio_detailed(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
@@ -392,7 +382,6 @@ async def asyncio_detailed(
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         keyword (Union[Unset, str]):
@@ -425,7 +414,6 @@ async def asyncio_detailed(
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
         customer=customer,
-        customer_keyword=customer_keyword,
         customer_uuid=customer_uuid,
         description=description,
         keyword=keyword,
@@ -458,7 +446,6 @@ async def asyncio(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     customer: Union[Unset, str] = UNSET,
-    customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
@@ -484,7 +471,6 @@ async def asyncio(
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         customer (Union[Unset, str]):
-        customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         keyword (Union[Unset, str]):
@@ -519,7 +505,6 @@ async def asyncio(
             category_group_uuid=category_group_uuid,
             category_uuid=category_uuid,
             customer=customer,
-            customer_keyword=customer_keyword,
             customer_uuid=customer_uuid,
             description=description,
             keyword=keyword,

@@ -380,24 +380,6 @@ from .marketplace_provider_offerings_customers_list_state_item import Marketplac
 from .marketplace_provider_offerings_groups_retrieve_field_item import (
     MarketplaceProviderOfferingsGroupsRetrieveFieldItem,
 )
-from .marketplace_provider_offerings_importable_resources_list_o_item import (
-    MarketplaceProviderOfferingsImportableResourcesListOItem,
-)
-from .marketplace_provider_offerings_importable_resources_list_state_item import (
-    MarketplaceProviderOfferingsImportableResourcesListStateItem,
-)
-from .marketplace_provider_offerings_list_customer_projects_list_o_item import (
-    MarketplaceProviderOfferingsListCustomerProjectsListOItem,
-)
-from .marketplace_provider_offerings_list_customer_projects_list_state_item import (
-    MarketplaceProviderOfferingsListCustomerProjectsListStateItem,
-)
-from .marketplace_provider_offerings_list_customer_users_list_o_item import (
-    MarketplaceProviderOfferingsListCustomerUsersListOItem,
-)
-from .marketplace_provider_offerings_list_customer_users_list_state_item import (
-    MarketplaceProviderOfferingsListCustomerUsersListStateItem,
-)
 from .marketplace_provider_offerings_list_field_item import MarketplaceProviderOfferingsListFieldItem
 from .marketplace_provider_offerings_list_o_item import MarketplaceProviderOfferingsListOItem
 from .marketplace_provider_offerings_list_state_item import MarketplaceProviderOfferingsListStateItem
@@ -405,9 +387,6 @@ from .marketplace_provider_offerings_list_users_list_field_item import (
     MarketplaceProviderOfferingsListUsersListFieldItem,
 )
 from .marketplace_provider_offerings_list_users_list_o_item import MarketplaceProviderOfferingsListUsersListOItem
-from .marketplace_provider_offerings_list_users_list_state_item import (
-    MarketplaceProviderOfferingsListUsersListStateItem,
-)
 from .marketplace_provider_offerings_retrieve_field_item import MarketplaceProviderOfferingsRetrieveFieldItem
 from .marketplace_provider_offerings_stats_retrieve_field_item import MarketplaceProviderOfferingsStatsRetrieveFieldItem
 from .marketplace_provider_offerings_update_attributes_data_body import (
@@ -428,16 +407,6 @@ from .marketplace_provider_resources_details_retrieve_field_item import (
 from .marketplace_provider_resources_list_field_item import MarketplaceProviderResourcesListFieldItem
 from .marketplace_provider_resources_list_o_item import MarketplaceProviderResourcesListOItem
 from .marketplace_provider_resources_list_state_item import MarketplaceProviderResourcesListStateItem
-from .marketplace_provider_resources_offering_for_subresources_list_o_item import (
-    MarketplaceProviderResourcesOfferingForSubresourcesListOItem,
-)
-from .marketplace_provider_resources_offering_for_subresources_list_state_item import (
-    MarketplaceProviderResourcesOfferingForSubresourcesListStateItem,
-)
-from .marketplace_provider_resources_plan_periods_list_o_item import MarketplaceProviderResourcesPlanPeriodsListOItem
-from .marketplace_provider_resources_plan_periods_list_state_item import (
-    MarketplaceProviderResourcesPlanPeriodsListStateItem,
-)
 from .marketplace_provider_resources_retrieve_field_item import MarketplaceProviderResourcesRetrieveFieldItem
 from .marketplace_public_offerings_list_field_item import MarketplacePublicOfferingsListFieldItem
 from .marketplace_public_offerings_list_o_item import MarketplacePublicOfferingsListOItem
@@ -447,41 +416,15 @@ from .marketplace_resources_details_retrieve_field_item import MarketplaceResour
 from .marketplace_resources_list_field_item import MarketplaceResourcesListFieldItem
 from .marketplace_resources_list_o_item import MarketplaceResourcesListOItem
 from .marketplace_resources_list_state_item import MarketplaceResourcesListStateItem
-from .marketplace_resources_offering_for_subresources_list_o_item import (
-    MarketplaceResourcesOfferingForSubresourcesListOItem,
-)
-from .marketplace_resources_offering_for_subresources_list_state_item import (
-    MarketplaceResourcesOfferingForSubresourcesListStateItem,
-)
-from .marketplace_resources_plan_periods_list_o_item import MarketplaceResourcesPlanPeriodsListOItem
-from .marketplace_resources_plan_periods_list_state_item import MarketplaceResourcesPlanPeriodsListStateItem
 from .marketplace_resources_retrieve_field_item import MarketplaceResourcesRetrieveFieldItem
 from .marketplace_screenshots_list_o_item import MarketplaceScreenshotsListOItem
-from .marketplace_service_providers_customer_projects_list_o_item import (
-    MarketplaceServiceProvidersCustomerProjectsListOItem,
-)
-from .marketplace_service_providers_customers_list_o_item import MarketplaceServiceProvidersCustomersListOItem
-from .marketplace_service_providers_keys_list_o_item import MarketplaceServiceProvidersKeysListOItem
 from .marketplace_service_providers_list_field_item import MarketplaceServiceProvidersListFieldItem
 from .marketplace_service_providers_list_o_item import MarketplaceServiceProvidersListOItem
 from .marketplace_service_providers_list_users_list_field_item import MarketplaceServiceProvidersListUsersListFieldItem
 from .marketplace_service_providers_list_users_list_o_item import MarketplaceServiceProvidersListUsersListOItem
 from .marketplace_service_providers_offerings_list_o import MarketplaceServiceProvidersOfferingsListO
 from .marketplace_service_providers_offerings_list_state_item import MarketplaceServiceProvidersOfferingsListStateItem
-from .marketplace_service_providers_project_permissions_list_o_item import (
-    MarketplaceServiceProvidersProjectPermissionsListOItem,
-)
-from .marketplace_service_providers_projects_list_o_item import MarketplaceServiceProvidersProjectsListOItem
 from .marketplace_service_providers_retrieve_field_item import MarketplaceServiceProvidersRetrieveFieldItem
-from .marketplace_service_providers_revenue_list_o_item import MarketplaceServiceProvidersRevenueListOItem
-from .marketplace_service_providers_robot_account_customers_list_o_item import (
-    MarketplaceServiceProvidersRobotAccountCustomersListOItem,
-)
-from .marketplace_service_providers_robot_account_projects_list_o_item import (
-    MarketplaceServiceProvidersRobotAccountProjectsListOItem,
-)
-from .marketplace_service_providers_user_customers_list_o_item import MarketplaceServiceProvidersUserCustomersListOItem
-from .marketplace_service_providers_users_list_o_item import MarketplaceServiceProvidersUsersListOItem
 from .merged_plugin_options import MergedPluginOptions
 from .merged_plugin_options_request import MergedPluginOptionsRequest
 from .merged_secret_options import MergedSecretOptions
@@ -690,10 +633,8 @@ from .openstack_flavors_usage_stats_retrieve_field_item import OpenstackFlavorsU
 from .openstack_floating_ips_list_field_item import OpenstackFloatingIpsListFieldItem
 from .openstack_floating_ips_list_state_item import OpenstackFloatingIpsListStateItem
 from .openstack_floating_ips_retrieve_field_item import OpenstackFloatingIpsRetrieveFieldItem
-from .openstack_instances_floating_ips_list_state_item import OpenstackInstancesFloatingIpsListStateItem
 from .openstack_instances_list_field_item import OpenstackInstancesListFieldItem
 from .openstack_instances_list_state_item import OpenstackInstancesListStateItem
-from .openstack_instances_ports_list_state_item import OpenstackInstancesPortsListStateItem
 from .openstack_instances_retrieve_field_item import OpenstackInstancesRetrieveFieldItem
 from .openstack_networks_list_field_item import OpenstackNetworksListFieldItem
 from .openstack_networks_list_state_item import OpenstackNetworksListStateItem
@@ -711,7 +652,6 @@ from .openstack_server_groups_list_state_item import OpenstackServerGroupsListSt
 from .openstack_server_groups_retrieve_field_item import OpenstackServerGroupsRetrieveFieldItem
 from .openstack_snapshots_list_field_item import OpenstackSnapshotsListFieldItem
 from .openstack_snapshots_list_state_item import OpenstackSnapshotsListStateItem
-from .openstack_snapshots_restorations_list_state_item import OpenstackSnapshotsRestorationsListStateItem
 from .openstack_snapshots_retrieve_field_item import OpenstackSnapshotsRetrieveFieldItem
 from .openstack_subnets_list_field_item import OpenstackSubnetsListFieldItem
 from .openstack_subnets_list_state_item import OpenstackSubnetsListStateItem
@@ -861,10 +801,6 @@ from .projects_list_users_list_o_item import ProjectsListUsersListOItem
 from .projects_retrieve_field_item import ProjectsRetrieveFieldItem
 from .promotions_campaigns_list_o_item import PromotionsCampaignsListOItem
 from .promotions_campaigns_list_state_item import PromotionsCampaignsListStateItem
-from .promotions_campaigns_orders_list_o_item import PromotionsCampaignsOrdersListOItem
-from .promotions_campaigns_orders_list_state_item import PromotionsCampaignsOrdersListStateItem
-from .promotions_campaigns_resources_list_o_item import PromotionsCampaignsResourcesListOItem
-from .promotions_campaigns_resources_list_state_item import PromotionsCampaignsResourcesListStateItem
 from .proposal import Proposal
 from .proposal_approve_request import ProposalApproveRequest
 from .proposal_documentation import ProposalDocumentation
@@ -873,20 +809,12 @@ from .proposal_proposals_list_o_item import ProposalProposalsListOItem
 from .proposal_proposals_list_state_item import ProposalProposalsListStateItem
 from .proposal_proposals_list_users_list_field_item import ProposalProposalsListUsersListFieldItem
 from .proposal_proposals_list_users_list_o_item import ProposalProposalsListUsersListOItem
-from .proposal_proposals_list_users_list_state_item import ProposalProposalsListUsersListStateItem
-from .proposal_proposals_resources_list_o_item import ProposalProposalsResourcesListOItem
-from .proposal_proposals_resources_list_state_item import ProposalProposalsResourcesListStateItem
 from .proposal_protected_calls_list_field_item import ProposalProtectedCallsListFieldItem
 from .proposal_protected_calls_list_o_item import ProposalProtectedCallsListOItem
 from .proposal_protected_calls_list_state_item import ProposalProtectedCallsListStateItem
 from .proposal_protected_calls_list_users_list_field_item import ProposalProtectedCallsListUsersListFieldItem
 from .proposal_protected_calls_list_users_list_o_item import ProposalProtectedCallsListUsersListOItem
-from .proposal_protected_calls_list_users_list_state_item import ProposalProtectedCallsListUsersListStateItem
-from .proposal_protected_calls_offerings_list_o_item import ProposalProtectedCallsOfferingsListOItem
-from .proposal_protected_calls_offerings_list_state_item import ProposalProtectedCallsOfferingsListStateItem
 from .proposal_protected_calls_retrieve_field_item import ProposalProtectedCallsRetrieveFieldItem
-from .proposal_protected_calls_rounds_list_o_item import ProposalProtectedCallsRoundsListOItem
-from .proposal_protected_calls_rounds_list_state_item import ProposalProtectedCallsRoundsListStateItem
 from .proposal_public_calls_list_field_item import ProposalPublicCallsListFieldItem
 from .proposal_public_calls_list_o_item import ProposalPublicCallsListOItem
 from .proposal_public_calls_list_state_item import ProposalPublicCallsListStateItem
@@ -1586,18 +1514,11 @@ __all__ = (
     "MarketplaceProviderOfferingsCustomersListOItem",
     "MarketplaceProviderOfferingsCustomersListStateItem",
     "MarketplaceProviderOfferingsGroupsRetrieveFieldItem",
-    "MarketplaceProviderOfferingsImportableResourcesListOItem",
-    "MarketplaceProviderOfferingsImportableResourcesListStateItem",
-    "MarketplaceProviderOfferingsListCustomerProjectsListOItem",
-    "MarketplaceProviderOfferingsListCustomerProjectsListStateItem",
-    "MarketplaceProviderOfferingsListCustomerUsersListOItem",
-    "MarketplaceProviderOfferingsListCustomerUsersListStateItem",
     "MarketplaceProviderOfferingsListFieldItem",
     "MarketplaceProviderOfferingsListOItem",
     "MarketplaceProviderOfferingsListStateItem",
     "MarketplaceProviderOfferingsListUsersListFieldItem",
     "MarketplaceProviderOfferingsListUsersListOItem",
-    "MarketplaceProviderOfferingsListUsersListStateItem",
     "MarketplaceProviderOfferingsRetrieveFieldItem",
     "MarketplaceProviderOfferingsStatsRetrieveFieldItem",
     "MarketplaceProviderOfferingsUpdateAttributesDataBody",
@@ -1608,10 +1529,6 @@ __all__ = (
     "MarketplaceProviderResourcesListFieldItem",
     "MarketplaceProviderResourcesListOItem",
     "MarketplaceProviderResourcesListStateItem",
-    "MarketplaceProviderResourcesOfferingForSubresourcesListOItem",
-    "MarketplaceProviderResourcesOfferingForSubresourcesListStateItem",
-    "MarketplaceProviderResourcesPlanPeriodsListOItem",
-    "MarketplaceProviderResourcesPlanPeriodsListStateItem",
     "MarketplaceProviderResourcesRetrieveFieldItem",
     "MarketplacePublicOfferingsListFieldItem",
     "MarketplacePublicOfferingsListOItem",
@@ -1621,29 +1538,15 @@ __all__ = (
     "MarketplaceResourcesListFieldItem",
     "MarketplaceResourcesListOItem",
     "MarketplaceResourcesListStateItem",
-    "MarketplaceResourcesOfferingForSubresourcesListOItem",
-    "MarketplaceResourcesOfferingForSubresourcesListStateItem",
-    "MarketplaceResourcesPlanPeriodsListOItem",
-    "MarketplaceResourcesPlanPeriodsListStateItem",
     "MarketplaceResourcesRetrieveFieldItem",
     "MarketplaceScreenshotsListOItem",
-    "MarketplaceServiceProvidersCustomerProjectsListOItem",
-    "MarketplaceServiceProvidersCustomersListOItem",
-    "MarketplaceServiceProvidersKeysListOItem",
     "MarketplaceServiceProvidersListFieldItem",
     "MarketplaceServiceProvidersListOItem",
     "MarketplaceServiceProvidersListUsersListFieldItem",
     "MarketplaceServiceProvidersListUsersListOItem",
     "MarketplaceServiceProvidersOfferingsListO",
     "MarketplaceServiceProvidersOfferingsListStateItem",
-    "MarketplaceServiceProvidersProjectPermissionsListOItem",
-    "MarketplaceServiceProvidersProjectsListOItem",
     "MarketplaceServiceProvidersRetrieveFieldItem",
-    "MarketplaceServiceProvidersRevenueListOItem",
-    "MarketplaceServiceProvidersRobotAccountCustomersListOItem",
-    "MarketplaceServiceProvidersRobotAccountProjectsListOItem",
-    "MarketplaceServiceProvidersUserCustomersListOItem",
-    "MarketplaceServiceProvidersUsersListOItem",
     "MergedPluginOptions",
     "MergedPluginOptionsRequest",
     "MergedSecretOptions",
@@ -1787,10 +1690,8 @@ __all__ = (
     "OpenStackInstancePortsUpdateRequest",
     "OpenStackInstanceRequest",
     "OpenStackInstanceSecurityGroupsUpdateRequest",
-    "OpenstackInstancesFloatingIpsListStateItem",
     "OpenstackInstancesListFieldItem",
     "OpenstackInstancesListStateItem",
-    "OpenstackInstancesPortsListStateItem",
     "OpenstackInstancesRetrieveFieldItem",
     "OpenStackNestedFloatingIP",
     "OpenStackNestedFloatingIPRequest",
@@ -1847,7 +1748,6 @@ __all__ = (
     "OpenStackSnapshotRestorationRequest",
     "OpenstackSnapshotsListFieldItem",
     "OpenstackSnapshotsListStateItem",
-    "OpenstackSnapshotsRestorationsListStateItem",
     "OpenstackSnapshotsRetrieveFieldItem",
     "OpenStackStaticRoute",
     "OpenStackStaticRouteRequest",
@@ -2015,10 +1915,6 @@ __all__ = (
     "ProjectUser",
     "PromotionsCampaignsListOItem",
     "PromotionsCampaignsListStateItem",
-    "PromotionsCampaignsOrdersListOItem",
-    "PromotionsCampaignsOrdersListStateItem",
-    "PromotionsCampaignsResourcesListOItem",
-    "PromotionsCampaignsResourcesListStateItem",
     "Proposal",
     "ProposalApproveRequest",
     "ProposalDocumentation",
@@ -2027,20 +1923,12 @@ __all__ = (
     "ProposalProposalsListStateItem",
     "ProposalProposalsListUsersListFieldItem",
     "ProposalProposalsListUsersListOItem",
-    "ProposalProposalsListUsersListStateItem",
-    "ProposalProposalsResourcesListOItem",
-    "ProposalProposalsResourcesListStateItem",
     "ProposalProtectedCallsListFieldItem",
     "ProposalProtectedCallsListOItem",
     "ProposalProtectedCallsListStateItem",
     "ProposalProtectedCallsListUsersListFieldItem",
     "ProposalProtectedCallsListUsersListOItem",
-    "ProposalProtectedCallsListUsersListStateItem",
-    "ProposalProtectedCallsOfferingsListOItem",
-    "ProposalProtectedCallsOfferingsListStateItem",
     "ProposalProtectedCallsRetrieveFieldItem",
-    "ProposalProtectedCallsRoundsListOItem",
-    "ProposalProtectedCallsRoundsListStateItem",
     "ProposalPublicCallsListFieldItem",
     "ProposalPublicCallsListOItem",
     "ProposalPublicCallsListStateItem",
