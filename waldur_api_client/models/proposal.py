@@ -31,6 +31,8 @@ class Proposal:
         state (ProposalStates):
         approved_by (Union[None, str]):
         created_by (Union[None, str]):
+        created_by_name (str):
+        created_by_uuid (UUID):
         project (Union[None, str]):
         round_ (NestedRound):
         call_uuid (UUID):
@@ -53,6 +55,8 @@ class Proposal:
     state: ProposalStates
     approved_by: Union[None, str]
     created_by: Union[None, str]
+    created_by_name: str
+    created_by_uuid: UUID
     project: Union[None, str]
     round_: "NestedRound"
     call_uuid: UUID
@@ -87,6 +91,10 @@ class Proposal:
 
         created_by: Union[None, str]
         created_by = self.created_by
+
+        created_by_name = self.created_by_name
+
+        created_by_uuid = str(self.created_by_uuid)
 
         project: Union[None, str]
         project = self.project
@@ -139,6 +147,8 @@ class Proposal:
                 "state": state,
                 "approved_by": approved_by,
                 "created_by": created_by,
+                "created_by_name": created_by_name,
+                "created_by_uuid": created_by_uuid,
                 "project": project,
                 "round": round_,
                 "call_uuid": call_uuid,
@@ -197,6 +207,10 @@ class Proposal:
             return cast(Union[None, str], data)
 
         created_by = _parse_created_by(d.pop("created_by"))
+
+        created_by_name = d.pop("created_by_name")
+
+        created_by_uuid = UUID(d.pop("created_by_uuid"))
 
         def _parse_project(data: object) -> Union[None, str]:
             if data is None:
@@ -272,6 +286,8 @@ class Proposal:
             state=state,
             approved_by=approved_by,
             created_by=created_by,
+            created_by_name=created_by_name,
+            created_by_uuid=created_by_uuid,
             project=project,
             round_=round_,
             call_uuid=call_uuid,
