@@ -18,6 +18,11 @@ def _get_kwargs(
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -41,6 +46,22 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["role_name"] = role_name
+
+    json_role_uuid: Union[Unset, str] = UNSET
+    if not isinstance(role_uuid, Unset):
+        json_role_uuid = str(role_uuid)
+    params["role_uuid"] = json_role_uuid
+
+    params["scope_name"] = scope_name
+
+    params["scope_type"] = scope_type
+
+    json_scope_uuid: Union[Unset, str] = UNSET
+    if not isinstance(scope_uuid, Unset):
+        json_scope_uuid = str(scope_uuid)
+    params["scope_uuid"] = json_scope_uuid
 
     json_user: Union[Unset, str] = UNSET
     if not isinstance(user, Unset):
@@ -101,6 +122,11 @@ def sync_detailed(
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -113,6 +139,11 @@ def sync_detailed(
         o (Union[Unset, list[UserPermissionsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -132,6 +163,11 @@ def sync_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -153,6 +189,11 @@ def sync(
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -165,6 +206,11 @@ def sync(
         o (Union[Unset, list[UserPermissionsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -185,6 +231,11 @@ def sync(
         o=o,
         page=page,
         page_size=page_size,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -200,6 +251,11 @@ async def asyncio_detailed(
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -212,6 +268,11 @@ async def asyncio_detailed(
         o (Union[Unset, list[UserPermissionsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -231,6 +292,11 @@ async def asyncio_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -250,6 +316,11 @@ async def asyncio(
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -262,6 +333,11 @@ async def asyncio(
         o (Union[Unset, list[UserPermissionsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -283,6 +359,11 @@ async def asyncio(
             o=o,
             page=page,
             page_size=page_size,
+            role_name=role_name,
+            role_uuid=role_uuid,
+            scope_name=scope_name,
+            scope_type=scope_type,
+            scope_uuid=scope_uuid,
             user=user,
             user_slug=user_slug,
             user_url=user_url,

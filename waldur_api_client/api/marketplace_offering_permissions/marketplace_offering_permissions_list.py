@@ -20,6 +20,11 @@ def _get_kwargs(
     offering: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -53,6 +58,22 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["role_name"] = role_name
+
+    json_role_uuid: Union[Unset, str] = UNSET
+    if not isinstance(role_uuid, Unset):
+        json_role_uuid = str(role_uuid)
+    params["role_uuid"] = json_role_uuid
+
+    params["scope_name"] = scope_name
+
+    params["scope_type"] = scope_type
+
+    json_scope_uuid: Union[Unset, str] = UNSET
+    if not isinstance(scope_uuid, Unset):
+        json_scope_uuid = str(scope_uuid)
+    params["scope_uuid"] = json_scope_uuid
 
     json_user: Union[Unset, str] = UNSET
     if not isinstance(user, Unset):
@@ -115,6 +136,11 @@ def sync_detailed(
     offering: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -129,6 +155,11 @@ def sync_detailed(
         offering (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -150,6 +181,11 @@ def sync_detailed(
         offering=offering,
         page=page,
         page_size=page_size,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -173,6 +209,11 @@ def sync(
     offering: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -187,6 +228,11 @@ def sync(
         offering (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -209,6 +255,11 @@ def sync(
         offering=offering,
         page=page,
         page_size=page_size,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -226,6 +277,11 @@ async def asyncio_detailed(
     offering: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -240,6 +296,11 @@ async def asyncio_detailed(
         offering (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -261,6 +322,11 @@ async def asyncio_detailed(
         offering=offering,
         page=page,
         page_size=page_size,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -282,6 +348,11 @@ async def asyncio(
     offering: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -296,6 +367,11 @@ async def asyncio(
         offering (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -319,6 +395,11 @@ async def asyncio(
             offering=offering,
             page=page,
             page_size=page_size,
+            role_name=role_name,
+            role_uuid=role_uuid,
+            scope_name=scope_name,
+            scope_type=scope_type,
+            scope_uuid=scope_uuid,
             user=user,
             user_slug=user_slug,
             user_url=user_url,
