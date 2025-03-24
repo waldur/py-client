@@ -1,9 +1,11 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="VmwareNestedPort")
 
@@ -12,24 +14,26 @@ T = TypeVar("T", bound="VmwareNestedPort")
 class VmwareNestedPort:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        name (str):
-        mac_address (str):
-        network (str):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
+        mac_address (Union[Unset, str]):
+        network (Union[Unset, str]):
     """
 
-    url: str
-    uuid: UUID
-    name: str
-    mac_address: str
-    network: str
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
+    mac_address: Union[Unset, str] = UNSET
+    network: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
 
@@ -39,30 +43,37 @@ class VmwareNestedPort:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "name": name,
-                "mac_address": mac_address,
-                "network": network,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
+        if mac_address is not UNSET:
+            field_dict["mac_address"] = mac_address
+        if network is not UNSET:
+            field_dict["network"] = network
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        mac_address = d.pop("mac_address")
+        mac_address = d.pop("mac_address", UNSET)
 
-        network = d.pop("network")
+        network = d.pop("network", UNSET)
 
         vmware_nested_port = cls(
             url=url,

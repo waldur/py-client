@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="OpenStackSubNetAllocationPool")
 
@@ -11,12 +13,12 @@ T = TypeVar("T", bound="OpenStackSubNetAllocationPool")
 class OpenStackSubNetAllocationPool:
     """
     Attributes:
-        start (str):
-        end (str):
+        start (Union[Unset, str]):
+        end (Union[Unset, str]):
     """
 
-    start: str
-    end: str
+    start: Union[Unset, str] = UNSET
+    end: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -26,21 +28,20 @@ class OpenStackSubNetAllocationPool:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "start": start,
-                "end": end,
-            }
-        )
+        field_dict.update({})
+        if start is not UNSET:
+            field_dict["start"] = start
+        if end is not UNSET:
+            field_dict["end"] = end
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        start = d.pop("start")
+        start = d.pop("start", UNSET)
 
-        end = d.pop("end")
+        end = d.pop("end", UNSET)
 
         open_stack_sub_net_allocation_pool = cls(
             start=start,

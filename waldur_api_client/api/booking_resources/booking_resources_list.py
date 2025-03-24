@@ -19,13 +19,13 @@ def _get_kwargs(
     backend_id: Union[Unset, str] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     connected_customer_uuid: Union[Unset, UUID] = UNSET,
-    created: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
-    modified: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
@@ -209,13 +209,13 @@ def sync_detailed(
     backend_id: Union[Unset, str] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     connected_customer_uuid: Union[Unset, UUID] = UNSET,
-    created: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
-    modified: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
@@ -242,13 +242,13 @@ def sync_detailed(
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
         connected_customer_uuid (Union[Unset, UUID]):
-        created (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         lexis_links_supported (Union[Unset, bool]):
-        modified (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[BookingResourcesListOItem]]):
@@ -324,13 +324,13 @@ def sync(
     backend_id: Union[Unset, str] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     connected_customer_uuid: Union[Unset, UUID] = UNSET,
-    created: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
-    modified: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
@@ -357,13 +357,13 @@ def sync(
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
         connected_customer_uuid (Union[Unset, UUID]):
-        created (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         lexis_links_supported (Union[Unset, bool]):
-        modified (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[BookingResourcesListOItem]]):
@@ -434,13 +434,13 @@ async def asyncio_detailed(
     backend_id: Union[Unset, str] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     connected_customer_uuid: Union[Unset, UUID] = UNSET,
-    created: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
-    modified: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
@@ -467,13 +467,13 @@ async def asyncio_detailed(
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
         connected_customer_uuid (Union[Unset, UUID]):
-        created (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         lexis_links_supported (Union[Unset, bool]):
-        modified (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[BookingResourcesListOItem]]):
@@ -547,13 +547,13 @@ async def asyncio(
     backend_id: Union[Unset, str] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     connected_customer_uuid: Union[Unset, UUID] = UNSET,
-    created: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
-    modified: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
@@ -580,13 +580,13 @@ async def asyncio(
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
         connected_customer_uuid (Union[Unset, UUID]):
-        created (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         lexis_links_supported (Union[Unset, bool]):
-        modified (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[BookingResourcesListOItem]]):

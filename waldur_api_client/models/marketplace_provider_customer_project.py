@@ -13,42 +13,38 @@ if TYPE_CHECKING:
     from ..models.nested_price_estimate import NestedPriceEstimate
 
 
-T = TypeVar("T", bound="ProviderCustomerProject")
+T = TypeVar("T", bound="MarketplaceProviderCustomerProject")
 
 
 @_attrs_define
-class ProviderCustomerProject:
+class MarketplaceProviderCustomerProject:
     """
     Attributes:
-        uuid (UUID):
-        name (str):
-        resources_count (int):
-        users_count (int):
-        billing_price_estimate (NestedPriceEstimate):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
         description (Union[Unset, str]):
         end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource will be
             scheduled for termination.
+        resources_count (Union[Unset, int]):
+        users_count (Union[Unset, int]):
+        billing_price_estimate (Union[Unset, NestedPriceEstimate]):
     """
 
-    uuid: UUID
-    name: str
-    resources_count: int
-    users_count: int
-    billing_price_estimate: "NestedPriceEstimate"
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     end_date: Union[None, Unset, datetime.date] = UNSET
+    resources_count: Union[Unset, int] = UNSET
+    users_count: Union[Unset, int] = UNSET
+    billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
-
-        resources_count = self.resources_count
-
-        users_count = self.users_count
-
-        billing_price_estimate = self.billing_price_estimate.to_dict()
 
         description = self.description
 
@@ -60,21 +56,31 @@ class ProviderCustomerProject:
         else:
             end_date = self.end_date
 
+        resources_count = self.resources_count
+
+        users_count = self.users_count
+
+        billing_price_estimate: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.billing_price_estimate, Unset):
+            billing_price_estimate = self.billing_price_estimate.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "name": name,
-                "resources_count": resources_count,
-                "users_count": users_count,
-                "billing_price_estimate": billing_price_estimate,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
         if end_date is not UNSET:
             field_dict["end_date"] = end_date
+        if resources_count is not UNSET:
+            field_dict["resources_count"] = resources_count
+        if users_count is not UNSET:
+            field_dict["users_count"] = users_count
+        if billing_price_estimate is not UNSET:
+            field_dict["billing_price_estimate"] = billing_price_estimate
 
         return field_dict
 
@@ -83,15 +89,14 @@ class ProviderCustomerProject:
         from ..models.nested_price_estimate import NestedPriceEstimate
 
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
-
-        resources_count = d.pop("resources_count")
-
-        users_count = d.pop("users_count")
-
-        billing_price_estimate = NestedPriceEstimate.from_dict(d.pop("billing_price_estimate"))
+        name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
 
@@ -112,18 +117,29 @@ class ProviderCustomerProject:
 
         end_date = _parse_end_date(d.pop("end_date", UNSET))
 
-        provider_customer_project = cls(
+        resources_count = d.pop("resources_count", UNSET)
+
+        users_count = d.pop("users_count", UNSET)
+
+        _billing_price_estimate = d.pop("billing_price_estimate", UNSET)
+        billing_price_estimate: Union[Unset, NestedPriceEstimate]
+        if isinstance(_billing_price_estimate, Unset):
+            billing_price_estimate = UNSET
+        else:
+            billing_price_estimate = NestedPriceEstimate.from_dict(_billing_price_estimate)
+
+        marketplace_provider_customer_project = cls(
             uuid=uuid,
             name=name,
+            description=description,
+            end_date=end_date,
             resources_count=resources_count,
             users_count=users_count,
             billing_price_estimate=billing_price_estimate,
-            description=description,
-            end_date=end_date,
         )
 
-        provider_customer_project.additional_properties = d
-        return provider_customer_project
+        marketplace_provider_customer_project.additional_properties = d
+        return marketplace_provider_customer_project
 
     @property
     def additional_keys(self) -> list[str]:

@@ -14,56 +14,54 @@ T = TypeVar("T", bound="OpenStackNestedVolume")
 class OpenStackNestedVolume:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        name (str):
-        state (str):
-        size (int): Size in MiB
-        resource_type (str):
-        type_name (str):
-        marketplace_resource_uuid (str):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
         image_name (Union[Unset, str]):
+        state (Union[Unset, str]):
         bootable (Union[Unset, bool]):
+        size (Union[Unset, int]): Size in MiB
         device (Union[Unset, str]): Name of volume as instance device e.g. /dev/vdb.
+        resource_type (Union[Unset, str]):
         type_ (Union[None, Unset, str]):
+        type_name (Union[Unset, str]):
+        marketplace_resource_uuid (Union[Unset, str]):
     """
 
-    url: str
-    uuid: UUID
-    name: str
-    state: str
-    size: int
-    resource_type: str
-    type_name: str
-    marketplace_resource_uuid: str
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
     image_name: Union[Unset, str] = UNSET
+    state: Union[Unset, str] = UNSET
     bootable: Union[Unset, bool] = UNSET
+    size: Union[Unset, int] = UNSET
     device: Union[Unset, str] = UNSET
+    resource_type: Union[Unset, str] = UNSET
     type_: Union[None, Unset, str] = UNSET
+    type_name: Union[Unset, str] = UNSET
+    marketplace_resource_uuid: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
 
-        state = self.state
-
-        size = self.size
-
-        resource_type = self.resource_type
-
-        type_name = self.type_name
-
-        marketplace_resource_uuid = self.marketplace_resource_uuid
-
         image_name = self.image_name
+
+        state = self.state
 
         bootable = self.bootable
 
+        size = self.size
+
         device = self.device
+
+        resource_type = self.resource_type
 
         type_: Union[None, Unset, str]
         if isinstance(self.type_, Unset):
@@ -71,55 +69,65 @@ class OpenStackNestedVolume:
         else:
             type_ = self.type_
 
+        type_name = self.type_name
+
+        marketplace_resource_uuid = self.marketplace_resource_uuid
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "name": name,
-                "state": state,
-                "size": size,
-                "resource_type": resource_type,
-                "type_name": type_name,
-                "marketplace_resource_uuid": marketplace_resource_uuid,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
         if image_name is not UNSET:
             field_dict["image_name"] = image_name
+        if state is not UNSET:
+            field_dict["state"] = state
         if bootable is not UNSET:
             field_dict["bootable"] = bootable
+        if size is not UNSET:
+            field_dict["size"] = size
         if device is not UNSET:
             field_dict["device"] = device
+        if resource_type is not UNSET:
+            field_dict["resource_type"] = resource_type
         if type_ is not UNSET:
             field_dict["type"] = type_
+        if type_name is not UNSET:
+            field_dict["type_name"] = type_name
+        if marketplace_resource_uuid is not UNSET:
+            field_dict["marketplace_resource_uuid"] = marketplace_resource_uuid
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
-
-        state = d.pop("state")
-
-        size = d.pop("size")
-
-        resource_type = d.pop("resource_type")
-
-        type_name = d.pop("type_name")
-
-        marketplace_resource_uuid = d.pop("marketplace_resource_uuid")
+        name = d.pop("name", UNSET)
 
         image_name = d.pop("image_name", UNSET)
 
+        state = d.pop("state", UNSET)
+
         bootable = d.pop("bootable", UNSET)
 
+        size = d.pop("size", UNSET)
+
         device = d.pop("device", UNSET)
+
+        resource_type = d.pop("resource_type", UNSET)
 
         def _parse_type_(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -130,19 +138,23 @@ class OpenStackNestedVolume:
 
         type_ = _parse_type_(d.pop("type", UNSET))
 
+        type_name = d.pop("type_name", UNSET)
+
+        marketplace_resource_uuid = d.pop("marketplace_resource_uuid", UNSET)
+
         open_stack_nested_volume = cls(
             url=url,
             uuid=uuid,
             name=name,
+            image_name=image_name,
             state=state,
+            bootable=bootable,
             size=size,
+            device=device,
             resource_type=resource_type,
+            type_=type_,
             type_name=type_name,
             marketplace_resource_uuid=marketplace_resource_uuid,
-            image_name=image_name,
-            bootable=bootable,
-            device=device,
-            type_=type_,
         )
 
         open_stack_nested_volume.additional_properties = d

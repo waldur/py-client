@@ -22,80 +22,59 @@ T = TypeVar("T", bound="BaseProviderPlan")
 class BaseProviderPlan:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        name (str):
-        is_active (bool):
-        init_price (float):
-        switch_price (float):
-        organization_groups (list['OrganizationGroup']):
-        prices (BaseProviderPlanPrices):
-        future_prices (BaseProviderPlanFuturePrices):
-        quotas (BaseProviderPlanQuotas):
-        resources_count (int):
-        plan_type (str):
-        minimal_price (float):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
         description (Union[Unset, str]):
         article_code (Union[Unset, str]):
         max_amount (Union[None, Unset, int]): Maximum number of plans that could be active. Plan is disabled when
             maximum amount is reached.
         archived (Union[Unset, bool]): Forbids creation of new resources.
+        is_active (Union[Unset, bool]):
         unit_price (Union[Unset, str]):
         unit (Union[Unset, BillingUnit]):
+        init_price (Union[Unset, float]):
+        switch_price (Union[Unset, float]):
         backend_id (Union[Unset, str]):
+        organization_groups (Union[Unset, list['OrganizationGroup']]):
+        prices (Union[Unset, BaseProviderPlanPrices]):
+        future_prices (Union[Unset, BaseProviderPlanFuturePrices]):
+        quotas (Union[Unset, BaseProviderPlanQuotas]):
+        resources_count (Union[Unset, int]):
+        plan_type (Union[Unset, str]):
+        minimal_price (Union[Unset, float]):
     """
 
-    url: str
-    uuid: UUID
-    name: str
-    is_active: bool
-    init_price: float
-    switch_price: float
-    organization_groups: list["OrganizationGroup"]
-    prices: "BaseProviderPlanPrices"
-    future_prices: "BaseProviderPlanFuturePrices"
-    quotas: "BaseProviderPlanQuotas"
-    resources_count: int
-    plan_type: str
-    minimal_price: float
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     article_code: Union[Unset, str] = UNSET
     max_amount: Union[None, Unset, int] = UNSET
     archived: Union[Unset, bool] = UNSET
+    is_active: Union[Unset, bool] = UNSET
     unit_price: Union[Unset, str] = UNSET
     unit: Union[Unset, BillingUnit] = UNSET
+    init_price: Union[Unset, float] = UNSET
+    switch_price: Union[Unset, float] = UNSET
     backend_id: Union[Unset, str] = UNSET
+    organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
+    prices: Union[Unset, "BaseProviderPlanPrices"] = UNSET
+    future_prices: Union[Unset, "BaseProviderPlanFuturePrices"] = UNSET
+    quotas: Union[Unset, "BaseProviderPlanQuotas"] = UNSET
+    resources_count: Union[Unset, int] = UNSET
+    plan_type: Union[Unset, str] = UNSET
+    minimal_price: Union[Unset, float] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
-
-        is_active = self.is_active
-
-        init_price = self.init_price
-
-        switch_price = self.switch_price
-
-        organization_groups = []
-        for organization_groups_item_data in self.organization_groups:
-            organization_groups_item = organization_groups_item_data.to_dict()
-            organization_groups.append(organization_groups_item)
-
-        prices = self.prices.to_dict()
-
-        future_prices = self.future_prices.to_dict()
-
-        quotas = self.quotas.to_dict()
-
-        resources_count = self.resources_count
-
-        plan_type = self.plan_type
-
-        minimal_price = self.minimal_price
 
         description = self.description
 
@@ -109,33 +88,54 @@ class BaseProviderPlan:
 
         archived = self.archived
 
+        is_active = self.is_active
+
         unit_price = self.unit_price
 
         unit: Union[Unset, str] = UNSET
         if not isinstance(self.unit, Unset):
             unit = self.unit.value
 
+        init_price = self.init_price
+
+        switch_price = self.switch_price
+
         backend_id = self.backend_id
+
+        organization_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.organization_groups, Unset):
+            organization_groups = []
+            for organization_groups_item_data in self.organization_groups:
+                organization_groups_item = organization_groups_item_data.to_dict()
+                organization_groups.append(organization_groups_item)
+
+        prices: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.prices, Unset):
+            prices = self.prices.to_dict()
+
+        future_prices: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.future_prices, Unset):
+            future_prices = self.future_prices.to_dict()
+
+        quotas: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.quotas, Unset):
+            quotas = self.quotas.to_dict()
+
+        resources_count = self.resources_count
+
+        plan_type = self.plan_type
+
+        minimal_price = self.minimal_price
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "name": name,
-                "is_active": is_active,
-                "init_price": init_price,
-                "switch_price": switch_price,
-                "organization_groups": organization_groups,
-                "prices": prices,
-                "future_prices": future_prices,
-                "quotas": quotas,
-                "resources_count": resources_count,
-                "plan_type": plan_type,
-                "minimal_price": minimal_price,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
         if article_code is not UNSET:
@@ -144,12 +144,32 @@ class BaseProviderPlan:
             field_dict["max_amount"] = max_amount
         if archived is not UNSET:
             field_dict["archived"] = archived
+        if is_active is not UNSET:
+            field_dict["is_active"] = is_active
         if unit_price is not UNSET:
             field_dict["unit_price"] = unit_price
         if unit is not UNSET:
             field_dict["unit"] = unit
+        if init_price is not UNSET:
+            field_dict["init_price"] = init_price
+        if switch_price is not UNSET:
+            field_dict["switch_price"] = switch_price
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
+        if organization_groups is not UNSET:
+            field_dict["organization_groups"] = organization_groups
+        if prices is not UNSET:
+            field_dict["prices"] = prices
+        if future_prices is not UNSET:
+            field_dict["future_prices"] = future_prices
+        if quotas is not UNSET:
+            field_dict["quotas"] = quotas
+        if resources_count is not UNSET:
+            field_dict["resources_count"] = resources_count
+        if plan_type is not UNSET:
+            field_dict["plan_type"] = plan_type
+        if minimal_price is not UNSET:
+            field_dict["minimal_price"] = minimal_price
 
         return field_dict
 
@@ -161,36 +181,16 @@ class BaseProviderPlan:
         from ..models.organization_group import OrganizationGroup
 
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
-
-        is_active = d.pop("is_active")
-
-        init_price = d.pop("init_price")
-
-        switch_price = d.pop("switch_price")
-
-        organization_groups = []
-        _organization_groups = d.pop("organization_groups")
-        for organization_groups_item_data in _organization_groups:
-            organization_groups_item = OrganizationGroup.from_dict(organization_groups_item_data)
-
-            organization_groups.append(organization_groups_item)
-
-        prices = BaseProviderPlanPrices.from_dict(d.pop("prices"))
-
-        future_prices = BaseProviderPlanFuturePrices.from_dict(d.pop("future_prices"))
-
-        quotas = BaseProviderPlanQuotas.from_dict(d.pop("quotas"))
-
-        resources_count = d.pop("resources_count")
-
-        plan_type = d.pop("plan_type")
-
-        minimal_price = d.pop("minimal_price")
+        name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
 
@@ -207,6 +207,8 @@ class BaseProviderPlan:
 
         archived = d.pop("archived", UNSET)
 
+        is_active = d.pop("is_active", UNSET)
+
         unit_price = d.pop("unit_price", UNSET)
 
         _unit = d.pop("unit", UNSET)
@@ -216,15 +218,60 @@ class BaseProviderPlan:
         else:
             unit = BillingUnit(_unit)
 
+        init_price = d.pop("init_price", UNSET)
+
+        switch_price = d.pop("switch_price", UNSET)
+
         backend_id = d.pop("backend_id", UNSET)
+
+        organization_groups = []
+        _organization_groups = d.pop("organization_groups", UNSET)
+        for organization_groups_item_data in _organization_groups or []:
+            organization_groups_item = OrganizationGroup.from_dict(organization_groups_item_data)
+
+            organization_groups.append(organization_groups_item)
+
+        _prices = d.pop("prices", UNSET)
+        prices: Union[Unset, BaseProviderPlanPrices]
+        if isinstance(_prices, Unset):
+            prices = UNSET
+        else:
+            prices = BaseProviderPlanPrices.from_dict(_prices)
+
+        _future_prices = d.pop("future_prices", UNSET)
+        future_prices: Union[Unset, BaseProviderPlanFuturePrices]
+        if isinstance(_future_prices, Unset):
+            future_prices = UNSET
+        else:
+            future_prices = BaseProviderPlanFuturePrices.from_dict(_future_prices)
+
+        _quotas = d.pop("quotas", UNSET)
+        quotas: Union[Unset, BaseProviderPlanQuotas]
+        if isinstance(_quotas, Unset):
+            quotas = UNSET
+        else:
+            quotas = BaseProviderPlanQuotas.from_dict(_quotas)
+
+        resources_count = d.pop("resources_count", UNSET)
+
+        plan_type = d.pop("plan_type", UNSET)
+
+        minimal_price = d.pop("minimal_price", UNSET)
 
         base_provider_plan = cls(
             url=url,
             uuid=uuid,
             name=name,
+            description=description,
+            article_code=article_code,
+            max_amount=max_amount,
+            archived=archived,
             is_active=is_active,
+            unit_price=unit_price,
+            unit=unit,
             init_price=init_price,
             switch_price=switch_price,
+            backend_id=backend_id,
             organization_groups=organization_groups,
             prices=prices,
             future_prices=future_prices,
@@ -232,13 +279,6 @@ class BaseProviderPlan:
             resources_count=resources_count,
             plan_type=plan_type,
             minimal_price=minimal_price,
-            description=description,
-            article_code=article_code,
-            max_amount=max_amount,
-            archived=archived,
-            unit_price=unit_price,
-            unit=unit,
-            backend_id=backend_id,
         )
 
         base_provider_plan.additional_properties = d

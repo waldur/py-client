@@ -1,11 +1,13 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="OfferingFile")
 
@@ -14,64 +16,81 @@ T = TypeVar("T", bound="OfferingFile")
 class OfferingFile:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        name (str):
-        offering (str):
-        created (datetime.datetime):
-        file (str):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
+        offering (Union[Unset, str]):
+        created (Union[Unset, datetime.datetime]):
+        file (Union[Unset, str]):
     """
 
-    url: str
-    uuid: UUID
-    name: str
-    offering: str
-    created: datetime.datetime
-    file: str
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
+    offering: Union[Unset, str] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
+    file: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
 
         offering = self.offering
 
-        created = self.created.isoformat()
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
         file = self.file
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "name": name,
-                "offering": offering,
-                "created": created,
-                "file": file,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
+        if offering is not UNSET:
+            field_dict["offering"] = offering
+        if created is not UNSET:
+            field_dict["created"] = created
+        if file is not UNSET:
+            field_dict["file"] = file
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        offering = d.pop("offering")
+        offering = d.pop("offering", UNSET)
 
-        created = isoparse(d.pop("created"))
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
-        file = d.pop("file")
+        file = d.pop("file", UNSET)
 
         offering_file = cls(
             url=url,

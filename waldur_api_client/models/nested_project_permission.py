@@ -15,17 +15,17 @@ T = TypeVar("T", bound="NestedProjectPermission")
 class NestedProjectPermission:
     """
     Attributes:
-        url (str):
-        uuid (str):
-        name (str):
-        role_name (str):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, str]):
+        name (Union[Unset, str]):
+        role_name (Union[Unset, str]):
         expiration_time (Union[None, Unset, datetime.datetime]):
     """
 
-    url: str
-    uuid: str
-    name: str
-    role_name: str
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
+    role_name: Union[Unset, str] = UNSET
     expiration_time: Union[None, Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -48,14 +48,15 @@ class NestedProjectPermission:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "name": name,
-                "role_name": role_name,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
+        if role_name is not UNSET:
+            field_dict["role_name"] = role_name
         if expiration_time is not UNSET:
             field_dict["expiration_time"] = expiration_time
 
@@ -64,13 +65,13 @@ class NestedProjectPermission:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = d.pop("uuid")
+        uuid = d.pop("uuid", UNSET)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        role_name = d.pop("role_name")
+        role_name = d.pop("role_name", UNSET)
 
         def _parse_expiration_time(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:

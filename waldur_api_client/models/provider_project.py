@@ -14,18 +14,20 @@ T = TypeVar("T", bound="ProviderProject")
 class ProviderProject:
     """
     Attributes:
-        uuid (UUID):
-        name (str):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
         image (Union[None, Unset, str]):
     """
 
-    uuid: UUID
-    name: str
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
     image: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
 
@@ -37,12 +39,11 @@ class ProviderProject:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "name": name,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
         if image is not UNSET:
             field_dict["image"] = image
 
@@ -51,9 +52,14 @@ class ProviderProject:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
         def _parse_image(data: object) -> Union[None, Unset, str]:
             if data is None:

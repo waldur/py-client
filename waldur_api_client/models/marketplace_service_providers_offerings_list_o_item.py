@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class MarketplaceServiceProvidersOfferingsListO(str, Enum):
+class MarketplaceServiceProvidersOfferingsListOItem(str, Enum):
     CREATED = "created"
     NAME = "name"
     STATE = "state"

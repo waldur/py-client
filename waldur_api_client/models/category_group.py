@@ -14,16 +14,16 @@ T = TypeVar("T", bound="CategoryGroup")
 class CategoryGroup:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        title (str):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        title (Union[Unset, str]):
         description (Union[Unset, str]):
         icon (Union[None, Unset, str]):
     """
 
-    url: str
-    uuid: UUID
-    title: str
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    title: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     icon: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -31,7 +31,9 @@ class CategoryGroup:
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         title = self.title
 
@@ -45,13 +47,13 @@ class CategoryGroup:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "title": title,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if title is not UNSET:
+            field_dict["title"] = title
         if description is not UNSET:
             field_dict["description"] = description
         if icon is not UNSET:
@@ -62,11 +64,16 @@ class CategoryGroup:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        title = d.pop("title")
+        title = d.pop("title", UNSET)
 
         description = d.pop("description", UNSET)
 

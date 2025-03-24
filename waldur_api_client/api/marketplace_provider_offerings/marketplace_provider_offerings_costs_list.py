@@ -1,3 +1,4 @@
+import datetime
 from http import HTTPStatus
 from typing import Any, Optional, Union
 from uuid import UUID
@@ -24,11 +25,13 @@ def _get_kwargs(
     billable: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     end: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderOfferingsCostsListOItem]] = UNSET,
@@ -69,6 +72,11 @@ def _get_kwargs(
         json_category_uuid = str(category_uuid)
     params["category_uuid"] = json_category_uuid
 
+    json_created: Union[Unset, str] = UNSET
+    if not isinstance(created, Unset):
+        json_created = created.isoformat()
+    params["created"] = json_created
+
     params["customer"] = customer
 
     json_customer_uuid: Union[Unset, str] = UNSET
@@ -81,6 +89,11 @@ def _get_kwargs(
     params["end"] = end
 
     params["keyword"] = keyword
+
+    json_modified: Union[Unset, str] = UNSET
+    if not isinstance(modified, Unset):
+        json_modified = modified.isoformat()
+    params["modified"] = json_modified
 
     params["name"] = name
 
@@ -198,11 +211,13 @@ def sync_detailed(
     billable: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     end: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderOfferingsCostsListOItem]] = UNSET,
@@ -229,11 +244,13 @@ def sync_detailed(
         billable (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         end (Union[Unset, str]):
         keyword (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceProviderOfferingsCostsListOItem]]):
@@ -266,11 +283,13 @@ def sync_detailed(
         billable=billable,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
+        created=created,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
         end=end,
         keyword=keyword,
+        modified=modified,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -305,11 +324,13 @@ def sync(
     billable: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     end: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderOfferingsCostsListOItem]] = UNSET,
@@ -336,11 +357,13 @@ def sync(
         billable (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         end (Union[Unset, str]):
         keyword (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceProviderOfferingsCostsListOItem]]):
@@ -374,11 +397,13 @@ def sync(
         billable=billable,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
+        created=created,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
         end=end,
         keyword=keyword,
+        modified=modified,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -407,11 +432,13 @@ async def asyncio_detailed(
     billable: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     end: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderOfferingsCostsListOItem]] = UNSET,
@@ -438,11 +465,13 @@ async def asyncio_detailed(
         billable (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         end (Union[Unset, str]):
         keyword (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceProviderOfferingsCostsListOItem]]):
@@ -475,11 +504,13 @@ async def asyncio_detailed(
         billable=billable,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
+        created=created,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
         end=end,
         keyword=keyword,
+        modified=modified,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -512,11 +543,13 @@ async def asyncio(
     billable: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     end: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderOfferingsCostsListOItem]] = UNSET,
@@ -543,11 +576,13 @@ async def asyncio(
         billable (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         end (Union[Unset, str]):
         keyword (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceProviderOfferingsCostsListOItem]]):
@@ -582,11 +617,13 @@ async def asyncio(
             billable=billable,
             category_group_uuid=category_group_uuid,
             category_uuid=category_uuid,
+            created=created,
             customer=customer,
             customer_uuid=customer_uuid,
             description=description,
             end=end,
             keyword=keyword,
+            modified=modified,
             name=name,
             name_exact=name_exact,
             o=o,

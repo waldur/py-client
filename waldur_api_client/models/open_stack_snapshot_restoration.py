@@ -16,32 +16,38 @@ T = TypeVar("T", bound="OpenStackSnapshotRestoration")
 class OpenStackSnapshotRestoration:
     """
     Attributes:
-        uuid (UUID):
-        created (datetime.datetime):
-        volume (str):
-        volume_name (str):
-        volume_state (str):
-        volume_runtime_state (str):
-        volume_size (int): Size in MiB
-        volume_device (str): Name of volume as instance device e.g. /dev/vdb.
+        uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]): New volume description.
+        volume (Union[Unset, str]):
+        volume_name (Union[Unset, str]):
+        volume_state (Union[Unset, str]):
+        volume_runtime_state (Union[Unset, str]):
+        volume_size (Union[Unset, int]): Size in MiB
+        volume_device (Union[Unset, str]): Name of volume as instance device e.g. /dev/vdb.
     """
 
-    uuid: UUID
-    created: datetime.datetime
-    volume: str
-    volume_name: str
-    volume_state: str
-    volume_runtime_state: str
-    volume_size: int
-    volume_device: str
+    uuid: Union[Unset, UUID] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
     description: Union[Unset, str] = UNSET
+    volume: Union[Unset, str] = UNSET
+    volume_name: Union[Unset, str] = UNSET
+    volume_state: Union[Unset, str] = UNSET
+    volume_runtime_state: Union[Unset, str] = UNSET
+    volume_size: Union[Unset, int] = UNSET
+    volume_device: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
-        created = self.created.isoformat()
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
+
+        description = self.description
 
         volume = self.volume
 
@@ -55,58 +61,71 @@ class OpenStackSnapshotRestoration:
 
         volume_device = self.volume_device
 
-        description = self.description
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "created": created,
-                "volume": volume,
-                "volume_name": volume_name,
-                "volume_state": volume_state,
-                "volume_runtime_state": volume_runtime_state,
-                "volume_size": volume_size,
-                "volume_device": volume_device,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if created is not UNSET:
+            field_dict["created"] = created
         if description is not UNSET:
             field_dict["description"] = description
+        if volume is not UNSET:
+            field_dict["volume"] = volume
+        if volume_name is not UNSET:
+            field_dict["volume_name"] = volume_name
+        if volume_state is not UNSET:
+            field_dict["volume_state"] = volume_state
+        if volume_runtime_state is not UNSET:
+            field_dict["volume_runtime_state"] = volume_runtime_state
+        if volume_size is not UNSET:
+            field_dict["volume_size"] = volume_size
+        if volume_device is not UNSET:
+            field_dict["volume_device"] = volume_device
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        created = isoparse(d.pop("created"))
-
-        volume = d.pop("volume")
-
-        volume_name = d.pop("volume_name")
-
-        volume_state = d.pop("volume_state")
-
-        volume_runtime_state = d.pop("volume_runtime_state")
-
-        volume_size = d.pop("volume_size")
-
-        volume_device = d.pop("volume_device")
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
         description = d.pop("description", UNSET)
+
+        volume = d.pop("volume", UNSET)
+
+        volume_name = d.pop("volume_name", UNSET)
+
+        volume_state = d.pop("volume_state", UNSET)
+
+        volume_runtime_state = d.pop("volume_runtime_state", UNSET)
+
+        volume_size = d.pop("volume_size", UNSET)
+
+        volume_device = d.pop("volume_device", UNSET)
 
         open_stack_snapshot_restoration = cls(
             uuid=uuid,
             created=created,
+            description=description,
             volume=volume,
             volume_name=volume_name,
             volume_state=volume_state,
             volume_runtime_state=volume_runtime_state,
             volume_size=volume_size,
             volume_device=volume_device,
-            description=description,
         )
 
         open_stack_snapshot_restoration.additional_properties = d

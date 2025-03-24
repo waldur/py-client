@@ -60,17 +60,17 @@ class OfferingCreate:
         screenshots (list['NestedScreenshot']):
         type_ (str):
         scope (str):
-        scope_uuid (UUID):
-        scope_name (UUID):
-        scope_state (CoreStates):
+        scope_uuid (Union[None, UUID]):
+        scope_name (Union[None, UUID]):
+        scope_state (Union[CoreStates, None]):
         files (list['NestedOfferingFile']):
         quotas (list['Quota']):
         paused_reason (str):
         citation_count (int): Number of citations of a DOI
         organization_groups (list['OrganizationGroup']):
-        total_customers (int):
-        total_cost (int):
-        total_cost_estimated (int):
+        total_customers (Union[None, int]):
+        total_cost (Union[None, int]):
+        total_cost_estimated (Union[None, int]):
         parent_description (str):
         parent_uuid (UUID):
         parent_name (str):
@@ -125,17 +125,17 @@ class OfferingCreate:
     screenshots: list["NestedScreenshot"]
     type_: str
     scope: str
-    scope_uuid: UUID
-    scope_name: UUID
-    scope_state: CoreStates
+    scope_uuid: Union[None, UUID]
+    scope_name: Union[None, UUID]
+    scope_state: Union[CoreStates, None]
     files: list["NestedOfferingFile"]
     quotas: list["Quota"]
     paused_reason: str
     citation_count: int
     organization_groups: list["OrganizationGroup"]
-    total_customers: int
-    total_cost: int
-    total_cost_estimated: int
+    total_customers: Union[None, int]
+    total_cost: Union[None, int]
+    total_cost_estimated: Union[None, int]
     parent_description: str
     parent_uuid: UUID
     parent_name: str
@@ -225,11 +225,23 @@ class OfferingCreate:
 
         scope = self.scope
 
-        scope_uuid = str(self.scope_uuid)
+        scope_uuid: Union[None, str]
+        if isinstance(self.scope_uuid, UUID):
+            scope_uuid = str(self.scope_uuid)
+        else:
+            scope_uuid = self.scope_uuid
 
-        scope_name = str(self.scope_name)
+        scope_name: Union[None, str]
+        if isinstance(self.scope_name, UUID):
+            scope_name = str(self.scope_name)
+        else:
+            scope_name = self.scope_name
 
-        scope_state = self.scope_state.value
+        scope_state: Union[None, str]
+        if isinstance(self.scope_state, CoreStates):
+            scope_state = self.scope_state.value
+        else:
+            scope_state = self.scope_state
 
         files = []
         for files_item_data in self.files:
@@ -250,10 +262,13 @@ class OfferingCreate:
             organization_groups_item = organization_groups_item_data.to_dict()
             organization_groups.append(organization_groups_item)
 
+        total_customers: Union[None, int]
         total_customers = self.total_customers
 
+        total_cost: Union[None, int]
         total_cost = self.total_cost
 
+        total_cost_estimated: Union[None, int]
         total_cost_estimated = self.total_cost_estimated
 
         parent_description = self.parent_description
@@ -533,11 +548,50 @@ class OfferingCreate:
 
         scope = d.pop("scope")
 
-        scope_uuid = UUID(d.pop("scope_uuid"))
+        def _parse_scope_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                scope_uuid_type_0 = UUID(data)
 
-        scope_name = UUID(d.pop("scope_name"))
+                return scope_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
 
-        scope_state = CoreStates(d.pop("scope_state"))
+        scope_uuid = _parse_scope_uuid(d.pop("scope_uuid"))
+
+        def _parse_scope_name(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                scope_name_type_0 = UUID(data)
+
+                return scope_name_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        scope_name = _parse_scope_name(d.pop("scope_name"))
+
+        def _parse_scope_state(data: object) -> Union[CoreStates, None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                scope_state_type_1 = CoreStates(data)
+
+                return scope_state_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union[CoreStates, None], data)
+
+        scope_state = _parse_scope_state(d.pop("scope_state"))
 
         files = []
         _files = d.pop("files")
@@ -564,11 +618,26 @@ class OfferingCreate:
 
             organization_groups.append(organization_groups_item)
 
-        total_customers = d.pop("total_customers")
+        def _parse_total_customers(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
 
-        total_cost = d.pop("total_cost")
+        total_customers = _parse_total_customers(d.pop("total_customers"))
 
-        total_cost_estimated = d.pop("total_cost_estimated")
+        def _parse_total_cost(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        total_cost = _parse_total_cost(d.pop("total_cost"))
+
+        def _parse_total_cost_estimated(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        total_cost_estimated = _parse_total_cost_estimated(d.pop("total_cost_estimated"))
 
         parent_description = d.pop("parent_description")
 

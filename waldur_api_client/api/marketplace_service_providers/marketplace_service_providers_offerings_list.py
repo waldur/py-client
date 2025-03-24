@@ -1,3 +1,4 @@
+import datetime
 from http import HTTPStatus
 from typing import Any, Optional, Union
 from uuid import UUID
@@ -6,7 +7,10 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_service_providers_offerings_list_o import MarketplaceServiceProvidersOfferingsListO
+from ...models.marketplace_service_providers_offerings_list_field_item import (
+    MarketplaceServiceProvidersOfferingsListFieldItem,
+)
+from ...models.marketplace_service_providers_offerings_list_o_item import MarketplaceServiceProvidersOfferingsListOItem
 from ...models.marketplace_service_providers_offerings_list_state_item import (
     MarketplaceServiceProvidersOfferingsListStateItem,
 )
@@ -15,7 +19,7 @@ from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    uuid: UUID,
+    service_provider_uuid: UUID,
     *,
     accessible_via_calls: Union[Unset, bool] = UNSET,
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
@@ -23,11 +27,16 @@ def _get_kwargs(
     billable: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[MarketplaceServiceProvidersOfferingsListFieldItem]] = UNSET,
     keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, MarketplaceServiceProvidersOfferingsListO] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersOfferingsListOItem]] = UNSET,
     organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -62,6 +71,11 @@ def _get_kwargs(
         json_category_uuid = str(category_uuid)
     params["category_uuid"] = json_category_uuid
 
+    json_created: Union[Unset, str] = UNSET
+    if not isinstance(created, Unset):
+        json_created = created.isoformat()
+    params["created"] = json_created
+
     params["customer"] = customer
 
     json_customer_uuid: Union[Unset, str] = UNSET
@@ -71,11 +85,32 @@ def _get_kwargs(
 
     params["description"] = description
 
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
+
     params["keyword"] = keyword
 
-    json_o: Union[Unset, str] = UNSET
+    json_modified: Union[Unset, str] = UNSET
+    if not isinstance(modified, Unset):
+        json_modified = modified.isoformat()
+    params["modified"] = json_modified
+
+    params["name"] = name
+
+    params["name_exact"] = name_exact
+
+    json_o: Union[Unset, list[str]] = UNSET
     if not isinstance(o, Unset):
-        json_o = o.value
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
 
     params["o"] = json_o
 
@@ -133,7 +168,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/api/marketplace-service-providers/{uuid}/offerings/",
+        "url": f"/api/marketplace-service-providers/{service_provider_uuid}/offerings/",
         "params": params,
     }
 
@@ -170,7 +205,7 @@ def _build_response(
 
 
 def sync_detailed(
-    uuid: UUID,
+    service_provider_uuid: UUID,
     *,
     client: AuthenticatedClient,
     accessible_via_calls: Union[Unset, bool] = UNSET,
@@ -179,11 +214,16 @@ def sync_detailed(
     billable: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[MarketplaceServiceProvidersOfferingsListFieldItem]] = UNSET,
     keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, MarketplaceServiceProvidersOfferingsListO] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersOfferingsListOItem]] = UNSET,
     organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -195,20 +235,26 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
 ) -> Response[list["ProviderOffering"]]:
-    """
+    """Return offerings of service provider.
+
     Args:
-        uuid (UUID):
+        service_provider_uuid (UUID):
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
         billable (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        field (Union[Unset, list[MarketplaceServiceProvidersOfferingsListFieldItem]]):
         keyword (Union[Unset, str]):
-        o (Union[Unset, MarketplaceServiceProvidersOfferingsListO]):
+        modified (Union[Unset, datetime.datetime]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceServiceProvidersOfferingsListOItem]]):
         organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -229,17 +275,22 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        service_provider_uuid=service_provider_uuid,
         accessible_via_calls=accessible_via_calls,
         allowed_customer_uuid=allowed_customer_uuid,
         attributes=attributes,
         billable=billable,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
+        created=created,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
+        field=field,
         keyword=keyword,
+        modified=modified,
+        name=name,
+        name_exact=name_exact,
         o=o,
         organization_group_uuid=organization_group_uuid,
         page=page,
@@ -261,7 +312,7 @@ def sync_detailed(
 
 
 def sync(
-    uuid: UUID,
+    service_provider_uuid: UUID,
     *,
     client: AuthenticatedClient,
     accessible_via_calls: Union[Unset, bool] = UNSET,
@@ -270,11 +321,16 @@ def sync(
     billable: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[MarketplaceServiceProvidersOfferingsListFieldItem]] = UNSET,
     keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, MarketplaceServiceProvidersOfferingsListO] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersOfferingsListOItem]] = UNSET,
     organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -286,20 +342,26 @@ def sync(
     state: Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
 ) -> Optional[list["ProviderOffering"]]:
-    """
+    """Return offerings of service provider.
+
     Args:
-        uuid (UUID):
+        service_provider_uuid (UUID):
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
         billable (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        field (Union[Unset, list[MarketplaceServiceProvidersOfferingsListFieldItem]]):
         keyword (Union[Unset, str]):
-        o (Union[Unset, MarketplaceServiceProvidersOfferingsListO]):
+        modified (Union[Unset, datetime.datetime]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceServiceProvidersOfferingsListOItem]]):
         organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -320,7 +382,7 @@ def sync(
     """
 
     return sync_detailed(
-        uuid=uuid,
+        service_provider_uuid=service_provider_uuid,
         client=client,
         accessible_via_calls=accessible_via_calls,
         allowed_customer_uuid=allowed_customer_uuid,
@@ -328,10 +390,15 @@ def sync(
         billable=billable,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
+        created=created,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
+        field=field,
         keyword=keyword,
+        modified=modified,
+        name=name,
+        name_exact=name_exact,
         o=o,
         organization_group_uuid=organization_group_uuid,
         page=page,
@@ -347,7 +414,7 @@ def sync(
 
 
 async def asyncio_detailed(
-    uuid: UUID,
+    service_provider_uuid: UUID,
     *,
     client: AuthenticatedClient,
     accessible_via_calls: Union[Unset, bool] = UNSET,
@@ -356,11 +423,16 @@ async def asyncio_detailed(
     billable: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[MarketplaceServiceProvidersOfferingsListFieldItem]] = UNSET,
     keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, MarketplaceServiceProvidersOfferingsListO] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersOfferingsListOItem]] = UNSET,
     organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -372,20 +444,26 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
 ) -> Response[list["ProviderOffering"]]:
-    """
+    """Return offerings of service provider.
+
     Args:
-        uuid (UUID):
+        service_provider_uuid (UUID):
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
         billable (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        field (Union[Unset, list[MarketplaceServiceProvidersOfferingsListFieldItem]]):
         keyword (Union[Unset, str]):
-        o (Union[Unset, MarketplaceServiceProvidersOfferingsListO]):
+        modified (Union[Unset, datetime.datetime]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceServiceProvidersOfferingsListOItem]]):
         organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -406,17 +484,22 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        service_provider_uuid=service_provider_uuid,
         accessible_via_calls=accessible_via_calls,
         allowed_customer_uuid=allowed_customer_uuid,
         attributes=attributes,
         billable=billable,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
+        created=created,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
+        field=field,
         keyword=keyword,
+        modified=modified,
+        name=name,
+        name_exact=name_exact,
         o=o,
         organization_group_uuid=organization_group_uuid,
         page=page,
@@ -436,7 +519,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    uuid: UUID,
+    service_provider_uuid: UUID,
     *,
     client: AuthenticatedClient,
     accessible_via_calls: Union[Unset, bool] = UNSET,
@@ -445,11 +528,16 @@ async def asyncio(
     billable: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[MarketplaceServiceProvidersOfferingsListFieldItem]] = UNSET,
     keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, MarketplaceServiceProvidersOfferingsListO] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersOfferingsListOItem]] = UNSET,
     organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -461,20 +549,26 @@ async def asyncio(
     state: Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
 ) -> Optional[list["ProviderOffering"]]:
-    """
+    """Return offerings of service provider.
+
     Args:
-        uuid (UUID):
+        service_provider_uuid (UUID):
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
         billable (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        field (Union[Unset, list[MarketplaceServiceProvidersOfferingsListFieldItem]]):
         keyword (Union[Unset, str]):
-        o (Union[Unset, MarketplaceServiceProvidersOfferingsListO]):
+        modified (Union[Unset, datetime.datetime]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceServiceProvidersOfferingsListOItem]]):
         organization_group_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -496,7 +590,7 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            uuid=uuid,
+            service_provider_uuid=service_provider_uuid,
             client=client,
             accessible_via_calls=accessible_via_calls,
             allowed_customer_uuid=allowed_customer_uuid,
@@ -504,10 +598,15 @@ async def asyncio(
             billable=billable,
             category_group_uuid=category_group_uuid,
             category_uuid=category_uuid,
+            created=created,
             customer=customer,
             customer_uuid=customer_uuid,
             description=description,
+            field=field,
             keyword=keyword,
+            modified=modified,
+            name=name,
+            name_exact=name_exact,
             o=o,
             organization_group_uuid=organization_group_uuid,
             page=page,

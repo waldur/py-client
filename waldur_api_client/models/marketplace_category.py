@@ -21,15 +21,9 @@ T = TypeVar("T", bound="MarketplaceCategory")
 class MarketplaceCategory:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        title (str):
-        offering_count (int):
-        available_offerings_count (int):
-        sections (list['NestedSection']):
-        columns (list['NestedColumn']):
-        components (list['CategoryComponent']):
-        articles (list['CategoryHelpArticle']):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        title (Union[Unset, str]):
         description (Union[Unset, str]):
         icon (Union[None, Unset, str]):
         default_vm_category (Union[Unset, bool]): Set to "true" if this category is for OpenStack VM. Only one category
@@ -38,56 +32,40 @@ class MarketplaceCategory:
             category can have "true" value.
         default_tenant_category (Union[Unset, bool]): Set to true if this category is for OpenStack Tenant. Only one
             category can have "true" value.
+        offering_count (Union[Unset, int]):
+        available_offerings_count (Union[Unset, int]):
+        sections (Union[Unset, list['NestedSection']]):
+        columns (Union[Unset, list['NestedColumn']]):
+        components (Union[Unset, list['CategoryComponent']]):
+        articles (Union[Unset, list['CategoryHelpArticle']]):
         group (Union[None, Unset, str]):
     """
 
-    url: str
-    uuid: UUID
-    title: str
-    offering_count: int
-    available_offerings_count: int
-    sections: list["NestedSection"]
-    columns: list["NestedColumn"]
-    components: list["CategoryComponent"]
-    articles: list["CategoryHelpArticle"]
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    title: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     icon: Union[None, Unset, str] = UNSET
     default_vm_category: Union[Unset, bool] = UNSET
     default_volume_category: Union[Unset, bool] = UNSET
     default_tenant_category: Union[Unset, bool] = UNSET
+    offering_count: Union[Unset, int] = UNSET
+    available_offerings_count: Union[Unset, int] = UNSET
+    sections: Union[Unset, list["NestedSection"]] = UNSET
+    columns: Union[Unset, list["NestedColumn"]] = UNSET
+    components: Union[Unset, list["CategoryComponent"]] = UNSET
+    articles: Union[Unset, list["CategoryHelpArticle"]] = UNSET
     group: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         title = self.title
-
-        offering_count = self.offering_count
-
-        available_offerings_count = self.available_offerings_count
-
-        sections = []
-        for sections_item_data in self.sections:
-            sections_item = sections_item_data.to_dict()
-            sections.append(sections_item)
-
-        columns = []
-        for columns_item_data in self.columns:
-            columns_item = columns_item_data.to_dict()
-            columns.append(columns_item)
-
-        components = []
-        for components_item_data in self.components:
-            components_item = components_item_data.to_dict()
-            components.append(components_item)
-
-        articles = []
-        for articles_item_data in self.articles:
-            articles_item = articles_item_data.to_dict()
-            articles.append(articles_item)
 
         description = self.description
 
@@ -103,6 +81,38 @@ class MarketplaceCategory:
 
         default_tenant_category = self.default_tenant_category
 
+        offering_count = self.offering_count
+
+        available_offerings_count = self.available_offerings_count
+
+        sections: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.sections, Unset):
+            sections = []
+            for sections_item_data in self.sections:
+                sections_item = sections_item_data.to_dict()
+                sections.append(sections_item)
+
+        columns: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.columns, Unset):
+            columns = []
+            for columns_item_data in self.columns:
+                columns_item = columns_item_data.to_dict()
+                columns.append(columns_item)
+
+        components: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.components, Unset):
+            components = []
+            for components_item_data in self.components:
+                components_item = components_item_data.to_dict()
+                components.append(components_item)
+
+        articles: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.articles, Unset):
+            articles = []
+            for articles_item_data in self.articles:
+                articles_item = articles_item_data.to_dict()
+                articles.append(articles_item)
+
         group: Union[None, Unset, str]
         if isinstance(self.group, Unset):
             group = UNSET
@@ -111,19 +121,13 @@ class MarketplaceCategory:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "title": title,
-                "offering_count": offering_count,
-                "available_offerings_count": available_offerings_count,
-                "sections": sections,
-                "columns": columns,
-                "components": components,
-                "articles": articles,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if title is not UNSET:
+            field_dict["title"] = title
         if description is not UNSET:
             field_dict["description"] = description
         if icon is not UNSET:
@@ -134,6 +138,18 @@ class MarketplaceCategory:
             field_dict["default_volume_category"] = default_volume_category
         if default_tenant_category is not UNSET:
             field_dict["default_tenant_category"] = default_tenant_category
+        if offering_count is not UNSET:
+            field_dict["offering_count"] = offering_count
+        if available_offerings_count is not UNSET:
+            field_dict["available_offerings_count"] = available_offerings_count
+        if sections is not UNSET:
+            field_dict["sections"] = sections
+        if columns is not UNSET:
+            field_dict["columns"] = columns
+        if components is not UNSET:
+            field_dict["components"] = components
+        if articles is not UNSET:
+            field_dict["articles"] = articles
         if group is not UNSET:
             field_dict["group"] = group
 
@@ -147,43 +163,16 @@ class MarketplaceCategory:
         from ..models.nested_section import NestedSection
 
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        title = d.pop("title")
-
-        offering_count = d.pop("offering_count")
-
-        available_offerings_count = d.pop("available_offerings_count")
-
-        sections = []
-        _sections = d.pop("sections")
-        for sections_item_data in _sections:
-            sections_item = NestedSection.from_dict(sections_item_data)
-
-            sections.append(sections_item)
-
-        columns = []
-        _columns = d.pop("columns")
-        for columns_item_data in _columns:
-            columns_item = NestedColumn.from_dict(columns_item_data)
-
-            columns.append(columns_item)
-
-        components = []
-        _components = d.pop("components")
-        for components_item_data in _components:
-            components_item = CategoryComponent.from_dict(components_item_data)
-
-            components.append(components_item)
-
-        articles = []
-        _articles = d.pop("articles")
-        for articles_item_data in _articles:
-            articles_item = CategoryHelpArticle.from_dict(articles_item_data)
-
-            articles.append(articles_item)
+        title = d.pop("title", UNSET)
 
         description = d.pop("description", UNSET)
 
@@ -202,6 +191,38 @@ class MarketplaceCategory:
 
         default_tenant_category = d.pop("default_tenant_category", UNSET)
 
+        offering_count = d.pop("offering_count", UNSET)
+
+        available_offerings_count = d.pop("available_offerings_count", UNSET)
+
+        sections = []
+        _sections = d.pop("sections", UNSET)
+        for sections_item_data in _sections or []:
+            sections_item = NestedSection.from_dict(sections_item_data)
+
+            sections.append(sections_item)
+
+        columns = []
+        _columns = d.pop("columns", UNSET)
+        for columns_item_data in _columns or []:
+            columns_item = NestedColumn.from_dict(columns_item_data)
+
+            columns.append(columns_item)
+
+        components = []
+        _components = d.pop("components", UNSET)
+        for components_item_data in _components or []:
+            components_item = CategoryComponent.from_dict(components_item_data)
+
+            components.append(components_item)
+
+        articles = []
+        _articles = d.pop("articles", UNSET)
+        for articles_item_data in _articles or []:
+            articles_item = CategoryHelpArticle.from_dict(articles_item_data)
+
+            articles.append(articles_item)
+
         def _parse_group(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -215,17 +236,17 @@ class MarketplaceCategory:
             url=url,
             uuid=uuid,
             title=title,
+            description=description,
+            icon=icon,
+            default_vm_category=default_vm_category,
+            default_volume_category=default_volume_category,
+            default_tenant_category=default_tenant_category,
             offering_count=offering_count,
             available_offerings_count=available_offerings_count,
             sections=sections,
             columns=columns,
             components=components,
             articles=articles,
-            description=description,
-            icon=icon,
-            default_vm_category=default_vm_category,
-            default_volume_category=default_volume_category,
-            default_tenant_category=default_tenant_category,
             group=group,
         )
 

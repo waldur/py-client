@@ -23,40 +23,40 @@ T = TypeVar("T", bound="PublicCall")
 class PublicCall:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        created (datetime.datetime):
-        start_date (datetime.datetime):
-        end_date (datetime.datetime):
-        slug (str):
-        name (str):
-        state (CallStates):
-        manager (str):
-        customer_name (str):
-        customer_uuid (UUID):
-        offerings (list['NestedRequestedOffering']):
-        rounds (list['NestedRound']):
-        documents (list['CallDocument']):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
+        start_date (Union[Unset, datetime.datetime]):
+        end_date (Union[Unset, datetime.datetime]):
+        slug (Union[Unset, str]):
+        name (Union[Unset, str]):
         description (Union[Unset, str]):
+        state (Union[Unset, CallStates]):
+        manager (Union[Unset, str]):
+        customer_name (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        offerings (Union[Unset, list['NestedRequestedOffering']]):
+        rounds (Union[Unset, list['NestedRound']]):
+        documents (Union[Unset, list['CallDocument']]):
         backend_id (Union[Unset, str]):
         external_url (Union[None, Unset, str]):
     """
 
-    url: str
-    uuid: UUID
-    created: datetime.datetime
-    start_date: datetime.datetime
-    end_date: datetime.datetime
-    slug: str
-    name: str
-    state: CallStates
-    manager: str
-    customer_name: str
-    customer_uuid: UUID
-    offerings: list["NestedRequestedOffering"]
-    rounds: list["NestedRound"]
-    documents: list["CallDocument"]
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
+    start_date: Union[Unset, datetime.datetime] = UNSET
+    end_date: Union[Unset, datetime.datetime] = UNSET
+    slug: Union[Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
+    state: Union[Unset, CallStates] = UNSET
+    manager: Union[Unset, str] = UNSET
+    customer_name: Union[Unset, str] = UNSET
+    customer_uuid: Union[Unset, UUID] = UNSET
+    offerings: Union[Unset, list["NestedRequestedOffering"]] = UNSET
+    rounds: Union[Unset, list["NestedRound"]] = UNSET
+    documents: Union[Unset, list["CallDocument"]] = UNSET
     backend_id: Union[Unset, str] = UNSET
     external_url: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -64,42 +64,60 @@ class PublicCall:
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
-        created = self.created.isoformat()
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
-        start_date = self.start_date.isoformat()
+        start_date: Union[Unset, str] = UNSET
+        if not isinstance(self.start_date, Unset):
+            start_date = self.start_date.isoformat()
 
-        end_date = self.end_date.isoformat()
+        end_date: Union[Unset, str] = UNSET
+        if not isinstance(self.end_date, Unset):
+            end_date = self.end_date.isoformat()
 
         slug = self.slug
 
         name = self.name
 
-        state = self.state.value
+        description = self.description
+
+        state: Union[Unset, str] = UNSET
+        if not isinstance(self.state, Unset):
+            state = self.state.value
 
         manager = self.manager
 
         customer_name = self.customer_name
 
-        customer_uuid = str(self.customer_uuid)
+        customer_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.customer_uuid, Unset):
+            customer_uuid = str(self.customer_uuid)
 
-        offerings = []
-        for offerings_item_data in self.offerings:
-            offerings_item = offerings_item_data.to_dict()
-            offerings.append(offerings_item)
+        offerings: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.offerings, Unset):
+            offerings = []
+            for offerings_item_data in self.offerings:
+                offerings_item = offerings_item_data.to_dict()
+                offerings.append(offerings_item)
 
-        rounds = []
-        for rounds_item_data in self.rounds:
-            rounds_item = rounds_item_data.to_dict()
-            rounds.append(rounds_item)
+        rounds: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.rounds, Unset):
+            rounds = []
+            for rounds_item_data in self.rounds:
+                rounds_item = rounds_item_data.to_dict()
+                rounds.append(rounds_item)
 
-        documents = []
-        for documents_item_data in self.documents:
-            documents_item = documents_item_data.to_dict()
-            documents.append(documents_item)
-
-        description = self.description
+        documents: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.documents, Unset):
+            documents = []
+            for documents_item_data in self.documents:
+                documents_item = documents_item_data.to_dict()
+                documents.append(documents_item)
 
         backend_id = self.backend_id
 
@@ -111,26 +129,37 @@ class PublicCall:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "created": created,
-                "start_date": start_date,
-                "end_date": end_date,
-                "slug": slug,
-                "name": name,
-                "state": state,
-                "manager": manager,
-                "customer_name": customer_name,
-                "customer_uuid": customer_uuid,
-                "offerings": offerings,
-                "rounds": rounds,
-                "documents": documents,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if created is not UNSET:
+            field_dict["created"] = created
+        if start_date is not UNSET:
+            field_dict["start_date"] = start_date
+        if end_date is not UNSET:
+            field_dict["end_date"] = end_date
+        if slug is not UNSET:
+            field_dict["slug"] = slug
+        if name is not UNSET:
+            field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
+        if state is not UNSET:
+            field_dict["state"] = state
+        if manager is not UNSET:
+            field_dict["manager"] = manager
+        if customer_name is not UNSET:
+            field_dict["customer_name"] = customer_name
+        if customer_uuid is not UNSET:
+            field_dict["customer_uuid"] = customer_uuid
+        if offerings is not UNSET:
+            field_dict["offerings"] = offerings
+        if rounds is not UNSET:
+            field_dict["rounds"] = rounds
+        if documents is not UNSET:
+            field_dict["documents"] = documents
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
         if external_url is not UNSET:
@@ -145,50 +174,80 @@ class PublicCall:
         from ..models.nested_round import NestedRound
 
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        created = isoparse(d.pop("created"))
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
-        start_date = isoparse(d.pop("start_date"))
+        _start_date = d.pop("start_date", UNSET)
+        start_date: Union[Unset, datetime.datetime]
+        if isinstance(_start_date, Unset):
+            start_date = UNSET
+        else:
+            start_date = isoparse(_start_date)
 
-        end_date = isoparse(d.pop("end_date"))
+        _end_date = d.pop("end_date", UNSET)
+        end_date: Union[Unset, datetime.datetime]
+        if isinstance(_end_date, Unset):
+            end_date = UNSET
+        else:
+            end_date = isoparse(_end_date)
 
-        slug = d.pop("slug")
+        slug = d.pop("slug", UNSET)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        state = CallStates(d.pop("state"))
+        description = d.pop("description", UNSET)
 
-        manager = d.pop("manager")
+        _state = d.pop("state", UNSET)
+        state: Union[Unset, CallStates]
+        if isinstance(_state, Unset):
+            state = UNSET
+        else:
+            state = CallStates(_state)
 
-        customer_name = d.pop("customer_name")
+        manager = d.pop("manager", UNSET)
 
-        customer_uuid = UUID(d.pop("customer_uuid"))
+        customer_name = d.pop("customer_name", UNSET)
+
+        _customer_uuid = d.pop("customer_uuid", UNSET)
+        customer_uuid: Union[Unset, UUID]
+        if isinstance(_customer_uuid, Unset):
+            customer_uuid = UNSET
+        else:
+            customer_uuid = UUID(_customer_uuid)
 
         offerings = []
-        _offerings = d.pop("offerings")
-        for offerings_item_data in _offerings:
+        _offerings = d.pop("offerings", UNSET)
+        for offerings_item_data in _offerings or []:
             offerings_item = NestedRequestedOffering.from_dict(offerings_item_data)
 
             offerings.append(offerings_item)
 
         rounds = []
-        _rounds = d.pop("rounds")
-        for rounds_item_data in _rounds:
+        _rounds = d.pop("rounds", UNSET)
+        for rounds_item_data in _rounds or []:
             rounds_item = NestedRound.from_dict(rounds_item_data)
 
             rounds.append(rounds_item)
 
         documents = []
-        _documents = d.pop("documents")
-        for documents_item_data in _documents:
+        _documents = d.pop("documents", UNSET)
+        for documents_item_data in _documents or []:
             documents_item = CallDocument.from_dict(documents_item_data)
 
             documents.append(documents_item)
-
-        description = d.pop("description", UNSET)
 
         backend_id = d.pop("backend_id", UNSET)
 
@@ -209,6 +268,7 @@ class PublicCall:
             end_date=end_date,
             slug=slug,
             name=name,
+            description=description,
             state=state,
             manager=manager,
             customer_name=customer_name,
@@ -216,7 +276,6 @@ class PublicCall:
             offerings=offerings,
             rounds=rounds,
             documents=documents,
-            description=description,
             backend_id=backend_id,
             external_url=external_url,
         )

@@ -13,39 +13,36 @@ T = TypeVar("T", bound="CategoryHelpArticle")
 class CategoryHelpArticle:
     """
     Attributes:
-        url (str):
         title (Union[None, Unset, str]):
+        url (Union[Unset, str]):
     """
 
-    url: str
     title: Union[None, Unset, str] = UNSET
+    url: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        url = self.url
-
         title: Union[None, Unset, str]
         if isinstance(self.title, Unset):
             title = UNSET
         else:
             title = self.title
 
+        url = self.url
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-            }
-        )
+        field_dict.update({})
         if title is not UNSET:
             field_dict["title"] = title
+        if url is not UNSET:
+            field_dict["url"] = url
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
 
         def _parse_title(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -56,9 +53,11 @@ class CategoryHelpArticle:
 
         title = _parse_title(d.pop("title", UNSET))
 
+        url = d.pop("url", UNSET)
+
         category_help_article = cls(
-            url=url,
             title=title,
+            url=url,
         )
 
         category_help_article.additional_properties = d

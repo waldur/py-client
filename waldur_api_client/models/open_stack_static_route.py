@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="OpenStackStaticRoute")
 
@@ -11,12 +13,12 @@ T = TypeVar("T", bound="OpenStackStaticRoute")
 class OpenStackStaticRoute:
     """
     Attributes:
-        destination (str):
-        nexthop (str):
+        destination (Union[Unset, str]):
+        nexthop (Union[Unset, str]):
     """
 
-    destination: str
-    nexthop: str
+    destination: Union[Unset, str] = UNSET
+    nexthop: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -26,21 +28,20 @@ class OpenStackStaticRoute:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "destination": destination,
-                "nexthop": nexthop,
-            }
-        )
+        field_dict.update({})
+        if destination is not UNSET:
+            field_dict["destination"] = destination
+        if nexthop is not UNSET:
+            field_dict["nexthop"] = nexthop
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        destination = d.pop("destination")
+        destination = d.pop("destination", UNSET)
 
-        nexthop = d.pop("nexthop")
+        nexthop = d.pop("nexthop", UNSET)
 
         open_stack_static_route = cls(
             destination=destination,

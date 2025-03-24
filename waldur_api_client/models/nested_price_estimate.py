@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="NestedPriceEstimate")
 
@@ -11,16 +13,16 @@ T = TypeVar("T", bound="NestedPriceEstimate")
 class NestedPriceEstimate:
     """
     Attributes:
-        total (str):
-        current (str):
-        tax (str):
-        tax_current (str):
+        total (Union[Unset, str]):
+        current (Union[Unset, str]):
+        tax (Union[Unset, str]):
+        tax_current (Union[Unset, str]):
     """
 
-    total: str
-    current: str
-    tax: str
-    tax_current: str
+    total: Union[Unset, str] = UNSET
+    current: Union[Unset, str] = UNSET
+    tax: Union[Unset, str] = UNSET
+    tax_current: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,27 +36,28 @@ class NestedPriceEstimate:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "total": total,
-                "current": current,
-                "tax": tax,
-                "tax_current": tax_current,
-            }
-        )
+        field_dict.update({})
+        if total is not UNSET:
+            field_dict["total"] = total
+        if current is not UNSET:
+            field_dict["current"] = current
+        if tax is not UNSET:
+            field_dict["tax"] = tax
+        if tax_current is not UNSET:
+            field_dict["tax_current"] = tax_current
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        total = d.pop("total")
+        total = d.pop("total", UNSET)
 
-        current = d.pop("current")
+        current = d.pop("current", UNSET)
 
-        tax = d.pop("tax")
+        tax = d.pop("tax", UNSET)
 
-        tax_current = d.pop("tax_current")
+        tax_current = d.pop("tax_current", UNSET)
 
         nested_price_estimate = cls(
             total=total,

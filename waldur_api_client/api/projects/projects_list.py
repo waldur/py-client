@@ -26,6 +26,7 @@ def _get_kwargs(
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[ProjectsListFieldItem]] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProjectsListOItem]] = UNSET,
@@ -73,6 +74,11 @@ def _get_kwargs(
             json_field.append(field_item)
 
     params["field"] = json_field
+
+    json_modified: Union[Unset, str] = UNSET
+    if not isinstance(modified, Unset):
+        json_modified = modified.isoformat()
+    params["modified"] = json_modified
 
     params["name"] = name
 
@@ -147,6 +153,7 @@ def sync_detailed(
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[ProjectsListFieldItem]] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProjectsListOItem]] = UNSET,
@@ -167,6 +174,7 @@ def sync_detailed(
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[ProjectsListFieldItem]]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProjectsListOItem]]):
@@ -194,6 +202,7 @@ def sync_detailed(
         customer_native_name=customer_native_name,
         description=description,
         field=field,
+        modified=modified,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -223,6 +232,7 @@ def sync(
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[ProjectsListFieldItem]] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProjectsListOItem]] = UNSET,
@@ -243,6 +253,7 @@ def sync(
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[ProjectsListFieldItem]]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProjectsListOItem]]):
@@ -271,6 +282,7 @@ def sync(
         customer_native_name=customer_native_name,
         description=description,
         field=field,
+        modified=modified,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -294,6 +306,7 @@ async def asyncio_detailed(
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[ProjectsListFieldItem]] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProjectsListOItem]] = UNSET,
@@ -314,6 +327,7 @@ async def asyncio_detailed(
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[ProjectsListFieldItem]]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProjectsListOItem]]):
@@ -341,6 +355,7 @@ async def asyncio_detailed(
         customer_native_name=customer_native_name,
         description=description,
         field=field,
+        modified=modified,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -368,6 +383,7 @@ async def asyncio(
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[ProjectsListFieldItem]] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProjectsListOItem]] = UNSET,
@@ -388,6 +404,7 @@ async def asyncio(
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[ProjectsListFieldItem]]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProjectsListOItem]]):
@@ -417,6 +434,7 @@ async def asyncio(
             customer_native_name=customer_native_name,
             description=description,
             field=field,
+            modified=modified,
             name=name,
             name_exact=name_exact,
             o=o,

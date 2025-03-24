@@ -1,9 +1,11 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RancherNestedWorkload")
 
@@ -12,18 +14,20 @@ T = TypeVar("T", bound="RancherNestedWorkload")
 class RancherNestedWorkload:
     """
     Attributes:
-        uuid (UUID):
-        url (str):
-        name (str):
+        uuid (Union[Unset, UUID]):
+        url (Union[Unset, str]):
+        name (Union[Unset, str]):
     """
 
-    uuid: UUID
-    url: str
-    name: str
+    uuid: Union[Unset, UUID] = UNSET
+    url: Union[Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         url = self.url
 
@@ -31,24 +35,29 @@ class RancherNestedWorkload:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "url": url,
-                "name": name,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if url is not UNSET:
+            field_dict["url"] = url
+        if name is not UNSET:
+            field_dict["name"] = name
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
         rancher_nested_workload = cls(
             uuid=uuid,

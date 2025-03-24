@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="Quota")
 
@@ -11,14 +13,14 @@ T = TypeVar("T", bound="Quota")
 class Quota:
     """
     Attributes:
-        name (str):
-        usage (int):
-        limit (int):
+        name (Union[Unset, str]):
+        usage (Union[Unset, int]):
+        limit (Union[Unset, int]):
     """
 
-    name: str
-    usage: int
-    limit: int
+    name: Union[Unset, str] = UNSET
+    usage: Union[Unset, int] = UNSET
+    limit: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -30,24 +32,24 @@ class Quota:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-                "usage": usage,
-                "limit": limit,
-            }
-        )
+        field_dict.update({})
+        if name is not UNSET:
+            field_dict["name"] = name
+        if usage is not UNSET:
+            field_dict["usage"] = usage
+        if limit is not UNSET:
+            field_dict["limit"] = limit
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        usage = d.pop("usage")
+        usage = d.pop("usage", UNSET)
 
-        limit = d.pop("limit")
+        limit = d.pop("limit", UNSET)
 
         quota = cls(
             name=name,

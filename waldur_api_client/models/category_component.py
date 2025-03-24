@@ -13,14 +13,14 @@ T = TypeVar("T", bound="CategoryComponent")
 class CategoryComponent:
     """
     Attributes:
-        type_ (str): Unique internal name of the measured unit, for example floating_ip.
-        name (str): Display name for the measured unit, for example, Floating IP.
+        type_ (Union[Unset, str]): Unique internal name of the measured unit, for example floating_ip.
+        name (Union[Unset, str]): Display name for the measured unit, for example, Floating IP.
         description (Union[Unset, str]):
         measured_unit (Union[Unset, str]): Unit of measurement, for example, GB.
     """
 
-    type_: str
-    name: str
+    type_: Union[Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     measured_unit: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -36,12 +36,11 @@ class CategoryComponent:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "type": type_,
-                "name": name,
-            }
-        )
+        field_dict.update({})
+        if type_ is not UNSET:
+            field_dict["type"] = type_
+        if name is not UNSET:
+            field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
         if measured_unit is not UNSET:
@@ -52,9 +51,9 @@ class CategoryComponent:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        type_ = d.pop("type")
+        type_ = d.pop("type", UNSET)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
 

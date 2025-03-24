@@ -16,26 +16,24 @@ T = TypeVar("T", bound="CallDocument")
 class CallDocument:
     """
     Attributes:
-        uuid (UUID):
-        file_name (str):
-        created (datetime.datetime):
+        uuid (Union[Unset, UUID]):
         file (Union[None, Unset, str]): Documentation for call for proposals.
+        file_name (Union[Unset, str]):
         description (Union[Unset, str]):
+        created (Union[Unset, datetime.datetime]):
     """
 
-    uuid: UUID
-    file_name: str
-    created: datetime.datetime
+    uuid: Union[Unset, UUID] = UNSET
     file: Union[None, Unset, str] = UNSET
+    file_name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
-
-        file_name = self.file_name
-
-        created = self.created.isoformat()
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         file: Union[None, Unset, str]
         if isinstance(self.file, Unset):
@@ -43,32 +41,39 @@ class CallDocument:
         else:
             file = self.file
 
+        file_name = self.file_name
+
         description = self.description
+
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "file_name": file_name,
-                "created": created,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
         if file is not UNSET:
             field_dict["file"] = file
+        if file_name is not UNSET:
+            field_dict["file_name"] = file_name
         if description is not UNSET:
             field_dict["description"] = description
+        if created is not UNSET:
+            field_dict["created"] = created
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
-
-        file_name = d.pop("file_name")
-
-        created = isoparse(d.pop("created"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
         def _parse_file(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -79,14 +84,23 @@ class CallDocument:
 
         file = _parse_file(d.pop("file", UNSET))
 
+        file_name = d.pop("file_name", UNSET)
+
         description = d.pop("description", UNSET)
+
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
         call_document = cls(
             uuid=uuid,
-            file_name=file_name,
-            created=created,
             file=file,
+            file_name=file_name,
             description=description,
+            created=created,
         )
 
         call_document.additional_properties = d

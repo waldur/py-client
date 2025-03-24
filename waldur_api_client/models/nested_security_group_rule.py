@@ -18,9 +18,6 @@ T = TypeVar("T", bound="NestedSecurityGroupRule")
 class NestedSecurityGroupRule:
     """
     Attributes:
-        remote_group_name (str):
-        remote_group_uuid (UUID):
-        id (int):
         ethertype (Union[Unset, EthertypeEnum]):
         direction (Union[Unset, DirectionEnum]):
         protocol (Union[BlankEnum, ProtocolEnum, Unset]):
@@ -28,11 +25,11 @@ class NestedSecurityGroupRule:
         to_port (Union[None, Unset, int]):
         cidr (Union[None, Unset, str]):
         description (Union[Unset, str]):
+        remote_group_name (Union[Unset, str]):
+        remote_group_uuid (Union[Unset, UUID]):
+        id (Union[Unset, int]):
     """
 
-    remote_group_name: str
-    remote_group_uuid: UUID
-    id: int
     ethertype: Union[Unset, EthertypeEnum] = UNSET
     direction: Union[Unset, DirectionEnum] = UNSET
     protocol: Union[BlankEnum, ProtocolEnum, Unset] = UNSET
@@ -40,15 +37,12 @@ class NestedSecurityGroupRule:
     to_port: Union[None, Unset, int] = UNSET
     cidr: Union[None, Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
+    remote_group_name: Union[Unset, str] = UNSET
+    remote_group_uuid: Union[Unset, UUID] = UNSET
+    id: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        remote_group_name = self.remote_group_name
-
-        remote_group_uuid = str(self.remote_group_uuid)
-
-        id = self.id
-
         ethertype: Union[Unset, str] = UNSET
         if not isinstance(self.ethertype, Unset):
             ethertype = self.ethertype.value
@@ -85,15 +79,17 @@ class NestedSecurityGroupRule:
 
         description = self.description
 
+        remote_group_name = self.remote_group_name
+
+        remote_group_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.remote_group_uuid, Unset):
+            remote_group_uuid = str(self.remote_group_uuid)
+
+        id = self.id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "remote_group_name": remote_group_name,
-                "remote_group_uuid": remote_group_uuid,
-                "id": id,
-            }
-        )
+        field_dict.update({})
         if ethertype is not UNSET:
             field_dict["ethertype"] = ethertype
         if direction is not UNSET:
@@ -108,18 +104,18 @@ class NestedSecurityGroupRule:
             field_dict["cidr"] = cidr
         if description is not UNSET:
             field_dict["description"] = description
+        if remote_group_name is not UNSET:
+            field_dict["remote_group_name"] = remote_group_name
+        if remote_group_uuid is not UNSET:
+            field_dict["remote_group_uuid"] = remote_group_uuid
+        if id is not UNSET:
+            field_dict["id"] = id
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        remote_group_name = d.pop("remote_group_name")
-
-        remote_group_uuid = UUID(d.pop("remote_group_uuid"))
-
-        id = d.pop("id")
-
         _ethertype = d.pop("ethertype", UNSET)
         ethertype: Union[Unset, EthertypeEnum]
         if isinstance(_ethertype, Unset):
@@ -182,10 +178,18 @@ class NestedSecurityGroupRule:
 
         description = d.pop("description", UNSET)
 
+        remote_group_name = d.pop("remote_group_name", UNSET)
+
+        _remote_group_uuid = d.pop("remote_group_uuid", UNSET)
+        remote_group_uuid: Union[Unset, UUID]
+        if isinstance(_remote_group_uuid, Unset):
+            remote_group_uuid = UNSET
+        else:
+            remote_group_uuid = UUID(_remote_group_uuid)
+
+        id = d.pop("id", UNSET)
+
         nested_security_group_rule = cls(
-            remote_group_name=remote_group_name,
-            remote_group_uuid=remote_group_uuid,
-            id=id,
             ethertype=ethertype,
             direction=direction,
             protocol=protocol,
@@ -193,6 +197,9 @@ class NestedSecurityGroupRule:
             to_port=to_port,
             cidr=cidr,
             description=description,
+            remote_group_name=remote_group_name,
+            remote_group_uuid=remote_group_uuid,
+            id=id,
         )
 
         nested_security_group_rule.additional_properties = d

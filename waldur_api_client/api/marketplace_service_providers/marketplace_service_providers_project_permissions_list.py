@@ -1,3 +1,4 @@
+import datetime
 from http import HTTPStatus
 from typing import Any, Optional, Union
 from uuid import UUID
@@ -6,27 +7,107 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_service_providers_project_permissions_list_field_item import (
+    MarketplaceServiceProvidersProjectPermissionsListFieldItem,
+)
+from ...models.marketplace_service_providers_project_permissions_list_o_item import (
+    MarketplaceServiceProvidersProjectPermissionsListOItem,
+)
 from ...models.project_permission_log import ProjectPermissionLog
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    uuid: UUID,
+    service_provider_uuid: UUID,
     *,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    expiration_time: Union[Unset, datetime.datetime] = UNSET,
+    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    full_name: Union[Unset, str] = UNSET,
+    native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
+    user: Union[Unset, UUID] = UNSET,
+    user_slug: Union[Unset, str] = UNSET,
+    user_url: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_created: Union[Unset, str] = UNSET
+    if not isinstance(created, Unset):
+        json_created = created.isoformat()
+    params["created"] = json_created
+
+    json_expiration_time: Union[Unset, str] = UNSET
+    if not isinstance(expiration_time, Unset):
+        json_expiration_time = expiration_time.isoformat()
+    params["expiration_time"] = json_expiration_time
+
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
+
+    params["full_name"] = full_name
+
+    params["native_name"] = native_name
+
+    json_o: Union[Unset, list[str]] = UNSET
+    if not isinstance(o, Unset):
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
+
+    params["o"] = json_o
 
     params["page"] = page
 
     params["page_size"] = page_size
 
+    params["role_name"] = role_name
+
+    json_role_uuid: Union[Unset, str] = UNSET
+    if not isinstance(role_uuid, Unset):
+        json_role_uuid = str(role_uuid)
+    params["role_uuid"] = json_role_uuid
+
+    params["scope_name"] = scope_name
+
+    params["scope_type"] = scope_type
+
+    json_scope_uuid: Union[Unset, str] = UNSET
+    if not isinstance(scope_uuid, Unset):
+        json_scope_uuid = str(scope_uuid)
+    params["scope_uuid"] = json_scope_uuid
+
+    json_user: Union[Unset, str] = UNSET
+    if not isinstance(user, Unset):
+        json_user = str(user)
+    params["user"] = json_user
+
+    params["user_slug"] = user_slug
+
+    params["user_url"] = user_url
+
+    params["username"] = username
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/api/marketplace-service-providers/{uuid}/project_permissions/",
+        "url": f"/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/",
         "params": params,
     }
 
@@ -63,17 +144,48 @@ def _build_response(
 
 
 def sync_detailed(
-    uuid: UUID,
+    service_provider_uuid: UUID,
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    expiration_time: Union[Unset, datetime.datetime] = UNSET,
+    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    full_name: Union[Unset, str] = UNSET,
+    native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
+    user: Union[Unset, UUID] = UNSET,
+    user_slug: Union[Unset, str] = UNSET,
+    user_url: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectPermissionLog"]]:
-    """
+    """Return project permissions of service provider.
+
     Args:
-        uuid (UUID):
+        service_provider_uuid (UUID):
+        created (Union[Unset, datetime.datetime]):
+        expiration_time (Union[Unset, datetime.datetime]):
+        field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
+        full_name (Union[Unset, str]):
+        native_name (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
+        user (Union[Unset, UUID]):
+        user_slug (Union[Unset, str]):
+        user_url (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -84,9 +196,24 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        service_provider_uuid=service_provider_uuid,
+        created=created,
+        expiration_time=expiration_time,
+        field=field,
+        full_name=full_name,
+        native_name=native_name,
+        o=o,
         page=page,
         page_size=page_size,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
+        user=user,
+        user_slug=user_slug,
+        user_url=user_url,
+        username=username,
     )
 
     response = client.get_httpx_client().request(
@@ -97,17 +224,48 @@ def sync_detailed(
 
 
 def sync(
-    uuid: UUID,
+    service_provider_uuid: UUID,
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    expiration_time: Union[Unset, datetime.datetime] = UNSET,
+    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    full_name: Union[Unset, str] = UNSET,
+    native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
+    user: Union[Unset, UUID] = UNSET,
+    user_slug: Union[Unset, str] = UNSET,
+    user_url: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Optional[list["ProjectPermissionLog"]]:
-    """
+    """Return project permissions of service provider.
+
     Args:
-        uuid (UUID):
+        service_provider_uuid (UUID):
+        created (Union[Unset, datetime.datetime]):
+        expiration_time (Union[Unset, datetime.datetime]):
+        field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
+        full_name (Union[Unset, str]):
+        native_name (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
+        user (Union[Unset, UUID]):
+        user_slug (Union[Unset, str]):
+        user_url (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -118,25 +276,71 @@ def sync(
     """
 
     return sync_detailed(
-        uuid=uuid,
+        service_provider_uuid=service_provider_uuid,
         client=client,
+        created=created,
+        expiration_time=expiration_time,
+        field=field,
+        full_name=full_name,
+        native_name=native_name,
+        o=o,
         page=page,
         page_size=page_size,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
+        user=user,
+        user_slug=user_slug,
+        user_url=user_url,
+        username=username,
     ).parsed
 
 
 async def asyncio_detailed(
-    uuid: UUID,
+    service_provider_uuid: UUID,
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    expiration_time: Union[Unset, datetime.datetime] = UNSET,
+    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    full_name: Union[Unset, str] = UNSET,
+    native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
+    user: Union[Unset, UUID] = UNSET,
+    user_slug: Union[Unset, str] = UNSET,
+    user_url: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectPermissionLog"]]:
-    """
+    """Return project permissions of service provider.
+
     Args:
-        uuid (UUID):
+        service_provider_uuid (UUID):
+        created (Union[Unset, datetime.datetime]):
+        expiration_time (Union[Unset, datetime.datetime]):
+        field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
+        full_name (Union[Unset, str]):
+        native_name (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
+        user (Union[Unset, UUID]):
+        user_slug (Union[Unset, str]):
+        user_url (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -147,9 +351,24 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        service_provider_uuid=service_provider_uuid,
+        created=created,
+        expiration_time=expiration_time,
+        field=field,
+        full_name=full_name,
+        native_name=native_name,
+        o=o,
         page=page,
         page_size=page_size,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
+        user=user,
+        user_slug=user_slug,
+        user_url=user_url,
+        username=username,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -158,17 +377,48 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    uuid: UUID,
+    service_provider_uuid: UUID,
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    expiration_time: Union[Unset, datetime.datetime] = UNSET,
+    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    full_name: Union[Unset, str] = UNSET,
+    native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
+    user: Union[Unset, UUID] = UNSET,
+    user_slug: Union[Unset, str] = UNSET,
+    user_url: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Optional[list["ProjectPermissionLog"]]:
-    """
+    """Return project permissions of service provider.
+
     Args:
-        uuid (UUID):
+        service_provider_uuid (UUID):
+        created (Union[Unset, datetime.datetime]):
+        expiration_time (Union[Unset, datetime.datetime]):
+        field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
+        full_name (Union[Unset, str]):
+        native_name (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
+        user (Union[Unset, UUID]):
+        user_slug (Union[Unset, str]):
+        user_url (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -180,9 +430,24 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            uuid=uuid,
+            service_provider_uuid=service_provider_uuid,
             client=client,
+            created=created,
+            expiration_time=expiration_time,
+            field=field,
+            full_name=full_name,
+            native_name=native_name,
+            o=o,
             page=page,
             page_size=page_size,
+            role_name=role_name,
+            role_uuid=role_uuid,
+            scope_name=scope_name,
+            scope_type=scope_type,
+            scope_uuid=scope_uuid,
+            user=user,
+            user_slug=user_slug,
+            user_url=user_url,
+            username=username,
         )
     ).parsed

@@ -13,10 +13,10 @@ T = TypeVar("T", bound="CustomerDetails")
 class CustomerDetails:
     """
     Attributes:
-        name (str):
-        country_name (str):
+        name (Union[Unset, str]):
         address (Union[Unset, str]):
         country (Union[Unset, str]):
+        country_name (Union[Unset, str]):
         email (Union[Unset, str]):
         postal (Union[Unset, str]):
         phone_number (Union[Unset, str]):
@@ -25,10 +25,10 @@ class CustomerDetails:
         vat_code (Union[Unset, str]): VAT number
     """
 
-    name: str
-    country_name: str
+    name: Union[Unset, str] = UNSET
     address: Union[Unset, str] = UNSET
     country: Union[Unset, str] = UNSET
+    country_name: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
     postal: Union[Unset, str] = UNSET
     phone_number: Union[Unset, str] = UNSET
@@ -40,11 +40,11 @@ class CustomerDetails:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        country_name = self.country_name
-
         address = self.address
 
         country = self.country
+
+        country_name = self.country_name
 
         email = self.email
 
@@ -60,16 +60,15 @@ class CustomerDetails:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-                "country_name": country_name,
-            }
-        )
+        field_dict.update({})
+        if name is not UNSET:
+            field_dict["name"] = name
         if address is not UNSET:
             field_dict["address"] = address
         if country is not UNSET:
             field_dict["country"] = country
+        if country_name is not UNSET:
+            field_dict["country_name"] = country_name
         if email is not UNSET:
             field_dict["email"] = email
         if postal is not UNSET:
@@ -88,13 +87,13 @@ class CustomerDetails:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name")
-
-        country_name = d.pop("country_name")
+        name = d.pop("name", UNSET)
 
         address = d.pop("address", UNSET)
 
         country = d.pop("country", UNSET)
+
+        country_name = d.pop("country_name", UNSET)
 
         email = d.pop("email", UNSET)
 
@@ -110,9 +109,9 @@ class CustomerDetails:
 
         customer_details = cls(
             name=name,
-            country_name=country_name,
             address=address,
             country=country,
+            country_name=country_name,
             email=email,
             postal=postal,
             phone_number=phone_number,

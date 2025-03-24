@@ -1,11 +1,13 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="Event")
 
@@ -14,24 +16,28 @@ T = TypeVar("T", bound="Event")
 class Event:
     """
     Attributes:
-        uuid (UUID):
-        created (datetime.datetime):
-        event_type (str):
-        message (str):
-        context (Any):
+        uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
+        event_type (Union[Unset, str]):
+        message (Union[Unset, str]):
+        context (Union[Unset, Any]):
     """
 
-    uuid: UUID
-    created: datetime.datetime
-    event_type: str
-    message: str
-    context: Any
+    uuid: Union[Unset, UUID] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
+    event_type: Union[Unset, str] = UNSET
+    message: Union[Unset, str] = UNSET
+    context: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
-        created = self.created.isoformat()
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
         event_type = self.event_type
 
@@ -41,30 +47,42 @@ class Event:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "created": created,
-                "event_type": event_type,
-                "message": message,
-                "context": context,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if created is not UNSET:
+            field_dict["created"] = created
+        if event_type is not UNSET:
+            field_dict["event_type"] = event_type
+        if message is not UNSET:
+            field_dict["message"] = message
+        if context is not UNSET:
+            field_dict["context"] = context
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        created = isoparse(d.pop("created"))
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
-        event_type = d.pop("event_type")
+        event_type = d.pop("event_type", UNSET)
 
-        message = d.pop("message")
+        message = d.pop("message", UNSET)
 
-        context = d.pop("context")
+        context = d.pop("context", UNSET)
 
         event = cls(
             uuid=uuid,

@@ -18,18 +18,18 @@ T = TypeVar("T", bound="NestedAttribute")
 class NestedAttribute:
     """
     Attributes:
-        key (str):
-        title (str):
-        type_ (NestedAttributeTypeEnum):
-        options (list['NestedAttributeOption']):
+        key (Union[Unset, str]):
+        title (Union[Unset, str]):
+        type_ (Union[Unset, NestedAttributeTypeEnum]):
+        options (Union[Unset, list['NestedAttributeOption']]):
         required (Union[Unset, bool]): A value must be provided for the attribute.
         default (Union[Unset, Any]):
     """
 
-    key: str
-    title: str
-    type_: NestedAttributeTypeEnum
-    options: list["NestedAttributeOption"]
+    key: Union[Unset, str] = UNSET
+    title: Union[Unset, str] = UNSET
+    type_: Union[Unset, NestedAttributeTypeEnum] = UNSET
+    options: Union[Unset, list["NestedAttributeOption"]] = UNSET
     required: Union[Unset, bool] = UNSET
     default: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -39,12 +39,16 @@ class NestedAttribute:
 
         title = self.title
 
-        type_ = self.type_.value
+        type_: Union[Unset, str] = UNSET
+        if not isinstance(self.type_, Unset):
+            type_ = self.type_.value
 
-        options = []
-        for options_item_data in self.options:
-            options_item = options_item_data.to_dict()
-            options.append(options_item)
+        options: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = []
+            for options_item_data in self.options:
+                options_item = options_item_data.to_dict()
+                options.append(options_item)
 
         required = self.required
 
@@ -52,14 +56,15 @@ class NestedAttribute:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "key": key,
-                "title": title,
-                "type": type_,
-                "options": options,
-            }
-        )
+        field_dict.update({})
+        if key is not UNSET:
+            field_dict["key"] = key
+        if title is not UNSET:
+            field_dict["title"] = title
+        if type_ is not UNSET:
+            field_dict["type"] = type_
+        if options is not UNSET:
+            field_dict["options"] = options
         if required is not UNSET:
             field_dict["required"] = required
         if default is not UNSET:
@@ -72,15 +77,20 @@ class NestedAttribute:
         from ..models.nested_attribute_option import NestedAttributeOption
 
         d = dict(src_dict)
-        key = d.pop("key")
+        key = d.pop("key", UNSET)
 
-        title = d.pop("title")
+        title = d.pop("title", UNSET)
 
-        type_ = NestedAttributeTypeEnum(d.pop("type"))
+        _type_ = d.pop("type", UNSET)
+        type_: Union[Unset, NestedAttributeTypeEnum]
+        if isinstance(_type_, Unset):
+            type_ = UNSET
+        else:
+            type_ = NestedAttributeTypeEnum(_type_)
 
         options = []
-        _options = d.pop("options")
-        for options_item_data in _options:
+        _options = d.pop("options", UNSET)
+        for options_item_data in _options or []:
             options_item = NestedAttributeOption.from_dict(options_item_data)
 
             options.append(options_item)

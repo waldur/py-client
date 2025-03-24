@@ -1,10 +1,12 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="NestedOfferingFile")
 
@@ -13,43 +15,50 @@ T = TypeVar("T", bound="NestedOfferingFile")
 class NestedOfferingFile:
     """
     Attributes:
-        name (str):
-        created (datetime.datetime):
-        file (str):
+        name (Union[Unset, str]):
+        created (Union[Unset, datetime.datetime]):
+        file (Union[Unset, str]):
     """
 
-    name: str
-    created: datetime.datetime
-    file: str
+    name: Union[Unset, str] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
+    file: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        created = self.created.isoformat()
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
         file = self.file
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-                "created": created,
-                "file": file,
-            }
-        )
+        field_dict.update({})
+        if name is not UNSET:
+            field_dict["name"] = name
+        if created is not UNSET:
+            field_dict["created"] = created
+        if file is not UNSET:
+            field_dict["file"] = file
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        created = isoparse(d.pop("created"))
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
-        file = d.pop("file")
+        file = d.pop("file", UNSET)
 
         nested_offering_file = cls(
             name=name,

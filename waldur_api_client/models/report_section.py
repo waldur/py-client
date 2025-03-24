@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ReportSection")
 
@@ -11,12 +13,12 @@ T = TypeVar("T", bound="ReportSection")
 class ReportSection:
     """
     Attributes:
-        header (str):
-        body (str):
+        header (Union[Unset, str]):
+        body (Union[Unset, str]):
     """
 
-    header: str
-    body: str
+    header: Union[Unset, str] = UNSET
+    body: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -26,21 +28,20 @@ class ReportSection:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "header": header,
-                "body": body,
-            }
-        )
+        field_dict.update({})
+        if header is not UNSET:
+            field_dict["header"] = header
+        if body is not UNSET:
+            field_dict["body"] = body
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        header = d.pop("header")
+        header = d.pop("header", UNSET)
 
-        body = d.pop("body")
+        body = d.pop("body", UNSET)
 
         report_section = cls(
             header=header,

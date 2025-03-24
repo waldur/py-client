@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.offering_options_options import OfferingOptionsOptions
@@ -15,27 +17,30 @@ T = TypeVar("T", bound="OfferingOptions")
 class OfferingOptions:
     """
     Attributes:
-        order (list[str]):
-        options (OfferingOptionsOptions):
+        order (Union[Unset, list[str]]):
+        options (Union[Unset, OfferingOptionsOptions]):
     """
 
-    order: list[str]
-    options: "OfferingOptionsOptions"
+    order: Union[Unset, list[str]] = UNSET
+    options: Union[Unset, "OfferingOptionsOptions"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        order = self.order
+        order: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.order, Unset):
+            order = self.order
 
-        options = self.options.to_dict()
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "order": order,
-                "options": options,
-            }
-        )
+        field_dict.update({})
+        if order is not UNSET:
+            field_dict["order"] = order
+        if options is not UNSET:
+            field_dict["options"] = options
 
         return field_dict
 
@@ -44,9 +49,14 @@ class OfferingOptions:
         from ..models.offering_options_options import OfferingOptionsOptions
 
         d = dict(src_dict)
-        order = cast(list[str], d.pop("order"))
+        order = cast(list[str], d.pop("order", UNSET))
 
-        options = OfferingOptionsOptions.from_dict(d.pop("options"))
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, OfferingOptionsOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = OfferingOptionsOptions.from_dict(_options)
 
         offering_options = cls(
             order=order,

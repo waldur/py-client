@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ResourceLimitPeriod")
 
@@ -11,18 +13,18 @@ T = TypeVar("T", bound="ResourceLimitPeriod")
 class ResourceLimitPeriod:
     """
     Attributes:
-        start (str):
-        end (str):
-        quantity (int):
-        billing_periods (int):
-        total (str):
+        start (Union[Unset, str]):
+        end (Union[Unset, str]):
+        quantity (Union[Unset, int]):
+        billing_periods (Union[Unset, int]):
+        total (Union[Unset, str]):
     """
 
-    start: str
-    end: str
-    quantity: int
-    billing_periods: int
-    total: str
+    start: Union[Unset, str] = UNSET
+    end: Union[Unset, str] = UNSET
+    quantity: Union[Unset, int] = UNSET
+    billing_periods: Union[Unset, int] = UNSET
+    total: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,30 +40,32 @@ class ResourceLimitPeriod:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "start": start,
-                "end": end,
-                "quantity": quantity,
-                "billing_periods": billing_periods,
-                "total": total,
-            }
-        )
+        field_dict.update({})
+        if start is not UNSET:
+            field_dict["start"] = start
+        if end is not UNSET:
+            field_dict["end"] = end
+        if quantity is not UNSET:
+            field_dict["quantity"] = quantity
+        if billing_periods is not UNSET:
+            field_dict["billing_periods"] = billing_periods
+        if total is not UNSET:
+            field_dict["total"] = total
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        start = d.pop("start")
+        start = d.pop("start", UNSET)
 
-        end = d.pop("end")
+        end = d.pop("end", UNSET)
 
-        quantity = d.pop("quantity")
+        quantity = d.pop("quantity", UNSET)
 
-        billing_periods = d.pop("billing_periods")
+        billing_periods = d.pop("billing_periods", UNSET)
 
-        total = d.pop("total")
+        total = d.pop("total", UNSET)
 
         resource_limit_period = cls(
             start=start,

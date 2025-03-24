@@ -16,79 +16,100 @@ T = TypeVar("T", bound="NestedScreenshot")
 class NestedScreenshot:
     """
     Attributes:
-        name (str):
-        uuid (UUID):
-        image (str):
-        thumbnail (Union[None, str]):
-        created (datetime.datetime):
+        name (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        image (Union[Unset, str]):
+        thumbnail (Union[None, Unset, str]):
+        created (Union[Unset, datetime.datetime]):
     """
 
-    name: str
-    uuid: UUID
-    image: str
-    thumbnail: Union[None, str]
-    created: datetime.datetime
+    name: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
     description: Union[Unset, str] = UNSET
+    image: Union[Unset, str] = UNSET
+    thumbnail: Union[None, Unset, str] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        uuid = str(self.uuid)
-
-        image = self.image
-
-        thumbnail: Union[None, str]
-        thumbnail = self.thumbnail
-
-        created = self.created.isoformat()
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         description = self.description
 
+        image = self.image
+
+        thumbnail: Union[None, Unset, str]
+        if isinstance(self.thumbnail, Unset):
+            thumbnail = UNSET
+        else:
+            thumbnail = self.thumbnail
+
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-                "uuid": uuid,
-                "image": image,
-                "thumbnail": thumbnail,
-                "created": created,
-            }
-        )
+        field_dict.update({})
+        if name is not UNSET:
+            field_dict["name"] = name
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
         if description is not UNSET:
             field_dict["description"] = description
+        if image is not UNSET:
+            field_dict["image"] = image
+        if thumbnail is not UNSET:
+            field_dict["thumbnail"] = thumbnail
+        if created is not UNSET:
+            field_dict["created"] = created
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
-
-        image = d.pop("image")
-
-        def _parse_thumbnail(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        thumbnail = _parse_thumbnail(d.pop("thumbnail"))
-
-        created = isoparse(d.pop("created"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
         description = d.pop("description", UNSET)
+
+        image = d.pop("image", UNSET)
+
+        def _parse_thumbnail(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        thumbnail = _parse_thumbnail(d.pop("thumbnail", UNSET))
+
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
         nested_screenshot = cls(
             name=name,
             uuid=uuid,
+            description=description,
             image=image,
             thumbnail=thumbnail,
             created=created,
-            description=description,
         )
 
         nested_screenshot.additional_properties = d

@@ -17,45 +17,51 @@ T = TypeVar("T", bound="NestedCampaign")
 class NestedCampaign:
     """
     Attributes:
-        uuid (UUID):
-        name (str):
-        start_date (datetime.date): Starting from this date, the campaign is active.
-        end_date (datetime.date): The last day the campaign is active.
-        discount_type (DiscountTypeEnum):
-        discount (int):
-        service_provider (str):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
+        start_date (Union[Unset, datetime.date]): Starting from this date, the campaign is active.
+        end_date (Union[Unset, datetime.date]): The last day the campaign is active.
+        discount_type (Union[Unset, DiscountTypeEnum]):
+        discount (Union[Unset, int]):
         stock (Union[None, Unset, int]):
         description (Union[Unset, str]):
         months (Union[Unset, int]): How many months in a row should the related service (when activated) get special
             deal (0 for indefinitely until active)
+        service_provider (Union[Unset, str]):
     """
 
-    uuid: UUID
-    name: str
-    start_date: datetime.date
-    end_date: datetime.date
-    discount_type: DiscountTypeEnum
-    discount: int
-    service_provider: str
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
+    start_date: Union[Unset, datetime.date] = UNSET
+    end_date: Union[Unset, datetime.date] = UNSET
+    discount_type: Union[Unset, DiscountTypeEnum] = UNSET
+    discount: Union[Unset, int] = UNSET
     stock: Union[None, Unset, int] = UNSET
     description: Union[Unset, str] = UNSET
     months: Union[Unset, int] = UNSET
+    service_provider: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
 
-        start_date = self.start_date.isoformat()
+        start_date: Union[Unset, str] = UNSET
+        if not isinstance(self.start_date, Unset):
+            start_date = self.start_date.isoformat()
 
-        end_date = self.end_date.isoformat()
+        end_date: Union[Unset, str] = UNSET
+        if not isinstance(self.end_date, Unset):
+            end_date = self.end_date.isoformat()
 
-        discount_type = self.discount_type.value
+        discount_type: Union[Unset, str] = UNSET
+        if not isinstance(self.discount_type, Unset):
+            discount_type = self.discount_type.value
 
         discount = self.discount
-
-        service_provider = self.service_provider
 
         stock: Union[None, Unset, int]
         if isinstance(self.stock, Unset):
@@ -67,44 +73,68 @@ class NestedCampaign:
 
         months = self.months
 
+        service_provider = self.service_provider
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "name": name,
-                "start_date": start_date,
-                "end_date": end_date,
-                "discount_type": discount_type,
-                "discount": discount,
-                "service_provider": service_provider,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
+        if start_date is not UNSET:
+            field_dict["start_date"] = start_date
+        if end_date is not UNSET:
+            field_dict["end_date"] = end_date
+        if discount_type is not UNSET:
+            field_dict["discount_type"] = discount_type
+        if discount is not UNSET:
+            field_dict["discount"] = discount
         if stock is not UNSET:
             field_dict["stock"] = stock
         if description is not UNSET:
             field_dict["description"] = description
         if months is not UNSET:
             field_dict["months"] = months
+        if service_provider is not UNSET:
+            field_dict["service_provider"] = service_provider
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        start_date = isoparse(d.pop("start_date")).date()
+        _start_date = d.pop("start_date", UNSET)
+        start_date: Union[Unset, datetime.date]
+        if isinstance(_start_date, Unset):
+            start_date = UNSET
+        else:
+            start_date = isoparse(_start_date).date()
 
-        end_date = isoparse(d.pop("end_date")).date()
+        _end_date = d.pop("end_date", UNSET)
+        end_date: Union[Unset, datetime.date]
+        if isinstance(_end_date, Unset):
+            end_date = UNSET
+        else:
+            end_date = isoparse(_end_date).date()
 
-        discount_type = DiscountTypeEnum(d.pop("discount_type"))
+        _discount_type = d.pop("discount_type", UNSET)
+        discount_type: Union[Unset, DiscountTypeEnum]
+        if isinstance(_discount_type, Unset):
+            discount_type = UNSET
+        else:
+            discount_type = DiscountTypeEnum(_discount_type)
 
-        discount = d.pop("discount")
-
-        service_provider = d.pop("service_provider")
+        discount = d.pop("discount", UNSET)
 
         def _parse_stock(data: object) -> Union[None, Unset, int]:
             if data is None:
@@ -119,6 +149,8 @@ class NestedCampaign:
 
         months = d.pop("months", UNSET)
 
+        service_provider = d.pop("service_provider", UNSET)
+
         nested_campaign = cls(
             uuid=uuid,
             name=name,
@@ -126,10 +158,10 @@ class NestedCampaign:
             end_date=end_date,
             discount_type=discount_type,
             discount=discount,
-            service_provider=service_provider,
             stock=stock,
             description=description,
             months=months,
+            service_provider=service_provider,
         )
 
         nested_campaign.additional_properties = d

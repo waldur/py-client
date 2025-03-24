@@ -17,31 +17,26 @@ T = TypeVar("T", bound="OpenStackNestedSubNet")
 class OpenStackNestedSubNet:
     """
     Attributes:
-        name (str):
-        allocation_pools (list['OpenStackSubNetAllocationPool']):
+        name (Union[Unset, str]):
         description (Union[Unset, str]):
         cidr (Union[Unset, str]):
         gateway_ip (Union[None, Unset, str]):
+        allocation_pools (Union[Unset, list['OpenStackSubNetAllocationPool']]):
         ip_version (Union[Unset, int]):
         enable_dhcp (Union[Unset, bool]):
     """
 
-    name: str
-    allocation_pools: list["OpenStackSubNetAllocationPool"]
+    name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     cidr: Union[Unset, str] = UNSET
     gateway_ip: Union[None, Unset, str] = UNSET
+    allocation_pools: Union[Unset, list["OpenStackSubNetAllocationPool"]] = UNSET
     ip_version: Union[Unset, int] = UNSET
     enable_dhcp: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
-
-        allocation_pools = []
-        for allocation_pools_item_data in self.allocation_pools:
-            allocation_pools_item = allocation_pools_item_data.to_dict()
-            allocation_pools.append(allocation_pools_item)
 
         description = self.description
 
@@ -53,24 +48,30 @@ class OpenStackNestedSubNet:
         else:
             gateway_ip = self.gateway_ip
 
+        allocation_pools: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.allocation_pools, Unset):
+            allocation_pools = []
+            for allocation_pools_item_data in self.allocation_pools:
+                allocation_pools_item = allocation_pools_item_data.to_dict()
+                allocation_pools.append(allocation_pools_item)
+
         ip_version = self.ip_version
 
         enable_dhcp = self.enable_dhcp
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-                "allocation_pools": allocation_pools,
-            }
-        )
+        field_dict.update({})
+        if name is not UNSET:
+            field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
         if cidr is not UNSET:
             field_dict["cidr"] = cidr
         if gateway_ip is not UNSET:
             field_dict["gateway_ip"] = gateway_ip
+        if allocation_pools is not UNSET:
+            field_dict["allocation_pools"] = allocation_pools
         if ip_version is not UNSET:
             field_dict["ip_version"] = ip_version
         if enable_dhcp is not UNSET:
@@ -83,14 +84,7 @@ class OpenStackNestedSubNet:
         from ..models.open_stack_sub_net_allocation_pool import OpenStackSubNetAllocationPool
 
         d = dict(src_dict)
-        name = d.pop("name")
-
-        allocation_pools = []
-        _allocation_pools = d.pop("allocation_pools")
-        for allocation_pools_item_data in _allocation_pools:
-            allocation_pools_item = OpenStackSubNetAllocationPool.from_dict(allocation_pools_item_data)
-
-            allocation_pools.append(allocation_pools_item)
+        name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
 
@@ -105,16 +99,23 @@ class OpenStackNestedSubNet:
 
         gateway_ip = _parse_gateway_ip(d.pop("gateway_ip", UNSET))
 
+        allocation_pools = []
+        _allocation_pools = d.pop("allocation_pools", UNSET)
+        for allocation_pools_item_data in _allocation_pools or []:
+            allocation_pools_item = OpenStackSubNetAllocationPool.from_dict(allocation_pools_item_data)
+
+            allocation_pools.append(allocation_pools_item)
+
         ip_version = d.pop("ip_version", UNSET)
 
         enable_dhcp = d.pop("enable_dhcp", UNSET)
 
         open_stack_nested_sub_net = cls(
             name=name,
-            allocation_pools=allocation_pools,
             description=description,
             cidr=cidr,
             gateway_ip=gateway_ip,
+            allocation_pools=allocation_pools,
             ip_version=ip_version,
             enable_dhcp=enable_dhcp,
         )

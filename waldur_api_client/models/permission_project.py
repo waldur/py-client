@@ -16,37 +16,39 @@ T = TypeVar("T", bound="PermissionProject")
 class PermissionProject:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        name (str):
-        resource_count (int):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
         image (Union[None, Unset, str]):
+        resource_count (Union[Unset, int]):
         end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource will be
             scheduled for termination.
     """
 
-    url: str
-    uuid: UUID
-    name: str
-    resource_count: int
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
     image: Union[None, Unset, str] = UNSET
+    resource_count: Union[Unset, int] = UNSET
     end_date: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
-
-        resource_count = self.resource_count
 
         image: Union[None, Unset, str]
         if isinstance(self.image, Unset):
             image = UNSET
         else:
             image = self.image
+
+        resource_count = self.resource_count
 
         end_date: Union[None, Unset, str]
         if isinstance(self.end_date, Unset):
@@ -58,16 +60,17 @@ class PermissionProject:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "name": name,
-                "resource_count": resource_count,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
         if image is not UNSET:
             field_dict["image"] = image
+        if resource_count is not UNSET:
+            field_dict["resource_count"] = resource_count
         if end_date is not UNSET:
             field_dict["end_date"] = end_date
 
@@ -76,13 +79,16 @@ class PermissionProject:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
-
-        resource_count = d.pop("resource_count")
+        name = d.pop("name", UNSET)
 
         def _parse_image(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -92,6 +98,8 @@ class PermissionProject:
             return cast(Union[None, Unset, str], data)
 
         image = _parse_image(d.pop("image", UNSET))
+
+        resource_count = d.pop("resource_count", UNSET)
 
         def _parse_end_date(data: object) -> Union[None, Unset, datetime.date]:
             if data is None:
@@ -114,8 +122,8 @@ class PermissionProject:
             url=url,
             uuid=uuid,
             name=name,
-            resource_count=resource_count,
             image=image,
+            resource_count=resource_count,
             end_date=end_date,
         )
 

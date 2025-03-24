@@ -15,11 +15,8 @@ T = TypeVar("T", bound="RoleDetails")
 class RoleDetails:
     """
     Attributes:
-        uuid (UUID):
-        name (str):
-        permissions (list[str]):
-        is_system_role (bool):
-        content_type (RoleType):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
         description (Union[Unset, str]):
         description_en (Union[None, Unset, str]):
         description_et (Union[None, Unset, str]):
@@ -35,14 +32,14 @@ class RoleDetails:
         description_nb (Union[None, Unset, str]):
         description_ar (Union[None, Unset, str]):
         description_cs (Union[None, Unset, str]):
+        permissions (Union[Unset, list[str]]):
+        is_system_role (Union[Unset, bool]):
         is_active (Union[Unset, bool]):
+        content_type (Union[Unset, RoleType]):
     """
 
-    uuid: UUID
-    name: str
-    permissions: list[str]
-    is_system_role: bool
-    content_type: RoleType
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     description_en: Union[None, Unset, str] = UNSET
     description_et: Union[None, Unset, str] = UNSET
@@ -58,19 +55,18 @@ class RoleDetails:
     description_nb: Union[None, Unset, str] = UNSET
     description_ar: Union[None, Unset, str] = UNSET
     description_cs: Union[None, Unset, str] = UNSET
+    permissions: Union[Unset, list[str]] = UNSET
+    is_system_role: Union[Unset, bool] = UNSET
     is_active: Union[Unset, bool] = UNSET
+    content_type: Union[Unset, RoleType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
-
-        permissions = self.permissions
-
-        is_system_role = self.is_system_role
-
-        content_type = self.content_type.value
 
         description = self.description
 
@@ -158,19 +154,25 @@ class RoleDetails:
         else:
             description_cs = self.description_cs
 
+        permissions: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.permissions, Unset):
+            permissions = self.permissions
+
+        is_system_role = self.is_system_role
+
         is_active = self.is_active
+
+        content_type: Union[Unset, str] = UNSET
+        if not isinstance(self.content_type, Unset):
+            content_type = self.content_type.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "name": name,
-                "permissions": permissions,
-                "is_system_role": is_system_role,
-                "content_type": content_type,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
         if description_en is not UNSET:
@@ -201,23 +203,28 @@ class RoleDetails:
             field_dict["description_ar"] = description_ar
         if description_cs is not UNSET:
             field_dict["description_cs"] = description_cs
+        if permissions is not UNSET:
+            field_dict["permissions"] = permissions
+        if is_system_role is not UNSET:
+            field_dict["is_system_role"] = is_system_role
         if is_active is not UNSET:
             field_dict["is_active"] = is_active
+        if content_type is not UNSET:
+            field_dict["content_type"] = content_type
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
-
-        permissions = cast(list[str], d.pop("permissions"))
-
-        is_system_role = d.pop("is_system_role")
-
-        content_type = RoleType(d.pop("content_type"))
+        name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
 
@@ -347,14 +354,22 @@ class RoleDetails:
 
         description_cs = _parse_description_cs(d.pop("description_cs", UNSET))
 
+        permissions = cast(list[str], d.pop("permissions", UNSET))
+
+        is_system_role = d.pop("is_system_role", UNSET)
+
         is_active = d.pop("is_active", UNSET)
+
+        _content_type = d.pop("content_type", UNSET)
+        content_type: Union[Unset, RoleType]
+        if isinstance(_content_type, Unset):
+            content_type = UNSET
+        else:
+            content_type = RoleType(_content_type)
 
         role_details = cls(
             uuid=uuid,
             name=name,
-            permissions=permissions,
-            is_system_role=is_system_role,
-            content_type=content_type,
             description=description,
             description_en=description_en,
             description_et=description_et,
@@ -370,7 +385,10 @@ class RoleDetails:
             description_nb=description_nb,
             description_ar=description_ar,
             description_cs=description_cs,
+            permissions=permissions,
+            is_system_role=is_system_role,
             is_active=is_active,
+            content_type=content_type,
         )
 
         role_details.additional_properties = d

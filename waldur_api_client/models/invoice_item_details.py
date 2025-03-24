@@ -1,9 +1,11 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.resource_limit_period import ResourceLimitPeriod
@@ -16,54 +18,62 @@ T = TypeVar("T", bound="InvoiceItemDetails")
 class InvoiceItemDetails:
     """
     Attributes:
-        resource_name (str):
-        resource_uuid (UUID):
-        plan_name (str):
-        plan_uuid (UUID):
-        offering_type (str):
-        offering_name (str):
-        offering_uuid (UUID):
-        service_provider_name (str):
-        service_provider_uuid (UUID):
-        plan_component_id (int):
-        offering_component_type (str):
-        offering_component_name (str):
-        resource_limit_periods (list['ResourceLimitPeriod']):
+        resource_name (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
+        plan_name (Union[Unset, str]):
+        plan_uuid (Union[Unset, UUID]):
+        offering_type (Union[Unset, str]):
+        offering_name (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
+        service_provider_name (Union[Unset, str]):
+        service_provider_uuid (Union[Unset, UUID]):
+        plan_component_id (Union[Unset, int]):
+        offering_component_type (Union[Unset, str]):
+        offering_component_name (Union[Unset, str]):
+        resource_limit_periods (Union[Unset, list['ResourceLimitPeriod']]):
     """
 
-    resource_name: str
-    resource_uuid: UUID
-    plan_name: str
-    plan_uuid: UUID
-    offering_type: str
-    offering_name: str
-    offering_uuid: UUID
-    service_provider_name: str
-    service_provider_uuid: UUID
-    plan_component_id: int
-    offering_component_type: str
-    offering_component_name: str
-    resource_limit_periods: list["ResourceLimitPeriod"]
+    resource_name: Union[Unset, str] = UNSET
+    resource_uuid: Union[Unset, UUID] = UNSET
+    plan_name: Union[Unset, str] = UNSET
+    plan_uuid: Union[Unset, UUID] = UNSET
+    offering_type: Union[Unset, str] = UNSET
+    offering_name: Union[Unset, str] = UNSET
+    offering_uuid: Union[Unset, UUID] = UNSET
+    service_provider_name: Union[Unset, str] = UNSET
+    service_provider_uuid: Union[Unset, UUID] = UNSET
+    plan_component_id: Union[Unset, int] = UNSET
+    offering_component_type: Union[Unset, str] = UNSET
+    offering_component_name: Union[Unset, str] = UNSET
+    resource_limit_periods: Union[Unset, list["ResourceLimitPeriod"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         resource_name = self.resource_name
 
-        resource_uuid = str(self.resource_uuid)
+        resource_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.resource_uuid, Unset):
+            resource_uuid = str(self.resource_uuid)
 
         plan_name = self.plan_name
 
-        plan_uuid = str(self.plan_uuid)
+        plan_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.plan_uuid, Unset):
+            plan_uuid = str(self.plan_uuid)
 
         offering_type = self.offering_type
 
         offering_name = self.offering_name
 
-        offering_uuid = str(self.offering_uuid)
+        offering_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.offering_uuid, Unset):
+            offering_uuid = str(self.offering_uuid)
 
         service_provider_name = self.service_provider_name
 
-        service_provider_uuid = str(self.service_provider_uuid)
+        service_provider_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.service_provider_uuid, Unset):
+            service_provider_uuid = str(self.service_provider_uuid)
 
         plan_component_id = self.plan_component_id
 
@@ -71,30 +81,42 @@ class InvoiceItemDetails:
 
         offering_component_name = self.offering_component_name
 
-        resource_limit_periods = []
-        for resource_limit_periods_item_data in self.resource_limit_periods:
-            resource_limit_periods_item = resource_limit_periods_item_data.to_dict()
-            resource_limit_periods.append(resource_limit_periods_item)
+        resource_limit_periods: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.resource_limit_periods, Unset):
+            resource_limit_periods = []
+            for resource_limit_periods_item_data in self.resource_limit_periods:
+                resource_limit_periods_item = resource_limit_periods_item_data.to_dict()
+                resource_limit_periods.append(resource_limit_periods_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "resource_name": resource_name,
-                "resource_uuid": resource_uuid,
-                "plan_name": plan_name,
-                "plan_uuid": plan_uuid,
-                "offering_type": offering_type,
-                "offering_name": offering_name,
-                "offering_uuid": offering_uuid,
-                "service_provider_name": service_provider_name,
-                "service_provider_uuid": service_provider_uuid,
-                "plan_component_id": plan_component_id,
-                "offering_component_type": offering_component_type,
-                "offering_component_name": offering_component_name,
-                "resource_limit_periods": resource_limit_periods,
-            }
-        )
+        field_dict.update({})
+        if resource_name is not UNSET:
+            field_dict["resource_name"] = resource_name
+        if resource_uuid is not UNSET:
+            field_dict["resource_uuid"] = resource_uuid
+        if plan_name is not UNSET:
+            field_dict["plan_name"] = plan_name
+        if plan_uuid is not UNSET:
+            field_dict["plan_uuid"] = plan_uuid
+        if offering_type is not UNSET:
+            field_dict["offering_type"] = offering_type
+        if offering_name is not UNSET:
+            field_dict["offering_name"] = offering_name
+        if offering_uuid is not UNSET:
+            field_dict["offering_uuid"] = offering_uuid
+        if service_provider_name is not UNSET:
+            field_dict["service_provider_name"] = service_provider_name
+        if service_provider_uuid is not UNSET:
+            field_dict["service_provider_uuid"] = service_provider_uuid
+        if plan_component_id is not UNSET:
+            field_dict["plan_component_id"] = plan_component_id
+        if offering_component_type is not UNSET:
+            field_dict["offering_component_type"] = offering_component_type
+        if offering_component_name is not UNSET:
+            field_dict["offering_component_name"] = offering_component_name
+        if resource_limit_periods is not UNSET:
+            field_dict["resource_limit_periods"] = resource_limit_periods
 
         return field_dict
 
@@ -103,33 +125,53 @@ class InvoiceItemDetails:
         from ..models.resource_limit_period import ResourceLimitPeriod
 
         d = dict(src_dict)
-        resource_name = d.pop("resource_name")
+        resource_name = d.pop("resource_name", UNSET)
 
-        resource_uuid = UUID(d.pop("resource_uuid"))
+        _resource_uuid = d.pop("resource_uuid", UNSET)
+        resource_uuid: Union[Unset, UUID]
+        if isinstance(_resource_uuid, Unset):
+            resource_uuid = UNSET
+        else:
+            resource_uuid = UUID(_resource_uuid)
 
-        plan_name = d.pop("plan_name")
+        plan_name = d.pop("plan_name", UNSET)
 
-        plan_uuid = UUID(d.pop("plan_uuid"))
+        _plan_uuid = d.pop("plan_uuid", UNSET)
+        plan_uuid: Union[Unset, UUID]
+        if isinstance(_plan_uuid, Unset):
+            plan_uuid = UNSET
+        else:
+            plan_uuid = UUID(_plan_uuid)
 
-        offering_type = d.pop("offering_type")
+        offering_type = d.pop("offering_type", UNSET)
 
-        offering_name = d.pop("offering_name")
+        offering_name = d.pop("offering_name", UNSET)
 
-        offering_uuid = UUID(d.pop("offering_uuid"))
+        _offering_uuid = d.pop("offering_uuid", UNSET)
+        offering_uuid: Union[Unset, UUID]
+        if isinstance(_offering_uuid, Unset):
+            offering_uuid = UNSET
+        else:
+            offering_uuid = UUID(_offering_uuid)
 
-        service_provider_name = d.pop("service_provider_name")
+        service_provider_name = d.pop("service_provider_name", UNSET)
 
-        service_provider_uuid = UUID(d.pop("service_provider_uuid"))
+        _service_provider_uuid = d.pop("service_provider_uuid", UNSET)
+        service_provider_uuid: Union[Unset, UUID]
+        if isinstance(_service_provider_uuid, Unset):
+            service_provider_uuid = UNSET
+        else:
+            service_provider_uuid = UUID(_service_provider_uuid)
 
-        plan_component_id = d.pop("plan_component_id")
+        plan_component_id = d.pop("plan_component_id", UNSET)
 
-        offering_component_type = d.pop("offering_component_type")
+        offering_component_type = d.pop("offering_component_type", UNSET)
 
-        offering_component_name = d.pop("offering_component_name")
+        offering_component_name = d.pop("offering_component_name", UNSET)
 
         resource_limit_periods = []
-        _resource_limit_periods = d.pop("resource_limit_periods")
-        for resource_limit_periods_item_data in _resource_limit_periods:
+        _resource_limit_periods = d.pop("resource_limit_periods", UNSET)
+        for resource_limit_periods_item_data in _resource_limit_periods or []:
             resource_limit_periods_item = ResourceLimitPeriod.from_dict(resource_limit_periods_item_data)
 
             resource_limit_periods.append(resource_limit_periods_item)

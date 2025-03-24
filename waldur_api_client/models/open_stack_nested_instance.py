@@ -14,46 +14,44 @@ T = TypeVar("T", bound="OpenStackNestedInstance")
 class OpenStackNestedInstance:
     """
     Attributes:
-        name (str):
-        uuid (UUID):
         backend_id (Union[None, Unset, str]):
+        name (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
     """
 
-    name: str
-    uuid: UUID
     backend_id: Union[None, Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
-
-        uuid = str(self.uuid)
-
         backend_id: Union[None, Unset, str]
         if isinstance(self.backend_id, Unset):
             backend_id = UNSET
         else:
             backend_id = self.backend_id
 
+        name = self.name
+
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-                "uuid": uuid,
-            }
-        )
+        field_dict.update({})
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
+        if name is not UNSET:
+            field_dict["name"] = name
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name")
-
-        uuid = UUID(d.pop("uuid"))
 
         def _parse_backend_id(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -64,10 +62,19 @@ class OpenStackNestedInstance:
 
         backend_id = _parse_backend_id(d.pop("backend_id", UNSET))
 
+        name = d.pop("name", UNSET)
+
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
+
         open_stack_nested_instance = cls(
+            backend_id=backend_id,
             name=name,
             uuid=uuid,
-            backend_id=backend_id,
         )
 
         open_stack_nested_instance.additional_properties = d

@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="IssueReference")
 
@@ -11,12 +13,12 @@ T = TypeVar("T", bound="IssueReference")
 class IssueReference:
     """
     Attributes:
-        key (str):
-        uuid (str):
+        key (Union[Unset, str]):
+        uuid (Union[Unset, str]):
     """
 
-    key: str
-    uuid: str
+    key: Union[Unset, str] = UNSET
+    uuid: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -26,21 +28,20 @@ class IssueReference:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "key": key,
-                "uuid": uuid,
-            }
-        )
+        field_dict.update({})
+        if key is not UNSET:
+            field_dict["key"] = key
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        key = d.pop("key")
+        key = d.pop("key", UNSET)
 
-        uuid = d.pop("uuid")
+        uuid = d.pop("uuid", UNSET)
 
         issue_reference = cls(
             key=key,

@@ -16,76 +16,81 @@ T = TypeVar("T", bound="OfferingUser")
 class OfferingUser:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        user (str):
-        offering (str):
-        offering_uuid (UUID):
-        offering_name (str):
-        user_uuid (UUID):
-        user_username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_ characters
-        user_full_name (str):
-        created (datetime.datetime):
-        modified (datetime.datetime):
-        customer_uuid (UUID):
-        customer_name (str):
-        is_restricted (bool): Signal to service if the user account is restricted or not
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        user (Union[Unset, str]):
+        offering (Union[Unset, str]):
         username (Union[None, Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
+        offering_name (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
+        user_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
+            characters
+        user_full_name (Union[Unset, str]):
+        created (Union[Unset, datetime.datetime]):
+        modified (Union[Unset, datetime.datetime]):
         propagation_date (Union[None, Unset, datetime.datetime]):
+        customer_uuid (Union[Unset, UUID]):
+        customer_name (Union[Unset, str]):
+        is_restricted (Union[Unset, bool]): Signal to service if the user account is restricted or not
     """
 
-    url: str
-    uuid: UUID
-    user: str
-    offering: str
-    offering_uuid: UUID
-    offering_name: str
-    user_uuid: UUID
-    user_username: str
-    user_full_name: str
-    created: datetime.datetime
-    modified: datetime.datetime
-    customer_uuid: UUID
-    customer_name: str
-    is_restricted: bool
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    user: Union[Unset, str] = UNSET
+    offering: Union[Unset, str] = UNSET
     username: Union[None, Unset, str] = UNSET
+    offering_uuid: Union[Unset, UUID] = UNSET
+    offering_name: Union[Unset, str] = UNSET
+    user_uuid: Union[Unset, UUID] = UNSET
+    user_username: Union[Unset, str] = UNSET
+    user_full_name: Union[Unset, str] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
+    modified: Union[Unset, datetime.datetime] = UNSET
     propagation_date: Union[None, Unset, datetime.datetime] = UNSET
+    customer_uuid: Union[Unset, UUID] = UNSET
+    customer_name: Union[Unset, str] = UNSET
+    is_restricted: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         user = self.user
 
         offering = self.offering
-
-        offering_uuid = str(self.offering_uuid)
-
-        offering_name = self.offering_name
-
-        user_uuid = str(self.user_uuid)
-
-        user_username = self.user_username
-
-        user_full_name = self.user_full_name
-
-        created = self.created.isoformat()
-
-        modified = self.modified.isoformat()
-
-        customer_uuid = str(self.customer_uuid)
-
-        customer_name = self.customer_name
-
-        is_restricted = self.is_restricted
 
         username: Union[None, Unset, str]
         if isinstance(self.username, Unset):
             username = UNSET
         else:
             username = self.username
+
+        offering_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.offering_uuid, Unset):
+            offering_uuid = str(self.offering_uuid)
+
+        offering_name = self.offering_name
+
+        user_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.user_uuid, Unset):
+            user_uuid = str(self.user_uuid)
+
+        user_username = self.user_username
+
+        user_full_name = self.user_full_name
+
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
+
+        modified: Union[Unset, str] = UNSET
+        if not isinstance(self.modified, Unset):
+            modified = self.modified.isoformat()
 
         propagation_date: Union[None, Unset, str]
         if isinstance(self.propagation_date, Unset):
@@ -95,63 +100,67 @@ class OfferingUser:
         else:
             propagation_date = self.propagation_date
 
+        customer_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.customer_uuid, Unset):
+            customer_uuid = str(self.customer_uuid)
+
+        customer_name = self.customer_name
+
+        is_restricted = self.is_restricted
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "user": user,
-                "offering": offering,
-                "offering_uuid": offering_uuid,
-                "offering_name": offering_name,
-                "user_uuid": user_uuid,
-                "user_username": user_username,
-                "user_full_name": user_full_name,
-                "created": created,
-                "modified": modified,
-                "customer_uuid": customer_uuid,
-                "customer_name": customer_name,
-                "is_restricted": is_restricted,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if user is not UNSET:
+            field_dict["user"] = user
+        if offering is not UNSET:
+            field_dict["offering"] = offering
         if username is not UNSET:
             field_dict["username"] = username
+        if offering_uuid is not UNSET:
+            field_dict["offering_uuid"] = offering_uuid
+        if offering_name is not UNSET:
+            field_dict["offering_name"] = offering_name
+        if user_uuid is not UNSET:
+            field_dict["user_uuid"] = user_uuid
+        if user_username is not UNSET:
+            field_dict["user_username"] = user_username
+        if user_full_name is not UNSET:
+            field_dict["user_full_name"] = user_full_name
+        if created is not UNSET:
+            field_dict["created"] = created
+        if modified is not UNSET:
+            field_dict["modified"] = modified
         if propagation_date is not UNSET:
             field_dict["propagation_date"] = propagation_date
+        if customer_uuid is not UNSET:
+            field_dict["customer_uuid"] = customer_uuid
+        if customer_name is not UNSET:
+            field_dict["customer_name"] = customer_name
+        if is_restricted is not UNSET:
+            field_dict["is_restricted"] = is_restricted
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        user = d.pop("user")
+        user = d.pop("user", UNSET)
 
-        offering = d.pop("offering")
-
-        offering_uuid = UUID(d.pop("offering_uuid"))
-
-        offering_name = d.pop("offering_name")
-
-        user_uuid = UUID(d.pop("user_uuid"))
-
-        user_username = d.pop("user_username")
-
-        user_full_name = d.pop("user_full_name")
-
-        created = isoparse(d.pop("created"))
-
-        modified = isoparse(d.pop("modified"))
-
-        customer_uuid = UUID(d.pop("customer_uuid"))
-
-        customer_name = d.pop("customer_name")
-
-        is_restricted = d.pop("is_restricted")
+        offering = d.pop("offering", UNSET)
 
         def _parse_username(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -161,6 +170,40 @@ class OfferingUser:
             return cast(Union[None, Unset, str], data)
 
         username = _parse_username(d.pop("username", UNSET))
+
+        _offering_uuid = d.pop("offering_uuid", UNSET)
+        offering_uuid: Union[Unset, UUID]
+        if isinstance(_offering_uuid, Unset):
+            offering_uuid = UNSET
+        else:
+            offering_uuid = UUID(_offering_uuid)
+
+        offering_name = d.pop("offering_name", UNSET)
+
+        _user_uuid = d.pop("user_uuid", UNSET)
+        user_uuid: Union[Unset, UUID]
+        if isinstance(_user_uuid, Unset):
+            user_uuid = UNSET
+        else:
+            user_uuid = UUID(_user_uuid)
+
+        user_username = d.pop("user_username", UNSET)
+
+        user_full_name = d.pop("user_full_name", UNSET)
+
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
+
+        _modified = d.pop("modified", UNSET)
+        modified: Union[Unset, datetime.datetime]
+        if isinstance(_modified, Unset):
+            modified = UNSET
+        else:
+            modified = isoparse(_modified)
 
         def _parse_propagation_date(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
@@ -179,11 +222,23 @@ class OfferingUser:
 
         propagation_date = _parse_propagation_date(d.pop("propagation_date", UNSET))
 
+        _customer_uuid = d.pop("customer_uuid", UNSET)
+        customer_uuid: Union[Unset, UUID]
+        if isinstance(_customer_uuid, Unset):
+            customer_uuid = UNSET
+        else:
+            customer_uuid = UUID(_customer_uuid)
+
+        customer_name = d.pop("customer_name", UNSET)
+
+        is_restricted = d.pop("is_restricted", UNSET)
+
         offering_user = cls(
             url=url,
             uuid=uuid,
             user=user,
             offering=offering,
+            username=username,
             offering_uuid=offering_uuid,
             offering_name=offering_name,
             user_uuid=user_uuid,
@@ -191,11 +246,10 @@ class OfferingUser:
             user_full_name=user_full_name,
             created=created,
             modified=modified,
+            propagation_date=propagation_date,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
             is_restricted=is_restricted,
-            username=username,
-            propagation_date=propagation_date,
         )
 
         offering_user.additional_properties = d

@@ -26,118 +26,124 @@ T = TypeVar("T", bound="OpenStackPort")
 class OpenStackPort:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        name (str):
-        service_name (str):
-        service_settings (str):
-        service_settings_uuid (UUID):
-        service_settings_state (str):
-        service_settings_error_message (str):
-        project (str):
-        project_name (str):
-        project_uuid (UUID):
-        customer (str):
-        customer_name (str):
-        customer_native_name (str):
-        customer_abbreviation (str):
-        error_message (str):
-        error_traceback (str):
-        resource_type (str):
-        state (CoreStates):
-        created (datetime.datetime):
-        modified (datetime.datetime):
-        backend_id (str):
-        access_url (Union[None, str]):
-        allowed_address_pairs (list['OpenStackAllowedAddressPair']):
-        tenant (str):
-        tenant_name (str):
-        tenant_uuid (UUID):
-        network_name (str):
-        network_uuid (UUID):
-        floating_ips (list[str]):
-        device_id (Union[None, str]):
-        device_owner (Union[None, str]):
-        port_security_enabled (bool):
-        security_groups (list['OpenStackPortNestedSecurityGroup']):
-        marketplace_offering_uuid (str):
-        marketplace_offering_name (str):
-        marketplace_offering_plugin_options (OpenStackPortMarketplaceOfferingPluginOptions):
-        marketplace_category_uuid (str):
-        marketplace_category_name (str):
-        marketplace_resource_uuid (str):
-        marketplace_plan_uuid (str):
-        marketplace_resource_state (str):
-        is_usage_based (bool):
-        is_limit_based (bool):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
         description (Union[Unset, str]):
+        service_name (Union[Unset, str]):
+        service_settings (Union[Unset, str]):
+        service_settings_uuid (Union[Unset, UUID]):
+        service_settings_state (Union[Unset, str]):
+        service_settings_error_message (Union[Unset, str]):
+        project (Union[Unset, str]):
+        project_name (Union[Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        customer (Union[Unset, str]):
+        customer_name (Union[Unset, str]):
+        customer_native_name (Union[Unset, str]):
+        customer_abbreviation (Union[Unset, str]):
+        error_message (Union[Unset, str]):
+        error_traceback (Union[Unset, str]):
+        resource_type (Union[Unset, str]):
+        state (Union[Unset, CoreStates]):
+        created (Union[Unset, datetime.datetime]):
+        modified (Union[Unset, datetime.datetime]):
+        backend_id (Union[Unset, str]):
+        access_url (Union[None, Unset, str]):
         fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
         mac_address (Union[Unset, str]):
+        allowed_address_pairs (Union[Unset, list['OpenStackAllowedAddressPair']]):
+        tenant (Union[Unset, str]):
+        tenant_name (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
         network (Union[None, Unset, str]):
+        network_name (Union[Unset, str]):
+        network_uuid (Union[Unset, UUID]):
+        floating_ips (Union[Unset, list[str]]):
+        device_id (Union[None, Unset, str]):
+        device_owner (Union[None, Unset, str]):
+        port_security_enabled (Union[Unset, bool]):
+        security_groups (Union[Unset, list['OpenStackPortNestedSecurityGroup']]):
+        marketplace_offering_uuid (Union[Unset, str]):
+        marketplace_offering_name (Union[Unset, str]):
+        marketplace_offering_plugin_options (Union[Unset, OpenStackPortMarketplaceOfferingPluginOptions]):
+        marketplace_category_uuid (Union[Unset, str]):
+        marketplace_category_name (Union[Unset, str]):
+        marketplace_resource_uuid (Union[Unset, str]):
+        marketplace_plan_uuid (Union[Unset, str]):
+        marketplace_resource_state (Union[Unset, str]):
+        is_usage_based (Union[Unset, bool]):
+        is_limit_based (Union[Unset, bool]):
     """
 
-    url: str
-    uuid: UUID
-    name: str
-    service_name: str
-    service_settings: str
-    service_settings_uuid: UUID
-    service_settings_state: str
-    service_settings_error_message: str
-    project: str
-    project_name: str
-    project_uuid: UUID
-    customer: str
-    customer_name: str
-    customer_native_name: str
-    customer_abbreviation: str
-    error_message: str
-    error_traceback: str
-    resource_type: str
-    state: CoreStates
-    created: datetime.datetime
-    modified: datetime.datetime
-    backend_id: str
-    access_url: Union[None, str]
-    allowed_address_pairs: list["OpenStackAllowedAddressPair"]
-    tenant: str
-    tenant_name: str
-    tenant_uuid: UUID
-    network_name: str
-    network_uuid: UUID
-    floating_ips: list[str]
-    device_id: Union[None, str]
-    device_owner: Union[None, str]
-    port_security_enabled: bool
-    security_groups: list["OpenStackPortNestedSecurityGroup"]
-    marketplace_offering_uuid: str
-    marketplace_offering_name: str
-    marketplace_offering_plugin_options: "OpenStackPortMarketplaceOfferingPluginOptions"
-    marketplace_category_uuid: str
-    marketplace_category_name: str
-    marketplace_resource_uuid: str
-    marketplace_plan_uuid: str
-    marketplace_resource_state: str
-    is_usage_based: bool
-    is_limit_based: bool
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
+    service_name: Union[Unset, str] = UNSET
+    service_settings: Union[Unset, str] = UNSET
+    service_settings_uuid: Union[Unset, UUID] = UNSET
+    service_settings_state: Union[Unset, str] = UNSET
+    service_settings_error_message: Union[Unset, str] = UNSET
+    project: Union[Unset, str] = UNSET
+    project_name: Union[Unset, str] = UNSET
+    project_uuid: Union[Unset, UUID] = UNSET
+    customer: Union[Unset, str] = UNSET
+    customer_name: Union[Unset, str] = UNSET
+    customer_native_name: Union[Unset, str] = UNSET
+    customer_abbreviation: Union[Unset, str] = UNSET
+    error_message: Union[Unset, str] = UNSET
+    error_traceback: Union[Unset, str] = UNSET
+    resource_type: Union[Unset, str] = UNSET
+    state: Union[Unset, CoreStates] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
+    modified: Union[Unset, datetime.datetime] = UNSET
+    backend_id: Union[Unset, str] = UNSET
+    access_url: Union[None, Unset, str] = UNSET
     fixed_ips: Union[Unset, list["OpenStackFixedIp"]] = UNSET
     mac_address: Union[Unset, str] = UNSET
+    allowed_address_pairs: Union[Unset, list["OpenStackAllowedAddressPair"]] = UNSET
+    tenant: Union[Unset, str] = UNSET
+    tenant_name: Union[Unset, str] = UNSET
+    tenant_uuid: Union[Unset, UUID] = UNSET
     network: Union[None, Unset, str] = UNSET
+    network_name: Union[Unset, str] = UNSET
+    network_uuid: Union[Unset, UUID] = UNSET
+    floating_ips: Union[Unset, list[str]] = UNSET
+    device_id: Union[None, Unset, str] = UNSET
+    device_owner: Union[None, Unset, str] = UNSET
+    port_security_enabled: Union[Unset, bool] = UNSET
+    security_groups: Union[Unset, list["OpenStackPortNestedSecurityGroup"]] = UNSET
+    marketplace_offering_uuid: Union[Unset, str] = UNSET
+    marketplace_offering_name: Union[Unset, str] = UNSET
+    marketplace_offering_plugin_options: Union[Unset, "OpenStackPortMarketplaceOfferingPluginOptions"] = UNSET
+    marketplace_category_uuid: Union[Unset, str] = UNSET
+    marketplace_category_name: Union[Unset, str] = UNSET
+    marketplace_resource_uuid: Union[Unset, str] = UNSET
+    marketplace_plan_uuid: Union[Unset, str] = UNSET
+    marketplace_resource_state: Union[Unset, str] = UNSET
+    is_usage_based: Union[Unset, bool] = UNSET
+    is_limit_based: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
+
+        description = self.description
 
         service_name = self.service_name
 
         service_settings = self.service_settings
 
-        service_settings_uuid = str(self.service_settings_uuid)
+        service_settings_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.service_settings_uuid, Unset):
+            service_settings_uuid = str(self.service_settings_uuid)
 
         service_settings_state = self.service_settings_state
 
@@ -147,7 +153,9 @@ class OpenStackPort:
 
         project_name = self.project_name
 
-        project_uuid = str(self.project_uuid)
+        project_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.project_uuid, Unset):
+            project_uuid = str(self.project_uuid)
 
         customer = self.customer
 
@@ -163,52 +171,94 @@ class OpenStackPort:
 
         resource_type = self.resource_type
 
-        state = self.state.value
+        state: Union[Unset, str] = UNSET
+        if not isinstance(self.state, Unset):
+            state = self.state.value
 
-        created = self.created.isoformat()
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
-        modified = self.modified.isoformat()
+        modified: Union[Unset, str] = UNSET
+        if not isinstance(self.modified, Unset):
+            modified = self.modified.isoformat()
 
         backend_id = self.backend_id
 
-        access_url: Union[None, str]
-        access_url = self.access_url
+        access_url: Union[None, Unset, str]
+        if isinstance(self.access_url, Unset):
+            access_url = UNSET
+        else:
+            access_url = self.access_url
 
-        allowed_address_pairs = []
-        for allowed_address_pairs_item_data in self.allowed_address_pairs:
-            allowed_address_pairs_item = allowed_address_pairs_item_data.to_dict()
-            allowed_address_pairs.append(allowed_address_pairs_item)
+        fixed_ips: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.fixed_ips, Unset):
+            fixed_ips = []
+            for fixed_ips_item_data in self.fixed_ips:
+                fixed_ips_item = fixed_ips_item_data.to_dict()
+                fixed_ips.append(fixed_ips_item)
+
+        mac_address = self.mac_address
+
+        allowed_address_pairs: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.allowed_address_pairs, Unset):
+            allowed_address_pairs = []
+            for allowed_address_pairs_item_data in self.allowed_address_pairs:
+                allowed_address_pairs_item = allowed_address_pairs_item_data.to_dict()
+                allowed_address_pairs.append(allowed_address_pairs_item)
 
         tenant = self.tenant
 
         tenant_name = self.tenant_name
 
-        tenant_uuid = str(self.tenant_uuid)
+        tenant_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.tenant_uuid, Unset):
+            tenant_uuid = str(self.tenant_uuid)
+
+        network: Union[None, Unset, str]
+        if isinstance(self.network, Unset):
+            network = UNSET
+        else:
+            network = self.network
 
         network_name = self.network_name
 
-        network_uuid = str(self.network_uuid)
+        network_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.network_uuid, Unset):
+            network_uuid = str(self.network_uuid)
 
-        floating_ips = self.floating_ips
+        floating_ips: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.floating_ips, Unset):
+            floating_ips = self.floating_ips
 
-        device_id: Union[None, str]
-        device_id = self.device_id
+        device_id: Union[None, Unset, str]
+        if isinstance(self.device_id, Unset):
+            device_id = UNSET
+        else:
+            device_id = self.device_id
 
-        device_owner: Union[None, str]
-        device_owner = self.device_owner
+        device_owner: Union[None, Unset, str]
+        if isinstance(self.device_owner, Unset):
+            device_owner = UNSET
+        else:
+            device_owner = self.device_owner
 
         port_security_enabled = self.port_security_enabled
 
-        security_groups = []
-        for security_groups_item_data in self.security_groups:
-            security_groups_item = security_groups_item_data.to_dict()
-            security_groups.append(security_groups_item)
+        security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.security_groups, Unset):
+            security_groups = []
+            for security_groups_item_data in self.security_groups:
+                security_groups_item = security_groups_item_data.to_dict()
+                security_groups.append(security_groups_item)
 
         marketplace_offering_uuid = self.marketplace_offering_uuid
 
         marketplace_offering_name = self.marketplace_offering_name
 
-        marketplace_offering_plugin_options = self.marketplace_offering_plugin_options.to_dict()
+        marketplace_offering_plugin_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.marketplace_offering_plugin_options, Unset):
+            marketplace_offering_plugin_options = self.marketplace_offering_plugin_options.to_dict()
 
         marketplace_category_uuid = self.marketplace_category_uuid
 
@@ -224,81 +274,105 @@ class OpenStackPort:
 
         is_limit_based = self.is_limit_based
 
-        description = self.description
-
-        fixed_ips: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.fixed_ips, Unset):
-            fixed_ips = []
-            for fixed_ips_item_data in self.fixed_ips:
-                fixed_ips_item = fixed_ips_item_data.to_dict()
-                fixed_ips.append(fixed_ips_item)
-
-        mac_address = self.mac_address
-
-        network: Union[None, Unset, str]
-        if isinstance(self.network, Unset):
-            network = UNSET
-        else:
-            network = self.network
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "name": name,
-                "service_name": service_name,
-                "service_settings": service_settings,
-                "service_settings_uuid": service_settings_uuid,
-                "service_settings_state": service_settings_state,
-                "service_settings_error_message": service_settings_error_message,
-                "project": project,
-                "project_name": project_name,
-                "project_uuid": project_uuid,
-                "customer": customer,
-                "customer_name": customer_name,
-                "customer_native_name": customer_native_name,
-                "customer_abbreviation": customer_abbreviation,
-                "error_message": error_message,
-                "error_traceback": error_traceback,
-                "resource_type": resource_type,
-                "state": state,
-                "created": created,
-                "modified": modified,
-                "backend_id": backend_id,
-                "access_url": access_url,
-                "allowed_address_pairs": allowed_address_pairs,
-                "tenant": tenant,
-                "tenant_name": tenant_name,
-                "tenant_uuid": tenant_uuid,
-                "network_name": network_name,
-                "network_uuid": network_uuid,
-                "floating_ips": floating_ips,
-                "device_id": device_id,
-                "device_owner": device_owner,
-                "port_security_enabled": port_security_enabled,
-                "security_groups": security_groups,
-                "marketplace_offering_uuid": marketplace_offering_uuid,
-                "marketplace_offering_name": marketplace_offering_name,
-                "marketplace_offering_plugin_options": marketplace_offering_plugin_options,
-                "marketplace_category_uuid": marketplace_category_uuid,
-                "marketplace_category_name": marketplace_category_name,
-                "marketplace_resource_uuid": marketplace_resource_uuid,
-                "marketplace_plan_uuid": marketplace_plan_uuid,
-                "marketplace_resource_state": marketplace_resource_state,
-                "is_usage_based": is_usage_based,
-                "is_limit_based": is_limit_based,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
+        if service_name is not UNSET:
+            field_dict["service_name"] = service_name
+        if service_settings is not UNSET:
+            field_dict["service_settings"] = service_settings
+        if service_settings_uuid is not UNSET:
+            field_dict["service_settings_uuid"] = service_settings_uuid
+        if service_settings_state is not UNSET:
+            field_dict["service_settings_state"] = service_settings_state
+        if service_settings_error_message is not UNSET:
+            field_dict["service_settings_error_message"] = service_settings_error_message
+        if project is not UNSET:
+            field_dict["project"] = project
+        if project_name is not UNSET:
+            field_dict["project_name"] = project_name
+        if project_uuid is not UNSET:
+            field_dict["project_uuid"] = project_uuid
+        if customer is not UNSET:
+            field_dict["customer"] = customer
+        if customer_name is not UNSET:
+            field_dict["customer_name"] = customer_name
+        if customer_native_name is not UNSET:
+            field_dict["customer_native_name"] = customer_native_name
+        if customer_abbreviation is not UNSET:
+            field_dict["customer_abbreviation"] = customer_abbreviation
+        if error_message is not UNSET:
+            field_dict["error_message"] = error_message
+        if error_traceback is not UNSET:
+            field_dict["error_traceback"] = error_traceback
+        if resource_type is not UNSET:
+            field_dict["resource_type"] = resource_type
+        if state is not UNSET:
+            field_dict["state"] = state
+        if created is not UNSET:
+            field_dict["created"] = created
+        if modified is not UNSET:
+            field_dict["modified"] = modified
+        if backend_id is not UNSET:
+            field_dict["backend_id"] = backend_id
+        if access_url is not UNSET:
+            field_dict["access_url"] = access_url
         if fixed_ips is not UNSET:
             field_dict["fixed_ips"] = fixed_ips
         if mac_address is not UNSET:
             field_dict["mac_address"] = mac_address
+        if allowed_address_pairs is not UNSET:
+            field_dict["allowed_address_pairs"] = allowed_address_pairs
+        if tenant is not UNSET:
+            field_dict["tenant"] = tenant
+        if tenant_name is not UNSET:
+            field_dict["tenant_name"] = tenant_name
+        if tenant_uuid is not UNSET:
+            field_dict["tenant_uuid"] = tenant_uuid
         if network is not UNSET:
             field_dict["network"] = network
+        if network_name is not UNSET:
+            field_dict["network_name"] = network_name
+        if network_uuid is not UNSET:
+            field_dict["network_uuid"] = network_uuid
+        if floating_ips is not UNSET:
+            field_dict["floating_ips"] = floating_ips
+        if device_id is not UNSET:
+            field_dict["device_id"] = device_id
+        if device_owner is not UNSET:
+            field_dict["device_owner"] = device_owner
+        if port_security_enabled is not UNSET:
+            field_dict["port_security_enabled"] = port_security_enabled
+        if security_groups is not UNSET:
+            field_dict["security_groups"] = security_groups
+        if marketplace_offering_uuid is not UNSET:
+            field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
+        if marketplace_offering_name is not UNSET:
+            field_dict["marketplace_offering_name"] = marketplace_offering_name
+        if marketplace_offering_plugin_options is not UNSET:
+            field_dict["marketplace_offering_plugin_options"] = marketplace_offering_plugin_options
+        if marketplace_category_uuid is not UNSET:
+            field_dict["marketplace_category_uuid"] = marketplace_category_uuid
+        if marketplace_category_name is not UNSET:
+            field_dict["marketplace_category_name"] = marketplace_category_name
+        if marketplace_resource_uuid is not UNSET:
+            field_dict["marketplace_resource_uuid"] = marketplace_resource_uuid
+        if marketplace_plan_uuid is not UNSET:
+            field_dict["marketplace_plan_uuid"] = marketplace_plan_uuid
+        if marketplace_resource_state is not UNSET:
+            field_dict["marketplace_resource_state"] = marketplace_resource_state
+        if is_usage_based is not UNSET:
+            field_dict["is_usage_based"] = is_usage_based
+        if is_limit_based is not UNSET:
+            field_dict["is_limit_based"] = is_limit_based
 
         return field_dict
 
@@ -312,122 +386,90 @@ class OpenStackPort:
         from ..models.open_stack_port_nested_security_group import OpenStackPortNestedSecurityGroup
 
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
-
-        service_name = d.pop("service_name")
-
-        service_settings = d.pop("service_settings")
-
-        service_settings_uuid = UUID(d.pop("service_settings_uuid"))
-
-        service_settings_state = d.pop("service_settings_state")
-
-        service_settings_error_message = d.pop("service_settings_error_message")
-
-        project = d.pop("project")
-
-        project_name = d.pop("project_name")
-
-        project_uuid = UUID(d.pop("project_uuid"))
-
-        customer = d.pop("customer")
-
-        customer_name = d.pop("customer_name")
-
-        customer_native_name = d.pop("customer_native_name")
-
-        customer_abbreviation = d.pop("customer_abbreviation")
-
-        error_message = d.pop("error_message")
-
-        error_traceback = d.pop("error_traceback")
-
-        resource_type = d.pop("resource_type")
-
-        state = CoreStates(d.pop("state"))
-
-        created = isoparse(d.pop("created"))
-
-        modified = isoparse(d.pop("modified"))
-
-        backend_id = d.pop("backend_id")
-
-        def _parse_access_url(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        access_url = _parse_access_url(d.pop("access_url"))
-
-        allowed_address_pairs = []
-        _allowed_address_pairs = d.pop("allowed_address_pairs")
-        for allowed_address_pairs_item_data in _allowed_address_pairs:
-            allowed_address_pairs_item = OpenStackAllowedAddressPair.from_dict(allowed_address_pairs_item_data)
-
-            allowed_address_pairs.append(allowed_address_pairs_item)
-
-        tenant = d.pop("tenant")
-
-        tenant_name = d.pop("tenant_name")
-
-        tenant_uuid = UUID(d.pop("tenant_uuid"))
-
-        network_name = d.pop("network_name")
-
-        network_uuid = UUID(d.pop("network_uuid"))
-
-        floating_ips = cast(list[str], d.pop("floating_ips"))
-
-        def _parse_device_id(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        device_id = _parse_device_id(d.pop("device_id"))
-
-        def _parse_device_owner(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        device_owner = _parse_device_owner(d.pop("device_owner"))
-
-        port_security_enabled = d.pop("port_security_enabled")
-
-        security_groups = []
-        _security_groups = d.pop("security_groups")
-        for security_groups_item_data in _security_groups:
-            security_groups_item = OpenStackPortNestedSecurityGroup.from_dict(security_groups_item_data)
-
-            security_groups.append(security_groups_item)
-
-        marketplace_offering_uuid = d.pop("marketplace_offering_uuid")
-
-        marketplace_offering_name = d.pop("marketplace_offering_name")
-
-        marketplace_offering_plugin_options = OpenStackPortMarketplaceOfferingPluginOptions.from_dict(
-            d.pop("marketplace_offering_plugin_options")
-        )
-
-        marketplace_category_uuid = d.pop("marketplace_category_uuid")
-
-        marketplace_category_name = d.pop("marketplace_category_name")
-
-        marketplace_resource_uuid = d.pop("marketplace_resource_uuid")
-
-        marketplace_plan_uuid = d.pop("marketplace_plan_uuid")
-
-        marketplace_resource_state = d.pop("marketplace_resource_state")
-
-        is_usage_based = d.pop("is_usage_based")
-
-        is_limit_based = d.pop("is_limit_based")
+        name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
+
+        service_name = d.pop("service_name", UNSET)
+
+        service_settings = d.pop("service_settings", UNSET)
+
+        _service_settings_uuid = d.pop("service_settings_uuid", UNSET)
+        service_settings_uuid: Union[Unset, UUID]
+        if isinstance(_service_settings_uuid, Unset):
+            service_settings_uuid = UNSET
+        else:
+            service_settings_uuid = UUID(_service_settings_uuid)
+
+        service_settings_state = d.pop("service_settings_state", UNSET)
+
+        service_settings_error_message = d.pop("service_settings_error_message", UNSET)
+
+        project = d.pop("project", UNSET)
+
+        project_name = d.pop("project_name", UNSET)
+
+        _project_uuid = d.pop("project_uuid", UNSET)
+        project_uuid: Union[Unset, UUID]
+        if isinstance(_project_uuid, Unset):
+            project_uuid = UNSET
+        else:
+            project_uuid = UUID(_project_uuid)
+
+        customer = d.pop("customer", UNSET)
+
+        customer_name = d.pop("customer_name", UNSET)
+
+        customer_native_name = d.pop("customer_native_name", UNSET)
+
+        customer_abbreviation = d.pop("customer_abbreviation", UNSET)
+
+        error_message = d.pop("error_message", UNSET)
+
+        error_traceback = d.pop("error_traceback", UNSET)
+
+        resource_type = d.pop("resource_type", UNSET)
+
+        _state = d.pop("state", UNSET)
+        state: Union[Unset, CoreStates]
+        if isinstance(_state, Unset):
+            state = UNSET
+        else:
+            state = CoreStates(_state)
+
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
+
+        _modified = d.pop("modified", UNSET)
+        modified: Union[Unset, datetime.datetime]
+        if isinstance(_modified, Unset):
+            modified = UNSET
+        else:
+            modified = isoparse(_modified)
+
+        backend_id = d.pop("backend_id", UNSET)
+
+        def _parse_access_url(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        access_url = _parse_access_url(d.pop("access_url", UNSET))
 
         fixed_ips = []
         _fixed_ips = d.pop("fixed_ips", UNSET)
@@ -438,6 +480,24 @@ class OpenStackPort:
 
         mac_address = d.pop("mac_address", UNSET)
 
+        allowed_address_pairs = []
+        _allowed_address_pairs = d.pop("allowed_address_pairs", UNSET)
+        for allowed_address_pairs_item_data in _allowed_address_pairs or []:
+            allowed_address_pairs_item = OpenStackAllowedAddressPair.from_dict(allowed_address_pairs_item_data)
+
+            allowed_address_pairs.append(allowed_address_pairs_item)
+
+        tenant = d.pop("tenant", UNSET)
+
+        tenant_name = d.pop("tenant_name", UNSET)
+
+        _tenant_uuid = d.pop("tenant_uuid", UNSET)
+        tenant_uuid: Union[Unset, UUID]
+        if isinstance(_tenant_uuid, Unset):
+            tenant_uuid = UNSET
+        else:
+            tenant_uuid = UUID(_tenant_uuid)
+
         def _parse_network(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -447,10 +507,76 @@ class OpenStackPort:
 
         network = _parse_network(d.pop("network", UNSET))
 
+        network_name = d.pop("network_name", UNSET)
+
+        _network_uuid = d.pop("network_uuid", UNSET)
+        network_uuid: Union[Unset, UUID]
+        if isinstance(_network_uuid, Unset):
+            network_uuid = UNSET
+        else:
+            network_uuid = UUID(_network_uuid)
+
+        floating_ips = cast(list[str], d.pop("floating_ips", UNSET))
+
+        def _parse_device_id(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        device_id = _parse_device_id(d.pop("device_id", UNSET))
+
+        def _parse_device_owner(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        device_owner = _parse_device_owner(d.pop("device_owner", UNSET))
+
+        port_security_enabled = d.pop("port_security_enabled", UNSET)
+
+        security_groups = []
+        _security_groups = d.pop("security_groups", UNSET)
+        for security_groups_item_data in _security_groups or []:
+            security_groups_item = OpenStackPortNestedSecurityGroup.from_dict(security_groups_item_data)
+
+            security_groups.append(security_groups_item)
+
+        marketplace_offering_uuid = d.pop("marketplace_offering_uuid", UNSET)
+
+        marketplace_offering_name = d.pop("marketplace_offering_name", UNSET)
+
+        _marketplace_offering_plugin_options = d.pop("marketplace_offering_plugin_options", UNSET)
+        marketplace_offering_plugin_options: Union[Unset, OpenStackPortMarketplaceOfferingPluginOptions]
+        if isinstance(_marketplace_offering_plugin_options, Unset):
+            marketplace_offering_plugin_options = UNSET
+        else:
+            marketplace_offering_plugin_options = OpenStackPortMarketplaceOfferingPluginOptions.from_dict(
+                _marketplace_offering_plugin_options
+            )
+
+        marketplace_category_uuid = d.pop("marketplace_category_uuid", UNSET)
+
+        marketplace_category_name = d.pop("marketplace_category_name", UNSET)
+
+        marketplace_resource_uuid = d.pop("marketplace_resource_uuid", UNSET)
+
+        marketplace_plan_uuid = d.pop("marketplace_plan_uuid", UNSET)
+
+        marketplace_resource_state = d.pop("marketplace_resource_state", UNSET)
+
+        is_usage_based = d.pop("is_usage_based", UNSET)
+
+        is_limit_based = d.pop("is_limit_based", UNSET)
+
         open_stack_port = cls(
             url=url,
             uuid=uuid,
             name=name,
+            description=description,
             service_name=service_name,
             service_settings=service_settings,
             service_settings_uuid=service_settings_uuid,
@@ -471,10 +597,13 @@ class OpenStackPort:
             modified=modified,
             backend_id=backend_id,
             access_url=access_url,
+            fixed_ips=fixed_ips,
+            mac_address=mac_address,
             allowed_address_pairs=allowed_address_pairs,
             tenant=tenant,
             tenant_name=tenant_name,
             tenant_uuid=tenant_uuid,
+            network=network,
             network_name=network_name,
             network_uuid=network_uuid,
             floating_ips=floating_ips,
@@ -492,10 +621,6 @@ class OpenStackPort:
             marketplace_resource_state=marketplace_resource_state,
             is_usage_based=is_usage_based,
             is_limit_based=is_limit_based,
-            description=description,
-            fixed_ips=fixed_ips,
-            mac_address=mac_address,
-            network=network,
         )
 
         open_stack_port.additional_properties = d

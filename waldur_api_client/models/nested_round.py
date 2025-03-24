@@ -20,11 +20,11 @@ T = TypeVar("T", bound="NestedRound")
 class NestedRound:
     """
     Attributes:
-        uuid (UUID):
-        name (str):
-        start_time (datetime.datetime):
-        cutoff_time (datetime.datetime):
-        status (StatusEnum):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
+        start_time (Union[Unset, datetime.datetime]):
+        cutoff_time (Union[Unset, datetime.datetime]):
+        status (Union[Unset, StatusEnum]):
         review_strategy (Union[Unset, ReviewStrategyEnum]):
         deciding_entity (Union[Unset, DecidingEntityEnum]):
         allocation_time (Union[Unset, AllocationTimeEnum]):
@@ -34,11 +34,11 @@ class NestedRound:
         minimum_number_of_reviewers (Union[None, Unset, int]):
     """
 
-    uuid: UUID
-    name: str
-    start_time: datetime.datetime
-    cutoff_time: datetime.datetime
-    status: StatusEnum
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
+    start_time: Union[Unset, datetime.datetime] = UNSET
+    cutoff_time: Union[Unset, datetime.datetime] = UNSET
+    status: Union[Unset, StatusEnum] = UNSET
     review_strategy: Union[Unset, ReviewStrategyEnum] = UNSET
     deciding_entity: Union[Unset, DecidingEntityEnum] = UNSET
     allocation_time: Union[Unset, AllocationTimeEnum] = UNSET
@@ -49,15 +49,23 @@ class NestedRound:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
 
-        start_time = self.start_time.isoformat()
+        start_time: Union[Unset, str] = UNSET
+        if not isinstance(self.start_time, Unset):
+            start_time = self.start_time.isoformat()
 
-        cutoff_time = self.cutoff_time.isoformat()
+        cutoff_time: Union[Unset, str] = UNSET
+        if not isinstance(self.cutoff_time, Unset):
+            cutoff_time = self.cutoff_time.isoformat()
 
-        status = self.status.value
+        status: Union[Unset, str] = UNSET
+        if not isinstance(self.status, Unset):
+            status = self.status.value
 
         review_strategy: Union[Unset, str] = UNSET
         if not isinstance(self.review_strategy, Unset):
@@ -99,15 +107,17 @@ class NestedRound:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "name": name,
-                "start_time": start_time,
-                "cutoff_time": cutoff_time,
-                "status": status,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
+        if start_time is not UNSET:
+            field_dict["start_time"] = start_time
+        if cutoff_time is not UNSET:
+            field_dict["cutoff_time"] = cutoff_time
+        if status is not UNSET:
+            field_dict["status"] = status
         if review_strategy is not UNSET:
             field_dict["review_strategy"] = review_strategy
         if deciding_entity is not UNSET:
@@ -128,15 +138,35 @@ class NestedRound:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        start_time = isoparse(d.pop("start_time"))
+        _start_time = d.pop("start_time", UNSET)
+        start_time: Union[Unset, datetime.datetime]
+        if isinstance(_start_time, Unset):
+            start_time = UNSET
+        else:
+            start_time = isoparse(_start_time)
 
-        cutoff_time = isoparse(d.pop("cutoff_time"))
+        _cutoff_time = d.pop("cutoff_time", UNSET)
+        cutoff_time: Union[Unset, datetime.datetime]
+        if isinstance(_cutoff_time, Unset):
+            cutoff_time = UNSET
+        else:
+            cutoff_time = isoparse(_cutoff_time)
 
-        status = StatusEnum(d.pop("status"))
+        _status = d.pop("status", UNSET)
+        status: Union[Unset, StatusEnum]
+        if isinstance(_status, Unset):
+            status = UNSET
+        else:
+            status = StatusEnum(_status)
 
         _review_strategy = d.pop("review_strategy", UNSET)
         review_strategy: Union[Unset, ReviewStrategyEnum]

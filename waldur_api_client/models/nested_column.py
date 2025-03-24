@@ -16,22 +16,24 @@ T = TypeVar("T", bound="NestedColumn")
 class NestedColumn:
     """
     Attributes:
-        uuid (UUID):
-        index (int): Index allows to reorder columns.
-        title (str): Title is rendered as column header.
+        uuid (Union[Unset, UUID]):
+        index (Union[Unset, int]): Index allows to reorder columns.
+        title (Union[Unset, str]): Title is rendered as column header.
         attribute (Union[Unset, str]): Resource attribute is rendered as table cell.
         widget (Union[BlankEnum, None, Unset, WidgetEnum]): Widget field allows to customise table cell rendering.
     """
 
-    uuid: UUID
-    index: int
-    title: str
+    uuid: Union[Unset, UUID] = UNSET
+    index: Union[Unset, int] = UNSET
+    title: Union[Unset, str] = UNSET
     attribute: Union[Unset, str] = UNSET
     widget: Union[BlankEnum, None, Unset, WidgetEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         index = self.index
 
@@ -51,13 +53,13 @@ class NestedColumn:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "index": index,
-                "title": title,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if index is not UNSET:
+            field_dict["index"] = index
+        if title is not UNSET:
+            field_dict["title"] = title
         if attribute is not UNSET:
             field_dict["attribute"] = attribute
         if widget is not UNSET:
@@ -68,11 +70,16 @@ class NestedColumn:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        index = d.pop("index")
+        index = d.pop("index", UNSET)
 
-        title = d.pop("title")
+        title = d.pop("title", UNSET)
 
         attribute = d.pop("attribute", UNSET)
 

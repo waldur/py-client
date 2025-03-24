@@ -22,20 +22,20 @@ T = TypeVar("T", bound="OpenStackBackupRestoration")
 class OpenStackBackupRestoration:
     """
     Attributes:
-        uuid (UUID):
-        instance (str):
-        created (datetime.datetime):
-        flavor (str):
+        uuid (Union[Unset, UUID]):
+        instance (Union[Unset, str]):
+        created (Union[Unset, datetime.datetime]):
+        flavor (Union[Unset, str]):
         name (Union[Unset, str]): New instance name. Leave blank to use source instance name.
         floating_ips (Union[Unset, list['OpenStackNestedFloatingIP']]):
         security_groups (Union[Unset, list['OpenStackNestedSecurityGroup']]):
         ports (Union[Unset, list['OpenStackNestedPort']]):
     """
 
-    uuid: UUID
-    instance: str
-    created: datetime.datetime
-    flavor: str
+    uuid: Union[Unset, UUID] = UNSET
+    instance: Union[Unset, str] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
+    flavor: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     floating_ips: Union[Unset, list["OpenStackNestedFloatingIP"]] = UNSET
     security_groups: Union[Unset, list["OpenStackNestedSecurityGroup"]] = UNSET
@@ -43,11 +43,15 @@ class OpenStackBackupRestoration:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         instance = self.instance
 
-        created = self.created.isoformat()
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
         flavor = self.flavor
 
@@ -76,14 +80,15 @@ class OpenStackBackupRestoration:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "instance": instance,
-                "created": created,
-                "flavor": flavor,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if instance is not UNSET:
+            field_dict["instance"] = instance
+        if created is not UNSET:
+            field_dict["created"] = created
+        if flavor is not UNSET:
+            field_dict["flavor"] = flavor
         if name is not UNSET:
             field_dict["name"] = name
         if floating_ips is not UNSET:
@@ -102,13 +107,23 @@ class OpenStackBackupRestoration:
         from ..models.open_stack_nested_security_group import OpenStackNestedSecurityGroup
 
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        instance = d.pop("instance")
+        instance = d.pop("instance", UNSET)
 
-        created = isoparse(d.pop("created"))
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
-        flavor = d.pop("flavor")
+        flavor = d.pop("flavor", UNSET)
 
         name = d.pop("name", UNSET)
 

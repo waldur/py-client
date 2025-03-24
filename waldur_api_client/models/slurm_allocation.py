@@ -23,108 +23,114 @@ T = TypeVar("T", bound="SlurmAllocation")
 class SlurmAllocation:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        name (str):
-        service_name (str):
-        service_settings (str):
-        service_settings_uuid (UUID):
-        service_settings_state (str):
-        service_settings_error_message (str):
-        project (str):
-        project_name (str):
-        project_uuid (UUID):
-        customer (str):
-        customer_name (str):
-        customer_native_name (str):
-        customer_abbreviation (str):
-        error_message (str):
-        error_traceback (str):
-        resource_type (str):
-        state (CoreStates):
-        created (datetime.datetime):
-        modified (datetime.datetime):
-        backend_id (str):
-        access_url (Union[None, str]):
-        cpu_limit (int):
-        cpu_usage (int):
-        gpu_limit (int):
-        gpu_usage (int):
-        ram_limit (int):
-        ram_usage (int):
-        username (Union[None, str]):
-        gateway (Union[None, str]):
-        is_active (bool):
-        marketplace_offering_uuid (str):
-        marketplace_offering_name (str):
-        marketplace_offering_plugin_options (SlurmAllocationMarketplaceOfferingPluginOptions):
-        marketplace_category_uuid (str):
-        marketplace_category_name (str):
-        marketplace_resource_uuid (str):
-        marketplace_plan_uuid (str):
-        marketplace_resource_state (str):
-        is_usage_based (bool):
-        is_limit_based (bool):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
         description (Union[Unset, str]):
+        service_name (Union[Unset, str]):
+        service_settings (Union[Unset, str]):
+        service_settings_uuid (Union[Unset, UUID]):
+        service_settings_state (Union[Unset, str]):
+        service_settings_error_message (Union[Unset, str]):
+        project (Union[Unset, str]):
+        project_name (Union[Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        customer (Union[Unset, str]):
+        customer_name (Union[Unset, str]):
+        customer_native_name (Union[Unset, str]):
+        customer_abbreviation (Union[Unset, str]):
+        error_message (Union[Unset, str]):
+        error_traceback (Union[Unset, str]):
+        resource_type (Union[Unset, str]):
+        state (Union[Unset, CoreStates]):
+        created (Union[Unset, datetime.datetime]):
+        modified (Union[Unset, datetime.datetime]):
+        backend_id (Union[Unset, str]):
+        access_url (Union[None, Unset, str]):
+        cpu_limit (Union[Unset, int]):
+        cpu_usage (Union[Unset, int]):
+        gpu_limit (Union[Unset, int]):
+        gpu_usage (Union[Unset, int]):
+        ram_limit (Union[Unset, int]):
+        ram_usage (Union[Unset, int]):
+        username (Union[None, Unset, str]):
+        gateway (Union[None, Unset, str]):
+        is_active (Union[Unset, bool]):
+        marketplace_offering_uuid (Union[Unset, str]):
+        marketplace_offering_name (Union[Unset, str]):
+        marketplace_offering_plugin_options (Union[Unset, SlurmAllocationMarketplaceOfferingPluginOptions]):
+        marketplace_category_uuid (Union[Unset, str]):
+        marketplace_category_name (Union[Unset, str]):
+        marketplace_resource_uuid (Union[Unset, str]):
+        marketplace_plan_uuid (Union[Unset, str]):
+        marketplace_resource_state (Union[Unset, str]):
+        is_usage_based (Union[Unset, bool]):
+        is_limit_based (Union[Unset, bool]):
     """
 
-    url: str
-    uuid: UUID
-    name: str
-    service_name: str
-    service_settings: str
-    service_settings_uuid: UUID
-    service_settings_state: str
-    service_settings_error_message: str
-    project: str
-    project_name: str
-    project_uuid: UUID
-    customer: str
-    customer_name: str
-    customer_native_name: str
-    customer_abbreviation: str
-    error_message: str
-    error_traceback: str
-    resource_type: str
-    state: CoreStates
-    created: datetime.datetime
-    modified: datetime.datetime
-    backend_id: str
-    access_url: Union[None, str]
-    cpu_limit: int
-    cpu_usage: int
-    gpu_limit: int
-    gpu_usage: int
-    ram_limit: int
-    ram_usage: int
-    username: Union[None, str]
-    gateway: Union[None, str]
-    is_active: bool
-    marketplace_offering_uuid: str
-    marketplace_offering_name: str
-    marketplace_offering_plugin_options: "SlurmAllocationMarketplaceOfferingPluginOptions"
-    marketplace_category_uuid: str
-    marketplace_category_name: str
-    marketplace_resource_uuid: str
-    marketplace_plan_uuid: str
-    marketplace_resource_state: str
-    is_usage_based: bool
-    is_limit_based: bool
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
+    service_name: Union[Unset, str] = UNSET
+    service_settings: Union[Unset, str] = UNSET
+    service_settings_uuid: Union[Unset, UUID] = UNSET
+    service_settings_state: Union[Unset, str] = UNSET
+    service_settings_error_message: Union[Unset, str] = UNSET
+    project: Union[Unset, str] = UNSET
+    project_name: Union[Unset, str] = UNSET
+    project_uuid: Union[Unset, UUID] = UNSET
+    customer: Union[Unset, str] = UNSET
+    customer_name: Union[Unset, str] = UNSET
+    customer_native_name: Union[Unset, str] = UNSET
+    customer_abbreviation: Union[Unset, str] = UNSET
+    error_message: Union[Unset, str] = UNSET
+    error_traceback: Union[Unset, str] = UNSET
+    resource_type: Union[Unset, str] = UNSET
+    state: Union[Unset, CoreStates] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
+    modified: Union[Unset, datetime.datetime] = UNSET
+    backend_id: Union[Unset, str] = UNSET
+    access_url: Union[None, Unset, str] = UNSET
+    cpu_limit: Union[Unset, int] = UNSET
+    cpu_usage: Union[Unset, int] = UNSET
+    gpu_limit: Union[Unset, int] = UNSET
+    gpu_usage: Union[Unset, int] = UNSET
+    ram_limit: Union[Unset, int] = UNSET
+    ram_usage: Union[Unset, int] = UNSET
+    username: Union[None, Unset, str] = UNSET
+    gateway: Union[None, Unset, str] = UNSET
+    is_active: Union[Unset, bool] = UNSET
+    marketplace_offering_uuid: Union[Unset, str] = UNSET
+    marketplace_offering_name: Union[Unset, str] = UNSET
+    marketplace_offering_plugin_options: Union[Unset, "SlurmAllocationMarketplaceOfferingPluginOptions"] = UNSET
+    marketplace_category_uuid: Union[Unset, str] = UNSET
+    marketplace_category_name: Union[Unset, str] = UNSET
+    marketplace_resource_uuid: Union[Unset, str] = UNSET
+    marketplace_plan_uuid: Union[Unset, str] = UNSET
+    marketplace_resource_state: Union[Unset, str] = UNSET
+    is_usage_based: Union[Unset, bool] = UNSET
+    is_limit_based: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
+
+        description = self.description
 
         service_name = self.service_name
 
         service_settings = self.service_settings
 
-        service_settings_uuid = str(self.service_settings_uuid)
+        service_settings_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.service_settings_uuid, Unset):
+            service_settings_uuid = str(self.service_settings_uuid)
 
         service_settings_state = self.service_settings_state
 
@@ -134,7 +140,9 @@ class SlurmAllocation:
 
         project_name = self.project_name
 
-        project_uuid = str(self.project_uuid)
+        project_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.project_uuid, Unset):
+            project_uuid = str(self.project_uuid)
 
         customer = self.customer
 
@@ -150,16 +158,25 @@ class SlurmAllocation:
 
         resource_type = self.resource_type
 
-        state = self.state.value
+        state: Union[Unset, str] = UNSET
+        if not isinstance(self.state, Unset):
+            state = self.state.value
 
-        created = self.created.isoformat()
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
-        modified = self.modified.isoformat()
+        modified: Union[Unset, str] = UNSET
+        if not isinstance(self.modified, Unset):
+            modified = self.modified.isoformat()
 
         backend_id = self.backend_id
 
-        access_url: Union[None, str]
-        access_url = self.access_url
+        access_url: Union[None, Unset, str]
+        if isinstance(self.access_url, Unset):
+            access_url = UNSET
+        else:
+            access_url = self.access_url
 
         cpu_limit = self.cpu_limit
 
@@ -173,11 +190,17 @@ class SlurmAllocation:
 
         ram_usage = self.ram_usage
 
-        username: Union[None, str]
-        username = self.username
+        username: Union[None, Unset, str]
+        if isinstance(self.username, Unset):
+            username = UNSET
+        else:
+            username = self.username
 
-        gateway: Union[None, str]
-        gateway = self.gateway
+        gateway: Union[None, Unset, str]
+        if isinstance(self.gateway, Unset):
+            gateway = UNSET
+        else:
+            gateway = self.gateway
 
         is_active = self.is_active
 
@@ -185,7 +208,9 @@ class SlurmAllocation:
 
         marketplace_offering_name = self.marketplace_offering_name
 
-        marketplace_offering_plugin_options = self.marketplace_offering_plugin_options.to_dict()
+        marketplace_offering_plugin_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.marketplace_offering_plugin_options, Unset):
+            marketplace_offering_plugin_options = self.marketplace_offering_plugin_options.to_dict()
 
         marketplace_category_uuid = self.marketplace_category_uuid
 
@@ -201,58 +226,95 @@ class SlurmAllocation:
 
         is_limit_based = self.is_limit_based
 
-        description = self.description
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "name": name,
-                "service_name": service_name,
-                "service_settings": service_settings,
-                "service_settings_uuid": service_settings_uuid,
-                "service_settings_state": service_settings_state,
-                "service_settings_error_message": service_settings_error_message,
-                "project": project,
-                "project_name": project_name,
-                "project_uuid": project_uuid,
-                "customer": customer,
-                "customer_name": customer_name,
-                "customer_native_name": customer_native_name,
-                "customer_abbreviation": customer_abbreviation,
-                "error_message": error_message,
-                "error_traceback": error_traceback,
-                "resource_type": resource_type,
-                "state": state,
-                "created": created,
-                "modified": modified,
-                "backend_id": backend_id,
-                "access_url": access_url,
-                "cpu_limit": cpu_limit,
-                "cpu_usage": cpu_usage,
-                "gpu_limit": gpu_limit,
-                "gpu_usage": gpu_usage,
-                "ram_limit": ram_limit,
-                "ram_usage": ram_usage,
-                "username": username,
-                "gateway": gateway,
-                "is_active": is_active,
-                "marketplace_offering_uuid": marketplace_offering_uuid,
-                "marketplace_offering_name": marketplace_offering_name,
-                "marketplace_offering_plugin_options": marketplace_offering_plugin_options,
-                "marketplace_category_uuid": marketplace_category_uuid,
-                "marketplace_category_name": marketplace_category_name,
-                "marketplace_resource_uuid": marketplace_resource_uuid,
-                "marketplace_plan_uuid": marketplace_plan_uuid,
-                "marketplace_resource_state": marketplace_resource_state,
-                "is_usage_based": is_usage_based,
-                "is_limit_based": is_limit_based,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
+        if service_name is not UNSET:
+            field_dict["service_name"] = service_name
+        if service_settings is not UNSET:
+            field_dict["service_settings"] = service_settings
+        if service_settings_uuid is not UNSET:
+            field_dict["service_settings_uuid"] = service_settings_uuid
+        if service_settings_state is not UNSET:
+            field_dict["service_settings_state"] = service_settings_state
+        if service_settings_error_message is not UNSET:
+            field_dict["service_settings_error_message"] = service_settings_error_message
+        if project is not UNSET:
+            field_dict["project"] = project
+        if project_name is not UNSET:
+            field_dict["project_name"] = project_name
+        if project_uuid is not UNSET:
+            field_dict["project_uuid"] = project_uuid
+        if customer is not UNSET:
+            field_dict["customer"] = customer
+        if customer_name is not UNSET:
+            field_dict["customer_name"] = customer_name
+        if customer_native_name is not UNSET:
+            field_dict["customer_native_name"] = customer_native_name
+        if customer_abbreviation is not UNSET:
+            field_dict["customer_abbreviation"] = customer_abbreviation
+        if error_message is not UNSET:
+            field_dict["error_message"] = error_message
+        if error_traceback is not UNSET:
+            field_dict["error_traceback"] = error_traceback
+        if resource_type is not UNSET:
+            field_dict["resource_type"] = resource_type
+        if state is not UNSET:
+            field_dict["state"] = state
+        if created is not UNSET:
+            field_dict["created"] = created
+        if modified is not UNSET:
+            field_dict["modified"] = modified
+        if backend_id is not UNSET:
+            field_dict["backend_id"] = backend_id
+        if access_url is not UNSET:
+            field_dict["access_url"] = access_url
+        if cpu_limit is not UNSET:
+            field_dict["cpu_limit"] = cpu_limit
+        if cpu_usage is not UNSET:
+            field_dict["cpu_usage"] = cpu_usage
+        if gpu_limit is not UNSET:
+            field_dict["gpu_limit"] = gpu_limit
+        if gpu_usage is not UNSET:
+            field_dict["gpu_usage"] = gpu_usage
+        if ram_limit is not UNSET:
+            field_dict["ram_limit"] = ram_limit
+        if ram_usage is not UNSET:
+            field_dict["ram_usage"] = ram_usage
+        if username is not UNSET:
+            field_dict["username"] = username
+        if gateway is not UNSET:
+            field_dict["gateway"] = gateway
+        if is_active is not UNSET:
+            field_dict["is_active"] = is_active
+        if marketplace_offering_uuid is not UNSET:
+            field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
+        if marketplace_offering_name is not UNSET:
+            field_dict["marketplace_offering_name"] = marketplace_offering_name
+        if marketplace_offering_plugin_options is not UNSET:
+            field_dict["marketplace_offering_plugin_options"] = marketplace_offering_plugin_options
+        if marketplace_category_uuid is not UNSET:
+            field_dict["marketplace_category_uuid"] = marketplace_category_uuid
+        if marketplace_category_name is not UNSET:
+            field_dict["marketplace_category_name"] = marketplace_category_name
+        if marketplace_resource_uuid is not UNSET:
+            field_dict["marketplace_resource_uuid"] = marketplace_resource_uuid
+        if marketplace_plan_uuid is not UNSET:
+            field_dict["marketplace_plan_uuid"] = marketplace_plan_uuid
+        if marketplace_resource_state is not UNSET:
+            field_dict["marketplace_resource_state"] = marketplace_resource_state
+        if is_usage_based is not UNSET:
+            field_dict["is_usage_based"] = is_usage_based
+        if is_limit_based is not UNSET:
+            field_dict["is_limit_based"] = is_limit_based
 
         return field_dict
 
@@ -263,113 +325,155 @@ class SlurmAllocation:
         )
 
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
-
-        service_name = d.pop("service_name")
-
-        service_settings = d.pop("service_settings")
-
-        service_settings_uuid = UUID(d.pop("service_settings_uuid"))
-
-        service_settings_state = d.pop("service_settings_state")
-
-        service_settings_error_message = d.pop("service_settings_error_message")
-
-        project = d.pop("project")
-
-        project_name = d.pop("project_name")
-
-        project_uuid = UUID(d.pop("project_uuid"))
-
-        customer = d.pop("customer")
-
-        customer_name = d.pop("customer_name")
-
-        customer_native_name = d.pop("customer_native_name")
-
-        customer_abbreviation = d.pop("customer_abbreviation")
-
-        error_message = d.pop("error_message")
-
-        error_traceback = d.pop("error_traceback")
-
-        resource_type = d.pop("resource_type")
-
-        state = CoreStates(d.pop("state"))
-
-        created = isoparse(d.pop("created"))
-
-        modified = isoparse(d.pop("modified"))
-
-        backend_id = d.pop("backend_id")
-
-        def _parse_access_url(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        access_url = _parse_access_url(d.pop("access_url"))
-
-        cpu_limit = d.pop("cpu_limit")
-
-        cpu_usage = d.pop("cpu_usage")
-
-        gpu_limit = d.pop("gpu_limit")
-
-        gpu_usage = d.pop("gpu_usage")
-
-        ram_limit = d.pop("ram_limit")
-
-        ram_usage = d.pop("ram_usage")
-
-        def _parse_username(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        username = _parse_username(d.pop("username"))
-
-        def _parse_gateway(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        gateway = _parse_gateway(d.pop("gateway"))
-
-        is_active = d.pop("is_active")
-
-        marketplace_offering_uuid = d.pop("marketplace_offering_uuid")
-
-        marketplace_offering_name = d.pop("marketplace_offering_name")
-
-        marketplace_offering_plugin_options = SlurmAllocationMarketplaceOfferingPluginOptions.from_dict(
-            d.pop("marketplace_offering_plugin_options")
-        )
-
-        marketplace_category_uuid = d.pop("marketplace_category_uuid")
-
-        marketplace_category_name = d.pop("marketplace_category_name")
-
-        marketplace_resource_uuid = d.pop("marketplace_resource_uuid")
-
-        marketplace_plan_uuid = d.pop("marketplace_plan_uuid")
-
-        marketplace_resource_state = d.pop("marketplace_resource_state")
-
-        is_usage_based = d.pop("is_usage_based")
-
-        is_limit_based = d.pop("is_limit_based")
+        name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
+
+        service_name = d.pop("service_name", UNSET)
+
+        service_settings = d.pop("service_settings", UNSET)
+
+        _service_settings_uuid = d.pop("service_settings_uuid", UNSET)
+        service_settings_uuid: Union[Unset, UUID]
+        if isinstance(_service_settings_uuid, Unset):
+            service_settings_uuid = UNSET
+        else:
+            service_settings_uuid = UUID(_service_settings_uuid)
+
+        service_settings_state = d.pop("service_settings_state", UNSET)
+
+        service_settings_error_message = d.pop("service_settings_error_message", UNSET)
+
+        project = d.pop("project", UNSET)
+
+        project_name = d.pop("project_name", UNSET)
+
+        _project_uuid = d.pop("project_uuid", UNSET)
+        project_uuid: Union[Unset, UUID]
+        if isinstance(_project_uuid, Unset):
+            project_uuid = UNSET
+        else:
+            project_uuid = UUID(_project_uuid)
+
+        customer = d.pop("customer", UNSET)
+
+        customer_name = d.pop("customer_name", UNSET)
+
+        customer_native_name = d.pop("customer_native_name", UNSET)
+
+        customer_abbreviation = d.pop("customer_abbreviation", UNSET)
+
+        error_message = d.pop("error_message", UNSET)
+
+        error_traceback = d.pop("error_traceback", UNSET)
+
+        resource_type = d.pop("resource_type", UNSET)
+
+        _state = d.pop("state", UNSET)
+        state: Union[Unset, CoreStates]
+        if isinstance(_state, Unset):
+            state = UNSET
+        else:
+            state = CoreStates(_state)
+
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
+
+        _modified = d.pop("modified", UNSET)
+        modified: Union[Unset, datetime.datetime]
+        if isinstance(_modified, Unset):
+            modified = UNSET
+        else:
+            modified = isoparse(_modified)
+
+        backend_id = d.pop("backend_id", UNSET)
+
+        def _parse_access_url(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        access_url = _parse_access_url(d.pop("access_url", UNSET))
+
+        cpu_limit = d.pop("cpu_limit", UNSET)
+
+        cpu_usage = d.pop("cpu_usage", UNSET)
+
+        gpu_limit = d.pop("gpu_limit", UNSET)
+
+        gpu_usage = d.pop("gpu_usage", UNSET)
+
+        ram_limit = d.pop("ram_limit", UNSET)
+
+        ram_usage = d.pop("ram_usage", UNSET)
+
+        def _parse_username(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        username = _parse_username(d.pop("username", UNSET))
+
+        def _parse_gateway(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        gateway = _parse_gateway(d.pop("gateway", UNSET))
+
+        is_active = d.pop("is_active", UNSET)
+
+        marketplace_offering_uuid = d.pop("marketplace_offering_uuid", UNSET)
+
+        marketplace_offering_name = d.pop("marketplace_offering_name", UNSET)
+
+        _marketplace_offering_plugin_options = d.pop("marketplace_offering_plugin_options", UNSET)
+        marketplace_offering_plugin_options: Union[Unset, SlurmAllocationMarketplaceOfferingPluginOptions]
+        if isinstance(_marketplace_offering_plugin_options, Unset):
+            marketplace_offering_plugin_options = UNSET
+        else:
+            marketplace_offering_plugin_options = SlurmAllocationMarketplaceOfferingPluginOptions.from_dict(
+                _marketplace_offering_plugin_options
+            )
+
+        marketplace_category_uuid = d.pop("marketplace_category_uuid", UNSET)
+
+        marketplace_category_name = d.pop("marketplace_category_name", UNSET)
+
+        marketplace_resource_uuid = d.pop("marketplace_resource_uuid", UNSET)
+
+        marketplace_plan_uuid = d.pop("marketplace_plan_uuid", UNSET)
+
+        marketplace_resource_state = d.pop("marketplace_resource_state", UNSET)
+
+        is_usage_based = d.pop("is_usage_based", UNSET)
+
+        is_limit_based = d.pop("is_limit_based", UNSET)
 
         slurm_allocation = cls(
             url=url,
             uuid=uuid,
             name=name,
+            description=description,
             service_name=service_name,
             service_settings=service_settings,
             service_settings_uuid=service_settings_uuid,
@@ -409,7 +513,6 @@ class SlurmAllocation:
             marketplace_resource_state=marketplace_resource_state,
             is_usage_based=is_usage_based,
             is_limit_based=is_limit_based,
-            description=description,
         )
 
         slurm_allocation.additional_properties = d

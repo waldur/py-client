@@ -1,3 +1,4 @@
+import datetime
 from http import HTTPStatus
 from typing import Any, Optional, Union
 from uuid import UUID
@@ -14,8 +15,10 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
     civil_number: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
     field: Union[Unset, list[UsersListFieldItem]] = UNSET,
@@ -40,12 +43,22 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
+    json_agreement_date: Union[Unset, str] = UNSET
+    if not isinstance(agreement_date, Unset):
+        json_agreement_date = agreement_date.isoformat()
+    params["agreement_date"] = json_agreement_date
+
     params["civil_number"] = civil_number
 
     json_customer_uuid: Union[Unset, str] = UNSET
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
     params["customer_uuid"] = json_customer_uuid
+
+    json_date_joined: Union[Unset, str] = UNSET
+    if not isinstance(date_joined, Unset):
+        json_date_joined = date_joined.isoformat()
+    params["date_joined"] = json_date_joined
 
     params["description"] = description
 
@@ -145,8 +158,10 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
     civil_number: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
     field: Union[Unset, list[UsersListFieldItem]] = UNSET,
@@ -171,8 +186,10 @@ def sync_detailed(
 ) -> Response[list["User"]]:
     """
     Args:
+        agreement_date (Union[Unset, datetime.datetime]):
         civil_number (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
         field (Union[Unset, list[UsersListFieldItem]]):
@@ -204,8 +221,10 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        agreement_date=agreement_date,
         civil_number=civil_number,
         customer_uuid=customer_uuid,
+        date_joined=date_joined,
         description=description,
         email=email,
         field=field,
@@ -239,8 +258,10 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
     civil_number: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
     field: Union[Unset, list[UsersListFieldItem]] = UNSET,
@@ -265,8 +286,10 @@ def sync(
 ) -> Optional[list["User"]]:
     """
     Args:
+        agreement_date (Union[Unset, datetime.datetime]):
         civil_number (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
         field (Union[Unset, list[UsersListFieldItem]]):
@@ -299,8 +322,10 @@ def sync(
 
     return sync_detailed(
         client=client,
+        agreement_date=agreement_date,
         civil_number=civil_number,
         customer_uuid=customer_uuid,
+        date_joined=date_joined,
         description=description,
         email=email,
         field=field,
@@ -328,8 +353,10 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
     civil_number: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
     field: Union[Unset, list[UsersListFieldItem]] = UNSET,
@@ -354,8 +381,10 @@ async def asyncio_detailed(
 ) -> Response[list["User"]]:
     """
     Args:
+        agreement_date (Union[Unset, datetime.datetime]):
         civil_number (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
         field (Union[Unset, list[UsersListFieldItem]]):
@@ -387,8 +416,10 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        agreement_date=agreement_date,
         civil_number=civil_number,
         customer_uuid=customer_uuid,
+        date_joined=date_joined,
         description=description,
         email=email,
         field=field,
@@ -420,8 +451,10 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
     civil_number: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
     field: Union[Unset, list[UsersListFieldItem]] = UNSET,
@@ -446,8 +479,10 @@ async def asyncio(
 ) -> Optional[list["User"]]:
     """
     Args:
+        agreement_date (Union[Unset, datetime.datetime]):
         civil_number (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
         field (Union[Unset, list[UsersListFieldItem]]):
@@ -481,8 +516,10 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            agreement_date=agreement_date,
             civil_number=civil_number,
             customer_uuid=customer_uuid,
+            date_joined=date_joined,
             description=description,
             email=email,
             field=field,

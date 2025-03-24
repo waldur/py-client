@@ -15,11 +15,11 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    created: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
     is_not_propagated: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
-    modified: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -150,11 +150,11 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    created: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
     is_not_propagated: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
-    modified: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -170,11 +170,11 @@ def sync_detailed(
 ) -> Response[list["OfferingUser"]]:
     """
     Args:
-        created (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
         is_not_propagated (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
-        modified (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -226,11 +226,11 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    created: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
     is_not_propagated: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
-    modified: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -246,11 +246,11 @@ def sync(
 ) -> Optional[list["OfferingUser"]]:
     """
     Args:
-        created (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
         is_not_propagated (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
-        modified (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -297,11 +297,11 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    created: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
     is_not_propagated: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
-    modified: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -317,11 +317,11 @@ async def asyncio_detailed(
 ) -> Response[list["OfferingUser"]]:
     """
     Args:
-        created (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
         is_not_propagated (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
-        modified (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -371,11 +371,11 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    created: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
     is_not_propagated: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
-    modified: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -391,11 +391,11 @@ async def asyncio(
 ) -> Optional[list["OfferingUser"]]:
     """
     Args:
-        created (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
         is_not_propagated (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
-        modified (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):

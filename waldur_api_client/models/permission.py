@@ -16,68 +16,52 @@ T = TypeVar("T", bound="Permission")
 class Permission:
     """
     Attributes:
-        user_uuid (UUID):
-        user_name (str):
-        user_slug (str):
-        created (datetime.datetime):
-        created_by_full_name (str):
-        created_by_username (str):
-        role_name (str):
-        role_description (str):
-        role_uuid (UUID):
-        scope_type (str):
-        scope_uuid (UUID):
-        scope_name (str):
-        customer_uuid (UUID):
-        customer_name (str):
+        user_uuid (Union[Unset, UUID]):
+        user_name (Union[Unset, str]):
+        user_slug (Union[Unset, str]):
+        created (Union[Unset, datetime.datetime]):
         expiration_time (Union[None, Unset, datetime.datetime]):
+        created_by_full_name (Union[Unset, str]):
+        created_by_username (Union[Unset, str]):
+        role_name (Union[Unset, str]):
+        role_description (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        customer_name (Union[Unset, str]):
     """
 
-    user_uuid: UUID
-    user_name: str
-    user_slug: str
-    created: datetime.datetime
-    created_by_full_name: str
-    created_by_username: str
-    role_name: str
-    role_description: str
-    role_uuid: UUID
-    scope_type: str
-    scope_uuid: UUID
-    scope_name: str
-    customer_uuid: UUID
-    customer_name: str
+    user_uuid: Union[Unset, UUID] = UNSET
+    user_name: Union[Unset, str] = UNSET
+    user_slug: Union[Unset, str] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
     expiration_time: Union[None, Unset, datetime.datetime] = UNSET
+    created_by_full_name: Union[Unset, str] = UNSET
+    created_by_username: Union[Unset, str] = UNSET
+    role_name: Union[Unset, str] = UNSET
+    role_description: Union[Unset, str] = UNSET
+    role_uuid: Union[Unset, UUID] = UNSET
+    scope_type: Union[Unset, str] = UNSET
+    scope_uuid: Union[Unset, UUID] = UNSET
+    scope_name: Union[Unset, str] = UNSET
+    customer_uuid: Union[Unset, UUID] = UNSET
+    customer_name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        user_uuid = str(self.user_uuid)
+        user_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.user_uuid, Unset):
+            user_uuid = str(self.user_uuid)
 
         user_name = self.user_name
 
         user_slug = self.user_slug
 
-        created = self.created.isoformat()
-
-        created_by_full_name = self.created_by_full_name
-
-        created_by_username = self.created_by_username
-
-        role_name = self.role_name
-
-        role_description = self.role_description
-
-        role_uuid = str(self.role_uuid)
-
-        scope_type = self.scope_type
-
-        scope_uuid = str(self.scope_uuid)
-
-        scope_name = self.scope_name
-
-        customer_uuid = str(self.customer_uuid)
-
-        customer_name = self.customer_name
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
         expiration_time: Union[None, Unset, str]
         if isinstance(self.expiration_time, Unset):
@@ -87,61 +71,88 @@ class Permission:
         else:
             expiration_time = self.expiration_time
 
+        created_by_full_name = self.created_by_full_name
+
+        created_by_username = self.created_by_username
+
+        role_name = self.role_name
+
+        role_description = self.role_description
+
+        role_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.role_uuid, Unset):
+            role_uuid = str(self.role_uuid)
+
+        scope_type = self.scope_type
+
+        scope_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.scope_uuid, Unset):
+            scope_uuid = str(self.scope_uuid)
+
+        scope_name = self.scope_name
+
+        customer_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.customer_uuid, Unset):
+            customer_uuid = str(self.customer_uuid)
+
+        customer_name = self.customer_name
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "user_uuid": user_uuid,
-                "user_name": user_name,
-                "user_slug": user_slug,
-                "created": created,
-                "created_by_full_name": created_by_full_name,
-                "created_by_username": created_by_username,
-                "role_name": role_name,
-                "role_description": role_description,
-                "role_uuid": role_uuid,
-                "scope_type": scope_type,
-                "scope_uuid": scope_uuid,
-                "scope_name": scope_name,
-                "customer_uuid": customer_uuid,
-                "customer_name": customer_name,
-            }
-        )
+        field_dict.update({})
+        if user_uuid is not UNSET:
+            field_dict["user_uuid"] = user_uuid
+        if user_name is not UNSET:
+            field_dict["user_name"] = user_name
+        if user_slug is not UNSET:
+            field_dict["user_slug"] = user_slug
+        if created is not UNSET:
+            field_dict["created"] = created
         if expiration_time is not UNSET:
             field_dict["expiration_time"] = expiration_time
+        if created_by_full_name is not UNSET:
+            field_dict["created_by_full_name"] = created_by_full_name
+        if created_by_username is not UNSET:
+            field_dict["created_by_username"] = created_by_username
+        if role_name is not UNSET:
+            field_dict["role_name"] = role_name
+        if role_description is not UNSET:
+            field_dict["role_description"] = role_description
+        if role_uuid is not UNSET:
+            field_dict["role_uuid"] = role_uuid
+        if scope_type is not UNSET:
+            field_dict["scope_type"] = scope_type
+        if scope_uuid is not UNSET:
+            field_dict["scope_uuid"] = scope_uuid
+        if scope_name is not UNSET:
+            field_dict["scope_name"] = scope_name
+        if customer_uuid is not UNSET:
+            field_dict["customer_uuid"] = customer_uuid
+        if customer_name is not UNSET:
+            field_dict["customer_name"] = customer_name
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        user_uuid = UUID(d.pop("user_uuid"))
+        _user_uuid = d.pop("user_uuid", UNSET)
+        user_uuid: Union[Unset, UUID]
+        if isinstance(_user_uuid, Unset):
+            user_uuid = UNSET
+        else:
+            user_uuid = UUID(_user_uuid)
 
-        user_name = d.pop("user_name")
+        user_name = d.pop("user_name", UNSET)
 
-        user_slug = d.pop("user_slug")
+        user_slug = d.pop("user_slug", UNSET)
 
-        created = isoparse(d.pop("created"))
-
-        created_by_full_name = d.pop("created_by_full_name")
-
-        created_by_username = d.pop("created_by_username")
-
-        role_name = d.pop("role_name")
-
-        role_description = d.pop("role_description")
-
-        role_uuid = UUID(d.pop("role_uuid"))
-
-        scope_type = d.pop("scope_type")
-
-        scope_uuid = UUID(d.pop("scope_uuid"))
-
-        scope_name = d.pop("scope_name")
-
-        customer_uuid = UUID(d.pop("customer_uuid"))
-
-        customer_name = d.pop("customer_name")
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
         def _parse_expiration_time(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
@@ -160,11 +171,47 @@ class Permission:
 
         expiration_time = _parse_expiration_time(d.pop("expiration_time", UNSET))
 
+        created_by_full_name = d.pop("created_by_full_name", UNSET)
+
+        created_by_username = d.pop("created_by_username", UNSET)
+
+        role_name = d.pop("role_name", UNSET)
+
+        role_description = d.pop("role_description", UNSET)
+
+        _role_uuid = d.pop("role_uuid", UNSET)
+        role_uuid: Union[Unset, UUID]
+        if isinstance(_role_uuid, Unset):
+            role_uuid = UNSET
+        else:
+            role_uuid = UUID(_role_uuid)
+
+        scope_type = d.pop("scope_type", UNSET)
+
+        _scope_uuid = d.pop("scope_uuid", UNSET)
+        scope_uuid: Union[Unset, UUID]
+        if isinstance(_scope_uuid, Unset):
+            scope_uuid = UNSET
+        else:
+            scope_uuid = UUID(_scope_uuid)
+
+        scope_name = d.pop("scope_name", UNSET)
+
+        _customer_uuid = d.pop("customer_uuid", UNSET)
+        customer_uuid: Union[Unset, UUID]
+        if isinstance(_customer_uuid, Unset):
+            customer_uuid = UNSET
+        else:
+            customer_uuid = UUID(_customer_uuid)
+
+        customer_name = d.pop("customer_name", UNSET)
+
         permission = cls(
             user_uuid=user_uuid,
             user_name=user_name,
             user_slug=user_slug,
             created=created,
+            expiration_time=expiration_time,
             created_by_full_name=created_by_full_name,
             created_by_username=created_by_username,
             role_name=role_name,
@@ -175,7 +222,6 @@ class Permission:
             scope_name=scope_name,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
-            expiration_time=expiration_time,
         )
 
         permission.additional_properties = d

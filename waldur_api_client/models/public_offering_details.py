@@ -36,252 +36,152 @@ T = TypeVar("T", bound="PublicOfferingDetails")
 class PublicOfferingDetails:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        created (datetime.datetime):
-        name (str):
-        slug (str):
-        endpoints (list['NestedEndpoint']):
-        roles (list['NestedRole']):
-        customer_uuid (UUID):
-        customer_name (str):
-        project (Union[None, str]):
-        project_uuid (UUID):
-        project_name (str):
-        category (str):
-        category_uuid (UUID):
-        category_title (str):
-        attributes (PublicOfferingDetailsAttributes):
-        options (OfferingOptions):
-        resource_options (OfferingOptions):
-        components (list['OfferingComponent']):
-        plugin_options (MergedPluginOptions):
-        state (OfferingState):
-        state_code (StateCodeEnum):
-        order_count (int):
-        plans (list['BasePublicPlan']):
-        screenshots (list['NestedScreenshot']):
-        type_ (str):
-        scope (str):
-        scope_uuid (UUID):
-        scope_name (UUID):
-        scope_state (CoreStates):
-        files (list['NestedOfferingFile']):
-        quotas (list['Quota']):
-        paused_reason (str):
-        citation_count (int): Number of citations of a DOI
-        organization_groups (list['OrganizationGroup']):
-        total_customers (int):
-        total_cost (int):
-        total_cost_estimated (int):
-        parent_description (str):
-        parent_uuid (UUID):
-        parent_name (str):
-        google_calendar_is_public (bool):
-        google_calendar_link (Union[None, str]):
-        promotion_campaigns (NestedCampaign):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
+        name (Union[Unset, str]):
+        slug (Union[Unset, str]):
         description (Union[Unset, str]):
         full_description (Union[Unset, str]):
         terms_of_service (Union[Unset, str]):
         terms_of_service_link (Union[Unset, str]):
         privacy_policy_link (Union[Unset, str]):
         access_url (Union[Unset, str]): Publicly accessible offering access URL
+        endpoints (Union[Unset, list['NestedEndpoint']]):
+        roles (Union[Unset, list['NestedRole']]):
         customer (Union[None, Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        customer_name (Union[Unset, str]):
+        project (Union[None, Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        project_name (Union[Unset, str]):
+        category (Union[Unset, str]):
+        category_uuid (Union[Unset, UUID]):
+        category_title (Union[Unset, str]):
+        attributes (Union[Unset, PublicOfferingDetailsAttributes]):
+        options (Union[Unset, OfferingOptions]):
+        resource_options (Union[Unset, OfferingOptions]):
+        components (Union[Unset, list['OfferingComponent']]):
+        plugin_options (Union[Unset, MergedPluginOptions]):
+        state (Union[Unset, OfferingState]):
+        state_code (Union[Unset, StateCodeEnum]):
         vendor_details (Union[Unset, str]):
         getting_started (Union[Unset, str]):
         integration_guide (Union[Unset, str]):
         thumbnail (Union[None, Unset, str]):
+        order_count (Union[Unset, int]):
+        plans (Union[Unset, list['BasePublicPlan']]):
+        screenshots (Union[Unset, list['NestedScreenshot']]):
+        type_ (Union[Unset, str]):
         shared (Union[Unset, bool]): Accessible to all customers.
         billable (Union[Unset, bool]): Purchase and usage is invoiced.
+        scope (Union[Unset, str]):
+        scope_uuid (Union[None, UUID, Unset]):
+        scope_name (Union[None, UUID, Unset]):
+        scope_state (Union[CoreStates, None, Unset]):
+        files (Union[Unset, list['NestedOfferingFile']]):
+        quotas (Union[Unset, list['Quota']]):
+        paused_reason (Union[Unset, str]):
         datacite_doi (Union[Unset, str]):
+        citation_count (Union[Unset, int]): Number of citations of a DOI
         latitude (Union[None, Unset, float]):
         longitude (Union[None, Unset, float]):
         country (Union[BlankEnum, CountryEnum, Unset]):
         backend_id (Union[Unset, str]):
+        organization_groups (Union[Unset, list['OrganizationGroup']]):
         image (Union[None, Unset, str]):
+        total_customers (Union[None, Unset, int]):
+        total_cost (Union[None, Unset, int]):
+        total_cost_estimated (Union[None, Unset, int]):
+        parent_description (Union[Unset, str]):
+        parent_uuid (Union[Unset, UUID]):
+        parent_name (Union[Unset, str]):
         backend_metadata (Union[Unset, Any]):
+        google_calendar_is_public (Union[Unset, bool]):
+        google_calendar_link (Union[None, Unset, str]):
+        promotion_campaigns (Union[Unset, list['NestedCampaign']]):
     """
 
-    url: str
-    uuid: UUID
-    created: datetime.datetime
-    name: str
-    slug: str
-    endpoints: list["NestedEndpoint"]
-    roles: list["NestedRole"]
-    customer_uuid: UUID
-    customer_name: str
-    project: Union[None, str]
-    project_uuid: UUID
-    project_name: str
-    category: str
-    category_uuid: UUID
-    category_title: str
-    attributes: "PublicOfferingDetailsAttributes"
-    options: "OfferingOptions"
-    resource_options: "OfferingOptions"
-    components: list["OfferingComponent"]
-    plugin_options: "MergedPluginOptions"
-    state: OfferingState
-    state_code: StateCodeEnum
-    order_count: int
-    plans: list["BasePublicPlan"]
-    screenshots: list["NestedScreenshot"]
-    type_: str
-    scope: str
-    scope_uuid: UUID
-    scope_name: UUID
-    scope_state: CoreStates
-    files: list["NestedOfferingFile"]
-    quotas: list["Quota"]
-    paused_reason: str
-    citation_count: int
-    organization_groups: list["OrganizationGroup"]
-    total_customers: int
-    total_cost: int
-    total_cost_estimated: int
-    parent_description: str
-    parent_uuid: UUID
-    parent_name: str
-    google_calendar_is_public: bool
-    google_calendar_link: Union[None, str]
-    promotion_campaigns: "NestedCampaign"
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
+    name: Union[Unset, str] = UNSET
+    slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     full_description: Union[Unset, str] = UNSET
     terms_of_service: Union[Unset, str] = UNSET
     terms_of_service_link: Union[Unset, str] = UNSET
     privacy_policy_link: Union[Unset, str] = UNSET
     access_url: Union[Unset, str] = UNSET
+    endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
+    roles: Union[Unset, list["NestedRole"]] = UNSET
     customer: Union[None, Unset, str] = UNSET
+    customer_uuid: Union[Unset, UUID] = UNSET
+    customer_name: Union[Unset, str] = UNSET
+    project: Union[None, Unset, str] = UNSET
+    project_uuid: Union[Unset, UUID] = UNSET
+    project_name: Union[Unset, str] = UNSET
+    category: Union[Unset, str] = UNSET
+    category_uuid: Union[Unset, UUID] = UNSET
+    category_title: Union[Unset, str] = UNSET
+    attributes: Union[Unset, "PublicOfferingDetailsAttributes"] = UNSET
+    options: Union[Unset, "OfferingOptions"] = UNSET
+    resource_options: Union[Unset, "OfferingOptions"] = UNSET
+    components: Union[Unset, list["OfferingComponent"]] = UNSET
+    plugin_options: Union[Unset, "MergedPluginOptions"] = UNSET
+    state: Union[Unset, OfferingState] = UNSET
+    state_code: Union[Unset, StateCodeEnum] = UNSET
     vendor_details: Union[Unset, str] = UNSET
     getting_started: Union[Unset, str] = UNSET
     integration_guide: Union[Unset, str] = UNSET
     thumbnail: Union[None, Unset, str] = UNSET
+    order_count: Union[Unset, int] = UNSET
+    plans: Union[Unset, list["BasePublicPlan"]] = UNSET
+    screenshots: Union[Unset, list["NestedScreenshot"]] = UNSET
+    type_: Union[Unset, str] = UNSET
     shared: Union[Unset, bool] = UNSET
     billable: Union[Unset, bool] = UNSET
+    scope: Union[Unset, str] = UNSET
+    scope_uuid: Union[None, UUID, Unset] = UNSET
+    scope_name: Union[None, UUID, Unset] = UNSET
+    scope_state: Union[CoreStates, None, Unset] = UNSET
+    files: Union[Unset, list["NestedOfferingFile"]] = UNSET
+    quotas: Union[Unset, list["Quota"]] = UNSET
+    paused_reason: Union[Unset, str] = UNSET
     datacite_doi: Union[Unset, str] = UNSET
+    citation_count: Union[Unset, int] = UNSET
     latitude: Union[None, Unset, float] = UNSET
     longitude: Union[None, Unset, float] = UNSET
     country: Union[BlankEnum, CountryEnum, Unset] = UNSET
     backend_id: Union[Unset, str] = UNSET
+    organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     image: Union[None, Unset, str] = UNSET
+    total_customers: Union[None, Unset, int] = UNSET
+    total_cost: Union[None, Unset, int] = UNSET
+    total_cost_estimated: Union[None, Unset, int] = UNSET
+    parent_description: Union[Unset, str] = UNSET
+    parent_uuid: Union[Unset, UUID] = UNSET
+    parent_name: Union[Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
+    google_calendar_is_public: Union[Unset, bool] = UNSET
+    google_calendar_link: Union[None, Unset, str] = UNSET
+    promotion_campaigns: Union[Unset, list["NestedCampaign"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
-        created = self.created.isoformat()
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
         name = self.name
 
         slug = self.slug
-
-        endpoints = []
-        for endpoints_item_data in self.endpoints:
-            endpoints_item = endpoints_item_data.to_dict()
-            endpoints.append(endpoints_item)
-
-        roles = []
-        for roles_item_data in self.roles:
-            roles_item = roles_item_data.to_dict()
-            roles.append(roles_item)
-
-        customer_uuid = str(self.customer_uuid)
-
-        customer_name = self.customer_name
-
-        project: Union[None, str]
-        project = self.project
-
-        project_uuid = str(self.project_uuid)
-
-        project_name = self.project_name
-
-        category = self.category
-
-        category_uuid = str(self.category_uuid)
-
-        category_title = self.category_title
-
-        attributes = self.attributes.to_dict()
-
-        options = self.options.to_dict()
-
-        resource_options = self.resource_options.to_dict()
-
-        components = []
-        for components_item_data in self.components:
-            components_item = components_item_data.to_dict()
-            components.append(components_item)
-
-        plugin_options = self.plugin_options.to_dict()
-
-        state = self.state.value
-
-        state_code = self.state_code.value
-
-        order_count = self.order_count
-
-        plans = []
-        for plans_item_data in self.plans:
-            plans_item = plans_item_data.to_dict()
-            plans.append(plans_item)
-
-        screenshots = []
-        for screenshots_item_data in self.screenshots:
-            screenshots_item = screenshots_item_data.to_dict()
-            screenshots.append(screenshots_item)
-
-        type_ = self.type_
-
-        scope = self.scope
-
-        scope_uuid = str(self.scope_uuid)
-
-        scope_name = str(self.scope_name)
-
-        scope_state = self.scope_state.value
-
-        files = []
-        for files_item_data in self.files:
-            files_item = files_item_data.to_dict()
-            files.append(files_item)
-
-        quotas = []
-        for quotas_item_data in self.quotas:
-            quotas_item = quotas_item_data.to_dict()
-            quotas.append(quotas_item)
-
-        paused_reason = self.paused_reason
-
-        citation_count = self.citation_count
-
-        organization_groups = []
-        for organization_groups_item_data in self.organization_groups:
-            organization_groups_item = organization_groups_item_data.to_dict()
-            organization_groups.append(organization_groups_item)
-
-        total_customers = self.total_customers
-
-        total_cost = self.total_cost
-
-        total_cost_estimated = self.total_cost_estimated
-
-        parent_description = self.parent_description
-
-        parent_uuid = str(self.parent_uuid)
-
-        parent_name = self.parent_name
-
-        google_calendar_is_public = self.google_calendar_is_public
-
-        google_calendar_link: Union[None, str]
-        google_calendar_link = self.google_calendar_link
-
-        promotion_campaigns = self.promotion_campaigns.to_dict()
 
         description = self.description
 
@@ -295,11 +195,82 @@ class PublicOfferingDetails:
 
         access_url = self.access_url
 
+        endpoints: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.endpoints, Unset):
+            endpoints = []
+            for endpoints_item_data in self.endpoints:
+                endpoints_item = endpoints_item_data.to_dict()
+                endpoints.append(endpoints_item)
+
+        roles: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.roles, Unset):
+            roles = []
+            for roles_item_data in self.roles:
+                roles_item = roles_item_data.to_dict()
+                roles.append(roles_item)
+
         customer: Union[None, Unset, str]
         if isinstance(self.customer, Unset):
             customer = UNSET
         else:
             customer = self.customer
+
+        customer_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.customer_uuid, Unset):
+            customer_uuid = str(self.customer_uuid)
+
+        customer_name = self.customer_name
+
+        project: Union[None, Unset, str]
+        if isinstance(self.project, Unset):
+            project = UNSET
+        else:
+            project = self.project
+
+        project_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.project_uuid, Unset):
+            project_uuid = str(self.project_uuid)
+
+        project_name = self.project_name
+
+        category = self.category
+
+        category_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.category_uuid, Unset):
+            category_uuid = str(self.category_uuid)
+
+        category_title = self.category_title
+
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
+
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
+
+        resource_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.resource_options, Unset):
+            resource_options = self.resource_options.to_dict()
+
+        components: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.components, Unset):
+            components = []
+            for components_item_data in self.components:
+                components_item = components_item_data.to_dict()
+                components.append(components_item)
+
+        plugin_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.plugin_options, Unset):
+            plugin_options = self.plugin_options.to_dict()
+
+        state: Union[Unset, str] = UNSET
+        if not isinstance(self.state, Unset):
+            state = self.state.value
+
+        state_code: Union[Unset, int] = UNSET
+        if not isinstance(self.state_code, Unset):
+            state_code = self.state_code.value
 
         vendor_details = self.vendor_details
 
@@ -313,11 +284,73 @@ class PublicOfferingDetails:
         else:
             thumbnail = self.thumbnail
 
+        order_count = self.order_count
+
+        plans: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.plans, Unset):
+            plans = []
+            for plans_item_data in self.plans:
+                plans_item = plans_item_data.to_dict()
+                plans.append(plans_item)
+
+        screenshots: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.screenshots, Unset):
+            screenshots = []
+            for screenshots_item_data in self.screenshots:
+                screenshots_item = screenshots_item_data.to_dict()
+                screenshots.append(screenshots_item)
+
+        type_ = self.type_
+
         shared = self.shared
 
         billable = self.billable
 
+        scope = self.scope
+
+        scope_uuid: Union[None, Unset, str]
+        if isinstance(self.scope_uuid, Unset):
+            scope_uuid = UNSET
+        elif isinstance(self.scope_uuid, UUID):
+            scope_uuid = str(self.scope_uuid)
+        else:
+            scope_uuid = self.scope_uuid
+
+        scope_name: Union[None, Unset, str]
+        if isinstance(self.scope_name, Unset):
+            scope_name = UNSET
+        elif isinstance(self.scope_name, UUID):
+            scope_name = str(self.scope_name)
+        else:
+            scope_name = self.scope_name
+
+        scope_state: Union[None, Unset, str]
+        if isinstance(self.scope_state, Unset):
+            scope_state = UNSET
+        elif isinstance(self.scope_state, CoreStates):
+            scope_state = self.scope_state.value
+        else:
+            scope_state = self.scope_state
+
+        files: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.files, Unset):
+            files = []
+            for files_item_data in self.files:
+                files_item = files_item_data.to_dict()
+                files.append(files_item)
+
+        quotas: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.quotas, Unset):
+            quotas = []
+            for quotas_item_data in self.quotas:
+                quotas_item = quotas_item_data.to_dict()
+                quotas.append(quotas_item)
+
+        paused_reason = self.paused_reason
+
         datacite_doi = self.datacite_doi
+
+        citation_count = self.citation_count
 
         latitude: Union[None, Unset, float]
         if isinstance(self.latitude, Unset):
@@ -341,64 +374,75 @@ class PublicOfferingDetails:
 
         backend_id = self.backend_id
 
+        organization_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.organization_groups, Unset):
+            organization_groups = []
+            for organization_groups_item_data in self.organization_groups:
+                organization_groups_item = organization_groups_item_data.to_dict()
+                organization_groups.append(organization_groups_item)
+
         image: Union[None, Unset, str]
         if isinstance(self.image, Unset):
             image = UNSET
         else:
             image = self.image
 
+        total_customers: Union[None, Unset, int]
+        if isinstance(self.total_customers, Unset):
+            total_customers = UNSET
+        else:
+            total_customers = self.total_customers
+
+        total_cost: Union[None, Unset, int]
+        if isinstance(self.total_cost, Unset):
+            total_cost = UNSET
+        else:
+            total_cost = self.total_cost
+
+        total_cost_estimated: Union[None, Unset, int]
+        if isinstance(self.total_cost_estimated, Unset):
+            total_cost_estimated = UNSET
+        else:
+            total_cost_estimated = self.total_cost_estimated
+
+        parent_description = self.parent_description
+
+        parent_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.parent_uuid, Unset):
+            parent_uuid = str(self.parent_uuid)
+
+        parent_name = self.parent_name
+
         backend_metadata = self.backend_metadata
+
+        google_calendar_is_public = self.google_calendar_is_public
+
+        google_calendar_link: Union[None, Unset, str]
+        if isinstance(self.google_calendar_link, Unset):
+            google_calendar_link = UNSET
+        else:
+            google_calendar_link = self.google_calendar_link
+
+        promotion_campaigns: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.promotion_campaigns, Unset):
+            promotion_campaigns = []
+            for promotion_campaigns_item_data in self.promotion_campaigns:
+                promotion_campaigns_item = promotion_campaigns_item_data.to_dict()
+                promotion_campaigns.append(promotion_campaigns_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "created": created,
-                "name": name,
-                "slug": slug,
-                "endpoints": endpoints,
-                "roles": roles,
-                "customer_uuid": customer_uuid,
-                "customer_name": customer_name,
-                "project": project,
-                "project_uuid": project_uuid,
-                "project_name": project_name,
-                "category": category,
-                "category_uuid": category_uuid,
-                "category_title": category_title,
-                "attributes": attributes,
-                "options": options,
-                "resource_options": resource_options,
-                "components": components,
-                "plugin_options": plugin_options,
-                "state": state,
-                "state_code": state_code,
-                "order_count": order_count,
-                "plans": plans,
-                "screenshots": screenshots,
-                "type": type_,
-                "scope": scope,
-                "scope_uuid": scope_uuid,
-                "scope_name": scope_name,
-                "scope_state": scope_state,
-                "files": files,
-                "quotas": quotas,
-                "paused_reason": paused_reason,
-                "citation_count": citation_count,
-                "organization_groups": organization_groups,
-                "total_customers": total_customers,
-                "total_cost": total_cost,
-                "total_cost_estimated": total_cost_estimated,
-                "parent_description": parent_description,
-                "parent_uuid": parent_uuid,
-                "parent_name": parent_name,
-                "google_calendar_is_public": google_calendar_is_public,
-                "google_calendar_link": google_calendar_link,
-                "promotion_campaigns": promotion_campaigns,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if created is not UNSET:
+            field_dict["created"] = created
+        if name is not UNSET:
+            field_dict["name"] = name
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if full_description is not UNSET:
@@ -411,8 +455,42 @@ class PublicOfferingDetails:
             field_dict["privacy_policy_link"] = privacy_policy_link
         if access_url is not UNSET:
             field_dict["access_url"] = access_url
+        if endpoints is not UNSET:
+            field_dict["endpoints"] = endpoints
+        if roles is not UNSET:
+            field_dict["roles"] = roles
         if customer is not UNSET:
             field_dict["customer"] = customer
+        if customer_uuid is not UNSET:
+            field_dict["customer_uuid"] = customer_uuid
+        if customer_name is not UNSET:
+            field_dict["customer_name"] = customer_name
+        if project is not UNSET:
+            field_dict["project"] = project
+        if project_uuid is not UNSET:
+            field_dict["project_uuid"] = project_uuid
+        if project_name is not UNSET:
+            field_dict["project_name"] = project_name
+        if category is not UNSET:
+            field_dict["category"] = category
+        if category_uuid is not UNSET:
+            field_dict["category_uuid"] = category_uuid
+        if category_title is not UNSET:
+            field_dict["category_title"] = category_title
+        if attributes is not UNSET:
+            field_dict["attributes"] = attributes
+        if options is not UNSET:
+            field_dict["options"] = options
+        if resource_options is not UNSET:
+            field_dict["resource_options"] = resource_options
+        if components is not UNSET:
+            field_dict["components"] = components
+        if plugin_options is not UNSET:
+            field_dict["plugin_options"] = plugin_options
+        if state is not UNSET:
+            field_dict["state"] = state
+        if state_code is not UNSET:
+            field_dict["state_code"] = state_code
         if vendor_details is not UNSET:
             field_dict["vendor_details"] = vendor_details
         if getting_started is not UNSET:
@@ -421,12 +499,36 @@ class PublicOfferingDetails:
             field_dict["integration_guide"] = integration_guide
         if thumbnail is not UNSET:
             field_dict["thumbnail"] = thumbnail
+        if order_count is not UNSET:
+            field_dict["order_count"] = order_count
+        if plans is not UNSET:
+            field_dict["plans"] = plans
+        if screenshots is not UNSET:
+            field_dict["screenshots"] = screenshots
+        if type_ is not UNSET:
+            field_dict["type"] = type_
         if shared is not UNSET:
             field_dict["shared"] = shared
         if billable is not UNSET:
             field_dict["billable"] = billable
+        if scope is not UNSET:
+            field_dict["scope"] = scope
+        if scope_uuid is not UNSET:
+            field_dict["scope_uuid"] = scope_uuid
+        if scope_name is not UNSET:
+            field_dict["scope_name"] = scope_name
+        if scope_state is not UNSET:
+            field_dict["scope_state"] = scope_state
+        if files is not UNSET:
+            field_dict["files"] = files
+        if quotas is not UNSET:
+            field_dict["quotas"] = quotas
+        if paused_reason is not UNSET:
+            field_dict["paused_reason"] = paused_reason
         if datacite_doi is not UNSET:
             field_dict["datacite_doi"] = datacite_doi
+        if citation_count is not UNSET:
+            field_dict["citation_count"] = citation_count
         if latitude is not UNSET:
             field_dict["latitude"] = latitude
         if longitude is not UNSET:
@@ -435,10 +537,30 @@ class PublicOfferingDetails:
             field_dict["country"] = country
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
+        if organization_groups is not UNSET:
+            field_dict["organization_groups"] = organization_groups
         if image is not UNSET:
             field_dict["image"] = image
+        if total_customers is not UNSET:
+            field_dict["total_customers"] = total_customers
+        if total_cost is not UNSET:
+            field_dict["total_cost"] = total_cost
+        if total_cost_estimated is not UNSET:
+            field_dict["total_cost_estimated"] = total_cost_estimated
+        if parent_description is not UNSET:
+            field_dict["parent_description"] = parent_description
+        if parent_uuid is not UNSET:
+            field_dict["parent_uuid"] = parent_uuid
+        if parent_name is not UNSET:
+            field_dict["parent_name"] = parent_name
         if backend_metadata is not UNSET:
             field_dict["backend_metadata"] = backend_metadata
+        if google_calendar_is_public is not UNSET:
+            field_dict["google_calendar_is_public"] = google_calendar_is_public
+        if google_calendar_link is not UNSET:
+            field_dict["google_calendar_link"] = google_calendar_link
+        if promotion_campaigns is not UNSET:
+            field_dict["promotion_campaigns"] = promotion_campaigns
 
         return field_dict
 
@@ -458,143 +580,25 @@ class PublicOfferingDetails:
         from ..models.quota import Quota
 
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        created = isoparse(d.pop("created"))
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        slug = d.pop("slug")
-
-        endpoints = []
-        _endpoints = d.pop("endpoints")
-        for endpoints_item_data in _endpoints:
-            endpoints_item = NestedEndpoint.from_dict(endpoints_item_data)
-
-            endpoints.append(endpoints_item)
-
-        roles = []
-        _roles = d.pop("roles")
-        for roles_item_data in _roles:
-            roles_item = NestedRole.from_dict(roles_item_data)
-
-            roles.append(roles_item)
-
-        customer_uuid = UUID(d.pop("customer_uuid"))
-
-        customer_name = d.pop("customer_name")
-
-        def _parse_project(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        project = _parse_project(d.pop("project"))
-
-        project_uuid = UUID(d.pop("project_uuid"))
-
-        project_name = d.pop("project_name")
-
-        category = d.pop("category")
-
-        category_uuid = UUID(d.pop("category_uuid"))
-
-        category_title = d.pop("category_title")
-
-        attributes = PublicOfferingDetailsAttributes.from_dict(d.pop("attributes"))
-
-        options = OfferingOptions.from_dict(d.pop("options"))
-
-        resource_options = OfferingOptions.from_dict(d.pop("resource_options"))
-
-        components = []
-        _components = d.pop("components")
-        for components_item_data in _components:
-            components_item = OfferingComponent.from_dict(components_item_data)
-
-            components.append(components_item)
-
-        plugin_options = MergedPluginOptions.from_dict(d.pop("plugin_options"))
-
-        state = OfferingState(d.pop("state"))
-
-        state_code = StateCodeEnum(d.pop("state_code"))
-
-        order_count = d.pop("order_count")
-
-        plans = []
-        _plans = d.pop("plans")
-        for plans_item_data in _plans:
-            plans_item = BasePublicPlan.from_dict(plans_item_data)
-
-            plans.append(plans_item)
-
-        screenshots = []
-        _screenshots = d.pop("screenshots")
-        for screenshots_item_data in _screenshots:
-            screenshots_item = NestedScreenshot.from_dict(screenshots_item_data)
-
-            screenshots.append(screenshots_item)
-
-        type_ = d.pop("type")
-
-        scope = d.pop("scope")
-
-        scope_uuid = UUID(d.pop("scope_uuid"))
-
-        scope_name = UUID(d.pop("scope_name"))
-
-        scope_state = CoreStates(d.pop("scope_state"))
-
-        files = []
-        _files = d.pop("files")
-        for files_item_data in _files:
-            files_item = NestedOfferingFile.from_dict(files_item_data)
-
-            files.append(files_item)
-
-        quotas = []
-        _quotas = d.pop("quotas")
-        for quotas_item_data in _quotas:
-            quotas_item = Quota.from_dict(quotas_item_data)
-
-            quotas.append(quotas_item)
-
-        paused_reason = d.pop("paused_reason")
-
-        citation_count = d.pop("citation_count")
-
-        organization_groups = []
-        _organization_groups = d.pop("organization_groups")
-        for organization_groups_item_data in _organization_groups:
-            organization_groups_item = OrganizationGroup.from_dict(organization_groups_item_data)
-
-            organization_groups.append(organization_groups_item)
-
-        total_customers = d.pop("total_customers")
-
-        total_cost = d.pop("total_cost")
-
-        total_cost_estimated = d.pop("total_cost_estimated")
-
-        parent_description = d.pop("parent_description")
-
-        parent_uuid = UUID(d.pop("parent_uuid"))
-
-        parent_name = d.pop("parent_name")
-
-        google_calendar_is_public = d.pop("google_calendar_is_public")
-
-        def _parse_google_calendar_link(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        google_calendar_link = _parse_google_calendar_link(d.pop("google_calendar_link"))
-
-        promotion_campaigns = NestedCampaign.from_dict(d.pop("promotion_campaigns"))
+        slug = d.pop("slug", UNSET)
 
         description = d.pop("description", UNSET)
 
@@ -608,6 +612,20 @@ class PublicOfferingDetails:
 
         access_url = d.pop("access_url", UNSET)
 
+        endpoints = []
+        _endpoints = d.pop("endpoints", UNSET)
+        for endpoints_item_data in _endpoints or []:
+            endpoints_item = NestedEndpoint.from_dict(endpoints_item_data)
+
+            endpoints.append(endpoints_item)
+
+        roles = []
+        _roles = d.pop("roles", UNSET)
+        for roles_item_data in _roles or []:
+            roles_item = NestedRole.from_dict(roles_item_data)
+
+            roles.append(roles_item)
+
         def _parse_customer(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -616,6 +634,93 @@ class PublicOfferingDetails:
             return cast(Union[None, Unset, str], data)
 
         customer = _parse_customer(d.pop("customer", UNSET))
+
+        _customer_uuid = d.pop("customer_uuid", UNSET)
+        customer_uuid: Union[Unset, UUID]
+        if isinstance(_customer_uuid, Unset):
+            customer_uuid = UNSET
+        else:
+            customer_uuid = UUID(_customer_uuid)
+
+        customer_name = d.pop("customer_name", UNSET)
+
+        def _parse_project(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        project = _parse_project(d.pop("project", UNSET))
+
+        _project_uuid = d.pop("project_uuid", UNSET)
+        project_uuid: Union[Unset, UUID]
+        if isinstance(_project_uuid, Unset):
+            project_uuid = UNSET
+        else:
+            project_uuid = UUID(_project_uuid)
+
+        project_name = d.pop("project_name", UNSET)
+
+        category = d.pop("category", UNSET)
+
+        _category_uuid = d.pop("category_uuid", UNSET)
+        category_uuid: Union[Unset, UUID]
+        if isinstance(_category_uuid, Unset):
+            category_uuid = UNSET
+        else:
+            category_uuid = UUID(_category_uuid)
+
+        category_title = d.pop("category_title", UNSET)
+
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, PublicOfferingDetailsAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = PublicOfferingDetailsAttributes.from_dict(_attributes)
+
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, OfferingOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = OfferingOptions.from_dict(_options)
+
+        _resource_options = d.pop("resource_options", UNSET)
+        resource_options: Union[Unset, OfferingOptions]
+        if isinstance(_resource_options, Unset):
+            resource_options = UNSET
+        else:
+            resource_options = OfferingOptions.from_dict(_resource_options)
+
+        components = []
+        _components = d.pop("components", UNSET)
+        for components_item_data in _components or []:
+            components_item = OfferingComponent.from_dict(components_item_data)
+
+            components.append(components_item)
+
+        _plugin_options = d.pop("plugin_options", UNSET)
+        plugin_options: Union[Unset, MergedPluginOptions]
+        if isinstance(_plugin_options, Unset):
+            plugin_options = UNSET
+        else:
+            plugin_options = MergedPluginOptions.from_dict(_plugin_options)
+
+        _state = d.pop("state", UNSET)
+        state: Union[Unset, OfferingState]
+        if isinstance(_state, Unset):
+            state = UNSET
+        else:
+            state = OfferingState(_state)
+
+        _state_code = d.pop("state_code", UNSET)
+        state_code: Union[Unset, StateCodeEnum]
+        if isinstance(_state_code, Unset):
+            state_code = UNSET
+        else:
+            state_code = StateCodeEnum(_state_code)
 
         vendor_details = d.pop("vendor_details", UNSET)
 
@@ -632,11 +737,100 @@ class PublicOfferingDetails:
 
         thumbnail = _parse_thumbnail(d.pop("thumbnail", UNSET))
 
+        order_count = d.pop("order_count", UNSET)
+
+        plans = []
+        _plans = d.pop("plans", UNSET)
+        for plans_item_data in _plans or []:
+            plans_item = BasePublicPlan.from_dict(plans_item_data)
+
+            plans.append(plans_item)
+
+        screenshots = []
+        _screenshots = d.pop("screenshots", UNSET)
+        for screenshots_item_data in _screenshots or []:
+            screenshots_item = NestedScreenshot.from_dict(screenshots_item_data)
+
+            screenshots.append(screenshots_item)
+
+        type_ = d.pop("type", UNSET)
+
         shared = d.pop("shared", UNSET)
 
         billable = d.pop("billable", UNSET)
 
+        scope = d.pop("scope", UNSET)
+
+        def _parse_scope_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                scope_uuid_type_0 = UUID(data)
+
+                return scope_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        scope_uuid = _parse_scope_uuid(d.pop("scope_uuid", UNSET))
+
+        def _parse_scope_name(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                scope_name_type_0 = UUID(data)
+
+                return scope_name_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        scope_name = _parse_scope_name(d.pop("scope_name", UNSET))
+
+        def _parse_scope_state(data: object) -> Union[CoreStates, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                scope_state_type_1 = CoreStates(data)
+
+                return scope_state_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union[CoreStates, None, Unset], data)
+
+        scope_state = _parse_scope_state(d.pop("scope_state", UNSET))
+
+        files = []
+        _files = d.pop("files", UNSET)
+        for files_item_data in _files or []:
+            files_item = NestedOfferingFile.from_dict(files_item_data)
+
+            files.append(files_item)
+
+        quotas = []
+        _quotas = d.pop("quotas", UNSET)
+        for quotas_item_data in _quotas or []:
+            quotas_item = Quota.from_dict(quotas_item_data)
+
+            quotas.append(quotas_item)
+
+        paused_reason = d.pop("paused_reason", UNSET)
+
         datacite_doi = d.pop("datacite_doi", UNSET)
+
+        citation_count = d.pop("citation_count", UNSET)
 
         def _parse_latitude(data: object) -> Union[None, Unset, float]:
             if data is None:
@@ -677,6 +871,13 @@ class PublicOfferingDetails:
 
         backend_id = d.pop("backend_id", UNSET)
 
+        organization_groups = []
+        _organization_groups = d.pop("organization_groups", UNSET)
+        for organization_groups_item_data in _organization_groups or []:
+            organization_groups_item = OrganizationGroup.from_dict(organization_groups_item_data)
+
+            organization_groups.append(organization_groups_item)
+
         def _parse_image(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -686,7 +887,63 @@ class PublicOfferingDetails:
 
         image = _parse_image(d.pop("image", UNSET))
 
+        def _parse_total_customers(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        total_customers = _parse_total_customers(d.pop("total_customers", UNSET))
+
+        def _parse_total_cost(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        total_cost = _parse_total_cost(d.pop("total_cost", UNSET))
+
+        def _parse_total_cost_estimated(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        total_cost_estimated = _parse_total_cost_estimated(d.pop("total_cost_estimated", UNSET))
+
+        parent_description = d.pop("parent_description", UNSET)
+
+        _parent_uuid = d.pop("parent_uuid", UNSET)
+        parent_uuid: Union[Unset, UUID]
+        if isinstance(_parent_uuid, Unset):
+            parent_uuid = UNSET
+        else:
+            parent_uuid = UUID(_parent_uuid)
+
+        parent_name = d.pop("parent_name", UNSET)
+
         backend_metadata = d.pop("backend_metadata", UNSET)
+
+        google_calendar_is_public = d.pop("google_calendar_is_public", UNSET)
+
+        def _parse_google_calendar_link(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        google_calendar_link = _parse_google_calendar_link(d.pop("google_calendar_link", UNSET))
+
+        promotion_campaigns = []
+        _promotion_campaigns = d.pop("promotion_campaigns", UNSET)
+        for promotion_campaigns_item_data in _promotion_campaigns or []:
+            promotion_campaigns_item = NestedCampaign.from_dict(promotion_campaigns_item_data)
+
+            promotion_campaigns.append(promotion_campaigns_item)
 
         public_offering_details = cls(
             url=url,
@@ -694,8 +951,15 @@ class PublicOfferingDetails:
             created=created,
             name=name,
             slug=slug,
+            description=description,
+            full_description=full_description,
+            terms_of_service=terms_of_service,
+            terms_of_service_link=terms_of_service_link,
+            privacy_policy_link=privacy_policy_link,
+            access_url=access_url,
             endpoints=endpoints,
             roles=roles,
+            customer=customer,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
             project=project,
@@ -711,10 +975,16 @@ class PublicOfferingDetails:
             plugin_options=plugin_options,
             state=state,
             state_code=state_code,
+            vendor_details=vendor_details,
+            getting_started=getting_started,
+            integration_guide=integration_guide,
+            thumbnail=thumbnail,
             order_count=order_count,
             plans=plans,
             screenshots=screenshots,
             type_=type_,
+            shared=shared,
+            billable=billable,
             scope=scope,
             scope_uuid=scope_uuid,
             scope_name=scope_name,
@@ -722,37 +992,24 @@ class PublicOfferingDetails:
             files=files,
             quotas=quotas,
             paused_reason=paused_reason,
+            datacite_doi=datacite_doi,
             citation_count=citation_count,
+            latitude=latitude,
+            longitude=longitude,
+            country=country,
+            backend_id=backend_id,
             organization_groups=organization_groups,
+            image=image,
             total_customers=total_customers,
             total_cost=total_cost,
             total_cost_estimated=total_cost_estimated,
             parent_description=parent_description,
             parent_uuid=parent_uuid,
             parent_name=parent_name,
+            backend_metadata=backend_metadata,
             google_calendar_is_public=google_calendar_is_public,
             google_calendar_link=google_calendar_link,
             promotion_campaigns=promotion_campaigns,
-            description=description,
-            full_description=full_description,
-            terms_of_service=terms_of_service,
-            terms_of_service_link=terms_of_service_link,
-            privacy_policy_link=privacy_policy_link,
-            access_url=access_url,
-            customer=customer,
-            vendor_details=vendor_details,
-            getting_started=getting_started,
-            integration_guide=integration_guide,
-            thumbnail=thumbnail,
-            shared=shared,
-            billable=billable,
-            datacite_doi=datacite_doi,
-            latitude=latitude,
-            longitude=longitude,
-            country=country,
-            backend_id=backend_id,
-            image=image,
-            backend_metadata=backend_metadata,
         )
 
         public_offering_details.additional_properties = d

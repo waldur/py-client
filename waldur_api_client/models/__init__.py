@@ -204,7 +204,6 @@ from .data_volume_request import DataVolumeRequest
 from .deciding_entity_enum import DecidingEntityEnum
 from .delete_attachments_request import DeleteAttachmentsRequest
 from .detail_state import DetailState
-from .detailed_provider_user import DetailedProviderUser
 from .digital_ocean_droplet import DigitalOceanDroplet
 from .digital_ocean_droplet_marketplace_offering_plugin_options import (
     DigitalOceanDropletMarketplaceOfferingPluginOptions,
@@ -367,6 +366,8 @@ from .marketplace_orders_list_state_item import MarketplaceOrdersListStateItem
 from .marketplace_orders_list_type_item import MarketplaceOrdersListTypeItem
 from .marketplace_orders_retrieve_field_item import MarketplaceOrdersRetrieveFieldItem
 from .marketplace_project_update_requests_list_state_item import MarketplaceProjectUpdateRequestsListStateItem
+from .marketplace_provider_customer import MarketplaceProviderCustomer
+from .marketplace_provider_customer_project import MarketplaceProviderCustomerProject
 from .marketplace_provider_offerings_component_stats_list_o_item import (
     MarketplaceProviderOfferingsComponentStatsListOItem,
 )
@@ -418,13 +419,37 @@ from .marketplace_resources_list_o_item import MarketplaceResourcesListOItem
 from .marketplace_resources_list_state_item import MarketplaceResourcesListStateItem
 from .marketplace_resources_retrieve_field_item import MarketplaceResourcesRetrieveFieldItem
 from .marketplace_screenshots_list_o_item import MarketplaceScreenshotsListOItem
+from .marketplace_service_provider_user import MarketplaceServiceProviderUser
+from .marketplace_service_providers_customer_projects_list_field_item import (
+    MarketplaceServiceProvidersCustomerProjectsListFieldItem,
+)
+from .marketplace_service_providers_customer_projects_list_o_item import (
+    MarketplaceServiceProvidersCustomerProjectsListOItem,
+)
+from .marketplace_service_providers_customers_list_field_item import MarketplaceServiceProvidersCustomersListFieldItem
+from .marketplace_service_providers_keys_list_field_item import MarketplaceServiceProvidersKeysListFieldItem
+from .marketplace_service_providers_keys_list_o_item import MarketplaceServiceProvidersKeysListOItem
 from .marketplace_service_providers_list_field_item import MarketplaceServiceProvidersListFieldItem
 from .marketplace_service_providers_list_o_item import MarketplaceServiceProvidersListOItem
 from .marketplace_service_providers_list_users_list_field_item import MarketplaceServiceProvidersListUsersListFieldItem
 from .marketplace_service_providers_list_users_list_o_item import MarketplaceServiceProvidersListUsersListOItem
-from .marketplace_service_providers_offerings_list_o import MarketplaceServiceProvidersOfferingsListO
+from .marketplace_service_providers_offerings_list_field_item import MarketplaceServiceProvidersOfferingsListFieldItem
+from .marketplace_service_providers_offerings_list_o_item import MarketplaceServiceProvidersOfferingsListOItem
 from .marketplace_service_providers_offerings_list_state_item import MarketplaceServiceProvidersOfferingsListStateItem
+from .marketplace_service_providers_project_permissions_list_field_item import (
+    MarketplaceServiceProvidersProjectPermissionsListFieldItem,
+)
+from .marketplace_service_providers_project_permissions_list_o_item import (
+    MarketplaceServiceProvidersProjectPermissionsListOItem,
+)
+from .marketplace_service_providers_projects_list_field_item import MarketplaceServiceProvidersProjectsListFieldItem
+from .marketplace_service_providers_projects_list_o_item import MarketplaceServiceProvidersProjectsListOItem
 from .marketplace_service_providers_retrieve_field_item import MarketplaceServiceProvidersRetrieveFieldItem
+from .marketplace_service_providers_user_customers_list_field_item import (
+    MarketplaceServiceProvidersUserCustomersListFieldItem,
+)
+from .marketplace_service_providers_users_list_field_item import MarketplaceServiceProvidersUsersListFieldItem
+from .marketplace_service_providers_users_list_o_item import MarketplaceServiceProvidersUsersListOItem
 from .merged_plugin_options import MergedPluginOptions
 from .merged_plugin_options_request import MergedPluginOptionsRequest
 from .merged_secret_options import MergedSecretOptions
@@ -837,8 +862,6 @@ from .protected_proposal_list_request import ProtectedProposalListRequest
 from .protected_round import ProtectedRound
 from .protected_round_request import ProtectedRoundRequest
 from .protocol_enum import ProtocolEnum
-from .provider_customer import ProviderCustomer
-from .provider_customer_project import ProviderCustomerProject
 from .provider_invoice_items_list_o_item import ProviderInvoiceItemsListOItem
 from .provider_offering import ProviderOffering
 from .provider_offering_costs import ProviderOfferingCosts
@@ -1349,7 +1372,6 @@ __all__ = (
     "DataVolumeRequest",
     "DecidingEntityEnum",
     "DeleteAttachmentsRequest",
-    "DetailedProviderUser",
     "DetailState",
     "DigitalOceanDroplet",
     "DigitalOceanDropletMarketplaceOfferingPluginOptions",
@@ -1507,6 +1529,8 @@ __all__ = (
     "MarketplaceOrdersListTypeItem",
     "MarketplaceOrdersRetrieveFieldItem",
     "MarketplaceProjectUpdateRequestsListStateItem",
+    "MarketplaceProviderCustomer",
+    "MarketplaceProviderCustomerProject",
     "MarketplaceProviderOfferingsComponentStatsListOItem",
     "MarketplaceProviderOfferingsComponentStatsListStateItem",
     "MarketplaceProviderOfferingsCostsListOItem",
@@ -1540,13 +1564,27 @@ __all__ = (
     "MarketplaceResourcesListStateItem",
     "MarketplaceResourcesRetrieveFieldItem",
     "MarketplaceScreenshotsListOItem",
+    "MarketplaceServiceProvidersCustomerProjectsListFieldItem",
+    "MarketplaceServiceProvidersCustomerProjectsListOItem",
+    "MarketplaceServiceProvidersCustomersListFieldItem",
+    "MarketplaceServiceProvidersKeysListFieldItem",
+    "MarketplaceServiceProvidersKeysListOItem",
     "MarketplaceServiceProvidersListFieldItem",
     "MarketplaceServiceProvidersListOItem",
     "MarketplaceServiceProvidersListUsersListFieldItem",
     "MarketplaceServiceProvidersListUsersListOItem",
-    "MarketplaceServiceProvidersOfferingsListO",
+    "MarketplaceServiceProvidersOfferingsListFieldItem",
+    "MarketplaceServiceProvidersOfferingsListOItem",
     "MarketplaceServiceProvidersOfferingsListStateItem",
+    "MarketplaceServiceProvidersProjectPermissionsListFieldItem",
+    "MarketplaceServiceProvidersProjectPermissionsListOItem",
+    "MarketplaceServiceProvidersProjectsListFieldItem",
+    "MarketplaceServiceProvidersProjectsListOItem",
     "MarketplaceServiceProvidersRetrieveFieldItem",
+    "MarketplaceServiceProvidersUserCustomersListFieldItem",
+    "MarketplaceServiceProvidersUsersListFieldItem",
+    "MarketplaceServiceProvidersUsersListOItem",
+    "MarketplaceServiceProviderUser",
     "MergedPluginOptions",
     "MergedPluginOptionsRequest",
     "MergedSecretOptions",
@@ -1951,8 +1989,6 @@ __all__ = (
     "ProtectedRound",
     "ProtectedRoundRequest",
     "ProtocolEnum",
-    "ProviderCustomer",
-    "ProviderCustomerProject",
     "ProviderInvoiceItemsListOItem",
     "ProviderOffering",
     "ProviderOfferingCosts",

@@ -1,3 +1,4 @@
+import datetime
 from http import HTTPStatus
 from typing import Any, Optional, Union
 from uuid import UUID
@@ -13,6 +14,8 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
@@ -29,6 +32,16 @@ def _get_kwargs(
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_created: Union[Unset, str] = UNSET
+    if not isinstance(created, Unset):
+        json_created = created.isoformat()
+    params["created"] = json_created
+
+    json_expiration_time: Union[Unset, str] = UNSET
+    if not isinstance(expiration_time, Unset):
+        json_expiration_time = expiration_time.isoformat()
+    params["expiration_time"] = json_expiration_time
 
     params["full_name"] = full_name
 
@@ -117,6 +130,8 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
@@ -134,6 +149,8 @@ def sync_detailed(
 ) -> Response[list["Permission"]]:
     """
     Args:
+        created (Union[Unset, datetime.datetime]):
+        expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UserPermissionsListOItem]]):
@@ -158,6 +175,8 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        created=created,
+        expiration_time=expiration_time,
         full_name=full_name,
         native_name=native_name,
         o=o,
@@ -184,6 +203,8 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
@@ -201,6 +222,8 @@ def sync(
 ) -> Optional[list["Permission"]]:
     """
     Args:
+        created (Union[Unset, datetime.datetime]):
+        expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UserPermissionsListOItem]]):
@@ -226,6 +249,8 @@ def sync(
 
     return sync_detailed(
         client=client,
+        created=created,
+        expiration_time=expiration_time,
         full_name=full_name,
         native_name=native_name,
         o=o,
@@ -246,6 +271,8 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
@@ -263,6 +290,8 @@ async def asyncio_detailed(
 ) -> Response[list["Permission"]]:
     """
     Args:
+        created (Union[Unset, datetime.datetime]):
+        expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UserPermissionsListOItem]]):
@@ -287,6 +316,8 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        created=created,
+        expiration_time=expiration_time,
         full_name=full_name,
         native_name=native_name,
         o=o,
@@ -311,6 +342,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
@@ -328,6 +361,8 @@ async def asyncio(
 ) -> Optional[list["Permission"]]:
     """
     Args:
+        created (Union[Unset, datetime.datetime]):
+        expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UserPermissionsListOItem]]):
@@ -354,6 +389,8 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            created=created,
+            expiration_time=expiration_time,
             full_name=full_name,
             native_name=native_name,
             o=o,

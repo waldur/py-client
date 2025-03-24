@@ -13,19 +13,17 @@ T = TypeVar("T", bound="GoogleCalendar")
 class GoogleCalendar:
     """
     Attributes:
-        http_link (str):
         backend_id (Union[None, Unset, str]):
         public (Union[Unset, bool]):
+        http_link (Union[Unset, str]):
     """
 
-    http_link: str
     backend_id: Union[None, Unset, str] = UNSET
     public: Union[Unset, bool] = UNSET
+    http_link: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        http_link = self.http_link
-
         backend_id: Union[None, Unset, str]
         if isinstance(self.backend_id, Unset):
             backend_id = UNSET
@@ -34,24 +32,23 @@ class GoogleCalendar:
 
         public = self.public
 
+        http_link = self.http_link
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "http_link": http_link,
-            }
-        )
+        field_dict.update({})
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
         if public is not UNSET:
             field_dict["public"] = public
+        if http_link is not UNSET:
+            field_dict["http_link"] = http_link
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        http_link = d.pop("http_link")
 
         def _parse_backend_id(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -64,10 +61,12 @@ class GoogleCalendar:
 
         public = d.pop("public", UNSET)
 
+        http_link = d.pop("http_link", UNSET)
+
         google_calendar = cls(
-            http_link=http_link,
             backend_id=backend_id,
             public=public,
+            http_link=http_link,
         )
 
         google_calendar.additional_properties = d

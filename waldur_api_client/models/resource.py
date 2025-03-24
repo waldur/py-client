@@ -28,150 +28,151 @@ T = TypeVar("T", bound="Resource")
 class Resource:
     """
     Attributes:
-        offering (str):
-        offering_name (str):
-        offering_uuid (UUID):
-        offering_description (str):
-        offering_image (str):
-        offering_thumbnail (str):
-        offering_type (str):
-        offering_terms_of_service (str):
-        offering_shared (bool): Accessible to all customers.
-        offering_billable (bool): Purchase and usage is invoiced.
-        offering_plugin_options (Any): Public data used by specific plugin, such as storage mode for OpenStack.
-        provider_name (str):
-        provider_uuid (UUID):
-        category_title (str):
-        category_uuid (UUID):
-        category_icon (str):
-        plan_unit (BillingUnit):
-        plan_name (str):
-        plan_uuid (UUID):
-        plan_description (str):
-        attributes (ResourceAttributes):
-        limits (ResourceLimits):
-        uuid (UUID):
-        created (datetime.datetime):
-        modified (datetime.datetime):
-        url (str):
-        scope (str):
-        description (str):
-        state (ResourceState):
-        resource_uuid (UUID):
-        backend_id (str):
-        effective_id (str):
-        resource_type (Union[None, str]):
-        project (str):
-        project_uuid (UUID):
-        project_name (str):
-        project_description (str):
-        project_end_date (Union[None, datetime.date]): The date is inclusive. Once reached, all project resource will be
-            scheduled for termination.
-        project_end_date_requested_by (str):
-        customer_uuid (UUID):
-        customer_name (str):
-        parent_offering_uuid (UUID):
-        parent_offering_name (str):
-        parent_uuid (UUID):
-        parent_name (str):
-        backend_metadata (BackendMetadata):
-        is_usage_based (bool):
-        is_limit_based (bool):
-        name (str):
-        slug (str):
-        current_usages (ResourceCurrentUsages):
-        can_terminate (bool):
-        report (list['ReportSection']):
-        end_date_requested_by (Union[None, str]):
-        username (Union[None, str]):
-        limit_usage (Union[None, float]):
-        restrict_member_access (bool):
-        endpoints (list['NestedEndpoint']):
-        error_message (str):
-        error_traceback (str):
-        offering_customer_uuid (UUID):
-        options (Any):
-        available_actions (list[str]):
-        last_sync (datetime.datetime):
-        order_in_progress (Union['OrderDetails', None]):
-        creation_order (Union['OrderDetails', None]):
+        offering (Union[Unset, str]):
+        offering_name (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
+        offering_description (Union[Unset, str]):
+        offering_image (Union[Unset, str]):
+        offering_thumbnail (Union[Unset, str]):
+        offering_type (Union[Unset, str]):
+        offering_terms_of_service (Union[Unset, str]):
+        offering_shared (Union[Unset, bool]): Accessible to all customers.
+        offering_billable (Union[Unset, bool]): Purchase and usage is invoiced.
+        offering_plugin_options (Union[Unset, Any]): Public data used by specific plugin, such as storage mode for
+            OpenStack.
+        provider_name (Union[Unset, str]):
+        provider_uuid (Union[Unset, UUID]):
+        category_title (Union[Unset, str]):
+        category_uuid (Union[Unset, UUID]):
+        category_icon (Union[Unset, str]):
         plan (Union[Unset, str]):
+        plan_unit (Union[Unset, BillingUnit]):
+        plan_name (Union[Unset, str]):
+        plan_uuid (Union[Unset, UUID]):
+        plan_description (Union[Unset, str]):
+        attributes (Union[Unset, ResourceAttributes]):
+        limits (Union[Unset, ResourceLimits]):
+        uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
+        modified (Union[Unset, datetime.datetime]):
+        url (Union[Unset, str]):
+        scope (Union[Unset, str]):
+        description (Union[Unset, str]):
+        state (Union[Unset, ResourceState]):
+        resource_uuid (Union[None, UUID, Unset]):
+        backend_id (Union[Unset, str]):
+        effective_id (Union[Unset, str]):
+        resource_type (Union[None, Unset, str]):
+        project (Union[Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        project_name (Union[Unset, str]):
+        project_description (Union[Unset, str]):
+        project_end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource
+            will be scheduled for termination.
+        project_end_date_requested_by (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        customer_name (Union[Unset, str]):
+        parent_offering_uuid (Union[Unset, UUID]):
+        parent_offering_name (Union[Unset, str]):
+        parent_uuid (Union[Unset, UUID]):
+        parent_name (Union[Unset, str]):
+        backend_metadata (Union[Unset, BackendMetadata]):
+        is_usage_based (Union[Unset, bool]):
+        is_limit_based (Union[Unset, bool]):
+        name (Union[Unset, str]):
+        slug (Union[Unset, str]):
+        current_usages (Union[Unset, ResourceCurrentUsages]):
+        can_terminate (Union[Unset, bool]):
+        report (Union[Unset, list['ReportSection']]):
         end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, a resource will be scheduled
             for termination.
+        end_date_requested_by (Union[None, Unset, str]):
+        username (Union[None, Unset, str]):
+        limit_usage (Union[None, Unset, float]):
         downscaled (Union[Unset, bool]):
+        restrict_member_access (Union[Unset, bool]):
         paused (Union[Unset, bool]):
+        endpoints (Union[Unset, list['NestedEndpoint']]):
+        error_message (Union[Unset, str]):
+        error_traceback (Union[Unset, str]):
+        offering_customer_uuid (Union[Unset, UUID]):
+        options (Union[Unset, Any]):
+        available_actions (Union[Unset, list[str]]):
+        last_sync (Union[Unset, datetime.datetime]):
+        order_in_progress (Union['OrderDetails', None, Unset]):
+        creation_order (Union['OrderDetails', None, Unset]):
     """
 
-    offering: str
-    offering_name: str
-    offering_uuid: UUID
-    offering_description: str
-    offering_image: str
-    offering_thumbnail: str
-    offering_type: str
-    offering_terms_of_service: str
-    offering_shared: bool
-    offering_billable: bool
-    offering_plugin_options: Any
-    provider_name: str
-    provider_uuid: UUID
-    category_title: str
-    category_uuid: UUID
-    category_icon: str
-    plan_unit: BillingUnit
-    plan_name: str
-    plan_uuid: UUID
-    plan_description: str
-    attributes: "ResourceAttributes"
-    limits: "ResourceLimits"
-    uuid: UUID
-    created: datetime.datetime
-    modified: datetime.datetime
-    url: str
-    scope: str
-    description: str
-    state: ResourceState
-    resource_uuid: UUID
-    backend_id: str
-    effective_id: str
-    resource_type: Union[None, str]
-    project: str
-    project_uuid: UUID
-    project_name: str
-    project_description: str
-    project_end_date: Union[None, datetime.date]
-    project_end_date_requested_by: str
-    customer_uuid: UUID
-    customer_name: str
-    parent_offering_uuid: UUID
-    parent_offering_name: str
-    parent_uuid: UUID
-    parent_name: str
-    backend_metadata: "BackendMetadata"
-    is_usage_based: bool
-    is_limit_based: bool
-    name: str
-    slug: str
-    current_usages: "ResourceCurrentUsages"
-    can_terminate: bool
-    report: list["ReportSection"]
-    end_date_requested_by: Union[None, str]
-    username: Union[None, str]
-    limit_usage: Union[None, float]
-    restrict_member_access: bool
-    endpoints: list["NestedEndpoint"]
-    error_message: str
-    error_traceback: str
-    offering_customer_uuid: UUID
-    options: Any
-    available_actions: list[str]
-    last_sync: datetime.datetime
-    order_in_progress: Union["OrderDetails", None]
-    creation_order: Union["OrderDetails", None]
+    offering: Union[Unset, str] = UNSET
+    offering_name: Union[Unset, str] = UNSET
+    offering_uuid: Union[Unset, UUID] = UNSET
+    offering_description: Union[Unset, str] = UNSET
+    offering_image: Union[Unset, str] = UNSET
+    offering_thumbnail: Union[Unset, str] = UNSET
+    offering_type: Union[Unset, str] = UNSET
+    offering_terms_of_service: Union[Unset, str] = UNSET
+    offering_shared: Union[Unset, bool] = UNSET
+    offering_billable: Union[Unset, bool] = UNSET
+    offering_plugin_options: Union[Unset, Any] = UNSET
+    provider_name: Union[Unset, str] = UNSET
+    provider_uuid: Union[Unset, UUID] = UNSET
+    category_title: Union[Unset, str] = UNSET
+    category_uuid: Union[Unset, UUID] = UNSET
+    category_icon: Union[Unset, str] = UNSET
     plan: Union[Unset, str] = UNSET
+    plan_unit: Union[Unset, BillingUnit] = UNSET
+    plan_name: Union[Unset, str] = UNSET
+    plan_uuid: Union[Unset, UUID] = UNSET
+    plan_description: Union[Unset, str] = UNSET
+    attributes: Union[Unset, "ResourceAttributes"] = UNSET
+    limits: Union[Unset, "ResourceLimits"] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
+    modified: Union[Unset, datetime.datetime] = UNSET
+    url: Union[Unset, str] = UNSET
+    scope: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
+    state: Union[Unset, ResourceState] = UNSET
+    resource_uuid: Union[None, UUID, Unset] = UNSET
+    backend_id: Union[Unset, str] = UNSET
+    effective_id: Union[Unset, str] = UNSET
+    resource_type: Union[None, Unset, str] = UNSET
+    project: Union[Unset, str] = UNSET
+    project_uuid: Union[Unset, UUID] = UNSET
+    project_name: Union[Unset, str] = UNSET
+    project_description: Union[Unset, str] = UNSET
+    project_end_date: Union[None, Unset, datetime.date] = UNSET
+    project_end_date_requested_by: Union[Unset, str] = UNSET
+    customer_uuid: Union[Unset, UUID] = UNSET
+    customer_name: Union[Unset, str] = UNSET
+    parent_offering_uuid: Union[Unset, UUID] = UNSET
+    parent_offering_name: Union[Unset, str] = UNSET
+    parent_uuid: Union[Unset, UUID] = UNSET
+    parent_name: Union[Unset, str] = UNSET
+    backend_metadata: Union[Unset, "BackendMetadata"] = UNSET
+    is_usage_based: Union[Unset, bool] = UNSET
+    is_limit_based: Union[Unset, bool] = UNSET
+    name: Union[Unset, str] = UNSET
+    slug: Union[Unset, str] = UNSET
+    current_usages: Union[Unset, "ResourceCurrentUsages"] = UNSET
+    can_terminate: Union[Unset, bool] = UNSET
+    report: Union[Unset, list["ReportSection"]] = UNSET
     end_date: Union[None, Unset, datetime.date] = UNSET
+    end_date_requested_by: Union[None, Unset, str] = UNSET
+    username: Union[None, Unset, str] = UNSET
+    limit_usage: Union[None, Unset, float] = UNSET
     downscaled: Union[Unset, bool] = UNSET
+    restrict_member_access: Union[Unset, bool] = UNSET
     paused: Union[Unset, bool] = UNSET
+    endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
+    error_message: Union[Unset, str] = UNSET
+    error_traceback: Union[Unset, str] = UNSET
+    offering_customer_uuid: Union[Unset, UUID] = UNSET
+    options: Union[Unset, Any] = UNSET
+    available_actions: Union[Unset, list[str]] = UNSET
+    last_sync: Union[Unset, datetime.datetime] = UNSET
+    order_in_progress: Union["OrderDetails", None, Unset] = UNSET
+    creation_order: Union["OrderDetails", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -181,7 +182,9 @@ class Resource:
 
         offering_name = self.offering_name
 
-        offering_uuid = str(self.offering_uuid)
+        offering_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.offering_uuid, Unset):
+            offering_uuid = str(self.offering_uuid)
 
         offering_description = self.offering_description
 
@@ -201,31 +204,51 @@ class Resource:
 
         provider_name = self.provider_name
 
-        provider_uuid = str(self.provider_uuid)
+        provider_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.provider_uuid, Unset):
+            provider_uuid = str(self.provider_uuid)
 
         category_title = self.category_title
 
-        category_uuid = str(self.category_uuid)
+        category_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.category_uuid, Unset):
+            category_uuid = str(self.category_uuid)
 
         category_icon = self.category_icon
 
-        plan_unit = self.plan_unit.value
+        plan = self.plan
+
+        plan_unit: Union[Unset, str] = UNSET
+        if not isinstance(self.plan_unit, Unset):
+            plan_unit = self.plan_unit.value
 
         plan_name = self.plan_name
 
-        plan_uuid = str(self.plan_uuid)
+        plan_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.plan_uuid, Unset):
+            plan_uuid = str(self.plan_uuid)
 
         plan_description = self.plan_description
 
-        attributes = self.attributes.to_dict()
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
-        limits = self.limits.to_dict()
+        limits: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.limits, Unset):
+            limits = self.limits.to_dict()
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
-        created = self.created.isoformat()
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
-        modified = self.modified.isoformat()
+        modified: Union[Unset, str] = UNSET
+        if not isinstance(self.modified, Unset):
+            modified = self.modified.isoformat()
 
         url = self.url
 
@@ -233,46 +256,69 @@ class Resource:
 
         description = self.description
 
-        state = self.state.value
+        state: Union[Unset, str] = UNSET
+        if not isinstance(self.state, Unset):
+            state = self.state.value
 
-        resource_uuid = str(self.resource_uuid)
+        resource_uuid: Union[None, Unset, str]
+        if isinstance(self.resource_uuid, Unset):
+            resource_uuid = UNSET
+        elif isinstance(self.resource_uuid, UUID):
+            resource_uuid = str(self.resource_uuid)
+        else:
+            resource_uuid = self.resource_uuid
 
         backend_id = self.backend_id
 
         effective_id = self.effective_id
 
-        resource_type: Union[None, str]
-        resource_type = self.resource_type
+        resource_type: Union[None, Unset, str]
+        if isinstance(self.resource_type, Unset):
+            resource_type = UNSET
+        else:
+            resource_type = self.resource_type
 
         project = self.project
 
-        project_uuid = str(self.project_uuid)
+        project_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.project_uuid, Unset):
+            project_uuid = str(self.project_uuid)
 
         project_name = self.project_name
 
         project_description = self.project_description
 
-        project_end_date: Union[None, str]
-        if isinstance(self.project_end_date, datetime.date):
+        project_end_date: Union[None, Unset, str]
+        if isinstance(self.project_end_date, Unset):
+            project_end_date = UNSET
+        elif isinstance(self.project_end_date, datetime.date):
             project_end_date = self.project_end_date.isoformat()
         else:
             project_end_date = self.project_end_date
 
         project_end_date_requested_by = self.project_end_date_requested_by
 
-        customer_uuid = str(self.customer_uuid)
+        customer_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.customer_uuid, Unset):
+            customer_uuid = str(self.customer_uuid)
 
         customer_name = self.customer_name
 
-        parent_offering_uuid = str(self.parent_offering_uuid)
+        parent_offering_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.parent_offering_uuid, Unset):
+            parent_offering_uuid = str(self.parent_offering_uuid)
 
         parent_offering_name = self.parent_offering_name
 
-        parent_uuid = str(self.parent_uuid)
+        parent_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.parent_uuid, Unset):
+            parent_uuid = str(self.parent_uuid)
 
         parent_name = self.parent_name
 
-        backend_metadata = self.backend_metadata.to_dict()
+        backend_metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_metadata, Unset):
+            backend_metadata = self.backend_metadata.to_dict()
 
         is_usage_based = self.is_usage_based
 
@@ -282,56 +328,18 @@ class Resource:
 
         slug = self.slug
 
-        current_usages = self.current_usages.to_dict()
+        current_usages: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.current_usages, Unset):
+            current_usages = self.current_usages.to_dict()
 
         can_terminate = self.can_terminate
 
-        report = []
-        for report_item_data in self.report:
-            report_item = report_item_data.to_dict()
-            report.append(report_item)
-
-        end_date_requested_by: Union[None, str]
-        end_date_requested_by = self.end_date_requested_by
-
-        username: Union[None, str]
-        username = self.username
-
-        limit_usage: Union[None, float]
-        limit_usage = self.limit_usage
-
-        restrict_member_access = self.restrict_member_access
-
-        endpoints = []
-        for endpoints_item_data in self.endpoints:
-            endpoints_item = endpoints_item_data.to_dict()
-            endpoints.append(endpoints_item)
-
-        error_message = self.error_message
-
-        error_traceback = self.error_traceback
-
-        offering_customer_uuid = str(self.offering_customer_uuid)
-
-        options = self.options
-
-        available_actions = self.available_actions
-
-        last_sync = self.last_sync.isoformat()
-
-        order_in_progress: Union[None, dict[str, Any]]
-        if isinstance(self.order_in_progress, OrderDetails):
-            order_in_progress = self.order_in_progress.to_dict()
-        else:
-            order_in_progress = self.order_in_progress
-
-        creation_order: Union[None, dict[str, Any]]
-        if isinstance(self.creation_order, OrderDetails):
-            creation_order = self.creation_order.to_dict()
-        else:
-            creation_order = self.creation_order
-
-        plan = self.plan
+        report: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.report, Unset):
+            report = []
+            for report_item_data in self.report:
+                report_item = report_item_data.to_dict()
+                report.append(report_item)
 
         end_date: Union[None, Unset, str]
         if isinstance(self.end_date, Unset):
@@ -341,90 +349,214 @@ class Resource:
         else:
             end_date = self.end_date
 
+        end_date_requested_by: Union[None, Unset, str]
+        if isinstance(self.end_date_requested_by, Unset):
+            end_date_requested_by = UNSET
+        else:
+            end_date_requested_by = self.end_date_requested_by
+
+        username: Union[None, Unset, str]
+        if isinstance(self.username, Unset):
+            username = UNSET
+        else:
+            username = self.username
+
+        limit_usage: Union[None, Unset, float]
+        if isinstance(self.limit_usage, Unset):
+            limit_usage = UNSET
+        else:
+            limit_usage = self.limit_usage
+
         downscaled = self.downscaled
+
+        restrict_member_access = self.restrict_member_access
 
         paused = self.paused
 
+        endpoints: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.endpoints, Unset):
+            endpoints = []
+            for endpoints_item_data in self.endpoints:
+                endpoints_item = endpoints_item_data.to_dict()
+                endpoints.append(endpoints_item)
+
+        error_message = self.error_message
+
+        error_traceback = self.error_traceback
+
+        offering_customer_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.offering_customer_uuid, Unset):
+            offering_customer_uuid = str(self.offering_customer_uuid)
+
+        options = self.options
+
+        available_actions: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.available_actions, Unset):
+            available_actions = self.available_actions
+
+        last_sync: Union[Unset, str] = UNSET
+        if not isinstance(self.last_sync, Unset):
+            last_sync = self.last_sync.isoformat()
+
+        order_in_progress: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.order_in_progress, Unset):
+            order_in_progress = UNSET
+        elif isinstance(self.order_in_progress, OrderDetails):
+            order_in_progress = self.order_in_progress.to_dict()
+        else:
+            order_in_progress = self.order_in_progress
+
+        creation_order: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.creation_order, Unset):
+            creation_order = UNSET
+        elif isinstance(self.creation_order, OrderDetails):
+            creation_order = self.creation_order.to_dict()
+        else:
+            creation_order = self.creation_order
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "offering": offering,
-                "offering_name": offering_name,
-                "offering_uuid": offering_uuid,
-                "offering_description": offering_description,
-                "offering_image": offering_image,
-                "offering_thumbnail": offering_thumbnail,
-                "offering_type": offering_type,
-                "offering_terms_of_service": offering_terms_of_service,
-                "offering_shared": offering_shared,
-                "offering_billable": offering_billable,
-                "offering_plugin_options": offering_plugin_options,
-                "provider_name": provider_name,
-                "provider_uuid": provider_uuid,
-                "category_title": category_title,
-                "category_uuid": category_uuid,
-                "category_icon": category_icon,
-                "plan_unit": plan_unit,
-                "plan_name": plan_name,
-                "plan_uuid": plan_uuid,
-                "plan_description": plan_description,
-                "attributes": attributes,
-                "limits": limits,
-                "uuid": uuid,
-                "created": created,
-                "modified": modified,
-                "url": url,
-                "scope": scope,
-                "description": description,
-                "state": state,
-                "resource_uuid": resource_uuid,
-                "backend_id": backend_id,
-                "effective_id": effective_id,
-                "resource_type": resource_type,
-                "project": project,
-                "project_uuid": project_uuid,
-                "project_name": project_name,
-                "project_description": project_description,
-                "project_end_date": project_end_date,
-                "project_end_date_requested_by": project_end_date_requested_by,
-                "customer_uuid": customer_uuid,
-                "customer_name": customer_name,
-                "parent_offering_uuid": parent_offering_uuid,
-                "parent_offering_name": parent_offering_name,
-                "parent_uuid": parent_uuid,
-                "parent_name": parent_name,
-                "backend_metadata": backend_metadata,
-                "is_usage_based": is_usage_based,
-                "is_limit_based": is_limit_based,
-                "name": name,
-                "slug": slug,
-                "current_usages": current_usages,
-                "can_terminate": can_terminate,
-                "report": report,
-                "end_date_requested_by": end_date_requested_by,
-                "username": username,
-                "limit_usage": limit_usage,
-                "restrict_member_access": restrict_member_access,
-                "endpoints": endpoints,
-                "error_message": error_message,
-                "error_traceback": error_traceback,
-                "offering_customer_uuid": offering_customer_uuid,
-                "options": options,
-                "available_actions": available_actions,
-                "last_sync": last_sync,
-                "order_in_progress": order_in_progress,
-                "creation_order": creation_order,
-            }
-        )
+        field_dict.update({})
+        if offering is not UNSET:
+            field_dict["offering"] = offering
+        if offering_name is not UNSET:
+            field_dict["offering_name"] = offering_name
+        if offering_uuid is not UNSET:
+            field_dict["offering_uuid"] = offering_uuid
+        if offering_description is not UNSET:
+            field_dict["offering_description"] = offering_description
+        if offering_image is not UNSET:
+            field_dict["offering_image"] = offering_image
+        if offering_thumbnail is not UNSET:
+            field_dict["offering_thumbnail"] = offering_thumbnail
+        if offering_type is not UNSET:
+            field_dict["offering_type"] = offering_type
+        if offering_terms_of_service is not UNSET:
+            field_dict["offering_terms_of_service"] = offering_terms_of_service
+        if offering_shared is not UNSET:
+            field_dict["offering_shared"] = offering_shared
+        if offering_billable is not UNSET:
+            field_dict["offering_billable"] = offering_billable
+        if offering_plugin_options is not UNSET:
+            field_dict["offering_plugin_options"] = offering_plugin_options
+        if provider_name is not UNSET:
+            field_dict["provider_name"] = provider_name
+        if provider_uuid is not UNSET:
+            field_dict["provider_uuid"] = provider_uuid
+        if category_title is not UNSET:
+            field_dict["category_title"] = category_title
+        if category_uuid is not UNSET:
+            field_dict["category_uuid"] = category_uuid
+        if category_icon is not UNSET:
+            field_dict["category_icon"] = category_icon
         if plan is not UNSET:
             field_dict["plan"] = plan
+        if plan_unit is not UNSET:
+            field_dict["plan_unit"] = plan_unit
+        if plan_name is not UNSET:
+            field_dict["plan_name"] = plan_name
+        if plan_uuid is not UNSET:
+            field_dict["plan_uuid"] = plan_uuid
+        if plan_description is not UNSET:
+            field_dict["plan_description"] = plan_description
+        if attributes is not UNSET:
+            field_dict["attributes"] = attributes
+        if limits is not UNSET:
+            field_dict["limits"] = limits
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if created is not UNSET:
+            field_dict["created"] = created
+        if modified is not UNSET:
+            field_dict["modified"] = modified
+        if url is not UNSET:
+            field_dict["url"] = url
+        if scope is not UNSET:
+            field_dict["scope"] = scope
+        if description is not UNSET:
+            field_dict["description"] = description
+        if state is not UNSET:
+            field_dict["state"] = state
+        if resource_uuid is not UNSET:
+            field_dict["resource_uuid"] = resource_uuid
+        if backend_id is not UNSET:
+            field_dict["backend_id"] = backend_id
+        if effective_id is not UNSET:
+            field_dict["effective_id"] = effective_id
+        if resource_type is not UNSET:
+            field_dict["resource_type"] = resource_type
+        if project is not UNSET:
+            field_dict["project"] = project
+        if project_uuid is not UNSET:
+            field_dict["project_uuid"] = project_uuid
+        if project_name is not UNSET:
+            field_dict["project_name"] = project_name
+        if project_description is not UNSET:
+            field_dict["project_description"] = project_description
+        if project_end_date is not UNSET:
+            field_dict["project_end_date"] = project_end_date
+        if project_end_date_requested_by is not UNSET:
+            field_dict["project_end_date_requested_by"] = project_end_date_requested_by
+        if customer_uuid is not UNSET:
+            field_dict["customer_uuid"] = customer_uuid
+        if customer_name is not UNSET:
+            field_dict["customer_name"] = customer_name
+        if parent_offering_uuid is not UNSET:
+            field_dict["parent_offering_uuid"] = parent_offering_uuid
+        if parent_offering_name is not UNSET:
+            field_dict["parent_offering_name"] = parent_offering_name
+        if parent_uuid is not UNSET:
+            field_dict["parent_uuid"] = parent_uuid
+        if parent_name is not UNSET:
+            field_dict["parent_name"] = parent_name
+        if backend_metadata is not UNSET:
+            field_dict["backend_metadata"] = backend_metadata
+        if is_usage_based is not UNSET:
+            field_dict["is_usage_based"] = is_usage_based
+        if is_limit_based is not UNSET:
+            field_dict["is_limit_based"] = is_limit_based
+        if name is not UNSET:
+            field_dict["name"] = name
+        if slug is not UNSET:
+            field_dict["slug"] = slug
+        if current_usages is not UNSET:
+            field_dict["current_usages"] = current_usages
+        if can_terminate is not UNSET:
+            field_dict["can_terminate"] = can_terminate
+        if report is not UNSET:
+            field_dict["report"] = report
         if end_date is not UNSET:
             field_dict["end_date"] = end_date
+        if end_date_requested_by is not UNSET:
+            field_dict["end_date_requested_by"] = end_date_requested_by
+        if username is not UNSET:
+            field_dict["username"] = username
+        if limit_usage is not UNSET:
+            field_dict["limit_usage"] = limit_usage
         if downscaled is not UNSET:
             field_dict["downscaled"] = downscaled
+        if restrict_member_access is not UNSET:
+            field_dict["restrict_member_access"] = restrict_member_access
         if paused is not UNSET:
             field_dict["paused"] = paused
+        if endpoints is not UNSET:
+            field_dict["endpoints"] = endpoints
+        if error_message is not UNSET:
+            field_dict["error_message"] = error_message
+        if error_traceback is not UNSET:
+            field_dict["error_traceback"] = error_traceback
+        if offering_customer_uuid is not UNSET:
+            field_dict["offering_customer_uuid"] = offering_customer_uuid
+        if options is not UNSET:
+            field_dict["options"] = options
+        if available_actions is not UNSET:
+            field_dict["available_actions"] = available_actions
+        if last_sync is not UNSET:
+            field_dict["last_sync"] = last_sync
+        if order_in_progress is not UNSET:
+            field_dict["order_in_progress"] = order_in_progress
+        if creation_order is not UNSET:
+            field_dict["creation_order"] = creation_order
 
         return field_dict
 
@@ -439,87 +571,168 @@ class Resource:
         from ..models.resource_limits import ResourceLimits
 
         d = dict(src_dict)
-        offering = d.pop("offering")
+        offering = d.pop("offering", UNSET)
 
-        offering_name = d.pop("offering_name")
+        offering_name = d.pop("offering_name", UNSET)
 
-        offering_uuid = UUID(d.pop("offering_uuid"))
+        _offering_uuid = d.pop("offering_uuid", UNSET)
+        offering_uuid: Union[Unset, UUID]
+        if isinstance(_offering_uuid, Unset):
+            offering_uuid = UNSET
+        else:
+            offering_uuid = UUID(_offering_uuid)
 
-        offering_description = d.pop("offering_description")
+        offering_description = d.pop("offering_description", UNSET)
 
-        offering_image = d.pop("offering_image")
+        offering_image = d.pop("offering_image", UNSET)
 
-        offering_thumbnail = d.pop("offering_thumbnail")
+        offering_thumbnail = d.pop("offering_thumbnail", UNSET)
 
-        offering_type = d.pop("offering_type")
+        offering_type = d.pop("offering_type", UNSET)
 
-        offering_terms_of_service = d.pop("offering_terms_of_service")
+        offering_terms_of_service = d.pop("offering_terms_of_service", UNSET)
 
-        offering_shared = d.pop("offering_shared")
+        offering_shared = d.pop("offering_shared", UNSET)
 
-        offering_billable = d.pop("offering_billable")
+        offering_billable = d.pop("offering_billable", UNSET)
 
-        offering_plugin_options = d.pop("offering_plugin_options")
+        offering_plugin_options = d.pop("offering_plugin_options", UNSET)
 
-        provider_name = d.pop("provider_name")
+        provider_name = d.pop("provider_name", UNSET)
 
-        provider_uuid = UUID(d.pop("provider_uuid"))
+        _provider_uuid = d.pop("provider_uuid", UNSET)
+        provider_uuid: Union[Unset, UUID]
+        if isinstance(_provider_uuid, Unset):
+            provider_uuid = UNSET
+        else:
+            provider_uuid = UUID(_provider_uuid)
 
-        category_title = d.pop("category_title")
+        category_title = d.pop("category_title", UNSET)
 
-        category_uuid = UUID(d.pop("category_uuid"))
+        _category_uuid = d.pop("category_uuid", UNSET)
+        category_uuid: Union[Unset, UUID]
+        if isinstance(_category_uuid, Unset):
+            category_uuid = UNSET
+        else:
+            category_uuid = UUID(_category_uuid)
 
-        category_icon = d.pop("category_icon")
+        category_icon = d.pop("category_icon", UNSET)
 
-        plan_unit = BillingUnit(d.pop("plan_unit"))
+        plan = d.pop("plan", UNSET)
 
-        plan_name = d.pop("plan_name")
+        _plan_unit = d.pop("plan_unit", UNSET)
+        plan_unit: Union[Unset, BillingUnit]
+        if isinstance(_plan_unit, Unset):
+            plan_unit = UNSET
+        else:
+            plan_unit = BillingUnit(_plan_unit)
 
-        plan_uuid = UUID(d.pop("plan_uuid"))
+        plan_name = d.pop("plan_name", UNSET)
 
-        plan_description = d.pop("plan_description")
+        _plan_uuid = d.pop("plan_uuid", UNSET)
+        plan_uuid: Union[Unset, UUID]
+        if isinstance(_plan_uuid, Unset):
+            plan_uuid = UNSET
+        else:
+            plan_uuid = UUID(_plan_uuid)
 
-        attributes = ResourceAttributes.from_dict(d.pop("attributes"))
+        plan_description = d.pop("plan_description", UNSET)
 
-        limits = ResourceLimits.from_dict(d.pop("limits"))
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, ResourceAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = ResourceAttributes.from_dict(_attributes)
 
-        uuid = UUID(d.pop("uuid"))
+        _limits = d.pop("limits", UNSET)
+        limits: Union[Unset, ResourceLimits]
+        if isinstance(_limits, Unset):
+            limits = UNSET
+        else:
+            limits = ResourceLimits.from_dict(_limits)
 
-        created = isoparse(d.pop("created"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        modified = isoparse(d.pop("modified"))
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
-        url = d.pop("url")
+        _modified = d.pop("modified", UNSET)
+        modified: Union[Unset, datetime.datetime]
+        if isinstance(_modified, Unset):
+            modified = UNSET
+        else:
+            modified = isoparse(_modified)
 
-        scope = d.pop("scope")
+        url = d.pop("url", UNSET)
 
-        description = d.pop("description")
+        scope = d.pop("scope", UNSET)
 
-        state = ResourceState(d.pop("state"))
+        description = d.pop("description", UNSET)
 
-        resource_uuid = UUID(d.pop("resource_uuid"))
+        _state = d.pop("state", UNSET)
+        state: Union[Unset, ResourceState]
+        if isinstance(_state, Unset):
+            state = UNSET
+        else:
+            state = ResourceState(_state)
 
-        backend_id = d.pop("backend_id")
-
-        effective_id = d.pop("effective_id")
-
-        def _parse_resource_type(data: object) -> Union[None, str]:
+        def _parse_resource_uuid(data: object) -> Union[None, UUID, Unset]:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resource_uuid_type_0 = UUID(data)
 
-        resource_type = _parse_resource_type(d.pop("resource_type"))
+                return resource_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
 
-        project = d.pop("project")
+        resource_uuid = _parse_resource_uuid(d.pop("resource_uuid", UNSET))
 
-        project_uuid = UUID(d.pop("project_uuid"))
+        backend_id = d.pop("backend_id", UNSET)
 
-        project_name = d.pop("project_name")
+        effective_id = d.pop("effective_id", UNSET)
 
-        project_description = d.pop("project_description")
-
-        def _parse_project_end_date(data: object) -> Union[None, datetime.date]:
+        def _parse_resource_type(data: object) -> Union[None, Unset, str]:
             if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        resource_type = _parse_resource_type(d.pop("resource_type", UNSET))
+
+        project = d.pop("project", UNSET)
+
+        _project_uuid = d.pop("project_uuid", UNSET)
+        project_uuid: Union[Unset, UUID]
+        if isinstance(_project_uuid, Unset):
+            project_uuid = UNSET
+        else:
+            project_uuid = UUID(_project_uuid)
+
+        project_name = d.pop("project_name", UNSET)
+
+        project_description = d.pop("project_description", UNSET)
+
+        def _parse_project_end_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
                 return data
             try:
                 if not isinstance(data, str):
@@ -529,118 +742,69 @@ class Resource:
                 return project_end_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, datetime.date], data)
+            return cast(Union[None, Unset, datetime.date], data)
 
-        project_end_date = _parse_project_end_date(d.pop("project_end_date"))
+        project_end_date = _parse_project_end_date(d.pop("project_end_date", UNSET))
 
-        project_end_date_requested_by = d.pop("project_end_date_requested_by")
+        project_end_date_requested_by = d.pop("project_end_date_requested_by", UNSET)
 
-        customer_uuid = UUID(d.pop("customer_uuid"))
+        _customer_uuid = d.pop("customer_uuid", UNSET)
+        customer_uuid: Union[Unset, UUID]
+        if isinstance(_customer_uuid, Unset):
+            customer_uuid = UNSET
+        else:
+            customer_uuid = UUID(_customer_uuid)
 
-        customer_name = d.pop("customer_name")
+        customer_name = d.pop("customer_name", UNSET)
 
-        parent_offering_uuid = UUID(d.pop("parent_offering_uuid"))
+        _parent_offering_uuid = d.pop("parent_offering_uuid", UNSET)
+        parent_offering_uuid: Union[Unset, UUID]
+        if isinstance(_parent_offering_uuid, Unset):
+            parent_offering_uuid = UNSET
+        else:
+            parent_offering_uuid = UUID(_parent_offering_uuid)
 
-        parent_offering_name = d.pop("parent_offering_name")
+        parent_offering_name = d.pop("parent_offering_name", UNSET)
 
-        parent_uuid = UUID(d.pop("parent_uuid"))
+        _parent_uuid = d.pop("parent_uuid", UNSET)
+        parent_uuid: Union[Unset, UUID]
+        if isinstance(_parent_uuid, Unset):
+            parent_uuid = UNSET
+        else:
+            parent_uuid = UUID(_parent_uuid)
 
-        parent_name = d.pop("parent_name")
+        parent_name = d.pop("parent_name", UNSET)
 
-        backend_metadata = BackendMetadata.from_dict(d.pop("backend_metadata"))
+        _backend_metadata = d.pop("backend_metadata", UNSET)
+        backend_metadata: Union[Unset, BackendMetadata]
+        if isinstance(_backend_metadata, Unset):
+            backend_metadata = UNSET
+        else:
+            backend_metadata = BackendMetadata.from_dict(_backend_metadata)
 
-        is_usage_based = d.pop("is_usage_based")
+        is_usage_based = d.pop("is_usage_based", UNSET)
 
-        is_limit_based = d.pop("is_limit_based")
+        is_limit_based = d.pop("is_limit_based", UNSET)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        slug = d.pop("slug")
+        slug = d.pop("slug", UNSET)
 
-        current_usages = ResourceCurrentUsages.from_dict(d.pop("current_usages"))
+        _current_usages = d.pop("current_usages", UNSET)
+        current_usages: Union[Unset, ResourceCurrentUsages]
+        if isinstance(_current_usages, Unset):
+            current_usages = UNSET
+        else:
+            current_usages = ResourceCurrentUsages.from_dict(_current_usages)
 
-        can_terminate = d.pop("can_terminate")
+        can_terminate = d.pop("can_terminate", UNSET)
 
         report = []
-        _report = d.pop("report")
-        for report_item_data in _report:
+        _report = d.pop("report", UNSET)
+        for report_item_data in _report or []:
             report_item = ReportSection.from_dict(report_item_data)
 
             report.append(report_item)
-
-        def _parse_end_date_requested_by(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        end_date_requested_by = _parse_end_date_requested_by(d.pop("end_date_requested_by"))
-
-        def _parse_username(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        username = _parse_username(d.pop("username"))
-
-        def _parse_limit_usage(data: object) -> Union[None, float]:
-            if data is None:
-                return data
-            return cast(Union[None, float], data)
-
-        limit_usage = _parse_limit_usage(d.pop("limit_usage"))
-
-        restrict_member_access = d.pop("restrict_member_access")
-
-        endpoints = []
-        _endpoints = d.pop("endpoints")
-        for endpoints_item_data in _endpoints:
-            endpoints_item = NestedEndpoint.from_dict(endpoints_item_data)
-
-            endpoints.append(endpoints_item)
-
-        error_message = d.pop("error_message")
-
-        error_traceback = d.pop("error_traceback")
-
-        offering_customer_uuid = UUID(d.pop("offering_customer_uuid"))
-
-        options = d.pop("options")
-
-        available_actions = cast(list[str], d.pop("available_actions"))
-
-        last_sync = isoparse(d.pop("last_sync"))
-
-        def _parse_order_in_progress(data: object) -> Union["OrderDetails", None]:
-            if data is None:
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                order_in_progress_type_1 = OrderDetails.from_dict(data)
-
-                return order_in_progress_type_1
-            except:  # noqa: E722
-                pass
-            return cast(Union["OrderDetails", None], data)
-
-        order_in_progress = _parse_order_in_progress(d.pop("order_in_progress"))
-
-        def _parse_creation_order(data: object) -> Union["OrderDetails", None]:
-            if data is None:
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                creation_order_type_1 = OrderDetails.from_dict(data)
-
-                return creation_order_type_1
-            except:  # noqa: E722
-                pass
-            return cast(Union["OrderDetails", None], data)
-
-        creation_order = _parse_creation_order(d.pop("creation_order"))
-
-        plan = d.pop("plan", UNSET)
 
         def _parse_end_date(data: object) -> Union[None, Unset, datetime.date]:
             if data is None:
@@ -659,9 +823,101 @@ class Resource:
 
         end_date = _parse_end_date(d.pop("end_date", UNSET))
 
+        def _parse_end_date_requested_by(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        end_date_requested_by = _parse_end_date_requested_by(d.pop("end_date_requested_by", UNSET))
+
+        def _parse_username(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        username = _parse_username(d.pop("username", UNSET))
+
+        def _parse_limit_usage(data: object) -> Union[None, Unset, float]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, float], data)
+
+        limit_usage = _parse_limit_usage(d.pop("limit_usage", UNSET))
+
         downscaled = d.pop("downscaled", UNSET)
 
+        restrict_member_access = d.pop("restrict_member_access", UNSET)
+
         paused = d.pop("paused", UNSET)
+
+        endpoints = []
+        _endpoints = d.pop("endpoints", UNSET)
+        for endpoints_item_data in _endpoints or []:
+            endpoints_item = NestedEndpoint.from_dict(endpoints_item_data)
+
+            endpoints.append(endpoints_item)
+
+        error_message = d.pop("error_message", UNSET)
+
+        error_traceback = d.pop("error_traceback", UNSET)
+
+        _offering_customer_uuid = d.pop("offering_customer_uuid", UNSET)
+        offering_customer_uuid: Union[Unset, UUID]
+        if isinstance(_offering_customer_uuid, Unset):
+            offering_customer_uuid = UNSET
+        else:
+            offering_customer_uuid = UUID(_offering_customer_uuid)
+
+        options = d.pop("options", UNSET)
+
+        available_actions = cast(list[str], d.pop("available_actions", UNSET))
+
+        _last_sync = d.pop("last_sync", UNSET)
+        last_sync: Union[Unset, datetime.datetime]
+        if isinstance(_last_sync, Unset):
+            last_sync = UNSET
+        else:
+            last_sync = isoparse(_last_sync)
+
+        def _parse_order_in_progress(data: object) -> Union["OrderDetails", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                order_in_progress_type_1 = OrderDetails.from_dict(data)
+
+                return order_in_progress_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["OrderDetails", None, Unset], data)
+
+        order_in_progress = _parse_order_in_progress(d.pop("order_in_progress", UNSET))
+
+        def _parse_creation_order(data: object) -> Union["OrderDetails", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                creation_order_type_1 = OrderDetails.from_dict(data)
+
+                return creation_order_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["OrderDetails", None, Unset], data)
+
+        creation_order = _parse_creation_order(d.pop("creation_order", UNSET))
 
         resource = cls(
             offering=offering,
@@ -680,6 +936,7 @@ class Resource:
             category_title=category_title,
             category_uuid=category_uuid,
             category_icon=category_icon,
+            plan=plan,
             plan_unit=plan_unit,
             plan_name=plan_name,
             plan_uuid=plan_uuid,
@@ -717,10 +974,13 @@ class Resource:
             current_usages=current_usages,
             can_terminate=can_terminate,
             report=report,
+            end_date=end_date,
             end_date_requested_by=end_date_requested_by,
             username=username,
             limit_usage=limit_usage,
+            downscaled=downscaled,
             restrict_member_access=restrict_member_access,
+            paused=paused,
             endpoints=endpoints,
             error_message=error_message,
             error_traceback=error_traceback,
@@ -730,10 +990,6 @@ class Resource:
             last_sync=last_sync,
             order_in_progress=order_in_progress,
             creation_order=creation_order,
-            plan=plan,
-            end_date=end_date,
-            downscaled=downscaled,
-            paused=paused,
         )
 
         resource.additional_properties = d

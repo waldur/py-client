@@ -20,51 +20,58 @@ T = TypeVar("T", bound="CustomerUser")
 class CustomerUser:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_ characters
-        full_name (str):
-        role (str):
-        role_name (str):
-        projects (list['NestedProjectPermission']):
-        expiration_time (datetime.datetime):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
+            characters
+        full_name (Union[Unset, str]):
         email (Union[Unset, str]):
+        role (Union[Unset, str]):
+        role_name (Union[Unset, str]):
+        projects (Union[Unset, list['NestedProjectPermission']]):
+        expiration_time (Union[Unset, datetime.datetime]):
         image (Union[None, Unset, str]):
     """
 
-    url: str
-    uuid: UUID
-    username: str
-    full_name: str
-    role: str
-    role_name: str
-    projects: list["NestedProjectPermission"]
-    expiration_time: datetime.datetime
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    username: Union[Unset, str] = UNSET
+    full_name: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
+    role: Union[Unset, str] = UNSET
+    role_name: Union[Unset, str] = UNSET
+    projects: Union[Unset, list["NestedProjectPermission"]] = UNSET
+    expiration_time: Union[Unset, datetime.datetime] = UNSET
     image: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         username = self.username
 
         full_name = self.full_name
 
+        email = self.email
+
         role = self.role
 
         role_name = self.role_name
 
-        projects = []
-        for projects_item_data in self.projects:
-            projects_item = projects_item_data.to_dict()
-            projects.append(projects_item)
+        projects: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.projects, Unset):
+            projects = []
+            for projects_item_data in self.projects:
+                projects_item = projects_item_data.to_dict()
+                projects.append(projects_item)
 
-        expiration_time = self.expiration_time.isoformat()
-
-        email = self.email
+        expiration_time: Union[Unset, str] = UNSET
+        if not isinstance(self.expiration_time, Unset):
+            expiration_time = self.expiration_time.isoformat()
 
         image: Union[None, Unset, str]
         if isinstance(self.image, Unset):
@@ -74,20 +81,25 @@ class CustomerUser:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "username": username,
-                "full_name": full_name,
-                "role": role,
-                "role_name": role_name,
-                "projects": projects,
-                "expiration_time": expiration_time,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if username is not UNSET:
+            field_dict["username"] = username
+        if full_name is not UNSET:
+            field_dict["full_name"] = full_name
         if email is not UNSET:
             field_dict["email"] = email
+        if role is not UNSET:
+            field_dict["role"] = role
+        if role_name is not UNSET:
+            field_dict["role_name"] = role_name
+        if projects is not UNSET:
+            field_dict["projects"] = projects
+        if expiration_time is not UNSET:
+            field_dict["expiration_time"] = expiration_time
         if image is not UNSET:
             field_dict["image"] = image
 
@@ -98,28 +110,38 @@ class CustomerUser:
         from ..models.nested_project_permission import NestedProjectPermission
 
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        username = d.pop("username")
+        username = d.pop("username", UNSET)
 
-        full_name = d.pop("full_name")
+        full_name = d.pop("full_name", UNSET)
 
-        role = d.pop("role")
+        email = d.pop("email", UNSET)
 
-        role_name = d.pop("role_name")
+        role = d.pop("role", UNSET)
+
+        role_name = d.pop("role_name", UNSET)
 
         projects = []
-        _projects = d.pop("projects")
-        for projects_item_data in _projects:
+        _projects = d.pop("projects", UNSET)
+        for projects_item_data in _projects or []:
             projects_item = NestedProjectPermission.from_dict(projects_item_data)
 
             projects.append(projects_item)
 
-        expiration_time = isoparse(d.pop("expiration_time"))
-
-        email = d.pop("email", UNSET)
+        _expiration_time = d.pop("expiration_time", UNSET)
+        expiration_time: Union[Unset, datetime.datetime]
+        if isinstance(_expiration_time, Unset):
+            expiration_time = UNSET
+        else:
+            expiration_time = isoparse(_expiration_time)
 
         def _parse_image(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -135,11 +157,11 @@ class CustomerUser:
             uuid=uuid,
             username=username,
             full_name=full_name,
+            email=email,
             role=role,
             role_name=role_name,
             projects=projects,
             expiration_time=expiration_time,
-            email=email,
             image=image,
         )
 

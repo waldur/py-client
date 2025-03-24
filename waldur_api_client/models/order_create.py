@@ -46,8 +46,8 @@ class OrderCreate:
         uuid (UUID):
         created (datetime.datetime):
         modified (datetime.datetime):
-        resource_uuid (UUID):
-        resource_type (str):
+        resource_uuid (Union[None, UUID]):
+        resource_type (Union[None, str]):
         resource_name (str):
         cost (Union[None, str]):
         state (OrderState):
@@ -101,8 +101,8 @@ class OrderCreate:
     uuid: UUID
     created: datetime.datetime
     modified: datetime.datetime
-    resource_uuid: UUID
-    resource_type: str
+    resource_uuid: Union[None, UUID]
+    resource_type: Union[None, str]
     resource_name: str
     cost: Union[None, str]
     state: OrderState
@@ -178,8 +178,13 @@ class OrderCreate:
 
         modified = self.modified.isoformat()
 
-        resource_uuid = str(self.resource_uuid)
+        resource_uuid: Union[None, str]
+        if isinstance(self.resource_uuid, UUID):
+            resource_uuid = str(self.resource_uuid)
+        else:
+            resource_uuid = self.resource_uuid
 
+        resource_type: Union[None, str]
         resource_type = self.resource_type
 
         resource_name = self.resource_name
@@ -369,9 +374,27 @@ class OrderCreate:
 
         modified = isoparse(d.pop("modified"))
 
-        resource_uuid = UUID(d.pop("resource_uuid"))
+        def _parse_resource_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resource_uuid_type_0 = UUID(data)
 
-        resource_type = d.pop("resource_type")
+                return resource_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        resource_uuid = _parse_resource_uuid(d.pop("resource_uuid"))
+
+        def _parse_resource_type(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        resource_type = _parse_resource_type(d.pop("resource_type"))
 
         resource_name = d.pop("resource_name")
 

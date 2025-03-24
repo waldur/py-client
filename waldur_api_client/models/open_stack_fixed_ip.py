@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="OpenStackFixedIp")
 
@@ -11,12 +13,12 @@ T = TypeVar("T", bound="OpenStackFixedIp")
 class OpenStackFixedIp:
     """
     Attributes:
-        ip_address (str):
-        subnet_id (str):
+        ip_address (Union[Unset, str]):
+        subnet_id (Union[Unset, str]):
     """
 
-    ip_address: str
-    subnet_id: str
+    ip_address: Union[Unset, str] = UNSET
+    subnet_id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -26,21 +28,20 @@ class OpenStackFixedIp:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "ip_address": ip_address,
-                "subnet_id": subnet_id,
-            }
-        )
+        field_dict.update({})
+        if ip_address is not UNSET:
+            field_dict["ip_address"] = ip_address
+        if subnet_id is not UNSET:
+            field_dict["subnet_id"] = subnet_id
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        ip_address = d.pop("ip_address")
+        ip_address = d.pop("ip_address", UNSET)
 
-        subnet_id = d.pop("subnet_id")
+        subnet_id = d.pop("subnet_id", UNSET)
 
         open_stack_fixed_ip = cls(
             ip_address=ip_address,

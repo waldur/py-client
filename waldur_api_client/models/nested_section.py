@@ -17,15 +17,15 @@ T = TypeVar("T", bound="NestedSection")
 class NestedSection:
     """
     Attributes:
-        key (str):
-        title (str):
-        attributes (list['NestedAttribute']):
+        key (Union[Unset, str]):
+        title (Union[Unset, str]):
+        attributes (Union[Unset, list['NestedAttribute']]):
         is_standalone (Union[Unset, bool]): Whether section is rendered as a separate tab.
     """
 
-    key: str
-    title: str
-    attributes: list["NestedAttribute"]
+    key: Union[Unset, str] = UNSET
+    title: Union[Unset, str] = UNSET
+    attributes: Union[Unset, list["NestedAttribute"]] = UNSET
     is_standalone: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -34,22 +34,24 @@ class NestedSection:
 
         title = self.title
 
-        attributes = []
-        for attributes_item_data in self.attributes:
-            attributes_item = attributes_item_data.to_dict()
-            attributes.append(attributes_item)
+        attributes: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = []
+            for attributes_item_data in self.attributes:
+                attributes_item = attributes_item_data.to_dict()
+                attributes.append(attributes_item)
 
         is_standalone = self.is_standalone
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "key": key,
-                "title": title,
-                "attributes": attributes,
-            }
-        )
+        field_dict.update({})
+        if key is not UNSET:
+            field_dict["key"] = key
+        if title is not UNSET:
+            field_dict["title"] = title
+        if attributes is not UNSET:
+            field_dict["attributes"] = attributes
         if is_standalone is not UNSET:
             field_dict["is_standalone"] = is_standalone
 
@@ -60,13 +62,13 @@ class NestedSection:
         from ..models.nested_attribute import NestedAttribute
 
         d = dict(src_dict)
-        key = d.pop("key")
+        key = d.pop("key", UNSET)
 
-        title = d.pop("title")
+        title = d.pop("title", UNSET)
 
         attributes = []
-        _attributes = d.pop("attributes")
-        for attributes_item_data in _attributes:
+        _attributes = d.pop("attributes", UNSET)
+        for attributes_item_data in _attributes or []:
             attributes_item = NestedAttribute.from_dict(attributes_item_data)
 
             attributes.append(attributes_item)

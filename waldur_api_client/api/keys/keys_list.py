@@ -1,3 +1,4 @@
+import datetime
 from http import HTTPStatus
 from typing import Any, Optional, Union
 from uuid import UUID
@@ -14,11 +15,13 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[KeysListFieldItem]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
     is_shared: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[KeysListOItem]] = UNSET,
@@ -28,6 +31,11 @@ def _get_kwargs(
     uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_created: Union[Unset, str] = UNSET
+    if not isinstance(created, Unset):
+        json_created = created.isoformat()
+    params["created"] = json_created
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -45,6 +53,11 @@ def _get_kwargs(
     params["fingerprint_sha512"] = fingerprint_sha512
 
     params["is_shared"] = is_shared
+
+    json_modified: Union[Unset, str] = UNSET
+    if not isinstance(modified, Unset):
+        json_modified = modified.isoformat()
+    params["modified"] = json_modified
 
     params["name"] = name
 
@@ -116,11 +129,13 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[KeysListFieldItem]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
     is_shared: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[KeysListOItem]] = UNSET,
@@ -131,11 +146,13 @@ def sync_detailed(
 ) -> Response[list["SshKey"]]:
     """
     Args:
+        created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[KeysListFieldItem]]):
         fingerprint_md5 (Union[Unset, str]):
         fingerprint_sha256 (Union[Unset, str]):
         fingerprint_sha512 (Union[Unset, str]):
         is_shared (Union[Unset, bool]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[KeysListOItem]]):
@@ -153,11 +170,13 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        created=created,
         field=field,
         fingerprint_md5=fingerprint_md5,
         fingerprint_sha256=fingerprint_sha256,
         fingerprint_sha512=fingerprint_sha512,
         is_shared=is_shared,
+        modified=modified,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -177,11 +196,13 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[KeysListFieldItem]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
     is_shared: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[KeysListOItem]] = UNSET,
@@ -192,11 +213,13 @@ def sync(
 ) -> Optional[list["SshKey"]]:
     """
     Args:
+        created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[KeysListFieldItem]]):
         fingerprint_md5 (Union[Unset, str]):
         fingerprint_sha256 (Union[Unset, str]):
         fingerprint_sha512 (Union[Unset, str]):
         is_shared (Union[Unset, bool]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[KeysListOItem]]):
@@ -215,11 +238,13 @@ def sync(
 
     return sync_detailed(
         client=client,
+        created=created,
         field=field,
         fingerprint_md5=fingerprint_md5,
         fingerprint_sha256=fingerprint_sha256,
         fingerprint_sha512=fingerprint_sha512,
         is_shared=is_shared,
+        modified=modified,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -233,11 +258,13 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[KeysListFieldItem]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
     is_shared: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[KeysListOItem]] = UNSET,
@@ -248,11 +275,13 @@ async def asyncio_detailed(
 ) -> Response[list["SshKey"]]:
     """
     Args:
+        created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[KeysListFieldItem]]):
         fingerprint_md5 (Union[Unset, str]):
         fingerprint_sha256 (Union[Unset, str]):
         fingerprint_sha512 (Union[Unset, str]):
         is_shared (Union[Unset, bool]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[KeysListOItem]]):
@@ -270,11 +299,13 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        created=created,
         field=field,
         fingerprint_md5=fingerprint_md5,
         fingerprint_sha256=fingerprint_sha256,
         fingerprint_sha512=fingerprint_sha512,
         is_shared=is_shared,
+        modified=modified,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -292,11 +323,13 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[KeysListFieldItem]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
     is_shared: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[KeysListOItem]] = UNSET,
@@ -307,11 +340,13 @@ async def asyncio(
 ) -> Optional[list["SshKey"]]:
     """
     Args:
+        created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[KeysListFieldItem]]):
         fingerprint_md5 (Union[Unset, str]):
         fingerprint_sha256 (Union[Unset, str]):
         fingerprint_sha512 (Union[Unset, str]):
         is_shared (Union[Unset, bool]):
+        modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[KeysListOItem]]):
@@ -331,11 +366,13 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            created=created,
             field=field,
             fingerprint_md5=fingerprint_md5,
             fingerprint_sha256=fingerprint_sha256,
             fingerprint_sha512=fingerprint_sha512,
             is_shared=is_shared,
+            modified=modified,
             name=name,
             name_exact=name_exact,
             o=o,

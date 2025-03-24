@@ -1,10 +1,12 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="BookingSlot")
 
@@ -13,43 +15,57 @@ T = TypeVar("T", bound="BookingSlot")
 class BookingSlot:
     """
     Attributes:
-        start (datetime.datetime):
-        end (datetime.datetime):
-        backend_id (str):
+        start (Union[Unset, datetime.datetime]):
+        end (Union[Unset, datetime.datetime]):
+        backend_id (Union[Unset, str]):
     """
 
-    start: datetime.datetime
-    end: datetime.datetime
-    backend_id: str
+    start: Union[Unset, datetime.datetime] = UNSET
+    end: Union[Unset, datetime.datetime] = UNSET
+    backend_id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        start = self.start.isoformat()
+        start: Union[Unset, str] = UNSET
+        if not isinstance(self.start, Unset):
+            start = self.start.isoformat()
 
-        end = self.end.isoformat()
+        end: Union[Unset, str] = UNSET
+        if not isinstance(self.end, Unset):
+            end = self.end.isoformat()
 
         backend_id = self.backend_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "start": start,
-                "end": end,
-                "backend_id": backend_id,
-            }
-        )
+        field_dict.update({})
+        if start is not UNSET:
+            field_dict["start"] = start
+        if end is not UNSET:
+            field_dict["end"] = end
+        if backend_id is not UNSET:
+            field_dict["backend_id"] = backend_id
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        start = isoparse(d.pop("start"))
+        _start = d.pop("start", UNSET)
+        start: Union[Unset, datetime.datetime]
+        if isinstance(_start, Unset):
+            start = UNSET
+        else:
+            start = isoparse(_start)
 
-        end = isoparse(d.pop("end"))
+        _end = d.pop("end", UNSET)
+        end: Union[Unset, datetime.datetime]
+        if isinstance(_end, Unset):
+            end = UNSET
+        else:
+            end = isoparse(_end)
 
-        backend_id = d.pop("backend_id")
+        backend_id = d.pop("backend_id", UNSET)
 
         booking_slot = cls(
             start=start,
