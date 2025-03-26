@@ -17,6 +17,7 @@ def _get_kwargs(
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -44,6 +45,11 @@ def _get_kwargs(
     params["expiration_time"] = json_expiration_time
 
     params["full_name"] = full_name
+
+    json_modified: Union[Unset, str] = UNSET
+    if not isinstance(modified, Unset):
+        json_modified = modified.isoformat()
+    params["modified"] = json_modified
 
     params["native_name"] = native_name
 
@@ -133,6 +139,7 @@ def sync_detailed(
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -152,6 +159,7 @@ def sync_detailed(
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UserPermissionsListOItem]]):
         page (Union[Unset, int]):
@@ -178,6 +186,7 @@ def sync_detailed(
         created=created,
         expiration_time=expiration_time,
         full_name=full_name,
+        modified=modified,
         native_name=native_name,
         o=o,
         page=page,
@@ -206,6 +215,7 @@ def sync(
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -225,6 +235,7 @@ def sync(
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UserPermissionsListOItem]]):
         page (Union[Unset, int]):
@@ -252,6 +263,7 @@ def sync(
         created=created,
         expiration_time=expiration_time,
         full_name=full_name,
+        modified=modified,
         native_name=native_name,
         o=o,
         page=page,
@@ -274,6 +286,7 @@ async def asyncio_detailed(
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -293,6 +306,7 @@ async def asyncio_detailed(
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UserPermissionsListOItem]]):
         page (Union[Unset, int]):
@@ -319,6 +333,7 @@ async def asyncio_detailed(
         created=created,
         expiration_time=expiration_time,
         full_name=full_name,
+        modified=modified,
         native_name=native_name,
         o=o,
         page=page,
@@ -345,6 +360,7 @@ async def asyncio(
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -364,6 +380,7 @@ async def asyncio(
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UserPermissionsListOItem]]):
         page (Union[Unset, int]):
@@ -392,6 +409,7 @@ async def asyncio(
             created=created,
             expiration_time=expiration_time,
             full_name=full_name,
+            modified=modified,
             native_name=native_name,
             o=o,
             page=page,

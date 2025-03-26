@@ -24,6 +24,7 @@ def _get_kwargs(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -60,6 +61,11 @@ def _get_kwargs(
     params["field"] = json_field
 
     params["full_name"] = full_name
+
+    json_modified: Union[Unset, str] = UNSET
+    if not isinstance(modified, Unset):
+        json_modified = modified.isoformat()
+    params["modified"] = json_modified
 
     params["native_name"] = native_name
 
@@ -151,6 +157,7 @@ def sync_detailed(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -173,6 +180,7 @@ def sync_detailed(
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
         full_name (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
         page (Union[Unset, int]):
@@ -201,6 +209,7 @@ def sync_detailed(
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
+        modified=modified,
         native_name=native_name,
         o=o,
         page=page,
@@ -231,6 +240,7 @@ def sync(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -253,6 +263,7 @@ def sync(
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
         full_name (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
         page (Union[Unset, int]):
@@ -282,6 +293,7 @@ def sync(
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
+        modified=modified,
         native_name=native_name,
         o=o,
         page=page,
@@ -306,6 +318,7 @@ async def asyncio_detailed(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -328,6 +341,7 @@ async def asyncio_detailed(
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
         full_name (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
         page (Union[Unset, int]):
@@ -356,6 +370,7 @@ async def asyncio_detailed(
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
+        modified=modified,
         native_name=native_name,
         o=o,
         page=page,
@@ -384,6 +399,7 @@ async def asyncio(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -406,6 +422,7 @@ async def asyncio(
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
         full_name (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
         page (Union[Unset, int]):
@@ -436,6 +453,7 @@ async def asyncio(
             expiration_time=expiration_time,
             field=field,
             full_name=full_name,
+            modified=modified,
             native_name=native_name,
             o=o,
             page=page,
