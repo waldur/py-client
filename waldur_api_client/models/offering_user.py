@@ -29,7 +29,6 @@ class OfferingUser:
         user_full_name (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        propagation_date (Union[None, Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
         is_restricted (Union[Unset, bool]): Signal to service if the user account is restricted or not
@@ -47,7 +46,6 @@ class OfferingUser:
     user_full_name: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     modified: Union[Unset, datetime.datetime] = UNSET
-    propagation_date: Union[None, Unset, datetime.datetime] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
     is_restricted: Union[Unset, bool] = UNSET
@@ -92,14 +90,6 @@ class OfferingUser:
         if not isinstance(self.modified, Unset):
             modified = self.modified.isoformat()
 
-        propagation_date: Union[None, Unset, str]
-        if isinstance(self.propagation_date, Unset):
-            propagation_date = UNSET
-        elif isinstance(self.propagation_date, datetime.datetime):
-            propagation_date = self.propagation_date.isoformat()
-        else:
-            propagation_date = self.propagation_date
-
         customer_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.customer_uuid, Unset):
             customer_uuid = str(self.customer_uuid)
@@ -135,8 +125,6 @@ class OfferingUser:
             field_dict["created"] = created
         if modified is not UNSET:
             field_dict["modified"] = modified
-        if propagation_date is not UNSET:
-            field_dict["propagation_date"] = propagation_date
         if customer_uuid is not UNSET:
             field_dict["customer_uuid"] = customer_uuid
         if customer_name is not UNSET:
@@ -205,23 +193,6 @@ class OfferingUser:
         else:
             modified = isoparse(_modified)
 
-        def _parse_propagation_date(data: object) -> Union[None, Unset, datetime.datetime]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                propagation_date_type_0 = isoparse(data)
-
-                return propagation_date_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, Unset, datetime.datetime], data)
-
-        propagation_date = _parse_propagation_date(d.pop("propagation_date", UNSET))
-
         _customer_uuid = d.pop("customer_uuid", UNSET)
         customer_uuid: Union[Unset, UUID]
         if isinstance(_customer_uuid, Unset):
@@ -246,7 +217,6 @@ class OfferingUser:
             user_full_name=user_full_name,
             created=created,
             modified=modified,
-            propagation_date=propagation_date,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
             is_restricted=is_restricted,

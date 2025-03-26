@@ -27,6 +27,7 @@ def _get_kwargs(
     is_staff: Union[Unset, bool] = UNSET,
     is_support: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UsersListOItem]] = UNSET,
     organization: Union[Unset, str] = UNSET,
@@ -82,6 +83,11 @@ def _get_kwargs(
     params["is_support"] = is_support
 
     params["job_title"] = job_title
+
+    json_modified: Union[Unset, str] = UNSET
+    if not isinstance(modified, Unset):
+        json_modified = modified.isoformat()
+    params["modified"] = json_modified
 
     params["native_name"] = native_name
 
@@ -170,6 +176,7 @@ def sync_detailed(
     is_staff: Union[Unset, bool] = UNSET,
     is_support: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UsersListOItem]] = UNSET,
     organization: Union[Unset, str] = UNSET,
@@ -198,6 +205,7 @@ def sync_detailed(
         is_staff (Union[Unset, bool]):
         is_support (Union[Unset, bool]):
         job_title (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UsersListOItem]]):
         organization (Union[Unset, str]):
@@ -233,6 +241,7 @@ def sync_detailed(
         is_staff=is_staff,
         is_support=is_support,
         job_title=job_title,
+        modified=modified,
         native_name=native_name,
         o=o,
         organization=organization,
@@ -270,6 +279,7 @@ def sync(
     is_staff: Union[Unset, bool] = UNSET,
     is_support: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UsersListOItem]] = UNSET,
     organization: Union[Unset, str] = UNSET,
@@ -298,6 +308,7 @@ def sync(
         is_staff (Union[Unset, bool]):
         is_support (Union[Unset, bool]):
         job_title (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UsersListOItem]]):
         organization (Union[Unset, str]):
@@ -334,6 +345,7 @@ def sync(
         is_staff=is_staff,
         is_support=is_support,
         job_title=job_title,
+        modified=modified,
         native_name=native_name,
         o=o,
         organization=organization,
@@ -365,6 +377,7 @@ async def asyncio_detailed(
     is_staff: Union[Unset, bool] = UNSET,
     is_support: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UsersListOItem]] = UNSET,
     organization: Union[Unset, str] = UNSET,
@@ -393,6 +406,7 @@ async def asyncio_detailed(
         is_staff (Union[Unset, bool]):
         is_support (Union[Unset, bool]):
         job_title (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UsersListOItem]]):
         organization (Union[Unset, str]):
@@ -428,6 +442,7 @@ async def asyncio_detailed(
         is_staff=is_staff,
         is_support=is_support,
         job_title=job_title,
+        modified=modified,
         native_name=native_name,
         o=o,
         organization=organization,
@@ -463,6 +478,7 @@ async def asyncio(
     is_staff: Union[Unset, bool] = UNSET,
     is_support: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UsersListOItem]] = UNSET,
     organization: Union[Unset, str] = UNSET,
@@ -491,6 +507,7 @@ async def asyncio(
         is_staff (Union[Unset, bool]):
         is_support (Union[Unset, bool]):
         job_title (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
         o (Union[Unset, list[UsersListOItem]]):
         organization (Union[Unset, str]):
@@ -528,6 +545,7 @@ async def asyncio(
             is_staff=is_staff,
             is_support=is_support,
             job_title=job_title,
+            modified=modified,
             native_name=native_name,
             o=o,
             organization=organization,

@@ -17,7 +17,6 @@ def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
-    is_not_propagated: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
@@ -26,8 +25,6 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
-    propagated_after: Union[Unset, datetime.datetime] = UNSET,
-    propagated_before: Union[Unset, datetime.datetime] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -48,8 +45,6 @@ def _get_kwargs(
             json_field.append(field_item)
 
     params["field"] = json_field
-
-    params["is_not_propagated"] = is_not_propagated
 
     params["is_restricted"] = is_restricted
 
@@ -82,16 +77,6 @@ def _get_kwargs(
     if not isinstance(parent_offering_uuid, Unset):
         json_parent_offering_uuid = str(parent_offering_uuid)
     params["parent_offering_uuid"] = json_parent_offering_uuid
-
-    json_propagated_after: Union[Unset, str] = UNSET
-    if not isinstance(propagated_after, Unset):
-        json_propagated_after = propagated_after.isoformat()
-    params["propagated_after"] = json_propagated_after
-
-    json_propagated_before: Union[Unset, str] = UNSET
-    if not isinstance(propagated_before, Unset):
-        json_propagated_before = propagated_before.isoformat()
-    params["propagated_before"] = json_propagated_before
 
     json_provider_uuid: Union[Unset, str] = UNSET
     if not isinstance(provider_uuid, Unset):
@@ -152,7 +137,6 @@ def sync_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
-    is_not_propagated: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
@@ -161,8 +145,6 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
-    propagated_after: Union[Unset, datetime.datetime] = UNSET,
-    propagated_before: Union[Unset, datetime.datetime] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -172,7 +154,6 @@ def sync_detailed(
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
-        is_not_propagated (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
@@ -181,8 +162,6 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
-        propagated_after (Union[Unset, datetime.datetime]):
-        propagated_before (Union[Unset, datetime.datetime]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         user_username (Union[Unset, str]):
@@ -199,7 +178,6 @@ def sync_detailed(
     kwargs = _get_kwargs(
         created=created,
         field=field,
-        is_not_propagated=is_not_propagated,
         is_restricted=is_restricted,
         modified=modified,
         o=o,
@@ -208,8 +186,6 @@ def sync_detailed(
         page=page,
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
-        propagated_after=propagated_after,
-        propagated_before=propagated_before,
         provider_uuid=provider_uuid,
         query=query,
         user_username=user_username,
@@ -228,7 +204,6 @@ def sync(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
-    is_not_propagated: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
@@ -237,8 +212,6 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
-    propagated_after: Union[Unset, datetime.datetime] = UNSET,
-    propagated_before: Union[Unset, datetime.datetime] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -248,7 +221,6 @@ def sync(
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
-        is_not_propagated (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
@@ -257,8 +229,6 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
-        propagated_after (Union[Unset, datetime.datetime]):
-        propagated_before (Union[Unset, datetime.datetime]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         user_username (Union[Unset, str]):
@@ -276,7 +246,6 @@ def sync(
         client=client,
         created=created,
         field=field,
-        is_not_propagated=is_not_propagated,
         is_restricted=is_restricted,
         modified=modified,
         o=o,
@@ -285,8 +254,6 @@ def sync(
         page=page,
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
-        propagated_after=propagated_after,
-        propagated_before=propagated_before,
         provider_uuid=provider_uuid,
         query=query,
         user_username=user_username,
@@ -299,7 +266,6 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
-    is_not_propagated: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
@@ -308,8 +274,6 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
-    propagated_after: Union[Unset, datetime.datetime] = UNSET,
-    propagated_before: Union[Unset, datetime.datetime] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -319,7 +283,6 @@ async def asyncio_detailed(
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
-        is_not_propagated (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
@@ -328,8 +291,6 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
-        propagated_after (Union[Unset, datetime.datetime]):
-        propagated_before (Union[Unset, datetime.datetime]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         user_username (Union[Unset, str]):
@@ -346,7 +307,6 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         created=created,
         field=field,
-        is_not_propagated=is_not_propagated,
         is_restricted=is_restricted,
         modified=modified,
         o=o,
@@ -355,8 +315,6 @@ async def asyncio_detailed(
         page=page,
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
-        propagated_after=propagated_after,
-        propagated_before=propagated_before,
         provider_uuid=provider_uuid,
         query=query,
         user_username=user_username,
@@ -373,7 +331,6 @@ async def asyncio(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
-    is_not_propagated: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
@@ -382,8 +339,6 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
-    propagated_after: Union[Unset, datetime.datetime] = UNSET,
-    propagated_before: Union[Unset, datetime.datetime] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -393,7 +348,6 @@ async def asyncio(
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
-        is_not_propagated (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
@@ -402,8 +356,6 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
-        propagated_after (Union[Unset, datetime.datetime]):
-        propagated_before (Union[Unset, datetime.datetime]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         user_username (Union[Unset, str]):
@@ -422,7 +374,6 @@ async def asyncio(
             client=client,
             created=created,
             field=field,
-            is_not_propagated=is_not_propagated,
             is_restricted=is_restricted,
             modified=modified,
             o=o,
@@ -431,8 +382,6 @@ async def asyncio(
             page=page,
             page_size=page_size,
             parent_offering_uuid=parent_offering_uuid,
-            propagated_after=propagated_after,
-            propagated_before=propagated_before,
             provider_uuid=provider_uuid,
             query=query,
             user_username=user_username,

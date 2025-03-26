@@ -9,6 +9,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.open_stack_static_route_request import OpenStackStaticRouteRequest
+    from ..models.open_stack_sub_net_allocation_pool_request import OpenStackSubNetAllocationPoolRequest
 
 
 T = TypeVar("T", bound="OpenStackSubNetRequest")
@@ -23,6 +24,7 @@ class OpenStackSubNetRequest:
         cidr (Union[Unset, str]):
         gateway_ip (Union[None, Unset, str]):
         disable_gateway (Union[Unset, bool]):
+        allocation_pools (Union[Unset, list['OpenStackSubNetAllocationPoolRequest']]):
         dns_nameservers (Union[Unset, list[str]]):
         host_routes (Union[Unset, list['OpenStackStaticRouteRequest']]):
     """
@@ -32,6 +34,7 @@ class OpenStackSubNetRequest:
     cidr: Union[Unset, str] = UNSET
     gateway_ip: Union[None, Unset, str] = UNSET
     disable_gateway: Union[Unset, bool] = UNSET
+    allocation_pools: Union[Unset, list["OpenStackSubNetAllocationPoolRequest"]] = UNSET
     dns_nameservers: Union[Unset, list[str]] = UNSET
     host_routes: Union[Unset, list["OpenStackStaticRouteRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -50,6 +53,13 @@ class OpenStackSubNetRequest:
             gateway_ip = self.gateway_ip
 
         disable_gateway = self.disable_gateway
+
+        allocation_pools: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.allocation_pools, Unset):
+            allocation_pools = []
+            for allocation_pools_item_data in self.allocation_pools:
+                allocation_pools_item = allocation_pools_item_data.to_dict()
+                allocation_pools.append(allocation_pools_item)
 
         dns_nameservers: Union[Unset, list[str]] = UNSET
         if not isinstance(self.dns_nameservers, Unset):
@@ -77,6 +87,8 @@ class OpenStackSubNetRequest:
             field_dict["gateway_ip"] = gateway_ip
         if disable_gateway is not UNSET:
             field_dict["disable_gateway"] = disable_gateway
+        if allocation_pools is not UNSET:
+            field_dict["allocation_pools"] = allocation_pools
         if dns_nameservers is not UNSET:
             field_dict["dns_nameservers"] = dns_nameservers
         if host_routes is not UNSET:
@@ -110,6 +122,14 @@ class OpenStackSubNetRequest:
             else (None, str(self.disable_gateway).encode(), "text/plain")
         )
 
+        allocation_pools: Union[Unset, tuple[None, bytes, str]] = UNSET
+        if not isinstance(self.allocation_pools, Unset):
+            _temp_allocation_pools = []
+            for allocation_pools_item_data in self.allocation_pools:
+                allocation_pools_item = allocation_pools_item_data.to_dict()
+                _temp_allocation_pools.append(allocation_pools_item)
+            allocation_pools = (None, json.dumps(_temp_allocation_pools).encode(), "application/json")
+
         dns_nameservers: Union[Unset, tuple[None, bytes, str]] = UNSET
         if not isinstance(self.dns_nameservers, Unset):
             _temp_dns_nameservers = self.dns_nameservers
@@ -140,6 +160,8 @@ class OpenStackSubNetRequest:
             field_dict["gateway_ip"] = gateway_ip
         if disable_gateway is not UNSET:
             field_dict["disable_gateway"] = disable_gateway
+        if allocation_pools is not UNSET:
+            field_dict["allocation_pools"] = allocation_pools
         if dns_nameservers is not UNSET:
             field_dict["dns_nameservers"] = dns_nameservers
         if host_routes is not UNSET:
@@ -150,6 +172,7 @@ class OpenStackSubNetRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_static_route_request import OpenStackStaticRouteRequest
+        from ..models.open_stack_sub_net_allocation_pool_request import OpenStackSubNetAllocationPoolRequest
 
         d = dict(src_dict)
         name = d.pop("name")
@@ -169,6 +192,13 @@ class OpenStackSubNetRequest:
 
         disable_gateway = d.pop("disable_gateway", UNSET)
 
+        allocation_pools = []
+        _allocation_pools = d.pop("allocation_pools", UNSET)
+        for allocation_pools_item_data in _allocation_pools or []:
+            allocation_pools_item = OpenStackSubNetAllocationPoolRequest.from_dict(allocation_pools_item_data)
+
+            allocation_pools.append(allocation_pools_item)
+
         dns_nameservers = cast(list[str], d.pop("dns_nameservers", UNSET))
 
         host_routes = []
@@ -184,6 +214,7 @@ class OpenStackSubNetRequest:
             cidr=cidr,
             gateway_ip=gateway_ip,
             disable_gateway=disable_gateway,
+            allocation_pools=allocation_pools,
             dns_nameservers=dns_nameservers,
             host_routes=host_routes,
         )
