@@ -1,5 +1,6 @@
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,6 +18,7 @@ T = TypeVar("T", bound="OpenStackNestedSubNet")
 class OpenStackNestedSubNet:
     """
     Attributes:
+        uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         description (Union[Unset, str]):
         cidr (Union[Unset, str]):
@@ -26,6 +28,7 @@ class OpenStackNestedSubNet:
         enable_dhcp (Union[Unset, bool]):
     """
 
+    uuid: Union[Unset, UUID] = UNSET
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     cidr: Union[Unset, str] = UNSET
@@ -36,6 +39,10 @@ class OpenStackNestedSubNet:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
+
         name = self.name
 
         description = self.description
@@ -62,6 +69,8 @@ class OpenStackNestedSubNet:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
         if name is not UNSET:
             field_dict["name"] = name
         if description is not UNSET:
@@ -84,6 +93,13 @@ class OpenStackNestedSubNet:
         from ..models.open_stack_sub_net_allocation_pool import OpenStackSubNetAllocationPool
 
         d = dict(src_dict)
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
+
         name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
@@ -111,6 +127,7 @@ class OpenStackNestedSubNet:
         enable_dhcp = d.pop("enable_dhcp", UNSET)
 
         open_stack_nested_sub_net = cls(
+            uuid=uuid,
             name=name,
             description=description,
             cidr=cidr,
