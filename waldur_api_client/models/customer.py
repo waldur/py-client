@@ -65,9 +65,9 @@ class Customer:
         payment_profiles (Union[Unset, list['PaymentProfile']]):
         customer_credit (Union[None, Unset, float]):
         is_service_provider (Union[Unset, bool]):
-        service_provider (Union[Unset, str]):
-        service_provider_uuid (Union[Unset, UUID]):
-        call_managing_organization_uuid (Union[Unset, str]):
+        service_provider (Union[None, Unset, str]):
+        service_provider_uuid (Union[None, UUID, Unset]):
+        call_managing_organization_uuid (Union[None, Unset, str]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
     """
 
@@ -110,9 +110,9 @@ class Customer:
     payment_profiles: Union[Unset, list["PaymentProfile"]] = UNSET
     customer_credit: Union[None, Unset, float] = UNSET
     is_service_provider: Union[Unset, bool] = UNSET
-    service_provider: Union[Unset, str] = UNSET
-    service_provider_uuid: Union[Unset, UUID] = UNSET
-    call_managing_organization_uuid: Union[Unset, str] = UNSET
+    service_provider: Union[None, Unset, str] = UNSET
+    service_provider_uuid: Union[None, UUID, Unset] = UNSET
+    call_managing_organization_uuid: Union[None, Unset, str] = UNSET
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -242,13 +242,25 @@ class Customer:
 
         is_service_provider = self.is_service_provider
 
-        service_provider = self.service_provider
+        service_provider: Union[None, Unset, str]
+        if isinstance(self.service_provider, Unset):
+            service_provider = UNSET
+        else:
+            service_provider = self.service_provider
 
-        service_provider_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.service_provider_uuid, Unset):
+        service_provider_uuid: Union[None, Unset, str]
+        if isinstance(self.service_provider_uuid, Unset):
+            service_provider_uuid = UNSET
+        elif isinstance(self.service_provider_uuid, UUID):
             service_provider_uuid = str(self.service_provider_uuid)
+        else:
+            service_provider_uuid = self.service_provider_uuid
 
-        call_managing_organization_uuid = self.call_managing_organization_uuid
+        call_managing_organization_uuid: Union[None, Unset, str]
+        if isinstance(self.call_managing_organization_uuid, Unset):
+            call_managing_organization_uuid = UNSET
+        else:
+            call_managing_organization_uuid = self.call_managing_organization_uuid
 
         billing_price_estimate: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.billing_price_estimate, Unset):
@@ -514,16 +526,42 @@ class Customer:
 
         is_service_provider = d.pop("is_service_provider", UNSET)
 
-        service_provider = d.pop("service_provider", UNSET)
+        def _parse_service_provider(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        _service_provider_uuid = d.pop("service_provider_uuid", UNSET)
-        service_provider_uuid: Union[Unset, UUID]
-        if isinstance(_service_provider_uuid, Unset):
-            service_provider_uuid = UNSET
-        else:
-            service_provider_uuid = UUID(_service_provider_uuid)
+        service_provider = _parse_service_provider(d.pop("service_provider", UNSET))
 
-        call_managing_organization_uuid = d.pop("call_managing_organization_uuid", UNSET)
+        def _parse_service_provider_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                service_provider_uuid_type_0 = UUID(data)
+
+                return service_provider_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        service_provider_uuid = _parse_service_provider_uuid(d.pop("service_provider_uuid", UNSET))
+
+        def _parse_call_managing_organization_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        call_managing_organization_uuid = _parse_call_managing_organization_uuid(
+            d.pop("call_managing_organization_uuid", UNSET)
+        )
 
         _billing_price_estimate = d.pop("billing_price_estimate", UNSET)
         billing_price_estimate: Union[Unset, NestedPriceEstimate]

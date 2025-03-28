@@ -25,7 +25,7 @@ class OpenStackNestedVolume:
         resource_type (Union[Unset, str]):
         type_ (Union[None, Unset, str]):
         type_name (Union[Unset, str]):
-        marketplace_resource_uuid (Union[Unset, str]):
+        marketplace_resource_uuid (Union[None, Unset, str]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -39,7 +39,7 @@ class OpenStackNestedVolume:
     resource_type: Union[Unset, str] = UNSET
     type_: Union[None, Unset, str] = UNSET
     type_name: Union[Unset, str] = UNSET
-    marketplace_resource_uuid: Union[Unset, str] = UNSET
+    marketplace_resource_uuid: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -71,7 +71,11 @@ class OpenStackNestedVolume:
 
         type_name = self.type_name
 
-        marketplace_resource_uuid = self.marketplace_resource_uuid
+        marketplace_resource_uuid: Union[None, Unset, str]
+        if isinstance(self.marketplace_resource_uuid, Unset):
+            marketplace_resource_uuid = UNSET
+        else:
+            marketplace_resource_uuid = self.marketplace_resource_uuid
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -140,7 +144,14 @@ class OpenStackNestedVolume:
 
         type_name = d.pop("type_name", UNSET)
 
-        marketplace_resource_uuid = d.pop("marketplace_resource_uuid", UNSET)
+        def _parse_marketplace_resource_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        marketplace_resource_uuid = _parse_marketplace_resource_uuid(d.pop("marketplace_resource_uuid", UNSET))
 
         open_stack_nested_volume = cls(
             url=url,

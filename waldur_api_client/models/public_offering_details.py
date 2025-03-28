@@ -97,7 +97,7 @@ class PublicOfferingDetails:
         parent_uuid (Union[Unset, UUID]):
         parent_name (Union[Unset, str]):
         backend_metadata (Union[Unset, Any]):
-        google_calendar_is_public (Union[Unset, bool]):
+        google_calendar_is_public (Union[None, Unset, bool]):
         google_calendar_link (Union[None, Unset, str]):
         promotion_campaigns (Union[Unset, list['NestedCampaign']]):
     """
@@ -163,7 +163,7 @@ class PublicOfferingDetails:
     parent_uuid: Union[Unset, UUID] = UNSET
     parent_name: Union[Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
-    google_calendar_is_public: Union[Unset, bool] = UNSET
+    google_calendar_is_public: Union[None, Unset, bool] = UNSET
     google_calendar_link: Union[None, Unset, str] = UNSET
     promotion_campaigns: Union[Unset, list["NestedCampaign"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -415,7 +415,11 @@ class PublicOfferingDetails:
 
         backend_metadata = self.backend_metadata
 
-        google_calendar_is_public = self.google_calendar_is_public
+        google_calendar_is_public: Union[None, Unset, bool]
+        if isinstance(self.google_calendar_is_public, Unset):
+            google_calendar_is_public = UNSET
+        else:
+            google_calendar_is_public = self.google_calendar_is_public
 
         google_calendar_link: Union[None, Unset, str]
         if isinstance(self.google_calendar_link, Unset):
@@ -927,7 +931,14 @@ class PublicOfferingDetails:
 
         backend_metadata = d.pop("backend_metadata", UNSET)
 
-        google_calendar_is_public = d.pop("google_calendar_is_public", UNSET)
+        def _parse_google_calendar_is_public(data: object) -> Union[None, Unset, bool]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, bool], data)
+
+        google_calendar_is_public = _parse_google_calendar_is_public(d.pop("google_calendar_is_public", UNSET))
 
         def _parse_google_calendar_link(data: object) -> Union[None, Unset, str]:
             if data is None:

@@ -101,8 +101,8 @@ class ProviderOfferingDetails:
         parent_uuid (Union[Unset, UUID]):
         parent_name (Union[Unset, str]):
         backend_metadata (Union[Unset, Any]):
-        integration_status (Union[Unset, list['IntegrationStatus']]):
-        google_calendar_is_public (Union[Unset, bool]):
+        integration_status (Union[None, Unset, list['IntegrationStatus']]):
+        google_calendar_is_public (Union[None, Unset, bool]):
         google_calendar_link (Union[None, Unset, str]):
     """
 
@@ -169,8 +169,8 @@ class ProviderOfferingDetails:
     parent_uuid: Union[Unset, UUID] = UNSET
     parent_name: Union[Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
-    integration_status: Union[Unset, list["IntegrationStatus"]] = UNSET
-    google_calendar_is_public: Union[Unset, bool] = UNSET
+    integration_status: Union[None, Unset, list["IntegrationStatus"]] = UNSET
+    google_calendar_is_public: Union[None, Unset, bool] = UNSET
     google_calendar_link: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -429,14 +429,23 @@ class ProviderOfferingDetails:
 
         backend_metadata = self.backend_metadata
 
-        integration_status: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.integration_status, Unset):
+        integration_status: Union[None, Unset, list[dict[str, Any]]]
+        if isinstance(self.integration_status, Unset):
+            integration_status = UNSET
+        elif isinstance(self.integration_status, list):
             integration_status = []
-            for integration_status_item_data in self.integration_status:
-                integration_status_item = integration_status_item_data.to_dict()
-                integration_status.append(integration_status_item)
+            for integration_status_type_0_item_data in self.integration_status:
+                integration_status_type_0_item = integration_status_type_0_item_data.to_dict()
+                integration_status.append(integration_status_type_0_item)
 
-        google_calendar_is_public = self.google_calendar_is_public
+        else:
+            integration_status = self.integration_status
+
+        google_calendar_is_public: Union[None, Unset, bool]
+        if isinstance(self.google_calendar_is_public, Unset):
+            google_calendar_is_public = UNSET
+        else:
+            google_calendar_is_public = self.google_calendar_is_public
 
         google_calendar_link: Union[None, Unset, str]
         if isinstance(self.google_calendar_link, Unset):
@@ -961,14 +970,36 @@ class ProviderOfferingDetails:
 
         backend_metadata = d.pop("backend_metadata", UNSET)
 
-        integration_status = []
-        _integration_status = d.pop("integration_status", UNSET)
-        for integration_status_item_data in _integration_status or []:
-            integration_status_item = IntegrationStatus.from_dict(integration_status_item_data)
+        def _parse_integration_status(data: object) -> Union[None, Unset, list["IntegrationStatus"]]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                integration_status_type_0 = []
+                _integration_status_type_0 = data
+                for integration_status_type_0_item_data in _integration_status_type_0:
+                    integration_status_type_0_item = IntegrationStatus.from_dict(integration_status_type_0_item_data)
 
-            integration_status.append(integration_status_item)
+                    integration_status_type_0.append(integration_status_type_0_item)
 
-        google_calendar_is_public = d.pop("google_calendar_is_public", UNSET)
+                return integration_status_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, list["IntegrationStatus"]], data)
+
+        integration_status = _parse_integration_status(d.pop("integration_status", UNSET))
+
+        def _parse_google_calendar_is_public(data: object) -> Union[None, Unset, bool]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, bool], data)
+
+        google_calendar_is_public = _parse_google_calendar_is_public(d.pop("google_calendar_is_public", UNSET))
 
         def _parse_google_calendar_link(data: object) -> Union[None, Unset, str]:
             if data is None:

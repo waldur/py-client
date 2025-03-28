@@ -55,9 +55,9 @@ class OpenStackFloatingIP:
         tenant_uuid (Union[Unset, UUID]):
         port (Union[Unset, str]):
         external_address (Union[None, Unset, str]): An optional address that maps to floating IP's address
-        instance_uuid (Union[Unset, str]):
-        instance_name (Union[Unset, str]):
-        instance_url (Union[Unset, str]):
+        instance_uuid (Union[None, Unset, str]):
+        instance_name (Union[None, Unset, str]):
+        instance_url (Union[None, Unset, str]):
         marketplace_offering_uuid (Union[Unset, str]):
         marketplace_offering_name (Union[Unset, str]):
         marketplace_offering_plugin_options (Union[Unset, OpenStackFloatingIPMarketplaceOfferingPluginOptions]):
@@ -102,9 +102,9 @@ class OpenStackFloatingIP:
     tenant_uuid: Union[Unset, UUID] = UNSET
     port: Union[Unset, str] = UNSET
     external_address: Union[None, Unset, str] = UNSET
-    instance_uuid: Union[Unset, str] = UNSET
-    instance_name: Union[Unset, str] = UNSET
-    instance_url: Union[Unset, str] = UNSET
+    instance_uuid: Union[None, Unset, str] = UNSET
+    instance_name: Union[None, Unset, str] = UNSET
+    instance_url: Union[None, Unset, str] = UNSET
     marketplace_offering_uuid: Union[Unset, str] = UNSET
     marketplace_offering_name: Union[Unset, str] = UNSET
     marketplace_offering_plugin_options: Union[Unset, "OpenStackFloatingIPMarketplaceOfferingPluginOptions"] = UNSET
@@ -208,11 +208,23 @@ class OpenStackFloatingIP:
         else:
             external_address = self.external_address
 
-        instance_uuid = self.instance_uuid
+        instance_uuid: Union[None, Unset, str]
+        if isinstance(self.instance_uuid, Unset):
+            instance_uuid = UNSET
+        else:
+            instance_uuid = self.instance_uuid
 
-        instance_name = self.instance_name
+        instance_name: Union[None, Unset, str]
+        if isinstance(self.instance_name, Unset):
+            instance_name = UNSET
+        else:
+            instance_name = self.instance_name
 
-        instance_url = self.instance_url
+        instance_url: Union[None, Unset, str]
+        if isinstance(self.instance_url, Unset):
+            instance_url = UNSET
+        else:
+            instance_url = self.instance_url
 
         marketplace_offering_uuid = self.marketplace_offering_uuid
 
@@ -459,11 +471,32 @@ class OpenStackFloatingIP:
 
         external_address = _parse_external_address(d.pop("external_address", UNSET))
 
-        instance_uuid = d.pop("instance_uuid", UNSET)
+        def _parse_instance_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        instance_name = d.pop("instance_name", UNSET)
+        instance_uuid = _parse_instance_uuid(d.pop("instance_uuid", UNSET))
 
-        instance_url = d.pop("instance_url", UNSET)
+        def _parse_instance_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        instance_name = _parse_instance_name(d.pop("instance_name", UNSET))
+
+        def _parse_instance_url(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        instance_url = _parse_instance_url(d.pop("instance_url", UNSET))
 
         marketplace_offering_uuid = d.pop("marketplace_offering_uuid", UNSET)
 
