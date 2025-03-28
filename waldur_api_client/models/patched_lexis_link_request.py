@@ -34,26 +34,6 @@ class PatchedLexisLinkRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        heappe_project_id: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.heappe_project_id, Unset):
-            heappe_project_id = UNSET
-        elif isinstance(self.heappe_project_id, int):
-            heappe_project_id = (None, str(self.heappe_project_id).encode(), "text/plain")
-        else:
-            heappe_project_id = (None, str(self.heappe_project_id).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if heappe_project_id is not UNSET:
-            field_dict["heappe_project_id"] = heappe_project_id
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

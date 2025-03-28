@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
@@ -83,92 +82,6 @@ class RancherCreateNodeRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "cluster": cluster,
-                "roles": roles,
-                "subnet": subnet,
-            }
-        )
-        if system_volume_size is not UNSET:
-            field_dict["system_volume_size"] = system_volume_size
-        if system_volume_type is not UNSET:
-            field_dict["system_volume_type"] = system_volume_type
-        if memory is not UNSET:
-            field_dict["memory"] = memory
-        if cpu is not UNSET:
-            field_dict["cpu"] = cpu
-        if flavor is not UNSET:
-            field_dict["flavor"] = flavor
-        if data_volumes is not UNSET:
-            field_dict["data_volumes"] = data_volumes
-        if ssh_public_key is not UNSET:
-            field_dict["ssh_public_key"] = ssh_public_key
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        cluster = (None, str(self.cluster).encode(), "text/plain")
-
-        _temp_roles = []
-        for roles_item_data in self.roles:
-            roles_item = roles_item_data.value
-            _temp_roles.append(roles_item)
-        roles = (None, json.dumps(_temp_roles).encode(), "application/json")
-
-        subnet: tuple[None, bytes, str]
-
-        if isinstance(self.subnet, str):
-            subnet = (None, str(self.subnet).encode(), "text/plain")
-        else:
-            subnet = (None, str(self.subnet).encode(), "text/plain")
-
-        system_volume_size = (
-            self.system_volume_size
-            if isinstance(self.system_volume_size, Unset)
-            else (None, str(self.system_volume_size).encode(), "text/plain")
-        )
-
-        system_volume_type: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.system_volume_type, Unset):
-            system_volume_type = UNSET
-        elif isinstance(self.system_volume_type, str):
-            system_volume_type = (None, str(self.system_volume_type).encode(), "text/plain")
-        else:
-            system_volume_type = (None, str(self.system_volume_type).encode(), "text/plain")
-
-        memory = self.memory if isinstance(self.memory, Unset) else (None, str(self.memory).encode(), "text/plain")
-
-        cpu = self.cpu if isinstance(self.cpu, Unset) else (None, str(self.cpu).encode(), "text/plain")
-
-        flavor: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.flavor, Unset):
-            flavor = UNSET
-        elif isinstance(self.flavor, str):
-            flavor = (None, str(self.flavor).encode(), "text/plain")
-        else:
-            flavor = (None, str(self.flavor).encode(), "text/plain")
-
-        data_volumes: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.data_volumes, Unset):
-            _temp_data_volumes = []
-            for data_volumes_item_data in self.data_volumes:
-                data_volumes_item = data_volumes_item_data.to_dict()
-                _temp_data_volumes.append(data_volumes_item)
-            data_volumes = (None, json.dumps(_temp_data_volumes).encode(), "application/json")
-
-        ssh_public_key = (
-            self.ssh_public_key
-            if isinstance(self.ssh_public_key, Unset)
-            else (None, str(self.ssh_public_key).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "cluster": cluster,

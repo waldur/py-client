@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
@@ -74,79 +73,6 @@ class OpenStackSubNetRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-        if cidr is not UNSET:
-            field_dict["cidr"] = cidr
-        if gateway_ip is not UNSET:
-            field_dict["gateway_ip"] = gateway_ip
-        if disable_gateway is not UNSET:
-            field_dict["disable_gateway"] = disable_gateway
-        if allocation_pools is not UNSET:
-            field_dict["allocation_pools"] = allocation_pools
-        if dns_nameservers is not UNSET:
-            field_dict["dns_nameservers"] = dns_nameservers
-        if host_routes is not UNSET:
-            field_dict["host_routes"] = host_routes
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        cidr = self.cidr if isinstance(self.cidr, Unset) else (None, str(self.cidr).encode(), "text/plain")
-
-        gateway_ip: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.gateway_ip, Unset):
-            gateway_ip = UNSET
-        elif isinstance(self.gateway_ip, str):
-            gateway_ip = (None, str(self.gateway_ip).encode(), "text/plain")
-        else:
-            gateway_ip = (None, str(self.gateway_ip).encode(), "text/plain")
-
-        disable_gateway = (
-            self.disable_gateway
-            if isinstance(self.disable_gateway, Unset)
-            else (None, str(self.disable_gateway).encode(), "text/plain")
-        )
-
-        allocation_pools: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.allocation_pools, Unset):
-            _temp_allocation_pools = []
-            for allocation_pools_item_data in self.allocation_pools:
-                allocation_pools_item = allocation_pools_item_data.to_dict()
-                _temp_allocation_pools.append(allocation_pools_item)
-            allocation_pools = (None, json.dumps(_temp_allocation_pools).encode(), "application/json")
-
-        dns_nameservers: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.dns_nameservers, Unset):
-            _temp_dns_nameservers = self.dns_nameservers
-            dns_nameservers = (None, json.dumps(_temp_dns_nameservers).encode(), "application/json")
-
-        host_routes: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.host_routes, Unset):
-            _temp_host_routes = []
-            for host_routes_item_data in self.host_routes:
-                host_routes_item = host_routes_item_data.to_dict()
-                _temp_host_routes.append(host_routes_item)
-            host_routes = (None, json.dumps(_temp_host_routes).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "name": name,

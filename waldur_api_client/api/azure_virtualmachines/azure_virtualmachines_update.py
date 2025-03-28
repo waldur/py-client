@@ -14,11 +14,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        AzureVirtualMachineRequest,
-        AzureVirtualMachineRequest,
-        AzureVirtualMachineRequest,
-    ],
+    body: AzureVirtualMachineRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/azure-virtualmachines/{uuid}/",
     }
 
-    if isinstance(body, AzureVirtualMachineRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, AzureVirtualMachineRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, AzureVirtualMachineRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -75,17 +60,11 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AzureVirtualMachineRequest,
-        AzureVirtualMachineRequest,
-        AzureVirtualMachineRequest,
-    ],
+    body: AzureVirtualMachineRequest,
 ) -> Response[AzureVirtualMachine]:
     """
     Args:
         uuid (UUID):
-        body (AzureVirtualMachineRequest):
-        body (AzureVirtualMachineRequest):
         body (AzureVirtualMachineRequest):
 
     Raises:
@@ -112,17 +91,11 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AzureVirtualMachineRequest,
-        AzureVirtualMachineRequest,
-        AzureVirtualMachineRequest,
-    ],
+    body: AzureVirtualMachineRequest,
 ) -> Optional[AzureVirtualMachine]:
     """
     Args:
         uuid (UUID):
-        body (AzureVirtualMachineRequest):
-        body (AzureVirtualMachineRequest):
         body (AzureVirtualMachineRequest):
 
     Raises:
@@ -144,17 +117,11 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AzureVirtualMachineRequest,
-        AzureVirtualMachineRequest,
-        AzureVirtualMachineRequest,
-    ],
+    body: AzureVirtualMachineRequest,
 ) -> Response[AzureVirtualMachine]:
     """
     Args:
         uuid (UUID):
-        body (AzureVirtualMachineRequest):
-        body (AzureVirtualMachineRequest):
         body (AzureVirtualMachineRequest):
 
     Raises:
@@ -179,17 +146,11 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AzureVirtualMachineRequest,
-        AzureVirtualMachineRequest,
-        AzureVirtualMachineRequest,
-    ],
+    body: AzureVirtualMachineRequest,
 ) -> Optional[AzureVirtualMachine]:
     """
     Args:
         uuid (UUID):
-        body (AzureVirtualMachineRequest):
-        body (AzureVirtualMachineRequest):
         body (AzureVirtualMachineRequest):
 
     Raises:

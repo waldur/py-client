@@ -42,37 +42,6 @@ class PatchedAzurePublicIPRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        location = (
-            self.location if isinstance(self.location, Unset) else (None, str(self.location).encode(), "text/plain")
-        )
-
-        resource_group = (
-            self.resource_group
-            if isinstance(self.resource_group, Unset)
-            else (None, str(self.resource_group).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if description is not UNSET:
-            field_dict["description"] = description
-        if location is not UNSET:
-            field_dict["location"] = location
-        if resource_group is not UNSET:
-            field_dict["resource_group"] = resource_group
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

@@ -12,11 +12,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        Saml2LoginRequest,
-        Saml2LoginRequest,
-        Saml2LoginRequest,
-    ],
+    body: Saml2LoginRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -25,21 +21,10 @@ def _get_kwargs(
         "url": "/api-auth/saml2/login/",
     }
 
-    if isinstance(body, Saml2LoginRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, Saml2LoginRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, Saml2LoginRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -68,16 +53,10 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        Saml2LoginRequest,
-        Saml2LoginRequest,
-        Saml2LoginRequest,
-    ],
+    body: Saml2LoginRequest,
 ) -> Response[Saml2Login]:
     """
     Args:
-        body (Saml2LoginRequest):
-        body (Saml2LoginRequest):
         body (Saml2LoginRequest):
 
     Raises:
@@ -102,16 +81,10 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        Saml2LoginRequest,
-        Saml2LoginRequest,
-        Saml2LoginRequest,
-    ],
+    body: Saml2LoginRequest,
 ) -> Optional[Saml2Login]:
     """
     Args:
-        body (Saml2LoginRequest):
-        body (Saml2LoginRequest):
         body (Saml2LoginRequest):
 
     Raises:
@@ -131,16 +104,10 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        Saml2LoginRequest,
-        Saml2LoginRequest,
-        Saml2LoginRequest,
-    ],
+    body: Saml2LoginRequest,
 ) -> Response[Saml2Login]:
     """
     Args:
-        body (Saml2LoginRequest):
-        body (Saml2LoginRequest):
         body (Saml2LoginRequest):
 
     Raises:
@@ -163,16 +130,10 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        Saml2LoginRequest,
-        Saml2LoginRequest,
-        Saml2LoginRequest,
-    ],
+    body: Saml2LoginRequest,
 ) -> Optional[Saml2Login]:
     """
     Args:
-        body (Saml2LoginRequest):
-        body (Saml2LoginRequest):
         body (Saml2LoginRequest):
 
     Raises:

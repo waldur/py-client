@@ -14,11 +14,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        WebHookRequest,
-        WebHookRequest,
-        WebHookRequest,
-    ],
+    body: WebHookRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/hooks-web/{uuid}/",
     }
 
-    if isinstance(body, WebHookRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, WebHookRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, WebHookRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -71,17 +56,11 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        WebHookRequest,
-        WebHookRequest,
-        WebHookRequest,
-    ],
+    body: WebHookRequest,
 ) -> Response[WebHook]:
     """
     Args:
         uuid (UUID):
-        body (WebHookRequest):
-        body (WebHookRequest):
         body (WebHookRequest):
 
     Raises:
@@ -108,17 +87,11 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        WebHookRequest,
-        WebHookRequest,
-        WebHookRequest,
-    ],
+    body: WebHookRequest,
 ) -> Optional[WebHook]:
     """
     Args:
         uuid (UUID):
-        body (WebHookRequest):
-        body (WebHookRequest):
         body (WebHookRequest):
 
     Raises:
@@ -140,17 +113,11 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        WebHookRequest,
-        WebHookRequest,
-        WebHookRequest,
-    ],
+    body: WebHookRequest,
 ) -> Response[WebHook]:
     """
     Args:
         uuid (UUID):
-        body (WebHookRequest):
-        body (WebHookRequest):
         body (WebHookRequest):
 
     Raises:
@@ -175,17 +142,11 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        WebHookRequest,
-        WebHookRequest,
-        WebHookRequest,
-    ],
+    body: WebHookRequest,
 ) -> Optional[WebHook]:
     """
     Args:
         uuid (UUID):
-        body (WebHookRequest):
-        body (WebHookRequest):
         body (WebHookRequest):
 
     Raises:

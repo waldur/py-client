@@ -64,50 +64,6 @@ class PatchedCategoryColumnRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        index = self.index if isinstance(self.index, Unset) else (None, str(self.index).encode(), "text/plain")
-
-        title = self.title if isinstance(self.title, Unset) else (None, str(self.title).encode(), "text/plain")
-
-        attribute = (
-            self.attribute if isinstance(self.attribute, Unset) else (None, str(self.attribute).encode(), "text/plain")
-        )
-
-        widget: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.widget, Unset):
-            widget = UNSET
-        elif isinstance(self.widget, WidgetEnum):
-            widget = (None, str(self.widget.value).encode(), "text/plain")
-        elif isinstance(self.widget, BlankEnum):
-            widget = (None, str(self.widget.value).encode(), "text/plain")
-        elif isinstance(self.widget, None):
-            widget = (None, str(self.widget).encode(), "text/plain")
-        else:
-            widget = (None, str(self.widget).encode(), "text/plain")
-
-        category = (
-            self.category if isinstance(self.category, Unset) else (None, str(self.category).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if index is not UNSET:
-            field_dict["index"] = index
-        if title is not UNSET:
-            field_dict["title"] = title
-        if attribute is not UNSET:
-            field_dict["attribute"] = attribute
-        if widget is not UNSET:
-            field_dict["widget"] = widget
-        if category is not UNSET:
-            field_dict["category"] = category
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

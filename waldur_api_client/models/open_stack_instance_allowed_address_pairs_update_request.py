@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -34,28 +33,6 @@ class OpenStackInstanceAllowedAddressPairsUpdateRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "subnet": subnet,
-                "allowed_address_pairs": allowed_address_pairs,
-            }
-        )
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        subnet = (None, str(self.subnet).encode(), "text/plain")
-
-        _temp_allowed_address_pairs = []
-        for allowed_address_pairs_item_data in self.allowed_address_pairs:
-            allowed_address_pairs_item = allowed_address_pairs_item_data.to_dict()
-            _temp_allowed_address_pairs.append(allowed_address_pairs_item)
-        allowed_address_pairs = (None, json.dumps(_temp_allowed_address_pairs).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "subnet": subnet,

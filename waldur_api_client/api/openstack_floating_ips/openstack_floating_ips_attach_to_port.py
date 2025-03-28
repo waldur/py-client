@@ -13,11 +13,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        OpenStackFloatingIPAttachRequest,
-        OpenStackFloatingIPAttachRequest,
-        OpenStackFloatingIPAttachRequest,
-    ],
+    body: OpenStackFloatingIPAttachRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -26,21 +22,10 @@ def _get_kwargs(
         "url": f"/api/openstack-floating-ips/{uuid}/attach_to_port/",
     }
 
-    if isinstance(body, OpenStackFloatingIPAttachRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, OpenStackFloatingIPAttachRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, OpenStackFloatingIPAttachRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -68,18 +53,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackFloatingIPAttachRequest,
-        OpenStackFloatingIPAttachRequest,
-        OpenStackFloatingIPAttachRequest,
-    ],
+    body: OpenStackFloatingIPAttachRequest,
 ) -> Response[Any]:
     """Attach floating IP to port
 
     Args:
         uuid (UUID):
-        body (OpenStackFloatingIPAttachRequest):
-        body (OpenStackFloatingIPAttachRequest):
         body (OpenStackFloatingIPAttachRequest):
 
     Raises:
@@ -106,18 +85,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackFloatingIPAttachRequest,
-        OpenStackFloatingIPAttachRequest,
-        OpenStackFloatingIPAttachRequest,
-    ],
+    body: OpenStackFloatingIPAttachRequest,
 ) -> Response[Any]:
     """Attach floating IP to port
 
     Args:
         uuid (UUID):
-        body (OpenStackFloatingIPAttachRequest):
-        body (OpenStackFloatingIPAttachRequest):
         body (OpenStackFloatingIPAttachRequest):
 
     Raises:

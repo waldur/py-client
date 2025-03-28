@@ -17,7 +17,6 @@ def _get_kwargs(
     body: Union[
         PatchedPaymentRequest,
         PatchedPaymentRequest,
-        PatchedPaymentRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -32,11 +31,6 @@ def _get_kwargs(
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, PatchedPaymentRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
     if isinstance(body, PatchedPaymentRequest):
         _files_body = body.to_multipart()
 
@@ -74,13 +68,11 @@ def sync_detailed(
     body: Union[
         PatchedPaymentRequest,
         PatchedPaymentRequest,
-        PatchedPaymentRequest,
     ],
 ) -> Response[Payment]:
     """
     Args:
         uuid (UUID):
-        body (PatchedPaymentRequest):
         body (PatchedPaymentRequest):
         body (PatchedPaymentRequest):
 
@@ -111,13 +103,11 @@ def sync(
     body: Union[
         PatchedPaymentRequest,
         PatchedPaymentRequest,
-        PatchedPaymentRequest,
     ],
 ) -> Optional[Payment]:
     """
     Args:
         uuid (UUID):
-        body (PatchedPaymentRequest):
         body (PatchedPaymentRequest):
         body (PatchedPaymentRequest):
 
@@ -143,13 +133,11 @@ async def asyncio_detailed(
     body: Union[
         PatchedPaymentRequest,
         PatchedPaymentRequest,
-        PatchedPaymentRequest,
     ],
 ) -> Response[Payment]:
     """
     Args:
         uuid (UUID):
-        body (PatchedPaymentRequest):
         body (PatchedPaymentRequest):
         body (PatchedPaymentRequest):
 
@@ -178,13 +166,11 @@ async def asyncio(
     body: Union[
         PatchedPaymentRequest,
         PatchedPaymentRequest,
-        PatchedPaymentRequest,
     ],
 ) -> Optional[Payment]:
     """
     Args:
         uuid (UUID):
-        body (PatchedPaymentRequest):
         body (PatchedPaymentRequest):
         body (PatchedPaymentRequest):
 

@@ -14,11 +14,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        ResourceBackendIDRequest,
-        ResourceBackendIDRequest,
-        ResourceBackendIDRequest,
-    ],
+    body: ResourceBackendIDRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/marketplace-provider-resources/{uuid}/set_backend_id/",
     }
 
-    if isinstance(body, ResourceBackendIDRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, ResourceBackendIDRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, ResourceBackendIDRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -75,17 +60,11 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ResourceBackendIDRequest,
-        ResourceBackendIDRequest,
-        ResourceBackendIDRequest,
-    ],
+    body: ResourceBackendIDRequest,
 ) -> Response[ResourceBackendID]:
     """
     Args:
         uuid (UUID):
-        body (ResourceBackendIDRequest):
-        body (ResourceBackendIDRequest):
         body (ResourceBackendIDRequest):
 
     Raises:
@@ -112,17 +91,11 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ResourceBackendIDRequest,
-        ResourceBackendIDRequest,
-        ResourceBackendIDRequest,
-    ],
+    body: ResourceBackendIDRequest,
 ) -> Optional[ResourceBackendID]:
     """
     Args:
         uuid (UUID):
-        body (ResourceBackendIDRequest):
-        body (ResourceBackendIDRequest):
         body (ResourceBackendIDRequest):
 
     Raises:
@@ -144,17 +117,11 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ResourceBackendIDRequest,
-        ResourceBackendIDRequest,
-        ResourceBackendIDRequest,
-    ],
+    body: ResourceBackendIDRequest,
 ) -> Response[ResourceBackendID]:
     """
     Args:
         uuid (UUID):
-        body (ResourceBackendIDRequest):
-        body (ResourceBackendIDRequest):
         body (ResourceBackendIDRequest):
 
     Raises:
@@ -179,17 +146,11 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ResourceBackendIDRequest,
-        ResourceBackendIDRequest,
-        ResourceBackendIDRequest,
-    ],
+    body: ResourceBackendIDRequest,
 ) -> Optional[ResourceBackendID]:
     """
     Args:
         uuid (UUID):
-        body (ResourceBackendIDRequest):
-        body (ResourceBackendIDRequest):
         body (ResourceBackendIDRequest):
 
     Raises:

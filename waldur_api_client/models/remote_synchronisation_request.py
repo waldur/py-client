@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
@@ -57,46 +56,6 @@ class RemoteSynchronisationRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "api_url": api_url,
-                "token": token,
-                "remote_organization_uuid": remote_organization_uuid,
-                "remote_organization_name": remote_organization_name,
-                "local_service_provider": local_service_provider,
-                "remotelocalcategory_set": remotelocalcategory_set,
-            }
-        )
-        if is_active is not UNSET:
-            field_dict["is_active"] = is_active
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        api_url = (None, str(self.api_url).encode(), "text/plain")
-
-        token = (None, str(self.token).encode(), "text/plain")
-
-        remote_organization_uuid = str(self.remote_organization_uuid)
-
-        remote_organization_name = (None, str(self.remote_organization_name).encode(), "text/plain")
-
-        local_service_provider = (None, str(self.local_service_provider).encode(), "text/plain")
-
-        _temp_remotelocalcategory_set = []
-        for remotelocalcategory_set_item_data in self.remotelocalcategory_set:
-            remotelocalcategory_set_item = remotelocalcategory_set_item_data.to_dict()
-            _temp_remotelocalcategory_set.append(remotelocalcategory_set_item)
-        remotelocalcategory_set = (None, json.dumps(_temp_remotelocalcategory_set).encode(), "application/json")
-
-        is_active = (
-            self.is_active if isinstance(self.is_active, Unset) else (None, str(self.is_active).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "api_url": api_url,

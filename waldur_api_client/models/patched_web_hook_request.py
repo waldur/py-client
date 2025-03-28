@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union
 
@@ -56,55 +55,6 @@ class PatchedWebHookRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if is_active is not UNSET:
-            field_dict["is_active"] = is_active
-        if event_types is not UNSET:
-            field_dict["event_types"] = event_types
-        if event_groups is not UNSET:
-            field_dict["event_groups"] = event_groups
-        if destination_url is not UNSET:
-            field_dict["destination_url"] = destination_url
-        if content_type is not UNSET:
-            field_dict["content_type"] = content_type
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        is_active = (
-            self.is_active if isinstance(self.is_active, Unset) else (None, str(self.is_active).encode(), "text/plain")
-        )
-
-        event_types: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.event_types, Unset):
-            _temp_event_types = []
-            for event_types_item_data in self.event_types:
-                event_types_item = event_types_item_data.value
-                _temp_event_types.append(event_types_item)
-            event_types = (None, json.dumps(_temp_event_types).encode(), "application/json")
-
-        event_groups: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.event_groups, Unset):
-            _temp_event_groups = []
-            for event_groups_item_data in self.event_groups:
-                event_groups_item = event_groups_item_data.value
-                _temp_event_groups.append(event_groups_item)
-            event_groups = (None, json.dumps(_temp_event_groups).encode(), "application/json")
-
-        destination_url = (
-            self.destination_url
-            if isinstance(self.destination_url, Unset)
-            else (None, str(self.destination_url).encode(), "text/plain")
-        )
-
-        content_type: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.content_type, Unset):
-            content_type = (None, str(self.content_type.value).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update({})
         if is_active is not UNSET:
             field_dict["is_active"] = is_active

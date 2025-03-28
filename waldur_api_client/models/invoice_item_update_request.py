@@ -54,41 +54,6 @@ class InvoiceItemUpdateRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        article_code = (
-            self.article_code
-            if isinstance(self.article_code, Unset)
-            else (None, str(self.article_code).encode(), "text/plain")
-        )
-
-        quantity = (
-            self.quantity if isinstance(self.quantity, Unset) else (None, str(self.quantity).encode(), "text/plain")
-        )
-
-        start: Union[Unset, bytes] = UNSET
-        if not isinstance(self.start, Unset):
-            start = self.start.isoformat().encode()
-
-        end: Union[Unset, bytes] = UNSET
-        if not isinstance(self.end, Unset):
-            end = self.end.isoformat().encode()
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if article_code is not UNSET:
-            field_dict["article_code"] = article_code
-        if quantity is not UNSET:
-            field_dict["quantity"] = quantity
-        if start is not UNSET:
-            field_dict["start"] = start
-        if end is not UNSET:
-            field_dict["end"] = end
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

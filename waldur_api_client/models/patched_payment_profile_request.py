@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
@@ -54,50 +53,6 @@ class PatchedPaymentProfileRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
-        if organization is not UNSET:
-            field_dict["organization"] = organization
-        if attributes is not UNSET:
-            field_dict["attributes"] = attributes
-        if payment_type is not UNSET:
-            field_dict["payment_type"] = payment_type
-        if is_active is not UNSET:
-            field_dict["is_active"] = is_active
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
-
-        organization = (
-            self.organization
-            if isinstance(self.organization, Unset)
-            else (None, str(self.organization).encode(), "text/plain")
-        )
-
-        attributes: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.attributes, Unset):
-            attributes = (None, json.dumps(self.attributes.to_dict()).encode(), "application/json")
-
-        payment_type: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.payment_type, Unset):
-            payment_type = (None, str(self.payment_type.value).encode(), "text/plain")
-
-        is_active: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.is_active, Unset):
-            is_active = UNSET
-        elif isinstance(self.is_active, bool):
-            is_active = (None, str(self.is_active).encode(), "text/plain")
-        else:
-            is_active = (None, str(self.is_active).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update({})
         if name is not UNSET:
             field_dict["name"] = name

@@ -30,23 +30,6 @@ class ReferenceNumberRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        reference_number = (
-            self.reference_number
-            if isinstance(self.reference_number, Unset)
-            else (None, str(self.reference_number).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if reference_number is not UNSET:
-            field_dict["reference_number"] = reference_number
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

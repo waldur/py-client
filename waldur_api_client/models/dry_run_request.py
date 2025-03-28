@@ -59,51 +59,6 @@ class DryRunRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        plan: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.plan, Unset):
-            plan = UNSET
-        elif isinstance(self.plan, str):
-            plan = (None, str(self.plan).encode(), "text/plain")
-        else:
-            plan = (None, str(self.plan).encode(), "text/plain")
-
-        type_: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.type_, Unset):
-            type_ = (None, str(self.type_.value).encode(), "text/plain")
-
-        attributes = (
-            self.attributes
-            if isinstance(self.attributes, Unset)
-            else (None, str(self.attributes).encode(), "text/plain")
-        )
-
-        order_offering: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.order_offering, Unset):
-            order_offering = UNSET
-        elif isinstance(self.order_offering, str):
-            order_offering = (None, str(self.order_offering).encode(), "text/plain")
-        else:
-            order_offering = (None, str(self.order_offering).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if plan is not UNSET:
-            field_dict["plan"] = plan
-        if type_ is not UNSET:
-            field_dict["type"] = type_
-        if attributes is not UNSET:
-            field_dict["attributes"] = attributes
-        if order_offering is not UNSET:
-            field_dict["order_offering"] = order_offering
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

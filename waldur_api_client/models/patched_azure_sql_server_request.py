@@ -46,40 +46,6 @@ class PatchedAzureSqlServerRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        location = (
-            self.location if isinstance(self.location, Unset) else (None, str(self.location).encode(), "text/plain")
-        )
-
-        storage_mb: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.storage_mb, Unset):
-            storage_mb = UNSET
-        elif isinstance(self.storage_mb, int):
-            storage_mb = (None, str(self.storage_mb).encode(), "text/plain")
-        else:
-            storage_mb = (None, str(self.storage_mb).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if description is not UNSET:
-            field_dict["description"] = description
-        if location is not UNSET:
-            field_dict["location"] = location
-        if storage_mb is not UNSET:
-            field_dict["storage_mb"] = storage_mb
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

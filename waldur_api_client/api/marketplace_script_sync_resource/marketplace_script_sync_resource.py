@@ -11,11 +11,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        PullMarketplaceScriptResourceRequest,
-        PullMarketplaceScriptResourceRequest,
-        PullMarketplaceScriptResourceRequest,
-    ],
+    body: PullMarketplaceScriptResourceRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -24,21 +20,10 @@ def _get_kwargs(
         "url": "/api/marketplace-script-sync-resource/",
     }
 
-    if isinstance(body, PullMarketplaceScriptResourceRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, PullMarketplaceScriptResourceRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, PullMarketplaceScriptResourceRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -67,11 +52,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PullMarketplaceScriptResourceRequest,
-        PullMarketplaceScriptResourceRequest,
-        PullMarketplaceScriptResourceRequest,
-    ],
+    body: PullMarketplaceScriptResourceRequest,
 ) -> Response[Any]:
     """This view allows a user to trigger a pull operation for a marketplace script resource.
             The user must be a service consumer and have access to the resource.
@@ -80,8 +61,6 @@ def sync_detailed(
      Pull a marketplace script resource.
 
     Args:
-        body (PullMarketplaceScriptResourceRequest):
-        body (PullMarketplaceScriptResourceRequest):
         body (PullMarketplaceScriptResourceRequest):
 
     Raises:
@@ -106,11 +85,7 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PullMarketplaceScriptResourceRequest,
-        PullMarketplaceScriptResourceRequest,
-        PullMarketplaceScriptResourceRequest,
-    ],
+    body: PullMarketplaceScriptResourceRequest,
 ) -> Response[Any]:
     """This view allows a user to trigger a pull operation for a marketplace script resource.
             The user must be a service consumer and have access to the resource.
@@ -119,8 +94,6 @@ async def asyncio_detailed(
      Pull a marketplace script resource.
 
     Args:
-        body (PullMarketplaceScriptResourceRequest):
-        body (PullMarketplaceScriptResourceRequest):
         body (PullMarketplaceScriptResourceRequest):
 
     Raises:

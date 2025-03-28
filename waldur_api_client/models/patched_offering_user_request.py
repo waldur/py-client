@@ -46,36 +46,6 @@ class PatchedOfferingUserRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        user = self.user if isinstance(self.user, Unset) else (None, str(self.user).encode(), "text/plain")
-
-        offering = (
-            self.offering if isinstance(self.offering, Unset) else (None, str(self.offering).encode(), "text/plain")
-        )
-
-        username: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.username, Unset):
-            username = UNSET
-        elif isinstance(self.username, str):
-            username = (None, str(self.username).encode(), "text/plain")
-        else:
-            username = (None, str(self.username).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if user is not UNSET:
-            field_dict["user"] = user
-        if offering is not UNSET:
-            field_dict["offering"] = offering
-        if username is not UNSET:
-            field_dict["username"] = username
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

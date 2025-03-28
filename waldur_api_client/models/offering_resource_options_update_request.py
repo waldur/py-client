@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -27,21 +26,6 @@ class OfferingResourceOptionsUpdateRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "resource_options": resource_options,
-            }
-        )
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        resource_options = (None, json.dumps(self.resource_options.to_dict()).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "resource_options": resource_options,

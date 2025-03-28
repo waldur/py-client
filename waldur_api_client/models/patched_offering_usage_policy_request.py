@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
@@ -59,50 +58,6 @@ class PatchedOfferingUsagePolicyRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if scope is not UNSET:
-            field_dict["scope"] = scope
-        if actions is not UNSET:
-            field_dict["actions"] = actions
-        if options is not UNSET:
-            field_dict["options"] = options
-        if organization_groups is not UNSET:
-            field_dict["organization_groups"] = organization_groups
-        if component_limits_set is not UNSET:
-            field_dict["component_limits_set"] = component_limits_set
-        if period is not UNSET:
-            field_dict["period"] = period
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        scope = self.scope if isinstance(self.scope, Unset) else (None, str(self.scope).encode(), "text/plain")
-
-        actions = self.actions if isinstance(self.actions, Unset) else (None, str(self.actions).encode(), "text/plain")
-
-        options = self.options if isinstance(self.options, Unset) else (None, str(self.options).encode(), "text/plain")
-
-        organization_groups: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.organization_groups, Unset):
-            _temp_organization_groups = self.organization_groups
-            organization_groups = (None, json.dumps(_temp_organization_groups).encode(), "application/json")
-
-        component_limits_set: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.component_limits_set, Unset):
-            _temp_component_limits_set = []
-            for component_limits_set_item_data in self.component_limits_set:
-                component_limits_set_item = component_limits_set_item_data.to_dict()
-                _temp_component_limits_set.append(component_limits_set_item)
-            component_limits_set = (None, json.dumps(_temp_component_limits_set).encode(), "application/json")
-
-        period: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.period, Unset):
-            period = (None, str(self.period.value).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update({})
         if scope is not UNSET:
             field_dict["scope"] = scope

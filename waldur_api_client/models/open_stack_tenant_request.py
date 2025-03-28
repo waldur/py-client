@@ -67,59 +67,6 @@ class OpenStackTenantRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        service_settings = (None, str(self.service_settings).encode(), "text/plain")
-
-        project = (None, str(self.project).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        availability_zone = (
-            self.availability_zone
-            if isinstance(self.availability_zone, Unset)
-            else (None, str(self.availability_zone).encode(), "text/plain")
-        )
-
-        subnet_cidr = (
-            self.subnet_cidr
-            if isinstance(self.subnet_cidr, Unset)
-            else (None, str(self.subnet_cidr).encode(), "text/plain")
-        )
-
-        default_volume_type_name = (
-            self.default_volume_type_name
-            if isinstance(self.default_volume_type_name, Unset)
-            else (None, str(self.default_volume_type_name).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "name": name,
-                "service_settings": service_settings,
-                "project": project,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-        if availability_zone is not UNSET:
-            field_dict["availability_zone"] = availability_zone
-        if subnet_cidr is not UNSET:
-            field_dict["subnet_cidr"] = subnet_cidr
-        if default_volume_type_name is not UNSET:
-            field_dict["default_volume_type_name"] = default_volume_type_name
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
@@ -30,25 +29,6 @@ class OpenStackInstancePortsUpdateRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "ports": ports,
-            }
-        )
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        _temp_ports = []
-        for ports_item_data in self.ports:
-            ports_item = ports_item_data.to_dict()
-            _temp_ports.append(ports_item)
-        ports = (None, json.dumps(_temp_ports).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "ports": ports,

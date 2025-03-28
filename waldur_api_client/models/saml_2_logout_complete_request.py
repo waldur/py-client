@@ -36,31 +36,6 @@ class Saml2LogoutCompleteRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        saml_response = (
-            self.saml_response
-            if isinstance(self.saml_response, Unset)
-            else (None, str(self.saml_response).encode(), "text/plain")
-        )
-
-        saml_request = (
-            self.saml_request
-            if isinstance(self.saml_request, Unset)
-            else (None, str(self.saml_request).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if saml_response is not UNSET:
-            field_dict["SAMLResponse"] = saml_response
-        if saml_request is not UNSET:
-            field_dict["SAMLRequest"] = saml_request
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

@@ -53,46 +53,6 @@ class PatchedIssueRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        summary = self.summary if isinstance(self.summary, Unset) else (None, str(self.summary).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        assignee: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.assignee, Unset):
-            assignee = UNSET
-        elif isinstance(self.assignee, str):
-            assignee = (None, str(self.assignee).encode(), "text/plain")
-        else:
-            assignee = (None, str(self.assignee).encode(), "text/plain")
-
-        is_reported_manually = (
-            self.is_reported_manually
-            if isinstance(self.is_reported_manually, Unset)
-            else (None, str(self.is_reported_manually).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if summary is not UNSET:
-            field_dict["summary"] = summary
-        if description is not UNSET:
-            field_dict["description"] = description
-        if assignee is not UNSET:
-            field_dict["assignee"] = assignee
-        if is_reported_manually is not UNSET:
-            field_dict["is_reported_manually"] = is_reported_manually
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

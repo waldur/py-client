@@ -54,48 +54,6 @@ class RequestedOfferingRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        offering = (None, str(self.offering).encode(), "text/plain")
-
-        attributes = (
-            self.attributes
-            if isinstance(self.attributes, Unset)
-            else (None, str(self.attributes).encode(), "text/plain")
-        )
-
-        plan: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.plan, Unset):
-            plan = UNSET
-        elif isinstance(self.plan, str):
-            plan = (None, str(self.plan).encode(), "text/plain")
-        else:
-            plan = (None, str(self.plan).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "offering": offering,
-            }
-        )
-        if attributes is not UNSET:
-            field_dict["attributes"] = attributes
-        if plan is not UNSET:
-            field_dict["plan"] = plan
-        if description is not UNSET:
-            field_dict["description"] = description
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

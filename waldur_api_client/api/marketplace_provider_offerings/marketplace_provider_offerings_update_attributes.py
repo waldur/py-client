@@ -6,14 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_provider_offerings_update_attributes_data_body import (
-    MarketplaceProviderOfferingsUpdateAttributesDataBody,
-)
-from ...models.marketplace_provider_offerings_update_attributes_files_body import (
-    MarketplaceProviderOfferingsUpdateAttributesFilesBody,
-)
-from ...models.marketplace_provider_offerings_update_attributes_json_body import (
-    MarketplaceProviderOfferingsUpdateAttributesJsonBody,
+from ...models.marketplace_provider_offerings_update_attributes_body import (
+    MarketplaceProviderOfferingsUpdateAttributesBody,
 )
 from ...types import Response
 
@@ -21,11 +15,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        MarketplaceProviderOfferingsUpdateAttributesJsonBody,
-        MarketplaceProviderOfferingsUpdateAttributesDataBody,
-        MarketplaceProviderOfferingsUpdateAttributesFilesBody,
-    ],
+    body: MarketplaceProviderOfferingsUpdateAttributesBody,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -34,21 +24,10 @@ def _get_kwargs(
         "url": f"/api/marketplace-provider-offerings/{uuid}/update_attributes/",
     }
 
-    if isinstance(body, MarketplaceProviderOfferingsUpdateAttributesJsonBody):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, MarketplaceProviderOfferingsUpdateAttributesDataBody):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, MarketplaceProviderOfferingsUpdateAttributesFilesBody):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -76,19 +55,13 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        MarketplaceProviderOfferingsUpdateAttributesJsonBody,
-        MarketplaceProviderOfferingsUpdateAttributesDataBody,
-        MarketplaceProviderOfferingsUpdateAttributesFilesBody,
-    ],
+    body: MarketplaceProviderOfferingsUpdateAttributesBody,
 ) -> Response[Any]:
     """Update offering attributes.
 
     Args:
         uuid (UUID):
-        body (MarketplaceProviderOfferingsUpdateAttributesJsonBody):
-        body (MarketplaceProviderOfferingsUpdateAttributesDataBody):
-        body (MarketplaceProviderOfferingsUpdateAttributesFilesBody):
+        body (MarketplaceProviderOfferingsUpdateAttributesBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -114,19 +87,13 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        MarketplaceProviderOfferingsUpdateAttributesJsonBody,
-        MarketplaceProviderOfferingsUpdateAttributesDataBody,
-        MarketplaceProviderOfferingsUpdateAttributesFilesBody,
-    ],
+    body: MarketplaceProviderOfferingsUpdateAttributesBody,
 ) -> Response[Any]:
     """Update offering attributes.
 
     Args:
         uuid (UUID):
-        body (MarketplaceProviderOfferingsUpdateAttributesJsonBody):
-        body (MarketplaceProviderOfferingsUpdateAttributesDataBody):
-        body (MarketplaceProviderOfferingsUpdateAttributesFilesBody):
+        body (MarketplaceProviderOfferingsUpdateAttributesBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

@@ -14,11 +14,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        DigitalOceanDropletResizeRequest,
-        DigitalOceanDropletResizeRequest,
-        DigitalOceanDropletResizeRequest,
-    ],
+    body: DigitalOceanDropletResizeRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/digitalocean-droplets/{uuid}/resize/",
     }
 
-    if isinstance(body, DigitalOceanDropletResizeRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, DigitalOceanDropletResizeRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, DigitalOceanDropletResizeRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -75,11 +60,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        DigitalOceanDropletResizeRequest,
-        DigitalOceanDropletResizeRequest,
-        DigitalOceanDropletResizeRequest,
-    ],
+    body: DigitalOceanDropletResizeRequest,
 ) -> Response[DigitalOceanDropletResize]:
     """To resize droplet, submit a POST request to the instance URL, specifying URI of a target size.
 
@@ -94,8 +75,6 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        body (DigitalOceanDropletResizeRequest):
-        body (DigitalOceanDropletResizeRequest):
         body (DigitalOceanDropletResizeRequest):
 
     Raises:
@@ -122,11 +101,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        DigitalOceanDropletResizeRequest,
-        DigitalOceanDropletResizeRequest,
-        DigitalOceanDropletResizeRequest,
-    ],
+    body: DigitalOceanDropletResizeRequest,
 ) -> Optional[DigitalOceanDropletResize]:
     """To resize droplet, submit a POST request to the instance URL, specifying URI of a target size.
 
@@ -141,8 +116,6 @@ def sync(
 
     Args:
         uuid (UUID):
-        body (DigitalOceanDropletResizeRequest):
-        body (DigitalOceanDropletResizeRequest):
         body (DigitalOceanDropletResizeRequest):
 
     Raises:
@@ -164,11 +137,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        DigitalOceanDropletResizeRequest,
-        DigitalOceanDropletResizeRequest,
-        DigitalOceanDropletResizeRequest,
-    ],
+    body: DigitalOceanDropletResizeRequest,
 ) -> Response[DigitalOceanDropletResize]:
     """To resize droplet, submit a POST request to the instance URL, specifying URI of a target size.
 
@@ -183,8 +152,6 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        body (DigitalOceanDropletResizeRequest):
-        body (DigitalOceanDropletResizeRequest):
         body (DigitalOceanDropletResizeRequest):
 
     Raises:
@@ -209,11 +176,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        DigitalOceanDropletResizeRequest,
-        DigitalOceanDropletResizeRequest,
-        DigitalOceanDropletResizeRequest,
-    ],
+    body: DigitalOceanDropletResizeRequest,
 ) -> Optional[DigitalOceanDropletResize]:
     """To resize droplet, submit a POST request to the instance URL, specifying URI of a target size.
 
@@ -228,8 +191,6 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        body (DigitalOceanDropletResizeRequest):
-        body (DigitalOceanDropletResizeRequest):
         body (DigitalOceanDropletResizeRequest):
 
     Raises:

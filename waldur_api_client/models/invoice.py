@@ -40,6 +40,8 @@ class Invoice:
         backend_id (Union[Unset, str]):
         payment_url (Union[Unset, str]): URL for initiating payment via payment gateway.
         reference_number (Union[Unset, str]): Reference number associated with the invoice.
+        compensations (Union[Unset, float]):
+        incurred_costs (Union[Unset, float]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -60,6 +62,8 @@ class Invoice:
     backend_id: Union[Unset, str] = UNSET
     payment_url: Union[Unset, str] = UNSET
     reference_number: Union[Unset, str] = UNSET
+    compensations: Union[Unset, float] = UNSET
+    incurred_costs: Union[Unset, float] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -120,6 +124,10 @@ class Invoice:
 
         reference_number = self.reference_number
 
+        compensations = self.compensations
+
+        incurred_costs = self.incurred_costs
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -159,6 +167,10 @@ class Invoice:
             field_dict["payment_url"] = payment_url
         if reference_number is not UNSET:
             field_dict["reference_number"] = reference_number
+        if compensations is not UNSET:
+            field_dict["compensations"] = compensations
+        if incurred_costs is not UNSET:
+            field_dict["incurred_costs"] = incurred_costs
 
         return field_dict
 
@@ -249,6 +261,10 @@ class Invoice:
 
         reference_number = d.pop("reference_number", UNSET)
 
+        compensations = d.pop("compensations", UNSET)
+
+        incurred_costs = d.pop("incurred_costs", UNSET)
+
         invoice = cls(
             url=url,
             uuid=uuid,
@@ -268,6 +284,8 @@ class Invoice:
             backend_id=backend_id,
             payment_url=payment_url,
             reference_number=reference_number,
+            compensations=compensations,
+            incurred_costs=incurred_costs,
         )
 
         invoice.additional_properties = d

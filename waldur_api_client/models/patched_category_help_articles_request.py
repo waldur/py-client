@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
@@ -46,40 +45,6 @@ class PatchedCategoryHelpArticlesRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if title is not UNSET:
-            field_dict["title"] = title
-        if url is not UNSET:
-            field_dict["url"] = url
-        if categories is not UNSET:
-            field_dict["categories"] = categories
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        title: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.title, Unset):
-            title = UNSET
-        elif isinstance(self.title, str):
-            title = (None, str(self.title).encode(), "text/plain")
-        else:
-            title = (None, str(self.title).encode(), "text/plain")
-
-        url = self.url if isinstance(self.url, Unset) else (None, str(self.url).encode(), "text/plain")
-
-        categories: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.categories, Unset):
-            _temp_categories = []
-            for categories_item_data in self.categories:
-                categories_item = categories_item_data.to_dict()
-                _temp_categories.append(categories_item)
-            categories = (None, json.dumps(_temp_categories).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update({})
         if title is not UNSET:
             field_dict["title"] = title

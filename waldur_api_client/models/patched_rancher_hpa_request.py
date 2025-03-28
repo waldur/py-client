@@ -64,58 +64,6 @@ class PatchedRancherHPARequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        workload: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.workload, Unset):
-            workload = UNSET
-        elif isinstance(self.workload, str):
-            workload = (None, str(self.workload).encode(), "text/plain")
-        else:
-            workload = (None, str(self.workload).encode(), "text/plain")
-
-        min_replicas = (
-            self.min_replicas
-            if isinstance(self.min_replicas, Unset)
-            else (None, str(self.min_replicas).encode(), "text/plain")
-        )
-
-        max_replicas = (
-            self.max_replicas
-            if isinstance(self.max_replicas, Unset)
-            else (None, str(self.max_replicas).encode(), "text/plain")
-        )
-
-        metrics = self.metrics if isinstance(self.metrics, Unset) else (None, str(self.metrics).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
-        if description is not UNSET:
-            field_dict["description"] = description
-        if workload is not UNSET:
-            field_dict["workload"] = workload
-        if min_replicas is not UNSET:
-            field_dict["min_replicas"] = min_replicas
-        if max_replicas is not UNSET:
-            field_dict["max_replicas"] = max_replicas
-        if metrics is not UNSET:
-            field_dict["metrics"] = metrics
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

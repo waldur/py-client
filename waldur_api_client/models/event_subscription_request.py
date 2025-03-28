@@ -36,31 +36,6 @@ class EventSubscriptionRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        observable_objects = (
-            self.observable_objects
-            if isinstance(self.observable_objects, Unset)
-            else (None, str(self.observable_objects).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if description is not UNSET:
-            field_dict["description"] = description
-        if observable_objects is not UNSET:
-            field_dict["observable_objects"] = observable_objects
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

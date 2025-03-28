@@ -14,11 +14,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        OpenStackPortRequest,
-        OpenStackPortRequest,
-        OpenStackPortRequest,
-    ],
+    body: OpenStackPortRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/openstack-networks/{uuid}/create_port/",
     }
 
-    if isinstance(body, OpenStackPortRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, OpenStackPortRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, OpenStackPortRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -71,17 +56,11 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackPortRequest,
-        OpenStackPortRequest,
-        OpenStackPortRequest,
-    ],
+    body: OpenStackPortRequest,
 ) -> Response[OpenStackPort]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackPortRequest):
-        body (OpenStackPortRequest):
         body (OpenStackPortRequest):
 
     Raises:
@@ -108,17 +87,11 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackPortRequest,
-        OpenStackPortRequest,
-        OpenStackPortRequest,
-    ],
+    body: OpenStackPortRequest,
 ) -> Optional[OpenStackPort]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackPortRequest):
-        body (OpenStackPortRequest):
         body (OpenStackPortRequest):
 
     Raises:
@@ -140,17 +113,11 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackPortRequest,
-        OpenStackPortRequest,
-        OpenStackPortRequest,
-    ],
+    body: OpenStackPortRequest,
 ) -> Response[OpenStackPort]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackPortRequest):
-        body (OpenStackPortRequest):
         body (OpenStackPortRequest):
 
     Raises:
@@ -175,17 +142,11 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackPortRequest,
-        OpenStackPortRequest,
-        OpenStackPortRequest,
-    ],
+    body: OpenStackPortRequest,
 ) -> Optional[OpenStackPort]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackPortRequest):
-        body (OpenStackPortRequest):
         body (OpenStackPortRequest):
 
     Raises:

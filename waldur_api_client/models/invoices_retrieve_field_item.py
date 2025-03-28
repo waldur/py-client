@@ -3,9 +3,11 @@ from enum import Enum
 
 class InvoicesRetrieveFieldItem(str, Enum):
     BACKEND_ID = "backend_id"
+    COMPENSATIONS = "compensations"
     CUSTOMER = "customer"
     CUSTOMER_DETAILS = "customer_details"
     DUE_DATE = "due_date"
+    INCURRED_COSTS = "incurred_costs"
     INVOICE_DATE = "invoice_date"
     ISSUER_DETAILS = "issuer_details"
     ITEMS = "items"

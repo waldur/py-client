@@ -12,11 +12,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        WebHookReceiverRequest,
-        WebHookReceiverRequest,
-        WebHookReceiverRequest,
-    ],
+    body: WebHookReceiverRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -25,21 +21,10 @@ def _get_kwargs(
         "url": "/api/support-jira-webhook/",
     }
 
-    if isinstance(body, WebHookReceiverRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, WebHookReceiverRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, WebHookReceiverRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -72,16 +57,10 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        WebHookReceiverRequest,
-        WebHookReceiverRequest,
-        WebHookReceiverRequest,
-    ],
+    body: WebHookReceiverRequest,
 ) -> Response[WebHookReceiver]:
     """
     Args:
-        body (WebHookReceiverRequest):
-        body (WebHookReceiverRequest):
         body (WebHookReceiverRequest):
 
     Raises:
@@ -106,16 +85,10 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        WebHookReceiverRequest,
-        WebHookReceiverRequest,
-        WebHookReceiverRequest,
-    ],
+    body: WebHookReceiverRequest,
 ) -> Optional[WebHookReceiver]:
     """
     Args:
-        body (WebHookReceiverRequest):
-        body (WebHookReceiverRequest):
         body (WebHookReceiverRequest):
 
     Raises:
@@ -135,16 +108,10 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        WebHookReceiverRequest,
-        WebHookReceiverRequest,
-        WebHookReceiverRequest,
-    ],
+    body: WebHookReceiverRequest,
 ) -> Response[WebHookReceiver]:
     """
     Args:
-        body (WebHookReceiverRequest):
-        body (WebHookReceiverRequest):
         body (WebHookReceiverRequest):
 
     Raises:
@@ -167,16 +134,10 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Union[
-        WebHookReceiverRequest,
-        WebHookReceiverRequest,
-        WebHookReceiverRequest,
-    ],
+    body: WebHookReceiverRequest,
 ) -> Optional[WebHookReceiver]:
     """
     Args:
-        body (WebHookReceiverRequest):
-        body (WebHookReceiverRequest):
         body (WebHookReceiverRequest):
 
     Raises:

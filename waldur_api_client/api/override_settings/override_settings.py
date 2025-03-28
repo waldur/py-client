@@ -14,7 +14,6 @@ def _get_kwargs(
     body: Union[
         ConstanceSettingsRequest,
         ConstanceSettingsRequest,
-        ConstanceSettingsRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -29,11 +28,6 @@ def _get_kwargs(
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, ConstanceSettingsRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
     if isinstance(body, ConstanceSettingsRequest):
         _files_body = body.to_multipart()
 
@@ -68,12 +62,10 @@ def sync_detailed(
     body: Union[
         ConstanceSettingsRequest,
         ConstanceSettingsRequest,
-        ConstanceSettingsRequest,
     ],
 ) -> Response[Any]:
     """
     Args:
-        body (ConstanceSettingsRequest):
         body (ConstanceSettingsRequest):
         body (ConstanceSettingsRequest):
 
@@ -102,12 +94,10 @@ async def asyncio_detailed(
     body: Union[
         ConstanceSettingsRequest,
         ConstanceSettingsRequest,
-        ConstanceSettingsRequest,
     ],
 ) -> Response[Any]:
     """
     Args:
-        body (ConstanceSettingsRequest):
         body (ConstanceSettingsRequest):
         body (ConstanceSettingsRequest):
 

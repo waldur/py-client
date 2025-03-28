@@ -48,35 +48,6 @@ class SectionRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        key = (None, str(self.key).encode(), "text/plain")
-
-        title = (None, str(self.title).encode(), "text/plain")
-
-        category = (None, str(self.category).encode(), "text/plain")
-
-        is_standalone = (
-            self.is_standalone
-            if isinstance(self.is_standalone, Unset)
-            else (None, str(self.is_standalone).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "key": key,
-                "title": title,
-                "category": category,
-            }
-        )
-        if is_standalone is not UNSET:
-            field_dict["is_standalone"] = is_standalone
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

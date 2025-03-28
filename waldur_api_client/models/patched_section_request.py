@@ -48,37 +48,6 @@ class PatchedSectionRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        key = self.key if isinstance(self.key, Unset) else (None, str(self.key).encode(), "text/plain")
-
-        title = self.title if isinstance(self.title, Unset) else (None, str(self.title).encode(), "text/plain")
-
-        category = (
-            self.category if isinstance(self.category, Unset) else (None, str(self.category).encode(), "text/plain")
-        )
-
-        is_standalone = (
-            self.is_standalone
-            if isinstance(self.is_standalone, Unset)
-            else (None, str(self.is_standalone).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if key is not UNSET:
-            field_dict["key"] = key
-        if title is not UNSET:
-            field_dict["title"] = title
-        if category is not UNSET:
-            field_dict["category"] = category
-        if is_standalone is not UNSET:
-            field_dict["is_standalone"] = is_standalone
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

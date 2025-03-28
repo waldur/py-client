@@ -12,11 +12,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        InvitationRequest,
-        InvitationRequest,
-        InvitationRequest,
-    ],
+    body: InvitationRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -25,21 +21,10 @@ def _get_kwargs(
         "url": "/api/user-invitations/",
     }
 
-    if isinstance(body, InvitationRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, InvitationRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, InvitationRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -68,16 +53,10 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        InvitationRequest,
-        InvitationRequest,
-        InvitationRequest,
-    ],
+    body: InvitationRequest,
 ) -> Response[Invitation]:
     """
     Args:
-        body (InvitationRequest):
-        body (InvitationRequest):
         body (InvitationRequest):
 
     Raises:
@@ -102,16 +81,10 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        InvitationRequest,
-        InvitationRequest,
-        InvitationRequest,
-    ],
+    body: InvitationRequest,
 ) -> Optional[Invitation]:
     """
     Args:
-        body (InvitationRequest):
-        body (InvitationRequest):
         body (InvitationRequest):
 
     Raises:
@@ -131,16 +104,10 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        InvitationRequest,
-        InvitationRequest,
-        InvitationRequest,
-    ],
+    body: InvitationRequest,
 ) -> Response[Invitation]:
     """
     Args:
-        body (InvitationRequest):
-        body (InvitationRequest):
         body (InvitationRequest):
 
     Raises:
@@ -163,16 +130,10 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        InvitationRequest,
-        InvitationRequest,
-        InvitationRequest,
-    ],
+    body: InvitationRequest,
 ) -> Optional[Invitation]:
     """
     Args:
-        body (InvitationRequest):
-        body (InvitationRequest):
         body (InvitationRequest):
 
     Raises:

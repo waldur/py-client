@@ -14,11 +14,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        OpenStackTenantRequest,
-        OpenStackTenantRequest,
-        OpenStackTenantRequest,
-    ],
+    body: OpenStackTenantRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/openstack-tenants/{uuid}/",
     }
 
-    if isinstance(body, OpenStackTenantRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, OpenStackTenantRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, OpenStackTenantRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -75,17 +60,11 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackTenantRequest,
-        OpenStackTenantRequest,
-        OpenStackTenantRequest,
-    ],
+    body: OpenStackTenantRequest,
 ) -> Response[OpenStackTenant]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackTenantRequest):
-        body (OpenStackTenantRequest):
         body (OpenStackTenantRequest):
 
     Raises:
@@ -112,17 +91,11 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackTenantRequest,
-        OpenStackTenantRequest,
-        OpenStackTenantRequest,
-    ],
+    body: OpenStackTenantRequest,
 ) -> Optional[OpenStackTenant]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackTenantRequest):
-        body (OpenStackTenantRequest):
         body (OpenStackTenantRequest):
 
     Raises:
@@ -144,17 +117,11 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackTenantRequest,
-        OpenStackTenantRequest,
-        OpenStackTenantRequest,
-    ],
+    body: OpenStackTenantRequest,
 ) -> Response[OpenStackTenant]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackTenantRequest):
-        body (OpenStackTenantRequest):
         body (OpenStackTenantRequest):
 
     Raises:
@@ -179,17 +146,11 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackTenantRequest,
-        OpenStackTenantRequest,
-        OpenStackTenantRequest,
-    ],
+    body: OpenStackTenantRequest,
 ) -> Optional[OpenStackTenant]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackTenantRequest):
-        body (OpenStackTenantRequest):
         body (OpenStackTenantRequest):
 
     Raises:

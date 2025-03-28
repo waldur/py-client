@@ -36,31 +36,6 @@ class ResourceSetStateErredRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        error_message = (
-            self.error_message
-            if isinstance(self.error_message, Unset)
-            else (None, str(self.error_message).encode(), "text/plain")
-        )
-
-        error_traceback = (
-            self.error_traceback
-            if isinstance(self.error_traceback, Unset)
-            else (None, str(self.error_traceback).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if error_message is not UNSET:
-            field_dict["error_message"] = error_message
-        if error_traceback is not UNSET:
-            field_dict["error_traceback"] = error_traceback
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

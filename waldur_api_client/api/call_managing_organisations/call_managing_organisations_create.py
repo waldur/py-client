@@ -15,7 +15,6 @@ def _get_kwargs(
     body: Union[
         CallManagingOrganisationRequest,
         CallManagingOrganisationRequest,
-        CallManagingOrganisationRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -30,11 +29,6 @@ def _get_kwargs(
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, CallManagingOrganisationRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
     if isinstance(body, CallManagingOrganisationRequest):
         _files_body = body.to_multipart()
 
@@ -75,12 +69,10 @@ def sync_detailed(
     body: Union[
         CallManagingOrganisationRequest,
         CallManagingOrganisationRequest,
-        CallManagingOrganisationRequest,
     ],
 ) -> Response[CallManagingOrganisation]:
     """
     Args:
-        body (CallManagingOrganisationRequest):
         body (CallManagingOrganisationRequest):
         body (CallManagingOrganisationRequest):
 
@@ -109,12 +101,10 @@ def sync(
     body: Union[
         CallManagingOrganisationRequest,
         CallManagingOrganisationRequest,
-        CallManagingOrganisationRequest,
     ],
 ) -> Optional[CallManagingOrganisation]:
     """
     Args:
-        body (CallManagingOrganisationRequest):
         body (CallManagingOrganisationRequest):
         body (CallManagingOrganisationRequest):
 
@@ -138,12 +128,10 @@ async def asyncio_detailed(
     body: Union[
         CallManagingOrganisationRequest,
         CallManagingOrganisationRequest,
-        CallManagingOrganisationRequest,
     ],
 ) -> Response[CallManagingOrganisation]:
     """
     Args:
-        body (CallManagingOrganisationRequest):
         body (CallManagingOrganisationRequest):
         body (CallManagingOrganisationRequest):
 
@@ -170,12 +158,10 @@ async def asyncio(
     body: Union[
         CallManagingOrganisationRequest,
         CallManagingOrganisationRequest,
-        CallManagingOrganisationRequest,
     ],
 ) -> Optional[CallManagingOrganisation]:
     """
     Args:
-        body (CallManagingOrganisationRequest):
         body (CallManagingOrganisationRequest):
         body (CallManagingOrganisationRequest):
 

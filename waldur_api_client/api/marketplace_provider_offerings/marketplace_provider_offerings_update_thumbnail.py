@@ -17,7 +17,6 @@ def _get_kwargs(
     body: Union[
         OfferingThumbnailRequest,
         OfferingThumbnailRequest,
-        OfferingThumbnailRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -32,11 +31,6 @@ def _get_kwargs(
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, OfferingThumbnailRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
     if isinstance(body, OfferingThumbnailRequest):
         _files_body = body.to_multipart()
 
@@ -78,14 +72,12 @@ def sync_detailed(
     body: Union[
         OfferingThumbnailRequest,
         OfferingThumbnailRequest,
-        OfferingThumbnailRequest,
     ],
 ) -> Response[ProviderOfferingDetails]:
     """Update offering thumbnail.
 
     Args:
         uuid (UUID):
-        body (OfferingThumbnailRequest):
         body (OfferingThumbnailRequest):
         body (OfferingThumbnailRequest):
 
@@ -116,14 +108,12 @@ def sync(
     body: Union[
         OfferingThumbnailRequest,
         OfferingThumbnailRequest,
-        OfferingThumbnailRequest,
     ],
 ) -> Optional[ProviderOfferingDetails]:
     """Update offering thumbnail.
 
     Args:
         uuid (UUID):
-        body (OfferingThumbnailRequest):
         body (OfferingThumbnailRequest):
         body (OfferingThumbnailRequest):
 
@@ -149,14 +139,12 @@ async def asyncio_detailed(
     body: Union[
         OfferingThumbnailRequest,
         OfferingThumbnailRequest,
-        OfferingThumbnailRequest,
     ],
 ) -> Response[ProviderOfferingDetails]:
     """Update offering thumbnail.
 
     Args:
         uuid (UUID):
-        body (OfferingThumbnailRequest):
         body (OfferingThumbnailRequest):
         body (OfferingThumbnailRequest):
 
@@ -185,14 +173,12 @@ async def asyncio(
     body: Union[
         OfferingThumbnailRequest,
         OfferingThumbnailRequest,
-        OfferingThumbnailRequest,
     ],
 ) -> Optional[ProviderOfferingDetails]:
     """Update offering thumbnail.
 
     Args:
         uuid (UUID):
-        body (OfferingThumbnailRequest):
         body (OfferingThumbnailRequest):
         body (OfferingThumbnailRequest):
 

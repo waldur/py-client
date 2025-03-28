@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
@@ -34,25 +33,6 @@ class OpenStackInstanceFloatingIPsUpdateRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if floating_ips is not UNSET:
-            field_dict["floating_ips"] = floating_ips
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        floating_ips: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.floating_ips, Unset):
-            _temp_floating_ips = []
-            for floating_ips_item_data in self.floating_ips:
-                floating_ips_item = floating_ips_item_data.to_dict()
-                _temp_floating_ips.append(floating_ips_item)
-            floating_ips = (None, json.dumps(_temp_floating_ips).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update({})
         if floating_ips is not UNSET:
             field_dict["floating_ips"] = floating_ips

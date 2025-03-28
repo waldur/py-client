@@ -4,11 +4,11 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="MarketplaceProviderOfferingsUpdateAttributesJsonBody")
+T = TypeVar("T", bound="FeatureValuesBody")
 
 
 @_attrs_define
-class MarketplaceProviderOfferingsUpdateAttributesJsonBody:
+class FeatureValuesBody:
     """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -22,10 +22,10 @@ class MarketplaceProviderOfferingsUpdateAttributesJsonBody:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        marketplace_provider_offerings_update_attributes_json_body = cls()
+        feature_values_body = cls()
 
-        marketplace_provider_offerings_update_attributes_json_body.additional_properties = d
-        return marketplace_provider_offerings_update_attributes_json_body
+        feature_values_body.additional_properties = d
+        return feature_values_body
 
     @property
     def additional_keys(self) -> list[str]:

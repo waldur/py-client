@@ -15,7 +15,6 @@ def _get_kwargs(
     body: Union[
         ProjectRequest,
         ProjectRequest,
-        ProjectRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -30,11 +29,6 @@ def _get_kwargs(
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, ProjectRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
     if isinstance(body, ProjectRequest):
         _files_body = body.to_multipart()
 
@@ -71,14 +65,12 @@ def sync_detailed(
     body: Union[
         ProjectRequest,
         ProjectRequest,
-        ProjectRequest,
     ],
 ) -> Response[Project]:
     """A new project can be created by users with staff privilege (is_staff=True) or customer owners.
     Project resource quota is optional.
 
     Args:
-        body (ProjectRequest):
         body (ProjectRequest):
         body (ProjectRequest):
 
@@ -107,14 +99,12 @@ def sync(
     body: Union[
         ProjectRequest,
         ProjectRequest,
-        ProjectRequest,
     ],
 ) -> Optional[Project]:
     """A new project can be created by users with staff privilege (is_staff=True) or customer owners.
     Project resource quota is optional.
 
     Args:
-        body (ProjectRequest):
         body (ProjectRequest):
         body (ProjectRequest):
 
@@ -138,14 +128,12 @@ async def asyncio_detailed(
     body: Union[
         ProjectRequest,
         ProjectRequest,
-        ProjectRequest,
     ],
 ) -> Response[Project]:
     """A new project can be created by users with staff privilege (is_staff=True) or customer owners.
     Project resource quota is optional.
 
     Args:
-        body (ProjectRequest):
         body (ProjectRequest):
         body (ProjectRequest):
 
@@ -172,14 +160,12 @@ async def asyncio(
     body: Union[
         ProjectRequest,
         ProjectRequest,
-        ProjectRequest,
     ],
 ) -> Optional[Project]:
     """A new project can be created by users with staff privilege (is_staff=True) or customer owners.
     Project resource quota is optional.
 
     Args:
-        body (ProjectRequest):
         body (ProjectRequest):
         body (ProjectRequest):
 

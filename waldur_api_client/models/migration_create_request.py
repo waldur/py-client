@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
@@ -52,45 +51,6 @@ class MigrationCreateRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "src_resource": src_resource,
-                "dst_offering": dst_offering,
-                "dst_plan": dst_plan,
-            }
-        )
-        if name is not UNSET:
-            field_dict["name"] = name
-        if description is not UNSET:
-            field_dict["description"] = description
-        if mappings is not UNSET:
-            field_dict["mappings"] = mappings
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        src_resource = str(self.src_resource)
-
-        dst_offering = str(self.dst_offering)
-
-        dst_plan = str(self.dst_plan)
-
-        name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        mappings: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.mappings, Unset):
-            mappings = (None, json.dumps(self.mappings.to_dict()).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "src_resource": src_resource,

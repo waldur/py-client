@@ -51,41 +51,6 @@ class RequestedResourceRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        requested_offering_uuid = str(self.requested_offering_uuid)
-
-        attributes = (
-            self.attributes
-            if isinstance(self.attributes, Unset)
-            else (None, str(self.attributes).encode(), "text/plain")
-        )
-
-        limits = self.limits if isinstance(self.limits, Unset) else (None, str(self.limits).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "requested_offering_uuid": requested_offering_uuid,
-            }
-        )
-        if attributes is not UNSET:
-            field_dict["attributes"] = attributes
-        if limits is not UNSET:
-            field_dict["limits"] = limits
-        if description is not UNSET:
-            field_dict["description"] = description
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

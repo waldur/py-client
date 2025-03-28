@@ -30,23 +30,6 @@ class PaymentURLRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        payment_url = (
-            self.payment_url
-            if isinstance(self.payment_url, Unset)
-            else (None, str(self.payment_url).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if payment_url is not UNSET:
-            field_dict["payment_url"] = payment_url
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

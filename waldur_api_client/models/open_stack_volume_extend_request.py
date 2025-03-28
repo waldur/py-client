@@ -30,21 +30,6 @@ class OpenStackVolumeExtendRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        disk_size = (None, str(self.disk_size).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "disk_size": disk_size,
-            }
-        )
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

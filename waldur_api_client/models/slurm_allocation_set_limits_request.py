@@ -40,27 +40,6 @@ class SlurmAllocationSetLimitsRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        cpu_limit = (None, str(self.cpu_limit).encode(), "text/plain")
-
-        gpu_limit = (None, str(self.gpu_limit).encode(), "text/plain")
-
-        ram_limit = (None, str(self.ram_limit).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "cpu_limit": cpu_limit,
-                "gpu_limit": gpu_limit,
-                "ram_limit": ram_limit,
-            }
-        )
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
@@ -55,45 +54,6 @@ class OfferingUsagePolicyRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "scope": scope,
-                "actions": actions,
-                "organization_groups": organization_groups,
-                "component_limits_set": component_limits_set,
-            }
-        )
-        if options is not UNSET:
-            field_dict["options"] = options
-        if period is not UNSET:
-            field_dict["period"] = period
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        scope = (None, str(self.scope).encode(), "text/plain")
-
-        actions = (None, str(self.actions).encode(), "text/plain")
-
-        _temp_organization_groups = self.organization_groups
-        organization_groups = (None, json.dumps(_temp_organization_groups).encode(), "application/json")
-
-        _temp_component_limits_set = []
-        for component_limits_set_item_data in self.component_limits_set:
-            component_limits_set_item = component_limits_set_item_data.to_dict()
-            _temp_component_limits_set.append(component_limits_set_item)
-        component_limits_set = (None, json.dumps(_temp_component_limits_set).encode(), "application/json")
-
-        options = self.options if isinstance(self.options, Unset) else (None, str(self.options).encode(), "text/plain")
-
-        period: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.period, Unset):
-            period = (None, str(self.period.value).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "scope": scope,

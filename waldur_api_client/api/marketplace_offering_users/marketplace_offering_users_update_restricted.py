@@ -13,11 +13,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        OfferingUserUpdateRestrictionRequest,
-        OfferingUserUpdateRestrictionRequest,
-        OfferingUserUpdateRestrictionRequest,
-    ],
+    body: OfferingUserUpdateRestrictionRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -26,21 +22,10 @@ def _get_kwargs(
         "url": f"/api/marketplace-offering-users/{uuid}/update_restricted/",
     }
 
-    if isinstance(body, OfferingUserUpdateRestrictionRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, OfferingUserUpdateRestrictionRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, OfferingUserUpdateRestrictionRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -68,17 +53,11 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OfferingUserUpdateRestrictionRequest,
-        OfferingUserUpdateRestrictionRequest,
-        OfferingUserUpdateRestrictionRequest,
-    ],
+    body: OfferingUserUpdateRestrictionRequest,
 ) -> Response[Any]:
     """
     Args:
         uuid (UUID):
-        body (OfferingUserUpdateRestrictionRequest):
-        body (OfferingUserUpdateRestrictionRequest):
         body (OfferingUserUpdateRestrictionRequest):
 
     Raises:
@@ -105,17 +84,11 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OfferingUserUpdateRestrictionRequest,
-        OfferingUserUpdateRestrictionRequest,
-        OfferingUserUpdateRestrictionRequest,
-    ],
+    body: OfferingUserUpdateRestrictionRequest,
 ) -> Response[Any]:
     """
     Args:
         uuid (UUID):
-        body (OfferingUserUpdateRestrictionRequest):
-        body (OfferingUserUpdateRestrictionRequest):
         body (OfferingUserUpdateRestrictionRequest):
 
     Raises:

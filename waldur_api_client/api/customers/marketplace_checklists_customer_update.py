@@ -12,11 +12,7 @@ from ...types import Response
 def _get_kwargs(
     customer_uuid: str,
     *,
-    body: Union[
-        list[UUID],
-        list[UUID],
-        list[UUID],
-    ],
+    body: list[UUID],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -25,27 +21,13 @@ def _get_kwargs(
         "url": f"/api/customers/{customer_uuid}/marketplace-checklists/",
     }
 
-    if isinstance(body, list[UUID]):
-        _json_body = []
-        for body_item_data in body:
-            body_item = str(body_item_data)
-            _json_body.append(body_item)
+    _body = []
+    for body_item_data in body:
+        body_item = str(body_item_data)
+        _body.append(body_item)
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, list[UUID]):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, list[UUID]):
-        _files_body = []
-        for body_item_data in body:
-            body_item = str(body_item_data)
-            _files_body.append(body_item)
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -80,17 +62,11 @@ def sync_detailed(
     customer_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        list[UUID],
-        list[UUID],
-        list[UUID],
-    ],
+    body: list[UUID],
 ) -> Response[list[UUID]]:
     """
     Args:
         customer_uuid (str):
-        body (list[UUID]):
-        body (list[UUID]):
         body (list[UUID]):
 
     Raises:
@@ -117,17 +93,11 @@ def sync(
     customer_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        list[UUID],
-        list[UUID],
-        list[UUID],
-    ],
+    body: list[UUID],
 ) -> Optional[list[UUID]]:
     """
     Args:
         customer_uuid (str):
-        body (list[UUID]):
-        body (list[UUID]):
         body (list[UUID]):
 
     Raises:
@@ -149,17 +119,11 @@ async def asyncio_detailed(
     customer_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        list[UUID],
-        list[UUID],
-        list[UUID],
-    ],
+    body: list[UUID],
 ) -> Response[list[UUID]]:
     """
     Args:
         customer_uuid (str):
-        body (list[UUID]):
-        body (list[UUID]):
         body (list[UUID]):
 
     Raises:
@@ -184,17 +148,11 @@ async def asyncio(
     customer_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        list[UUID],
-        list[UUID],
-        list[UUID],
-    ],
+    body: list[UUID],
 ) -> Optional[list[UUID]]:
     """
     Args:
         customer_uuid (str):
-        body (list[UUID]):
-        body (list[UUID]):
         body (list[UUID]):
 
     Raises:

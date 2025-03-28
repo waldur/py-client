@@ -49,43 +49,6 @@ class PatchedOpenStackTenantRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        availability_zone = (
-            self.availability_zone
-            if isinstance(self.availability_zone, Unset)
-            else (None, str(self.availability_zone).encode(), "text/plain")
-        )
-
-        default_volume_type_name = (
-            self.default_volume_type_name
-            if isinstance(self.default_volume_type_name, Unset)
-            else (None, str(self.default_volume_type_name).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
-        if description is not UNSET:
-            field_dict["description"] = description
-        if availability_zone is not UNSET:
-            field_dict["availability_zone"] = availability_zone
-        if default_volume_type_name is not UNSET:
-            field_dict["default_volume_type_name"] = default_volume_type_name
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

@@ -13,11 +13,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        OrganizationGroupsRequest,
-        OrganizationGroupsRequest,
-        OrganizationGroupsRequest,
-    ],
+    body: OrganizationGroupsRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -26,21 +22,10 @@ def _get_kwargs(
         "url": f"/api/customers/{uuid}/update_organization_groups/",
     }
 
-    if isinstance(body, OrganizationGroupsRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, OrganizationGroupsRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, OrganizationGroupsRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -68,18 +53,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OrganizationGroupsRequest,
-        OrganizationGroupsRequest,
-        OrganizationGroupsRequest,
-    ],
+    body: OrganizationGroupsRequest,
 ) -> Response[Any]:
     """Update organization groups for customer
 
     Args:
         uuid (UUID):
-        body (OrganizationGroupsRequest):
-        body (OrganizationGroupsRequest):
         body (OrganizationGroupsRequest):
 
     Raises:
@@ -106,18 +85,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OrganizationGroupsRequest,
-        OrganizationGroupsRequest,
-        OrganizationGroupsRequest,
-    ],
+    body: OrganizationGroupsRequest,
 ) -> Response[Any]:
     """Update organization groups for customer
 
     Args:
         uuid (UUID):
-        body (OrganizationGroupsRequest):
-        body (OrganizationGroupsRequest):
         body (OrganizationGroupsRequest):
 
     Raises:

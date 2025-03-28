@@ -17,7 +17,6 @@ def _get_kwargs(
     body: Union[
         OfferingImageRequest,
         OfferingImageRequest,
-        OfferingImageRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -32,11 +31,6 @@ def _get_kwargs(
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, OfferingImageRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
     if isinstance(body, OfferingImageRequest):
         _files_body = body.to_multipart()
 
@@ -78,14 +72,12 @@ def sync_detailed(
     body: Union[
         OfferingImageRequest,
         OfferingImageRequest,
-        OfferingImageRequest,
     ],
 ) -> Response[ProviderOfferingDetails]:
     """Update offering image.
 
     Args:
         uuid (UUID):
-        body (OfferingImageRequest):
         body (OfferingImageRequest):
         body (OfferingImageRequest):
 
@@ -116,14 +108,12 @@ def sync(
     body: Union[
         OfferingImageRequest,
         OfferingImageRequest,
-        OfferingImageRequest,
     ],
 ) -> Optional[ProviderOfferingDetails]:
     """Update offering image.
 
     Args:
         uuid (UUID):
-        body (OfferingImageRequest):
         body (OfferingImageRequest):
         body (OfferingImageRequest):
 
@@ -149,14 +139,12 @@ async def asyncio_detailed(
     body: Union[
         OfferingImageRequest,
         OfferingImageRequest,
-        OfferingImageRequest,
     ],
 ) -> Response[ProviderOfferingDetails]:
     """Update offering image.
 
     Args:
         uuid (UUID):
-        body (OfferingImageRequest):
         body (OfferingImageRequest):
         body (OfferingImageRequest):
 
@@ -185,14 +173,12 @@ async def asyncio(
     body: Union[
         OfferingImageRequest,
         OfferingImageRequest,
-        OfferingImageRequest,
     ],
 ) -> Optional[ProviderOfferingDetails]:
     """Update offering image.
 
     Args:
         uuid (UUID):
-        body (OfferingImageRequest):
         body (OfferingImageRequest):
         body (OfferingImageRequest):
 

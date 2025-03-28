@@ -244,9 +244,7 @@ from .events_list_o_item import EventsListOItem
 from .events_retrieve_field_item import EventsRetrieveFieldItem
 from .events_scope_types_retrieve_field_item import EventsScopeTypesRetrieveFieldItem
 from .execution_state_enum import ExecutionStateEnum
-from .feature_values_data_body import FeatureValuesDataBody
-from .feature_values_files_body import FeatureValuesFilesBody
-from .feature_values_json_body import FeatureValuesJsonBody
+from .feature_values_body import FeatureValuesBody
 from .feedback import Feedback
 from .financial_report import FinancialReport
 from .financial_report_email_request import FinancialReportEmailRequest
@@ -390,15 +388,7 @@ from .marketplace_provider_offerings_list_users_list_field_item import (
 from .marketplace_provider_offerings_list_users_list_o_item import MarketplaceProviderOfferingsListUsersListOItem
 from .marketplace_provider_offerings_retrieve_field_item import MarketplaceProviderOfferingsRetrieveFieldItem
 from .marketplace_provider_offerings_stats_retrieve_field_item import MarketplaceProviderOfferingsStatsRetrieveFieldItem
-from .marketplace_provider_offerings_update_attributes_data_body import (
-    MarketplaceProviderOfferingsUpdateAttributesDataBody,
-)
-from .marketplace_provider_offerings_update_attributes_files_body import (
-    MarketplaceProviderOfferingsUpdateAttributesFilesBody,
-)
-from .marketplace_provider_offerings_update_attributes_json_body import (
-    MarketplaceProviderOfferingsUpdateAttributesJsonBody,
-)
+from .marketplace_provider_offerings_update_attributes_body import MarketplaceProviderOfferingsUpdateAttributesBody
 from .marketplace_provider_offerings_user_has_resource_access_retrieve_field_item import (
     MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem,
 )
@@ -1411,9 +1401,7 @@ __all__ = (
     "EventSubscriptionsListOItem",
     "EventTypesEnum",
     "ExecutionStateEnum",
-    "FeatureValuesDataBody",
-    "FeatureValuesFilesBody",
-    "FeatureValuesJsonBody",
+    "FeatureValuesBody",
     "Feedback",
     "FinancialReport",
     "FinancialReportEmailRequest",
@@ -1545,9 +1533,7 @@ __all__ = (
     "MarketplaceProviderOfferingsListUsersListOItem",
     "MarketplaceProviderOfferingsRetrieveFieldItem",
     "MarketplaceProviderOfferingsStatsRetrieveFieldItem",
-    "MarketplaceProviderOfferingsUpdateAttributesDataBody",
-    "MarketplaceProviderOfferingsUpdateAttributesFilesBody",
-    "MarketplaceProviderOfferingsUpdateAttributesJsonBody",
+    "MarketplaceProviderOfferingsUpdateAttributesBody",
     "MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem",
     "MarketplaceProviderResourcesDetailsRetrieveFieldItem",
     "MarketplaceProviderResourcesListFieldItem",

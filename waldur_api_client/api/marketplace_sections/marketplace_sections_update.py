@@ -13,11 +13,7 @@ from ...types import Response
 def _get_kwargs(
     key: str,
     *,
-    body: Union[
-        SectionRequest,
-        SectionRequest,
-        SectionRequest,
-    ],
+    body: SectionRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -26,21 +22,10 @@ def _get_kwargs(
         "url": f"/api/marketplace-sections/{key}/",
     }
 
-    if isinstance(body, SectionRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, SectionRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, SectionRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -70,17 +55,11 @@ def sync_detailed(
     key: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        SectionRequest,
-        SectionRequest,
-        SectionRequest,
-    ],
+    body: SectionRequest,
 ) -> Response[Section]:
     """
     Args:
         key (str):
-        body (SectionRequest):
-        body (SectionRequest):
         body (SectionRequest):
 
     Raises:
@@ -107,17 +86,11 @@ def sync(
     key: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        SectionRequest,
-        SectionRequest,
-        SectionRequest,
-    ],
+    body: SectionRequest,
 ) -> Optional[Section]:
     """
     Args:
         key (str):
-        body (SectionRequest):
-        body (SectionRequest):
         body (SectionRequest):
 
     Raises:
@@ -139,17 +112,11 @@ async def asyncio_detailed(
     key: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        SectionRequest,
-        SectionRequest,
-        SectionRequest,
-    ],
+    body: SectionRequest,
 ) -> Response[Section]:
     """
     Args:
         key (str):
-        body (SectionRequest):
-        body (SectionRequest):
         body (SectionRequest):
 
     Raises:
@@ -174,17 +141,11 @@ async def asyncio(
     key: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        SectionRequest,
-        SectionRequest,
-        SectionRequest,
-    ],
+    body: SectionRequest,
 ) -> Optional[Section]:
     """
     Args:
         key (str):
-        body (SectionRequest):
-        body (SectionRequest):
         body (SectionRequest):
 
     Raises:

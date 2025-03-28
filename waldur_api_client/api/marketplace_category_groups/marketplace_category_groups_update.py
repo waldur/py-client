@@ -17,7 +17,6 @@ def _get_kwargs(
     body: Union[
         CategoryGroupRequest,
         CategoryGroupRequest,
-        CategoryGroupRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -32,11 +31,6 @@ def _get_kwargs(
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, CategoryGroupRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
     if isinstance(body, CategoryGroupRequest):
         _files_body = body.to_multipart()
 
@@ -74,13 +68,11 @@ def sync_detailed(
     body: Union[
         CategoryGroupRequest,
         CategoryGroupRequest,
-        CategoryGroupRequest,
     ],
 ) -> Response[CategoryGroup]:
     """
     Args:
         uuid (UUID):
-        body (CategoryGroupRequest):
         body (CategoryGroupRequest):
         body (CategoryGroupRequest):
 
@@ -111,13 +103,11 @@ def sync(
     body: Union[
         CategoryGroupRequest,
         CategoryGroupRequest,
-        CategoryGroupRequest,
     ],
 ) -> Optional[CategoryGroup]:
     """
     Args:
         uuid (UUID):
-        body (CategoryGroupRequest):
         body (CategoryGroupRequest):
         body (CategoryGroupRequest):
 
@@ -143,13 +133,11 @@ async def asyncio_detailed(
     body: Union[
         CategoryGroupRequest,
         CategoryGroupRequest,
-        CategoryGroupRequest,
     ],
 ) -> Response[CategoryGroup]:
     """
     Args:
         uuid (UUID):
-        body (CategoryGroupRequest):
         body (CategoryGroupRequest):
         body (CategoryGroupRequest):
 
@@ -178,13 +166,11 @@ async def asyncio(
     body: Union[
         CategoryGroupRequest,
         CategoryGroupRequest,
-        CategoryGroupRequest,
     ],
 ) -> Optional[CategoryGroup]:
     """
     Args:
         uuid (UUID):
-        body (CategoryGroupRequest):
         body (CategoryGroupRequest):
         body (CategoryGroupRequest):
 

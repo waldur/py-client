@@ -12,11 +12,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        RemoteEduteamsRequestRequest,
-        RemoteEduteamsRequestRequest,
-        RemoteEduteamsRequestRequest,
-    ],
+    body: RemoteEduteamsRequestRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -25,21 +21,10 @@ def _get_kwargs(
         "url": "/api/remote-eduteams/",
     }
 
-    if isinstance(body, RemoteEduteamsRequestRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, RemoteEduteamsRequestRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, RemoteEduteamsRequestRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -72,17 +57,11 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RemoteEduteamsRequestRequest,
-        RemoteEduteamsRequestRequest,
-        RemoteEduteamsRequestRequest,
-    ],
+    body: RemoteEduteamsRequestRequest,
 ) -> Response[RemoteEduteamsUUID]:
     """Allows to pull user details from remote eduTEAMS instance.
 
     Args:
-        body (RemoteEduteamsRequestRequest):
-        body (RemoteEduteamsRequestRequest):
         body (RemoteEduteamsRequestRequest):
 
     Raises:
@@ -107,17 +86,11 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RemoteEduteamsRequestRequest,
-        RemoteEduteamsRequestRequest,
-        RemoteEduteamsRequestRequest,
-    ],
+    body: RemoteEduteamsRequestRequest,
 ) -> Optional[RemoteEduteamsUUID]:
     """Allows to pull user details from remote eduTEAMS instance.
 
     Args:
-        body (RemoteEduteamsRequestRequest):
-        body (RemoteEduteamsRequestRequest):
         body (RemoteEduteamsRequestRequest):
 
     Raises:
@@ -137,17 +110,11 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RemoteEduteamsRequestRequest,
-        RemoteEduteamsRequestRequest,
-        RemoteEduteamsRequestRequest,
-    ],
+    body: RemoteEduteamsRequestRequest,
 ) -> Response[RemoteEduteamsUUID]:
     """Allows to pull user details from remote eduTEAMS instance.
 
     Args:
-        body (RemoteEduteamsRequestRequest):
-        body (RemoteEduteamsRequestRequest):
         body (RemoteEduteamsRequestRequest):
 
     Raises:
@@ -170,17 +137,11 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RemoteEduteamsRequestRequest,
-        RemoteEduteamsRequestRequest,
-        RemoteEduteamsRequestRequest,
-    ],
+    body: RemoteEduteamsRequestRequest,
 ) -> Optional[RemoteEduteamsUUID]:
     """Allows to pull user details from remote eduTEAMS instance.
 
     Args:
-        body (RemoteEduteamsRequestRequest):
-        body (RemoteEduteamsRequestRequest):
         body (RemoteEduteamsRequestRequest):
 
     Raises:

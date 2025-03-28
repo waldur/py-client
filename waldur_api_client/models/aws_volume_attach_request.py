@@ -35,24 +35,6 @@ class AwsVolumeAttachRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        instance = (None, str(self.instance).encode(), "text/plain")
-
-        device = (None, str(self.device).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "instance": instance,
-                "device": device,
-            }
-        )
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

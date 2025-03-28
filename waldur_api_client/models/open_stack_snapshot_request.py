@@ -59,46 +59,6 @@ class OpenStackSnapshotRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        metadata = (
-            self.metadata if isinstance(self.metadata, Unset) else (None, str(self.metadata).encode(), "text/plain")
-        )
-
-        kept_until: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.kept_until, Unset):
-            kept_until = UNSET
-        elif isinstance(self.kept_until, datetime.datetime):
-            kept_until = self.kept_until.isoformat().encode()
-        else:
-            kept_until = (None, str(self.kept_until).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "name": name,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-        if metadata is not UNSET:
-            field_dict["metadata"] = metadata
-        if kept_until is not UNSET:
-            field_dict["kept_until"] = kept_until
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

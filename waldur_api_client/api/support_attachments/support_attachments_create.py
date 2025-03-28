@@ -15,7 +15,6 @@ def _get_kwargs(
     body: Union[
         AttachmentRequest,
         AttachmentRequest,
-        AttachmentRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -30,11 +29,6 @@ def _get_kwargs(
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, AttachmentRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
     if isinstance(body, AttachmentRequest):
         _files_body = body.to_multipart()
 
@@ -71,12 +65,10 @@ def sync_detailed(
     body: Union[
         AttachmentRequest,
         AttachmentRequest,
-        AttachmentRequest,
     ],
 ) -> Response[Attachment]:
     """
     Args:
-        body (AttachmentRequest):
         body (AttachmentRequest):
         body (AttachmentRequest):
 
@@ -105,12 +97,10 @@ def sync(
     body: Union[
         AttachmentRequest,
         AttachmentRequest,
-        AttachmentRequest,
     ],
 ) -> Optional[Attachment]:
     """
     Args:
-        body (AttachmentRequest):
         body (AttachmentRequest):
         body (AttachmentRequest):
 
@@ -134,12 +124,10 @@ async def asyncio_detailed(
     body: Union[
         AttachmentRequest,
         AttachmentRequest,
-        AttachmentRequest,
     ],
 ) -> Response[Attachment]:
     """
     Args:
-        body (AttachmentRequest):
         body (AttachmentRequest):
         body (AttachmentRequest):
 
@@ -166,12 +154,10 @@ async def asyncio(
     body: Union[
         AttachmentRequest,
         AttachmentRequest,
-        AttachmentRequest,
     ],
 ) -> Optional[Attachment]:
     """
     Args:
-        body (AttachmentRequest):
         body (AttachmentRequest):
         body (AttachmentRequest):
 

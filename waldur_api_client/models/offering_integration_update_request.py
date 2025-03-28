@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
@@ -46,43 +45,6 @@ class OfferingIntegrationUpdateRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if secret_options is not UNSET:
-            field_dict["secret_options"] = secret_options
-        if plugin_options is not UNSET:
-            field_dict["plugin_options"] = plugin_options
-        if service_attributes is not UNSET:
-            field_dict["service_attributes"] = service_attributes
-        if backend_id is not UNSET:
-            field_dict["backend_id"] = backend_id
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        secret_options: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.secret_options, Unset):
-            secret_options = (None, json.dumps(self.secret_options.to_dict()).encode(), "application/json")
-
-        plugin_options: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.plugin_options, Unset):
-            plugin_options = (None, json.dumps(self.plugin_options.to_dict()).encode(), "application/json")
-
-        service_attributes = (
-            self.service_attributes
-            if isinstance(self.service_attributes, Unset)
-            else (None, str(self.service_attributes).encode(), "text/plain")
-        )
-
-        backend_id = (
-            self.backend_id
-            if isinstance(self.backend_id, Unset)
-            else (None, str(self.backend_id).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update({})
         if secret_options is not UNSET:
             field_dict["secret_options"] = secret_options

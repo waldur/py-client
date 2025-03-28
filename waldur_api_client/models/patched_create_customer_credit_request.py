@@ -1,5 +1,4 @@
 import datetime
-import json
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
 
@@ -70,77 +69,6 @@ class PatchedCreateCustomerCreditRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if value is not UNSET:
-            field_dict["value"] = value
-        if customer is not UNSET:
-            field_dict["customer"] = customer
-        if offerings is not UNSET:
-            field_dict["offerings"] = offerings
-        if end_date is not UNSET:
-            field_dict["end_date"] = end_date
-        if expected_consumption is not UNSET:
-            field_dict["expected_consumption"] = expected_consumption
-        if minimal_consumption_logic is not UNSET:
-            field_dict["minimal_consumption_logic"] = minimal_consumption_logic
-        if grace_coefficient is not UNSET:
-            field_dict["grace_coefficient"] = grace_coefficient
-        if apply_as_minimal_consumption is not UNSET:
-            field_dict["apply_as_minimal_consumption"] = apply_as_minimal_consumption
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        value = self.value if isinstance(self.value, Unset) else (None, str(self.value).encode(), "text/plain")
-
-        customer = (
-            self.customer if isinstance(self.customer, Unset) else (None, str(self.customer).encode(), "text/plain")
-        )
-
-        offerings: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.offerings, Unset):
-            _temp_offerings = []
-            for offerings_item_data in self.offerings:
-                offerings_item: Union[None, str]
-                offerings_item = offerings_item_data
-                _temp_offerings.append(offerings_item)
-            offerings = (None, json.dumps(_temp_offerings).encode(), "application/json")
-
-        end_date: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.end_date, Unset):
-            end_date = UNSET
-        elif isinstance(self.end_date, datetime.date):
-            end_date = self.end_date.isoformat().encode()
-        else:
-            end_date = (None, str(self.end_date).encode(), "text/plain")
-
-        expected_consumption = (
-            self.expected_consumption
-            if isinstance(self.expected_consumption, Unset)
-            else (None, str(self.expected_consumption).encode(), "text/plain")
-        )
-
-        minimal_consumption_logic: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.minimal_consumption_logic, Unset):
-            minimal_consumption_logic = (None, str(self.minimal_consumption_logic.value).encode(), "text/plain")
-
-        grace_coefficient = (
-            self.grace_coefficient
-            if isinstance(self.grace_coefficient, Unset)
-            else (None, str(self.grace_coefficient).encode(), "text/plain")
-        )
-
-        apply_as_minimal_consumption = (
-            self.apply_as_minimal_consumption
-            if isinstance(self.apply_as_minimal_consumption, Unset)
-            else (None, str(self.apply_as_minimal_consumption).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update({})
         if value is not UNSET:
             field_dict["value"] = value

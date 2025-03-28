@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -23,22 +22,6 @@ class OpenStackInstanceSecurityGroupsUpdateRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "security_groups": security_groups,
-            }
-        )
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        _temp_security_groups = self.security_groups
-        security_groups = (None, json.dumps(_temp_security_groups).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "security_groups": security_groups,

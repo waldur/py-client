@@ -73,60 +73,6 @@ class AzureSqlDatabaseRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        service_settings = (None, str(self.service_settings).encode(), "text/plain")
-
-        project = (None, str(self.project).encode(), "text/plain")
-
-        server = (None, str(self.server).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        charset: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.charset, Unset):
-            charset = UNSET
-        elif isinstance(self.charset, str):
-            charset = (None, str(self.charset).encode(), "text/plain")
-        else:
-            charset = (None, str(self.charset).encode(), "text/plain")
-
-        collation: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.collation, Unset):
-            collation = UNSET
-        elif isinstance(self.collation, str):
-            collation = (None, str(self.collation).encode(), "text/plain")
-        else:
-            collation = (None, str(self.collation).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "name": name,
-                "service_settings": service_settings,
-                "project": project,
-                "server": server,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-        if charset is not UNSET:
-            field_dict["charset"] = charset
-        if collation is not UNSET:
-            field_dict["collation"] = collation
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

@@ -35,24 +35,6 @@ class OfferingLocationUpdateRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        latitude = (None, str(self.latitude).encode(), "text/plain")
-
-        longitude = (None, str(self.longitude).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "latitude": latitude,
-                "longitude": longitude,
-            }
-        )
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

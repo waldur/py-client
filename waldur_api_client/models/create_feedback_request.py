@@ -43,28 +43,6 @@ class CreateFeedbackRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        evaluation = (None, str(self.evaluation).encode(), "text/plain")
-
-        token = (None, str(self.token).encode(), "text/plain")
-
-        comment = self.comment if isinstance(self.comment, Unset) else (None, str(self.comment).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "evaluation": evaluation,
-                "token": token,
-            }
-        )
-        if comment is not UNSET:
-            field_dict["comment"] = comment
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

@@ -44,28 +44,6 @@ class ServiceProviderSignatureRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        customer = str(self.customer)
-
-        data = (None, str(self.data).encode(), "text/plain")
-
-        dry_run = self.dry_run if isinstance(self.dry_run, Unset) else (None, str(self.dry_run).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "customer": customer,
-                "data": data,
-            }
-        )
-        if dry_run is not UNSET:
-            field_dict["dry_run"] = dry_run
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

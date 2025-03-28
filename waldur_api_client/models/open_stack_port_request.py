@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
@@ -54,58 +53,6 @@ class OpenStackPortRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-        if fixed_ips is not UNSET:
-            field_dict["fixed_ips"] = fixed_ips
-        if mac_address is not UNSET:
-            field_dict["mac_address"] = mac_address
-        if network is not UNSET:
-            field_dict["network"] = network
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        fixed_ips: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.fixed_ips, Unset):
-            _temp_fixed_ips = []
-            for fixed_ips_item_data in self.fixed_ips:
-                fixed_ips_item = fixed_ips_item_data.to_dict()
-                _temp_fixed_ips.append(fixed_ips_item)
-            fixed_ips = (None, json.dumps(_temp_fixed_ips).encode(), "application/json")
-
-        mac_address = (
-            self.mac_address
-            if isinstance(self.mac_address, Unset)
-            else (None, str(self.mac_address).encode(), "text/plain")
-        )
-
-        network: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.network, Unset):
-            network = UNSET
-        elif isinstance(self.network, str):
-            network = (None, str(self.network).encode(), "text/plain")
-        else:
-            network = (None, str(self.network).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "name": name,

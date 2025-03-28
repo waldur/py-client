@@ -11,11 +11,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        ConfirmEmailRequestRequest,
-        ConfirmEmailRequestRequest,
-        ConfirmEmailRequestRequest,
-    ],
+    body: ConfirmEmailRequestRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -24,21 +20,10 @@ def _get_kwargs(
         "url": "/api/users/confirm_email/",
     }
 
-    if isinstance(body, ConfirmEmailRequestRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, ConfirmEmailRequestRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, ConfirmEmailRequestRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -65,17 +50,11 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ConfirmEmailRequestRequest,
-        ConfirmEmailRequestRequest,
-        ConfirmEmailRequestRequest,
-    ],
+    body: ConfirmEmailRequestRequest,
 ) -> Response[Any]:
     """Confirm email update using code
 
     Args:
-        body (ConfirmEmailRequestRequest):
-        body (ConfirmEmailRequestRequest):
         body (ConfirmEmailRequestRequest):
 
     Raises:
@@ -100,17 +79,11 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ConfirmEmailRequestRequest,
-        ConfirmEmailRequestRequest,
-        ConfirmEmailRequestRequest,
-    ],
+    body: ConfirmEmailRequestRequest,
 ) -> Response[Any]:
     """Confirm email update using code
 
     Args:
-        body (ConfirmEmailRequestRequest):
-        body (ConfirmEmailRequestRequest):
         body (ConfirmEmailRequestRequest):
 
     Raises:

@@ -57,41 +57,6 @@ class PatchedAdminAnnouncementRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        active_from: Union[Unset, bytes] = UNSET
-        if not isinstance(self.active_from, Unset):
-            active_from = self.active_from.isoformat().encode()
-
-        active_to: Union[Unset, bytes] = UNSET
-        if not isinstance(self.active_to, Unset):
-            active_to = self.active_to.isoformat().encode()
-
-        type_: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.type_, Unset):
-            type_ = (None, str(self.type_.value).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if description is not UNSET:
-            field_dict["description"] = description
-        if active_from is not UNSET:
-            field_dict["active_from"] = active_from
-        if active_to is not UNSET:
-            field_dict["active_to"] = active_to
-        if type_ is not UNSET:
-            field_dict["type"] = type_
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

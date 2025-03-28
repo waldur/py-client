@@ -14,11 +14,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        OfferingUserRoleRequest,
-        OfferingUserRoleRequest,
-        OfferingUserRoleRequest,
-    ],
+    body: OfferingUserRoleRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/marketplace-offering-user-roles/{uuid}/",
     }
 
-    if isinstance(body, OfferingUserRoleRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, OfferingUserRoleRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, OfferingUserRoleRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -75,17 +60,11 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OfferingUserRoleRequest,
-        OfferingUserRoleRequest,
-        OfferingUserRoleRequest,
-    ],
+    body: OfferingUserRoleRequest,
 ) -> Response[OfferingUserRole]:
     """
     Args:
         uuid (UUID):
-        body (OfferingUserRoleRequest):
-        body (OfferingUserRoleRequest):
         body (OfferingUserRoleRequest):
 
     Raises:
@@ -112,17 +91,11 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OfferingUserRoleRequest,
-        OfferingUserRoleRequest,
-        OfferingUserRoleRequest,
-    ],
+    body: OfferingUserRoleRequest,
 ) -> Optional[OfferingUserRole]:
     """
     Args:
         uuid (UUID):
-        body (OfferingUserRoleRequest):
-        body (OfferingUserRoleRequest):
         body (OfferingUserRoleRequest):
 
     Raises:
@@ -144,17 +117,11 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OfferingUserRoleRequest,
-        OfferingUserRoleRequest,
-        OfferingUserRoleRequest,
-    ],
+    body: OfferingUserRoleRequest,
 ) -> Response[OfferingUserRole]:
     """
     Args:
         uuid (UUID):
-        body (OfferingUserRoleRequest):
-        body (OfferingUserRoleRequest):
         body (OfferingUserRoleRequest):
 
     Raises:
@@ -179,17 +146,11 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OfferingUserRoleRequest,
-        OfferingUserRoleRequest,
-        OfferingUserRoleRequest,
-    ],
+    body: OfferingUserRoleRequest,
 ) -> Optional[OfferingUserRole]:
     """
     Args:
         uuid (UUID):
-        body (OfferingUserRoleRequest):
-        body (OfferingUserRoleRequest):
         body (OfferingUserRoleRequest):
 
     Raises:

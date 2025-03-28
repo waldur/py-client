@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
@@ -47,45 +46,6 @@ class PatchedCategoryComponentsRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if type_ is not UNSET:
-            field_dict["type"] = type_
-        if name is not UNSET:
-            field_dict["name"] = name
-        if description is not UNSET:
-            field_dict["description"] = description
-        if measured_unit is not UNSET:
-            field_dict["measured_unit"] = measured_unit
-        if category is not UNSET:
-            field_dict["category"] = category
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        type_ = self.type_ if isinstance(self.type_, Unset) else (None, str(self.type_).encode(), "text/plain")
-
-        name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        measured_unit = (
-            self.measured_unit
-            if isinstance(self.measured_unit, Unset)
-            else (None, str(self.measured_unit).encode(), "text/plain")
-        )
-
-        category: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.category, Unset):
-            category = (None, json.dumps(self.category.to_dict()).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update({})
         if type_ is not UNSET:
             field_dict["type"] = type_

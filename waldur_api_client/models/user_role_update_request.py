@@ -52,35 +52,6 @@ class UserRoleUpdateRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        role = (None, str(self.role).encode(), "text/plain")
-
-        user = str(self.user)
-
-        expiration_time: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.expiration_time, Unset):
-            expiration_time = UNSET
-        elif isinstance(self.expiration_time, datetime.datetime):
-            expiration_time = self.expiration_time.isoformat().encode()
-        else:
-            expiration_time = (None, str(self.expiration_time).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "role": role,
-                "user": user,
-            }
-        )
-        if expiration_time is not UNSET:
-            field_dict["expiration_time"] = expiration_time
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

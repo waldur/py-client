@@ -57,41 +57,6 @@ class PatchedCustomerEstimatedCostPolicyRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        scope = self.scope if isinstance(self.scope, Unset) else (None, str(self.scope).encode(), "text/plain")
-
-        actions = self.actions if isinstance(self.actions, Unset) else (None, str(self.actions).encode(), "text/plain")
-
-        options = self.options if isinstance(self.options, Unset) else (None, str(self.options).encode(), "text/plain")
-
-        limit_cost = (
-            self.limit_cost
-            if isinstance(self.limit_cost, Unset)
-            else (None, str(self.limit_cost).encode(), "text/plain")
-        )
-
-        period: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.period, Unset):
-            period = (None, str(self.period.value).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if scope is not UNSET:
-            field_dict["scope"] = scope
-        if actions is not UNSET:
-            field_dict["actions"] = actions
-        if options is not UNSET:
-            field_dict["options"] = options
-        if limit_cost is not UNSET:
-            field_dict["limit_cost"] = limit_cost
-        if period is not UNSET:
-            field_dict["period"] = period
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

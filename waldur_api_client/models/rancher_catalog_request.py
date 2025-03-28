@@ -53,38 +53,6 @@ class RancherCatalogRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        catalog_url = (None, str(self.catalog_url).encode(), "text/plain")
-
-        branch = (None, str(self.branch).encode(), "text/plain")
-
-        scope = (None, str(self.scope).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "name": name,
-                "catalog_url": catalog_url,
-                "branch": branch,
-                "scope": scope,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

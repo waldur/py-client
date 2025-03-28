@@ -42,39 +42,6 @@ class ReviewSubmitRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        summary_score = (
-            self.summary_score
-            if isinstance(self.summary_score, Unset)
-            else (None, str(self.summary_score).encode(), "text/plain")
-        )
-
-        summary_public_comment = (
-            self.summary_public_comment
-            if isinstance(self.summary_public_comment, Unset)
-            else (None, str(self.summary_public_comment).encode(), "text/plain")
-        )
-
-        summary_private_comment = (
-            self.summary_private_comment
-            if isinstance(self.summary_private_comment, Unset)
-            else (None, str(self.summary_private_comment).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if summary_score is not UNSET:
-            field_dict["summary_score"] = summary_score
-        if summary_public_comment is not UNSET:
-            field_dict["summary_public_comment"] = summary_public_comment
-        if summary_private_comment is not UNSET:
-            field_dict["summary_private_comment"] = summary_private_comment
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

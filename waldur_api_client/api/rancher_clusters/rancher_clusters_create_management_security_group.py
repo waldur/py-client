@@ -14,11 +14,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        RancherClusterRequest,
-        RancherClusterRequest,
-        RancherClusterRequest,
-    ],
+    body: RancherClusterRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/rancher-clusters/{uuid}/create_management_security_group/",
     }
 
-    if isinstance(body, RancherClusterRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, RancherClusterRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, RancherClusterRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -75,17 +60,11 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RancherClusterRequest,
-        RancherClusterRequest,
-        RancherClusterRequest,
-    ],
+    body: RancherClusterRequest,
 ) -> Response[RancherCluster]:
     """
     Args:
         uuid (UUID):
-        body (RancherClusterRequest):
-        body (RancherClusterRequest):
         body (RancherClusterRequest):
 
     Raises:
@@ -112,17 +91,11 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RancherClusterRequest,
-        RancherClusterRequest,
-        RancherClusterRequest,
-    ],
+    body: RancherClusterRequest,
 ) -> Optional[RancherCluster]:
     """
     Args:
         uuid (UUID):
-        body (RancherClusterRequest):
-        body (RancherClusterRequest):
         body (RancherClusterRequest):
 
     Raises:
@@ -144,17 +117,11 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RancherClusterRequest,
-        RancherClusterRequest,
-        RancherClusterRequest,
-    ],
+    body: RancherClusterRequest,
 ) -> Response[RancherCluster]:
     """
     Args:
         uuid (UUID):
-        body (RancherClusterRequest):
-        body (RancherClusterRequest):
         body (RancherClusterRequest):
 
     Raises:
@@ -179,17 +146,11 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RancherClusterRequest,
-        RancherClusterRequest,
-        RancherClusterRequest,
-    ],
+    body: RancherClusterRequest,
 ) -> Optional[RancherCluster]:
     """
     Args:
         uuid (UUID):
-        body (RancherClusterRequest):
-        body (RancherClusterRequest):
         body (RancherClusterRequest):
 
     Raises:

@@ -31,21 +31,6 @@ class PullMarketplaceScriptResourceRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        resource_uuid = str(self.resource_uuid)
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "resource_uuid": resource_uuid,
-            }
-        )
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

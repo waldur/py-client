@@ -38,25 +38,6 @@ class SshKeyRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        public_key = (None, str(self.public_key).encode(), "text/plain")
-
-        name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "public_key": public_key,
-            }
-        )
-        if name is not UNSET:
-            field_dict["name"] = name
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

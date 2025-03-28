@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import Any, TypeVar
 from uuid import UUID
@@ -27,25 +26,6 @@ class CallDetachDocumentsRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "documents": documents,
-            }
-        )
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        _temp_documents = []
-        for documents_item_data in self.documents:
-            documents_item = str(documents_item_data)
-            _temp_documents.append(documents_item)
-        documents = (None, json.dumps(_temp_documents).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "documents": documents,

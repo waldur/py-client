@@ -12,11 +12,7 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    body: Union[
-        RemoteCredentialsRequest,
-        RemoteCredentialsRequest,
-        RemoteCredentialsRequest,
-    ],
+    body: RemoteCredentialsRequest,
     customer_uuid: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -39,21 +35,10 @@ def _get_kwargs(
         "params": params,
     }
 
-    if isinstance(body, RemoteCredentialsRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, RemoteCredentialsRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, RemoteCredentialsRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -91,11 +76,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RemoteCredentialsRequest,
-        RemoteCredentialsRequest,
-        RemoteCredentialsRequest,
-    ],
+    body: RemoteCredentialsRequest,
     customer_uuid: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -106,8 +87,6 @@ def sync_detailed(
         customer_uuid (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        body (RemoteCredentialsRequest):
-        body (RemoteCredentialsRequest):
         body (RemoteCredentialsRequest):
 
     Raises:
@@ -135,11 +114,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RemoteCredentialsRequest,
-        RemoteCredentialsRequest,
-        RemoteCredentialsRequest,
-    ],
+    body: RemoteCredentialsRequest,
     customer_uuid: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -150,8 +125,6 @@ def sync(
         customer_uuid (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        body (RemoteCredentialsRequest):
-        body (RemoteCredentialsRequest):
         body (RemoteCredentialsRequest):
 
     Raises:
@@ -174,11 +147,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RemoteCredentialsRequest,
-        RemoteCredentialsRequest,
-        RemoteCredentialsRequest,
-    ],
+    body: RemoteCredentialsRequest,
     customer_uuid: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -189,8 +158,6 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        body (RemoteCredentialsRequest):
-        body (RemoteCredentialsRequest):
         body (RemoteCredentialsRequest):
 
     Raises:
@@ -216,11 +183,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RemoteCredentialsRequest,
-        RemoteCredentialsRequest,
-        RemoteCredentialsRequest,
-    ],
+    body: RemoteCredentialsRequest,
     customer_uuid: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -231,8 +194,6 @@ async def asyncio(
         customer_uuid (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        body (RemoteCredentialsRequest):
-        body (RemoteCredentialsRequest):
         body (RemoteCredentialsRequest):
 
     Raises:

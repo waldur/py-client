@@ -46,30 +46,6 @@ class TemplateRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        description = (None, str(self.description).encode(), "text/plain")
-
-        issue_type: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.issue_type, Unset):
-            issue_type = (None, str(self.issue_type.value).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "name": name,
-                "description": description,
-            }
-        )
-        if issue_type is not UNSET:
-            field_dict["issue_type"] = issue_type
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

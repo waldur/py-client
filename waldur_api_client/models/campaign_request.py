@@ -1,5 +1,4 @@
 import datetime
-import json
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
 from uuid import UUID
@@ -90,88 +89,6 @@ class CampaignRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-                "start_date": start_date,
-                "end_date": end_date,
-                "discount_type": discount_type,
-                "discount": discount,
-                "service_provider": service_provider,
-                "offerings": offerings,
-            }
-        )
-        if coupon is not UNSET:
-            field_dict["coupon"] = coupon
-        if stock is not UNSET:
-            field_dict["stock"] = stock
-        if description is not UNSET:
-            field_dict["description"] = description
-        if months is not UNSET:
-            field_dict["months"] = months
-        if auto_apply is not UNSET:
-            field_dict["auto_apply"] = auto_apply
-        if required_offerings is not UNSET:
-            field_dict["required_offerings"] = required_offerings
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        start_date = self.start_date.isoformat().encode()
-
-        end_date = self.end_date.isoformat().encode()
-
-        discount_type = (None, str(self.discount_type.value).encode(), "text/plain")
-
-        discount = (None, str(self.discount).encode(), "text/plain")
-
-        service_provider = (None, str(self.service_provider).encode(), "text/plain")
-
-        _temp_offerings = []
-        for offerings_item_data in self.offerings:
-            offerings_item = str(offerings_item_data)
-            _temp_offerings.append(offerings_item)
-        offerings = (None, json.dumps(_temp_offerings).encode(), "application/json")
-
-        coupon = self.coupon if isinstance(self.coupon, Unset) else (None, str(self.coupon).encode(), "text/plain")
-
-        stock: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.stock, Unset):
-            stock = UNSET
-        elif isinstance(self.stock, int):
-            stock = (None, str(self.stock).encode(), "text/plain")
-        else:
-            stock = (None, str(self.stock).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        months = self.months if isinstance(self.months, Unset) else (None, str(self.months).encode(), "text/plain")
-
-        auto_apply = (
-            self.auto_apply
-            if isinstance(self.auto_apply, Unset)
-            else (None, str(self.auto_apply).encode(), "text/plain")
-        )
-
-        required_offerings: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.required_offerings, Unset):
-            _temp_required_offerings = []
-            for required_offerings_item_data in self.required_offerings:
-                required_offerings_item = str(required_offerings_item_data)
-                _temp_required_offerings.append(required_offerings_item)
-            required_offerings = (None, json.dumps(_temp_required_offerings).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "name": name,

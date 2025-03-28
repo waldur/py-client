@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
@@ -40,36 +39,6 @@ class OpenStackSecurityGroupRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-                "rules": rules,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        _temp_rules = []
-        for rules_item_data in self.rules:
-            rules_item = rules_item_data.to_dict()
-            _temp_rules.append(rules_item)
-        rules = (None, json.dumps(_temp_rules).encode(), "application/json")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "name": name,

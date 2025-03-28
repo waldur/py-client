@@ -39,25 +39,6 @@ class UserAgreementRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        agreement_type = (None, str(self.agreement_type.value).encode(), "text/plain")
-
-        content = self.content if isinstance(self.content, Unset) else (None, str(self.content).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "agreement_type": agreement_type,
-            }
-        )
-        if content is not UNSET:
-            field_dict["content"] = content
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

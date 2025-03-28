@@ -64,48 +64,6 @@ class CategoryColumnRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        index = (None, str(self.index).encode(), "text/plain")
-
-        title = (None, str(self.title).encode(), "text/plain")
-
-        category = (None, str(self.category).encode(), "text/plain")
-
-        attribute = (
-            self.attribute if isinstance(self.attribute, Unset) else (None, str(self.attribute).encode(), "text/plain")
-        )
-
-        widget: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.widget, Unset):
-            widget = UNSET
-        elif isinstance(self.widget, WidgetEnum):
-            widget = (None, str(self.widget.value).encode(), "text/plain")
-        elif isinstance(self.widget, BlankEnum):
-            widget = (None, str(self.widget.value).encode(), "text/plain")
-        elif isinstance(self.widget, None):
-            widget = (None, str(self.widget).encode(), "text/plain")
-        else:
-            widget = (None, str(self.widget).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "index": index,
-                "title": title,
-                "category": category,
-            }
-        )
-        if attribute is not UNSET:
-            field_dict["attribute"] = attribute
-        if widget is not UNSET:
-            field_dict["widget"] = widget
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

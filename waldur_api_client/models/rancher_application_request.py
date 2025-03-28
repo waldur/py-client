@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
@@ -83,96 +82,6 @@ class RancherApplicationRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-                "service_settings": service_settings,
-                "project": project,
-                "template": template,
-                "rancher_project": rancher_project,
-                "version": version,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-        if error_message is not UNSET:
-            field_dict["error_message"] = error_message
-        if error_traceback is not UNSET:
-            field_dict["error_traceback"] = error_traceback
-        if backend_id is not UNSET:
-            field_dict["backend_id"] = backend_id
-        if runtime_state is not UNSET:
-            field_dict["runtime_state"] = runtime_state
-        if namespace is not UNSET:
-            field_dict["namespace"] = namespace
-        if namespace_name is not UNSET:
-            field_dict["namespace_name"] = namespace_name
-        if answers is not UNSET:
-            field_dict["answers"] = answers
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        service_settings = (None, str(self.service_settings).encode(), "text/plain")
-
-        project = (None, str(self.project).encode(), "text/plain")
-
-        template = (None, str(self.template).encode(), "text/plain")
-
-        rancher_project = (None, str(self.rancher_project).encode(), "text/plain")
-
-        version = (None, str(self.version).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        error_message = (
-            self.error_message
-            if isinstance(self.error_message, Unset)
-            else (None, str(self.error_message).encode(), "text/plain")
-        )
-
-        error_traceback = (
-            self.error_traceback
-            if isinstance(self.error_traceback, Unset)
-            else (None, str(self.error_traceback).encode(), "text/plain")
-        )
-
-        backend_id = (
-            self.backend_id
-            if isinstance(self.backend_id, Unset)
-            else (None, str(self.backend_id).encode(), "text/plain")
-        )
-
-        runtime_state = (
-            self.runtime_state
-            if isinstance(self.runtime_state, Unset)
-            else (None, str(self.runtime_state).encode(), "text/plain")
-        )
-
-        namespace = (
-            self.namespace if isinstance(self.namespace, Unset) else (None, str(self.namespace).encode(), "text/plain")
-        )
-
-        namespace_name = (
-            self.namespace_name
-            if isinstance(self.namespace_name, Unset)
-            else (None, str(self.namespace_name).encode(), "text/plain")
-        )
-
-        answers: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.answers, Unset):
-            answers = (None, json.dumps(self.answers.to_dict()).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "name": name,

@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
@@ -70,71 +69,6 @@ class OrderCreateRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "offering": offering,
-                "project": project,
-            }
-        )
-        if plan is not UNSET:
-            field_dict["plan"] = plan
-        if attributes is not UNSET:
-            field_dict["attributes"] = attributes
-        if limits is not UNSET:
-            field_dict["limits"] = limits
-        if type_ is not UNSET:
-            field_dict["type"] = type_
-        if output is not UNSET:
-            field_dict["output"] = output
-        if accepting_terms_of_service is not UNSET:
-            field_dict["accepting_terms_of_service"] = accepting_terms_of_service
-        if callback_url is not UNSET:
-            field_dict["callback_url"] = callback_url
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        offering = (None, str(self.offering).encode(), "text/plain")
-
-        project = (None, str(self.project).encode(), "text/plain")
-
-        plan = self.plan if isinstance(self.plan, Unset) else (None, str(self.plan).encode(), "text/plain")
-
-        attributes = (
-            self.attributes
-            if isinstance(self.attributes, Unset)
-            else (None, str(self.attributes).encode(), "text/plain")
-        )
-
-        limits: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.limits, Unset):
-            limits = (None, json.dumps(self.limits.to_dict()).encode(), "application/json")
-
-        type_: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.type_, Unset):
-            type_ = (None, str(self.type_.value).encode(), "text/plain")
-
-        output = self.output if isinstance(self.output, Unset) else (None, str(self.output).encode(), "text/plain")
-
-        accepting_terms_of_service = (
-            self.accepting_terms_of_service
-            if isinstance(self.accepting_terms_of_service, Unset)
-            else (None, str(self.accepting_terms_of_service).encode(), "text/plain")
-        )
-
-        callback_url: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.callback_url, Unset):
-            callback_url = UNSET
-        elif isinstance(self.callback_url, str):
-            callback_url = (None, str(self.callback_url).encode(), "text/plain")
-        else:
-            callback_url = (None, str(self.callback_url).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "offering": offering,

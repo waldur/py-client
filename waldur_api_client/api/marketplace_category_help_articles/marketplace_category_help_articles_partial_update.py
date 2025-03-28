@@ -13,11 +13,7 @@ from ...types import Response
 def _get_kwargs(
     id: int,
     *,
-    body: Union[
-        PatchedCategoryHelpArticlesRequest,
-        PatchedCategoryHelpArticlesRequest,
-        PatchedCategoryHelpArticlesRequest,
-    ],
+    body: PatchedCategoryHelpArticlesRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -26,21 +22,10 @@ def _get_kwargs(
         "url": f"/api/marketplace-category-help-articles/{id}/",
     }
 
-    if isinstance(body, PatchedCategoryHelpArticlesRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, PatchedCategoryHelpArticlesRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, PatchedCategoryHelpArticlesRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -74,17 +59,11 @@ def sync_detailed(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedCategoryHelpArticlesRequest,
-        PatchedCategoryHelpArticlesRequest,
-        PatchedCategoryHelpArticlesRequest,
-    ],
+    body: PatchedCategoryHelpArticlesRequest,
 ) -> Response[CategoryHelpArticles]:
     """
     Args:
         id (int):
-        body (PatchedCategoryHelpArticlesRequest):
-        body (PatchedCategoryHelpArticlesRequest):
         body (PatchedCategoryHelpArticlesRequest):
 
     Raises:
@@ -111,17 +90,11 @@ def sync(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedCategoryHelpArticlesRequest,
-        PatchedCategoryHelpArticlesRequest,
-        PatchedCategoryHelpArticlesRequest,
-    ],
+    body: PatchedCategoryHelpArticlesRequest,
 ) -> Optional[CategoryHelpArticles]:
     """
     Args:
         id (int):
-        body (PatchedCategoryHelpArticlesRequest):
-        body (PatchedCategoryHelpArticlesRequest):
         body (PatchedCategoryHelpArticlesRequest):
 
     Raises:
@@ -143,17 +116,11 @@ async def asyncio_detailed(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedCategoryHelpArticlesRequest,
-        PatchedCategoryHelpArticlesRequest,
-        PatchedCategoryHelpArticlesRequest,
-    ],
+    body: PatchedCategoryHelpArticlesRequest,
 ) -> Response[CategoryHelpArticles]:
     """
     Args:
         id (int):
-        body (PatchedCategoryHelpArticlesRequest):
-        body (PatchedCategoryHelpArticlesRequest):
         body (PatchedCategoryHelpArticlesRequest):
 
     Raises:
@@ -178,17 +145,11 @@ async def asyncio(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedCategoryHelpArticlesRequest,
-        PatchedCategoryHelpArticlesRequest,
-        PatchedCategoryHelpArticlesRequest,
-    ],
+    body: PatchedCategoryHelpArticlesRequest,
 ) -> Optional[CategoryHelpArticles]:
     """
     Args:
         id (int):
-        body (PatchedCategoryHelpArticlesRequest):
-        body (PatchedCategoryHelpArticlesRequest):
         body (PatchedCategoryHelpArticlesRequest):
 
     Raises:

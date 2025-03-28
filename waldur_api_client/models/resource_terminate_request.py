@@ -30,23 +30,6 @@ class ResourceTerminateRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        attributes = (
-            self.attributes
-            if isinstance(self.attributes, Unset)
-            else (None, str(self.attributes).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if attributes is not UNSET:
-            field_dict["attributes"] = attributes
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

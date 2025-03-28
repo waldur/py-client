@@ -46,30 +46,6 @@ class ImportResourceRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        backend_id = (None, str(self.backend_id).encode(), "text/plain")
-
-        project = str(self.project)
-
-        plan: Union[Unset, bytes] = UNSET
-        if not isinstance(self.plan, Unset):
-            plan = str(self.plan)
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "backend_id": backend_id,
-                "project": project,
-            }
-        )
-        if plan is not UNSET:
-            field_dict["plan"] = plan
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

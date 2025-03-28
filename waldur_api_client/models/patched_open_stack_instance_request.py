@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
@@ -58,59 +57,6 @@ class PatchedOpenStackInstanceRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
-        if description is not UNSET:
-            field_dict["description"] = description
-        if system_volume_type is not UNSET:
-            field_dict["system_volume_type"] = system_volume_type
-        if data_volume_type is not UNSET:
-            field_dict["data_volume_type"] = data_volume_type
-        if data_volumes is not UNSET:
-            field_dict["data_volumes"] = data_volumes
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        system_volume_type: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.system_volume_type, Unset):
-            system_volume_type = UNSET
-        elif isinstance(self.system_volume_type, str):
-            system_volume_type = (None, str(self.system_volume_type).encode(), "text/plain")
-        else:
-            system_volume_type = (None, str(self.system_volume_type).encode(), "text/plain")
-
-        data_volume_type: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.data_volume_type, Unset):
-            data_volume_type = UNSET
-        elif isinstance(self.data_volume_type, str):
-            data_volume_type = (None, str(self.data_volume_type).encode(), "text/plain")
-        else:
-            data_volume_type = (None, str(self.data_volume_type).encode(), "text/plain")
-
-        data_volumes: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.data_volumes, Unset):
-            _temp_data_volumes = []
-            for data_volumes_item_data in self.data_volumes:
-                data_volumes_item = data_volumes_item_data.to_dict()
-                _temp_data_volumes.append(data_volumes_item)
-            data_volumes = (None, json.dumps(_temp_data_volumes).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update({})
         if name is not UNSET:
             field_dict["name"] = name

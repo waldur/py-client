@@ -14,11 +14,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        MoveProjectRequest,
-        MoveProjectRequest,
-        MoveProjectRequest,
-    ],
+    body: MoveProjectRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/projects/{uuid}/move_project/",
     }
 
-    if isinstance(body, MoveProjectRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, MoveProjectRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, MoveProjectRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -71,17 +56,11 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        MoveProjectRequest,
-        MoveProjectRequest,
-        MoveProjectRequest,
-    ],
+    body: MoveProjectRequest,
 ) -> Response[Project]:
     """
     Args:
         uuid (UUID):
-        body (MoveProjectRequest):
-        body (MoveProjectRequest):
         body (MoveProjectRequest):
 
     Raises:
@@ -108,17 +87,11 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        MoveProjectRequest,
-        MoveProjectRequest,
-        MoveProjectRequest,
-    ],
+    body: MoveProjectRequest,
 ) -> Optional[Project]:
     """
     Args:
         uuid (UUID):
-        body (MoveProjectRequest):
-        body (MoveProjectRequest):
         body (MoveProjectRequest):
 
     Raises:
@@ -140,17 +113,11 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        MoveProjectRequest,
-        MoveProjectRequest,
-        MoveProjectRequest,
-    ],
+    body: MoveProjectRequest,
 ) -> Response[Project]:
     """
     Args:
         uuid (UUID):
-        body (MoveProjectRequest):
-        body (MoveProjectRequest):
         body (MoveProjectRequest):
 
     Raises:
@@ -175,17 +142,11 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        MoveProjectRequest,
-        MoveProjectRequest,
-        MoveProjectRequest,
-    ],
+    body: MoveProjectRequest,
 ) -> Optional[Project]:
     """
     Args:
         uuid (UUID):
-        body (MoveProjectRequest):
-        body (MoveProjectRequest):
         body (MoveProjectRequest):
 
     Raises:

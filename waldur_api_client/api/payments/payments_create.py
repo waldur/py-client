@@ -15,7 +15,6 @@ def _get_kwargs(
     body: Union[
         PaymentRequest,
         PaymentRequest,
-        PaymentRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -30,11 +29,6 @@ def _get_kwargs(
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, PaymentRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
     if isinstance(body, PaymentRequest):
         _files_body = body.to_multipart()
 
@@ -71,12 +65,10 @@ def sync_detailed(
     body: Union[
         PaymentRequest,
         PaymentRequest,
-        PaymentRequest,
     ],
 ) -> Response[Payment]:
     """
     Args:
-        body (PaymentRequest):
         body (PaymentRequest):
         body (PaymentRequest):
 
@@ -105,12 +97,10 @@ def sync(
     body: Union[
         PaymentRequest,
         PaymentRequest,
-        PaymentRequest,
     ],
 ) -> Optional[Payment]:
     """
     Args:
-        body (PaymentRequest):
         body (PaymentRequest):
         body (PaymentRequest):
 
@@ -134,12 +124,10 @@ async def asyncio_detailed(
     body: Union[
         PaymentRequest,
         PaymentRequest,
-        PaymentRequest,
     ],
 ) -> Response[Payment]:
     """
     Args:
-        body (PaymentRequest):
         body (PaymentRequest):
         body (PaymentRequest):
 
@@ -166,12 +154,10 @@ async def asyncio(
     body: Union[
         PaymentRequest,
         PaymentRequest,
-        PaymentRequest,
     ],
 ) -> Optional[Payment]:
     """
     Args:
-        body (PaymentRequest):
         body (PaymentRequest):
         body (PaymentRequest):
 

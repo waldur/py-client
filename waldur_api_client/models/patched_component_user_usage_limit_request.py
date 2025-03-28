@@ -51,35 +51,6 @@ class PatchedComponentUserUsageLimitRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        resource = (
-            self.resource if isinstance(self.resource, Unset) else (None, str(self.resource).encode(), "text/plain")
-        )
-
-        component: Union[Unset, bytes] = UNSET
-        if not isinstance(self.component, Unset):
-            component = str(self.component)
-
-        user = self.user if isinstance(self.user, Unset) else (None, str(self.user).encode(), "text/plain")
-
-        limit = self.limit if isinstance(self.limit, Unset) else (None, str(self.limit).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if resource is not UNSET:
-            field_dict["resource"] = resource
-        if component is not UNSET:
-            field_dict["component"] = component
-        if user is not UNSET:
-            field_dict["user"] = user
-        if limit is not UNSET:
-            field_dict["limit"] = limit
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

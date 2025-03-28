@@ -14,11 +14,7 @@ def _get_kwargs(
     uuid: str,
     obj_uuid: str,
     *,
-    body: Union[
-        ProtectedCallRequest,
-        ProtectedCallRequest,
-        ProtectedCallRequest,
-    ],
+    body: ProtectedCallRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/close/",
     }
 
-    if isinstance(body, ProtectedCallRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, ProtectedCallRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, ProtectedCallRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -72,18 +57,12 @@ def sync_detailed(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProtectedCallRequest,
-        ProtectedCallRequest,
-        ProtectedCallRequest,
-    ],
+    body: ProtectedCallRequest,
 ) -> Response[ProtectedCall]:
     """
     Args:
         uuid (str):
         obj_uuid (str):
-        body (ProtectedCallRequest):
-        body (ProtectedCallRequest):
         body (ProtectedCallRequest):
 
     Raises:
@@ -112,18 +91,12 @@ def sync(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProtectedCallRequest,
-        ProtectedCallRequest,
-        ProtectedCallRequest,
-    ],
+    body: ProtectedCallRequest,
 ) -> Optional[ProtectedCall]:
     """
     Args:
         uuid (str):
         obj_uuid (str):
-        body (ProtectedCallRequest):
-        body (ProtectedCallRequest):
         body (ProtectedCallRequest):
 
     Raises:
@@ -147,18 +120,12 @@ async def asyncio_detailed(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProtectedCallRequest,
-        ProtectedCallRequest,
-        ProtectedCallRequest,
-    ],
+    body: ProtectedCallRequest,
 ) -> Response[ProtectedCall]:
     """
     Args:
         uuid (str):
         obj_uuid (str):
-        body (ProtectedCallRequest):
-        body (ProtectedCallRequest):
         body (ProtectedCallRequest):
 
     Raises:
@@ -185,18 +152,12 @@ async def asyncio(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProtectedCallRequest,
-        ProtectedCallRequest,
-        ProtectedCallRequest,
-    ],
+    body: ProtectedCallRequest,
 ) -> Optional[ProtectedCall]:
     """
     Args:
         uuid (str):
         obj_uuid (str):
-        body (ProtectedCallRequest):
-        body (ProtectedCallRequest):
         body (ProtectedCallRequest):
 
     Raises:

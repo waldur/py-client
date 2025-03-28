@@ -39,26 +39,6 @@ class ResourceEndDateByProviderRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        end_date: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.end_date, Unset):
-            end_date = UNSET
-        elif isinstance(self.end_date, datetime.date):
-            end_date = self.end_date.isoformat().encode()
-        else:
-            end_date = (None, str(self.end_date).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if end_date is not UNSET:
-            field_dict["end_date"] = end_date
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

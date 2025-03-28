@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import Any, TypeVar
 from uuid import UUID
@@ -27,25 +26,6 @@ class DeleteAttachmentsRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "attachment_ids": attachment_ids,
-            }
-        )
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        _temp_attachment_ids = []
-        for attachment_ids_item_data in self.attachment_ids:
-            attachment_ids_item = str(attachment_ids_item_data)
-            _temp_attachment_ids.append(attachment_ids_item)
-        attachment_ids = (None, json.dumps(_temp_attachment_ids).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "attachment_ids": attachment_ids,

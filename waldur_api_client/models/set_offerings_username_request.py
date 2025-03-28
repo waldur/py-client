@@ -36,24 +36,6 @@ class SetOfferingsUsernameRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        user_uuid = str(self.user_uuid)
-
-        username = (None, str(self.username).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "user_uuid": user_uuid,
-                "username": username,
-            }
-        )
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

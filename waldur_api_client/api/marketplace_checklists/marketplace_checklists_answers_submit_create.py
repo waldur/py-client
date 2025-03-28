@@ -14,11 +14,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     checklist_uuid: str,
     *,
-    body: Union[
-        list["AnswerSubmitRequest"],
-        list["AnswerSubmitRequest"],
-        list["AnswerSubmitRequest"],
-    ],
+    body: list["AnswerSubmitRequest"],
     on_behalf_user_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -44,27 +40,13 @@ def _get_kwargs(
         "params": params,
     }
 
-    if isinstance(body, list["AnswerSubmitRequest"]):
-        _json_body = []
-        for body_item_data in body:
-            body_item = body_item_data.to_dict()
-            _json_body.append(body_item)
+    _body = []
+    for body_item_data in body:
+        body_item = body_item_data.to_dict()
+        _body.append(body_item)
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, list["AnswerSubmitRequest"]):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, list["AnswerSubmitRequest"]):
-        _files_body = []
-        for body_item_data in body:
-            body_item = body_item_data.to_dict()
-            _files_body.append(body_item)
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -103,11 +85,7 @@ def sync_detailed(
     checklist_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        list["AnswerSubmitRequest"],
-        list["AnswerSubmitRequest"],
-        list["AnswerSubmitRequest"],
-    ],
+    body: list["AnswerSubmitRequest"],
     on_behalf_user_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -119,8 +97,6 @@ def sync_detailed(
         on_behalf_user_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        body (list['AnswerSubmitRequest']):
-        body (list['AnswerSubmitRequest']):
         body (list['AnswerSubmitRequest']):
 
     Raises:
@@ -150,11 +126,7 @@ def sync(
     checklist_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        list["AnswerSubmitRequest"],
-        list["AnswerSubmitRequest"],
-        list["AnswerSubmitRequest"],
-    ],
+    body: list["AnswerSubmitRequest"],
     on_behalf_user_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -166,8 +138,6 @@ def sync(
         on_behalf_user_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        body (list['AnswerSubmitRequest']):
-        body (list['AnswerSubmitRequest']):
         body (list['AnswerSubmitRequest']):
 
     Raises:
@@ -192,11 +162,7 @@ async def asyncio_detailed(
     checklist_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        list["AnswerSubmitRequest"],
-        list["AnswerSubmitRequest"],
-        list["AnswerSubmitRequest"],
-    ],
+    body: list["AnswerSubmitRequest"],
     on_behalf_user_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -208,8 +174,6 @@ async def asyncio_detailed(
         on_behalf_user_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        body (list['AnswerSubmitRequest']):
-        body (list['AnswerSubmitRequest']):
         body (list['AnswerSubmitRequest']):
 
     Raises:
@@ -237,11 +201,7 @@ async def asyncio(
     checklist_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        list["AnswerSubmitRequest"],
-        list["AnswerSubmitRequest"],
-        list["AnswerSubmitRequest"],
-    ],
+    body: list["AnswerSubmitRequest"],
     on_behalf_user_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -253,8 +213,6 @@ async def asyncio(
         on_behalf_user_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        body (list['AnswerSubmitRequest']):
-        body (list['AnswerSubmitRequest']):
         body (list['AnswerSubmitRequest']):
 
     Raises:

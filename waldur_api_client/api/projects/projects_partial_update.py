@@ -17,7 +17,6 @@ def _get_kwargs(
     body: Union[
         PatchedProjectRequest,
         PatchedProjectRequest,
-        PatchedProjectRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -32,11 +31,6 @@ def _get_kwargs(
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, PatchedProjectRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
     if isinstance(body, PatchedProjectRequest):
         _files_body = body.to_multipart()
 
@@ -74,13 +68,11 @@ def sync_detailed(
     body: Union[
         PatchedProjectRequest,
         PatchedProjectRequest,
-        PatchedProjectRequest,
     ],
 ) -> Response[Project]:
     """
     Args:
         uuid (UUID):
-        body (PatchedProjectRequest):
         body (PatchedProjectRequest):
         body (PatchedProjectRequest):
 
@@ -111,13 +103,11 @@ def sync(
     body: Union[
         PatchedProjectRequest,
         PatchedProjectRequest,
-        PatchedProjectRequest,
     ],
 ) -> Optional[Project]:
     """
     Args:
         uuid (UUID):
-        body (PatchedProjectRequest):
         body (PatchedProjectRequest):
         body (PatchedProjectRequest):
 
@@ -143,13 +133,11 @@ async def asyncio_detailed(
     body: Union[
         PatchedProjectRequest,
         PatchedProjectRequest,
-        PatchedProjectRequest,
     ],
 ) -> Response[Project]:
     """
     Args:
         uuid (UUID):
-        body (PatchedProjectRequest):
         body (PatchedProjectRequest):
         body (PatchedProjectRequest):
 
@@ -178,13 +166,11 @@ async def asyncio(
     body: Union[
         PatchedProjectRequest,
         PatchedProjectRequest,
-        PatchedProjectRequest,
     ],
 ) -> Optional[Project]:
     """
     Args:
         uuid (UUID):
-        body (PatchedProjectRequest):
         body (PatchedProjectRequest):
         body (PatchedProjectRequest):
 

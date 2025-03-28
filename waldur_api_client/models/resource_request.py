@@ -70,51 +70,6 @@ class ResourceRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        offering = (None, str(self.offering).encode(), "text/plain")
-
-        name = (None, str(self.name).encode(), "text/plain")
-
-        plan = self.plan if isinstance(self.plan, Unset) else (None, str(self.plan).encode(), "text/plain")
-
-        end_date: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.end_date, Unset):
-            end_date = UNSET
-        elif isinstance(self.end_date, datetime.date):
-            end_date = self.end_date.isoformat().encode()
-        else:
-            end_date = (None, str(self.end_date).encode(), "text/plain")
-
-        downscaled = (
-            self.downscaled
-            if isinstance(self.downscaled, Unset)
-            else (None, str(self.downscaled).encode(), "text/plain")
-        )
-
-        paused = self.paused if isinstance(self.paused, Unset) else (None, str(self.paused).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "offering": offering,
-                "name": name,
-            }
-        )
-        if plan is not UNSET:
-            field_dict["plan"] = plan
-        if end_date is not UNSET:
-            field_dict["end_date"] = end_date
-        if downscaled is not UNSET:
-            field_dict["downscaled"] = downscaled
-        if paused is not UNSET:
-            field_dict["paused"] = paused
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

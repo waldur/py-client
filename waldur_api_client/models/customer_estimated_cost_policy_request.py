@@ -57,37 +57,6 @@ class CustomerEstimatedCostPolicyRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        scope = (None, str(self.scope).encode(), "text/plain")
-
-        actions = (None, str(self.actions).encode(), "text/plain")
-
-        limit_cost = (None, str(self.limit_cost).encode(), "text/plain")
-
-        options = self.options if isinstance(self.options, Unset) else (None, str(self.options).encode(), "text/plain")
-
-        period: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.period, Unset):
-            period = (None, str(self.period.value).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "scope": scope,
-                "actions": actions,
-                "limit_cost": limit_cost,
-            }
-        )
-        if options is not UNSET:
-            field_dict["options"] = options
-        if period is not UNSET:
-            field_dict["period"] = period
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

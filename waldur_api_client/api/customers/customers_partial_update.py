@@ -17,7 +17,6 @@ def _get_kwargs(
     body: Union[
         PatchedCustomerRequest,
         PatchedCustomerRequest,
-        PatchedCustomerRequest,
     ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -32,11 +31,6 @@ def _get_kwargs(
 
         _kwargs["json"] = _json_body
         headers["Content-Type"] = "application/json"
-    if isinstance(body, PatchedCustomerRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
     if isinstance(body, PatchedCustomerRequest):
         _files_body = body.to_multipart()
 
@@ -74,13 +68,11 @@ def sync_detailed(
     body: Union[
         PatchedCustomerRequest,
         PatchedCustomerRequest,
-        PatchedCustomerRequest,
     ],
 ) -> Response[Customer]:
     """
     Args:
         uuid (UUID):
-        body (PatchedCustomerRequest):
         body (PatchedCustomerRequest):
         body (PatchedCustomerRequest):
 
@@ -111,13 +103,11 @@ def sync(
     body: Union[
         PatchedCustomerRequest,
         PatchedCustomerRequest,
-        PatchedCustomerRequest,
     ],
 ) -> Optional[Customer]:
     """
     Args:
         uuid (UUID):
-        body (PatchedCustomerRequest):
         body (PatchedCustomerRequest):
         body (PatchedCustomerRequest):
 
@@ -143,13 +133,11 @@ async def asyncio_detailed(
     body: Union[
         PatchedCustomerRequest,
         PatchedCustomerRequest,
-        PatchedCustomerRequest,
     ],
 ) -> Response[Customer]:
     """
     Args:
         uuid (UUID):
-        body (PatchedCustomerRequest):
         body (PatchedCustomerRequest):
         body (PatchedCustomerRequest):
 
@@ -178,13 +166,11 @@ async def asyncio(
     body: Union[
         PatchedCustomerRequest,
         PatchedCustomerRequest,
-        PatchedCustomerRequest,
     ],
 ) -> Optional[Customer]:
     """
     Args:
         uuid (UUID):
-        body (PatchedCustomerRequest):
         body (PatchedCustomerRequest):
         body (PatchedCustomerRequest):
 

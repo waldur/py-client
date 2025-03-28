@@ -30,23 +30,6 @@ class ProposalApproveRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        allocation_comment = (
-            self.allocation_comment
-            if isinstance(self.allocation_comment, Unset)
-            else (None, str(self.allocation_comment).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if allocation_comment is not UNSET:
-            field_dict["allocation_comment"] = allocation_comment
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

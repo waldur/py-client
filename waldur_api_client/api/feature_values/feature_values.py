@@ -5,19 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.feature_values_data_body import FeatureValuesDataBody
-from ...models.feature_values_files_body import FeatureValuesFilesBody
-from ...models.feature_values_json_body import FeatureValuesJsonBody
+from ...models.feature_values_body import FeatureValuesBody
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: Union[
-        FeatureValuesJsonBody,
-        FeatureValuesDataBody,
-        FeatureValuesFilesBody,
-    ],
+    body: FeatureValuesBody,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -26,21 +20,10 @@ def _get_kwargs(
         "url": "/api/feature-values/",
     }
 
-    if isinstance(body, FeatureValuesJsonBody):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, FeatureValuesDataBody):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, FeatureValuesFilesBody):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -68,18 +51,12 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FeatureValuesJsonBody,
-        FeatureValuesDataBody,
-        FeatureValuesFilesBody,
-    ],
+    body: FeatureValuesBody,
 ) -> Response[str]:
     """Override feature values
 
     Args:
-        body (FeatureValuesJsonBody):
-        body (FeatureValuesDataBody):
-        body (FeatureValuesFilesBody):
+        body (FeatureValuesBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -103,18 +80,12 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FeatureValuesJsonBody,
-        FeatureValuesDataBody,
-        FeatureValuesFilesBody,
-    ],
+    body: FeatureValuesBody,
 ) -> Optional[str]:
     """Override feature values
 
     Args:
-        body (FeatureValuesJsonBody):
-        body (FeatureValuesDataBody):
-        body (FeatureValuesFilesBody):
+        body (FeatureValuesBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -133,18 +104,12 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FeatureValuesJsonBody,
-        FeatureValuesDataBody,
-        FeatureValuesFilesBody,
-    ],
+    body: FeatureValuesBody,
 ) -> Response[str]:
     """Override feature values
 
     Args:
-        body (FeatureValuesJsonBody):
-        body (FeatureValuesDataBody):
-        body (FeatureValuesFilesBody):
+        body (FeatureValuesBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -166,18 +131,12 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FeatureValuesJsonBody,
-        FeatureValuesDataBody,
-        FeatureValuesFilesBody,
-    ],
+    body: FeatureValuesBody,
 ) -> Optional[str]:
     """Override feature values
 
     Args:
-        body (FeatureValuesJsonBody):
-        body (FeatureValuesDataBody):
-        body (FeatureValuesFilesBody):
+        body (FeatureValuesBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

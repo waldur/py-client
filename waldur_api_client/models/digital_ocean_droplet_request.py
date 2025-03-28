@@ -75,58 +75,6 @@ class DigitalOceanDropletRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        service_settings = (None, str(self.service_settings).encode(), "text/plain")
-
-        project = (None, str(self.project).encode(), "text/plain")
-
-        region = (None, str(self.region).encode(), "text/plain")
-
-        image = (None, str(self.image).encode(), "text/plain")
-
-        size = (None, str(self.size).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        ssh_public_key = (
-            self.ssh_public_key
-            if isinstance(self.ssh_public_key, Unset)
-            else (None, str(self.ssh_public_key).encode(), "text/plain")
-        )
-
-        user_data = (
-            self.user_data if isinstance(self.user_data, Unset) else (None, str(self.user_data).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "name": name,
-                "service_settings": service_settings,
-                "project": project,
-                "region": region,
-                "image": image,
-                "size": size,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-        if ssh_public_key is not UNSET:
-            field_dict["ssh_public_key"] = ssh_public_key
-        if user_data is not UNSET:
-            field_dict["user_data"] = user_data
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

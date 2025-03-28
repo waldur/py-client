@@ -11,11 +11,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        FinancialReportEmailRequest,
-        FinancialReportEmailRequest,
-        FinancialReportEmailRequest,
-    ],
+    body: FinancialReportEmailRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -24,21 +20,10 @@ def _get_kwargs(
         "url": "/api/invoice/send-financial-report-by-mail/",
     }
 
-    if isinstance(body, FinancialReportEmailRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, FinancialReportEmailRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, FinancialReportEmailRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -65,16 +50,10 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FinancialReportEmailRequest,
-        FinancialReportEmailRequest,
-        FinancialReportEmailRequest,
-    ],
+    body: FinancialReportEmailRequest,
 ) -> Response[Any]:
     """
     Args:
-        body (FinancialReportEmailRequest):
-        body (FinancialReportEmailRequest):
         body (FinancialReportEmailRequest):
 
     Raises:
@@ -99,16 +78,10 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FinancialReportEmailRequest,
-        FinancialReportEmailRequest,
-        FinancialReportEmailRequest,
-    ],
+    body: FinancialReportEmailRequest,
 ) -> Response[Any]:
     """
     Args:
-        body (FinancialReportEmailRequest):
-        body (FinancialReportEmailRequest):
         body (FinancialReportEmailRequest):
 
     Raises:

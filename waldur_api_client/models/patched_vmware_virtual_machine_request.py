@@ -48,39 +48,6 @@ class PatchedVmwareVirtualMachineRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        cores = self.cores if isinstance(self.cores, Unset) else (None, str(self.cores).encode(), "text/plain")
-
-        cores_per_socket = (
-            self.cores_per_socket
-            if isinstance(self.cores_per_socket, Unset)
-            else (None, str(self.cores_per_socket).encode(), "text/plain")
-        )
-
-        ram = self.ram if isinstance(self.ram, Unset) else (None, str(self.ram).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if description is not UNSET:
-            field_dict["description"] = description
-        if cores is not UNSET:
-            field_dict["cores"] = cores
-        if cores_per_socket is not UNSET:
-            field_dict["cores_per_socket"] = cores_per_socket
-        if ram is not UNSET:
-            field_dict["ram"] = ram
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

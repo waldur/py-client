@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
@@ -31,21 +30,6 @@ class PatchedMigrationDetailsRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if mappings is not UNSET:
-            field_dict["mappings"] = mappings
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        mappings: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.mappings, Unset):
-            mappings = (None, json.dumps(self.mappings.to_dict()).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update({})
         if mappings is not UNSET:
             field_dict["mappings"] = mappings

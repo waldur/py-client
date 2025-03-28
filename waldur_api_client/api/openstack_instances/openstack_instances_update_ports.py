@@ -13,11 +13,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        OpenStackInstancePortsUpdateRequest,
-        OpenStackInstancePortsUpdateRequest,
-        OpenStackInstancePortsUpdateRequest,
-    ],
+    body: OpenStackInstancePortsUpdateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -26,21 +22,10 @@ def _get_kwargs(
         "url": f"/api/openstack-instances/{uuid}/update_ports/",
     }
 
-    if isinstance(body, OpenStackInstancePortsUpdateRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, OpenStackInstancePortsUpdateRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, OpenStackInstancePortsUpdateRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -68,18 +53,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackInstancePortsUpdateRequest,
-        OpenStackInstancePortsUpdateRequest,
-        OpenStackInstancePortsUpdateRequest,
-    ],
+    body: OpenStackInstancePortsUpdateRequest,
 ) -> Response[Any]:
     """Update ports of the instance
 
     Args:
         uuid (UUID):
-        body (OpenStackInstancePortsUpdateRequest):
-        body (OpenStackInstancePortsUpdateRequest):
         body (OpenStackInstancePortsUpdateRequest):
 
     Raises:
@@ -106,18 +85,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        OpenStackInstancePortsUpdateRequest,
-        OpenStackInstancePortsUpdateRequest,
-        OpenStackInstancePortsUpdateRequest,
-    ],
+    body: OpenStackInstancePortsUpdateRequest,
 ) -> Response[Any]:
     """Update ports of the instance
 
     Args:
         uuid (UUID):
-        body (OpenStackInstancePortsUpdateRequest):
-        body (OpenStackInstancePortsUpdateRequest):
         body (OpenStackInstancePortsUpdateRequest):
 
     Raises:

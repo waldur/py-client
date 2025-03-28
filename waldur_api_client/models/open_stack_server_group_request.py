@@ -52,40 +52,6 @@ class OpenStackServerGroupRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        policy: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.policy, Unset):
-            policy = UNSET
-        elif isinstance(self.policy, PolicyEnum):
-            policy = (None, str(self.policy.value).encode(), "text/plain")
-        else:
-            policy = (None, str(self.policy.value).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "name": name,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-        if policy is not UNSET:
-            field_dict["policy"] = policy
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

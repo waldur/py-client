@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
 
@@ -51,52 +50,6 @@ class RobotAccountRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "type": type_,
-                "resource": resource,
-            }
-        )
-        if username is not UNSET:
-            field_dict["username"] = username
-        if users is not UNSET:
-            field_dict["users"] = users
-        if keys is not UNSET:
-            field_dict["keys"] = keys
-        if responsible_user is not UNSET:
-            field_dict["responsible_user"] = responsible_user
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        type_ = (None, str(self.type_).encode(), "text/plain")
-
-        resource = (None, str(self.resource).encode(), "text/plain")
-
-        username = (
-            self.username if isinstance(self.username, Unset) else (None, str(self.username).encode(), "text/plain")
-        )
-
-        users: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.users, Unset):
-            _temp_users = self.users
-            users = (None, json.dumps(_temp_users).encode(), "application/json")
-
-        keys = self.keys if isinstance(self.keys, Unset) else (None, str(self.keys).encode(), "text/plain")
-
-        responsible_user: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.responsible_user, Unset):
-            responsible_user = UNSET
-        elif isinstance(self.responsible_user, str):
-            responsible_user = (None, str(self.responsible_user).encode(), "text/plain")
-        else:
-            responsible_user = (None, str(self.responsible_user).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "type": type_,

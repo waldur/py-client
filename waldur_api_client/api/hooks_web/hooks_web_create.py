@@ -12,11 +12,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        WebHookRequest,
-        WebHookRequest,
-        WebHookRequest,
-    ],
+    body: WebHookRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -25,21 +21,10 @@ def _get_kwargs(
         "url": "/api/hooks-web/",
     }
 
-    if isinstance(body, WebHookRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, WebHookRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, WebHookRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -68,11 +53,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        WebHookRequest,
-        WebHookRequest,
-        WebHookRequest,
-    ],
+    body: WebHookRequest,
 ) -> Response[WebHook]:
     r"""When hook is activated, POST request is issued against destination URL with the following data:
 
@@ -99,8 +80,6 @@ def sync_detailed(
     Note that context depends on event type.
 
     Args:
-        body (WebHookRequest):
-        body (WebHookRequest):
         body (WebHookRequest):
 
     Raises:
@@ -125,11 +104,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        WebHookRequest,
-        WebHookRequest,
-        WebHookRequest,
-    ],
+    body: WebHookRequest,
 ) -> Optional[WebHook]:
     r"""When hook is activated, POST request is issued against destination URL with the following data:
 
@@ -157,8 +132,6 @@ def sync(
 
     Args:
         body (WebHookRequest):
-        body (WebHookRequest):
-        body (WebHookRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -177,11 +150,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        WebHookRequest,
-        WebHookRequest,
-        WebHookRequest,
-    ],
+    body: WebHookRequest,
 ) -> Response[WebHook]:
     r"""When hook is activated, POST request is issued against destination URL with the following data:
 
@@ -209,8 +178,6 @@ async def asyncio_detailed(
 
     Args:
         body (WebHookRequest):
-        body (WebHookRequest):
-        body (WebHookRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -232,11 +199,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        WebHookRequest,
-        WebHookRequest,
-        WebHookRequest,
-    ],
+    body: WebHookRequest,
 ) -> Optional[WebHook]:
     r"""When hook is activated, POST request is issued against destination URL with the following data:
 
@@ -263,8 +226,6 @@ async def asyncio(
     Note that context depends on event type.
 
     Args:
-        body (WebHookRequest):
-        body (WebHookRequest):
         body (WebHookRequest):
 
     Raises:

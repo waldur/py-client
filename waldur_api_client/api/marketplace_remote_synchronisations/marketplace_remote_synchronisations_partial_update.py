@@ -14,11 +14,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        PatchedRemoteSynchronisationRequest,
-        PatchedRemoteSynchronisationRequest,
-        PatchedRemoteSynchronisationRequest,
-    ],
+    body: PatchedRemoteSynchronisationRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/marketplace-remote-synchronisations/{uuid}/",
     }
 
-    if isinstance(body, PatchedRemoteSynchronisationRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, PatchedRemoteSynchronisationRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, PatchedRemoteSynchronisationRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -75,17 +60,11 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedRemoteSynchronisationRequest,
-        PatchedRemoteSynchronisationRequest,
-        PatchedRemoteSynchronisationRequest,
-    ],
+    body: PatchedRemoteSynchronisationRequest,
 ) -> Response[RemoteSynchronisation]:
     """
     Args:
         uuid (UUID):
-        body (PatchedRemoteSynchronisationRequest):
-        body (PatchedRemoteSynchronisationRequest):
         body (PatchedRemoteSynchronisationRequest):
 
     Raises:
@@ -112,17 +91,11 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedRemoteSynchronisationRequest,
-        PatchedRemoteSynchronisationRequest,
-        PatchedRemoteSynchronisationRequest,
-    ],
+    body: PatchedRemoteSynchronisationRequest,
 ) -> Optional[RemoteSynchronisation]:
     """
     Args:
         uuid (UUID):
-        body (PatchedRemoteSynchronisationRequest):
-        body (PatchedRemoteSynchronisationRequest):
         body (PatchedRemoteSynchronisationRequest):
 
     Raises:
@@ -144,17 +117,11 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedRemoteSynchronisationRequest,
-        PatchedRemoteSynchronisationRequest,
-        PatchedRemoteSynchronisationRequest,
-    ],
+    body: PatchedRemoteSynchronisationRequest,
 ) -> Response[RemoteSynchronisation]:
     """
     Args:
         uuid (UUID):
-        body (PatchedRemoteSynchronisationRequest):
-        body (PatchedRemoteSynchronisationRequest):
         body (PatchedRemoteSynchronisationRequest):
 
     Raises:
@@ -179,17 +146,11 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedRemoteSynchronisationRequest,
-        PatchedRemoteSynchronisationRequest,
-        PatchedRemoteSynchronisationRequest,
-    ],
+    body: PatchedRemoteSynchronisationRequest,
 ) -> Optional[RemoteSynchronisation]:
     """
     Args:
         uuid (UUID):
-        body (PatchedRemoteSynchronisationRequest):
-        body (PatchedRemoteSynchronisationRequest):
         body (PatchedRemoteSynchronisationRequest):
 
     Raises:

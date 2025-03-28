@@ -63,49 +63,6 @@ class AzureSqlServerRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        name = (None, str(self.name).encode(), "text/plain")
-
-        service_settings = (None, str(self.service_settings).encode(), "text/plain")
-
-        project = (None, str(self.project).encode(), "text/plain")
-
-        location = (None, str(self.location).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        storage_mb: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.storage_mb, Unset):
-            storage_mb = UNSET
-        elif isinstance(self.storage_mb, int):
-            storage_mb = (None, str(self.storage_mb).encode(), "text/plain")
-        else:
-            storage_mb = (None, str(self.storage_mb).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "name": name,
-                "service_settings": service_settings,
-                "project": project,
-                "location": location,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-        if storage_mb is not UNSET:
-            field_dict["storage_mb"] = storage_mb
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

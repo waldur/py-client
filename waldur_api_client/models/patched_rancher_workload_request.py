@@ -72,64 +72,6 @@ class PatchedRancherWorkloadRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
-
-        runtime_state = (
-            self.runtime_state
-            if isinstance(self.runtime_state, Unset)
-            else (None, str(self.runtime_state).encode(), "text/plain")
-        )
-
-        cluster: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.cluster, Unset):
-            cluster = UNSET
-        elif isinstance(self.cluster, str):
-            cluster = (None, str(self.cluster).encode(), "text/plain")
-        else:
-            cluster = (None, str(self.cluster).encode(), "text/plain")
-
-        project: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.project, Unset):
-            project = UNSET
-        elif isinstance(self.project, str):
-            project = (None, str(self.project).encode(), "text/plain")
-        else:
-            project = (None, str(self.project).encode(), "text/plain")
-
-        namespace: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.namespace, Unset):
-            namespace = UNSET
-        elif isinstance(self.namespace, str):
-            namespace = (None, str(self.namespace).encode(), "text/plain")
-        else:
-            namespace = (None, str(self.namespace).encode(), "text/plain")
-
-        scale = self.scale if isinstance(self.scale, Unset) else (None, str(self.scale).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
-        if runtime_state is not UNSET:
-            field_dict["runtime_state"] = runtime_state
-        if cluster is not UNSET:
-            field_dict["cluster"] = cluster
-        if project is not UNSET:
-            field_dict["project"] = project
-        if namespace is not UNSET:
-            field_dict["namespace"] = namespace
-        if scale is not UNSET:
-            field_dict["scale"] = scale
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

@@ -14,11 +14,7 @@ def _get_kwargs(
     uuid: str,
     obj_uuid: str,
     *,
-    body: Union[
-        ProtectedRoundRequest,
-        ProtectedRoundRequest,
-        ProtectedRoundRequest,
-    ],
+    body: ProtectedRoundRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -27,21 +23,10 @@ def _get_kwargs(
         "url": f"/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/",
     }
 
-    if isinstance(body, ProtectedRoundRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, ProtectedRoundRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, ProtectedRoundRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -76,18 +61,12 @@ def sync_detailed(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProtectedRoundRequest,
-        ProtectedRoundRequest,
-        ProtectedRoundRequest,
-    ],
+    body: ProtectedRoundRequest,
 ) -> Response[ProtectedRound]:
     """
     Args:
         uuid (str):
         obj_uuid (str):
-        body (ProtectedRoundRequest):
-        body (ProtectedRoundRequest):
         body (ProtectedRoundRequest):
 
     Raises:
@@ -116,18 +95,12 @@ def sync(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProtectedRoundRequest,
-        ProtectedRoundRequest,
-        ProtectedRoundRequest,
-    ],
+    body: ProtectedRoundRequest,
 ) -> Optional[ProtectedRound]:
     """
     Args:
         uuid (str):
         obj_uuid (str):
-        body (ProtectedRoundRequest):
-        body (ProtectedRoundRequest):
         body (ProtectedRoundRequest):
 
     Raises:
@@ -151,18 +124,12 @@ async def asyncio_detailed(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProtectedRoundRequest,
-        ProtectedRoundRequest,
-        ProtectedRoundRequest,
-    ],
+    body: ProtectedRoundRequest,
 ) -> Response[ProtectedRound]:
     """
     Args:
         uuid (str):
         obj_uuid (str):
-        body (ProtectedRoundRequest):
-        body (ProtectedRoundRequest):
         body (ProtectedRoundRequest):
 
     Raises:
@@ -189,18 +156,12 @@ async def asyncio(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProtectedRoundRequest,
-        ProtectedRoundRequest,
-        ProtectedRoundRequest,
-    ],
+    body: ProtectedRoundRequest,
 ) -> Optional[ProtectedRound]:
     """
     Args:
         uuid (str):
         obj_uuid (str):
-        body (ProtectedRoundRequest):
-        body (ProtectedRoundRequest):
         body (ProtectedRoundRequest):
 
     Raises:

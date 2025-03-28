@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import Any, TypeVar, cast
 
@@ -31,28 +30,6 @@ class FinancialReportEmailRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "emails": emails,
-                "year": year,
-                "month": month,
-            }
-        )
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        _temp_emails = self.emails
-        emails = (None, json.dumps(_temp_emails).encode(), "application/json")
-
-        year = (None, str(self.year).encode(), "text/plain")
-
-        month = (None, str(self.month).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "emails": emails,

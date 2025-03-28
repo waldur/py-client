@@ -56,38 +56,6 @@ class BroadcastMessageRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        subject = (None, str(self.subject).encode(), "text/plain")
-
-        body = (None, str(self.body).encode(), "text/plain")
-
-        query = (None, str(self.query).encode(), "text/plain")
-
-        send_at: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.send_at, Unset):
-            send_at = UNSET
-        elif isinstance(self.send_at, datetime.date):
-            send_at = self.send_at.isoformat().encode()
-        else:
-            send_at = (None, str(self.send_at).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "subject": subject,
-                "body": body,
-                "query": query,
-            }
-        )
-        if send_at is not UNSET:
-            field_dict["send_at"] = send_at
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

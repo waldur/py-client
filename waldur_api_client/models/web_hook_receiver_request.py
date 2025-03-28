@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
@@ -52,44 +51,6 @@ class WebHookReceiverRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "webhookEvent": webhook_event,
-                "issue": issue,
-            }
-        )
-        if comment is not UNSET:
-            field_dict["comment"] = comment
-        if changelog is not UNSET:
-            field_dict["changelog"] = changelog
-        if issue_event_type_name is not UNSET:
-            field_dict["issue_event_type_name"] = issue_event_type_name
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        webhook_event = (None, str(self.webhook_event.value).encode(), "text/plain")
-
-        issue = (None, json.dumps(self.issue.to_dict()).encode(), "application/json")
-
-        comment: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.comment, Unset):
-            comment = (None, json.dumps(self.comment.to_dict()).encode(), "application/json")
-
-        changelog: Union[Unset, tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.changelog, Unset):
-            changelog = (None, json.dumps(self.changelog.to_dict()).encode(), "application/json")
-
-        issue_event_type_name = (
-            self.issue_event_type_name
-            if isinstance(self.issue_event_type_name, Unset)
-            else (None, str(self.issue_event_type_name).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "webhookEvent": webhook_event,

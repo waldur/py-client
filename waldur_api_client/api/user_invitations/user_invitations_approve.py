@@ -11,11 +11,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        TokenRequest,
-        TokenRequest,
-        TokenRequest,
-    ],
+    body: TokenRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -24,21 +20,10 @@ def _get_kwargs(
         "url": "/api/user-invitations/approve/",
     }
 
-    if isinstance(body, TokenRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, TokenRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, TokenRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -65,18 +50,12 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        TokenRequest,
-        TokenRequest,
-        TokenRequest,
-    ],
+    body: TokenRequest,
 ) -> Response[Any]:
     """For user's convenience invitation approval is performed without authentication.
     User UUID and invitation UUID is encoded into cryptographically signed token.
 
     Args:
-        body (TokenRequest):
-        body (TokenRequest):
         body (TokenRequest):
 
     Raises:
@@ -101,18 +80,12 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        TokenRequest,
-        TokenRequest,
-        TokenRequest,
-    ],
+    body: TokenRequest,
 ) -> Response[Any]:
     """For user's convenience invitation approval is performed without authentication.
     User UUID and invitation UUID is encoded into cryptographically signed token.
 
     Args:
-        body (TokenRequest):
-        body (TokenRequest):
         body (TokenRequest):
 
     Raises:

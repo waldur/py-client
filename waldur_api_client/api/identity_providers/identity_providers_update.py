@@ -13,11 +13,7 @@ from ...types import Response
 def _get_kwargs(
     provider: str,
     *,
-    body: Union[
-        IdentityProviderRequest,
-        IdentityProviderRequest,
-        IdentityProviderRequest,
-    ],
+    body: IdentityProviderRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -26,21 +22,10 @@ def _get_kwargs(
         "url": f"/api/identity-providers/{provider}/",
     }
 
-    if isinstance(body, IdentityProviderRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, IdentityProviderRequest):
-        _data_body = body.to_dict()
-
-        _kwargs["data"] = _data_body
-        headers["Content-Type"] = "application/x-www-form-urlencoded"
-    if isinstance(body, IdentityProviderRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -74,17 +59,11 @@ def sync_detailed(
     provider: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        IdentityProviderRequest,
-        IdentityProviderRequest,
-        IdentityProviderRequest,
-    ],
+    body: IdentityProviderRequest,
 ) -> Response[IdentityProvider]:
     """
     Args:
         provider (str):
-        body (IdentityProviderRequest):
-        body (IdentityProviderRequest):
         body (IdentityProviderRequest):
 
     Raises:
@@ -111,17 +90,11 @@ def sync(
     provider: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        IdentityProviderRequest,
-        IdentityProviderRequest,
-        IdentityProviderRequest,
-    ],
+    body: IdentityProviderRequest,
 ) -> Optional[IdentityProvider]:
     """
     Args:
         provider (str):
-        body (IdentityProviderRequest):
-        body (IdentityProviderRequest):
         body (IdentityProviderRequest):
 
     Raises:
@@ -143,17 +116,11 @@ async def asyncio_detailed(
     provider: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        IdentityProviderRequest,
-        IdentityProviderRequest,
-        IdentityProviderRequest,
-    ],
+    body: IdentityProviderRequest,
 ) -> Response[IdentityProvider]:
     """
     Args:
         provider (str):
-        body (IdentityProviderRequest):
-        body (IdentityProviderRequest):
         body (IdentityProviderRequest):
 
     Raises:
@@ -178,17 +145,11 @@ async def asyncio(
     provider: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        IdentityProviderRequest,
-        IdentityProviderRequest,
-        IdentityProviderRequest,
-    ],
+    body: IdentityProviderRequest,
 ) -> Optional[IdentityProvider]:
     """
     Args:
         provider (str):
-        body (IdentityProviderRequest):
-        body (IdentityProviderRequest):
         body (IdentityProviderRequest):
 
     Raises:

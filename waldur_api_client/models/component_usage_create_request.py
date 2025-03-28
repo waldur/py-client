@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
@@ -45,37 +44,6 @@ class ComponentUsageCreateRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "usages": usages,
-            }
-        )
-        if plan_period is not UNSET:
-            field_dict["plan_period"] = plan_period
-        if resource is not UNSET:
-            field_dict["resource"] = resource
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        _temp_usages = []
-        for usages_item_data in self.usages:
-            usages_item = usages_item_data.to_dict()
-            _temp_usages.append(usages_item)
-        usages = (None, json.dumps(_temp_usages).encode(), "application/json")
-
-        plan_period: Union[Unset, bytes] = UNSET
-        if not isinstance(self.plan_period, Unset):
-            plan_period = str(self.plan_period)
-
-        resource: Union[Unset, bytes] = UNSET
-        if not isinstance(self.resource, Unset):
-            resource = str(self.resource)
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "usages": usages,

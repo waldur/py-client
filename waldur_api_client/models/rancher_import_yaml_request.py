@@ -52,43 +52,6 @@ class RancherImportYamlRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        yaml = (None, str(self.yaml).encode(), "text/plain")
-
-        default_namespace: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.default_namespace, Unset):
-            default_namespace = UNSET
-        elif isinstance(self.default_namespace, str):
-            default_namespace = (None, str(self.default_namespace).encode(), "text/plain")
-        else:
-            default_namespace = (None, str(self.default_namespace).encode(), "text/plain")
-
-        namespace: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.namespace, Unset):
-            namespace = UNSET
-        elif isinstance(self.namespace, str):
-            namespace = (None, str(self.namespace).encode(), "text/plain")
-        else:
-            namespace = (None, str(self.namespace).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "yaml": yaml,
-            }
-        )
-        if default_namespace is not UNSET:
-            field_dict["default_namespace"] = default_namespace
-        if namespace is not UNSET:
-            field_dict["namespace"] = namespace
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
