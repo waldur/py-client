@@ -1,11 +1,10 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.query import Query
 from ...models.query_request import QueryRequest
 from ...types import Response
 
@@ -30,18 +29,25 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Query]:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[Union[Any, list[Any]]]:
     if response.status_code == 200:
-        response_200 = Query.from_dict(response.json())
+        response_200 = cast(list[Any], response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = cast(Any, None)
+        return response_400
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Query]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[Any, list[Any]]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,8 +60,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: QueryRequest,
-) -> Response[Query]:
-    """
+) -> Response[Union[Any, list[Any]]]:
+    """Execute SQL query against readonly database
+
     Args:
         body (QueryRequest):
 
@@ -64,7 +71,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Query]
+        Response[Union[Any, list[Any]]]
     """
 
     kwargs = _get_kwargs(
@@ -82,8 +89,9 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: QueryRequest,
-) -> Optional[Query]:
-    """
+) -> Optional[Union[Any, list[Any]]]:
+    """Execute SQL query against readonly database
+
     Args:
         body (QueryRequest):
 
@@ -92,7 +100,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Query
+        Union[Any, list[Any]]
     """
 
     return sync_detailed(
@@ -105,8 +113,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: QueryRequest,
-) -> Response[Query]:
-    """
+) -> Response[Union[Any, list[Any]]]:
+    """Execute SQL query against readonly database
+
     Args:
         body (QueryRequest):
 
@@ -115,7 +124,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Query]
+        Response[Union[Any, list[Any]]]
     """
 
     kwargs = _get_kwargs(
@@ -131,8 +140,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: QueryRequest,
-) -> Optional[Query]:
-    """
+) -> Optional[Union[Any, list[Any]]]:
+    """Execute SQL query against readonly database
+
     Args:
         body (QueryRequest):
 
@@ -141,7 +151,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Query
+        Union[Any, list[Any]]
     """
 
     return (

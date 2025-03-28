@@ -873,7 +873,6 @@ from .public_call import PublicCall
 from .public_offering_details import PublicOfferingDetails
 from .public_offering_details_attributes import PublicOfferingDetailsAttributes
 from .pull_marketplace_script_resource_request import PullMarketplaceScriptResourceRequest
-from .query import Query
 from .query_request import QueryRequest
 from .quota import Quota
 from .quota_request import QuotaRequest
@@ -1996,7 +1995,6 @@ __all__ = (
     "PublicOfferingDetails",
     "PublicOfferingDetailsAttributes",
     "PullMarketplaceScriptResourceRequest",
-    "Query",
     "QueryRequest",
     "Quota",
     "QuotaRequest",
