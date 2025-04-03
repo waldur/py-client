@@ -44,34 +44,6 @@ class PatchedServiceProviderRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        image: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.image, Unset):
-            image = UNSET
-        elif isinstance(self.image, File):
-            image = self.image.to_tuple()
-        else:
-            image = (None, str(self.image).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if description is not UNSET:
-            field_dict["description"] = description
-        if image is not UNSET:
-            field_dict["image"] = image
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

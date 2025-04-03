@@ -13,10 +13,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        ProposalDocumentationRequest,
-        ProposalDocumentationRequest,
-    ],
+    body: ProposalDocumentationRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -25,16 +22,10 @@ def _get_kwargs(
         "url": f"/api/proposal-proposals/{uuid}/attach_document/",
     }
 
-    if isinstance(body, ProposalDocumentationRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, ProposalDocumentationRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -62,16 +53,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProposalDocumentationRequest,
-        ProposalDocumentationRequest,
-    ],
+    body: ProposalDocumentationRequest,
 ) -> Response[Any]:
     """Attach document to proposal.
 
     Args:
         uuid (UUID):
-        body (ProposalDocumentationRequest):
         body (ProposalDocumentationRequest):
 
     Raises:
@@ -98,16 +85,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        ProposalDocumentationRequest,
-        ProposalDocumentationRequest,
-    ],
+    body: ProposalDocumentationRequest,
 ) -> Response[Any]:
     """Attach document to proposal.
 
     Args:
         uuid (UUID):
-        body (ProposalDocumentationRequest):
         body (ProposalDocumentationRequest):
 
     Raises:

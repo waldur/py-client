@@ -43,27 +43,6 @@ class PaidRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        date = self.date.isoformat().encode()
-
-        proof: Union[Unset, FileJsonType] = UNSET
-        if not isinstance(self.proof, Unset):
-            proof = self.proof.to_tuple()
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "date": date,
-            }
-        )
-        if proof is not UNSET:
-            field_dict["proof"] = proof
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

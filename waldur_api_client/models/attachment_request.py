@@ -38,24 +38,6 @@ class AttachmentRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        issue = (None, str(self.issue).encode(), "text/plain")
-
-        file = self.file.to_tuple()
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update(
-            {
-                "issue": issue,
-                "file": file,
-            }
-        )
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

@@ -13,10 +13,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: Union[
-        CreateAttachmentsRequest,
-        CreateAttachmentsRequest,
-    ],
+    body: CreateAttachmentsRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -25,16 +22,10 @@ def _get_kwargs(
         "url": f"/api/support-templates/{uuid}/create_attachments/",
     }
 
-    if isinstance(body, CreateAttachmentsRequest):
-        _json_body = body.to_dict()
+    _body = body.to_dict()
 
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
-    if isinstance(body, CreateAttachmentsRequest):
-        _files_body = body.to_multipart()
-
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -64,16 +55,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        CreateAttachmentsRequest,
-        CreateAttachmentsRequest,
-    ],
+    body: CreateAttachmentsRequest,
 ) -> Response[Any]:
     """This view attaches documents to template.
 
     Args:
         uuid (UUID):
-        body (CreateAttachmentsRequest):
         body (CreateAttachmentsRequest):
 
     Raises:
@@ -100,16 +87,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        CreateAttachmentsRequest,
-        CreateAttachmentsRequest,
-    ],
+    body: CreateAttachmentsRequest,
 ) -> Response[Any]:
     """This view attaches documents to template.
 
     Args:
         uuid (UUID):
-        body (CreateAttachmentsRequest):
         body (CreateAttachmentsRequest):
 
     Raises:

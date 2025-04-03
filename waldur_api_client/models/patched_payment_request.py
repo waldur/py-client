@@ -60,40 +60,6 @@ class PatchedPaymentRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        profile = self.profile if isinstance(self.profile, Unset) else (None, str(self.profile).encode(), "text/plain")
-
-        date_of_payment: Union[Unset, bytes] = UNSET
-        if not isinstance(self.date_of_payment, Unset):
-            date_of_payment = self.date_of_payment.isoformat().encode()
-
-        sum_ = self.sum_ if isinstance(self.sum_, Unset) else (None, str(self.sum_).encode(), "text/plain")
-
-        proof: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.proof, Unset):
-            proof = UNSET
-        elif isinstance(self.proof, File):
-            proof = self.proof.to_tuple()
-        else:
-            proof = (None, str(self.proof).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if profile is not UNSET:
-            field_dict["profile"] = profile
-        if date_of_payment is not UNSET:
-            field_dict["date_of_payment"] = date_of_payment
-        if sum_ is not UNSET:
-            field_dict["sum"] = sum_
-        if proof is not UNSET:
-            field_dict["proof"] = proof
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)

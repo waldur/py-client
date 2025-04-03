@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from io import BytesIO
 from typing import Any, TypeVar
@@ -30,26 +29,6 @@ class CreateAttachmentsRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "attachments": attachments,
-            }
-        )
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        _temp_attachments = []
-        for attachments_item_data in self.attachments:
-            attachments_item = attachments_item_data.to_tuple()
-
-            _temp_attachments.append(attachments_item)
-        attachments = (None, json.dumps(_temp_attachments).encode(), "application/json")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "attachments": attachments,

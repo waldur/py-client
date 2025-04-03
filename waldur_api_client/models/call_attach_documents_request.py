@@ -1,4 +1,3 @@
-import json
 from collections.abc import Mapping
 from io import BytesIO
 from typing import Any, TypeVar, Union
@@ -34,34 +33,6 @@ class CallAttachDocumentsRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "documents": documents,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
-
-        return field_dict
-
-    def to_multipart(self) -> dict[str, Any]:
-        _temp_documents = []
-        for documents_item_data in self.documents:
-            documents_item = documents_item_data.to_tuple()
-
-            _temp_documents.append(documents_item)
-        documents = (None, json.dumps(_temp_documents).encode(), "application/json")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "documents": documents,

@@ -50,38 +50,6 @@ class PatchedCategoryGroupRequest:
 
         return field_dict
 
-    def to_multipart(self) -> dict[str, Any]:
-        title = self.title if isinstance(self.title, Unset) else (None, str(self.title).encode(), "text/plain")
-
-        description = (
-            self.description
-            if isinstance(self.description, Unset)
-            else (None, str(self.description).encode(), "text/plain")
-        )
-
-        icon: Union[Unset, tuple[None, bytes, str]]
-
-        if isinstance(self.icon, Unset):
-            icon = UNSET
-        elif isinstance(self.icon, File):
-            icon = self.icon.to_tuple()
-        else:
-            icon = (None, str(self.icon).encode(), "text/plain")
-
-        field_dict: dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
-        field_dict.update({})
-        if title is not UNSET:
-            field_dict["title"] = title
-        if description is not UNSET:
-            field_dict["description"] = description
-        if icon is not UNSET:
-            field_dict["icon"] = icon
-
-        return field_dict
-
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
