@@ -33,6 +33,7 @@ class MergedSecretOptionsRequest:
         api_url (Union[Unset, str]): API URL
         token (Union[Unset, str]): Waldur access token
         customer_uuid (Union[Unset, UUID]): Organization UUID
+        rancher_offering_uuid (Union[Unset, UUID]): UUID of Rancher offering where cluster can be created
     """
 
     heappe_cluster_password: Union[Unset, str] = UNSET
@@ -50,6 +51,7 @@ class MergedSecretOptionsRequest:
     api_url: Union[Unset, str] = UNSET
     token: Union[Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
+    rancher_offering_uuid: Union[Unset, UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -90,6 +92,10 @@ class MergedSecretOptionsRequest:
         if not isinstance(self.customer_uuid, Unset):
             customer_uuid = str(self.customer_uuid)
 
+        rancher_offering_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.rancher_offering_uuid, Unset):
+            rancher_offering_uuid = str(self.rancher_offering_uuid)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -123,6 +129,8 @@ class MergedSecretOptionsRequest:
             field_dict["token"] = token
         if customer_uuid is not UNSET:
             field_dict["customer_uuid"] = customer_uuid
+        if rancher_offering_uuid is not UNSET:
+            field_dict["rancher_offering_uuid"] = rancher_offering_uuid
 
         return field_dict
 
@@ -171,6 +179,13 @@ class MergedSecretOptionsRequest:
         else:
             customer_uuid = UUID(_customer_uuid)
 
+        _rancher_offering_uuid = d.pop("rancher_offering_uuid", UNSET)
+        rancher_offering_uuid: Union[Unset, UUID]
+        if isinstance(_rancher_offering_uuid, Unset):
+            rancher_offering_uuid = UNSET
+        else:
+            rancher_offering_uuid = UUID(_rancher_offering_uuid)
+
         merged_secret_options_request = cls(
             heappe_cluster_password=heappe_cluster_password,
             heappe_password=heappe_password,
@@ -187,6 +202,7 @@ class MergedSecretOptionsRequest:
             api_url=api_url,
             token=token,
             customer_uuid=customer_uuid,
+            rancher_offering_uuid=rancher_offering_uuid,
         )
 
         merged_secret_options_request.additional_properties = d

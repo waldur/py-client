@@ -7,15 +7,24 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.components_usage_stats import ComponentsUsageStats
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
+    *,
+    for_current_month: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    params["for_current_month"] = for_current_month
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": f"/api/projects/{uuid}/stats/",
+        "params": params,
     }
 
     return _kwargs
@@ -49,10 +58,13 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    for_current_month: Union[Unset, bool] = UNSET,
 ) -> Response[ComponentsUsageStats]:
-    """
+    """Return statistics about project resources usage
+
     Args:
         uuid (UUID):
+        for_current_month (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -64,6 +76,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        for_current_month=for_current_month,
     )
 
     response = client.get_httpx_client().request(
@@ -77,10 +90,13 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    for_current_month: Union[Unset, bool] = UNSET,
 ) -> Optional[ComponentsUsageStats]:
-    """
+    """Return statistics about project resources usage
+
     Args:
         uuid (UUID):
+        for_current_month (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -93,6 +109,7 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        for_current_month=for_current_month,
     ).parsed
 
 
@@ -100,10 +117,13 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    for_current_month: Union[Unset, bool] = UNSET,
 ) -> Response[ComponentsUsageStats]:
-    """
+    """Return statistics about project resources usage
+
     Args:
         uuid (UUID):
+        for_current_month (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -115,6 +135,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        for_current_month=for_current_month,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -126,10 +147,13 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    for_current_month: Union[Unset, bool] = UNSET,
 ) -> Optional[ComponentsUsageStats]:
-    """
+    """Return statistics about project resources usage
+
     Args:
         uuid (UUID):
+        for_current_month (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -143,5 +167,6 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            for_current_month=for_current_month,
         )
     ).parsed
