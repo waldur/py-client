@@ -33,6 +33,9 @@ class RobotAccountDetails:
         backend_id (str):
         responsible_user (BasicUser):
         fingerprints (list['Fingerprint']):
+        state (str):
+        error_message (str):
+        error_traceback (str):
         user_keys (list['SshKey']):
         resource_name (str):
         resource_uuid (UUID):
@@ -56,6 +59,9 @@ class RobotAccountDetails:
     backend_id: str
     responsible_user: "BasicUser"
     fingerprints: list["Fingerprint"]
+    state: str
+    error_message: str
+    error_traceback: str
     user_keys: list["SshKey"]
     resource_name: str
     resource_uuid: UUID
@@ -96,6 +102,12 @@ class RobotAccountDetails:
             fingerprints_item = fingerprints_item_data.to_dict()
             fingerprints.append(fingerprints_item)
 
+        state = self.state
+
+        error_message = self.error_message
+
+        error_traceback = self.error_traceback
+
         user_keys = []
         for user_keys_item_data in self.user_keys:
             user_keys_item = user_keys_item_data.to_dict()
@@ -135,6 +147,9 @@ class RobotAccountDetails:
                 "backend_id": backend_id,
                 "responsible_user": responsible_user,
                 "fingerprints": fingerprints,
+                "state": state,
+                "error_message": error_message,
+                "error_traceback": error_traceback,
                 "user_keys": user_keys,
                 "resource_name": resource_name,
                 "resource_uuid": resource_uuid,
@@ -191,6 +206,12 @@ class RobotAccountDetails:
 
             fingerprints.append(fingerprints_item)
 
+        state = d.pop("state")
+
+        error_message = d.pop("error_message")
+
+        error_traceback = d.pop("error_traceback")
+
         user_keys = []
         _user_keys = d.pop("user_keys")
         for user_keys_item_data in _user_keys:
@@ -229,6 +250,9 @@ class RobotAccountDetails:
             backend_id=backend_id,
             responsible_user=responsible_user,
             fingerprints=fingerprints,
+            state=state,
+            error_message=error_message,
+            error_traceback=error_traceback,
             user_keys=user_keys,
             resource_name=resource_name,
             resource_uuid=resource_uuid,

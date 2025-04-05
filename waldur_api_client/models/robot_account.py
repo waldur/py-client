@@ -28,6 +28,9 @@ class RobotAccount:
         resource (str):
         backend_id (str):
         fingerprints (list['Fingerprint']):
+        state (str):
+        error_message (str):
+        error_traceback (str):
         username (Union[Unset, str]):
         users (Union[Unset, list[str]]):
         keys (Union[Unset, Any]):
@@ -42,6 +45,9 @@ class RobotAccount:
     resource: str
     backend_id: str
     fingerprints: list["Fingerprint"]
+    state: str
+    error_message: str
+    error_traceback: str
     username: Union[Unset, str] = UNSET
     users: Union[Unset, list[str]] = UNSET
     keys: Union[Unset, Any] = UNSET
@@ -67,6 +73,12 @@ class RobotAccount:
         for fingerprints_item_data in self.fingerprints:
             fingerprints_item = fingerprints_item_data.to_dict()
             fingerprints.append(fingerprints_item)
+
+        state = self.state
+
+        error_message = self.error_message
+
+        error_traceback = self.error_traceback
 
         username = self.username
 
@@ -94,6 +106,9 @@ class RobotAccount:
                 "resource": resource,
                 "backend_id": backend_id,
                 "fingerprints": fingerprints,
+                "state": state,
+                "error_message": error_message,
+                "error_traceback": error_traceback,
             }
         )
         if username is not UNSET:
@@ -133,6 +148,12 @@ class RobotAccount:
 
             fingerprints.append(fingerprints_item)
 
+        state = d.pop("state")
+
+        error_message = d.pop("error_message")
+
+        error_traceback = d.pop("error_traceback")
+
         username = d.pop("username", UNSET)
 
         users = cast(list[str], d.pop("users", UNSET))
@@ -157,6 +178,9 @@ class RobotAccount:
             resource=resource,
             backend_id=backend_id,
             fingerprints=fingerprints,
+            state=state,
+            error_message=error_message,
+            error_traceback=error_traceback,
             username=username,
             users=users,
             keys=keys,

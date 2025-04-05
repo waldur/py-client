@@ -408,6 +408,7 @@ from .marketplace_resources_list_field_item import MarketplaceResourcesListField
 from .marketplace_resources_list_o_item import MarketplaceResourcesListOItem
 from .marketplace_resources_list_state_item import MarketplaceResourcesListStateItem
 from .marketplace_resources_retrieve_field_item import MarketplaceResourcesRetrieveFieldItem
+from .marketplace_robot_accounts_list_state import MarketplaceRobotAccountsListState
 from .marketplace_screenshots_list_o_item import MarketplaceScreenshotsListOItem
 from .marketplace_service_provider_user import MarketplaceServiceProviderUser
 from .marketplace_service_providers_customer_projects_list_field_item import (
@@ -1011,6 +1012,7 @@ from .rmq_v_host_stats_item import RmqVHostStatsItem
 from .rmq_waldur_user import RmqWaldurUser
 from .robot_account import RobotAccount
 from .robot_account_details import RobotAccountDetails
+from .robot_account_error_request import RobotAccountErrorRequest
 from .robot_account_request import RobotAccountRequest
 from .role_description import RoleDescription
 from .role_description_request import RoleDescriptionRequest
@@ -1069,6 +1071,7 @@ from .smax_web_hook_receiver_request import SmaxWebHookReceiverRequest
 from .ssh_key import SshKey
 from .ssh_key_request import SshKeyRequest
 from .state_code_enum import StateCodeEnum
+from .state_transition_error import StateTransitionError
 from .status_enum import StatusEnum
 from .storage_mode_enum import StorageModeEnum
 from .sub_net_mapping import SubNetMapping
@@ -1548,6 +1551,7 @@ __all__ = (
     "MarketplaceResourcesListOItem",
     "MarketplaceResourcesListStateItem",
     "MarketplaceResourcesRetrieveFieldItem",
+    "MarketplaceRobotAccountsListState",
     "MarketplaceScreenshotsListOItem",
     "MarketplaceServiceProvidersCustomerProjectsListFieldItem",
     "MarketplaceServiceProvidersCustomerProjectsListOItem",
@@ -2133,6 +2137,7 @@ __all__ = (
     "RmqWaldurUser",
     "RobotAccount",
     "RobotAccountDetails",
+    "RobotAccountErrorRequest",
     "RobotAccountRequest",
     "RoleDescription",
     "RoleDescriptionRequest",
@@ -2191,6 +2196,7 @@ __all__ = (
     "SshKey",
     "SshKeyRequest",
     "StateCodeEnum",
+    "StateTransitionError",
     "StatusEnum",
     "StorageModeEnum",
     "SubNetMapping",

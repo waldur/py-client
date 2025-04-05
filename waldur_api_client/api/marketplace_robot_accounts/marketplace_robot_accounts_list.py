@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_robot_accounts_list_state import MarketplaceRobotAccountsListState
 from ...models.robot_account_details import RobotAccountDetails
 from ...types import UNSET, Response, Unset
 
@@ -22,6 +23,7 @@ def _get_kwargs(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -61,6 +63,12 @@ def _get_kwargs(
     if not isinstance(resource_uuid, Unset):
         json_resource_uuid = str(resource_uuid)
     params["resource_uuid"] = json_resource_uuid
+
+    json_state: Union[Unset, int] = UNSET
+    if not isinstance(state, Unset):
+        json_state = state.value
+
+    params["state"] = json_state
 
     params["type"] = type_
 
@@ -116,6 +124,7 @@ def sync_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["RobotAccountDetails"]]:
     """
@@ -129,6 +138,7 @@ def sync_detailed(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        state (Union[Unset, MarketplaceRobotAccountsListState]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -149,6 +159,7 @@ def sync_detailed(
         provider_uuid=provider_uuid,
         resource=resource,
         resource_uuid=resource_uuid,
+        state=state,
         type_=type_,
     )
 
@@ -171,6 +182,7 @@ def sync(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Optional[list["RobotAccountDetails"]]:
     """
@@ -184,6 +196,7 @@ def sync(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        state (Union[Unset, MarketplaceRobotAccountsListState]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -205,6 +218,7 @@ def sync(
         provider_uuid=provider_uuid,
         resource=resource,
         resource_uuid=resource_uuid,
+        state=state,
         type_=type_,
     ).parsed
 
@@ -221,6 +235,7 @@ async def asyncio_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["RobotAccountDetails"]]:
     """
@@ -234,6 +249,7 @@ async def asyncio_detailed(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        state (Union[Unset, MarketplaceRobotAccountsListState]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -254,6 +270,7 @@ async def asyncio_detailed(
         provider_uuid=provider_uuid,
         resource=resource,
         resource_uuid=resource_uuid,
+        state=state,
         type_=type_,
     )
 
@@ -274,6 +291,7 @@ async def asyncio(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Optional[list["RobotAccountDetails"]]:
     """
@@ -287,6 +305,7 @@ async def asyncio(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        state (Union[Unset, MarketplaceRobotAccountsListState]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -309,6 +328,7 @@ async def asyncio(
             provider_uuid=provider_uuid,
             resource=resource,
             resource_uuid=resource_uuid,
+            state=state,
             type_=type_,
         )
     ).parsed

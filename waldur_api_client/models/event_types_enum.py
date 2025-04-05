@@ -195,6 +195,7 @@ class EventTypesEnum(str, Enum):
     RESOURCE_RETYPE_SUCCEEDED = "resource_retype_succeeded"
     RESOURCE_ROBOT_ACCOUNT_CREATED = "resource_robot_account_created"
     RESOURCE_ROBOT_ACCOUNT_DELETED = "resource_robot_account_deleted"
+    RESOURCE_ROBOT_ACCOUNT_STATE_CHANGED = "resource_robot_account_state_changed"
     RESOURCE_ROBOT_ACCOUNT_UPDATED = "resource_robot_account_updated"
     RESOURCE_START_FAILED = "resource_start_failed"
     RESOURCE_START_SCHEDULED = "resource_start_scheduled"
