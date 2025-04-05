@@ -50,11 +50,11 @@ class Offering:
         endpoints (Union[Unset, list['NestedEndpoint']]):
         roles (Union[Unset, list['NestedRole']]):
         customer (Union[None, Unset, str]):
-        customer_uuid (Union[Unset, UUID]):
-        customer_name (Union[Unset, str]):
+        customer_uuid (Union[None, UUID, Unset]):
+        customer_name (Union[None, Unset, str]):
         project (Union[None, Unset, str]):
-        project_uuid (Union[Unset, UUID]):
-        project_name (Union[Unset, str]):
+        project_uuid (Union[None, UUID, Unset]):
+        project_name (Union[None, Unset, str]):
         category (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
         category_title (Union[Unset, str]):
@@ -93,9 +93,9 @@ class Offering:
         total_customers (Union[None, Unset, int]):
         total_cost (Union[None, Unset, int]):
         total_cost_estimated (Union[None, Unset, int]):
-        parent_description (Union[Unset, str]):
-        parent_uuid (Union[Unset, UUID]):
-        parent_name (Union[Unset, str]):
+        parent_description (Union[None, Unset, str]):
+        parent_uuid (Union[None, UUID, Unset]):
+        parent_name (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
         googlecalendar (Union[Unset, GoogleCalendar]):
     """
@@ -114,11 +114,11 @@ class Offering:
     endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
     roles: Union[Unset, list["NestedRole"]] = UNSET
     customer: Union[None, Unset, str] = UNSET
-    customer_uuid: Union[Unset, UUID] = UNSET
-    customer_name: Union[Unset, str] = UNSET
+    customer_uuid: Union[None, UUID, Unset] = UNSET
+    customer_name: Union[None, Unset, str] = UNSET
     project: Union[None, Unset, str] = UNSET
-    project_uuid: Union[Unset, UUID] = UNSET
-    project_name: Union[Unset, str] = UNSET
+    project_uuid: Union[None, UUID, Unset] = UNSET
+    project_name: Union[None, Unset, str] = UNSET
     category: Union[Unset, str] = UNSET
     category_uuid: Union[Unset, UUID] = UNSET
     category_title: Union[Unset, str] = UNSET
@@ -157,9 +157,9 @@ class Offering:
     total_customers: Union[None, Unset, int] = UNSET
     total_cost: Union[None, Unset, int] = UNSET
     total_cost_estimated: Union[None, Unset, int] = UNSET
-    parent_description: Union[Unset, str] = UNSET
-    parent_uuid: Union[Unset, UUID] = UNSET
-    parent_name: Union[Unset, str] = UNSET
+    parent_description: Union[None, Unset, str] = UNSET
+    parent_uuid: Union[None, UUID, Unset] = UNSET
+    parent_name: Union[None, Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
     googlecalendar: Union[Unset, "GoogleCalendar"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -211,11 +211,19 @@ class Offering:
         else:
             customer = self.customer
 
-        customer_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.customer_uuid, Unset):
+        customer_uuid: Union[None, Unset, str]
+        if isinstance(self.customer_uuid, Unset):
+            customer_uuid = UNSET
+        elif isinstance(self.customer_uuid, UUID):
             customer_uuid = str(self.customer_uuid)
+        else:
+            customer_uuid = self.customer_uuid
 
-        customer_name = self.customer_name
+        customer_name: Union[None, Unset, str]
+        if isinstance(self.customer_name, Unset):
+            customer_name = UNSET
+        else:
+            customer_name = self.customer_name
 
         project: Union[None, Unset, str]
         if isinstance(self.project, Unset):
@@ -223,11 +231,19 @@ class Offering:
         else:
             project = self.project
 
-        project_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.project_uuid, Unset):
+        project_uuid: Union[None, Unset, str]
+        if isinstance(self.project_uuid, Unset):
+            project_uuid = UNSET
+        elif isinstance(self.project_uuid, UUID):
             project_uuid = str(self.project_uuid)
+        else:
+            project_uuid = self.project_uuid
 
-        project_name = self.project_name
+        project_name: Union[None, Unset, str]
+        if isinstance(self.project_name, Unset):
+            project_name = UNSET
+        else:
+            project_name = self.project_name
 
         category = self.category
 
@@ -401,13 +417,25 @@ class Offering:
         else:
             total_cost_estimated = self.total_cost_estimated
 
-        parent_description = self.parent_description
+        parent_description: Union[None, Unset, str]
+        if isinstance(self.parent_description, Unset):
+            parent_description = UNSET
+        else:
+            parent_description = self.parent_description
 
-        parent_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.parent_uuid, Unset):
+        parent_uuid: Union[None, Unset, str]
+        if isinstance(self.parent_uuid, Unset):
+            parent_uuid = UNSET
+        elif isinstance(self.parent_uuid, UUID):
             parent_uuid = str(self.parent_uuid)
+        else:
+            parent_uuid = self.parent_uuid
 
-        parent_name = self.parent_name
+        parent_name: Union[None, Unset, str]
+        if isinstance(self.parent_name, Unset):
+            parent_name = UNSET
+        else:
+            parent_name = self.parent_name
 
         backend_metadata = self.backend_metadata
 
@@ -616,14 +644,31 @@ class Offering:
 
         customer = _parse_customer(d.pop("customer", UNSET))
 
-        _customer_uuid = d.pop("customer_uuid", UNSET)
-        customer_uuid: Union[Unset, UUID]
-        if isinstance(_customer_uuid, Unset):
-            customer_uuid = UNSET
-        else:
-            customer_uuid = UUID(_customer_uuid)
+        def _parse_customer_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                customer_uuid_type_0 = UUID(data)
 
-        customer_name = d.pop("customer_name", UNSET)
+                return customer_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        customer_uuid = _parse_customer_uuid(d.pop("customer_uuid", UNSET))
+
+        def _parse_customer_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        customer_name = _parse_customer_name(d.pop("customer_name", UNSET))
 
         def _parse_project(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -634,14 +679,31 @@ class Offering:
 
         project = _parse_project(d.pop("project", UNSET))
 
-        _project_uuid = d.pop("project_uuid", UNSET)
-        project_uuid: Union[Unset, UUID]
-        if isinstance(_project_uuid, Unset):
-            project_uuid = UNSET
-        else:
-            project_uuid = UUID(_project_uuid)
+        def _parse_project_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                project_uuid_type_0 = UUID(data)
 
-        project_name = d.pop("project_name", UNSET)
+                return project_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        project_uuid = _parse_project_uuid(d.pop("project_uuid", UNSET))
+
+        def _parse_project_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        project_name = _parse_project_name(d.pop("project_name", UNSET))
 
         category = d.pop("category", UNSET)
 
@@ -895,16 +957,40 @@ class Offering:
 
         total_cost_estimated = _parse_total_cost_estimated(d.pop("total_cost_estimated", UNSET))
 
-        parent_description = d.pop("parent_description", UNSET)
+        def _parse_parent_description(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        _parent_uuid = d.pop("parent_uuid", UNSET)
-        parent_uuid: Union[Unset, UUID]
-        if isinstance(_parent_uuid, Unset):
-            parent_uuid = UNSET
-        else:
-            parent_uuid = UUID(_parent_uuid)
+        parent_description = _parse_parent_description(d.pop("parent_description", UNSET))
 
-        parent_name = d.pop("parent_name", UNSET)
+        def _parse_parent_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                parent_uuid_type_0 = UUID(data)
+
+                return parent_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        parent_uuid = _parse_parent_uuid(d.pop("parent_uuid", UNSET))
+
+        def _parse_parent_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        parent_name = _parse_parent_name(d.pop("parent_name", UNSET))
 
         backend_metadata = d.pop("backend_metadata", UNSET)
 

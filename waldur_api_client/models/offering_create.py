@@ -43,11 +43,11 @@ class OfferingCreate:
         slug (str):
         endpoints (list['NestedEndpoint']):
         roles (list['NestedRole']):
-        customer_uuid (UUID):
-        customer_name (str):
+        customer_uuid (Union[None, UUID]):
+        customer_name (Union[None, str]):
         project (Union[None, str]):
-        project_uuid (UUID):
-        project_name (str):
+        project_uuid (Union[None, UUID]):
+        project_name (Union[None, str]):
         category (str):
         category_uuid (UUID):
         category_title (str):
@@ -71,9 +71,9 @@ class OfferingCreate:
         total_customers (Union[None, int]):
         total_cost (Union[None, int]):
         total_cost_estimated (Union[None, int]):
-        parent_description (str):
-        parent_uuid (UUID):
-        parent_name (str):
+        parent_description (Union[None, str]):
+        parent_uuid (Union[None, UUID]):
+        parent_name (Union[None, str]):
         description (Union[Unset, str]):
         full_description (Union[Unset, str]):
         terms_of_service (Union[Unset, str]):
@@ -108,11 +108,11 @@ class OfferingCreate:
     slug: str
     endpoints: list["NestedEndpoint"]
     roles: list["NestedRole"]
-    customer_uuid: UUID
-    customer_name: str
+    customer_uuid: Union[None, UUID]
+    customer_name: Union[None, str]
     project: Union[None, str]
-    project_uuid: UUID
-    project_name: str
+    project_uuid: Union[None, UUID]
+    project_name: Union[None, str]
     category: str
     category_uuid: UUID
     category_title: str
@@ -136,9 +136,9 @@ class OfferingCreate:
     total_customers: Union[None, int]
     total_cost: Union[None, int]
     total_cost_estimated: Union[None, int]
-    parent_description: str
-    parent_uuid: UUID
-    parent_name: str
+    parent_description: Union[None, str]
+    parent_uuid: Union[None, UUID]
+    parent_name: Union[None, str]
     description: Union[Unset, str] = UNSET
     full_description: Union[Unset, str] = UNSET
     terms_of_service: Union[Unset, str] = UNSET
@@ -187,15 +187,25 @@ class OfferingCreate:
             roles_item = roles_item_data.to_dict()
             roles.append(roles_item)
 
-        customer_uuid = str(self.customer_uuid)
+        customer_uuid: Union[None, str]
+        if isinstance(self.customer_uuid, UUID):
+            customer_uuid = str(self.customer_uuid)
+        else:
+            customer_uuid = self.customer_uuid
 
+        customer_name: Union[None, str]
         customer_name = self.customer_name
 
         project: Union[None, str]
         project = self.project
 
-        project_uuid = str(self.project_uuid)
+        project_uuid: Union[None, str]
+        if isinstance(self.project_uuid, UUID):
+            project_uuid = str(self.project_uuid)
+        else:
+            project_uuid = self.project_uuid
 
+        project_name: Union[None, str]
         project_name = self.project_name
 
         category = self.category
@@ -271,10 +281,16 @@ class OfferingCreate:
         total_cost_estimated: Union[None, int]
         total_cost_estimated = self.total_cost_estimated
 
+        parent_description: Union[None, str]
         parent_description = self.parent_description
 
-        parent_uuid = str(self.parent_uuid)
+        parent_uuid: Union[None, str]
+        if isinstance(self.parent_uuid, UUID):
+            parent_uuid = str(self.parent_uuid)
+        else:
+            parent_uuid = self.parent_uuid
 
+        parent_name: Union[None, str]
         parent_name = self.parent_name
 
         description = self.description
@@ -504,9 +520,27 @@ class OfferingCreate:
 
             roles.append(roles_item)
 
-        customer_uuid = UUID(d.pop("customer_uuid"))
+        def _parse_customer_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                customer_uuid_type_0 = UUID(data)
 
-        customer_name = d.pop("customer_name")
+                return customer_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        customer_uuid = _parse_customer_uuid(d.pop("customer_uuid"))
+
+        def _parse_customer_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        customer_name = _parse_customer_name(d.pop("customer_name"))
 
         def _parse_project(data: object) -> Union[None, str]:
             if data is None:
@@ -515,9 +549,27 @@ class OfferingCreate:
 
         project = _parse_project(d.pop("project"))
 
-        project_uuid = UUID(d.pop("project_uuid"))
+        def _parse_project_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                project_uuid_type_0 = UUID(data)
 
-        project_name = d.pop("project_name")
+                return project_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        project_uuid = _parse_project_uuid(d.pop("project_uuid"))
+
+        def _parse_project_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        project_name = _parse_project_name(d.pop("project_name"))
 
         category = d.pop("category")
 
@@ -639,11 +691,34 @@ class OfferingCreate:
 
         total_cost_estimated = _parse_total_cost_estimated(d.pop("total_cost_estimated"))
 
-        parent_description = d.pop("parent_description")
+        def _parse_parent_description(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
 
-        parent_uuid = UUID(d.pop("parent_uuid"))
+        parent_description = _parse_parent_description(d.pop("parent_description"))
 
-        parent_name = d.pop("parent_name")
+        def _parse_parent_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                parent_uuid_type_0 = UUID(data)
+
+                return parent_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        parent_uuid = _parse_parent_uuid(d.pop("parent_uuid"))
+
+        def _parse_parent_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        parent_name = _parse_parent_name(d.pop("parent_name"))
 
         description = d.pop("description", UNSET)
 
