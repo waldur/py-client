@@ -46,6 +46,7 @@ class BookingOfferingsListFieldItem(str, Enum):
     RESOURCE_OPTIONS = "resource_options"
     ROLES = "roles"
     SCOPE = "scope"
+    SCOPE_ERROR_MESSAGE = "scope_error_message"
     SCOPE_NAME = "scope_name"
     SCOPE_STATE = "scope_state"
     SCOPE_UUID = "scope_uuid"

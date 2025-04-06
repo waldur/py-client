@@ -83,6 +83,7 @@ class ProviderOfferingDetails:
         scope_uuid (Union[None, UUID, Unset]):
         scope_name (Union[None, UUID, Unset]):
         scope_state (Union[CoreStates, None, Unset]):
+        scope_error_message (Union[None, Unset, str]):
         files (Union[Unset, list['NestedOfferingFile']]):
         quotas (Union[Unset, list['Quota']]):
         paused_reason (Union[Unset, str]):
@@ -151,6 +152,7 @@ class ProviderOfferingDetails:
     scope_uuid: Union[None, UUID, Unset] = UNSET
     scope_name: Union[None, UUID, Unset] = UNSET
     scope_state: Union[CoreStates, None, Unset] = UNSET
+    scope_error_message: Union[None, Unset, str] = UNSET
     files: Union[Unset, list["NestedOfferingFile"]] = UNSET
     quotas: Union[Unset, list["Quota"]] = UNSET
     paused_reason: Union[Unset, str] = UNSET
@@ -361,6 +363,12 @@ class ProviderOfferingDetails:
             scope_state = self.scope_state.value
         else:
             scope_state = self.scope_state
+
+        scope_error_message: Union[None, Unset, str]
+        if isinstance(self.scope_error_message, Unset):
+            scope_error_message = UNSET
+        else:
+            scope_error_message = self.scope_error_message
 
         files: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.files, Unset):
@@ -574,6 +582,8 @@ class ProviderOfferingDetails:
             field_dict["scope_name"] = scope_name
         if scope_state is not UNSET:
             field_dict["scope_state"] = scope_state
+        if scope_error_message is not UNSET:
+            field_dict["scope_error_message"] = scope_error_message
         if files is not UNSET:
             field_dict["files"] = files
         if quotas is not UNSET:
@@ -917,6 +927,15 @@ class ProviderOfferingDetails:
 
         scope_state = _parse_scope_state(d.pop("scope_state", UNSET))
 
+        def _parse_scope_error_message(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        scope_error_message = _parse_scope_error_message(d.pop("scope_error_message", UNSET))
+
         files = []
         _files = d.pop("files", UNSET)
         for files_item_data in _files or []:
@@ -1142,6 +1161,7 @@ class ProviderOfferingDetails:
             scope_uuid=scope_uuid,
             scope_name=scope_name,
             scope_state=scope_state,
+            scope_error_message=scope_error_message,
             files=files,
             quotas=quotas,
             paused_reason=paused_reason,

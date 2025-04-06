@@ -63,6 +63,7 @@ class OfferingCreate:
         scope_uuid (Union[None, UUID]):
         scope_name (Union[None, UUID]):
         scope_state (Union[CoreStates, None]):
+        scope_error_message (Union[None, str]):
         files (list['NestedOfferingFile']):
         quotas (list['Quota']):
         paused_reason (str):
@@ -128,6 +129,7 @@ class OfferingCreate:
     scope_uuid: Union[None, UUID]
     scope_name: Union[None, UUID]
     scope_state: Union[CoreStates, None]
+    scope_error_message: Union[None, str]
     files: list["NestedOfferingFile"]
     quotas: list["Quota"]
     paused_reason: str
@@ -252,6 +254,9 @@ class OfferingCreate:
             scope_state = self.scope_state.value
         else:
             scope_state = self.scope_state
+
+        scope_error_message: Union[None, str]
+        scope_error_message = self.scope_error_message
 
         files = []
         for files_item_data in self.files:
@@ -414,6 +419,7 @@ class OfferingCreate:
                 "scope_uuid": scope_uuid,
                 "scope_name": scope_name,
                 "scope_state": scope_state,
+                "scope_error_message": scope_error_message,
                 "files": files,
                 "quotas": quotas,
                 "paused_reason": paused_reason,
@@ -645,6 +651,13 @@ class OfferingCreate:
 
         scope_state = _parse_scope_state(d.pop("scope_state"))
 
+        def _parse_scope_error_message(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        scope_error_message = _parse_scope_error_message(d.pop("scope_error_message"))
+
         files = []
         _files = d.pop("files")
         for files_item_data in _files:
@@ -870,6 +883,7 @@ class OfferingCreate:
             scope_uuid=scope_uuid,
             scope_name=scope_name,
             scope_state=scope_state,
+            scope_error_message=scope_error_message,
             files=files,
             quotas=quotas,
             paused_reason=paused_reason,
