@@ -1107,6 +1107,7 @@ from .user_request import UserRequest
 from .user_role_create_request import UserRoleCreateRequest
 from .user_role_delete_request import UserRoleDeleteRequest
 from .user_role_details import UserRoleDetails
+from .user_role_expiration_time import UserRoleExpirationTime
 from .user_role_update_request import UserRoleUpdateRequest
 from .user_stats import UserStats
 from .username_generation_policy_enum import UsernameGenerationPolicyEnum
@@ -2233,6 +2234,7 @@ __all__ = (
     "UserRoleCreateRequest",
     "UserRoleDeleteRequest",
     "UserRoleDetails",
+    "UserRoleExpirationTime",
     "UserRoleUpdateRequest",
     "UsersListFieldItem",
     "UsersListOItem",
