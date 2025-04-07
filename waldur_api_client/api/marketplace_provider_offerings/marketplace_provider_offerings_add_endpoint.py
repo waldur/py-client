@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.nested_endpoint import NestedEndpoint
+from ...models.endpoint_uuid import EndpointUUID
 from ...models.nested_endpoint_request import NestedEndpointRequest
 from ...types import Response
 
@@ -32,22 +32,18 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[NestedEndpoint]:
-    if response.status_code == 200:
-        response_200 = NestedEndpoint.from_dict(response.json())
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[EndpointUUID]:
+    if response.status_code == 201:
+        response_201 = EndpointUUID.from_dict(response.json())
 
-        return response_200
+        return response_201
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[NestedEndpoint]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[EndpointUUID]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -61,7 +57,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: NestedEndpointRequest,
-) -> Response[NestedEndpoint]:
+) -> Response[EndpointUUID]:
     """Add endpoint to offering.
 
     Args:
@@ -73,7 +69,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[NestedEndpoint]
+        Response[EndpointUUID]
     """
 
     kwargs = _get_kwargs(
@@ -93,7 +89,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: NestedEndpointRequest,
-) -> Optional[NestedEndpoint]:
+) -> Optional[EndpointUUID]:
     """Add endpoint to offering.
 
     Args:
@@ -105,7 +101,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        NestedEndpoint
+        EndpointUUID
     """
 
     return sync_detailed(
@@ -120,7 +116,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: NestedEndpointRequest,
-) -> Response[NestedEndpoint]:
+) -> Response[EndpointUUID]:
     """Add endpoint to offering.
 
     Args:
@@ -132,7 +128,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[NestedEndpoint]
+        Response[EndpointUUID]
     """
 
     kwargs = _get_kwargs(
@@ -150,7 +146,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: NestedEndpointRequest,
-) -> Optional[NestedEndpoint]:
+) -> Optional[EndpointUUID]:
     """Add endpoint to offering.
 
     Args:
@@ -162,7 +158,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        NestedEndpoint
+        EndpointUUID
     """
 
     return (

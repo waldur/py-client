@@ -1,30 +1,31 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="OfferingDescriptionUpdate")
+T = TypeVar("T", bound="EndpointUUID")
 
 
 @_attrs_define
-class OfferingDescriptionUpdate:
+class EndpointUUID:
     """
     Attributes:
-        category (str):
+        uuid (UUID):
     """
 
-    category: str
+    uuid: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        category = self.category
+        uuid = str(self.uuid)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "category": category,
+                "uuid": uuid,
             }
         )
 
@@ -33,14 +34,14 @@ class OfferingDescriptionUpdate:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        category = d.pop("category")
+        uuid = UUID(d.pop("uuid"))
 
-        offering_description_update = cls(
-            category=category,
+        endpoint_uuid = cls(
+            uuid=uuid,
         )
 
-        offering_description_update.additional_properties = d
-        return offering_description_update
+        endpoint_uuid.additional_properties = d
+        return endpoint_uuid
 
     @property
     def additional_keys(self) -> list[str]:

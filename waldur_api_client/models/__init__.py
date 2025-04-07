@@ -228,7 +228,8 @@ from .email_hook import EmailHook
 from .email_hook_request import EmailHookRequest
 from .email_log import EmailLog
 from .email_logs_list_o_item import EmailLogsListOItem
-from .endpoint_delete_request import EndpointDeleteRequest
+from .endpoint_uuid import EndpointUUID
+from .endpoint_uuid_request import EndpointUUIDRequest
 from .ethertype_enum import EthertypeEnum
 from .event import Event
 from .event_groups_enum import EventGroupsEnum
@@ -512,29 +513,23 @@ from .offering_create import OfferingCreate
 from .offering_create_request import OfferingCreateRequest
 from .offering_create_request_limits import OfferingCreateRequestLimits
 from .offering_create_service_attributes import OfferingCreateServiceAttributes
-from .offering_description_update import OfferingDescriptionUpdate
 from .offering_description_update_request import OfferingDescriptionUpdateRequest
 from .offering_estimated_cost_policy import OfferingEstimatedCostPolicy
 from .offering_estimated_cost_policy_request import OfferingEstimatedCostPolicyRequest
 from .offering_file import OfferingFile
 from .offering_file_request import OfferingFileRequest
 from .offering_image_request import OfferingImageRequest
-from .offering_integration_update import OfferingIntegrationUpdate
 from .offering_integration_update_request import OfferingIntegrationUpdateRequest
-from .offering_location_update import OfferingLocationUpdate
 from .offering_location_update_request import OfferingLocationUpdateRequest
 from .offering_options import OfferingOptions
 from .offering_options_options import OfferingOptionsOptions
 from .offering_options_request import OfferingOptionsRequest
 from .offering_options_request_options import OfferingOptionsRequestOptions
-from .offering_options_update import OfferingOptionsUpdate
 from .offering_options_update_request import OfferingOptionsUpdateRequest
-from .offering_overview_update import OfferingOverviewUpdate
 from .offering_overview_update_request import OfferingOverviewUpdateRequest
 from .offering_pause_request import OfferingPauseRequest
 from .offering_permission import OfferingPermission
 from .offering_referral import OfferingReferral
-from .offering_resource_options_update import OfferingResourceOptionsUpdate
 from .offering_resource_options_update_request import OfferingResourceOptionsUpdateRequest
 from .offering_state import OfferingState
 from .offering_stats import OfferingStats
@@ -1388,7 +1383,8 @@ __all__ = (
     "EmailHookRequest",
     "EmailLog",
     "EmailLogsListOItem",
-    "EndpointDeleteRequest",
+    "EndpointUUID",
+    "EndpointUUIDRequest",
     "EthertypeEnum",
     "Event",
     "EventGroupsEnum",
@@ -1646,29 +1642,23 @@ __all__ = (
     "OfferingCreateRequest",
     "OfferingCreateRequestLimits",
     "OfferingCreateServiceAttributes",
-    "OfferingDescriptionUpdate",
     "OfferingDescriptionUpdateRequest",
     "OfferingEstimatedCostPolicy",
     "OfferingEstimatedCostPolicyRequest",
     "OfferingFile",
     "OfferingFileRequest",
     "OfferingImageRequest",
-    "OfferingIntegrationUpdate",
     "OfferingIntegrationUpdateRequest",
-    "OfferingLocationUpdate",
     "OfferingLocationUpdateRequest",
     "OfferingOptions",
     "OfferingOptionsOptions",
     "OfferingOptionsRequest",
     "OfferingOptionsRequestOptions",
-    "OfferingOptionsUpdate",
     "OfferingOptionsUpdateRequest",
-    "OfferingOverviewUpdate",
     "OfferingOverviewUpdateRequest",
     "OfferingPauseRequest",
     "OfferingPermission",
     "OfferingReferral",
-    "OfferingResourceOptionsUpdate",
     "OfferingResourceOptionsUpdateRequest",
     "OfferingState",
     "OfferingStats",

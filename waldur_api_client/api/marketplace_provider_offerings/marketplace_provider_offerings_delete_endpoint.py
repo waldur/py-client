@@ -6,14 +6,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.endpoint_delete_request import EndpointDeleteRequest
+from ...models.endpoint_uuid_request import EndpointUUIDRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: EndpointDeleteRequest,
+    body: EndpointUUIDRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -53,13 +53,13 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: EndpointDeleteRequest,
+    body: EndpointUUIDRequest,
 ) -> Response[Any]:
     """Delete endpoint from offering.
 
     Args:
         uuid (UUID):
-        body (EndpointDeleteRequest):
+        body (EndpointUUIDRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -85,13 +85,13 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: EndpointDeleteRequest,
+    body: EndpointUUIDRequest,
 ) -> Response[Any]:
     """Delete endpoint from offering.
 
     Args:
         uuid (UUID):
-        body (EndpointDeleteRequest):
+        body (EndpointUUIDRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

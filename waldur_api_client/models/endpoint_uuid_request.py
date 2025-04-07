@@ -1,34 +1,31 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-if TYPE_CHECKING:
-    from ..models.offering_options import OfferingOptions
-
-
-T = TypeVar("T", bound="OfferingOptionsUpdate")
+T = TypeVar("T", bound="EndpointUUIDRequest")
 
 
 @_attrs_define
-class OfferingOptionsUpdate:
+class EndpointUUIDRequest:
     """
     Attributes:
-        options (OfferingOptions):
+        uuid (UUID):
     """
 
-    options: "OfferingOptions"
+    uuid: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        options = self.options.to_dict()
+        uuid = str(self.uuid)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "options": options,
+                "uuid": uuid,
             }
         )
 
@@ -36,17 +33,15 @@ class OfferingOptionsUpdate:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.offering_options import OfferingOptions
-
         d = dict(src_dict)
-        options = OfferingOptions.from_dict(d.pop("options"))
+        uuid = UUID(d.pop("uuid"))
 
-        offering_options_update = cls(
-            options=options,
+        endpoint_uuid_request = cls(
+            uuid=uuid,
         )
 
-        offering_options_update.additional_properties = d
-        return offering_options_update
+        endpoint_uuid_request.additional_properties = d
+        return endpoint_uuid_request
 
     @property
     def additional_keys(self) -> list[str]:

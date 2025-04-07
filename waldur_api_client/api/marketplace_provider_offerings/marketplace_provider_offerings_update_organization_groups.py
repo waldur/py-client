@@ -7,7 +7,6 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.organization_groups_request import OrganizationGroupsRequest
-from ...models.provider_offering_details import ProviderOfferingDetails
 from ...types import Response
 
 
@@ -32,22 +31,16 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ProviderOfferingDetails]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
     if response.status_code == 200:
-        response_200 = ProviderOfferingDetails.from_dict(response.json())
-
-        return response_200
+        return None
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ProviderOfferingDetails]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -61,7 +54,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: OrganizationGroupsRequest,
-) -> Response[ProviderOfferingDetails]:
+) -> Response[Any]:
     """Update organization groups for offering.
 
     Args:
@@ -73,7 +66,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProviderOfferingDetails]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -88,39 +81,12 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    uuid: UUID,
-    *,
-    client: AuthenticatedClient,
-    body: OrganizationGroupsRequest,
-) -> Optional[ProviderOfferingDetails]:
-    """Update organization groups for offering.
-
-    Args:
-        uuid (UUID):
-        body (OrganizationGroupsRequest):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ProviderOfferingDetails
-    """
-
-    return sync_detailed(
-        uuid=uuid,
-        client=client,
-        body=body,
-    ).parsed
-
-
 async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: OrganizationGroupsRequest,
-) -> Response[ProviderOfferingDetails]:
+) -> Response[Any]:
     """Update organization groups for offering.
 
     Args:
@@ -132,7 +98,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProviderOfferingDetails]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -143,32 +109,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    uuid: UUID,
-    *,
-    client: AuthenticatedClient,
-    body: OrganizationGroupsRequest,
-) -> Optional[ProviderOfferingDetails]:
-    """Update organization groups for offering.
-
-    Args:
-        uuid (UUID):
-        body (OrganizationGroupsRequest):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ProviderOfferingDetails
-    """
-
-    return (
-        await asyncio_detailed(
-            uuid=uuid,
-            client=client,
-            body=body,
-        )
-    ).parsed
