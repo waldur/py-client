@@ -687,6 +687,7 @@ from .order_details_attributes import OrderDetailsAttributes
 from .order_details_limits import OrderDetailsLimits
 from .order_set_state_erred_request import OrderSetStateErredRequest
 from .order_state import OrderState
+from .order_uuid import OrderUUID
 from .organization_group import OrganizationGroup
 from .organization_group_request import OrganizationGroupRequest
 from .organization_groups_request import OrganizationGroupsRequest
@@ -984,13 +985,9 @@ from .resource_slug_request import ResourceSlugRequest
 from .resource_state import ResourceState
 from .resource_suggest_name import ResourceSuggestName
 from .resource_suggest_name_request import ResourceSuggestNameRequest
-from .resource_switch_plan import ResourceSwitchPlan
 from .resource_switch_plan_request import ResourceSwitchPlanRequest
-from .resource_terminate import ResourceTerminate
 from .resource_terminate_request import ResourceTerminateRequest
 from .resource_update import ResourceUpdate
-from .resource_update_limits import ResourceUpdateLimits
-from .resource_update_limits_limits import ResourceUpdateLimitsLimits
 from .resource_update_limits_request import ResourceUpdateLimitsRequest
 from .resource_update_limits_request_limits import ResourceUpdateLimitsRequestLimits
 from .resource_update_request import ResourceUpdateRequest
@@ -1810,6 +1807,7 @@ __all__ = (
     "OrderDetailsLimits",
     "OrderSetStateErredRequest",
     "OrderState",
+    "OrderUUID",
     "OrganizationGroup",
     "OrganizationGroupRequest",
     "OrganizationGroupsRequest",
@@ -2105,13 +2103,9 @@ __all__ = (
     "ResourceState",
     "ResourceSuggestName",
     "ResourceSuggestNameRequest",
-    "ResourceSwitchPlan",
     "ResourceSwitchPlanRequest",
-    "ResourceTerminate",
     "ResourceTerminateRequest",
     "ResourceUpdate",
-    "ResourceUpdateLimits",
-    "ResourceUpdateLimitsLimits",
     "ResourceUpdateLimitsRequest",
     "ResourceUpdateLimitsRequestLimits",
     "ResourceUpdateRequest",

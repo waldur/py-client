@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_terminate import ResourceTerminate
+from ...models.order_uuid import OrderUUID
 from ...models.resource_terminate_request import ResourceTerminateRequest
 from ...types import Response
 
@@ -32,11 +32,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ResourceTerminate]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[OrderUUID]:
     if response.status_code == 200:
-        response_200 = ResourceTerminate.from_dict(response.json())
+        response_200 = OrderUUID.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -45,9 +43,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ResourceTerminate]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[OrderUUID]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -61,8 +57,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceTerminateRequest,
-) -> Response[ResourceTerminate]:
-    """
+) -> Response[OrderUUID]:
+    """Create marketplace order for resource termination.
+
     Args:
         uuid (UUID):
         body (ResourceTerminateRequest):
@@ -72,7 +69,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceTerminate]
+        Response[OrderUUID]
     """
 
     kwargs = _get_kwargs(
@@ -92,8 +89,9 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ResourceTerminateRequest,
-) -> Optional[ResourceTerminate]:
-    """
+) -> Optional[OrderUUID]:
+    """Create marketplace order for resource termination.
+
     Args:
         uuid (UUID):
         body (ResourceTerminateRequest):
@@ -103,7 +101,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceTerminate
+        OrderUUID
     """
 
     return sync_detailed(
@@ -118,8 +116,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceTerminateRequest,
-) -> Response[ResourceTerminate]:
-    """
+) -> Response[OrderUUID]:
+    """Create marketplace order for resource termination.
+
     Args:
         uuid (UUID):
         body (ResourceTerminateRequest):
@@ -129,7 +128,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceTerminate]
+        Response[OrderUUID]
     """
 
     kwargs = _get_kwargs(
@@ -147,8 +146,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ResourceTerminateRequest,
-) -> Optional[ResourceTerminate]:
-    """
+) -> Optional[OrderUUID]:
+    """Create marketplace order for resource termination.
+
     Args:
         uuid (UUID):
         body (ResourceTerminateRequest):
@@ -158,7 +158,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceTerminate
+        OrderUUID
     """
 
     return (

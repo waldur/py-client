@@ -1,30 +1,31 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ResourceSwitchPlan")
+T = TypeVar("T", bound="OrderUUID")
 
 
 @_attrs_define
-class ResourceSwitchPlan:
+class OrderUUID:
     """
     Attributes:
-        plan (str):
+        order_uuid (UUID):
     """
 
-    plan: str
+    order_uuid: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        plan = self.plan
+        order_uuid = str(self.order_uuid)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "plan": plan,
+                "order_uuid": order_uuid,
             }
         )
 
@@ -33,14 +34,14 @@ class ResourceSwitchPlan:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        plan = d.pop("plan")
+        order_uuid = UUID(d.pop("order_uuid"))
 
-        resource_switch_plan = cls(
-            plan=plan,
+        order_uuid = cls(
+            order_uuid=order_uuid,
         )
 
-        resource_switch_plan.additional_properties = d
-        return resource_switch_plan
+        order_uuid.additional_properties = d
+        return order_uuid
 
     @property
     def additional_keys(self) -> list[str]:
