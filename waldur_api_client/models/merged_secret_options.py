@@ -33,7 +33,9 @@ class MergedSecretOptions:
         api_url (Union[Unset, str]): API URL
         token (Union[Unset, str]): Waldur access token
         customer_uuid (Union[Unset, UUID]): Organization UUID
-        rancher_offering_uuid (Union[Unset, UUID]): UUID of Rancher offering where cluster can be created
+        backend_url (Union[Unset, str]):
+        username (Union[Unset, str]):
+        password (Union[Unset, str]):
     """
 
     heappe_cluster_password: Union[Unset, str] = UNSET
@@ -51,7 +53,9 @@ class MergedSecretOptions:
     api_url: Union[Unset, str] = UNSET
     token: Union[Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
-    rancher_offering_uuid: Union[Unset, UUID] = UNSET
+    backend_url: Union[Unset, str] = UNSET
+    username: Union[Unset, str] = UNSET
+    password: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -92,9 +96,11 @@ class MergedSecretOptions:
         if not isinstance(self.customer_uuid, Unset):
             customer_uuid = str(self.customer_uuid)
 
-        rancher_offering_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.rancher_offering_uuid, Unset):
-            rancher_offering_uuid = str(self.rancher_offering_uuid)
+        backend_url = self.backend_url
+
+        username = self.username
+
+        password = self.password
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -129,8 +135,12 @@ class MergedSecretOptions:
             field_dict["token"] = token
         if customer_uuid is not UNSET:
             field_dict["customer_uuid"] = customer_uuid
-        if rancher_offering_uuid is not UNSET:
-            field_dict["rancher_offering_uuid"] = rancher_offering_uuid
+        if backend_url is not UNSET:
+            field_dict["backend_url"] = backend_url
+        if username is not UNSET:
+            field_dict["username"] = username
+        if password is not UNSET:
+            field_dict["password"] = password
 
         return field_dict
 
@@ -179,12 +189,11 @@ class MergedSecretOptions:
         else:
             customer_uuid = UUID(_customer_uuid)
 
-        _rancher_offering_uuid = d.pop("rancher_offering_uuid", UNSET)
-        rancher_offering_uuid: Union[Unset, UUID]
-        if isinstance(_rancher_offering_uuid, Unset):
-            rancher_offering_uuid = UNSET
-        else:
-            rancher_offering_uuid = UUID(_rancher_offering_uuid)
+        backend_url = d.pop("backend_url", UNSET)
+
+        username = d.pop("username", UNSET)
+
+        password = d.pop("password", UNSET)
 
         merged_secret_options = cls(
             heappe_cluster_password=heappe_cluster_password,
@@ -202,7 +211,9 @@ class MergedSecretOptions:
             api_url=api_url,
             token=token,
             customer_uuid=customer_uuid,
-            rancher_offering_uuid=rancher_offering_uuid,
+            backend_url=backend_url,
+            username=username,
+            password=password,
         )
 
         merged_secret_options.additional_properties = d
