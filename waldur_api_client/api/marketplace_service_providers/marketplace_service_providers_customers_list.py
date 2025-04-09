@@ -27,6 +27,7 @@ def _get_kwargs(
     native_name: Union[Unset, str] = UNSET,
     organization_group_name: Union[Unset, str] = UNSET,
     organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
+    owned_by_current_user: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -69,6 +70,8 @@ def _get_kwargs(
             json_organization_group_uuid.append(organization_group_uuid_item)
 
     params["organization_group_uuid"] = json_organization_group_uuid
+
+    params["owned_by_current_user"] = owned_by_current_user
 
     params["page"] = page
 
@@ -133,6 +136,7 @@ def sync_detailed(
     native_name: Union[Unset, str] = UNSET,
     organization_group_name: Union[Unset, str] = UNSET,
     organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
+    owned_by_current_user: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -153,6 +157,7 @@ def sync_detailed(
         native_name (Union[Unset, str]):
         organization_group_name (Union[Unset, str]):
         organization_group_uuid (Union[Unset, list[UUID]]):
+        owned_by_current_user (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -179,6 +184,7 @@ def sync_detailed(
         native_name=native_name,
         organization_group_name=organization_group_name,
         organization_group_uuid=organization_group_uuid,
+        owned_by_current_user=owned_by_current_user,
         page=page,
         page_size=page_size,
         query=query,
@@ -207,6 +213,7 @@ def sync(
     native_name: Union[Unset, str] = UNSET,
     organization_group_name: Union[Unset, str] = UNSET,
     organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
+    owned_by_current_user: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -227,6 +234,7 @@ def sync(
         native_name (Union[Unset, str]):
         organization_group_name (Union[Unset, str]):
         organization_group_uuid (Union[Unset, list[UUID]]):
+        owned_by_current_user (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -254,6 +262,7 @@ def sync(
         native_name=native_name,
         organization_group_name=organization_group_name,
         organization_group_uuid=organization_group_uuid,
+        owned_by_current_user=owned_by_current_user,
         page=page,
         page_size=page_size,
         query=query,
@@ -276,6 +285,7 @@ async def asyncio_detailed(
     native_name: Union[Unset, str] = UNSET,
     organization_group_name: Union[Unset, str] = UNSET,
     organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
+    owned_by_current_user: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -296,6 +306,7 @@ async def asyncio_detailed(
         native_name (Union[Unset, str]):
         organization_group_name (Union[Unset, str]):
         organization_group_uuid (Union[Unset, list[UUID]]):
+        owned_by_current_user (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -322,6 +333,7 @@ async def asyncio_detailed(
         native_name=native_name,
         organization_group_name=organization_group_name,
         organization_group_uuid=organization_group_uuid,
+        owned_by_current_user=owned_by_current_user,
         page=page,
         page_size=page_size,
         query=query,
@@ -348,6 +360,7 @@ async def asyncio(
     native_name: Union[Unset, str] = UNSET,
     organization_group_name: Union[Unset, str] = UNSET,
     organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
+    owned_by_current_user: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -368,6 +381,7 @@ async def asyncio(
         native_name (Union[Unset, str]):
         organization_group_name (Union[Unset, str]):
         organization_group_uuid (Union[Unset, list[UUID]]):
+        owned_by_current_user (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -396,6 +410,7 @@ async def asyncio(
             native_name=native_name,
             organization_group_name=organization_group_name,
             organization_group_uuid=organization_group_uuid,
+            owned_by_current_user=owned_by_current_user,
             page=page,
             page_size=page_size,
             query=query,

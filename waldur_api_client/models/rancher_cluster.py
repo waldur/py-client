@@ -48,7 +48,6 @@ class RancherCluster:
         modified (Union[Unset, datetime.datetime]):
         backend_id (Union[Unset, str]):
         access_url (Union[None, Unset, str]):
-        node_command (Union[Unset, str]): Rancher generated node installation command base.
         nodes (Union[Unset, list['RancherNestedNode']]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
@@ -92,7 +91,6 @@ class RancherCluster:
     modified: Union[Unset, datetime.datetime] = UNSET
     backend_id: Union[Unset, str] = UNSET
     access_url: Union[None, Unset, str] = UNSET
-    node_command: Union[Unset, str] = UNSET
     nodes: Union[Unset, list["RancherNestedNode"]] = UNSET
     tenant: Union[Unset, str] = UNSET
     tenant_uuid: Union[Unset, UUID] = UNSET
@@ -175,8 +173,6 @@ class RancherCluster:
             access_url = UNSET
         else:
             access_url = self.access_url
-
-        node_command = self.node_command
 
         nodes: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.nodes, Unset):
@@ -270,8 +266,6 @@ class RancherCluster:
             field_dict["backend_id"] = backend_id
         if access_url is not UNSET:
             field_dict["access_url"] = access_url
-        if node_command is not UNSET:
-            field_dict["node_command"] = node_command
         if nodes is not UNSET:
             field_dict["nodes"] = nodes
         if tenant is not UNSET:
@@ -400,8 +394,6 @@ class RancherCluster:
 
         access_url = _parse_access_url(d.pop("access_url", UNSET))
 
-        node_command = d.pop("node_command", UNSET)
-
         nodes = []
         _nodes = d.pop("nodes", UNSET)
         for nodes_item_data in _nodes or []:
@@ -476,7 +468,6 @@ class RancherCluster:
             modified=modified,
             backend_id=backend_id,
             access_url=access_url,
-            node_command=node_command,
             nodes=nodes,
             tenant=tenant,
             tenant_uuid=tenant_uuid,

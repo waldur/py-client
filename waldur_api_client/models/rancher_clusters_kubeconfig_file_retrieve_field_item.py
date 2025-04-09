@@ -27,7 +27,6 @@ class RancherClustersKubeconfigFileRetrieveFieldItem(str, Enum):
     MODIFIED = "modified"
     NAME = "name"
     NODES = "nodes"
-    NODE_COMMAND = "node_command"
     PROJECT = "project"
     PROJECT_NAME = "project_name"
     PROJECT_UUID = "project_uuid"

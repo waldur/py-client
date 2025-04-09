@@ -35,7 +35,6 @@ class RancherNode:
         instance_name (str):
         instance_uuid (UUID):
         instance_marketplace_uuid (UUID):
-        get_node_command (str):
         k8s_version (str):
         docker_version (str):
         cpu_allocated (Union[None, float]):
@@ -70,7 +69,6 @@ class RancherNode:
     instance_name: str
     instance_uuid: UUID
     instance_marketplace_uuid: UUID
-    get_node_command: str
     k8s_version: str
     docker_version: str
     cpu_allocated: Union[None, float]
@@ -123,8 +121,6 @@ class RancherNode:
         instance_uuid = str(self.instance_uuid)
 
         instance_marketplace_uuid = str(self.instance_marketplace_uuid)
-
-        get_node_command = self.get_node_command
 
         k8s_version = self.k8s_version
 
@@ -182,7 +178,6 @@ class RancherNode:
                 "instance_name": instance_name,
                 "instance_uuid": instance_uuid,
                 "instance_marketplace_uuid": instance_marketplace_uuid,
-                "get_node_command": get_node_command,
                 "k8s_version": k8s_version,
                 "docker_version": docker_version,
                 "cpu_allocated": cpu_allocated,
@@ -243,8 +238,6 @@ class RancherNode:
         instance_uuid = UUID(d.pop("instance_uuid"))
 
         instance_marketplace_uuid = UUID(d.pop("instance_marketplace_uuid"))
-
-        get_node_command = d.pop("get_node_command")
 
         k8s_version = d.pop("k8s_version")
 
@@ -323,7 +316,6 @@ class RancherNode:
             instance_name=instance_name,
             instance_uuid=instance_uuid,
             instance_marketplace_uuid=instance_marketplace_uuid,
-            get_node_command=get_node_command,
             k8s_version=k8s_version,
             docker_version=docker_version,
             cpu_allocated=cpu_allocated,

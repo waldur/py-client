@@ -12,19 +12,24 @@ class MoveProjectRequest:
     """
     Attributes:
         customer (str):
+        preserve_permissions (bool):
     """
 
     customer: str
+    preserve_permissions: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         customer = self.customer
+
+        preserve_permissions = self.preserve_permissions
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "customer": customer,
+                "preserve_permissions": preserve_permissions,
             }
         )
 
@@ -35,8 +40,11 @@ class MoveProjectRequest:
         d = dict(src_dict)
         customer = d.pop("customer")
 
+        preserve_permissions = d.pop("preserve_permissions")
+
         move_project_request = cls(
             customer=customer,
+            preserve_permissions=preserve_permissions,
         )
 
         move_project_request.additional_properties = d
