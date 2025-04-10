@@ -11,7 +11,6 @@ from ..models.blank_enum import BlankEnum
 from ..models.core_states import CoreStates
 from ..models.country_enum import CountryEnum
 from ..models.offering_state import OfferingState
-from ..models.state_code_enum import StateCodeEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -55,7 +54,6 @@ class OfferingCreate:
         secret_options (MergedSecretOptions):
         service_attributes (OfferingCreateServiceAttributes):
         state (OfferingState):
-        state_code (StateCodeEnum):
         order_count (int):
         screenshots (list['NestedScreenshot']):
         type_ (str):
@@ -121,7 +119,6 @@ class OfferingCreate:
     secret_options: "MergedSecretOptions"
     service_attributes: "OfferingCreateServiceAttributes"
     state: OfferingState
-    state_code: StateCodeEnum
     order_count: int
     screenshots: list["NestedScreenshot"]
     type_: str
@@ -223,8 +220,6 @@ class OfferingCreate:
         service_attributes = self.service_attributes.to_dict()
 
         state = self.state.value
-
-        state_code = self.state_code.value
 
         order_count = self.order_count
 
@@ -411,7 +406,6 @@ class OfferingCreate:
                 "secret_options": secret_options,
                 "service_attributes": service_attributes,
                 "state": state,
-                "state_code": state_code,
                 "order_count": order_count,
                 "screenshots": screenshots,
                 "type": type_,
@@ -590,8 +584,6 @@ class OfferingCreate:
         service_attributes = OfferingCreateServiceAttributes.from_dict(d.pop("service_attributes"))
 
         state = OfferingState(d.pop("state"))
-
-        state_code = StateCodeEnum(d.pop("state_code"))
 
         order_count = d.pop("order_count")
 
@@ -875,7 +867,6 @@ class OfferingCreate:
             secret_options=secret_options,
             service_attributes=service_attributes,
             state=state,
-            state_code=state_code,
             order_count=order_count,
             screenshots=screenshots,
             type_=type_,

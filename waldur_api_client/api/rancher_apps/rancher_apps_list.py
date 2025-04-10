@@ -15,6 +15,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
     cluster_uuid: Union[Unset, UUID] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
@@ -41,6 +42,8 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["backend_id"] = backend_id
+
+    params["can_manage"] = can_manage
 
     json_cluster_uuid: Union[Unset, str] = UNSET
     if not isinstance(cluster_uuid, Unset):
@@ -171,6 +174,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
     cluster_uuid: Union[Unset, UUID] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
@@ -197,6 +201,7 @@ def sync_detailed(
     """
     Args:
         backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
         cluster_uuid (Union[Unset, UUID]):
         customer (Union[Unset, UUID]):
         customer_abbreviation (Union[Unset, str]):
@@ -230,6 +235,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         backend_id=backend_id,
+        can_manage=can_manage,
         cluster_uuid=cluster_uuid,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
@@ -265,6 +271,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
     cluster_uuid: Union[Unset, UUID] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
@@ -291,6 +298,7 @@ def sync(
     """
     Args:
         backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
         cluster_uuid (Union[Unset, UUID]):
         customer (Union[Unset, UUID]):
         customer_abbreviation (Union[Unset, str]):
@@ -325,6 +333,7 @@ def sync(
     return sync_detailed(
         client=client,
         backend_id=backend_id,
+        can_manage=can_manage,
         cluster_uuid=cluster_uuid,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
@@ -354,6 +363,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
     cluster_uuid: Union[Unset, UUID] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
@@ -380,6 +390,7 @@ async def asyncio_detailed(
     """
     Args:
         backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
         cluster_uuid (Union[Unset, UUID]):
         customer (Union[Unset, UUID]):
         customer_abbreviation (Union[Unset, str]):
@@ -413,6 +424,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         backend_id=backend_id,
+        can_manage=can_manage,
         cluster_uuid=cluster_uuid,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
@@ -446,6 +458,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
     cluster_uuid: Union[Unset, UUID] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
@@ -472,6 +485,7 @@ async def asyncio(
     """
     Args:
         backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
         cluster_uuid (Union[Unset, UUID]):
         customer (Union[Unset, UUID]):
         customer_abbreviation (Union[Unset, str]):
@@ -507,6 +521,7 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             backend_id=backend_id,
+            can_manage=can_manage,
             cluster_uuid=cluster_uuid,
             customer=customer,
             customer_abbreviation=customer_abbreviation,

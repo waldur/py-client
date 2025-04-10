@@ -17,6 +17,7 @@ def _get_kwargs(
     attach_instance_uuid: Union[Unset, UUID] = UNSET,
     availability_zone_name: Union[Unset, str] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -54,6 +55,8 @@ def _get_kwargs(
     params["availability_zone_name"] = availability_zone_name
 
     params["backend_id"] = backend_id
+
+    params["can_manage"] = can_manage
 
     json_customer: Union[Unset, str] = UNSET
     if not isinstance(customer, Unset):
@@ -194,6 +197,7 @@ def sync_detailed(
     attach_instance_uuid: Union[Unset, UUID] = UNSET,
     availability_zone_name: Union[Unset, str] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -226,6 +230,7 @@ def sync_detailed(
         attach_instance_uuid (Union[Unset, UUID]):
         availability_zone_name (Union[Unset, str]):
         backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
         customer (Union[Unset, UUID]):
         customer_abbreviation (Union[Unset, str]):
         customer_name (Union[Unset, str]):
@@ -265,6 +270,7 @@ def sync_detailed(
         attach_instance_uuid=attach_instance_uuid,
         availability_zone_name=availability_zone_name,
         backend_id=backend_id,
+        can_manage=can_manage,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
         customer_name=customer_name,
@@ -306,6 +312,7 @@ def sync(
     attach_instance_uuid: Union[Unset, UUID] = UNSET,
     availability_zone_name: Union[Unset, str] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -338,6 +345,7 @@ def sync(
         attach_instance_uuid (Union[Unset, UUID]):
         availability_zone_name (Union[Unset, str]):
         backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
         customer (Union[Unset, UUID]):
         customer_abbreviation (Union[Unset, str]):
         customer_name (Union[Unset, str]):
@@ -378,6 +386,7 @@ def sync(
         attach_instance_uuid=attach_instance_uuid,
         availability_zone_name=availability_zone_name,
         backend_id=backend_id,
+        can_manage=can_manage,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
         customer_name=customer_name,
@@ -413,6 +422,7 @@ async def asyncio_detailed(
     attach_instance_uuid: Union[Unset, UUID] = UNSET,
     availability_zone_name: Union[Unset, str] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -445,6 +455,7 @@ async def asyncio_detailed(
         attach_instance_uuid (Union[Unset, UUID]):
         availability_zone_name (Union[Unset, str]):
         backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
         customer (Union[Unset, UUID]):
         customer_abbreviation (Union[Unset, str]):
         customer_name (Union[Unset, str]):
@@ -484,6 +495,7 @@ async def asyncio_detailed(
         attach_instance_uuid=attach_instance_uuid,
         availability_zone_name=availability_zone_name,
         backend_id=backend_id,
+        can_manage=can_manage,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
         customer_name=customer_name,
@@ -523,6 +535,7 @@ async def asyncio(
     attach_instance_uuid: Union[Unset, UUID] = UNSET,
     availability_zone_name: Union[Unset, str] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -555,6 +568,7 @@ async def asyncio(
         attach_instance_uuid (Union[Unset, UUID]):
         availability_zone_name (Union[Unset, str]):
         backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
         customer (Union[Unset, UUID]):
         customer_abbreviation (Union[Unset, str]):
         customer_name (Union[Unset, str]):
@@ -596,6 +610,7 @@ async def asyncio(
             attach_instance_uuid=attach_instance_uuid,
             availability_zone_name=availability_zone_name,
             backend_id=backend_id,
+            can_manage=can_manage,
             customer=customer,
             customer_abbreviation=customer_abbreviation,
             customer_name=customer_name,

@@ -11,7 +11,6 @@ from ..models.blank_enum import BlankEnum
 from ..models.core_states import CoreStates
 from ..models.country_enum import CountryEnum
 from ..models.offering_state import OfferingState
-from ..models.state_code_enum import StateCodeEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -64,7 +63,6 @@ class Offering:
         components (Union[Unset, list['OfferingComponent']]):
         plugin_options (Union[Unset, MergedPluginOptions]):
         state (Union[Unset, OfferingState]):
-        state_code (Union[Unset, StateCodeEnum]):
         vendor_details (Union[Unset, str]):
         getting_started (Union[Unset, str]):
         integration_guide (Union[Unset, str]):
@@ -129,7 +127,6 @@ class Offering:
     components: Union[Unset, list["OfferingComponent"]] = UNSET
     plugin_options: Union[Unset, "MergedPluginOptions"] = UNSET
     state: Union[Unset, OfferingState] = UNSET
-    state_code: Union[Unset, StateCodeEnum] = UNSET
     vendor_details: Union[Unset, str] = UNSET
     getting_started: Union[Unset, str] = UNSET
     integration_guide: Union[Unset, str] = UNSET
@@ -281,10 +278,6 @@ class Offering:
         state: Union[Unset, str] = UNSET
         if not isinstance(self.state, Unset):
             state = self.state.value
-
-        state_code: Union[Unset, int] = UNSET
-        if not isinstance(self.state_code, Unset):
-            state_code = self.state_code.value
 
         vendor_details = self.vendor_details
 
@@ -510,8 +503,6 @@ class Offering:
             field_dict["plugin_options"] = plugin_options
         if state is not UNSET:
             field_dict["state"] = state
-        if state_code is not UNSET:
-            field_dict["state_code"] = state_code
         if vendor_details is not UNSET:
             field_dict["vendor_details"] = vendor_details
         if getting_started is not UNSET:
@@ -767,13 +758,6 @@ class Offering:
             state = UNSET
         else:
             state = OfferingState(_state)
-
-        _state_code = d.pop("state_code", UNSET)
-        state_code: Union[Unset, StateCodeEnum]
-        if isinstance(_state_code, Unset):
-            state_code = UNSET
-        else:
-            state_code = StateCodeEnum(_state_code)
 
         vendor_details = d.pop("vendor_details", UNSET)
 
@@ -1049,7 +1033,6 @@ class Offering:
             components=components,
             plugin_options=plugin_options,
             state=state,
-            state_code=state_code,
             vendor_details=vendor_details,
             getting_started=getting_started,
             integration_guide=integration_guide,

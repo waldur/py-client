@@ -11,7 +11,6 @@ from ..models.blank_enum import BlankEnum
 from ..models.core_states import CoreStates
 from ..models.country_enum import CountryEnum
 from ..models.offering_state import OfferingState
-from ..models.state_code_enum import StateCodeEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -68,7 +67,6 @@ class ProviderOfferingDetails:
         secret_options (Union[Unset, MergedSecretOptions]):
         service_attributes (Union[Unset, ProviderOfferingDetailsServiceAttributes]):
         state (Union[Unset, OfferingState]):
-        state_code (Union[Unset, StateCodeEnum]):
         vendor_details (Union[Unset, str]):
         getting_started (Union[Unset, str]):
         integration_guide (Union[Unset, str]):
@@ -137,7 +135,6 @@ class ProviderOfferingDetails:
     secret_options: Union[Unset, "MergedSecretOptions"] = UNSET
     service_attributes: Union[Unset, "ProviderOfferingDetailsServiceAttributes"] = UNSET
     state: Union[Unset, OfferingState] = UNSET
-    state_code: Union[Unset, StateCodeEnum] = UNSET
     vendor_details: Union[Unset, str] = UNSET
     getting_started: Union[Unset, str] = UNSET
     integration_guide: Union[Unset, str] = UNSET
@@ -299,10 +296,6 @@ class ProviderOfferingDetails:
         state: Union[Unset, str] = UNSET
         if not isinstance(self.state, Unset):
             state = self.state.value
-
-        state_code: Union[Unset, int] = UNSET
-        if not isinstance(self.state_code, Unset):
-            state_code = self.state_code.value
 
         vendor_details = self.vendor_details
 
@@ -552,8 +545,6 @@ class ProviderOfferingDetails:
             field_dict["service_attributes"] = service_attributes
         if state is not UNSET:
             field_dict["state"] = state
-        if state_code is not UNSET:
-            field_dict["state_code"] = state_code
         if vendor_details is not UNSET:
             field_dict["vendor_details"] = vendor_details
         if getting_started is not UNSET:
@@ -829,13 +820,6 @@ class ProviderOfferingDetails:
             state = UNSET
         else:
             state = OfferingState(_state)
-
-        _state_code = d.pop("state_code", UNSET)
-        state_code: Union[Unset, StateCodeEnum]
-        if isinstance(_state_code, Unset):
-            state_code = UNSET
-        else:
-            state_code = StateCodeEnum(_state_code)
 
         vendor_details = d.pop("vendor_details", UNSET)
 
@@ -1146,7 +1130,6 @@ class ProviderOfferingDetails:
             secret_options=secret_options,
             service_attributes=service_attributes,
             state=state,
-            state_code=state_code,
             vendor_details=vendor_details,
             getting_started=getting_started,
             integration_guide=integration_guide,

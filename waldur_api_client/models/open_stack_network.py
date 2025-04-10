@@ -11,6 +11,7 @@ from ..models.core_states import CoreStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.network_rbac_policy import NetworkRBACPolicy
     from ..models.open_stack_nested_sub_net import OpenStackNestedSubNet
     from ..models.open_stack_network_marketplace_offering_plugin_options import (
         OpenStackNetworkMarketplaceOfferingPluginOptions,
@@ -55,6 +56,7 @@ class OpenStackNetwork:
         type_ (Union[Unset, str]):
         subnets (Union[Unset, list['OpenStackNestedSubNet']]):
         mtu (Union[None, Unset, int]): The maximum transmission unit (MTU) value to address fragmentation.
+        rbac_policies (Union[Unset, list['NetworkRBACPolicy']]):
         marketplace_offering_uuid (Union[Unset, str]):
         marketplace_offering_name (Union[Unset, str]):
         marketplace_offering_plugin_options (Union[Unset, OpenStackNetworkMarketplaceOfferingPluginOptions]):
@@ -98,6 +100,7 @@ class OpenStackNetwork:
     type_: Union[Unset, str] = UNSET
     subnets: Union[Unset, list["OpenStackNestedSubNet"]] = UNSET
     mtu: Union[None, Unset, int] = UNSET
+    rbac_policies: Union[Unset, list["NetworkRBACPolicy"]] = UNSET
     marketplace_offering_uuid: Union[Unset, str] = UNSET
     marketplace_offering_name: Union[Unset, str] = UNSET
     marketplace_offering_plugin_options: Union[Unset, "OpenStackNetworkMarketplaceOfferingPluginOptions"] = UNSET
@@ -200,6 +203,13 @@ class OpenStackNetwork:
         else:
             mtu = self.mtu
 
+        rbac_policies: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.rbac_policies, Unset):
+            rbac_policies = []
+            for rbac_policies_item_data in self.rbac_policies:
+                rbac_policies_item = rbac_policies_item_data.to_dict()
+                rbac_policies.append(rbac_policies_item)
+
         marketplace_offering_uuid = self.marketplace_offering_uuid
 
         marketplace_offering_name = self.marketplace_offering_name
@@ -287,6 +297,8 @@ class OpenStackNetwork:
             field_dict["subnets"] = subnets
         if mtu is not UNSET:
             field_dict["mtu"] = mtu
+        if rbac_policies is not UNSET:
+            field_dict["rbac_policies"] = rbac_policies
         if marketplace_offering_uuid is not UNSET:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
@@ -312,6 +324,7 @@ class OpenStackNetwork:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.network_rbac_policy import NetworkRBACPolicy
         from ..models.open_stack_nested_sub_net import OpenStackNestedSubNet
         from ..models.open_stack_network_marketplace_offering_plugin_options import (
             OpenStackNetworkMarketplaceOfferingPluginOptions,
@@ -434,6 +447,13 @@ class OpenStackNetwork:
 
         mtu = _parse_mtu(d.pop("mtu", UNSET))
 
+        rbac_policies = []
+        _rbac_policies = d.pop("rbac_policies", UNSET)
+        for rbac_policies_item_data in _rbac_policies or []:
+            rbac_policies_item = NetworkRBACPolicy.from_dict(rbac_policies_item_data)
+
+            rbac_policies.append(rbac_policies_item)
+
         marketplace_offering_uuid = d.pop("marketplace_offering_uuid", UNSET)
 
         marketplace_offering_name = d.pop("marketplace_offering_name", UNSET)
@@ -493,6 +513,7 @@ class OpenStackNetwork:
             type_=type_,
             subnets=subnets,
             mtu=mtu,
+            rbac_policies=rbac_policies,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
             marketplace_offering_plugin_options=marketplace_offering_plugin_options,

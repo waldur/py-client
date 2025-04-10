@@ -493,6 +493,8 @@ from .nested_section import NestedSection
 from .nested_section_request import NestedSectionRequest
 from .nested_security_group_rule import NestedSecurityGroupRule
 from .nested_security_group_rule_request import NestedSecurityGroupRuleRequest
+from .network_rbac_policy import NetworkRBACPolicy
+from .network_rbac_policy_request import NetworkRBACPolicyRequest
 from .notification import Notification
 from .notification_request import NotificationRequest
 from .notification_template_detail_serializers import NotificationTemplateDetailSerializers
@@ -790,6 +792,7 @@ from .plan_usage_response import PlanUsageResponse
 from .plugin_component import PluginComponent
 from .plugin_offering_type import PluginOfferingType
 from .policy_enum import PolicyEnum
+from .policy_type_enum import PolicyTypeEnum
 from .prices_update_request import PricesUpdateRequest
 from .prices_update_request_prices import PricesUpdateRequestPrices
 from .priority import Priority
@@ -1062,7 +1065,6 @@ from .smax_web_hook_receiver import SmaxWebHookReceiver
 from .smax_web_hook_receiver_request import SmaxWebHookReceiverRequest
 from .ssh_key import SshKey
 from .ssh_key_request import SshKeyRequest
-from .state_code_enum import StateCodeEnum
 from .state_transition_error import StateTransitionError
 from .status_enum import StatusEnum
 from .storage_mode_enum import StorageModeEnum
@@ -1619,6 +1621,8 @@ __all__ = (
     "NestedSectionRequest",
     "NestedSecurityGroupRule",
     "NestedSecurityGroupRuleRequest",
+    "NetworkRBACPolicy",
+    "NetworkRBACPolicyRequest",
     "Notification",
     "NotificationRequest",
     "NotificationTemplateDetailSerializers",
@@ -1908,6 +1912,7 @@ __all__ = (
     "PluginComponent",
     "PluginOfferingType",
     "PolicyEnum",
+    "PolicyTypeEnum",
     "PricesUpdateRequest",
     "PricesUpdateRequestPrices",
     "Priority",
@@ -2180,7 +2185,6 @@ __all__ = (
     "SmaxWebHookReceiverRequest",
     "SshKey",
     "SshKeyRequest",
-    "StateCodeEnum",
     "StateTransitionError",
     "StatusEnum",
     "StorageModeEnum",

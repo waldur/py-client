@@ -56,7 +56,6 @@ class MarketplacePublicOfferingsRetrieveFieldItem(str, Enum):
     SHARED = "shared"
     SLUG = "slug"
     STATE = "state"
-    STATE_CODE = "state_code"
     TERMS_OF_SERVICE = "terms_of_service"
     TERMS_OF_SERVICE_LINK = "terms_of_service_link"
     THUMBNAIL = "thumbnail"
