@@ -64,17 +64,17 @@ class OrderDetails:
         error_message (Union[Unset, str]):
         callback_url (Union[None, Unset, str]):
         completed_at (Union[None, Unset, datetime.datetime]):
-        consumer_reviewed_by (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
-            @/./+/-/_ characters
-        consumer_reviewed_by_full_name (Union[Unset, str]):
-        consumer_reviewed_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers
+        consumer_reviewed_by (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers
             and @/./+/-/_ characters
+        consumer_reviewed_by_full_name (Union[None, Unset, str]):
+        consumer_reviewed_by_username (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters,
+            numbers and @/./+/-/_ characters
         consumer_reviewed_at (Union[None, Unset, datetime.datetime]):
-        provider_reviewed_by (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
-            @/./+/-/_ characters
-        provider_reviewed_by_full_name (Union[Unset, str]):
-        provider_reviewed_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers
+        provider_reviewed_by (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers
             and @/./+/-/_ characters
+        provider_reviewed_by_full_name (Union[None, Unset, str]):
+        provider_reviewed_by_username (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters,
+            numbers and @/./+/-/_ characters
         provider_reviewed_at (Union[None, Unset, datetime.datetime]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
@@ -87,10 +87,10 @@ class OrderDetails:
         project_uuid (Union[Unset, UUID]):
         project_description (Union[Unset, str]):
         project_slug (Union[Unset, str]):
-        old_plan_name (Union[Unset, str]):
-        new_plan_name (Union[Unset, str]):
-        old_plan_uuid (Union[Unset, UUID]):
-        new_plan_uuid (Union[Unset, UUID]):
+        old_plan_name (Union[None, Unset, str]):
+        new_plan_name (Union[None, Unset, str]):
+        old_plan_uuid (Union[None, UUID, Unset]):
+        new_plan_uuid (Union[None, UUID, Unset]):
         old_cost_estimate (Union[None, Unset, str]):
         new_cost_estimate (Union[None, Unset, str]):
         can_terminate (Union[Unset, bool]):
@@ -138,13 +138,13 @@ class OrderDetails:
     error_message: Union[Unset, str] = UNSET
     callback_url: Union[None, Unset, str] = UNSET
     completed_at: Union[None, Unset, datetime.datetime] = UNSET
-    consumer_reviewed_by: Union[Unset, str] = UNSET
-    consumer_reviewed_by_full_name: Union[Unset, str] = UNSET
-    consumer_reviewed_by_username: Union[Unset, str] = UNSET
+    consumer_reviewed_by: Union[None, Unset, str] = UNSET
+    consumer_reviewed_by_full_name: Union[None, Unset, str] = UNSET
+    consumer_reviewed_by_username: Union[None, Unset, str] = UNSET
     consumer_reviewed_at: Union[None, Unset, datetime.datetime] = UNSET
-    provider_reviewed_by: Union[Unset, str] = UNSET
-    provider_reviewed_by_full_name: Union[Unset, str] = UNSET
-    provider_reviewed_by_username: Union[Unset, str] = UNSET
+    provider_reviewed_by: Union[None, Unset, str] = UNSET
+    provider_reviewed_by_full_name: Union[None, Unset, str] = UNSET
+    provider_reviewed_by_username: Union[None, Unset, str] = UNSET
     provider_reviewed_at: Union[None, Unset, datetime.datetime] = UNSET
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
@@ -156,10 +156,10 @@ class OrderDetails:
     project_uuid: Union[Unset, UUID] = UNSET
     project_description: Union[Unset, str] = UNSET
     project_slug: Union[Unset, str] = UNSET
-    old_plan_name: Union[Unset, str] = UNSET
-    new_plan_name: Union[Unset, str] = UNSET
-    old_plan_uuid: Union[Unset, UUID] = UNSET
-    new_plan_uuid: Union[Unset, UUID] = UNSET
+    old_plan_name: Union[None, Unset, str] = UNSET
+    new_plan_name: Union[None, Unset, str] = UNSET
+    old_plan_uuid: Union[None, UUID, Unset] = UNSET
+    new_plan_uuid: Union[None, UUID, Unset] = UNSET
     old_cost_estimate: Union[None, Unset, str] = UNSET
     new_cost_estimate: Union[None, Unset, str] = UNSET
     can_terminate: Union[Unset, bool] = UNSET
@@ -297,11 +297,23 @@ class OrderDetails:
         else:
             completed_at = self.completed_at
 
-        consumer_reviewed_by = self.consumer_reviewed_by
+        consumer_reviewed_by: Union[None, Unset, str]
+        if isinstance(self.consumer_reviewed_by, Unset):
+            consumer_reviewed_by = UNSET
+        else:
+            consumer_reviewed_by = self.consumer_reviewed_by
 
-        consumer_reviewed_by_full_name = self.consumer_reviewed_by_full_name
+        consumer_reviewed_by_full_name: Union[None, Unset, str]
+        if isinstance(self.consumer_reviewed_by_full_name, Unset):
+            consumer_reviewed_by_full_name = UNSET
+        else:
+            consumer_reviewed_by_full_name = self.consumer_reviewed_by_full_name
 
-        consumer_reviewed_by_username = self.consumer_reviewed_by_username
+        consumer_reviewed_by_username: Union[None, Unset, str]
+        if isinstance(self.consumer_reviewed_by_username, Unset):
+            consumer_reviewed_by_username = UNSET
+        else:
+            consumer_reviewed_by_username = self.consumer_reviewed_by_username
 
         consumer_reviewed_at: Union[None, Unset, str]
         if isinstance(self.consumer_reviewed_at, Unset):
@@ -311,11 +323,23 @@ class OrderDetails:
         else:
             consumer_reviewed_at = self.consumer_reviewed_at
 
-        provider_reviewed_by = self.provider_reviewed_by
+        provider_reviewed_by: Union[None, Unset, str]
+        if isinstance(self.provider_reviewed_by, Unset):
+            provider_reviewed_by = UNSET
+        else:
+            provider_reviewed_by = self.provider_reviewed_by
 
-        provider_reviewed_by_full_name = self.provider_reviewed_by_full_name
+        provider_reviewed_by_full_name: Union[None, Unset, str]
+        if isinstance(self.provider_reviewed_by_full_name, Unset):
+            provider_reviewed_by_full_name = UNSET
+        else:
+            provider_reviewed_by_full_name = self.provider_reviewed_by_full_name
 
-        provider_reviewed_by_username = self.provider_reviewed_by_username
+        provider_reviewed_by_username: Union[None, Unset, str]
+        if isinstance(self.provider_reviewed_by_username, Unset):
+            provider_reviewed_by_username = UNSET
+        else:
+            provider_reviewed_by_username = self.provider_reviewed_by_username
 
         provider_reviewed_at: Union[None, Unset, str]
         if isinstance(self.provider_reviewed_at, Unset):
@@ -353,17 +377,33 @@ class OrderDetails:
 
         project_slug = self.project_slug
 
-        old_plan_name = self.old_plan_name
+        old_plan_name: Union[None, Unset, str]
+        if isinstance(self.old_plan_name, Unset):
+            old_plan_name = UNSET
+        else:
+            old_plan_name = self.old_plan_name
 
-        new_plan_name = self.new_plan_name
+        new_plan_name: Union[None, Unset, str]
+        if isinstance(self.new_plan_name, Unset):
+            new_plan_name = UNSET
+        else:
+            new_plan_name = self.new_plan_name
 
-        old_plan_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.old_plan_uuid, Unset):
+        old_plan_uuid: Union[None, Unset, str]
+        if isinstance(self.old_plan_uuid, Unset):
+            old_plan_uuid = UNSET
+        elif isinstance(self.old_plan_uuid, UUID):
             old_plan_uuid = str(self.old_plan_uuid)
+        else:
+            old_plan_uuid = self.old_plan_uuid
 
-        new_plan_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.new_plan_uuid, Unset):
+        new_plan_uuid: Union[None, Unset, str]
+        if isinstance(self.new_plan_uuid, Unset):
+            new_plan_uuid = UNSET
+        elif isinstance(self.new_plan_uuid, UUID):
             new_plan_uuid = str(self.new_plan_uuid)
+        else:
+            new_plan_uuid = self.new_plan_uuid
 
         old_cost_estimate: Union[None, Unset, str]
         if isinstance(self.old_cost_estimate, Unset):
@@ -736,11 +776,36 @@ class OrderDetails:
 
         completed_at = _parse_completed_at(d.pop("completed_at", UNSET))
 
-        consumer_reviewed_by = d.pop("consumer_reviewed_by", UNSET)
+        def _parse_consumer_reviewed_by(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        consumer_reviewed_by_full_name = d.pop("consumer_reviewed_by_full_name", UNSET)
+        consumer_reviewed_by = _parse_consumer_reviewed_by(d.pop("consumer_reviewed_by", UNSET))
 
-        consumer_reviewed_by_username = d.pop("consumer_reviewed_by_username", UNSET)
+        def _parse_consumer_reviewed_by_full_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        consumer_reviewed_by_full_name = _parse_consumer_reviewed_by_full_name(
+            d.pop("consumer_reviewed_by_full_name", UNSET)
+        )
+
+        def _parse_consumer_reviewed_by_username(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        consumer_reviewed_by_username = _parse_consumer_reviewed_by_username(
+            d.pop("consumer_reviewed_by_username", UNSET)
+        )
 
         def _parse_consumer_reviewed_at(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
@@ -759,11 +824,36 @@ class OrderDetails:
 
         consumer_reviewed_at = _parse_consumer_reviewed_at(d.pop("consumer_reviewed_at", UNSET))
 
-        provider_reviewed_by = d.pop("provider_reviewed_by", UNSET)
+        def _parse_provider_reviewed_by(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        provider_reviewed_by_full_name = d.pop("provider_reviewed_by_full_name", UNSET)
+        provider_reviewed_by = _parse_provider_reviewed_by(d.pop("provider_reviewed_by", UNSET))
 
-        provider_reviewed_by_username = d.pop("provider_reviewed_by_username", UNSET)
+        def _parse_provider_reviewed_by_full_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        provider_reviewed_by_full_name = _parse_provider_reviewed_by_full_name(
+            d.pop("provider_reviewed_by_full_name", UNSET)
+        )
+
+        def _parse_provider_reviewed_by_username(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        provider_reviewed_by_username = _parse_provider_reviewed_by_username(
+            d.pop("provider_reviewed_by_username", UNSET)
+        )
 
         def _parse_provider_reviewed_at(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
@@ -819,23 +909,57 @@ class OrderDetails:
 
         project_slug = d.pop("project_slug", UNSET)
 
-        old_plan_name = d.pop("old_plan_name", UNSET)
+        def _parse_old_plan_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        new_plan_name = d.pop("new_plan_name", UNSET)
+        old_plan_name = _parse_old_plan_name(d.pop("old_plan_name", UNSET))
 
-        _old_plan_uuid = d.pop("old_plan_uuid", UNSET)
-        old_plan_uuid: Union[Unset, UUID]
-        if isinstance(_old_plan_uuid, Unset):
-            old_plan_uuid = UNSET
-        else:
-            old_plan_uuid = UUID(_old_plan_uuid)
+        def _parse_new_plan_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        _new_plan_uuid = d.pop("new_plan_uuid", UNSET)
-        new_plan_uuid: Union[Unset, UUID]
-        if isinstance(_new_plan_uuid, Unset):
-            new_plan_uuid = UNSET
-        else:
-            new_plan_uuid = UUID(_new_plan_uuid)
+        new_plan_name = _parse_new_plan_name(d.pop("new_plan_name", UNSET))
+
+        def _parse_old_plan_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                old_plan_uuid_type_0 = UUID(data)
+
+                return old_plan_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        old_plan_uuid = _parse_old_plan_uuid(d.pop("old_plan_uuid", UNSET))
+
+        def _parse_new_plan_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                new_plan_uuid_type_0 = UUID(data)
+
+                return new_plan_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        new_plan_uuid = _parse_new_plan_uuid(d.pop("new_plan_uuid", UNSET))
 
         def _parse_old_cost_estimate(data: object) -> Union[None, Unset, str]:
             if data is None:
