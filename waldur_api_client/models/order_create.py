@@ -61,9 +61,9 @@ class OrderCreate:
         created_by_full_name (str):
         consumer_reviewed_by (Union[None, str]):
         consumer_reviewed_at (Union[None, datetime.datetime]):
-        consumer_reviewed_by_username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
-            characters
-        consumer_reviewed_by_full_name (str):
+        consumer_reviewed_by_username (Union[None, str]): Required. 128 characters or fewer. Lowercase letters, numbers
+            and @/./+/-/_ characters
+        consumer_reviewed_by_full_name (Union[None, str]):
         project (str):
         project_uuid (UUID):
         project_name (str):
@@ -115,8 +115,8 @@ class OrderCreate:
     created_by_full_name: str
     consumer_reviewed_by: Union[None, str]
     consumer_reviewed_at: Union[None, datetime.datetime]
-    consumer_reviewed_by_username: str
-    consumer_reviewed_by_full_name: str
+    consumer_reviewed_by_username: Union[None, str]
+    consumer_reviewed_by_full_name: Union[None, str]
     project: str
     project_uuid: UUID
     project_name: str
@@ -221,8 +221,10 @@ class OrderCreate:
         else:
             consumer_reviewed_at = self.consumer_reviewed_at
 
+        consumer_reviewed_by_username: Union[None, str]
         consumer_reviewed_by_username = self.consumer_reviewed_by_username
 
+        consumer_reviewed_by_full_name: Union[None, str]
         consumer_reviewed_by_full_name = self.consumer_reviewed_by_full_name
 
         project = self.project
@@ -456,9 +458,19 @@ class OrderCreate:
 
         consumer_reviewed_at = _parse_consumer_reviewed_at(d.pop("consumer_reviewed_at"))
 
-        consumer_reviewed_by_username = d.pop("consumer_reviewed_by_username")
+        def _parse_consumer_reviewed_by_username(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
 
-        consumer_reviewed_by_full_name = d.pop("consumer_reviewed_by_full_name")
+        consumer_reviewed_by_username = _parse_consumer_reviewed_by_username(d.pop("consumer_reviewed_by_username"))
+
+        def _parse_consumer_reviewed_by_full_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        consumer_reviewed_by_full_name = _parse_consumer_reviewed_by_full_name(d.pop("consumer_reviewed_by_full_name"))
 
         project = d.pop("project")
 
