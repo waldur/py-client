@@ -1,6 +1,5 @@
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -32,7 +31,7 @@ class MergedSecretOptions:
         pull (Union[Unset, str]): Script for regular resource pull
         api_url (Union[Unset, str]): API URL
         token (Union[Unset, str]): Waldur access token
-        customer_uuid (Union[Unset, UUID]): Organization UUID
+        customer_uuid (Union[Unset, str]): Organization UUID
         backend_url (Union[Unset, str]):
         username (Union[Unset, str]):
         password (Union[Unset, str]):
@@ -52,7 +51,7 @@ class MergedSecretOptions:
     pull: Union[Unset, str] = UNSET
     api_url: Union[Unset, str] = UNSET
     token: Union[Unset, str] = UNSET
-    customer_uuid: Union[Unset, UUID] = UNSET
+    customer_uuid: Union[Unset, str] = UNSET
     backend_url: Union[Unset, str] = UNSET
     username: Union[Unset, str] = UNSET
     password: Union[Unset, str] = UNSET
@@ -92,9 +91,7 @@ class MergedSecretOptions:
 
         token = self.token
 
-        customer_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.customer_uuid, Unset):
-            customer_uuid = str(self.customer_uuid)
+        customer_uuid = self.customer_uuid
 
         backend_url = self.backend_url
 
@@ -182,12 +179,7 @@ class MergedSecretOptions:
 
         token = d.pop("token", UNSET)
 
-        _customer_uuid = d.pop("customer_uuid", UNSET)
-        customer_uuid: Union[Unset, UUID]
-        if isinstance(_customer_uuid, Unset):
-            customer_uuid = UNSET
-        else:
-            customer_uuid = UUID(_customer_uuid)
+        customer_uuid = d.pop("customer_uuid", UNSET)
 
         backend_url = d.pop("backend_url", UNSET)
 

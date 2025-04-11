@@ -1,7 +1,6 @@
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -51,7 +50,7 @@ class MergedPluginOptionsRequest:
             UsernameGenerationPolicyEnum.SERVICE_PROVIDER.
         enable_issues_for_membership_changes (Union[Unset, bool]): Enable issues for membership changes
         flavors_regex (Union[Unset, str]): Regular expression to limit flavors list
-        openstack_offering_uuid_list (Union[Unset, list[UUID]]): List of UUID of OpenStack offerings where tenant can be
+        openstack_offering_uuid_list (Union[Unset, list[str]]): List of UUID of OpenStack offerings where tenant can be
             created
         account_name_generation_policy (Union[AccountNameGenerationPolicyEnum, None, Unset]): Slurm account name
             generation policy
@@ -85,7 +84,7 @@ class MergedPluginOptionsRequest:
     )
     enable_issues_for_membership_changes: Union[Unset, bool] = UNSET
     flavors_regex: Union[Unset, str] = UNSET
-    openstack_offering_uuid_list: Union[Unset, list[UUID]] = UNSET
+    openstack_offering_uuid_list: Union[Unset, list[str]] = UNSET
     account_name_generation_policy: Union[AccountNameGenerationPolicyEnum, None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -150,10 +149,7 @@ class MergedPluginOptionsRequest:
 
         openstack_offering_uuid_list: Union[Unset, list[str]] = UNSET
         if not isinstance(self.openstack_offering_uuid_list, Unset):
-            openstack_offering_uuid_list = []
-            for openstack_offering_uuid_list_item_data in self.openstack_offering_uuid_list:
-                openstack_offering_uuid_list_item = str(openstack_offering_uuid_list_item_data)
-                openstack_offering_uuid_list.append(openstack_offering_uuid_list_item)
+            openstack_offering_uuid_list = self.openstack_offering_uuid_list
 
         account_name_generation_policy: Union[None, Unset, str]
         if isinstance(self.account_name_generation_policy, Unset):
@@ -295,12 +291,7 @@ class MergedPluginOptionsRequest:
 
         flavors_regex = d.pop("flavors_regex", UNSET)
 
-        openstack_offering_uuid_list = []
-        _openstack_offering_uuid_list = d.pop("openstack_offering_uuid_list", UNSET)
-        for openstack_offering_uuid_list_item_data in _openstack_offering_uuid_list or []:
-            openstack_offering_uuid_list_item = UUID(openstack_offering_uuid_list_item_data)
-
-            openstack_offering_uuid_list.append(openstack_offering_uuid_list_item)
+        openstack_offering_uuid_list = cast(list[str], d.pop("openstack_offering_uuid_list", UNSET))
 
         def _parse_account_name_generation_policy(data: object) -> Union[AccountNameGenerationPolicyEnum, None, Unset]:
             if data is None:
