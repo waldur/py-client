@@ -316,6 +316,11 @@ from .jira_issue_fields_request_comment import JiraIssueFieldsRequestComment
 from .jira_issue_project import JiraIssueProject
 from .jira_issue_project_request import JiraIssueProjectRequest
 from .jira_issue_request import JiraIssueRequest
+from .keycloak_group import KeycloakGroup
+from .keycloak_group_request import KeycloakGroupRequest
+from .keycloak_user_group_membership import KeycloakUserGroupMembership
+from .keycloak_user_group_membership_request import KeycloakUserGroupMembershipRequest
+from .keycloak_user_group_membership_state import KeycloakUserGroupMembershipState
 from .keys_list_field_item import KeysListFieldItem
 from .keys_list_o_item import KeysListOItem
 from .keys_retrieve_field_item import KeysRetrieveFieldItem
@@ -719,6 +724,8 @@ from .patched_firecrest_job_request import PatchedFirecrestJobRequest
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
 from .patched_invoice_item_update_request import PatchedInvoiceItemUpdateRequest
 from .patched_issue_request import PatchedIssueRequest
+from .patched_keycloak_group_request import PatchedKeycloakGroupRequest
+from .patched_keycloak_user_group_membership_request import PatchedKeycloakUserGroupMembershipRequest
 from .patched_lexis_link_request import PatchedLexisLinkRequest
 from .patched_marketplace_category_request import PatchedMarketplaceCategoryRequest
 from .patched_message_template_request import PatchedMessageTemplateRequest
@@ -890,6 +897,7 @@ from .rancher_catalog import RancherCatalog
 from .rancher_catalog_create import RancherCatalogCreate
 from .rancher_catalog_create_request import RancherCatalogCreateRequest
 from .rancher_catalog_request import RancherCatalogRequest
+from .rancher_catalog_scope_type import RancherCatalogScopeType
 from .rancher_catalog_update import RancherCatalogUpdate
 from .rancher_catalog_update_request import RancherCatalogUpdateRequest
 from .rancher_cluster import RancherCluster
@@ -915,6 +923,7 @@ from .rancher_ingresses_list_field_item import RancherIngressesListFieldItem
 from .rancher_ingresses_list_state_item import RancherIngressesListStateItem
 from .rancher_ingresses_retrieve_field_item import RancherIngressesRetrieveFieldItem
 from .rancher_ingresses_yaml_retrieve_field_item import RancherIngressesYamlRetrieveFieldItem
+from .rancher_keycloak_group_scope_type import RancherKeycloakGroupScopeType
 from .rancher_namespace import RancherNamespace
 from .rancher_namespaces_list_o_item import RancherNamespacesListOItem
 from .rancher_nested_namespace import RancherNestedNamespace
@@ -1027,7 +1036,6 @@ from .saml_2_login_request import Saml2LoginRequest
 from .saml_2_logout_complete import Saml2LogoutComplete
 from .saml_2_logout_complete_request import Saml2LogoutCompleteRequest
 from .saml_2_provider import Saml2Provider
-from .scope_type_enum import ScopeTypeEnum
 from .screenshot import Screenshot
 from .screenshot_request import ScreenshotRequest
 from .section import Section
@@ -1470,6 +1478,11 @@ __all__ = (
     "JiraIssueProject",
     "JiraIssueProjectRequest",
     "JiraIssueRequest",
+    "KeycloakGroup",
+    "KeycloakGroupRequest",
+    "KeycloakUserGroupMembership",
+    "KeycloakUserGroupMembershipRequest",
+    "KeycloakUserGroupMembershipState",
     "KeysListFieldItem",
     "KeysListOItem",
     "KeysRetrieveFieldItem",
@@ -1841,6 +1854,8 @@ __all__ = (
     "PatchedIdentityProviderRequest",
     "PatchedInvoiceItemUpdateRequest",
     "PatchedIssueRequest",
+    "PatchedKeycloakGroupRequest",
+    "PatchedKeycloakUserGroupMembershipRequest",
     "PatchedLexisLinkRequest",
     "PatchedMarketplaceCategoryRequest",
     "PatchedMessageTemplateRequest",
@@ -2010,6 +2025,7 @@ __all__ = (
     "RancherCatalogCreate",
     "RancherCatalogCreateRequest",
     "RancherCatalogRequest",
+    "RancherCatalogScopeType",
     "RancherCatalogUpdate",
     "RancherCatalogUpdateRequest",
     "RancherCluster",
@@ -2035,6 +2051,7 @@ __all__ = (
     "RancherIngressesYamlRetrieveFieldItem",
     "RancherIngressMarketplaceOfferingPluginOptions",
     "RancherIngressRequest",
+    "RancherKeycloakGroupScopeType",
     "RancherNamespace",
     "RancherNamespacesListOItem",
     "RancherNestedNamespace",
@@ -2147,7 +2164,6 @@ __all__ = (
     "Saml2LogoutComplete",
     "Saml2LogoutCompleteRequest",
     "Saml2Provider",
-    "ScopeTypeEnum",
     "Screenshot",
     "ScreenshotRequest",
     "Section",

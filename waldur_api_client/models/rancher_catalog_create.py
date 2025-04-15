@@ -7,7 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.scope_type_enum import ScopeTypeEnum
+from ..models.rancher_catalog_scope_type import RancherCatalogScopeType
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RancherCatalogCreate")
@@ -27,7 +27,7 @@ class RancherCatalogCreate:
         commit (str):
         runtime_state (str):
         scope (str):
-        scope_type (ScopeTypeEnum):
+        scope_type (RancherCatalogScopeType):
         description (Union[Unset, str]):
         username (Union[Unset, str]):
         password (Union[Unset, str]):
@@ -43,7 +43,7 @@ class RancherCatalogCreate:
     commit: str
     runtime_state: str
     scope: str
-    scope_type: ScopeTypeEnum
+    scope_type: RancherCatalogScopeType
     description: Union[Unset, str] = UNSET
     username: Union[Unset, str] = UNSET
     password: Union[Unset, str] = UNSET
@@ -127,7 +127,7 @@ class RancherCatalogCreate:
 
         scope = d.pop("scope")
 
-        scope_type = ScopeTypeEnum(d.pop("scope_type"))
+        scope_type = RancherCatalogScopeType(d.pop("scope_type"))
 
         description = d.pop("description", UNSET)
 

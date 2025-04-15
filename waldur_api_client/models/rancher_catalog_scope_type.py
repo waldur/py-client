@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class ScopeTypeEnum(str, Enum):
+class RancherCatalogScopeType(str, Enum):
     CLUSTER = "cluster"
     GLOBAL = "global"
     PROJECT = "project"
