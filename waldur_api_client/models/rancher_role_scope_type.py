@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class RancherKeycloakGroupScopeType(str, Enum):
+class RancherRoleScopeType(str, Enum):
     CLUSTER = "cluster"
     PROJECT = "project"
 

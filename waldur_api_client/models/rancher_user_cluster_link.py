@@ -5,8 +5,6 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.role_enum import RoleEnum
-
 T = TypeVar("T", bound="RancherUserClusterLink")
 
 
@@ -15,13 +13,13 @@ class RancherUserClusterLink:
     """
     Attributes:
         cluster (str):
-        role (RoleEnum):
+        role (str):
         cluster_name (str):
         cluster_uuid (UUID):
     """
 
     cluster: str
-    role: RoleEnum
+    role: str
     cluster_name: str
     cluster_uuid: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -29,7 +27,7 @@ class RancherUserClusterLink:
     def to_dict(self) -> dict[str, Any]:
         cluster = self.cluster
 
-        role = self.role.value
+        role = self.role
 
         cluster_name = self.cluster_name
 
@@ -53,7 +51,7 @@ class RancherUserClusterLink:
         d = dict(src_dict)
         cluster = d.pop("cluster")
 
-        role = RoleEnum(d.pop("role"))
+        role = d.pop("role")
 
         cluster_name = d.pop("cluster_name")
 

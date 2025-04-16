@@ -8,7 +8,6 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.keycloak_user_group_membership_state import KeycloakUserGroupMembershipState
-from ..models.rancher_catalog_scope_type import RancherCatalogScopeType
 
 T = TypeVar("T", bound="KeycloakUserGroupMembership")
 
@@ -24,7 +23,7 @@ class KeycloakUserGroupMembership:
         group (str):
         group_name (str):
         group_role (str):
-        group_scope_type (RancherCatalogScopeType):
+        group_scope_type (str):
         state (KeycloakUserGroupMembershipState):
         created (datetime.datetime):
         modified (datetime.datetime):
@@ -40,7 +39,7 @@ class KeycloakUserGroupMembership:
     group: str
     group_name: str
     group_role: str
-    group_scope_type: RancherCatalogScopeType
+    group_scope_type: str
     state: KeycloakUserGroupMembershipState
     created: datetime.datetime
     modified: datetime.datetime
@@ -64,7 +63,7 @@ class KeycloakUserGroupMembership:
 
         group_role = self.group_role
 
-        group_scope_type = self.group_scope_type.value
+        group_scope_type = self.group_scope_type
 
         state = self.state.value
 
@@ -118,7 +117,7 @@ class KeycloakUserGroupMembership:
 
         group_role = d.pop("group_role")
 
-        group_scope_type = RancherCatalogScopeType(d.pop("group_scope_type"))
+        group_scope_type = d.pop("group_scope_type")
 
         state = KeycloakUserGroupMembershipState(d.pop("state"))
 

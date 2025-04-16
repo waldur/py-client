@@ -923,7 +923,6 @@ from .rancher_ingresses_list_field_item import RancherIngressesListFieldItem
 from .rancher_ingresses_list_state_item import RancherIngressesListStateItem
 from .rancher_ingresses_retrieve_field_item import RancherIngressesRetrieveFieldItem
 from .rancher_ingresses_yaml_retrieve_field_item import RancherIngressesYamlRetrieveFieldItem
-from .rancher_keycloak_group_scope_type import RancherKeycloakGroupScopeType
 from .rancher_namespace import RancherNamespace
 from .rancher_namespaces_list_o_item import RancherNamespacesListOItem
 from .rancher_nested_namespace import RancherNestedNamespace
@@ -934,6 +933,7 @@ from .rancher_nested_workload import RancherNestedWorkload
 from .rancher_nested_workload_request import RancherNestedWorkloadRequest
 from .rancher_node import RancherNode
 from .rancher_project import RancherProject
+from .rancher_role_scope_type import RancherRoleScopeType
 from .rancher_service import RancherService
 from .rancher_service_marketplace_offering_plugin_options import RancherServiceMarketplaceOfferingPluginOptions
 from .rancher_service_request import RancherServiceRequest
@@ -1021,8 +1021,8 @@ from .robot_account_request import RobotAccountRequest
 from .role_description import RoleDescription
 from .role_description_request import RoleDescriptionRequest
 from .role_details import RoleDetails
-from .role_enum import RoleEnum
 from .role_modify_request import RoleModifyRequest
+from .role_template import RoleTemplate
 from .role_type import RoleType
 from .roles_enum import RolesEnum
 from .roles_list_field_item import RolesListFieldItem
@@ -2051,7 +2051,6 @@ __all__ = (
     "RancherIngressesYamlRetrieveFieldItem",
     "RancherIngressMarketplaceOfferingPluginOptions",
     "RancherIngressRequest",
-    "RancherKeycloakGroupScopeType",
     "RancherNamespace",
     "RancherNamespacesListOItem",
     "RancherNestedNamespace",
@@ -2062,6 +2061,7 @@ __all__ = (
     "RancherNestedWorkloadRequest",
     "RancherNode",
     "RancherProject",
+    "RancherRoleScopeType",
     "RancherService",
     "RancherServiceMarketplaceOfferingPluginOptions",
     "RancherServiceRequest",
@@ -2149,11 +2149,11 @@ __all__ = (
     "RoleDescription",
     "RoleDescriptionRequest",
     "RoleDetails",
-    "RoleEnum",
     "RoleModifyRequest",
     "RolesEnum",
     "RolesListFieldItem",
     "RolesRetrieveFieldItem",
+    "RoleTemplate",
     "RoleType",
     "RoundReviewer",
     "RuntimeStates",

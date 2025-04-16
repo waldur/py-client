@@ -7,8 +7,6 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.rancher_keycloak_group_scope_type import RancherKeycloakGroupScopeType
-
 T = TypeVar("T", bound="KeycloakGroup")
 
 
@@ -20,7 +18,7 @@ class KeycloakGroup:
         url (str):
         name (str):
         backend_id (str):
-        scope_type (RancherKeycloakGroupScopeType):
+        scope_type (str):
         scope_uuid (UUID): UUID of the cluster or project
         scope_name (str): Get the name of the cluster or project
         role (str):
@@ -32,7 +30,7 @@ class KeycloakGroup:
     url: str
     name: str
     backend_id: str
-    scope_type: RancherKeycloakGroupScopeType
+    scope_type: str
     scope_uuid: UUID
     scope_name: str
     role: str
@@ -49,7 +47,7 @@ class KeycloakGroup:
 
         backend_id = self.backend_id
 
-        scope_type = self.scope_type.value
+        scope_type = self.scope_type
 
         scope_uuid = str(self.scope_uuid)
 
@@ -91,7 +89,7 @@ class KeycloakGroup:
 
         backend_id = d.pop("backend_id")
 
-        scope_type = RancherKeycloakGroupScopeType(d.pop("scope_type"))
+        scope_type = d.pop("scope_type")
 
         scope_uuid = UUID(d.pop("scope_uuid"))
 

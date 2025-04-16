@@ -35,6 +35,7 @@ class MergedSecretOptionsRequest:
         backend_url (Union[Unset, str]):
         username (Union[Unset, str]):
         password (Union[Unset, str]):
+        cloud_init_template (Union[Unset, str]):
     """
 
     heappe_cluster_password: Union[Unset, str] = UNSET
@@ -55,6 +56,7 @@ class MergedSecretOptionsRequest:
     backend_url: Union[Unset, str] = UNSET
     username: Union[Unset, str] = UNSET
     password: Union[Unset, str] = UNSET
+    cloud_init_template: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -99,6 +101,8 @@ class MergedSecretOptionsRequest:
 
         password = self.password
 
+        cloud_init_template = self.cloud_init_template
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -138,6 +142,8 @@ class MergedSecretOptionsRequest:
             field_dict["username"] = username
         if password is not UNSET:
             field_dict["password"] = password
+        if cloud_init_template is not UNSET:
+            field_dict["cloud_init_template"] = cloud_init_template
 
         return field_dict
 
@@ -187,6 +193,8 @@ class MergedSecretOptionsRequest:
 
         password = d.pop("password", UNSET)
 
+        cloud_init_template = d.pop("cloud_init_template", UNSET)
+
         merged_secret_options_request = cls(
             heappe_cluster_password=heappe_cluster_password,
             heappe_password=heappe_password,
@@ -206,6 +214,7 @@ class MergedSecretOptionsRequest:
             backend_url=backend_url,
             username=username,
             password=password,
+            cloud_init_template=cloud_init_template,
         )
 
         merged_secret_options_request.additional_properties = d

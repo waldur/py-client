@@ -52,6 +52,9 @@ class MergedPluginOptionsRequest:
         flavors_regex (Union[Unset, str]): Regular expression to limit flavors list
         openstack_offering_uuid_list (Union[Unset, list[str]]): List of UUID of OpenStack offerings where tenant can be
             created
+        managed_rancher_server_flavor_name (Union[Unset, str]):
+        managed_rancher_system_volume_size_gb (Union[Unset, int]):
+        managed_rancher_system_volume_type_name (Union[Unset, str]):
         account_name_generation_policy (Union[AccountNameGenerationPolicyEnum, None, Unset]): Slurm account name
             generation policy
     """
@@ -85,6 +88,9 @@ class MergedPluginOptionsRequest:
     enable_issues_for_membership_changes: Union[Unset, bool] = UNSET
     flavors_regex: Union[Unset, str] = UNSET
     openstack_offering_uuid_list: Union[Unset, list[str]] = UNSET
+    managed_rancher_server_flavor_name: Union[Unset, str] = UNSET
+    managed_rancher_system_volume_size_gb: Union[Unset, int] = UNSET
+    managed_rancher_system_volume_type_name: Union[Unset, str] = UNSET
     account_name_generation_policy: Union[AccountNameGenerationPolicyEnum, None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -151,6 +157,12 @@ class MergedPluginOptionsRequest:
         if not isinstance(self.openstack_offering_uuid_list, Unset):
             openstack_offering_uuid_list = self.openstack_offering_uuid_list
 
+        managed_rancher_server_flavor_name = self.managed_rancher_server_flavor_name
+
+        managed_rancher_system_volume_size_gb = self.managed_rancher_system_volume_size_gb
+
+        managed_rancher_system_volume_type_name = self.managed_rancher_system_volume_type_name
+
         account_name_generation_policy: Union[None, Unset, str]
         if isinstance(self.account_name_generation_policy, Unset):
             account_name_generation_policy = UNSET
@@ -216,6 +228,12 @@ class MergedPluginOptionsRequest:
             field_dict["flavors_regex"] = flavors_regex
         if openstack_offering_uuid_list is not UNSET:
             field_dict["openstack_offering_uuid_list"] = openstack_offering_uuid_list
+        if managed_rancher_server_flavor_name is not UNSET:
+            field_dict["managed_rancher_server_flavor_name"] = managed_rancher_server_flavor_name
+        if managed_rancher_system_volume_size_gb is not UNSET:
+            field_dict["managed_rancher_system_volume_size_gb"] = managed_rancher_system_volume_size_gb
+        if managed_rancher_system_volume_type_name is not UNSET:
+            field_dict["managed_rancher_system_volume_type_name"] = managed_rancher_system_volume_type_name
         if account_name_generation_policy is not UNSET:
             field_dict["account_name_generation_policy"] = account_name_generation_policy
 
@@ -293,6 +311,12 @@ class MergedPluginOptionsRequest:
 
         openstack_offering_uuid_list = cast(list[str], d.pop("openstack_offering_uuid_list", UNSET))
 
+        managed_rancher_server_flavor_name = d.pop("managed_rancher_server_flavor_name", UNSET)
+
+        managed_rancher_system_volume_size_gb = d.pop("managed_rancher_system_volume_size_gb", UNSET)
+
+        managed_rancher_system_volume_type_name = d.pop("managed_rancher_system_volume_type_name", UNSET)
+
         def _parse_account_name_generation_policy(data: object) -> Union[AccountNameGenerationPolicyEnum, None, Unset]:
             if data is None:
                 return data
@@ -340,6 +364,9 @@ class MergedPluginOptionsRequest:
             enable_issues_for_membership_changes=enable_issues_for_membership_changes,
             flavors_regex=flavors_regex,
             openstack_offering_uuid_list=openstack_offering_uuid_list,
+            managed_rancher_server_flavor_name=managed_rancher_server_flavor_name,
+            managed_rancher_system_volume_size_gb=managed_rancher_system_volume_size_gb,
+            managed_rancher_system_volume_type_name=managed_rancher_system_volume_type_name,
             account_name_generation_policy=account_name_generation_policy,
         )
 
