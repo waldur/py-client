@@ -1,5 +1,6 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,12 +14,14 @@ class KeycloakUserGroupMembershipRequest:
     Attributes:
         username (str): Keycloak user username
         email (str): User's email for notifications
-        group (str):
+        scope_uuid (UUID): UUID of a cluster or a project in Rancher
+        role (str):
     """
 
     username: str
     email: str
-    group: str
+    scope_uuid: UUID
+    role: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -26,7 +29,9 @@ class KeycloakUserGroupMembershipRequest:
 
         email = self.email
 
-        group = self.group
+        scope_uuid = str(self.scope_uuid)
+
+        role = self.role
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -34,7 +39,8 @@ class KeycloakUserGroupMembershipRequest:
             {
                 "username": username,
                 "email": email,
-                "group": group,
+                "scope_uuid": scope_uuid,
+                "role": role,
             }
         )
 
@@ -47,12 +53,15 @@ class KeycloakUserGroupMembershipRequest:
 
         email = d.pop("email")
 
-        group = d.pop("group")
+        scope_uuid = UUID(d.pop("scope_uuid"))
+
+        role = d.pop("role")
 
         keycloak_user_group_membership_request = cls(
             username=username,
             email=email,
-            group=group,
+            scope_uuid=scope_uuid,
+            role=role,
         )
 
         keycloak_user_group_membership_request.additional_properties = d

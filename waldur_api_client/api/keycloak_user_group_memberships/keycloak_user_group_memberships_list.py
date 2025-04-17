@@ -12,20 +12,47 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    email: Union[Unset, str] = UNSET,
+    first_name: Union[Unset, str] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
+    last_name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["email"] = email
+
+    params["first_name"] = first_name
 
     json_group_uuid: Union[Unset, str] = UNSET
     if not isinstance(group_uuid, Unset):
         json_group_uuid = str(group_uuid)
     params["group_uuid"] = json_group_uuid
 
+    params["last_name"] = last_name
+
     params["page"] = page
 
     params["page_size"] = page_size
+
+    json_role_uuid: Union[Unset, str] = UNSET
+    if not isinstance(role_uuid, Unset):
+        json_role_uuid = str(role_uuid)
+    params["role_uuid"] = json_role_uuid
+
+    params["scope_type"] = scope_type
+
+    json_scope_uuid: Union[Unset, str] = UNSET
+    if not isinstance(scope_uuid, Unset):
+        json_scope_uuid = str(scope_uuid)
+    params["scope_uuid"] = json_scope_uuid
+
+    params["username"] = username
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -70,15 +97,29 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    email: Union[Unset, str] = UNSET,
+    first_name: Union[Unset, str] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
+    last_name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Response[list["KeycloakUserGroupMembership"]]:
     """
     Args:
+        email (Union[Unset, str]):
+        first_name (Union[Unset, str]):
         group_uuid (Union[Unset, UUID]):
+        last_name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -89,9 +130,16 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        email=email,
+        first_name=first_name,
         group_uuid=group_uuid,
+        last_name=last_name,
         page=page,
         page_size=page_size,
+        role_uuid=role_uuid,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
+        username=username,
     )
 
     response = client.get_httpx_client().request(
@@ -104,15 +152,29 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    email: Union[Unset, str] = UNSET,
+    first_name: Union[Unset, str] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
+    last_name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Optional[list["KeycloakUserGroupMembership"]]:
     """
     Args:
+        email (Union[Unset, str]):
+        first_name (Union[Unset, str]):
         group_uuid (Union[Unset, UUID]):
+        last_name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -124,24 +186,45 @@ def sync(
 
     return sync_detailed(
         client=client,
+        email=email,
+        first_name=first_name,
         group_uuid=group_uuid,
+        last_name=last_name,
         page=page,
         page_size=page_size,
+        role_uuid=role_uuid,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
+        username=username,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    email: Union[Unset, str] = UNSET,
+    first_name: Union[Unset, str] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
+    last_name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Response[list["KeycloakUserGroupMembership"]]:
     """
     Args:
+        email (Union[Unset, str]):
+        first_name (Union[Unset, str]):
         group_uuid (Union[Unset, UUID]):
+        last_name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -152,9 +235,16 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        email=email,
+        first_name=first_name,
         group_uuid=group_uuid,
+        last_name=last_name,
         page=page,
         page_size=page_size,
+        role_uuid=role_uuid,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
+        username=username,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -165,15 +255,29 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    email: Union[Unset, str] = UNSET,
+    first_name: Union[Unset, str] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
+    last_name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, UUID] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Optional[list["KeycloakUserGroupMembership"]]:
     """
     Args:
+        email (Union[Unset, str]):
+        first_name (Union[Unset, str]):
         group_uuid (Union[Unset, UUID]):
+        last_name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        role_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -186,8 +290,15 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            email=email,
+            first_name=first_name,
             group_uuid=group_uuid,
+            last_name=last_name,
             page=page,
             page_size=page_size,
+            role_uuid=role_uuid,
+            scope_type=scope_type,
+            scope_uuid=scope_uuid,
+            username=username,
         )
     ).parsed

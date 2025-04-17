@@ -20,6 +20,8 @@ class KeycloakUserGroupMembership:
         url (str):
         username (str): Keycloak user username
         email (str): User's email for notifications
+        first_name (str):
+        last_name (str):
         group (str):
         group_name (str):
         group_role (str):
@@ -36,6 +38,8 @@ class KeycloakUserGroupMembership:
     url: str
     username: str
     email: str
+    first_name: str
+    last_name: str
     group: str
     group_name: str
     group_role: str
@@ -56,6 +60,10 @@ class KeycloakUserGroupMembership:
         username = self.username
 
         email = self.email
+
+        first_name = self.first_name
+
+        last_name = self.last_name
 
         group = self.group
 
@@ -85,6 +93,8 @@ class KeycloakUserGroupMembership:
                 "url": url,
                 "username": username,
                 "email": email,
+                "first_name": first_name,
+                "last_name": last_name,
                 "group": group,
                 "group_name": group_name,
                 "group_role": group_role,
@@ -111,6 +121,10 @@ class KeycloakUserGroupMembership:
 
         email = d.pop("email")
 
+        first_name = d.pop("first_name")
+
+        last_name = d.pop("last_name")
+
         group = d.pop("group")
 
         group_name = d.pop("group_name")
@@ -136,6 +150,8 @@ class KeycloakUserGroupMembership:
             url=url,
             username=username,
             email=email,
+            first_name=first_name,
+            last_name=last_name,
             group=group,
             group_name=group_name,
             group_role=group_role,

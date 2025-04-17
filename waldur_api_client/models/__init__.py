@@ -317,7 +317,6 @@ from .jira_issue_project import JiraIssueProject
 from .jira_issue_project_request import JiraIssueProjectRequest
 from .jira_issue_request import JiraIssueRequest
 from .keycloak_group import KeycloakGroup
-from .keycloak_group_request import KeycloakGroupRequest
 from .keycloak_user_group_membership import KeycloakUserGroupMembership
 from .keycloak_user_group_membership_request import KeycloakUserGroupMembershipRequest
 from .keycloak_user_group_membership_state import KeycloakUserGroupMembershipState
@@ -724,7 +723,6 @@ from .patched_firecrest_job_request import PatchedFirecrestJobRequest
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
 from .patched_invoice_item_update_request import PatchedInvoiceItemUpdateRequest
 from .patched_issue_request import PatchedIssueRequest
-from .patched_keycloak_group_request import PatchedKeycloakGroupRequest
 from .patched_keycloak_user_group_membership_request import PatchedKeycloakUserGroupMembershipRequest
 from .patched_lexis_link_request import PatchedLexisLinkRequest
 from .patched_marketplace_category_request import PatchedMarketplaceCategoryRequest
@@ -1479,7 +1477,6 @@ __all__ = (
     "JiraIssueProjectRequest",
     "JiraIssueRequest",
     "KeycloakGroup",
-    "KeycloakGroupRequest",
     "KeycloakUserGroupMembership",
     "KeycloakUserGroupMembershipRequest",
     "KeycloakUserGroupMembershipState",
@@ -1854,7 +1851,6 @@ __all__ = (
     "PatchedIdentityProviderRequest",
     "PatchedInvoiceItemUpdateRequest",
     "PatchedIssueRequest",
-    "PatchedKeycloakGroupRequest",
     "PatchedKeycloakUserGroupMembershipRequest",
     "PatchedLexisLinkRequest",
     "PatchedMarketplaceCategoryRequest",

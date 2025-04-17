@@ -1,5 +1,6 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,12 +16,14 @@ class PatchedKeycloakUserGroupMembershipRequest:
     Attributes:
         username (Union[Unset, str]): Keycloak user username
         email (Union[Unset, str]): User's email for notifications
-        group (Union[Unset, str]):
+        scope_uuid (Union[Unset, UUID]): UUID of a cluster or a project in Rancher
+        role (Union[Unset, str]):
     """
 
     username: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
-    group: Union[Unset, str] = UNSET
+    scope_uuid: Union[Unset, UUID] = UNSET
+    role: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -28,7 +31,11 @@ class PatchedKeycloakUserGroupMembershipRequest:
 
         email = self.email
 
-        group = self.group
+        scope_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.scope_uuid, Unset):
+            scope_uuid = str(self.scope_uuid)
+
+        role = self.role
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -37,8 +44,10 @@ class PatchedKeycloakUserGroupMembershipRequest:
             field_dict["username"] = username
         if email is not UNSET:
             field_dict["email"] = email
-        if group is not UNSET:
-            field_dict["group"] = group
+        if scope_uuid is not UNSET:
+            field_dict["scope_uuid"] = scope_uuid
+        if role is not UNSET:
+            field_dict["role"] = role
 
         return field_dict
 
@@ -49,12 +58,20 @@ class PatchedKeycloakUserGroupMembershipRequest:
 
         email = d.pop("email", UNSET)
 
-        group = d.pop("group", UNSET)
+        _scope_uuid = d.pop("scope_uuid", UNSET)
+        scope_uuid: Union[Unset, UUID]
+        if isinstance(_scope_uuid, Unset):
+            scope_uuid = UNSET
+        else:
+            scope_uuid = UUID(_scope_uuid)
+
+        role = d.pop("role", UNSET)
 
         patched_keycloak_user_group_membership_request = cls(
             username=username,
             email=email,
-            group=group,
+            scope_uuid=scope_uuid,
+            role=role,
         )
 
         patched_keycloak_user_group_membership_request.additional_properties = d
