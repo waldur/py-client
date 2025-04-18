@@ -22,12 +22,14 @@ class MappingRequest:
         volume_types (Union[Unset, list['VolumeTypeMappingRequest']]):
         subnets (Union[Unset, list['SubNetMappingRequest']]):
         skip_connection_extnet (Union[Unset, bool]):  Default: False.
+        sync_instance_ports (Union[Unset, bool]):  Default: False.
         networks (Union[Unset, list[UUID]]):
     """
 
     volume_types: Union[Unset, list["VolumeTypeMappingRequest"]] = UNSET
     subnets: Union[Unset, list["SubNetMappingRequest"]] = UNSET
     skip_connection_extnet: Union[Unset, bool] = False
+    sync_instance_ports: Union[Unset, bool] = False
     networks: Union[Unset, list[UUID]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -48,6 +50,8 @@ class MappingRequest:
 
         skip_connection_extnet = self.skip_connection_extnet
 
+        sync_instance_ports = self.sync_instance_ports
+
         networks: Union[Unset, list[str]] = UNSET
         if not isinstance(self.networks, Unset):
             networks = []
@@ -64,6 +68,8 @@ class MappingRequest:
             field_dict["subnets"] = subnets
         if skip_connection_extnet is not UNSET:
             field_dict["skip_connection_extnet"] = skip_connection_extnet
+        if sync_instance_ports is not UNSET:
+            field_dict["sync_instance_ports"] = sync_instance_ports
         if networks is not UNSET:
             field_dict["networks"] = networks
 
@@ -91,6 +97,8 @@ class MappingRequest:
 
         skip_connection_extnet = d.pop("skip_connection_extnet", UNSET)
 
+        sync_instance_ports = d.pop("sync_instance_ports", UNSET)
+
         networks = []
         _networks = d.pop("networks", UNSET)
         for networks_item_data in _networks or []:
@@ -102,6 +110,7 @@ class MappingRequest:
             volume_types=volume_types,
             subnets=subnets,
             skip_connection_extnet=skip_connection_extnet,
+            sync_instance_ports=sync_instance_ports,
             networks=networks,
         )
 
