@@ -28,7 +28,7 @@ class RobotAccount:
         resource (str):
         backend_id (str):
         fingerprints (list['Fingerprint']):
-        state (str):
+        state (Union[None, str]):
         error_message (str):
         error_traceback (str):
         username (Union[Unset, str]):
@@ -45,7 +45,7 @@ class RobotAccount:
     resource: str
     backend_id: str
     fingerprints: list["Fingerprint"]
-    state: str
+    state: Union[None, str]
     error_message: str
     error_traceback: str
     username: Union[Unset, str] = UNSET
@@ -74,6 +74,7 @@ class RobotAccount:
             fingerprints_item = fingerprints_item_data.to_dict()
             fingerprints.append(fingerprints_item)
 
+        state: Union[None, str]
         state = self.state
 
         error_message = self.error_message
@@ -148,7 +149,12 @@ class RobotAccount:
 
             fingerprints.append(fingerprints_item)
 
-        state = d.pop("state")
+        def _parse_state(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        state = _parse_state(d.pop("state"))
 
         error_message = d.pop("error_message")
 
