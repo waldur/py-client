@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -31,7 +31,7 @@ class RobotAccountDetails:
         resource (str):
         users (list['BasicUser']):
         backend_id (str):
-        responsible_user (BasicUser):
+        responsible_user (Union['BasicUser', None]):
         fingerprints (list['Fingerprint']):
         state (str):
         error_message (str):
@@ -57,7 +57,7 @@ class RobotAccountDetails:
     resource: str
     users: list["BasicUser"]
     backend_id: str
-    responsible_user: "BasicUser"
+    responsible_user: Union["BasicUser", None]
     fingerprints: list["Fingerprint"]
     state: str
     error_message: str
@@ -76,6 +76,8 @@ class RobotAccountDetails:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.basic_user import BasicUser
+
         url = self.url
 
         uuid = str(self.uuid)
@@ -95,7 +97,11 @@ class RobotAccountDetails:
 
         backend_id = self.backend_id
 
-        responsible_user = self.responsible_user.to_dict()
+        responsible_user: Union[None, dict[str, Any]]
+        if isinstance(self.responsible_user, BasicUser):
+            responsible_user = self.responsible_user.to_dict()
+        else:
+            responsible_user = self.responsible_user
 
         fingerprints = []
         for fingerprints_item_data in self.fingerprints:
@@ -197,7 +203,20 @@ class RobotAccountDetails:
 
         backend_id = d.pop("backend_id")
 
-        responsible_user = BasicUser.from_dict(d.pop("responsible_user"))
+        def _parse_responsible_user(data: object) -> Union["BasicUser", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                responsible_user_type_1 = BasicUser.from_dict(data)
+
+                return responsible_user_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["BasicUser", None], data)
+
+        responsible_user = _parse_responsible_user(d.pop("responsible_user"))
 
         fingerprints = []
         _fingerprints = d.pop("fingerprints")
