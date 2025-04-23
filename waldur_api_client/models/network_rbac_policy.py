@@ -17,30 +17,42 @@ T = TypeVar("T", bound="NetworkRBACPolicy")
 class NetworkRBACPolicy:
     """
     Attributes:
+        url (Union[Unset, str]):
         uuid (Union[Unset, UUID]):
         network (Union[Unset, str]):
+        network_name (Union[Unset, str]):
         target_tenant (Union[Unset, str]):
+        target_tenant_name (Union[Unset, str]):
         backend_id (Union[Unset, str]):
         policy_type (Union[Unset, PolicyTypeEnum]):  Default: PolicyTypeEnum.ACCESS_AS_SHARED.
         created (Union[Unset, datetime.datetime]):
     """
 
+    url: Union[Unset, str] = UNSET
     uuid: Union[Unset, UUID] = UNSET
     network: Union[Unset, str] = UNSET
+    network_name: Union[Unset, str] = UNSET
     target_tenant: Union[Unset, str] = UNSET
+    target_tenant_name: Union[Unset, str] = UNSET
     backend_id: Union[Unset, str] = UNSET
     policy_type: Union[Unset, PolicyTypeEnum] = PolicyTypeEnum.ACCESS_AS_SHARED
     created: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        url = self.url
+
         uuid: Union[Unset, str] = UNSET
         if not isinstance(self.uuid, Unset):
             uuid = str(self.uuid)
 
         network = self.network
 
+        network_name = self.network_name
+
         target_tenant = self.target_tenant
+
+        target_tenant_name = self.target_tenant_name
 
         backend_id = self.backend_id
 
@@ -55,12 +67,18 @@ class NetworkRBACPolicy:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
         if uuid is not UNSET:
             field_dict["uuid"] = uuid
         if network is not UNSET:
             field_dict["network"] = network
+        if network_name is not UNSET:
+            field_dict["network_name"] = network_name
         if target_tenant is not UNSET:
             field_dict["target_tenant"] = target_tenant
+        if target_tenant_name is not UNSET:
+            field_dict["target_tenant_name"] = target_tenant_name
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
         if policy_type is not UNSET:
@@ -73,6 +91,8 @@ class NetworkRBACPolicy:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        url = d.pop("url", UNSET)
+
         _uuid = d.pop("uuid", UNSET)
         uuid: Union[Unset, UUID]
         if isinstance(_uuid, Unset):
@@ -82,7 +102,11 @@ class NetworkRBACPolicy:
 
         network = d.pop("network", UNSET)
 
+        network_name = d.pop("network_name", UNSET)
+
         target_tenant = d.pop("target_tenant", UNSET)
+
+        target_tenant_name = d.pop("target_tenant_name", UNSET)
 
         backend_id = d.pop("backend_id", UNSET)
 
@@ -101,9 +125,12 @@ class NetworkRBACPolicy:
             created = isoparse(_created)
 
         network_rbac_policy = cls(
+            url=url,
             uuid=uuid,
             network=network,
+            network_name=network_name,
             target_tenant=target_tenant,
+            target_tenant_name=target_tenant_name,
             backend_id=backend_id,
             policy_type=policy_type,
             created=created,

@@ -20,12 +20,13 @@ class ProposalReview:
         url (str):
         uuid (UUID):
         proposal (str):
+        proposal_name (str):
+        proposal_uuid (UUID):
         reviewer (str):
         reviewer_full_name (str):
         reviewer_uuid (UUID):
         state (ProposalReviewStateEnum):
         review_end_date (datetime.datetime):
-        proposal_name (str):
         round_uuid (UUID):
         round_name (str):
         round_cutoff_time (datetime.datetime):
@@ -49,12 +50,13 @@ class ProposalReview:
     url: str
     uuid: UUID
     proposal: str
+    proposal_name: str
+    proposal_uuid: UUID
     reviewer: str
     reviewer_full_name: str
     reviewer_uuid: UUID
     state: ProposalReviewStateEnum
     review_end_date: datetime.datetime
-    proposal_name: str
     round_uuid: UUID
     round_name: str
     round_cutoff_time: datetime.datetime
@@ -82,6 +84,10 @@ class ProposalReview:
 
         proposal = self.proposal
 
+        proposal_name = self.proposal_name
+
+        proposal_uuid = str(self.proposal_uuid)
+
         reviewer = self.reviewer
 
         reviewer_full_name = self.reviewer_full_name
@@ -91,8 +97,6 @@ class ProposalReview:
         state = self.state.value
 
         review_end_date = self.review_end_date.isoformat()
-
-        proposal_name = self.proposal_name
 
         round_uuid = str(self.round_uuid)
 
@@ -173,12 +177,13 @@ class ProposalReview:
                 "url": url,
                 "uuid": uuid,
                 "proposal": proposal,
+                "proposal_name": proposal_name,
+                "proposal_uuid": proposal_uuid,
                 "reviewer": reviewer,
                 "reviewer_full_name": reviewer_full_name,
                 "reviewer_uuid": reviewer_uuid,
                 "state": state,
                 "review_end_date": review_end_date,
-                "proposal_name": proposal_name,
                 "round_uuid": round_uuid,
                 "round_name": round_name,
                 "round_cutoff_time": round_cutoff_time,
@@ -223,6 +228,10 @@ class ProposalReview:
 
         proposal = d.pop("proposal")
 
+        proposal_name = d.pop("proposal_name")
+
+        proposal_uuid = UUID(d.pop("proposal_uuid"))
+
         reviewer = d.pop("reviewer")
 
         reviewer_full_name = d.pop("reviewer_full_name")
@@ -232,8 +241,6 @@ class ProposalReview:
         state = ProposalReviewStateEnum(d.pop("state"))
 
         review_end_date = isoparse(d.pop("review_end_date"))
-
-        proposal_name = d.pop("proposal_name")
 
         round_uuid = UUID(d.pop("round_uuid"))
 
@@ -344,12 +351,13 @@ class ProposalReview:
             url=url,
             uuid=uuid,
             proposal=proposal,
+            proposal_name=proposal_name,
+            proposal_uuid=proposal_uuid,
             reviewer=reviewer,
             reviewer_full_name=reviewer_full_name,
             reviewer_uuid=reviewer_uuid,
             state=state,
             review_end_date=review_end_date,
-            proposal_name=proposal_name,
             round_uuid=round_uuid,
             round_name=round_name,
             round_cutoff_time=round_cutoff_time,

@@ -27,6 +27,7 @@ class Proposal:
         uuid (UUID):
         url (str):
         name (str):
+        project_name (str):
         supporting_documentation (list['ProposalDocumentation']):
         state (ProposalStates):
         approved_by (Union[None, str]):
@@ -51,6 +52,7 @@ class Proposal:
     uuid: UUID
     url: str
     name: str
+    project_name: str
     supporting_documentation: list["ProposalDocumentation"]
     state: ProposalStates
     approved_by: Union[None, str]
@@ -78,6 +80,8 @@ class Proposal:
         url = self.url
 
         name = self.name
+
+        project_name = self.project_name
 
         supporting_documentation = []
         for supporting_documentation_item_data in self.supporting_documentation:
@@ -143,6 +147,7 @@ class Proposal:
                 "uuid": uuid,
                 "url": url,
                 "name": name,
+                "project_name": project_name,
                 "supporting_documentation": supporting_documentation,
                 "state": state,
                 "approved_by": approved_by,
@@ -184,6 +189,8 @@ class Proposal:
         url = d.pop("url")
 
         name = d.pop("name")
+
+        project_name = d.pop("project_name")
 
         supporting_documentation = []
         _supporting_documentation = d.pop("supporting_documentation")
@@ -282,6 +289,7 @@ class Proposal:
             uuid=uuid,
             url=url,
             name=name,
+            project_name=project_name,
             supporting_documentation=supporting_documentation,
             state=state,
             approved_by=approved_by,

@@ -653,6 +653,7 @@ from .openstack_floating_ips_retrieve_field_item import OpenstackFloatingIpsRetr
 from .openstack_instances_list_field_item import OpenstackInstancesListFieldItem
 from .openstack_instances_list_state_item import OpenstackInstancesListStateItem
 from .openstack_instances_retrieve_field_item import OpenstackInstancesRetrieveFieldItem
+from .openstack_network_rbac_policies_list_policy_type import OpenstackNetworkRbacPoliciesListPolicyType
 from .openstack_networks_list_field_item import OpenstackNetworksListFieldItem
 from .openstack_networks_list_state_item import OpenstackNetworksListStateItem
 from .openstack_networks_retrieve_field_item import OpenstackNetworksRetrieveFieldItem
@@ -1735,6 +1736,7 @@ __all__ = (
     "OpenStackNestedVolumeRequest",
     "OpenStackNetwork",
     "OpenStackNetworkMarketplaceOfferingPluginOptions",
+    "OpenstackNetworkRbacPoliciesListPolicyType",
     "OpenStackNetworkRequest",
     "OpenstackNetworksListFieldItem",
     "OpenstackNetworksListStateItem",
