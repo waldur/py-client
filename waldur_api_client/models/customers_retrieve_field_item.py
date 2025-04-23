@@ -19,6 +19,7 @@ class CustomersRetrieveFieldItem(str, Enum):
     COUNTRY_NAME = "country_name"
     CREATED = "created"
     CUSTOMER_CREDIT = "customer_credit"
+    CUSTOMER_UNALLOCATED_CREDIT = "customer_unallocated_credit"
     DEFAULT_TAX_PERCENT = "default_tax_percent"
     DISPLAY_NAME = "display_name"
     DOMAIN = "domain"

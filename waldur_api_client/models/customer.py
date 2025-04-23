@@ -64,6 +64,7 @@ class Customer:
         country (Union[BlankEnum, CountryEnum, Unset]):
         payment_profiles (Union[Unset, list['PaymentProfile']]):
         customer_credit (Union[None, Unset, float]):
+        customer_unallocated_credit (Union[None, Unset, float]):
         is_service_provider (Union[Unset, bool]):
         service_provider (Union[None, Unset, str]):
         service_provider_uuid (Union[None, UUID, Unset]):
@@ -109,6 +110,7 @@ class Customer:
     country: Union[BlankEnum, CountryEnum, Unset] = UNSET
     payment_profiles: Union[Unset, list["PaymentProfile"]] = UNSET
     customer_credit: Union[None, Unset, float] = UNSET
+    customer_unallocated_credit: Union[None, Unset, float] = UNSET
     is_service_provider: Union[Unset, bool] = UNSET
     service_provider: Union[None, Unset, str] = UNSET
     service_provider_uuid: Union[None, UUID, Unset] = UNSET
@@ -240,6 +242,12 @@ class Customer:
         else:
             customer_credit = self.customer_credit
 
+        customer_unallocated_credit: Union[None, Unset, float]
+        if isinstance(self.customer_unallocated_credit, Unset):
+            customer_unallocated_credit = UNSET
+        else:
+            customer_unallocated_credit = self.customer_unallocated_credit
+
         is_service_provider = self.is_service_provider
 
         service_provider: Union[None, Unset, str]
@@ -345,6 +353,8 @@ class Customer:
             field_dict["payment_profiles"] = payment_profiles
         if customer_credit is not UNSET:
             field_dict["customer_credit"] = customer_credit
+        if customer_unallocated_credit is not UNSET:
+            field_dict["customer_unallocated_credit"] = customer_unallocated_credit
         if is_service_provider is not UNSET:
             field_dict["is_service_provider"] = is_service_provider
         if service_provider is not UNSET:
@@ -524,6 +534,15 @@ class Customer:
 
         customer_credit = _parse_customer_credit(d.pop("customer_credit", UNSET))
 
+        def _parse_customer_unallocated_credit(data: object) -> Union[None, Unset, float]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, float], data)
+
+        customer_unallocated_credit = _parse_customer_unallocated_credit(d.pop("customer_unallocated_credit", UNSET))
+
         is_service_provider = d.pop("is_service_provider", UNSET)
 
         def _parse_service_provider(data: object) -> Union[None, Unset, str]:
@@ -609,6 +628,7 @@ class Customer:
             country=country,
             payment_profiles=payment_profiles,
             customer_credit=customer_credit,
+            customer_unallocated_credit=customer_unallocated_credit,
             is_service_provider=is_service_provider,
             service_provider=service_provider,
             service_provider_uuid=service_provider_uuid,
