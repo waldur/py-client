@@ -33,8 +33,6 @@ class RobotAccountDetails:
         backend_id (str):
         responsible_user (Union['BasicUser', None]):
         fingerprints (list['Fingerprint']):
-        error_message (str):
-        error_traceback (str):
         user_keys (list['SshKey']):
         resource_name (str):
         resource_uuid (UUID):
@@ -47,6 +45,8 @@ class RobotAccountDetails:
         username (Union[Unset, str]):
         keys (Union[Unset, Any]):
         state (Union[Unset, str]):
+        error_message (Union[Unset, str]):
+        error_traceback (Union[Unset, str]):
     """
 
     url: str
@@ -59,8 +59,6 @@ class RobotAccountDetails:
     backend_id: str
     responsible_user: Union["BasicUser", None]
     fingerprints: list["Fingerprint"]
-    error_message: str
-    error_traceback: str
     user_keys: list["SshKey"]
     resource_name: str
     resource_uuid: UUID
@@ -73,6 +71,8 @@ class RobotAccountDetails:
     username: Union[Unset, str] = UNSET
     keys: Union[Unset, Any] = UNSET
     state: Union[Unset, str] = UNSET
+    error_message: Union[Unset, str] = UNSET
+    error_traceback: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -108,10 +108,6 @@ class RobotAccountDetails:
             fingerprints_item = fingerprints_item_data.to_dict()
             fingerprints.append(fingerprints_item)
 
-        error_message = self.error_message
-
-        error_traceback = self.error_traceback
-
         user_keys = []
         for user_keys_item_data in self.user_keys:
             user_keys_item = user_keys_item_data.to_dict()
@@ -139,6 +135,10 @@ class RobotAccountDetails:
 
         state = self.state
 
+        error_message = self.error_message
+
+        error_traceback = self.error_traceback
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -153,8 +153,6 @@ class RobotAccountDetails:
                 "backend_id": backend_id,
                 "responsible_user": responsible_user,
                 "fingerprints": fingerprints,
-                "error_message": error_message,
-                "error_traceback": error_traceback,
                 "user_keys": user_keys,
                 "resource_name": resource_name,
                 "resource_uuid": resource_uuid,
@@ -172,6 +170,10 @@ class RobotAccountDetails:
             field_dict["keys"] = keys
         if state is not UNSET:
             field_dict["state"] = state
+        if error_message is not UNSET:
+            field_dict["error_message"] = error_message
+        if error_traceback is not UNSET:
+            field_dict["error_traceback"] = error_traceback
 
         return field_dict
 
@@ -226,10 +228,6 @@ class RobotAccountDetails:
 
             fingerprints.append(fingerprints_item)
 
-        error_message = d.pop("error_message")
-
-        error_traceback = d.pop("error_traceback")
-
         user_keys = []
         _user_keys = d.pop("user_keys")
         for user_keys_item_data in _user_keys:
@@ -259,6 +257,10 @@ class RobotAccountDetails:
 
         state = d.pop("state", UNSET)
 
+        error_message = d.pop("error_message", UNSET)
+
+        error_traceback = d.pop("error_traceback", UNSET)
+
         robot_account_details = cls(
             url=url,
             uuid=uuid,
@@ -270,8 +272,6 @@ class RobotAccountDetails:
             backend_id=backend_id,
             responsible_user=responsible_user,
             fingerprints=fingerprints,
-            error_message=error_message,
-            error_traceback=error_traceback,
             user_keys=user_keys,
             resource_name=resource_name,
             resource_uuid=resource_uuid,
@@ -284,6 +284,8 @@ class RobotAccountDetails:
             username=username,
             keys=keys,
             state=state,
+            error_message=error_message,
+            error_traceback=error_traceback,
         )
 
         robot_account_details.additional_properties = d
