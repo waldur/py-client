@@ -320,6 +320,7 @@ from .keycloak_group import KeycloakGroup
 from .keycloak_user_group_membership import KeycloakUserGroupMembership
 from .keycloak_user_group_membership_request import KeycloakUserGroupMembershipRequest
 from .keycloak_user_group_membership_state import KeycloakUserGroupMembershipState
+from .keycloak_user_group_memberships_list_state_item import KeycloakUserGroupMembershipsListStateItem
 from .keys_list_field_item import KeysListFieldItem
 from .keys_list_o_item import KeysListOItem
 from .keys_retrieve_field_item import KeysRetrieveFieldItem
@@ -1480,6 +1481,7 @@ __all__ = (
     "KeycloakGroup",
     "KeycloakUserGroupMembership",
     "KeycloakUserGroupMembershipRequest",
+    "KeycloakUserGroupMembershipsListStateItem",
     "KeycloakUserGroupMembershipState",
     "KeysListFieldItem",
     "KeysListOItem",

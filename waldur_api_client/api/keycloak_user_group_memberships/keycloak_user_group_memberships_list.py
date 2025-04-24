@@ -7,6 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.keycloak_user_group_membership import KeycloakUserGroupMembership
+from ...models.keycloak_user_group_memberships_list_state_item import KeycloakUserGroupMembershipsListStateItem
 from ...types import UNSET, Response, Unset
 
 
@@ -21,6 +22,7 @@ def _get_kwargs(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -51,6 +53,15 @@ def _get_kwargs(
     if not isinstance(scope_uuid, Unset):
         json_scope_uuid = str(scope_uuid)
     params["scope_uuid"] = json_scope_uuid
+
+    json_state: Union[Unset, list[str]] = UNSET
+    if not isinstance(state, Unset):
+        json_state = []
+        for state_item_data in state:
+            state_item = state_item_data.value
+            json_state.append(state_item)
+
+    params["state"] = json_state
 
     params["username"] = username
 
@@ -106,6 +117,7 @@ def sync_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["KeycloakUserGroupMembership"]]:
     """
@@ -119,6 +131,7 @@ def sync_detailed(
         role_uuid (Union[Unset, UUID]):
         scope_type (Union[Unset, str]):
         scope_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -139,6 +152,7 @@ def sync_detailed(
         role_uuid=role_uuid,
         scope_type=scope_type,
         scope_uuid=scope_uuid,
+        state=state,
         username=username,
     )
 
@@ -161,6 +175,7 @@ def sync(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Optional[list["KeycloakUserGroupMembership"]]:
     """
@@ -174,6 +189,7 @@ def sync(
         role_uuid (Union[Unset, UUID]):
         scope_type (Union[Unset, str]):
         scope_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -195,6 +211,7 @@ def sync(
         role_uuid=role_uuid,
         scope_type=scope_type,
         scope_uuid=scope_uuid,
+        state=state,
         username=username,
     ).parsed
 
@@ -211,6 +228,7 @@ async def asyncio_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["KeycloakUserGroupMembership"]]:
     """
@@ -224,6 +242,7 @@ async def asyncio_detailed(
         role_uuid (Union[Unset, UUID]):
         scope_type (Union[Unset, str]):
         scope_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -244,6 +263,7 @@ async def asyncio_detailed(
         role_uuid=role_uuid,
         scope_type=scope_type,
         scope_uuid=scope_uuid,
+        state=state,
         username=username,
     )
 
@@ -264,6 +284,7 @@ async def asyncio(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Optional[list["KeycloakUserGroupMembership"]]:
     """
@@ -277,6 +298,7 @@ async def asyncio(
         role_uuid (Union[Unset, UUID]):
         scope_type (Union[Unset, str]):
         scope_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -299,6 +321,7 @@ async def asyncio(
             role_uuid=role_uuid,
             scope_type=scope_type,
             scope_uuid=scope_uuid,
+            state=state,
             username=username,
         )
     ).parsed

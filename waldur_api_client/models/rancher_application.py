@@ -57,7 +57,7 @@ class RancherApplication:
         rancher_project_name (Union[Unset, str]):
         catalog_name (Union[Unset, str]):
         template_name (Union[Unset, str]):
-        external_url (Union[Unset, str]):
+        external_url (Union[None, Unset, str]):
         marketplace_offering_uuid (Union[Unset, str]):
         marketplace_offering_name (Union[Unset, str]):
         marketplace_offering_plugin_options (Union[Unset, RancherApplicationMarketplaceOfferingPluginOptions]):
@@ -103,7 +103,7 @@ class RancherApplication:
     rancher_project_name: Union[Unset, str] = UNSET
     catalog_name: Union[Unset, str] = UNSET
     template_name: Union[Unset, str] = UNSET
-    external_url: Union[Unset, str] = UNSET
+    external_url: Union[None, Unset, str] = UNSET
     marketplace_offering_uuid: Union[Unset, str] = UNSET
     marketplace_offering_name: Union[Unset, str] = UNSET
     marketplace_offering_plugin_options: Union[Unset, "RancherApplicationMarketplaceOfferingPluginOptions"] = UNSET
@@ -201,7 +201,11 @@ class RancherApplication:
 
         template_name = self.template_name
 
-        external_url = self.external_url
+        external_url: Union[None, Unset, str]
+        if isinstance(self.external_url, Unset):
+            external_url = UNSET
+        else:
+            external_url = self.external_url
 
         marketplace_offering_uuid = self.marketplace_offering_uuid
 
@@ -435,7 +439,14 @@ class RancherApplication:
 
         template_name = d.pop("template_name", UNSET)
 
-        external_url = d.pop("external_url", UNSET)
+        def _parse_external_url(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        external_url = _parse_external_url(d.pop("external_url", UNSET))
 
         marketplace_offering_uuid = d.pop("marketplace_offering_uuid", UNSET)
 

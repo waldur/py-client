@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Optional, Union
+from uuid import UUID
 
 import httpx
 
@@ -11,14 +12,26 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["name"] = name
 
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["scope_type"] = scope_type
+
+    json_settings_uuid: Union[Unset, str] = UNSET
+    if not isinstance(settings_uuid, Unset):
+        json_settings_uuid = str(settings_uuid)
+    params["settings_uuid"] = json_settings_uuid
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -63,13 +76,19 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RoleTemplate"]]:
     """
     Args:
+        name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope_type (Union[Unset, str]):
+        settings_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -80,8 +99,11 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        name=name,
         page=page,
         page_size=page_size,
+        scope_type=scope_type,
+        settings_uuid=settings_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -94,13 +116,19 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> Optional[list["RoleTemplate"]]:
     """
     Args:
+        name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope_type (Union[Unset, str]):
+        settings_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -112,21 +140,30 @@ def sync(
 
     return sync_detailed(
         client=client,
+        name=name,
         page=page,
         page_size=page_size,
+        scope_type=scope_type,
+        settings_uuid=settings_uuid,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RoleTemplate"]]:
     """
     Args:
+        name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope_type (Union[Unset, str]):
+        settings_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -137,8 +174,11 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        name=name,
         page=page,
         page_size=page_size,
+        scope_type=scope_type,
+        settings_uuid=settings_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -149,13 +189,19 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> Optional[list["RoleTemplate"]]:
     """
     Args:
+        name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope_type (Union[Unset, str]):
+        settings_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +214,10 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            name=name,
             page=page,
             page_size=page_size,
+            scope_type=scope_type,
+            settings_uuid=settings_uuid,
         )
     ).parsed
