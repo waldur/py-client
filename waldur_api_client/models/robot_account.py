@@ -28,13 +28,13 @@ class RobotAccount:
         resource (str):
         backend_id (str):
         fingerprints (list['Fingerprint']):
-        state (str):
         error_message (str):
         error_traceback (str):
         username (Union[Unset, str]):
         users (Union[Unset, list[str]]):
         keys (Union[Unset, Any]):
         responsible_user (Union[None, Unset, str]):
+        state (Union[Unset, str]):
     """
 
     url: str
@@ -45,13 +45,13 @@ class RobotAccount:
     resource: str
     backend_id: str
     fingerprints: list["Fingerprint"]
-    state: str
     error_message: str
     error_traceback: str
     username: Union[Unset, str] = UNSET
     users: Union[Unset, list[str]] = UNSET
     keys: Union[Unset, Any] = UNSET
     responsible_user: Union[None, Unset, str] = UNSET
+    state: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -74,8 +74,6 @@ class RobotAccount:
             fingerprints_item = fingerprints_item_data.to_dict()
             fingerprints.append(fingerprints_item)
 
-        state = self.state
-
         error_message = self.error_message
 
         error_traceback = self.error_traceback
@@ -94,6 +92,8 @@ class RobotAccount:
         else:
             responsible_user = self.responsible_user
 
+        state = self.state
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -106,7 +106,6 @@ class RobotAccount:
                 "resource": resource,
                 "backend_id": backend_id,
                 "fingerprints": fingerprints,
-                "state": state,
                 "error_message": error_message,
                 "error_traceback": error_traceback,
             }
@@ -119,6 +118,8 @@ class RobotAccount:
             field_dict["keys"] = keys
         if responsible_user is not UNSET:
             field_dict["responsible_user"] = responsible_user
+        if state is not UNSET:
+            field_dict["state"] = state
 
         return field_dict
 
@@ -148,8 +149,6 @@ class RobotAccount:
 
             fingerprints.append(fingerprints_item)
 
-        state = d.pop("state")
-
         error_message = d.pop("error_message")
 
         error_traceback = d.pop("error_traceback")
@@ -169,6 +168,8 @@ class RobotAccount:
 
         responsible_user = _parse_responsible_user(d.pop("responsible_user", UNSET))
 
+        state = d.pop("state", UNSET)
+
         robot_account = cls(
             url=url,
             uuid=uuid,
@@ -178,13 +179,13 @@ class RobotAccount:
             resource=resource,
             backend_id=backend_id,
             fingerprints=fingerprints,
-            state=state,
             error_message=error_message,
             error_traceback=error_traceback,
             username=username,
             users=users,
             keys=keys,
             responsible_user=responsible_user,
+            state=state,
         )
 
         robot_account.additional_properties = d
