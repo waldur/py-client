@@ -7,20 +7,20 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_port import OpenStackPort
-from ...models.open_stack_port_request import OpenStackPortRequest
+from ...models.patched_open_stack_port_request import PatchedOpenStackPortRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: OpenStackPortRequest,
+    body: PatchedOpenStackPortRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": f"/api/openstack-networks/{uuid}/create_port/",
+        "method": "patch",
+        "url": f"/api/openstack-ports/{uuid}/",
     }
 
     _body = body.to_dict()
@@ -56,12 +56,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackPortRequest,
+    body: PatchedOpenStackPortRequest,
 ) -> Response[OpenStackPort]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackPortRequest):
+        body (PatchedOpenStackPortRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -87,12 +87,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackPortRequest,
+    body: PatchedOpenStackPortRequest,
 ) -> Optional[OpenStackPort]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackPortRequest):
+        body (PatchedOpenStackPortRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,12 +113,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackPortRequest,
+    body: PatchedOpenStackPortRequest,
 ) -> Response[OpenStackPort]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackPortRequest):
+        body (PatchedOpenStackPortRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -142,12 +142,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackPortRequest,
+    body: PatchedOpenStackPortRequest,
 ) -> Optional[OpenStackPort]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackPortRequest):
+        body (PatchedOpenStackPortRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

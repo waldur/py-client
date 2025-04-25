@@ -103,6 +103,7 @@ class EventTypesEnum(str, Enum):
     OPENSTACK_PORT_DELETED = "openstack_port_deleted"
     OPENSTACK_PORT_IMPORTED = "openstack_port_imported"
     OPENSTACK_PORT_PULLED = "openstack_port_pulled"
+    OPENSTACK_PORT_UPDATED = "openstack_port_updated"
     OPENSTACK_ROUTER_UPDATED = "openstack_router_updated"
     OPENSTACK_SECURITY_GROUP_CLEANED = "openstack_security_group_cleaned"
     OPENSTACK_SECURITY_GROUP_CREATED = "openstack_security_group_created"

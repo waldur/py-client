@@ -741,6 +741,7 @@ from .patched_offering_user_role_request import PatchedOfferingUserRoleRequest
 from .patched_open_stack_backup_request import PatchedOpenStackBackupRequest
 from .patched_open_stack_instance_request import PatchedOpenStackInstanceRequest
 from .patched_open_stack_network_request import PatchedOpenStackNetworkRequest
+from .patched_open_stack_port_request import PatchedOpenStackPortRequest
 from .patched_open_stack_security_group_update_request import PatchedOpenStackSecurityGroupUpdateRequest
 from .patched_open_stack_server_group_request import PatchedOpenStackServerGroupRequest
 from .patched_open_stack_snapshot_request import PatchedOpenStackSnapshotRequest
@@ -1869,6 +1870,7 @@ __all__ = (
     "PatchedOpenStackBackupRequest",
     "PatchedOpenStackInstanceRequest",
     "PatchedOpenStackNetworkRequest",
+    "PatchedOpenStackPortRequest",
     "PatchedOpenStackSecurityGroupUpdateRequest",
     "PatchedOpenStackServerGroupRequest",
     "PatchedOpenStackSnapshotRequest",

@@ -7,7 +7,9 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.open_stack_allowed_address_pair_request import OpenStackAllowedAddressPairRequest
     from ..models.open_stack_fixed_ip_request import OpenStackFixedIpRequest
+    from ..models.open_stack_port_nested_security_group_request import OpenStackPortNestedSecurityGroupRequest
 
 
 T = TypeVar("T", bound="OpenStackPortRequest")
@@ -21,14 +23,20 @@ class OpenStackPortRequest:
         description (Union[Unset, str]):
         fixed_ips (Union[Unset, list['OpenStackFixedIpRequest']]):
         mac_address (Union[Unset, str]):
+        allowed_address_pairs (Union[Unset, list['OpenStackAllowedAddressPairRequest']]):
         network (Union[None, Unset, str]):
+        port_security_enabled (Union[Unset, bool]):
+        security_groups (Union[Unset, list['OpenStackPortNestedSecurityGroupRequest']]):
     """
 
     name: str
     description: Union[Unset, str] = UNSET
     fixed_ips: Union[Unset, list["OpenStackFixedIpRequest"]] = UNSET
     mac_address: Union[Unset, str] = UNSET
+    allowed_address_pairs: Union[Unset, list["OpenStackAllowedAddressPairRequest"]] = UNSET
     network: Union[None, Unset, str] = UNSET
+    port_security_enabled: Union[Unset, bool] = UNSET
+    security_groups: Union[Unset, list["OpenStackPortNestedSecurityGroupRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -45,11 +53,27 @@ class OpenStackPortRequest:
 
         mac_address = self.mac_address
 
+        allowed_address_pairs: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.allowed_address_pairs, Unset):
+            allowed_address_pairs = []
+            for allowed_address_pairs_item_data in self.allowed_address_pairs:
+                allowed_address_pairs_item = allowed_address_pairs_item_data.to_dict()
+                allowed_address_pairs.append(allowed_address_pairs_item)
+
         network: Union[None, Unset, str]
         if isinstance(self.network, Unset):
             network = UNSET
         else:
             network = self.network
+
+        port_security_enabled = self.port_security_enabled
+
+        security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.security_groups, Unset):
+            security_groups = []
+            for security_groups_item_data in self.security_groups:
+                security_groups_item = security_groups_item_data.to_dict()
+                security_groups.append(security_groups_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -64,14 +88,22 @@ class OpenStackPortRequest:
             field_dict["fixed_ips"] = fixed_ips
         if mac_address is not UNSET:
             field_dict["mac_address"] = mac_address
+        if allowed_address_pairs is not UNSET:
+            field_dict["allowed_address_pairs"] = allowed_address_pairs
         if network is not UNSET:
             field_dict["network"] = network
+        if port_security_enabled is not UNSET:
+            field_dict["port_security_enabled"] = port_security_enabled
+        if security_groups is not UNSET:
+            field_dict["security_groups"] = security_groups
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.open_stack_allowed_address_pair_request import OpenStackAllowedAddressPairRequest
         from ..models.open_stack_fixed_ip_request import OpenStackFixedIpRequest
+        from ..models.open_stack_port_nested_security_group_request import OpenStackPortNestedSecurityGroupRequest
 
         d = dict(src_dict)
         name = d.pop("name")
@@ -87,6 +119,13 @@ class OpenStackPortRequest:
 
         mac_address = d.pop("mac_address", UNSET)
 
+        allowed_address_pairs = []
+        _allowed_address_pairs = d.pop("allowed_address_pairs", UNSET)
+        for allowed_address_pairs_item_data in _allowed_address_pairs or []:
+            allowed_address_pairs_item = OpenStackAllowedAddressPairRequest.from_dict(allowed_address_pairs_item_data)
+
+            allowed_address_pairs.append(allowed_address_pairs_item)
+
         def _parse_network(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -96,12 +135,24 @@ class OpenStackPortRequest:
 
         network = _parse_network(d.pop("network", UNSET))
 
+        port_security_enabled = d.pop("port_security_enabled", UNSET)
+
+        security_groups = []
+        _security_groups = d.pop("security_groups", UNSET)
+        for security_groups_item_data in _security_groups or []:
+            security_groups_item = OpenStackPortNestedSecurityGroupRequest.from_dict(security_groups_item_data)
+
+            security_groups.append(security_groups_item)
+
         open_stack_port_request = cls(
             name=name,
             description=description,
             fixed_ips=fixed_ips,
             mac_address=mac_address,
+            allowed_address_pairs=allowed_address_pairs,
             network=network,
+            port_security_enabled=port_security_enabled,
+            security_groups=security_groups,
         )
 
         open_stack_port_request.additional_properties = d
