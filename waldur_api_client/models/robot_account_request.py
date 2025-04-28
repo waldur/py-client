@@ -13,28 +13,32 @@ T = TypeVar("T", bound="RobotAccountRequest")
 class RobotAccountRequest:
     """
     Attributes:
-        type_ (str):
         resource (str):
+        type_ (str): Type of the robot account.
         username (Union[Unset, str]):
-        users (Union[Unset, list[str]]):
+        description (Union[Unset, str]):
+        users (Union[Unset, list[str]]): Users who have access to this robot account.
         keys (Union[Unset, Any]):
         responsible_user (Union[None, Unset, str]):
     """
 
-    type_: str
     resource: str
+    type_: str
     username: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
     users: Union[Unset, list[str]] = UNSET
     keys: Union[Unset, Any] = UNSET
     responsible_user: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        type_ = self.type_
-
         resource = self.resource
 
+        type_ = self.type_
+
         username = self.username
+
+        description = self.description
 
         users: Union[Unset, list[str]] = UNSET
         if not isinstance(self.users, Unset):
@@ -52,12 +56,14 @@ class RobotAccountRequest:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "type": type_,
                 "resource": resource,
+                "type": type_,
             }
         )
         if username is not UNSET:
             field_dict["username"] = username
+        if description is not UNSET:
+            field_dict["description"] = description
         if users is not UNSET:
             field_dict["users"] = users
         if keys is not UNSET:
@@ -70,11 +76,13 @@ class RobotAccountRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        type_ = d.pop("type")
-
         resource = d.pop("resource")
 
+        type_ = d.pop("type")
+
         username = d.pop("username", UNSET)
+
+        description = d.pop("description", UNSET)
 
         users = cast(list[str], d.pop("users", UNSET))
 
@@ -90,9 +98,10 @@ class RobotAccountRequest:
         responsible_user = _parse_responsible_user(d.pop("responsible_user", UNSET))
 
         robot_account_request = cls(
-            type_=type_,
             resource=resource,
+            type_=type_,
             username=username,
+            description=description,
             users=users,
             keys=keys,
             responsible_user=responsible_user,

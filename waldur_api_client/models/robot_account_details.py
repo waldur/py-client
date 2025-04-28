@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.robot_account_states import RobotAccountStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -27,12 +28,12 @@ class RobotAccountDetails:
         uuid (UUID):
         created (datetime.datetime):
         modified (datetime.datetime):
-        type_ (str):
         resource (str):
+        type_ (str): Type of the robot account.
         users (list['BasicUser']):
         backend_id (str):
-        responsible_user (Union['BasicUser', None]):
         fingerprints (list['Fingerprint']):
+        responsible_user (Union['BasicUser', None]):
         user_keys (list['SshKey']):
         resource_name (str):
         resource_uuid (UUID):
@@ -43,22 +44,23 @@ class RobotAccountDetails:
         offering_customer_uuid (UUID):
         offering_plugin_options (MergedPluginOptions):
         username (Union[Unset, str]):
-        keys (Union[Unset, Any]):
-        state (Union[Unset, str]):
+        description (Union[Unset, str]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
+        keys (Union[Unset, Any]):
+        state (Union[Unset, RobotAccountStates]):
     """
 
     url: str
     uuid: UUID
     created: datetime.datetime
     modified: datetime.datetime
-    type_: str
     resource: str
+    type_: str
     users: list["BasicUser"]
     backend_id: str
-    responsible_user: Union["BasicUser", None]
     fingerprints: list["Fingerprint"]
+    responsible_user: Union["BasicUser", None]
     user_keys: list["SshKey"]
     resource_name: str
     resource_uuid: UUID
@@ -69,10 +71,11 @@ class RobotAccountDetails:
     offering_customer_uuid: UUID
     offering_plugin_options: "MergedPluginOptions"
     username: Union[Unset, str] = UNSET
-    keys: Union[Unset, Any] = UNSET
-    state: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
+    keys: Union[Unset, Any] = UNSET
+    state: Union[Unset, RobotAccountStates] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -86,9 +89,9 @@ class RobotAccountDetails:
 
         modified = self.modified.isoformat()
 
-        type_ = self.type_
-
         resource = self.resource
+
+        type_ = self.type_
 
         users = []
         for users_item_data in self.users:
@@ -97,16 +100,16 @@ class RobotAccountDetails:
 
         backend_id = self.backend_id
 
+        fingerprints = []
+        for fingerprints_item_data in self.fingerprints:
+            fingerprints_item = fingerprints_item_data.to_dict()
+            fingerprints.append(fingerprints_item)
+
         responsible_user: Union[None, dict[str, Any]]
         if isinstance(self.responsible_user, BasicUser):
             responsible_user = self.responsible_user.to_dict()
         else:
             responsible_user = self.responsible_user
-
-        fingerprints = []
-        for fingerprints_item_data in self.fingerprints:
-            fingerprints_item = fingerprints_item_data.to_dict()
-            fingerprints.append(fingerprints_item)
 
         user_keys = []
         for user_keys_item_data in self.user_keys:
@@ -131,13 +134,17 @@ class RobotAccountDetails:
 
         username = self.username
 
-        keys = self.keys
-
-        state = self.state
+        description = self.description
 
         error_message = self.error_message
 
         error_traceback = self.error_traceback
+
+        keys = self.keys
+
+        state: Union[Unset, int] = UNSET
+        if not isinstance(self.state, Unset):
+            state = self.state.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -147,12 +154,12 @@ class RobotAccountDetails:
                 "uuid": uuid,
                 "created": created,
                 "modified": modified,
-                "type": type_,
                 "resource": resource,
+                "type": type_,
                 "users": users,
                 "backend_id": backend_id,
-                "responsible_user": responsible_user,
                 "fingerprints": fingerprints,
+                "responsible_user": responsible_user,
                 "user_keys": user_keys,
                 "resource_name": resource_name,
                 "resource_uuid": resource_uuid,
@@ -166,14 +173,16 @@ class RobotAccountDetails:
         )
         if username is not UNSET:
             field_dict["username"] = username
-        if keys is not UNSET:
-            field_dict["keys"] = keys
-        if state is not UNSET:
-            field_dict["state"] = state
+        if description is not UNSET:
+            field_dict["description"] = description
         if error_message is not UNSET:
             field_dict["error_message"] = error_message
         if error_traceback is not UNSET:
             field_dict["error_traceback"] = error_traceback
+        if keys is not UNSET:
+            field_dict["keys"] = keys
+        if state is not UNSET:
+            field_dict["state"] = state
 
         return field_dict
 
@@ -193,9 +202,9 @@ class RobotAccountDetails:
 
         modified = isoparse(d.pop("modified"))
 
-        type_ = d.pop("type")
-
         resource = d.pop("resource")
+
+        type_ = d.pop("type")
 
         users = []
         _users = d.pop("users")
@@ -205,6 +214,13 @@ class RobotAccountDetails:
             users.append(users_item)
 
         backend_id = d.pop("backend_id")
+
+        fingerprints = []
+        _fingerprints = d.pop("fingerprints")
+        for fingerprints_item_data in _fingerprints:
+            fingerprints_item = Fingerprint.from_dict(fingerprints_item_data)
+
+            fingerprints.append(fingerprints_item)
 
         def _parse_responsible_user(data: object) -> Union["BasicUser", None]:
             if data is None:
@@ -220,13 +236,6 @@ class RobotAccountDetails:
             return cast(Union["BasicUser", None], data)
 
         responsible_user = _parse_responsible_user(d.pop("responsible_user"))
-
-        fingerprints = []
-        _fingerprints = d.pop("fingerprints")
-        for fingerprints_item_data in _fingerprints:
-            fingerprints_item = Fingerprint.from_dict(fingerprints_item_data)
-
-            fingerprints.append(fingerprints_item)
 
         user_keys = []
         _user_keys = d.pop("user_keys")
@@ -253,25 +262,32 @@ class RobotAccountDetails:
 
         username = d.pop("username", UNSET)
 
-        keys = d.pop("keys", UNSET)
-
-        state = d.pop("state", UNSET)
+        description = d.pop("description", UNSET)
 
         error_message = d.pop("error_message", UNSET)
 
         error_traceback = d.pop("error_traceback", UNSET)
+
+        keys = d.pop("keys", UNSET)
+
+        _state = d.pop("state", UNSET)
+        state: Union[Unset, RobotAccountStates]
+        if isinstance(_state, Unset):
+            state = UNSET
+        else:
+            state = RobotAccountStates(_state)
 
         robot_account_details = cls(
             url=url,
             uuid=uuid,
             created=created,
             modified=modified,
-            type_=type_,
             resource=resource,
+            type_=type_,
             users=users,
             backend_id=backend_id,
-            responsible_user=responsible_user,
             fingerprints=fingerprints,
+            responsible_user=responsible_user,
             user_keys=user_keys,
             resource_name=resource_name,
             resource_uuid=resource_uuid,
@@ -282,10 +298,11 @@ class RobotAccountDetails:
             offering_customer_uuid=offering_customer_uuid,
             offering_plugin_options=offering_plugin_options,
             username=username,
-            keys=keys,
-            state=state,
+            description=description,
             error_message=error_message,
             error_traceback=error_traceback,
+            keys=keys,
+            state=state,
         )
 
         robot_account_details.additional_properties = d

@@ -192,6 +192,8 @@ from .customer_permission_review import CustomerPermissionReview
 from .customer_permissions_reviews_list_o_item import CustomerPermissionsReviewsListOItem
 from .customer_quotas import CustomerQuotas
 from .customer_request import CustomerRequest
+from .customer_service_account import CustomerServiceAccount
+from .customer_service_account_request import CustomerServiceAccountRequest
 from .customer_user import CustomerUser
 from .customers_list_field_item import CustomersListFieldItem
 from .customers_list_users_list_field_item import CustomersListUsersListFieldItem
@@ -719,6 +721,7 @@ from .patched_component_user_usage_limit_request import PatchedComponentUserUsag
 from .patched_create_customer_credit_request import PatchedCreateCustomerCreditRequest
 from .patched_customer_estimated_cost_policy_request import PatchedCustomerEstimatedCostPolicyRequest
 from .patched_customer_request import PatchedCustomerRequest
+from .patched_customer_service_account_request import PatchedCustomerServiceAccountRequest
 from .patched_digital_ocean_droplet_request import PatchedDigitalOceanDropletRequest
 from .patched_email_hook_request import PatchedEmailHookRequest
 from .patched_firecrest_job_request import PatchedFirecrestJobRequest
@@ -754,6 +757,7 @@ from .patched_payment_request import PatchedPaymentRequest
 from .patched_project_credit_request import PatchedProjectCreditRequest
 from .patched_project_estimated_cost_policy_request import PatchedProjectEstimatedCostPolicyRequest
 from .patched_project_request import PatchedProjectRequest
+from .patched_project_service_account_request import PatchedProjectServiceAccountRequest
 from .patched_proposal_review_request import PatchedProposalReviewRequest
 from .patched_protected_call_request import PatchedProtectedCallRequest
 from .patched_protected_round_request import PatchedProtectedRoundRequest
@@ -814,6 +818,8 @@ from .project_marketplace_resource_count import ProjectMarketplaceResourceCount
 from .project_permission_log import ProjectPermissionLog
 from .project_quotas import ProjectQuotas
 from .project_request import ProjectRequest
+from .project_service_account import ProjectServiceAccount
+from .project_service_account_request import ProjectServiceAccountRequest
 from .project_stats_item import ProjectStatsItem
 from .project_type import ProjectType
 from .project_user import ProjectUser
@@ -907,7 +913,6 @@ from .rancher_cluster_reference import RancherClusterReference
 from .rancher_cluster_request import RancherClusterRequest
 from .rancher_cluster_template import RancherClusterTemplate
 from .rancher_cluster_template_node import RancherClusterTemplateNode
-from .rancher_clusters_kubeconfig_file_retrieve_field_item import RancherClustersKubeconfigFileRetrieveFieldItem
 from .rancher_clusters_list_field_item import RancherClustersListFieldItem
 from .rancher_clusters_list_state_item import RancherClustersListStateItem
 from .rancher_clusters_retrieve_field_item import RancherClustersRetrieveFieldItem
@@ -1019,6 +1024,7 @@ from .robot_account import RobotAccount
 from .robot_account_details import RobotAccountDetails
 from .robot_account_error_request import RobotAccountErrorRequest
 from .robot_account_request import RobotAccountRequest
+from .robot_account_states import RobotAccountStates
 from .role_description import RoleDescription
 from .role_description_request import RoleDescriptionRequest
 from .role_details import RoleDetails
@@ -1357,6 +1363,8 @@ __all__ = (
     "CustomerPermissionsReviewsListOItem",
     "CustomerQuotas",
     "CustomerRequest",
+    "CustomerServiceAccount",
+    "CustomerServiceAccountRequest",
     "CustomersListFieldItem",
     "CustomersListUsersListFieldItem",
     "CustomersListUsersListOItem",
@@ -1850,6 +1858,7 @@ __all__ = (
     "PatchedCreateCustomerCreditRequest",
     "PatchedCustomerEstimatedCostPolicyRequest",
     "PatchedCustomerRequest",
+    "PatchedCustomerServiceAccountRequest",
     "PatchedDigitalOceanDropletRequest",
     "PatchedEmailHookRequest",
     "PatchedFirecrestJobRequest",
@@ -1883,6 +1892,7 @@ __all__ = (
     "PatchedProjectCreditRequest",
     "PatchedProjectEstimatedCostPolicyRequest",
     "PatchedProjectRequest",
+    "PatchedProjectServiceAccountRequest",
     "PatchedProposalReviewRequest",
     "PatchedProtectedCallRequest",
     "PatchedProtectedRoundRequest",
@@ -1943,6 +1953,8 @@ __all__ = (
     "ProjectPermissionLog",
     "ProjectQuotas",
     "ProjectRequest",
+    "ProjectServiceAccount",
+    "ProjectServiceAccountRequest",
     "ProjectsListFieldItem",
     "ProjectsListOItem",
     "ProjectsListUsersListFieldItem",
@@ -2034,7 +2046,6 @@ __all__ = (
     "RancherClusterMarketplaceOfferingPluginOptions",
     "RancherClusterReference",
     "RancherClusterRequest",
-    "RancherClustersKubeconfigFileRetrieveFieldItem",
     "RancherClustersListFieldItem",
     "RancherClustersListStateItem",
     "RancherClustersRetrieveFieldItem",
@@ -2148,6 +2159,7 @@ __all__ = (
     "RobotAccountDetails",
     "RobotAccountErrorRequest",
     "RobotAccountRequest",
+    "RobotAccountStates",
     "RoleDescription",
     "RoleDescriptionRequest",
     "RoleDetails",

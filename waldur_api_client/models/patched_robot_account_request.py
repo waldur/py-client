@@ -13,24 +13,32 @@ T = TypeVar("T", bound="PatchedRobotAccountRequest")
 class PatchedRobotAccountRequest:
     """
     Attributes:
-        type_ (Union[Unset, str]):
         username (Union[Unset, str]):
-        users (Union[Unset, list[str]]):
+        description (Union[Unset, str]):
+        resource (Union[Unset, str]):
+        type_ (Union[Unset, str]): Type of the robot account.
+        users (Union[Unset, list[str]]): Users who have access to this robot account.
         keys (Union[Unset, Any]):
         responsible_user (Union[None, Unset, str]):
     """
 
-    type_: Union[Unset, str] = UNSET
     username: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
+    resource: Union[Unset, str] = UNSET
+    type_: Union[Unset, str] = UNSET
     users: Union[Unset, list[str]] = UNSET
     keys: Union[Unset, Any] = UNSET
     responsible_user: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        type_ = self.type_
-
         username = self.username
+
+        description = self.description
+
+        resource = self.resource
+
+        type_ = self.type_
 
         users: Union[Unset, list[str]] = UNSET
         if not isinstance(self.users, Unset):
@@ -47,10 +55,14 @@ class PatchedRobotAccountRequest:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if type_ is not UNSET:
-            field_dict["type"] = type_
         if username is not UNSET:
             field_dict["username"] = username
+        if description is not UNSET:
+            field_dict["description"] = description
+        if resource is not UNSET:
+            field_dict["resource"] = resource
+        if type_ is not UNSET:
+            field_dict["type"] = type_
         if users is not UNSET:
             field_dict["users"] = users
         if keys is not UNSET:
@@ -63,9 +75,13 @@ class PatchedRobotAccountRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        type_ = d.pop("type", UNSET)
-
         username = d.pop("username", UNSET)
+
+        description = d.pop("description", UNSET)
+
+        resource = d.pop("resource", UNSET)
+
+        type_ = d.pop("type", UNSET)
 
         users = cast(list[str], d.pop("users", UNSET))
 
@@ -81,8 +97,10 @@ class PatchedRobotAccountRequest:
         responsible_user = _parse_responsible_user(d.pop("responsible_user", UNSET))
 
         patched_robot_account_request = cls(
-            type_=type_,
             username=username,
+            description=description,
+            resource=resource,
+            type_=type_,
             users=users,
             keys=keys,
             responsible_user=responsible_user,

@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.robot_account_states import RobotAccountStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -24,34 +25,36 @@ class RobotAccount:
         uuid (UUID):
         created (datetime.datetime):
         modified (datetime.datetime):
-        type_ (str):
         resource (str):
+        type_ (str): Type of the robot account.
         backend_id (str):
         fingerprints (list['Fingerprint']):
         username (Union[Unset, str]):
-        users (Union[Unset, list[str]]):
-        keys (Union[Unset, Any]):
-        responsible_user (Union[None, Unset, str]):
-        state (Union[Unset, str]):
+        description (Union[Unset, str]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
+        users (Union[Unset, list[str]]): Users who have access to this robot account.
+        keys (Union[Unset, Any]):
+        responsible_user (Union[None, Unset, str]):
+        state (Union[Unset, RobotAccountStates]):
     """
 
     url: str
     uuid: UUID
     created: datetime.datetime
     modified: datetime.datetime
-    type_: str
     resource: str
+    type_: str
     backend_id: str
     fingerprints: list["Fingerprint"]
     username: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
+    error_message: Union[Unset, str] = UNSET
+    error_traceback: Union[Unset, str] = UNSET
     users: Union[Unset, list[str]] = UNSET
     keys: Union[Unset, Any] = UNSET
     responsible_user: Union[None, Unset, str] = UNSET
-    state: Union[Unset, str] = UNSET
-    error_message: Union[Unset, str] = UNSET
-    error_traceback: Union[Unset, str] = UNSET
+    state: Union[Unset, RobotAccountStates] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -63,9 +66,9 @@ class RobotAccount:
 
         modified = self.modified.isoformat()
 
-        type_ = self.type_
-
         resource = self.resource
+
+        type_ = self.type_
 
         backend_id = self.backend_id
 
@@ -75,6 +78,12 @@ class RobotAccount:
             fingerprints.append(fingerprints_item)
 
         username = self.username
+
+        description = self.description
+
+        error_message = self.error_message
+
+        error_traceback = self.error_traceback
 
         users: Union[Unset, list[str]] = UNSET
         if not isinstance(self.users, Unset):
@@ -88,11 +97,9 @@ class RobotAccount:
         else:
             responsible_user = self.responsible_user
 
-        state = self.state
-
-        error_message = self.error_message
-
-        error_traceback = self.error_traceback
+        state: Union[Unset, int] = UNSET
+        if not isinstance(self.state, Unset):
+            state = self.state.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -102,14 +109,20 @@ class RobotAccount:
                 "uuid": uuid,
                 "created": created,
                 "modified": modified,
-                "type": type_,
                 "resource": resource,
+                "type": type_,
                 "backend_id": backend_id,
                 "fingerprints": fingerprints,
             }
         )
         if username is not UNSET:
             field_dict["username"] = username
+        if description is not UNSET:
+            field_dict["description"] = description
+        if error_message is not UNSET:
+            field_dict["error_message"] = error_message
+        if error_traceback is not UNSET:
+            field_dict["error_traceback"] = error_traceback
         if users is not UNSET:
             field_dict["users"] = users
         if keys is not UNSET:
@@ -118,10 +131,6 @@ class RobotAccount:
             field_dict["responsible_user"] = responsible_user
         if state is not UNSET:
             field_dict["state"] = state
-        if error_message is not UNSET:
-            field_dict["error_message"] = error_message
-        if error_traceback is not UNSET:
-            field_dict["error_traceback"] = error_traceback
 
         return field_dict
 
@@ -138,9 +147,9 @@ class RobotAccount:
 
         modified = isoparse(d.pop("modified"))
 
-        type_ = d.pop("type")
-
         resource = d.pop("resource")
+
+        type_ = d.pop("type")
 
         backend_id = d.pop("backend_id")
 
@@ -152,6 +161,12 @@ class RobotAccount:
             fingerprints.append(fingerprints_item)
 
         username = d.pop("username", UNSET)
+
+        description = d.pop("description", UNSET)
+
+        error_message = d.pop("error_message", UNSET)
+
+        error_traceback = d.pop("error_traceback", UNSET)
 
         users = cast(list[str], d.pop("users", UNSET))
 
@@ -166,28 +181,30 @@ class RobotAccount:
 
         responsible_user = _parse_responsible_user(d.pop("responsible_user", UNSET))
 
-        state = d.pop("state", UNSET)
-
-        error_message = d.pop("error_message", UNSET)
-
-        error_traceback = d.pop("error_traceback", UNSET)
+        _state = d.pop("state", UNSET)
+        state: Union[Unset, RobotAccountStates]
+        if isinstance(_state, Unset):
+            state = UNSET
+        else:
+            state = RobotAccountStates(_state)
 
         robot_account = cls(
             url=url,
             uuid=uuid,
             created=created,
             modified=modified,
-            type_=type_,
             resource=resource,
+            type_=type_,
             backend_id=backend_id,
             fingerprints=fingerprints,
             username=username,
+            description=description,
+            error_message=error_message,
+            error_traceback=error_traceback,
             users=users,
             keys=keys,
             responsible_user=responsible_user,
             state=state,
-            error_message=error_message,
-            error_traceback=error_traceback,
         )
 
         robot_account.additional_properties = d

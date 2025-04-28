@@ -6,45 +6,37 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.rancher_cluster import RancherCluster
-from ...models.rancher_clusters_kubeconfig_file_retrieve_field_item import (
-    RancherClustersKubeconfigFileRetrieveFieldItem,
-)
-from ...types import UNSET, Response, Unset
+from ...models.customer_service_account import CustomerServiceAccount
+from ...models.customer_service_account_request import CustomerServiceAccountRequest
+from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[RancherClustersKubeconfigFileRetrieveFieldItem]] = UNSET,
+    body: CustomerServiceAccountRequest,
 ) -> dict[str, Any]:
-    params: dict[str, Any] = {}
-
-    json_field: Union[Unset, list[str]] = UNSET
-    if not isinstance(field, Unset):
-        json_field = []
-        for field_item_data in field:
-            field_item = field_item_data.value
-            json_field.append(field_item)
-
-    params["field"] = json_field
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": f"/api/rancher-clusters/{uuid}/kubeconfig_file/",
-        "params": params,
+        "method": "put",
+        "url": f"/api/marketplace-customer-service-accounts/{uuid}/",
     }
 
+    _body = body.to_dict()
+
+    _kwargs["json"] = _body
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[RancherCluster]:
+) -> Optional[CustomerServiceAccount]:
     if response.status_code == 200:
-        response_200 = RancherCluster.from_dict(response.json())
+        response_200 = CustomerServiceAccount.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -55,7 +47,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[RancherCluster]:
+) -> Response[CustomerServiceAccount]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,25 +60,24 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RancherClustersKubeconfigFileRetrieveFieldItem]] = UNSET,
-) -> Response[RancherCluster]:
-    """Returns kubeconfig file for the cluster.
-
+    body: CustomerServiceAccountRequest,
+) -> Response[CustomerServiceAccount]:
+    """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RancherClustersKubeconfigFileRetrieveFieldItem]]):
+        body (CustomerServiceAccountRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RancherCluster]
+        Response[CustomerServiceAccount]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        field=field,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -100,26 +91,25 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RancherClustersKubeconfigFileRetrieveFieldItem]] = UNSET,
-) -> Optional[RancherCluster]:
-    """Returns kubeconfig file for the cluster.
-
+    body: CustomerServiceAccountRequest,
+) -> Optional[CustomerServiceAccount]:
+    """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RancherClustersKubeconfigFileRetrieveFieldItem]]):
+        body (CustomerServiceAccountRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RancherCluster
+        CustomerServiceAccount
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
-        field=field,
+        body=body,
     ).parsed
 
 
@@ -127,25 +117,24 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RancherClustersKubeconfigFileRetrieveFieldItem]] = UNSET,
-) -> Response[RancherCluster]:
-    """Returns kubeconfig file for the cluster.
-
+    body: CustomerServiceAccountRequest,
+) -> Response[CustomerServiceAccount]:
+    """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RancherClustersKubeconfigFileRetrieveFieldItem]]):
+        body (CustomerServiceAccountRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RancherCluster]
+        Response[CustomerServiceAccount]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        field=field,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -157,26 +146,25 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RancherClustersKubeconfigFileRetrieveFieldItem]] = UNSET,
-) -> Optional[RancherCluster]:
-    """Returns kubeconfig file for the cluster.
-
+    body: CustomerServiceAccountRequest,
+) -> Optional[CustomerServiceAccount]:
+    """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RancherClustersKubeconfigFileRetrieveFieldItem]]):
+        body (CustomerServiceAccountRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RancherCluster
+        CustomerServiceAccount
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            field=field,
+            body=body,
         )
     ).parsed
