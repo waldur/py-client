@@ -3,6 +3,7 @@ from enum import Enum
 
 class OpenstackPortsListFieldItem(str, Enum):
     ACCESS_URL = "access_url"
+    ADMIN_STATE_UP = "admin_state_up"
     ALLOWED_ADDRESS_PAIRS = "allowed_address_pairs"
     BACKEND_ID = "backend_id"
     CREATED = "created"

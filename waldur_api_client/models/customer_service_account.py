@@ -22,6 +22,7 @@ class CustomerServiceAccount:
         modified (datetime.datetime):
         error_message (str):
         token (Union[None, str]):
+        expires_at (Union[None, str]):
         customer (UUID):
         username (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -35,6 +36,7 @@ class CustomerServiceAccount:
     modified: datetime.datetime
     error_message: str
     token: Union[None, str]
+    expires_at: Union[None, str]
     customer: UUID
     username: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -56,6 +58,9 @@ class CustomerServiceAccount:
         token: Union[None, str]
         token = self.token
 
+        expires_at: Union[None, str]
+        expires_at = self.expires_at
+
         customer = str(self.customer)
 
         username = self.username
@@ -76,6 +81,7 @@ class CustomerServiceAccount:
                 "modified": modified,
                 "error_message": error_message,
                 "token": token,
+                "expiresAt": expires_at,
                 "customer": customer,
             }
         )
@@ -110,6 +116,13 @@ class CustomerServiceAccount:
 
         token = _parse_token(d.pop("token"))
 
+        def _parse_expires_at(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        expires_at = _parse_expires_at(d.pop("expiresAt"))
+
         customer = UUID(d.pop("customer"))
 
         username = d.pop("username", UNSET)
@@ -127,6 +140,7 @@ class CustomerServiceAccount:
             modified=modified,
             error_message=error_message,
             token=token,
+            expires_at=expires_at,
             customer=customer,
             username=username,
             description=description,

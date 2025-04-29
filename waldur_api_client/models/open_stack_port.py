@@ -64,6 +64,7 @@ class OpenStackPort:
         device_owner (Union[None, Unset, str]):
         port_security_enabled (Union[Unset, bool]):
         security_groups (Union[Unset, list['OpenStackPortNestedSecurityGroup']]):
+        admin_state_up (Union[None, Unset, str]):
         marketplace_offering_uuid (Union[Unset, str]):
         marketplace_offering_name (Union[Unset, str]):
         marketplace_offering_plugin_options (Union[Unset, OpenStackPortMarketplaceOfferingPluginOptions]):
@@ -114,6 +115,7 @@ class OpenStackPort:
     device_owner: Union[None, Unset, str] = UNSET
     port_security_enabled: Union[Unset, bool] = UNSET
     security_groups: Union[Unset, list["OpenStackPortNestedSecurityGroup"]] = UNSET
+    admin_state_up: Union[None, Unset, str] = UNSET
     marketplace_offering_uuid: Union[Unset, str] = UNSET
     marketplace_offering_name: Union[Unset, str] = UNSET
     marketplace_offering_plugin_options: Union[Unset, "OpenStackPortMarketplaceOfferingPluginOptions"] = UNSET
@@ -252,6 +254,12 @@ class OpenStackPort:
                 security_groups_item = security_groups_item_data.to_dict()
                 security_groups.append(security_groups_item)
 
+        admin_state_up: Union[None, Unset, str]
+        if isinstance(self.admin_state_up, Unset):
+            admin_state_up = UNSET
+        else:
+            admin_state_up = self.admin_state_up
+
         marketplace_offering_uuid = self.marketplace_offering_uuid
 
         marketplace_offering_name = self.marketplace_offering_name
@@ -353,6 +361,8 @@ class OpenStackPort:
             field_dict["port_security_enabled"] = port_security_enabled
         if security_groups is not UNSET:
             field_dict["security_groups"] = security_groups
+        if admin_state_up is not UNSET:
+            field_dict["admin_state_up"] = admin_state_up
         if marketplace_offering_uuid is not UNSET:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
@@ -545,6 +555,15 @@ class OpenStackPort:
 
             security_groups.append(security_groups_item)
 
+        def _parse_admin_state_up(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        admin_state_up = _parse_admin_state_up(d.pop("admin_state_up", UNSET))
+
         marketplace_offering_uuid = d.pop("marketplace_offering_uuid", UNSET)
 
         marketplace_offering_name = d.pop("marketplace_offering_name", UNSET)
@@ -611,6 +630,7 @@ class OpenStackPort:
             device_owner=device_owner,
             port_security_enabled=port_security_enabled,
             security_groups=security_groups,
+            admin_state_up=admin_state_up,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
             marketplace_offering_plugin_options=marketplace_offering_plugin_options,
