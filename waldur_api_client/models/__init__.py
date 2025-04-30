@@ -595,6 +595,7 @@ from .open_stack_network import OpenStackNetwork
 from .open_stack_network_marketplace_offering_plugin_options import OpenStackNetworkMarketplaceOfferingPluginOptions
 from .open_stack_network_request import OpenStackNetworkRequest
 from .open_stack_port import OpenStackPort
+from .open_stack_port_ip_update_request import OpenStackPortIPUpdateRequest
 from .open_stack_port_marketplace_offering_plugin_options import OpenStackPortMarketplaceOfferingPluginOptions
 from .open_stack_port_nested_security_group import OpenStackPortNestedSecurityGroup
 from .open_stack_port_nested_security_group_request import OpenStackPortNestedSecurityGroupRequest
@@ -1753,6 +1754,7 @@ __all__ = (
     "OpenstackNetworksListStateItem",
     "OpenstackNetworksRetrieveFieldItem",
     "OpenStackPort",
+    "OpenStackPortIPUpdateRequest",
     "OpenStackPortMarketplaceOfferingPluginOptions",
     "OpenStackPortNestedSecurityGroup",
     "OpenStackPortNestedSecurityGroupRequest",
