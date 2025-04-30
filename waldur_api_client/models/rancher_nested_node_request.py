@@ -28,7 +28,6 @@ class RancherNestedNodeRequest:
         cpu (Union[Unset, int]):
         error_traceback (Union[Unset, str]):
         backend_id (Union[Unset, str]):
-        controlplane_role (Union[Unset, bool]):
     """
 
     subnet: Union[None, str]
@@ -41,7 +40,6 @@ class RancherNestedNodeRequest:
     cpu: Union[Unset, int] = UNSET
     error_traceback: Union[Unset, str] = UNSET
     backend_id: Union[Unset, str] = UNSET
-    controlplane_role: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -82,8 +80,6 @@ class RancherNestedNodeRequest:
 
         backend_id = self.backend_id
 
-        controlplane_role = self.controlplane_role
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -108,8 +104,6 @@ class RancherNestedNodeRequest:
             field_dict["error_traceback"] = error_traceback
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
-        if controlplane_role is not UNSET:
-            field_dict["controlplane_role"] = controlplane_role
 
         return field_dict
 
@@ -168,8 +162,6 @@ class RancherNestedNodeRequest:
 
         backend_id = d.pop("backend_id", UNSET)
 
-        controlplane_role = d.pop("controlplane_role", UNSET)
-
         rancher_nested_node_request = cls(
             subnet=subnet,
             roles=roles,
@@ -181,7 +173,6 @@ class RancherNestedNodeRequest:
             cpu=cpu,
             error_traceback=error_traceback,
             backend_id=backend_id,
-            controlplane_role=controlplane_role,
         )
 
         rancher_nested_node_request.additional_properties = d
