@@ -73,7 +73,7 @@ class RancherTemplateBaseQuestion:
         if required is not UNSET:
             field_dict["required"] = required
         if validate is not UNSET:
-            field_dict["validate"] = validate
+            field_dict["validate_"] = validate
         if default is not UNSET:
             field_dict["default"] = default
         if group is not UNSET:
@@ -96,7 +96,7 @@ class RancherTemplateBaseQuestion:
 
         required = d.pop("required", UNSET)
 
-        validate = d.pop("validate", UNSET)
+        validate = d.pop("validate_", UNSET)
 
         def _parse_default(data: object) -> Union[None, Unset, str]:
             if data is None:

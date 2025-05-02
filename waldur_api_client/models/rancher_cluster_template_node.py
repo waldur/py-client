@@ -4,7 +4,7 @@ from typing import Any, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.roles_enum import RolesEnum
+from ..models.role_enum import RoleEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RancherClusterTemplateNode")
@@ -17,14 +17,14 @@ class RancherClusterTemplateNode:
         min_vcpu (int):
         min_ram (int):
         system_volume_size (int):
-        roles (list[RolesEnum]):
+        role (RoleEnum):
         preferred_volume_type (Union[Unset, str]):
     """
 
     min_vcpu: int
     min_ram: int
     system_volume_size: int
-    roles: list[RolesEnum]
+    role: RoleEnum
     preferred_volume_type: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -35,10 +35,7 @@ class RancherClusterTemplateNode:
 
         system_volume_size = self.system_volume_size
 
-        roles = []
-        for roles_item_data in self.roles:
-            roles_item = roles_item_data.value
-            roles.append(roles_item)
+        role = self.role.value
 
         preferred_volume_type = self.preferred_volume_type
 
@@ -49,7 +46,7 @@ class RancherClusterTemplateNode:
                 "min_vcpu": min_vcpu,
                 "min_ram": min_ram,
                 "system_volume_size": system_volume_size,
-                "roles": roles,
+                "role": role,
             }
         )
         if preferred_volume_type is not UNSET:
@@ -66,12 +63,7 @@ class RancherClusterTemplateNode:
 
         system_volume_size = d.pop("system_volume_size")
 
-        roles = []
-        _roles = d.pop("roles")
-        for roles_item_data in _roles:
-            roles_item = RolesEnum(roles_item_data)
-
-            roles.append(roles_item)
+        role = RoleEnum(d.pop("role"))
 
         preferred_volume_type = d.pop("preferred_volume_type", UNSET)
 
@@ -79,7 +71,7 @@ class RancherClusterTemplateNode:
             min_vcpu=min_vcpu,
             min_ram=min_ram,
             system_volume_size=system_volume_size,
-            roles=roles,
+            role=role,
             preferred_volume_type=preferred_volume_type,
         )
 

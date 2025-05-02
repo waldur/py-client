@@ -4,6 +4,8 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.role_enum import RoleEnum
+
 T = TypeVar("T", bound="RancherCreateNode")
 
 
@@ -12,19 +14,24 @@ class RancherCreateNode:
     """
     Attributes:
         cluster (str):
+        role (RoleEnum):
     """
 
     cluster: str
+    role: RoleEnum
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         cluster = self.cluster
+
+        role = self.role.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "cluster": cluster,
+                "role": role,
             }
         )
 
@@ -35,8 +42,11 @@ class RancherCreateNode:
         d = dict(src_dict)
         cluster = d.pop("cluster")
 
+        role = RoleEnum(d.pop("role"))
+
         rancher_create_node = cls(
             cluster=cluster,
+            role=role,
         )
 
         rancher_create_node.additional_properties = d

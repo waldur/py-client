@@ -1029,10 +1029,10 @@ from .robot_account_states import RobotAccountStates
 from .role_description import RoleDescription
 from .role_description_request import RoleDescriptionRequest
 from .role_details import RoleDetails
+from .role_enum import RoleEnum
 from .role_modify_request import RoleModifyRequest
 from .role_template import RoleTemplate
 from .role_type import RoleType
-from .roles_enum import RolesEnum
 from .roles_list_field_item import RolesListFieldItem
 from .roles_retrieve_field_item import RolesRetrieveFieldItem
 from .round_reviewer import RoundReviewer
@@ -2165,8 +2165,8 @@ __all__ = (
     "RoleDescription",
     "RoleDescriptionRequest",
     "RoleDetails",
+    "RoleEnum",
     "RoleModifyRequest",
-    "RolesEnum",
     "RolesListFieldItem",
     "RolesRetrieveFieldItem",
     "RoleTemplate",

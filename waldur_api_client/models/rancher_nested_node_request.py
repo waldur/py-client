@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.roles_enum import RolesEnum
+from ..models.role_enum import RoleEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -19,7 +19,7 @@ class RancherNestedNodeRequest:
     """
     Attributes:
         subnet (Union[None, str]):
-        roles (list[RolesEnum]):
+        role (RoleEnum):
         flavor (Union[None, Unset, str]):
         system_volume_size (Union[Unset, int]):
         system_volume_type (Union[None, Unset, str]):
@@ -31,7 +31,7 @@ class RancherNestedNodeRequest:
     """
 
     subnet: Union[None, str]
-    roles: list[RolesEnum]
+    role: RoleEnum
     flavor: Union[None, Unset, str] = UNSET
     system_volume_size: Union[Unset, int] = UNSET
     system_volume_type: Union[None, Unset, str] = UNSET
@@ -46,10 +46,7 @@ class RancherNestedNodeRequest:
         subnet: Union[None, str]
         subnet = self.subnet
 
-        roles = []
-        for roles_item_data in self.roles:
-            roles_item = roles_item_data.value
-            roles.append(roles_item)
+        role = self.role.value
 
         flavor: Union[None, Unset, str]
         if isinstance(self.flavor, Unset):
@@ -85,7 +82,7 @@ class RancherNestedNodeRequest:
         field_dict.update(
             {
                 "subnet": subnet,
-                "roles": roles,
+                "role": role,
             }
         )
         if flavor is not UNSET:
@@ -120,12 +117,7 @@ class RancherNestedNodeRequest:
 
         subnet = _parse_subnet(d.pop("subnet"))
 
-        roles = []
-        _roles = d.pop("roles")
-        for roles_item_data in _roles:
-            roles_item = RolesEnum(roles_item_data)
-
-            roles.append(roles_item)
+        role = RoleEnum(d.pop("role"))
 
         def _parse_flavor(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -164,7 +156,7 @@ class RancherNestedNodeRequest:
 
         rancher_nested_node_request = cls(
             subnet=subnet,
-            roles=roles,
+            role=role,
             flavor=flavor,
             system_volume_size=system_volume_size,
             system_volume_type=system_volume_type,

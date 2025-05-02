@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -20,7 +20,7 @@ class KeycloakGroup:
         backend_id (str):
         scope_type (str):
         scope_uuid (UUID): UUID of the cluster or project
-        scope_name (str): Get the name of the cluster or project
+        scope_name (Union[None, str]): Get the name of the cluster or project
         role (str):
         created (datetime.datetime):
         modified (datetime.datetime):
@@ -32,7 +32,7 @@ class KeycloakGroup:
     backend_id: str
     scope_type: str
     scope_uuid: UUID
-    scope_name: str
+    scope_name: Union[None, str]
     role: str
     created: datetime.datetime
     modified: datetime.datetime
@@ -51,6 +51,7 @@ class KeycloakGroup:
 
         scope_uuid = str(self.scope_uuid)
 
+        scope_name: Union[None, str]
         scope_name = self.scope_name
 
         role = self.role
@@ -93,7 +94,12 @@ class KeycloakGroup:
 
         scope_uuid = UUID(d.pop("scope_uuid"))
 
-        scope_name = d.pop("scope_name")
+        def _parse_scope_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        scope_name = _parse_scope_name(d.pop("scope_name"))
 
         role = d.pop("role")
 

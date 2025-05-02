@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.role_enum import RoleEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RancherNestedNode")
@@ -17,6 +18,7 @@ class RancherNestedNode:
     """
     Attributes:
         url (Union[Unset, str]):
+        role (Union[Unset, RoleEnum]):
         instance (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
@@ -24,9 +26,6 @@ class RancherNestedNode:
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
         backend_id (Union[Unset, str]):
-        controlplane_role (Union[Unset, bool]):
-        etcd_role (Union[Unset, bool]):
-        worker_role (Union[Unset, bool]):
         initial_data (Union[Unset, Any]): Initial data for instance creating.
         runtime_state (Union[Unset, str]):
         k8s_version (Union[Unset, str]):
@@ -42,6 +41,7 @@ class RancherNestedNode:
     """
 
     url: Union[Unset, str] = UNSET
+    role: Union[Unset, RoleEnum] = UNSET
     instance: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     modified: Union[Unset, datetime.datetime] = UNSET
@@ -49,9 +49,6 @@ class RancherNestedNode:
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
     backend_id: Union[Unset, str] = UNSET
-    controlplane_role: Union[Unset, bool] = UNSET
-    etcd_role: Union[Unset, bool] = UNSET
-    worker_role: Union[Unset, bool] = UNSET
     initial_data: Union[Unset, Any] = UNSET
     runtime_state: Union[Unset, str] = UNSET
     k8s_version: Union[Unset, str] = UNSET
@@ -68,6 +65,10 @@ class RancherNestedNode:
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
+
+        role: Union[Unset, str] = UNSET
+        if not isinstance(self.role, Unset):
+            role = self.role.value
 
         instance = self.instance
 
@@ -88,12 +89,6 @@ class RancherNestedNode:
         error_traceback = self.error_traceback
 
         backend_id = self.backend_id
-
-        controlplane_role = self.controlplane_role
-
-        etcd_role = self.etcd_role
-
-        worker_role = self.worker_role
 
         initial_data = self.initial_data
 
@@ -148,6 +143,8 @@ class RancherNestedNode:
         field_dict.update({})
         if url is not UNSET:
             field_dict["url"] = url
+        if role is not UNSET:
+            field_dict["role"] = role
         if instance is not UNSET:
             field_dict["instance"] = instance
         if created is not UNSET:
@@ -162,12 +159,6 @@ class RancherNestedNode:
             field_dict["error_traceback"] = error_traceback
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
-        if controlplane_role is not UNSET:
-            field_dict["controlplane_role"] = controlplane_role
-        if etcd_role is not UNSET:
-            field_dict["etcd_role"] = etcd_role
-        if worker_role is not UNSET:
-            field_dict["worker_role"] = worker_role
         if initial_data is not UNSET:
             field_dict["initial_data"] = initial_data
         if runtime_state is not UNSET:
@@ -200,6 +191,13 @@ class RancherNestedNode:
         d = dict(src_dict)
         url = d.pop("url", UNSET)
 
+        _role = d.pop("role", UNSET)
+        role: Union[Unset, RoleEnum]
+        if isinstance(_role, Unset):
+            role = UNSET
+        else:
+            role = RoleEnum(_role)
+
         instance = d.pop("instance", UNSET)
 
         _created = d.pop("created", UNSET)
@@ -228,12 +226,6 @@ class RancherNestedNode:
         error_traceback = d.pop("error_traceback", UNSET)
 
         backend_id = d.pop("backend_id", UNSET)
-
-        controlplane_role = d.pop("controlplane_role", UNSET)
-
-        etcd_role = d.pop("etcd_role", UNSET)
-
-        worker_role = d.pop("worker_role", UNSET)
 
         initial_data = d.pop("initial_data", UNSET)
 
@@ -303,6 +295,7 @@ class RancherNestedNode:
 
         rancher_nested_node = cls(
             url=url,
+            role=role,
             instance=instance,
             created=created,
             modified=modified,
@@ -310,9 +303,6 @@ class RancherNestedNode:
             error_message=error_message,
             error_traceback=error_traceback,
             backend_id=backend_id,
-            controlplane_role=controlplane_role,
-            etcd_role=etcd_role,
-            worker_role=worker_role,
             initial_data=initial_data,
             runtime_state=runtime_state,
             k8s_version=k8s_version,

@@ -8,7 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.core_states import CoreStates
-from ..types import UNSET, Unset
+from ..models.role_enum import RoleEnum
 
 T = TypeVar("T", bound="RancherNode")
 
@@ -35,6 +35,7 @@ class RancherNode:
         instance_name (str):
         instance_uuid (UUID):
         instance_marketplace_uuid (UUID):
+        role (RoleEnum):
         k8s_version (str):
         docker_version (str):
         cpu_allocated (Union[None, float]):
@@ -46,9 +47,6 @@ class RancherNode:
         labels (Any):
         annotations (Any):
         runtime_state (str):
-        controlplane_role (Union[Unset, bool]):
-        etcd_role (Union[Unset, bool]):
-        worker_role (Union[Unset, bool]):
     """
 
     uuid: UUID
@@ -69,6 +67,7 @@ class RancherNode:
     instance_name: str
     instance_uuid: UUID
     instance_marketplace_uuid: UUID
+    role: RoleEnum
     k8s_version: str
     docker_version: str
     cpu_allocated: Union[None, float]
@@ -80,9 +79,6 @@ class RancherNode:
     labels: Any
     annotations: Any
     runtime_state: str
-    controlplane_role: Union[Unset, bool] = UNSET
-    etcd_role: Union[Unset, bool] = UNSET
-    worker_role: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -122,6 +118,8 @@ class RancherNode:
 
         instance_marketplace_uuid = str(self.instance_marketplace_uuid)
 
+        role = self.role.value
+
         k8s_version = self.k8s_version
 
         docker_version = self.docker_version
@@ -150,12 +148,6 @@ class RancherNode:
 
         runtime_state = self.runtime_state
 
-        controlplane_role = self.controlplane_role
-
-        etcd_role = self.etcd_role
-
-        worker_role = self.worker_role
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -178,6 +170,7 @@ class RancherNode:
                 "instance_name": instance_name,
                 "instance_uuid": instance_uuid,
                 "instance_marketplace_uuid": instance_marketplace_uuid,
+                "role": role,
                 "k8s_version": k8s_version,
                 "docker_version": docker_version,
                 "cpu_allocated": cpu_allocated,
@@ -191,12 +184,6 @@ class RancherNode:
                 "runtime_state": runtime_state,
             }
         )
-        if controlplane_role is not UNSET:
-            field_dict["controlplane_role"] = controlplane_role
-        if etcd_role is not UNSET:
-            field_dict["etcd_role"] = etcd_role
-        if worker_role is not UNSET:
-            field_dict["worker_role"] = worker_role
 
         return field_dict
 
@@ -238,6 +225,8 @@ class RancherNode:
         instance_uuid = UUID(d.pop("instance_uuid"))
 
         instance_marketplace_uuid = UUID(d.pop("instance_marketplace_uuid"))
+
+        role = RoleEnum(d.pop("role"))
 
         k8s_version = d.pop("k8s_version")
 
@@ -291,12 +280,6 @@ class RancherNode:
 
         runtime_state = d.pop("runtime_state")
 
-        controlplane_role = d.pop("controlplane_role", UNSET)
-
-        etcd_role = d.pop("etcd_role", UNSET)
-
-        worker_role = d.pop("worker_role", UNSET)
-
         rancher_node = cls(
             uuid=uuid,
             url=url,
@@ -316,6 +299,7 @@ class RancherNode:
             instance_name=instance_name,
             instance_uuid=instance_uuid,
             instance_marketplace_uuid=instance_marketplace_uuid,
+            role=role,
             k8s_version=k8s_version,
             docker_version=docker_version,
             cpu_allocated=cpu_allocated,
@@ -327,9 +311,6 @@ class RancherNode:
             labels=labels,
             annotations=annotations,
             runtime_state=runtime_state,
-            controlplane_role=controlplane_role,
-            etcd_role=etcd_role,
-            worker_role=worker_role,
         )
 
         rancher_node.additional_properties = d
