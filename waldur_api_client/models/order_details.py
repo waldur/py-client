@@ -43,10 +43,10 @@ class OrderDetails:
         category_uuid (Union[Unset, UUID]):
         category_icon (Union[Unset, str]):
         plan (Union[Unset, str]):
-        plan_unit (Union[Unset, BillingUnit]):
-        plan_name (Union[Unset, str]):
-        plan_uuid (Union[Unset, UUID]):
-        plan_description (Union[Unset, str]):
+        plan_unit (Union[BillingUnit, None, Unset]):
+        plan_name (Union[None, Unset, str]):
+        plan_uuid (Union[None, UUID, Unset]):
+        plan_description (Union[None, Unset, str]):
         attributes (Union[Unset, OrderDetailsAttributes]): Get attributes excluding secret attributes, such as username
             and password.
         limits (Union[Unset, OrderDetailsLimits]):
@@ -118,10 +118,10 @@ class OrderDetails:
     category_uuid: Union[Unset, UUID] = UNSET
     category_icon: Union[Unset, str] = UNSET
     plan: Union[Unset, str] = UNSET
-    plan_unit: Union[Unset, BillingUnit] = UNSET
-    plan_name: Union[Unset, str] = UNSET
-    plan_uuid: Union[Unset, UUID] = UNSET
-    plan_description: Union[Unset, str] = UNSET
+    plan_unit: Union[BillingUnit, None, Unset] = UNSET
+    plan_name: Union[None, Unset, str] = UNSET
+    plan_uuid: Union[None, UUID, Unset] = UNSET
+    plan_description: Union[None, Unset, str] = UNSET
     attributes: Union[Unset, "OrderDetailsAttributes"] = UNSET
     limits: Union[Unset, "OrderDetailsLimits"] = UNSET
     uuid: Union[Unset, UUID] = UNSET
@@ -213,17 +213,33 @@ class OrderDetails:
 
         plan = self.plan
 
-        plan_unit: Union[Unset, str] = UNSET
-        if not isinstance(self.plan_unit, Unset):
+        plan_unit: Union[None, Unset, str]
+        if isinstance(self.plan_unit, Unset):
+            plan_unit = UNSET
+        elif isinstance(self.plan_unit, BillingUnit):
             plan_unit = self.plan_unit.value
+        else:
+            plan_unit = self.plan_unit
 
-        plan_name = self.plan_name
+        plan_name: Union[None, Unset, str]
+        if isinstance(self.plan_name, Unset):
+            plan_name = UNSET
+        else:
+            plan_name = self.plan_name
 
-        plan_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.plan_uuid, Unset):
+        plan_uuid: Union[None, Unset, str]
+        if isinstance(self.plan_uuid, Unset):
+            plan_uuid = UNSET
+        elif isinstance(self.plan_uuid, UUID):
             plan_uuid = str(self.plan_uuid)
+        else:
+            plan_uuid = self.plan_uuid
 
-        plan_description = self.plan_description
+        plan_description: Union[None, Unset, str]
+        if isinstance(self.plan_description, Unset):
+            plan_description = UNSET
+        else:
+            plan_description = self.plan_description
 
         attributes: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.attributes, Unset):
@@ -635,23 +651,57 @@ class OrderDetails:
 
         plan = d.pop("plan", UNSET)
 
-        _plan_unit = d.pop("plan_unit", UNSET)
-        plan_unit: Union[Unset, BillingUnit]
-        if isinstance(_plan_unit, Unset):
-            plan_unit = UNSET
-        else:
-            plan_unit = BillingUnit(_plan_unit)
+        def _parse_plan_unit(data: object) -> Union[BillingUnit, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                plan_unit_type_1 = BillingUnit(data)
 
-        plan_name = d.pop("plan_name", UNSET)
+                return plan_unit_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union[BillingUnit, None, Unset], data)
 
-        _plan_uuid = d.pop("plan_uuid", UNSET)
-        plan_uuid: Union[Unset, UUID]
-        if isinstance(_plan_uuid, Unset):
-            plan_uuid = UNSET
-        else:
-            plan_uuid = UUID(_plan_uuid)
+        plan_unit = _parse_plan_unit(d.pop("plan_unit", UNSET))
 
-        plan_description = d.pop("plan_description", UNSET)
+        def _parse_plan_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        plan_name = _parse_plan_name(d.pop("plan_name", UNSET))
+
+        def _parse_plan_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                plan_uuid_type_0 = UUID(data)
+
+                return plan_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        plan_uuid = _parse_plan_uuid(d.pop("plan_uuid", UNSET))
+
+        def _parse_plan_description(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        plan_description = _parse_plan_description(d.pop("plan_description", UNSET))
 
         _attributes = d.pop("attributes", UNSET)
         attributes: Union[Unset, OrderDetailsAttributes]

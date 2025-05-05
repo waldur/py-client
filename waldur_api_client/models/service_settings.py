@@ -27,7 +27,7 @@ class ServiceSettings:
         error_message (Union[Unset, str]):
         shared (Union[Unset, bool]): Anybody can use it
         customer (Union[None, Unset, str]):
-        customer_name (Union[Unset, str]):
+        customer_name (Union[None, Unset, str]):
         customer_native_name (Union[Unset, str]):
         terms_of_services (Union[Unset, str]):
         scope (Union[None, Unset, str]):
@@ -43,7 +43,7 @@ class ServiceSettings:
     error_message: Union[Unset, str] = UNSET
     shared: Union[Unset, bool] = UNSET
     customer: Union[None, Unset, str] = UNSET
-    customer_name: Union[Unset, str] = UNSET
+    customer_name: Union[None, Unset, str] = UNSET
     customer_native_name: Union[Unset, str] = UNSET
     terms_of_services: Union[Unset, str] = UNSET
     scope: Union[None, Unset, str] = UNSET
@@ -76,7 +76,11 @@ class ServiceSettings:
         else:
             customer = self.customer
 
-        customer_name = self.customer_name
+        customer_name: Union[None, Unset, str]
+        if isinstance(self.customer_name, Unset):
+            customer_name = UNSET
+        else:
+            customer_name = self.customer_name
 
         customer_native_name = self.customer_native_name
 
@@ -168,7 +172,14 @@ class ServiceSettings:
 
         customer = _parse_customer(d.pop("customer", UNSET))
 
-        customer_name = d.pop("customer_name", UNSET)
+        def _parse_customer_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        customer_name = _parse_customer_name(d.pop("customer_name", UNSET))
 
         customer_native_name = d.pop("customer_native_name", UNSET)
 

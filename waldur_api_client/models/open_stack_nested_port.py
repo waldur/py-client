@@ -22,10 +22,10 @@ class OpenStackNestedPort:
         fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
         mac_address (Union[Unset, str]):
         subnet (Union[None, Unset, str]):
-        subnet_uuid (Union[Unset, UUID]):
-        subnet_name (Union[Unset, str]):
-        subnet_description (Union[Unset, str]):
-        subnet_cidr (Union[Unset, str]):
+        subnet_uuid (Union[None, UUID, Unset]):
+        subnet_name (Union[None, Unset, str]):
+        subnet_description (Union[None, Unset, str]):
+        subnet_cidr (Union[None, Unset, str]):
         allowed_address_pairs (Union[Unset, list['OpenStackAllowedAddressPair']]):
         device_id (Union[None, Unset, str]):
         device_owner (Union[None, Unset, str]):
@@ -34,10 +34,10 @@ class OpenStackNestedPort:
     fixed_ips: Union[Unset, list["OpenStackFixedIp"]] = UNSET
     mac_address: Union[Unset, str] = UNSET
     subnet: Union[None, Unset, str] = UNSET
-    subnet_uuid: Union[Unset, UUID] = UNSET
-    subnet_name: Union[Unset, str] = UNSET
-    subnet_description: Union[Unset, str] = UNSET
-    subnet_cidr: Union[Unset, str] = UNSET
+    subnet_uuid: Union[None, UUID, Unset] = UNSET
+    subnet_name: Union[None, Unset, str] = UNSET
+    subnet_description: Union[None, Unset, str] = UNSET
+    subnet_cidr: Union[None, Unset, str] = UNSET
     allowed_address_pairs: Union[Unset, list["OpenStackAllowedAddressPair"]] = UNSET
     device_id: Union[None, Unset, str] = UNSET
     device_owner: Union[None, Unset, str] = UNSET
@@ -59,15 +59,31 @@ class OpenStackNestedPort:
         else:
             subnet = self.subnet
 
-        subnet_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.subnet_uuid, Unset):
+        subnet_uuid: Union[None, Unset, str]
+        if isinstance(self.subnet_uuid, Unset):
+            subnet_uuid = UNSET
+        elif isinstance(self.subnet_uuid, UUID):
             subnet_uuid = str(self.subnet_uuid)
+        else:
+            subnet_uuid = self.subnet_uuid
 
-        subnet_name = self.subnet_name
+        subnet_name: Union[None, Unset, str]
+        if isinstance(self.subnet_name, Unset):
+            subnet_name = UNSET
+        else:
+            subnet_name = self.subnet_name
 
-        subnet_description = self.subnet_description
+        subnet_description: Union[None, Unset, str]
+        if isinstance(self.subnet_description, Unset):
+            subnet_description = UNSET
+        else:
+            subnet_description = self.subnet_description
 
-        subnet_cidr = self.subnet_cidr
+        subnet_cidr: Union[None, Unset, str]
+        if isinstance(self.subnet_cidr, Unset):
+            subnet_cidr = UNSET
+        else:
+            subnet_cidr = self.subnet_cidr
 
         allowed_address_pairs: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.allowed_address_pairs, Unset):
@@ -138,18 +154,49 @@ class OpenStackNestedPort:
 
         subnet = _parse_subnet(d.pop("subnet", UNSET))
 
-        _subnet_uuid = d.pop("subnet_uuid", UNSET)
-        subnet_uuid: Union[Unset, UUID]
-        if isinstance(_subnet_uuid, Unset):
-            subnet_uuid = UNSET
-        else:
-            subnet_uuid = UUID(_subnet_uuid)
+        def _parse_subnet_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                subnet_uuid_type_0 = UUID(data)
 
-        subnet_name = d.pop("subnet_name", UNSET)
+                return subnet_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
 
-        subnet_description = d.pop("subnet_description", UNSET)
+        subnet_uuid = _parse_subnet_uuid(d.pop("subnet_uuid", UNSET))
 
-        subnet_cidr = d.pop("subnet_cidr", UNSET)
+        def _parse_subnet_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        subnet_name = _parse_subnet_name(d.pop("subnet_name", UNSET))
+
+        def _parse_subnet_description(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        subnet_description = _parse_subnet_description(d.pop("subnet_description", UNSET))
+
+        def _parse_subnet_cidr(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        subnet_cidr = _parse_subnet_cidr(d.pop("subnet_cidr", UNSET))
 
         allowed_address_pairs = []
         _allowed_address_pairs = d.pop("allowed_address_pairs", UNSET)

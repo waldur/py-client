@@ -30,17 +30,17 @@ class Issue:
         summary (str):
         status (str):
         resolution (str):
-        caller_uuid (UUID):
-        caller_full_name (str):
+        caller_uuid (Union[None, UUID]):
+        caller_full_name (Union[None, str]):
         reporter (str):
-        reporter_uuid (UUID):
-        reporter_name (str):
-        assignee_uuid (UUID):
-        assignee_name (str):
-        customer_uuid (UUID):
-        customer_name (str):
-        project_uuid (UUID):
-        project_name (str):
+        reporter_uuid (Union[None, UUID]):
+        reporter_name (Union[None, str]):
+        assignee_uuid (Union[None, UUID]):
+        assignee_name (Union[None, str]):
+        customer_uuid (Union[None, UUID]):
+        customer_name (Union[None, str]):
+        project_uuid (Union[None, UUID]):
+        project_name (Union[None, str]):
         resource_type (str):
         resource_name (str):
         created (datetime.datetime):
@@ -73,17 +73,17 @@ class Issue:
     summary: str
     status: str
     resolution: str
-    caller_uuid: UUID
-    caller_full_name: str
+    caller_uuid: Union[None, UUID]
+    caller_full_name: Union[None, str]
     reporter: str
-    reporter_uuid: UUID
-    reporter_name: str
-    assignee_uuid: UUID
-    assignee_name: str
-    customer_uuid: UUID
-    customer_name: str
-    project_uuid: UUID
-    project_name: str
+    reporter_uuid: Union[None, UUID]
+    reporter_name: Union[None, str]
+    assignee_uuid: Union[None, UUID]
+    assignee_name: Union[None, str]
+    customer_uuid: Union[None, UUID]
+    customer_name: Union[None, str]
+    project_uuid: Union[None, UUID]
+    project_name: Union[None, str]
     resource_type: str
     resource_name: str
     created: datetime.datetime
@@ -128,26 +128,51 @@ class Issue:
 
         resolution = self.resolution
 
-        caller_uuid = str(self.caller_uuid)
+        caller_uuid: Union[None, str]
+        if isinstance(self.caller_uuid, UUID):
+            caller_uuid = str(self.caller_uuid)
+        else:
+            caller_uuid = self.caller_uuid
 
+        caller_full_name: Union[None, str]
         caller_full_name = self.caller_full_name
 
         reporter = self.reporter
 
-        reporter_uuid = str(self.reporter_uuid)
+        reporter_uuid: Union[None, str]
+        if isinstance(self.reporter_uuid, UUID):
+            reporter_uuid = str(self.reporter_uuid)
+        else:
+            reporter_uuid = self.reporter_uuid
 
+        reporter_name: Union[None, str]
         reporter_name = self.reporter_name
 
-        assignee_uuid = str(self.assignee_uuid)
+        assignee_uuid: Union[None, str]
+        if isinstance(self.assignee_uuid, UUID):
+            assignee_uuid = str(self.assignee_uuid)
+        else:
+            assignee_uuid = self.assignee_uuid
 
+        assignee_name: Union[None, str]
         assignee_name = self.assignee_name
 
-        customer_uuid = str(self.customer_uuid)
+        customer_uuid: Union[None, str]
+        if isinstance(self.customer_uuid, UUID):
+            customer_uuid = str(self.customer_uuid)
+        else:
+            customer_uuid = self.customer_uuid
 
+        customer_name: Union[None, str]
         customer_name = self.customer_name
 
-        project_uuid = str(self.project_uuid)
+        project_uuid: Union[None, str]
+        if isinstance(self.project_uuid, UUID):
+            project_uuid = str(self.project_uuid)
+        else:
+            project_uuid = self.project_uuid
 
+        project_name: Union[None, str]
         project_name = self.project_name
 
         resource_type = self.resource_type
@@ -316,27 +341,117 @@ class Issue:
 
         resolution = d.pop("resolution")
 
-        caller_uuid = UUID(d.pop("caller_uuid"))
+        def _parse_caller_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                caller_uuid_type_0 = UUID(data)
 
-        caller_full_name = d.pop("caller_full_name")
+                return caller_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        caller_uuid = _parse_caller_uuid(d.pop("caller_uuid"))
+
+        def _parse_caller_full_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        caller_full_name = _parse_caller_full_name(d.pop("caller_full_name"))
 
         reporter = d.pop("reporter")
 
-        reporter_uuid = UUID(d.pop("reporter_uuid"))
+        def _parse_reporter_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                reporter_uuid_type_0 = UUID(data)
 
-        reporter_name = d.pop("reporter_name")
+                return reporter_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
 
-        assignee_uuid = UUID(d.pop("assignee_uuid"))
+        reporter_uuid = _parse_reporter_uuid(d.pop("reporter_uuid"))
 
-        assignee_name = d.pop("assignee_name")
+        def _parse_reporter_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
 
-        customer_uuid = UUID(d.pop("customer_uuid"))
+        reporter_name = _parse_reporter_name(d.pop("reporter_name"))
 
-        customer_name = d.pop("customer_name")
+        def _parse_assignee_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                assignee_uuid_type_0 = UUID(data)
 
-        project_uuid = UUID(d.pop("project_uuid"))
+                return assignee_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
 
-        project_name = d.pop("project_name")
+        assignee_uuid = _parse_assignee_uuid(d.pop("assignee_uuid"))
+
+        def _parse_assignee_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        assignee_name = _parse_assignee_name(d.pop("assignee_name"))
+
+        def _parse_customer_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                customer_uuid_type_0 = UUID(data)
+
+                return customer_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        customer_uuid = _parse_customer_uuid(d.pop("customer_uuid"))
+
+        def _parse_customer_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        customer_name = _parse_customer_name(d.pop("customer_name"))
+
+        def _parse_project_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                project_uuid_type_0 = UUID(data)
+
+                return project_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        project_uuid = _parse_project_uuid(d.pop("project_uuid"))
+
+        def _parse_project_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        project_name = _parse_project_name(d.pop("project_name"))
 
         resource_type = d.pop("resource_type")
 

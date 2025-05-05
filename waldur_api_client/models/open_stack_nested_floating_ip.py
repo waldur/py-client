@@ -22,7 +22,7 @@ class OpenStackNestedFloatingIP:
         uuid (Union[Unset, UUID]):
         address (Union[None, Unset, str]):
         port_fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
-        port_mac_address (Union[Unset, str]):
+        port_mac_address (Union[None, Unset, str]):
         subnet (Union[Unset, str]):
         subnet_uuid (Union[Unset, UUID]):
         subnet_name (Union[Unset, str]):
@@ -34,7 +34,7 @@ class OpenStackNestedFloatingIP:
     uuid: Union[Unset, UUID] = UNSET
     address: Union[None, Unset, str] = UNSET
     port_fixed_ips: Union[Unset, list["OpenStackFixedIp"]] = UNSET
-    port_mac_address: Union[Unset, str] = UNSET
+    port_mac_address: Union[None, Unset, str] = UNSET
     subnet: Union[Unset, str] = UNSET
     subnet_uuid: Union[Unset, UUID] = UNSET
     subnet_name: Union[Unset, str] = UNSET
@@ -62,7 +62,11 @@ class OpenStackNestedFloatingIP:
                 port_fixed_ips_item = port_fixed_ips_item_data.to_dict()
                 port_fixed_ips.append(port_fixed_ips_item)
 
-        port_mac_address = self.port_mac_address
+        port_mac_address: Union[None, Unset, str]
+        if isinstance(self.port_mac_address, Unset):
+            port_mac_address = UNSET
+        else:
+            port_mac_address = self.port_mac_address
 
         subnet = self.subnet
 
@@ -132,7 +136,14 @@ class OpenStackNestedFloatingIP:
 
             port_fixed_ips.append(port_fixed_ips_item)
 
-        port_mac_address = d.pop("port_mac_address", UNSET)
+        def _parse_port_mac_address(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        port_mac_address = _parse_port_mac_address(d.pop("port_mac_address", UNSET))
 
         subnet = d.pop("subnet", UNSET)
 

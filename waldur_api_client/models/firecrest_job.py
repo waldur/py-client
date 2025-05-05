@@ -44,9 +44,9 @@ class FirecrestJob:
         runtime_state (Union[Unset, str]):
         file (Union[Unset, str]):
         user (Union[None, Unset, str]): Reference to user which submitted job
-        user_uuid (Union[Unset, UUID]):
-        user_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
-            characters
+        user_uuid (Union[None, UUID, Unset]):
+        user_username (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
+            @/./+/-/_ characters
         report (Union[Unset, Any]):
     """
 
@@ -77,8 +77,8 @@ class FirecrestJob:
     runtime_state: Union[Unset, str] = UNSET
     file: Union[Unset, str] = UNSET
     user: Union[None, Unset, str] = UNSET
-    user_uuid: Union[Unset, UUID] = UNSET
-    user_username: Union[Unset, str] = UNSET
+    user_uuid: Union[None, UUID, Unset] = UNSET
+    user_username: Union[None, Unset, str] = UNSET
     report: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -157,11 +157,19 @@ class FirecrestJob:
         else:
             user = self.user
 
-        user_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.user_uuid, Unset):
+        user_uuid: Union[None, Unset, str]
+        if isinstance(self.user_uuid, Unset):
+            user_uuid = UNSET
+        elif isinstance(self.user_uuid, UUID):
             user_uuid = str(self.user_uuid)
+        else:
+            user_uuid = self.user_uuid
 
-        user_username = self.user_username
+        user_username: Union[None, Unset, str]
+        if isinstance(self.user_username, Unset):
+            user_username = UNSET
+        else:
+            user_username = self.user_username
 
         report = self.report
 
@@ -332,14 +340,31 @@ class FirecrestJob:
 
         user = _parse_user(d.pop("user", UNSET))
 
-        _user_uuid = d.pop("user_uuid", UNSET)
-        user_uuid: Union[Unset, UUID]
-        if isinstance(_user_uuid, Unset):
-            user_uuid = UNSET
-        else:
-            user_uuid = UUID(_user_uuid)
+        def _parse_user_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                user_uuid_type_0 = UUID(data)
 
-        user_username = d.pop("user_username", UNSET)
+                return user_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        user_uuid = _parse_user_uuid(d.pop("user_uuid", UNSET))
+
+        def _parse_user_username(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        user_username = _parse_user_username(d.pop("user_username", UNSET))
 
         report = d.pop("report", UNSET)
 

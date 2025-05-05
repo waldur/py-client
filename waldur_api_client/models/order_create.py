@@ -39,10 +39,10 @@ class OrderCreate:
         category_title (str):
         category_uuid (UUID):
         category_icon (str):
-        plan_unit (BillingUnit):
-        plan_name (str):
-        plan_uuid (UUID):
-        plan_description (str):
+        plan_unit (Union[BillingUnit, None]):
+        plan_name (Union[None, str]):
+        plan_uuid (Union[None, UUID]):
+        plan_description (Union[None, str]):
         uuid (UUID):
         created (datetime.datetime):
         modified (datetime.datetime):
@@ -94,10 +94,10 @@ class OrderCreate:
     category_title: str
     category_uuid: UUID
     category_icon: str
-    plan_unit: BillingUnit
-    plan_name: str
-    plan_uuid: UUID
-    plan_description: str
+    plan_unit: Union[BillingUnit, None]
+    plan_name: Union[None, str]
+    plan_uuid: Union[None, UUID]
+    plan_description: Union[None, str]
     uuid: UUID
     created: datetime.datetime
     modified: datetime.datetime
@@ -164,12 +164,22 @@ class OrderCreate:
 
         category_icon = self.category_icon
 
-        plan_unit = self.plan_unit.value
+        plan_unit: Union[None, str]
+        if isinstance(self.plan_unit, BillingUnit):
+            plan_unit = self.plan_unit.value
+        else:
+            plan_unit = self.plan_unit
 
+        plan_name: Union[None, str]
         plan_name = self.plan_name
 
-        plan_uuid = str(self.plan_uuid)
+        plan_uuid: Union[None, str]
+        if isinstance(self.plan_uuid, UUID):
+            plan_uuid = str(self.plan_uuid)
+        else:
+            plan_uuid = self.plan_uuid
 
+        plan_description: Union[None, str]
         plan_description = self.plan_description
 
         uuid = str(self.uuid)
@@ -362,13 +372,49 @@ class OrderCreate:
 
         category_icon = d.pop("category_icon")
 
-        plan_unit = BillingUnit(d.pop("plan_unit"))
+        def _parse_plan_unit(data: object) -> Union[BillingUnit, None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                plan_unit_type_1 = BillingUnit(data)
 
-        plan_name = d.pop("plan_name")
+                return plan_unit_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union[BillingUnit, None], data)
 
-        plan_uuid = UUID(d.pop("plan_uuid"))
+        plan_unit = _parse_plan_unit(d.pop("plan_unit"))
 
-        plan_description = d.pop("plan_description")
+        def _parse_plan_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        plan_name = _parse_plan_name(d.pop("plan_name"))
+
+        def _parse_plan_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                plan_uuid_type_0 = UUID(data)
+
+                return plan_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        plan_uuid = _parse_plan_uuid(d.pop("plan_uuid"))
+
+        def _parse_plan_description(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        plan_description = _parse_plan_description(d.pop("plan_description"))
 
         uuid = UUID(d.pop("uuid"))
 

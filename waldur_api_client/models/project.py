@@ -36,8 +36,8 @@ class Project:
         description (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
         type_ (Union[None, Unset, str]):
-        type_name (Union[Unset, str]):
-        type_uuid (Union[Unset, UUID]):
+        type_name (Union[None, Unset, str]):
+        type_uuid (Union[None, UUID, Unset]):
         backend_id (Union[Unset, str]):
         start_date (Union[None, Unset, datetime.date]):
         end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource will be
@@ -66,8 +66,8 @@ class Project:
     description: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     type_: Union[None, Unset, str] = UNSET
-    type_name: Union[Unset, str] = UNSET
-    type_uuid: Union[Unset, UUID] = UNSET
+    type_name: Union[None, Unset, str] = UNSET
+    type_uuid: Union[None, UUID, Unset] = UNSET
     backend_id: Union[Unset, str] = UNSET
     start_date: Union[None, Unset, datetime.date] = UNSET
     end_date: Union[None, Unset, datetime.date] = UNSET
@@ -119,11 +119,19 @@ class Project:
         else:
             type_ = self.type_
 
-        type_name = self.type_name
+        type_name: Union[None, Unset, str]
+        if isinstance(self.type_name, Unset):
+            type_name = UNSET
+        else:
+            type_name = self.type_name
 
-        type_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.type_uuid, Unset):
+        type_uuid: Union[None, Unset, str]
+        if isinstance(self.type_uuid, Unset):
+            type_uuid = UNSET
+        elif isinstance(self.type_uuid, UUID):
             type_uuid = str(self.type_uuid)
+        else:
+            type_uuid = self.type_uuid
 
         backend_id = self.backend_id
 
@@ -299,14 +307,31 @@ class Project:
 
         type_ = _parse_type_(d.pop("type", UNSET))
 
-        type_name = d.pop("type_name", UNSET)
+        def _parse_type_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        _type_uuid = d.pop("type_uuid", UNSET)
-        type_uuid: Union[Unset, UUID]
-        if isinstance(_type_uuid, Unset):
-            type_uuid = UNSET
-        else:
-            type_uuid = UUID(_type_uuid)
+        type_name = _parse_type_name(d.pop("type_name", UNSET))
+
+        def _parse_type_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                type_uuid_type_0 = UUID(data)
+
+                return type_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        type_uuid = _parse_type_uuid(d.pop("type_uuid", UNSET))
 
         backend_id = d.pop("backend_id", UNSET)
 

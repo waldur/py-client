@@ -16,8 +16,8 @@ class CustomerPermissionReview:
     Attributes:
         url (str):
         uuid (UUID):
-        reviewer_full_name (str):
-        reviewer_uuid (UUID):
+        reviewer_full_name (Union[None, str]):
+        reviewer_uuid (Union[None, UUID]):
         customer_uuid (UUID):
         customer_name (str):
         is_pending (bool):
@@ -27,8 +27,8 @@ class CustomerPermissionReview:
 
     url: str
     uuid: UUID
-    reviewer_full_name: str
-    reviewer_uuid: UUID
+    reviewer_full_name: Union[None, str]
+    reviewer_uuid: Union[None, UUID]
     customer_uuid: UUID
     customer_name: str
     is_pending: bool
@@ -41,9 +41,14 @@ class CustomerPermissionReview:
 
         uuid = str(self.uuid)
 
+        reviewer_full_name: Union[None, str]
         reviewer_full_name = self.reviewer_full_name
 
-        reviewer_uuid = str(self.reviewer_uuid)
+        reviewer_uuid: Union[None, str]
+        if isinstance(self.reviewer_uuid, UUID):
+            reviewer_uuid = str(self.reviewer_uuid)
+        else:
+            reviewer_uuid = self.reviewer_uuid
 
         customer_uuid = str(self.customer_uuid)
 
@@ -84,9 +89,27 @@ class CustomerPermissionReview:
 
         uuid = UUID(d.pop("uuid"))
 
-        reviewer_full_name = d.pop("reviewer_full_name")
+        def _parse_reviewer_full_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
 
-        reviewer_uuid = UUID(d.pop("reviewer_uuid"))
+        reviewer_full_name = _parse_reviewer_full_name(d.pop("reviewer_full_name"))
+
+        def _parse_reviewer_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                reviewer_uuid_type_0 = UUID(data)
+
+                return reviewer_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        reviewer_uuid = _parse_reviewer_uuid(d.pop("reviewer_uuid"))
 
         customer_uuid = UUID(d.pop("customer_uuid"))
 

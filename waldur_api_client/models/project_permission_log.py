@@ -19,8 +19,8 @@ class ProjectPermissionLog:
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[None, Unset, datetime.datetime]):
         created_by (Union[None, Unset, str]):
-        created_by_full_name (Union[Unset, str]):
-        created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
+        created_by_full_name (Union[None, Unset, str]):
+        created_by_username (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
@@ -43,8 +43,8 @@ class ProjectPermissionLog:
     created: Union[Unset, datetime.datetime] = UNSET
     expiration_time: Union[None, Unset, datetime.datetime] = UNSET
     created_by: Union[None, Unset, str] = UNSET
-    created_by_full_name: Union[Unset, str] = UNSET
-    created_by_username: Union[Unset, str] = UNSET
+    created_by_full_name: Union[None, Unset, str] = UNSET
+    created_by_username: Union[None, Unset, str] = UNSET
     project: Union[Unset, str] = UNSET
     project_uuid: Union[Unset, UUID] = UNSET
     project_name: Union[Unset, str] = UNSET
@@ -81,9 +81,17 @@ class ProjectPermissionLog:
         else:
             created_by = self.created_by
 
-        created_by_full_name = self.created_by_full_name
+        created_by_full_name: Union[None, Unset, str]
+        if isinstance(self.created_by_full_name, Unset):
+            created_by_full_name = UNSET
+        else:
+            created_by_full_name = self.created_by_full_name
 
-        created_by_username = self.created_by_username
+        created_by_username: Union[None, Unset, str]
+        if isinstance(self.created_by_username, Unset):
+            created_by_username = UNSET
+        else:
+            created_by_username = self.created_by_username
 
         project = self.project
 
@@ -207,9 +215,23 @@ class ProjectPermissionLog:
 
         created_by = _parse_created_by(d.pop("created_by", UNSET))
 
-        created_by_full_name = d.pop("created_by_full_name", UNSET)
+        def _parse_created_by_full_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        created_by_username = d.pop("created_by_username", UNSET)
+        created_by_full_name = _parse_created_by_full_name(d.pop("created_by_full_name", UNSET))
+
+        def _parse_created_by_username(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        created_by_username = _parse_created_by_username(d.pop("created_by_username", UNSET))
 
         project = d.pop("project", UNSET)
 
