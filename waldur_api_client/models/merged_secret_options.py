@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,6 +21,8 @@ class MergedSecretOptions:
         heappe_password (Union[Unset, str]): HEAppE password
         ipv4_external_ip_mapping (Union[Unset, list['IPMapping']]): OpenStack IPv4 external IP mapping
         openstack_api_tls_certificate (Union[Unset, str]):
+        dns_nameservers (Union[Unset, list[str]]): Default value for new subnets DNS name servers. Should be defined as
+            list.
         shared_user_password (Union[Unset, str]): GLAuth shared user password
         template_confirmation_comment (Union[Unset, str]): Template confirmation comment
         language (Union[Unset, str]): Script language: Python or Bash
@@ -49,12 +51,14 @@ class MergedSecretOptions:
         keycloak_ssl_verify (Union[Unset, bool]): Indicates whether verify SSL certificates
         argocd_k8s_namespace (Union[Unset, str]): Namespace where ArgoCD is deployed
         argocd_k8s_kubeconfig (Union[Unset, str]): Kubeconfig with access to namespace where ArgoCD is deployed
+        base_image_name (Union[Unset, str]): Base image name
     """
 
     heappe_cluster_password: Union[Unset, str] = UNSET
     heappe_password: Union[Unset, str] = UNSET
     ipv4_external_ip_mapping: Union[Unset, list["IPMapping"]] = UNSET
     openstack_api_tls_certificate: Union[Unset, str] = UNSET
+    dns_nameservers: Union[Unset, list[str]] = UNSET
     shared_user_password: Union[Unset, str] = UNSET
     template_confirmation_comment: Union[Unset, str] = UNSET
     language: Union[Unset, str] = UNSET
@@ -83,6 +87,7 @@ class MergedSecretOptions:
     keycloak_ssl_verify: Union[Unset, bool] = UNSET
     argocd_k8s_namespace: Union[Unset, str] = UNSET
     argocd_k8s_kubeconfig: Union[Unset, str] = UNSET
+    base_image_name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -98,6 +103,10 @@ class MergedSecretOptions:
                 ipv4_external_ip_mapping.append(ipv4_external_ip_mapping_item)
 
         openstack_api_tls_certificate = self.openstack_api_tls_certificate
+
+        dns_nameservers: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.dns_nameservers, Unset):
+            dns_nameservers = self.dns_nameservers
 
         shared_user_password = self.shared_user_password
 
@@ -155,6 +164,8 @@ class MergedSecretOptions:
 
         argocd_k8s_kubeconfig = self.argocd_k8s_kubeconfig
 
+        base_image_name = self.base_image_name
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -166,6 +177,8 @@ class MergedSecretOptions:
             field_dict["ipv4_external_ip_mapping"] = ipv4_external_ip_mapping
         if openstack_api_tls_certificate is not UNSET:
             field_dict["openstack_api_tls_certificate"] = openstack_api_tls_certificate
+        if dns_nameservers is not UNSET:
+            field_dict["dns_nameservers"] = dns_nameservers
         if shared_user_password is not UNSET:
             field_dict["shared_user_password"] = shared_user_password
         if template_confirmation_comment is not UNSET:
@@ -222,6 +235,8 @@ class MergedSecretOptions:
             field_dict["argocd_k8s_namespace"] = argocd_k8s_namespace
         if argocd_k8s_kubeconfig is not UNSET:
             field_dict["argocd_k8s_kubeconfig"] = argocd_k8s_kubeconfig
+        if base_image_name is not UNSET:
+            field_dict["base_image_name"] = base_image_name
 
         return field_dict
 
@@ -242,6 +257,8 @@ class MergedSecretOptions:
             ipv4_external_ip_mapping.append(ipv4_external_ip_mapping_item)
 
         openstack_api_tls_certificate = d.pop("openstack_api_tls_certificate", UNSET)
+
+        dns_nameservers = cast(list[str], d.pop("dns_nameservers", UNSET))
 
         shared_user_password = d.pop("shared_user_password", UNSET)
 
@@ -299,11 +316,14 @@ class MergedSecretOptions:
 
         argocd_k8s_kubeconfig = d.pop("argocd_k8s_kubeconfig", UNSET)
 
+        base_image_name = d.pop("base_image_name", UNSET)
+
         merged_secret_options = cls(
             heappe_cluster_password=heappe_cluster_password,
             heappe_password=heappe_password,
             ipv4_external_ip_mapping=ipv4_external_ip_mapping,
             openstack_api_tls_certificate=openstack_api_tls_certificate,
+            dns_nameservers=dns_nameservers,
             shared_user_password=shared_user_password,
             template_confirmation_comment=template_confirmation_comment,
             language=language,
@@ -332,6 +352,7 @@ class MergedSecretOptions:
             keycloak_ssl_verify=keycloak_ssl_verify,
             argocd_k8s_namespace=argocd_k8s_namespace,
             argocd_k8s_kubeconfig=argocd_k8s_kubeconfig,
+            base_image_name=base_image_name,
         )
 
         merged_secret_options.additional_properties = d

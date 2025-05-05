@@ -20,6 +20,7 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal: Union[Unset, str] = UNSET,
+    proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalReviewsListStateItem]] = UNSET,
@@ -50,6 +51,8 @@ def _get_kwargs(
     params["page_size"] = page_size
 
     params["proposal"] = proposal
+
+    params["proposal_name"] = proposal_name
 
     json_proposal_uuid: Union[Unset, str] = UNSET
     if not isinstance(proposal_uuid, Unset):
@@ -119,6 +122,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal: Union[Unset, str] = UNSET,
+    proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalReviewsListStateItem]] = UNSET,
@@ -131,6 +135,7 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal (Union[Unset, str]):
+        proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[ProposalReviewsListStateItem]]):
@@ -150,6 +155,7 @@ def sync_detailed(
         page=page,
         page_size=page_size,
         proposal=proposal,
+        proposal_name=proposal_name,
         proposal_uuid=proposal_uuid,
         reviewer_uuid=reviewer_uuid,
         state=state,
@@ -171,6 +177,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal: Union[Unset, str] = UNSET,
+    proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalReviewsListStateItem]] = UNSET,
@@ -183,6 +190,7 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal (Union[Unset, str]):
+        proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[ProposalReviewsListStateItem]]):
@@ -203,6 +211,7 @@ def sync(
         page=page,
         page_size=page_size,
         proposal=proposal,
+        proposal_name=proposal_name,
         proposal_uuid=proposal_uuid,
         reviewer_uuid=reviewer_uuid,
         state=state,
@@ -218,6 +227,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal: Union[Unset, str] = UNSET,
+    proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalReviewsListStateItem]] = UNSET,
@@ -230,6 +240,7 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal (Union[Unset, str]):
+        proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[ProposalReviewsListStateItem]]):
@@ -249,6 +260,7 @@ async def asyncio_detailed(
         page=page,
         page_size=page_size,
         proposal=proposal,
+        proposal_name=proposal_name,
         proposal_uuid=proposal_uuid,
         reviewer_uuid=reviewer_uuid,
         state=state,
@@ -268,6 +280,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal: Union[Unset, str] = UNSET,
+    proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalReviewsListStateItem]] = UNSET,
@@ -280,6 +293,7 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal (Union[Unset, str]):
+        proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[ProposalReviewsListStateItem]]):
@@ -301,6 +315,7 @@ async def asyncio(
             page=page,
             page_size=page_size,
             proposal=proposal,
+            proposal_name=proposal_name,
             proposal_uuid=proposal_uuid,
             reviewer_uuid=reviewer_uuid,
             state=state,
