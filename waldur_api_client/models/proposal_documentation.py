@@ -16,17 +16,21 @@ class ProposalDocumentation:
     """
     Attributes:
         file_name (str):
+        file_size (int):
         created (datetime.datetime):
         file (Union[None, Unset, str]): Upload supporting documentation in PDF format.
     """
 
     file_name: str
+    file_size: int
     created: datetime.datetime
     file: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         file_name = self.file_name
+
+        file_size = self.file_size
 
         created = self.created.isoformat()
 
@@ -41,6 +45,7 @@ class ProposalDocumentation:
         field_dict.update(
             {
                 "file_name": file_name,
+                "file_size": file_size,
                 "created": created,
             }
         )
@@ -53,6 +58,8 @@ class ProposalDocumentation:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         file_name = d.pop("file_name")
+
+        file_size = d.pop("file_size")
 
         created = isoparse(d.pop("created"))
 
@@ -67,6 +74,7 @@ class ProposalDocumentation:
 
         proposal_documentation = cls(
             file_name=file_name,
+            file_size=file_size,
             created=created,
             file=file,
         )

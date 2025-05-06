@@ -19,6 +19,7 @@ class CallDocument:
         uuid (Union[Unset, UUID]):
         file (Union[None, Unset, str]): Documentation for call for proposals.
         file_name (Union[Unset, str]):
+        file_size (Union[Unset, int]):
         description (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
     """
@@ -26,6 +27,7 @@ class CallDocument:
     uuid: Union[Unset, UUID] = UNSET
     file: Union[None, Unset, str] = UNSET
     file_name: Union[Unset, str] = UNSET
+    file_size: Union[Unset, int] = UNSET
     description: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -43,6 +45,8 @@ class CallDocument:
 
         file_name = self.file_name
 
+        file_size = self.file_size
+
         description = self.description
 
         created: Union[Unset, str] = UNSET
@@ -58,6 +62,8 @@ class CallDocument:
             field_dict["file"] = file
         if file_name is not UNSET:
             field_dict["file_name"] = file_name
+        if file_size is not UNSET:
+            field_dict["file_size"] = file_size
         if description is not UNSET:
             field_dict["description"] = description
         if created is not UNSET:
@@ -86,6 +92,8 @@ class CallDocument:
 
         file_name = d.pop("file_name", UNSET)
 
+        file_size = d.pop("file_size", UNSET)
+
         description = d.pop("description", UNSET)
 
         _created = d.pop("created", UNSET)
@@ -99,6 +107,7 @@ class CallDocument:
             uuid=uuid,
             file=file,
             file_name=file_name,
+            file_size=file_size,
             description=description,
             created=created,
         )

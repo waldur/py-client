@@ -11,8 +11,8 @@ from ..models.core_states import CoreStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.open_stack_volume_marketplace_offering_plugin_options import (
-        OpenStackVolumeMarketplaceOfferingPluginOptions,
+    from ..models.open_stack_volume_marketplace_offering_plugin_options_type_0 import (
+        OpenStackVolumeMarketplaceOfferingPluginOptionsType0,
     )
 
 
@@ -69,7 +69,8 @@ class OpenStackVolume:
         tenant_uuid (Union[Unset, UUID]):
         marketplace_offering_uuid (Union[Unset, str]):
         marketplace_offering_name (Union[Unset, str]):
-        marketplace_offering_plugin_options (Union[Unset, OpenStackVolumeMarketplaceOfferingPluginOptions]):
+        marketplace_offering_plugin_options (Union['OpenStackVolumeMarketplaceOfferingPluginOptionsType0', None,
+            Unset]):
         marketplace_category_uuid (Union[Unset, str]):
         marketplace_category_name (Union[Unset, str]):
         marketplace_resource_uuid (Union[Unset, str]):
@@ -125,7 +126,9 @@ class OpenStackVolume:
     tenant_uuid: Union[Unset, UUID] = UNSET
     marketplace_offering_uuid: Union[Unset, str] = UNSET
     marketplace_offering_name: Union[Unset, str] = UNSET
-    marketplace_offering_plugin_options: Union[Unset, "OpenStackVolumeMarketplaceOfferingPluginOptions"] = UNSET
+    marketplace_offering_plugin_options: Union["OpenStackVolumeMarketplaceOfferingPluginOptionsType0", None, Unset] = (
+        UNSET
+    )
     marketplace_category_uuid: Union[Unset, str] = UNSET
     marketplace_category_name: Union[Unset, str] = UNSET
     marketplace_resource_uuid: Union[Unset, str] = UNSET
@@ -136,6 +139,10 @@ class OpenStackVolume:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.open_stack_volume_marketplace_offering_plugin_options_type_0 import (
+            OpenStackVolumeMarketplaceOfferingPluginOptionsType0,
+        )
+
         url = self.url
 
         uuid: Union[Unset, str] = UNSET
@@ -276,9 +283,13 @@ class OpenStackVolume:
 
         marketplace_offering_name = self.marketplace_offering_name
 
-        marketplace_offering_plugin_options: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.marketplace_offering_plugin_options, Unset):
+        marketplace_offering_plugin_options: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.marketplace_offering_plugin_options, Unset):
+            marketplace_offering_plugin_options = UNSET
+        elif isinstance(self.marketplace_offering_plugin_options, OpenStackVolumeMarketplaceOfferingPluginOptionsType0):
             marketplace_offering_plugin_options = self.marketplace_offering_plugin_options.to_dict()
+        else:
+            marketplace_offering_plugin_options = self.marketplace_offering_plugin_options
 
         marketplace_category_uuid = self.marketplace_category_uuid
 
@@ -410,8 +421,8 @@ class OpenStackVolume:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.open_stack_volume_marketplace_offering_plugin_options import (
-            OpenStackVolumeMarketplaceOfferingPluginOptions,
+        from ..models.open_stack_volume_marketplace_offering_plugin_options_type_0 import (
+            OpenStackVolumeMarketplaceOfferingPluginOptionsType0,
         )
 
         d = dict(src_dict)
@@ -603,14 +614,28 @@ class OpenStackVolume:
 
         marketplace_offering_name = d.pop("marketplace_offering_name", UNSET)
 
-        _marketplace_offering_plugin_options = d.pop("marketplace_offering_plugin_options", UNSET)
-        marketplace_offering_plugin_options: Union[Unset, OpenStackVolumeMarketplaceOfferingPluginOptions]
-        if isinstance(_marketplace_offering_plugin_options, Unset):
-            marketplace_offering_plugin_options = UNSET
-        else:
-            marketplace_offering_plugin_options = OpenStackVolumeMarketplaceOfferingPluginOptions.from_dict(
-                _marketplace_offering_plugin_options
-            )
+        def _parse_marketplace_offering_plugin_options(
+            data: object,
+        ) -> Union["OpenStackVolumeMarketplaceOfferingPluginOptionsType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                marketplace_offering_plugin_options_type_0 = (
+                    OpenStackVolumeMarketplaceOfferingPluginOptionsType0.from_dict(data)
+                )
+
+                return marketplace_offering_plugin_options_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["OpenStackVolumeMarketplaceOfferingPluginOptionsType0", None, Unset], data)
+
+        marketplace_offering_plugin_options = _parse_marketplace_offering_plugin_options(
+            d.pop("marketplace_offering_plugin_options", UNSET)
+        )
 
         marketplace_category_uuid = d.pop("marketplace_category_uuid", UNSET)
 

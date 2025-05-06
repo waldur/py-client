@@ -4,11 +4,11 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="RancherIngressMarketplaceOfferingPluginOptions")
+T = TypeVar("T", bound="AwsInstanceMarketplaceOfferingPluginOptionsType0")
 
 
 @_attrs_define
-class RancherIngressMarketplaceOfferingPluginOptions:
+class AwsInstanceMarketplaceOfferingPluginOptionsType0:
     """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -22,10 +22,10 @@ class RancherIngressMarketplaceOfferingPluginOptions:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        rancher_ingress_marketplace_offering_plugin_options = cls()
+        aws_instance_marketplace_offering_plugin_options_type_0 = cls()
 
-        rancher_ingress_marketplace_offering_plugin_options.additional_properties = d
-        return rancher_ingress_marketplace_offering_plugin_options
+        aws_instance_marketplace_offering_plugin_options_type_0.additional_properties = d
+        return aws_instance_marketplace_offering_plugin_options_type_0
 
     @property
     def additional_keys(self) -> list[str]:

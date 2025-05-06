@@ -11,8 +11,8 @@ from ..models.core_states import CoreStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.digital_ocean_droplet_marketplace_offering_plugin_options import (
-        DigitalOceanDropletMarketplaceOfferingPluginOptions,
+    from ..models.digital_ocean_droplet_marketplace_offering_plugin_options_type_0 import (
+        DigitalOceanDropletMarketplaceOfferingPluginOptionsType0,
     )
 
 
@@ -65,7 +65,8 @@ class DigitalOceanDroplet:
         region_name (Union[Unset, str]):
         marketplace_offering_uuid (Union[Unset, str]):
         marketplace_offering_name (Union[Unset, str]):
-        marketplace_offering_plugin_options (Union[Unset, DigitalOceanDropletMarketplaceOfferingPluginOptions]):
+        marketplace_offering_plugin_options (Union['DigitalOceanDropletMarketplaceOfferingPluginOptionsType0', None,
+            Unset]):
         marketplace_category_uuid (Union[Unset, str]):
         marketplace_category_name (Union[Unset, str]):
         marketplace_resource_uuid (Union[Unset, str]):
@@ -117,7 +118,9 @@ class DigitalOceanDroplet:
     region_name: Union[Unset, str] = UNSET
     marketplace_offering_uuid: Union[Unset, str] = UNSET
     marketplace_offering_name: Union[Unset, str] = UNSET
-    marketplace_offering_plugin_options: Union[Unset, "DigitalOceanDropletMarketplaceOfferingPluginOptions"] = UNSET
+    marketplace_offering_plugin_options: Union[
+        "DigitalOceanDropletMarketplaceOfferingPluginOptionsType0", None, Unset
+    ] = UNSET
     marketplace_category_uuid: Union[Unset, str] = UNSET
     marketplace_category_name: Union[Unset, str] = UNSET
     marketplace_resource_uuid: Union[Unset, str] = UNSET
@@ -128,6 +131,10 @@ class DigitalOceanDroplet:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.digital_ocean_droplet_marketplace_offering_plugin_options_type_0 import (
+            DigitalOceanDropletMarketplaceOfferingPluginOptionsType0,
+        )
+
         url = self.url
 
         uuid: Union[Unset, str] = UNSET
@@ -246,9 +253,15 @@ class DigitalOceanDroplet:
 
         marketplace_offering_name = self.marketplace_offering_name
 
-        marketplace_offering_plugin_options: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.marketplace_offering_plugin_options, Unset):
+        marketplace_offering_plugin_options: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.marketplace_offering_plugin_options, Unset):
+            marketplace_offering_plugin_options = UNSET
+        elif isinstance(
+            self.marketplace_offering_plugin_options, DigitalOceanDropletMarketplaceOfferingPluginOptionsType0
+        ):
             marketplace_offering_plugin_options = self.marketplace_offering_plugin_options.to_dict()
+        else:
+            marketplace_offering_plugin_options = self.marketplace_offering_plugin_options
 
         marketplace_category_uuid = self.marketplace_category_uuid
 
@@ -372,8 +385,8 @@ class DigitalOceanDroplet:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.digital_ocean_droplet_marketplace_offering_plugin_options import (
-            DigitalOceanDropletMarketplaceOfferingPluginOptions,
+        from ..models.digital_ocean_droplet_marketplace_offering_plugin_options_type_0 import (
+            DigitalOceanDropletMarketplaceOfferingPluginOptionsType0,
         )
 
         d = dict(src_dict)
@@ -527,14 +540,28 @@ class DigitalOceanDroplet:
 
         marketplace_offering_name = d.pop("marketplace_offering_name", UNSET)
 
-        _marketplace_offering_plugin_options = d.pop("marketplace_offering_plugin_options", UNSET)
-        marketplace_offering_plugin_options: Union[Unset, DigitalOceanDropletMarketplaceOfferingPluginOptions]
-        if isinstance(_marketplace_offering_plugin_options, Unset):
-            marketplace_offering_plugin_options = UNSET
-        else:
-            marketplace_offering_plugin_options = DigitalOceanDropletMarketplaceOfferingPluginOptions.from_dict(
-                _marketplace_offering_plugin_options
-            )
+        def _parse_marketplace_offering_plugin_options(
+            data: object,
+        ) -> Union["DigitalOceanDropletMarketplaceOfferingPluginOptionsType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                marketplace_offering_plugin_options_type_0 = (
+                    DigitalOceanDropletMarketplaceOfferingPluginOptionsType0.from_dict(data)
+                )
+
+                return marketplace_offering_plugin_options_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["DigitalOceanDropletMarketplaceOfferingPluginOptionsType0", None, Unset], data)
+
+        marketplace_offering_plugin_options = _parse_marketplace_offering_plugin_options(
+            d.pop("marketplace_offering_plugin_options", UNSET)
+        )
 
         marketplace_category_uuid = d.pop("marketplace_category_uuid", UNSET)
 

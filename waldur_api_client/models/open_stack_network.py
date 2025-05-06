@@ -13,8 +13,8 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.network_rbac_policy import NetworkRBACPolicy
     from ..models.open_stack_nested_sub_net import OpenStackNestedSubNet
-    from ..models.open_stack_network_marketplace_offering_plugin_options import (
-        OpenStackNetworkMarketplaceOfferingPluginOptions,
+    from ..models.open_stack_network_marketplace_offering_plugin_options_type_0 import (
+        OpenStackNetworkMarketplaceOfferingPluginOptionsType0,
     )
 
 
@@ -59,7 +59,8 @@ class OpenStackNetwork:
         rbac_policies (Union[Unset, list['NetworkRBACPolicy']]):
         marketplace_offering_uuid (Union[Unset, str]):
         marketplace_offering_name (Union[Unset, str]):
-        marketplace_offering_plugin_options (Union[Unset, OpenStackNetworkMarketplaceOfferingPluginOptions]):
+        marketplace_offering_plugin_options (Union['OpenStackNetworkMarketplaceOfferingPluginOptionsType0', None,
+            Unset]):
         marketplace_category_uuid (Union[Unset, str]):
         marketplace_category_name (Union[Unset, str]):
         marketplace_resource_uuid (Union[Unset, str]):
@@ -103,7 +104,9 @@ class OpenStackNetwork:
     rbac_policies: Union[Unset, list["NetworkRBACPolicy"]] = UNSET
     marketplace_offering_uuid: Union[Unset, str] = UNSET
     marketplace_offering_name: Union[Unset, str] = UNSET
-    marketplace_offering_plugin_options: Union[Unset, "OpenStackNetworkMarketplaceOfferingPluginOptions"] = UNSET
+    marketplace_offering_plugin_options: Union["OpenStackNetworkMarketplaceOfferingPluginOptionsType0", None, Unset] = (
+        UNSET
+    )
     marketplace_category_uuid: Union[Unset, str] = UNSET
     marketplace_category_name: Union[Unset, str] = UNSET
     marketplace_resource_uuid: Union[Unset, str] = UNSET
@@ -114,6 +117,10 @@ class OpenStackNetwork:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.open_stack_network_marketplace_offering_plugin_options_type_0 import (
+            OpenStackNetworkMarketplaceOfferingPluginOptionsType0,
+        )
+
         url = self.url
 
         uuid: Union[Unset, str] = UNSET
@@ -214,9 +221,15 @@ class OpenStackNetwork:
 
         marketplace_offering_name = self.marketplace_offering_name
 
-        marketplace_offering_plugin_options: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.marketplace_offering_plugin_options, Unset):
+        marketplace_offering_plugin_options: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.marketplace_offering_plugin_options, Unset):
+            marketplace_offering_plugin_options = UNSET
+        elif isinstance(
+            self.marketplace_offering_plugin_options, OpenStackNetworkMarketplaceOfferingPluginOptionsType0
+        ):
             marketplace_offering_plugin_options = self.marketplace_offering_plugin_options.to_dict()
+        else:
+            marketplace_offering_plugin_options = self.marketplace_offering_plugin_options
 
         marketplace_category_uuid = self.marketplace_category_uuid
 
@@ -326,8 +339,8 @@ class OpenStackNetwork:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.network_rbac_policy import NetworkRBACPolicy
         from ..models.open_stack_nested_sub_net import OpenStackNestedSubNet
-        from ..models.open_stack_network_marketplace_offering_plugin_options import (
-            OpenStackNetworkMarketplaceOfferingPluginOptions,
+        from ..models.open_stack_network_marketplace_offering_plugin_options_type_0 import (
+            OpenStackNetworkMarketplaceOfferingPluginOptionsType0,
         )
 
         d = dict(src_dict)
@@ -458,14 +471,28 @@ class OpenStackNetwork:
 
         marketplace_offering_name = d.pop("marketplace_offering_name", UNSET)
 
-        _marketplace_offering_plugin_options = d.pop("marketplace_offering_plugin_options", UNSET)
-        marketplace_offering_plugin_options: Union[Unset, OpenStackNetworkMarketplaceOfferingPluginOptions]
-        if isinstance(_marketplace_offering_plugin_options, Unset):
-            marketplace_offering_plugin_options = UNSET
-        else:
-            marketplace_offering_plugin_options = OpenStackNetworkMarketplaceOfferingPluginOptions.from_dict(
-                _marketplace_offering_plugin_options
-            )
+        def _parse_marketplace_offering_plugin_options(
+            data: object,
+        ) -> Union["OpenStackNetworkMarketplaceOfferingPluginOptionsType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                marketplace_offering_plugin_options_type_0 = (
+                    OpenStackNetworkMarketplaceOfferingPluginOptionsType0.from_dict(data)
+                )
+
+                return marketplace_offering_plugin_options_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["OpenStackNetworkMarketplaceOfferingPluginOptionsType0", None, Unset], data)
+
+        marketplace_offering_plugin_options = _parse_marketplace_offering_plugin_options(
+            d.pop("marketplace_offering_plugin_options", UNSET)
+        )
 
         marketplace_category_uuid = d.pop("marketplace_category_uuid", UNSET)
 

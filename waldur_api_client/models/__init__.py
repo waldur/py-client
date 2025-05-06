@@ -24,7 +24,7 @@ from .auth_result_uuid_request import AuthResultUUIDRequest
 from .auth_token import AuthToken
 from .aws_image import AwsImage
 from .aws_instance import AwsInstance
-from .aws_instance_marketplace_offering_plugin_options import AwsInstanceMarketplaceOfferingPluginOptions
+from .aws_instance_marketplace_offering_plugin_options_type_0 import AwsInstanceMarketplaceOfferingPluginOptionsType0
 from .aws_instance_request import AwsInstanceRequest
 from .aws_instance_resize import AwsInstanceResize
 from .aws_instance_resize_request import AwsInstanceResizeRequest
@@ -36,40 +36,48 @@ from .aws_size import AwsSize
 from .aws_volume import AwsVolume
 from .aws_volume_attach import AwsVolumeAttach
 from .aws_volume_attach_request import AwsVolumeAttachRequest
-from .aws_volume_marketplace_offering_plugin_options import AwsVolumeMarketplaceOfferingPluginOptions
+from .aws_volume_marketplace_offering_plugin_options_type_0 import AwsVolumeMarketplaceOfferingPluginOptionsType0
 from .aws_volume_request import AwsVolumeRequest
 from .aws_volumes_list_field_item import AwsVolumesListFieldItem
 from .aws_volumes_retrieve_field_item import AwsVolumesRetrieveFieldItem
 from .azure_image import AzureImage
 from .azure_location import AzureLocation
 from .azure_public_ip import AzurePublicIP
-from .azure_public_ip_marketplace_offering_plugin_options import AzurePublicIPMarketplaceOfferingPluginOptions
+from .azure_public_ip_marketplace_offering_plugin_options_type_0 import (
+    AzurePublicIPMarketplaceOfferingPluginOptionsType0,
+)
 from .azure_public_ip_request import AzurePublicIPRequest
 from .azure_public_ips_list_field_item import AzurePublicIpsListFieldItem
 from .azure_public_ips_list_state_item import AzurePublicIpsListStateItem
 from .azure_public_ips_retrieve_field_item import AzurePublicIpsRetrieveFieldItem
 from .azure_resource_group import AzureResourceGroup
-from .azure_resource_group_marketplace_offering_plugin_options import AzureResourceGroupMarketplaceOfferingPluginOptions
+from .azure_resource_group_marketplace_offering_plugin_options_type_0 import (
+    AzureResourceGroupMarketplaceOfferingPluginOptionsType0,
+)
 from .azure_resource_groups_list_field_item import AzureResourceGroupsListFieldItem
 from .azure_resource_groups_retrieve_field_item import AzureResourceGroupsRetrieveFieldItem
 from .azure_size import AzureSize
 from .azure_sql_database import AzureSqlDatabase
 from .azure_sql_database_create import AzureSqlDatabaseCreate
 from .azure_sql_database_create_request import AzureSqlDatabaseCreateRequest
-from .azure_sql_database_marketplace_offering_plugin_options import AzureSqlDatabaseMarketplaceOfferingPluginOptions
+from .azure_sql_database_marketplace_offering_plugin_options_type_0 import (
+    AzureSqlDatabaseMarketplaceOfferingPluginOptionsType0,
+)
 from .azure_sql_database_request import AzureSqlDatabaseRequest
 from .azure_sql_databases_list_field_item import AzureSqlDatabasesListFieldItem
 from .azure_sql_databases_list_state_item import AzureSqlDatabasesListStateItem
 from .azure_sql_databases_retrieve_field_item import AzureSqlDatabasesRetrieveFieldItem
 from .azure_sql_server import AzureSqlServer
-from .azure_sql_server_marketplace_offering_plugin_options import AzureSqlServerMarketplaceOfferingPluginOptions
+from .azure_sql_server_marketplace_offering_plugin_options_type_0 import (
+    AzureSqlServerMarketplaceOfferingPluginOptionsType0,
+)
 from .azure_sql_server_request import AzureSqlServerRequest
 from .azure_sql_servers_list_field_item import AzureSqlServersListFieldItem
 from .azure_sql_servers_list_state_item import AzureSqlServersListStateItem
 from .azure_sql_servers_retrieve_field_item import AzureSqlServersRetrieveFieldItem
 from .azure_virtual_machine import AzureVirtualMachine
-from .azure_virtual_machine_marketplace_offering_plugin_options import (
-    AzureVirtualMachineMarketplaceOfferingPluginOptions,
+from .azure_virtual_machine_marketplace_offering_plugin_options_type_0 import (
+    AzureVirtualMachineMarketplaceOfferingPluginOptionsType0,
 )
 from .azure_virtual_machine_request import AzureVirtualMachineRequest
 from .azure_virtualmachines_list_field_item import AzureVirtualmachinesListFieldItem
@@ -207,8 +215,8 @@ from .deciding_entity_enum import DecidingEntityEnum
 from .delete_attachments_request import DeleteAttachmentsRequest
 from .detail_state import DetailState
 from .digital_ocean_droplet import DigitalOceanDroplet
-from .digital_ocean_droplet_marketplace_offering_plugin_options import (
-    DigitalOceanDropletMarketplaceOfferingPluginOptions,
+from .digital_ocean_droplet_marketplace_offering_plugin_options_type_0 import (
+    DigitalOceanDropletMarketplaceOfferingPluginOptionsType0,
 )
 from .digital_ocean_droplet_request import DigitalOceanDropletRequest
 from .digital_ocean_droplet_resize import DigitalOceanDropletResize
@@ -556,7 +564,9 @@ from .open_stack_allowed_address_pair_request import OpenStackAllowedAddressPair
 from .open_stack_backend_instance import OpenStackBackendInstance
 from .open_stack_backend_volumes import OpenStackBackendVolumes
 from .open_stack_backup import OpenStackBackup
-from .open_stack_backup_marketplace_offering_plugin_options import OpenStackBackupMarketplaceOfferingPluginOptions
+from .open_stack_backup_marketplace_offering_plugin_options_type_0 import (
+    OpenStackBackupMarketplaceOfferingPluginOptionsType0,
+)
 from .open_stack_backup_request import OpenStackBackupRequest
 from .open_stack_backup_restoration import OpenStackBackupRestoration
 from .open_stack_backup_restoration_request import OpenStackBackupRestorationRequest
@@ -568,15 +578,17 @@ from .open_stack_flavor import OpenStackFlavor
 from .open_stack_floating_ip import OpenStackFloatingIP
 from .open_stack_floating_ip_attach_request import OpenStackFloatingIPAttachRequest
 from .open_stack_floating_ip_description_update_request import OpenStackFloatingIPDescriptionUpdateRequest
-from .open_stack_floating_ip_marketplace_offering_plugin_options import (
-    OpenStackFloatingIPMarketplaceOfferingPluginOptions,
+from .open_stack_floating_ip_marketplace_offering_plugin_options_type_0 import (
+    OpenStackFloatingIPMarketplaceOfferingPluginOptionsType0,
 )
 from .open_stack_image import OpenStackImage
 from .open_stack_instance import OpenStackInstance
 from .open_stack_instance_allowed_address_pairs_update_request import OpenStackInstanceAllowedAddressPairsUpdateRequest
 from .open_stack_instance_availability_zone import OpenStackInstanceAvailabilityZone
 from .open_stack_instance_floating_i_ps_update_request import OpenStackInstanceFloatingIPsUpdateRequest
-from .open_stack_instance_marketplace_offering_plugin_options import OpenStackInstanceMarketplaceOfferingPluginOptions
+from .open_stack_instance_marketplace_offering_plugin_options_type_0 import (
+    OpenStackInstanceMarketplaceOfferingPluginOptionsType0,
+)
 from .open_stack_instance_ports_update_request import OpenStackInstancePortsUpdateRequest
 from .open_stack_instance_request import OpenStackInstanceRequest
 from .open_stack_instance_security_groups_update_request import OpenStackInstanceSecurityGroupsUpdateRequest
@@ -592,21 +604,27 @@ from .open_stack_nested_sub_net_request import OpenStackNestedSubNetRequest
 from .open_stack_nested_volume import OpenStackNestedVolume
 from .open_stack_nested_volume_request import OpenStackNestedVolumeRequest
 from .open_stack_network import OpenStackNetwork
-from .open_stack_network_marketplace_offering_plugin_options import OpenStackNetworkMarketplaceOfferingPluginOptions
+from .open_stack_network_marketplace_offering_plugin_options_type_0 import (
+    OpenStackNetworkMarketplaceOfferingPluginOptionsType0,
+)
 from .open_stack_network_request import OpenStackNetworkRequest
 from .open_stack_port import OpenStackPort
 from .open_stack_port_ip_update_request import OpenStackPortIPUpdateRequest
-from .open_stack_port_marketplace_offering_plugin_options import OpenStackPortMarketplaceOfferingPluginOptions
+from .open_stack_port_marketplace_offering_plugin_options_type_0 import (
+    OpenStackPortMarketplaceOfferingPluginOptionsType0,
+)
 from .open_stack_port_nested_security_group import OpenStackPortNestedSecurityGroup
 from .open_stack_port_nested_security_group_request import OpenStackPortNestedSecurityGroupRequest
 from .open_stack_port_request import OpenStackPortRequest
 from .open_stack_router import OpenStackRouter
-from .open_stack_router_marketplace_offering_plugin_options import OpenStackRouterMarketplaceOfferingPluginOptions
+from .open_stack_router_marketplace_offering_plugin_options_type_0 import (
+    OpenStackRouterMarketplaceOfferingPluginOptionsType0,
+)
 from .open_stack_router_set_routes import OpenStackRouterSetRoutes
 from .open_stack_router_set_routes_request import OpenStackRouterSetRoutesRequest
 from .open_stack_security_group import OpenStackSecurityGroup
-from .open_stack_security_group_marketplace_offering_plugin_options import (
-    OpenStackSecurityGroupMarketplaceOfferingPluginOptions,
+from .open_stack_security_group_marketplace_offering_plugin_options_type_0 import (
+    OpenStackSecurityGroupMarketplaceOfferingPluginOptionsType0,
 )
 from .open_stack_security_group_request import OpenStackSecurityGroupRequest
 from .open_stack_security_group_rule_create import OpenStackSecurityGroupRuleCreate
@@ -615,12 +633,14 @@ from .open_stack_security_group_rule_update_request import OpenStackSecurityGrou
 from .open_stack_security_group_update import OpenStackSecurityGroupUpdate
 from .open_stack_security_group_update_request import OpenStackSecurityGroupUpdateRequest
 from .open_stack_server_group import OpenStackServerGroup
-from .open_stack_server_group_marketplace_offering_plugin_options import (
-    OpenStackServerGroupMarketplaceOfferingPluginOptions,
+from .open_stack_server_group_marketplace_offering_plugin_options_type_0 import (
+    OpenStackServerGroupMarketplaceOfferingPluginOptionsType0,
 )
 from .open_stack_server_group_request import OpenStackServerGroupRequest
 from .open_stack_snapshot import OpenStackSnapshot
-from .open_stack_snapshot_marketplace_offering_plugin_options import OpenStackSnapshotMarketplaceOfferingPluginOptions
+from .open_stack_snapshot_marketplace_offering_plugin_options_type_0 import (
+    OpenStackSnapshotMarketplaceOfferingPluginOptionsType0,
+)
 from .open_stack_snapshot_request import OpenStackSnapshotRequest
 from .open_stack_snapshot_restoration import OpenStackSnapshotRestoration
 from .open_stack_snapshot_restoration_request import OpenStackSnapshotRestorationRequest
@@ -629,18 +649,24 @@ from .open_stack_static_route_request import OpenStackStaticRouteRequest
 from .open_stack_sub_net import OpenStackSubNet
 from .open_stack_sub_net_allocation_pool import OpenStackSubNetAllocationPool
 from .open_stack_sub_net_allocation_pool_request import OpenStackSubNetAllocationPoolRequest
-from .open_stack_sub_net_marketplace_offering_plugin_options import OpenStackSubNetMarketplaceOfferingPluginOptions
+from .open_stack_sub_net_marketplace_offering_plugin_options_type_0 import (
+    OpenStackSubNetMarketplaceOfferingPluginOptionsType0,
+)
 from .open_stack_sub_net_request import OpenStackSubNetRequest
 from .open_stack_tenant import OpenStackTenant
 from .open_stack_tenant_change_password_request import OpenStackTenantChangePasswordRequest
-from .open_stack_tenant_marketplace_offering_plugin_options import OpenStackTenantMarketplaceOfferingPluginOptions
+from .open_stack_tenant_marketplace_offering_plugin_options_type_0 import (
+    OpenStackTenantMarketplaceOfferingPluginOptionsType0,
+)
 from .open_stack_tenant_quota import OpenStackTenantQuota
 from .open_stack_tenant_quota_request import OpenStackTenantQuotaRequest
 from .open_stack_tenant_request import OpenStackTenantRequest
 from .open_stack_volume import OpenStackVolume
 from .open_stack_volume_availability_zone import OpenStackVolumeAvailabilityZone
 from .open_stack_volume_extend_request import OpenStackVolumeExtendRequest
-from .open_stack_volume_marketplace_offering_plugin_options import OpenStackVolumeMarketplaceOfferingPluginOptions
+from .open_stack_volume_marketplace_offering_plugin_options_type_0 import (
+    OpenStackVolumeMarketplaceOfferingPluginOptionsType0,
+)
 from .open_stack_volume_request import OpenStackVolumeRequest
 from .open_stack_volume_retype_request import OpenStackVolumeRetypeRequest
 from .open_stack_volume_type import OpenStackVolumeType
@@ -895,7 +921,9 @@ from .quotas_update_request import QuotasUpdateRequest
 from .quotas_update_request_quotas import QuotasUpdateRequestQuotas
 from .rancher_application import RancherApplication
 from .rancher_application_answers import RancherApplicationAnswers
-from .rancher_application_marketplace_offering_plugin_options import RancherApplicationMarketplaceOfferingPluginOptions
+from .rancher_application_marketplace_offering_plugin_options_type_0 import (
+    RancherApplicationMarketplaceOfferingPluginOptionsType0,
+)
 from .rancher_application_request import RancherApplicationRequest
 from .rancher_application_request_answers import RancherApplicationRequestAnswers
 from .rancher_apps_list_field_item import RancherAppsListFieldItem
@@ -909,7 +937,9 @@ from .rancher_catalog_scope_type import RancherCatalogScopeType
 from .rancher_catalog_update import RancherCatalogUpdate
 from .rancher_catalog_update_request import RancherCatalogUpdateRequest
 from .rancher_cluster import RancherCluster
-from .rancher_cluster_marketplace_offering_plugin_options import RancherClusterMarketplaceOfferingPluginOptions
+from .rancher_cluster_marketplace_offering_plugin_options_type_0 import (
+    RancherClusterMarketplaceOfferingPluginOptionsType0,
+)
 from .rancher_cluster_reference import RancherClusterReference
 from .rancher_cluster_request import RancherClusterRequest
 from .rancher_cluster_template import RancherClusterTemplate
@@ -924,7 +954,9 @@ from .rancher_hpa_request import RancherHPARequest
 from .rancher_import_yaml import RancherImportYaml
 from .rancher_import_yaml_request import RancherImportYamlRequest
 from .rancher_ingress import RancherIngress
-from .rancher_ingress_marketplace_offering_plugin_options import RancherIngressMarketplaceOfferingPluginOptions
+from .rancher_ingress_marketplace_offering_plugin_options_type_0 import (
+    RancherIngressMarketplaceOfferingPluginOptionsType0,
+)
 from .rancher_ingress_request import RancherIngressRequest
 from .rancher_ingresses_list_field_item import RancherIngressesListFieldItem
 from .rancher_ingresses_list_state_item import RancherIngressesListStateItem
@@ -942,7 +974,9 @@ from .rancher_node import RancherNode
 from .rancher_project import RancherProject
 from .rancher_role_scope_type import RancherRoleScopeType
 from .rancher_service import RancherService
-from .rancher_service_marketplace_offering_plugin_options import RancherServiceMarketplaceOfferingPluginOptions
+from .rancher_service_marketplace_offering_plugin_options_type_0 import (
+    RancherServiceMarketplaceOfferingPluginOptionsType0,
+)
 from .rancher_service_request import RancherServiceRequest
 from .rancher_services_list_field_item import RancherServicesListFieldItem
 from .rancher_services_list_state_item import RancherServicesListStateItem
@@ -1066,7 +1100,9 @@ from .set_mtu_request import SetMtuRequest
 from .set_offerings_username import SetOfferingsUsername
 from .set_offerings_username_request import SetOfferingsUsernameRequest
 from .slurm_allocation import SlurmAllocation
-from .slurm_allocation_marketplace_offering_plugin_options import SlurmAllocationMarketplaceOfferingPluginOptions
+from .slurm_allocation_marketplace_offering_plugin_options_type_0 import (
+    SlurmAllocationMarketplaceOfferingPluginOptionsType0,
+)
 from .slurm_allocation_request import SlurmAllocationRequest
 from .slurm_allocation_set_limits import SlurmAllocationSetLimits
 from .slurm_allocation_set_limits_request import SlurmAllocationSetLimitsRequest
@@ -1132,7 +1168,7 @@ from .vmware_datastore import VmwareDatastore
 from .vmware_disk import VmwareDisk
 from .vmware_disk_extend import VmwareDiskExtend
 from .vmware_disk_extend_request import VmwareDiskExtendRequest
-from .vmware_disk_marketplace_offering_plugin_options import VmwareDiskMarketplaceOfferingPluginOptions
+from .vmware_disk_marketplace_offering_plugin_options_type_0 import VmwareDiskMarketplaceOfferingPluginOptionsType0
 from .vmware_disk_request import VmwareDiskRequest
 from .vmware_disks_list_field_item import VmwareDisksListFieldItem
 from .vmware_disks_list_state_item import VmwareDisksListStateItem
@@ -1147,7 +1183,7 @@ from .vmware_nested_port import VmwareNestedPort
 from .vmware_nested_port_request import VmwareNestedPortRequest
 from .vmware_network import VmwareNetwork
 from .vmware_port import VmwarePort
-from .vmware_port_marketplace_offering_plugin_options import VmwarePortMarketplaceOfferingPluginOptions
+from .vmware_port_marketplace_offering_plugin_options_type_0 import VmwarePortMarketplaceOfferingPluginOptionsType0
 from .vmware_port_request import VmwarePortRequest
 from .vmware_ports_list_field_item import VmwarePortsListFieldItem
 from .vmware_ports_list_state_item import VmwarePortsListStateItem
@@ -1156,8 +1192,8 @@ from .vmware_template import VmwareTemplate
 from .vmware_virtual_machine import VmwareVirtualMachine
 from .vmware_virtual_machine_list_field_item import VmwareVirtualMachineListFieldItem
 from .vmware_virtual_machine_list_state_item import VmwareVirtualMachineListStateItem
-from .vmware_virtual_machine_marketplace_offering_plugin_options import (
-    VmwareVirtualMachineMarketplaceOfferingPluginOptions,
+from .vmware_virtual_machine_marketplace_offering_plugin_options_type_0 import (
+    VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0,
 )
 from .vmware_virtual_machine_request import VmwareVirtualMachineRequest
 from .vmware_virtual_machine_retrieve_field_item import VmwareVirtualMachineRetrieveFieldItem
@@ -1198,7 +1234,7 @@ __all__ = (
     "AuthToken",
     "AwsImage",
     "AwsInstance",
-    "AwsInstanceMarketplaceOfferingPluginOptions",
+    "AwsInstanceMarketplaceOfferingPluginOptionsType0",
     "AwsInstanceRequest",
     "AwsInstanceResize",
     "AwsInstanceResizeRequest",
@@ -1210,39 +1246,39 @@ __all__ = (
     "AwsVolume",
     "AwsVolumeAttach",
     "AwsVolumeAttachRequest",
-    "AwsVolumeMarketplaceOfferingPluginOptions",
+    "AwsVolumeMarketplaceOfferingPluginOptionsType0",
     "AwsVolumeRequest",
     "AwsVolumesListFieldItem",
     "AwsVolumesRetrieveFieldItem",
     "AzureImage",
     "AzureLocation",
     "AzurePublicIP",
-    "AzurePublicIPMarketplaceOfferingPluginOptions",
+    "AzurePublicIPMarketplaceOfferingPluginOptionsType0",
     "AzurePublicIPRequest",
     "AzurePublicIpsListFieldItem",
     "AzurePublicIpsListStateItem",
     "AzurePublicIpsRetrieveFieldItem",
     "AzureResourceGroup",
-    "AzureResourceGroupMarketplaceOfferingPluginOptions",
+    "AzureResourceGroupMarketplaceOfferingPluginOptionsType0",
     "AzureResourceGroupsListFieldItem",
     "AzureResourceGroupsRetrieveFieldItem",
     "AzureSize",
     "AzureSqlDatabase",
     "AzureSqlDatabaseCreate",
     "AzureSqlDatabaseCreateRequest",
-    "AzureSqlDatabaseMarketplaceOfferingPluginOptions",
+    "AzureSqlDatabaseMarketplaceOfferingPluginOptionsType0",
     "AzureSqlDatabaseRequest",
     "AzureSqlDatabasesListFieldItem",
     "AzureSqlDatabasesListStateItem",
     "AzureSqlDatabasesRetrieveFieldItem",
     "AzureSqlServer",
-    "AzureSqlServerMarketplaceOfferingPluginOptions",
+    "AzureSqlServerMarketplaceOfferingPluginOptionsType0",
     "AzureSqlServerRequest",
     "AzureSqlServersListFieldItem",
     "AzureSqlServersListStateItem",
     "AzureSqlServersRetrieveFieldItem",
     "AzureVirtualMachine",
-    "AzureVirtualMachineMarketplaceOfferingPluginOptions",
+    "AzureVirtualMachineMarketplaceOfferingPluginOptionsType0",
     "AzureVirtualMachineRequest",
     "AzureVirtualmachinesListFieldItem",
     "AzureVirtualmachinesListStateItem",
@@ -1379,7 +1415,7 @@ __all__ = (
     "DeleteAttachmentsRequest",
     "DetailState",
     "DigitalOceanDroplet",
-    "DigitalOceanDropletMarketplaceOfferingPluginOptions",
+    "DigitalOceanDropletMarketplaceOfferingPluginOptionsType0",
     "DigitalOceanDropletRequest",
     "DigitalOceanDropletResize",
     "DigitalOceanDropletResizeRequest",
@@ -1700,7 +1736,7 @@ __all__ = (
     "OpenStackBackendInstance",
     "OpenStackBackendVolumes",
     "OpenStackBackup",
-    "OpenStackBackupMarketplaceOfferingPluginOptions",
+    "OpenStackBackupMarketplaceOfferingPluginOptionsType0",
     "OpenStackBackupRequest",
     "OpenStackBackupRestoration",
     "OpenStackBackupRestorationRequest",
@@ -1719,7 +1755,7 @@ __all__ = (
     "OpenStackFloatingIP",
     "OpenStackFloatingIPAttachRequest",
     "OpenStackFloatingIPDescriptionUpdateRequest",
-    "OpenStackFloatingIPMarketplaceOfferingPluginOptions",
+    "OpenStackFloatingIPMarketplaceOfferingPluginOptionsType0",
     "OpenstackFloatingIpsListFieldItem",
     "OpenstackFloatingIpsListStateItem",
     "OpenstackFloatingIpsRetrieveFieldItem",
@@ -1728,7 +1764,7 @@ __all__ = (
     "OpenStackInstanceAllowedAddressPairsUpdateRequest",
     "OpenStackInstanceAvailabilityZone",
     "OpenStackInstanceFloatingIPsUpdateRequest",
-    "OpenStackInstanceMarketplaceOfferingPluginOptions",
+    "OpenStackInstanceMarketplaceOfferingPluginOptionsType0",
     "OpenStackInstancePortsUpdateRequest",
     "OpenStackInstanceRequest",
     "OpenStackInstanceSecurityGroupsUpdateRequest",
@@ -1747,7 +1783,7 @@ __all__ = (
     "OpenStackNestedVolume",
     "OpenStackNestedVolumeRequest",
     "OpenStackNetwork",
-    "OpenStackNetworkMarketplaceOfferingPluginOptions",
+    "OpenStackNetworkMarketplaceOfferingPluginOptionsType0",
     "OpenstackNetworkRbacPoliciesListPolicyType",
     "OpenStackNetworkRequest",
     "OpenstackNetworksListFieldItem",
@@ -1755,7 +1791,7 @@ __all__ = (
     "OpenstackNetworksRetrieveFieldItem",
     "OpenStackPort",
     "OpenStackPortIPUpdateRequest",
-    "OpenStackPortMarketplaceOfferingPluginOptions",
+    "OpenStackPortMarketplaceOfferingPluginOptionsType0",
     "OpenStackPortNestedSecurityGroup",
     "OpenStackPortNestedSecurityGroupRequest",
     "OpenStackPortRequest",
@@ -1763,13 +1799,13 @@ __all__ = (
     "OpenstackPortsListOItem",
     "OpenstackPortsRetrieveFieldItem",
     "OpenStackRouter",
-    "OpenStackRouterMarketplaceOfferingPluginOptions",
+    "OpenStackRouterMarketplaceOfferingPluginOptionsType0",
     "OpenStackRouterSetRoutes",
     "OpenStackRouterSetRoutesRequest",
     "OpenstackRoutersListFieldItem",
     "OpenstackRoutersRetrieveFieldItem",
     "OpenStackSecurityGroup",
-    "OpenStackSecurityGroupMarketplaceOfferingPluginOptions",
+    "OpenStackSecurityGroupMarketplaceOfferingPluginOptionsType0",
     "OpenStackSecurityGroupRequest",
     "OpenStackSecurityGroupRuleCreate",
     "OpenStackSecurityGroupRuleCreateRequest",
@@ -1780,13 +1816,13 @@ __all__ = (
     "OpenStackSecurityGroupUpdate",
     "OpenStackSecurityGroupUpdateRequest",
     "OpenStackServerGroup",
-    "OpenStackServerGroupMarketplaceOfferingPluginOptions",
+    "OpenStackServerGroupMarketplaceOfferingPluginOptionsType0",
     "OpenStackServerGroupRequest",
     "OpenstackServerGroupsListFieldItem",
     "OpenstackServerGroupsListStateItem",
     "OpenstackServerGroupsRetrieveFieldItem",
     "OpenStackSnapshot",
-    "OpenStackSnapshotMarketplaceOfferingPluginOptions",
+    "OpenStackSnapshotMarketplaceOfferingPluginOptionsType0",
     "OpenStackSnapshotRequest",
     "OpenStackSnapshotRestoration",
     "OpenStackSnapshotRestorationRequest",
@@ -1798,14 +1834,14 @@ __all__ = (
     "OpenStackSubNet",
     "OpenStackSubNetAllocationPool",
     "OpenStackSubNetAllocationPoolRequest",
-    "OpenStackSubNetMarketplaceOfferingPluginOptions",
+    "OpenStackSubNetMarketplaceOfferingPluginOptionsType0",
     "OpenStackSubNetRequest",
     "OpenstackSubnetsListFieldItem",
     "OpenstackSubnetsListStateItem",
     "OpenstackSubnetsRetrieveFieldItem",
     "OpenStackTenant",
     "OpenStackTenantChangePasswordRequest",
-    "OpenStackTenantMarketplaceOfferingPluginOptions",
+    "OpenStackTenantMarketplaceOfferingPluginOptionsType0",
     "OpenStackTenantQuota",
     "OpenStackTenantQuotaRequest",
     "OpenStackTenantRequest",
@@ -1817,7 +1853,7 @@ __all__ = (
     "OpenStackVolume",
     "OpenStackVolumeAvailabilityZone",
     "OpenStackVolumeExtendRequest",
-    "OpenStackVolumeMarketplaceOfferingPluginOptions",
+    "OpenStackVolumeMarketplaceOfferingPluginOptionsType0",
     "OpenStackVolumeRequest",
     "OpenStackVolumeRetypeRequest",
     "OpenstackVolumesListFieldItem",
@@ -2031,7 +2067,7 @@ __all__ = (
     "QuotasUpdateRequestQuotas",
     "RancherApplication",
     "RancherApplicationAnswers",
-    "RancherApplicationMarketplaceOfferingPluginOptions",
+    "RancherApplicationMarketplaceOfferingPluginOptionsType0",
     "RancherApplicationRequest",
     "RancherApplicationRequestAnswers",
     "RancherAppsListFieldItem",
@@ -2045,7 +2081,7 @@ __all__ = (
     "RancherCatalogUpdate",
     "RancherCatalogUpdateRequest",
     "RancherCluster",
-    "RancherClusterMarketplaceOfferingPluginOptions",
+    "RancherClusterMarketplaceOfferingPluginOptionsType0",
     "RancherClusterReference",
     "RancherClusterRequest",
     "RancherClustersListFieldItem",
@@ -2064,7 +2100,7 @@ __all__ = (
     "RancherIngressesListStateItem",
     "RancherIngressesRetrieveFieldItem",
     "RancherIngressesYamlRetrieveFieldItem",
-    "RancherIngressMarketplaceOfferingPluginOptions",
+    "RancherIngressMarketplaceOfferingPluginOptionsType0",
     "RancherIngressRequest",
     "RancherNamespace",
     "RancherNamespacesListOItem",
@@ -2078,7 +2114,7 @@ __all__ = (
     "RancherProject",
     "RancherRoleScopeType",
     "RancherService",
-    "RancherServiceMarketplaceOfferingPluginOptions",
+    "RancherServiceMarketplaceOfferingPluginOptionsType0",
     "RancherServiceRequest",
     "RancherServicesListFieldItem",
     "RancherServicesListStateItem",
@@ -2202,7 +2238,7 @@ __all__ = (
     "SetOfferingsUsername",
     "SetOfferingsUsernameRequest",
     "SlurmAllocation",
-    "SlurmAllocationMarketplaceOfferingPluginOptions",
+    "SlurmAllocationMarketplaceOfferingPluginOptionsType0",
     "SlurmAllocationRequest",
     "SlurmAllocationSetLimits",
     "SlurmAllocationSetLimitsRequest",
@@ -2268,7 +2304,7 @@ __all__ = (
     "VmwareDisk",
     "VmwareDiskExtend",
     "VmwareDiskExtendRequest",
-    "VmwareDiskMarketplaceOfferingPluginOptions",
+    "VmwareDiskMarketplaceOfferingPluginOptionsType0",
     "VmwareDiskRequest",
     "VmwareDisksListFieldItem",
     "VmwareDisksListStateItem",
@@ -2283,7 +2319,7 @@ __all__ = (
     "VmwareNestedPortRequest",
     "VmwareNetwork",
     "VmwarePort",
-    "VmwarePortMarketplaceOfferingPluginOptions",
+    "VmwarePortMarketplaceOfferingPluginOptionsType0",
     "VmwarePortRequest",
     "VmwarePortsListFieldItem",
     "VmwarePortsListStateItem",
@@ -2292,7 +2328,7 @@ __all__ = (
     "VmwareVirtualMachine",
     "VmwareVirtualMachineListFieldItem",
     "VmwareVirtualMachineListStateItem",
-    "VmwareVirtualMachineMarketplaceOfferingPluginOptions",
+    "VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0",
     "VmwareVirtualMachineRequest",
     "VmwareVirtualMachineRetrieveFieldItem",
     "VolumeAttachRequest",

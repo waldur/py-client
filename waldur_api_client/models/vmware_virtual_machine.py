@@ -15,8 +15,8 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.vmware_nested_disk import VmwareNestedDisk
     from ..models.vmware_nested_port import VmwareNestedPort
-    from ..models.vmware_virtual_machine_marketplace_offering_plugin_options import (
-        VmwareVirtualMachineMarketplaceOfferingPluginOptions,
+    from ..models.vmware_virtual_machine_marketplace_offering_plugin_options_type_0 import (
+        VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0,
     )
 
 
@@ -72,7 +72,8 @@ class VmwareVirtualMachine:
         tools_installed (Union[Unset, bool]):
         marketplace_offering_uuid (Union[Unset, str]):
         marketplace_offering_name (Union[Unset, str]):
-        marketplace_offering_plugin_options (Union[Unset, VmwareVirtualMachineMarketplaceOfferingPluginOptions]):
+        marketplace_offering_plugin_options (Union['VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0', None,
+            Unset]):
         marketplace_category_uuid (Union[Unset, str]):
         marketplace_category_name (Union[Unset, str]):
         marketplace_resource_uuid (Union[Unset, str]):
@@ -127,7 +128,9 @@ class VmwareVirtualMachine:
     tools_installed: Union[Unset, bool] = UNSET
     marketplace_offering_uuid: Union[Unset, str] = UNSET
     marketplace_offering_name: Union[Unset, str] = UNSET
-    marketplace_offering_plugin_options: Union[Unset, "VmwareVirtualMachineMarketplaceOfferingPluginOptions"] = UNSET
+    marketplace_offering_plugin_options: Union[
+        "VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0", None, Unset
+    ] = UNSET
     marketplace_category_uuid: Union[Unset, str] = UNSET
     marketplace_category_name: Union[Unset, str] = UNSET
     marketplace_resource_uuid: Union[Unset, str] = UNSET
@@ -138,6 +141,10 @@ class VmwareVirtualMachine:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.vmware_virtual_machine_marketplace_offering_plugin_options_type_0 import (
+            VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0,
+        )
+
         url = self.url
 
         uuid: Union[Unset, str] = UNSET
@@ -274,9 +281,15 @@ class VmwareVirtualMachine:
 
         marketplace_offering_name = self.marketplace_offering_name
 
-        marketplace_offering_plugin_options: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.marketplace_offering_plugin_options, Unset):
+        marketplace_offering_plugin_options: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.marketplace_offering_plugin_options, Unset):
+            marketplace_offering_plugin_options = UNSET
+        elif isinstance(
+            self.marketplace_offering_plugin_options, VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0
+        ):
             marketplace_offering_plugin_options = self.marketplace_offering_plugin_options.to_dict()
+        else:
+            marketplace_offering_plugin_options = self.marketplace_offering_plugin_options
 
         marketplace_category_uuid = self.marketplace_category_uuid
 
@@ -408,8 +421,8 @@ class VmwareVirtualMachine:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.vmware_nested_disk import VmwareNestedDisk
         from ..models.vmware_nested_port import VmwareNestedPort
-        from ..models.vmware_virtual_machine_marketplace_offering_plugin_options import (
-            VmwareVirtualMachineMarketplaceOfferingPluginOptions,
+        from ..models.vmware_virtual_machine_marketplace_offering_plugin_options_type_0 import (
+            VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0,
         )
 
         d = dict(src_dict)
@@ -591,14 +604,28 @@ class VmwareVirtualMachine:
 
         marketplace_offering_name = d.pop("marketplace_offering_name", UNSET)
 
-        _marketplace_offering_plugin_options = d.pop("marketplace_offering_plugin_options", UNSET)
-        marketplace_offering_plugin_options: Union[Unset, VmwareVirtualMachineMarketplaceOfferingPluginOptions]
-        if isinstance(_marketplace_offering_plugin_options, Unset):
-            marketplace_offering_plugin_options = UNSET
-        else:
-            marketplace_offering_plugin_options = VmwareVirtualMachineMarketplaceOfferingPluginOptions.from_dict(
-                _marketplace_offering_plugin_options
-            )
+        def _parse_marketplace_offering_plugin_options(
+            data: object,
+        ) -> Union["VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                marketplace_offering_plugin_options_type_0 = (
+                    VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0.from_dict(data)
+                )
+
+                return marketplace_offering_plugin_options_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0", None, Unset], data)
+
+        marketplace_offering_plugin_options = _parse_marketplace_offering_plugin_options(
+            d.pop("marketplace_offering_plugin_options", UNSET)
+        )
 
         marketplace_category_uuid = d.pop("marketplace_category_uuid", UNSET)
 

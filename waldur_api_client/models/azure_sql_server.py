@@ -11,8 +11,8 @@ from ..models.core_states import CoreStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.azure_sql_server_marketplace_offering_plugin_options import (
-        AzureSqlServerMarketplaceOfferingPluginOptions,
+    from ..models.azure_sql_server_marketplace_offering_plugin_options_type_0 import (
+        AzureSqlServerMarketplaceOfferingPluginOptionsType0,
     )
 
 
@@ -56,7 +56,7 @@ class AzureSqlServer:
         location_name (Union[Unset, str]):
         marketplace_offering_uuid (Union[Unset, str]):
         marketplace_offering_name (Union[Unset, str]):
-        marketplace_offering_plugin_options (Union[Unset, AzureSqlServerMarketplaceOfferingPluginOptions]):
+        marketplace_offering_plugin_options (Union['AzureSqlServerMarketplaceOfferingPluginOptionsType0', None, Unset]):
         marketplace_category_uuid (Union[Unset, str]):
         marketplace_category_name (Union[Unset, str]):
         marketplace_resource_uuid (Union[Unset, str]):
@@ -99,7 +99,9 @@ class AzureSqlServer:
     location_name: Union[Unset, str] = UNSET
     marketplace_offering_uuid: Union[Unset, str] = UNSET
     marketplace_offering_name: Union[Unset, str] = UNSET
-    marketplace_offering_plugin_options: Union[Unset, "AzureSqlServerMarketplaceOfferingPluginOptions"] = UNSET
+    marketplace_offering_plugin_options: Union["AzureSqlServerMarketplaceOfferingPluginOptionsType0", None, Unset] = (
+        UNSET
+    )
     marketplace_category_uuid: Union[Unset, str] = UNSET
     marketplace_category_name: Union[Unset, str] = UNSET
     marketplace_resource_uuid: Union[Unset, str] = UNSET
@@ -110,6 +112,10 @@ class AzureSqlServer:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.azure_sql_server_marketplace_offering_plugin_options_type_0 import (
+            AzureSqlServerMarketplaceOfferingPluginOptionsType0,
+        )
+
         url = self.url
 
         uuid: Union[Unset, str] = UNSET
@@ -200,9 +206,13 @@ class AzureSqlServer:
 
         marketplace_offering_name = self.marketplace_offering_name
 
-        marketplace_offering_plugin_options: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.marketplace_offering_plugin_options, Unset):
+        marketplace_offering_plugin_options: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.marketplace_offering_plugin_options, Unset):
+            marketplace_offering_plugin_options = UNSET
+        elif isinstance(self.marketplace_offering_plugin_options, AzureSqlServerMarketplaceOfferingPluginOptionsType0):
             marketplace_offering_plugin_options = self.marketplace_offering_plugin_options.to_dict()
+        else:
+            marketplace_offering_plugin_options = self.marketplace_offering_plugin_options
 
         marketplace_category_uuid = self.marketplace_category_uuid
 
@@ -308,8 +318,8 @@ class AzureSqlServer:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.azure_sql_server_marketplace_offering_plugin_options import (
-            AzureSqlServerMarketplaceOfferingPluginOptions,
+        from ..models.azure_sql_server_marketplace_offering_plugin_options_type_0 import (
+            AzureSqlServerMarketplaceOfferingPluginOptionsType0,
         )
 
         d = dict(src_dict)
@@ -430,14 +440,28 @@ class AzureSqlServer:
 
         marketplace_offering_name = d.pop("marketplace_offering_name", UNSET)
 
-        _marketplace_offering_plugin_options = d.pop("marketplace_offering_plugin_options", UNSET)
-        marketplace_offering_plugin_options: Union[Unset, AzureSqlServerMarketplaceOfferingPluginOptions]
-        if isinstance(_marketplace_offering_plugin_options, Unset):
-            marketplace_offering_plugin_options = UNSET
-        else:
-            marketplace_offering_plugin_options = AzureSqlServerMarketplaceOfferingPluginOptions.from_dict(
-                _marketplace_offering_plugin_options
-            )
+        def _parse_marketplace_offering_plugin_options(
+            data: object,
+        ) -> Union["AzureSqlServerMarketplaceOfferingPluginOptionsType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                marketplace_offering_plugin_options_type_0 = (
+                    AzureSqlServerMarketplaceOfferingPluginOptionsType0.from_dict(data)
+                )
+
+                return marketplace_offering_plugin_options_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["AzureSqlServerMarketplaceOfferingPluginOptionsType0", None, Unset], data)
+
+        marketplace_offering_plugin_options = _parse_marketplace_offering_plugin_options(
+            d.pop("marketplace_offering_plugin_options", UNSET)
+        )
 
         marketplace_category_uuid = d.pop("marketplace_category_uuid", UNSET)
 
