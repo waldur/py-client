@@ -46,7 +46,7 @@ class Issue:
         created (datetime.datetime):
         modified (datetime.datetime):
         first_response_sla (Union[None, datetime.datetime]):
-        feedback (NestedFeedback):
+        feedback (Union['NestedFeedback', None]):
         resolved (Union[None, bool]):
         update_is_available (bool):
         destroy_is_available (bool):
@@ -89,7 +89,7 @@ class Issue:
     created: datetime.datetime
     modified: datetime.datetime
     first_response_sla: Union[None, datetime.datetime]
-    feedback: "NestedFeedback"
+    feedback: Union["NestedFeedback", None]
     resolved: Union[None, bool]
     update_is_available: bool
     destroy_is_available: bool
@@ -108,6 +108,8 @@ class Issue:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.nested_feedback import NestedFeedback
+
         url = self.url
 
         uuid = str(self.uuid)
@@ -189,7 +191,11 @@ class Issue:
         else:
             first_response_sla = self.first_response_sla
 
-        feedback = self.feedback.to_dict()
+        feedback: Union[None, dict[str, Any]]
+        if isinstance(self.feedback, NestedFeedback):
+            feedback = self.feedback.to_dict()
+        else:
+            feedback = self.feedback
 
         resolved: Union[None, bool]
         resolved = self.resolved
@@ -476,7 +482,20 @@ class Issue:
 
         first_response_sla = _parse_first_response_sla(d.pop("first_response_sla"))
 
-        feedback = NestedFeedback.from_dict(d.pop("feedback"))
+        def _parse_feedback(data: object) -> Union["NestedFeedback", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                feedback_type_1 = NestedFeedback.from_dict(data)
+
+                return feedback_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["NestedFeedback", None], data)
+
+        feedback = _parse_feedback(d.pop("feedback"))
 
         def _parse_resolved(data: object) -> Union[None, bool]:
             if data is None:
