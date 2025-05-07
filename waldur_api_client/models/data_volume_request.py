@@ -16,11 +16,13 @@ class DataVolumeRequest:
     Attributes:
         size (int):
         volume_type (Union[None, Unset, str]):
+        filesystem (Union[Unset, str]):
         mount_point (Union[Unset, MountPointEnum]):
     """
 
     size: int
     volume_type: Union[None, Unset, str] = UNSET
+    filesystem: Union[Unset, str] = UNSET
     mount_point: Union[Unset, MountPointEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -32,6 +34,8 @@ class DataVolumeRequest:
             volume_type = UNSET
         else:
             volume_type = self.volume_type
+
+        filesystem = self.filesystem
 
         mount_point: Union[Unset, str] = UNSET
         if not isinstance(self.mount_point, Unset):
@@ -46,6 +50,8 @@ class DataVolumeRequest:
         )
         if volume_type is not UNSET:
             field_dict["volume_type"] = volume_type
+        if filesystem is not UNSET:
+            field_dict["filesystem"] = filesystem
         if mount_point is not UNSET:
             field_dict["mount_point"] = mount_point
 
@@ -65,6 +71,8 @@ class DataVolumeRequest:
 
         volume_type = _parse_volume_type(d.pop("volume_type", UNSET))
 
+        filesystem = d.pop("filesystem", UNSET)
+
         _mount_point = d.pop("mount_point", UNSET)
         mount_point: Union[Unset, MountPointEnum]
         if isinstance(_mount_point, Unset):
@@ -75,6 +83,7 @@ class DataVolumeRequest:
         data_volume_request = cls(
             size=size,
             volume_type=volume_type,
+            filesystem=filesystem,
             mount_point=mount_point,
         )
 

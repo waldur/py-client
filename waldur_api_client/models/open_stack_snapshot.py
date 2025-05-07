@@ -59,17 +59,17 @@ class OpenStackSnapshot:
         restorations (Union[Unset, list['OpenStackSnapshotRestoration']]):
         kept_until (Union[None, Unset, datetime.datetime]): Guaranteed time of snapshot retention. If null - keep
             forever.
-        marketplace_offering_uuid (Union[Unset, str]):
-        marketplace_offering_name (Union[Unset, str]):
+        marketplace_offering_uuid (Union[None, Unset, str]):
+        marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_plugin_options (Union['OpenStackSnapshotMarketplaceOfferingPluginOptionsType0', None,
             Unset]):
-        marketplace_category_uuid (Union[Unset, str]):
+        marketplace_category_uuid (Union[None, Unset, str]):
         marketplace_category_name (Union[Unset, str]):
-        marketplace_resource_uuid (Union[Unset, str]):
-        marketplace_plan_uuid (Union[Unset, str]):
-        marketplace_resource_state (Union[Unset, str]):
-        is_usage_based (Union[Unset, bool]):
-        is_limit_based (Union[Unset, bool]):
+        marketplace_resource_uuid (Union[None, Unset, str]):
+        marketplace_plan_uuid (Union[None, Unset, str]):
+        marketplace_resource_state (Union[None, Unset, str]):
+        is_usage_based (Union[None, Unset, bool]):
+        is_limit_based (Union[None, Unset, bool]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -106,18 +106,18 @@ class OpenStackSnapshot:
     action_details: Union[Unset, Any] = UNSET
     restorations: Union[Unset, list["OpenStackSnapshotRestoration"]] = UNSET
     kept_until: Union[None, Unset, datetime.datetime] = UNSET
-    marketplace_offering_uuid: Union[Unset, str] = UNSET
-    marketplace_offering_name: Union[Unset, str] = UNSET
+    marketplace_offering_uuid: Union[None, Unset, str] = UNSET
+    marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_plugin_options: Union[
         "OpenStackSnapshotMarketplaceOfferingPluginOptionsType0", None, Unset
     ] = UNSET
-    marketplace_category_uuid: Union[Unset, str] = UNSET
+    marketplace_category_uuid: Union[None, Unset, str] = UNSET
     marketplace_category_name: Union[Unset, str] = UNSET
-    marketplace_resource_uuid: Union[Unset, str] = UNSET
-    marketplace_plan_uuid: Union[Unset, str] = UNSET
-    marketplace_resource_state: Union[Unset, str] = UNSET
-    is_usage_based: Union[Unset, bool] = UNSET
-    is_limit_based: Union[Unset, bool] = UNSET
+    marketplace_resource_uuid: Union[None, Unset, str] = UNSET
+    marketplace_plan_uuid: Union[None, Unset, str] = UNSET
+    marketplace_resource_state: Union[None, Unset, str] = UNSET
+    is_usage_based: Union[None, Unset, bool] = UNSET
+    is_limit_based: Union[None, Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -230,9 +230,17 @@ class OpenStackSnapshot:
         else:
             kept_until = self.kept_until
 
-        marketplace_offering_uuid = self.marketplace_offering_uuid
+        marketplace_offering_uuid: Union[None, Unset, str]
+        if isinstance(self.marketplace_offering_uuid, Unset):
+            marketplace_offering_uuid = UNSET
+        else:
+            marketplace_offering_uuid = self.marketplace_offering_uuid
 
-        marketplace_offering_name = self.marketplace_offering_name
+        marketplace_offering_name: Union[None, Unset, str]
+        if isinstance(self.marketplace_offering_name, Unset):
+            marketplace_offering_name = UNSET
+        else:
+            marketplace_offering_name = self.marketplace_offering_name
 
         marketplace_offering_plugin_options: Union[None, Unset, dict[str, Any]]
         if isinstance(self.marketplace_offering_plugin_options, Unset):
@@ -244,19 +252,43 @@ class OpenStackSnapshot:
         else:
             marketplace_offering_plugin_options = self.marketplace_offering_plugin_options
 
-        marketplace_category_uuid = self.marketplace_category_uuid
+        marketplace_category_uuid: Union[None, Unset, str]
+        if isinstance(self.marketplace_category_uuid, Unset):
+            marketplace_category_uuid = UNSET
+        else:
+            marketplace_category_uuid = self.marketplace_category_uuid
 
         marketplace_category_name = self.marketplace_category_name
 
-        marketplace_resource_uuid = self.marketplace_resource_uuid
+        marketplace_resource_uuid: Union[None, Unset, str]
+        if isinstance(self.marketplace_resource_uuid, Unset):
+            marketplace_resource_uuid = UNSET
+        else:
+            marketplace_resource_uuid = self.marketplace_resource_uuid
 
-        marketplace_plan_uuid = self.marketplace_plan_uuid
+        marketplace_plan_uuid: Union[None, Unset, str]
+        if isinstance(self.marketplace_plan_uuid, Unset):
+            marketplace_plan_uuid = UNSET
+        else:
+            marketplace_plan_uuid = self.marketplace_plan_uuid
 
-        marketplace_resource_state = self.marketplace_resource_state
+        marketplace_resource_state: Union[None, Unset, str]
+        if isinstance(self.marketplace_resource_state, Unset):
+            marketplace_resource_state = UNSET
+        else:
+            marketplace_resource_state = self.marketplace_resource_state
 
-        is_usage_based = self.is_usage_based
+        is_usage_based: Union[None, Unset, bool]
+        if isinstance(self.is_usage_based, Unset):
+            is_usage_based = UNSET
+        else:
+            is_usage_based = self.is_usage_based
 
-        is_limit_based = self.is_limit_based
+        is_limit_based: Union[None, Unset, bool]
+        if isinstance(self.is_limit_based, Unset):
+            is_limit_based = UNSET
+        else:
+            is_limit_based = self.is_limit_based
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -504,9 +536,23 @@ class OpenStackSnapshot:
 
         kept_until = _parse_kept_until(d.pop("kept_until", UNSET))
 
-        marketplace_offering_uuid = d.pop("marketplace_offering_uuid", UNSET)
+        def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        marketplace_offering_name = d.pop("marketplace_offering_name", UNSET)
+        marketplace_offering_uuid = _parse_marketplace_offering_uuid(d.pop("marketplace_offering_uuid", UNSET))
+
+        def _parse_marketplace_offering_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        marketplace_offering_name = _parse_marketplace_offering_name(d.pop("marketplace_offering_name", UNSET))
 
         def _parse_marketplace_offering_plugin_options(
             data: object,
@@ -531,19 +577,61 @@ class OpenStackSnapshot:
             d.pop("marketplace_offering_plugin_options", UNSET)
         )
 
-        marketplace_category_uuid = d.pop("marketplace_category_uuid", UNSET)
+        def _parse_marketplace_category_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        marketplace_category_uuid = _parse_marketplace_category_uuid(d.pop("marketplace_category_uuid", UNSET))
 
         marketplace_category_name = d.pop("marketplace_category_name", UNSET)
 
-        marketplace_resource_uuid = d.pop("marketplace_resource_uuid", UNSET)
+        def _parse_marketplace_resource_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        marketplace_plan_uuid = d.pop("marketplace_plan_uuid", UNSET)
+        marketplace_resource_uuid = _parse_marketplace_resource_uuid(d.pop("marketplace_resource_uuid", UNSET))
 
-        marketplace_resource_state = d.pop("marketplace_resource_state", UNSET)
+        def _parse_marketplace_plan_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        is_usage_based = d.pop("is_usage_based", UNSET)
+        marketplace_plan_uuid = _parse_marketplace_plan_uuid(d.pop("marketplace_plan_uuid", UNSET))
 
-        is_limit_based = d.pop("is_limit_based", UNSET)
+        def _parse_marketplace_resource_state(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        marketplace_resource_state = _parse_marketplace_resource_state(d.pop("marketplace_resource_state", UNSET))
+
+        def _parse_is_usage_based(data: object) -> Union[None, Unset, bool]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, bool], data)
+
+        is_usage_based = _parse_is_usage_based(d.pop("is_usage_based", UNSET))
+
+        def _parse_is_limit_based(data: object) -> Union[None, Unset, bool]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, bool], data)
+
+        is_limit_based = _parse_is_limit_based(d.pop("is_limit_based", UNSET))
 
         open_stack_snapshot = cls(
             url=url,

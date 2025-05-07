@@ -54,17 +54,17 @@ class OpenStackRouter:
         tenant_uuid (Union[Unset, UUID]):
         routes (Union[Unset, list['OpenStackStaticRoute']]):
         fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
-        marketplace_offering_uuid (Union[Unset, str]):
-        marketplace_offering_name (Union[Unset, str]):
+        marketplace_offering_uuid (Union[None, Unset, str]):
+        marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_plugin_options (Union['OpenStackRouterMarketplaceOfferingPluginOptionsType0', None,
             Unset]):
-        marketplace_category_uuid (Union[Unset, str]):
+        marketplace_category_uuid (Union[None, Unset, str]):
         marketplace_category_name (Union[Unset, str]):
-        marketplace_resource_uuid (Union[Unset, str]):
-        marketplace_plan_uuid (Union[Unset, str]):
-        marketplace_resource_state (Union[Unset, str]):
-        is_usage_based (Union[Unset, bool]):
-        is_limit_based (Union[Unset, bool]):
+        marketplace_resource_uuid (Union[None, Unset, str]):
+        marketplace_plan_uuid (Union[None, Unset, str]):
+        marketplace_resource_state (Union[None, Unset, str]):
+        is_usage_based (Union[None, Unset, bool]):
+        is_limit_based (Union[None, Unset, bool]):
         offering_external_ips (Union[None, Unset, list[str]]):
     """
 
@@ -97,18 +97,18 @@ class OpenStackRouter:
     tenant_uuid: Union[Unset, UUID] = UNSET
     routes: Union[Unset, list["OpenStackStaticRoute"]] = UNSET
     fixed_ips: Union[Unset, list["OpenStackFixedIp"]] = UNSET
-    marketplace_offering_uuid: Union[Unset, str] = UNSET
-    marketplace_offering_name: Union[Unset, str] = UNSET
+    marketplace_offering_uuid: Union[None, Unset, str] = UNSET
+    marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_plugin_options: Union["OpenStackRouterMarketplaceOfferingPluginOptionsType0", None, Unset] = (
         UNSET
     )
-    marketplace_category_uuid: Union[Unset, str] = UNSET
+    marketplace_category_uuid: Union[None, Unset, str] = UNSET
     marketplace_category_name: Union[Unset, str] = UNSET
-    marketplace_resource_uuid: Union[Unset, str] = UNSET
-    marketplace_plan_uuid: Union[Unset, str] = UNSET
-    marketplace_resource_state: Union[Unset, str] = UNSET
-    is_usage_based: Union[Unset, bool] = UNSET
-    is_limit_based: Union[Unset, bool] = UNSET
+    marketplace_resource_uuid: Union[None, Unset, str] = UNSET
+    marketplace_plan_uuid: Union[None, Unset, str] = UNSET
+    marketplace_resource_state: Union[None, Unset, str] = UNSET
+    is_usage_based: Union[None, Unset, bool] = UNSET
+    is_limit_based: Union[None, Unset, bool] = UNSET
     offering_external_ips: Union[None, Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -203,9 +203,17 @@ class OpenStackRouter:
                 fixed_ips_item = fixed_ips_item_data.to_dict()
                 fixed_ips.append(fixed_ips_item)
 
-        marketplace_offering_uuid = self.marketplace_offering_uuid
+        marketplace_offering_uuid: Union[None, Unset, str]
+        if isinstance(self.marketplace_offering_uuid, Unset):
+            marketplace_offering_uuid = UNSET
+        else:
+            marketplace_offering_uuid = self.marketplace_offering_uuid
 
-        marketplace_offering_name = self.marketplace_offering_name
+        marketplace_offering_name: Union[None, Unset, str]
+        if isinstance(self.marketplace_offering_name, Unset):
+            marketplace_offering_name = UNSET
+        else:
+            marketplace_offering_name = self.marketplace_offering_name
 
         marketplace_offering_plugin_options: Union[None, Unset, dict[str, Any]]
         if isinstance(self.marketplace_offering_plugin_options, Unset):
@@ -215,19 +223,43 @@ class OpenStackRouter:
         else:
             marketplace_offering_plugin_options = self.marketplace_offering_plugin_options
 
-        marketplace_category_uuid = self.marketplace_category_uuid
+        marketplace_category_uuid: Union[None, Unset, str]
+        if isinstance(self.marketplace_category_uuid, Unset):
+            marketplace_category_uuid = UNSET
+        else:
+            marketplace_category_uuid = self.marketplace_category_uuid
 
         marketplace_category_name = self.marketplace_category_name
 
-        marketplace_resource_uuid = self.marketplace_resource_uuid
+        marketplace_resource_uuid: Union[None, Unset, str]
+        if isinstance(self.marketplace_resource_uuid, Unset):
+            marketplace_resource_uuid = UNSET
+        else:
+            marketplace_resource_uuid = self.marketplace_resource_uuid
 
-        marketplace_plan_uuid = self.marketplace_plan_uuid
+        marketplace_plan_uuid: Union[None, Unset, str]
+        if isinstance(self.marketplace_plan_uuid, Unset):
+            marketplace_plan_uuid = UNSET
+        else:
+            marketplace_plan_uuid = self.marketplace_plan_uuid
 
-        marketplace_resource_state = self.marketplace_resource_state
+        marketplace_resource_state: Union[None, Unset, str]
+        if isinstance(self.marketplace_resource_state, Unset):
+            marketplace_resource_state = UNSET
+        else:
+            marketplace_resource_state = self.marketplace_resource_state
 
-        is_usage_based = self.is_usage_based
+        is_usage_based: Union[None, Unset, bool]
+        if isinstance(self.is_usage_based, Unset):
+            is_usage_based = UNSET
+        else:
+            is_usage_based = self.is_usage_based
 
-        is_limit_based = self.is_limit_based
+        is_limit_based: Union[None, Unset, bool]
+        if isinstance(self.is_limit_based, Unset):
+            is_limit_based = UNSET
+        else:
+            is_limit_based = self.is_limit_based
 
         offering_external_ips: Union[None, Unset, list[str]]
         if isinstance(self.offering_external_ips, Unset):
@@ -443,9 +475,23 @@ class OpenStackRouter:
 
             fixed_ips.append(fixed_ips_item)
 
-        marketplace_offering_uuid = d.pop("marketplace_offering_uuid", UNSET)
+        def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        marketplace_offering_name = d.pop("marketplace_offering_name", UNSET)
+        marketplace_offering_uuid = _parse_marketplace_offering_uuid(d.pop("marketplace_offering_uuid", UNSET))
+
+        def _parse_marketplace_offering_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        marketplace_offering_name = _parse_marketplace_offering_name(d.pop("marketplace_offering_name", UNSET))
 
         def _parse_marketplace_offering_plugin_options(
             data: object,
@@ -470,19 +516,61 @@ class OpenStackRouter:
             d.pop("marketplace_offering_plugin_options", UNSET)
         )
 
-        marketplace_category_uuid = d.pop("marketplace_category_uuid", UNSET)
+        def _parse_marketplace_category_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        marketplace_category_uuid = _parse_marketplace_category_uuid(d.pop("marketplace_category_uuid", UNSET))
 
         marketplace_category_name = d.pop("marketplace_category_name", UNSET)
 
-        marketplace_resource_uuid = d.pop("marketplace_resource_uuid", UNSET)
+        def _parse_marketplace_resource_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        marketplace_plan_uuid = d.pop("marketplace_plan_uuid", UNSET)
+        marketplace_resource_uuid = _parse_marketplace_resource_uuid(d.pop("marketplace_resource_uuid", UNSET))
 
-        marketplace_resource_state = d.pop("marketplace_resource_state", UNSET)
+        def _parse_marketplace_plan_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        is_usage_based = d.pop("is_usage_based", UNSET)
+        marketplace_plan_uuid = _parse_marketplace_plan_uuid(d.pop("marketplace_plan_uuid", UNSET))
 
-        is_limit_based = d.pop("is_limit_based", UNSET)
+        def _parse_marketplace_resource_state(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        marketplace_resource_state = _parse_marketplace_resource_state(d.pop("marketplace_resource_state", UNSET))
+
+        def _parse_is_usage_based(data: object) -> Union[None, Unset, bool]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, bool], data)
+
+        is_usage_based = _parse_is_usage_based(d.pop("is_usage_based", UNSET))
+
+        def _parse_is_limit_based(data: object) -> Union[None, Unset, bool]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, bool], data)
+
+        is_limit_based = _parse_is_limit_based(d.pop("is_limit_based", UNSET))
 
         def _parse_offering_external_ips(data: object) -> Union[None, Unset, list[str]]:
             if data is None:
