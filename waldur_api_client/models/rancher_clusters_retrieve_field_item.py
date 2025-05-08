@@ -44,6 +44,7 @@ class RancherClustersRetrieveFieldItem(str, Enum):
     TENANT_UUID = "tenant_uuid"
     URL = "url"
     UUID = "uuid"
+    VM_PROJECT = "vm_project"
 
     def __str__(self) -> str:
         return str(self.value)

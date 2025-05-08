@@ -51,6 +51,7 @@ class RancherCluster:
         nodes (Union[Unset, list['RancherNestedNode']]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
+        vm_project (Union[None, Unset, str]):
         runtime_state (Union[Unset, str]):
         install_longhorn (Union[Unset, bool]): Longhorn is a distributed block storage deployed on top of Kubernetes
             cluster Default: False.
@@ -94,6 +95,7 @@ class RancherCluster:
     nodes: Union[Unset, list["RancherNestedNode"]] = UNSET
     tenant: Union[Unset, str] = UNSET
     tenant_uuid: Union[Unset, UUID] = UNSET
+    vm_project: Union[None, Unset, str] = UNSET
     runtime_state: Union[Unset, str] = UNSET
     install_longhorn: Union[Unset, bool] = False
     management_security_group: Union[Unset, str] = UNSET
@@ -192,6 +194,12 @@ class RancherCluster:
         tenant_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.tenant_uuid, Unset):
             tenant_uuid = str(self.tenant_uuid)
+
+        vm_project: Union[None, Unset, str]
+        if isinstance(self.vm_project, Unset):
+            vm_project = UNSET
+        else:
+            vm_project = self.vm_project
 
         runtime_state = self.runtime_state
 
@@ -314,6 +322,8 @@ class RancherCluster:
             field_dict["tenant"] = tenant
         if tenant_uuid is not UNSET:
             field_dict["tenant_uuid"] = tenant_uuid
+        if vm_project is not UNSET:
+            field_dict["vm_project"] = vm_project
         if runtime_state is not UNSET:
             field_dict["runtime_state"] = runtime_state
         if install_longhorn is not UNSET:
@@ -452,6 +462,15 @@ class RancherCluster:
         else:
             tenant_uuid = UUID(_tenant_uuid)
 
+        def _parse_vm_project(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        vm_project = _parse_vm_project(d.pop("vm_project", UNSET))
+
         runtime_state = d.pop("runtime_state", UNSET)
 
         install_longhorn = d.pop("install_longhorn", UNSET)
@@ -583,6 +602,7 @@ class RancherCluster:
             nodes=nodes,
             tenant=tenant,
             tenant_uuid=tenant_uuid,
+            vm_project=vm_project,
             runtime_state=runtime_state,
             install_longhorn=install_longhorn,
             management_security_group=management_security_group,

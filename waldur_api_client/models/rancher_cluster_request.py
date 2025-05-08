@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,6 +23,7 @@ class RancherClusterRequest:
         nodes (list['RancherNestedNodeRequest']):
         tenant (str):
         description (Union[Unset, str]):
+        vm_project (Union[None, Unset, str]):
         ssh_public_key (Union[Unset, str]):
         install_longhorn (Union[Unset, bool]): Longhorn is a distributed block storage deployed on top of Kubernetes
             cluster Default: False.
@@ -34,6 +35,7 @@ class RancherClusterRequest:
     nodes: list["RancherNestedNodeRequest"]
     tenant: str
     description: Union[Unset, str] = UNSET
+    vm_project: Union[None, Unset, str] = UNSET
     ssh_public_key: Union[Unset, str] = UNSET
     install_longhorn: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -54,6 +56,12 @@ class RancherClusterRequest:
 
         description = self.description
 
+        vm_project: Union[None, Unset, str]
+        if isinstance(self.vm_project, Unset):
+            vm_project = UNSET
+        else:
+            vm_project = self.vm_project
+
         ssh_public_key = self.ssh_public_key
 
         install_longhorn = self.install_longhorn
@@ -71,6 +79,8 @@ class RancherClusterRequest:
         )
         if description is not UNSET:
             field_dict["description"] = description
+        if vm_project is not UNSET:
+            field_dict["vm_project"] = vm_project
         if ssh_public_key is not UNSET:
             field_dict["ssh_public_key"] = ssh_public_key
         if install_longhorn is not UNSET:
@@ -100,6 +110,15 @@ class RancherClusterRequest:
 
         description = d.pop("description", UNSET)
 
+        def _parse_vm_project(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        vm_project = _parse_vm_project(d.pop("vm_project", UNSET))
+
         ssh_public_key = d.pop("ssh_public_key", UNSET)
 
         install_longhorn = d.pop("install_longhorn", UNSET)
@@ -111,6 +130,7 @@ class RancherClusterRequest:
             nodes=nodes,
             tenant=tenant,
             description=description,
+            vm_project=vm_project,
             ssh_public_key=ssh_public_key,
             install_longhorn=install_longhorn,
         )
