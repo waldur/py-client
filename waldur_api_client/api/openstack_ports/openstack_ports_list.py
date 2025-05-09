@@ -20,6 +20,7 @@ def _get_kwargs(
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -50,6 +51,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["query"] = query
 
     params["tenant"] = tenant
 
@@ -107,6 +110,7 @@ def sync_detailed(
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackPort"]]:
@@ -118,6 +122,7 @@ def sync_detailed(
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -136,6 +141,7 @@ def sync_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        query=query,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
@@ -156,6 +162,7 @@ def sync(
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Optional[list["OpenStackPort"]]:
@@ -167,6 +174,7 @@ def sync(
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -186,6 +194,7 @@ def sync(
         o=o,
         page=page,
         page_size=page_size,
+        query=query,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     ).parsed
@@ -200,6 +209,7 @@ async def asyncio_detailed(
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackPort"]]:
@@ -211,6 +221,7 @@ async def asyncio_detailed(
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -229,6 +240,7 @@ async def asyncio_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        query=query,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
@@ -247,6 +259,7 @@ async def asyncio(
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Optional[list["OpenStackPort"]]:
@@ -258,6 +271,7 @@ async def asyncio(
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -278,6 +292,7 @@ async def asyncio(
             o=o,
             page=page,
             page_size=page_size,
+            query=query,
             tenant=tenant,
             tenant_uuid=tenant_uuid,
         )
