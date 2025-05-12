@@ -1,5 +1,5 @@
 import datetime
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -25,6 +25,7 @@ class KeycloakUserGroupMembership:
         group_name (str):
         group_role (str):
         group_scope_type (str):
+        group_scope_name (Union[None, str]): Get the name of the cluster or project
         state (KeycloakUserGroupMembershipState):
         created (datetime.datetime):
         modified (datetime.datetime):
@@ -43,6 +44,7 @@ class KeycloakUserGroupMembership:
     group_name: str
     group_role: str
     group_scope_type: str
+    group_scope_name: Union[None, str]
     state: KeycloakUserGroupMembershipState
     created: datetime.datetime
     modified: datetime.datetime
@@ -72,6 +74,9 @@ class KeycloakUserGroupMembership:
 
         group_scope_type = self.group_scope_type
 
+        group_scope_name: Union[None, str]
+        group_scope_name = self.group_scope_name
+
         state = self.state.value
 
         created = self.created.isoformat()
@@ -98,6 +103,7 @@ class KeycloakUserGroupMembership:
                 "group_name": group_name,
                 "group_role": group_role,
                 "group_scope_type": group_scope_type,
+                "group_scope_name": group_scope_name,
                 "state": state,
                 "created": created,
                 "modified": modified,
@@ -132,6 +138,13 @@ class KeycloakUserGroupMembership:
 
         group_scope_type = d.pop("group_scope_type")
 
+        def _parse_group_scope_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        group_scope_name = _parse_group_scope_name(d.pop("group_scope_name"))
+
         state = KeycloakUserGroupMembershipState(d.pop("state"))
 
         created = isoparse(d.pop("created"))
@@ -155,6 +168,7 @@ class KeycloakUserGroupMembership:
             group_name=group_name,
             group_role=group_role,
             group_scope_type=group_scope_type,
+            group_scope_name=group_scope_name,
             state=state,
             created=created,
             modified=modified,
