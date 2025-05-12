@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import Any, TypeVar
 from uuid import UUID
 
@@ -35,8 +34,8 @@ class DeleteAttachmentsRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        d = src_dict.copy()
         attachment_ids = []
         _attachment_ids = d.pop("attachment_ids")
         for attachment_ids_item_data in _attachment_ids:

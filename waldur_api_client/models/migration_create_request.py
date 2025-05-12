@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
@@ -68,10 +67,10 @@ class MigrationCreateRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.mapping_request import MappingRequest
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         src_resource = UUID(d.pop("src_resource"))
 
         dst_offering = UUID(d.pop("dst_offering"))

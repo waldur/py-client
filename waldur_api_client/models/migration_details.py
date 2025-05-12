@@ -1,5 +1,4 @@
 import datetime
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
 
@@ -113,10 +112,10 @@ class MigrationDetails:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.mapping import Mapping
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         uuid = UUID(d.pop("uuid"))
 
         created = isoparse(d.pop("created"))

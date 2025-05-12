@@ -1,5 +1,4 @@
 import datetime
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -396,14 +395,14 @@ class OpenStackSubNet:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.open_stack_static_route import OpenStackStaticRoute
         from ..models.open_stack_sub_net_allocation_pool import OpenStackSubNetAllocationPool
         from ..models.open_stack_sub_net_marketplace_offering_plugin_options_type_0 import (
             OpenStackSubNetMarketplaceOfferingPluginOptionsType0,
         )
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         url = d.pop("url", UNSET)
 
         _uuid = d.pop("uuid", UNSET)

@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
@@ -40,10 +39,10 @@ class OpenStackInstanceFloatingIPsUpdateRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         floating_ips = []
         _floating_ips = d.pop("floating_ips", UNSET)
         for floating_ips_item_data in _floating_ips or []:

@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
@@ -76,11 +75,11 @@ class Mapping:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.sub_net_mapping import SubNetMapping
         from ..models.volume_type_mapping import VolumeTypeMapping
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         volume_types = []
         _volume_types = d.pop("volume_types", UNSET)
         for volume_types_item_data in _volume_types or []:

@@ -1,5 +1,4 @@
 import datetime
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -577,7 +576,7 @@ class Resource:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.backend_metadata import BackendMetadata
         from ..models.nested_endpoint import NestedEndpoint
         from ..models.order_details import OrderDetails
@@ -586,7 +585,7 @@ class Resource:
         from ..models.resource_current_usages import ResourceCurrentUsages
         from ..models.resource_limits import ResourceLimits
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         offering = d.pop("offering", UNSET)
 
         offering_name = d.pop("offering_name", UNSET)

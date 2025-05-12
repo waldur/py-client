@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -20,8 +19,8 @@ class RancherIngressMarketplaceOfferingPluginOptionsType0:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        d = src_dict.copy()
         rancher_ingress_marketplace_offering_plugin_options_type_0 = cls()
 
         rancher_ingress_marketplace_offering_plugin_options_type_0.additional_properties = d

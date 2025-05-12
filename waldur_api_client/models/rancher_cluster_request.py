@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
@@ -21,8 +20,8 @@ class RancherClusterRequest:
         service_settings (str):
         project (str):
         nodes (list['RancherNestedNodeRequest']):
-        tenant (str):
         description (Union[Unset, str]):
+        tenant (Union[Unset, str]):
         vm_project (Union[None, Unset, str]):
         ssh_public_key (Union[Unset, str]):
         install_longhorn (Union[Unset, bool]): Longhorn is a distributed block storage deployed on top of Kubernetes
@@ -33,8 +32,8 @@ class RancherClusterRequest:
     service_settings: str
     project: str
     nodes: list["RancherNestedNodeRequest"]
-    tenant: str
     description: Union[Unset, str] = UNSET
+    tenant: Union[Unset, str] = UNSET
     vm_project: Union[None, Unset, str] = UNSET
     ssh_public_key: Union[Unset, str] = UNSET
     install_longhorn: Union[Unset, bool] = False
@@ -52,9 +51,9 @@ class RancherClusterRequest:
             nodes_item = nodes_item_data.to_dict()
             nodes.append(nodes_item)
 
-        tenant = self.tenant
-
         description = self.description
+
+        tenant = self.tenant
 
         vm_project: Union[None, Unset, str]
         if isinstance(self.vm_project, Unset):
@@ -74,11 +73,12 @@ class RancherClusterRequest:
                 "service_settings": service_settings,
                 "project": project,
                 "nodes": nodes,
-                "tenant": tenant,
             }
         )
         if description is not UNSET:
             field_dict["description"] = description
+        if tenant is not UNSET:
+            field_dict["tenant"] = tenant
         if vm_project is not UNSET:
             field_dict["vm_project"] = vm_project
         if ssh_public_key is not UNSET:
@@ -89,10 +89,10 @@ class RancherClusterRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.rancher_nested_node_request import RancherNestedNodeRequest
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         name = d.pop("name")
 
         service_settings = d.pop("service_settings")
@@ -106,9 +106,9 @@ class RancherClusterRequest:
 
             nodes.append(nodes_item)
 
-        tenant = d.pop("tenant")
-
         description = d.pop("description", UNSET)
+
+        tenant = d.pop("tenant", UNSET)
 
         def _parse_vm_project(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -128,8 +128,8 @@ class RancherClusterRequest:
             service_settings=service_settings,
             project=project,
             nodes=nodes,
-            tenant=tenant,
             description=description,
+            tenant=tenant,
             vm_project=vm_project,
             ssh_public_key=ssh_public_key,
             install_longhorn=install_longhorn,

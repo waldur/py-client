@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
@@ -66,11 +65,11 @@ class OpenStackBackupRestorationRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
         from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         flavor = d.pop("flavor")
 
         name = d.pop("name", UNSET)

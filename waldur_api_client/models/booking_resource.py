@@ -1,5 +1,4 @@
 import datetime
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -627,7 +626,7 @@ class BookingResource:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.backend_metadata import BackendMetadata
         from ..models.booking_resource_attributes import BookingResourceAttributes
         from ..models.booking_resource_current_usages import BookingResourceCurrentUsages
@@ -637,7 +636,7 @@ class BookingResource:
         from ..models.order_details import OrderDetails
         from ..models.report_section import ReportSection
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         offering = d.pop("offering", UNSET)
 
         offering_name = d.pop("offering_name", UNSET)

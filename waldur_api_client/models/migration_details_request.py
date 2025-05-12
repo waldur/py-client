@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -35,10 +34,10 @@ class MigrationDetailsRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.mapping_request import MappingRequest
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         mappings = MappingRequest.from_dict(d.pop("mappings"))
 
         migration_details_request = cls(

@@ -22,6 +22,7 @@ def _get_kwargs(
     customer_native_name: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    direct_only: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackNetworksListFieldItem]] = UNSET,
     is_external: Union[Unset, bool] = UNSET,
@@ -32,6 +33,7 @@ def _get_kwargs(
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OpenstackNetworksListStateItem]] = UNSET,
@@ -63,6 +65,8 @@ def _get_kwargs(
     params["customer_uuid"] = json_customer_uuid
 
     params["description"] = description
+
+    params["direct_only"] = direct_only
 
     params["external_ip"] = external_ip
 
@@ -96,6 +100,8 @@ def _get_kwargs(
     if not isinstance(project_uuid, Unset):
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
+
+    params["rbac_only"] = rbac_only
 
     params["service_settings_name"] = service_settings_name
 
@@ -178,6 +184,7 @@ def sync_detailed(
     customer_native_name: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    direct_only: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackNetworksListFieldItem]] = UNSET,
     is_external: Union[Unset, bool] = UNSET,
@@ -188,6 +195,7 @@ def sync_detailed(
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OpenstackNetworksListStateItem]] = UNSET,
@@ -206,6 +214,7 @@ def sync_detailed(
         customer_native_name (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        direct_only (Union[Unset, bool]):
         external_ip (Union[Unset, str]):
         field (Union[Unset, list[OpenstackNetworksListFieldItem]]):
         is_external (Union[Unset, bool]):
@@ -216,6 +225,7 @@ def sync_detailed(
         project (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[OpenstackNetworksListStateItem]]):
@@ -241,6 +251,7 @@ def sync_detailed(
         customer_native_name=customer_native_name,
         customer_uuid=customer_uuid,
         description=description,
+        direct_only=direct_only,
         external_ip=external_ip,
         field=field,
         is_external=is_external,
@@ -251,6 +262,7 @@ def sync_detailed(
         project=project,
         project_name=project_name,
         project_uuid=project_uuid,
+        rbac_only=rbac_only,
         service_settings_name=service_settings_name,
         service_settings_uuid=service_settings_uuid,
         state=state,
@@ -278,6 +290,7 @@ def sync(
     customer_native_name: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    direct_only: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackNetworksListFieldItem]] = UNSET,
     is_external: Union[Unset, bool] = UNSET,
@@ -288,6 +301,7 @@ def sync(
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OpenstackNetworksListStateItem]] = UNSET,
@@ -306,6 +320,7 @@ def sync(
         customer_native_name (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        direct_only (Union[Unset, bool]):
         external_ip (Union[Unset, str]):
         field (Union[Unset, list[OpenstackNetworksListFieldItem]]):
         is_external (Union[Unset, bool]):
@@ -316,6 +331,7 @@ def sync(
         project (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[OpenstackNetworksListStateItem]]):
@@ -342,6 +358,7 @@ def sync(
         customer_native_name=customer_native_name,
         customer_uuid=customer_uuid,
         description=description,
+        direct_only=direct_only,
         external_ip=external_ip,
         field=field,
         is_external=is_external,
@@ -352,6 +369,7 @@ def sync(
         project=project,
         project_name=project_name,
         project_uuid=project_uuid,
+        rbac_only=rbac_only,
         service_settings_name=service_settings_name,
         service_settings_uuid=service_settings_uuid,
         state=state,
@@ -373,6 +391,7 @@ async def asyncio_detailed(
     customer_native_name: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    direct_only: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackNetworksListFieldItem]] = UNSET,
     is_external: Union[Unset, bool] = UNSET,
@@ -383,6 +402,7 @@ async def asyncio_detailed(
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OpenstackNetworksListStateItem]] = UNSET,
@@ -401,6 +421,7 @@ async def asyncio_detailed(
         customer_native_name (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        direct_only (Union[Unset, bool]):
         external_ip (Union[Unset, str]):
         field (Union[Unset, list[OpenstackNetworksListFieldItem]]):
         is_external (Union[Unset, bool]):
@@ -411,6 +432,7 @@ async def asyncio_detailed(
         project (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[OpenstackNetworksListStateItem]]):
@@ -436,6 +458,7 @@ async def asyncio_detailed(
         customer_native_name=customer_native_name,
         customer_uuid=customer_uuid,
         description=description,
+        direct_only=direct_only,
         external_ip=external_ip,
         field=field,
         is_external=is_external,
@@ -446,6 +469,7 @@ async def asyncio_detailed(
         project=project,
         project_name=project_name,
         project_uuid=project_uuid,
+        rbac_only=rbac_only,
         service_settings_name=service_settings_name,
         service_settings_uuid=service_settings_uuid,
         state=state,
@@ -471,6 +495,7 @@ async def asyncio(
     customer_native_name: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    direct_only: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackNetworksListFieldItem]] = UNSET,
     is_external: Union[Unset, bool] = UNSET,
@@ -481,6 +506,7 @@ async def asyncio(
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OpenstackNetworksListStateItem]] = UNSET,
@@ -499,6 +525,7 @@ async def asyncio(
         customer_native_name (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        direct_only (Union[Unset, bool]):
         external_ip (Union[Unset, str]):
         field (Union[Unset, list[OpenstackNetworksListFieldItem]]):
         is_external (Union[Unset, bool]):
@@ -509,6 +536,7 @@ async def asyncio(
         project (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[OpenstackNetworksListStateItem]]):
@@ -536,6 +564,7 @@ async def asyncio(
             customer_native_name=customer_native_name,
             customer_uuid=customer_uuid,
             description=description,
+            direct_only=direct_only,
             external_ip=external_ip,
             field=field,
             is_external=is_external,
@@ -546,6 +575,7 @@ async def asyncio(
             project=project,
             project_name=project_name,
             project_uuid=project_uuid,
+            rbac_only=rbac_only,
             service_settings_name=service_settings_name,
             service_settings_uuid=service_settings_uuid,
             state=state,

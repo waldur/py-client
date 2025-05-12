@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -38,10 +37,10 @@ class OpenStackRouterSetRoutes:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.open_stack_static_route import OpenStackStaticRoute
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         routes = []
         _routes = d.pop("routes")
         for routes_item_data in _routes:

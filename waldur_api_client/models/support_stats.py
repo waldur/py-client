@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -41,8 +40,8 @@ class SupportStats:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        d = src_dict.copy()
         open_issues_count = d.pop("open_issues_count")
 
         closed_this_month_count = d.pop("closed_this_month_count")

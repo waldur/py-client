@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
@@ -50,10 +49,10 @@ class OpenStackNestedPortRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.open_stack_fixed_ip_request import OpenStackFixedIpRequest
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         fixed_ips = []
         _fixed_ips = d.pop("fixed_ips", UNSET)
         for fixed_ips_item_data in _fixed_ips or []:

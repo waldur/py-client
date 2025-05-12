@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
@@ -28,7 +27,6 @@ class ConstanceSettings:
         disable_sending_notifications_about_resource_update (Union[Unset, bool]):
         marketplace_landing_page (Union[Unset, str]):
         enable_stale_resource_notifications (Union[Unset, bool]):
-        enable_resource_end_date (Union[Unset, bool]):
         telemetry_url (Union[Unset, str]):
         telemetry_version (Union[Unset, int]):
         script_run_mode (Union[Unset, str]):
@@ -150,7 +148,6 @@ class ConstanceSettings:
     disable_sending_notifications_about_resource_update: Union[Unset, bool] = UNSET
     marketplace_landing_page: Union[Unset, str] = UNSET
     enable_stale_resource_notifications: Union[Unset, bool] = UNSET
-    enable_resource_end_date: Union[Unset, bool] = UNSET
     telemetry_url: Union[Unset, str] = UNSET
     telemetry_version: Union[Unset, int] = UNSET
     script_run_mode: Union[Unset, str] = UNSET
@@ -287,8 +284,6 @@ class ConstanceSettings:
         marketplace_landing_page = self.marketplace_landing_page
 
         enable_stale_resource_notifications = self.enable_stale_resource_notifications
-
-        enable_resource_end_date = self.enable_resource_end_date
 
         telemetry_url = self.telemetry_url
 
@@ -577,8 +572,6 @@ class ConstanceSettings:
             field_dict["MARKETPLACE_LANDING_PAGE"] = marketplace_landing_page
         if enable_stale_resource_notifications is not UNSET:
             field_dict["ENABLE_STALE_RESOURCE_NOTIFICATIONS"] = enable_stale_resource_notifications
-        if enable_resource_end_date is not UNSET:
-            field_dict["ENABLE_RESOURCE_END_DATE"] = enable_resource_end_date
         if telemetry_url is not UNSET:
             field_dict["TELEMETRY_URL"] = telemetry_url
         if telemetry_version is not UNSET:
@@ -793,8 +786,8 @@ class ConstanceSettings:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        d = src_dict.copy()
         site_name = d.pop("SITE_NAME", UNSET)
 
         site_description = d.pop("SITE_DESCRIPTION", UNSET)
@@ -826,8 +819,6 @@ class ConstanceSettings:
         marketplace_landing_page = d.pop("MARKETPLACE_LANDING_PAGE", UNSET)
 
         enable_stale_resource_notifications = d.pop("ENABLE_STALE_RESOURCE_NOTIFICATIONS", UNSET)
-
-        enable_resource_end_date = d.pop("ENABLE_RESOURCE_END_DATE", UNSET)
 
         telemetry_url = d.pop("TELEMETRY_URL", UNSET)
 
@@ -1125,7 +1116,6 @@ class ConstanceSettings:
             disable_sending_notifications_about_resource_update=disable_sending_notifications_about_resource_update,
             marketplace_landing_page=marketplace_landing_page,
             enable_stale_resource_notifications=enable_stale_resource_notifications,
-            enable_resource_end_date=enable_resource_end_date,
             telemetry_url=telemetry_url,
             telemetry_version=telemetry_version,
             script_run_mode=script_run_mode,

@@ -1,5 +1,4 @@
 import datetime
-from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -134,8 +133,8 @@ class Permission:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        d = src_dict.copy()
         _user_uuid = d.pop("user_uuid", UNSET)
         user_uuid: Union[Unset, UUID]
         if isinstance(_user_uuid, Unset):

@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
@@ -110,10 +109,10 @@ class RancherServiceRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.rancher_nested_workload_request import RancherNestedWorkloadRequest
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         name = d.pop("name")
 
         service_settings = d.pop("service_settings")

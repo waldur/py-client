@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import Any, TypeVar
 from uuid import UUID
 
@@ -32,8 +31,8 @@ class PullMarketplaceScriptResourceRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        d = src_dict.copy()
         resource_uuid = UUID(d.pop("resource_uuid"))
 
         pull_marketplace_script_resource_request = cls(

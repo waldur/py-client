@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -20,8 +19,8 @@ class MarketplaceGlobalCategoriesRetrieveResponse200:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        d = src_dict.copy()
         marketplace_global_categories_retrieve_response_200 = cls()
 
         marketplace_global_categories_retrieve_response_200.additional_properties = d

@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
@@ -28,6 +27,7 @@ class RancherCreateNodeRequest:
         flavor (Union[None, Unset, str]):
         data_volumes (Union[Unset, list['DataVolumeRequest']]):
         ssh_public_key (Union[Unset, str]):
+        tenant (Union[Unset, str]):
     """
 
     cluster: str
@@ -40,6 +40,7 @@ class RancherCreateNodeRequest:
     flavor: Union[None, Unset, str] = UNSET
     data_volumes: Union[Unset, list["DataVolumeRequest"]] = UNSET
     ssh_public_key: Union[Unset, str] = UNSET
+    tenant: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -77,6 +78,8 @@ class RancherCreateNodeRequest:
 
         ssh_public_key = self.ssh_public_key
 
+        tenant = self.tenant
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -100,14 +103,16 @@ class RancherCreateNodeRequest:
             field_dict["data_volumes"] = data_volumes
         if ssh_public_key is not UNSET:
             field_dict["ssh_public_key"] = ssh_public_key
+        if tenant is not UNSET:
+            field_dict["tenant"] = tenant
 
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.data_volume_request import DataVolumeRequest
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         cluster = d.pop("cluster")
 
         role = RoleEnum(d.pop("role"))
@@ -152,6 +157,8 @@ class RancherCreateNodeRequest:
 
         ssh_public_key = d.pop("ssh_public_key", UNSET)
 
+        tenant = d.pop("tenant", UNSET)
+
         rancher_create_node_request = cls(
             cluster=cluster,
             role=role,
@@ -163,6 +170,7 @@ class RancherCreateNodeRequest:
             flavor=flavor,
             data_volumes=data_volumes,
             ssh_public_key=ssh_public_key,
+            tenant=tenant,
         )
 
         rancher_create_node_request.additional_properties = d

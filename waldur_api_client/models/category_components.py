@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
@@ -65,10 +64,10 @@ class CategoryComponents:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.category_serializer_for_for_nested_fields import CategorySerializerForForNestedFields
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         uuid = UUID(d.pop("uuid"))
 
         type_ = d.pop("type")

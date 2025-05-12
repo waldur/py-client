@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
@@ -45,10 +44,10 @@ class OfferingOptions:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.offering_options_options import OfferingOptionsOptions
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         order = cast(list[str], d.pop("order", UNSET))
 
         _options = d.pop("options", UNSET)

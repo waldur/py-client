@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
@@ -94,11 +93,11 @@ class PatchedOpenStackSubNetRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.open_stack_static_route_request import OpenStackStaticRouteRequest
         from ..models.open_stack_sub_net_allocation_pool_request import OpenStackSubNetAllocationPoolRequest
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)

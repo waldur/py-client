@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -38,10 +37,10 @@ class OpenStackInstancePortsUpdateRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         ports = []
         _ports = d.pop("ports")
         for ports_item_data in _ports:

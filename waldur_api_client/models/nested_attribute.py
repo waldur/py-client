@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
@@ -73,10 +72,10 @@ class NestedAttribute:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.nested_attribute_option import NestedAttributeOption
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         key = d.pop("key", UNSET)
 
         title = d.pop("title", UNSET)

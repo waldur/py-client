@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
@@ -26,6 +25,7 @@ class RancherNestedNodeRequest:
         data_volumes (Union[Unset, list['DataVolumeRequest']]):
         memory (Union[Unset, int]):
         cpu (Union[Unset, int]):
+        tenant (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
         backend_id (Union[Unset, str]):
     """
@@ -38,6 +38,7 @@ class RancherNestedNodeRequest:
     data_volumes: Union[Unset, list["DataVolumeRequest"]] = UNSET
     memory: Union[Unset, int] = UNSET
     cpu: Union[Unset, int] = UNSET
+    tenant: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
     backend_id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -73,6 +74,8 @@ class RancherNestedNodeRequest:
 
         cpu = self.cpu
 
+        tenant = self.tenant
+
         error_traceback = self.error_traceback
 
         backend_id = self.backend_id
@@ -97,6 +100,8 @@ class RancherNestedNodeRequest:
             field_dict["memory"] = memory
         if cpu is not UNSET:
             field_dict["cpu"] = cpu
+        if tenant is not UNSET:
+            field_dict["tenant"] = tenant
         if error_traceback is not UNSET:
             field_dict["error_traceback"] = error_traceback
         if backend_id is not UNSET:
@@ -105,10 +110,10 @@ class RancherNestedNodeRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.data_volume_request import DataVolumeRequest
 
-        d = dict(src_dict)
+        d = src_dict.copy()
 
         def _parse_subnet(data: object) -> Union[None, str]:
             if data is None:
@@ -150,6 +155,8 @@ class RancherNestedNodeRequest:
 
         cpu = d.pop("cpu", UNSET)
 
+        tenant = d.pop("tenant", UNSET)
+
         error_traceback = d.pop("error_traceback", UNSET)
 
         backend_id = d.pop("backend_id", UNSET)
@@ -163,6 +170,7 @@ class RancherNestedNodeRequest:
             data_volumes=data_volumes,
             memory=memory,
             cpu=cpu,
+            tenant=tenant,
             error_traceback=error_traceback,
             backend_id=backend_id,
         )

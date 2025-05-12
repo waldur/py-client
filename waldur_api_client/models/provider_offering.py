@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
@@ -138,13 +137,13 @@ class ProviderOffering:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.base_provider_plan import BaseProviderPlan
         from ..models.merged_secret_options import MergedSecretOptions
         from ..models.nested_price_estimate import NestedPriceEstimate
         from ..models.offering_component import OfferingComponent
 
-        d = dict(src_dict)
+        d = src_dict.copy()
         _uuid = d.pop("uuid", UNSET)
         uuid: Union[Unset, UUID]
         if isinstance(_uuid, Unset):
