@@ -17,9 +17,13 @@ class PatchedMigrationDetailsRequest:
     """
     Attributes:
         mappings (Union[Unset, MappingRequest]):
+        error_message (Union[Unset, str]):
+        error_traceback (Union[Unset, str]):
     """
 
     mappings: Union[Unset, "MappingRequest"] = UNSET
+    error_message: Union[Unset, str] = UNSET
+    error_traceback: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -27,11 +31,19 @@ class PatchedMigrationDetailsRequest:
         if not isinstance(self.mappings, Unset):
             mappings = self.mappings.to_dict()
 
+        error_message = self.error_message
+
+        error_traceback = self.error_traceback
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if mappings is not UNSET:
             field_dict["mappings"] = mappings
+        if error_message is not UNSET:
+            field_dict["error_message"] = error_message
+        if error_traceback is not UNSET:
+            field_dict["error_traceback"] = error_traceback
 
         return field_dict
 
@@ -47,8 +59,14 @@ class PatchedMigrationDetailsRequest:
         else:
             mappings = MappingRequest.from_dict(_mappings)
 
+        error_message = d.pop("error_message", UNSET)
+
+        error_traceback = d.pop("error_traceback", UNSET)
+
         patched_migration_details_request = cls(
             mappings=mappings,
+            error_message=error_message,
+            error_traceback=error_traceback,
         )
 
         patched_migration_details_request.additional_properties = d
