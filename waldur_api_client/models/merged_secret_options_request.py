@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.node_disk_driver_enum import NodeDiskDriverEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -51,6 +52,7 @@ class MergedSecretOptionsRequest:
         argocd_k8s_namespace (Union[Unset, str]): Namespace where ArgoCD is deployed
         argocd_k8s_kubeconfig (Union[Unset, str]): Kubeconfig with access to namespace where ArgoCD is deployed
         base_image_name (Union[Unset, str]): Base image name
+        node_disk_driver (Union[Unset, NodeDiskDriverEnum]):
     """
 
     heappe_cluster_password: Union[Unset, str] = UNSET
@@ -87,6 +89,7 @@ class MergedSecretOptionsRequest:
     argocd_k8s_namespace: Union[Unset, str] = UNSET
     argocd_k8s_kubeconfig: Union[Unset, str] = UNSET
     base_image_name: Union[Unset, str] = UNSET
+    node_disk_driver: Union[Unset, NodeDiskDriverEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -165,6 +168,10 @@ class MergedSecretOptionsRequest:
 
         base_image_name = self.base_image_name
 
+        node_disk_driver: Union[Unset, str] = UNSET
+        if not isinstance(self.node_disk_driver, Unset):
+            node_disk_driver = self.node_disk_driver.value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -236,6 +243,8 @@ class MergedSecretOptionsRequest:
             field_dict["argocd_k8s_kubeconfig"] = argocd_k8s_kubeconfig
         if base_image_name is not UNSET:
             field_dict["base_image_name"] = base_image_name
+        if node_disk_driver is not UNSET:
+            field_dict["node_disk_driver"] = node_disk_driver
 
         return field_dict
 
@@ -317,6 +326,13 @@ class MergedSecretOptionsRequest:
 
         base_image_name = d.pop("base_image_name", UNSET)
 
+        _node_disk_driver = d.pop("node_disk_driver", UNSET)
+        node_disk_driver: Union[Unset, NodeDiskDriverEnum]
+        if isinstance(_node_disk_driver, Unset):
+            node_disk_driver = UNSET
+        else:
+            node_disk_driver = NodeDiskDriverEnum(_node_disk_driver)
+
         merged_secret_options_request = cls(
             heappe_cluster_password=heappe_cluster_password,
             heappe_password=heappe_password,
@@ -352,6 +368,7 @@ class MergedSecretOptionsRequest:
             argocd_k8s_namespace=argocd_k8s_namespace,
             argocd_k8s_kubeconfig=argocd_k8s_kubeconfig,
             base_image_name=base_image_name,
+            node_disk_driver=node_disk_driver,
         )
 
         merged_secret_options_request.additional_properties = d

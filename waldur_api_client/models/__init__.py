@@ -392,9 +392,8 @@ from .marketplace_provider_offerings_costs_list_o_item import MarketplaceProvide
 from .marketplace_provider_offerings_costs_list_state_item import MarketplaceProviderOfferingsCostsListStateItem
 from .marketplace_provider_offerings_customers_list_o_item import MarketplaceProviderOfferingsCustomersListOItem
 from .marketplace_provider_offerings_customers_list_state_item import MarketplaceProviderOfferingsCustomersListStateItem
-from .marketplace_provider_offerings_groups_retrieve_field_item import (
-    MarketplaceProviderOfferingsGroupsRetrieveFieldItem,
-)
+from .marketplace_provider_offerings_groups_list_o_item import MarketplaceProviderOfferingsGroupsListOItem
+from .marketplace_provider_offerings_groups_list_state_item import MarketplaceProviderOfferingsGroupsListStateItem
 from .marketplace_provider_offerings_list_field_item import MarketplaceProviderOfferingsListFieldItem
 from .marketplace_provider_offerings_list_o_item import MarketplaceProviderOfferingsListOItem
 from .marketplace_provider_offerings_list_state_item import MarketplaceProviderOfferingsListStateItem
@@ -510,6 +509,7 @@ from .nested_security_group_rule import NestedSecurityGroupRule
 from .nested_security_group_rule_request import NestedSecurityGroupRuleRequest
 from .network_rbac_policy import NetworkRBACPolicy
 from .network_rbac_policy_request import NetworkRBACPolicyRequest
+from .node_disk_driver_enum import NodeDiskDriverEnum
 from .notification import Notification
 from .notification_request import NotificationRequest
 from .notification_template_detail_serializers import NotificationTemplateDetailSerializers
@@ -535,6 +535,7 @@ from .offering_estimated_cost_policy import OfferingEstimatedCostPolicy
 from .offering_estimated_cost_policy_request import OfferingEstimatedCostPolicyRequest
 from .offering_file import OfferingFile
 from .offering_file_request import OfferingFileRequest
+from .offering_groups import OfferingGroups
 from .offering_image_request import OfferingImageRequest
 from .offering_integration_update_request import OfferingIntegrationUpdateRequest
 from .offering_location_update_request import OfferingLocationUpdateRequest
@@ -546,6 +547,7 @@ from .offering_options_update_request import OfferingOptionsUpdateRequest
 from .offering_overview_update_request import OfferingOverviewUpdateRequest
 from .offering_pause_request import OfferingPauseRequest
 from .offering_permission import OfferingPermission
+from .offering_reference import OfferingReference
 from .offering_referral import OfferingReferral
 from .offering_resource_options_update_request import OfferingResourceOptionsUpdateRequest
 from .offering_state import OfferingState
@@ -1582,7 +1584,8 @@ __all__ = (
     "MarketplaceProviderOfferingsCostsListStateItem",
     "MarketplaceProviderOfferingsCustomersListOItem",
     "MarketplaceProviderOfferingsCustomersListStateItem",
-    "MarketplaceProviderOfferingsGroupsRetrieveFieldItem",
+    "MarketplaceProviderOfferingsGroupsListOItem",
+    "MarketplaceProviderOfferingsGroupsListStateItem",
     "MarketplaceProviderOfferingsListFieldItem",
     "MarketplaceProviderOfferingsListOItem",
     "MarketplaceProviderOfferingsListStateItem",
@@ -1682,6 +1685,7 @@ __all__ = (
     "NestedSecurityGroupRuleRequest",
     "NetworkRBACPolicy",
     "NetworkRBACPolicyRequest",
+    "NodeDiskDriverEnum",
     "Notification",
     "NotificationRequest",
     "NotificationTemplateDetailSerializers",
@@ -1707,6 +1711,7 @@ __all__ = (
     "OfferingEstimatedCostPolicyRequest",
     "OfferingFile",
     "OfferingFileRequest",
+    "OfferingGroups",
     "OfferingImageRequest",
     "OfferingIntegrationUpdateRequest",
     "OfferingLocationUpdateRequest",
@@ -1718,6 +1723,7 @@ __all__ = (
     "OfferingOverviewUpdateRequest",
     "OfferingPauseRequest",
     "OfferingPermission",
+    "OfferingReference",
     "OfferingReferral",
     "OfferingResourceOptionsUpdateRequest",
     "OfferingState",
