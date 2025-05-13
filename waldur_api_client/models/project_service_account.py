@@ -23,6 +23,11 @@ class ProjectServiceAccount:
         token (Union[None, str]):
         expires_at (Union[None, str]):
         project (UUID):
+        project_uuid (UUID):
+        project_name (str):
+        customer_uuid (UUID):
+        customer_name (str):
+        customer_abbreviation (str):
         username (Union[Unset, str]):
         description (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
@@ -37,6 +42,11 @@ class ProjectServiceAccount:
     token: Union[None, str]
     expires_at: Union[None, str]
     project: UUID
+    project_uuid: UUID
+    project_name: str
+    customer_uuid: UUID
+    customer_name: str
+    customer_abbreviation: str
     username: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
@@ -62,6 +72,16 @@ class ProjectServiceAccount:
 
         project = str(self.project)
 
+        project_uuid = str(self.project_uuid)
+
+        project_name = self.project_name
+
+        customer_uuid = str(self.customer_uuid)
+
+        customer_name = self.customer_name
+
+        customer_abbreviation = self.customer_abbreviation
+
         username = self.username
 
         description = self.description
@@ -82,6 +102,11 @@ class ProjectServiceAccount:
                 "token": token,
                 "expiresAt": expires_at,
                 "project": project,
+                "project_uuid": project_uuid,
+                "project_name": project_name,
+                "customer_uuid": customer_uuid,
+                "customer_name": customer_name,
+                "customer_abbreviation": customer_abbreviation,
             }
         )
         if username is not UNSET:
@@ -124,6 +149,16 @@ class ProjectServiceAccount:
 
         project = UUID(d.pop("project"))
 
+        project_uuid = UUID(d.pop("project_uuid"))
+
+        project_name = d.pop("project_name")
+
+        customer_uuid = UUID(d.pop("customer_uuid"))
+
+        customer_name = d.pop("customer_name")
+
+        customer_abbreviation = d.pop("customer_abbreviation")
+
         username = d.pop("username", UNSET)
 
         description = d.pop("description", UNSET)
@@ -141,6 +176,11 @@ class ProjectServiceAccount:
             token=token,
             expires_at=expires_at,
             project=project,
+            project_uuid=project_uuid,
+            project_name=project_name,
+            customer_uuid=customer_uuid,
+            customer_name=customer_name,
+            customer_abbreviation=customer_abbreviation,
             username=username,
             description=description,
             error_traceback=error_traceback,

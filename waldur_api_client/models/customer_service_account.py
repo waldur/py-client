@@ -23,6 +23,8 @@ class CustomerServiceAccount:
         token (Union[None, str]):
         expires_at (Union[None, str]):
         customer (UUID):
+        customer_uuid (UUID):
+        customer_name (str):
         username (Union[Unset, str]):
         description (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
@@ -37,6 +39,8 @@ class CustomerServiceAccount:
     token: Union[None, str]
     expires_at: Union[None, str]
     customer: UUID
+    customer_uuid: UUID
+    customer_name: str
     username: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
@@ -62,6 +66,10 @@ class CustomerServiceAccount:
 
         customer = str(self.customer)
 
+        customer_uuid = str(self.customer_uuid)
+
+        customer_name = self.customer_name
+
         username = self.username
 
         description = self.description
@@ -82,6 +90,8 @@ class CustomerServiceAccount:
                 "token": token,
                 "expiresAt": expires_at,
                 "customer": customer,
+                "customer_uuid": customer_uuid,
+                "customer_name": customer_name,
             }
         )
         if username is not UNSET:
@@ -124,6 +134,10 @@ class CustomerServiceAccount:
 
         customer = UUID(d.pop("customer"))
 
+        customer_uuid = UUID(d.pop("customer_uuid"))
+
+        customer_name = d.pop("customer_name")
+
         username = d.pop("username", UNSET)
 
         description = d.pop("description", UNSET)
@@ -141,6 +155,8 @@ class CustomerServiceAccount:
             token=token,
             expires_at=expires_at,
             customer=customer,
+            customer_uuid=customer_uuid,
+            customer_name=customer_name,
             username=username,
             description=description,
             error_traceback=error_traceback,
