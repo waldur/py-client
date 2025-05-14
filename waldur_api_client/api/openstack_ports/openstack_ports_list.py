@@ -14,17 +14,25 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    admin_state_up: Union[Unset, str] = UNSET,
+    backend_id: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["admin_state_up"] = admin_state_up
+
+    params["backend_id"] = backend_id
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -34,6 +42,8 @@ def _get_kwargs(
             json_field.append(field_item)
 
     params["field"] = json_field
+
+    params["mac_address"] = mac_address
 
     params["name"] = name
 
@@ -53,6 +63,8 @@ def _get_kwargs(
     params["page_size"] = page_size
 
     params["query"] = query
+
+    params["status"] = status
 
     params["tenant"] = tenant
 
@@ -104,25 +116,33 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    admin_state_up: Union[Unset, str] = UNSET,
+    backend_id: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackPort"]]:
     """
     Args:
+        admin_state_up (Union[Unset, str]):
+        backend_id (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        status (Union[Unset, str]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -135,13 +155,17 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        admin_state_up=admin_state_up,
+        backend_id=backend_id,
         field=field,
+        mac_address=mac_address,
         name=name,
         name_exact=name_exact,
         o=o,
         page=page,
         page_size=page_size,
         query=query,
+        status=status,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
@@ -156,25 +180,33 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    admin_state_up: Union[Unset, str] = UNSET,
+    backend_id: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Optional[list["OpenStackPort"]]:
     """
     Args:
+        admin_state_up (Union[Unset, str]):
+        backend_id (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        status (Union[Unset, str]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -188,13 +220,17 @@ def sync(
 
     return sync_detailed(
         client=client,
+        admin_state_up=admin_state_up,
+        backend_id=backend_id,
         field=field,
+        mac_address=mac_address,
         name=name,
         name_exact=name_exact,
         o=o,
         page=page,
         page_size=page_size,
         query=query,
+        status=status,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     ).parsed
@@ -203,25 +239,33 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    admin_state_up: Union[Unset, str] = UNSET,
+    backend_id: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackPort"]]:
     """
     Args:
+        admin_state_up (Union[Unset, str]):
+        backend_id (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        status (Union[Unset, str]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -234,13 +278,17 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        admin_state_up=admin_state_up,
+        backend_id=backend_id,
         field=field,
+        mac_address=mac_address,
         name=name,
         name_exact=name_exact,
         o=o,
         page=page,
         page_size=page_size,
         query=query,
+        status=status,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
@@ -253,25 +301,33 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    admin_state_up: Union[Unset, str] = UNSET,
+    backend_id: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Optional[list["OpenStackPort"]]:
     """
     Args:
+        admin_state_up (Union[Unset, str]):
+        backend_id (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        status (Union[Unset, str]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -286,13 +342,17 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            admin_state_up=admin_state_up,
+            backend_id=backend_id,
             field=field,
+            mac_address=mac_address,
             name=name,
             name_exact=name_exact,
             o=o,
             page=page,
             page_size=page_size,
             query=query,
+            status=status,
             tenant=tenant,
             tenant_uuid=tenant_uuid,
         )
