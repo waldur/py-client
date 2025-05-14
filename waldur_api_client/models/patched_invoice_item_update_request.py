@@ -16,12 +16,14 @@ class PatchedInvoiceItemUpdateRequest:
     Attributes:
         article_code (Union[Unset, str]):
         quantity (Union[Unset, str]):
+        unit_price (Union[Unset, str]):
         start (Union[Unset, datetime.datetime]): Date and time when item usage has started.
         end (Union[Unset, datetime.datetime]): Date and time when item usage has ended.
     """
 
     article_code: Union[Unset, str] = UNSET
     quantity: Union[Unset, str] = UNSET
+    unit_price: Union[Unset, str] = UNSET
     start: Union[Unset, datetime.datetime] = UNSET
     end: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -30,6 +32,8 @@ class PatchedInvoiceItemUpdateRequest:
         article_code = self.article_code
 
         quantity = self.quantity
+
+        unit_price = self.unit_price
 
         start: Union[Unset, str] = UNSET
         if not isinstance(self.start, Unset):
@@ -46,6 +50,8 @@ class PatchedInvoiceItemUpdateRequest:
             field_dict["article_code"] = article_code
         if quantity is not UNSET:
             field_dict["quantity"] = quantity
+        if unit_price is not UNSET:
+            field_dict["unit_price"] = unit_price
         if start is not UNSET:
             field_dict["start"] = start
         if end is not UNSET:
@@ -59,6 +65,8 @@ class PatchedInvoiceItemUpdateRequest:
         article_code = d.pop("article_code", UNSET)
 
         quantity = d.pop("quantity", UNSET)
+
+        unit_price = d.pop("unit_price", UNSET)
 
         _start = d.pop("start", UNSET)
         start: Union[Unset, datetime.datetime]
@@ -77,6 +85,7 @@ class PatchedInvoiceItemUpdateRequest:
         patched_invoice_item_update_request = cls(
             article_code=article_code,
             quantity=quantity,
+            unit_price=unit_price,
             start=start,
             end=end,
         )

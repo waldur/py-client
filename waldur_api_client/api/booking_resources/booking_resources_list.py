@@ -24,6 +24,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -84,6 +85,8 @@ def _get_kwargs(
             json_field.append(field_item)
 
     params["field"] = json_field
+
+    params["has_terminate_date"] = has_terminate_date
 
     params["lexis_links_supported"] = lexis_links_supported
 
@@ -217,6 +220,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -251,6 +255,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
+        has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -292,6 +297,7 @@ def sync_detailed(
         customer_uuid=customer_uuid,
         downscaled=downscaled,
         field=field,
+        has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
         modified=modified,
         name=name,
@@ -335,6 +341,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -369,6 +376,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
+        has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -411,6 +419,7 @@ def sync(
         customer_uuid=customer_uuid,
         downscaled=downscaled,
         field=field,
+        has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
         modified=modified,
         name=name,
@@ -448,6 +457,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -482,6 +492,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
+        has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -523,6 +534,7 @@ async def asyncio_detailed(
         customer_uuid=customer_uuid,
         downscaled=downscaled,
         field=field,
+        has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
         modified=modified,
         name=name,
@@ -564,6 +576,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -598,6 +611,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
+        has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -641,6 +655,7 @@ async def asyncio(
             customer_uuid=customer_uuid,
             downscaled=downscaled,
             field=field,
+            has_terminate_date=has_terminate_date,
             lexis_links_supported=lexis_links_supported,
             modified=modified,
             name=name,
