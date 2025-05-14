@@ -975,6 +975,7 @@ from .rancher_nested_workload_request import RancherNestedWorkloadRequest
 from .rancher_node import RancherNode
 from .rancher_project import RancherProject
 from .rancher_role_scope_type import RancherRoleScopeType
+from .rancher_role_templates_list_o_item import RancherRoleTemplatesListOItem
 from .rancher_service import RancherService
 from .rancher_service_marketplace_offering_plugin_options_type_0 import (
     RancherServiceMarketplaceOfferingPluginOptionsType0,
@@ -2119,6 +2120,7 @@ __all__ = (
     "RancherNode",
     "RancherProject",
     "RancherRoleScopeType",
+    "RancherRoleTemplatesListOItem",
     "RancherService",
     "RancherServiceMarketplaceOfferingPluginOptionsType0",
     "RancherServiceRequest",

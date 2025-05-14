@@ -6,6 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.rancher_role_templates_list_o_item import RancherRoleTemplatesListOItem
 from ...models.role_template import RoleTemplate
 from ...types import UNSET, Response, Unset
 
@@ -13,6 +14,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RancherRoleTemplatesListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -21,6 +23,15 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["name"] = name
+
+    json_o: Union[Unset, list[str]] = UNSET
+    if not isinstance(o, Unset):
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
+
+    params["o"] = json_o
 
     params["page"] = page
 
@@ -77,6 +88,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RancherRoleTemplatesListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -85,6 +97,7 @@ def sync_detailed(
     """
     Args:
         name (Union[Unset, str]):
+        o (Union[Unset, list[RancherRoleTemplatesListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope_type (Union[Unset, str]):
@@ -100,6 +113,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         name=name,
+        o=o,
         page=page,
         page_size=page_size,
         scope_type=scope_type,
@@ -117,6 +131,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RancherRoleTemplatesListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -125,6 +140,7 @@ def sync(
     """
     Args:
         name (Union[Unset, str]):
+        o (Union[Unset, list[RancherRoleTemplatesListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope_type (Union[Unset, str]):
@@ -141,6 +157,7 @@ def sync(
     return sync_detailed(
         client=client,
         name=name,
+        o=o,
         page=page,
         page_size=page_size,
         scope_type=scope_type,
@@ -152,6 +169,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RancherRoleTemplatesListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -160,6 +178,7 @@ async def asyncio_detailed(
     """
     Args:
         name (Union[Unset, str]):
+        o (Union[Unset, list[RancherRoleTemplatesListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope_type (Union[Unset, str]):
@@ -175,6 +194,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         name=name,
+        o=o,
         page=page,
         page_size=page_size,
         scope_type=scope_type,
@@ -190,6 +210,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RancherRoleTemplatesListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -198,6 +219,7 @@ async def asyncio(
     """
     Args:
         name (Union[Unset, str]):
+        o (Union[Unset, list[RancherRoleTemplatesListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope_type (Union[Unset, str]):
@@ -215,6 +237,7 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             name=name,
+            o=o,
             page=page,
             page_size=page_size,
             scope_type=scope_type,
