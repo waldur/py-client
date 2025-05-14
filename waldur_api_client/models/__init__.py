@@ -619,6 +619,7 @@ from .open_stack_port_nested_security_group import OpenStackPortNestedSecurityGr
 from .open_stack_port_nested_security_group_request import OpenStackPortNestedSecurityGroupRequest
 from .open_stack_port_request import OpenStackPortRequest
 from .open_stack_router import OpenStackRouter
+from .open_stack_router_interface_request import OpenStackRouterInterfaceRequest
 from .open_stack_router_marketplace_offering_plugin_options_type_0 import (
     OpenStackRouterMarketplaceOfferingPluginOptionsType0,
 )
@@ -1806,6 +1807,7 @@ __all__ = (
     "OpenstackPortsListOItem",
     "OpenstackPortsRetrieveFieldItem",
     "OpenStackRouter",
+    "OpenStackRouterInterfaceRequest",
     "OpenStackRouterMarketplaceOfferingPluginOptionsType0",
     "OpenStackRouterSetRoutes",
     "OpenStackRouterSetRoutesRequest",
