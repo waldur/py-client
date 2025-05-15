@@ -155,6 +155,7 @@ from .checklist import Checklist
 from .checklist_category import ChecklistCategory
 from .checklist_customer_stats import ChecklistCustomerStats
 from .checklist_question import ChecklistQuestion
+from .cluster_security_group import ClusterSecurityGroup
 from .comment import Comment
 from .comment_request import CommentRequest
 from .component_stats import ComponentStats
@@ -945,6 +946,7 @@ from .rancher_cluster_marketplace_offering_plugin_options_type_0 import (
 )
 from .rancher_cluster_reference import RancherClusterReference
 from .rancher_cluster_request import RancherClusterRequest
+from .rancher_cluster_security_group_rule import RancherClusterSecurityGroupRule
 from .rancher_cluster_template import RancherClusterTemplate
 from .rancher_cluster_template_node import RancherClusterTemplateNode
 from .rancher_clusters_list_field_item import RancherClustersListFieldItem
@@ -1359,6 +1361,7 @@ __all__ = (
     "ChecklistCategory",
     "ChecklistCustomerStats",
     "ChecklistQuestion",
+    "ClusterSecurityGroup",
     "Comment",
     "CommentRequest",
     "ComponentStats",
@@ -2093,6 +2096,7 @@ __all__ = (
     "RancherClusterMarketplaceOfferingPluginOptionsType0",
     "RancherClusterReference",
     "RancherClusterRequest",
+    "RancherClusterSecurityGroupRule",
     "RancherClustersListFieldItem",
     "RancherClustersListStateItem",
     "RancherClustersRetrieveFieldItem",

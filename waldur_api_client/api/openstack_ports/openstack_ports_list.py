@@ -14,9 +14,12 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    admin_state_up: Union[Unset, str] = UNSET,
+    admin_state_up: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
+    device_id: Union[Unset, str] = UNSET,
+    device_owner: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -34,6 +37,10 @@ def _get_kwargs(
 
     params["backend_id"] = backend_id
 
+    params["device_id"] = device_id
+
+    params["device_owner"] = device_owner
+
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
         json_field = []
@@ -42,6 +49,8 @@ def _get_kwargs(
             json_field.append(field_item)
 
     params["field"] = json_field
+
+    params["has_device_owner"] = has_device_owner
 
     params["mac_address"] = mac_address
 
@@ -116,9 +125,12 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    admin_state_up: Union[Unset, str] = UNSET,
+    admin_state_up: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
+    device_id: Union[Unset, str] = UNSET,
+    device_owner: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -132,9 +144,12 @@ def sync_detailed(
 ) -> Response[list["OpenStackPort"]]:
     """
     Args:
-        admin_state_up (Union[Unset, str]):
+        admin_state_up (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
+        device_id (Union[Unset, str]):
+        device_owner (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -157,7 +172,10 @@ def sync_detailed(
     kwargs = _get_kwargs(
         admin_state_up=admin_state_up,
         backend_id=backend_id,
+        device_id=device_id,
+        device_owner=device_owner,
         field=field,
+        has_device_owner=has_device_owner,
         mac_address=mac_address,
         name=name,
         name_exact=name_exact,
@@ -180,9 +198,12 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    admin_state_up: Union[Unset, str] = UNSET,
+    admin_state_up: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
+    device_id: Union[Unset, str] = UNSET,
+    device_owner: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -196,9 +217,12 @@ def sync(
 ) -> Optional[list["OpenStackPort"]]:
     """
     Args:
-        admin_state_up (Union[Unset, str]):
+        admin_state_up (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
+        device_id (Union[Unset, str]):
+        device_owner (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -222,7 +246,10 @@ def sync(
         client=client,
         admin_state_up=admin_state_up,
         backend_id=backend_id,
+        device_id=device_id,
+        device_owner=device_owner,
         field=field,
+        has_device_owner=has_device_owner,
         mac_address=mac_address,
         name=name,
         name_exact=name_exact,
@@ -239,9 +266,12 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    admin_state_up: Union[Unset, str] = UNSET,
+    admin_state_up: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
+    device_id: Union[Unset, str] = UNSET,
+    device_owner: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -255,9 +285,12 @@ async def asyncio_detailed(
 ) -> Response[list["OpenStackPort"]]:
     """
     Args:
-        admin_state_up (Union[Unset, str]):
+        admin_state_up (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
+        device_id (Union[Unset, str]):
+        device_owner (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -280,7 +313,10 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         admin_state_up=admin_state_up,
         backend_id=backend_id,
+        device_id=device_id,
+        device_owner=device_owner,
         field=field,
+        has_device_owner=has_device_owner,
         mac_address=mac_address,
         name=name,
         name_exact=name_exact,
@@ -301,9 +337,12 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    admin_state_up: Union[Unset, str] = UNSET,
+    admin_state_up: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
+    device_id: Union[Unset, str] = UNSET,
+    device_owner: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -317,9 +356,12 @@ async def asyncio(
 ) -> Optional[list["OpenStackPort"]]:
     """
     Args:
-        admin_state_up (Union[Unset, str]):
+        admin_state_up (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
+        device_id (Union[Unset, str]):
+        device_owner (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -344,7 +386,10 @@ async def asyncio(
             client=client,
             admin_state_up=admin_state_up,
             backend_id=backend_id,
+            device_id=device_id,
+            device_owner=device_owner,
             field=field,
+            has_device_owner=has_device_owner,
             mac_address=mac_address,
             name=name,
             name_exact=name_exact,

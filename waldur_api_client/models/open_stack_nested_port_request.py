@@ -18,10 +18,12 @@ class OpenStackNestedPortRequest:
     Attributes:
         fixed_ips (Union[Unset, list['OpenStackFixedIpRequest']]):
         subnet (Union[None, Unset, str]):
+        port (Union[Unset, str]):
     """
 
     fixed_ips: Union[Unset, list["OpenStackFixedIpRequest"]] = UNSET
     subnet: Union[None, Unset, str] = UNSET
+    port: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,6 +40,8 @@ class OpenStackNestedPortRequest:
         else:
             subnet = self.subnet
 
+        port = self.port
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -45,6 +49,8 @@ class OpenStackNestedPortRequest:
             field_dict["fixed_ips"] = fixed_ips
         if subnet is not UNSET:
             field_dict["subnet"] = subnet
+        if port is not UNSET:
+            field_dict["port"] = port
 
         return field_dict
 
@@ -69,9 +75,12 @@ class OpenStackNestedPortRequest:
 
         subnet = _parse_subnet(d.pop("subnet", UNSET))
 
+        port = d.pop("port", UNSET)
+
         open_stack_nested_port_request = cls(
             fixed_ips=fixed_ips,
             subnet=subnet,
+            port=port,
         )
 
         open_stack_nested_port_request.additional_properties = d
