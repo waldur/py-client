@@ -11,12 +11,11 @@ from ...types import Response
 
 
 def _get_kwargs(
-    cluster_uuid: UUID,
-    id: int,
+    uuid: UUID,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/api/rancher-clusters/{cluster_uuid}/security-groups/{id}/",
+        "url": f"/api/rancher-cluster-security-groups/{uuid}/",
     }
 
     return _kwargs
@@ -47,16 +46,13 @@ def _build_response(
 
 
 def sync_detailed(
-    cluster_uuid: UUID,
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[ClusterSecurityGroup]:
-    """Retrieve security group of Rancher cluster.
-
+    """
     Args:
-        cluster_uuid (UUID):
-        id (int):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -67,8 +63,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        cluster_uuid=cluster_uuid,
-        id=id,
+        uuid=uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -79,16 +74,13 @@ def sync_detailed(
 
 
 def sync(
-    cluster_uuid: UUID,
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
 ) -> Optional[ClusterSecurityGroup]:
-    """Retrieve security group of Rancher cluster.
-
+    """
     Args:
-        cluster_uuid (UUID):
-        id (int):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -99,23 +91,19 @@ def sync(
     """
 
     return sync_detailed(
-        cluster_uuid=cluster_uuid,
-        id=id,
+        uuid=uuid,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    cluster_uuid: UUID,
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[ClusterSecurityGroup]:
-    """Retrieve security group of Rancher cluster.
-
+    """
     Args:
-        cluster_uuid (UUID):
-        id (int):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -126,8 +114,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        cluster_uuid=cluster_uuid,
-        id=id,
+        uuid=uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -136,16 +123,13 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    cluster_uuid: UUID,
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
 ) -> Optional[ClusterSecurityGroup]:
-    """Retrieve security group of Rancher cluster.
-
+    """
     Args:
-        cluster_uuid (UUID):
-        id (int):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -157,8 +141,7 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            cluster_uuid=cluster_uuid,
-            id=id,
+            uuid=uuid,
             client=client,
         )
     ).parsed

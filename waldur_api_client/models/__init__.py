@@ -156,6 +156,7 @@ from .checklist_category import ChecklistCategory
 from .checklist_customer_stats import ChecklistCustomerStats
 from .checklist_question import ChecklistQuestion
 from .cluster_security_group import ClusterSecurityGroup
+from .cluster_security_group_request import ClusterSecurityGroupRequest
 from .comment import Comment
 from .comment_request import CommentRequest
 from .component_stats import ComponentStats
@@ -747,6 +748,7 @@ from .patched_category_column_request import PatchedCategoryColumnRequest
 from .patched_category_components_request import PatchedCategoryComponentsRequest
 from .patched_category_group_request import PatchedCategoryGroupRequest
 from .patched_category_help_articles_request import PatchedCategoryHelpArticlesRequest
+from .patched_cluster_security_group_request import PatchedClusterSecurityGroupRequest
 from .patched_comment_request import PatchedCommentRequest
 from .patched_component_user_usage_limit_request import PatchedComponentUserUsageLimitRequest
 from .patched_create_customer_credit_request import PatchedCreateCustomerCreditRequest
@@ -947,6 +949,7 @@ from .rancher_cluster_marketplace_offering_plugin_options_type_0 import (
 from .rancher_cluster_reference import RancherClusterReference
 from .rancher_cluster_request import RancherClusterRequest
 from .rancher_cluster_security_group_rule import RancherClusterSecurityGroupRule
+from .rancher_cluster_security_group_rule_request import RancherClusterSecurityGroupRuleRequest
 from .rancher_cluster_template import RancherClusterTemplate
 from .rancher_cluster_template_node import RancherClusterTemplateNode
 from .rancher_clusters_list_field_item import RancherClustersListFieldItem
@@ -1362,6 +1365,7 @@ __all__ = (
     "ChecklistCustomerStats",
     "ChecklistQuestion",
     "ClusterSecurityGroup",
+    "ClusterSecurityGroupRequest",
     "Comment",
     "CommentRequest",
     "ComponentStats",
@@ -1903,6 +1907,7 @@ __all__ = (
     "PatchedCategoryComponentsRequest",
     "PatchedCategoryGroupRequest",
     "PatchedCategoryHelpArticlesRequest",
+    "PatchedClusterSecurityGroupRequest",
     "PatchedCommentRequest",
     "PatchedComponentUserUsageLimitRequest",
     "PatchedCreateCustomerCreditRequest",
@@ -2097,6 +2102,7 @@ __all__ = (
     "RancherClusterReference",
     "RancherClusterRequest",
     "RancherClusterSecurityGroupRule",
+    "RancherClusterSecurityGroupRuleRequest",
     "RancherClustersListFieldItem",
     "RancherClustersListStateItem",
     "RancherClustersRetrieveFieldItem",

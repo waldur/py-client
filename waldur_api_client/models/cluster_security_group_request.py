@@ -1,39 +1,26 @@
 from typing import TYPE_CHECKING, Any, TypeVar
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.rancher_cluster_security_group_rule import RancherClusterSecurityGroupRule
+    from ..models.rancher_cluster_security_group_rule_request import RancherClusterSecurityGroupRuleRequest
 
 
-T = TypeVar("T", bound="ClusterSecurityGroup")
+T = TypeVar("T", bound="ClusterSecurityGroupRequest")
 
 
 @_attrs_define
-class ClusterSecurityGroup:
+class ClusterSecurityGroupRequest:
     """
     Attributes:
-        uuid (UUID):
-        name (str):
-        description (str):
-        rules (list['RancherClusterSecurityGroupRule']):
+        rules (list['RancherClusterSecurityGroupRuleRequest']):
     """
 
-    uuid: UUID
-    name: str
-    description: str
-    rules: list["RancherClusterSecurityGroupRule"]
+    rules: list["RancherClusterSecurityGroupRuleRequest"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
-
-        name = self.name
-
-        description = self.description
-
         rules = []
         for rules_item_data in self.rules:
             rules_item = rules_item_data.to_dict()
@@ -43,9 +30,6 @@ class ClusterSecurityGroup:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "uuid": uuid,
-                "name": name,
-                "description": description,
                 "rules": rules,
             }
         )
@@ -54,31 +38,22 @@ class ClusterSecurityGroup:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        from ..models.rancher_cluster_security_group_rule import RancherClusterSecurityGroupRule
+        from ..models.rancher_cluster_security_group_rule_request import RancherClusterSecurityGroupRuleRequest
 
         d = src_dict.copy()
-        uuid = UUID(d.pop("uuid"))
-
-        name = d.pop("name")
-
-        description = d.pop("description")
-
         rules = []
         _rules = d.pop("rules")
         for rules_item_data in _rules:
-            rules_item = RancherClusterSecurityGroupRule.from_dict(rules_item_data)
+            rules_item = RancherClusterSecurityGroupRuleRequest.from_dict(rules_item_data)
 
             rules.append(rules_item)
 
-        cluster_security_group = cls(
-            uuid=uuid,
-            name=name,
-            description=description,
+        cluster_security_group_request = cls(
             rules=rules,
         )
 
-        cluster_security_group.additional_properties = d
-        return cluster_security_group
+        cluster_security_group_request.additional_properties = d
+        return cluster_security_group_request
 
     @property
     def additional_keys(self) -> list[str]:

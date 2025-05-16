@@ -1,5 +1,4 @@
 from typing import Any, TypeVar, Union, cast
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -10,14 +9,13 @@ from ..models.ethertype_enum import EthertypeEnum
 from ..models.protocol_enum import ProtocolEnum
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="RancherClusterSecurityGroupRule")
+T = TypeVar("T", bound="RancherClusterSecurityGroupRuleRequest")
 
 
 @_attrs_define
-class RancherClusterSecurityGroupRule:
+class RancherClusterSecurityGroupRuleRequest:
     """
     Attributes:
-        uuid (UUID):
         ethertype (Union[Unset, EthertypeEnum]):
         direction (Union[Unset, DirectionEnum]):
         protocol (Union[BlankEnum, ProtocolEnum, Unset]):
@@ -27,7 +25,6 @@ class RancherClusterSecurityGroupRule:
         description (Union[Unset, str]):
     """
 
-    uuid: UUID
     ethertype: Union[Unset, EthertypeEnum] = UNSET
     direction: Union[Unset, DirectionEnum] = UNSET
     protocol: Union[BlankEnum, ProtocolEnum, Unset] = UNSET
@@ -38,8 +35,6 @@ class RancherClusterSecurityGroupRule:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
-
         ethertype: Union[Unset, str] = UNSET
         if not isinstance(self.ethertype, Unset):
             ethertype = self.ethertype.value
@@ -78,11 +73,7 @@ class RancherClusterSecurityGroupRule:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-            }
-        )
+        field_dict.update({})
         if ethertype is not UNSET:
             field_dict["ethertype"] = ethertype
         if direction is not UNSET:
@@ -103,8 +94,6 @@ class RancherClusterSecurityGroupRule:
     @classmethod
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         d = src_dict.copy()
-        uuid = UUID(d.pop("uuid"))
-
         _ethertype = d.pop("ethertype", UNSET)
         ethertype: Union[Unset, EthertypeEnum]
         if isinstance(_ethertype, Unset):
@@ -167,8 +156,7 @@ class RancherClusterSecurityGroupRule:
 
         description = d.pop("description", UNSET)
 
-        rancher_cluster_security_group_rule = cls(
-            uuid=uuid,
+        rancher_cluster_security_group_rule_request = cls(
             ethertype=ethertype,
             direction=direction,
             protocol=protocol,
@@ -178,8 +166,8 @@ class RancherClusterSecurityGroupRule:
             description=description,
         )
 
-        rancher_cluster_security_group_rule.additional_properties = d
-        return rancher_cluster_security_group_rule
+        rancher_cluster_security_group_rule_request.additional_properties = d
+        return rancher_cluster_security_group_rule_request
 
     @property
     def additional_keys(self) -> list[str]:
