@@ -469,7 +469,6 @@ from .migration_create_request import MigrationCreateRequest
 from .migration_details import MigrationDetails
 from .migration_details_request import MigrationDetailsRequest
 from .minimal_consumption_logic_enum import MinimalConsumptionLogicEnum
-from .mount_point_enum import MountPointEnum
 from .move_project_request import MoveProjectRequest
 from .name_uuid import NameUUID
 from .nested_attribute import NestedAttribute
@@ -1652,7 +1651,6 @@ __all__ = (
     "MigrationDetails",
     "MigrationDetailsRequest",
     "MinimalConsumptionLogicEnum",
-    "MountPointEnum",
     "MoveProjectRequest",
     "NameUUID",
     "NestedAttribute",

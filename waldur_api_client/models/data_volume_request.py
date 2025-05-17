@@ -3,7 +3,6 @@ from typing import Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.mount_point_enum import MountPointEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="DataVolumeRequest")
@@ -14,19 +13,21 @@ class DataVolumeRequest:
     """
     Attributes:
         size (int):
+        mount_point (str):
         volume_type (Union[None, Unset, str]):
         filesystem (Union[Unset, str]):
-        mount_point (Union[Unset, MountPointEnum]):
     """
 
     size: int
+    mount_point: str
     volume_type: Union[None, Unset, str] = UNSET
     filesystem: Union[Unset, str] = UNSET
-    mount_point: Union[Unset, MountPointEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         size = self.size
+
+        mount_point = self.mount_point
 
         volume_type: Union[None, Unset, str]
         if isinstance(self.volume_type, Unset):
@@ -36,23 +37,18 @@ class DataVolumeRequest:
 
         filesystem = self.filesystem
 
-        mount_point: Union[Unset, str] = UNSET
-        if not isinstance(self.mount_point, Unset):
-            mount_point = self.mount_point.value
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "size": size,
+                "mount_point": mount_point,
             }
         )
         if volume_type is not UNSET:
             field_dict["volume_type"] = volume_type
         if filesystem is not UNSET:
             field_dict["filesystem"] = filesystem
-        if mount_point is not UNSET:
-            field_dict["mount_point"] = mount_point
 
         return field_dict
 
@@ -60,6 +56,8 @@ class DataVolumeRequest:
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         d = src_dict.copy()
         size = d.pop("size")
+
+        mount_point = d.pop("mount_point")
 
         def _parse_volume_type(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -72,18 +70,11 @@ class DataVolumeRequest:
 
         filesystem = d.pop("filesystem", UNSET)
 
-        _mount_point = d.pop("mount_point", UNSET)
-        mount_point: Union[Unset, MountPointEnum]
-        if isinstance(_mount_point, Unset):
-            mount_point = UNSET
-        else:
-            mount_point = MountPointEnum(_mount_point)
-
         data_volume_request = cls(
             size=size,
+            mount_point=mount_point,
             volume_type=volume_type,
             filesystem=filesystem,
-            mount_point=mount_point,
         )
 
         data_volume_request.additional_properties = d
