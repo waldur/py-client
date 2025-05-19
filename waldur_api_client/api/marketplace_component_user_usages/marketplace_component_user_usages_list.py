@@ -9,16 +9,20 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.component_user_usage import ComponentUserUsage
 from ...models.marketplace_component_user_usages_list_field_item import MarketplaceComponentUserUsagesListFieldItem
+from ...models.marketplace_component_user_usages_list_o_item import MarketplaceComponentUserUsagesListOItem
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
+    billing_period_month: Union[Unset, float] = UNSET,
+    billing_period_year: Union[Unset, float] = UNSET,
     component_usage_billing_period: Union[Unset, datetime.date] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -26,8 +30,13 @@ def _get_kwargs(
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["billing_period_month"] = billing_period_month
+
+    params["billing_period_year"] = billing_period_year
 
     json_component_usage_billing_period: Union[Unset, str] = UNSET
     if not isinstance(component_usage_billing_period, Unset):
@@ -58,6 +67,15 @@ def _get_kwargs(
 
     params["field"] = json_field
 
+    json_o: Union[Unset, list[str]] = UNSET
+    if not isinstance(o, Unset):
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
+
+    params["o"] = json_o
+
     json_offering_uuid: Union[Unset, str] = UNSET
     if not isinstance(offering_uuid, Unset):
         json_offering_uuid = str(offering_uuid)
@@ -80,6 +98,8 @@ def _get_kwargs(
     params["resource_uuid"] = json_resource_uuid
 
     params["type"] = type_
+
+    params["username"] = username
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -124,11 +144,14 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    billing_period_month: Union[Unset, float] = UNSET,
+    billing_period_year: Union[Unset, float] = UNSET,
     component_usage_billing_period: Union[Unset, datetime.date] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -136,14 +159,18 @@ def sync_detailed(
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUserUsage"]]:
     """
     Args:
+        billing_period_month (Union[Unset, float]):
+        billing_period_year (Union[Unset, float]):
         component_usage_billing_period (Union[Unset, datetime.date]):
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
         field (Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]]):
+        o (Union[Unset, list[MarketplaceComponentUserUsagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -151,6 +178,7 @@ def sync_detailed(
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         type_ (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -161,11 +189,14 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        billing_period_month=billing_period_month,
+        billing_period_year=billing_period_year,
         component_usage_billing_period=component_usage_billing_period,
         customer_uuid=customer_uuid,
         date_after=date_after,
         date_before=date_before,
         field=field,
+        o=o,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
@@ -173,6 +204,7 @@ def sync_detailed(
         resource=resource,
         resource_uuid=resource_uuid,
         type_=type_,
+        username=username,
     )
 
     response = client.get_httpx_client().request(
@@ -185,11 +217,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    billing_period_month: Union[Unset, float] = UNSET,
+    billing_period_year: Union[Unset, float] = UNSET,
     component_usage_billing_period: Union[Unset, datetime.date] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -197,14 +232,18 @@ def sync(
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Optional[list["ComponentUserUsage"]]:
     """
     Args:
+        billing_period_month (Union[Unset, float]):
+        billing_period_year (Union[Unset, float]):
         component_usage_billing_period (Union[Unset, datetime.date]):
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
         field (Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]]):
+        o (Union[Unset, list[MarketplaceComponentUserUsagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -212,6 +251,7 @@ def sync(
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         type_ (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -223,11 +263,14 @@ def sync(
 
     return sync_detailed(
         client=client,
+        billing_period_month=billing_period_month,
+        billing_period_year=billing_period_year,
         component_usage_billing_period=component_usage_billing_period,
         customer_uuid=customer_uuid,
         date_after=date_after,
         date_before=date_before,
         field=field,
+        o=o,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
@@ -235,17 +278,21 @@ def sync(
         resource=resource,
         resource_uuid=resource_uuid,
         type_=type_,
+        username=username,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    billing_period_month: Union[Unset, float] = UNSET,
+    billing_period_year: Union[Unset, float] = UNSET,
     component_usage_billing_period: Union[Unset, datetime.date] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -253,14 +300,18 @@ async def asyncio_detailed(
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUserUsage"]]:
     """
     Args:
+        billing_period_month (Union[Unset, float]):
+        billing_period_year (Union[Unset, float]):
         component_usage_billing_period (Union[Unset, datetime.date]):
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
         field (Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]]):
+        o (Union[Unset, list[MarketplaceComponentUserUsagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -268,6 +319,7 @@ async def asyncio_detailed(
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         type_ (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -278,11 +330,14 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        billing_period_month=billing_period_month,
+        billing_period_year=billing_period_year,
         component_usage_billing_period=component_usage_billing_period,
         customer_uuid=customer_uuid,
         date_after=date_after,
         date_before=date_before,
         field=field,
+        o=o,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
@@ -290,6 +345,7 @@ async def asyncio_detailed(
         resource=resource,
         resource_uuid=resource_uuid,
         type_=type_,
+        username=username,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -300,11 +356,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    billing_period_month: Union[Unset, float] = UNSET,
+    billing_period_year: Union[Unset, float] = UNSET,
     component_usage_billing_period: Union[Unset, datetime.date] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -312,14 +371,18 @@ async def asyncio(
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Optional[list["ComponentUserUsage"]]:
     """
     Args:
+        billing_period_month (Union[Unset, float]):
+        billing_period_year (Union[Unset, float]):
         component_usage_billing_period (Union[Unset, datetime.date]):
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
         field (Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]]):
+        o (Union[Unset, list[MarketplaceComponentUserUsagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -327,6 +390,7 @@ async def asyncio(
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         type_ (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -339,11 +403,14 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            billing_period_month=billing_period_month,
+            billing_period_year=billing_period_year,
             component_usage_billing_period=component_usage_billing_period,
             customer_uuid=customer_uuid,
             date_after=date_after,
             date_before=date_before,
             field=field,
+            o=o,
             offering_uuid=offering_uuid,
             page=page,
             page_size=page_size,
@@ -351,5 +418,6 @@ async def asyncio(
             resource=resource,
             resource_uuid=resource_uuid,
             type_=type_,
+            username=username,
         )
     ).parsed

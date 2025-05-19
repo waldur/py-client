@@ -362,6 +362,7 @@ from .marketplace_category_request import MarketplaceCategoryRequest
 from .marketplace_component_usages_list_field_item import MarketplaceComponentUsagesListFieldItem
 from .marketplace_component_usages_retrieve_field_item import MarketplaceComponentUsagesRetrieveFieldItem
 from .marketplace_component_user_usages_list_field_item import MarketplaceComponentUserUsagesListFieldItem
+from .marketplace_component_user_usages_list_o_item import MarketplaceComponentUserUsagesListOItem
 from .marketplace_component_user_usages_retrieve_field_item import MarketplaceComponentUserUsagesRetrieveFieldItem
 from .marketplace_customer_stats import MarketplaceCustomerStats
 from .marketplace_global_categories_retrieve_response_200 import MarketplaceGlobalCategoriesRetrieveResponse200
@@ -1564,6 +1565,7 @@ __all__ = (
     "MarketplaceComponentUsagesListFieldItem",
     "MarketplaceComponentUsagesRetrieveFieldItem",
     "MarketplaceComponentUserUsagesListFieldItem",
+    "MarketplaceComponentUserUsagesListOItem",
     "MarketplaceComponentUserUsagesRetrieveFieldItem",
     "MarketplaceCustomerStats",
     "MarketplaceGlobalCategoriesRetrieveResponse200",
