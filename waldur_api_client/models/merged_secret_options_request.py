@@ -52,6 +52,10 @@ class MergedSecretOptionsRequest:
         argocd_k8s_namespace (Union[Unset, str]): Namespace where ArgoCD is deployed
         argocd_k8s_kubeconfig (Union[Unset, str]): Kubeconfig with access to namespace where ArgoCD is deployed
         base_image_name (Union[Unset, str]): Base image name
+        private_registry_url (Union[Unset, str]): URL of a private registry for a cluster
+        private_registry_user (Union[Unset, str]): Username for accessing a private registry
+        private_registry_password (Union[Unset, str]): Password for accessing a private registry
+        k8s_version (Union[Unset, str]): Kubernetes version
         node_disk_driver (Union[Unset, NodeDiskDriverEnum]):
     """
 
@@ -89,6 +93,10 @@ class MergedSecretOptionsRequest:
     argocd_k8s_namespace: Union[Unset, str] = UNSET
     argocd_k8s_kubeconfig: Union[Unset, str] = UNSET
     base_image_name: Union[Unset, str] = UNSET
+    private_registry_url: Union[Unset, str] = UNSET
+    private_registry_user: Union[Unset, str] = UNSET
+    private_registry_password: Union[Unset, str] = UNSET
+    k8s_version: Union[Unset, str] = UNSET
     node_disk_driver: Union[Unset, NodeDiskDriverEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -168,6 +176,14 @@ class MergedSecretOptionsRequest:
 
         base_image_name = self.base_image_name
 
+        private_registry_url = self.private_registry_url
+
+        private_registry_user = self.private_registry_user
+
+        private_registry_password = self.private_registry_password
+
+        k8s_version = self.k8s_version
+
         node_disk_driver: Union[Unset, str] = UNSET
         if not isinstance(self.node_disk_driver, Unset):
             node_disk_driver = self.node_disk_driver.value
@@ -243,6 +259,14 @@ class MergedSecretOptionsRequest:
             field_dict["argocd_k8s_kubeconfig"] = argocd_k8s_kubeconfig
         if base_image_name is not UNSET:
             field_dict["base_image_name"] = base_image_name
+        if private_registry_url is not UNSET:
+            field_dict["private_registry_url"] = private_registry_url
+        if private_registry_user is not UNSET:
+            field_dict["private_registry_user"] = private_registry_user
+        if private_registry_password is not UNSET:
+            field_dict["private_registry_password"] = private_registry_password
+        if k8s_version is not UNSET:
+            field_dict["k8s_version"] = k8s_version
         if node_disk_driver is not UNSET:
             field_dict["node_disk_driver"] = node_disk_driver
 
@@ -326,6 +350,14 @@ class MergedSecretOptionsRequest:
 
         base_image_name = d.pop("base_image_name", UNSET)
 
+        private_registry_url = d.pop("private_registry_url", UNSET)
+
+        private_registry_user = d.pop("private_registry_user", UNSET)
+
+        private_registry_password = d.pop("private_registry_password", UNSET)
+
+        k8s_version = d.pop("k8s_version", UNSET)
+
         _node_disk_driver = d.pop("node_disk_driver", UNSET)
         node_disk_driver: Union[Unset, NodeDiskDriverEnum]
         if isinstance(_node_disk_driver, Unset):
@@ -368,6 +400,10 @@ class MergedSecretOptionsRequest:
             argocd_k8s_namespace=argocd_k8s_namespace,
             argocd_k8s_kubeconfig=argocd_k8s_kubeconfig,
             base_image_name=base_image_name,
+            private_registry_url=private_registry_url,
+            private_registry_user=private_registry_user,
+            private_registry_password=private_registry_password,
+            k8s_version=k8s_version,
             node_disk_driver=node_disk_driver,
         )
 
