@@ -26,6 +26,7 @@ class OpenstackRoutersListFieldItem(str, Enum):
     MODIFIED = "modified"
     NAME = "name"
     OFFERING_EXTERNAL_IPS = "offering_external_ips"
+    PORTS = "ports"
     PROJECT = "project"
     PROJECT_NAME = "project_name"
     PROJECT_UUID = "project_uuid"

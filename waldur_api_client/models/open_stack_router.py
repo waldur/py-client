@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.open_stack_fixed_ip import OpenStackFixedIp
+    from ..models.open_stack_nested_port import OpenStackNestedPort
     from ..models.open_stack_router_marketplace_offering_plugin_options_type_0 import (
         OpenStackRouterMarketplaceOfferingPluginOptionsType0,
     )
@@ -53,6 +54,7 @@ class OpenStackRouter:
         tenant_uuid (Union[Unset, UUID]):
         routes (Union[Unset, list['OpenStackStaticRoute']]):
         fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
+        ports (Union[Unset, list['OpenStackNestedPort']]):
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_plugin_options (Union['OpenStackRouterMarketplaceOfferingPluginOptionsType0', None,
@@ -96,6 +98,7 @@ class OpenStackRouter:
     tenant_uuid: Union[Unset, UUID] = UNSET
     routes: Union[Unset, list["OpenStackStaticRoute"]] = UNSET
     fixed_ips: Union[Unset, list["OpenStackFixedIp"]] = UNSET
+    ports: Union[Unset, list["OpenStackNestedPort"]] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_plugin_options: Union["OpenStackRouterMarketplaceOfferingPluginOptionsType0", None, Unset] = (
@@ -201,6 +204,13 @@ class OpenStackRouter:
             for fixed_ips_item_data in self.fixed_ips:
                 fixed_ips_item = fixed_ips_item_data.to_dict()
                 fixed_ips.append(fixed_ips_item)
+
+        ports: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.ports, Unset):
+            ports = []
+            for ports_item_data in self.ports:
+                ports_item = ports_item_data.to_dict()
+                ports.append(ports_item)
 
         marketplace_offering_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_offering_uuid, Unset):
@@ -330,6 +340,8 @@ class OpenStackRouter:
             field_dict["routes"] = routes
         if fixed_ips is not UNSET:
             field_dict["fixed_ips"] = fixed_ips
+        if ports is not UNSET:
+            field_dict["ports"] = ports
         if marketplace_offering_uuid is not UNSET:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
@@ -358,6 +370,7 @@ class OpenStackRouter:
     @classmethod
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.open_stack_fixed_ip import OpenStackFixedIp
+        from ..models.open_stack_nested_port import OpenStackNestedPort
         from ..models.open_stack_router_marketplace_offering_plugin_options_type_0 import (
             OpenStackRouterMarketplaceOfferingPluginOptionsType0,
         )
@@ -473,6 +486,13 @@ class OpenStackRouter:
             fixed_ips_item = OpenStackFixedIp.from_dict(fixed_ips_item_data)
 
             fixed_ips.append(fixed_ips_item)
+
+        ports = []
+        _ports = d.pop("ports", UNSET)
+        for ports_item_data in _ports or []:
+            ports_item = OpenStackNestedPort.from_dict(ports_item_data)
+
+            ports.append(ports_item)
 
         def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -618,6 +638,7 @@ class OpenStackRouter:
             tenant_uuid=tenant_uuid,
             routes=routes,
             fixed_ips=fixed_ips,
+            ports=ports,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
             marketplace_offering_plugin_options=marketplace_offering_plugin_options,

@@ -18,6 +18,7 @@ T = TypeVar("T", bound="OpenStackNestedPort")
 class OpenStackNestedPort:
     """
     Attributes:
+        url (Union[Unset, str]):
         fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
         mac_address (Union[Unset, str]):
         subnet (Union[None, Unset, str]):
@@ -30,6 +31,7 @@ class OpenStackNestedPort:
         device_owner (Union[None, Unset, str]):
     """
 
+    url: Union[Unset, str] = UNSET
     fixed_ips: Union[Unset, list["OpenStackFixedIp"]] = UNSET
     mac_address: Union[Unset, str] = UNSET
     subnet: Union[None, Unset, str] = UNSET
@@ -43,6 +45,8 @@ class OpenStackNestedPort:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        url = self.url
+
         fixed_ips: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.fixed_ips, Unset):
             fixed_ips = []
@@ -106,6 +110,8 @@ class OpenStackNestedPort:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
         if fixed_ips is not UNSET:
             field_dict["fixed_ips"] = fixed_ips
         if mac_address is not UNSET:
@@ -135,6 +141,8 @@ class OpenStackNestedPort:
         from ..models.open_stack_fixed_ip import OpenStackFixedIp
 
         d = src_dict.copy()
+        url = d.pop("url", UNSET)
+
         fixed_ips = []
         _fixed_ips = d.pop("fixed_ips", UNSET)
         for fixed_ips_item_data in _fixed_ips or []:
@@ -223,6 +231,7 @@ class OpenStackNestedPort:
         device_owner = _parse_device_owner(d.pop("device_owner", UNSET))
 
         open_stack_nested_port = cls(
+            url=url,
             fixed_ips=fixed_ips,
             mac_address=mac_address,
             subnet=subnet,
