@@ -360,6 +360,7 @@ from .marketplace_category_groups_list_field_item import MarketplaceCategoryGrou
 from .marketplace_category_groups_retrieve_field_item import MarketplaceCategoryGroupsRetrieveFieldItem
 from .marketplace_category_request import MarketplaceCategoryRequest
 from .marketplace_component_usages_list_field_item import MarketplaceComponentUsagesListFieldItem
+from .marketplace_component_usages_list_o_item import MarketplaceComponentUsagesListOItem
 from .marketplace_component_usages_retrieve_field_item import MarketplaceComponentUsagesRetrieveFieldItem
 from .marketplace_component_user_usages_list_field_item import MarketplaceComponentUserUsagesListFieldItem
 from .marketplace_component_user_usages_list_o_item import MarketplaceComponentUserUsagesListOItem
@@ -397,8 +398,14 @@ from .marketplace_provider_offerings_customers_list_o_item import MarketplacePro
 from .marketplace_provider_offerings_customers_list_state_item import MarketplaceProviderOfferingsCustomersListStateItem
 from .marketplace_provider_offerings_groups_list_o_item import MarketplaceProviderOfferingsGroupsListOItem
 from .marketplace_provider_offerings_groups_list_state_item import MarketplaceProviderOfferingsGroupsListStateItem
+from .marketplace_provider_offerings_list_customer_service_accounts_retrieve_field_item import (
+    MarketplaceProviderOfferingsListCustomerServiceAccountsRetrieveFieldItem,
+)
 from .marketplace_provider_offerings_list_field_item import MarketplaceProviderOfferingsListFieldItem
 from .marketplace_provider_offerings_list_o_item import MarketplaceProviderOfferingsListOItem
+from .marketplace_provider_offerings_list_project_service_accounts_retrieve_field_item import (
+    MarketplaceProviderOfferingsListProjectServiceAccountsRetrieveFieldItem,
+)
 from .marketplace_provider_offerings_list_state_item import MarketplaceProviderOfferingsListStateItem
 from .marketplace_provider_offerings_list_users_list_field_item import (
     MarketplaceProviderOfferingsListUsersListFieldItem,
@@ -1563,6 +1570,7 @@ __all__ = (
     "MarketplaceCategoryGroupsRetrieveFieldItem",
     "MarketplaceCategoryRequest",
     "MarketplaceComponentUsagesListFieldItem",
+    "MarketplaceComponentUsagesListOItem",
     "MarketplaceComponentUsagesRetrieveFieldItem",
     "MarketplaceComponentUserUsagesListFieldItem",
     "MarketplaceComponentUserUsagesListOItem",
@@ -1596,8 +1604,10 @@ __all__ = (
     "MarketplaceProviderOfferingsCustomersListStateItem",
     "MarketplaceProviderOfferingsGroupsListOItem",
     "MarketplaceProviderOfferingsGroupsListStateItem",
+    "MarketplaceProviderOfferingsListCustomerServiceAccountsRetrieveFieldItem",
     "MarketplaceProviderOfferingsListFieldItem",
     "MarketplaceProviderOfferingsListOItem",
+    "MarketplaceProviderOfferingsListProjectServiceAccountsRetrieveFieldItem",
     "MarketplaceProviderOfferingsListStateItem",
     "MarketplaceProviderOfferingsListUsersListFieldItem",
     "MarketplaceProviderOfferingsListUsersListOItem",

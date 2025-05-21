@@ -18,6 +18,7 @@ def _get_kwargs(
     backend_id: Union[Unset, str] = UNSET,
     device_id: Union[Unset, str] = UNSET,
     device_owner: Union[Unset, str] = UNSET,
+    exclude_subnet_uuids: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
     has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
@@ -40,6 +41,8 @@ def _get_kwargs(
     params["device_id"] = device_id
 
     params["device_owner"] = device_owner
+
+    params["exclude_subnet_uuids"] = exclude_subnet_uuids
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -129,6 +132,7 @@ def sync_detailed(
     backend_id: Union[Unset, str] = UNSET,
     device_id: Union[Unset, str] = UNSET,
     device_owner: Union[Unset, str] = UNSET,
+    exclude_subnet_uuids: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
     has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
@@ -148,6 +152,7 @@ def sync_detailed(
         backend_id (Union[Unset, str]):
         device_id (Union[Unset, str]):
         device_owner (Union[Unset, str]):
+        exclude_subnet_uuids (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
         has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
@@ -174,6 +179,7 @@ def sync_detailed(
         backend_id=backend_id,
         device_id=device_id,
         device_owner=device_owner,
+        exclude_subnet_uuids=exclude_subnet_uuids,
         field=field,
         has_device_owner=has_device_owner,
         mac_address=mac_address,
@@ -202,6 +208,7 @@ def sync(
     backend_id: Union[Unset, str] = UNSET,
     device_id: Union[Unset, str] = UNSET,
     device_owner: Union[Unset, str] = UNSET,
+    exclude_subnet_uuids: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
     has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
@@ -221,6 +228,7 @@ def sync(
         backend_id (Union[Unset, str]):
         device_id (Union[Unset, str]):
         device_owner (Union[Unset, str]):
+        exclude_subnet_uuids (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
         has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
@@ -248,6 +256,7 @@ def sync(
         backend_id=backend_id,
         device_id=device_id,
         device_owner=device_owner,
+        exclude_subnet_uuids=exclude_subnet_uuids,
         field=field,
         has_device_owner=has_device_owner,
         mac_address=mac_address,
@@ -270,6 +279,7 @@ async def asyncio_detailed(
     backend_id: Union[Unset, str] = UNSET,
     device_id: Union[Unset, str] = UNSET,
     device_owner: Union[Unset, str] = UNSET,
+    exclude_subnet_uuids: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
     has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
@@ -289,6 +299,7 @@ async def asyncio_detailed(
         backend_id (Union[Unset, str]):
         device_id (Union[Unset, str]):
         device_owner (Union[Unset, str]):
+        exclude_subnet_uuids (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
         has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
@@ -315,6 +326,7 @@ async def asyncio_detailed(
         backend_id=backend_id,
         device_id=device_id,
         device_owner=device_owner,
+        exclude_subnet_uuids=exclude_subnet_uuids,
         field=field,
         has_device_owner=has_device_owner,
         mac_address=mac_address,
@@ -341,6 +353,7 @@ async def asyncio(
     backend_id: Union[Unset, str] = UNSET,
     device_id: Union[Unset, str] = UNSET,
     device_owner: Union[Unset, str] = UNSET,
+    exclude_subnet_uuids: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
     has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
@@ -360,6 +373,7 @@ async def asyncio(
         backend_id (Union[Unset, str]):
         device_id (Union[Unset, str]):
         device_owner (Union[Unset, str]):
+        exclude_subnet_uuids (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
         has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
@@ -388,6 +402,7 @@ async def asyncio(
             backend_id=backend_id,
             device_id=device_id,
             device_owner=device_owner,
+            exclude_subnet_uuids=exclude_subnet_uuids,
             field=field,
             has_device_owner=has_device_owner,
             mac_address=mac_address,

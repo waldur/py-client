@@ -15,6 +15,7 @@ class ConstanceSettings:
         site_name (Union[Unset, str]):
         site_description (Union[Unset, str]):
         homeport_url (Union[Unset, str]):
+        rancher_username_input_label (Union[Unset, str]):
         site_address (Union[Unset, str]):
         site_email (Union[Unset, str]):
         site_phone (Union[Unset, str]):
@@ -136,6 +137,7 @@ class ConstanceSettings:
     site_name: Union[Unset, str] = UNSET
     site_description: Union[Unset, str] = UNSET
     homeport_url: Union[Unset, str] = UNSET
+    rancher_username_input_label: Union[Unset, str] = UNSET
     site_address: Union[Unset, str] = UNSET
     site_email: Union[Unset, str] = UNSET
     site_phone: Union[Unset, str] = UNSET
@@ -260,6 +262,8 @@ class ConstanceSettings:
         site_description = self.site_description
 
         homeport_url = self.homeport_url
+
+        rancher_username_input_label = self.rancher_username_input_label
 
         site_address = self.site_address
 
@@ -546,6 +550,8 @@ class ConstanceSettings:
             field_dict["SITE_DESCRIPTION"] = site_description
         if homeport_url is not UNSET:
             field_dict["HOMEPORT_URL"] = homeport_url
+        if rancher_username_input_label is not UNSET:
+            field_dict["RANCHER_USERNAME_INPUT_LABEL"] = rancher_username_input_label
         if site_address is not UNSET:
             field_dict["SITE_ADDRESS"] = site_address
         if site_email is not UNSET:
@@ -793,6 +799,8 @@ class ConstanceSettings:
         site_description = d.pop("SITE_DESCRIPTION", UNSET)
 
         homeport_url = d.pop("HOMEPORT_URL", UNSET)
+
+        rancher_username_input_label = d.pop("RANCHER_USERNAME_INPUT_LABEL", UNSET)
 
         site_address = d.pop("SITE_ADDRESS", UNSET)
 
@@ -1104,6 +1112,7 @@ class ConstanceSettings:
             site_name=site_name,
             site_description=site_description,
             homeport_url=homeport_url,
+            rancher_username_input_label=rancher_username_input_label,
             site_address=site_address,
             site_email=site_email,
             site_phone=site_phone,
