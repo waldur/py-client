@@ -187,6 +187,8 @@ from .create_customer_credit import CreateCustomerCredit
 from .create_customer_credit_request import CreateCustomerCreditRequest
 from .create_feedback import CreateFeedback
 from .create_feedback_request import CreateFeedbackRequest
+from .create_router import CreateRouter
+from .create_router_request import CreateRouterRequest
 from .customer import Customer
 from .customer_checklist_stat import CustomerChecklistStat
 from .customer_credit import CustomerCredit
@@ -1403,6 +1405,8 @@ __all__ = (
     "CreateCustomerCreditRequest",
     "CreateFeedback",
     "CreateFeedbackRequest",
+    "CreateRouter",
+    "CreateRouterRequest",
     "Customer",
     "CustomerChecklistStat",
     "CustomerCredit",
