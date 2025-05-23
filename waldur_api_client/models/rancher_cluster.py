@@ -14,6 +14,7 @@ if TYPE_CHECKING:
         RancherClusterMarketplaceOfferingPluginOptionsType0,
     )
     from ..models.rancher_nested_node import RancherNestedNode
+    from ..models.rancher_nested_public_ip import RancherNestedPublicIP
 
 
 T = TypeVar("T", bound="RancherCluster")
@@ -55,6 +56,7 @@ class RancherCluster:
         install_longhorn (Union[Unset, bool]): Longhorn is a distributed block storage deployed on top of Kubernetes
             cluster Default: False.
         management_security_group (Union[Unset, str]):
+        public_ips (Union[Unset, list['RancherNestedPublicIP']]):
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_plugin_options (Union['RancherClusterMarketplaceOfferingPluginOptionsType0', None, Unset]):
@@ -98,6 +100,7 @@ class RancherCluster:
     runtime_state: Union[Unset, str] = UNSET
     install_longhorn: Union[Unset, bool] = False
     management_security_group: Union[Unset, str] = UNSET
+    public_ips: Union[Unset, list["RancherNestedPublicIP"]] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_plugin_options: Union["RancherClusterMarketplaceOfferingPluginOptionsType0", None, Unset] = (
@@ -205,6 +208,13 @@ class RancherCluster:
         install_longhorn = self.install_longhorn
 
         management_security_group = self.management_security_group
+
+        public_ips: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.public_ips, Unset):
+            public_ips = []
+            for public_ips_item_data in self.public_ips:
+                public_ips_item = public_ips_item_data.to_dict()
+                public_ips.append(public_ips_item)
 
         marketplace_offering_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_offering_uuid, Unset):
@@ -329,6 +339,8 @@ class RancherCluster:
             field_dict["install_longhorn"] = install_longhorn
         if management_security_group is not UNSET:
             field_dict["management_security_group"] = management_security_group
+        if public_ips is not UNSET:
+            field_dict["public_ips"] = public_ips
         if marketplace_offering_uuid is not UNSET:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
@@ -358,6 +370,7 @@ class RancherCluster:
             RancherClusterMarketplaceOfferingPluginOptionsType0,
         )
         from ..models.rancher_nested_node import RancherNestedNode
+        from ..models.rancher_nested_public_ip import RancherNestedPublicIP
 
         d = src_dict.copy()
         url = d.pop("url", UNSET)
@@ -475,6 +488,13 @@ class RancherCluster:
         install_longhorn = d.pop("install_longhorn", UNSET)
 
         management_security_group = d.pop("management_security_group", UNSET)
+
+        public_ips = []
+        _public_ips = d.pop("public_ips", UNSET)
+        for public_ips_item_data in _public_ips or []:
+            public_ips_item = RancherNestedPublicIP.from_dict(public_ips_item_data)
+
+            public_ips.append(public_ips_item)
 
         def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -605,6 +625,7 @@ class RancherCluster:
             runtime_state=runtime_state,
             install_longhorn=install_longhorn,
             management_security_group=management_security_group,
+            public_ips=public_ips,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
             marketplace_offering_plugin_options=marketplace_offering_plugin_options,

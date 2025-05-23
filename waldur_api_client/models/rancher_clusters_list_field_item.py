@@ -30,6 +30,7 @@ class RancherClustersListFieldItem(str, Enum):
     PROJECT = "project"
     PROJECT_NAME = "project_name"
     PROJECT_UUID = "project_uuid"
+    PUBLIC_IPS = "public_ips"
     RESOURCE_TYPE = "resource_type"
     RUNTIME_STATE = "runtime_state"
     SECURITY_GROUPS = "security_groups"

@@ -984,6 +984,8 @@ from .rancher_namespaces_list_o_item import RancherNamespacesListOItem
 from .rancher_nested_namespace import RancherNestedNamespace
 from .rancher_nested_node import RancherNestedNode
 from .rancher_nested_node_request import RancherNestedNodeRequest
+from .rancher_nested_public_ip import RancherNestedPublicIP
+from .rancher_nested_public_ip_request import RancherNestedPublicIPRequest
 from .rancher_nested_security_group import RancherNestedSecurityGroup
 from .rancher_nested_workload import RancherNestedWorkload
 from .rancher_nested_workload_request import RancherNestedWorkloadRequest
@@ -2140,6 +2142,8 @@ __all__ = (
     "RancherNestedNamespace",
     "RancherNestedNode",
     "RancherNestedNodeRequest",
+    "RancherNestedPublicIP",
+    "RancherNestedPublicIPRequest",
     "RancherNestedSecurityGroup",
     "RancherNestedWorkload",
     "RancherNestedWorkloadRequest",
