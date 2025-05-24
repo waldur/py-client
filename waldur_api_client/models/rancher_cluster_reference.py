@@ -1,4 +1,4 @@
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -15,12 +15,12 @@ class RancherClusterReference:
     Attributes:
         uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
-        marketplace_uuid (Union[Unset, str]):
+        marketplace_uuid (Union[None, Unset, str]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
     name: Union[Unset, str] = UNSET
-    marketplace_uuid: Union[Unset, str] = UNSET
+    marketplace_uuid: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -30,7 +30,11 @@ class RancherClusterReference:
 
         name = self.name
 
-        marketplace_uuid = self.marketplace_uuid
+        marketplace_uuid: Union[None, Unset, str]
+        if isinstance(self.marketplace_uuid, Unset):
+            marketplace_uuid = UNSET
+        else:
+            marketplace_uuid = self.marketplace_uuid
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -56,7 +60,14 @@ class RancherClusterReference:
 
         name = d.pop("name", UNSET)
 
-        marketplace_uuid = d.pop("marketplace_uuid", UNSET)
+        def _parse_marketplace_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        marketplace_uuid = _parse_marketplace_uuid(d.pop("marketplace_uuid", UNSET))
 
         rancher_cluster_reference = cls(
             uuid=uuid,

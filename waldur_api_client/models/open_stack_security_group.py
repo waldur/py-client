@@ -56,7 +56,7 @@ class OpenStackSecurityGroup:
         marketplace_offering_plugin_options (Union['OpenStackSecurityGroupMarketplaceOfferingPluginOptionsType0', None,
             Unset]):
         marketplace_category_uuid (Union[None, Unset, str]):
-        marketplace_category_name (Union[Unset, str]):
+        marketplace_category_name (Union[None, Unset, str]):
         marketplace_resource_uuid (Union[None, Unset, str]):
         marketplace_plan_uuid (Union[None, Unset, str]):
         marketplace_resource_state (Union[None, Unset, str]):
@@ -98,7 +98,7 @@ class OpenStackSecurityGroup:
         "OpenStackSecurityGroupMarketplaceOfferingPluginOptionsType0", None, Unset
     ] = UNSET
     marketplace_category_uuid: Union[None, Unset, str] = UNSET
-    marketplace_category_name: Union[Unset, str] = UNSET
+    marketplace_category_name: Union[None, Unset, str] = UNSET
     marketplace_resource_uuid: Union[None, Unset, str] = UNSET
     marketplace_plan_uuid: Union[None, Unset, str] = UNSET
     marketplace_resource_state: Union[None, Unset, str] = UNSET
@@ -218,7 +218,11 @@ class OpenStackSecurityGroup:
         else:
             marketplace_category_uuid = self.marketplace_category_uuid
 
-        marketplace_category_name = self.marketplace_category_name
+        marketplace_category_name: Union[None, Unset, str]
+        if isinstance(self.marketplace_category_name, Unset):
+            marketplace_category_name = UNSET
+        else:
+            marketplace_category_name = self.marketplace_category_name
 
         marketplace_resource_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_resource_uuid, Unset):
@@ -493,7 +497,14 @@ class OpenStackSecurityGroup:
 
         marketplace_category_uuid = _parse_marketplace_category_uuid(d.pop("marketplace_category_uuid", UNSET))
 
-        marketplace_category_name = d.pop("marketplace_category_name", UNSET)
+        def _parse_marketplace_category_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        marketplace_category_name = _parse_marketplace_category_name(d.pop("marketplace_category_name", UNSET))
 
         def _parse_marketplace_resource_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:

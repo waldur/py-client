@@ -1,4 +1,4 @@
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,7 +15,7 @@ class CustomerDetails:
         name (Union[Unset, str]):
         address (Union[Unset, str]):
         country (Union[Unset, str]):
-        country_name (Union[Unset, str]):
+        country_name (Union[None, Unset, str]):
         email (Union[Unset, str]):
         postal (Union[Unset, str]):
         phone_number (Union[Unset, str]):
@@ -27,7 +27,7 @@ class CustomerDetails:
     name: Union[Unset, str] = UNSET
     address: Union[Unset, str] = UNSET
     country: Union[Unset, str] = UNSET
-    country_name: Union[Unset, str] = UNSET
+    country_name: Union[None, Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
     postal: Union[Unset, str] = UNSET
     phone_number: Union[Unset, str] = UNSET
@@ -43,7 +43,11 @@ class CustomerDetails:
 
         country = self.country
 
-        country_name = self.country_name
+        country_name: Union[None, Unset, str]
+        if isinstance(self.country_name, Unset):
+            country_name = UNSET
+        else:
+            country_name = self.country_name
 
         email = self.email
 
@@ -92,7 +96,14 @@ class CustomerDetails:
 
         country = d.pop("country", UNSET)
 
-        country_name = d.pop("country_name", UNSET)
+        def _parse_country_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        country_name = _parse_country_name(d.pop("country_name", UNSET))
 
         email = d.pop("email", UNSET)
 

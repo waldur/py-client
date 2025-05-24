@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Optional, Union
+from uuid import UUID
 
 import httpx
 
@@ -11,12 +12,18 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    cluster_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_cluster_uuid: Union[Unset, str] = UNSET
+    if not isinstance(cluster_uuid, Unset):
+        json_cluster_uuid = str(cluster_uuid)
+    params["cluster_uuid"] = json_cluster_uuid
 
     params["name"] = name
 
@@ -69,6 +76,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    cluster_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -76,6 +84,7 @@ def sync_detailed(
 ) -> Response[list["ClusterSecurityGroup"]]:
     """
     Args:
+        cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -90,6 +99,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        cluster_uuid=cluster_uuid,
         name=name,
         name_exact=name_exact,
         page=page,
@@ -106,6 +116,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    cluster_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -113,6 +124,7 @@ def sync(
 ) -> Optional[list["ClusterSecurityGroup"]]:
     """
     Args:
+        cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -128,6 +140,7 @@ def sync(
 
     return sync_detailed(
         client=client,
+        cluster_uuid=cluster_uuid,
         name=name,
         name_exact=name_exact,
         page=page,
@@ -138,6 +151,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    cluster_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -145,6 +159,7 @@ async def asyncio_detailed(
 ) -> Response[list["ClusterSecurityGroup"]]:
     """
     Args:
+        cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -159,6 +174,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        cluster_uuid=cluster_uuid,
         name=name,
         name_exact=name_exact,
         page=page,
@@ -173,6 +189,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    cluster_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -180,6 +197,7 @@ async def asyncio(
 ) -> Optional[list["ClusterSecurityGroup"]]:
     """
     Args:
+        cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -196,6 +214,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            cluster_uuid=cluster_uuid,
             name=name,
             name_exact=name_exact,
             page=page,
