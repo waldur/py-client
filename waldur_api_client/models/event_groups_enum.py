@@ -8,6 +8,7 @@ class EventGroupsEnum(str, Enum):
     CREDITS = "credits"
     CUSTOMERS = "customers"
     INVOICES = "invoices"
+    OFFERING_ACCOUNTING = "offering_accounting"
     PERMISSIONS = "permissions"
     PROJECTS = "projects"
     PROPOSAL = "proposal"
