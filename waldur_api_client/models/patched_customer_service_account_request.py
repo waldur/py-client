@@ -17,6 +17,7 @@ class PatchedCustomerServiceAccountRequest:
         description (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
         email (Union[Unset, str]):
+        preferred_identifier (Union[Unset, str]):
         customer (Union[Unset, UUID]):
     """
 
@@ -24,6 +25,7 @@ class PatchedCustomerServiceAccountRequest:
     description: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
+    preferred_identifier: Union[Unset, str] = UNSET
     customer: Union[Unset, UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -35,6 +37,8 @@ class PatchedCustomerServiceAccountRequest:
         error_traceback = self.error_traceback
 
         email = self.email
+
+        preferred_identifier = self.preferred_identifier
 
         customer: Union[Unset, str] = UNSET
         if not isinstance(self.customer, Unset):
@@ -51,6 +55,8 @@ class PatchedCustomerServiceAccountRequest:
             field_dict["error_traceback"] = error_traceback
         if email is not UNSET:
             field_dict["email"] = email
+        if preferred_identifier is not UNSET:
+            field_dict["preferred_identifier"] = preferred_identifier
         if customer is not UNSET:
             field_dict["customer"] = customer
 
@@ -67,6 +73,8 @@ class PatchedCustomerServiceAccountRequest:
 
         email = d.pop("email", UNSET)
 
+        preferred_identifier = d.pop("preferred_identifier", UNSET)
+
         _customer = d.pop("customer", UNSET)
         customer: Union[Unset, UUID]
         if isinstance(_customer, Unset):
@@ -79,6 +87,7 @@ class PatchedCustomerServiceAccountRequest:
             description=description,
             error_traceback=error_traceback,
             email=email,
+            preferred_identifier=preferred_identifier,
             customer=customer,
         )
 

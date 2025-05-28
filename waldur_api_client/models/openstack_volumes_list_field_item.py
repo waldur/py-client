@@ -18,6 +18,7 @@ class OpenstackVolumesListFieldItem(str, Enum):
     DEVICE = "device"
     ERROR_MESSAGE = "error_message"
     ERROR_TRACEBACK = "error_traceback"
+    EXTEND_ENABLED = "extend_enabled"
     IMAGE = "image"
     IMAGE_METADATA = "image_metadata"
     IMAGE_NAME = "image_name"

@@ -66,6 +66,7 @@ class OpenStackVolume:
         instance_marketplace_uuid (Union[Unset, UUID]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
+        extend_enabled (Union[Unset, bool]):
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_plugin_options (Union['OpenStackVolumeMarketplaceOfferingPluginOptionsType0', None,
@@ -123,6 +124,7 @@ class OpenStackVolume:
     instance_marketplace_uuid: Union[Unset, UUID] = UNSET
     tenant: Union[Unset, str] = UNSET
     tenant_uuid: Union[Unset, UUID] = UNSET
+    extend_enabled: Union[Unset, bool] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_plugin_options: Union["OpenStackVolumeMarketplaceOfferingPluginOptionsType0", None, Unset] = (
@@ -278,6 +280,8 @@ class OpenStackVolume:
         if not isinstance(self.tenant_uuid, Unset):
             tenant_uuid = str(self.tenant_uuid)
 
+        extend_enabled = self.extend_enabled
+
         marketplace_offering_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_offering_uuid, Unset):
             marketplace_offering_uuid = UNSET
@@ -431,6 +435,8 @@ class OpenStackVolume:
             field_dict["tenant"] = tenant
         if tenant_uuid is not UNSET:
             field_dict["tenant_uuid"] = tenant_uuid
+        if extend_enabled is not UNSET:
+            field_dict["extend_enabled"] = extend_enabled
         if marketplace_offering_uuid is not UNSET:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
@@ -645,6 +651,8 @@ class OpenStackVolume:
         else:
             tenant_uuid = UUID(_tenant_uuid)
 
+        extend_enabled = d.pop("extend_enabled", UNSET)
+
         def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -794,6 +802,7 @@ class OpenStackVolume:
             instance_marketplace_uuid=instance_marketplace_uuid,
             tenant=tenant,
             tenant_uuid=tenant_uuid,
+            extend_enabled=extend_enabled,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
             marketplace_offering_plugin_options=marketplace_offering_plugin_options,

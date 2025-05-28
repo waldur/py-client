@@ -18,6 +18,7 @@ class ProjectServiceAccountRequest:
         description (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
         email (Union[Unset, str]):
+        preferred_identifier (Union[Unset, str]):
     """
 
     project: UUID
@@ -25,6 +26,7 @@ class ProjectServiceAccountRequest:
     description: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
+    preferred_identifier: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -37,6 +39,8 @@ class ProjectServiceAccountRequest:
         error_traceback = self.error_traceback
 
         email = self.email
+
+        preferred_identifier = self.preferred_identifier
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -53,6 +57,8 @@ class ProjectServiceAccountRequest:
             field_dict["error_traceback"] = error_traceback
         if email is not UNSET:
             field_dict["email"] = email
+        if preferred_identifier is not UNSET:
+            field_dict["preferred_identifier"] = preferred_identifier
 
         return field_dict
 
@@ -69,12 +75,15 @@ class ProjectServiceAccountRequest:
 
         email = d.pop("email", UNSET)
 
+        preferred_identifier = d.pop("preferred_identifier", UNSET)
+
         project_service_account_request = cls(
             project=project,
             username=username,
             description=description,
             error_traceback=error_traceback,
             email=email,
+            preferred_identifier=preferred_identifier,
         )
 
         project_service_account_request.additional_properties = d
