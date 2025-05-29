@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ..models.report_section import ReportSection
     from ..models.resource_attributes import ResourceAttributes
     from ..models.resource_current_usages import ResourceCurrentUsages
+    from ..models.resource_limit_usage import ResourceLimitUsage
     from ..models.resource_limits import ResourceLimits
 
 
@@ -87,7 +88,7 @@ class Resource:
             for termination.
         end_date_requested_by (Union[None, Unset, str]):
         username (Union[None, Unset, str]):
-        limit_usage (Union[None, Unset, float]):
+        limit_usage (Union[Unset, ResourceLimitUsage]):
         downscaled (Union[Unset, bool]):
         restrict_member_access (Union[Unset, bool]):
         paused (Union[Unset, bool]):
@@ -100,6 +101,7 @@ class Resource:
         last_sync (Union[Unset, datetime.datetime]):
         order_in_progress (Union['OrderDetails', None, Unset]):
         creation_order (Union['OrderDetails', None, Unset]):
+        service_settings_uuid (Union[Unset, UUID]):
     """
 
     offering: Union[Unset, str] = UNSET
@@ -159,7 +161,7 @@ class Resource:
     end_date: Union[None, Unset, datetime.date] = UNSET
     end_date_requested_by: Union[None, Unset, str] = UNSET
     username: Union[None, Unset, str] = UNSET
-    limit_usage: Union[None, Unset, float] = UNSET
+    limit_usage: Union[Unset, "ResourceLimitUsage"] = UNSET
     downscaled: Union[Unset, bool] = UNSET
     restrict_member_access: Union[Unset, bool] = UNSET
     paused: Union[Unset, bool] = UNSET
@@ -172,6 +174,7 @@ class Resource:
     last_sync: Union[Unset, datetime.datetime] = UNSET
     order_in_progress: Union["OrderDetails", None, Unset] = UNSET
     creation_order: Union["OrderDetails", None, Unset] = UNSET
+    service_settings_uuid: Union[Unset, UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -376,11 +379,9 @@ class Resource:
         else:
             username = self.username
 
-        limit_usage: Union[None, Unset, float]
-        if isinstance(self.limit_usage, Unset):
-            limit_usage = UNSET
-        else:
-            limit_usage = self.limit_usage
+        limit_usage: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.limit_usage, Unset):
+            limit_usage = self.limit_usage.to_dict()
 
         downscaled = self.downscaled
 
@@ -428,6 +429,10 @@ class Resource:
             creation_order = self.creation_order.to_dict()
         else:
             creation_order = self.creation_order
+
+        service_settings_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.service_settings_uuid, Unset):
+            service_settings_uuid = str(self.service_settings_uuid)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -572,6 +577,8 @@ class Resource:
             field_dict["order_in_progress"] = order_in_progress
         if creation_order is not UNSET:
             field_dict["creation_order"] = creation_order
+        if service_settings_uuid is not UNSET:
+            field_dict["service_settings_uuid"] = service_settings_uuid
 
         return field_dict
 
@@ -583,6 +590,7 @@ class Resource:
         from ..models.report_section import ReportSection
         from ..models.resource_attributes import ResourceAttributes
         from ..models.resource_current_usages import ResourceCurrentUsages
+        from ..models.resource_limit_usage import ResourceLimitUsage
         from ..models.resource_limits import ResourceLimits
 
         d = src_dict.copy()
@@ -890,14 +898,12 @@ class Resource:
 
         username = _parse_username(d.pop("username", UNSET))
 
-        def _parse_limit_usage(data: object) -> Union[None, Unset, float]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, float], data)
-
-        limit_usage = _parse_limit_usage(d.pop("limit_usage", UNSET))
+        _limit_usage = d.pop("limit_usage", UNSET)
+        limit_usage: Union[Unset, ResourceLimitUsage]
+        if isinstance(_limit_usage, Unset):
+            limit_usage = UNSET
+        else:
+            limit_usage = ResourceLimitUsage.from_dict(_limit_usage)
 
         downscaled = d.pop("downscaled", UNSET)
 
@@ -967,6 +973,13 @@ class Resource:
             return cast(Union["OrderDetails", None, Unset], data)
 
         creation_order = _parse_creation_order(d.pop("creation_order", UNSET))
+
+        _service_settings_uuid = d.pop("service_settings_uuid", UNSET)
+        service_settings_uuid: Union[Unset, UUID]
+        if isinstance(_service_settings_uuid, Unset):
+            service_settings_uuid = UNSET
+        else:
+            service_settings_uuid = UUID(_service_settings_uuid)
 
         resource = cls(
             offering=offering,
@@ -1039,6 +1052,7 @@ class Resource:
             last_sync=last_sync,
             order_in_progress=order_in_progress,
             creation_order=creation_order,
+            service_settings_uuid=service_settings_uuid,
         )
 
         resource.additional_properties = d

@@ -107,6 +107,7 @@ from .booking_offerings_retrieve_field_item import BookingOfferingsRetrieveField
 from .booking_resource import BookingResource
 from .booking_resource_attributes import BookingResourceAttributes
 from .booking_resource_current_usages import BookingResourceCurrentUsages
+from .booking_resource_limit_usage import BookingResourceLimitUsage
 from .booking_resource_limits import BookingResourceLimits
 from .booking_resources_list_field_item import BookingResourcesListFieldItem
 from .booking_resources_list_o_item import BookingResourcesListOItem
@@ -1042,6 +1043,7 @@ from .resource_backend_metadata_request import ResourceBackendMetadataRequest
 from .resource_current_usages import ResourceCurrentUsages
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
 from .resource_limit_period import ResourceLimitPeriod
+from .resource_limit_usage import ResourceLimitUsage
 from .resource_limits import ResourceLimits
 from .resource_offering import ResourceOffering
 from .resource_options import ResourceOptions
@@ -1328,6 +1330,7 @@ __all__ = (
     "BookingResourceAttributes",
     "BookingResourceCurrentUsages",
     "BookingResourceLimits",
+    "BookingResourceLimitUsage",
     "BookingResourcesListFieldItem",
     "BookingResourcesListOItem",
     "BookingResourcesListStateItem",
@@ -2199,6 +2202,7 @@ __all__ = (
     "ResourceEndDateByProviderRequest",
     "ResourceLimitPeriod",
     "ResourceLimits",
+    "ResourceLimitUsage",
     "ResourceOffering",
     "ResourceOptions",
     "ResourceOptionsRequest",

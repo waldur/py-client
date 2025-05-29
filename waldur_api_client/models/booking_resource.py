@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.backend_metadata import BackendMetadata
     from ..models.booking_resource_attributes import BookingResourceAttributes
     from ..models.booking_resource_current_usages import BookingResourceCurrentUsages
+    from ..models.booking_resource_limit_usage import BookingResourceLimitUsage
     from ..models.booking_resource_limits import BookingResourceLimits
     from ..models.booking_slot import BookingSlot
     from ..models.nested_endpoint import NestedEndpoint
@@ -88,7 +89,7 @@ class BookingResource:
             for termination.
         end_date_requested_by (Union[None, Unset, str]):
         username (Union[None, Unset, str]):
-        limit_usage (Union[None, Unset, float]):
+        limit_usage (Union[Unset, BookingResourceLimitUsage]):
         downscaled (Union[Unset, bool]):
         restrict_member_access (Union[Unset, bool]):
         paused (Union[Unset, bool]):
@@ -101,6 +102,7 @@ class BookingResource:
         last_sync (Union[Unset, datetime.datetime]):
         order_in_progress (Union['OrderDetails', None, Unset]):
         creation_order (Union['OrderDetails', None, Unset]):
+        service_settings_uuid (Union[Unset, UUID]):
         created_by (Union[Unset, str]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
@@ -169,7 +171,7 @@ class BookingResource:
     end_date: Union[None, Unset, datetime.date] = UNSET
     end_date_requested_by: Union[None, Unset, str] = UNSET
     username: Union[None, Unset, str] = UNSET
-    limit_usage: Union[None, Unset, float] = UNSET
+    limit_usage: Union[Unset, "BookingResourceLimitUsage"] = UNSET
     downscaled: Union[Unset, bool] = UNSET
     restrict_member_access: Union[Unset, bool] = UNSET
     paused: Union[Unset, bool] = UNSET
@@ -182,6 +184,7 @@ class BookingResource:
     last_sync: Union[Unset, datetime.datetime] = UNSET
     order_in_progress: Union["OrderDetails", None, Unset] = UNSET
     creation_order: Union["OrderDetails", None, Unset] = UNSET
+    service_settings_uuid: Union[Unset, UUID] = UNSET
     created_by: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
@@ -393,11 +396,9 @@ class BookingResource:
         else:
             username = self.username
 
-        limit_usage: Union[None, Unset, float]
-        if isinstance(self.limit_usage, Unset):
-            limit_usage = UNSET
-        else:
-            limit_usage = self.limit_usage
+        limit_usage: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.limit_usage, Unset):
+            limit_usage = self.limit_usage.to_dict()
 
         downscaled = self.downscaled
 
@@ -445,6 +446,10 @@ class BookingResource:
             creation_order = self.creation_order.to_dict()
         else:
             creation_order = self.creation_order
+
+        service_settings_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.service_settings_uuid, Unset):
+            service_settings_uuid = str(self.service_settings_uuid)
 
         created_by = self.created_by
 
@@ -608,6 +613,8 @@ class BookingResource:
             field_dict["order_in_progress"] = order_in_progress
         if creation_order is not UNSET:
             field_dict["creation_order"] = creation_order
+        if service_settings_uuid is not UNSET:
+            field_dict["service_settings_uuid"] = service_settings_uuid
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_username is not UNSET:
@@ -630,6 +637,7 @@ class BookingResource:
         from ..models.backend_metadata import BackendMetadata
         from ..models.booking_resource_attributes import BookingResourceAttributes
         from ..models.booking_resource_current_usages import BookingResourceCurrentUsages
+        from ..models.booking_resource_limit_usage import BookingResourceLimitUsage
         from ..models.booking_resource_limits import BookingResourceLimits
         from ..models.booking_slot import BookingSlot
         from ..models.nested_endpoint import NestedEndpoint
@@ -941,14 +949,12 @@ class BookingResource:
 
         username = _parse_username(d.pop("username", UNSET))
 
-        def _parse_limit_usage(data: object) -> Union[None, Unset, float]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, float], data)
-
-        limit_usage = _parse_limit_usage(d.pop("limit_usage", UNSET))
+        _limit_usage = d.pop("limit_usage", UNSET)
+        limit_usage: Union[Unset, BookingResourceLimitUsage]
+        if isinstance(_limit_usage, Unset):
+            limit_usage = UNSET
+        else:
+            limit_usage = BookingResourceLimitUsage.from_dict(_limit_usage)
 
         downscaled = d.pop("downscaled", UNSET)
 
@@ -1018,6 +1024,13 @@ class BookingResource:
             return cast(Union["OrderDetails", None, Unset], data)
 
         creation_order = _parse_creation_order(d.pop("creation_order", UNSET))
+
+        _service_settings_uuid = d.pop("service_settings_uuid", UNSET)
+        service_settings_uuid: Union[Unset, UUID]
+        if isinstance(_service_settings_uuid, Unset):
+            service_settings_uuid = UNSET
+        else:
+            service_settings_uuid = UUID(_service_settings_uuid)
 
         created_by = d.pop("created_by", UNSET)
 
@@ -1109,6 +1122,7 @@ class BookingResource:
             last_sync=last_sync,
             order_in_progress=order_in_progress,
             creation_order=creation_order,
+            service_settings_uuid=service_settings_uuid,
             created_by=created_by,
             created_by_username=created_by_username,
             created_by_full_name=created_by_full_name,

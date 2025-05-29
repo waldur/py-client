@@ -67,6 +67,7 @@ class MarketplaceProviderResourcesListFieldItem(str, Enum):
     RESOURCE_UUID = "resource_uuid"
     RESTRICT_MEMBER_ACCESS = "restrict_member_access"
     SCOPE = "scope"
+    SERVICE_SETTINGS_UUID = "service_settings_uuid"
     SLUG = "slug"
     STATE = "state"
     URL = "url"

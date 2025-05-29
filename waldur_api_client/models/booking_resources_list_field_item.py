@@ -73,6 +73,7 @@ class BookingResourcesListFieldItem(str, Enum):
     RESOURCE_UUID = "resource_uuid"
     RESTRICT_MEMBER_ACCESS = "restrict_member_access"
     SCOPE = "scope"
+    SERVICE_SETTINGS_UUID = "service_settings_uuid"
     SLOTS = "slots"
     SLUG = "slug"
     STATE = "state"
