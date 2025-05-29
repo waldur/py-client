@@ -193,7 +193,9 @@ from .create_router_request import CreateRouterRequest
 from .customer import Customer
 from .customer_checklist_stat import CustomerChecklistStat
 from .customer_credit import CustomerCredit
+from .customer_credit_consumption import CustomerCreditConsumption
 from .customer_credit_request import CustomerCreditRequest
+from .customer_credits_consumptions_list_o_item import CustomerCreditsConsumptionsListOItem
 from .customer_credits_list_o_item import CustomerCreditsListOItem
 from .customer_details import CustomerDetails
 from .customer_estimated_cost_policy import CustomerEstimatedCostPolicy
@@ -1415,7 +1417,9 @@ __all__ = (
     "Customer",
     "CustomerChecklistStat",
     "CustomerCredit",
+    "CustomerCreditConsumption",
     "CustomerCreditRequest",
+    "CustomerCreditsConsumptionsListOItem",
     "CustomerCreditsListOItem",
     "CustomerDetails",
     "CustomerEstimatedCostPolicy",

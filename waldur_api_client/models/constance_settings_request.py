@@ -57,6 +57,8 @@ class ConstanceSettingsRequest:
         disable_dark_theme (Union[Unset, bool]):
         powered_by_logo (Union[File, None, Unset]):
         hero_image (Union[File, None, Unset]):
+        marketplace_hero_image (Union[File, None, Unset]):
+        call_management_hero_image (Union[File, None, Unset]):
         sidebar_logo (Union[File, None, Unset]):
         sidebar_logo_dark (Union[File, None, Unset]):
         sidebar_logo_mobile (Union[File, None, Unset]):
@@ -179,6 +181,8 @@ class ConstanceSettingsRequest:
     disable_dark_theme: Union[Unset, bool] = UNSET
     powered_by_logo: Union[File, None, Unset] = UNSET
     hero_image: Union[File, None, Unset] = UNSET
+    marketplace_hero_image: Union[File, None, Unset] = UNSET
+    call_management_hero_image: Union[File, None, Unset] = UNSET
     sidebar_logo: Union[File, None, Unset] = UNSET
     sidebar_logo_dark: Union[File, None, Unset] = UNSET
     sidebar_logo_mobile: Union[File, None, Unset] = UNSET
@@ -359,6 +363,24 @@ class ConstanceSettingsRequest:
 
         else:
             hero_image = self.hero_image
+
+        marketplace_hero_image: Union[FileJsonType, None, Unset]
+        if isinstance(self.marketplace_hero_image, Unset):
+            marketplace_hero_image = UNSET
+        elif isinstance(self.marketplace_hero_image, File):
+            marketplace_hero_image = self.marketplace_hero_image.to_tuple()
+
+        else:
+            marketplace_hero_image = self.marketplace_hero_image
+
+        call_management_hero_image: Union[FileJsonType, None, Unset]
+        if isinstance(self.call_management_hero_image, Unset):
+            call_management_hero_image = UNSET
+        elif isinstance(self.call_management_hero_image, File):
+            call_management_hero_image = self.call_management_hero_image.to_tuple()
+
+        else:
+            call_management_hero_image = self.call_management_hero_image
 
         sidebar_logo: Union[FileJsonType, None, Unset]
         if isinstance(self.sidebar_logo, Unset):
@@ -665,6 +687,10 @@ class ConstanceSettingsRequest:
             field_dict["POWERED_BY_LOGO"] = powered_by_logo
         if hero_image is not UNSET:
             field_dict["HERO_IMAGE"] = hero_image
+        if marketplace_hero_image is not UNSET:
+            field_dict["MARKETPLACE_HERO_IMAGE"] = marketplace_hero_image
+        if call_management_hero_image is not UNSET:
+            field_dict["CALL_MANAGEMENT_HERO_IMAGE"] = call_management_hero_image
         if sidebar_logo is not UNSET:
             field_dict["SIDEBAR_LOGO"] = sidebar_logo
         if sidebar_logo_dark is not UNSET:
@@ -944,6 +970,40 @@ class ConstanceSettingsRequest:
             return cast(Union[File, None, Unset], data)
 
         hero_image = _parse_hero_image(d.pop("HERO_IMAGE", UNSET))
+
+        def _parse_marketplace_hero_image(data: object) -> Union[File, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, bytes):
+                    raise TypeError()
+                marketplace_hero_image_type_0 = File(payload=BytesIO(data))
+
+                return marketplace_hero_image_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[File, None, Unset], data)
+
+        marketplace_hero_image = _parse_marketplace_hero_image(d.pop("MARKETPLACE_HERO_IMAGE", UNSET))
+
+        def _parse_call_management_hero_image(data: object) -> Union[File, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, bytes):
+                    raise TypeError()
+                call_management_hero_image_type_0 = File(payload=BytesIO(data))
+
+                return call_management_hero_image_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[File, None, Unset], data)
+
+        call_management_hero_image = _parse_call_management_hero_image(d.pop("CALL_MANAGEMENT_HERO_IMAGE", UNSET))
 
         def _parse_sidebar_logo(data: object) -> Union[File, None, Unset]:
             if data is None:
@@ -1264,6 +1324,8 @@ class ConstanceSettingsRequest:
             disable_dark_theme=disable_dark_theme,
             powered_by_logo=powered_by_logo,
             hero_image=hero_image,
+            marketplace_hero_image=marketplace_hero_image,
+            call_management_hero_image=call_management_hero_image,
             sidebar_logo=sidebar_logo,
             sidebar_logo_dark=sidebar_logo_dark,
             sidebar_logo_mobile=sidebar_logo_mobile,

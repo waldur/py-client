@@ -56,6 +56,8 @@ class ConstanceSettings:
         disable_dark_theme (Union[Unset, bool]):
         powered_by_logo (Union[None, Unset, str]):
         hero_image (Union[None, Unset, str]):
+        marketplace_hero_image (Union[None, Unset, str]):
+        call_management_hero_image (Union[None, Unset, str]):
         sidebar_logo (Union[None, Unset, str]):
         sidebar_logo_dark (Union[None, Unset, str]):
         sidebar_logo_mobile (Union[None, Unset, str]):
@@ -178,6 +180,8 @@ class ConstanceSettings:
     disable_dark_theme: Union[Unset, bool] = UNSET
     powered_by_logo: Union[None, Unset, str] = UNSET
     hero_image: Union[None, Unset, str] = UNSET
+    marketplace_hero_image: Union[None, Unset, str] = UNSET
+    call_management_hero_image: Union[None, Unset, str] = UNSET
     sidebar_logo: Union[None, Unset, str] = UNSET
     sidebar_logo_dark: Union[None, Unset, str] = UNSET
     sidebar_logo_mobile: Union[None, Unset, str] = UNSET
@@ -352,6 +356,18 @@ class ConstanceSettings:
             hero_image = UNSET
         else:
             hero_image = self.hero_image
+
+        marketplace_hero_image: Union[None, Unset, str]
+        if isinstance(self.marketplace_hero_image, Unset):
+            marketplace_hero_image = UNSET
+        else:
+            marketplace_hero_image = self.marketplace_hero_image
+
+        call_management_hero_image: Union[None, Unset, str]
+        if isinstance(self.call_management_hero_image, Unset):
+            call_management_hero_image = UNSET
+        else:
+            call_management_hero_image = self.call_management_hero_image
 
         sidebar_logo: Union[None, Unset, str]
         if isinstance(self.sidebar_logo, Unset):
@@ -634,6 +650,10 @@ class ConstanceSettings:
             field_dict["POWERED_BY_LOGO"] = powered_by_logo
         if hero_image is not UNSET:
             field_dict["HERO_IMAGE"] = hero_image
+        if marketplace_hero_image is not UNSET:
+            field_dict["MARKETPLACE_HERO_IMAGE"] = marketplace_hero_image
+        if call_management_hero_image is not UNSET:
+            field_dict["CALL_MANAGEMENT_HERO_IMAGE"] = call_management_hero_image
         if sidebar_logo is not UNSET:
             field_dict["SIDEBAR_LOGO"] = sidebar_logo
         if sidebar_logo_dark is not UNSET:
@@ -898,6 +918,24 @@ class ConstanceSettings:
 
         hero_image = _parse_hero_image(d.pop("HERO_IMAGE", UNSET))
 
+        def _parse_marketplace_hero_image(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        marketplace_hero_image = _parse_marketplace_hero_image(d.pop("MARKETPLACE_HERO_IMAGE", UNSET))
+
+        def _parse_call_management_hero_image(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        call_management_hero_image = _parse_call_management_hero_image(d.pop("CALL_MANAGEMENT_HERO_IMAGE", UNSET))
+
         def _parse_sidebar_logo(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -1153,6 +1191,8 @@ class ConstanceSettings:
             disable_dark_theme=disable_dark_theme,
             powered_by_logo=powered_by_logo,
             hero_image=hero_image,
+            marketplace_hero_image=marketplace_hero_image,
+            call_management_hero_image=call_management_hero_image,
             sidebar_logo=sidebar_logo,
             sidebar_logo_dark=sidebar_logo_dark,
             sidebar_logo_mobile=sidebar_logo_mobile,
