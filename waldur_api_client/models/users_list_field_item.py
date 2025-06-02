@@ -24,6 +24,7 @@ class UsersListFieldItem(str, Enum):
     JOB_TITLE = "job_title"
     LAST_NAME = "last_name"
     NATIVE_NAME = "native_name"
+    NOTIFICATIONS_ENABLED = "notifications_enabled"
     ORGANIZATION = "organization"
     PERMISSIONS = "permissions"
     PHONE_NUMBER = "phone_number"

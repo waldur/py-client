@@ -26,6 +26,8 @@ class PatchedUserRequest:
         is_support (Union[Unset, bool]): Designates whether the user is a global support user.
         token_lifetime (Union[None, Unset, int]): Token lifetime in seconds.
         agree_with_policy (Union[Unset, bool]): User must agree with the policy to register.
+        notifications_enabled (Union[Unset, bool]): Designates whether the user is allowed to receive email
+            notifications.
         preferred_language (Union[Unset, str]):
         first_name (Union[Unset, str]):
         last_name (Union[Unset, str]):
@@ -43,6 +45,7 @@ class PatchedUserRequest:
     is_support: Union[Unset, bool] = UNSET
     token_lifetime: Union[None, Unset, int] = UNSET
     agree_with_policy: Union[Unset, bool] = UNSET
+    notifications_enabled: Union[Unset, bool] = UNSET
     preferred_language: Union[Unset, str] = UNSET
     first_name: Union[Unset, str] = UNSET
     last_name: Union[Unset, str] = UNSET
@@ -75,6 +78,8 @@ class PatchedUserRequest:
             token_lifetime = self.token_lifetime
 
         agree_with_policy = self.agree_with_policy
+
+        notifications_enabled = self.notifications_enabled
 
         preferred_language = self.preferred_language
 
@@ -116,6 +121,8 @@ class PatchedUserRequest:
             field_dict["token_lifetime"] = token_lifetime
         if agree_with_policy is not UNSET:
             field_dict["agree_with_policy"] = agree_with_policy
+        if notifications_enabled is not UNSET:
+            field_dict["notifications_enabled"] = notifications_enabled
         if preferred_language is not UNSET:
             field_dict["preferred_language"] = preferred_language
         if first_name is not UNSET:
@@ -159,6 +166,8 @@ class PatchedUserRequest:
 
         agree_with_policy = d.pop("agree_with_policy", UNSET)
 
+        notifications_enabled = d.pop("notifications_enabled", UNSET)
+
         preferred_language = d.pop("preferred_language", UNSET)
 
         first_name = d.pop("first_name", UNSET)
@@ -194,6 +203,7 @@ class PatchedUserRequest:
             is_support=is_support,
             token_lifetime=token_lifetime,
             agree_with_policy=agree_with_policy,
+            notifications_enabled=notifications_enabled,
             preferred_language=preferred_language,
             first_name=first_name,
             last_name=last_name,

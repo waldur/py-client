@@ -41,6 +41,8 @@ class User:
         registration_method (Union[Unset, str]): Indicates what registration method was used.
         date_joined (Union[Unset, datetime.datetime]):
         agreement_date (Union[None, Unset, datetime.datetime]): Indicates when the user has agreed with the policy.
+        notifications_enabled (Union[Unset, bool]): Designates whether the user is allowed to receive email
+            notifications.
         preferred_language (Union[Unset, str]):
         permissions (Union[Unset, list['Permission']]):
         requested_email (Union[None, Unset, str]):
@@ -76,6 +78,7 @@ class User:
     registration_method: Union[Unset, str] = UNSET
     date_joined: Union[Unset, datetime.datetime] = UNSET
     agreement_date: Union[None, Unset, datetime.datetime] = UNSET
+    notifications_enabled: Union[Unset, bool] = UNSET
     preferred_language: Union[Unset, str] = UNSET
     permissions: Union[Unset, list["Permission"]] = UNSET
     requested_email: Union[None, Unset, str] = UNSET
@@ -149,6 +152,8 @@ class User:
             agreement_date = self.agreement_date.isoformat()
         else:
             agreement_date = self.agreement_date
+
+        notifications_enabled = self.notifications_enabled
 
         preferred_language = self.preferred_language
 
@@ -234,6 +239,8 @@ class User:
             field_dict["date_joined"] = date_joined
         if agreement_date is not UNSET:
             field_dict["agreement_date"] = agreement_date
+        if notifications_enabled is not UNSET:
+            field_dict["notifications_enabled"] = notifications_enabled
         if preferred_language is not UNSET:
             field_dict["preferred_language"] = preferred_language
         if permissions is not UNSET:
@@ -347,6 +354,8 @@ class User:
 
         agreement_date = _parse_agreement_date(d.pop("agreement_date", UNSET))
 
+        notifications_enabled = d.pop("notifications_enabled", UNSET)
+
         preferred_language = d.pop("preferred_language", UNSET)
 
         permissions = []
@@ -413,6 +422,7 @@ class User:
             registration_method=registration_method,
             date_joined=date_joined,
             agreement_date=agreement_date,
+            notifications_enabled=notifications_enabled,
             preferred_language=preferred_language,
             permissions=permissions,
             requested_email=requested_email,
