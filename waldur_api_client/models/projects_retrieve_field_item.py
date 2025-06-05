@@ -17,6 +17,7 @@ class ProjectsRetrieveFieldItem(str, Enum):
     IMAGE = "image"
     IS_INDUSTRY = "is_industry"
     MARKETPLACE_RESOURCE_COUNT = "marketplace_resource_count"
+    MAX_SERVICE_ACCOUNTS = "max_service_accounts"
     NAME = "name"
     OECD_FOS_2007_CODE = "oecd_fos_2007_code"
     OECD_FOS_2007_LABEL = "oecd_fos_2007_label"

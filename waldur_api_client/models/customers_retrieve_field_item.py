@@ -29,6 +29,7 @@ class CustomersRetrieveFieldItem(str, Enum):
     IS_SERVICE_PROVIDER = "is_service_provider"
     LATITUDE = "latitude"
     LONGITUDE = "longitude"
+    MAX_SERVICE_ACCOUNTS = "max_service_accounts"
     NAME = "name"
     NATIVE_NAME = "native_name"
     ORGANIZATION_GROUPS = "organization_groups"

@@ -47,6 +47,7 @@ class Project:
         is_industry (Union[Unset, bool]):
         image (Union[None, Unset, str]):
         resources_count (Union[Unset, int]):
+        max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
         project_credit (Union[None, Unset, float]):
         marketplace_resource_count (Union[Unset, ProjectMarketplaceResourceCount]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
@@ -76,6 +77,7 @@ class Project:
     is_industry: Union[Unset, bool] = UNSET
     image: Union[None, Unset, str] = UNSET
     resources_count: Union[Unset, int] = UNSET
+    max_service_accounts: Union[None, Unset, int] = UNSET
     project_credit: Union[None, Unset, float] = UNSET
     marketplace_resource_count: Union[Unset, "ProjectMarketplaceResourceCount"] = UNSET
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
@@ -178,6 +180,12 @@ class Project:
 
         resources_count = self.resources_count
 
+        max_service_accounts: Union[None, Unset, int]
+        if isinstance(self.max_service_accounts, Unset):
+            max_service_accounts = UNSET
+        else:
+            max_service_accounts = self.max_service_accounts
+
         project_credit: Union[None, Unset, float]
         if isinstance(self.project_credit, Unset):
             project_credit = UNSET
@@ -243,6 +251,8 @@ class Project:
             field_dict["image"] = image
         if resources_count is not UNSET:
             field_dict["resources_count"] = resources_count
+        if max_service_accounts is not UNSET:
+            field_dict["max_service_accounts"] = max_service_accounts
         if project_credit is not UNSET:
             field_dict["project_credit"] = project_credit
         if marketplace_resource_count is not UNSET:
@@ -417,6 +427,15 @@ class Project:
 
         resources_count = d.pop("resources_count", UNSET)
 
+        def _parse_max_service_accounts(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        max_service_accounts = _parse_max_service_accounts(d.pop("max_service_accounts", UNSET))
+
         def _parse_project_credit(data: object) -> Union[None, Unset, float]:
             if data is None:
                 return data
@@ -465,6 +484,7 @@ class Project:
             is_industry=is_industry,
             image=image,
             resources_count=resources_count,
+            max_service_accounts=max_service_accounts,
             project_credit=project_credit,
             marketplace_resource_count=marketplace_resource_count,
             billing_price_estimate=billing_price_estimate,

@@ -40,6 +40,7 @@ class Customer:
         users_count (Union[Unset, int]):
         sponsor_number (Union[None, Unset, int]): External ID of the sponsor covering the costs
         country_name (Union[Unset, str]):
+        max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
         name (Union[Unset, str]):
         slug (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -87,6 +88,7 @@ class Customer:
     users_count: Union[Unset, int] = UNSET
     sponsor_number: Union[None, Unset, int] = UNSET
     country_name: Union[Unset, str] = UNSET
+    max_service_accounts: Union[None, Unset, int] = UNSET
     name: Union[Unset, str] = UNSET
     slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
@@ -173,6 +175,12 @@ class Customer:
             sponsor_number = self.sponsor_number
 
         country_name = self.country_name
+
+        max_service_accounts: Union[None, Unset, int]
+        if isinstance(self.max_service_accounts, Unset):
+            max_service_accounts = UNSET
+        else:
+            max_service_accounts = self.max_service_accounts
 
         name = self.name
 
@@ -308,6 +316,8 @@ class Customer:
             field_dict["sponsor_number"] = sponsor_number
         if country_name is not UNSET:
             field_dict["country_name"] = country_name
+        if max_service_accounts is not UNSET:
+            field_dict["max_service_accounts"] = max_service_accounts
         if name is not UNSET:
             field_dict["name"] = name
         if slug is not UNSET:
@@ -445,6 +455,15 @@ class Customer:
         sponsor_number = _parse_sponsor_number(d.pop("sponsor_number", UNSET))
 
         country_name = d.pop("country_name", UNSET)
+
+        def _parse_max_service_accounts(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        max_service_accounts = _parse_max_service_accounts(d.pop("max_service_accounts", UNSET))
 
         name = d.pop("name", UNSET)
 
@@ -605,6 +624,7 @@ class Customer:
             users_count=users_count,
             sponsor_number=sponsor_number,
             country_name=country_name,
+            max_service_accounts=max_service_accounts,
             name=name,
             slug=slug,
             native_name=native_name,
