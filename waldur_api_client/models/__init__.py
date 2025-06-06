@@ -132,6 +132,8 @@ from .call_managing_organisation_stat import CallManagingOrganisationStat
 from .call_managing_organisations_list_o_item import CallManagingOrganisationsListOItem
 from .call_managing_organisations_list_users_list_field_item import CallManagingOrganisationsListUsersListFieldItem
 from .call_managing_organisations_list_users_list_o_item import CallManagingOrganisationsListUsersListOItem
+from .call_resource_template import CallResourceTemplate
+from .call_resource_template_request import CallResourceTemplateRequest
 from .call_round import CallRound
 from .call_states import CallStates
 from .campaign import Campaign
@@ -162,9 +164,7 @@ from .comment import Comment
 from .comment_request import CommentRequest
 from .component_stats import ComponentStats
 from .component_usage import ComponentUsage
-from .component_usage_create import ComponentUsageCreate
 from .component_usage_create_request import ComponentUsageCreateRequest
-from .component_usage_item import ComponentUsageItem
 from .component_usage_item_request import ComponentUsageItemRequest
 from .component_user_usage import ComponentUserUsage
 from .component_user_usage_create import ComponentUserUsageCreate
@@ -757,6 +757,7 @@ from .patched_azure_sql_server_request import PatchedAzureSqlServerRequest
 from .patched_azure_virtual_machine_request import PatchedAzureVirtualMachineRequest
 from .patched_broadcast_message_request import PatchedBroadcastMessageRequest
 from .patched_call_managing_organisation_request import PatchedCallManagingOrganisationRequest
+from .patched_call_resource_template_request import PatchedCallResourceTemplateRequest
 from .patched_category_column_request import PatchedCategoryColumnRequest
 from .patched_category_components_request import PatchedCategoryComponentsRequest
 from .patched_category_group_request import PatchedCategoryGroupRequest
@@ -1357,6 +1358,8 @@ __all__ = (
     "CallManagingOrganisationsListUsersListFieldItem",
     "CallManagingOrganisationsListUsersListOItem",
     "CallManagingOrganisationStat",
+    "CallResourceTemplate",
+    "CallResourceTemplateRequest",
     "CallRound",
     "CallStates",
     "Campaign",
@@ -1388,9 +1391,7 @@ __all__ = (
     "ComponentStats",
     "ComponentsUsageStats",
     "ComponentUsage",
-    "ComponentUsageCreate",
     "ComponentUsageCreateRequest",
-    "ComponentUsageItem",
     "ComponentUsageItemRequest",
     "ComponentUserUsage",
     "ComponentUserUsageCreate",
@@ -1928,6 +1929,7 @@ __all__ = (
     "PatchedAzureVirtualMachineRequest",
     "PatchedBroadcastMessageRequest",
     "PatchedCallManagingOrganisationRequest",
+    "PatchedCallResourceTemplateRequest",
     "PatchedCategoryColumnRequest",
     "PatchedCategoryComponentsRequest",
     "PatchedCategoryGroupRequest",

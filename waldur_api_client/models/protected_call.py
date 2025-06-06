@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.call_document import CallDocument
+    from ..models.call_resource_template import CallResourceTemplate
     from ..models.nested_requested_offering import NestedRequestedOffering
     from ..models.nested_round import NestedRound
 
@@ -37,6 +38,8 @@ class ProtectedCall:
         offerings (Union[Unset, list['NestedRequestedOffering']]):
         rounds (Union[Unset, list['NestedRound']]):
         documents (Union[Unset, list['CallDocument']]):
+        resource_templates (Union[Unset, list['CallResourceTemplate']]):
+        fixed_duration_in_days (Union[None, Unset, int]):
         backend_id (Union[Unset, str]):
         external_url (Union[None, Unset, str]):
         created_by (Union[None, Unset, str]):
@@ -61,6 +64,8 @@ class ProtectedCall:
     offerings: Union[Unset, list["NestedRequestedOffering"]] = UNSET
     rounds: Union[Unset, list["NestedRound"]] = UNSET
     documents: Union[Unset, list["CallDocument"]] = UNSET
+    resource_templates: Union[Unset, list["CallResourceTemplate"]] = UNSET
+    fixed_duration_in_days: Union[None, Unset, int] = UNSET
     backend_id: Union[Unset, str] = UNSET
     external_url: Union[None, Unset, str] = UNSET
     created_by: Union[None, Unset, str] = UNSET
@@ -128,6 +133,19 @@ class ProtectedCall:
                 documents_item = documents_item_data.to_dict()
                 documents.append(documents_item)
 
+        resource_templates: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.resource_templates, Unset):
+            resource_templates = []
+            for resource_templates_item_data in self.resource_templates:
+                resource_templates_item = resource_templates_item_data.to_dict()
+                resource_templates.append(resource_templates_item)
+
+        fixed_duration_in_days: Union[None, Unset, int]
+        if isinstance(self.fixed_duration_in_days, Unset):
+            fixed_duration_in_days = UNSET
+        else:
+            fixed_duration_in_days = self.fixed_duration_in_days
+
         backend_id = self.backend_id
 
         external_url: Union[None, Unset, str]
@@ -185,6 +203,10 @@ class ProtectedCall:
             field_dict["rounds"] = rounds
         if documents is not UNSET:
             field_dict["documents"] = documents
+        if resource_templates is not UNSET:
+            field_dict["resource_templates"] = resource_templates
+        if fixed_duration_in_days is not UNSET:
+            field_dict["fixed_duration_in_days"] = fixed_duration_in_days
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
         if external_url is not UNSET:
@@ -205,6 +227,7 @@ class ProtectedCall:
     @classmethod
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.call_document import CallDocument
+        from ..models.call_resource_template import CallResourceTemplate
         from ..models.nested_requested_offering import NestedRequestedOffering
         from ..models.nested_round import NestedRound
 
@@ -284,6 +307,22 @@ class ProtectedCall:
 
             documents.append(documents_item)
 
+        resource_templates = []
+        _resource_templates = d.pop("resource_templates", UNSET)
+        for resource_templates_item_data in _resource_templates or []:
+            resource_templates_item = CallResourceTemplate.from_dict(resource_templates_item_data)
+
+            resource_templates.append(resource_templates_item)
+
+        def _parse_fixed_duration_in_days(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        fixed_duration_in_days = _parse_fixed_duration_in_days(d.pop("fixed_duration_in_days", UNSET))
+
         backend_id = d.pop("backend_id", UNSET)
 
         def _parse_external_url(data: object) -> Union[None, Unset, str]:
@@ -333,6 +372,8 @@ class ProtectedCall:
             offerings=offerings,
             rounds=rounds,
             documents=documents,
+            resource_templates=resource_templates,
+            fixed_duration_in_days=fixed_duration_in_days,
             backend_id=backend_id,
             external_url=external_url,
             created_by=created_by,

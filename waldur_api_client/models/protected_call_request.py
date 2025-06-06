@@ -16,6 +16,7 @@ class ProtectedCallRequest:
         name (str):
         manager (str):
         description (Union[Unset, str]):
+        fixed_duration_in_days (Union[None, Unset, int]):
         backend_id (Union[Unset, str]):
         external_url (Union[None, Unset, str]):
         created_by (Union[None, Unset, str]):
@@ -26,6 +27,7 @@ class ProtectedCallRequest:
     name: str
     manager: str
     description: Union[Unset, str] = UNSET
+    fixed_duration_in_days: Union[None, Unset, int] = UNSET
     backend_id: Union[Unset, str] = UNSET
     external_url: Union[None, Unset, str] = UNSET
     created_by: Union[None, Unset, str] = UNSET
@@ -39,6 +41,12 @@ class ProtectedCallRequest:
         manager = self.manager
 
         description = self.description
+
+        fixed_duration_in_days: Union[None, Unset, int]
+        if isinstance(self.fixed_duration_in_days, Unset):
+            fixed_duration_in_days = UNSET
+        else:
+            fixed_duration_in_days = self.fixed_duration_in_days
 
         backend_id = self.backend_id
 
@@ -70,6 +78,8 @@ class ProtectedCallRequest:
         )
         if description is not UNSET:
             field_dict["description"] = description
+        if fixed_duration_in_days is not UNSET:
+            field_dict["fixed_duration_in_days"] = fixed_duration_in_days
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
         if external_url is not UNSET:
@@ -91,6 +101,15 @@ class ProtectedCallRequest:
         manager = d.pop("manager")
 
         description = d.pop("description", UNSET)
+
+        def _parse_fixed_duration_in_days(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        fixed_duration_in_days = _parse_fixed_duration_in_days(d.pop("fixed_duration_in_days", UNSET))
 
         backend_id = d.pop("backend_id", UNSET)
 
@@ -125,6 +144,7 @@ class ProtectedCallRequest:
             name=name,
             manager=manager,
             description=description,
+            fixed_duration_in_days=fixed_duration_in_days,
             backend_id=backend_id,
             external_url=external_url,
             created_by=created_by,

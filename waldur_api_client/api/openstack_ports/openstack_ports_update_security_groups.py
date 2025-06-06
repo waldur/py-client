@@ -1,23 +1,25 @@
 from http import HTTPStatus
 from typing import Any, Optional, Union
+from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.component_usage_create_request import ComponentUsageCreateRequest
+from ...models.open_stack_instance_security_groups_update_request import OpenStackInstanceSecurityGroupsUpdateRequest
 from ...types import Response
 
 
 def _get_kwargs(
+    uuid: UUID,
     *,
-    body: ComponentUsageCreateRequest,
+    body: OpenStackInstanceSecurityGroupsUpdateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/api/marketplace-component-usages/set_usage/",
+        "url": f"/api/openstack-ports/{uuid}/update_security_groups/",
     }
 
     _body = body.to_dict()
@@ -30,7 +32,7 @@ def _get_kwargs(
 
 
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
-    if response.status_code == 201:
+    if response.status_code == 200:
         return None
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -48,13 +50,16 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ComponentUsageCreateRequest,
+    body: OpenStackInstanceSecurityGroupsUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update security groups of the port
+
     Args:
-        body (ComponentUsageCreateRequest):
+        uuid (UUID):
+        body (OpenStackInstanceSecurityGroupsUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -65,6 +70,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        uuid=uuid,
         body=body,
     )
 
@@ -76,13 +82,16 @@ def sync_detailed(
 
 
 async def asyncio_detailed(
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ComponentUsageCreateRequest,
+    body: OpenStackInstanceSecurityGroupsUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update security groups of the port
+
     Args:
-        body (ComponentUsageCreateRequest):
+        uuid (UUID):
+        body (OpenStackInstanceSecurityGroupsUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -93,6 +102,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        uuid=uuid,
         body=body,
     )
 

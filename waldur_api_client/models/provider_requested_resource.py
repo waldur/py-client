@@ -21,6 +21,8 @@ class ProviderRequestedResource:
         url (str):
         requested_offering (NestedRequestedOffering):
         resource_name (str):
+        call_resource_template (str):
+        call_resource_template_name (str):
         created_by_name (str):
         proposal_name (str):
         proposal (str):
@@ -35,6 +37,8 @@ class ProviderRequestedResource:
     url: str
     requested_offering: "NestedRequestedOffering"
     resource_name: str
+    call_resource_template: str
+    call_resource_template_name: str
     created_by_name: str
     proposal_name: str
     proposal: str
@@ -53,6 +57,10 @@ class ProviderRequestedResource:
         requested_offering = self.requested_offering.to_dict()
 
         resource_name = self.resource_name
+
+        call_resource_template = self.call_resource_template
+
+        call_resource_template_name = self.call_resource_template_name
 
         created_by_name = self.created_by_name
 
@@ -86,6 +94,8 @@ class ProviderRequestedResource:
                 "url": url,
                 "requested_offering": requested_offering,
                 "resource_name": resource_name,
+                "call_resource_template": call_resource_template,
+                "call_resource_template_name": call_resource_template_name,
                 "created_by_name": created_by_name,
                 "proposal_name": proposal_name,
                 "proposal": proposal,
@@ -116,6 +126,10 @@ class ProviderRequestedResource:
         requested_offering = NestedRequestedOffering.from_dict(d.pop("requested_offering"))
 
         resource_name = d.pop("resource_name")
+
+        call_resource_template = d.pop("call_resource_template")
+
+        call_resource_template_name = d.pop("call_resource_template_name")
 
         created_by_name = d.pop("created_by_name")
 
@@ -152,6 +166,8 @@ class ProviderRequestedResource:
             url=url,
             requested_offering=requested_offering,
             resource_name=resource_name,
+            call_resource_template=call_resource_template,
+            call_resource_template_name=call_resource_template_name,
             created_by_name=created_by_name,
             proposal_name=proposal_name,
             proposal=proposal,

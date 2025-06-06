@@ -5,32 +5,23 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.component_usage_create_request import ComponentUsageCreateRequest
 from ...types import Response
 
 
 def _get_kwargs(
-    *,
-    body: ComponentUsageCreateRequest,
+    uuid: str,
+    obj_uuid: str,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": "/api/marketplace-component-usages/set_usage/",
+        "method": "delete",
+        "url": f"/api/proposal-protected-calls/{uuid}/resource_templates/{obj_uuid}/",
     }
 
-    _body = body.to_dict()
-
-    _kwargs["json"] = _body
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
-    if response.status_code == 201:
+    if response.status_code == 204:
         return None
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -48,13 +39,15 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
+    uuid: str,
+    obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: ComponentUsageCreateRequest,
 ) -> Response[Any]:
     """
     Args:
-        body (ComponentUsageCreateRequest):
+        uuid (str):
+        obj_uuid (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -65,7 +58,8 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        body=body,
+        uuid=uuid,
+        obj_uuid=obj_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -76,13 +70,15 @@ def sync_detailed(
 
 
 async def asyncio_detailed(
+    uuid: str,
+    obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: ComponentUsageCreateRequest,
 ) -> Response[Any]:
     """
     Args:
-        body (ComponentUsageCreateRequest):
+        uuid (str):
+        obj_uuid (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -93,7 +89,8 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        body=body,
+        uuid=uuid,
+        obj_uuid=obj_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)

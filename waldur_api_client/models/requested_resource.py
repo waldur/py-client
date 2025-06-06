@@ -22,6 +22,8 @@ class RequestedResource:
         requested_offering (NestedRequestedOffering):
         resource (Union[None, str]):
         resource_name (str):
+        call_resource_template (str):
+        call_resource_template_name (str):
         created_by (Union[None, str]):
         created_by_name (str):
         attributes (Union[Unset, Any]):
@@ -34,6 +36,8 @@ class RequestedResource:
     requested_offering: "NestedRequestedOffering"
     resource: Union[None, str]
     resource_name: str
+    call_resource_template: str
+    call_resource_template_name: str
     created_by: Union[None, str]
     created_by_name: str
     attributes: Union[Unset, Any] = UNSET
@@ -52,6 +56,10 @@ class RequestedResource:
         resource = self.resource
 
         resource_name = self.resource_name
+
+        call_resource_template = self.call_resource_template
+
+        call_resource_template_name = self.call_resource_template_name
 
         created_by: Union[None, str]
         created_by = self.created_by
@@ -73,6 +81,8 @@ class RequestedResource:
                 "requested_offering": requested_offering,
                 "resource": resource,
                 "resource_name": resource_name,
+                "call_resource_template": call_resource_template,
+                "call_resource_template_name": call_resource_template_name,
                 "created_by": created_by,
                 "created_by_name": created_by_name,
             }
@@ -106,6 +116,10 @@ class RequestedResource:
 
         resource_name = d.pop("resource_name")
 
+        call_resource_template = d.pop("call_resource_template")
+
+        call_resource_template_name = d.pop("call_resource_template_name")
+
         def _parse_created_by(data: object) -> Union[None, str]:
             if data is None:
                 return data
@@ -127,6 +141,8 @@ class RequestedResource:
             requested_offering=requested_offering,
             resource=resource,
             resource_name=resource_name,
+            call_resource_template=call_resource_template,
+            call_resource_template_name=call_resource_template_name,
             created_by=created_by,
             created_by_name=created_by_name,
             attributes=attributes,
