@@ -167,7 +167,6 @@ from .component_usage import ComponentUsage
 from .component_usage_create_request import ComponentUsageCreateRequest
 from .component_usage_item_request import ComponentUsageItemRequest
 from .component_user_usage import ComponentUserUsage
-from .component_user_usage_create import ComponentUserUsageCreate
 from .component_user_usage_create_request import ComponentUserUsageCreateRequest
 from .component_user_usage_limit import ComponentUserUsageLimit
 from .component_user_usage_limit_request import ComponentUserUsageLimitRequest
@@ -1394,7 +1393,6 @@ __all__ = (
     "ComponentUsageCreateRequest",
     "ComponentUsageItemRequest",
     "ComponentUserUsage",
-    "ComponentUserUsageCreate",
     "ComponentUserUsageCreateRequest",
     "ComponentUserUsageLimit",
     "ComponentUserUsageLimitRequest",
