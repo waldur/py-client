@@ -15,10 +15,12 @@ class OpenStackPortNestedSecurityGroup:
     Attributes:
         uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
+        url (Union[Unset, str]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
     name: Union[Unset, str] = UNSET
+    url: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -28,6 +30,8 @@ class OpenStackPortNestedSecurityGroup:
 
         name = self.name
 
+        url = self.url
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -35,6 +39,8 @@ class OpenStackPortNestedSecurityGroup:
             field_dict["uuid"] = uuid
         if name is not UNSET:
             field_dict["name"] = name
+        if url is not UNSET:
+            field_dict["url"] = url
 
         return field_dict
 
@@ -50,9 +56,12 @@ class OpenStackPortNestedSecurityGroup:
 
         name = d.pop("name", UNSET)
 
+        url = d.pop("url", UNSET)
+
         open_stack_port_nested_security_group = cls(
             uuid=uuid,
             name=name,
+            url=url,
         )
 
         open_stack_port_nested_security_group.additional_properties = d

@@ -9,6 +9,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.open_stack_allowed_address_pair import OpenStackAllowedAddressPair
     from ..models.open_stack_fixed_ip import OpenStackFixedIp
+    from ..models.open_stack_security_group import OpenStackSecurityGroup
 
 
 T = TypeVar("T", bound="OpenStackNestedPort")
@@ -29,6 +30,7 @@ class OpenStackNestedPort:
         allowed_address_pairs (Union[Unset, list['OpenStackAllowedAddressPair']]):
         device_id (Union[None, Unset, str]):
         device_owner (Union[None, Unset, str]):
+        security_groups (Union[Unset, list['OpenStackSecurityGroup']]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -42,6 +44,7 @@ class OpenStackNestedPort:
     allowed_address_pairs: Union[Unset, list["OpenStackAllowedAddressPair"]] = UNSET
     device_id: Union[None, Unset, str] = UNSET
     device_owner: Union[None, Unset, str] = UNSET
+    security_groups: Union[Unset, list["OpenStackSecurityGroup"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -107,6 +110,13 @@ class OpenStackNestedPort:
         else:
             device_owner = self.device_owner
 
+        security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.security_groups, Unset):
+            security_groups = []
+            for security_groups_item_data in self.security_groups:
+                security_groups_item = security_groups_item_data.to_dict()
+                security_groups.append(security_groups_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -132,6 +142,8 @@ class OpenStackNestedPort:
             field_dict["device_id"] = device_id
         if device_owner is not UNSET:
             field_dict["device_owner"] = device_owner
+        if security_groups is not UNSET:
+            field_dict["security_groups"] = security_groups
 
         return field_dict
 
@@ -139,6 +151,7 @@ class OpenStackNestedPort:
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         from ..models.open_stack_allowed_address_pair import OpenStackAllowedAddressPair
         from ..models.open_stack_fixed_ip import OpenStackFixedIp
+        from ..models.open_stack_security_group import OpenStackSecurityGroup
 
         d = src_dict.copy()
         url = d.pop("url", UNSET)
@@ -230,6 +243,13 @@ class OpenStackNestedPort:
 
         device_owner = _parse_device_owner(d.pop("device_owner", UNSET))
 
+        security_groups = []
+        _security_groups = d.pop("security_groups", UNSET)
+        for security_groups_item_data in _security_groups or []:
+            security_groups_item = OpenStackSecurityGroup.from_dict(security_groups_item_data)
+
+            security_groups.append(security_groups_item)
+
         open_stack_nested_port = cls(
             url=url,
             fixed_ips=fixed_ips,
@@ -242,6 +262,7 @@ class OpenStackNestedPort:
             allowed_address_pairs=allowed_address_pairs,
             device_id=device_id,
             device_owner=device_owner,
+            security_groups=security_groups,
         )
 
         open_stack_nested_port.additional_properties = d
