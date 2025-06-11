@@ -33,6 +33,7 @@ class UsersMeRetrieveFieldItem(str, Enum):
     REQUESTED_EMAIL = "requested_email"
     SLUG = "slug"
     TOKEN = "token"
+    TOKEN_EXPIRES_AT = "token_expires_at"
     TOKEN_LIFETIME = "token_lifetime"
     URL = "url"
     USERNAME = "username"

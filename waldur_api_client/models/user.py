@@ -38,6 +38,7 @@ class User:
         is_support (Union[Unset, bool]): Designates whether the user is a global support user.
         token (Union[Unset, str]):
         token_lifetime (Union[None, Unset, int]): Token lifetime in seconds.
+        token_expires_at (Union[None, Unset, datetime.datetime]):
         registration_method (Union[Unset, str]): Indicates what registration method was used.
         date_joined (Union[Unset, datetime.datetime]):
         agreement_date (Union[None, Unset, datetime.datetime]): Indicates when the user has agreed with the policy.
@@ -75,6 +76,7 @@ class User:
     is_support: Union[Unset, bool] = UNSET
     token: Union[Unset, str] = UNSET
     token_lifetime: Union[None, Unset, int] = UNSET
+    token_expires_at: Union[None, Unset, datetime.datetime] = UNSET
     registration_method: Union[Unset, str] = UNSET
     date_joined: Union[Unset, datetime.datetime] = UNSET
     agreement_date: Union[None, Unset, datetime.datetime] = UNSET
@@ -138,6 +140,14 @@ class User:
             token_lifetime = UNSET
         else:
             token_lifetime = self.token_lifetime
+
+        token_expires_at: Union[None, Unset, str]
+        if isinstance(self.token_expires_at, Unset):
+            token_expires_at = UNSET
+        elif isinstance(self.token_expires_at, datetime.datetime):
+            token_expires_at = self.token_expires_at.isoformat()
+        else:
+            token_expires_at = self.token_expires_at
 
         registration_method = self.registration_method
 
@@ -233,6 +243,8 @@ class User:
             field_dict["token"] = token
         if token_lifetime is not UNSET:
             field_dict["token_lifetime"] = token_lifetime
+        if token_expires_at is not UNSET:
+            field_dict["token_expires_at"] = token_expires_at
         if registration_method is not UNSET:
             field_dict["registration_method"] = registration_method
         if date_joined is not UNSET:
@@ -328,6 +340,23 @@ class User:
 
         token_lifetime = _parse_token_lifetime(d.pop("token_lifetime", UNSET))
 
+        def _parse_token_expires_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                token_expires_at_type_0 = isoparse(data)
+
+                return token_expires_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        token_expires_at = _parse_token_expires_at(d.pop("token_expires_at", UNSET))
+
         registration_method = d.pop("registration_method", UNSET)
 
         _date_joined = d.pop("date_joined", UNSET)
@@ -419,6 +448,7 @@ class User:
             is_support=is_support,
             token=token,
             token_lifetime=token_lifetime,
+            token_expires_at=token_expires_at,
             registration_method=registration_method,
             date_joined=date_joined,
             agreement_date=agreement_date,
