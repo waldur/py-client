@@ -24,7 +24,8 @@ class ProposalReview:
         reviewer (str):
         reviewer_full_name (str):
         reviewer_uuid (UUID):
-        anonymous_reviewer_name (str): Generate an anonymous reviewer identifier like 'Reviewer 1', 'Reviewer 2'.
+        anonymous_reviewer_name (Union[None, str]): Generate an anonymous reviewer identifier like 'Reviewer 1',
+            'Reviewer 2'.
             Returns None if the review is not associated with a proposal.
         state (ProposalReviewStateEnum):
         review_end_date (datetime.datetime):
@@ -56,7 +57,7 @@ class ProposalReview:
     reviewer: str
     reviewer_full_name: str
     reviewer_uuid: UUID
-    anonymous_reviewer_name: str
+    anonymous_reviewer_name: Union[None, str]
     state: ProposalReviewStateEnum
     review_end_date: datetime.datetime
     round_uuid: UUID
@@ -96,6 +97,7 @@ class ProposalReview:
 
         reviewer_uuid = str(self.reviewer_uuid)
 
+        anonymous_reviewer_name: Union[None, str]
         anonymous_reviewer_name = self.anonymous_reviewer_name
 
         state = self.state.value
@@ -243,7 +245,12 @@ class ProposalReview:
 
         reviewer_uuid = UUID(d.pop("reviewer_uuid"))
 
-        anonymous_reviewer_name = d.pop("anonymous_reviewer_name")
+        def _parse_anonymous_reviewer_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        anonymous_reviewer_name = _parse_anonymous_reviewer_name(d.pop("anonymous_reviewer_name"))
 
         state = ProposalReviewStateEnum(d.pop("state"))
 
