@@ -24,6 +24,8 @@ class ProposalReview:
         reviewer (str):
         reviewer_full_name (str):
         reviewer_uuid (UUID):
+        anonymous_reviewer_name (str): Generate an anonymous reviewer identifier like 'Reviewer 1', 'Reviewer 2'.
+            Returns None if the review is not associated with a proposal.
         state (ProposalReviewStateEnum):
         review_end_date (datetime.datetime):
         round_uuid (UUID):
@@ -54,6 +56,7 @@ class ProposalReview:
     reviewer: str
     reviewer_full_name: str
     reviewer_uuid: UUID
+    anonymous_reviewer_name: str
     state: ProposalReviewStateEnum
     review_end_date: datetime.datetime
     round_uuid: UUID
@@ -92,6 +95,8 @@ class ProposalReview:
         reviewer_full_name = self.reviewer_full_name
 
         reviewer_uuid = str(self.reviewer_uuid)
+
+        anonymous_reviewer_name = self.anonymous_reviewer_name
 
         state = self.state.value
 
@@ -181,6 +186,7 @@ class ProposalReview:
                 "reviewer": reviewer,
                 "reviewer_full_name": reviewer_full_name,
                 "reviewer_uuid": reviewer_uuid,
+                "anonymous_reviewer_name": anonymous_reviewer_name,
                 "state": state,
                 "review_end_date": review_end_date,
                 "round_uuid": round_uuid,
@@ -236,6 +242,8 @@ class ProposalReview:
         reviewer_full_name = d.pop("reviewer_full_name")
 
         reviewer_uuid = UUID(d.pop("reviewer_uuid"))
+
+        anonymous_reviewer_name = d.pop("anonymous_reviewer_name")
 
         state = ProposalReviewStateEnum(d.pop("state"))
 
@@ -355,6 +363,7 @@ class ProposalReview:
             reviewer=reviewer,
             reviewer_full_name=reviewer_full_name,
             reviewer_uuid=reviewer_uuid,
+            anonymous_reviewer_name=anonymous_reviewer_name,
             state=state,
             review_end_date=review_end_date,
             round_uuid=round_uuid,

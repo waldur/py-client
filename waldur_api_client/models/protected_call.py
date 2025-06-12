@@ -42,6 +42,10 @@ class ProtectedCall:
         fixed_duration_in_days (Union[None, Unset, int]):
         backend_id (Union[Unset, str]):
         external_url (Union[None, Unset, str]):
+        reviewer_identity_visible_to_submitters (Union[Unset, bool]): Whether proposal submitters can see reviewer
+            identities
+        reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal submitters can see review comments and
+            scores
         created_by (Union[None, Unset, str]):
         reference_code (Union[Unset, str]):
         default_project_role (Union[Unset, UUID]):
@@ -68,6 +72,8 @@ class ProtectedCall:
     fixed_duration_in_days: Union[None, Unset, int] = UNSET
     backend_id: Union[Unset, str] = UNSET
     external_url: Union[None, Unset, str] = UNSET
+    reviewer_identity_visible_to_submitters: Union[Unset, bool] = UNSET
+    reviews_visible_to_submitters: Union[Unset, bool] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     reference_code: Union[Unset, str] = UNSET
     default_project_role: Union[Unset, UUID] = UNSET
@@ -154,6 +160,10 @@ class ProtectedCall:
         else:
             external_url = self.external_url
 
+        reviewer_identity_visible_to_submitters = self.reviewer_identity_visible_to_submitters
+
+        reviews_visible_to_submitters = self.reviews_visible_to_submitters
+
         created_by: Union[None, Unset, str]
         if isinstance(self.created_by, Unset):
             created_by = UNSET
@@ -211,6 +221,10 @@ class ProtectedCall:
             field_dict["backend_id"] = backend_id
         if external_url is not UNSET:
             field_dict["external_url"] = external_url
+        if reviewer_identity_visible_to_submitters is not UNSET:
+            field_dict["reviewer_identity_visible_to_submitters"] = reviewer_identity_visible_to_submitters
+        if reviews_visible_to_submitters is not UNSET:
+            field_dict["reviews_visible_to_submitters"] = reviews_visible_to_submitters
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if reference_code is not UNSET:
@@ -334,6 +348,10 @@ class ProtectedCall:
 
         external_url = _parse_external_url(d.pop("external_url", UNSET))
 
+        reviewer_identity_visible_to_submitters = d.pop("reviewer_identity_visible_to_submitters", UNSET)
+
+        reviews_visible_to_submitters = d.pop("reviews_visible_to_submitters", UNSET)
+
         def _parse_created_by(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -376,6 +394,8 @@ class ProtectedCall:
             fixed_duration_in_days=fixed_duration_in_days,
             backend_id=backend_id,
             external_url=external_url,
+            reviewer_identity_visible_to_submitters=reviewer_identity_visible_to_submitters,
+            reviews_visible_to_submitters=reviews_visible_to_submitters,
             created_by=created_by,
             reference_code=reference_code,
             default_project_role=default_project_role,

@@ -1,5 +1,5 @@
 import datetime
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -7,10 +7,6 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.proposal_states import ProposalStates
-
-if TYPE_CHECKING:
-    from ..models.proposal_review import ProposalReview
-
 
 T = TypeVar("T", bound="ProtectedProposalList")
 
@@ -22,7 +18,9 @@ class ProtectedProposalList:
         uuid (UUID):
         name (str):
         state (ProposalStates):
-        reviews (list['ProposalReview']):
+        reviews (list[Any]): Return serialized reviews based on user permissions and visibility settings.
+            - Staff, call managers, and reviewers see all reviews.
+            - Submitters see submitted reviews if visibility is enabled.
         approved_by_name (str):
         created_by_name (str):
         created (datetime.datetime):
@@ -31,7 +29,7 @@ class ProtectedProposalList:
     uuid: UUID
     name: str
     state: ProposalStates
-    reviews: list["ProposalReview"]
+    reviews: list[Any]
     approved_by_name: str
     created_by_name: str
     created: datetime.datetime
@@ -44,10 +42,7 @@ class ProtectedProposalList:
 
         state = self.state.value
 
-        reviews = []
-        for reviews_item_data in self.reviews:
-            reviews_item = reviews_item_data.to_dict()
-            reviews.append(reviews_item)
+        reviews = self.reviews
 
         approved_by_name = self.approved_by_name
 
@@ -73,8 +68,6 @@ class ProtectedProposalList:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        from ..models.proposal_review import ProposalReview
-
         d = src_dict.copy()
         uuid = UUID(d.pop("uuid"))
 
@@ -82,12 +75,7 @@ class ProtectedProposalList:
 
         state = ProposalStates(d.pop("state"))
 
-        reviews = []
-        _reviews = d.pop("reviews")
-        for reviews_item_data in _reviews:
-            reviews_item = ProposalReview.from_dict(reviews_item_data)
-
-            reviews.append(reviews_item)
+        reviews = cast(list[Any], d.pop("reviews"))
 
         approved_by_name = d.pop("approved_by_name")
 
