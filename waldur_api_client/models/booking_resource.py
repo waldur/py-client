@@ -103,6 +103,8 @@ class BookingResource:
         order_in_progress (Union['OrderDetails', None, Unset]):
         creation_order (Union['OrderDetails', None, Unset]):
         service_settings_uuid (Union[Unset, UUID]):
+        project_slug (Union[Unset, str]):
+        customer_slug (Union[Unset, str]):
         created_by (Union[Unset, str]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
@@ -185,6 +187,8 @@ class BookingResource:
     order_in_progress: Union["OrderDetails", None, Unset] = UNSET
     creation_order: Union["OrderDetails", None, Unset] = UNSET
     service_settings_uuid: Union[Unset, UUID] = UNSET
+    project_slug: Union[Unset, str] = UNSET
+    customer_slug: Union[Unset, str] = UNSET
     created_by: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
@@ -451,6 +455,10 @@ class BookingResource:
         if not isinstance(self.service_settings_uuid, Unset):
             service_settings_uuid = str(self.service_settings_uuid)
 
+        project_slug = self.project_slug
+
+        customer_slug = self.customer_slug
+
         created_by = self.created_by
 
         created_by_username = self.created_by_username
@@ -615,6 +623,10 @@ class BookingResource:
             field_dict["creation_order"] = creation_order
         if service_settings_uuid is not UNSET:
             field_dict["service_settings_uuid"] = service_settings_uuid
+        if project_slug is not UNSET:
+            field_dict["project_slug"] = project_slug
+        if customer_slug is not UNSET:
+            field_dict["customer_slug"] = customer_slug
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_username is not UNSET:
@@ -1032,6 +1044,10 @@ class BookingResource:
         else:
             service_settings_uuid = UUID(_service_settings_uuid)
 
+        project_slug = d.pop("project_slug", UNSET)
+
+        customer_slug = d.pop("customer_slug", UNSET)
+
         created_by = d.pop("created_by", UNSET)
 
         created_by_username = d.pop("created_by_username", UNSET)
@@ -1123,6 +1139,8 @@ class BookingResource:
             order_in_progress=order_in_progress,
             creation_order=creation_order,
             service_settings_uuid=service_settings_uuid,
+            project_slug=project_slug,
+            customer_slug=customer_slug,
             created_by=created_by,
             created_by_username=created_by_username,
             created_by_full_name=created_by_full_name,

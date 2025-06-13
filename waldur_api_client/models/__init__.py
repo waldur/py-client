@@ -1054,7 +1054,6 @@ from .resource_options_request import ResourceOptionsRequest
 from .resource_plan_period import ResourcePlanPeriod
 from .resource_report import ResourceReport
 from .resource_report_request import ResourceReportRequest
-from .resource_request import ResourceRequest
 from .resource_set_limits import ResourceSetLimits
 from .resource_set_limits_request import ResourceSetLimitsRequest
 from .resource_set_state_erred import ResourceSetStateErred
@@ -2215,7 +2214,6 @@ __all__ = (
     "ResourcePlanPeriod",
     "ResourceReport",
     "ResourceReportRequest",
-    "ResourceRequest",
     "ResourceSetLimits",
     "ResourceSetLimitsRequest",
     "ResourceSetStateErred",

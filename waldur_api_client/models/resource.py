@@ -102,6 +102,8 @@ class Resource:
         order_in_progress (Union['OrderDetails', None, Unset]):
         creation_order (Union['OrderDetails', None, Unset]):
         service_settings_uuid (Union[Unset, UUID]):
+        project_slug (Union[Unset, str]):
+        customer_slug (Union[Unset, str]):
     """
 
     offering: Union[Unset, str] = UNSET
@@ -175,6 +177,8 @@ class Resource:
     order_in_progress: Union["OrderDetails", None, Unset] = UNSET
     creation_order: Union["OrderDetails", None, Unset] = UNSET
     service_settings_uuid: Union[Unset, UUID] = UNSET
+    project_slug: Union[Unset, str] = UNSET
+    customer_slug: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -434,6 +438,10 @@ class Resource:
         if not isinstance(self.service_settings_uuid, Unset):
             service_settings_uuid = str(self.service_settings_uuid)
 
+        project_slug = self.project_slug
+
+        customer_slug = self.customer_slug
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -579,6 +587,10 @@ class Resource:
             field_dict["creation_order"] = creation_order
         if service_settings_uuid is not UNSET:
             field_dict["service_settings_uuid"] = service_settings_uuid
+        if project_slug is not UNSET:
+            field_dict["project_slug"] = project_slug
+        if customer_slug is not UNSET:
+            field_dict["customer_slug"] = customer_slug
 
         return field_dict
 
@@ -981,6 +993,10 @@ class Resource:
         else:
             service_settings_uuid = UUID(_service_settings_uuid)
 
+        project_slug = d.pop("project_slug", UNSET)
+
+        customer_slug = d.pop("customer_slug", UNSET)
+
         resource = cls(
             offering=offering,
             offering_name=offering_name,
@@ -1053,6 +1069,8 @@ class Resource:
             order_in_progress=order_in_progress,
             creation_order=creation_order,
             service_settings_uuid=service_settings_uuid,
+            project_slug=project_slug,
+            customer_slug=customer_slug,
         )
 
         resource.additional_properties = d
