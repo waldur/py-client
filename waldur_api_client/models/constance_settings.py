@@ -135,6 +135,11 @@ class ConstanceSettings:
         freeipa_group_synchronization_enabled (Union[Unset, bool]):
         keycloak_icon (Union[None, Unset, str]):
         countries (Union[Unset, list[str]]):
+        oidc_introspection_url (Union[Unset, str]):
+        oidc_client_id (Union[Unset, str]):
+        oidc_client_secret (Union[Unset, str]):
+        oidc_user_field (Union[Unset, str]):
+        oidc_cache_timeout (Union[Unset, int]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -260,6 +265,11 @@ class ConstanceSettings:
     freeipa_group_synchronization_enabled: Union[Unset, bool] = UNSET
     keycloak_icon: Union[None, Unset, str] = UNSET
     countries: Union[Unset, list[str]] = UNSET
+    oidc_introspection_url: Union[Unset, str] = UNSET
+    oidc_client_id: Union[Unset, str] = UNSET
+    oidc_client_secret: Union[Unset, str] = UNSET
+    oidc_user_field: Union[Unset, str] = UNSET
+    oidc_cache_timeout: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -561,6 +571,16 @@ class ConstanceSettings:
         if not isinstance(self.countries, Unset):
             countries = self.countries
 
+        oidc_introspection_url = self.oidc_introspection_url
+
+        oidc_client_id = self.oidc_client_id
+
+        oidc_client_secret = self.oidc_client_secret
+
+        oidc_user_field = self.oidc_user_field
+
+        oidc_cache_timeout = self.oidc_cache_timeout
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -814,6 +834,16 @@ class ConstanceSettings:
             field_dict["KEYCLOAK_ICON"] = keycloak_icon
         if countries is not UNSET:
             field_dict["COUNTRIES"] = countries
+        if oidc_introspection_url is not UNSET:
+            field_dict["OIDC_INTROSPECTION_URL"] = oidc_introspection_url
+        if oidc_client_id is not UNSET:
+            field_dict["OIDC_CLIENT_ID"] = oidc_client_id
+        if oidc_client_secret is not UNSET:
+            field_dict["OIDC_CLIENT_SECRET"] = oidc_client_secret
+        if oidc_user_field is not UNSET:
+            field_dict["OIDC_USER_FIELD"] = oidc_user_field
+        if oidc_cache_timeout is not UNSET:
+            field_dict["OIDC_CACHE_TIMEOUT"] = oidc_cache_timeout
 
         return field_dict
 
@@ -1154,6 +1184,16 @@ class ConstanceSettings:
 
         countries = cast(list[str], d.pop("COUNTRIES", UNSET))
 
+        oidc_introspection_url = d.pop("OIDC_INTROSPECTION_URL", UNSET)
+
+        oidc_client_id = d.pop("OIDC_CLIENT_ID", UNSET)
+
+        oidc_client_secret = d.pop("OIDC_CLIENT_SECRET", UNSET)
+
+        oidc_user_field = d.pop("OIDC_USER_FIELD", UNSET)
+
+        oidc_cache_timeout = d.pop("OIDC_CACHE_TIMEOUT", UNSET)
+
         constance_settings = cls(
             site_name=site_name,
             site_description=site_description,
@@ -1278,6 +1318,11 @@ class ConstanceSettings:
             freeipa_group_synchronization_enabled=freeipa_group_synchronization_enabled,
             keycloak_icon=keycloak_icon,
             countries=countries,
+            oidc_introspection_url=oidc_introspection_url,
+            oidc_client_id=oidc_client_id,
+            oidc_client_secret=oidc_client_secret,
+            oidc_user_field=oidc_user_field,
+            oidc_cache_timeout=oidc_cache_timeout,
         )
 
         constance_settings.additional_properties = d

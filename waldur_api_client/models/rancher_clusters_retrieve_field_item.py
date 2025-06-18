@@ -4,6 +4,7 @@ from enum import Enum
 class RancherClustersRetrieveFieldItem(str, Enum):
     ACCESS_URL = "access_url"
     BACKEND_ID = "backend_id"
+    CAPACITY = "capacity"
     CREATED = "created"
     CUSTOMER = "customer"
     CUSTOMER_ABBREVIATION = "customer_abbreviation"
@@ -15,6 +16,7 @@ class RancherClustersRetrieveFieldItem(str, Enum):
     INSTALL_LONGHORN = "install_longhorn"
     IS_LIMIT_BASED = "is_limit_based"
     IS_USAGE_BASED = "is_usage_based"
+    KUBERNETES_VERSION = "kubernetes_version"
     MANAGEMENT_SECURITY_GROUP = "management_security_group"
     MARKETPLACE_CATEGORY_NAME = "marketplace_category_name"
     MARKETPLACE_CATEGORY_UUID = "marketplace_category_uuid"
@@ -31,6 +33,7 @@ class RancherClustersRetrieveFieldItem(str, Enum):
     PROJECT_NAME = "project_name"
     PROJECT_UUID = "project_uuid"
     PUBLIC_IPS = "public_ips"
+    REQUESTED = "requested"
     RESOURCE_TYPE = "resource_type"
     RUNTIME_STATE = "runtime_state"
     SECURITY_GROUPS = "security_groups"

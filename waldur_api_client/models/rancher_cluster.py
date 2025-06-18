@@ -57,6 +57,10 @@ class RancherCluster:
             cluster Default: False.
         management_security_group (Union[Unset, str]):
         public_ips (Union[Unset, list['RancherNestedPublicIP']]):
+        capacity (Union[Unset, Any]): Cluster capacity in the format {'cpu': '10', 'ram': '49125240Ki', 'pods': '330'}
+        requested (Union[Unset, Any]): Cluster requested resources in the format {'cpu': '1450m', 'memory': '884Mi',
+            'pods': '13'}
+        kubernetes_version (Union[Unset, str]): Kubernetes version used in the cluster.
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_plugin_options (Union['RancherClusterMarketplaceOfferingPluginOptionsType0', None, Unset]):
@@ -101,6 +105,9 @@ class RancherCluster:
     install_longhorn: Union[Unset, bool] = False
     management_security_group: Union[Unset, str] = UNSET
     public_ips: Union[Unset, list["RancherNestedPublicIP"]] = UNSET
+    capacity: Union[Unset, Any] = UNSET
+    requested: Union[Unset, Any] = UNSET
+    kubernetes_version: Union[Unset, str] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_plugin_options: Union["RancherClusterMarketplaceOfferingPluginOptionsType0", None, Unset] = (
@@ -215,6 +222,12 @@ class RancherCluster:
             for public_ips_item_data in self.public_ips:
                 public_ips_item = public_ips_item_data.to_dict()
                 public_ips.append(public_ips_item)
+
+        capacity = self.capacity
+
+        requested = self.requested
+
+        kubernetes_version = self.kubernetes_version
 
         marketplace_offering_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_offering_uuid, Unset):
@@ -345,6 +358,12 @@ class RancherCluster:
             field_dict["management_security_group"] = management_security_group
         if public_ips is not UNSET:
             field_dict["public_ips"] = public_ips
+        if capacity is not UNSET:
+            field_dict["capacity"] = capacity
+        if requested is not UNSET:
+            field_dict["requested"] = requested
+        if kubernetes_version is not UNSET:
+            field_dict["kubernetes_version"] = kubernetes_version
         if marketplace_offering_uuid is not UNSET:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
@@ -500,6 +519,12 @@ class RancherCluster:
 
             public_ips.append(public_ips_item)
 
+        capacity = d.pop("capacity", UNSET)
+
+        requested = d.pop("requested", UNSET)
+
+        kubernetes_version = d.pop("kubernetes_version", UNSET)
+
         def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -637,6 +662,9 @@ class RancherCluster:
             install_longhorn=install_longhorn,
             management_security_group=management_security_group,
             public_ips=public_ips,
+            capacity=capacity,
+            requested=requested,
+            kubernetes_version=kubernetes_version,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
             marketplace_offering_plugin_options=marketplace_offering_plugin_options,
