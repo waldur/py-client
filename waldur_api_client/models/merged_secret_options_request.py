@@ -38,6 +38,7 @@ class MergedSecretOptionsRequest:
         username (Union[Unset, str]):
         password (Union[Unset, str]):
         cloud_init_template (Union[Unset, str]):
+        managed_rancher_load_balancer_cloud_init_template (Union[Unset, str]):
         vault_host (Union[Unset, str]): Host of the Vault server
         vault_port (Union[Unset, int]): Port of the Vault server
         vault_token (Union[Unset, str]): Token for the Vault server
@@ -79,6 +80,7 @@ class MergedSecretOptionsRequest:
     username: Union[Unset, str] = UNSET
     password: Union[Unset, str] = UNSET
     cloud_init_template: Union[Unset, str] = UNSET
+    managed_rancher_load_balancer_cloud_init_template: Union[Unset, str] = UNSET
     vault_host: Union[Unset, str] = UNSET
     vault_port: Union[Unset, int] = UNSET
     vault_token: Union[Unset, str] = UNSET
@@ -147,6 +149,8 @@ class MergedSecretOptionsRequest:
         password = self.password
 
         cloud_init_template = self.cloud_init_template
+
+        managed_rancher_load_balancer_cloud_init_template = self.managed_rancher_load_balancer_cloud_init_template
 
         vault_host = self.vault_host
 
@@ -231,6 +235,10 @@ class MergedSecretOptionsRequest:
             field_dict["password"] = password
         if cloud_init_template is not UNSET:
             field_dict["cloud_init_template"] = cloud_init_template
+        if managed_rancher_load_balancer_cloud_init_template is not UNSET:
+            field_dict["managed_rancher_load_balancer_cloud_init_template"] = (
+                managed_rancher_load_balancer_cloud_init_template
+            )
         if vault_host is not UNSET:
             field_dict["vault_host"] = vault_host
         if vault_port is not UNSET:
@@ -322,6 +330,10 @@ class MergedSecretOptionsRequest:
 
         cloud_init_template = d.pop("cloud_init_template", UNSET)
 
+        managed_rancher_load_balancer_cloud_init_template = d.pop(
+            "managed_rancher_load_balancer_cloud_init_template", UNSET
+        )
+
         vault_host = d.pop("vault_host", UNSET)
 
         vault_port = d.pop("vault_port", UNSET)
@@ -386,6 +398,7 @@ class MergedSecretOptionsRequest:
             username=username,
             password=password,
             cloud_init_template=cloud_init_template,
+            managed_rancher_load_balancer_cloud_init_template=managed_rancher_load_balancer_cloud_init_template,
             vault_host=vault_host,
             vault_port=vault_port,
             vault_token=vault_token,

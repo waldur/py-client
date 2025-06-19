@@ -58,7 +58,6 @@ class MergedPluginOptionsRequest:
         managed_rancher_server_data_volume_type_name (Union[Unset, str]):
         managed_rancher_worker_system_volume_size_gb (Union[Unset, int]):
         managed_rancher_worker_system_volume_type_name (Union[Unset, str]):
-        managed_rancher_load_balancer_cloud_init_template (Union[Unset, str]):
         managed_rancher_load_balancer_flavor_name (Union[Unset, str]):
         managed_rancher_load_balancer_system_volume_size_gb (Union[Unset, int]):
         managed_rancher_load_balancer_system_volume_type_name (Union[Unset, str]):
@@ -104,7 +103,6 @@ class MergedPluginOptionsRequest:
     managed_rancher_server_data_volume_type_name: Union[Unset, str] = UNSET
     managed_rancher_worker_system_volume_size_gb: Union[Unset, int] = UNSET
     managed_rancher_worker_system_volume_type_name: Union[Unset, str] = UNSET
-    managed_rancher_load_balancer_cloud_init_template: Union[Unset, str] = UNSET
     managed_rancher_load_balancer_flavor_name: Union[Unset, str] = UNSET
     managed_rancher_load_balancer_system_volume_size_gb: Union[Unset, int] = UNSET
     managed_rancher_load_balancer_system_volume_type_name: Union[Unset, str] = UNSET
@@ -189,8 +187,6 @@ class MergedPluginOptionsRequest:
         managed_rancher_worker_system_volume_size_gb = self.managed_rancher_worker_system_volume_size_gb
 
         managed_rancher_worker_system_volume_type_name = self.managed_rancher_worker_system_volume_type_name
-
-        managed_rancher_load_balancer_cloud_init_template = self.managed_rancher_load_balancer_cloud_init_template
 
         managed_rancher_load_balancer_flavor_name = self.managed_rancher_load_balancer_flavor_name
 
@@ -286,10 +282,6 @@ class MergedPluginOptionsRequest:
         if managed_rancher_worker_system_volume_type_name is not UNSET:
             field_dict["managed_rancher_worker_system_volume_type_name"] = (
                 managed_rancher_worker_system_volume_type_name
-            )
-        if managed_rancher_load_balancer_cloud_init_template is not UNSET:
-            field_dict["managed_rancher_load_balancer_cloud_init_template"] = (
-                managed_rancher_load_balancer_cloud_init_template
             )
         if managed_rancher_load_balancer_flavor_name is not UNSET:
             field_dict["managed_rancher_load_balancer_flavor_name"] = managed_rancher_load_balancer_flavor_name
@@ -400,10 +392,6 @@ class MergedPluginOptionsRequest:
 
         managed_rancher_worker_system_volume_type_name = d.pop("managed_rancher_worker_system_volume_type_name", UNSET)
 
-        managed_rancher_load_balancer_cloud_init_template = d.pop(
-            "managed_rancher_load_balancer_cloud_init_template", UNSET
-        )
-
         managed_rancher_load_balancer_flavor_name = d.pop("managed_rancher_load_balancer_flavor_name", UNSET)
 
         managed_rancher_load_balancer_system_volume_size_gb = d.pop(
@@ -476,7 +464,6 @@ class MergedPluginOptionsRequest:
             managed_rancher_server_data_volume_type_name=managed_rancher_server_data_volume_type_name,
             managed_rancher_worker_system_volume_size_gb=managed_rancher_worker_system_volume_size_gb,
             managed_rancher_worker_system_volume_type_name=managed_rancher_worker_system_volume_type_name,
-            managed_rancher_load_balancer_cloud_init_template=managed_rancher_load_balancer_cloud_init_template,
             managed_rancher_load_balancer_flavor_name=managed_rancher_load_balancer_flavor_name,
             managed_rancher_load_balancer_system_volume_size_gb=managed_rancher_load_balancer_system_volume_size_gb,
             managed_rancher_load_balancer_system_volume_type_name=managed_rancher_load_balancer_system_volume_type_name,

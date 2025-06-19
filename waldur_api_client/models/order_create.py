@@ -50,6 +50,7 @@ class OrderCreate:
         resource_name (str):
         cost (Union[None, str]):
         state (OrderState):
+        output (str):
         marketplace_resource_uuid (UUID):
         error_message (str):
         completed_at (Union[None, datetime.datetime]):
@@ -73,7 +74,6 @@ class OrderCreate:
         attributes (Union[Unset, Any]):
         limits (Union[Unset, OrderCreateLimits]):
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
-        output (Union[Unset, str]):
         callback_url (Union[None, Unset, str]):
     """
 
@@ -105,6 +105,7 @@ class OrderCreate:
     resource_name: str
     cost: Union[None, str]
     state: OrderState
+    output: str
     marketplace_resource_uuid: UUID
     error_message: str
     completed_at: Union[None, datetime.datetime]
@@ -126,7 +127,6 @@ class OrderCreate:
     attributes: Union[Unset, Any] = UNSET
     limits: Union[Unset, "OrderCreateLimits"] = UNSET
     type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
-    output: Union[Unset, str] = UNSET
     callback_url: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -203,6 +203,8 @@ class OrderCreate:
 
         state = self.state.value
 
+        output = self.output
+
         marketplace_resource_uuid = str(self.marketplace_resource_uuid)
 
         error_message = self.error_message
@@ -260,8 +262,6 @@ class OrderCreate:
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
-        output = self.output
-
         callback_url: Union[None, Unset, str]
         if isinstance(self.callback_url, Unset):
             callback_url = UNSET
@@ -300,6 +300,7 @@ class OrderCreate:
                 "resource_name": resource_name,
                 "cost": cost,
                 "state": state,
+                "output": output,
                 "marketplace_resource_uuid": marketplace_resource_uuid,
                 "error_message": error_message,
                 "completed_at": completed_at,
@@ -327,8 +328,6 @@ class OrderCreate:
             field_dict["limits"] = limits
         if type_ is not UNSET:
             field_dict["type"] = type_
-        if output is not UNSET:
-            field_dict["output"] = output
         if callback_url is not UNSET:
             field_dict["callback_url"] = callback_url
 
@@ -454,6 +453,8 @@ class OrderCreate:
 
         state = OrderState(d.pop("state"))
 
+        output = d.pop("output")
+
         marketplace_resource_uuid = UUID(d.pop("marketplace_resource_uuid"))
 
         error_message = d.pop("error_message")
@@ -547,8 +548,6 @@ class OrderCreate:
         else:
             type_ = RequestTypes(_type_)
 
-        output = d.pop("output", UNSET)
-
         def _parse_callback_url(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -587,6 +586,7 @@ class OrderCreate:
             resource_name=resource_name,
             cost=cost,
             state=state,
+            output=output,
             marketplace_resource_uuid=marketplace_resource_uuid,
             error_message=error_message,
             completed_at=completed_at,
@@ -608,7 +608,6 @@ class OrderCreate:
             attributes=attributes,
             limits=limits,
             type_=type_,
-            output=output,
             callback_url=callback_url,
         )
 

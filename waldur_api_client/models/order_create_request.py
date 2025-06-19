@@ -23,7 +23,6 @@ class OrderCreateRequest:
         attributes (Union[Unset, Any]):
         limits (Union[Unset, OrderCreateRequestLimits]):
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
-        output (Union[Unset, str]):
         accepting_terms_of_service (Union[Unset, bool]):
         callback_url (Union[None, Unset, str]):
     """
@@ -34,7 +33,6 @@ class OrderCreateRequest:
     attributes: Union[Unset, Any] = UNSET
     limits: Union[Unset, "OrderCreateRequestLimits"] = UNSET
     type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
-    output: Union[Unset, str] = UNSET
     accepting_terms_of_service: Union[Unset, bool] = UNSET
     callback_url: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -55,8 +53,6 @@ class OrderCreateRequest:
         type_: Union[Unset, str] = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
-
-        output = self.output
 
         accepting_terms_of_service = self.accepting_terms_of_service
 
@@ -82,8 +78,6 @@ class OrderCreateRequest:
             field_dict["limits"] = limits
         if type_ is not UNSET:
             field_dict["type"] = type_
-        if output is not UNSET:
-            field_dict["output"] = output
         if accepting_terms_of_service is not UNSET:
             field_dict["accepting_terms_of_service"] = accepting_terms_of_service
         if callback_url is not UNSET:
@@ -118,8 +112,6 @@ class OrderCreateRequest:
         else:
             type_ = RequestTypes(_type_)
 
-        output = d.pop("output", UNSET)
-
         accepting_terms_of_service = d.pop("accepting_terms_of_service", UNSET)
 
         def _parse_callback_url(data: object) -> Union[None, Unset, str]:
@@ -138,7 +130,6 @@ class OrderCreateRequest:
             attributes=attributes,
             limits=limits,
             type_=type_,
-            output=output,
             accepting_terms_of_service=accepting_terms_of_service,
             callback_url=callback_url,
         )
