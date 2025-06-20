@@ -22,6 +22,7 @@ class RolesListFieldItem(str, Enum):
     IS_SYSTEM_ROLE = "is_system_role"
     NAME = "name"
     PERMISSIONS = "permissions"
+    USERS_COUNT = "users_count"
     UUID = "uuid"
 
     def __str__(self) -> str:

@@ -5,6 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.projects_usages_grouped_by_industry_flag import ProjectsUsagesGroupedByIndustryFlag
 from ...types import Response
 
 
@@ -17,16 +18,22 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Optional[ProjectsUsagesGroupedByIndustryFlag]:
     if response.status_code == 200:
-        return None
+        response_200 = ProjectsUsagesGroupedByIndustryFlag.from_dict(response.json())
+
+        return response_200
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[ProjectsUsagesGroupedByIndustryFlag]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -38,7 +45,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[ProjectsUsagesGroupedByIndustryFlag]:
     """Group project usages by industry flag.
 
     Raises:
@@ -46,7 +53,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[ProjectsUsagesGroupedByIndustryFlag]
     """
 
     kwargs = _get_kwargs()
@@ -58,10 +65,10 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Optional[ProjectsUsagesGroupedByIndustryFlag]:
     """Group project usages by industry flag.
 
     Raises:
@@ -69,7 +76,26 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        ProjectsUsagesGroupedByIndustryFlag
+    """
+
+    return sync_detailed(
+        client=client,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+) -> Response[ProjectsUsagesGroupedByIndustryFlag]:
+    """Group project usages by industry flag.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[ProjectsUsagesGroupedByIndustryFlag]
     """
 
     kwargs = _get_kwargs()
@@ -77,3 +103,24 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+) -> Optional[ProjectsUsagesGroupedByIndustryFlag]:
+    """Group project usages by industry flag.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        ProjectsUsagesGroupedByIndustryFlag
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+        )
+    ).parsed

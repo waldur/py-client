@@ -1,4 +1,5 @@
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,60 +13,64 @@ T = TypeVar("T", bound="RancherNestedPublicIP")
 class RancherNestedPublicIP:
     """
     Attributes:
-        floating_ip (Union[None, Unset, str]):
-        cluster (Union[Unset, str]):
+        floating_ip (Union[Unset, str]):
+        floating_ip_uuid (Union[Unset, UUID]):
         ip_address (Union[Unset, str]):
+        external_ip_address (Union[Unset, str]):
     """
 
-    floating_ip: Union[None, Unset, str] = UNSET
-    cluster: Union[Unset, str] = UNSET
+    floating_ip: Union[Unset, str] = UNSET
+    floating_ip_uuid: Union[Unset, UUID] = UNSET
     ip_address: Union[Unset, str] = UNSET
+    external_ip_address: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        floating_ip: Union[None, Unset, str]
-        if isinstance(self.floating_ip, Unset):
-            floating_ip = UNSET
-        else:
-            floating_ip = self.floating_ip
+        floating_ip = self.floating_ip
 
-        cluster = self.cluster
+        floating_ip_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.floating_ip_uuid, Unset):
+            floating_ip_uuid = str(self.floating_ip_uuid)
 
         ip_address = self.ip_address
+
+        external_ip_address = self.external_ip_address
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if floating_ip is not UNSET:
             field_dict["floating_ip"] = floating_ip
-        if cluster is not UNSET:
-            field_dict["cluster"] = cluster
+        if floating_ip_uuid is not UNSET:
+            field_dict["floating_ip_uuid"] = floating_ip_uuid
         if ip_address is not UNSET:
             field_dict["ip_address"] = ip_address
+        if external_ip_address is not UNSET:
+            field_dict["external_ip_address"] = external_ip_address
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
         d = src_dict.copy()
+        floating_ip = d.pop("floating_ip", UNSET)
 
-        def _parse_floating_ip(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        floating_ip = _parse_floating_ip(d.pop("floating_ip", UNSET))
-
-        cluster = d.pop("cluster", UNSET)
+        _floating_ip_uuid = d.pop("floating_ip_uuid", UNSET)
+        floating_ip_uuid: Union[Unset, UUID]
+        if isinstance(_floating_ip_uuid, Unset):
+            floating_ip_uuid = UNSET
+        else:
+            floating_ip_uuid = UUID(_floating_ip_uuid)
 
         ip_address = d.pop("ip_address", UNSET)
 
+        external_ip_address = d.pop("external_ip_address", UNSET)
+
         rancher_nested_public_ip = cls(
             floating_ip=floating_ip,
-            cluster=cluster,
+            floating_ip_uuid=floating_ip_uuid,
             ip_address=ip_address,
+            external_ip_address=external_ip_address,
         )
 
         rancher_nested_public_ip.additional_properties = d

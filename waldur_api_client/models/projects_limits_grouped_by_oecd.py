@@ -1,35 +1,33 @@
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="RancherNestedPublicIPRequest")
+if TYPE_CHECKING:
+    from ..models.projects_limits_grouped_by_oecd_limits import ProjectsLimitsGroupedByOecdLimits
+
+
+T = TypeVar("T", bound="ProjectsLimitsGroupedByOecd")
 
 
 @_attrs_define
-class RancherNestedPublicIPRequest:
+class ProjectsLimitsGroupedByOecd:
     """
     Attributes:
-        floating_ip (Union[None, str]):
-        cluster (str):
+        limits (ProjectsLimitsGroupedByOecdLimits):
     """
 
-    floating_ip: Union[None, str]
-    cluster: str
+    limits: "ProjectsLimitsGroupedByOecdLimits"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        floating_ip: Union[None, str]
-        floating_ip = self.floating_ip
-
-        cluster = self.cluster
+        limits = self.limits.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "floating_ip": floating_ip,
-                "cluster": cluster,
+                "limits": limits,
             }
         )
 
@@ -37,24 +35,17 @@ class RancherNestedPublicIPRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        from ..models.projects_limits_grouped_by_oecd_limits import ProjectsLimitsGroupedByOecdLimits
+
         d = src_dict.copy()
+        limits = ProjectsLimitsGroupedByOecdLimits.from_dict(d.pop("limits"))
 
-        def _parse_floating_ip(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        floating_ip = _parse_floating_ip(d.pop("floating_ip"))
-
-        cluster = d.pop("cluster")
-
-        rancher_nested_public_ip_request = cls(
-            floating_ip=floating_ip,
-            cluster=cluster,
+        projects_limits_grouped_by_oecd = cls(
+            limits=limits,
         )
 
-        rancher_nested_public_ip_request.additional_properties = d
-        return rancher_nested_public_ip_request
+        projects_limits_grouped_by_oecd.additional_properties = d
+        return projects_limits_grouped_by_oecd
 
     @property
     def additional_keys(self) -> list[str]:

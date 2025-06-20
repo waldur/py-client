@@ -34,6 +34,7 @@ class RoleDetails:
         permissions (Union[Unset, list[str]]):
         is_system_role (Union[Unset, bool]):
         is_active (Union[Unset, bool]):
+        users_count (Union[Unset, int]):
         content_type (Union[Unset, RoleType]):
     """
 
@@ -57,6 +58,7 @@ class RoleDetails:
     permissions: Union[Unset, list[str]] = UNSET
     is_system_role: Union[Unset, bool] = UNSET
     is_active: Union[Unset, bool] = UNSET
+    users_count: Union[Unset, int] = UNSET
     content_type: Union[Unset, RoleType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -161,6 +163,8 @@ class RoleDetails:
 
         is_active = self.is_active
 
+        users_count = self.users_count
+
         content_type: Union[Unset, str] = UNSET
         if not isinstance(self.content_type, Unset):
             content_type = self.content_type.value
@@ -208,6 +212,8 @@ class RoleDetails:
             field_dict["is_system_role"] = is_system_role
         if is_active is not UNSET:
             field_dict["is_active"] = is_active
+        if users_count is not UNSET:
+            field_dict["users_count"] = users_count
         if content_type is not UNSET:
             field_dict["content_type"] = content_type
 
@@ -359,6 +365,8 @@ class RoleDetails:
 
         is_active = d.pop("is_active", UNSET)
 
+        users_count = d.pop("users_count", UNSET)
+
         _content_type = d.pop("content_type", UNSET)
         content_type: Union[Unset, RoleType]
         if isinstance(_content_type, Unset):
@@ -387,6 +395,7 @@ class RoleDetails:
             permissions=permissions,
             is_system_role=is_system_role,
             is_active=is_active,
+            users_count=users_count,
             content_type=content_type,
         )
 
