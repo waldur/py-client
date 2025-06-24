@@ -1,10 +1,12 @@
 import datetime
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="GroupInvitation")
 
@@ -28,6 +30,11 @@ class GroupInvitation:
         created (datetime.datetime):
         expires (datetime.datetime):
         is_active (bool):
+        auto_create_project (Union[Unset, bool]): Create project and grant project permissions instead of customer
+            permissions
+        project_name_template (Union[Unset, str]): Template for project name. Supports {username}, {email}, {full_name}
+            variables
+        project_role (Union[None, UUID, Unset]):
     """
 
     scope_uuid: UUID
@@ -45,6 +52,9 @@ class GroupInvitation:
     created: datetime.datetime
     expires: datetime.datetime
     is_active: bool
+    auto_create_project: Union[Unset, bool] = UNSET
+    project_name_template: Union[Unset, str] = UNSET
+    project_role: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -78,6 +88,18 @@ class GroupInvitation:
 
         is_active = self.is_active
 
+        auto_create_project = self.auto_create_project
+
+        project_name_template = self.project_name_template
+
+        project_role: Union[None, Unset, str]
+        if isinstance(self.project_role, Unset):
+            project_role = UNSET
+        elif isinstance(self.project_role, UUID):
+            project_role = str(self.project_role)
+        else:
+            project_role = self.project_role
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -99,6 +121,12 @@ class GroupInvitation:
                 "is_active": is_active,
             }
         )
+        if auto_create_project is not UNSET:
+            field_dict["auto_create_project"] = auto_create_project
+        if project_name_template is not UNSET:
+            field_dict["project_name_template"] = project_name_template
+        if project_role is not UNSET:
+            field_dict["project_role"] = project_role
 
         return field_dict
 
@@ -135,6 +163,27 @@ class GroupInvitation:
 
         is_active = d.pop("is_active")
 
+        auto_create_project = d.pop("auto_create_project", UNSET)
+
+        project_name_template = d.pop("project_name_template", UNSET)
+
+        def _parse_project_role(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                project_role_type_0 = UUID(data)
+
+                return project_role_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        project_role = _parse_project_role(d.pop("project_role", UNSET))
+
         group_invitation = cls(
             scope_uuid=scope_uuid,
             scope_name=scope_name,
@@ -151,6 +200,9 @@ class GroupInvitation:
             created=created,
             expires=expires,
             is_active=is_active,
+            auto_create_project=auto_create_project,
+            project_name_template=project_name_template,
+            project_role=project_role,
         )
 
         group_invitation.additional_properties = d
