@@ -179,6 +179,7 @@ from .confirm_email_request_request import ConfirmEmailRequestRequest
 from .console_url import ConsoleUrl
 from .constance_settings import ConstanceSettings
 from .constance_settings_request import ConstanceSettingsRequest
+from .container_format_enum import ContainerFormatEnum
 from .core_auth_token import CoreAuthToken
 from .core_states import CoreStates
 from .costs_for_period import CostsForPeriod
@@ -245,6 +246,7 @@ from .digitalocean_droplets_retrieve_field_item import DigitaloceanDropletsRetri
 from .digitalocean_images_list_o_item import DigitaloceanImagesListOItem
 from .direction_enum import DirectionEnum
 from .discount_type_enum import DiscountTypeEnum
+from .disk_format_enum import DiskFormatEnum
 from .dry_run import DryRun
 from .dry_run_request import DryRunRequest
 from .dry_run_state_enum import DryRunStateEnum
@@ -291,6 +293,9 @@ from .guest_power_state_enum import GuestPowerStateEnum
 from .hooks_web_list_content_type import HooksWebListContentType
 from .identity_provider import IdentityProvider
 from .identity_provider_request import IdentityProviderRequest
+from .image_create_request import ImageCreateRequest
+from .image_create_response import ImageCreateResponse
+from .image_upload_response import ImageUploadResponse
 from .import_resource_request import ImportResourceRequest
 from .importable_resource import ImportableResource
 from .instance_flavor_change_request import InstanceFlavorChangeRequest
@@ -710,6 +715,7 @@ from .openstack_floating_ips_retrieve_field_item import OpenstackFloatingIpsRetr
 from .openstack_instances_list_field_item import OpenstackInstancesListFieldItem
 from .openstack_instances_list_state_item import OpenstackInstancesListStateItem
 from .openstack_instances_retrieve_field_item import OpenstackInstancesRetrieveFieldItem
+from .openstack_marketplace_tenants_list_state_item import OpenstackMarketplaceTenantsListStateItem
 from .openstack_network_rbac_policies_list_policy_type import OpenstackNetworkRbacPoliciesListPolicyType
 from .openstack_networks_list_field_item import OpenstackNetworksListFieldItem
 from .openstack_networks_list_state_item import OpenstackNetworksListStateItem
@@ -1189,6 +1195,7 @@ from .template_attachment import TemplateAttachment
 from .template_attachment_request import TemplateAttachmentRequest
 from .template_request import TemplateRequest
 from .template_version import TemplateVersion
+from .tenant import Tenant
 from .token_request import TokenRequest
 from .total_customer_cost import TotalCustomerCost
 from .user import User
@@ -1216,6 +1223,7 @@ from .users_list_o_item import UsersListOItem
 from .users_me_retrieve_field_item import UsersMeRetrieveFieldItem
 from .users_retrieve_field_item import UsersRetrieveFieldItem
 from .version import Version
+from .visibility_enum import VisibilityEnum
 from .visible_invitation_details import VisibleInvitationDetails
 from .vmware_cluster import VmwareCluster
 from .vmware_datastore import VmwareDatastore
@@ -1433,6 +1441,7 @@ __all__ = (
     "ConsoleUrl",
     "ConstanceSettings",
     "ConstanceSettingsRequest",
+    "ContainerFormatEnum",
     "CoreAuthToken",
     "CoreStates",
     "CostsForPeriod",
@@ -1495,6 +1504,7 @@ __all__ = (
     "DigitalOceanSize",
     "DirectionEnum",
     "DiscountTypeEnum",
+    "DiskFormatEnum",
     "DryRun",
     "DryRunRequest",
     "DryRunStateEnum",
@@ -1541,6 +1551,9 @@ __all__ = (
     "HooksWebListContentType",
     "IdentityProvider",
     "IdentityProviderRequest",
+    "ImageCreateRequest",
+    "ImageCreateResponse",
+    "ImageUploadResponse",
     "ImportableResource",
     "ImportResourceRequest",
     "InstanceFlavorChangeRequest",
@@ -1847,6 +1860,7 @@ __all__ = (
     "OpenstackInstancesListFieldItem",
     "OpenstackInstancesListStateItem",
     "OpenstackInstancesRetrieveFieldItem",
+    "OpenstackMarketplaceTenantsListStateItem",
     "OpenStackNestedFloatingIP",
     "OpenStackNestedFloatingIPRequest",
     "OpenStackNestedInstance",
@@ -2367,6 +2381,7 @@ __all__ = (
     "TemplateAttachmentRequest",
     "TemplateRequest",
     "TemplateVersion",
+    "Tenant",
     "TokenRequest",
     "TotalCustomerCost",
     "User",
@@ -2394,6 +2409,7 @@ __all__ = (
     "UsersRetrieveFieldItem",
     "UserStats",
     "Version",
+    "VisibilityEnum",
     "VisibleInvitationDetails",
     "VmwareCluster",
     "VmwareDatastore",

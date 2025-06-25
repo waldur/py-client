@@ -6,24 +6,24 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.open_stack_security_group import OpenStackSecurityGroup
-from ...models.open_stack_security_group_request import OpenStackSecurityGroupRequest
-from ...types import Response
+from ...models.image_upload_response import ImageUploadResponse
+from ...types import File, Response
 
 
 def _get_kwargs(
     uuid: UUID,
+    image_id: UUID,
     *,
-    body: OpenStackSecurityGroupRequest,
+    body: File,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/openstack-tenants/{uuid}/create_security_group/",
+        "url": f"/api/openstack-marketplace-tenants/{uuid}/upload_image_data/{image_id}/",
     }
 
-    _body = body.to_dict()
+    _body = body.to_tuple()
 
     _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
@@ -34,11 +34,11 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[OpenStackSecurityGroup]:
-    if response.status_code == 201:
-        response_201 = OpenStackSecurityGroup.from_dict(response.json())
+) -> Optional[ImageUploadResponse]:
+    if response.status_code == 200:
+        response_200 = ImageUploadResponse.from_dict(response.json())
 
-        return response_201
+        return response_200
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -47,7 +47,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[OpenStackSecurityGroup]:
+) -> Response[ImageUploadResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -58,25 +58,28 @@ def _build_response(
 
 def sync_detailed(
     uuid: UUID,
+    image_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackSecurityGroupRequest,
-) -> Response[OpenStackSecurityGroup]:
+    body: File,
+) -> Response[ImageUploadResponse]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackSecurityGroupRequest):
+        image_id (UUID):
+        body (File):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackSecurityGroup]
+        Response[ImageUploadResponse]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        image_id=image_id,
         body=body,
     )
 
@@ -89,25 +92,28 @@ def sync_detailed(
 
 def sync(
     uuid: UUID,
+    image_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackSecurityGroupRequest,
-) -> Optional[OpenStackSecurityGroup]:
+    body: File,
+) -> Optional[ImageUploadResponse]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackSecurityGroupRequest):
+        image_id (UUID):
+        body (File):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackSecurityGroup
+        ImageUploadResponse
     """
 
     return sync_detailed(
         uuid=uuid,
+        image_id=image_id,
         client=client,
         body=body,
     ).parsed
@@ -115,25 +121,28 @@ def sync(
 
 async def asyncio_detailed(
     uuid: UUID,
+    image_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackSecurityGroupRequest,
-) -> Response[OpenStackSecurityGroup]:
+    body: File,
+) -> Response[ImageUploadResponse]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackSecurityGroupRequest):
+        image_id (UUID):
+        body (File):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackSecurityGroup]
+        Response[ImageUploadResponse]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        image_id=image_id,
         body=body,
     )
 
@@ -144,26 +153,29 @@ async def asyncio_detailed(
 
 async def asyncio(
     uuid: UUID,
+    image_id: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackSecurityGroupRequest,
-) -> Optional[OpenStackSecurityGroup]:
+    body: File,
+) -> Optional[ImageUploadResponse]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackSecurityGroupRequest):
+        image_id (UUID):
+        body (File):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackSecurityGroup
+        ImageUploadResponse
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
+            image_id=image_id,
             client=client,
             body=body,
         )

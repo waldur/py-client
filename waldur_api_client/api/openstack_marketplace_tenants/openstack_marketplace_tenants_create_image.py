@@ -6,21 +6,21 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.open_stack_security_group import OpenStackSecurityGroup
-from ...models.open_stack_security_group_request import OpenStackSecurityGroupRequest
+from ...models.image_create_request import ImageCreateRequest
+from ...models.image_create_response import ImageCreateResponse
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: OpenStackSecurityGroupRequest,
+    body: ImageCreateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/openstack-tenants/{uuid}/create_security_group/",
+        "url": f"/api/openstack-marketplace-tenants/{uuid}/create_image/",
     }
 
     _body = body.to_dict()
@@ -34,9 +34,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[OpenStackSecurityGroup]:
+) -> Optional[ImageCreateResponse]:
     if response.status_code == 201:
-        response_201 = OpenStackSecurityGroup.from_dict(response.json())
+        response_201 = ImageCreateResponse.from_dict(response.json())
 
         return response_201
     if client.raise_on_unexpected_status:
@@ -47,7 +47,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[OpenStackSecurityGroup]:
+) -> Response[ImageCreateResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,19 +60,19 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackSecurityGroupRequest,
-) -> Response[OpenStackSecurityGroup]:
+    body: ImageCreateRequest,
+) -> Response[ImageCreateResponse]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackSecurityGroupRequest):
+        body (ImageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackSecurityGroup]
+        Response[ImageCreateResponse]
     """
 
     kwargs = _get_kwargs(
@@ -91,19 +91,19 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackSecurityGroupRequest,
-) -> Optional[OpenStackSecurityGroup]:
+    body: ImageCreateRequest,
+) -> Optional[ImageCreateResponse]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackSecurityGroupRequest):
+        body (ImageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackSecurityGroup
+        ImageCreateResponse
     """
 
     return sync_detailed(
@@ -117,19 +117,19 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackSecurityGroupRequest,
-) -> Response[OpenStackSecurityGroup]:
+    body: ImageCreateRequest,
+) -> Response[ImageCreateResponse]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackSecurityGroupRequest):
+        body (ImageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackSecurityGroup]
+        Response[ImageCreateResponse]
     """
 
     kwargs = _get_kwargs(
@@ -146,19 +146,19 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackSecurityGroupRequest,
-) -> Optional[OpenStackSecurityGroup]:
+    body: ImageCreateRequest,
+) -> Optional[ImageCreateResponse]:
     """
     Args:
         uuid (UUID):
-        body (OpenStackSecurityGroupRequest):
+        body (ImageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackSecurityGroup
+        ImageCreateResponse
     """
 
     return (
