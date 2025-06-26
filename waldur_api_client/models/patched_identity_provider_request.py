@@ -24,6 +24,12 @@ class PatchedIdentityProviderRequest:
         management_url (Union[Unset, str]): The endpoint for user details management.
         protected_fields (Union[Unset, Any]):
         scope (Union[None, Unset, str]): Space-separated list of scopes to request during authentication.
+        user_field (Union[Unset, str]): The field in Waldur User model to be used for looking up the user
+        user_claim (Union[Unset, str]): The OIDC claim from the userinfo endpoint to be used as the value for the lookup
+            field.
+        attribute_mapping (Union[Unset, Any]): A JSON object mapping Waldur User model fields to OIDC claims. Example:
+            {"first_name": "given_name", "last_name": "family_name", "email": "email"}
+        extra_fields (Union[None, Unset, str]): Space-separated list of extra fields to persist.
     """
 
     provider: Union[Unset, str] = UNSET
@@ -37,6 +43,10 @@ class PatchedIdentityProviderRequest:
     management_url: Union[Unset, str] = UNSET
     protected_fields: Union[Unset, Any] = UNSET
     scope: Union[None, Unset, str] = UNSET
+    user_field: Union[Unset, str] = UNSET
+    user_claim: Union[Unset, str] = UNSET
+    attribute_mapping: Union[Unset, Any] = UNSET
+    extra_fields: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -66,6 +76,18 @@ class PatchedIdentityProviderRequest:
         else:
             scope = self.scope
 
+        user_field = self.user_field
+
+        user_claim = self.user_claim
+
+        attribute_mapping = self.attribute_mapping
+
+        extra_fields: Union[None, Unset, str]
+        if isinstance(self.extra_fields, Unset):
+            extra_fields = UNSET
+        else:
+            extra_fields = self.extra_fields
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -91,6 +113,14 @@ class PatchedIdentityProviderRequest:
             field_dict["protected_fields"] = protected_fields
         if scope is not UNSET:
             field_dict["scope"] = scope
+        if user_field is not UNSET:
+            field_dict["user_field"] = user_field
+        if user_claim is not UNSET:
+            field_dict["user_claim"] = user_claim
+        if attribute_mapping is not UNSET:
+            field_dict["attribute_mapping"] = attribute_mapping
+        if extra_fields is not UNSET:
+            field_dict["extra_fields"] = extra_fields
 
         return field_dict
 
@@ -126,6 +156,21 @@ class PatchedIdentityProviderRequest:
 
         scope = _parse_scope(d.pop("scope", UNSET))
 
+        user_field = d.pop("user_field", UNSET)
+
+        user_claim = d.pop("user_claim", UNSET)
+
+        attribute_mapping = d.pop("attribute_mapping", UNSET)
+
+        def _parse_extra_fields(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        extra_fields = _parse_extra_fields(d.pop("extra_fields", UNSET))
+
         patched_identity_provider_request = cls(
             provider=provider,
             is_active=is_active,
@@ -138,6 +183,10 @@ class PatchedIdentityProviderRequest:
             management_url=management_url,
             protected_fields=protected_fields,
             scope=scope,
+            user_field=user_field,
+            user_claim=user_claim,
+            attribute_mapping=attribute_mapping,
+            extra_fields=extra_fields,
         )
 
         patched_identity_provider_request.additional_properties = d
