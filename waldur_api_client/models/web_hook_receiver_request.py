@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
@@ -66,12 +67,12 @@ class WebHookReceiverRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.jira_changelog_request import JiraChangelogRequest
         from ..models.jira_comment_request import JiraCommentRequest
         from ..models.jira_issue_request import JiraIssueRequest
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         webhook_event = WebhookEventEnum(d.pop("webhookEvent"))
 
         issue = JiraIssueRequest.from_dict(d.pop("issue"))

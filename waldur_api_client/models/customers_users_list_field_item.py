@@ -7,7 +7,6 @@ class CustomersUsersListFieldItem(str, Enum):
     FULL_NAME = "full_name"
     IMAGE = "image"
     PROJECTS = "projects"
-    ROLE = "role"
     ROLE_NAME = "role_name"
     URL = "url"
     USERNAME = "username"

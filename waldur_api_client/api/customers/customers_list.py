@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 from uuid import UUID
 
 import httpx
@@ -92,9 +92,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[list["Customer"]]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["Customer"]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -104,10 +102,7 @@ def _parse_response(
             response_200.append(response_200_item)
 
         return response_200
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
@@ -181,7 +176,7 @@ def sync_detailed(
         registration_code (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -235,7 +230,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
-) -> Optional[list["Customer"]]:
+) -> list["Customer"]:
     """To get a list of customers, run GET against /api/customers/ as authenticated user. Note that a user
     can
     only see connected customers:
@@ -275,7 +270,7 @@ def sync(
         registration_code (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -364,7 +359,7 @@ async def asyncio_detailed(
         registration_code (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -416,7 +411,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
-) -> Optional[list["Customer"]]:
+) -> list["Customer"]:
     """To get a list of customers, run GET against /api/customers/ as authenticated user. Note that a user
     can
     only see connected customers:
@@ -456,7 +451,7 @@ async def asyncio(
         registration_code (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

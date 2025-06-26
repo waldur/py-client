@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 from uuid import UUID
 
 import httpx
@@ -60,7 +60,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[list["NetworkRBACPolicy"]]:
+) -> list["NetworkRBACPolicy"]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -70,10 +70,7 @@ def _parse_response(
             response_200.append(response_200_item)
 
         return response_200
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
@@ -109,7 +106,7 @@ def sync_detailed(
         target_tenant_uuid (Union[Unset, UUID]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -143,7 +140,7 @@ def sync(
     policy_type: Union[Unset, OpenstackNetworkRbacPoliciesListPolicyType] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
-) -> Optional[list["NetworkRBACPolicy"]]:
+) -> list["NetworkRBACPolicy"]:
     """
     Args:
         network (Union[Unset, str]):
@@ -155,7 +152,7 @@ def sync(
         target_tenant_uuid (Union[Unset, UUID]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -196,7 +193,7 @@ async def asyncio_detailed(
         target_tenant_uuid (Union[Unset, UUID]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -228,7 +225,7 @@ async def asyncio(
     policy_type: Union[Unset, OpenstackNetworkRbacPoliciesListPolicyType] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
-) -> Optional[list["NetworkRBACPolicy"]]:
+) -> list["NetworkRBACPolicy"]:
     """
     Args:
         network (Union[Unset, str]):
@@ -240,7 +237,7 @@ async def asyncio(
         target_tenant_uuid (Union[Unset, UUID]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

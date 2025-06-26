@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, Union, cast
 
 import httpx
 
@@ -18,9 +18,7 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, Logout]]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Union[Any, Logout]:
     if response.status_code == 200:
         response_200 = Logout.from_dict(response.json())
 
@@ -28,10 +26,7 @@ def _parse_response(
     if response.status_code == 204:
         response_204 = cast(Any, None)
         return response_204
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
@@ -52,7 +47,7 @@ def sync_detailed(
     """Logout from the system. If single logout is supported, returns logout URL.
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -71,11 +66,11 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, Logout]]:
+) -> Union[Any, Logout]:
     """Logout from the system. If single logout is supported, returns logout URL.
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -94,7 +89,7 @@ async def asyncio_detailed(
     """Logout from the system. If single logout is supported, returns logout URL.
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -111,11 +106,11 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> Optional[Union[Any, Logout]]:
+) -> Union[Any, Logout]:
     """Logout from the system. If single logout is supported, returns logout URL.
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

@@ -1,10 +1,12 @@
+from collections.abc import Mapping
 from io import BytesIO
 from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, File, FileJsonType, Unset
+from .. import types
+from ..types import UNSET, File, Unset
 
 T = TypeVar("T", bound="CategoryGroupRequest")
 
@@ -28,7 +30,7 @@ class CategoryGroupRequest:
 
         description = self.description
 
-        icon: Union[FileJsonType, None, Unset]
+        icon: Union[None, Unset, types.FileTypes]
         if isinstance(self.icon, Unset):
             icon = UNSET
         elif isinstance(self.icon, File):
@@ -52,8 +54,8 @@ class CategoryGroupRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         title = d.pop("title")
 
         description = d.pop("description", UNSET)

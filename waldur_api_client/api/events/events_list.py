@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 from uuid import UUID
 
 import httpx
@@ -81,7 +81,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[list["Event"]]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["Event"]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -91,10 +91,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
             response_200.append(response_200_item)
 
         return response_200
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[list["Event"]]:
@@ -134,7 +131,7 @@ def sync_detailed(
         user_uuid (Union[Unset, UUID]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -174,7 +171,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-) -> Optional[list["Event"]]:
+) -> list["Event"]:
     """
     Args:
         created_from (Union[Unset, float]):
@@ -189,7 +186,7 @@ def sync(
         user_uuid (Union[Unset, UUID]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -239,7 +236,7 @@ async def asyncio_detailed(
         user_uuid (Union[Unset, UUID]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -277,7 +274,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-) -> Optional[list["Event"]]:
+) -> list["Event"]:
     """
     Args:
         created_from (Union[Unset, float]):
@@ -292,7 +289,7 @@ async def asyncio(
         user_uuid (Union[Unset, UUID]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

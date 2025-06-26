@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import Any, TypeVar, Union
 from uuid import UUID
 
@@ -51,8 +52,8 @@ class RancherNestedPublicIP:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         floating_ip = d.pop("floating_ip", UNSET)
 
         _floating_ip_uuid = d.pop("floating_ip_uuid", UNSET)

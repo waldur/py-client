@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union, cast
+from typing import Any, Union, cast
 
 import httpx
 
@@ -20,18 +20,15 @@ def _get_kwargs(
         "url": "/api/query/",
     }
 
-    _body = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, list[Any]]]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Union[Any, list[Any]]:
     if response.status_code == 200:
         response_200 = cast(list[Any], response.json())
 
@@ -39,10 +36,7 @@ def _parse_response(
     if response.status_code == 400:
         response_400 = cast(Any, None)
         return response_400
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
@@ -67,7 +61,7 @@ def sync_detailed(
         body (QueryRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -89,14 +83,14 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: QueryRequest,
-) -> Optional[Union[Any, list[Any]]]:
+) -> Union[Any, list[Any]]:
     """Execute SQL query against readonly database
 
     Args:
         body (QueryRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -120,7 +114,7 @@ async def asyncio_detailed(
         body (QueryRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -140,14 +134,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: QueryRequest,
-) -> Optional[Union[Any, list[Any]]]:
+) -> Union[Any, list[Any]]:
     """Execute SQL query against readonly database
 
     Args:
         body (QueryRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

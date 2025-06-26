@@ -1,6 +1,6 @@
 import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 from uuid import UUID
 
 import httpx
@@ -103,9 +103,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[list["ComponentUsage"]]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["ComponentUsage"]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -115,10 +113,7 @@ def _parse_response(
             response_200.append(response_200_item)
 
         return response_200
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
@@ -166,7 +161,7 @@ def sync_detailed(
         type_ (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -212,7 +207,7 @@ def sync(
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
-) -> Optional[list["ComponentUsage"]]:
+) -> list["ComponentUsage"]:
     """
     Args:
         billing_period (Union[Unset, datetime.date]):
@@ -230,7 +225,7 @@ def sync(
         type_ (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -289,7 +284,7 @@ async def asyncio_detailed(
         type_ (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -333,7 +328,7 @@ async def asyncio(
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
-) -> Optional[list["ComponentUsage"]]:
+) -> list["ComponentUsage"]:
     """
     Args:
         billing_period (Union[Unset, datetime.date]):
@@ -351,7 +346,7 @@ async def asyncio(
         type_ (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

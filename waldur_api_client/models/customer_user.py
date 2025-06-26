@@ -1,4 +1,5 @@
 import datetime
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -25,10 +26,9 @@ class CustomerUser:
             characters
         full_name (Union[Unset, str]):
         email (Union[Unset, str]):
-        role (Union[Unset, str]):
-        role_name (Union[Unset, str]):
+        role_name (Union[None, Unset, str]):
         projects (Union[Unset, list['NestedProjectPermission']]):
-        expiration_time (Union[Unset, datetime.datetime]):
+        expiration_time (Union[None, Unset, datetime.datetime]):
         image (Union[None, Unset, str]):
     """
 
@@ -37,10 +37,9 @@ class CustomerUser:
     username: Union[Unset, str] = UNSET
     full_name: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
-    role: Union[Unset, str] = UNSET
-    role_name: Union[Unset, str] = UNSET
+    role_name: Union[None, Unset, str] = UNSET
     projects: Union[Unset, list["NestedProjectPermission"]] = UNSET
-    expiration_time: Union[Unset, datetime.datetime] = UNSET
+    expiration_time: Union[None, Unset, datetime.datetime] = UNSET
     image: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -57,9 +56,11 @@ class CustomerUser:
 
         email = self.email
 
-        role = self.role
-
-        role_name = self.role_name
+        role_name: Union[None, Unset, str]
+        if isinstance(self.role_name, Unset):
+            role_name = UNSET
+        else:
+            role_name = self.role_name
 
         projects: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.projects, Unset):
@@ -68,9 +69,13 @@ class CustomerUser:
                 projects_item = projects_item_data.to_dict()
                 projects.append(projects_item)
 
-        expiration_time: Union[Unset, str] = UNSET
-        if not isinstance(self.expiration_time, Unset):
+        expiration_time: Union[None, Unset, str]
+        if isinstance(self.expiration_time, Unset):
+            expiration_time = UNSET
+        elif isinstance(self.expiration_time, datetime.datetime):
             expiration_time = self.expiration_time.isoformat()
+        else:
+            expiration_time = self.expiration_time
 
         image: Union[None, Unset, str]
         if isinstance(self.image, Unset):
@@ -91,8 +96,6 @@ class CustomerUser:
             field_dict["full_name"] = full_name
         if email is not UNSET:
             field_dict["email"] = email
-        if role is not UNSET:
-            field_dict["role"] = role
         if role_name is not UNSET:
             field_dict["role_name"] = role_name
         if projects is not UNSET:
@@ -105,10 +108,10 @@ class CustomerUser:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_project_permission import NestedProjectPermission
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         url = d.pop("url", UNSET)
 
         _uuid = d.pop("uuid", UNSET)
@@ -124,9 +127,14 @@ class CustomerUser:
 
         email = d.pop("email", UNSET)
 
-        role = d.pop("role", UNSET)
+        def _parse_role_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        role_name = d.pop("role_name", UNSET)
+        role_name = _parse_role_name(d.pop("role_name", UNSET))
 
         projects = []
         _projects = d.pop("projects", UNSET)
@@ -135,12 +143,22 @@ class CustomerUser:
 
             projects.append(projects_item)
 
-        _expiration_time = d.pop("expiration_time", UNSET)
-        expiration_time: Union[Unset, datetime.datetime]
-        if isinstance(_expiration_time, Unset):
-            expiration_time = UNSET
-        else:
-            expiration_time = isoparse(_expiration_time)
+        def _parse_expiration_time(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                expiration_time_type_0 = isoparse(data)
+
+                return expiration_time_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        expiration_time = _parse_expiration_time(d.pop("expiration_time", UNSET))
 
         def _parse_image(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -157,7 +175,6 @@ class CustomerUser:
             username=username,
             full_name=full_name,
             email=email,
-            role=role,
             role_name=role_name,
             projects=projects,
             expiration_time=expiration_time,

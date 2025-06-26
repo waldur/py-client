@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -34,10 +35,10 @@ class OfferingResourceOptionsUpdateRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.offering_options_request import OfferingOptionsRequest
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         resource_options = OfferingOptionsRequest.from_dict(d.pop("resource_options"))
 
         offering_resource_options_update_request = cls(

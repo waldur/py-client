@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 from uuid import UUID
 
 import httpx
@@ -40,21 +40,18 @@ def _get_kwargs(
         "params": params,
     }
 
-    _body = []
+    _kwargs["json"] = []
     for body_item_data in body:
         body_item = body_item_data.to_dict()
-        _body.append(body_item)
+        _kwargs["json"].append(body_item)
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[list["AnswerSubmit"]]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["AnswerSubmit"]:
     if response.status_code == 201:
         response_201 = []
         _response_201 = response.json()
@@ -64,10 +61,7 @@ def _parse_response(
             response_201.append(response_201_item)
 
         return response_201
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
@@ -100,7 +94,7 @@ def sync_detailed(
         body (list['AnswerSubmitRequest']):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -130,7 +124,7 @@ def sync(
     on_behalf_user_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Optional[list["AnswerSubmit"]]:
+) -> list["AnswerSubmit"]:
     """Submit answer to checklist question
 
     Args:
@@ -141,7 +135,7 @@ def sync(
         body (list['AnswerSubmitRequest']):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -177,7 +171,7 @@ async def asyncio_detailed(
         body (list['AnswerSubmitRequest']):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -205,7 +199,7 @@ async def asyncio(
     on_behalf_user_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Optional[list["AnswerSubmit"]]:
+) -> list["AnswerSubmit"]:
     """Submit answer to checklist question
 
     Args:
@@ -216,7 +210,7 @@ async def asyncio(
         body (list['AnswerSubmitRequest']):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

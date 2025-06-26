@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -34,10 +35,10 @@ class ProjectsUsagesGroupedByOecd:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.projects_usages_grouped_by_oecd_usages import ProjectsUsagesGroupedByOecdUsages
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         usages = ProjectsUsagesGroupedByOecdUsages.from_dict(d.pop("usages"))
 
         projects_usages_grouped_by_oecd = cls(

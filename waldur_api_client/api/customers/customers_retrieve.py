@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 from uuid import UUID
 
 import httpx
@@ -38,15 +38,12 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Customer]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Customer:
     if response.status_code == 200:
         response_200 = Customer.from_dict(response.json())
 
         return response_200
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Customer]:
@@ -70,7 +67,7 @@ def sync_detailed(
         field (Union[Unset, list[CustomersRetrieveFieldItem]]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -94,14 +91,14 @@ def sync(
     *,
     client: AuthenticatedClient,
     field: Union[Unset, list[CustomersRetrieveFieldItem]] = UNSET,
-) -> Optional[Customer]:
+) -> Customer:
     """
     Args:
         uuid (UUID):
         field (Union[Unset, list[CustomersRetrieveFieldItem]]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -127,7 +124,7 @@ async def asyncio_detailed(
         field (Union[Unset, list[CustomersRetrieveFieldItem]]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -149,14 +146,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     field: Union[Unset, list[CustomersRetrieveFieldItem]] = UNSET,
-) -> Optional[Customer]:
+) -> Customer:
     """
     Args:
         uuid (UUID):
         field (Union[Unset, list[CustomersRetrieveFieldItem]]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

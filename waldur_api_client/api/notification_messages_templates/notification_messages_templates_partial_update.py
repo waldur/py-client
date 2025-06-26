@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 from uuid import UUID
 
 import httpx
@@ -25,9 +25,8 @@ def _get_kwargs(
         "url": f"/api/notification-messages-templates/{uuid}/",
     }
 
-    _body = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
@@ -36,15 +35,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[NotificationTemplateDetailSerializers]:
+) -> NotificationTemplateDetailSerializers:
     if response.status_code == 200:
         response_200 = NotificationTemplateDetailSerializers.from_dict(response.json())
 
         return response_200
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
@@ -70,7 +66,7 @@ def sync_detailed(
         body (PatchedNotificationTemplateDetailSerializersRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -94,14 +90,14 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: PatchedNotificationTemplateDetailSerializersRequest,
-) -> Optional[NotificationTemplateDetailSerializers]:
+) -> NotificationTemplateDetailSerializers:
     """
     Args:
         uuid (UUID):
         body (PatchedNotificationTemplateDetailSerializersRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -127,7 +123,7 @@ async def asyncio_detailed(
         body (PatchedNotificationTemplateDetailSerializersRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -149,14 +145,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: PatchedNotificationTemplateDetailSerializersRequest,
-) -> Optional[NotificationTemplateDetailSerializers]:
+) -> NotificationTemplateDetailSerializers:
     """
     Args:
         uuid (UUID):
         body (PatchedNotificationTemplateDetailSerializersRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

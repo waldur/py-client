@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
@@ -71,10 +72,10 @@ class RemoteSynchronisationRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_remote_local_category_request import NestedRemoteLocalCategoryRequest
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         api_url = d.pop("api_url")
 
         token = d.pop("token")

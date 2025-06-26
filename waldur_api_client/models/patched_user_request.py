@@ -1,10 +1,12 @@
+from collections.abc import Mapping
 from io import BytesIO
 from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, File, FileJsonType, Unset
+from .. import types
+from ..types import UNSET, File, Unset
 
 T = TypeVar("T", bound="PatchedUserRequest")
 
@@ -87,7 +89,7 @@ class PatchedUserRequest:
 
         last_name = self.last_name
 
-        image: Union[FileJsonType, None, Unset]
+        image: Union[None, Unset, types.FileTypes]
         if isinstance(self.image, Unset):
             image = UNSET
         elif isinstance(self.image, File):
@@ -135,8 +137,8 @@ class PatchedUserRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         username = d.pop("username", UNSET)
 
         native_name = d.pop("native_name", UNSET)

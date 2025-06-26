@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 from uuid import UUID
 
 import httpx
@@ -87,9 +87,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[list["UserRoleDetails"]]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["UserRoleDetails"]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -99,10 +97,7 @@ def _parse_response(
             response_200.append(response_200_item)
 
         return response_200
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
@@ -150,7 +145,7 @@ def sync_detailed(
         username (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -196,7 +191,7 @@ def sync(
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
-) -> Optional[list["UserRoleDetails"]]:
+) -> list["UserRoleDetails"]:
     """
     Args:
         uuid (UUID):
@@ -214,7 +209,7 @@ def sync(
         username (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -273,7 +268,7 @@ async def asyncio_detailed(
         username (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -317,7 +312,7 @@ async def asyncio(
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
-) -> Optional[list["UserRoleDetails"]]:
+) -> list["UserRoleDetails"]:
     """
     Args:
         uuid (UUID):
@@ -335,7 +330,7 @@ async def asyncio(
         username (Union[Unset, str]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

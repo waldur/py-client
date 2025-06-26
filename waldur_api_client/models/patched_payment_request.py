@@ -1,4 +1,5 @@
 import datetime
+from collections.abc import Mapping
 from io import BytesIO
 from typing import Any, TypeVar, Union, cast
 
@@ -6,7 +7,8 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..types import UNSET, File, FileJsonType, Unset
+from .. import types
+from ..types import UNSET, File, Unset
 
 T = TypeVar("T", bound="PatchedPaymentRequest")
 
@@ -36,7 +38,7 @@ class PatchedPaymentRequest:
 
         sum_ = self.sum_
 
-        proof: Union[FileJsonType, None, Unset]
+        proof: Union[None, Unset, types.FileTypes]
         if isinstance(self.proof, Unset):
             proof = UNSET
         elif isinstance(self.proof, File):
@@ -60,8 +62,8 @@ class PatchedPaymentRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         profile = d.pop("profile", UNSET)
 
         _date_of_payment = d.pop("date_of_payment", UNSET)

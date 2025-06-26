@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
@@ -34,10 +35,10 @@ class QuotasUpdateRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.quotas_update_request_quotas import QuotasUpdateRequestQuotas
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         quotas = QuotasUpdateRequestQuotas.from_dict(d.pop("quotas"))
 
         quotas_update_request = cls(

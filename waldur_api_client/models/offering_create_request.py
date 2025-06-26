@@ -1,12 +1,14 @@
+from collections.abc import Mapping
 from io import BytesIO
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from .. import types
 from ..models.blank_enum import BlankEnum
 from ..models.country_enum import CountryEnum
-from ..types import UNSET, File, FileJsonType, Unset
+from ..types import UNSET, File, Unset
 
 if TYPE_CHECKING:
     from ..models.base_provider_plan_request import BaseProviderPlanRequest
@@ -132,7 +134,7 @@ class OfferingCreateRequest:
 
         integration_guide = self.integration_guide
 
-        thumbnail: Union[FileJsonType, None, Unset]
+        thumbnail: Union[None, Unset, types.FileTypes]
         if isinstance(self.thumbnail, Unset):
             thumbnail = UNSET
         elif isinstance(self.thumbnail, File):
@@ -176,7 +178,7 @@ class OfferingCreateRequest:
 
         backend_id = self.backend_id
 
-        image: Union[FileJsonType, None, Unset]
+        image: Union[None, Unset, types.FileTypes]
         if isinstance(self.image, Unset):
             image = UNSET
         elif isinstance(self.image, File):
@@ -256,13 +258,13 @@ class OfferingCreateRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.base_provider_plan_request import BaseProviderPlanRequest
         from ..models.offering_component_request import OfferingComponentRequest
         from ..models.offering_create_request_limits import OfferingCreateRequestLimits
         from ..models.offering_options_request import OfferingOptionsRequest
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         name = d.pop("name")
 
         category = d.pop("category")

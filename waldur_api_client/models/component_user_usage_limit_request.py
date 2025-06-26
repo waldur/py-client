@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import Any, TypeVar, Union
 from uuid import UUID
 
@@ -49,8 +50,8 @@ class ComponentUserUsageLimitRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         resource = d.pop("resource")
 
         component = UUID(d.pop("component"))

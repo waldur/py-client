@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 from uuid import UUID
 
 import httpx
@@ -23,26 +23,20 @@ def _get_kwargs(
         "url": f"/api/vmware-disks/{uuid}/extend/",
     }
 
-    _body = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[VmwareDiskExtend]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> VmwareDiskExtend:
     if response.status_code == 200:
         response_200 = VmwareDiskExtend.from_dict(response.json())
 
         return response_200
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
@@ -69,7 +63,7 @@ def sync_detailed(
         body (VmwareDiskExtendRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -93,7 +87,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: VmwareDiskExtendRequest,
-) -> Optional[VmwareDiskExtend]:
+) -> VmwareDiskExtend:
     """Increase disk capacity
 
     Args:
@@ -101,7 +95,7 @@ def sync(
         body (VmwareDiskExtendRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -128,7 +122,7 @@ async def asyncio_detailed(
         body (VmwareDiskExtendRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -150,7 +144,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: VmwareDiskExtendRequest,
-) -> Optional[VmwareDiskExtend]:
+) -> VmwareDiskExtend:
     """Increase disk capacity
 
     Args:
@@ -158,7 +152,7 @@ async def asyncio(
         body (VmwareDiskExtendRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

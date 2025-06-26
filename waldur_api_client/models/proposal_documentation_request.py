@@ -1,10 +1,12 @@
+from collections.abc import Mapping
 from io import BytesIO
 from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, File, FileJsonType, Unset
+from .. import types
+from ..types import UNSET, File, Unset
 
 T = TypeVar("T", bound="ProposalDocumentationRequest")
 
@@ -20,7 +22,7 @@ class ProposalDocumentationRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        file: Union[FileJsonType, None, Unset]
+        file: Union[None, Unset, types.FileTypes]
         if isinstance(self.file, Unset):
             file = UNSET
         elif isinstance(self.file, File):
@@ -38,8 +40,8 @@ class ProposalDocumentationRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
 
         def _parse_file(data: object) -> Union[File, None, Unset]:
             if data is None:

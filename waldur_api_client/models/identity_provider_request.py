@@ -1,4 +1,5 @@
-from typing import Any, TypeVar, Union
+from collections.abc import Mapping
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,6 +23,7 @@ class IdentityProviderRequest:
         enable_pkce (Union[Unset, bool]):
         management_url (Union[Unset, str]): The endpoint for user details management.
         protected_fields (Union[Unset, Any]):
+        scope (Union[None, Unset, str]): Space-separated list of scopes to request during authentication.
     """
 
     provider: str
@@ -34,6 +36,7 @@ class IdentityProviderRequest:
     enable_pkce: Union[Unset, bool] = UNSET
     management_url: Union[Unset, str] = UNSET
     protected_fields: Union[Unset, Any] = UNSET
+    scope: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,6 +60,12 @@ class IdentityProviderRequest:
 
         protected_fields = self.protected_fields
 
+        scope: Union[None, Unset, str]
+        if isinstance(self.scope, Unset):
+            scope = UNSET
+        else:
+            scope = self.scope
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -79,12 +88,14 @@ class IdentityProviderRequest:
             field_dict["management_url"] = management_url
         if protected_fields is not UNSET:
             field_dict["protected_fields"] = protected_fields
+        if scope is not UNSET:
+            field_dict["scope"] = scope
 
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         provider = d.pop("provider")
 
         client_id = d.pop("client_id")
@@ -105,6 +116,15 @@ class IdentityProviderRequest:
 
         protected_fields = d.pop("protected_fields", UNSET)
 
+        def _parse_scope(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        scope = _parse_scope(d.pop("scope", UNSET))
+
         identity_provider_request = cls(
             provider=provider,
             client_id=client_id,
@@ -116,6 +136,7 @@ class IdentityProviderRequest:
             enable_pkce=enable_pkce,
             management_url=management_url,
             protected_fields=protected_fields,
+            scope=scope,
         )
 
         identity_provider_request.additional_properties = d

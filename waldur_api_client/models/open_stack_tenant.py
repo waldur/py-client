@@ -1,4 +1,5 @@
 import datetime
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -334,13 +335,13 @@ class OpenStackTenant:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_tenant_marketplace_offering_plugin_options_type_0 import (
             OpenStackTenantMarketplaceOfferingPluginOptionsType0,
         )
         from ..models.quota import Quota
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         url = d.pop("url", UNSET)
 
         _uuid = d.pop("uuid", UNSET)

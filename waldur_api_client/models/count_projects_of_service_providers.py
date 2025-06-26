@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import Any, TypeVar
 from uuid import UUID
 
@@ -56,8 +57,8 @@ class CountProjectsOfServiceProviders:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         service_provider_uuid = UUID(d.pop("service_provider_uuid"))
 
         customer_uuid = UUID(d.pop("customer_uuid"))

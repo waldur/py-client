@@ -1,4 +1,5 @@
 import datetime
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -263,11 +264,11 @@ class Project:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_price_estimate import NestedPriceEstimate
         from ..models.project_marketplace_resource_count import ProjectMarketplaceResourceCount
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         url = d.pop("url", UNSET)
 
         _uuid = d.pop("uuid", UNSET)

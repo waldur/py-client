@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 
 import httpx
 
@@ -21,24 +21,20 @@ def _get_kwargs(
         "url": "/api/projects/",
     }
 
-    _body = body.to_dict()
+    _kwargs["json"] = body.to_dict()
 
-    _kwargs["json"] = _body
     headers["Content-Type"] = "application/json"
 
     _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Project]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Project:
     if response.status_code == 201:
         response_201 = Project.from_dict(response.json())
 
         return response_201
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Project]:
@@ -62,7 +58,7 @@ def sync_detailed(
         body (ProjectRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -84,7 +80,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ProjectRequest,
-) -> Optional[Project]:
+) -> Project:
     """A new project can be created by users with staff privilege (is_staff=True) or customer owners.
     Project resource quota is optional.
 
@@ -92,7 +88,7 @@ def sync(
         body (ProjectRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -117,7 +113,7 @@ async def asyncio_detailed(
         body (ProjectRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -137,7 +133,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ProjectRequest,
-) -> Optional[Project]:
+) -> Project:
     """A new project can be created by users with staff privilege (is_staff=True) or customer owners.
     Project resource quota is optional.
 
@@ -145,7 +141,7 @@ async def asyncio(
         body (ProjectRequest):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

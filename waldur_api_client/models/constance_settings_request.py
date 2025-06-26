@@ -1,10 +1,12 @@
+from collections.abc import Mapping
 from io import BytesIO
 from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, File, FileJsonType, Unset
+from .. import types
+from ..types import UNSET, File, Unset
 
 T = TypeVar("T", bound="ConstanceSettingsRequest")
 
@@ -358,7 +360,7 @@ class ConstanceSettingsRequest:
 
         disable_dark_theme = self.disable_dark_theme
 
-        powered_by_logo: Union[FileJsonType, None, Unset]
+        powered_by_logo: Union[None, Unset, types.FileTypes]
         if isinstance(self.powered_by_logo, Unset):
             powered_by_logo = UNSET
         elif isinstance(self.powered_by_logo, File):
@@ -367,7 +369,7 @@ class ConstanceSettingsRequest:
         else:
             powered_by_logo = self.powered_by_logo
 
-        hero_image: Union[FileJsonType, None, Unset]
+        hero_image: Union[None, Unset, types.FileTypes]
         if isinstance(self.hero_image, Unset):
             hero_image = UNSET
         elif isinstance(self.hero_image, File):
@@ -376,7 +378,7 @@ class ConstanceSettingsRequest:
         else:
             hero_image = self.hero_image
 
-        marketplace_hero_image: Union[FileJsonType, None, Unset]
+        marketplace_hero_image: Union[None, Unset, types.FileTypes]
         if isinstance(self.marketplace_hero_image, Unset):
             marketplace_hero_image = UNSET
         elif isinstance(self.marketplace_hero_image, File):
@@ -385,7 +387,7 @@ class ConstanceSettingsRequest:
         else:
             marketplace_hero_image = self.marketplace_hero_image
 
-        call_management_hero_image: Union[FileJsonType, None, Unset]
+        call_management_hero_image: Union[None, Unset, types.FileTypes]
         if isinstance(self.call_management_hero_image, Unset):
             call_management_hero_image = UNSET
         elif isinstance(self.call_management_hero_image, File):
@@ -394,7 +396,7 @@ class ConstanceSettingsRequest:
         else:
             call_management_hero_image = self.call_management_hero_image
 
-        sidebar_logo: Union[FileJsonType, None, Unset]
+        sidebar_logo: Union[None, Unset, types.FileTypes]
         if isinstance(self.sidebar_logo, Unset):
             sidebar_logo = UNSET
         elif isinstance(self.sidebar_logo, File):
@@ -403,7 +405,7 @@ class ConstanceSettingsRequest:
         else:
             sidebar_logo = self.sidebar_logo
 
-        sidebar_logo_dark: Union[FileJsonType, None, Unset]
+        sidebar_logo_dark: Union[None, Unset, types.FileTypes]
         if isinstance(self.sidebar_logo_dark, Unset):
             sidebar_logo_dark = UNSET
         elif isinstance(self.sidebar_logo_dark, File):
@@ -412,7 +414,7 @@ class ConstanceSettingsRequest:
         else:
             sidebar_logo_dark = self.sidebar_logo_dark
 
-        sidebar_logo_mobile: Union[FileJsonType, None, Unset]
+        sidebar_logo_mobile: Union[None, Unset, types.FileTypes]
         if isinstance(self.sidebar_logo_mobile, Unset):
             sidebar_logo_mobile = UNSET
         elif isinstance(self.sidebar_logo_mobile, File):
@@ -423,7 +425,7 @@ class ConstanceSettingsRequest:
 
         sidebar_style = self.sidebar_style
 
-        site_logo: Union[FileJsonType, None, Unset]
+        site_logo: Union[None, Unset, types.FileTypes]
         if isinstance(self.site_logo, Unset):
             site_logo = UNSET
         elif isinstance(self.site_logo, File):
@@ -432,7 +434,7 @@ class ConstanceSettingsRequest:
         else:
             site_logo = self.site_logo
 
-        login_logo: Union[FileJsonType, None, Unset]
+        login_logo: Union[None, Unset, types.FileTypes]
         if isinstance(self.login_logo, Unset):
             login_logo = UNSET
         elif isinstance(self.login_logo, File):
@@ -441,7 +443,7 @@ class ConstanceSettingsRequest:
         else:
             login_logo = self.login_logo
 
-        favicon: Union[FileJsonType, None, Unset]
+        favicon: Union[None, Unset, types.FileTypes]
         if isinstance(self.favicon, Unset):
             favicon = UNSET
         elif isinstance(self.favicon, File):
@@ -450,7 +452,7 @@ class ConstanceSettingsRequest:
         else:
             favicon = self.favicon
 
-        offering_logo_placeholder: Union[FileJsonType, None, Unset]
+        offering_logo_placeholder: Union[None, Unset, types.FileTypes]
         if isinstance(self.offering_logo_placeholder, Unset):
             offering_logo_placeholder = UNSET
         elif isinstance(self.offering_logo_placeholder, File):
@@ -595,7 +597,7 @@ class ConstanceSettingsRequest:
 
         freeipa_group_synchronization_enabled = self.freeipa_group_synchronization_enabled
 
-        keycloak_icon: Union[FileJsonType, None, Unset]
+        keycloak_icon: Union[None, Unset, types.FileTypes]
         if isinstance(self.keycloak_icon, Unset):
             keycloak_icon = UNSET
         elif isinstance(self.keycloak_icon, File):
@@ -885,8 +887,8 @@ class ConstanceSettingsRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         site_name = d.pop("SITE_NAME", UNSET)
 
         site_description = d.pop("SITE_DESCRIPTION", UNSET)

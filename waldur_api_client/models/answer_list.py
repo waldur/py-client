@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -43,8 +44,8 @@ class AnswerList:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         question_uuid = UUID(d.pop("question_uuid"))
 
         def _parse_value(data: object) -> Union[None, Unset, bool]:

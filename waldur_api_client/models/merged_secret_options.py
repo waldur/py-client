@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
@@ -281,10 +282,10 @@ class MergedSecretOptions:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.ip_mapping import IPMapping
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         heappe_cluster_password = d.pop("heappe_cluster_password", UNSET)
 
         heappe_password = d.pop("heappe_password", UNSET)

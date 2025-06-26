@@ -1,4 +1,5 @@
 import datetime
+from collections.abc import Mapping
 from io import BytesIO
 from typing import Any, TypeVar, Union
 
@@ -6,7 +7,8 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..types import UNSET, File, FileJsonType, Unset
+from .. import types
+from ..types import UNSET, File, Unset
 
 T = TypeVar("T", bound="PaidRequest")
 
@@ -26,7 +28,7 @@ class PaidRequest:
     def to_dict(self) -> dict[str, Any]:
         date = self.date.isoformat()
 
-        proof: Union[Unset, FileJsonType] = UNSET
+        proof: Union[Unset, types.FileTypes] = UNSET
         if not isinstance(self.proof, Unset):
             proof = self.proof.to_tuple()
 
@@ -43,8 +45,8 @@ class PaidRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         date = isoparse(d.pop("date")).date()
 
         _proof = d.pop("proof", UNSET)

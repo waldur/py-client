@@ -1,12 +1,14 @@
+from collections.abc import Mapping
 from io import BytesIO
 from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from .. import types
 from ..models.blank_enum import BlankEnum
 from ..models.country_enum import CountryEnum
-from ..types import UNSET, File, FileJsonType, Unset
+from ..types import UNSET, File, Unset
 
 T = TypeVar("T", bound="CustomerRequest")
 
@@ -60,7 +62,7 @@ class CustomerRequest:
 
         backend_id = self.backend_id
 
-        image: Union[FileJsonType, None, Unset]
+        image: Union[None, Unset, types.FileTypes]
         if isinstance(self.image, Unset):
             image = UNSET
         elif isinstance(self.image, File):
@@ -158,8 +160,8 @@ class CustomerRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         name = d.pop("name")
 
         backend_id = d.pop("backend_id", UNSET)

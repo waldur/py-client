@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Union
 from uuid import UUID
 
 import httpx
@@ -44,17 +44,12 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[TotalCustomerCost]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> TotalCustomerCost:
     if response.status_code == 200:
         response_200 = TotalCustomerCost.from_dict(response.json())
 
         return response_200
-    if client.raise_on_unexpected_status:
-        raise errors.UnexpectedStatus(response.status_code, response.content)
-    else:
-        return None
+    raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
@@ -86,7 +81,7 @@ def sync_detailed(
         year (Union[Unset, int]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -116,7 +111,7 @@ def sync(
     month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     year: Union[Unset, int] = UNSET,
-) -> Optional[TotalCustomerCost]:
+) -> TotalCustomerCost:
     """
     Args:
         accounting_is_running (Union[Unset, bool]):
@@ -126,7 +121,7 @@ def sync(
         year (Union[Unset, int]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -161,7 +156,7 @@ async def asyncio_detailed(
         year (Union[Unset, int]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
@@ -189,7 +184,7 @@ async def asyncio(
     month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     year: Union[Unset, int] = UNSET,
-) -> Optional[TotalCustomerCost]:
+) -> TotalCustomerCost:
     """
     Args:
         accounting_is_running (Union[Unset, bool]):
@@ -199,7 +194,7 @@ async def asyncio(
         year (Union[Unset, int]):
 
     Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:

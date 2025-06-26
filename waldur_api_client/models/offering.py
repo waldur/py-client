@@ -1,4 +1,5 @@
 import datetime
+from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
@@ -574,7 +575,7 @@ class Offering:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.base_public_plan import BasePublicPlan
         from ..models.google_calendar import GoogleCalendar
         from ..models.merged_plugin_options import MergedPluginOptions
@@ -588,7 +589,7 @@ class Offering:
         from ..models.organization_group import OrganizationGroup
         from ..models.quota import Quota
 
-        d = src_dict.copy()
+        d = dict(src_dict)
         url = d.pop("url", UNSET)
 
         _uuid = d.pop("uuid", UNSET)

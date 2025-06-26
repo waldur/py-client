@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
@@ -36,8 +37,8 @@ class OpenStackAllowedAddressPairRequest:
         return field_dict
 
     @classmethod
-    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
-        d = src_dict.copy()
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
         ip_address = d.pop("ip_address", UNSET)
 
         mac_address = d.pop("mac_address", UNSET)
