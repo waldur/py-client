@@ -64,6 +64,9 @@ class MergedPluginOptionsRequest:
         managed_rancher_load_balancer_system_volume_type_name (Union[Unset, str]):
         managed_rancher_load_balancer_data_volume_size_gb (Union[Unset, int]):
         managed_rancher_load_balancer_data_volume_type_name (Union[Unset, str]):
+        managed_rancher_tenant_max_cpu (Union[Unset, int]): Max number of vCPUs for tenants
+        managed_rancher_tenant_max_ram (Union[Unset, int]): Max number of RAM for tenants
+        managed_rancher_tenant_max_disk (Union[Unset, int]): Max size of disk space for tenants (GB)
         account_name_generation_policy (Union[AccountNameGenerationPolicyEnum, None, Unset]): Slurm account name
             generation policy
     """
@@ -109,6 +112,9 @@ class MergedPluginOptionsRequest:
     managed_rancher_load_balancer_system_volume_type_name: Union[Unset, str] = UNSET
     managed_rancher_load_balancer_data_volume_size_gb: Union[Unset, int] = UNSET
     managed_rancher_load_balancer_data_volume_type_name: Union[Unset, str] = UNSET
+    managed_rancher_tenant_max_cpu: Union[Unset, int] = UNSET
+    managed_rancher_tenant_max_ram: Union[Unset, int] = UNSET
+    managed_rancher_tenant_max_disk: Union[Unset, int] = UNSET
     account_name_generation_policy: Union[AccountNameGenerationPolicyEnum, None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -200,6 +206,12 @@ class MergedPluginOptionsRequest:
         managed_rancher_load_balancer_data_volume_size_gb = self.managed_rancher_load_balancer_data_volume_size_gb
 
         managed_rancher_load_balancer_data_volume_type_name = self.managed_rancher_load_balancer_data_volume_type_name
+
+        managed_rancher_tenant_max_cpu = self.managed_rancher_tenant_max_cpu
+
+        managed_rancher_tenant_max_ram = self.managed_rancher_tenant_max_ram
+
+        managed_rancher_tenant_max_disk = self.managed_rancher_tenant_max_disk
 
         account_name_generation_policy: Union[None, Unset, str]
         if isinstance(self.account_name_generation_policy, Unset):
@@ -302,6 +314,12 @@ class MergedPluginOptionsRequest:
             field_dict["managed_rancher_load_balancer_data_volume_type_name"] = (
                 managed_rancher_load_balancer_data_volume_type_name
             )
+        if managed_rancher_tenant_max_cpu is not UNSET:
+            field_dict["managed_rancher_tenant_max_cpu"] = managed_rancher_tenant_max_cpu
+        if managed_rancher_tenant_max_ram is not UNSET:
+            field_dict["managed_rancher_tenant_max_ram"] = managed_rancher_tenant_max_ram
+        if managed_rancher_tenant_max_disk is not UNSET:
+            field_dict["managed_rancher_tenant_max_disk"] = managed_rancher_tenant_max_disk
         if account_name_generation_policy is not UNSET:
             field_dict["account_name_generation_policy"] = account_name_generation_policy
 
@@ -411,6 +429,12 @@ class MergedPluginOptionsRequest:
             "managed_rancher_load_balancer_data_volume_type_name", UNSET
         )
 
+        managed_rancher_tenant_max_cpu = d.pop("managed_rancher_tenant_max_cpu", UNSET)
+
+        managed_rancher_tenant_max_ram = d.pop("managed_rancher_tenant_max_ram", UNSET)
+
+        managed_rancher_tenant_max_disk = d.pop("managed_rancher_tenant_max_disk", UNSET)
+
         def _parse_account_name_generation_policy(data: object) -> Union[AccountNameGenerationPolicyEnum, None, Unset]:
             if data is None:
                 return data
@@ -470,6 +494,9 @@ class MergedPluginOptionsRequest:
             managed_rancher_load_balancer_system_volume_type_name=managed_rancher_load_balancer_system_volume_type_name,
             managed_rancher_load_balancer_data_volume_size_gb=managed_rancher_load_balancer_data_volume_size_gb,
             managed_rancher_load_balancer_data_volume_type_name=managed_rancher_load_balancer_data_volume_type_name,
+            managed_rancher_tenant_max_cpu=managed_rancher_tenant_max_cpu,
+            managed_rancher_tenant_max_ram=managed_rancher_tenant_max_ram,
+            managed_rancher_tenant_max_disk=managed_rancher_tenant_max_disk,
             account_name_generation_policy=account_name_generation_policy,
         )
 
