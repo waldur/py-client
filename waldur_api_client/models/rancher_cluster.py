@@ -62,6 +62,7 @@ class RancherCluster:
         requested (Union[Unset, Any]): Cluster requested resources in the format {'cpu': '1450m', 'memory': '884Mi',
             'pods': '13'}
         kubernetes_version (Union[Unset, str]): Kubernetes version used in the cluster.
+        router_ips (Union[Unset, list[Any]]):
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_plugin_options (Union['RancherClusterMarketplaceOfferingPluginOptionsType0', None, Unset]):
@@ -109,6 +110,7 @@ class RancherCluster:
     capacity: Union[Unset, Any] = UNSET
     requested: Union[Unset, Any] = UNSET
     kubernetes_version: Union[Unset, str] = UNSET
+    router_ips: Union[Unset, list[Any]] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_plugin_options: Union["RancherClusterMarketplaceOfferingPluginOptionsType0", None, Unset] = (
@@ -229,6 +231,10 @@ class RancherCluster:
         requested = self.requested
 
         kubernetes_version = self.kubernetes_version
+
+        router_ips: Union[Unset, list[Any]] = UNSET
+        if not isinstance(self.router_ips, Unset):
+            router_ips = self.router_ips
 
         marketplace_offering_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_offering_uuid, Unset):
@@ -365,6 +371,8 @@ class RancherCluster:
             field_dict["requested"] = requested
         if kubernetes_version is not UNSET:
             field_dict["kubernetes_version"] = kubernetes_version
+        if router_ips is not UNSET:
+            field_dict["router_ips"] = router_ips
         if marketplace_offering_uuid is not UNSET:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
@@ -526,6 +534,8 @@ class RancherCluster:
 
         kubernetes_version = d.pop("kubernetes_version", UNSET)
 
+        router_ips = cast(list[Any], d.pop("router_ips", UNSET))
+
         def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -666,6 +676,7 @@ class RancherCluster:
             capacity=capacity,
             requested=requested,
             kubernetes_version=kubernetes_version,
+            router_ips=router_ips,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
             marketplace_offering_plugin_options=marketplace_offering_plugin_options,

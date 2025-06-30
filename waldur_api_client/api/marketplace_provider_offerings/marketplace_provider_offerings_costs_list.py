@@ -48,6 +48,7 @@ def _get_kwargs(
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
+    uuid_list: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -172,6 +173,8 @@ def _get_kwargs(
 
     params["type"] = json_type_
 
+    params["uuid_list"] = uuid_list
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
@@ -243,6 +246,7 @@ def sync_detailed(
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
+    uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["ProviderOfferingCosts"]]:
     """Get costs for offering.
 
@@ -278,6 +282,7 @@ def sync_detailed(
         start (Union[Unset, str]):
         state (Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]]):
         type_ (Union[Unset, list[str]]):
+        uuid_list (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -319,6 +324,7 @@ def sync_detailed(
         start=start,
         state=state,
         type_=type_,
+        uuid_list=uuid_list,
     )
 
     response = client.get_httpx_client().request(
@@ -362,6 +368,7 @@ def sync(
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
+    uuid_list: Union[Unset, str] = UNSET,
 ) -> list["ProviderOfferingCosts"]:
     """Get costs for offering.
 
@@ -397,6 +404,7 @@ def sync(
         start (Union[Unset, str]):
         state (Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]]):
         type_ (Union[Unset, list[str]]):
+        uuid_list (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -439,6 +447,7 @@ def sync(
         start=start,
         state=state,
         type_=type_,
+        uuid_list=uuid_list,
     ).parsed
 
 
@@ -476,6 +485,7 @@ async def asyncio_detailed(
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
+    uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["ProviderOfferingCosts"]]:
     """Get costs for offering.
 
@@ -511,6 +521,7 @@ async def asyncio_detailed(
         start (Union[Unset, str]):
         state (Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]]):
         type_ (Union[Unset, list[str]]):
+        uuid_list (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -552,6 +563,7 @@ async def asyncio_detailed(
         start=start,
         state=state,
         type_=type_,
+        uuid_list=uuid_list,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -593,6 +605,7 @@ async def asyncio(
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
+    uuid_list: Union[Unset, str] = UNSET,
 ) -> list["ProviderOfferingCosts"]:
     """Get costs for offering.
 
@@ -628,6 +641,7 @@ async def asyncio(
         start (Union[Unset, str]):
         state (Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]]):
         type_ (Union[Unset, list[str]]):
+        uuid_list (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -671,5 +685,6 @@ async def asyncio(
             start=start,
             state=state,
             type_=type_,
+            uuid_list=uuid_list,
         )
     ).parsed

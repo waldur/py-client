@@ -838,6 +838,10 @@ from .patched_requested_resource_request import PatchedRequestedResourceRequest
 from .patched_resource_update_request import PatchedResourceUpdateRequest
 from .patched_robot_account_request import PatchedRobotAccountRequest
 from .patched_role_details_request import PatchedRoleDetailsRequest
+from .patched_rule_plans_request import PatchedRulePlansRequest
+from .patched_rule_plans_request_attributes import PatchedRulePlansRequestAttributes
+from .patched_rule_plans_request_limits import PatchedRulePlansRequestLimits
+from .patched_rule_request import PatchedRuleRequest
 from .patched_screenshot_request import PatchedScreenshotRequest
 from .patched_section_request import PatchedSectionRequest
 from .patched_service_provider_request import PatchedServiceProviderRequest
@@ -1130,6 +1134,14 @@ from .role_type import RoleType
 from .roles_list_field_item import RolesListFieldItem
 from .roles_retrieve_field_item import RolesRetrieveFieldItem
 from .round_reviewer import RoundReviewer
+from .rule import Rule
+from .rule_plans import RulePlans
+from .rule_plans_attributes import RulePlansAttributes
+from .rule_plans_limits import RulePlansLimits
+from .rule_plans_request import RulePlansRequest
+from .rule_plans_request_attributes import RulePlansRequestAttributes
+from .rule_plans_request_limits import RulePlansRequestLimits
+from .rule_request import RuleRequest
 from .runtime_states import RuntimeStates
 from .saml_2_login import Saml2Login
 from .saml_2_login_complete import Saml2LoginComplete
@@ -2042,6 +2054,10 @@ __all__ = (
     "PatchedResourceUpdateRequest",
     "PatchedRobotAccountRequest",
     "PatchedRoleDetailsRequest",
+    "PatchedRulePlansRequest",
+    "PatchedRulePlansRequestAttributes",
+    "PatchedRulePlansRequestLimits",
+    "PatchedRuleRequest",
     "PatchedScreenshotRequest",
     "PatchedSectionRequest",
     "PatchedServiceProviderRequest",
@@ -2318,6 +2334,14 @@ __all__ = (
     "RoleTemplate",
     "RoleType",
     "RoundReviewer",
+    "Rule",
+    "RulePlans",
+    "RulePlansAttributes",
+    "RulePlansLimits",
+    "RulePlansRequest",
+    "RulePlansRequestAttributes",
+    "RulePlansRequestLimits",
+    "RuleRequest",
     "RuntimeStates",
     "Saml2Login",
     "Saml2LoginComplete",

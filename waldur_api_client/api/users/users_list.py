@@ -41,6 +41,7 @@ def _get_kwargs(
     registration_method: Union[Unset, str] = UNSET,
     user_keyword: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
+    username_list: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -125,6 +126,8 @@ def _get_kwargs(
 
     params["username"] = username
 
+    params["username_list"] = username_list
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
@@ -187,6 +190,7 @@ def sync_detailed(
     registration_method: Union[Unset, str] = UNSET,
     user_keyword: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
+    username_list: Union[Unset, str] = UNSET,
 ) -> Response[list["User"]]:
     """
     Args:
@@ -216,6 +220,7 @@ def sync_detailed(
         registration_method (Union[Unset, str]):
         user_keyword (Union[Unset, str]):
         username (Union[Unset, str]):
+        username_list (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -252,6 +257,7 @@ def sync_detailed(
         registration_method=registration_method,
         user_keyword=user_keyword,
         username=username,
+        username_list=username_list,
     )
 
     response = client.get_httpx_client().request(
@@ -290,6 +296,7 @@ def sync(
     registration_method: Union[Unset, str] = UNSET,
     user_keyword: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
+    username_list: Union[Unset, str] = UNSET,
 ) -> list["User"]:
     """
     Args:
@@ -319,6 +326,7 @@ def sync(
         registration_method (Union[Unset, str]):
         user_keyword (Union[Unset, str]):
         username (Union[Unset, str]):
+        username_list (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -356,6 +364,7 @@ def sync(
         registration_method=registration_method,
         user_keyword=user_keyword,
         username=username,
+        username_list=username_list,
     ).parsed
 
 
@@ -388,6 +397,7 @@ async def asyncio_detailed(
     registration_method: Union[Unset, str] = UNSET,
     user_keyword: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
+    username_list: Union[Unset, str] = UNSET,
 ) -> Response[list["User"]]:
     """
     Args:
@@ -417,6 +427,7 @@ async def asyncio_detailed(
         registration_method (Union[Unset, str]):
         user_keyword (Union[Unset, str]):
         username (Union[Unset, str]):
+        username_list (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -453,6 +464,7 @@ async def asyncio_detailed(
         registration_method=registration_method,
         user_keyword=user_keyword,
         username=username,
+        username_list=username_list,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -489,6 +501,7 @@ async def asyncio(
     registration_method: Union[Unset, str] = UNSET,
     user_keyword: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
+    username_list: Union[Unset, str] = UNSET,
 ) -> list["User"]:
     """
     Args:
@@ -518,6 +531,7 @@ async def asyncio(
         registration_method (Union[Unset, str]):
         user_keyword (Union[Unset, str]):
         username (Union[Unset, str]):
+        username_list (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -556,5 +570,6 @@ async def asyncio(
             registration_method=registration_method,
             user_keyword=user_keyword,
             username=username,
+            username_list=username_list,
         )
     ).parsed
