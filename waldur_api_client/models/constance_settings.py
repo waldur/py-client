@@ -136,6 +136,7 @@ class ConstanceSettings:
         freeipa_group_synchronization_enabled (Union[Unset, bool]):
         keycloak_icon (Union[None, Unset, str]):
         countries (Union[Unset, list[str]]):
+        oidc_auth_url (Union[Unset, str]):
         oidc_introspection_url (Union[Unset, str]):
         oidc_client_id (Union[Unset, str]):
         oidc_client_secret (Union[Unset, str]):
@@ -266,6 +267,7 @@ class ConstanceSettings:
     freeipa_group_synchronization_enabled: Union[Unset, bool] = UNSET
     keycloak_icon: Union[None, Unset, str] = UNSET
     countries: Union[Unset, list[str]] = UNSET
+    oidc_auth_url: Union[Unset, str] = UNSET
     oidc_introspection_url: Union[Unset, str] = UNSET
     oidc_client_id: Union[Unset, str] = UNSET
     oidc_client_secret: Union[Unset, str] = UNSET
@@ -572,6 +574,8 @@ class ConstanceSettings:
         if not isinstance(self.countries, Unset):
             countries = self.countries
 
+        oidc_auth_url = self.oidc_auth_url
+
         oidc_introspection_url = self.oidc_introspection_url
 
         oidc_client_id = self.oidc_client_id
@@ -835,6 +839,8 @@ class ConstanceSettings:
             field_dict["KEYCLOAK_ICON"] = keycloak_icon
         if countries is not UNSET:
             field_dict["COUNTRIES"] = countries
+        if oidc_auth_url is not UNSET:
+            field_dict["OIDC_AUTH_URL"] = oidc_auth_url
         if oidc_introspection_url is not UNSET:
             field_dict["OIDC_INTROSPECTION_URL"] = oidc_introspection_url
         if oidc_client_id is not UNSET:
@@ -1185,6 +1191,8 @@ class ConstanceSettings:
 
         countries = cast(list[str], d.pop("COUNTRIES", UNSET))
 
+        oidc_auth_url = d.pop("OIDC_AUTH_URL", UNSET)
+
         oidc_introspection_url = d.pop("OIDC_INTROSPECTION_URL", UNSET)
 
         oidc_client_id = d.pop("OIDC_CLIENT_ID", UNSET)
@@ -1319,6 +1327,7 @@ class ConstanceSettings:
             freeipa_group_synchronization_enabled=freeipa_group_synchronization_enabled,
             keycloak_icon=keycloak_icon,
             countries=countries,
+            oidc_auth_url=oidc_auth_url,
             oidc_introspection_url=oidc_introspection_url,
             oidc_client_id=oidc_client_id,
             oidc_client_secret=oidc_client_secret,
