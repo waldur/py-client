@@ -36,7 +36,6 @@ class CustomersRetrieveFieldItem(str, Enum):
     PAYMENT_PROFILES = "payment_profiles"
     PHONE_NUMBER = "phone_number"
     POSTAL = "postal"
-    PROJECTS = "projects"
     PROJECTS_COUNT = "projects_count"
     REGISTRATION_CODE = "registration_code"
     SERVICE_PROVIDER = "service_provider"
