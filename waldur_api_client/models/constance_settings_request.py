@@ -144,6 +144,7 @@ class ConstanceSettingsRequest:
         oidc_client_secret (Union[Unset, str]):
         oidc_user_field (Union[Unset, str]):
         oidc_cache_timeout (Union[Unset, int]):
+        deactivate_user_if_no_roles (Union[Unset, bool]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -275,6 +276,7 @@ class ConstanceSettingsRequest:
     oidc_client_secret: Union[Unset, str] = UNSET
     oidc_user_field: Union[Unset, str] = UNSET
     oidc_cache_timeout: Union[Unset, int] = UNSET
+    deactivate_user_if_no_roles: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -624,6 +626,8 @@ class ConstanceSettingsRequest:
 
         oidc_cache_timeout = self.oidc_cache_timeout
 
+        deactivate_user_if_no_roles = self.deactivate_user_if_no_roles
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -889,6 +893,8 @@ class ConstanceSettingsRequest:
             field_dict["OIDC_USER_FIELD"] = oidc_user_field
         if oidc_cache_timeout is not UNSET:
             field_dict["OIDC_CACHE_TIMEOUT"] = oidc_cache_timeout
+        if deactivate_user_if_no_roles is not UNSET:
+            field_dict["DEACTIVATE_USER_IF_NO_ROLES"] = deactivate_user_if_no_roles
 
         return field_dict
 
@@ -1337,6 +1343,8 @@ class ConstanceSettingsRequest:
 
         oidc_cache_timeout = d.pop("OIDC_CACHE_TIMEOUT", UNSET)
 
+        deactivate_user_if_no_roles = d.pop("DEACTIVATE_USER_IF_NO_ROLES", UNSET)
+
         constance_settings_request = cls(
             site_name=site_name,
             site_description=site_description,
@@ -1467,6 +1475,7 @@ class ConstanceSettingsRequest:
             oidc_client_secret=oidc_client_secret,
             oidc_user_field=oidc_user_field,
             oidc_cache_timeout=oidc_cache_timeout,
+            deactivate_user_if_no_roles=deactivate_user_if_no_roles,
         )
 
         constance_settings_request.additional_properties = d

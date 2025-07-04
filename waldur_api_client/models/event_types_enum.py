@@ -240,6 +240,7 @@ class EventTypesEnum(str, Enum):
     USER_ACTIVATED = "user_activated"
     USER_CREATION_SUCCEEDED = "user_creation_succeeded"
     USER_DEACTIVATED = "user_deactivated"
+    USER_DEACTIVATED_NO_ROLES = "user_deactivated_no_roles"
     USER_DELETION_SUCCEEDED = "user_deletion_succeeded"
     USER_DETAILS_UPDATE_SUCCEEDED = "user_details_update_succeeded"
     USER_HAS_BEEN_CREATED_BY_STAFF = "user_has_been_created_by_staff"
