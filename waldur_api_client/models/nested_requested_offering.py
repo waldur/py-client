@@ -1,9 +1,11 @@
+import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from ..models.requested_offering_states import RequestedOfferingStates
 from ..types import UNSET, Unset
@@ -35,6 +37,7 @@ class NestedRequestedOffering:
         plan_details (Union[Unset, BasePublicPlan]):
         options (Union[Unset, OfferingOptions]):
         components (Union[Unset, list['OfferingComponent']]):
+        created (Union[Unset, datetime.datetime]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -51,6 +54,7 @@ class NestedRequestedOffering:
     plan_details: Union[Unset, "BasePublicPlan"] = UNSET
     options: Union[Unset, "OfferingOptions"] = UNSET
     components: Union[Unset, list["OfferingComponent"]] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -103,6 +107,10 @@ class NestedRequestedOffering:
                 components_item = components_item_data.to_dict()
                 components.append(components_item)
 
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -134,6 +142,8 @@ class NestedRequestedOffering:
             field_dict["options"] = options
         if components is not UNSET:
             field_dict["components"] = components
+        if created is not UNSET:
+            field_dict["created"] = created
 
         return field_dict
 
@@ -214,6 +224,13 @@ class NestedRequestedOffering:
 
             components.append(components_item)
 
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
+
         nested_requested_offering = cls(
             uuid=uuid,
             state=state,
@@ -229,6 +246,7 @@ class NestedRequestedOffering:
             plan_details=plan_details,
             options=options,
             components=components,
+            created=created,
         )
 
         nested_requested_offering.additional_properties = d

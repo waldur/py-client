@@ -1,9 +1,11 @@
+import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from ..models.requested_offering_states import RequestedOfferingStates
 from ..types import UNSET, Unset
@@ -33,6 +35,7 @@ class RequestedOffering:
         plan_details (BasePublicPlan):
         options (OfferingOptions):
         components (list['OfferingComponent']):
+        created (datetime.datetime):
         url (str):
         approved_by (Union[None, str]):
         created_by (Union[None, str]):
@@ -55,6 +58,7 @@ class RequestedOffering:
     plan_details: "BasePublicPlan"
     options: "OfferingOptions"
     components: list["OfferingComponent"]
+    created: datetime.datetime
     url: str
     approved_by: Union[None, str]
     created_by: Union[None, str]
@@ -92,6 +96,8 @@ class RequestedOffering:
         for components_item_data in self.components:
             components_item = components_item_data.to_dict()
             components.append(components_item)
+
+        created = self.created.isoformat()
 
         url = self.url
 
@@ -131,6 +137,7 @@ class RequestedOffering:
                 "plan_details": plan_details,
                 "options": options,
                 "components": components,
+                "created": created,
                 "url": url,
                 "approved_by": approved_by,
                 "created_by": created_by,
@@ -183,6 +190,8 @@ class RequestedOffering:
 
             components.append(components_item)
 
+        created = isoparse(d.pop("created"))
+
         url = d.pop("url")
 
         def _parse_approved_by(data: object) -> Union[None, str]:
@@ -229,6 +238,7 @@ class RequestedOffering:
             plan_details=plan_details,
             options=options,
             components=components,
+            created=created,
             url=url,
             approved_by=approved_by,
             created_by=created_by,

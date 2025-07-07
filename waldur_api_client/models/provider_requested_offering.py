@@ -1,9 +1,11 @@
+import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from ..models.requested_offering_states import RequestedOfferingStates
 from ..types import UNSET, Unset
@@ -34,6 +36,7 @@ class ProviderRequestedOffering:
         plan_details (BasePublicPlan):
         options (OfferingOptions):
         components (list['OfferingComponent']):
+        created (datetime.datetime):
         url (str):
         call_name (str):
         call (str):
@@ -56,6 +59,7 @@ class ProviderRequestedOffering:
     plan_details: "BasePublicPlan"
     options: "OfferingOptions"
     components: list["OfferingComponent"]
+    created: datetime.datetime
     url: str
     call_name: str
     call: str
@@ -96,6 +100,8 @@ class ProviderRequestedOffering:
             components_item = components_item_data.to_dict()
             components.append(components_item)
 
+        created = self.created.isoformat()
+
         url = self.url
 
         call_name = self.call_name
@@ -127,6 +133,7 @@ class ProviderRequestedOffering:
                 "plan_details": plan_details,
                 "options": options,
                 "components": components,
+                "created": created,
                 "url": url,
                 "call_name": call_name,
                 "call": call,
@@ -183,6 +190,8 @@ class ProviderRequestedOffering:
 
             components.append(components_item)
 
+        created = isoparse(d.pop("created"))
+
         url = d.pop("url")
 
         call_name = d.pop("call_name")
@@ -211,6 +220,7 @@ class ProviderRequestedOffering:
             plan_details=plan_details,
             options=options,
             components=components,
+            created=created,
             url=url,
             call_name=call_name,
             call=call,
