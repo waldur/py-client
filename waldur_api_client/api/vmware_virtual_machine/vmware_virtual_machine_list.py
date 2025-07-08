@@ -178,7 +178,8 @@ def sync_detailed(
     state: Union[Unset, list[VmwareVirtualMachineListStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["VmwareVirtualMachine"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -269,7 +270,8 @@ def sync(
     state: Union[Unset, list[VmwareVirtualMachineListStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["VmwareVirtualMachine"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -355,7 +357,8 @@ async def asyncio_detailed(
     state: Union[Unset, list[VmwareVirtualMachineListStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["VmwareVirtualMachine"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -444,7 +447,8 @@ async def asyncio(
     state: Union[Unset, list[VmwareVirtualMachineListStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["VmwareVirtualMachine"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):

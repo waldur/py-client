@@ -144,7 +144,8 @@ def sync_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUsage"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         billing_period (Union[Unset, datetime.date]):
         customer_uuid (Union[Unset, UUID]):
@@ -208,7 +209,8 @@ def sync(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["ComponentUsage"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         billing_period (Union[Unset, datetime.date]):
         customer_uuid (Union[Unset, UUID]):
@@ -267,7 +269,8 @@ async def asyncio_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUsage"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         billing_period (Union[Unset, datetime.date]):
         customer_uuid (Union[Unset, UUID]):
@@ -329,7 +332,8 @@ async def asyncio(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["ComponentUsage"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         billing_period (Union[Unset, datetime.date]):
         customer_uuid (Union[Unset, UUID]):

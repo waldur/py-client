@@ -85,7 +85,8 @@ def sync_detailed(
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["AzureLocation"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         has_sizes (Union[Unset, bool]):
         name (Union[Unset, str]):
@@ -131,7 +132,8 @@ def sync(
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["AzureLocation"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         has_sizes (Union[Unset, bool]):
         name (Union[Unset, str]):
@@ -172,7 +174,8 @@ async def asyncio_detailed(
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["AzureLocation"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         has_sizes (Union[Unset, bool]):
         name (Union[Unset, str]):
@@ -216,7 +219,8 @@ async def asyncio(
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["AzureLocation"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         has_sizes (Union[Unset, bool]):
         name (Union[Unset, str]):

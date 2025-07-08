@@ -81,7 +81,8 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["AccessSubnet"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -124,7 +125,8 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["AccessSubnet"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -162,7 +164,8 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["AccessSubnet"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -203,7 +206,8 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["AccessSubnet"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):

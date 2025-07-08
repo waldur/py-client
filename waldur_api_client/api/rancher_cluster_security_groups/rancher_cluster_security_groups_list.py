@@ -79,7 +79,8 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ClusterSecurityGroup"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -119,7 +120,8 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ClusterSecurityGroup"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -154,7 +156,8 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ClusterSecurityGroup"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -192,7 +195,8 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ClusterSecurityGroup"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):

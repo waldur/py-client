@@ -75,7 +75,8 @@ def sync_detailed(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingUsagePolicy"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -112,7 +113,8 @@ def sync(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUsagePolicy"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -144,7 +146,8 @@ async def asyncio_detailed(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingUsagePolicy"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -179,7 +182,8 @@ async def asyncio(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUsagePolicy"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

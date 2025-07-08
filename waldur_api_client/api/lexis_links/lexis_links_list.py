@@ -94,7 +94,8 @@ def sync_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["LexisLink"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -140,7 +141,8 @@ def sync(
     resource_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["LexisLink"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -181,7 +183,8 @@ async def asyncio_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["LexisLink"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -225,7 +228,8 @@ async def asyncio(
     resource_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["LexisLink"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):

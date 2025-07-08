@@ -101,7 +101,8 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> Response[list["EmailHook"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         author_email (Union[Unset, str]):
         author_fullname (Union[Unset, str]):
@@ -156,7 +157,8 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> list["EmailHook"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         author_email (Union[Unset, str]):
         author_fullname (Union[Unset, str]):
@@ -206,7 +208,8 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> Response[list["EmailHook"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         author_email (Union[Unset, str]):
         author_fullname (Union[Unset, str]):
@@ -259,7 +262,8 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> list["EmailHook"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         author_email (Union[Unset, str]):
         author_fullname (Union[Unset, str]):

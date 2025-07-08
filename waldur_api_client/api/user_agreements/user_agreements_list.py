@@ -70,7 +70,8 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["UserAgreement"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         agreement_type (Union[Unset, UserAgreementsListAgreementType]):
         page (Union[Unset, int]):
@@ -104,7 +105,8 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["UserAgreement"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         agreement_type (Union[Unset, UserAgreementsListAgreementType]):
         page (Union[Unset, int]):
@@ -133,7 +135,8 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["UserAgreement"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         agreement_type (Union[Unset, UserAgreementsListAgreementType]):
         page (Union[Unset, int]):
@@ -165,7 +168,8 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["UserAgreement"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         agreement_type (Union[Unset, UserAgreementsListAgreementType]):
         page (Union[Unset, int]):

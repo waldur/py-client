@@ -77,7 +77,8 @@ def sync_detailed(
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["KeycloakGroup"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -117,7 +118,8 @@ def sync(
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["KeycloakGroup"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -152,7 +154,8 @@ async def asyncio_detailed(
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["KeycloakGroup"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -190,7 +193,8 @@ async def asyncio(
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["KeycloakGroup"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

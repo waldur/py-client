@@ -104,7 +104,8 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]] = UNSET,
 ) -> Response[list["RemoteProjectUpdateRequest"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         offering_customer_uuid (Union[Unset, UUID]):
@@ -150,7 +151,8 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]] = UNSET,
 ) -> list["RemoteProjectUpdateRequest"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         offering_customer_uuid (Union[Unset, UUID]):
@@ -191,7 +193,8 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]] = UNSET,
 ) -> Response[list["RemoteProjectUpdateRequest"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         offering_customer_uuid (Union[Unset, UUID]):
@@ -235,7 +238,8 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]] = UNSET,
 ) -> list["RemoteProjectUpdateRequest"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         offering_customer_uuid (Union[Unset, UUID]):

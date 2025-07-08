@@ -81,7 +81,8 @@ def sync_detailed(
     profile: Union[Unset, str] = UNSET,
     profile_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Payment"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         date_of_payment (Union[Unset, datetime.date]):
         page (Union[Unset, int]):
@@ -121,7 +122,8 @@ def sync(
     profile: Union[Unset, str] = UNSET,
     profile_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Payment"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         date_of_payment (Union[Unset, datetime.date]):
         page (Union[Unset, int]):
@@ -156,7 +158,8 @@ async def asyncio_detailed(
     profile: Union[Unset, str] = UNSET,
     profile_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Payment"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         date_of_payment (Union[Unset, datetime.date]):
         page (Union[Unset, int]):
@@ -194,7 +197,8 @@ async def asyncio(
     profile: Union[Unset, str] = UNSET,
     profile_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Payment"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         date_of_payment (Union[Unset, datetime.date]):
         page (Union[Unset, int]):

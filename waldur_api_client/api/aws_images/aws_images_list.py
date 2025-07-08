@@ -77,7 +77,8 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     region: Union[Unset, UUID] = UNSET,
 ) -> Response[list["AwsImage"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -117,7 +118,8 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     region: Union[Unset, UUID] = UNSET,
 ) -> list["AwsImage"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -152,7 +154,8 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     region: Union[Unset, UUID] = UNSET,
 ) -> Response[list["AwsImage"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -190,7 +193,8 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     region: Union[Unset, UUID] = UNSET,
 ) -> list["AwsImage"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):

@@ -161,7 +161,8 @@ def sync_detailed(
     summary: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["Issue"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         assignee (Union[Unset, str]):
         assignee_name (Union[Unset, str]):
@@ -255,7 +256,8 @@ def sync(
     summary: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["Issue"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         assignee (Union[Unset, str]):
         assignee_name (Union[Unset, str]):
@@ -344,7 +346,8 @@ async def asyncio_detailed(
     summary: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["Issue"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         assignee (Union[Unset, str]):
         assignee_name (Union[Unset, str]):
@@ -436,7 +439,8 @@ async def asyncio(
     summary: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["Issue"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         assignee (Union[Unset, str]):
         assignee_name (Union[Unset, str]):

@@ -111,7 +111,8 @@ def sync_detailed(
     user_full_name: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Feedback"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created_after (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
@@ -169,7 +170,8 @@ def sync(
     user_full_name: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Feedback"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created_after (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
@@ -222,7 +224,8 @@ async def asyncio_detailed(
     user_full_name: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Feedback"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created_after (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
@@ -278,7 +281,8 @@ async def asyncio(
     user_full_name: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Feedback"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created_after (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):

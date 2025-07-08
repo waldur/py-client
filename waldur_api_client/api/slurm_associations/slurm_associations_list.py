@@ -75,7 +75,8 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["SlurmAssociation"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         allocation (Union[Unset, str]):
         allocation_uuid (Union[Unset, UUID]):
@@ -112,7 +113,8 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["SlurmAssociation"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         allocation (Union[Unset, str]):
         allocation_uuid (Union[Unset, UUID]):
@@ -144,7 +146,8 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["SlurmAssociation"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         allocation (Union[Unset, str]):
         allocation_uuid (Union[Unset, UUID]):
@@ -179,7 +182,8 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["SlurmAssociation"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         allocation (Union[Unset, str]):
         allocation_uuid (Union[Unset, UUID]):

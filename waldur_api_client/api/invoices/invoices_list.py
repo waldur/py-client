@@ -147,7 +147,8 @@ def sync_detailed(
     state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["Invoice"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
@@ -214,7 +215,8 @@ def sync(
     state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["Invoice"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
@@ -276,7 +278,8 @@ async def asyncio_detailed(
     state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["Invoice"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
@@ -341,7 +344,8 @@ async def asyncio(
     state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["Invoice"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):

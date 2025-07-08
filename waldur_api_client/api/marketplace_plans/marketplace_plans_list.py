@@ -82,7 +82,8 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProviderPlanDetails"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -122,7 +123,8 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProviderPlanDetails"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -157,7 +159,8 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProviderPlanDetails"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -195,7 +198,8 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProviderPlanDetails"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):

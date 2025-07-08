@@ -83,7 +83,8 @@ def sync_detailed(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, str] = UNSET,
 ) -> Response[list["EventSubscription"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         o (Union[Unset, list[EventSubscriptionsListOItem]]):
         page (Union[Unset, int]):
@@ -123,7 +124,8 @@ def sync(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, str] = UNSET,
 ) -> list["EventSubscription"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         o (Union[Unset, list[EventSubscriptionsListOItem]]):
         page (Union[Unset, int]):
@@ -158,7 +160,8 @@ async def asyncio_detailed(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, str] = UNSET,
 ) -> Response[list["EventSubscription"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         o (Union[Unset, list[EventSubscriptionsListOItem]]):
         page (Union[Unset, int]):
@@ -196,7 +199,8 @@ async def asyncio(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, str] = UNSET,
 ) -> list["EventSubscription"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         o (Union[Unset, list[EventSubscriptionsListOItem]]):
         page (Union[Unset, int]):

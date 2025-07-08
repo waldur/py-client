@@ -130,7 +130,8 @@ def sync_detailed(
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> Response[list["MarketplaceCategory"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset,
@@ -189,7 +190,8 @@ def sync(
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> list["MarketplaceCategory"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset,
@@ -243,7 +245,8 @@ async def asyncio_detailed(
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> Response[list["MarketplaceCategory"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset,
@@ -300,7 +303,8 @@ async def asyncio(
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> list["MarketplaceCategory"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset,

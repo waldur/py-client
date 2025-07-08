@@ -79,7 +79,8 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["GoogleCredentials"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[GoogleAuthListFieldItem]]):
         has_credentials (Union[Unset, bool]):
@@ -116,7 +117,8 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["GoogleCredentials"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[GoogleAuthListFieldItem]]):
         has_credentials (Union[Unset, bool]):
@@ -148,7 +150,8 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["GoogleCredentials"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[GoogleAuthListFieldItem]]):
         has_credentials (Union[Unset, bool]):
@@ -183,7 +186,8 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["GoogleCredentials"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[GoogleAuthListFieldItem]]):
         has_credentials (Union[Unset, bool]):

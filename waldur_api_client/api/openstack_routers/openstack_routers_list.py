@@ -93,7 +93,8 @@ def sync_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackRouter"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
         name (Union[Unset, str]):
@@ -139,7 +140,8 @@ def sync(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackRouter"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
         name (Union[Unset, str]):
@@ -180,7 +182,8 @@ async def asyncio_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackRouter"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
         name (Union[Unset, str]):
@@ -224,7 +227,8 @@ async def asyncio(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackRouter"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
         name (Union[Unset, str]):

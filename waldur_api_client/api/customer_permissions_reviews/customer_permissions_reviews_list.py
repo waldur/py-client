@@ -94,7 +94,8 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["CustomerPermissionReview"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):
@@ -137,7 +138,8 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["CustomerPermissionReview"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):
@@ -175,7 +177,8 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["CustomerPermissionReview"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):
@@ -216,7 +219,8 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["CustomerPermissionReview"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):

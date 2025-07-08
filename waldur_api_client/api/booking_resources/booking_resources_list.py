@@ -240,7 +240,8 @@ def sync_detailed(
     state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> Response[list["BookingResource"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
@@ -361,7 +362,8 @@ def sync(
     state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> list["BookingResource"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
@@ -477,7 +479,8 @@ async def asyncio_detailed(
     state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> Response[list["BookingResource"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
@@ -596,7 +599,8 @@ async def asyncio(
     state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> list["BookingResource"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):

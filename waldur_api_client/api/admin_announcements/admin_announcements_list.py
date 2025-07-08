@@ -107,7 +107,8 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     type_: Union[Unset, list[AdminAnnouncementsListTypeItem]] = UNSET,
 ) -> Response[list["AdminAnnouncement"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[AdminAnnouncementsListFieldItem]]):
@@ -153,7 +154,8 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     type_: Union[Unset, list[AdminAnnouncementsListTypeItem]] = UNSET,
 ) -> list["AdminAnnouncement"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[AdminAnnouncementsListFieldItem]]):
@@ -194,7 +196,8 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     type_: Union[Unset, list[AdminAnnouncementsListTypeItem]] = UNSET,
 ) -> Response[list["AdminAnnouncement"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[AdminAnnouncementsListFieldItem]]):
@@ -238,7 +241,8 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     type_: Union[Unset, list[AdminAnnouncementsListTypeItem]] = UNSET,
 ) -> list["AdminAnnouncement"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[AdminAnnouncementsListFieldItem]]):

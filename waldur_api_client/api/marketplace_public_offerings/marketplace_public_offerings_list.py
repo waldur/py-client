@@ -244,7 +244,8 @@ def sync_detailed(
     type_: Union[Unset, list[str]] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["PublicOfferingDetails"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
@@ -356,7 +357,8 @@ def sync(
     type_: Union[Unset, list[str]] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["PublicOfferingDetails"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
@@ -463,7 +465,8 @@ async def asyncio_detailed(
     type_: Union[Unset, list[str]] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["PublicOfferingDetails"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
@@ -573,7 +576,8 @@ async def asyncio(
     type_: Union[Unset, list[str]] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["PublicOfferingDetails"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):

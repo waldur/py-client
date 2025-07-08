@@ -104,7 +104,8 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingFile"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[MarketplaceOfferingFilesListFieldItem]]):
         o (Union[Unset, list[MarketplaceOfferingFilesListOItem]]):
@@ -150,7 +151,8 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingFile"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[MarketplaceOfferingFilesListFieldItem]]):
         o (Union[Unset, list[MarketplaceOfferingFilesListOItem]]):
@@ -191,7 +193,8 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingFile"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[MarketplaceOfferingFilesListFieldItem]]):
         o (Union[Unset, list[MarketplaceOfferingFilesListOItem]]):
@@ -235,7 +238,8 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingFile"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[MarketplaceOfferingFilesListFieldItem]]):
         o (Union[Unset, list[MarketplaceOfferingFilesListOItem]]):

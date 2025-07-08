@@ -94,7 +94,8 @@ def sync_detailed(
     user_uuid: Union[Unset, UUID] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["SlurmAllocationUserUsage"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         allocation (Union[Unset, str]):
         allocation_uuid (Union[Unset, UUID]):
@@ -143,7 +144,8 @@ def sync(
     user_uuid: Union[Unset, UUID] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["SlurmAllocationUserUsage"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         allocation (Union[Unset, str]):
         allocation_uuid (Union[Unset, UUID]):
@@ -187,7 +189,8 @@ async def asyncio_detailed(
     user_uuid: Union[Unset, UUID] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["SlurmAllocationUserUsage"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         allocation (Union[Unset, str]):
         allocation_uuid (Union[Unset, UUID]):
@@ -234,7 +237,8 @@ async def asyncio(
     user_uuid: Union[Unset, UUID] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["SlurmAllocationUserUsage"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         allocation (Union[Unset, str]):
         allocation_uuid (Union[Unset, UUID]):

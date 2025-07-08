@@ -158,7 +158,8 @@ def sync_detailed(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUserUsage"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         billing_period_month (Union[Unset, float]):
         billing_period_year (Union[Unset, float]):
@@ -231,7 +232,8 @@ def sync(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ComponentUserUsage"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         billing_period_month (Union[Unset, float]):
         billing_period_year (Union[Unset, float]):
@@ -299,7 +301,8 @@ async def asyncio_detailed(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUserUsage"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         billing_period_month (Union[Unset, float]):
         billing_period_year (Union[Unset, float]):
@@ -370,7 +373,8 @@ async def asyncio(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ComponentUserUsage"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         billing_period_month (Union[Unset, float]):
         billing_period_year (Union[Unset, float]):

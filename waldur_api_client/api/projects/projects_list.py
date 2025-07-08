@@ -156,7 +156,8 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> Response[list["Project"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
@@ -235,7 +236,8 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> list["Project"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
@@ -309,7 +311,8 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> Response[list["Project"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
@@ -386,7 +389,8 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> list["Project"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):

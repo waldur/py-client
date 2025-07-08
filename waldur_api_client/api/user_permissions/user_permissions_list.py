@@ -149,7 +149,8 @@ def sync_detailed(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["Permission"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
@@ -225,7 +226,8 @@ def sync(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["Permission"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
@@ -296,7 +298,8 @@ async def asyncio_detailed(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["Permission"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
@@ -370,7 +373,8 @@ async def asyncio(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["Permission"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):

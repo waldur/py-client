@@ -141,7 +141,8 @@ def sync_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackPort"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         admin_state_up (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
@@ -217,7 +218,8 @@ def sync(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackPort"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         admin_state_up (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
@@ -288,7 +290,8 @@ async def asyncio_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackPort"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         admin_state_up (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
@@ -362,7 +365,8 @@ async def asyncio(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackPort"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         admin_state_up (Union[Unset, bool]):
         backend_id (Union[Unset, str]):

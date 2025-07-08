@@ -117,7 +117,8 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Event"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
@@ -172,7 +173,8 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Event"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
@@ -222,7 +224,8 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Event"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
@@ -275,7 +278,8 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Event"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):

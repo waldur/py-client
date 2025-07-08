@@ -101,7 +101,8 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
 ) -> Response[list["PaymentProfile"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[PaymentProfilesListOItem]]):
@@ -147,7 +148,8 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
 ) -> list["PaymentProfile"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[PaymentProfilesListOItem]]):
@@ -188,7 +190,8 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
 ) -> Response[list["PaymentProfile"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[PaymentProfilesListOItem]]):
@@ -232,7 +235,8 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
 ) -> list["PaymentProfile"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[PaymentProfilesListOItem]]):

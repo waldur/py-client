@@ -139,7 +139,8 @@ def sync_detailed(
     user_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["SshKey"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[KeysListFieldItem]]):
@@ -206,7 +207,8 @@ def sync(
     user_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["SshKey"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[KeysListFieldItem]]):
@@ -268,7 +270,8 @@ async def asyncio_detailed(
     user_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["SshKey"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[KeysListFieldItem]]):
@@ -333,7 +336,8 @@ async def asyncio(
     user_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["SshKey"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[KeysListFieldItem]]):

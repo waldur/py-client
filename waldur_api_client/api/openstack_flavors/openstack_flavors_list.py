@@ -156,7 +156,8 @@ def sync_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackFlavor"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         cores (Union[Unset, int]):
         cores_gte (Union[Unset, int]):
@@ -241,7 +242,8 @@ def sync(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackFlavor"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         cores (Union[Unset, int]):
         cores_gte (Union[Unset, int]):
@@ -321,7 +323,8 @@ async def asyncio_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackFlavor"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         cores (Union[Unset, int]):
         cores_gte (Union[Unset, int]):
@@ -404,7 +407,8 @@ async def asyncio(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackFlavor"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         cores (Union[Unset, int]):
         cores_gte (Union[Unset, int]):

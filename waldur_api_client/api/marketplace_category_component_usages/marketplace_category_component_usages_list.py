@@ -92,7 +92,8 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CategoryComponentUsage"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
@@ -132,7 +133,8 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CategoryComponentUsage"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
@@ -167,7 +169,8 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CategoryComponentUsage"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
@@ -205,7 +208,8 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CategoryComponentUsage"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):

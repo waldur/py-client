@@ -93,7 +93,8 @@ def sync_detailed(
     sent_at: Union[Unset, datetime.date] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> Response[list["EmailLog"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         body (Union[Unset, str]):
         emails (Union[Unset, str]):
@@ -139,7 +140,8 @@ def sync(
     sent_at: Union[Unset, datetime.date] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> list["EmailLog"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         body (Union[Unset, str]):
         emails (Union[Unset, str]):
@@ -180,7 +182,8 @@ async def asyncio_detailed(
     sent_at: Union[Unset, datetime.date] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> Response[list["EmailLog"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         body (Union[Unset, str]):
         emails (Union[Unset, str]):
@@ -224,7 +227,8 @@ async def asyncio(
     sent_at: Union[Unset, datetime.date] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> list["EmailLog"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         body (Union[Unset, str]):
         emails (Union[Unset, str]):

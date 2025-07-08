@@ -77,7 +77,8 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> Response[list["CategoryGroup"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]]):
         page (Union[Unset, int]):
@@ -114,7 +115,8 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> list["CategoryGroup"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]]):
         page (Union[Unset, int]):
@@ -146,7 +148,8 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> Response[list["CategoryGroup"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]]):
         page (Union[Unset, int]):
@@ -181,7 +184,8 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> list["CategoryGroup"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         field (Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]]):
         page (Union[Unset, int]):

@@ -135,7 +135,8 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[ProposalProtectedCallsListStateItem]] = UNSET,
 ) -> Response[list["ProtectedCall"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
@@ -196,7 +197,8 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[ProposalProtectedCallsListStateItem]] = UNSET,
 ) -> list["ProtectedCall"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
@@ -252,7 +254,8 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[ProposalProtectedCallsListStateItem]] = UNSET,
 ) -> Response[list["ProtectedCall"]]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
@@ -311,7 +314,8 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[ProposalProtectedCallsListStateItem]] = UNSET,
 ) -> list["ProtectedCall"]:
-    """
+    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+
     Args:
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
