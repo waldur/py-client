@@ -43,7 +43,7 @@ def _get_kwargs(
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
@@ -143,10 +143,7 @@ def _get_kwargs(
         json_resource_project_uuid = str(resource_project_uuid)
     params["resource_project_uuid"] = json_resource_project_uuid
 
-    json_scope_uuid: Union[Unset, str] = UNSET
-    if not isinstance(scope_uuid, Unset):
-        json_scope_uuid = str(scope_uuid)
-    params["scope_uuid"] = json_scope_uuid
+    params["scope_uuid"] = scope_uuid
 
     json_service_manager_uuid: Union[Unset, str] = UNSET
     if not isinstance(service_manager_uuid, Unset):
@@ -238,7 +235,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
@@ -273,7 +270,7 @@ def sync_detailed(
         project_uuid (Union[Unset, UUID]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
         start (Union[Unset, str]):
@@ -357,7 +354,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
@@ -392,7 +389,7 @@ def sync(
         project_uuid (Union[Unset, UUID]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
         start (Union[Unset, str]):
@@ -471,7 +468,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
@@ -506,7 +503,7 @@ async def asyncio_detailed(
         project_uuid (Union[Unset, UUID]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
         start (Union[Unset, str]):
@@ -588,7 +585,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
@@ -623,7 +620,7 @@ async def asyncio(
         project_uuid (Union[Unset, UUID]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
         start (Union[Unset, str]):

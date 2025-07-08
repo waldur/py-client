@@ -4,27 +4,27 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ResourceSetLimits")
+T = TypeVar("T", bound="ResourceResponseStatus")
 
 
 @_attrs_define
-class ResourceSetLimits:
+class ResourceResponseStatus:
     """
     Attributes:
-        limits (Any):
+        status (str):
     """
 
-    limits: Any
+    status: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        limits = self.limits
+        status = self.status
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "limits": limits,
+                "status": status,
             }
         )
 
@@ -33,14 +33,14 @@ class ResourceSetLimits:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        limits = d.pop("limits")
+        status = d.pop("status")
 
-        resource_set_limits = cls(
-            limits=limits,
+        resource_response_status = cls(
+            status=status,
         )
 
-        resource_set_limits.additional_properties = d
-        return resource_set_limits
+        resource_response_status.additional_properties = d
+        return resource_response_status
 
     @property
     def additional_keys(self) -> list[str]:

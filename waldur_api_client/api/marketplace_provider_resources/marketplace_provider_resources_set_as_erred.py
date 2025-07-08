@@ -6,7 +6,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_set_state_erred import ResourceSetStateErred
 from ...models.resource_set_state_erred_request import ResourceSetStateErredRequest
 from ...types import Response
 
@@ -31,17 +30,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ResourceSetStateErred:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 200:
-        response_200 = ResourceSetStateErred.from_dict(response.json())
-
-        return response_200
+        return None
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ResourceSetStateErred]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,8 +50,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceSetStateErredRequest,
-) -> Response[ResourceSetStateErred]:
-    """
+) -> Response[Any]:
+    """Set the resource as erred.
+
     Args:
         uuid (UUID):
         body (ResourceSetStateErredRequest):
@@ -66,7 +62,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceSetStateErred]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -81,39 +77,14 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    uuid: UUID,
-    *,
-    client: AuthenticatedClient,
-    body: ResourceSetStateErredRequest,
-) -> ResourceSetStateErred:
-    """
-    Args:
-        uuid (UUID):
-        body (ResourceSetStateErredRequest):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ResourceSetStateErred
-    """
-
-    return sync_detailed(
-        uuid=uuid,
-        client=client,
-        body=body,
-    ).parsed
-
-
 async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: ResourceSetStateErredRequest,
-) -> Response[ResourceSetStateErred]:
-    """
+) -> Response[Any]:
+    """Set the resource as erred.
+
     Args:
         uuid (UUID):
         body (ResourceSetStateErredRequest):
@@ -123,7 +94,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceSetStateErred]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -134,31 +105,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    uuid: UUID,
-    *,
-    client: AuthenticatedClient,
-    body: ResourceSetStateErredRequest,
-) -> ResourceSetStateErred:
-    """
-    Args:
-        uuid (UUID):
-        body (ResourceSetStateErredRequest):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ResourceSetStateErred
-    """
-
-    return (
-        await asyncio_detailed(
-            uuid=uuid,
-            client=client,
-            body=body,
-        )
-    ).parsed

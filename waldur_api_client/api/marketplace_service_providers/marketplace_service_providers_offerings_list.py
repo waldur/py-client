@@ -44,7 +44,7 @@ def _get_kwargs(
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]] = UNSET,
@@ -150,10 +150,7 @@ def _get_kwargs(
         json_resource_project_uuid = str(resource_project_uuid)
     params["resource_project_uuid"] = json_resource_project_uuid
 
-    json_scope_uuid: Union[Unset, str] = UNSET
-    if not isinstance(scope_uuid, Unset):
-        json_scope_uuid = str(scope_uuid)
-    params["scope_uuid"] = json_scope_uuid
+    params["scope_uuid"] = scope_uuid
 
     json_service_manager_uuid: Union[Unset, str] = UNSET
     if not isinstance(service_manager_uuid, Unset):
@@ -243,7 +240,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]] = UNSET,
@@ -277,7 +274,7 @@ def sync_detailed(
         project_uuid (Union[Unset, UUID]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]]):
@@ -359,7 +356,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]] = UNSET,
@@ -393,7 +390,7 @@ def sync(
         project_uuid (Union[Unset, UUID]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]]):
@@ -470,7 +467,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]] = UNSET,
@@ -504,7 +501,7 @@ async def asyncio_detailed(
         project_uuid (Union[Unset, UUID]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]]):
@@ -584,7 +581,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]] = UNSET,
@@ -618,7 +615,7 @@ async def asyncio(
         project_uuid (Union[Unset, UUID]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceServiceProvidersOfferingsListStateItem]]):

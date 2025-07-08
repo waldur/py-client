@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.provider_offering_details import ProviderOfferingDetails
 from ...models.provider_offering_details_request import ProviderOfferingDetailsRequest
+from ...models.resource_response_status import ResourceResponseStatus
 from ...types import Response
 
 
@@ -31,9 +31,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ProviderOfferingDetails:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ResourceResponseStatus:
     if response.status_code == 200:
-        response_200 = ProviderOfferingDetails.from_dict(response.json())
+        response_200 = ResourceResponseStatus.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -41,7 +41,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ProviderOfferingDetails]:
+) -> Response[ResourceResponseStatus]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,8 +55,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ProviderOfferingDetailsRequest,
-) -> Response[ProviderOfferingDetails]:
-    """
+) -> Response[ResourceResponseStatus]:
+    """Refresh offering user usernames.
+
     Args:
         uuid (UUID):
         body (ProviderOfferingDetailsRequest):
@@ -66,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProviderOfferingDetails]
+        Response[ResourceResponseStatus]
     """
 
     kwargs = _get_kwargs(
@@ -86,8 +87,9 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ProviderOfferingDetailsRequest,
-) -> ProviderOfferingDetails:
-    """
+) -> ResourceResponseStatus:
+    """Refresh offering user usernames.
+
     Args:
         uuid (UUID):
         body (ProviderOfferingDetailsRequest):
@@ -97,7 +99,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProviderOfferingDetails
+        ResourceResponseStatus
     """
 
     return sync_detailed(
@@ -112,8 +114,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ProviderOfferingDetailsRequest,
-) -> Response[ProviderOfferingDetails]:
-    """
+) -> Response[ResourceResponseStatus]:
+    """Refresh offering user usernames.
+
     Args:
         uuid (UUID):
         body (ProviderOfferingDetailsRequest):
@@ -123,7 +126,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProviderOfferingDetails]
+        Response[ResourceResponseStatus]
     """
 
     kwargs = _get_kwargs(
@@ -141,8 +144,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ProviderOfferingDetailsRequest,
-) -> ProviderOfferingDetails:
-    """
+) -> ResourceResponseStatus:
+    """Refresh offering user usernames.
+
     Args:
         uuid (UUID):
         body (ProviderOfferingDetailsRequest):
@@ -152,7 +156,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProviderOfferingDetails
+        ResourceResponseStatus
     """
 
     return (

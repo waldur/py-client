@@ -27,7 +27,7 @@ def _get_kwargs(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -83,10 +83,7 @@ def _get_kwargs(
 
     params["scope_type"] = scope_type
 
-    json_scope_uuid: Union[Unset, str] = UNSET
-    if not isinstance(scope_uuid, Unset):
-        json_scope_uuid = str(scope_uuid)
-    params["scope_uuid"] = json_scope_uuid
+    params["scope_uuid"] = scope_uuid
 
     json_user: Union[Unset, str] = UNSET
     if not isinstance(user, Unset):
@@ -152,7 +149,7 @@ def sync_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -174,7 +171,7 @@ def sync_detailed(
         role_uuid (Union[Unset, UUID]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -232,7 +229,7 @@ def sync(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -254,7 +251,7 @@ def sync(
         role_uuid (Union[Unset, UUID]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -307,7 +304,7 @@ async def asyncio_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -329,7 +326,7 @@ async def asyncio_detailed(
         role_uuid (Union[Unset, UUID]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -385,7 +382,7 @@ async def asyncio(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    scope_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -407,7 +404,7 @@ async def asyncio(
         role_uuid (Union[Unset, UUID]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
-        scope_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):

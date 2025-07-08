@@ -1077,24 +1077,19 @@ from .requested_resource import RequestedResource
 from .requested_resource_request import RequestedResourceRequest
 from .resource import Resource
 from .resource_attributes import ResourceAttributes
-from .resource_backend_id import ResourceBackendID
 from .resource_backend_id_request import ResourceBackendIDRequest
 from .resource_backend_metadata_request import ResourceBackendMetadataRequest
-from .resource_backend_metadata_response import ResourceBackendMetadataResponse
 from .resource_current_usages import ResourceCurrentUsages
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
 from .resource_limit_period import ResourceLimitPeriod
 from .resource_limit_usage import ResourceLimitUsage
 from .resource_limits import ResourceLimits
 from .resource_offering import ResourceOffering
-from .resource_options import ResourceOptions
 from .resource_options_request import ResourceOptionsRequest
 from .resource_plan_period import ResourcePlanPeriod
-from .resource_report import ResourceReport
 from .resource_report_request import ResourceReportRequest
-from .resource_set_limits import ResourceSetLimits
+from .resource_response_status import ResourceResponseStatus
 from .resource_set_limits_request import ResourceSetLimitsRequest
-from .resource_set_state_erred import ResourceSetStateErred
 from .resource_set_state_erred_request import ResourceSetStateErredRequest
 from .resource_slug_request import ResourceSlugRequest
 from .resource_state import ResourceState
@@ -2276,24 +2271,19 @@ __all__ = (
     "RequestTypes",
     "Resource",
     "ResourceAttributes",
-    "ResourceBackendID",
     "ResourceBackendIDRequest",
     "ResourceBackendMetadataRequest",
-    "ResourceBackendMetadataResponse",
     "ResourceCurrentUsages",
     "ResourceEndDateByProviderRequest",
     "ResourceLimitPeriod",
     "ResourceLimits",
     "ResourceLimitUsage",
     "ResourceOffering",
-    "ResourceOptions",
     "ResourceOptionsRequest",
     "ResourcePlanPeriod",
-    "ResourceReport",
     "ResourceReportRequest",
-    "ResourceSetLimits",
+    "ResourceResponseStatus",
     "ResourceSetLimitsRequest",
-    "ResourceSetStateErred",
     "ResourceSetStateErredRequest",
     "ResourcesLimits",
     "ResourceSlugRequest",
