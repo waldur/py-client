@@ -25,6 +25,7 @@ def _get_kwargs(
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
     o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     ram: Union[Unset, int] = UNSET,
@@ -72,6 +73,11 @@ def _get_kwargs(
             json_o.append(o_item)
 
     params["o"] = json_o
+
+    json_offering_uuid: Union[Unset, str] = UNSET
+    if not isinstance(offering_uuid, Unset):
+        json_offering_uuid = str(offering_uuid)
+    params["offering_uuid"] = json_offering_uuid
 
     params["page"] = page
 
@@ -146,6 +152,7 @@ def sync_detailed(
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
     o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     ram: Union[Unset, int] = UNSET,
@@ -170,6 +177,7 @@ def sync_detailed(
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
         o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         ram (Union[Unset, int]):
@@ -200,6 +208,7 @@ def sync_detailed(
         name_exact=name_exact,
         name_iregex=name_iregex,
         o=o,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         ram=ram,
@@ -232,6 +241,7 @@ def sync(
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
     o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     ram: Union[Unset, int] = UNSET,
@@ -256,6 +266,7 @@ def sync(
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
         o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         ram (Union[Unset, int]):
@@ -287,6 +298,7 @@ def sync(
         name_exact=name_exact,
         name_iregex=name_iregex,
         o=o,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         ram=ram,
@@ -313,6 +325,7 @@ async def asyncio_detailed(
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
     o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     ram: Union[Unset, int] = UNSET,
@@ -337,6 +350,7 @@ async def asyncio_detailed(
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
         o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         ram (Union[Unset, int]):
@@ -367,6 +381,7 @@ async def asyncio_detailed(
         name_exact=name_exact,
         name_iregex=name_iregex,
         o=o,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         ram=ram,
@@ -397,6 +412,7 @@ async def asyncio(
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
     o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     ram: Union[Unset, int] = UNSET,
@@ -421,6 +437,7 @@ async def asyncio(
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
         o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         ram (Union[Unset, int]):
@@ -453,6 +470,7 @@ async def asyncio(
             name_exact=name_exact,
             name_iregex=name_iregex,
             o=o,
+            offering_uuid=offering_uuid,
             page=page,
             page_size=page_size,
             ram=ram,

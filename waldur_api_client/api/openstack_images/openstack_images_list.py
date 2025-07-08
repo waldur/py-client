@@ -14,6 +14,7 @@ def _get_kwargs(
     *,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     settings: Union[Unset, str] = UNSET,
@@ -26,6 +27,11 @@ def _get_kwargs(
     params["name"] = name
 
     params["name_exact"] = name_exact
+
+    json_offering_uuid: Union[Unset, str] = UNSET
+    if not isinstance(offering_uuid, Unset):
+        json_offering_uuid = str(offering_uuid)
+    params["offering_uuid"] = json_offering_uuid
 
     params["page"] = page
 
@@ -85,6 +91,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     settings: Union[Unset, str] = UNSET,
@@ -97,6 +104,7 @@ def sync_detailed(
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         settings (Union[Unset, str]):
@@ -115,6 +123,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         name=name,
         name_exact=name_exact,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         settings=settings,
@@ -135,6 +144,7 @@ def sync(
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     settings: Union[Unset, str] = UNSET,
@@ -147,6 +157,7 @@ def sync(
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         settings (Union[Unset, str]):
@@ -166,6 +177,7 @@ def sync(
         client=client,
         name=name,
         name_exact=name_exact,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         settings=settings,
@@ -180,6 +192,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     settings: Union[Unset, str] = UNSET,
@@ -192,6 +205,7 @@ async def asyncio_detailed(
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         settings (Union[Unset, str]):
@@ -210,6 +224,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         name=name,
         name_exact=name_exact,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         settings=settings,
@@ -228,6 +243,7 @@ async def asyncio(
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     settings: Union[Unset, str] = UNSET,
@@ -240,6 +256,7 @@ async def asyncio(
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         settings (Union[Unset, str]):
@@ -260,6 +277,7 @@ async def asyncio(
             client=client,
             name=name,
             name_exact=name_exact,
+            offering_uuid=offering_uuid,
             page=page,
             page_size=page_size,
             settings=settings,

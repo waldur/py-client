@@ -1079,8 +1079,8 @@ from .resource import Resource
 from .resource_attributes import ResourceAttributes
 from .resource_backend_id import ResourceBackendID
 from .resource_backend_id_request import ResourceBackendIDRequest
-from .resource_backend_metadata import ResourceBackendMetadata
 from .resource_backend_metadata_request import ResourceBackendMetadataRequest
+from .resource_backend_metadata_response import ResourceBackendMetadataResponse
 from .resource_current_usages import ResourceCurrentUsages
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
 from .resource_limit_period import ResourceLimitPeriod
@@ -2278,8 +2278,8 @@ __all__ = (
     "ResourceAttributes",
     "ResourceBackendID",
     "ResourceBackendIDRequest",
-    "ResourceBackendMetadata",
     "ResourceBackendMetadataRequest",
+    "ResourceBackendMetadataResponse",
     "ResourceCurrentUsages",
     "ResourceEndDateByProviderRequest",
     "ResourceLimitPeriod",

@@ -4,27 +4,27 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ResourceBackendMetadata")
+T = TypeVar("T", bound="ResourceBackendMetadataResponse")
 
 
 @_attrs_define
-class ResourceBackendMetadata:
+class ResourceBackendMetadataResponse:
     """
     Attributes:
-        backend_metadata (Any):
+        status (str):
     """
 
-    backend_metadata: Any
+    status: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        backend_metadata = self.backend_metadata
+        status = self.status
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "backend_metadata": backend_metadata,
+                "status": status,
             }
         )
 
@@ -33,14 +33,14 @@ class ResourceBackendMetadata:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        backend_metadata = d.pop("backend_metadata")
+        status = d.pop("status")
 
-        resource_backend_metadata = cls(
-            backend_metadata=backend_metadata,
+        resource_backend_metadata_response = cls(
+            status=status,
         )
 
-        resource_backend_metadata.additional_properties = d
-        return resource_backend_metadata
+        resource_backend_metadata_response.additional_properties = d
+        return resource_backend_metadata_response
 
     @property
     def additional_keys(self) -> list[str]:
