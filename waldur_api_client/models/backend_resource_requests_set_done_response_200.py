@@ -4,53 +4,28 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.agreement_type_enum import AgreementTypeEnum
-
-T = TypeVar("T", bound="UserAgreementRequest")
+T = TypeVar("T", bound="BackendResourceRequestsSetDoneResponse200")
 
 
 @_attrs_define
-class UserAgreementRequest:
-    """
-    Attributes:
-        content (str):
-        agreement_type (AgreementTypeEnum):
-    """
+class BackendResourceRequestsSetDoneResponse200:
+    """ """
 
-    content: str
-    agreement_type: AgreementTypeEnum
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        content = self.content
-
-        agreement_type = self.agreement_type.value
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "content": content,
-                "agreement_type": agreement_type,
-            }
-        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        content = d.pop("content")
+        backend_resource_requests_set_done_response_200 = cls()
 
-        agreement_type = AgreementTypeEnum(d.pop("agreement_type"))
-
-        user_agreement_request = cls(
-            content=content,
-            agreement_type=agreement_type,
-        )
-
-        user_agreement_request.additional_properties = d
-        return user_agreement_request
+        backend_resource_requests_set_done_response_200.additional_properties = d
+        return backend_resource_requests_set_done_response_200
 
     @property
     def additional_keys(self) -> list[str]:

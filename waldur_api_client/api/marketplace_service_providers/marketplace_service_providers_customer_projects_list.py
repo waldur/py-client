@@ -38,6 +38,7 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    slug: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -104,6 +105,8 @@ def _get_kwargs(
 
     params["query"] = query
 
+    params["slug"] = slug
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
@@ -163,6 +166,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    slug: Union[Unset, str] = UNSET,
 ) -> Response[list["MarketplaceProviderCustomerProject"]]:
     """Return customer projects of service provider.
 
@@ -186,6 +190,7 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        slug (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -215,6 +220,7 @@ def sync_detailed(
         page=page,
         page_size=page_size,
         query=query,
+        slug=slug,
     )
 
     response = client.get_httpx_client().request(
@@ -246,6 +252,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    slug: Union[Unset, str] = UNSET,
 ) -> list["MarketplaceProviderCustomerProject"]:
     """Return customer projects of service provider.
 
@@ -269,6 +276,7 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        slug (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -299,6 +307,7 @@ def sync(
         page=page,
         page_size=page_size,
         query=query,
+        slug=slug,
     ).parsed
 
 
@@ -324,6 +333,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    slug: Union[Unset, str] = UNSET,
 ) -> Response[list["MarketplaceProviderCustomerProject"]]:
     """Return customer projects of service provider.
 
@@ -347,6 +357,7 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        slug (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -376,6 +387,7 @@ async def asyncio_detailed(
         page=page,
         page_size=page_size,
         query=query,
+        slug=slug,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -405,6 +417,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    slug: Union[Unset, str] = UNSET,
 ) -> list["MarketplaceProviderCustomerProject"]:
     """Return customer projects of service provider.
 
@@ -428,6 +441,7 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        slug (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -459,5 +473,6 @@ async def asyncio(
             page=page,
             page_size=page_size,
             query=query,
+            slug=slug,
         )
     ).parsed

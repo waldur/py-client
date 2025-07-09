@@ -1,37 +1,31 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.agreement_type_enum import AgreementTypeEnum
-
-T = TypeVar("T", bound="UserAgreementRequest")
+T = TypeVar("T", bound="BackendResourceReqRequest")
 
 
 @_attrs_define
-class UserAgreementRequest:
+class BackendResourceReqRequest:
     """
     Attributes:
-        content (str):
-        agreement_type (AgreementTypeEnum):
+        offering (UUID):
     """
 
-    content: str
-    agreement_type: AgreementTypeEnum
+    offering: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        content = self.content
-
-        agreement_type = self.agreement_type.value
+        offering = str(self.offering)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "content": content,
-                "agreement_type": agreement_type,
+                "offering": offering,
             }
         )
 
@@ -40,17 +34,14 @@ class UserAgreementRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        content = d.pop("content")
+        offering = UUID(d.pop("offering"))
 
-        agreement_type = AgreementTypeEnum(d.pop("agreement_type"))
-
-        user_agreement_request = cls(
-            content=content,
-            agreement_type=agreement_type,
+        backend_resource_req_request = cls(
+            offering=offering,
         )
 
-        user_agreement_request.additional_properties = d
-        return user_agreement_request
+        backend_resource_req_request.additional_properties = d
+        return backend_resource_req_request
 
     @property
     def additional_keys(self) -> list[str]:

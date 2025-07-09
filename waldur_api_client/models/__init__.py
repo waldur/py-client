@@ -85,6 +85,19 @@ from .azure_virtualmachines_list_state_item import AzureVirtualmachinesListState
 from .azure_virtualmachines_retrieve_field_item import AzureVirtualmachinesRetrieveFieldItem
 from .backend_id_request import BackendIdRequest
 from .backend_metadata import BackendMetadata
+from .backend_resource import BackendResource
+from .backend_resource_import_request import BackendResourceImportRequest
+from .backend_resource_req import BackendResourceReq
+from .backend_resource_req_request import BackendResourceReqRequest
+from .backend_resource_req_state_enum import BackendResourceReqStateEnum
+from .backend_resource_request import BackendResourceRequest
+from .backend_resource_request_set_erred_request import BackendResourceRequestSetErredRequest
+from .backend_resource_requests_list_o_item import BackendResourceRequestsListOItem
+from .backend_resource_requests_list_state_item import BackendResourceRequestsListStateItem
+from .backend_resource_requests_set_done_response_200 import BackendResourceRequestsSetDoneResponse200
+from .backend_resource_requests_set_erred_response_200 import BackendResourceRequestsSetErredResponse200
+from .backend_resource_requests_start_processing_response_200 import BackendResourceRequestsStartProcessingResponse200
+from .backend_resources_list_o_item import BackendResourcesListOItem
 from .base_component_usage import BaseComponentUsage
 from .base_provider_plan import BaseProviderPlan
 from .base_provider_plan_future_prices import BaseProviderPlanFuturePrices
@@ -753,7 +766,6 @@ from .order_create_limits import OrderCreateLimits
 from .order_create_request import OrderCreateRequest
 from .order_create_request_limits import OrderCreateRequestLimits
 from .order_details import OrderDetails
-from .order_details_attributes import OrderDetailsAttributes
 from .order_details_limits import OrderDetailsLimits
 from .order_set_state_erred_request import OrderSetStateErredRequest
 from .order_state import OrderState
@@ -1353,6 +1365,19 @@ __all__ = (
     "AzureVirtualmachinesRetrieveFieldItem",
     "BackendIdRequest",
     "BackendMetadata",
+    "BackendResource",
+    "BackendResourceImportRequest",
+    "BackendResourceReq",
+    "BackendResourceReqRequest",
+    "BackendResourceReqStateEnum",
+    "BackendResourceRequest",
+    "BackendResourceRequestSetErredRequest",
+    "BackendResourceRequestsListOItem",
+    "BackendResourceRequestsListStateItem",
+    "BackendResourceRequestsSetDoneResponse200",
+    "BackendResourceRequestsSetErredResponse200",
+    "BackendResourceRequestsStartProcessingResponse200",
+    "BackendResourcesListOItem",
     "BaseComponentUsage",
     "BaseProviderPlan",
     "BaseProviderPlanFuturePrices",
@@ -1965,7 +1990,6 @@ __all__ = (
     "OrderCreateRequest",
     "OrderCreateRequestLimits",
     "OrderDetails",
-    "OrderDetailsAttributes",
     "OrderDetailsLimits",
     "OrderSetStateErredRequest",
     "OrderState",

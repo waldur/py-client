@@ -31,6 +31,10 @@ class MergedPluginOptions:
             the same organization under which the request is done
         supports_downscaling (Union[Unset, bool]): If set to True, it will be possible to downscale resources
         supports_pausing (Union[Unset, bool]): If set to True, it will be possible to pause resources
+        minimal_team_count_for_provisioning (Union[Unset, int]): Minimal team count required for provisioning of
+            resources
+        required_team_role_for_provisioning (Union[Unset, str]): Required user role in a project for provisioning of
+            resources
         default_internal_network_mtu (Union[Unset, int]): If set, it will be used as a default MTU for the first network
             in a tenant
         max_instances (Union[Unset, int]): Default limit for number of instances in OpenStack tenant
@@ -80,6 +84,8 @@ class MergedPluginOptions:
     auto_approve_in_service_provider_projects: Union[Unset, bool] = UNSET
     supports_downscaling: Union[Unset, bool] = UNSET
     supports_pausing: Union[Unset, bool] = UNSET
+    minimal_team_count_for_provisioning: Union[Unset, int] = UNSET
+    required_team_role_for_provisioning: Union[Unset, str] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
     max_volumes: Union[Unset, int] = UNSET
@@ -138,6 +144,10 @@ class MergedPluginOptions:
         supports_downscaling = self.supports_downscaling
 
         supports_pausing = self.supports_pausing
+
+        minimal_team_count_for_provisioning = self.minimal_team_count_for_provisioning
+
+        required_team_role_for_provisioning = self.required_team_role_for_provisioning
 
         default_internal_network_mtu = self.default_internal_network_mtu
 
@@ -242,6 +252,10 @@ class MergedPluginOptions:
             field_dict["supports_downscaling"] = supports_downscaling
         if supports_pausing is not UNSET:
             field_dict["supports_pausing"] = supports_pausing
+        if minimal_team_count_for_provisioning is not UNSET:
+            field_dict["minimal_team_count_for_provisioning"] = minimal_team_count_for_provisioning
+        if required_team_role_for_provisioning is not UNSET:
+            field_dict["required_team_role_for_provisioning"] = required_team_role_for_provisioning
         if default_internal_network_mtu is not UNSET:
             field_dict["default_internal_network_mtu"] = default_internal_network_mtu
         if max_instances is not UNSET:
@@ -350,6 +364,10 @@ class MergedPluginOptions:
         supports_downscaling = d.pop("supports_downscaling", UNSET)
 
         supports_pausing = d.pop("supports_pausing", UNSET)
+
+        minimal_team_count_for_provisioning = d.pop("minimal_team_count_for_provisioning", UNSET)
+
+        required_team_role_for_provisioning = d.pop("required_team_role_for_provisioning", UNSET)
 
         default_internal_network_mtu = d.pop("default_internal_network_mtu", UNSET)
 
@@ -464,6 +482,8 @@ class MergedPluginOptions:
             auto_approve_in_service_provider_projects=auto_approve_in_service_provider_projects,
             supports_downscaling=supports_downscaling,
             supports_pausing=supports_pausing,
+            minimal_team_count_for_provisioning=minimal_team_count_for_provisioning,
+            required_team_role_for_provisioning=required_team_role_for_provisioning,
             default_internal_network_mtu=default_internal_network_mtu,
             max_instances=max_instances,
             max_volumes=max_volumes,

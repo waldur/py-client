@@ -14,7 +14,6 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.issue_reference import IssueReference
-    from ..models.order_details_attributes import OrderDetailsAttributes
     from ..models.order_details_limits import OrderDetailsLimits
 
 
@@ -47,8 +46,7 @@ class OrderDetails:
         plan_name (Union[None, Unset, str]):
         plan_uuid (Union[None, UUID, Unset]):
         plan_description (Union[None, Unset, str]):
-        attributes (Union[Unset, OrderDetailsAttributes]): Get attributes excluding secret attributes, such as username
-            and password.
+        attributes (Union[Unset, Any]):
         limits (Union[Unset, OrderDetailsLimits]):
         uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
@@ -122,7 +120,7 @@ class OrderDetails:
     plan_name: Union[None, Unset, str] = UNSET
     plan_uuid: Union[None, UUID, Unset] = UNSET
     plan_description: Union[None, Unset, str] = UNSET
-    attributes: Union[Unset, "OrderDetailsAttributes"] = UNSET
+    attributes: Union[Unset, Any] = UNSET
     limits: Union[Unset, "OrderDetailsLimits"] = UNSET
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
@@ -241,9 +239,7 @@ class OrderDetails:
         else:
             plan_description = self.plan_description
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.attributes, Unset):
-            attributes = self.attributes.to_dict()
+        attributes = self.attributes
 
         limits: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.limits, Unset):
@@ -598,7 +594,6 @@ class OrderDetails:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.issue_reference import IssueReference
-        from ..models.order_details_attributes import OrderDetailsAttributes
         from ..models.order_details_limits import OrderDetailsLimits
 
         d = dict(src_dict)
@@ -703,12 +698,7 @@ class OrderDetails:
 
         plan_description = _parse_plan_description(d.pop("plan_description", UNSET))
 
-        _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, OrderDetailsAttributes]
-        if isinstance(_attributes, Unset):
-            attributes = UNSET
-        else:
-            attributes = OrderDetailsAttributes.from_dict(_attributes)
+        attributes = d.pop("attributes", UNSET)
 
         _limits = d.pop("limits", UNSET)
         limits: Union[Unset, OrderDetailsLimits]

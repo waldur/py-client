@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,7 +8,6 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.agreement_type_enum import AgreementTypeEnum
-from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="UserAgreement")
 
@@ -19,18 +18,18 @@ class UserAgreement:
     Attributes:
         url (str):
         uuid (UUID):
+        content (str):
         agreement_type (AgreementTypeEnum):
         created (datetime.datetime):
         modified (datetime.datetime):
-        content (Union[Unset, str]):
     """
 
     url: str
     uuid: UUID
+    content: str
     agreement_type: AgreementTypeEnum
     created: datetime.datetime
     modified: datetime.datetime
-    content: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,13 +37,13 @@ class UserAgreement:
 
         uuid = str(self.uuid)
 
+        content = self.content
+
         agreement_type = self.agreement_type.value
 
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
-
-        content = self.content
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -52,13 +51,12 @@ class UserAgreement:
             {
                 "url": url,
                 "uuid": uuid,
+                "content": content,
                 "agreement_type": agreement_type,
                 "created": created,
                 "modified": modified,
             }
         )
-        if content is not UNSET:
-            field_dict["content"] = content
 
         return field_dict
 
@@ -69,21 +67,21 @@ class UserAgreement:
 
         uuid = UUID(d.pop("uuid"))
 
+        content = d.pop("content")
+
         agreement_type = AgreementTypeEnum(d.pop("agreement_type"))
 
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
 
-        content = d.pop("content", UNSET)
-
         user_agreement = cls(
             url=url,
             uuid=uuid,
+            content=content,
             agreement_type=agreement_type,
             created=created,
             modified=modified,
-            content=content,
         )
 
         user_agreement.additional_properties = d
