@@ -309,6 +309,7 @@ from .identity_provider_request import IdentityProviderRequest
 from .image_create_request import ImageCreateRequest
 from .image_create_response import ImageCreateResponse
 from .image_upload_response import ImageUploadResponse
+from .impact_level_enum import ImpactLevelEnum
 from .import_resource_request import ImportResourceRequest
 from .importable_resource import ImportableResource
 from .instance_flavor_change_request import InstanceFlavorChangeRequest
@@ -375,6 +376,16 @@ from .link_openstack_request import LinkOpenstackRequest
 from .link_to_invoice import LinkToInvoice
 from .link_to_invoice_request import LinkToInvoiceRequest
 from .logout import Logout
+from .maintenance_announcement import MaintenanceAnnouncement
+from .maintenance_announcement_offering import MaintenanceAnnouncementOffering
+from .maintenance_announcement_offering_request import MaintenanceAnnouncementOfferingRequest
+from .maintenance_announcement_offering_template import MaintenanceAnnouncementOfferingTemplate
+from .maintenance_announcement_offering_template_request import MaintenanceAnnouncementOfferingTemplateRequest
+from .maintenance_announcement_request import MaintenanceAnnouncementRequest
+from .maintenance_announcement_state_enum import MaintenanceAnnouncementStateEnum
+from .maintenance_announcement_template import MaintenanceAnnouncementTemplate
+from .maintenance_announcement_template_request import MaintenanceAnnouncementTemplateRequest
+from .maintenance_type_enum import MaintenanceTypeEnum
 from .mapping import Mapping
 from .mapping_request import MappingRequest
 from .marketplace_categories_list_customers_offerings_state_item import (
@@ -804,6 +815,12 @@ from .patched_invoice_item_update_request import PatchedInvoiceItemUpdateRequest
 from .patched_issue_request import PatchedIssueRequest
 from .patched_keycloak_user_group_membership_request import PatchedKeycloakUserGroupMembershipRequest
 from .patched_lexis_link_request import PatchedLexisLinkRequest
+from .patched_maintenance_announcement_offering_request import PatchedMaintenanceAnnouncementOfferingRequest
+from .patched_maintenance_announcement_offering_template_request import (
+    PatchedMaintenanceAnnouncementOfferingTemplateRequest,
+)
+from .patched_maintenance_announcement_request import PatchedMaintenanceAnnouncementRequest
+from .patched_maintenance_announcement_template_request import PatchedMaintenanceAnnouncementTemplateRequest
 from .patched_marketplace_category_request import PatchedMarketplaceCategoryRequest
 from .patched_message_template_request import PatchedMessageTemplateRequest
 from .patched_migration_details_request import PatchedMigrationDetailsRequest
@@ -1216,6 +1233,7 @@ from .template_version import TemplateVersion
 from .tenant import Tenant
 from .token_request import TokenRequest
 from .total_customer_cost import TotalCustomerCost
+from .update_offering_component_request import UpdateOfferingComponentRequest
 from .user import User
 from .user_agreement import UserAgreement
 from .user_agreement_request import UserAgreementRequest
@@ -1585,6 +1603,7 @@ __all__ = (
     "ImageCreateRequest",
     "ImageCreateResponse",
     "ImageUploadResponse",
+    "ImpactLevelEnum",
     "ImportableResource",
     "ImportResourceRequest",
     "InstanceFlavorChangeRequest",
@@ -1651,6 +1670,16 @@ __all__ = (
     "LinkToInvoice",
     "LinkToInvoiceRequest",
     "Logout",
+    "MaintenanceAnnouncement",
+    "MaintenanceAnnouncementOffering",
+    "MaintenanceAnnouncementOfferingRequest",
+    "MaintenanceAnnouncementOfferingTemplate",
+    "MaintenanceAnnouncementOfferingTemplateRequest",
+    "MaintenanceAnnouncementRequest",
+    "MaintenanceAnnouncementStateEnum",
+    "MaintenanceAnnouncementTemplate",
+    "MaintenanceAnnouncementTemplateRequest",
+    "MaintenanceTypeEnum",
     "Mapping",
     "MappingRequest",
     "MarketplaceCategoriesListCustomersOfferingsStateItem",
@@ -2028,6 +2057,10 @@ __all__ = (
     "PatchedIssueRequest",
     "PatchedKeycloakUserGroupMembershipRequest",
     "PatchedLexisLinkRequest",
+    "PatchedMaintenanceAnnouncementOfferingRequest",
+    "PatchedMaintenanceAnnouncementOfferingTemplateRequest",
+    "PatchedMaintenanceAnnouncementRequest",
+    "PatchedMaintenanceAnnouncementTemplateRequest",
     "PatchedMarketplaceCategoryRequest",
     "PatchedMessageTemplateRequest",
     "PatchedMigrationDetailsRequest",
@@ -2420,6 +2453,7 @@ __all__ = (
     "Tenant",
     "TokenRequest",
     "TotalCustomerCost",
+    "UpdateOfferingComponentRequest",
     "User",
     "UserAgreement",
     "UserAgreementRequest",

@@ -6,37 +6,32 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.update_offering_component_request import UpdateOfferingComponentRequest
+from ...models.maintenance_announcement import MaintenanceAnnouncement
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
-    *,
-    body: UpdateOfferingComponentRequest,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": f"/api/marketplace-provider-offerings/{uuid}/update_offering_component/",
+        "method": "get",
+        "url": f"/api/marketplace-maintenance-announcements/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> MaintenanceAnnouncement:
     if response.status_code == 200:
-        return None
+        response_200 = MaintenanceAnnouncement.from_dict(response.json())
+
+        return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[MaintenanceAnnouncement]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -49,24 +44,21 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateOfferingComponentRequest,
-) -> Response[Any]:
+) -> Response[MaintenanceAnnouncement]:
     """
     Args:
         uuid (UUID):
-        body (UpdateOfferingComponentRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[MaintenanceAnnouncement]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -76,30 +68,75 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: UpdateOfferingComponentRequest,
-) -> Response[Any]:
+) -> MaintenanceAnnouncement:
     """
     Args:
         uuid (UUID):
-        body (UpdateOfferingComponentRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        MaintenanceAnnouncement
+    """
+
+    return sync_detailed(
+        uuid=uuid,
+        client=client,
+    ).parsed
+
+
+async def asyncio_detailed(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+) -> Response[MaintenanceAnnouncement]:
+    """
+    Args:
+        uuid (UUID):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[MaintenanceAnnouncement]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+) -> MaintenanceAnnouncement:
+    """
+    Args:
+        uuid (UUID):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        MaintenanceAnnouncement
+    """
+
+    return (
+        await asyncio_detailed(
+            uuid=uuid,
+            client=client,
+        )
+    ).parsed

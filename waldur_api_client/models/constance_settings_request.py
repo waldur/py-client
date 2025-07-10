@@ -145,6 +145,8 @@ class ConstanceSettingsRequest:
         oidc_user_field (Union[Unset, str]):
         oidc_cache_timeout (Union[Unset, int]):
         deactivate_user_if_no_roles (Union[Unset, bool]):
+        maintenance_announcement_notify_before_minutes (Union[Unset, int]):
+        maintenance_announcement_notify_system (Union[Unset, list[str]]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -277,6 +279,8 @@ class ConstanceSettingsRequest:
     oidc_user_field: Union[Unset, str] = UNSET
     oidc_cache_timeout: Union[Unset, int] = UNSET
     deactivate_user_if_no_roles: Union[Unset, bool] = UNSET
+    maintenance_announcement_notify_before_minutes: Union[Unset, int] = UNSET
+    maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -628,6 +632,12 @@ class ConstanceSettingsRequest:
 
         deactivate_user_if_no_roles = self.deactivate_user_if_no_roles
 
+        maintenance_announcement_notify_before_minutes = self.maintenance_announcement_notify_before_minutes
+
+        maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.maintenance_announcement_notify_system, Unset):
+            maintenance_announcement_notify_system = self.maintenance_announcement_notify_system
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -895,6 +905,12 @@ class ConstanceSettingsRequest:
             field_dict["OIDC_CACHE_TIMEOUT"] = oidc_cache_timeout
         if deactivate_user_if_no_roles is not UNSET:
             field_dict["DEACTIVATE_USER_IF_NO_ROLES"] = deactivate_user_if_no_roles
+        if maintenance_announcement_notify_before_minutes is not UNSET:
+            field_dict["MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES"] = (
+                maintenance_announcement_notify_before_minutes
+            )
+        if maintenance_announcement_notify_system is not UNSET:
+            field_dict["MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM"] = maintenance_announcement_notify_system
 
         return field_dict
 
@@ -1345,6 +1361,10 @@ class ConstanceSettingsRequest:
 
         deactivate_user_if_no_roles = d.pop("DEACTIVATE_USER_IF_NO_ROLES", UNSET)
 
+        maintenance_announcement_notify_before_minutes = d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES", UNSET)
+
+        maintenance_announcement_notify_system = cast(list[str], d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM", UNSET))
+
         constance_settings_request = cls(
             site_name=site_name,
             site_description=site_description,
@@ -1476,6 +1496,8 @@ class ConstanceSettingsRequest:
             oidc_user_field=oidc_user_field,
             oidc_cache_timeout=oidc_cache_timeout,
             deactivate_user_if_no_roles=deactivate_user_if_no_roles,
+            maintenance_announcement_notify_before_minutes=maintenance_announcement_notify_before_minutes,
+            maintenance_announcement_notify_system=maintenance_announcement_notify_system,
         )
 
         constance_settings_request.additional_properties = d

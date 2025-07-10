@@ -10,17 +10,17 @@ from ..models.blank_enum import BlankEnum
 from ..models.limit_period_enum import LimitPeriodEnum
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="OfferingComponent")
+T = TypeVar("T", bound="UpdateOfferingComponentRequest")
 
 
 @_attrs_define
-class OfferingComponent:
+class UpdateOfferingComponentRequest:
     """
     Attributes:
-        uuid (Union[Unset, UUID]):
-        billing_type (Union[Unset, BillingTypeEnum]):
-        type_ (Union[Unset, str]): Unique internal name of the measured unit, for example floating_ip.
-        name (Union[Unset, str]): Display name for the measured unit, for example, Floating IP.
+        uuid (UUID):
+        billing_type (BillingTypeEnum):
+        type_ (str): Unique internal name of the measured unit, for example floating_ip.
+        name (str): Display name for the measured unit, for example, Floating IP.
         description (Union[Unset, str]):
         measured_unit (Union[Unset, str]): Unit of measurement, for example, GB.
         unit_factor (Union[Unset, int]): The conversion factor from backend units to measured_unit
@@ -32,14 +32,12 @@ class OfferingComponent:
         max_available_limit (Union[None, Unset, int]):
         is_boolean (Union[Unset, bool]):
         default_limit (Union[None, Unset, int]):
-        factor (Union[None, Unset, int]):
-        is_builtin (Union[Unset, bool]):
     """
 
-    uuid: Union[Unset, UUID] = UNSET
-    billing_type: Union[Unset, BillingTypeEnum] = UNSET
-    type_: Union[Unset, str] = UNSET
-    name: Union[Unset, str] = UNSET
+    uuid: UUID
+    billing_type: BillingTypeEnum
+    type_: str
+    name: str
     description: Union[Unset, str] = UNSET
     measured_unit: Union[Unset, str] = UNSET
     unit_factor: Union[Unset, int] = UNSET
@@ -51,18 +49,12 @@ class OfferingComponent:
     max_available_limit: Union[None, Unset, int] = UNSET
     is_boolean: Union[Unset, bool] = UNSET
     default_limit: Union[None, Unset, int] = UNSET
-    factor: Union[None, Unset, int] = UNSET
-    is_builtin: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.uuid, Unset):
-            uuid = str(self.uuid)
+        uuid = str(self.uuid)
 
-        billing_type: Union[Unset, str] = UNSET
-        if not isinstance(self.billing_type, Unset):
-            billing_type = self.billing_type.value
+        billing_type = self.billing_type.value
 
         type_ = self.type_
 
@@ -118,25 +110,16 @@ class OfferingComponent:
         else:
             default_limit = self.default_limit
 
-        factor: Union[None, Unset, int]
-        if isinstance(self.factor, Unset):
-            factor = UNSET
-        else:
-            factor = self.factor
-
-        is_builtin = self.is_builtin
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if uuid is not UNSET:
-            field_dict["uuid"] = uuid
-        if billing_type is not UNSET:
-            field_dict["billing_type"] = billing_type
-        if type_ is not UNSET:
-            field_dict["type"] = type_
-        if name is not UNSET:
-            field_dict["name"] = name
+        field_dict.update(
+            {
+                "uuid": uuid,
+                "billing_type": billing_type,
+                "type": type_,
+                "name": name,
+            }
+        )
         if description is not UNSET:
             field_dict["description"] = description
         if measured_unit is not UNSET:
@@ -159,33 +142,19 @@ class OfferingComponent:
             field_dict["is_boolean"] = is_boolean
         if default_limit is not UNSET:
             field_dict["default_limit"] = default_limit
-        if factor is not UNSET:
-            field_dict["factor"] = factor
-        if is_builtin is not UNSET:
-            field_dict["is_builtin"] = is_builtin
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        _uuid = d.pop("uuid", UNSET)
-        uuid: Union[Unset, UUID]
-        if isinstance(_uuid, Unset):
-            uuid = UNSET
-        else:
-            uuid = UUID(_uuid)
+        uuid = UUID(d.pop("uuid"))
 
-        _billing_type = d.pop("billing_type", UNSET)
-        billing_type: Union[Unset, BillingTypeEnum]
-        if isinstance(_billing_type, Unset):
-            billing_type = UNSET
-        else:
-            billing_type = BillingTypeEnum(_billing_type)
+        billing_type = BillingTypeEnum(d.pop("billing_type"))
 
-        type_ = d.pop("type", UNSET)
+        type_ = d.pop("type")
 
-        name = d.pop("name", UNSET)
+        name = d.pop("name")
 
         description = d.pop("description", UNSET)
 
@@ -267,18 +236,7 @@ class OfferingComponent:
 
         default_limit = _parse_default_limit(d.pop("default_limit", UNSET))
 
-        def _parse_factor(data: object) -> Union[None, Unset, int]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, int], data)
-
-        factor = _parse_factor(d.pop("factor", UNSET))
-
-        is_builtin = d.pop("is_builtin", UNSET)
-
-        offering_component = cls(
+        update_offering_component_request = cls(
             uuid=uuid,
             billing_type=billing_type,
             type_=type_,
@@ -294,12 +252,10 @@ class OfferingComponent:
             max_available_limit=max_available_limit,
             is_boolean=is_boolean,
             default_limit=default_limit,
-            factor=factor,
-            is_builtin=is_builtin,
         )
 
-        offering_component.additional_properties = d
-        return offering_component
+        update_offering_component_request.additional_properties = d
+        return update_offering_component_request
 
     @property
     def additional_keys(self) -> list[str]:
