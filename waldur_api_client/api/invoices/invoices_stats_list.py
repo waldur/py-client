@@ -20,8 +20,6 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    max_sum: Union[Unset, float] = UNSET,
-    min_sum: Union[Unset, float] = UNSET,
     month: Union[Unset, int] = UNSET,
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -49,10 +47,6 @@ def _get_kwargs(
     if not isinstance(end_date, Unset):
         json_end_date = end_date.isoformat()
     params["end_date"] = json_end_date
-
-    params["max_sum"] = max_sum
-
-    params["min_sum"] = min_sum
 
     params["month"] = month
 
@@ -132,8 +126,6 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    max_sum: Union[Unset, float] = UNSET,
-    min_sum: Union[Unset, float] = UNSET,
     month: Union[Unset, int] = UNSET,
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -151,8 +143,6 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        max_sum (Union[Unset, float]):
-        min_sum (Union[Unset, float]):
         month (Union[Unset, int]):
         o (Union[Unset, list[InvoicesStatsListOItem]]):
         page (Union[Unset, int]):
@@ -176,8 +166,6 @@ def sync_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         end_date=end_date,
-        max_sum=max_sum,
-        min_sum=min_sum,
         month=month,
         o=o,
         page=page,
@@ -203,8 +191,6 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    max_sum: Union[Unset, float] = UNSET,
-    min_sum: Union[Unset, float] = UNSET,
     month: Union[Unset, int] = UNSET,
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -222,8 +208,6 @@ def sync(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        max_sum (Union[Unset, float]):
-        min_sum (Union[Unset, float]):
         month (Union[Unset, int]):
         o (Union[Unset, list[InvoicesStatsListOItem]]):
         page (Union[Unset, int]):
@@ -248,8 +232,6 @@ def sync(
         customer=customer,
         customer_uuid=customer_uuid,
         end_date=end_date,
-        max_sum=max_sum,
-        min_sum=min_sum,
         month=month,
         o=o,
         page=page,
@@ -269,8 +251,6 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    max_sum: Union[Unset, float] = UNSET,
-    min_sum: Union[Unset, float] = UNSET,
     month: Union[Unset, int] = UNSET,
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -288,8 +268,6 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        max_sum (Union[Unset, float]):
-        min_sum (Union[Unset, float]):
         month (Union[Unset, int]):
         o (Union[Unset, list[InvoicesStatsListOItem]]):
         page (Union[Unset, int]):
@@ -313,8 +291,6 @@ async def asyncio_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         end_date=end_date,
-        max_sum=max_sum,
-        min_sum=min_sum,
         month=month,
         o=o,
         page=page,
@@ -338,8 +314,6 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    max_sum: Union[Unset, float] = UNSET,
-    min_sum: Union[Unset, float] = UNSET,
     month: Union[Unset, int] = UNSET,
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -357,8 +331,6 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        max_sum (Union[Unset, float]):
-        min_sum (Union[Unset, float]):
         month (Union[Unset, int]):
         o (Union[Unset, list[InvoicesStatsListOItem]]):
         page (Union[Unset, int]):
@@ -384,8 +356,6 @@ async def asyncio(
             customer=customer,
             customer_uuid=customer_uuid,
             end_date=end_date,
-            max_sum=max_sum,
-            min_sum=min_sum,
             month=month,
             o=o,
             page=page,

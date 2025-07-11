@@ -69,7 +69,7 @@ class MergedPluginOptions:
         managed_rancher_load_balancer_data_volume_size_gb (Union[Unset, int]):
         managed_rancher_load_balancer_data_volume_type_name (Union[Unset, str]):
         managed_rancher_tenant_max_cpu (Union[Unset, int]): Max number of vCPUs for tenants
-        managed_rancher_tenant_max_ram (Union[Unset, int]): Max number of RAM for tenants
+        managed_rancher_tenant_max_ram (Union[Unset, int]): Max number of RAM for tenants (GB)
         managed_rancher_tenant_max_disk (Union[Unset, int]): Max size of disk space for tenants (GB)
         account_name_generation_policy (Union[AccountNameGenerationPolicyEnum, None, Unset]): Slurm account name
             generation policy
