@@ -1,11 +1,10 @@
 from http import HTTPStatus
-from typing import Any, Union
+from typing import Any, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.open_stack_volume_type import OpenStackVolumeType
 from ...types import Response
 
 
@@ -18,17 +17,15 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OpenStackVolumeType:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list[str]:
     if response.status_code == 200:
-        response_200 = OpenStackVolumeType.from_dict(response.json())
+        response_200 = cast(list[str], response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[OpenStackVolumeType]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[list[str]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -40,7 +37,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[OpenStackVolumeType]:
+) -> Response[list[str]]:
     """Return a list of unique volume type names.
 
     Raises:
@@ -48,7 +45,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackVolumeType]
+        Response[list[str]]
     """
 
     kwargs = _get_kwargs()
@@ -63,7 +60,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> OpenStackVolumeType:
+) -> list[str]:
     """Return a list of unique volume type names.
 
     Raises:
@@ -71,7 +68,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackVolumeType
+        list[str]
     """
 
     return sync_detailed(
@@ -82,7 +79,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[OpenStackVolumeType]:
+) -> Response[list[str]]:
     """Return a list of unique volume type names.
 
     Raises:
@@ -90,7 +87,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackVolumeType]
+        Response[list[str]]
     """
 
     kwargs = _get_kwargs()
@@ -103,7 +100,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> OpenStackVolumeType:
+) -> list[str]:
     """Return a list of unique volume type names.
 
     Raises:
@@ -111,7 +108,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackVolumeType
+        list[str]
     """
 
     return (
