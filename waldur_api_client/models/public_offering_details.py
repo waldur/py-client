@@ -97,7 +97,7 @@ class PublicOfferingDetails:
         parent_name (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
         google_calendar_is_public (Union[None, Unset, bool]):
-        google_calendar_link (Union[None, Unset, str]):
+        google_calendar_link (Union[None, Unset, str]): Get the Google Calendar link for an offering.
         promotion_campaigns (Union[Unset, list['NestedCampaign']]):
     """
 

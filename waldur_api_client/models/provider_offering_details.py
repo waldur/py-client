@@ -102,7 +102,7 @@ class ProviderOfferingDetails:
         backend_metadata (Union[Unset, Any]):
         integration_status (Union[None, Unset, list['IntegrationStatus']]):
         google_calendar_is_public (Union[None, Unset, bool]):
-        google_calendar_link (Union[None, Unset, str]):
+        google_calendar_link (Union[None, Unset, str]): Get the Google Calendar link for an offering.
     """
 
     url: Union[Unset, str] = UNSET
