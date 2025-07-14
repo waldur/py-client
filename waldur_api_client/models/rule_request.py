@@ -13,19 +13,25 @@ T = TypeVar("T", bound="RuleRequest")
 class RuleRequest:
     """
     Attributes:
+        name (str):
         customer (str):
         user_affiliations (Union[Unset, list[str]]):
         user_email_patterns (Union[Unset, list[str]]):
         project_role (Union[None, Unset, str]):
+        project_role_name (Union[None, Unset, str]):
     """
 
+    name: str
     customer: str
     user_affiliations: Union[Unset, list[str]] = UNSET
     user_email_patterns: Union[Unset, list[str]] = UNSET
     project_role: Union[None, Unset, str] = UNSET
+    project_role_name: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        name = self.name
+
         customer = self.customer
 
         user_affiliations: Union[Unset, list[str]] = UNSET
@@ -42,10 +48,17 @@ class RuleRequest:
         else:
             project_role = self.project_role
 
+        project_role_name: Union[None, Unset, str]
+        if isinstance(self.project_role_name, Unset):
+            project_role_name = UNSET
+        else:
+            project_role_name = self.project_role_name
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "name": name,
                 "customer": customer,
             }
         )
@@ -55,12 +68,16 @@ class RuleRequest:
             field_dict["user_email_patterns"] = user_email_patterns
         if project_role is not UNSET:
             field_dict["project_role"] = project_role
+        if project_role_name is not UNSET:
+            field_dict["project_role_name"] = project_role_name
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        name = d.pop("name")
+
         customer = d.pop("customer")
 
         user_affiliations = cast(list[str], d.pop("user_affiliations", UNSET))
@@ -76,11 +93,22 @@ class RuleRequest:
 
         project_role = _parse_project_role(d.pop("project_role", UNSET))
 
+        def _parse_project_role_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        project_role_name = _parse_project_role_name(d.pop("project_role_name", UNSET))
+
         rule_request = cls(
+            name=name,
             customer=customer,
             user_affiliations=user_affiliations,
             user_email_patterns=user_email_patterns,
             project_role=project_role,
+            project_role_name=project_role_name,
         )
 
         rule_request.additional_properties = d

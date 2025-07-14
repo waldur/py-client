@@ -1,6 +1,5 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -25,7 +24,6 @@ class PatchedProtectedCallRequest:
             scores
         created_by (Union[None, Unset, str]):
         reference_code (Union[Unset, str]):
-        default_project_role (Union[Unset, UUID]):
     """
 
     name: Union[Unset, str] = UNSET
@@ -37,7 +35,6 @@ class PatchedProtectedCallRequest:
     reviews_visible_to_submitters: Union[Unset, bool] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     reference_code: Union[Unset, str] = UNSET
-    default_project_role: Union[Unset, UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -71,10 +68,6 @@ class PatchedProtectedCallRequest:
 
         reference_code = self.reference_code
 
-        default_project_role: Union[Unset, str] = UNSET
-        if not isinstance(self.default_project_role, Unset):
-            default_project_role = str(self.default_project_role)
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -96,8 +89,6 @@ class PatchedProtectedCallRequest:
             field_dict["created_by"] = created_by
         if reference_code is not UNSET:
             field_dict["reference_code"] = reference_code
-        if default_project_role is not UNSET:
-            field_dict["default_project_role"] = default_project_role
 
         return field_dict
 
@@ -143,13 +134,6 @@ class PatchedProtectedCallRequest:
 
         reference_code = d.pop("reference_code", UNSET)
 
-        _default_project_role = d.pop("default_project_role", UNSET)
-        default_project_role: Union[Unset, UUID]
-        if isinstance(_default_project_role, Unset):
-            default_project_role = UNSET
-        else:
-            default_project_role = UUID(_default_project_role)
-
         patched_protected_call_request = cls(
             name=name,
             description=description,
@@ -160,7 +144,6 @@ class PatchedProtectedCallRequest:
             reviews_visible_to_submitters=reviews_visible_to_submitters,
             created_by=created_by,
             reference_code=reference_code,
-            default_project_role=default_project_role,
         )
 
         patched_protected_call_request.additional_properties = d

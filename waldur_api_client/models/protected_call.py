@@ -49,9 +49,6 @@ class ProtectedCall:
             scores
         created_by (Union[None, Unset, str]):
         reference_code (Union[Unset, str]):
-        default_project_role (Union[Unset, UUID]):
-        default_project_role_name (Union[Unset, str]):
-        default_project_role_description (Union[Unset, str]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -77,9 +74,6 @@ class ProtectedCall:
     reviews_visible_to_submitters: Union[Unset, bool] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     reference_code: Union[Unset, str] = UNSET
-    default_project_role: Union[Unset, UUID] = UNSET
-    default_project_role_name: Union[Unset, str] = UNSET
-    default_project_role_description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -173,14 +167,6 @@ class ProtectedCall:
 
         reference_code = self.reference_code
 
-        default_project_role: Union[Unset, str] = UNSET
-        if not isinstance(self.default_project_role, Unset):
-            default_project_role = str(self.default_project_role)
-
-        default_project_role_name = self.default_project_role_name
-
-        default_project_role_description = self.default_project_role_description
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -230,12 +216,6 @@ class ProtectedCall:
             field_dict["created_by"] = created_by
         if reference_code is not UNSET:
             field_dict["reference_code"] = reference_code
-        if default_project_role is not UNSET:
-            field_dict["default_project_role"] = default_project_role
-        if default_project_role_name is not UNSET:
-            field_dict["default_project_role_name"] = default_project_role_name
-        if default_project_role_description is not UNSET:
-            field_dict["default_project_role_description"] = default_project_role_description
 
         return field_dict
 
@@ -364,17 +344,6 @@ class ProtectedCall:
 
         reference_code = d.pop("reference_code", UNSET)
 
-        _default_project_role = d.pop("default_project_role", UNSET)
-        default_project_role: Union[Unset, UUID]
-        if isinstance(_default_project_role, Unset):
-            default_project_role = UNSET
-        else:
-            default_project_role = UUID(_default_project_role)
-
-        default_project_role_name = d.pop("default_project_role_name", UNSET)
-
-        default_project_role_description = d.pop("default_project_role_description", UNSET)
-
         protected_call = cls(
             url=url,
             uuid=uuid,
@@ -399,9 +368,6 @@ class ProtectedCall:
             reviews_visible_to_submitters=reviews_visible_to_submitters,
             created_by=created_by,
             reference_code=reference_code,
-            default_project_role=default_project_role,
-            default_project_role_name=default_project_role_name,
-            default_project_role_description=default_project_role_description,
         )
 
         protected_call.additional_properties = d

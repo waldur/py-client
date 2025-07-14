@@ -849,6 +849,7 @@ from .patched_project_credit_request import PatchedProjectCreditRequest
 from .patched_project_estimated_cost_policy_request import PatchedProjectEstimatedCostPolicyRequest
 from .patched_project_request import PatchedProjectRequest
 from .patched_project_service_account_request import PatchedProjectServiceAccountRequest
+from .patched_proposal_project_role_mapping_request import PatchedProposalProjectRoleMappingRequest
 from .patched_proposal_review_request import PatchedProposalReviewRequest
 from .patched_protected_call_request import PatchedProtectedCallRequest
 from .patched_protected_round_request import PatchedProtectedRoundRequest
@@ -948,6 +949,8 @@ from .proposal import Proposal
 from .proposal_approve_request import ProposalApproveRequest
 from .proposal_documentation import ProposalDocumentation
 from .proposal_documentation_request import ProposalDocumentationRequest
+from .proposal_project_role_mapping import ProposalProjectRoleMapping
+from .proposal_project_role_mapping_request import ProposalProjectRoleMappingRequest
 from .proposal_proposals_list_o_item import ProposalProposalsListOItem
 from .proposal_proposals_list_state_item import ProposalProposalsListStateItem
 from .proposal_proposals_list_users_list_field_item import ProposalProposalsListUsersListFieldItem
@@ -2087,6 +2090,7 @@ __all__ = (
     "PatchedProjectEstimatedCostPolicyRequest",
     "PatchedProjectRequest",
     "PatchedProjectServiceAccountRequest",
+    "PatchedProposalProjectRoleMappingRequest",
     "PatchedProposalReviewRequest",
     "PatchedProtectedCallRequest",
     "PatchedProtectedRoundRequest",
@@ -2178,6 +2182,8 @@ __all__ = (
     "ProposalApproveRequest",
     "ProposalDocumentation",
     "ProposalDocumentationRequest",
+    "ProposalProjectRoleMapping",
+    "ProposalProjectRoleMappingRequest",
     "ProposalProposalsListOItem",
     "ProposalProposalsListStateItem",
     "ProposalProposalsListUsersListFieldItem",
