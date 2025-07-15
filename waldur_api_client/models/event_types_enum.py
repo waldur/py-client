@@ -62,6 +62,7 @@ class EventTypesEnum(str, Enum):
     MARKETPLACE_PLAN_COMPONENT_FUTURE_PRICE_UPDATED = "marketplace_plan_component_future_price_updated"
     MARKETPLACE_PLAN_COMPONENT_QUOTA_UPDATED = "marketplace_plan_component_quota_updated"
     MARKETPLACE_PLAN_CREATED = "marketplace_plan_created"
+    MARKETPLACE_PLAN_DELETED = "marketplace_plan_deleted"
     MARKETPLACE_PLAN_UPDATED = "marketplace_plan_updated"
     MARKETPLACE_RESOURCE_CREATE_CANCELED = "marketplace_resource_create_canceled"
     MARKETPLACE_RESOURCE_CREATE_FAILED = "marketplace_resource_create_failed"
