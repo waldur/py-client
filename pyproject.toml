@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "waldur-api-client"
-version = "7.6.7"
+version = "7.7.0"
 description = "A client library for accessing Waldur API"
 authors = ["OpenNode Team <info@opennodecloud.com>"]
 license = "MIT"
