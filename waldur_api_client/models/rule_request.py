@@ -1,10 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.rule_request_plan_attributes import RuleRequestPlanAttributes
+    from ..models.rule_request_plan_limits import RuleRequestPlanLimits
+
 
 T = TypeVar("T", bound="RuleRequest")
 
@@ -19,6 +24,9 @@ class RuleRequest:
         user_email_patterns (Union[Unset, list[str]]):
         project_role (Union[None, Unset, str]):
         project_role_name (Union[None, Unset, str]):
+        plan (Union[None, Unset, str]):
+        plan_attributes (Union[Unset, RuleRequestPlanAttributes]):
+        plan_limits (Union[Unset, RuleRequestPlanLimits]):
     """
 
     name: str
@@ -27,6 +35,9 @@ class RuleRequest:
     user_email_patterns: Union[Unset, list[str]] = UNSET
     project_role: Union[None, Unset, str] = UNSET
     project_role_name: Union[None, Unset, str] = UNSET
+    plan: Union[None, Unset, str] = UNSET
+    plan_attributes: Union[Unset, "RuleRequestPlanAttributes"] = UNSET
+    plan_limits: Union[Unset, "RuleRequestPlanLimits"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,6 +65,20 @@ class RuleRequest:
         else:
             project_role_name = self.project_role_name
 
+        plan: Union[None, Unset, str]
+        if isinstance(self.plan, Unset):
+            plan = UNSET
+        else:
+            plan = self.plan
+
+        plan_attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.plan_attributes, Unset):
+            plan_attributes = self.plan_attributes.to_dict()
+
+        plan_limits: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.plan_limits, Unset):
+            plan_limits = self.plan_limits.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -70,11 +95,20 @@ class RuleRequest:
             field_dict["project_role"] = project_role
         if project_role_name is not UNSET:
             field_dict["project_role_name"] = project_role_name
+        if plan is not UNSET:
+            field_dict["plan"] = plan
+        if plan_attributes is not UNSET:
+            field_dict["plan_attributes"] = plan_attributes
+        if plan_limits is not UNSET:
+            field_dict["plan_limits"] = plan_limits
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.rule_request_plan_attributes import RuleRequestPlanAttributes
+        from ..models.rule_request_plan_limits import RuleRequestPlanLimits
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -102,6 +136,29 @@ class RuleRequest:
 
         project_role_name = _parse_project_role_name(d.pop("project_role_name", UNSET))
 
+        def _parse_plan(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        plan = _parse_plan(d.pop("plan", UNSET))
+
+        _plan_attributes = d.pop("plan_attributes", UNSET)
+        plan_attributes: Union[Unset, RuleRequestPlanAttributes]
+        if isinstance(_plan_attributes, Unset):
+            plan_attributes = UNSET
+        else:
+            plan_attributes = RuleRequestPlanAttributes.from_dict(_plan_attributes)
+
+        _plan_limits = d.pop("plan_limits", UNSET)
+        plan_limits: Union[Unset, RuleRequestPlanLimits]
+        if isinstance(_plan_limits, Unset):
+            plan_limits = UNSET
+        else:
+            plan_limits = RuleRequestPlanLimits.from_dict(_plan_limits)
+
         rule_request = cls(
             name=name,
             customer=customer,
@@ -109,6 +166,9 @@ class RuleRequest:
             user_email_patterns=user_email_patterns,
             project_role=project_role,
             project_role_name=project_role_name,
+            plan=plan,
+            plan_attributes=plan_attributes,
+            plan_limits=plan_limits,
         )
 
         rule_request.additional_properties = d

@@ -4,11 +4,11 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="RulePlansRequestLimits")
+T = TypeVar("T", bound="PatchedRuleRequestPlanLimits")
 
 
 @_attrs_define
-class RulePlansRequestLimits:
+class PatchedRuleRequestPlanLimits:
     """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -22,10 +22,10 @@ class RulePlansRequestLimits:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        rule_plans_request_limits = cls()
+        patched_rule_request_plan_limits = cls()
 
-        rule_plans_request_limits.additional_properties = d
-        return rule_plans_request_limits
+        patched_rule_request_plan_limits.additional_properties = d
+        return patched_rule_request_plan_limits
 
     @property
     def additional_keys(self) -> list[str]:
