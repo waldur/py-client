@@ -25,8 +25,13 @@ class Rule:
         customer (str):
         customer_name (str):
         customer_uuid (str):
-        project_role_dispay_name (str):
+        project_role_display_name (str):
         project_role_description (str):
+        plan_name (str):
+        offering_name (str):
+        offering_uuid (UUID):
+        category_title (str):
+        category_url (str):
         user_affiliations (Union[Unset, list[str]]):
         user_email_patterns (Union[Unset, list[str]]):
         project_role (Union[None, Unset, str]):
@@ -41,8 +46,13 @@ class Rule:
     customer: str
     customer_name: str
     customer_uuid: str
-    project_role_dispay_name: str
+    project_role_display_name: str
     project_role_description: str
+    plan_name: str
+    offering_name: str
+    offering_uuid: UUID
+    category_title: str
+    category_url: str
     user_affiliations: Union[Unset, list[str]] = UNSET
     user_email_patterns: Union[Unset, list[str]] = UNSET
     project_role: Union[None, Unset, str] = UNSET
@@ -64,9 +74,19 @@ class Rule:
 
         customer_uuid = self.customer_uuid
 
-        project_role_dispay_name = self.project_role_dispay_name
+        project_role_display_name = self.project_role_display_name
 
         project_role_description = self.project_role_description
+
+        plan_name = self.plan_name
+
+        offering_name = self.offering_name
+
+        offering_uuid = str(self.offering_uuid)
+
+        category_title = self.category_title
+
+        category_url = self.category_url
 
         user_affiliations: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_affiliations, Unset):
@@ -106,8 +126,13 @@ class Rule:
                 "customer": customer,
                 "customer_name": customer_name,
                 "customer_uuid": customer_uuid,
-                "project_role_dispay_name": project_role_dispay_name,
+                "project_role_display_name": project_role_display_name,
                 "project_role_description": project_role_description,
+                "plan_name": plan_name,
+                "offering_name": offering_name,
+                "offering_uuid": offering_uuid,
+                "category_title": category_title,
+                "category_url": category_url,
             }
         )
         if user_affiliations is not UNSET:
@@ -143,9 +168,19 @@ class Rule:
 
         customer_uuid = d.pop("customer_uuid")
 
-        project_role_dispay_name = d.pop("project_role_dispay_name")
+        project_role_display_name = d.pop("project_role_display_name")
 
         project_role_description = d.pop("project_role_description")
+
+        plan_name = d.pop("plan_name")
+
+        offering_name = d.pop("offering_name")
+
+        offering_uuid = UUID(d.pop("offering_uuid"))
+
+        category_title = d.pop("category_title")
+
+        category_url = d.pop("category_url")
 
         user_affiliations = cast(list[str], d.pop("user_affiliations", UNSET))
 
@@ -190,8 +225,13 @@ class Rule:
             customer=customer,
             customer_name=customer_name,
             customer_uuid=customer_uuid,
-            project_role_dispay_name=project_role_dispay_name,
+            project_role_display_name=project_role_display_name,
             project_role_description=project_role_description,
+            plan_name=plan_name,
+            offering_name=offering_name,
+            offering_uuid=offering_uuid,
+            category_title=category_title,
+            category_url=category_url,
             user_affiliations=user_affiliations,
             user_email_patterns=user_email_patterns,
             project_role=project_role,
