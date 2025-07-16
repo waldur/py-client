@@ -11,6 +11,7 @@ from ..models.core_states import CoreStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.open_stack_fixed_ip import OpenStackFixedIp
     from ..models.open_stack_floating_ip_marketplace_offering_plugin_options_type_0 import (
         OpenStackFloatingIPMarketplaceOfferingPluginOptionsType0,
     )
@@ -55,6 +56,7 @@ class OpenStackFloatingIP:
         tenant_uuid (Union[Unset, UUID]):
         port (Union[Unset, str]):
         external_address (Union[None, Unset, str]): An optional address that maps to floating IP's address
+        port_fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
         instance_uuid (Union[None, Unset, str]):
         instance_name (Union[None, Unset, str]):
         instance_url (Union[None, Unset, str]):
@@ -103,6 +105,7 @@ class OpenStackFloatingIP:
     tenant_uuid: Union[Unset, UUID] = UNSET
     port: Union[Unset, str] = UNSET
     external_address: Union[None, Unset, str] = UNSET
+    port_fixed_ips: Union[Unset, list["OpenStackFixedIp"]] = UNSET
     instance_uuid: Union[None, Unset, str] = UNSET
     instance_name: Union[None, Unset, str] = UNSET
     instance_url: Union[None, Unset, str] = UNSET
@@ -214,6 +217,13 @@ class OpenStackFloatingIP:
             external_address = UNSET
         else:
             external_address = self.external_address
+
+        port_fixed_ips: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.port_fixed_ips, Unset):
+            port_fixed_ips = []
+            for port_fixed_ips_item_data in self.port_fixed_ips:
+                port_fixed_ips_item = port_fixed_ips_item_data.to_dict()
+                port_fixed_ips.append(port_fixed_ips_item)
 
         instance_uuid: Union[None, Unset, str]
         if isinstance(self.instance_uuid, Unset):
@@ -364,6 +374,8 @@ class OpenStackFloatingIP:
             field_dict["port"] = port
         if external_address is not UNSET:
             field_dict["external_address"] = external_address
+        if port_fixed_ips is not UNSET:
+            field_dict["port_fixed_ips"] = port_fixed_ips
         if instance_uuid is not UNSET:
             field_dict["instance_uuid"] = instance_uuid
         if instance_name is not UNSET:
@@ -395,6 +407,7 @@ class OpenStackFloatingIP:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.open_stack_fixed_ip import OpenStackFixedIp
         from ..models.open_stack_floating_ip_marketplace_offering_plugin_options_type_0 import (
             OpenStackFloatingIPMarketplaceOfferingPluginOptionsType0,
         )
@@ -519,6 +532,13 @@ class OpenStackFloatingIP:
             return cast(Union[None, Unset, str], data)
 
         external_address = _parse_external_address(d.pop("external_address", UNSET))
+
+        port_fixed_ips = []
+        _port_fixed_ips = d.pop("port_fixed_ips", UNSET)
+        for port_fixed_ips_item_data in _port_fixed_ips or []:
+            port_fixed_ips_item = OpenStackFixedIp.from_dict(port_fixed_ips_item_data)
+
+            port_fixed_ips.append(port_fixed_ips_item)
 
         def _parse_instance_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -684,6 +704,7 @@ class OpenStackFloatingIP:
             tenant_uuid=tenant_uuid,
             port=port,
             external_address=external_address,
+            port_fixed_ips=port_fixed_ips,
             instance_uuid=instance_uuid,
             instance_name=instance_name,
             instance_url=instance_url,

@@ -31,6 +31,7 @@ class OpenstackFloatingIpsRetrieveFieldItem(str, Enum):
     MODIFIED = "modified"
     NAME = "name"
     PORT = "port"
+    PORT_FIXED_IPS = "port_fixed_ips"
     PROJECT = "project"
     PROJECT_NAME = "project_name"
     PROJECT_UUID = "project_uuid"
