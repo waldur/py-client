@@ -54,7 +54,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RuleRequest,
 ) -> Response[Rule]:
-    """
+    """Manage autoprovisioning rules.
+
     Args:
         uuid (UUID):
         body (RuleRequest):
@@ -85,7 +86,8 @@ def sync(
     client: AuthenticatedClient,
     body: RuleRequest,
 ) -> Rule:
-    """
+    """Manage autoprovisioning rules.
+
     Args:
         uuid (UUID):
         body (RuleRequest):
@@ -111,7 +113,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RuleRequest,
 ) -> Response[Rule]:
-    """
+    """Manage autoprovisioning rules.
+
     Args:
         uuid (UUID):
         body (RuleRequest):
@@ -140,7 +143,8 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RuleRequest,
 ) -> Rule:
-    """
+    """Manage autoprovisioning rules.
+
     Args:
         uuid (UUID):
         body (RuleRequest):
