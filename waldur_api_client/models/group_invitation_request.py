@@ -18,15 +18,15 @@ class GroupInvitationRequest:
         scope (str):
         auto_create_project (Union[Unset, bool]): Create project and grant project permissions instead of customer
             permissions
-        project_name_template (Union[Unset, str]): Template for project name. Supports {username}, {email}, {full_name}
-            variables
+        project_name_template (Union[None, Unset, str]): Template for project name. Supports {username}, {email},
+            {full_name} variables
         project_role (Union[None, UUID, Unset]):
     """
 
     role: UUID
     scope: str
     auto_create_project: Union[Unset, bool] = UNSET
-    project_name_template: Union[Unset, str] = UNSET
+    project_name_template: Union[None, Unset, str] = UNSET
     project_role: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -37,7 +37,11 @@ class GroupInvitationRequest:
 
         auto_create_project = self.auto_create_project
 
-        project_name_template = self.project_name_template
+        project_name_template: Union[None, Unset, str]
+        if isinstance(self.project_name_template, Unset):
+            project_name_template = UNSET
+        else:
+            project_name_template = self.project_name_template
 
         project_role: Union[None, Unset, str]
         if isinstance(self.project_role, Unset):
@@ -73,7 +77,14 @@ class GroupInvitationRequest:
 
         auto_create_project = d.pop("auto_create_project", UNSET)
 
-        project_name_template = d.pop("project_name_template", UNSET)
+        def _parse_project_name_template(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        project_name_template = _parse_project_name_template(d.pop("project_name_template", UNSET))
 
         def _parse_project_role(data: object) -> Union[None, UUID, Unset]:
             if data is None:
