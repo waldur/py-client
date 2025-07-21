@@ -74,8 +74,10 @@ class BookingResource:
         project_end_date_requested_by (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
+        offering_slug (Union[Unset, str]):
         parent_offering_uuid (Union[Unset, UUID]):
         parent_offering_name (Union[Unset, str]):
+        parent_offering_slug (Union[Unset, str]):
         parent_uuid (Union[Unset, UUID]):
         parent_name (Union[Unset, str]):
         backend_metadata (Union[Unset, BackendMetadata]):
@@ -159,8 +161,10 @@ class BookingResource:
     project_end_date_requested_by: Union[Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
+    offering_slug: Union[Unset, str] = UNSET
     parent_offering_uuid: Union[Unset, UUID] = UNSET
     parent_offering_name: Union[Unset, str] = UNSET
+    parent_offering_slug: Union[Unset, str] = UNSET
     parent_uuid: Union[Unset, UUID] = UNSET
     parent_name: Union[Unset, str] = UNSET
     backend_metadata: Union[Unset, "BackendMetadata"] = UNSET
@@ -344,11 +348,15 @@ class BookingResource:
 
         customer_name = self.customer_name
 
+        offering_slug = self.offering_slug
+
         parent_offering_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.parent_offering_uuid, Unset):
             parent_offering_uuid = str(self.parent_offering_uuid)
 
         parent_offering_name = self.parent_offering_name
+
+        parent_offering_slug = self.parent_offering_slug
 
         parent_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.parent_uuid, Unset):
@@ -566,10 +574,14 @@ class BookingResource:
             field_dict["customer_uuid"] = customer_uuid
         if customer_name is not UNSET:
             field_dict["customer_name"] = customer_name
+        if offering_slug is not UNSET:
+            field_dict["offering_slug"] = offering_slug
         if parent_offering_uuid is not UNSET:
             field_dict["parent_offering_uuid"] = parent_offering_uuid
         if parent_offering_name is not UNSET:
             field_dict["parent_offering_name"] = parent_offering_name
+        if parent_offering_slug is not UNSET:
+            field_dict["parent_offering_slug"] = parent_offering_slug
         if parent_uuid is not UNSET:
             field_dict["parent_uuid"] = parent_uuid
         if parent_name is not UNSET:
@@ -878,6 +890,8 @@ class BookingResource:
 
         customer_name = d.pop("customer_name", UNSET)
 
+        offering_slug = d.pop("offering_slug", UNSET)
+
         _parent_offering_uuid = d.pop("parent_offering_uuid", UNSET)
         parent_offering_uuid: Union[Unset, UUID]
         if isinstance(_parent_offering_uuid, Unset):
@@ -886,6 +900,8 @@ class BookingResource:
             parent_offering_uuid = UUID(_parent_offering_uuid)
 
         parent_offering_name = d.pop("parent_offering_name", UNSET)
+
+        parent_offering_slug = d.pop("parent_offering_slug", UNSET)
 
         _parent_uuid = d.pop("parent_uuid", UNSET)
         parent_uuid: Union[Unset, UUID]
@@ -1111,8 +1127,10 @@ class BookingResource:
             project_end_date_requested_by=project_end_date_requested_by,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
+            offering_slug=offering_slug,
             parent_offering_uuid=parent_offering_uuid,
             parent_offering_name=parent_offering_name,
+            parent_offering_slug=parent_offering_slug,
             parent_uuid=parent_uuid,
             parent_name=parent_name,
             backend_metadata=backend_metadata,
