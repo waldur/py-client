@@ -48,7 +48,7 @@ class OpenStackPort:
         state (Union[Unset, CoreStates]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        backend_id (Union[Unset, str]):
+        backend_id (Union[None, Unset, str]):
         access_url (Union[None, Unset, str]):
         fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
         mac_address (Union[Unset, str]):
@@ -100,7 +100,7 @@ class OpenStackPort:
     state: Union[Unset, CoreStates] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     modified: Union[Unset, datetime.datetime] = UNSET
-    backend_id: Union[Unset, str] = UNSET
+    backend_id: Union[None, Unset, str] = UNSET
     access_url: Union[None, Unset, str] = UNSET
     fixed_ips: Union[Unset, list["OpenStackFixedIp"]] = UNSET
     mac_address: Union[Unset, str] = UNSET
@@ -193,7 +193,11 @@ class OpenStackPort:
         if not isinstance(self.modified, Unset):
             modified = self.modified.isoformat()
 
-        backend_id = self.backend_id
+        backend_id: Union[None, Unset, str]
+        if isinstance(self.backend_id, Unset):
+            backend_id = UNSET
+        else:
+            backend_id = self.backend_id
 
         access_url: Union[None, Unset, str]
         if isinstance(self.access_url, Unset):
@@ -526,7 +530,14 @@ class OpenStackPort:
         else:
             modified = isoparse(_modified)
 
-        backend_id = d.pop("backend_id", UNSET)
+        def _parse_backend_id(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        backend_id = _parse_backend_id(d.pop("backend_id", UNSET))
 
         def _parse_access_url(data: object) -> Union[None, Unset, str]:
             if data is None:
