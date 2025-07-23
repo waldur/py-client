@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.question import Question
+from ...models.question_admin import QuestionAdmin
 from ...types import UNSET, Response, Unset
 
 
@@ -26,19 +26,19 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/api/marketplace-checklists/{uuid}/questions/",
+        "url": f"/api/marketplace-checklists-admin/{uuid}/questions/",
         "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["Question"]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["QuestionAdmin"]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = Question.from_dict(response_200_item_data)
+            response_200_item = QuestionAdmin.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -48,7 +48,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["Question"]]:
+) -> Response[list["QuestionAdmin"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,8 +63,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Response[list["Question"]]:
-    """Return questions available for current user.
+) -> Response[list["QuestionAdmin"]]:
+    """Return checklist questions.
 
     Args:
         uuid (UUID):
@@ -76,7 +76,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['Question']]
+        Response[list['QuestionAdmin']]
     """
 
     kwargs = _get_kwargs(
@@ -98,8 +98,8 @@ def sync(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> list["Question"]:
-    """Return questions available for current user.
+) -> list["QuestionAdmin"]:
+    """Return checklist questions.
 
     Args:
         uuid (UUID):
@@ -111,7 +111,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['Question']
+        list['QuestionAdmin']
     """
 
     return sync_detailed(
@@ -128,8 +128,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Response[list["Question"]]:
-    """Return questions available for current user.
+) -> Response[list["QuestionAdmin"]]:
+    """Return checklist questions.
 
     Args:
         uuid (UUID):
@@ -141,7 +141,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['Question']]
+        Response[list['QuestionAdmin']]
     """
 
     kwargs = _get_kwargs(
@@ -161,8 +161,8 @@ async def asyncio(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> list["Question"]:
-    """Return questions available for current user.
+) -> list["QuestionAdmin"]:
+    """Return checklist questions.
 
     Args:
         uuid (UUID):
@@ -174,7 +174,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['Question']
+        list['QuestionAdmin']
     """
 
     return (

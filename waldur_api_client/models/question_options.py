@@ -7,52 +7,60 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="AnswerList")
+T = TypeVar("T", bound="QuestionOptions")
 
 
 @_attrs_define
-class AnswerList:
+class QuestionOptions:
     """
     Attributes:
-        question_uuid (UUID):
-        answer_data (Union[Unset, Any]): Flexible answer storage for different question types
+        uuid (UUID):
+        label (str):
+        order (Union[Unset, int]):
     """
 
-    question_uuid: UUID
-    answer_data: Union[Unset, Any] = UNSET
+    uuid: UUID
+    label: str
+    order: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        question_uuid = str(self.question_uuid)
+        uuid = str(self.uuid)
 
-        answer_data = self.answer_data
+        label = self.label
+
+        order = self.order
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "question_uuid": question_uuid,
+                "uuid": uuid,
+                "label": label,
             }
         )
-        if answer_data is not UNSET:
-            field_dict["answer_data"] = answer_data
+        if order is not UNSET:
+            field_dict["order"] = order
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        question_uuid = UUID(d.pop("question_uuid"))
+        uuid = UUID(d.pop("uuid"))
 
-        answer_data = d.pop("answer_data", UNSET)
+        label = d.pop("label")
 
-        answer_list = cls(
-            question_uuid=question_uuid,
-            answer_data=answer_data,
+        order = d.pop("order", UNSET)
+
+        question_options = cls(
+            uuid=uuid,
+            label=label,
+            order=order,
         )
 
-        answer_list.additional_properties = d
-        return answer_list
+        question_options.additional_properties = d
+        return question_options
 
     @property
     def additional_keys(self) -> list[str]:

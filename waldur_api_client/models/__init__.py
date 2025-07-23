@@ -168,9 +168,10 @@ from .category_help_articles_request import CategoryHelpArticlesRequest
 from .category_serializer_for_for_nested_fields import CategorySerializerForForNestedFields
 from .category_serializer_for_for_nested_fields_request import CategorySerializerForForNestedFieldsRequest
 from .checklist import Checklist
+from .checklist_admin import ChecklistAdmin
 from .checklist_category import ChecklistCategory
 from .checklist_customer_stats import ChecklistCustomerStats
-from .checklist_question import ChecklistQuestion
+from .checklist_type_enum import ChecklistTypeEnum
 from .cluster_security_group import ClusterSecurityGroup
 from .cluster_security_group_request import ClusterSecurityGroupRequest
 from .comment import Comment
@@ -206,6 +207,8 @@ from .count_users_of_service_providers import CountUsersOfServiceProviders
 from .country import Country
 from .country_enum import CountryEnum
 from .create_attachments_request import CreateAttachmentsRequest
+from .create_checklist import CreateChecklist
+from .create_checklist_request import CreateChecklistRequest
 from .create_customer_credit import CreateCustomerCredit
 from .create_customer_credit_request import CreateCustomerCreditRequest
 from .create_feedback import CreateFeedback
@@ -769,6 +772,7 @@ from .openstack_tenants_retrieve_field_item import OpenstackTenantsRetrieveField
 from .openstack_volumes_list_field_item import OpenstackVolumesListFieldItem
 from .openstack_volumes_list_state_item import OpenstackVolumesListStateItem
 from .openstack_volumes_retrieve_field_item import OpenstackVolumesRetrieveFieldItem
+from .operator_enum import OperatorEnum
 from .option_field import OptionField
 from .option_field_request import OptionFieldRequest
 from .option_field_type_enum import OptionFieldTypeEnum
@@ -803,6 +807,7 @@ from .patched_category_help_articles_request import PatchedCategoryHelpArticlesR
 from .patched_cluster_security_group_request import PatchedClusterSecurityGroupRequest
 from .patched_comment_request import PatchedCommentRequest
 from .patched_component_user_usage_limit_request import PatchedComponentUserUsageLimitRequest
+from .patched_create_checklist_request import PatchedCreateChecklistRequest
 from .patched_create_customer_credit_request import PatchedCreateCustomerCreditRequest
 from .patched_customer_estimated_cost_policy_request import PatchedCustomerEstimatedCostPolicyRequest
 from .patched_customer_request import PatchedCustomerRequest
@@ -854,6 +859,9 @@ from .patched_proposal_review_request import PatchedProposalReviewRequest
 from .patched_protected_call_request import PatchedProtectedCallRequest
 from .patched_protected_round_request import PatchedProtectedRoundRequest
 from .patched_provider_plan_details_request import PatchedProviderPlanDetailsRequest
+from .patched_question_admin_request import PatchedQuestionAdminRequest
+from .patched_question_dependency_request import PatchedQuestionDependencyRequest
+from .patched_question_options_admin_request import PatchedQuestionOptionsAdminRequest
 from .patched_rancher_application_request import PatchedRancherApplicationRequest
 from .patched_rancher_application_request_answers import PatchedRancherApplicationRequestAnswers
 from .patched_rancher_catalog_request import PatchedRancherCatalogRequest
@@ -1004,6 +1012,15 @@ from .public_offering_details import PublicOfferingDetails
 from .public_offering_details_attributes import PublicOfferingDetailsAttributes
 from .pull_marketplace_script_resource_request import PullMarketplaceScriptResourceRequest
 from .query_request import QueryRequest
+from .question import Question
+from .question_admin import QuestionAdmin
+from .question_admin_request import QuestionAdminRequest
+from .question_dependency import QuestionDependency
+from .question_dependency_request import QuestionDependencyRequest
+from .question_options import QuestionOptions
+from .question_options_admin import QuestionOptionsAdmin
+from .question_options_admin_request import QuestionOptionsAdminRequest
+from .question_type_enum import QuestionTypeEnum
 from .quota import Quota
 from .quota_request import QuotaRequest
 from .quotas_update_request import QuotasUpdateRequest
@@ -1466,9 +1483,10 @@ __all__ = (
     "CategorySerializerForForNestedFields",
     "CategorySerializerForForNestedFieldsRequest",
     "Checklist",
+    "ChecklistAdmin",
     "ChecklistCategory",
     "ChecklistCustomerStats",
-    "ChecklistQuestion",
+    "ChecklistTypeEnum",
     "ClusterSecurityGroup",
     "ClusterSecurityGroupRequest",
     "Comment",
@@ -1502,6 +1520,8 @@ __all__ = (
     "CountUniqueUsersConnectedWithActiveResourcesOfServiceProvider",
     "CountUsersOfServiceProviders",
     "CreateAttachmentsRequest",
+    "CreateChecklist",
+    "CreateChecklistRequest",
     "CreateCustomerCredit",
     "CreateCustomerCreditRequest",
     "CreateFeedback",
@@ -2011,6 +2031,7 @@ __all__ = (
     "OpenstackVolumesListStateItem",
     "OpenstackVolumesRetrieveFieldItem",
     "OpenStackVolumeType",
+    "OperatorEnum",
     "OptionField",
     "OptionFieldRequest",
     "OptionFieldTypeEnum",
@@ -2045,6 +2066,7 @@ __all__ = (
     "PatchedClusterSecurityGroupRequest",
     "PatchedCommentRequest",
     "PatchedComponentUserUsageLimitRequest",
+    "PatchedCreateChecklistRequest",
     "PatchedCreateCustomerCreditRequest",
     "PatchedCustomerEstimatedCostPolicyRequest",
     "PatchedCustomerRequest",
@@ -2092,6 +2114,9 @@ __all__ = (
     "PatchedProtectedCallRequest",
     "PatchedProtectedRoundRequest",
     "PatchedProviderPlanDetailsRequest",
+    "PatchedQuestionAdminRequest",
+    "PatchedQuestionDependencyRequest",
+    "PatchedQuestionOptionsAdminRequest",
     "PatchedRancherApplicationRequest",
     "PatchedRancherApplicationRequestAnswers",
     "PatchedRancherCatalogRequest",
@@ -2234,6 +2259,15 @@ __all__ = (
     "PublicOfferingDetailsAttributes",
     "PullMarketplaceScriptResourceRequest",
     "QueryRequest",
+    "Question",
+    "QuestionAdmin",
+    "QuestionAdminRequest",
+    "QuestionDependency",
+    "QuestionDependencyRequest",
+    "QuestionOptions",
+    "QuestionOptionsAdmin",
+    "QuestionOptionsAdminRequest",
+    "QuestionTypeEnum",
     "Quota",
     "QuotaRequest",
     "QuotasUpdateRequest",

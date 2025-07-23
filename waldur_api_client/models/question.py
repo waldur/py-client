@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -7,26 +7,30 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ChecklistQuestion")
+if TYPE_CHECKING:
+    from ..models.question_options import QuestionOptions
+
+
+T = TypeVar("T", bound="Question")
 
 
 @_attrs_define
-class ChecklistQuestion:
+class Question:
     """
     Attributes:
         uuid (UUID):
         category_uuid (UUID):
+        question_options (list['QuestionOptions']):
         description (Union[Unset, str]):
-        solution (Union[None, Unset, str]): It is shown when incorrect or N/A answer is chosen
-        correct_answer (Union[Unset, bool]):
+        solution (Union[None, Unset, str]): Guidance shown when answer needs clarification
         image (Union[None, Unset, str]):
     """
 
     uuid: UUID
     category_uuid: UUID
+    question_options: list["QuestionOptions"]
     description: Union[Unset, str] = UNSET
     solution: Union[None, Unset, str] = UNSET
-    correct_answer: Union[Unset, bool] = UNSET
     image: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -35,6 +39,11 @@ class ChecklistQuestion:
 
         category_uuid = str(self.category_uuid)
 
+        question_options = []
+        for question_options_item_data in self.question_options:
+            question_options_item = question_options_item_data.to_dict()
+            question_options.append(question_options_item)
+
         description = self.description
 
         solution: Union[None, Unset, str]
@@ -42,8 +51,6 @@ class ChecklistQuestion:
             solution = UNSET
         else:
             solution = self.solution
-
-        correct_answer = self.correct_answer
 
         image: Union[None, Unset, str]
         if isinstance(self.image, Unset):
@@ -57,14 +64,13 @@ class ChecklistQuestion:
             {
                 "uuid": uuid,
                 "category_uuid": category_uuid,
+                "question_options": question_options,
             }
         )
         if description is not UNSET:
             field_dict["description"] = description
         if solution is not UNSET:
             field_dict["solution"] = solution
-        if correct_answer is not UNSET:
-            field_dict["correct_answer"] = correct_answer
         if image is not UNSET:
             field_dict["image"] = image
 
@@ -72,10 +78,19 @@ class ChecklistQuestion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.question_options import QuestionOptions
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
         category_uuid = UUID(d.pop("category_uuid"))
+
+        question_options = []
+        _question_options = d.pop("question_options")
+        for question_options_item_data in _question_options:
+            question_options_item = QuestionOptions.from_dict(question_options_item_data)
+
+            question_options.append(question_options_item)
 
         description = d.pop("description", UNSET)
 
@@ -88,8 +103,6 @@ class ChecklistQuestion:
 
         solution = _parse_solution(d.pop("solution", UNSET))
 
-        correct_answer = d.pop("correct_answer", UNSET)
-
         def _parse_image(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -99,17 +112,17 @@ class ChecklistQuestion:
 
         image = _parse_image(d.pop("image", UNSET))
 
-        checklist_question = cls(
+        question = cls(
             uuid=uuid,
             category_uuid=category_uuid,
+            question_options=question_options,
             description=description,
             solution=solution,
-            correct_answer=correct_answer,
             image=image,
         )
 
-        checklist_question.additional_properties = d
-        return checklist_question
+        question.additional_properties = d
+        return question
 
     @property
     def additional_keys(self) -> list[str]:

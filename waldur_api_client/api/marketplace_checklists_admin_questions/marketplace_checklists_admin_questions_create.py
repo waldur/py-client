@@ -1,35 +1,43 @@
 from http import HTTPStatus
 from typing import Any, Union
-from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.checklist import Checklist
+from ...models.question_admin import QuestionAdmin
+from ...models.question_admin_request import QuestionAdminRequest
 from ...types import Response
 
 
 def _get_kwargs(
-    uuid: UUID,
+    *,
+    body: QuestionAdminRequest,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": f"/api/marketplace-checklists/{uuid}/",
+        "method": "post",
+        "url": "/api/marketplace-checklists-admin-questions/",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Checklist:
-    if response.status_code == 200:
-        response_200 = Checklist.from_dict(response.json())
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> QuestionAdmin:
+    if response.status_code == 201:
+        response_201 = QuestionAdmin.from_dict(response.json())
 
-        return response_200
+        return response_201
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Checklist]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[QuestionAdmin]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -39,24 +47,24 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Checklist]:
+    body: QuestionAdminRequest,
+) -> Response[QuestionAdmin]:
     """
     Args:
-        uuid (UUID):
+        body (QuestionAdminRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Checklist]
+        Response[QuestionAdmin]
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -67,47 +75,47 @@ def sync_detailed(
 
 
 def sync(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Checklist:
+    body: QuestionAdminRequest,
+) -> QuestionAdmin:
     """
     Args:
-        uuid (UUID):
+        body (QuestionAdminRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Checklist
+        QuestionAdmin
     """
 
     return sync_detailed(
-        uuid=uuid,
         client=client,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Checklist]:
+    body: QuestionAdminRequest,
+) -> Response[QuestionAdmin]:
     """
     Args:
-        uuid (UUID):
+        body (QuestionAdminRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Checklist]
+        Response[QuestionAdmin]
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -116,25 +124,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Checklist:
+    body: QuestionAdminRequest,
+) -> QuestionAdmin:
     """
     Args:
-        uuid (UUID):
+        body (QuestionAdminRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Checklist
+        QuestionAdmin
     """
 
     return (
         await asyncio_detailed(
-            uuid=uuid,
             client=client,
+            body=body,
         )
     ).parsed

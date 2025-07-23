@@ -7,52 +7,84 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="AnswerList")
+T = TypeVar("T", bound="QuestionOptionsAdmin")
 
 
 @_attrs_define
-class AnswerList:
+class QuestionOptionsAdmin:
     """
     Attributes:
+        uuid (UUID):
+        label (str):
+        url (str):
+        question (str):
         question_uuid (UUID):
-        answer_data (Union[Unset, Any]): Flexible answer storage for different question types
+        order (Union[Unset, int]):
     """
 
+    uuid: UUID
+    label: str
+    url: str
+    question: str
     question_uuid: UUID
-    answer_data: Union[Unset, Any] = UNSET
+    order: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        uuid = str(self.uuid)
+
+        label = self.label
+
+        url = self.url
+
+        question = self.question
+
         question_uuid = str(self.question_uuid)
 
-        answer_data = self.answer_data
+        order = self.order
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "uuid": uuid,
+                "label": label,
+                "url": url,
+                "question": question,
                 "question_uuid": question_uuid,
             }
         )
-        if answer_data is not UNSET:
-            field_dict["answer_data"] = answer_data
+        if order is not UNSET:
+            field_dict["order"] = order
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        uuid = UUID(d.pop("uuid"))
+
+        label = d.pop("label")
+
+        url = d.pop("url")
+
+        question = d.pop("question")
+
         question_uuid = UUID(d.pop("question_uuid"))
 
-        answer_data = d.pop("answer_data", UNSET)
+        order = d.pop("order", UNSET)
 
-        answer_list = cls(
+        question_options_admin = cls(
+            uuid=uuid,
+            label=label,
+            url=url,
+            question=question,
             question_uuid=question_uuid,
-            answer_data=answer_data,
+            order=order,
         )
 
-        answer_list.additional_properties = d
-        return answer_list
+        question_options_admin.additional_properties = d
+        return question_options_admin
 
     @property
     def additional_keys(self) -> list[str]:

@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.base_public_plan import BasePublicPlan
+
 
 T = TypeVar("T", bound="CallResourceTemplate")
 
@@ -26,6 +30,7 @@ class CallResourceTemplate:
         requested_offering (Union[Unset, str]):
         requested_offering_name (Union[Unset, str]):
         requested_offering_uuid (Union[Unset, UUID]):
+        requested_offering_plan (Union[Unset, BasePublicPlan]):
         created_by (Union[None, Unset, str]):
         created_by_name (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
@@ -41,6 +46,7 @@ class CallResourceTemplate:
     requested_offering: Union[Unset, str] = UNSET
     requested_offering_name: Union[Unset, str] = UNSET
     requested_offering_uuid: Union[Unset, UUID] = UNSET
+    requested_offering_plan: Union[Unset, "BasePublicPlan"] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     created_by_name: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
@@ -70,6 +76,10 @@ class CallResourceTemplate:
         requested_offering_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.requested_offering_uuid, Unset):
             requested_offering_uuid = str(self.requested_offering_uuid)
+
+        requested_offering_plan: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.requested_offering_plan, Unset):
+            requested_offering_plan = self.requested_offering_plan.to_dict()
 
         created_by: Union[None, Unset, str]
         if isinstance(self.created_by, Unset):
@@ -106,6 +116,8 @@ class CallResourceTemplate:
             field_dict["requested_offering_name"] = requested_offering_name
         if requested_offering_uuid is not UNSET:
             field_dict["requested_offering_uuid"] = requested_offering_uuid
+        if requested_offering_plan is not UNSET:
+            field_dict["requested_offering_plan"] = requested_offering_plan
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_name is not UNSET:
@@ -117,6 +129,8 @@ class CallResourceTemplate:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.base_public_plan import BasePublicPlan
+
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
         uuid: Union[Unset, UUID]
@@ -148,6 +162,13 @@ class CallResourceTemplate:
         else:
             requested_offering_uuid = UUID(_requested_offering_uuid)
 
+        _requested_offering_plan = d.pop("requested_offering_plan", UNSET)
+        requested_offering_plan: Union[Unset, BasePublicPlan]
+        if isinstance(_requested_offering_plan, Unset):
+            requested_offering_plan = UNSET
+        else:
+            requested_offering_plan = BasePublicPlan.from_dict(_requested_offering_plan)
+
         def _parse_created_by(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -177,6 +198,7 @@ class CallResourceTemplate:
             requested_offering=requested_offering,
             requested_offering_name=requested_offering_name,
             requested_offering_uuid=requested_offering_uuid,
+            requested_offering_plan=requested_offering_plan,
             created_by=created_by,
             created_by_name=created_by_name,
             created=created,

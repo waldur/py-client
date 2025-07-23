@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -13,25 +13,24 @@ class AnswerSubmit:
     """
     Attributes:
         question_uuid (UUID):
-        value (Union[None, bool]):
+        answer_data (Any):
     """
 
     question_uuid: UUID
-    value: Union[None, bool]
+    answer_data: Any
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         question_uuid = str(self.question_uuid)
 
-        value: Union[None, bool]
-        value = self.value
+        answer_data = self.answer_data
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "question_uuid": question_uuid,
-                "value": value,
+                "answer_data": answer_data,
             }
         )
 
@@ -42,16 +41,11 @@ class AnswerSubmit:
         d = dict(src_dict)
         question_uuid = UUID(d.pop("question_uuid"))
 
-        def _parse_value(data: object) -> Union[None, bool]:
-            if data is None:
-                return data
-            return cast(Union[None, bool], data)
-
-        value = _parse_value(d.pop("value"))
+        answer_data = d.pop("answer_data")
 
         answer_submit = cls(
             question_uuid=question_uuid,
-            value=value,
+            answer_data=answer_data,
         )
 
         answer_submit.additional_properties = d

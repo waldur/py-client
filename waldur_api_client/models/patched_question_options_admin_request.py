@@ -1,58 +1,55 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="AnswerList")
+T = TypeVar("T", bound="PatchedQuestionOptionsAdminRequest")
 
 
 @_attrs_define
-class AnswerList:
+class PatchedQuestionOptionsAdminRequest:
     """
     Attributes:
-        question_uuid (UUID):
-        answer_data (Union[Unset, Any]): Flexible answer storage for different question types
+        label (Union[Unset, str]):
+        order (Union[Unset, int]):
     """
 
-    question_uuid: UUID
-    answer_data: Union[Unset, Any] = UNSET
+    label: Union[Unset, str] = UNSET
+    order: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        question_uuid = str(self.question_uuid)
+        label = self.label
 
-        answer_data = self.answer_data
+        order = self.order
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "question_uuid": question_uuid,
-            }
-        )
-        if answer_data is not UNSET:
-            field_dict["answer_data"] = answer_data
+        field_dict.update({})
+        if label is not UNSET:
+            field_dict["label"] = label
+        if order is not UNSET:
+            field_dict["order"] = order
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        question_uuid = UUID(d.pop("question_uuid"))
+        label = d.pop("label", UNSET)
 
-        answer_data = d.pop("answer_data", UNSET)
+        order = d.pop("order", UNSET)
 
-        answer_list = cls(
-            question_uuid=question_uuid,
-            answer_data=answer_data,
+        patched_question_options_admin_request = cls(
+            label=label,
+            order=order,
         )
 
-        answer_list.additional_properties = d
-        return answer_list
+        patched_question_options_admin_request.additional_properties = d
+        return patched_question_options_admin_request
 
     @property
     def additional_keys(self) -> list[str]:
