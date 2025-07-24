@@ -50,6 +50,7 @@ class EventTypesEnum(str, Enum):
     MARKETPLACE_OFFERING_USER_CREATED = "marketplace_offering_user_created"
     MARKETPLACE_OFFERING_USER_DELETED = "marketplace_offering_user_deleted"
     MARKETPLACE_OFFERING_USER_RESTRICTION_UPDATED = "marketplace_offering_user_restriction_updated"
+    MARKETPLACE_OFFERING_USER_UPDATED = "marketplace_offering_user_updated"
     MARKETPLACE_ORDER_APPROVED = "marketplace_order_approved"
     MARKETPLACE_ORDER_COMPLETED = "marketplace_order_completed"
     MARKETPLACE_ORDER_CREATED = "marketplace_order_created"

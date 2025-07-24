@@ -422,6 +422,7 @@ from .marketplace_offering_permissions_log_list_o_item import MarketplaceOfferin
 from .marketplace_offering_referrals_list_o_item import MarketplaceOfferingReferralsListOItem
 from .marketplace_offering_users_list_field_item import MarketplaceOfferingUsersListFieldItem
 from .marketplace_offering_users_list_o_item import MarketplaceOfferingUsersListOItem
+from .marketplace_offering_users_list_state_item import MarketplaceOfferingUsersListStateItem
 from .marketplace_offering_users_retrieve_field_item import MarketplaceOfferingUsersRetrieveFieldItem
 from .marketplace_orders_list_field_item import MarketplaceOrdersListFieldItem
 from .marketplace_orders_list_o_item import MarketplaceOrdersListOItem
@@ -616,6 +617,8 @@ from .offering_user import OfferingUser
 from .offering_user_request import OfferingUserRequest
 from .offering_user_role import OfferingUserRole
 from .offering_user_role_request import OfferingUserRoleRequest
+from .offering_user_state_enum import OfferingUserStateEnum
+from .offering_user_state_transition_request import OfferingUserStateTransitionRequest
 from .offering_user_update_restriction_request import OfferingUserUpdateRestrictionRequest
 from .open_stack_allowed_address_pair import OpenStackAllowedAddressPair
 from .open_stack_allowed_address_pair_request import OpenStackAllowedAddressPairRequest
@@ -1729,6 +1732,7 @@ __all__ = (
     "MarketplaceOfferingReferralsListOItem",
     "MarketplaceOfferingUsersListFieldItem",
     "MarketplaceOfferingUsersListOItem",
+    "MarketplaceOfferingUsersListStateItem",
     "MarketplaceOfferingUsersRetrieveFieldItem",
     "MarketplaceOrdersListFieldItem",
     "MarketplaceOrdersListOItem",
@@ -1899,6 +1903,8 @@ __all__ = (
     "OfferingUserRequest",
     "OfferingUserRole",
     "OfferingUserRoleRequest",
+    "OfferingUserStateEnum",
+    "OfferingUserStateTransitionRequest",
     "OfferingUserUpdateRestrictionRequest",
     "OpenStackAllowedAddressPair",
     "OpenStackAllowedAddressPairRequest",

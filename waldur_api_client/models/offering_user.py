@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.offering_user_state_enum import OfferingUserStateEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="OfferingUser")
@@ -32,6 +33,9 @@ class OfferingUser:
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
         is_restricted (Union[Unset, bool]): Signal to service if the user account is restricted or not
+        state (Union[Unset, OfferingUserStateEnum]):
+        service_provider_comment (Union[Unset, str]): Additional comment for pending states like validation or account
+            linking
     """
 
     url: Union[Unset, str] = UNSET
@@ -49,6 +53,8 @@ class OfferingUser:
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
     is_restricted: Union[Unset, bool] = UNSET
+    state: Union[Unset, OfferingUserStateEnum] = UNSET
+    service_provider_comment: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -98,6 +104,12 @@ class OfferingUser:
 
         is_restricted = self.is_restricted
 
+        state: Union[Unset, str] = UNSET
+        if not isinstance(self.state, Unset):
+            state = self.state.value
+
+        service_provider_comment = self.service_provider_comment
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -131,6 +143,10 @@ class OfferingUser:
             field_dict["customer_name"] = customer_name
         if is_restricted is not UNSET:
             field_dict["is_restricted"] = is_restricted
+        if state is not UNSET:
+            field_dict["state"] = state
+        if service_provider_comment is not UNSET:
+            field_dict["service_provider_comment"] = service_provider_comment
 
         return field_dict
 
@@ -204,6 +220,15 @@ class OfferingUser:
 
         is_restricted = d.pop("is_restricted", UNSET)
 
+        _state = d.pop("state", UNSET)
+        state: Union[Unset, OfferingUserStateEnum]
+        if isinstance(_state, Unset):
+            state = UNSET
+        else:
+            state = OfferingUserStateEnum(_state)
+
+        service_provider_comment = d.pop("service_provider_comment", UNSET)
+
         offering_user = cls(
             url=url,
             uuid=uuid,
@@ -220,6 +245,8 @@ class OfferingUser:
             customer_uuid=customer_uuid,
             customer_name=customer_name,
             is_restricted=is_restricted,
+            state=state,
+            service_provider_comment=service_provider_comment,
         )
 
         offering_user.additional_properties = d

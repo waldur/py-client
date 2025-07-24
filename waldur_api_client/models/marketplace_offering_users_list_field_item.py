@@ -10,6 +10,8 @@ class MarketplaceOfferingUsersListFieldItem(str, Enum):
     OFFERING = "offering"
     OFFERING_NAME = "offering_name"
     OFFERING_UUID = "offering_uuid"
+    SERVICE_PROVIDER_COMMENT = "service_provider_comment"
+    STATE = "state"
     URL = "url"
     USER = "user"
     USERNAME = "username"

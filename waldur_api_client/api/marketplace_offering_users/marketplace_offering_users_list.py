@@ -9,6 +9,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.marketplace_offering_users_list_field_item import MarketplaceOfferingUsersListFieldItem
 from ...models.marketplace_offering_users_list_o_item import MarketplaceOfferingUsersListOItem
+from ...models.marketplace_offering_users_list_state_item import MarketplaceOfferingUsersListStateItem
 from ...models.offering_user import OfferingUser
 from ...types import UNSET, Response, Unset
 
@@ -27,6 +28,7 @@ def _get_kwargs(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -85,6 +87,15 @@ def _get_kwargs(
 
     params["query"] = query
 
+    json_state: Union[Unset, list[str]] = UNSET
+    if not isinstance(state, Unset):
+        json_state = []
+        for state_item_data in state:
+            state_item = state_item_data.value
+            json_state.append(state_item)
+
+    params["state"] = json_state
+
     params["user_username"] = user_username
 
     json_user_uuid: Union[Unset, str] = UNSET
@@ -142,6 +153,7 @@ def sync_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingUser"]]:
@@ -160,6 +172,7 @@ def sync_detailed(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        state (Union[Unset, list[MarketplaceOfferingUsersListStateItem]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -184,6 +197,7 @@ def sync_detailed(
         parent_offering_uuid=parent_offering_uuid,
         provider_uuid=provider_uuid,
         query=query,
+        state=state,
         user_username=user_username,
         user_uuid=user_uuid,
     )
@@ -210,6 +224,7 @@ def sync(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUser"]:
@@ -228,6 +243,7 @@ def sync(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        state (Union[Unset, list[MarketplaceOfferingUsersListStateItem]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -253,6 +269,7 @@ def sync(
         parent_offering_uuid=parent_offering_uuid,
         provider_uuid=provider_uuid,
         query=query,
+        state=state,
         user_username=user_username,
         user_uuid=user_uuid,
     ).parsed
@@ -273,6 +290,7 @@ async def asyncio_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingUser"]]:
@@ -291,6 +309,7 @@ async def asyncio_detailed(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        state (Union[Unset, list[MarketplaceOfferingUsersListStateItem]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -315,6 +334,7 @@ async def asyncio_detailed(
         parent_offering_uuid=parent_offering_uuid,
         provider_uuid=provider_uuid,
         query=query,
+        state=state,
         user_username=user_username,
         user_uuid=user_uuid,
     )
@@ -339,6 +359,7 @@ async def asyncio(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUser"]:
@@ -357,6 +378,7 @@ async def asyncio(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        state (Union[Unset, list[MarketplaceOfferingUsersListStateItem]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -383,6 +405,7 @@ async def asyncio(
             parent_offering_uuid=parent_offering_uuid,
             provider_uuid=provider_uuid,
             query=query,
+            state=state,
             user_username=user_username,
             user_uuid=user_uuid,
         )
