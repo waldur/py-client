@@ -21,6 +21,8 @@ class GroupInvitationRequest:
         project_name_template (Union[None, Unset, str]): Template for project name. Supports {username}, {email},
             {full_name} variables
         project_role (Union[None, UUID, Unset]):
+        user_affiliations (Union[Unset, Any]):
+        user_email_patterns (Union[Unset, Any]):
     """
 
     role: UUID
@@ -28,6 +30,8 @@ class GroupInvitationRequest:
     auto_create_project: Union[Unset, bool] = UNSET
     project_name_template: Union[None, Unset, str] = UNSET
     project_role: Union[None, UUID, Unset] = UNSET
+    user_affiliations: Union[Unset, Any] = UNSET
+    user_email_patterns: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -51,6 +55,10 @@ class GroupInvitationRequest:
         else:
             project_role = self.project_role
 
+        user_affiliations = self.user_affiliations
+
+        user_email_patterns = self.user_email_patterns
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -65,6 +73,10 @@ class GroupInvitationRequest:
             field_dict["project_name_template"] = project_name_template
         if project_role is not UNSET:
             field_dict["project_role"] = project_role
+        if user_affiliations is not UNSET:
+            field_dict["user_affiliations"] = user_affiliations
+        if user_email_patterns is not UNSET:
+            field_dict["user_email_patterns"] = user_email_patterns
 
         return field_dict
 
@@ -103,12 +115,18 @@ class GroupInvitationRequest:
 
         project_role = _parse_project_role(d.pop("project_role", UNSET))
 
+        user_affiliations = d.pop("user_affiliations", UNSET)
+
+        user_email_patterns = d.pop("user_email_patterns", UNSET)
+
         group_invitation_request = cls(
             role=role,
             scope=scope,
             auto_create_project=auto_create_project,
             project_name_template=project_name_template,
             project_role=project_role,
+            user_affiliations=user_affiliations,
+            user_email_patterns=user_email_patterns,
         )
 
         group_invitation_request.additional_properties = d

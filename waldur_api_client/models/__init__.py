@@ -312,6 +312,7 @@ from .identity_provider_request import IdentityProviderRequest
 from .image_create_request import ImageCreateRequest
 from .image_create_response import ImageCreateResponse
 from .image_upload_response import ImageUploadResponse
+from .impact_level_display_enum import ImpactLevelDisplayEnum
 from .impact_level_enum import ImpactLevelEnum
 from .import_resource_request import ImportResourceRequest
 from .importable_resource import ImportableResource
@@ -1626,6 +1627,7 @@ __all__ = (
     "ImageCreateRequest",
     "ImageCreateResponse",
     "ImageUploadResponse",
+    "ImpactLevelDisplayEnum",
     "ImpactLevelEnum",
     "ImportableResource",
     "ImportResourceRequest",

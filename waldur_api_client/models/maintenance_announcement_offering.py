@@ -5,6 +5,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.impact_level_display_enum import ImpactLevelDisplayEnum
 from ..models.impact_level_enum import ImpactLevelEnum
 from ..types import UNSET, Unset
 
@@ -19,6 +20,8 @@ class MaintenanceAnnouncementOffering:
         uuid (UUID):
         maintenance (str):
         offering (str):
+        impact_level_display (ImpactLevelDisplayEnum):
+        offering_name (str):
         impact_level (Union[Unset, ImpactLevelEnum]):
         impact_description (Union[Unset, str]): Specific description of how this offering will be affected
     """
@@ -27,6 +30,8 @@ class MaintenanceAnnouncementOffering:
     uuid: UUID
     maintenance: str
     offering: str
+    impact_level_display: ImpactLevelDisplayEnum
+    offering_name: str
     impact_level: Union[Unset, ImpactLevelEnum] = UNSET
     impact_description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -39,6 +44,10 @@ class MaintenanceAnnouncementOffering:
         maintenance = self.maintenance
 
         offering = self.offering
+
+        impact_level_display = self.impact_level_display.value
+
+        offering_name = self.offering_name
 
         impact_level: Union[Unset, int] = UNSET
         if not isinstance(self.impact_level, Unset):
@@ -54,6 +63,8 @@ class MaintenanceAnnouncementOffering:
                 "uuid": uuid,
                 "maintenance": maintenance,
                 "offering": offering,
+                "impact_level_display": impact_level_display,
+                "offering_name": offering_name,
             }
         )
         if impact_level is not UNSET:
@@ -74,6 +85,10 @@ class MaintenanceAnnouncementOffering:
 
         offering = d.pop("offering")
 
+        impact_level_display = ImpactLevelDisplayEnum(d.pop("impact_level_display"))
+
+        offering_name = d.pop("offering_name")
+
         _impact_level = d.pop("impact_level", UNSET)
         impact_level: Union[Unset, ImpactLevelEnum]
         if isinstance(_impact_level, Unset):
@@ -88,6 +103,8 @@ class MaintenanceAnnouncementOffering:
             uuid=uuid,
             maintenance=maintenance,
             offering=offering,
+            impact_level_display=impact_level_display,
+            offering_name=offering_name,
             impact_level=impact_level,
             impact_description=impact_description,
         )

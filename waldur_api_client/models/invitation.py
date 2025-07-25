@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -20,7 +20,7 @@ class Invitation:
     Attributes:
         scope_uuid (UUID):
         scope_name (str):
-        scope_type (str):
+        scope_type (Union[None, str]):
         customer_uuid (UUID):
         customer_name (str):
         role_name (str):
@@ -49,7 +49,7 @@ class Invitation:
 
     scope_uuid: UUID
     scope_name: str
-    scope_type: str
+    scope_type: Union[None, str]
     customer_uuid: UUID
     customer_name: str
     role_name: str
@@ -79,6 +79,7 @@ class Invitation:
 
         scope_name = self.scope_name
 
+        scope_type: Union[None, str]
         scope_type = self.scope_type
 
         customer_uuid = str(self.customer_uuid)
@@ -173,7 +174,12 @@ class Invitation:
 
         scope_name = d.pop("scope_name")
 
-        scope_type = d.pop("scope_type")
+        def _parse_scope_type(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        scope_type = _parse_scope_type(d.pop("scope_type"))
 
         customer_uuid = UUID(d.pop("customer_uuid"))
 

@@ -33,6 +33,7 @@ class MaintenanceAnnouncement:
         service_provider (str): Service provider announcing the maintenance
         created_by (Union[None, str]):
         affected_offerings (list['MaintenanceAnnouncementOffering']):
+        service_provider_name (str):
         message (Union[Unset, str]):
         maintenance_type (Union[Unset, MaintenanceTypeEnum]):
     """
@@ -48,6 +49,7 @@ class MaintenanceAnnouncement:
     service_provider: str
     created_by: Union[None, str]
     affected_offerings: list["MaintenanceAnnouncementOffering"]
+    service_provider_name: str
     message: Union[Unset, str] = UNSET
     maintenance_type: Union[Unset, MaintenanceTypeEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -87,6 +89,8 @@ class MaintenanceAnnouncement:
             affected_offerings_item = affected_offerings_item_data.to_dict()
             affected_offerings.append(affected_offerings_item)
 
+        service_provider_name = self.service_provider_name
+
         message = self.message
 
         maintenance_type: Union[Unset, int] = UNSET
@@ -108,6 +112,7 @@ class MaintenanceAnnouncement:
                 "service_provider": service_provider,
                 "created_by": created_by,
                 "affected_offerings": affected_offerings,
+                "service_provider_name": service_provider_name,
             }
         )
         if message is not UNSET:
@@ -180,6 +185,8 @@ class MaintenanceAnnouncement:
 
             affected_offerings.append(affected_offerings_item)
 
+        service_provider_name = d.pop("service_provider_name")
+
         message = d.pop("message", UNSET)
 
         _maintenance_type = d.pop("maintenance_type", UNSET)
@@ -201,6 +208,7 @@ class MaintenanceAnnouncement:
             service_provider=service_provider,
             created_by=created_by,
             affected_offerings=affected_offerings,
+            service_provider_name=service_provider_name,
             message=message,
             maintenance_type=maintenance_type,
         )

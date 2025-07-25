@@ -1,12 +1,12 @@
-from enum import IntEnum
+from enum import Enum
 
 
-class MaintenanceAnnouncementStateEnum(IntEnum):
-    VALUE_1 = 1
-    VALUE_2 = 2
-    VALUE_3 = 3
-    VALUE_4 = 4
-    VALUE_5 = 5
+class MaintenanceAnnouncementStateEnum(str, Enum):
+    CANCELLED = "Cancelled"
+    COMPLETED = "Completed"
+    DRAFT = "Draft"
+    IN_PROGRESS = "In progress"
+    SCHEDULED = "Scheduled"
 
     def __str__(self) -> str:
         return str(self.value)

@@ -18,7 +18,7 @@ class GroupInvitation:
     Attributes:
         scope_uuid (UUID):
         scope_name (str):
-        scope_type (str):
+        scope_type (Union[None, str]):
         customer_uuid (UUID):
         customer_name (str):
         role_name (str):
@@ -36,11 +36,13 @@ class GroupInvitation:
         project_name_template (Union[None, Unset, str]): Template for project name. Supports {username}, {email},
             {full_name} variables
         project_role (Union[None, UUID, Unset]):
+        user_affiliations (Union[Unset, Any]):
+        user_email_patterns (Union[Unset, Any]):
     """
 
     scope_uuid: UUID
     scope_name: str
-    scope_type: str
+    scope_type: Union[None, str]
     customer_uuid: UUID
     customer_name: str
     role_name: str
@@ -56,6 +58,8 @@ class GroupInvitation:
     auto_create_project: Union[Unset, bool] = UNSET
     project_name_template: Union[None, Unset, str] = UNSET
     project_role: Union[None, UUID, Unset] = UNSET
+    user_affiliations: Union[Unset, Any] = UNSET
+    user_email_patterns: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -63,6 +67,7 @@ class GroupInvitation:
 
         scope_name = self.scope_name
 
+        scope_type: Union[None, str]
         scope_type = self.scope_type
 
         customer_uuid = str(self.customer_uuid)
@@ -105,6 +110,10 @@ class GroupInvitation:
         else:
             project_role = self.project_role
 
+        user_affiliations = self.user_affiliations
+
+        user_email_patterns = self.user_email_patterns
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -132,6 +141,10 @@ class GroupInvitation:
             field_dict["project_name_template"] = project_name_template
         if project_role is not UNSET:
             field_dict["project_role"] = project_role
+        if user_affiliations is not UNSET:
+            field_dict["user_affiliations"] = user_affiliations
+        if user_email_patterns is not UNSET:
+            field_dict["user_email_patterns"] = user_email_patterns
 
         return field_dict
 
@@ -142,7 +155,12 @@ class GroupInvitation:
 
         scope_name = d.pop("scope_name")
 
-        scope_type = d.pop("scope_type")
+        def _parse_scope_type(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        scope_type = _parse_scope_type(d.pop("scope_type"))
 
         customer_uuid = UUID(d.pop("customer_uuid"))
 
@@ -196,6 +214,10 @@ class GroupInvitation:
 
         project_role = _parse_project_role(d.pop("project_role", UNSET))
 
+        user_affiliations = d.pop("user_affiliations", UNSET)
+
+        user_email_patterns = d.pop("user_email_patterns", UNSET)
+
         group_invitation = cls(
             scope_uuid=scope_uuid,
             scope_name=scope_name,
@@ -215,6 +237,8 @@ class GroupInvitation:
             auto_create_project=auto_create_project,
             project_name_template=project_name_template,
             project_role=project_role,
+            user_affiliations=user_affiliations,
+            user_email_patterns=user_email_patterns,
         )
 
         group_invitation.additional_properties = d
