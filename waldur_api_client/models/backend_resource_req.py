@@ -17,6 +17,7 @@ class BackendResourceReq:
     """
     Attributes:
         url (str):
+        uuid (UUID):
         created (datetime.datetime):
         modified (datetime.datetime):
         started (Union[None, datetime.datetime]): Time when request processing started
@@ -28,6 +29,7 @@ class BackendResourceReq:
     """
 
     url: str
+    uuid: UUID
     created: datetime.datetime
     modified: datetime.datetime
     started: Union[None, datetime.datetime]
@@ -40,6 +42,8 @@ class BackendResourceReq:
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
+
+        uuid = str(self.uuid)
 
         created = self.created.isoformat()
 
@@ -70,6 +74,7 @@ class BackendResourceReq:
         field_dict.update(
             {
                 "url": url,
+                "uuid": uuid,
                 "created": created,
                 "modified": modified,
                 "started": started,
@@ -87,6 +92,8 @@ class BackendResourceReq:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         url = d.pop("url")
+
+        uuid = UUID(d.pop("uuid"))
 
         created = isoparse(d.pop("created"))
 
@@ -132,6 +139,7 @@ class BackendResourceReq:
 
         backend_resource_req = cls(
             url=url,
+            uuid=uuid,
             created=created,
             modified=modified,
             started=started,

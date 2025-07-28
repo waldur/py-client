@@ -14,7 +14,7 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/marketplace-offering-users/{uuid}/set_validation_complete/",
+        "url": f"/api/marketplace-offering-users/{uuid}/set_ok/",
     }
 
     return _kwargs

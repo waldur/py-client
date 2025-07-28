@@ -28,6 +28,7 @@ class OfferingUser:
         user_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
             characters
         user_full_name (Union[Unset, str]):
+        user_email (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
@@ -48,6 +49,7 @@ class OfferingUser:
     user_uuid: Union[Unset, UUID] = UNSET
     user_username: Union[Unset, str] = UNSET
     user_full_name: Union[Unset, str] = UNSET
+    user_email: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     modified: Union[Unset, datetime.datetime] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
@@ -87,6 +89,8 @@ class OfferingUser:
         user_username = self.user_username
 
         user_full_name = self.user_full_name
+
+        user_email = self.user_email
 
         created: Union[Unset, str] = UNSET
         if not isinstance(self.created, Unset):
@@ -133,6 +137,8 @@ class OfferingUser:
             field_dict["user_username"] = user_username
         if user_full_name is not UNSET:
             field_dict["user_full_name"] = user_full_name
+        if user_email is not UNSET:
+            field_dict["user_email"] = user_email
         if created is not UNSET:
             field_dict["created"] = created
         if modified is not UNSET:
@@ -195,6 +201,8 @@ class OfferingUser:
 
         user_full_name = d.pop("user_full_name", UNSET)
 
+        user_email = d.pop("user_email", UNSET)
+
         _created = d.pop("created", UNSET)
         created: Union[Unset, datetime.datetime]
         if isinstance(_created, Unset):
@@ -240,6 +248,7 @@ class OfferingUser:
             user_uuid=user_uuid,
             user_username=user_username,
             user_full_name=user_full_name,
+            user_email=user_email,
             created=created,
             modified=modified,
             customer_uuid=customer_uuid,

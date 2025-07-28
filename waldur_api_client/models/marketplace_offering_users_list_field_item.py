@@ -15,6 +15,7 @@ class MarketplaceOfferingUsersListFieldItem(str, Enum):
     URL = "url"
     USER = "user"
     USERNAME = "username"
+    USER_EMAIL = "user_email"
     USER_FULL_NAME = "user_full_name"
     USER_USERNAME = "user_username"
     USER_UUID = "user_uuid"
