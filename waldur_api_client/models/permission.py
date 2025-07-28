@@ -26,7 +26,7 @@ class Permission:
         role_name (Union[Unset, str]):
         role_description (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
-        scope_type (Union[Unset, str]):
+        scope_type (Union[None, Unset, str]):
         scope_uuid (Union[Unset, UUID]):
         scope_name (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -43,7 +43,7 @@ class Permission:
     role_name: Union[Unset, str] = UNSET
     role_description: Union[Unset, str] = UNSET
     role_uuid: Union[Unset, UUID] = UNSET
-    scope_type: Union[Unset, str] = UNSET
+    scope_type: Union[None, Unset, str] = UNSET
     scope_uuid: Union[Unset, UUID] = UNSET
     scope_name: Union[Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
@@ -83,7 +83,11 @@ class Permission:
         if not isinstance(self.role_uuid, Unset):
             role_uuid = str(self.role_uuid)
 
-        scope_type = self.scope_type
+        scope_type: Union[None, Unset, str]
+        if isinstance(self.scope_type, Unset):
+            scope_type = UNSET
+        else:
+            scope_type = self.scope_type
 
         scope_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.scope_uuid, Unset):
@@ -186,7 +190,14 @@ class Permission:
         else:
             role_uuid = UUID(_role_uuid)
 
-        scope_type = d.pop("scope_type", UNSET)
+        def _parse_scope_type(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        scope_type = _parse_scope_type(d.pop("scope_type", UNSET))
 
         _scope_uuid = d.pop("scope_uuid", UNSET)
         scope_uuid: Union[Unset, UUID]
