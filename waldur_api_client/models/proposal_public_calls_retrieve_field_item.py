@@ -12,6 +12,7 @@ class ProposalPublicCallsRetrieveFieldItem(str, Enum):
     EXTERNAL_URL = "external_url"
     FIXED_DURATION_IN_DAYS = "fixed_duration_in_days"
     MANAGER = "manager"
+    MANAGER_UUID = "manager_uuid"
     NAME = "name"
     OFFERINGS = "offerings"
     RESOURCE_TEMPLATES = "resource_templates"

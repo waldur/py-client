@@ -34,6 +34,7 @@ class ProtectedCall:
         description (Union[Unset, str]):
         state (Union[Unset, CallStates]):
         manager (Union[Unset, str]):
+        manager_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         offerings (Union[Unset, list['NestedRequestedOffering']]):
@@ -61,6 +62,7 @@ class ProtectedCall:
     description: Union[Unset, str] = UNSET
     state: Union[Unset, CallStates] = UNSET
     manager: Union[Unset, str] = UNSET
+    manager_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
     offerings: Union[Unset, list["NestedRequestedOffering"]] = UNSET
@@ -106,6 +108,10 @@ class ProtectedCall:
             state = self.state.value
 
         manager = self.manager
+
+        manager_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.manager_uuid, Unset):
+            manager_uuid = str(self.manager_uuid)
 
         customer_name = self.customer_name
 
@@ -190,6 +196,8 @@ class ProtectedCall:
             field_dict["state"] = state
         if manager is not UNSET:
             field_dict["manager"] = manager
+        if manager_uuid is not UNSET:
+            field_dict["manager_uuid"] = manager_uuid
         if customer_name is not UNSET:
             field_dict["customer_name"] = customer_name
         if customer_uuid is not UNSET:
@@ -271,6 +279,13 @@ class ProtectedCall:
             state = CallStates(_state)
 
         manager = d.pop("manager", UNSET)
+
+        _manager_uuid = d.pop("manager_uuid", UNSET)
+        manager_uuid: Union[Unset, UUID]
+        if isinstance(_manager_uuid, Unset):
+            manager_uuid = UNSET
+        else:
+            manager_uuid = UUID(_manager_uuid)
 
         customer_name = d.pop("customer_name", UNSET)
 
@@ -355,6 +370,7 @@ class ProtectedCall:
             description=description,
             state=state,
             manager=manager,
+            manager_uuid=manager_uuid,
             customer_name=customer_name,
             customer_uuid=customer_uuid,
             offerings=offerings,
