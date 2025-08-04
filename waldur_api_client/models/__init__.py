@@ -313,6 +313,8 @@ from .events_list_o_item import EventsListOItem
 from .events_retrieve_field_item import EventsRetrieveFieldItem
 from .events_scope_types_retrieve_field_item import EventsScopeTypesRetrieveFieldItem
 from .execution_state_enum import ExecutionStateEnum
+from .external_link import ExternalLink
+from .external_link_request import ExternalLinkRequest
 from .feature_values_body import FeatureValuesBody
 from .feedback import Feedback
 from .financial_report import FinancialReport
@@ -892,6 +894,7 @@ from .patched_customer_request import PatchedCustomerRequest
 from .patched_customer_service_account_request import PatchedCustomerServiceAccountRequest
 from .patched_digital_ocean_droplet_request import PatchedDigitalOceanDropletRequest
 from .patched_email_hook_request import PatchedEmailHookRequest
+from .patched_external_link_request import PatchedExternalLinkRequest
 from .patched_firecrest_job_request import PatchedFirecrestJobRequest
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
 from .patched_invoice_item_update_request import PatchedInvoiceItemUpdateRequest
@@ -1762,6 +1765,8 @@ __all__ = (
     "EventSubscriptionsListOItem",
     "EventTypesEnum",
     "ExecutionStateEnum",
+    "ExternalLink",
+    "ExternalLinkRequest",
     "FeatureValuesBody",
     "Feedback",
     "FinancialReport",
@@ -2287,6 +2292,7 @@ __all__ = (
     "PatchedCustomerServiceAccountRequest",
     "PatchedDigitalOceanDropletRequest",
     "PatchedEmailHookRequest",
+    "PatchedExternalLinkRequest",
     "PatchedFirecrestJobRequest",
     "PatchedIdentityProviderRequest",
     "PatchedInvoiceItemUpdateRequest",

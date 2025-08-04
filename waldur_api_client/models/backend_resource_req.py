@@ -26,6 +26,8 @@ class BackendResourceReq:
         offering (UUID):
         offering_name (str):
         offering_url (str):
+        error_message (str):
+        error_traceback (str):
     """
 
     url: str
@@ -38,6 +40,8 @@ class BackendResourceReq:
     offering: UUID
     offering_name: str
     offering_url: str
+    error_message: str
+    error_traceback: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -69,6 +73,10 @@ class BackendResourceReq:
 
         offering_url = self.offering_url
 
+        error_message = self.error_message
+
+        error_traceback = self.error_traceback
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -83,6 +91,8 @@ class BackendResourceReq:
                 "offering": offering,
                 "offering_name": offering_name,
                 "offering_url": offering_url,
+                "error_message": error_message,
+                "error_traceback": error_traceback,
             }
         )
 
@@ -137,6 +147,10 @@ class BackendResourceReq:
 
         offering_url = d.pop("offering_url")
 
+        error_message = d.pop("error_message")
+
+        error_traceback = d.pop("error_traceback")
+
         backend_resource_req = cls(
             url=url,
             uuid=uuid,
@@ -148,6 +162,8 @@ class BackendResourceReq:
             offering=offering,
             offering_name=offering_name,
             offering_url=offering_url,
+            error_message=error_message,
+            error_traceback=error_traceback,
         )
 
         backend_resource_req.additional_properties = d
