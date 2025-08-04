@@ -55,13 +55,22 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
-    if response.status_code == 200:
-        return None
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> int:
+    if response.status_code == HTTPStatus.OK:
+        try:
+            return int(response.headers["x-result-count"])
+        except KeyError:
+            raise errors.UnexpectedStatus(
+                response.status_code, b"Expected 'X-Result-Count' header for HEAD request, but it was not found."
+            )
+        except ValueError:
+            count_val = response.headers.get("x-result-count")
+            msg = f"Expected 'X-Result-Count' header to be an integer, but got '{count_val}'."
+            raise errors.UnexpectedStatus(response.status_code, msg.encode())
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -80,8 +89,8 @@ def sync_detailed(
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
@@ -97,7 +106,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -117,7 +126,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
@@ -127,8 +136,8 @@ async def asyncio_detailed(
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> int:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
@@ -144,7 +153,49 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        int
+    """
+
+    return sync_detailed(
+        client=client,
+        page=page,
+        page_size=page_size,
+        resource=resource,
+        resource_uuid=resource_uuid,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        user_uuid=user_uuid,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        user_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -160,3 +211,47 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
+) -> int:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        user_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        int
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            page=page,
+            page_size=page_size,
+            resource=resource,
+            resource_uuid=resource_uuid,
+            role_name=role_name,
+            role_uuid=role_uuid,
+            user_uuid=user_uuid,
+        )
+    ).parsed

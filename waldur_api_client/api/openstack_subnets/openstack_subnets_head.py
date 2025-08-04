@@ -141,13 +141,22 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
-    if response.status_code == 200:
-        return None
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> int:
+    if response.status_code == HTTPStatus.OK:
+        try:
+            return int(response.headers["x-result-count"])
+        except KeyError:
+            raise errors.UnexpectedStatus(
+                response.status_code, b"Expected 'X-Result-Count' header for HEAD request, but it was not found."
+            )
+        except ValueError:
+            count_val = response.headers.get("x-result-count")
+            msg = f"Expected 'X-Result-Count' header to be an integer, but got '{count_val}'."
+            raise errors.UnexpectedStatus(response.status_code, msg.encode())
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -187,8 +196,8 @@ def sync_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -225,7 +234,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -266,7 +275,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
@@ -297,8 +306,8 @@ async def asyncio_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> int:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -335,7 +344,112 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        int
+    """
+
+    return sync_detailed(
+        client=client,
+        backend_id=backend_id,
+        can_manage=can_manage,
+        customer=customer,
+        customer_abbreviation=customer_abbreviation,
+        customer_name=customer_name,
+        customer_native_name=customer_native_name,
+        customer_uuid=customer_uuid,
+        description=description,
+        direct_only=direct_only,
+        enable_dhcp=enable_dhcp,
+        external_ip=external_ip,
+        ip_version=ip_version,
+        name=name,
+        name_exact=name_exact,
+        network=network,
+        network_uuid=network_uuid,
+        page=page,
+        page_size=page_size,
+        project=project,
+        project_name=project_name,
+        project_uuid=project_uuid,
+        rbac_only=rbac_only,
+        service_settings_name=service_settings_name,
+        service_settings_uuid=service_settings_uuid,
+        state=state,
+        tenant=tenant,
+        tenant_uuid=tenant_uuid,
+        uuid=uuid,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
+    customer: Union[Unset, UUID] = UNSET,
+    customer_abbreviation: Union[Unset, str] = UNSET,
+    customer_name: Union[Unset, str] = UNSET,
+    customer_native_name: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
+    direct_only: Union[Unset, bool] = UNSET,
+    enable_dhcp: Union[Unset, bool] = UNSET,
+    external_ip: Union[Unset, str] = UNSET,
+    ip_version: Union[Unset, int] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    network: Union[Unset, str] = UNSET,
+    network_uuid: Union[Unset, UUID] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    project: Union[Unset, UUID] = UNSET,
+    project_name: Union[Unset, str] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    rbac_only: Union[Unset, bool] = UNSET,
+    service_settings_name: Union[Unset, str] = UNSET,
+    service_settings_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[OpenstackSubnetsHeadStateItem]] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
+    uuid: Union[Unset, UUID] = UNSET,
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
+        customer (Union[Unset, UUID]):
+        customer_abbreviation (Union[Unset, str]):
+        customer_name (Union[Unset, str]):
+        customer_native_name (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
+        direct_only (Union[Unset, bool]):
+        enable_dhcp (Union[Unset, bool]):
+        external_ip (Union[Unset, str]):
+        ip_version (Union[Unset, int]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        network (Union[Unset, str]):
+        network_uuid (Union[Unset, UUID]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        project (Union[Unset, UUID]):
+        project_name (Union[Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        rbac_only (Union[Unset, bool]):
+        service_settings_name (Union[Unset, str]):
+        service_settings_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[OpenstackSubnetsHeadStateItem]]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
+        uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -372,3 +486,110 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
+    customer: Union[Unset, UUID] = UNSET,
+    customer_abbreviation: Union[Unset, str] = UNSET,
+    customer_name: Union[Unset, str] = UNSET,
+    customer_native_name: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
+    direct_only: Union[Unset, bool] = UNSET,
+    enable_dhcp: Union[Unset, bool] = UNSET,
+    external_ip: Union[Unset, str] = UNSET,
+    ip_version: Union[Unset, int] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    network: Union[Unset, str] = UNSET,
+    network_uuid: Union[Unset, UUID] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    project: Union[Unset, UUID] = UNSET,
+    project_name: Union[Unset, str] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    rbac_only: Union[Unset, bool] = UNSET,
+    service_settings_name: Union[Unset, str] = UNSET,
+    service_settings_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[OpenstackSubnetsHeadStateItem]] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
+    uuid: Union[Unset, UUID] = UNSET,
+) -> int:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
+        customer (Union[Unset, UUID]):
+        customer_abbreviation (Union[Unset, str]):
+        customer_name (Union[Unset, str]):
+        customer_native_name (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
+        direct_only (Union[Unset, bool]):
+        enable_dhcp (Union[Unset, bool]):
+        external_ip (Union[Unset, str]):
+        ip_version (Union[Unset, int]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        network (Union[Unset, str]):
+        network_uuid (Union[Unset, UUID]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        project (Union[Unset, UUID]):
+        project_name (Union[Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        rbac_only (Union[Unset, bool]):
+        service_settings_name (Union[Unset, str]):
+        service_settings_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[OpenstackSubnetsHeadStateItem]]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
+        uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        int
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            backend_id=backend_id,
+            can_manage=can_manage,
+            customer=customer,
+            customer_abbreviation=customer_abbreviation,
+            customer_name=customer_name,
+            customer_native_name=customer_native_name,
+            customer_uuid=customer_uuid,
+            description=description,
+            direct_only=direct_only,
+            enable_dhcp=enable_dhcp,
+            external_ip=external_ip,
+            ip_version=ip_version,
+            name=name,
+            name_exact=name_exact,
+            network=network,
+            network_uuid=network_uuid,
+            page=page,
+            page_size=page_size,
+            project=project,
+            project_name=project_name,
+            project_uuid=project_uuid,
+            rbac_only=rbac_only,
+            service_settings_name=service_settings_name,
+            service_settings_uuid=service_settings_uuid,
+            state=state,
+            tenant=tenant,
+            tenant_uuid=tenant_uuid,
+            uuid=uuid,
+        )
+    ).parsed

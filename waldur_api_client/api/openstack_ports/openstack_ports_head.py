@@ -84,13 +84,22 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
-    if response.status_code == 200:
-        return None
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> int:
+    if response.status_code == HTTPStatus.OK:
+        try:
+            return int(response.headers["x-result-count"])
+        except KeyError:
+            raise errors.UnexpectedStatus(
+                response.status_code, b"Expected 'X-Result-Count' header for HEAD request, but it was not found."
+            )
+        except ValueError:
+            count_val = response.headers.get("x-result-count")
+            msg = f"Expected 'X-Result-Count' header to be an integer, but got '{count_val}'."
+            raise errors.UnexpectedStatus(response.status_code, msg.encode())
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -118,8 +127,8 @@ def sync_detailed(
     status: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         admin_state_up (Union[Unset, bool]):
@@ -144,7 +153,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -173,7 +182,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     admin_state_up: Union[Unset, bool] = UNSET,
@@ -192,8 +201,8 @@ async def asyncio_detailed(
     status: Union[Unset, str] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> int:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         admin_state_up (Union[Unset, bool]):
@@ -218,7 +227,76 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        int
+    """
+
+    return sync_detailed(
+        client=client,
+        admin_state_up=admin_state_up,
+        backend_id=backend_id,
+        device_id=device_id,
+        device_owner=device_owner,
+        exclude_subnet_uuids=exclude_subnet_uuids,
+        has_device_owner=has_device_owner,
+        mac_address=mac_address,
+        name=name,
+        name_exact=name_exact,
+        o=o,
+        page=page,
+        page_size=page_size,
+        query=query,
+        status=status,
+        tenant=tenant,
+        tenant_uuid=tenant_uuid,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    admin_state_up: Union[Unset, bool] = UNSET,
+    backend_id: Union[Unset, str] = UNSET,
+    device_id: Union[Unset, str] = UNSET,
+    device_owner: Union[Unset, str] = UNSET,
+    exclude_subnet_uuids: Union[Unset, str] = UNSET,
+    has_device_owner: Union[Unset, bool] = UNSET,
+    mac_address: Union[Unset, str] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[OpenstackPortsHeadOItem]] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        admin_state_up (Union[Unset, bool]):
+        backend_id (Union[Unset, str]):
+        device_id (Union[Unset, str]):
+        device_owner (Union[Unset, str]):
+        exclude_subnet_uuids (Union[Unset, str]):
+        has_device_owner (Union[Unset, bool]):
+        mac_address (Union[Unset, str]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[OpenstackPortsHeadOItem]]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
+        status (Union[Unset, str]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -243,3 +321,74 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    admin_state_up: Union[Unset, bool] = UNSET,
+    backend_id: Union[Unset, str] = UNSET,
+    device_id: Union[Unset, str] = UNSET,
+    device_owner: Union[Unset, str] = UNSET,
+    exclude_subnet_uuids: Union[Unset, str] = UNSET,
+    has_device_owner: Union[Unset, bool] = UNSET,
+    mac_address: Union[Unset, str] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[OpenstackPortsHeadOItem]] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
+) -> int:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        admin_state_up (Union[Unset, bool]):
+        backend_id (Union[Unset, str]):
+        device_id (Union[Unset, str]):
+        device_owner (Union[Unset, str]):
+        exclude_subnet_uuids (Union[Unset, str]):
+        has_device_owner (Union[Unset, bool]):
+        mac_address (Union[Unset, str]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[OpenstackPortsHeadOItem]]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
+        status (Union[Unset, str]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        int
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            admin_state_up=admin_state_up,
+            backend_id=backend_id,
+            device_id=device_id,
+            device_owner=device_owner,
+            exclude_subnet_uuids=exclude_subnet_uuids,
+            has_device_owner=has_device_owner,
+            mac_address=mac_address,
+            name=name,
+            name_exact=name_exact,
+            o=o,
+            page=page,
+            page_size=page_size,
+            query=query,
+            status=status,
+            tenant=tenant,
+            tenant_uuid=tenant_uuid,
+        )
+    ).parsed

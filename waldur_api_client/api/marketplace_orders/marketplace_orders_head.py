@@ -147,13 +147,22 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
-    if response.status_code == 200:
-        return None
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> int:
+    if response.status_code == HTTPStatus.OK:
+        try:
+            return int(response.headers["x-result-count"])
+        except KeyError:
+            raise errors.UnexpectedStatus(
+                response.status_code, b"Expected 'X-Result-Count' header for HEAD request, but it was not found."
+            )
+        except ValueError:
+            count_val = response.headers.get("x-result-count")
+            msg = f"Expected 'X-Result-Count' header to be an integer, but got '{count_val}'."
+            raise errors.UnexpectedStatus(response.status_code, msg.encode())
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -186,8 +195,8 @@ def sync_detailed(
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceOrdersHeadStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersHeadTypeItem]] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
@@ -217,7 +226,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -251,7 +260,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     can_approve_as_consumer: Union[Unset, bool] = UNSET,
@@ -275,8 +284,8 @@ async def asyncio_detailed(
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceOrdersHeadStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersHeadTypeItem]] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> int:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
@@ -306,7 +315,91 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        int
+    """
+
+    return sync_detailed(
+        client=client,
+        can_approve_as_consumer=can_approve_as_consumer,
+        can_approve_as_provider=can_approve_as_provider,
+        category_uuid=category_uuid,
+        created=created,
+        customer_uuid=customer_uuid,
+        modified=modified,
+        o=o,
+        offering=offering,
+        offering_type=offering_type,
+        offering_uuid=offering_uuid,
+        page=page,
+        page_size=page_size,
+        parent_offering_uuid=parent_offering_uuid,
+        project_uuid=project_uuid,
+        provider_uuid=provider_uuid,
+        query=query,
+        resource=resource,
+        resource_uuid=resource_uuid,
+        service_manager_uuid=service_manager_uuid,
+        state=state,
+        type_=type_,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    can_approve_as_consumer: Union[Unset, bool] = UNSET,
+    can_approve_as_provider: Union[Unset, bool] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    o: Union[Unset, list[MarketplaceOrdersHeadOItem]] = UNSET,
+    offering: Union[Unset, str] = UNSET,
+    offering_type: Union[Unset, list[str]] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    parent_offering_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+    service_manager_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[MarketplaceOrdersHeadStateItem]] = UNSET,
+    type_: Union[Unset, list[MarketplaceOrdersHeadTypeItem]] = UNSET,
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        can_approve_as_consumer (Union[Unset, bool]):
+        can_approve_as_provider (Union[Unset, bool]):
+        category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
+        customer_uuid (Union[Unset, UUID]):
+        modified (Union[Unset, datetime.datetime]):
+        o (Union[Unset, list[MarketplaceOrdersHeadOItem]]):
+        offering (Union[Unset, str]):
+        offering_type (Union[Unset, list[str]]):
+        offering_uuid (Union[Unset, UUID]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        parent_offering_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
+        service_manager_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[MarketplaceOrdersHeadStateItem]]):
+        type_ (Union[Unset, list[MarketplaceOrdersHeadTypeItem]]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -336,3 +429,89 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    can_approve_as_consumer: Union[Unset, bool] = UNSET,
+    can_approve_as_provider: Union[Unset, bool] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    o: Union[Unset, list[MarketplaceOrdersHeadOItem]] = UNSET,
+    offering: Union[Unset, str] = UNSET,
+    offering_type: Union[Unset, list[str]] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    parent_offering_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+    service_manager_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[MarketplaceOrdersHeadStateItem]] = UNSET,
+    type_: Union[Unset, list[MarketplaceOrdersHeadTypeItem]] = UNSET,
+) -> int:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        can_approve_as_consumer (Union[Unset, bool]):
+        can_approve_as_provider (Union[Unset, bool]):
+        category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
+        customer_uuid (Union[Unset, UUID]):
+        modified (Union[Unset, datetime.datetime]):
+        o (Union[Unset, list[MarketplaceOrdersHeadOItem]]):
+        offering (Union[Unset, str]):
+        offering_type (Union[Unset, list[str]]):
+        offering_uuid (Union[Unset, UUID]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        parent_offering_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
+        service_manager_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[MarketplaceOrdersHeadStateItem]]):
+        type_ (Union[Unset, list[MarketplaceOrdersHeadTypeItem]]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        int
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            can_approve_as_consumer=can_approve_as_consumer,
+            can_approve_as_provider=can_approve_as_provider,
+            category_uuid=category_uuid,
+            created=created,
+            customer_uuid=customer_uuid,
+            modified=modified,
+            o=o,
+            offering=offering,
+            offering_type=offering_type,
+            offering_uuid=offering_uuid,
+            page=page,
+            page_size=page_size,
+            parent_offering_uuid=parent_offering_uuid,
+            project_uuid=project_uuid,
+            provider_uuid=provider_uuid,
+            query=query,
+            resource=resource,
+            resource_uuid=resource_uuid,
+            service_manager_uuid=service_manager_uuid,
+            state=state,
+            type_=type_,
+        )
+    ).parsed

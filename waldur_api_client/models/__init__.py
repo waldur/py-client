@@ -150,6 +150,9 @@ from .broadcast_messages_list_state import BroadcastMessagesListState
 from .broadcast_messages_recipients_retrieve_field_item import BroadcastMessagesRecipientsRetrieveFieldItem
 from .broadcast_messages_retrieve_field_item import BroadcastMessagesRetrieveFieldItem
 from .call_attach_documents_request import CallAttachDocumentsRequest
+from .call_compliance_overview import CallComplianceOverview
+from .call_compliance_overview_checklist_type_0 import CallComplianceOverviewChecklistType0
+from .call_compliance_review_request import CallComplianceReviewRequest
 from .call_detach_documents_request import CallDetachDocumentsRequest
 from .call_document import CallDocument
 from .call_document_request import CallDocumentRequest
@@ -1035,6 +1038,16 @@ from .promotions_campaigns_list_o_item import PromotionsCampaignsListOItem
 from .promotions_campaigns_list_state_item import PromotionsCampaignsListStateItem
 from .proposal import Proposal
 from .proposal_approve_request import ProposalApproveRequest
+from .proposal_can_submit import ProposalCanSubmit
+from .proposal_checklist_answer import ProposalChecklistAnswer
+from .proposal_checklist_answer_submit_request import ProposalChecklistAnswerSubmitRequest
+from .proposal_checklist_answer_submit_response import ProposalChecklistAnswerSubmitResponse
+from .proposal_checklist_completion import ProposalChecklistCompletion
+from .proposal_checklist_question import ProposalChecklistQuestion
+from .proposal_checklist_question_existing_answer_type_0 import ProposalChecklistQuestionExistingAnswerType0
+from .proposal_compliance_checklist_response import ProposalComplianceChecklistResponse
+from .proposal_compliance_checklist_response_checklist import ProposalComplianceChecklistResponseChecklist
+from .proposal_compliance_status_type_0 import ProposalComplianceStatusType0
 from .proposal_documentation import ProposalDocumentation
 from .proposal_documentation_request import ProposalDocumentationRequest
 from .proposal_project_role_mapping import ProposalProjectRoleMapping
@@ -1052,7 +1065,16 @@ from .proposal_protected_calls_list_o_item import ProposalProtectedCallsListOIte
 from .proposal_protected_calls_list_state_item import ProposalProtectedCallsListStateItem
 from .proposal_protected_calls_list_users_list_field_item import ProposalProtectedCallsListUsersListFieldItem
 from .proposal_protected_calls_list_users_list_o_item import ProposalProtectedCallsListUsersListOItem
+from .proposal_protected_calls_proposals_compliance_answers_list_o_item import (
+    ProposalProtectedCallsProposalsComplianceAnswersListOItem,
+)
+from .proposal_protected_calls_proposals_compliance_answers_list_state_item import (
+    ProposalProtectedCallsProposalsComplianceAnswersListStateItem,
+)
 from .proposal_protected_calls_retrieve_field_item import ProposalProtectedCallsRetrieveFieldItem
+from .proposal_protected_calls_review_proposal_compliance_response_200 import (
+    ProposalProtectedCallsReviewProposalComplianceResponse200,
+)
 from .proposal_public_calls_head_o_item import ProposalPublicCallsHeadOItem
 from .proposal_public_calls_head_state_item import ProposalPublicCallsHeadStateItem
 from .proposal_public_calls_list_field_item import ProposalPublicCallsListFieldItem
@@ -1581,6 +1603,9 @@ __all__ = (
     "BroadcastMessagesRetrieveFieldItem",
     "BroadcastMessageStateEnum",
     "CallAttachDocumentsRequest",
+    "CallComplianceOverview",
+    "CallComplianceOverviewChecklistType0",
+    "CallComplianceReviewRequest",
     "CallDetachDocumentsRequest",
     "CallDocument",
     "CallDocumentRequest",
@@ -2396,6 +2421,16 @@ __all__ = (
     "PromotionsCampaignsListStateItem",
     "Proposal",
     "ProposalApproveRequest",
+    "ProposalCanSubmit",
+    "ProposalChecklistAnswer",
+    "ProposalChecklistAnswerSubmitRequest",
+    "ProposalChecklistAnswerSubmitResponse",
+    "ProposalChecklistCompletion",
+    "ProposalChecklistQuestion",
+    "ProposalChecklistQuestionExistingAnswerType0",
+    "ProposalComplianceChecklistResponse",
+    "ProposalComplianceChecklistResponseChecklist",
+    "ProposalComplianceStatusType0",
     "ProposalDocumentation",
     "ProposalDocumentationRequest",
     "ProposalProjectRoleMapping",
@@ -2413,7 +2448,10 @@ __all__ = (
     "ProposalProtectedCallsListStateItem",
     "ProposalProtectedCallsListUsersListFieldItem",
     "ProposalProtectedCallsListUsersListOItem",
+    "ProposalProtectedCallsProposalsComplianceAnswersListOItem",
+    "ProposalProtectedCallsProposalsComplianceAnswersListStateItem",
     "ProposalProtectedCallsRetrieveFieldItem",
+    "ProposalProtectedCallsReviewProposalComplianceResponse200",
     "ProposalPublicCallsHeadOItem",
     "ProposalPublicCallsHeadStateItem",
     "ProposalPublicCallsListFieldItem",

@@ -50,6 +50,9 @@ class ProtectedCall:
             scores
         created_by (Union[None, Unset, str]):
         reference_code (Union[Unset, str]):
+        compliance_checklist (Union[None, UUID, Unset]): Compliance checklist that proposals must complete before
+            submission
+        compliance_checklist_name (Union[Unset, str]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -76,6 +79,8 @@ class ProtectedCall:
     reviews_visible_to_submitters: Union[Unset, bool] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     reference_code: Union[Unset, str] = UNSET
+    compliance_checklist: Union[None, UUID, Unset] = UNSET
+    compliance_checklist_name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -173,6 +178,16 @@ class ProtectedCall:
 
         reference_code = self.reference_code
 
+        compliance_checklist: Union[None, Unset, str]
+        if isinstance(self.compliance_checklist, Unset):
+            compliance_checklist = UNSET
+        elif isinstance(self.compliance_checklist, UUID):
+            compliance_checklist = str(self.compliance_checklist)
+        else:
+            compliance_checklist = self.compliance_checklist
+
+        compliance_checklist_name = self.compliance_checklist_name
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -224,6 +239,10 @@ class ProtectedCall:
             field_dict["created_by"] = created_by
         if reference_code is not UNSET:
             field_dict["reference_code"] = reference_code
+        if compliance_checklist is not UNSET:
+            field_dict["compliance_checklist"] = compliance_checklist
+        if compliance_checklist_name is not UNSET:
+            field_dict["compliance_checklist_name"] = compliance_checklist_name
 
         return field_dict
 
@@ -359,6 +378,25 @@ class ProtectedCall:
 
         reference_code = d.pop("reference_code", UNSET)
 
+        def _parse_compliance_checklist(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                compliance_checklist_type_0 = UUID(data)
+
+                return compliance_checklist_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        compliance_checklist = _parse_compliance_checklist(d.pop("compliance_checklist", UNSET))
+
+        compliance_checklist_name = d.pop("compliance_checklist_name", UNSET)
+
         protected_call = cls(
             url=url,
             uuid=uuid,
@@ -384,6 +422,8 @@ class ProtectedCall:
             reviews_visible_to_submitters=reviews_visible_to_submitters,
             created_by=created_by,
             reference_code=reference_code,
+            compliance_checklist=compliance_checklist,
+            compliance_checklist_name=compliance_checklist_name,
         )
 
         protected_call.additional_properties = d

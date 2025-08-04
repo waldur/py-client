@@ -3,6 +3,8 @@ from enum import Enum
 
 class ProposalProtectedCallsRetrieveFieldItem(str, Enum):
     BACKEND_ID = "backend_id"
+    COMPLIANCE_CHECKLIST = "compliance_checklist"
+    COMPLIANCE_CHECKLIST_NAME = "compliance_checklist_name"
     CREATED = "created"
     CREATED_BY = "created_by"
     CUSTOMER_NAME = "customer_name"

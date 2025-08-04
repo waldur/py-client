@@ -67,13 +67,22 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
-    if response.status_code == 200:
-        return None
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> int:
+    if response.status_code == HTTPStatus.OK:
+        try:
+            return int(response.headers["x-result-count"])
+        except KeyError:
+            raise errors.UnexpectedStatus(
+                response.status_code, b"Expected 'X-Result-Count' header for HEAD request, but it was not found."
+            )
+        except ValueError:
+            count_val = response.headers.get("x-result-count")
+            msg = f"Expected 'X-Result-Count' header to be an integer, but got '{count_val}'."
+            raise errors.UnexpectedStatus(response.status_code, msg.encode())
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -94,8 +103,8 @@ def sync_detailed(
     start_month: Union[Unset, float] = UNSET,
     start_year: Union[Unset, float] = UNSET,
     year: Union[Unset, int] = UNSET,
-) -> Response[Any]:
-    """Calculate total price for filtered invoice items.
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         credit_uuid (Union[Unset, UUID]):
@@ -113,7 +122,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -135,7 +144,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     credit_uuid: Union[Unset, UUID] = UNSET,
@@ -147,8 +156,8 @@ async def asyncio_detailed(
     start_month: Union[Unset, float] = UNSET,
     start_year: Union[Unset, float] = UNSET,
     year: Union[Unset, int] = UNSET,
-) -> Response[Any]:
-    """Calculate total price for filtered invoice items.
+) -> int:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         credit_uuid (Union[Unset, UUID]):
@@ -166,7 +175,55 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        int
+    """
+
+    return sync_detailed(
+        client=client,
+        credit_uuid=credit_uuid,
+        customer_uuid=customer_uuid,
+        month=month,
+        offering_uuid=offering_uuid,
+        project_uuid=project_uuid,
+        resource_uuid=resource_uuid,
+        start_month=start_month,
+        start_year=start_year,
+        year=year,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    credit_uuid: Union[Unset, UUID] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
+    year: Union[Unset, int] = UNSET,
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        credit_uuid (Union[Unset, UUID]):
+        customer_uuid (Union[Unset, UUID]):
+        month (Union[Unset, int]):
+        offering_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        resource_uuid (Union[Unset, UUID]):
+        start_month (Union[Unset, float]):
+        start_year (Union[Unset, float]):
+        year (Union[Unset, int]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -184,3 +241,53 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    credit_uuid: Union[Unset, UUID] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    month: Union[Unset, int] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+    start_month: Union[Unset, float] = UNSET,
+    start_year: Union[Unset, float] = UNSET,
+    year: Union[Unset, int] = UNSET,
+) -> int:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        credit_uuid (Union[Unset, UUID]):
+        customer_uuid (Union[Unset, UUID]):
+        month (Union[Unset, int]):
+        offering_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        resource_uuid (Union[Unset, UUID]):
+        start_month (Union[Unset, float]):
+        start_year (Union[Unset, float]):
+        year (Union[Unset, int]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        int
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            credit_uuid=credit_uuid,
+            customer_uuid=customer_uuid,
+            month=month,
+            offering_uuid=offering_uuid,
+            project_uuid=project_uuid,
+            resource_uuid=resource_uuid,
+            start_month=start_month,
+            start_year=start_year,
+            year=year,
+        )
+    ).parsed

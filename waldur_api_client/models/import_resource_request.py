@@ -17,11 +17,13 @@ class ImportResourceRequest:
         backend_id (str):
         project (UUID):
         plan (Union[Unset, UUID]):
+        additional_details (Union[Unset, Any]):  Default: {}.
     """
 
     backend_id: str
     project: UUID
     plan: Union[Unset, UUID] = UNSET
+    additional_details: Union[Unset, Any] = {}
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -33,6 +35,8 @@ class ImportResourceRequest:
         if not isinstance(self.plan, Unset):
             plan = str(self.plan)
 
+        additional_details = self.additional_details
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -43,6 +47,8 @@ class ImportResourceRequest:
         )
         if plan is not UNSET:
             field_dict["plan"] = plan
+        if additional_details is not UNSET:
+            field_dict["additional_details"] = additional_details
 
         return field_dict
 
@@ -60,10 +66,13 @@ class ImportResourceRequest:
         else:
             plan = UUID(_plan)
 
+        additional_details = d.pop("additional_details", UNSET)
+
         import_resource_request = cls(
             backend_id=backend_id,
             project=project,
             plan=plan,
+            additional_details=additional_details,
         )
 
         import_resource_request.additional_properties = d

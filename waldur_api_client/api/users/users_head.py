@@ -127,13 +127,22 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
-    if response.status_code == 200:
-        return None
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> int:
+    if response.status_code == HTTPStatus.OK:
+        try:
+            return int(response.headers["x-result-count"])
+        except KeyError:
+            raise errors.UnexpectedStatus(
+                response.status_code, b"Expected 'X-Result-Count' header for HEAD request, but it was not found."
+            )
+        except ValueError:
+            count_val = response.headers.get("x-result-count")
+            msg = f"Expected 'X-Result-Count' header to be an integer, but got '{count_val}'."
+            raise errors.UnexpectedStatus(response.status_code, msg.encode())
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -171,8 +180,8 @@ def sync_detailed(
     user_keyword: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
     username_list: Union[Unset, str] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         agreement_date (Union[Unset, datetime.datetime]):
@@ -207,7 +216,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -246,7 +255,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     agreement_date: Union[Unset, datetime.datetime] = UNSET,
@@ -275,8 +284,8 @@ async def asyncio_detailed(
     user_keyword: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
     username_list: Union[Unset, str] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> int:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         agreement_date (Union[Unset, datetime.datetime]):
@@ -311,7 +320,106 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        int
+    """
+
+    return sync_detailed(
+        client=client,
+        agreement_date=agreement_date,
+        civil_number=civil_number,
+        customer_uuid=customer_uuid,
+        date_joined=date_joined,
+        description=description,
+        email=email,
+        full_name=full_name,
+        is_active=is_active,
+        is_staff=is_staff,
+        is_support=is_support,
+        job_title=job_title,
+        modified=modified,
+        native_name=native_name,
+        o=o,
+        organization=organization,
+        organization_roles=organization_roles,
+        page=page,
+        page_size=page_size,
+        phone_number=phone_number,
+        project_roles=project_roles,
+        project_uuid=project_uuid,
+        query=query,
+        registration_method=registration_method,
+        user_keyword=user_keyword,
+        username=username,
+        username_list=username_list,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
+    civil_number: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
+    description: Union[Unset, str] = UNSET,
+    email: Union[Unset, str] = UNSET,
+    full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
+    is_staff: Union[Unset, bool] = UNSET,
+    is_support: Union[Unset, bool] = UNSET,
+    job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[UsersHeadOItem]] = UNSET,
+    organization: Union[Unset, str] = UNSET,
+    organization_roles: Union[Unset, str] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    phone_number: Union[Unset, str] = UNSET,
+    project_roles: Union[Unset, str] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    registration_method: Union[Unset, str] = UNSET,
+    user_keyword: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
+    username_list: Union[Unset, str] = UNSET,
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        agreement_date (Union[Unset, datetime.datetime]):
+        civil_number (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        date_joined (Union[Unset, datetime.datetime]):
+        description (Union[Unset, str]):
+        email (Union[Unset, str]):
+        full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
+        is_staff (Union[Unset, bool]):
+        is_support (Union[Unset, bool]):
+        job_title (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
+        native_name (Union[Unset, str]):
+        o (Union[Unset, list[UsersHeadOItem]]):
+        organization (Union[Unset, str]):
+        organization_roles (Union[Unset, str]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        phone_number (Union[Unset, str]):
+        project_roles (Union[Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
+        registration_method (Union[Unset, str]):
+        user_keyword (Union[Unset, str]):
+        username (Union[Unset, str]):
+        username_list (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -346,3 +454,104 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
+    civil_number: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
+    description: Union[Unset, str] = UNSET,
+    email: Union[Unset, str] = UNSET,
+    full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
+    is_staff: Union[Unset, bool] = UNSET,
+    is_support: Union[Unset, bool] = UNSET,
+    job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[UsersHeadOItem]] = UNSET,
+    organization: Union[Unset, str] = UNSET,
+    organization_roles: Union[Unset, str] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    phone_number: Union[Unset, str] = UNSET,
+    project_roles: Union[Unset, str] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    registration_method: Union[Unset, str] = UNSET,
+    user_keyword: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
+    username_list: Union[Unset, str] = UNSET,
+) -> int:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        agreement_date (Union[Unset, datetime.datetime]):
+        civil_number (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        date_joined (Union[Unset, datetime.datetime]):
+        description (Union[Unset, str]):
+        email (Union[Unset, str]):
+        full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
+        is_staff (Union[Unset, bool]):
+        is_support (Union[Unset, bool]):
+        job_title (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
+        native_name (Union[Unset, str]):
+        o (Union[Unset, list[UsersHeadOItem]]):
+        organization (Union[Unset, str]):
+        organization_roles (Union[Unset, str]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        phone_number (Union[Unset, str]):
+        project_roles (Union[Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
+        registration_method (Union[Unset, str]):
+        user_keyword (Union[Unset, str]):
+        username (Union[Unset, str]):
+        username_list (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        int
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            agreement_date=agreement_date,
+            civil_number=civil_number,
+            customer_uuid=customer_uuid,
+            date_joined=date_joined,
+            description=description,
+            email=email,
+            full_name=full_name,
+            is_active=is_active,
+            is_staff=is_staff,
+            is_support=is_support,
+            job_title=job_title,
+            modified=modified,
+            native_name=native_name,
+            o=o,
+            organization=organization,
+            organization_roles=organization_roles,
+            page=page,
+            page_size=page_size,
+            phone_number=phone_number,
+            project_roles=project_roles,
+            project_uuid=project_uuid,
+            query=query,
+            registration_method=registration_method,
+            user_keyword=user_keyword,
+            username=username,
+            username_list=username_list,
+        )
+    ).parsed

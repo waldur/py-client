@@ -106,13 +106,22 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
-    if response.status_code == 200:
-        return None
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> int:
+    if response.status_code == HTTPStatus.OK:
+        try:
+            return int(response.headers["x-result-count"])
+        except KeyError:
+            raise errors.UnexpectedStatus(
+                response.status_code, b"Expected 'X-Result-Count' header for HEAD request, but it was not found."
+            )
+        except ValueError:
+            count_val = response.headers.get("x-result-count")
+            msg = f"Expected 'X-Result-Count' header to be an integer, but got '{count_val}'."
+            raise errors.UnexpectedStatus(response.status_code, msg.encode())
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -142,8 +151,8 @@ def sync_detailed(
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -170,7 +179,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -201,7 +210,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
@@ -222,8 +231,8 @@ async def asyncio_detailed(
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
-) -> Response[Any]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+) -> int:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -250,7 +259,82 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        int
+    """
+
+    return sync_detailed(
+        client=client,
+        created=created,
+        customer=customer,
+        full_name=full_name,
+        modified=modified,
+        native_name=native_name,
+        o=o,
+        offering=offering,
+        page=page,
+        page_size=page_size,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        scope_uuid=scope_uuid,
+        user=user,
+        user_slug=user_slug,
+        user_url=user_url,
+        username=username,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    customer: Union[Unset, UUID] = UNSET,
+    full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceOfferingPermissionsHeadOItem]] = UNSET,
+    offering: Union[Unset, UUID] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
+    user: Union[Unset, UUID] = UNSET,
+    user_slug: Union[Unset, str] = UNSET,
+    user_url: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        created (Union[Unset, datetime.datetime]):
+        customer (Union[Unset, UUID]):
+        full_name (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
+        native_name (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceOfferingPermissionsHeadOItem]]):
+        offering (Union[Unset, UUID]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, str]):
+        user (Union[Unset, UUID]):
+        user_slug (Union[Unset, str]):
+        user_url (Union[Unset, str]):
+        username (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -277,3 +361,80 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    customer: Union[Unset, UUID] = UNSET,
+    full_name: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceOfferingPermissionsHeadOItem]] = UNSET,
+    offering: Union[Unset, UUID] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
+    user: Union[Unset, UUID] = UNSET,
+    user_slug: Union[Unset, str] = UNSET,
+    user_url: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
+) -> int:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        created (Union[Unset, datetime.datetime]):
+        customer (Union[Unset, UUID]):
+        full_name (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
+        native_name (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceOfferingPermissionsHeadOItem]]):
+        offering (Union[Unset, UUID]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        scope_uuid (Union[Unset, str]):
+        user (Union[Unset, UUID]):
+        user_slug (Union[Unset, str]):
+        user_url (Union[Unset, str]):
+        username (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        int
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            created=created,
+            customer=customer,
+            full_name=full_name,
+            modified=modified,
+            native_name=native_name,
+            o=o,
+            offering=offering,
+            page=page,
+            page_size=page_size,
+            role_name=role_name,
+            role_uuid=role_uuid,
+            scope_name=scope_name,
+            scope_type=scope_type,
+            scope_uuid=scope_uuid,
+            user=user,
+            user_slug=user_slug,
+            user_url=user_url,
+            username=username,
+        )
+    ).parsed

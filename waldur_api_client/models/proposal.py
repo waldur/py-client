@@ -14,6 +14,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_round import NestedRound
+    from ..models.proposal_can_submit import ProposalCanSubmit
+    from ..models.proposal_compliance_status_type_0 import ProposalComplianceStatusType0
     from ..models.proposal_documentation import ProposalDocumentation
 
 
@@ -41,6 +43,8 @@ class Proposal:
         oecd_fos_2007_label (str):
         allocation_comment (Union[None, str]):
         created (datetime.datetime):
+        compliance_status (Union['ProposalComplianceStatusType0', None]):
+        can_submit (ProposalCanSubmit):
         description (Union[Unset, str]):
         project_summary (Union[Unset, str]):
         project_is_confidential (Union[Unset, bool]):
@@ -66,6 +70,8 @@ class Proposal:
     oecd_fos_2007_label: str
     allocation_comment: Union[None, str]
     created: datetime.datetime
+    compliance_status: Union["ProposalComplianceStatusType0", None]
+    can_submit: "ProposalCanSubmit"
     description: Union[Unset, str] = UNSET
     project_summary: Union[Unset, str] = UNSET
     project_is_confidential: Union[Unset, bool] = UNSET
@@ -75,6 +81,8 @@ class Proposal:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.proposal_compliance_status_type_0 import ProposalComplianceStatusType0
+
         uuid = str(self.uuid)
 
         url = self.url
@@ -115,6 +123,14 @@ class Proposal:
         allocation_comment = self.allocation_comment
 
         created = self.created.isoformat()
+
+        compliance_status: Union[None, dict[str, Any]]
+        if isinstance(self.compliance_status, ProposalComplianceStatusType0):
+            compliance_status = self.compliance_status.to_dict()
+        else:
+            compliance_status = self.compliance_status
+
+        can_submit = self.can_submit.to_dict()
 
         description = self.description
 
@@ -161,6 +177,8 @@ class Proposal:
                 "oecd_fos_2007_label": oecd_fos_2007_label,
                 "allocation_comment": allocation_comment,
                 "created": created,
+                "compliance_status": compliance_status,
+                "can_submit": can_submit,
             }
         )
         if description is not UNSET:
@@ -181,6 +199,8 @@ class Proposal:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_round import NestedRound
+        from ..models.proposal_can_submit import ProposalCanSubmit
+        from ..models.proposal_compliance_status_type_0 import ProposalComplianceStatusType0
         from ..models.proposal_documentation import ProposalDocumentation
 
         d = dict(src_dict)
@@ -243,6 +263,23 @@ class Proposal:
 
         created = isoparse(d.pop("created"))
 
+        def _parse_compliance_status(data: object) -> Union["ProposalComplianceStatusType0", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                compliance_status_type_0 = ProposalComplianceStatusType0.from_dict(data)
+
+                return compliance_status_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["ProposalComplianceStatusType0", None], data)
+
+        compliance_status = _parse_compliance_status(d.pop("compliance_status"))
+
+        can_submit = ProposalCanSubmit.from_dict(d.pop("can_submit"))
+
         description = d.pop("description", UNSET)
 
         project_summary = d.pop("project_summary", UNSET)
@@ -303,6 +340,8 @@ class Proposal:
             oecd_fos_2007_label=oecd_fos_2007_label,
             allocation_comment=allocation_comment,
             created=created,
+            compliance_status=compliance_status,
+            can_submit=can_submit,
             description=description,
             project_summary=project_summary,
             project_is_confidential=project_is_confidential,

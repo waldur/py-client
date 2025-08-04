@@ -172,13 +172,22 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
-    if response.status_code == 200:
-        return None
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> int:
+    if response.status_code == HTTPStatus.OK:
+        try:
+            return int(response.headers["x-result-count"])
+        except KeyError:
+            raise errors.UnexpectedStatus(
+                response.status_code, b"Expected 'X-Result-Count' header for HEAD request, but it was not found."
+            )
+        except ValueError:
+            count_val = response.headers.get("x-result-count")
+            msg = f"Expected 'X-Result-Count' header to be an integer, but got '{count_val}'."
+            raise errors.UnexpectedStatus(response.status_code, msg.encode())
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -218,8 +227,9 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceProviderOfferingsGroupsHeadStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
-) -> Response[Any]:
-    """
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
@@ -255,7 +265,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -296,7 +306,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     accessible_via_calls: Union[Unset, bool] = UNSET,
@@ -327,8 +337,9 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceProviderOfferingsGroupsHeadStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
-) -> Response[Any]:
-    """
+) -> int:
+    """Get number of items in the collection matching the request parameters.
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
@@ -364,7 +375,112 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        int
+    """
+
+    return sync_detailed(
+        client=client,
+        accessible_via_calls=accessible_via_calls,
+        allowed_customer_uuid=allowed_customer_uuid,
+        attributes=attributes,
+        billable=billable,
+        category_group_uuid=category_group_uuid,
+        category_uuid=category_uuid,
+        created=created,
+        customer=customer,
+        customer_uuid=customer_uuid,
+        description=description,
+        keyword=keyword,
+        modified=modified,
+        name=name,
+        name_exact=name_exact,
+        o=o,
+        organization_group_uuid=organization_group_uuid,
+        page=page,
+        page_size=page_size,
+        parent_uuid=parent_uuid,
+        project_uuid=project_uuid,
+        resource_customer_uuid=resource_customer_uuid,
+        resource_project_uuid=resource_project_uuid,
+        scope_uuid=scope_uuid,
+        service_manager_uuid=service_manager_uuid,
+        shared=shared,
+        state=state,
+        type_=type_,
+        uuid_list=uuid_list,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    accessible_via_calls: Union[Unset, bool] = UNSET,
+    allowed_customer_uuid: Union[Unset, UUID] = UNSET,
+    attributes: Union[Unset, str] = UNSET,
+    billable: Union[Unset, bool] = UNSET,
+    category_group_uuid: Union[Unset, UUID] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
+    keyword: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceProviderOfferingsGroupsHeadOItem]] = UNSET,
+    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    parent_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    resource_customer_uuid: Union[Unset, UUID] = UNSET,
+    resource_project_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
+    service_manager_uuid: Union[Unset, UUID] = UNSET,
+    shared: Union[Unset, bool] = UNSET,
+    state: Union[Unset, list[MarketplaceProviderOfferingsGroupsHeadStateItem]] = UNSET,
+    type_: Union[Unset, list[str]] = UNSET,
+    uuid_list: Union[Unset, str] = UNSET,
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        accessible_via_calls (Union[Unset, bool]):
+        allowed_customer_uuid (Union[Unset, UUID]):
+        attributes (Union[Unset, str]):
+        billable (Union[Unset, bool]):
+        category_group_uuid (Union[Unset, UUID]):
+        category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
+        keyword (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceProviderOfferingsGroupsHeadOItem]]):
+        organization_group_uuid (Union[Unset, list[UUID]]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        parent_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        resource_customer_uuid (Union[Unset, UUID]):
+        resource_project_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
+        service_manager_uuid (Union[Unset, UUID]):
+        shared (Union[Unset, bool]):
+        state (Union[Unset, list[MarketplaceProviderOfferingsGroupsHeadStateItem]]):
+        type_ (Union[Unset, list[str]]):
+        uuid_list (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -401,3 +517,110 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    accessible_via_calls: Union[Unset, bool] = UNSET,
+    allowed_customer_uuid: Union[Unset, UUID] = UNSET,
+    attributes: Union[Unset, str] = UNSET,
+    billable: Union[Unset, bool] = UNSET,
+    category_group_uuid: Union[Unset, UUID] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
+    keyword: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceProviderOfferingsGroupsHeadOItem]] = UNSET,
+    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    parent_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    resource_customer_uuid: Union[Unset, UUID] = UNSET,
+    resource_project_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
+    service_manager_uuid: Union[Unset, UUID] = UNSET,
+    shared: Union[Unset, bool] = UNSET,
+    state: Union[Unset, list[MarketplaceProviderOfferingsGroupsHeadStateItem]] = UNSET,
+    type_: Union[Unset, list[str]] = UNSET,
+    uuid_list: Union[Unset, str] = UNSET,
+) -> int:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        accessible_via_calls (Union[Unset, bool]):
+        allowed_customer_uuid (Union[Unset, UUID]):
+        attributes (Union[Unset, str]):
+        billable (Union[Unset, bool]):
+        category_group_uuid (Union[Unset, UUID]):
+        category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
+        keyword (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceProviderOfferingsGroupsHeadOItem]]):
+        organization_group_uuid (Union[Unset, list[UUID]]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        parent_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        resource_customer_uuid (Union[Unset, UUID]):
+        resource_project_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
+        service_manager_uuid (Union[Unset, UUID]):
+        shared (Union[Unset, bool]):
+        state (Union[Unset, list[MarketplaceProviderOfferingsGroupsHeadStateItem]]):
+        type_ (Union[Unset, list[str]]):
+        uuid_list (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        int
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            accessible_via_calls=accessible_via_calls,
+            allowed_customer_uuid=allowed_customer_uuid,
+            attributes=attributes,
+            billable=billable,
+            category_group_uuid=category_group_uuid,
+            category_uuid=category_uuid,
+            created=created,
+            customer=customer,
+            customer_uuid=customer_uuid,
+            description=description,
+            keyword=keyword,
+            modified=modified,
+            name=name,
+            name_exact=name_exact,
+            o=o,
+            organization_group_uuid=organization_group_uuid,
+            page=page,
+            page_size=page_size,
+            parent_uuid=parent_uuid,
+            project_uuid=project_uuid,
+            resource_customer_uuid=resource_customer_uuid,
+            resource_project_uuid=resource_project_uuid,
+            scope_uuid=scope_uuid,
+            service_manager_uuid=service_manager_uuid,
+            shared=shared,
+            state=state,
+            type_=type_,
+            uuid_list=uuid_list,
+        )
+    ).parsed

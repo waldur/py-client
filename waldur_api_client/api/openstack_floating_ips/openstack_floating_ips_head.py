@@ -129,13 +129,22 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
-    if response.status_code == 200:
-        return None
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> int:
+    if response.status_code == HTTPStatus.OK:
+        try:
+            return int(response.headers["x-result-count"])
+        except KeyError:
+            raise errors.UnexpectedStatus(
+                response.status_code, b"Expected 'X-Result-Count' header for HEAD request, but it was not found."
+            )
+        except ValueError:
+            count_val = response.headers.get("x-result-count")
+            msg = f"Expected 'X-Result-Count' header to be an integer, but got '{count_val}'."
+            raise errors.UnexpectedStatus(response.status_code, msg.encode())
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -172,8 +181,8 @@ def sync_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
-) -> Response[Any]:
-    """Status *DOWN* means that floating IP is not linked to a VM, status *ACTIVE* means that it is in use.
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         address (Union[Unset, str]):
@@ -207,7 +216,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -245,7 +254,7 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     address: Union[Unset, str] = UNSET,
@@ -273,8 +282,8 @@ async def asyncio_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
-) -> Response[Any]:
-    """Status *DOWN* means that floating IP is not linked to a VM, status *ACTIVE* means that it is in use.
+) -> int:
+    """Get number of items in the collection matching the request parameters.
 
     Args:
         address (Union[Unset, str]):
@@ -308,7 +317,103 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        int
+    """
+
+    return sync_detailed(
+        client=client,
+        address=address,
+        backend_id=backend_id,
+        can_manage=can_manage,
+        customer=customer,
+        customer_abbreviation=customer_abbreviation,
+        customer_name=customer_name,
+        customer_native_name=customer_native_name,
+        customer_uuid=customer_uuid,
+        description=description,
+        external_ip=external_ip,
+        free=free,
+        name=name,
+        name_exact=name_exact,
+        page=page,
+        page_size=page_size,
+        project=project,
+        project_name=project_name,
+        project_uuid=project_uuid,
+        runtime_state=runtime_state,
+        service_settings_name=service_settings_name,
+        service_settings_uuid=service_settings_uuid,
+        state=state,
+        tenant=tenant,
+        tenant_uuid=tenant_uuid,
+        uuid=uuid,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    address: Union[Unset, str] = UNSET,
+    backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
+    customer: Union[Unset, UUID] = UNSET,
+    customer_abbreviation: Union[Unset, str] = UNSET,
+    customer_name: Union[Unset, str] = UNSET,
+    customer_native_name: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
+    external_ip: Union[Unset, str] = UNSET,
+    free: Union[Unset, bool] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    project: Union[Unset, UUID] = UNSET,
+    project_name: Union[Unset, str] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    runtime_state: Union[Unset, str] = UNSET,
+    service_settings_name: Union[Unset, str] = UNSET,
+    service_settings_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[OpenstackFloatingIpsHeadStateItem]] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
+    uuid: Union[Unset, UUID] = UNSET,
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        address (Union[Unset, str]):
+        backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
+        customer (Union[Unset, UUID]):
+        customer_abbreviation (Union[Unset, str]):
+        customer_name (Union[Unset, str]):
+        customer_native_name (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
+        external_ip (Union[Unset, str]):
+        free (Union[Unset, bool]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        project (Union[Unset, UUID]):
+        project_name (Union[Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        runtime_state (Union[Unset, str]):
+        service_settings_name (Union[Unset, str]):
+        service_settings_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[OpenstackFloatingIpsHeadStateItem]]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
+        uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[int]
     """
 
     kwargs = _get_kwargs(
@@ -342,3 +447,101 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    address: Union[Unset, str] = UNSET,
+    backend_id: Union[Unset, str] = UNSET,
+    can_manage: Union[Unset, bool] = UNSET,
+    customer: Union[Unset, UUID] = UNSET,
+    customer_abbreviation: Union[Unset, str] = UNSET,
+    customer_name: Union[Unset, str] = UNSET,
+    customer_native_name: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
+    external_ip: Union[Unset, str] = UNSET,
+    free: Union[Unset, bool] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    page: Union[Unset, int] = UNSET,
+    page_size: Union[Unset, int] = UNSET,
+    project: Union[Unset, UUID] = UNSET,
+    project_name: Union[Unset, str] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    runtime_state: Union[Unset, str] = UNSET,
+    service_settings_name: Union[Unset, str] = UNSET,
+    service_settings_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[OpenstackFloatingIpsHeadStateItem]] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
+    uuid: Union[Unset, UUID] = UNSET,
+) -> int:
+    """Get number of items in the collection matching the request parameters.
+
+    Args:
+        address (Union[Unset, str]):
+        backend_id (Union[Unset, str]):
+        can_manage (Union[Unset, bool]):
+        customer (Union[Unset, UUID]):
+        customer_abbreviation (Union[Unset, str]):
+        customer_name (Union[Unset, str]):
+        customer_native_name (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
+        external_ip (Union[Unset, str]):
+        free (Union[Unset, bool]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        page (Union[Unset, int]):
+        page_size (Union[Unset, int]):
+        project (Union[Unset, UUID]):
+        project_name (Union[Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        runtime_state (Union[Unset, str]):
+        service_settings_name (Union[Unset, str]):
+        service_settings_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[OpenstackFloatingIpsHeadStateItem]]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
+        uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        int
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            address=address,
+            backend_id=backend_id,
+            can_manage=can_manage,
+            customer=customer,
+            customer_abbreviation=customer_abbreviation,
+            customer_name=customer_name,
+            customer_native_name=customer_native_name,
+            customer_uuid=customer_uuid,
+            description=description,
+            external_ip=external_ip,
+            free=free,
+            name=name,
+            name_exact=name_exact,
+            page=page,
+            page_size=page_size,
+            project=project,
+            project_name=project_name,
+            project_uuid=project_uuid,
+            runtime_state=runtime_state,
+            service_settings_name=service_settings_name,
+            service_settings_uuid=service_settings_uuid,
+            state=state,
+            tenant=tenant,
+            tenant_uuid=tenant_uuid,
+            uuid=uuid,
+        )
+    ).parsed
