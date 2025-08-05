@@ -20,7 +20,6 @@ class ProposalChecklistAnswer:
         question_description (str):
         question_type (str):
         question_required (bool):
-        question_solution (str):
         requires_review (bool): Internal flag - this answer requires additional review
         user (int):
         user_name (str):
@@ -33,7 +32,6 @@ class ProposalChecklistAnswer:
     question_description: str
     question_type: str
     question_required: bool
-    question_solution: str
     requires_review: bool
     user: int
     user_name: str
@@ -50,8 +48,6 @@ class ProposalChecklistAnswer:
         question_type = self.question_type
 
         question_required = self.question_required
-
-        question_solution = self.question_solution
 
         requires_review = self.requires_review
 
@@ -73,7 +69,6 @@ class ProposalChecklistAnswer:
                 "question_description": question_description,
                 "question_type": question_type,
                 "question_required": question_required,
-                "question_solution": question_solution,
                 "requires_review": requires_review,
                 "user": user,
                 "user_name": user_name,
@@ -97,8 +92,6 @@ class ProposalChecklistAnswer:
 
         question_required = d.pop("question_required")
 
-        question_solution = d.pop("question_solution")
-
         requires_review = d.pop("requires_review")
 
         user = d.pop("user")
@@ -116,7 +109,6 @@ class ProposalChecklistAnswer:
             question_description=question_description,
             question_type=question_type,
             question_required=question_required,
-            question_solution=question_solution,
             requires_review=requires_review,
             user=user,
             user_name=user_name,

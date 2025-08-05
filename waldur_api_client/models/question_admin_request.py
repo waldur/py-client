@@ -20,7 +20,6 @@ class QuestionAdminRequest:
     Attributes:
         checklist (str):
         description (Union[Unset, str]):
-        solution (Union[None, Unset, str]): Guidance shown when answer needs clarification
         image (Union[File, None, Unset]):
         order (Union[Unset, int]):
         required (Union[Unset, bool]):
@@ -32,7 +31,6 @@ class QuestionAdminRequest:
 
     checklist: str
     description: Union[Unset, str] = UNSET
-    solution: Union[None, Unset, str] = UNSET
     image: Union[File, None, Unset] = UNSET
     order: Union[Unset, int] = UNSET
     required: Union[Unset, bool] = UNSET
@@ -46,12 +44,6 @@ class QuestionAdminRequest:
         checklist = self.checklist
 
         description = self.description
-
-        solution: Union[None, Unset, str]
-        if isinstance(self.solution, Unset):
-            solution = UNSET
-        else:
-            solution = self.solution
 
         image: Union[None, Unset, types.FileTypes]
         if isinstance(self.image, Unset):
@@ -91,8 +83,6 @@ class QuestionAdminRequest:
         )
         if description is not UNSET:
             field_dict["description"] = description
-        if solution is not UNSET:
-            field_dict["solution"] = solution
         if image is not UNSET:
             field_dict["image"] = image
         if order is not UNSET:
@@ -116,15 +106,6 @@ class QuestionAdminRequest:
         checklist = d.pop("checklist")
 
         description = d.pop("description", UNSET)
-
-        def _parse_solution(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        solution = _parse_solution(d.pop("solution", UNSET))
 
         def _parse_image(data: object) -> Union[File, None, Unset]:
             if data is None:
@@ -180,7 +161,6 @@ class QuestionAdminRequest:
         question_admin_request = cls(
             checklist=checklist,
             description=description,
-            solution=solution,
             image=image,
             order=order,
             required=required,

@@ -19,25 +19,19 @@ class Question:
     """
     Attributes:
         uuid (UUID):
-        category_uuid (UUID):
         question_options (list['QuestionOptions']):
         description (Union[Unset, str]):
-        solution (Union[None, Unset, str]): Guidance shown when answer needs clarification
         image (Union[None, Unset, str]):
     """
 
     uuid: UUID
-    category_uuid: UUID
     question_options: list["QuestionOptions"]
     description: Union[Unset, str] = UNSET
-    solution: Union[None, Unset, str] = UNSET
     image: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         uuid = str(self.uuid)
-
-        category_uuid = str(self.category_uuid)
 
         question_options = []
         for question_options_item_data in self.question_options:
@@ -45,12 +39,6 @@ class Question:
             question_options.append(question_options_item)
 
         description = self.description
-
-        solution: Union[None, Unset, str]
-        if isinstance(self.solution, Unset):
-            solution = UNSET
-        else:
-            solution = self.solution
 
         image: Union[None, Unset, str]
         if isinstance(self.image, Unset):
@@ -63,14 +51,11 @@ class Question:
         field_dict.update(
             {
                 "uuid": uuid,
-                "category_uuid": category_uuid,
                 "question_options": question_options,
             }
         )
         if description is not UNSET:
             field_dict["description"] = description
-        if solution is not UNSET:
-            field_dict["solution"] = solution
         if image is not UNSET:
             field_dict["image"] = image
 
@@ -83,8 +68,6 @@ class Question:
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
-        category_uuid = UUID(d.pop("category_uuid"))
-
         question_options = []
         _question_options = d.pop("question_options")
         for question_options_item_data in _question_options:
@@ -93,15 +76,6 @@ class Question:
             question_options.append(question_options_item)
 
         description = d.pop("description", UNSET)
-
-        def _parse_solution(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        solution = _parse_solution(d.pop("solution", UNSET))
 
         def _parse_image(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -114,10 +88,8 @@ class Question:
 
         question = cls(
             uuid=uuid,
-            category_uuid=category_uuid,
             question_options=question_options,
             description=description,
-            solution=solution,
             image=image,
         )
 

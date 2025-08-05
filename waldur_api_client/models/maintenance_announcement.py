@@ -36,6 +36,7 @@ class MaintenanceAnnouncement:
         service_provider_name (str):
         message (Union[Unset, str]):
         maintenance_type (Union[Unset, MaintenanceTypeEnum]):
+        external_reference_url (Union[Unset, str]): Optional reference to an external maintenance tracker
     """
 
     url: str
@@ -52,6 +53,7 @@ class MaintenanceAnnouncement:
     service_provider_name: str
     message: Union[Unset, str] = UNSET
     maintenance_type: Union[Unset, MaintenanceTypeEnum] = UNSET
+    external_reference_url: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -97,6 +99,8 @@ class MaintenanceAnnouncement:
         if not isinstance(self.maintenance_type, Unset):
             maintenance_type = self.maintenance_type.value
 
+        external_reference_url = self.external_reference_url
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -119,6 +123,8 @@ class MaintenanceAnnouncement:
             field_dict["message"] = message
         if maintenance_type is not UNSET:
             field_dict["maintenance_type"] = maintenance_type
+        if external_reference_url is not UNSET:
+            field_dict["external_reference_url"] = external_reference_url
 
         return field_dict
 
@@ -196,6 +202,8 @@ class MaintenanceAnnouncement:
         else:
             maintenance_type = MaintenanceTypeEnum(_maintenance_type)
 
+        external_reference_url = d.pop("external_reference_url", UNSET)
+
         maintenance_announcement = cls(
             url=url,
             uuid=uuid,
@@ -211,6 +219,7 @@ class MaintenanceAnnouncement:
             service_provider_name=service_provider_name,
             message=message,
             maintenance_type=maintenance_type,
+            external_reference_url=external_reference_url,
         )
 
         maintenance_announcement.additional_properties = d

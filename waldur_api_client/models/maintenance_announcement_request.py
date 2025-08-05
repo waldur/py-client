@@ -22,6 +22,7 @@ class MaintenanceAnnouncementRequest:
         service_provider (str): Service provider announcing the maintenance
         message (Union[Unset, str]):
         maintenance_type (Union[Unset, MaintenanceTypeEnum]):
+        external_reference_url (Union[Unset, str]): Optional reference to an external maintenance tracker
     """
 
     name: str
@@ -30,6 +31,7 @@ class MaintenanceAnnouncementRequest:
     service_provider: str
     message: Union[Unset, str] = UNSET
     maintenance_type: Union[Unset, MaintenanceTypeEnum] = UNSET
+    external_reference_url: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -47,6 +49,8 @@ class MaintenanceAnnouncementRequest:
         if not isinstance(self.maintenance_type, Unset):
             maintenance_type = self.maintenance_type.value
 
+        external_reference_url = self.external_reference_url
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -61,6 +65,8 @@ class MaintenanceAnnouncementRequest:
             field_dict["message"] = message
         if maintenance_type is not UNSET:
             field_dict["maintenance_type"] = maintenance_type
+        if external_reference_url is not UNSET:
+            field_dict["external_reference_url"] = external_reference_url
 
         return field_dict
 
@@ -84,6 +90,8 @@ class MaintenanceAnnouncementRequest:
         else:
             maintenance_type = MaintenanceTypeEnum(_maintenance_type)
 
+        external_reference_url = d.pop("external_reference_url", UNSET)
+
         maintenance_announcement_request = cls(
             name=name,
             scheduled_start=scheduled_start,
@@ -91,6 +99,7 @@ class MaintenanceAnnouncementRequest:
             service_provider=service_provider,
             message=message,
             maintenance_type=maintenance_type,
+            external_reference_url=external_reference_url,
         )
 
         maintenance_announcement_request.additional_properties = d

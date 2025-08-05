@@ -27,7 +27,6 @@ class ProjectRequest:
         start_date (Union[None, Unset, datetime.date]):
         end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource will be
             scheduled for termination.
-        end_date_requested_by (Union[None, Unset, str]):
         oecd_fos_2007_code (Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]):
         is_industry (Union[Unset, bool]):
         image (Union[File, None, Unset]):
@@ -40,7 +39,6 @@ class ProjectRequest:
     backend_id: Union[Unset, str] = UNSET
     start_date: Union[None, Unset, datetime.date] = UNSET
     end_date: Union[None, Unset, datetime.date] = UNSET
-    end_date_requested_by: Union[None, Unset, str] = UNSET
     oecd_fos_2007_code: Union[BlankEnum, None, OecdFos2007CodeEnum, Unset] = UNSET
     is_industry: Union[Unset, bool] = UNSET
     image: Union[File, None, Unset] = UNSET
@@ -76,12 +74,6 @@ class ProjectRequest:
             end_date = self.end_date.isoformat()
         else:
             end_date = self.end_date
-
-        end_date_requested_by: Union[None, Unset, str]
-        if isinstance(self.end_date_requested_by, Unset):
-            end_date_requested_by = UNSET
-        else:
-            end_date_requested_by = self.end_date_requested_by
 
         oecd_fos_2007_code: Union[None, Unset, str]
         if isinstance(self.oecd_fos_2007_code, Unset):
@@ -122,8 +114,6 @@ class ProjectRequest:
             field_dict["start_date"] = start_date
         if end_date is not UNSET:
             field_dict["end_date"] = end_date
-        if end_date_requested_by is not UNSET:
-            field_dict["end_date_requested_by"] = end_date_requested_by
         if oecd_fos_2007_code is not UNSET:
             field_dict["oecd_fos_2007_code"] = oecd_fos_2007_code
         if is_industry is not UNSET:
@@ -187,15 +177,6 @@ class ProjectRequest:
 
         end_date = _parse_end_date(d.pop("end_date", UNSET))
 
-        def _parse_end_date_requested_by(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        end_date_requested_by = _parse_end_date_requested_by(d.pop("end_date_requested_by", UNSET))
-
         def _parse_oecd_fos_2007_code(data: object) -> Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]:
             if data is None:
                 return data
@@ -248,7 +229,6 @@ class ProjectRequest:
             backend_id=backend_id,
             start_date=start_date,
             end_date=end_date,
-            end_date_requested_by=end_date_requested_by,
             oecd_fos_2007_code=oecd_fos_2007_code,
             is_industry=is_industry,
             image=image,

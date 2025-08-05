@@ -19,7 +19,6 @@ class PatchedQuestionAdminRequest:
     """
     Attributes:
         description (Union[Unset, str]):
-        solution (Union[None, Unset, str]): Guidance shown when answer needs clarification
         image (Union[File, None, Unset]):
         checklist (Union[Unset, str]):
         order (Union[Unset, int]):
@@ -31,7 +30,6 @@ class PatchedQuestionAdminRequest:
     """
 
     description: Union[Unset, str] = UNSET
-    solution: Union[None, Unset, str] = UNSET
     image: Union[File, None, Unset] = UNSET
     checklist: Union[Unset, str] = UNSET
     order: Union[Unset, int] = UNSET
@@ -44,12 +42,6 @@ class PatchedQuestionAdminRequest:
 
     def to_dict(self) -> dict[str, Any]:
         description = self.description
-
-        solution: Union[None, Unset, str]
-        if isinstance(self.solution, Unset):
-            solution = UNSET
-        else:
-            solution = self.solution
 
         image: Union[None, Unset, types.FileTypes]
         if isinstance(self.image, Unset):
@@ -87,8 +79,6 @@ class PatchedQuestionAdminRequest:
         field_dict.update({})
         if description is not UNSET:
             field_dict["description"] = description
-        if solution is not UNSET:
-            field_dict["solution"] = solution
         if image is not UNSET:
             field_dict["image"] = image
         if checklist is not UNSET:
@@ -112,15 +102,6 @@ class PatchedQuestionAdminRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         description = d.pop("description", UNSET)
-
-        def _parse_solution(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        solution = _parse_solution(d.pop("solution", UNSET))
 
         def _parse_image(data: object) -> Union[File, None, Unset]:
             if data is None:
@@ -177,7 +158,6 @@ class PatchedQuestionAdminRequest:
 
         patched_question_admin_request = cls(
             description=description,
-            solution=solution,
             image=image,
             checklist=checklist,
             order=order,

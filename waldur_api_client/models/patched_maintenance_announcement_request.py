@@ -19,6 +19,7 @@ class PatchedMaintenanceAnnouncementRequest:
         name (Union[Unset, str]):
         message (Union[Unset, str]):
         maintenance_type (Union[Unset, MaintenanceTypeEnum]):
+        external_reference_url (Union[Unset, str]): Optional reference to an external maintenance tracker
         scheduled_start (Union[Unset, datetime.datetime]): When the maintenance is scheduled to begin
         scheduled_end (Union[Unset, datetime.datetime]): When the maintenance is scheduled to complete
         service_provider (Union[Unset, str]): Service provider announcing the maintenance
@@ -27,6 +28,7 @@ class PatchedMaintenanceAnnouncementRequest:
     name: Union[Unset, str] = UNSET
     message: Union[Unset, str] = UNSET
     maintenance_type: Union[Unset, MaintenanceTypeEnum] = UNSET
+    external_reference_url: Union[Unset, str] = UNSET
     scheduled_start: Union[Unset, datetime.datetime] = UNSET
     scheduled_end: Union[Unset, datetime.datetime] = UNSET
     service_provider: Union[Unset, str] = UNSET
@@ -40,6 +42,8 @@ class PatchedMaintenanceAnnouncementRequest:
         maintenance_type: Union[Unset, int] = UNSET
         if not isinstance(self.maintenance_type, Unset):
             maintenance_type = self.maintenance_type.value
+
+        external_reference_url = self.external_reference_url
 
         scheduled_start: Union[Unset, str] = UNSET
         if not isinstance(self.scheduled_start, Unset):
@@ -60,6 +64,8 @@ class PatchedMaintenanceAnnouncementRequest:
             field_dict["message"] = message
         if maintenance_type is not UNSET:
             field_dict["maintenance_type"] = maintenance_type
+        if external_reference_url is not UNSET:
+            field_dict["external_reference_url"] = external_reference_url
         if scheduled_start is not UNSET:
             field_dict["scheduled_start"] = scheduled_start
         if scheduled_end is not UNSET:
@@ -83,6 +89,8 @@ class PatchedMaintenanceAnnouncementRequest:
         else:
             maintenance_type = MaintenanceTypeEnum(_maintenance_type)
 
+        external_reference_url = d.pop("external_reference_url", UNSET)
+
         _scheduled_start = d.pop("scheduled_start", UNSET)
         scheduled_start: Union[Unset, datetime.datetime]
         if isinstance(_scheduled_start, Unset):
@@ -103,6 +111,7 @@ class PatchedMaintenanceAnnouncementRequest:
             name=name,
             message=message,
             maintenance_type=maintenance_type,
+            external_reference_url=external_reference_url,
             scheduled_start=scheduled_start,
             scheduled_end=scheduled_end,
             service_provider=service_provider,

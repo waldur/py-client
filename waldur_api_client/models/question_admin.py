@@ -22,14 +22,12 @@ class QuestionAdmin:
     """
     Attributes:
         uuid (UUID):
-        category_uuid (UUID):
         question_options (list['QuestionOptionsAdmin']):
         url (str):
         checklist_name (UUID):
         checklist_uuid (UUID):
         checklist (str):
         description (Union[Unset, str]):
-        solution (Union[None, Unset, str]): Guidance shown when answer needs clarification
         image (Union[None, Unset, str]):
         order (Union[Unset, int]):
         required (Union[Unset, bool]):
@@ -40,14 +38,12 @@ class QuestionAdmin:
     """
 
     uuid: UUID
-    category_uuid: UUID
     question_options: list["QuestionOptionsAdmin"]
     url: str
     checklist_name: UUID
     checklist_uuid: UUID
     checklist: str
     description: Union[Unset, str] = UNSET
-    solution: Union[None, Unset, str] = UNSET
     image: Union[None, Unset, str] = UNSET
     order: Union[Unset, int] = UNSET
     required: Union[Unset, bool] = UNSET
@@ -59,8 +55,6 @@ class QuestionAdmin:
 
     def to_dict(self) -> dict[str, Any]:
         uuid = str(self.uuid)
-
-        category_uuid = str(self.category_uuid)
 
         question_options = []
         for question_options_item_data in self.question_options:
@@ -76,12 +70,6 @@ class QuestionAdmin:
         checklist = self.checklist
 
         description = self.description
-
-        solution: Union[None, Unset, str]
-        if isinstance(self.solution, Unset):
-            solution = UNSET
-        else:
-            solution = self.solution
 
         image: Union[None, Unset, str]
         if isinstance(self.image, Unset):
@@ -114,7 +102,6 @@ class QuestionAdmin:
         field_dict.update(
             {
                 "uuid": uuid,
-                "category_uuid": category_uuid,
                 "question_options": question_options,
                 "url": url,
                 "checklist_name": checklist_name,
@@ -124,8 +111,6 @@ class QuestionAdmin:
         )
         if description is not UNSET:
             field_dict["description"] = description
-        if solution is not UNSET:
-            field_dict["solution"] = solution
         if image is not UNSET:
             field_dict["image"] = image
         if order is not UNSET:
@@ -150,8 +135,6 @@ class QuestionAdmin:
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
-        category_uuid = UUID(d.pop("category_uuid"))
-
         question_options = []
         _question_options = d.pop("question_options")
         for question_options_item_data in _question_options:
@@ -168,15 +151,6 @@ class QuestionAdmin:
         checklist = d.pop("checklist")
 
         description = d.pop("description", UNSET)
-
-        def _parse_solution(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        solution = _parse_solution(d.pop("solution", UNSET))
 
         def _parse_image(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -223,14 +197,12 @@ class QuestionAdmin:
 
         question_admin = cls(
             uuid=uuid,
-            category_uuid=category_uuid,
             question_options=question_options,
             url=url,
             checklist_name=checklist_name,
             checklist_uuid=checklist_uuid,
             checklist=checklist,
             description=description,
-            solution=solution,
             image=image,
             order=order,
             required=required,

@@ -1,24 +1,47 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.maintenance_announcement_template import MaintenanceAnnouncementTemplate
+from ...models.marketplace_maintenance_announcements_template_list_o_item import (
+    MarketplaceMaintenanceAnnouncementsTemplateListOItem,
+)
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
+    maintenance_type: Union[Unset, int] = UNSET,
+    o: Union[Unset, list[MarketplaceMaintenanceAnnouncementsTemplateListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["maintenance_type"] = maintenance_type
+
+    json_o: Union[Unset, list[str]] = UNSET
+    if not isinstance(o, Unset):
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
+
+    params["o"] = json_o
 
     params["page"] = page
 
     params["page_size"] = page_size
+
+    json_service_provider_uuid: Union[Unset, str] = UNSET
+    if not isinstance(service_provider_uuid, Unset):
+        json_service_provider_uuid = str(service_provider_uuid)
+    params["service_provider_uuid"] = json_service_provider_uuid
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -60,14 +83,20 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    maintenance_type: Union[Unset, int] = UNSET,
+    o: Union[Unset, list[MarketplaceMaintenanceAnnouncementsTemplateListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["MaintenanceAnnouncementTemplate"]]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
+        maintenance_type (Union[Unset, int]):
+        o (Union[Unset, list[MarketplaceMaintenanceAnnouncementsTemplateListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        service_provider_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -78,8 +107,11 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        maintenance_type=maintenance_type,
+        o=o,
         page=page,
         page_size=page_size,
+        service_provider_uuid=service_provider_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -92,14 +124,20 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    maintenance_type: Union[Unset, int] = UNSET,
+    o: Union[Unset, list[MarketplaceMaintenanceAnnouncementsTemplateListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["MaintenanceAnnouncementTemplate"]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
+        maintenance_type (Union[Unset, int]):
+        o (Union[Unset, list[MarketplaceMaintenanceAnnouncementsTemplateListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        service_provider_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -111,22 +149,31 @@ def sync(
 
     return sync_detailed(
         client=client,
+        maintenance_type=maintenance_type,
+        o=o,
         page=page,
         page_size=page_size,
+        service_provider_uuid=service_provider_uuid,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    maintenance_type: Union[Unset, int] = UNSET,
+    o: Union[Unset, list[MarketplaceMaintenanceAnnouncementsTemplateListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["MaintenanceAnnouncementTemplate"]]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
+        maintenance_type (Union[Unset, int]):
+        o (Union[Unset, list[MarketplaceMaintenanceAnnouncementsTemplateListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        service_provider_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -137,8 +184,11 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        maintenance_type=maintenance_type,
+        o=o,
         page=page,
         page_size=page_size,
+        service_provider_uuid=service_provider_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -149,14 +199,20 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    maintenance_type: Union[Unset, int] = UNSET,
+    o: Union[Unset, list[MarketplaceMaintenanceAnnouncementsTemplateListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["MaintenanceAnnouncementTemplate"]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
+        maintenance_type (Union[Unset, int]):
+        o (Union[Unset, list[MarketplaceMaintenanceAnnouncementsTemplateListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        service_provider_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -169,7 +225,10 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            maintenance_type=maintenance_type,
+            o=o,
             page=page,
             page_size=page_size,
+            service_provider_uuid=service_provider_uuid,
         )
     ).parsed

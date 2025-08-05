@@ -22,7 +22,6 @@ class ProposalChecklistQuestion:
         description (str):
         question_type (QuestionTypeEnum):
         required (bool):
-        solution (Union[None, str]): Guidance shown when answer needs clarification
         order (int):
         existing_answer (Union['ProposalChecklistQuestionExistingAnswerType0', None]):
         question_options (Union[None, list[Any]]):
@@ -32,7 +31,6 @@ class ProposalChecklistQuestion:
     description: str
     question_type: QuestionTypeEnum
     required: bool
-    solution: Union[None, str]
     order: int
     existing_answer: Union["ProposalChecklistQuestionExistingAnswerType0", None]
     question_options: Union[None, list[Any]]
@@ -50,9 +48,6 @@ class ProposalChecklistQuestion:
         question_type = self.question_type.value
 
         required = self.required
-
-        solution: Union[None, str]
-        solution = self.solution
 
         order = self.order
 
@@ -77,7 +72,6 @@ class ProposalChecklistQuestion:
                 "description": description,
                 "question_type": question_type,
                 "required": required,
-                "solution": solution,
                 "order": order,
                 "existing_answer": existing_answer,
                 "question_options": question_options,
@@ -100,13 +94,6 @@ class ProposalChecklistQuestion:
         question_type = QuestionTypeEnum(d.pop("question_type"))
 
         required = d.pop("required")
-
-        def _parse_solution(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        solution = _parse_solution(d.pop("solution"))
 
         order = d.pop("order")
 
@@ -145,7 +132,6 @@ class ProposalChecklistQuestion:
             description=description,
             question_type=question_type,
             required=required,
-            solution=solution,
             order=order,
             existing_answer=existing_answer,
             question_options=question_options,

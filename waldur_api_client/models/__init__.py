@@ -454,6 +454,18 @@ from .marketplace_integration_statuses_head_o_item import MarketplaceIntegration
 from .marketplace_integration_statuses_head_status_item import MarketplaceIntegrationStatusesHeadStatusItem
 from .marketplace_integration_statuses_list_o_item import MarketplaceIntegrationStatusesListOItem
 from .marketplace_integration_statuses_list_status_item import MarketplaceIntegrationStatusesListStatusItem
+from .marketplace_maintenance_announcement_template_offerings_head_o_item import (
+    MarketplaceMaintenanceAnnouncementTemplateOfferingsHeadOItem,
+)
+from .marketplace_maintenance_announcement_template_offerings_list_o_item import (
+    MarketplaceMaintenanceAnnouncementTemplateOfferingsListOItem,
+)
+from .marketplace_maintenance_announcements_template_head_o_item import (
+    MarketplaceMaintenanceAnnouncementsTemplateHeadOItem,
+)
+from .marketplace_maintenance_announcements_template_list_o_item import (
+    MarketplaceMaintenanceAnnouncementsTemplateListOItem,
+)
 from .marketplace_offering_files_head_o_item import MarketplaceOfferingFilesHeadOItem
 from .marketplace_offering_files_list_field_item import MarketplaceOfferingFilesListFieldItem
 from .marketplace_offering_files_list_o_item import MarketplaceOfferingFilesListOItem
@@ -1900,6 +1912,10 @@ __all__ = (
     "MarketplaceIntegrationStatusesHeadStatusItem",
     "MarketplaceIntegrationStatusesListOItem",
     "MarketplaceIntegrationStatusesListStatusItem",
+    "MarketplaceMaintenanceAnnouncementsTemplateHeadOItem",
+    "MarketplaceMaintenanceAnnouncementsTemplateListOItem",
+    "MarketplaceMaintenanceAnnouncementTemplateOfferingsHeadOItem",
+    "MarketplaceMaintenanceAnnouncementTemplateOfferingsListOItem",
     "MarketplaceOfferingFilesHeadOItem",
     "MarketplaceOfferingFilesListFieldItem",
     "MarketplaceOfferingFilesListOItem",
