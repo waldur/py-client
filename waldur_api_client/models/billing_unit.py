@@ -7,6 +7,7 @@ class BillingUnit(str, Enum):
     HOUR = "hour"
     MONTH = "month"
     QUANTITY = "quantity"
+    QUARTER = "quarter"
 
     def __str__(self) -> str:
         return str(self.value)
