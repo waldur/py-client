@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -23,7 +23,6 @@ class CreateChecklist:
         category_uuid (UUID):
         checklist_type (ChecklistTypeEnum):
         description (Union[Unset, str]):
-        roles (Union[Unset, list[str]]):
     """
 
     uuid: UUID
@@ -34,7 +33,6 @@ class CreateChecklist:
     category_uuid: UUID
     checklist_type: ChecklistTypeEnum
     description: Union[Unset, str] = UNSET
-    roles: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,10 +52,6 @@ class CreateChecklist:
 
         description = self.description
 
-        roles: Union[Unset, list[str]] = UNSET
-        if not isinstance(self.roles, Unset):
-            roles = self.roles
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -73,8 +67,6 @@ class CreateChecklist:
         )
         if description is not UNSET:
             field_dict["description"] = description
-        if roles is not UNSET:
-            field_dict["roles"] = roles
 
         return field_dict
 
@@ -97,8 +89,6 @@ class CreateChecklist:
 
         description = d.pop("description", UNSET)
 
-        roles = cast(list[str], d.pop("roles", UNSET))
-
         create_checklist = cls(
             uuid=uuid,
             url=url,
@@ -108,7 +98,6 @@ class CreateChecklist:
             category_uuid=category_uuid,
             checklist_type=checklist_type,
             description=description,
-            roles=roles,
         )
 
         create_checklist.additional_properties = d

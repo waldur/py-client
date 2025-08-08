@@ -1,21 +1,21 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.customer_checklist_stat import CustomerChecklistStat
+from ...models.marketplace_provider_resources_pull_response_200 import MarketplaceProviderResourcesPullResponse200
 from ...types import Response
 
 
 def _get_kwargs(
-    customer_uuid: str,
-    checklist_uuid: str,
+    uuid: UUID,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": f"/api/customers/{customer_uuid}/marketplace-checklists/{checklist_uuid}/",
+        "method": "post",
+        "url": f"/api/marketplace-provider-resources/{uuid}/pull/",
     }
 
     return _kwargs
@@ -23,14 +23,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> list["CustomerChecklistStat"]:
+) -> MarketplaceProviderResourcesPullResponse200:
     if response.status_code == 200:
-        response_200 = []
-        _response_200 = response.json()
-        for response_200_item_data in _response_200:
-            response_200_item = CustomerChecklistStat.from_dict(response_200_item_data)
-
-            response_200.append(response_200_item)
+        response_200 = MarketplaceProviderResourcesPullResponse200.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -38,7 +33,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["CustomerChecklistStat"]]:
+) -> Response[MarketplaceProviderResourcesPullResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,27 +43,25 @@ def _build_response(
 
 
 def sync_detailed(
-    customer_uuid: str,
-    checklist_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[list["CustomerChecklistStat"]]:
-    """
+) -> Response[MarketplaceProviderResourcesPullResponse200]:
+    """Starts process of pulling a resource
+
     Args:
-        customer_uuid (str):
-        checklist_uuid (str):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['CustomerChecklistStat']]
+        Response[MarketplaceProviderResourcesPullResponse200]
     """
 
     kwargs = _get_kwargs(
-        customer_uuid=customer_uuid,
-        checklist_uuid=checklist_uuid,
+        uuid=uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -79,53 +72,49 @@ def sync_detailed(
 
 
 def sync(
-    customer_uuid: str,
-    checklist_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> list["CustomerChecklistStat"]:
-    """
+) -> MarketplaceProviderResourcesPullResponse200:
+    """Starts process of pulling a resource
+
     Args:
-        customer_uuid (str):
-        checklist_uuid (str):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['CustomerChecklistStat']
+        MarketplaceProviderResourcesPullResponse200
     """
 
     return sync_detailed(
-        customer_uuid=customer_uuid,
-        checklist_uuid=checklist_uuid,
+        uuid=uuid,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    customer_uuid: str,
-    checklist_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[list["CustomerChecklistStat"]]:
-    """
+) -> Response[MarketplaceProviderResourcesPullResponse200]:
+    """Starts process of pulling a resource
+
     Args:
-        customer_uuid (str):
-        checklist_uuid (str):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['CustomerChecklistStat']]
+        Response[MarketplaceProviderResourcesPullResponse200]
     """
 
     kwargs = _get_kwargs(
-        customer_uuid=customer_uuid,
-        checklist_uuid=checklist_uuid,
+        uuid=uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -134,28 +123,26 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    customer_uuid: str,
-    checklist_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> list["CustomerChecklistStat"]:
-    """
+) -> MarketplaceProviderResourcesPullResponse200:
+    """Starts process of pulling a resource
+
     Args:
-        customer_uuid (str):
-        checklist_uuid (str):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['CustomerChecklistStat']
+        MarketplaceProviderResourcesPullResponse200
     """
 
     return (
         await asyncio_detailed(
-            customer_uuid=customer_uuid,
-            checklist_uuid=checklist_uuid,
+            uuid=uuid,
             client=client,
         )
     ).parsed

@@ -4,52 +4,37 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="UserStats")
+T = TypeVar("T", bound="MarketplaceResourcesPullResponse200")
 
 
 @_attrs_define
-class UserStats:
-    """
-    Attributes:
-        score (float):
-    """
+class MarketplaceResourcesPullResponse200:
+    """ """
 
-    score: float
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, str] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        score = self.score
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "score": score,
-            }
-        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        score = d.pop("score")
+        marketplace_resources_pull_response_200 = cls()
 
-        user_stats = cls(
-            score=score,
-        )
-
-        user_stats.additional_properties = d
-        return user_stats
+        marketplace_resources_pull_response_200.additional_properties = d
+        return marketplace_resources_pull_response_200
 
     @property
     def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> Any:
+    def __getitem__(self, key: str) -> str:
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: Any) -> None:
+    def __setitem__(self, key: str, value: str) -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -20,7 +20,6 @@ class ChecklistAdmin:
         questions_count (int):
         category_name (str):
         category_uuid (UUID):
-        roles (list[str]):
         checklist_type (str):
         description (Union[Unset, str]):
     """
@@ -31,7 +30,6 @@ class ChecklistAdmin:
     questions_count: int
     category_name: str
     category_uuid: UUID
-    roles: list[str]
     checklist_type: str
     description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -49,8 +47,6 @@ class ChecklistAdmin:
 
         category_uuid = str(self.category_uuid)
 
-        roles = self.roles
-
         checklist_type = self.checklist_type
 
         description = self.description
@@ -65,7 +61,6 @@ class ChecklistAdmin:
                 "questions_count": questions_count,
                 "category_name": category_name,
                 "category_uuid": category_uuid,
-                "roles": roles,
                 "checklist_type": checklist_type,
             }
         )
@@ -89,8 +84,6 @@ class ChecklistAdmin:
 
         category_uuid = UUID(d.pop("category_uuid"))
 
-        roles = cast(list[str], d.pop("roles"))
-
         checklist_type = d.pop("checklist_type")
 
         description = d.pop("description", UNSET)
@@ -102,7 +95,6 @@ class ChecklistAdmin:
             questions_count=questions_count,
             category_name=category_name,
             category_uuid=category_uuid,
-            roles=roles,
             checklist_type=checklist_type,
             description=description,
         )

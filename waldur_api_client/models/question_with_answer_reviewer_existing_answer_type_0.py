@@ -1,66 +1,31 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
-from uuid import UUID
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="QuestionOptions")
+T = TypeVar("T", bound="QuestionWithAnswerReviewerExistingAnswerType0")
 
 
 @_attrs_define
-class QuestionOptions:
-    """
-    Attributes:
-        uuid (UUID):
-        label (str):
-        order (Union[Unset, int]):
-    """
+class QuestionWithAnswerReviewerExistingAnswerType0:
+    """ """
 
-    uuid: UUID
-    label: str
-    order: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
-
-        label = self.label
-
-        order = self.order
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "label": label,
-            }
-        )
-        if order is not UNSET:
-            field_dict["order"] = order
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        question_with_answer_reviewer_existing_answer_type_0 = cls()
 
-        label = d.pop("label")
-
-        order = d.pop("order", UNSET)
-
-        question_options = cls(
-            uuid=uuid,
-            label=label,
-            order=order,
-        )
-
-        question_options.additional_properties = d
-        return question_options
+        question_with_answer_reviewer_existing_answer_type_0.additional_properties = d
+        return question_with_answer_reviewer_existing_answer_type_0
 
     @property
     def additional_keys(self) -> list[str]:

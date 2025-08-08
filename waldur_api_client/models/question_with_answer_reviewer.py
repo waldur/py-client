@@ -5,17 +5,22 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.blank_enum import BlankEnum
+from ..models.operator_enum import OperatorEnum
 from ..models.question_type_enum import QuestionTypeEnum
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.proposal_checklist_question_existing_answer_type_0 import ProposalChecklistQuestionExistingAnswerType0
+    from ..models.question_with_answer_reviewer_existing_answer_type_0 import (
+        QuestionWithAnswerReviewerExistingAnswerType0,
+    )
 
 
-T = TypeVar("T", bound="ProposalChecklistQuestion")
+T = TypeVar("T", bound="QuestionWithAnswerReviewer")
 
 
 @_attrs_define
-class ProposalChecklistQuestion:
+class QuestionWithAnswerReviewer:
     """
     Attributes:
         uuid (UUID):
@@ -23,8 +28,11 @@ class ProposalChecklistQuestion:
         question_type (QuestionTypeEnum):
         required (bool):
         order (int):
-        existing_answer (Union['ProposalChecklistQuestionExistingAnswerType0', None]):
+        existing_answer (Union['QuestionWithAnswerReviewerExistingAnswerType0', None]):
         question_options (Union[None, list[Any]]):
+        operator (Union[BlankEnum, OperatorEnum, Unset]):
+        review_answer_value (Union[Unset, Any]): Answer value that trigger review.
+        always_requires_review (Union[Unset, bool]): This question always requires review regardless of answer
     """
 
     uuid: UUID
@@ -32,13 +40,16 @@ class ProposalChecklistQuestion:
     question_type: QuestionTypeEnum
     required: bool
     order: int
-    existing_answer: Union["ProposalChecklistQuestionExistingAnswerType0", None]
+    existing_answer: Union["QuestionWithAnswerReviewerExistingAnswerType0", None]
     question_options: Union[None, list[Any]]
+    operator: Union[BlankEnum, OperatorEnum, Unset] = UNSET
+    review_answer_value: Union[Unset, Any] = UNSET
+    always_requires_review: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.proposal_checklist_question_existing_answer_type_0 import (
-            ProposalChecklistQuestionExistingAnswerType0,
+        from ..models.question_with_answer_reviewer_existing_answer_type_0 import (
+            QuestionWithAnswerReviewerExistingAnswerType0,
         )
 
         uuid = str(self.uuid)
@@ -52,7 +63,7 @@ class ProposalChecklistQuestion:
         order = self.order
 
         existing_answer: Union[None, dict[str, Any]]
-        if isinstance(self.existing_answer, ProposalChecklistQuestionExistingAnswerType0):
+        if isinstance(self.existing_answer, QuestionWithAnswerReviewerExistingAnswerType0):
             existing_answer = self.existing_answer.to_dict()
         else:
             existing_answer = self.existing_answer
@@ -63,6 +74,18 @@ class ProposalChecklistQuestion:
 
         else:
             question_options = self.question_options
+
+        operator: Union[Unset, str]
+        if isinstance(self.operator, Unset):
+            operator = UNSET
+        elif isinstance(self.operator, OperatorEnum):
+            operator = self.operator.value
+        else:
+            operator = self.operator.value
+
+        review_answer_value = self.review_answer_value
+
+        always_requires_review = self.always_requires_review
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -77,13 +100,19 @@ class ProposalChecklistQuestion:
                 "question_options": question_options,
             }
         )
+        if operator is not UNSET:
+            field_dict["operator"] = operator
+        if review_answer_value is not UNSET:
+            field_dict["review_answer_value"] = review_answer_value
+        if always_requires_review is not UNSET:
+            field_dict["always_requires_review"] = always_requires_review
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.proposal_checklist_question_existing_answer_type_0 import (
-            ProposalChecklistQuestionExistingAnswerType0,
+        from ..models.question_with_answer_reviewer_existing_answer_type_0 import (
+            QuestionWithAnswerReviewerExistingAnswerType0,
         )
 
         d = dict(src_dict)
@@ -97,18 +126,18 @@ class ProposalChecklistQuestion:
 
         order = d.pop("order")
 
-        def _parse_existing_answer(data: object) -> Union["ProposalChecklistQuestionExistingAnswerType0", None]:
+        def _parse_existing_answer(data: object) -> Union["QuestionWithAnswerReviewerExistingAnswerType0", None]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                existing_answer_type_0 = ProposalChecklistQuestionExistingAnswerType0.from_dict(data)
+                existing_answer_type_0 = QuestionWithAnswerReviewerExistingAnswerType0.from_dict(data)
 
                 return existing_answer_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union["ProposalChecklistQuestionExistingAnswerType0", None], data)
+            return cast(Union["QuestionWithAnswerReviewerExistingAnswerType0", None], data)
 
         existing_answer = _parse_existing_answer(d.pop("existing_answer"))
 
@@ -127,7 +156,30 @@ class ProposalChecklistQuestion:
 
         question_options = _parse_question_options(d.pop("question_options"))
 
-        proposal_checklist_question = cls(
+        def _parse_operator(data: object) -> Union[BlankEnum, OperatorEnum, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                operator_type_0 = OperatorEnum(data)
+
+                return operator_type_0
+            except:  # noqa: E722
+                pass
+            if not isinstance(data, str):
+                raise TypeError()
+            operator_type_1 = BlankEnum(data)
+
+            return operator_type_1
+
+        operator = _parse_operator(d.pop("operator", UNSET))
+
+        review_answer_value = d.pop("review_answer_value", UNSET)
+
+        always_requires_review = d.pop("always_requires_review", UNSET)
+
+        question_with_answer_reviewer = cls(
             uuid=uuid,
             description=description,
             question_type=question_type,
@@ -135,10 +187,13 @@ class ProposalChecklistQuestion:
             order=order,
             existing_answer=existing_answer,
             question_options=question_options,
+            operator=operator,
+            review_answer_value=review_answer_value,
+            always_requires_review=always_requires_review,
         )
 
-        proposal_checklist_question.additional_properties = d
-        return proposal_checklist_question
+        question_with_answer_reviewer.additional_properties = d
+        return question_with_answer_reviewer
 
     @property
     def additional_keys(self) -> list[str]:

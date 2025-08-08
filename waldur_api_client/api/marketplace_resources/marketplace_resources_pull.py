@@ -6,41 +6,26 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.question import Question
-from ...types import UNSET, Response, Unset
+from ...models.marketplace_resources_pull_response_200 import MarketplaceResourcesPullResponse200
+from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
-    *,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
-    params: dict[str, Any] = {}
-
-    params["page"] = page
-
-    params["page_size"] = page_size
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": f"/api/marketplace-checklists/{uuid}/questions/",
-        "params": params,
+        "method": "post",
+        "url": f"/api/marketplace-resources/{uuid}/pull/",
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["Question"]:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> MarketplaceResourcesPullResponse200:
     if response.status_code == 200:
-        response_200 = []
-        _response_200 = response.json()
-        for response_200_item_data in _response_200:
-            response_200_item = Question.from_dict(response_200_item_data)
-
-            response_200.append(response_200_item)
+        response_200 = MarketplaceResourcesPullResponse200.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -48,7 +33,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["Question"]]:
+) -> Response[MarketplaceResourcesPullResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -61,28 +46,22 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
-) -> Response[list["Question"]]:
-    """Return questions available for current user.
+) -> Response[MarketplaceResourcesPullResponse200]:
+    """Starts process of pulling a resource
 
     Args:
         uuid (UUID):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['Question']]
+        Response[MarketplaceResourcesPullResponse200]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        page=page,
-        page_size=page_size,
     )
 
     response = client.get_httpx_client().request(
@@ -96,29 +75,23 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
-) -> list["Question"]:
-    """Return questions available for current user.
+) -> MarketplaceResourcesPullResponse200:
+    """Starts process of pulling a resource
 
     Args:
         uuid (UUID):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['Question']
+        MarketplaceResourcesPullResponse200
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
-        page=page,
-        page_size=page_size,
     ).parsed
 
 
@@ -126,28 +99,22 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
-) -> Response[list["Question"]]:
-    """Return questions available for current user.
+) -> Response[MarketplaceResourcesPullResponse200]:
+    """Starts process of pulling a resource
 
     Args:
         uuid (UUID):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['Question']]
+        Response[MarketplaceResourcesPullResponse200]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        page=page,
-        page_size=page_size,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -159,29 +126,23 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
-) -> list["Question"]:
-    """Return questions available for current user.
+) -> MarketplaceResourcesPullResponse200:
+    """Starts process of pulling a resource
 
     Args:
         uuid (UUID):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['Question']
+        MarketplaceResourcesPullResponse200
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            page=page,
-            page_size=page_size,
         )
     ).parsed

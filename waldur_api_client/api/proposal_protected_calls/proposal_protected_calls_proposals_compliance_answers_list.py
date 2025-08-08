@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.proposal_checklist_answer import ProposalChecklistAnswer
+from ...models.answer import Answer
 from ...models.proposal_protected_calls_proposals_compliance_answers_list_o_item import (
     ProposalProtectedCallsProposalsComplianceAnswersListOItem,
 )
@@ -90,14 +90,12 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> list["ProposalChecklistAnswer"]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["Answer"]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = ProposalChecklistAnswer.from_dict(response_200_item_data)
+            response_200_item = Answer.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -107,7 +105,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["ProposalChecklistAnswer"]]:
+) -> Response[list["Answer"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -132,7 +130,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[ProposalProtectedCallsProposalsComplianceAnswersListStateItem]] = UNSET,
-) -> Response[list["ProposalChecklistAnswer"]]:
+) -> Response[list["Answer"]]:
     """Get detailed compliance answers for a specific proposal (call managers only).
 
     Args:
@@ -155,7 +153,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['ProposalChecklistAnswer']]
+        Response[list['Answer']]
     """
 
     kwargs = _get_kwargs(
@@ -197,7 +195,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[ProposalProtectedCallsProposalsComplianceAnswersListStateItem]] = UNSET,
-) -> list["ProposalChecklistAnswer"]:
+) -> list["Answer"]:
     """Get detailed compliance answers for a specific proposal (call managers only).
 
     Args:
@@ -220,7 +218,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ProposalChecklistAnswer']
+        list['Answer']
     """
 
     return sync_detailed(
@@ -257,7 +255,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[ProposalProtectedCallsProposalsComplianceAnswersListStateItem]] = UNSET,
-) -> Response[list["ProposalChecklistAnswer"]]:
+) -> Response[list["Answer"]]:
     """Get detailed compliance answers for a specific proposal (call managers only).
 
     Args:
@@ -280,7 +278,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['ProposalChecklistAnswer']]
+        Response[list['Answer']]
     """
 
     kwargs = _get_kwargs(
@@ -320,7 +318,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[ProposalProtectedCallsProposalsComplianceAnswersListStateItem]] = UNSET,
-) -> list["ProposalChecklistAnswer"]:
+) -> list["Answer"]:
     """Get detailed compliance answers for a specific proposal (call managers only).
 
     Args:
@@ -343,7 +341,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ProposalChecklistAnswer']
+        list['Answer']
     """
 
     return (

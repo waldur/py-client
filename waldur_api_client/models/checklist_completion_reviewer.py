@@ -9,24 +9,24 @@ from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ProposalChecklistCompletion")
+T = TypeVar("T", bound="ChecklistCompletionReviewer")
 
 
 @_attrs_define
-class ProposalChecklistCompletion:
+class ChecklistCompletionReviewer:
     """
     Attributes:
         uuid (UUID):
         is_completed (bool): Whether all required questions have been answered
-        requires_review (bool): Whether any answers triggered review requirements
-        reviewed_by_name (str):
         completion_percentage (float):
-        review_trigger_summary (list[Any]):
         unanswered_required_questions (list[Any]):
         checklist_name (str):
         checklist_description (str):
         created (datetime.datetime):
         modified (datetime.datetime):
+        requires_review (bool): Whether any answers triggered review requirements
+        reviewed_by_name (str):
+        review_trigger_summary (list[Any]):
         reviewed_by (Union[None, Unset, int]): User who reviewed the checklist completion
         reviewed_at (Union[None, Unset, datetime.datetime]):
         review_notes (Union[Unset, str]): Notes from the reviewer
@@ -34,15 +34,15 @@ class ProposalChecklistCompletion:
 
     uuid: UUID
     is_completed: bool
-    requires_review: bool
-    reviewed_by_name: str
     completion_percentage: float
-    review_trigger_summary: list[Any]
     unanswered_required_questions: list[Any]
     checklist_name: str
     checklist_description: str
     created: datetime.datetime
     modified: datetime.datetime
+    requires_review: bool
+    reviewed_by_name: str
+    review_trigger_summary: list[Any]
     reviewed_by: Union[None, Unset, int] = UNSET
     reviewed_at: Union[None, Unset, datetime.datetime] = UNSET
     review_notes: Union[Unset, str] = UNSET
@@ -53,13 +53,7 @@ class ProposalChecklistCompletion:
 
         is_completed = self.is_completed
 
-        requires_review = self.requires_review
-
-        reviewed_by_name = self.reviewed_by_name
-
         completion_percentage = self.completion_percentage
-
-        review_trigger_summary = self.review_trigger_summary
 
         unanswered_required_questions = self.unanswered_required_questions
 
@@ -70,6 +64,12 @@ class ProposalChecklistCompletion:
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
+
+        requires_review = self.requires_review
+
+        reviewed_by_name = self.reviewed_by_name
+
+        review_trigger_summary = self.review_trigger_summary
 
         reviewed_by: Union[None, Unset, int]
         if isinstance(self.reviewed_by, Unset):
@@ -93,15 +93,15 @@ class ProposalChecklistCompletion:
             {
                 "uuid": uuid,
                 "is_completed": is_completed,
-                "requires_review": requires_review,
-                "reviewed_by_name": reviewed_by_name,
                 "completion_percentage": completion_percentage,
-                "review_trigger_summary": review_trigger_summary,
                 "unanswered_required_questions": unanswered_required_questions,
                 "checklist_name": checklist_name,
                 "checklist_description": checklist_description,
                 "created": created,
                 "modified": modified,
+                "requires_review": requires_review,
+                "reviewed_by_name": reviewed_by_name,
+                "review_trigger_summary": review_trigger_summary,
             }
         )
         if reviewed_by is not UNSET:
@@ -120,13 +120,7 @@ class ProposalChecklistCompletion:
 
         is_completed = d.pop("is_completed")
 
-        requires_review = d.pop("requires_review")
-
-        reviewed_by_name = d.pop("reviewed_by_name")
-
         completion_percentage = d.pop("completion_percentage")
-
-        review_trigger_summary = cast(list[Any], d.pop("review_trigger_summary"))
 
         unanswered_required_questions = cast(list[Any], d.pop("unanswered_required_questions"))
 
@@ -137,6 +131,12 @@ class ProposalChecklistCompletion:
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
+
+        requires_review = d.pop("requires_review")
+
+        reviewed_by_name = d.pop("reviewed_by_name")
+
+        review_trigger_summary = cast(list[Any], d.pop("review_trigger_summary"))
 
         def _parse_reviewed_by(data: object) -> Union[None, Unset, int]:
             if data is None:
@@ -166,25 +166,25 @@ class ProposalChecklistCompletion:
 
         review_notes = d.pop("review_notes", UNSET)
 
-        proposal_checklist_completion = cls(
+        checklist_completion_reviewer = cls(
             uuid=uuid,
             is_completed=is_completed,
-            requires_review=requires_review,
-            reviewed_by_name=reviewed_by_name,
             completion_percentage=completion_percentage,
-            review_trigger_summary=review_trigger_summary,
             unanswered_required_questions=unanswered_required_questions,
             checklist_name=checklist_name,
             checklist_description=checklist_description,
             created=created,
             modified=modified,
+            requires_review=requires_review,
+            reviewed_by_name=reviewed_by_name,
+            review_trigger_summary=review_trigger_summary,
             reviewed_by=reviewed_by,
             reviewed_at=reviewed_at,
             review_notes=review_notes,
         )
 
-        proposal_checklist_completion.additional_properties = d
-        return proposal_checklist_completion
+        checklist_completion_reviewer.additional_properties = d
+        return checklist_completion_reviewer
 
     @property
     def additional_keys(self) -> list[str]:

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,13 +16,11 @@ class PatchedCreateChecklistRequest:
     Attributes:
         name (Union[Unset, str]):
         description (Union[Unset, str]):
-        roles (Union[Unset, list[str]]):
         checklist_type (Union[Unset, ChecklistTypeEnum]):
     """
 
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
-    roles: Union[Unset, list[str]] = UNSET
     checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -30,10 +28,6 @@ class PatchedCreateChecklistRequest:
         name = self.name
 
         description = self.description
-
-        roles: Union[Unset, list[str]] = UNSET
-        if not isinstance(self.roles, Unset):
-            roles = self.roles
 
         checklist_type: Union[Unset, str] = UNSET
         if not isinstance(self.checklist_type, Unset):
@@ -46,8 +40,6 @@ class PatchedCreateChecklistRequest:
             field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
-        if roles is not UNSET:
-            field_dict["roles"] = roles
         if checklist_type is not UNSET:
             field_dict["checklist_type"] = checklist_type
 
@@ -60,8 +52,6 @@ class PatchedCreateChecklistRequest:
 
         description = d.pop("description", UNSET)
 
-        roles = cast(list[str], d.pop("roles", UNSET))
-
         _checklist_type = d.pop("checklist_type", UNSET)
         checklist_type: Union[Unset, ChecklistTypeEnum]
         if isinstance(_checklist_type, Unset):
@@ -72,7 +62,6 @@ class PatchedCreateChecklistRequest:
         patched_create_checklist_request = cls(
             name=name,
             description=description,
-            roles=roles,
             checklist_type=checklist_type,
         )
 

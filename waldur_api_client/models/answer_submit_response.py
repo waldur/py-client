@@ -5,22 +5,22 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.proposal_checklist_completion import ProposalChecklistCompletion
+    from ..models.checklist_completion import ChecklistCompletion
 
 
-T = TypeVar("T", bound="ProposalChecklistAnswerSubmitResponse")
+T = TypeVar("T", bound="AnswerSubmitResponse")
 
 
 @_attrs_define
-class ProposalChecklistAnswerSubmitResponse:
+class AnswerSubmitResponse:
     """
     Attributes:
         detail (str):
-        completion (ProposalChecklistCompletion):
+        completion (ChecklistCompletion):
     """
 
     detail: str
-    completion: "ProposalChecklistCompletion"
+    completion: "ChecklistCompletion"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,20 +41,20 @@ class ProposalChecklistAnswerSubmitResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.proposal_checklist_completion import ProposalChecklistCompletion
+        from ..models.checklist_completion import ChecklistCompletion
 
         d = dict(src_dict)
         detail = d.pop("detail")
 
-        completion = ProposalChecklistCompletion.from_dict(d.pop("completion"))
+        completion = ChecklistCompletion.from_dict(d.pop("completion"))
 
-        proposal_checklist_answer_submit_response = cls(
+        answer_submit_response = cls(
             detail=detail,
             completion=completion,
         )
 
-        proposal_checklist_answer_submit_response.additional_properties = d
-        return proposal_checklist_answer_submit_response
+        answer_submit_response.additional_properties = d
+        return answer_submit_response
 
     @property
     def additional_keys(self) -> list[str]:

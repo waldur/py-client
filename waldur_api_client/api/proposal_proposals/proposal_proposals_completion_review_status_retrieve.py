@@ -6,47 +6,40 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.proposal_checklist_answer_submit_request import ProposalChecklistAnswerSubmitRequest
-from ...models.proposal_checklist_answer_submit_response import ProposalChecklistAnswerSubmitResponse
+from ...models.checklist_completion_reviewer import ChecklistCompletionReviewer
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
-    *,
-    body: list["ProposalChecklistAnswerSubmitRequest"],
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": f"/api/proposal-proposals/{uuid}/submit_compliance_answers/",
+        "method": "get",
+        "url": f"/api/proposal-proposals/{uuid}/completion_review_status/",
     }
 
-    _kwargs["json"] = []
-    for body_item_data in body:
-        body_item = body_item_data.to_dict()
-        _kwargs["json"].append(body_item)
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> ProposalChecklistAnswerSubmitResponse:
+) -> Union[Any, ChecklistCompletionReviewer]:
     if response.status_code == 200:
-        response_200 = ProposalChecklistAnswerSubmitResponse.from_dict(response.json())
+        response_200 = ChecklistCompletionReviewer.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = response.json()
+        return response_400
+    if response.status_code == 404:
+        response_404 = response.json()
+        return response_404
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ProposalChecklistAnswerSubmitResponse]:
+) -> Response[Union[Any, ChecklistCompletionReviewer]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,25 +52,22 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: list["ProposalChecklistAnswerSubmitRequest"],
-) -> Response[ProposalChecklistAnswerSubmitResponse]:
-    """Submit compliance checklist answers (Proposal managers only).
+) -> Response[Union[Any, ChecklistCompletionReviewer]]:
+    """Get checklist completion status with review triggers (reviewers only).
 
     Args:
         uuid (UUID):
-        body (list['ProposalChecklistAnswerSubmitRequest']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProposalChecklistAnswerSubmitResponse]
+        Response[Union[Any, ChecklistCompletionReviewer]]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -91,26 +81,23 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: list["ProposalChecklistAnswerSubmitRequest"],
-) -> ProposalChecklistAnswerSubmitResponse:
-    """Submit compliance checklist answers (Proposal managers only).
+) -> Union[Any, ChecklistCompletionReviewer]:
+    """Get checklist completion status with review triggers (reviewers only).
 
     Args:
         uuid (UUID):
-        body (list['ProposalChecklistAnswerSubmitRequest']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProposalChecklistAnswerSubmitResponse
+        Union[Any, ChecklistCompletionReviewer]
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
-        body=body,
     ).parsed
 
 
@@ -118,25 +105,22 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: list["ProposalChecklistAnswerSubmitRequest"],
-) -> Response[ProposalChecklistAnswerSubmitResponse]:
-    """Submit compliance checklist answers (Proposal managers only).
+) -> Response[Union[Any, ChecklistCompletionReviewer]]:
+    """Get checklist completion status with review triggers (reviewers only).
 
     Args:
         uuid (UUID):
-        body (list['ProposalChecklistAnswerSubmitRequest']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProposalChecklistAnswerSubmitResponse]
+        Response[Union[Any, ChecklistCompletionReviewer]]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -148,26 +132,23 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: list["ProposalChecklistAnswerSubmitRequest"],
-) -> ProposalChecklistAnswerSubmitResponse:
-    """Submit compliance checklist answers (Proposal managers only).
+) -> Union[Any, ChecklistCompletionReviewer]:
+    """Get checklist completion status with review triggers (reviewers only).
 
     Args:
         uuid (UUID):
-        body (list['ProposalChecklistAnswerSubmitRequest']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProposalChecklistAnswerSubmitResponse
+        Union[Any, ChecklistCompletionReviewer]
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            body=body,
         )
     ).parsed

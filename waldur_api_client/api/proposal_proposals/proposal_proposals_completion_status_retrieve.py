@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.proposal_checklist_completion import ProposalChecklistCompletion
+from ...models.checklist_completion import ChecklistCompletion
 from ...types import Response
 
 
@@ -15,7 +15,7 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/api/proposal-proposals/{uuid}/compliance_status/",
+        "url": f"/api/proposal-proposals/{uuid}/completion_status/",
     }
 
     return _kwargs
@@ -23,17 +23,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> ProposalChecklistCompletion:
+) -> Union[Any, ChecklistCompletion]:
     if response.status_code == 200:
-        response_200 = ProposalChecklistCompletion.from_dict(response.json())
+        response_200 = ChecklistCompletion.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = response.json()
+        return response_400
+    if response.status_code == 404:
+        response_404 = response.json()
+        return response_404
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ProposalChecklistCompletion]:
+) -> Response[Union[Any, ChecklistCompletion]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -46,8 +52,8 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ProposalChecklistCompletion]:
-    """Get compliance checklist completion status.
+) -> Response[Union[Any, ChecklistCompletion]]:
+    """Get checklist completion status.
 
     Args:
         uuid (UUID):
@@ -57,7 +63,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProposalChecklistCompletion]
+        Response[Union[Any, ChecklistCompletion]]
     """
 
     kwargs = _get_kwargs(
@@ -75,8 +81,8 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> ProposalChecklistCompletion:
-    """Get compliance checklist completion status.
+) -> Union[Any, ChecklistCompletion]:
+    """Get checklist completion status.
 
     Args:
         uuid (UUID):
@@ -86,7 +92,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProposalChecklistCompletion
+        Union[Any, ChecklistCompletion]
     """
 
     return sync_detailed(
@@ -99,8 +105,8 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ProposalChecklistCompletion]:
-    """Get compliance checklist completion status.
+) -> Response[Union[Any, ChecklistCompletion]]:
+    """Get checklist completion status.
 
     Args:
         uuid (UUID):
@@ -110,7 +116,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProposalChecklistCompletion]
+        Response[Union[Any, ChecklistCompletion]]
     """
 
     kwargs = _get_kwargs(
@@ -126,8 +132,8 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> ProposalChecklistCompletion:
-    """Get compliance checklist completion status.
+) -> Union[Any, ChecklistCompletion]:
+    """Get checklist completion status.
 
     Args:
         uuid (UUID):
@@ -137,7 +143,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProposalChecklistCompletion
+        Union[Any, ChecklistCompletion]
     """
 
     return (

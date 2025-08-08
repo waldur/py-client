@@ -6,24 +6,26 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.answer_submit_request import AnswerSubmitRequest
+from ...models.answer_submit_response import AnswerSubmitResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    customer_uuid: str,
+    uuid: UUID,
     *,
-    body: list[UUID],
+    body: list["AnswerSubmitRequest"],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/customers/{customer_uuid}/marketplace-checklists/",
+        "url": f"/api/proposal-proposals/{uuid}/submit_answers/",
     }
 
     _kwargs["json"] = []
     for body_item_data in body:
-        body_item = str(body_item_data)
+        body_item = body_item_data.to_dict()
         _kwargs["json"].append(body_item)
 
     headers["Content-Type"] = "application/json"
@@ -32,20 +34,25 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list[UUID]:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Union[AnswerSubmitResponse, Any]:
     if response.status_code == 200:
-        response_200 = []
-        _response_200 = response.json()
-        for response_200_item_data in _response_200:
-            response_200_item = UUID(response_200_item_data)
-
-            response_200.append(response_200_item)
+        response_200 = AnswerSubmitResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = response.json()
+        return response_400
+    if response.status_code == 404:
+        response_404 = response.json()
+        return response_404
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[list[UUID]]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[AnswerSubmitResponse, Any]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,26 +62,27 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
-    customer_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[UUID],
-) -> Response[list[UUID]]:
-    """
+    body: list["AnswerSubmitRequest"],
+) -> Response[Union[AnswerSubmitResponse, Any]]:
+    """Submit checklist answers.
+
     Args:
-        customer_uuid (str):
-        body (list[UUID]):
+        uuid (UUID):
+        body (list['AnswerSubmitRequest']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[UUID]]
+        Response[Union[AnswerSubmitResponse, Any]]
     """
 
     kwargs = _get_kwargs(
-        customer_uuid=customer_uuid,
+        uuid=uuid,
         body=body,
     )
 
@@ -86,52 +94,54 @@ def sync_detailed(
 
 
 def sync(
-    customer_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[UUID],
-) -> list[UUID]:
-    """
+    body: list["AnswerSubmitRequest"],
+) -> Union[AnswerSubmitResponse, Any]:
+    """Submit checklist answers.
+
     Args:
-        customer_uuid (str):
-        body (list[UUID]):
+        uuid (UUID):
+        body (list['AnswerSubmitRequest']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[UUID]
+        Union[AnswerSubmitResponse, Any]
     """
 
     return sync_detailed(
-        customer_uuid=customer_uuid,
+        uuid=uuid,
         client=client,
         body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    customer_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[UUID],
-) -> Response[list[UUID]]:
-    """
+    body: list["AnswerSubmitRequest"],
+) -> Response[Union[AnswerSubmitResponse, Any]]:
+    """Submit checklist answers.
+
     Args:
-        customer_uuid (str):
-        body (list[UUID]):
+        uuid (UUID):
+        body (list['AnswerSubmitRequest']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list[UUID]]
+        Response[Union[AnswerSubmitResponse, Any]]
     """
 
     kwargs = _get_kwargs(
-        customer_uuid=customer_uuid,
+        uuid=uuid,
         body=body,
     )
 
@@ -141,27 +151,28 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    customer_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: list[UUID],
-) -> list[UUID]:
-    """
+    body: list["AnswerSubmitRequest"],
+) -> Union[AnswerSubmitResponse, Any]:
+    """Submit checklist answers.
+
     Args:
-        customer_uuid (str):
-        body (list[UUID]):
+        uuid (UUID):
+        body (list['AnswerSubmitRequest']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list[UUID]
+        Union[AnswerSubmitResponse, Any]
     """
 
     return (
         await asyncio_detailed(
-            customer_uuid=customer_uuid,
+            uuid=uuid,
             client=client,
             body=body,
         )

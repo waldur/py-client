@@ -9,11 +9,11 @@ from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ProposalChecklistAnswer")
+T = TypeVar("T", bound="Answer")
 
 
 @_attrs_define
-class ProposalChecklistAnswer:
+class Answer:
     """
     Attributes:
         uuid (UUID):
@@ -104,7 +104,7 @@ class ProposalChecklistAnswer:
 
         answer_data = d.pop("answer_data", UNSET)
 
-        proposal_checklist_answer = cls(
+        answer = cls(
             uuid=uuid,
             question_description=question_description,
             question_type=question_type,
@@ -117,8 +117,8 @@ class ProposalChecklistAnswer:
             answer_data=answer_data,
         )
 
-        proposal_checklist_answer.additional_properties = d
-        return proposal_checklist_answer
+        answer.additional_properties = d
+        return answer
 
     @property
     def additional_keys(self) -> list[str]:

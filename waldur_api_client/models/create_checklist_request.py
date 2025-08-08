@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,13 +17,11 @@ class CreateChecklistRequest:
         name (str):
         checklist_type (ChecklistTypeEnum):
         description (Union[Unset, str]):
-        roles (Union[Unset, list[str]]):
     """
 
     name: str
     checklist_type: ChecklistTypeEnum
     description: Union[Unset, str] = UNSET
-    roles: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,10 +30,6 @@ class CreateChecklistRequest:
         checklist_type = self.checklist_type.value
 
         description = self.description
-
-        roles: Union[Unset, list[str]] = UNSET
-        if not isinstance(self.roles, Unset):
-            roles = self.roles
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -47,8 +41,6 @@ class CreateChecklistRequest:
         )
         if description is not UNSET:
             field_dict["description"] = description
-        if roles is not UNSET:
-            field_dict["roles"] = roles
 
         return field_dict
 
@@ -61,13 +53,10 @@ class CreateChecklistRequest:
 
         description = d.pop("description", UNSET)
 
-        roles = cast(list[str], d.pop("roles", UNSET))
-
         create_checklist_request = cls(
             name=name,
             checklist_type=checklist_type,
             description=description,
-            roles=roles,
         )
 
         create_checklist_request.additional_properties = d

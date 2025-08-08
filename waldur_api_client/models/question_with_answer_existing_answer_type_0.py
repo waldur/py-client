@@ -1,55 +1,31 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="AnswerSubmit")
+T = TypeVar("T", bound="QuestionWithAnswerExistingAnswerType0")
 
 
 @_attrs_define
-class AnswerSubmit:
-    """
-    Attributes:
-        question_uuid (UUID):
-        answer_data (Any):
-    """
+class QuestionWithAnswerExistingAnswerType0:
+    """ """
 
-    question_uuid: UUID
-    answer_data: Any
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        question_uuid = str(self.question_uuid)
-
-        answer_data = self.answer_data
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "question_uuid": question_uuid,
-                "answer_data": answer_data,
-            }
-        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        question_uuid = UUID(d.pop("question_uuid"))
+        question_with_answer_existing_answer_type_0 = cls()
 
-        answer_data = d.pop("answer_data")
-
-        answer_submit = cls(
-            question_uuid=question_uuid,
-            answer_data=answer_data,
-        )
-
-        answer_submit.additional_properties = d
-        return answer_submit
+        question_with_answer_existing_answer_type_0.additional_properties = d
+        return question_with_answer_existing_answer_type_0
 
     @property
     def additional_keys(self) -> list[str]:

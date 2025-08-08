@@ -5,26 +5,26 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.proposal_checklist_completion import ProposalChecklistCompletion
-    from ..models.proposal_checklist_question import ProposalChecklistQuestion
-    from ..models.proposal_compliance_checklist_response_checklist import ProposalComplianceChecklistResponseChecklist
+    from ..models.checklist_completion_reviewer import ChecklistCompletionReviewer
+    from ..models.checklist_reviewer_response_checklist import ChecklistReviewerResponseChecklist
+    from ..models.question_with_answer_reviewer import QuestionWithAnswerReviewer
 
 
-T = TypeVar("T", bound="ProposalComplianceChecklistResponse")
+T = TypeVar("T", bound="ChecklistReviewerResponse")
 
 
 @_attrs_define
-class ProposalComplianceChecklistResponse:
+class ChecklistReviewerResponse:
     """
     Attributes:
-        checklist (ProposalComplianceChecklistResponseChecklist):
-        completion (ProposalChecklistCompletion):
-        questions (list['ProposalChecklistQuestion']):
+        checklist (ChecklistReviewerResponseChecklist):
+        completion (ChecklistCompletionReviewer):
+        questions (list['QuestionWithAnswerReviewer']):
     """
 
-    checklist: "ProposalComplianceChecklistResponseChecklist"
-    completion: "ProposalChecklistCompletion"
-    questions: list["ProposalChecklistQuestion"]
+    checklist: "ChecklistReviewerResponseChecklist"
+    completion: "ChecklistCompletionReviewer"
+    questions: list["QuestionWithAnswerReviewer"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -51,32 +51,30 @@ class ProposalComplianceChecklistResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.proposal_checklist_completion import ProposalChecklistCompletion
-        from ..models.proposal_checklist_question import ProposalChecklistQuestion
-        from ..models.proposal_compliance_checklist_response_checklist import (
-            ProposalComplianceChecklistResponseChecklist,
-        )
+        from ..models.checklist_completion_reviewer import ChecklistCompletionReviewer
+        from ..models.checklist_reviewer_response_checklist import ChecklistReviewerResponseChecklist
+        from ..models.question_with_answer_reviewer import QuestionWithAnswerReviewer
 
         d = dict(src_dict)
-        checklist = ProposalComplianceChecklistResponseChecklist.from_dict(d.pop("checklist"))
+        checklist = ChecklistReviewerResponseChecklist.from_dict(d.pop("checklist"))
 
-        completion = ProposalChecklistCompletion.from_dict(d.pop("completion"))
+        completion = ChecklistCompletionReviewer.from_dict(d.pop("completion"))
 
         questions = []
         _questions = d.pop("questions")
         for questions_item_data in _questions:
-            questions_item = ProposalChecklistQuestion.from_dict(questions_item_data)
+            questions_item = QuestionWithAnswerReviewer.from_dict(questions_item_data)
 
             questions.append(questions_item)
 
-        proposal_compliance_checklist_response = cls(
+        checklist_reviewer_response = cls(
             checklist=checklist,
             completion=completion,
             questions=questions,
         )
 
-        proposal_compliance_checklist_response.additional_properties = d
-        return proposal_compliance_checklist_response
+        checklist_reviewer_response.additional_properties = d
+        return checklist_reviewer_response
 
     @property
     def additional_keys(self) -> list[str]:

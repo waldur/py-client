@@ -1,20 +1,21 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_stats_item import ProjectStatsItem
+from ...models.checklist_response import ChecklistResponse
 from ...types import Response
 
 
 def _get_kwargs(
-    project_uuid: str,
+    uuid: UUID,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/api/projects/{project_uuid}/marketplace-checklists/",
+        "url": f"/api/proposal-proposals/{uuid}/checklist/",
     }
 
     return _kwargs
@@ -22,22 +23,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> list["ProjectStatsItem"]:
+) -> Union[Any, ChecklistResponse]:
     if response.status_code == 200:
-        response_200 = []
-        _response_200 = response.json()
-        for response_200_item_data in _response_200:
-            response_200_item = ProjectStatsItem.from_dict(response_200_item_data)
-
-            response_200.append(response_200_item)
+        response_200 = ChecklistResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = response.json()
+        return response_400
+    if response.status_code == 404:
+        response_404 = response.json()
+        return response_404
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["ProjectStatsItem"]]:
+) -> Response[Union[Any, ChecklistResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,24 +49,25 @@ def _build_response(
 
 
 def sync_detailed(
-    project_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[list["ProjectStatsItem"]]:
-    """
+) -> Response[Union[Any, ChecklistResponse]]:
+    """Get checklist with questions and existing answers.
+
     Args:
-        project_uuid (str):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['ProjectStatsItem']]
+        Response[Union[Any, ChecklistResponse]]
     """
 
     kwargs = _get_kwargs(
-        project_uuid=project_uuid,
+        uuid=uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -75,47 +78,49 @@ def sync_detailed(
 
 
 def sync(
-    project_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> list["ProjectStatsItem"]:
-    """
+) -> Union[Any, ChecklistResponse]:
+    """Get checklist with questions and existing answers.
+
     Args:
-        project_uuid (str):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ProjectStatsItem']
+        Union[Any, ChecklistResponse]
     """
 
     return sync_detailed(
-        project_uuid=project_uuid,
+        uuid=uuid,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    project_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[list["ProjectStatsItem"]]:
-    """
+) -> Response[Union[Any, ChecklistResponse]]:
+    """Get checklist with questions and existing answers.
+
     Args:
-        project_uuid (str):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['ProjectStatsItem']]
+        Response[Union[Any, ChecklistResponse]]
     """
 
     kwargs = _get_kwargs(
-        project_uuid=project_uuid,
+        uuid=uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -124,25 +129,26 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    project_uuid: str,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> list["ProjectStatsItem"]:
-    """
+) -> Union[Any, ChecklistResponse]:
+    """Get checklist with questions and existing answers.
+
     Args:
-        project_uuid (str):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ProjectStatsItem']
+        Union[Any, ChecklistResponse]
     """
 
     return (
         await asyncio_detailed(
-            project_uuid=project_uuid,
+            uuid=uuid,
             client=client,
         )
     ).parsed
