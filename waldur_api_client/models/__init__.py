@@ -423,7 +423,15 @@ from .maintenance_announcement_offering_template_request import MaintenanceAnnou
 from .maintenance_announcement_request import MaintenanceAnnouncementRequest
 from .maintenance_announcement_state_enum import MaintenanceAnnouncementStateEnum
 from .maintenance_announcement_template import MaintenanceAnnouncementTemplate
+from .maintenance_announcement_template_offerings_head_o_item import MaintenanceAnnouncementTemplateOfferingsHeadOItem
+from .maintenance_announcement_template_offerings_list_o_item import MaintenanceAnnouncementTemplateOfferingsListOItem
 from .maintenance_announcement_template_request import MaintenanceAnnouncementTemplateRequest
+from .maintenance_announcements_head_o_item import MaintenanceAnnouncementsHeadOItem
+from .maintenance_announcements_head_state_item import MaintenanceAnnouncementsHeadStateItem
+from .maintenance_announcements_list_o_item import MaintenanceAnnouncementsListOItem
+from .maintenance_announcements_list_state_item import MaintenanceAnnouncementsListStateItem
+from .maintenance_announcements_template_head_o_item import MaintenanceAnnouncementsTemplateHeadOItem
+from .maintenance_announcements_template_list_o_item import MaintenanceAnnouncementsTemplateListOItem
 from .maintenance_type_enum import MaintenanceTypeEnum
 from .mapping import Mapping
 from .mapping_request import MappingRequest
@@ -457,18 +465,6 @@ from .marketplace_integration_statuses_head_o_item import MarketplaceIntegration
 from .marketplace_integration_statuses_head_status_item import MarketplaceIntegrationStatusesHeadStatusItem
 from .marketplace_integration_statuses_list_o_item import MarketplaceIntegrationStatusesListOItem
 from .marketplace_integration_statuses_list_status_item import MarketplaceIntegrationStatusesListStatusItem
-from .marketplace_maintenance_announcement_template_offerings_head_o_item import (
-    MarketplaceMaintenanceAnnouncementTemplateOfferingsHeadOItem,
-)
-from .marketplace_maintenance_announcement_template_offerings_list_o_item import (
-    MarketplaceMaintenanceAnnouncementTemplateOfferingsListOItem,
-)
-from .marketplace_maintenance_announcements_template_head_o_item import (
-    MarketplaceMaintenanceAnnouncementsTemplateHeadOItem,
-)
-from .marketplace_maintenance_announcements_template_list_o_item import (
-    MarketplaceMaintenanceAnnouncementsTemplateListOItem,
-)
 from .marketplace_offering_files_head_o_item import MarketplaceOfferingFilesHeadOItem
 from .marketplace_offering_files_list_field_item import MarketplaceOfferingFilesListFieldItem
 from .marketplace_offering_files_list_o_item import MarketplaceOfferingFilesListOItem
@@ -1882,8 +1878,16 @@ __all__ = (
     "MaintenanceAnnouncementOfferingTemplate",
     "MaintenanceAnnouncementOfferingTemplateRequest",
     "MaintenanceAnnouncementRequest",
+    "MaintenanceAnnouncementsHeadOItem",
+    "MaintenanceAnnouncementsHeadStateItem",
+    "MaintenanceAnnouncementsListOItem",
+    "MaintenanceAnnouncementsListStateItem",
     "MaintenanceAnnouncementStateEnum",
+    "MaintenanceAnnouncementsTemplateHeadOItem",
+    "MaintenanceAnnouncementsTemplateListOItem",
     "MaintenanceAnnouncementTemplate",
+    "MaintenanceAnnouncementTemplateOfferingsHeadOItem",
+    "MaintenanceAnnouncementTemplateOfferingsListOItem",
     "MaintenanceAnnouncementTemplateRequest",
     "MaintenanceTypeEnum",
     "Mapping",
@@ -1912,10 +1916,6 @@ __all__ = (
     "MarketplaceIntegrationStatusesHeadStatusItem",
     "MarketplaceIntegrationStatusesListOItem",
     "MarketplaceIntegrationStatusesListStatusItem",
-    "MarketplaceMaintenanceAnnouncementsTemplateHeadOItem",
-    "MarketplaceMaintenanceAnnouncementsTemplateListOItem",
-    "MarketplaceMaintenanceAnnouncementTemplateOfferingsHeadOItem",
-    "MarketplaceMaintenanceAnnouncementTemplateOfferingsListOItem",
     "MarketplaceOfferingFilesHeadOItem",
     "MarketplaceOfferingFilesListFieldItem",
     "MarketplaceOfferingFilesListOItem",

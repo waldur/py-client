@@ -19,6 +19,8 @@ class MaintenanceAnnouncementOfferingTemplate:
         uuid (UUID):
         maintenance_template (str):
         offering (str):
+        offering_name (str):
+        offering_uuid (UUID):
         impact_level (Union[Unset, ImpactLevelEnum]):
         impact_description (Union[Unset, str]): Specific description of how this offering will be affected
     """
@@ -27,6 +29,8 @@ class MaintenanceAnnouncementOfferingTemplate:
     uuid: UUID
     maintenance_template: str
     offering: str
+    offering_name: str
+    offering_uuid: UUID
     impact_level: Union[Unset, ImpactLevelEnum] = UNSET
     impact_description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -39,6 +43,10 @@ class MaintenanceAnnouncementOfferingTemplate:
         maintenance_template = self.maintenance_template
 
         offering = self.offering
+
+        offering_name = self.offering_name
+
+        offering_uuid = str(self.offering_uuid)
 
         impact_level: Union[Unset, int] = UNSET
         if not isinstance(self.impact_level, Unset):
@@ -54,6 +62,8 @@ class MaintenanceAnnouncementOfferingTemplate:
                 "uuid": uuid,
                 "maintenance_template": maintenance_template,
                 "offering": offering,
+                "offering_name": offering_name,
+                "offering_uuid": offering_uuid,
             }
         )
         if impact_level is not UNSET:
@@ -74,6 +84,10 @@ class MaintenanceAnnouncementOfferingTemplate:
 
         offering = d.pop("offering")
 
+        offering_name = d.pop("offering_name")
+
+        offering_uuid = UUID(d.pop("offering_uuid"))
+
         _impact_level = d.pop("impact_level", UNSET)
         impact_level: Union[Unset, ImpactLevelEnum]
         if isinstance(_impact_level, Unset):
@@ -88,6 +102,8 @@ class MaintenanceAnnouncementOfferingTemplate:
             uuid=uuid,
             maintenance_template=maintenance_template,
             offering=offering,
+            offering_name=offering_name,
+            offering_uuid=offering_uuid,
             impact_level=impact_level,
             impact_description=impact_description,
         )
