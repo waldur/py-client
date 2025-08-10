@@ -14,19 +14,25 @@ class OfferingUserStateTransitionRequest:
     """
     Attributes:
         comment (Union[Unset, str]):
+        comment_url (Union[Unset, str]):
     """
 
     comment: Union[Unset, str] = UNSET
+    comment_url: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         comment = self.comment
+
+        comment_url = self.comment_url
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if comment is not UNSET:
             field_dict["comment"] = comment
+        if comment_url is not UNSET:
+            field_dict["comment_url"] = comment_url
 
         return field_dict
 
@@ -35,8 +41,11 @@ class OfferingUserStateTransitionRequest:
         d = dict(src_dict)
         comment = d.pop("comment", UNSET)
 
+        comment_url = d.pop("comment_url", UNSET)
+
         offering_user_state_transition_request = cls(
             comment=comment,
+            comment_url=comment_url,
         )
 
         offering_user_state_transition_request.additional_properties = d

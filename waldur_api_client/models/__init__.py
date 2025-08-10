@@ -693,6 +693,7 @@ from .offering_user import OfferingUser
 from .offering_user_request import OfferingUserRequest
 from .offering_user_role import OfferingUserRole
 from .offering_user_role_request import OfferingUserRoleRequest
+from .offering_user_service_provider_comment import OfferingUserServiceProviderComment
 from .offering_user_state_enum import OfferingUserStateEnum
 from .offering_user_state_transition_request import OfferingUserStateTransitionRequest
 from .offering_user_update_restriction_request import OfferingUserUpdateRestrictionRequest
@@ -931,6 +932,7 @@ from .patched_offering_estimated_cost_policy_request import PatchedOfferingEstim
 from .patched_offering_usage_policy_request import PatchedOfferingUsagePolicyRequest
 from .patched_offering_user_request import PatchedOfferingUserRequest
 from .patched_offering_user_role_request import PatchedOfferingUserRoleRequest
+from .patched_offering_user_service_provider_comment_request import PatchedOfferingUserServiceProviderCommentRequest
 from .patched_open_stack_backup_request import PatchedOpenStackBackupRequest
 from .patched_open_stack_instance_request import PatchedOpenStackInstanceRequest
 from .patched_open_stack_network_request import PatchedOpenStackNetworkRequest
@@ -2120,6 +2122,7 @@ __all__ = (
     "OfferingUserRequest",
     "OfferingUserRole",
     "OfferingUserRoleRequest",
+    "OfferingUserServiceProviderComment",
     "OfferingUserStateEnum",
     "OfferingUserStateTransitionRequest",
     "OfferingUserUpdateRestrictionRequest",
@@ -2330,6 +2333,7 @@ __all__ = (
     "PatchedOfferingUsagePolicyRequest",
     "PatchedOfferingUserRequest",
     "PatchedOfferingUserRoleRequest",
+    "PatchedOfferingUserServiceProviderCommentRequest",
     "PatchedOpenStackBackupRequest",
     "PatchedOpenStackInstanceRequest",
     "PatchedOpenStackNetworkRequest",

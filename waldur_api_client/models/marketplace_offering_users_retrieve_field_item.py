@@ -11,6 +11,7 @@ class MarketplaceOfferingUsersRetrieveFieldItem(str, Enum):
     OFFERING_NAME = "offering_name"
     OFFERING_UUID = "offering_uuid"
     SERVICE_PROVIDER_COMMENT = "service_provider_comment"
+    SERVICE_PROVIDER_COMMENT_URL = "service_provider_comment_url"
     STATE = "state"
     URL = "url"
     USER = "user"

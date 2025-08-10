@@ -37,6 +37,8 @@ class OfferingUser:
         state (Union[Unset, OfferingUserStateEnum]):
         service_provider_comment (Union[Unset, str]): Additional comment for pending states like validation or account
             linking
+        service_provider_comment_url (Union[Unset, str]): URL link for additional information or actions related to
+            service provider comment
     """
 
     url: Union[Unset, str] = UNSET
@@ -57,6 +59,7 @@ class OfferingUser:
     is_restricted: Union[Unset, bool] = UNSET
     state: Union[Unset, OfferingUserStateEnum] = UNSET
     service_provider_comment: Union[Unset, str] = UNSET
+    service_provider_comment_url: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -114,6 +117,8 @@ class OfferingUser:
 
         service_provider_comment = self.service_provider_comment
 
+        service_provider_comment_url = self.service_provider_comment_url
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -153,6 +158,8 @@ class OfferingUser:
             field_dict["state"] = state
         if service_provider_comment is not UNSET:
             field_dict["service_provider_comment"] = service_provider_comment
+        if service_provider_comment_url is not UNSET:
+            field_dict["service_provider_comment_url"] = service_provider_comment_url
 
         return field_dict
 
@@ -237,6 +244,8 @@ class OfferingUser:
 
         service_provider_comment = d.pop("service_provider_comment", UNSET)
 
+        service_provider_comment_url = d.pop("service_provider_comment_url", UNSET)
+
         offering_user = cls(
             url=url,
             uuid=uuid,
@@ -256,6 +265,7 @@ class OfferingUser:
             is_restricted=is_restricted,
             state=state,
             service_provider_comment=service_provider_comment,
+            service_provider_comment_url=service_provider_comment_url,
         )
 
         offering_user.additional_properties = d
