@@ -20,20 +20,26 @@ class QuestionWithAnswer:
     Attributes:
         uuid (UUID):
         description (str):
+        user_guidance (Union[None, str]):
         question_type (QuestionTypeEnum):
         required (bool):
         order (int):
         existing_answer (Union['QuestionWithAnswerExistingAnswerType0', None]):
         question_options (Union[None, list[Any]]):
+        min_value (Union[None, str]): Minimum value allowed for NUMBER type questions
+        max_value (Union[None, str]): Maximum value allowed for NUMBER type questions
     """
 
     uuid: UUID
     description: str
+    user_guidance: Union[None, str]
     question_type: QuestionTypeEnum
     required: bool
     order: int
     existing_answer: Union["QuestionWithAnswerExistingAnswerType0", None]
     question_options: Union[None, list[Any]]
+    min_value: Union[None, str]
+    max_value: Union[None, str]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,6 +48,9 @@ class QuestionWithAnswer:
         uuid = str(self.uuid)
 
         description = self.description
+
+        user_guidance: Union[None, str]
+        user_guidance = self.user_guidance
 
         question_type = self.question_type.value
 
@@ -62,17 +71,26 @@ class QuestionWithAnswer:
         else:
             question_options = self.question_options
 
+        min_value: Union[None, str]
+        min_value = self.min_value
+
+        max_value: Union[None, str]
+        max_value = self.max_value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "uuid": uuid,
                 "description": description,
+                "user_guidance": user_guidance,
                 "question_type": question_type,
                 "required": required,
                 "order": order,
                 "existing_answer": existing_answer,
                 "question_options": question_options,
+                "min_value": min_value,
+                "max_value": max_value,
             }
         )
 
@@ -86,6 +104,13 @@ class QuestionWithAnswer:
         uuid = UUID(d.pop("uuid"))
 
         description = d.pop("description")
+
+        def _parse_user_guidance(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        user_guidance = _parse_user_guidance(d.pop("user_guidance"))
 
         question_type = QuestionTypeEnum(d.pop("question_type"))
 
@@ -123,14 +148,31 @@ class QuestionWithAnswer:
 
         question_options = _parse_question_options(d.pop("question_options"))
 
+        def _parse_min_value(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        min_value = _parse_min_value(d.pop("min_value"))
+
+        def _parse_max_value(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        max_value = _parse_max_value(d.pop("max_value"))
+
         question_with_answer = cls(
             uuid=uuid,
             description=description,
+            user_guidance=user_guidance,
             question_type=question_type,
             required=required,
             order=order,
             existing_answer=existing_answer,
             question_options=question_options,
+            min_value=min_value,
+            max_value=max_value,
         )
 
         question_with_answer.additional_properties = d

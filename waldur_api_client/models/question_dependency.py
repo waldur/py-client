@@ -5,7 +5,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.operator_enum import OperatorEnum
+from ..models.checklist_operators import ChecklistOperators
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="QuestionDependency")
@@ -22,7 +22,7 @@ class QuestionDependency:
         depends_on_question (str):
         depends_on_question_name (str):
         required_answer_value (Any): The answer value(s) that make this question visible
-        operator (Union[Unset, OperatorEnum]):
+        operator (Union[Unset, ChecklistOperators]):
     """
 
     uuid: UUID
@@ -32,7 +32,7 @@ class QuestionDependency:
     depends_on_question: str
     depends_on_question_name: str
     required_answer_value: Any
-    operator: Union[Unset, OperatorEnum] = UNSET
+    operator: Union[Unset, ChecklistOperators] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -90,11 +90,11 @@ class QuestionDependency:
         required_answer_value = d.pop("required_answer_value")
 
         _operator = d.pop("operator", UNSET)
-        operator: Union[Unset, OperatorEnum]
+        operator: Union[Unset, ChecklistOperators]
         if isinstance(_operator, Unset):
             operator = UNSET
         else:
-            operator = OperatorEnum(_operator)
+            operator = ChecklistOperators(_operator)
 
         question_dependency = cls(
             uuid=uuid,

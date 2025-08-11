@@ -185,10 +185,13 @@ from .category_help_articles import CategoryHelpArticles
 from .category_help_articles_request import CategoryHelpArticlesRequest
 from .category_serializer_for_for_nested_fields import CategorySerializerForForNestedFields
 from .category_serializer_for_for_nested_fields_request import CategorySerializerForForNestedFieldsRequest
-from .checklist_admin import ChecklistAdmin
+from .checklist import Checklist
 from .checklist_category import ChecklistCategory
+from .checklist_category_request import ChecklistCategoryRequest
 from .checklist_completion import ChecklistCompletion
 from .checklist_completion_reviewer import ChecklistCompletionReviewer
+from .checklist_operators import ChecklistOperators
+from .checklist_request import ChecklistRequest
 from .checklist_response import ChecklistResponse
 from .checklist_response_checklist import ChecklistResponseChecklist
 from .checklist_reviewer_response import ChecklistReviewerResponse
@@ -229,8 +232,6 @@ from .count_users_of_service_providers import CountUsersOfServiceProviders
 from .country import Country
 from .country_enum import CountryEnum
 from .create_attachments_request import CreateAttachmentsRequest
-from .create_checklist import CreateChecklist
-from .create_checklist_request import CreateChecklistRequest
 from .create_customer_credit import CreateCustomerCredit
 from .create_customer_credit_request import CreateCustomerCreditRequest
 from .create_feedback import CreateFeedback
@@ -866,7 +867,6 @@ from .openstack_volumes_count_state_item import OpenstackVolumesCountStateItem
 from .openstack_volumes_list_field_item import OpenstackVolumesListFieldItem
 from .openstack_volumes_list_state_item import OpenstackVolumesListStateItem
 from .openstack_volumes_retrieve_field_item import OpenstackVolumesRetrieveFieldItem
-from .operator_enum import OperatorEnum
 from .option_field import OptionField
 from .option_field_request import OptionFieldRequest
 from .option_field_type_enum import OptionFieldTypeEnum
@@ -898,10 +898,11 @@ from .patched_category_column_request import PatchedCategoryColumnRequest
 from .patched_category_components_request import PatchedCategoryComponentsRequest
 from .patched_category_group_request import PatchedCategoryGroupRequest
 from .patched_category_help_articles_request import PatchedCategoryHelpArticlesRequest
+from .patched_checklist_category_request import PatchedChecklistCategoryRequest
+from .patched_checklist_request import PatchedChecklistRequest
 from .patched_cluster_security_group_request import PatchedClusterSecurityGroupRequest
 from .patched_comment_request import PatchedCommentRequest
 from .patched_component_user_usage_limit_request import PatchedComponentUserUsageLimitRequest
-from .patched_create_checklist_request import PatchedCreateChecklistRequest
 from .patched_create_customer_credit_request import PatchedCreateCustomerCreditRequest
 from .patched_customer_estimated_cost_policy_request import PatchedCustomerEstimatedCostPolicyRequest
 from .patched_customer_request import PatchedCustomerRequest
@@ -1648,10 +1649,13 @@ __all__ = (
     "CategoryHelpArticlesRequest",
     "CategorySerializerForForNestedFields",
     "CategorySerializerForForNestedFieldsRequest",
-    "ChecklistAdmin",
+    "Checklist",
     "ChecklistCategory",
+    "ChecklistCategoryRequest",
     "ChecklistCompletion",
     "ChecklistCompletionReviewer",
+    "ChecklistOperators",
+    "ChecklistRequest",
     "ChecklistResponse",
     "ChecklistResponseChecklist",
     "ChecklistReviewerResponse",
@@ -1690,8 +1694,6 @@ __all__ = (
     "CountUniqueUsersConnectedWithActiveResourcesOfServiceProvider",
     "CountUsersOfServiceProviders",
     "CreateAttachmentsRequest",
-    "CreateChecklist",
-    "CreateChecklistRequest",
     "CreateCustomerCredit",
     "CreateCustomerCreditRequest",
     "CreateFeedback",
@@ -2271,7 +2273,6 @@ __all__ = (
     "OpenstackVolumesListStateItem",
     "OpenstackVolumesRetrieveFieldItem",
     "OpenStackVolumeType",
-    "OperatorEnum",
     "OptionField",
     "OptionFieldRequest",
     "OptionFieldTypeEnum",
@@ -2303,10 +2304,11 @@ __all__ = (
     "PatchedCategoryComponentsRequest",
     "PatchedCategoryGroupRequest",
     "PatchedCategoryHelpArticlesRequest",
+    "PatchedChecklistCategoryRequest",
+    "PatchedChecklistRequest",
     "PatchedClusterSecurityGroupRequest",
     "PatchedCommentRequest",
     "PatchedComponentUserUsageLimitRequest",
-    "PatchedCreateChecklistRequest",
     "PatchedCreateCustomerCreditRequest",
     "PatchedCustomerEstimatedCostPolicyRequest",
     "PatchedCustomerRequest",

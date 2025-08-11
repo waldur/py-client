@@ -6,7 +6,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.blank_enum import BlankEnum
-from ..models.operator_enum import OperatorEnum
+from ..models.checklist_operators import ChecklistOperators
 from ..models.question_type_enum import QuestionTypeEnum
 from ..types import UNSET, Unset
 
@@ -25,24 +25,30 @@ class QuestionWithAnswerReviewer:
     Attributes:
         uuid (UUID):
         description (str):
+        user_guidance (Union[None, str]):
         question_type (QuestionTypeEnum):
         required (bool):
         order (int):
         existing_answer (Union['QuestionWithAnswerReviewerExistingAnswerType0', None]):
         question_options (Union[None, list[Any]]):
-        operator (Union[BlankEnum, OperatorEnum, Unset]):
+        min_value (Union[None, str]): Minimum value allowed for NUMBER type questions
+        max_value (Union[None, str]): Maximum value allowed for NUMBER type questions
+        operator (Union[BlankEnum, ChecklistOperators, Unset]):
         review_answer_value (Union[Unset, Any]): Answer value that trigger review.
         always_requires_review (Union[Unset, bool]): This question always requires review regardless of answer
     """
 
     uuid: UUID
     description: str
+    user_guidance: Union[None, str]
     question_type: QuestionTypeEnum
     required: bool
     order: int
     existing_answer: Union["QuestionWithAnswerReviewerExistingAnswerType0", None]
     question_options: Union[None, list[Any]]
-    operator: Union[BlankEnum, OperatorEnum, Unset] = UNSET
+    min_value: Union[None, str]
+    max_value: Union[None, str]
+    operator: Union[BlankEnum, ChecklistOperators, Unset] = UNSET
     review_answer_value: Union[Unset, Any] = UNSET
     always_requires_review: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -55,6 +61,9 @@ class QuestionWithAnswerReviewer:
         uuid = str(self.uuid)
 
         description = self.description
+
+        user_guidance: Union[None, str]
+        user_guidance = self.user_guidance
 
         question_type = self.question_type.value
 
@@ -75,10 +84,16 @@ class QuestionWithAnswerReviewer:
         else:
             question_options = self.question_options
 
+        min_value: Union[None, str]
+        min_value = self.min_value
+
+        max_value: Union[None, str]
+        max_value = self.max_value
+
         operator: Union[Unset, str]
         if isinstance(self.operator, Unset):
             operator = UNSET
-        elif isinstance(self.operator, OperatorEnum):
+        elif isinstance(self.operator, ChecklistOperators):
             operator = self.operator.value
         else:
             operator = self.operator.value
@@ -93,11 +108,14 @@ class QuestionWithAnswerReviewer:
             {
                 "uuid": uuid,
                 "description": description,
+                "user_guidance": user_guidance,
                 "question_type": question_type,
                 "required": required,
                 "order": order,
                 "existing_answer": existing_answer,
                 "question_options": question_options,
+                "min_value": min_value,
+                "max_value": max_value,
             }
         )
         if operator is not UNSET:
@@ -119,6 +137,13 @@ class QuestionWithAnswerReviewer:
         uuid = UUID(d.pop("uuid"))
 
         description = d.pop("description")
+
+        def _parse_user_guidance(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        user_guidance = _parse_user_guidance(d.pop("user_guidance"))
 
         question_type = QuestionTypeEnum(d.pop("question_type"))
 
@@ -156,13 +181,27 @@ class QuestionWithAnswerReviewer:
 
         question_options = _parse_question_options(d.pop("question_options"))
 
-        def _parse_operator(data: object) -> Union[BlankEnum, OperatorEnum, Unset]:
+        def _parse_min_value(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        min_value = _parse_min_value(d.pop("min_value"))
+
+        def _parse_max_value(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        max_value = _parse_max_value(d.pop("max_value"))
+
+        def _parse_operator(data: object) -> Union[BlankEnum, ChecklistOperators, Unset]:
             if isinstance(data, Unset):
                 return data
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                operator_type_0 = OperatorEnum(data)
+                operator_type_0 = ChecklistOperators(data)
 
                 return operator_type_0
             except:  # noqa: E722
@@ -182,11 +221,14 @@ class QuestionWithAnswerReviewer:
         question_with_answer_reviewer = cls(
             uuid=uuid,
             description=description,
+            user_guidance=user_guidance,
             question_type=question_type,
             required=required,
             order=order,
             existing_answer=existing_answer,
             question_options=question_options,
+            min_value=min_value,
+            max_value=max_value,
             operator=operator,
             review_answer_value=review_answer_value,
             always_requires_review=always_requires_review,
