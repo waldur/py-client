@@ -416,6 +416,7 @@ from .link_openstack_request import LinkOpenstackRequest
 from .link_to_invoice import LinkToInvoice
 from .link_to_invoice_request import LinkToInvoiceRequest
 from .logout import Logout
+from .maintenance_action_response import MaintenanceActionResponse
 from .maintenance_announcement import MaintenanceAnnouncement
 from .maintenance_announcement_offering import MaintenanceAnnouncementOffering
 from .maintenance_announcement_offering_request import MaintenanceAnnouncementOfferingRequest
@@ -1876,6 +1877,7 @@ __all__ = (
     "LinkToInvoice",
     "LinkToInvoiceRequest",
     "Logout",
+    "MaintenanceActionResponse",
     "MaintenanceAnnouncement",
     "MaintenanceAnnouncementOffering",
     "MaintenanceAnnouncementOfferingRequest",
