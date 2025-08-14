@@ -555,7 +555,9 @@ from .marketplace_resources_list_state_item import MarketplaceResourcesListState
 from .marketplace_resources_pull_response_200 import MarketplaceResourcesPullResponse200
 from .marketplace_resources_retrieve_field_item import MarketplaceResourcesRetrieveFieldItem
 from .marketplace_robot_accounts_count_state import MarketplaceRobotAccountsCountState
+from .marketplace_robot_accounts_list_field_item import MarketplaceRobotAccountsListFieldItem
 from .marketplace_robot_accounts_list_state import MarketplaceRobotAccountsListState
+from .marketplace_robot_accounts_retrieve_field_item import MarketplaceRobotAccountsRetrieveFieldItem
 from .marketplace_screenshots_count_o_item import MarketplaceScreenshotsCountOItem
 from .marketplace_screenshots_list_o_item import MarketplaceScreenshotsListOItem
 from .marketplace_service_provider_user import MarketplaceServiceProviderUser
@@ -1996,7 +1998,9 @@ __all__ = (
     "MarketplaceResourcesPullResponse200",
     "MarketplaceResourcesRetrieveFieldItem",
     "MarketplaceRobotAccountsCountState",
+    "MarketplaceRobotAccountsListFieldItem",
     "MarketplaceRobotAccountsListState",
+    "MarketplaceRobotAccountsRetrieveFieldItem",
     "MarketplaceScreenshotsCountOItem",
     "MarketplaceScreenshotsListOItem",
     "MarketplaceServiceProvidersCountOItem",

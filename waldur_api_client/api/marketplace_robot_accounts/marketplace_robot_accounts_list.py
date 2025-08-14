@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_robot_accounts_list_field_item import MarketplaceRobotAccountsListFieldItem
 from ...models.marketplace_robot_accounts_list_state import MarketplaceRobotAccountsListState
 from ...models.robot_account_details import RobotAccountDetails
 from ...types import UNSET, Response, Unset
@@ -16,6 +17,7 @@ def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -37,6 +39,15 @@ def _get_kwargs(
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
     params["customer_uuid"] = json_customer_uuid
+
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -114,6 +125,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -129,6 +141,7 @@ def sync_detailed(
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
+        field (Union[Unset, list[MarketplaceRobotAccountsListFieldItem]]):
         modified (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -150,6 +163,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         created=created,
         customer_uuid=customer_uuid,
+        field=field,
         modified=modified,
         page=page,
         page_size=page_size,
@@ -173,6 +187,7 @@ def sync(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -188,6 +203,7 @@ def sync(
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
+        field (Union[Unset, list[MarketplaceRobotAccountsListFieldItem]]):
         modified (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -210,6 +226,7 @@ def sync(
         client=client,
         created=created,
         customer_uuid=customer_uuid,
+        field=field,
         modified=modified,
         page=page,
         page_size=page_size,
@@ -227,6 +244,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -242,6 +260,7 @@ async def asyncio_detailed(
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
+        field (Union[Unset, list[MarketplaceRobotAccountsListFieldItem]]):
         modified (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -263,6 +282,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         created=created,
         customer_uuid=customer_uuid,
+        field=field,
         modified=modified,
         page=page,
         page_size=page_size,
@@ -284,6 +304,7 @@ async def asyncio(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -299,6 +320,7 @@ async def asyncio(
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
+        field (Union[Unset, list[MarketplaceRobotAccountsListFieldItem]]):
         modified (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -322,6 +344,7 @@ async def asyncio(
             client=client,
             created=created,
             customer_uuid=customer_uuid,
+            field=field,
             modified=modified,
             page=page,
             page_size=page_size,

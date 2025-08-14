@@ -6,16 +6,33 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_robot_accounts_retrieve_field_item import MarketplaceRobotAccountsRetrieveFieldItem
 from ...models.robot_account_details import RobotAccountDetails
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
+    *,
+    field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
 ) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": f"/api/marketplace-robot-accounts/{uuid}/",
+        "params": params,
     }
 
     return _kwargs
@@ -44,10 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
 ) -> Response[RobotAccountDetails]:
     """
     Args:
         uuid (UUID):
+        field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -59,6 +78,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        field=field,
     )
 
     response = client.get_httpx_client().request(
@@ -72,10 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
 ) -> RobotAccountDetails:
     """
     Args:
         uuid (UUID):
+        field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -88,6 +110,7 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        field=field,
     ).parsed
 
 
@@ -95,10 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
 ) -> Response[RobotAccountDetails]:
     """
     Args:
         uuid (UUID):
+        field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -110,6 +135,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        field=field,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -121,10 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
 ) -> RobotAccountDetails:
     """
     Args:
         uuid (UUID):
+        field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -138,5 +166,6 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            field=field,
         )
     ).parsed

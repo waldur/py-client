@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="Fingerprint")
 
@@ -11,14 +13,14 @@ T = TypeVar("T", bound="Fingerprint")
 class Fingerprint:
     """
     Attributes:
-        md5 (str):
-        sha256 (str):
-        sha512 (str):
+        md5 (Union[Unset, str]):
+        sha256 (Union[Unset, str]):
+        sha512 (Union[Unset, str]):
     """
 
-    md5: str
-    sha256: str
-    sha512: str
+    md5: Union[Unset, str] = UNSET
+    sha256: Union[Unset, str] = UNSET
+    sha512: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -30,24 +32,24 @@ class Fingerprint:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "md5": md5,
-                "sha256": sha256,
-                "sha512": sha512,
-            }
-        )
+        field_dict.update({})
+        if md5 is not UNSET:
+            field_dict["md5"] = md5
+        if sha256 is not UNSET:
+            field_dict["sha256"] = sha256
+        if sha512 is not UNSET:
+            field_dict["sha512"] = sha512
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        md5 = d.pop("md5")
+        md5 = d.pop("md5", UNSET)
 
-        sha256 = d.pop("sha256")
+        sha256 = d.pop("sha256", UNSET)
 
-        sha512 = d.pop("sha512")
+        sha512 = d.pop("sha512", UNSET)
 
         fingerprint = cls(
             md5=md5,
