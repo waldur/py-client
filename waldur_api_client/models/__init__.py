@@ -4,6 +4,7 @@ from .access_subnet import AccessSubnet
 from .access_subnet_request import AccessSubnetRequest
 from .account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
 from .admin_announcement import AdminAnnouncement
+from .admin_announcement_maintenance_affected_offerings_item import AdminAnnouncementMaintenanceAffectedOfferingsItem
 from .admin_announcement_request import AdminAnnouncementRequest
 from .admin_announcement_type_enum import AdminAnnouncementTypeEnum
 from .admin_announcements_count_o_item import AdminAnnouncementsCountOItem
@@ -73,6 +74,7 @@ from .azure_sql_databases_list_field_item import AzureSqlDatabasesListFieldItem
 from .azure_sql_databases_list_state_item import AzureSqlDatabasesListStateItem
 from .azure_sql_databases_retrieve_field_item import AzureSqlDatabasesRetrieveFieldItem
 from .azure_sql_server import AzureSqlServer
+from .azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
 from .azure_sql_server_marketplace_offering_plugin_options_type_0 import (
     AzureSqlServerMarketplaceOfferingPluginOptionsType0,
 )
@@ -82,6 +84,7 @@ from .azure_sql_servers_list_field_item import AzureSqlServersListFieldItem
 from .azure_sql_servers_list_state_item import AzureSqlServersListStateItem
 from .azure_sql_servers_retrieve_field_item import AzureSqlServersRetrieveFieldItem
 from .azure_virtual_machine import AzureVirtualMachine
+from .azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
 from .azure_virtual_machine_marketplace_offering_plugin_options_type_0 import (
     AzureVirtualMachineMarketplaceOfferingPluginOptionsType0,
 )
@@ -467,6 +470,7 @@ from .marketplace_integration_statuses_count_o_item import MarketplaceIntegratio
 from .marketplace_integration_statuses_count_status_item import MarketplaceIntegrationStatusesCountStatusItem
 from .marketplace_integration_statuses_list_o_item import MarketplaceIntegrationStatusesListOItem
 from .marketplace_integration_statuses_list_status_item import MarketplaceIntegrationStatusesListStatusItem
+from .marketplace_managed_rancher_create_order_attributes import MarketplaceManagedRancherCreateOrderAttributes
 from .marketplace_offering_files_count_o_item import MarketplaceOfferingFilesCountOItem
 from .marketplace_offering_files_list_field_item import MarketplaceOfferingFilesListFieldItem
 from .marketplace_offering_files_list_o_item import MarketplaceOfferingFilesListOItem
@@ -546,6 +550,7 @@ from .marketplace_public_offerings_list_field_item import MarketplacePublicOffer
 from .marketplace_public_offerings_list_o_item import MarketplacePublicOfferingsListOItem
 from .marketplace_public_offerings_list_state_item import MarketplacePublicOfferingsListStateItem
 from .marketplace_public_offerings_retrieve_field_item import MarketplacePublicOfferingsRetrieveFieldItem
+from .marketplace_rancher_create_order_attributes import MarketplaceRancherCreateOrderAttributes
 from .marketplace_resources_count_o_item import MarketplaceResourcesCountOItem
 from .marketplace_resources_count_state_item import MarketplaceResourcesCountStateItem
 from .marketplace_resources_details_retrieve_field_item import MarketplaceResourcesDetailsRetrieveFieldItem
@@ -727,6 +732,7 @@ from .open_stack_image import OpenStackImage
 from .open_stack_instance import OpenStackInstance
 from .open_stack_instance_allowed_address_pairs_update_request import OpenStackInstanceAllowedAddressPairsUpdateRequest
 from .open_stack_instance_availability_zone import OpenStackInstanceAvailabilityZone
+from .open_stack_instance_create_order_attributes import OpenStackInstanceCreateOrderAttributes
 from .open_stack_instance_floating_i_ps_update_request import OpenStackInstanceFloatingIPsUpdateRequest
 from .open_stack_instance_marketplace_offering_plugin_options_type_0 import (
     OpenStackInstanceMarketplaceOfferingPluginOptionsType0,
@@ -798,6 +804,7 @@ from .open_stack_sub_net_marketplace_offering_plugin_options_type_0 import (
 from .open_stack_sub_net_request import OpenStackSubNetRequest
 from .open_stack_tenant import OpenStackTenant
 from .open_stack_tenant_change_password_request import OpenStackTenantChangePasswordRequest
+from .open_stack_tenant_create_order_attributes import OpenStackTenantCreateOrderAttributes
 from .open_stack_tenant_marketplace_offering_plugin_options_type_0 import (
     OpenStackTenantMarketplaceOfferingPluginOptionsType0,
 )
@@ -806,6 +813,7 @@ from .open_stack_tenant_quota_request import OpenStackTenantQuotaRequest
 from .open_stack_tenant_request import OpenStackTenantRequest
 from .open_stack_volume import OpenStackVolume
 from .open_stack_volume_availability_zone import OpenStackVolumeAvailabilityZone
+from .open_stack_volume_create_order_attributes import OpenStackVolumeCreateOrderAttributes
 from .open_stack_volume_extend_request import OpenStackVolumeExtendRequest
 from .open_stack_volume_marketplace_offering_plugin_options_type_0 import (
     OpenStackVolumeMarketplaceOfferingPluginOptionsType0,
@@ -1363,6 +1371,7 @@ from .slurm_allocations_list_field_item import SlurmAllocationsListFieldItem
 from .slurm_allocations_list_state_item import SlurmAllocationsListStateItem
 from .slurm_allocations_retrieve_field_item import SlurmAllocationsRetrieveFieldItem
 from .slurm_association import SlurmAssociation
+from .slurm_invoices_slurm_package_create_order_attributes import SlurmInvoicesSlurmPackageCreateOrderAttributes
 from .slurm_jobs_list_field_item import SlurmJobsListFieldItem
 from .slurm_jobs_retrieve_field_item import SlurmJobsRetrieveFieldItem
 from .smax_web_hook_receiver import SmaxWebHookReceiver
@@ -1424,6 +1433,16 @@ from .users_list_field_item import UsersListFieldItem
 from .users_list_o_item import UsersListOItem
 from .users_me_retrieve_field_item import UsersMeRetrieveFieldItem
 from .users_retrieve_field_item import UsersRetrieveFieldItem
+from .v_mware_virtual_machine_create_order_attributes import VMwareVirtualMachineCreateOrderAttributes
+from .v_mware_virtual_machine_create_order_attributes_guest_os_type_1 import (
+    VMwareVirtualMachineCreateOrderAttributesGuestOsType1,
+)
+from .v_mware_virtual_machine_create_order_attributes_guest_os_type_2_type_1 import (
+    VMwareVirtualMachineCreateOrderAttributesGuestOsType2Type1,
+)
+from .v_mware_virtual_machine_create_order_attributes_guest_os_type_3_type_1 import (
+    VMwareVirtualMachineCreateOrderAttributesGuestOsType3Type1,
+)
 from .version import Version
 from .visibility_enum import VisibilityEnum
 from .visible_invitation_details import VisibleInvitationDetails
@@ -1481,6 +1500,7 @@ __all__ = (
     "AccessSubnetRequest",
     "AccountNameGenerationPolicyEnum",
     "AdminAnnouncement",
+    "AdminAnnouncementMaintenanceAffectedOfferingsItem",
     "AdminAnnouncementRequest",
     "AdminAnnouncementsCountOItem",
     "AdminAnnouncementsCountTypeItem",
@@ -1544,6 +1564,7 @@ __all__ = (
     "AzureSqlDatabasesListStateItem",
     "AzureSqlDatabasesRetrieveFieldItem",
     "AzureSqlServer",
+    "AzureSQLServerCreateOrderAttributes",
     "AzureSqlServerMarketplaceOfferingPluginOptionsType0",
     "AzureSqlServerRequest",
     "AzureSqlServersCountStateItem",
@@ -1551,6 +1572,7 @@ __all__ = (
     "AzureSqlServersListStateItem",
     "AzureSqlServersRetrieveFieldItem",
     "AzureVirtualMachine",
+    "AzureVirtualMachineCreateOrderAttributes",
     "AzureVirtualMachineMarketplaceOfferingPluginOptionsType0",
     "AzureVirtualMachineRequest",
     "AzureVirtualmachinesCountStateItem",
@@ -1924,6 +1946,7 @@ __all__ = (
     "MarketplaceIntegrationStatusesCountStatusItem",
     "MarketplaceIntegrationStatusesListOItem",
     "MarketplaceIntegrationStatusesListStatusItem",
+    "MarketplaceManagedRancherCreateOrderAttributes",
     "MarketplaceOfferingFilesCountOItem",
     "MarketplaceOfferingFilesListFieldItem",
     "MarketplaceOfferingFilesListOItem",
@@ -1989,6 +2012,7 @@ __all__ = (
     "MarketplacePublicOfferingsListOItem",
     "MarketplacePublicOfferingsListStateItem",
     "MarketplacePublicOfferingsRetrieveFieldItem",
+    "MarketplaceRancherCreateOrderAttributes",
     "MarketplaceResourcesCountOItem",
     "MarketplaceResourcesCountStateItem",
     "MarketplaceResourcesDetailsRetrieveFieldItem",
@@ -2169,6 +2193,7 @@ __all__ = (
     "OpenStackInstance",
     "OpenStackInstanceAllowedAddressPairsUpdateRequest",
     "OpenStackInstanceAvailabilityZone",
+    "OpenStackInstanceCreateOrderAttributes",
     "OpenStackInstanceFloatingIPsUpdateRequest",
     "OpenStackInstanceMarketplaceOfferingPluginOptionsType0",
     "OpenStackInstancePortsUpdateRequest",
@@ -2258,6 +2283,7 @@ __all__ = (
     "OpenstackSubnetsRetrieveFieldItem",
     "OpenStackTenant",
     "OpenStackTenantChangePasswordRequest",
+    "OpenStackTenantCreateOrderAttributes",
     "OpenStackTenantMarketplaceOfferingPluginOptionsType0",
     "OpenStackTenantQuota",
     "OpenStackTenantQuotaRequest",
@@ -2270,6 +2296,7 @@ __all__ = (
     "OpenstackTenantsRetrieveFieldItem",
     "OpenStackVolume",
     "OpenStackVolumeAvailabilityZone",
+    "OpenStackVolumeCreateOrderAttributes",
     "OpenStackVolumeExtendRequest",
     "OpenStackVolumeMarketplaceOfferingPluginOptionsType0",
     "OpenStackVolumeRequest",
@@ -2744,6 +2771,7 @@ __all__ = (
     "SlurmAllocationsRetrieveFieldItem",
     "SlurmAllocationUserUsage",
     "SlurmAssociation",
+    "SlurmInvoicesSlurmPackageCreateOrderAttributes",
     "SlurmJobsListFieldItem",
     "SlurmJobsRetrieveFieldItem",
     "SmaxWebHookReceiver",
@@ -2838,6 +2866,10 @@ __all__ = (
     "VmwareTemplate",
     "VmwareVirtualMachine",
     "VmwareVirtualMachineCountStateItem",
+    "VMwareVirtualMachineCreateOrderAttributes",
+    "VMwareVirtualMachineCreateOrderAttributesGuestOsType1",
+    "VMwareVirtualMachineCreateOrderAttributesGuestOsType2Type1",
+    "VMwareVirtualMachineCreateOrderAttributesGuestOsType3Type1",
     "VmwareVirtualMachineListFieldItem",
     "VmwareVirtualMachineListStateItem",
     "VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0",

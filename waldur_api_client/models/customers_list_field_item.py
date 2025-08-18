@@ -32,7 +32,6 @@ class CustomersListFieldItem(str, Enum):
     MAX_SERVICE_ACCOUNTS = "max_service_accounts"
     NAME = "name"
     NATIVE_NAME = "native_name"
-    ORGANIZATION_GROUPS = "organization_groups"
     PAYMENT_PROFILES = "payment_profiles"
     PHONE_NUMBER = "phone_number"
     POSTAL = "postal"
@@ -43,7 +42,6 @@ class CustomersListFieldItem(str, Enum):
     SLUG = "slug"
     SPONSOR_NUMBER = "sponsor_number"
     URL = "url"
-    USERS_COUNT = "users_count"
     UUID = "uuid"
     VAT_CODE = "vat_code"
 

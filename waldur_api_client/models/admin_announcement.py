@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,12 @@ from dateutil.parser import isoparse
 
 from ..models.admin_announcement_type_enum import AdminAnnouncementTypeEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.admin_announcement_maintenance_affected_offerings_item import (
+        AdminAnnouncementMaintenanceAffectedOfferingsItem,
+    )
+
 
 T = TypeVar("T", bound="AdminAnnouncement")
 
@@ -24,6 +30,14 @@ class AdminAnnouncement:
         is_active (Union[Unset, bool]):
         type_ (Union[Unset, AdminAnnouncementTypeEnum]):
         created (Union[Unset, datetime.datetime]):
+        maintenance_uuid (Union[Unset, str]):
+        maintenance_name (Union[Unset, str]):
+        maintenance_type (Union[Unset, str]):
+        maintenance_state (Union[Unset, str]):
+        maintenance_scheduled_start (Union[Unset, datetime.datetime]):
+        maintenance_scheduled_end (Union[Unset, datetime.datetime]):
+        maintenance_service_provider (Union[Unset, str]):
+        maintenance_affected_offerings (Union[Unset, list['AdminAnnouncementMaintenanceAffectedOfferingsItem']]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -33,6 +47,14 @@ class AdminAnnouncement:
     is_active: Union[Unset, bool] = UNSET
     type_: Union[Unset, AdminAnnouncementTypeEnum] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
+    maintenance_uuid: Union[Unset, str] = UNSET
+    maintenance_name: Union[Unset, str] = UNSET
+    maintenance_type: Union[Unset, str] = UNSET
+    maintenance_state: Union[Unset, str] = UNSET
+    maintenance_scheduled_start: Union[Unset, datetime.datetime] = UNSET
+    maintenance_scheduled_end: Union[Unset, datetime.datetime] = UNSET
+    maintenance_service_provider: Union[Unset, str] = UNSET
+    maintenance_affected_offerings: Union[Unset, list["AdminAnnouncementMaintenanceAffectedOfferingsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,6 +82,31 @@ class AdminAnnouncement:
         if not isinstance(self.created, Unset):
             created = self.created.isoformat()
 
+        maintenance_uuid = self.maintenance_uuid
+
+        maintenance_name = self.maintenance_name
+
+        maintenance_type = self.maintenance_type
+
+        maintenance_state = self.maintenance_state
+
+        maintenance_scheduled_start: Union[Unset, str] = UNSET
+        if not isinstance(self.maintenance_scheduled_start, Unset):
+            maintenance_scheduled_start = self.maintenance_scheduled_start.isoformat()
+
+        maintenance_scheduled_end: Union[Unset, str] = UNSET
+        if not isinstance(self.maintenance_scheduled_end, Unset):
+            maintenance_scheduled_end = self.maintenance_scheduled_end.isoformat()
+
+        maintenance_service_provider = self.maintenance_service_provider
+
+        maintenance_affected_offerings: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.maintenance_affected_offerings, Unset):
+            maintenance_affected_offerings = []
+            for maintenance_affected_offerings_item_data in self.maintenance_affected_offerings:
+                maintenance_affected_offerings_item = maintenance_affected_offerings_item_data.to_dict()
+                maintenance_affected_offerings.append(maintenance_affected_offerings_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -77,11 +124,31 @@ class AdminAnnouncement:
             field_dict["type"] = type_
         if created is not UNSET:
             field_dict["created"] = created
+        if maintenance_uuid is not UNSET:
+            field_dict["maintenance_uuid"] = maintenance_uuid
+        if maintenance_name is not UNSET:
+            field_dict["maintenance_name"] = maintenance_name
+        if maintenance_type is not UNSET:
+            field_dict["maintenance_type"] = maintenance_type
+        if maintenance_state is not UNSET:
+            field_dict["maintenance_state"] = maintenance_state
+        if maintenance_scheduled_start is not UNSET:
+            field_dict["maintenance_scheduled_start"] = maintenance_scheduled_start
+        if maintenance_scheduled_end is not UNSET:
+            field_dict["maintenance_scheduled_end"] = maintenance_scheduled_end
+        if maintenance_service_provider is not UNSET:
+            field_dict["maintenance_service_provider"] = maintenance_service_provider
+        if maintenance_affected_offerings is not UNSET:
+            field_dict["maintenance_affected_offerings"] = maintenance_affected_offerings
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.admin_announcement_maintenance_affected_offerings_item import (
+            AdminAnnouncementMaintenanceAffectedOfferingsItem,
+        )
+
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
         uuid: Union[Unset, UUID]
@@ -122,6 +189,39 @@ class AdminAnnouncement:
         else:
             created = isoparse(_created)
 
+        maintenance_uuid = d.pop("maintenance_uuid", UNSET)
+
+        maintenance_name = d.pop("maintenance_name", UNSET)
+
+        maintenance_type = d.pop("maintenance_type", UNSET)
+
+        maintenance_state = d.pop("maintenance_state", UNSET)
+
+        _maintenance_scheduled_start = d.pop("maintenance_scheduled_start", UNSET)
+        maintenance_scheduled_start: Union[Unset, datetime.datetime]
+        if isinstance(_maintenance_scheduled_start, Unset):
+            maintenance_scheduled_start = UNSET
+        else:
+            maintenance_scheduled_start = isoparse(_maintenance_scheduled_start)
+
+        _maintenance_scheduled_end = d.pop("maintenance_scheduled_end", UNSET)
+        maintenance_scheduled_end: Union[Unset, datetime.datetime]
+        if isinstance(_maintenance_scheduled_end, Unset):
+            maintenance_scheduled_end = UNSET
+        else:
+            maintenance_scheduled_end = isoparse(_maintenance_scheduled_end)
+
+        maintenance_service_provider = d.pop("maintenance_service_provider", UNSET)
+
+        maintenance_affected_offerings = []
+        _maintenance_affected_offerings = d.pop("maintenance_affected_offerings", UNSET)
+        for maintenance_affected_offerings_item_data in _maintenance_affected_offerings or []:
+            maintenance_affected_offerings_item = AdminAnnouncementMaintenanceAffectedOfferingsItem.from_dict(
+                maintenance_affected_offerings_item_data
+            )
+
+            maintenance_affected_offerings.append(maintenance_affected_offerings_item)
+
         admin_announcement = cls(
             uuid=uuid,
             description=description,
@@ -130,6 +230,14 @@ class AdminAnnouncement:
             is_active=is_active,
             type_=type_,
             created=created,
+            maintenance_uuid=maintenance_uuid,
+            maintenance_name=maintenance_name,
+            maintenance_type=maintenance_type,
+            maintenance_state=maintenance_state,
+            maintenance_scheduled_start=maintenance_scheduled_start,
+            maintenance_scheduled_end=maintenance_scheduled_end,
+            maintenance_service_provider=maintenance_service_provider,
+            maintenance_affected_offerings=maintenance_affected_offerings,
         )
 
         admin_announcement.additional_properties = d
