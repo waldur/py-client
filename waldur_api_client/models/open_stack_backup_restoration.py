@@ -12,7 +12,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.open_stack_nested_floating_ip import OpenStackNestedFloatingIP
     from ..models.open_stack_nested_port import OpenStackNestedPort
-    from ..models.open_stack_nested_security_group import OpenStackNestedSecurityGroup
+    from ..models.open_stack_nested_security_group_item import OpenStackNestedSecurityGroupItem
 
 
 T = TypeVar("T", bound="OpenStackBackupRestoration")
@@ -28,7 +28,7 @@ class OpenStackBackupRestoration:
         flavor (Union[Unset, str]):
         name (Union[Unset, str]): New instance name. Leave blank to use source instance name.
         floating_ips (Union[Unset, list['OpenStackNestedFloatingIP']]):
-        security_groups (Union[Unset, list['OpenStackNestedSecurityGroup']]):
+        security_groups (Union[Unset, list[list['OpenStackNestedSecurityGroupItem']]]):
         ports (Union[Unset, list['OpenStackNestedPort']]):
     """
 
@@ -38,7 +38,7 @@ class OpenStackBackupRestoration:
     flavor: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     floating_ips: Union[Unset, list["OpenStackNestedFloatingIP"]] = UNSET
-    security_groups: Union[Unset, list["OpenStackNestedSecurityGroup"]] = UNSET
+    security_groups: Union[Unset, list[list["OpenStackNestedSecurityGroupItem"]]] = UNSET
     ports: Union[Unset, list["OpenStackNestedPort"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -64,11 +64,17 @@ class OpenStackBackupRestoration:
                 floating_ips_item = floating_ips_item_data.to_dict()
                 floating_ips.append(floating_ips_item)
 
-        security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        security_groups: Union[Unset, list[list[dict[str, Any]]]] = UNSET
         if not isinstance(self.security_groups, Unset):
             security_groups = []
             for security_groups_item_data in self.security_groups:
-                security_groups_item = security_groups_item_data.to_dict()
+                security_groups_item = []
+                for componentsschemas_open_stack_nested_security_group_item_data in security_groups_item_data:
+                    componentsschemas_open_stack_nested_security_group_item = (
+                        componentsschemas_open_stack_nested_security_group_item_data.to_dict()
+                    )
+                    security_groups_item.append(componentsschemas_open_stack_nested_security_group_item)
+
                 security_groups.append(security_groups_item)
 
         ports: Union[Unset, list[dict[str, Any]]] = UNSET
@@ -104,7 +110,7 @@ class OpenStackBackupRestoration:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_nested_floating_ip import OpenStackNestedFloatingIP
         from ..models.open_stack_nested_port import OpenStackNestedPort
-        from ..models.open_stack_nested_security_group import OpenStackNestedSecurityGroup
+        from ..models.open_stack_nested_security_group_item import OpenStackNestedSecurityGroupItem
 
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
@@ -137,7 +143,14 @@ class OpenStackBackupRestoration:
         security_groups = []
         _security_groups = d.pop("security_groups", UNSET)
         for security_groups_item_data in _security_groups or []:
-            security_groups_item = OpenStackNestedSecurityGroup.from_dict(security_groups_item_data)
+            security_groups_item = []
+            _security_groups_item = security_groups_item_data
+            for componentsschemas_open_stack_nested_security_group_item_data in _security_groups_item:
+                componentsschemas_open_stack_nested_security_group_item = OpenStackNestedSecurityGroupItem.from_dict(
+                    componentsschemas_open_stack_nested_security_group_item_data
+                )
+
+                security_groups_item.append(componentsschemas_open_stack_nested_security_group_item)
 
             security_groups.append(security_groups_item)
 

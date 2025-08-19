@@ -9,6 +9,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
     from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
+    from ..models.open_stack_nested_security_group_request_item import OpenStackNestedSecurityGroupRequestItem
 
 
 T = TypeVar("T", bound="OpenStackInstanceCreateOrderAttributes")
@@ -26,6 +27,7 @@ class OpenStackInstanceCreateOrderAttributes:
             ports (list['OpenStackNestedPortRequest']):
             system_volume_size (int):
             description (Union[Unset, str]):
+            security_groups (Union[Unset, list[list['OpenStackNestedSecurityGroupRequestItem']]]):
             floating_ips (Union[Unset, list['OpenStackNestedFloatingIPRequest']]):
             system_volume_type (Union[None, Unset, str]):
             data_volume_size (Union[Unset, int]):
@@ -42,6 +44,7 @@ class OpenStackInstanceCreateOrderAttributes:
     ports: list["OpenStackNestedPortRequest"]
     system_volume_size: int
     description: Union[Unset, str] = UNSET
+    security_groups: Union[Unset, list[list["OpenStackNestedSecurityGroupRequestItem"]]] = UNSET
     floating_ips: Union[Unset, list["OpenStackNestedFloatingIPRequest"]] = UNSET
     system_volume_type: Union[None, Unset, str] = UNSET
     data_volume_size: Union[Unset, int] = UNSET
@@ -67,6 +70,19 @@ class OpenStackInstanceCreateOrderAttributes:
         system_volume_size = self.system_volume_size
 
         description = self.description
+
+        security_groups: Union[Unset, list[list[dict[str, Any]]]] = UNSET
+        if not isinstance(self.security_groups, Unset):
+            security_groups = []
+            for security_groups_item_data in self.security_groups:
+                security_groups_item = []
+                for componentsschemas_open_stack_nested_security_group_request_item_data in security_groups_item_data:
+                    componentsschemas_open_stack_nested_security_group_request_item = (
+                        componentsschemas_open_stack_nested_security_group_request_item_data.to_dict()
+                    )
+                    security_groups_item.append(componentsschemas_open_stack_nested_security_group_request_item)
+
+                security_groups.append(security_groups_item)
 
         floating_ips: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.floating_ips, Unset):
@@ -114,6 +130,8 @@ class OpenStackInstanceCreateOrderAttributes:
         )
         if description is not UNSET:
             field_dict["description"] = description
+        if security_groups is not UNSET:
+            field_dict["security_groups"] = security_groups
         if floating_ips is not UNSET:
             field_dict["floating_ips"] = floating_ips
         if system_volume_type is not UNSET:
@@ -137,6 +155,7 @@ class OpenStackInstanceCreateOrderAttributes:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
         from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
+        from ..models.open_stack_nested_security_group_request_item import OpenStackNestedSecurityGroupRequestItem
 
         d = dict(src_dict)
         name = d.pop("name")
@@ -155,6 +174,22 @@ class OpenStackInstanceCreateOrderAttributes:
         system_volume_size = d.pop("system_volume_size")
 
         description = d.pop("description", UNSET)
+
+        security_groups = []
+        _security_groups = d.pop("security_groups", UNSET)
+        for security_groups_item_data in _security_groups or []:
+            security_groups_item = []
+            _security_groups_item = security_groups_item_data
+            for componentsschemas_open_stack_nested_security_group_request_item_data in _security_groups_item:
+                componentsschemas_open_stack_nested_security_group_request_item = (
+                    OpenStackNestedSecurityGroupRequestItem.from_dict(
+                        componentsschemas_open_stack_nested_security_group_request_item_data
+                    )
+                )
+
+                security_groups_item.append(componentsschemas_open_stack_nested_security_group_request_item)
+
+            security_groups.append(security_groups_item)
 
         floating_ips = []
         _floating_ips = d.pop("floating_ips", UNSET)
@@ -205,6 +240,7 @@ class OpenStackInstanceCreateOrderAttributes:
             ports=ports,
             system_volume_size=system_volume_size,
             description=description,
+            security_groups=security_groups,
             floating_ips=floating_ips,
             system_volume_type=system_volume_type,
             data_volume_size=data_volume_size,

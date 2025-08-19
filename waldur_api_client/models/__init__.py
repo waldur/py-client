@@ -646,8 +646,6 @@ from .nested_screenshot import NestedScreenshot
 from .nested_screenshot_request import NestedScreenshotRequest
 from .nested_section import NestedSection
 from .nested_section_request import NestedSectionRequest
-from .nested_security_group_rule import NestedSecurityGroupRule
-from .nested_security_group_rule_request import NestedSecurityGroupRuleRequest
 from .network_rbac_policy import NetworkRBACPolicy
 from .network_rbac_policy_request import NetworkRBACPolicyRequest
 from .node_disk_driver_enum import NodeDiskDriverEnum
@@ -745,7 +743,8 @@ from .open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequ
 from .open_stack_nested_instance import OpenStackNestedInstance
 from .open_stack_nested_port import OpenStackNestedPort
 from .open_stack_nested_port_request import OpenStackNestedPortRequest
-from .open_stack_nested_security_group import OpenStackNestedSecurityGroup
+from .open_stack_nested_security_group_item import OpenStackNestedSecurityGroupItem
+from .open_stack_nested_security_group_request_item import OpenStackNestedSecurityGroupRequestItem
 from .open_stack_nested_server_group import OpenStackNestedServerGroup
 from .open_stack_nested_sub_net import OpenStackNestedSubNet
 from .open_stack_nested_sub_net_request import OpenStackNestedSubNetRequest
@@ -1144,6 +1143,12 @@ from .provider_requested_offering import ProviderRequestedOffering
 from .provider_requested_resource import ProviderRequestedResource
 from .provider_user import ProviderUser
 from .public_call import PublicCall
+from .public_maintenance_announcement import PublicMaintenanceAnnouncement
+from .public_maintenance_announcement_state_enum import PublicMaintenanceAnnouncementStateEnum
+from .public_maintenance_announcements_count_o_item import PublicMaintenanceAnnouncementsCountOItem
+from .public_maintenance_announcements_count_state_item import PublicMaintenanceAnnouncementsCountStateItem
+from .public_maintenance_announcements_list_o_item import PublicMaintenanceAnnouncementsListOItem
+from .public_maintenance_announcements_list_state_item import PublicMaintenanceAnnouncementsListStateItem
 from .public_offering_details import PublicOfferingDetails
 from .public_offering_details_attributes import PublicOfferingDetailsAttributes
 from .pull_marketplace_script_resource_request import PullMarketplaceScriptResourceRequest
@@ -2098,8 +2103,6 @@ __all__ = (
     "NestedScreenshotRequest",
     "NestedSection",
     "NestedSectionRequest",
-    "NestedSecurityGroupRule",
-    "NestedSecurityGroupRuleRequest",
     "NetworkRBACPolicy",
     "NetworkRBACPolicyRequest",
     "NodeDiskDriverEnum",
@@ -2210,7 +2213,8 @@ __all__ = (
     "OpenStackNestedInstance",
     "OpenStackNestedPort",
     "OpenStackNestedPortRequest",
-    "OpenStackNestedSecurityGroup",
+    "OpenStackNestedSecurityGroupItem",
+    "OpenStackNestedSecurityGroupRequestItem",
     "OpenStackNestedServerGroup",
     "OpenStackNestedSubNet",
     "OpenStackNestedSubNetRequest",
@@ -2554,6 +2558,12 @@ __all__ = (
     "ProviderRequestedResource",
     "ProviderUser",
     "PublicCall",
+    "PublicMaintenanceAnnouncement",
+    "PublicMaintenanceAnnouncementsCountOItem",
+    "PublicMaintenanceAnnouncementsCountStateItem",
+    "PublicMaintenanceAnnouncementsListOItem",
+    "PublicMaintenanceAnnouncementsListStateItem",
+    "PublicMaintenanceAnnouncementStateEnum",
     "PublicOfferingDetails",
     "PublicOfferingDetailsAttributes",
     "PullMarketplaceScriptResourceRequest",
