@@ -18,7 +18,7 @@ class OpenStackInstanceAvailabilityZone:
         uuid (UUID):
         name (str):
         settings (Union[None, Unset, str]):
-        available (Union[Unset, bool]):
+        available (Union[Unset, bool]): Indicates whether this availability zone is available for instance provisioning
     """
 
     url: str

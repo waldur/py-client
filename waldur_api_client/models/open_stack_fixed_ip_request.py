@@ -11,8 +11,8 @@ T = TypeVar("T", bound="OpenStackFixedIpRequest")
 class OpenStackFixedIpRequest:
     """
     Attributes:
-        ip_address (str):
-        subnet_id (str):
+        ip_address (str): IP address to assign to the port
+        subnet_id (str): ID of the subnet in which to assign the IP address
     """
 
     ip_address: str

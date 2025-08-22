@@ -15,8 +15,9 @@ T = TypeVar("T", bound="OpenStackInstanceAllowedAddressPairsUpdateRequest")
 class OpenStackInstanceAllowedAddressPairsUpdateRequest:
     """
     Attributes:
-        subnet (str):
-        allowed_address_pairs (list['OpenStackAllowedAddressPairRequest']):
+        subnet (str): The subnet to update allowed address pairs for.
+        allowed_address_pairs (list['OpenStackAllowedAddressPairRequest']): List of allowed address pairs to set on the
+            port. Each pair should contain 'ip_address' and optional 'mac_address'.
     """
 
     subnet: str

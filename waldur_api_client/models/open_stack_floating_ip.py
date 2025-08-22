@@ -49,13 +49,14 @@ class OpenStackFloatingIP:
         backend_id (Union[Unset, str]):
         access_url (Union[None, Unset, str]):
         runtime_state (Union[Unset, str]):
-        address (Union[None, Unset, str]):
-        backend_network_id (Union[Unset, str]):
-        tenant (Union[Unset, str]):
+        address (Union[None, Unset, str]): The public IPv4 address of the floating IP
+        backend_network_id (Union[Unset, str]): ID of network in OpenStack where this floating IP is allocated
+        tenant (Union[Unset, str]): OpenStack tenant this floating IP belongs to
         tenant_name (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         port (Union[Unset, str]):
-        external_address (Union[None, Unset, str]): An optional address that maps to floating IP's address
+        external_address (Union[None, Unset, str]): Optional address that maps to floating IP's address in external
+            networks
         port_fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
         instance_uuid (Union[None, Unset, str]):
         instance_name (Union[None, Unset, str]):

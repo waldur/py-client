@@ -17,13 +17,13 @@ class OpenStackNestedVolume:
         url (Union[Unset, str]):
         uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
-        image_name (Union[Unset, str]):
+        image_name (Union[Unset, str]): Name of the image this volume was created from
         state (Union[Unset, str]):
-        bootable (Union[Unset, bool]):
+        bootable (Union[Unset, bool]): Indicates if this volume can be used to boot an instance
         size (Union[Unset, int]): Size in MiB
         device (Union[Unset, str]): Name of volume as instance device e.g. /dev/vdb.
         resource_type (Union[Unset, str]):
-        type_ (Union[None, Unset, str]):
+        type_ (Union[None, Unset, str]): Type of the volume (e.g. SSD, HDD)
         type_name (Union[Unset, str]):
         marketplace_resource_uuid (Union[None, Unset, str]):
     """

@@ -53,7 +53,7 @@ class OpenStackBackup:
         access_url (Union[None, Unset, str]):
         kept_until (Union[None, Unset, datetime.datetime]): Guaranteed time of backup retention. If null - keep forever.
         metadata (Union[Unset, Any]):
-        instance (Union[Unset, str]):
+        instance (Union[Unset, str]): Instance that this backup is created from
         instance_name (Union[Unset, str]):
         instance_marketplace_uuid (Union[Unset, UUID]):
         restorations (Union[Unset, list['OpenStackBackupRestoration']]):

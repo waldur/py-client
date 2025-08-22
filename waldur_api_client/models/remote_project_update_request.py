@@ -23,12 +23,12 @@ class RemoteProjectUpdateRequest:
         offering_name (str):
         offering_uuid (UUID):
         created (datetime.datetime):
-        reviewed_at (Union[None, datetime.datetime]):
+        reviewed_at (Union[None, datetime.datetime]): Timestamp when the review was completed
         reviewed_by_full_name (str):
         reviewed_by_uuid (UUID):
         old_oecd_fos_2007_label (str):
         new_oecd_fos_2007_label (str):
-        review_comment (Union[None, Unset, str]):
+        review_comment (Union[None, Unset, str]): Optional comment provided during review
         old_name (Union[Unset, str]):
         new_name (Union[Unset, str]):
         old_description (Union[Unset, str]):

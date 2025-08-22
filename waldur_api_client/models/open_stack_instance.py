@@ -34,7 +34,7 @@ class OpenStackInstance:
         name (Union[Unset, str]):
         description (Union[Unset, str]):
         service_name (Union[Unset, str]):
-        service_settings (Union[Unset, str]):
+        service_settings (Union[Unset, str]): OpenStack provider settings
         service_settings_uuid (Union[Unset, UUID]):
         service_settings_state (Union[Unset, str]):
         service_settings_error_message (Union[Unset, str]):
@@ -51,7 +51,7 @@ class OpenStackInstance:
         state (Union[Unset, CoreStates]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        backend_id (Union[None, Unset, str]):
+        backend_id (Union[None, Unset, str]): Instance ID in the OpenStack backend
         access_url (Union[None, Unset, str]):
         start_time (Union[None, Unset, datetime.datetime]):
         cores (Union[Unset, int]): Number of cores in a VM
@@ -68,21 +68,23 @@ class OpenStackInstance:
         key_fingerprint (Union[Unset, str]):
         image_name (Union[Unset, str]):
         flavor_disk (Union[Unset, int]): Flavor disk size in MiB
-        flavor_name (Union[Unset, str]):
-        volumes (Union[Unset, list['OpenStackNestedVolume']]):
-        security_groups (Union[Unset, list['OpenStackNestedSecurityGroup']]):
-        server_group (Union['OpenStackNestedServerGroup', None, Unset]):
-        floating_ips (Union[Unset, list['OpenStackNestedFloatingIP']]):
-        ports (Union[Unset, list['OpenStackNestedPort']]):
-        availability_zone (Union[None, Unset, str]):
-        availability_zone_name (Union[Unset, str]):
-        connect_directly_to_external_network (Union[Unset, bool]):
+        flavor_name (Union[Unset, str]): Name of the flavor used by this instance
+        volumes (Union[Unset, list['OpenStackNestedVolume']]): List of volumes attached to the instance
+        security_groups (Union[Unset, list['OpenStackNestedSecurityGroup']]): List of security groups to apply to the
+            instance
+        server_group (Union['OpenStackNestedServerGroup', None, Unset]): Server group for instance scheduling policy
+        floating_ips (Union[Unset, list['OpenStackNestedFloatingIP']]): Floating IPs to assign to the instance
+        ports (Union[Unset, list['OpenStackNestedPort']]): Network ports to attach to the instance
+        availability_zone (Union[None, Unset, str]): Availability zone where this instance is located
+        availability_zone_name (Union[Unset, str]): Name of the availability zone where instance is located
+        connect_directly_to_external_network (Union[Unset, bool]): If True, instance will be connected directly to
+            external network
         runtime_state (Union[Unset, str]):
         action (Union[Unset, str]):
-        action_details (Union[Unset, Any]):
-        tenant_uuid (Union[Unset, UUID]):
-        hypervisor_hostname (Union[Unset, str]):
-        tenant (Union[Unset, str]):
+        action_details (Union[Unset, Any]): Details about ongoing or completed actions
+        tenant_uuid (Union[Unset, UUID]): UUID of the OpenStack tenant
+        hypervisor_hostname (Union[Unset, str]): Name of the hypervisor hosting this instance
+        tenant (Union[Unset, str]): The OpenStack tenant to create the instance in
         external_address (Union[Unset, list[str]]):
         rancher_cluster (Union['RancherClusterReference', None, Unset]):
         marketplace_offering_uuid (Union[None, Unset, str]):

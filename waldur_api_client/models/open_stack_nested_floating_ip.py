@@ -20,14 +20,14 @@ class OpenStackNestedFloatingIP:
     Attributes:
         url (Union[Unset, str]):
         uuid (Union[Unset, UUID]):
-        address (Union[None, Unset, str]):
+        address (Union[None, Unset, str]): The public IPv4 address of the floating IP
         port_fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
-        port_mac_address (Union[None, Unset, str]):
+        port_mac_address (Union[None, Unset, str]): MAC address of the port
         subnet (Union[Unset, str]):
         subnet_uuid (Union[Unset, UUID]):
         subnet_name (Union[Unset, str]):
         subnet_description (Union[Unset, str]):
-        subnet_cidr (Union[Unset, str]):
+        subnet_cidr (Union[Unset, str]): IPv4 network address in CIDR format (e.g. 192.168.0.0/24)
     """
 
     url: Union[Unset, str] = UNSET

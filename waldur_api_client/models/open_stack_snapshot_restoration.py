@@ -19,7 +19,7 @@ class OpenStackSnapshotRestoration:
         uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]): New volume description.
-        volume (Union[Unset, str]):
+        volume (Union[Unset, str]): Volume that is being restored from the snapshot
         volume_name (Union[Unset, str]):
         volume_state (Union[Unset, str]):
         volume_runtime_state (Union[Unset, str]):

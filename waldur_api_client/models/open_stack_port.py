@@ -48,24 +48,25 @@ class OpenStackPort:
         state (Union[Unset, CoreStates]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        backend_id (Union[None, Unset, str]):
+        backend_id (Union[None, Unset, str]): Port ID in OpenStack
         access_url (Union[None, Unset, str]):
         fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
-        mac_address (Union[Unset, str]):
+        mac_address (Union[Unset, str]): MAC address of the port
         allowed_address_pairs (Union[Unset, list['OpenStackAllowedAddressPair']]):
-        tenant (Union[Unset, str]):
+        tenant (Union[Unset, str]): OpenStack tenant this port belongs to
         tenant_name (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
-        network (Union[None, Unset, str]):
+        network (Union[None, Unset, str]): Network to which this port belongs
         network_name (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
         floating_ips (Union[Unset, list[str]]):
-        device_id (Union[None, Unset, str]):
-        device_owner (Union[None, Unset, str]):
-        port_security_enabled (Union[Unset, bool]):
+        device_id (Union[None, Unset, str]): ID of device (instance, router etc) to which this port is connected
+        device_owner (Union[None, Unset, str]): Entity that uses this port (e.g. network:router_interface)
+        port_security_enabled (Union[Unset, bool]): If True, security groups and rules will be applied to this port
         security_groups (Union[Unset, list['OpenStackPortNestedSecurityGroup']]):
-        admin_state_up (Union[None, Unset, bool]):
-        status (Union[None, Unset, str]):
+        admin_state_up (Union[None, Unset, bool]): Administrative state of the port. If down, port does not forward
+            packets
+        status (Union[None, Unset, str]): Port status in OpenStack (e.g. ACTIVE, DOWN)
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_plugin_options (Union['OpenStackPortMarketplaceOfferingPluginOptionsType0', None, Unset]):

@@ -13,8 +13,8 @@ T = TypeVar("T", bound="OpenStackFixedIp")
 class OpenStackFixedIp:
     """
     Attributes:
-        ip_address (Union[Unset, str]):
-        subnet_id (Union[Unset, str]):
+        ip_address (Union[Unset, str]): IP address to assign to the port
+        subnet_id (Union[Unset, str]): ID of the subnet in which to assign the IP address
     """
 
     ip_address: Union[Unset, str] = UNSET

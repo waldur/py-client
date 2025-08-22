@@ -11,7 +11,7 @@ T = TypeVar("T", bound="VolumeAttachRequest")
 class VolumeAttachRequest:
     """
     Attributes:
-        instance (str):
+        instance (str): Instance that this volume is attached to, if any
     """
 
     instance: str

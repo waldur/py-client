@@ -17,10 +17,10 @@ class OpenStackVolumeCreateOrderAttributes:
         Attributes:
             name (str):
             description (Union[Unset, str]):
-            image (Union[None, Unset, str]):
+            image (Union[None, Unset, str]): Image that this volume was created from, if any
             size (Union[None, Unset, int]): Size in MiB
-            availability_zone (Union[None, Unset, str]):
-            type_ (Union[None, Unset, str]):
+            availability_zone (Union[None, Unset, str]): Availability zone where this volume is located
+            type_ (Union[None, Unset, str]): Type of the volume (e.g. SSD, HDD)
     """
 
     name: str

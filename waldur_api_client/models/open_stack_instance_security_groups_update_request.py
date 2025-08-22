@@ -11,7 +11,7 @@ T = TypeVar("T", bound="OpenStackInstanceSecurityGroupsUpdateRequest")
 class OpenStackInstanceSecurityGroupsUpdateRequest:
     """
     Attributes:
-        security_groups (list[str]):
+        security_groups (list[str]): List of security groups to be assigned to the instance.
     """
 
     security_groups: list[str]

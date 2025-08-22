@@ -19,9 +19,10 @@ class OpenStackInstanceRequest:
     Attributes:
         name (str):
         description (Union[Unset, str]):
-        system_volume_type (Union[None, Unset, str]):
-        data_volume_type (Union[None, Unset, str]):
-        data_volumes (Union[Unset, list['OpenStackDataVolumeRequest']]):
+        system_volume_type (Union[None, Unset, str]): Volume type for the system volume
+        data_volume_type (Union[None, Unset, str]): Volume type for the data volume
+        data_volumes (Union[Unset, list['OpenStackDataVolumeRequest']]): Additional data volumes to attach to the
+            instance
     """
 
     name: str

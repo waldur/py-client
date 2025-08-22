@@ -22,8 +22,8 @@ class OpenStackBackendInstance:
         key_name (Union[Unset, str]):
         start_time (Union[None, Unset, datetime.datetime]):
         runtime_state (Union[Unset, str]):
-        backend_id (Union[None, Unset, str]):
-        hypervisor_hostname (Union[Unset, str]):
+        backend_id (Union[None, Unset, str]): Instance ID in the OpenStack backend
+        hypervisor_hostname (Union[Unset, str]): Name of the hypervisor hosting this instance
     """
 
     name: str

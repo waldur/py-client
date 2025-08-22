@@ -21,11 +21,11 @@ class OpenStackNestedSubNet:
         uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         description (Union[Unset, str]):
-        cidr (Union[Unset, str]):
-        gateway_ip (Union[None, Unset, str]):
+        cidr (Union[Unset, str]): IPv4 network address in CIDR format (e.g. 192.168.0.0/24)
+        gateway_ip (Union[None, Unset, str]): IP address of the gateway for this subnet
         allocation_pools (Union[Unset, list['OpenStackSubNetAllocationPool']]):
-        ip_version (Union[Unset, int]):
-        enable_dhcp (Union[Unset, bool]):
+        ip_version (Union[Unset, int]): IP protocol version (4 or 6)
+        enable_dhcp (Union[Unset, bool]): If True, DHCP service will be enabled on this subnet
     """
 
     uuid: Union[Unset, UUID] = UNSET

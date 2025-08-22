@@ -19,9 +19,9 @@ class OpenStackBackendVolumes:
         state (str):
         availability_zone (str):
         description (Union[Unset, str]):
-        metadata (Union[Unset, str]):
-        backend_id (Union[None, Unset, str]):
-        bootable (Union[Unset, bool]):
+        metadata (Union[Unset, str]): Arbitrary key-value pairs associated with the volume
+        backend_id (Union[None, Unset, str]): Volume ID in the OpenStack backend
+        bootable (Union[Unset, bool]): Indicates if this volume can be used to boot an instance
         runtime_state (Union[Unset, str]):
     """
 

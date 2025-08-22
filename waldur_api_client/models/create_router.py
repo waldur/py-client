@@ -14,7 +14,7 @@ class CreateRouter:
     Attributes:
         url (str):
         uuid (UUID):
-        tenant (str):
+        tenant (str): OpenStack tenant this router belongs to
         name (str):
         project (str):
         service_settings (str):

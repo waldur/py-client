@@ -11,7 +11,7 @@ T = TypeVar("T", bound="InstanceFlavorChangeRequest")
 class InstanceFlavorChangeRequest:
     """
     Attributes:
-        flavor (str):
+        flavor (str): The new flavor to use for the instance. Flavor change can only be done when instance is stopped.
     """
 
     flavor: str

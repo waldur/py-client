@@ -17,7 +17,8 @@ class OpenStackServerGroupRequest:
     Attributes:
         name (str):
         description (Union[Unset, str]):
-        policy (Union[BlankEnum, PolicyEnum, Unset]):
+        policy (Union[BlankEnum, PolicyEnum, Unset]): Server group policy determining the rules for scheduling servers
+            in this group
     """
 
     name: str

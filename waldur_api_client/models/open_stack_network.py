@@ -49,11 +49,11 @@ class OpenStackNetwork:
         modified (Union[Unset, datetime.datetime]):
         backend_id (Union[Unset, str]):
         access_url (Union[None, Unset, str]):
-        tenant (Union[Unset, str]):
+        tenant (Union[Unset, str]): OpenStack tenant this network belongs to
         tenant_name (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
-        is_external (Union[Unset, bool]):
-        type_ (Union[Unset, str]):
+        is_external (Union[Unset, bool]): Defines whether this network is external (public) or internal (private)
+        type_ (Union[Unset, str]): Network type, such as local, flat, vlan, vxlan, or gre
         subnets (Union[Unset, list['OpenStackNestedSubNet']]):
         mtu (Union[None, Unset, int]): The maximum transmission unit (MTU) value to address fragmentation.
         rbac_policies (Union[Unset, list['NetworkRBACPolicy']]):

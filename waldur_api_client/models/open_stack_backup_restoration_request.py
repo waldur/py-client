@@ -19,11 +19,15 @@ T = TypeVar("T", bound="OpenStackBackupRestorationRequest")
 class OpenStackBackupRestorationRequest:
     """
     Attributes:
-        flavor (str):
+        flavor (str): Flavor to be used for the restored instance. If not specified, original instance flavor will be
+            used
         name (Union[Unset, str]): New instance name. Leave blank to use source instance name.
-        floating_ips (Union[Unset, list['OpenStackNestedFloatingIPRequest']]):
-        security_groups (Union[Unset, list['OpenStackNestedSecurityGroupRequest']]):
-        ports (Union[Unset, list['OpenStackNestedPortRequest']]):
+        floating_ips (Union[Unset, list['OpenStackNestedFloatingIPRequest']]): Floating IPs that will be assigned to the
+            restored instance
+        security_groups (Union[Unset, list['OpenStackNestedSecurityGroupRequest']]): Security groups that will be
+            assigned to the restored instance
+        ports (Union[Unset, list['OpenStackNestedPortRequest']]): Network ports that will be attached to the restored
+            instance
     """
 
     flavor: str

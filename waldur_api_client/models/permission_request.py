@@ -25,14 +25,14 @@ class PermissionRequest:
         created_by_username (str):
         reviewed_by_full_name (str):
         reviewed_by_username (str):
-        reviewed_at (Union[None, datetime.datetime]):
+        reviewed_at (Union[None, datetime.datetime]): Timestamp when the review was completed
         scope_uuid (UUID):
         scope_name (str):
         customer_uuid (UUID):
         customer_name (str):
         role_name (str):
         role_description (str):
-        review_comment (Union[None, Unset, str]):
+        review_comment (Union[None, Unset, str]): Optional comment provided during review
     """
 
     url: str

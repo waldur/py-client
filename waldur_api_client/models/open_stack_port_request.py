@@ -22,10 +22,10 @@ class OpenStackPortRequest:
         name (str):
         description (Union[Unset, str]):
         fixed_ips (Union[Unset, list['OpenStackFixedIpRequest']]):
-        mac_address (Union[Unset, str]):
+        mac_address (Union[Unset, str]): MAC address of the port
         allowed_address_pairs (Union[Unset, list['OpenStackAllowedAddressPairRequest']]):
-        network (Union[None, Unset, str]):
-        port_security_enabled (Union[Unset, bool]):
+        network (Union[None, Unset, str]): Network to which this port belongs
+        port_security_enabled (Union[Unset, bool]): If True, security groups and rules will be applied to this port
         security_groups (Union[Unset, list['OpenStackPortNestedSecurityGroupRequest']]):
     """
 

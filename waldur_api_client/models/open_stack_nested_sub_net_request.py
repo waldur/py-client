@@ -15,10 +15,10 @@ class OpenStackNestedSubNetRequest:
     Attributes:
         name (str):
         description (Union[Unset, str]):
-        cidr (Union[Unset, str]):
-        gateway_ip (Union[None, Unset, str]):
-        ip_version (Union[Unset, int]):
-        enable_dhcp (Union[Unset, bool]):
+        cidr (Union[Unset, str]): IPv4 network address in CIDR format (e.g. 192.168.0.0/24)
+        gateway_ip (Union[None, Unset, str]): IP address of the gateway for this subnet
+        ip_version (Union[Unset, int]): IP protocol version (4 or 6)
+        enable_dhcp (Union[Unset, bool]): If True, DHCP service will be enabled on this subnet
     """
 
     name: str

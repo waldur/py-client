@@ -18,7 +18,7 @@ class OpenStackNestedPortRequest:
     """
     Attributes:
         fixed_ips (Union[Unset, list['OpenStackFixedIpRequest']]):
-        subnet (Union[None, Unset, str]):
+        subnet (Union[None, Unset, str]): Subnet to which this port belongs
         port (Union[Unset, str]):
     """
 

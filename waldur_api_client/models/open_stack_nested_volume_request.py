@@ -14,10 +14,10 @@ class OpenStackNestedVolumeRequest:
     """
     Attributes:
         size (int): Size in MiB
-        image_name (Union[Unset, str]):
-        bootable (Union[Unset, bool]):
+        image_name (Union[Unset, str]): Name of the image this volume was created from
+        bootable (Union[Unset, bool]): Indicates if this volume can be used to boot an instance
         device (Union[Unset, str]): Name of volume as instance device e.g. /dev/vdb.
-        type_ (Union[None, Unset, str]):
+        type_ (Union[None, Unset, str]): Type of the volume (e.g. SSD, HDD)
     """
 
     size: int

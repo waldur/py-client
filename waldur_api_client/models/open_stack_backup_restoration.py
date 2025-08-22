@@ -23,13 +23,16 @@ class OpenStackBackupRestoration:
     """
     Attributes:
         uuid (Union[Unset, UUID]):
-        instance (Union[Unset, str]):
+        instance (Union[Unset, str]): Instance that is being restored from the backup
         created (Union[Unset, datetime.datetime]):
-        flavor (Union[Unset, str]):
+        flavor (Union[Unset, str]): Flavor to be used for the restored instance. If not specified, original instance
+            flavor will be used
         name (Union[Unset, str]): New instance name. Leave blank to use source instance name.
-        floating_ips (Union[Unset, list['OpenStackNestedFloatingIP']]):
-        security_groups (Union[Unset, list['OpenStackNestedSecurityGroup']]):
-        ports (Union[Unset, list['OpenStackNestedPort']]):
+        floating_ips (Union[Unset, list['OpenStackNestedFloatingIP']]): Floating IPs that will be assigned to the
+            restored instance
+        security_groups (Union[Unset, list['OpenStackNestedSecurityGroup']]): Security groups that will be assigned to
+            the restored instance
+        ports (Union[Unset, list['OpenStackNestedPort']]): Network ports that will be attached to the restored instance
     """
 
     uuid: Union[Unset, UUID] = UNSET

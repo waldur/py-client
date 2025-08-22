@@ -19,12 +19,13 @@ class OpenStackSecurityGroupRuleUpdateRequest:
     Attributes:
         ethertype (Union[Unset, EthertypeEnum]):
         direction (Union[Unset, DirectionEnum]):
-        protocol (Union[BlankEnum, ProtocolEnum, Unset]):
-        from_port (Union[None, Unset, int]):
-        to_port (Union[None, Unset, int]):
-        cidr (Union[None, Unset, str]):
+        protocol (Union[BlankEnum, ProtocolEnum, Unset]): The network protocol (TCP, UDP, ICMP, or empty for any
+            protocol)
+        from_port (Union[None, Unset, int]): Starting port number in the range (1-65535)
+        to_port (Union[None, Unset, int]): Ending port number in the range (1-65535)
+        cidr (Union[None, Unset, str]): CIDR notation for the source/destination network address range
         description (Union[Unset, str]):
-        remote_group (Union[None, Unset, str]):
+        remote_group (Union[None, Unset, str]): Remote security group that this rule references, if any
     """
 
     ethertype: Union[Unset, EthertypeEnum] = UNSET

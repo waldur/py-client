@@ -46,9 +46,9 @@ class OpenStackSnapshot:
         state (Union[Unset, CoreStates]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        backend_id (Union[None, Unset, str]):
+        backend_id (Union[None, Unset, str]): Snapshot ID in the OpenStack backend
         access_url (Union[None, Unset, str]):
-        source_volume (Union[None, Unset, str]):
+        source_volume (Union[None, Unset, str]): Volume from which this snapshot was created
         size (Union[Unset, int]): Size in MiB
         metadata (Union[Unset, Any]):
         runtime_state (Union[Unset, str]):

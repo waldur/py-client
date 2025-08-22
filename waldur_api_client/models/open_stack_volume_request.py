@@ -15,7 +15,7 @@ class OpenStackVolumeRequest:
     Attributes:
         name (str):
         description (Union[Unset, str]):
-        bootable (Union[Unset, bool]):
+        bootable (Union[Unset, bool]): Indicates if this volume can be used to boot an instance
     """
 
     name: str

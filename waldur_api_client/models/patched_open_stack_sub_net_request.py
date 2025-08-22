@@ -21,8 +21,8 @@ class PatchedOpenStackSubNetRequest:
         name (Union[Unset, str]):
         description (Union[Unset, str]):
         cidr (Union[Unset, str]):
-        gateway_ip (Union[None, Unset, str]):
-        disable_gateway (Union[Unset, bool]):
+        gateway_ip (Union[None, Unset, str]): IP address of the gateway for this subnet
+        disable_gateway (Union[Unset, bool]): If True, no gateway IP address will be allocated
         allocation_pools (Union[Unset, list['OpenStackSubNetAllocationPoolRequest']]):
         dns_nameservers (Union[Unset, list[str]]):
         host_routes (Union[Unset, list['OpenStackStaticRouteRequest']]):

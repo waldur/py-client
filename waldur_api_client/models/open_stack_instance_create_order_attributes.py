@@ -22,20 +22,22 @@ class OpenStackInstanceCreateOrderAttributes:
 
         Attributes:
             name (str):
-            flavor (str):
-            image (str):
-            ports (list['OpenStackNestedPortRequest']):
-            system_volume_size (int):
+            flavor (str): The flavor to use for the instance
+            image (str): The OS image to use for the instance
+            ports (list['OpenStackNestedPortRequest']): Network ports to attach to the instance
+            system_volume_size (int): Size of the system volume in MiB. Minimum size is 1024 MiB (1 GiB)
             description (Union[Unset, str]):
-            security_groups (Union[Unset, list['OpenStackNestedSecurityGroupRequest']]):
-            floating_ips (Union[Unset, list['OpenStackNestedFloatingIPRequest']]):
-            system_volume_type (Union[None, Unset, str]):
-            data_volume_size (Union[Unset, int]):
-            data_volume_type (Union[None, Unset, str]):
+            security_groups (Union[Unset, list['OpenStackNestedSecurityGroupRequest']]): List of security groups to apply to
+                the instance
+            floating_ips (Union[Unset, list['OpenStackNestedFloatingIPRequest']]): Floating IPs to assign to the instance
+            system_volume_type (Union[None, Unset, str]): Volume type for the system volume
+            data_volume_size (Union[Unset, int]): Size of the data volume in MiB. Minimum size is 1024 MiB (1 GiB)
+            data_volume_type (Union[None, Unset, str]): Volume type for the data volume
             ssh_public_key (Union[Unset, str]):
             user_data (Union[Unset, str]): Additional data that will be added to instance on provisioning
-            availability_zone (Union[None, Unset, str]):
-            connect_directly_to_external_network (Union[Unset, bool]):
+            availability_zone (Union[None, Unset, str]): Availability zone where this instance is located
+            connect_directly_to_external_network (Union[Unset, bool]): If True, instance will be connected directly to
+                external network
     """
 
     name: str

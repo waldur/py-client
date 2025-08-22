@@ -14,7 +14,7 @@ T = TypeVar("T", bound="OpenStackNestedInstance")
 class OpenStackNestedInstance:
     """
     Attributes:
-        backend_id (Union[None, Unset, str]):
+        backend_id (Union[None, Unset, str]): Instance ID in the OpenStack backend
         name (Union[Unset, str]):
         uuid (Union[Unset, UUID]):
     """

@@ -22,15 +22,15 @@ class OpenStackNestedPort:
     Attributes:
         url (Union[Unset, str]):
         fixed_ips (Union[Unset, list['OpenStackFixedIp']]):
-        mac_address (Union[Unset, str]):
-        subnet (Union[None, Unset, str]):
+        mac_address (Union[Unset, str]): MAC address of the port
+        subnet (Union[None, Unset, str]): Subnet to which this port belongs
         subnet_uuid (Union[None, UUID, Unset]):
         subnet_name (Union[None, Unset, str]):
         subnet_description (Union[None, Unset, str]):
-        subnet_cidr (Union[None, Unset, str]):
+        subnet_cidr (Union[None, Unset, str]): IPv4 network address in CIDR format (e.g. 192.168.0.0/24)
         allowed_address_pairs (Union[Unset, list['OpenStackAllowedAddressPair']]):
-        device_id (Union[None, Unset, str]):
-        device_owner (Union[None, Unset, str]):
+        device_id (Union[None, Unset, str]): ID of device (instance, router etc) to which this port is connected
+        device_owner (Union[None, Unset, str]): Entity that uses this port (e.g. network:router_interface)
         security_groups (Union[Unset, list['OpenStackSecurityGroup']]):
     """
 

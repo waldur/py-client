@@ -45,24 +45,24 @@ class OpenStackVolume:
         state (Union[Unset, CoreStates]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        backend_id (Union[None, Unset, str]):
+        backend_id (Union[None, Unset, str]): Volume ID in the OpenStack backend
         access_url (Union[None, Unset, str]):
-        source_snapshot (Union[None, Unset, str]):
+        source_snapshot (Union[None, Unset, str]): Snapshot that this volume was created from, if any
         size (Union[None, Unset, int]): Size in MiB
-        bootable (Union[Unset, bool]):
+        bootable (Union[Unset, bool]): Indicates if this volume can be used to boot an instance
         metadata (Union[Unset, Any]):
-        image (Union[None, Unset, str]):
-        image_metadata (Union[Unset, str]):
-        image_name (Union[Unset, str]):
-        type_ (Union[None, Unset, str]):
+        image (Union[None, Unset, str]): Image that this volume was created from, if any
+        image_metadata (Union[Unset, str]): Metadata of the image this volume was created from
+        image_name (Union[Unset, str]): Name of the image this volume was created from
+        type_ (Union[None, Unset, str]): Type of the volume (e.g. SSD, HDD)
         type_name (Union[Unset, str]):
         runtime_state (Union[Unset, str]):
-        availability_zone (Union[None, Unset, str]):
+        availability_zone (Union[None, Unset, str]): Availability zone where this volume is located
         availability_zone_name (Union[Unset, str]):
         device (Union[Unset, str]): Name of volume as instance device e.g. /dev/vdb.
         action (Union[Unset, str]):
         action_details (Union[Unset, Any]):
-        instance (Union[None, Unset, str]):
+        instance (Union[None, Unset, str]): Instance that this volume is attached to, if any
         instance_name (Union[Unset, str]):
         instance_marketplace_uuid (Union[Unset, UUID]):
         tenant (Union[Unset, str]):

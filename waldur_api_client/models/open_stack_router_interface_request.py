@@ -13,8 +13,10 @@ T = TypeVar("T", bound="OpenStackRouterInterfaceRequest")
 class OpenStackRouterInterfaceRequest:
     """
     Attributes:
-        subnet (Union[Unset, str]):
-        port (Union[Unset, str]):
+        subnet (Union[Unset, str]): The subnet to connect to the router. Either subnet or port must be specified, but
+            not both.
+        port (Union[Unset, str]): The port to connect to the router. Either subnet or port must be specified, but not
+            both.
     """
 
     subnet: Union[Unset, str] = UNSET

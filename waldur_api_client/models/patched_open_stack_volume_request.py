@@ -15,7 +15,7 @@ class PatchedOpenStackVolumeRequest:
     Attributes:
         name (Union[Unset, str]):
         description (Union[Unset, str]):
-        bootable (Union[Unset, bool]):
+        bootable (Union[Unset, bool]): Indicates if this volume can be used to boot an instance
     """
 
     name: Union[Unset, str] = UNSET

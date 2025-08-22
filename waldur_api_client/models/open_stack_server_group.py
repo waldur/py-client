@@ -53,7 +53,8 @@ class OpenStackServerGroup:
         tenant (Union[Unset, str]):
         tenant_name (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
-        policy (Union[BlankEnum, PolicyEnum, Unset]):
+        policy (Union[BlankEnum, PolicyEnum, Unset]): Server group policy determining the rules for scheduling servers
+            in this group
         display_name (Union[Unset, str]):
         instances (Union[Unset, list['OpenStackNestedInstance']]):
         marketplace_offering_uuid (Union[None, Unset, str]):

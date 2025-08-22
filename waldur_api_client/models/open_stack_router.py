@@ -48,9 +48,9 @@ class OpenStackRouter:
         state (Union[Unset, CoreStates]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        backend_id (Union[None, Unset, str]):
+        backend_id (Union[None, Unset, str]): Router ID in OpenStack
         access_url (Union[None, Unset, str]):
-        tenant (Union[Unset, str]):
+        tenant (Union[Unset, str]): OpenStack tenant this router belongs to
         tenant_name (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         routes (Union[Unset, list['OpenStackStaticRoute']]):

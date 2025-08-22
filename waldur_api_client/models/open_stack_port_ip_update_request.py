@@ -11,8 +11,8 @@ T = TypeVar("T", bound="OpenStackPortIPUpdateRequest")
 class OpenStackPortIPUpdateRequest:
     """
     Attributes:
-        subnet (str):
-        ip_address (str):
+        subnet (str): The subnet where the new IP address will be allocated
+        ip_address (str): The IP address to assign within the subnet
     """
 
     subnet: str

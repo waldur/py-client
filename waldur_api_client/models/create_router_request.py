@@ -11,7 +11,7 @@ T = TypeVar("T", bound="CreateRouterRequest")
 class CreateRouterRequest:
     """
     Attributes:
-        tenant (str):
+        tenant (str): OpenStack tenant this router belongs to
         name (str):
     """
 

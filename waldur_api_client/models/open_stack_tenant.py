@@ -46,11 +46,11 @@ class OpenStackTenant:
         state (Union[Unset, CoreStates]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        backend_id (Union[None, Unset, str]):
+        backend_id (Union[None, Unset, str]): ID of tenant in the OpenStack backend
         availability_zone (Union[Unset, str]): Optional availability group. Will be used for all instances provisioned
             in this tenant
-        internal_network_id (Union[Unset, str]):
-        external_network_id (Union[Unset, str]):
+        internal_network_id (Union[Unset, str]): ID of internal network in OpenStack tenant
+        external_network_id (Union[Unset, str]): ID of external network connected to OpenStack tenant
         quotas (Union[Unset, list['Quota']]):
         default_volume_type_name (Union[Unset, str]): Volume type name to use when creating volumes.
         marketplace_offering_uuid (Union[None, Unset, str]):

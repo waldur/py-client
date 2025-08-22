@@ -51,14 +51,14 @@ class OpenStackSubNet:
         access_url (Union[None, Unset, str]):
         tenant (Union[Unset, str]):
         tenant_name (Union[Unset, str]):
-        network (Union[Unset, str]):
+        network (Union[Unset, str]): Network to which this subnet belongs
         network_name (Union[Unset, str]):
         cidr (Union[Unset, str]):
-        gateway_ip (Union[None, Unset, str]):
-        disable_gateway (Union[Unset, bool]):
+        gateway_ip (Union[None, Unset, str]): IP address of the gateway for this subnet
+        disable_gateway (Union[Unset, bool]): If True, no gateway IP address will be allocated
         allocation_pools (Union[Unset, list['OpenStackSubNetAllocationPool']]):
-        ip_version (Union[Unset, int]):
-        enable_dhcp (Union[Unset, bool]):
+        ip_version (Union[Unset, int]): IP protocol version (4 or 6)
+        enable_dhcp (Union[Unset, bool]): If True, DHCP service will be enabled on this subnet
         dns_nameservers (Union[Unset, list[str]]):
         host_routes (Union[Unset, list['OpenStackStaticRoute']]):
         is_connected (Union[Unset, bool]): Is subnet connected to the default tenant router.
