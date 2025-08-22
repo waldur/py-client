@@ -6,11 +6,11 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="OpenStackNestedSecurityGroupItem")
+T = TypeVar("T", bound="OpenStackNestedSecurityGroup")
 
 
 @_attrs_define
-class OpenStackNestedSecurityGroupItem:
+class OpenStackNestedSecurityGroup:
     """
     Attributes:
         url (Union[Unset, str]):
@@ -35,12 +35,12 @@ class OpenStackNestedSecurityGroupItem:
         d = dict(src_dict)
         url = d.pop("url", UNSET)
 
-        open_stack_nested_security_group_item = cls(
+        open_stack_nested_security_group = cls(
             url=url,
         )
 
-        open_stack_nested_security_group_item.additional_properties = d
-        return open_stack_nested_security_group_item
+        open_stack_nested_security_group.additional_properties = d
+        return open_stack_nested_security_group
 
     @property
     def additional_keys(self) -> list[str]:

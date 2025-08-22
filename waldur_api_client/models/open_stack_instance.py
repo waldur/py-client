@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     )
     from ..models.open_stack_nested_floating_ip import OpenStackNestedFloatingIP
     from ..models.open_stack_nested_port import OpenStackNestedPort
-    from ..models.open_stack_nested_security_group_item import OpenStackNestedSecurityGroupItem
+    from ..models.open_stack_nested_security_group import OpenStackNestedSecurityGroup
     from ..models.open_stack_nested_server_group import OpenStackNestedServerGroup
     from ..models.open_stack_nested_volume import OpenStackNestedVolume
     from ..models.rancher_cluster_reference import RancherClusterReference
@@ -70,7 +70,7 @@ class OpenStackInstance:
         flavor_disk (Union[Unset, int]): Flavor disk size in MiB
         flavor_name (Union[Unset, str]):
         volumes (Union[Unset, list['OpenStackNestedVolume']]):
-        security_groups (Union[Unset, list[list['OpenStackNestedSecurityGroupItem']]]):
+        security_groups (Union[Unset, list['OpenStackNestedSecurityGroup']]):
         server_group (Union['OpenStackNestedServerGroup', None, Unset]):
         floating_ips (Union[Unset, list['OpenStackNestedFloatingIP']]):
         ports (Union[Unset, list['OpenStackNestedPort']]):
@@ -139,7 +139,7 @@ class OpenStackInstance:
     flavor_disk: Union[Unset, int] = UNSET
     flavor_name: Union[Unset, str] = UNSET
     volumes: Union[Unset, list["OpenStackNestedVolume"]] = UNSET
-    security_groups: Union[Unset, list[list["OpenStackNestedSecurityGroupItem"]]] = UNSET
+    security_groups: Union[Unset, list["OpenStackNestedSecurityGroup"]] = UNSET
     server_group: Union["OpenStackNestedServerGroup", None, Unset] = UNSET
     floating_ips: Union[Unset, list["OpenStackNestedFloatingIP"]] = UNSET
     ports: Union[Unset, list["OpenStackNestedPort"]] = UNSET
@@ -300,17 +300,11 @@ class OpenStackInstance:
                 volumes_item = volumes_item_data.to_dict()
                 volumes.append(volumes_item)
 
-        security_groups: Union[Unset, list[list[dict[str, Any]]]] = UNSET
+        security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.security_groups, Unset):
             security_groups = []
             for security_groups_item_data in self.security_groups:
-                security_groups_item = []
-                for componentsschemas_open_stack_nested_security_group_item_data in security_groups_item_data:
-                    componentsschemas_open_stack_nested_security_group_item = (
-                        componentsschemas_open_stack_nested_security_group_item_data.to_dict()
-                    )
-                    security_groups_item.append(componentsschemas_open_stack_nested_security_group_item)
-
+                security_groups_item = security_groups_item_data.to_dict()
                 security_groups.append(security_groups_item)
 
         server_group: Union[None, Unset, dict[str, Any]]
@@ -580,7 +574,7 @@ class OpenStackInstance:
         )
         from ..models.open_stack_nested_floating_ip import OpenStackNestedFloatingIP
         from ..models.open_stack_nested_port import OpenStackNestedPort
-        from ..models.open_stack_nested_security_group_item import OpenStackNestedSecurityGroupItem
+        from ..models.open_stack_nested_security_group import OpenStackNestedSecurityGroup
         from ..models.open_stack_nested_server_group import OpenStackNestedServerGroup
         from ..models.open_stack_nested_volume import OpenStackNestedVolume
         from ..models.rancher_cluster_reference import RancherClusterReference
@@ -749,14 +743,7 @@ class OpenStackInstance:
         security_groups = []
         _security_groups = d.pop("security_groups", UNSET)
         for security_groups_item_data in _security_groups or []:
-            security_groups_item = []
-            _security_groups_item = security_groups_item_data
-            for componentsschemas_open_stack_nested_security_group_item_data in _security_groups_item:
-                componentsschemas_open_stack_nested_security_group_item = OpenStackNestedSecurityGroupItem.from_dict(
-                    componentsschemas_open_stack_nested_security_group_item_data
-                )
-
-                security_groups_item.append(componentsschemas_open_stack_nested_security_group_item)
+            security_groups_item = OpenStackNestedSecurityGroup.from_dict(security_groups_item_data)
 
             security_groups.append(security_groups_item)
 

@@ -9,7 +9,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
     from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
-    from ..models.open_stack_nested_security_group_request_item import OpenStackNestedSecurityGroupRequestItem
+    from ..models.open_stack_nested_security_group_request import OpenStackNestedSecurityGroupRequest
 
 
 T = TypeVar("T", bound="OpenStackBackupRestorationRequest")
@@ -22,14 +22,14 @@ class OpenStackBackupRestorationRequest:
         flavor (str):
         name (Union[Unset, str]): New instance name. Leave blank to use source instance name.
         floating_ips (Union[Unset, list['OpenStackNestedFloatingIPRequest']]):
-        security_groups (Union[Unset, list[list['OpenStackNestedSecurityGroupRequestItem']]]):
+        security_groups (Union[Unset, list['OpenStackNestedSecurityGroupRequest']]):
         ports (Union[Unset, list['OpenStackNestedPortRequest']]):
     """
 
     flavor: str
     name: Union[Unset, str] = UNSET
     floating_ips: Union[Unset, list["OpenStackNestedFloatingIPRequest"]] = UNSET
-    security_groups: Union[Unset, list[list["OpenStackNestedSecurityGroupRequestItem"]]] = UNSET
+    security_groups: Union[Unset, list["OpenStackNestedSecurityGroupRequest"]] = UNSET
     ports: Union[Unset, list["OpenStackNestedPortRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -45,17 +45,11 @@ class OpenStackBackupRestorationRequest:
                 floating_ips_item = floating_ips_item_data.to_dict()
                 floating_ips.append(floating_ips_item)
 
-        security_groups: Union[Unset, list[list[dict[str, Any]]]] = UNSET
+        security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.security_groups, Unset):
             security_groups = []
             for security_groups_item_data in self.security_groups:
-                security_groups_item = []
-                for componentsschemas_open_stack_nested_security_group_request_item_data in security_groups_item_data:
-                    componentsschemas_open_stack_nested_security_group_request_item = (
-                        componentsschemas_open_stack_nested_security_group_request_item_data.to_dict()
-                    )
-                    security_groups_item.append(componentsschemas_open_stack_nested_security_group_request_item)
-
+                security_groups_item = security_groups_item_data.to_dict()
                 security_groups.append(security_groups_item)
 
         ports: Union[Unset, list[dict[str, Any]]] = UNSET
@@ -87,7 +81,7 @@ class OpenStackBackupRestorationRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
         from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
-        from ..models.open_stack_nested_security_group_request_item import OpenStackNestedSecurityGroupRequestItem
+        from ..models.open_stack_nested_security_group_request import OpenStackNestedSecurityGroupRequest
 
         d = dict(src_dict)
         flavor = d.pop("flavor")
@@ -104,16 +98,7 @@ class OpenStackBackupRestorationRequest:
         security_groups = []
         _security_groups = d.pop("security_groups", UNSET)
         for security_groups_item_data in _security_groups or []:
-            security_groups_item = []
-            _security_groups_item = security_groups_item_data
-            for componentsschemas_open_stack_nested_security_group_request_item_data in _security_groups_item:
-                componentsschemas_open_stack_nested_security_group_request_item = (
-                    OpenStackNestedSecurityGroupRequestItem.from_dict(
-                        componentsschemas_open_stack_nested_security_group_request_item_data
-                    )
-                )
-
-                security_groups_item.append(componentsschemas_open_stack_nested_security_group_request_item)
+            security_groups_item = OpenStackNestedSecurityGroupRequest.from_dict(security_groups_item_data)
 
             security_groups.append(security_groups_item)
 

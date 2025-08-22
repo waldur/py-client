@@ -743,8 +743,8 @@ from .open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequ
 from .open_stack_nested_instance import OpenStackNestedInstance
 from .open_stack_nested_port import OpenStackNestedPort
 from .open_stack_nested_port_request import OpenStackNestedPortRequest
-from .open_stack_nested_security_group_item import OpenStackNestedSecurityGroupItem
-from .open_stack_nested_security_group_request_item import OpenStackNestedSecurityGroupRequestItem
+from .open_stack_nested_security_group import OpenStackNestedSecurityGroup
+from .open_stack_nested_security_group_request import OpenStackNestedSecurityGroupRequest
 from .open_stack_nested_server_group import OpenStackNestedServerGroup
 from .open_stack_nested_sub_net import OpenStackNestedSubNet
 from .open_stack_nested_sub_net_request import OpenStackNestedSubNetRequest
@@ -2213,8 +2213,8 @@ __all__ = (
     "OpenStackNestedInstance",
     "OpenStackNestedPort",
     "OpenStackNestedPortRequest",
-    "OpenStackNestedSecurityGroupItem",
-    "OpenStackNestedSecurityGroupRequestItem",
+    "OpenStackNestedSecurityGroup",
+    "OpenStackNestedSecurityGroupRequest",
     "OpenStackNestedServerGroup",
     "OpenStackNestedSubNet",
     "OpenStackNestedSubNetRequest",
