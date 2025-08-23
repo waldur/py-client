@@ -96,6 +96,7 @@ class Offering:
         parent_uuid (Union[None, UUID, Unset]):
         parent_name (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
+        has_compliance_requirements (Union[Unset, bool]):
         googlecalendar (Union[Unset, GoogleCalendar]):
     """
 
@@ -160,6 +161,7 @@ class Offering:
     parent_uuid: Union[None, UUID, Unset] = UNSET
     parent_name: Union[None, Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
+    has_compliance_requirements: Union[Unset, bool] = UNSET
     googlecalendar: Union[Unset, "GoogleCalendar"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -440,6 +442,8 @@ class Offering:
 
         backend_metadata = self.backend_metadata
 
+        has_compliance_requirements = self.has_compliance_requirements
+
         googlecalendar: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.googlecalendar, Unset):
             googlecalendar = self.googlecalendar.to_dict()
@@ -569,6 +573,8 @@ class Offering:
             field_dict["parent_name"] = parent_name
         if backend_metadata is not UNSET:
             field_dict["backend_metadata"] = backend_metadata
+        if has_compliance_requirements is not UNSET:
+            field_dict["has_compliance_requirements"] = has_compliance_requirements
         if googlecalendar is not UNSET:
             field_dict["googlecalendar"] = googlecalendar
 
@@ -997,6 +1003,8 @@ class Offering:
 
         backend_metadata = d.pop("backend_metadata", UNSET)
 
+        has_compliance_requirements = d.pop("has_compliance_requirements", UNSET)
+
         _googlecalendar = d.pop("googlecalendar", UNSET)
         googlecalendar: Union[Unset, GoogleCalendar]
         if isinstance(_googlecalendar, Unset):
@@ -1066,6 +1074,7 @@ class Offering:
             parent_uuid=parent_uuid,
             parent_name=parent_name,
             backend_metadata=backend_metadata,
+            has_compliance_requirements=has_compliance_requirements,
             googlecalendar=googlecalendar,
         )
 

@@ -73,6 +73,7 @@ class OfferingCreate:
         parent_description (Union[None, str]):
         parent_uuid (Union[None, UUID]):
         parent_name (Union[None, str]):
+        has_compliance_requirements (bool):
         description (Union[Unset, str]):
         full_description (Union[Unset, str]):
         terms_of_service (Union[Unset, str]):
@@ -138,6 +139,7 @@ class OfferingCreate:
     parent_description: Union[None, str]
     parent_uuid: Union[None, UUID]
     parent_name: Union[None, str]
+    has_compliance_requirements: bool
     description: Union[Unset, str] = UNSET
     full_description: Union[Unset, str] = UNSET
     terms_of_service: Union[Unset, str] = UNSET
@@ -293,6 +295,8 @@ class OfferingCreate:
         parent_name: Union[None, str]
         parent_name = self.parent_name
 
+        has_compliance_requirements = self.has_compliance_requirements
+
         description = self.description
 
         full_description = self.full_description
@@ -425,6 +429,7 @@ class OfferingCreate:
                 "parent_description": parent_description,
                 "parent_uuid": parent_uuid,
                 "parent_name": parent_name,
+                "has_compliance_requirements": has_compliance_requirements,
             }
         )
         if description is not UNSET:
@@ -725,6 +730,8 @@ class OfferingCreate:
 
         parent_name = _parse_parent_name(d.pop("parent_name"))
 
+        has_compliance_requirements = d.pop("has_compliance_requirements")
+
         description = d.pop("description", UNSET)
 
         full_description = d.pop("full_description", UNSET)
@@ -886,6 +893,7 @@ class OfferingCreate:
             parent_description=parent_description,
             parent_uuid=parent_uuid,
             parent_name=parent_name,
+            has_compliance_requirements=has_compliance_requirements,
             description=description,
             full_description=full_description,
             terms_of_service=terms_of_service,

@@ -100,6 +100,7 @@ class ProviderOfferingDetails:
         parent_uuid (Union[None, UUID, Unset]):
         parent_name (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
+        has_compliance_requirements (Union[Unset, bool]):
         integration_status (Union[None, Unset, list['IntegrationStatus']]):
         google_calendar_is_public (Union[None, Unset, bool]):
         google_calendar_link (Union[None, Unset, str]): Get the Google Calendar link for an offering.
@@ -168,6 +169,7 @@ class ProviderOfferingDetails:
     parent_uuid: Union[None, UUID, Unset] = UNSET
     parent_name: Union[None, Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
+    has_compliance_requirements: Union[Unset, bool] = UNSET
     integration_status: Union[None, Unset, list["IntegrationStatus"]] = UNSET
     google_calendar_is_public: Union[None, Unset, bool] = UNSET
     google_calendar_link: Union[None, Unset, str] = UNSET
@@ -458,6 +460,8 @@ class ProviderOfferingDetails:
 
         backend_metadata = self.backend_metadata
 
+        has_compliance_requirements = self.has_compliance_requirements
+
         integration_status: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.integration_status, Unset):
             integration_status = UNSET
@@ -611,6 +615,8 @@ class ProviderOfferingDetails:
             field_dict["parent_name"] = parent_name
         if backend_metadata is not UNSET:
             field_dict["backend_metadata"] = backend_metadata
+        if has_compliance_requirements is not UNSET:
+            field_dict["has_compliance_requirements"] = has_compliance_requirements
         if integration_status is not UNSET:
             field_dict["integration_status"] = integration_status
         if google_calendar_is_public is not UNSET:
@@ -1059,6 +1065,8 @@ class ProviderOfferingDetails:
 
         backend_metadata = d.pop("backend_metadata", UNSET)
 
+        has_compliance_requirements = d.pop("has_compliance_requirements", UNSET)
+
         def _parse_integration_status(data: object) -> Union[None, Unset, list["IntegrationStatus"]]:
             if data is None:
                 return data
@@ -1163,6 +1171,7 @@ class ProviderOfferingDetails:
             parent_uuid=parent_uuid,
             parent_name=parent_name,
             backend_metadata=backend_metadata,
+            has_compliance_requirements=has_compliance_requirements,
             integration_status=integration_status,
             google_calendar_is_public=google_calendar_is_public,
             google_calendar_link=google_calendar_link,

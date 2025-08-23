@@ -96,6 +96,7 @@ class PublicOfferingDetails:
         parent_uuid (Union[None, UUID, Unset]):
         parent_name (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
+        has_compliance_requirements (Union[Unset, bool]):
         google_calendar_is_public (Union[None, Unset, bool]):
         google_calendar_link (Union[None, Unset, str]): Get the Google Calendar link for an offering.
         promotion_campaigns (Union[Unset, list['NestedCampaign']]):
@@ -162,6 +163,7 @@ class PublicOfferingDetails:
     parent_uuid: Union[None, UUID, Unset] = UNSET
     parent_name: Union[None, Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
+    has_compliance_requirements: Union[Unset, bool] = UNSET
     google_calendar_is_public: Union[None, Unset, bool] = UNSET
     google_calendar_link: Union[None, Unset, str] = UNSET
     promotion_campaigns: Union[Unset, list["NestedCampaign"]] = UNSET
@@ -444,6 +446,8 @@ class PublicOfferingDetails:
 
         backend_metadata = self.backend_metadata
 
+        has_compliance_requirements = self.has_compliance_requirements
+
         google_calendar_is_public: Union[None, Unset, bool]
         if isinstance(self.google_calendar_is_public, Unset):
             google_calendar_is_public = UNSET
@@ -588,6 +592,8 @@ class PublicOfferingDetails:
             field_dict["parent_name"] = parent_name
         if backend_metadata is not UNSET:
             field_dict["backend_metadata"] = backend_metadata
+        if has_compliance_requirements is not UNSET:
+            field_dict["has_compliance_requirements"] = has_compliance_requirements
         if google_calendar_is_public is not UNSET:
             field_dict["google_calendar_is_public"] = google_calendar_is_public
         if google_calendar_link is not UNSET:
@@ -1020,6 +1026,8 @@ class PublicOfferingDetails:
 
         backend_metadata = d.pop("backend_metadata", UNSET)
 
+        has_compliance_requirements = d.pop("has_compliance_requirements", UNSET)
+
         def _parse_google_calendar_is_public(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
@@ -1107,6 +1115,7 @@ class PublicOfferingDetails:
             parent_uuid=parent_uuid,
             parent_name=parent_name,
             backend_metadata=backend_metadata,
+            has_compliance_requirements=has_compliance_requirements,
             google_calendar_is_public=google_calendar_is_public,
             google_calendar_link=google_calendar_link,
             promotion_campaigns=promotion_campaigns,

@@ -1347,6 +1347,9 @@ from .section import Section
 from .section_request import SectionRequest
 from .service_provider import ServiceProvider
 from .service_provider_api_secret_code import ServiceProviderApiSecretCode
+from .service_provider_compliance_overview import ServiceProviderComplianceOverview
+from .service_provider_offering_user_compliance import ServiceProviderOfferingUserCompliance
+from .service_provider_offering_user_compliance_state_enum import ServiceProviderOfferingUserComplianceStateEnum
 from .service_provider_request import ServiceProviderRequest
 from .service_provider_revenues import ServiceProviderRevenues
 from .service_provider_signature import ServiceProviderSignature
@@ -2754,6 +2757,9 @@ __all__ = (
     "SectionRequest",
     "ServiceProvider",
     "ServiceProviderApiSecretCode",
+    "ServiceProviderComplianceOverview",
+    "ServiceProviderOfferingUserCompliance",
+    "ServiceProviderOfferingUserComplianceStateEnum",
     "ServiceProviderRequest",
     "ServiceProviderRevenues",
     "ServiceProviderSignature",
