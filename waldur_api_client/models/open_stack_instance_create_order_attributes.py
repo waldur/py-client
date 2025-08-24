@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.open_stack_data_volume_request import OpenStackDataVolumeRequest
     from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
     from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
     from ..models.open_stack_nested_security_group_request import OpenStackNestedSecurityGroupRequest
@@ -38,6 +39,8 @@ class OpenStackInstanceCreateOrderAttributes:
             availability_zone (Union[None, Unset, str]): Availability zone where this instance is located
             connect_directly_to_external_network (Union[Unset, bool]): If True, instance will be connected directly to
                 external network
+            data_volumes (Union[Unset, list['OpenStackDataVolumeRequest']]): Additional data volumes to attach to the
+                instance
     """
 
     name: str
@@ -55,6 +58,7 @@ class OpenStackInstanceCreateOrderAttributes:
     user_data: Union[Unset, str] = UNSET
     availability_zone: Union[None, Unset, str] = UNSET
     connect_directly_to_external_network: Union[Unset, bool] = UNSET
+    data_volumes: Union[Unset, list["OpenStackDataVolumeRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -113,6 +117,13 @@ class OpenStackInstanceCreateOrderAttributes:
 
         connect_directly_to_external_network = self.connect_directly_to_external_network
 
+        data_volumes: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.data_volumes, Unset):
+            data_volumes = []
+            for data_volumes_item_data in self.data_volumes:
+                data_volumes_item = data_volumes_item_data.to_dict()
+                data_volumes.append(data_volumes_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -144,11 +155,14 @@ class OpenStackInstanceCreateOrderAttributes:
             field_dict["availability_zone"] = availability_zone
         if connect_directly_to_external_network is not UNSET:
             field_dict["connect_directly_to_external_network"] = connect_directly_to_external_network
+        if data_volumes is not UNSET:
+            field_dict["data_volumes"] = data_volumes
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.open_stack_data_volume_request import OpenStackDataVolumeRequest
         from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
         from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
         from ..models.open_stack_nested_security_group_request import OpenStackNestedSecurityGroupRequest
@@ -220,6 +234,13 @@ class OpenStackInstanceCreateOrderAttributes:
 
         connect_directly_to_external_network = d.pop("connect_directly_to_external_network", UNSET)
 
+        data_volumes = []
+        _data_volumes = d.pop("data_volumes", UNSET)
+        for data_volumes_item_data in _data_volumes or []:
+            data_volumes_item = OpenStackDataVolumeRequest.from_dict(data_volumes_item_data)
+
+            data_volumes.append(data_volumes_item)
+
         open_stack_instance_create_order_attributes = cls(
             name=name,
             flavor=flavor,
@@ -236,6 +257,7 @@ class OpenStackInstanceCreateOrderAttributes:
             user_data=user_data,
             availability_zone=availability_zone,
             connect_directly_to_external_network=connect_directly_to_external_network,
+            data_volumes=data_volumes,
         )
 
         open_stack_instance_create_order_attributes.additional_properties = d
