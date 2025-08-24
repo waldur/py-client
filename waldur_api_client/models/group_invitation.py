@@ -31,6 +31,9 @@ class GroupInvitation:
         created (datetime.datetime):
         expires (datetime.datetime):
         is_active (bool):
+        scope_image (Union[None, str]):
+        is_public (Union[Unset, bool]): Allow non-authenticated users to see and accept this invitation. Only staff can
+            create public invitations.
         auto_create_project (Union[Unset, bool]): Create project and grant project permissions instead of customer
             permissions
         project_name_template (Union[None, Unset, str]): Template for project name. Supports {username}, {email},
@@ -55,6 +58,8 @@ class GroupInvitation:
     created: datetime.datetime
     expires: datetime.datetime
     is_active: bool
+    scope_image: Union[None, str]
+    is_public: Union[Unset, bool] = UNSET
     auto_create_project: Union[Unset, bool] = UNSET
     project_name_template: Union[None, Unset, str] = UNSET
     project_role: Union[None, UUID, Unset] = UNSET
@@ -93,6 +98,11 @@ class GroupInvitation:
         expires = self.expires.isoformat()
 
         is_active = self.is_active
+
+        scope_image: Union[None, str]
+        scope_image = self.scope_image
+
+        is_public = self.is_public
 
         auto_create_project = self.auto_create_project
 
@@ -133,8 +143,11 @@ class GroupInvitation:
                 "created": created,
                 "expires": expires,
                 "is_active": is_active,
+                "scope_image": scope_image,
             }
         )
+        if is_public is not UNSET:
+            field_dict["is_public"] = is_public
         if auto_create_project is not UNSET:
             field_dict["auto_create_project"] = auto_create_project
         if project_name_template is not UNSET:
@@ -186,6 +199,15 @@ class GroupInvitation:
 
         is_active = d.pop("is_active")
 
+        def _parse_scope_image(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        scope_image = _parse_scope_image(d.pop("scope_image"))
+
+        is_public = d.pop("is_public", UNSET)
+
         auto_create_project = d.pop("auto_create_project", UNSET)
 
         def _parse_project_name_template(data: object) -> Union[None, Unset, str]:
@@ -234,6 +256,8 @@ class GroupInvitation:
             created=created,
             expires=expires,
             is_active=is_active,
+            scope_image=scope_image,
+            is_public=is_public,
             auto_create_project=auto_create_project,
             project_name_template=project_name_template,
             project_role=project_role,

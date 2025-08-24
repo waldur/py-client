@@ -16,6 +16,8 @@ class GroupInvitationRequest:
     Attributes:
         role (UUID):
         scope (str):
+        is_public (Union[Unset, bool]): Allow non-authenticated users to see and accept this invitation. Only staff can
+            create public invitations.
         auto_create_project (Union[Unset, bool]): Create project and grant project permissions instead of customer
             permissions
         project_name_template (Union[None, Unset, str]): Template for project name. Supports {username}, {email},
@@ -27,6 +29,7 @@ class GroupInvitationRequest:
 
     role: UUID
     scope: str
+    is_public: Union[Unset, bool] = UNSET
     auto_create_project: Union[Unset, bool] = UNSET
     project_name_template: Union[None, Unset, str] = UNSET
     project_role: Union[None, UUID, Unset] = UNSET
@@ -38,6 +41,8 @@ class GroupInvitationRequest:
         role = str(self.role)
 
         scope = self.scope
+
+        is_public = self.is_public
 
         auto_create_project = self.auto_create_project
 
@@ -67,6 +72,8 @@ class GroupInvitationRequest:
                 "scope": scope,
             }
         )
+        if is_public is not UNSET:
+            field_dict["is_public"] = is_public
         if auto_create_project is not UNSET:
             field_dict["auto_create_project"] = auto_create_project
         if project_name_template is not UNSET:
@@ -86,6 +93,8 @@ class GroupInvitationRequest:
         role = UUID(d.pop("role"))
 
         scope = d.pop("scope")
+
+        is_public = d.pop("is_public", UNSET)
 
         auto_create_project = d.pop("auto_create_project", UNSET)
 
@@ -122,6 +131,7 @@ class GroupInvitationRequest:
         group_invitation_request = cls(
             role=role,
             scope=scope,
+            is_public=is_public,
             auto_create_project=auto_create_project,
             project_name_template=project_name_template,
             project_role=project_role,
