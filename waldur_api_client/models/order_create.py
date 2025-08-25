@@ -30,7 +30,6 @@ class OrderCreate:
         offering_image (str):
         offering_thumbnail (str):
         offering_type (str):
-        offering_terms_of_service (str):
         offering_shared (bool): Accessible to all customers.
         offering_billable (bool): Purchase and usage is invoiced.
         offering_plugin_options (Any): Public data used by specific plugin, such as storage mode for OpenStack.
@@ -85,7 +84,6 @@ class OrderCreate:
     offering_image: str
     offering_thumbnail: str
     offering_type: str
-    offering_terms_of_service: str
     offering_shared: bool
     offering_billable: bool
     offering_plugin_options: Any
@@ -145,8 +143,6 @@ class OrderCreate:
         offering_thumbnail = self.offering_thumbnail
 
         offering_type = self.offering_type
-
-        offering_terms_of_service = self.offering_terms_of_service
 
         offering_shared = self.offering_shared
 
@@ -280,7 +276,6 @@ class OrderCreate:
                 "offering_image": offering_image,
                 "offering_thumbnail": offering_thumbnail,
                 "offering_type": offering_type,
-                "offering_terms_of_service": offering_terms_of_service,
                 "offering_shared": offering_shared,
                 "offering_billable": offering_billable,
                 "offering_plugin_options": offering_plugin_options,
@@ -352,8 +347,6 @@ class OrderCreate:
         offering_thumbnail = d.pop("offering_thumbnail")
 
         offering_type = d.pop("offering_type")
-
-        offering_terms_of_service = d.pop("offering_terms_of_service")
 
         offering_shared = d.pop("offering_shared")
 
@@ -566,7 +559,6 @@ class OrderCreate:
             offering_image=offering_image,
             offering_thumbnail=offering_thumbnail,
             offering_type=offering_type,
-            offering_terms_of_service=offering_terms_of_service,
             offering_shared=offering_shared,
             offering_billable=offering_billable,
             offering_plugin_options=offering_plugin_options,

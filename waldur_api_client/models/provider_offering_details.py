@@ -44,8 +44,6 @@ class ProviderOfferingDetails:
         slug (Union[Unset, str]):
         description (Union[Unset, str]):
         full_description (Union[Unset, str]):
-        terms_of_service (Union[Unset, str]):
-        terms_of_service_link (Union[Unset, str]):
         privacy_policy_link (Union[Unset, str]):
         access_url (Union[Unset, str]): Publicly accessible offering access URL
         endpoints (Union[Unset, list['NestedEndpoint']]):
@@ -113,8 +111,6 @@ class ProviderOfferingDetails:
     slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     full_description: Union[Unset, str] = UNSET
-    terms_of_service: Union[Unset, str] = UNSET
-    terms_of_service_link: Union[Unset, str] = UNSET
     privacy_policy_link: Union[Unset, str] = UNSET
     access_url: Union[Unset, str] = UNSET
     endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
@@ -193,10 +189,6 @@ class ProviderOfferingDetails:
         description = self.description
 
         full_description = self.full_description
-
-        terms_of_service = self.terms_of_service
-
-        terms_of_service_link = self.terms_of_service_link
 
         privacy_policy_link = self.privacy_policy_link
 
@@ -503,10 +495,6 @@ class ProviderOfferingDetails:
             field_dict["description"] = description
         if full_description is not UNSET:
             field_dict["full_description"] = full_description
-        if terms_of_service is not UNSET:
-            field_dict["terms_of_service"] = terms_of_service
-        if terms_of_service_link is not UNSET:
-            field_dict["terms_of_service_link"] = terms_of_service_link
         if privacy_policy_link is not UNSET:
             field_dict["privacy_policy_link"] = privacy_policy_link
         if access_url is not UNSET:
@@ -667,10 +655,6 @@ class ProviderOfferingDetails:
         description = d.pop("description", UNSET)
 
         full_description = d.pop("full_description", UNSET)
-
-        terms_of_service = d.pop("terms_of_service", UNSET)
-
-        terms_of_service_link = d.pop("terms_of_service_link", UNSET)
 
         privacy_policy_link = d.pop("privacy_policy_link", UNSET)
 
@@ -1115,8 +1099,6 @@ class ProviderOfferingDetails:
             slug=slug,
             description=description,
             full_description=full_description,
-            terms_of_service=terms_of_service,
-            terms_of_service_link=terms_of_service_link,
             privacy_policy_link=privacy_policy_link,
             access_url=access_url,
             endpoints=endpoints,

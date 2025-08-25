@@ -481,6 +481,8 @@ from .marketplace_offering_permissions_log_count_o_item import MarketplaceOfferi
 from .marketplace_offering_permissions_log_list_o_item import MarketplaceOfferingPermissionsLogListOItem
 from .marketplace_offering_referrals_count_o_item import MarketplaceOfferingReferralsCountOItem
 from .marketplace_offering_referrals_list_o_item import MarketplaceOfferingReferralsListOItem
+from .marketplace_offering_terms_of_service_count_o_item import MarketplaceOfferingTermsOfServiceCountOItem
+from .marketplace_offering_terms_of_service_list_o_item import MarketplaceOfferingTermsOfServiceListOItem
 from .marketplace_offering_users_count_o_item import MarketplaceOfferingUsersCountOItem
 from .marketplace_offering_users_count_state_item import MarketplaceOfferingUsersCountStateItem
 from .marketplace_offering_users_list_field_item import MarketplaceOfferingUsersListFieldItem
@@ -597,6 +599,8 @@ from .marketplace_service_providers_user_customers_list_field_item import (
 )
 from .marketplace_service_providers_users_list_field_item import MarketplaceServiceProvidersUsersListFieldItem
 from .marketplace_service_providers_users_list_o_item import MarketplaceServiceProvidersUsersListOItem
+from .marketplace_user_offering_consents_count_o_item import MarketplaceUserOfferingConsentsCountOItem
+from .marketplace_user_offering_consents_list_o_item import MarketplaceUserOfferingConsentsListOItem
 from .merged_plugin_options import MergedPluginOptions
 from .merged_plugin_options_request import MergedPluginOptionsRequest
 from .merged_secret_options import MergedSecretOptions
@@ -693,6 +697,10 @@ from .offering_resource_options_update_request import OfferingResourceOptionsUpd
 from .offering_state import OfferingState
 from .offering_stats import OfferingStats
 from .offering_stats_counter import OfferingStatsCounter
+from .offering_terms_of_service import OfferingTermsOfService
+from .offering_terms_of_service_create import OfferingTermsOfServiceCreate
+from .offering_terms_of_service_create_request import OfferingTermsOfServiceCreateRequest
+from .offering_terms_of_service_request import OfferingTermsOfServiceRequest
 from .offering_thumbnail_request import OfferingThumbnailRequest
 from .offering_usage_policy import OfferingUsagePolicy
 from .offering_usage_policy_request import OfferingUsagePolicyRequest
@@ -940,6 +948,7 @@ from .patched_notification_template_detail_serializers_request import (
     PatchedNotificationTemplateDetailSerializersRequest,
 )
 from .patched_offering_estimated_cost_policy_request import PatchedOfferingEstimatedCostPolicyRequest
+from .patched_offering_terms_of_service_request import PatchedOfferingTermsOfServiceRequest
 from .patched_offering_usage_policy_request import PatchedOfferingUsagePolicyRequest
 from .patched_offering_user_request import PatchedOfferingUserRequest
 from .patched_offering_user_role_request import PatchedOfferingUserRoleRequest
@@ -992,6 +1001,7 @@ from .patched_service_provider_request import PatchedServiceProviderRequest
 from .patched_slurm_allocation_request import PatchedSlurmAllocationRequest
 from .patched_template_request import PatchedTemplateRequest
 from .patched_user_agreement_request import PatchedUserAgreementRequest
+from .patched_user_offering_consent_request import PatchedUserOfferingConsentRequest
 from .patched_user_request import PatchedUserRequest
 from .patched_vmware_virtual_machine_request import PatchedVmwareVirtualMachineRequest
 from .patched_web_hook_request import PatchedWebHookRequest
@@ -1423,6 +1433,10 @@ from .user_invitations_count_o_item import UserInvitationsCountOItem
 from .user_invitations_count_state_item import UserInvitationsCountStateItem
 from .user_invitations_list_o_item import UserInvitationsListOItem
 from .user_invitations_list_state_item import UserInvitationsListStateItem
+from .user_offering_consent import UserOfferingConsent
+from .user_offering_consent_create import UserOfferingConsentCreate
+from .user_offering_consent_create_request import UserOfferingConsentCreateRequest
+from .user_offering_consent_request import UserOfferingConsentRequest
 from .user_permission_requests_count_o_item import UserPermissionRequestsCountOItem
 from .user_permission_requests_count_state_item import UserPermissionRequestsCountStateItem
 from .user_permission_requests_list_o_item import UserPermissionRequestsListOItem
@@ -1965,6 +1979,8 @@ __all__ = (
     "MarketplaceOfferingPermissionsLogListOItem",
     "MarketplaceOfferingReferralsCountOItem",
     "MarketplaceOfferingReferralsListOItem",
+    "MarketplaceOfferingTermsOfServiceCountOItem",
+    "MarketplaceOfferingTermsOfServiceListOItem",
     "MarketplaceOfferingUsersCountOItem",
     "MarketplaceOfferingUsersCountStateItem",
     "MarketplaceOfferingUsersListFieldItem",
@@ -2057,6 +2073,8 @@ __all__ = (
     "MarketplaceServiceProvidersUsersListFieldItem",
     "MarketplaceServiceProvidersUsersListOItem",
     "MarketplaceServiceProviderUser",
+    "MarketplaceUserOfferingConsentsCountOItem",
+    "MarketplaceUserOfferingConsentsListOItem",
     "MergedPluginOptions",
     "MergedPluginOptionsRequest",
     "MergedSecretOptions",
@@ -2153,6 +2171,10 @@ __all__ = (
     "OfferingState",
     "OfferingStats",
     "OfferingStatsCounter",
+    "OfferingTermsOfService",
+    "OfferingTermsOfServiceCreate",
+    "OfferingTermsOfServiceCreateRequest",
+    "OfferingTermsOfServiceRequest",
     "OfferingThumbnailRequest",
     "OfferingUsagePolicy",
     "OfferingUsagePolicyRequest",
@@ -2372,6 +2394,7 @@ __all__ = (
     "PatchedNotificationRequest",
     "PatchedNotificationTemplateDetailSerializersRequest",
     "PatchedOfferingEstimatedCostPolicyRequest",
+    "PatchedOfferingTermsOfServiceRequest",
     "PatchedOfferingUsagePolicyRequest",
     "PatchedOfferingUserRequest",
     "PatchedOfferingUserRoleRequest",
@@ -2424,6 +2447,7 @@ __all__ = (
     "PatchedSlurmAllocationRequest",
     "PatchedTemplateRequest",
     "PatchedUserAgreementRequest",
+    "PatchedUserOfferingConsentRequest",
     "PatchedUserRequest",
     "PatchedVmwareVirtualMachineRequest",
     "PatchedWebHookRequest",
@@ -2832,6 +2856,10 @@ __all__ = (
     "UserInvitationsListOItem",
     "UserInvitationsListStateItem",
     "UsernameGenerationPolicyEnum",
+    "UserOfferingConsent",
+    "UserOfferingConsentCreate",
+    "UserOfferingConsentCreateRequest",
+    "UserOfferingConsentRequest",
     "UserPermissionRequestsCountOItem",
     "UserPermissionRequestsCountStateItem",
     "UserPermissionRequestsListOItem",

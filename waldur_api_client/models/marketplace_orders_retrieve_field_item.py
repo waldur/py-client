@@ -40,7 +40,6 @@ class MarketplaceOrdersRetrieveFieldItem(str, Enum):
     OFFERING_NAME = "offering_name"
     OFFERING_PLUGIN_OPTIONS = "offering_plugin_options"
     OFFERING_SHARED = "offering_shared"
-    OFFERING_TERMS_OF_SERVICE = "offering_terms_of_service"
     OFFERING_THUMBNAIL = "offering_thumbnail"
     OFFERING_TYPE = "offering_type"
     OFFERING_UUID = "offering_uuid"

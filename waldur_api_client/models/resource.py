@@ -36,7 +36,6 @@ class Resource:
         offering_image (Union[Unset, str]):
         offering_thumbnail (Union[Unset, str]):
         offering_type (Union[Unset, str]):
-        offering_terms_of_service (Union[Unset, str]):
         offering_shared (Union[Unset, bool]): Accessible to all customers.
         offering_billable (Union[Unset, bool]): Purchase and usage is invoiced.
         offering_plugin_options (Union[Unset, Any]): Public data used by specific plugin, such as storage mode for
@@ -107,6 +106,8 @@ class Resource:
         service_settings_uuid (Union[Unset, UUID]):
         project_slug (Union[Unset, str]):
         customer_slug (Union[Unset, str]):
+        user_requires_reconsent (Union[Unset, bool]): Check if the current user needs to re-consent for this resource's
+            offering.
     """
 
     offering: Union[Unset, str] = UNSET
@@ -116,7 +117,6 @@ class Resource:
     offering_image: Union[Unset, str] = UNSET
     offering_thumbnail: Union[Unset, str] = UNSET
     offering_type: Union[Unset, str] = UNSET
-    offering_terms_of_service: Union[Unset, str] = UNSET
     offering_shared: Union[Unset, bool] = UNSET
     offering_billable: Union[Unset, bool] = UNSET
     offering_plugin_options: Union[Unset, Any] = UNSET
@@ -184,6 +184,7 @@ class Resource:
     service_settings_uuid: Union[Unset, UUID] = UNSET
     project_slug: Union[Unset, str] = UNSET
     customer_slug: Union[Unset, str] = UNSET
+    user_requires_reconsent: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -204,8 +205,6 @@ class Resource:
         offering_thumbnail = self.offering_thumbnail
 
         offering_type = self.offering_type
-
-        offering_terms_of_service = self.offering_terms_of_service
 
         offering_shared = self.offering_shared
 
@@ -451,6 +450,8 @@ class Resource:
 
         customer_slug = self.customer_slug
 
+        user_requires_reconsent = self.user_requires_reconsent
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -468,8 +469,6 @@ class Resource:
             field_dict["offering_thumbnail"] = offering_thumbnail
         if offering_type is not UNSET:
             field_dict["offering_type"] = offering_type
-        if offering_terms_of_service is not UNSET:
-            field_dict["offering_terms_of_service"] = offering_terms_of_service
         if offering_shared is not UNSET:
             field_dict["offering_shared"] = offering_shared
         if offering_billable is not UNSET:
@@ -604,6 +603,8 @@ class Resource:
             field_dict["project_slug"] = project_slug
         if customer_slug is not UNSET:
             field_dict["customer_slug"] = customer_slug
+        if user_requires_reconsent is not UNSET:
+            field_dict["user_requires_reconsent"] = user_requires_reconsent
 
         return field_dict
 
@@ -637,8 +638,6 @@ class Resource:
         offering_thumbnail = d.pop("offering_thumbnail", UNSET)
 
         offering_type = d.pop("offering_type", UNSET)
-
-        offering_terms_of_service = d.pop("offering_terms_of_service", UNSET)
 
         offering_shared = d.pop("offering_shared", UNSET)
 
@@ -1014,6 +1013,8 @@ class Resource:
 
         customer_slug = d.pop("customer_slug", UNSET)
 
+        user_requires_reconsent = d.pop("user_requires_reconsent", UNSET)
+
         resource = cls(
             offering=offering,
             offering_name=offering_name,
@@ -1022,7 +1023,6 @@ class Resource:
             offering_image=offering_image,
             offering_thumbnail=offering_thumbnail,
             offering_type=offering_type,
-            offering_terms_of_service=offering_terms_of_service,
             offering_shared=offering_shared,
             offering_billable=offering_billable,
             offering_plugin_options=offering_plugin_options,
@@ -1090,6 +1090,7 @@ class Resource:
             service_settings_uuid=service_settings_uuid,
             project_slug=project_slug,
             customer_slug=customer_slug,
+            user_requires_reconsent=user_requires_reconsent,
         )
 
         resource.additional_properties = d

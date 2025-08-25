@@ -46,7 +46,6 @@ class BookingResourcesRetrieveFieldItem(str, Enum):
     OFFERING_PLUGIN_OPTIONS = "offering_plugin_options"
     OFFERING_SHARED = "offering_shared"
     OFFERING_SLUG = "offering_slug"
-    OFFERING_TERMS_OF_SERVICE = "offering_terms_of_service"
     OFFERING_THUMBNAIL = "offering_thumbnail"
     OFFERING_TYPE = "offering_type"
     OFFERING_UUID = "offering_uuid"
@@ -83,6 +82,7 @@ class BookingResourcesRetrieveFieldItem(str, Enum):
     STATE = "state"
     URL = "url"
     USERNAME = "username"
+    USER_REQUIRES_RECONSENT = "user_requires_reconsent"
     UUID = "uuid"
 
     def __str__(self) -> str:

@@ -37,7 +37,6 @@ class BookingResource:
         offering_image (Union[Unset, str]):
         offering_thumbnail (Union[Unset, str]):
         offering_type (Union[Unset, str]):
-        offering_terms_of_service (Union[Unset, str]):
         offering_shared (Union[Unset, bool]): Accessible to all customers.
         offering_billable (Union[Unset, bool]): Purchase and usage is invoiced.
         offering_plugin_options (Union[Unset, Any]): Public data used by specific plugin, such as storage mode for
@@ -108,6 +107,8 @@ class BookingResource:
         service_settings_uuid (Union[Unset, UUID]):
         project_slug (Union[Unset, str]):
         customer_slug (Union[Unset, str]):
+        user_requires_reconsent (Union[Unset, bool]): Check if the current user needs to re-consent for this resource's
+            offering.
         created_by (Union[Unset, str]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
@@ -126,7 +127,6 @@ class BookingResource:
     offering_image: Union[Unset, str] = UNSET
     offering_thumbnail: Union[Unset, str] = UNSET
     offering_type: Union[Unset, str] = UNSET
-    offering_terms_of_service: Union[Unset, str] = UNSET
     offering_shared: Union[Unset, bool] = UNSET
     offering_billable: Union[Unset, bool] = UNSET
     offering_plugin_options: Union[Unset, Any] = UNSET
@@ -194,6 +194,7 @@ class BookingResource:
     service_settings_uuid: Union[Unset, UUID] = UNSET
     project_slug: Union[Unset, str] = UNSET
     customer_slug: Union[Unset, str] = UNSET
+    user_requires_reconsent: Union[Unset, bool] = UNSET
     created_by: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
@@ -221,8 +222,6 @@ class BookingResource:
         offering_thumbnail = self.offering_thumbnail
 
         offering_type = self.offering_type
-
-        offering_terms_of_service = self.offering_terms_of_service
 
         offering_shared = self.offering_shared
 
@@ -468,6 +467,8 @@ class BookingResource:
 
         customer_slug = self.customer_slug
 
+        user_requires_reconsent = self.user_requires_reconsent
+
         created_by = self.created_by
 
         created_by_username = self.created_by_username
@@ -504,8 +505,6 @@ class BookingResource:
             field_dict["offering_thumbnail"] = offering_thumbnail
         if offering_type is not UNSET:
             field_dict["offering_type"] = offering_type
-        if offering_terms_of_service is not UNSET:
-            field_dict["offering_terms_of_service"] = offering_terms_of_service
         if offering_shared is not UNSET:
             field_dict["offering_shared"] = offering_shared
         if offering_billable is not UNSET:
@@ -640,6 +639,8 @@ class BookingResource:
             field_dict["project_slug"] = project_slug
         if customer_slug is not UNSET:
             field_dict["customer_slug"] = customer_slug
+        if user_requires_reconsent is not UNSET:
+            field_dict["user_requires_reconsent"] = user_requires_reconsent
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_username is not UNSET:
@@ -688,8 +689,6 @@ class BookingResource:
         offering_thumbnail = d.pop("offering_thumbnail", UNSET)
 
         offering_type = d.pop("offering_type", UNSET)
-
-        offering_terms_of_service = d.pop("offering_terms_of_service", UNSET)
 
         offering_shared = d.pop("offering_shared", UNSET)
 
@@ -1065,6 +1064,8 @@ class BookingResource:
 
         customer_slug = d.pop("customer_slug", UNSET)
 
+        user_requires_reconsent = d.pop("user_requires_reconsent", UNSET)
+
         created_by = d.pop("created_by", UNSET)
 
         created_by_username = d.pop("created_by_username", UNSET)
@@ -1092,7 +1093,6 @@ class BookingResource:
             offering_image=offering_image,
             offering_thumbnail=offering_thumbnail,
             offering_type=offering_type,
-            offering_terms_of_service=offering_terms_of_service,
             offering_shared=offering_shared,
             offering_billable=offering_billable,
             offering_plugin_options=offering_plugin_options,
@@ -1160,6 +1160,7 @@ class BookingResource:
             service_settings_uuid=service_settings_uuid,
             project_slug=project_slug,
             customer_slug=customer_slug,
+            user_requires_reconsent=user_requires_reconsent,
             created_by=created_by,
             created_by_username=created_by_username,
             created_by_full_name=created_by_full_name,

@@ -31,7 +31,6 @@ class OrderDetails:
         offering_image (Union[Unset, str]):
         offering_thumbnail (Union[Unset, str]):
         offering_type (Union[Unset, str]):
-        offering_terms_of_service (Union[Unset, str]):
         offering_shared (Union[Unset, bool]): Accessible to all customers.
         offering_billable (Union[Unset, bool]): Purchase and usage is invoiced.
         offering_plugin_options (Union[Unset, Any]): Public data used by specific plugin, such as storage mode for
@@ -106,7 +105,6 @@ class OrderDetails:
     offering_image: Union[Unset, str] = UNSET
     offering_thumbnail: Union[Unset, str] = UNSET
     offering_type: Union[Unset, str] = UNSET
-    offering_terms_of_service: Union[Unset, str] = UNSET
     offering_shared: Union[Unset, bool] = UNSET
     offering_billable: Union[Unset, bool] = UNSET
     offering_plugin_options: Union[Unset, Any] = UNSET
@@ -186,8 +184,6 @@ class OrderDetails:
         offering_thumbnail = self.offering_thumbnail
 
         offering_type = self.offering_type
-
-        offering_terms_of_service = self.offering_terms_of_service
 
         offering_shared = self.offering_shared
 
@@ -468,8 +464,6 @@ class OrderDetails:
             field_dict["offering_thumbnail"] = offering_thumbnail
         if offering_type is not UNSET:
             field_dict["offering_type"] = offering_type
-        if offering_terms_of_service is not UNSET:
-            field_dict["offering_terms_of_service"] = offering_terms_of_service
         if offering_shared is not UNSET:
             field_dict["offering_shared"] = offering_shared
         if offering_billable is not UNSET:
@@ -615,8 +609,6 @@ class OrderDetails:
         offering_thumbnail = d.pop("offering_thumbnail", UNSET)
 
         offering_type = d.pop("offering_type", UNSET)
-
-        offering_terms_of_service = d.pop("offering_terms_of_service", UNSET)
 
         offering_shared = d.pop("offering_shared", UNSET)
 
@@ -1061,7 +1053,6 @@ class OrderDetails:
             offering_image=offering_image,
             offering_thumbnail=offering_thumbnail,
             offering_type=offering_type,
-            offering_terms_of_service=offering_terms_of_service,
             offering_shared=offering_shared,
             offering_billable=offering_billable,
             offering_plugin_options=offering_plugin_options,
