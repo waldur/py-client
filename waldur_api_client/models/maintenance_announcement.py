@@ -34,6 +34,7 @@ class MaintenanceAnnouncement:
         created_by (Union[None, str]):
         affected_offerings (list['MaintenanceAnnouncementOffering']):
         service_provider_name (str):
+        backend_id (str):
         message (Union[Unset, str]):
         maintenance_type (Union[Unset, MaintenanceTypeEnum]):
         external_reference_url (Union[Unset, str]): Optional reference to an external maintenance tracker
@@ -51,6 +52,7 @@ class MaintenanceAnnouncement:
     created_by: Union[None, str]
     affected_offerings: list["MaintenanceAnnouncementOffering"]
     service_provider_name: str
+    backend_id: str
     message: Union[Unset, str] = UNSET
     maintenance_type: Union[Unset, MaintenanceTypeEnum] = UNSET
     external_reference_url: Union[Unset, str] = UNSET
@@ -93,6 +95,8 @@ class MaintenanceAnnouncement:
 
         service_provider_name = self.service_provider_name
 
+        backend_id = self.backend_id
+
         message = self.message
 
         maintenance_type: Union[Unset, int] = UNSET
@@ -117,6 +121,7 @@ class MaintenanceAnnouncement:
                 "created_by": created_by,
                 "affected_offerings": affected_offerings,
                 "service_provider_name": service_provider_name,
+                "backend_id": backend_id,
             }
         )
         if message is not UNSET:
@@ -193,6 +198,8 @@ class MaintenanceAnnouncement:
 
         service_provider_name = d.pop("service_provider_name")
 
+        backend_id = d.pop("backend_id")
+
         message = d.pop("message", UNSET)
 
         _maintenance_type = d.pop("maintenance_type", UNSET)
@@ -217,6 +224,7 @@ class MaintenanceAnnouncement:
             created_by=created_by,
             affected_offerings=affected_offerings,
             service_provider_name=service_provider_name,
+            backend_id=backend_id,
             message=message,
             maintenance_type=maintenance_type,
             external_reference_url=external_reference_url,

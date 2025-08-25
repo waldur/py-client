@@ -37,6 +37,7 @@ class Customer:
         sponsor_number (Union[None, Unset, int]): External ID of the sponsor covering the costs
         country_name (Union[Unset, str]):
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
+        project_metadata_checklist (Union[None, UUID, Unset]):
         name (Union[Unset, str]):
         slug (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -82,6 +83,7 @@ class Customer:
     sponsor_number: Union[None, Unset, int] = UNSET
     country_name: Union[Unset, str] = UNSET
     max_service_accounts: Union[None, Unset, int] = UNSET
+    project_metadata_checklist: Union[None, UUID, Unset] = UNSET
     name: Union[Unset, str] = UNSET
     slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
@@ -158,6 +160,14 @@ class Customer:
             max_service_accounts = UNSET
         else:
             max_service_accounts = self.max_service_accounts
+
+        project_metadata_checklist: Union[None, Unset, str]
+        if isinstance(self.project_metadata_checklist, Unset):
+            project_metadata_checklist = UNSET
+        elif isinstance(self.project_metadata_checklist, UUID):
+            project_metadata_checklist = str(self.project_metadata_checklist)
+        else:
+            project_metadata_checklist = self.project_metadata_checklist
 
         name = self.name
 
@@ -289,6 +299,8 @@ class Customer:
             field_dict["country_name"] = country_name
         if max_service_accounts is not UNSET:
             field_dict["max_service_accounts"] = max_service_accounts
+        if project_metadata_checklist is not UNSET:
+            field_dict["project_metadata_checklist"] = project_metadata_checklist
         if name is not UNSET:
             field_dict["name"] = name
         if slug is not UNSET:
@@ -417,6 +429,23 @@ class Customer:
             return cast(Union[None, Unset, int], data)
 
         max_service_accounts = _parse_max_service_accounts(d.pop("max_service_accounts", UNSET))
+
+        def _parse_project_metadata_checklist(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                project_metadata_checklist_type_0 = UUID(data)
+
+                return project_metadata_checklist_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        project_metadata_checklist = _parse_project_metadata_checklist(d.pop("project_metadata_checklist", UNSET))
 
         name = d.pop("name", UNSET)
 
@@ -575,6 +604,7 @@ class Customer:
             sponsor_number=sponsor_number,
             country_name=country_name,
             max_service_accounts=max_service_accounts,
+            project_metadata_checklist=project_metadata_checklist,
             name=name,
             slug=slug,
             native_name=native_name,
