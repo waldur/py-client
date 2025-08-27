@@ -1280,6 +1280,11 @@ from .remote_offering import RemoteOffering
 from .remote_offering_create_request import RemoteOfferingCreateRequest
 from .remote_offering_create_response import RemoteOfferingCreateResponse
 from .remote_project_update_request import RemoteProjectUpdateRequest
+from .remote_resource_order import RemoteResourceOrder
+from .remote_resource_order_remote_state_enum import RemoteResourceOrderRemoteStateEnum
+from .remote_resource_sync_status import RemoteResourceSyncStatus
+from .remote_resource_sync_status_remote_state_enum import RemoteResourceSyncStatusRemoteStateEnum
+from .remote_resource_team_member import RemoteResourceTeamMember
 from .remote_synchronisation import RemoteSynchronisation
 from .remote_synchronisation_request import RemoteSynchronisationRequest
 from .remove_offering_component_request import RemoveOfferingComponentRequest
@@ -1417,6 +1422,7 @@ from .support_issues_count_o_item import SupportIssuesCountOItem
 from .support_issues_list_o_item import SupportIssuesListOItem
 from .support_stats import SupportStats
 from .support_user import SupportUser
+from .sync_status_enum import SyncStatusEnum
 from .table_size import TableSize
 from .template import Template
 from .template_attachment import TemplateAttachment
@@ -2711,6 +2717,11 @@ __all__ = (
     "RemoteOfferingCreateRequest",
     "RemoteOfferingCreateResponse",
     "RemoteProjectUpdateRequest",
+    "RemoteResourceOrder",
+    "RemoteResourceOrderRemoteStateEnum",
+    "RemoteResourceSyncStatus",
+    "RemoteResourceSyncStatusRemoteStateEnum",
+    "RemoteResourceTeamMember",
     "RemoteSynchronisation",
     "RemoteSynchronisationRequest",
     "RemoveOfferingComponentRequest",
@@ -2846,6 +2857,7 @@ __all__ = (
     "SupportIssuesListOItem",
     "SupportStats",
     "SupportUser",
+    "SyncStatusEnum",
     "TableSize",
     "Template",
     "TemplateAttachment",
