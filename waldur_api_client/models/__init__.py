@@ -1172,6 +1172,7 @@ from .question_admin import QuestionAdmin
 from .question_admin_request import QuestionAdminRequest
 from .question_answer import QuestionAnswer
 from .question_answer_project_answers_item import QuestionAnswerProjectAnswersItem
+from .question_answer_question_options_item import QuestionAnswerQuestionOptionsItem
 from .question_dependency import QuestionDependency
 from .question_dependency_request import QuestionDependencyRequest
 from .question_options_admin import QuestionOptionsAdmin
@@ -2617,6 +2618,7 @@ __all__ = (
     "QuestionAdminRequest",
     "QuestionAnswer",
     "QuestionAnswerProjectAnswersItem",
+    "QuestionAnswerQuestionOptionsItem",
     "QuestionDependency",
     "QuestionDependencyRequest",
     "QuestionOptionsAdmin",

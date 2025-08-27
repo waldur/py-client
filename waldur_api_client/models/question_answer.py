@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
     from ..models.question_answer_project_answers_item import QuestionAnswerProjectAnswersItem
+    from ..models.question_answer_question_options_item import QuestionAnswerQuestionOptionsItem
 
 
 T = TypeVar("T", bound="QuestionAnswer")
@@ -24,6 +25,7 @@ class QuestionAnswer:
         total_projects (int): Get total projects count.
         answered_projects_count (int): Get count of projects that answered this question.
         project_answers (list['QuestionAnswerProjectAnswersItem']): Get all project answers for this question.
+        question_options (list['QuestionAnswerQuestionOptionsItem']): Get question options for select-type questions.
     """
 
     question_uuid: UUID
@@ -34,6 +36,7 @@ class QuestionAnswer:
     total_projects: int
     answered_projects_count: int
     project_answers: list["QuestionAnswerProjectAnswersItem"]
+    question_options: list["QuestionAnswerQuestionOptionsItem"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,6 +59,11 @@ class QuestionAnswer:
             project_answers_item = project_answers_item_data.to_dict()
             project_answers.append(project_answers_item)
 
+        question_options = []
+        for question_options_item_data in self.question_options:
+            question_options_item = question_options_item_data.to_dict()
+            question_options.append(question_options_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -68,6 +76,7 @@ class QuestionAnswer:
                 "total_projects": total_projects,
                 "answered_projects_count": answered_projects_count,
                 "project_answers": project_answers,
+                "question_options": question_options,
             }
         )
 
@@ -76,6 +85,7 @@ class QuestionAnswer:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.question_answer_project_answers_item import QuestionAnswerProjectAnswersItem
+        from ..models.question_answer_question_options_item import QuestionAnswerQuestionOptionsItem
 
         d = dict(src_dict)
         question_uuid = UUID(d.pop("question_uuid"))
@@ -99,6 +109,13 @@ class QuestionAnswer:
 
             project_answers.append(project_answers_item)
 
+        question_options = []
+        _question_options = d.pop("question_options")
+        for question_options_item_data in _question_options:
+            question_options_item = QuestionAnswerQuestionOptionsItem.from_dict(question_options_item_data)
+
+            question_options.append(question_options_item)
+
         question_answer = cls(
             question_uuid=question_uuid,
             question_description=question_description,
@@ -108,6 +125,7 @@ class QuestionAnswer:
             total_projects=total_projects,
             answered_projects_count=answered_projects_count,
             project_answers=project_answers,
+            question_options=question_options,
         )
 
         question_answer.additional_properties = d
