@@ -17,8 +17,8 @@ T = TypeVar("T", bound="OpenStackSecurityGroupRuleUpdateRequest")
 class OpenStackSecurityGroupRuleUpdateRequest:
     """
     Attributes:
-        ethertype (Union[Unset, EthertypeEnum]):
-        direction (Union[Unset, DirectionEnum]):
+        ethertype (Union[Unset, EthertypeEnum]):  Default: EthertypeEnum.IPV4.
+        direction (Union[Unset, DirectionEnum]):  Default: DirectionEnum.INGRESS.
         protocol (Union[BlankEnum, ProtocolEnum, Unset]): The network protocol (TCP, UDP, ICMP, or empty for any
             protocol)
         from_port (Union[None, Unset, int]): Starting port number in the range (1-65535)
@@ -28,8 +28,8 @@ class OpenStackSecurityGroupRuleUpdateRequest:
         remote_group (Union[None, Unset, str]): Remote security group that this rule references, if any
     """
 
-    ethertype: Union[Unset, EthertypeEnum] = UNSET
-    direction: Union[Unset, DirectionEnum] = UNSET
+    ethertype: Union[Unset, EthertypeEnum] = EthertypeEnum.IPV4
+    direction: Union[Unset, DirectionEnum] = DirectionEnum.INGRESS
     protocol: Union[BlankEnum, ProtocolEnum, Unset] = UNSET
     from_port: Union[None, Unset, int] = UNSET
     to_port: Union[None, Unset, int] = UNSET

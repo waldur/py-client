@@ -193,6 +193,7 @@ from .checklist_category import ChecklistCategory
 from .checklist_category_request import ChecklistCategoryRequest
 from .checklist_completion import ChecklistCompletion
 from .checklist_completion_reviewer import ChecklistCompletionReviewer
+from .checklist_info import ChecklistInfo
 from .checklist_operators import ChecklistOperators
 from .checklist_request import ChecklistRequest
 from .checklist_response import ChecklistResponse
@@ -204,6 +205,7 @@ from .cluster_security_group import ClusterSecurityGroup
 from .cluster_security_group_request import ClusterSecurityGroupRequest
 from .comment import Comment
 from .comment_request import CommentRequest
+from .compliance_overview import ComplianceOverview
 from .component_stats import ComponentStats
 from .component_usage import ComponentUsage
 from .component_usage_create_request import ComponentUsageCreateRequest
@@ -1030,10 +1032,13 @@ from .prices_update_request import PricesUpdateRequest
 from .prices_update_request_prices import PricesUpdateRequestPrices
 from .priority import Priority
 from .project import Project
+from .project_answer import ProjectAnswer
 from .project_credit import ProjectCredit
 from .project_credit_request import ProjectCreditRequest
 from .project_credits_count_o_item import ProjectCreditsCountOItem
 from .project_credits_list_o_item import ProjectCreditsListOItem
+from .project_detail import ProjectDetail
+from .project_details_response import ProjectDetailsResponse
 from .project_estimated_cost_policy import ProjectEstimatedCostPolicy
 from .project_estimated_cost_policy_request import ProjectEstimatedCostPolicyRequest
 from .project_marketplace_resource_count import ProjectMarketplaceResourceCount
@@ -1165,6 +1170,8 @@ from .pull_marketplace_script_resource_request import PullMarketplaceScriptResou
 from .query_request import QueryRequest
 from .question_admin import QuestionAdmin
 from .question_admin_request import QuestionAdminRequest
+from .question_answer import QuestionAnswer
+from .question_answer_project_answers_item import QuestionAnswerProjectAnswersItem
 from .question_dependency import QuestionDependency
 from .question_dependency_request import QuestionDependencyRequest
 from .question_options_admin import QuestionOptionsAdmin
@@ -1701,6 +1708,7 @@ __all__ = (
     "ChecklistCategoryRequest",
     "ChecklistCompletion",
     "ChecklistCompletionReviewer",
+    "ChecklistInfo",
     "ChecklistOperators",
     "ChecklistRequest",
     "ChecklistResponse",
@@ -1712,6 +1720,7 @@ __all__ = (
     "ClusterSecurityGroupRequest",
     "Comment",
     "CommentRequest",
+    "ComplianceOverview",
     "ComponentStats",
     "ComponentsUsageStats",
     "ComponentUsage",
@@ -2476,10 +2485,13 @@ __all__ = (
     "PricesUpdateRequestPrices",
     "Priority",
     "Project",
+    "ProjectAnswer",
     "ProjectCredit",
     "ProjectCreditRequest",
     "ProjectCreditsCountOItem",
     "ProjectCreditsListOItem",
+    "ProjectDetail",
+    "ProjectDetailsResponse",
     "ProjectEstimatedCostPolicy",
     "ProjectEstimatedCostPolicyRequest",
     "ProjectMarketplaceResourceCount",
@@ -2597,6 +2609,8 @@ __all__ = (
     "QueryRequest",
     "QuestionAdmin",
     "QuestionAdminRequest",
+    "QuestionAnswer",
+    "QuestionAnswerProjectAnswersItem",
     "QuestionDependency",
     "QuestionDependencyRequest",
     "QuestionOptionsAdmin",
