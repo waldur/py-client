@@ -13,7 +13,8 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     offering: Union[Unset, str] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -22,9 +23,19 @@ def _get_kwargs(
 
     params["offering"] = offering
 
-    json_offering_uuid: Union[Unset, str] = UNSET
+    json_offering_slug: Union[Unset, list[str]] = UNSET
+    if not isinstance(offering_slug, Unset):
+        json_offering_slug = offering_slug
+
+    params["offering_slug"] = json_offering_slug
+
+    json_offering_uuid: Union[Unset, list[str]] = UNSET
     if not isinstance(offering_uuid, Unset):
-        json_offering_uuid = str(offering_uuid)
+        json_offering_uuid = []
+        for offering_uuid_item_data in offering_uuid:
+            offering_uuid_item = str(offering_uuid_item_data)
+            json_offering_uuid.append(offering_uuid_item)
+
     params["offering_uuid"] = json_offering_uuid
 
     params["page"] = page
@@ -77,7 +88,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     offering: Union[Unset, str] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -86,7 +98,8 @@ def sync_detailed(
 
     Args:
         offering (Union[Unset, str]):
-        offering_uuid (Union[Unset, UUID]):
+        offering_slug (Union[Unset, list[str]]):
+        offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -101,6 +114,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         offering=offering,
+        offering_slug=offering_slug,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
@@ -118,7 +132,8 @@ def sync(
     *,
     client: AuthenticatedClient,
     offering: Union[Unset, str] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -127,7 +142,8 @@ def sync(
 
     Args:
         offering (Union[Unset, str]):
-        offering_uuid (Union[Unset, UUID]):
+        offering_slug (Union[Unset, list[str]]):
+        offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -143,6 +159,7 @@ def sync(
     return sync_detailed(
         client=client,
         offering=offering,
+        offering_slug=offering_slug,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
@@ -154,7 +171,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     offering: Union[Unset, str] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -163,7 +181,8 @@ async def asyncio_detailed(
 
     Args:
         offering (Union[Unset, str]):
-        offering_uuid (Union[Unset, UUID]):
+        offering_slug (Union[Unset, list[str]]):
+        offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -178,6 +197,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         offering=offering,
+        offering_slug=offering_slug,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
@@ -193,7 +213,8 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     offering: Union[Unset, str] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -202,7 +223,8 @@ async def asyncio(
 
     Args:
         offering (Union[Unset, str]):
-        offering_uuid (Union[Unset, UUID]):
+        offering_slug (Union[Unset, list[str]]):
+        offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -219,6 +241,7 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             offering=offering,
+            offering_slug=offering_slug,
             offering_uuid=offering_uuid,
             page=page,
             page_size=page_size,

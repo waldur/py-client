@@ -14,6 +14,7 @@ def _get_kwargs(
     customer_provider_uuid: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     offering: Union[Unset, str] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -26,6 +27,12 @@ def _get_kwargs(
     params["o"] = o
 
     params["offering"] = offering
+
+    json_offering_slug: Union[Unset, list[str]] = UNSET
+    if not isinstance(offering_slug, Unset):
+        json_offering_slug = offering_slug
+
+    params["offering_slug"] = json_offering_slug
 
     params["offering_uuid"] = offering_uuid
 
@@ -79,6 +86,7 @@ def sync_detailed(
     customer_provider_uuid: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     offering: Union[Unset, str] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -90,6 +98,7 @@ def sync_detailed(
         customer_provider_uuid (Union[Unset, str]):
         o (Union[Unset, str]):
         offering (Union[Unset, str]):
+        offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -107,6 +116,7 @@ def sync_detailed(
         customer_provider_uuid=customer_provider_uuid,
         o=o,
         offering=offering,
+        offering_slug=offering_slug,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
@@ -126,6 +136,7 @@ def sync(
     customer_provider_uuid: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     offering: Union[Unset, str] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -137,6 +148,7 @@ def sync(
         customer_provider_uuid (Union[Unset, str]):
         o (Union[Unset, str]):
         offering (Union[Unset, str]):
+        offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -155,6 +167,7 @@ def sync(
         customer_provider_uuid=customer_provider_uuid,
         o=o,
         offering=offering,
+        offering_slug=offering_slug,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
@@ -168,6 +181,7 @@ async def asyncio_detailed(
     customer_provider_uuid: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     offering: Union[Unset, str] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -179,6 +193,7 @@ async def asyncio_detailed(
         customer_provider_uuid (Union[Unset, str]):
         o (Union[Unset, str]):
         offering (Union[Unset, str]):
+        offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -196,6 +211,7 @@ async def asyncio_detailed(
         customer_provider_uuid=customer_provider_uuid,
         o=o,
         offering=offering,
+        offering_slug=offering_slug,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
@@ -213,6 +229,7 @@ async def asyncio(
     customer_provider_uuid: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     offering: Union[Unset, str] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -224,6 +241,7 @@ async def asyncio(
         customer_provider_uuid (Union[Unset, str]):
         o (Union[Unset, str]):
         offering (Union[Unset, str]):
+        offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -243,6 +261,7 @@ async def asyncio(
             customer_provider_uuid=customer_provider_uuid,
             o=o,
             offering=offering,
+            offering_slug=offering_slug,
             offering_uuid=offering_uuid,
             page=page,
             page_size=page_size,

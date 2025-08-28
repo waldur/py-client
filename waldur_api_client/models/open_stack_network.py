@@ -54,6 +54,7 @@ class OpenStackNetwork:
         tenant_uuid (Union[Unset, UUID]):
         is_external (Union[Unset, bool]): Defines whether this network is external (public) or internal (private)
         type_ (Union[Unset, str]): Network type, such as local, flat, vlan, vxlan, or gre
+        segmentation_id (Union[None, Unset, int]): VLAN ID for VLAN networks or tunnel ID for VXLAN/GRE networks
         subnets (Union[Unset, list['OpenStackNestedSubNet']]):
         mtu (Union[None, Unset, int]): The maximum transmission unit (MTU) value to address fragmentation.
         rbac_policies (Union[Unset, list['NetworkRBACPolicy']]):
@@ -99,6 +100,7 @@ class OpenStackNetwork:
     tenant_uuid: Union[Unset, UUID] = UNSET
     is_external: Union[Unset, bool] = UNSET
     type_: Union[Unset, str] = UNSET
+    segmentation_id: Union[None, Unset, int] = UNSET
     subnets: Union[Unset, list["OpenStackNestedSubNet"]] = UNSET
     mtu: Union[None, Unset, int] = UNSET
     rbac_policies: Union[Unset, list["NetworkRBACPolicy"]] = UNSET
@@ -196,6 +198,12 @@ class OpenStackNetwork:
         is_external = self.is_external
 
         type_ = self.type_
+
+        segmentation_id: Union[None, Unset, int]
+        if isinstance(self.segmentation_id, Unset):
+            segmentation_id = UNSET
+        else:
+            segmentation_id = self.segmentation_id
 
         subnets: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.subnets, Unset):
@@ -342,6 +350,8 @@ class OpenStackNetwork:
             field_dict["is_external"] = is_external
         if type_ is not UNSET:
             field_dict["type"] = type_
+        if segmentation_id is not UNSET:
+            field_dict["segmentation_id"] = segmentation_id
         if subnets is not UNSET:
             field_dict["subnets"] = subnets
         if mtu is not UNSET:
@@ -479,6 +489,15 @@ class OpenStackNetwork:
         is_external = d.pop("is_external", UNSET)
 
         type_ = d.pop("type", UNSET)
+
+        def _parse_segmentation_id(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        segmentation_id = _parse_segmentation_id(d.pop("segmentation_id", UNSET))
 
         subnets = []
         _subnets = d.pop("subnets", UNSET)
@@ -637,6 +656,7 @@ class OpenStackNetwork:
             tenant_uuid=tenant_uuid,
             is_external=is_external,
             type_=type_,
+            segmentation_id=segmentation_id,
             subnets=subnets,
             mtu=mtu,
             rbac_policies=rbac_policies,

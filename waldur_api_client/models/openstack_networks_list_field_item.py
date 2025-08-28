@@ -31,6 +31,7 @@ class OpenstackNetworksListFieldItem(str, Enum):
     PROJECT_UUID = "project_uuid"
     RBAC_POLICIES = "rbac_policies"
     RESOURCE_TYPE = "resource_type"
+    SEGMENTATION_ID = "segmentation_id"
     SERVICE_NAME = "service_name"
     SERVICE_SETTINGS = "service_settings"
     SERVICE_SETTINGS_ERROR_MESSAGE = "service_settings_error_message"

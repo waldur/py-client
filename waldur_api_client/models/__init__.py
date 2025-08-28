@@ -1022,6 +1022,7 @@ from .payment_type_enum import PaymentTypeEnum
 from .payment_url_request import PaymentURLRequest
 from .period_enum import PeriodEnum
 from .permission import Permission
+from .permission_project import PermissionProject
 from .permission_request import PermissionRequest
 from .plan_component import PlanComponent
 from .plan_usage_response import PlanUsageResponse
@@ -2483,6 +2484,7 @@ __all__ = (
     "PaymentURLRequest",
     "PeriodEnum",
     "Permission",
+    "PermissionProject",
     "PermissionRequest",
     "PlanComponent",
     "PlanUsageResponse",

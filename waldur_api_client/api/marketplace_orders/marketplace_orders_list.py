@@ -26,6 +26,7 @@ def _get_kwargs(
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -85,6 +86,12 @@ def _get_kwargs(
     params["o"] = json_o
 
     params["offering"] = offering
+
+    json_offering_slug: Union[Unset, list[str]] = UNSET
+    if not isinstance(offering_slug, Unset):
+        json_offering_slug = offering_slug
+
+    params["offering_slug"] = json_offering_slug
 
     json_offering_type: Union[Unset, list[str]] = UNSET
     if not isinstance(offering_type, Unset):
@@ -195,6 +202,7 @@ def sync_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -221,6 +229,7 @@ def sync_detailed(
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOrdersListOItem]]):
         offering (Union[Unset, str]):
+        offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -253,6 +262,7 @@ def sync_detailed(
         modified=modified,
         o=o,
         offering=offering,
+        offering_slug=offering_slug,
         offering_type=offering_type,
         offering_uuid=offering_uuid,
         page=page,
@@ -287,6 +297,7 @@ def sync(
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -313,6 +324,7 @@ def sync(
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOrdersListOItem]]):
         offering (Union[Unset, str]):
+        offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -346,6 +358,7 @@ def sync(
         modified=modified,
         o=o,
         offering=offering,
+        offering_slug=offering_slug,
         offering_type=offering_type,
         offering_uuid=offering_uuid,
         page=page,
@@ -374,6 +387,7 @@ async def asyncio_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -400,6 +414,7 @@ async def asyncio_detailed(
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOrdersListOItem]]):
         offering (Union[Unset, str]):
+        offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -432,6 +447,7 @@ async def asyncio_detailed(
         modified=modified,
         o=o,
         offering=offering,
+        offering_slug=offering_slug,
         offering_type=offering_type,
         offering_uuid=offering_uuid,
         page=page,
@@ -464,6 +480,7 @@ async def asyncio(
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -490,6 +507,7 @@ async def asyncio(
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOrdersListOItem]]):
         offering (Union[Unset, str]):
+        offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -524,6 +542,7 @@ async def asyncio(
             modified=modified,
             o=o,
             offering=offering,
+            offering_slug=offering_slug,
             offering_type=offering_type,
             offering_uuid=offering_uuid,
             page=page,

@@ -13,7 +13,9 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_price_estimate import NestedPriceEstimate
+    from ..models.organization_group import OrganizationGroup
     from ..models.payment_profile import PaymentProfile
+    from ..models.permission_project import PermissionProject
 
 
 T = TypeVar("T", bound="Customer")
@@ -26,7 +28,9 @@ class Customer:
         url (Union[Unset, str]):
         uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        organization_groups (Union[Unset, list['OrganizationGroup']]):
         display_name (Union[Unset, str]):
+        projects (Union[Unset, list['PermissionProject']]):
         backend_id (Union[Unset, str]): Organization identifier in another application.
         image (Union[None, Unset, str]):
         blocked (Union[Unset, bool]):
@@ -34,6 +38,7 @@ class Customer:
         default_tax_percent (Union[Unset, str]):
         accounting_start_date (Union[Unset, datetime.datetime]):
         projects_count (Union[Unset, int]):
+        users_count (Union[Unset, int]):
         sponsor_number (Union[None, Unset, int]): External ID of the sponsor covering the costs
         country_name (Union[Unset, str]):
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
@@ -72,7 +77,9 @@ class Customer:
     url: Union[Unset, str] = UNSET
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
+    organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     display_name: Union[Unset, str] = UNSET
+    projects: Union[Unset, list["PermissionProject"]] = UNSET
     backend_id: Union[Unset, str] = UNSET
     image: Union[None, Unset, str] = UNSET
     blocked: Union[Unset, bool] = UNSET
@@ -80,6 +87,7 @@ class Customer:
     default_tax_percent: Union[Unset, str] = UNSET
     accounting_start_date: Union[Unset, datetime.datetime] = UNSET
     projects_count: Union[Unset, int] = UNSET
+    users_count: Union[Unset, int] = UNSET
     sponsor_number: Union[None, Unset, int] = UNSET
     country_name: Union[Unset, str] = UNSET
     max_service_accounts: Union[None, Unset, int] = UNSET
@@ -125,7 +133,21 @@ class Customer:
         if not isinstance(self.created, Unset):
             created = self.created.isoformat()
 
+        organization_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.organization_groups, Unset):
+            organization_groups = []
+            for organization_groups_item_data in self.organization_groups:
+                organization_groups_item = organization_groups_item_data.to_dict()
+                organization_groups.append(organization_groups_item)
+
         display_name = self.display_name
+
+        projects: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.projects, Unset):
+            projects = []
+            for projects_item_data in self.projects:
+                projects_item = projects_item_data.to_dict()
+                projects.append(projects_item)
 
         backend_id = self.backend_id
 
@@ -146,6 +168,8 @@ class Customer:
             accounting_start_date = self.accounting_start_date.isoformat()
 
         projects_count = self.projects_count
+
+        users_count = self.users_count
 
         sponsor_number: Union[None, Unset, int]
         if isinstance(self.sponsor_number, Unset):
@@ -277,8 +301,12 @@ class Customer:
             field_dict["uuid"] = uuid
         if created is not UNSET:
             field_dict["created"] = created
+        if organization_groups is not UNSET:
+            field_dict["organization_groups"] = organization_groups
         if display_name is not UNSET:
             field_dict["display_name"] = display_name
+        if projects is not UNSET:
+            field_dict["projects"] = projects
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
         if image is not UNSET:
@@ -293,6 +321,8 @@ class Customer:
             field_dict["accounting_start_date"] = accounting_start_date
         if projects_count is not UNSET:
             field_dict["projects_count"] = projects_count
+        if users_count is not UNSET:
+            field_dict["users_count"] = users_count
         if sponsor_number is not UNSET:
             field_dict["sponsor_number"] = sponsor_number
         if country_name is not UNSET:
@@ -363,7 +393,9 @@ class Customer:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_price_estimate import NestedPriceEstimate
+        from ..models.organization_group import OrganizationGroup
         from ..models.payment_profile import PaymentProfile
+        from ..models.permission_project import PermissionProject
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -382,7 +414,21 @@ class Customer:
         else:
             created = isoparse(_created)
 
+        organization_groups = []
+        _organization_groups = d.pop("organization_groups", UNSET)
+        for organization_groups_item_data in _organization_groups or []:
+            organization_groups_item = OrganizationGroup.from_dict(organization_groups_item_data)
+
+            organization_groups.append(organization_groups_item)
+
         display_name = d.pop("display_name", UNSET)
+
+        projects = []
+        _projects = d.pop("projects", UNSET)
+        for projects_item_data in _projects or []:
+            projects_item = PermissionProject.from_dict(projects_item_data)
+
+            projects.append(projects_item)
 
         backend_id = d.pop("backend_id", UNSET)
 
@@ -409,6 +455,8 @@ class Customer:
             accounting_start_date = isoparse(_accounting_start_date)
 
         projects_count = d.pop("projects_count", UNSET)
+
+        users_count = d.pop("users_count", UNSET)
 
         def _parse_sponsor_number(data: object) -> Union[None, Unset, int]:
             if data is None:
@@ -593,7 +641,9 @@ class Customer:
             url=url,
             uuid=uuid,
             created=created,
+            organization_groups=organization_groups,
             display_name=display_name,
+            projects=projects,
             backend_id=backend_id,
             image=image,
             blocked=blocked,
@@ -601,6 +651,7 @@ class Customer:
             default_tax_percent=default_tax_percent,
             accounting_start_date=accounting_start_date,
             projects_count=projects_count,
+            users_count=users_count,
             sponsor_number=sponsor_number,
             country_name=country_name,
             max_service_accounts=max_service_accounts,

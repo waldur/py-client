@@ -30,8 +30,9 @@ def _get_kwargs(
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, UUID] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -105,11 +106,21 @@ def _get_kwargs(
 
     params["offering_shared"] = offering_shared
 
+    json_offering_slug: Union[Unset, list[str]] = UNSET
+    if not isinstance(offering_slug, Unset):
+        json_offering_slug = offering_slug
+
+    params["offering_slug"] = json_offering_slug
+
     params["offering_type"] = offering_type
 
-    json_offering_uuid: Union[Unset, str] = UNSET
+    json_offering_uuid: Union[Unset, list[str]] = UNSET
     if not isinstance(offering_uuid, Unset):
-        json_offering_uuid = str(offering_uuid)
+        json_offering_uuid = []
+        for offering_uuid_item_data in offering_uuid:
+            offering_uuid_item = str(offering_uuid_item_data)
+            json_offering_uuid.append(offering_uuid_item)
+
     params["offering_uuid"] = json_offering_uuid
 
     params["page"] = page
@@ -211,8 +222,9 @@ def sync_detailed(
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, UUID] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -246,8 +258,9 @@ def sync_detailed(
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, UUID]):
         offering_shared (Union[Unset, bool]):
+        offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):
-        offering_uuid (Union[Unset, UUID]):
+        offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -287,6 +300,7 @@ def sync_detailed(
         offering=offering,
         offering_billable=offering_billable,
         offering_shared=offering_shared,
+        offering_slug=offering_slug,
         offering_type=offering_type,
         offering_uuid=offering_uuid,
         page=page,
@@ -330,8 +344,9 @@ def sync(
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, UUID] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -365,8 +380,9 @@ def sync(
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, UUID]):
         offering_shared (Union[Unset, bool]):
+        offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):
-        offering_uuid (Union[Unset, UUID]):
+        offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -407,6 +423,7 @@ def sync(
         offering=offering,
         offering_billable=offering_billable,
         offering_shared=offering_shared,
+        offering_slug=offering_slug,
         offering_type=offering_type,
         offering_uuid=offering_uuid,
         page=page,
@@ -444,8 +461,9 @@ async def asyncio_detailed(
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, UUID] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -479,8 +497,9 @@ async def asyncio_detailed(
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, UUID]):
         offering_shared (Union[Unset, bool]):
+        offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):
-        offering_uuid (Union[Unset, UUID]):
+        offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -520,6 +539,7 @@ async def asyncio_detailed(
         offering=offering,
         offering_billable=offering_billable,
         offering_shared=offering_shared,
+        offering_slug=offering_slug,
         offering_type=offering_type,
         offering_uuid=offering_uuid,
         page=page,
@@ -561,8 +581,9 @@ async def asyncio(
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, UUID] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -596,8 +617,9 @@ async def asyncio(
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, UUID]):
         offering_shared (Union[Unset, bool]):
+        offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):
-        offering_uuid (Union[Unset, UUID]):
+        offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -639,6 +661,7 @@ async def asyncio(
             offering=offering,
             offering_billable=offering_billable,
             offering_shared=offering_shared,
+            offering_slug=offering_slug,
             offering_type=offering_type,
             offering_uuid=offering_uuid,
             page=page,
