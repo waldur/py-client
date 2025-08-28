@@ -333,6 +333,7 @@ from .firecrest_job import FirecrestJob
 from .firecrest_job_request import FirecrestJobRequest
 from .freeipa_profile import FreeipaProfile
 from .freeipa_profile_request import FreeipaProfileRequest
+from .generic_order_attributes import GenericOrderAttributes
 from .google_auth_authorize_retrieve_field_item import GoogleAuthAuthorizeRetrieveFieldItem
 from .google_auth_list_field_item import GoogleAuthListFieldItem
 from .google_auth_retrieve_field_item import GoogleAuthRetrieveFieldItem
@@ -1851,6 +1852,7 @@ __all__ = (
     "FirecrestJobRequest",
     "FreeipaProfile",
     "FreeipaProfileRequest",
+    "GenericOrderAttributes",
     "GoogleAuthAuthorizeRetrieveFieldItem",
     "GoogleAuthListFieldItem",
     "GoogleAuthRetrieveFieldItem",

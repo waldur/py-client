@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
     from ..models.azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
+    from ..models.generic_order_attributes import GenericOrderAttributes
     from ..models.marketplace_managed_rancher_create_order_attributes import (
         MarketplaceManagedRancherCreateOrderAttributes,
     )
@@ -35,11 +36,12 @@ class OrderCreateRequest:
         project (str):
         plan (Union[Unset, str]):
         attributes (Union['AzureSQLServerCreateOrderAttributes', 'AzureVirtualMachineCreateOrderAttributes',
-            'MarketplaceManagedRancherCreateOrderAttributes', 'MarketplaceRancherCreateOrderAttributes',
-            'OpenStackInstanceCreateOrderAttributes', 'OpenStackTenantCreateOrderAttributes',
-            'OpenStackVolumeCreateOrderAttributes', 'SlurmInvoicesSlurmPackageCreateOrderAttributes',
-            'VMwareVirtualMachineCreateOrderAttributes', Unset]): Attributes structure depends on the offering type
-            specified in the parent object
+            'GenericOrderAttributes', 'MarketplaceManagedRancherCreateOrderAttributes',
+            'MarketplaceRancherCreateOrderAttributes', 'OpenStackInstanceCreateOrderAttributes',
+            'OpenStackTenantCreateOrderAttributes', 'OpenStackVolumeCreateOrderAttributes',
+            'SlurmInvoicesSlurmPackageCreateOrderAttributes', 'VMwareVirtualMachineCreateOrderAttributes', Unset]):
+            Attributes structure depends on the offering type specified in the parent object. Can also be a generic object
+            for offerings without a specific attributes schema.
         limits (Union[Unset, OrderCreateRequestLimits]):
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
         accepting_terms_of_service (Union[Unset, bool]):
@@ -52,6 +54,7 @@ class OrderCreateRequest:
     attributes: Union[
         "AzureSQLServerCreateOrderAttributes",
         "AzureVirtualMachineCreateOrderAttributes",
+        "GenericOrderAttributes",
         "MarketplaceManagedRancherCreateOrderAttributes",
         "MarketplaceRancherCreateOrderAttributes",
         "OpenStackInstanceCreateOrderAttributes",
@@ -80,6 +83,7 @@ class OrderCreateRequest:
         from ..models.slurm_invoices_slurm_package_create_order_attributes import (
             SlurmInvoicesSlurmPackageCreateOrderAttributes,
         )
+        from ..models.v_mware_virtual_machine_create_order_attributes import VMwareVirtualMachineCreateOrderAttributes
 
         offering = self.offering
 
@@ -105,6 +109,8 @@ class OrderCreateRequest:
         elif isinstance(self.attributes, MarketplaceManagedRancherCreateOrderAttributes):
             attributes = self.attributes.to_dict()
         elif isinstance(self.attributes, SlurmInvoicesSlurmPackageCreateOrderAttributes):
+            attributes = self.attributes.to_dict()
+        elif isinstance(self.attributes, VMwareVirtualMachineCreateOrderAttributes):
             attributes = self.attributes.to_dict()
         else:
             attributes = self.attributes.to_dict()
@@ -152,6 +158,7 @@ class OrderCreateRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
         from ..models.azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
+        from ..models.generic_order_attributes import GenericOrderAttributes
         from ..models.marketplace_managed_rancher_create_order_attributes import (
             MarketplaceManagedRancherCreateOrderAttributes,
         )
@@ -177,6 +184,7 @@ class OrderCreateRequest:
         ) -> Union[
             "AzureSQLServerCreateOrderAttributes",
             "AzureVirtualMachineCreateOrderAttributes",
+            "GenericOrderAttributes",
             "MarketplaceManagedRancherCreateOrderAttributes",
             "MarketplaceRancherCreateOrderAttributes",
             "OpenStackInstanceCreateOrderAttributes",
@@ -252,11 +260,19 @@ class OrderCreateRequest:
                 return attributes_type_7
             except:  # noqa: E722
                 pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attributes_type_8 = VMwareVirtualMachineCreateOrderAttributes.from_dict(data)
+
+                return attributes_type_8
+            except:  # noqa: E722
+                pass
             if not isinstance(data, dict):
                 raise TypeError()
-            attributes_type_8 = VMwareVirtualMachineCreateOrderAttributes.from_dict(data)
+            attributes_type_9 = GenericOrderAttributes.from_dict(data)
 
-            return attributes_type_8
+            return attributes_type_9
 
         attributes = _parse_attributes(d.pop("attributes", UNSET))
 

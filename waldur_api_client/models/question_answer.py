@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -22,6 +22,8 @@ class QuestionAnswer:
         question_type (str):
         required (bool):
         order (int):
+        min_value (Union[None, str]):
+        max_value (Union[None, str]):
         total_projects (int): Get total projects count.
         answered_projects_count (int): Get count of projects that answered this question.
         project_answers (list['QuestionAnswerProjectAnswersItem']): Get all project answers for this question.
@@ -33,6 +35,8 @@ class QuestionAnswer:
     question_type: str
     required: bool
     order: int
+    min_value: Union[None, str]
+    max_value: Union[None, str]
     total_projects: int
     answered_projects_count: int
     project_answers: list["QuestionAnswerProjectAnswersItem"]
@@ -49,6 +53,12 @@ class QuestionAnswer:
         required = self.required
 
         order = self.order
+
+        min_value: Union[None, str]
+        min_value = self.min_value
+
+        max_value: Union[None, str]
+        max_value = self.max_value
 
         total_projects = self.total_projects
 
@@ -73,6 +83,8 @@ class QuestionAnswer:
                 "question_type": question_type,
                 "required": required,
                 "order": order,
+                "min_value": min_value,
+                "max_value": max_value,
                 "total_projects": total_projects,
                 "answered_projects_count": answered_projects_count,
                 "project_answers": project_answers,
@@ -98,6 +110,20 @@ class QuestionAnswer:
 
         order = d.pop("order")
 
+        def _parse_min_value(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        min_value = _parse_min_value(d.pop("min_value"))
+
+        def _parse_max_value(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        max_value = _parse_max_value(d.pop("max_value"))
+
         total_projects = d.pop("total_projects")
 
         answered_projects_count = d.pop("answered_projects_count")
@@ -122,6 +148,8 @@ class QuestionAnswer:
             question_type=question_type,
             required=required,
             order=order,
+            min_value=min_value,
+            max_value=max_value,
             total_projects=total_projects,
             answered_projects_count=answered_projects_count,
             project_answers=project_answers,
