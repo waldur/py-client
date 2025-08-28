@@ -14,6 +14,7 @@ class GoogleAuthListFieldItem(str, Enum):
     CUSTOMER_SLUG = "customer_slug"
     CUSTOMER_UUID = "customer_uuid"
     DESCRIPTION = "description"
+    ENABLE_NOTIFICATIONS = "enable_notifications"
     GOOGLE_AUTH_URL = "google_auth_url"
     IMAGE = "image"
     OFFERING_COUNT = "offering_count"

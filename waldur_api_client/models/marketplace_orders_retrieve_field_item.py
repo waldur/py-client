@@ -25,6 +25,7 @@ class MarketplaceOrdersRetrieveFieldItem(str, Enum):
     CUSTOMER_SLUG = "customer_slug"
     CUSTOMER_UUID = "customer_uuid"
     ERROR_MESSAGE = "error_message"
+    ERROR_TRACEBACK = "error_traceback"
     FIXED_PRICE = "fixed_price"
     ISSUE = "issue"
     LIMITS = "limits"

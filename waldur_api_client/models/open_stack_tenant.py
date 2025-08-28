@@ -47,10 +47,13 @@ class OpenStackTenant:
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
         backend_id (Union[None, Unset, str]): ID of tenant in the OpenStack backend
+        access_url (Union[None, Unset, str]):
         availability_zone (Union[Unset, str]): Optional availability group. Will be used for all instances provisioned
             in this tenant
         internal_network_id (Union[Unset, str]): ID of internal network in OpenStack tenant
         external_network_id (Union[Unset, str]): ID of external network connected to OpenStack tenant
+        user_username (Union[Unset, str]): Username of the tenant user
+        user_password (Union[Unset, str]): Password of the tenant user
         quotas (Union[Unset, list['Quota']]):
         default_volume_type_name (Union[Unset, str]): Volume type name to use when creating volumes.
         marketplace_offering_uuid (Union[None, Unset, str]):
@@ -89,9 +92,12 @@ class OpenStackTenant:
     created: Union[Unset, datetime.datetime] = UNSET
     modified: Union[Unset, datetime.datetime] = UNSET
     backend_id: Union[None, Unset, str] = UNSET
+    access_url: Union[None, Unset, str] = UNSET
     availability_zone: Union[Unset, str] = UNSET
     internal_network_id: Union[Unset, str] = UNSET
     external_network_id: Union[Unset, str] = UNSET
+    user_username: Union[Unset, str] = UNSET
+    user_password: Union[Unset, str] = UNSET
     quotas: Union[Unset, list["Quota"]] = UNSET
     default_volume_type_name: Union[Unset, str] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
@@ -175,11 +181,21 @@ class OpenStackTenant:
         else:
             backend_id = self.backend_id
 
+        access_url: Union[None, Unset, str]
+        if isinstance(self.access_url, Unset):
+            access_url = UNSET
+        else:
+            access_url = self.access_url
+
         availability_zone = self.availability_zone
 
         internal_network_id = self.internal_network_id
 
         external_network_id = self.external_network_id
+
+        user_username = self.user_username
+
+        user_password = self.user_password
 
         quotas: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.quotas, Unset):
@@ -301,12 +317,18 @@ class OpenStackTenant:
             field_dict["modified"] = modified
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
+        if access_url is not UNSET:
+            field_dict["access_url"] = access_url
         if availability_zone is not UNSET:
             field_dict["availability_zone"] = availability_zone
         if internal_network_id is not UNSET:
             field_dict["internal_network_id"] = internal_network_id
         if external_network_id is not UNSET:
             field_dict["external_network_id"] = external_network_id
+        if user_username is not UNSET:
+            field_dict["user_username"] = user_username
+        if user_password is not UNSET:
+            field_dict["user_password"] = user_password
         if quotas is not UNSET:
             field_dict["quotas"] = quotas
         if default_volume_type_name is not UNSET:
@@ -425,11 +447,24 @@ class OpenStackTenant:
 
         backend_id = _parse_backend_id(d.pop("backend_id", UNSET))
 
+        def _parse_access_url(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        access_url = _parse_access_url(d.pop("access_url", UNSET))
+
         availability_zone = d.pop("availability_zone", UNSET)
 
         internal_network_id = d.pop("internal_network_id", UNSET)
 
         external_network_id = d.pop("external_network_id", UNSET)
+
+        user_username = d.pop("user_username", UNSET)
+
+        user_password = d.pop("user_password", UNSET)
 
         quotas = []
         _quotas = d.pop("quotas", UNSET)
@@ -568,9 +603,12 @@ class OpenStackTenant:
             created=created,
             modified=modified,
             backend_id=backend_id,
+            access_url=access_url,
             availability_zone=availability_zone,
             internal_network_id=internal_network_id,
             external_network_id=external_network_id,
+            user_username=user_username,
+            user_password=user_password,
             quotas=quotas,
             default_volume_type_name=default_volume_type_name,
             marketplace_offering_uuid=marketplace_offering_uuid,

@@ -24,6 +24,7 @@ class GoogleCredentials:
         uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
+        enable_notifications (Union[Unset, bool]):
         customer (Union[Unset, str]):
         customer_name (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -44,6 +45,7 @@ class GoogleCredentials:
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     description: Union[Unset, str] = UNSET
+    enable_notifications: Union[Unset, bool] = UNSET
     customer: Union[Unset, str] = UNSET
     customer_name: Union[Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
@@ -72,6 +74,8 @@ class GoogleCredentials:
             created = self.created.isoformat()
 
         description = self.description
+
+        enable_notifications = self.enable_notifications
 
         customer = self.customer
 
@@ -123,6 +127,8 @@ class GoogleCredentials:
             field_dict["created"] = created
         if description is not UNSET:
             field_dict["description"] = description
+        if enable_notifications is not UNSET:
+            field_dict["enable_notifications"] = enable_notifications
         if customer is not UNSET:
             field_dict["customer"] = customer
         if customer_name is not UNSET:
@@ -177,6 +183,8 @@ class GoogleCredentials:
 
         description = d.pop("description", UNSET)
 
+        enable_notifications = d.pop("enable_notifications", UNSET)
+
         customer = d.pop("customer", UNSET)
 
         customer_name = d.pop("customer_name", UNSET)
@@ -227,6 +235,7 @@ class GoogleCredentials:
             uuid=uuid,
             created=created,
             description=description,
+            enable_notifications=enable_notifications,
             customer=customer,
             customer_name=customer_name,
             customer_uuid=customer_uuid,

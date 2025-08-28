@@ -12,6 +12,7 @@ class MarketplaceServiceProvidersListFieldItem(str, Enum):
     CUSTOMER_SLUG = "customer_slug"
     CUSTOMER_UUID = "customer_uuid"
     DESCRIPTION = "description"
+    ENABLE_NOTIFICATIONS = "enable_notifications"
     IMAGE = "image"
     OFFERING_COUNT = "offering_count"
     ORGANIZATION_GROUPS = "organization_groups"
