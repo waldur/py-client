@@ -9,7 +9,6 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
     from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
-    from ..models.open_stack_nested_security_group_request import OpenStackNestedSecurityGroupRequest
 
 
 T = TypeVar("T", bound="OpenStackBackupRestorationRequest")
@@ -24,8 +23,6 @@ class OpenStackBackupRestorationRequest:
         name (Union[Unset, str]): New instance name. Leave blank to use source instance name.
         floating_ips (Union[Unset, list['OpenStackNestedFloatingIPRequest']]): Floating IPs that will be assigned to the
             restored instance
-        security_groups (Union[Unset, list['OpenStackNestedSecurityGroupRequest']]): Security groups that will be
-            assigned to the restored instance
         ports (Union[Unset, list['OpenStackNestedPortRequest']]): Network ports that will be attached to the restored
             instance
     """
@@ -33,7 +30,6 @@ class OpenStackBackupRestorationRequest:
     flavor: str
     name: Union[Unset, str] = UNSET
     floating_ips: Union[Unset, list["OpenStackNestedFloatingIPRequest"]] = UNSET
-    security_groups: Union[Unset, list["OpenStackNestedSecurityGroupRequest"]] = UNSET
     ports: Union[Unset, list["OpenStackNestedPortRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -48,13 +44,6 @@ class OpenStackBackupRestorationRequest:
             for floating_ips_item_data in self.floating_ips:
                 floating_ips_item = floating_ips_item_data.to_dict()
                 floating_ips.append(floating_ips_item)
-
-        security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.security_groups, Unset):
-            security_groups = []
-            for security_groups_item_data in self.security_groups:
-                security_groups_item = security_groups_item_data.to_dict()
-                security_groups.append(security_groups_item)
 
         ports: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.ports, Unset):
@@ -74,8 +63,6 @@ class OpenStackBackupRestorationRequest:
             field_dict["name"] = name
         if floating_ips is not UNSET:
             field_dict["floating_ips"] = floating_ips
-        if security_groups is not UNSET:
-            field_dict["security_groups"] = security_groups
         if ports is not UNSET:
             field_dict["ports"] = ports
 
@@ -85,7 +72,6 @@ class OpenStackBackupRestorationRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
         from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
-        from ..models.open_stack_nested_security_group_request import OpenStackNestedSecurityGroupRequest
 
         d = dict(src_dict)
         flavor = d.pop("flavor")
@@ -99,13 +85,6 @@ class OpenStackBackupRestorationRequest:
 
             floating_ips.append(floating_ips_item)
 
-        security_groups = []
-        _security_groups = d.pop("security_groups", UNSET)
-        for security_groups_item_data in _security_groups or []:
-            security_groups_item = OpenStackNestedSecurityGroupRequest.from_dict(security_groups_item_data)
-
-            security_groups.append(security_groups_item)
-
         ports = []
         _ports = d.pop("ports", UNSET)
         for ports_item_data in _ports or []:
@@ -117,7 +96,6 @@ class OpenStackBackupRestorationRequest:
             flavor=flavor,
             name=name,
             floating_ips=floating_ips,
-            security_groups=security_groups,
             ports=ports,
         )
 

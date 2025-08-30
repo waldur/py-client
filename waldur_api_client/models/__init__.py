@@ -274,6 +274,7 @@ from .data_volume import DataVolume
 from .data_volume_request import DataVolumeRequest
 from .deciding_entity_enum import DecidingEntityEnum
 from .delete_attachments_request import DeleteAttachmentsRequest
+from .dependency_logic_operator_enum import DependencyLogicOperatorEnum
 from .detail_state import DetailState
 from .digital_ocean_droplet import DigitalOceanDroplet
 from .digital_ocean_droplet_marketplace_offering_plugin_options_type_0 import (
@@ -441,6 +442,9 @@ from .maintenance_announcements_list_state_item import MaintenanceAnnouncementsL
 from .maintenance_announcements_template_count_o_item import MaintenanceAnnouncementsTemplateCountOItem
 from .maintenance_announcements_template_list_o_item import MaintenanceAnnouncementsTemplateListOItem
 from .maintenance_type_enum import MaintenanceTypeEnum
+from .managed_rancher_cluster_resources_list_field_item import ManagedRancherClusterResourcesListFieldItem
+from .managed_rancher_cluster_resources_retrieve_field_item import ManagedRancherClusterResourcesRetrieveFieldItem
+from .managed_rancher_create_node_request import ManagedRancherCreateNodeRequest
 from .mapping import Mapping
 from .mapping_request import MappingRequest
 from .marketplace_categories_count_customers_offerings_state_item import (
@@ -653,6 +657,8 @@ from .nested_screenshot import NestedScreenshot
 from .nested_screenshot_request import NestedScreenshotRequest
 from .nested_section import NestedSection
 from .nested_section_request import NestedSectionRequest
+from .nested_security_group_rule import NestedSecurityGroupRule
+from .nested_security_group_rule_request import NestedSecurityGroupRuleRequest
 from .network_rbac_policy import NetworkRBACPolicy
 from .network_rbac_policy_request import NetworkRBACPolicyRequest
 from .node_disk_driver_enum import NodeDiskDriverEnum
@@ -756,7 +762,6 @@ from .open_stack_nested_port import OpenStackNestedPort
 from .open_stack_nested_port_request import OpenStackNestedPortRequest
 from .open_stack_nested_security_group import OpenStackNestedSecurityGroup
 from .open_stack_nested_security_group_request import OpenStackNestedSecurityGroupRequest
-from .open_stack_nested_security_group_rules_item import OpenStackNestedSecurityGroupRulesItem
 from .open_stack_nested_server_group import OpenStackNestedServerGroup
 from .open_stack_nested_sub_net import OpenStackNestedSubNet
 from .open_stack_nested_sub_net_request import OpenStackNestedSubNetRequest
@@ -1797,6 +1802,7 @@ __all__ = (
     "DataVolumeRequest",
     "DecidingEntityEnum",
     "DeleteAttachmentsRequest",
+    "DependencyLogicOperatorEnum",
     "DetailState",
     "DigitalOceanDroplet",
     "DigitalOceanDropletMarketplaceOfferingPluginOptionsType0",
@@ -1962,6 +1968,9 @@ __all__ = (
     "MaintenanceAnnouncementTemplateOfferingsListOItem",
     "MaintenanceAnnouncementTemplateRequest",
     "MaintenanceTypeEnum",
+    "ManagedRancherClusterResourcesListFieldItem",
+    "ManagedRancherClusterResourcesRetrieveFieldItem",
+    "ManagedRancherCreateNodeRequest",
     "Mapping",
     "MappingRequest",
     "MarketplaceCategoriesCountCustomersOfferingsStateItem",
@@ -2144,6 +2153,8 @@ __all__ = (
     "NestedScreenshotRequest",
     "NestedSection",
     "NestedSectionRequest",
+    "NestedSecurityGroupRule",
+    "NestedSecurityGroupRuleRequest",
     "NetworkRBACPolicy",
     "NetworkRBACPolicyRequest",
     "NodeDiskDriverEnum",
@@ -2260,7 +2271,6 @@ __all__ = (
     "OpenStackNestedPortRequest",
     "OpenStackNestedSecurityGroup",
     "OpenStackNestedSecurityGroupRequest",
-    "OpenStackNestedSecurityGroupRulesItem",
     "OpenStackNestedServerGroup",
     "OpenStackNestedSubNet",
     "OpenStackNestedSubNetRequest",

@@ -31,8 +31,6 @@ class OpenStackInstanceCreateOrderAttributes:
             ports (list['OpenStackNestedPortRequest']): Network ports to attach to the instance
             system_volume_size (int): Size of the system volume in MiB. Minimum size is 1024 MiB (1 GiB)
             description (Union[Unset, str]):
-            security_groups (Union[Unset, list['OpenStackNestedSecurityGroupRequest']]): List of security groups to apply to
-                the instance
             floating_ips (Union[Unset, list['OpenStackNestedFloatingIPRequest']]): Floating IPs to assign to the instance
             system_volume_type (Union[None, Unset, str]): Volume type for the system volume
             data_volume_size (Union[Unset, int]): Size of the data volume in MiB. Minimum size is 1024 MiB (1 GiB)
@@ -44,6 +42,8 @@ class OpenStackInstanceCreateOrderAttributes:
                 external network
             data_volumes (Union[Unset, list['OpenStackDataVolumeRequest']]): Additional data volumes to attach to the
                 instance
+            security_groups (Union[Unset, list['OpenStackNestedSecurityGroupRequest']]): Security groups to attach to the
+                instance
     """
 
     name: str
@@ -52,7 +52,6 @@ class OpenStackInstanceCreateOrderAttributes:
     ports: list["OpenStackNestedPortRequest"]
     system_volume_size: int
     description: Union[Unset, str] = UNSET
-    security_groups: Union[Unset, list["OpenStackNestedSecurityGroupRequest"]] = UNSET
     floating_ips: Union[Unset, list["OpenStackNestedFloatingIPRequest"]] = UNSET
     system_volume_type: Union[None, Unset, str] = UNSET
     data_volume_size: Union[Unset, int] = UNSET
@@ -62,6 +61,7 @@ class OpenStackInstanceCreateOrderAttributes:
     availability_zone: Union[None, Unset, str] = UNSET
     connect_directly_to_external_network: Union[Unset, bool] = UNSET
     data_volumes: Union[Unset, list["OpenStackDataVolumeRequest"]] = UNSET
+    security_groups: Union[Unset, list["OpenStackNestedSecurityGroupRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -79,13 +79,6 @@ class OpenStackInstanceCreateOrderAttributes:
         system_volume_size = self.system_volume_size
 
         description = self.description
-
-        security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.security_groups, Unset):
-            security_groups = []
-            for security_groups_item_data in self.security_groups:
-                security_groups_item = security_groups_item_data.to_dict()
-                security_groups.append(security_groups_item)
 
         floating_ips: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.floating_ips, Unset):
@@ -127,6 +120,13 @@ class OpenStackInstanceCreateOrderAttributes:
                 data_volumes_item = data_volumes_item_data.to_dict()
                 data_volumes.append(data_volumes_item)
 
+        security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.security_groups, Unset):
+            security_groups = []
+            for security_groups_item_data in self.security_groups:
+                security_groups_item = security_groups_item_data.to_dict()
+                security_groups.append(security_groups_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -140,8 +140,6 @@ class OpenStackInstanceCreateOrderAttributes:
         )
         if description is not UNSET:
             field_dict["description"] = description
-        if security_groups is not UNSET:
-            field_dict["security_groups"] = security_groups
         if floating_ips is not UNSET:
             field_dict["floating_ips"] = floating_ips
         if system_volume_type is not UNSET:
@@ -160,6 +158,8 @@ class OpenStackInstanceCreateOrderAttributes:
             field_dict["connect_directly_to_external_network"] = connect_directly_to_external_network
         if data_volumes is not UNSET:
             field_dict["data_volumes"] = data_volumes
+        if security_groups is not UNSET:
+            field_dict["security_groups"] = security_groups
 
         return field_dict
 
@@ -187,13 +187,6 @@ class OpenStackInstanceCreateOrderAttributes:
         system_volume_size = d.pop("system_volume_size")
 
         description = d.pop("description", UNSET)
-
-        security_groups = []
-        _security_groups = d.pop("security_groups", UNSET)
-        for security_groups_item_data in _security_groups or []:
-            security_groups_item = OpenStackNestedSecurityGroupRequest.from_dict(security_groups_item_data)
-
-            security_groups.append(security_groups_item)
 
         floating_ips = []
         _floating_ips = d.pop("floating_ips", UNSET)
@@ -244,6 +237,13 @@ class OpenStackInstanceCreateOrderAttributes:
 
             data_volumes.append(data_volumes_item)
 
+        security_groups = []
+        _security_groups = d.pop("security_groups", UNSET)
+        for security_groups_item_data in _security_groups or []:
+            security_groups_item = OpenStackNestedSecurityGroupRequest.from_dict(security_groups_item_data)
+
+            security_groups.append(security_groups_item)
+
         open_stack_instance_create_order_attributes = cls(
             name=name,
             flavor=flavor,
@@ -251,7 +251,6 @@ class OpenStackInstanceCreateOrderAttributes:
             ports=ports,
             system_volume_size=system_volume_size,
             description=description,
-            security_groups=security_groups,
             floating_ips=floating_ips,
             system_volume_type=system_volume_type,
             data_volume_size=data_volume_size,
@@ -261,6 +260,7 @@ class OpenStackInstanceCreateOrderAttributes:
             availability_zone=availability_zone,
             connect_directly_to_external_network=connect_directly_to_external_network,
             data_volumes=data_volumes,
+            security_groups=security_groups,
         )
 
         open_stack_instance_create_order_attributes.additional_properties = d

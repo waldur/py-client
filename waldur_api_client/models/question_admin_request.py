@@ -6,6 +6,7 @@ from attrs import field as _attrs_field
 
 from ..models.blank_enum import BlankEnum
 from ..models.checklist_operators import ChecklistOperators
+from ..models.dependency_logic_operator_enum import DependencyLogicOperatorEnum
 from ..models.question_type_enum import QuestionTypeEnum
 from ..types import UNSET, Unset
 
@@ -32,6 +33,7 @@ class QuestionAdminRequest:
             is conditional on answer matching guidance_answer_value with guidance_operator
         min_value (Union[None, Unset, str]): Minimum value allowed for NUMBER type questions
         max_value (Union[None, Unset, str]): Maximum value allowed for NUMBER type questions
+        dependency_logic_operator (Union[Unset, DependencyLogicOperatorEnum]):
     """
 
     checklist: str
@@ -48,6 +50,7 @@ class QuestionAdminRequest:
     always_show_guidance: Union[Unset, bool] = UNSET
     min_value: Union[None, Unset, str] = UNSET
     max_value: Union[None, Unset, str] = UNSET
+    dependency_logic_operator: Union[Unset, DependencyLogicOperatorEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -101,6 +104,10 @@ class QuestionAdminRequest:
         else:
             max_value = self.max_value
 
+        dependency_logic_operator: Union[Unset, str] = UNSET
+        if not isinstance(self.dependency_logic_operator, Unset):
+            dependency_logic_operator = self.dependency_logic_operator.value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -134,6 +141,8 @@ class QuestionAdminRequest:
             field_dict["min_value"] = min_value
         if max_value is not UNSET:
             field_dict["max_value"] = max_value
+        if dependency_logic_operator is not UNSET:
+            field_dict["dependency_logic_operator"] = dependency_logic_operator
 
         return field_dict
 
@@ -221,6 +230,13 @@ class QuestionAdminRequest:
 
         max_value = _parse_max_value(d.pop("max_value", UNSET))
 
+        _dependency_logic_operator = d.pop("dependency_logic_operator", UNSET)
+        dependency_logic_operator: Union[Unset, DependencyLogicOperatorEnum]
+        if isinstance(_dependency_logic_operator, Unset):
+            dependency_logic_operator = UNSET
+        else:
+            dependency_logic_operator = DependencyLogicOperatorEnum(_dependency_logic_operator)
+
         question_admin_request = cls(
             checklist=checklist,
             description=description,
@@ -236,6 +252,7 @@ class QuestionAdminRequest:
             always_show_guidance=always_show_guidance,
             min_value=min_value,
             max_value=max_value,
+            dependency_logic_operator=dependency_logic_operator,
         )
 
         question_admin_request.additional_properties = d
