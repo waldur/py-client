@@ -36,6 +36,7 @@ class ProposalReview:
         round_start_time (datetime.datetime):
         call_name (str):
         call_uuid (UUID):
+        call_managing_organisation_uuid (UUID):
         summary_score (Union[Unset, int]):
         summary_public_comment (Union[Unset, str]):
         summary_private_comment (Union[Unset, str]):
@@ -67,6 +68,7 @@ class ProposalReview:
     round_start_time: datetime.datetime
     call_name: str
     call_uuid: UUID
+    call_managing_organisation_uuid: UUID
     summary_score: Union[Unset, int] = UNSET
     summary_public_comment: Union[Unset, str] = UNSET
     summary_private_comment: Union[Unset, str] = UNSET
@@ -116,6 +118,8 @@ class ProposalReview:
         call_name = self.call_name
 
         call_uuid = str(self.call_uuid)
+
+        call_managing_organisation_uuid = str(self.call_managing_organisation_uuid)
 
         summary_score = self.summary_score
 
@@ -198,6 +202,7 @@ class ProposalReview:
                 "round_start_time": round_start_time,
                 "call_name": call_name,
                 "call_uuid": call_uuid,
+                "call_managing_organisation_uuid": call_managing_organisation_uuid,
             }
         )
         if summary_score is not UNSET:
@@ -268,6 +273,8 @@ class ProposalReview:
         call_name = d.pop("call_name")
 
         call_uuid = UUID(d.pop("call_uuid"))
+
+        call_managing_organisation_uuid = UUID(d.pop("call_managing_organisation_uuid"))
 
         summary_score = d.pop("summary_score", UNSET)
 
@@ -380,6 +387,7 @@ class ProposalReview:
             round_start_time=round_start_time,
             call_name=call_name,
             call_uuid=call_uuid,
+            call_managing_organisation_uuid=call_managing_organisation_uuid,
             summary_score=summary_score,
             summary_public_comment=summary_public_comment,
             summary_private_comment=summary_private_comment,

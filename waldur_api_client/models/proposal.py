@@ -40,6 +40,7 @@ class Proposal:
         round_ (NestedRound):
         call_uuid (UUID):
         call_name (str):
+        call_managing_organisation_uuid (UUID):
         oecd_fos_2007_label (str):
         allocation_comment (Union[None, str]):
         created (datetime.datetime):
@@ -67,6 +68,7 @@ class Proposal:
     round_: "NestedRound"
     call_uuid: UUID
     call_name: str
+    call_managing_organisation_uuid: UUID
     oecd_fos_2007_label: str
     allocation_comment: Union[None, str]
     created: datetime.datetime
@@ -116,6 +118,8 @@ class Proposal:
         call_uuid = str(self.call_uuid)
 
         call_name = self.call_name
+
+        call_managing_organisation_uuid = str(self.call_managing_organisation_uuid)
 
         oecd_fos_2007_label = self.oecd_fos_2007_label
 
@@ -174,6 +178,7 @@ class Proposal:
                 "round": round_,
                 "call_uuid": call_uuid,
                 "call_name": call_name,
+                "call_managing_organisation_uuid": call_managing_organisation_uuid,
                 "oecd_fos_2007_label": oecd_fos_2007_label,
                 "allocation_comment": allocation_comment,
                 "created": created,
@@ -251,6 +256,8 @@ class Proposal:
         call_uuid = UUID(d.pop("call_uuid"))
 
         call_name = d.pop("call_name")
+
+        call_managing_organisation_uuid = UUID(d.pop("call_managing_organisation_uuid"))
 
         oecd_fos_2007_label = d.pop("oecd_fos_2007_label")
 
@@ -337,6 +344,7 @@ class Proposal:
             round_=round_,
             call_uuid=call_uuid,
             call_name=call_name,
+            call_managing_organisation_uuid=call_managing_organisation_uuid,
             oecd_fos_2007_label=oecd_fos_2007_label,
             allocation_comment=allocation_comment,
             created=created,
