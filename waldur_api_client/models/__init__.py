@@ -381,6 +381,7 @@ from .invoice_state_enum import InvoiceStateEnum
 from .invoice_stats_offering import InvoiceStatsOffering
 from .invoices_count_o_item import InvoicesCountOItem
 from .invoices_count_state_item import InvoicesCountStateItem
+from .invoices_items_retrieve_o import InvoicesItemsRetrieveO
 from .invoices_list_field_item import InvoicesListFieldItem
 from .invoices_list_o_item import InvoicesListOItem
 from .invoices_list_state_item import InvoicesListStateItem
@@ -1905,6 +1906,7 @@ __all__ = (
     "InvoiceItemUpdateRequest",
     "InvoicesCountOItem",
     "InvoicesCountStateItem",
+    "InvoicesItemsRetrieveO",
     "InvoicesListFieldItem",
     "InvoicesListOItem",
     "InvoicesListStateItem",

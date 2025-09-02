@@ -7,6 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.invoice_item import InvoiceItem
+from ...models.invoices_items_retrieve_o import InvoicesItemsRetrieveO
 from ...types import UNSET, Response, Unset
 
 
@@ -14,6 +15,7 @@ def _get_kwargs(
     uuid: UUID,
     *,
     conceal_compensation_items: Union[Unset, bool] = UNSET,
+    o: Union[Unset, InvoicesItemsRetrieveO] = UNSET,
     offering_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, str] = UNSET,
     provider_uuid: Union[Unset, str] = UNSET,
@@ -22,6 +24,12 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["conceal_compensation_items"] = conceal_compensation_items
+
+    json_o: Union[Unset, str] = UNSET
+    if not isinstance(o, Unset):
+        json_o = o.value
+
+    params["o"] = json_o
 
     params["offering_uuid"] = offering_uuid
 
@@ -64,6 +72,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     conceal_compensation_items: Union[Unset, bool] = UNSET,
+    o: Union[Unset, InvoicesItemsRetrieveO] = UNSET,
     offering_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, str] = UNSET,
     provider_uuid: Union[Unset, str] = UNSET,
@@ -76,6 +85,7 @@ def sync_detailed(
     Args:
         uuid (UUID):
         conceal_compensation_items (Union[Unset, bool]):
+        o (Union[Unset, InvoicesItemsRetrieveO]):
         offering_uuid (Union[Unset, str]):
         project_uuid (Union[Unset, str]):
         provider_uuid (Union[Unset, str]):
@@ -92,6 +102,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         uuid=uuid,
         conceal_compensation_items=conceal_compensation_items,
+        o=o,
         offering_uuid=offering_uuid,
         project_uuid=project_uuid,
         provider_uuid=provider_uuid,
@@ -110,6 +121,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     conceal_compensation_items: Union[Unset, bool] = UNSET,
+    o: Union[Unset, InvoicesItemsRetrieveO] = UNSET,
     offering_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, str] = UNSET,
     provider_uuid: Union[Unset, str] = UNSET,
@@ -122,6 +134,7 @@ def sync(
     Args:
         uuid (UUID):
         conceal_compensation_items (Union[Unset, bool]):
+        o (Union[Unset, InvoicesItemsRetrieveO]):
         offering_uuid (Union[Unset, str]):
         project_uuid (Union[Unset, str]):
         provider_uuid (Union[Unset, str]):
@@ -139,6 +152,7 @@ def sync(
         uuid=uuid,
         client=client,
         conceal_compensation_items=conceal_compensation_items,
+        o=o,
         offering_uuid=offering_uuid,
         project_uuid=project_uuid,
         provider_uuid=provider_uuid,
@@ -151,6 +165,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     conceal_compensation_items: Union[Unset, bool] = UNSET,
+    o: Union[Unset, InvoicesItemsRetrieveO] = UNSET,
     offering_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, str] = UNSET,
     provider_uuid: Union[Unset, str] = UNSET,
@@ -163,6 +178,7 @@ async def asyncio_detailed(
     Args:
         uuid (UUID):
         conceal_compensation_items (Union[Unset, bool]):
+        o (Union[Unset, InvoicesItemsRetrieveO]):
         offering_uuid (Union[Unset, str]):
         project_uuid (Union[Unset, str]):
         provider_uuid (Union[Unset, str]):
@@ -179,6 +195,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         uuid=uuid,
         conceal_compensation_items=conceal_compensation_items,
+        o=o,
         offering_uuid=offering_uuid,
         project_uuid=project_uuid,
         provider_uuid=provider_uuid,
@@ -195,6 +212,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     conceal_compensation_items: Union[Unset, bool] = UNSET,
+    o: Union[Unset, InvoicesItemsRetrieveO] = UNSET,
     offering_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, str] = UNSET,
     provider_uuid: Union[Unset, str] = UNSET,
@@ -207,6 +225,7 @@ async def asyncio(
     Args:
         uuid (UUID):
         conceal_compensation_items (Union[Unset, bool]):
+        o (Union[Unset, InvoicesItemsRetrieveO]):
         offering_uuid (Union[Unset, str]):
         project_uuid (Union[Unset, str]):
         provider_uuid (Union[Unset, str]):
@@ -225,6 +244,7 @@ async def asyncio(
             uuid=uuid,
             client=client,
             conceal_compensation_items=conceal_compensation_items,
+            o=o,
             offering_uuid=offering_uuid,
             project_uuid=project_uuid,
             provider_uuid=provider_uuid,
