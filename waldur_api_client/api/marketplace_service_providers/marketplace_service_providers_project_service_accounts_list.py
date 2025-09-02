@@ -6,6 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_service_providers_project_service_accounts_list_state_item import (
+    MarketplaceServiceProvidersProjectServiceAccountsListStateItem,
+)
 from ...models.project_service_account import ProjectServiceAccount
 from ...types import UNSET, Response, Unset
 
@@ -18,6 +21,7 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -34,6 +38,15 @@ def _get_kwargs(
     if not isinstance(project_uuid, Unset):
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
+
+    json_state: Union[Unset, list[str]] = UNSET
+    if not isinstance(state, Unset):
+        json_state = []
+        for state_item_data in state:
+            state_item = state_item_data.value
+            json_state.append(state_item)
+
+    params["state"] = json_state
 
     params["username"] = username
 
@@ -83,6 +96,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectServiceAccount"]]:
     """Return project service accounts that have access to resources managed by the provider.
@@ -100,6 +114,8 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        state (Union[Unset,
+            list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -117,6 +133,7 @@ def sync_detailed(
         page_size=page_size,
         project=project,
         project_uuid=project_uuid,
+        state=state,
         username=username,
     )
 
@@ -136,6 +153,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ProjectServiceAccount"]:
     """Return project service accounts that have access to resources managed by the provider.
@@ -153,6 +171,8 @@ def sync(
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        state (Union[Unset,
+            list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -171,6 +191,7 @@ def sync(
         page_size=page_size,
         project=project,
         project_uuid=project_uuid,
+        state=state,
         username=username,
     ).parsed
 
@@ -184,6 +205,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectServiceAccount"]]:
     """Return project service accounts that have access to resources managed by the provider.
@@ -201,6 +223,8 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        state (Union[Unset,
+            list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -218,6 +242,7 @@ async def asyncio_detailed(
         page_size=page_size,
         project=project,
         project_uuid=project_uuid,
+        state=state,
         username=username,
     )
 
@@ -235,6 +260,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ProjectServiceAccount"]:
     """Return project service accounts that have access to resources managed by the provider.
@@ -252,6 +278,8 @@ async def asyncio(
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        state (Union[Unset,
+            list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -271,6 +299,7 @@ async def asyncio(
             page_size=page_size,
             project=project,
             project_uuid=project_uuid,
+            state=state,
             username=username,
         )
     ).parsed

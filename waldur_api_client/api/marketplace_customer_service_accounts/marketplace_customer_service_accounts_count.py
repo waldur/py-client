@@ -6,6 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_customer_service_accounts_count_state_item import (
+    MarketplaceCustomerServiceAccountsCountStateItem,
+)
 from ...types import UNSET, Response, Unset
 
 
@@ -16,6 +19,7 @@ def _get_kwargs(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -32,6 +36,15 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    json_state: Union[Unset, list[str]] = UNSET
+    if not isinstance(state, Unset):
+        json_state = []
+        for state_item_data in state:
+            state_item = state_item_data.value
+            json_state.append(state_item)
+
+    params["state"] = json_state
 
     params["username"] = username
 
@@ -78,6 +91,7 @@ def sync_detailed(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -88,6 +102,7 @@ def sync_detailed(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -104,6 +119,7 @@ def sync_detailed(
         email=email,
         page=page,
         page_size=page_size,
+        state=state,
         username=username,
     )
 
@@ -122,6 +138,7 @@ def sync(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -132,6 +149,7 @@ def sync(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -149,6 +167,7 @@ def sync(
         email=email,
         page=page,
         page_size=page_size,
+        state=state,
         username=username,
     ).parsed
 
@@ -161,6 +180,7 @@ async def asyncio_detailed(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -171,6 +191,7 @@ async def asyncio_detailed(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -187,6 +208,7 @@ async def asyncio_detailed(
         email=email,
         page=page,
         page_size=page_size,
+        state=state,
         username=username,
     )
 
@@ -203,6 +225,7 @@ async def asyncio(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -213,6 +236,7 @@ async def asyncio(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -231,6 +255,7 @@ async def asyncio(
             email=email,
             page=page,
             page_size=page_size,
+            state=state,
             username=username,
         )
     ).parsed

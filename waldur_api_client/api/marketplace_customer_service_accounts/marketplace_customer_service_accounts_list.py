@@ -7,6 +7,9 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.customer_service_account import CustomerServiceAccount
+from ...models.marketplace_customer_service_accounts_list_state_item import (
+    MarketplaceCustomerServiceAccountsListStateItem,
+)
 from ...types import UNSET, Response, Unset
 
 
@@ -17,6 +20,7 @@ def _get_kwargs(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -33,6 +37,15 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    json_state: Union[Unset, list[str]] = UNSET
+    if not isinstance(state, Unset):
+        json_state = []
+        for state_item_data in state:
+            state_item = state_item_data.value
+            json_state.append(state_item)
+
+    params["state"] = json_state
 
     params["username"] = username
 
@@ -81,6 +94,7 @@ def sync_detailed(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CustomerServiceAccount"]]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
@@ -91,6 +105,7 @@ def sync_detailed(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -107,6 +122,7 @@ def sync_detailed(
         email=email,
         page=page,
         page_size=page_size,
+        state=state,
         username=username,
     )
 
@@ -125,6 +141,7 @@ def sync(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CustomerServiceAccount"]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
@@ -135,6 +152,7 @@ def sync(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -152,6 +170,7 @@ def sync(
         email=email,
         page=page,
         page_size=page_size,
+        state=state,
         username=username,
     ).parsed
 
@@ -164,6 +183,7 @@ async def asyncio_detailed(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CustomerServiceAccount"]]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
@@ -174,6 +194,7 @@ async def asyncio_detailed(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -190,6 +211,7 @@ async def asyncio_detailed(
         email=email,
         page=page,
         page_size=page_size,
+        state=state,
         username=username,
     )
 
@@ -206,6 +228,7 @@ async def asyncio(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CustomerServiceAccount"]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
@@ -216,6 +239,7 @@ async def asyncio(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -234,6 +258,7 @@ async def asyncio(
             email=email,
             page=page,
             page_size=page_size,
+            state=state,
             username=username,
         )
     ).parsed
