@@ -7,7 +7,6 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.robot_account_states import RobotAccountStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -32,6 +31,7 @@ class RobotAccountDetails:
         description (Union[Unset, str]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
+        state (Union[Unset, str]):
         resource (Union[Unset, str]):
         type_ (Union[Unset, str]): Type of the robot account.
         users (Union[Unset, list['BasicUser']]):
@@ -39,7 +39,6 @@ class RobotAccountDetails:
         backend_id (Union[Unset, str]):
         fingerprints (Union[Unset, list['Fingerprint']]):
         responsible_user (Union['BasicUser', None, Unset]):
-        state (Union[Unset, RobotAccountStates]):
         user_keys (Union[Unset, list['SshKey']]):
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
@@ -59,6 +58,7 @@ class RobotAccountDetails:
     description: Union[Unset, str] = UNSET
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
+    state: Union[Unset, str] = UNSET
     resource: Union[Unset, str] = UNSET
     type_: Union[Unset, str] = UNSET
     users: Union[Unset, list["BasicUser"]] = UNSET
@@ -66,7 +66,6 @@ class RobotAccountDetails:
     backend_id: Union[Unset, str] = UNSET
     fingerprints: Union[Unset, list["Fingerprint"]] = UNSET
     responsible_user: Union["BasicUser", None, Unset] = UNSET
-    state: Union[Unset, RobotAccountStates] = UNSET
     user_keys: Union[Unset, list["SshKey"]] = UNSET
     resource_name: Union[Unset, str] = UNSET
     resource_uuid: Union[Unset, UUID] = UNSET
@@ -103,6 +102,8 @@ class RobotAccountDetails:
 
         error_traceback = self.error_traceback
 
+        state = self.state
+
         resource = self.resource
 
         type_ = self.type_
@@ -132,10 +133,6 @@ class RobotAccountDetails:
             responsible_user = self.responsible_user.to_dict()
         else:
             responsible_user = self.responsible_user
-
-        state: Union[Unset, int] = UNSET
-        if not isinstance(self.state, Unset):
-            state = self.state.value
 
         user_keys: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.user_keys, Unset):
@@ -189,6 +186,8 @@ class RobotAccountDetails:
             field_dict["error_message"] = error_message
         if error_traceback is not UNSET:
             field_dict["error_traceback"] = error_traceback
+        if state is not UNSET:
+            field_dict["state"] = state
         if resource is not UNSET:
             field_dict["resource"] = resource
         if type_ is not UNSET:
@@ -203,8 +202,6 @@ class RobotAccountDetails:
             field_dict["fingerprints"] = fingerprints
         if responsible_user is not UNSET:
             field_dict["responsible_user"] = responsible_user
-        if state is not UNSET:
-            field_dict["state"] = state
         if user_keys is not UNSET:
             field_dict["user_keys"] = user_keys
         if resource_name is not UNSET:
@@ -265,6 +262,8 @@ class RobotAccountDetails:
 
         error_traceback = d.pop("error_traceback", UNSET)
 
+        state = d.pop("state", UNSET)
+
         resource = d.pop("resource", UNSET)
 
         type_ = d.pop("type", UNSET)
@@ -303,13 +302,6 @@ class RobotAccountDetails:
             return cast(Union["BasicUser", None, Unset], data)
 
         responsible_user = _parse_responsible_user(d.pop("responsible_user", UNSET))
-
-        _state = d.pop("state", UNSET)
-        state: Union[Unset, RobotAccountStates]
-        if isinstance(_state, Unset):
-            state = UNSET
-        else:
-            state = RobotAccountStates(_state)
 
         user_keys = []
         _user_keys = d.pop("user_keys", UNSET)
@@ -368,6 +360,7 @@ class RobotAccountDetails:
             description=description,
             error_message=error_message,
             error_traceback=error_traceback,
+            state=state,
             resource=resource,
             type_=type_,
             users=users,
@@ -375,7 +368,6 @@ class RobotAccountDetails:
             backend_id=backend_id,
             fingerprints=fingerprints,
             responsible_user=responsible_user,
-            state=state,
             user_keys=user_keys,
             resource_name=resource_name,
             resource_uuid=resource_uuid,

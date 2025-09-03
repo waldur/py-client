@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any, Union
-from uuid import UUID
 
 import httpx
 
@@ -10,11 +9,11 @@ from ...types import Response
 
 
 def _get_kwargs(
-    uuid: UUID,
+    uuid: str,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/projects/{uuid}/sync_user_roles/",
+        "url": f"/projects/{uuid}/sync_user_roles/",
     }
 
     return _kwargs
@@ -36,14 +35,15 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
-    uuid: UUID,
+    uuid: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Trigger user role sync for this project
+    """Trigger user role sync for this project. Sends a notification to RabbitMQ that this project needs
+    user role synchronization.
 
     Args:
-        uuid (UUID):
+        uuid (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -65,14 +65,15 @@ def sync_detailed(
 
 
 async def asyncio_detailed(
-    uuid: UUID,
+    uuid: str,
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Trigger user role sync for this project
+    """Trigger user role sync for this project. Sends a notification to RabbitMQ that this project needs
+    user role synchronization.
 
     Args:
-        uuid (UUID):
+        uuid (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

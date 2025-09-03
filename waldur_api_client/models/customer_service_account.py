@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.service_account_state import ServiceAccountState
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CustomerServiceAccount")
@@ -21,6 +22,7 @@ class CustomerServiceAccount:
         created (datetime.datetime):
         modified (datetime.datetime):
         error_message (str):
+        state (ServiceAccountState):
         token (Union[None, str]):
         expires_at (Union[None, str]):
         customer (UUID):
@@ -38,6 +40,7 @@ class CustomerServiceAccount:
     created: datetime.datetime
     modified: datetime.datetime
     error_message: str
+    state: ServiceAccountState
     token: Union[None, str]
     expires_at: Union[None, str]
     customer: UUID
@@ -60,6 +63,8 @@ class CustomerServiceAccount:
         modified = self.modified.isoformat()
 
         error_message = self.error_message
+
+        state = self.state.value
 
         token: Union[None, str]
         token = self.token
@@ -92,6 +97,7 @@ class CustomerServiceAccount:
                 "created": created,
                 "modified": modified,
                 "error_message": error_message,
+                "state": state,
                 "token": token,
                 "expires_at": expires_at,
                 "customer": customer,
@@ -124,6 +130,8 @@ class CustomerServiceAccount:
         modified = isoparse(d.pop("modified"))
 
         error_message = d.pop("error_message")
+
+        state = ServiceAccountState(d.pop("state"))
 
         def _parse_token(data: object) -> Union[None, str]:
             if data is None:
@@ -161,6 +169,7 @@ class CustomerServiceAccount:
             created=created,
             modified=modified,
             error_message=error_message,
+            state=state,
             token=token,
             expires_at=expires_at,
             customer=customer,

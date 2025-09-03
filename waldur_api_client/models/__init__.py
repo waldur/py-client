@@ -1355,7 +1355,6 @@ from .robot_account import RobotAccount
 from .robot_account_details import RobotAccountDetails
 from .robot_account_error_request import RobotAccountErrorRequest
 from .robot_account_request import RobotAccountRequest
-from .robot_account_states import RobotAccountStates
 from .role_description import RoleDescription
 from .role_description_request import RoleDescriptionRequest
 from .role_details import RoleDetails
@@ -1384,6 +1383,7 @@ from .screenshot import Screenshot
 from .screenshot_request import ScreenshotRequest
 from .section import Section
 from .section_request import SectionRequest
+from .service_account_state import ServiceAccountState
 from .service_provider import ServiceProvider
 from .service_provider_api_secret_code import ServiceProviderApiSecretCode
 from .service_provider_compliance_overview import ServiceProviderComplianceOverview
@@ -2807,7 +2807,6 @@ __all__ = (
     "RobotAccountDetails",
     "RobotAccountErrorRequest",
     "RobotAccountRequest",
-    "RobotAccountStates",
     "RoleDescription",
     "RoleDescriptionRequest",
     "RoleDetails",
@@ -2836,6 +2835,7 @@ __all__ = (
     "ScreenshotRequest",
     "Section",
     "SectionRequest",
+    "ServiceAccountState",
     "ServiceProvider",
     "ServiceProviderApiSecretCode",
     "ServiceProviderComplianceOverview",
