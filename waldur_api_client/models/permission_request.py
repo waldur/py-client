@@ -23,6 +23,7 @@ class PermissionRequest:
         created (datetime.datetime):
         created_by_full_name (str):
         created_by_username (str):
+        created_by_email (str):
         reviewed_by_full_name (str):
         reviewed_by_username (str):
         reviewed_at (Union[None, datetime.datetime]): Timestamp when the review was completed
@@ -32,6 +33,7 @@ class PermissionRequest:
         customer_name (str):
         role_name (str):
         role_description (str):
+        project_name_template (str):
         review_comment (Union[None, Unset, str]): Optional comment provided during review
     """
 
@@ -42,6 +44,7 @@ class PermissionRequest:
     created: datetime.datetime
     created_by_full_name: str
     created_by_username: str
+    created_by_email: str
     reviewed_by_full_name: str
     reviewed_by_username: str
     reviewed_at: Union[None, datetime.datetime]
@@ -51,6 +54,7 @@ class PermissionRequest:
     customer_name: str
     role_name: str
     role_description: str
+    project_name_template: str
     review_comment: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -68,6 +72,8 @@ class PermissionRequest:
         created_by_full_name = self.created_by_full_name
 
         created_by_username = self.created_by_username
+
+        created_by_email = self.created_by_email
 
         reviewed_by_full_name = self.reviewed_by_full_name
 
@@ -91,6 +97,8 @@ class PermissionRequest:
 
         role_description = self.role_description
 
+        project_name_template = self.project_name_template
+
         review_comment: Union[None, Unset, str]
         if isinstance(self.review_comment, Unset):
             review_comment = UNSET
@@ -108,6 +116,7 @@ class PermissionRequest:
                 "created": created,
                 "created_by_full_name": created_by_full_name,
                 "created_by_username": created_by_username,
+                "created_by_email": created_by_email,
                 "reviewed_by_full_name": reviewed_by_full_name,
                 "reviewed_by_username": reviewed_by_username,
                 "reviewed_at": reviewed_at,
@@ -117,6 +126,7 @@ class PermissionRequest:
                 "customer_name": customer_name,
                 "role_name": role_name,
                 "role_description": role_description,
+                "project_name_template": project_name_template,
             }
         )
         if review_comment is not UNSET:
@@ -140,6 +150,8 @@ class PermissionRequest:
         created_by_full_name = d.pop("created_by_full_name")
 
         created_by_username = d.pop("created_by_username")
+
+        created_by_email = d.pop("created_by_email")
 
         reviewed_by_full_name = d.pop("reviewed_by_full_name")
 
@@ -172,6 +184,8 @@ class PermissionRequest:
 
         role_description = d.pop("role_description")
 
+        project_name_template = d.pop("project_name_template")
+
         def _parse_review_comment(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -189,6 +203,7 @@ class PermissionRequest:
             created=created,
             created_by_full_name=created_by_full_name,
             created_by_username=created_by_username,
+            created_by_email=created_by_email,
             reviewed_by_full_name=reviewed_by_full_name,
             reviewed_by_username=reviewed_by_username,
             reviewed_at=reviewed_at,
@@ -198,6 +213,7 @@ class PermissionRequest:
             customer_name=customer_name,
             role_name=role_name,
             role_description=role_description,
+            project_name_template=project_name_template,
             review_comment=review_comment,
         )
 
