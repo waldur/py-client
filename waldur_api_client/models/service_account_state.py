@@ -1,10 +1,10 @@
-from enum import IntEnum
+from enum import Enum
 
 
-class ServiceAccountState(IntEnum):
-    VALUE_1 = 1
-    VALUE_2 = 2
-    VALUE_3 = 3
+class ServiceAccountState(str, Enum):
+    CLOSED = "Closed"
+    ERRED = "Erred"
+    OK = "OK"
 
     def __str__(self) -> str:
         return str(self.value)
