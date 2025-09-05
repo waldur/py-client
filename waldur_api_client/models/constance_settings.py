@@ -145,6 +145,7 @@ class ConstanceSettings:
         deactivate_user_if_no_roles (Union[Unset, bool]):
         maintenance_announcement_notify_before_minutes (Union[Unset, int]):
         maintenance_announcement_notify_system (Union[Unset, list[str]]):
+        enforce_user_consent_for_offerings (Union[Unset, bool]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -279,6 +280,7 @@ class ConstanceSettings:
     deactivate_user_if_no_roles: Union[Unset, bool] = UNSET
     maintenance_announcement_notify_before_minutes: Union[Unset, int] = UNSET
     maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
+    enforce_user_consent_for_offerings: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -600,6 +602,8 @@ class ConstanceSettings:
         if not isinstance(self.maintenance_announcement_notify_system, Unset):
             maintenance_announcement_notify_system = self.maintenance_announcement_notify_system
 
+        enforce_user_consent_for_offerings = self.enforce_user_consent_for_offerings
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -873,6 +877,8 @@ class ConstanceSettings:
             )
         if maintenance_announcement_notify_system is not UNSET:
             field_dict["MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM"] = maintenance_announcement_notify_system
+        if enforce_user_consent_for_offerings is not UNSET:
+            field_dict["ENFORCE_USER_CONSENT_FOR_OFFERINGS"] = enforce_user_consent_for_offerings
 
         return field_dict
 
@@ -1231,6 +1237,8 @@ class ConstanceSettings:
 
         maintenance_announcement_notify_system = cast(list[str], d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM", UNSET))
 
+        enforce_user_consent_for_offerings = d.pop("ENFORCE_USER_CONSENT_FOR_OFFERINGS", UNSET)
+
         constance_settings = cls(
             site_name=site_name,
             site_description=site_description,
@@ -1364,6 +1372,7 @@ class ConstanceSettings:
             deactivate_user_if_no_roles=deactivate_user_if_no_roles,
             maintenance_announcement_notify_before_minutes=maintenance_announcement_notify_before_minutes,
             maintenance_announcement_notify_system=maintenance_announcement_notify_system,
+            enforce_user_consent_for_offerings=enforce_user_consent_for_offerings,
         )
 
         constance_settings.additional_properties = d

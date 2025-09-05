@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -16,7 +16,7 @@ class RmqSubscription:
     Attributes:
         created (datetime.datetime):
         uuid (UUID):
-        source_ip (str):
+        source_ip (str): An IPv4 or IPv6 address.
     """
 
     created: datetime.datetime
@@ -29,6 +29,7 @@ class RmqSubscription:
 
         uuid = str(self.uuid)
 
+        source_ip: str
         source_ip = self.source_ip
 
         field_dict: dict[str, Any] = {}
@@ -50,7 +51,10 @@ class RmqSubscription:
 
         uuid = UUID(d.pop("uuid"))
 
-        source_ip = d.pop("source_ip")
+        def _parse_source_ip(data: object) -> str:
+            return cast(str, data)
+
+        source_ip = _parse_source_ip(d.pop("source_ip"))
 
         rmq_subscription = cls(
             created=created,

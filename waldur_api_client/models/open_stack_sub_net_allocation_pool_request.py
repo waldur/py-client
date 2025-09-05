@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,8 +11,8 @@ T = TypeVar("T", bound="OpenStackSubNetAllocationPoolRequest")
 class OpenStackSubNetAllocationPoolRequest:
     """
     Attributes:
-        start (str):
-        end (str):
+        start (str): An IPv4 or IPv6 address.
+        end (str): An IPv4 or IPv6 address.
     """
 
     start: str
@@ -20,8 +20,10 @@ class OpenStackSubNetAllocationPoolRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        start: str
         start = self.start
 
+        end: str
         end = self.end
 
         field_dict: dict[str, Any] = {}
@@ -38,9 +40,16 @@ class OpenStackSubNetAllocationPoolRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        start = d.pop("start")
 
-        end = d.pop("end")
+        def _parse_start(data: object) -> str:
+            return cast(str, data)
+
+        start = _parse_start(d.pop("start"))
+
+        def _parse_end(data: object) -> str:
+            return cast(str, data)
+
+        end = _parse_end(d.pop("end"))
 
         open_stack_sub_net_allocation_pool_request = cls(
             start=start,

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,6 +22,7 @@ class OpenStackPortIPUpdateRequest:
     def to_dict(self) -> dict[str, Any]:
         subnet = self.subnet
 
+        ip_address: str
         ip_address = self.ip_address
 
         field_dict: dict[str, Any] = {}
@@ -40,7 +41,10 @@ class OpenStackPortIPUpdateRequest:
         d = dict(src_dict)
         subnet = d.pop("subnet")
 
-        ip_address = d.pop("ip_address")
+        def _parse_ip_address(data: object) -> str:
+            return cast(str, data)
+
+        ip_address = _parse_ip_address(d.pop("ip_address"))
 
         open_stack_port_ip_update_request = cls(
             subnet=subnet,

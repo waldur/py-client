@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -16,8 +16,8 @@ class RancherNestedPublicIP:
     Attributes:
         floating_ip (Union[Unset, str]):
         floating_ip_uuid (Union[Unset, UUID]):
-        ip_address (Union[Unset, str]):
-        external_ip_address (Union[Unset, str]):
+        ip_address (Union[Unset, str]): An IPv4 or IPv6 address.
+        external_ip_address (Union[Unset, str]): An IPv4 or IPv6 address.
     """
 
     floating_ip: Union[Unset, str] = UNSET
@@ -33,9 +33,17 @@ class RancherNestedPublicIP:
         if not isinstance(self.floating_ip_uuid, Unset):
             floating_ip_uuid = str(self.floating_ip_uuid)
 
-        ip_address = self.ip_address
+        ip_address: Union[Unset, str]
+        if isinstance(self.ip_address, Unset):
+            ip_address = UNSET
+        else:
+            ip_address = self.ip_address
 
-        external_ip_address = self.external_ip_address
+        external_ip_address: Union[Unset, str]
+        if isinstance(self.external_ip_address, Unset):
+            external_ip_address = UNSET
+        else:
+            external_ip_address = self.external_ip_address
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -63,9 +71,19 @@ class RancherNestedPublicIP:
         else:
             floating_ip_uuid = UUID(_floating_ip_uuid)
 
-        ip_address = d.pop("ip_address", UNSET)
+        def _parse_ip_address(data: object) -> Union[Unset, str]:
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[Unset, str], data)
 
-        external_ip_address = d.pop("external_ip_address", UNSET)
+        ip_address = _parse_ip_address(d.pop("ip_address", UNSET))
+
+        def _parse_external_ip_address(data: object) -> Union[Unset, str]:
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[Unset, str], data)
+
+        external_ip_address = _parse_external_ip_address(d.pop("external_ip_address", UNSET))
 
         rancher_nested_public_ip = cls(
             floating_ip=floating_ip,

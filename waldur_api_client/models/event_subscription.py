@@ -24,7 +24,7 @@ class EventSubscription:
         user_full_name (str):
         created (datetime.datetime):
         modified (datetime.datetime):
-        source_ip (Union[None, str]):
+        source_ip (Union[None, str]): An IPv4 or IPv6 address.
         description (Union[Unset, str]):
         observable_objects (Union[Unset, Any]):
     """

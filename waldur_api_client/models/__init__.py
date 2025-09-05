@@ -393,6 +393,9 @@ from .ip_mapping_request import IPMappingRequest
 from .issue import Issue
 from .issue_reference import IssueReference
 from .issue_request import IssueRequest
+from .issue_status import IssueStatus
+from .issue_status_request import IssueStatusRequest
+from .issue_status_type_enum import IssueStatusTypeEnum
 from .issue_type_enum import IssueTypeEnum
 from .jira_changelog import JiraChangelog
 from .jira_changelog_request import JiraChangelogRequest
@@ -949,6 +952,7 @@ from .patched_firecrest_job_request import PatchedFirecrestJobRequest
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
 from .patched_invoice_item_update_request import PatchedInvoiceItemUpdateRequest
 from .patched_issue_request import PatchedIssueRequest
+from .patched_issue_status_request import PatchedIssueStatusRequest
 from .patched_keycloak_user_group_membership_request import PatchedKeycloakUserGroupMembershipRequest
 from .patched_lexis_link_request import PatchedLexisLinkRequest
 from .patched_maintenance_announcement_offering_request import PatchedMaintenanceAnnouncementOfferingRequest
@@ -1927,6 +1931,9 @@ __all__ = (
     "Issue",
     "IssueReference",
     "IssueRequest",
+    "IssueStatus",
+    "IssueStatusRequest",
+    "IssueStatusTypeEnum",
     "IssueTypeEnum",
     "JiraChangelog",
     "JiraChangelogRequest",
@@ -2427,6 +2434,7 @@ __all__ = (
     "PatchedIdentityProviderRequest",
     "PatchedInvoiceItemUpdateRequest",
     "PatchedIssueRequest",
+    "PatchedIssueStatusRequest",
     "PatchedKeycloakUserGroupMembershipRequest",
     "PatchedLexisLinkRequest",
     "PatchedMaintenanceAnnouncementOfferingRequest",

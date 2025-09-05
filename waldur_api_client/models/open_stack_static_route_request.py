@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,7 +12,7 @@ class OpenStackStaticRouteRequest:
     """
     Attributes:
         destination (str):
-        nexthop (str):
+        nexthop (str): An IPv4 or IPv6 address.
     """
 
     destination: str
@@ -22,6 +22,7 @@ class OpenStackStaticRouteRequest:
     def to_dict(self) -> dict[str, Any]:
         destination = self.destination
 
+        nexthop: str
         nexthop = self.nexthop
 
         field_dict: dict[str, Any] = {}
@@ -40,7 +41,10 @@ class OpenStackStaticRouteRequest:
         d = dict(src_dict)
         destination = d.pop("destination")
 
-        nexthop = d.pop("nexthop")
+        def _parse_nexthop(data: object) -> str:
+            return cast(str, data)
+
+        nexthop = _parse_nexthop(d.pop("nexthop"))
 
         open_stack_static_route_request = cls(
             destination=destination,

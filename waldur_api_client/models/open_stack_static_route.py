@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,7 +14,7 @@ class OpenStackStaticRoute:
     """
     Attributes:
         destination (Union[Unset, str]):
-        nexthop (Union[Unset, str]):
+        nexthop (Union[Unset, str]): An IPv4 or IPv6 address.
     """
 
     destination: Union[Unset, str] = UNSET
@@ -24,7 +24,11 @@ class OpenStackStaticRoute:
     def to_dict(self) -> dict[str, Any]:
         destination = self.destination
 
-        nexthop = self.nexthop
+        nexthop: Union[Unset, str]
+        if isinstance(self.nexthop, Unset):
+            nexthop = UNSET
+        else:
+            nexthop = self.nexthop
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -41,7 +45,12 @@ class OpenStackStaticRoute:
         d = dict(src_dict)
         destination = d.pop("destination", UNSET)
 
-        nexthop = d.pop("nexthop", UNSET)
+        def _parse_nexthop(data: object) -> Union[Unset, str]:
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[Unset, str], data)
+
+        nexthop = _parse_nexthop(d.pop("nexthop", UNSET))
 
         open_stack_static_route = cls(
             destination=destination,

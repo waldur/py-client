@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,8 +13,8 @@ T = TypeVar("T", bound="OpenStackSubNetAllocationPool")
 class OpenStackSubNetAllocationPool:
     """
     Attributes:
-        start (Union[Unset, str]):
-        end (Union[Unset, str]):
+        start (Union[Unset, str]): An IPv4 or IPv6 address.
+        end (Union[Unset, str]): An IPv4 or IPv6 address.
     """
 
     start: Union[Unset, str] = UNSET
@@ -22,9 +22,17 @@ class OpenStackSubNetAllocationPool:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        start = self.start
+        start: Union[Unset, str]
+        if isinstance(self.start, Unset):
+            start = UNSET
+        else:
+            start = self.start
 
-        end = self.end
+        end: Union[Unset, str]
+        if isinstance(self.end, Unset):
+            end = UNSET
+        else:
+            end = self.end
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -39,9 +47,20 @@ class OpenStackSubNetAllocationPool:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        start = d.pop("start", UNSET)
 
-        end = d.pop("end", UNSET)
+        def _parse_start(data: object) -> Union[Unset, str]:
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[Unset, str], data)
+
+        start = _parse_start(d.pop("start", UNSET))
+
+        def _parse_end(data: object) -> Union[Unset, str]:
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[Unset, str], data)
+
+        end = _parse_end(d.pop("end", UNSET))
 
         open_stack_sub_net_allocation_pool = cls(
             start=start,

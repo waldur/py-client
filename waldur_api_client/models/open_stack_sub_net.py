@@ -226,7 +226,11 @@ class OpenStackSubNet:
 
         dns_nameservers: Union[Unset, list[str]] = UNSET
         if not isinstance(self.dns_nameservers, Unset):
-            dns_nameservers = self.dns_nameservers
+            dns_nameservers = []
+            for dns_nameservers_item_data in self.dns_nameservers:
+                dns_nameservers_item: str
+                dns_nameservers_item = dns_nameservers_item_data
+                dns_nameservers.append(dns_nameservers_item)
 
         host_routes: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.host_routes, Unset):
@@ -525,7 +529,16 @@ class OpenStackSubNet:
 
         enable_dhcp = d.pop("enable_dhcp", UNSET)
 
-        dns_nameservers = cast(list[str], d.pop("dns_nameservers", UNSET))
+        dns_nameservers = []
+        _dns_nameservers = d.pop("dns_nameservers", UNSET)
+        for dns_nameservers_item_data in _dns_nameservers or []:
+
+            def _parse_dns_nameservers_item(data: object) -> str:
+                return cast(str, data)
+
+            dns_nameservers_item = _parse_dns_nameservers_item(dns_nameservers_item_data)
+
+            dns_nameservers.append(dns_nameservers_item)
 
         host_routes = []
         _host_routes = d.pop("host_routes", UNSET)

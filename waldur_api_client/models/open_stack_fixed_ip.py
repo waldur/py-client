@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,7 +22,11 @@ class OpenStackFixedIp:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        ip_address = self.ip_address
+        ip_address: Union[Unset, str]
+        if isinstance(self.ip_address, Unset):
+            ip_address = UNSET
+        else:
+            ip_address = self.ip_address
 
         subnet_id = self.subnet_id
 
@@ -39,7 +43,13 @@ class OpenStackFixedIp:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        ip_address = d.pop("ip_address", UNSET)
+
+        def _parse_ip_address(data: object) -> Union[Unset, str]:
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[Unset, str], data)
+
+        ip_address = _parse_ip_address(d.pop("ip_address", UNSET))
 
         subnet_id = d.pop("subnet_id", UNSET)
 

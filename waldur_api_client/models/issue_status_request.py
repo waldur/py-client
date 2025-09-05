@@ -1,59 +1,65 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="RmqConnection")
+from ..models.issue_status_type_enum import IssueStatusTypeEnum
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="IssueStatusRequest")
 
 
 @_attrs_define
-class RmqConnection:
+class IssueStatusRequest:
     """
     Attributes:
-        source_ip (str): An IPv4 or IPv6 address.
-        vhost (str):
+        name (str): Status name in Jira.
+        type_ (Union[Unset, IssueStatusTypeEnum]):
     """
 
-    source_ip: str
-    vhost: str
+    name: str
+    type_: Union[Unset, IssueStatusTypeEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        source_ip: str
-        source_ip = self.source_ip
+        name = self.name
 
-        vhost = self.vhost
+        type_: Union[Unset, int] = UNSET
+        if not isinstance(self.type_, Unset):
+            type_ = self.type_.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "source_ip": source_ip,
-                "vhost": vhost,
+                "name": name,
             }
         )
+        if type_ is not UNSET:
+            field_dict["type"] = type_
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        name = d.pop("name")
 
-        def _parse_source_ip(data: object) -> str:
-            return cast(str, data)
+        _type_ = d.pop("type", UNSET)
+        type_: Union[Unset, IssueStatusTypeEnum]
+        if isinstance(_type_, Unset):
+            type_ = UNSET
+        else:
+            type_ = IssueStatusTypeEnum(_type_)
 
-        source_ip = _parse_source_ip(d.pop("source_ip"))
-
-        vhost = d.pop("vhost")
-
-        rmq_connection = cls(
-            source_ip=source_ip,
-            vhost=vhost,
+        issue_status_request = cls(
+            name=name,
+            type_=type_,
         )
 
-        rmq_connection.additional_properties = d
-        return rmq_connection
+        issue_status_request.additional_properties = d
+        return issue_status_request
 
     @property
     def additional_keys(self) -> list[str]:
