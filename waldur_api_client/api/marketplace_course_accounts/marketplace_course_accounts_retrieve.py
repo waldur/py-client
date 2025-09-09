@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.submit_request_response import SubmitRequestResponse
+from ...models.course_account import CourseAccount
 from ...types import Response
 
 
@@ -14,24 +14,22 @@ def _get_kwargs(
     uuid: UUID,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": f"/api/user-group-invitations/{uuid}/submit_request/",
+        "method": "get",
+        "url": f"/api/marketplace-course-accounts/{uuid}/",
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> SubmitRequestResponse:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> CourseAccount:
     if response.status_code == 200:
-        response_200 = SubmitRequestResponse.from_dict(response.json())
+        response_200 = CourseAccount.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SubmitRequestResponse]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[CourseAccount]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,7 +42,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[SubmitRequestResponse]:
+) -> Response[CourseAccount]:
     """
     Args:
         uuid (UUID):
@@ -54,7 +52,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SubmitRequestResponse]
+        Response[CourseAccount]
     """
 
     kwargs = _get_kwargs(
@@ -72,7 +70,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> SubmitRequestResponse:
+) -> CourseAccount:
     """
     Args:
         uuid (UUID):
@@ -82,7 +80,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SubmitRequestResponse
+        CourseAccount
     """
 
     return sync_detailed(
@@ -95,7 +93,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[SubmitRequestResponse]:
+) -> Response[CourseAccount]:
     """
     Args:
         uuid (UUID):
@@ -105,7 +103,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SubmitRequestResponse]
+        Response[CourseAccount]
     """
 
     kwargs = _get_kwargs(
@@ -121,7 +119,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> SubmitRequestResponse:
+) -> CourseAccount:
     """
     Args:
         uuid (UUID):
@@ -131,7 +129,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SubmitRequestResponse
+        CourseAccount
     """
 
     return (

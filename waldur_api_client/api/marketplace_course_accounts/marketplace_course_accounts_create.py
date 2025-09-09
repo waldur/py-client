@@ -1,37 +1,43 @@
 from http import HTTPStatus
 from typing import Any, Union
-from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.submit_request_response import SubmitRequestResponse
+from ...models.course_account import CourseAccount
+from ...models.course_account_request import CourseAccountRequest
 from ...types import Response
 
 
 def _get_kwargs(
-    uuid: UUID,
+    *,
+    body: CourseAccountRequest,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/user-group-invitations/{uuid}/submit_request/",
+        "url": "/api/marketplace-course-accounts/",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> SubmitRequestResponse:
-    if response.status_code == 200:
-        response_200 = SubmitRequestResponse.from_dict(response.json())
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> CourseAccount:
+    if response.status_code == 201:
+        response_201 = CourseAccount.from_dict(response.json())
 
-        return response_200
+        return response_201
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SubmitRequestResponse]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[CourseAccount]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -41,24 +47,24 @@ def _build_response(
 
 
 def sync_detailed(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[SubmitRequestResponse]:
+    body: CourseAccountRequest,
+) -> Response[CourseAccount]:
     """
     Args:
-        uuid (UUID):
+        body (CourseAccountRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SubmitRequestResponse]
+        Response[CourseAccount]
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -69,47 +75,47 @@ def sync_detailed(
 
 
 def sync(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> SubmitRequestResponse:
+    body: CourseAccountRequest,
+) -> CourseAccount:
     """
     Args:
-        uuid (UUID):
+        body (CourseAccountRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SubmitRequestResponse
+        CourseAccount
     """
 
     return sync_detailed(
-        uuid=uuid,
         client=client,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[SubmitRequestResponse]:
+    body: CourseAccountRequest,
+) -> Response[CourseAccount]:
     """
     Args:
-        uuid (UUID):
+        body (CourseAccountRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SubmitRequestResponse]
+        Response[CourseAccount]
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -118,25 +124,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> SubmitRequestResponse:
+    body: CourseAccountRequest,
+) -> CourseAccount:
     """
     Args:
-        uuid (UUID):
+        body (CourseAccountRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SubmitRequestResponse
+        CourseAccount
     """
 
     return (
         await asyncio_detailed(
-            uuid=uuid,
             client=client,
+            body=body,
         )
     ).parsed

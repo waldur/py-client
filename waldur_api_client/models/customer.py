@@ -47,6 +47,7 @@ class Customer:
         slug (Union[Unset, str]):
         native_name (Union[Unset, str]):
         abbreviation (Union[Unset, str]):
+        description (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         agreement_number (Union[Unset, str]):
         email (Union[Unset, str]):
@@ -96,6 +97,7 @@ class Customer:
     slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
     abbreviation: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
     contact_details: Union[Unset, str] = UNSET
     agreement_number: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
@@ -200,6 +202,8 @@ class Customer:
         native_name = self.native_name
 
         abbreviation = self.abbreviation
+
+        description = self.description
 
         contact_details = self.contact_details
 
@@ -339,6 +343,8 @@ class Customer:
             field_dict["native_name"] = native_name
         if abbreviation is not UNSET:
             field_dict["abbreviation"] = abbreviation
+        if description is not UNSET:
+            field_dict["description"] = description
         if contact_details is not UNSET:
             field_dict["contact_details"] = contact_details
         if agreement_number is not UNSET:
@@ -503,6 +509,8 @@ class Customer:
 
         abbreviation = d.pop("abbreviation", UNSET)
 
+        description = d.pop("description", UNSET)
+
         contact_details = d.pop("contact_details", UNSET)
 
         agreement_number = d.pop("agreement_number", UNSET)
@@ -660,6 +668,7 @@ class Customer:
             slug=slug,
             native_name=native_name,
             abbreviation=abbreviation,
+            description=description,
             contact_details=contact_details,
             agreement_number=agreement_number,
             email=email,

@@ -9,6 +9,7 @@ from dateutil.parser import isoparse
 
 from .. import types
 from ..models.blank_enum import BlankEnum
+from ..models.kind_enum import KindEnum
 from ..models.oecd_fos_2007_code_enum import OecdFos2007CodeEnum
 from ..types import UNSET, File, Unset
 
@@ -30,6 +31,7 @@ class PatchedProjectRequest:
         oecd_fos_2007_code (Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]):
         is_industry (Union[Unset, bool]):
         image (Union[File, None, Unset]):
+        kind (Union[Unset, KindEnum]):
     """
 
     name: Union[Unset, str] = UNSET
@@ -42,6 +44,7 @@ class PatchedProjectRequest:
     oecd_fos_2007_code: Union[BlankEnum, None, OecdFos2007CodeEnum, Unset] = UNSET
     is_industry: Union[Unset, bool] = UNSET
     image: Union[File, None, Unset] = UNSET
+    kind: Union[Unset, KindEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -96,6 +99,10 @@ class PatchedProjectRequest:
         else:
             image = self.image
 
+        kind: Union[Unset, str] = UNSET
+        if not isinstance(self.kind, Unset):
+            kind = self.kind.value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -119,6 +126,8 @@ class PatchedProjectRequest:
             field_dict["is_industry"] = is_industry
         if image is not UNSET:
             field_dict["image"] = image
+        if kind is not UNSET:
+            field_dict["kind"] = kind
 
         return field_dict
 
@@ -220,6 +229,13 @@ class PatchedProjectRequest:
 
         image = _parse_image(d.pop("image", UNSET))
 
+        _kind = d.pop("kind", UNSET)
+        kind: Union[Unset, KindEnum]
+        if isinstance(_kind, Unset):
+            kind = UNSET
+        else:
+            kind = KindEnum(_kind)
+
         patched_project_request = cls(
             name=name,
             customer=customer,
@@ -231,6 +247,7 @@ class PatchedProjectRequest:
             oecd_fos_2007_code=oecd_fos_2007_code,
             is_industry=is_industry,
             image=image,
+            kind=kind,
         )
 
         patched_project_request.additional_properties = d

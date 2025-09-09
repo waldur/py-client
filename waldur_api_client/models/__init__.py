@@ -173,6 +173,7 @@ from .call_states import CallStates
 from .campaign import Campaign
 from .campaign_offering import CampaignOffering
 from .campaign_request import CampaignRequest
+from .cancel_request_response import CancelRequestResponse
 from .category_column import CategoryColumn
 from .category_column_request import CategoryColumnRequest
 from .category_component import CategoryComponent
@@ -236,6 +237,12 @@ from .count_unique_users_connected_with_active_resources_of_service_provider imp
 from .count_users_of_service_providers import CountUsersOfServiceProviders
 from .country import Country
 from .country_enum import CountryEnum
+from .course_account import CourseAccount
+from .course_account_create_nested import CourseAccountCreateNested
+from .course_account_create_nested_request import CourseAccountCreateNestedRequest
+from .course_account_request import CourseAccountRequest
+from .course_accounts_bulk_create import CourseAccountsBulkCreate
+from .course_accounts_bulk_create_request import CourseAccountsBulkCreateRequest
 from .create_attachments_request import CreateAttachmentsRequest
 from .create_customer_credit import CreateCustomerCredit
 from .create_customer_credit_request import CreateCustomerCreditRequest
@@ -419,6 +426,7 @@ from .keys_count_o_item import KeysCountOItem
 from .keys_list_field_item import KeysListFieldItem
 from .keys_list_o_item import KeysListOItem
 from .keys_retrieve_field_item import KeysRetrieveFieldItem
+from .kind_enum import KindEnum
 from .lexis_link import LexisLink
 from .lexis_link_create_request import LexisLinkCreateRequest
 from .lexis_link_request import LexisLinkRequest
@@ -475,6 +483,8 @@ from .marketplace_component_user_usages_count_o_item import MarketplaceComponent
 from .marketplace_component_user_usages_list_field_item import MarketplaceComponentUserUsagesListFieldItem
 from .marketplace_component_user_usages_list_o_item import MarketplaceComponentUserUsagesListOItem
 from .marketplace_component_user_usages_retrieve_field_item import MarketplaceComponentUserUsagesRetrieveFieldItem
+from .marketplace_course_accounts_count_state_item import MarketplaceCourseAccountsCountStateItem
+from .marketplace_course_accounts_list_state_item import MarketplaceCourseAccountsListStateItem
 from .marketplace_customer_service_accounts_count_state_item import MarketplaceCustomerServiceAccountsCountStateItem
 from .marketplace_customer_service_accounts_list_state_item import MarketplaceCustomerServiceAccountsListStateItem
 from .marketplace_customer_stats import MarketplaceCustomerStats
@@ -584,6 +594,9 @@ from .marketplace_screenshots_count_o_item import MarketplaceScreenshotsCountOIt
 from .marketplace_screenshots_list_o_item import MarketplaceScreenshotsListOItem
 from .marketplace_service_provider_user import MarketplaceServiceProviderUser
 from .marketplace_service_providers_count_o_item import MarketplaceServiceProvidersCountOItem
+from .marketplace_service_providers_course_accounts_list_state_item import (
+    MarketplaceServiceProvidersCourseAccountsListStateItem,
+)
 from .marketplace_service_providers_customer_projects_list_field_item import (
     MarketplaceServiceProvidersCustomerProjectsListFieldItem,
 )
@@ -1434,6 +1447,7 @@ from .status_enum import StatusEnum
 from .storage_mode_enum import StorageModeEnum
 from .sub_net_mapping import SubNetMapping
 from .sub_net_mapping_request import SubNetMappingRequest
+from .submit_request_response import SubmitRequestResponse
 from .subresource_offering import SubresourceOffering
 from .support_attachments_list_field_item import SupportAttachmentsListFieldItem
 from .support_attachments_retrieve_field_item import SupportAttachmentsRetrieveFieldItem
@@ -1715,6 +1729,7 @@ __all__ = (
     "Campaign",
     "CampaignOffering",
     "CampaignRequest",
+    "CancelRequestResponse",
     "CategoryColumn",
     "CategoryColumnRequest",
     "CategoryComponent",
@@ -1776,6 +1791,12 @@ __all__ = (
     "CountStats",
     "CountUniqueUsersConnectedWithActiveResourcesOfServiceProvider",
     "CountUsersOfServiceProviders",
+    "CourseAccount",
+    "CourseAccountCreateNested",
+    "CourseAccountCreateNestedRequest",
+    "CourseAccountRequest",
+    "CourseAccountsBulkCreate",
+    "CourseAccountsBulkCreateRequest",
     "CreateAttachmentsRequest",
     "CreateCustomerCredit",
     "CreateCustomerCreditRequest",
@@ -1957,6 +1978,7 @@ __all__ = (
     "KeysListFieldItem",
     "KeysListOItem",
     "KeysRetrieveFieldItem",
+    "KindEnum",
     "LexisLink",
     "LexisLinkCreateRequest",
     "LexisLinkRequest",
@@ -2007,6 +2029,8 @@ __all__ = (
     "MarketplaceComponentUserUsagesListFieldItem",
     "MarketplaceComponentUserUsagesListOItem",
     "MarketplaceComponentUserUsagesRetrieveFieldItem",
+    "MarketplaceCourseAccountsCountStateItem",
+    "MarketplaceCourseAccountsListStateItem",
     "MarketplaceCustomerServiceAccountsCountStateItem",
     "MarketplaceCustomerServiceAccountsListStateItem",
     "MarketplaceCustomerStats",
@@ -2101,6 +2125,7 @@ __all__ = (
     "MarketplaceScreenshotsCountOItem",
     "MarketplaceScreenshotsListOItem",
     "MarketplaceServiceProvidersCountOItem",
+    "MarketplaceServiceProvidersCourseAccountsListStateItem",
     "MarketplaceServiceProvidersCustomerProjectsListFieldItem",
     "MarketplaceServiceProvidersCustomerProjectsListOItem",
     "MarketplaceServiceProvidersCustomersListFieldItem",
@@ -2886,6 +2911,7 @@ __all__ = (
     "StateTransitionError",
     "StatusEnum",
     "StorageModeEnum",
+    "SubmitRequestResponse",
     "SubNetMapping",
     "SubNetMappingRequest",
     "SubresourceOffering",

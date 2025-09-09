@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.blank_enum import BlankEnum
+from ..models.kind_enum import KindEnum
 from ..models.oecd_fos_2007_code_enum import OecdFos2007CodeEnum
 from ..types import UNSET, Unset
 
@@ -49,6 +50,7 @@ class Project:
         image (Union[None, Unset, str]):
         resources_count (Union[Unset, int]):
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
+        kind (Union[Unset, KindEnum]):
         project_credit (Union[None, Unset, float]):
         marketplace_resource_count (Union[Unset, ProjectMarketplaceResourceCount]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
@@ -79,6 +81,7 @@ class Project:
     image: Union[None, Unset, str] = UNSET
     resources_count: Union[Unset, int] = UNSET
     max_service_accounts: Union[None, Unset, int] = UNSET
+    kind: Union[Unset, KindEnum] = UNSET
     project_credit: Union[None, Unset, float] = UNSET
     marketplace_resource_count: Union[Unset, "ProjectMarketplaceResourceCount"] = UNSET
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
@@ -187,6 +190,10 @@ class Project:
         else:
             max_service_accounts = self.max_service_accounts
 
+        kind: Union[Unset, str] = UNSET
+        if not isinstance(self.kind, Unset):
+            kind = self.kind.value
+
         project_credit: Union[None, Unset, float]
         if isinstance(self.project_credit, Unset):
             project_credit = UNSET
@@ -254,6 +261,8 @@ class Project:
             field_dict["resources_count"] = resources_count
         if max_service_accounts is not UNSET:
             field_dict["max_service_accounts"] = max_service_accounts
+        if kind is not UNSET:
+            field_dict["kind"] = kind
         if project_credit is not UNSET:
             field_dict["project_credit"] = project_credit
         if marketplace_resource_count is not UNSET:
@@ -437,6 +446,13 @@ class Project:
 
         max_service_accounts = _parse_max_service_accounts(d.pop("max_service_accounts", UNSET))
 
+        _kind = d.pop("kind", UNSET)
+        kind: Union[Unset, KindEnum]
+        if isinstance(_kind, Unset):
+            kind = UNSET
+        else:
+            kind = KindEnum(_kind)
+
         def _parse_project_credit(data: object) -> Union[None, Unset, float]:
             if data is None:
                 return data
@@ -486,6 +502,7 @@ class Project:
             image=image,
             resources_count=resources_count,
             max_service_accounts=max_service_accounts,
+            kind=kind,
             project_credit=project_credit,
             marketplace_resource_count=marketplace_resource_count,
             billing_price_estimate=billing_price_estimate,

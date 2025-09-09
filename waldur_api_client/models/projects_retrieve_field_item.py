@@ -16,6 +16,7 @@ class ProjectsRetrieveFieldItem(str, Enum):
     END_DATE_REQUESTED_BY = "end_date_requested_by"
     IMAGE = "image"
     IS_INDUSTRY = "is_industry"
+    KIND = "kind"
     MARKETPLACE_RESOURCE_COUNT = "marketplace_resource_count"
     MAX_SERVICE_ACCOUNTS = "max_service_accounts"
     NAME = "name"

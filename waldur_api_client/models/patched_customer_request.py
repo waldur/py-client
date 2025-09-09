@@ -22,6 +22,7 @@ class PatchedCustomerRequest:
         name (Union[Unset, str]):
         native_name (Union[Unset, str]):
         abbreviation (Union[Unset, str]):
+        description (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         email (Union[Unset, str]):
         phone_number (Union[Unset, str]):
@@ -42,6 +43,7 @@ class PatchedCustomerRequest:
     name: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
     abbreviation: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
     contact_details: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
     phone_number: Union[Unset, str] = UNSET
@@ -74,6 +76,8 @@ class PatchedCustomerRequest:
         native_name = self.native_name
 
         abbreviation = self.abbreviation
+
+        description = self.description
 
         contact_details = self.contact_details
 
@@ -128,6 +132,8 @@ class PatchedCustomerRequest:
             field_dict["native_name"] = native_name
         if abbreviation is not UNSET:
             field_dict["abbreviation"] = abbreviation
+        if description is not UNSET:
+            field_dict["description"] = description
         if contact_details is not UNSET:
             field_dict["contact_details"] = contact_details
         if email is not UNSET:
@@ -184,6 +190,8 @@ class PatchedCustomerRequest:
         native_name = d.pop("native_name", UNSET)
 
         abbreviation = d.pop("abbreviation", UNSET)
+
+        description = d.pop("description", UNSET)
 
         contact_details = d.pop("contact_details", UNSET)
 
@@ -248,6 +256,7 @@ class PatchedCustomerRequest:
             name=name,
             native_name=native_name,
             abbreviation=abbreviation,
+            description=description,
             contact_details=contact_details,
             email=email,
             phone_number=phone_number,

@@ -21,6 +21,7 @@ class CustomersRetrieveFieldItem(str, Enum):
     CUSTOMER_CREDIT = "customer_credit"
     CUSTOMER_UNALLOCATED_CREDIT = "customer_unallocated_credit"
     DEFAULT_TAX_PERCENT = "default_tax_percent"
+    DESCRIPTION = "description"
     DISPLAY_NAME = "display_name"
     DOMAIN = "domain"
     EMAIL = "email"

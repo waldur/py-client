@@ -17,6 +17,8 @@ class VisibleInvitationDetails:
     Attributes:
         scope_uuid (UUID):
         scope_name (str):
+        scope_description (str): Get the description field from the scope if it exists.
+            Returns empty string if scope doesn't have a description field.
         scope_type (Union[None, str]):
         customer_uuid (UUID):
         customer_name (str):
@@ -33,6 +35,7 @@ class VisibleInvitationDetails:
 
     scope_uuid: UUID
     scope_name: str
+    scope_description: str
     scope_type: Union[None, str]
     customer_uuid: UUID
     customer_name: str
@@ -50,6 +53,8 @@ class VisibleInvitationDetails:
         scope_uuid = str(self.scope_uuid)
 
         scope_name = self.scope_name
+
+        scope_description = self.scope_description
 
         scope_type: Union[None, str]
         scope_type = self.scope_type
@@ -80,6 +85,7 @@ class VisibleInvitationDetails:
             {
                 "scope_uuid": scope_uuid,
                 "scope_name": scope_name,
+                "scope_description": scope_description,
                 "scope_type": scope_type,
                 "customer_uuid": customer_uuid,
                 "customer_name": customer_name,
@@ -102,6 +108,8 @@ class VisibleInvitationDetails:
         scope_uuid = UUID(d.pop("scope_uuid"))
 
         scope_name = d.pop("scope_name")
+
+        scope_description = d.pop("scope_description")
 
         def _parse_scope_type(data: object) -> Union[None, str]:
             if data is None:
@@ -133,6 +141,7 @@ class VisibleInvitationDetails:
         visible_invitation_details = cls(
             scope_uuid=scope_uuid,
             scope_name=scope_name,
+            scope_description=scope_description,
             scope_type=scope_type,
             customer_uuid=customer_uuid,
             customer_name=customer_name,

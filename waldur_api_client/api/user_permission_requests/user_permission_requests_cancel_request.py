@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.submit_request_response import SubmitRequestResponse
+from ...models.cancel_request_response import CancelRequestResponse
 from ...types import Response
 
 
@@ -15,15 +15,15 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/user-group-invitations/{uuid}/submit_request/",
+        "url": f"/api/user-permission-requests/{uuid}/cancel_request/",
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> SubmitRequestResponse:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> CancelRequestResponse:
     if response.status_code == 200:
-        response_200 = SubmitRequestResponse.from_dict(response.json())
+        response_200 = CancelRequestResponse.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -31,7 +31,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SubmitRequestResponse]:
+) -> Response[CancelRequestResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,8 +44,9 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[SubmitRequestResponse]:
-    """
+) -> Response[CancelRequestResponse]:
+    """Cancel permission request. Users can cancel their own requests, staff can cancel any request.
+
     Args:
         uuid (UUID):
 
@@ -54,7 +55,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SubmitRequestResponse]
+        Response[CancelRequestResponse]
     """
 
     kwargs = _get_kwargs(
@@ -72,8 +73,9 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> SubmitRequestResponse:
-    """
+) -> CancelRequestResponse:
+    """Cancel permission request. Users can cancel their own requests, staff can cancel any request.
+
     Args:
         uuid (UUID):
 
@@ -82,7 +84,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SubmitRequestResponse
+        CancelRequestResponse
     """
 
     return sync_detailed(
@@ -95,8 +97,9 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[SubmitRequestResponse]:
-    """
+) -> Response[CancelRequestResponse]:
+    """Cancel permission request. Users can cancel their own requests, staff can cancel any request.
+
     Args:
         uuid (UUID):
 
@@ -105,7 +108,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SubmitRequestResponse]
+        Response[CancelRequestResponse]
     """
 
     kwargs = _get_kwargs(
@@ -121,8 +124,9 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> SubmitRequestResponse:
-    """
+) -> CancelRequestResponse:
+    """Cancel permission request. Users can cancel their own requests, staff can cancel any request.
+
     Args:
         uuid (UUID):
 
@@ -131,7 +135,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SubmitRequestResponse
+        CancelRequestResponse
     """
 
     return (
