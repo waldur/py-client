@@ -276,6 +276,9 @@ from .customers_list_users_list_field_item import CustomersListUsersListFieldIte
 from .customers_list_users_list_o_item import CustomersListUsersListOItem
 from .customers_retrieve_field_item import CustomersRetrieveFieldItem
 from .customers_users_list_field_item import CustomersUsersListFieldItem
+from .customers_users_list_o import CustomersUsersListO
+from .customers_users_list_organization_role_item_type_0 import CustomersUsersListOrganizationRoleItemType0
+from .customers_users_list_project_role_item_type_0 import CustomersUsersListProjectRoleItemType0
 from .daily_quotas_retrieve_response_200 import DailyQuotasRetrieveResponse200
 from .data_volume import DataVolume
 from .data_volume_request import DataVolumeRequest
@@ -1076,6 +1079,9 @@ from .project_estimated_cost_policy import ProjectEstimatedCostPolicy
 from .project_estimated_cost_policy_request import ProjectEstimatedCostPolicyRequest
 from .project_marketplace_resource_count import ProjectMarketplaceResourceCount
 from .project_permission_log import ProjectPermissionLog
+from .project_permission_review import ProjectPermissionReview
+from .project_permissions_reviews_count_o_item import ProjectPermissionsReviewsCountOItem
+from .project_permissions_reviews_list_o_item import ProjectPermissionsReviewsListOItem
 from .project_quotas import ProjectQuotas
 from .project_request import ProjectRequest
 from .project_service_account import ProjectServiceAccount
@@ -1097,6 +1103,7 @@ from .projects_list_field_item import ProjectsListFieldItem
 from .projects_list_o_item import ProjectsListOItem
 from .projects_list_users_list_field_item import ProjectsListUsersListFieldItem
 from .projects_list_users_list_o_item import ProjectsListUsersListOItem
+from .projects_other_users_list_o import ProjectsOtherUsersListO
 from .projects_retrieve_field_item import ProjectsRetrieveFieldItem
 from .projects_usages_grouped_by_industry_flag import ProjectsUsagesGroupedByIndustryFlag
 from .projects_usages_grouped_by_industry_flag_usages import ProjectsUsagesGroupedByIndustryFlagUsages
@@ -1829,6 +1836,9 @@ __all__ = (
     "CustomersListUsersListOItem",
     "CustomersRetrieveFieldItem",
     "CustomersUsersListFieldItem",
+    "CustomersUsersListO",
+    "CustomersUsersListOrganizationRoleItemType0",
+    "CustomersUsersListProjectRoleItemType0",
     "CustomerUser",
     "DailyQuotasRetrieveResponse200",
     "DataVolume",
@@ -2566,6 +2576,9 @@ __all__ = (
     "ProjectEstimatedCostPolicyRequest",
     "ProjectMarketplaceResourceCount",
     "ProjectPermissionLog",
+    "ProjectPermissionReview",
+    "ProjectPermissionsReviewsCountOItem",
+    "ProjectPermissionsReviewsListOItem",
     "ProjectQuotas",
     "ProjectRequest",
     "ProjectsCountOItem",
@@ -2581,6 +2594,7 @@ __all__ = (
     "ProjectsListOItem",
     "ProjectsListUsersListFieldItem",
     "ProjectsListUsersListOItem",
+    "ProjectsOtherUsersListO",
     "ProjectsRetrieveFieldItem",
     "ProjectsUsagesGroupedByIndustryFlag",
     "ProjectsUsagesGroupedByIndustryFlagUsages",

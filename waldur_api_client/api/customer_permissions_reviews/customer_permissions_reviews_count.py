@@ -1,3 +1,4 @@
+import datetime
 from http import HTTPStatus
 from typing import Any, Union
 from uuid import UUID
@@ -12,6 +13,7 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    closed: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[CustomerPermissionsReviewsCountOItem]] = UNSET,
@@ -20,6 +22,11 @@ def _get_kwargs(
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_closed: Union[Unset, str] = UNSET
+    if not isinstance(closed, Unset):
+        json_closed = closed.isoformat()
+    params["closed"] = json_closed
 
     json_customer_uuid: Union[Unset, str] = UNSET
     if not isinstance(customer_uuid, Unset):
@@ -84,6 +91,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    closed: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[CustomerPermissionsReviewsCountOItem]] = UNSET,
@@ -94,6 +102,7 @@ def sync_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        closed (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):
         o (Union[Unset, list[CustomerPermissionsReviewsCountOItem]]):
@@ -110,6 +119,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        closed=closed,
         customer_uuid=customer_uuid,
         is_pending=is_pending,
         o=o,
@@ -128,6 +138,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    closed: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[CustomerPermissionsReviewsCountOItem]] = UNSET,
@@ -138,6 +149,7 @@ def sync(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        closed (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):
         o (Union[Unset, list[CustomerPermissionsReviewsCountOItem]]):
@@ -155,6 +167,7 @@ def sync(
 
     return sync_detailed(
         client=client,
+        closed=closed,
         customer_uuid=customer_uuid,
         is_pending=is_pending,
         o=o,
@@ -167,6 +180,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    closed: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[CustomerPermissionsReviewsCountOItem]] = UNSET,
@@ -177,6 +191,7 @@ async def asyncio_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        closed (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):
         o (Union[Unset, list[CustomerPermissionsReviewsCountOItem]]):
@@ -193,6 +208,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        closed=closed,
         customer_uuid=customer_uuid,
         is_pending=is_pending,
         o=o,
@@ -209,6 +225,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    closed: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[CustomerPermissionsReviewsCountOItem]] = UNSET,
@@ -219,6 +236,7 @@ async def asyncio(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        closed (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):
         o (Union[Unset, list[CustomerPermissionsReviewsCountOItem]]):
@@ -237,6 +255,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            closed=closed,
             customer_uuid=customer_uuid,
             is_pending=is_pending,
             o=o,

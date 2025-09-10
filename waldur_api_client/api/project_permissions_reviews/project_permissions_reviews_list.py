@@ -7,19 +7,19 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.customer_permission_review import CustomerPermissionReview
-from ...models.customer_permissions_reviews_list_o_item import CustomerPermissionsReviewsListOItem
+from ...models.project_permission_review import ProjectPermissionReview
+from ...models.project_permissions_reviews_list_o_item import ProjectPermissionsReviewsListOItem
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     closed: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CustomerPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -28,11 +28,6 @@ def _get_kwargs(
     if not isinstance(closed, Unset):
         json_closed = closed.isoformat()
     params["closed"] = json_closed
-
-    json_customer_uuid: Union[Unset, str] = UNSET
-    if not isinstance(customer_uuid, Unset):
-        json_customer_uuid = str(customer_uuid)
-    params["customer_uuid"] = json_customer_uuid
 
     params["is_pending"] = is_pending
 
@@ -49,6 +44,11 @@ def _get_kwargs(
 
     params["page_size"] = page_size
 
+    json_project_uuid: Union[Unset, str] = UNSET
+    if not isinstance(project_uuid, Unset):
+        json_project_uuid = str(project_uuid)
+    params["project_uuid"] = json_project_uuid
+
     json_reviewer_uuid: Union[Unset, str] = UNSET
     if not isinstance(reviewer_uuid, Unset):
         json_reviewer_uuid = str(reviewer_uuid)
@@ -58,7 +58,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/customer-permissions-reviews/",
+        "url": "/api/project-permissions-reviews/",
         "params": params,
     }
 
@@ -67,12 +67,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> list["CustomerPermissionReview"]:
+) -> list["ProjectPermissionReview"]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = CustomerPermissionReview.from_dict(response_200_item_data)
+            response_200_item = ProjectPermissionReview.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -82,7 +82,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["CustomerPermissionReview"]]:
+) -> Response[list["ProjectPermissionReview"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -95,22 +95,22 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     closed: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CustomerPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-) -> Response[list["CustomerPermissionReview"]]:
+) -> Response[list["ProjectPermissionReview"]]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
         closed (Union[Unset, datetime.datetime]):
-        customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):
-        o (Union[Unset, list[CustomerPermissionsReviewsListOItem]]):
+        o (Union[Unset, list[ProjectPermissionsReviewsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -118,16 +118,16 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['CustomerPermissionReview']]
+        Response[list['ProjectPermissionReview']]
     """
 
     kwargs = _get_kwargs(
         closed=closed,
-        customer_uuid=customer_uuid,
         is_pending=is_pending,
         o=o,
         page=page,
         page_size=page_size,
+        project_uuid=project_uuid,
         reviewer_uuid=reviewer_uuid,
     )
 
@@ -142,22 +142,22 @@ def sync(
     *,
     client: AuthenticatedClient,
     closed: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CustomerPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-) -> list["CustomerPermissionReview"]:
+) -> list["ProjectPermissionReview"]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
         closed (Union[Unset, datetime.datetime]):
-        customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):
-        o (Union[Unset, list[CustomerPermissionsReviewsListOItem]]):
+        o (Union[Unset, list[ProjectPermissionsReviewsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -165,17 +165,17 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['CustomerPermissionReview']
+        list['ProjectPermissionReview']
     """
 
     return sync_detailed(
         client=client,
         closed=closed,
-        customer_uuid=customer_uuid,
         is_pending=is_pending,
         o=o,
         page=page,
         page_size=page_size,
+        project_uuid=project_uuid,
         reviewer_uuid=reviewer_uuid,
     ).parsed
 
@@ -184,22 +184,22 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     closed: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CustomerPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-) -> Response[list["CustomerPermissionReview"]]:
+) -> Response[list["ProjectPermissionReview"]]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
         closed (Union[Unset, datetime.datetime]):
-        customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):
-        o (Union[Unset, list[CustomerPermissionsReviewsListOItem]]):
+        o (Union[Unset, list[ProjectPermissionsReviewsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -207,16 +207,16 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['CustomerPermissionReview']]
+        Response[list['ProjectPermissionReview']]
     """
 
     kwargs = _get_kwargs(
         closed=closed,
-        customer_uuid=customer_uuid,
         is_pending=is_pending,
         o=o,
         page=page,
         page_size=page_size,
+        project_uuid=project_uuid,
         reviewer_uuid=reviewer_uuid,
     )
 
@@ -229,22 +229,22 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     closed: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CustomerPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-) -> list["CustomerPermissionReview"]:
+) -> list["ProjectPermissionReview"]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
         closed (Union[Unset, datetime.datetime]):
-        customer_uuid (Union[Unset, UUID]):
         is_pending (Union[Unset, bool]):
-        o (Union[Unset, list[CustomerPermissionsReviewsListOItem]]):
+        o (Union[Unset, list[ProjectPermissionsReviewsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -252,18 +252,18 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['CustomerPermissionReview']
+        list['ProjectPermissionReview']
     """
 
     return (
         await asyncio_detailed(
             client=client,
             closed=closed,
-            customer_uuid=customer_uuid,
             is_pending=is_pending,
             o=o,
             page=page,
             page_size=page_size,
+            project_uuid=project_uuid,
             reviewer_uuid=reviewer_uuid,
         )
     ).parsed

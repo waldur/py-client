@@ -7,11 +7,11 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-T = TypeVar("T", bound="CustomerPermissionReview")
+T = TypeVar("T", bound="ProjectPermissionReview")
 
 
 @_attrs_define
-class CustomerPermissionReview:
+class ProjectPermissionReview:
     """
     Attributes:
         url (str):
@@ -21,8 +21,8 @@ class CustomerPermissionReview:
         is_pending (bool):
         created (datetime.datetime):
         closed (Union[None, datetime.datetime]):
-        customer_uuid (UUID):
-        customer_name (str):
+        project_uuid (UUID):
+        project_name (str):
     """
 
     url: str
@@ -32,8 +32,8 @@ class CustomerPermissionReview:
     is_pending: bool
     created: datetime.datetime
     closed: Union[None, datetime.datetime]
-    customer_uuid: UUID
-    customer_name: str
+    project_uuid: UUID
+    project_name: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,9 +60,9 @@ class CustomerPermissionReview:
         else:
             closed = self.closed
 
-        customer_uuid = str(self.customer_uuid)
+        project_uuid = str(self.project_uuid)
 
-        customer_name = self.customer_name
+        project_name = self.project_name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -75,8 +75,8 @@ class CustomerPermissionReview:
                 "is_pending": is_pending,
                 "created": created,
                 "closed": closed,
-                "customer_uuid": customer_uuid,
-                "customer_name": customer_name,
+                "project_uuid": project_uuid,
+                "project_name": project_name,
             }
         )
 
@@ -130,11 +130,11 @@ class CustomerPermissionReview:
 
         closed = _parse_closed(d.pop("closed"))
 
-        customer_uuid = UUID(d.pop("customer_uuid"))
+        project_uuid = UUID(d.pop("project_uuid"))
 
-        customer_name = d.pop("customer_name")
+        project_name = d.pop("project_name")
 
-        customer_permission_review = cls(
+        project_permission_review = cls(
             url=url,
             uuid=uuid,
             reviewer_full_name=reviewer_full_name,
@@ -142,12 +142,12 @@ class CustomerPermissionReview:
             is_pending=is_pending,
             created=created,
             closed=closed,
-            customer_uuid=customer_uuid,
-            customer_name=customer_name,
+            project_uuid=project_uuid,
+            project_name=project_name,
         )
 
-        customer_permission_review.additional_properties = d
-        return customer_permission_review
+        project_permission_review.additional_properties = d
+        return project_permission_review
 
     @property
     def additional_keys(self) -> list[str]:

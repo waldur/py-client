@@ -1,3 +1,4 @@
+import datetime
 from http import HTTPStatus
 from typing import Any, Union
 from uuid import UUID
@@ -7,19 +8,24 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.basic_user import BasicUser
+from ...models.projects_other_users_list_o import ProjectsOtherUsersListO
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
-    uuid: UUID,
+    project_uuid: UUID,
     *,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
     civil_number: Union[Unset, str] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
     organization: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -30,7 +36,17 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
+    json_agreement_date: Union[Unset, str] = UNSET
+    if not isinstance(agreement_date, Unset):
+        json_agreement_date = agreement_date.isoformat()
+    params["agreement_date"] = json_agreement_date
+
     params["civil_number"] = civil_number
+
+    json_date_joined: Union[Unset, str] = UNSET
+    if not isinstance(date_joined, Unset):
+        json_date_joined = date_joined.isoformat()
+    params["date_joined"] = json_date_joined
 
     params["description"] = description
 
@@ -42,7 +58,18 @@ def _get_kwargs(
 
     params["job_title"] = job_title
 
+    json_modified: Union[Unset, str] = UNSET
+    if not isinstance(modified, Unset):
+        json_modified = modified.isoformat()
+    params["modified"] = json_modified
+
     params["native_name"] = native_name
+
+    json_o: Union[Unset, str] = UNSET
+    if not isinstance(o, Unset):
+        json_o = o.value
+
+    params["o"] = json_o
 
     params["organization"] = organization
 
@@ -62,7 +89,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/api/projects/{uuid}/other_users/",
+        "url": f"/api/projects/{project_uuid}/other_users/",
         "params": params,
     }
 
@@ -94,16 +121,20 @@ def _build_response(
 
 
 def sync_detailed(
-    uuid: UUID,
+    project_uuid: UUID,
     *,
     client: AuthenticatedClient,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
     civil_number: Union[Unset, str] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
     organization: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -115,14 +146,18 @@ def sync_detailed(
     """A list of users which can be added to the current project from other projects of the same customer.
 
     Args:
-        uuid (UUID):
+        project_uuid (UUID):
+        agreement_date (Union[Unset, datetime.datetime]):
         civil_number (Union[Unset, str]):
+        date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         job_title (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
+        o (Union[Unset, ProjectsOtherUsersListO]):
         organization (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -140,14 +175,18 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        project_uuid=project_uuid,
+        agreement_date=agreement_date,
         civil_number=civil_number,
+        date_joined=date_joined,
         description=description,
         email=email,
         full_name=full_name,
         is_active=is_active,
         job_title=job_title,
+        modified=modified,
         native_name=native_name,
+        o=o,
         organization=organization,
         page=page,
         page_size=page_size,
@@ -165,16 +204,20 @@ def sync_detailed(
 
 
 def sync(
-    uuid: UUID,
+    project_uuid: UUID,
     *,
     client: AuthenticatedClient,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
     civil_number: Union[Unset, str] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
     organization: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -186,14 +229,18 @@ def sync(
     """A list of users which can be added to the current project from other projects of the same customer.
 
     Args:
-        uuid (UUID):
+        project_uuid (UUID):
+        agreement_date (Union[Unset, datetime.datetime]):
         civil_number (Union[Unset, str]):
+        date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         job_title (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
+        o (Union[Unset, ProjectsOtherUsersListO]):
         organization (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -211,15 +258,19 @@ def sync(
     """
 
     return sync_detailed(
-        uuid=uuid,
+        project_uuid=project_uuid,
         client=client,
+        agreement_date=agreement_date,
         civil_number=civil_number,
+        date_joined=date_joined,
         description=description,
         email=email,
         full_name=full_name,
         is_active=is_active,
         job_title=job_title,
+        modified=modified,
         native_name=native_name,
+        o=o,
         organization=organization,
         page=page,
         page_size=page_size,
@@ -231,16 +282,20 @@ def sync(
 
 
 async def asyncio_detailed(
-    uuid: UUID,
+    project_uuid: UUID,
     *,
     client: AuthenticatedClient,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
     civil_number: Union[Unset, str] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
     organization: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -252,14 +307,18 @@ async def asyncio_detailed(
     """A list of users which can be added to the current project from other projects of the same customer.
 
     Args:
-        uuid (UUID):
+        project_uuid (UUID):
+        agreement_date (Union[Unset, datetime.datetime]):
         civil_number (Union[Unset, str]):
+        date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         job_title (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
+        o (Union[Unset, ProjectsOtherUsersListO]):
         organization (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -277,14 +336,18 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        project_uuid=project_uuid,
+        agreement_date=agreement_date,
         civil_number=civil_number,
+        date_joined=date_joined,
         description=description,
         email=email,
         full_name=full_name,
         is_active=is_active,
         job_title=job_title,
+        modified=modified,
         native_name=native_name,
+        o=o,
         organization=organization,
         page=page,
         page_size=page_size,
@@ -300,16 +363,20 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    uuid: UUID,
+    project_uuid: UUID,
     *,
     client: AuthenticatedClient,
+    agreement_date: Union[Unset, datetime.datetime] = UNSET,
     civil_number: Union[Unset, str] = UNSET,
+    date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
     organization: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -321,14 +388,18 @@ async def asyncio(
     """A list of users which can be added to the current project from other projects of the same customer.
 
     Args:
-        uuid (UUID):
+        project_uuid (UUID):
+        agreement_date (Union[Unset, datetime.datetime]):
         civil_number (Union[Unset, str]):
+        date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         job_title (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
+        o (Union[Unset, ProjectsOtherUsersListO]):
         organization (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -347,15 +418,19 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            uuid=uuid,
+            project_uuid=project_uuid,
             client=client,
+            agreement_date=agreement_date,
             civil_number=civil_number,
+            date_joined=date_joined,
             description=description,
             email=email,
             full_name=full_name,
             is_active=is_active,
             job_title=job_title,
+            modified=modified,
             native_name=native_name,
+            o=o,
             organization=organization,
             page=page,
             page_size=page_size,
