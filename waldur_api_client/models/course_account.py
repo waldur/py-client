@@ -25,7 +25,7 @@ class CourseAccount:
         project_uuid (UUID):
         project_name (str):
         user_uuid (UUID):
-        user_username (str):
+        username (str):
         customer_uuid (UUID):
         customer_name (str):
         state (ServiceAccountState):
@@ -43,7 +43,7 @@ class CourseAccount:
     project_uuid: UUID
     project_name: str
     user_uuid: UUID
-    user_username: str
+    username: str
     customer_uuid: UUID
     customer_name: str
     state: ServiceAccountState
@@ -70,7 +70,7 @@ class CourseAccount:
 
         user_uuid = str(self.user_uuid)
 
-        user_username = self.user_username
+        username = self.username
 
         customer_uuid = str(self.customer_uuid)
 
@@ -98,7 +98,7 @@ class CourseAccount:
                 "project_uuid": project_uuid,
                 "project_name": project_name,
                 "user_uuid": user_uuid,
-                "user_username": user_username,
+                "username": username,
                 "customer_uuid": customer_uuid,
                 "customer_name": customer_name,
                 "state": state,
@@ -133,7 +133,7 @@ class CourseAccount:
 
         user_uuid = UUID(d.pop("user_uuid"))
 
-        user_username = d.pop("user_username")
+        username = d.pop("username")
 
         customer_uuid = UUID(d.pop("customer_uuid"))
 
@@ -158,7 +158,7 @@ class CourseAccount:
             project_uuid=project_uuid,
             project_name=project_name,
             user_uuid=user_uuid,
-            user_username=user_username,
+            username=username,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
             state=state,
