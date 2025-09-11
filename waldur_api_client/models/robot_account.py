@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.robot_account_states import RobotAccountStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -32,7 +33,7 @@ class RobotAccount:
         description (Union[Unset, str]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
-        state (Union[Unset, str]):
+        state (Union[Unset, RobotAccountStates]):
         users (Union[Unset, list[str]]): Users who have access to this robot account.
         keys (Union[Unset, Any]):
         responsible_user (Union[None, Unset, str]):
@@ -50,7 +51,7 @@ class RobotAccount:
     description: Union[Unset, str] = UNSET
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
-    state: Union[Unset, str] = UNSET
+    state: Union[Unset, RobotAccountStates] = UNSET
     users: Union[Unset, list[str]] = UNSET
     keys: Union[Unset, Any] = UNSET
     responsible_user: Union[None, Unset, str] = UNSET
@@ -84,7 +85,9 @@ class RobotAccount:
 
         error_traceback = self.error_traceback
 
-        state = self.state
+        state: Union[Unset, int] = UNSET
+        if not isinstance(self.state, Unset):
+            state = self.state.value
 
         users: Union[Unset, list[str]] = UNSET
         if not isinstance(self.users, Unset):
@@ -165,7 +168,12 @@ class RobotAccount:
 
         error_traceback = d.pop("error_traceback", UNSET)
 
-        state = d.pop("state", UNSET)
+        _state = d.pop("state", UNSET)
+        state: Union[Unset, RobotAccountStates]
+        if isinstance(_state, Unset):
+            state = UNSET
+        else:
+            state = RobotAccountStates(_state)
 
         users = cast(list[str], d.pop("users", UNSET))
 

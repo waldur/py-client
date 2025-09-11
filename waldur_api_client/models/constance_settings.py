@@ -122,6 +122,7 @@ class ConstanceSettings:
         smax_requests_offering (Union[Unset, str]):
         smax_verify_ssl (Union[Unset, bool]):
         enable_mock_service_account_backend (Union[Unset, bool]):
+        enable_mock_course_account_backend (Union[Unset, bool]):
         proposal_review_duration (Union[Unset, int]):
         user_table_columns (Union[Unset, str]):
         auto_approve_user_tos (Union[Unset, bool]):
@@ -257,6 +258,7 @@ class ConstanceSettings:
     smax_requests_offering: Union[Unset, str] = UNSET
     smax_verify_ssl: Union[Unset, bool] = UNSET
     enable_mock_service_account_backend: Union[Unset, bool] = UNSET
+    enable_mock_course_account_backend: Union[Unset, bool] = UNSET
     proposal_review_duration: Union[Unset, int] = UNSET
     user_table_columns: Union[Unset, str] = UNSET
     auto_approve_user_tos: Union[Unset, bool] = UNSET
@@ -546,6 +548,8 @@ class ConstanceSettings:
 
         enable_mock_service_account_backend = self.enable_mock_service_account_backend
 
+        enable_mock_course_account_backend = self.enable_mock_course_account_backend
+
         proposal_review_duration = self.proposal_review_duration
 
         user_table_columns = self.user_table_columns
@@ -829,6 +833,8 @@ class ConstanceSettings:
             field_dict["SMAX_VERIFY_SSL"] = smax_verify_ssl
         if enable_mock_service_account_backend is not UNSET:
             field_dict["ENABLE_MOCK_SERVICE_ACCOUNT_BACKEND"] = enable_mock_service_account_backend
+        if enable_mock_course_account_backend is not UNSET:
+            field_dict["ENABLE_MOCK_COURSE_ACCOUNT_BACKEND"] = enable_mock_course_account_backend
         if proposal_review_duration is not UNSET:
             field_dict["PROPOSAL_REVIEW_DURATION"] = proposal_review_duration
         if user_table_columns is not UNSET:
@@ -1184,6 +1190,8 @@ class ConstanceSettings:
 
         enable_mock_service_account_backend = d.pop("ENABLE_MOCK_SERVICE_ACCOUNT_BACKEND", UNSET)
 
+        enable_mock_course_account_backend = d.pop("ENABLE_MOCK_COURSE_ACCOUNT_BACKEND", UNSET)
+
         proposal_review_duration = d.pop("PROPOSAL_REVIEW_DURATION", UNSET)
 
         user_table_columns = d.pop("USER_TABLE_COLUMNS", UNSET)
@@ -1349,6 +1357,7 @@ class ConstanceSettings:
             smax_requests_offering=smax_requests_offering,
             smax_verify_ssl=smax_verify_ssl,
             enable_mock_service_account_backend=enable_mock_service_account_backend,
+            enable_mock_course_account_backend=enable_mock_course_account_backend,
             proposal_review_duration=proposal_review_duration,
             user_table_columns=user_table_columns,
             auto_approve_user_tos=auto_approve_user_tos,

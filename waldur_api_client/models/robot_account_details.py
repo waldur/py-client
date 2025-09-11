@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.robot_account_states import RobotAccountStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -31,7 +32,7 @@ class RobotAccountDetails:
         description (Union[Unset, str]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
-        state (Union[Unset, str]):
+        state (Union[Unset, RobotAccountStates]):
         resource (Union[Unset, str]):
         type_ (Union[Unset, str]): Type of the robot account.
         users (Union[Unset, list['BasicUser']]):
@@ -58,7 +59,7 @@ class RobotAccountDetails:
     description: Union[Unset, str] = UNSET
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
-    state: Union[Unset, str] = UNSET
+    state: Union[Unset, RobotAccountStates] = UNSET
     resource: Union[Unset, str] = UNSET
     type_: Union[Unset, str] = UNSET
     users: Union[Unset, list["BasicUser"]] = UNSET
@@ -102,7 +103,9 @@ class RobotAccountDetails:
 
         error_traceback = self.error_traceback
 
-        state = self.state
+        state: Union[Unset, int] = UNSET
+        if not isinstance(self.state, Unset):
+            state = self.state.value
 
         resource = self.resource
 
@@ -262,7 +265,12 @@ class RobotAccountDetails:
 
         error_traceback = d.pop("error_traceback", UNSET)
 
-        state = d.pop("state", UNSET)
+        _state = d.pop("state", UNSET)
+        state: Union[Unset, RobotAccountStates]
+        if isinstance(_state, Unset):
+            state = UNSET
+        else:
+            state = RobotAccountStates(_state)
 
         resource = d.pop("resource", UNSET)
 

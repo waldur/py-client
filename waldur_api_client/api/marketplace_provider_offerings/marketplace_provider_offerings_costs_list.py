@@ -30,6 +30,8 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     end: Union[Unset, str] = UNSET,
+    has_active_terms_of_service: Union[Unset, bool] = UNSET,
+    has_terms_of_service: Union[Unset, bool] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -90,6 +92,10 @@ def _get_kwargs(
     params["description"] = description
 
     params["end"] = end
+
+    params["has_active_terms_of_service"] = has_active_terms_of_service
+
+    params["has_terms_of_service"] = has_terms_of_service
 
     params["keyword"] = keyword
 
@@ -225,6 +231,8 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     end: Union[Unset, str] = UNSET,
+    has_active_terms_of_service: Union[Unset, bool] = UNSET,
+    has_terms_of_service: Union[Unset, bool] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -261,6 +269,8 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         end (Union[Unset, str]):
+        has_active_terms_of_service (Union[Unset, bool]):
+        has_terms_of_service (Union[Unset, bool]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -303,6 +313,8 @@ def sync_detailed(
         customer_uuid=customer_uuid,
         description=description,
         end=end,
+        has_active_terms_of_service=has_active_terms_of_service,
+        has_terms_of_service=has_terms_of_service,
         keyword=keyword,
         modified=modified,
         name=name,
@@ -347,6 +359,8 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     end: Union[Unset, str] = UNSET,
+    has_active_terms_of_service: Union[Unset, bool] = UNSET,
+    has_terms_of_service: Union[Unset, bool] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -383,6 +397,8 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         end (Union[Unset, str]):
+        has_active_terms_of_service (Union[Unset, bool]):
+        has_terms_of_service (Union[Unset, bool]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -426,6 +442,8 @@ def sync(
         customer_uuid=customer_uuid,
         description=description,
         end=end,
+        has_active_terms_of_service=has_active_terms_of_service,
+        has_terms_of_service=has_terms_of_service,
         keyword=keyword,
         modified=modified,
         name=name,
@@ -464,6 +482,8 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     end: Union[Unset, str] = UNSET,
+    has_active_terms_of_service: Union[Unset, bool] = UNSET,
+    has_terms_of_service: Union[Unset, bool] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -500,6 +520,8 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         end (Union[Unset, str]):
+        has_active_terms_of_service (Union[Unset, bool]):
+        has_terms_of_service (Union[Unset, bool]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -542,6 +564,8 @@ async def asyncio_detailed(
         customer_uuid=customer_uuid,
         description=description,
         end=end,
+        has_active_terms_of_service=has_active_terms_of_service,
+        has_terms_of_service=has_terms_of_service,
         keyword=keyword,
         modified=modified,
         name=name,
@@ -584,6 +608,8 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     end: Union[Unset, str] = UNSET,
+    has_active_terms_of_service: Union[Unset, bool] = UNSET,
+    has_terms_of_service: Union[Unset, bool] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -620,6 +646,8 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         end (Union[Unset, str]):
+        has_active_terms_of_service (Union[Unset, bool]):
+        has_terms_of_service (Union[Unset, bool]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -664,6 +692,8 @@ async def asyncio(
             customer_uuid=customer_uuid,
             description=description,
             end=end,
+            has_active_terms_of_service=has_active_terms_of_service,
+            has_terms_of_service=has_terms_of_service,
             keyword=keyword,
             modified=modified,
             name=name,

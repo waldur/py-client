@@ -1379,6 +1379,7 @@ from .robot_account import RobotAccount
 from .robot_account_details import RobotAccountDetails
 from .robot_account_error_request import RobotAccountErrorRequest
 from .robot_account_request import RobotAccountRequest
+from .robot_account_states import RobotAccountStates
 from .role_description import RoleDescription
 from .role_description_request import RoleDescriptionRequest
 from .role_details import RoleDetails
@@ -2854,6 +2855,7 @@ __all__ = (
     "RobotAccountDetails",
     "RobotAccountErrorRequest",
     "RobotAccountRequest",
+    "RobotAccountStates",
     "RoleDescription",
     "RoleDescriptionRequest",
     "RoleDetails",
