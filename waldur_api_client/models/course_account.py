@@ -30,9 +30,9 @@ class CourseAccount:
         customer_name (str):
         state (ServiceAccountState):
         error_message (str):
+        error_traceback (str):
         email (Union[Unset, str]):
         description (Union[Unset, str]):
-        error_traceback (Union[Unset, str]):
     """
 
     url: str
@@ -48,9 +48,9 @@ class CourseAccount:
     customer_name: str
     state: ServiceAccountState
     error_message: str
+    error_traceback: str
     email: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
-    error_traceback: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -80,11 +80,11 @@ class CourseAccount:
 
         error_message = self.error_message
 
+        error_traceback = self.error_traceback
+
         email = self.email
 
         description = self.description
-
-        error_traceback = self.error_traceback
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -103,14 +103,13 @@ class CourseAccount:
                 "customer_name": customer_name,
                 "state": state,
                 "error_message": error_message,
+                "error_traceback": error_traceback,
             }
         )
         if email is not UNSET:
             field_dict["email"] = email
         if description is not UNSET:
             field_dict["description"] = description
-        if error_traceback is not UNSET:
-            field_dict["error_traceback"] = error_traceback
 
         return field_dict
 
@@ -143,11 +142,11 @@ class CourseAccount:
 
         error_message = d.pop("error_message")
 
+        error_traceback = d.pop("error_traceback")
+
         email = d.pop("email", UNSET)
 
         description = d.pop("description", UNSET)
-
-        error_traceback = d.pop("error_traceback", UNSET)
 
         course_account = cls(
             url=url,
@@ -163,9 +162,9 @@ class CourseAccount:
             customer_name=customer_name,
             state=state,
             error_message=error_message,
+            error_traceback=error_traceback,
             email=email,
             description=description,
-            error_traceback=error_traceback,
         )
 
         course_account.additional_properties = d

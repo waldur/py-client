@@ -17,13 +17,11 @@ class CourseAccountRequest:
         project (UUID):
         email (Union[Unset, str]):
         description (Union[Unset, str]):
-        error_traceback (Union[Unset, str]):
     """
 
     project: UUID
     email: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
-    error_traceback: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,8 +30,6 @@ class CourseAccountRequest:
         email = self.email
 
         description = self.description
-
-        error_traceback = self.error_traceback
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -46,8 +42,6 @@ class CourseAccountRequest:
             field_dict["email"] = email
         if description is not UNSET:
             field_dict["description"] = description
-        if error_traceback is not UNSET:
-            field_dict["error_traceback"] = error_traceback
 
         return field_dict
 
@@ -60,13 +54,10 @@ class CourseAccountRequest:
 
         description = d.pop("description", UNSET)
 
-        error_traceback = d.pop("error_traceback", UNSET)
-
         course_account_request = cls(
             project=project,
             email=email,
             description=description,
-            error_traceback=error_traceback,
         )
 
         course_account_request.additional_properties = d
