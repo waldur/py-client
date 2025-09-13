@@ -95,6 +95,7 @@ class Offering:
         parent_name (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
         has_compliance_requirements (Union[Unset, bool]):
+        user_has_consent (Union[Unset, bool]):
         googlecalendar (Union[Unset, GoogleCalendar]):
     """
 
@@ -158,6 +159,7 @@ class Offering:
     parent_name: Union[None, Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
     has_compliance_requirements: Union[Unset, bool] = UNSET
+    user_has_consent: Union[Unset, bool] = UNSET
     googlecalendar: Union[Unset, "GoogleCalendar"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -436,6 +438,8 @@ class Offering:
 
         has_compliance_requirements = self.has_compliance_requirements
 
+        user_has_consent = self.user_has_consent
+
         googlecalendar: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.googlecalendar, Unset):
             googlecalendar = self.googlecalendar.to_dict()
@@ -563,6 +567,8 @@ class Offering:
             field_dict["backend_metadata"] = backend_metadata
         if has_compliance_requirements is not UNSET:
             field_dict["has_compliance_requirements"] = has_compliance_requirements
+        if user_has_consent is not UNSET:
+            field_dict["user_has_consent"] = user_has_consent
         if googlecalendar is not UNSET:
             field_dict["googlecalendar"] = googlecalendar
 
@@ -989,6 +995,8 @@ class Offering:
 
         has_compliance_requirements = d.pop("has_compliance_requirements", UNSET)
 
+        user_has_consent = d.pop("user_has_consent", UNSET)
+
         _googlecalendar = d.pop("googlecalendar", UNSET)
         googlecalendar: Union[Unset, GoogleCalendar]
         if isinstance(_googlecalendar, Unset):
@@ -1057,6 +1065,7 @@ class Offering:
             parent_name=parent_name,
             backend_metadata=backend_metadata,
             has_compliance_requirements=has_compliance_requirements,
+            user_has_consent=user_has_consent,
             googlecalendar=googlecalendar,
         )
 

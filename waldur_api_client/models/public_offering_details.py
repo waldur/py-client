@@ -95,6 +95,7 @@ class PublicOfferingDetails:
         parent_name (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
         has_compliance_requirements (Union[Unset, bool]):
+        user_has_consent (Union[Unset, bool]):
         google_calendar_is_public (Union[None, Unset, bool]):
         google_calendar_link (Union[None, Unset, str]): Get the Google Calendar link for an offering.
         promotion_campaigns (Union[Unset, list['NestedCampaign']]):
@@ -160,6 +161,7 @@ class PublicOfferingDetails:
     parent_name: Union[None, Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
     has_compliance_requirements: Union[Unset, bool] = UNSET
+    user_has_consent: Union[Unset, bool] = UNSET
     google_calendar_is_public: Union[None, Unset, bool] = UNSET
     google_calendar_link: Union[None, Unset, str] = UNSET
     promotion_campaigns: Union[Unset, list["NestedCampaign"]] = UNSET
@@ -440,6 +442,8 @@ class PublicOfferingDetails:
 
         has_compliance_requirements = self.has_compliance_requirements
 
+        user_has_consent = self.user_has_consent
+
         google_calendar_is_public: Union[None, Unset, bool]
         if isinstance(self.google_calendar_is_public, Unset):
             google_calendar_is_public = UNSET
@@ -582,6 +586,8 @@ class PublicOfferingDetails:
             field_dict["backend_metadata"] = backend_metadata
         if has_compliance_requirements is not UNSET:
             field_dict["has_compliance_requirements"] = has_compliance_requirements
+        if user_has_consent is not UNSET:
+            field_dict["user_has_consent"] = user_has_consent
         if google_calendar_is_public is not UNSET:
             field_dict["google_calendar_is_public"] = google_calendar_is_public
         if google_calendar_link is not UNSET:
@@ -1012,6 +1018,8 @@ class PublicOfferingDetails:
 
         has_compliance_requirements = d.pop("has_compliance_requirements", UNSET)
 
+        user_has_consent = d.pop("user_has_consent", UNSET)
+
         def _parse_google_calendar_is_public(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
@@ -1098,6 +1106,7 @@ class PublicOfferingDetails:
             parent_name=parent_name,
             backend_metadata=backend_metadata,
             has_compliance_requirements=has_compliance_requirements,
+            user_has_consent=user_has_consent,
             google_calendar_is_public=google_calendar_is_public,
             google_calendar_link=google_calendar_link,
             promotion_campaigns=promotion_campaigns,

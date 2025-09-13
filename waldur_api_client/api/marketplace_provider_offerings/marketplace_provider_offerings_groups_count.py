@@ -45,6 +45,7 @@ def _get_kwargs(
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsGroupsCountStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
+    user_has_consent: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -165,6 +166,8 @@ def _get_kwargs(
 
     params["type"] = json_type_
 
+    params["user_has_consent"] = user_has_consent
+
     params["uuid_list"] = uuid_list
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
@@ -234,6 +237,7 @@ def sync_detailed(
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsGroupsCountStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
+    user_has_consent: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -268,6 +272,7 @@ def sync_detailed(
         shared (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceProviderOfferingsGroupsCountStateItem]]):
         type_ (Union[Unset, list[str]]):
+        user_has_consent (Union[Unset, bool]):
         uuid_list (Union[Unset, str]):
 
     Raises:
@@ -308,6 +313,7 @@ def sync_detailed(
         shared=shared,
         state=state,
         type_=type_,
+        user_has_consent=user_has_consent,
         uuid_list=uuid_list,
     )
 
@@ -350,6 +356,7 @@ def sync(
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsGroupsCountStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
+    user_has_consent: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -384,6 +391,7 @@ def sync(
         shared (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceProviderOfferingsGroupsCountStateItem]]):
         type_ (Union[Unset, list[str]]):
+        user_has_consent (Union[Unset, bool]):
         uuid_list (Union[Unset, str]):
 
     Raises:
@@ -425,6 +433,7 @@ def sync(
         shared=shared,
         state=state,
         type_=type_,
+        user_has_consent=user_has_consent,
         uuid_list=uuid_list,
     ).parsed
 
@@ -461,6 +470,7 @@ async def asyncio_detailed(
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsGroupsCountStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
+    user_has_consent: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -495,6 +505,7 @@ async def asyncio_detailed(
         shared (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceProviderOfferingsGroupsCountStateItem]]):
         type_ (Union[Unset, list[str]]):
+        user_has_consent (Union[Unset, bool]):
         uuid_list (Union[Unset, str]):
 
     Raises:
@@ -535,6 +546,7 @@ async def asyncio_detailed(
         shared=shared,
         state=state,
         type_=type_,
+        user_has_consent=user_has_consent,
         uuid_list=uuid_list,
     )
 
@@ -575,6 +587,7 @@ async def asyncio(
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsGroupsCountStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
+    user_has_consent: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -609,6 +622,7 @@ async def asyncio(
         shared (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceProviderOfferingsGroupsCountStateItem]]):
         type_ (Union[Unset, list[str]]):
+        user_has_consent (Union[Unset, bool]):
         uuid_list (Union[Unset, str]):
 
     Raises:
@@ -651,6 +665,7 @@ async def asyncio(
             shared=shared,
             state=state,
             type_=type_,
+            user_has_consent=user_has_consent,
             uuid_list=uuid_list,
         )
     ).parsed

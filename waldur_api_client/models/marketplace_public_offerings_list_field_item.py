@@ -63,6 +63,7 @@ class MarketplacePublicOfferingsListFieldItem(str, Enum):
     TOTAL_CUSTOMERS = "total_customers"
     TYPE = "type"
     URL = "url"
+    USER_HAS_CONSENT = "user_has_consent"
     UUID = "uuid"
     VENDOR_DETAILS = "vendor_details"
 

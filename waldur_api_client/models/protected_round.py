@@ -36,7 +36,7 @@ class ProtectedRound:
         allocation_time (Union[Unset, AllocationTimeEnum]):
         allocation_date (Union[None, Unset, datetime.datetime]):
         minimal_average_scoring (Union[None, Unset, str]):
-        review_duration_in_days (Union[Unset, int]):  Default: 7.
+        review_duration_in_days (Union[Unset, int]):
         minimum_number_of_reviewers (Union[None, Unset, int]):
     """
 
@@ -52,7 +52,7 @@ class ProtectedRound:
     allocation_time: Union[Unset, AllocationTimeEnum] = UNSET
     allocation_date: Union[None, Unset, datetime.datetime] = UNSET
     minimal_average_scoring: Union[None, Unset, str] = UNSET
-    review_duration_in_days: Union[Unset, int] = 7
+    review_duration_in_days: Union[Unset, int] = UNSET
     minimum_number_of_reviewers: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

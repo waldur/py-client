@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.user_consent_info import UserConsentInfo
+
 
 T = TypeVar("T", bound="OfferingTermsOfService")
 
@@ -19,6 +23,8 @@ class OfferingTermsOfService:
         uuid (UUID):
         offering_uuid (UUID):
         offering_name (str):
+        user_consent (Union['UserConsentInfo', None]):
+        has_user_consent (bool):
         created (datetime.datetime):
         modified (datetime.datetime):
         terms_of_service (Union[Unset, str]):
@@ -32,6 +38,8 @@ class OfferingTermsOfService:
     uuid: UUID
     offering_uuid: UUID
     offering_name: str
+    user_consent: Union["UserConsentInfo", None]
+    has_user_consent: bool
     created: datetime.datetime
     modified: datetime.datetime
     terms_of_service: Union[Unset, str] = UNSET
@@ -42,11 +50,21 @@ class OfferingTermsOfService:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.user_consent_info import UserConsentInfo
+
         uuid = str(self.uuid)
 
         offering_uuid = str(self.offering_uuid)
 
         offering_name = self.offering_name
+
+        user_consent: Union[None, dict[str, Any]]
+        if isinstance(self.user_consent, UserConsentInfo):
+            user_consent = self.user_consent.to_dict()
+        else:
+            user_consent = self.user_consent
+
+        has_user_consent = self.has_user_consent
 
         created = self.created.isoformat()
 
@@ -69,6 +87,8 @@ class OfferingTermsOfService:
                 "uuid": uuid,
                 "offering_uuid": offering_uuid,
                 "offering_name": offering_name,
+                "user_consent": user_consent,
+                "has_user_consent": has_user_consent,
                 "created": created,
                 "modified": modified,
             }
@@ -88,12 +108,31 @@ class OfferingTermsOfService:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.user_consent_info import UserConsentInfo
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
         offering_uuid = UUID(d.pop("offering_uuid"))
 
         offering_name = d.pop("offering_name")
+
+        def _parse_user_consent(data: object) -> Union["UserConsentInfo", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                user_consent_type_1 = UserConsentInfo.from_dict(data)
+
+                return user_consent_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["UserConsentInfo", None], data)
+
+        user_consent = _parse_user_consent(d.pop("user_consent"))
+
+        has_user_consent = d.pop("has_user_consent")
 
         created = isoparse(d.pop("created"))
 
@@ -113,6 +152,8 @@ class OfferingTermsOfService:
             uuid=uuid,
             offering_uuid=offering_uuid,
             offering_name=offering_name,
+            user_consent=user_consent,
+            has_user_consent=has_user_consent,
             created=created,
             modified=modified,
             terms_of_service=terms_of_service,

@@ -2,10 +2,10 @@ from enum import Enum
 
 
 class IssueTypeEnum(str, Enum):
-    CHANGE_REQUEST = "Change Request"
-    INCIDENT = "Incident"
-    INFORMATIONAL = "Informational"
-    SERVICE_REQUEST = "Service Request"
+    CHANGE_REQUEST = "CHANGE_REQUEST"
+    INCIDENT = "INCIDENT"
+    INFORMATIONAL = "INFORMATIONAL"
+    SERVICE_REQUEST = "SERVICE_REQUEST"
 
     def __str__(self) -> str:
         return str(self.value)

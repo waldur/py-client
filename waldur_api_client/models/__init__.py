@@ -1482,6 +1482,7 @@ from .user_agreement_request import UserAgreementRequest
 from .user_agreements_count_agreement_type import UserAgreementsCountAgreementType
 from .user_agreements_list_agreement_type import UserAgreementsListAgreementType
 from .user_auth_token import UserAuthToken
+from .user_consent_info import UserConsentInfo
 from .user_email_change_request import UserEmailChangeRequest
 from .user_group_invitations_count_o_item import UserGroupInvitationsCountOItem
 from .user_group_invitations_list_o_item import UserGroupInvitationsListOItem
@@ -2956,6 +2957,7 @@ __all__ = (
     "UserAgreementsCountAgreementType",
     "UserAgreementsListAgreementType",
     "UserAuthToken",
+    "UserConsentInfo",
     "UserEmailChangeRequest",
     "UserGroupInvitationsCountOItem",
     "UserGroupInvitationsListOItem",

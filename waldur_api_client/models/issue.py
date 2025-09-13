@@ -7,7 +7,6 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.issue_type_enum import IssueTypeEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -23,6 +22,7 @@ class Issue:
     Attributes:
         url (str):
         uuid (UUID):
+        type_ (str):
         key (str):
         backend_id (Union[None, str]):
         backend_name (Union[None, str]):
@@ -52,7 +52,6 @@ class Issue:
         destroy_is_available (bool):
         add_comment_is_available (bool):
         add_attachment_is_available (bool):
-        type_ (Union[Unset, IssueTypeEnum]):  Default: IssueTypeEnum.INFORMATIONAL.
         remote_id (Union[None, Unset, str]):
         description (Union[Unset, str]):
         priority (Union[Unset, str]):
@@ -66,6 +65,7 @@ class Issue:
 
     url: str
     uuid: UUID
+    type_: str
     key: str
     backend_id: Union[None, str]
     backend_name: Union[None, str]
@@ -95,7 +95,6 @@ class Issue:
     destroy_is_available: bool
     add_comment_is_available: bool
     add_attachment_is_available: bool
-    type_: Union[Unset, IssueTypeEnum] = IssueTypeEnum.INFORMATIONAL
     remote_id: Union[None, Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     priority: Union[Unset, str] = UNSET
@@ -113,6 +112,8 @@ class Issue:
         url = self.url
 
         uuid = str(self.uuid)
+
+        type_ = self.type_
 
         key = self.key
 
@@ -208,10 +209,6 @@ class Issue:
 
         add_attachment_is_available = self.add_attachment_is_available
 
-        type_: Union[Unset, str] = UNSET
-        if not isinstance(self.type_, Unset):
-            type_ = self.type_.value
-
         remote_id: Union[None, Unset, str]
         if isinstance(self.remote_id, Unset):
             remote_id = UNSET
@@ -260,6 +257,7 @@ class Issue:
             {
                 "url": url,
                 "uuid": uuid,
+                "type": type_,
                 "key": key,
                 "backend_id": backend_id,
                 "backend_name": backend_name,
@@ -291,8 +289,6 @@ class Issue:
                 "add_attachment_is_available": add_attachment_is_available,
             }
         )
-        if type_ is not UNSET:
-            field_dict["type"] = type_
         if remote_id is not UNSET:
             field_dict["remote_id"] = remote_id
         if description is not UNSET:
@@ -322,6 +318,8 @@ class Issue:
         url = d.pop("url")
 
         uuid = UUID(d.pop("uuid"))
+
+        type_ = d.pop("type")
 
         key = d.pop("key")
 
@@ -512,13 +510,6 @@ class Issue:
 
         add_attachment_is_available = d.pop("add_attachment_is_available")
 
-        _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, IssueTypeEnum]
-        if isinstance(_type_, Unset):
-            type_ = UNSET
-        else:
-            type_ = IssueTypeEnum(_type_)
-
         def _parse_remote_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -582,6 +573,7 @@ class Issue:
         issue = cls(
             url=url,
             uuid=uuid,
+            type_=type_,
             key=key,
             backend_id=backend_id,
             backend_name=backend_name,
@@ -611,7 +603,6 @@ class Issue:
             destroy_is_available=destroy_is_available,
             add_comment_is_available=add_comment_is_available,
             add_attachment_is_available=add_attachment_is_available,
-            type_=type_,
             remote_id=remote_id,
             description=description,
             priority=priority,
