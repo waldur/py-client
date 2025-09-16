@@ -18,6 +18,7 @@ def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
@@ -48,6 +49,8 @@ def _get_kwargs(
             json_field.append(field_item)
 
     params["field"] = json_field
+
+    params["has_consent"] = has_consent
 
     params["is_restricted"] = is_restricted
 
@@ -154,6 +157,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
@@ -174,6 +178,7 @@ def sync_detailed(
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
+        has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
@@ -200,6 +205,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         created=created,
         field=field,
+        has_consent=has_consent,
         is_restricted=is_restricted,
         modified=modified,
         o=o,
@@ -228,6 +234,7 @@ def sync(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
@@ -248,6 +255,7 @@ def sync(
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
+        has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
@@ -275,6 +283,7 @@ def sync(
         client=client,
         created=created,
         field=field,
+        has_consent=has_consent,
         is_restricted=is_restricted,
         modified=modified,
         o=o,
@@ -297,6 +306,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
@@ -317,6 +327,7 @@ async def asyncio_detailed(
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
+        has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
@@ -343,6 +354,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         created=created,
         field=field,
+        has_consent=has_consent,
         is_restricted=is_restricted,
         modified=modified,
         o=o,
@@ -369,6 +381,7 @@ async def asyncio(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
@@ -389,6 +402,7 @@ async def asyncio(
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
+        has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
@@ -417,6 +431,7 @@ async def asyncio(
             client=client,
             created=created,
             field=field,
+            has_consent=has_consent,
             is_restricted=is_restricted,
             modified=modified,
             o=o,

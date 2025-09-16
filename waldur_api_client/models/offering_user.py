@@ -39,6 +39,8 @@ class OfferingUser:
             linking
         service_provider_comment_url (Union[Unset, str]): URL link for additional information or actions related to
             service provider comment
+        has_consent (Union[Unset, bool]): Check if the user has active consent for this offering.
+        requires_reconsent (Union[Unset, bool]): Check if the user needs to re-consent due to ToS changes.
     """
 
     url: Union[Unset, str] = UNSET
@@ -60,6 +62,8 @@ class OfferingUser:
     state: Union[Unset, OfferingUserStateEnum] = UNSET
     service_provider_comment: Union[Unset, str] = UNSET
     service_provider_comment_url: Union[Unset, str] = UNSET
+    has_consent: Union[Unset, bool] = UNSET
+    requires_reconsent: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -119,6 +123,10 @@ class OfferingUser:
 
         service_provider_comment_url = self.service_provider_comment_url
 
+        has_consent = self.has_consent
+
+        requires_reconsent = self.requires_reconsent
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -160,6 +168,10 @@ class OfferingUser:
             field_dict["service_provider_comment"] = service_provider_comment
         if service_provider_comment_url is not UNSET:
             field_dict["service_provider_comment_url"] = service_provider_comment_url
+        if has_consent is not UNSET:
+            field_dict["has_consent"] = has_consent
+        if requires_reconsent is not UNSET:
+            field_dict["requires_reconsent"] = requires_reconsent
 
         return field_dict
 
@@ -246,6 +258,10 @@ class OfferingUser:
 
         service_provider_comment_url = d.pop("service_provider_comment_url", UNSET)
 
+        has_consent = d.pop("has_consent", UNSET)
+
+        requires_reconsent = d.pop("requires_reconsent", UNSET)
+
         offering_user = cls(
             url=url,
             uuid=uuid,
@@ -266,6 +282,8 @@ class OfferingUser:
             state=state,
             service_provider_comment=service_provider_comment,
             service_provider_comment_url=service_provider_comment_url,
+            has_consent=has_consent,
+            requires_reconsent=requires_reconsent,
         )
 
         offering_user.additional_properties = d

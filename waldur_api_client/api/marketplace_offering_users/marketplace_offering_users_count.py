@@ -15,6 +15,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
+    has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersCountOItem]] = UNSET,
@@ -36,6 +37,8 @@ def _get_kwargs(
     if not isinstance(created, Unset):
         json_created = created.isoformat()
     params["created"] = json_created
+
+    params["has_consent"] = has_consent
 
     params["is_restricted"] = is_restricted
 
@@ -141,6 +144,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
+    has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersCountOItem]] = UNSET,
@@ -160,6 +164,7 @@ def sync_detailed(
 
     Args:
         created (Union[Unset, datetime.datetime]):
+        has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersCountOItem]]):
@@ -185,6 +190,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         created=created,
+        has_consent=has_consent,
         is_restricted=is_restricted,
         modified=modified,
         o=o,
@@ -212,6 +218,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
+    has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersCountOItem]] = UNSET,
@@ -231,6 +238,7 @@ def sync(
 
     Args:
         created (Union[Unset, datetime.datetime]):
+        has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersCountOItem]]):
@@ -257,6 +265,7 @@ def sync(
     return sync_detailed(
         client=client,
         created=created,
+        has_consent=has_consent,
         is_restricted=is_restricted,
         modified=modified,
         o=o,
@@ -278,6 +287,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
+    has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersCountOItem]] = UNSET,
@@ -297,6 +307,7 @@ async def asyncio_detailed(
 
     Args:
         created (Union[Unset, datetime.datetime]):
+        has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersCountOItem]]):
@@ -322,6 +333,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         created=created,
+        has_consent=has_consent,
         is_restricted=is_restricted,
         modified=modified,
         o=o,
@@ -347,6 +359,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
+    has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[MarketplaceOfferingUsersCountOItem]] = UNSET,
@@ -366,6 +379,7 @@ async def asyncio(
 
     Args:
         created (Union[Unset, datetime.datetime]):
+        has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[MarketplaceOfferingUsersCountOItem]]):
@@ -393,6 +407,7 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             created=created,
+            has_consent=has_consent,
             is_restricted=is_restricted,
             modified=modified,
             o=o,
