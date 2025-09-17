@@ -17,6 +17,7 @@ class UserRequest:
     Attributes:
         username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_ characters
         email (str):
+        slug (Union[Unset, str]):
         native_name (Union[Unset, str]):
         job_title (Union[Unset, str]):
         phone_number (Union[Unset, str]):
@@ -38,6 +39,7 @@ class UserRequest:
 
     username: str
     email: str
+    slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
     job_title: Union[Unset, str] = UNSET
     phone_number: Union[Unset, str] = UNSET
@@ -59,6 +61,8 @@ class UserRequest:
         username = self.username
 
         email = self.email
+
+        slug = self.slug
 
         native_name = self.native_name
 
@@ -109,6 +113,8 @@ class UserRequest:
                 "email": email,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if native_name is not UNSET:
             field_dict["native_name"] = native_name
         if job_title is not UNSET:
@@ -148,6 +154,8 @@ class UserRequest:
         username = d.pop("username")
 
         email = d.pop("email")
+
+        slug = d.pop("slug", UNSET)
 
         native_name = d.pop("native_name", UNSET)
 
@@ -204,6 +212,7 @@ class UserRequest:
         user_request = cls(
             username=username,
             email=email,
+            slug=slug,
             native_name=native_name,
             job_title=job_title,
             phone_number=phone_number,

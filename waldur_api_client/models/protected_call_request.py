@@ -16,6 +16,7 @@ class ProtectedCallRequest:
     Attributes:
         name (str):
         manager (str):
+        slug (Union[Unset, str]):
         description (Union[Unset, str]):
         fixed_duration_in_days (Union[None, Unset, int]):
         backend_id (Union[Unset, str]):
@@ -32,6 +33,7 @@ class ProtectedCallRequest:
 
     name: str
     manager: str
+    slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     fixed_duration_in_days: Union[None, Unset, int] = UNSET
     backend_id: Union[Unset, str] = UNSET
@@ -47,6 +49,8 @@ class ProtectedCallRequest:
         name = self.name
 
         manager = self.manager
+
+        slug = self.slug
 
         description = self.description
 
@@ -92,6 +96,8 @@ class ProtectedCallRequest:
                 "manager": manager,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if fixed_duration_in_days is not UNSET:
@@ -119,6 +125,8 @@ class ProtectedCallRequest:
         name = d.pop("name")
 
         manager = d.pop("manager")
+
+        slug = d.pop("slug", UNSET)
 
         description = d.pop("description", UNSET)
 
@@ -177,6 +185,7 @@ class ProtectedCallRequest:
         protected_call_request = cls(
             name=name,
             manager=manager,
+            slug=slug,
             description=description,
             fixed_duration_in_days=fixed_duration_in_days,
             backend_id=backend_id,

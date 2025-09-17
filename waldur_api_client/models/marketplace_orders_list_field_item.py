@@ -4,6 +4,7 @@ from enum import Enum
 class MarketplaceOrdersListFieldItem(str, Enum):
     ACCEPTING_TERMS_OF_SERVICE = "accepting_terms_of_service"
     ACTIVATION_PRICE = "activation_price"
+    ATTACHMENT = "attachment"
     ATTRIBUTES = "attributes"
     BACKEND_ID = "backend_id"
     CALLBACK_URL = "callback_url"
@@ -63,6 +64,7 @@ class MarketplaceOrdersListFieldItem(str, Enum):
     PROVIDER_REVIEWED_BY_FULL_NAME = "provider_reviewed_by_full_name"
     PROVIDER_REVIEWED_BY_USERNAME = "provider_reviewed_by_username"
     PROVIDER_UUID = "provider_uuid"
+    REQUEST_COMMENT = "request_comment"
     RESOURCE_NAME = "resource_name"
     RESOURCE_TYPE = "resource_type"
     RESOURCE_UUID = "resource_uuid"

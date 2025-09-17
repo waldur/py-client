@@ -1,11 +1,13 @@
 from collections.abc import Mapping
+from io import BytesIO
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from .. import types
 from ..models.request_types import RequestTypes
-from ..types import UNSET, Unset
+from ..types import UNSET, File, Unset
 
 if TYPE_CHECKING:
     from ..models.azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
@@ -46,6 +48,8 @@ class OrderCreateRequest:
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
         accepting_terms_of_service (Union[Unset, bool]):
         callback_url (Union[None, Unset, str]):
+        request_comment (Union[None, Unset, str]):
+        attachment (Union[File, None, Unset]):
     """
 
     offering: str
@@ -68,6 +72,8 @@ class OrderCreateRequest:
     type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
     accepting_terms_of_service: Union[Unset, bool] = UNSET
     callback_url: Union[None, Unset, str] = UNSET
+    request_comment: Union[None, Unset, str] = UNSET
+    attachment: Union[File, None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -131,6 +137,21 @@ class OrderCreateRequest:
         else:
             callback_url = self.callback_url
 
+        request_comment: Union[None, Unset, str]
+        if isinstance(self.request_comment, Unset):
+            request_comment = UNSET
+        else:
+            request_comment = self.request_comment
+
+        attachment: Union[None, Unset, types.FileTypes]
+        if isinstance(self.attachment, Unset):
+            attachment = UNSET
+        elif isinstance(self.attachment, File):
+            attachment = self.attachment.to_tuple()
+
+        else:
+            attachment = self.attachment
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -151,6 +172,10 @@ class OrderCreateRequest:
             field_dict["accepting_terms_of_service"] = accepting_terms_of_service
         if callback_url is not UNSET:
             field_dict["callback_url"] = callback_url
+        if request_comment is not UNSET:
+            field_dict["request_comment"] = request_comment
+        if attachment is not UNSET:
+            field_dict["attachment"] = attachment
 
         return field_dict
 
@@ -301,6 +326,32 @@ class OrderCreateRequest:
 
         callback_url = _parse_callback_url(d.pop("callback_url", UNSET))
 
+        def _parse_request_comment(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        request_comment = _parse_request_comment(d.pop("request_comment", UNSET))
+
+        def _parse_attachment(data: object) -> Union[File, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, bytes):
+                    raise TypeError()
+                attachment_type_0 = File(payload=BytesIO(data))
+
+                return attachment_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[File, None, Unset], data)
+
+        attachment = _parse_attachment(d.pop("attachment", UNSET))
+
         order_create_request = cls(
             offering=offering,
             project=project,
@@ -310,6 +361,8 @@ class OrderCreateRequest:
             type_=type_,
             accepting_terms_of_service=accepting_terms_of_service,
             callback_url=callback_url,
+            request_comment=request_comment,
+            attachment=attachment,
         )
 
         order_create_request.additional_properties = d

@@ -53,6 +53,7 @@ class OrderCreate:
         output (str):
         marketplace_resource_uuid (UUID):
         error_message (str):
+        error_traceback (str):
         completed_at (Union[None, datetime.datetime]):
         url (str):
         created_by (str):
@@ -75,6 +76,8 @@ class OrderCreate:
         limits (Union[Unset, OrderCreateLimits]):
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
         callback_url (Union[None, Unset, str]):
+        request_comment (Union[None, Unset, str]):
+        attachment (Union[None, Unset, str]):
     """
 
     offering: str
@@ -107,6 +110,7 @@ class OrderCreate:
     output: str
     marketplace_resource_uuid: UUID
     error_message: str
+    error_traceback: str
     completed_at: Union[None, datetime.datetime]
     url: str
     created_by: str
@@ -127,6 +131,8 @@ class OrderCreate:
     limits: Union[Unset, "OrderCreateLimits"] = UNSET
     type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
     callback_url: Union[None, Unset, str] = UNSET
+    request_comment: Union[None, Unset, str] = UNSET
+    attachment: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -206,6 +212,8 @@ class OrderCreate:
 
         error_message = self.error_message
 
+        error_traceback = self.error_traceback
+
         completed_at: Union[None, str]
         if isinstance(self.completed_at, datetime.datetime):
             completed_at = self.completed_at.isoformat()
@@ -265,6 +273,18 @@ class OrderCreate:
         else:
             callback_url = self.callback_url
 
+        request_comment: Union[None, Unset, str]
+        if isinstance(self.request_comment, Unset):
+            request_comment = UNSET
+        else:
+            request_comment = self.request_comment
+
+        attachment: Union[None, Unset, str]
+        if isinstance(self.attachment, Unset):
+            attachment = UNSET
+        else:
+            attachment = self.attachment
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -299,6 +319,7 @@ class OrderCreate:
                 "output": output,
                 "marketplace_resource_uuid": marketplace_resource_uuid,
                 "error_message": error_message,
+                "error_traceback": error_traceback,
                 "completed_at": completed_at,
                 "url": url,
                 "created_by": created_by,
@@ -326,6 +347,10 @@ class OrderCreate:
             field_dict["type"] = type_
         if callback_url is not UNSET:
             field_dict["callback_url"] = callback_url
+        if request_comment is not UNSET:
+            field_dict["request_comment"] = request_comment
+        if attachment is not UNSET:
+            field_dict["attachment"] = attachment
 
         return field_dict
 
@@ -453,6 +478,8 @@ class OrderCreate:
 
         error_message = d.pop("error_message")
 
+        error_traceback = d.pop("error_traceback")
+
         def _parse_completed_at(data: object) -> Union[None, datetime.datetime]:
             if data is None:
                 return data
@@ -551,6 +578,24 @@ class OrderCreate:
 
         callback_url = _parse_callback_url(d.pop("callback_url", UNSET))
 
+        def _parse_request_comment(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        request_comment = _parse_request_comment(d.pop("request_comment", UNSET))
+
+        def _parse_attachment(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        attachment = _parse_attachment(d.pop("attachment", UNSET))
+
         order_create = cls(
             offering=offering,
             offering_name=offering_name,
@@ -582,6 +627,7 @@ class OrderCreate:
             output=output,
             marketplace_resource_uuid=marketplace_resource_uuid,
             error_message=error_message,
+            error_traceback=error_traceback,
             completed_at=completed_at,
             url=url,
             created_by=created_by,
@@ -602,6 +648,8 @@ class OrderCreate:
             limits=limits,
             type_=type_,
             callback_url=callback_url,
+            request_comment=request_comment,
+            attachment=attachment,
         )
 
         order_create.additional_properties = d

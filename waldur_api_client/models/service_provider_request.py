@@ -17,11 +17,13 @@ class ServiceProviderRequest:
     Attributes:
         customer (str):
         description (Union[Unset, str]):
+        enable_notifications (Union[Unset, bool]):
         image (Union[File, None, Unset]):
     """
 
     customer: str
     description: Union[Unset, str] = UNSET
+    enable_notifications: Union[Unset, bool] = UNSET
     image: Union[File, None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -29,6 +31,8 @@ class ServiceProviderRequest:
         customer = self.customer
 
         description = self.description
+
+        enable_notifications = self.enable_notifications
 
         image: Union[None, Unset, types.FileTypes]
         if isinstance(self.image, Unset):
@@ -48,6 +52,8 @@ class ServiceProviderRequest:
         )
         if description is not UNSET:
             field_dict["description"] = description
+        if enable_notifications is not UNSET:
+            field_dict["enable_notifications"] = enable_notifications
         if image is not UNSET:
             field_dict["image"] = image
 
@@ -59,6 +65,8 @@ class ServiceProviderRequest:
         customer = d.pop("customer")
 
         description = d.pop("description", UNSET)
+
+        enable_notifications = d.pop("enable_notifications", UNSET)
 
         def _parse_image(data: object) -> Union[File, None, Unset]:
             if data is None:
@@ -80,6 +88,7 @@ class ServiceProviderRequest:
         service_provider_request = cls(
             customer=customer,
             description=description,
+            enable_notifications=enable_notifications,
             image=image,
         )
 

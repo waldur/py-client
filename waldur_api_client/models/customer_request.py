@@ -20,6 +20,7 @@ class CustomerRequest:
         name (str):
         backend_id (Union[Unset, str]): Organization identifier in another application.
         image (Union[File, None, Unset]):
+        slug (Union[Unset, str]):
         native_name (Union[Unset, str]):
         abbreviation (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -41,6 +42,7 @@ class CustomerRequest:
     name: str
     backend_id: Union[Unset, str] = UNSET
     image: Union[File, None, Unset] = UNSET
+    slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
     abbreviation: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -72,6 +74,8 @@ class CustomerRequest:
 
         else:
             image = self.image
+
+        slug = self.slug
 
         native_name = self.native_name
 
@@ -130,6 +134,8 @@ class CustomerRequest:
             field_dict["backend_id"] = backend_id
         if image is not UNSET:
             field_dict["image"] = image
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if native_name is not UNSET:
             field_dict["native_name"] = native_name
         if abbreviation is not UNSET:
@@ -188,6 +194,8 @@ class CustomerRequest:
             return cast(Union[File, None, Unset], data)
 
         image = _parse_image(d.pop("image", UNSET))
+
+        slug = d.pop("slug", UNSET)
 
         native_name = d.pop("native_name", UNSET)
 
@@ -256,6 +264,7 @@ class CustomerRequest:
             name=name,
             backend_id=backend_id,
             image=image,
+            slug=slug,
             native_name=native_name,
             abbreviation=abbreviation,
             description=description,

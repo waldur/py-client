@@ -39,7 +39,6 @@ class OfferingCreate:
         uuid (UUID):
         created (datetime.datetime):
         name (str):
-        slug (str):
         endpoints (list['NestedEndpoint']):
         roles (list['NestedRole']):
         customer_uuid (Union[None, UUID]):
@@ -74,6 +73,7 @@ class OfferingCreate:
         parent_uuid (Union[None, UUID]):
         parent_name (Union[None, str]):
         has_compliance_requirements (bool):
+        slug (Union[Unset, str]):
         description (Union[Unset, str]):
         full_description (Union[Unset, str]):
         privacy_policy_link (Union[Unset, str]):
@@ -103,7 +103,6 @@ class OfferingCreate:
     uuid: UUID
     created: datetime.datetime
     name: str
-    slug: str
     endpoints: list["NestedEndpoint"]
     roles: list["NestedRole"]
     customer_uuid: Union[None, UUID]
@@ -138,6 +137,7 @@ class OfferingCreate:
     parent_uuid: Union[None, UUID]
     parent_name: Union[None, str]
     has_compliance_requirements: bool
+    slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     full_description: Union[Unset, str] = UNSET
     privacy_policy_link: Union[Unset, str] = UNSET
@@ -171,8 +171,6 @@ class OfferingCreate:
         created = self.created.isoformat()
 
         name = self.name
-
-        slug = self.slug
 
         endpoints = []
         for endpoints_item_data in self.endpoints:
@@ -293,6 +291,8 @@ class OfferingCreate:
 
         has_compliance_requirements = self.has_compliance_requirements
 
+        slug = self.slug
+
         description = self.description
 
         full_description = self.full_description
@@ -387,7 +387,6 @@ class OfferingCreate:
                 "uuid": uuid,
                 "created": created,
                 "name": name,
-                "slug": slug,
                 "endpoints": endpoints,
                 "roles": roles,
                 "customer_uuid": customer_uuid,
@@ -424,6 +423,8 @@ class OfferingCreate:
                 "has_compliance_requirements": has_compliance_requirements,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if full_description is not UNSET:
@@ -496,8 +497,6 @@ class OfferingCreate:
         created = isoparse(d.pop("created"))
 
         name = d.pop("name")
-
-        slug = d.pop("slug")
 
         endpoints = []
         _endpoints = d.pop("endpoints")
@@ -720,6 +719,8 @@ class OfferingCreate:
 
         has_compliance_requirements = d.pop("has_compliance_requirements")
 
+        slug = d.pop("slug", UNSET)
+
         description = d.pop("description", UNSET)
 
         full_description = d.pop("full_description", UNSET)
@@ -843,7 +844,6 @@ class OfferingCreate:
             uuid=uuid,
             created=created,
             name=name,
-            slug=slug,
             endpoints=endpoints,
             roles=roles,
             customer_uuid=customer_uuid,
@@ -878,6 +878,7 @@ class OfferingCreate:
             parent_uuid=parent_uuid,
             parent_name=parent_name,
             has_compliance_requirements=has_compliance_requirements,
+            slug=slug,
             description=description,
             full_description=full_description,
             privacy_policy_link=privacy_policy_link,

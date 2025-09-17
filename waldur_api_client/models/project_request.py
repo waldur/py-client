@@ -22,6 +22,7 @@ class ProjectRequest:
     Attributes:
         name (str):
         customer (str):
+        slug (Union[Unset, str]):
         description (Union[Unset, str]):
         type_ (Union[None, Unset, str]):
         backend_id (Union[Unset, str]):
@@ -36,6 +37,7 @@ class ProjectRequest:
 
     name: str
     customer: str
+    slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     type_: Union[None, Unset, str] = UNSET
     backend_id: Union[Unset, str] = UNSET
@@ -51,6 +53,8 @@ class ProjectRequest:
         name = self.name
 
         customer = self.customer
+
+        slug = self.slug
 
         description = self.description
 
@@ -111,6 +115,8 @@ class ProjectRequest:
                 "customer": customer,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if type_ is not UNSET:
@@ -138,6 +144,8 @@ class ProjectRequest:
         name = d.pop("name")
 
         customer = d.pop("customer")
+
+        slug = d.pop("slug", UNSET)
 
         description = d.pop("description", UNSET)
 
@@ -240,6 +248,7 @@ class ProjectRequest:
         project_request = cls(
             name=name,
             customer=customer,
+            slug=slug,
             description=description,
             type_=type_,
             backend_id=backend_id,

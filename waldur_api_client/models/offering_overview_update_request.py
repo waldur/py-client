@@ -20,6 +20,7 @@ class OfferingOverviewUpdateRequest:
         access_url (Union[Unset, str]): Publicly accessible offering access URL
         getting_started (Union[Unset, str]):
         integration_guide (Union[Unset, str]):
+        slug (Union[Unset, str]):
     """
 
     name: str
@@ -29,6 +30,7 @@ class OfferingOverviewUpdateRequest:
     access_url: Union[Unset, str] = UNSET
     getting_started: Union[Unset, str] = UNSET
     integration_guide: Union[Unset, str] = UNSET
+    slug: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -45,6 +47,8 @@ class OfferingOverviewUpdateRequest:
         getting_started = self.getting_started
 
         integration_guide = self.integration_guide
+
+        slug = self.slug
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -65,6 +69,8 @@ class OfferingOverviewUpdateRequest:
             field_dict["getting_started"] = getting_started
         if integration_guide is not UNSET:
             field_dict["integration_guide"] = integration_guide
+        if slug is not UNSET:
+            field_dict["slug"] = slug
 
         return field_dict
 
@@ -85,6 +91,8 @@ class OfferingOverviewUpdateRequest:
 
         integration_guide = d.pop("integration_guide", UNSET)
 
+        slug = d.pop("slug", UNSET)
+
         offering_overview_update_request = cls(
             name=name,
             description=description,
@@ -93,6 +101,7 @@ class OfferingOverviewUpdateRequest:
             access_url=access_url,
             getting_started=getting_started,
             integration_guide=integration_guide,
+            slug=slug,
         )
 
         offering_overview_update_request.additional_properties = d

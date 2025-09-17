@@ -19,6 +19,8 @@ class OpenStackTenantRequest:
         description (Union[Unset, str]):
         availability_zone (Union[Unset, str]): Optional availability group. Will be used for all instances provisioned
             in this tenant
+        user_username (Union[Unset, str]): Username of the tenant user
+        user_password (Union[Unset, str]): Password of the tenant user
         subnet_cidr (Union[Unset, str]):  Default: '192.168.42.0/24'.
         default_volume_type_name (Union[Unset, str]): Volume type name to use when creating volumes.
     """
@@ -28,6 +30,8 @@ class OpenStackTenantRequest:
     project: str
     description: Union[Unset, str] = UNSET
     availability_zone: Union[Unset, str] = UNSET
+    user_username: Union[Unset, str] = UNSET
+    user_password: Union[Unset, str] = UNSET
     subnet_cidr: Union[Unset, str] = "192.168.42.0/24"
     default_volume_type_name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -42,6 +46,10 @@ class OpenStackTenantRequest:
         description = self.description
 
         availability_zone = self.availability_zone
+
+        user_username = self.user_username
+
+        user_password = self.user_password
 
         subnet_cidr = self.subnet_cidr
 
@@ -60,6 +68,10 @@ class OpenStackTenantRequest:
             field_dict["description"] = description
         if availability_zone is not UNSET:
             field_dict["availability_zone"] = availability_zone
+        if user_username is not UNSET:
+            field_dict["user_username"] = user_username
+        if user_password is not UNSET:
+            field_dict["user_password"] = user_password
         if subnet_cidr is not UNSET:
             field_dict["subnet_cidr"] = subnet_cidr
         if default_volume_type_name is not UNSET:
@@ -80,6 +92,10 @@ class OpenStackTenantRequest:
 
         availability_zone = d.pop("availability_zone", UNSET)
 
+        user_username = d.pop("user_username", UNSET)
+
+        user_password = d.pop("user_password", UNSET)
+
         subnet_cidr = d.pop("subnet_cidr", UNSET)
 
         default_volume_type_name = d.pop("default_volume_type_name", UNSET)
@@ -90,6 +106,8 @@ class OpenStackTenantRequest:
             project=project,
             description=description,
             availability_zone=availability_zone,
+            user_username=user_username,
+            user_password=user_password,
             subnet_cidr=subnet_cidr,
             default_volume_type_name=default_volume_type_name,
         )

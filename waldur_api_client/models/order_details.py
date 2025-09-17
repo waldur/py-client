@@ -59,8 +59,11 @@ class OrderDetails:
         output (Union[Unset, str]):
         marketplace_resource_uuid (Union[Unset, UUID]):
         error_message (Union[Unset, str]):
+        error_traceback (Union[Unset, str]):
         callback_url (Union[None, Unset, str]):
         completed_at (Union[None, Unset, datetime.datetime]):
+        request_comment (Union[None, Unset, str]):
+        attachment (Union[None, Unset, str]):
         consumer_reviewed_by (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers
             and @/./+/-/_ characters
         consumer_reviewed_by_full_name (Union[None, Unset, str]):
@@ -132,8 +135,11 @@ class OrderDetails:
     output: Union[Unset, str] = UNSET
     marketplace_resource_uuid: Union[Unset, UUID] = UNSET
     error_message: Union[Unset, str] = UNSET
+    error_traceback: Union[Unset, str] = UNSET
     callback_url: Union[None, Unset, str] = UNSET
     completed_at: Union[None, Unset, datetime.datetime] = UNSET
+    request_comment: Union[None, Unset, str] = UNSET
+    attachment: Union[None, Unset, str] = UNSET
     consumer_reviewed_by: Union[None, Unset, str] = UNSET
     consumer_reviewed_by_full_name: Union[None, Unset, str] = UNSET
     consumer_reviewed_by_username: Union[None, Unset, str] = UNSET
@@ -291,6 +297,8 @@ class OrderDetails:
 
         error_message = self.error_message
 
+        error_traceback = self.error_traceback
+
         callback_url: Union[None, Unset, str]
         if isinstance(self.callback_url, Unset):
             callback_url = UNSET
@@ -304,6 +312,18 @@ class OrderDetails:
             completed_at = self.completed_at.isoformat()
         else:
             completed_at = self.completed_at
+
+        request_comment: Union[None, Unset, str]
+        if isinstance(self.request_comment, Unset):
+            request_comment = UNSET
+        else:
+            request_comment = self.request_comment
+
+        attachment: Union[None, Unset, str]
+        if isinstance(self.attachment, Unset):
+            attachment = UNSET
+        else:
+            attachment = self.attachment
 
         consumer_reviewed_by: Union[None, Unset, str]
         if isinstance(self.consumer_reviewed_by, Unset):
@@ -518,10 +538,16 @@ class OrderDetails:
             field_dict["marketplace_resource_uuid"] = marketplace_resource_uuid
         if error_message is not UNSET:
             field_dict["error_message"] = error_message
+        if error_traceback is not UNSET:
+            field_dict["error_traceback"] = error_traceback
         if callback_url is not UNSET:
             field_dict["callback_url"] = callback_url
         if completed_at is not UNSET:
             field_dict["completed_at"] = completed_at
+        if request_comment is not UNSET:
+            field_dict["request_comment"] = request_comment
+        if attachment is not UNSET:
+            field_dict["attachment"] = attachment
         if consumer_reviewed_by is not UNSET:
             field_dict["consumer_reviewed_by"] = consumer_reviewed_by
         if consumer_reviewed_by_full_name is not UNSET:
@@ -782,6 +808,8 @@ class OrderDetails:
 
         error_message = d.pop("error_message", UNSET)
 
+        error_traceback = d.pop("error_traceback", UNSET)
+
         def _parse_callback_url(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -807,6 +835,24 @@ class OrderDetails:
             return cast(Union[None, Unset, datetime.datetime], data)
 
         completed_at = _parse_completed_at(d.pop("completed_at", UNSET))
+
+        def _parse_request_comment(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        request_comment = _parse_request_comment(d.pop("request_comment", UNSET))
+
+        def _parse_attachment(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        attachment = _parse_attachment(d.pop("attachment", UNSET))
 
         def _parse_consumer_reviewed_by(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -1080,8 +1126,11 @@ class OrderDetails:
             output=output,
             marketplace_resource_uuid=marketplace_resource_uuid,
             error_message=error_message,
+            error_traceback=error_traceback,
             callback_url=callback_url,
             completed_at=completed_at,
+            request_comment=request_comment,
+            attachment=attachment,
             consumer_reviewed_by=consumer_reviewed_by,
             consumer_reviewed_by_full_name=consumer_reviewed_by_full_name,
             consumer_reviewed_by_username=consumer_reviewed_by_username,

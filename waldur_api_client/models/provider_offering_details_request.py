@@ -25,6 +25,7 @@ class ProviderOfferingDetailsRequest:
         name (str):
         category (str):
         type_ (str):
+        slug (Union[Unset, str]):
         description (Union[Unset, str]):
         full_description (Union[Unset, str]):
         privacy_policy_link (Union[Unset, str]):
@@ -51,6 +52,7 @@ class ProviderOfferingDetailsRequest:
     name: str
     category: str
     type_: str
+    slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     full_description: Union[Unset, str] = UNSET
     privacy_policy_link: Union[Unset, str] = UNSET
@@ -80,6 +82,8 @@ class ProviderOfferingDetailsRequest:
         category = self.category
 
         type_ = self.type_
+
+        slug = self.slug
 
         description = self.description
 
@@ -174,6 +178,8 @@ class ProviderOfferingDetailsRequest:
                 "type": type_,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
         if full_description is not UNSET:
@@ -230,6 +236,8 @@ class ProviderOfferingDetailsRequest:
         category = d.pop("category")
 
         type_ = d.pop("type")
+
+        slug = d.pop("slug", UNSET)
 
         description = d.pop("description", UNSET)
 
@@ -355,6 +363,7 @@ class ProviderOfferingDetailsRequest:
             name=name,
             category=category,
             type_=type_,
+            slug=slug,
             description=description,
             full_description=full_description,
             privacy_policy_link=privacy_policy_link,

@@ -17,6 +17,7 @@ class PatchedUserRequest:
     Attributes:
         username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
             characters
+        slug (Union[Unset, str]):
         native_name (Union[Unset, str]):
         job_title (Union[Unset, str]):
         phone_number (Union[Unset, str]):
@@ -37,6 +38,7 @@ class PatchedUserRequest:
     """
 
     username: Union[Unset, str] = UNSET
+    slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
     job_title: Union[Unset, str] = UNSET
     phone_number: Union[Unset, str] = UNSET
@@ -56,6 +58,8 @@ class PatchedUserRequest:
 
     def to_dict(self) -> dict[str, Any]:
         username = self.username
+
+        slug = self.slug
 
         native_name = self.native_name
 
@@ -103,6 +107,8 @@ class PatchedUserRequest:
         field_dict.update({})
         if username is not UNSET:
             field_dict["username"] = username
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if native_name is not UNSET:
             field_dict["native_name"] = native_name
         if job_title is not UNSET:
@@ -140,6 +146,8 @@ class PatchedUserRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         username = d.pop("username", UNSET)
+
+        slug = d.pop("slug", UNSET)
 
         native_name = d.pop("native_name", UNSET)
 
@@ -195,6 +203,7 @@ class PatchedUserRequest:
 
         patched_user_request = cls(
             username=username,
+            slug=slug,
             native_name=native_name,
             job_title=job_title,
             phone_number=phone_number,

@@ -20,6 +20,7 @@ class PatchedCustomerRequest:
         backend_id (Union[Unset, str]): Organization identifier in another application.
         image (Union[File, None, Unset]):
         name (Union[Unset, str]):
+        slug (Union[Unset, str]):
         native_name (Union[Unset, str]):
         abbreviation (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -41,6 +42,7 @@ class PatchedCustomerRequest:
     backend_id: Union[Unset, str] = UNSET
     image: Union[File, None, Unset] = UNSET
     name: Union[Unset, str] = UNSET
+    slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
     abbreviation: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -72,6 +74,8 @@ class PatchedCustomerRequest:
             image = self.image
 
         name = self.name
+
+        slug = self.slug
 
         native_name = self.native_name
 
@@ -128,6 +132,8 @@ class PatchedCustomerRequest:
             field_dict["image"] = image
         if name is not UNSET:
             field_dict["name"] = name
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if native_name is not UNSET:
             field_dict["native_name"] = native_name
         if abbreviation is not UNSET:
@@ -186,6 +192,8 @@ class PatchedCustomerRequest:
         image = _parse_image(d.pop("image", UNSET))
 
         name = d.pop("name", UNSET)
+
+        slug = d.pop("slug", UNSET)
 
         native_name = d.pop("native_name", UNSET)
 
@@ -254,6 +262,7 @@ class PatchedCustomerRequest:
             backend_id=backend_id,
             image=image,
             name=name,
+            slug=slug,
             native_name=native_name,
             abbreviation=abbreviation,
             description=description,

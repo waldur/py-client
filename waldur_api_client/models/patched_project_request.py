@@ -21,6 +21,7 @@ class PatchedProjectRequest:
     """
     Attributes:
         name (Union[Unset, str]):
+        slug (Union[Unset, str]):
         customer (Union[Unset, str]):
         description (Union[Unset, str]):
         type_ (Union[None, Unset, str]):
@@ -35,6 +36,7 @@ class PatchedProjectRequest:
     """
 
     name: Union[Unset, str] = UNSET
+    slug: Union[Unset, str] = UNSET
     customer: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     type_: Union[None, Unset, str] = UNSET
@@ -49,6 +51,8 @@ class PatchedProjectRequest:
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
+
+        slug = self.slug
 
         customer = self.customer
 
@@ -108,6 +112,8 @@ class PatchedProjectRequest:
         field_dict.update({})
         if name is not UNSET:
             field_dict["name"] = name
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if customer is not UNSET:
             field_dict["customer"] = customer
         if description is not UNSET:
@@ -135,6 +141,8 @@ class PatchedProjectRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         name = d.pop("name", UNSET)
+
+        slug = d.pop("slug", UNSET)
 
         customer = d.pop("customer", UNSET)
 
@@ -238,6 +246,7 @@ class PatchedProjectRequest:
 
         patched_project_request = cls(
             name=name,
+            slug=slug,
             customer=customer,
             description=description,
             type_=type_,

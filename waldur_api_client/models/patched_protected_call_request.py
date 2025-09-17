@@ -14,6 +14,7 @@ T = TypeVar("T", bound="PatchedProtectedCallRequest")
 class PatchedProtectedCallRequest:
     """
     Attributes:
+        slug (Union[Unset, str]):
         name (Union[Unset, str]):
         description (Union[Unset, str]):
         fixed_duration_in_days (Union[None, Unset, int]):
@@ -29,6 +30,7 @@ class PatchedProtectedCallRequest:
             submission
     """
 
+    slug: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     fixed_duration_in_days: Union[None, Unset, int] = UNSET
@@ -42,6 +44,8 @@ class PatchedProtectedCallRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        slug = self.slug
+
         name = self.name
 
         description = self.description
@@ -83,6 +87,8 @@ class PatchedProtectedCallRequest:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if name is not UNSET:
             field_dict["name"] = name
         if description is not UNSET:
@@ -109,6 +115,8 @@ class PatchedProtectedCallRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        slug = d.pop("slug", UNSET)
+
         name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
@@ -166,6 +174,7 @@ class PatchedProtectedCallRequest:
         compliance_checklist = _parse_compliance_checklist(d.pop("compliance_checklist", UNSET))
 
         patched_protected_call_request = cls(
+            slug=slug,
             name=name,
             description=description,
             fixed_duration_in_days=fixed_duration_in_days,
