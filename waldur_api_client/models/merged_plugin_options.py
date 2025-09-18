@@ -57,6 +57,7 @@ class MergedPluginOptions:
             UsernameGenerationPolicyEnum.SERVICE_PROVIDER.
         enable_issues_for_membership_changes (Union[Unset, bool]): Enable issues for membership changes
         deployment_mode (Union[Unset, DeploymentModeEnum]):
+        flavors_regex (Union[Unset, str]): Regular expression to limit flavors list
         openstack_offering_uuid_list (Union[Unset, list[str]]): List of UUID of OpenStack offerings where tenant can be
             created
         managed_rancher_server_flavor_name (Union[Unset, str]):
@@ -109,6 +110,7 @@ class MergedPluginOptions:
     )
     enable_issues_for_membership_changes: Union[Unset, bool] = UNSET
     deployment_mode: Union[Unset, DeploymentModeEnum] = UNSET
+    flavors_regex: Union[Unset, str] = UNSET
     openstack_offering_uuid_list: Union[Unset, list[str]] = UNSET
     managed_rancher_server_flavor_name: Union[Unset, str] = UNSET
     managed_rancher_server_system_volume_size_gb: Union[Unset, int] = UNSET
@@ -194,6 +196,8 @@ class MergedPluginOptions:
         deployment_mode: Union[Unset, str] = UNSET
         if not isinstance(self.deployment_mode, Unset):
             deployment_mode = self.deployment_mode.value
+
+        flavors_regex = self.flavors_regex
 
         openstack_offering_uuid_list: Union[Unset, list[str]] = UNSET
         if not isinstance(self.openstack_offering_uuid_list, Unset):
@@ -300,6 +304,8 @@ class MergedPluginOptions:
             field_dict["enable_issues_for_membership_changes"] = enable_issues_for_membership_changes
         if deployment_mode is not UNSET:
             field_dict["deployment_mode"] = deployment_mode
+        if flavors_regex is not UNSET:
+            field_dict["flavors_regex"] = flavors_regex
         if openstack_offering_uuid_list is not UNSET:
             field_dict["openstack_offering_uuid_list"] = openstack_offering_uuid_list
         if managed_rancher_server_flavor_name is not UNSET:
@@ -430,6 +436,8 @@ class MergedPluginOptions:
         else:
             deployment_mode = DeploymentModeEnum(_deployment_mode)
 
+        flavors_regex = d.pop("flavors_regex", UNSET)
+
         openstack_offering_uuid_list = cast(list[str], d.pop("openstack_offering_uuid_list", UNSET))
 
         managed_rancher_server_flavor_name = d.pop("managed_rancher_server_flavor_name", UNSET)
@@ -519,6 +527,7 @@ class MergedPluginOptions:
             username_generation_policy=username_generation_policy,
             enable_issues_for_membership_changes=enable_issues_for_membership_changes,
             deployment_mode=deployment_mode,
+            flavors_regex=flavors_regex,
             openstack_offering_uuid_list=openstack_offering_uuid_list,
             managed_rancher_server_flavor_name=managed_rancher_server_flavor_name,
             managed_rancher_server_system_volume_size_gb=managed_rancher_server_system_volume_size_gb,
