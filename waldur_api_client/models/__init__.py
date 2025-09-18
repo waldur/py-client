@@ -1001,7 +1001,6 @@ from .patched_open_stack_snapshot_request import PatchedOpenStackSnapshotRequest
 from .patched_open_stack_sub_net_request import PatchedOpenStackSubNetRequest
 from .patched_open_stack_tenant_request import PatchedOpenStackTenantRequest
 from .patched_open_stack_volume_request import PatchedOpenStackVolumeRequest
-from .patched_order_attachment_request import PatchedOrderAttachmentRequest
 from .patched_organization_group_request import PatchedOrganizationGroupRequest
 from .patched_payment_profile_request import PatchedPaymentProfileRequest
 from .patched_payment_request import PatchedPaymentRequest
@@ -2502,7 +2501,6 @@ __all__ = (
     "PatchedOpenStackSubNetRequest",
     "PatchedOpenStackTenantRequest",
     "PatchedOpenStackVolumeRequest",
-    "PatchedOrderAttachmentRequest",
     "PatchedOrganizationGroupRequest",
     "PatchedPaymentProfileRequest",
     "PatchedPaymentRequest",

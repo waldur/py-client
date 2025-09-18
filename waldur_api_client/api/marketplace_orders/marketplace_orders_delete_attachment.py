@@ -13,8 +13,8 @@ def _get_kwargs(
     uuid: UUID,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
-        "method": "delete",
-        "url": f"/api/marketplace-orders/{uuid}/attachment/",
+        "method": "post",
+        "url": f"/api/marketplace-orders/{uuid}/delete_attachment/",
     }
 
     return _kwargs
