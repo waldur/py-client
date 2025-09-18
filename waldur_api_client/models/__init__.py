@@ -285,6 +285,7 @@ from .data_volume_request import DataVolumeRequest
 from .deciding_entity_enum import DecidingEntityEnum
 from .delete_attachments_request import DeleteAttachmentsRequest
 from .dependency_logic_operator_enum import DependencyLogicOperatorEnum
+from .deployment_mode_enum import DeploymentModeEnum
 from .detail_state import DetailState
 from .digital_ocean_droplet import DigitalOceanDroplet
 from .digital_ocean_droplet_marketplace_offering_plugin_options_type_0 import (
@@ -496,7 +497,6 @@ from .marketplace_integration_statuses_count_o_item import MarketplaceIntegratio
 from .marketplace_integration_statuses_count_status_item import MarketplaceIntegrationStatusesCountStatusItem
 from .marketplace_integration_statuses_list_o_item import MarketplaceIntegrationStatusesListOItem
 from .marketplace_integration_statuses_list_status_item import MarketplaceIntegrationStatusesListStatusItem
-from .marketplace_managed_rancher_create_order_attributes import MarketplaceManagedRancherCreateOrderAttributes
 from .marketplace_offering_files_count_o_item import MarketplaceOfferingFilesCountOItem
 from .marketplace_offering_files_list_field_item import MarketplaceOfferingFilesListFieldItem
 from .marketplace_offering_files_list_o_item import MarketplaceOfferingFilesListOItem
@@ -580,7 +580,6 @@ from .marketplace_public_offerings_list_field_item import MarketplacePublicOffer
 from .marketplace_public_offerings_list_o_item import MarketplacePublicOfferingsListOItem
 from .marketplace_public_offerings_list_state_item import MarketplacePublicOfferingsListStateItem
 from .marketplace_public_offerings_retrieve_field_item import MarketplacePublicOfferingsRetrieveFieldItem
-from .marketplace_rancher_create_order_attributes import MarketplaceRancherCreateOrderAttributes
 from .marketplace_resources_count_o_item import MarketplaceResourcesCountOItem
 from .marketplace_resources_count_state_item import MarketplaceResourcesCountStateItem
 from .marketplace_resources_details_retrieve_field_item import MarketplaceResourcesDetailsRetrieveFieldItem
@@ -1848,6 +1847,7 @@ __all__ = (
     "DecidingEntityEnum",
     "DeleteAttachmentsRequest",
     "DependencyLogicOperatorEnum",
+    "DeploymentModeEnum",
     "DetailState",
     "DigitalOceanDroplet",
     "DigitalOceanDropletMarketplaceOfferingPluginOptionsType0",
@@ -2051,7 +2051,6 @@ __all__ = (
     "MarketplaceIntegrationStatusesCountStatusItem",
     "MarketplaceIntegrationStatusesListOItem",
     "MarketplaceIntegrationStatusesListStatusItem",
-    "MarketplaceManagedRancherCreateOrderAttributes",
     "MarketplaceOfferingFilesCountOItem",
     "MarketplaceOfferingFilesListFieldItem",
     "MarketplaceOfferingFilesListOItem",
@@ -2121,7 +2120,6 @@ __all__ = (
     "MarketplacePublicOfferingsListOItem",
     "MarketplacePublicOfferingsListStateItem",
     "MarketplacePublicOfferingsRetrieveFieldItem",
-    "MarketplaceRancherCreateOrderAttributes",
     "MarketplaceResourcesCountOItem",
     "MarketplaceResourcesCountStateItem",
     "MarketplaceResourcesDetailsRetrieveFieldItem",
