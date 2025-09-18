@@ -50,7 +50,6 @@ class OrderDetails:
         uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
         resource_uuid (Union[None, UUID, Unset]):
         resource_type (Union[None, Unset, str]):
         resource_name (Union[Unset, str]):
@@ -64,6 +63,7 @@ class OrderDetails:
         completed_at (Union[None, Unset, datetime.datetime]):
         request_comment (Union[None, Unset, str]):
         attachment (Union[None, Unset, str]):
+        type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
         consumer_reviewed_by (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers
             and @/./+/-/_ characters
         consumer_reviewed_by_full_name (Union[None, Unset, str]):
@@ -126,7 +126,6 @@ class OrderDetails:
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     modified: Union[Unset, datetime.datetime] = UNSET
-    type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
     resource_uuid: Union[None, UUID, Unset] = UNSET
     resource_type: Union[None, Unset, str] = UNSET
     resource_name: Union[Unset, str] = UNSET
@@ -140,6 +139,7 @@ class OrderDetails:
     completed_at: Union[None, Unset, datetime.datetime] = UNSET
     request_comment: Union[None, Unset, str] = UNSET
     attachment: Union[None, Unset, str] = UNSET
+    type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
     consumer_reviewed_by: Union[None, Unset, str] = UNSET
     consumer_reviewed_by_full_name: Union[None, Unset, str] = UNSET
     consumer_reviewed_by_username: Union[None, Unset, str] = UNSET
@@ -259,10 +259,6 @@ class OrderDetails:
         if not isinstance(self.modified, Unset):
             modified = self.modified.isoformat()
 
-        type_: Union[Unset, str] = UNSET
-        if not isinstance(self.type_, Unset):
-            type_ = self.type_.value
-
         resource_uuid: Union[None, Unset, str]
         if isinstance(self.resource_uuid, Unset):
             resource_uuid = UNSET
@@ -324,6 +320,10 @@ class OrderDetails:
             attachment = UNSET
         else:
             attachment = self.attachment
+
+        type_: Union[Unset, str] = UNSET
+        if not isinstance(self.type_, Unset):
+            type_ = self.type_.value
 
         consumer_reviewed_by: Union[None, Unset, str]
         if isinstance(self.consumer_reviewed_by, Unset):
@@ -520,8 +520,6 @@ class OrderDetails:
             field_dict["created"] = created
         if modified is not UNSET:
             field_dict["modified"] = modified
-        if type_ is not UNSET:
-            field_dict["type"] = type_
         if resource_uuid is not UNSET:
             field_dict["resource_uuid"] = resource_uuid
         if resource_type is not UNSET:
@@ -548,6 +546,8 @@ class OrderDetails:
             field_dict["request_comment"] = request_comment
         if attachment is not UNSET:
             field_dict["attachment"] = attachment
+        if type_ is not UNSET:
+            field_dict["type"] = type_
         if consumer_reviewed_by is not UNSET:
             field_dict["consumer_reviewed_by"] = consumer_reviewed_by
         if consumer_reviewed_by_full_name is not UNSET:
@@ -746,13 +746,6 @@ class OrderDetails:
         else:
             modified = isoparse(_modified)
 
-        _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, RequestTypes]
-        if isinstance(_type_, Unset):
-            type_ = UNSET
-        else:
-            type_ = RequestTypes(_type_)
-
         def _parse_resource_uuid(data: object) -> Union[None, UUID, Unset]:
             if data is None:
                 return data
@@ -853,6 +846,13 @@ class OrderDetails:
             return cast(Union[None, Unset, str], data)
 
         attachment = _parse_attachment(d.pop("attachment", UNSET))
+
+        _type_ = d.pop("type", UNSET)
+        type_: Union[Unset, RequestTypes]
+        if isinstance(_type_, Unset):
+            type_ = UNSET
+        else:
+            type_ = RequestTypes(_type_)
 
         def _parse_consumer_reviewed_by(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -1117,7 +1117,6 @@ class OrderDetails:
             uuid=uuid,
             created=created,
             modified=modified,
-            type_=type_,
             resource_uuid=resource_uuid,
             resource_type=resource_type,
             resource_name=resource_name,
@@ -1131,6 +1130,7 @@ class OrderDetails:
             completed_at=completed_at,
             request_comment=request_comment,
             attachment=attachment,
+            type_=type_,
             consumer_reviewed_by=consumer_reviewed_by,
             consumer_reviewed_by_full_name=consumer_reviewed_by_full_name,
             consumer_reviewed_by_username=consumer_reviewed_by_username,

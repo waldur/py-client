@@ -1,13 +1,11 @@
 from collections.abc import Mapping
-from io import BytesIO
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from .. import types
 from ..models.request_types import RequestTypes
-from ..types import UNSET, File, Unset
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
@@ -39,11 +37,10 @@ class OrderCreateRequest:
             'VMwareVirtualMachineCreateOrderAttributes', Unset]): Attributes structure depends on the offering type
             specified in the parent object. Can also be a generic object for offerings without a specific attributes schema.
         limits (Union[Unset, OrderCreateRequestLimits]):
-        type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
         accepting_terms_of_service (Union[Unset, bool]):
         callback_url (Union[None, Unset, str]):
         request_comment (Union[None, Unset, str]):
-        attachment (Union[File, None, Unset]):
+        type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
     """
 
     offering: str
@@ -61,11 +58,10 @@ class OrderCreateRequest:
         Unset,
     ] = UNSET
     limits: Union[Unset, "OrderCreateRequestLimits"] = UNSET
-    type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
     accepting_terms_of_service: Union[Unset, bool] = UNSET
     callback_url: Union[None, Unset, str] = UNSET
     request_comment: Union[None, Unset, str] = UNSET
-    attachment: Union[File, None, Unset] = UNSET
+    type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -109,10 +105,6 @@ class OrderCreateRequest:
         if not isinstance(self.limits, Unset):
             limits = self.limits.to_dict()
 
-        type_: Union[Unset, str] = UNSET
-        if not isinstance(self.type_, Unset):
-            type_ = self.type_.value
-
         accepting_terms_of_service = self.accepting_terms_of_service
 
         callback_url: Union[None, Unset, str]
@@ -127,14 +119,9 @@ class OrderCreateRequest:
         else:
             request_comment = self.request_comment
 
-        attachment: Union[None, Unset, types.FileTypes]
-        if isinstance(self.attachment, Unset):
-            attachment = UNSET
-        elif isinstance(self.attachment, File):
-            attachment = self.attachment.to_tuple()
-
-        else:
-            attachment = self.attachment
+        type_: Union[Unset, str] = UNSET
+        if not isinstance(self.type_, Unset):
+            type_ = self.type_.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -150,16 +137,14 @@ class OrderCreateRequest:
             field_dict["attributes"] = attributes
         if limits is not UNSET:
             field_dict["limits"] = limits
-        if type_ is not UNSET:
-            field_dict["type"] = type_
         if accepting_terms_of_service is not UNSET:
             field_dict["accepting_terms_of_service"] = accepting_terms_of_service
         if callback_url is not UNSET:
             field_dict["callback_url"] = callback_url
         if request_comment is not UNSET:
             field_dict["request_comment"] = request_comment
-        if attachment is not UNSET:
-            field_dict["attachment"] = attachment
+        if type_ is not UNSET:
+            field_dict["type"] = type_
 
         return field_dict
 
@@ -270,13 +255,6 @@ class OrderCreateRequest:
         else:
             limits = OrderCreateRequestLimits.from_dict(_limits)
 
-        _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, RequestTypes]
-        if isinstance(_type_, Unset):
-            type_ = UNSET
-        else:
-            type_ = RequestTypes(_type_)
-
         accepting_terms_of_service = d.pop("accepting_terms_of_service", UNSET)
 
         def _parse_callback_url(data: object) -> Union[None, Unset, str]:
@@ -297,22 +275,12 @@ class OrderCreateRequest:
 
         request_comment = _parse_request_comment(d.pop("request_comment", UNSET))
 
-        def _parse_attachment(data: object) -> Union[File, None, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, bytes):
-                    raise TypeError()
-                attachment_type_0 = File(payload=BytesIO(data))
-
-                return attachment_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[File, None, Unset], data)
-
-        attachment = _parse_attachment(d.pop("attachment", UNSET))
+        _type_ = d.pop("type", UNSET)
+        type_: Union[Unset, RequestTypes]
+        if isinstance(_type_, Unset):
+            type_ = UNSET
+        else:
+            type_ = RequestTypes(_type_)
 
         order_create_request = cls(
             offering=offering,
@@ -320,11 +288,10 @@ class OrderCreateRequest:
             plan=plan,
             attributes=attributes,
             limits=limits,
-            type_=type_,
             accepting_terms_of_service=accepting_terms_of_service,
             callback_url=callback_url,
             request_comment=request_comment,
-            attachment=attachment,
+            type_=type_,
         )
 
         order_create_request.additional_properties = d

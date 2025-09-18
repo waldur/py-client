@@ -55,6 +55,7 @@ class OrderCreate:
         error_message (str):
         error_traceback (str):
         completed_at (Union[None, datetime.datetime]):
+        attachment (Union[None, str]):
         url (str):
         created_by (str):
         created_by_username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
@@ -74,10 +75,9 @@ class OrderCreate:
         plan (Union[Unset, str]):
         attributes (Union[Unset, Any]):
         limits (Union[Unset, OrderCreateLimits]):
-        type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
         callback_url (Union[None, Unset, str]):
         request_comment (Union[None, Unset, str]):
-        attachment (Union[None, Unset, str]):
+        type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
     """
 
     offering: str
@@ -112,6 +112,7 @@ class OrderCreate:
     error_message: str
     error_traceback: str
     completed_at: Union[None, datetime.datetime]
+    attachment: Union[None, str]
     url: str
     created_by: str
     created_by_username: str
@@ -129,10 +130,9 @@ class OrderCreate:
     plan: Union[Unset, str] = UNSET
     attributes: Union[Unset, Any] = UNSET
     limits: Union[Unset, "OrderCreateLimits"] = UNSET
-    type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
     callback_url: Union[None, Unset, str] = UNSET
     request_comment: Union[None, Unset, str] = UNSET
-    attachment: Union[None, Unset, str] = UNSET
+    type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -220,6 +220,9 @@ class OrderCreate:
         else:
             completed_at = self.completed_at
 
+        attachment: Union[None, str]
+        attachment = self.attachment
+
         url = self.url
 
         created_by = self.created_by
@@ -263,10 +266,6 @@ class OrderCreate:
         if not isinstance(self.limits, Unset):
             limits = self.limits.to_dict()
 
-        type_: Union[Unset, str] = UNSET
-        if not isinstance(self.type_, Unset):
-            type_ = self.type_.value
-
         callback_url: Union[None, Unset, str]
         if isinstance(self.callback_url, Unset):
             callback_url = UNSET
@@ -279,11 +278,9 @@ class OrderCreate:
         else:
             request_comment = self.request_comment
 
-        attachment: Union[None, Unset, str]
-        if isinstance(self.attachment, Unset):
-            attachment = UNSET
-        else:
-            attachment = self.attachment
+        type_: Union[Unset, str] = UNSET
+        if not isinstance(self.type_, Unset):
+            type_ = self.type_.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -321,6 +318,7 @@ class OrderCreate:
                 "error_message": error_message,
                 "error_traceback": error_traceback,
                 "completed_at": completed_at,
+                "attachment": attachment,
                 "url": url,
                 "created_by": created_by,
                 "created_by_username": created_by_username,
@@ -343,14 +341,12 @@ class OrderCreate:
             field_dict["attributes"] = attributes
         if limits is not UNSET:
             field_dict["limits"] = limits
-        if type_ is not UNSET:
-            field_dict["type"] = type_
         if callback_url is not UNSET:
             field_dict["callback_url"] = callback_url
         if request_comment is not UNSET:
             field_dict["request_comment"] = request_comment
-        if attachment is not UNSET:
-            field_dict["attachment"] = attachment
+        if type_ is not UNSET:
+            field_dict["type"] = type_
 
         return field_dict
 
@@ -495,6 +491,13 @@ class OrderCreate:
 
         completed_at = _parse_completed_at(d.pop("completed_at"))
 
+        def _parse_attachment(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        attachment = _parse_attachment(d.pop("attachment"))
+
         url = d.pop("url")
 
         created_by = d.pop("created_by")
@@ -562,13 +565,6 @@ class OrderCreate:
         else:
             limits = OrderCreateLimits.from_dict(_limits)
 
-        _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, RequestTypes]
-        if isinstance(_type_, Unset):
-            type_ = UNSET
-        else:
-            type_ = RequestTypes(_type_)
-
         def _parse_callback_url(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -587,14 +583,12 @@ class OrderCreate:
 
         request_comment = _parse_request_comment(d.pop("request_comment", UNSET))
 
-        def _parse_attachment(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        attachment = _parse_attachment(d.pop("attachment", UNSET))
+        _type_ = d.pop("type", UNSET)
+        type_: Union[Unset, RequestTypes]
+        if isinstance(_type_, Unset):
+            type_ = UNSET
+        else:
+            type_ = RequestTypes(_type_)
 
         order_create = cls(
             offering=offering,
@@ -629,6 +623,7 @@ class OrderCreate:
             error_message=error_message,
             error_traceback=error_traceback,
             completed_at=completed_at,
+            attachment=attachment,
             url=url,
             created_by=created_by,
             created_by_username=created_by_username,
@@ -646,10 +641,9 @@ class OrderCreate:
             plan=plan,
             attributes=attributes,
             limits=limits,
-            type_=type_,
             callback_url=callback_url,
             request_comment=request_comment,
-            attachment=attachment,
+            type_=type_,
         )
 
         order_create.additional_properties = d
