@@ -1,3 +1,4 @@
+import datetime
 from http import HTTPStatus
 from typing import Any, Union
 from uuid import UUID
@@ -6,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_course_accounts_count_o_item import MarketplaceCourseAccountsCountOItem
 from ...models.marketplace_course_accounts_count_state_item import MarketplaceCourseAccountsCountStateItem
 from ...types import UNSET, Response, Unset
 
@@ -13,8 +15,13 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     email: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceCourseAccountsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_end_date_after: Union[Unset, datetime.date] = UNSET,
+    project_end_date_before: Union[Unset, datetime.date] = UNSET,
+    project_start_date_after: Union[Unset, datetime.date] = UNSET,
+    project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceCourseAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
@@ -23,9 +30,38 @@ def _get_kwargs(
 
     params["email"] = email
 
+    json_o: Union[Unset, list[str]] = UNSET
+    if not isinstance(o, Unset):
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
+
+    params["o"] = json_o
+
     params["page"] = page
 
     params["page_size"] = page_size
+
+    json_project_end_date_after: Union[Unset, str] = UNSET
+    if not isinstance(project_end_date_after, Unset):
+        json_project_end_date_after = project_end_date_after.isoformat()
+    params["project_end_date_after"] = json_project_end_date_after
+
+    json_project_end_date_before: Union[Unset, str] = UNSET
+    if not isinstance(project_end_date_before, Unset):
+        json_project_end_date_before = project_end_date_before.isoformat()
+    params["project_end_date_before"] = json_project_end_date_before
+
+    json_project_start_date_after: Union[Unset, str] = UNSET
+    if not isinstance(project_start_date_after, Unset):
+        json_project_start_date_after = project_start_date_after.isoformat()
+    params["project_start_date_after"] = json_project_start_date_after
+
+    json_project_start_date_before: Union[Unset, str] = UNSET
+    if not isinstance(project_start_date_before, Unset):
+        json_project_start_date_before = project_start_date_before.isoformat()
+    params["project_start_date_before"] = json_project_start_date_before
 
     json_project_uuid: Union[Unset, str] = UNSET
     if not isinstance(project_uuid, Unset):
@@ -82,8 +118,13 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     email: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceCourseAccountsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_end_date_after: Union[Unset, datetime.date] = UNSET,
+    project_end_date_before: Union[Unset, datetime.date] = UNSET,
+    project_start_date_after: Union[Unset, datetime.date] = UNSET,
+    project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceCourseAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
@@ -92,8 +133,13 @@ def sync_detailed(
 
     Args:
         email (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceCourseAccountsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_end_date_after (Union[Unset, datetime.date]):
+        project_end_date_before (Union[Unset, datetime.date]):
+        project_start_date_after (Union[Unset, datetime.date]):
+        project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceCourseAccountsCountStateItem]]):
         username (Union[Unset, str]):
@@ -108,8 +154,13 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         email=email,
+        o=o,
         page=page,
         page_size=page_size,
+        project_end_date_after=project_end_date_after,
+        project_end_date_before=project_end_date_before,
+        project_start_date_after=project_start_date_after,
+        project_start_date_before=project_start_date_before,
         project_uuid=project_uuid,
         state=state,
         username=username,
@@ -126,8 +177,13 @@ def sync(
     *,
     client: AuthenticatedClient,
     email: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceCourseAccountsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_end_date_after: Union[Unset, datetime.date] = UNSET,
+    project_end_date_before: Union[Unset, datetime.date] = UNSET,
+    project_start_date_after: Union[Unset, datetime.date] = UNSET,
+    project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceCourseAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
@@ -136,8 +192,13 @@ def sync(
 
     Args:
         email (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceCourseAccountsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_end_date_after (Union[Unset, datetime.date]):
+        project_end_date_before (Union[Unset, datetime.date]):
+        project_start_date_after (Union[Unset, datetime.date]):
+        project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceCourseAccountsCountStateItem]]):
         username (Union[Unset, str]):
@@ -153,8 +214,13 @@ def sync(
     return sync_detailed(
         client=client,
         email=email,
+        o=o,
         page=page,
         page_size=page_size,
+        project_end_date_after=project_end_date_after,
+        project_end_date_before=project_end_date_before,
+        project_start_date_after=project_start_date_after,
+        project_start_date_before=project_start_date_before,
         project_uuid=project_uuid,
         state=state,
         username=username,
@@ -165,8 +231,13 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     email: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceCourseAccountsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_end_date_after: Union[Unset, datetime.date] = UNSET,
+    project_end_date_before: Union[Unset, datetime.date] = UNSET,
+    project_start_date_after: Union[Unset, datetime.date] = UNSET,
+    project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceCourseAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
@@ -175,8 +246,13 @@ async def asyncio_detailed(
 
     Args:
         email (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceCourseAccountsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_end_date_after (Union[Unset, datetime.date]):
+        project_end_date_before (Union[Unset, datetime.date]):
+        project_start_date_after (Union[Unset, datetime.date]):
+        project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceCourseAccountsCountStateItem]]):
         username (Union[Unset, str]):
@@ -191,8 +267,13 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         email=email,
+        o=o,
         page=page,
         page_size=page_size,
+        project_end_date_after=project_end_date_after,
+        project_end_date_before=project_end_date_before,
+        project_start_date_after=project_start_date_after,
+        project_start_date_before=project_start_date_before,
         project_uuid=project_uuid,
         state=state,
         username=username,
@@ -207,8 +288,13 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     email: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceCourseAccountsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_end_date_after: Union[Unset, datetime.date] = UNSET,
+    project_end_date_before: Union[Unset, datetime.date] = UNSET,
+    project_start_date_after: Union[Unset, datetime.date] = UNSET,
+    project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceCourseAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
@@ -217,8 +303,13 @@ async def asyncio(
 
     Args:
         email (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceCourseAccountsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_end_date_after (Union[Unset, datetime.date]):
+        project_end_date_before (Union[Unset, datetime.date]):
+        project_start_date_after (Union[Unset, datetime.date]):
+        project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceCourseAccountsCountStateItem]]):
         username (Union[Unset, str]):
@@ -235,8 +326,13 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             email=email,
+            o=o,
             page=page,
             page_size=page_size,
+            project_end_date_after=project_end_date_after,
+            project_end_date_before=project_end_date_before,
+            project_start_date_after=project_start_date_after,
+            project_start_date_before=project_start_date_before,
             project_uuid=project_uuid,
             state=state,
             username=username,

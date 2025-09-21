@@ -487,7 +487,9 @@ from .marketplace_component_user_usages_count_o_item import MarketplaceComponent
 from .marketplace_component_user_usages_list_field_item import MarketplaceComponentUserUsagesListFieldItem
 from .marketplace_component_user_usages_list_o_item import MarketplaceComponentUserUsagesListOItem
 from .marketplace_component_user_usages_retrieve_field_item import MarketplaceComponentUserUsagesRetrieveFieldItem
+from .marketplace_course_accounts_count_o_item import MarketplaceCourseAccountsCountOItem
 from .marketplace_course_accounts_count_state_item import MarketplaceCourseAccountsCountStateItem
+from .marketplace_course_accounts_list_o_item import MarketplaceCourseAccountsListOItem
 from .marketplace_course_accounts_list_state_item import MarketplaceCourseAccountsListStateItem
 from .marketplace_customer_service_accounts_count_state_item import MarketplaceCustomerServiceAccountsCountStateItem
 from .marketplace_customer_service_accounts_list_state_item import MarketplaceCustomerServiceAccountsListStateItem
@@ -596,6 +598,9 @@ from .marketplace_screenshots_count_o_item import MarketplaceScreenshotsCountOIt
 from .marketplace_screenshots_list_o_item import MarketplaceScreenshotsListOItem
 from .marketplace_service_provider_user import MarketplaceServiceProviderUser
 from .marketplace_service_providers_count_o_item import MarketplaceServiceProvidersCountOItem
+from .marketplace_service_providers_course_accounts_list_o_item import (
+    MarketplaceServiceProvidersCourseAccountsListOItem,
+)
 from .marketplace_service_providers_course_accounts_list_state_item import (
     MarketplaceServiceProvidersCourseAccountsListStateItem,
 )
@@ -2043,7 +2048,9 @@ __all__ = (
     "MarketplaceComponentUserUsagesListFieldItem",
     "MarketplaceComponentUserUsagesListOItem",
     "MarketplaceComponentUserUsagesRetrieveFieldItem",
+    "MarketplaceCourseAccountsCountOItem",
     "MarketplaceCourseAccountsCountStateItem",
+    "MarketplaceCourseAccountsListOItem",
     "MarketplaceCourseAccountsListStateItem",
     "MarketplaceCustomerServiceAccountsCountStateItem",
     "MarketplaceCustomerServiceAccountsListStateItem",
@@ -2137,6 +2144,7 @@ __all__ = (
     "MarketplaceScreenshotsCountOItem",
     "MarketplaceScreenshotsListOItem",
     "MarketplaceServiceProvidersCountOItem",
+    "MarketplaceServiceProvidersCourseAccountsListOItem",
     "MarketplaceServiceProvidersCourseAccountsListStateItem",
     "MarketplaceServiceProvidersCustomerProjectsListFieldItem",
     "MarketplaceServiceProvidersCustomerProjectsListOItem",

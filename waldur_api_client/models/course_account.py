@@ -24,6 +24,9 @@ class CourseAccount:
         project (UUID):
         project_uuid (UUID):
         project_name (str):
+        project_slug (str):
+        project_start_date (datetime.date):
+        project_end_date (datetime.date):
         user_uuid (UUID):
         username (str):
         customer_uuid (UUID):
@@ -42,6 +45,9 @@ class CourseAccount:
     project: UUID
     project_uuid: UUID
     project_name: str
+    project_slug: str
+    project_start_date: datetime.date
+    project_end_date: datetime.date
     user_uuid: UUID
     username: str
     customer_uuid: UUID
@@ -67,6 +73,12 @@ class CourseAccount:
         project_uuid = str(self.project_uuid)
 
         project_name = self.project_name
+
+        project_slug = self.project_slug
+
+        project_start_date = self.project_start_date.isoformat()
+
+        project_end_date = self.project_end_date.isoformat()
 
         user_uuid = str(self.user_uuid)
 
@@ -97,6 +109,9 @@ class CourseAccount:
                 "project": project,
                 "project_uuid": project_uuid,
                 "project_name": project_name,
+                "project_slug": project_slug,
+                "project_start_date": project_start_date,
+                "project_end_date": project_end_date,
                 "user_uuid": user_uuid,
                 "username": username,
                 "customer_uuid": customer_uuid,
@@ -130,6 +145,12 @@ class CourseAccount:
 
         project_name = d.pop("project_name")
 
+        project_slug = d.pop("project_slug")
+
+        project_start_date = isoparse(d.pop("project_start_date")).date()
+
+        project_end_date = isoparse(d.pop("project_end_date")).date()
+
         user_uuid = UUID(d.pop("user_uuid"))
 
         username = d.pop("username")
@@ -156,6 +177,9 @@ class CourseAccount:
             project=project,
             project_uuid=project_uuid,
             project_name=project_name,
+            project_slug=project_slug,
+            project_start_date=project_start_date,
+            project_end_date=project_end_date,
             user_uuid=user_uuid,
             username=username,
             customer_uuid=customer_uuid,
