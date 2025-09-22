@@ -511,6 +511,12 @@ from .marketplace_offering_referrals_count_o_item import MarketplaceOfferingRefe
 from .marketplace_offering_referrals_list_o_item import MarketplaceOfferingReferralsListOItem
 from .marketplace_offering_terms_of_service_count_o_item import MarketplaceOfferingTermsOfServiceCountOItem
 from .marketplace_offering_terms_of_service_list_o_item import MarketplaceOfferingTermsOfServiceListOItem
+from .marketplace_offering_user_checklist_completions_count_o_item import (
+    MarketplaceOfferingUserChecklistCompletionsCountOItem,
+)
+from .marketplace_offering_user_checklist_completions_list_o_item import (
+    MarketplaceOfferingUserChecklistCompletionsListOItem,
+)
 from .marketplace_offering_users_count_o_item import MarketplaceOfferingUsersCountOItem
 from .marketplace_offering_users_count_state_item import MarketplaceOfferingUsersCountStateItem
 from .marketplace_offering_users_list_field_item import MarketplaceOfferingUsersListFieldItem
@@ -1488,6 +1494,7 @@ from .user_agreement_request import UserAgreementRequest
 from .user_agreements_count_agreement_type import UserAgreementsCountAgreementType
 from .user_agreements_list_agreement_type import UserAgreementsListAgreementType
 from .user_auth_token import UserAuthToken
+from .user_checklist_completion import UserChecklistCompletion
 from .user_consent_info import UserConsentInfo
 from .user_email_change_request import UserEmailChangeRequest
 from .user_group_invitations_count_o_item import UserGroupInvitationsCountOItem
@@ -2072,6 +2079,8 @@ __all__ = (
     "MarketplaceOfferingReferralsListOItem",
     "MarketplaceOfferingTermsOfServiceCountOItem",
     "MarketplaceOfferingTermsOfServiceListOItem",
+    "MarketplaceOfferingUserChecklistCompletionsCountOItem",
+    "MarketplaceOfferingUserChecklistCompletionsListOItem",
     "MarketplaceOfferingUsersCountOItem",
     "MarketplaceOfferingUsersCountStateItem",
     "MarketplaceOfferingUsersListFieldItem",
@@ -2967,6 +2976,7 @@ __all__ = (
     "UserAgreementsCountAgreementType",
     "UserAgreementsListAgreementType",
     "UserAuthToken",
+    "UserChecklistCompletion",
     "UserConsentInfo",
     "UserEmailChangeRequest",
     "UserGroupInvitationsCountOItem",
