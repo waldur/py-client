@@ -26,6 +26,7 @@ class VisibleInvitationDetails:
         role_description (str):
         created_by_full_name (str):
         created_by_username (str):
+        created_by_image (str):
         email (str): Invitation link will be sent to this email. Note that user can accept invitation with different
             email.
         error_message (str):
@@ -43,6 +44,7 @@ class VisibleInvitationDetails:
     role_description: str
     created_by_full_name: str
     created_by_username: str
+    created_by_image: str
     email: str
     error_message: str
     execution_state: ExecutionStateEnum
@@ -71,6 +73,8 @@ class VisibleInvitationDetails:
 
         created_by_username = self.created_by_username
 
+        created_by_image = self.created_by_image
+
         email = self.email
 
         error_message = self.error_message
@@ -93,6 +97,7 @@ class VisibleInvitationDetails:
                 "role_description": role_description,
                 "created_by_full_name": created_by_full_name,
                 "created_by_username": created_by_username,
+                "created_by_image": created_by_image,
                 "email": email,
                 "error_message": error_message,
                 "execution_state": execution_state,
@@ -130,6 +135,8 @@ class VisibleInvitationDetails:
 
         created_by_username = d.pop("created_by_username")
 
+        created_by_image = d.pop("created_by_image")
+
         email = d.pop("email")
 
         error_message = d.pop("error_message")
@@ -149,6 +156,7 @@ class VisibleInvitationDetails:
             role_description=role_description,
             created_by_full_name=created_by_full_name,
             created_by_username=created_by_username,
+            created_by_image=created_by_image,
             email=email,
             error_message=error_message,
             execution_state=execution_state,

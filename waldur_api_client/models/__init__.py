@@ -553,6 +553,9 @@ from .marketplace_provider_offerings_groups_count_o_item import MarketplaceProvi
 from .marketplace_provider_offerings_groups_count_state_item import MarketplaceProviderOfferingsGroupsCountStateItem
 from .marketplace_provider_offerings_groups_list_o_item import MarketplaceProviderOfferingsGroupsListOItem
 from .marketplace_provider_offerings_groups_list_state_item import MarketplaceProviderOfferingsGroupsListStateItem
+from .marketplace_provider_offerings_list_course_accounts_retrieve_field_item import (
+    MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem,
+)
 from .marketplace_provider_offerings_list_customer_service_accounts_retrieve_field_item import (
     MarketplaceProviderOfferingsListCustomerServiceAccountsRetrieveFieldItem,
 )
@@ -1198,7 +1201,6 @@ from .provider_offering_costs import ProviderOfferingCosts
 from .provider_offering_customer import ProviderOfferingCustomer
 from .provider_offering_details import ProviderOfferingDetails
 from .provider_offering_details_attributes import ProviderOfferingDetailsAttributes
-from .provider_offering_details_request import ProviderOfferingDetailsRequest
 from .provider_offering_details_service_attributes import ProviderOfferingDetailsServiceAttributes
 from .provider_plan_details import ProviderPlanDetails
 from .provider_plan_details_future_prices import ProviderPlanDetailsFuturePrices
@@ -2113,6 +2115,7 @@ __all__ = (
     "MarketplaceProviderOfferingsGroupsCountStateItem",
     "MarketplaceProviderOfferingsGroupsListOItem",
     "MarketplaceProviderOfferingsGroupsListStateItem",
+    "MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem",
     "MarketplaceProviderOfferingsListCustomerServiceAccountsRetrieveFieldItem",
     "MarketplaceProviderOfferingsListFieldItem",
     "MarketplaceProviderOfferingsListOItem",
@@ -2690,7 +2693,6 @@ __all__ = (
     "ProviderOfferingCustomer",
     "ProviderOfferingDetails",
     "ProviderOfferingDetailsAttributes",
-    "ProviderOfferingDetailsRequest",
     "ProviderOfferingDetailsServiceAttributes",
     "ProviderPlanDetails",
     "ProviderPlanDetailsFuturePrices",

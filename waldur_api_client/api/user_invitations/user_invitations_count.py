@@ -16,6 +16,7 @@ def _get_kwargs(
     civil_number: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
+    email_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserInvitationsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -36,6 +37,8 @@ def _get_kwargs(
     params["customer_uuid"] = json_customer_uuid
 
     params["email"] = email
+
+    params["email_exact"] = email_exact
 
     json_o: Union[Unset, list[str]] = UNSET
     if not isinstance(o, Unset):
@@ -113,6 +116,7 @@ def sync_detailed(
     civil_number: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
+    email_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserInvitationsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -129,6 +133,7 @@ def sync_detailed(
         civil_number (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         email (Union[Unset, str]):
+        email_exact (Union[Unset, str]):
         o (Union[Unset, list[UserInvitationsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -151,6 +156,7 @@ def sync_detailed(
         civil_number=civil_number,
         customer_uuid=customer_uuid,
         email=email,
+        email_exact=email_exact,
         o=o,
         page=page,
         page_size=page_size,
@@ -175,6 +181,7 @@ def sync(
     civil_number: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
+    email_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserInvitationsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -191,6 +198,7 @@ def sync(
         civil_number (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         email (Union[Unset, str]):
+        email_exact (Union[Unset, str]):
         o (Union[Unset, list[UserInvitationsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -214,6 +222,7 @@ def sync(
         civil_number=civil_number,
         customer_uuid=customer_uuid,
         email=email,
+        email_exact=email_exact,
         o=o,
         page=page,
         page_size=page_size,
@@ -232,6 +241,7 @@ async def asyncio_detailed(
     civil_number: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
+    email_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserInvitationsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -248,6 +258,7 @@ async def asyncio_detailed(
         civil_number (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         email (Union[Unset, str]):
+        email_exact (Union[Unset, str]):
         o (Union[Unset, list[UserInvitationsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -270,6 +281,7 @@ async def asyncio_detailed(
         civil_number=civil_number,
         customer_uuid=customer_uuid,
         email=email,
+        email_exact=email_exact,
         o=o,
         page=page,
         page_size=page_size,
@@ -292,6 +304,7 @@ async def asyncio(
     civil_number: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
+    email_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[UserInvitationsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -308,6 +321,7 @@ async def asyncio(
         civil_number (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         email (Union[Unset, str]):
+        email_exact (Union[Unset, str]):
         o (Union[Unset, list[UserInvitationsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -332,6 +346,7 @@ async def asyncio(
             civil_number=civil_number,
             customer_uuid=customer_uuid,
             email=email,
+            email_exact=email_exact,
             o=o,
             page=page,
             page_size=page_size,

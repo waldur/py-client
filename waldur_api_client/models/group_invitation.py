@@ -27,6 +27,7 @@ class GroupInvitation:
         role_description (str):
         created_by_full_name (str):
         created_by_username (str):
+        created_by_image (str):
         url (str):
         uuid (UUID):
         role (UUID):
@@ -55,6 +56,7 @@ class GroupInvitation:
     role_description: str
     created_by_full_name: str
     created_by_username: str
+    created_by_image: str
     url: str
     uuid: UUID
     role: UUID
@@ -91,6 +93,8 @@ class GroupInvitation:
         created_by_full_name = self.created_by_full_name
 
         created_by_username = self.created_by_username
+
+        created_by_image = self.created_by_image
 
         url = self.url
 
@@ -143,6 +147,7 @@ class GroupInvitation:
                 "role_description": role_description,
                 "created_by_full_name": created_by_full_name,
                 "created_by_username": created_by_username,
+                "created_by_image": created_by_image,
                 "url": url,
                 "uuid": uuid,
                 "role": role,
@@ -194,6 +199,8 @@ class GroupInvitation:
         created_by_full_name = d.pop("created_by_full_name")
 
         created_by_username = d.pop("created_by_username")
+
+        created_by_image = d.pop("created_by_image")
 
         url = d.pop("url")
 
@@ -259,6 +266,7 @@ class GroupInvitation:
             role_description=role_description,
             created_by_full_name=created_by_full_name,
             created_by_username=created_by_username,
+            created_by_image=created_by_image,
             url=url,
             uuid=uuid,
             role=role,

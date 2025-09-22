@@ -6,24 +6,43 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_response_status import ResourceResponseStatus
-from ...types import Response
+from ...models.marketplace_provider_offerings_list_course_accounts_retrieve_field_item import (
+    MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem,
+)
+from ...models.provider_offering_details import ProviderOfferingDetails
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
+    *,
+    field: Union[Unset, list[MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem]] = UNSET,
 ) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": f"/api/marketplace-provider-offerings/{uuid}/refresh_offering_usernames/",
+        "method": "get",
+        "url": f"/api/marketplace-provider-offerings/{uuid}/list_course_accounts/",
+        "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ResourceResponseStatus:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ProviderOfferingDetails:
     if response.status_code == 200:
-        response_200 = ResourceResponseStatus.from_dict(response.json())
+        response_200 = ProviderOfferingDetails.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -31,7 +50,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ResourceResponseStatus]:
+) -> Response[ProviderOfferingDetails]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,22 +63,25 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ResourceResponseStatus]:
-    """Refresh offering user usernames.
-
+    field: Union[Unset, list[MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem]] = UNSET,
+) -> Response[ProviderOfferingDetails]:
+    """
     Args:
         uuid (UUID):
+        field (Union[Unset,
+            list[MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceResponseStatus]
+        Response[ProviderOfferingDetails]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        field=field,
     )
 
     response = client.get_httpx_client().request(
@@ -73,23 +95,26 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> ResourceResponseStatus:
-    """Refresh offering user usernames.
-
+    field: Union[Unset, list[MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem]] = UNSET,
+) -> ProviderOfferingDetails:
+    """
     Args:
         uuid (UUID):
+        field (Union[Unset,
+            list[MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceResponseStatus
+        ProviderOfferingDetails
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
+        field=field,
     ).parsed
 
 
@@ -97,22 +122,25 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ResourceResponseStatus]:
-    """Refresh offering user usernames.
-
+    field: Union[Unset, list[MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem]] = UNSET,
+) -> Response[ProviderOfferingDetails]:
+    """
     Args:
         uuid (UUID):
+        field (Union[Unset,
+            list[MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceResponseStatus]
+        Response[ProviderOfferingDetails]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        field=field,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -124,23 +152,26 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> ResourceResponseStatus:
-    """Refresh offering user usernames.
-
+    field: Union[Unset, list[MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem]] = UNSET,
+) -> ProviderOfferingDetails:
+    """
     Args:
         uuid (UUID):
+        field (Union[Unset,
+            list[MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceResponseStatus
+        ProviderOfferingDetails
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            field=field,
         )
     ).parsed
