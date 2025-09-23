@@ -23,6 +23,8 @@ class UserChecklistCompletion:
         offering_user_uuid (Union[None, str]):
         offering_name (Union[None, str]):
         offering_uuid (Union[None, str]):
+        customer_provider_uuid (Union[None, str]):
+        customer_provider_name (Union[None, str]):
         checklist_uuid (str):
         checklist_name (str):
         checklist_description (str):
@@ -42,6 +44,8 @@ class UserChecklistCompletion:
     offering_user_uuid: Union[None, str]
     offering_name: Union[None, str]
     offering_uuid: Union[None, str]
+    customer_provider_uuid: Union[None, str]
+    customer_provider_name: Union[None, str]
     checklist_uuid: str
     checklist_name: str
     checklist_description: str
@@ -69,6 +73,12 @@ class UserChecklistCompletion:
 
         offering_uuid: Union[None, str]
         offering_uuid = self.offering_uuid
+
+        customer_provider_uuid: Union[None, str]
+        customer_provider_uuid = self.customer_provider_uuid
+
+        customer_provider_name: Union[None, str]
+        customer_provider_name = self.customer_provider_name
 
         checklist_uuid = self.checklist_uuid
 
@@ -108,6 +118,8 @@ class UserChecklistCompletion:
                 "offering_user_uuid": offering_user_uuid,
                 "offering_name": offering_name,
                 "offering_uuid": offering_uuid,
+                "customer_provider_uuid": customer_provider_uuid,
+                "customer_provider_name": customer_provider_name,
                 "checklist_uuid": checklist_uuid,
                 "checklist_name": checklist_name,
                 "checklist_description": checklist_description,
@@ -154,6 +166,20 @@ class UserChecklistCompletion:
             return cast(Union[None, str], data)
 
         offering_uuid = _parse_offering_uuid(d.pop("offering_uuid"))
+
+        def _parse_customer_provider_uuid(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        customer_provider_uuid = _parse_customer_provider_uuid(d.pop("customer_provider_uuid"))
+
+        def _parse_customer_provider_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        customer_provider_name = _parse_customer_provider_name(d.pop("customer_provider_name"))
 
         checklist_uuid = d.pop("checklist_uuid")
 
@@ -203,6 +229,8 @@ class UserChecklistCompletion:
             offering_user_uuid=offering_user_uuid,
             offering_name=offering_name,
             offering_uuid=offering_uuid,
+            customer_provider_uuid=customer_provider_uuid,
+            customer_provider_name=customer_provider_name,
             checklist_uuid=checklist_uuid,
             checklist_name=checklist_name,
             checklist_description=checklist_description,

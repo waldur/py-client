@@ -712,6 +712,7 @@ from .oecd_fos_2007_code_enum import OecdFos2007CodeEnum
 from .offering import Offering
 from .offering_attributes import OfferingAttributes
 from .offering_backend_metadata_request import OfferingBackendMetadataRequest
+from .offering_compliance_checklist_update_request import OfferingComplianceChecklistUpdateRequest
 from .offering_component import OfferingComponent
 from .offering_component_limit import OfferingComponentLimit
 from .offering_component_limit_request import OfferingComponentLimitRequest
@@ -2246,6 +2247,7 @@ __all__ = (
     "Offering",
     "OfferingAttributes",
     "OfferingBackendMetadataRequest",
+    "OfferingComplianceChecklistUpdateRequest",
     "OfferingComponent",
     "OfferingComponentLimit",
     "OfferingComponentLimitRequest",
