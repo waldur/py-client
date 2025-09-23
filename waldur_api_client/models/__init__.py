@@ -703,6 +703,7 @@ from .network_rbac_policy import NetworkRBACPolicy
 from .network_rbac_policy_request import NetworkRBACPolicyRequest
 from .node_disk_driver_enum import NodeDiskDriverEnum
 from .notification import Notification
+from .notification_context_fields import NotificationContextFields
 from .notification_request import NotificationRequest
 from .notification_template_detail_serializers import NotificationTemplateDetailSerializers
 from .notification_template_detail_serializers_request import NotificationTemplateDetailSerializersRequest
@@ -2238,6 +2239,7 @@ __all__ = (
     "NetworkRBACPolicyRequest",
     "NodeDiskDriverEnum",
     "Notification",
+    "NotificationContextFields",
     "NotificationRequest",
     "NotificationTemplateDetailSerializers",
     "NotificationTemplateDetailSerializersRequest",

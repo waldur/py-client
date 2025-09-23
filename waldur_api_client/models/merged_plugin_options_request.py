@@ -34,6 +34,7 @@ class MergedPluginOptionsRequest:
         supports_pausing (Union[Unset, bool]): If set to True, it will be possible to pause resources
         minimal_team_count_for_provisioning (Union[Unset, int]): Minimal team count required for provisioning of
             resources
+        maximal_resource_count_per_project (Union[Unset, int]): Maximal number of offering resources allowed per project
         required_team_role_for_provisioning (Union[Unset, str]): Required user role in a project for provisioning of
             resources
         order_supports_comments_and_metadata (Union[Unset, bool]): If set to True, orders will support comments and
@@ -89,6 +90,7 @@ class MergedPluginOptionsRequest:
     supports_downscaling: Union[Unset, bool] = UNSET
     supports_pausing: Union[Unset, bool] = UNSET
     minimal_team_count_for_provisioning: Union[Unset, int] = UNSET
+    maximal_resource_count_per_project: Union[Unset, int] = UNSET
     required_team_role_for_provisioning: Union[Unset, str] = UNSET
     order_supports_comments_and_metadata: Union[Unset, bool] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
@@ -152,6 +154,8 @@ class MergedPluginOptionsRequest:
         supports_pausing = self.supports_pausing
 
         minimal_team_count_for_provisioning = self.minimal_team_count_for_provisioning
+
+        maximal_resource_count_per_project = self.maximal_resource_count_per_project
 
         required_team_role_for_provisioning = self.required_team_role_for_provisioning
 
@@ -266,6 +270,8 @@ class MergedPluginOptionsRequest:
             field_dict["supports_pausing"] = supports_pausing
         if minimal_team_count_for_provisioning is not UNSET:
             field_dict["minimal_team_count_for_provisioning"] = minimal_team_count_for_provisioning
+        if maximal_resource_count_per_project is not UNSET:
+            field_dict["maximal_resource_count_per_project"] = maximal_resource_count_per_project
         if required_team_role_for_provisioning is not UNSET:
             field_dict["required_team_role_for_provisioning"] = required_team_role_for_provisioning
         if order_supports_comments_and_metadata is not UNSET:
@@ -382,6 +388,8 @@ class MergedPluginOptionsRequest:
         supports_pausing = d.pop("supports_pausing", UNSET)
 
         minimal_team_count_for_provisioning = d.pop("minimal_team_count_for_provisioning", UNSET)
+
+        maximal_resource_count_per_project = d.pop("maximal_resource_count_per_project", UNSET)
 
         required_team_role_for_provisioning = d.pop("required_team_role_for_provisioning", UNSET)
 
@@ -508,6 +516,7 @@ class MergedPluginOptionsRequest:
             supports_downscaling=supports_downscaling,
             supports_pausing=supports_pausing,
             minimal_team_count_for_provisioning=minimal_team_count_for_provisioning,
+            maximal_resource_count_per_project=maximal_resource_count_per_project,
             required_team_role_for_provisioning=required_team_role_for_provisioning,
             order_supports_comments_and_metadata=order_supports_comments_and_metadata,
             default_internal_network_mtu=default_internal_network_mtu,

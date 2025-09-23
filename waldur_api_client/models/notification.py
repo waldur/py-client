@@ -10,6 +10,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.notification_context_fields import NotificationContextFields
     from ..models.notification_template_detail_serializers import NotificationTemplateDetailSerializers
 
 
@@ -26,6 +27,8 @@ class Notification:
         enabled (bool): Indicates if notification is enabled or disabled
         created (datetime.datetime):
         templates (list['NotificationTemplateDetailSerializers']):
+        context_fields (NotificationContextFields): Finds the notification definition in the global NOTIFICATIONS
+            dictionary and returns its 'context' fields.
         description (Union[Unset, str]):
     """
 
@@ -35,6 +38,7 @@ class Notification:
     enabled: bool
     created: datetime.datetime
     templates: list["NotificationTemplateDetailSerializers"]
+    context_fields: "NotificationContextFields"
     description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -54,6 +58,8 @@ class Notification:
             templates_item = templates_item_data.to_dict()
             templates.append(templates_item)
 
+        context_fields = self.context_fields.to_dict()
+
         description = self.description
 
         field_dict: dict[str, Any] = {}
@@ -66,6 +72,7 @@ class Notification:
                 "enabled": enabled,
                 "created": created,
                 "templates": templates,
+                "context_fields": context_fields,
             }
         )
         if description is not UNSET:
@@ -75,6 +82,7 @@ class Notification:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.notification_context_fields import NotificationContextFields
         from ..models.notification_template_detail_serializers import NotificationTemplateDetailSerializers
 
         d = dict(src_dict)
@@ -95,6 +103,8 @@ class Notification:
 
             templates.append(templates_item)
 
+        context_fields = NotificationContextFields.from_dict(d.pop("context_fields"))
+
         description = d.pop("description", UNSET)
 
         notification = cls(
@@ -104,6 +114,7 @@ class Notification:
             enabled=enabled,
             created=created,
             templates=templates,
+            context_fields=context_fields,
             description=description,
         )
 

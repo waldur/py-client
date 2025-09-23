@@ -98,6 +98,8 @@ class Resource:
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
         offering_customer_uuid (Union[Unset, UUID]):
+        offering_customer_name (Union[Unset, str]):
+        offering_customer_slug (Union[Unset, str]):
         options (Union[Unset, Any]):
         available_actions (Union[Unset, list[str]]):
         last_sync (Union[Unset, datetime.datetime]):
@@ -176,6 +178,8 @@ class Resource:
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
     offering_customer_uuid: Union[Unset, UUID] = UNSET
+    offering_customer_name: Union[Unset, str] = UNSET
+    offering_customer_slug: Union[Unset, str] = UNSET
     options: Union[Unset, Any] = UNSET
     available_actions: Union[Unset, list[str]] = UNSET
     last_sync: Union[Unset, datetime.datetime] = UNSET
@@ -416,6 +420,10 @@ class Resource:
         if not isinstance(self.offering_customer_uuid, Unset):
             offering_customer_uuid = str(self.offering_customer_uuid)
 
+        offering_customer_name = self.offering_customer_name
+
+        offering_customer_slug = self.offering_customer_slug
+
         options = self.options
 
         available_actions: Union[Unset, list[str]] = UNSET
@@ -587,6 +595,10 @@ class Resource:
             field_dict["error_traceback"] = error_traceback
         if offering_customer_uuid is not UNSET:
             field_dict["offering_customer_uuid"] = offering_customer_uuid
+        if offering_customer_name is not UNSET:
+            field_dict["offering_customer_name"] = offering_customer_name
+        if offering_customer_slug is not UNSET:
+            field_dict["offering_customer_slug"] = offering_customer_slug
         if options is not UNSET:
             field_dict["options"] = options
         if available_actions is not UNSET:
@@ -957,6 +969,10 @@ class Resource:
         else:
             offering_customer_uuid = UUID(_offering_customer_uuid)
 
+        offering_customer_name = d.pop("offering_customer_name", UNSET)
+
+        offering_customer_slug = d.pop("offering_customer_slug", UNSET)
+
         options = d.pop("options", UNSET)
 
         available_actions = cast(list[str], d.pop("available_actions", UNSET))
@@ -1082,6 +1098,8 @@ class Resource:
             error_message=error_message,
             error_traceback=error_traceback,
             offering_customer_uuid=offering_customer_uuid,
+            offering_customer_name=offering_customer_name,
+            offering_customer_slug=offering_customer_slug,
             options=options,
             available_actions=available_actions,
             last_sync=last_sync,

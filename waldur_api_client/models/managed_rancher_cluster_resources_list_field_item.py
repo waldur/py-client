@@ -33,6 +33,8 @@ class ManagedRancherClusterResourcesListFieldItem(str, Enum):
     NAME = "name"
     OFFERING = "offering"
     OFFERING_BILLABLE = "offering_billable"
+    OFFERING_CUSTOMER_NAME = "offering_customer_name"
+    OFFERING_CUSTOMER_SLUG = "offering_customer_slug"
     OFFERING_CUSTOMER_UUID = "offering_customer_uuid"
     OFFERING_DESCRIPTION = "offering_description"
     OFFERING_IMAGE = "offering_image"

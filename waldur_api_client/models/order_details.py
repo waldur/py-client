@@ -98,6 +98,9 @@ class OrderDetails:
         activation_price (Union[Unset, float]):
         termination_comment (Union[None, Unset, str]):
         backend_id (Union[Unset, str]):
+        offering_customer_uuid (Union[Unset, UUID]):
+        offering_customer_name (Union[Unset, str]):
+        offering_customer_slug (Union[Unset, str]):
         issue (Union['IssueReference', None, Unset]):
     """
 
@@ -169,6 +172,9 @@ class OrderDetails:
     activation_price: Union[Unset, float] = UNSET
     termination_comment: Union[None, Unset, str] = UNSET
     backend_id: Union[Unset, str] = UNSET
+    offering_customer_uuid: Union[Unset, UUID] = UNSET
+    offering_customer_name: Union[Unset, str] = UNSET
+    offering_customer_slug: Union[Unset, str] = UNSET
     issue: Union["IssueReference", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -459,6 +465,14 @@ class OrderDetails:
 
         backend_id = self.backend_id
 
+        offering_customer_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.offering_customer_uuid, Unset):
+            offering_customer_uuid = str(self.offering_customer_uuid)
+
+        offering_customer_name = self.offering_customer_name
+
+        offering_customer_slug = self.offering_customer_slug
+
         issue: Union[None, Unset, dict[str, Any]]
         if isinstance(self.issue, Unset):
             issue = UNSET
@@ -606,6 +620,12 @@ class OrderDetails:
             field_dict["termination_comment"] = termination_comment
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
+        if offering_customer_uuid is not UNSET:
+            field_dict["offering_customer_uuid"] = offering_customer_uuid
+        if offering_customer_name is not UNSET:
+            field_dict["offering_customer_name"] = offering_customer_name
+        if offering_customer_slug is not UNSET:
+            field_dict["offering_customer_slug"] = offering_customer_slug
         if issue is not UNSET:
             field_dict["issue"] = issue
 
@@ -1074,6 +1094,17 @@ class OrderDetails:
 
         backend_id = d.pop("backend_id", UNSET)
 
+        _offering_customer_uuid = d.pop("offering_customer_uuid", UNSET)
+        offering_customer_uuid: Union[Unset, UUID]
+        if isinstance(_offering_customer_uuid, Unset):
+            offering_customer_uuid = UNSET
+        else:
+            offering_customer_uuid = UUID(_offering_customer_uuid)
+
+        offering_customer_name = d.pop("offering_customer_name", UNSET)
+
+        offering_customer_slug = d.pop("offering_customer_slug", UNSET)
+
         def _parse_issue(data: object) -> Union["IssueReference", None, Unset]:
             if data is None:
                 return data
@@ -1160,6 +1191,9 @@ class OrderDetails:
             activation_price=activation_price,
             termination_comment=termination_comment,
             backend_id=backend_id,
+            offering_customer_uuid=offering_customer_uuid,
+            offering_customer_name=offering_customer_name,
+            offering_customer_slug=offering_customer_slug,
             issue=issue,
         )
 
