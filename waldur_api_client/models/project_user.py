@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.offering_user_state import OfferingUserState
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ProjectUser")
@@ -23,6 +24,7 @@ class ProjectUser:
         role (str):
         expiration_time (Union[None, datetime.datetime]):
         offering_user_username (Union[None, str]):
+        offering_user_state (OfferingUserState):
         email (Union[Unset, str]):
     """
 
@@ -33,6 +35,7 @@ class ProjectUser:
     role: str
     expiration_time: Union[None, datetime.datetime]
     offering_user_username: Union[None, str]
+    offering_user_state: OfferingUserState
     email: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -56,6 +59,8 @@ class ProjectUser:
         offering_user_username: Union[None, str]
         offering_user_username = self.offering_user_username
 
+        offering_user_state = self.offering_user_state.value
+
         email = self.email
 
         field_dict: dict[str, Any] = {}
@@ -69,6 +74,7 @@ class ProjectUser:
                 "role": role,
                 "expiration_time": expiration_time,
                 "offering_user_username": offering_user_username,
+                "offering_user_state": offering_user_state,
             }
         )
         if email is not UNSET:
@@ -111,6 +117,8 @@ class ProjectUser:
 
         offering_user_username = _parse_offering_user_username(d.pop("offering_user_username"))
 
+        offering_user_state = OfferingUserState(d.pop("offering_user_state"))
+
         email = d.pop("email", UNSET)
 
         project_user = cls(
@@ -121,6 +129,7 @@ class ProjectUser:
             role=role,
             expiration_time=expiration_time,
             offering_user_username=offering_user_username,
+            offering_user_state=offering_user_state,
             email=email,
         )
 

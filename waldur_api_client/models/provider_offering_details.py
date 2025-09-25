@@ -99,6 +99,7 @@ class ProviderOfferingDetails:
         parent_name (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
         has_compliance_requirements (Union[Unset, bool]):
+        compliance_checklist (Union[None, Unset, str]): Checklist that offering users must complete for compliance
         integration_status (Union[None, Unset, list['IntegrationStatus']]):
         google_calendar_is_public (Union[None, Unset, bool]):
         google_calendar_link (Union[None, Unset, str]): Get the Google Calendar link for an offering.
@@ -166,6 +167,7 @@ class ProviderOfferingDetails:
     parent_name: Union[None, Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
     has_compliance_requirements: Union[Unset, bool] = UNSET
+    compliance_checklist: Union[None, Unset, str] = UNSET
     integration_status: Union[None, Unset, list["IntegrationStatus"]] = UNSET
     google_calendar_is_public: Union[None, Unset, bool] = UNSET
     google_calendar_link: Union[None, Unset, str] = UNSET
@@ -454,6 +456,12 @@ class ProviderOfferingDetails:
 
         has_compliance_requirements = self.has_compliance_requirements
 
+        compliance_checklist: Union[None, Unset, str]
+        if isinstance(self.compliance_checklist, Unset):
+            compliance_checklist = UNSET
+        else:
+            compliance_checklist = self.compliance_checklist
+
         integration_status: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.integration_status, Unset):
             integration_status = UNSET
@@ -605,6 +613,8 @@ class ProviderOfferingDetails:
             field_dict["backend_metadata"] = backend_metadata
         if has_compliance_requirements is not UNSET:
             field_dict["has_compliance_requirements"] = has_compliance_requirements
+        if compliance_checklist is not UNSET:
+            field_dict["compliance_checklist"] = compliance_checklist
         if integration_status is not UNSET:
             field_dict["integration_status"] = integration_status
         if google_calendar_is_public is not UNSET:
@@ -1051,6 +1061,15 @@ class ProviderOfferingDetails:
 
         has_compliance_requirements = d.pop("has_compliance_requirements", UNSET)
 
+        def _parse_compliance_checklist(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        compliance_checklist = _parse_compliance_checklist(d.pop("compliance_checklist", UNSET))
+
         def _parse_integration_status(data: object) -> Union[None, Unset, list["IntegrationStatus"]]:
             if data is None:
                 return data
@@ -1154,6 +1173,7 @@ class ProviderOfferingDetails:
             parent_name=parent_name,
             backend_metadata=backend_metadata,
             has_compliance_requirements=has_compliance_requirements,
+            compliance_checklist=compliance_checklist,
             integration_status=integration_status,
             google_calendar_is_public=google_calendar_is_public,
             google_calendar_link=google_calendar_link,

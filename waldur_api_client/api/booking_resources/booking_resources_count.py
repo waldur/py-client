@@ -28,7 +28,7 @@ def _get_kwargs(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BookingResourcesCountOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
-    offering_billable: Union[Unset, UUID] = UNSET,
+    offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
@@ -99,10 +99,7 @@ def _get_kwargs(
 
     params["offering"] = offering
 
-    json_offering_billable: Union[Unset, str] = UNSET
-    if not isinstance(offering_billable, Unset):
-        json_offering_billable = str(offering_billable)
-    params["offering_billable"] = json_offering_billable
+    params["offering_billable"] = offering_billable
 
     params["offering_shared"] = offering_shared
 
@@ -220,7 +217,7 @@ def sync_detailed(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BookingResourcesCountOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
-    offering_billable: Union[Unset, UUID] = UNSET,
+    offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
@@ -256,7 +253,7 @@ def sync_detailed(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[BookingResourcesCountOItem]]):
         offering (Union[Unset, str]):
-        offering_billable (Union[Unset, UUID]):
+        offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):
@@ -342,7 +339,7 @@ def sync(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BookingResourcesCountOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
-    offering_billable: Union[Unset, UUID] = UNSET,
+    offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
@@ -378,7 +375,7 @@ def sync(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[BookingResourcesCountOItem]]):
         offering (Union[Unset, str]):
-        offering_billable (Union[Unset, UUID]):
+        offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):
@@ -459,7 +456,7 @@ async def asyncio_detailed(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BookingResourcesCountOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
-    offering_billable: Union[Unset, UUID] = UNSET,
+    offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
@@ -495,7 +492,7 @@ async def asyncio_detailed(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[BookingResourcesCountOItem]]):
         offering (Union[Unset, str]):
-        offering_billable (Union[Unset, UUID]):
+        offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):
@@ -579,7 +576,7 @@ async def asyncio(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BookingResourcesCountOItem]] = UNSET,
     offering: Union[Unset, str] = UNSET,
-    offering_billable: Union[Unset, UUID] = UNSET,
+    offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
@@ -615,7 +612,7 @@ async def asyncio(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[BookingResourcesCountOItem]]):
         offering (Union[Unset, str]):
-        offering_billable (Union[Unset, UUID]):
+        offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):

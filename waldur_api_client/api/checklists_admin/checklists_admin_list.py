@@ -6,15 +6,34 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.checklist import Checklist
+from ...models.checklists_admin_list_checklist_type import ChecklistsAdminListChecklistType
+from ...models.checklists_admin_list_checklist_type_in_item import ChecklistsAdminListChecklistTypeInItem
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
+    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_checklist_type: Union[Unset, str] = UNSET
+    if not isinstance(checklist_type, Unset):
+        json_checklist_type = checklist_type.value
+
+    params["checklist_type"] = json_checklist_type
+
+    json_checklist_type_in: Union[Unset, list[str]] = UNSET
+    if not isinstance(checklist_type_in, Unset):
+        json_checklist_type_in = []
+        for checklist_type_in_item_data in checklist_type_in:
+            checklist_type_in_item = checklist_type_in_item_data.value
+            json_checklist_type_in.append(checklist_type_in_item)
+
+    params["checklist_type__in"] = json_checklist_type_in
 
     params["page"] = page
 
@@ -58,12 +77,16 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Checklist"]]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
+        checklist_type (Union[Unset, ChecklistsAdminListChecklistType]):
+        checklist_type_in (Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -76,6 +99,8 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        checklist_type=checklist_type,
+        checklist_type_in=checklist_type_in,
         page=page,
         page_size=page_size,
     )
@@ -90,12 +115,16 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Checklist"]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
+        checklist_type (Union[Unset, ChecklistsAdminListChecklistType]):
+        checklist_type_in (Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -109,6 +138,8 @@ def sync(
 
     return sync_detailed(
         client=client,
+        checklist_type=checklist_type,
+        checklist_type_in=checklist_type_in,
         page=page,
         page_size=page_size,
     ).parsed
@@ -117,12 +148,16 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Checklist"]]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
+        checklist_type (Union[Unset, ChecklistsAdminListChecklistType]):
+        checklist_type_in (Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -135,6 +170,8 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        checklist_type=checklist_type,
+        checklist_type_in=checklist_type_in,
         page=page,
         page_size=page_size,
     )
@@ -147,12 +184,16 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Checklist"]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
 
     Args:
+        checklist_type (Union[Unset, ChecklistsAdminListChecklistType]):
+        checklist_type_in (Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -167,6 +208,8 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            checklist_type=checklist_type,
+            checklist_type_in=checklist_type_in,
             page=page,
             page_size=page_size,
         )

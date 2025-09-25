@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -36,6 +36,7 @@ class ProviderOffering:
         options (Union[Unset, Any]): Fields describing resource provision form.
         resource_options (Union[Unset, Any]): Fields describing resource report form.
         secret_options (Union[Unset, MergedSecretOptions]):
+        thumbnail (Union[None, Unset, str]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -52,6 +53,7 @@ class ProviderOffering:
     options: Union[Unset, Any] = UNSET
     resource_options: Union[Unset, Any] = UNSET
     secret_options: Union[Unset, "MergedSecretOptions"] = UNSET
+    thumbnail: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -103,6 +105,12 @@ class ProviderOffering:
         if not isinstance(self.secret_options, Unset):
             secret_options = self.secret_options.to_dict()
 
+        thumbnail: Union[None, Unset, str]
+        if isinstance(self.thumbnail, Unset):
+            thumbnail = UNSET
+        else:
+            thumbnail = self.thumbnail
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -134,6 +142,8 @@ class ProviderOffering:
             field_dict["resource_options"] = resource_options
         if secret_options is not UNSET:
             field_dict["secret_options"] = secret_options
+        if thumbnail is not UNSET:
+            field_dict["thumbnail"] = thumbnail
 
         return field_dict
 
@@ -208,6 +218,15 @@ class ProviderOffering:
         else:
             secret_options = MergedSecretOptions.from_dict(_secret_options)
 
+        def _parse_thumbnail(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        thumbnail = _parse_thumbnail(d.pop("thumbnail", UNSET))
+
         provider_offering = cls(
             uuid=uuid,
             customer_uuid=customer_uuid,
@@ -223,6 +242,7 @@ class ProviderOffering:
             options=options,
             resource_options=resource_options,
             secret_options=secret_options,
+            thumbnail=thumbnail,
         )
 
         provider_offering.additional_properties = d

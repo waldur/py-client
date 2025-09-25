@@ -97,6 +97,7 @@ class OfferingCreate:
         backend_id (Union[Unset, str]):
         image (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
+        compliance_checklist (Union[None, Unset, str]): Checklist that offering users must complete for compliance
     """
 
     url: str
@@ -161,6 +162,7 @@ class OfferingCreate:
     backend_id: Union[Unset, str] = UNSET
     image: Union[None, Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
+    compliance_checklist: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -379,6 +381,12 @@ class OfferingCreate:
 
         backend_metadata = self.backend_metadata
 
+        compliance_checklist: Union[None, Unset, str]
+        if isinstance(self.compliance_checklist, Unset):
+            compliance_checklist = UNSET
+        else:
+            compliance_checklist = self.compliance_checklist
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -471,6 +479,8 @@ class OfferingCreate:
             field_dict["image"] = image
         if backend_metadata is not UNSET:
             field_dict["backend_metadata"] = backend_metadata
+        if compliance_checklist is not UNSET:
+            field_dict["compliance_checklist"] = compliance_checklist
 
         return field_dict
 
@@ -839,6 +849,15 @@ class OfferingCreate:
 
         backend_metadata = d.pop("backend_metadata", UNSET)
 
+        def _parse_compliance_checklist(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        compliance_checklist = _parse_compliance_checklist(d.pop("compliance_checklist", UNSET))
+
         offering_create = cls(
             url=url,
             uuid=uuid,
@@ -902,6 +921,7 @@ class OfferingCreate:
             backend_id=backend_id,
             image=image,
             backend_metadata=backend_metadata,
+            compliance_checklist=compliance_checklist,
         )
 
         offering_create.additional_properties = d

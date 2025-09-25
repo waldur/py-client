@@ -14,6 +14,7 @@ class MarketplaceServiceProvidersOfferingsListFieldItem(str, Enum):
     SECRET_OPTIONS = "secret_options"
     SLUG = "slug"
     STATE = "state"
+    THUMBNAIL = "thumbnail"
     TYPE = "type"
     UUID = "uuid"
 

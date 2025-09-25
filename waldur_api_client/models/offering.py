@@ -95,6 +95,7 @@ class Offering:
         parent_name (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
         has_compliance_requirements (Union[Unset, bool]):
+        compliance_checklist (Union[None, Unset, str]): Checklist that offering users must complete for compliance
         user_has_consent (Union[Unset, bool]):
         googlecalendar (Union[Unset, GoogleCalendar]):
     """
@@ -159,6 +160,7 @@ class Offering:
     parent_name: Union[None, Unset, str] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
     has_compliance_requirements: Union[Unset, bool] = UNSET
+    compliance_checklist: Union[None, Unset, str] = UNSET
     user_has_consent: Union[Unset, bool] = UNSET
     googlecalendar: Union[Unset, "GoogleCalendar"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -438,6 +440,12 @@ class Offering:
 
         has_compliance_requirements = self.has_compliance_requirements
 
+        compliance_checklist: Union[None, Unset, str]
+        if isinstance(self.compliance_checklist, Unset):
+            compliance_checklist = UNSET
+        else:
+            compliance_checklist = self.compliance_checklist
+
         user_has_consent = self.user_has_consent
 
         googlecalendar: Union[Unset, dict[str, Any]] = UNSET
@@ -567,6 +575,8 @@ class Offering:
             field_dict["backend_metadata"] = backend_metadata
         if has_compliance_requirements is not UNSET:
             field_dict["has_compliance_requirements"] = has_compliance_requirements
+        if compliance_checklist is not UNSET:
+            field_dict["compliance_checklist"] = compliance_checklist
         if user_has_consent is not UNSET:
             field_dict["user_has_consent"] = user_has_consent
         if googlecalendar is not UNSET:
@@ -995,6 +1005,15 @@ class Offering:
 
         has_compliance_requirements = d.pop("has_compliance_requirements", UNSET)
 
+        def _parse_compliance_checklist(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        compliance_checklist = _parse_compliance_checklist(d.pop("compliance_checklist", UNSET))
+
         user_has_consent = d.pop("user_has_consent", UNSET)
 
         _googlecalendar = d.pop("googlecalendar", UNSET)
@@ -1065,6 +1084,7 @@ class Offering:
             parent_name=parent_name,
             backend_metadata=backend_metadata,
             has_compliance_requirements=has_compliance_requirements,
+            compliance_checklist=compliance_checklist,
             user_has_consent=user_has_consent,
             googlecalendar=googlecalendar,
         )

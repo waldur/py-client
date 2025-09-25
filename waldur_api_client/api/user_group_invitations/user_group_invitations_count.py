@@ -14,6 +14,7 @@ def _get_kwargs(
     *,
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_public: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[UserGroupInvitationsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -29,6 +30,8 @@ def _get_kwargs(
     params["customer_uuid"] = json_customer_uuid
 
     params["is_active"] = is_active
+
+    params["is_public"] = is_public
 
     json_o: Union[Unset, list[str]] = UNSET
     if not isinstance(o, Unset):
@@ -92,6 +95,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_public: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[UserGroupInvitationsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -104,6 +108,7 @@ def sync_detailed(
     Args:
         customer_uuid (Union[Unset, UUID]):
         is_active (Union[Unset, bool]):
+        is_public (Union[Unset, bool]):
         o (Union[Unset, list[UserGroupInvitationsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -122,6 +127,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         customer_uuid=customer_uuid,
         is_active=is_active,
+        is_public=is_public,
         o=o,
         page=page,
         page_size=page_size,
@@ -142,6 +148,7 @@ def sync(
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_public: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[UserGroupInvitationsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -154,6 +161,7 @@ def sync(
     Args:
         customer_uuid (Union[Unset, UUID]):
         is_active (Union[Unset, bool]):
+        is_public (Union[Unset, bool]):
         o (Union[Unset, list[UserGroupInvitationsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -173,6 +181,7 @@ def sync(
         client=client,
         customer_uuid=customer_uuid,
         is_active=is_active,
+        is_public=is_public,
         o=o,
         page=page,
         page_size=page_size,
@@ -187,6 +196,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_public: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[UserGroupInvitationsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -199,6 +209,7 @@ async def asyncio_detailed(
     Args:
         customer_uuid (Union[Unset, UUID]):
         is_active (Union[Unset, bool]):
+        is_public (Union[Unset, bool]):
         o (Union[Unset, list[UserGroupInvitationsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -217,6 +228,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         customer_uuid=customer_uuid,
         is_active=is_active,
+        is_public=is_public,
         o=o,
         page=page,
         page_size=page_size,
@@ -235,6 +247,7 @@ async def asyncio(
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_public: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[UserGroupInvitationsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -247,6 +260,7 @@ async def asyncio(
     Args:
         customer_uuid (Union[Unset, UUID]):
         is_active (Union[Unset, bool]):
+        is_public (Union[Unset, bool]):
         o (Union[Unset, list[UserGroupInvitationsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -267,6 +281,7 @@ async def asyncio(
             client=client,
             customer_uuid=customer_uuid,
             is_active=is_active,
+            is_public=is_public,
             o=o,
             page=page,
             page_size=page_size,

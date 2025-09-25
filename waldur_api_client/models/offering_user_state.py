@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class OfferingUserStateEnum(str, Enum):
+class OfferingUserState(str, Enum):
     CREATING = "Creating"
     DELETED = "Deleted"
     DELETING = "Deleting"

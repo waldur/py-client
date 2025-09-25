@@ -6,6 +6,10 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.checklists_admin_checklist_questions_checklist_type import ChecklistsAdminChecklistQuestionsChecklistType
+from ...models.checklists_admin_checklist_questions_checklist_type_in_item import (
+    ChecklistsAdminChecklistQuestionsChecklistTypeInItem,
+)
 from ...models.question_admin import QuestionAdmin
 from ...types import UNSET, Response, Unset
 
@@ -13,10 +17,27 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     uuid: UUID,
     *,
+    checklist_type: Union[Unset, ChecklistsAdminChecklistQuestionsChecklistType] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistsAdminChecklistQuestionsChecklistTypeInItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_checklist_type: Union[Unset, str] = UNSET
+    if not isinstance(checklist_type, Unset):
+        json_checklist_type = checklist_type.value
+
+    params["checklist_type"] = json_checklist_type
+
+    json_checklist_type_in: Union[Unset, list[str]] = UNSET
+    if not isinstance(checklist_type_in, Unset):
+        json_checklist_type_in = []
+        for checklist_type_in_item_data in checklist_type_in:
+            checklist_type_in_item = checklist_type_in_item_data.value
+            json_checklist_type_in.append(checklist_type_in_item)
+
+    params["checklist_type__in"] = json_checklist_type_in
 
     params["page"] = page
 
@@ -61,6 +82,8 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    checklist_type: Union[Unset, ChecklistsAdminChecklistQuestionsChecklistType] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistsAdminChecklistQuestionsChecklistTypeInItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["QuestionAdmin"]]:
@@ -68,6 +91,9 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
+        checklist_type (Union[Unset, ChecklistsAdminChecklistQuestionsChecklistType]):
+        checklist_type_in (Union[Unset,
+            list[ChecklistsAdminChecklistQuestionsChecklistTypeInItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -81,6 +107,8 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        checklist_type=checklist_type,
+        checklist_type_in=checklist_type_in,
         page=page,
         page_size=page_size,
     )
@@ -96,6 +124,8 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    checklist_type: Union[Unset, ChecklistsAdminChecklistQuestionsChecklistType] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistsAdminChecklistQuestionsChecklistTypeInItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["QuestionAdmin"]:
@@ -103,6 +133,9 @@ def sync(
 
     Args:
         uuid (UUID):
+        checklist_type (Union[Unset, ChecklistsAdminChecklistQuestionsChecklistType]):
+        checklist_type_in (Union[Unset,
+            list[ChecklistsAdminChecklistQuestionsChecklistTypeInItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -117,6 +150,8 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        checklist_type=checklist_type,
+        checklist_type_in=checklist_type_in,
         page=page,
         page_size=page_size,
     ).parsed
@@ -126,6 +161,8 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    checklist_type: Union[Unset, ChecklistsAdminChecklistQuestionsChecklistType] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistsAdminChecklistQuestionsChecklistTypeInItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["QuestionAdmin"]]:
@@ -133,6 +170,9 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
+        checklist_type (Union[Unset, ChecklistsAdminChecklistQuestionsChecklistType]):
+        checklist_type_in (Union[Unset,
+            list[ChecklistsAdminChecklistQuestionsChecklistTypeInItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -146,6 +186,8 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        checklist_type=checklist_type,
+        checklist_type_in=checklist_type_in,
         page=page,
         page_size=page_size,
     )
@@ -159,6 +201,8 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    checklist_type: Union[Unset, ChecklistsAdminChecklistQuestionsChecklistType] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistsAdminChecklistQuestionsChecklistTypeInItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["QuestionAdmin"]:
@@ -166,6 +210,9 @@ async def asyncio(
 
     Args:
         uuid (UUID):
+        checklist_type (Union[Unset, ChecklistsAdminChecklistQuestionsChecklistType]):
+        checklist_type_in (Union[Unset,
+            list[ChecklistsAdminChecklistQuestionsChecklistTypeInItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -181,6 +228,8 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            checklist_type=checklist_type,
+            checklist_type_in=checklist_type_in,
             page=page,
             page_size=page_size,
         )

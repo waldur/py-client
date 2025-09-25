@@ -7,7 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.offering_user_state_enum import OfferingUserStateEnum
+from ..models.offering_user_state import OfferingUserState
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="OfferingUser")
@@ -34,7 +34,7 @@ class OfferingUser:
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
         is_restricted (Union[Unset, bool]): Signal to service if the user account is restricted or not
-        state (Union[Unset, OfferingUserStateEnum]):
+        state (Union[Unset, OfferingUserState]):
         service_provider_comment (Union[Unset, str]): Additional comment for pending states like validation or account
             linking
         service_provider_comment_url (Union[Unset, str]): URL link for additional information or actions related to
@@ -59,7 +59,7 @@ class OfferingUser:
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
     is_restricted: Union[Unset, bool] = UNSET
-    state: Union[Unset, OfferingUserStateEnum] = UNSET
+    state: Union[Unset, OfferingUserState] = UNSET
     service_provider_comment: Union[Unset, str] = UNSET
     service_provider_comment_url: Union[Unset, str] = UNSET
     has_consent: Union[Unset, bool] = UNSET
@@ -248,11 +248,11 @@ class OfferingUser:
         is_restricted = d.pop("is_restricted", UNSET)
 
         _state = d.pop("state", UNSET)
-        state: Union[Unset, OfferingUserStateEnum]
+        state: Union[Unset, OfferingUserState]
         if isinstance(_state, Unset):
             state = UNSET
         else:
-            state = OfferingUserStateEnum(_state)
+            state = OfferingUserState(_state)
 
         service_provider_comment = d.pop("service_provider_comment", UNSET)
 

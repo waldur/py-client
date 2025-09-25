@@ -51,6 +51,7 @@ class OfferingCreateRequest:
         backend_id (Union[Unset, str]):
         image (Union[File, None, Unset]):
         backend_metadata (Union[Unset, Any]):
+        compliance_checklist (Union[None, Unset, str]): Checklist that offering users must complete for compliance
         limits (Union[Unset, OfferingCreateRequestLimits]):
     """
 
@@ -81,6 +82,7 @@ class OfferingCreateRequest:
     backend_id: Union[Unset, str] = UNSET
     image: Union[File, None, Unset] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
+    compliance_checklist: Union[None, Unset, str] = UNSET
     limits: Union[Unset, "OfferingCreateRequestLimits"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -185,6 +187,12 @@ class OfferingCreateRequest:
 
         backend_metadata = self.backend_metadata
 
+        compliance_checklist: Union[None, Unset, str]
+        if isinstance(self.compliance_checklist, Unset):
+            compliance_checklist = UNSET
+        else:
+            compliance_checklist = self.compliance_checklist
+
         limits: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.limits, Unset):
             limits = self.limits.to_dict()
@@ -246,6 +254,8 @@ class OfferingCreateRequest:
             field_dict["image"] = image
         if backend_metadata is not UNSET:
             field_dict["backend_metadata"] = backend_metadata
+        if compliance_checklist is not UNSET:
+            field_dict["compliance_checklist"] = compliance_checklist
         if limits is not UNSET:
             field_dict["limits"] = limits
 
@@ -401,6 +411,15 @@ class OfferingCreateRequest:
 
         backend_metadata = d.pop("backend_metadata", UNSET)
 
+        def _parse_compliance_checklist(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        compliance_checklist = _parse_compliance_checklist(d.pop("compliance_checklist", UNSET))
+
         _limits = d.pop("limits", UNSET)
         limits: Union[Unset, OfferingCreateRequestLimits]
         if isinstance(_limits, Unset):
@@ -436,6 +455,7 @@ class OfferingCreateRequest:
             backend_id=backend_id,
             image=image,
             backend_metadata=backend_metadata,
+            compliance_checklist=compliance_checklist,
             limits=limits,
         )
 
