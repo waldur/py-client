@@ -33,6 +33,7 @@ class CustomersListFieldItem(str, Enum):
     MAX_SERVICE_ACCOUNTS = "max_service_accounts"
     NAME = "name"
     NATIVE_NAME = "native_name"
+    NOTIFICATION_EMAILS = "notification_emails"
     ORGANIZATION_GROUPS = "organization_groups"
     PAYMENT_PROFILES = "payment_profiles"
     PHONE_NUMBER = "phone_number"

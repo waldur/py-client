@@ -37,6 +37,7 @@ class CustomerRequest:
         longitude (Union[None, Unset, float]):
         bank_account (Union[Unset, str]):
         country (Union[BlankEnum, CountryEnum, Unset]):
+        notification_emails (Union[Unset, str]): Comma-separated list of notification email addresses
     """
 
     name: str
@@ -59,6 +60,7 @@ class CustomerRequest:
     longitude: Union[None, Unset, float] = UNSET
     bank_account: Union[Unset, str] = UNSET
     country: Union[BlankEnum, CountryEnum, Unset] = UNSET
+    notification_emails: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -123,6 +125,8 @@ class CustomerRequest:
         else:
             country = self.country.value
 
+        notification_emails = self.notification_emails
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -168,6 +172,8 @@ class CustomerRequest:
             field_dict["bank_account"] = bank_account
         if country is not UNSET:
             field_dict["country"] = country
+        if notification_emails is not UNSET:
+            field_dict["notification_emails"] = notification_emails
 
         return field_dict
 
@@ -260,6 +266,8 @@ class CustomerRequest:
 
         country = _parse_country(d.pop("country", UNSET))
 
+        notification_emails = d.pop("notification_emails", UNSET)
+
         customer_request = cls(
             name=name,
             backend_id=backend_id,
@@ -281,6 +289,7 @@ class CustomerRequest:
             longitude=longitude,
             bank_account=bank_account,
             country=country,
+            notification_emails=notification_emails,
         )
 
         customer_request.additional_properties = d

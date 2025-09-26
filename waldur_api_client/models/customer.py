@@ -65,6 +65,7 @@ class Customer:
         longitude (Union[None, Unset, float]):
         bank_account (Union[Unset, str]):
         country (Union[BlankEnum, CountryEnum, Unset]):
+        notification_emails (Union[Unset, str]): Comma-separated list of notification email addresses
         payment_profiles (Union[Unset, list['PaymentProfile']]):
         customer_credit (Union[None, Unset, float]):
         customer_unallocated_credit (Union[None, Unset, float]):
@@ -114,6 +115,7 @@ class Customer:
     longitude: Union[None, Unset, float] = UNSET
     bank_account: Union[Unset, str] = UNSET
     country: Union[BlankEnum, CountryEnum, Unset] = UNSET
+    notification_emails: Union[Unset, str] = UNSET
     payment_profiles: Union[Unset, list["PaymentProfile"]] = UNSET
     customer_credit: Union[None, Unset, float] = UNSET
     customer_unallocated_credit: Union[None, Unset, float] = UNSET
@@ -251,6 +253,8 @@ class Customer:
         else:
             country = self.country.value
 
+        notification_emails = self.notification_emails
+
         payment_profiles: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.payment_profiles, Unset):
             payment_profiles = []
@@ -377,6 +381,8 @@ class Customer:
             field_dict["bank_account"] = bank_account
         if country is not UNSET:
             field_dict["country"] = country
+        if notification_emails is not UNSET:
+            field_dict["notification_emails"] = notification_emails
         if payment_profiles is not UNSET:
             field_dict["payment_profiles"] = payment_profiles
         if customer_credit is not UNSET:
@@ -574,6 +580,8 @@ class Customer:
 
         country = _parse_country(d.pop("country", UNSET))
 
+        notification_emails = d.pop("notification_emails", UNSET)
+
         payment_profiles = []
         _payment_profiles = d.pop("payment_profiles", UNSET)
         for payment_profiles_item_data in _payment_profiles or []:
@@ -685,6 +693,7 @@ class Customer:
             longitude=longitude,
             bank_account=bank_account,
             country=country,
+            notification_emails=notification_emails,
             payment_profiles=payment_profiles,
             customer_credit=customer_credit,
             customer_unallocated_credit=customer_unallocated_credit,
