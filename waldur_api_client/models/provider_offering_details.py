@@ -99,7 +99,7 @@ class ProviderOfferingDetails:
         parent_name (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
         has_compliance_requirements (Union[Unset, bool]):
-        compliance_checklist (Union[None, Unset, str]): Checklist that offering users must complete for compliance
+        compliance_checklist (Union[None, Unset, str]):
         integration_status (Union[None, Unset, list['IntegrationStatus']]):
         google_calendar_is_public (Union[None, Unset, bool]):
         google_calendar_link (Union[None, Unset, str]): Get the Google Calendar link for an offering.

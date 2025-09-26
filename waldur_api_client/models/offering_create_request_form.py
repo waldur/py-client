@@ -51,7 +51,7 @@ class OfferingCreateRequestForm:
         backend_id (Union[Unset, str]):
         image (Union[File, None, Unset]):
         backend_metadata (Union[Unset, Any]):
-        compliance_checklist (Union[None, Unset, str]): Checklist that offering users must complete for compliance
+        compliance_checklist (Union[None, Unset, str]):
         limits (Union[Unset, OfferingCreateRequestFormLimits]):
     """
 

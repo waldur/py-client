@@ -97,7 +97,7 @@ class OfferingCreate:
         backend_id (Union[Unset, str]):
         image (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
-        compliance_checklist (Union[None, Unset, str]): Checklist that offering users must complete for compliance
+        compliance_checklist (Union[None, Unset, str]):
     """
 
     url: str

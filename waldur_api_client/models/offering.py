@@ -95,7 +95,7 @@ class Offering:
         parent_name (Union[None, Unset, str]):
         backend_metadata (Union[Unset, Any]):
         has_compliance_requirements (Union[Unset, bool]):
-        compliance_checklist (Union[None, Unset, str]): Checklist that offering users must complete for compliance
+        compliance_checklist (Union[None, Unset, str]):
         user_has_consent (Union[Unset, bool]):
         googlecalendar (Union[Unset, GoogleCalendar]):
     """
