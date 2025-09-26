@@ -6,12 +6,18 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.constance_settings_request import ConstanceSettingsRequest
+from ...models.constance_settings_request_form import ConstanceSettingsRequestForm
+from ...models.constance_settings_request_multipart import ConstanceSettingsRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ConstanceSettingsRequest,
+    body: Union[
+        ConstanceSettingsRequest,
+        ConstanceSettingsRequestForm,
+        ConstanceSettingsRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -20,9 +26,18 @@ def _get_kwargs(
         "url": "/api/override-settings/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, ConstanceSettingsRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, ConstanceSettingsRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, ConstanceSettingsRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -46,11 +61,17 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: ConstanceSettingsRequest,
+    body: Union[
+        ConstanceSettingsRequest,
+        ConstanceSettingsRequestForm,
+        ConstanceSettingsRequestMultipart,
+    ],
 ) -> Response[Any]:
     """
     Args:
         body (ConstanceSettingsRequest):
+        body (ConstanceSettingsRequestForm):
+        body (ConstanceSettingsRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -74,11 +95,17 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: ConstanceSettingsRequest,
+    body: Union[
+        ConstanceSettingsRequest,
+        ConstanceSettingsRequestForm,
+        ConstanceSettingsRequestMultipart,
+    ],
 ) -> Response[Any]:
     """
     Args:
         body (ConstanceSettingsRequest):
+        body (ConstanceSettingsRequestForm):
+        body (ConstanceSettingsRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

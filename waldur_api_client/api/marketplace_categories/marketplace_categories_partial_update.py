@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.marketplace_category import MarketplaceCategory
 from ...models.patched_marketplace_category_request import PatchedMarketplaceCategoryRequest
+from ...models.patched_marketplace_category_request_form import PatchedMarketplaceCategoryRequestForm
+from ...models.patched_marketplace_category_request_multipart import PatchedMarketplaceCategoryRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: PatchedMarketplaceCategoryRequest,
+    body: Union[
+        PatchedMarketplaceCategoryRequest,
+        PatchedMarketplaceCategoryRequestForm,
+        PatchedMarketplaceCategoryRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/marketplace-categories/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, PatchedMarketplaceCategoryRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, PatchedMarketplaceCategoryRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, PatchedMarketplaceCategoryRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -54,12 +69,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedMarketplaceCategoryRequest,
+    body: Union[
+        PatchedMarketplaceCategoryRequest,
+        PatchedMarketplaceCategoryRequestForm,
+        PatchedMarketplaceCategoryRequestMultipart,
+    ],
 ) -> Response[MarketplaceCategory]:
     """
     Args:
         uuid (UUID):
         body (PatchedMarketplaceCategoryRequest):
+        body (PatchedMarketplaceCategoryRequestForm):
+        body (PatchedMarketplaceCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -85,12 +106,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedMarketplaceCategoryRequest,
+    body: Union[
+        PatchedMarketplaceCategoryRequest,
+        PatchedMarketplaceCategoryRequestForm,
+        PatchedMarketplaceCategoryRequestMultipart,
+    ],
 ) -> MarketplaceCategory:
     """
     Args:
         uuid (UUID):
         body (PatchedMarketplaceCategoryRequest):
+        body (PatchedMarketplaceCategoryRequestForm):
+        body (PatchedMarketplaceCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -111,12 +138,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedMarketplaceCategoryRequest,
+    body: Union[
+        PatchedMarketplaceCategoryRequest,
+        PatchedMarketplaceCategoryRequestForm,
+        PatchedMarketplaceCategoryRequestMultipart,
+    ],
 ) -> Response[MarketplaceCategory]:
     """
     Args:
         uuid (UUID):
         body (PatchedMarketplaceCategoryRequest):
+        body (PatchedMarketplaceCategoryRequestForm):
+        body (PatchedMarketplaceCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -140,12 +173,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedMarketplaceCategoryRequest,
+    body: Union[
+        PatchedMarketplaceCategoryRequest,
+        PatchedMarketplaceCategoryRequestForm,
+        PatchedMarketplaceCategoryRequestMultipart,
+    ],
 ) -> MarketplaceCategory:
     """
     Args:
         uuid (UUID):
         body (PatchedMarketplaceCategoryRequest):
+        body (PatchedMarketplaceCategoryRequestForm):
+        body (PatchedMarketplaceCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

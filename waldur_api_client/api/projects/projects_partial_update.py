@@ -7,6 +7,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.patched_project_request import PatchedProjectRequest
+from ...models.patched_project_request_form import PatchedProjectRequestForm
+from ...models.patched_project_request_multipart import PatchedProjectRequestMultipart
 from ...models.project import Project
 from ...types import Response
 
@@ -14,7 +16,11 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: PatchedProjectRequest,
+    body: Union[
+        PatchedProjectRequest,
+        PatchedProjectRequestForm,
+        PatchedProjectRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/projects/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, PatchedProjectRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, PatchedProjectRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, PatchedProjectRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -52,12 +67,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedProjectRequest,
+    body: Union[
+        PatchedProjectRequest,
+        PatchedProjectRequestForm,
+        PatchedProjectRequestMultipart,
+    ],
 ) -> Response[Project]:
     """
     Args:
         uuid (UUID):
         body (PatchedProjectRequest):
+        body (PatchedProjectRequestForm):
+        body (PatchedProjectRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -83,12 +104,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedProjectRequest,
+    body: Union[
+        PatchedProjectRequest,
+        PatchedProjectRequestForm,
+        PatchedProjectRequestMultipart,
+    ],
 ) -> Project:
     """
     Args:
         uuid (UUID):
         body (PatchedProjectRequest):
+        body (PatchedProjectRequestForm):
+        body (PatchedProjectRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -109,12 +136,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedProjectRequest,
+    body: Union[
+        PatchedProjectRequest,
+        PatchedProjectRequestForm,
+        PatchedProjectRequestMultipart,
+    ],
 ) -> Response[Project]:
     """
     Args:
         uuid (UUID):
         body (PatchedProjectRequest):
+        body (PatchedProjectRequestForm):
+        body (PatchedProjectRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -138,12 +171,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedProjectRequest,
+    body: Union[
+        PatchedProjectRequest,
+        PatchedProjectRequestForm,
+        PatchedProjectRequestMultipart,
+    ],
 ) -> Project:
     """
     Args:
         uuid (UUID):
         body (PatchedProjectRequest):
+        body (PatchedProjectRequestForm):
+        body (PatchedProjectRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

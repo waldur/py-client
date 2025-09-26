@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.external_link import ExternalLink
 from ...models.patched_external_link_request import PatchedExternalLinkRequest
+from ...models.patched_external_link_request_form import PatchedExternalLinkRequestForm
+from ...models.patched_external_link_request_multipart import PatchedExternalLinkRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: PatchedExternalLinkRequest,
+    body: Union[
+        PatchedExternalLinkRequest,
+        PatchedExternalLinkRequestForm,
+        PatchedExternalLinkRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/external-links/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, PatchedExternalLinkRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, PatchedExternalLinkRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, PatchedExternalLinkRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -52,12 +67,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedExternalLinkRequest,
+    body: Union[
+        PatchedExternalLinkRequest,
+        PatchedExternalLinkRequestForm,
+        PatchedExternalLinkRequestMultipart,
+    ],
 ) -> Response[ExternalLink]:
     """
     Args:
         uuid (UUID):
         body (PatchedExternalLinkRequest):
+        body (PatchedExternalLinkRequestForm):
+        body (PatchedExternalLinkRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -83,12 +104,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedExternalLinkRequest,
+    body: Union[
+        PatchedExternalLinkRequest,
+        PatchedExternalLinkRequestForm,
+        PatchedExternalLinkRequestMultipart,
+    ],
 ) -> ExternalLink:
     """
     Args:
         uuid (UUID):
         body (PatchedExternalLinkRequest):
+        body (PatchedExternalLinkRequestForm):
+        body (PatchedExternalLinkRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -109,12 +136,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedExternalLinkRequest,
+    body: Union[
+        PatchedExternalLinkRequest,
+        PatchedExternalLinkRequestForm,
+        PatchedExternalLinkRequestMultipart,
+    ],
 ) -> Response[ExternalLink]:
     """
     Args:
         uuid (UUID):
         body (PatchedExternalLinkRequest):
+        body (PatchedExternalLinkRequestForm):
+        body (PatchedExternalLinkRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -138,12 +171,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedExternalLinkRequest,
+    body: Union[
+        PatchedExternalLinkRequest,
+        PatchedExternalLinkRequestForm,
+        PatchedExternalLinkRequestMultipart,
+    ],
 ) -> ExternalLink:
     """
     Args:
         uuid (UUID):
         body (PatchedExternalLinkRequest):
+        body (PatchedExternalLinkRequestForm):
+        body (PatchedExternalLinkRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

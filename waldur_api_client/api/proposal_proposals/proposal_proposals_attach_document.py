@@ -7,13 +7,19 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.proposal_documentation_request import ProposalDocumentationRequest
+from ...models.proposal_documentation_request_form import ProposalDocumentationRequestForm
+from ...models.proposal_documentation_request_multipart import ProposalDocumentationRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ProposalDocumentationRequest,
+    body: Union[
+        ProposalDocumentationRequest,
+        ProposalDocumentationRequestForm,
+        ProposalDocumentationRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -22,9 +28,18 @@ def _get_kwargs(
         "url": f"/api/proposal-proposals/{uuid}/attach_document/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, ProposalDocumentationRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, ProposalDocumentationRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, ProposalDocumentationRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -49,13 +64,19 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProposalDocumentationRequest,
+    body: Union[
+        ProposalDocumentationRequest,
+        ProposalDocumentationRequestForm,
+        ProposalDocumentationRequestMultipart,
+    ],
 ) -> Response[Any]:
     """Attach document to proposal.
 
     Args:
         uuid (UUID):
         body (ProposalDocumentationRequest):
+        body (ProposalDocumentationRequestForm):
+        body (ProposalDocumentationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -81,13 +102,19 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProposalDocumentationRequest,
+    body: Union[
+        ProposalDocumentationRequest,
+        ProposalDocumentationRequestForm,
+        ProposalDocumentationRequestMultipart,
+    ],
 ) -> Response[Any]:
     """Attach document to proposal.
 
     Args:
         uuid (UUID):
         body (ProposalDocumentationRequest):
+        body (ProposalDocumentationRequestForm):
+        body (ProposalDocumentationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

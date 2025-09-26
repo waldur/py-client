@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.checklist_category import ChecklistCategory
 from ...models.patched_checklist_category_request import PatchedChecklistCategoryRequest
+from ...models.patched_checklist_category_request_form import PatchedChecklistCategoryRequestForm
+from ...models.patched_checklist_category_request_multipart import PatchedChecklistCategoryRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: PatchedChecklistCategoryRequest,
+    body: Union[
+        PatchedChecklistCategoryRequest,
+        PatchedChecklistCategoryRequestForm,
+        PatchedChecklistCategoryRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/checklists-admin-categories/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, PatchedChecklistCategoryRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, PatchedChecklistCategoryRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, PatchedChecklistCategoryRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -54,12 +69,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedChecklistCategoryRequest,
+    body: Union[
+        PatchedChecklistCategoryRequest,
+        PatchedChecklistCategoryRequestForm,
+        PatchedChecklistCategoryRequestMultipart,
+    ],
 ) -> Response[ChecklistCategory]:
     """
     Args:
         uuid (UUID):
         body (PatchedChecklistCategoryRequest):
+        body (PatchedChecklistCategoryRequestForm):
+        body (PatchedChecklistCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -85,12 +106,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedChecklistCategoryRequest,
+    body: Union[
+        PatchedChecklistCategoryRequest,
+        PatchedChecklistCategoryRequestForm,
+        PatchedChecklistCategoryRequestMultipart,
+    ],
 ) -> ChecklistCategory:
     """
     Args:
         uuid (UUID):
         body (PatchedChecklistCategoryRequest):
+        body (PatchedChecklistCategoryRequestForm):
+        body (PatchedChecklistCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -111,12 +138,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedChecklistCategoryRequest,
+    body: Union[
+        PatchedChecklistCategoryRequest,
+        PatchedChecklistCategoryRequestForm,
+        PatchedChecklistCategoryRequestMultipart,
+    ],
 ) -> Response[ChecklistCategory]:
     """
     Args:
         uuid (UUID):
         body (PatchedChecklistCategoryRequest):
+        body (PatchedChecklistCategoryRequestForm):
+        body (PatchedChecklistCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -140,12 +173,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedChecklistCategoryRequest,
+    body: Union[
+        PatchedChecklistCategoryRequest,
+        PatchedChecklistCategoryRequestForm,
+        PatchedChecklistCategoryRequestMultipart,
+    ],
 ) -> ChecklistCategory:
     """
     Args:
         uuid (UUID):
         body (PatchedChecklistCategoryRequest):
+        body (PatchedChecklistCategoryRequestForm):
+        body (PatchedChecklistCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

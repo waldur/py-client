@@ -8,13 +8,21 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.call_managing_organisation import CallManagingOrganisation
 from ...models.patched_call_managing_organisation_request import PatchedCallManagingOrganisationRequest
+from ...models.patched_call_managing_organisation_request_form import PatchedCallManagingOrganisationRequestForm
+from ...models.patched_call_managing_organisation_request_multipart import (
+    PatchedCallManagingOrganisationRequestMultipart,
+)
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: PatchedCallManagingOrganisationRequest,
+    body: Union[
+        PatchedCallManagingOrganisationRequest,
+        PatchedCallManagingOrganisationRequestForm,
+        PatchedCallManagingOrganisationRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +31,18 @@ def _get_kwargs(
         "url": f"/api/call-managing-organisations/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, PatchedCallManagingOrganisationRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, PatchedCallManagingOrganisationRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, PatchedCallManagingOrganisationRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -56,12 +73,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedCallManagingOrganisationRequest,
+    body: Union[
+        PatchedCallManagingOrganisationRequest,
+        PatchedCallManagingOrganisationRequestForm,
+        PatchedCallManagingOrganisationRequestMultipart,
+    ],
 ) -> Response[CallManagingOrganisation]:
     """
     Args:
         uuid (UUID):
         body (PatchedCallManagingOrganisationRequest):
+        body (PatchedCallManagingOrganisationRequestForm):
+        body (PatchedCallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -87,12 +110,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedCallManagingOrganisationRequest,
+    body: Union[
+        PatchedCallManagingOrganisationRequest,
+        PatchedCallManagingOrganisationRequestForm,
+        PatchedCallManagingOrganisationRequestMultipart,
+    ],
 ) -> CallManagingOrganisation:
     """
     Args:
         uuid (UUID):
         body (PatchedCallManagingOrganisationRequest):
+        body (PatchedCallManagingOrganisationRequestForm):
+        body (PatchedCallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -113,12 +142,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedCallManagingOrganisationRequest,
+    body: Union[
+        PatchedCallManagingOrganisationRequest,
+        PatchedCallManagingOrganisationRequestForm,
+        PatchedCallManagingOrganisationRequestMultipart,
+    ],
 ) -> Response[CallManagingOrganisation]:
     """
     Args:
         uuid (UUID):
         body (PatchedCallManagingOrganisationRequest):
+        body (PatchedCallManagingOrganisationRequestForm):
+        body (PatchedCallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -142,12 +177,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedCallManagingOrganisationRequest,
+    body: Union[
+        PatchedCallManagingOrganisationRequest,
+        PatchedCallManagingOrganisationRequestForm,
+        PatchedCallManagingOrganisationRequestMultipart,
+    ],
 ) -> CallManagingOrganisation:
     """
     Args:
         uuid (UUID):
         body (PatchedCallManagingOrganisationRequest):
+        body (PatchedCallManagingOrganisationRequestForm):
+        body (PatchedCallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

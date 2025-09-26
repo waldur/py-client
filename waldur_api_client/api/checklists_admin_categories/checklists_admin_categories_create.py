@@ -7,12 +7,18 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.checklist_category import ChecklistCategory
 from ...models.checklist_category_request import ChecklistCategoryRequest
+from ...models.checklist_category_request_form import ChecklistCategoryRequestForm
+from ...models.checklist_category_request_multipart import ChecklistCategoryRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ChecklistCategoryRequest,
+    body: Union[
+        ChecklistCategoryRequest,
+        ChecklistCategoryRequestForm,
+        ChecklistCategoryRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -21,9 +27,18 @@ def _get_kwargs(
         "url": "/api/checklists-admin-categories/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, ChecklistCategoryRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, ChecklistCategoryRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, ChecklistCategoryRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -51,11 +66,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: ChecklistCategoryRequest,
+    body: Union[
+        ChecklistCategoryRequest,
+        ChecklistCategoryRequestForm,
+        ChecklistCategoryRequestMultipart,
+    ],
 ) -> Response[ChecklistCategory]:
     """
     Args:
         body (ChecklistCategoryRequest):
+        body (ChecklistCategoryRequestForm):
+        body (ChecklistCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -79,11 +100,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: ChecklistCategoryRequest,
+    body: Union[
+        ChecklistCategoryRequest,
+        ChecklistCategoryRequestForm,
+        ChecklistCategoryRequestMultipart,
+    ],
 ) -> ChecklistCategory:
     """
     Args:
         body (ChecklistCategoryRequest):
+        body (ChecklistCategoryRequestForm):
+        body (ChecklistCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -102,11 +129,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: ChecklistCategoryRequest,
+    body: Union[
+        ChecklistCategoryRequest,
+        ChecklistCategoryRequestForm,
+        ChecklistCategoryRequestMultipart,
+    ],
 ) -> Response[ChecklistCategory]:
     """
     Args:
         body (ChecklistCategoryRequest):
+        body (ChecklistCategoryRequestForm):
+        body (ChecklistCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -128,11 +161,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: ChecklistCategoryRequest,
+    body: Union[
+        ChecklistCategoryRequest,
+        ChecklistCategoryRequestForm,
+        ChecklistCategoryRequestMultipart,
+    ],
 ) -> ChecklistCategory:
     """
     Args:
         body (ChecklistCategoryRequest):
+        body (ChecklistCategoryRequestForm):
+        body (ChecklistCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

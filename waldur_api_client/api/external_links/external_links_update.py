@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.external_link import ExternalLink
 from ...models.external_link_request import ExternalLinkRequest
+from ...models.external_link_request_form import ExternalLinkRequestForm
+from ...models.external_link_request_multipart import ExternalLinkRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ExternalLinkRequest,
+    body: Union[
+        ExternalLinkRequest,
+        ExternalLinkRequestForm,
+        ExternalLinkRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/external-links/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, ExternalLinkRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, ExternalLinkRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, ExternalLinkRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -52,12 +67,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ExternalLinkRequest,
+    body: Union[
+        ExternalLinkRequest,
+        ExternalLinkRequestForm,
+        ExternalLinkRequestMultipart,
+    ],
 ) -> Response[ExternalLink]:
     """
     Args:
         uuid (UUID):
         body (ExternalLinkRequest):
+        body (ExternalLinkRequestForm):
+        body (ExternalLinkRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -83,12 +104,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ExternalLinkRequest,
+    body: Union[
+        ExternalLinkRequest,
+        ExternalLinkRequestForm,
+        ExternalLinkRequestMultipart,
+    ],
 ) -> ExternalLink:
     """
     Args:
         uuid (UUID):
         body (ExternalLinkRequest):
+        body (ExternalLinkRequestForm):
+        body (ExternalLinkRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -109,12 +136,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ExternalLinkRequest,
+    body: Union[
+        ExternalLinkRequest,
+        ExternalLinkRequestForm,
+        ExternalLinkRequestMultipart,
+    ],
 ) -> Response[ExternalLink]:
     """
     Args:
         uuid (UUID):
         body (ExternalLinkRequest):
+        body (ExternalLinkRequestForm):
+        body (ExternalLinkRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -138,12 +171,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ExternalLinkRequest,
+    body: Union[
+        ExternalLinkRequest,
+        ExternalLinkRequestForm,
+        ExternalLinkRequestMultipart,
+    ],
 ) -> ExternalLink:
     """
     Args:
         uuid (UUID):
         body (ExternalLinkRequest):
+        body (ExternalLinkRequestForm):
+        body (ExternalLinkRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

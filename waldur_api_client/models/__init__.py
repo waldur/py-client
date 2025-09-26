@@ -21,6 +21,8 @@ from .answer_submit_request import AnswerSubmitRequest
 from .answer_submit_response import AnswerSubmitResponse
 from .attachment import Attachment
 from .attachment_request import AttachmentRequest
+from .attachment_request_form import AttachmentRequestForm
+from .attachment_request_multipart import AttachmentRequestMultipart
 from .auth_result import AuthResult
 from .auth_result_request import AuthResultRequest
 from .auth_result_state_enum import AuthResultStateEnum
@@ -162,6 +164,8 @@ from .call_document import CallDocument
 from .call_document_request import CallDocumentRequest
 from .call_managing_organisation import CallManagingOrganisation
 from .call_managing_organisation_request import CallManagingOrganisationRequest
+from .call_managing_organisation_request_form import CallManagingOrganisationRequestForm
+from .call_managing_organisation_request_multipart import CallManagingOrganisationRequestMultipart
 from .call_managing_organisation_stat import CallManagingOrganisationStat
 from .call_managing_organisations_count_o_item import CallManagingOrganisationsCountOItem
 from .call_managing_organisations_list_o_item import CallManagingOrganisationsListOItem
@@ -184,6 +188,8 @@ from .category_components import CategoryComponents
 from .category_components_request import CategoryComponentsRequest
 from .category_group import CategoryGroup
 from .category_group_request import CategoryGroupRequest
+from .category_group_request_form import CategoryGroupRequestForm
+from .category_group_request_multipart import CategoryGroupRequestMultipart
 from .category_help_article import CategoryHelpArticle
 from .category_help_article_request import CategoryHelpArticleRequest
 from .category_help_articles import CategoryHelpArticles
@@ -193,6 +199,8 @@ from .category_serializer_for_for_nested_fields_request import CategorySerialize
 from .checklist import Checklist
 from .checklist_category import ChecklistCategory
 from .checklist_category_request import ChecklistCategoryRequest
+from .checklist_category_request_form import ChecklistCategoryRequestForm
+from .checklist_category_request_multipart import ChecklistCategoryRequestMultipart
 from .checklist_completion import ChecklistCompletion
 from .checklist_completion_reviewer import ChecklistCompletionReviewer
 from .checklist_info import ChecklistInfo
@@ -233,6 +241,8 @@ from .confirm_email_request_request import ConfirmEmailRequestRequest
 from .console_url import ConsoleUrl
 from .constance_settings import ConstanceSettings
 from .constance_settings_request import ConstanceSettingsRequest
+from .constance_settings_request_form import ConstanceSettingsRequestForm
+from .constance_settings_request_multipart import ConstanceSettingsRequestMultipart
 from .container_format_enum import ContainerFormatEnum
 from .core_auth_token import CoreAuthToken
 from .core_states import CoreStates
@@ -277,6 +287,8 @@ from .customer_permissions_reviews_count_o_item import CustomerPermissionsReview
 from .customer_permissions_reviews_list_o_item import CustomerPermissionsReviewsListOItem
 from .customer_quotas import CustomerQuotas
 from .customer_request import CustomerRequest
+from .customer_request_form import CustomerRequestForm
+from .customer_request_multipart import CustomerRequestMultipart
 from .customer_service_account import CustomerServiceAccount
 from .customer_service_account_request import CustomerServiceAccountRequest
 from .customer_user import CustomerUser
@@ -345,6 +357,8 @@ from .events_scope_types_retrieve_field_item import EventsScopeTypesRetrieveFiel
 from .execution_state_enum import ExecutionStateEnum
 from .external_link import ExternalLink
 from .external_link_request import ExternalLinkRequest
+from .external_link_request_form import ExternalLinkRequestForm
+from .external_link_request_multipart import ExternalLinkRequestMultipart
 from .feature_values_body import FeatureValuesBody
 from .feedback import Feedback
 from .financial_report import FinancialReport
@@ -352,6 +366,8 @@ from .financial_report_email_request import FinancialReportEmailRequest
 from .fingerprint import Fingerprint
 from .firecrest_job import FirecrestJob
 from .firecrest_job_request import FirecrestJobRequest
+from .firecrest_job_request_form import FirecrestJobRequestForm
+from .firecrest_job_request_multipart import FirecrestJobRequestMultipart
 from .freeipa_profile import FreeipaProfile
 from .freeipa_profile_request import FreeipaProfileRequest
 from .generic_order_attributes import GenericOrderAttributes
@@ -488,6 +504,8 @@ from .marketplace_category_component_usages_retrieve_field_item import (
 from .marketplace_category_groups_list_field_item import MarketplaceCategoryGroupsListFieldItem
 from .marketplace_category_groups_retrieve_field_item import MarketplaceCategoryGroupsRetrieveFieldItem
 from .marketplace_category_request import MarketplaceCategoryRequest
+from .marketplace_category_request_form import MarketplaceCategoryRequestForm
+from .marketplace_category_request_multipart import MarketplaceCategoryRequestMultipart
 from .marketplace_component_usages_count_o_item import MarketplaceComponentUsagesCountOItem
 from .marketplace_component_usages_list_field_item import MarketplaceComponentUsagesListFieldItem
 from .marketplace_component_usages_list_o_item import MarketplaceComponentUsagesListOItem
@@ -732,15 +750,23 @@ from .offering_cost import OfferingCost
 from .offering_country_stats import OfferingCountryStats
 from .offering_create import OfferingCreate
 from .offering_create_request import OfferingCreateRequest
+from .offering_create_request_form import OfferingCreateRequestForm
+from .offering_create_request_form_limits import OfferingCreateRequestFormLimits
 from .offering_create_request_limits import OfferingCreateRequestLimits
+from .offering_create_request_multipart import OfferingCreateRequestMultipart
+from .offering_create_request_multipart_limits import OfferingCreateRequestMultipartLimits
 from .offering_create_service_attributes import OfferingCreateServiceAttributes
 from .offering_description_update_request import OfferingDescriptionUpdateRequest
 from .offering_estimated_cost_policy import OfferingEstimatedCostPolicy
 from .offering_estimated_cost_policy_request import OfferingEstimatedCostPolicyRequest
 from .offering_file import OfferingFile
 from .offering_file_request import OfferingFileRequest
+from .offering_file_request_form import OfferingFileRequestForm
+from .offering_file_request_multipart import OfferingFileRequestMultipart
 from .offering_groups import OfferingGroups
 from .offering_image_request import OfferingImageRequest
+from .offering_image_request_form import OfferingImageRequestForm
+from .offering_image_request_multipart import OfferingImageRequestMultipart
 from .offering_integration_update_request import OfferingIntegrationUpdateRequest
 from .offering_location_update_request import OfferingLocationUpdateRequest
 from .offering_options import OfferingOptions
@@ -762,6 +788,8 @@ from .offering_terms_of_service_create import OfferingTermsOfServiceCreate
 from .offering_terms_of_service_create_request import OfferingTermsOfServiceCreateRequest
 from .offering_terms_of_service_request import OfferingTermsOfServiceRequest
 from .offering_thumbnail_request import OfferingThumbnailRequest
+from .offering_thumbnail_request_form import OfferingThumbnailRequestForm
+from .offering_thumbnail_request_multipart import OfferingThumbnailRequestMultipart
 from .offering_usage_policy import OfferingUsagePolicy
 from .offering_usage_policy_request import OfferingUsagePolicyRequest
 from .offering_user import OfferingUser
@@ -950,6 +978,8 @@ from .option_field_request import OptionFieldRequest
 from .option_field_type_enum import OptionFieldTypeEnum
 from .order_attachment import OrderAttachment
 from .order_attachment_request import OrderAttachmentRequest
+from .order_attachment_request_form import OrderAttachmentRequestForm
+from .order_attachment_request_multipart import OrderAttachmentRequestMultipart
 from .order_create import OrderCreate
 from .order_create_limits import OrderCreateLimits
 from .order_create_request import OrderCreateRequest
@@ -963,6 +993,8 @@ from .organization_group import OrganizationGroup
 from .organization_group_request import OrganizationGroupRequest
 from .organization_groups_request import OrganizationGroupsRequest
 from .paid_request import PaidRequest
+from .paid_request_form import PaidRequestForm
+from .paid_request_multipart import PaidRequestMultipart
 from .password_change_request import PasswordChangeRequest
 from .patched_access_subnet_request import PatchedAccessSubnetRequest
 from .patched_admin_announcement_request import PatchedAdminAnnouncementRequest
@@ -973,12 +1005,18 @@ from .patched_azure_sql_server_request import PatchedAzureSqlServerRequest
 from .patched_azure_virtual_machine_request import PatchedAzureVirtualMachineRequest
 from .patched_broadcast_message_request import PatchedBroadcastMessageRequest
 from .patched_call_managing_organisation_request import PatchedCallManagingOrganisationRequest
+from .patched_call_managing_organisation_request_form import PatchedCallManagingOrganisationRequestForm
+from .patched_call_managing_organisation_request_multipart import PatchedCallManagingOrganisationRequestMultipart
 from .patched_call_resource_template_request import PatchedCallResourceTemplateRequest
 from .patched_category_column_request import PatchedCategoryColumnRequest
 from .patched_category_components_request import PatchedCategoryComponentsRequest
 from .patched_category_group_request import PatchedCategoryGroupRequest
+from .patched_category_group_request_form import PatchedCategoryGroupRequestForm
+from .patched_category_group_request_multipart import PatchedCategoryGroupRequestMultipart
 from .patched_category_help_articles_request import PatchedCategoryHelpArticlesRequest
 from .patched_checklist_category_request import PatchedChecklistCategoryRequest
+from .patched_checklist_category_request_form import PatchedChecklistCategoryRequestForm
+from .patched_checklist_category_request_multipart import PatchedChecklistCategoryRequestMultipart
 from .patched_checklist_request import PatchedChecklistRequest
 from .patched_cluster_security_group_request import PatchedClusterSecurityGroupRequest
 from .patched_comment_request import PatchedCommentRequest
@@ -986,10 +1024,14 @@ from .patched_component_user_usage_limit_request import PatchedComponentUserUsag
 from .patched_create_customer_credit_request import PatchedCreateCustomerCreditRequest
 from .patched_customer_estimated_cost_policy_request import PatchedCustomerEstimatedCostPolicyRequest
 from .patched_customer_request import PatchedCustomerRequest
+from .patched_customer_request_form import PatchedCustomerRequestForm
+from .patched_customer_request_multipart import PatchedCustomerRequestMultipart
 from .patched_customer_service_account_request import PatchedCustomerServiceAccountRequest
 from .patched_digital_ocean_droplet_request import PatchedDigitalOceanDropletRequest
 from .patched_email_hook_request import PatchedEmailHookRequest
 from .patched_external_link_request import PatchedExternalLinkRequest
+from .patched_external_link_request_form import PatchedExternalLinkRequestForm
+from .patched_external_link_request_multipart import PatchedExternalLinkRequestMultipart
 from .patched_firecrest_job_request import PatchedFirecrestJobRequest
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
 from .patched_invoice_item_update_request import PatchedInvoiceItemUpdateRequest
@@ -1004,6 +1046,8 @@ from .patched_maintenance_announcement_offering_template_request import (
 from .patched_maintenance_announcement_request import PatchedMaintenanceAnnouncementRequest
 from .patched_maintenance_announcement_template_request import PatchedMaintenanceAnnouncementTemplateRequest
 from .patched_marketplace_category_request import PatchedMarketplaceCategoryRequest
+from .patched_marketplace_category_request_form import PatchedMarketplaceCategoryRequestForm
+from .patched_marketplace_category_request_multipart import PatchedMarketplaceCategoryRequestMultipart
 from .patched_message_template_request import PatchedMessageTemplateRequest
 from .patched_migration_details_request import PatchedMigrationDetailsRequest
 from .patched_notification_request import PatchedNotificationRequest
@@ -1029,9 +1073,13 @@ from .patched_open_stack_volume_request import PatchedOpenStackVolumeRequest
 from .patched_organization_group_request import PatchedOrganizationGroupRequest
 from .patched_payment_profile_request import PatchedPaymentProfileRequest
 from .patched_payment_request import PatchedPaymentRequest
+from .patched_payment_request_form import PatchedPaymentRequestForm
+from .patched_payment_request_multipart import PatchedPaymentRequestMultipart
 from .patched_project_credit_request import PatchedProjectCreditRequest
 from .patched_project_estimated_cost_policy_request import PatchedProjectEstimatedCostPolicyRequest
 from .patched_project_request import PatchedProjectRequest
+from .patched_project_request_form import PatchedProjectRequestForm
+from .patched_project_request_multipart import PatchedProjectRequestMultipart
 from .patched_project_service_account_request import PatchedProjectServiceAccountRequest
 from .patched_proposal_project_role_mapping_request import PatchedProposalProjectRoleMappingRequest
 from .patched_proposal_review_request import PatchedProposalReviewRequest
@@ -1061,11 +1109,15 @@ from .patched_rule_request_plan_limits import PatchedRuleRequestPlanLimits
 from .patched_screenshot_request import PatchedScreenshotRequest
 from .patched_section_request import PatchedSectionRequest
 from .patched_service_provider_request import PatchedServiceProviderRequest
+from .patched_service_provider_request_form import PatchedServiceProviderRequestForm
+from .patched_service_provider_request_multipart import PatchedServiceProviderRequestMultipart
 from .patched_slurm_allocation_request import PatchedSlurmAllocationRequest
 from .patched_template_request import PatchedTemplateRequest
 from .patched_user_agreement_request import PatchedUserAgreementRequest
 from .patched_user_offering_consent_request import PatchedUserOfferingConsentRequest
 from .patched_user_request import PatchedUserRequest
+from .patched_user_request_form import PatchedUserRequestForm
+from .patched_user_request_multipart import PatchedUserRequestMultipart
 from .patched_vmware_virtual_machine_request import PatchedVmwareVirtualMachineRequest
 from .patched_web_hook_request import PatchedWebHookRequest
 from .payment import Payment
@@ -1078,6 +1130,8 @@ from .payment_profiles_count_payment_type_item import PaymentProfilesCountPaymen
 from .payment_profiles_list_o_item import PaymentProfilesListOItem
 from .payment_profiles_list_payment_type_item import PaymentProfilesListPaymentTypeItem
 from .payment_request import PaymentRequest
+from .payment_request_form import PaymentRequestForm
+from .payment_request_multipart import PaymentRequestMultipart
 from .payment_type_enum import PaymentTypeEnum
 from .payment_url_request import PaymentURLRequest
 from .period_enum import PeriodEnum
@@ -1110,6 +1164,8 @@ from .project_permissions_reviews_count_o_item import ProjectPermissionsReviewsC
 from .project_permissions_reviews_list_o_item import ProjectPermissionsReviewsListOItem
 from .project_quotas import ProjectQuotas
 from .project_request import ProjectRequest
+from .project_request_form import ProjectRequestForm
+from .project_request_multipart import ProjectRequestMultipart
 from .project_service_account import ProjectServiceAccount
 from .project_service_account_request import ProjectServiceAccountRequest
 from .project_type import ProjectType
@@ -1151,6 +1207,8 @@ from .proposal_can_submit import ProposalCanSubmit
 from .proposal_compliance_status_type_0 import ProposalComplianceStatusType0
 from .proposal_documentation import ProposalDocumentation
 from .proposal_documentation_request import ProposalDocumentationRequest
+from .proposal_documentation_request_form import ProposalDocumentationRequestForm
+from .proposal_documentation_request_multipart import ProposalDocumentationRequestMultipart
 from .proposal_project_role_mapping import ProposalProjectRoleMapping
 from .proposal_project_role_mapping_request import ProposalProjectRoleMappingRequest
 from .proposal_proposals_count_o_item import ProposalProposalsCountOItem
@@ -1431,6 +1489,8 @@ from .saml_2_logout_complete_request import Saml2LogoutCompleteRequest
 from .saml_2_provider import Saml2Provider
 from .screenshot import Screenshot
 from .screenshot_request import ScreenshotRequest
+from .screenshot_request_form import ScreenshotRequestForm
+from .screenshot_request_multipart import ScreenshotRequestMultipart
 from .section import Section
 from .section_request import SectionRequest
 from .service_account_state import ServiceAccountState
@@ -1440,6 +1500,8 @@ from .service_provider_compliance_overview import ServiceProviderComplianceOverv
 from .service_provider_offering_user_compliance import ServiceProviderOfferingUserCompliance
 from .service_provider_offering_user_compliance_state_enum import ServiceProviderOfferingUserComplianceStateEnum
 from .service_provider_request import ServiceProviderRequest
+from .service_provider_request_form import ServiceProviderRequestForm
+from .service_provider_request_multipart import ServiceProviderRequestMultipart
 from .service_provider_revenues import ServiceProviderRevenues
 from .service_provider_signature import ServiceProviderSignature
 from .service_provider_signature_request import ServiceProviderSignatureRequest
@@ -1527,6 +1589,8 @@ from .user_permission_requests_list_state_item import UserPermissionRequestsList
 from .user_permissions_count_o_item import UserPermissionsCountOItem
 from .user_permissions_list_o_item import UserPermissionsListOItem
 from .user_request import UserRequest
+from .user_request_form import UserRequestForm
+from .user_request_multipart import UserRequestMultipart
 from .user_role_create_request import UserRoleCreateRequest
 from .user_role_delete_request import UserRoleDeleteRequest
 from .user_role_details import UserRoleDetails
@@ -1622,6 +1686,8 @@ __all__ = (
     "AnswerSubmitResponse",
     "Attachment",
     "AttachmentRequest",
+    "AttachmentRequestForm",
+    "AttachmentRequestMultipart",
     "AuthResult",
     "AuthResultRequest",
     "AuthResultStateEnum",
@@ -1753,6 +1819,8 @@ __all__ = (
     "CallDocumentRequest",
     "CallManagingOrganisation",
     "CallManagingOrganisationRequest",
+    "CallManagingOrganisationRequestForm",
+    "CallManagingOrganisationRequestMultipart",
     "CallManagingOrganisationsCountOItem",
     "CallManagingOrganisationsListOItem",
     "CallManagingOrganisationsListUsersListFieldItem",
@@ -1775,6 +1843,8 @@ __all__ = (
     "CategoryComponentUsage",
     "CategoryGroup",
     "CategoryGroupRequest",
+    "CategoryGroupRequestForm",
+    "CategoryGroupRequestMultipart",
     "CategoryHelpArticle",
     "CategoryHelpArticleRequest",
     "CategoryHelpArticles",
@@ -1784,6 +1854,8 @@ __all__ = (
     "Checklist",
     "ChecklistCategory",
     "ChecklistCategoryRequest",
+    "ChecklistCategoryRequestForm",
+    "ChecklistCategoryRequestMultipart",
     "ChecklistCompletion",
     "ChecklistCompletionReviewer",
     "ChecklistInfo",
@@ -1822,6 +1894,8 @@ __all__ = (
     "ConsoleUrl",
     "ConstanceSettings",
     "ConstanceSettingsRequest",
+    "ConstanceSettingsRequestForm",
+    "ConstanceSettingsRequestMultipart",
     "ContainerFormatEnum",
     "CoreAuthToken",
     "CoreStates",
@@ -1864,6 +1938,8 @@ __all__ = (
     "CustomerPermissionsReviewsListOItem",
     "CustomerQuotas",
     "CustomerRequest",
+    "CustomerRequestForm",
+    "CustomerRequestMultipart",
     "CustomerServiceAccount",
     "CustomerServiceAccountRequest",
     "CustomersListFieldItem",
@@ -1930,6 +2006,8 @@ __all__ = (
     "ExecutionStateEnum",
     "ExternalLink",
     "ExternalLinkRequest",
+    "ExternalLinkRequestForm",
+    "ExternalLinkRequestMultipart",
     "FeatureValuesBody",
     "Feedback",
     "FinancialReport",
@@ -1937,6 +2015,8 @@ __all__ = (
     "Fingerprint",
     "FirecrestJob",
     "FirecrestJobRequest",
+    "FirecrestJobRequestForm",
+    "FirecrestJobRequestMultipart",
     "FreeipaProfile",
     "FreeipaProfileRequest",
     "GenericOrderAttributes",
@@ -2067,6 +2147,8 @@ __all__ = (
     "MarketplaceCategoryGroupsListFieldItem",
     "MarketplaceCategoryGroupsRetrieveFieldItem",
     "MarketplaceCategoryRequest",
+    "MarketplaceCategoryRequestForm",
+    "MarketplaceCategoryRequestMultipart",
     "MarketplaceComponentUsagesCountOItem",
     "MarketplaceComponentUsagesListFieldItem",
     "MarketplaceComponentUsagesListOItem",
@@ -2275,15 +2357,23 @@ __all__ = (
     "OfferingCountryStats",
     "OfferingCreate",
     "OfferingCreateRequest",
+    "OfferingCreateRequestForm",
+    "OfferingCreateRequestFormLimits",
     "OfferingCreateRequestLimits",
+    "OfferingCreateRequestMultipart",
+    "OfferingCreateRequestMultipartLimits",
     "OfferingCreateServiceAttributes",
     "OfferingDescriptionUpdateRequest",
     "OfferingEstimatedCostPolicy",
     "OfferingEstimatedCostPolicyRequest",
     "OfferingFile",
     "OfferingFileRequest",
+    "OfferingFileRequestForm",
+    "OfferingFileRequestMultipart",
     "OfferingGroups",
     "OfferingImageRequest",
+    "OfferingImageRequestForm",
+    "OfferingImageRequestMultipart",
     "OfferingIntegrationUpdateRequest",
     "OfferingLocationUpdateRequest",
     "OfferingOptions",
@@ -2305,6 +2395,8 @@ __all__ = (
     "OfferingTermsOfServiceCreateRequest",
     "OfferingTermsOfServiceRequest",
     "OfferingThumbnailRequest",
+    "OfferingThumbnailRequestForm",
+    "OfferingThumbnailRequestMultipart",
     "OfferingUsagePolicy",
     "OfferingUsagePolicyRequest",
     "OfferingUser",
@@ -2469,6 +2561,8 @@ __all__ = (
     "OptionFieldTypeEnum",
     "OrderAttachment",
     "OrderAttachmentRequest",
+    "OrderAttachmentRequestForm",
+    "OrderAttachmentRequestMultipart",
     "OrderCreate",
     "OrderCreateLimits",
     "OrderCreateRequest",
@@ -2482,6 +2576,8 @@ __all__ = (
     "OrganizationGroupRequest",
     "OrganizationGroupsRequest",
     "PaidRequest",
+    "PaidRequestForm",
+    "PaidRequestMultipart",
     "PasswordChangeRequest",
     "PatchedAccessSubnetRequest",
     "PatchedAdminAnnouncementRequest",
@@ -2492,12 +2588,18 @@ __all__ = (
     "PatchedAzureVirtualMachineRequest",
     "PatchedBroadcastMessageRequest",
     "PatchedCallManagingOrganisationRequest",
+    "PatchedCallManagingOrganisationRequestForm",
+    "PatchedCallManagingOrganisationRequestMultipart",
     "PatchedCallResourceTemplateRequest",
     "PatchedCategoryColumnRequest",
     "PatchedCategoryComponentsRequest",
     "PatchedCategoryGroupRequest",
+    "PatchedCategoryGroupRequestForm",
+    "PatchedCategoryGroupRequestMultipart",
     "PatchedCategoryHelpArticlesRequest",
     "PatchedChecklistCategoryRequest",
+    "PatchedChecklistCategoryRequestForm",
+    "PatchedChecklistCategoryRequestMultipart",
     "PatchedChecklistRequest",
     "PatchedClusterSecurityGroupRequest",
     "PatchedCommentRequest",
@@ -2505,10 +2607,14 @@ __all__ = (
     "PatchedCreateCustomerCreditRequest",
     "PatchedCustomerEstimatedCostPolicyRequest",
     "PatchedCustomerRequest",
+    "PatchedCustomerRequestForm",
+    "PatchedCustomerRequestMultipart",
     "PatchedCustomerServiceAccountRequest",
     "PatchedDigitalOceanDropletRequest",
     "PatchedEmailHookRequest",
     "PatchedExternalLinkRequest",
+    "PatchedExternalLinkRequestForm",
+    "PatchedExternalLinkRequestMultipart",
     "PatchedFirecrestJobRequest",
     "PatchedIdentityProviderRequest",
     "PatchedInvoiceItemUpdateRequest",
@@ -2521,6 +2627,8 @@ __all__ = (
     "PatchedMaintenanceAnnouncementRequest",
     "PatchedMaintenanceAnnouncementTemplateRequest",
     "PatchedMarketplaceCategoryRequest",
+    "PatchedMarketplaceCategoryRequestForm",
+    "PatchedMarketplaceCategoryRequestMultipart",
     "PatchedMessageTemplateRequest",
     "PatchedMigrationDetailsRequest",
     "PatchedNotificationRequest",
@@ -2544,9 +2652,13 @@ __all__ = (
     "PatchedOrganizationGroupRequest",
     "PatchedPaymentProfileRequest",
     "PatchedPaymentRequest",
+    "PatchedPaymentRequestForm",
+    "PatchedPaymentRequestMultipart",
     "PatchedProjectCreditRequest",
     "PatchedProjectEstimatedCostPolicyRequest",
     "PatchedProjectRequest",
+    "PatchedProjectRequestForm",
+    "PatchedProjectRequestMultipart",
     "PatchedProjectServiceAccountRequest",
     "PatchedProposalProjectRoleMappingRequest",
     "PatchedProposalReviewRequest",
@@ -2576,11 +2688,15 @@ __all__ = (
     "PatchedScreenshotRequest",
     "PatchedSectionRequest",
     "PatchedServiceProviderRequest",
+    "PatchedServiceProviderRequestForm",
+    "PatchedServiceProviderRequestMultipart",
     "PatchedSlurmAllocationRequest",
     "PatchedTemplateRequest",
     "PatchedUserAgreementRequest",
     "PatchedUserOfferingConsentRequest",
     "PatchedUserRequest",
+    "PatchedUserRequestForm",
+    "PatchedUserRequestMultipart",
     "PatchedVmwareVirtualMachineRequest",
     "PatchedWebHookRequest",
     "Payment",
@@ -2593,6 +2709,8 @@ __all__ = (
     "PaymentProfilesListOItem",
     "PaymentProfilesListPaymentTypeItem",
     "PaymentRequest",
+    "PaymentRequestForm",
+    "PaymentRequestMultipart",
     "PaymentTypeEnum",
     "PaymentURLRequest",
     "PeriodEnum",
@@ -2625,6 +2743,8 @@ __all__ = (
     "ProjectPermissionsReviewsListOItem",
     "ProjectQuotas",
     "ProjectRequest",
+    "ProjectRequestForm",
+    "ProjectRequestMultipart",
     "ProjectsCountOItem",
     "ProjectServiceAccount",
     "ProjectServiceAccountRequest",
@@ -2658,6 +2778,8 @@ __all__ = (
     "ProposalComplianceStatusType0",
     "ProposalDocumentation",
     "ProposalDocumentationRequest",
+    "ProposalDocumentationRequestForm",
+    "ProposalDocumentationRequestMultipart",
     "ProposalProjectRoleMapping",
     "ProposalProjectRoleMappingRequest",
     "ProposalProposalsCountOItem",
@@ -2924,6 +3046,8 @@ __all__ = (
     "Saml2Provider",
     "Screenshot",
     "ScreenshotRequest",
+    "ScreenshotRequestForm",
+    "ScreenshotRequestMultipart",
     "Section",
     "SectionRequest",
     "ServiceAccountState",
@@ -2933,6 +3057,8 @@ __all__ = (
     "ServiceProviderOfferingUserCompliance",
     "ServiceProviderOfferingUserComplianceStateEnum",
     "ServiceProviderRequest",
+    "ServiceProviderRequestForm",
+    "ServiceProviderRequestMultipart",
     "ServiceProviderRevenues",
     "ServiceProviderSignature",
     "ServiceProviderSignatureRequest",
@@ -3019,6 +3145,8 @@ __all__ = (
     "UserPermissionsCountOItem",
     "UserPermissionsListOItem",
     "UserRequest",
+    "UserRequestForm",
+    "UserRequestMultipart",
     "UserRoleCreateRequest",
     "UserRoleDeleteRequest",
     "UserRoleDetails",

@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.category_group import CategoryGroup
 from ...models.patched_category_group_request import PatchedCategoryGroupRequest
+from ...models.patched_category_group_request_form import PatchedCategoryGroupRequestForm
+from ...models.patched_category_group_request_multipart import PatchedCategoryGroupRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: PatchedCategoryGroupRequest,
+    body: Union[
+        PatchedCategoryGroupRequest,
+        PatchedCategoryGroupRequestForm,
+        PatchedCategoryGroupRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/marketplace-category-groups/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, PatchedCategoryGroupRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, PatchedCategoryGroupRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, PatchedCategoryGroupRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -52,12 +67,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedCategoryGroupRequest,
+    body: Union[
+        PatchedCategoryGroupRequest,
+        PatchedCategoryGroupRequestForm,
+        PatchedCategoryGroupRequestMultipart,
+    ],
 ) -> Response[CategoryGroup]:
     """
     Args:
         uuid (UUID):
         body (PatchedCategoryGroupRequest):
+        body (PatchedCategoryGroupRequestForm):
+        body (PatchedCategoryGroupRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -83,12 +104,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedCategoryGroupRequest,
+    body: Union[
+        PatchedCategoryGroupRequest,
+        PatchedCategoryGroupRequestForm,
+        PatchedCategoryGroupRequestMultipart,
+    ],
 ) -> CategoryGroup:
     """
     Args:
         uuid (UUID):
         body (PatchedCategoryGroupRequest):
+        body (PatchedCategoryGroupRequestForm):
+        body (PatchedCategoryGroupRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -109,12 +136,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedCategoryGroupRequest,
+    body: Union[
+        PatchedCategoryGroupRequest,
+        PatchedCategoryGroupRequestForm,
+        PatchedCategoryGroupRequestMultipart,
+    ],
 ) -> Response[CategoryGroup]:
     """
     Args:
         uuid (UUID):
         body (PatchedCategoryGroupRequest):
+        body (PatchedCategoryGroupRequestForm):
+        body (PatchedCategoryGroupRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -138,12 +171,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedCategoryGroupRequest,
+    body: Union[
+        PatchedCategoryGroupRequest,
+        PatchedCategoryGroupRequestForm,
+        PatchedCategoryGroupRequestMultipart,
+    ],
 ) -> CategoryGroup:
     """
     Args:
         uuid (UUID):
         body (PatchedCategoryGroupRequest):
+        body (PatchedCategoryGroupRequestForm):
+        body (PatchedCategoryGroupRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

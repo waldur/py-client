@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.customer import Customer
 from ...models.customer_request import CustomerRequest
+from ...models.customer_request_form import CustomerRequestForm
+from ...models.customer_request_multipart import CustomerRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: CustomerRequest,
+    body: Union[
+        CustomerRequest,
+        CustomerRequestForm,
+        CustomerRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/customers/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, CustomerRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, CustomerRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, CustomerRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -52,12 +67,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CustomerRequest,
+    body: Union[
+        CustomerRequest,
+        CustomerRequestForm,
+        CustomerRequestMultipart,
+    ],
 ) -> Response[Customer]:
     """
     Args:
         uuid (UUID):
         body (CustomerRequest):
+        body (CustomerRequestForm):
+        body (CustomerRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -83,12 +104,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CustomerRequest,
+    body: Union[
+        CustomerRequest,
+        CustomerRequestForm,
+        CustomerRequestMultipart,
+    ],
 ) -> Customer:
     """
     Args:
         uuid (UUID):
         body (CustomerRequest):
+        body (CustomerRequestForm):
+        body (CustomerRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -109,12 +136,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CustomerRequest,
+    body: Union[
+        CustomerRequest,
+        CustomerRequestForm,
+        CustomerRequestMultipart,
+    ],
 ) -> Response[Customer]:
     """
     Args:
         uuid (UUID):
         body (CustomerRequest):
+        body (CustomerRequestForm):
+        body (CustomerRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -138,12 +171,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CustomerRequest,
+    body: Union[
+        CustomerRequest,
+        CustomerRequestForm,
+        CustomerRequestMultipart,
+    ],
 ) -> Customer:
     """
     Args:
         uuid (UUID):
         body (CustomerRequest):
+        body (CustomerRequestForm):
+        body (CustomerRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

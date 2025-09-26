@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.call_managing_organisation import CallManagingOrganisation
 from ...models.call_managing_organisation_request import CallManagingOrganisationRequest
+from ...models.call_managing_organisation_request_form import CallManagingOrganisationRequestForm
+from ...models.call_managing_organisation_request_multipart import CallManagingOrganisationRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: CallManagingOrganisationRequest,
+    body: Union[
+        CallManagingOrganisationRequest,
+        CallManagingOrganisationRequestForm,
+        CallManagingOrganisationRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/call-managing-organisations/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, CallManagingOrganisationRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, CallManagingOrganisationRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, CallManagingOrganisationRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -56,12 +71,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CallManagingOrganisationRequest,
+    body: Union[
+        CallManagingOrganisationRequest,
+        CallManagingOrganisationRequestForm,
+        CallManagingOrganisationRequestMultipart,
+    ],
 ) -> Response[CallManagingOrganisation]:
     """
     Args:
         uuid (UUID):
         body (CallManagingOrganisationRequest):
+        body (CallManagingOrganisationRequestForm):
+        body (CallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -87,12 +108,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CallManagingOrganisationRequest,
+    body: Union[
+        CallManagingOrganisationRequest,
+        CallManagingOrganisationRequestForm,
+        CallManagingOrganisationRequestMultipart,
+    ],
 ) -> CallManagingOrganisation:
     """
     Args:
         uuid (UUID):
         body (CallManagingOrganisationRequest):
+        body (CallManagingOrganisationRequestForm):
+        body (CallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -113,12 +140,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CallManagingOrganisationRequest,
+    body: Union[
+        CallManagingOrganisationRequest,
+        CallManagingOrganisationRequestForm,
+        CallManagingOrganisationRequestMultipart,
+    ],
 ) -> Response[CallManagingOrganisation]:
     """
     Args:
         uuid (UUID):
         body (CallManagingOrganisationRequest):
+        body (CallManagingOrganisationRequestForm):
+        body (CallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -142,12 +175,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CallManagingOrganisationRequest,
+    body: Union[
+        CallManagingOrganisationRequest,
+        CallManagingOrganisationRequestForm,
+        CallManagingOrganisationRequestMultipart,
+    ],
 ) -> CallManagingOrganisation:
     """
     Args:
         uuid (UUID):
         body (CallManagingOrganisationRequest):
+        body (CallManagingOrganisationRequestForm):
+        body (CallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

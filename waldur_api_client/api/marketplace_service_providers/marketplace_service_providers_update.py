@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.service_provider import ServiceProvider
 from ...models.service_provider_request import ServiceProviderRequest
+from ...models.service_provider_request_form import ServiceProviderRequestForm
+from ...models.service_provider_request_multipart import ServiceProviderRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ServiceProviderRequest,
+    body: Union[
+        ServiceProviderRequest,
+        ServiceProviderRequestForm,
+        ServiceProviderRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/marketplace-service-providers/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, ServiceProviderRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, ServiceProviderRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, ServiceProviderRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -54,12 +69,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ServiceProviderRequest,
+    body: Union[
+        ServiceProviderRequest,
+        ServiceProviderRequestForm,
+        ServiceProviderRequestMultipart,
+    ],
 ) -> Response[ServiceProvider]:
     """
     Args:
         uuid (UUID):
         body (ServiceProviderRequest):
+        body (ServiceProviderRequestForm):
+        body (ServiceProviderRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -85,12 +106,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ServiceProviderRequest,
+    body: Union[
+        ServiceProviderRequest,
+        ServiceProviderRequestForm,
+        ServiceProviderRequestMultipart,
+    ],
 ) -> ServiceProvider:
     """
     Args:
         uuid (UUID):
         body (ServiceProviderRequest):
+        body (ServiceProviderRequestForm):
+        body (ServiceProviderRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -111,12 +138,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ServiceProviderRequest,
+    body: Union[
+        ServiceProviderRequest,
+        ServiceProviderRequestForm,
+        ServiceProviderRequestMultipart,
+    ],
 ) -> Response[ServiceProvider]:
     """
     Args:
         uuid (UUID):
         body (ServiceProviderRequest):
+        body (ServiceProviderRequestForm):
+        body (ServiceProviderRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -140,12 +173,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ServiceProviderRequest,
+    body: Union[
+        ServiceProviderRequest,
+        ServiceProviderRequestForm,
+        ServiceProviderRequestMultipart,
+    ],
 ) -> ServiceProvider:
     """
     Args:
         uuid (UUID):
         body (ServiceProviderRequest):
+        body (ServiceProviderRequestForm):
+        body (ServiceProviderRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

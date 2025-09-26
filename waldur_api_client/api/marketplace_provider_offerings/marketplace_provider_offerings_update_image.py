@@ -7,6 +7,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.offering_image_request import OfferingImageRequest
+from ...models.offering_image_request_form import OfferingImageRequestForm
+from ...models.offering_image_request_multipart import OfferingImageRequestMultipart
 from ...models.provider_offering_details import ProviderOfferingDetails
 from ...types import Response
 
@@ -14,7 +16,11 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: OfferingImageRequest,
+    body: Union[
+        OfferingImageRequest,
+        OfferingImageRequestForm,
+        OfferingImageRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/marketplace-provider-offerings/{uuid}/update_image/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, OfferingImageRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, OfferingImageRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, OfferingImageRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -54,13 +69,19 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OfferingImageRequest,
+    body: Union[
+        OfferingImageRequest,
+        OfferingImageRequestForm,
+        OfferingImageRequestMultipart,
+    ],
 ) -> Response[ProviderOfferingDetails]:
     """Update offering image.
 
     Args:
         uuid (UUID):
         body (OfferingImageRequest):
+        body (OfferingImageRequestForm):
+        body (OfferingImageRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -86,13 +107,19 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OfferingImageRequest,
+    body: Union[
+        OfferingImageRequest,
+        OfferingImageRequestForm,
+        OfferingImageRequestMultipart,
+    ],
 ) -> ProviderOfferingDetails:
     """Update offering image.
 
     Args:
         uuid (UUID):
         body (OfferingImageRequest):
+        body (OfferingImageRequestForm):
+        body (OfferingImageRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -113,13 +140,19 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OfferingImageRequest,
+    body: Union[
+        OfferingImageRequest,
+        OfferingImageRequestForm,
+        OfferingImageRequestMultipart,
+    ],
 ) -> Response[ProviderOfferingDetails]:
     """Update offering image.
 
     Args:
         uuid (UUID):
         body (OfferingImageRequest):
+        body (OfferingImageRequestForm):
+        body (OfferingImageRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -143,13 +176,19 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OfferingImageRequest,
+    body: Union[
+        OfferingImageRequest,
+        OfferingImageRequestForm,
+        OfferingImageRequestMultipart,
+    ],
 ) -> ProviderOfferingDetails:
     """Update offering image.
 
     Args:
         uuid (UUID):
         body (OfferingImageRequest):
+        body (OfferingImageRequestForm):
+        body (OfferingImageRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

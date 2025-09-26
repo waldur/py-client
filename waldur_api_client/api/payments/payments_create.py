@@ -7,12 +7,18 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.payment import Payment
 from ...models.payment_request import PaymentRequest
+from ...models.payment_request_form import PaymentRequestForm
+from ...models.payment_request_multipart import PaymentRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: PaymentRequest,
+    body: Union[
+        PaymentRequest,
+        PaymentRequestForm,
+        PaymentRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -21,9 +27,18 @@ def _get_kwargs(
         "url": "/api/payments/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, PaymentRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, PaymentRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, PaymentRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -49,11 +64,17 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: PaymentRequest,
+    body: Union[
+        PaymentRequest,
+        PaymentRequestForm,
+        PaymentRequestMultipart,
+    ],
 ) -> Response[Payment]:
     """
     Args:
         body (PaymentRequest):
+        body (PaymentRequestForm):
+        body (PaymentRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -77,11 +98,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: PaymentRequest,
+    body: Union[
+        PaymentRequest,
+        PaymentRequestForm,
+        PaymentRequestMultipart,
+    ],
 ) -> Payment:
     """
     Args:
         body (PaymentRequest):
+        body (PaymentRequestForm):
+        body (PaymentRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -100,11 +127,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: PaymentRequest,
+    body: Union[
+        PaymentRequest,
+        PaymentRequestForm,
+        PaymentRequestMultipart,
+    ],
 ) -> Response[Payment]:
     """
     Args:
         body (PaymentRequest):
+        body (PaymentRequestForm):
+        body (PaymentRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,11 +159,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: PaymentRequest,
+    body: Union[
+        PaymentRequest,
+        PaymentRequestForm,
+        PaymentRequestMultipart,
+    ],
 ) -> Payment:
     """
     Args:
         body (PaymentRequest):
+        body (PaymentRequestForm):
+        body (PaymentRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

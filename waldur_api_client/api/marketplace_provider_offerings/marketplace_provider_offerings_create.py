@@ -7,12 +7,18 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.offering_create import OfferingCreate
 from ...models.offering_create_request import OfferingCreateRequest
+from ...models.offering_create_request_form import OfferingCreateRequestForm
+from ...models.offering_create_request_multipart import OfferingCreateRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: OfferingCreateRequest,
+    body: Union[
+        OfferingCreateRequest,
+        OfferingCreateRequestForm,
+        OfferingCreateRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -21,9 +27,18 @@ def _get_kwargs(
         "url": "/api/marketplace-provider-offerings/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, OfferingCreateRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, OfferingCreateRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, OfferingCreateRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -51,11 +66,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: OfferingCreateRequest,
+    body: Union[
+        OfferingCreateRequest,
+        OfferingCreateRequestForm,
+        OfferingCreateRequestMultipart,
+    ],
 ) -> Response[OfferingCreate]:
     """
     Args:
         body (OfferingCreateRequest):
+        body (OfferingCreateRequestForm):
+        body (OfferingCreateRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -79,11 +100,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: OfferingCreateRequest,
+    body: Union[
+        OfferingCreateRequest,
+        OfferingCreateRequestForm,
+        OfferingCreateRequestMultipart,
+    ],
 ) -> OfferingCreate:
     """
     Args:
         body (OfferingCreateRequest):
+        body (OfferingCreateRequestForm):
+        body (OfferingCreateRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -102,11 +129,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: OfferingCreateRequest,
+    body: Union[
+        OfferingCreateRequest,
+        OfferingCreateRequestForm,
+        OfferingCreateRequestMultipart,
+    ],
 ) -> Response[OfferingCreate]:
     """
     Args:
         body (OfferingCreateRequest):
+        body (OfferingCreateRequestForm):
+        body (OfferingCreateRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -128,11 +161,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: OfferingCreateRequest,
+    body: Union[
+        OfferingCreateRequest,
+        OfferingCreateRequestForm,
+        OfferingCreateRequestMultipart,
+    ],
 ) -> OfferingCreate:
     """
     Args:
         body (OfferingCreateRequest):
+        body (OfferingCreateRequestForm):
+        body (OfferingCreateRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

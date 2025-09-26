@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.order_attachment import OrderAttachment
 from ...models.order_attachment_request import OrderAttachmentRequest
+from ...models.order_attachment_request_form import OrderAttachmentRequestForm
+from ...models.order_attachment_request_multipart import OrderAttachmentRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: OrderAttachmentRequest,
+    body: Union[
+        OrderAttachmentRequest,
+        OrderAttachmentRequestForm,
+        OrderAttachmentRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/marketplace-orders/{uuid}/update_attachment/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, OrderAttachmentRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, OrderAttachmentRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, OrderAttachmentRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -54,13 +69,19 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OrderAttachmentRequest,
+    body: Union[
+        OrderAttachmentRequest,
+        OrderAttachmentRequestForm,
+        OrderAttachmentRequestMultipart,
+    ],
 ) -> Response[OrderAttachment]:
     """Update the attachment for a pending order.
 
     Args:
         uuid (UUID):
         body (OrderAttachmentRequest):
+        body (OrderAttachmentRequestForm):
+        body (OrderAttachmentRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -86,13 +107,19 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OrderAttachmentRequest,
+    body: Union[
+        OrderAttachmentRequest,
+        OrderAttachmentRequestForm,
+        OrderAttachmentRequestMultipart,
+    ],
 ) -> OrderAttachment:
     """Update the attachment for a pending order.
 
     Args:
         uuid (UUID):
         body (OrderAttachmentRequest):
+        body (OrderAttachmentRequestForm):
+        body (OrderAttachmentRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -113,13 +140,19 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OrderAttachmentRequest,
+    body: Union[
+        OrderAttachmentRequest,
+        OrderAttachmentRequestForm,
+        OrderAttachmentRequestMultipart,
+    ],
 ) -> Response[OrderAttachment]:
     """Update the attachment for a pending order.
 
     Args:
         uuid (UUID):
         body (OrderAttachmentRequest):
+        body (OrderAttachmentRequestForm):
+        body (OrderAttachmentRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -143,13 +176,19 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OrderAttachmentRequest,
+    body: Union[
+        OrderAttachmentRequest,
+        OrderAttachmentRequestForm,
+        OrderAttachmentRequestMultipart,
+    ],
 ) -> OrderAttachment:
     """Update the attachment for a pending order.
 
     Args:
         uuid (UUID):
         body (OrderAttachmentRequest):
+        body (OrderAttachmentRequestForm):
+        body (OrderAttachmentRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

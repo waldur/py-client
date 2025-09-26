@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.marketplace_category import MarketplaceCategory
 from ...models.marketplace_category_request import MarketplaceCategoryRequest
+from ...models.marketplace_category_request_form import MarketplaceCategoryRequestForm
+from ...models.marketplace_category_request_multipart import MarketplaceCategoryRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: MarketplaceCategoryRequest,
+    body: Union[
+        MarketplaceCategoryRequest,
+        MarketplaceCategoryRequestForm,
+        MarketplaceCategoryRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/marketplace-categories/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, MarketplaceCategoryRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, MarketplaceCategoryRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, MarketplaceCategoryRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -54,12 +69,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MarketplaceCategoryRequest,
+    body: Union[
+        MarketplaceCategoryRequest,
+        MarketplaceCategoryRequestForm,
+        MarketplaceCategoryRequestMultipart,
+    ],
 ) -> Response[MarketplaceCategory]:
     """
     Args:
         uuid (UUID):
         body (MarketplaceCategoryRequest):
+        body (MarketplaceCategoryRequestForm):
+        body (MarketplaceCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -85,12 +106,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MarketplaceCategoryRequest,
+    body: Union[
+        MarketplaceCategoryRequest,
+        MarketplaceCategoryRequestForm,
+        MarketplaceCategoryRequestMultipart,
+    ],
 ) -> MarketplaceCategory:
     """
     Args:
         uuid (UUID):
         body (MarketplaceCategoryRequest):
+        body (MarketplaceCategoryRequestForm):
+        body (MarketplaceCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -111,12 +138,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MarketplaceCategoryRequest,
+    body: Union[
+        MarketplaceCategoryRequest,
+        MarketplaceCategoryRequestForm,
+        MarketplaceCategoryRequestMultipart,
+    ],
 ) -> Response[MarketplaceCategory]:
     """
     Args:
         uuid (UUID):
         body (MarketplaceCategoryRequest):
+        body (MarketplaceCategoryRequestForm):
+        body (MarketplaceCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -140,12 +173,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MarketplaceCategoryRequest,
+    body: Union[
+        MarketplaceCategoryRequest,
+        MarketplaceCategoryRequestForm,
+        MarketplaceCategoryRequestMultipart,
+    ],
 ) -> MarketplaceCategory:
     """
     Args:
         uuid (UUID):
         body (MarketplaceCategoryRequest):
+        body (MarketplaceCategoryRequestForm):
+        body (MarketplaceCategoryRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

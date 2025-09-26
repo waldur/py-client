@@ -7,12 +7,18 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.firecrest_job import FirecrestJob
 from ...models.firecrest_job_request import FirecrestJobRequest
+from ...models.firecrest_job_request_form import FirecrestJobRequestForm
+from ...models.firecrest_job_request_multipart import FirecrestJobRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: FirecrestJobRequest,
+    body: Union[
+        FirecrestJobRequest,
+        FirecrestJobRequestForm,
+        FirecrestJobRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -21,9 +27,18 @@ def _get_kwargs(
         "url": "/api/slurm-jobs/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, FirecrestJobRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, FirecrestJobRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, FirecrestJobRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -49,11 +64,17 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: FirecrestJobRequest,
+    body: Union[
+        FirecrestJobRequest,
+        FirecrestJobRequestForm,
+        FirecrestJobRequestMultipart,
+    ],
 ) -> Response[FirecrestJob]:
     """
     Args:
         body (FirecrestJobRequest):
+        body (FirecrestJobRequestForm):
+        body (FirecrestJobRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -77,11 +98,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: FirecrestJobRequest,
+    body: Union[
+        FirecrestJobRequest,
+        FirecrestJobRequestForm,
+        FirecrestJobRequestMultipart,
+    ],
 ) -> FirecrestJob:
     """
     Args:
         body (FirecrestJobRequest):
+        body (FirecrestJobRequestForm):
+        body (FirecrestJobRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -100,11 +127,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: FirecrestJobRequest,
+    body: Union[
+        FirecrestJobRequest,
+        FirecrestJobRequestForm,
+        FirecrestJobRequestMultipart,
+    ],
 ) -> Response[FirecrestJob]:
     """
     Args:
         body (FirecrestJobRequest):
+        body (FirecrestJobRequestForm):
+        body (FirecrestJobRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,11 +159,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: FirecrestJobRequest,
+    body: Union[
+        FirecrestJobRequest,
+        FirecrestJobRequestForm,
+        FirecrestJobRequestMultipart,
+    ],
 ) -> FirecrestJob:
     """
     Args:
         body (FirecrestJobRequest):
+        body (FirecrestJobRequestForm):
+        body (FirecrestJobRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

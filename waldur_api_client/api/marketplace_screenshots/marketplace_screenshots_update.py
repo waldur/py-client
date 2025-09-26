@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.screenshot import Screenshot
 from ...models.screenshot_request import ScreenshotRequest
+from ...models.screenshot_request_form import ScreenshotRequestForm
+from ...models.screenshot_request_multipart import ScreenshotRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ScreenshotRequest,
+    body: Union[
+        ScreenshotRequest,
+        ScreenshotRequestForm,
+        ScreenshotRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/marketplace-screenshots/{uuid}/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, ScreenshotRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, ScreenshotRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, ScreenshotRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -52,12 +67,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ScreenshotRequest,
+    body: Union[
+        ScreenshotRequest,
+        ScreenshotRequestForm,
+        ScreenshotRequestMultipart,
+    ],
 ) -> Response[Screenshot]:
     """
     Args:
         uuid (UUID):
         body (ScreenshotRequest):
+        body (ScreenshotRequestForm):
+        body (ScreenshotRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -83,12 +104,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ScreenshotRequest,
+    body: Union[
+        ScreenshotRequest,
+        ScreenshotRequestForm,
+        ScreenshotRequestMultipart,
+    ],
 ) -> Screenshot:
     """
     Args:
         uuid (UUID):
         body (ScreenshotRequest):
+        body (ScreenshotRequestForm):
+        body (ScreenshotRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -109,12 +136,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ScreenshotRequest,
+    body: Union[
+        ScreenshotRequest,
+        ScreenshotRequestForm,
+        ScreenshotRequestMultipart,
+    ],
 ) -> Response[Screenshot]:
     """
     Args:
         uuid (UUID):
         body (ScreenshotRequest):
+        body (ScreenshotRequestForm):
+        body (ScreenshotRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -138,12 +171,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ScreenshotRequest,
+    body: Union[
+        ScreenshotRequest,
+        ScreenshotRequestForm,
+        ScreenshotRequestMultipart,
+    ],
 ) -> Screenshot:
     """
     Args:
         uuid (UUID):
         body (ScreenshotRequest):
+        body (ScreenshotRequestForm):
+        body (ScreenshotRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

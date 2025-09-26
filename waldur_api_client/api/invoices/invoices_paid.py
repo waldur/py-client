@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.invoice import Invoice
 from ...models.paid_request import PaidRequest
+from ...models.paid_request_form import PaidRequestForm
+from ...models.paid_request_multipart import PaidRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: PaidRequest,
+    body: Union[
+        PaidRequest,
+        PaidRequestForm,
+        PaidRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,18 @@ def _get_kwargs(
         "url": f"/api/invoices/{uuid}/paid/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, PaidRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, PaidRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, PaidRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -52,13 +67,19 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PaidRequest,
+    body: Union[
+        PaidRequest,
+        PaidRequestForm,
+        PaidRequestMultipart,
+    ],
 ) -> Response[Invoice]:
     """Mark invoice as paid and optionally create payment record with proof of payment.
 
     Args:
         uuid (UUID):
         body (PaidRequest):
+        body (PaidRequestForm):
+        body (PaidRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -84,13 +105,19 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PaidRequest,
+    body: Union[
+        PaidRequest,
+        PaidRequestForm,
+        PaidRequestMultipart,
+    ],
 ) -> Invoice:
     """Mark invoice as paid and optionally create payment record with proof of payment.
 
     Args:
         uuid (UUID):
         body (PaidRequest):
+        body (PaidRequestForm):
+        body (PaidRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -111,13 +138,19 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PaidRequest,
+    body: Union[
+        PaidRequest,
+        PaidRequestForm,
+        PaidRequestMultipart,
+    ],
 ) -> Response[Invoice]:
     """Mark invoice as paid and optionally create payment record with proof of payment.
 
     Args:
         uuid (UUID):
         body (PaidRequest):
+        body (PaidRequestForm):
+        body (PaidRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -141,13 +174,19 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PaidRequest,
+    body: Union[
+        PaidRequest,
+        PaidRequestForm,
+        PaidRequestMultipart,
+    ],
 ) -> Invoice:
     """Mark invoice as paid and optionally create payment record with proof of payment.
 
     Args:
         uuid (UUID):
         body (PaidRequest):
+        body (PaidRequestForm):
+        body (PaidRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

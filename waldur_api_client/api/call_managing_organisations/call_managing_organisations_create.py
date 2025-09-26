@@ -7,12 +7,18 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.call_managing_organisation import CallManagingOrganisation
 from ...models.call_managing_organisation_request import CallManagingOrganisationRequest
+from ...models.call_managing_organisation_request_form import CallManagingOrganisationRequestForm
+from ...models.call_managing_organisation_request_multipart import CallManagingOrganisationRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: CallManagingOrganisationRequest,
+    body: Union[
+        CallManagingOrganisationRequest,
+        CallManagingOrganisationRequestForm,
+        CallManagingOrganisationRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -21,9 +27,18 @@ def _get_kwargs(
         "url": "/api/call-managing-organisations/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, CallManagingOrganisationRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, CallManagingOrganisationRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, CallManagingOrganisationRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
+
+        headers["Content-Type"] = "multipart/form-data"
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -53,11 +68,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: CallManagingOrganisationRequest,
+    body: Union[
+        CallManagingOrganisationRequest,
+        CallManagingOrganisationRequestForm,
+        CallManagingOrganisationRequestMultipart,
+    ],
 ) -> Response[CallManagingOrganisation]:
     """
     Args:
         body (CallManagingOrganisationRequest):
+        body (CallManagingOrganisationRequestForm):
+        body (CallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -81,11 +102,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: CallManagingOrganisationRequest,
+    body: Union[
+        CallManagingOrganisationRequest,
+        CallManagingOrganisationRequestForm,
+        CallManagingOrganisationRequestMultipart,
+    ],
 ) -> CallManagingOrganisation:
     """
     Args:
         body (CallManagingOrganisationRequest):
+        body (CallManagingOrganisationRequestForm):
+        body (CallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -104,11 +131,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: CallManagingOrganisationRequest,
+    body: Union[
+        CallManagingOrganisationRequest,
+        CallManagingOrganisationRequestForm,
+        CallManagingOrganisationRequestMultipart,
+    ],
 ) -> Response[CallManagingOrganisation]:
     """
     Args:
         body (CallManagingOrganisationRequest):
+        body (CallManagingOrganisationRequestForm):
+        body (CallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -130,11 +163,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: CallManagingOrganisationRequest,
+    body: Union[
+        CallManagingOrganisationRequest,
+        CallManagingOrganisationRequestForm,
+        CallManagingOrganisationRequestMultipart,
+    ],
 ) -> CallManagingOrganisation:
     """
     Args:
         body (CallManagingOrganisationRequest):
+        body (CallManagingOrganisationRequestForm):
+        body (CallManagingOrganisationRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
