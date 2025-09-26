@@ -37,6 +37,8 @@ class ProposalReview:
         call_name (str):
         call_uuid (UUID):
         call_managing_organisation_uuid (UUID):
+        created (datetime.datetime):
+        modified (datetime.datetime):
         summary_score (Union[Unset, int]):
         summary_public_comment (Union[Unset, str]):
         summary_private_comment (Union[Unset, str]):
@@ -69,6 +71,8 @@ class ProposalReview:
     call_name: str
     call_uuid: UUID
     call_managing_organisation_uuid: UUID
+    created: datetime.datetime
+    modified: datetime.datetime
     summary_score: Union[Unset, int] = UNSET
     summary_public_comment: Union[Unset, str] = UNSET
     summary_private_comment: Union[Unset, str] = UNSET
@@ -120,6 +124,10 @@ class ProposalReview:
         call_uuid = str(self.call_uuid)
 
         call_managing_organisation_uuid = str(self.call_managing_organisation_uuid)
+
+        created = self.created.isoformat()
+
+        modified = self.modified.isoformat()
 
         summary_score = self.summary_score
 
@@ -203,6 +211,8 @@ class ProposalReview:
                 "call_name": call_name,
                 "call_uuid": call_uuid,
                 "call_managing_organisation_uuid": call_managing_organisation_uuid,
+                "created": created,
+                "modified": modified,
             }
         )
         if summary_score is not UNSET:
@@ -275,6 +285,10 @@ class ProposalReview:
         call_uuid = UUID(d.pop("call_uuid"))
 
         call_managing_organisation_uuid = UUID(d.pop("call_managing_organisation_uuid"))
+
+        created = isoparse(d.pop("created"))
+
+        modified = isoparse(d.pop("modified"))
 
         summary_score = d.pop("summary_score", UNSET)
 
@@ -388,6 +402,8 @@ class ProposalReview:
             call_name=call_name,
             call_uuid=call_uuid,
             call_managing_organisation_uuid=call_managing_organisation_uuid,
+            created=created,
+            modified=modified,
             summary_score=summary_score,
             summary_public_comment=summary_public_comment,
             summary_private_comment=summary_private_comment,
