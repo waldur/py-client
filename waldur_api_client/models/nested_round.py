@@ -21,6 +21,7 @@ class NestedRound:
     """
     Attributes:
         uuid (Union[Unset, UUID]):
+        slug (Union[Unset, str]):
         name (Union[Unset, str]):
         start_time (Union[Unset, datetime.datetime]):
         cutoff_time (Union[Unset, datetime.datetime]):
@@ -35,6 +36,7 @@ class NestedRound:
     """
 
     uuid: Union[Unset, UUID] = UNSET
+    slug: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     start_time: Union[Unset, datetime.datetime] = UNSET
     cutoff_time: Union[Unset, datetime.datetime] = UNSET
@@ -52,6 +54,8 @@ class NestedRound:
         uuid: Union[Unset, str] = UNSET
         if not isinstance(self.uuid, Unset):
             uuid = str(self.uuid)
+
+        slug = self.slug
 
         name = self.name
 
@@ -110,6 +114,8 @@ class NestedRound:
         field_dict.update({})
         if uuid is not UNSET:
             field_dict["uuid"] = uuid
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if name is not UNSET:
             field_dict["name"] = name
         if start_time is not UNSET:
@@ -144,6 +150,8 @@ class NestedRound:
             uuid = UNSET
         else:
             uuid = UUID(_uuid)
+
+        slug = d.pop("slug", UNSET)
 
         name = d.pop("name", UNSET)
 
@@ -235,6 +243,7 @@ class NestedRound:
 
         nested_round = cls(
             uuid=uuid,
+            slug=slug,
             name=name,
             start_time=start_time,
             cutoff_time=cutoff_time,

@@ -11,19 +11,24 @@ T = TypeVar("T", bound="ProtectedProposalListRequest")
 class ProtectedProposalListRequest:
     """
     Attributes:
+        slug (str):
         name (str):
     """
 
+    slug: str
     name: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        slug = self.slug
+
         name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "slug": slug,
                 "name": name,
             }
         )
@@ -33,9 +38,12 @@ class ProtectedProposalListRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        slug = d.pop("slug")
+
         name = d.pop("name")
 
         protected_proposal_list_request = cls(
+            slug=slug,
             name=name,
         )
 

@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.status_enum import StatusEnum
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CallRound")
 
@@ -23,6 +24,7 @@ class CallRound:
         call_uuid (UUID):
         call_name (str):
         status (StatusEnum):
+        slug (Union[Unset, str]):
     """
 
     url: str
@@ -32,6 +34,7 @@ class CallRound:
     call_uuid: UUID
     call_name: str
     status: StatusEnum
+    slug: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,6 +52,8 @@ class CallRound:
 
         status = self.status.value
 
+        slug = self.slug
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -62,6 +67,8 @@ class CallRound:
                 "status": status,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
 
         return field_dict
 
@@ -82,6 +89,8 @@ class CallRound:
 
         status = StatusEnum(d.pop("status"))
 
+        slug = d.pop("slug", UNSET)
+
         call_round = cls(
             url=url,
             uuid=uuid,
@@ -90,6 +99,7 @@ class CallRound:
             call_uuid=call_uuid,
             call_name=call_name,
             status=status,
+            slug=slug,
         )
 
         call_round.additional_properties = d

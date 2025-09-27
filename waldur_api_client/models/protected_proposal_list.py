@@ -17,6 +17,7 @@ class ProtectedProposalList:
     """
     Attributes:
         uuid (UUID):
+        slug (str):
         name (str):
         state (ProposalStates):
         reviews (list[Any]): Return serialized reviews based on user permissions and visibility settings.
@@ -28,6 +29,7 @@ class ProtectedProposalList:
     """
 
     uuid: UUID
+    slug: str
     name: str
     state: ProposalStates
     reviews: list[Any]
@@ -38,6 +40,8 @@ class ProtectedProposalList:
 
     def to_dict(self) -> dict[str, Any]:
         uuid = str(self.uuid)
+
+        slug = self.slug
 
         name = self.name
 
@@ -56,6 +60,7 @@ class ProtectedProposalList:
         field_dict.update(
             {
                 "uuid": uuid,
+                "slug": slug,
                 "name": name,
                 "state": state,
                 "reviews": reviews,
@@ -72,6 +77,8 @@ class ProtectedProposalList:
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
+        slug = d.pop("slug")
+
         name = d.pop("name")
 
         state = ProposalStates(d.pop("state"))
@@ -86,6 +93,7 @@ class ProtectedProposalList:
 
         protected_proposal_list = cls(
             uuid=uuid,
+            slug=slug,
             name=name,
             state=state,
             reviews=reviews,

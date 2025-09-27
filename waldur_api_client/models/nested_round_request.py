@@ -20,6 +20,7 @@ class NestedRoundRequest:
     Attributes:
         start_time (datetime.datetime):
         cutoff_time (datetime.datetime):
+        slug (Union[Unset, str]):
         review_strategy (Union[Unset, ReviewStrategyEnum]):
         deciding_entity (Union[Unset, DecidingEntityEnum]):
         allocation_time (Union[Unset, AllocationTimeEnum]):
@@ -31,6 +32,7 @@ class NestedRoundRequest:
 
     start_time: datetime.datetime
     cutoff_time: datetime.datetime
+    slug: Union[Unset, str] = UNSET
     review_strategy: Union[Unset, ReviewStrategyEnum] = UNSET
     deciding_entity: Union[Unset, DecidingEntityEnum] = UNSET
     allocation_time: Union[Unset, AllocationTimeEnum] = UNSET
@@ -44,6 +46,8 @@ class NestedRoundRequest:
         start_time = self.start_time.isoformat()
 
         cutoff_time = self.cutoff_time.isoformat()
+
+        slug = self.slug
 
         review_strategy: Union[Unset, str] = UNSET
         if not isinstance(self.review_strategy, Unset):
@@ -91,6 +95,8 @@ class NestedRoundRequest:
                 "cutoff_time": cutoff_time,
             }
         )
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if review_strategy is not UNSET:
             field_dict["review_strategy"] = review_strategy
         if deciding_entity is not UNSET:
@@ -114,6 +120,8 @@ class NestedRoundRequest:
         start_time = isoparse(d.pop("start_time"))
 
         cutoff_time = isoparse(d.pop("cutoff_time"))
+
+        slug = d.pop("slug", UNSET)
 
         _review_strategy = d.pop("review_strategy", UNSET)
         review_strategy: Union[Unset, ReviewStrategyEnum]
@@ -183,6 +191,7 @@ class NestedRoundRequest:
         nested_round_request = cls(
             start_time=start_time,
             cutoff_time=cutoff_time,
+            slug=slug,
             review_strategy=review_strategy,
             deciding_entity=deciding_entity,
             allocation_time=allocation_time,

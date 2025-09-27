@@ -25,6 +25,7 @@ class ProtectedRound:
     """
     Attributes:
         uuid (UUID):
+        slug (str):
         name (str):
         start_time (datetime.datetime):
         cutoff_time (datetime.datetime):
@@ -41,6 +42,7 @@ class ProtectedRound:
     """
 
     uuid: UUID
+    slug: str
     name: str
     start_time: datetime.datetime
     cutoff_time: datetime.datetime
@@ -58,6 +60,8 @@ class ProtectedRound:
 
     def to_dict(self) -> dict[str, Any]:
         uuid = str(self.uuid)
+
+        slug = self.slug
 
         name = self.name
 
@@ -113,6 +117,7 @@ class ProtectedRound:
         field_dict.update(
             {
                 "uuid": uuid,
+                "slug": slug,
                 "name": name,
                 "start_time": start_time,
                 "cutoff_time": cutoff_time,
@@ -144,6 +149,8 @@ class ProtectedRound:
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
+
+        slug = d.pop("slug")
 
         name = d.pop("name")
 
@@ -222,6 +229,7 @@ class ProtectedRound:
 
         protected_round = cls(
             uuid=uuid,
+            slug=slug,
             name=name,
             start_time=start_time,
             cutoff_time=cutoff_time,

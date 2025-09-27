@@ -28,6 +28,7 @@ class Proposal:
     Attributes:
         uuid (UUID):
         url (str):
+        slug (str):
         name (str):
         project_name (str):
         supporting_documentation (list['ProposalDocumentation']):
@@ -56,6 +57,7 @@ class Proposal:
 
     uuid: UUID
     url: str
+    slug: str
     name: str
     project_name: str
     supporting_documentation: list["ProposalDocumentation"]
@@ -88,6 +90,8 @@ class Proposal:
         uuid = str(self.uuid)
 
         url = self.url
+
+        slug = self.slug
 
         name = self.name
 
@@ -166,6 +170,7 @@ class Proposal:
             {
                 "uuid": uuid,
                 "url": url,
+                "slug": slug,
                 "name": name,
                 "project_name": project_name,
                 "supporting_documentation": supporting_documentation,
@@ -212,6 +217,8 @@ class Proposal:
         uuid = UUID(d.pop("uuid"))
 
         url = d.pop("url")
+
+        slug = d.pop("slug")
 
         name = d.pop("name")
 
@@ -332,6 +339,7 @@ class Proposal:
         proposal = cls(
             uuid=uuid,
             url=url,
+            slug=slug,
             name=name,
             project_name=project_name,
             supporting_documentation=supporting_documentation,
