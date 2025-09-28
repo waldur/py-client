@@ -22,6 +22,7 @@ class ProposalReview:
         proposal (str):
         proposal_name (str):
         proposal_uuid (UUID):
+        proposal_slug (str):
         reviewer (str):
         reviewer_full_name (str):
         reviewer_uuid (UUID):
@@ -32,10 +33,12 @@ class ProposalReview:
         review_end_date (datetime.datetime):
         round_uuid (UUID):
         round_name (str):
+        round_slug (str):
         round_cutoff_time (datetime.datetime):
         round_start_time (datetime.datetime):
         call_name (str):
         call_uuid (UUID):
+        call_slug (str):
         call_managing_organisation_uuid (UUID):
         created (datetime.datetime):
         modified (datetime.datetime):
@@ -58,6 +61,7 @@ class ProposalReview:
     proposal: str
     proposal_name: str
     proposal_uuid: UUID
+    proposal_slug: str
     reviewer: str
     reviewer_full_name: str
     reviewer_uuid: UUID
@@ -66,10 +70,12 @@ class ProposalReview:
     review_end_date: datetime.datetime
     round_uuid: UUID
     round_name: str
+    round_slug: str
     round_cutoff_time: datetime.datetime
     round_start_time: datetime.datetime
     call_name: str
     call_uuid: UUID
+    call_slug: str
     call_managing_organisation_uuid: UUID
     created: datetime.datetime
     modified: datetime.datetime
@@ -98,6 +104,8 @@ class ProposalReview:
 
         proposal_uuid = str(self.proposal_uuid)
 
+        proposal_slug = self.proposal_slug
+
         reviewer = self.reviewer
 
         reviewer_full_name = self.reviewer_full_name
@@ -115,6 +123,8 @@ class ProposalReview:
 
         round_name = self.round_name
 
+        round_slug = self.round_slug
+
         round_cutoff_time = self.round_cutoff_time.isoformat()
 
         round_start_time = self.round_start_time.isoformat()
@@ -122,6 +132,8 @@ class ProposalReview:
         call_name = self.call_name
 
         call_uuid = str(self.call_uuid)
+
+        call_slug = self.call_slug
 
         call_managing_organisation_uuid = str(self.call_managing_organisation_uuid)
 
@@ -198,6 +210,7 @@ class ProposalReview:
                 "proposal": proposal,
                 "proposal_name": proposal_name,
                 "proposal_uuid": proposal_uuid,
+                "proposal_slug": proposal_slug,
                 "reviewer": reviewer,
                 "reviewer_full_name": reviewer_full_name,
                 "reviewer_uuid": reviewer_uuid,
@@ -206,10 +219,12 @@ class ProposalReview:
                 "review_end_date": review_end_date,
                 "round_uuid": round_uuid,
                 "round_name": round_name,
+                "round_slug": round_slug,
                 "round_cutoff_time": round_cutoff_time,
                 "round_start_time": round_start_time,
                 "call_name": call_name,
                 "call_uuid": call_uuid,
+                "call_slug": call_slug,
                 "call_managing_organisation_uuid": call_managing_organisation_uuid,
                 "created": created,
                 "modified": modified,
@@ -255,6 +270,8 @@ class ProposalReview:
 
         proposal_uuid = UUID(d.pop("proposal_uuid"))
 
+        proposal_slug = d.pop("proposal_slug")
+
         reviewer = d.pop("reviewer")
 
         reviewer_full_name = d.pop("reviewer_full_name")
@@ -276,6 +293,8 @@ class ProposalReview:
 
         round_name = d.pop("round_name")
 
+        round_slug = d.pop("round_slug")
+
         round_cutoff_time = isoparse(d.pop("round_cutoff_time"))
 
         round_start_time = isoparse(d.pop("round_start_time"))
@@ -283,6 +302,8 @@ class ProposalReview:
         call_name = d.pop("call_name")
 
         call_uuid = UUID(d.pop("call_uuid"))
+
+        call_slug = d.pop("call_slug")
 
         call_managing_organisation_uuid = UUID(d.pop("call_managing_organisation_uuid"))
 
@@ -389,6 +410,7 @@ class ProposalReview:
             proposal=proposal,
             proposal_name=proposal_name,
             proposal_uuid=proposal_uuid,
+            proposal_slug=proposal_slug,
             reviewer=reviewer,
             reviewer_full_name=reviewer_full_name,
             reviewer_uuid=reviewer_uuid,
@@ -397,10 +419,12 @@ class ProposalReview:
             review_end_date=review_end_date,
             round_uuid=round_uuid,
             round_name=round_name,
+            round_slug=round_slug,
             round_cutoff_time=round_cutoff_time,
             round_start_time=round_start_time,
             call_name=call_name,
             call_uuid=call_uuid,
+            call_slug=call_slug,
             call_managing_organisation_uuid=call_managing_organisation_uuid,
             created=created,
             modified=modified,
