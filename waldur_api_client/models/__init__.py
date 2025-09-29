@@ -688,6 +688,7 @@ from .migration_details_request import MigrationDetailsRequest
 from .minimal_consumption_logic_enum import MinimalConsumptionLogicEnum
 from .move_offering_request import MoveOfferingRequest
 from .move_project_request import MoveProjectRequest
+from .move_resource_request import MoveResourceRequest
 from .name_uuid import NameUUID
 from .nested_attribute import NestedAttribute
 from .nested_attribute_option import NestedAttributeOption
@@ -810,8 +811,10 @@ from .open_stack_backup_marketplace_offering_plugin_options_type_0 import (
 )
 from .open_stack_backup_request import OpenStackBackupRequest
 from .open_stack_backup_restoration import OpenStackBackupRestoration
+from .open_stack_backup_restoration_create_request import OpenStackBackupRestorationCreateRequest
 from .open_stack_backup_restoration_request import OpenStackBackupRestorationRequest
-from .open_stack_data_volume import OpenStackDataVolume
+from .open_stack_create_floating_ip_request import OpenStackCreateFloatingIPRequest
+from .open_stack_create_port_request import OpenStackCreatePortRequest
 from .open_stack_data_volume_request import OpenStackDataVolumeRequest
 from .open_stack_fixed_ip import OpenStackFixedIp
 from .open_stack_fixed_ip_request import OpenStackFixedIpRequest
@@ -840,7 +843,6 @@ from .open_stack_nested_instance import OpenStackNestedInstance
 from .open_stack_nested_port import OpenStackNestedPort
 from .open_stack_nested_port_request import OpenStackNestedPortRequest
 from .open_stack_nested_security_group import OpenStackNestedSecurityGroup
-from .open_stack_nested_security_group_request import OpenStackNestedSecurityGroupRequest
 from .open_stack_nested_server_group import OpenStackNestedServerGroup
 from .open_stack_nested_sub_net import OpenStackNestedSubNet
 from .open_stack_nested_sub_net_request import OpenStackNestedSubNetRequest
@@ -867,6 +869,7 @@ from .open_stack_router_marketplace_offering_plugin_options_type_0 import (
 from .open_stack_router_set_routes import OpenStackRouterSetRoutes
 from .open_stack_router_set_routes_request import OpenStackRouterSetRoutesRequest
 from .open_stack_security_group import OpenStackSecurityGroup
+from .open_stack_security_group_hyperlink_request import OpenStackSecurityGroupHyperlinkRequest
 from .open_stack_security_group_marketplace_offering_plugin_options_type_0 import (
     OpenStackSecurityGroupMarketplaceOfferingPluginOptionsType0,
 )
@@ -877,6 +880,7 @@ from .open_stack_security_group_rule_update_request import OpenStackSecurityGrou
 from .open_stack_security_group_update import OpenStackSecurityGroupUpdate
 from .open_stack_security_group_update_request import OpenStackSecurityGroupUpdateRequest
 from .open_stack_server_group import OpenStackServerGroup
+from .open_stack_server_group_hyperlink_request import OpenStackServerGroupHyperlinkRequest
 from .open_stack_server_group_marketplace_offering_plugin_options_type_0 import (
     OpenStackServerGroupMarketplaceOfferingPluginOptionsType0,
 )
@@ -1157,6 +1161,7 @@ from .project_detail import ProjectDetail
 from .project_details_response import ProjectDetailsResponse
 from .project_estimated_cost_policy import ProjectEstimatedCostPolicy
 from .project_estimated_cost_policy_request import ProjectEstimatedCostPolicyRequest
+from .project_hyperlink_request import ProjectHyperlinkRequest
 from .project_marketplace_resource_count import ProjectMarketplaceResourceCount
 from .project_permission_log import ProjectPermissionLog
 from .project_permission_review import ProjectPermissionReview
@@ -1364,7 +1369,6 @@ from .rancher_nested_namespace import RancherNestedNamespace
 from .rancher_nested_node import RancherNestedNode
 from .rancher_nested_node_request import RancherNestedNodeRequest
 from .rancher_nested_public_ip import RancherNestedPublicIP
-from .rancher_nested_security_group import RancherNestedSecurityGroup
 from .rancher_nested_workload import RancherNestedWorkload
 from .rancher_nested_workload_request import RancherNestedWorkloadRequest
 from .rancher_node import RancherNode
@@ -1373,6 +1377,11 @@ from .rancher_role_scope_type import RancherRoleScopeType
 from .rancher_role_templates_count_o_item import RancherRoleTemplatesCountOItem
 from .rancher_role_templates_list_o_item import RancherRoleTemplatesListOItem
 from .rancher_service import RancherService
+from .rancher_service_create import RancherServiceCreate
+from .rancher_service_create_marketplace_offering_plugin_options_type_0 import (
+    RancherServiceCreateMarketplaceOfferingPluginOptionsType0,
+)
+from .rancher_service_create_request import RancherServiceCreateRequest
 from .rancher_service_marketplace_offering_plugin_options_type_0 import (
     RancherServiceMarketplaceOfferingPluginOptionsType0,
 )
@@ -1392,6 +1401,8 @@ from .rancher_user import RancherUser
 from .rancher_user_cluster_link import RancherUserClusterLink
 from .rancher_user_project_link import RancherUserProjectLink
 from .rancher_workload import RancherWorkload
+from .rancher_workload_create import RancherWorkloadCreate
+from .rancher_workload_create_request import RancherWorkloadCreateRequest
 from .rancher_workload_request import RancherWorkloadRequest
 from .rancher_workloads_count_o_item import RancherWorkloadsCountOItem
 from .rancher_workloads_list_o_item import RancherWorkloadsListOItem
@@ -2295,6 +2306,7 @@ __all__ = (
     "MinimalConsumptionLogicEnum",
     "MoveOfferingRequest",
     "MoveProjectRequest",
+    "MoveResourceRequest",
     "NameUUID",
     "NestedAttribute",
     "NestedAttributeOption",
@@ -2415,12 +2427,14 @@ __all__ = (
     "OpenStackBackupMarketplaceOfferingPluginOptionsType0",
     "OpenStackBackupRequest",
     "OpenStackBackupRestoration",
+    "OpenStackBackupRestorationCreateRequest",
     "OpenStackBackupRestorationRequest",
     "OpenstackBackupsCountStateItem",
     "OpenstackBackupsListFieldItem",
     "OpenstackBackupsListStateItem",
     "OpenstackBackupsRetrieveFieldItem",
-    "OpenStackDataVolume",
+    "OpenStackCreateFloatingIPRequest",
+    "OpenStackCreatePortRequest",
     "OpenStackDataVolumeRequest",
     "OpenStackFixedIp",
     "OpenStackFixedIpRequest",
@@ -2460,7 +2474,6 @@ __all__ = (
     "OpenStackNestedPort",
     "OpenStackNestedPortRequest",
     "OpenStackNestedSecurityGroup",
-    "OpenStackNestedSecurityGroupRequest",
     "OpenStackNestedServerGroup",
     "OpenStackNestedSubNet",
     "OpenStackNestedSubNetRequest",
@@ -2493,6 +2506,7 @@ __all__ = (
     "OpenstackRoutersListFieldItem",
     "OpenstackRoutersRetrieveFieldItem",
     "OpenStackSecurityGroup",
+    "OpenStackSecurityGroupHyperlinkRequest",
     "OpenStackSecurityGroupMarketplaceOfferingPluginOptionsType0",
     "OpenStackSecurityGroupRequest",
     "OpenStackSecurityGroupRuleCreate",
@@ -2505,6 +2519,7 @@ __all__ = (
     "OpenStackSecurityGroupUpdate",
     "OpenStackSecurityGroupUpdateRequest",
     "OpenStackServerGroup",
+    "OpenStackServerGroupHyperlinkRequest",
     "OpenStackServerGroupMarketplaceOfferingPluginOptionsType0",
     "OpenStackServerGroupRequest",
     "OpenstackServerGroupsCountStateItem",
@@ -2736,6 +2751,7 @@ __all__ = (
     "ProjectDetailsResponse",
     "ProjectEstimatedCostPolicy",
     "ProjectEstimatedCostPolicyRequest",
+    "ProjectHyperlinkRequest",
     "ProjectMarketplaceResourceCount",
     "ProjectPermissionLog",
     "ProjectPermissionReview",
@@ -2923,7 +2939,6 @@ __all__ = (
     "RancherNestedNode",
     "RancherNestedNodeRequest",
     "RancherNestedPublicIP",
-    "RancherNestedSecurityGroup",
     "RancherNestedWorkload",
     "RancherNestedWorkloadRequest",
     "RancherNode",
@@ -2932,6 +2947,9 @@ __all__ = (
     "RancherRoleTemplatesCountOItem",
     "RancherRoleTemplatesListOItem",
     "RancherService",
+    "RancherServiceCreate",
+    "RancherServiceCreateMarketplaceOfferingPluginOptionsType0",
+    "RancherServiceCreateRequest",
     "RancherServiceMarketplaceOfferingPluginOptionsType0",
     "RancherServiceRequest",
     "RancherServicesCountStateItem",
@@ -2949,6 +2967,8 @@ __all__ = (
     "RancherUserClusterLink",
     "RancherUserProjectLink",
     "RancherWorkload",
+    "RancherWorkloadCreate",
+    "RancherWorkloadCreateRequest",
     "RancherWorkloadRequest",
     "RancherWorkloadsCountOItem",
     "RancherWorkloadsListOItem",

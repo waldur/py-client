@@ -1,68 +1,57 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="OpenStackDataVolume")
+T = TypeVar("T", bound="OpenStackCreateFloatingIPRequest")
 
 
 @_attrs_define
-class OpenStackDataVolume:
+class OpenStackCreateFloatingIPRequest:
     """
     Attributes:
-        size (int):
-        volume_type (Union[None, Unset, str]):
+        subnet (str):
+        url (Union[Unset, str]):
     """
 
-    size: int
-    volume_type: Union[None, Unset, str] = UNSET
+    subnet: str
+    url: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        size = self.size
+        subnet = self.subnet
 
-        volume_type: Union[None, Unset, str]
-        if isinstance(self.volume_type, Unset):
-            volume_type = UNSET
-        else:
-            volume_type = self.volume_type
+        url = self.url
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "size": size,
+                "subnet": subnet,
             }
         )
-        if volume_type is not UNSET:
-            field_dict["volume_type"] = volume_type
+        if url is not UNSET:
+            field_dict["url"] = url
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        size = d.pop("size")
+        subnet = d.pop("subnet")
 
-        def _parse_volume_type(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
+        url = d.pop("url", UNSET)
 
-        volume_type = _parse_volume_type(d.pop("volume_type", UNSET))
-
-        open_stack_data_volume = cls(
-            size=size,
-            volume_type=volume_type,
+        open_stack_create_floating_ip_request = cls(
+            subnet=subnet,
+            url=url,
         )
 
-        open_stack_data_volume.additional_properties = d
-        return open_stack_data_volume
+        open_stack_create_floating_ip_request.additional_properties = d
+        return open_stack_create_floating_ip_request
 
     @property
     def additional_keys(self) -> list[str]:

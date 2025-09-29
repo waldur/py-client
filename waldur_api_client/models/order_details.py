@@ -37,6 +37,7 @@ class OrderDetails:
             OpenStack.
         provider_name (Union[Unset, str]):
         provider_uuid (Union[Unset, UUID]):
+        provider_slug (Union[Unset, UUID]):
         category_title (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
         category_icon (Union[Unset, str]):
@@ -98,9 +99,6 @@ class OrderDetails:
         activation_price (Union[Unset, float]):
         termination_comment (Union[None, Unset, str]):
         backend_id (Union[Unset, str]):
-        offering_customer_uuid (Union[Unset, UUID]):
-        offering_customer_name (Union[Unset, str]):
-        offering_customer_slug (Union[Unset, str]):
         issue (Union['IssueReference', None, Unset]):
     """
 
@@ -116,6 +114,7 @@ class OrderDetails:
     offering_plugin_options: Union[Unset, Any] = UNSET
     provider_name: Union[Unset, str] = UNSET
     provider_uuid: Union[Unset, UUID] = UNSET
+    provider_slug: Union[Unset, UUID] = UNSET
     category_title: Union[Unset, str] = UNSET
     category_uuid: Union[Unset, UUID] = UNSET
     category_icon: Union[Unset, str] = UNSET
@@ -172,9 +171,6 @@ class OrderDetails:
     activation_price: Union[Unset, float] = UNSET
     termination_comment: Union[None, Unset, str] = UNSET
     backend_id: Union[Unset, str] = UNSET
-    offering_customer_uuid: Union[Unset, UUID] = UNSET
-    offering_customer_name: Union[Unset, str] = UNSET
-    offering_customer_slug: Union[Unset, str] = UNSET
     issue: Union["IssueReference", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -208,6 +204,10 @@ class OrderDetails:
         provider_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.provider_uuid, Unset):
             provider_uuid = str(self.provider_uuid)
+
+        provider_slug: Union[Unset, str] = UNSET
+        if not isinstance(self.provider_slug, Unset):
+            provider_slug = str(self.provider_slug)
 
         category_title = self.category_title
 
@@ -465,14 +465,6 @@ class OrderDetails:
 
         backend_id = self.backend_id
 
-        offering_customer_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.offering_customer_uuid, Unset):
-            offering_customer_uuid = str(self.offering_customer_uuid)
-
-        offering_customer_name = self.offering_customer_name
-
-        offering_customer_slug = self.offering_customer_slug
-
         issue: Union[None, Unset, dict[str, Any]]
         if isinstance(self.issue, Unset):
             issue = UNSET
@@ -508,6 +500,8 @@ class OrderDetails:
             field_dict["provider_name"] = provider_name
         if provider_uuid is not UNSET:
             field_dict["provider_uuid"] = provider_uuid
+        if provider_slug is not UNSET:
+            field_dict["provider_slug"] = provider_slug
         if category_title is not UNSET:
             field_dict["category_title"] = category_title
         if category_uuid is not UNSET:
@@ -620,12 +614,6 @@ class OrderDetails:
             field_dict["termination_comment"] = termination_comment
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
-        if offering_customer_uuid is not UNSET:
-            field_dict["offering_customer_uuid"] = offering_customer_uuid
-        if offering_customer_name is not UNSET:
-            field_dict["offering_customer_name"] = offering_customer_name
-        if offering_customer_slug is not UNSET:
-            field_dict["offering_customer_slug"] = offering_customer_slug
         if issue is not UNSET:
             field_dict["issue"] = issue
 
@@ -670,6 +658,13 @@ class OrderDetails:
             provider_uuid = UNSET
         else:
             provider_uuid = UUID(_provider_uuid)
+
+        _provider_slug = d.pop("provider_slug", UNSET)
+        provider_slug: Union[Unset, UUID]
+        if isinstance(_provider_slug, Unset):
+            provider_slug = UNSET
+        else:
+            provider_slug = UUID(_provider_slug)
 
         category_title = d.pop("category_title", UNSET)
 
@@ -1094,17 +1089,6 @@ class OrderDetails:
 
         backend_id = d.pop("backend_id", UNSET)
 
-        _offering_customer_uuid = d.pop("offering_customer_uuid", UNSET)
-        offering_customer_uuid: Union[Unset, UUID]
-        if isinstance(_offering_customer_uuid, Unset):
-            offering_customer_uuid = UNSET
-        else:
-            offering_customer_uuid = UUID(_offering_customer_uuid)
-
-        offering_customer_name = d.pop("offering_customer_name", UNSET)
-
-        offering_customer_slug = d.pop("offering_customer_slug", UNSET)
-
         def _parse_issue(data: object) -> Union["IssueReference", None, Unset]:
             if data is None:
                 return data
@@ -1135,6 +1119,7 @@ class OrderDetails:
             offering_plugin_options=offering_plugin_options,
             provider_name=provider_name,
             provider_uuid=provider_uuid,
+            provider_slug=provider_slug,
             category_title=category_title,
             category_uuid=category_uuid,
             category_icon=category_icon,
@@ -1191,9 +1176,6 @@ class OrderDetails:
             activation_price=activation_price,
             termination_comment=termination_comment,
             backend_id=backend_id,
-            offering_customer_uuid=offering_customer_uuid,
-            offering_customer_name=offering_customer_name,
-            offering_customer_slug=offering_customer_slug,
             issue=issue,
         )
 

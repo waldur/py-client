@@ -20,22 +20,17 @@ T = TypeVar("T", bound="VMwareVirtualMachineCreateOrderAttributes")
 
 @_attrs_define
 class VMwareVirtualMachineCreateOrderAttributes:
-    """This mixin allows to specify list of fields to be rendered by serializer.
-    It expects that request is available in serializer's context.
-
-    It is disabled for nested serializers (where parent is another serializer)
-    but remains active for list views (where parent is a ListSerializer).
-
-        Attributes:
-            name (str):
-            description (Union[Unset, str]):
-            guest_os (Union[None, Unset, VMwareVirtualMachineCreateOrderAttributesGuestOsType1,
-                VMwareVirtualMachineCreateOrderAttributesGuestOsType2Type1,
-                VMwareVirtualMachineCreateOrderAttributesGuestOsType3Type1]):
-            cores_per_socket (Union[Unset, int]): Number of cores per socket in a VM
-            template (Union[None, Unset, str]):
-            cluster (Union[None, Unset, str]):
-            datastore (Union[None, Unset, str]):
+    """
+    Attributes:
+        name (str):
+        description (Union[Unset, str]):
+        guest_os (Union[None, Unset, VMwareVirtualMachineCreateOrderAttributesGuestOsType1,
+            VMwareVirtualMachineCreateOrderAttributesGuestOsType2Type1,
+            VMwareVirtualMachineCreateOrderAttributesGuestOsType3Type1]):
+        cores_per_socket (Union[Unset, int]): Number of cores per socket in a VM
+        template (Union[None, Unset, str]):
+        cluster (Union[None, Unset, str]):
+        datastore (Union[None, Unset, str]):
     """
 
     name: str

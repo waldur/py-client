@@ -37,7 +37,6 @@ class RancherClustersListFieldItem(str, Enum):
     RESOURCE_TYPE = "resource_type"
     ROUTER_IPS = "router_ips"
     RUNTIME_STATE = "runtime_state"
-    SECURITY_GROUPS = "security_groups"
     SERVICE_NAME = "service_name"
     SERVICE_SETTINGS = "service_settings"
     SERVICE_SETTINGS_ERROR_MESSAGE = "service_settings_error_message"

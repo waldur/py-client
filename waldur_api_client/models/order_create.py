@@ -35,6 +35,7 @@ class OrderCreate:
         offering_plugin_options (Any): Public data used by specific plugin, such as storage mode for OpenStack.
         provider_name (str):
         provider_uuid (UUID):
+        provider_slug (UUID):
         category_title (str):
         category_uuid (UUID):
         category_icon (str):
@@ -92,6 +93,7 @@ class OrderCreate:
     offering_plugin_options: Any
     provider_name: str
     provider_uuid: UUID
+    provider_slug: UUID
     category_title: str
     category_uuid: UUID
     category_icon: str
@@ -159,6 +161,8 @@ class OrderCreate:
         provider_name = self.provider_name
 
         provider_uuid = str(self.provider_uuid)
+
+        provider_slug = str(self.provider_slug)
 
         category_title = self.category_title
 
@@ -298,6 +302,7 @@ class OrderCreate:
                 "offering_plugin_options": offering_plugin_options,
                 "provider_name": provider_name,
                 "provider_uuid": provider_uuid,
+                "provider_slug": provider_slug,
                 "category_title": category_title,
                 "category_uuid": category_uuid,
                 "category_icon": category_icon,
@@ -378,6 +383,8 @@ class OrderCreate:
         provider_name = d.pop("provider_name")
 
         provider_uuid = UUID(d.pop("provider_uuid"))
+
+        provider_slug = UUID(d.pop("provider_slug"))
 
         category_title = d.pop("category_title")
 
@@ -603,6 +610,7 @@ class OrderCreate:
             offering_plugin_options=offering_plugin_options,
             provider_name=provider_name,
             provider_uuid=provider_uuid,
+            provider_slug=provider_slug,
             category_title=category_title,
             category_uuid=category_uuid,
             category_icon=category_icon,

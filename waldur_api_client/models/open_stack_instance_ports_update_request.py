@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
+    from ..models.open_stack_create_port_request import OpenStackCreatePortRequest
 
 
 T = TypeVar("T", bound="OpenStackInstancePortsUpdateRequest")
@@ -15,10 +15,10 @@ T = TypeVar("T", bound="OpenStackInstancePortsUpdateRequest")
 class OpenStackInstancePortsUpdateRequest:
     """
     Attributes:
-        ports (list['OpenStackNestedPortRequest']):
+        ports (list['OpenStackCreatePortRequest']):
     """
 
-    ports: list["OpenStackNestedPortRequest"]
+    ports: list["OpenStackCreatePortRequest"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,13 +39,13 @@ class OpenStackInstancePortsUpdateRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.open_stack_nested_port_request import OpenStackNestedPortRequest
+        from ..models.open_stack_create_port_request import OpenStackCreatePortRequest
 
         d = dict(src_dict)
         ports = []
         _ports = d.pop("ports")
         for ports_item_data in _ports:
-            ports_item = OpenStackNestedPortRequest.from_dict(ports_item_data)
+            ports_item = OpenStackCreatePortRequest.from_dict(ports_item_data)
 
             ports.append(ports_item)
 

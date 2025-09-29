@@ -11,19 +11,14 @@ T = TypeVar("T", bound="OpenStackVolumeCreateOrderAttributes")
 
 @_attrs_define
 class OpenStackVolumeCreateOrderAttributes:
-    """This mixin allows to specify list of fields to be rendered by serializer.
-    It expects that request is available in serializer's context.
-
-    It is disabled for nested serializers (where parent is another serializer)
-    but remains active for list views (where parent is a ListSerializer).
-
-        Attributes:
-            name (str):
-            description (Union[Unset, str]):
-            image (Union[None, Unset, str]): Image that this volume was created from, if any
-            size (Union[None, Unset, int]): Size in MiB
-            availability_zone (Union[None, Unset, str]): Availability zone where this volume is located
-            type_ (Union[None, Unset, str]): Type of the volume (e.g. SSD, HDD)
+    """
+    Attributes:
+        name (str):
+        description (Union[Unset, str]):
+        image (Union[None, Unset, str]): Image that this volume was created from, if any
+        size (Union[None, Unset, int]): Size in MiB
+        availability_zone (Union[None, Unset, str]): Availability zone where this volume is located
+        type_ (Union[None, Unset, str]): Type of the volume (e.g. SSD, HDD)
     """
 
     name: str

@@ -42,6 +42,7 @@ class Resource:
             OpenStack.
         provider_name (Union[Unset, str]):
         provider_uuid (Union[Unset, UUID]):
+        provider_slug (Union[Unset, UUID]):
         category_title (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
         category_icon (Union[Unset, str]):
@@ -97,9 +98,6 @@ class Resource:
         endpoints (Union[Unset, list['NestedEndpoint']]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
-        offering_customer_uuid (Union[Unset, UUID]):
-        offering_customer_name (Union[Unset, str]):
-        offering_customer_slug (Union[Unset, str]):
         options (Union[Unset, Any]):
         available_actions (Union[Unset, list[str]]):
         last_sync (Union[Unset, datetime.datetime]):
@@ -124,6 +122,7 @@ class Resource:
     offering_plugin_options: Union[Unset, Any] = UNSET
     provider_name: Union[Unset, str] = UNSET
     provider_uuid: Union[Unset, UUID] = UNSET
+    provider_slug: Union[Unset, UUID] = UNSET
     category_title: Union[Unset, str] = UNSET
     category_uuid: Union[Unset, UUID] = UNSET
     category_icon: Union[Unset, str] = UNSET
@@ -177,9 +176,6 @@ class Resource:
     endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
-    offering_customer_uuid: Union[Unset, UUID] = UNSET
-    offering_customer_name: Union[Unset, str] = UNSET
-    offering_customer_slug: Union[Unset, str] = UNSET
     options: Union[Unset, Any] = UNSET
     available_actions: Union[Unset, list[str]] = UNSET
     last_sync: Union[Unset, datetime.datetime] = UNSET
@@ -221,6 +217,10 @@ class Resource:
         provider_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.provider_uuid, Unset):
             provider_uuid = str(self.provider_uuid)
+
+        provider_slug: Union[Unset, str] = UNSET
+        if not isinstance(self.provider_slug, Unset):
+            provider_slug = str(self.provider_slug)
 
         category_title = self.category_title
 
@@ -416,14 +416,6 @@ class Resource:
 
         error_traceback = self.error_traceback
 
-        offering_customer_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.offering_customer_uuid, Unset):
-            offering_customer_uuid = str(self.offering_customer_uuid)
-
-        offering_customer_name = self.offering_customer_name
-
-        offering_customer_slug = self.offering_customer_slug
-
         options = self.options
 
         available_actions: Union[Unset, list[str]] = UNSET
@@ -487,6 +479,8 @@ class Resource:
             field_dict["provider_name"] = provider_name
         if provider_uuid is not UNSET:
             field_dict["provider_uuid"] = provider_uuid
+        if provider_slug is not UNSET:
+            field_dict["provider_slug"] = provider_slug
         if category_title is not UNSET:
             field_dict["category_title"] = category_title
         if category_uuid is not UNSET:
@@ -593,12 +587,6 @@ class Resource:
             field_dict["error_message"] = error_message
         if error_traceback is not UNSET:
             field_dict["error_traceback"] = error_traceback
-        if offering_customer_uuid is not UNSET:
-            field_dict["offering_customer_uuid"] = offering_customer_uuid
-        if offering_customer_name is not UNSET:
-            field_dict["offering_customer_name"] = offering_customer_name
-        if offering_customer_slug is not UNSET:
-            field_dict["offering_customer_slug"] = offering_customer_slug
         if options is not UNSET:
             field_dict["options"] = options
         if available_actions is not UNSET:
@@ -665,6 +653,13 @@ class Resource:
             provider_uuid = UNSET
         else:
             provider_uuid = UUID(_provider_uuid)
+
+        _provider_slug = d.pop("provider_slug", UNSET)
+        provider_slug: Union[Unset, UUID]
+        if isinstance(_provider_slug, Unset):
+            provider_slug = UNSET
+        else:
+            provider_slug = UUID(_provider_slug)
 
         category_title = d.pop("category_title", UNSET)
 
@@ -962,17 +957,6 @@ class Resource:
 
         error_traceback = d.pop("error_traceback", UNSET)
 
-        _offering_customer_uuid = d.pop("offering_customer_uuid", UNSET)
-        offering_customer_uuid: Union[Unset, UUID]
-        if isinstance(_offering_customer_uuid, Unset):
-            offering_customer_uuid = UNSET
-        else:
-            offering_customer_uuid = UUID(_offering_customer_uuid)
-
-        offering_customer_name = d.pop("offering_customer_name", UNSET)
-
-        offering_customer_slug = d.pop("offering_customer_slug", UNSET)
-
         options = d.pop("options", UNSET)
 
         available_actions = cast(list[str], d.pop("available_actions", UNSET))
@@ -1044,6 +1028,7 @@ class Resource:
             offering_plugin_options=offering_plugin_options,
             provider_name=provider_name,
             provider_uuid=provider_uuid,
+            provider_slug=provider_slug,
             category_title=category_title,
             category_uuid=category_uuid,
             category_icon=category_icon,
@@ -1097,9 +1082,6 @@ class Resource:
             endpoints=endpoints,
             error_message=error_message,
             error_traceback=error_traceback,
-            offering_customer_uuid=offering_customer_uuid,
-            offering_customer_name=offering_customer_name,
-            offering_customer_slug=offering_customer_slug,
             options=options,
             available_actions=available_actions,
             last_sync=last_sync,

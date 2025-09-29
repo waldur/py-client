@@ -1,55 +1,46 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="GenericOrderAttributes")
+T = TypeVar("T", bound="RancherWorkloadCreate")
 
 
 @_attrs_define
-class GenericOrderAttributes:
+class RancherWorkloadCreate:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the resource to be created. Will be displayed in the portal.
-        description (Union[Unset, str]): A free-form description for the resource.
+        url (str):
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
+    url: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
-
-        description = self.description
+        url = self.url
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
-        if description is not UNSET:
-            field_dict["description"] = description
+        field_dict.update(
+            {
+                "url": url,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name", UNSET)
+        url = d.pop("url")
 
-        description = d.pop("description", UNSET)
-
-        generic_order_attributes = cls(
-            name=name,
-            description=description,
+        rancher_workload_create = cls(
+            url=url,
         )
 
-        generic_order_attributes.additional_properties = d
-        return generic_order_attributes
+        rancher_workload_create.additional_properties = d
+        return rancher_workload_create
 
     @property
     def additional_keys(self) -> list[str]:

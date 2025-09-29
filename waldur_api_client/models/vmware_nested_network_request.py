@@ -11,25 +11,20 @@ T = TypeVar("T", bound="VmwareNestedNetworkRequest")
 class VmwareNestedNetworkRequest:
     """
     Attributes:
-        name (str):
-        type_ (str):
+        url (str):
     """
 
-    name: str
-    type_: str
+    url: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
-
-        type_ = self.type_
+        url = self.url
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "name": name,
-                "type": type_,
+                "url": url,
             }
         )
 
@@ -38,13 +33,10 @@ class VmwareNestedNetworkRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name")
-
-        type_ = d.pop("type")
+        url = d.pop("url")
 
         vmware_nested_network_request = cls(
-            name=name,
-            type_=type_,
+            url=url,
         )
 
         vmware_nested_network_request.additional_properties = d

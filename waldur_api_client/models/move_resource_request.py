@@ -1,55 +1,52 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
+if TYPE_CHECKING:
+    from ..models.project_hyperlink_request import ProjectHyperlinkRequest
 
-T = TypeVar("T", bound="GenericOrderAttributes")
+
+T = TypeVar("T", bound="MoveResourceRequest")
 
 
 @_attrs_define
-class GenericOrderAttributes:
+class MoveResourceRequest:
     """
     Attributes:
-        name (Union[Unset, str]): The name of the resource to be created. Will be displayed in the portal.
-        description (Union[Unset, str]): A free-form description for the resource.
+        project (ProjectHyperlinkRequest):
     """
 
-    name: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
+    project: "ProjectHyperlinkRequest"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
-
-        description = self.description
+        project = self.project.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
-        if description is not UNSET:
-            field_dict["description"] = description
+        field_dict.update(
+            {
+                "project": project,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.project_hyperlink_request import ProjectHyperlinkRequest
+
         d = dict(src_dict)
-        name = d.pop("name", UNSET)
+        project = ProjectHyperlinkRequest.from_dict(d.pop("project"))
 
-        description = d.pop("description", UNSET)
-
-        generic_order_attributes = cls(
-            name=name,
-            description=description,
+        move_resource_request = cls(
+            project=project,
         )
 
-        generic_order_attributes.additional_properties = d
-        return generic_order_attributes
+        move_resource_request.additional_properties = d
+        return move_resource_request
 
     @property
     def additional_keys(self) -> list[str]:

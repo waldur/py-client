@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.open_stack_backup_restoration_request import OpenStackBackupRestorationRequest
+from ...models.open_stack_backup_restoration_create_request import OpenStackBackupRestorationCreateRequest
 from ...models.open_stack_instance import OpenStackInstance
 from ...types import Response
 
@@ -14,7 +14,7 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: OpenStackBackupRestorationRequest,
+    body: OpenStackBackupRestorationCreateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -54,13 +54,13 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackBackupRestorationRequest,
+    body: OpenStackBackupRestorationCreateRequest,
 ) -> Response[OpenStackInstance]:
     """Restore instance from backup
 
     Args:
         uuid (UUID):
-        body (OpenStackBackupRestorationRequest):
+        body (OpenStackBackupRestorationCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -86,13 +86,13 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackBackupRestorationRequest,
+    body: OpenStackBackupRestorationCreateRequest,
 ) -> OpenStackInstance:
     """Restore instance from backup
 
     Args:
         uuid (UUID):
-        body (OpenStackBackupRestorationRequest):
+        body (OpenStackBackupRestorationCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -113,13 +113,13 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackBackupRestorationRequest,
+    body: OpenStackBackupRestorationCreateRequest,
 ) -> Response[OpenStackInstance]:
     """Restore instance from backup
 
     Args:
         uuid (UUID):
-        body (OpenStackBackupRestorationRequest):
+        body (OpenStackBackupRestorationCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -143,13 +143,13 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackBackupRestorationRequest,
+    body: OpenStackBackupRestorationCreateRequest,
 ) -> OpenStackInstance:
     """Restore instance from backup
 
     Args:
         uuid (UUID):
-        body (OpenStackBackupRestorationRequest):
+        body (OpenStackBackupRestorationCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

@@ -1,59 +1,43 @@
-import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.open_stack_nested_floating_ip import OpenStackNestedFloatingIP
-    from ..models.open_stack_nested_port import OpenStackNestedPort
-    from ..models.open_stack_nested_security_group import OpenStackNestedSecurityGroup
+    from ..models.open_stack_create_floating_ip_request import OpenStackCreateFloatingIPRequest
+    from ..models.open_stack_create_port_request import OpenStackCreatePortRequest
+    from ..models.open_stack_security_group_hyperlink_request import OpenStackSecurityGroupHyperlinkRequest
 
 
-T = TypeVar("T", bound="OpenStackBackupRestoration")
+T = TypeVar("T", bound="OpenStackBackupRestorationCreateRequest")
 
 
 @_attrs_define
-class OpenStackBackupRestoration:
+class OpenStackBackupRestorationCreateRequest:
     """
     Attributes:
-        uuid (Union[Unset, UUID]):
-        instance (Union[Unset, str]): Instance that is being restored from the backup
-        created (Union[Unset, datetime.datetime]):
-        flavor (Union[Unset, str]): Flavor to be used for the restored instance. If not specified, original instance
-            flavor will be used
+        flavor (str): Flavor to be used for the restored instance. If not specified, original instance flavor will be
+            used
         name (Union[Unset, str]): New instance name. Leave blank to use source instance name.
-        floating_ips (Union[Unset, list['OpenStackNestedFloatingIP']]):
-        security_groups (Union[Unset, list['OpenStackNestedSecurityGroup']]):
-        ports (Union[Unset, list['OpenStackNestedPort']]):
+        floating_ips (Union[Unset, list['OpenStackCreateFloatingIPRequest']]): Floating IPs that will be assigned to the
+            restored instance
+        security_groups (Union[Unset, list['OpenStackSecurityGroupHyperlinkRequest']]): Security groups that will be
+            assigned to the restored instance
+        ports (Union[Unset, list['OpenStackCreatePortRequest']]): Network ports that will be attached to the restored
+            instance
     """
 
-    uuid: Union[Unset, UUID] = UNSET
-    instance: Union[Unset, str] = UNSET
-    created: Union[Unset, datetime.datetime] = UNSET
-    flavor: Union[Unset, str] = UNSET
+    flavor: str
     name: Union[Unset, str] = UNSET
-    floating_ips: Union[Unset, list["OpenStackNestedFloatingIP"]] = UNSET
-    security_groups: Union[Unset, list["OpenStackNestedSecurityGroup"]] = UNSET
-    ports: Union[Unset, list["OpenStackNestedPort"]] = UNSET
+    floating_ips: Union[Unset, list["OpenStackCreateFloatingIPRequest"]] = UNSET
+    security_groups: Union[Unset, list["OpenStackSecurityGroupHyperlinkRequest"]] = UNSET
+    ports: Union[Unset, list["OpenStackCreatePortRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.uuid, Unset):
-            uuid = str(self.uuid)
-
-        instance = self.instance
-
-        created: Union[Unset, str] = UNSET
-        if not isinstance(self.created, Unset):
-            created = self.created.isoformat()
-
         flavor = self.flavor
 
         name = self.name
@@ -81,15 +65,11 @@ class OpenStackBackupRestoration:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if uuid is not UNSET:
-            field_dict["uuid"] = uuid
-        if instance is not UNSET:
-            field_dict["instance"] = instance
-        if created is not UNSET:
-            field_dict["created"] = created
-        if flavor is not UNSET:
-            field_dict["flavor"] = flavor
+        field_dict.update(
+            {
+                "flavor": flavor,
+            }
+        )
         if name is not UNSET:
             field_dict["name"] = name
         if floating_ips is not UNSET:
@@ -103,56 +83,37 @@ class OpenStackBackupRestoration:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.open_stack_nested_floating_ip import OpenStackNestedFloatingIP
-        from ..models.open_stack_nested_port import OpenStackNestedPort
-        from ..models.open_stack_nested_security_group import OpenStackNestedSecurityGroup
+        from ..models.open_stack_create_floating_ip_request import OpenStackCreateFloatingIPRequest
+        from ..models.open_stack_create_port_request import OpenStackCreatePortRequest
+        from ..models.open_stack_security_group_hyperlink_request import OpenStackSecurityGroupHyperlinkRequest
 
         d = dict(src_dict)
-        _uuid = d.pop("uuid", UNSET)
-        uuid: Union[Unset, UUID]
-        if isinstance(_uuid, Unset):
-            uuid = UNSET
-        else:
-            uuid = UUID(_uuid)
-
-        instance = d.pop("instance", UNSET)
-
-        _created = d.pop("created", UNSET)
-        created: Union[Unset, datetime.datetime]
-        if isinstance(_created, Unset):
-            created = UNSET
-        else:
-            created = isoparse(_created)
-
-        flavor = d.pop("flavor", UNSET)
+        flavor = d.pop("flavor")
 
         name = d.pop("name", UNSET)
 
         floating_ips = []
         _floating_ips = d.pop("floating_ips", UNSET)
         for floating_ips_item_data in _floating_ips or []:
-            floating_ips_item = OpenStackNestedFloatingIP.from_dict(floating_ips_item_data)
+            floating_ips_item = OpenStackCreateFloatingIPRequest.from_dict(floating_ips_item_data)
 
             floating_ips.append(floating_ips_item)
 
         security_groups = []
         _security_groups = d.pop("security_groups", UNSET)
         for security_groups_item_data in _security_groups or []:
-            security_groups_item = OpenStackNestedSecurityGroup.from_dict(security_groups_item_data)
+            security_groups_item = OpenStackSecurityGroupHyperlinkRequest.from_dict(security_groups_item_data)
 
             security_groups.append(security_groups_item)
 
         ports = []
         _ports = d.pop("ports", UNSET)
         for ports_item_data in _ports or []:
-            ports_item = OpenStackNestedPort.from_dict(ports_item_data)
+            ports_item = OpenStackCreatePortRequest.from_dict(ports_item_data)
 
             ports.append(ports_item)
 
-        open_stack_backup_restoration = cls(
-            uuid=uuid,
-            instance=instance,
-            created=created,
+        open_stack_backup_restoration_create_request = cls(
             flavor=flavor,
             name=name,
             floating_ips=floating_ips,
@@ -160,8 +121,8 @@ class OpenStackBackupRestoration:
             ports=ports,
         )
 
-        open_stack_backup_restoration.additional_properties = d
-        return open_stack_backup_restoration
+        open_stack_backup_restoration_create_request.additional_properties = d
+        return open_stack_backup_restoration_create_request
 
     @property
     def additional_keys(self) -> list[str]:

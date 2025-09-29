@@ -1,57 +1,31 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="SlurmInvoicesSlurmPackageCreateOrderAttributes")
+T = TypeVar("T", bound="RancherServiceCreateMarketplaceOfferingPluginOptionsType0")
 
 
 @_attrs_define
-class SlurmInvoicesSlurmPackageCreateOrderAttributes:
-    """
-    Attributes:
-        name (str):
-        description (Union[Unset, str]):
-    """
+class RancherServiceCreateMarketplaceOfferingPluginOptionsType0:
+    """ """
 
-    name: str
-    description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
-
-        description = self.description
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-            }
-        )
-        if description is not UNSET:
-            field_dict["description"] = description
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name")
+        rancher_service_create_marketplace_offering_plugin_options_type_0 = cls()
 
-        description = d.pop("description", UNSET)
-
-        slurm_invoices_slurm_package_create_order_attributes = cls(
-            name=name,
-            description=description,
-        )
-
-        slurm_invoices_slurm_package_create_order_attributes.additional_properties = d
-        return slurm_invoices_slurm_package_create_order_attributes
+        rancher_service_create_marketplace_offering_plugin_options_type_0.additional_properties = d
+        return rancher_service_create_marketplace_offering_plugin_options_type_0
 
     @property
     def additional_keys(self) -> list[str]:

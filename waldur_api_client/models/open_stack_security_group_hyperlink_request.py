@@ -4,11 +4,11 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="RancherNestedSecurityGroup")
+T = TypeVar("T", bound="OpenStackSecurityGroupHyperlinkRequest")
 
 
 @_attrs_define
-class RancherNestedSecurityGroup:
+class OpenStackSecurityGroupHyperlinkRequest:
     """
     Attributes:
         url (str):
@@ -35,12 +35,12 @@ class RancherNestedSecurityGroup:
         d = dict(src_dict)
         url = d.pop("url")
 
-        rancher_nested_security_group = cls(
+        open_stack_security_group_hyperlink_request = cls(
             url=url,
         )
 
-        rancher_nested_security_group.additional_properties = d
-        return rancher_nested_security_group
+        open_stack_security_group_hyperlink_request.additional_properties = d
+        return open_stack_security_group_hyperlink_request
 
     @property
     def additional_keys(self) -> list[str]:

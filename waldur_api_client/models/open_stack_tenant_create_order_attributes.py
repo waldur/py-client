@@ -11,20 +11,15 @@ T = TypeVar("T", bound="OpenStackTenantCreateOrderAttributes")
 
 @_attrs_define
 class OpenStackTenantCreateOrderAttributes:
-    """This mixin allows to specify list of fields to be rendered by serializer.
-    It expects that request is available in serializer's context.
-
-    It is disabled for nested serializers (where parent is another serializer)
-    but remains active for list views (where parent is a ListSerializer).
-
-        Attributes:
-            name (str):
-            description (Union[Unset, str]):
-            subnet_cidr (Union[Unset, str]):  Default: '192.168.42.0/24'.
-            skip_connection_extnet (Union[Unset, bool]):  Default: False.
-            skip_creation_of_default_router (Union[Unset, bool]):  Default: False.
-            availability_zone (Union[Unset, str]): Optional availability group. Will be used for all instances provisioned
-                in this tenant
+    """
+    Attributes:
+        name (str):
+        description (Union[Unset, str]):
+        subnet_cidr (Union[Unset, str]):  Default: '192.168.42.0/24'.
+        skip_connection_extnet (Union[Unset, bool]):  Default: False.
+        skip_creation_of_default_router (Union[Unset, bool]):  Default: False.
+        availability_zone (Union[Unset, str]): Optional availability group. Will be used for all instances provisioned
+            in this tenant
     """
 
     name: str

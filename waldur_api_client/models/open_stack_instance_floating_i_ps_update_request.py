@@ -7,7 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
+    from ..models.open_stack_create_floating_ip_request import OpenStackCreateFloatingIPRequest
 
 
 T = TypeVar("T", bound="OpenStackInstanceFloatingIPsUpdateRequest")
@@ -17,10 +17,10 @@ T = TypeVar("T", bound="OpenStackInstanceFloatingIPsUpdateRequest")
 class OpenStackInstanceFloatingIPsUpdateRequest:
     """
     Attributes:
-        floating_ips (Union[Unset, list['OpenStackNestedFloatingIPRequest']]):
+        floating_ips (Union[Unset, list['OpenStackCreateFloatingIPRequest']]):
     """
 
-    floating_ips: Union[Unset, list["OpenStackNestedFloatingIPRequest"]] = UNSET
+    floating_ips: Union[Unset, list["OpenStackCreateFloatingIPRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,13 +41,13 @@ class OpenStackInstanceFloatingIPsUpdateRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
+        from ..models.open_stack_create_floating_ip_request import OpenStackCreateFloatingIPRequest
 
         d = dict(src_dict)
         floating_ips = []
         _floating_ips = d.pop("floating_ips", UNSET)
         for floating_ips_item_data in _floating_ips or []:
-            floating_ips_item = OpenStackNestedFloatingIPRequest.from_dict(floating_ips_item_data)
+            floating_ips_item = OpenStackCreateFloatingIPRequest.from_dict(floating_ips_item_data)
 
             floating_ips.append(floating_ips_item)
 

@@ -11,18 +11,13 @@ T = TypeVar("T", bound="AzureVirtualMachineCreateOrderAttributes")
 
 @_attrs_define
 class AzureVirtualMachineCreateOrderAttributes:
-    """This mixin allows to specify list of fields to be rendered by serializer.
-    It expects that request is available in serializer's context.
-
-    It is disabled for nested serializers (where parent is another serializer)
-    but remains active for list views (where parent is a ListSerializer).
-
-        Attributes:
-            name (str):
-            size (str):
-            image (str):
-            location (str):
-            description (Union[Unset, str]):
+    """
+    Attributes:
+        name (str):
+        size (str):
+        image (str):
+        location (str):
+        description (Union[Unset, str]):
     """
 
     name: str

@@ -39,6 +39,7 @@ class MergedPluginOptions:
             resources
         order_supports_comments_and_metadata (Union[Unset, bool]): If set to True, orders will support comments and
             metadata
+        conceal_billing_data (Union[Unset, bool]): If set to True, pricing and components tab would be concealed.
         default_internal_network_mtu (Union[Unset, int]): If set, it will be used as a default MTU for the first network
             in a tenant
         max_instances (Union[Unset, int]): Default limit for number of instances in OpenStack tenant
@@ -93,6 +94,7 @@ class MergedPluginOptions:
     maximal_resource_count_per_project: Union[Unset, int] = UNSET
     required_team_role_for_provisioning: Union[Unset, str] = UNSET
     order_supports_comments_and_metadata: Union[Unset, bool] = UNSET
+    conceal_billing_data: Union[Unset, bool] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
     max_volumes: Union[Unset, int] = UNSET
@@ -160,6 +162,8 @@ class MergedPluginOptions:
         required_team_role_for_provisioning = self.required_team_role_for_provisioning
 
         order_supports_comments_and_metadata = self.order_supports_comments_and_metadata
+
+        conceal_billing_data = self.conceal_billing_data
 
         default_internal_network_mtu = self.default_internal_network_mtu
 
@@ -276,6 +280,8 @@ class MergedPluginOptions:
             field_dict["required_team_role_for_provisioning"] = required_team_role_for_provisioning
         if order_supports_comments_and_metadata is not UNSET:
             field_dict["order_supports_comments_and_metadata"] = order_supports_comments_and_metadata
+        if conceal_billing_data is not UNSET:
+            field_dict["conceal_billing_data"] = conceal_billing_data
         if default_internal_network_mtu is not UNSET:
             field_dict["default_internal_network_mtu"] = default_internal_network_mtu
         if max_instances is not UNSET:
@@ -394,6 +400,8 @@ class MergedPluginOptions:
         required_team_role_for_provisioning = d.pop("required_team_role_for_provisioning", UNSET)
 
         order_supports_comments_and_metadata = d.pop("order_supports_comments_and_metadata", UNSET)
+
+        conceal_billing_data = d.pop("conceal_billing_data", UNSET)
 
         default_internal_network_mtu = d.pop("default_internal_network_mtu", UNSET)
 
@@ -519,6 +527,7 @@ class MergedPluginOptions:
             maximal_resource_count_per_project=maximal_resource_count_per_project,
             required_team_role_for_provisioning=required_team_role_for_provisioning,
             order_supports_comments_and_metadata=order_supports_comments_and_metadata,
+            conceal_billing_data=conceal_billing_data,
             default_internal_network_mtu=default_internal_network_mtu,
             max_instances=max_instances,
             max_volumes=max_volumes,

@@ -47,7 +47,8 @@ class RobotAccountDetails:
         project_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
-        offering_customer_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
+        provider_name (Union[Unset, str]):
         offering_plugin_options (Union[Unset, MergedPluginOptions]):
     """
 
@@ -74,7 +75,8 @@ class RobotAccountDetails:
     project_uuid: Union[Unset, UUID] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
-    offering_customer_uuid: Union[Unset, UUID] = UNSET
+    provider_uuid: Union[Unset, UUID] = UNSET
+    provider_name: Union[Unset, str] = UNSET
     offering_plugin_options: Union[Unset, "MergedPluginOptions"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -162,9 +164,11 @@ class RobotAccountDetails:
 
         customer_name = self.customer_name
 
-        offering_customer_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.offering_customer_uuid, Unset):
-            offering_customer_uuid = str(self.offering_customer_uuid)
+        provider_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.provider_uuid, Unset):
+            provider_uuid = str(self.provider_uuid)
+
+        provider_name = self.provider_name
 
         offering_plugin_options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.offering_plugin_options, Unset):
@@ -219,8 +223,10 @@ class RobotAccountDetails:
             field_dict["customer_uuid"] = customer_uuid
         if customer_name is not UNSET:
             field_dict["customer_name"] = customer_name
-        if offering_customer_uuid is not UNSET:
-            field_dict["offering_customer_uuid"] = offering_customer_uuid
+        if provider_uuid is not UNSET:
+            field_dict["provider_uuid"] = provider_uuid
+        if provider_name is not UNSET:
+            field_dict["provider_name"] = provider_name
         if offering_plugin_options is not UNSET:
             field_dict["offering_plugin_options"] = offering_plugin_options
 
@@ -345,12 +351,14 @@ class RobotAccountDetails:
 
         customer_name = d.pop("customer_name", UNSET)
 
-        _offering_customer_uuid = d.pop("offering_customer_uuid", UNSET)
-        offering_customer_uuid: Union[Unset, UUID]
-        if isinstance(_offering_customer_uuid, Unset):
-            offering_customer_uuid = UNSET
+        _provider_uuid = d.pop("provider_uuid", UNSET)
+        provider_uuid: Union[Unset, UUID]
+        if isinstance(_provider_uuid, Unset):
+            provider_uuid = UNSET
         else:
-            offering_customer_uuid = UUID(_offering_customer_uuid)
+            provider_uuid = UUID(_provider_uuid)
+
+        provider_name = d.pop("provider_name", UNSET)
 
         _offering_plugin_options = d.pop("offering_plugin_options", UNSET)
         offering_plugin_options: Union[Unset, MergedPluginOptions]
@@ -383,7 +391,8 @@ class RobotAccountDetails:
             project_uuid=project_uuid,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
-            offering_customer_uuid=offering_customer_uuid,
+            provider_uuid=provider_uuid,
+            provider_name=provider_name,
             offering_plugin_options=offering_plugin_options,
         )
 

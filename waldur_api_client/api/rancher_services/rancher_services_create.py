@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.rancher_service import RancherService
-from ...models.rancher_service_request import RancherServiceRequest
+from ...models.rancher_service_create import RancherServiceCreate
+from ...models.rancher_service_create_request import RancherServiceCreateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: RancherServiceRequest,
+    body: RancherServiceCreateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,9 +29,9 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> RancherService:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> RancherServiceCreate:
     if response.status_code == 201:
-        response_201 = RancherService.from_dict(response.json())
+        response_201 = RancherServiceCreate.from_dict(response.json())
 
         return response_201
     raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -39,7 +39,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[RancherService]:
+) -> Response[RancherServiceCreate]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -51,18 +51,18 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: RancherServiceRequest,
-) -> Response[RancherService]:
+    body: RancherServiceCreateRequest,
+) -> Response[RancherServiceCreate]:
     """
     Args:
-        body (RancherServiceRequest):
+        body (RancherServiceCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RancherService]
+        Response[RancherServiceCreate]
     """
 
     kwargs = _get_kwargs(
@@ -79,18 +79,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: RancherServiceRequest,
-) -> RancherService:
+    body: RancherServiceCreateRequest,
+) -> RancherServiceCreate:
     """
     Args:
-        body (RancherServiceRequest):
+        body (RancherServiceCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RancherService
+        RancherServiceCreate
     """
 
     return sync_detailed(
@@ -102,18 +102,18 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: RancherServiceRequest,
-) -> Response[RancherService]:
+    body: RancherServiceCreateRequest,
+) -> Response[RancherServiceCreate]:
     """
     Args:
-        body (RancherServiceRequest):
+        body (RancherServiceCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RancherService]
+        Response[RancherServiceCreate]
     """
 
     kwargs = _get_kwargs(
@@ -128,18 +128,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: RancherServiceRequest,
-) -> RancherService:
+    body: RancherServiceCreateRequest,
+) -> RancherServiceCreate:
     """
     Args:
-        body (RancherServiceRequest):
+        body (RancherServiceCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RancherService
+        RancherServiceCreate
     """
 
     return (

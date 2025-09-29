@@ -7,20 +7,19 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.rancher_nested_workload_request import RancherNestedWorkloadRequest
+    from ..models.rancher_workload_create_request import RancherWorkloadCreateRequest
 
 
-T = TypeVar("T", bound="RancherServiceRequest")
+T = TypeVar("T", bound="RancherServiceCreateRequest")
 
 
 @_attrs_define
-class RancherServiceRequest:
+class RancherServiceCreateRequest:
     """
     Attributes:
         name (str):
         service_settings (str):
         project (str):
-        target_workloads (list['RancherNestedWorkloadRequest']):
         description (Union[Unset, str]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
@@ -29,12 +28,12 @@ class RancherServiceRequest:
         namespace (Union[Unset, str]):
         cluster_ip (Union[None, Unset, str]): An IPv4 or IPv6 address.
         selector (Union[Unset, Any]):
+        target_workloads (Union[Unset, list['RancherWorkloadCreateRequest']]):
     """
 
     name: str
     service_settings: str
     project: str
-    target_workloads: list["RancherNestedWorkloadRequest"]
     description: Union[Unset, str] = UNSET
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
@@ -43,6 +42,7 @@ class RancherServiceRequest:
     namespace: Union[Unset, str] = UNSET
     cluster_ip: Union[None, Unset, str] = UNSET
     selector: Union[Unset, Any] = UNSET
+    target_workloads: Union[Unset, list["RancherWorkloadCreateRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -51,11 +51,6 @@ class RancherServiceRequest:
         service_settings = self.service_settings
 
         project = self.project
-
-        target_workloads = []
-        for target_workloads_item_data in self.target_workloads:
-            target_workloads_item = target_workloads_item_data.to_dict()
-            target_workloads.append(target_workloads_item)
 
         description = self.description
 
@@ -77,6 +72,13 @@ class RancherServiceRequest:
 
         selector = self.selector
 
+        target_workloads: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.target_workloads, Unset):
+            target_workloads = []
+            for target_workloads_item_data in self.target_workloads:
+                target_workloads_item = target_workloads_item_data.to_dict()
+                target_workloads.append(target_workloads_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -84,7 +86,6 @@ class RancherServiceRequest:
                 "name": name,
                 "service_settings": service_settings,
                 "project": project,
-                "target_workloads": target_workloads,
             }
         )
         if description is not UNSET:
@@ -103,12 +104,14 @@ class RancherServiceRequest:
             field_dict["cluster_ip"] = cluster_ip
         if selector is not UNSET:
             field_dict["selector"] = selector
+        if target_workloads is not UNSET:
+            field_dict["target_workloads"] = target_workloads
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.rancher_nested_workload_request import RancherNestedWorkloadRequest
+        from ..models.rancher_workload_create_request import RancherWorkloadCreateRequest
 
         d = dict(src_dict)
         name = d.pop("name")
@@ -116,13 +119,6 @@ class RancherServiceRequest:
         service_settings = d.pop("service_settings")
 
         project = d.pop("project")
-
-        target_workloads = []
-        _target_workloads = d.pop("target_workloads")
-        for target_workloads_item_data in _target_workloads:
-            target_workloads_item = RancherNestedWorkloadRequest.from_dict(target_workloads_item_data)
-
-            target_workloads.append(target_workloads_item)
 
         description = d.pop("description", UNSET)
 
@@ -147,11 +143,17 @@ class RancherServiceRequest:
 
         selector = d.pop("selector", UNSET)
 
-        rancher_service_request = cls(
+        target_workloads = []
+        _target_workloads = d.pop("target_workloads", UNSET)
+        for target_workloads_item_data in _target_workloads or []:
+            target_workloads_item = RancherWorkloadCreateRequest.from_dict(target_workloads_item_data)
+
+            target_workloads.append(target_workloads_item)
+
+        rancher_service_create_request = cls(
             name=name,
             service_settings=service_settings,
             project=project,
-            target_workloads=target_workloads,
             description=description,
             error_message=error_message,
             error_traceback=error_traceback,
@@ -160,10 +162,11 @@ class RancherServiceRequest:
             namespace=namespace,
             cluster_ip=cluster_ip,
             selector=selector,
+            target_workloads=target_workloads,
         )
 
-        rancher_service_request.additional_properties = d
-        return rancher_service_request
+        rancher_service_create_request.additional_properties = d
+        return rancher_service_create_request
 
     @property
     def additional_keys(self) -> list[str]:
