@@ -39,8 +39,6 @@ def _get_kwargs(
     if isinstance(body, OfferingThumbnailRequestMultipart):
         _kwargs["files"] = body.to_multipart()
 
-        headers["Content-Type"] = "multipart/form-data"
-
     _kwargs["headers"] = headers
     return _kwargs
 
