@@ -17,6 +17,7 @@ class EventGroupsEnum(str, Enum):
     REVIEW = "review"
     SSH = "ssh"
     SUPPORT = "support"
+    TERMS_OF_SERVICE = "terms_of_service"
     USERS = "users"
 
     def __str__(self) -> str:

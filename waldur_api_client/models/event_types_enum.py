@@ -244,6 +244,8 @@ class EventTypesEnum(str, Enum):
     SSH_KEY_CREATION_SUCCEEDED = "ssh_key_creation_succeeded"
     SSH_KEY_DELETION_SUCCEEDED = "ssh_key_deletion_succeeded"
     TERMINATE_RESOURCES = "terminate_resources"
+    TERMS_OF_SERVICE_CONSENT_GRANTED = "terms_of_service_consent_granted"
+    TERMS_OF_SERVICE_CONSENT_REVOKED = "terms_of_service_consent_revoked"
     TOKEN_CREATED = "token_created"
     TOKEN_LIFETIME_UPDATED = "token_lifetime_updated"
     UPDATE_OF_CREDIT_BY_STAFF = "update_of_credit_by_staff"

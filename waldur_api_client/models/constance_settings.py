@@ -143,6 +143,7 @@ class ConstanceSettings:
         oidc_client_secret (Union[Unset, str]):
         oidc_user_field (Union[Unset, str]):
         oidc_cache_timeout (Union[Unset, int]):
+        oidc_access_token_enabled (Union[Unset, bool]):
         oidc_block_creation_of_uninvited_users (Union[Unset, bool]):
         deactivate_user_if_no_roles (Union[Unset, bool]):
         maintenance_announcement_notify_before_minutes (Union[Unset, int]):
@@ -280,6 +281,7 @@ class ConstanceSettings:
     oidc_client_secret: Union[Unset, str] = UNSET
     oidc_user_field: Union[Unset, str] = UNSET
     oidc_cache_timeout: Union[Unset, int] = UNSET
+    oidc_access_token_enabled: Union[Unset, bool] = UNSET
     oidc_block_creation_of_uninvited_users: Union[Unset, bool] = UNSET
     deactivate_user_if_no_roles: Union[Unset, bool] = UNSET
     maintenance_announcement_notify_before_minutes: Union[Unset, int] = UNSET
@@ -600,6 +602,8 @@ class ConstanceSettings:
 
         oidc_cache_timeout = self.oidc_cache_timeout
 
+        oidc_access_token_enabled = self.oidc_access_token_enabled
+
         oidc_block_creation_of_uninvited_users = self.oidc_block_creation_of_uninvited_users
 
         deactivate_user_if_no_roles = self.deactivate_user_if_no_roles
@@ -879,6 +883,8 @@ class ConstanceSettings:
             field_dict["OIDC_USER_FIELD"] = oidc_user_field
         if oidc_cache_timeout is not UNSET:
             field_dict["OIDC_CACHE_TIMEOUT"] = oidc_cache_timeout
+        if oidc_access_token_enabled is not UNSET:
+            field_dict["OIDC_ACCESS_TOKEN_ENABLED"] = oidc_access_token_enabled
         if oidc_block_creation_of_uninvited_users is not UNSET:
             field_dict["OIDC_BLOCK_CREATION_OF_UNINVITED_USERS"] = oidc_block_creation_of_uninvited_users
         if deactivate_user_if_no_roles is not UNSET:
@@ -1245,6 +1251,8 @@ class ConstanceSettings:
 
         oidc_cache_timeout = d.pop("OIDC_CACHE_TIMEOUT", UNSET)
 
+        oidc_access_token_enabled = d.pop("OIDC_ACCESS_TOKEN_ENABLED", UNSET)
+
         oidc_block_creation_of_uninvited_users = d.pop("OIDC_BLOCK_CREATION_OF_UNINVITED_USERS", UNSET)
 
         deactivate_user_if_no_roles = d.pop("DEACTIVATE_USER_IF_NO_ROLES", UNSET)
@@ -1386,6 +1394,7 @@ class ConstanceSettings:
             oidc_client_secret=oidc_client_secret,
             oidc_user_field=oidc_user_field,
             oidc_cache_timeout=oidc_cache_timeout,
+            oidc_access_token_enabled=oidc_access_token_enabled,
             oidc_block_creation_of_uninvited_users=oidc_block_creation_of_uninvited_users,
             deactivate_user_if_no_roles=deactivate_user_if_no_roles,
             maintenance_announcement_notify_before_minutes=maintenance_announcement_notify_before_minutes,
