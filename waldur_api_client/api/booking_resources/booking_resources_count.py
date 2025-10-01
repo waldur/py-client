@@ -37,6 +37,7 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     paused: Union[Unset, bool] = UNSET,
+    plan_uuid: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
@@ -130,6 +131,11 @@ def _get_kwargs(
     params["parent_offering_uuid"] = json_parent_offering_uuid
 
     params["paused"] = paused
+
+    json_plan_uuid: Union[Unset, str] = UNSET
+    if not isinstance(plan_uuid, Unset):
+        json_plan_uuid = str(plan_uuid)
+    params["plan_uuid"] = json_plan_uuid
 
     params["project_name"] = project_name
 
@@ -226,6 +232,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     paused: Union[Unset, bool] = UNSET,
+    plan_uuid: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
@@ -262,6 +269,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
         paused (Union[Unset, bool]):
+        plan_uuid (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
@@ -304,6 +312,7 @@ def sync_detailed(
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
         paused=paused,
+        plan_uuid=plan_uuid,
         project_name=project_name,
         project_uuid=project_uuid,
         provider_uuid=provider_uuid,
@@ -348,6 +357,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     paused: Union[Unset, bool] = UNSET,
+    plan_uuid: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
@@ -384,6 +394,7 @@ def sync(
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
         paused (Union[Unset, bool]):
+        plan_uuid (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
@@ -427,6 +438,7 @@ def sync(
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
         paused=paused,
+        plan_uuid=plan_uuid,
         project_name=project_name,
         project_uuid=project_uuid,
         provider_uuid=provider_uuid,
@@ -465,6 +477,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     paused: Union[Unset, bool] = UNSET,
+    plan_uuid: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
@@ -501,6 +514,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
         paused (Union[Unset, bool]):
+        plan_uuid (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
@@ -543,6 +557,7 @@ async def asyncio_detailed(
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
         paused=paused,
+        plan_uuid=plan_uuid,
         project_name=project_name,
         project_uuid=project_uuid,
         provider_uuid=provider_uuid,
@@ -585,6 +600,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     paused: Union[Unset, bool] = UNSET,
+    plan_uuid: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
@@ -621,6 +637,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
         paused (Union[Unset, bool]):
+        plan_uuid (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
@@ -665,6 +682,7 @@ async def asyncio(
             page_size=page_size,
             parent_offering_uuid=parent_offering_uuid,
             paused=paused,
+            plan_uuid=plan_uuid,
             project_name=project_name,
             project_uuid=project_uuid,
             provider_uuid=provider_uuid,

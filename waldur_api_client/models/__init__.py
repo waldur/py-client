@@ -1054,6 +1054,7 @@ from .patched_marketplace_category_request_form import PatchedMarketplaceCategor
 from .patched_marketplace_category_request_multipart import PatchedMarketplaceCategoryRequestMultipart
 from .patched_message_template_request import PatchedMessageTemplateRequest
 from .patched_migration_details_request import PatchedMigrationDetailsRequest
+from .patched_network_rbac_policy_request import PatchedNetworkRBACPolicyRequest
 from .patched_notification_request import PatchedNotificationRequest
 from .patched_notification_template_detail_serializers_request import (
     PatchedNotificationTemplateDetailSerializersRequest,
@@ -1507,6 +1508,7 @@ from .section_request import SectionRequest
 from .service_account_state import ServiceAccountState
 from .service_provider import ServiceProvider
 from .service_provider_api_secret_code import ServiceProviderApiSecretCode
+from .service_provider_checklist_summary import ServiceProviderChecklistSummary
 from .service_provider_compliance_overview import ServiceProviderComplianceOverview
 from .service_provider_offering_user_compliance import ServiceProviderOfferingUserCompliance
 from .service_provider_offering_user_compliance_state_enum import ServiceProviderOfferingUserComplianceStateEnum
@@ -2646,6 +2648,7 @@ __all__ = (
     "PatchedMarketplaceCategoryRequestMultipart",
     "PatchedMessageTemplateRequest",
     "PatchedMigrationDetailsRequest",
+    "PatchedNetworkRBACPolicyRequest",
     "PatchedNotificationRequest",
     "PatchedNotificationTemplateDetailSerializersRequest",
     "PatchedOfferingEstimatedCostPolicyRequest",
@@ -3073,6 +3076,7 @@ __all__ = (
     "ServiceAccountState",
     "ServiceProvider",
     "ServiceProviderApiSecretCode",
+    "ServiceProviderChecklistSummary",
     "ServiceProviderComplianceOverview",
     "ServiceProviderOfferingUserCompliance",
     "ServiceProviderOfferingUserComplianceStateEnum",

@@ -7,20 +7,20 @@ from attrs import field as _attrs_field
 from ..models.policy_type_enum import PolicyTypeEnum
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="NetworkRBACPolicyRequest")
+T = TypeVar("T", bound="PatchedNetworkRBACPolicyRequest")
 
 
 @_attrs_define
-class NetworkRBACPolicyRequest:
+class PatchedNetworkRBACPolicyRequest:
     """
     Attributes:
-        network (str):
-        target_tenant (str):
+        network (Union[Unset, str]):
+        target_tenant (Union[Unset, str]):
         policy_type (Union[Unset, PolicyTypeEnum]):  Default: PolicyTypeEnum.ACCESS_AS_SHARED.
     """
 
-    network: str
-    target_tenant: str
+    network: Union[Unset, str] = UNSET
+    target_tenant: Union[Unset, str] = UNSET
     policy_type: Union[Unset, PolicyTypeEnum] = PolicyTypeEnum.ACCESS_AS_SHARED
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -35,12 +35,11 @@ class NetworkRBACPolicyRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "network": network,
-                "target_tenant": target_tenant,
-            }
-        )
+        field_dict.update({})
+        if network is not UNSET:
+            field_dict["network"] = network
+        if target_tenant is not UNSET:
+            field_dict["target_tenant"] = target_tenant
         if policy_type is not UNSET:
             field_dict["policy_type"] = policy_type
 
@@ -49,9 +48,9 @@ class NetworkRBACPolicyRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        network = d.pop("network")
+        network = d.pop("network", UNSET)
 
-        target_tenant = d.pop("target_tenant")
+        target_tenant = d.pop("target_tenant", UNSET)
 
         _policy_type = d.pop("policy_type", UNSET)
         policy_type: Union[Unset, PolicyTypeEnum]
@@ -60,14 +59,14 @@ class NetworkRBACPolicyRequest:
         else:
             policy_type = PolicyTypeEnum(_policy_type)
 
-        network_rbac_policy_request = cls(
+        patched_network_rbac_policy_request = cls(
             network=network,
             target_tenant=target_tenant,
             policy_type=policy_type,
         )
 
-        network_rbac_policy_request.additional_properties = d
-        return network_rbac_policy_request
+        patched_network_rbac_policy_request.additional_properties = d
+        return patched_network_rbac_policy_request
 
     @property
     def additional_keys(self) -> list[str]:
