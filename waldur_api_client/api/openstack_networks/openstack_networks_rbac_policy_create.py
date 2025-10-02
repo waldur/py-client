@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.network_rbac_policy import NetworkRBACPolicy
-from ...models.network_rbac_policy_request import NetworkRBACPolicyRequest
+from ...models.deprecated_network_rbac_policy import DeprecatedNetworkRBACPolicy
+from ...models.deprecated_network_rbac_policy_request import DeprecatedNetworkRBACPolicyRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: NetworkRBACPolicyRequest,
+    body: DeprecatedNetworkRBACPolicyRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,9 +31,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> NetworkRBACPolicy:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> DeprecatedNetworkRBACPolicy:
     if response.status_code == 200:
-        response_200 = NetworkRBACPolicy.from_dict(response.json())
+        response_200 = DeprecatedNetworkRBACPolicy.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -41,7 +43,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[NetworkRBACPolicy]:
+) -> Response[DeprecatedNetworkRBACPolicy]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,20 +56,20 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: NetworkRBACPolicyRequest,
-) -> Response[NetworkRBACPolicy]:
+    body: DeprecatedNetworkRBACPolicyRequest,
+) -> Response[DeprecatedNetworkRBACPolicy]:
     """Create RBAC policy for the network
 
     Args:
         uuid (UUID):
-        body (NetworkRBACPolicyRequest):
+        body (DeprecatedNetworkRBACPolicyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[NetworkRBACPolicy]
+        Response[DeprecatedNetworkRBACPolicy]
     """
 
     kwargs = _get_kwargs(
@@ -86,20 +88,20 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: NetworkRBACPolicyRequest,
-) -> NetworkRBACPolicy:
+    body: DeprecatedNetworkRBACPolicyRequest,
+) -> DeprecatedNetworkRBACPolicy:
     """Create RBAC policy for the network
 
     Args:
         uuid (UUID):
-        body (NetworkRBACPolicyRequest):
+        body (DeprecatedNetworkRBACPolicyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        NetworkRBACPolicy
+        DeprecatedNetworkRBACPolicy
     """
 
     return sync_detailed(
@@ -113,20 +115,20 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: NetworkRBACPolicyRequest,
-) -> Response[NetworkRBACPolicy]:
+    body: DeprecatedNetworkRBACPolicyRequest,
+) -> Response[DeprecatedNetworkRBACPolicy]:
     """Create RBAC policy for the network
 
     Args:
         uuid (UUID):
-        body (NetworkRBACPolicyRequest):
+        body (DeprecatedNetworkRBACPolicyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[NetworkRBACPolicy]
+        Response[DeprecatedNetworkRBACPolicy]
     """
 
     kwargs = _get_kwargs(
@@ -143,20 +145,20 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: NetworkRBACPolicyRequest,
-) -> NetworkRBACPolicy:
+    body: DeprecatedNetworkRBACPolicyRequest,
+) -> DeprecatedNetworkRBACPolicy:
     """Create RBAC policy for the network
 
     Args:
         uuid (UUID):
-        body (NetworkRBACPolicyRequest):
+        body (DeprecatedNetworkRBACPolicyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        NetworkRBACPolicy
+        DeprecatedNetworkRBACPolicy
     """
 
     return (

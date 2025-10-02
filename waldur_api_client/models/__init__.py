@@ -307,6 +307,8 @@ from .deciding_entity_enum import DecidingEntityEnum
 from .delete_attachments_request import DeleteAttachmentsRequest
 from .dependency_logic_operator_enum import DependencyLogicOperatorEnum
 from .deployment_mode_enum import DeploymentModeEnum
+from .deprecated_network_rbac_policy import DeprecatedNetworkRBACPolicy
+from .deprecated_network_rbac_policy_request import DeprecatedNetworkRBACPolicyRequest
 from .detail_state import DetailState
 from .digital_ocean_droplet import DigitalOceanDroplet
 from .digital_ocean_droplet_marketplace_offering_plugin_options_type_0 import (
@@ -1971,6 +1973,8 @@ __all__ = (
     "DeleteAttachmentsRequest",
     "DependencyLogicOperatorEnum",
     "DeploymentModeEnum",
+    "DeprecatedNetworkRBACPolicy",
+    "DeprecatedNetworkRBACPolicyRequest",
     "DetailState",
     "DigitalOceanDroplet",
     "DigitalOceanDropletMarketplaceOfferingPluginOptionsType0",
