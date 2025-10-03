@@ -15,6 +15,7 @@ class EventTypesEnum(str, Enum):
     AUTH_LOGGED_OUT = "auth_logged_out"
     AUTH_LOGGED_OUT_WITH_SAML2 = "auth_logged_out_with_saml2"
     AUTH_LOGIN_FAILED_WITH_USERNAME = "auth_login_failed_with_username"
+    AUTOMATIC_CREDIT_ADJUSTMENT = "automatic_credit_adjustment"
     BLOCK_CREATION_OF_NEW_RESOURCES = "block_creation_of_new_resources"
     BLOCK_MODIFICATION_OF_EXISTING_RESOURCES = "block_modification_of_existing_resources"
     CALL_DOCUMENT_ADDED = "call_document_added"

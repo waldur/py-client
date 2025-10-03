@@ -23,6 +23,7 @@ class ProjectCreditRequest:
         minimal_consumption_logic (Union[Unset, MinimalConsumptionLogicEnum]):
         grace_coefficient (Union[Unset, str]):
         apply_as_minimal_consumption (Union[Unset, bool]):
+        mark_unused_credit_as_spent_on_project_termination (Union[Unset, bool]):
     """
 
     project: str
@@ -32,6 +33,7 @@ class ProjectCreditRequest:
     minimal_consumption_logic: Union[Unset, MinimalConsumptionLogicEnum] = UNSET
     grace_coefficient: Union[Unset, str] = UNSET
     apply_as_minimal_consumption: Union[Unset, bool] = UNSET
+    mark_unused_credit_as_spent_on_project_termination: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,6 +59,8 @@ class ProjectCreditRequest:
 
         apply_as_minimal_consumption = self.apply_as_minimal_consumption
 
+        mark_unused_credit_as_spent_on_project_termination = self.mark_unused_credit_as_spent_on_project_termination
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -76,6 +80,10 @@ class ProjectCreditRequest:
             field_dict["grace_coefficient"] = grace_coefficient
         if apply_as_minimal_consumption is not UNSET:
             field_dict["apply_as_minimal_consumption"] = apply_as_minimal_consumption
+        if mark_unused_credit_as_spent_on_project_termination is not UNSET:
+            field_dict["mark_unused_credit_as_spent_on_project_termination"] = (
+                mark_unused_credit_as_spent_on_project_termination
+            )
 
         return field_dict
 
@@ -116,6 +124,10 @@ class ProjectCreditRequest:
 
         apply_as_minimal_consumption = d.pop("apply_as_minimal_consumption", UNSET)
 
+        mark_unused_credit_as_spent_on_project_termination = d.pop(
+            "mark_unused_credit_as_spent_on_project_termination", UNSET
+        )
+
         project_credit_request = cls(
             project=project,
             value=value,
@@ -124,6 +136,7 @@ class ProjectCreditRequest:
             minimal_consumption_logic=minimal_consumption_logic,
             grace_coefficient=grace_coefficient,
             apply_as_minimal_consumption=apply_as_minimal_consumption,
+            mark_unused_credit_as_spent_on_project_termination=mark_unused_credit_as_spent_on_project_termination,
         )
 
         project_credit_request.additional_properties = d

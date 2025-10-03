@@ -1575,6 +1575,8 @@ from .template_attachment_request import TemplateAttachmentRequest
 from .template_request import TemplateRequest
 from .template_version import TemplateVersion
 from .tenant import Tenant
+from .time_series_to_s_data import TimeSeriesToSData
+from .to_s_consent_dashboard import ToSConsentDashboard
 from .token_request import TokenRequest
 from .total_customer_cost import TotalCustomerCost
 from .update_offering_component_request import UpdateOfferingComponentRequest
@@ -1628,6 +1630,7 @@ from .v_mware_virtual_machine_create_order_attributes_guest_os_type_3_type_1 imp
     VMwareVirtualMachineCreateOrderAttributesGuestOsType3Type1,
 )
 from .version import Version
+from .version_adoption import VersionAdoption
 from .visibility_enum import VisibilityEnum
 from .visible_invitation_details import VisibleInvitationDetails
 from .vmware_cluster import VmwareCluster
@@ -3143,7 +3146,9 @@ __all__ = (
     "TemplateRequest",
     "TemplateVersion",
     "Tenant",
+    "TimeSeriesToSData",
     "TokenRequest",
+    "ToSConsentDashboard",
     "TotalCustomerCost",
     "UpdateOfferingComponentRequest",
     "User",
@@ -3186,6 +3191,7 @@ __all__ = (
     "UsersMeRetrieveFieldItem",
     "UsersRetrieveFieldItem",
     "Version",
+    "VersionAdoption",
     "VisibilityEnum",
     "VisibleInvitationDetails",
     "VmwareCluster",
