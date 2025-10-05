@@ -16,7 +16,7 @@ class NotificationTemplateDetailSerializers:
         url (str):
         path (str): Example: 'flatpages/default.html'
         name (str):
-        content (str):
+        content (Union[None, str]):
         original_content (Union[None, str]):
         is_content_overridden (bool):
     """
@@ -25,7 +25,7 @@ class NotificationTemplateDetailSerializers:
     url: str
     path: str
     name: str
-    content: str
+    content: Union[None, str]
     original_content: Union[None, str]
     is_content_overridden: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -39,6 +39,7 @@ class NotificationTemplateDetailSerializers:
 
         name = self.name
 
+        content: Union[None, str]
         content = self.content
 
         original_content: Union[None, str]
@@ -73,7 +74,12 @@ class NotificationTemplateDetailSerializers:
 
         name = d.pop("name")
 
-        content = d.pop("content")
+        def _parse_content(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        content = _parse_content(d.pop("content"))
 
         def _parse_original_content(data: object) -> Union[None, str]:
             if data is None:
