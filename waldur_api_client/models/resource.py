@@ -42,7 +42,7 @@ class Resource:
             OpenStack.
         provider_name (Union[Unset, str]):
         provider_uuid (Union[Unset, UUID]):
-        provider_slug (Union[Unset, UUID]):
+        provider_slug (Union[Unset, str]):
         category_title (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
         category_icon (Union[Unset, str]):
@@ -122,7 +122,7 @@ class Resource:
     offering_plugin_options: Union[Unset, Any] = UNSET
     provider_name: Union[Unset, str] = UNSET
     provider_uuid: Union[Unset, UUID] = UNSET
-    provider_slug: Union[Unset, UUID] = UNSET
+    provider_slug: Union[Unset, str] = UNSET
     category_title: Union[Unset, str] = UNSET
     category_uuid: Union[Unset, UUID] = UNSET
     category_icon: Union[Unset, str] = UNSET
@@ -218,9 +218,7 @@ class Resource:
         if not isinstance(self.provider_uuid, Unset):
             provider_uuid = str(self.provider_uuid)
 
-        provider_slug: Union[Unset, str] = UNSET
-        if not isinstance(self.provider_slug, Unset):
-            provider_slug = str(self.provider_slug)
+        provider_slug = self.provider_slug
 
         category_title = self.category_title
 
@@ -654,12 +652,7 @@ class Resource:
         else:
             provider_uuid = UUID(_provider_uuid)
 
-        _provider_slug = d.pop("provider_slug", UNSET)
-        provider_slug: Union[Unset, UUID]
-        if isinstance(_provider_slug, Unset):
-            provider_slug = UNSET
-        else:
-            provider_slug = UUID(_provider_slug)
+        provider_slug = d.pop("provider_slug", UNSET)
 
         category_title = d.pop("category_title", UNSET)
 
