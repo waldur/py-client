@@ -15,12 +15,15 @@ def _get_kwargs(
     *,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["state"] = state
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -65,6 +68,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, str] = UNSET,
 ) -> Response[list["RequestedOffering"]]:
     """List offerings for a call.
 
@@ -72,6 +76,7 @@ def sync_detailed(
         uuid (UUID):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -85,6 +90,7 @@ def sync_detailed(
         uuid=uuid,
         page=page,
         page_size=page_size,
+        state=state,
     )
 
     response = client.get_httpx_client().request(
@@ -100,6 +106,7 @@ def sync(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, str] = UNSET,
 ) -> list["RequestedOffering"]:
     """List offerings for a call.
 
@@ -107,6 +114,7 @@ def sync(
         uuid (UUID):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -121,6 +129,7 @@ def sync(
         client=client,
         page=page,
         page_size=page_size,
+        state=state,
     ).parsed
 
 
@@ -130,6 +139,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, str] = UNSET,
 ) -> Response[list["RequestedOffering"]]:
     """List offerings for a call.
 
@@ -137,6 +147,7 @@ async def asyncio_detailed(
         uuid (UUID):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -150,6 +161,7 @@ async def asyncio_detailed(
         uuid=uuid,
         page=page,
         page_size=page_size,
+        state=state,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -163,6 +175,7 @@ async def asyncio(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, str] = UNSET,
 ) -> list["RequestedOffering"]:
     """List offerings for a call.
 
@@ -170,6 +183,7 @@ async def asyncio(
         uuid (UUID):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -185,5 +199,6 @@ async def asyncio(
             client=client,
             page=page,
             page_size=page_size,
+            state=state,
         )
     ).parsed
