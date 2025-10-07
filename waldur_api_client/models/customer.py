@@ -35,6 +35,7 @@ class Customer:
         image (Union[None, Unset, str]):
         blocked (Union[Unset, bool]):
         archived (Union[Unset, bool]):
+        display_billing_info_in_projects (Union[Unset, bool]):
         default_tax_percent (Union[Unset, str]):
         accounting_start_date (Union[Unset, datetime.datetime]):
         projects_count (Union[Unset, int]):
@@ -86,6 +87,7 @@ class Customer:
     image: Union[None, Unset, str] = UNSET
     blocked: Union[Unset, bool] = UNSET
     archived: Union[Unset, bool] = UNSET
+    display_billing_info_in_projects: Union[Unset, bool] = UNSET
     default_tax_percent: Union[Unset, str] = UNSET
     accounting_start_date: Union[Unset, datetime.datetime] = UNSET
     projects_count: Union[Unset, int] = UNSET
@@ -164,6 +166,8 @@ class Customer:
         blocked = self.blocked
 
         archived = self.archived
+
+        display_billing_info_in_projects = self.display_billing_info_in_projects
 
         default_tax_percent = self.default_tax_percent
 
@@ -323,6 +327,8 @@ class Customer:
             field_dict["blocked"] = blocked
         if archived is not UNSET:
             field_dict["archived"] = archived
+        if display_billing_info_in_projects is not UNSET:
+            field_dict["display_billing_info_in_projects"] = display_billing_info_in_projects
         if default_tax_percent is not UNSET:
             field_dict["default_tax_percent"] = default_tax_percent
         if accounting_start_date is not UNSET:
@@ -456,6 +462,8 @@ class Customer:
         blocked = d.pop("blocked", UNSET)
 
         archived = d.pop("archived", UNSET)
+
+        display_billing_info_in_projects = d.pop("display_billing_info_in_projects", UNSET)
 
         default_tax_percent = d.pop("default_tax_percent", UNSET)
 
@@ -664,6 +672,7 @@ class Customer:
             image=image,
             blocked=blocked,
             archived=archived,
+            display_billing_info_in_projects=display_billing_info_in_projects,
             default_tax_percent=default_tax_percent,
             accounting_start_date=accounting_start_date,
             projects_count=projects_count,

@@ -7,6 +7,7 @@ class MarketplaceServiceProvidersProjectsListFieldItem(str, Enum):
     CREATED = "created"
     CUSTOMER = "customer"
     CUSTOMER_ABBREVIATION = "customer_abbreviation"
+    CUSTOMER_DISPLAY_BILLING_INFO_IN_PROJECTS = "customer_display_billing_info_in_projects"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_NATIVE_NAME = "customer_native_name"
     CUSTOMER_SLUG = "customer_slug"

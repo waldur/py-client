@@ -35,6 +35,7 @@ class Project:
         customer_native_name (Union[Unset, str]):
         customer_abbreviation (Union[Unset, str]):
         description (Union[Unset, str]):
+        customer_display_billing_info_in_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         type_ (Union[None, Unset, str]):
         type_name (Union[None, Unset, str]):
@@ -67,6 +68,7 @@ class Project:
     customer_native_name: Union[Unset, str] = UNSET
     customer_abbreviation: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
+    customer_display_billing_info_in_projects: Union[Unset, bool] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     type_: Union[None, Unset, str] = UNSET
     type_name: Union[None, Unset, str] = UNSET
@@ -113,6 +115,8 @@ class Project:
         customer_abbreviation = self.customer_abbreviation
 
         description = self.description
+
+        customer_display_billing_info_in_projects = self.customer_display_billing_info_in_projects
 
         created: Union[Unset, str] = UNSET
         if not isinstance(self.created, Unset):
@@ -233,6 +237,8 @@ class Project:
             field_dict["customer_abbreviation"] = customer_abbreviation
         if description is not UNSET:
             field_dict["description"] = description
+        if customer_display_billing_info_in_projects is not UNSET:
+            field_dict["customer_display_billing_info_in_projects"] = customer_display_billing_info_in_projects
         if created is not UNSET:
             field_dict["created"] = created
         if type_ is not UNSET:
@@ -309,6 +315,8 @@ class Project:
         customer_abbreviation = d.pop("customer_abbreviation", UNSET)
 
         description = d.pop("description", UNSET)
+
+        customer_display_billing_info_in_projects = d.pop("customer_display_billing_info_in_projects", UNSET)
 
         _created = d.pop("created", UNSET)
         created: Union[Unset, datetime.datetime]
@@ -488,6 +496,7 @@ class Project:
             customer_native_name=customer_native_name,
             customer_abbreviation=customer_abbreviation,
             description=description,
+            customer_display_billing_info_in_projects=customer_display_billing_info_in_projects,
             created=created,
             type_=type_,
             type_name=type_name,
