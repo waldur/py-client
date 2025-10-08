@@ -1,5 +1,6 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -30,6 +31,10 @@ class OfferingComponentRequest:
         max_available_limit (Union[None, Unset, int]):
         is_boolean (Union[Unset, bool]):
         default_limit (Union[None, Unset, int]):
+        is_prepaid (Union[Unset, bool]):
+        overage_component (Union[None, UUID, Unset]):
+        min_prepaid_duration (Union[None, Unset, int]):
+        max_prepaid_duration (Union[None, Unset, int]):
     """
 
     billing_type: BillingTypeEnum
@@ -46,6 +51,10 @@ class OfferingComponentRequest:
     max_available_limit: Union[None, Unset, int] = UNSET
     is_boolean: Union[Unset, bool] = UNSET
     default_limit: Union[None, Unset, int] = UNSET
+    is_prepaid: Union[Unset, bool] = UNSET
+    overage_component: Union[None, UUID, Unset] = UNSET
+    min_prepaid_duration: Union[None, Unset, int] = UNSET
+    max_prepaid_duration: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -105,6 +114,28 @@ class OfferingComponentRequest:
         else:
             default_limit = self.default_limit
 
+        is_prepaid = self.is_prepaid
+
+        overage_component: Union[None, Unset, str]
+        if isinstance(self.overage_component, Unset):
+            overage_component = UNSET
+        elif isinstance(self.overage_component, UUID):
+            overage_component = str(self.overage_component)
+        else:
+            overage_component = self.overage_component
+
+        min_prepaid_duration: Union[None, Unset, int]
+        if isinstance(self.min_prepaid_duration, Unset):
+            min_prepaid_duration = UNSET
+        else:
+            min_prepaid_duration = self.min_prepaid_duration
+
+        max_prepaid_duration: Union[None, Unset, int]
+        if isinstance(self.max_prepaid_duration, Unset):
+            max_prepaid_duration = UNSET
+        else:
+            max_prepaid_duration = self.max_prepaid_duration
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -136,6 +167,14 @@ class OfferingComponentRequest:
             field_dict["is_boolean"] = is_boolean
         if default_limit is not UNSET:
             field_dict["default_limit"] = default_limit
+        if is_prepaid is not UNSET:
+            field_dict["is_prepaid"] = is_prepaid
+        if overage_component is not UNSET:
+            field_dict["overage_component"] = overage_component
+        if min_prepaid_duration is not UNSET:
+            field_dict["min_prepaid_duration"] = min_prepaid_duration
+        if max_prepaid_duration is not UNSET:
+            field_dict["max_prepaid_duration"] = max_prepaid_duration
 
         return field_dict
 
@@ -228,6 +267,43 @@ class OfferingComponentRequest:
 
         default_limit = _parse_default_limit(d.pop("default_limit", UNSET))
 
+        is_prepaid = d.pop("is_prepaid", UNSET)
+
+        def _parse_overage_component(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                overage_component_type_0 = UUID(data)
+
+                return overage_component_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        overage_component = _parse_overage_component(d.pop("overage_component", UNSET))
+
+        def _parse_min_prepaid_duration(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        min_prepaid_duration = _parse_min_prepaid_duration(d.pop("min_prepaid_duration", UNSET))
+
+        def _parse_max_prepaid_duration(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        max_prepaid_duration = _parse_max_prepaid_duration(d.pop("max_prepaid_duration", UNSET))
+
         offering_component_request = cls(
             billing_type=billing_type,
             type_=type_,
@@ -243,6 +319,10 @@ class OfferingComponentRequest:
             max_available_limit=max_available_limit,
             is_boolean=is_boolean,
             default_limit=default_limit,
+            is_prepaid=is_prepaid,
+            overage_component=overage_component,
+            min_prepaid_duration=min_prepaid_duration,
+            max_prepaid_duration=max_prepaid_duration,
         )
 
         offering_component_request.additional_properties = d

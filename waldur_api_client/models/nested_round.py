@@ -10,7 +10,7 @@ from dateutil.parser import isoparse
 from ..models.allocation_time_enum import AllocationTimeEnum
 from ..models.deciding_entity_enum import DecidingEntityEnum
 from ..models.review_strategy_enum import ReviewStrategyEnum
-from ..models.status_enum import StatusEnum
+from ..models.round_status import RoundStatus
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="NestedRound")
@@ -25,7 +25,7 @@ class NestedRound:
         name (Union[Unset, str]):
         start_time (Union[Unset, datetime.datetime]):
         cutoff_time (Union[Unset, datetime.datetime]):
-        status (Union[Unset, StatusEnum]):
+        status (Union[Unset, RoundStatus]):
         review_strategy (Union[Unset, ReviewStrategyEnum]):
         deciding_entity (Union[Unset, DecidingEntityEnum]):
         allocation_time (Union[Unset, AllocationTimeEnum]):
@@ -40,7 +40,7 @@ class NestedRound:
     name: Union[Unset, str] = UNSET
     start_time: Union[Unset, datetime.datetime] = UNSET
     cutoff_time: Union[Unset, datetime.datetime] = UNSET
-    status: Union[Unset, StatusEnum] = UNSET
+    status: Union[Unset, RoundStatus] = UNSET
     review_strategy: Union[Unset, ReviewStrategyEnum] = UNSET
     deciding_entity: Union[Unset, DecidingEntityEnum] = UNSET
     allocation_time: Union[Unset, AllocationTimeEnum] = UNSET
@@ -170,11 +170,11 @@ class NestedRound:
             cutoff_time = isoparse(_cutoff_time)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, StatusEnum]
+        status: Union[Unset, RoundStatus]
         if isinstance(_status, Unset):
             status = UNSET
         else:
-            status = StatusEnum(_status)
+            status = RoundStatus(_status)
 
         _review_strategy = d.pop("review_strategy", UNSET)
         review_strategy: Union[Unset, ReviewStrategyEnum]

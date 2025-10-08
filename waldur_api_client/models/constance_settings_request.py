@@ -151,6 +151,11 @@ class ConstanceSettingsRequest:
         maintenance_announcement_notify_before_minutes (Union[Unset, int]):
         maintenance_announcement_notify_system (Union[Unset, list[str]]):
         enforce_user_consent_for_offerings (Union[Unset, bool]):
+        onboarding_verification_expiry_hours (Union[Unset, int]):
+        onboarding_ariregister_base_url (Union[Unset, str]):
+        onboarding_ariregister_username (Union[Unset, str]):
+        onboarding_ariregister_password (Union[Unset, str]):
+        onboarding_ariregister_timeout (Union[Unset, int]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -289,6 +294,11 @@ class ConstanceSettingsRequest:
     maintenance_announcement_notify_before_minutes: Union[Unset, int] = UNSET
     maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
     enforce_user_consent_for_offerings: Union[Unset, bool] = UNSET
+    onboarding_verification_expiry_hours: Union[Unset, int] = UNSET
+    onboarding_ariregister_base_url: Union[Unset, str] = UNSET
+    onboarding_ariregister_username: Union[Unset, str] = UNSET
+    onboarding_ariregister_password: Union[Unset, str] = UNSET
+    onboarding_ariregister_timeout: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -654,6 +664,16 @@ class ConstanceSettingsRequest:
 
         enforce_user_consent_for_offerings = self.enforce_user_consent_for_offerings
 
+        onboarding_verification_expiry_hours = self.onboarding_verification_expiry_hours
+
+        onboarding_ariregister_base_url = self.onboarding_ariregister_base_url
+
+        onboarding_ariregister_username = self.onboarding_ariregister_username
+
+        onboarding_ariregister_password = self.onboarding_ariregister_password
+
+        onboarding_ariregister_timeout = self.onboarding_ariregister_timeout
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -935,6 +955,16 @@ class ConstanceSettingsRequest:
             field_dict["MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM"] = maintenance_announcement_notify_system
         if enforce_user_consent_for_offerings is not UNSET:
             field_dict["ENFORCE_USER_CONSENT_FOR_OFFERINGS"] = enforce_user_consent_for_offerings
+        if onboarding_verification_expiry_hours is not UNSET:
+            field_dict["ONBOARDING_VERIFICATION_EXPIRY_HOURS"] = onboarding_verification_expiry_hours
+        if onboarding_ariregister_base_url is not UNSET:
+            field_dict["ONBOARDING_ARIREGISTER_BASE_URL"] = onboarding_ariregister_base_url
+        if onboarding_ariregister_username is not UNSET:
+            field_dict["ONBOARDING_ARIREGISTER_USERNAME"] = onboarding_ariregister_username
+        if onboarding_ariregister_password is not UNSET:
+            field_dict["ONBOARDING_ARIREGISTER_PASSWORD"] = onboarding_ariregister_password
+        if onboarding_ariregister_timeout is not UNSET:
+            field_dict["ONBOARDING_ARIREGISTER_TIMEOUT"] = onboarding_ariregister_timeout
 
         return field_dict
 
@@ -1397,6 +1427,16 @@ class ConstanceSettingsRequest:
 
         enforce_user_consent_for_offerings = d.pop("ENFORCE_USER_CONSENT_FOR_OFFERINGS", UNSET)
 
+        onboarding_verification_expiry_hours = d.pop("ONBOARDING_VERIFICATION_EXPIRY_HOURS", UNSET)
+
+        onboarding_ariregister_base_url = d.pop("ONBOARDING_ARIREGISTER_BASE_URL", UNSET)
+
+        onboarding_ariregister_username = d.pop("ONBOARDING_ARIREGISTER_USERNAME", UNSET)
+
+        onboarding_ariregister_password = d.pop("ONBOARDING_ARIREGISTER_PASSWORD", UNSET)
+
+        onboarding_ariregister_timeout = d.pop("ONBOARDING_ARIREGISTER_TIMEOUT", UNSET)
+
         constance_settings_request = cls(
             site_name=site_name,
             site_description=site_description,
@@ -1534,6 +1574,11 @@ class ConstanceSettingsRequest:
             maintenance_announcement_notify_before_minutes=maintenance_announcement_notify_before_minutes,
             maintenance_announcement_notify_system=maintenance_announcement_notify_system,
             enforce_user_consent_for_offerings=enforce_user_consent_for_offerings,
+            onboarding_verification_expiry_hours=onboarding_verification_expiry_hours,
+            onboarding_ariregister_base_url=onboarding_ariregister_base_url,
+            onboarding_ariregister_username=onboarding_ariregister_username,
+            onboarding_ariregister_password=onboarding_ariregister_password,
+            onboarding_ariregister_timeout=onboarding_ariregister_timeout,
         )
 
         constance_settings_request.additional_properties = d

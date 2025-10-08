@@ -51,6 +51,8 @@ class MergedPluginOptions:
         heappe_url (Union[Unset, str]): HEAppE url
         heappe_username (Union[Unset, str]): HEAppE username
         homedir_prefix (Union[Unset, str]): GLAuth homedir prefix Default: '/home/'.
+        scratch_project_directory (Union[Unset, str]): HEAppE scratch project directory
+        project_permanent_directory (Union[Unset, str]): HEAppE project permanent directory
         initial_primarygroup_number (Union[Unset, int]): GLAuth initial primary group number Default: 5000.
         initial_uidnumber (Union[Unset, int]): GLAuth initial uidnumber Default: 5000.
         initial_usergroup_number (Union[Unset, int]): GLAuth initial usergroup number Default: 6000.
@@ -105,6 +107,8 @@ class MergedPluginOptions:
     heappe_url: Union[Unset, str] = UNSET
     heappe_username: Union[Unset, str] = UNSET
     homedir_prefix: Union[Unset, str] = "/home/"
+    scratch_project_directory: Union[Unset, str] = UNSET
+    project_permanent_directory: Union[Unset, str] = UNSET
     initial_primarygroup_number: Union[Unset, int] = 5000
     initial_uidnumber: Union[Unset, int] = 5000
     initial_usergroup_number: Union[Unset, int] = 6000
@@ -186,6 +190,10 @@ class MergedPluginOptions:
         heappe_username = self.heappe_username
 
         homedir_prefix = self.homedir_prefix
+
+        scratch_project_directory = self.scratch_project_directory
+
+        project_permanent_directory = self.project_permanent_directory
 
         initial_primarygroup_number = self.initial_primarygroup_number
 
@@ -302,6 +310,10 @@ class MergedPluginOptions:
             field_dict["heappe_username"] = heappe_username
         if homedir_prefix is not UNSET:
             field_dict["homedir_prefix"] = homedir_prefix
+        if scratch_project_directory is not UNSET:
+            field_dict["scratch_project_directory"] = scratch_project_directory
+        if project_permanent_directory is not UNSET:
+            field_dict["project_permanent_directory"] = project_permanent_directory
         if initial_primarygroup_number is not UNSET:
             field_dict["initial_primarygroup_number"] = initial_primarygroup_number
         if initial_uidnumber is not UNSET:
@@ -428,6 +440,10 @@ class MergedPluginOptions:
 
         homedir_prefix = d.pop("homedir_prefix", UNSET)
 
+        scratch_project_directory = d.pop("scratch_project_directory", UNSET)
+
+        project_permanent_directory = d.pop("project_permanent_directory", UNSET)
+
         initial_primarygroup_number = d.pop("initial_primarygroup_number", UNSET)
 
         initial_uidnumber = d.pop("initial_uidnumber", UNSET)
@@ -538,6 +554,8 @@ class MergedPluginOptions:
             heappe_url=heappe_url,
             heappe_username=heappe_username,
             homedir_prefix=homedir_prefix,
+            scratch_project_directory=scratch_project_directory,
+            project_permanent_directory=project_permanent_directory,
             initial_primarygroup_number=initial_primarygroup_number,
             initial_uidnumber=initial_uidnumber,
             initial_usergroup_number=initial_usergroup_number,

@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class StatusEnum(str, Enum):
+class RoundStatus(str, Enum):
     ENDED = "ended"
     OPEN = "open"
     SCHEDULED = "scheduled"

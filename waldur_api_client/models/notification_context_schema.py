@@ -4,13 +4,13 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="NotificationContextFields")
+T = TypeVar("T", bound="NotificationContextSchema")
 
 
 @_attrs_define
-class NotificationContextFields:
+class NotificationContextSchema:
     """Finds the notification definition in the global NOTIFICATIONS
-    dictionary and returns its 'context' fields.
+    dictionary and returns its 'context' schema.
 
     """
 
@@ -25,10 +25,10 @@ class NotificationContextFields:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        notification_context_fields = cls()
+        notification_context_schema = cls()
 
-        notification_context_fields.additional_properties = d
-        return notification_context_fields
+        notification_context_schema.additional_properties = d
+        return notification_context_schema
 
     @property
     def additional_keys(self) -> list[str]:

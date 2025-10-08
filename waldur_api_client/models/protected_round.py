@@ -10,7 +10,7 @@ from dateutil.parser import isoparse
 from ..models.allocation_time_enum import AllocationTimeEnum
 from ..models.deciding_entity_enum import DecidingEntityEnum
 from ..models.review_strategy_enum import ReviewStrategyEnum
-from ..models.status_enum import StatusEnum
+from ..models.round_status import RoundStatus
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -29,7 +29,7 @@ class ProtectedRound:
         name (str):
         start_time (datetime.datetime):
         cutoff_time (datetime.datetime):
-        status (StatusEnum):
+        status (RoundStatus):
         url (str):
         proposals (list['ProtectedProposalList']):
         review_strategy (Union[Unset, ReviewStrategyEnum]):
@@ -46,7 +46,7 @@ class ProtectedRound:
     name: str
     start_time: datetime.datetime
     cutoff_time: datetime.datetime
-    status: StatusEnum
+    status: RoundStatus
     url: str
     proposals: list["ProtectedProposalList"]
     review_strategy: Union[Unset, ReviewStrategyEnum] = UNSET
@@ -158,7 +158,7 @@ class ProtectedRound:
 
         cutoff_time = isoparse(d.pop("cutoff_time"))
 
-        status = StatusEnum(d.pop("status"))
+        status = RoundStatus(d.pop("status"))
 
         url = d.pop("url")
 

@@ -19,6 +19,8 @@ def _get_kwargs(
     policy_type: Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -45,6 +47,13 @@ def _get_kwargs(
     if not isinstance(target_tenant_uuid, Unset):
         json_target_tenant_uuid = str(target_tenant_uuid)
     params["target_tenant_uuid"] = json_target_tenant_uuid
+
+    params["tenant"] = tenant
+
+    json_tenant_uuid: Union[Unset, str] = UNSET
+    if not isinstance(tenant_uuid, Unset):
+        json_tenant_uuid = str(tenant_uuid)
+    params["tenant_uuid"] = json_tenant_uuid
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -91,6 +100,8 @@ def sync_detailed(
     policy_type: Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -102,6 +113,8 @@ def sync_detailed(
         policy_type (Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType]):
         target_tenant (Union[Unset, str]):
         target_tenant_uuid (Union[Unset, UUID]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -119,6 +132,8 @@ def sync_detailed(
         policy_type=policy_type,
         target_tenant=target_tenant,
         target_tenant_uuid=target_tenant_uuid,
+        tenant=tenant,
+        tenant_uuid=tenant_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -138,6 +153,8 @@ def sync(
     policy_type: Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -149,6 +166,8 @@ def sync(
         policy_type (Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType]):
         target_tenant (Union[Unset, str]):
         target_tenant_uuid (Union[Unset, UUID]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -167,6 +186,8 @@ def sync(
         policy_type=policy_type,
         target_tenant=target_tenant,
         target_tenant_uuid=target_tenant_uuid,
+        tenant=tenant,
+        tenant_uuid=tenant_uuid,
     ).parsed
 
 
@@ -180,6 +201,8 @@ async def asyncio_detailed(
     policy_type: Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -191,6 +214,8 @@ async def asyncio_detailed(
         policy_type (Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType]):
         target_tenant (Union[Unset, str]):
         target_tenant_uuid (Union[Unset, UUID]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -208,6 +233,8 @@ async def asyncio_detailed(
         policy_type=policy_type,
         target_tenant=target_tenant,
         target_tenant_uuid=target_tenant_uuid,
+        tenant=tenant,
+        tenant_uuid=tenant_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -225,6 +252,8 @@ async def asyncio(
     policy_type: Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -236,6 +265,8 @@ async def asyncio(
         policy_type (Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType]):
         target_tenant (Union[Unset, str]):
         target_tenant_uuid (Union[Unset, UUID]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -255,5 +286,7 @@ async def asyncio(
             policy_type=policy_type,
             target_tenant=target_tenant,
             target_tenant_uuid=target_tenant_uuid,
+            tenant=tenant,
+            tenant_uuid=tenant_uuid,
         )
     ).parsed

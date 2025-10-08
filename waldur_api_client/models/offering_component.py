@@ -34,6 +34,10 @@ class OfferingComponent:
         default_limit (Union[None, Unset, int]):
         factor (Union[None, Unset, int]):
         is_builtin (Union[Unset, bool]):
+        is_prepaid (Union[Unset, bool]):
+        overage_component (Union[None, UUID, Unset]):
+        min_prepaid_duration (Union[None, Unset, int]):
+        max_prepaid_duration (Union[None, Unset, int]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -53,6 +57,10 @@ class OfferingComponent:
     default_limit: Union[None, Unset, int] = UNSET
     factor: Union[None, Unset, int] = UNSET
     is_builtin: Union[Unset, bool] = UNSET
+    is_prepaid: Union[Unset, bool] = UNSET
+    overage_component: Union[None, UUID, Unset] = UNSET
+    min_prepaid_duration: Union[None, Unset, int] = UNSET
+    max_prepaid_duration: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -126,6 +134,28 @@ class OfferingComponent:
 
         is_builtin = self.is_builtin
 
+        is_prepaid = self.is_prepaid
+
+        overage_component: Union[None, Unset, str]
+        if isinstance(self.overage_component, Unset):
+            overage_component = UNSET
+        elif isinstance(self.overage_component, UUID):
+            overage_component = str(self.overage_component)
+        else:
+            overage_component = self.overage_component
+
+        min_prepaid_duration: Union[None, Unset, int]
+        if isinstance(self.min_prepaid_duration, Unset):
+            min_prepaid_duration = UNSET
+        else:
+            min_prepaid_duration = self.min_prepaid_duration
+
+        max_prepaid_duration: Union[None, Unset, int]
+        if isinstance(self.max_prepaid_duration, Unset):
+            max_prepaid_duration = UNSET
+        else:
+            max_prepaid_duration = self.max_prepaid_duration
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -163,6 +193,14 @@ class OfferingComponent:
             field_dict["factor"] = factor
         if is_builtin is not UNSET:
             field_dict["is_builtin"] = is_builtin
+        if is_prepaid is not UNSET:
+            field_dict["is_prepaid"] = is_prepaid
+        if overage_component is not UNSET:
+            field_dict["overage_component"] = overage_component
+        if min_prepaid_duration is not UNSET:
+            field_dict["min_prepaid_duration"] = min_prepaid_duration
+        if max_prepaid_duration is not UNSET:
+            field_dict["max_prepaid_duration"] = max_prepaid_duration
 
         return field_dict
 
@@ -278,6 +316,43 @@ class OfferingComponent:
 
         is_builtin = d.pop("is_builtin", UNSET)
 
+        is_prepaid = d.pop("is_prepaid", UNSET)
+
+        def _parse_overage_component(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                overage_component_type_0 = UUID(data)
+
+                return overage_component_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        overage_component = _parse_overage_component(d.pop("overage_component", UNSET))
+
+        def _parse_min_prepaid_duration(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        min_prepaid_duration = _parse_min_prepaid_duration(d.pop("min_prepaid_duration", UNSET))
+
+        def _parse_max_prepaid_duration(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        max_prepaid_duration = _parse_max_prepaid_duration(d.pop("max_prepaid_duration", UNSET))
+
         offering_component = cls(
             uuid=uuid,
             billing_type=billing_type,
@@ -296,6 +371,10 @@ class OfferingComponent:
             default_limit=default_limit,
             factor=factor,
             is_builtin=is_builtin,
+            is_prepaid=is_prepaid,
+            overage_component=overage_component,
+            min_prepaid_duration=min_prepaid_duration,
+            max_prepaid_duration=max_prepaid_duration,
         )
 
         offering_component.additional_properties = d

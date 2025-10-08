@@ -7,7 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.status_enum import StatusEnum
+from ..models.round_status import RoundStatus
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CallRound")
@@ -23,7 +23,7 @@ class CallRound:
         cutoff_time (datetime.datetime):
         call_uuid (UUID):
         call_name (str):
-        status (StatusEnum):
+        status (RoundStatus):
         slug (Union[Unset, str]):
     """
 
@@ -33,7 +33,7 @@ class CallRound:
     cutoff_time: datetime.datetime
     call_uuid: UUID
     call_name: str
-    status: StatusEnum
+    status: RoundStatus
     slug: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -87,7 +87,7 @@ class CallRound:
 
         call_name = d.pop("call_name")
 
-        status = StatusEnum(d.pop("status"))
+        status = RoundStatus(d.pop("status"))
 
         slug = d.pop("slug", UNSET)
 

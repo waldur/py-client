@@ -733,7 +733,7 @@ from .network_rbac_policy import NetworkRBACPolicy
 from .network_rbac_policy_request import NetworkRBACPolicyRequest
 from .node_disk_driver_enum import NodeDiskDriverEnum
 from .notification import Notification
-from .notification_context_fields import NotificationContextFields
+from .notification_context_schema import NotificationContextSchema
 from .notification_request import NotificationRequest
 from .notification_template_detail_serializers import NotificationTemplateDetailSerializers
 from .notification_template_detail_serializers_request import NotificationTemplateDetailSerializersRequest
@@ -803,6 +803,19 @@ from .offering_user_service_provider_comment import OfferingUserServiceProviderC
 from .offering_user_state import OfferingUserState
 from .offering_user_state_transition_request import OfferingUserStateTransitionRequest
 from .offering_user_update_restriction_request import OfferingUserUpdateRestrictionRequest
+from .onboarding_company_validation_request_request import OnboardingCompanyValidationRequestRequest
+from .onboarding_justification import OnboardingJustification
+from .onboarding_justification_create_request import OnboardingJustificationCreateRequest
+from .onboarding_justification_documentation import OnboardingJustificationDocumentation
+from .onboarding_justification_documentation_request import OnboardingJustificationDocumentationRequest
+from .onboarding_justification_documentation_request_form import OnboardingJustificationDocumentationRequestForm
+from .onboarding_justification_documentation_request_multipart import (
+    OnboardingJustificationDocumentationRequestMultipart,
+)
+from .onboarding_justification_request import OnboardingJustificationRequest
+from .onboarding_verification import OnboardingVerification
+from .onboarding_verification_request import OnboardingVerificationRequest
+from .onboarding_verification_status_enum import OnboardingVerificationStatusEnum
 from .open_stack_allowed_address_pair import OpenStackAllowedAddressPair
 from .open_stack_allowed_address_pair_request import OpenStackAllowedAddressPairRequest
 from .open_stack_backend_instance import OpenStackBackendInstance
@@ -1067,6 +1080,8 @@ from .patched_offering_usage_policy_request import PatchedOfferingUsagePolicyReq
 from .patched_offering_user_request import PatchedOfferingUserRequest
 from .patched_offering_user_role_request import PatchedOfferingUserRoleRequest
 from .patched_offering_user_service_provider_comment_request import PatchedOfferingUserServiceProviderCommentRequest
+from .patched_onboarding_justification_request import PatchedOnboardingJustificationRequest
+from .patched_onboarding_verification_request import PatchedOnboardingVerificationRequest
 from .patched_open_stack_backup_request import PatchedOpenStackBackupRequest
 from .patched_open_stack_instance_request import PatchedOpenStackInstanceRequest
 from .patched_open_stack_network_request import PatchedOpenStackNetworkRequest
@@ -1446,6 +1461,8 @@ from .resource_limits import ResourceLimits
 from .resource_offering import ResourceOffering
 from .resource_options_request import ResourceOptionsRequest
 from .resource_plan_period import ResourcePlanPeriod
+from .resource_renew_request import ResourceRenewRequest
+from .resource_renew_request_limits import ResourceRenewRequestLimits
 from .resource_report_request import ResourceReportRequest
 from .resource_response_status import ResourceResponseStatus
 from .resource_set_limits_request import ResourceSetLimitsRequest
@@ -1487,6 +1504,7 @@ from .role_type import RoleType
 from .roles_list_field_item import RolesListFieldItem
 from .roles_retrieve_field_item import RolesRetrieveFieldItem
 from .round_reviewer import RoundReviewer
+from .round_status import RoundStatus
 from .rule import Rule
 from .rule_plan_attributes import RulePlanAttributes
 from .rule_plan_limits import RulePlanLimits
@@ -1553,7 +1571,6 @@ from .smax_web_hook_receiver_request import SmaxWebHookReceiverRequest
 from .ssh_key import SshKey
 from .ssh_key_request import SshKeyRequest
 from .state_transition_error import StateTransitionError
-from .status_enum import StatusEnum
 from .storage_mode_enum import StorageModeEnum
 from .sub_net_mapping import SubNetMapping
 from .sub_net_mapping_request import SubNetMappingRequest
@@ -1629,6 +1646,8 @@ from .v_mware_virtual_machine_create_order_attributes_guest_os_type_2_type_1 imp
 from .v_mware_virtual_machine_create_order_attributes_guest_os_type_3_type_1 import (
     VMwareVirtualMachineCreateOrderAttributesGuestOsType3Type1,
 )
+from .validation_decision_enum import ValidationDecisionEnum
+from .validation_method_enum import ValidationMethodEnum
 from .version import Version
 from .version_adoption import VersionAdoption
 from .visibility_enum import VisibilityEnum
@@ -2358,7 +2377,7 @@ __all__ = (
     "NetworkRBACPolicyRequest",
     "NodeDiskDriverEnum",
     "Notification",
-    "NotificationContextFields",
+    "NotificationContextSchema",
     "NotificationRequest",
     "NotificationTemplateDetailSerializers",
     "NotificationTemplateDetailSerializersRequest",
@@ -2428,6 +2447,17 @@ __all__ = (
     "OfferingUserState",
     "OfferingUserStateTransitionRequest",
     "OfferingUserUpdateRestrictionRequest",
+    "OnboardingCompanyValidationRequestRequest",
+    "OnboardingJustification",
+    "OnboardingJustificationCreateRequest",
+    "OnboardingJustificationDocumentation",
+    "OnboardingJustificationDocumentationRequest",
+    "OnboardingJustificationDocumentationRequestForm",
+    "OnboardingJustificationDocumentationRequestMultipart",
+    "OnboardingJustificationRequest",
+    "OnboardingVerification",
+    "OnboardingVerificationRequest",
+    "OnboardingVerificationStatusEnum",
     "OpenStackAllowedAddressPair",
     "OpenStackAllowedAddressPairRequest",
     "OpenStackBackendInstance",
@@ -2664,6 +2694,8 @@ __all__ = (
     "PatchedOfferingUserRequest",
     "PatchedOfferingUserRoleRequest",
     "PatchedOfferingUserServiceProviderCommentRequest",
+    "PatchedOnboardingJustificationRequest",
+    "PatchedOnboardingVerificationRequest",
     "PatchedOpenStackBackupRequest",
     "PatchedOpenStackInstanceRequest",
     "PatchedOpenStackNetworkRequest",
@@ -3019,6 +3051,8 @@ __all__ = (
     "ResourceOffering",
     "ResourceOptionsRequest",
     "ResourcePlanPeriod",
+    "ResourceRenewRequest",
+    "ResourceRenewRequestLimits",
     "ResourceReportRequest",
     "ResourceResponseStatus",
     "ResourceSetLimitsRequest",
@@ -3060,6 +3094,7 @@ __all__ = (
     "RoleTemplate",
     "RoleType",
     "RoundReviewer",
+    "RoundStatus",
     "Rule",
     "RulePlanAttributes",
     "RulePlanLimits",
@@ -3124,7 +3159,6 @@ __all__ = (
     "SshKey",
     "SshKeyRequest",
     "StateTransitionError",
-    "StatusEnum",
     "StorageModeEnum",
     "SubmitRequestResponse",
     "SubNetMapping",
@@ -3190,6 +3224,8 @@ __all__ = (
     "UsersListOItem",
     "UsersMeRetrieveFieldItem",
     "UsersRetrieveFieldItem",
+    "ValidationDecisionEnum",
+    "ValidationMethodEnum",
     "Version",
     "VersionAdoption",
     "VisibilityEnum",
