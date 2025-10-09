@@ -210,6 +210,8 @@ from .checklist_response import ChecklistResponse
 from .checklist_response_checklist import ChecklistResponseChecklist
 from .checklist_reviewer_response import ChecklistReviewerResponse
 from .checklist_reviewer_response_checklist import ChecklistReviewerResponseChecklist
+from .checklist_template import ChecklistTemplate
+from .checklist_template_checklist import ChecklistTemplateChecklist
 from .checklist_type_enum import ChecklistTypeEnum
 from .checklists_admin_checklist_questions_checklist_type import ChecklistsAdminChecklistQuestionsChecklistType
 from .checklists_admin_checklist_questions_checklist_type_in_item import (
@@ -1314,6 +1316,7 @@ from .public_offering_details import PublicOfferingDetails
 from .public_offering_details_attributes import PublicOfferingDetailsAttributes
 from .pull_marketplace_script_resource_request import PullMarketplaceScriptResourceRequest
 from .query_request import QueryRequest
+from .question import Question
 from .question_admin import QuestionAdmin
 from .question_admin_request import QuestionAdminRequest
 from .question_answer import QuestionAnswer
@@ -1321,6 +1324,7 @@ from .question_answer_project_answers_item import QuestionAnswerProjectAnswersIt
 from .question_answer_question_options_item import QuestionAnswerQuestionOptionsItem
 from .question_dependency import QuestionDependency
 from .question_dependency_request import QuestionDependencyRequest
+from .question_options import QuestionOptions
 from .question_options_admin import QuestionOptionsAdmin
 from .question_options_admin_request import QuestionOptionsAdminRequest
 from .question_type_enum import QuestionTypeEnum
@@ -1908,6 +1912,8 @@ __all__ = (
     "ChecklistsAdminCountChecklistTypeInItem",
     "ChecklistsAdminListChecklistType",
     "ChecklistsAdminListChecklistTypeInItem",
+    "ChecklistTemplate",
+    "ChecklistTemplateChecklist",
     "ChecklistTypeEnum",
     "ClusterSecurityGroup",
     "ClusterSecurityGroupRequest",
@@ -2914,6 +2920,7 @@ __all__ = (
     "PublicOfferingDetailsAttributes",
     "PullMarketplaceScriptResourceRequest",
     "QueryRequest",
+    "Question",
     "QuestionAdmin",
     "QuestionAdminRequest",
     "QuestionAnswer",
@@ -2921,6 +2928,7 @@ __all__ = (
     "QuestionAnswerQuestionOptionsItem",
     "QuestionDependency",
     "QuestionDependencyRequest",
+    "QuestionOptions",
     "QuestionOptionsAdmin",
     "QuestionOptionsAdminRequest",
     "QuestionTypeEnum",

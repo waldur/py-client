@@ -42,8 +42,7 @@ class Project:
         type_uuid (Union[None, UUID, Unset]):
         backend_id (Union[Unset, str]):
         start_date (Union[None, Unset, datetime.date]):
-        end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource will be
-            scheduled for termination.
+        end_date (Union[None, Unset, datetime.date]):
         end_date_requested_by (Union[None, Unset, str]):
         oecd_fos_2007_code (Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]):
         oecd_fos_2007_label (Union[Unset, str]):

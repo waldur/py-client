@@ -27,8 +27,7 @@ class ProjectRequestMultipart:
         type_ (Union[None, Unset, str]):
         backend_id (Union[Unset, str]):
         start_date (Union[None, Unset, datetime.date]):
-        end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource will be
-            scheduled for termination.
+        end_date (Union[None, Unset, datetime.date]):
         oecd_fos_2007_code (Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]):
         is_industry (Union[Unset, bool]):
         image (Union[File, None, Unset]):
