@@ -72,23 +72,23 @@ class ConstanceSettingsRequestMultipart:
         waldur_support_enabled (Union[Unset, bool]):
         waldur_support_active_backend_type (Union[Unset, str]):
         waldur_support_display_request_type (Union[Unset, bool]):
-        atlassian_use_old_api (Union[Unset, bool]):
-        atlassian_use_teenage_api (Union[Unset, bool]):
-        atlassian_use_automatic_request_mapping (Union[Unset, bool]):
         atlassian_map_waldur_users_to_servicedesk_agents (Union[Unset, bool]):
-        atlassian_strange_setting (Union[Unset, int]):
         atlassian_api_url (Union[Unset, str]):
         atlassian_username (Union[Unset, str]):
         atlassian_password (Union[Unset, str]):
         atlassian_email (Union[Unset, str]):
+        atlassian_use_old_api (Union[Unset, bool]):
         atlassian_token (Union[Unset, str]):
+        atlassian_personal_access_token (Union[Unset, str]):
+        atlassian_oauth2_client_id (Union[Unset, str]):
+        atlassian_oauth2_access_token (Union[Unset, str]):
+        atlassian_oauth2_token_type (Union[Unset, str]):
         atlassian_verify_ssl (Union[Unset, bool]):
         atlassian_project_id (Union[Unset, str]):
         atlassian_shared_username (Union[Unset, bool]):
         atlassian_custom_issue_field_mapping_enabled (Union[Unset, bool]):
         atlassian_default_offering_issue_type (Union[Unset, str]):
         atlassian_excluded_attachment_types (Union[Unset, str]):
-        atlassian_pull_priorities (Union[Unset, bool]):
         atlassian_issue_types (Union[Unset, str]):
         atlassian_description_template (Union[Unset, str]):
         atlassian_summary_template (Union[Unset, str]):
@@ -215,23 +215,23 @@ class ConstanceSettingsRequestMultipart:
     waldur_support_enabled: Union[Unset, bool] = UNSET
     waldur_support_active_backend_type: Union[Unset, str] = UNSET
     waldur_support_display_request_type: Union[Unset, bool] = UNSET
-    atlassian_use_old_api: Union[Unset, bool] = UNSET
-    atlassian_use_teenage_api: Union[Unset, bool] = UNSET
-    atlassian_use_automatic_request_mapping: Union[Unset, bool] = UNSET
     atlassian_map_waldur_users_to_servicedesk_agents: Union[Unset, bool] = UNSET
-    atlassian_strange_setting: Union[Unset, int] = UNSET
     atlassian_api_url: Union[Unset, str] = UNSET
     atlassian_username: Union[Unset, str] = UNSET
     atlassian_password: Union[Unset, str] = UNSET
     atlassian_email: Union[Unset, str] = UNSET
+    atlassian_use_old_api: Union[Unset, bool] = UNSET
     atlassian_token: Union[Unset, str] = UNSET
+    atlassian_personal_access_token: Union[Unset, str] = UNSET
+    atlassian_oauth2_client_id: Union[Unset, str] = UNSET
+    atlassian_oauth2_access_token: Union[Unset, str] = UNSET
+    atlassian_oauth2_token_type: Union[Unset, str] = UNSET
     atlassian_verify_ssl: Union[Unset, bool] = UNSET
     atlassian_project_id: Union[Unset, str] = UNSET
     atlassian_shared_username: Union[Unset, bool] = UNSET
     atlassian_custom_issue_field_mapping_enabled: Union[Unset, bool] = UNSET
     atlassian_default_offering_issue_type: Union[Unset, str] = UNSET
     atlassian_excluded_attachment_types: Union[Unset, str] = UNSET
-    atlassian_pull_priorities: Union[Unset, bool] = UNSET
     atlassian_issue_types: Union[Unset, str] = UNSET
     atlassian_description_template: Union[Unset, str] = UNSET
     atlassian_summary_template: Union[Unset, str] = UNSET
@@ -493,15 +493,7 @@ class ConstanceSettingsRequestMultipart:
 
         waldur_support_display_request_type = self.waldur_support_display_request_type
 
-        atlassian_use_old_api = self.atlassian_use_old_api
-
-        atlassian_use_teenage_api = self.atlassian_use_teenage_api
-
-        atlassian_use_automatic_request_mapping = self.atlassian_use_automatic_request_mapping
-
         atlassian_map_waldur_users_to_servicedesk_agents = self.atlassian_map_waldur_users_to_servicedesk_agents
-
-        atlassian_strange_setting = self.atlassian_strange_setting
 
         atlassian_api_url = self.atlassian_api_url
 
@@ -511,7 +503,17 @@ class ConstanceSettingsRequestMultipart:
 
         atlassian_email = self.atlassian_email
 
+        atlassian_use_old_api = self.atlassian_use_old_api
+
         atlassian_token = self.atlassian_token
+
+        atlassian_personal_access_token = self.atlassian_personal_access_token
+
+        atlassian_oauth2_client_id = self.atlassian_oauth2_client_id
+
+        atlassian_oauth2_access_token = self.atlassian_oauth2_access_token
+
+        atlassian_oauth2_token_type = self.atlassian_oauth2_token_type
 
         atlassian_verify_ssl = self.atlassian_verify_ssl
 
@@ -524,8 +526,6 @@ class ConstanceSettingsRequestMultipart:
         atlassian_default_offering_issue_type = self.atlassian_default_offering_issue_type
 
         atlassian_excluded_attachment_types = self.atlassian_excluded_attachment_types
-
-        atlassian_pull_priorities = self.atlassian_pull_priorities
 
         atlassian_issue_types = self.atlassian_issue_types
 
@@ -793,18 +793,10 @@ class ConstanceSettingsRequestMultipart:
             field_dict["WALDUR_SUPPORT_ACTIVE_BACKEND_TYPE"] = waldur_support_active_backend_type
         if waldur_support_display_request_type is not UNSET:
             field_dict["WALDUR_SUPPORT_DISPLAY_REQUEST_TYPE"] = waldur_support_display_request_type
-        if atlassian_use_old_api is not UNSET:
-            field_dict["ATLASSIAN_USE_OLD_API"] = atlassian_use_old_api
-        if atlassian_use_teenage_api is not UNSET:
-            field_dict["ATLASSIAN_USE_TEENAGE_API"] = atlassian_use_teenage_api
-        if atlassian_use_automatic_request_mapping is not UNSET:
-            field_dict["ATLASSIAN_USE_AUTOMATIC_REQUEST_MAPPING"] = atlassian_use_automatic_request_mapping
         if atlassian_map_waldur_users_to_servicedesk_agents is not UNSET:
             field_dict["ATLASSIAN_MAP_WALDUR_USERS_TO_SERVICEDESK_AGENTS"] = (
                 atlassian_map_waldur_users_to_servicedesk_agents
             )
-        if atlassian_strange_setting is not UNSET:
-            field_dict["ATLASSIAN_STRANGE_SETTING"] = atlassian_strange_setting
         if atlassian_api_url is not UNSET:
             field_dict["ATLASSIAN_API_URL"] = atlassian_api_url
         if atlassian_username is not UNSET:
@@ -813,8 +805,18 @@ class ConstanceSettingsRequestMultipart:
             field_dict["ATLASSIAN_PASSWORD"] = atlassian_password
         if atlassian_email is not UNSET:
             field_dict["ATLASSIAN_EMAIL"] = atlassian_email
+        if atlassian_use_old_api is not UNSET:
+            field_dict["ATLASSIAN_USE_OLD_API"] = atlassian_use_old_api
         if atlassian_token is not UNSET:
             field_dict["ATLASSIAN_TOKEN"] = atlassian_token
+        if atlassian_personal_access_token is not UNSET:
+            field_dict["ATLASSIAN_PERSONAL_ACCESS_TOKEN"] = atlassian_personal_access_token
+        if atlassian_oauth2_client_id is not UNSET:
+            field_dict["ATLASSIAN_OAUTH2_CLIENT_ID"] = atlassian_oauth2_client_id
+        if atlassian_oauth2_access_token is not UNSET:
+            field_dict["ATLASSIAN_OAUTH2_ACCESS_TOKEN"] = atlassian_oauth2_access_token
+        if atlassian_oauth2_token_type is not UNSET:
+            field_dict["ATLASSIAN_OAUTH2_TOKEN_TYPE"] = atlassian_oauth2_token_type
         if atlassian_verify_ssl is not UNSET:
             field_dict["ATLASSIAN_VERIFY_SSL"] = atlassian_verify_ssl
         if atlassian_project_id is not UNSET:
@@ -827,8 +829,6 @@ class ConstanceSettingsRequestMultipart:
             field_dict["ATLASSIAN_DEFAULT_OFFERING_ISSUE_TYPE"] = atlassian_default_offering_issue_type
         if atlassian_excluded_attachment_types is not UNSET:
             field_dict["ATLASSIAN_EXCLUDED_ATTACHMENT_TYPES"] = atlassian_excluded_attachment_types
-        if atlassian_pull_priorities is not UNSET:
-            field_dict["ATLASSIAN_PULL_PRIORITIES"] = atlassian_pull_priorities
         if atlassian_issue_types is not UNSET:
             field_dict["ATLASSIAN_ISSUE_TYPES"] = atlassian_issue_types
         if atlassian_description_template is not UNSET:
@@ -1229,33 +1229,12 @@ class ConstanceSettingsRequestMultipart:
                 )
             )
 
-        if not isinstance(self.atlassian_use_old_api, Unset):
-            files.append(("ATLASSIAN_USE_OLD_API", (None, str(self.atlassian_use_old_api).encode(), "text/plain")))
-
-        if not isinstance(self.atlassian_use_teenage_api, Unset):
-            files.append(
-                ("ATLASSIAN_USE_TEENAGE_API", (None, str(self.atlassian_use_teenage_api).encode(), "text/plain"))
-            )
-
-        if not isinstance(self.atlassian_use_automatic_request_mapping, Unset):
-            files.append(
-                (
-                    "ATLASSIAN_USE_AUTOMATIC_REQUEST_MAPPING",
-                    (None, str(self.atlassian_use_automatic_request_mapping).encode(), "text/plain"),
-                )
-            )
-
         if not isinstance(self.atlassian_map_waldur_users_to_servicedesk_agents, Unset):
             files.append(
                 (
                     "ATLASSIAN_MAP_WALDUR_USERS_TO_SERVICEDESK_AGENTS",
                     (None, str(self.atlassian_map_waldur_users_to_servicedesk_agents).encode(), "text/plain"),
                 )
-            )
-
-        if not isinstance(self.atlassian_strange_setting, Unset):
-            files.append(
-                ("ATLASSIAN_STRANGE_SETTING", (None, str(self.atlassian_strange_setting).encode(), "text/plain"))
             )
 
         if not isinstance(self.atlassian_api_url, Unset):
@@ -1270,8 +1249,37 @@ class ConstanceSettingsRequestMultipart:
         if not isinstance(self.atlassian_email, Unset):
             files.append(("ATLASSIAN_EMAIL", (None, str(self.atlassian_email).encode(), "text/plain")))
 
+        if not isinstance(self.atlassian_use_old_api, Unset):
+            files.append(("ATLASSIAN_USE_OLD_API", (None, str(self.atlassian_use_old_api).encode(), "text/plain")))
+
         if not isinstance(self.atlassian_token, Unset):
             files.append(("ATLASSIAN_TOKEN", (None, str(self.atlassian_token).encode(), "text/plain")))
+
+        if not isinstance(self.atlassian_personal_access_token, Unset):
+            files.append(
+                (
+                    "ATLASSIAN_PERSONAL_ACCESS_TOKEN",
+                    (None, str(self.atlassian_personal_access_token).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.atlassian_oauth2_client_id, Unset):
+            files.append(
+                ("ATLASSIAN_OAUTH2_CLIENT_ID", (None, str(self.atlassian_oauth2_client_id).encode(), "text/plain"))
+            )
+
+        if not isinstance(self.atlassian_oauth2_access_token, Unset):
+            files.append(
+                (
+                    "ATLASSIAN_OAUTH2_ACCESS_TOKEN",
+                    (None, str(self.atlassian_oauth2_access_token).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.atlassian_oauth2_token_type, Unset):
+            files.append(
+                ("ATLASSIAN_OAUTH2_TOKEN_TYPE", (None, str(self.atlassian_oauth2_token_type).encode(), "text/plain"))
+            )
 
         if not isinstance(self.atlassian_verify_ssl, Unset):
             files.append(("ATLASSIAN_VERIFY_SSL", (None, str(self.atlassian_verify_ssl).encode(), "text/plain")))
@@ -1306,11 +1314,6 @@ class ConstanceSettingsRequestMultipart:
                     "ATLASSIAN_EXCLUDED_ATTACHMENT_TYPES",
                     (None, str(self.atlassian_excluded_attachment_types).encode(), "text/plain"),
                 )
-            )
-
-        if not isinstance(self.atlassian_pull_priorities, Unset):
-            files.append(
-                ("ATLASSIAN_PULL_PRIORITIES", (None, str(self.atlassian_pull_priorities).encode(), "text/plain"))
             )
 
         if not isinstance(self.atlassian_issue_types, Unset):
@@ -1923,17 +1926,9 @@ class ConstanceSettingsRequestMultipart:
 
         waldur_support_display_request_type = d.pop("WALDUR_SUPPORT_DISPLAY_REQUEST_TYPE", UNSET)
 
-        atlassian_use_old_api = d.pop("ATLASSIAN_USE_OLD_API", UNSET)
-
-        atlassian_use_teenage_api = d.pop("ATLASSIAN_USE_TEENAGE_API", UNSET)
-
-        atlassian_use_automatic_request_mapping = d.pop("ATLASSIAN_USE_AUTOMATIC_REQUEST_MAPPING", UNSET)
-
         atlassian_map_waldur_users_to_servicedesk_agents = d.pop(
             "ATLASSIAN_MAP_WALDUR_USERS_TO_SERVICEDESK_AGENTS", UNSET
         )
-
-        atlassian_strange_setting = d.pop("ATLASSIAN_STRANGE_SETTING", UNSET)
 
         atlassian_api_url = d.pop("ATLASSIAN_API_URL", UNSET)
 
@@ -1943,7 +1938,17 @@ class ConstanceSettingsRequestMultipart:
 
         atlassian_email = d.pop("ATLASSIAN_EMAIL", UNSET)
 
+        atlassian_use_old_api = d.pop("ATLASSIAN_USE_OLD_API", UNSET)
+
         atlassian_token = d.pop("ATLASSIAN_TOKEN", UNSET)
+
+        atlassian_personal_access_token = d.pop("ATLASSIAN_PERSONAL_ACCESS_TOKEN", UNSET)
+
+        atlassian_oauth2_client_id = d.pop("ATLASSIAN_OAUTH2_CLIENT_ID", UNSET)
+
+        atlassian_oauth2_access_token = d.pop("ATLASSIAN_OAUTH2_ACCESS_TOKEN", UNSET)
+
+        atlassian_oauth2_token_type = d.pop("ATLASSIAN_OAUTH2_TOKEN_TYPE", UNSET)
 
         atlassian_verify_ssl = d.pop("ATLASSIAN_VERIFY_SSL", UNSET)
 
@@ -1956,8 +1961,6 @@ class ConstanceSettingsRequestMultipart:
         atlassian_default_offering_issue_type = d.pop("ATLASSIAN_DEFAULT_OFFERING_ISSUE_TYPE", UNSET)
 
         atlassian_excluded_attachment_types = d.pop("ATLASSIAN_EXCLUDED_ATTACHMENT_TYPES", UNSET)
-
-        atlassian_pull_priorities = d.pop("ATLASSIAN_PULL_PRIORITIES", UNSET)
 
         atlassian_issue_types = d.pop("ATLASSIAN_ISSUE_TYPES", UNSET)
 
@@ -2166,23 +2169,23 @@ class ConstanceSettingsRequestMultipart:
             waldur_support_enabled=waldur_support_enabled,
             waldur_support_active_backend_type=waldur_support_active_backend_type,
             waldur_support_display_request_type=waldur_support_display_request_type,
-            atlassian_use_old_api=atlassian_use_old_api,
-            atlassian_use_teenage_api=atlassian_use_teenage_api,
-            atlassian_use_automatic_request_mapping=atlassian_use_automatic_request_mapping,
             atlassian_map_waldur_users_to_servicedesk_agents=atlassian_map_waldur_users_to_servicedesk_agents,
-            atlassian_strange_setting=atlassian_strange_setting,
             atlassian_api_url=atlassian_api_url,
             atlassian_username=atlassian_username,
             atlassian_password=atlassian_password,
             atlassian_email=atlassian_email,
+            atlassian_use_old_api=atlassian_use_old_api,
             atlassian_token=atlassian_token,
+            atlassian_personal_access_token=atlassian_personal_access_token,
+            atlassian_oauth2_client_id=atlassian_oauth2_client_id,
+            atlassian_oauth2_access_token=atlassian_oauth2_access_token,
+            atlassian_oauth2_token_type=atlassian_oauth2_token_type,
             atlassian_verify_ssl=atlassian_verify_ssl,
             atlassian_project_id=atlassian_project_id,
             atlassian_shared_username=atlassian_shared_username,
             atlassian_custom_issue_field_mapping_enabled=atlassian_custom_issue_field_mapping_enabled,
             atlassian_default_offering_issue_type=atlassian_default_offering_issue_type,
             atlassian_excluded_attachment_types=atlassian_excluded_attachment_types,
-            atlassian_pull_priorities=atlassian_pull_priorities,
             atlassian_issue_types=atlassian_issue_types,
             atlassian_description_template=atlassian_description_template,
             atlassian_summary_template=atlassian_summary_template,

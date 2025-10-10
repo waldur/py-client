@@ -45,7 +45,6 @@ class Issue:
         resource_name (str):
         created (datetime.datetime):
         modified (datetime.datetime):
-        first_response_sla (Union[None, datetime.datetime]):
         feedback (Union['NestedFeedback', None]):
         resolved (Union[None, bool]):
         update_is_available (bool):
@@ -88,7 +87,6 @@ class Issue:
     resource_name: str
     created: datetime.datetime
     modified: datetime.datetime
-    first_response_sla: Union[None, datetime.datetime]
     feedback: Union["NestedFeedback", None]
     resolved: Union[None, bool]
     update_is_available: bool
@@ -186,12 +184,6 @@ class Issue:
 
         modified = self.modified.isoformat()
 
-        first_response_sla: Union[None, str]
-        if isinstance(self.first_response_sla, datetime.datetime):
-            first_response_sla = self.first_response_sla.isoformat()
-        else:
-            first_response_sla = self.first_response_sla
-
         feedback: Union[None, dict[str, Any]]
         if isinstance(self.feedback, NestedFeedback):
             feedback = self.feedback.to_dict()
@@ -280,7 +272,6 @@ class Issue:
                 "resource_name": resource_name,
                 "created": created,
                 "modified": modified,
-                "first_response_sla": first_response_sla,
                 "feedback": feedback,
                 "resolved": resolved,
                 "update_is_available": update_is_available,
@@ -465,21 +456,6 @@ class Issue:
 
         modified = isoparse(d.pop("modified"))
 
-        def _parse_first_response_sla(data: object) -> Union[None, datetime.datetime]:
-            if data is None:
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                first_response_sla_type_0 = isoparse(data)
-
-                return first_response_sla_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, datetime.datetime], data)
-
-        first_response_sla = _parse_first_response_sla(d.pop("first_response_sla"))
-
         def _parse_feedback(data: object) -> Union["NestedFeedback", None]:
             if data is None:
                 return data
@@ -596,7 +572,6 @@ class Issue:
             resource_name=resource_name,
             created=created,
             modified=modified,
-            first_response_sla=first_response_sla,
             feedback=feedback,
             resolved=resolved,
             update_is_available=update_is_available,

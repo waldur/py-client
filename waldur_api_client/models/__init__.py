@@ -13,6 +13,15 @@ from .admin_announcements_list_field_item import AdminAnnouncementsListFieldItem
 from .admin_announcements_list_o_item import AdminAnnouncementsListOItem
 from .admin_announcements_list_type_item import AdminAnnouncementsListTypeItem
 from .admin_announcements_retrieve_field_item import AdminAnnouncementsRetrieveFieldItem
+from .agent_event_subscription_create_request import AgentEventSubscriptionCreateRequest
+from .agent_identity import AgentIdentity
+from .agent_identity_request import AgentIdentityRequest
+from .agent_processor import AgentProcessor
+from .agent_processor_create_request import AgentProcessorCreateRequest
+from .agent_service import AgentService
+from .agent_service_create_request import AgentServiceCreateRequest
+from .agent_service_state_enum import AgentServiceStateEnum
+from .agent_service_statistics_request import AgentServiceStatisticsRequest
 from .agent_type_enum import AgentTypeEnum
 from .agreement_type_enum import AgreementTypeEnum
 from .allocation_time_enum import AllocationTimeEnum
@@ -677,6 +686,8 @@ from .marketplace_service_providers_user_customers_list_field_item import (
 )
 from .marketplace_service_providers_users_list_field_item import MarketplaceServiceProvidersUsersListFieldItem
 from .marketplace_service_providers_users_list_o_item import MarketplaceServiceProvidersUsersListOItem
+from .marketplace_site_agent_services_count_state_item import MarketplaceSiteAgentServicesCountStateItem
+from .marketplace_site_agent_services_list_state_item import MarketplaceSiteAgentServicesListStateItem
 from .marketplace_user_offering_consents_count_o_item import MarketplaceUserOfferingConsentsCountOItem
 from .marketplace_user_offering_consents_list_o_item import MarketplaceUserOfferingConsentsListOItem
 from .merged_plugin_options import MergedPluginOptions
@@ -740,6 +751,7 @@ from .notification_request import NotificationRequest
 from .notification_template_detail_serializers import NotificationTemplateDetailSerializers
 from .notification_template_detail_serializers_request import NotificationTemplateDetailSerializersRequest
 from .notification_template_update_serializers_request import NotificationTemplateUpdateSerializersRequest
+from .observable_object_type_enum import ObservableObjectTypeEnum
 from .obtain_auth_token_request import ObtainAuthTokenRequest
 from .oecd_fos_2007_code_enum import OecdFos2007CodeEnum
 from .offering import Offering
@@ -815,6 +827,7 @@ from .onboarding_justification_documentation_request_multipart import (
     OnboardingJustificationDocumentationRequestMultipart,
 )
 from .onboarding_justification_request import OnboardingJustificationRequest
+from .onboarding_justification_review_request import OnboardingJustificationReviewRequest
 from .onboarding_verification import OnboardingVerification
 from .onboarding_verification_request import OnboardingVerificationRequest
 from .onboarding_verification_status_enum import OnboardingVerificationStatusEnum
@@ -1458,17 +1471,20 @@ from .resource_attributes import ResourceAttributes
 from .resource_backend_id_request import ResourceBackendIDRequest
 from .resource_backend_metadata_request import ResourceBackendMetadataRequest
 from .resource_current_usages import ResourceCurrentUsages
+from .resource_downscaled_request import ResourceDownscaledRequest
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
 from .resource_limit_period import ResourceLimitPeriod
 from .resource_limit_usage import ResourceLimitUsage
 from .resource_limits import ResourceLimits
 from .resource_offering import ResourceOffering
 from .resource_options_request import ResourceOptionsRequest
+from .resource_paused_request import ResourcePausedRequest
 from .resource_plan_period import ResourcePlanPeriod
 from .resource_renew_request import ResourceRenewRequest
 from .resource_renew_request_limits import ResourceRenewRequestLimits
 from .resource_report_request import ResourceReportRequest
 from .resource_response_status import ResourceResponseStatus
+from .resource_restrict_member_access_request import ResourceRestrictMemberAccessRequest
 from .resource_set_limits_request import ResourceSetLimitsRequest
 from .resource_set_state_erred_request import ResourceSetStateErredRequest
 from .resource_slug_request import ResourceSlugRequest
@@ -1719,6 +1735,15 @@ __all__ = (
     "AdminAnnouncementsListTypeItem",
     "AdminAnnouncementsRetrieveFieldItem",
     "AdminAnnouncementTypeEnum",
+    "AgentEventSubscriptionCreateRequest",
+    "AgentIdentity",
+    "AgentIdentityRequest",
+    "AgentProcessor",
+    "AgentProcessorCreateRequest",
+    "AgentService",
+    "AgentServiceCreateRequest",
+    "AgentServiceStateEnum",
+    "AgentServiceStatisticsRequest",
     "AgentTypeEnum",
     "AgreementTypeEnum",
     "AllocationTimeEnum",
@@ -2325,6 +2350,8 @@ __all__ = (
     "MarketplaceServiceProvidersUsersListFieldItem",
     "MarketplaceServiceProvidersUsersListOItem",
     "MarketplaceServiceProviderUser",
+    "MarketplaceSiteAgentServicesCountStateItem",
+    "MarketplaceSiteAgentServicesListStateItem",
     "MarketplaceUserOfferingConsentsCountOItem",
     "MarketplaceUserOfferingConsentsListOItem",
     "MergedPluginOptions",
@@ -2388,6 +2415,7 @@ __all__ = (
     "NotificationTemplateDetailSerializers",
     "NotificationTemplateDetailSerializersRequest",
     "NotificationTemplateUpdateSerializersRequest",
+    "ObservableObjectTypeEnum",
     "ObtainAuthTokenRequest",
     "OecdFos2007CodeEnum",
     "Offering",
@@ -2461,6 +2489,7 @@ __all__ = (
     "OnboardingJustificationDocumentationRequestForm",
     "OnboardingJustificationDocumentationRequestMultipart",
     "OnboardingJustificationRequest",
+    "OnboardingJustificationReviewRequest",
     "OnboardingVerification",
     "OnboardingVerificationRequest",
     "OnboardingVerificationStatusEnum",
@@ -3052,17 +3081,20 @@ __all__ = (
     "ResourceBackendIDRequest",
     "ResourceBackendMetadataRequest",
     "ResourceCurrentUsages",
+    "ResourceDownscaledRequest",
     "ResourceEndDateByProviderRequest",
     "ResourceLimitPeriod",
     "ResourceLimits",
     "ResourceLimitUsage",
     "ResourceOffering",
     "ResourceOptionsRequest",
+    "ResourcePausedRequest",
     "ResourcePlanPeriod",
     "ResourceRenewRequest",
     "ResourceRenewRequestLimits",
     "ResourceReportRequest",
     "ResourceResponseStatus",
+    "ResourceRestrictMemberAccessRequest",
     "ResourceSetLimitsRequest",
     "ResourceSetStateErredRequest",
     "ResourcesLimits",

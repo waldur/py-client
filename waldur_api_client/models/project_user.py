@@ -24,7 +24,7 @@ class ProjectUser:
         role (str):
         expiration_time (Union[None, datetime.datetime]):
         offering_user_username (Union[None, str]):
-        offering_user_state (OfferingUserState):
+        offering_user_state (Union[None, OfferingUserState]):
         email (Union[Unset, str]):
     """
 
@@ -35,7 +35,7 @@ class ProjectUser:
     role: str
     expiration_time: Union[None, datetime.datetime]
     offering_user_username: Union[None, str]
-    offering_user_state: OfferingUserState
+    offering_user_state: Union[None, OfferingUserState]
     email: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -59,7 +59,11 @@ class ProjectUser:
         offering_user_username: Union[None, str]
         offering_user_username = self.offering_user_username
 
-        offering_user_state = self.offering_user_state.value
+        offering_user_state: Union[None, str]
+        if isinstance(self.offering_user_state, OfferingUserState):
+            offering_user_state = self.offering_user_state.value
+        else:
+            offering_user_state = self.offering_user_state
 
         email = self.email
 
@@ -117,7 +121,20 @@ class ProjectUser:
 
         offering_user_username = _parse_offering_user_username(d.pop("offering_user_username"))
 
-        offering_user_state = OfferingUserState(d.pop("offering_user_state"))
+        def _parse_offering_user_state(data: object) -> Union[None, OfferingUserState]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                offering_user_state_type_0 = OfferingUserState(data)
+
+                return offering_user_state_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, OfferingUserState], data)
+
+        offering_user_state = _parse_offering_user_state(d.pop("offering_user_state"))
 
         email = d.pop("email", UNSET)
 
