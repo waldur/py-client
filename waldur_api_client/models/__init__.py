@@ -1014,6 +1014,7 @@ from .order_attachment import OrderAttachment
 from .order_attachment_request import OrderAttachmentRequest
 from .order_attachment_request_form import OrderAttachmentRequestForm
 from .order_attachment_request_multipart import OrderAttachmentRequestMultipart
+from .order_backend_id_request import OrderBackendIDRequest
 from .order_create import OrderCreate
 from .order_create_limits import OrderCreateLimits
 from .order_create_request import OrderCreateRequest
@@ -2652,6 +2653,7 @@ __all__ = (
     "OrderAttachmentRequest",
     "OrderAttachmentRequestForm",
     "OrderAttachmentRequestMultipart",
+    "OrderBackendIDRequest",
     "OrderCreate",
     "OrderCreateLimits",
     "OrderCreateRequest",

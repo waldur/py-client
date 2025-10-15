@@ -26,6 +26,7 @@ def _get_kwargs(
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
+    limit_based: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -49,6 +50,7 @@ def _get_kwargs(
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    usage_based: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -91,6 +93,8 @@ def _get_kwargs(
     params["has_terminate_date"] = has_terminate_date
 
     params["lexis_links_supported"] = lexis_links_supported
+
+    params["limit_based"] = limit_based
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -181,6 +185,8 @@ def _get_kwargs(
 
     params["state"] = json_state
 
+    params["usage_based"] = usage_based
+
     params["visible_to_username"] = visible_to_username
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
@@ -231,6 +237,7 @@ def sync_detailed(
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
+    limit_based: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -254,6 +261,7 @@ def sync_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    usage_based: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> Response[list["BookingResource"]]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
@@ -269,6 +277,7 @@ def sync_detailed(
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
+        limit_based (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -292,6 +301,7 @@ def sync_detailed(
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[BookingResourcesListStateItem]]):
+        usage_based (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
 
     Raises:
@@ -313,6 +323,7 @@ def sync_detailed(
         field=field,
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
+        limit_based=limit_based,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -336,6 +347,7 @@ def sync_detailed(
         runtime_state=runtime_state,
         service_manager_uuid=service_manager_uuid,
         state=state,
+        usage_based=usage_based,
         visible_to_username=visible_to_username,
     )
 
@@ -359,6 +371,7 @@ def sync(
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
+    limit_based: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -382,6 +395,7 @@ def sync(
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    usage_based: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> list["BookingResource"]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
@@ -397,6 +411,7 @@ def sync(
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
+        limit_based (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -420,6 +435,7 @@ def sync(
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[BookingResourcesListStateItem]]):
+        usage_based (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
 
     Raises:
@@ -442,6 +458,7 @@ def sync(
         field=field,
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
+        limit_based=limit_based,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -465,6 +482,7 @@ def sync(
         runtime_state=runtime_state,
         service_manager_uuid=service_manager_uuid,
         state=state,
+        usage_based=usage_based,
         visible_to_username=visible_to_username,
     ).parsed
 
@@ -482,6 +500,7 @@ async def asyncio_detailed(
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
+    limit_based: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -505,6 +524,7 @@ async def asyncio_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    usage_based: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> Response[list["BookingResource"]]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
@@ -520,6 +540,7 @@ async def asyncio_detailed(
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
+        limit_based (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -543,6 +564,7 @@ async def asyncio_detailed(
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[BookingResourcesListStateItem]]):
+        usage_based (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
 
     Raises:
@@ -564,6 +586,7 @@ async def asyncio_detailed(
         field=field,
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
+        limit_based=limit_based,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -587,6 +610,7 @@ async def asyncio_detailed(
         runtime_state=runtime_state,
         service_manager_uuid=service_manager_uuid,
         state=state,
+        usage_based=usage_based,
         visible_to_username=visible_to_username,
     )
 
@@ -608,6 +632,7 @@ async def asyncio(
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
+    limit_based: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -631,6 +656,7 @@ async def asyncio(
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    usage_based: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> list["BookingResource"]:
     """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
@@ -646,6 +672,7 @@ async def asyncio(
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
+        limit_based (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -669,6 +696,7 @@ async def asyncio(
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[BookingResourcesListStateItem]]):
+        usage_based (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
 
     Raises:
@@ -692,6 +720,7 @@ async def asyncio(
             field=field,
             has_terminate_date=has_terminate_date,
             lexis_links_supported=lexis_links_supported,
+            limit_based=limit_based,
             modified=modified,
             name=name,
             name_exact=name_exact,
@@ -715,6 +744,7 @@ async def asyncio(
             runtime_state=runtime_state,
             service_manager_uuid=service_manager_uuid,
             state=state,
+            usage_based=usage_based,
             visible_to_username=visible_to_username,
         )
     ).parsed
