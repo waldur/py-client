@@ -37,6 +37,8 @@ def _get_kwargs(
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
+    only_limit_based: Union[Unset, bool] = UNSET,
+    only_usage_based: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -136,6 +138,10 @@ def _get_kwargs(
             json_offering_uuid.append(offering_uuid_item)
 
     params["offering_uuid"] = json_offering_uuid
+
+    params["only_limit_based"] = only_limit_based
+
+    params["only_usage_based"] = only_usage_based
 
     params["page"] = page
 
@@ -248,6 +254,8 @@ def sync_detailed(
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
+    only_limit_based: Union[Unset, bool] = UNSET,
+    only_usage_based: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -288,6 +296,8 @@ def sync_detailed(
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):
         offering_uuid (Union[Unset, list[UUID]]):
+        only_limit_based (Union[Unset, bool]):
+        only_usage_based (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -334,6 +344,8 @@ def sync_detailed(
         offering_slug=offering_slug,
         offering_type=offering_type,
         offering_uuid=offering_uuid,
+        only_limit_based=only_limit_based,
+        only_usage_based=only_usage_based,
         page=page,
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
@@ -382,6 +394,8 @@ def sync(
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
+    only_limit_based: Union[Unset, bool] = UNSET,
+    only_usage_based: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -422,6 +436,8 @@ def sync(
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):
         offering_uuid (Union[Unset, list[UUID]]):
+        only_limit_based (Union[Unset, bool]):
+        only_usage_based (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -469,6 +485,8 @@ def sync(
         offering_slug=offering_slug,
         offering_type=offering_type,
         offering_uuid=offering_uuid,
+        only_limit_based=only_limit_based,
+        only_usage_based=only_usage_based,
         page=page,
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
@@ -511,6 +529,8 @@ async def asyncio_detailed(
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
+    only_limit_based: Union[Unset, bool] = UNSET,
+    only_usage_based: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -551,6 +571,8 @@ async def asyncio_detailed(
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):
         offering_uuid (Union[Unset, list[UUID]]):
+        only_limit_based (Union[Unset, bool]):
+        only_usage_based (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -597,6 +619,8 @@ async def asyncio_detailed(
         offering_slug=offering_slug,
         offering_type=offering_type,
         offering_uuid=offering_uuid,
+        only_limit_based=only_limit_based,
+        only_usage_based=only_usage_based,
         page=page,
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
@@ -643,6 +667,8 @@ async def asyncio(
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
+    only_limit_based: Union[Unset, bool] = UNSET,
+    only_usage_based: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -683,6 +709,8 @@ async def asyncio(
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, str]):
         offering_uuid (Union[Unset, list[UUID]]):
+        only_limit_based (Union[Unset, bool]):
+        only_usage_based (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -731,6 +759,8 @@ async def asyncio(
             offering_slug=offering_slug,
             offering_type=offering_type,
             offering_uuid=offering_uuid,
+            only_limit_based=only_limit_based,
+            only_usage_based=only_usage_based,
             page=page,
             page_size=page_size,
             parent_offering_uuid=parent_offering_uuid,
