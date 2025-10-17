@@ -147,6 +147,7 @@ from .booking_resource_attributes import BookingResourceAttributes
 from .booking_resource_current_usages import BookingResourceCurrentUsages
 from .booking_resource_limit_usage import BookingResourceLimitUsage
 from .booking_resource_limits import BookingResourceLimits
+from .booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
 from .booking_resources_count_o_item import BookingResourcesCountOItem
 from .booking_resources_count_state_item import BookingResourcesCountStateItem
 from .booking_resources_list_field_item import BookingResourcesListFieldItem
@@ -1491,6 +1492,7 @@ from .resource_paused_request import ResourcePausedRequest
 from .resource_plan_period import ResourcePlanPeriod
 from .resource_renew_request import ResourceRenewRequest
 from .resource_renew_request_limits import ResourceRenewRequestLimits
+from .resource_renewal_date_type_0 import ResourceRenewalDateType0
 from .resource_report_request import ResourceReportRequest
 from .resource_response_status import ResourceResponseStatus
 from .resource_restrict_member_access_request import ResourceRestrictMemberAccessRequest
@@ -1868,6 +1870,7 @@ __all__ = (
     "BookingResourceCurrentUsages",
     "BookingResourceLimits",
     "BookingResourceLimitUsage",
+    "BookingResourceRenewalDateType0",
     "BookingResourcesCountOItem",
     "BookingResourcesCountStateItem",
     "BookingResourcesListFieldItem",
@@ -3108,6 +3111,7 @@ __all__ = (
     "ResourceOptionsRequest",
     "ResourcePausedRequest",
     "ResourcePlanPeriod",
+    "ResourceRenewalDateType0",
     "ResourceRenewRequest",
     "ResourceRenewRequestLimits",
     "ResourceReportRequest",

@@ -23,6 +23,7 @@ def _get_kwargs(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    include_terminated: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -63,6 +64,8 @@ def _get_kwargs(
     params["customer_native_name"] = customer_native_name
 
     params["description"] = description
+
+    params["include_terminated"] = include_terminated
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -138,6 +141,7 @@ def sync_detailed(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    include_terminated: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -160,6 +164,7 @@ def sync_detailed(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
+        include_terminated (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -188,6 +193,7 @@ def sync_detailed(
         customer_name=customer_name,
         customer_native_name=customer_native_name,
         description=description,
+        include_terminated=include_terminated,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -218,6 +224,7 @@ def sync(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    include_terminated: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -240,6 +247,7 @@ def sync(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
+        include_terminated (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -269,6 +277,7 @@ def sync(
         customer_name=customer_name,
         customer_native_name=customer_native_name,
         description=description,
+        include_terminated=include_terminated,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -293,6 +302,7 @@ async def asyncio_detailed(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    include_terminated: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -315,6 +325,7 @@ async def asyncio_detailed(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
+        include_terminated (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -343,6 +354,7 @@ async def asyncio_detailed(
         customer_name=customer_name,
         customer_native_name=customer_native_name,
         description=description,
+        include_terminated=include_terminated,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -371,6 +383,7 @@ async def asyncio(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    include_terminated: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -393,6 +406,7 @@ async def asyncio(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
+        include_terminated (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -423,6 +437,7 @@ async def asyncio(
             customer_name=customer_name,
             customer_native_name=customer_native_name,
             description=description,
+            include_terminated=include_terminated,
             modified=modified,
             name=name,
             name_exact=name_exact,

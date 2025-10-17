@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ..models.booking_resource_current_usages import BookingResourceCurrentUsages
     from ..models.booking_resource_limit_usage import BookingResourceLimitUsage
     from ..models.booking_resource_limits import BookingResourceLimits
+    from ..models.booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
     from ..models.booking_slot import BookingSlot
     from ..models.nested_endpoint import NestedEndpoint
     from ..models.order_details import OrderDetails
@@ -109,6 +110,7 @@ class BookingResource:
         customer_slug (Union[Unset, str]):
         user_requires_reconsent (Union[Unset, bool]): Check if the current user needs to re-consent for this resource's
             offering.
+        renewal_date (Union['BookingResourceRenewalDateType0', None, Unset]):
         created_by (Union[Unset, str]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
@@ -195,6 +197,7 @@ class BookingResource:
     project_slug: Union[Unset, str] = UNSET
     customer_slug: Union[Unset, str] = UNSET
     user_requires_reconsent: Union[Unset, bool] = UNSET
+    renewal_date: Union["BookingResourceRenewalDateType0", None, Unset] = UNSET
     created_by: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
@@ -205,6 +208,7 @@ class BookingResource:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
         from ..models.order_details import OrderDetails
 
         offering = self.offering
@@ -467,6 +471,14 @@ class BookingResource:
 
         user_requires_reconsent = self.user_requires_reconsent
 
+        renewal_date: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.renewal_date, Unset):
+            renewal_date = UNSET
+        elif isinstance(self.renewal_date, BookingResourceRenewalDateType0):
+            renewal_date = self.renewal_date.to_dict()
+        else:
+            renewal_date = self.renewal_date
+
         created_by = self.created_by
 
         created_by_username = self.created_by_username
@@ -639,6 +651,8 @@ class BookingResource:
             field_dict["customer_slug"] = customer_slug
         if user_requires_reconsent is not UNSET:
             field_dict["user_requires_reconsent"] = user_requires_reconsent
+        if renewal_date is not UNSET:
+            field_dict["renewal_date"] = renewal_date
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_username is not UNSET:
@@ -663,6 +677,7 @@ class BookingResource:
         from ..models.booking_resource_current_usages import BookingResourceCurrentUsages
         from ..models.booking_resource_limit_usage import BookingResourceLimitUsage
         from ..models.booking_resource_limits import BookingResourceLimits
+        from ..models.booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
         from ..models.booking_slot import BookingSlot
         from ..models.nested_endpoint import NestedEndpoint
         from ..models.order_details import OrderDetails
@@ -1059,6 +1074,23 @@ class BookingResource:
 
         user_requires_reconsent = d.pop("user_requires_reconsent", UNSET)
 
+        def _parse_renewal_date(data: object) -> Union["BookingResourceRenewalDateType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                renewal_date_type_0 = BookingResourceRenewalDateType0.from_dict(data)
+
+                return renewal_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["BookingResourceRenewalDateType0", None, Unset], data)
+
+        renewal_date = _parse_renewal_date(d.pop("renewal_date", UNSET))
+
         created_by = d.pop("created_by", UNSET)
 
         created_by_username = d.pop("created_by_username", UNSET)
@@ -1154,6 +1186,7 @@ class BookingResource:
             project_slug=project_slug,
             customer_slug=customer_slug,
             user_requires_reconsent=user_requires_reconsent,
+            renewal_date=renewal_date,
             created_by=created_by,
             created_by_username=created_by_username,
             created_by_full_name=created_by_full_name,

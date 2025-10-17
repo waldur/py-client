@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from ..models.resource_current_usages import ResourceCurrentUsages
     from ..models.resource_limit_usage import ResourceLimitUsage
     from ..models.resource_limits import ResourceLimits
+    from ..models.resource_renewal_date_type_0 import ResourceRenewalDateType0
 
 
 T = TypeVar("T", bound="Resource")
@@ -108,6 +109,7 @@ class Resource:
         customer_slug (Union[Unset, str]):
         user_requires_reconsent (Union[Unset, bool]): Check if the current user needs to re-consent for this resource's
             offering.
+        renewal_date (Union['ResourceRenewalDateType0', None, Unset]):
     """
 
     offering: Union[Unset, str] = UNSET
@@ -185,10 +187,12 @@ class Resource:
     project_slug: Union[Unset, str] = UNSET
     customer_slug: Union[Unset, str] = UNSET
     user_requires_reconsent: Union[Unset, bool] = UNSET
+    renewal_date: Union["ResourceRenewalDateType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.order_details import OrderDetails
+        from ..models.resource_renewal_date_type_0 import ResourceRenewalDateType0
 
         offering = self.offering
 
@@ -450,6 +454,14 @@ class Resource:
 
         user_requires_reconsent = self.user_requires_reconsent
 
+        renewal_date: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.renewal_date, Unset):
+            renewal_date = UNSET
+        elif isinstance(self.renewal_date, ResourceRenewalDateType0):
+            renewal_date = self.renewal_date.to_dict()
+        else:
+            renewal_date = self.renewal_date
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -603,6 +615,8 @@ class Resource:
             field_dict["customer_slug"] = customer_slug
         if user_requires_reconsent is not UNSET:
             field_dict["user_requires_reconsent"] = user_requires_reconsent
+        if renewal_date is not UNSET:
+            field_dict["renewal_date"] = renewal_date
 
         return field_dict
 
@@ -616,6 +630,7 @@ class Resource:
         from ..models.resource_current_usages import ResourceCurrentUsages
         from ..models.resource_limit_usage import ResourceLimitUsage
         from ..models.resource_limits import ResourceLimits
+        from ..models.resource_renewal_date_type_0 import ResourceRenewalDateType0
 
         d = dict(src_dict)
         offering = d.pop("offering", UNSET)
@@ -1008,6 +1023,23 @@ class Resource:
 
         user_requires_reconsent = d.pop("user_requires_reconsent", UNSET)
 
+        def _parse_renewal_date(data: object) -> Union["ResourceRenewalDateType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                renewal_date_type_0 = ResourceRenewalDateType0.from_dict(data)
+
+                return renewal_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["ResourceRenewalDateType0", None, Unset], data)
+
+        renewal_date = _parse_renewal_date(d.pop("renewal_date", UNSET))
+
         resource = cls(
             offering=offering,
             offering_name=offering_name,
@@ -1084,6 +1116,7 @@ class Resource:
             project_slug=project_slug,
             customer_slug=customer_slug,
             user_requires_reconsent=user_requires_reconsent,
+            renewal_date=renewal_date,
         )
 
         resource.additional_properties = d

@@ -65,6 +65,7 @@ class MarketplaceResourcesListFieldItem(str, Enum):
     PROVIDER_NAME = "provider_name"
     PROVIDER_SLUG = "provider_slug"
     PROVIDER_UUID = "provider_uuid"
+    RENEWAL_DATE = "renewal_date"
     REPORT = "report"
     RESOURCE_TYPE = "resource_type"
     RESOURCE_UUID = "resource_uuid"

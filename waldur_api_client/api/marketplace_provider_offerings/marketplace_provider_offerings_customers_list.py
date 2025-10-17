@@ -50,6 +50,7 @@ def _get_kwargs(
     state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
+    user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -172,6 +173,8 @@ def _get_kwargs(
 
     params["user_has_consent"] = user_has_consent
 
+    params["user_has_offering_user"] = user_has_offering_user
+
     params["uuid_list"] = uuid_list
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
@@ -245,6 +248,7 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
+    user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["ProviderOfferingCustomer"]]:
     """Get customers for offering.
@@ -281,6 +285,7 @@ def sync_detailed(
         state (Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]]):
         type_ (Union[Unset, list[str]]):
         user_has_consent (Union[Unset, bool]):
+        user_has_offering_user (Union[Unset, bool]):
         uuid_list (Union[Unset, str]):
 
     Raises:
@@ -323,6 +328,7 @@ def sync_detailed(
         state=state,
         type_=type_,
         user_has_consent=user_has_consent,
+        user_has_offering_user=user_has_offering_user,
         uuid_list=uuid_list,
     )
 
@@ -367,6 +373,7 @@ def sync(
     state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
+    user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["ProviderOfferingCustomer"]:
     """Get customers for offering.
@@ -403,6 +410,7 @@ def sync(
         state (Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]]):
         type_ (Union[Unset, list[str]]):
         user_has_consent (Union[Unset, bool]):
+        user_has_offering_user (Union[Unset, bool]):
         uuid_list (Union[Unset, str]):
 
     Raises:
@@ -446,6 +454,7 @@ def sync(
         state=state,
         type_=type_,
         user_has_consent=user_has_consent,
+        user_has_offering_user=user_has_offering_user,
         uuid_list=uuid_list,
     ).parsed
 
@@ -484,6 +493,7 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
+    user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["ProviderOfferingCustomer"]]:
     """Get customers for offering.
@@ -520,6 +530,7 @@ async def asyncio_detailed(
         state (Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]]):
         type_ (Union[Unset, list[str]]):
         user_has_consent (Union[Unset, bool]):
+        user_has_offering_user (Union[Unset, bool]):
         uuid_list (Union[Unset, str]):
 
     Raises:
@@ -562,6 +573,7 @@ async def asyncio_detailed(
         state=state,
         type_=type_,
         user_has_consent=user_has_consent,
+        user_has_offering_user=user_has_offering_user,
         uuid_list=uuid_list,
     )
 
@@ -604,6 +616,7 @@ async def asyncio(
     state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
+    user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["ProviderOfferingCustomer"]:
     """Get customers for offering.
@@ -640,6 +653,7 @@ async def asyncio(
         state (Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]]):
         type_ (Union[Unset, list[str]]):
         user_has_consent (Union[Unset, bool]):
+        user_has_offering_user (Union[Unset, bool]):
         uuid_list (Union[Unset, str]):
 
     Raises:
@@ -684,6 +698,7 @@ async def asyncio(
             state=state,
             type_=type_,
             user_has_consent=user_has_consent,
+            user_has_offering_user=user_has_offering_user,
             uuid_list=uuid_list,
         )
     ).parsed
