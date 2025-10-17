@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.nested_agent_service import NestedAgentService
+
 
 T = TypeVar("T", bound="AgentIdentity")
 
@@ -22,6 +26,7 @@ class AgentIdentity:
         name (str):
         created (datetime.datetime):
         modified (datetime.datetime):
+        services (list['NestedAgentService']):
         version (Union[None, Unset, str]):
         dependencies (Union[Unset, Any]):
         config_file_path (Union[None, Unset, str]): Example: '/etc/waldur/agent.yaml'
@@ -35,6 +40,7 @@ class AgentIdentity:
     name: str
     created: datetime.datetime
     modified: datetime.datetime
+    services: list["NestedAgentService"]
     version: Union[None, Unset, str] = UNSET
     dependencies: Union[Unset, Any] = UNSET
     config_file_path: Union[None, Unset, str] = UNSET
@@ -54,6 +60,11 @@ class AgentIdentity:
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
+
+        services = []
+        for services_item_data in self.services:
+            services_item = services_item_data.to_dict()
+            services.append(services_item)
 
         version: Union[None, Unset, str]
         if isinstance(self.version, Unset):
@@ -89,6 +100,7 @@ class AgentIdentity:
                 "name": name,
                 "created": created,
                 "modified": modified,
+                "services": services,
             }
         )
         if version is not UNSET:
@@ -106,6 +118,8 @@ class AgentIdentity:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.nested_agent_service import NestedAgentService
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -118,6 +132,13 @@ class AgentIdentity:
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
+
+        services = []
+        _services = d.pop("services")
+        for services_item_data in _services:
+            services_item = NestedAgentService.from_dict(services_item_data)
+
+            services.append(services_item)
 
         def _parse_version(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -162,6 +183,7 @@ class AgentIdentity:
             name=name,
             created=created,
             modified=modified,
+            services=services,
             version=version,
             dependencies=dependencies,
             config_file_path=config_file_path,

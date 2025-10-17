@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -10,39 +10,29 @@ from dateutil.parser import isoparse
 from ..models.agent_service_state import AgentServiceState
 from ..types import UNSET, Unset
 
-if TYPE_CHECKING:
-    from ..models.nested_agent_processor import NestedAgentProcessor
-
-
-T = TypeVar("T", bound="AgentService")
+T = TypeVar("T", bound="NestedAgentService")
 
 
 @_attrs_define
-class AgentService:
+class NestedAgentService:
     """
     Attributes:
         uuid (UUID):
         url (str):
-        identity (UUID):
-        identity_name (str):
         name (str):
         state (AgentServiceState):
         created (datetime.datetime):
         modified (datetime.datetime):
-        processors (list['NestedAgentProcessor']):
         mode (Union[None, Unset, str]):
         statistics (Union[Unset, Any]):
     """
 
     uuid: UUID
     url: str
-    identity: UUID
-    identity_name: str
     name: str
     state: AgentServiceState
     created: datetime.datetime
     modified: datetime.datetime
-    processors: list["NestedAgentProcessor"]
     mode: Union[None, Unset, str] = UNSET
     statistics: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -52,10 +42,6 @@ class AgentService:
 
         url = self.url
 
-        identity = str(self.identity)
-
-        identity_name = self.identity_name
-
         name = self.name
 
         state = self.state.value
@@ -63,11 +49,6 @@ class AgentService:
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
-
-        processors = []
-        for processors_item_data in self.processors:
-            processors_item = processors_item_data.to_dict()
-            processors.append(processors_item)
 
         mode: Union[None, Unset, str]
         if isinstance(self.mode, Unset):
@@ -83,13 +64,10 @@ class AgentService:
             {
                 "uuid": uuid,
                 "url": url,
-                "identity": identity,
-                "identity_name": identity_name,
                 "name": name,
                 "state": state,
                 "created": created,
                 "modified": modified,
-                "processors": processors,
             }
         )
         if mode is not UNSET:
@@ -101,16 +79,10 @@ class AgentService:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.nested_agent_processor import NestedAgentProcessor
-
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
         url = d.pop("url")
-
-        identity = UUID(d.pop("identity"))
-
-        identity_name = d.pop("identity_name")
 
         name = d.pop("name")
 
@@ -119,13 +91,6 @@ class AgentService:
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
-
-        processors = []
-        _processors = d.pop("processors")
-        for processors_item_data in _processors:
-            processors_item = NestedAgentProcessor.from_dict(processors_item_data)
-
-            processors.append(processors_item)
 
         def _parse_mode(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -138,22 +103,19 @@ class AgentService:
 
         statistics = d.pop("statistics", UNSET)
 
-        agent_service = cls(
+        nested_agent_service = cls(
             uuid=uuid,
             url=url,
-            identity=identity,
-            identity_name=identity_name,
             name=name,
             state=state,
             created=created,
             modified=modified,
-            processors=processors,
             mode=mode,
             statistics=statistics,
         )
 
-        agent_service.additional_properties = d
-        return agent_service
+        nested_agent_service.additional_properties = d
+        return nested_agent_service
 
     @property
     def additional_keys(self) -> list[str]:

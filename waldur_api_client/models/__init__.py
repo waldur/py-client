@@ -20,7 +20,7 @@ from .agent_processor import AgentProcessor
 from .agent_processor_create_request import AgentProcessorCreateRequest
 from .agent_service import AgentService
 from .agent_service_create_request import AgentServiceCreateRequest
-from .agent_service_state_enum import AgentServiceStateEnum
+from .agent_service_state import AgentServiceState
 from .agent_service_statistics_request import AgentServiceStatisticsRequest
 from .agent_type_enum import AgentTypeEnum
 from .agreement_type_enum import AgreementTypeEnum
@@ -281,6 +281,8 @@ from .create_feedback_request import CreateFeedbackRequest
 from .create_router import CreateRouter
 from .create_router_request import CreateRouterRequest
 from .customer import Customer
+from .customer_component_usage_policy import CustomerComponentUsagePolicy
+from .customer_component_usage_policy_request import CustomerComponentUsagePolicyRequest
 from .customer_credit import CustomerCredit
 from .customer_credit_consumption import CustomerCreditConsumption
 from .customer_credit_request import CustomerCreditRequest
@@ -705,6 +707,9 @@ from .move_offering_request import MoveOfferingRequest
 from .move_project_request import MoveProjectRequest
 from .move_resource_request import MoveResourceRequest
 from .name_uuid import NameUUID
+from .nested_agent_processor import NestedAgentProcessor
+from .nested_agent_service import NestedAgentService
+from .nested_agent_service_request import NestedAgentServiceRequest
 from .nested_attribute import NestedAttribute
 from .nested_attribute_option import NestedAttributeOption
 from .nested_attribute_option_request import NestedAttributeOptionRequest
@@ -713,6 +718,8 @@ from .nested_attribute_type_enum import NestedAttributeTypeEnum
 from .nested_campaign import NestedCampaign
 from .nested_column import NestedColumn
 from .nested_column_request import NestedColumnRequest
+from .nested_customer_usage_policy_component import NestedCustomerUsagePolicyComponent
+from .nested_customer_usage_policy_component_request import NestedCustomerUsagePolicyComponentRequest
 from .nested_endpoint import NestedEndpoint
 from .nested_endpoint_request import NestedEndpointRequest
 from .nested_feedback import NestedFeedback
@@ -1057,6 +1064,7 @@ from .patched_cluster_security_group_request import PatchedClusterSecurityGroupR
 from .patched_comment_request import PatchedCommentRequest
 from .patched_component_user_usage_limit_request import PatchedComponentUserUsageLimitRequest
 from .patched_create_customer_credit_request import PatchedCreateCustomerCreditRequest
+from .patched_customer_component_usage_policy_request import PatchedCustomerComponentUsagePolicyRequest
 from .patched_customer_estimated_cost_policy_request import PatchedCustomerEstimatedCostPolicyRequest
 from .patched_customer_request import PatchedCustomerRequest
 from .patched_customer_request_form import PatchedCustomerRequestForm
@@ -1743,7 +1751,7 @@ __all__ = (
     "AgentProcessorCreateRequest",
     "AgentService",
     "AgentServiceCreateRequest",
-    "AgentServiceStateEnum",
+    "AgentServiceState",
     "AgentServiceStatisticsRequest",
     "AgentTypeEnum",
     "AgreementTypeEnum",
@@ -1990,6 +1998,8 @@ __all__ = (
     "CreateRouter",
     "CreateRouterRequest",
     "Customer",
+    "CustomerComponentUsagePolicy",
+    "CustomerComponentUsagePolicyRequest",
     "CustomerCredit",
     "CustomerCreditConsumption",
     "CustomerCreditRequest",
@@ -2370,6 +2380,9 @@ __all__ = (
     "MoveProjectRequest",
     "MoveResourceRequest",
     "NameUUID",
+    "NestedAgentProcessor",
+    "NestedAgentService",
+    "NestedAgentServiceRequest",
     "NestedAttribute",
     "NestedAttributeOption",
     "NestedAttributeOptionRequest",
@@ -2378,6 +2391,8 @@ __all__ = (
     "NestedCampaign",
     "NestedColumn",
     "NestedColumnRequest",
+    "NestedCustomerUsagePolicyComponent",
+    "NestedCustomerUsagePolicyComponentRequest",
     "NestedEndpoint",
     "NestedEndpointRequest",
     "NestedFeedback",
@@ -2696,6 +2711,7 @@ __all__ = (
     "PatchedCommentRequest",
     "PatchedComponentUserUsageLimitRequest",
     "PatchedCreateCustomerCreditRequest",
+    "PatchedCustomerComponentUsagePolicyRequest",
     "PatchedCustomerEstimatedCostPolicyRequest",
     "PatchedCustomerRequest",
     "PatchedCustomerRequestForm",

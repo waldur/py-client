@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class AgentServiceStateEnum(str, Enum):
+class AgentServiceState(str, Enum):
     ACTIVE = "Active"
     ERROR = "Error"
     IDLE = "Idle"
