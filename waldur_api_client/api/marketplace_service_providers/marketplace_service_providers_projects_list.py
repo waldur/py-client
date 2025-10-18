@@ -29,6 +29,7 @@ def _get_kwargs(
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -78,6 +79,8 @@ def _get_kwargs(
             json_field.append(field_item)
 
     params["field"] = json_field
+
+    params["is_removed"] = is_removed
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -155,6 +158,7 @@ def sync_detailed(
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -179,6 +183,7 @@ def sync_detailed(
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]]):
+        is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -209,6 +214,7 @@ def sync_detailed(
         customer_native_name=customer_native_name,
         description=description,
         field=field,
+        is_removed=is_removed,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -241,6 +247,7 @@ def sync(
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -265,6 +272,7 @@ def sync(
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]]):
+        is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -296,6 +304,7 @@ def sync(
         customer_native_name=customer_native_name,
         description=description,
         field=field,
+        is_removed=is_removed,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -322,6 +331,7 @@ async def asyncio_detailed(
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -346,6 +356,7 @@ async def asyncio_detailed(
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]]):
+        is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -376,6 +387,7 @@ async def asyncio_detailed(
         customer_native_name=customer_native_name,
         description=description,
         field=field,
+        is_removed=is_removed,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -406,6 +418,7 @@ async def asyncio(
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -430,6 +443,7 @@ async def asyncio(
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]]):
+        is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -462,6 +476,7 @@ async def asyncio(
             customer_native_name=customer_native_name,
             description=description,
             field=field,
+            is_removed=is_removed,
             modified=modified,
             name=name,
             name_exact=name_exact,
