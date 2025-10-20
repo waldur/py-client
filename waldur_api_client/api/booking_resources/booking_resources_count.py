@@ -16,6 +16,7 @@ def _get_kwargs(
     *,
     backend_id: Union[Unset, str] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    component_count: Union[Unset, float] = UNSET,
     connected_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -24,6 +25,7 @@ def _get_kwargs(
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
+    limit_component_count: Union[Unset, float] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -61,6 +63,8 @@ def _get_kwargs(
         json_category_uuid = str(category_uuid)
     params["category_uuid"] = json_category_uuid
 
+    params["component_count"] = component_count
+
     json_connected_customer_uuid: Union[Unset, str] = UNSET
     if not isinstance(connected_customer_uuid, Unset):
         json_connected_customer_uuid = str(connected_customer_uuid)
@@ -85,6 +89,8 @@ def _get_kwargs(
     params["lexis_links_supported"] = lexis_links_supported
 
     params["limit_based"] = limit_based
+
+    params["limit_component_count"] = limit_component_count
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -223,6 +229,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    component_count: Union[Unset, float] = UNSET,
     connected_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -231,6 +238,7 @@ def sync_detailed(
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
+    limit_component_count: Union[Unset, float] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -264,6 +272,7 @@ def sync_detailed(
     Args:
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
+        component_count (Union[Unset, float]):
         connected_customer_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
@@ -272,6 +281,7 @@ def sync_detailed(
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
+        limit_component_count (Union[Unset, float]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -311,6 +321,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         backend_id=backend_id,
         category_uuid=category_uuid,
+        component_count=component_count,
         connected_customer_uuid=connected_customer_uuid,
         created=created,
         customer=customer,
@@ -319,6 +330,7 @@ def sync_detailed(
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
+        limit_component_count=limit_component_count,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -360,6 +372,7 @@ def sync(
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    component_count: Union[Unset, float] = UNSET,
     connected_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -368,6 +381,7 @@ def sync(
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
+    limit_component_count: Union[Unset, float] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -401,6 +415,7 @@ def sync(
     Args:
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
+        component_count (Union[Unset, float]):
         connected_customer_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
@@ -409,6 +424,7 @@ def sync(
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
+        limit_component_count (Union[Unset, float]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -449,6 +465,7 @@ def sync(
         client=client,
         backend_id=backend_id,
         category_uuid=category_uuid,
+        component_count=component_count,
         connected_customer_uuid=connected_customer_uuid,
         created=created,
         customer=customer,
@@ -457,6 +474,7 @@ def sync(
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
+        limit_component_count=limit_component_count,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -492,6 +510,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    component_count: Union[Unset, float] = UNSET,
     connected_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -500,6 +519,7 @@ async def asyncio_detailed(
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
+    limit_component_count: Union[Unset, float] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -533,6 +553,7 @@ async def asyncio_detailed(
     Args:
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
+        component_count (Union[Unset, float]):
         connected_customer_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
@@ -541,6 +562,7 @@ async def asyncio_detailed(
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
+        limit_component_count (Union[Unset, float]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -580,6 +602,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         backend_id=backend_id,
         category_uuid=category_uuid,
+        component_count=component_count,
         connected_customer_uuid=connected_customer_uuid,
         created=created,
         customer=customer,
@@ -588,6 +611,7 @@ async def asyncio_detailed(
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
+        limit_component_count=limit_component_count,
         modified=modified,
         name=name,
         name_exact=name_exact,
@@ -627,6 +651,7 @@ async def asyncio(
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    component_count: Union[Unset, float] = UNSET,
     connected_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -635,6 +660,7 @@ async def asyncio(
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
+    limit_component_count: Union[Unset, float] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -668,6 +694,7 @@ async def asyncio(
     Args:
         backend_id (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
+        component_count (Union[Unset, float]):
         connected_customer_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
@@ -676,6 +703,7 @@ async def asyncio(
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
+        limit_component_count (Union[Unset, float]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -717,6 +745,7 @@ async def asyncio(
             client=client,
             backend_id=backend_id,
             category_uuid=category_uuid,
+            component_count=component_count,
             connected_customer_uuid=connected_customer_uuid,
             created=created,
             customer=customer,
@@ -725,6 +754,7 @@ async def asyncio(
             has_terminate_date=has_terminate_date,
             lexis_links_supported=lexis_links_supported,
             limit_based=limit_based,
+            limit_component_count=limit_component_count,
             modified=modified,
             name=name,
             name_exact=name_exact,
