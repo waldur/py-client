@@ -81,6 +81,10 @@ class MergedPluginOptions:
         managed_rancher_tenant_max_disk (Union[Unset, int]): Max size of disk space for tenants (GB)
         account_name_generation_policy (Union[AccountNameGenerationPolicyEnum, None, Unset]): Slurm account name
             generation policy
+        highlight_backend_id_display (Union[Unset, bool]): Defines if backend_id should be shown more prominently by the
+            UI Default: False.
+        backend_id_display_label (Union[Unset, str]): Label used by UI for showing value of the backend_id Default:
+            'Backend ID'.
     """
 
     auto_approve_remote_orders: Union[Unset, bool] = UNSET
@@ -136,6 +140,8 @@ class MergedPluginOptions:
     managed_rancher_tenant_max_ram: Union[Unset, int] = UNSET
     managed_rancher_tenant_max_disk: Union[Unset, int] = UNSET
     account_name_generation_policy: Union[AccountNameGenerationPolicyEnum, None, Unset] = UNSET
+    highlight_backend_id_display: Union[Unset, bool] = False
+    backend_id_display_label: Union[Unset, str] = "Backend ID"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -259,6 +265,10 @@ class MergedPluginOptions:
         else:
             account_name_generation_policy = self.account_name_generation_policy
 
+        highlight_backend_id_display = self.highlight_backend_id_display
+
+        backend_id_display_label = self.backend_id_display_label
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -376,6 +386,10 @@ class MergedPluginOptions:
             field_dict["managed_rancher_tenant_max_disk"] = managed_rancher_tenant_max_disk
         if account_name_generation_policy is not UNSET:
             field_dict["account_name_generation_policy"] = account_name_generation_policy
+        if highlight_backend_id_display is not UNSET:
+            field_dict["highlight_backend_id_display"] = highlight_backend_id_display
+        if backend_id_display_label is not UNSET:
+            field_dict["backend_id_display_label"] = backend_id_display_label
 
         return field_dict
 
@@ -529,6 +543,10 @@ class MergedPluginOptions:
             d.pop("account_name_generation_policy", UNSET)
         )
 
+        highlight_backend_id_display = d.pop("highlight_backend_id_display", UNSET)
+
+        backend_id_display_label = d.pop("backend_id_display_label", UNSET)
+
         merged_plugin_options = cls(
             auto_approve_remote_orders=auto_approve_remote_orders,
             service_provider_can_create_offering_user=service_provider_can_create_offering_user,
@@ -581,6 +599,8 @@ class MergedPluginOptions:
             managed_rancher_tenant_max_ram=managed_rancher_tenant_max_ram,
             managed_rancher_tenant_max_disk=managed_rancher_tenant_max_disk,
             account_name_generation_policy=account_name_generation_policy,
+            highlight_backend_id_display=highlight_backend_id_display,
+            backend_id_display_label=backend_id_display_label,
         )
 
         merged_plugin_options.additional_properties = d
