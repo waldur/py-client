@@ -1,9 +1,11 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="OnboardingJustificationCreateRequest")
 
@@ -13,11 +15,11 @@ class OnboardingJustificationCreateRequest:
     """
     Attributes:
         verification_uuid (UUID): UUID of the OnboardingVerification to justify
-        user_justification (str): User's explanation for why they should be authorized
+        user_justification (Union[Unset, str]): User's explanation for why they should be authorized
     """
 
     verification_uuid: UUID
-    user_justification: str
+    user_justification: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -30,9 +32,10 @@ class OnboardingJustificationCreateRequest:
         field_dict.update(
             {
                 "verification_uuid": verification_uuid,
-                "user_justification": user_justification,
             }
         )
+        if user_justification is not UNSET:
+            field_dict["user_justification"] = user_justification
 
         return field_dict
 
@@ -41,7 +44,7 @@ class OnboardingJustificationCreateRequest:
         d = dict(src_dict)
         verification_uuid = UUID(d.pop("verification_uuid"))
 
-        user_justification = d.pop("user_justification")
+        user_justification = d.pop("user_justification", UNSET)
 
         onboarding_justification_create_request = cls(
             verification_uuid=verification_uuid,

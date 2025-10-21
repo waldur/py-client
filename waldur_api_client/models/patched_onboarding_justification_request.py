@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,12 +15,12 @@ class PatchedOnboardingJustificationRequest:
     Attributes:
         verification (Union[Unset, int]):
         user (Union[Unset, int]):
-        user_justification (Union[Unset, str]): User's explanation for why they should be authorized
+        user_justification (Union[None, Unset, str]): User's explanation for why they should be authorized
     """
 
     verification: Union[Unset, int] = UNSET
     user: Union[Unset, int] = UNSET
-    user_justification: Union[Unset, str] = UNSET
+    user_justification: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -28,7 +28,11 @@ class PatchedOnboardingJustificationRequest:
 
         user = self.user
 
-        user_justification = self.user_justification
+        user_justification: Union[None, Unset, str]
+        if isinstance(self.user_justification, Unset):
+            user_justification = UNSET
+        else:
+            user_justification = self.user_justification
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -49,7 +53,14 @@ class PatchedOnboardingJustificationRequest:
 
         user = d.pop("user", UNSET)
 
-        user_justification = d.pop("user_justification", UNSET)
+        def _parse_user_justification(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        user_justification = _parse_user_justification(d.pop("user_justification", UNSET))
 
         patched_onboarding_justification_request = cls(
             verification=verification,

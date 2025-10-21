@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.validation_decision_enum import ValidationDecisionEnum
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.onboarding_justification_documentation import OnboardingJustificationDocumentation
@@ -23,7 +24,6 @@ class OnboardingJustification:
         uuid (UUID):
         verification (int):
         user (int):
-        user_justification (str): User's explanation for why they should be authorized
         validated_by (Union[None, int]):
         validated_at (Union[None, datetime.datetime]):
         validation_decision (ValidationDecisionEnum):
@@ -31,12 +31,12 @@ class OnboardingJustification:
         supporting_documentation (list['OnboardingJustificationDocumentation']):
         created (datetime.datetime):
         modified (datetime.datetime):
+        user_justification (Union[None, Unset, str]): User's explanation for why they should be authorized
     """
 
     uuid: UUID
     verification: int
     user: int
-    user_justification: str
     validated_by: Union[None, int]
     validated_at: Union[None, datetime.datetime]
     validation_decision: ValidationDecisionEnum
@@ -44,6 +44,7 @@ class OnboardingJustification:
     supporting_documentation: list["OnboardingJustificationDocumentation"]
     created: datetime.datetime
     modified: datetime.datetime
+    user_justification: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,8 +53,6 @@ class OnboardingJustification:
         verification = self.verification
 
         user = self.user
-
-        user_justification = self.user_justification
 
         validated_by: Union[None, int]
         validated_by = self.validated_by
@@ -77,6 +76,12 @@ class OnboardingJustification:
 
         modified = self.modified.isoformat()
 
+        user_justification: Union[None, Unset, str]
+        if isinstance(self.user_justification, Unset):
+            user_justification = UNSET
+        else:
+            user_justification = self.user_justification
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -84,7 +89,6 @@ class OnboardingJustification:
                 "uuid": uuid,
                 "verification": verification,
                 "user": user,
-                "user_justification": user_justification,
                 "validated_by": validated_by,
                 "validated_at": validated_at,
                 "validation_decision": validation_decision,
@@ -94,6 +98,8 @@ class OnboardingJustification:
                 "modified": modified,
             }
         )
+        if user_justification is not UNSET:
+            field_dict["user_justification"] = user_justification
 
         return field_dict
 
@@ -107,8 +113,6 @@ class OnboardingJustification:
         verification = d.pop("verification")
 
         user = d.pop("user")
-
-        user_justification = d.pop("user_justification")
 
         def _parse_validated_by(data: object) -> Union[None, int]:
             if data is None:
@@ -149,11 +153,19 @@ class OnboardingJustification:
 
         modified = isoparse(d.pop("modified"))
 
+        def _parse_user_justification(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        user_justification = _parse_user_justification(d.pop("user_justification", UNSET))
+
         onboarding_justification = cls(
             uuid=uuid,
             verification=verification,
             user=user,
-            user_justification=user_justification,
             validated_by=validated_by,
             validated_at=validated_at,
             validation_decision=validation_decision,
@@ -161,6 +173,7 @@ class OnboardingJustification:
             supporting_documentation=supporting_documentation,
             created=created,
             modified=modified,
+            user_justification=user_justification,
         )
 
         onboarding_justification.additional_properties = d
