@@ -24,6 +24,8 @@ class OnboardingJustification:
         uuid (UUID):
         verification (int):
         user (int):
+        legal_person_identifier (str):
+        legal_name (str):
         validated_by (Union[None, int]):
         validated_at (Union[None, datetime.datetime]):
         validation_decision (ValidationDecisionEnum):
@@ -37,6 +39,8 @@ class OnboardingJustification:
     uuid: UUID
     verification: int
     user: int
+    legal_person_identifier: str
+    legal_name: str
     validated_by: Union[None, int]
     validated_at: Union[None, datetime.datetime]
     validation_decision: ValidationDecisionEnum
@@ -53,6 +57,10 @@ class OnboardingJustification:
         verification = self.verification
 
         user = self.user
+
+        legal_person_identifier = self.legal_person_identifier
+
+        legal_name = self.legal_name
 
         validated_by: Union[None, int]
         validated_by = self.validated_by
@@ -89,6 +97,8 @@ class OnboardingJustification:
                 "uuid": uuid,
                 "verification": verification,
                 "user": user,
+                "legal_person_identifier": legal_person_identifier,
+                "legal_name": legal_name,
                 "validated_by": validated_by,
                 "validated_at": validated_at,
                 "validation_decision": validation_decision,
@@ -113,6 +123,10 @@ class OnboardingJustification:
         verification = d.pop("verification")
 
         user = d.pop("user")
+
+        legal_person_identifier = d.pop("legal_person_identifier")
+
+        legal_name = d.pop("legal_name")
 
         def _parse_validated_by(data: object) -> Union[None, int]:
             if data is None:
@@ -166,6 +180,8 @@ class OnboardingJustification:
             uuid=uuid,
             verification=verification,
             user=user,
+            legal_person_identifier=legal_person_identifier,
+            legal_name=legal_name,
             validated_by=validated_by,
             validated_at=validated_at,
             validation_decision=validation_decision,
