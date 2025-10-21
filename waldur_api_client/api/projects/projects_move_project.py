@@ -8,6 +8,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.move_project_request import MoveProjectRequest
 from ...models.project import Project
+from ...models.projects_move_project_response_400 import ProjectsMoveProjectResponse400
 from ...types import Response
 
 
@@ -31,15 +32,23 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Project:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Union[Project, ProjectsMoveProjectResponse400]:
     if response.status_code == 200:
         response_200 = Project.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = ProjectsMoveProjectResponse400.from_dict(response.json())
+
+        return response_400
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Project]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[Project, ProjectsMoveProjectResponse400]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,7 +62,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: MoveProjectRequest,
-) -> Response[Project]:
+) -> Response[Union[Project, ProjectsMoveProjectResponse400]]:
     """
     Args:
         uuid (UUID):
@@ -64,7 +73,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Project]
+        Response[Union[Project, ProjectsMoveProjectResponse400]]
     """
 
     kwargs = _get_kwargs(
@@ -84,7 +93,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: MoveProjectRequest,
-) -> Project:
+) -> Union[Project, ProjectsMoveProjectResponse400]:
     """
     Args:
         uuid (UUID):
@@ -95,7 +104,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Project
+        Union[Project, ProjectsMoveProjectResponse400]
     """
 
     return sync_detailed(
@@ -110,7 +119,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: MoveProjectRequest,
-) -> Response[Project]:
+) -> Response[Union[Project, ProjectsMoveProjectResponse400]]:
     """
     Args:
         uuid (UUID):
@@ -121,7 +130,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Project]
+        Response[Union[Project, ProjectsMoveProjectResponse400]]
     """
 
     kwargs = _get_kwargs(
@@ -139,7 +148,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: MoveProjectRequest,
-) -> Project:
+) -> Union[Project, ProjectsMoveProjectResponse400]:
     """
     Args:
         uuid (UUID):
@@ -150,7 +159,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Project
+        Union[Project, ProjectsMoveProjectResponse400]
     """
 
     return (

@@ -28,6 +28,7 @@ class ProjectsListFieldItem(str, Enum):
     RESOURCES_COUNT = "resources_count"
     SLUG = "slug"
     START_DATE = "start_date"
+    TERMINATION_METADATA = "termination_metadata"
     TYPE = "type"
     TYPE_NAME = "type_name"
     TYPE_UUID = "type_uuid"

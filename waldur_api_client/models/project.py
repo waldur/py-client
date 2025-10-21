@@ -52,6 +52,7 @@ class Project:
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
         kind (Union[Unset, KindEnum]):
         is_removed (Union[Unset, bool]):
+        termination_metadata (Union[Unset, Any]):
         project_credit (Union[None, Unset, float]):
         marketplace_resource_count (Union[Unset, ProjectMarketplaceResourceCount]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
@@ -85,6 +86,7 @@ class Project:
     max_service_accounts: Union[None, Unset, int] = UNSET
     kind: Union[Unset, KindEnum] = UNSET
     is_removed: Union[Unset, bool] = UNSET
+    termination_metadata: Union[Unset, Any] = UNSET
     project_credit: Union[None, Unset, float] = UNSET
     marketplace_resource_count: Union[Unset, "ProjectMarketplaceResourceCount"] = UNSET
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
@@ -201,6 +203,8 @@ class Project:
 
         is_removed = self.is_removed
 
+        termination_metadata = self.termination_metadata
+
         project_credit: Union[None, Unset, float]
         if isinstance(self.project_credit, Unset):
             project_credit = UNSET
@@ -274,6 +278,8 @@ class Project:
             field_dict["kind"] = kind
         if is_removed is not UNSET:
             field_dict["is_removed"] = is_removed
+        if termination_metadata is not UNSET:
+            field_dict["termination_metadata"] = termination_metadata
         if project_credit is not UNSET:
             field_dict["project_credit"] = project_credit
         if marketplace_resource_count is not UNSET:
@@ -468,6 +474,8 @@ class Project:
 
         is_removed = d.pop("is_removed", UNSET)
 
+        termination_metadata = d.pop("termination_metadata", UNSET)
+
         def _parse_project_credit(data: object) -> Union[None, Unset, float]:
             if data is None:
                 return data
@@ -520,6 +528,7 @@ class Project:
             max_service_accounts=max_service_accounts,
             kind=kind,
             is_removed=is_removed,
+            termination_metadata=termination_metadata,
             project_credit=project_credit,
             marketplace_resource_count=marketplace_resource_count,
             billing_price_estimate=billing_price_estimate,

@@ -37,8 +37,9 @@ class MergedPluginOptionsRequest:
         maximal_resource_count_per_project (Union[Unset, int]): Maximal number of offering resources allowed per project
         required_team_role_for_provisioning (Union[Unset, str]): Required user role in a project for provisioning of
             resources
-        order_supports_comments_and_metadata (Union[Unset, bool]): If set to True, orders will support comments and
-            metadata
+        enable_purchase_order_upload (Union[Unset, bool]): If set to True, users will be able to upload purchase orders.
+        require_purchase_order_upload (Union[Unset, bool]): If set to True, users will be required to upload purchase
+            orders.
         conceal_billing_data (Union[Unset, bool]): If set to True, pricing and components tab would be concealed.
         default_internal_network_mtu (Union[Unset, int]): If set, it will be used as a default MTU for the first network
             in a tenant
@@ -99,7 +100,8 @@ class MergedPluginOptionsRequest:
     minimal_team_count_for_provisioning: Union[Unset, int] = UNSET
     maximal_resource_count_per_project: Union[Unset, int] = UNSET
     required_team_role_for_provisioning: Union[Unset, str] = UNSET
-    order_supports_comments_and_metadata: Union[Unset, bool] = UNSET
+    enable_purchase_order_upload: Union[Unset, bool] = UNSET
+    require_purchase_order_upload: Union[Unset, bool] = UNSET
     conceal_billing_data: Union[Unset, bool] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
@@ -171,7 +173,9 @@ class MergedPluginOptionsRequest:
 
         required_team_role_for_provisioning = self.required_team_role_for_provisioning
 
-        order_supports_comments_and_metadata = self.order_supports_comments_and_metadata
+        enable_purchase_order_upload = self.enable_purchase_order_upload
+
+        require_purchase_order_upload = self.require_purchase_order_upload
 
         conceal_billing_data = self.conceal_billing_data
 
@@ -296,8 +300,10 @@ class MergedPluginOptionsRequest:
             field_dict["maximal_resource_count_per_project"] = maximal_resource_count_per_project
         if required_team_role_for_provisioning is not UNSET:
             field_dict["required_team_role_for_provisioning"] = required_team_role_for_provisioning
-        if order_supports_comments_and_metadata is not UNSET:
-            field_dict["order_supports_comments_and_metadata"] = order_supports_comments_and_metadata
+        if enable_purchase_order_upload is not UNSET:
+            field_dict["enable_purchase_order_upload"] = enable_purchase_order_upload
+        if require_purchase_order_upload is not UNSET:
+            field_dict["require_purchase_order_upload"] = require_purchase_order_upload
         if conceal_billing_data is not UNSET:
             field_dict["conceal_billing_data"] = conceal_billing_data
         if default_internal_network_mtu is not UNSET:
@@ -425,7 +431,9 @@ class MergedPluginOptionsRequest:
 
         required_team_role_for_provisioning = d.pop("required_team_role_for_provisioning", UNSET)
 
-        order_supports_comments_and_metadata = d.pop("order_supports_comments_and_metadata", UNSET)
+        enable_purchase_order_upload = d.pop("enable_purchase_order_upload", UNSET)
+
+        require_purchase_order_upload = d.pop("require_purchase_order_upload", UNSET)
 
         conceal_billing_data = d.pop("conceal_billing_data", UNSET)
 
@@ -560,7 +568,8 @@ class MergedPluginOptionsRequest:
             minimal_team_count_for_provisioning=minimal_team_count_for_provisioning,
             maximal_resource_count_per_project=maximal_resource_count_per_project,
             required_team_role_for_provisioning=required_team_role_for_provisioning,
-            order_supports_comments_and_metadata=order_supports_comments_and_metadata,
+            enable_purchase_order_upload=enable_purchase_order_upload,
+            require_purchase_order_upload=require_purchase_order_upload,
             conceal_billing_data=conceal_billing_data,
             default_internal_network_mtu=default_internal_network_mtu,
             max_instances=max_instances,

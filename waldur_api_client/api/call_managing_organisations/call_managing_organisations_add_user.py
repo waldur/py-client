@@ -6,6 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.call_managing_organisations_add_user_response_400 import CallManagingOrganisationsAddUserResponse400
 from ...models.user_role_create_request import UserRoleCreateRequest
 from ...models.user_role_expiration_time import UserRoleExpirationTime
 from ...types import Response
@@ -31,17 +32,23 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> UserRoleExpirationTime:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Union[CallManagingOrganisationsAddUserResponse400, UserRoleExpirationTime]:
     if response.status_code == 201:
         response_201 = UserRoleExpirationTime.from_dict(response.json())
 
         return response_201
+    if response.status_code == 400:
+        response_400 = CallManagingOrganisationsAddUserResponse400.from_dict(response.json())
+
+        return response_400
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[UserRoleExpirationTime]:
+) -> Response[Union[CallManagingOrganisationsAddUserResponse400, UserRoleExpirationTime]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,7 +62,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UserRoleCreateRequest,
-) -> Response[UserRoleExpirationTime]:
+) -> Response[Union[CallManagingOrganisationsAddUserResponse400, UserRoleExpirationTime]]:
     """
     Args:
         uuid (UUID):
@@ -66,7 +73,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[UserRoleExpirationTime]
+        Response[Union[CallManagingOrganisationsAddUserResponse400, UserRoleExpirationTime]]
     """
 
     kwargs = _get_kwargs(
@@ -86,7 +93,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UserRoleCreateRequest,
-) -> UserRoleExpirationTime:
+) -> Union[CallManagingOrganisationsAddUserResponse400, UserRoleExpirationTime]:
     """
     Args:
         uuid (UUID):
@@ -97,7 +104,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        UserRoleExpirationTime
+        Union[CallManagingOrganisationsAddUserResponse400, UserRoleExpirationTime]
     """
 
     return sync_detailed(
@@ -112,7 +119,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UserRoleCreateRequest,
-) -> Response[UserRoleExpirationTime]:
+) -> Response[Union[CallManagingOrganisationsAddUserResponse400, UserRoleExpirationTime]]:
     """
     Args:
         uuid (UUID):
@@ -123,7 +130,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[UserRoleExpirationTime]
+        Response[Union[CallManagingOrganisationsAddUserResponse400, UserRoleExpirationTime]]
     """
 
     kwargs = _get_kwargs(
@@ -141,7 +148,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UserRoleCreateRequest,
-) -> UserRoleExpirationTime:
+) -> Union[CallManagingOrganisationsAddUserResponse400, UserRoleExpirationTime]:
     """
     Args:
         uuid (UUID):
@@ -152,7 +159,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        UserRoleExpirationTime
+        Union[CallManagingOrganisationsAddUserResponse400, UserRoleExpirationTime]
     """
 
     return (

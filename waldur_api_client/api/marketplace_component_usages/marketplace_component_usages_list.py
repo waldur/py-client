@@ -16,6 +16,8 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     billing_period: Union[Unset, datetime.date] = UNSET,
+    billing_period_month: Union[Unset, float] = UNSET,
+    billing_period_year: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
@@ -35,6 +37,10 @@ def _get_kwargs(
     if not isinstance(billing_period, Unset):
         json_billing_period = billing_period.isoformat()
     params["billing_period"] = json_billing_period
+
+    params["billing_period_month"] = billing_period_month
+
+    params["billing_period_year"] = billing_period_year
 
     json_customer_uuid: Union[Unset, str] = UNSET
     if not isinstance(customer_uuid, Unset):
@@ -131,6 +137,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     billing_period: Union[Unset, datetime.date] = UNSET,
+    billing_period_month: Union[Unset, float] = UNSET,
+    billing_period_year: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
@@ -148,6 +156,8 @@ def sync_detailed(
 
     Args:
         billing_period (Union[Unset, datetime.date]):
+        billing_period_month (Union[Unset, float]):
+        billing_period_year (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
@@ -171,6 +181,8 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         billing_period=billing_period,
+        billing_period_month=billing_period_month,
+        billing_period_year=billing_period_year,
         customer_uuid=customer_uuid,
         date_after=date_after,
         date_before=date_before,
@@ -196,6 +208,8 @@ def sync(
     *,
     client: AuthenticatedClient,
     billing_period: Union[Unset, datetime.date] = UNSET,
+    billing_period_month: Union[Unset, float] = UNSET,
+    billing_period_year: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
@@ -213,6 +227,8 @@ def sync(
 
     Args:
         billing_period (Union[Unset, datetime.date]):
+        billing_period_month (Union[Unset, float]):
+        billing_period_year (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
@@ -237,6 +253,8 @@ def sync(
     return sync_detailed(
         client=client,
         billing_period=billing_period,
+        billing_period_month=billing_period_month,
+        billing_period_year=billing_period_year,
         customer_uuid=customer_uuid,
         date_after=date_after,
         date_before=date_before,
@@ -256,6 +274,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     billing_period: Union[Unset, datetime.date] = UNSET,
+    billing_period_month: Union[Unset, float] = UNSET,
+    billing_period_year: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
@@ -273,6 +293,8 @@ async def asyncio_detailed(
 
     Args:
         billing_period (Union[Unset, datetime.date]):
+        billing_period_month (Union[Unset, float]):
+        billing_period_year (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
@@ -296,6 +318,8 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         billing_period=billing_period,
+        billing_period_month=billing_period_month,
+        billing_period_year=billing_period_year,
         customer_uuid=customer_uuid,
         date_after=date_after,
         date_before=date_before,
@@ -319,6 +343,8 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     billing_period: Union[Unset, datetime.date] = UNSET,
+    billing_period_month: Union[Unset, float] = UNSET,
+    billing_period_year: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
@@ -336,6 +362,8 @@ async def asyncio(
 
     Args:
         billing_period (Union[Unset, datetime.date]):
+        billing_period_month (Union[Unset, float]):
+        billing_period_year (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
@@ -361,6 +389,8 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             billing_period=billing_period,
+            billing_period_month=billing_period_month,
+            billing_period_year=billing_period_year,
             customer_uuid=customer_uuid,
             date_after=date_after,
             date_before=date_before,

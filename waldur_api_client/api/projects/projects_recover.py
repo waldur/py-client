@@ -6,24 +6,21 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_provider_offerings_add_user_response_400 import (
-    MarketplaceProviderOfferingsAddUserResponse400,
-)
-from ...models.user_role_create_request import UserRoleCreateRequest
-from ...models.user_role_expiration_time import UserRoleExpirationTime
+from ...models.project import Project
+from ...models.project_recovery_request import ProjectRecoveryRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: UserRoleCreateRequest,
+    body: ProjectRecoveryRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/marketplace-provider-offerings/{uuid}/add_user/",
+        "url": f"/api/projects/{uuid}/recover/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -34,23 +31,15 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[MarketplaceProviderOfferingsAddUserResponse400, UserRoleExpirationTime]:
-    if response.status_code == 201:
-        response_201 = UserRoleExpirationTime.from_dict(response.json())
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Project:
+    if response.status_code == 200:
+        response_200 = Project.from_dict(response.json())
 
-        return response_201
-    if response.status_code == 400:
-        response_400 = MarketplaceProviderOfferingsAddUserResponse400.from_dict(response.json())
-
-        return response_400
+        return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[MarketplaceProviderOfferingsAddUserResponse400, UserRoleExpirationTime]]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Project]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,19 +52,20 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: UserRoleCreateRequest,
-) -> Response[Union[MarketplaceProviderOfferingsAddUserResponse400, UserRoleExpirationTime]]:
-    """
+    body: ProjectRecoveryRequest,
+) -> Response[Project]:
+    """Recover a soft-deleted project with team member restoration
+
     Args:
         uuid (UUID):
-        body (UserRoleCreateRequest):
+        body (ProjectRecoveryRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[MarketplaceProviderOfferingsAddUserResponse400, UserRoleExpirationTime]]
+        Response[Project]
     """
 
     kwargs = _get_kwargs(
@@ -94,19 +84,20 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: UserRoleCreateRequest,
-) -> Union[MarketplaceProviderOfferingsAddUserResponse400, UserRoleExpirationTime]:
-    """
+    body: ProjectRecoveryRequest,
+) -> Project:
+    """Recover a soft-deleted project with team member restoration
+
     Args:
         uuid (UUID):
-        body (UserRoleCreateRequest):
+        body (ProjectRecoveryRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[MarketplaceProviderOfferingsAddUserResponse400, UserRoleExpirationTime]
+        Project
     """
 
     return sync_detailed(
@@ -120,19 +111,20 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: UserRoleCreateRequest,
-) -> Response[Union[MarketplaceProviderOfferingsAddUserResponse400, UserRoleExpirationTime]]:
-    """
+    body: ProjectRecoveryRequest,
+) -> Response[Project]:
+    """Recover a soft-deleted project with team member restoration
+
     Args:
         uuid (UUID):
-        body (UserRoleCreateRequest):
+        body (ProjectRecoveryRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[MarketplaceProviderOfferingsAddUserResponse400, UserRoleExpirationTime]]
+        Response[Project]
     """
 
     kwargs = _get_kwargs(
@@ -149,19 +141,20 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: UserRoleCreateRequest,
-) -> Union[MarketplaceProviderOfferingsAddUserResponse400, UserRoleExpirationTime]:
-    """
+    body: ProjectRecoveryRequest,
+) -> Project:
+    """Recover a soft-deleted project with team member restoration
+
     Args:
         uuid (UUID):
-        body (UserRoleCreateRequest):
+        body (ProjectRecoveryRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[MarketplaceProviderOfferingsAddUserResponse400, UserRoleExpirationTime]
+        Project
     """
 
     return (
