@@ -41,6 +41,8 @@ class MergedPluginOptions:
         require_purchase_order_upload (Union[Unset, bool]): If set to True, users will be required to upload purchase
             orders.
         conceal_billing_data (Union[Unset, bool]): If set to True, pricing and components tab would be concealed.
+        create_orders_on_resource_option_change (Union[Unset, bool]): If set to True, create orders when options of
+            related resources are changed.
         default_internal_network_mtu (Union[Unset, int]): If set, it will be used as a default MTU for the first network
             in a tenant
         max_instances (Union[Unset, int]): Default limit for number of instances in OpenStack tenant
@@ -103,6 +105,7 @@ class MergedPluginOptions:
     enable_purchase_order_upload: Union[Unset, bool] = UNSET
     require_purchase_order_upload: Union[Unset, bool] = UNSET
     conceal_billing_data: Union[Unset, bool] = UNSET
+    create_orders_on_resource_option_change: Union[Unset, bool] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
     max_volumes: Union[Unset, int] = UNSET
@@ -178,6 +181,8 @@ class MergedPluginOptions:
         require_purchase_order_upload = self.require_purchase_order_upload
 
         conceal_billing_data = self.conceal_billing_data
+
+        create_orders_on_resource_option_change = self.create_orders_on_resource_option_change
 
         default_internal_network_mtu = self.default_internal_network_mtu
 
@@ -306,6 +311,8 @@ class MergedPluginOptions:
             field_dict["require_purchase_order_upload"] = require_purchase_order_upload
         if conceal_billing_data is not UNSET:
             field_dict["conceal_billing_data"] = conceal_billing_data
+        if create_orders_on_resource_option_change is not UNSET:
+            field_dict["create_orders_on_resource_option_change"] = create_orders_on_resource_option_change
         if default_internal_network_mtu is not UNSET:
             field_dict["default_internal_network_mtu"] = default_internal_network_mtu
         if max_instances is not UNSET:
@@ -436,6 +443,8 @@ class MergedPluginOptions:
         require_purchase_order_upload = d.pop("require_purchase_order_upload", UNSET)
 
         conceal_billing_data = d.pop("conceal_billing_data", UNSET)
+
+        create_orders_on_resource_option_change = d.pop("create_orders_on_resource_option_change", UNSET)
 
         default_internal_network_mtu = d.pop("default_internal_network_mtu", UNSET)
 
@@ -571,6 +580,7 @@ class MergedPluginOptions:
             enable_purchase_order_upload=enable_purchase_order_upload,
             require_purchase_order_upload=require_purchase_order_upload,
             conceal_billing_data=conceal_billing_data,
+            create_orders_on_resource_option_change=create_orders_on_resource_option_change,
             default_internal_network_mtu=default_internal_network_mtu,
             max_instances=max_instances,
             max_volumes=max_volumes,

@@ -343,7 +343,10 @@ from .digitalocean_droplets_retrieve_field_item import DigitaloceanDropletsRetri
 from .digitalocean_images_count_o_item import DigitaloceanImagesCountOItem
 from .digitalocean_images_list_o_item import DigitaloceanImagesListOItem
 from .direction_enum import DirectionEnum
+from .discount_config_request import DiscountConfigRequest
 from .discount_type_enum import DiscountTypeEnum
+from .discounts_update_request import DiscountsUpdateRequest
+from .discounts_update_request_discounts import DiscountsUpdateRequestDiscounts
 from .disk_format_enum import DiskFormatEnum
 from .dry_run import DryRun
 from .dry_run_request import DryRunRequest
@@ -733,6 +736,8 @@ from .nested_offering_component_limit import NestedOfferingComponentLimit
 from .nested_offering_component_limit_request import NestedOfferingComponentLimitRequest
 from .nested_offering_file import NestedOfferingFile
 from .nested_offering_file_request import NestedOfferingFileRequest
+from .nested_plan_component import NestedPlanComponent
+from .nested_plan_component_request import NestedPlanComponentRequest
 from .nested_price_estimate import NestedPriceEstimate
 from .nested_project import NestedProject
 from .nested_project_permission import NestedProjectPermission
@@ -2069,6 +2074,9 @@ __all__ = (
     "DigitalOceanRegion",
     "DigitalOceanSize",
     "DirectionEnum",
+    "DiscountConfigRequest",
+    "DiscountsUpdateRequest",
+    "DiscountsUpdateRequestDiscounts",
     "DiscountTypeEnum",
     "DiskFormatEnum",
     "DryRun",
@@ -2417,6 +2425,8 @@ __all__ = (
     "NestedOfferingComponentLimitRequest",
     "NestedOfferingFile",
     "NestedOfferingFileRequest",
+    "NestedPlanComponent",
+    "NestedPlanComponentRequest",
     "NestedPriceEstimate",
     "NestedProject",
     "NestedProjectPermission",

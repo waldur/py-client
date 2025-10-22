@@ -65,6 +65,7 @@ class OrderDetails:
         request_comment (Union[None, Unset, str]):
         attachment (Union[None, Unset, str]):
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
+        url (Union[Unset, str]):
         consumer_reviewed_by (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers
             and @/./+/-/_ characters
         consumer_reviewed_by_full_name (Union[None, Unset, str]):
@@ -142,6 +143,7 @@ class OrderDetails:
     request_comment: Union[None, Unset, str] = UNSET
     attachment: Union[None, Unset, str] = UNSET
     type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
+    url: Union[Unset, str] = UNSET
     consumer_reviewed_by: Union[None, Unset, str] = UNSET
     consumer_reviewed_by_full_name: Union[None, Unset, str] = UNSET
     consumer_reviewed_by_username: Union[None, Unset, str] = UNSET
@@ -328,6 +330,8 @@ class OrderDetails:
         type_: Union[Unset, str] = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
+
+        url = self.url
 
         consumer_reviewed_by: Union[None, Unset, str]
         if isinstance(self.consumer_reviewed_by, Unset):
@@ -554,6 +558,8 @@ class OrderDetails:
             field_dict["attachment"] = attachment
         if type_ is not UNSET:
             field_dict["type"] = type_
+        if url is not UNSET:
+            field_dict["url"] = url
         if consumer_reviewed_by is not UNSET:
             field_dict["consumer_reviewed_by"] = consumer_reviewed_by
         if consumer_reviewed_by_full_name is not UNSET:
@@ -862,6 +868,8 @@ class OrderDetails:
         else:
             type_ = RequestTypes(_type_)
 
+        url = d.pop("url", UNSET)
+
         def _parse_consumer_reviewed_by(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -1140,6 +1148,7 @@ class OrderDetails:
             request_comment=request_comment,
             attachment=attachment,
             type_=type_,
+            url=url,
             consumer_reviewed_by=consumer_reviewed_by,
             consumer_reviewed_by_full_name=consumer_reviewed_by_full_name,
             consumer_reviewed_by_username=consumer_reviewed_by_username,

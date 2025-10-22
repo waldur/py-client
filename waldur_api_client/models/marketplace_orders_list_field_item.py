@@ -72,6 +72,7 @@ class MarketplaceOrdersListFieldItem(str, Enum):
     STATE = "state"
     TERMINATION_COMMENT = "termination_comment"
     TYPE = "type"
+    URL = "url"
     UUID = "uuid"
 
     def __str__(self) -> str:

@@ -9,6 +9,7 @@ from ..models.billing_unit import BillingUnit
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.nested_plan_component import NestedPlanComponent
     from ..models.organization_group import OrganizationGroup
     from ..models.provider_plan_details_future_prices import ProviderPlanDetailsFuturePrices
     from ..models.provider_plan_details_prices import ProviderPlanDetailsPrices
@@ -29,6 +30,7 @@ class ProviderPlanDetails:
         init_price (float):
         switch_price (float):
         organization_groups (list['OrganizationGroup']):
+        components (list['NestedPlanComponent']):
         offering (str):
         prices (ProviderPlanDetailsPrices):
         future_prices (ProviderPlanDetailsFuturePrices):
@@ -53,6 +55,7 @@ class ProviderPlanDetails:
     init_price: float
     switch_price: float
     organization_groups: list["OrganizationGroup"]
+    components: list["NestedPlanComponent"]
     offering: str
     prices: "ProviderPlanDetailsPrices"
     future_prices: "ProviderPlanDetailsFuturePrices"
@@ -86,6 +89,11 @@ class ProviderPlanDetails:
         for organization_groups_item_data in self.organization_groups:
             organization_groups_item = organization_groups_item_data.to_dict()
             organization_groups.append(organization_groups_item)
+
+        components = []
+        for components_item_data in self.components:
+            components_item = components_item_data.to_dict()
+            components.append(components_item)
 
         offering = self.offering
 
@@ -132,6 +140,7 @@ class ProviderPlanDetails:
                 "init_price": init_price,
                 "switch_price": switch_price,
                 "organization_groups": organization_groups,
+                "components": components,
                 "offering": offering,
                 "prices": prices,
                 "future_prices": future_prices,
@@ -160,6 +169,7 @@ class ProviderPlanDetails:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.nested_plan_component import NestedPlanComponent
         from ..models.organization_group import OrganizationGroup
         from ..models.provider_plan_details_future_prices import ProviderPlanDetailsFuturePrices
         from ..models.provider_plan_details_prices import ProviderPlanDetailsPrices
@@ -184,6 +194,13 @@ class ProviderPlanDetails:
             organization_groups_item = OrganizationGroup.from_dict(organization_groups_item_data)
 
             organization_groups.append(organization_groups_item)
+
+        components = []
+        _components = d.pop("components")
+        for components_item_data in _components:
+            components_item = NestedPlanComponent.from_dict(components_item_data)
+
+            components.append(components_item)
 
         offering = d.pop("offering")
 
@@ -233,6 +250,7 @@ class ProviderPlanDetails:
             init_price=init_price,
             switch_price=switch_price,
             organization_groups=organization_groups,
+            components=components,
             offering=offering,
             prices=prices,
             future_prices=future_prices,

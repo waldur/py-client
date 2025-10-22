@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..models.base_provider_plan_future_prices import BaseProviderPlanFuturePrices
     from ..models.base_provider_plan_prices import BaseProviderPlanPrices
     from ..models.base_provider_plan_quotas import BaseProviderPlanQuotas
+    from ..models.nested_plan_component import NestedPlanComponent
     from ..models.organization_group import OrganizationGroup
 
 
@@ -37,6 +38,7 @@ class BaseProviderPlan:
         switch_price (Union[Unset, float]):
         backend_id (Union[Unset, str]):
         organization_groups (Union[Unset, list['OrganizationGroup']]):
+        components (Union[Unset, list['NestedPlanComponent']]):
         prices (Union[Unset, BaseProviderPlanPrices]):
         future_prices (Union[Unset, BaseProviderPlanFuturePrices]):
         quotas (Union[Unset, BaseProviderPlanQuotas]):
@@ -59,6 +61,7 @@ class BaseProviderPlan:
     switch_price: Union[Unset, float] = UNSET
     backend_id: Union[Unset, str] = UNSET
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
+    components: Union[Unset, list["NestedPlanComponent"]] = UNSET
     prices: Union[Unset, "BaseProviderPlanPrices"] = UNSET
     future_prices: Union[Unset, "BaseProviderPlanFuturePrices"] = UNSET
     quotas: Union[Unset, "BaseProviderPlanQuotas"] = UNSET
@@ -109,6 +112,13 @@ class BaseProviderPlan:
                 organization_groups_item = organization_groups_item_data.to_dict()
                 organization_groups.append(organization_groups_item)
 
+        components: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.components, Unset):
+            components = []
+            for components_item_data in self.components:
+                components_item = components_item_data.to_dict()
+                components.append(components_item)
+
         prices: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.prices, Unset):
             prices = self.prices.to_dict()
@@ -158,6 +168,8 @@ class BaseProviderPlan:
             field_dict["backend_id"] = backend_id
         if organization_groups is not UNSET:
             field_dict["organization_groups"] = organization_groups
+        if components is not UNSET:
+            field_dict["components"] = components
         if prices is not UNSET:
             field_dict["prices"] = prices
         if future_prices is not UNSET:
@@ -178,6 +190,7 @@ class BaseProviderPlan:
         from ..models.base_provider_plan_future_prices import BaseProviderPlanFuturePrices
         from ..models.base_provider_plan_prices import BaseProviderPlanPrices
         from ..models.base_provider_plan_quotas import BaseProviderPlanQuotas
+        from ..models.nested_plan_component import NestedPlanComponent
         from ..models.organization_group import OrganizationGroup
 
         d = dict(src_dict)
@@ -231,6 +244,13 @@ class BaseProviderPlan:
 
             organization_groups.append(organization_groups_item)
 
+        components = []
+        _components = d.pop("components", UNSET)
+        for components_item_data in _components or []:
+            components_item = NestedPlanComponent.from_dict(components_item_data)
+
+            components.append(components_item)
+
         _prices = d.pop("prices", UNSET)
         prices: Union[Unset, BaseProviderPlanPrices]
         if isinstance(_prices, Unset):
@@ -273,6 +293,7 @@ class BaseProviderPlan:
             switch_price=switch_price,
             backend_id=backend_id,
             organization_groups=organization_groups,
+            components=components,
             prices=prices,
             future_prices=future_prices,
             quotas=quotas,

@@ -4,23 +4,15 @@ from typing import Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.billing_type_enum import BillingTypeEnum
-from ..models.billing_unit import BillingUnit
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="PlanComponent")
+T = TypeVar("T", bound="NestedPlanComponentRequest")
 
 
 @_attrs_define
-class PlanComponent:
+class NestedPlanComponentRequest:
     """
     Attributes:
-        offering_name (str):
-        plan_name (str):
-        plan_unit (BillingUnit):
-        component_name (str): Display name for the measured unit, for example, Floating IP.
-        measured_unit (str): Unit of measurement, for example, GB.
-        billing_type (BillingTypeEnum):
         amount (Union[Unset, int]):
         price (Union[Unset, str]):
         future_price (Union[None, Unset, str]):
@@ -28,12 +20,6 @@ class PlanComponent:
         discount_rate (Union[None, Unset, int]): Discount rate in percentage.
     """
 
-    offering_name: str
-    plan_name: str
-    plan_unit: BillingUnit
-    component_name: str
-    measured_unit: str
-    billing_type: BillingTypeEnum
     amount: Union[Unset, int] = UNSET
     price: Union[Unset, str] = UNSET
     future_price: Union[None, Unset, str] = UNSET
@@ -42,18 +28,6 @@ class PlanComponent:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        offering_name = self.offering_name
-
-        plan_name = self.plan_name
-
-        plan_unit = self.plan_unit.value
-
-        component_name = self.component_name
-
-        measured_unit = self.measured_unit
-
-        billing_type = self.billing_type.value
-
         amount = self.amount
 
         price = self.price
@@ -78,16 +52,7 @@ class PlanComponent:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "offering_name": offering_name,
-                "plan_name": plan_name,
-                "plan_unit": plan_unit,
-                "component_name": component_name,
-                "measured_unit": measured_unit,
-                "billing_type": billing_type,
-            }
-        )
+        field_dict.update({})
         if amount is not UNSET:
             field_dict["amount"] = amount
         if price is not UNSET:
@@ -104,18 +69,6 @@ class PlanComponent:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        offering_name = d.pop("offering_name")
-
-        plan_name = d.pop("plan_name")
-
-        plan_unit = BillingUnit(d.pop("plan_unit"))
-
-        component_name = d.pop("component_name")
-
-        measured_unit = d.pop("measured_unit")
-
-        billing_type = BillingTypeEnum(d.pop("billing_type"))
-
         amount = d.pop("amount", UNSET)
 
         price = d.pop("price", UNSET)
@@ -147,13 +100,7 @@ class PlanComponent:
 
         discount_rate = _parse_discount_rate(d.pop("discount_rate", UNSET))
 
-        plan_component = cls(
-            offering_name=offering_name,
-            plan_name=plan_name,
-            plan_unit=plan_unit,
-            component_name=component_name,
-            measured_unit=measured_unit,
-            billing_type=billing_type,
+        nested_plan_component_request = cls(
             amount=amount,
             price=price,
             future_price=future_price,
@@ -161,8 +108,8 @@ class PlanComponent:
             discount_rate=discount_rate,
         )
 
-        plan_component.additional_properties = d
-        return plan_component
+        nested_plan_component_request.additional_properties = d
+        return nested_plan_component_request
 
     @property
     def additional_keys(self) -> list[str]:
