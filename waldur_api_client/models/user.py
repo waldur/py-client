@@ -58,6 +58,7 @@ class User:
         image (Union[None, Unset, str]):
         identity_source (Union[Unset, str]): Indicates what identity provider was used.
         has_active_session (Union[Unset, bool]):
+        ip_address (Union[None, Unset, str]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -95,6 +96,7 @@ class User:
     image: Union[None, Unset, str] = UNSET
     identity_source: Union[Unset, str] = UNSET
     has_active_session: Union[Unset, bool] = UNSET
+    ip_address: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -207,6 +209,12 @@ class User:
 
         has_active_session = self.has_active_session
 
+        ip_address: Union[None, Unset, str]
+        if isinstance(self.ip_address, Unset):
+            ip_address = UNSET
+        else:
+            ip_address = self.ip_address
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -280,6 +288,8 @@ class User:
             field_dict["identity_source"] = identity_source
         if has_active_session is not UNSET:
             field_dict["has_active_session"] = has_active_session
+        if ip_address is not UNSET:
+            field_dict["ip_address"] = ip_address
 
         return field_dict
 
@@ -431,6 +441,15 @@ class User:
 
         has_active_session = d.pop("has_active_session", UNSET)
 
+        def _parse_ip_address(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        ip_address = _parse_ip_address(d.pop("ip_address", UNSET))
+
         user = cls(
             url=url,
             uuid=uuid,
@@ -467,6 +486,7 @@ class User:
             image=image,
             identity_source=identity_source,
             has_active_session=has_active_session,
+            ip_address=ip_address,
         )
 
         user.additional_properties = d

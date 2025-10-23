@@ -18,6 +18,7 @@ class UsersRetrieveFieldItem(str, Enum):
     IDENTITY_PROVIDER_NAME = "identity_provider_name"
     IDENTITY_SOURCE = "identity_source"
     IMAGE = "image"
+    IP_ADDRESS = "ip_address"
     IS_ACTIVE = "is_active"
     IS_STAFF = "is_staff"
     IS_SUPPORT = "is_support"

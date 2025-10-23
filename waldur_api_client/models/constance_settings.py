@@ -103,6 +103,7 @@ class ConstanceSettings:
         atlassian_satisfaction_field (Union[Unset, str]):
         atlassian_request_feedback_field (Union[Unset, str]):
         atlassian_template_field (Union[Unset, str]):
+        atlassian_waldur_backend_id_field (Union[Unset, str]):
         zammad_api_url (Union[Unset, str]):
         zammad_token (Union[Unset, str]):
         zammad_group (Union[Unset, str]):
@@ -247,6 +248,7 @@ class ConstanceSettings:
     atlassian_satisfaction_field: Union[Unset, str] = UNSET
     atlassian_request_feedback_field: Union[Unset, str] = UNSET
     atlassian_template_field: Union[Unset, str] = UNSET
+    atlassian_waldur_backend_id_field: Union[Unset, str] = UNSET
     zammad_api_url: Union[Unset, str] = UNSET
     zammad_token: Union[Unset, str] = UNSET
     zammad_group: Union[Unset, str] = UNSET
@@ -525,6 +527,8 @@ class ConstanceSettings:
         atlassian_request_feedback_field = self.atlassian_request_feedback_field
 
         atlassian_template_field = self.atlassian_template_field
+
+        atlassian_waldur_backend_id_field = self.atlassian_waldur_backend_id_field
 
         zammad_api_url = self.zammad_api_url
 
@@ -827,6 +831,8 @@ class ConstanceSettings:
             field_dict["ATLASSIAN_REQUEST_FEEDBACK_FIELD"] = atlassian_request_feedback_field
         if atlassian_template_field is not UNSET:
             field_dict["ATLASSIAN_TEMPLATE_FIELD"] = atlassian_template_field
+        if atlassian_waldur_backend_id_field is not UNSET:
+            field_dict["ATLASSIAN_WALDUR_BACKEND_ID_FIELD"] = atlassian_waldur_backend_id_field
         if zammad_api_url is not UNSET:
             field_dict["ZAMMAD_API_URL"] = zammad_api_url
         if zammad_token is not UNSET:
@@ -1200,6 +1206,8 @@ class ConstanceSettings:
 
         atlassian_template_field = d.pop("ATLASSIAN_TEMPLATE_FIELD", UNSET)
 
+        atlassian_waldur_backend_id_field = d.pop("ATLASSIAN_WALDUR_BACKEND_ID_FIELD", UNSET)
+
         zammad_api_url = d.pop("ZAMMAD_API_URL", UNSET)
 
         zammad_token = d.pop("ZAMMAD_TOKEN", UNSET)
@@ -1402,6 +1410,7 @@ class ConstanceSettings:
             atlassian_satisfaction_field=atlassian_satisfaction_field,
             atlassian_request_feedback_field=atlassian_request_feedback_field,
             atlassian_template_field=atlassian_template_field,
+            atlassian_waldur_backend_id_field=atlassian_waldur_backend_id_field,
             zammad_api_url=zammad_api_url,
             zammad_token=zammad_token,
             zammad_group=zammad_group,
