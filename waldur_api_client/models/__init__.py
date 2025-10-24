@@ -688,7 +688,6 @@ from .marketplace_service_providers_project_permissions_list_o_item import (
 from .marketplace_service_providers_project_service_accounts_list_state_item import (
     MarketplaceServiceProvidersProjectServiceAccountsListStateItem,
 )
-from .marketplace_service_providers_projects_list_field_item import MarketplaceServiceProvidersProjectsListFieldItem
 from .marketplace_service_providers_projects_list_o_item import MarketplaceServiceProvidersProjectsListOItem
 from .marketplace_service_providers_retrieve_field_item import MarketplaceServiceProvidersRetrieveFieldItem
 from .marketplace_service_providers_user_customers_list_field_item import (
@@ -1593,7 +1592,6 @@ from .service_settings_retrieve_field_item import ServiceSettingsRetrieveFieldIt
 from .service_settings_state_enum import ServiceSettingsStateEnum
 from .set_mtu import SetMtu
 from .set_mtu_request import SetMtuRequest
-from .set_offerings_username import SetOfferingsUsername
 from .set_offerings_username_request import SetOfferingsUsernameRequest
 from .slurm_allocation import SlurmAllocation
 from .slurm_allocation_marketplace_offering_plugin_options_type_0 import (
@@ -2378,7 +2376,6 @@ __all__ = (
     "MarketplaceServiceProvidersProjectPermissionsListFieldItem",
     "MarketplaceServiceProvidersProjectPermissionsListOItem",
     "MarketplaceServiceProvidersProjectServiceAccountsListStateItem",
-    "MarketplaceServiceProvidersProjectsListFieldItem",
     "MarketplaceServiceProvidersProjectsListOItem",
     "MarketplaceServiceProvidersRetrieveFieldItem",
     "MarketplaceServiceProvidersUserCustomersListFieldItem",
@@ -3228,7 +3225,6 @@ __all__ = (
     "ServiceSettingsStateEnum",
     "SetMtu",
     "SetMtuRequest",
-    "SetOfferingsUsername",
     "SetOfferingsUsernameRequest",
     "SlurmAllocation",
     "SlurmAllocationMarketplaceOfferingPluginOptionsType0",

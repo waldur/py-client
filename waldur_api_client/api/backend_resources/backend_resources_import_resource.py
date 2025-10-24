@@ -32,10 +32,10 @@ def _get_kwargs(
 
 
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Resource:
-    if response.status_code == 200:
-        response_200 = Resource.from_dict(response.json())
+    if response.status_code == 201:
+        response_201 = Resource.from_dict(response.json())
 
-        return response_200
+        return response_201
     raise errors.UnexpectedStatus(response.status_code, response.content)
 
 

@@ -32,6 +32,7 @@ class ProjectRequestMultipart:
         is_industry (Union[Unset, bool]):
         image (Union[File, None, Unset]):
         kind (Union[Unset, KindEnum]):
+        staff_notes (Union[Unset, str]):
     """
 
     name: str
@@ -46,6 +47,7 @@ class ProjectRequestMultipart:
     is_industry: Union[Unset, bool] = UNSET
     image: Union[File, None, Unset] = UNSET
     kind: Union[Unset, KindEnum] = UNSET
+    staff_notes: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -106,6 +108,8 @@ class ProjectRequestMultipart:
         if not isinstance(self.kind, Unset):
             kind = self.kind.value
 
+        staff_notes = self.staff_notes
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -134,6 +138,8 @@ class ProjectRequestMultipart:
             field_dict["image"] = image
         if kind is not UNSET:
             field_dict["kind"] = kind
+        if staff_notes is not UNSET:
+            field_dict["staff_notes"] = staff_notes
 
         return field_dict
 
@@ -192,6 +198,9 @@ class ProjectRequestMultipart:
 
         if not isinstance(self.kind, Unset):
             files.append(("kind", (None, str(self.kind.value).encode(), "text/plain")))
+
+        if not isinstance(self.staff_notes, Unset):
+            files.append(("staff_notes", (None, str(self.staff_notes).encode(), "text/plain")))
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -305,6 +314,8 @@ class ProjectRequestMultipart:
         else:
             kind = KindEnum(_kind)
 
+        staff_notes = d.pop("staff_notes", UNSET)
+
         project_request_multipart = cls(
             name=name,
             customer=customer,
@@ -318,6 +329,7 @@ class ProjectRequestMultipart:
             is_industry=is_industry,
             image=image,
             kind=kind,
+            staff_notes=staff_notes,
         )
 
         project_request_multipart.additional_properties = d

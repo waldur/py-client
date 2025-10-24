@@ -32,6 +32,7 @@ class PatchedProjectRequestForm:
         is_industry (Union[Unset, bool]):
         image (Union[File, None, Unset]):
         kind (Union[Unset, KindEnum]):
+        staff_notes (Union[Unset, str]):
     """
 
     name: Union[Unset, str] = UNSET
@@ -46,6 +47,7 @@ class PatchedProjectRequestForm:
     is_industry: Union[Unset, bool] = UNSET
     image: Union[File, None, Unset] = UNSET
     kind: Union[Unset, KindEnum] = UNSET
+    staff_notes: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -106,6 +108,8 @@ class PatchedProjectRequestForm:
         if not isinstance(self.kind, Unset):
             kind = self.kind.value
 
+        staff_notes = self.staff_notes
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -133,6 +137,8 @@ class PatchedProjectRequestForm:
             field_dict["image"] = image
         if kind is not UNSET:
             field_dict["kind"] = kind
+        if staff_notes is not UNSET:
+            field_dict["staff_notes"] = staff_notes
 
         return field_dict
 
@@ -243,6 +249,8 @@ class PatchedProjectRequestForm:
         else:
             kind = KindEnum(_kind)
 
+        staff_notes = d.pop("staff_notes", UNSET)
+
         patched_project_request_form = cls(
             name=name,
             slug=slug,
@@ -256,6 +264,7 @@ class PatchedProjectRequestForm:
             is_industry=is_industry,
             image=image,
             kind=kind,
+            staff_notes=staff_notes,
         )
 
         patched_project_request_form.additional_properties = d

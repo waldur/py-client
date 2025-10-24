@@ -27,6 +27,7 @@ class ProjectsRetrieveFieldItem(str, Enum):
     PROJECT_CREDIT = "project_credit"
     RESOURCES_COUNT = "resources_count"
     SLUG = "slug"
+    STAFF_NOTES = "staff_notes"
     START_DATE = "start_date"
     TERMINATION_METADATA = "termination_metadata"
     TYPE = "type"
