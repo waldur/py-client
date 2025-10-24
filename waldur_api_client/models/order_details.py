@@ -65,6 +65,7 @@ class OrderDetails:
         request_comment (Union[None, Unset, str]):
         attachment (Union[None, Unset, str]):
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
+        start_date (Union[None, Unset, datetime.date]): Enables delayed processing of resource provisioning order.
         url (Union[Unset, str]):
         consumer_reviewed_by (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers
             and @/./+/-/_ characters
@@ -143,6 +144,7 @@ class OrderDetails:
     request_comment: Union[None, Unset, str] = UNSET
     attachment: Union[None, Unset, str] = UNSET
     type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
+    start_date: Union[None, Unset, datetime.date] = UNSET
     url: Union[Unset, str] = UNSET
     consumer_reviewed_by: Union[None, Unset, str] = UNSET
     consumer_reviewed_by_full_name: Union[None, Unset, str] = UNSET
@@ -330,6 +332,14 @@ class OrderDetails:
         type_: Union[Unset, str] = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
+
+        start_date: Union[None, Unset, str]
+        if isinstance(self.start_date, Unset):
+            start_date = UNSET
+        elif isinstance(self.start_date, datetime.date):
+            start_date = self.start_date.isoformat()
+        else:
+            start_date = self.start_date
 
         url = self.url
 
@@ -558,6 +568,8 @@ class OrderDetails:
             field_dict["attachment"] = attachment
         if type_ is not UNSET:
             field_dict["type"] = type_
+        if start_date is not UNSET:
+            field_dict["start_date"] = start_date
         if url is not UNSET:
             field_dict["url"] = url
         if consumer_reviewed_by is not UNSET:
@@ -868,6 +880,23 @@ class OrderDetails:
         else:
             type_ = RequestTypes(_type_)
 
+        def _parse_start_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                start_date_type_0 = isoparse(data).date()
+
+                return start_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        start_date = _parse_start_date(d.pop("start_date", UNSET))
+
         url = d.pop("url", UNSET)
 
         def _parse_consumer_reviewed_by(data: object) -> Union[None, Unset, str]:
@@ -1148,6 +1177,7 @@ class OrderDetails:
             request_comment=request_comment,
             attachment=attachment,
             type_=type_,
+            start_date=start_date,
             url=url,
             consumer_reviewed_by=consumer_reviewed_by,
             consumer_reviewed_by_full_name=consumer_reviewed_by_full_name,
