@@ -48,6 +48,7 @@ class ConstanceSettings:
         short_page_title (Union[Unset, str]):
         full_page_title (Union[Unset, str]):
         project_end_date_mandatory (Union[Unset, bool]):
+        enable_order_start_date (Union[Unset, bool]):
         brand_color (Union[Unset, str]):
         hero_link_label (Union[Unset, str]):
         hero_link_url (Union[Unset, str]):
@@ -193,6 +194,7 @@ class ConstanceSettings:
     short_page_title: Union[Unset, str] = UNSET
     full_page_title: Union[Unset, str] = UNSET
     project_end_date_mandatory: Union[Unset, bool] = UNSET
+    enable_order_start_date: Union[Unset, bool] = UNSET
     brand_color: Union[Unset, str] = UNSET
     hero_link_label: Union[Unset, str] = UNSET
     hero_link_url: Union[Unset, str] = UNSET
@@ -373,6 +375,8 @@ class ConstanceSettings:
         full_page_title = self.full_page_title
 
         project_end_date_mandatory = self.project_end_date_mandatory
+
+        enable_order_start_date = self.enable_order_start_date
 
         brand_color = self.brand_color
 
@@ -719,6 +723,8 @@ class ConstanceSettings:
             field_dict["FULL_PAGE_TITLE"] = full_page_title
         if project_end_date_mandatory is not UNSET:
             field_dict["PROJECT_END_DATE_MANDATORY"] = project_end_date_mandatory
+        if enable_order_start_date is not UNSET:
+            field_dict["ENABLE_ORDER_START_DATE"] = enable_order_start_date
         if brand_color is not UNSET:
             field_dict["BRAND_COLOR"] = brand_color
         if hero_link_label is not UNSET:
@@ -1016,6 +1022,8 @@ class ConstanceSettings:
         full_page_title = d.pop("FULL_PAGE_TITLE", UNSET)
 
         project_end_date_mandatory = d.pop("PROJECT_END_DATE_MANDATORY", UNSET)
+
+        enable_order_start_date = d.pop("ENABLE_ORDER_START_DATE", UNSET)
 
         brand_color = d.pop("BRAND_COLOR", UNSET)
 
@@ -1355,6 +1363,7 @@ class ConstanceSettings:
             short_page_title=short_page_title,
             full_page_title=full_page_title,
             project_end_date_mandatory=project_end_date_mandatory,
+            enable_order_start_date=enable_order_start_date,
             brand_color=brand_color,
             hero_link_label=hero_link_label,
             hero_link_url=hero_link_url,

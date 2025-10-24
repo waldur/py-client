@@ -9,6 +9,7 @@ class OrderState(str, Enum):
     PENDING_CONSUMER = "pending-consumer"
     PENDING_PROJECT = "pending-project"
     PENDING_PROVIDER = "pending-provider"
+    PENDING_START_DATE = "pending-start-date"
     REJECTED = "rejected"
 
     def __str__(self) -> str:
