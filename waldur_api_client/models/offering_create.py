@@ -19,8 +19,10 @@ if TYPE_CHECKING:
     from ..models.merged_secret_options import MergedSecretOptions
     from ..models.nested_endpoint import NestedEndpoint
     from ..models.nested_offering_file import NestedOfferingFile
+    from ..models.nested_partition import NestedPartition
     from ..models.nested_role import NestedRole
     from ..models.nested_screenshot import NestedScreenshot
+    from ..models.nested_software_catalog import NestedSoftwareCatalog
     from ..models.offering_component import OfferingComponent
     from ..models.offering_create_service_attributes import OfferingCreateServiceAttributes
     from ..models.offering_options import OfferingOptions
@@ -40,6 +42,8 @@ class OfferingCreate:
         created (datetime.datetime):
         name (str):
         endpoints (list['NestedEndpoint']):
+        software_catalogs (list['NestedSoftwareCatalog']):
+        partitions (list['NestedPartition']):
         roles (list['NestedRole']):
         customer_uuid (Union[None, UUID]):
         customer_name (Union[None, str]):
@@ -105,6 +109,8 @@ class OfferingCreate:
     created: datetime.datetime
     name: str
     endpoints: list["NestedEndpoint"]
+    software_catalogs: list["NestedSoftwareCatalog"]
+    partitions: list["NestedPartition"]
     roles: list["NestedRole"]
     customer_uuid: Union[None, UUID]
     customer_name: Union[None, str]
@@ -178,6 +184,16 @@ class OfferingCreate:
         for endpoints_item_data in self.endpoints:
             endpoints_item = endpoints_item_data.to_dict()
             endpoints.append(endpoints_item)
+
+        software_catalogs = []
+        for software_catalogs_item_data in self.software_catalogs:
+            software_catalogs_item = software_catalogs_item_data.to_dict()
+            software_catalogs.append(software_catalogs_item)
+
+        partitions = []
+        for partitions_item_data in self.partitions:
+            partitions_item = partitions_item_data.to_dict()
+            partitions.append(partitions_item)
 
         roles = []
         for roles_item_data in self.roles:
@@ -396,6 +412,8 @@ class OfferingCreate:
                 "created": created,
                 "name": name,
                 "endpoints": endpoints,
+                "software_catalogs": software_catalogs,
+                "partitions": partitions,
                 "roles": roles,
                 "customer_uuid": customer_uuid,
                 "customer_name": customer_name,
@@ -491,8 +509,10 @@ class OfferingCreate:
         from ..models.merged_secret_options import MergedSecretOptions
         from ..models.nested_endpoint import NestedEndpoint
         from ..models.nested_offering_file import NestedOfferingFile
+        from ..models.nested_partition import NestedPartition
         from ..models.nested_role import NestedRole
         from ..models.nested_screenshot import NestedScreenshot
+        from ..models.nested_software_catalog import NestedSoftwareCatalog
         from ..models.offering_component import OfferingComponent
         from ..models.offering_create_service_attributes import OfferingCreateServiceAttributes
         from ..models.offering_options import OfferingOptions
@@ -514,6 +534,20 @@ class OfferingCreate:
             endpoints_item = NestedEndpoint.from_dict(endpoints_item_data)
 
             endpoints.append(endpoints_item)
+
+        software_catalogs = []
+        _software_catalogs = d.pop("software_catalogs")
+        for software_catalogs_item_data in _software_catalogs:
+            software_catalogs_item = NestedSoftwareCatalog.from_dict(software_catalogs_item_data)
+
+            software_catalogs.append(software_catalogs_item)
+
+        partitions = []
+        _partitions = d.pop("partitions")
+        for partitions_item_data in _partitions:
+            partitions_item = NestedPartition.from_dict(partitions_item_data)
+
+            partitions.append(partitions_item)
 
         roles = []
         _roles = d.pop("roles")
@@ -864,6 +898,8 @@ class OfferingCreate:
             created=created,
             name=name,
             endpoints=endpoints,
+            software_catalogs=software_catalogs,
+            partitions=partitions,
             roles=roles,
             customer_uuid=customer_uuid,
             customer_name=customer_name,

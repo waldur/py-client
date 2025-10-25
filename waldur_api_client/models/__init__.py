@@ -697,6 +697,14 @@ from .marketplace_service_providers_users_list_field_item import MarketplaceServ
 from .marketplace_service_providers_users_list_o_item import MarketplaceServiceProvidersUsersListOItem
 from .marketplace_site_agent_services_count_state_item import MarketplaceSiteAgentServicesCountStateItem
 from .marketplace_site_agent_services_list_state_item import MarketplaceSiteAgentServicesListStateItem
+from .marketplace_software_catalogs_count_o_item import MarketplaceSoftwareCatalogsCountOItem
+from .marketplace_software_catalogs_list_o_item import MarketplaceSoftwareCatalogsListOItem
+from .marketplace_software_packages_count_o_item import MarketplaceSoftwarePackagesCountOItem
+from .marketplace_software_packages_list_o_item import MarketplaceSoftwarePackagesListOItem
+from .marketplace_software_targets_count_o_item import MarketplaceSoftwareTargetsCountOItem
+from .marketplace_software_targets_list_o_item import MarketplaceSoftwareTargetsListOItem
+from .marketplace_software_versions_count_o_item import MarketplaceSoftwareVersionsCountOItem
+from .marketplace_software_versions_list_o_item import MarketplaceSoftwareVersionsListOItem
 from .marketplace_user_offering_consents_count_o_item import MarketplaceUserOfferingConsentsCountOItem
 from .marketplace_user_offering_consents_list_o_item import MarketplaceUserOfferingConsentsListOItem
 from .merged_plugin_options import MergedPluginOptions
@@ -735,6 +743,8 @@ from .nested_offering_component_limit import NestedOfferingComponentLimit
 from .nested_offering_component_limit_request import NestedOfferingComponentLimitRequest
 from .nested_offering_file import NestedOfferingFile
 from .nested_offering_file_request import NestedOfferingFileRequest
+from .nested_partition import NestedPartition
+from .nested_partition_request import NestedPartitionRequest
 from .nested_plan_component import NestedPlanComponent
 from .nested_plan_component_request import NestedPlanComponentRequest
 from .nested_price_estimate import NestedPriceEstimate
@@ -758,6 +768,14 @@ from .nested_section import NestedSection
 from .nested_section_request import NestedSectionRequest
 from .nested_security_group_rule import NestedSecurityGroupRule
 from .nested_security_group_rule_request import NestedSecurityGroupRuleRequest
+from .nested_software_catalog import NestedSoftwareCatalog
+from .nested_software_catalog_catalog import NestedSoftwareCatalogCatalog
+from .nested_software_catalog_partition import NestedSoftwareCatalogPartition
+from .nested_software_catalog_request import NestedSoftwareCatalogRequest
+from .nested_software_target import NestedSoftwareTarget
+from .nested_software_target_request import NestedSoftwareTargetRequest
+from .nested_software_version import NestedSoftwareVersion
+from .nested_software_version_request import NestedSoftwareVersionRequest
 from .network_rbac_policy import NetworkRBACPolicy
 from .network_rbac_policy_request import NetworkRBACPolicyRequest
 from .node_disk_driver_enum import NodeDiskDriverEnum
@@ -808,11 +826,15 @@ from .offering_options_request import OfferingOptionsRequest
 from .offering_options_request_options import OfferingOptionsRequestOptions
 from .offering_options_update_request import OfferingOptionsUpdateRequest
 from .offering_overview_update_request import OfferingOverviewUpdateRequest
+from .offering_partition import OfferingPartition
+from .offering_partition_request import OfferingPartitionRequest
 from .offering_pause_request import OfferingPauseRequest
 from .offering_permission import OfferingPermission
 from .offering_reference import OfferingReference
 from .offering_referral import OfferingReferral
 from .offering_resource_options_update_request import OfferingResourceOptionsUpdateRequest
+from .offering_software_catalog import OfferingSoftwareCatalog
+from .offering_software_catalog_request import OfferingSoftwareCatalogRequest
 from .offering_state import OfferingState
 from .offering_stats import OfferingStats
 from .offering_stats_counter import OfferingStatsCounter
@@ -1108,6 +1130,8 @@ from .patched_notification_template_detail_serializers_request import (
     PatchedNotificationTemplateDetailSerializersRequest,
 )
 from .patched_offering_estimated_cost_policy_request import PatchedOfferingEstimatedCostPolicyRequest
+from .patched_offering_partition_request import PatchedOfferingPartitionRequest
+from .patched_offering_software_catalog_update_request import PatchedOfferingSoftwareCatalogUpdateRequest
 from .patched_offering_terms_of_service_request import PatchedOfferingTermsOfServiceRequest
 from .patched_offering_usage_policy_request import PatchedOfferingUsagePolicyRequest
 from .patched_offering_user_request import PatchedOfferingUserRequest
@@ -1167,6 +1191,8 @@ from .patched_service_provider_request import PatchedServiceProviderRequest
 from .patched_service_provider_request_form import PatchedServiceProviderRequestForm
 from .patched_service_provider_request_multipart import PatchedServiceProviderRequestMultipart
 from .patched_slurm_allocation_request import PatchedSlurmAllocationRequest
+from .patched_software_catalog_request import PatchedSoftwareCatalogRequest
+from .patched_software_package_request import PatchedSoftwarePackageRequest
 from .patched_template_request import PatchedTemplateRequest
 from .patched_user_agreement_request import PatchedUserAgreementRequest
 from .patched_user_offering_consent_request import PatchedUserOfferingConsentRequest
@@ -1481,6 +1507,8 @@ from .remote_resource_team_member import RemoteResourceTeamMember
 from .remote_synchronisation import RemoteSynchronisation
 from .remote_synchronisation_request import RemoteSynchronisationRequest
 from .remove_offering_component_request import RemoveOfferingComponentRequest
+from .remove_partition_request import RemovePartitionRequest
+from .remove_software_catalog_request import RemoveSoftwareCatalogRequest
 from .report_section import ReportSection
 from .report_section_request import ReportSectionRequest
 from .request_types import RequestTypes
@@ -1611,6 +1639,13 @@ from .slurm_jobs_list_field_item import SlurmJobsListFieldItem
 from .slurm_jobs_retrieve_field_item import SlurmJobsRetrieveFieldItem
 from .smax_web_hook_receiver import SmaxWebHookReceiver
 from .smax_web_hook_receiver_request import SmaxWebHookReceiverRequest
+from .software_catalog import SoftwareCatalog
+from .software_catalog_request import SoftwareCatalogRequest
+from .software_catalog_uuid import SoftwareCatalogUUID
+from .software_package import SoftwarePackage
+from .software_package_request import SoftwarePackageRequest
+from .software_target import SoftwareTarget
+from .software_version import SoftwareVersion
 from .ssh_key import SshKey
 from .ssh_key_request import SshKeyRequest
 from .state_transition_error import StateTransitionError
@@ -2384,6 +2419,14 @@ __all__ = (
     "MarketplaceServiceProviderUser",
     "MarketplaceSiteAgentServicesCountStateItem",
     "MarketplaceSiteAgentServicesListStateItem",
+    "MarketplaceSoftwareCatalogsCountOItem",
+    "MarketplaceSoftwareCatalogsListOItem",
+    "MarketplaceSoftwarePackagesCountOItem",
+    "MarketplaceSoftwarePackagesListOItem",
+    "MarketplaceSoftwareTargetsCountOItem",
+    "MarketplaceSoftwareTargetsListOItem",
+    "MarketplaceSoftwareVersionsCountOItem",
+    "MarketplaceSoftwareVersionsListOItem",
     "MarketplaceUserOfferingConsentsCountOItem",
     "MarketplaceUserOfferingConsentsListOItem",
     "MergedPluginOptions",
@@ -2422,6 +2465,8 @@ __all__ = (
     "NestedOfferingComponentLimitRequest",
     "NestedOfferingFile",
     "NestedOfferingFileRequest",
+    "NestedPartition",
+    "NestedPartitionRequest",
     "NestedPlanComponent",
     "NestedPlanComponentRequest",
     "NestedPriceEstimate",
@@ -2445,6 +2490,14 @@ __all__ = (
     "NestedSectionRequest",
     "NestedSecurityGroupRule",
     "NestedSecurityGroupRuleRequest",
+    "NestedSoftwareCatalog",
+    "NestedSoftwareCatalogCatalog",
+    "NestedSoftwareCatalogPartition",
+    "NestedSoftwareCatalogRequest",
+    "NestedSoftwareTarget",
+    "NestedSoftwareTargetRequest",
+    "NestedSoftwareVersion",
+    "NestedSoftwareVersionRequest",
     "NetworkRBACPolicy",
     "NetworkRBACPolicyRequest",
     "NodeDiskDriverEnum",
@@ -2495,11 +2548,15 @@ __all__ = (
     "OfferingOptionsRequestOptions",
     "OfferingOptionsUpdateRequest",
     "OfferingOverviewUpdateRequest",
+    "OfferingPartition",
+    "OfferingPartitionRequest",
     "OfferingPauseRequest",
     "OfferingPermission",
     "OfferingReference",
     "OfferingReferral",
     "OfferingResourceOptionsUpdateRequest",
+    "OfferingSoftwareCatalog",
+    "OfferingSoftwareCatalogRequest",
     "OfferingState",
     "OfferingStats",
     "OfferingStatsCounter",
@@ -2765,6 +2822,8 @@ __all__ = (
     "PatchedNotificationRequest",
     "PatchedNotificationTemplateDetailSerializersRequest",
     "PatchedOfferingEstimatedCostPolicyRequest",
+    "PatchedOfferingPartitionRequest",
+    "PatchedOfferingSoftwareCatalogUpdateRequest",
     "PatchedOfferingTermsOfServiceRequest",
     "PatchedOfferingUsagePolicyRequest",
     "PatchedOfferingUserRequest",
@@ -2824,6 +2883,8 @@ __all__ = (
     "PatchedServiceProviderRequestForm",
     "PatchedServiceProviderRequestMultipart",
     "PatchedSlurmAllocationRequest",
+    "PatchedSoftwareCatalogRequest",
+    "PatchedSoftwarePackageRequest",
     "PatchedTemplateRequest",
     "PatchedUserAgreementRequest",
     "PatchedUserOfferingConsentRequest",
@@ -3114,6 +3175,8 @@ __all__ = (
     "RemoteSynchronisation",
     "RemoteSynchronisationRequest",
     "RemoveOfferingComponentRequest",
+    "RemovePartitionRequest",
+    "RemoveSoftwareCatalogRequest",
     "ReportSection",
     "ReportSectionRequest",
     "RequestedOffering",
@@ -3242,6 +3305,13 @@ __all__ = (
     "SlurmJobsRetrieveFieldItem",
     "SmaxWebHookReceiver",
     "SmaxWebHookReceiverRequest",
+    "SoftwareCatalog",
+    "SoftwareCatalogRequest",
+    "SoftwareCatalogUUID",
+    "SoftwarePackage",
+    "SoftwarePackageRequest",
+    "SoftwareTarget",
+    "SoftwareVersion",
     "SshKey",
     "SshKeyRequest",
     "StateTransitionError",

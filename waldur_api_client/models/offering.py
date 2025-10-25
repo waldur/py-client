@@ -19,8 +19,10 @@ if TYPE_CHECKING:
     from ..models.merged_plugin_options import MergedPluginOptions
     from ..models.nested_endpoint import NestedEndpoint
     from ..models.nested_offering_file import NestedOfferingFile
+    from ..models.nested_partition import NestedPartition
     from ..models.nested_role import NestedRole
     from ..models.nested_screenshot import NestedScreenshot
+    from ..models.nested_software_catalog import NestedSoftwareCatalog
     from ..models.offering_attributes import OfferingAttributes
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
@@ -45,6 +47,8 @@ class Offering:
         privacy_policy_link (Union[Unset, str]):
         access_url (Union[Unset, str]): Publicly accessible offering access URL
         endpoints (Union[Unset, list['NestedEndpoint']]):
+        software_catalogs (Union[Unset, list['NestedSoftwareCatalog']]):
+        partitions (Union[Unset, list['NestedPartition']]):
         roles (Union[Unset, list['NestedRole']]):
         customer (Union[None, Unset, str]):
         customer_uuid (Union[None, UUID, Unset]):
@@ -110,6 +114,8 @@ class Offering:
     privacy_policy_link: Union[Unset, str] = UNSET
     access_url: Union[Unset, str] = UNSET
     endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
+    software_catalogs: Union[Unset, list["NestedSoftwareCatalog"]] = UNSET
+    partitions: Union[Unset, list["NestedPartition"]] = UNSET
     roles: Union[Unset, list["NestedRole"]] = UNSET
     customer: Union[None, Unset, str] = UNSET
     customer_uuid: Union[None, UUID, Unset] = UNSET
@@ -194,6 +200,20 @@ class Offering:
             for endpoints_item_data in self.endpoints:
                 endpoints_item = endpoints_item_data.to_dict()
                 endpoints.append(endpoints_item)
+
+        software_catalogs: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.software_catalogs, Unset):
+            software_catalogs = []
+            for software_catalogs_item_data in self.software_catalogs:
+                software_catalogs_item = software_catalogs_item_data.to_dict()
+                software_catalogs.append(software_catalogs_item)
+
+        partitions: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.partitions, Unset):
+            partitions = []
+            for partitions_item_data in self.partitions:
+                partitions_item = partitions_item_data.to_dict()
+                partitions.append(partitions_item)
 
         roles: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.roles, Unset):
@@ -475,6 +495,10 @@ class Offering:
             field_dict["access_url"] = access_url
         if endpoints is not UNSET:
             field_dict["endpoints"] = endpoints
+        if software_catalogs is not UNSET:
+            field_dict["software_catalogs"] = software_catalogs
+        if partitions is not UNSET:
+            field_dict["partitions"] = partitions
         if roles is not UNSET:
             field_dict["roles"] = roles
         if customer is not UNSET:
@@ -591,8 +615,10 @@ class Offering:
         from ..models.merged_plugin_options import MergedPluginOptions
         from ..models.nested_endpoint import NestedEndpoint
         from ..models.nested_offering_file import NestedOfferingFile
+        from ..models.nested_partition import NestedPartition
         from ..models.nested_role import NestedRole
         from ..models.nested_screenshot import NestedScreenshot
+        from ..models.nested_software_catalog import NestedSoftwareCatalog
         from ..models.offering_attributes import OfferingAttributes
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
@@ -634,6 +660,20 @@ class Offering:
             endpoints_item = NestedEndpoint.from_dict(endpoints_item_data)
 
             endpoints.append(endpoints_item)
+
+        software_catalogs = []
+        _software_catalogs = d.pop("software_catalogs", UNSET)
+        for software_catalogs_item_data in _software_catalogs or []:
+            software_catalogs_item = NestedSoftwareCatalog.from_dict(software_catalogs_item_data)
+
+            software_catalogs.append(software_catalogs_item)
+
+        partitions = []
+        _partitions = d.pop("partitions", UNSET)
+        for partitions_item_data in _partitions or []:
+            partitions_item = NestedPartition.from_dict(partitions_item_data)
+
+            partitions.append(partitions_item)
 
         roles = []
         _roles = d.pop("roles", UNSET)
@@ -1034,6 +1074,8 @@ class Offering:
             privacy_policy_link=privacy_policy_link,
             access_url=access_url,
             endpoints=endpoints,
+            software_catalogs=software_catalogs,
+            partitions=partitions,
             roles=roles,
             customer=customer,
             customer_uuid=customer_uuid,
