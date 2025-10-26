@@ -44,6 +44,7 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
@@ -147,6 +148,8 @@ def _get_kwargs(
     if not isinstance(project_uuid, Unset):
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
+
+    params["query"] = query
 
     json_resource_customer_uuid: Union[Unset, str] = UNSET
     if not isinstance(resource_customer_uuid, Unset):
@@ -252,6 +255,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
@@ -290,6 +294,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         parent_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
         scope_uuid (Union[Unset, str]):
@@ -334,6 +339,7 @@ def sync_detailed(
         page_size=page_size,
         parent_uuid=parent_uuid,
         project_uuid=project_uuid,
+        query=query,
         resource_customer_uuid=resource_customer_uuid,
         resource_project_uuid=resource_project_uuid,
         scope_uuid=scope_uuid,
@@ -380,6 +386,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
@@ -418,6 +425,7 @@ def sync(
         page_size (Union[Unset, int]):
         parent_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
         scope_uuid (Union[Unset, str]):
@@ -463,6 +471,7 @@ def sync(
         page_size=page_size,
         parent_uuid=parent_uuid,
         project_uuid=project_uuid,
+        query=query,
         resource_customer_uuid=resource_customer_uuid,
         resource_project_uuid=resource_project_uuid,
         scope_uuid=scope_uuid,
@@ -503,6 +512,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
@@ -541,6 +551,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         parent_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
         scope_uuid (Union[Unset, str]):
@@ -585,6 +596,7 @@ async def asyncio_detailed(
         page_size=page_size,
         parent_uuid=parent_uuid,
         project_uuid=project_uuid,
+        query=query,
         resource_customer_uuid=resource_customer_uuid,
         resource_project_uuid=resource_project_uuid,
         scope_uuid=scope_uuid,
@@ -629,6 +641,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
@@ -667,6 +680,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         parent_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
         scope_uuid (Union[Unset, str]):
@@ -713,6 +727,7 @@ async def asyncio(
             page_size=page_size,
             parent_uuid=parent_uuid,
             project_uuid=project_uuid,
+            query=query,
             resource_customer_uuid=resource_customer_uuid,
             resource_project_uuid=resource_project_uuid,
             scope_uuid=scope_uuid,
