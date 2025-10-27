@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.offering_partition import OfferingPartition
-from ...models.patched_offering_partition_request import PatchedOfferingPartitionRequest
+from ...models.patched_offering_partition_update_request import PatchedOfferingPartitionUpdateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: PatchedOfferingPartitionRequest,
+    body: PatchedOfferingPartitionUpdateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,13 +56,13 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedOfferingPartitionRequest,
+    body: PatchedOfferingPartitionUpdateRequest,
 ) -> Response[OfferingPartition]:
     """Update partition configuration for offering.
 
     Args:
         uuid (UUID):
-        body (PatchedOfferingPartitionRequest):
+        body (PatchedOfferingPartitionUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -88,13 +88,13 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedOfferingPartitionRequest,
+    body: PatchedOfferingPartitionUpdateRequest,
 ) -> OfferingPartition:
     """Update partition configuration for offering.
 
     Args:
         uuid (UUID):
-        body (PatchedOfferingPartitionRequest):
+        body (PatchedOfferingPartitionUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -115,13 +115,13 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedOfferingPartitionRequest,
+    body: PatchedOfferingPartitionUpdateRequest,
 ) -> Response[OfferingPartition]:
     """Update partition configuration for offering.
 
     Args:
         uuid (UUID):
-        body (PatchedOfferingPartitionRequest):
+        body (PatchedOfferingPartitionUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -145,13 +145,13 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedOfferingPartitionRequest,
+    body: PatchedOfferingPartitionUpdateRequest,
 ) -> OfferingPartition:
     """Update partition configuration for offering.
 
     Args:
         uuid (UUID):
-        body (PatchedOfferingPartitionRequest):
+        body (PatchedOfferingPartitionUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

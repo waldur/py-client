@@ -10,6 +10,7 @@ class OpenstackTenantsRetrieveFieldItem(str, Enum):
     CUSTOMER_ABBREVIATION = "customer_abbreviation"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_NATIVE_NAME = "customer_native_name"
+    CUSTOMER_UUID = "customer_uuid"
     DEFAULT_VOLUME_TYPE_NAME = "default_volume_type_name"
     DESCRIPTION = "description"
     ERROR_MESSAGE = "error_message"

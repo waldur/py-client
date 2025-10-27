@@ -1130,7 +1130,7 @@ from .patched_notification_template_detail_serializers_request import (
     PatchedNotificationTemplateDetailSerializersRequest,
 )
 from .patched_offering_estimated_cost_policy_request import PatchedOfferingEstimatedCostPolicyRequest
-from .patched_offering_partition_request import PatchedOfferingPartitionRequest
+from .patched_offering_partition_update_request import PatchedOfferingPartitionUpdateRequest
 from .patched_offering_software_catalog_update_request import PatchedOfferingSoftwareCatalogUpdateRequest
 from .patched_offering_terms_of_service_request import PatchedOfferingTermsOfServiceRequest
 from .patched_offering_usage_policy_request import PatchedOfferingUsagePolicyRequest
@@ -2822,7 +2822,7 @@ __all__ = (
     "PatchedNotificationRequest",
     "PatchedNotificationTemplateDetailSerializersRequest",
     "PatchedOfferingEstimatedCostPolicyRequest",
-    "PatchedOfferingPartitionRequest",
+    "PatchedOfferingPartitionUpdateRequest",
     "PatchedOfferingSoftwareCatalogUpdateRequest",
     "PatchedOfferingTermsOfServiceRequest",
     "PatchedOfferingUsagePolicyRequest",

@@ -13,6 +13,7 @@ class VmwareVirtualMachineListFieldItem(str, Enum):
     CUSTOMER_ABBREVIATION = "customer_abbreviation"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_NATIVE_NAME = "customer_native_name"
+    CUSTOMER_UUID = "customer_uuid"
     DATASTORE = "datastore"
     DATASTORE_NAME = "datastore_name"
     DESCRIPTION = "description"

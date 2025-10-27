@@ -37,6 +37,7 @@ class OpenStackFloatingIP:
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
         customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         customer_abbreviation (Union[Unset, str]):
@@ -87,6 +88,7 @@ class OpenStackFloatingIP:
     project_name: Union[Unset, str] = UNSET
     project_uuid: Union[Unset, UUID] = UNSET
     customer: Union[Unset, str] = UNSET
+    customer_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
     customer_native_name: Union[Unset, str] = UNSET
     customer_abbreviation: Union[Unset, str] = UNSET
@@ -160,6 +162,10 @@ class OpenStackFloatingIP:
             project_uuid = str(self.project_uuid)
 
         customer = self.customer
+
+        customer_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.customer_uuid, Unset):
+            customer_uuid = str(self.customer_uuid)
 
         customer_name = self.customer_name
 
@@ -337,6 +343,8 @@ class OpenStackFloatingIP:
             field_dict["project_uuid"] = project_uuid
         if customer is not UNSET:
             field_dict["customer"] = customer
+        if customer_uuid is not UNSET:
+            field_dict["customer_uuid"] = customer_uuid
         if customer_name is not UNSET:
             field_dict["customer_name"] = customer_name
         if customer_native_name is not UNSET:
@@ -454,6 +462,13 @@ class OpenStackFloatingIP:
             project_uuid = UUID(_project_uuid)
 
         customer = d.pop("customer", UNSET)
+
+        _customer_uuid = d.pop("customer_uuid", UNSET)
+        customer_uuid: Union[Unset, UUID]
+        if isinstance(_customer_uuid, Unset):
+            customer_uuid = UNSET
+        else:
+            customer_uuid = UUID(_customer_uuid)
 
         customer_name = d.pop("customer_name", UNSET)
 
@@ -686,6 +701,7 @@ class OpenStackFloatingIP:
             project_name=project_name,
             project_uuid=project_uuid,
             customer=customer,
+            customer_uuid=customer_uuid,
             customer_name=customer_name,
             customer_native_name=customer_native_name,
             customer_abbreviation=customer_abbreviation,

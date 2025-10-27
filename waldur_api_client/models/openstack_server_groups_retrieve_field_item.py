@@ -9,6 +9,7 @@ class OpenstackServerGroupsRetrieveFieldItem(str, Enum):
     CUSTOMER_ABBREVIATION = "customer_abbreviation"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_NATIVE_NAME = "customer_native_name"
+    CUSTOMER_UUID = "customer_uuid"
     DESCRIPTION = "description"
     DISPLAY_NAME = "display_name"
     ERROR_MESSAGE = "error_message"

@@ -9,6 +9,7 @@ class OpenstackSecurityGroupsRetrieveFieldItem(str, Enum):
     CUSTOMER_ABBREVIATION = "customer_abbreviation"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_NATIVE_NAME = "customer_native_name"
+    CUSTOMER_UUID = "customer_uuid"
     DESCRIPTION = "description"
     ERROR_MESSAGE = "error_message"
     ERROR_TRACEBACK = "error_traceback"

@@ -36,6 +36,7 @@ class RancherServiceCreate:
         project_name (str):
         project_uuid (UUID):
         customer (str):
+        customer_uuid (UUID):
         customer_name (str):
         customer_native_name (str):
         customer_abbreviation (str):
@@ -78,6 +79,7 @@ class RancherServiceCreate:
     project_name: str
     project_uuid: UUID
     customer: str
+    customer_uuid: UUID
     customer_name: str
     customer_native_name: str
     customer_abbreviation: str
@@ -136,6 +138,8 @@ class RancherServiceCreate:
         project_uuid = str(self.project_uuid)
 
         customer = self.customer
+
+        customer_uuid = str(self.customer_uuid)
 
         customer_name = self.customer_name
 
@@ -234,6 +238,7 @@ class RancherServiceCreate:
                 "project_name": project_name,
                 "project_uuid": project_uuid,
                 "customer": customer,
+                "customer_uuid": customer_uuid,
                 "customer_name": customer_name,
                 "customer_native_name": customer_native_name,
                 "customer_abbreviation": customer_abbreviation,
@@ -307,6 +312,8 @@ class RancherServiceCreate:
         project_uuid = UUID(d.pop("project_uuid"))
 
         customer = d.pop("customer")
+
+        customer_uuid = UUID(d.pop("customer_uuid"))
 
         customer_name = d.pop("customer_name")
 
@@ -458,6 +465,7 @@ class RancherServiceCreate:
             project_name=project_name,
             project_uuid=project_uuid,
             customer=customer,
+            customer_uuid=customer_uuid,
             customer_name=customer_name,
             customer_native_name=customer_native_name,
             customer_abbreviation=customer_abbreviation,

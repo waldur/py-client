@@ -7,14 +7,14 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="PatchedOfferingPartitionRequest")
+T = TypeVar("T", bound="PatchedOfferingPartitionUpdateRequest")
 
 
 @_attrs_define
-class PatchedOfferingPartitionRequest:
+class PatchedOfferingPartitionUpdateRequest:
     """
     Attributes:
-        offering (Union[Unset, UUID]):
+        partition_uuid (Union[Unset, UUID]):
         partition_name (Union[Unset, str]): Name of the SLURM partition
         cpu_bind (Union[None, Unset, int]): Default task binding policy (SLURM cpu_bind)
         def_cpu_per_gpu (Union[None, Unset, int]): Default CPUs allocated per GPU
@@ -37,7 +37,7 @@ class PatchedOfferingPartitionRequest:
         req_resv (Union[Unset, bool]): Require reservation for job allocation
     """
 
-    offering: Union[Unset, UUID] = UNSET
+    partition_uuid: Union[Unset, UUID] = UNSET
     partition_name: Union[Unset, str] = UNSET
     cpu_bind: Union[None, Unset, int] = UNSET
     def_cpu_per_gpu: Union[None, Unset, int] = UNSET
@@ -61,9 +61,9 @@ class PatchedOfferingPartitionRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        offering: Union[Unset, str] = UNSET
-        if not isinstance(self.offering, Unset):
-            offering = str(self.offering)
+        partition_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.partition_uuid, Unset):
+            partition_uuid = str(self.partition_uuid)
 
         partition_name = self.partition_name
 
@@ -168,8 +168,8 @@ class PatchedOfferingPartitionRequest:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if offering is not UNSET:
-            field_dict["offering"] = offering
+        if partition_uuid is not UNSET:
+            field_dict["partition_uuid"] = partition_uuid
         if partition_name is not UNSET:
             field_dict["partition_name"] = partition_name
         if cpu_bind is not UNSET:
@@ -216,12 +216,12 @@ class PatchedOfferingPartitionRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        _offering = d.pop("offering", UNSET)
-        offering: Union[Unset, UUID]
-        if isinstance(_offering, Unset):
-            offering = UNSET
+        _partition_uuid = d.pop("partition_uuid", UNSET)
+        partition_uuid: Union[Unset, UUID]
+        if isinstance(_partition_uuid, Unset):
+            partition_uuid = UNSET
         else:
-            offering = UUID(_offering)
+            partition_uuid = UUID(_partition_uuid)
 
         partition_name = d.pop("partition_name", UNSET)
 
@@ -368,8 +368,8 @@ class PatchedOfferingPartitionRequest:
 
         req_resv = d.pop("req_resv", UNSET)
 
-        patched_offering_partition_request = cls(
-            offering=offering,
+        patched_offering_partition_update_request = cls(
+            partition_uuid=partition_uuid,
             partition_name=partition_name,
             cpu_bind=cpu_bind,
             def_cpu_per_gpu=def_cpu_per_gpu,
@@ -392,8 +392,8 @@ class PatchedOfferingPartitionRequest:
             req_resv=req_resv,
         )
 
-        patched_offering_partition_request.additional_properties = d
-        return patched_offering_partition_request
+        patched_offering_partition_update_request.additional_properties = d
+        return patched_offering_partition_update_request
 
     @property
     def additional_keys(self) -> list[str]:

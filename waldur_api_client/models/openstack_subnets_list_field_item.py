@@ -11,6 +11,7 @@ class OpenstackSubnetsListFieldItem(str, Enum):
     CUSTOMER_ABBREVIATION = "customer_abbreviation"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_NATIVE_NAME = "customer_native_name"
+    CUSTOMER_UUID = "customer_uuid"
     DESCRIPTION = "description"
     DISABLE_GATEWAY = "disable_gateway"
     DNS_NAMESERVERS = "dns_nameservers"

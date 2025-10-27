@@ -11,6 +11,7 @@ class OpenstackPortsRetrieveFieldItem(str, Enum):
     CUSTOMER_ABBREVIATION = "customer_abbreviation"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_NATIVE_NAME = "customer_native_name"
+    CUSTOMER_UUID = "customer_uuid"
     DESCRIPTION = "description"
     DEVICE_ID = "device_id"
     DEVICE_OWNER = "device_owner"
