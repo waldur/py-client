@@ -19,11 +19,13 @@ def _get_kwargs() -> dict[str, Any]:
 
 
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> SupportStats:
+    if response.status_code == 404:
+        raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = SupportStats.from_dict(response.json())
 
         return response_200
-    raise errors.UnexpectedStatus(response.status_code, response.content)
+    raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[SupportStats]:

@@ -58,13 +58,15 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
             return int(response.headers["x-result-count"])
         except KeyError:
             raise errors.UnexpectedStatus(
-                response.status_code, b"Expected 'X-Result-Count' header for HEAD request, but it was not found."
+                response.status_code,
+                b"Expected 'X-Result-Count' header for HEAD request, but it was not found.",
+                response.url,
             )
         except ValueError:
             count_val = response.headers.get("x-result-count")
             msg = f"Expected 'X-Result-Count' header to be an integer, but got '{count_val}'."
-            raise errors.UnexpectedStatus(response.status_code, msg.encode())
-    raise errors.UnexpectedStatus(response.status_code, response.content)
+            raise errors.UnexpectedStatus(response.status_code, msg.encode(), response.url)
+    raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[int]:

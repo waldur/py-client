@@ -32,6 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> AgentService:
+    if response.status_code == 404:
+        raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = AgentService.from_dict(response.json())
 
@@ -40,7 +42,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         response_201 = AgentService.from_dict(response.json())
 
         return response_201
-    raise errors.UnexpectedStatus(response.status_code, response.content)
+    raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[AgentService]:

@@ -32,11 +32,13 @@ def _get_kwargs(
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> OfferingTermsOfServiceCreate:
+    if response.status_code == 404:
+        raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 201:
         response_201 = OfferingTermsOfServiceCreate.from_dict(response.json())
 
         return response_201
-    raise errors.UnexpectedStatus(response.status_code, response.content)
+    raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(

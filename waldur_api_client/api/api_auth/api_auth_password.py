@@ -32,6 +32,8 @@ def _get_kwargs(
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Union[Any, CoreAuthToken]:
+    if response.status_code == 404:
+        raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = CoreAuthToken.from_dict(response.json())
 
@@ -39,7 +41,7 @@ def _parse_response(
     if response.status_code == 401:
         response_401 = cast(Any, None)
         return response_401
-    raise errors.UnexpectedStatus(response.status_code, response.content)
+    raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(

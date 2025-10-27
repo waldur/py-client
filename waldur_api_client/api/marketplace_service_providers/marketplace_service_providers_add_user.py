@@ -35,6 +35,8 @@ def _get_kwargs(
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Union[MarketplaceServiceProvidersAddUserResponse400, UserRoleExpirationTime]:
+    if response.status_code == 404:
+        raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 201:
         response_201 = UserRoleExpirationTime.from_dict(response.json())
 
@@ -43,7 +45,7 @@ def _parse_response(
         response_400 = MarketplaceServiceProvidersAddUserResponse400.from_dict(response.json())
 
         return response_400
-    raise errors.UnexpectedStatus(response.status_code, response.content)
+    raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
