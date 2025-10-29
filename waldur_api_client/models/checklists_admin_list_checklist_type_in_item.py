@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class ChecklistsAdminListChecklistTypeInItem(str, Enum):
+    CUSTOMER_ONBOARDING = "customer_onboarding"
     OFFERING_COMPLIANCE = "offering_compliance"
     PROJECT_COMPLIANCE = "project_compliance"
     PROJECT_METADATA = "project_metadata"

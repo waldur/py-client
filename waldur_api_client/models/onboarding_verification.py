@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -10,6 +10,13 @@ from dateutil.parser import isoparse
 from ..models.onboarding_verification_status_enum import OnboardingVerificationStatusEnum
 from ..models.validation_method_enum import ValidationMethodEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.onboarding_verification_onboarding_metadata import OnboardingVerificationOnboardingMetadata
+    from ..models.onboarding_verification_user_submitted_customer_data import (
+        OnboardingVerificationUserSubmittedCustomerData,
+    )
+
 
 T = TypeVar("T", bound="OnboardingVerification")
 
@@ -21,7 +28,6 @@ class OnboardingVerification:
         uuid (UUID):
         user (int): User requesting company onboarding
         country (str): ISO country code (e.g., 'EE' for Estonia)
-        legal_person_identifier (str): Official company registration code
         status (OnboardingVerificationStatusEnum):
         validation_method (ValidationMethodEnum):
         verified_user_roles (Any): Roles the user has in the company
@@ -31,18 +37,21 @@ class OnboardingVerification:
         error_message (str):
         validated_at (Union[None, datetime.datetime]): When validation was completed
         customer (Union[None, int]): Customer created after successful validation
+        onboarding_metadata (OnboardingVerificationOnboardingMetadata): Onboarding-specific data like intents, purposes
+            extracted from checklist answers
+        user_submitted_customer_data (OnboardingVerificationUserSubmittedCustomerData): Get customer data submitted by
+            the user during onboarding.
         created (datetime.datetime):
         modified (datetime.datetime):
-        legal_name (Union[Unset, str]): Claimed company name (optional, for reference)
-        user_submitted_customer_metadata (Union[Unset, Any]): Additional customer metadata submitted by user for manual
-            verification cases. Should contain valid Customer model fields.
+        legal_person_identifier (Union[Unset, str]): Official company registration code (required for automatic
+            validation)
+        legal_name (Union[Unset, str]): Company name(optional, for reference)
         expires_at (Union[None, Unset, datetime.datetime]): When this verification expires
     """
 
     uuid: UUID
     user: int
     country: str
-    legal_person_identifier: str
     status: OnboardingVerificationStatusEnum
     validation_method: ValidationMethodEnum
     verified_user_roles: Any
@@ -52,10 +61,12 @@ class OnboardingVerification:
     error_message: str
     validated_at: Union[None, datetime.datetime]
     customer: Union[None, int]
+    onboarding_metadata: "OnboardingVerificationOnboardingMetadata"
+    user_submitted_customer_data: "OnboardingVerificationUserSubmittedCustomerData"
     created: datetime.datetime
     modified: datetime.datetime
+    legal_person_identifier: Union[Unset, str] = UNSET
     legal_name: Union[Unset, str] = UNSET
-    user_submitted_customer_metadata: Union[Unset, Any] = UNSET
     expires_at: Union[None, Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -65,8 +76,6 @@ class OnboardingVerification:
         user = self.user
 
         country = self.country
-
-        legal_person_identifier = self.legal_person_identifier
 
         status = self.status.value
 
@@ -91,13 +100,17 @@ class OnboardingVerification:
         customer: Union[None, int]
         customer = self.customer
 
+        onboarding_metadata = self.onboarding_metadata.to_dict()
+
+        user_submitted_customer_data = self.user_submitted_customer_data.to_dict()
+
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
 
-        legal_name = self.legal_name
+        legal_person_identifier = self.legal_person_identifier
 
-        user_submitted_customer_metadata = self.user_submitted_customer_metadata
+        legal_name = self.legal_name
 
         expires_at: Union[None, Unset, str]
         if isinstance(self.expires_at, Unset):
@@ -114,7 +127,6 @@ class OnboardingVerification:
                 "uuid": uuid,
                 "user": user,
                 "country": country,
-                "legal_person_identifier": legal_person_identifier,
                 "status": status,
                 "validation_method": validation_method,
                 "verified_user_roles": verified_user_roles,
@@ -124,14 +136,16 @@ class OnboardingVerification:
                 "error_message": error_message,
                 "validated_at": validated_at,
                 "customer": customer,
+                "onboarding_metadata": onboarding_metadata,
+                "user_submitted_customer_data": user_submitted_customer_data,
                 "created": created,
                 "modified": modified,
             }
         )
+        if legal_person_identifier is not UNSET:
+            field_dict["legal_person_identifier"] = legal_person_identifier
         if legal_name is not UNSET:
             field_dict["legal_name"] = legal_name
-        if user_submitted_customer_metadata is not UNSET:
-            field_dict["user_submitted_customer_metadata"] = user_submitted_customer_metadata
         if expires_at is not UNSET:
             field_dict["expires_at"] = expires_at
 
@@ -139,14 +153,17 @@ class OnboardingVerification:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.onboarding_verification_onboarding_metadata import OnboardingVerificationOnboardingMetadata
+        from ..models.onboarding_verification_user_submitted_customer_data import (
+            OnboardingVerificationUserSubmittedCustomerData,
+        )
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
         user = d.pop("user")
 
         country = d.pop("country")
-
-        legal_person_identifier = d.pop("legal_person_identifier")
 
         status = OnboardingVerificationStatusEnum(d.pop("status"))
 
@@ -184,13 +201,19 @@ class OnboardingVerification:
 
         customer = _parse_customer(d.pop("customer"))
 
+        onboarding_metadata = OnboardingVerificationOnboardingMetadata.from_dict(d.pop("onboarding_metadata"))
+
+        user_submitted_customer_data = OnboardingVerificationUserSubmittedCustomerData.from_dict(
+            d.pop("user_submitted_customer_data")
+        )
+
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
 
-        legal_name = d.pop("legal_name", UNSET)
+        legal_person_identifier = d.pop("legal_person_identifier", UNSET)
 
-        user_submitted_customer_metadata = d.pop("user_submitted_customer_metadata", UNSET)
+        legal_name = d.pop("legal_name", UNSET)
 
         def _parse_expires_at(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
@@ -213,7 +236,6 @@ class OnboardingVerification:
             uuid=uuid,
             user=user,
             country=country,
-            legal_person_identifier=legal_person_identifier,
             status=status,
             validation_method=validation_method,
             verified_user_roles=verified_user_roles,
@@ -223,10 +245,12 @@ class OnboardingVerification:
             error_message=error_message,
             validated_at=validated_at,
             customer=customer,
+            onboarding_metadata=onboarding_metadata,
+            user_submitted_customer_data=user_submitted_customer_data,
             created=created,
             modified=modified,
+            legal_person_identifier=legal_person_identifier,
             legal_name=legal_name,
-            user_submitted_customer_metadata=user_submitted_customer_metadata,
             expires_at=expires_at,
         )
 

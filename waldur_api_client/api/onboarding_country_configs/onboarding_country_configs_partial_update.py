@@ -1,24 +1,28 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.onboarding_company_validation_request_request import OnboardingCompanyValidationRequestRequest
-from ...models.onboarding_verification import OnboardingVerification
+from ...models.onboarding_country_checklist_configuration import OnboardingCountryChecklistConfiguration
+from ...models.patched_onboarding_country_checklist_configuration_request import (
+    PatchedOnboardingCountryChecklistConfigurationRequest,
+)
 from ...types import Response
 
 
 def _get_kwargs(
+    uuid: UUID,
     *,
-    body: OnboardingCompanyValidationRequestRequest,
+    body: PatchedOnboardingCountryChecklistConfigurationRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": "/api/onboarding-verifications/validate_company/",
+        "method": "patch",
+        "url": f"/api/onboarding-country-configs/{uuid}/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -29,11 +33,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OnboardingVerification:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> OnboardingCountryChecklistConfiguration:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = OnboardingVerification.from_dict(response.json())
+        response_200 = OnboardingCountryChecklistConfiguration.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -41,7 +47,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[OnboardingVerification]:
+) -> Response[OnboardingCountryChecklistConfiguration]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -51,24 +57,26 @@ def _build_response(
 
 
 def sync_detailed(
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OnboardingCompanyValidationRequestRequest,
-) -> Response[OnboardingVerification]:
-    """Start company validation process.
-
+    body: PatchedOnboardingCountryChecklistConfigurationRequest,
+) -> Response[OnboardingCountryChecklistConfiguration]:
+    """
     Args:
-        body (OnboardingCompanyValidationRequestRequest):
+        uuid (UUID):
+        body (PatchedOnboardingCountryChecklistConfigurationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OnboardingVerification]
+        Response[OnboardingCountryChecklistConfiguration]
     """
 
     kwargs = _get_kwargs(
+        uuid=uuid,
         body=body,
     )
 
@@ -80,48 +88,52 @@ def sync_detailed(
 
 
 def sync(
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OnboardingCompanyValidationRequestRequest,
-) -> OnboardingVerification:
-    """Start company validation process.
-
+    body: PatchedOnboardingCountryChecklistConfigurationRequest,
+) -> OnboardingCountryChecklistConfiguration:
+    """
     Args:
-        body (OnboardingCompanyValidationRequestRequest):
+        uuid (UUID):
+        body (PatchedOnboardingCountryChecklistConfigurationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OnboardingVerification
+        OnboardingCountryChecklistConfiguration
     """
 
     return sync_detailed(
+        uuid=uuid,
         client=client,
         body=body,
     ).parsed
 
 
 async def asyncio_detailed(
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OnboardingCompanyValidationRequestRequest,
-) -> Response[OnboardingVerification]:
-    """Start company validation process.
-
+    body: PatchedOnboardingCountryChecklistConfigurationRequest,
+) -> Response[OnboardingCountryChecklistConfiguration]:
+    """
     Args:
-        body (OnboardingCompanyValidationRequestRequest):
+        uuid (UUID):
+        body (PatchedOnboardingCountryChecklistConfigurationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OnboardingVerification]
+        Response[OnboardingCountryChecklistConfiguration]
     """
 
     kwargs = _get_kwargs(
+        uuid=uuid,
         body=body,
     )
 
@@ -131,25 +143,27 @@ async def asyncio_detailed(
 
 
 async def asyncio(
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OnboardingCompanyValidationRequestRequest,
-) -> OnboardingVerification:
-    """Start company validation process.
-
+    body: PatchedOnboardingCountryChecklistConfigurationRequest,
+) -> OnboardingCountryChecklistConfiguration:
+    """
     Args:
-        body (OnboardingCompanyValidationRequestRequest):
+        uuid (UUID):
+        body (PatchedOnboardingCountryChecklistConfigurationRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OnboardingVerification
+        OnboardingCountryChecklistConfiguration
     """
 
     return (
         await asyncio_detailed(
+            uuid=uuid,
             client=client,
             body=body,
         )

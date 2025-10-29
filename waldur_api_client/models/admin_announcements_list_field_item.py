@@ -8,6 +8,7 @@ class AdminAnnouncementsListFieldItem(str, Enum):
     DESCRIPTION = "description"
     IS_ACTIVE = "is_active"
     MAINTENANCE_AFFECTED_OFFERINGS = "maintenance_affected_offerings"
+    MAINTENANCE_EXTERNAL_REFERENCE_URL = "maintenance_external_reference_url"
     MAINTENANCE_NAME = "maintenance_name"
     MAINTENANCE_SCHEDULED_END = "maintenance_scheduled_end"
     MAINTENANCE_SCHEDULED_START = "maintenance_scheduled_start"

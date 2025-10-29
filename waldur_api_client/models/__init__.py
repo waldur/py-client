@@ -856,6 +856,8 @@ from .offering_user_state import OfferingUserState
 from .offering_user_state_transition_request import OfferingUserStateTransitionRequest
 from .offering_user_update_restriction_request import OfferingUserUpdateRestrictionRequest
 from .onboarding_company_validation_request_request import OnboardingCompanyValidationRequestRequest
+from .onboarding_country_checklist_configuration import OnboardingCountryChecklistConfiguration
+from .onboarding_country_checklist_configuration_request import OnboardingCountryChecklistConfigurationRequest
 from .onboarding_justification import OnboardingJustification
 from .onboarding_justification_create_request import OnboardingJustificationCreateRequest
 from .onboarding_justification_documentation import OnboardingJustificationDocumentation
@@ -866,9 +868,13 @@ from .onboarding_justification_documentation_request_multipart import (
 )
 from .onboarding_justification_request import OnboardingJustificationRequest
 from .onboarding_justification_review_request import OnboardingJustificationReviewRequest
+from .onboarding_question_metadata import OnboardingQuestionMetadata
+from .onboarding_question_metadata_request import OnboardingQuestionMetadataRequest
 from .onboarding_verification import OnboardingVerification
+from .onboarding_verification_onboarding_metadata import OnboardingVerificationOnboardingMetadata
 from .onboarding_verification_request import OnboardingVerificationRequest
 from .onboarding_verification_status_enum import OnboardingVerificationStatusEnum
+from .onboarding_verification_user_submitted_customer_data import OnboardingVerificationUserSubmittedCustomerData
 from .open_stack_allowed_address_pair import OpenStackAllowedAddressPair
 from .open_stack_allowed_address_pair_request import OpenStackAllowedAddressPairRequest
 from .open_stack_backend_instance import OpenStackBackendInstance
@@ -1137,7 +1143,11 @@ from .patched_offering_usage_policy_request import PatchedOfferingUsagePolicyReq
 from .patched_offering_user_request import PatchedOfferingUserRequest
 from .patched_offering_user_role_request import PatchedOfferingUserRoleRequest
 from .patched_offering_user_service_provider_comment_request import PatchedOfferingUserServiceProviderCommentRequest
+from .patched_onboarding_country_checklist_configuration_request import (
+    PatchedOnboardingCountryChecklistConfigurationRequest,
+)
 from .patched_onboarding_justification_request import PatchedOnboardingJustificationRequest
+from .patched_onboarding_question_metadata_request import PatchedOnboardingQuestionMetadataRequest
 from .patched_onboarding_verification_request import PatchedOnboardingVerificationRequest
 from .patched_open_stack_backup_request import PatchedOpenStackBackupRequest
 from .patched_open_stack_instance_request import PatchedOpenStackInstanceRequest
@@ -2578,6 +2588,8 @@ __all__ = (
     "OfferingUserStateTransitionRequest",
     "OfferingUserUpdateRestrictionRequest",
     "OnboardingCompanyValidationRequestRequest",
+    "OnboardingCountryChecklistConfiguration",
+    "OnboardingCountryChecklistConfigurationRequest",
     "OnboardingJustification",
     "OnboardingJustificationCreateRequest",
     "OnboardingJustificationDocumentation",
@@ -2586,9 +2598,13 @@ __all__ = (
     "OnboardingJustificationDocumentationRequestMultipart",
     "OnboardingJustificationRequest",
     "OnboardingJustificationReviewRequest",
+    "OnboardingQuestionMetadata",
+    "OnboardingQuestionMetadataRequest",
     "OnboardingVerification",
+    "OnboardingVerificationOnboardingMetadata",
     "OnboardingVerificationRequest",
     "OnboardingVerificationStatusEnum",
+    "OnboardingVerificationUserSubmittedCustomerData",
     "OpenStackAllowedAddressPair",
     "OpenStackAllowedAddressPairRequest",
     "OpenStackBackendInstance",
@@ -2829,7 +2845,9 @@ __all__ = (
     "PatchedOfferingUserRequest",
     "PatchedOfferingUserRoleRequest",
     "PatchedOfferingUserServiceProviderCommentRequest",
+    "PatchedOnboardingCountryChecklistConfigurationRequest",
     "PatchedOnboardingJustificationRequest",
+    "PatchedOnboardingQuestionMetadataRequest",
     "PatchedOnboardingVerificationRequest",
     "PatchedOpenStackBackupRequest",
     "PatchedOpenStackInstanceRequest",

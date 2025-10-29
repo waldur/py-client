@@ -38,6 +38,7 @@ class AdminAnnouncement:
         maintenance_scheduled_end (Union[Unset, datetime.datetime]):
         maintenance_service_provider (Union[Unset, str]):
         maintenance_affected_offerings (Union[Unset, list['AdminAnnouncementMaintenanceAffectedOfferingsItem']]):
+        maintenance_external_reference_url (Union[Unset, str]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -55,6 +56,7 @@ class AdminAnnouncement:
     maintenance_scheduled_end: Union[Unset, datetime.datetime] = UNSET
     maintenance_service_provider: Union[Unset, str] = UNSET
     maintenance_affected_offerings: Union[Unset, list["AdminAnnouncementMaintenanceAffectedOfferingsItem"]] = UNSET
+    maintenance_external_reference_url: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -107,6 +109,8 @@ class AdminAnnouncement:
                 maintenance_affected_offerings_item = maintenance_affected_offerings_item_data.to_dict()
                 maintenance_affected_offerings.append(maintenance_affected_offerings_item)
 
+        maintenance_external_reference_url = self.maintenance_external_reference_url
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -140,6 +144,8 @@ class AdminAnnouncement:
             field_dict["maintenance_service_provider"] = maintenance_service_provider
         if maintenance_affected_offerings is not UNSET:
             field_dict["maintenance_affected_offerings"] = maintenance_affected_offerings
+        if maintenance_external_reference_url is not UNSET:
+            field_dict["maintenance_external_reference_url"] = maintenance_external_reference_url
 
         return field_dict
 
@@ -222,6 +228,8 @@ class AdminAnnouncement:
 
             maintenance_affected_offerings.append(maintenance_affected_offerings_item)
 
+        maintenance_external_reference_url = d.pop("maintenance_external_reference_url", UNSET)
+
         admin_announcement = cls(
             uuid=uuid,
             description=description,
@@ -238,6 +246,7 @@ class AdminAnnouncement:
             maintenance_scheduled_end=maintenance_scheduled_end,
             maintenance_service_provider=maintenance_service_provider,
             maintenance_affected_offerings=maintenance_affected_offerings,
+            maintenance_external_reference_url=maintenance_external_reference_url,
         )
 
         admin_announcement.additional_properties = d

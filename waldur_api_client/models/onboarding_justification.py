@@ -23,9 +23,12 @@ class OnboardingJustification:
     Attributes:
         uuid (UUID):
         verification (int):
+        country (str):
         user (int):
         legal_person_identifier (str):
         legal_name (str):
+        error_message (str):
+        error_traceback (str):
         validated_by (Union[None, int]):
         validated_at (Union[None, datetime.datetime]):
         validation_decision (ValidationDecisionEnum):
@@ -38,9 +41,12 @@ class OnboardingJustification:
 
     uuid: UUID
     verification: int
+    country: str
     user: int
     legal_person_identifier: str
     legal_name: str
+    error_message: str
+    error_traceback: str
     validated_by: Union[None, int]
     validated_at: Union[None, datetime.datetime]
     validation_decision: ValidationDecisionEnum
@@ -56,11 +62,17 @@ class OnboardingJustification:
 
         verification = self.verification
 
+        country = self.country
+
         user = self.user
 
         legal_person_identifier = self.legal_person_identifier
 
         legal_name = self.legal_name
+
+        error_message = self.error_message
+
+        error_traceback = self.error_traceback
 
         validated_by: Union[None, int]
         validated_by = self.validated_by
@@ -96,9 +108,12 @@ class OnboardingJustification:
             {
                 "uuid": uuid,
                 "verification": verification,
+                "country": country,
                 "user": user,
                 "legal_person_identifier": legal_person_identifier,
                 "legal_name": legal_name,
+                "error_message": error_message,
+                "error_traceback": error_traceback,
                 "validated_by": validated_by,
                 "validated_at": validated_at,
                 "validation_decision": validation_decision,
@@ -122,11 +137,17 @@ class OnboardingJustification:
 
         verification = d.pop("verification")
 
+        country = d.pop("country")
+
         user = d.pop("user")
 
         legal_person_identifier = d.pop("legal_person_identifier")
 
         legal_name = d.pop("legal_name")
+
+        error_message = d.pop("error_message")
+
+        error_traceback = d.pop("error_traceback")
 
         def _parse_validated_by(data: object) -> Union[None, int]:
             if data is None:
@@ -179,9 +200,12 @@ class OnboardingJustification:
         onboarding_justification = cls(
             uuid=uuid,
             verification=verification,
+            country=country,
             user=user,
             legal_person_identifier=legal_person_identifier,
             legal_name=legal_name,
+            error_message=error_message,
+            error_traceback=error_traceback,
             validated_by=validated_by,
             validated_at=validated_at,
             validation_decision=validation_decision,

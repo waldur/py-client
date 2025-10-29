@@ -17,18 +17,16 @@ class OnboardingVerificationRequest:
     Attributes:
         user (int): User requesting company onboarding
         country (str): ISO country code (e.g., 'EE' for Estonia)
-        legal_person_identifier (str): Official company registration code
-        legal_name (Union[Unset, str]): Claimed company name (optional, for reference)
-        user_submitted_customer_metadata (Union[Unset, Any]): Additional customer metadata submitted by user for manual
-            verification cases. Should contain valid Customer model fields.
+        legal_person_identifier (Union[Unset, str]): Official company registration code (required for automatic
+            validation)
+        legal_name (Union[Unset, str]): Company name(optional, for reference)
         expires_at (Union[None, Unset, datetime.datetime]): When this verification expires
     """
 
     user: int
     country: str
-    legal_person_identifier: str
+    legal_person_identifier: Union[Unset, str] = UNSET
     legal_name: Union[Unset, str] = UNSET
-    user_submitted_customer_metadata: Union[Unset, Any] = UNSET
     expires_at: Union[None, Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -40,8 +38,6 @@ class OnboardingVerificationRequest:
         legal_person_identifier = self.legal_person_identifier
 
         legal_name = self.legal_name
-
-        user_submitted_customer_metadata = self.user_submitted_customer_metadata
 
         expires_at: Union[None, Unset, str]
         if isinstance(self.expires_at, Unset):
@@ -57,13 +53,12 @@ class OnboardingVerificationRequest:
             {
                 "user": user,
                 "country": country,
-                "legal_person_identifier": legal_person_identifier,
             }
         )
+        if legal_person_identifier is not UNSET:
+            field_dict["legal_person_identifier"] = legal_person_identifier
         if legal_name is not UNSET:
             field_dict["legal_name"] = legal_name
-        if user_submitted_customer_metadata is not UNSET:
-            field_dict["user_submitted_customer_metadata"] = user_submitted_customer_metadata
         if expires_at is not UNSET:
             field_dict["expires_at"] = expires_at
 
@@ -76,11 +71,9 @@ class OnboardingVerificationRequest:
 
         country = d.pop("country")
 
-        legal_person_identifier = d.pop("legal_person_identifier")
+        legal_person_identifier = d.pop("legal_person_identifier", UNSET)
 
         legal_name = d.pop("legal_name", UNSET)
-
-        user_submitted_customer_metadata = d.pop("user_submitted_customer_metadata", UNSET)
 
         def _parse_expires_at(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
@@ -104,7 +97,6 @@ class OnboardingVerificationRequest:
             country=country,
             legal_person_identifier=legal_person_identifier,
             legal_name=legal_name,
-            user_submitted_customer_metadata=user_submitted_customer_metadata,
             expires_at=expires_at,
         )
 

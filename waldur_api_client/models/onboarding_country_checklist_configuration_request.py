@@ -6,41 +6,40 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="OnboardingCompanyValidationRequestRequest")
+T = TypeVar("T", bound="OnboardingCountryChecklistConfigurationRequest")
 
 
 @_attrs_define
-class OnboardingCompanyValidationRequestRequest:
+class OnboardingCountryChecklistConfigurationRequest:
     """
     Attributes:
         country (str): ISO country code (e.g., 'EE' for Estonia)
-        legal_person_identifier (Union[Unset, str]): Official company registration code
-        legal_name (Union[Unset, str]): Company name (optional)
+        checklist (int): Checklist to use for this country's onboarding
+        is_active (Union[Unset, bool]): Whether this country configuration is active
     """
 
     country: str
-    legal_person_identifier: Union[Unset, str] = UNSET
-    legal_name: Union[Unset, str] = UNSET
+    checklist: int
+    is_active: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         country = self.country
 
-        legal_person_identifier = self.legal_person_identifier
+        checklist = self.checklist
 
-        legal_name = self.legal_name
+        is_active = self.is_active
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "country": country,
+                "checklist": checklist,
             }
         )
-        if legal_person_identifier is not UNSET:
-            field_dict["legal_person_identifier"] = legal_person_identifier
-        if legal_name is not UNSET:
-            field_dict["legal_name"] = legal_name
+        if is_active is not UNSET:
+            field_dict["is_active"] = is_active
 
         return field_dict
 
@@ -49,18 +48,18 @@ class OnboardingCompanyValidationRequestRequest:
         d = dict(src_dict)
         country = d.pop("country")
 
-        legal_person_identifier = d.pop("legal_person_identifier", UNSET)
+        checklist = d.pop("checklist")
 
-        legal_name = d.pop("legal_name", UNSET)
+        is_active = d.pop("is_active", UNSET)
 
-        onboarding_company_validation_request_request = cls(
+        onboarding_country_checklist_configuration_request = cls(
             country=country,
-            legal_person_identifier=legal_person_identifier,
-            legal_name=legal_name,
+            checklist=checklist,
+            is_active=is_active,
         )
 
-        onboarding_company_validation_request_request.additional_properties = d
-        return onboarding_company_validation_request_request
+        onboarding_country_checklist_configuration_request.additional_properties = d
+        return onboarding_country_checklist_configuration_request
 
     @property
     def additional_keys(self) -> list[str]:
