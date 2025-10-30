@@ -14,7 +14,7 @@ class ProposalReviewRequest:
     """
     Attributes:
         proposal (str):
-        reviewer (str):
+        reviewer (Union[Unset, str]):
         summary_score (Union[Unset, int]):
         summary_public_comment (Union[Unset, str]):
         summary_private_comment (Union[Unset, str]):
@@ -30,7 +30,7 @@ class ProposalReviewRequest:
     """
 
     proposal: str
-    reviewer: str
+    reviewer: Union[Unset, str] = UNSET
     summary_score: Union[Unset, int] = UNSET
     summary_public_comment: Union[Unset, str] = UNSET
     summary_private_comment: Union[Unset, str] = UNSET
@@ -115,9 +115,10 @@ class ProposalReviewRequest:
         field_dict.update(
             {
                 "proposal": proposal,
-                "reviewer": reviewer,
             }
         )
+        if reviewer is not UNSET:
+            field_dict["reviewer"] = reviewer
         if summary_score is not UNSET:
             field_dict["summary_score"] = summary_score
         if summary_public_comment is not UNSET:
@@ -150,7 +151,7 @@ class ProposalReviewRequest:
         d = dict(src_dict)
         proposal = d.pop("proposal")
 
-        reviewer = d.pop("reviewer")
+        reviewer = d.pop("reviewer", UNSET)
 
         summary_score = d.pop("summary_score", UNSET)
 

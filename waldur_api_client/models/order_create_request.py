@@ -1,8 +1,10 @@
+import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from ..models.request_types import RequestTypes
 from ..types import UNSET, Unset
@@ -41,6 +43,7 @@ class OrderCreateRequest:
         callback_url (Union[None, Unset, str]):
         request_comment (Union[None, Unset, str]):
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
+        start_date (Union[None, Unset, datetime.date]): Enables delayed processing of resource provisioning order.
     """
 
     offering: str
@@ -62,6 +65,7 @@ class OrderCreateRequest:
     callback_url: Union[None, Unset, str] = UNSET
     request_comment: Union[None, Unset, str] = UNSET
     type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
+    start_date: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -123,6 +127,14 @@ class OrderCreateRequest:
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
+        start_date: Union[None, Unset, str]
+        if isinstance(self.start_date, Unset):
+            start_date = UNSET
+        elif isinstance(self.start_date, datetime.date):
+            start_date = self.start_date.isoformat()
+        else:
+            start_date = self.start_date
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -145,6 +157,8 @@ class OrderCreateRequest:
             field_dict["request_comment"] = request_comment
         if type_ is not UNSET:
             field_dict["type"] = type_
+        if start_date is not UNSET:
+            field_dict["start_date"] = start_date
 
         return field_dict
 
@@ -282,6 +296,23 @@ class OrderCreateRequest:
         else:
             type_ = RequestTypes(_type_)
 
+        def _parse_start_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                start_date_type_0 = isoparse(data).date()
+
+                return start_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        start_date = _parse_start_date(d.pop("start_date", UNSET))
+
         order_create_request = cls(
             offering=offering,
             project=project,
@@ -292,6 +323,7 @@ class OrderCreateRequest:
             callback_url=callback_url,
             request_comment=request_comment,
             type_=type_,
+            start_date=start_date,
         )
 
         order_create_request.additional_properties = d

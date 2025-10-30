@@ -54,8 +54,6 @@ class OfferingCreate:
         category_uuid (UUID):
         category_title (str):
         plugin_options (MergedPluginOptions):
-        secret_options (MergedSecretOptions):
-        service_attributes (OfferingCreateServiceAttributes):
         state (OfferingState):
         order_count (int):
         screenshots (list['NestedScreenshot']):
@@ -87,6 +85,8 @@ class OfferingCreate:
         options (Union[Unset, OfferingOptions]):
         resource_options (Union[Unset, OfferingOptions]):
         components (Union[Unset, list['OfferingComponent']]):
+        secret_options (Union[Unset, MergedSecretOptions]):
+        service_attributes (Union[Unset, OfferingCreateServiceAttributes]):
         vendor_details (Union[Unset, str]):
         getting_started (Union[Unset, str]):
         integration_guide (Union[Unset, str]):
@@ -121,8 +121,6 @@ class OfferingCreate:
     category_uuid: UUID
     category_title: str
     plugin_options: "MergedPluginOptions"
-    secret_options: "MergedSecretOptions"
-    service_attributes: "OfferingCreateServiceAttributes"
     state: OfferingState
     order_count: int
     screenshots: list["NestedScreenshot"]
@@ -154,6 +152,8 @@ class OfferingCreate:
     options: Union[Unset, "OfferingOptions"] = UNSET
     resource_options: Union[Unset, "OfferingOptions"] = UNSET
     components: Union[Unset, list["OfferingComponent"]] = UNSET
+    secret_options: Union[Unset, "MergedSecretOptions"] = UNSET
+    service_attributes: Union[Unset, "OfferingCreateServiceAttributes"] = UNSET
     vendor_details: Union[Unset, str] = UNSET
     getting_started: Union[Unset, str] = UNSET
     integration_guide: Union[Unset, str] = UNSET
@@ -228,10 +228,6 @@ class OfferingCreate:
         category_title = self.category_title
 
         plugin_options = self.plugin_options.to_dict()
-
-        secret_options = self.secret_options.to_dict()
-
-        service_attributes = self.service_attributes.to_dict()
 
         state = self.state.value
 
@@ -342,6 +338,14 @@ class OfferingCreate:
                 components_item = components_item_data.to_dict()
                 components.append(components_item)
 
+        secret_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.secret_options, Unset):
+            secret_options = self.secret_options.to_dict()
+
+        service_attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.service_attributes, Unset):
+            service_attributes = self.service_attributes.to_dict()
+
         vendor_details = self.vendor_details
 
         getting_started = self.getting_started
@@ -424,8 +428,6 @@ class OfferingCreate:
                 "category_uuid": category_uuid,
                 "category_title": category_title,
                 "plugin_options": plugin_options,
-                "secret_options": secret_options,
-                "service_attributes": service_attributes,
                 "state": state,
                 "order_count": order_count,
                 "screenshots": screenshots,
@@ -469,6 +471,10 @@ class OfferingCreate:
             field_dict["resource_options"] = resource_options
         if components is not UNSET:
             field_dict["components"] = components
+        if secret_options is not UNSET:
+            field_dict["secret_options"] = secret_options
+        if service_attributes is not UNSET:
+            field_dict["service_attributes"] = service_attributes
         if vendor_details is not UNSET:
             field_dict["vendor_details"] = vendor_details
         if getting_started is not UNSET:
@@ -614,10 +620,6 @@ class OfferingCreate:
         category_title = d.pop("category_title")
 
         plugin_options = MergedPluginOptions.from_dict(d.pop("plugin_options"))
-
-        secret_options = MergedSecretOptions.from_dict(d.pop("secret_options"))
-
-        service_attributes = OfferingCreateServiceAttributes.from_dict(d.pop("service_attributes"))
 
         state = OfferingState(d.pop("state"))
 
@@ -805,6 +807,20 @@ class OfferingCreate:
 
             components.append(components_item)
 
+        _secret_options = d.pop("secret_options", UNSET)
+        secret_options: Union[Unset, MergedSecretOptions]
+        if isinstance(_secret_options, Unset):
+            secret_options = UNSET
+        else:
+            secret_options = MergedSecretOptions.from_dict(_secret_options)
+
+        _service_attributes = d.pop("service_attributes", UNSET)
+        service_attributes: Union[Unset, OfferingCreateServiceAttributes]
+        if isinstance(_service_attributes, Unset):
+            service_attributes = UNSET
+        else:
+            service_attributes = OfferingCreateServiceAttributes.from_dict(_service_attributes)
+
         vendor_details = d.pop("vendor_details", UNSET)
 
         getting_started = d.pop("getting_started", UNSET)
@@ -910,8 +926,6 @@ class OfferingCreate:
             category_uuid=category_uuid,
             category_title=category_title,
             plugin_options=plugin_options,
-            secret_options=secret_options,
-            service_attributes=service_attributes,
             state=state,
             order_count=order_count,
             screenshots=screenshots,
@@ -943,6 +957,8 @@ class OfferingCreate:
             options=options,
             resource_options=resource_options,
             components=components,
+            secret_options=secret_options,
+            service_attributes=service_attributes,
             vendor_details=vendor_details,
             getting_started=getting_started,
             integration_guide=integration_guide,

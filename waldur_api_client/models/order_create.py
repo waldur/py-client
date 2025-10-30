@@ -54,7 +54,6 @@ class OrderCreate:
         output (str):
         marketplace_resource_uuid (UUID):
         error_message (str):
-        error_traceback (str):
         completed_at (Union[None, datetime.datetime]):
         attachment (Union[None, str]):
         url (str):
@@ -76,9 +75,11 @@ class OrderCreate:
         plan (Union[Unset, str]):
         attributes (Union[Unset, Any]):
         limits (Union[Unset, OrderCreateLimits]):
+        error_traceback (Union[Unset, str]):
         callback_url (Union[None, Unset, str]):
         request_comment (Union[None, Unset, str]):
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
+        start_date (Union[None, Unset, datetime.date]): Enables delayed processing of resource provisioning order.
     """
 
     offering: str
@@ -112,7 +113,6 @@ class OrderCreate:
     output: str
     marketplace_resource_uuid: UUID
     error_message: str
-    error_traceback: str
     completed_at: Union[None, datetime.datetime]
     attachment: Union[None, str]
     url: str
@@ -132,9 +132,11 @@ class OrderCreate:
     plan: Union[Unset, str] = UNSET
     attributes: Union[Unset, Any] = UNSET
     limits: Union[Unset, "OrderCreateLimits"] = UNSET
+    error_traceback: Union[Unset, str] = UNSET
     callback_url: Union[None, Unset, str] = UNSET
     request_comment: Union[None, Unset, str] = UNSET
     type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
+    start_date: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -216,8 +218,6 @@ class OrderCreate:
 
         error_message = self.error_message
 
-        error_traceback = self.error_traceback
-
         completed_at: Union[None, str]
         if isinstance(self.completed_at, datetime.datetime):
             completed_at = self.completed_at.isoformat()
@@ -270,6 +270,8 @@ class OrderCreate:
         if not isinstance(self.limits, Unset):
             limits = self.limits.to_dict()
 
+        error_traceback = self.error_traceback
+
         callback_url: Union[None, Unset, str]
         if isinstance(self.callback_url, Unset):
             callback_url = UNSET
@@ -285,6 +287,14 @@ class OrderCreate:
         type_: Union[Unset, str] = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
+
+        start_date: Union[None, Unset, str]
+        if isinstance(self.start_date, Unset):
+            start_date = UNSET
+        elif isinstance(self.start_date, datetime.date):
+            start_date = self.start_date.isoformat()
+        else:
+            start_date = self.start_date
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -321,7 +331,6 @@ class OrderCreate:
                 "output": output,
                 "marketplace_resource_uuid": marketplace_resource_uuid,
                 "error_message": error_message,
-                "error_traceback": error_traceback,
                 "completed_at": completed_at,
                 "attachment": attachment,
                 "url": url,
@@ -346,12 +355,16 @@ class OrderCreate:
             field_dict["attributes"] = attributes
         if limits is not UNSET:
             field_dict["limits"] = limits
+        if error_traceback is not UNSET:
+            field_dict["error_traceback"] = error_traceback
         if callback_url is not UNSET:
             field_dict["callback_url"] = callback_url
         if request_comment is not UNSET:
             field_dict["request_comment"] = request_comment
         if type_ is not UNSET:
             field_dict["type"] = type_
+        if start_date is not UNSET:
+            field_dict["start_date"] = start_date
 
         return field_dict
 
@@ -481,8 +494,6 @@ class OrderCreate:
 
         error_message = d.pop("error_message")
 
-        error_traceback = d.pop("error_traceback")
-
         def _parse_completed_at(data: object) -> Union[None, datetime.datetime]:
             if data is None:
                 return data
@@ -572,6 +583,8 @@ class OrderCreate:
         else:
             limits = OrderCreateLimits.from_dict(_limits)
 
+        error_traceback = d.pop("error_traceback", UNSET)
+
         def _parse_callback_url(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -596,6 +609,23 @@ class OrderCreate:
             type_ = UNSET
         else:
             type_ = RequestTypes(_type_)
+
+        def _parse_start_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                start_date_type_0 = isoparse(data).date()
+
+                return start_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        start_date = _parse_start_date(d.pop("start_date", UNSET))
 
         order_create = cls(
             offering=offering,
@@ -629,7 +659,6 @@ class OrderCreate:
             output=output,
             marketplace_resource_uuid=marketplace_resource_uuid,
             error_message=error_message,
-            error_traceback=error_traceback,
             completed_at=completed_at,
             attachment=attachment,
             url=url,
@@ -649,9 +678,11 @@ class OrderCreate:
             plan=plan,
             attributes=attributes,
             limits=limits,
+            error_traceback=error_traceback,
             callback_url=callback_url,
             request_comment=request_comment,
             type_=type_,
+            start_date=start_date,
         )
 
         order_create.additional_properties = d

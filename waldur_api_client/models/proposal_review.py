@@ -23,12 +23,6 @@ class ProposalReview:
         proposal_name (str):
         proposal_uuid (UUID):
         proposal_slug (str):
-        reviewer (str):
-        reviewer_full_name (str):
-        reviewer_uuid (UUID):
-        anonymous_reviewer_name (Union[None, str]): Generate an anonymous reviewer identifier like 'Reviewer 1',
-            'Reviewer 2'.
-            Returns None if the review is not associated with a proposal.
         state (ProposalReviewStateEnum):
         review_end_date (datetime.datetime):
         round_uuid (UUID):
@@ -42,6 +36,12 @@ class ProposalReview:
         call_managing_organisation_uuid (UUID):
         created (datetime.datetime):
         modified (datetime.datetime):
+        reviewer (Union[Unset, str]):
+        reviewer_full_name (Union[Unset, str]):
+        reviewer_uuid (Union[Unset, UUID]):
+        anonymous_reviewer_name (Union[None, Unset, str]): Generate an anonymous reviewer identifier like 'Reviewer 1',
+            'Reviewer 2'.
+            Returns None if the review is not associated with a proposal.
         summary_score (Union[Unset, int]):
         summary_public_comment (Union[Unset, str]):
         summary_private_comment (Union[Unset, str]):
@@ -62,10 +62,6 @@ class ProposalReview:
     proposal_name: str
     proposal_uuid: UUID
     proposal_slug: str
-    reviewer: str
-    reviewer_full_name: str
-    reviewer_uuid: UUID
-    anonymous_reviewer_name: Union[None, str]
     state: ProposalReviewStateEnum
     review_end_date: datetime.datetime
     round_uuid: UUID
@@ -79,6 +75,10 @@ class ProposalReview:
     call_managing_organisation_uuid: UUID
     created: datetime.datetime
     modified: datetime.datetime
+    reviewer: Union[Unset, str] = UNSET
+    reviewer_full_name: Union[Unset, str] = UNSET
+    reviewer_uuid: Union[Unset, UUID] = UNSET
+    anonymous_reviewer_name: Union[None, Unset, str] = UNSET
     summary_score: Union[Unset, int] = UNSET
     summary_public_comment: Union[Unset, str] = UNSET
     summary_private_comment: Union[Unset, str] = UNSET
@@ -106,15 +106,6 @@ class ProposalReview:
 
         proposal_slug = self.proposal_slug
 
-        reviewer = self.reviewer
-
-        reviewer_full_name = self.reviewer_full_name
-
-        reviewer_uuid = str(self.reviewer_uuid)
-
-        anonymous_reviewer_name: Union[None, str]
-        anonymous_reviewer_name = self.anonymous_reviewer_name
-
         state = self.state.value
 
         review_end_date = self.review_end_date.isoformat()
@@ -140,6 +131,20 @@ class ProposalReview:
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
+
+        reviewer = self.reviewer
+
+        reviewer_full_name = self.reviewer_full_name
+
+        reviewer_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.reviewer_uuid, Unset):
+            reviewer_uuid = str(self.reviewer_uuid)
+
+        anonymous_reviewer_name: Union[None, Unset, str]
+        if isinstance(self.anonymous_reviewer_name, Unset):
+            anonymous_reviewer_name = UNSET
+        else:
+            anonymous_reviewer_name = self.anonymous_reviewer_name
 
         summary_score = self.summary_score
 
@@ -211,10 +216,6 @@ class ProposalReview:
                 "proposal_name": proposal_name,
                 "proposal_uuid": proposal_uuid,
                 "proposal_slug": proposal_slug,
-                "reviewer": reviewer,
-                "reviewer_full_name": reviewer_full_name,
-                "reviewer_uuid": reviewer_uuid,
-                "anonymous_reviewer_name": anonymous_reviewer_name,
                 "state": state,
                 "review_end_date": review_end_date,
                 "round_uuid": round_uuid,
@@ -230,6 +231,14 @@ class ProposalReview:
                 "modified": modified,
             }
         )
+        if reviewer is not UNSET:
+            field_dict["reviewer"] = reviewer
+        if reviewer_full_name is not UNSET:
+            field_dict["reviewer_full_name"] = reviewer_full_name
+        if reviewer_uuid is not UNSET:
+            field_dict["reviewer_uuid"] = reviewer_uuid
+        if anonymous_reviewer_name is not UNSET:
+            field_dict["anonymous_reviewer_name"] = anonymous_reviewer_name
         if summary_score is not UNSET:
             field_dict["summary_score"] = summary_score
         if summary_public_comment is not UNSET:
@@ -272,19 +281,6 @@ class ProposalReview:
 
         proposal_slug = d.pop("proposal_slug")
 
-        reviewer = d.pop("reviewer")
-
-        reviewer_full_name = d.pop("reviewer_full_name")
-
-        reviewer_uuid = UUID(d.pop("reviewer_uuid"))
-
-        def _parse_anonymous_reviewer_name(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        anonymous_reviewer_name = _parse_anonymous_reviewer_name(d.pop("anonymous_reviewer_name"))
-
         state = ProposalReviewStateEnum(d.pop("state"))
 
         review_end_date = isoparse(d.pop("review_end_date"))
@@ -310,6 +306,26 @@ class ProposalReview:
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
+
+        reviewer = d.pop("reviewer", UNSET)
+
+        reviewer_full_name = d.pop("reviewer_full_name", UNSET)
+
+        _reviewer_uuid = d.pop("reviewer_uuid", UNSET)
+        reviewer_uuid: Union[Unset, UUID]
+        if isinstance(_reviewer_uuid, Unset):
+            reviewer_uuid = UNSET
+        else:
+            reviewer_uuid = UUID(_reviewer_uuid)
+
+        def _parse_anonymous_reviewer_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        anonymous_reviewer_name = _parse_anonymous_reviewer_name(d.pop("anonymous_reviewer_name", UNSET))
 
         summary_score = d.pop("summary_score", UNSET)
 
@@ -411,10 +427,6 @@ class ProposalReview:
             proposal_name=proposal_name,
             proposal_uuid=proposal_uuid,
             proposal_slug=proposal_slug,
-            reviewer=reviewer,
-            reviewer_full_name=reviewer_full_name,
-            reviewer_uuid=reviewer_uuid,
-            anonymous_reviewer_name=anonymous_reviewer_name,
             state=state,
             review_end_date=review_end_date,
             round_uuid=round_uuid,
@@ -428,6 +440,10 @@ class ProposalReview:
             call_managing_organisation_uuid=call_managing_organisation_uuid,
             created=created,
             modified=modified,
+            reviewer=reviewer,
+            reviewer_full_name=reviewer_full_name,
+            reviewer_uuid=reviewer_uuid,
+            anonymous_reviewer_name=anonymous_reviewer_name,
             summary_score=summary_score,
             summary_public_comment=summary_public_comment,
             summary_private_comment=summary_private_comment,
