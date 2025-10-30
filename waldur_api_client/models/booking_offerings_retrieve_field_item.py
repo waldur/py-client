@@ -54,6 +54,8 @@ class BookingOfferingsRetrieveFieldItem(str, Enum):
     SCOPE_STATE = "scope_state"
     SCOPE_UUID = "scope_uuid"
     SCREENSHOTS = "screenshots"
+    SECRET_OPTIONS = "secret_options"
+    SERVICE_ATTRIBUTES = "service_attributes"
     SHARED = "shared"
     SLUG = "slug"
     SOFTWARE_CATALOGS = "software_catalogs"

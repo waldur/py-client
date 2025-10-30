@@ -688,6 +688,7 @@ from .marketplace_service_providers_project_permissions_list_o_item import (
 from .marketplace_service_providers_project_service_accounts_list_state_item import (
     MarketplaceServiceProvidersProjectServiceAccountsListStateItem,
 )
+from .marketplace_service_providers_projects_list_field_item import MarketplaceServiceProvidersProjectsListFieldItem
 from .marketplace_service_providers_projects_list_o_item import MarketplaceServiceProvidersProjectsListOItem
 from .marketplace_service_providers_retrieve_field_item import MarketplaceServiceProvidersRetrieveFieldItem
 from .marketplace_service_providers_user_customers_list_field_item import (
@@ -2422,6 +2423,7 @@ __all__ = (
     "MarketplaceServiceProvidersProjectPermissionsListFieldItem",
     "MarketplaceServiceProvidersProjectPermissionsListOItem",
     "MarketplaceServiceProvidersProjectServiceAccountsListStateItem",
+    "MarketplaceServiceProvidersProjectsListFieldItem",
     "MarketplaceServiceProvidersProjectsListOItem",
     "MarketplaceServiceProvidersRetrieveFieldItem",
     "MarketplaceServiceProvidersUserCustomersListFieldItem",

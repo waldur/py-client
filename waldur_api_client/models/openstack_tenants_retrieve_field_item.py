@@ -2,7 +2,6 @@ from enum import Enum
 
 
 class OpenstackTenantsRetrieveFieldItem(str, Enum):
-    ACCESS_URL = "access_url"
     AVAILABILITY_ZONE = "availability_zone"
     BACKEND_ID = "backend_id"
     CREATED = "created"
@@ -42,8 +41,6 @@ class OpenstackTenantsRetrieveFieldItem(str, Enum):
     STATE = "state"
     SUBNET_CIDR = "subnet_cidr"
     URL = "url"
-    USER_PASSWORD = "user_password"
-    USER_USERNAME = "user_username"
     UUID = "uuid"
 
     def __str__(self) -> str:

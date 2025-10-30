@@ -47,6 +47,7 @@ class MergedPluginOptions:
             in a tenant
         max_instances (Union[Unset, int]): Default limit for number of instances in OpenStack tenant
         max_volumes (Union[Unset, int]): Default limit for number of volumes in OpenStack tenant
+        max_security_groups (Union[Unset, int]): Default limit for number of security groups in OpenStack tenant
         storage_mode (Union[Unset, StorageModeEnum]):
         snapshot_size_limit_gb (Union[Unset, int]): Default limit for snapshot size in GB
         heappe_cluster_id (Union[Unset, str]): HEAppE cluster id
@@ -109,6 +110,7 @@ class MergedPluginOptions:
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
     max_volumes: Union[Unset, int] = UNSET
+    max_security_groups: Union[Unset, int] = UNSET
     storage_mode: Union[Unset, StorageModeEnum] = UNSET
     snapshot_size_limit_gb: Union[Unset, int] = UNSET
     heappe_cluster_id: Union[Unset, str] = UNSET
@@ -189,6 +191,8 @@ class MergedPluginOptions:
         max_instances = self.max_instances
 
         max_volumes = self.max_volumes
+
+        max_security_groups = self.max_security_groups
 
         storage_mode: Union[Unset, str] = UNSET
         if not isinstance(self.storage_mode, Unset):
@@ -319,6 +323,8 @@ class MergedPluginOptions:
             field_dict["max_instances"] = max_instances
         if max_volumes is not UNSET:
             field_dict["max_volumes"] = max_volumes
+        if max_security_groups is not UNSET:
+            field_dict["max_security_groups"] = max_security_groups
         if storage_mode is not UNSET:
             field_dict["storage_mode"] = storage_mode
         if snapshot_size_limit_gb is not UNSET:
@@ -452,6 +458,8 @@ class MergedPluginOptions:
 
         max_volumes = d.pop("max_volumes", UNSET)
 
+        max_security_groups = d.pop("max_security_groups", UNSET)
+
         _storage_mode = d.pop("storage_mode", UNSET)
         storage_mode: Union[Unset, StorageModeEnum]
         if isinstance(_storage_mode, Unset):
@@ -584,6 +592,7 @@ class MergedPluginOptions:
             default_internal_network_mtu=default_internal_network_mtu,
             max_instances=max_instances,
             max_volumes=max_volumes,
+            max_security_groups=max_security_groups,
             storage_mode=storage_mode,
             snapshot_size_limit_gb=snapshot_size_limit_gb,
             heappe_cluster_id=heappe_cluster_id,
