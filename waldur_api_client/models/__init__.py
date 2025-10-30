@@ -1672,6 +1672,7 @@ from .support_issues_count_o_item import SupportIssuesCountOItem
 from .support_issues_list_o_item import SupportIssuesListOItem
 from .support_stats import SupportStats
 from .support_user import SupportUser
+from .supported_countries_response import SupportedCountriesResponse
 from .sync_status_enum import SyncStatusEnum
 from .table_size import TableSize
 from .template import Template
@@ -3342,6 +3343,7 @@ __all__ = (
     "SupportAttachmentsRetrieveFieldItem",
     "SupportCommentsCountOItem",
     "SupportCommentsListOItem",
+    "SupportedCountriesResponse",
     "SupportIssuesCountOItem",
     "SupportIssuesListOItem",
     "SupportStats",
