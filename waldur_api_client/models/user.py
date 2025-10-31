@@ -51,6 +51,7 @@ class User:
         affiliations (Union[Unset, Any]): Person's affiliation within organization such as student, faculty, staff.
         first_name (Union[Unset, str]):
         last_name (Union[Unset, str]):
+        birth_date (Union[None, Unset, datetime.date]):
         identity_provider_name (Union[Unset, str]):
         identity_provider_label (Union[Unset, str]):
         identity_provider_management_url (Union[Unset, str]):
@@ -89,6 +90,7 @@ class User:
     affiliations: Union[Unset, Any] = UNSET
     first_name: Union[Unset, str] = UNSET
     last_name: Union[Unset, str] = UNSET
+    birth_date: Union[None, Unset, datetime.date] = UNSET
     identity_provider_name: Union[Unset, str] = UNSET
     identity_provider_label: Union[Unset, str] = UNSET
     identity_provider_management_url: Union[Unset, str] = UNSET
@@ -189,6 +191,14 @@ class User:
 
         last_name = self.last_name
 
+        birth_date: Union[None, Unset, str]
+        if isinstance(self.birth_date, Unset):
+            birth_date = UNSET
+        elif isinstance(self.birth_date, datetime.date):
+            birth_date = self.birth_date.isoformat()
+        else:
+            birth_date = self.birth_date
+
         identity_provider_name = self.identity_provider_name
 
         identity_provider_label = self.identity_provider_label
@@ -274,6 +284,8 @@ class User:
             field_dict["first_name"] = first_name
         if last_name is not UNSET:
             field_dict["last_name"] = last_name
+        if birth_date is not UNSET:
+            field_dict["birth_date"] = birth_date
         if identity_provider_name is not UNSET:
             field_dict["identity_provider_name"] = identity_provider_name
         if identity_provider_label is not UNSET:
@@ -420,6 +432,23 @@ class User:
 
         last_name = d.pop("last_name", UNSET)
 
+        def _parse_birth_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                birth_date_type_0 = isoparse(data).date()
+
+                return birth_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        birth_date = _parse_birth_date(d.pop("birth_date", UNSET))
+
         identity_provider_name = d.pop("identity_provider_name", UNSET)
 
         identity_provider_label = d.pop("identity_provider_label", UNSET)
@@ -479,6 +508,7 @@ class User:
             affiliations=affiliations,
             first_name=first_name,
             last_name=last_name,
+            birth_date=birth_date,
             identity_provider_name=identity_provider_name,
             identity_provider_label=identity_provider_label,
             identity_provider_management_url=identity_provider_management_url,

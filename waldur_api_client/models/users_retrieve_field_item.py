@@ -5,6 +5,7 @@ class UsersRetrieveFieldItem(str, Enum):
     AFFILIATIONS = "affiliations"
     AGREEMENT_DATE = "agreement_date"
     AGREE_WITH_POLICY = "agree_with_policy"
+    BIRTH_DATE = "birth_date"
     CIVIL_NUMBER = "civil_number"
     DATE_JOINED = "date_joined"
     DESCRIPTION = "description"

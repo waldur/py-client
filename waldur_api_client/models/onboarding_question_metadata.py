@@ -17,7 +17,8 @@ class OnboardingQuestionMetadata:
     """
     Attributes:
         uuid (UUID):
-        question (int): Question this metadata applies to
+        url (str):
+        question (str): Question this metadata applies to
         question_uuid (UUID):
         question_description (str):
         created (datetime.datetime):
@@ -29,7 +30,8 @@ class OnboardingQuestionMetadata:
     """
 
     uuid: UUID
-    question: int
+    url: str
+    question: str
     question_uuid: UUID
     question_description: str
     created: datetime.datetime
@@ -40,6 +42,8 @@ class OnboardingQuestionMetadata:
 
     def to_dict(self) -> dict[str, Any]:
         uuid = str(self.uuid)
+
+        url = self.url
 
         question = self.question
 
@@ -60,6 +64,7 @@ class OnboardingQuestionMetadata:
         field_dict.update(
             {
                 "uuid": uuid,
+                "url": url,
                 "question": question,
                 "question_uuid": question_uuid,
                 "question_description": question_description,
@@ -79,6 +84,8 @@ class OnboardingQuestionMetadata:
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
+        url = d.pop("url")
+
         question = d.pop("question")
 
         question_uuid = UUID(d.pop("question_uuid"))
@@ -95,6 +102,7 @@ class OnboardingQuestionMetadata:
 
         onboarding_question_metadata = cls(
             uuid=uuid,
+            url=url,
             question=question,
             question_uuid=question_uuid,
             question_description=question_description,

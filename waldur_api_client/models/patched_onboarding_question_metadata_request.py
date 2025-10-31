@@ -13,14 +13,14 @@ T = TypeVar("T", bound="PatchedOnboardingQuestionMetadataRequest")
 class PatchedOnboardingQuestionMetadataRequest:
     """
     Attributes:
-        question (Union[Unset, int]): Question this metadata applies to
+        question (Union[Unset, str]): Question this metadata applies to
         maps_to_customer_field (Union[Unset, str]): Customer model field name to map this answer to (e.g.,
             'registration_code', 'email', 'vat_code')
         intent_field (Union[Unset, str]): Type of intent/purpose field (e.g., 'intent', 'registration_purpose') - stays
             with verification
     """
 
-    question: Union[Unset, int] = UNSET
+    question: Union[Unset, str] = UNSET
     maps_to_customer_field: Union[Unset, str] = UNSET
     intent_field: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)

@@ -160,6 +160,8 @@ class ConstanceSettingsRequest:
         onboarding_ariregister_username (Union[Unset, str]):
         onboarding_ariregister_password (Union[Unset, str]):
         onboarding_ariregister_timeout (Union[Unset, int]):
+        onboarding_wico_api_url (Union[Unset, str]):
+        onboarding_wico_token (Union[Unset, str]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -307,6 +309,8 @@ class ConstanceSettingsRequest:
     onboarding_ariregister_username: Union[Unset, str] = UNSET
     onboarding_ariregister_password: Union[Unset, str] = UNSET
     onboarding_ariregister_timeout: Union[Unset, int] = UNSET
+    onboarding_wico_api_url: Union[Unset, str] = UNSET
+    onboarding_wico_token: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -690,6 +694,10 @@ class ConstanceSettingsRequest:
 
         onboarding_ariregister_timeout = self.onboarding_ariregister_timeout
 
+        onboarding_wico_api_url = self.onboarding_wico_api_url
+
+        onboarding_wico_token = self.onboarding_wico_token
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -989,6 +997,10 @@ class ConstanceSettingsRequest:
             field_dict["ONBOARDING_ARIREGISTER_PASSWORD"] = onboarding_ariregister_password
         if onboarding_ariregister_timeout is not UNSET:
             field_dict["ONBOARDING_ARIREGISTER_TIMEOUT"] = onboarding_ariregister_timeout
+        if onboarding_wico_api_url is not UNSET:
+            field_dict["ONBOARDING_WICO_API_URL"] = onboarding_wico_api_url
+        if onboarding_wico_token is not UNSET:
+            field_dict["ONBOARDING_WICO_TOKEN"] = onboarding_wico_token
 
         return field_dict
 
@@ -1469,6 +1481,10 @@ class ConstanceSettingsRequest:
 
         onboarding_ariregister_timeout = d.pop("ONBOARDING_ARIREGISTER_TIMEOUT", UNSET)
 
+        onboarding_wico_api_url = d.pop("ONBOARDING_WICO_API_URL", UNSET)
+
+        onboarding_wico_token = d.pop("ONBOARDING_WICO_TOKEN", UNSET)
+
         constance_settings_request = cls(
             site_name=site_name,
             site_description=site_description,
@@ -1615,6 +1631,8 @@ class ConstanceSettingsRequest:
             onboarding_ariregister_username=onboarding_ariregister_username,
             onboarding_ariregister_password=onboarding_ariregister_password,
             onboarding_ariregister_timeout=onboarding_ariregister_timeout,
+            onboarding_wico_api_url=onboarding_wico_api_url,
+            onboarding_wico_token=onboarding_wico_token,
         )
 
         constance_settings_request.additional_properties = d

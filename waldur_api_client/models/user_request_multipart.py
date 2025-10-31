@@ -1,9 +1,11 @@
+import datetime
 from collections.abc import Mapping
 from io import BytesIO
 from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from .. import types
 from ..types import UNSET, File, Unset
@@ -34,6 +36,7 @@ class UserRequestMultipart:
         preferred_language (Union[Unset, str]):
         first_name (Union[Unset, str]):
         last_name (Union[Unset, str]):
+        birth_date (Union[None, Unset, datetime.date]):
         image (Union[File, None, Unset]):
     """
 
@@ -54,6 +57,7 @@ class UserRequestMultipart:
     preferred_language: Union[Unset, str] = UNSET
     first_name: Union[Unset, str] = UNSET
     last_name: Union[Unset, str] = UNSET
+    birth_date: Union[None, Unset, datetime.date] = UNSET
     image: Union[File, None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -95,6 +99,14 @@ class UserRequestMultipart:
         first_name = self.first_name
 
         last_name = self.last_name
+
+        birth_date: Union[None, Unset, str]
+        if isinstance(self.birth_date, Unset):
+            birth_date = UNSET
+        elif isinstance(self.birth_date, datetime.date):
+            birth_date = self.birth_date.isoformat()
+        else:
+            birth_date = self.birth_date
 
         image: Union[None, Unset, types.FileTypes]
         if isinstance(self.image, Unset):
@@ -143,6 +155,8 @@ class UserRequestMultipart:
             field_dict["first_name"] = first_name
         if last_name is not UNSET:
             field_dict["last_name"] = last_name
+        if birth_date is not UNSET:
+            field_dict["birth_date"] = birth_date
         if image is not UNSET:
             field_dict["image"] = image
 
@@ -203,6 +217,12 @@ class UserRequestMultipart:
         if not isinstance(self.last_name, Unset):
             files.append(("last_name", (None, str(self.last_name).encode(), "text/plain")))
 
+        if not isinstance(self.birth_date, Unset):
+            if isinstance(self.birth_date, datetime.date):
+                files.append(("birth_date", (None, self.birth_date.isoformat().encode(), "text/plain")))
+            else:
+                files.append(("birth_date", (None, str(self.birth_date).encode(), "text/plain")))
+
         if not isinstance(self.image, Unset):
             if isinstance(self.image, File):
                 files.append(("image", self.image.to_tuple()))
@@ -258,6 +278,23 @@ class UserRequestMultipart:
 
         last_name = d.pop("last_name", UNSET)
 
+        def _parse_birth_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                birth_date_type_0 = isoparse(data).date()
+
+                return birth_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        birth_date = _parse_birth_date(d.pop("birth_date", UNSET))
+
         def _parse_image(data: object) -> Union[File, None, Unset]:
             if data is None:
                 return data
@@ -293,6 +330,7 @@ class UserRequestMultipart:
             preferred_language=preferred_language,
             first_name=first_name,
             last_name=last_name,
+            birth_date=birth_date,
             image=image,
         )
 

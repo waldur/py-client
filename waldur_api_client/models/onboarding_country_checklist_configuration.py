@@ -16,9 +16,10 @@ T = TypeVar("T", bound="OnboardingCountryChecklistConfiguration")
 class OnboardingCountryChecklistConfiguration:
     """
     Attributes:
+        url (str):
         uuid (UUID):
         country (str): ISO country code (e.g., 'EE' for Estonia)
-        checklist (int): Checklist to use for this country's onboarding
+        checklist (str): Checklist to use for this country's onboarding
         checklist_name (str):
         checklist_uuid (UUID):
         created (datetime.datetime):
@@ -26,9 +27,10 @@ class OnboardingCountryChecklistConfiguration:
         is_active (Union[Unset, bool]): Whether this country configuration is active
     """
 
+    url: str
     uuid: UUID
     country: str
-    checklist: int
+    checklist: str
     checklist_name: str
     checklist_uuid: UUID
     created: datetime.datetime
@@ -37,6 +39,8 @@ class OnboardingCountryChecklistConfiguration:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        url = self.url
+
         uuid = str(self.uuid)
 
         country = self.country
@@ -57,6 +61,7 @@ class OnboardingCountryChecklistConfiguration:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "url": url,
                 "uuid": uuid,
                 "country": country,
                 "checklist": checklist,
@@ -74,6 +79,8 @@ class OnboardingCountryChecklistConfiguration:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        url = d.pop("url")
+
         uuid = UUID(d.pop("uuid"))
 
         country = d.pop("country")
@@ -91,6 +98,7 @@ class OnboardingCountryChecklistConfiguration:
         is_active = d.pop("is_active", UNSET)
 
         onboarding_country_checklist_configuration = cls(
+            url=url,
             uuid=uuid,
             country=country,
             checklist=checklist,

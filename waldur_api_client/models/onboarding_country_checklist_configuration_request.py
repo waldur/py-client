@@ -14,12 +14,12 @@ class OnboardingCountryChecklistConfigurationRequest:
     """
     Attributes:
         country (str): ISO country code (e.g., 'EE' for Estonia)
-        checklist (int): Checklist to use for this country's onboarding
+        checklist (str): Checklist to use for this country's onboarding
         is_active (Union[Unset, bool]): Whether this country configuration is active
     """
 
     country: str
-    checklist: int
+    checklist: str
     is_active: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

@@ -10,10 +10,16 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    country: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["country"] = country
+
+    params["is_active"] = is_active
 
     params["page"] = page
 
@@ -59,12 +65,16 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    country: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        country (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -77,6 +87,8 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        country=country,
+        is_active=is_active,
         page=page,
         page_size=page_size,
     )
@@ -91,12 +103,16 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    country: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        country (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -110,6 +126,8 @@ def sync(
 
     return sync_detailed(
         client=client,
+        country=country,
+        is_active=is_active,
         page=page,
         page_size=page_size,
     ).parsed
@@ -118,12 +136,16 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    country: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        country (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -136,6 +158,8 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        country=country,
+        is_active=is_active,
         page=page,
         page_size=page_size,
     )
@@ -148,12 +172,16 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    country: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        country (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -168,6 +196,8 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            country=country,
+            is_active=is_active,
             page=page,
             page_size=page_size,
         )
