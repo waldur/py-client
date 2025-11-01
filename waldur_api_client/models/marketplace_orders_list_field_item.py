@@ -28,6 +28,7 @@ class MarketplaceOrdersListFieldItem(str, Enum):
     ERROR_MESSAGE = "error_message"
     ERROR_TRACEBACK = "error_traceback"
     FIXED_PRICE = "fixed_price"
+    ISSUE = "issue"
     LIMITS = "limits"
     MARKETPLACE_RESOURCE_UUID = "marketplace_resource_uuid"
     MODIFIED = "modified"

@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class MarketplaceOrdersRetrieveFieldItem(str, Enum):
+class MarketplaceProviderOfferingsOrdersListFieldItem(str, Enum):
     ACCEPTING_TERMS_OF_SERVICE = "accepting_terms_of_service"
     ACTIVATION_PRICE = "activation_price"
     ATTACHMENT = "attachment"

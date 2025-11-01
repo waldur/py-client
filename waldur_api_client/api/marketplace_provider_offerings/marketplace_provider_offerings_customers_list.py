@@ -7,6 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_provider_offerings_customers_list_field_item import (
+    MarketplaceProviderOfferingsCustomersListFieldItem,
+)
 from ...models.marketplace_provider_offerings_customers_list_o_item import (
     MarketplaceProviderOfferingsCustomersListOItem,
 )
@@ -30,6 +33,7 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     keyword: Union[Unset, str] = UNSET,
@@ -90,6 +94,15 @@ def _get_kwargs(
     params["customer_uuid"] = json_customer_uuid
 
     params["description"] = description
+
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
 
     params["has_active_terms_of_service"] = has_active_terms_of_service
 
@@ -233,6 +246,7 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     keyword: Union[Unset, str] = UNSET,
@@ -271,6 +285,7 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
         keyword (Union[Unset, str]):
@@ -315,6 +330,7 @@ def sync_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
+        field=field,
         has_active_terms_of_service=has_active_terms_of_service,
         has_terms_of_service=has_terms_of_service,
         keyword=keyword,
@@ -361,6 +377,7 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     keyword: Union[Unset, str] = UNSET,
@@ -399,6 +416,7 @@ def sync(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
         keyword (Union[Unset, str]):
@@ -444,6 +462,7 @@ def sync(
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
+        field=field,
         has_active_terms_of_service=has_active_terms_of_service,
         has_terms_of_service=has_terms_of_service,
         keyword=keyword,
@@ -484,6 +503,7 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     keyword: Union[Unset, str] = UNSET,
@@ -522,6 +542,7 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
         keyword (Union[Unset, str]):
@@ -566,6 +587,7 @@ async def asyncio_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
+        field=field,
         has_active_terms_of_service=has_active_terms_of_service,
         has_terms_of_service=has_terms_of_service,
         keyword=keyword,
@@ -610,6 +632,7 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     keyword: Union[Unset, str] = UNSET,
@@ -648,6 +671,7 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
+        field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
         keyword (Union[Unset, str]):
@@ -694,6 +718,7 @@ async def asyncio(
             customer=customer,
             customer_uuid=customer_uuid,
             description=description,
+            field=field,
             has_active_terms_of_service=has_active_terms_of_service,
             has_terms_of_service=has_terms_of_service,
             keyword=keyword,

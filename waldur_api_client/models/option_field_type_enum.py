@@ -3,6 +3,7 @@ from enum import Enum
 
 class OptionFieldTypeEnum(str, Enum):
     BOOLEAN = "boolean"
+    CONDITIONAL_CASCADE = "conditional_cascade"
     DATE = "date"
     HTML_TEXT = "html_text"
     INTEGER = "integer"

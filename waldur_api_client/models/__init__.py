@@ -190,6 +190,11 @@ from .campaign import Campaign
 from .campaign_offering import CampaignOffering
 from .campaign_request import CampaignRequest
 from .cancel_request_response import CancelRequestResponse
+from .cascade_config import CascadeConfig
+from .cascade_config_request import CascadeConfigRequest
+from .cascade_step import CascadeStep
+from .cascade_step_request import CascadeStepRequest
+from .cascade_step_type_enum import CascadeStepTypeEnum
 from .category_column import CategoryColumn
 from .category_column_request import CategoryColumnRequest
 from .category_component import CategoryComponent
@@ -596,6 +601,7 @@ from .marketplace_provider_offerings_costs_list_o_item import MarketplaceProvide
 from .marketplace_provider_offerings_costs_list_state_item import MarketplaceProviderOfferingsCostsListStateItem
 from .marketplace_provider_offerings_count_o_item import MarketplaceProviderOfferingsCountOItem
 from .marketplace_provider_offerings_count_state_item import MarketplaceProviderOfferingsCountStateItem
+from .marketplace_provider_offerings_customers_list_field_item import MarketplaceProviderOfferingsCustomersListFieldItem
 from .marketplace_provider_offerings_customers_list_o_item import MarketplaceProviderOfferingsCustomersListOItem
 from .marketplace_provider_offerings_customers_list_state_item import MarketplaceProviderOfferingsCustomersListStateItem
 from .marketplace_provider_offerings_groups_count_o_item import MarketplaceProviderOfferingsGroupsCountOItem
@@ -605,8 +611,14 @@ from .marketplace_provider_offerings_groups_list_state_item import MarketplacePr
 from .marketplace_provider_offerings_list_course_accounts_retrieve_field_item import (
     MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem,
 )
+from .marketplace_provider_offerings_list_customer_projects_list_field_item import (
+    MarketplaceProviderOfferingsListCustomerProjectsListFieldItem,
+)
 from .marketplace_provider_offerings_list_customer_service_accounts_retrieve_field_item import (
     MarketplaceProviderOfferingsListCustomerServiceAccountsRetrieveFieldItem,
+)
+from .marketplace_provider_offerings_list_customer_users_list_field_item import (
+    MarketplaceProviderOfferingsListCustomerUsersListFieldItem,
 )
 from .marketplace_provider_offerings_list_field_item import MarketplaceProviderOfferingsListFieldItem
 from .marketplace_provider_offerings_list_o_item import MarketplaceProviderOfferingsListOItem
@@ -618,6 +630,7 @@ from .marketplace_provider_offerings_list_users_list_field_item import (
     MarketplaceProviderOfferingsListUsersListFieldItem,
 )
 from .marketplace_provider_offerings_list_users_list_o_item import MarketplaceProviderOfferingsListUsersListOItem
+from .marketplace_provider_offerings_orders_list_field_item import MarketplaceProviderOfferingsOrdersListFieldItem
 from .marketplace_provider_offerings_retrieve_field_item import MarketplaceProviderOfferingsRetrieveFieldItem
 from .marketplace_provider_offerings_stats_retrieve_field_item import MarketplaceProviderOfferingsStatsRetrieveFieldItem
 from .marketplace_provider_offerings_update_attributes_body import MarketplaceProviderOfferingsUpdateAttributesBody
@@ -1297,6 +1310,8 @@ from .promotions_campaigns_count_o_item import PromotionsCampaignsCountOItem
 from .promotions_campaigns_count_state_item import PromotionsCampaignsCountStateItem
 from .promotions_campaigns_list_o_item import PromotionsCampaignsListOItem
 from .promotions_campaigns_list_state_item import PromotionsCampaignsListStateItem
+from .promotions_campaigns_orders_list_field_item import PromotionsCampaignsOrdersListFieldItem
+from .promotions_campaigns_resources_list_field_item import PromotionsCampaignsResourcesListFieldItem
 from .proposal import Proposal
 from .proposal_approve_request import ProposalApproveRequest
 from .proposal_can_submit import ProposalCanSubmit
@@ -1972,6 +1987,11 @@ __all__ = (
     "CampaignOffering",
     "CampaignRequest",
     "CancelRequestResponse",
+    "CascadeConfig",
+    "CascadeConfigRequest",
+    "CascadeStep",
+    "CascadeStepRequest",
+    "CascadeStepTypeEnum",
     "CategoryColumn",
     "CategoryColumnRequest",
     "CategoryComponent",
@@ -2358,6 +2378,7 @@ __all__ = (
     "MarketplaceProviderOfferingsCostsListStateItem",
     "MarketplaceProviderOfferingsCountOItem",
     "MarketplaceProviderOfferingsCountStateItem",
+    "MarketplaceProviderOfferingsCustomersListFieldItem",
     "MarketplaceProviderOfferingsCustomersListOItem",
     "MarketplaceProviderOfferingsCustomersListStateItem",
     "MarketplaceProviderOfferingsGroupsCountOItem",
@@ -2365,13 +2386,16 @@ __all__ = (
     "MarketplaceProviderOfferingsGroupsListOItem",
     "MarketplaceProviderOfferingsGroupsListStateItem",
     "MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem",
+    "MarketplaceProviderOfferingsListCustomerProjectsListFieldItem",
     "MarketplaceProviderOfferingsListCustomerServiceAccountsRetrieveFieldItem",
+    "MarketplaceProviderOfferingsListCustomerUsersListFieldItem",
     "MarketplaceProviderOfferingsListFieldItem",
     "MarketplaceProviderOfferingsListOItem",
     "MarketplaceProviderOfferingsListProjectServiceAccountsRetrieveFieldItem",
     "MarketplaceProviderOfferingsListStateItem",
     "MarketplaceProviderOfferingsListUsersListFieldItem",
     "MarketplaceProviderOfferingsListUsersListOItem",
+    "MarketplaceProviderOfferingsOrdersListFieldItem",
     "MarketplaceProviderOfferingsRetrieveFieldItem",
     "MarketplaceProviderOfferingsStatsRetrieveFieldItem",
     "MarketplaceProviderOfferingsUpdateAttributesBody",
@@ -2991,6 +3015,8 @@ __all__ = (
     "PromotionsCampaignsCountStateItem",
     "PromotionsCampaignsListOItem",
     "PromotionsCampaignsListStateItem",
+    "PromotionsCampaignsOrdersListFieldItem",
+    "PromotionsCampaignsResourcesListFieldItem",
     "Proposal",
     "ProposalApproveRequest",
     "ProposalCanSubmit",

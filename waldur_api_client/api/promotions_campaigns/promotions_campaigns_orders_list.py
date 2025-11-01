@@ -7,16 +7,27 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.order_details import OrderDetails
+from ...models.promotions_campaigns_orders_list_field_item import PromotionsCampaignsOrdersListFieldItem
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
+    field: Union[Unset, list[PromotionsCampaignsOrdersListFieldItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
 
     params["page"] = page
 
@@ -63,6 +74,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[PromotionsCampaignsOrdersListFieldItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OrderDetails"]]:
@@ -70,6 +82,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
+        field (Union[Unset, list[PromotionsCampaignsOrdersListFieldItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -83,6 +96,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        field=field,
         page=page,
         page_size=page_size,
     )
@@ -98,6 +112,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[PromotionsCampaignsOrdersListFieldItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OrderDetails"]:
@@ -105,6 +120,7 @@ def sync(
 
     Args:
         uuid (UUID):
+        field (Union[Unset, list[PromotionsCampaignsOrdersListFieldItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -119,6 +135,7 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        field=field,
         page=page,
         page_size=page_size,
     ).parsed
@@ -128,6 +145,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[PromotionsCampaignsOrdersListFieldItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OrderDetails"]]:
@@ -135,6 +153,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
+        field (Union[Unset, list[PromotionsCampaignsOrdersListFieldItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -148,6 +167,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        field=field,
         page=page,
         page_size=page_size,
     )
@@ -161,6 +181,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[PromotionsCampaignsOrdersListFieldItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OrderDetails"]:
@@ -168,6 +189,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
+        field (Union[Unset, list[PromotionsCampaignsOrdersListFieldItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -183,6 +205,7 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            field=field,
             page=page,
             page_size=page_size,
         )

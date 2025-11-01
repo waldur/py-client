@@ -3,6 +3,7 @@ from enum import Enum
 
 class ProjectsListFieldItem(str, Enum):
     BACKEND_ID = "backend_id"
+    BILLING_PRICE_ESTIMATE = "billing_price_estimate"
     CREATED = "created"
     CUSTOMER = "customer"
     CUSTOMER_ABBREVIATION = "customer_abbreviation"
@@ -18,10 +19,12 @@ class ProjectsListFieldItem(str, Enum):
     IS_INDUSTRY = "is_industry"
     IS_REMOVED = "is_removed"
     KIND = "kind"
+    MARKETPLACE_RESOURCE_COUNT = "marketplace_resource_count"
     MAX_SERVICE_ACCOUNTS = "max_service_accounts"
     NAME = "name"
     OECD_FOS_2007_CODE = "oecd_fos_2007_code"
     OECD_FOS_2007_LABEL = "oecd_fos_2007_label"
+    PROJECT_CREDIT = "project_credit"
     RESOURCES_COUNT = "resources_count"
     SLUG = "slug"
     STAFF_NOTES = "staff_notes"

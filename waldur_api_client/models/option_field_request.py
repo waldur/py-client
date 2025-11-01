@@ -1,11 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.option_field_type_enum import OptionFieldTypeEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.cascade_config_request import CascadeConfigRequest
+
 
 T = TypeVar("T", bound="OptionFieldRequest")
 
@@ -22,6 +26,7 @@ class OptionFieldRequest:
         default (Union[Unset, str]):
         min_ (Union[Unset, int]):
         max_ (Union[Unset, int]):
+        cascade_config (Union[Unset, CascadeConfigRequest]):
     """
 
     type_: OptionFieldTypeEnum
@@ -32,6 +37,7 @@ class OptionFieldRequest:
     default: Union[Unset, str] = UNSET
     min_: Union[Unset, int] = UNSET
     max_: Union[Unset, int] = UNSET
+    cascade_config: Union[Unset, "CascadeConfigRequest"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,6 +59,10 @@ class OptionFieldRequest:
 
         max_ = self.max_
 
+        cascade_config: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.cascade_config, Unset):
+            cascade_config = self.cascade_config.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -73,11 +83,15 @@ class OptionFieldRequest:
             field_dict["min"] = min_
         if max_ is not UNSET:
             field_dict["max"] = max_
+        if cascade_config is not UNSET:
+            field_dict["cascade_config"] = cascade_config
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.cascade_config_request import CascadeConfigRequest
+
         d = dict(src_dict)
         type_ = OptionFieldTypeEnum(d.pop("type"))
 
@@ -95,6 +109,13 @@ class OptionFieldRequest:
 
         max_ = d.pop("max", UNSET)
 
+        _cascade_config = d.pop("cascade_config", UNSET)
+        cascade_config: Union[Unset, CascadeConfigRequest]
+        if isinstance(_cascade_config, Unset):
+            cascade_config = UNSET
+        else:
+            cascade_config = CascadeConfigRequest.from_dict(_cascade_config)
+
         option_field_request = cls(
             type_=type_,
             label=label,
@@ -104,6 +125,7 @@ class OptionFieldRequest:
             default=default,
             min_=min_,
             max_=max_,
+            cascade_config=cascade_config,
         )
 
         option_field_request.additional_properties = d

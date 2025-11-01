@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class MarketplaceServiceProvidersProjectsListFieldItem(str, Enum):
+class MarketplaceProviderOfferingsListCustomerProjectsListFieldItem(str, Enum):
     BACKEND_ID = "backend_id"
     BILLING_PRICE_ESTIMATE = "billing_price_estimate"
     CREATED = "created"

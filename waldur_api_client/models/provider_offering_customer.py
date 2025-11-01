@@ -14,24 +14,26 @@ T = TypeVar("T", bound="ProviderOfferingCustomer")
 class ProviderOfferingCustomer:
     """
     Attributes:
-        uuid (UUID):
-        name (str):
-        slug (str):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]):
+        slug (Union[Unset, str]):
         abbreviation (Union[Unset, str]):
         phone_number (Union[Unset, str]):
         email (Union[Unset, str]):
     """
 
-    uuid: UUID
-    name: str
-    slug: str
+    uuid: Union[Unset, UUID] = UNSET
+    name: Union[Unset, str] = UNSET
+    slug: Union[Unset, str] = UNSET
     abbreviation: Union[Unset, str] = UNSET
     phone_number: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
 
@@ -45,13 +47,13 @@ class ProviderOfferingCustomer:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "name": name,
-                "slug": slug,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if abbreviation is not UNSET:
             field_dict["abbreviation"] = abbreviation
         if phone_number is not UNSET:
@@ -64,11 +66,16 @@ class ProviderOfferingCustomer:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        slug = d.pop("slug")
+        slug = d.pop("slug", UNSET)
 
         abbreviation = d.pop("abbreviation", UNSET)
 
