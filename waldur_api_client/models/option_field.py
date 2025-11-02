@@ -9,6 +9,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.cascade_config import CascadeConfig
+    from ..models.component_multiplier_config import ComponentMultiplierConfig
 
 
 T = TypeVar("T", bound="OptionField")
@@ -27,6 +28,7 @@ class OptionField:
         min_ (Union[Unset, int]):
         max_ (Union[Unset, int]):
         cascade_config (Union[Unset, CascadeConfig]):
+        component_multiplier_config (Union[Unset, ComponentMultiplierConfig]):
     """
 
     type_: OptionFieldTypeEnum
@@ -38,6 +40,7 @@ class OptionField:
     min_: Union[Unset, int] = UNSET
     max_: Union[Unset, int] = UNSET
     cascade_config: Union[Unset, "CascadeConfig"] = UNSET
+    component_multiplier_config: Union[Unset, "ComponentMultiplierConfig"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -63,6 +66,10 @@ class OptionField:
         if not isinstance(self.cascade_config, Unset):
             cascade_config = self.cascade_config.to_dict()
 
+        component_multiplier_config: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.component_multiplier_config, Unset):
+            component_multiplier_config = self.component_multiplier_config.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -85,12 +92,15 @@ class OptionField:
             field_dict["max"] = max_
         if cascade_config is not UNSET:
             field_dict["cascade_config"] = cascade_config
+        if component_multiplier_config is not UNSET:
+            field_dict["component_multiplier_config"] = component_multiplier_config
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.cascade_config import CascadeConfig
+        from ..models.component_multiplier_config import ComponentMultiplierConfig
 
         d = dict(src_dict)
         type_ = OptionFieldTypeEnum(d.pop("type"))
@@ -116,6 +126,13 @@ class OptionField:
         else:
             cascade_config = CascadeConfig.from_dict(_cascade_config)
 
+        _component_multiplier_config = d.pop("component_multiplier_config", UNSET)
+        component_multiplier_config: Union[Unset, ComponentMultiplierConfig]
+        if isinstance(_component_multiplier_config, Unset):
+            component_multiplier_config = UNSET
+        else:
+            component_multiplier_config = ComponentMultiplierConfig.from_dict(_component_multiplier_config)
+
         option_field = cls(
             type_=type_,
             label=label,
@@ -126,6 +143,7 @@ class OptionField:
             min_=min_,
             max_=max_,
             cascade_config=cascade_config,
+            component_multiplier_config=component_multiplier_config,
         )
 
         option_field.additional_properties = d

@@ -242,6 +242,8 @@ from .cluster_security_group_request import ClusterSecurityGroupRequest
 from .comment import Comment
 from .comment_request import CommentRequest
 from .compliance_overview import ComplianceOverview
+from .component_multiplier_config import ComponentMultiplierConfig
+from .component_multiplier_config_request import ComponentMultiplierConfigRequest
 from .component_stats import ComponentStats
 from .component_usage import ComponentUsage
 from .component_usage_create_request import ComponentUsageCreateRequest
@@ -2039,6 +2041,8 @@ __all__ = (
     "Comment",
     "CommentRequest",
     "ComplianceOverview",
+    "ComponentMultiplierConfig",
+    "ComponentMultiplierConfigRequest",
     "ComponentStats",
     "ComponentsUsageStats",
     "ComponentUsage",
