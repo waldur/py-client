@@ -237,6 +237,8 @@ from .checklists_admin_count_checklist_type import ChecklistsAdminCountChecklist
 from .checklists_admin_count_checklist_type_in_item import ChecklistsAdminCountChecklistTypeInItem
 from .checklists_admin_list_checklist_type import ChecklistsAdminListChecklistType
 from .checklists_admin_list_checklist_type_in_item import ChecklistsAdminListChecklistTypeInItem
+from .checklists_admin_questions_count_checklist_type import ChecklistsAdminQuestionsCountChecklistType
+from .checklists_admin_questions_list_checklist_type import ChecklistsAdminQuestionsListChecklistType
 from .cluster_security_group import ClusterSecurityGroup
 from .cluster_security_group_request import ClusterSecurityGroupRequest
 from .comment import Comment
@@ -2033,6 +2035,8 @@ __all__ = (
     "ChecklistsAdminCountChecklistTypeInItem",
     "ChecklistsAdminListChecklistType",
     "ChecklistsAdminListChecklistTypeInItem",
+    "ChecklistsAdminQuestionsCountChecklistType",
+    "ChecklistsAdminQuestionsListChecklistType",
     "ChecklistTemplate",
     "ChecklistTemplateChecklist",
     "ChecklistTypeEnum",

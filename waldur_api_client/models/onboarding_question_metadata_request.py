@@ -13,7 +13,7 @@ T = TypeVar("T", bound="OnboardingQuestionMetadataRequest")
 class OnboardingQuestionMetadataRequest:
     """
     Attributes:
-        question (str): Question this metadata applies to
+        question (str):
         maps_to_customer_field (Union[Unset, str]): Customer model field name to map this answer to (e.g.,
             'registration_code', 'email', 'vat_code')
         intent_field (Union[Unset, str]): Type of intent/purpose field (e.g., 'intent', 'registration_purpose') - stays

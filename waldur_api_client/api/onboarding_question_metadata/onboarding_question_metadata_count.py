@@ -16,6 +16,7 @@ def _get_kwargs(
     maps_to_customer_field: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    question_description: Union[Unset, str] = UNSET,
     question_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -32,6 +33,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["question_description"] = question_description
 
     json_question_uuid: Union[Unset, str] = UNSET
     if not isinstance(question_uuid, Unset):
@@ -83,6 +86,7 @@ def sync_detailed(
     maps_to_customer_field: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    question_description: Union[Unset, str] = UNSET,
     question_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -93,6 +97,7 @@ def sync_detailed(
         maps_to_customer_field (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        question_description (Union[Unset, str]):
         question_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -109,6 +114,7 @@ def sync_detailed(
         maps_to_customer_field=maps_to_customer_field,
         page=page,
         page_size=page_size,
+        question_description=question_description,
         question_uuid=question_uuid,
     )
 
@@ -127,6 +133,7 @@ def sync(
     maps_to_customer_field: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    question_description: Union[Unset, str] = UNSET,
     question_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -137,6 +144,7 @@ def sync(
         maps_to_customer_field (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        question_description (Union[Unset, str]):
         question_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -154,6 +162,7 @@ def sync(
         maps_to_customer_field=maps_to_customer_field,
         page=page,
         page_size=page_size,
+        question_description=question_description,
         question_uuid=question_uuid,
     ).parsed
 
@@ -166,6 +175,7 @@ async def asyncio_detailed(
     maps_to_customer_field: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    question_description: Union[Unset, str] = UNSET,
     question_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -176,6 +186,7 @@ async def asyncio_detailed(
         maps_to_customer_field (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        question_description (Union[Unset, str]):
         question_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -192,6 +203,7 @@ async def asyncio_detailed(
         maps_to_customer_field=maps_to_customer_field,
         page=page,
         page_size=page_size,
+        question_description=question_description,
         question_uuid=question_uuid,
     )
 
@@ -208,6 +220,7 @@ async def asyncio(
     maps_to_customer_field: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    question_description: Union[Unset, str] = UNSET,
     question_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -218,6 +231,7 @@ async def asyncio(
         maps_to_customer_field (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        question_description (Union[Unset, str]):
         question_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -236,6 +250,7 @@ async def asyncio(
             maps_to_customer_field=maps_to_customer_field,
             page=page,
             page_size=page_size,
+            question_description=question_description,
             question_uuid=question_uuid,
         )
     ).parsed

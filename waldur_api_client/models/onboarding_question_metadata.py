@@ -18,7 +18,8 @@ class OnboardingQuestionMetadata:
     Attributes:
         uuid (UUID):
         url (str):
-        question (str): Question this metadata applies to
+        checklist_name (str):
+        question (str):
         question_uuid (UUID):
         question_description (str):
         created (datetime.datetime):
@@ -31,6 +32,7 @@ class OnboardingQuestionMetadata:
 
     uuid: UUID
     url: str
+    checklist_name: str
     question: str
     question_uuid: UUID
     question_description: str
@@ -44,6 +46,8 @@ class OnboardingQuestionMetadata:
         uuid = str(self.uuid)
 
         url = self.url
+
+        checklist_name = self.checklist_name
 
         question = self.question
 
@@ -65,6 +69,7 @@ class OnboardingQuestionMetadata:
             {
                 "uuid": uuid,
                 "url": url,
+                "checklist_name": checklist_name,
                 "question": question,
                 "question_uuid": question_uuid,
                 "question_description": question_description,
@@ -86,6 +91,8 @@ class OnboardingQuestionMetadata:
 
         url = d.pop("url")
 
+        checklist_name = d.pop("checklist_name")
+
         question = d.pop("question")
 
         question_uuid = UUID(d.pop("question_uuid"))
@@ -103,6 +110,7 @@ class OnboardingQuestionMetadata:
         onboarding_question_metadata = cls(
             uuid=uuid,
             url=url,
+            checklist_name=checklist_name,
             question=question,
             question_uuid=question_uuid,
             question_description=question_description,
