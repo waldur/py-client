@@ -4,11 +4,11 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="MetadataEventsRetrieveResponse200EventGroups")
+T = TypeVar("T", bound="SettingsMetadataResponseSettingsItem")
 
 
 @_attrs_define
-class MetadataEventsRetrieveResponse200EventGroups:
+class SettingsMetadataResponseSettingsItem:
     """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -22,10 +22,10 @@ class MetadataEventsRetrieveResponse200EventGroups:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        metadata_events_retrieve_response_200_event_groups = cls()
+        settings_metadata_response_settings_item = cls()
 
-        metadata_events_retrieve_response_200_event_groups.additional_properties = d
-        return metadata_events_retrieve_response_200_event_groups
+        settings_metadata_response_settings_item.additional_properties = d
+        return settings_metadata_response_settings_item
 
     @property
     def additional_keys(self) -> list[str]:

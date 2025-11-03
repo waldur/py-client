@@ -5,6 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.permission_metadata_response import PermissionMetadataResponse
 from ...types import Response
 
 
@@ -17,13 +18,21 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> PermissionMetadataResponse:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
+    if response.status_code == 200:
+        response_200 = PermissionMetadataResponse.from_dict(response.json())
+
+        return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[PermissionMetadataResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -35,7 +44,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[Any]:
+) -> Response[PermissionMetadataResponse]:
     """Get permission metadata including roles, permissions, and descriptions
 
     Raises:
@@ -43,7 +52,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[PermissionMetadataResponse]
     """
 
     kwargs = _get_kwargs()
@@ -55,10 +64,10 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[Any]:
+) -> PermissionMetadataResponse:
     """Get permission metadata including roles, permissions, and descriptions
 
     Raises:
@@ -66,7 +75,26 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        PermissionMetadataResponse
+    """
+
+    return sync_detailed(
+        client=client,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: Union[AuthenticatedClient, Client],
+) -> Response[PermissionMetadataResponse]:
+    """Get permission metadata including roles, permissions, and descriptions
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[PermissionMetadataResponse]
     """
 
     kwargs = _get_kwargs()
@@ -74,3 +102,24 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: Union[AuthenticatedClient, Client],
+) -> PermissionMetadataResponse:
+    """Get permission metadata including roles, permissions, and descriptions
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        PermissionMetadataResponse
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+        )
+    ).parsed

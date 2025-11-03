@@ -371,6 +371,11 @@ from .endpoint_uuid_request import EndpointUUIDRequest
 from .ethertype_enum import EthertypeEnum
 from .event import Event
 from .event_groups_enum import EventGroupsEnum
+from .event_metadata_response import EventMetadataResponse
+from .event_metadata_response_event_groups import EventMetadataResponseEventGroups
+from .event_metadata_response_event_groups_additional_property_item import (
+    EventMetadataResponseEventGroupsAdditionalPropertyItem,
+)
 from .event_stats import EventStats
 from .event_subscription import EventSubscription
 from .event_subscription_request import EventSubscriptionRequest
@@ -389,6 +394,12 @@ from .external_link import ExternalLink
 from .external_link_request import ExternalLinkRequest
 from .external_link_request_form import ExternalLinkRequestForm
 from .external_link_request_multipart import ExternalLinkRequestMultipart
+from .feature_metadata_response import FeatureMetadataResponse
+from .feature_metadata_response_feature_enums import FeatureMetadataResponseFeatureEnums
+from .feature_metadata_response_feature_enums_additional_property import (
+    FeatureMetadataResponseFeatureEnumsAdditionalProperty,
+)
+from .feature_metadata_response_features_item import FeatureMetadataResponseFeaturesItem
 from .feature_values_body import FeatureValuesBody
 from .feedback import Feedback
 from .financial_report import FinancialReport
@@ -731,8 +742,6 @@ from .merged_secret_options import MergedSecretOptions
 from .merged_secret_options_request import MergedSecretOptionsRequest
 from .message_template import MessageTemplate
 from .message_template_request import MessageTemplateRequest
-from .metadata_events_retrieve_response_200 import MetadataEventsRetrieveResponse200
-from .metadata_events_retrieve_response_200_event_groups import MetadataEventsRetrieveResponse200EventGroups
 from .migration_create import MigrationCreate
 from .migration_create_request import MigrationCreateRequest
 from .migration_details import MigrationDetails
@@ -1247,6 +1256,20 @@ from .payment_type_enum import PaymentTypeEnum
 from .payment_url_request import PaymentURLRequest
 from .period_enum import PeriodEnum
 from .permission import Permission
+from .permission_metadata_response import PermissionMetadataResponse
+from .permission_metadata_response_permission_descriptions_item import (
+    PermissionMetadataResponsePermissionDescriptionsItem,
+)
+from .permission_metadata_response_permission_map import PermissionMetadataResponsePermissionMap
+from .permission_metadata_response_permission_map_additional_property import (
+    PermissionMetadataResponsePermissionMapAdditionalProperty,
+)
+from .permission_metadata_response_permissions import PermissionMetadataResponsePermissions
+from .permission_metadata_response_permissions_additional_property import (
+    PermissionMetadataResponsePermissionsAdditionalProperty,
+)
+from .permission_metadata_response_roles import PermissionMetadataResponseRoles
+from .permission_metadata_response_roles_additional_property import PermissionMetadataResponseRolesAdditionalProperty
 from .permission_project import PermissionProject
 from .permission_request import PermissionRequest
 from .plan_component import PlanComponent
@@ -1653,6 +1676,8 @@ from .service_settings_state_enum import ServiceSettingsStateEnum
 from .set_mtu import SetMtu
 from .set_mtu_request import SetMtuRequest
 from .set_offerings_username_request import SetOfferingsUsernameRequest
+from .settings_metadata_response import SettingsMetadataResponse
+from .settings_metadata_response_settings_item import SettingsMetadataResponseSettingsItem
 from .slurm_allocation import SlurmAllocation
 from .slurm_allocation_marketplace_offering_plugin_options_type_0 import (
     SlurmAllocationMarketplaceOfferingPluginOptionsType0,
@@ -2168,6 +2193,9 @@ __all__ = (
     "EthertypeEnum",
     "Event",
     "EventGroupsEnum",
+    "EventMetadataResponse",
+    "EventMetadataResponseEventGroups",
+    "EventMetadataResponseEventGroupsAdditionalPropertyItem",
     "EventsCountOItem",
     "EventsCountRetrieveFieldItem",
     "EventsEventGroupsRetrieveFieldItem",
@@ -2186,6 +2214,10 @@ __all__ = (
     "ExternalLinkRequest",
     "ExternalLinkRequestForm",
     "ExternalLinkRequestMultipart",
+    "FeatureMetadataResponse",
+    "FeatureMetadataResponseFeatureEnums",
+    "FeatureMetadataResponseFeatureEnumsAdditionalProperty",
+    "FeatureMetadataResponseFeaturesItem",
     "FeatureValuesBody",
     "Feedback",
     "FinancialReport",
@@ -2482,8 +2514,6 @@ __all__ = (
     "MergedSecretOptionsRequest",
     "MessageTemplate",
     "MessageTemplateRequest",
-    "MetadataEventsRetrieveResponse200",
-    "MetadataEventsRetrieveResponse200EventGroups",
     "MigrationCreate",
     "MigrationCreateRequest",
     "MigrationDetails",
@@ -2966,6 +2996,14 @@ __all__ = (
     "PaymentURLRequest",
     "PeriodEnum",
     "Permission",
+    "PermissionMetadataResponse",
+    "PermissionMetadataResponsePermissionDescriptionsItem",
+    "PermissionMetadataResponsePermissionMap",
+    "PermissionMetadataResponsePermissionMapAdditionalProperty",
+    "PermissionMetadataResponsePermissions",
+    "PermissionMetadataResponsePermissionsAdditionalProperty",
+    "PermissionMetadataResponseRoles",
+    "PermissionMetadataResponseRolesAdditionalProperty",
     "PermissionProject",
     "PermissionRequest",
     "PlanComponent",
@@ -3348,6 +3386,8 @@ __all__ = (
     "SetMtu",
     "SetMtuRequest",
     "SetOfferingsUsernameRequest",
+    "SettingsMetadataResponse",
+    "SettingsMetadataResponseSettingsItem",
     "SlurmAllocation",
     "SlurmAllocationMarketplaceOfferingPluginOptionsType0",
     "SlurmAllocationRequest",

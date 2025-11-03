@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.metadata_events_retrieve_response_200 import MetadataEventsRetrieveResponse200
+from ...models.event_metadata_response import EventMetadataResponse
 from ...types import Response
 
 
@@ -18,13 +18,11 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> MetadataEventsRetrieveResponse200:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> EventMetadataResponse:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = MetadataEventsRetrieveResponse200.from_dict(response.json())
+        response_200 = EventMetadataResponse.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -32,7 +30,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[MetadataEventsRetrieveResponse200]:
+) -> Response[EventMetadataResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,7 +42,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[MetadataEventsRetrieveResponse200]:
+) -> Response[EventMetadataResponse]:
     """Get event metadata grouped by categories
 
     Raises:
@@ -52,7 +50,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MetadataEventsRetrieveResponse200]
+        Response[EventMetadataResponse]
     """
 
     kwargs = _get_kwargs()
@@ -67,7 +65,7 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> MetadataEventsRetrieveResponse200:
+) -> EventMetadataResponse:
     """Get event metadata grouped by categories
 
     Raises:
@@ -75,7 +73,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MetadataEventsRetrieveResponse200
+        EventMetadataResponse
     """
 
     return sync_detailed(
@@ -86,7 +84,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[MetadataEventsRetrieveResponse200]:
+) -> Response[EventMetadataResponse]:
     """Get event metadata grouped by categories
 
     Raises:
@@ -94,7 +92,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MetadataEventsRetrieveResponse200]
+        Response[EventMetadataResponse]
     """
 
     kwargs = _get_kwargs()
@@ -107,7 +105,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> MetadataEventsRetrieveResponse200:
+) -> EventMetadataResponse:
     """Get event metadata grouped by categories
 
     Raises:
@@ -115,7 +113,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MetadataEventsRetrieveResponse200
+        EventMetadataResponse
     """
 
     return (
