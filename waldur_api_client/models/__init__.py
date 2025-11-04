@@ -917,6 +917,7 @@ from .open_stack_backup_restoration import OpenStackBackupRestoration
 from .open_stack_backup_restoration_create_request import OpenStackBackupRestorationCreateRequest
 from .open_stack_backup_restoration_request import OpenStackBackupRestorationRequest
 from .open_stack_create_floating_ip_request import OpenStackCreateFloatingIPRequest
+from .open_stack_create_instance_port_request import OpenStackCreateInstancePortRequest
 from .open_stack_create_port_request import OpenStackCreatePortRequest
 from .open_stack_data_volume_request import OpenStackDataVolumeRequest
 from .open_stack_fixed_ip import OpenStackFixedIp
@@ -2689,6 +2690,7 @@ __all__ = (
     "OpenstackBackupsListStateItem",
     "OpenstackBackupsRetrieveFieldItem",
     "OpenStackCreateFloatingIPRequest",
+    "OpenStackCreateInstancePortRequest",
     "OpenStackCreatePortRequest",
     "OpenStackDataVolumeRequest",
     "OpenStackFixedIp",

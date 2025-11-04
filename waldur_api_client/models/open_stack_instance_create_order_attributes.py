@@ -8,7 +8,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.open_stack_create_floating_ip_request import OpenStackCreateFloatingIPRequest
-    from ..models.open_stack_create_port_request import OpenStackCreatePortRequest
+    from ..models.open_stack_create_instance_port_request import OpenStackCreateInstancePortRequest
     from ..models.open_stack_data_volume_request import OpenStackDataVolumeRequest
     from ..models.open_stack_security_group_hyperlink_request import OpenStackSecurityGroupHyperlinkRequest
     from ..models.open_stack_server_group_hyperlink_request import OpenStackServerGroupHyperlinkRequest
@@ -24,7 +24,7 @@ class OpenStackInstanceCreateOrderAttributes:
         name (str):
         flavor (str): The flavor to use for the instance
         image (str): The OS image to use for the instance
-        ports (list['OpenStackCreatePortRequest']): Network ports to attach to the instance
+        ports (list['OpenStackCreateInstancePortRequest']): Network ports to attach to the instance
         system_volume_size (int): Size of the system volume in MiB. Minimum size is 1024 MiB (1 GiB)
         description (Union[Unset, str]):
         security_groups (Union[Unset, list['OpenStackSecurityGroupHyperlinkRequest']]): List of security groups to apply
@@ -46,7 +46,7 @@ class OpenStackInstanceCreateOrderAttributes:
     name: str
     flavor: str
     image: str
-    ports: list["OpenStackCreatePortRequest"]
+    ports: list["OpenStackCreateInstancePortRequest"]
     system_volume_size: int
     description: Union[Unset, str] = UNSET
     security_groups: Union[Unset, list["OpenStackSecurityGroupHyperlinkRequest"]] = UNSET
@@ -170,7 +170,7 @@ class OpenStackInstanceCreateOrderAttributes:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_create_floating_ip_request import OpenStackCreateFloatingIPRequest
-        from ..models.open_stack_create_port_request import OpenStackCreatePortRequest
+        from ..models.open_stack_create_instance_port_request import OpenStackCreateInstancePortRequest
         from ..models.open_stack_data_volume_request import OpenStackDataVolumeRequest
         from ..models.open_stack_security_group_hyperlink_request import OpenStackSecurityGroupHyperlinkRequest
         from ..models.open_stack_server_group_hyperlink_request import OpenStackServerGroupHyperlinkRequest
@@ -185,7 +185,7 @@ class OpenStackInstanceCreateOrderAttributes:
         ports = []
         _ports = d.pop("ports")
         for ports_item_data in _ports:
-            ports_item = OpenStackCreatePortRequest.from_dict(ports_item_data)
+            ports_item = OpenStackCreateInstancePortRequest.from_dict(ports_item_data)
 
             ports.append(ports_item)
 

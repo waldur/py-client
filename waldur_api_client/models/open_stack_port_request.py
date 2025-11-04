@@ -24,6 +24,8 @@ class OpenStackPortRequest:
         fixed_ips (Union[Unset, list['OpenStackFixedIpRequest']]):
         mac_address (Union[Unset, str]): MAC address of the port
         allowed_address_pairs (Union[Unset, list['OpenStackAllowedAddressPairRequest']]):
+        target_tenant (Union[Unset, str]): Target tenant for shared network port creation. If not specified, defaults to
+            network's tenant.
         network (Union[None, Unset, str]): Network to which this port belongs
         port_security_enabled (Union[Unset, bool]): If True, security groups and rules will be applied to this port
         security_groups (Union[Unset, list['OpenStackPortNestedSecurityGroupRequest']]):
@@ -34,6 +36,7 @@ class OpenStackPortRequest:
     fixed_ips: Union[Unset, list["OpenStackFixedIpRequest"]] = UNSET
     mac_address: Union[Unset, str] = UNSET
     allowed_address_pairs: Union[Unset, list["OpenStackAllowedAddressPairRequest"]] = UNSET
+    target_tenant: Union[Unset, str] = UNSET
     network: Union[None, Unset, str] = UNSET
     port_security_enabled: Union[Unset, bool] = UNSET
     security_groups: Union[Unset, list["OpenStackPortNestedSecurityGroupRequest"]] = UNSET
@@ -59,6 +62,8 @@ class OpenStackPortRequest:
             for allowed_address_pairs_item_data in self.allowed_address_pairs:
                 allowed_address_pairs_item = allowed_address_pairs_item_data.to_dict()
                 allowed_address_pairs.append(allowed_address_pairs_item)
+
+        target_tenant = self.target_tenant
 
         network: Union[None, Unset, str]
         if isinstance(self.network, Unset):
@@ -90,6 +95,8 @@ class OpenStackPortRequest:
             field_dict["mac_address"] = mac_address
         if allowed_address_pairs is not UNSET:
             field_dict["allowed_address_pairs"] = allowed_address_pairs
+        if target_tenant is not UNSET:
+            field_dict["target_tenant"] = target_tenant
         if network is not UNSET:
             field_dict["network"] = network
         if port_security_enabled is not UNSET:
@@ -126,6 +133,8 @@ class OpenStackPortRequest:
 
             allowed_address_pairs.append(allowed_address_pairs_item)
 
+        target_tenant = d.pop("target_tenant", UNSET)
+
         def _parse_network(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -150,6 +159,7 @@ class OpenStackPortRequest:
             fixed_ips=fixed_ips,
             mac_address=mac_address,
             allowed_address_pairs=allowed_address_pairs,
+            target_tenant=target_tenant,
             network=network,
             port_security_enabled=port_security_enabled,
             security_groups=security_groups,

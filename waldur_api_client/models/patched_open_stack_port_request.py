@@ -19,11 +19,14 @@ class PatchedOpenStackPortRequest:
     Attributes:
         name (Union[Unset, str]):
         description (Union[Unset, str]):
+        target_tenant (Union[Unset, str]): Target tenant for shared network port creation. If not specified, defaults to
+            network's tenant.
         security_groups (Union[Unset, list['OpenStackPortNestedSecurityGroupRequest']]):
     """
 
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
+    target_tenant: Union[Unset, str] = UNSET
     security_groups: Union[Unset, list["OpenStackPortNestedSecurityGroupRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -31,6 +34,8 @@ class PatchedOpenStackPortRequest:
         name = self.name
 
         description = self.description
+
+        target_tenant = self.target_tenant
 
         security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.security_groups, Unset):
@@ -46,6 +51,8 @@ class PatchedOpenStackPortRequest:
             field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
+        if target_tenant is not UNSET:
+            field_dict["target_tenant"] = target_tenant
         if security_groups is not UNSET:
             field_dict["security_groups"] = security_groups
 
@@ -60,6 +67,8 @@ class PatchedOpenStackPortRequest:
 
         description = d.pop("description", UNSET)
 
+        target_tenant = d.pop("target_tenant", UNSET)
+
         security_groups = []
         _security_groups = d.pop("security_groups", UNSET)
         for security_groups_item_data in _security_groups or []:
@@ -70,6 +79,7 @@ class PatchedOpenStackPortRequest:
         patched_open_stack_port_request = cls(
             name=name,
             description=description,
+            target_tenant=target_tenant,
             security_groups=security_groups,
         )
 

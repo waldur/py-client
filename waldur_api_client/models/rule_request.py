@@ -19,9 +19,10 @@ class RuleRequest:
     """
     Attributes:
         name (str):
-        customer (str):
         user_affiliations (Union[Unset, list[str]]):
         user_email_patterns (Union[Unset, list[str]]):
+        customer (Union[None, Unset, str]):
+        use_user_organization_as_customer_name (Union[Unset, bool]):
         project_role (Union[None, Unset, str]):
         project_role_name (Union[None, Unset, str]):
         plan (Union[None, Unset, str]):
@@ -30,9 +31,10 @@ class RuleRequest:
     """
 
     name: str
-    customer: str
     user_affiliations: Union[Unset, list[str]] = UNSET
     user_email_patterns: Union[Unset, list[str]] = UNSET
+    customer: Union[None, Unset, str] = UNSET
+    use_user_organization_as_customer_name: Union[Unset, bool] = UNSET
     project_role: Union[None, Unset, str] = UNSET
     project_role_name: Union[None, Unset, str] = UNSET
     plan: Union[None, Unset, str] = UNSET
@@ -43,8 +45,6 @@ class RuleRequest:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        customer = self.customer
-
         user_affiliations: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_affiliations, Unset):
             user_affiliations = self.user_affiliations
@@ -52,6 +52,14 @@ class RuleRequest:
         user_email_patterns: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_email_patterns, Unset):
             user_email_patterns = self.user_email_patterns
+
+        customer: Union[None, Unset, str]
+        if isinstance(self.customer, Unset):
+            customer = UNSET
+        else:
+            customer = self.customer
+
+        use_user_organization_as_customer_name = self.use_user_organization_as_customer_name
 
         project_role: Union[None, Unset, str]
         if isinstance(self.project_role, Unset):
@@ -84,13 +92,16 @@ class RuleRequest:
         field_dict.update(
             {
                 "name": name,
-                "customer": customer,
             }
         )
         if user_affiliations is not UNSET:
             field_dict["user_affiliations"] = user_affiliations
         if user_email_patterns is not UNSET:
             field_dict["user_email_patterns"] = user_email_patterns
+        if customer is not UNSET:
+            field_dict["customer"] = customer
+        if use_user_organization_as_customer_name is not UNSET:
+            field_dict["use_user_organization_as_customer_name"] = use_user_organization_as_customer_name
         if project_role is not UNSET:
             field_dict["project_role"] = project_role
         if project_role_name is not UNSET:
@@ -112,11 +123,20 @@ class RuleRequest:
         d = dict(src_dict)
         name = d.pop("name")
 
-        customer = d.pop("customer")
-
         user_affiliations = cast(list[str], d.pop("user_affiliations", UNSET))
 
         user_email_patterns = cast(list[str], d.pop("user_email_patterns", UNSET))
+
+        def _parse_customer(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        customer = _parse_customer(d.pop("customer", UNSET))
+
+        use_user_organization_as_customer_name = d.pop("use_user_organization_as_customer_name", UNSET)
 
         def _parse_project_role(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -161,9 +181,10 @@ class RuleRequest:
 
         rule_request = cls(
             name=name,
-            customer=customer,
             user_affiliations=user_affiliations,
             user_email_patterns=user_email_patterns,
+            customer=customer,
+            use_user_organization_as_customer_name=use_user_organization_as_customer_name,
             project_role=project_role,
             project_role_name=project_role_name,
             plan=plan,

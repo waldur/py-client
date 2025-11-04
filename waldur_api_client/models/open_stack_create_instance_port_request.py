@@ -10,23 +10,21 @@ if TYPE_CHECKING:
     from ..models.open_stack_fixed_ip_request import OpenStackFixedIpRequest
 
 
-T = TypeVar("T", bound="OpenStackCreatePortRequest")
+T = TypeVar("T", bound="OpenStackCreateInstancePortRequest")
 
 
 @_attrs_define
-class OpenStackCreatePortRequest:
+class OpenStackCreateInstancePortRequest:
     """
     Attributes:
         fixed_ips (Union[Unset, list['OpenStackFixedIpRequest']]):
         subnet (Union[None, Unset, str]): Subnet to which this port belongs
         port (Union[Unset, str]):
-        tenant (Union[Unset, str]): Target tenant for port creation. If not specified, uses subnet's tenant.
     """
 
     fixed_ips: Union[Unset, list["OpenStackFixedIpRequest"]] = UNSET
     subnet: Union[None, Unset, str] = UNSET
     port: Union[Unset, str] = UNSET
-    tenant: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -45,8 +43,6 @@ class OpenStackCreatePortRequest:
 
         port = self.port
 
-        tenant = self.tenant
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -56,8 +52,6 @@ class OpenStackCreatePortRequest:
             field_dict["subnet"] = subnet
         if port is not UNSET:
             field_dict["port"] = port
-        if tenant is not UNSET:
-            field_dict["tenant"] = tenant
 
         return field_dict
 
@@ -84,17 +78,14 @@ class OpenStackCreatePortRequest:
 
         port = d.pop("port", UNSET)
 
-        tenant = d.pop("tenant", UNSET)
-
-        open_stack_create_port_request = cls(
+        open_stack_create_instance_port_request = cls(
             fixed_ips=fixed_ips,
             subnet=subnet,
             port=port,
-            tenant=tenant,
         )
 
-        open_stack_create_port_request.additional_properties = d
-        return open_stack_create_port_request
+        open_stack_create_instance_port_request.additional_properties = d
+        return open_stack_create_instance_port_request
 
     @property
     def additional_keys(self) -> list[str]:

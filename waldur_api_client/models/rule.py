@@ -22,7 +22,6 @@ class Rule:
         name (str):
         uuid (UUID):
         url (str):
-        customer (str):
         customer_name (str):
         customer_uuid (str):
         project_role_display_name (str):
@@ -34,6 +33,8 @@ class Rule:
         category_url (str):
         user_affiliations (Union[Unset, list[str]]):
         user_email_patterns (Union[Unset, list[str]]):
+        customer (Union[None, Unset, str]):
+        use_user_organization_as_customer_name (Union[Unset, bool]):
         project_role (Union[None, Unset, str]):
         plan (Union[None, Unset, str]):
         plan_attributes (Union[Unset, RulePlanAttributes]):
@@ -43,7 +44,6 @@ class Rule:
     name: str
     uuid: UUID
     url: str
-    customer: str
     customer_name: str
     customer_uuid: str
     project_role_display_name: str
@@ -55,6 +55,8 @@ class Rule:
     category_url: str
     user_affiliations: Union[Unset, list[str]] = UNSET
     user_email_patterns: Union[Unset, list[str]] = UNSET
+    customer: Union[None, Unset, str] = UNSET
+    use_user_organization_as_customer_name: Union[Unset, bool] = UNSET
     project_role: Union[None, Unset, str] = UNSET
     plan: Union[None, Unset, str] = UNSET
     plan_attributes: Union[Unset, "RulePlanAttributes"] = UNSET
@@ -67,8 +69,6 @@ class Rule:
         uuid = str(self.uuid)
 
         url = self.url
-
-        customer = self.customer
 
         customer_name = self.customer_name
 
@@ -95,6 +95,14 @@ class Rule:
         user_email_patterns: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_email_patterns, Unset):
             user_email_patterns = self.user_email_patterns
+
+        customer: Union[None, Unset, str]
+        if isinstance(self.customer, Unset):
+            customer = UNSET
+        else:
+            customer = self.customer
+
+        use_user_organization_as_customer_name = self.use_user_organization_as_customer_name
 
         project_role: Union[None, Unset, str]
         if isinstance(self.project_role, Unset):
@@ -123,7 +131,6 @@ class Rule:
                 "name": name,
                 "uuid": uuid,
                 "url": url,
-                "customer": customer,
                 "customer_name": customer_name,
                 "customer_uuid": customer_uuid,
                 "project_role_display_name": project_role_display_name,
@@ -139,6 +146,10 @@ class Rule:
             field_dict["user_affiliations"] = user_affiliations
         if user_email_patterns is not UNSET:
             field_dict["user_email_patterns"] = user_email_patterns
+        if customer is not UNSET:
+            field_dict["customer"] = customer
+        if use_user_organization_as_customer_name is not UNSET:
+            field_dict["use_user_organization_as_customer_name"] = use_user_organization_as_customer_name
         if project_role is not UNSET:
             field_dict["project_role"] = project_role
         if plan is not UNSET:
@@ -162,8 +173,6 @@ class Rule:
 
         url = d.pop("url")
 
-        customer = d.pop("customer")
-
         customer_name = d.pop("customer_name")
 
         customer_uuid = d.pop("customer_uuid")
@@ -185,6 +194,17 @@ class Rule:
         user_affiliations = cast(list[str], d.pop("user_affiliations", UNSET))
 
         user_email_patterns = cast(list[str], d.pop("user_email_patterns", UNSET))
+
+        def _parse_customer(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        customer = _parse_customer(d.pop("customer", UNSET))
+
+        use_user_organization_as_customer_name = d.pop("use_user_organization_as_customer_name", UNSET)
 
         def _parse_project_role(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -222,7 +242,6 @@ class Rule:
             name=name,
             uuid=uuid,
             url=url,
-            customer=customer,
             customer_name=customer_name,
             customer_uuid=customer_uuid,
             project_role_display_name=project_role_display_name,
@@ -234,6 +253,8 @@ class Rule:
             category_url=category_url,
             user_affiliations=user_affiliations,
             user_email_patterns=user_email_patterns,
+            customer=customer,
+            use_user_organization_as_customer_name=use_user_organization_as_customer_name,
             project_role=project_role,
             plan=plan,
             plan_attributes=plan_attributes,

@@ -20,10 +20,13 @@ def _get_kwargs(
     device_owner: Union[Unset, str] = UNSET,
     exclude_subnet_uuids: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    fixed_ips: Union[Unset, str] = UNSET,
     has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    network_name: Union[Unset, str] = UNSET,
+    network_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -53,6 +56,8 @@ def _get_kwargs(
 
     params["field"] = json_field
 
+    params["fixed_ips"] = fixed_ips
+
     params["has_device_owner"] = has_device_owner
 
     params["mac_address"] = mac_address
@@ -60,6 +65,13 @@ def _get_kwargs(
     params["name"] = name
 
     params["name_exact"] = name_exact
+
+    params["network_name"] = network_name
+
+    json_network_uuid: Union[Unset, str] = UNSET
+    if not isinstance(network_uuid, Unset):
+        json_network_uuid = str(network_uuid)
+    params["network_uuid"] = json_network_uuid
 
     json_o: Union[Unset, list[str]] = UNSET
     if not isinstance(o, Unset):
@@ -131,10 +143,13 @@ def sync_detailed(
     device_owner: Union[Unset, str] = UNSET,
     exclude_subnet_uuids: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    fixed_ips: Union[Unset, str] = UNSET,
     has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    network_name: Union[Unset, str] = UNSET,
+    network_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -152,10 +167,13 @@ def sync_detailed(
         device_owner (Union[Unset, str]):
         exclude_subnet_uuids (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        fixed_ips (Union[Unset, str]):
         has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        network_name (Union[Unset, str]):
+        network_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -179,10 +197,13 @@ def sync_detailed(
         device_owner=device_owner,
         exclude_subnet_uuids=exclude_subnet_uuids,
         field=field,
+        fixed_ips=fixed_ips,
         has_device_owner=has_device_owner,
         mac_address=mac_address,
         name=name,
         name_exact=name_exact,
+        network_name=network_name,
+        network_uuid=network_uuid,
         o=o,
         page=page,
         page_size=page_size,
@@ -208,10 +229,13 @@ def sync(
     device_owner: Union[Unset, str] = UNSET,
     exclude_subnet_uuids: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    fixed_ips: Union[Unset, str] = UNSET,
     has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    network_name: Union[Unset, str] = UNSET,
+    network_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -229,10 +253,13 @@ def sync(
         device_owner (Union[Unset, str]):
         exclude_subnet_uuids (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        fixed_ips (Union[Unset, str]):
         has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        network_name (Union[Unset, str]):
+        network_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -257,10 +284,13 @@ def sync(
         device_owner=device_owner,
         exclude_subnet_uuids=exclude_subnet_uuids,
         field=field,
+        fixed_ips=fixed_ips,
         has_device_owner=has_device_owner,
         mac_address=mac_address,
         name=name,
         name_exact=name_exact,
+        network_name=network_name,
+        network_uuid=network_uuid,
         o=o,
         page=page,
         page_size=page_size,
@@ -280,10 +310,13 @@ async def asyncio_detailed(
     device_owner: Union[Unset, str] = UNSET,
     exclude_subnet_uuids: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    fixed_ips: Union[Unset, str] = UNSET,
     has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    network_name: Union[Unset, str] = UNSET,
+    network_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -301,10 +334,13 @@ async def asyncio_detailed(
         device_owner (Union[Unset, str]):
         exclude_subnet_uuids (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        fixed_ips (Union[Unset, str]):
         has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        network_name (Union[Unset, str]):
+        network_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -328,10 +364,13 @@ async def asyncio_detailed(
         device_owner=device_owner,
         exclude_subnet_uuids=exclude_subnet_uuids,
         field=field,
+        fixed_ips=fixed_ips,
         has_device_owner=has_device_owner,
         mac_address=mac_address,
         name=name,
         name_exact=name_exact,
+        network_name=network_name,
+        network_uuid=network_uuid,
         o=o,
         page=page,
         page_size=page_size,
@@ -355,10 +394,13 @@ async def asyncio(
     device_owner: Union[Unset, str] = UNSET,
     exclude_subnet_uuids: Union[Unset, str] = UNSET,
     field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    fixed_ips: Union[Unset, str] = UNSET,
     has_device_owner: Union[Unset, bool] = UNSET,
     mac_address: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    network_name: Union[Unset, str] = UNSET,
+    network_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -376,10 +418,13 @@ async def asyncio(
         device_owner (Union[Unset, str]):
         exclude_subnet_uuids (Union[Unset, str]):
         field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        fixed_ips (Union[Unset, str]):
         has_device_owner (Union[Unset, bool]):
         mac_address (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        network_name (Union[Unset, str]):
+        network_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[OpenstackPortsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -405,10 +450,13 @@ async def asyncio(
             device_owner=device_owner,
             exclude_subnet_uuids=exclude_subnet_uuids,
             field=field,
+            fixed_ips=fixed_ips,
             has_device_owner=has_device_owner,
             mac_address=mac_address,
             name=name,
             name_exact=name_exact,
+            network_name=network_name,
+            network_uuid=network_uuid,
             o=o,
             page=page,
             page_size=page_size,

@@ -48,6 +48,7 @@ class OpenstackPortsListFieldItem(str, Enum):
     SERVICE_SETTINGS_UUID = "service_settings_uuid"
     STATE = "state"
     STATUS = "status"
+    TARGET_TENANT = "target_tenant"
     TENANT = "tenant"
     TENANT_NAME = "tenant_name"
     TENANT_UUID = "tenant_uuid"
