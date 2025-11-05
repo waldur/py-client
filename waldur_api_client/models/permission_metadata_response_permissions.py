@@ -13,7 +13,7 @@ T = TypeVar("T", bound="PermissionMetadataResponsePermissions")
 
 @_attrs_define
 class PermissionMetadataResponsePermissions:
-    """Map of permission keys to permission enum values"""
+    """Map of permission keys to permission enum values from PermissionEnum"""
 
     additional_properties: dict[str, PermissionMetadataResponsePermissionsAdditionalProperty] = _attrs_field(
         init=False, factory=dict

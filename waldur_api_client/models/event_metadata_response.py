@@ -15,7 +15,8 @@ T = TypeVar("T", bound="EventMetadataResponse")
 class EventMetadataResponse:
     """
     Attributes:
-        event_groups (EventMetadataResponseEventGroups): Map of event group keys to lists of event type enums
+        event_groups (EventMetadataResponseEventGroups): Map of event group keys to lists of event type enums from
+            EventType
     """
 
     event_groups: "EventMetadataResponseEventGroups"

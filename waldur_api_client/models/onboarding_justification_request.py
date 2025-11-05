@@ -13,20 +13,16 @@ T = TypeVar("T", bound="OnboardingJustificationRequest")
 class OnboardingJustificationRequest:
     """
     Attributes:
-        verification (int):
-        user (int):
+        verification (str):
         user_justification (Union[None, Unset, str]): User's explanation for why they should be authorized
     """
 
-    verification: int
-    user: int
+    verification: str
     user_justification: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         verification = self.verification
-
-        user = self.user
 
         user_justification: Union[None, Unset, str]
         if isinstance(self.user_justification, Unset):
@@ -39,7 +35,6 @@ class OnboardingJustificationRequest:
         field_dict.update(
             {
                 "verification": verification,
-                "user": user,
             }
         )
         if user_justification is not UNSET:
@@ -52,8 +47,6 @@ class OnboardingJustificationRequest:
         d = dict(src_dict)
         verification = d.pop("verification")
 
-        user = d.pop("user")
-
         def _parse_user_justification(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -65,7 +58,6 @@ class OnboardingJustificationRequest:
 
         onboarding_justification_request = cls(
             verification=verification,
-            user=user,
             user_justification=user_justification,
         )
 

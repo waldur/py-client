@@ -13,7 +13,7 @@ T = TypeVar("T", bound="EventMetadataResponseEventGroups")
 
 @_attrs_define
 class EventMetadataResponseEventGroups:
-    """Map of event group keys to lists of event type enums"""
+    """Map of event group keys to lists of event type enums from EventType"""
 
     additional_properties: dict[str, list[EventMetadataResponseEventGroupsAdditionalPropertyItem]] = _attrs_field(
         init=False, factory=dict

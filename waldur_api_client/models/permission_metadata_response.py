@@ -20,8 +20,9 @@ T = TypeVar("T", bound="PermissionMetadataResponse")
 class PermissionMetadataResponse:
     """
     Attributes:
-        roles (PermissionMetadataResponseRoles): Map of role keys to role enum values
-        permissions (PermissionMetadataResponsePermissions): Map of permission keys to permission enum values
+        roles (PermissionMetadataResponseRoles): Map of role keys to role enum values from RoleEnum
+        permissions (PermissionMetadataResponsePermissions): Map of permission keys to permission enum values from
+            PermissionEnum
         permission_map (PermissionMetadataResponsePermissionMap): Map of resource types to create permission enums
         permission_descriptions (list['PermissionMetadataResponsePermissionDescriptionsItem']): Grouped permission
             descriptions for UI

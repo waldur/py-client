@@ -13,20 +13,16 @@ T = TypeVar("T", bound="PatchedOnboardingJustificationRequest")
 class PatchedOnboardingJustificationRequest:
     """
     Attributes:
-        verification (Union[Unset, int]):
-        user (Union[Unset, int]):
+        verification (Union[Unset, str]):
         user_justification (Union[None, Unset, str]): User's explanation for why they should be authorized
     """
 
-    verification: Union[Unset, int] = UNSET
-    user: Union[Unset, int] = UNSET
+    verification: Union[Unset, str] = UNSET
     user_justification: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         verification = self.verification
-
-        user = self.user
 
         user_justification: Union[None, Unset, str]
         if isinstance(self.user_justification, Unset):
@@ -39,8 +35,6 @@ class PatchedOnboardingJustificationRequest:
         field_dict.update({})
         if verification is not UNSET:
             field_dict["verification"] = verification
-        if user is not UNSET:
-            field_dict["user"] = user
         if user_justification is not UNSET:
             field_dict["user_justification"] = user_justification
 
@@ -50,8 +44,6 @@ class PatchedOnboardingJustificationRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         verification = d.pop("verification", UNSET)
-
-        user = d.pop("user", UNSET)
 
         def _parse_user_justification(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -64,7 +56,6 @@ class PatchedOnboardingJustificationRequest:
 
         patched_onboarding_justification_request = cls(
             verification=verification,
-            user=user,
             user_justification=user_justification,
         )
 
