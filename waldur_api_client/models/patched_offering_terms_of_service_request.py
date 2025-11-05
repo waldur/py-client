@@ -19,6 +19,8 @@ class PatchedOfferingTermsOfServiceRequest:
         is_active (Union[Unset, bool]):
         requires_reconsent (Union[Unset, bool]): If True, user will be asked to re-consent to the terms of service when
             the terms of service are updated.
+        grace_period_days (Union[Unset, int]): Number of days before outdated consents are automatically revoked. Only
+            applies when requires_reconsent=True.
     """
 
     terms_of_service: Union[Unset, str] = UNSET
@@ -26,6 +28,7 @@ class PatchedOfferingTermsOfServiceRequest:
     version: Union[Unset, str] = UNSET
     is_active: Union[Unset, bool] = UNSET
     requires_reconsent: Union[Unset, bool] = UNSET
+    grace_period_days: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,6 +41,8 @@ class PatchedOfferingTermsOfServiceRequest:
         is_active = self.is_active
 
         requires_reconsent = self.requires_reconsent
+
+        grace_period_days = self.grace_period_days
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -52,6 +57,8 @@ class PatchedOfferingTermsOfServiceRequest:
             field_dict["is_active"] = is_active
         if requires_reconsent is not UNSET:
             field_dict["requires_reconsent"] = requires_reconsent
+        if grace_period_days is not UNSET:
+            field_dict["grace_period_days"] = grace_period_days
 
         return field_dict
 
@@ -68,12 +75,15 @@ class PatchedOfferingTermsOfServiceRequest:
 
         requires_reconsent = d.pop("requires_reconsent", UNSET)
 
+        grace_period_days = d.pop("grace_period_days", UNSET)
+
         patched_offering_terms_of_service_request = cls(
             terms_of_service=terms_of_service,
             terms_of_service_link=terms_of_service_link,
             version=version,
             is_active=is_active,
             requires_reconsent=requires_reconsent,
+            grace_period_days=grace_period_days,
         )
 
         patched_offering_terms_of_service_request.additional_properties = d
