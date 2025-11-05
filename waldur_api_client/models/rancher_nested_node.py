@@ -7,7 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.role_enum import RoleEnum
+from ..models.rancher_node_role_enum import RancherNodeRoleEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RancherNestedNode")
@@ -18,7 +18,7 @@ class RancherNestedNode:
     """
     Attributes:
         url (Union[Unset, str]):
-        role (Union[Unset, RoleEnum]):
+        role (Union[Unset, RancherNodeRoleEnum]):
         instance (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
@@ -41,7 +41,7 @@ class RancherNestedNode:
     """
 
     url: Union[Unset, str] = UNSET
-    role: Union[Unset, RoleEnum] = UNSET
+    role: Union[Unset, RancherNodeRoleEnum] = UNSET
     instance: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     modified: Union[Unset, datetime.datetime] = UNSET
@@ -192,11 +192,11 @@ class RancherNestedNode:
         url = d.pop("url", UNSET)
 
         _role = d.pop("role", UNSET)
-        role: Union[Unset, RoleEnum]
+        role: Union[Unset, RancherNodeRoleEnum]
         if isinstance(_role, Unset):
             role = UNSET
         else:
-            role = RoleEnum(_role)
+            role = RancherNodeRoleEnum(_role)
 
         instance = d.pop("instance", UNSET)
 

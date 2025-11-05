@@ -5,7 +5,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.role_enum import RoleEnum
+from ..models.rancher_node_role_enum import RancherNodeRoleEnum
 
 T = TypeVar("T", bound="RancherCreateNode")
 
@@ -15,12 +15,12 @@ class RancherCreateNode:
     """
     Attributes:
         cluster (str):
-        role (RoleEnum):
+        role (RancherNodeRoleEnum):
         uuid (UUID):
     """
 
     cluster: str
-    role: RoleEnum
+    role: RancherNodeRoleEnum
     uuid: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -48,7 +48,7 @@ class RancherCreateNode:
         d = dict(src_dict)
         cluster = d.pop("cluster")
 
-        role = RoleEnum(d.pop("role"))
+        role = RancherNodeRoleEnum(d.pop("role"))
 
         uuid = UUID(d.pop("uuid"))
 

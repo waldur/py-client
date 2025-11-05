@@ -1512,6 +1512,7 @@ from .rancher_nested_public_ip import RancherNestedPublicIP
 from .rancher_nested_workload import RancherNestedWorkload
 from .rancher_nested_workload_request import RancherNestedWorkloadRequest
 from .rancher_node import RancherNode
+from .rancher_node_role_enum import RancherNodeRoleEnum
 from .rancher_project import RancherProject
 from .rancher_role_scope_type import RancherRoleScopeType
 from .rancher_role_templates_count_o_item import RancherRoleTemplatesCountOItem
@@ -1625,7 +1626,6 @@ from .robot_account_states import RobotAccountStates
 from .role_description import RoleDescription
 from .role_description_request import RoleDescriptionRequest
 from .role_details import RoleDetails
-from .role_enum import RoleEnum
 from .role_modify_request import RoleModifyRequest
 from .role_template import RoleTemplate
 from .role_type import RoleType
@@ -3227,6 +3227,7 @@ __all__ = (
     "RancherNestedWorkload",
     "RancherNestedWorkloadRequest",
     "RancherNode",
+    "RancherNodeRoleEnum",
     "RancherProject",
     "RancherRoleScopeType",
     "RancherRoleTemplatesCountOItem",
@@ -3336,7 +3337,6 @@ __all__ = (
     "RoleDescription",
     "RoleDescriptionRequest",
     "RoleDetails",
-    "RoleEnum",
     "RoleModifyRequest",
     "RolesListFieldItem",
     "RolesRetrieveFieldItem",

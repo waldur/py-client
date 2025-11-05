@@ -4,7 +4,7 @@ from typing import Any, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.role_enum import RoleEnum
+from ..models.rancher_node_role_enum import RancherNodeRoleEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RancherClusterTemplateNode")
@@ -17,14 +17,14 @@ class RancherClusterTemplateNode:
         min_vcpu (int):
         min_ram (int):
         system_volume_size (int):
-        role (RoleEnum):
+        role (RancherNodeRoleEnum):
         preferred_volume_type (Union[Unset, str]):
     """
 
     min_vcpu: int
     min_ram: int
     system_volume_size: int
-    role: RoleEnum
+    role: RancherNodeRoleEnum
     preferred_volume_type: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -63,7 +63,7 @@ class RancherClusterTemplateNode:
 
         system_volume_size = d.pop("system_volume_size")
 
-        role = RoleEnum(d.pop("role"))
+        role = RancherNodeRoleEnum(d.pop("role"))
 
         preferred_volume_type = d.pop("preferred_volume_type", UNSET)
 

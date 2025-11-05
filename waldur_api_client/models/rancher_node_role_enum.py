@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class RoleEnum(str, Enum):
+class RancherNodeRoleEnum(str, Enum):
     AGENT = "agent"
     SERVER = "server"
 

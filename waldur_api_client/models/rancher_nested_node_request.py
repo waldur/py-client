@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.role_enum import RoleEnum
+from ..models.rancher_node_role_enum import RancherNodeRoleEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -19,7 +19,7 @@ class RancherNestedNodeRequest:
     """
     Attributes:
         subnet (Union[None, str]):
-        role (RoleEnum):
+        role (RancherNodeRoleEnum):
         flavor (Union[None, Unset, str]):
         system_volume_size (Union[Unset, int]):
         system_volume_type (Union[None, Unset, str]):
@@ -32,7 +32,7 @@ class RancherNestedNodeRequest:
     """
 
     subnet: Union[None, str]
-    role: RoleEnum
+    role: RancherNodeRoleEnum
     flavor: Union[None, Unset, str] = UNSET
     system_volume_size: Union[Unset, int] = UNSET
     system_volume_type: Union[None, Unset, str] = UNSET
@@ -123,7 +123,7 @@ class RancherNestedNodeRequest:
 
         subnet = _parse_subnet(d.pop("subnet"))
 
-        role = RoleEnum(d.pop("role"))
+        role = RancherNodeRoleEnum(d.pop("role"))
 
         def _parse_flavor(data: object) -> Union[None, Unset, str]:
             if data is None:

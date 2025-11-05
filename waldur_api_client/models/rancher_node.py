@@ -8,7 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.core_states import CoreStates
-from ..models.role_enum import RoleEnum
+from ..models.rancher_node_role_enum import RancherNodeRoleEnum
 
 T = TypeVar("T", bound="RancherNode")
 
@@ -35,7 +35,7 @@ class RancherNode:
         instance_name (str):
         instance_uuid (UUID):
         instance_marketplace_uuid (UUID):
-        role (RoleEnum):
+        role (RancherNodeRoleEnum):
         k8s_version (str):
         docker_version (str):
         cpu_allocated (Union[None, float]):
@@ -67,7 +67,7 @@ class RancherNode:
     instance_name: str
     instance_uuid: UUID
     instance_marketplace_uuid: UUID
-    role: RoleEnum
+    role: RancherNodeRoleEnum
     k8s_version: str
     docker_version: str
     cpu_allocated: Union[None, float]
@@ -226,7 +226,7 @@ class RancherNode:
 
         instance_marketplace_uuid = UUID(d.pop("instance_marketplace_uuid"))
 
-        role = RoleEnum(d.pop("role"))
+        role = RancherNodeRoleEnum(d.pop("role"))
 
         k8s_version = d.pop("k8s_version")
 
