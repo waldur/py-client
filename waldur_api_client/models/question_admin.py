@@ -28,10 +28,10 @@ class QuestionAdmin:
         checklist_name (str):
         checklist_uuid (UUID):
         checklist (str):
+        required (Union[Unset, bool]):
         description (Union[Unset, str]):
         user_guidance (Union[Unset, str]): Additional guidance text visible to users when answering and reviewing
         order (Union[Unset, int]):
-        required (Union[Unset, bool]):
         question_type (Union[Unset, QuestionTypeEnum]):
         operator (Union[BlankEnum, ChecklistOperators, Unset]):
         review_answer_value (Union[Unset, Any]): Answer value that trigger review.
@@ -52,10 +52,10 @@ class QuestionAdmin:
     checklist_name: str
     checklist_uuid: UUID
     checklist: str
+    required: Union[Unset, bool] = UNSET
     description: Union[Unset, str] = UNSET
     user_guidance: Union[Unset, str] = UNSET
     order: Union[Unset, int] = UNSET
-    required: Union[Unset, bool] = UNSET
     question_type: Union[Unset, QuestionTypeEnum] = UNSET
     operator: Union[BlankEnum, ChecklistOperators, Unset] = UNSET
     review_answer_value: Union[Unset, Any] = UNSET
@@ -84,13 +84,13 @@ class QuestionAdmin:
 
         checklist = self.checklist
 
+        required = self.required
+
         description = self.description
 
         user_guidance = self.user_guidance
 
         order = self.order
-
-        required = self.required
 
         question_type: Union[Unset, str] = UNSET
         if not isinstance(self.question_type, Unset):
@@ -148,14 +148,14 @@ class QuestionAdmin:
                 "checklist": checklist,
             }
         )
+        if required is not UNSET:
+            field_dict["required"] = required
         if description is not UNSET:
             field_dict["description"] = description
         if user_guidance is not UNSET:
             field_dict["user_guidance"] = user_guidance
         if order is not UNSET:
             field_dict["order"] = order
-        if required is not UNSET:
-            field_dict["required"] = required
         if question_type is not UNSET:
             field_dict["question_type"] = question_type
         if operator is not UNSET:
@@ -201,13 +201,13 @@ class QuestionAdmin:
 
         checklist = d.pop("checklist")
 
+        required = d.pop("required", UNSET)
+
         description = d.pop("description", UNSET)
 
         user_guidance = d.pop("user_guidance", UNSET)
 
         order = d.pop("order", UNSET)
-
-        required = d.pop("required", UNSET)
 
         _question_type = d.pop("question_type", UNSET)
         question_type: Union[Unset, QuestionTypeEnum]
@@ -294,10 +294,10 @@ class QuestionAdmin:
             checklist_name=checklist_name,
             checklist_uuid=checklist_uuid,
             checklist=checklist,
+            required=required,
             description=description,
             user_guidance=user_guidance,
             order=order,
-            required=required,
             question_type=question_type,
             operator=operator,
             review_answer_value=review_answer_value,

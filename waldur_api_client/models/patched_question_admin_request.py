@@ -17,11 +17,11 @@ T = TypeVar("T", bound="PatchedQuestionAdminRequest")
 class PatchedQuestionAdminRequest:
     """
     Attributes:
+        required (Union[Unset, bool]):
         description (Union[Unset, str]):
         user_guidance (Union[Unset, str]): Additional guidance text visible to users when answering and reviewing
         checklist (Union[Unset, str]):
         order (Union[Unset, int]):
-        required (Union[Unset, bool]):
         question_type (Union[Unset, QuestionTypeEnum]):
         operator (Union[BlankEnum, ChecklistOperators, Unset]):
         review_answer_value (Union[Unset, Any]): Answer value that trigger review.
@@ -36,11 +36,11 @@ class PatchedQuestionAdminRequest:
         dependency_logic_operator (Union[Unset, DependencyLogicOperatorEnum]):
     """
 
+    required: Union[Unset, bool] = UNSET
     description: Union[Unset, str] = UNSET
     user_guidance: Union[Unset, str] = UNSET
     checklist: Union[Unset, str] = UNSET
     order: Union[Unset, int] = UNSET
-    required: Union[Unset, bool] = UNSET
     question_type: Union[Unset, QuestionTypeEnum] = UNSET
     operator: Union[BlankEnum, ChecklistOperators, Unset] = UNSET
     review_answer_value: Union[Unset, Any] = UNSET
@@ -54,6 +54,8 @@ class PatchedQuestionAdminRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        required = self.required
+
         description = self.description
 
         user_guidance = self.user_guidance
@@ -61,8 +63,6 @@ class PatchedQuestionAdminRequest:
         checklist = self.checklist
 
         order = self.order
-
-        required = self.required
 
         question_type: Union[Unset, str] = UNSET
         if not isinstance(self.question_type, Unset):
@@ -111,6 +111,8 @@ class PatchedQuestionAdminRequest:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if required is not UNSET:
+            field_dict["required"] = required
         if description is not UNSET:
             field_dict["description"] = description
         if user_guidance is not UNSET:
@@ -119,8 +121,6 @@ class PatchedQuestionAdminRequest:
             field_dict["checklist"] = checklist
         if order is not UNSET:
             field_dict["order"] = order
-        if required is not UNSET:
-            field_dict["required"] = required
         if question_type is not UNSET:
             field_dict["question_type"] = question_type
         if operator is not UNSET:
@@ -147,6 +147,8 @@ class PatchedQuestionAdminRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        required = d.pop("required", UNSET)
+
         description = d.pop("description", UNSET)
 
         user_guidance = d.pop("user_guidance", UNSET)
@@ -154,8 +156,6 @@ class PatchedQuestionAdminRequest:
         checklist = d.pop("checklist", UNSET)
 
         order = d.pop("order", UNSET)
-
-        required = d.pop("required", UNSET)
 
         _question_type = d.pop("question_type", UNSET)
         question_type: Union[Unset, QuestionTypeEnum]
@@ -236,11 +236,11 @@ class PatchedQuestionAdminRequest:
             dependency_logic_operator = DependencyLogicOperatorEnum(_dependency_logic_operator)
 
         patched_question_admin_request = cls(
+            required=required,
             description=description,
             user_guidance=user_guidance,
             checklist=checklist,
             order=order,
-            required=required,
             question_type=question_type,
             operator=operator,
             review_answer_value=review_answer_value,

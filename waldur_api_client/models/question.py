@@ -20,12 +20,14 @@ class Question:
     Attributes:
         uuid (UUID):
         question_options (list['QuestionOptions']):
+        required (Union[Unset, bool]):
         description (Union[Unset, str]):
         user_guidance (Union[Unset, str]): Additional guidance text visible to users when answering and reviewing
     """
 
     uuid: UUID
     question_options: list["QuestionOptions"]
+    required: Union[Unset, bool] = UNSET
     description: Union[Unset, str] = UNSET
     user_guidance: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -37,6 +39,8 @@ class Question:
         for question_options_item_data in self.question_options:
             question_options_item = question_options_item_data.to_dict()
             question_options.append(question_options_item)
+
+        required = self.required
 
         description = self.description
 
@@ -50,6 +54,8 @@ class Question:
                 "question_options": question_options,
             }
         )
+        if required is not UNSET:
+            field_dict["required"] = required
         if description is not UNSET:
             field_dict["description"] = description
         if user_guidance is not UNSET:
@@ -71,6 +77,8 @@ class Question:
 
             question_options.append(question_options_item)
 
+        required = d.pop("required", UNSET)
+
         description = d.pop("description", UNSET)
 
         user_guidance = d.pop("user_guidance", UNSET)
@@ -78,6 +86,7 @@ class Question:
         question = cls(
             uuid=uuid,
             question_options=question_options,
+            required=required,
             description=description,
             user_guidance=user_guidance,
         )

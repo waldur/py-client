@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.question_admin import QuestionAdmin
+
 
 T = TypeVar("T", bound="OnboardingCountryChecklistConfiguration")
 
@@ -22,6 +26,7 @@ class OnboardingCountryChecklistConfiguration:
         checklist (str): Checklist to use for this country's onboarding
         checklist_name (str):
         checklist_uuid (UUID):
+        questions (list['QuestionAdmin']):
         created (datetime.datetime):
         modified (datetime.datetime):
         is_active (Union[Unset, bool]): Whether this country configuration is active
@@ -33,6 +38,7 @@ class OnboardingCountryChecklistConfiguration:
     checklist: str
     checklist_name: str
     checklist_uuid: UUID
+    questions: list["QuestionAdmin"]
     created: datetime.datetime
     modified: datetime.datetime
     is_active: Union[Unset, bool] = UNSET
@@ -51,6 +57,11 @@ class OnboardingCountryChecklistConfiguration:
 
         checklist_uuid = str(self.checklist_uuid)
 
+        questions = []
+        for questions_item_data in self.questions:
+            questions_item = questions_item_data.to_dict()
+            questions.append(questions_item)
+
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
@@ -67,6 +78,7 @@ class OnboardingCountryChecklistConfiguration:
                 "checklist": checklist,
                 "checklist_name": checklist_name,
                 "checklist_uuid": checklist_uuid,
+                "questions": questions,
                 "created": created,
                 "modified": modified,
             }
@@ -78,6 +90,8 @@ class OnboardingCountryChecklistConfiguration:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.question_admin import QuestionAdmin
+
         d = dict(src_dict)
         url = d.pop("url")
 
@@ -90,6 +104,13 @@ class OnboardingCountryChecklistConfiguration:
         checklist_name = d.pop("checklist_name")
 
         checklist_uuid = UUID(d.pop("checklist_uuid"))
+
+        questions = []
+        _questions = d.pop("questions")
+        for questions_item_data in _questions:
+            questions_item = QuestionAdmin.from_dict(questions_item_data)
+
+            questions.append(questions_item)
 
         created = isoparse(d.pop("created"))
 
@@ -104,6 +125,7 @@ class OnboardingCountryChecklistConfiguration:
             checklist=checklist,
             checklist_name=checklist_name,
             checklist_uuid=checklist_uuid,
+            questions=questions,
             created=created,
             modified=modified,
             is_active=is_active,
