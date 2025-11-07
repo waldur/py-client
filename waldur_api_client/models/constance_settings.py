@@ -153,6 +153,7 @@ class ConstanceSettings:
         maintenance_announcement_notify_before_minutes (Union[Unset, int]):
         maintenance_announcement_notify_system (Union[Unset, list[str]]):
         enforce_user_consent_for_offerings (Union[Unset, bool]):
+        disabled_offering_types (Union[Unset, list[str]]):
         onboarding_verification_expiry_hours (Union[Unset, int]):
         onboarding_ariregister_base_url (Union[Unset, str]):
         onboarding_ariregister_username (Union[Unset, str]):
@@ -302,6 +303,7 @@ class ConstanceSettings:
     maintenance_announcement_notify_before_minutes: Union[Unset, int] = UNSET
     maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
     enforce_user_consent_for_offerings: Union[Unset, bool] = UNSET
+    disabled_offering_types: Union[Unset, list[str]] = UNSET
     onboarding_verification_expiry_hours: Union[Unset, int] = UNSET
     onboarding_ariregister_base_url: Union[Unset, str] = UNSET
     onboarding_ariregister_username: Union[Unset, str] = UNSET
@@ -646,6 +648,10 @@ class ConstanceSettings:
 
         enforce_user_consent_for_offerings = self.enforce_user_consent_for_offerings
 
+        disabled_offering_types: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.disabled_offering_types, Unset):
+            disabled_offering_types = self.disabled_offering_types
+
         onboarding_verification_expiry_hours = self.onboarding_verification_expiry_hours
 
         onboarding_ariregister_base_url = self.onboarding_ariregister_base_url
@@ -949,6 +955,8 @@ class ConstanceSettings:
             field_dict["MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM"] = maintenance_announcement_notify_system
         if enforce_user_consent_for_offerings is not UNSET:
             field_dict["ENFORCE_USER_CONSENT_FOR_OFFERINGS"] = enforce_user_consent_for_offerings
+        if disabled_offering_types is not UNSET:
+            field_dict["DISABLED_OFFERING_TYPES"] = disabled_offering_types
         if onboarding_verification_expiry_hours is not UNSET:
             field_dict["ONBOARDING_VERIFICATION_EXPIRY_HOURS"] = onboarding_verification_expiry_hours
         if onboarding_ariregister_base_url is not UNSET:
@@ -1337,6 +1345,8 @@ class ConstanceSettings:
 
         enforce_user_consent_for_offerings = d.pop("ENFORCE_USER_CONSENT_FOR_OFFERINGS", UNSET)
 
+        disabled_offering_types = cast(list[str], d.pop("DISABLED_OFFERING_TYPES", UNSET))
+
         onboarding_verification_expiry_hours = d.pop("ONBOARDING_VERIFICATION_EXPIRY_HOURS", UNSET)
 
         onboarding_ariregister_base_url = d.pop("ONBOARDING_ARIREGISTER_BASE_URL", UNSET)
@@ -1492,6 +1502,7 @@ class ConstanceSettings:
             maintenance_announcement_notify_before_minutes=maintenance_announcement_notify_before_minutes,
             maintenance_announcement_notify_system=maintenance_announcement_notify_system,
             enforce_user_consent_for_offerings=enforce_user_consent_for_offerings,
+            disabled_offering_types=disabled_offering_types,
             onboarding_verification_expiry_hours=onboarding_verification_expiry_hours,
             onboarding_ariregister_base_url=onboarding_ariregister_base_url,
             onboarding_ariregister_username=onboarding_ariregister_username,
