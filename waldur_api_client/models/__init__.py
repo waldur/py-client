@@ -1345,6 +1345,7 @@ from .promotions_campaigns_resources_list_field_item import PromotionsCampaignsR
 from .proposal import Proposal
 from .proposal_approve_request import ProposalApproveRequest
 from .proposal_can_submit import ProposalCanSubmit
+from .proposal_checklist_answer_submit_response import ProposalChecklistAnswerSubmitResponse
 from .proposal_compliance_status_type_0 import ProposalComplianceStatusType0
 from .proposal_documentation import ProposalDocumentation
 from .proposal_documentation_request import ProposalDocumentationRequest
@@ -3072,6 +3073,7 @@ __all__ = (
     "Proposal",
     "ProposalApproveRequest",
     "ProposalCanSubmit",
+    "ProposalChecklistAnswerSubmitResponse",
     "ProposalComplianceStatusType0",
     "ProposalDocumentation",
     "ProposalDocumentationRequest",

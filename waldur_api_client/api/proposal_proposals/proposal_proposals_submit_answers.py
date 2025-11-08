@@ -7,7 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.answer_submit_request import AnswerSubmitRequest
-from ...models.answer_submit_response import AnswerSubmitResponse
+from ...models.proposal_checklist_answer_submit_response import ProposalChecklistAnswerSubmitResponse
 from ...types import Response
 
 
@@ -36,11 +36,11 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[AnswerSubmitResponse, Any]:
+) -> Union[Any, ProposalChecklistAnswerSubmitResponse]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = AnswerSubmitResponse.from_dict(response.json())
+        response_200 = ProposalChecklistAnswerSubmitResponse.from_dict(response.json())
 
         return response_200
     if response.status_code == 400:
@@ -54,7 +54,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AnswerSubmitResponse, Any]]:
+) -> Response[Union[Any, ProposalChecklistAnswerSubmitResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,7 +68,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-) -> Response[Union[AnswerSubmitResponse, Any]]:
+) -> Response[Union[Any, ProposalChecklistAnswerSubmitResponse]]:
     """Submit checklist answers.
 
     Args:
@@ -80,7 +80,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AnswerSubmitResponse, Any]]
+        Response[Union[Any, ProposalChecklistAnswerSubmitResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -100,7 +100,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-) -> Union[AnswerSubmitResponse, Any]:
+) -> Union[Any, ProposalChecklistAnswerSubmitResponse]:
     """Submit checklist answers.
 
     Args:
@@ -112,7 +112,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AnswerSubmitResponse, Any]
+        Union[Any, ProposalChecklistAnswerSubmitResponse]
     """
 
     return sync_detailed(
@@ -127,7 +127,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-) -> Response[Union[AnswerSubmitResponse, Any]]:
+) -> Response[Union[Any, ProposalChecklistAnswerSubmitResponse]]:
     """Submit checklist answers.
 
     Args:
@@ -139,7 +139,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AnswerSubmitResponse, Any]]
+        Response[Union[Any, ProposalChecklistAnswerSubmitResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -157,7 +157,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-) -> Union[AnswerSubmitResponse, Any]:
+) -> Union[Any, ProposalChecklistAnswerSubmitResponse]:
     """Submit checklist answers.
 
     Args:
@@ -169,7 +169,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AnswerSubmitResponse, Any]
+        Union[Any, ProposalChecklistAnswerSubmitResponse]
     """
 
     return (
