@@ -41,6 +41,8 @@ class OfferingUser:
             service provider comment
         has_consent (Union[Unset, bool]): Check if the user has active consent for this offering.
         requires_reconsent (Union[Unset, bool]): Check if the user needs to re-consent due to ToS changes.
+        has_compliance_checklist (Union[Unset, bool]): Check if the offering user has a connected compliance checklist
+            completion.
     """
 
     url: Union[Unset, str] = UNSET
@@ -64,6 +66,7 @@ class OfferingUser:
     service_provider_comment_url: Union[Unset, str] = UNSET
     has_consent: Union[Unset, bool] = UNSET
     requires_reconsent: Union[Unset, bool] = UNSET
+    has_compliance_checklist: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -127,6 +130,8 @@ class OfferingUser:
 
         requires_reconsent = self.requires_reconsent
 
+        has_compliance_checklist = self.has_compliance_checklist
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -172,6 +177,8 @@ class OfferingUser:
             field_dict["has_consent"] = has_consent
         if requires_reconsent is not UNSET:
             field_dict["requires_reconsent"] = requires_reconsent
+        if has_compliance_checklist is not UNSET:
+            field_dict["has_compliance_checklist"] = has_compliance_checklist
 
         return field_dict
 
@@ -262,6 +269,8 @@ class OfferingUser:
 
         requires_reconsent = d.pop("requires_reconsent", UNSET)
 
+        has_compliance_checklist = d.pop("has_compliance_checklist", UNSET)
+
         offering_user = cls(
             url=url,
             uuid=uuid,
@@ -284,6 +293,7 @@ class OfferingUser:
             service_provider_comment_url=service_provider_comment_url,
             has_consent=has_consent,
             requires_reconsent=requires_reconsent,
+            has_compliance_checklist=has_compliance_checklist,
         )
 
         offering_user.additional_properties = d

@@ -5,6 +5,7 @@ class MarketplaceOfferingUsersRetrieveFieldItem(str, Enum):
     CREATED = "created"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_UUID = "customer_uuid"
+    HAS_COMPLIANCE_CHECKLIST = "has_compliance_checklist"
     HAS_CONSENT = "has_consent"
     IS_RESTRICTED = "is_restricted"
     MODIFIED = "modified"
