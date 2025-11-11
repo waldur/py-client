@@ -5,6 +5,7 @@ class QuestionTypeEnum(str, Enum):
     BOOLEAN = "boolean"
     DATE = "date"
     FILE = "file"
+    MULTIPLE_FILES = "multiple_files"
     MULTI_SELECT = "multi_select"
     NUMBER = "number"
     SINGLE_SELECT = "single_select"

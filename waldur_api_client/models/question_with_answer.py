@@ -28,6 +28,14 @@ class QuestionWithAnswer:
         question_options (Union[None, list[Any]]):
         min_value (Union[None, str]): Minimum value allowed for NUMBER type questions
         max_value (Union[None, str]): Maximum value allowed for NUMBER type questions
+        allowed_file_types (Any): List of allowed file extensions (e.g., ['.pdf', '.doc', '.docx']). If empty, all file
+            types are allowed.
+        allowed_mime_types (Any): List of allowed MIME types (e.g., ['application/pdf', 'application/msword']). If
+            empty, MIME type validation is not enforced. When both extensions and MIME types are specified, files must match
+            both criteria for security.
+        max_file_size_mb (Union[None, int]): Maximum file size in megabytes. If not set, no size limit is enforced.
+        max_files_count (Union[None, int]): Maximum number of files allowed for MULTIPLE_FILES type questions. If not
+            set, no count limit is enforced.
     """
 
     uuid: UUID
@@ -40,6 +48,10 @@ class QuestionWithAnswer:
     question_options: Union[None, list[Any]]
     min_value: Union[None, str]
     max_value: Union[None, str]
+    allowed_file_types: Any
+    allowed_mime_types: Any
+    max_file_size_mb: Union[None, int]
+    max_files_count: Union[None, int]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -77,6 +89,16 @@ class QuestionWithAnswer:
         max_value: Union[None, str]
         max_value = self.max_value
 
+        allowed_file_types = self.allowed_file_types
+
+        allowed_mime_types = self.allowed_mime_types
+
+        max_file_size_mb: Union[None, int]
+        max_file_size_mb = self.max_file_size_mb
+
+        max_files_count: Union[None, int]
+        max_files_count = self.max_files_count
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -91,6 +113,10 @@ class QuestionWithAnswer:
                 "question_options": question_options,
                 "min_value": min_value,
                 "max_value": max_value,
+                "allowed_file_types": allowed_file_types,
+                "allowed_mime_types": allowed_mime_types,
+                "max_file_size_mb": max_file_size_mb,
+                "max_files_count": max_files_count,
             }
         )
 
@@ -162,6 +188,24 @@ class QuestionWithAnswer:
 
         max_value = _parse_max_value(d.pop("max_value"))
 
+        allowed_file_types = d.pop("allowed_file_types")
+
+        allowed_mime_types = d.pop("allowed_mime_types")
+
+        def _parse_max_file_size_mb(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        max_file_size_mb = _parse_max_file_size_mb(d.pop("max_file_size_mb"))
+
+        def _parse_max_files_count(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        max_files_count = _parse_max_files_count(d.pop("max_files_count"))
+
         question_with_answer = cls(
             uuid=uuid,
             description=description,
@@ -173,6 +217,10 @@ class QuestionWithAnswer:
             question_options=question_options,
             min_value=min_value,
             max_value=max_value,
+            allowed_file_types=allowed_file_types,
+            allowed_mime_types=allowed_mime_types,
+            max_file_size_mb=max_file_size_mb,
+            max_files_count=max_files_count,
         )
 
         question_with_answer.additional_properties = d

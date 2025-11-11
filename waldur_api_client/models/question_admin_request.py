@@ -34,6 +34,15 @@ class QuestionAdminRequest:
         min_value (Union[None, Unset, str]): Minimum value allowed for NUMBER type questions
         max_value (Union[None, Unset, str]): Maximum value allowed for NUMBER type questions
         dependency_logic_operator (Union[Unset, DependencyLogicOperatorEnum]):
+        allowed_file_types (Union[Unset, Any]): List of allowed file extensions (e.g., ['.pdf', '.doc', '.docx']). If
+            empty, all file types are allowed.
+        allowed_mime_types (Union[Unset, Any]): List of allowed MIME types (e.g., ['application/pdf',
+            'application/msword']). If empty, MIME type validation is not enforced. When both extensions and MIME types are
+            specified, files must match both criteria for security.
+        max_file_size_mb (Union[None, Unset, int]): Maximum file size in megabytes. If not set, no size limit is
+            enforced.
+        max_files_count (Union[None, Unset, int]): Maximum number of files allowed for MULTIPLE_FILES type questions. If
+            not set, no count limit is enforced.
     """
 
     checklist: str
@@ -51,6 +60,10 @@ class QuestionAdminRequest:
     min_value: Union[None, Unset, str] = UNSET
     max_value: Union[None, Unset, str] = UNSET
     dependency_logic_operator: Union[Unset, DependencyLogicOperatorEnum] = UNSET
+    allowed_file_types: Union[Unset, Any] = UNSET
+    allowed_mime_types: Union[Unset, Any] = UNSET
+    max_file_size_mb: Union[None, Unset, int] = UNSET
+    max_files_count: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -108,6 +121,22 @@ class QuestionAdminRequest:
         if not isinstance(self.dependency_logic_operator, Unset):
             dependency_logic_operator = self.dependency_logic_operator.value
 
+        allowed_file_types = self.allowed_file_types
+
+        allowed_mime_types = self.allowed_mime_types
+
+        max_file_size_mb: Union[None, Unset, int]
+        if isinstance(self.max_file_size_mb, Unset):
+            max_file_size_mb = UNSET
+        else:
+            max_file_size_mb = self.max_file_size_mb
+
+        max_files_count: Union[None, Unset, int]
+        if isinstance(self.max_files_count, Unset):
+            max_files_count = UNSET
+        else:
+            max_files_count = self.max_files_count
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -143,6 +172,14 @@ class QuestionAdminRequest:
             field_dict["max_value"] = max_value
         if dependency_logic_operator is not UNSET:
             field_dict["dependency_logic_operator"] = dependency_logic_operator
+        if allowed_file_types is not UNSET:
+            field_dict["allowed_file_types"] = allowed_file_types
+        if allowed_mime_types is not UNSET:
+            field_dict["allowed_mime_types"] = allowed_mime_types
+        if max_file_size_mb is not UNSET:
+            field_dict["max_file_size_mb"] = max_file_size_mb
+        if max_files_count is not UNSET:
+            field_dict["max_files_count"] = max_files_count
 
         return field_dict
 
@@ -237,6 +274,28 @@ class QuestionAdminRequest:
         else:
             dependency_logic_operator = DependencyLogicOperatorEnum(_dependency_logic_operator)
 
+        allowed_file_types = d.pop("allowed_file_types", UNSET)
+
+        allowed_mime_types = d.pop("allowed_mime_types", UNSET)
+
+        def _parse_max_file_size_mb(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        max_file_size_mb = _parse_max_file_size_mb(d.pop("max_file_size_mb", UNSET))
+
+        def _parse_max_files_count(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        max_files_count = _parse_max_files_count(d.pop("max_files_count", UNSET))
+
         question_admin_request = cls(
             checklist=checklist,
             required=required,
@@ -253,6 +312,10 @@ class QuestionAdminRequest:
             min_value=min_value,
             max_value=max_value,
             dependency_logic_operator=dependency_logic_operator,
+            allowed_file_types=allowed_file_types,
+            allowed_mime_types=allowed_mime_types,
+            max_file_size_mb=max_file_size_mb,
+            max_files_count=max_files_count,
         )
 
         question_admin_request.additional_properties = d
