@@ -154,6 +154,7 @@ class ConstanceSettings:
         maintenance_announcement_notify_system (Union[Unset, list[str]]):
         enforce_user_consent_for_offerings (Union[Unset, bool]):
         disabled_offering_types (Union[Unset, list[str]]):
+        onboarding_country (Union[Unset, str]):
         onboarding_verification_expiry_hours (Union[Unset, int]):
         onboarding_ariregister_base_url (Union[Unset, str]):
         onboarding_ariregister_username (Union[Unset, str]):
@@ -161,6 +162,10 @@ class ConstanceSettings:
         onboarding_ariregister_timeout (Union[Unset, int]):
         onboarding_wico_api_url (Union[Unset, str]):
         onboarding_wico_token (Union[Unset, str]):
+        onboarding_bolagsverket_api_url (Union[Unset, str]):
+        onboarding_bolagsverket_token_api_url (Union[Unset, str]):
+        onboarding_bolagsverket_client_id (Union[Unset, str]):
+        onboarding_bolagsverket_client_secret (Union[Unset, str]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -304,6 +309,7 @@ class ConstanceSettings:
     maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
     enforce_user_consent_for_offerings: Union[Unset, bool] = UNSET
     disabled_offering_types: Union[Unset, list[str]] = UNSET
+    onboarding_country: Union[Unset, str] = UNSET
     onboarding_verification_expiry_hours: Union[Unset, int] = UNSET
     onboarding_ariregister_base_url: Union[Unset, str] = UNSET
     onboarding_ariregister_username: Union[Unset, str] = UNSET
@@ -311,6 +317,10 @@ class ConstanceSettings:
     onboarding_ariregister_timeout: Union[Unset, int] = UNSET
     onboarding_wico_api_url: Union[Unset, str] = UNSET
     onboarding_wico_token: Union[Unset, str] = UNSET
+    onboarding_bolagsverket_api_url: Union[Unset, str] = UNSET
+    onboarding_bolagsverket_token_api_url: Union[Unset, str] = UNSET
+    onboarding_bolagsverket_client_id: Union[Unset, str] = UNSET
+    onboarding_bolagsverket_client_secret: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -652,6 +662,8 @@ class ConstanceSettings:
         if not isinstance(self.disabled_offering_types, Unset):
             disabled_offering_types = self.disabled_offering_types
 
+        onboarding_country = self.onboarding_country
+
         onboarding_verification_expiry_hours = self.onboarding_verification_expiry_hours
 
         onboarding_ariregister_base_url = self.onboarding_ariregister_base_url
@@ -665,6 +677,14 @@ class ConstanceSettings:
         onboarding_wico_api_url = self.onboarding_wico_api_url
 
         onboarding_wico_token = self.onboarding_wico_token
+
+        onboarding_bolagsverket_api_url = self.onboarding_bolagsverket_api_url
+
+        onboarding_bolagsverket_token_api_url = self.onboarding_bolagsverket_token_api_url
+
+        onboarding_bolagsverket_client_id = self.onboarding_bolagsverket_client_id
+
+        onboarding_bolagsverket_client_secret = self.onboarding_bolagsverket_client_secret
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -957,6 +977,8 @@ class ConstanceSettings:
             field_dict["ENFORCE_USER_CONSENT_FOR_OFFERINGS"] = enforce_user_consent_for_offerings
         if disabled_offering_types is not UNSET:
             field_dict["DISABLED_OFFERING_TYPES"] = disabled_offering_types
+        if onboarding_country is not UNSET:
+            field_dict["ONBOARDING_COUNTRY"] = onboarding_country
         if onboarding_verification_expiry_hours is not UNSET:
             field_dict["ONBOARDING_VERIFICATION_EXPIRY_HOURS"] = onboarding_verification_expiry_hours
         if onboarding_ariregister_base_url is not UNSET:
@@ -971,6 +993,14 @@ class ConstanceSettings:
             field_dict["ONBOARDING_WICO_API_URL"] = onboarding_wico_api_url
         if onboarding_wico_token is not UNSET:
             field_dict["ONBOARDING_WICO_TOKEN"] = onboarding_wico_token
+        if onboarding_bolagsverket_api_url is not UNSET:
+            field_dict["ONBOARDING_BOLAGSVERKET_API_URL"] = onboarding_bolagsverket_api_url
+        if onboarding_bolagsverket_token_api_url is not UNSET:
+            field_dict["ONBOARDING_BOLAGSVERKET_TOKEN_API_URL"] = onboarding_bolagsverket_token_api_url
+        if onboarding_bolagsverket_client_id is not UNSET:
+            field_dict["ONBOARDING_BOLAGSVERKET_CLIENT_ID"] = onboarding_bolagsverket_client_id
+        if onboarding_bolagsverket_client_secret is not UNSET:
+            field_dict["ONBOARDING_BOLAGSVERKET_CLIENT_SECRET"] = onboarding_bolagsverket_client_secret
 
         return field_dict
 
@@ -1347,6 +1377,8 @@ class ConstanceSettings:
 
         disabled_offering_types = cast(list[str], d.pop("DISABLED_OFFERING_TYPES", UNSET))
 
+        onboarding_country = d.pop("ONBOARDING_COUNTRY", UNSET)
+
         onboarding_verification_expiry_hours = d.pop("ONBOARDING_VERIFICATION_EXPIRY_HOURS", UNSET)
 
         onboarding_ariregister_base_url = d.pop("ONBOARDING_ARIREGISTER_BASE_URL", UNSET)
@@ -1360,6 +1392,14 @@ class ConstanceSettings:
         onboarding_wico_api_url = d.pop("ONBOARDING_WICO_API_URL", UNSET)
 
         onboarding_wico_token = d.pop("ONBOARDING_WICO_TOKEN", UNSET)
+
+        onboarding_bolagsverket_api_url = d.pop("ONBOARDING_BOLAGSVERKET_API_URL", UNSET)
+
+        onboarding_bolagsverket_token_api_url = d.pop("ONBOARDING_BOLAGSVERKET_TOKEN_API_URL", UNSET)
+
+        onboarding_bolagsverket_client_id = d.pop("ONBOARDING_BOLAGSVERKET_CLIENT_ID", UNSET)
+
+        onboarding_bolagsverket_client_secret = d.pop("ONBOARDING_BOLAGSVERKET_CLIENT_SECRET", UNSET)
 
         constance_settings = cls(
             site_name=site_name,
@@ -1503,6 +1543,7 @@ class ConstanceSettings:
             maintenance_announcement_notify_system=maintenance_announcement_notify_system,
             enforce_user_consent_for_offerings=enforce_user_consent_for_offerings,
             disabled_offering_types=disabled_offering_types,
+            onboarding_country=onboarding_country,
             onboarding_verification_expiry_hours=onboarding_verification_expiry_hours,
             onboarding_ariregister_base_url=onboarding_ariregister_base_url,
             onboarding_ariregister_username=onboarding_ariregister_username,
@@ -1510,6 +1551,10 @@ class ConstanceSettings:
             onboarding_ariregister_timeout=onboarding_ariregister_timeout,
             onboarding_wico_api_url=onboarding_wico_api_url,
             onboarding_wico_token=onboarding_wico_token,
+            onboarding_bolagsverket_api_url=onboarding_bolagsverket_api_url,
+            onboarding_bolagsverket_token_api_url=onboarding_bolagsverket_token_api_url,
+            onboarding_bolagsverket_client_id=onboarding_bolagsverket_client_id,
+            onboarding_bolagsverket_client_secret=onboarding_bolagsverket_client_secret,
         )
 
         constance_settings.additional_properties = d
