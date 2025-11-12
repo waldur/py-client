@@ -15,6 +15,7 @@ class MarketplaceServiceProvidersProjectsListFieldItem(str, Enum):
     DESCRIPTION = "description"
     END_DATE = "end_date"
     END_DATE_REQUESTED_BY = "end_date_requested_by"
+    GRACE_PERIOD_DAYS = "grace_period_days"
     IMAGE = "image"
     IS_INDUSTRY = "is_industry"
     IS_REMOVED = "is_removed"

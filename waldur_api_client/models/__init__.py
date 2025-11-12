@@ -501,6 +501,7 @@ from .lexis_link import LexisLink
 from .lexis_link_create_request import LexisLinkCreateRequest
 from .lexis_link_request import LexisLinkRequest
 from .limit_period_enum import LimitPeriodEnum
+from .limit_type_enum import LimitTypeEnum
 from .link_openstack_request import LinkOpenstackRequest
 from .link_to_invoice import LinkToInvoice
 from .link_to_invoice_request import LinkToInvoiceRequest
@@ -1231,6 +1232,7 @@ from .patched_service_provider_request import PatchedServiceProviderRequest
 from .patched_service_provider_request_form import PatchedServiceProviderRequestForm
 from .patched_service_provider_request_multipart import PatchedServiceProviderRequestMultipart
 from .patched_slurm_allocation_request import PatchedSlurmAllocationRequest
+from .patched_slurm_periodic_usage_policy_request import PatchedSlurmPeriodicUsagePolicyRequest
 from .patched_software_catalog_request import PatchedSoftwareCatalogRequest
 from .patched_software_package_request import PatchedSoftwarePackageRequest
 from .patched_template_request import PatchedTemplateRequest
@@ -1434,6 +1436,7 @@ from .public_maintenance_announcements_list_state_item import PublicMaintenanceA
 from .public_offering_details import PublicOfferingDetails
 from .public_offering_details_attributes import PublicOfferingDetailsAttributes
 from .pull_marketplace_script_resource_request import PullMarketplaceScriptResourceRequest
+from .qos_strategy_enum import QosStrategyEnum
 from .query_request import QueryRequest
 from .question import Question
 from .question_admin import QuestionAdmin
@@ -1696,6 +1699,8 @@ from .slurm_association import SlurmAssociation
 from .slurm_invoices_slurm_package_create_order_attributes import SlurmInvoicesSlurmPackageCreateOrderAttributes
 from .slurm_jobs_list_field_item import SlurmJobsListFieldItem
 from .slurm_jobs_retrieve_field_item import SlurmJobsRetrieveFieldItem
+from .slurm_periodic_usage_policy import SlurmPeriodicUsagePolicy
+from .slurm_periodic_usage_policy_request import SlurmPeriodicUsagePolicyRequest
 from .smax_web_hook_receiver import SmaxWebHookReceiver
 from .smax_web_hook_receiver_request import SmaxWebHookReceiverRequest
 from .software_catalog import SoftwareCatalog
@@ -2321,6 +2326,7 @@ __all__ = (
     "LexisLinkCreateRequest",
     "LexisLinkRequest",
     "LimitPeriodEnum",
+    "LimitTypeEnum",
     "LinkOpenstackRequest",
     "LinkToInvoice",
     "LinkToInvoiceRequest",
@@ -2973,6 +2979,7 @@ __all__ = (
     "PatchedServiceProviderRequestForm",
     "PatchedServiceProviderRequestMultipart",
     "PatchedSlurmAllocationRequest",
+    "PatchedSlurmPeriodicUsagePolicyRequest",
     "PatchedSoftwareCatalogRequest",
     "PatchedSoftwarePackageRequest",
     "PatchedTemplateRequest",
@@ -3156,6 +3163,7 @@ __all__ = (
     "PublicOfferingDetails",
     "PublicOfferingDetailsAttributes",
     "PullMarketplaceScriptResourceRequest",
+    "QosStrategyEnum",
     "QueryRequest",
     "Question",
     "QuestionAdmin",
@@ -3406,6 +3414,8 @@ __all__ = (
     "SlurmInvoicesSlurmPackageCreateOrderAttributes",
     "SlurmJobsListFieldItem",
     "SlurmJobsRetrieveFieldItem",
+    "SlurmPeriodicUsagePolicy",
+    "SlurmPeriodicUsagePolicyRequest",
     "SmaxWebHookReceiver",
     "SmaxWebHookReceiverRequest",
     "SoftwareCatalog",

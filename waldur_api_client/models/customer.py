@@ -44,6 +44,8 @@ class Customer:
         country_name (Union[Unset, str]):
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
         project_metadata_checklist (Union[None, UUID, Unset]):
+        grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
+            terminated
         name (Union[Unset, str]):
         slug (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -96,6 +98,7 @@ class Customer:
     country_name: Union[Unset, str] = UNSET
     max_service_accounts: Union[None, Unset, int] = UNSET
     project_metadata_checklist: Union[None, UUID, Unset] = UNSET
+    grace_period_days: Union[None, Unset, int] = UNSET
     name: Union[Unset, str] = UNSET
     slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
@@ -200,6 +203,12 @@ class Customer:
             project_metadata_checklist = str(self.project_metadata_checklist)
         else:
             project_metadata_checklist = self.project_metadata_checklist
+
+        grace_period_days: Union[None, Unset, int]
+        if isinstance(self.grace_period_days, Unset):
+            grace_period_days = UNSET
+        else:
+            grace_period_days = self.grace_period_days
 
         name = self.name
 
@@ -345,6 +354,8 @@ class Customer:
             field_dict["max_service_accounts"] = max_service_accounts
         if project_metadata_checklist is not UNSET:
             field_dict["project_metadata_checklist"] = project_metadata_checklist
+        if grace_period_days is not UNSET:
+            field_dict["grace_period_days"] = grace_period_days
         if name is not UNSET:
             field_dict["name"] = name
         if slug is not UNSET:
@@ -515,6 +526,15 @@ class Customer:
 
         project_metadata_checklist = _parse_project_metadata_checklist(d.pop("project_metadata_checklist", UNSET))
 
+        def _parse_grace_period_days(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        grace_period_days = _parse_grace_period_days(d.pop("grace_period_days", UNSET))
+
         name = d.pop("name", UNSET)
 
         slug = d.pop("slug", UNSET)
@@ -681,6 +701,7 @@ class Customer:
             country_name=country_name,
             max_service_accounts=max_service_accounts,
             project_metadata_checklist=project_metadata_checklist,
+            grace_period_days=grace_period_days,
             name=name,
             slug=slug,
             native_name=native_name,

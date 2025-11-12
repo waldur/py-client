@@ -26,6 +26,7 @@ class CustomersListFieldItem(str, Enum):
     DISPLAY_NAME = "display_name"
     DOMAIN = "domain"
     EMAIL = "email"
+    GRACE_PERIOD_DAYS = "grace_period_days"
     HOMEPAGE = "homepage"
     IMAGE = "image"
     IS_SERVICE_PROVIDER = "is_service_provider"

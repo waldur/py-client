@@ -33,6 +33,8 @@ class PatchedProjectRequestForm:
         image (Union[File, None, Unset]):
         kind (Union[Unset, KindEnum]):
         staff_notes (Union[Unset, str]):
+        grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
+            terminated. Overrides customer-level setting.
     """
 
     name: Union[Unset, str] = UNSET
@@ -48,6 +50,7 @@ class PatchedProjectRequestForm:
     image: Union[File, None, Unset] = UNSET
     kind: Union[Unset, KindEnum] = UNSET
     staff_notes: Union[Unset, str] = UNSET
+    grace_period_days: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -110,6 +113,12 @@ class PatchedProjectRequestForm:
 
         staff_notes = self.staff_notes
 
+        grace_period_days: Union[None, Unset, int]
+        if isinstance(self.grace_period_days, Unset):
+            grace_period_days = UNSET
+        else:
+            grace_period_days = self.grace_period_days
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -139,6 +148,8 @@ class PatchedProjectRequestForm:
             field_dict["kind"] = kind
         if staff_notes is not UNSET:
             field_dict["staff_notes"] = staff_notes
+        if grace_period_days is not UNSET:
+            field_dict["grace_period_days"] = grace_period_days
 
         return field_dict
 
@@ -251,6 +262,15 @@ class PatchedProjectRequestForm:
 
         staff_notes = d.pop("staff_notes", UNSET)
 
+        def _parse_grace_period_days(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        grace_period_days = _parse_grace_period_days(d.pop("grace_period_days", UNSET))
+
         patched_project_request_form = cls(
             name=name,
             slug=slug,
@@ -265,6 +285,7 @@ class PatchedProjectRequestForm:
             image=image,
             kind=kind,
             staff_notes=staff_notes,
+            grace_period_days=grace_period_days,
         )
 
         patched_project_request_form.additional_properties = d
