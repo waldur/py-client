@@ -24,10 +24,17 @@ from .agent_service_state import AgentServiceState
 from .agent_service_statistics_request import AgentServiceStatisticsRequest
 from .agent_type_enum import AgentTypeEnum
 from .agreement_type_enum import AgreementTypeEnum
+from .allocation import Allocation
+from .allocation_marketplace_offering_plugin_options_type_0 import AllocationMarketplaceOfferingPluginOptionsType0
+from .allocation_request import AllocationRequest
+from .allocation_set_limits import AllocationSetLimits
+from .allocation_set_limits_request import AllocationSetLimitsRequest
 from .allocation_time_enum import AllocationTimeEnum
+from .allocation_user_usage import AllocationUserUsage
 from .answer import Answer
 from .answer_submit_request import AnswerSubmitRequest
 from .answer_submit_response import AnswerSubmitResponse
+from .association import Association
 from .attachment import Attachment
 from .attachment_request import AttachmentRequest
 from .attachment_request_form import AttachmentRequestForm
@@ -525,6 +532,7 @@ from .maintenance_announcements_list_state_item import MaintenanceAnnouncementsL
 from .maintenance_announcements_template_count_o_item import MaintenanceAnnouncementsTemplateCountOItem
 from .maintenance_announcements_template_list_o_item import MaintenanceAnnouncementsTemplateListOItem
 from .maintenance_type_enum import MaintenanceTypeEnum
+from .managed_project import ManagedProject
 from .managed_rancher_cluster_resources_list_field_item import ManagedRancherClusterResourcesListFieldItem
 from .managed_rancher_cluster_resources_retrieve_field_item import ManagedRancherClusterResourcesRetrieveFieldItem
 from .managed_rancher_create_node_request import ManagedRancherCreateNodeRequest
@@ -592,6 +600,8 @@ from .marketplace_offering_users_list_field_item import MarketplaceOfferingUsers
 from .marketplace_offering_users_list_o_item import MarketplaceOfferingUsersListOItem
 from .marketplace_offering_users_list_state_item import MarketplaceOfferingUsersListStateItem
 from .marketplace_offering_users_retrieve_field_item import MarketplaceOfferingUsersRetrieveFieldItem
+from .marketplace_open_portal_create_order_attributes import MarketplaceOpenPortalCreateOrderAttributes
+from .marketplace_open_portal_remote_create_order_attributes import MarketplaceOpenPortalRemoteCreateOrderAttributes
 from .marketplace_orders_count_o_item import MarketplaceOrdersCountOItem
 from .marketplace_orders_count_state_item import MarketplaceOrdersCountStateItem
 from .marketplace_orders_count_type_item import MarketplaceOrdersCountTypeItem
@@ -1025,6 +1035,24 @@ from .open_stack_volume_marketplace_offering_plugin_options_type_0 import (
 from .open_stack_volume_request import OpenStackVolumeRequest
 from .open_stack_volume_retype_request import OpenStackVolumeRetypeRequest
 from .open_stack_volume_type import OpenStackVolumeType
+from .openportal_allocations_count_state_item import OpenportalAllocationsCountStateItem
+from .openportal_allocations_list_field_item import OpenportalAllocationsListFieldItem
+from .openportal_allocations_list_state_item import OpenportalAllocationsListStateItem
+from .openportal_allocations_retrieve_field_item import OpenportalAllocationsRetrieveFieldItem
+from .openportal_managed_projects_count_state_item import OpenportalManagedProjectsCountStateItem
+from .openportal_managed_projects_list_state_item import OpenportalManagedProjectsListStateItem
+from .openportal_remote_allocations_count_state_item import OpenportalRemoteAllocationsCountStateItem
+from .openportal_remote_allocations_list_field_item import OpenportalRemoteAllocationsListFieldItem
+from .openportal_remote_allocations_list_state_item import OpenportalRemoteAllocationsListStateItem
+from .openportal_remote_allocations_retrieve_field_item import OpenportalRemoteAllocationsRetrieveFieldItem
+from .openportal_unmanaged_projects_add_user_response_400 import OpenportalUnmanagedProjectsAddUserResponse400
+from .openportal_unmanaged_projects_count_o_item import OpenportalUnmanagedProjectsCountOItem
+from .openportal_unmanaged_projects_list_field_item import OpenportalUnmanagedProjectsListFieldItem
+from .openportal_unmanaged_projects_list_o_item import OpenportalUnmanagedProjectsListOItem
+from .openportal_unmanaged_projects_list_users_list_field_item import OpenportalUnmanagedProjectsListUsersListFieldItem
+from .openportal_unmanaged_projects_list_users_list_o_item import OpenportalUnmanagedProjectsListUsersListOItem
+from .openportal_unmanaged_projects_move_project_response_400 import OpenportalUnmanagedProjectsMoveProjectResponse400
+from .openportal_unmanaged_projects_retrieve_field_item import OpenportalUnmanagedProjectsRetrieveFieldItem
 from .openstack_backups_count_state_item import OpenstackBackupsCountStateItem
 from .openstack_backups_list_field_item import OpenstackBackupsListFieldItem
 from .openstack_backups_list_state_item import OpenstackBackupsListStateItem
@@ -1108,6 +1136,7 @@ from .paid_request_multipart import PaidRequestMultipart
 from .password_change_request import PasswordChangeRequest
 from .patched_access_subnet_request import PatchedAccessSubnetRequest
 from .patched_admin_announcement_request import PatchedAdminAnnouncementRequest
+from .patched_allocation_request import PatchedAllocationRequest
 from .patched_aws_instance_request import PatchedAwsInstanceRequest
 from .patched_azure_public_ip_request import PatchedAzurePublicIPRequest
 from .patched_azure_sql_database_request import PatchedAzureSqlDatabaseRequest
@@ -1197,10 +1226,12 @@ from .patched_payment_request_form import PatchedPaymentRequestForm
 from .patched_payment_request_multipart import PatchedPaymentRequestMultipart
 from .patched_project_credit_request import PatchedProjectCreditRequest
 from .patched_project_estimated_cost_policy_request import PatchedProjectEstimatedCostPolicyRequest
+from .patched_project_info_request import PatchedProjectInfoRequest
 from .patched_project_request import PatchedProjectRequest
 from .patched_project_request_form import PatchedProjectRequestForm
 from .patched_project_request_multipart import PatchedProjectRequestMultipart
 from .patched_project_service_account_request import PatchedProjectServiceAccountRequest
+from .patched_project_template_request import PatchedProjectTemplateRequest
 from .patched_proposal_project_role_mapping_request import PatchedProposalProjectRoleMappingRequest
 from .patched_proposal_review_request import PatchedProposalReviewRequest
 from .patched_protected_call_request import PatchedProtectedCallRequest
@@ -1217,6 +1248,7 @@ from .patched_rancher_hpa_request import PatchedRancherHPARequest
 from .patched_rancher_ingress_request import PatchedRancherIngressRequest
 from .patched_rancher_service_request import PatchedRancherServiceRequest
 from .patched_rancher_workload_request import PatchedRancherWorkloadRequest
+from .patched_remote_allocation_request import PatchedRemoteAllocationRequest
 from .patched_remote_synchronisation_request import PatchedRemoteSynchronisationRequest
 from .patched_requested_offering_request import PatchedRequestedOfferingRequest
 from .patched_requested_resource_request import PatchedRequestedResourceRequest
@@ -1237,6 +1269,7 @@ from .patched_software_catalog_request import PatchedSoftwareCatalogRequest
 from .patched_software_package_request import PatchedSoftwarePackageRequest
 from .patched_template_request import PatchedTemplateRequest
 from .patched_user_agreement_request import PatchedUserAgreementRequest
+from .patched_user_info_request import PatchedUserInfoRequest
 from .patched_user_offering_consent_request import PatchedUserOfferingConsentRequest
 from .patched_user_request import PatchedUserRequest
 from .patched_user_request_form import PatchedUserRequestForm
@@ -1286,6 +1319,7 @@ from .prices_update_request_prices import PricesUpdateRequestPrices
 from .priority import Priority
 from .project import Project
 from .project_answer import ProjectAnswer
+from .project_attach_request import ProjectAttachRequest
 from .project_credit import ProjectCredit
 from .project_credit_request import ProjectCreditRequest
 from .project_credits_count_o_item import ProjectCreditsCountOItem
@@ -1295,6 +1329,8 @@ from .project_details_response import ProjectDetailsResponse
 from .project_estimated_cost_policy import ProjectEstimatedCostPolicy
 from .project_estimated_cost_policy_request import ProjectEstimatedCostPolicyRequest
 from .project_hyperlink_request import ProjectHyperlinkRequest
+from .project_info import ProjectInfo
+from .project_info_request import ProjectInfoRequest
 from .project_marketplace_resource_count import ProjectMarketplaceResourceCount
 from .project_permission_log import ProjectPermissionLog
 from .project_permission_review import ProjectPermissionReview
@@ -1307,6 +1343,10 @@ from .project_request_form import ProjectRequestForm
 from .project_request_multipart import ProjectRequestMultipart
 from .project_service_account import ProjectServiceAccount
 from .project_service_account_request import ProjectServiceAccountRequest
+from .project_template import ProjectTemplate
+from .project_template_request import ProjectTemplateRequest
+from .project_template_role_mapping_data import ProjectTemplateRoleMappingData
+from .project_template_role_mapping_data_additional_property import ProjectTemplateRoleMappingDataAdditionalProperty
 from .project_type import ProjectType
 from .project_user import ProjectUser
 from .projects_add_user_response_400 import ProjectsAddUserResponse400
@@ -1416,6 +1456,7 @@ from .provider_offering_costs import ProviderOfferingCosts
 from .provider_offering_customer import ProviderOfferingCustomer
 from .provider_offering_details import ProviderOfferingDetails
 from .provider_offering_details_attributes import ProviderOfferingDetailsAttributes
+from .provider_offering_details_request import ProviderOfferingDetailsRequest
 from .provider_offering_details_service_attributes import ProviderOfferingDetailsServiceAttributes
 from .provider_plan_details import ProviderPlanDetails
 from .provider_plan_details_future_prices import ProviderPlanDetailsFuturePrices
@@ -1552,6 +1593,14 @@ from .rancher_workload_request import RancherWorkloadRequest
 from .rancher_workloads_count_o_item import RancherWorkloadsCountOItem
 from .rancher_workloads_list_o_item import RancherWorkloadsListOItem
 from .reference_number_request import ReferenceNumberRequest
+from .remote_allocation import RemoteAllocation
+from .remote_allocation_marketplace_offering_plugin_options_type_0 import (
+    RemoteAllocationMarketplaceOfferingPluginOptionsType0,
+)
+from .remote_allocation_request import RemoteAllocationRequest
+from .remote_allocation_set_limits import RemoteAllocationSetLimits
+from .remote_allocation_set_limits_request import RemoteAllocationSetLimitsRequest
+from .remote_association import RemoteAssociation
 from .remote_credentials_request import RemoteCredentialsRequest
 from .remote_customer import RemoteCustomer
 from .remote_eduteams_request_request import RemoteEduteamsRequestRequest
@@ -1751,6 +1800,8 @@ from .user_consent_info import UserConsentInfo
 from .user_email_change_request import UserEmailChangeRequest
 from .user_group_invitations_count_o_item import UserGroupInvitationsCountOItem
 from .user_group_invitations_list_o_item import UserGroupInvitationsListOItem
+from .user_info import UserInfo
+from .user_info_request import UserInfoRequest
 from .user_invitations_count_o_item import UserInvitationsCountOItem
 from .user_invitations_count_state_item import UserInvitationsCountStateItem
 from .user_invitations_list_o_item import UserInvitationsListOItem
@@ -1869,10 +1920,17 @@ __all__ = (
     "AgentServiceStatisticsRequest",
     "AgentTypeEnum",
     "AgreementTypeEnum",
+    "Allocation",
+    "AllocationMarketplaceOfferingPluginOptionsType0",
+    "AllocationRequest",
+    "AllocationSetLimits",
+    "AllocationSetLimitsRequest",
     "AllocationTimeEnum",
+    "AllocationUserUsage",
     "Answer",
     "AnswerSubmitRequest",
     "AnswerSubmitResponse",
+    "Association",
     "Attachment",
     "AttachmentRequest",
     "AttachmentRequestForm",
@@ -2350,6 +2408,7 @@ __all__ = (
     "MaintenanceAnnouncementTemplateOfferingsListOItem",
     "MaintenanceAnnouncementTemplateRequest",
     "MaintenanceTypeEnum",
+    "ManagedProject",
     "ManagedRancherClusterResourcesListFieldItem",
     "ManagedRancherClusterResourcesRetrieveFieldItem",
     "ManagedRancherCreateNodeRequest",
@@ -2407,6 +2466,8 @@ __all__ = (
     "MarketplaceOfferingUsersListOItem",
     "MarketplaceOfferingUsersListStateItem",
     "MarketplaceOfferingUsersRetrieveFieldItem",
+    "MarketplaceOpenPortalCreateOrderAttributes",
+    "MarketplaceOpenPortalRemoteCreateOrderAttributes",
     "MarketplaceOrdersCountOItem",
     "MarketplaceOrdersCountStateItem",
     "MarketplaceOrdersCountTypeItem",
@@ -2682,6 +2743,24 @@ __all__ = (
     "OnboardingVerificationRequest",
     "OnboardingVerificationStatusEnum",
     "OnboardingVerificationUserSubmittedCustomerData",
+    "OpenportalAllocationsCountStateItem",
+    "OpenportalAllocationsListFieldItem",
+    "OpenportalAllocationsListStateItem",
+    "OpenportalAllocationsRetrieveFieldItem",
+    "OpenportalManagedProjectsCountStateItem",
+    "OpenportalManagedProjectsListStateItem",
+    "OpenportalRemoteAllocationsCountStateItem",
+    "OpenportalRemoteAllocationsListFieldItem",
+    "OpenportalRemoteAllocationsListStateItem",
+    "OpenportalRemoteAllocationsRetrieveFieldItem",
+    "OpenportalUnmanagedProjectsAddUserResponse400",
+    "OpenportalUnmanagedProjectsCountOItem",
+    "OpenportalUnmanagedProjectsListFieldItem",
+    "OpenportalUnmanagedProjectsListOItem",
+    "OpenportalUnmanagedProjectsListUsersListFieldItem",
+    "OpenportalUnmanagedProjectsListUsersListOItem",
+    "OpenportalUnmanagedProjectsMoveProjectResponse400",
+    "OpenportalUnmanagedProjectsRetrieveFieldItem",
     "OpenStackAllowedAddressPair",
     "OpenStackAllowedAddressPairRequest",
     "OpenStackBackendInstance",
@@ -2861,6 +2940,7 @@ __all__ = (
     "PasswordChangeRequest",
     "PatchedAccessSubnetRequest",
     "PatchedAdminAnnouncementRequest",
+    "PatchedAllocationRequest",
     "PatchedAwsInstanceRequest",
     "PatchedAzurePublicIPRequest",
     "PatchedAzureSqlDatabaseRequest",
@@ -2944,10 +3024,12 @@ __all__ = (
     "PatchedPaymentRequestMultipart",
     "PatchedProjectCreditRequest",
     "PatchedProjectEstimatedCostPolicyRequest",
+    "PatchedProjectInfoRequest",
     "PatchedProjectRequest",
     "PatchedProjectRequestForm",
     "PatchedProjectRequestMultipart",
     "PatchedProjectServiceAccountRequest",
+    "PatchedProjectTemplateRequest",
     "PatchedProposalProjectRoleMappingRequest",
     "PatchedProposalReviewRequest",
     "PatchedProtectedCallRequest",
@@ -2964,6 +3046,7 @@ __all__ = (
     "PatchedRancherIngressRequest",
     "PatchedRancherServiceRequest",
     "PatchedRancherWorkloadRequest",
+    "PatchedRemoteAllocationRequest",
     "PatchedRemoteSynchronisationRequest",
     "PatchedRequestedOfferingRequest",
     "PatchedRequestedResourceRequest",
@@ -2984,6 +3067,7 @@ __all__ = (
     "PatchedSoftwarePackageRequest",
     "PatchedTemplateRequest",
     "PatchedUserAgreementRequest",
+    "PatchedUserInfoRequest",
     "PatchedUserOfferingConsentRequest",
     "PatchedUserRequest",
     "PatchedUserRequestForm",
@@ -3027,6 +3111,7 @@ __all__ = (
     "Priority",
     "Project",
     "ProjectAnswer",
+    "ProjectAttachRequest",
     "ProjectCredit",
     "ProjectCreditRequest",
     "ProjectCreditsCountOItem",
@@ -3036,6 +3121,8 @@ __all__ = (
     "ProjectEstimatedCostPolicy",
     "ProjectEstimatedCostPolicyRequest",
     "ProjectHyperlinkRequest",
+    "ProjectInfo",
+    "ProjectInfoRequest",
     "ProjectMarketplaceResourceCount",
     "ProjectPermissionLog",
     "ProjectPermissionReview",
@@ -3069,6 +3156,10 @@ __all__ = (
     "ProjectsUsagesGroupedByOecd",
     "ProjectsUsagesGroupedByOecdUsages",
     "ProjectsUsagesGroupedByOecdUsagesAdditionalProperty",
+    "ProjectTemplate",
+    "ProjectTemplateRequest",
+    "ProjectTemplateRoleMappingData",
+    "ProjectTemplateRoleMappingDataAdditionalProperty",
     "ProjectType",
     "ProjectUser",
     "PromotionsCampaignsCountOItem",
@@ -3143,6 +3234,7 @@ __all__ = (
     "ProviderOfferingCustomer",
     "ProviderOfferingDetails",
     "ProviderOfferingDetailsAttributes",
+    "ProviderOfferingDetailsRequest",
     "ProviderOfferingDetailsServiceAttributes",
     "ProviderPlanDetails",
     "ProviderPlanDetailsFuturePrices",
@@ -3269,6 +3361,12 @@ __all__ = (
     "RancherWorkloadsCountOItem",
     "RancherWorkloadsListOItem",
     "ReferenceNumberRequest",
+    "RemoteAllocation",
+    "RemoteAllocationMarketplaceOfferingPluginOptionsType0",
+    "RemoteAllocationRequest",
+    "RemoteAllocationSetLimits",
+    "RemoteAllocationSetLimitsRequest",
+    "RemoteAssociation",
     "RemoteCredentialsRequest",
     "RemoteCustomer",
     "RemoteEduteamsRequestRequest",
@@ -3466,6 +3564,8 @@ __all__ = (
     "UserEmailChangeRequest",
     "UserGroupInvitationsCountOItem",
     "UserGroupInvitationsListOItem",
+    "UserInfo",
+    "UserInfoRequest",
     "UserInvitationsCountOItem",
     "UserInvitationsCountStateItem",
     "UserInvitationsListOItem",
