@@ -68,7 +68,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ProjectDetailsResponse"]]:
-    """Get detailed project compliance information with database-level pagination.
+    """Get detailed project compliance information.
 
     Args:
         customer_uuid (UUID):
@@ -103,7 +103,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ProjectDetailsResponse"]:
-    """Get detailed project compliance information with database-level pagination.
+    """Get detailed project compliance information.
 
     Args:
         customer_uuid (UUID):
@@ -133,7 +133,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ProjectDetailsResponse"]]:
-    """Get detailed project compliance information with database-level pagination.
+    """Get detailed project compliance information.
 
     Args:
         customer_uuid (UUID):
@@ -166,7 +166,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ProjectDetailsResponse"]:
-    """Get detailed project compliance information with database-level pagination.
+    """Get detailed project compliance information.
 
     Args:
         customer_uuid (UUID):
