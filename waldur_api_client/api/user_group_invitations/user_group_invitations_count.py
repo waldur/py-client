@@ -105,7 +105,9 @@ def sync_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List group invitations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         customer_uuid (Union[Unset, UUID]):
@@ -158,7 +160,9 @@ def sync(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List group invitations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         customer_uuid (Union[Unset, UUID]):
@@ -206,7 +210,9 @@ async def asyncio_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List group invitations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         customer_uuid (Union[Unset, UUID]):
@@ -257,7 +263,9 @@ async def asyncio(
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List group invitations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         customer_uuid (Union[Unset, UUID]):

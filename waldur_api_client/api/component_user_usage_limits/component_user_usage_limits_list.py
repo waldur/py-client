@@ -92,8 +92,7 @@ def sync_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUserUsageLimit"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         component_type (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -139,8 +138,7 @@ def sync(
     resource_uuid: Union[Unset, UUID] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ComponentUserUsageLimit"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         component_type (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -181,8 +179,7 @@ async def asyncio_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUserUsageLimit"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         component_type (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -226,8 +223,7 @@ async def asyncio(
     resource_uuid: Union[Unset, UUID] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ComponentUserUsageLimit"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         component_type (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):

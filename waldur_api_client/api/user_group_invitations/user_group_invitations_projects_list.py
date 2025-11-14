@@ -66,7 +66,9 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["NestedProject"]]:
-    """Return projects for group invitation
+    """List projects for a customer-scoped group invitation
+
+     For a group invitation scoped to a customer, this endpoint lists all projects within that customer.
 
     Args:
         uuid (UUID):
@@ -101,7 +103,9 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["NestedProject"]:
-    """Return projects for group invitation
+    """List projects for a customer-scoped group invitation
+
+     For a group invitation scoped to a customer, this endpoint lists all projects within that customer.
 
     Args:
         uuid (UUID):
@@ -131,7 +135,9 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["NestedProject"]]:
-    """Return projects for group invitation
+    """List projects for a customer-scoped group invitation
+
+     For a group invitation scoped to a customer, this endpoint lists all projects within that customer.
 
     Args:
         uuid (UUID):
@@ -164,7 +170,9 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["NestedProject"]:
-    """Return projects for group invitation
+    """List projects for a customer-scoped group invitation
+
+     For a group invitation scoped to a customer, this endpoint lists all projects within that customer.
 
     Args:
         uuid (UUID):

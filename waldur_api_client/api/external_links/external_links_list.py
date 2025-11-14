@@ -71,7 +71,9 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> Response[list["ExternalLink"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List external links
+
+     Retrieve a list of external links available in the system.
 
     Args:
         o (Union[Unset, str]):
@@ -109,7 +111,9 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> list["ExternalLink"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List external links
+
+     Retrieve a list of external links available in the system.
 
     Args:
         o (Union[Unset, str]):
@@ -142,7 +146,9 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> Response[list["ExternalLink"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List external links
+
+     Retrieve a list of external links available in the system.
 
     Args:
         o (Union[Unset, str]):
@@ -178,7 +184,9 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> list["ExternalLink"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List external links
+
+     Retrieve a list of external links available in the system.
 
     Args:
         o (Union[Unset, str]):

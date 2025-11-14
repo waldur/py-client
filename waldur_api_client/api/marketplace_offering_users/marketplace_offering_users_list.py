@@ -175,8 +175,7 @@ def sync_detailed(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingUser"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
@@ -252,8 +251,7 @@ def sync(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUser"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
@@ -324,8 +322,7 @@ async def asyncio_detailed(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingUser"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
@@ -399,8 +396,7 @@ async def asyncio(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUser"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):

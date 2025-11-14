@@ -42,7 +42,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Complete project permission review.
+    """Close project permission review
+
+     Complete project permission review.
 
     Args:
         uuid (UUID):
@@ -71,7 +73,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Complete project permission review.
+    """Close project permission review
+
+     Complete project permission review.
 
     Args:
         uuid (UUID):

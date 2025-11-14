@@ -80,8 +80,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     src_resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["MigrationDetails"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         dst_resource_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -118,8 +117,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     src_resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["MigrationDetails"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         dst_resource_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -151,8 +149,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     src_resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["MigrationDetails"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         dst_resource_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -187,8 +184,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     src_resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["MigrationDetails"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         dst_resource_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):

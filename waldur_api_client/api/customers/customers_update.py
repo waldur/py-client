@@ -73,7 +73,10 @@ def sync_detailed(
         CustomerRequestMultipart,
     ],
 ) -> Response[Customer]:
-    """
+    """Update a customer
+
+     Update the details of an existing customer. Requires customer owner or staff permissions.
+
     Args:
         uuid (UUID):
         body (CustomerRequest):
@@ -110,7 +113,10 @@ def sync(
         CustomerRequestMultipart,
     ],
 ) -> Customer:
-    """
+    """Update a customer
+
+     Update the details of an existing customer. Requires customer owner or staff permissions.
+
     Args:
         uuid (UUID):
         body (CustomerRequest):
@@ -142,7 +148,10 @@ async def asyncio_detailed(
         CustomerRequestMultipart,
     ],
 ) -> Response[Customer]:
-    """
+    """Update a customer
+
+     Update the details of an existing customer. Requires customer owner or staff permissions.
+
     Args:
         uuid (UUID):
         body (CustomerRequest):
@@ -177,7 +186,10 @@ async def asyncio(
         CustomerRequestMultipart,
     ],
 ) -> Customer:
-    """
+    """Update a customer
+
+     Update the details of an existing customer. Requires customer owner or staff permissions.
+
     Args:
         uuid (UUID):
         body (CustomerRequest):

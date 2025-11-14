@@ -45,7 +45,11 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[PermissionMetadataResponse]:
-    """Get permission metadata including roles, permissions, and descriptions
+    """Get permission metadata
+
+     Retrieves metadata about roles, permissions, and their descriptions. This endpoint is publicly
+    accessible and provides data needed for UI components, such as role selection dropdowns and
+    permission management interfaces.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -68,7 +72,11 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> PermissionMetadataResponse:
-    """Get permission metadata including roles, permissions, and descriptions
+    """Get permission metadata
+
+     Retrieves metadata about roles, permissions, and their descriptions. This endpoint is publicly
+    accessible and provides data needed for UI components, such as role selection dropdowns and
+    permission management interfaces.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -87,7 +95,11 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[PermissionMetadataResponse]:
-    """Get permission metadata including roles, permissions, and descriptions
+    """Get permission metadata
+
+     Retrieves metadata about roles, permissions, and their descriptions. This endpoint is publicly
+    accessible and provides data needed for UI components, such as role selection dropdowns and
+    permission management interfaces.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -108,7 +120,11 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> PermissionMetadataResponse:
-    """Get permission metadata including roles, permissions, and descriptions
+    """Get permission metadata
+
+     Retrieves metadata about roles, permissions, and their descriptions. This endpoint is publicly
+    accessible and provides data needed for UI components, such as role selection dropdowns and
+    permission management interfaces.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

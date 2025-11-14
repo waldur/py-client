@@ -130,7 +130,9 @@ def sync_detailed(
     scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
 ) -> Response[list["Invitation"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List user invitations
+
+     Retrieve a list of user invitations visible to the current user.
 
     Args:
         civil_number (Union[Unset, str]):
@@ -195,7 +197,9 @@ def sync(
     scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
 ) -> list["Invitation"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List user invitations
+
+     Retrieve a list of user invitations visible to the current user.
 
     Args:
         civil_number (Union[Unset, str]):
@@ -255,7 +259,9 @@ async def asyncio_detailed(
     scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
 ) -> Response[list["Invitation"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List user invitations
+
+     Retrieve a list of user invitations visible to the current user.
 
     Args:
         civil_number (Union[Unset, str]):
@@ -318,7 +324,9 @@ async def asyncio(
     scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
 ) -> list["Invitation"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List user invitations
+
+     Retrieve a list of user invitations visible to the current user.
 
     Args:
         civil_number (Union[Unset, str]):

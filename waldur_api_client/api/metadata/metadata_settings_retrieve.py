@@ -45,7 +45,11 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[SettingsMetadataResponse]:
-    """Get settings metadata from Constance configuration
+    """Get overridable settings metadata
+
+     Retrieves metadata for all settings that can be configured via the Constance backend. This includes
+    setting keys, human-readable descriptions, default values, and types. This endpoint is publicly
+    accessible.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -68,7 +72,11 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> SettingsMetadataResponse:
-    """Get settings metadata from Constance configuration
+    """Get overridable settings metadata
+
+     Retrieves metadata for all settings that can be configured via the Constance backend. This includes
+    setting keys, human-readable descriptions, default values, and types. This endpoint is publicly
+    accessible.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -87,7 +95,11 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[SettingsMetadataResponse]:
-    """Get settings metadata from Constance configuration
+    """Get overridable settings metadata
+
+     Retrieves metadata for all settings that can be configured via the Constance backend. This includes
+    setting keys, human-readable descriptions, default values, and types. This endpoint is publicly
+    accessible.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -108,7 +120,11 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> SettingsMetadataResponse:
-    """Get settings metadata from Constance configuration
+    """Get overridable settings metadata
+
+     Retrieves metadata for all settings that can be configured via the Constance backend. This includes
+    setting keys, human-readable descriptions, default values, and types. This endpoint is publicly
+    accessible.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

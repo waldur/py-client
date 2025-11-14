@@ -116,8 +116,7 @@ def sync_detailed(
     path: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["SoftwareTarget"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
@@ -172,8 +171,7 @@ def sync(
     path: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["SoftwareTarget"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
@@ -223,8 +221,7 @@ async def asyncio_detailed(
     path: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["SoftwareTarget"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
@@ -277,8 +274,7 @@ async def asyncio(
     path: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["SoftwareTarget"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):

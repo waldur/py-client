@@ -101,8 +101,7 @@ def sync_detailed(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingTermsOfService"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceOfferingTermsOfServiceListOItem]]):
@@ -151,8 +150,7 @@ def sync(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["OfferingTermsOfService"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceOfferingTermsOfServiceListOItem]]):
@@ -196,8 +194,7 @@ async def asyncio_detailed(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingTermsOfService"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceOfferingTermsOfServiceListOItem]]):
@@ -244,8 +241,7 @@ async def asyncio(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["OfferingTermsOfService"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceOfferingTermsOfServiceListOItem]]):

@@ -73,7 +73,10 @@ def sync_detailed(
         ProjectRequestMultipart,
     ],
 ) -> Response[Project]:
-    """
+    """Update project details
+
+     Update the details of a project. Requires project administrator or customer owner permissions.
+
     Args:
         uuid (UUID):
         body (ProjectRequest):
@@ -110,7 +113,10 @@ def sync(
         ProjectRequestMultipart,
     ],
 ) -> Project:
-    """
+    """Update project details
+
+     Update the details of a project. Requires project administrator or customer owner permissions.
+
     Args:
         uuid (UUID):
         body (ProjectRequest):
@@ -142,7 +148,10 @@ async def asyncio_detailed(
         ProjectRequestMultipart,
     ],
 ) -> Response[Project]:
-    """
+    """Update project details
+
+     Update the details of a project. Requires project administrator or customer owner permissions.
+
     Args:
         uuid (UUID):
         body (ProjectRequest):
@@ -177,7 +186,10 @@ async def asyncio(
         ProjectRequestMultipart,
     ],
 ) -> Project:
-    """
+    """Update project details
+
+     Update the details of a project. Requires project administrator or customer owner permissions.
+
     Args:
         uuid (UUID):
         body (ProjectRequest):

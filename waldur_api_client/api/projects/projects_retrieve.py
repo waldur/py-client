@@ -63,7 +63,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[ProjectsRetrieveFieldItem]] = UNSET,
 ) -> Response[Project]:
-    """
+    """Retrieve project details
+
+     Fetch the details of a specific project by its UUID. Users can access details of terminated projects
+    they previously had access to.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[ProjectsRetrieveFieldItem]]):
@@ -94,7 +98,11 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[ProjectsRetrieveFieldItem]] = UNSET,
 ) -> Project:
-    """
+    """Retrieve project details
+
+     Fetch the details of a specific project by its UUID. Users can access details of terminated projects
+    they previously had access to.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[ProjectsRetrieveFieldItem]]):
@@ -120,7 +128,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[ProjectsRetrieveFieldItem]] = UNSET,
 ) -> Response[Project]:
-    """
+    """Retrieve project details
+
+     Fetch the details of a specific project by its UUID. Users can access details of terminated projects
+    they previously had access to.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[ProjectsRetrieveFieldItem]]):
@@ -149,7 +161,11 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[ProjectsRetrieveFieldItem]] = UNSET,
 ) -> Project:
-    """
+    """Retrieve project details
+
+     Fetch the details of a specific project by its UUID. Users can access details of terminated projects
+    they previously had access to.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[ProjectsRetrieveFieldItem]]):

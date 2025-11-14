@@ -47,7 +47,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[CancelRequestResponse]:
-    """Cancel permission request. Users can cancel their own requests, staff can cancel any request.
+    """Cancel a permission request
+
+     Cancels a pending or draft permission request. This can be done by the user who created the request
+    or by a staff member.
 
     Args:
         uuid (UUID):
@@ -76,7 +79,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> CancelRequestResponse:
-    """Cancel permission request. Users can cancel their own requests, staff can cancel any request.
+    """Cancel a permission request
+
+     Cancels a pending or draft permission request. This can be done by the user who created the request
+    or by a staff member.
 
     Args:
         uuid (UUID):
@@ -100,7 +106,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[CancelRequestResponse]:
-    """Cancel permission request. Users can cancel their own requests, staff can cancel any request.
+    """Cancel a permission request
+
+     Cancels a pending or draft permission request. This can be done by the user who created the request
+    or by a staff member.
 
     Args:
         uuid (UUID):
@@ -127,7 +136,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> CancelRequestResponse:
-    """Cancel permission request. Users can cancel their own requests, staff can cancel any request.
+    """Cancel a permission request
+
+     Cancels a pending or draft permission request. This can be done by the user who created the request
+    or by a staff member.
 
     Args:
         uuid (UUID):

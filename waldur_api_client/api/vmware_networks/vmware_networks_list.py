@@ -97,8 +97,7 @@ def sync_detailed(
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["VmwareNetwork"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer_pair_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
@@ -147,8 +146,7 @@ def sync(
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["VmwareNetwork"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer_pair_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
@@ -192,8 +190,7 @@ async def asyncio_detailed(
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["VmwareNetwork"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer_pair_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
@@ -240,8 +237,7 @@ async def asyncio(
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["VmwareNetwork"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer_pair_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):

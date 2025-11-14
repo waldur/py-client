@@ -85,8 +85,7 @@ def sync_detailed(
     path: Union[Unset, str] = UNSET,
     path_exact: Union[Unset, str] = UNSET,
 ) -> Response[list["NotificationTemplateDetailSerializers"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         is_overridden (Union[Unset, bool]):
         name (Union[Unset, str]):
@@ -132,8 +131,7 @@ def sync(
     path: Union[Unset, str] = UNSET,
     path_exact: Union[Unset, str] = UNSET,
 ) -> list["NotificationTemplateDetailSerializers"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         is_overridden (Union[Unset, bool]):
         name (Union[Unset, str]):
@@ -174,8 +172,7 @@ async def asyncio_detailed(
     path: Union[Unset, str] = UNSET,
     path_exact: Union[Unset, str] = UNSET,
 ) -> Response[list["NotificationTemplateDetailSerializers"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         is_overridden (Union[Unset, bool]):
         name (Union[Unset, str]):
@@ -219,8 +216,7 @@ async def asyncio(
     path: Union[Unset, str] = UNSET,
     path_exact: Union[Unset, str] = UNSET,
 ) -> list["NotificationTemplateDetailSerializers"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         is_overridden (Union[Unset, bool]):
         name (Union[Unset, str]):

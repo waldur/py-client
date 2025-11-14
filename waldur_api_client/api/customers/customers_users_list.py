@@ -189,7 +189,10 @@ def sync_detailed(
     user_keyword: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CustomerUser"]]:
-    """A list of users connected to the customer.
+    """List users of a customer
+
+     Lists all users who have a role in the specified customer or any of its projects. Requires
+    permissions to list customer users.
 
     Args:
         customer_uuid (UUID):
@@ -282,7 +285,10 @@ def sync(
     user_keyword: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CustomerUser"]:
-    """A list of users connected to the customer.
+    """List users of a customer
+
+     Lists all users who have a role in the specified customer or any of its projects. Requires
+    permissions to list customer users.
 
     Args:
         customer_uuid (UUID):
@@ -370,7 +376,10 @@ async def asyncio_detailed(
     user_keyword: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CustomerUser"]]:
-    """A list of users connected to the customer.
+    """List users of a customer
+
+     Lists all users who have a role in the specified customer or any of its projects. Requires
+    permissions to list customer users.
 
     Args:
         customer_uuid (UUID):
@@ -461,7 +470,10 @@ async def asyncio(
     user_keyword: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CustomerUser"]:
-    """A list of users connected to the customer.
+    """List users of a customer
+
+     Lists all users who have a role in the specified customer or any of its projects. Requires
+    permissions to list customer users.
 
     Args:
         customer_uuid (UUID):

@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UserEmailChangeRequest,
 ) -> Response[Any]:
-    """Allows to change email for user.
+    """Request email change
+
+     Allows to change email for user.
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UserEmailChangeRequest,
 ) -> Response[Any]:
-    """Allows to change email for user.
+    """Request email change
+
+     Allows to change email for user.
 
     Args:
         uuid (UUID):

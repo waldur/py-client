@@ -42,7 +42,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Close customer permission review.
+    """Close customer permission review
 
     Args:
         uuid (UUID):
@@ -71,7 +71,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Close customer permission review.
+    """Close customer permission review
 
     Args:
         uuid (UUID):

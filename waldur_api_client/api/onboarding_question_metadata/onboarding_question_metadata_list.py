@@ -92,8 +92,7 @@ def sync_detailed(
     question_description: Union[Unset, str] = UNSET,
     question_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OnboardingQuestionMetadata"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         checklist_uuid (Union[Unset, UUID]):
         intent_field (Union[Unset, str]):
@@ -139,8 +138,7 @@ def sync(
     question_description: Union[Unset, str] = UNSET,
     question_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OnboardingQuestionMetadata"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         checklist_uuid (Union[Unset, UUID]):
         intent_field (Union[Unset, str]):
@@ -181,8 +179,7 @@ async def asyncio_detailed(
     question_description: Union[Unset, str] = UNSET,
     question_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OnboardingQuestionMetadata"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         checklist_uuid (Union[Unset, UUID]):
         intent_field (Union[Unset, str]):
@@ -226,8 +223,7 @@ async def asyncio(
     question_description: Union[Unset, str] = UNSET,
     question_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OnboardingQuestionMetadata"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         checklist_uuid (Union[Unset, UUID]):
         intent_field (Union[Unset, str]):

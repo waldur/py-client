@@ -57,7 +57,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     for_current_month: Union[Unset, bool] = UNSET,
 ) -> Response[ComponentsUsageStats]:
-    """Return statistics about project resources usage
+    """Get project resource usage statistics
+
+     Provides statistics about the resource usage (e.g., CPU, RAM, storage) for all resources within a
+    project. Can be filtered to show usage for the current month only.
 
     Args:
         uuid (UUID):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     for_current_month: Union[Unset, bool] = UNSET,
 ) -> ComponentsUsageStats:
-    """Return statistics about project resources usage
+    """Get project resource usage statistics
+
+     Provides statistics about the resource usage (e.g., CPU, RAM, storage) for all resources within a
+    project. Can be filtered to show usage for the current month only.
 
     Args:
         uuid (UUID):
@@ -116,7 +122,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     for_current_month: Union[Unset, bool] = UNSET,
 ) -> Response[ComponentsUsageStats]:
-    """Return statistics about project resources usage
+    """Get project resource usage statistics
+
+     Provides statistics about the resource usage (e.g., CPU, RAM, storage) for all resources within a
+    project. Can be filtered to show usage for the current month only.
 
     Args:
         uuid (UUID):
@@ -146,7 +155,10 @@ async def asyncio(
     client: AuthenticatedClient,
     for_current_month: Union[Unset, bool] = UNSET,
 ) -> ComponentsUsageStats:
-    """Return statistics about project resources usage
+    """Get project resource usage statistics
+
+     Provides statistics about the resource usage (e.g., CPU, RAM, storage) for all resources within a
+    project. Can be filtered to show usage for the current month only.
 
     Args:
         uuid (UUID):

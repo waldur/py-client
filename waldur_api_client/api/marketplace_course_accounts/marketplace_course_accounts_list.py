@@ -132,8 +132,7 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CourseAccount"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         email (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
@@ -191,8 +190,7 @@ def sync(
     state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         email (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
@@ -245,8 +243,7 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CourseAccount"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         email (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
@@ -302,8 +299,7 @@ async def asyncio(
     state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         email (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):

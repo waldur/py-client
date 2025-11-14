@@ -57,7 +57,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: QueryRequest,
 ) -> Response[Union[Any, list[Any]]]:
-    """Execute SQL query against readonly database
+    """Execute read-only SQL query
+
+     Execute a given SQL query against a read-only database replica. This is a powerful tool for
+    diagnostics and reporting, but should be used with caution. Requires support user permissions.
 
     Args:
         body (QueryRequest):
@@ -86,7 +89,10 @@ def sync(
     client: AuthenticatedClient,
     body: QueryRequest,
 ) -> Union[Any, list[Any]]:
-    """Execute SQL query against readonly database
+    """Execute read-only SQL query
+
+     Execute a given SQL query against a read-only database replica. This is a powerful tool for
+    diagnostics and reporting, but should be used with caution. Requires support user permissions.
 
     Args:
         body (QueryRequest):
@@ -110,7 +116,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: QueryRequest,
 ) -> Response[Union[Any, list[Any]]]:
-    """Execute SQL query against readonly database
+    """Execute read-only SQL query
+
+     Execute a given SQL query against a read-only database replica. This is a powerful tool for
+    diagnostics and reporting, but should be used with caution. Requires support user permissions.
 
     Args:
         body (QueryRequest):
@@ -137,7 +146,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: QueryRequest,
 ) -> Union[Any, list[Any]]:
-    """Execute SQL query against readonly database
+    """Execute read-only SQL query
+
+     Execute a given SQL query against a read-only database replica. This is a powerful tool for
+    diagnostics and reporting, but should be used with caution. Requires support user permissions.
 
     Args:
         body (QueryRequest):

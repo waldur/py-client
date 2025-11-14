@@ -73,7 +73,10 @@ def sync_detailed(
         PatchedExternalLinkRequestMultipart,
     ],
 ) -> Response[ExternalLink]:
-    """
+    """Partially update an external link
+
+     Partially update an existing external link. This action is restricted to staff users.
+
     Args:
         uuid (UUID):
         body (PatchedExternalLinkRequest):
@@ -110,7 +113,10 @@ def sync(
         PatchedExternalLinkRequestMultipart,
     ],
 ) -> ExternalLink:
-    """
+    """Partially update an external link
+
+     Partially update an existing external link. This action is restricted to staff users.
+
     Args:
         uuid (UUID):
         body (PatchedExternalLinkRequest):
@@ -142,7 +148,10 @@ async def asyncio_detailed(
         PatchedExternalLinkRequestMultipart,
     ],
 ) -> Response[ExternalLink]:
-    """
+    """Partially update an external link
+
+     Partially update an existing external link. This action is restricted to staff users.
+
     Args:
         uuid (UUID):
         body (PatchedExternalLinkRequest):
@@ -177,7 +186,10 @@ async def asyncio(
         PatchedExternalLinkRequestMultipart,
     ],
 ) -> ExternalLink:
-    """
+    """Partially update an external link
+
+     Partially update an existing external link. This action is restricted to staff users.
+
     Args:
         uuid (UUID):
         body (PatchedExternalLinkRequest):

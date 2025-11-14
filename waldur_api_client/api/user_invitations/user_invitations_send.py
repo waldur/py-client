@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Resend an invitation
+
+     Resends an email for a pending, expired, or canceled invitation. If the invitation was expired or
+    canceled, its state is reset to 'pending' and its creation time is updated.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Resend an invitation
+
+     Resends an email for a pending, expired, or canceled invitation. If the invitation was expired or
+    canceled, its state is reset to 'pending' and its creation time is updated.
+
     Args:
         uuid (UUID):
 

@@ -60,7 +60,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[UsersMeRetrieveFieldItem]] = UNSET,
 ) -> Response[User]:
-    """Get current user details, including authentication token.
+    """Get current user details
+
+     Get current user details, including authentication token.
 
     Args:
         field (Union[Unset, list[UsersMeRetrieveFieldItem]]):
@@ -89,7 +91,9 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[UsersMeRetrieveFieldItem]] = UNSET,
 ) -> User:
-    """Get current user details, including authentication token.
+    """Get current user details
+
+     Get current user details, including authentication token.
 
     Args:
         field (Union[Unset, list[UsersMeRetrieveFieldItem]]):
@@ -113,7 +117,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[UsersMeRetrieveFieldItem]] = UNSET,
 ) -> Response[User]:
-    """Get current user details, including authentication token.
+    """Get current user details
+
+     Get current user details, including authentication token.
 
     Args:
         field (Union[Unset, list[UsersMeRetrieveFieldItem]]):
@@ -140,7 +146,9 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[UsersMeRetrieveFieldItem]] = UNSET,
 ) -> User:
-    """Get current user details, including authentication token.
+    """Get current user details
+
+     Get current user details, including authentication token.
 
     Args:
         field (Union[Unset, list[UsersMeRetrieveFieldItem]]):

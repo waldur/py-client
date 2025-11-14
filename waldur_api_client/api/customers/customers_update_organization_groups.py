@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OrganizationGroupsRequest,
 ) -> Response[Any]:
-    """Update organization groups for customer
+    """Update organization groups for a customer
+
+     Assigns a customer to one or more organization groups. This action is restricted to staff users.
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OrganizationGroupsRequest,
 ) -> Response[Any]:
-    """Update organization groups for customer
+    """Update organization groups for a customer
+
+     Assigns a customer to one or more organization groups. This action is restricted to staff users.
 
     Args:
         uuid (UUID):

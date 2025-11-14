@@ -73,7 +73,10 @@ def sync_detailed(
         PatchedCustomerRequestMultipart,
     ],
 ) -> Response[Customer]:
-    """
+    """Partially update a customer
+
+     Partially update the details of an existing customer. Requires customer owner or staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCustomerRequest):
@@ -110,7 +113,10 @@ def sync(
         PatchedCustomerRequestMultipart,
     ],
 ) -> Customer:
-    """
+    """Partially update a customer
+
+     Partially update the details of an existing customer. Requires customer owner or staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCustomerRequest):
@@ -142,7 +148,10 @@ async def asyncio_detailed(
         PatchedCustomerRequestMultipart,
     ],
 ) -> Response[Customer]:
-    """
+    """Partially update a customer
+
+     Partially update the details of an existing customer. Requires customer owner or staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCustomerRequest):
@@ -177,7 +186,10 @@ async def asyncio(
         PatchedCustomerRequestMultipart,
     ],
 ) -> Customer:
-    """
+    """Partially update a customer
+
+     Partially update the details of an existing customer. Requires customer owner or staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCustomerRequest):

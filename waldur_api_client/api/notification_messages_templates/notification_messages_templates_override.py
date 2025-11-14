@@ -53,7 +53,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: NotificationTemplateUpdateSerializersRequest,
 ) -> Response[Any]:
-    """
+    """Override notification template content
+
     Args:
         uuid (UUID):
         body (NotificationTemplateUpdateSerializersRequest):
@@ -84,7 +85,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: NotificationTemplateUpdateSerializersRequest,
 ) -> Response[Any]:
-    """
+    """Override notification template content
+
     Args:
         uuid (UUID):
         body (NotificationTemplateUpdateSerializersRequest):

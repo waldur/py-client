@@ -47,7 +47,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SubmitRequestResponse]:
-    """
+    """Submit a permission request
+
+     Creates a permission request based on a group invitation for the currently authenticated user.
+
     Args:
         uuid (UUID):
 
@@ -75,7 +78,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> SubmitRequestResponse:
-    """
+    """Submit a permission request
+
+     Creates a permission request based on a group invitation for the currently authenticated user.
+
     Args:
         uuid (UUID):
 
@@ -98,7 +104,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SubmitRequestResponse]:
-    """
+    """Submit a permission request
+
+     Creates a permission request based on a group invitation for the currently authenticated user.
+
     Args:
         uuid (UUID):
 
@@ -124,7 +133,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> SubmitRequestResponse:
-    """
+    """Submit a permission request
+
+     Creates a permission request based on a group invitation for the currently authenticated user.
+
     Args:
         uuid (UUID):
 

@@ -43,7 +43,10 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[EventMetadataResponse]:
-    """Get event metadata grouped by categories
+    """Get event metadata
+
+     Retrieves metadata for all available event types, grouped by categories. This endpoint is publicly
+    accessible and is useful for building UIs for event filtering or webhook configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -66,7 +69,10 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> EventMetadataResponse:
-    """Get event metadata grouped by categories
+    """Get event metadata
+
+     Retrieves metadata for all available event types, grouped by categories. This endpoint is publicly
+    accessible and is useful for building UIs for event filtering or webhook configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -85,7 +91,10 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[EventMetadataResponse]:
-    """Get event metadata grouped by categories
+    """Get event metadata
+
+     Retrieves metadata for all available event types, grouped by categories. This endpoint is publicly
+    accessible and is useful for building UIs for event filtering or webhook configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -106,7 +115,10 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> EventMetadataResponse:
-    """Get event metadata grouped by categories
+    """Get event metadata
+
+     Retrieves metadata for all available event types, grouped by categories. This endpoint is publicly
+    accessible and is useful for building UIs for event filtering or webhook configuration.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

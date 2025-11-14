@@ -119,8 +119,7 @@ def sync_detailed(
     state: Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["KeycloakUserGroupMembership"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         email (Union[Unset, str]):
         first_name (Union[Unset, str]):
@@ -178,8 +177,7 @@ def sync(
     state: Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["KeycloakUserGroupMembership"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         email (Union[Unset, str]):
         first_name (Union[Unset, str]):
@@ -232,8 +230,7 @@ async def asyncio_detailed(
     state: Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["KeycloakUserGroupMembership"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         email (Union[Unset, str]):
         first_name (Union[Unset, str]):
@@ -289,8 +286,7 @@ async def asyncio(
     state: Union[Unset, list[KeycloakUserGroupMembershipsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["KeycloakUserGroupMembership"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         email (Union[Unset, str]):
         first_name (Union[Unset, str]):

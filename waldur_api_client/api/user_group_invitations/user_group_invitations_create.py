@@ -55,7 +55,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: GroupInvitationRequest,
 ) -> Response[GroupInvitation]:
-    """
+    """Create group invitation
+
+     Create a new group invitation, which acts as a template for users to request permissions.
+
     Args:
         body (GroupInvitationRequest):
 
@@ -83,7 +86,10 @@ def sync(
     client: AuthenticatedClient,
     body: GroupInvitationRequest,
 ) -> GroupInvitation:
-    """
+    """Create group invitation
+
+     Create a new group invitation, which acts as a template for users to request permissions.
+
     Args:
         body (GroupInvitationRequest):
 
@@ -106,7 +112,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: GroupInvitationRequest,
 ) -> Response[GroupInvitation]:
-    """
+    """Create group invitation
+
+     Create a new group invitation, which acts as a template for users to request permissions.
+
     Args:
         body (GroupInvitationRequest):
 
@@ -132,7 +141,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: GroupInvitationRequest,
 ) -> GroupInvitation:
-    """
+    """Create group invitation
+
+     Create a new group invitation, which acts as a template for users to request permissions.
+
     Args:
         body (GroupInvitationRequest):
 

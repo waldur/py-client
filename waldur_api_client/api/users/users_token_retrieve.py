@@ -45,7 +45,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[UserAuthToken]:
-    """
+    """Get user auth token
+
     Args:
         uuid (UUID):
 
@@ -73,7 +74,8 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> UserAuthToken:
-    """
+    """Get user auth token
+
     Args:
         uuid (UUID):
 
@@ -96,7 +98,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[UserAuthToken]:
-    """
+    """Get user auth token
+
     Args:
         uuid (UUID):
 
@@ -122,7 +125,8 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> UserAuthToken:
-    """
+    """Get user auth token
+
     Args:
         uuid (UUID):
 

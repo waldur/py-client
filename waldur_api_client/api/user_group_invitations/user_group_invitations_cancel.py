@@ -42,7 +42,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Cancel group invitation
+    """Cancel a group invitation
+
+     Cancels an active group invitation, preventing new permission requests from being created.
 
     Args:
         uuid (UUID):
@@ -71,7 +73,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Cancel group invitation
+    """Cancel a group invitation
+
+     Cancels an active group invitation, preventing new permission requests from being created.
 
     Args:
         uuid (UUID):

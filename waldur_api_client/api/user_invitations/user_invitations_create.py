@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: InvitationRequest,
 ) -> Response[Invitation]:
-    """
+    """Create user invitation
+
+     Create a new user invitation to grant a role in a specific scope (e.g., organization or project).
+
     Args:
         body (InvitationRequest):
 
@@ -81,7 +84,10 @@ def sync(
     client: AuthenticatedClient,
     body: InvitationRequest,
 ) -> Invitation:
-    """
+    """Create user invitation
+
+     Create a new user invitation to grant a role in a specific scope (e.g., organization or project).
+
     Args:
         body (InvitationRequest):
 
@@ -104,7 +110,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: InvitationRequest,
 ) -> Response[Invitation]:
-    """
+    """Create user invitation
+
+     Create a new user invitation to grant a role in a specific scope (e.g., organization or project).
+
     Args:
         body (InvitationRequest):
 
@@ -130,7 +139,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: InvitationRequest,
 ) -> Invitation:
-    """
+    """Create user invitation
+
+     Create a new user invitation to grant a role in a specific scope (e.g., organization or project).
+
     Args:
         body (InvitationRequest):
 

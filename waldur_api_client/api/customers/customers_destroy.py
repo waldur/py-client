@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """If a customer has connected projects, deletion request will fail with 409 response code.
+    """Delete a customer
+
+     Delete a customer. This action is only available to staff users. If a customer has any active
+    projects, the deletion request will fail with a 409 Conflict response.
 
     Args:
         uuid (UUID):
@@ -71,7 +74,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """If a customer has connected projects, deletion request will fail with 409 response code.
+    """Delete a customer
+
+     Delete a customer. This action is only available to staff users. If a customer has any active
+    projects, the deletion request will fail with a 409 Conflict response.
 
     Args:
         uuid (UUID):

@@ -47,7 +47,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[InvitationCheck]:
-    """
+    """Check invitation validity
+
+     Checks if an invitation is pending and returns its email and whether a civil number is required for
+    acceptance. This endpoint is public and does not require authentication.
+
     Args:
         uuid (UUID):
 
@@ -75,7 +79,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> InvitationCheck:
-    """
+    """Check invitation validity
+
+     Checks if an invitation is pending and returns its email and whether a civil number is required for
+    acceptance. This endpoint is public and does not require authentication.
+
     Args:
         uuid (UUID):
 
@@ -98,7 +106,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[InvitationCheck]:
-    """
+    """Check invitation validity
+
+     Checks if an invitation is pending and returns its email and whether a civil number is required for
+    acceptance. This endpoint is public and does not require authentication.
+
     Args:
         uuid (UUID):
 
@@ -124,7 +136,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> InvitationCheck:
-    """
+    """Check invitation validity
+
+     Checks if an invitation is pending and returns its email and whether a civil number is required for
+    acceptance. This endpoint is public and does not require authentication.
+
     Args:
         uuid (UUID):
 

@@ -119,8 +119,7 @@ def sync_detailed(
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProviderRequestedResource"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[ProposalRequestedResourcesListOItem]]):
@@ -175,8 +174,7 @@ def sync(
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProviderRequestedResource"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[ProposalRequestedResourcesListOItem]]):
@@ -226,8 +224,7 @@ async def asyncio_detailed(
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProviderRequestedResource"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[ProposalRequestedResourcesListOItem]]):
@@ -280,8 +277,7 @@ async def asyncio(
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProviderRequestedResource"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[ProposalRequestedResourcesListOItem]]):

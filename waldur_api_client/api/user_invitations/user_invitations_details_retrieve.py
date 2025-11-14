@@ -49,7 +49,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[VisibleInvitationDetails]:
-    """
+    """Get public invitation details
+
+     Retrieves public-facing details of an invitation. This is used to show information to a user before
+    they accept it.
+
     Args:
         uuid (UUID):
 
@@ -77,7 +81,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> VisibleInvitationDetails:
-    """
+    """Get public invitation details
+
+     Retrieves public-facing details of an invitation. This is used to show information to a user before
+    they accept it.
+
     Args:
         uuid (UUID):
 
@@ -100,7 +108,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[VisibleInvitationDetails]:
-    """
+    """Get public invitation details
+
+     Retrieves public-facing details of an invitation. This is used to show information to a user before
+    they accept it.
+
     Args:
         uuid (UUID):
 
@@ -126,7 +138,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> VisibleInvitationDetails:
-    """
+    """Get public invitation details
+
+     Retrieves public-facing details of an invitation. This is used to show information to a user before
+    they accept it.
+
     Args:
         uuid (UUID):
 

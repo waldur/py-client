@@ -139,7 +139,9 @@ def sync_detailed(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> Response[list["Customer"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List customers
+
+     Retrieve a list of customers. The list is filtered based on the user's permissions.
 
     Args:
         abbreviation (Union[Unset, str]):
@@ -216,7 +218,9 @@ def sync(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> list["Customer"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List customers
+
+     Retrieve a list of customers. The list is filtered based on the user's permissions.
 
     Args:
         abbreviation (Union[Unset, str]):
@@ -288,7 +292,9 @@ async def asyncio_detailed(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> Response[list["Customer"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List customers
+
+     Retrieve a list of customers. The list is filtered based on the user's permissions.
 
     Args:
         abbreviation (Union[Unset, str]):
@@ -363,7 +369,9 @@ async def asyncio(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> list["Customer"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List customers
+
+     Retrieve a list of customers. The list is filtered based on the user's permissions.
 
     Args:
         abbreviation (Union[Unset, str]):

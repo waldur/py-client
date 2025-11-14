@@ -111,7 +111,9 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsListStateItem]] = UNSET,
 ) -> Response[list["PermissionRequest"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List permission requests
+
+     Retrieve a list of permission requests visible to the user.
 
     Args:
         created_by (Union[Unset, UUID]):
@@ -158,7 +160,9 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsListStateItem]] = UNSET,
 ) -> list["PermissionRequest"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List permission requests
+
+     Retrieve a list of permission requests visible to the user.
 
     Args:
         created_by (Union[Unset, UUID]):
@@ -200,7 +204,9 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsListStateItem]] = UNSET,
 ) -> Response[list["PermissionRequest"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List permission requests
+
+     Retrieve a list of permission requests visible to the user.
 
     Args:
         created_by (Union[Unset, UUID]):
@@ -245,7 +251,9 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsListStateItem]] = UNSET,
 ) -> list["PermissionRequest"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List permission requests
+
+     Retrieve a list of permission requests visible to the user.
 
     Args:
         created_by (Union[Unset, UUID]):

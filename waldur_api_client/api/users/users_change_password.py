@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PasswordChangeRequest,
 ) -> Response[Any]:
-    """Allows staff user to change password for any user.
+    """Change user password
+
+     Allows staff user to change password for any user.
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PasswordChangeRequest,
 ) -> Response[Any]:
-    """Allows staff user to change password for any user.
+    """Change user password
+
+     Allows staff user to change password for any user.
 
     Args:
         uuid (UUID):

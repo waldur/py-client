@@ -45,7 +45,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ConfigurationRetrieveResponse200]:
-    """Retrieve public settings
+    """Get public configuration
+
+     Returns a dictionary of public settings for the Waldur deployment. This includes feature flags,
+    authentication methods, and other configuration details that are safe to expose to any user.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -68,7 +71,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ConfigurationRetrieveResponse200:
-    """Retrieve public settings
+    """Get public configuration
+
+     Returns a dictionary of public settings for the Waldur deployment. This includes feature flags,
+    authentication methods, and other configuration details that are safe to expose to any user.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -87,7 +93,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ConfigurationRetrieveResponse200]:
-    """Retrieve public settings
+    """Get public configuration
+
+     Returns a dictionary of public settings for the Waldur deployment. This includes feature flags,
+    authentication methods, and other configuration details that are safe to expose to any user.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -108,7 +117,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ConfigurationRetrieveResponse200:
-    """Retrieve public settings
+    """Get public configuration
+
+     Returns a dictionary of public settings for the Waldur deployment. This includes feature flags,
+    authentication methods, and other configuration details that are safe to expose to any user.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

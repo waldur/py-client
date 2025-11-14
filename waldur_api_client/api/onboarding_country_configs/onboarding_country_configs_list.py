@@ -73,8 +73,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OnboardingCountryChecklistConfiguration"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         country (Union[Unset, str]):
         is_active (Union[Unset, bool]):
@@ -111,8 +110,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OnboardingCountryChecklistConfiguration"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         country (Union[Unset, str]):
         is_active (Union[Unset, bool]):
@@ -144,8 +142,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OnboardingCountryChecklistConfiguration"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         country (Union[Unset, str]):
         is_active (Union[Unset, bool]):
@@ -180,8 +177,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OnboardingCountryChecklistConfiguration"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         country (Union[Unset, str]):
         is_active (Union[Unset, bool]):

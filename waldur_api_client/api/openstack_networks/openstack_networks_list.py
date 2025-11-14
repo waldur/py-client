@@ -203,8 +203,7 @@ def sync_detailed(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackNetwork"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -310,8 +309,7 @@ def sync(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackNetwork"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -412,8 +410,7 @@ async def asyncio_detailed(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackNetwork"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -517,8 +514,7 @@ async def asyncio(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackNetwork"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):

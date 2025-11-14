@@ -219,8 +219,7 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
 ) -> Response[list["OrderDetails"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
         can_approve_as_provider (Union[Unset, bool]):
@@ -314,8 +313,7 @@ def sync(
     state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
 ) -> list["OrderDetails"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
         can_approve_as_provider (Union[Unset, bool]):
@@ -404,8 +402,7 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
 ) -> Response[list["OrderDetails"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
         can_approve_as_provider (Union[Unset, bool]):
@@ -497,8 +494,7 @@ async def asyncio(
     state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
 ) -> list["OrderDetails"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
         can_approve_as_provider (Union[Unset, bool]):

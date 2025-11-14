@@ -104,8 +104,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProjectPermissionReview"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         closed (Union[Unset, datetime.datetime]):
         is_pending (Union[Unset, bool]):
@@ -151,8 +150,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProjectPermissionReview"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         closed (Union[Unset, datetime.datetime]):
         is_pending (Union[Unset, bool]):
@@ -193,8 +191,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProjectPermissionReview"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         closed (Union[Unset, datetime.datetime]):
         is_pending (Union[Unset, bool]):
@@ -238,8 +235,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProjectPermissionReview"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         closed (Union[Unset, datetime.datetime]):
         is_pending (Union[Unset, bool]):

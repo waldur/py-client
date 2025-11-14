@@ -91,8 +91,7 @@ def sync_detailed(
     scope_type: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RoleTemplate"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         o (Union[Unset, list[RancherRoleTemplatesListOItem]]):
@@ -135,8 +134,7 @@ def sync(
     scope_type: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RoleTemplate"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         o (Union[Unset, list[RancherRoleTemplatesListOItem]]):
@@ -174,8 +172,7 @@ async def asyncio_detailed(
     scope_type: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RoleTemplate"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         o (Union[Unset, list[RancherRoleTemplatesListOItem]]):
@@ -216,8 +213,7 @@ async def asyncio(
     scope_type: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RoleTemplate"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         o (Union[Unset, list[RancherRoleTemplatesListOItem]]):

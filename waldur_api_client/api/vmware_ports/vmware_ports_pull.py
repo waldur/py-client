@@ -23,7 +23,9 @@ def _get_kwargs(
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
+    if response.status_code == 202:
+        return None
+    if response.status_code == 409:
         return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
@@ -42,7 +44,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Synchronize resource state
+
+     Schedule an asynchronous pull operation to synchronize resource state from the backend. Returns 202
+    if the pull was scheduled successfully, or 409 if the pull operation is not implemented for this
+    resource type.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +77,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Synchronize resource state
+
+     Schedule an asynchronous pull operation to synchronize resource state from the backend. Returns 202
+    if the pull was scheduled successfully, or 409 if the pull operation is not implemented for this
+    resource type.
+
     Args:
         uuid (UUID):
 

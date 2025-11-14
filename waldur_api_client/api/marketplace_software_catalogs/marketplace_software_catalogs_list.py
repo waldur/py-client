@@ -83,8 +83,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[list["SoftwareCatalog"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwareCatalogsListOItem]]):
@@ -124,8 +123,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["SoftwareCatalog"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwareCatalogsListOItem]]):
@@ -160,8 +158,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[list["SoftwareCatalog"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwareCatalogsListOItem]]):
@@ -199,8 +196,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["SoftwareCatalog"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwareCatalogsListOItem]]):

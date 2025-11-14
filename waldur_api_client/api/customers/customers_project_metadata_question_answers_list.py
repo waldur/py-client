@@ -68,6 +68,9 @@ def sync_detailed(
 ) -> Response[list["QuestionAnswer"]]:
     """List questions with project answers
 
+     Provides a paginated list of all questions from the customer's compliance checklist, including the
+    answers given in each project.
+
     Args:
         customer_uuid (UUID):
         page (Union[Unset, int]):
@@ -103,6 +106,9 @@ def sync(
 ) -> list["QuestionAnswer"]:
     """List questions with project answers
 
+     Provides a paginated list of all questions from the customer's compliance checklist, including the
+    answers given in each project.
+
     Args:
         customer_uuid (UUID):
         page (Union[Unset, int]):
@@ -132,6 +138,9 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["QuestionAnswer"]]:
     """List questions with project answers
+
+     Provides a paginated list of all questions from the customer's compliance checklist, including the
+    answers given in each project.
 
     Args:
         customer_uuid (UUID):
@@ -165,6 +174,9 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
 ) -> list["QuestionAnswer"]:
     """List questions with project answers
+
+     Provides a paginated list of all questions from the customer's compliance checklist, including the
+    answers given in each project.
 
     Args:
         customer_uuid (UUID):

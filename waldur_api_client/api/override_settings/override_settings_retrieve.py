@@ -43,7 +43,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ConstanceSettings]:
-    """
+    """Get all overridable settings
+
+     Returns all settings that can be overridden in the database via the Constance backend. Requires
+    admin permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -65,7 +69,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ConstanceSettings:
-    """
+    """Get all overridable settings
+
+     Returns all settings that can be overridden in the database via the Constance backend. Requires
+    admin permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -83,7 +91,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ConstanceSettings]:
-    """
+    """Get all overridable settings
+
+     Returns all settings that can be overridden in the database via the Constance backend. Requires
+    admin permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -103,7 +115,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ConstanceSettings:
-    """
+    """Get all overridable settings
+
+     Returns all settings that can be overridden in the database via the Constance backend. Requires
+    admin permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.

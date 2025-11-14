@@ -56,7 +56,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: AccessSubnetRequest,
 ) -> Response[AccessSubnet]:
-    """
+    """Update an access subnet
+
+     Update an existing access subnet.
+
     Args:
         uuid (UUID):
         body (AccessSubnetRequest):
@@ -87,7 +90,10 @@ def sync(
     client: AuthenticatedClient,
     body: AccessSubnetRequest,
 ) -> AccessSubnet:
-    """
+    """Update an access subnet
+
+     Update an existing access subnet.
+
     Args:
         uuid (UUID):
         body (AccessSubnetRequest):
@@ -113,7 +119,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: AccessSubnetRequest,
 ) -> Response[AccessSubnet]:
-    """
+    """Update an access subnet
+
+     Update an existing access subnet.
+
     Args:
         uuid (UUID):
         body (AccessSubnetRequest):
@@ -142,7 +151,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: AccessSubnetRequest,
 ) -> AccessSubnet:
-    """
+    """Update an access subnet
+
+     Update an existing access subnet.
+
     Args:
         uuid (UUID):
         body (AccessSubnetRequest):

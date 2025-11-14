@@ -70,7 +70,9 @@ def sync_detailed(
         CustomerRequestMultipart,
     ],
 ) -> Response[Customer]:
-    """A new customer can only be created by users with staff privilege
+    """Create a new customer
+
+     A new customer can only be created by users with staff privilege.
 
     Args:
         body (CustomerRequest):
@@ -105,7 +107,9 @@ def sync(
         CustomerRequestMultipart,
     ],
 ) -> Customer:
-    """A new customer can only be created by users with staff privilege
+    """Create a new customer
+
+     A new customer can only be created by users with staff privilege.
 
     Args:
         body (CustomerRequest):
@@ -135,7 +139,9 @@ async def asyncio_detailed(
         CustomerRequestMultipart,
     ],
 ) -> Response[Customer]:
-    """A new customer can only be created by users with staff privilege
+    """Create a new customer
+
+     A new customer can only be created by users with staff privilege.
 
     Args:
         body (CustomerRequest):
@@ -168,7 +174,9 @@ async def asyncio(
         CustomerRequestMultipart,
     ],
 ) -> Customer:
-    """A new customer can only be created by users with staff privilege
+    """Create a new customer
+
+     A new customer can only be created by users with staff privilege.
 
     Args:
         body (CustomerRequest):

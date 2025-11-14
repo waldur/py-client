@@ -73,7 +73,11 @@ def sync_detailed(
         PatchedProjectRequestMultipart,
     ],
 ) -> Response[Project]:
-    """
+    """Partially update project details
+
+     Partially update the details of a project. Requires project administrator or customer owner
+    permissions.
+
     Args:
         uuid (UUID):
         body (PatchedProjectRequest):
@@ -110,7 +114,11 @@ def sync(
         PatchedProjectRequestMultipart,
     ],
 ) -> Project:
-    """
+    """Partially update project details
+
+     Partially update the details of a project. Requires project administrator or customer owner
+    permissions.
+
     Args:
         uuid (UUID):
         body (PatchedProjectRequest):
@@ -142,7 +150,11 @@ async def asyncio_detailed(
         PatchedProjectRequestMultipart,
     ],
 ) -> Response[Project]:
-    """
+    """Partially update project details
+
+     Partially update the details of a project. Requires project administrator or customer owner
+    permissions.
+
     Args:
         uuid (UUID):
         body (PatchedProjectRequest):
@@ -177,7 +189,11 @@ async def asyncio(
         PatchedProjectRequestMultipart,
     ],
 ) -> Project:
-    """
+    """Partially update project details
+
+     Partially update the details of a project. Requires project administrator or customer owner
+    permissions.
+
     Args:
         uuid (UUID):
         body (PatchedProjectRequest):

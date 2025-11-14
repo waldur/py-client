@@ -196,8 +196,7 @@ def sync_detailed(
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["VmwarePort"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -297,8 +296,7 @@ def sync(
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["VmwarePort"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -393,8 +391,7 @@ async def asyncio_detailed(
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["VmwarePort"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -492,8 +489,7 @@ async def asyncio(
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["VmwarePort"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):

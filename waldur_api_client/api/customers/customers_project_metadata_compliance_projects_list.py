@@ -66,7 +66,9 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ProjectAnswer"]]:
-    """List project checklist answer data.
+    """List projects with compliance data
+
+     Provides a paginated list of projects with their checklist completion status and answer details.
 
     Args:
         customer_uuid (UUID):
@@ -101,7 +103,9 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ProjectAnswer"]:
-    """List project checklist answer data.
+    """List projects with compliance data
+
+     Provides a paginated list of projects with their checklist completion status and answer details.
 
     Args:
         customer_uuid (UUID):
@@ -131,7 +135,9 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ProjectAnswer"]]:
-    """List project checklist answer data.
+    """List projects with compliance data
+
+     Provides a paginated list of projects with their checklist completion status and answer details.
 
     Args:
         customer_uuid (UUID):
@@ -164,7 +170,9 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ProjectAnswer"]:
-    """List project checklist answer data.
+    """List projects with compliance data
+
+     Provides a paginated list of projects with their checklist completion status and answer details.
 
     Args:
         customer_uuid (UUID):

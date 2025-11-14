@@ -67,7 +67,10 @@ def sync_detailed(
         ConstanceSettingsRequestMultipart,
     ],
 ) -> Response[Any]:
-    """
+    """Update overridable settings
+
+     Updates one or more settings in the database via the Constance backend. Requires admin permissions.
+
     Args:
         body (ConstanceSettingsRequest):
         body (ConstanceSettingsRequestForm):
@@ -101,7 +104,10 @@ async def asyncio_detailed(
         ConstanceSettingsRequestMultipart,
     ],
 ) -> Response[Any]:
-    """
+    """Update overridable settings
+
+     Updates one or more settings in the database via the Constance backend. Requires admin permissions.
+
     Args:
         body (ConstanceSettingsRequest):
         body (ConstanceSettingsRequestForm):

@@ -60,7 +60,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ObtainAuthTokenRequest,
 ) -> Response[Union[Any, CoreAuthToken]]:
-    """
+    """Obtain authentication token
+
+     Authenticates a user with username and password and returns an authentication token.
+
     Args:
         body (ObtainAuthTokenRequest):
 
@@ -88,7 +91,10 @@ def sync(
     client: AuthenticatedClient,
     body: ObtainAuthTokenRequest,
 ) -> Union[Any, CoreAuthToken]:
-    """
+    """Obtain authentication token
+
+     Authenticates a user with username and password and returns an authentication token.
+
     Args:
         body (ObtainAuthTokenRequest):
 
@@ -111,7 +117,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ObtainAuthTokenRequest,
 ) -> Response[Union[Any, CoreAuthToken]]:
-    """
+    """Obtain authentication token
+
+     Authenticates a user with username and password and returns an authentication token.
+
     Args:
         body (ObtainAuthTokenRequest):
 
@@ -137,7 +146,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ObtainAuthTokenRequest,
 ) -> Union[Any, CoreAuthToken]:
-    """
+    """Obtain authentication token
+
+     Authenticates a user with username and password and returns an authentication token.
+
     Args:
         body (ObtainAuthTokenRequest):
 

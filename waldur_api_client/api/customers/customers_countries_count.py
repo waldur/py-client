@@ -126,7 +126,9 @@ def sync_detailed(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """Get list of available countries
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         abbreviation (Union[Unset, str]):
@@ -200,7 +202,9 @@ def sync(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """Get list of available countries
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         abbreviation (Union[Unset, str]):
@@ -269,7 +273,9 @@ async def asyncio_detailed(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """Get list of available countries
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         abbreviation (Union[Unset, str]):
@@ -341,7 +347,9 @@ async def asyncio(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """Get list of available countries
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         abbreviation (Union[Unset, str]):

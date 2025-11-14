@@ -50,8 +50,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: TokenRequest,
 ) -> Response[Any]:
-    """For user's convenience invitation approval is performed without authentication.
-    User UUID and invitation UUID is encoded into cryptographically signed token.
+    """Approve a requested invitation
+
+
+            For user's convenience invitation approval is performed without authentication.
+            User UUID and invitation UUID is encoded into cryptographically signed token.
+
 
     Args:
         body (TokenRequest):
@@ -80,8 +84,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: TokenRequest,
 ) -> Response[Any]:
-    """For user's convenience invitation approval is performed without authentication.
-    User UUID and invitation UUID is encoded into cryptographically signed token.
+    """Approve a requested invitation
+
+
+            For user's convenience invitation approval is performed without authentication.
+            User UUID and invitation UUID is encoded into cryptographically signed token.
+
 
     Args:
         body (TokenRequest):

@@ -41,8 +41,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Version]:
-    """Retrieve current version of the application and the latest available version from GitHub (if
-    available).
+    """Get application version
+
+     Retrieves the current installed version of the application and the latest available version from
+    GitHub (if available). Requires staff or support user permissions.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -65,8 +67,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Version:
-    """Retrieve current version of the application and the latest available version from GitHub (if
-    available).
+    """Get application version
+
+     Retrieves the current installed version of the application and the latest available version from
+    GitHub (if available). Requires staff or support user permissions.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -85,8 +89,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Version]:
-    """Retrieve current version of the application and the latest available version from GitHub (if
-    available).
+    """Get application version
+
+     Retrieves the current installed version of the application and the latest available version from
+    GitHub (if available). Requires staff or support user permissions.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -107,8 +113,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Version:
-    """Retrieve current version of the application and the latest available version from GitHub (if
-    available).
+    """Get application version
+
+     Retrieves the current installed version of the application and the latest available version from
+    GitHub (if available). Requires staff or support user permissions.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

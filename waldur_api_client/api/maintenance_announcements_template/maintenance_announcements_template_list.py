@@ -89,8 +89,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["MaintenanceAnnouncementTemplate"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]]):
@@ -130,8 +129,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["MaintenanceAnnouncementTemplate"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]]):
@@ -166,8 +164,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["MaintenanceAnnouncementTemplate"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]]):
@@ -205,8 +202,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["MaintenanceAnnouncementTemplate"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]]):

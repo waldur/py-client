@@ -68,7 +68,10 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ProjectDetailsResponse"]]:
-    """Get detailed project compliance information.
+    """Get detailed project metadata compliance
+
+     Provides detailed compliance status for all projects within a customer, including individual answers
+    and completion status.
 
     Args:
         customer_uuid (UUID):
@@ -103,7 +106,10 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ProjectDetailsResponse"]:
-    """Get detailed project compliance information.
+    """Get detailed project metadata compliance
+
+     Provides detailed compliance status for all projects within a customer, including individual answers
+    and completion status.
 
     Args:
         customer_uuid (UUID):
@@ -133,7 +139,10 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ProjectDetailsResponse"]]:
-    """Get detailed project compliance information.
+    """Get detailed project metadata compliance
+
+     Provides detailed compliance status for all projects within a customer, including individual answers
+    and completion status.
 
     Args:
         customer_uuid (UUID):
@@ -166,7 +175,10 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ProjectDetailsResponse"]:
-    """Get detailed project compliance information.
+    """Get detailed project metadata compliance
+
+     Provides detailed compliance status for all projects within a customer, including individual answers
+    and completion status.
 
     Args:
         customer_uuid (UUID):

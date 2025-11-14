@@ -108,7 +108,9 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsCountStateItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List permission requests
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created_by (Union[Unset, UUID]):
@@ -155,7 +157,9 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsCountStateItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List permission requests
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created_by (Union[Unset, UUID]):
@@ -197,7 +201,9 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsCountStateItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List permission requests
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created_by (Union[Unset, UUID]):
@@ -242,7 +248,9 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsCountStateItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List permission requests
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created_by (Union[Unset, UUID]):

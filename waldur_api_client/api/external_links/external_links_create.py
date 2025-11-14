@@ -70,7 +70,10 @@ def sync_detailed(
         ExternalLinkRequestMultipart,
     ],
 ) -> Response[ExternalLink]:
-    """
+    """Create an external link
+
+     Create a new external link. This action is restricted to staff users.
+
     Args:
         body (ExternalLinkRequest):
         body (ExternalLinkRequestForm):
@@ -104,7 +107,10 @@ def sync(
         ExternalLinkRequestMultipart,
     ],
 ) -> ExternalLink:
-    """
+    """Create an external link
+
+     Create a new external link. This action is restricted to staff users.
+
     Args:
         body (ExternalLinkRequest):
         body (ExternalLinkRequestForm):
@@ -133,7 +139,10 @@ async def asyncio_detailed(
         ExternalLinkRequestMultipart,
     ],
 ) -> Response[ExternalLink]:
-    """
+    """Create an external link
+
+     Create a new external link. This action is restricted to staff users.
+
     Args:
         body (ExternalLinkRequest):
         body (ExternalLinkRequestForm):
@@ -165,7 +174,10 @@ async def asyncio(
         ExternalLinkRequestMultipart,
     ],
 ) -> ExternalLink:
-    """
+    """Create an external link
+
+     Create a new external link. This action is restricted to staff users.
+
     Args:
         body (ExternalLinkRequest):
         body (ExternalLinkRequestForm):

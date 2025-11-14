@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: AccessSubnetRequest,
 ) -> Response[AccessSubnet]:
-    """
+    """Create an access subnet
+
+     Create a new access subnet for a customer.
+
     Args:
         body (AccessSubnetRequest):
 
@@ -81,7 +84,10 @@ def sync(
     client: AuthenticatedClient,
     body: AccessSubnetRequest,
 ) -> AccessSubnet:
-    """
+    """Create an access subnet
+
+     Create a new access subnet for a customer.
+
     Args:
         body (AccessSubnetRequest):
 
@@ -104,7 +110,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: AccessSubnetRequest,
 ) -> Response[AccessSubnet]:
-    """
+    """Create an access subnet
+
+     Create a new access subnet for a customer.
+
     Args:
         body (AccessSubnetRequest):
 
@@ -130,7 +139,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: AccessSubnetRequest,
 ) -> AccessSubnet:
-    """
+    """Create an access subnet
+
+     Create a new access subnet for a customer.
+
     Args:
         body (AccessSubnetRequest):
 

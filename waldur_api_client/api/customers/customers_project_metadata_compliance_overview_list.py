@@ -68,7 +68,9 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ComplianceOverview"]]:
-    """Get compliance overview statistics for all projects.
+    """Get project metadata compliance overview
+
+     Provides aggregated statistics about project metadata compliance for all projects within a customer.
 
     Args:
         customer_uuid (UUID):
@@ -103,7 +105,9 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ComplianceOverview"]:
-    """Get compliance overview statistics for all projects.
+    """Get project metadata compliance overview
+
+     Provides aggregated statistics about project metadata compliance for all projects within a customer.
 
     Args:
         customer_uuid (UUID):
@@ -133,7 +137,9 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ComplianceOverview"]]:
-    """Get compliance overview statistics for all projects.
+    """Get project metadata compliance overview
+
+     Provides aggregated statistics about project metadata compliance for all projects within a customer.
 
     Args:
         customer_uuid (UUID):
@@ -166,7 +172,9 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ComplianceOverview"]:
-    """Get compliance overview statistics for all projects.
+    """Get project metadata compliance overview
+
+     Provides aggregated statistics about project metadata compliance for all projects within a customer.
 
     Args:
         customer_uuid (UUID):

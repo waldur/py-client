@@ -70,7 +70,9 @@ def sync_detailed(
         ProjectRequestMultipart,
     ],
 ) -> Response[Project]:
-    """A new project can be created by users with staff privilege (is_staff=True) or customer owners.
+    """Create a new project
+
+     A new project can be created by users with staff privilege (is_staff=True) or customer owners.
     Project resource quota is optional.
 
     Args:
@@ -106,7 +108,9 @@ def sync(
         ProjectRequestMultipart,
     ],
 ) -> Project:
-    """A new project can be created by users with staff privilege (is_staff=True) or customer owners.
+    """Create a new project
+
+     A new project can be created by users with staff privilege (is_staff=True) or customer owners.
     Project resource quota is optional.
 
     Args:
@@ -137,7 +141,9 @@ async def asyncio_detailed(
         ProjectRequestMultipart,
     ],
 ) -> Response[Project]:
-    """A new project can be created by users with staff privilege (is_staff=True) or customer owners.
+    """Create a new project
+
+     A new project can be created by users with staff privilege (is_staff=True) or customer owners.
     Project resource quota is optional.
 
     Args:
@@ -171,7 +177,9 @@ async def asyncio(
         ProjectRequestMultipart,
     ],
 ) -> Project:
-    """A new project can be created by users with staff privilege (is_staff=True) or customer owners.
+    """Create a new project
+
+     A new project can be created by users with staff privilege (is_staff=True) or customer owners.
     Project resource quota is optional.
 
     Args:

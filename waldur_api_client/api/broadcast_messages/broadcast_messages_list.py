@@ -102,8 +102,7 @@ def sync_detailed(
     state: Union[Unset, BroadcastMessagesListState] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> Response[list["BroadcastMessage"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         field (Union[Unset, list[BroadcastMessagesListFieldItem]]):
         o (Union[Unset, list[BroadcastMessagesListOItem]]):
@@ -146,8 +145,7 @@ def sync(
     state: Union[Unset, BroadcastMessagesListState] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> list["BroadcastMessage"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         field (Union[Unset, list[BroadcastMessagesListFieldItem]]):
         o (Union[Unset, list[BroadcastMessagesListOItem]]):
@@ -185,8 +183,7 @@ async def asyncio_detailed(
     state: Union[Unset, BroadcastMessagesListState] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> Response[list["BroadcastMessage"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         field (Union[Unset, list[BroadcastMessagesListFieldItem]]):
         o (Union[Unset, list[BroadcastMessagesListOItem]]):
@@ -227,8 +224,7 @@ async def asyncio(
     state: Union[Unset, BroadcastMessagesListState] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> list["BroadcastMessage"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         field (Union[Unset, list[BroadcastMessagesListFieldItem]]):
         o (Union[Unset, list[BroadcastMessagesListOItem]]):

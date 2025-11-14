@@ -75,8 +75,7 @@ def sync_detailed(
     query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> Response[list["FreeipaProfile"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -113,8 +112,7 @@ def sync(
     query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> list["FreeipaProfile"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -146,8 +144,7 @@ async def asyncio_detailed(
     query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> Response[list["FreeipaProfile"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -182,8 +179,7 @@ async def asyncio(
     query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> list["FreeipaProfile"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

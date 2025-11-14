@@ -87,8 +87,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]] = UNSET,
 ) -> Response[list["AgentService"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         identity_uuid (Union[Unset, UUID]):
         mode (Union[Unset, str]):
@@ -128,8 +127,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]] = UNSET,
 ) -> list["AgentService"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         identity_uuid (Union[Unset, UUID]):
         mode (Union[Unset, str]):
@@ -164,8 +162,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]] = UNSET,
 ) -> Response[list["AgentService"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         identity_uuid (Union[Unset, UUID]):
         mode (Union[Unset, str]):
@@ -203,8 +200,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     state: Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]] = UNSET,
 ) -> list["AgentService"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         identity_uuid (Union[Unset, UUID]):
         mode (Union[Unset, str]):

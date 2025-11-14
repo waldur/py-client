@@ -42,7 +42,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Pulls remote user data from eduTEAMS.
+    """Synchronize user details from eduTEAMS
 
     Args:
         uuid (UUID):
@@ -71,7 +71,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Pulls remote user data from eduTEAMS.
+    """Synchronize user details from eduTEAMS
 
     Args:
         uuid (UUID):

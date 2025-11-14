@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """If a project has connected instances, deletion request will fail with 409 response code.
+    """Delete a project
+
+     Delete a project. If the project has any active resources, the deletion request will fail with a 409
+    Conflict response. This action performs a soft-delete, and the project can be recovered later.
 
     Args:
         uuid (UUID):
@@ -71,7 +74,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """If a project has connected instances, deletion request will fail with 409 response code.
+    """Delete a project
+
+     Delete a project. If the project has any active resources, the deletion request will fail with a 409
+    Conflict response. This action performs a soft-delete, and the project can be recovered later.
 
     Args:
         uuid (UUID):

@@ -126,8 +126,7 @@ def sync_detailed(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
 ) -> Response[list["BackendResourceReq"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
@@ -179,8 +178,7 @@ def sync(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
 ) -> list["BackendResourceReq"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
@@ -227,8 +225,7 @@ async def asyncio_detailed(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
 ) -> Response[list["BackendResourceReq"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
@@ -278,8 +275,7 @@ async def asyncio(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
 ) -> list["BackendResourceReq"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):

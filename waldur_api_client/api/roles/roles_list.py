@@ -87,8 +87,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["RoleDetails"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[RolesListFieldItem]]):
@@ -131,8 +130,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["RoleDetails"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[RolesListFieldItem]]):
@@ -170,8 +168,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["RoleDetails"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[RolesListFieldItem]]):
@@ -212,8 +209,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["RoleDetails"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[RolesListFieldItem]]):

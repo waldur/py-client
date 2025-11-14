@@ -20,20 +20,10 @@ class PatchedQuestionAdminRequest:
         required (Union[Unset, bool]):
         description (Union[Unset, str]):
         user_guidance (Union[Unset, str]): Additional guidance text visible to users when answering and reviewing
-        checklist (Union[Unset, str]):
-        order (Union[Unset, int]):
         question_type (Union[Unset, QuestionTypeEnum]):
-        operator (Union[BlankEnum, ChecklistOperators, Unset]):
-        review_answer_value (Union[Unset, Any]): Answer value that trigger review.
-        always_requires_review (Union[Unset, bool]): This question always requires review regardless of answer
-        guidance_answer_value (Union[Unset, Any]): Answer value that triggers display of user guidance.
-        guidance_operator (Union[BlankEnum, ChecklistOperators, Unset]): Operator to use when comparing answer with
-            guidance_answer_value
-        always_show_guidance (Union[Unset, bool]): Show user guidance always, regardless of answer. If False, guidance
-            is conditional on answer matching guidance_answer_value with guidance_operator
+        order (Union[Unset, int]):
         min_value (Union[None, Unset, str]): Minimum value allowed for NUMBER type questions
         max_value (Union[None, Unset, str]): Maximum value allowed for NUMBER type questions
-        dependency_logic_operator (Union[Unset, DependencyLogicOperatorEnum]):
         allowed_file_types (Union[Unset, Any]): List of allowed file extensions (e.g., ['.pdf', '.doc', '.docx']). If
             empty, all file types are allowed.
         allowed_mime_types (Union[Unset, Any]): List of allowed MIME types (e.g., ['application/pdf',
@@ -43,27 +33,37 @@ class PatchedQuestionAdminRequest:
             enforced.
         max_files_count (Union[None, Unset, int]): Maximum number of files allowed for MULTIPLE_FILES type questions. If
             not set, no count limit is enforced.
+        operator (Union[BlankEnum, ChecklistOperators, Unset]):
+        review_answer_value (Union[Unset, Any]): Answer value that trigger review.
+        always_requires_review (Union[Unset, bool]): This question always requires review regardless of answer
+        guidance_answer_value (Union[Unset, Any]): Answer value that triggers display of user guidance.
+        guidance_operator (Union[BlankEnum, ChecklistOperators, Unset]): Operator to use when comparing answer with
+            guidance_answer_value
+        always_show_guidance (Union[Unset, bool]): Show user guidance always, regardless of answer. If False, guidance
+            is conditional on answer matching guidance_answer_value with guidance_operator
+        dependency_logic_operator (Union[Unset, DependencyLogicOperatorEnum]):
+        checklist (Union[Unset, str]):
     """
 
     required: Union[Unset, bool] = UNSET
     description: Union[Unset, str] = UNSET
     user_guidance: Union[Unset, str] = UNSET
-    checklist: Union[Unset, str] = UNSET
-    order: Union[Unset, int] = UNSET
     question_type: Union[Unset, QuestionTypeEnum] = UNSET
+    order: Union[Unset, int] = UNSET
+    min_value: Union[None, Unset, str] = UNSET
+    max_value: Union[None, Unset, str] = UNSET
+    allowed_file_types: Union[Unset, Any] = UNSET
+    allowed_mime_types: Union[Unset, Any] = UNSET
+    max_file_size_mb: Union[None, Unset, int] = UNSET
+    max_files_count: Union[None, Unset, int] = UNSET
     operator: Union[BlankEnum, ChecklistOperators, Unset] = UNSET
     review_answer_value: Union[Unset, Any] = UNSET
     always_requires_review: Union[Unset, bool] = UNSET
     guidance_answer_value: Union[Unset, Any] = UNSET
     guidance_operator: Union[BlankEnum, ChecklistOperators, Unset] = UNSET
     always_show_guidance: Union[Unset, bool] = UNSET
-    min_value: Union[None, Unset, str] = UNSET
-    max_value: Union[None, Unset, str] = UNSET
     dependency_logic_operator: Union[Unset, DependencyLogicOperatorEnum] = UNSET
-    allowed_file_types: Union[Unset, Any] = UNSET
-    allowed_mime_types: Union[Unset, Any] = UNSET
-    max_file_size_mb: Union[None, Unset, int] = UNSET
-    max_files_count: Union[None, Unset, int] = UNSET
+    checklist: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -73,13 +73,39 @@ class PatchedQuestionAdminRequest:
 
         user_guidance = self.user_guidance
 
-        checklist = self.checklist
-
-        order = self.order
-
         question_type: Union[Unset, str] = UNSET
         if not isinstance(self.question_type, Unset):
             question_type = self.question_type.value
+
+        order = self.order
+
+        min_value: Union[None, Unset, str]
+        if isinstance(self.min_value, Unset):
+            min_value = UNSET
+        else:
+            min_value = self.min_value
+
+        max_value: Union[None, Unset, str]
+        if isinstance(self.max_value, Unset):
+            max_value = UNSET
+        else:
+            max_value = self.max_value
+
+        allowed_file_types = self.allowed_file_types
+
+        allowed_mime_types = self.allowed_mime_types
+
+        max_file_size_mb: Union[None, Unset, int]
+        if isinstance(self.max_file_size_mb, Unset):
+            max_file_size_mb = UNSET
+        else:
+            max_file_size_mb = self.max_file_size_mb
+
+        max_files_count: Union[None, Unset, int]
+        if isinstance(self.max_files_count, Unset):
+            max_files_count = UNSET
+        else:
+            max_files_count = self.max_files_count
 
         operator: Union[Unset, str]
         if isinstance(self.operator, Unset):
@@ -105,37 +131,11 @@ class PatchedQuestionAdminRequest:
 
         always_show_guidance = self.always_show_guidance
 
-        min_value: Union[None, Unset, str]
-        if isinstance(self.min_value, Unset):
-            min_value = UNSET
-        else:
-            min_value = self.min_value
-
-        max_value: Union[None, Unset, str]
-        if isinstance(self.max_value, Unset):
-            max_value = UNSET
-        else:
-            max_value = self.max_value
-
         dependency_logic_operator: Union[Unset, str] = UNSET
         if not isinstance(self.dependency_logic_operator, Unset):
             dependency_logic_operator = self.dependency_logic_operator.value
 
-        allowed_file_types = self.allowed_file_types
-
-        allowed_mime_types = self.allowed_mime_types
-
-        max_file_size_mb: Union[None, Unset, int]
-        if isinstance(self.max_file_size_mb, Unset):
-            max_file_size_mb = UNSET
-        else:
-            max_file_size_mb = self.max_file_size_mb
-
-        max_files_count: Union[None, Unset, int]
-        if isinstance(self.max_files_count, Unset):
-            max_files_count = UNSET
-        else:
-            max_files_count = self.max_files_count
+        checklist = self.checklist
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -146,12 +146,22 @@ class PatchedQuestionAdminRequest:
             field_dict["description"] = description
         if user_guidance is not UNSET:
             field_dict["user_guidance"] = user_guidance
-        if checklist is not UNSET:
-            field_dict["checklist"] = checklist
-        if order is not UNSET:
-            field_dict["order"] = order
         if question_type is not UNSET:
             field_dict["question_type"] = question_type
+        if order is not UNSET:
+            field_dict["order"] = order
+        if min_value is not UNSET:
+            field_dict["min_value"] = min_value
+        if max_value is not UNSET:
+            field_dict["max_value"] = max_value
+        if allowed_file_types is not UNSET:
+            field_dict["allowed_file_types"] = allowed_file_types
+        if allowed_mime_types is not UNSET:
+            field_dict["allowed_mime_types"] = allowed_mime_types
+        if max_file_size_mb is not UNSET:
+            field_dict["max_file_size_mb"] = max_file_size_mb
+        if max_files_count is not UNSET:
+            field_dict["max_files_count"] = max_files_count
         if operator is not UNSET:
             field_dict["operator"] = operator
         if review_answer_value is not UNSET:
@@ -164,20 +174,10 @@ class PatchedQuestionAdminRequest:
             field_dict["guidance_operator"] = guidance_operator
         if always_show_guidance is not UNSET:
             field_dict["always_show_guidance"] = always_show_guidance
-        if min_value is not UNSET:
-            field_dict["min_value"] = min_value
-        if max_value is not UNSET:
-            field_dict["max_value"] = max_value
         if dependency_logic_operator is not UNSET:
             field_dict["dependency_logic_operator"] = dependency_logic_operator
-        if allowed_file_types is not UNSET:
-            field_dict["allowed_file_types"] = allowed_file_types
-        if allowed_mime_types is not UNSET:
-            field_dict["allowed_mime_types"] = allowed_mime_types
-        if max_file_size_mb is not UNSET:
-            field_dict["max_file_size_mb"] = max_file_size_mb
-        if max_files_count is not UNSET:
-            field_dict["max_files_count"] = max_files_count
+        if checklist is not UNSET:
+            field_dict["checklist"] = checklist
 
         return field_dict
 
@@ -190,16 +190,54 @@ class PatchedQuestionAdminRequest:
 
         user_guidance = d.pop("user_guidance", UNSET)
 
-        checklist = d.pop("checklist", UNSET)
-
-        order = d.pop("order", UNSET)
-
         _question_type = d.pop("question_type", UNSET)
         question_type: Union[Unset, QuestionTypeEnum]
         if isinstance(_question_type, Unset):
             question_type = UNSET
         else:
             question_type = QuestionTypeEnum(_question_type)
+
+        order = d.pop("order", UNSET)
+
+        def _parse_min_value(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        min_value = _parse_min_value(d.pop("min_value", UNSET))
+
+        def _parse_max_value(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        max_value = _parse_max_value(d.pop("max_value", UNSET))
+
+        allowed_file_types = d.pop("allowed_file_types", UNSET)
+
+        allowed_mime_types = d.pop("allowed_mime_types", UNSET)
+
+        def _parse_max_file_size_mb(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        max_file_size_mb = _parse_max_file_size_mb(d.pop("max_file_size_mb", UNSET))
+
+        def _parse_max_files_count(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        max_files_count = _parse_max_files_count(d.pop("max_files_count", UNSET))
 
         def _parse_operator(data: object) -> Union[BlankEnum, ChecklistOperators, Unset]:
             if isinstance(data, Unset):
@@ -247,24 +285,6 @@ class PatchedQuestionAdminRequest:
 
         always_show_guidance = d.pop("always_show_guidance", UNSET)
 
-        def _parse_min_value(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        min_value = _parse_min_value(d.pop("min_value", UNSET))
-
-        def _parse_max_value(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        max_value = _parse_max_value(d.pop("max_value", UNSET))
-
         _dependency_logic_operator = d.pop("dependency_logic_operator", UNSET)
         dependency_logic_operator: Union[Unset, DependencyLogicOperatorEnum]
         if isinstance(_dependency_logic_operator, Unset):
@@ -272,48 +292,28 @@ class PatchedQuestionAdminRequest:
         else:
             dependency_logic_operator = DependencyLogicOperatorEnum(_dependency_logic_operator)
 
-        allowed_file_types = d.pop("allowed_file_types", UNSET)
-
-        allowed_mime_types = d.pop("allowed_mime_types", UNSET)
-
-        def _parse_max_file_size_mb(data: object) -> Union[None, Unset, int]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, int], data)
-
-        max_file_size_mb = _parse_max_file_size_mb(d.pop("max_file_size_mb", UNSET))
-
-        def _parse_max_files_count(data: object) -> Union[None, Unset, int]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, int], data)
-
-        max_files_count = _parse_max_files_count(d.pop("max_files_count", UNSET))
+        checklist = d.pop("checklist", UNSET)
 
         patched_question_admin_request = cls(
             required=required,
             description=description,
             user_guidance=user_guidance,
-            checklist=checklist,
-            order=order,
             question_type=question_type,
+            order=order,
+            min_value=min_value,
+            max_value=max_value,
+            allowed_file_types=allowed_file_types,
+            allowed_mime_types=allowed_mime_types,
+            max_file_size_mb=max_file_size_mb,
+            max_files_count=max_files_count,
             operator=operator,
             review_answer_value=review_answer_value,
             always_requires_review=always_requires_review,
             guidance_answer_value=guidance_answer_value,
             guidance_operator=guidance_operator,
             always_show_guidance=always_show_guidance,
-            min_value=min_value,
-            max_value=max_value,
             dependency_logic_operator=dependency_logic_operator,
-            allowed_file_types=allowed_file_types,
-            allowed_mime_types=allowed_mime_types,
-            max_file_size_mb=max_file_size_mb,
-            max_files_count=max_files_count,
+            checklist=checklist,
         )
 
         patched_question_admin_request.additional_properties = d

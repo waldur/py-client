@@ -73,7 +73,10 @@ def sync_detailed(
         ExternalLinkRequestMultipart,
     ],
 ) -> Response[ExternalLink]:
-    """
+    """Update an external link
+
+     Update an existing external link. This action is restricted to staff users.
+
     Args:
         uuid (UUID):
         body (ExternalLinkRequest):
@@ -110,7 +113,10 @@ def sync(
         ExternalLinkRequestMultipart,
     ],
 ) -> ExternalLink:
-    """
+    """Update an external link
+
+     Update an existing external link. This action is restricted to staff users.
+
     Args:
         uuid (UUID):
         body (ExternalLinkRequest):
@@ -142,7 +148,10 @@ async def asyncio_detailed(
         ExternalLinkRequestMultipart,
     ],
 ) -> Response[ExternalLink]:
-    """
+    """Update an external link
+
+     Update an existing external link. This action is restricted to staff users.
+
     Args:
         uuid (UUID):
         body (ExternalLinkRequest):
@@ -177,7 +186,10 @@ async def asyncio(
         ExternalLinkRequestMultipart,
     ],
 ) -> ExternalLink:
-    """
+    """Update an external link
+
+     Update an existing external link. This action is restricted to staff users.
+
     Args:
         uuid (UUID):
         body (ExternalLinkRequest):

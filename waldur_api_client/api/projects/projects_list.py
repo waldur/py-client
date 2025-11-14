@@ -170,7 +170,10 @@ def sync_detailed(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> Response[list["Project"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List projects
+
+     Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only
+    active projects are shown.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -259,7 +262,10 @@ def sync(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> list["Project"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List projects
+
+     Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only
+    active projects are shown.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -343,7 +349,10 @@ async def asyncio_detailed(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> Response[list["Project"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List projects
+
+     Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only
+    active projects are shown.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -430,7 +439,10 @@ async def asyncio(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> list["Project"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
+    """List projects
+
+     Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only
+    active projects are shown.
 
     Args:
         backend_id (Union[Unset, str]):

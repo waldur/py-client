@@ -73,8 +73,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["DigitalOceanRegion"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -111,8 +110,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["DigitalOceanRegion"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -144,8 +142,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["DigitalOceanRegion"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -180,8 +177,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["DigitalOceanRegion"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):

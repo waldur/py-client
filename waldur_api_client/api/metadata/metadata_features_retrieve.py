@@ -43,7 +43,11 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[FeatureMetadataResponse]:
-    """Get feature metadata including toggles and descriptions
+    """Get feature flag metadata
+
+     Retrieves metadata for all available feature flags, including their keys, descriptions, and grouping
+    sections. This endpoint is publicly accessible and helps UIs to dynamically render feature-related
+    settings.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -66,7 +70,11 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> FeatureMetadataResponse:
-    """Get feature metadata including toggles and descriptions
+    """Get feature flag metadata
+
+     Retrieves metadata for all available feature flags, including their keys, descriptions, and grouping
+    sections. This endpoint is publicly accessible and helps UIs to dynamically render feature-related
+    settings.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -85,7 +93,11 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[FeatureMetadataResponse]:
-    """Get feature metadata including toggles and descriptions
+    """Get feature flag metadata
+
+     Retrieves metadata for all available feature flags, including their keys, descriptions, and grouping
+    sections. This endpoint is publicly accessible and helps UIs to dynamically render feature-related
+    settings.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -106,7 +118,11 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> FeatureMetadataResponse:
-    """Get feature metadata including toggles and descriptions
+    """Get feature flag metadata
+
+     Retrieves metadata for all available feature flags, including their keys, descriptions, and grouping
+    sections. This endpoint is publicly accessible and helps UIs to dynamically render feature-related
+    settings.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

@@ -46,7 +46,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, Logout]]:
-    """Logout from the system. If single logout is supported, returns logout URL.
+    """Log out
+
+     Logs out the current user by deleting their authentication token. If single logout (SLO) is
+    supported for the current authentication method (e.g., SAML2 or OIDC), this endpoint may return a
+    logout URL to which the user should be redirected to complete the logout process on the identity
+    provider side.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -69,7 +74,12 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Union[Any, Logout]:
-    """Logout from the system. If single logout is supported, returns logout URL.
+    """Log out
+
+     Logs out the current user by deleting their authentication token. If single logout (SLO) is
+    supported for the current authentication method (e.g., SAML2 or OIDC), this endpoint may return a
+    logout URL to which the user should be redirected to complete the logout process on the identity
+    provider side.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -88,7 +98,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, Logout]]:
-    """Logout from the system. If single logout is supported, returns logout URL.
+    """Log out
+
+     Logs out the current user by deleting their authentication token. If single logout (SLO) is
+    supported for the current authentication method (e.g., SAML2 or OIDC), this endpoint may return a
+    logout URL to which the user should be redirected to complete the logout process on the identity
+    provider side.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -109,7 +124,12 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Union[Any, Logout]:
-    """Logout from the system. If single logout is supported, returns logout URL.
+    """Log out
+
+     Logs out the current user by deleting their authentication token. If single logout (SLO) is
+    supported for the current authentication method (e.g., SAML2 or OIDC), this endpoint may return a
+    logout URL to which the user should be redirected to complete the logout process on the identity
+    provider side.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

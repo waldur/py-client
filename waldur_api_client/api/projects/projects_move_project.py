@@ -65,7 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MoveProjectRequest,
 ) -> Response[Union[Project, ProjectsMoveProjectResponse400]]:
-    """
+    """Move project to another customer
+
+     Moves a project and its associated resources to a different customer. This is a staff-only action.
+    You can choose whether to preserve existing project permissions for users.
+
     Args:
         uuid (UUID):
         body (MoveProjectRequest):
@@ -96,7 +100,11 @@ def sync(
     client: AuthenticatedClient,
     body: MoveProjectRequest,
 ) -> Union[Project, ProjectsMoveProjectResponse400]:
-    """
+    """Move project to another customer
+
+     Moves a project and its associated resources to a different customer. This is a staff-only action.
+    You can choose whether to preserve existing project permissions for users.
+
     Args:
         uuid (UUID):
         body (MoveProjectRequest):
@@ -122,7 +130,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MoveProjectRequest,
 ) -> Response[Union[Project, ProjectsMoveProjectResponse400]]:
-    """
+    """Move project to another customer
+
+     Moves a project and its associated resources to a different customer. This is a staff-only action.
+    You can choose whether to preserve existing project permissions for users.
+
     Args:
         uuid (UUID):
         body (MoveProjectRequest):
@@ -151,7 +163,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: MoveProjectRequest,
 ) -> Union[Project, ProjectsMoveProjectResponse400]:
-    """
+    """Move project to another customer
+
+     Moves a project and its associated resources to a different customer. This is a staff-only action.
+    You can choose whether to preserve existing project permissions for users.
+
     Args:
         uuid (UUID):
         body (MoveProjectRequest):

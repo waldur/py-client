@@ -1,46 +1,31 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="ReviewComment")
+T = TypeVar("T", bound="CeleryStatsRetrieveResponse200")
 
 
 @_attrs_define
-class ReviewComment:
-    """
-    Attributes:
-        comment (Union[Unset, str]):
-    """
+class CeleryStatsRetrieveResponse200:
+    """ """
 
-    comment: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        comment = self.comment
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if comment is not UNSET:
-            field_dict["comment"] = comment
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        comment = d.pop("comment", UNSET)
+        celery_stats_retrieve_response_200 = cls()
 
-        review_comment = cls(
-            comment=comment,
-        )
-
-        review_comment.additional_properties = d
-        return review_comment
+        celery_stats_retrieve_response_200.additional_properties = d
+        return celery_stats_retrieve_response_200
 
     @property
     def additional_keys(self) -> list[str]:

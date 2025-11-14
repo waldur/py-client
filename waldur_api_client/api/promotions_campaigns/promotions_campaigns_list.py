@@ -129,8 +129,7 @@ def sync_detailed(
     start_date: Union[Unset, datetime.date] = UNSET,
     state: Union[Unset, list[PromotionsCampaignsListStateItem]] = UNSET,
 ) -> Response[list["Campaign"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         discount_type (Union[Unset, str]):
         end_date (Union[Unset, datetime.date]):
@@ -188,8 +187,7 @@ def sync(
     start_date: Union[Unset, datetime.date] = UNSET,
     state: Union[Unset, list[PromotionsCampaignsListStateItem]] = UNSET,
 ) -> list["Campaign"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         discount_type (Union[Unset, str]):
         end_date (Union[Unset, datetime.date]):
@@ -242,8 +240,7 @@ async def asyncio_detailed(
     start_date: Union[Unset, datetime.date] = UNSET,
     state: Union[Unset, list[PromotionsCampaignsListStateItem]] = UNSET,
 ) -> Response[list["Campaign"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         discount_type (Union[Unset, str]):
         end_date (Union[Unset, datetime.date]):
@@ -299,8 +296,7 @@ async def asyncio(
     start_date: Union[Unset, datetime.date] = UNSET,
     state: Union[Unset, list[PromotionsCampaignsListStateItem]] = UNSET,
 ) -> list["Campaign"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         discount_type (Union[Unset, str]):
         end_date (Union[Unset, datetime.date]):

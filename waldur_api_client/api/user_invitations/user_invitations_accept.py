@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Accept invitation for current user.
+    """Accept an invitation
+
+     Accepts an invitation for the currently authenticated user. This grants the user the specified role
+    in the invitation's scope.
 
     Args:
         uuid (UUID):
@@ -71,7 +74,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Accept invitation for current user.
+    """Accept an invitation
+
+     Accepts an invitation for the currently authenticated user. This grants the user the specified role
+    in the invitation's scope.
 
     Args:
         uuid (UUID):

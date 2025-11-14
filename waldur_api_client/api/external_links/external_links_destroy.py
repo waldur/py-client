@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete an external link
+
+     Delete an existing external link. This action is restricted to staff users.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +73,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete an external link
+
+     Delete an existing external link. This action is restricted to staff users.
+
     Args:
         uuid (UUID):
 

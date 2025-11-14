@@ -111,8 +111,7 @@ def sync_detailed(
     settings_uuid: Union[Unset, UUID] = UNSET,
     workload_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RancherHPA"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -167,8 +166,7 @@ def sync(
     settings_uuid: Union[Unset, UUID] = UNSET,
     workload_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RancherHPA"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -218,8 +216,7 @@ async def asyncio_detailed(
     settings_uuid: Union[Unset, UUID] = UNSET,
     workload_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RancherHPA"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -272,8 +269,7 @@ async def asyncio(
     settings_uuid: Union[Unset, UUID] = UNSET,
     workload_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RancherHPA"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         cluster_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):

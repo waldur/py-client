@@ -51,7 +51,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: FeatureValuesBody,
 ) -> Response[str]:
-    """Override feature values
+    """Update feature flags
+
+     Allows administrators to enable or disable specific feature flags in the system. The request should
+    be a dictionary where keys are feature sections and values are dictionaries of feature keys and
+    their boolean state.
 
     Args:
         body (FeatureValuesBody):
@@ -80,7 +84,11 @@ def sync(
     client: AuthenticatedClient,
     body: FeatureValuesBody,
 ) -> str:
-    """Override feature values
+    """Update feature flags
+
+     Allows administrators to enable or disable specific feature flags in the system. The request should
+    be a dictionary where keys are feature sections and values are dictionaries of feature keys and
+    their boolean state.
 
     Args:
         body (FeatureValuesBody):
@@ -104,7 +112,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: FeatureValuesBody,
 ) -> Response[str]:
-    """Override feature values
+    """Update feature flags
+
+     Allows administrators to enable or disable specific feature flags in the system. The request should
+    be a dictionary where keys are feature sections and values are dictionaries of feature keys and
+    their boolean state.
 
     Args:
         body (FeatureValuesBody):
@@ -131,7 +143,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: FeatureValuesBody,
 ) -> str:
-    """Override feature values
+    """Update feature flags
+
+     Allows administrators to enable or disable specific feature flags in the system. The request should
+    be a dictionary where keys are feature sections and values are dictionaries of feature keys and
+    their boolean state.
 
     Args:
         body (FeatureValuesBody):

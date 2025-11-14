@@ -106,8 +106,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Screenshot"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         o (Union[Unset, list[MarketplaceScreenshotsListOItem]]):
         offering (Union[Unset, str]):
@@ -153,8 +152,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Screenshot"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         o (Union[Unset, list[MarketplaceScreenshotsListOItem]]):
         offering (Union[Unset, str]):
@@ -195,8 +193,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Screenshot"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         o (Union[Unset, list[MarketplaceScreenshotsListOItem]]):
         offering (Union[Unset, str]):
@@ -240,8 +237,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Screenshot"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         o (Union[Unset, list[MarketplaceScreenshotsListOItem]]):
         offering (Union[Unset, str]):

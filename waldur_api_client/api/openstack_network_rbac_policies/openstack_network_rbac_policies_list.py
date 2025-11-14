@@ -108,8 +108,7 @@ def sync_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["NetworkRBACPolicy"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
@@ -161,8 +160,7 @@ def sync(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["NetworkRBACPolicy"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
@@ -209,8 +207,7 @@ async def asyncio_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["NetworkRBACPolicy"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
@@ -260,8 +257,7 @@ async def asyncio(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["NetworkRBACPolicy"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):

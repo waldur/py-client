@@ -70,7 +70,9 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List project types
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         name (Union[Unset, str]):
@@ -108,7 +110,9 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List project types
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         name (Union[Unset, str]):
@@ -141,7 +145,9 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List project types
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         name (Union[Unset, str]):
@@ -177,7 +183,9 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List project types
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         name (Union[Unset, str]):

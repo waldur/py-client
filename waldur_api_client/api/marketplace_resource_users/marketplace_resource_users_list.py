@@ -93,8 +93,7 @@ def sync_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ResourceUser"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -140,8 +139,7 @@ def sync(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ResourceUser"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -182,8 +180,7 @@ async def asyncio_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ResourceUser"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -227,8 +224,7 @@ async def asyncio(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ResourceUser"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

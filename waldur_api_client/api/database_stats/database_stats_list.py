@@ -48,7 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list["TableSize"]]:
-    """
+    """Get database table statistics
+
+     Retrieves statistics about the database, including the top 10 largest tables by total size. This
+    information is useful for monitoring and maintenance. Requires support user permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -70,7 +74,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list["TableSize"]:
-    """
+    """Get database table statistics
+
+     Retrieves statistics about the database, including the top 10 largest tables by total size. This
+    information is useful for monitoring and maintenance. Requires support user permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -88,7 +96,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list["TableSize"]]:
-    """
+    """Get database table statistics
+
+     Retrieves statistics about the database, including the top 10 largest tables by total size. This
+    information is useful for monitoring and maintenance. Requires support user permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -108,7 +120,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list["TableSize"]:
-    """
+    """Get database table statistics
+
+     Retrieves statistics about the database, including the top 10 largest tables by total size. This
+    information is useful for monitoring and maintenance. Requires support user permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.

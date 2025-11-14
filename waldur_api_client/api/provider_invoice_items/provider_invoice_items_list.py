@@ -105,8 +105,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["InvoiceItem"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer_uuid (Union[Unset, UUID]):
         invoice_month (Union[Unset, int]):
@@ -155,8 +154,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["InvoiceItem"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer_uuid (Union[Unset, UUID]):
         invoice_month (Union[Unset, int]):
@@ -200,8 +198,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["InvoiceItem"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer_uuid (Union[Unset, UUID]):
         invoice_month (Union[Unset, int]):
@@ -248,8 +245,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["InvoiceItem"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer_uuid (Union[Unset, UUID]):
         invoice_month (Union[Unset, int]):

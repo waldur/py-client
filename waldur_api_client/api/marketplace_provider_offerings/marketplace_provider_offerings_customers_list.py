@@ -27,6 +27,7 @@ def _get_kwargs(
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
     billable: Union[Unset, bool] = UNSET,
+    can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
@@ -70,6 +71,8 @@ def _get_kwargs(
     params["attributes"] = attributes
 
     params["billable"] = billable
+
+    params["can_create_offering_user"] = can_create_offering_user
 
     json_category_group_uuid: Union[Unset, str] = UNSET
     if not isinstance(category_group_uuid, Unset):
@@ -240,6 +243,7 @@ def sync_detailed(
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
     billable: Union[Unset, bool] = UNSET,
+    can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
@@ -279,6 +283,7 @@ def sync_detailed(
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
         billable (Union[Unset, bool]):
+        can_create_offering_user (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
@@ -324,6 +329,7 @@ def sync_detailed(
         allowed_customer_uuid=allowed_customer_uuid,
         attributes=attributes,
         billable=billable,
+        can_create_offering_user=can_create_offering_user,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
         created=created,
@@ -371,6 +377,7 @@ def sync(
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
     billable: Union[Unset, bool] = UNSET,
+    can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
@@ -410,6 +417,7 @@ def sync(
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
         billable (Union[Unset, bool]):
+        can_create_offering_user (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
@@ -456,6 +464,7 @@ def sync(
         allowed_customer_uuid=allowed_customer_uuid,
         attributes=attributes,
         billable=billable,
+        can_create_offering_user=can_create_offering_user,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
         created=created,
@@ -497,6 +506,7 @@ async def asyncio_detailed(
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
     billable: Union[Unset, bool] = UNSET,
+    can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
@@ -536,6 +546,7 @@ async def asyncio_detailed(
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
         billable (Union[Unset, bool]):
+        can_create_offering_user (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
@@ -581,6 +592,7 @@ async def asyncio_detailed(
         allowed_customer_uuid=allowed_customer_uuid,
         attributes=attributes,
         billable=billable,
+        can_create_offering_user=can_create_offering_user,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
         created=created,
@@ -626,6 +638,7 @@ async def asyncio(
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
     billable: Union[Unset, bool] = UNSET,
+    can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
@@ -665,6 +678,7 @@ async def asyncio(
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
         billable (Union[Unset, bool]):
+        can_create_offering_user (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
@@ -712,6 +726,7 @@ async def asyncio(
             allowed_customer_uuid=allowed_customer_uuid,
             attributes=attributes,
             billable=billable,
+            can_create_offering_user=can_create_offering_user,
             category_group_uuid=category_group_uuid,
             category_uuid=category_uuid,
             created=created,

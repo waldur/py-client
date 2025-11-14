@@ -56,7 +56,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectRecoveryRequest,
 ) -> Response[Project]:
-    """Recover a soft-deleted project with team member restoration
+    """Recover a soft-deleted project
+
+     Recovers a soft-deleted (terminated) project, making it active again. Provides options to restore
+    previous team members automatically (staff-only) or send them new invitations.
 
     Args:
         uuid (UUID):
@@ -88,7 +91,10 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectRecoveryRequest,
 ) -> Project:
-    """Recover a soft-deleted project with team member restoration
+    """Recover a soft-deleted project
+
+     Recovers a soft-deleted (terminated) project, making it active again. Provides options to restore
+    previous team members automatically (staff-only) or send them new invitations.
 
     Args:
         uuid (UUID):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectRecoveryRequest,
 ) -> Response[Project]:
-    """Recover a soft-deleted project with team member restoration
+    """Recover a soft-deleted project
+
+     Recovers a soft-deleted (terminated) project, making it active again. Provides options to restore
+    previous team members automatically (staff-only) or send them new invitations.
 
     Args:
         uuid (UUID):
@@ -145,7 +154,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectRecoveryRequest,
 ) -> Project:
-    """Recover a soft-deleted project with team member restoration
+    """Recover a soft-deleted project
+
+     Recovers a soft-deleted (terminated) project, making it active again. Provides options to restore
+    previous team members automatically (staff-only) or send them new invitations.
 
     Args:
         uuid (UUID):

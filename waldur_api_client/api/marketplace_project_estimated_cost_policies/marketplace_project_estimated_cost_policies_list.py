@@ -99,8 +99,7 @@ def sync_detailed(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProjectEstimatedCostPolicy"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -149,8 +148,7 @@ def sync(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProjectEstimatedCostPolicy"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -194,8 +192,7 @@ async def asyncio_detailed(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProjectEstimatedCostPolicy"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -242,8 +239,7 @@ async def asyncio(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProjectEstimatedCostPolicy"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):

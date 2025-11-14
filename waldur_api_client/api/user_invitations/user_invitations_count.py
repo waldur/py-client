@@ -129,7 +129,9 @@ def sync_detailed(
     scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserInvitationsCountStateItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List user invitations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         civil_number (Union[Unset, str]):
@@ -194,7 +196,9 @@ def sync(
     scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserInvitationsCountStateItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List user invitations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         civil_number (Union[Unset, str]):
@@ -254,7 +258,9 @@ async def asyncio_detailed(
     scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserInvitationsCountStateItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List user invitations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         civil_number (Union[Unset, str]):
@@ -317,7 +323,9 @@ async def asyncio(
     scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserInvitationsCountStateItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List user invitations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         civil_number (Union[Unset, str]):

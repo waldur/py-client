@@ -117,8 +117,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["BackendResource"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
@@ -173,8 +172,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["BackendResource"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
@@ -224,8 +222,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["BackendResource"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
@@ -278,8 +275,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["BackendResource"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         backend_id (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):

@@ -127,7 +127,10 @@ def sync_detailed(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> Response[list["Country"]]:
-    """Return list of countries
+    """Get list of available countries
+
+     Returns a list of countries that can be used when creating or updating a customer. The list can be
+    configured by the service provider.
 
     Args:
         abbreviation (Union[Unset, str]):
@@ -201,7 +204,10 @@ def sync(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> list["Country"]:
-    """Return list of countries
+    """Get list of available countries
+
+     Returns a list of countries that can be used when creating or updating a customer. The list can be
+    configured by the service provider.
 
     Args:
         abbreviation (Union[Unset, str]):
@@ -270,7 +276,10 @@ async def asyncio_detailed(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> Response[list["Country"]]:
-    """Return list of countries
+    """Get list of available countries
+
+     Returns a list of countries that can be used when creating or updating a customer. The list can be
+    configured by the service provider.
 
     Args:
         abbreviation (Union[Unset, str]):
@@ -342,7 +351,10 @@ async def asyncio(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> list["Country"]:
-    """Return list of countries
+    """Get list of available countries
+
+     Returns a list of countries that can be used when creating or updating a customer. The list can be
+    configured by the service provider.
 
     Args:
         abbreviation (Union[Unset, str]):

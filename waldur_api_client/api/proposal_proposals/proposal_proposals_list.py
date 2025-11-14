@@ -113,8 +113,7 @@ def sync_detailed(
     round_: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalProposalsListStateItem]] = UNSET,
 ) -> Response[list["Proposal"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         call_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -163,8 +162,7 @@ def sync(
     round_: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalProposalsListStateItem]] = UNSET,
 ) -> list["Proposal"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         call_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -208,8 +206,7 @@ async def asyncio_detailed(
     round_: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalProposalsListStateItem]] = UNSET,
 ) -> Response[list["Proposal"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         call_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -256,8 +253,7 @@ async def asyncio(
     round_: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalProposalsListStateItem]] = UNSET,
 ) -> list["Proposal"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         call_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):

@@ -50,7 +50,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ConfirmEmailRequestRequest,
 ) -> Response[Any]:
-    """Confirm email update using code
+    """Confirm email change
+
+     Confirm email update using code
 
     Args:
         body (ConfirmEmailRequestRequest):
@@ -79,7 +81,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ConfirmEmailRequestRequest,
 ) -> Response[Any]:
-    """Confirm email update using code
+    """Confirm email change
+
+     Confirm email update using code
 
     Args:
         body (ConfirmEmailRequestRequest):

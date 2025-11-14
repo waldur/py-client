@@ -63,7 +63,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[CustomersRetrieveFieldItem]] = UNSET,
 ) -> Response[Customer]:
-    """
+    """Retrieve customer details
+
+     Fetch the details of a specific customer by its UUID.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[CustomersRetrieveFieldItem]]):
@@ -94,7 +97,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[CustomersRetrieveFieldItem]] = UNSET,
 ) -> Customer:
-    """
+    """Retrieve customer details
+
+     Fetch the details of a specific customer by its UUID.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[CustomersRetrieveFieldItem]]):
@@ -120,7 +126,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[CustomersRetrieveFieldItem]] = UNSET,
 ) -> Response[Customer]:
-    """
+    """Retrieve customer details
+
+     Fetch the details of a specific customer by its UUID.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[CustomersRetrieveFieldItem]]):
@@ -149,7 +158,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[CustomersRetrieveFieldItem]] = UNSET,
 ) -> Customer:
-    """
+    """Retrieve customer details
+
+     Fetch the details of a specific customer by its UUID.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[CustomersRetrieveFieldItem]]):

@@ -127,8 +127,7 @@ def sync_detailed(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> Response[list["FinancialReport"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         abbreviation (Union[Unset, str]):
         agreement_number (Union[Unset, str]):
@@ -201,8 +200,7 @@ def sync(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> list["FinancialReport"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         abbreviation (Union[Unset, str]):
         agreement_number (Union[Unset, str]):
@@ -270,8 +268,7 @@ async def asyncio_detailed(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> Response[list["FinancialReport"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         abbreviation (Union[Unset, str]):
         agreement_number (Union[Unset, str]):
@@ -342,8 +339,7 @@ async def asyncio(
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
 ) -> list["FinancialReport"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         abbreviation (Union[Unset, str]):
         agreement_number (Union[Unset, str]):

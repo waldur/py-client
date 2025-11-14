@@ -96,8 +96,7 @@ def sync_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackInstanceAvailabilityZone"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -146,8 +145,7 @@ def sync(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackInstanceAvailabilityZone"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -191,8 +189,7 @@ async def asyncio_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackInstanceAvailabilityZone"]]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -239,8 +236,7 @@ async def asyncio(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackInstanceAvailabilityZone"]:
-    """Mixin to optimize HEAD requests for DRF views bypassing serializer processing
-
+    """
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):

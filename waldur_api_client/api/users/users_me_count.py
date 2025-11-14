@@ -47,7 +47,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """Get current user details
+
+     Get number of items in the collection matching the request parameters.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -70,7 +72,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """Get current user details
+
+     Get number of items in the collection matching the request parameters.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -89,7 +93,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """Get current user details
+
+     Get number of items in the collection matching the request parameters.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -110,7 +116,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """Get current user details
+
+     Get number of items in the collection matching the request parameters.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
