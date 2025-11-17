@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.open_stack_tenant_security_group_request import OpenStackTenantSecurityGroupRequest
+
 
 T = TypeVar("T", bound="PatchedOpenStackTenantRequest")
 
@@ -18,12 +22,14 @@ class PatchedOpenStackTenantRequest:
         availability_zone (Union[Unset, str]): Optional availability group. Will be used for all instances provisioned
             in this tenant
         default_volume_type_name (Union[Unset, str]): Volume type name to use when creating volumes.
+        security_groups (Union[Unset, list['OpenStackTenantSecurityGroupRequest']]):
     """
 
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     availability_zone: Union[Unset, str] = UNSET
     default_volume_type_name: Union[Unset, str] = UNSET
+    security_groups: Union[Unset, list["OpenStackTenantSecurityGroupRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,6 +40,13 @@ class PatchedOpenStackTenantRequest:
         availability_zone = self.availability_zone
 
         default_volume_type_name = self.default_volume_type_name
+
+        security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.security_groups, Unset):
+            security_groups = []
+            for security_groups_item_data in self.security_groups:
+                security_groups_item = security_groups_item_data.to_dict()
+                security_groups.append(security_groups_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -46,11 +59,15 @@ class PatchedOpenStackTenantRequest:
             field_dict["availability_zone"] = availability_zone
         if default_volume_type_name is not UNSET:
             field_dict["default_volume_type_name"] = default_volume_type_name
+        if security_groups is not UNSET:
+            field_dict["security_groups"] = security_groups
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.open_stack_tenant_security_group_request import OpenStackTenantSecurityGroupRequest
+
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
@@ -60,11 +77,19 @@ class PatchedOpenStackTenantRequest:
 
         default_volume_type_name = d.pop("default_volume_type_name", UNSET)
 
+        security_groups = []
+        _security_groups = d.pop("security_groups", UNSET)
+        for security_groups_item_data in _security_groups or []:
+            security_groups_item = OpenStackTenantSecurityGroupRequest.from_dict(security_groups_item_data)
+
+            security_groups.append(security_groups_item)
+
         patched_open_stack_tenant_request = cls(
             name=name,
             description=description,
             availability_zone=availability_zone,
             default_volume_type_name=default_volume_type_name,
+            security_groups=security_groups,
         )
 
         patched_open_stack_tenant_request.additional_properties = d

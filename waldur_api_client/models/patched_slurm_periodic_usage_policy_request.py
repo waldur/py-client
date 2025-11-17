@@ -24,6 +24,8 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
         actions (Union[Unset, str]):
         options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
         organization_groups (Union[Unset, list[str]]):
+        apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
+            organization_groups.
         component_limits_set (Union[Unset, list['NestedOfferingComponentLimitRequest']]):
         period (Union[Unset, PeriodEnum]):
         limit_type (Union[Unset, LimitTypeEnum]):
@@ -42,6 +44,7 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
     actions: Union[Unset, str] = UNSET
     options: Union[Unset, Any] = UNSET
     organization_groups: Union[Unset, list[str]] = UNSET
+    apply_to_all: Union[Unset, bool] = UNSET
     component_limits_set: Union[Unset, list["NestedOfferingComponentLimitRequest"]] = UNSET
     period: Union[Unset, PeriodEnum] = UNSET
     limit_type: Union[Unset, LimitTypeEnum] = UNSET
@@ -64,6 +67,8 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
         organization_groups: Union[Unset, list[str]] = UNSET
         if not isinstance(self.organization_groups, Unset):
             organization_groups = self.organization_groups
+
+        apply_to_all = self.apply_to_all
 
         component_limits_set: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.component_limits_set, Unset):
@@ -107,6 +112,8 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
             field_dict["options"] = options
         if organization_groups is not UNSET:
             field_dict["organization_groups"] = organization_groups
+        if apply_to_all is not UNSET:
+            field_dict["apply_to_all"] = apply_to_all
         if component_limits_set is not UNSET:
             field_dict["component_limits_set"] = component_limits_set
         if period is not UNSET:
@@ -142,6 +149,8 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
         options = d.pop("options", UNSET)
 
         organization_groups = cast(list[str], d.pop("organization_groups", UNSET))
+
+        apply_to_all = d.pop("apply_to_all", UNSET)
 
         component_limits_set = []
         _component_limits_set = d.pop("component_limits_set", UNSET)
@@ -188,6 +197,7 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
             actions=actions,
             options=options,
             organization_groups=organization_groups,
+            apply_to_all=apply_to_all,
             component_limits_set=component_limits_set,
             period=period,
             limit_type=limit_type,

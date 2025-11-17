@@ -1022,6 +1022,8 @@ from .open_stack_tenant_marketplace_offering_plugin_options_type_0 import (
 from .open_stack_tenant_quota import OpenStackTenantQuota
 from .open_stack_tenant_quota_request import OpenStackTenantQuotaRequest
 from .open_stack_tenant_request import OpenStackTenantRequest
+from .open_stack_tenant_security_group import OpenStackTenantSecurityGroup
+from .open_stack_tenant_security_group_request import OpenStackTenantSecurityGroupRequest
 from .open_stack_volume import OpenStackVolume
 from .open_stack_volume_availability_zone import OpenStackVolumeAvailabilityZone
 from .open_stack_volume_create_order_attributes import OpenStackVolumeCreateOrderAttributes
@@ -2887,6 +2889,8 @@ __all__ = (
     "OpenstackTenantsBackendInstancesListStateItem",
     "OpenstackTenantsBackendVolumesListStateItem",
     "OpenstackTenantsCountStateItem",
+    "OpenStackTenantSecurityGroup",
+    "OpenStackTenantSecurityGroupRequest",
     "OpenstackTenantsListFieldItem",
     "OpenstackTenantsListStateItem",
     "OpenstackTenantsRetrieveFieldItem",

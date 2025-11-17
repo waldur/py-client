@@ -30,9 +30,11 @@ class OfferingEstimatedCostPolicy:
         fired_datetime (datetime.datetime):
         limit_cost (int):
         period_name (str):
-        organization_groups (list[str]):
         options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
         period (Union[Unset, PeriodEnum]):
+        organization_groups (Union[Unset, list[str]]):
+        apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
+            organization_groups.
     """
 
     uuid: UUID
@@ -48,9 +50,10 @@ class OfferingEstimatedCostPolicy:
     fired_datetime: datetime.datetime
     limit_cost: int
     period_name: str
-    organization_groups: list[str]
     options: Union[Unset, Any] = UNSET
     period: Union[Unset, PeriodEnum] = UNSET
+    organization_groups: Union[Unset, list[str]] = UNSET
+    apply_to_all: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -80,13 +83,17 @@ class OfferingEstimatedCostPolicy:
 
         period_name = self.period_name
 
-        organization_groups = self.organization_groups
-
         options = self.options
 
         period: Union[Unset, int] = UNSET
         if not isinstance(self.period, Unset):
             period = self.period.value
+
+        organization_groups: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.organization_groups, Unset):
+            organization_groups = self.organization_groups
+
+        apply_to_all = self.apply_to_all
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -105,13 +112,16 @@ class OfferingEstimatedCostPolicy:
                 "fired_datetime": fired_datetime,
                 "limit_cost": limit_cost,
                 "period_name": period_name,
-                "organization_groups": organization_groups,
             }
         )
         if options is not UNSET:
             field_dict["options"] = options
         if period is not UNSET:
             field_dict["period"] = period
+        if organization_groups is not UNSET:
+            field_dict["organization_groups"] = organization_groups
+        if apply_to_all is not UNSET:
+            field_dict["apply_to_all"] = apply_to_all
 
         return field_dict
 
@@ -144,8 +154,6 @@ class OfferingEstimatedCostPolicy:
 
         period_name = d.pop("period_name")
 
-        organization_groups = cast(list[str], d.pop("organization_groups"))
-
         options = d.pop("options", UNSET)
 
         _period = d.pop("period", UNSET)
@@ -154,6 +162,10 @@ class OfferingEstimatedCostPolicy:
             period = UNSET
         else:
             period = PeriodEnum(_period)
+
+        organization_groups = cast(list[str], d.pop("organization_groups", UNSET))
+
+        apply_to_all = d.pop("apply_to_all", UNSET)
 
         offering_estimated_cost_policy = cls(
             uuid=uuid,
@@ -169,9 +181,10 @@ class OfferingEstimatedCostPolicy:
             fired_datetime=fired_datetime,
             limit_cost=limit_cost,
             period_name=period_name,
-            organization_groups=organization_groups,
             options=options,
             period=period,
+            organization_groups=organization_groups,
+            apply_to_all=apply_to_all,
         )
 
         offering_estimated_cost_policy.additional_properties = d

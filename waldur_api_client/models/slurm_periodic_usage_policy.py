@@ -34,10 +34,12 @@ class SlurmPeriodicUsagePolicy:
         created_by_username (str):
         has_fired (bool):
         fired_datetime (datetime.datetime):
-        organization_groups (list[str]):
         component_limits_set (list['NestedOfferingComponentLimit']):
         period_name (str):
         options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
+        organization_groups (Union[Unset, list[str]]):
+        apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
+            organization_groups.
         period (Union[Unset, PeriodEnum]):
         limit_type (Union[Unset, LimitTypeEnum]):
         tres_billing_enabled (Union[Unset, bool]): Use TRES billing units instead of raw TRES values
@@ -62,10 +64,11 @@ class SlurmPeriodicUsagePolicy:
     created_by_username: str
     has_fired: bool
     fired_datetime: datetime.datetime
-    organization_groups: list[str]
     component_limits_set: list["NestedOfferingComponentLimit"]
     period_name: str
     options: Union[Unset, Any] = UNSET
+    organization_groups: Union[Unset, list[str]] = UNSET
+    apply_to_all: Union[Unset, bool] = UNSET
     period: Union[Unset, PeriodEnum] = UNSET
     limit_type: Union[Unset, LimitTypeEnum] = UNSET
     tres_billing_enabled: Union[Unset, bool] = UNSET
@@ -100,8 +103,6 @@ class SlurmPeriodicUsagePolicy:
 
         fired_datetime = self.fired_datetime.isoformat()
 
-        organization_groups = self.organization_groups
-
         component_limits_set = []
         for component_limits_set_item_data in self.component_limits_set:
             component_limits_set_item = component_limits_set_item_data.to_dict()
@@ -110,6 +111,12 @@ class SlurmPeriodicUsagePolicy:
         period_name = self.period_name
 
         options = self.options
+
+        organization_groups: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.organization_groups, Unset):
+            organization_groups = self.organization_groups
+
+        apply_to_all = self.apply_to_all
 
         period: Union[Unset, int] = UNSET
         if not isinstance(self.period, Unset):
@@ -150,13 +157,16 @@ class SlurmPeriodicUsagePolicy:
                 "created_by_username": created_by_username,
                 "has_fired": has_fired,
                 "fired_datetime": fired_datetime,
-                "organization_groups": organization_groups,
                 "component_limits_set": component_limits_set,
                 "period_name": period_name,
             }
         )
         if options is not UNSET:
             field_dict["options"] = options
+        if organization_groups is not UNSET:
+            field_dict["organization_groups"] = organization_groups
+        if apply_to_all is not UNSET:
+            field_dict["apply_to_all"] = apply_to_all
         if period is not UNSET:
             field_dict["period"] = period
         if limit_type is not UNSET:
@@ -205,8 +215,6 @@ class SlurmPeriodicUsagePolicy:
 
         fired_datetime = isoparse(d.pop("fired_datetime"))
 
-        organization_groups = cast(list[str], d.pop("organization_groups"))
-
         component_limits_set = []
         _component_limits_set = d.pop("component_limits_set")
         for component_limits_set_item_data in _component_limits_set:
@@ -217,6 +225,10 @@ class SlurmPeriodicUsagePolicy:
         period_name = d.pop("period_name")
 
         options = d.pop("options", UNSET)
+
+        organization_groups = cast(list[str], d.pop("organization_groups", UNSET))
+
+        apply_to_all = d.pop("apply_to_all", UNSET)
 
         _period = d.pop("period", UNSET)
         period: Union[Unset, PeriodEnum]
@@ -263,10 +275,11 @@ class SlurmPeriodicUsagePolicy:
             created_by_username=created_by_username,
             has_fired=has_fired,
             fired_datetime=fired_datetime,
-            organization_groups=organization_groups,
             component_limits_set=component_limits_set,
             period_name=period_name,
             options=options,
+            organization_groups=organization_groups,
+            apply_to_all=apply_to_all,
             period=period,
             limit_type=limit_type,
             tres_billing_enabled=tres_billing_enabled,

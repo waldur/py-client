@@ -20,6 +20,8 @@ class PatchedOfferingEstimatedCostPolicyRequest:
         limit_cost (Union[Unset, int]):
         period (Union[Unset, PeriodEnum]):
         organization_groups (Union[Unset, list[str]]):
+        apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
+            organization_groups.
     """
 
     scope: Union[Unset, str] = UNSET
@@ -28,6 +30,7 @@ class PatchedOfferingEstimatedCostPolicyRequest:
     limit_cost: Union[Unset, int] = UNSET
     period: Union[Unset, PeriodEnum] = UNSET
     organization_groups: Union[Unset, list[str]] = UNSET
+    apply_to_all: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -47,6 +50,8 @@ class PatchedOfferingEstimatedCostPolicyRequest:
         if not isinstance(self.organization_groups, Unset):
             organization_groups = self.organization_groups
 
+        apply_to_all = self.apply_to_all
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -62,6 +67,8 @@ class PatchedOfferingEstimatedCostPolicyRequest:
             field_dict["period"] = period
         if organization_groups is not UNSET:
             field_dict["organization_groups"] = organization_groups
+        if apply_to_all is not UNSET:
+            field_dict["apply_to_all"] = apply_to_all
 
         return field_dict
 
@@ -85,6 +92,8 @@ class PatchedOfferingEstimatedCostPolicyRequest:
 
         organization_groups = cast(list[str], d.pop("organization_groups", UNSET))
 
+        apply_to_all = d.pop("apply_to_all", UNSET)
+
         patched_offering_estimated_cost_policy_request = cls(
             scope=scope,
             actions=actions,
@@ -92,6 +101,7 @@ class PatchedOfferingEstimatedCostPolicyRequest:
             limit_cost=limit_cost,
             period=period,
             organization_groups=organization_groups,
+            apply_to_all=apply_to_all,
         )
 
         patched_offering_estimated_cost_policy_request.additional_properties = d

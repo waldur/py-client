@@ -33,6 +33,7 @@ class OpenstackTenantsRetrieveFieldItem(str, Enum):
     PROJECT_UUID = "project_uuid"
     QUOTAS = "quotas"
     RESOURCE_TYPE = "resource_type"
+    SECURITY_GROUPS = "security_groups"
     SERVICE_NAME = "service_name"
     SERVICE_SETTINGS = "service_settings"
     SERVICE_SETTINGS_ERROR_MESSAGE = "service_settings_error_message"
