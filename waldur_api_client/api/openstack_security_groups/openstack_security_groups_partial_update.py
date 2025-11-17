@@ -60,7 +60,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackSecurityGroupUpdateRequest,
 ) -> Response[OpenStackSecurityGroupUpdate]:
-    """
+    """Partially update security group
+
+     Update specific fields of a security group.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSecurityGroupUpdateRequest):
@@ -91,7 +94,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOpenStackSecurityGroupUpdateRequest,
 ) -> OpenStackSecurityGroupUpdate:
-    """
+    """Partially update security group
+
+     Update specific fields of a security group.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSecurityGroupUpdateRequest):
@@ -117,7 +123,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackSecurityGroupUpdateRequest,
 ) -> Response[OpenStackSecurityGroupUpdate]:
-    """
+    """Partially update security group
+
+     Update specific fields of a security group.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSecurityGroupUpdateRequest):
@@ -146,7 +155,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOpenStackSecurityGroupUpdateRequest,
 ) -> OpenStackSecurityGroupUpdate:
-    """
+    """Partially update security group
+
+     Update specific fields of a security group.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSecurityGroupUpdateRequest):

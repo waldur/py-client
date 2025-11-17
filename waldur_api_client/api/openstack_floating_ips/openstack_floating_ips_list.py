@@ -199,7 +199,10 @@ def sync_detailed(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackFloatingIP"]]:
-    """Status *DOWN* means that floating IP is not linked to a VM, status *ACTIVE* means that it is in use.
+    """List floating IPs
+
+     Get a list of floating IP addresses. Status *DOWN* means that floating IP is not linked to a VM,
+    status *ACTIVE* means that it is in use.
 
     Args:
         address (Union[Unset, str]):
@@ -303,7 +306,10 @@ def sync(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackFloatingIP"]:
-    """Status *DOWN* means that floating IP is not linked to a VM, status *ACTIVE* means that it is in use.
+    """List floating IPs
+
+     Get a list of floating IP addresses. Status *DOWN* means that floating IP is not linked to a VM,
+    status *ACTIVE* means that it is in use.
 
     Args:
         address (Union[Unset, str]):
@@ -402,7 +408,10 @@ async def asyncio_detailed(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackFloatingIP"]]:
-    """Status *DOWN* means that floating IP is not linked to a VM, status *ACTIVE* means that it is in use.
+    """List floating IPs
+
+     Get a list of floating IP addresses. Status *DOWN* means that floating IP is not linked to a VM,
+    status *ACTIVE* means that it is in use.
 
     Args:
         address (Union[Unset, str]):
@@ -504,7 +513,10 @@ async def asyncio(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackFloatingIP"]:
-    """Status *DOWN* means that floating IP is not linked to a VM, status *ACTIVE* means that it is in use.
+    """List floating IPs
+
+     Get a list of floating IP addresses. Status *DOWN* means that floating IP is not linked to a VM,
+    status *ACTIVE* means that it is in use.
 
     Args:
         address (Union[Unset, str]):

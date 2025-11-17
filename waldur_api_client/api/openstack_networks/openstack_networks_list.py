@@ -203,7 +203,10 @@ def sync_detailed(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackNetwork"]]:
-    """
+    """List networks
+
+     Get a list of networks.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -309,7 +312,10 @@ def sync(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackNetwork"]:
-    """
+    """List networks
+
+     Get a list of networks.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -410,7 +416,10 @@ async def asyncio_detailed(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackNetwork"]]:
-    """
+    """List networks
+
+     Get a list of networks.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -514,7 +523,10 @@ async def asyncio(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackNetwork"]:
-    """
+    """List networks
+
+     Get a list of networks.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):

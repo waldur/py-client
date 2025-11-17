@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackFloatingIPAttachRequest,
 ) -> Response[Any]:
-    """Attach floating IP to port
+    """Attach floating IP to a port
+
+     Attach floating IP to port
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackFloatingIPAttachRequest,
 ) -> Response[Any]:
-    """Attach floating IP to port
+    """Attach floating IP to a port
+
+     Attach floating IP to port
 
     Args:
         uuid (UUID):

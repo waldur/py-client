@@ -165,7 +165,10 @@ def sync_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackFlavor"]]:
-    """
+    """List flavors
+
+     Get a list of available VM instance flavors.
+
     Args:
         cores (Union[Unset, int]):
         cores_gte (Union[Unset, int]):
@@ -253,7 +256,10 @@ def sync(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackFlavor"]:
-    """
+    """List flavors
+
+     Get a list of available VM instance flavors.
+
     Args:
         cores (Union[Unset, int]):
         cores_gte (Union[Unset, int]):
@@ -336,7 +342,10 @@ async def asyncio_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackFlavor"]]:
-    """
+    """List flavors
+
+     Get a list of available VM instance flavors.
+
     Args:
         cores (Union[Unset, int]):
         cores_gte (Union[Unset, int]):
@@ -422,7 +431,10 @@ async def asyncio(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackFlavor"]:
-    """
+    """List flavors
+
+     Get a list of available VM instance flavors.
+
     Args:
         cores (Union[Unset, int]):
         cores_gte (Union[Unset, int]):

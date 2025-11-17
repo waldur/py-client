@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Disable a role
+
+     Allows staff users to disable a role, preventing it from being assigned further. Existing
+    assignments are not affected.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Disable a role
+
+     Allows staff users to disable a role, preventing it from being assigned further. Existing
+    assignments are not affected.
+
     Args:
         uuid (UUID):
 

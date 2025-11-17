@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackSubNetRequest,
 ) -> Response[OpenStackSubNet]:
-    """
+    """Update subnet
+
+     Update an existing subnet.
+
     Args:
         uuid (UUID):
         body (OpenStackSubNetRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackSubNetRequest,
 ) -> OpenStackSubNet:
-    """
+    """Update subnet
+
+     Update an existing subnet.
+
     Args:
         uuid (UUID):
         body (OpenStackSubNetRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackSubNetRequest,
 ) -> Response[OpenStackSubNet]:
-    """
+    """Update subnet
+
+     Update an existing subnet.
+
     Args:
         uuid (UUID):
         body (OpenStackSubNetRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackSubNetRequest,
 ) -> OpenStackSubNet:
-    """
+    """Update subnet
+
+     Update an existing subnet.
+
     Args:
         uuid (UUID):
         body (OpenStackSubNetRequest):

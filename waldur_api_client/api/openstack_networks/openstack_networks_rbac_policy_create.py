@@ -60,7 +60,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DeprecatedNetworkRBACPolicyRequest,
 ) -> Response[DeprecatedNetworkRBACPolicy]:
-    """Create RBAC policy for the network
+    """Create RBAC policy
+
+     Create RBAC policy for the network. DEPRECATED: please use the dedicated /api/openstack-network-
+    rbac-policies/ endpoint.
 
     Args:
         uuid (UUID):
@@ -92,7 +95,10 @@ def sync(
     client: AuthenticatedClient,
     body: DeprecatedNetworkRBACPolicyRequest,
 ) -> DeprecatedNetworkRBACPolicy:
-    """Create RBAC policy for the network
+    """Create RBAC policy
+
+     Create RBAC policy for the network. DEPRECATED: please use the dedicated /api/openstack-network-
+    rbac-policies/ endpoint.
 
     Args:
         uuid (UUID):
@@ -119,7 +125,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DeprecatedNetworkRBACPolicyRequest,
 ) -> Response[DeprecatedNetworkRBACPolicy]:
-    """Create RBAC policy for the network
+    """Create RBAC policy
+
+     Create RBAC policy for the network. DEPRECATED: please use the dedicated /api/openstack-network-
+    rbac-policies/ endpoint.
 
     Args:
         uuid (UUID):
@@ -149,7 +158,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: DeprecatedNetworkRBACPolicyRequest,
 ) -> DeprecatedNetworkRBACPolicy:
-    """Create RBAC policy for the network
+    """Create RBAC policy
+
+     Create RBAC policy for the network. DEPRECATED: please use the dedicated /api/openstack-network-
+    rbac-policies/ endpoint.
 
     Args:
         uuid (UUID):

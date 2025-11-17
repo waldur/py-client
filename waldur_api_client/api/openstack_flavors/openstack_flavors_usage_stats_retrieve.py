@@ -62,7 +62,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackFlavor]:
-    """
+    """Get flavor usage statistics
+
+     Retrieve usage statistics for VM instance flavors, showing running and created instance counts for
+    each flavor.
+
     Args:
         field (Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]]):
 
@@ -90,7 +94,11 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackFlavor:
-    """
+    """Get flavor usage statistics
+
+     Retrieve usage statistics for VM instance flavors, showing running and created instance counts for
+    each flavor.
+
     Args:
         field (Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]]):
 
@@ -113,7 +121,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackFlavor]:
-    """
+    """Get flavor usage statistics
+
+     Retrieve usage statistics for VM instance flavors, showing running and created instance counts for
+    each flavor.
+
     Args:
         field (Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]]):
 
@@ -139,7 +151,11 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackFlavor:
-    """
+    """Get flavor usage statistics
+
+     Retrieve usage statistics for VM instance flavors, showing running and created instance counts for
+    each flavor.
+
     Args:
         field (Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]]):
 

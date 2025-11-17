@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackTenantRequest,
 ) -> Response[OpenStackTenant]:
-    """
+    """Update tenant
+
+     Update an existing OpenStack tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackTenantRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackTenantRequest,
 ) -> OpenStackTenant:
-    """
+    """Update tenant
+
+     Update an existing OpenStack tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackTenantRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackTenantRequest,
 ) -> Response[OpenStackTenant]:
-    """
+    """Update tenant
+
+     Update an existing OpenStack tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackTenantRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackTenantRequest,
 ) -> OpenStackTenant:
-    """
+    """Update tenant
+
+     Update an existing OpenStack tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackTenantRequest):

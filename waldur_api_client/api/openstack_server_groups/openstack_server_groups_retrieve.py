@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackServerGroupsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackServerGroup]:
-    """
+    """Get server group details
+
+     Retrieve details of a specific server group.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackServerGroupsRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackServerGroupsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackServerGroup:
-    """
+    """Get server group details
+
+     Retrieve details of a specific server group.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackServerGroupsRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackServerGroupsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackServerGroup]:
-    """
+    """Get server group details
+
+     Retrieve details of a specific server group.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackServerGroupsRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackServerGroupsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackServerGroup:
-    """
+    """Get server group details
+
+     Retrieve details of a specific server group.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackServerGroupsRetrieveFieldItem]]):

@@ -56,7 +56,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: list["OpenStackSecurityGroupRuleUpdateRequest"],
 ) -> Response[Any]:
-    """Update security group rules
+    """Set security group rules
+
+     Update the rules for a specific security group. This overwrites all existing rules.
 
     Args:
         uuid (UUID):
@@ -88,7 +90,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: list["OpenStackSecurityGroupRuleUpdateRequest"],
 ) -> Response[Any]:
-    """Update security group rules
+    """Set security group rules
+
+     Update the rules for a specific security group. This overwrites all existing rules.
 
     Args:
         uuid (UUID):

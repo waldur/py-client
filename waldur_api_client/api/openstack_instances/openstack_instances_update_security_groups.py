@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackInstanceSecurityGroupsUpdateRequest,
 ) -> Response[Any]:
-    """Update security groups of the instance
+    """Update instance security groups
+
+     Update security groups of the instance
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackInstanceSecurityGroupsUpdateRequest,
 ) -> Response[Any]:
-    """Update security groups of the instance
+    """Update instance security groups
+
+     Update security groups of the instance
 
     Args:
         uuid (UUID):

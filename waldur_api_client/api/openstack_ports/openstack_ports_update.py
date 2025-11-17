@@ -56,7 +56,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackPortRequest,
 ) -> Response[OpenStackPort]:
-    """
+    """Update port
+
+     Update an existing network port.
+
     Args:
         uuid (UUID):
         body (OpenStackPortRequest):
@@ -87,7 +90,10 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackPortRequest,
 ) -> OpenStackPort:
-    """
+    """Update port
+
+     Update an existing network port.
+
     Args:
         uuid (UUID):
         body (OpenStackPortRequest):
@@ -113,7 +119,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackPortRequest,
 ) -> Response[OpenStackPort]:
-    """
+    """Update port
+
+     Update an existing network port.
+
     Args:
         uuid (UUID):
         body (OpenStackPortRequest):
@@ -142,7 +151,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackPortRequest,
 ) -> OpenStackPort:
-    """
+    """Update port
+
+     Update an existing network port.
+
     Args:
         uuid (UUID):
         body (OpenStackPortRequest):

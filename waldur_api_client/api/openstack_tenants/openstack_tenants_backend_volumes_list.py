@@ -166,7 +166,9 @@ def sync_detailed(
     state: Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]] = UNSET,
     uuid_query: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackBackendVolumes"]]:
-    """Return a list of volumes from backend
+    """List backend volumes
+
+     Return a list of volumes from backend
 
     Args:
         uuid_path (UUID):
@@ -255,7 +257,9 @@ def sync(
     state: Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]] = UNSET,
     uuid_query: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackBackendVolumes"]:
-    """Return a list of volumes from backend
+    """List backend volumes
+
+     Return a list of volumes from backend
 
     Args:
         uuid_path (UUID):
@@ -339,7 +343,9 @@ async def asyncio_detailed(
     state: Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]] = UNSET,
     uuid_query: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackBackendVolumes"]]:
-    """Return a list of volumes from backend
+    """List backend volumes
+
+     Return a list of volumes from backend
 
     Args:
         uuid_path (UUID):
@@ -426,7 +432,9 @@ async def asyncio(
     state: Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]] = UNSET,
     uuid_query: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackBackendVolumes"]:
-    """Return a list of volumes from backend
+    """List backend volumes
+
+     Return a list of volumes from backend
 
     Args:
         uuid_path (UUID):

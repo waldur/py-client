@@ -196,7 +196,10 @@ def sync_detailed(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackBackup"]]:
-    """
+    """List backups
+
+     Get a list of instance backups.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -296,7 +299,10 @@ def sync(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackBackup"]:
-    """
+    """List backups
+
+     Get a list of instance backups.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -391,7 +397,10 @@ async def asyncio_detailed(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackBackup"]]:
-    """
+    """List backups
+
+     Get a list of instance backups.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -489,7 +498,10 @@ async def asyncio(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackBackup"]:
-    """
+    """List backups
+
+     Get a list of instance backups.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):

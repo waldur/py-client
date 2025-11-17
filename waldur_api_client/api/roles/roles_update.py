@@ -56,7 +56,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RoleModifyRequest,
 ) -> Response[RoleDetails]:
-    """
+    """Update a role
+
+     Allows staff users to update an existing role's name, description, content type, and permissions.
+    The name of a system role cannot be changed.
+
     Args:
         uuid (UUID):
         body (RoleModifyRequest):
@@ -87,7 +91,11 @@ def sync(
     client: AuthenticatedClient,
     body: RoleModifyRequest,
 ) -> RoleDetails:
-    """
+    """Update a role
+
+     Allows staff users to update an existing role's name, description, content type, and permissions.
+    The name of a system role cannot be changed.
+
     Args:
         uuid (UUID):
         body (RoleModifyRequest):
@@ -113,7 +121,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RoleModifyRequest,
 ) -> Response[RoleDetails]:
-    """
+    """Update a role
+
+     Allows staff users to update an existing role's name, description, content type, and permissions.
+    The name of a system role cannot be changed.
+
     Args:
         uuid (UUID):
         body (RoleModifyRequest):
@@ -142,7 +154,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RoleModifyRequest,
 ) -> RoleDetails:
-    """
+    """Update a role
+
+     Allows staff users to update an existing role's name, description, content type, and permissions.
+    The name of a system role cannot be changed.
+
     Args:
         uuid (UUID):
         body (RoleModifyRequest):

@@ -60,6 +60,8 @@ def sync_detailed(
 ) -> Response[OpenStackNetwork]:
     """Create network for tenant
 
+     Create network for tenant
+
     Args:
         uuid (UUID):
         body (OpenStackNetworkRequest):
@@ -92,6 +94,8 @@ def sync(
 ) -> OpenStackNetwork:
     """Create network for tenant
 
+     Create network for tenant
+
     Args:
         uuid (UUID):
         body (OpenStackNetworkRequest):
@@ -118,6 +122,8 @@ async def asyncio_detailed(
     body: OpenStackNetworkRequest,
 ) -> Response[OpenStackNetwork]:
     """Create network for tenant
+
+     Create network for tenant
 
     Args:
         uuid (UUID):
@@ -148,6 +154,8 @@ async def asyncio(
     body: OpenStackNetworkRequest,
 ) -> OpenStackNetwork:
     """Create network for tenant
+
+     Create network for tenant
 
     Args:
         uuid (UUID):

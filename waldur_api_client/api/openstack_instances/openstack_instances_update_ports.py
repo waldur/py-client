@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackInstancePortsUpdateRequest,
 ) -> Response[Any]:
-    """Update ports of the instance
+    """Update instance ports
+
+     Update ports of the instance
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackInstancePortsUpdateRequest,
 ) -> Response[Any]:
-    """Update ports of the instance
+    """Update instance ports
+
+     Update ports of the instance
 
     Args:
         uuid (UUID):

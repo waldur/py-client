@@ -68,7 +68,9 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OpenStackNestedFloatingIP"]]:
-    """Get a list of instance floating IPs
+    """List instance floating IPs
+
+     Get a list of instance floating IPs
 
     Args:
         uuid (UUID):
@@ -103,7 +105,9 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OpenStackNestedFloatingIP"]:
-    """Get a list of instance floating IPs
+    """List instance floating IPs
+
+     Get a list of instance floating IPs
 
     Args:
         uuid (UUID):
@@ -133,7 +137,9 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OpenStackNestedFloatingIP"]]:
-    """Get a list of instance floating IPs
+    """List instance floating IPs
+
+     Get a list of instance floating IPs
 
     Args:
         uuid (UUID):
@@ -166,7 +172,9 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OpenStackNestedFloatingIP"]:
-    """Get a list of instance floating IPs
+    """List instance floating IPs
+
+     Get a list of instance floating IPs
 
     Args:
         uuid (UUID):

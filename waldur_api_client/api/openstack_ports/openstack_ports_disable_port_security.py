@@ -42,7 +42,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Disable port security for the port
+    """Disable port security
+
+     Disable port security for the port
 
     Args:
         uuid (UUID):
@@ -71,7 +73,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Disable port security for the port
+    """Disable port security
+
+     Disable port security for the port
 
     Args:
         uuid (UUID):

@@ -60,6 +60,8 @@ def sync_detailed(
 ) -> Response[OpenStackInstance]:
     """Restore instance from backup
 
+     Restore instance from backup
+
     Args:
         uuid (UUID):
         body (OpenStackBackupRestorationCreateRequest):
@@ -92,6 +94,8 @@ def sync(
 ) -> OpenStackInstance:
     """Restore instance from backup
 
+     Restore instance from backup
+
     Args:
         uuid (UUID):
         body (OpenStackBackupRestorationCreateRequest):
@@ -118,6 +122,8 @@ async def asyncio_detailed(
     body: OpenStackBackupRestorationCreateRequest,
 ) -> Response[OpenStackInstance]:
     """Restore instance from backup
+
+     Restore instance from backup
 
     Args:
         uuid (UUID):
@@ -148,6 +154,8 @@ async def asyncio(
     body: OpenStackBackupRestorationCreateRequest,
 ) -> OpenStackInstance:
     """Restore instance from backup
+
+     Restore instance from backup
 
     Args:
         uuid (UUID):

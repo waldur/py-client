@@ -42,7 +42,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """It triggers celery job to pull quotas from remote VPC
+    """Pull tenant quotas
+
+     It triggers celery job to pull quotas from remote VPC
 
     Args:
         uuid (UUID):
@@ -71,7 +73,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """It triggers celery job to pull quotas from remote VPC
+    """Pull tenant quotas
+
+     It triggers celery job to pull quotas from remote VPC
 
     Args:
         uuid (UUID):

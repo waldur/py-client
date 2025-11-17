@@ -45,7 +45,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ConsoleUrl]:
-    """Get console url for the instance
+    """Get console URL
+
+     Get console url for the instance
 
     Args:
         uuid (UUID):
@@ -74,7 +76,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ConsoleUrl:
-    """Get console url for the instance
+    """Get console URL
+
+     Get console url for the instance
 
     Args:
         uuid (UUID):
@@ -98,7 +102,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ConsoleUrl]:
-    """Get console url for the instance
+    """Get console URL
+
+     Get console url for the instance
 
     Args:
         uuid (UUID):
@@ -125,7 +131,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ConsoleUrl:
-    """Get console url for the instance
+    """Get console URL
+
+     Get console url for the instance
 
     Args:
         uuid (UUID):

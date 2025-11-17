@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RoleDescriptionRequest,
 ) -> Response[RoleDescription]:
-    """
+    """Update role descriptions
+
+     Allows staff users to update the multilingual descriptions of a role.
+
     Args:
         uuid (UUID):
         body (RoleDescriptionRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: RoleDescriptionRequest,
 ) -> RoleDescription:
-    """
+    """Update role descriptions
+
+     Allows staff users to update the multilingual descriptions of a role.
+
     Args:
         uuid (UUID):
         body (RoleDescriptionRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RoleDescriptionRequest,
 ) -> Response[RoleDescription]:
-    """
+    """Update role descriptions
+
+     Allows staff users to update the multilingual descriptions of a role.
+
     Args:
         uuid (UUID):
         body (RoleDescriptionRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RoleDescriptionRequest,
 ) -> RoleDescription:
-    """
+    """Update role descriptions
+
+     Allows staff users to update the multilingual descriptions of a role.
+
     Args:
         uuid (UUID):
         body (RoleDescriptionRequest):

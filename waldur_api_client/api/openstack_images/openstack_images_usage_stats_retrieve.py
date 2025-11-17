@@ -43,7 +43,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OpenStackImage]:
-    """
+    """Get image usage statistics
+
+     Retrieve usage statistics for VM instance images, showing running and created instance counts for
+    each image.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -65,7 +69,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> OpenStackImage:
-    """
+    """Get image usage statistics
+
+     Retrieve usage statistics for VM instance images, showing running and created instance counts for
+    each image.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -83,7 +91,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OpenStackImage]:
-    """
+    """Get image usage statistics
+
+     Retrieve usage statistics for VM instance images, showing running and created instance counts for
+    each image.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -103,7 +115,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> OpenStackImage:
-    """
+    """Get image usage statistics
+
+     Retrieve usage statistics for VM instance images, showing running and created instance counts for
+    each image.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.

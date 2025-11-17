@@ -44,7 +44,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete RBAC policy for the network
+    """Delete RBAC policy
+
+     Delete RBAC policy for the network. DEPRECATED: please use the dedicated /api/openstack-network-
+    rbac-policies/ endpoint.
 
     Args:
         uuid (UUID):
@@ -76,7 +79,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete RBAC policy for the network
+    """Delete RBAC policy
+
+     Delete RBAC policy for the network. DEPRECATED: please use the dedicated /api/openstack-network-
+    rbac-policies/ endpoint.
 
     Args:
         uuid (UUID):

@@ -187,7 +187,10 @@ def sync_detailed(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackServerGroup"]]:
-    """
+    """List server groups
+
+     Get a list of server groups.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -281,7 +284,10 @@ def sync(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackServerGroup"]:
-    """
+    """List server groups
+
+     Get a list of server groups.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -370,7 +376,10 @@ async def asyncio_detailed(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackServerGroup"]]:
-    """
+    """List server groups
+
+     Get a list of server groups.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -462,7 +471,10 @@ async def asyncio(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackServerGroup"]:
-    """
+    """List server groups
+
+     Get a list of server groups.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):

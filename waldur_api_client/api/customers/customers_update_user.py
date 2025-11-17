@@ -58,7 +58,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UserRoleUpdateRequest,
 ) -> Response[UserRoleExpirationTime]:
-    """
+    """Update a user's role expiration
+
+     Updates the expiration time for a user's existing role in the current scope. This is useful for
+    extending or shortening the duration of a permission. To make a role permanent, set expiration_time
+    to null.
+
     Args:
         uuid (UUID):
         body (UserRoleUpdateRequest):
@@ -89,7 +94,12 @@ def sync(
     client: AuthenticatedClient,
     body: UserRoleUpdateRequest,
 ) -> UserRoleExpirationTime:
-    """
+    """Update a user's role expiration
+
+     Updates the expiration time for a user's existing role in the current scope. This is useful for
+    extending or shortening the duration of a permission. To make a role permanent, set expiration_time
+    to null.
+
     Args:
         uuid (UUID):
         body (UserRoleUpdateRequest):
@@ -115,7 +125,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UserRoleUpdateRequest,
 ) -> Response[UserRoleExpirationTime]:
-    """
+    """Update a user's role expiration
+
+     Updates the expiration time for a user's existing role in the current scope. This is useful for
+    extending or shortening the duration of a permission. To make a role permanent, set expiration_time
+    to null.
+
     Args:
         uuid (UUID):
         body (UserRoleUpdateRequest):
@@ -144,7 +159,12 @@ async def asyncio(
     client: AuthenticatedClient,
     body: UserRoleUpdateRequest,
 ) -> UserRoleExpirationTime:
-    """
+    """Update a user's role expiration
+
+     Updates the expiration time for a user's existing role in the current scope. This is useful for
+    extending or shortening the duration of a permission. To make a role permanent, set expiration_time
+    to null.
+
     Args:
         uuid (UUID):
         body (UserRoleUpdateRequest):

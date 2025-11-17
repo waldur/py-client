@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackTenantsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackTenant]:
-    """
+    """Get tenant details
+
+     Retrieve details of a specific OpenStack tenant.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackTenantsRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackTenantsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackTenant:
-    """
+    """Get tenant details
+
+     Retrieve details of a specific OpenStack tenant.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackTenantsRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackTenantsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackTenant]:
-    """
+    """Get tenant details
+
+     Retrieve details of a specific OpenStack tenant.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackTenantsRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackTenantsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackTenant:
-    """
+    """Get tenant details
+
+     Retrieve details of a specific OpenStack tenant.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackTenantsRetrieveFieldItem]]):

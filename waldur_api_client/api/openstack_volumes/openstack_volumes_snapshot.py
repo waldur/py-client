@@ -58,7 +58,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackSnapshotRequest,
 ) -> Response[OpenStackSnapshot]:
-    """Create snapshot from volume
+    """Create volume snapshot
+
+     Create snapshot from volume
 
     Args:
         uuid (UUID):
@@ -90,7 +92,9 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackSnapshotRequest,
 ) -> OpenStackSnapshot:
-    """Create snapshot from volume
+    """Create volume snapshot
+
+     Create snapshot from volume
 
     Args:
         uuid (UUID):
@@ -117,7 +121,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackSnapshotRequest,
 ) -> Response[OpenStackSnapshot]:
-    """Create snapshot from volume
+    """Create volume snapshot
+
+     Create snapshot from volume
 
     Args:
         uuid (UUID):
@@ -147,7 +153,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackSnapshotRequest,
 ) -> OpenStackSnapshot:
-    """Create snapshot from volume
+    """Create volume snapshot
+
+     Create snapshot from volume
 
     Args:
         uuid (UUID):

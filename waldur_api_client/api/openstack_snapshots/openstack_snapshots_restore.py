@@ -60,6 +60,8 @@ def sync_detailed(
 ) -> Response[OpenStackVolume]:
     """Restore volume from snapshot
 
+     Restore volume from snapshot
+
     Args:
         uuid (UUID):
         body (OpenStackSnapshotRestorationRequest):
@@ -92,6 +94,8 @@ def sync(
 ) -> OpenStackVolume:
     """Restore volume from snapshot
 
+     Restore volume from snapshot
+
     Args:
         uuid (UUID):
         body (OpenStackSnapshotRestorationRequest):
@@ -118,6 +122,8 @@ async def asyncio_detailed(
     body: OpenStackSnapshotRestorationRequest,
 ) -> Response[OpenStackVolume]:
     """Restore volume from snapshot
+
+     Restore volume from snapshot
 
     Args:
         uuid (UUID):
@@ -148,6 +154,8 @@ async def asyncio(
     body: OpenStackSnapshotRestorationRequest,
 ) -> OpenStackVolume:
     """Restore volume from snapshot
+
+     Restore volume from snapshot
 
     Args:
         uuid (UUID):

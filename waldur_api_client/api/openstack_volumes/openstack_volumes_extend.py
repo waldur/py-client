@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackVolumeExtendRequest,
 ) -> Response[Any]:
-    """Increase volume size
+    """Extend volume size
+
+     Increase volume size
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackVolumeExtendRequest,
 ) -> Response[Any]:
-    """Increase volume size
+    """Extend volume size
+
+     Increase volume size
 
     Args:
         uuid (UUID):

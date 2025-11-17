@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackNetworkRequest,
 ) -> Response[OpenStackNetwork]:
-    """
+    """Update network
+
+     Update an existing network.
+
     Args:
         uuid (UUID):
         body (OpenStackNetworkRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackNetworkRequest,
 ) -> OpenStackNetwork:
-    """
+    """Update network
+
+     Update an existing network.
+
     Args:
         uuid (UUID):
         body (OpenStackNetworkRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackNetworkRequest,
 ) -> Response[OpenStackNetwork]:
-    """
+    """Update network
+
+     Update an existing network.
+
     Args:
         uuid (UUID):
         body (OpenStackNetworkRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackNetworkRequest,
 ) -> OpenStackNetwork:
-    """
+    """Update network
+
+     Update an existing network.
+
     Args:
         uuid (UUID):
         body (OpenStackNetworkRequest):

@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackServerGroupRequest,
 ) -> Response[OpenStackServerGroup]:
-    """
+    """Create server group
+
+     Create a new server group for the tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackServerGroupRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackServerGroupRequest,
 ) -> OpenStackServerGroup:
-    """
+    """Create server group
+
+     Create a new server group for the tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackServerGroupRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackServerGroupRequest,
 ) -> Response[OpenStackServerGroup]:
-    """
+    """Create server group
+
+     Create a new server group for the tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackServerGroupRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackServerGroupRequest,
 ) -> OpenStackServerGroup:
-    """
+    """Create server group
+
+     Create a new server group for the tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackServerGroupRequest):

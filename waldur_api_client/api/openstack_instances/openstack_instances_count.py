@@ -191,7 +191,9 @@ def sync_detailed(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List instances
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         attach_volume_uuid (Union[Unset, UUID]):
@@ -295,7 +297,9 @@ def sync(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List instances
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         attach_volume_uuid (Union[Unset, UUID]):
@@ -394,7 +398,9 @@ async def asyncio_detailed(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List instances
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         attach_volume_uuid (Union[Unset, UUID]):
@@ -496,7 +502,9 @@ async def asyncio(
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List instances
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         attach_volume_uuid (Union[Unset, UUID]):

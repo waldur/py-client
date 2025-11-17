@@ -55,6 +55,8 @@ def sync_detailed(
 ) -> Response[Any]:
     """Attach volume to instance
 
+     Attach volume to instance
+
     Args:
         uuid (UUID):
         body (VolumeAttachRequest):
@@ -86,6 +88,8 @@ async def asyncio_detailed(
     body: VolumeAttachRequest,
 ) -> Response[Any]:
     """Attach volume to instance
+
+     Attach volume to instance
 
     Args:
         uuid (UUID):

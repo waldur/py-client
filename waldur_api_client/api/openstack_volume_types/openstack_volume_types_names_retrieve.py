@@ -40,7 +40,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[str]]:
-    """Return a list of unique volume type names.
+    """List unique volume type names
+
+     Return a list of unique volume type names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -63,7 +65,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list[str]:
-    """Return a list of unique volume type names.
+    """List unique volume type names
+
+     Return a list of unique volume type names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -82,7 +86,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list[str]]:
-    """Return a list of unique volume type names.
+    """List unique volume type names
+
+     Return a list of unique volume type names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -103,7 +109,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list[str]:
-    """Return a list of unique volume type names.
+    """List unique volume type names
+
+     Return a list of unique volume type names.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

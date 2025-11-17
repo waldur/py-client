@@ -44,6 +44,8 @@ def sync_detailed(
 ) -> Response[Any]:
     """Detach floating IP from port
 
+     Detach floating IP from port
+
     Args:
         uuid (UUID):
 
@@ -72,6 +74,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[Any]:
     """Detach floating IP from port
+
+     Detach floating IP from port
 
     Args:
         uuid (UUID):

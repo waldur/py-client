@@ -147,7 +147,9 @@ def sync_detailed(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List user permissions
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -224,7 +226,9 @@ def sync(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List user permissions
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -296,7 +300,9 @@ async def asyncio_detailed(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List user permissions
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -371,7 +377,9 @@ async def asyncio(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List user permissions
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):

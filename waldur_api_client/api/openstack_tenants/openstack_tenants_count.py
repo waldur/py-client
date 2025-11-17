@@ -161,7 +161,9 @@ def sync_detailed(
     state: Union[Unset, list[OpenstackTenantsCountStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List tenants
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -247,7 +249,9 @@ def sync(
     state: Union[Unset, list[OpenstackTenantsCountStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List tenants
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -328,7 +332,9 @@ async def asyncio_detailed(
     state: Union[Unset, list[OpenstackTenantsCountStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List tenants
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -412,7 +418,9 @@ async def asyncio(
     state: Union[Unset, list[OpenstackTenantsCountStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List tenants
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):

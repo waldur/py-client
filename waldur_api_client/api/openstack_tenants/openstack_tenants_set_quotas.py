@@ -58,7 +58,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackTenantQuotaRequest,
 ) -> Response[OpenStackTenantQuota]:
-    """A quota can be set for a particular tenant. Only staff users can do that.
+    """Set tenant quotas
+
+     A quota can be set for a particular tenant. Only staff users can do that.
     In order to set quota submit POST request to /api/openstack-tenants/<uuid>/set_quotas/.
     The quota values are propagated to the backend.
 
@@ -116,7 +118,9 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackTenantQuotaRequest,
 ) -> OpenStackTenantQuota:
-    """A quota can be set for a particular tenant. Only staff users can do that.
+    """Set tenant quotas
+
+     A quota can be set for a particular tenant. Only staff users can do that.
     In order to set quota submit POST request to /api/openstack-tenants/<uuid>/set_quotas/.
     The quota values are propagated to the backend.
 
@@ -169,7 +173,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackTenantQuotaRequest,
 ) -> Response[OpenStackTenantQuota]:
-    """A quota can be set for a particular tenant. Only staff users can do that.
+    """Set tenant quotas
+
+     A quota can be set for a particular tenant. Only staff users can do that.
     In order to set quota submit POST request to /api/openstack-tenants/<uuid>/set_quotas/.
     The quota values are propagated to the backend.
 
@@ -225,7 +231,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackTenantQuotaRequest,
 ) -> OpenStackTenantQuota:
-    """A quota can be set for a particular tenant. Only staff users can do that.
+    """Set tenant quotas
+
+     A quota can be set for a particular tenant. Only staff users can do that.
     In order to set quota submit POST request to /api/openstack-tenants/<uuid>/set_quotas/.
     The quota values are propagated to the backend.
 

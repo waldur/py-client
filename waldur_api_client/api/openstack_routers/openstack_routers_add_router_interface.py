@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackRouterInterfaceRequest,
 ) -> Response[Any]:
-    """Add interface to router. Either subnet or port must be provided.
+    """Add router interface
+
+     Add interface to router. Either subnet or port must be provided.
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackRouterInterfaceRequest,
 ) -> Response[Any]:
-    """Add interface to router. Either subnet or port must be provided.
+    """Add router interface
+
+     Add interface to router. Either subnet or port must be provided.
 
     Args:
         uuid (UUID):

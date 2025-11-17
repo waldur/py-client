@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackBackupsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackBackup]:
-    """
+    """Get backup details
+
+     Retrieve details of a specific instance backup.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackBackupsRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackBackupsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackBackup:
-    """
+    """Get backup details
+
+     Retrieve details of a specific instance backup.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackBackupsRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackBackupsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackBackup]:
-    """
+    """Get backup details
+
+     Retrieve details of a specific instance backup.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackBackupsRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackBackupsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackBackup:
-    """
+    """Get backup details
+
+     Retrieve details of a specific instance backup.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackBackupsRetrieveFieldItem]]):

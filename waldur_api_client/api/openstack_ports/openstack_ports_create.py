@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackPortRequest,
 ) -> Response[OpenStackPort]:
-    """
+    """Create port
+
+     Create a new network port.
+
     Args:
         body (OpenStackPortRequest):
 
@@ -81,7 +84,10 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackPortRequest,
 ) -> OpenStackPort:
-    """
+    """Create port
+
+     Create a new network port.
+
     Args:
         body (OpenStackPortRequest):
 
@@ -104,7 +110,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackPortRequest,
 ) -> Response[OpenStackPort]:
-    """
+    """Create port
+
+     Create a new network port.
+
     Args:
         body (OpenStackPortRequest):
 
@@ -130,7 +139,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackPortRequest,
 ) -> OpenStackPort:
-    """
+    """Create port
+
+     Create a new network port.
+
     Args:
         body (OpenStackPortRequest):
 

@@ -49,7 +49,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OpenStackInstanceAvailabilityZone]:
-    """
+    """Get instance availability zone details
+
+     Retrieve details of a specific instance availability zone.
+
     Args:
         uuid (UUID):
 
@@ -77,7 +80,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> OpenStackInstanceAvailabilityZone:
-    """
+    """Get instance availability zone details
+
+     Retrieve details of a specific instance availability zone.
+
     Args:
         uuid (UUID):
 
@@ -100,7 +106,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OpenStackInstanceAvailabilityZone]:
-    """
+    """Get instance availability zone details
+
+     Retrieve details of a specific instance availability zone.
+
     Args:
         uuid (UUID):
 
@@ -126,7 +135,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> OpenStackInstanceAvailabilityZone:
-    """
+    """Get instance availability zone details
+
+     Retrieve details of a specific instance availability zone.
+
     Args:
         uuid (UUID):
 

@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackFloatingIPDescriptionUpdateRequest,
 ) -> Response[Any]:
-    """Update description of the floating IP
+    """Update floating IP description
+
+     Update description of the floating IP
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackFloatingIPDescriptionUpdateRequest,
 ) -> Response[Any]:
-    """Update description of the floating IP
+    """Update floating IP description
+
+     Update description of the floating IP
 
     Args:
         uuid (UUID):

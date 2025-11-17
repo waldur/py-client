@@ -188,7 +188,9 @@ def sync_detailed(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List networks
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -292,7 +294,9 @@ def sync(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List networks
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -391,7 +395,9 @@ async def asyncio_detailed(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List networks
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -493,7 +499,9 @@ async def asyncio(
     type_: Union[Unset, str] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List networks
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):

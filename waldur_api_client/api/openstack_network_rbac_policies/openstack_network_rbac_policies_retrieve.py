@@ -47,7 +47,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[NetworkRBACPolicy]:
-    """
+    """Get network RBAC policy details
+
+     Retrieve details of a specific network RBAC policy.
+
     Args:
         uuid (UUID):
 
@@ -75,7 +78,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> NetworkRBACPolicy:
-    """
+    """Get network RBAC policy details
+
+     Retrieve details of a specific network RBAC policy.
+
     Args:
         uuid (UUID):
 
@@ -98,7 +104,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[NetworkRBACPolicy]:
-    """
+    """Get network RBAC policy details
+
+     Retrieve details of a specific network RBAC policy.
+
     Args:
         uuid (UUID):
 
@@ -124,7 +133,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> NetworkRBACPolicy:
-    """
+    """Get network RBAC policy details
+
+     Retrieve details of a specific network RBAC policy.
+
     Args:
         uuid (UUID):
 

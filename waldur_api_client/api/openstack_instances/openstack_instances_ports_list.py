@@ -68,7 +68,9 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OpenStackNestedPort"]]:
-    """Get a list of instance ports
+    """List instance ports
+
+     Get a list of instance ports
 
     Args:
         uuid (UUID):
@@ -103,7 +105,9 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OpenStackNestedPort"]:
-    """Get a list of instance ports
+    """List instance ports
+
+     Get a list of instance ports
 
     Args:
         uuid (UUID):
@@ -133,7 +137,9 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OpenStackNestedPort"]]:
-    """Get a list of instance ports
+    """List instance ports
+
+     Get a list of instance ports
 
     Args:
         uuid (UUID):
@@ -166,7 +172,9 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OpenStackNestedPort"]:
-    """Get a list of instance ports
+    """List instance ports
+
+     Get a list of instance ports
 
     Args:
         uuid (UUID):

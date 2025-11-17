@@ -108,7 +108,10 @@ def sync_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["NetworkRBACPolicy"]]:
-    """
+    """List network RBAC policies
+
+     Get a list of network RBAC policies.
+
     Args:
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
@@ -160,7 +163,10 @@ def sync(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["NetworkRBACPolicy"]:
-    """
+    """List network RBAC policies
+
+     Get a list of network RBAC policies.
+
     Args:
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
@@ -207,7 +213,10 @@ async def asyncio_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["NetworkRBACPolicy"]]:
-    """
+    """List network RBAC policies
+
+     Get a list of network RBAC policies.
+
     Args:
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
@@ -257,7 +266,10 @@ async def asyncio(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["NetworkRBACPolicy"]:
-    """
+    """List network RBAC policies
+
+     Get a list of network RBAC policies.
+
     Args:
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):

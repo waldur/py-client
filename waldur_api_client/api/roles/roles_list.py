@@ -87,7 +87,10 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["RoleDetails"]]:
-    """
+    """List roles
+
+     Get a list of all available roles.
+
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[RolesListFieldItem]]):
@@ -130,7 +133,10 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["RoleDetails"]:
-    """
+    """List roles
+
+     Get a list of all available roles.
+
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[RolesListFieldItem]]):
@@ -168,7 +174,10 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["RoleDetails"]]:
-    """
+    """List roles
+
+     Get a list of all available roles.
+
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[RolesListFieldItem]]):
@@ -209,7 +218,10 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["RoleDetails"]:
-    """
+    """List roles
+
+     Get a list of all available roles.
+
     Args:
         description (Union[Unset, str]):
         field (Union[Unset, list[RolesListFieldItem]]):

@@ -63,7 +63,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[RolesRetrieveFieldItem]] = UNSET,
 ) -> Response[RoleDetails]:
-    """
+    """Get role details
+
+     Retrieve the details of a specific role by its UUID.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[RolesRetrieveFieldItem]]):
@@ -94,7 +97,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[RolesRetrieveFieldItem]] = UNSET,
 ) -> RoleDetails:
-    """
+    """Get role details
+
+     Retrieve the details of a specific role by its UUID.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[RolesRetrieveFieldItem]]):
@@ -120,7 +126,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[RolesRetrieveFieldItem]] = UNSET,
 ) -> Response[RoleDetails]:
-    """
+    """Get role details
+
+     Retrieve the details of a specific role by its UUID.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[RolesRetrieveFieldItem]]):
@@ -149,7 +158,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[RolesRetrieveFieldItem]] = UNSET,
 ) -> RoleDetails:
-    """
+    """Get role details
+
+     Retrieve the details of a specific role by its UUID.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[RolesRetrieveFieldItem]]):

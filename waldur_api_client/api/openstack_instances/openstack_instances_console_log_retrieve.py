@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     length: Union[Unset, int] = UNSET,
 ) -> Response[str]:
-    """Get console log for the instance
+    """Get console log
+
+     Get console log for the instance
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ def sync(
     client: AuthenticatedClient,
     length: Union[Unset, int] = UNSET,
 ) -> str:
-    """Get console log for the instance
+    """Get console log
+
+     Get console log for the instance
 
     Args:
         uuid (UUID):
@@ -112,7 +116,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     length: Union[Unset, int] = UNSET,
 ) -> Response[str]:
-    """Get console log for the instance
+    """Get console log
+
+     Get console log for the instance
 
     Args:
         uuid (UUID):
@@ -142,7 +148,9 @@ async def asyncio(
     client: AuthenticatedClient,
     length: Union[Unset, int] = UNSET,
 ) -> str:
-    """Get console log for the instance
+    """Get console log
+
+     Get console log for the instance
 
     Args:
         uuid (UUID):

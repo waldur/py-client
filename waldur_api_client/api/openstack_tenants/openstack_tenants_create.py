@@ -55,7 +55,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackTenantRequest,
 ) -> Response[OpenStackTenant]:
-    """
+    """Create tenant
+
+     Create a new OpenStack tenant.
+
     Args:
         body (OpenStackTenantRequest):
 
@@ -83,7 +86,10 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackTenantRequest,
 ) -> OpenStackTenant:
-    """
+    """Create tenant
+
+     Create a new OpenStack tenant.
+
     Args:
         body (OpenStackTenantRequest):
 
@@ -106,7 +112,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackTenantRequest,
 ) -> Response[OpenStackTenant]:
-    """
+    """Create tenant
+
+     Create a new OpenStack tenant.
+
     Args:
         body (OpenStackTenantRequest):
 
@@ -132,7 +141,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackTenantRequest,
 ) -> OpenStackTenant:
-    """
+    """Create tenant
+
+     Create a new OpenStack tenant.
+
     Args:
         body (OpenStackTenantRequest):
 

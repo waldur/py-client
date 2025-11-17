@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackInstanceRequest,
 ) -> Response[OpenStackInstance]:
-    """
+    """Partially update instance
+
+     Update specific fields of a VM instance.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackInstanceRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOpenStackInstanceRequest,
 ) -> OpenStackInstance:
-    """
+    """Partially update instance
+
+     Update specific fields of a VM instance.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackInstanceRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackInstanceRequest,
 ) -> Response[OpenStackInstance]:
-    """
+    """Partially update instance
+
+     Update specific fields of a VM instance.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackInstanceRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOpenStackInstanceRequest,
 ) -> OpenStackInstance:
-    """
+    """Partially update instance
+
+     Update specific fields of a VM instance.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackInstanceRequest):

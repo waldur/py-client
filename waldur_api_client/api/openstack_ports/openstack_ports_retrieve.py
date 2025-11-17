@@ -63,7 +63,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackPortsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackPort]:
-    """
+    """Get port details
+
+     Retrieve details of a specific network port.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackPortsRetrieveFieldItem]]):
@@ -94,7 +97,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackPortsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackPort:
-    """
+    """Get port details
+
+     Retrieve details of a specific network port.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackPortsRetrieveFieldItem]]):
@@ -120,7 +126,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackPortsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackPort]:
-    """
+    """Get port details
+
+     Retrieve details of a specific network port.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackPortsRetrieveFieldItem]]):
@@ -149,7 +158,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackPortsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackPort:
-    """
+    """Get port details
+
+     Retrieve details of a specific network port.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackPortsRetrieveFieldItem]]):

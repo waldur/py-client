@@ -47,7 +47,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OpenStackTenant]:
-    """Trigger job to pull security groups from remote VPC
+    """Pull security groups
+
+     Trigger job to pull security groups from remote VPC
 
     Args:
         uuid (UUID):
@@ -76,7 +78,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> OpenStackTenant:
-    """Trigger job to pull security groups from remote VPC
+    """Pull security groups
+
+     Trigger job to pull security groups from remote VPC
 
     Args:
         uuid (UUID):
@@ -100,7 +104,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OpenStackTenant]:
-    """Trigger job to pull security groups from remote VPC
+    """Pull security groups
+
+     Trigger job to pull security groups from remote VPC
 
     Args:
         uuid (UUID):
@@ -127,7 +133,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> OpenStackTenant:
-    """Trigger job to pull security groups from remote VPC
+    """Pull security groups
+
+     Trigger job to pull security groups from remote VPC
 
     Args:
         uuid (UUID):

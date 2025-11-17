@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackSecurityGroupRequest,
 ) -> Response[OpenStackSecurityGroup]:
-    """
+    """Create security group
+
+     Create a security group for the tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackSecurityGroupRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackSecurityGroupRequest,
 ) -> OpenStackSecurityGroup:
-    """
+    """Create security group
+
+     Create a security group for the tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackSecurityGroupRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackSecurityGroupRequest,
 ) -> Response[OpenStackSecurityGroup]:
-    """
+    """Create security group
+
+     Create a security group for the tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackSecurityGroupRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackSecurityGroupRequest,
 ) -> OpenStackSecurityGroup:
-    """
+    """Create security group
+
+     Create a security group for the tenant.
+
     Args:
         uuid (UUID):
         body (OpenStackSecurityGroupRequest):

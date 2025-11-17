@@ -42,7 +42,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Stop the instance
+    """Stop instance
+
+     Stop the instance
 
     Args:
         uuid (UUID):
@@ -71,7 +73,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Stop the instance
+    """Stop instance
+
+     Stop the instance
 
     Args:
         uuid (UUID):

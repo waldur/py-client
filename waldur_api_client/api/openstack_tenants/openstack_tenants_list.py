@@ -174,7 +174,10 @@ def sync_detailed(
     state: Union[Unset, list[OpenstackTenantsListStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackTenant"]]:
-    """
+    """List tenants
+
+     Get a list of OpenStack tenants.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -262,7 +265,10 @@ def sync(
     state: Union[Unset, list[OpenstackTenantsListStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackTenant"]:
-    """
+    """List tenants
+
+     Get a list of OpenStack tenants.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -345,7 +351,10 @@ async def asyncio_detailed(
     state: Union[Unset, list[OpenstackTenantsListStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackTenant"]]:
-    """
+    """List tenants
+
+     Get a list of OpenStack tenants.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):
@@ -431,7 +440,10 @@ async def asyncio(
     state: Union[Unset, list[OpenstackTenantsListStateItem]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackTenant"]:
-    """
+    """List tenants
+
+     Get a list of OpenStack tenants.
+
     Args:
         backend_id (Union[Unset, str]):
         can_manage (Union[Unset, bool]):

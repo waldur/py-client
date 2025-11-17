@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFlavorsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackFlavor]:
-    """
+    """Get flavor details
+
+     Retrieve details of a specific VM instance flavor.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackFlavorsRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFlavorsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackFlavor:
-    """
+    """Get flavor details
+
+     Retrieve details of a specific VM instance flavor.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackFlavorsRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFlavorsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackFlavor]:
-    """
+    """Get flavor details
+
+     Retrieve details of a specific VM instance flavor.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackFlavorsRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFlavorsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackFlavor:
-    """
+    """Get flavor details
+
+     Retrieve details of a specific VM instance flavor.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackFlavorsRetrieveFieldItem]]):

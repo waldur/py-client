@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackVolumeRetypeRequest,
 ) -> Response[Any]:
-    """Retype detached volume
+    """Change volume type
+
+     Retype detached volume
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackVolumeRetypeRequest,
 ) -> Response[Any]:
-    """Retype detached volume
+    """Change volume type
+
+     Retype detached volume
 
     Args:
         uuid (UUID):

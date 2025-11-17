@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackTenantChangePasswordRequest,
 ) -> Response[Any]:
-    """Change password for tenant user
+    """Change tenant user password
+
+     Change password for tenant user
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackTenantChangePasswordRequest,
 ) -> Response[Any]:
-    """Change password for tenant user
+    """Change tenant user password
+
+     Change password for tenant user
 
     Args:
         uuid (UUID):

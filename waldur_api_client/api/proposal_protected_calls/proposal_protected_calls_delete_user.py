@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UserRoleDeleteRequest,
 ) -> Response[Any]:
-    """
+    """Revoke a role from a user
+
+     Removes a specific role from a user within the current scope. This effectively revokes their
+    permissions associated with that role.
+
     Args:
         uuid (UUID):
         body (UserRoleDeleteRequest):
@@ -84,7 +88,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UserRoleDeleteRequest,
 ) -> Response[Any]:
-    """
+    """Revoke a role from a user
+
+     Removes a specific role from a user within the current scope. This effectively revokes their
+    permissions associated with that role.
+
     Args:
         uuid (UUID):
         body (UserRoleDeleteRequest):

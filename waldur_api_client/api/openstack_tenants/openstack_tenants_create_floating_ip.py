@@ -49,6 +49,8 @@ def sync_detailed(
 ) -> Response[OpenStackFloatingIP]:
     """Create floating IP for tenant
 
+     Create floating IP for tenant
+
     Args:
         uuid (UUID):
 
@@ -78,6 +80,8 @@ def sync(
 ) -> OpenStackFloatingIP:
     """Create floating IP for tenant
 
+     Create floating IP for tenant
+
     Args:
         uuid (UUID):
 
@@ -101,6 +105,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[OpenStackFloatingIP]:
     """Create floating IP for tenant
+
+     Create floating IP for tenant
 
     Args:
         uuid (UUID):
@@ -128,6 +134,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> OpenStackFloatingIP:
     """Create floating IP for tenant
+
+     Create floating IP for tenant
 
     Args:
         uuid (UUID):

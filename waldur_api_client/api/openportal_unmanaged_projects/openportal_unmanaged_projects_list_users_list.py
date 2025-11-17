@@ -130,7 +130,11 @@ def sync_detailed(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["UserRoleDetails"]]:
-    """
+    """List users and their roles in a scope
+
+     Retrieves a list of users who have a role within a specific scope (e.g., a project or an
+    organization). The list can be filtered by user details or role.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenportalUnmanagedProjectsListUsersListFieldItem]]):
@@ -194,7 +198,11 @@ def sync(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["UserRoleDetails"]:
-    """
+    """List users and their roles in a scope
+
+     Retrieves a list of users who have a role within a specific scope (e.g., a project or an
+    organization). The list can be filtered by user details or role.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenportalUnmanagedProjectsListUsersListFieldItem]]):
@@ -253,7 +261,11 @@ async def asyncio_detailed(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["UserRoleDetails"]]:
-    """
+    """List users and their roles in a scope
+
+     Retrieves a list of users who have a role within a specific scope (e.g., a project or an
+    organization). The list can be filtered by user details or role.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenportalUnmanagedProjectsListUsersListFieldItem]]):
@@ -315,7 +327,11 @@ async def asyncio(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["UserRoleDetails"]:
-    """
+    """List users and their roles in a scope
+
+     Retrieves a list of users who have a role within a specific scope (e.g., a project or an
+    organization). The list can be filtered by user details or role.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenportalUnmanagedProjectsListUsersListFieldItem]]):

@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFloatingIpsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackFloatingIP]:
-    """
+    """Get floating IP details
+
+     Retrieve details of a specific floating IP address.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackFloatingIpsRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFloatingIpsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackFloatingIP:
-    """
+    """Get floating IP details
+
+     Retrieve details of a specific floating IP address.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackFloatingIpsRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFloatingIpsRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackFloatingIP]:
-    """
+    """Get floating IP details
+
+     Retrieve details of a specific floating IP address.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackFloatingIpsRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackFloatingIpsRetrieveFieldItem]] = UNSET,
 ) -> OpenStackFloatingIP:
-    """
+    """Get floating IP details
+
+     Retrieve details of a specific floating IP address.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackFloatingIpsRetrieveFieldItem]]):

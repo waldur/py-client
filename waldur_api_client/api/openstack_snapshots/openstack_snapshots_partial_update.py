@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackSnapshotRequest,
 ) -> Response[OpenStackSnapshot]:
-    """
+    """Partially update snapshot
+
+     Update specific fields of a snapshot.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSnapshotRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOpenStackSnapshotRequest,
 ) -> OpenStackSnapshot:
-    """
+    """Partially update snapshot
+
+     Update specific fields of a snapshot.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSnapshotRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackSnapshotRequest,
 ) -> Response[OpenStackSnapshot]:
-    """
+    """Partially update snapshot
+
+     Update specific fields of a snapshot.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSnapshotRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOpenStackSnapshotRequest,
 ) -> OpenStackSnapshot:
-    """
+    """Partially update snapshot
+
+     Update specific fields of a snapshot.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSnapshotRequest):

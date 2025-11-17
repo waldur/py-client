@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackVolumeRequest,
 ) -> Response[OpenStackVolume]:
-    """
+    """Partially update volume
+
+     Update specific fields of a volume.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackVolumeRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOpenStackVolumeRequest,
 ) -> OpenStackVolume:
-    """
+    """Partially update volume
+
+     Update specific fields of a volume.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackVolumeRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackVolumeRequest,
 ) -> Response[OpenStackVolume]:
-    """
+    """Partially update volume
+
+     Update specific fields of a volume.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackVolumeRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOpenStackVolumeRequest,
 ) -> OpenStackVolume:
-    """
+    """Partially update volume
+
+     Update specific fields of a volume.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackVolumeRequest):

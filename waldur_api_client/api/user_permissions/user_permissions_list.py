@@ -148,7 +148,11 @@ def sync_detailed(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["Permission"]]:
-    """
+    """List user permissions
+
+     Get a list of all permissions for the current user. Staff and support users can view all user
+    permissions. The list can be filtered by user, scope, role, etc.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
@@ -224,7 +228,11 @@ def sync(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["Permission"]:
-    """
+    """List user permissions
+
+     Get a list of all permissions for the current user. Staff and support users can view all user
+    permissions. The list can be filtered by user, scope, role, etc.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
@@ -295,7 +303,11 @@ async def asyncio_detailed(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["Permission"]]:
-    """
+    """List user permissions
+
+     Get a list of all permissions for the current user. Staff and support users can view all user
+    permissions. The list can be filtered by user, scope, role, etc.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
@@ -369,7 +381,11 @@ async def asyncio(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["Permission"]:
-    """
+    """List user permissions
+
+     Get a list of all permissions for the current user. Staff and support users can view all user
+    permissions. The list can be filtered by user, scope, role, etc.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):

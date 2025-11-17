@@ -42,7 +42,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Trigger job to pull floating IPs from remote VPC
+    """Pull floating IPs
+
+     Trigger job to pull floating IPs from remote VPC
 
     Args:
         uuid (UUID):
@@ -71,7 +73,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Trigger job to pull floating IPs from remote VPC
+    """Pull floating IPs
+
+     Trigger job to pull floating IPs from remote VPC
 
     Args:
         uuid (UUID):

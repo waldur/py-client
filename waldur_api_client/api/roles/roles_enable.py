@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Enable a role
+
+     Allows staff users to enable a role, making it available for assignment.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +73,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Enable a role
+
+     Allows staff users to enable a role, making it available for assignment.
+
     Args:
         uuid (UUID):
 

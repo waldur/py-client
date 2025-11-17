@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: InstanceFlavorChangeRequest,
 ) -> Response[Any]:
-    """Change flavor of the instance
+    """Change instance flavor
+
+     Change flavor of the instance
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: InstanceFlavorChangeRequest,
 ) -> Response[Any]:
-    """Change flavor of the instance
+    """Change instance flavor
+
+     Change flavor of the instance
 
     Args:
         uuid (UUID):

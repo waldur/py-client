@@ -56,7 +56,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: SetMtuRequest,
 ) -> Response[SetMtu]:
-    """
+    """Set network MTU
+
+     Update the Maximum Transmission Unit (MTU) for the network.
+
     Args:
         uuid (UUID):
         body (SetMtuRequest):
@@ -87,7 +90,10 @@ def sync(
     client: AuthenticatedClient,
     body: SetMtuRequest,
 ) -> SetMtu:
-    """
+    """Set network MTU
+
+     Update the Maximum Transmission Unit (MTU) for the network.
+
     Args:
         uuid (UUID):
         body (SetMtuRequest):
@@ -113,7 +119,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: SetMtuRequest,
 ) -> Response[SetMtu]:
-    """
+    """Set network MTU
+
+     Update the Maximum Transmission Unit (MTU) for the network.
+
     Args:
         uuid (UUID):
         body (SetMtuRequest):
@@ -142,7 +151,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: SetMtuRequest,
 ) -> SetMtu:
-    """
+    """Set network MTU
+
+     Update the Maximum Transmission Unit (MTU) for the network.
+
     Args:
         uuid (UUID):
         body (SetMtuRequest):

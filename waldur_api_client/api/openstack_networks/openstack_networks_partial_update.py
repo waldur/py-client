@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackNetworkRequest,
 ) -> Response[OpenStackNetwork]:
-    """
+    """Partially update network
+
+     Update specific fields of a network.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackNetworkRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOpenStackNetworkRequest,
 ) -> OpenStackNetwork:
-    """
+    """Partially update network
+
+     Update specific fields of a network.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackNetworkRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackNetworkRequest,
 ) -> Response[OpenStackNetwork]:
-    """
+    """Partially update network
+
+     Update specific fields of a network.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackNetworkRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOpenStackNetworkRequest,
 ) -> OpenStackNetwork:
-    """
+    """Partially update network
+
+     Update specific fields of a network.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackNetworkRequest):

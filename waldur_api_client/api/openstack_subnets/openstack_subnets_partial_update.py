@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackSubNetRequest,
 ) -> Response[OpenStackSubNet]:
-    """
+    """Partially update subnet
+
+     Update specific fields of a subnet.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSubNetRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOpenStackSubNetRequest,
 ) -> OpenStackSubNet:
-    """
+    """Partially update subnet
+
+     Update specific fields of a subnet.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSubNetRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackSubNetRequest,
 ) -> Response[OpenStackSubNet]:
-    """
+    """Partially update subnet
+
+     Update specific fields of a subnet.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSubNetRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOpenStackSubNetRequest,
 ) -> OpenStackSubNet:
-    """
+    """Partially update subnet
+
+     Update specific fields of a subnet.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackSubNetRequest):

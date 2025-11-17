@@ -1,12 +1,11 @@
 from http import HTTPStatus
-from typing import Any, Union
+from typing import Any, Union, cast
 from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.openportal_unmanaged_projects_add_user_response_400 import OpenportalUnmanagedProjectsAddUserResponse400
 from ...models.user_role_create_request import UserRoleCreateRequest
 from ...models.user_role_expiration_time import UserRoleExpirationTime
 from ...types import Response
@@ -34,7 +33,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[OpenportalUnmanagedProjectsAddUserResponse400, UserRoleExpirationTime]:
+) -> Union[Any, UserRoleExpirationTime]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 201:
@@ -42,15 +41,14 @@ def _parse_response(
 
         return response_201
     if response.status_code == 400:
-        response_400 = OpenportalUnmanagedProjectsAddUserResponse400.from_dict(response.json())
-
+        response_400 = cast(Any, None)
         return response_400
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[OpenportalUnmanagedProjectsAddUserResponse400, UserRoleExpirationTime]]:
+) -> Response[Union[Any, UserRoleExpirationTime]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,8 +62,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: UserRoleCreateRequest,
-) -> Response[Union[OpenportalUnmanagedProjectsAddUserResponse400, UserRoleExpirationTime]]:
-    """
+) -> Response[Union[Any, UserRoleExpirationTime]]:
+    """Grant a role to a user
+
+     Assigns a specific role to a user within the current scope. An optional expiration time for the role
+    can be set.
+
     Args:
         uuid (UUID):
         body (UserRoleCreateRequest):
@@ -75,7 +77,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[OpenportalUnmanagedProjectsAddUserResponse400, UserRoleExpirationTime]]
+        Response[Union[Any, UserRoleExpirationTime]]
     """
 
     kwargs = _get_kwargs(
@@ -95,8 +97,12 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: UserRoleCreateRequest,
-) -> Union[OpenportalUnmanagedProjectsAddUserResponse400, UserRoleExpirationTime]:
-    """
+) -> Union[Any, UserRoleExpirationTime]:
+    """Grant a role to a user
+
+     Assigns a specific role to a user within the current scope. An optional expiration time for the role
+    can be set.
+
     Args:
         uuid (UUID):
         body (UserRoleCreateRequest):
@@ -106,7 +112,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[OpenportalUnmanagedProjectsAddUserResponse400, UserRoleExpirationTime]
+        Union[Any, UserRoleExpirationTime]
     """
 
     return sync_detailed(
@@ -121,8 +127,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: UserRoleCreateRequest,
-) -> Response[Union[OpenportalUnmanagedProjectsAddUserResponse400, UserRoleExpirationTime]]:
-    """
+) -> Response[Union[Any, UserRoleExpirationTime]]:
+    """Grant a role to a user
+
+     Assigns a specific role to a user within the current scope. An optional expiration time for the role
+    can be set.
+
     Args:
         uuid (UUID):
         body (UserRoleCreateRequest):
@@ -132,7 +142,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[OpenportalUnmanagedProjectsAddUserResponse400, UserRoleExpirationTime]]
+        Response[Union[Any, UserRoleExpirationTime]]
     """
 
     kwargs = _get_kwargs(
@@ -150,8 +160,12 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: UserRoleCreateRequest,
-) -> Union[OpenportalUnmanagedProjectsAddUserResponse400, UserRoleExpirationTime]:
-    """
+) -> Union[Any, UserRoleExpirationTime]:
+    """Grant a role to a user
+
+     Assigns a specific role to a user within the current scope. An optional expiration time for the role
+    can be set.
+
     Args:
         uuid (UUID):
         body (UserRoleCreateRequest):
@@ -161,7 +175,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[OpenportalUnmanagedProjectsAddUserResponse400, UserRoleExpirationTime]
+        Union[Any, UserRoleExpirationTime]
     """
 
     return (

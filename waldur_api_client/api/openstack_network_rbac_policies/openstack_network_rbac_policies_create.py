@@ -55,7 +55,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: NetworkRBACPolicyRequest,
 ) -> Response[NetworkRBACPolicy]:
-    """Create RBAC policy for the network
+    """Create RBAC policy
+
+     Create RBAC policy for the network
 
     Args:
         body (NetworkRBACPolicyRequest):
@@ -84,7 +86,9 @@ def sync(
     client: AuthenticatedClient,
     body: NetworkRBACPolicyRequest,
 ) -> NetworkRBACPolicy:
-    """Create RBAC policy for the network
+    """Create RBAC policy
+
+     Create RBAC policy for the network
 
     Args:
         body (NetworkRBACPolicyRequest):
@@ -108,7 +112,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: NetworkRBACPolicyRequest,
 ) -> Response[NetworkRBACPolicy]:
-    """Create RBAC policy for the network
+    """Create RBAC policy
+
+     Create RBAC policy for the network
 
     Args:
         body (NetworkRBACPolicyRequest):
@@ -135,7 +141,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: NetworkRBACPolicyRequest,
 ) -> NetworkRBACPolicy:
-    """Create RBAC policy for the network
+    """Create RBAC policy
+
+     Create RBAC policy for the network
 
     Args:
         body (NetworkRBACPolicyRequest):

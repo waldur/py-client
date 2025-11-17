@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackRoutersRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackRouter]:
-    """
+    """Get router details
+
+     Retrieve details of a specific router.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackRoutersRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackRoutersRetrieveFieldItem]] = UNSET,
 ) -> OpenStackRouter:
-    """
+    """Get router details
+
+     Retrieve details of a specific router.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackRoutersRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackRoutersRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackRouter]:
-    """
+    """Get router details
+
+     Retrieve details of a specific router.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackRoutersRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackRoutersRetrieveFieldItem]] = UNSET,
 ) -> OpenStackRouter:
-    """
+    """Get router details
+
+     Retrieve details of a specific router.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackRoutersRetrieveFieldItem]]):

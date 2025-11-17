@@ -56,7 +56,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackPortRequest,
 ) -> Response[OpenStackPort]:
-    """
+    """Partially update port
+
+     Update specific fields of a network port.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackPortRequest):
@@ -87,7 +90,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOpenStackPortRequest,
 ) -> OpenStackPort:
-    """
+    """Partially update port
+
+     Update specific fields of a network port.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackPortRequest):
@@ -113,7 +119,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackPortRequest,
 ) -> Response[OpenStackPort]:
-    """
+    """Partially update port
+
+     Update specific fields of a network port.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackPortRequest):
@@ -142,7 +151,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOpenStackPortRequest,
 ) -> OpenStackPort:
-    """
+    """Partially update port
+
+     Update specific fields of a network port.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackPortRequest):

@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackBackupRequest,
 ) -> Response[OpenStackBackup]:
-    """
+    """Update backup
+
+     Update an existing instance backup.
+
     Args:
         uuid (UUID):
         body (OpenStackBackupRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackBackupRequest,
 ) -> OpenStackBackup:
-    """
+    """Update backup
+
+     Update an existing instance backup.
+
     Args:
         uuid (UUID):
         body (OpenStackBackupRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackBackupRequest,
 ) -> Response[OpenStackBackup]:
-    """
+    """Update backup
+
+     Update an existing instance backup.
+
     Args:
         uuid (UUID):
         body (OpenStackBackupRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackBackupRequest,
 ) -> OpenStackBackup:
-    """
+    """Update backup
+
+     Update an existing instance backup.
+
     Args:
         uuid (UUID):
         body (OpenStackBackupRequest):

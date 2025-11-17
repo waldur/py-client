@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CreateRouterRequest,
 ) -> Response[CreateRouter]:
-    """
+    """Create router
+
+     Create a new router.
+
     Args:
         body (CreateRouterRequest):
 
@@ -81,7 +84,10 @@ def sync(
     client: AuthenticatedClient,
     body: CreateRouterRequest,
 ) -> CreateRouter:
-    """
+    """Create router
+
+     Create a new router.
+
     Args:
         body (CreateRouterRequest):
 
@@ -104,7 +110,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CreateRouterRequest,
 ) -> Response[CreateRouter]:
-    """
+    """Create router
+
+     Create a new router.
+
     Args:
         body (CreateRouterRequest):
 
@@ -130,7 +139,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CreateRouterRequest,
 ) -> CreateRouter:
-    """
+    """Create router
+
+     Create a new router.
+
     Args:
         body (CreateRouterRequest):
 

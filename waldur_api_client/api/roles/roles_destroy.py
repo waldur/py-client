@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a role
+
+     Allows staff users to delete a custom role. System roles and roles that are currently in use cannot
+    be deleted.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a role
+
+     Allows staff users to delete a custom role. System roles and roles that are currently in use cannot
+    be deleted.
+
     Args:
         uuid (UUID):
 

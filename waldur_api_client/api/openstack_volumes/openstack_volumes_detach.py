@@ -42,7 +42,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Detach instance from volume
+    """Detach volume from instance
+
+     Detach instance from volume
 
     Args:
         uuid (UUID):
@@ -71,7 +73,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Detach instance from volume
+    """Detach volume from instance
+
+     Detach instance from volume
 
     Args:
         uuid (UUID):

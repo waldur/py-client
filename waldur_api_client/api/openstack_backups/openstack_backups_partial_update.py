@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackBackupRequest,
 ) -> Response[OpenStackBackup]:
-    """
+    """Partially update backup
+
+     Update specific fields of an instance backup.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackBackupRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOpenStackBackupRequest,
 ) -> OpenStackBackup:
-    """
+    """Partially update backup
+
+     Update specific fields of an instance backup.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackBackupRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOpenStackBackupRequest,
 ) -> Response[OpenStackBackup]:
-    """
+    """Partially update backup
+
+     Update specific fields of an instance backup.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackBackupRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOpenStackBackupRequest,
 ) -> OpenStackBackup:
-    """
+    """Partially update backup
+
+     Update specific fields of an instance backup.
+
     Args:
         uuid (UUID):
         body (PatchedOpenStackBackupRequest):

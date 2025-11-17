@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RoleModifyRequest,
 ) -> Response[RoleDetails]:
-    """
+    """Create a new role
+
+     Allows staff users to create a new custom role with a specific set of permissions.
+
     Args:
         body (RoleModifyRequest):
 
@@ -81,7 +84,10 @@ def sync(
     client: AuthenticatedClient,
     body: RoleModifyRequest,
 ) -> RoleDetails:
-    """
+    """Create a new role
+
+     Allows staff users to create a new custom role with a specific set of permissions.
+
     Args:
         body (RoleModifyRequest):
 
@@ -104,7 +110,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RoleModifyRequest,
 ) -> Response[RoleDetails]:
-    """
+    """Create a new role
+
+     Allows staff users to create a new custom role with a specific set of permissions.
+
     Args:
         body (RoleModifyRequest):
 
@@ -130,7 +139,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RoleModifyRequest,
 ) -> RoleDetails:
-    """
+    """Create a new role
+
+     Allows staff users to create a new custom role with a specific set of permissions.
+
     Args:
         body (RoleModifyRequest):
 

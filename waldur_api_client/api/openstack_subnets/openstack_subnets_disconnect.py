@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Disconnect subnet from router
+
+     Disconnect the subnet from the default tenant router.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +73,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Disconnect subnet from router
+
+     Disconnect the subnet from the default tenant router.
+
     Args:
         uuid (UUID):
 

@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackInstancesRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackInstance]:
-    """
+    """Get instance details
+
+     Retrieve details of a specific VM instance.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackInstancesRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackInstancesRetrieveFieldItem]] = UNSET,
 ) -> OpenStackInstance:
-    """
+    """Get instance details
+
+     Retrieve details of a specific VM instance.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackInstancesRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackInstancesRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackInstance]:
-    """
+    """Get instance details
+
+     Retrieve details of a specific VM instance.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackInstancesRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackInstancesRetrieveFieldItem]] = UNSET,
 ) -> OpenStackInstance:
-    """
+    """Get instance details
+
+     Retrieve details of a specific VM instance.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackInstancesRetrieveFieldItem]]):

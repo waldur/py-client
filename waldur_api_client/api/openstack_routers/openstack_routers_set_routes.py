@@ -60,7 +60,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackRouterSetRoutesRequest,
 ) -> Response[OpenStackRouterSetRoutes]:
-    """
+    """Set static routes
+
+     Define or overwrite the static routes for the router.
+
     Args:
         uuid (UUID):
         body (OpenStackRouterSetRoutesRequest):
@@ -91,7 +94,10 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackRouterSetRoutesRequest,
 ) -> OpenStackRouterSetRoutes:
-    """
+    """Set static routes
+
+     Define or overwrite the static routes for the router.
+
     Args:
         uuid (UUID):
         body (OpenStackRouterSetRoutesRequest):
@@ -117,7 +123,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackRouterSetRoutesRequest,
 ) -> Response[OpenStackRouterSetRoutes]:
-    """
+    """Set static routes
+
+     Define or overwrite the static routes for the router.
+
     Args:
         uuid (UUID):
         body (OpenStackRouterSetRoutesRequest):
@@ -146,7 +155,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackRouterSetRoutesRequest,
 ) -> OpenStackRouterSetRoutes:
-    """
+    """Set static routes
+
+     Define or overwrite the static routes for the router.
+
     Args:
         uuid (UUID):
         body (OpenStackRouterSetRoutesRequest):

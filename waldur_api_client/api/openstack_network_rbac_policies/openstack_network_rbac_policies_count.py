@@ -105,7 +105,9 @@ def sync_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List network RBAC policies
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         network (Union[Unset, str]):
@@ -158,7 +160,9 @@ def sync(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List network RBAC policies
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         network (Union[Unset, str]):
@@ -206,7 +210,9 @@ async def asyncio_detailed(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List network RBAC policies
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         network (Union[Unset, str]):
@@ -257,7 +263,9 @@ async def asyncio(
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List network RBAC policies
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         network (Union[Unset, str]):

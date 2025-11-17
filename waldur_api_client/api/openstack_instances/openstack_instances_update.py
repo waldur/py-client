@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OpenStackInstanceRequest,
 ) -> Response[OpenStackInstance]:
-    """
+    """Update instance
+
+     Update an existing VM instance.
+
     Args:
         uuid (UUID):
         body (OpenStackInstanceRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: OpenStackInstanceRequest,
 ) -> OpenStackInstance:
-    """
+    """Update instance
+
+     Update an existing VM instance.
+
     Args:
         uuid (UUID):
         body (OpenStackInstanceRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OpenStackInstanceRequest,
 ) -> Response[OpenStackInstance]:
-    """
+    """Update instance
+
+     Update an existing VM instance.
+
     Args:
         uuid (UUID):
         body (OpenStackInstanceRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OpenStackInstanceRequest,
 ) -> OpenStackInstance:
-    """
+    """Update instance
+
+     Update an existing VM instance.
+
     Args:
         uuid (UUID):
         body (OpenStackInstanceRequest):

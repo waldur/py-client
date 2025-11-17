@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackNetworksRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackNetwork]:
-    """
+    """Get network details
+
+     Retrieve details of a specific network.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackNetworksRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackNetworksRetrieveFieldItem]] = UNSET,
 ) -> OpenStackNetwork:
-    """
+    """Get network details
+
+     Retrieve details of a specific network.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackNetworksRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackNetworksRetrieveFieldItem]] = UNSET,
 ) -> Response[OpenStackNetwork]:
-    """
+    """Get network details
+
+     Retrieve details of a specific network.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackNetworksRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[OpenstackNetworksRetrieveFieldItem]] = UNSET,
 ) -> OpenStackNetwork:
-    """
+    """Get network details
+
+     Retrieve details of a specific network.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[OpenstackNetworksRetrieveFieldItem]]):
