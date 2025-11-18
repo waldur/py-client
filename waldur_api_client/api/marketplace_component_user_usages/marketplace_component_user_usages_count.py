@@ -145,7 +145,9 @@ def sync_detailed(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List user-specific component usages
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         billing_period_month (Union[Unset, float]):
@@ -216,7 +218,9 @@ def sync(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List user-specific component usages
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         billing_period_month (Union[Unset, float]):
@@ -282,7 +286,9 @@ async def asyncio_detailed(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List user-specific component usages
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         billing_period_month (Union[Unset, float]):
@@ -351,7 +357,9 @@ async def asyncio(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List user-specific component usages
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         billing_period_month (Union[Unset, float]):

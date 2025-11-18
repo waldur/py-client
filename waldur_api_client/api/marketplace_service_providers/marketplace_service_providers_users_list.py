@@ -200,7 +200,10 @@ def sync_detailed(
     username: Union[Unset, str] = UNSET,
     username_list: Union[Unset, str] = UNSET,
 ) -> Response[list["MarketplaceServiceProviderUser"]]:
-    """Return users of service provider.
+    """List users of a service provider
+
+     Returns a paginated list of all users who have consumed resources from the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -310,7 +313,10 @@ def sync(
     username: Union[Unset, str] = UNSET,
     username_list: Union[Unset, str] = UNSET,
 ) -> list["MarketplaceServiceProviderUser"]:
-    """Return users of service provider.
+    """List users of a service provider
+
+     Returns a paginated list of all users who have consumed resources from the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -415,7 +421,10 @@ async def asyncio_detailed(
     username: Union[Unset, str] = UNSET,
     username_list: Union[Unset, str] = UNSET,
 ) -> Response[list["MarketplaceServiceProviderUser"]]:
-    """Return users of service provider.
+    """List users of a service provider
+
+     Returns a paginated list of all users who have consumed resources from the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -523,7 +532,10 @@ async def asyncio(
     username: Union[Unset, str] = UNSET,
     username_list: Union[Unset, str] = UNSET,
 ) -> list["MarketplaceServiceProviderUser"]:
-    """Return users of service provider.
+    """List users of a service provider
+
+     Returns a paginated list of all users who have consumed resources from the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):

@@ -55,7 +55,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MarketplaceProviderOfferingsUpdateAttributesBody,
 ) -> Response[Any]:
-    """Update offering attributes.
+    """Update offering attributes
+
+     Updates the attributes of an offering.
 
     Args:
         uuid (UUID):
@@ -87,7 +89,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MarketplaceProviderOfferingsUpdateAttributesBody,
 ) -> Response[Any]:
-    """Update offering attributes.
+    """Update offering attributes
+
+     Updates the attributes of an offering.
 
     Args:
         uuid (UUID):

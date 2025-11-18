@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedCategoryColumnRequest,
 ) -> Response[CategoryColumn]:
-    """
+    """Partially update a category column
+
+     Partially updates an existing category column. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCategoryColumnRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedCategoryColumnRequest,
 ) -> CategoryColumn:
-    """
+    """Partially update a category column
+
+     Partially updates an existing category column. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCategoryColumnRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedCategoryColumnRequest,
 ) -> Response[CategoryColumn]:
-    """
+    """Partially update a category column
+
+     Partially updates an existing category column. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCategoryColumnRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedCategoryColumnRequest,
 ) -> CategoryColumn:
-    """
+    """Partially update a category column
+
+     Partially updates an existing category column. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCategoryColumnRequest):

@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UpdateOfferingComponentRequest,
 ) -> Response[Any]:
-    """
+    """Update an offering component
+
+     Updates the properties of a specific component within an offering.
+
     Args:
         uuid (UUID):
         body (UpdateOfferingComponentRequest):
@@ -84,7 +87,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UpdateOfferingComponentRequest,
 ) -> Response[Any]:
-    """
+    """Update an offering component
+
+     Updates the properties of a specific component within an offering.
+
     Args:
         uuid (UUID):
         body (UpdateOfferingComponentRequest):

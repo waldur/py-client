@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Action to mark an offering user as successfully deleted.
+    """Set state to Deleted
+
+     Transitions the offering user to the 'Deleted' state, marking the successful completion of the
+    deletion process.
 
     Args:
         uuid (UUID):
@@ -71,7 +74,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Action to mark an offering user as successfully deleted.
+    """Set state to Deleted
+
+     Transitions the offering user to the 'Deleted' state, marking the successful completion of the
+    deletion process.
 
     Args:
         uuid (UUID):

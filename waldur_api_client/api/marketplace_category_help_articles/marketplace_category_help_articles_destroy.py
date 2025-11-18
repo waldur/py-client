@@ -41,7 +41,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a category help article
+
+     Deletes a help article. Requires staff permissions.
+
     Args:
         id (int):
 
@@ -69,7 +72,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a category help article
+
+     Deletes a help article. Requires staff permissions.
+
     Args:
         id (int):
 

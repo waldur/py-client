@@ -123,7 +123,9 @@ def sync_detailed(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsCountStateItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List backend resource requests
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -176,7 +178,9 @@ def sync(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsCountStateItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List backend resource requests
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -224,7 +228,9 @@ async def asyncio_detailed(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsCountStateItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List backend resource requests
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -275,7 +281,9 @@ async def asyncio(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsCountStateItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List backend resource requests
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):

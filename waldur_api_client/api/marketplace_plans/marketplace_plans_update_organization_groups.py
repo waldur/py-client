@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OrganizationGroupsRequest,
 ) -> Response[Any]:
-    """
+    """Update organization groups for a plan
+
+     Sets the list of organization groups that are allowed to access this plan. If the list is empty, the
+    plan is accessible to all.
+
     Args:
         uuid (UUID):
         body (OrganizationGroupsRequest):
@@ -84,7 +88,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OrganizationGroupsRequest,
 ) -> Response[Any]:
-    """
+    """Update organization groups for a plan
+
+     Sets the list of organization groups that are allowed to access this plan. If the list is empty, the
+    plan is accessible to all.
+
     Args:
         uuid (UUID):
         body (OrganizationGroupsRequest):

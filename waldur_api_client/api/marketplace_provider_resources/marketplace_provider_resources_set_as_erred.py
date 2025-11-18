@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceSetStateErredRequest,
 ) -> Response[Any]:
-    """Set the resource as erred.
+    """Set resource state to erred
+
+     Allows a service provider to manually set the state of a resource to 'erred'. An error message and
+    traceback can be provided.
 
     Args:
         uuid (UUID):
@@ -85,7 +88,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceSetStateErredRequest,
 ) -> Response[Any]:
-    """Set the resource as erred.
+    """Set resource state to erred
+
+     Allows a service provider to manually set the state of a resource to 'erred'. An error message and
+    traceback can be provided.
 
     Args:
         uuid (UUID):

@@ -55,7 +55,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedSectionRequest,
 ) -> Response[Section]:
-    """
+    """Partially update a section
+
+     Partially updates an existing section. Requires staff permissions.
+
     Args:
         key (str):
         body (PatchedSectionRequest):
@@ -86,7 +89,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedSectionRequest,
 ) -> Section:
-    """
+    """Partially update a section
+
+     Partially updates an existing section. Requires staff permissions.
+
     Args:
         key (str):
         body (PatchedSectionRequest):
@@ -112,7 +118,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedSectionRequest,
 ) -> Response[Section]:
-    """
+    """Partially update a section
+
+     Partially updates an existing section. Requires staff permissions.
+
     Args:
         key (str):
         body (PatchedSectionRequest):
@@ -141,7 +150,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedSectionRequest,
 ) -> Section:
-    """
+    """Partially update a section
+
+     Partially updates an existing section. Requires staff permissions.
+
     Args:
         key (str):
         body (PatchedSectionRequest):

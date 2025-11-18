@@ -47,7 +47,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[CustomerServiceAccount]:
-    """
+    """Retrieve a service account
+
     Args:
         uuid (UUID):
 
@@ -75,7 +76,8 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> CustomerServiceAccount:
-    """
+    """Retrieve a service account
+
     Args:
         uuid (UUID):
 
@@ -98,7 +100,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[CustomerServiceAccount]:
-    """
+    """Retrieve a service account
+
     Args:
         uuid (UUID):
 
@@ -124,7 +127,8 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> CustomerServiceAccount:
-    """
+    """Retrieve a service account
+
     Args:
         uuid (UUID):
 

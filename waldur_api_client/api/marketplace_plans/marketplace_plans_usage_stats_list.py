@@ -12,18 +12,21 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    customer_provider_uuid: Union[Unset, str] = UNSET,
+    customer_provider_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, str] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
-    offering_uuid: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    params["customer_provider_uuid"] = customer_provider_uuid
+    json_customer_provider_uuid: Union[Unset, str] = UNSET
+    if not isinstance(customer_provider_uuid, Unset):
+        json_customer_provider_uuid = str(customer_provider_uuid)
+    params["customer_provider_uuid"] = json_customer_provider_uuid
 
     params["o"] = o
 
@@ -35,7 +38,10 @@ def _get_kwargs(
 
     params["offering_slug"] = json_offering_slug
 
-    params["offering_uuid"] = offering_uuid
+    json_offering_uuid: Union[Unset, str] = UNSET
+    if not isinstance(offering_uuid, Unset):
+        json_offering_uuid = str(offering_uuid)
+    params["offering_uuid"] = json_offering_uuid
 
     params["page"] = page
 
@@ -88,22 +94,26 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    customer_provider_uuid: Union[Unset, str] = UNSET,
+    customer_provider_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, str] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
-    offering_uuid: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["PlanUsageResponse"]]:
-    """
+    """Get plan usage statistics
+
+     Returns aggregated statistics on how many resources are currently using each plan. Can be filtered
+    by offering or service provider.
+
     Args:
-        customer_provider_uuid (Union[Unset, str]):
+        customer_provider_uuid (Union[Unset, UUID]):
         o (Union[Unset, str]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
-        offering_uuid (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -137,22 +147,26 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    customer_provider_uuid: Union[Unset, str] = UNSET,
+    customer_provider_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, str] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
-    offering_uuid: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["PlanUsageResponse"]:
-    """
+    """Get plan usage statistics
+
+     Returns aggregated statistics on how many resources are currently using each plan. Can be filtered
+    by offering or service provider.
+
     Args:
-        customer_provider_uuid (Union[Unset, str]):
+        customer_provider_uuid (Union[Unset, UUID]):
         o (Union[Unset, str]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
-        offering_uuid (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -181,22 +195,26 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    customer_provider_uuid: Union[Unset, str] = UNSET,
+    customer_provider_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, str] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
-    offering_uuid: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["PlanUsageResponse"]]:
-    """
+    """Get plan usage statistics
+
+     Returns aggregated statistics on how many resources are currently using each plan. Can be filtered
+    by offering or service provider.
+
     Args:
-        customer_provider_uuid (Union[Unset, str]):
+        customer_provider_uuid (Union[Unset, UUID]):
         o (Union[Unset, str]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
-        offering_uuid (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -228,22 +246,26 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    customer_provider_uuid: Union[Unset, str] = UNSET,
+    customer_provider_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, str] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
-    offering_uuid: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["PlanUsageResponse"]:
-    """
+    """Get plan usage statistics
+
+     Returns aggregated statistics on how many resources are currently using each plan. Can be filtered
+    by offering or service provider.
+
     Args:
-        customer_provider_uuid (Union[Unset, str]):
+        customer_provider_uuid (Union[Unset, UUID]):
         o (Union[Unset, str]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
-        offering_uuid (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):

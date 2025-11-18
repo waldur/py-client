@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Reject an order (consumer)
+
+     Rejects a pending order from the consumer's side. This moves the order to the 'rejected' state.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +73,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Reject an order (consumer)
+
+     Rejects a pending order from the consumer's side. This moves the order to the 'rejected' state.
+
     Args:
         uuid (UUID):
 

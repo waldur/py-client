@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OrderSetStateErredRequest,
 ) -> Response[Any]:
-    """
+    """Set order state to erred (agent)
+
+     Used by external agents to report a failure during order processing. An error message and traceback
+    can be provided.
+
     Args:
         uuid (UUID):
         body (OrderSetStateErredRequest):
@@ -84,7 +88,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OrderSetStateErredRequest,
 ) -> Response[Any]:
-    """
+    """Set order state to erred (agent)
+
+     Used by external agents to report a failure during order processing. An error message and traceback
+    can be provided.
+
     Args:
         uuid (UUID):
         body (OrderSetStateErredRequest):

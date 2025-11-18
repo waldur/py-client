@@ -43,10 +43,26 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[str]:
-    """This endpoint provides a config file for GLauth
-    Example: https://github.com/glauth/glauth/blob/master/v2/sample-simple.cfg
-    It is assumed that the config is used by an external agent,
-    which synchronizes data from Waldur to GLauth
+    r"""Get GLauth user configuration
+
+
+            This endpoint provides a configuration file for GLauth.
+            It is intended to be used by an external agent to synchronize user data from Waldur to
+    GLauth.
+
+            Example output format:
+            ```
+            [[users]]
+              name = \"johndoe\"
+              givenname=\"John\"
+              sn=\"Doe\"
+              mail = \"john.doe@example.com\"
+              ...
+            [[groups]]
+              name = \"group1\"
+              gidnumber = 1001
+            ```
+
 
     Args:
         uuid (UUID):
@@ -75,10 +91,26 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> str:
-    """This endpoint provides a config file for GLauth
-    Example: https://github.com/glauth/glauth/blob/master/v2/sample-simple.cfg
-    It is assumed that the config is used by an external agent,
-    which synchronizes data from Waldur to GLauth
+    r"""Get GLauth user configuration
+
+
+            This endpoint provides a configuration file for GLauth.
+            It is intended to be used by an external agent to synchronize user data from Waldur to
+    GLauth.
+
+            Example output format:
+            ```
+            [[users]]
+              name = \"johndoe\"
+              givenname=\"John\"
+              sn=\"Doe\"
+              mail = \"john.doe@example.com\"
+              ...
+            [[groups]]
+              name = \"group1\"
+              gidnumber = 1001
+            ```
+
 
     Args:
         uuid (UUID):
@@ -102,10 +134,26 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[str]:
-    """This endpoint provides a config file for GLauth
-    Example: https://github.com/glauth/glauth/blob/master/v2/sample-simple.cfg
-    It is assumed that the config is used by an external agent,
-    which synchronizes data from Waldur to GLauth
+    r"""Get GLauth user configuration
+
+
+            This endpoint provides a configuration file for GLauth.
+            It is intended to be used by an external agent to synchronize user data from Waldur to
+    GLauth.
+
+            Example output format:
+            ```
+            [[users]]
+              name = \"johndoe\"
+              givenname=\"John\"
+              sn=\"Doe\"
+              mail = \"john.doe@example.com\"
+              ...
+            [[groups]]
+              name = \"group1\"
+              gidnumber = 1001
+            ```
+
 
     Args:
         uuid (UUID):
@@ -132,10 +180,26 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> str:
-    """This endpoint provides a config file for GLauth
-    Example: https://github.com/glauth/glauth/blob/master/v2/sample-simple.cfg
-    It is assumed that the config is used by an external agent,
-    which synchronizes data from Waldur to GLauth
+    r"""Get GLauth user configuration
+
+
+            This endpoint provides a configuration file for GLauth.
+            It is intended to be used by an external agent to synchronize user data from Waldur to
+    GLauth.
+
+            Example output format:
+            ```
+            [[users]]
+              name = \"johndoe\"
+              givenname=\"John\"
+              sn=\"Doe\"
+              mail = \"john.doe@example.com\"
+              ...
+            [[groups]]
+              name = \"group1\"
+              gidnumber = 1001
+            ```
+
 
     Args:
         uuid (UUID):

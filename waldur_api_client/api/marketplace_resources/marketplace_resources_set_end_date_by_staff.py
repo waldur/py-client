@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceEndDateByProviderRequest,
 ) -> Response[Any]:
-    """Set end date of the resource by staff.
+    """Set end date of the resource by staff
+
+     Allows a staff user to set or update the end date for a resource, which will schedule it for
+    termination.
 
     Args:
         uuid (UUID):
@@ -85,7 +88,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceEndDateByProviderRequest,
 ) -> Response[Any]:
-    """Set end date of the resource by staff.
+    """Set end date of the resource by staff
+
+     Allows a staff user to set or update the end date for a resource, which will schedule it for
+    termination.
 
     Args:
         uuid (UUID):

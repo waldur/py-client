@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CourseAccountRequest,
 ) -> Response[CourseAccount]:
-    """
+    """Create a course account
+
+     Creates a new temporary course account within a specified course project.
+
     Args:
         body (CourseAccountRequest):
 
@@ -81,7 +84,10 @@ def sync(
     client: AuthenticatedClient,
     body: CourseAccountRequest,
 ) -> CourseAccount:
-    """
+    """Create a course account
+
+     Creates a new temporary course account within a specified course project.
+
     Args:
         body (CourseAccountRequest):
 
@@ -104,7 +110,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CourseAccountRequest,
 ) -> Response[CourseAccount]:
-    """
+    """Create a course account
+
+     Creates a new temporary course account within a specified course project.
+
     Args:
         body (CourseAccountRequest):
 
@@ -130,7 +139,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CourseAccountRequest,
 ) -> CourseAccount:
-    """
+    """Create a course account
+
+     Creates a new temporary course account within a specified course project.
+
     Args:
         body (CourseAccountRequest):
 

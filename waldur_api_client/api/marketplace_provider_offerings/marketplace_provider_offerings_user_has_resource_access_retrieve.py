@@ -71,7 +71,9 @@ def sync_detailed(
     field: Union[Unset, list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]] = UNSET,
     username: str,
 ) -> Response[ProviderOfferingDetails]:
-    """Check if user has access to offering.
+    """Check user access to offering resources
+
+     Checks if a specified user has access to any non-terminated resource of this offering.
 
     Args:
         uuid (UUID):
@@ -107,7 +109,9 @@ def sync(
     field: Union[Unset, list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]] = UNSET,
     username: str,
 ) -> ProviderOfferingDetails:
-    """Check if user has access to offering.
+    """Check user access to offering resources
+
+     Checks if a specified user has access to any non-terminated resource of this offering.
 
     Args:
         uuid (UUID):
@@ -138,7 +142,9 @@ async def asyncio_detailed(
     field: Union[Unset, list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]] = UNSET,
     username: str,
 ) -> Response[ProviderOfferingDetails]:
-    """Check if user has access to offering.
+    """Check user access to offering resources
+
+     Checks if a specified user has access to any non-terminated resource of this offering.
 
     Args:
         uuid (UUID):
@@ -172,7 +178,9 @@ async def asyncio(
     field: Union[Unset, list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]] = UNSET,
     username: str,
 ) -> ProviderOfferingDetails:
-    """Check if user has access to offering.
+    """Check user access to offering resources
+
+     Checks if a specified user has access to any non-terminated resource of this offering.
 
     Args:
         uuid (UUID):

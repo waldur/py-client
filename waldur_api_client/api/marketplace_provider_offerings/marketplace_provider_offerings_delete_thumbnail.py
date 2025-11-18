@@ -42,7 +42,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete offering thumbnail.
+    """Delete offering thumbnail
+
+     Deletes the thumbnail image of an offering.
 
     Args:
         uuid (UUID):
@@ -71,7 +73,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete offering thumbnail.
+    """Delete offering thumbnail
+
+     Deletes the thumbnail image of an offering.
 
     Args:
         uuid (UUID):

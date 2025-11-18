@@ -273,7 +273,10 @@ def sync_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["ProviderOffering"]]:
-    """Return offerings of service provider.
+    """List offerings of a service provider
+
+     Returns a paginated list of all billable, shared offerings provided by the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -407,7 +410,10 @@ def sync(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["ProviderOffering"]:
-    """Return offerings of service provider.
+    """List offerings of a service provider
+
+     Returns a paginated list of all billable, shared offerings provided by the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -536,7 +542,10 @@ async def asyncio_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["ProviderOffering"]]:
-    """Return offerings of service provider.
+    """List offerings of a service provider
+
+     Returns a paginated list of all billable, shared offerings provided by the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -668,7 +677,10 @@ async def asyncio(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["ProviderOffering"]:
-    """Return offerings of service provider.
+    """List offerings of a service provider
+
+     Returns a paginated list of all billable, shared offerings provided by the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):

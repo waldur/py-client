@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingBackendMetadataRequest,
 ) -> Response[Any]:
-    """
+    """Set offering backend metadata
+
+     Updates the backend-specific metadata for an offering.
+
     Args:
         uuid (UUID):
         body (OfferingBackendMetadataRequest):
@@ -84,7 +87,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingBackendMetadataRequest,
 ) -> Response[Any]:
-    """
+    """Set offering backend metadata
+
+     Updates the backend-specific metadata for an offering.
+
     Args:
         uuid (UUID):
         body (OfferingBackendMetadataRequest):

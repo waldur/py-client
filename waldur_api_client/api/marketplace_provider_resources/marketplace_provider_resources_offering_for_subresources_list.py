@@ -54,7 +54,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list["SubresourceOffering"]]:
-    """
+    """List offerings for sub-resources
+
+     Returns a list of offerings that can be provisioned as sub-resources of the current resource.
+
     Args:
         uuid (UUID):
 
@@ -82,7 +85,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list["SubresourceOffering"]:
-    """
+    """List offerings for sub-resources
+
+     Returns a list of offerings that can be provisioned as sub-resources of the current resource.
+
     Args:
         uuid (UUID):
 
@@ -105,7 +111,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list["SubresourceOffering"]]:
-    """
+    """List offerings for sub-resources
+
+     Returns a list of offerings that can be provisioned as sub-resources of the current resource.
+
     Args:
         uuid (UUID):
 
@@ -131,7 +140,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list["SubresourceOffering"]:
-    """
+    """List offerings for sub-resources
+
+     Returns a list of offerings that can be provisioned as sub-resources of the current resource.
+
     Args:
         uuid (UUID):
 

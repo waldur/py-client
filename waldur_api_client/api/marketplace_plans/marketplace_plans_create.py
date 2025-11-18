@@ -55,7 +55,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProviderPlanDetailsRequest,
 ) -> Response[ProviderPlanDetails]:
-    """
+    """Create a provider plan
+
+     Creates a new billing plan for an offering.
+
     Args:
         body (ProviderPlanDetailsRequest):
 
@@ -83,7 +86,10 @@ def sync(
     client: AuthenticatedClient,
     body: ProviderPlanDetailsRequest,
 ) -> ProviderPlanDetails:
-    """
+    """Create a provider plan
+
+     Creates a new billing plan for an offering.
+
     Args:
         body (ProviderPlanDetailsRequest):
 
@@ -106,7 +112,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProviderPlanDetailsRequest,
 ) -> Response[ProviderPlanDetails]:
-    """
+    """Create a provider plan
+
+     Creates a new billing plan for an offering.
+
     Args:
         body (ProviderPlanDetailsRequest):
 
@@ -132,7 +141,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProviderPlanDetailsRequest,
 ) -> ProviderPlanDetails:
-    """
+    """Create a provider plan
+
+     Creates a new billing plan for an offering.
+
     Args:
         body (ProviderPlanDetailsRequest):
 

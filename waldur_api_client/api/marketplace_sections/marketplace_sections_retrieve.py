@@ -44,7 +44,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Section]:
-    """
+    """Retrieve a section
+
+     Returns the details of a specific section, identified by its key.
+
     Args:
         key (str):
 
@@ -72,7 +75,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Section:
-    """
+    """Retrieve a section
+
+     Returns the details of a specific section, identified by its key.
+
     Args:
         key (str):
 
@@ -95,7 +101,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Section]:
-    """
+    """Retrieve a section
+
+     Returns the details of a specific section, identified by its key.
+
     Args:
         key (str):
 
@@ -121,7 +130,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Section:
-    """
+    """Retrieve a section
+
+     Returns the details of a specific section, identified by its key.
+
     Args:
         key (str):
 

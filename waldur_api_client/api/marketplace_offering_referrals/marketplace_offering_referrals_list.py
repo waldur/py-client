@@ -77,7 +77,12 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OfferingReferral"]]:
-    """
+    """List Datacite referrals for offerings
+
+     Returns a paginated list of Datacite referrals associated with marketplace offerings. Referrals
+    represent relationships between an offering (identified by a DOI) and other research outputs, such
+    as publications or datasets. The list must be filtered by the offering's scope.
+
     Args:
         o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
         page (Union[Unset, int]):
@@ -111,7 +116,12 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OfferingReferral"]:
-    """
+    """List Datacite referrals for offerings
+
+     Returns a paginated list of Datacite referrals associated with marketplace offerings. Referrals
+    represent relationships between an offering (identified by a DOI) and other research outputs, such
+    as publications or datasets. The list must be filtered by the offering's scope.
+
     Args:
         o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
         page (Union[Unset, int]):
@@ -140,7 +150,12 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OfferingReferral"]]:
-    """
+    """List Datacite referrals for offerings
+
+     Returns a paginated list of Datacite referrals associated with marketplace offerings. Referrals
+    represent relationships between an offering (identified by a DOI) and other research outputs, such
+    as publications or datasets. The list must be filtered by the offering's scope.
+
     Args:
         o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
         page (Union[Unset, int]):
@@ -172,7 +187,12 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OfferingReferral"]:
-    """
+    """List Datacite referrals for offerings
+
+     Returns a paginated list of Datacite referrals associated with marketplace offerings. Referrals
+    represent relationships between an offering (identified by a DOI) and other research outputs, such
+    as publications or datasets. The list must be filtered by the offering's scope.
+
     Args:
         o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
         page (Union[Unset, int]):

@@ -51,6 +51,8 @@ def sync_detailed(
 ) -> Response[MaintenanceActionResponse]:
     """Cancel the maintenance announcement
 
+     Transitions a 'Draft' or 'Scheduled' maintenance announcement to 'Cancelled'.
+
     Args:
         uuid (UUID):
 
@@ -80,6 +82,8 @@ def sync(
 ) -> MaintenanceActionResponse:
     """Cancel the maintenance announcement
 
+     Transitions a 'Draft' or 'Scheduled' maintenance announcement to 'Cancelled'.
+
     Args:
         uuid (UUID):
 
@@ -103,6 +107,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[MaintenanceActionResponse]:
     """Cancel the maintenance announcement
+
+     Transitions a 'Draft' or 'Scheduled' maintenance announcement to 'Cancelled'.
 
     Args:
         uuid (UUID):
@@ -130,6 +136,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> MaintenanceActionResponse:
     """Cancel the maintenance announcement
+
+     Transitions a 'Draft' or 'Scheduled' maintenance announcement to 'Cancelled'.
 
     Args:
         uuid (UUID):

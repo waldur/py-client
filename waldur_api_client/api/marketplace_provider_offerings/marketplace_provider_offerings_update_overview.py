@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingOverviewUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering overview
+
+     Updates the overview fields of an offering, such as name, description, and getting started guide.
+
     Args:
         uuid (UUID):
         body (OfferingOverviewUpdateRequest):
@@ -84,7 +87,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingOverviewUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering overview
+
+     Updates the overview fields of an offering, such as name, description, and getting started guide.
+
     Args:
         uuid (UUID):
         body (OfferingOverviewUpdateRequest):

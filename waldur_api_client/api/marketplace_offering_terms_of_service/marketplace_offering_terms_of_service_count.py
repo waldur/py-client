@@ -98,7 +98,9 @@ def sync_detailed(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List Terms of Service configurations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         is_active (Union[Unset, bool]):
@@ -148,7 +150,9 @@ def sync(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List Terms of Service configurations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         is_active (Union[Unset, bool]):
@@ -193,7 +197,9 @@ async def asyncio_detailed(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List Terms of Service configurations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         is_active (Union[Unset, bool]):
@@ -241,7 +247,9 @@ async def asyncio(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List Terms of Service configurations
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         is_active (Union[Unset, bool]):

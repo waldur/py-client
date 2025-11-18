@@ -45,7 +45,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DetailState]:
-    """
+    """Move an offering to draft
+
+     Moves an active or paused offering back to the draft state for editing.
+
     Args:
         uuid (UUID):
 
@@ -73,7 +76,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> DetailState:
-    """
+    """Move an offering to draft
+
+     Moves an active or paused offering back to the draft state for editing.
+
     Args:
         uuid (UUID):
 
@@ -96,7 +102,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DetailState]:
-    """
+    """Move an offering to draft
+
+     Moves an active or paused offering back to the draft state for editing.
+
     Args:
         uuid (UUID):
 
@@ -122,7 +131,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> DetailState:
-    """
+    """Move an offering to draft
+
+     Moves an active or paused offering back to the draft state for editing.
+
     Args:
         uuid (UUID):
 

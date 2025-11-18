@@ -23,9 +23,9 @@ def _get_kwargs(
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 403:
-        return None
     if response.status_code == 204:
+        return None
+    if response.status_code == 403:
         return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
@@ -44,7 +44,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Unlink an order (staff only)
+
+     Forcefully deletes an order from the database without affecting the backend resource. This is a
+    staff-only administrative action used to clean up stuck or invalid orders.
+
     Args:
         uuid (UUID):
 
@@ -72,7 +76,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Unlink an order (staff only)
+
+     Forcefully deletes an order from the database without affecting the backend resource. This is a
+    staff-only administrative action used to clean up stuck or invalid orders.
+
     Args:
         uuid (UUID):
 

@@ -130,7 +130,12 @@ def sync_detailed(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[PublicMaintenanceAnnouncementsListStateItem]] = UNSET,
 ) -> Response[list["PublicMaintenanceAnnouncement"]]:
-    """
+    """List public maintenance announcements
+
+     Returns a paginated list of public maintenance announcements. Only announcements that are
+    'Scheduled', 'In progress', or 'Completed' are visible. This endpoint is accessible to
+    unauthenticated users.
+
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[PublicMaintenanceAnnouncementsListOItem]]):
@@ -185,7 +190,12 @@ def sync(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[PublicMaintenanceAnnouncementsListStateItem]] = UNSET,
 ) -> list["PublicMaintenanceAnnouncement"]:
-    """
+    """List public maintenance announcements
+
+     Returns a paginated list of public maintenance announcements. Only announcements that are
+    'Scheduled', 'In progress', or 'Completed' are visible. This endpoint is accessible to
+    unauthenticated users.
+
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[PublicMaintenanceAnnouncementsListOItem]]):
@@ -235,7 +245,12 @@ async def asyncio_detailed(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[PublicMaintenanceAnnouncementsListStateItem]] = UNSET,
 ) -> Response[list["PublicMaintenanceAnnouncement"]]:
-    """
+    """List public maintenance announcements
+
+     Returns a paginated list of public maintenance announcements. Only announcements that are
+    'Scheduled', 'In progress', or 'Completed' are visible. This endpoint is accessible to
+    unauthenticated users.
+
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[PublicMaintenanceAnnouncementsListOItem]]):
@@ -288,7 +303,12 @@ async def asyncio(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[PublicMaintenanceAnnouncementsListStateItem]] = UNSET,
 ) -> list["PublicMaintenanceAnnouncement"]:
-    """
+    """List public maintenance announcements
+
+     Returns a paginated list of public maintenance announcements. Only announcements that are
+    'Scheduled', 'In progress', or 'Completed' are visible. This endpoint is accessible to
+    unauthenticated users.
+
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[PublicMaintenanceAnnouncementsListOItem]]):

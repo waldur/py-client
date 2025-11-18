@@ -143,7 +143,10 @@ def sync_detailed(
     user_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["SshKey"]]:
-    """Return SSH keys of service provider.
+    """List SSH keys of a service provider
+
+     Returns a paginated list of SSH public keys for all users who have consumed resources from the
+    specified service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -214,7 +217,10 @@ def sync(
     user_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["SshKey"]:
-    """Return SSH keys of service provider.
+    """List SSH keys of a service provider
+
+     Returns a paginated list of SSH public keys for all users who have consumed resources from the
+    specified service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -280,7 +286,10 @@ async def asyncio_detailed(
     user_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["SshKey"]]:
-    """Return SSH keys of service provider.
+    """List SSH keys of a service provider
+
+     Returns a paginated list of SSH public keys for all users who have consumed resources from the
+    specified service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -349,7 +358,10 @@ async def asyncio(
     user_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["SshKey"]:
-    """Return SSH keys of service provider.
+    """List SSH keys of a service provider
+
+     Returns a paginated list of SSH public keys for all users who have consumed resources from the
+    specified service provider.
 
     Args:
         service_provider_uuid (UUID):

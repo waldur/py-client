@@ -58,7 +58,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectServiceAccountRequest,
 ) -> Response[ProjectServiceAccount]:
-    """
+    """Update a service account
+
     Args:
         uuid (UUID):
         body (ProjectServiceAccountRequest):
@@ -89,7 +90,8 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectServiceAccountRequest,
 ) -> ProjectServiceAccount:
-    """
+    """Update a service account
+
     Args:
         uuid (UUID):
         body (ProjectServiceAccountRequest):
@@ -115,7 +117,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectServiceAccountRequest,
 ) -> Response[ProjectServiceAccount]:
-    """
+    """Update a service account
+
     Args:
         uuid (UUID):
         body (ProjectServiceAccountRequest):
@@ -144,7 +147,8 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectServiceAccountRequest,
 ) -> ProjectServiceAccount:
-    """
+    """Update a service account
+
     Args:
         uuid (UUID):
         body (ProjectServiceAccountRequest):

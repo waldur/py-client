@@ -70,7 +70,9 @@ def sync_detailed(
         OfferingThumbnailRequestMultipart,
     ],
 ) -> Response[Any]:
-    """Update offering thumbnail.
+    """Update offering thumbnail
+
+     Uploads or replaces the thumbnail image for an offering.
 
     Args:
         uuid (UUID):
@@ -108,7 +110,9 @@ async def asyncio_detailed(
         OfferingThumbnailRequestMultipart,
     ],
 ) -> Response[Any]:
-    """Update offering thumbnail.
+    """Update offering thumbnail
+
+     Uploads or replaces the thumbnail image for an offering.
 
     Args:
         uuid (UUID):

@@ -56,7 +56,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MoveResourceRequest,
 ) -> Response[Resource]:
-    """Move resource to another project.
+    """Move a resource to another project
+
+     Moves a resource and its associated data to a different project. Requires staff permissions.
 
     Args:
         uuid (UUID):
@@ -88,7 +90,9 @@ def sync(
     client: AuthenticatedClient,
     body: MoveResourceRequest,
 ) -> Resource:
-    """Move resource to another project.
+    """Move a resource to another project
+
+     Moves a resource and its associated data to a different project. Requires staff permissions.
 
     Args:
         uuid (UUID):
@@ -115,7 +119,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MoveResourceRequest,
 ) -> Response[Resource]:
-    """Move resource to another project.
+    """Move a resource to another project
+
+     Moves a resource and its associated data to a different project. Requires staff permissions.
 
     Args:
         uuid (UUID):
@@ -145,7 +151,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: MoveResourceRequest,
 ) -> Resource:
-    """Move resource to another project.
+    """Move a resource to another project
+
+     Moves a resource and its associated data to a different project. Requires staff permissions.
 
     Args:
         uuid (UUID):

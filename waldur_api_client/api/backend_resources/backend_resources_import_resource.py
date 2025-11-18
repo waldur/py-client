@@ -56,7 +56,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BackendResourceImportRequest,
 ) -> Response[Resource]:
-    """
+    """Import a backend resource (staff only)
+
+
+            Converts a backend resource into a full marketplace resource. This action is restricted to
+    staff users.
+            Upon successful import, the original backend resource record is deleted. A fake order in the
+    'done'
+            state is created to represent the import event.
+
+
     Args:
         uuid (UUID):
         body (BackendResourceImportRequest):
@@ -87,7 +96,16 @@ def sync(
     client: AuthenticatedClient,
     body: BackendResourceImportRequest,
 ) -> Resource:
-    """
+    """Import a backend resource (staff only)
+
+
+            Converts a backend resource into a full marketplace resource. This action is restricted to
+    staff users.
+            Upon successful import, the original backend resource record is deleted. A fake order in the
+    'done'
+            state is created to represent the import event.
+
+
     Args:
         uuid (UUID):
         body (BackendResourceImportRequest):
@@ -113,7 +131,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BackendResourceImportRequest,
 ) -> Response[Resource]:
-    """
+    """Import a backend resource (staff only)
+
+
+            Converts a backend resource into a full marketplace resource. This action is restricted to
+    staff users.
+            Upon successful import, the original backend resource record is deleted. A fake order in the
+    'done'
+            state is created to represent the import event.
+
+
     Args:
         uuid (UUID):
         body (BackendResourceImportRequest):
@@ -142,7 +169,16 @@ async def asyncio(
     client: AuthenticatedClient,
     body: BackendResourceImportRequest,
 ) -> Resource:
-    """
+    """Import a backend resource (staff only)
+
+
+            Converts a backend resource into a full marketplace resource. This action is restricted to
+    staff users.
+            Upon successful import, the original backend resource record is deleted. A fake order in the
+    'done'
+            state is created to represent the import event.
+
+
     Args:
         uuid (UUID):
         body (BackendResourceImportRequest):

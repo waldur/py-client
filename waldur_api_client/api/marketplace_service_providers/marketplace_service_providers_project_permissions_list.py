@@ -168,7 +168,10 @@ def sync_detailed(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectPermissionLog"]]:
-    """Return project permissions of service provider.
+    """List project permissions of a service provider
+
+     Returns a paginated list of project permissions for all projects that have consumed resources from
+    the specified service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -251,7 +254,10 @@ def sync(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ProjectPermissionLog"]:
-    """Return project permissions of service provider.
+    """List project permissions of a service provider
+
+     Returns a paginated list of project permissions for all projects that have consumed resources from
+    the specified service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -329,7 +335,10 @@ async def asyncio_detailed(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectPermissionLog"]]:
-    """Return project permissions of service provider.
+    """List project permissions of a service provider
+
+     Returns a paginated list of project permissions for all projects that have consumed resources from
+    the specified service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -410,7 +419,10 @@ async def asyncio(
     user_url: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ProjectPermissionLog"]:
-    """Return project permissions of service provider.
+    """List project permissions of a service provider
+
+     Returns a paginated list of project permissions for all projects that have consumed resources from
+    the specified service provider.
 
     Args:
         service_provider_uuid (UUID):

@@ -52,7 +52,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list["ProjectUser"]]:
-    """Return users connected to the project.
+    """Get resource team
+
+     Returns a list of users connected to the project of this resource, including their project roles and
+    offering-specific usernames.
 
     Args:
         uuid (UUID):
@@ -81,7 +84,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list["ProjectUser"]:
-    """Return users connected to the project.
+    """Get resource team
+
+     Returns a list of users connected to the project of this resource, including their project roles and
+    offering-specific usernames.
 
     Args:
         uuid (UUID):
@@ -105,7 +111,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list["ProjectUser"]]:
-    """Return users connected to the project.
+    """Get resource team
+
+     Returns a list of users connected to the project of this resource, including their project roles and
+    offering-specific usernames.
 
     Args:
         uuid (UUID):
@@ -132,7 +141,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list["ProjectUser"]:
-    """Return users connected to the project.
+    """Get resource team
+
+     Returns a list of users connected to the project of this resource, including their project roles and
+    offering-specific usernames.
 
     Args:
         uuid (UUID):

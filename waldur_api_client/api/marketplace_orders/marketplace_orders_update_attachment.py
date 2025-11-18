@@ -75,7 +75,9 @@ def sync_detailed(
         OrderAttachmentRequestMultipart,
     ],
 ) -> Response[OrderAttachment]:
-    """Update the attachment for a pending order.
+    """Update order attachment
+
+     Allows uploading or replacing a file attachment (e.g., a purchase order) for a pending order.
 
     Args:
         uuid (UUID):
@@ -113,7 +115,9 @@ def sync(
         OrderAttachmentRequestMultipart,
     ],
 ) -> OrderAttachment:
-    """Update the attachment for a pending order.
+    """Update order attachment
+
+     Allows uploading or replacing a file attachment (e.g., a purchase order) for a pending order.
 
     Args:
         uuid (UUID):
@@ -146,7 +150,9 @@ async def asyncio_detailed(
         OrderAttachmentRequestMultipart,
     ],
 ) -> Response[OrderAttachment]:
-    """Update the attachment for a pending order.
+    """Update order attachment
+
+     Allows uploading or replacing a file attachment (e.g., a purchase order) for a pending order.
 
     Args:
         uuid (UUID):
@@ -182,7 +188,9 @@ async def asyncio(
         OrderAttachmentRequestMultipart,
     ],
 ) -> OrderAttachment:
-    """Update the attachment for a pending order.
+    """Update order attachment
+
+     Allows uploading or replacing a file attachment (e.g., a purchase order) for a pending order.
 
     Args:
         uuid (UUID):

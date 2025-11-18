@@ -33,7 +33,7 @@ def _get_kwargs(
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
+    if response.status_code == 204:
         return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RemovePartitionRequest,
 ) -> Response[Any]:
-    """Remove partition from offering.
+    """Remove a partition from an offering
+
+     Removes a partition configuration from an offering.
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RemovePartitionRequest,
 ) -> Response[Any]:
-    """Remove partition from offering.
+    """Remove a partition from an offering
+
+     Removes a partition configuration from an offering.
 
     Args:
         uuid (UUID):

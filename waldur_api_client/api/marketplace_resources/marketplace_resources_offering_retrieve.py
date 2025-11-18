@@ -47,7 +47,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[PublicOfferingDetails]:
-    """
+    """Get offering details
+
+     Returns details of the offering connected to the requested object.
+
     Args:
         uuid (UUID):
 
@@ -75,7 +78,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> PublicOfferingDetails:
-    """
+    """Get offering details
+
+     Returns details of the offering connected to the requested object.
+
     Args:
         uuid (UUID):
 
@@ -98,7 +104,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[PublicOfferingDetails]:
-    """
+    """Get offering details
+
+     Returns details of the offering connected to the requested object.
+
     Args:
         uuid (UUID):
 
@@ -124,7 +133,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> PublicOfferingDetails:
-    """
+    """Get offering details
+
+     Returns details of the offering connected to the requested object.
+
     Args:
         uuid (UUID):
 

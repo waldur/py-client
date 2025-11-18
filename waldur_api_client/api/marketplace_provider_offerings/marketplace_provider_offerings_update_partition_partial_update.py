@@ -58,7 +58,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOfferingPartitionUpdateRequest,
 ) -> Response[OfferingPartition]:
-    """Update partition configuration for offering.
+    """Update a partition of an offering
+
+     Updates the configuration of an existing partition associated with an offering.
 
     Args:
         uuid (UUID):
@@ -90,7 +92,9 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOfferingPartitionUpdateRequest,
 ) -> OfferingPartition:
-    """Update partition configuration for offering.
+    """Update a partition of an offering
+
+     Updates the configuration of an existing partition associated with an offering.
 
     Args:
         uuid (UUID):
@@ -117,7 +121,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOfferingPartitionUpdateRequest,
 ) -> Response[OfferingPartition]:
-    """Update partition configuration for offering.
+    """Update a partition of an offering
+
+     Updates the configuration of an existing partition associated with an offering.
 
     Args:
         uuid (UUID):
@@ -147,7 +153,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOfferingPartitionUpdateRequest,
 ) -> OfferingPartition:
-    """Update partition configuration for offering.
+    """Update a partition of an offering
+
+     Updates the configuration of an existing partition associated with an offering.
 
     Args:
         uuid (UUID):

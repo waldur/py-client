@@ -49,7 +49,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ServiceProviderApiSecretCode]:
-    """Return service provider API secret code.
+    """Get service provider API secret code
+
+     Returns the API secret code for a service provider. Requires service provider owner permission.
 
     Args:
         uuid (UUID):
@@ -78,7 +80,9 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ServiceProviderApiSecretCode:
-    """Return service provider API secret code.
+    """Get service provider API secret code
+
+     Returns the API secret code for a service provider. Requires service provider owner permission.
 
     Args:
         uuid (UUID):
@@ -102,7 +106,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ServiceProviderApiSecretCode]:
-    """Return service provider API secret code.
+    """Get service provider API secret code
+
+     Returns the API secret code for a service provider. Requires service provider owner permission.
 
     Args:
         uuid (UUID):
@@ -129,7 +135,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ServiceProviderApiSecretCode:
-    """Return service provider API secret code.
+    """Get service provider API secret code
+
+     Returns the API secret code for a service provider. Requires service provider owner permission.
 
     Args:
         uuid (UUID):

@@ -75,7 +75,10 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> Response[list["CategoryColumn"]]:
-    """
+    """List category columns
+
+     Returns a paginated list of category columns used for resource table rendering.
+
     Args:
         category_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -112,7 +115,10 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> list["CategoryColumn"]:
-    """
+    """List category columns
+
+     Returns a paginated list of category columns used for resource table rendering.
+
     Args:
         category_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -144,7 +150,10 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> Response[list["CategoryColumn"]]:
-    """
+    """List category columns
+
+     Returns a paginated list of category columns used for resource table rendering.
+
     Args:
         category_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -179,7 +188,10 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> list["CategoryColumn"]:
-    """
+    """List category columns
+
+     Returns a paginated list of category columns used for resource table rendering.
+
     Args:
         category_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):

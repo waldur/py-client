@@ -57,7 +57,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingTermsOfServiceCreateRequest,
 ) -> Response[OfferingTermsOfServiceCreate]:
-    """
+    """Create a Terms of Service configuration
+
+     Creates a new Terms of Service configuration for an offering. Only one active ToS configuration is
+    allowed per offering.
+
     Args:
         body (OfferingTermsOfServiceCreateRequest):
 
@@ -85,7 +89,11 @@ def sync(
     client: AuthenticatedClient,
     body: OfferingTermsOfServiceCreateRequest,
 ) -> OfferingTermsOfServiceCreate:
-    """
+    """Create a Terms of Service configuration
+
+     Creates a new Terms of Service configuration for an offering. Only one active ToS configuration is
+    allowed per offering.
+
     Args:
         body (OfferingTermsOfServiceCreateRequest):
 
@@ -108,7 +116,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingTermsOfServiceCreateRequest,
 ) -> Response[OfferingTermsOfServiceCreate]:
-    """
+    """Create a Terms of Service configuration
+
+     Creates a new Terms of Service configuration for an offering. Only one active ToS configuration is
+    allowed per offering.
+
     Args:
         body (OfferingTermsOfServiceCreateRequest):
 
@@ -134,7 +146,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OfferingTermsOfServiceCreateRequest,
 ) -> OfferingTermsOfServiceCreate:
-    """
+    """Create a Terms of Service configuration
+
+     Creates a new Terms of Service configuration for an offering. Only one active ToS configuration is
+    allowed per offering.
+
     Args:
         body (OfferingTermsOfServiceCreateRequest):
 

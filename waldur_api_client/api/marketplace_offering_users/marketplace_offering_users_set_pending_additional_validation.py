@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingUserStateTransitionRequest,
 ) -> Response[Any]:
-    """
+    """Set state to Pending Additional Validation
+
+     Transitions the state to 'Pending Additional Validation' and allows a service provider to add a
+    comment and a URL for the user to follow.
+
     Args:
         uuid (UUID):
         body (OfferingUserStateTransitionRequest):
@@ -84,7 +88,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingUserStateTransitionRequest,
 ) -> Response[Any]:
-    """
+    """Set state to Pending Additional Validation
+
+     Transitions the state to 'Pending Additional Validation' and allows a service provider to add a
+    comment and a URL for the user to follow.
+
     Args:
         uuid (UUID):
         body (OfferingUserStateTransitionRequest):

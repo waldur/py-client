@@ -72,7 +72,10 @@ def sync_detailed(
         ServiceProviderRequestMultipart,
     ],
 ) -> Response[ServiceProvider]:
-    """
+    """Create a service provider
+
+     Creates a new service provider profile for a customer.
+
     Args:
         body (ServiceProviderRequest):
         body (ServiceProviderRequestForm):
@@ -106,7 +109,10 @@ def sync(
         ServiceProviderRequestMultipart,
     ],
 ) -> ServiceProvider:
-    """
+    """Create a service provider
+
+     Creates a new service provider profile for a customer.
+
     Args:
         body (ServiceProviderRequest):
         body (ServiceProviderRequestForm):
@@ -135,7 +141,10 @@ async def asyncio_detailed(
         ServiceProviderRequestMultipart,
     ],
 ) -> Response[ServiceProvider]:
-    """
+    """Create a service provider
+
+     Creates a new service provider profile for a customer.
+
     Args:
         body (ServiceProviderRequest):
         body (ServiceProviderRequestForm):
@@ -167,7 +176,10 @@ async def asyncio(
         ServiceProviderRequestMultipart,
     ],
 ) -> ServiceProvider:
-    """
+    """Create a service provider
+
+     Creates a new service provider profile for a customer.
+
     Args:
         body (ServiceProviderRequest):
         body (ServiceProviderRequestForm):

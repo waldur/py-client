@@ -56,7 +56,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceTerminateRequest,
 ) -> Response[OrderUUID]:
-    """Create marketplace order for resource termination.
+    """Terminate a resource
+
+     Creates a marketplace order to terminate the resource. This action is asynchronous and may require
+    approval.
 
     Args:
         uuid (UUID):
@@ -88,7 +91,10 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceTerminateRequest,
 ) -> OrderUUID:
-    """Create marketplace order for resource termination.
+    """Terminate a resource
+
+     Creates a marketplace order to terminate the resource. This action is asynchronous and may require
+    approval.
 
     Args:
         uuid (UUID):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceTerminateRequest,
 ) -> Response[OrderUUID]:
-    """Create marketplace order for resource termination.
+    """Terminate a resource
+
+     Creates a marketplace order to terminate the resource. This action is asynchronous and may require
+    approval.
 
     Args:
         uuid (UUID):
@@ -145,7 +154,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceTerminateRequest,
 ) -> OrderUUID:
-    """Create marketplace order for resource termination.
+    """Terminate a resource
+
+     Creates a marketplace order to terminate the resource. This action is asynchronous and may require
+    approval.
 
     Args:
         uuid (UUID):

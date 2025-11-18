@@ -45,7 +45,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DetailState]:
-    """
+    """Unpause an offering
+
+     Resumes a paused offering, making it available for ordering again.
+
     Args:
         uuid (UUID):
 
@@ -73,7 +76,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> DetailState:
-    """
+    """Unpause an offering
+
+     Resumes a paused offering, making it available for ordering again.
+
     Args:
         uuid (UUID):
 
@@ -96,7 +102,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DetailState]:
-    """
+    """Unpause an offering
+
+     Resumes a paused offering, making it available for ordering again.
+
     Args:
         uuid (UUID):
 
@@ -122,7 +131,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> DetailState:
-    """
+    """Unpause an offering
+
+     Resumes a paused offering, making it available for ordering again.
+
     Args:
         uuid (UUID):
 

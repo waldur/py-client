@@ -112,7 +112,11 @@ def sync_detailed(
     user_uuid: Union[Unset, UUID] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[list["UserOfferingConsent"]]:
-    """
+    """List user offering consents
+
+     Returns a paginated list of Terms of Service consents for the current user. Staff and support users
+    can see all consents.
+
     Args:
         has_consent (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]]):
@@ -167,7 +171,11 @@ def sync(
     user_uuid: Union[Unset, UUID] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["UserOfferingConsent"]:
-    """
+    """List user offering consents
+
+     Returns a paginated list of Terms of Service consents for the current user. Staff and support users
+    can see all consents.
+
     Args:
         has_consent (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]]):
@@ -217,7 +225,11 @@ async def asyncio_detailed(
     user_uuid: Union[Unset, UUID] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[list["UserOfferingConsent"]]:
-    """
+    """List user offering consents
+
+     Returns a paginated list of Terms of Service consents for the current user. Staff and support users
+    can see all consents.
+
     Args:
         has_consent (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]]):
@@ -270,7 +282,11 @@ async def asyncio(
     user_uuid: Union[Unset, UUID] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["UserOfferingConsent"]:
-    """
+    """List user offering consents
+
+     Returns a paginated list of Terms of Service consents for the current user. Staff and support users
+    can see all consents.
+
     Args:
         has_consent (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]]):

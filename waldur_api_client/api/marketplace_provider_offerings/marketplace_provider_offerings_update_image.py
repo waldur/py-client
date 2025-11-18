@@ -9,7 +9,6 @@ from ...client import AuthenticatedClient, Client
 from ...models.offering_image_request import OfferingImageRequest
 from ...models.offering_image_request_form import OfferingImageRequestForm
 from ...models.offering_image_request_multipart import OfferingImageRequestMultipart
-from ...models.provider_offering_details import ProviderOfferingDetails
 from ...types import Response
 
 
@@ -44,19 +43,15 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ProviderOfferingDetails:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ProviderOfferingDetails.from_dict(response.json())
-
-        return response_200
+        return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ProviderOfferingDetails]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,8 +69,10 @@ def sync_detailed(
         OfferingImageRequestForm,
         OfferingImageRequestMultipart,
     ],
-) -> Response[ProviderOfferingDetails]:
-    """Update offering image.
+) -> Response[Any]:
+    """Update offering image
+
+     Uploads or replaces the main image for an offering.
 
     Args:
         uuid (UUID):
@@ -88,7 +85,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProviderOfferingDetails]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -103,39 +100,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    uuid: UUID,
-    *,
-    client: AuthenticatedClient,
-    body: Union[
-        OfferingImageRequest,
-        OfferingImageRequestForm,
-        OfferingImageRequestMultipart,
-    ],
-) -> ProviderOfferingDetails:
-    """Update offering image.
-
-    Args:
-        uuid (UUID):
-        body (OfferingImageRequest):
-        body (OfferingImageRequestForm):
-        body (OfferingImageRequestMultipart):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ProviderOfferingDetails
-    """
-
-    return sync_detailed(
-        uuid=uuid,
-        client=client,
-        body=body,
-    ).parsed
-
-
 async def asyncio_detailed(
     uuid: UUID,
     *,
@@ -145,8 +109,10 @@ async def asyncio_detailed(
         OfferingImageRequestForm,
         OfferingImageRequestMultipart,
     ],
-) -> Response[ProviderOfferingDetails]:
-    """Update offering image.
+) -> Response[Any]:
+    """Update offering image
+
+     Uploads or replaces the main image for an offering.
 
     Args:
         uuid (UUID):
@@ -159,7 +125,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProviderOfferingDetails]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -170,38 +136,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    uuid: UUID,
-    *,
-    client: AuthenticatedClient,
-    body: Union[
-        OfferingImageRequest,
-        OfferingImageRequestForm,
-        OfferingImageRequestMultipart,
-    ],
-) -> ProviderOfferingDetails:
-    """Update offering image.
-
-    Args:
-        uuid (UUID):
-        body (OfferingImageRequest):
-        body (OfferingImageRequestForm):
-        body (OfferingImageRequestMultipart):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        ProviderOfferingDetails
-    """
-
-    return (
-        await asyncio_detailed(
-            uuid=uuid,
-            client=client,
-            body=body,
-        )
-    ).parsed

@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Refresh the last sync time for a resource.
+    """Refresh last sync time
+
+     Updates the 'last_sync' timestamp for a resource to the current time. This is useful for backend
+    agents to signal that a resource is being actively monitored.
 
     Args:
         uuid (UUID):
@@ -71,7 +74,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Refresh the last sync time for a resource.
+    """Refresh last sync time
+
+     Updates the 'last_sync' timestamp for a resource to the current time. This is useful for backend
+    agents to signal that a resource is being actively monitored.
 
     Args:
         uuid (UUID):

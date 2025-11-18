@@ -110,7 +110,9 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List checklist completions for offering users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -160,7 +162,9 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List checklist completions for offering users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -205,7 +209,9 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List checklist completions for offering users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -253,7 +259,9 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List checklist completions for offering users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):

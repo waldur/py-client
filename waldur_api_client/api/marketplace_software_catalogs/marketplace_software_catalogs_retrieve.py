@@ -47,7 +47,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SoftwareCatalog]:
-    """
+    """Retrieve a software catalog
+
+     Returns the details of a specific software catalog, including its name, version, and the number of
+    packages it contains.
+
     Args:
         uuid (UUID):
 
@@ -75,7 +79,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> SoftwareCatalog:
-    """
+    """Retrieve a software catalog
+
+     Returns the details of a specific software catalog, including its name, version, and the number of
+    packages it contains.
+
     Args:
         uuid (UUID):
 
@@ -98,7 +106,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SoftwareCatalog]:
-    """
+    """Retrieve a software catalog
+
+     Returns the details of a specific software catalog, including its name, version, and the number of
+    packages it contains.
+
     Args:
         uuid (UUID):
 
@@ -124,7 +136,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> SoftwareCatalog:
-    """
+    """Retrieve a software catalog
+
+     Returns the details of a specific software catalog, including its name, version, and the number of
+    packages it contains.
+
     Args:
         uuid (UUID):
 

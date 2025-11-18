@@ -60,7 +60,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingTemplateRequest,
 ) -> Response[MaintenanceAnnouncementOfferingTemplate]:
-    """
+    """Update an affected offering template link
+
+     Updates the default impact level or description for an offering linked to a maintenance template.
+
     Args:
         uuid (UUID):
         body (MaintenanceAnnouncementOfferingTemplateRequest):
@@ -91,7 +94,10 @@ def sync(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingTemplateRequest,
 ) -> MaintenanceAnnouncementOfferingTemplate:
-    """
+    """Update an affected offering template link
+
+     Updates the default impact level or description for an offering linked to a maintenance template.
+
     Args:
         uuid (UUID):
         body (MaintenanceAnnouncementOfferingTemplateRequest):
@@ -117,7 +123,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingTemplateRequest,
 ) -> Response[MaintenanceAnnouncementOfferingTemplate]:
-    """
+    """Update an affected offering template link
+
+     Updates the default impact level or description for an offering linked to a maintenance template.
+
     Args:
         uuid (UUID):
         body (MaintenanceAnnouncementOfferingTemplateRequest):
@@ -146,7 +155,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingTemplateRequest,
 ) -> MaintenanceAnnouncementOfferingTemplate:
-    """
+    """Update an affected offering template link
+
+     Updates the default impact level or description for an offering linked to a maintenance template.
+
     Args:
         uuid (UUID):
         body (MaintenanceAnnouncementOfferingTemplateRequest):

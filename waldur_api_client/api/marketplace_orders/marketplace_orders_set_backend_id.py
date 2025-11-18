@@ -6,6 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_orders_set_backend_id_response_200 import MarketplaceOrdersSetBackendIdResponse200
 from ...models.order_backend_id_request import OrderBackendIDRequest
 from ...types import Response
 
@@ -30,15 +31,21 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> MarketplaceOrdersSetBackendIdResponse200:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        return None
+        response_200 = MarketplaceOrdersSetBackendIdResponse200.from_dict(response.json())
+
+        return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[MarketplaceOrdersSetBackendIdResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -52,8 +59,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: OrderBackendIDRequest,
-) -> Response[Any]:
-    """
+) -> Response[MarketplaceOrdersSetBackendIdResponse200]:
+    """Set order backend ID
+
+     Allows a service provider or staff to set or update the backend ID associated with an order. This is
+    useful for linking the order to an external system's identifier.
+
     Args:
         uuid (UUID):
         body (OrderBackendIDRequest):
@@ -63,7 +74,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[MarketplaceOrdersSetBackendIdResponse200]
     """
 
     kwargs = _get_kwargs(
@@ -78,13 +89,17 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: OrderBackendIDRequest,
-) -> Response[Any]:
-    """
+) -> MarketplaceOrdersSetBackendIdResponse200:
+    """Set order backend ID
+
+     Allows a service provider or staff to set or update the backend ID associated with an order. This is
+    useful for linking the order to an external system's identifier.
+
     Args:
         uuid (UUID):
         body (OrderBackendIDRequest):
@@ -94,7 +109,37 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        MarketplaceOrdersSetBackendIdResponse200
+    """
+
+    return sync_detailed(
+        uuid=uuid,
+        client=client,
+        body=body,
+    ).parsed
+
+
+async def asyncio_detailed(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: OrderBackendIDRequest,
+) -> Response[MarketplaceOrdersSetBackendIdResponse200]:
+    """Set order backend ID
+
+     Allows a service provider or staff to set or update the backend ID associated with an order. This is
+    useful for linking the order to an external system's identifier.
+
+    Args:
+        uuid (UUID):
+        body (OrderBackendIDRequest):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[MarketplaceOrdersSetBackendIdResponse200]
     """
 
     kwargs = _get_kwargs(
@@ -105,3 +150,35 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: OrderBackendIDRequest,
+) -> MarketplaceOrdersSetBackendIdResponse200:
+    """Set order backend ID
+
+     Allows a service provider or staff to set or update the backend ID associated with an order. This is
+    useful for linking the order to an external system's identifier.
+
+    Args:
+        uuid (UUID):
+        body (OrderBackendIDRequest):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        MarketplaceOrdersSetBackendIdResponse200
+    """
+
+    return (
+        await asyncio_detailed(
+            uuid=uuid,
+            client=client,
+            body=body,
+        )
+    ).parsed

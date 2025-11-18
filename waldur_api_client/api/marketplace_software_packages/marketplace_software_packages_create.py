@@ -55,7 +55,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: SoftwarePackageRequest,
 ) -> Response[SoftwarePackage]:
-    """
+    """Create a software package
+
+     Creates a new software package within a catalog. Requires staff permissions.
+
     Args:
         body (SoftwarePackageRequest):
 
@@ -83,7 +86,10 @@ def sync(
     client: AuthenticatedClient,
     body: SoftwarePackageRequest,
 ) -> SoftwarePackage:
-    """
+    """Create a software package
+
+     Creates a new software package within a catalog. Requires staff permissions.
+
     Args:
         body (SoftwarePackageRequest):
 
@@ -106,7 +112,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: SoftwarePackageRequest,
 ) -> Response[SoftwarePackage]:
-    """
+    """Create a software package
+
+     Creates a new software package within a catalog. Requires staff permissions.
+
     Args:
         body (SoftwarePackageRequest):
 
@@ -132,7 +141,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: SoftwarePackageRequest,
 ) -> SoftwarePackage:
-    """
+    """Create a software package
+
+     Creates a new software package within a catalog. Requires staff permissions.
+
     Args:
         body (SoftwarePackageRequest):
 

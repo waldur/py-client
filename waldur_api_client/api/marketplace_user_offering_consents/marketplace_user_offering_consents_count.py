@@ -109,7 +109,9 @@ def sync_detailed(
     user_uuid: Union[Unset, UUID] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List user offering consents
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         has_consent (Union[Unset, bool]):
@@ -165,7 +167,9 @@ def sync(
     user_uuid: Union[Unset, UUID] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List user offering consents
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         has_consent (Union[Unset, bool]):
@@ -216,7 +220,9 @@ async def asyncio_detailed(
     user_uuid: Union[Unset, UUID] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List user offering consents
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         has_consent (Union[Unset, bool]):
@@ -270,7 +276,9 @@ async def asyncio(
     user_uuid: Union[Unset, UUID] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List user offering consents
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         has_consent (Union[Unset, bool]):

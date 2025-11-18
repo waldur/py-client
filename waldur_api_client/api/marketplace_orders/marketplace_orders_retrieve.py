@@ -63,7 +63,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]] = UNSET,
 ) -> Response[OrderDetails]:
-    """
+    """Retrieve an order
+
+     Returns the details of a specific order.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]]):
@@ -94,7 +97,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]] = UNSET,
 ) -> OrderDetails:
-    """
+    """Retrieve an order
+
+     Returns the details of a specific order.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]]):
@@ -120,7 +126,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]] = UNSET,
 ) -> Response[OrderDetails]:
-    """
+    """Retrieve an order
+
+     Returns the details of a specific order.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]]):
@@ -149,7 +158,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]] = UNSET,
 ) -> OrderDetails:
-    """
+    """Retrieve an order
+
+     Returns the details of a specific order.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]]):

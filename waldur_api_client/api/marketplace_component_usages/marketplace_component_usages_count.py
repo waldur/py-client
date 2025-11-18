@@ -141,7 +141,9 @@ def sync_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List component usage records
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         billing_period (Union[Unset, datetime.date]):
@@ -209,7 +211,9 @@ def sync(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List component usage records
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         billing_period (Union[Unset, datetime.date]):
@@ -272,7 +276,9 @@ async def asyncio_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List component usage records
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         billing_period (Union[Unset, datetime.date]):
@@ -338,7 +344,9 @@ async def asyncio(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List component usage records
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         billing_period (Union[Unset, datetime.date]):

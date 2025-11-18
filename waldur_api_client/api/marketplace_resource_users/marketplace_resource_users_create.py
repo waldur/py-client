@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceUserRequest,
 ) -> Response[ResourceUser]:
-    """
+    """Link a user to a resource
+
+     Creates a new association between a user and a resource with a specific role. The user must have
+    permission to manage users for the resource (typically service provider staff or owners).
+
     Args:
         body (ResourceUserRequest):
 
@@ -81,7 +85,11 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceUserRequest,
 ) -> ResourceUser:
-    """
+    """Link a user to a resource
+
+     Creates a new association between a user and a resource with a specific role. The user must have
+    permission to manage users for the resource (typically service provider staff or owners).
+
     Args:
         body (ResourceUserRequest):
 
@@ -104,7 +112,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceUserRequest,
 ) -> Response[ResourceUser]:
-    """
+    """Link a user to a resource
+
+     Creates a new association between a user and a resource with a specific role. The user must have
+    permission to manage users for the resource (typically service provider staff or owners).
+
     Args:
         body (ResourceUserRequest):
 
@@ -130,7 +142,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceUserRequest,
 ) -> ResourceUser:
-    """
+    """Link a user to a resource
+
+     Creates a new association between a user and a resource with a specific role. The user must have
+    permission to manage users for the resource (typically service provider staff or owners).
+
     Args:
         body (ResourceUserRequest):
 

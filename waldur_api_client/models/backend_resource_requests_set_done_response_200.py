@@ -1,28 +1,43 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="BackendResourceRequestsSetDoneResponse200")
 
 
 @_attrs_define
 class BackendResourceRequestsSetDoneResponse200:
-    """ """
+    """
+    Attributes:
+        status (Union[Unset, str]):
+    """
 
+    status: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        status = self.status
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if status is not UNSET:
+            field_dict["status"] = status
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        backend_resource_requests_set_done_response_200 = cls()
+        status = d.pop("status", UNSET)
+
+        backend_resource_requests_set_done_response_200 = cls(
+            status=status,
+        )
 
         backend_resource_requests_set_done_response_200.additional_properties = d
         return backend_resource_requests_set_done_response_200

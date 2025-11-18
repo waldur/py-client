@@ -51,6 +51,9 @@ def sync_detailed(
 ) -> Response[MaintenanceActionResponse]:
     """Complete the maintenance announcement
 
+     Transitions an 'In progress' maintenance announcement to 'Completed', indicating that the
+    maintenance work has finished.
+
     Args:
         uuid (UUID):
 
@@ -80,6 +83,9 @@ def sync(
 ) -> MaintenanceActionResponse:
     """Complete the maintenance announcement
 
+     Transitions an 'In progress' maintenance announcement to 'Completed', indicating that the
+    maintenance work has finished.
+
     Args:
         uuid (UUID):
 
@@ -103,6 +109,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[MaintenanceActionResponse]:
     """Complete the maintenance announcement
+
+     Transitions an 'In progress' maintenance announcement to 'Completed', indicating that the
+    maintenance work has finished.
 
     Args:
         uuid (UUID):
@@ -130,6 +139,9 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> MaintenanceActionResponse:
     """Complete the maintenance announcement
+
+     Transitions an 'In progress' maintenance announcement to 'Completed', indicating that the
+    maintenance work has finished.
 
     Args:
         uuid (UUID):

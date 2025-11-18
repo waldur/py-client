@@ -57,7 +57,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CategoryComponentsRequest,
 ) -> Response[CategoryComponents]:
-    """
+    """Update a category component
+
+     Updates an existing category component. Requires staff permissions.
+
     Args:
         id (int):
         body (CategoryComponentsRequest):
@@ -88,7 +91,10 @@ def sync(
     client: AuthenticatedClient,
     body: CategoryComponentsRequest,
 ) -> CategoryComponents:
-    """
+    """Update a category component
+
+     Updates an existing category component. Requires staff permissions.
+
     Args:
         id (int):
         body (CategoryComponentsRequest):
@@ -114,7 +120,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CategoryComponentsRequest,
 ) -> Response[CategoryComponents]:
-    """
+    """Update a category component
+
+     Updates an existing category component. Requires staff permissions.
+
     Args:
         id (int):
         body (CategoryComponentsRequest):
@@ -143,7 +152,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CategoryComponentsRequest,
 ) -> CategoryComponents:
-    """
+    """Update a category component
+
+     Updates an existing category component. Requires staff permissions.
+
     Args:
         id (int):
         body (CategoryComponentsRequest):

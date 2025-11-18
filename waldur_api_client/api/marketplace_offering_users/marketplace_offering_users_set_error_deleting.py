@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Set state to Error Deleting
+
+     Manually moves the offering user into the 'Error Deleting' state. This is typically used by an agent
+    to report a failure during the deletion process.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Set state to Error Deleting
+
+     Manually moves the offering user into the 'Error Deleting' state. This is typically used by an agent
+    to report a failure during the deletion process.
+
     Args:
         uuid (UUID):
 

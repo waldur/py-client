@@ -99,7 +99,8 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CustomerServiceAccount"]]:
-    """
+    """List service accounts
+
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -145,7 +146,8 @@ def sync(
     state: Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CustomerServiceAccount"]:
-    """
+    """List service accounts
+
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -186,7 +188,8 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CustomerServiceAccount"]]:
-    """
+    """List service accounts
+
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -230,7 +233,8 @@ async def asyncio(
     state: Union[Unset, list[MarketplaceCustomerServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CustomerServiceAccount"]:
-    """
+    """List service accounts
+
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):

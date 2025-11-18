@@ -55,7 +55,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BackendResourceReqRequest,
 ) -> Response[BackendResourceReq]:
-    """
+    """Create a backend resource request
+
+     Creates a new request to fetch a list of importable resources from a backend. This is typically used
+    by staff to trigger a site agent to report available resources.
+
     Args:
         body (BackendResourceReqRequest):
 
@@ -83,7 +87,11 @@ def sync(
     client: AuthenticatedClient,
     body: BackendResourceReqRequest,
 ) -> BackendResourceReq:
-    """
+    """Create a backend resource request
+
+     Creates a new request to fetch a list of importable resources from a backend. This is typically used
+    by staff to trigger a site agent to report available resources.
+
     Args:
         body (BackendResourceReqRequest):
 
@@ -106,7 +114,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BackendResourceReqRequest,
 ) -> Response[BackendResourceReq]:
-    """
+    """Create a backend resource request
+
+     Creates a new request to fetch a list of importable resources from a backend. This is typically used
+    by staff to trigger a site agent to report available resources.
+
     Args:
         body (BackendResourceReqRequest):
 
@@ -132,7 +144,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: BackendResourceReqRequest,
 ) -> BackendResourceReq:
-    """
+    """Create a backend resource request
+
+     Creates a new request to fetch a list of importable resources from a backend. This is typically used
+    by staff to trigger a site agent to report available resources.
+
     Args:
         body (BackendResourceReqRequest):
 

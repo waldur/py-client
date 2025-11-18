@@ -8,6 +8,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.robot_account_details import RobotAccountDetails
 from ...models.robot_account_error_request import RobotAccountErrorRequest
+from ...models.state_transition_error import StateTransitionError
 from ...types import Response
 
 
@@ -31,19 +32,25 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> RobotAccountDetails:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Union[RobotAccountDetails, StateTransitionError]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = RobotAccountDetails.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = StateTransitionError.from_dict(response.json())
+
+        return response_400
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[RobotAccountDetails]:
+) -> Response[Union[RobotAccountDetails, StateTransitionError]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,8 +64,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: RobotAccountErrorRequest,
-) -> Response[RobotAccountDetails]:
-    """
+) -> Response[Union[RobotAccountDetails, StateTransitionError]]:
+    """Set robot account state to erred
+
+     Manually moves the robot account into the 'Error' state. An optional error message can be provided.
+
     Args:
         uuid (UUID):
         body (RobotAccountErrorRequest):
@@ -68,7 +78,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RobotAccountDetails]
+        Response[Union[RobotAccountDetails, StateTransitionError]]
     """
 
     kwargs = _get_kwargs(
@@ -88,8 +98,11 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: RobotAccountErrorRequest,
-) -> RobotAccountDetails:
-    """
+) -> Union[RobotAccountDetails, StateTransitionError]:
+    """Set robot account state to erred
+
+     Manually moves the robot account into the 'Error' state. An optional error message can be provided.
+
     Args:
         uuid (UUID):
         body (RobotAccountErrorRequest):
@@ -99,7 +112,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RobotAccountDetails
+        Union[RobotAccountDetails, StateTransitionError]
     """
 
     return sync_detailed(
@@ -114,8 +127,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: RobotAccountErrorRequest,
-) -> Response[RobotAccountDetails]:
-    """
+) -> Response[Union[RobotAccountDetails, StateTransitionError]]:
+    """Set robot account state to erred
+
+     Manually moves the robot account into the 'Error' state. An optional error message can be provided.
+
     Args:
         uuid (UUID):
         body (RobotAccountErrorRequest):
@@ -125,7 +141,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RobotAccountDetails]
+        Response[Union[RobotAccountDetails, StateTransitionError]]
     """
 
     kwargs = _get_kwargs(
@@ -143,8 +159,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: RobotAccountErrorRequest,
-) -> RobotAccountDetails:
-    """
+) -> Union[RobotAccountDetails, StateTransitionError]:
+    """Set robot account state to erred
+
+     Manually moves the robot account into the 'Error' state. An optional error message can be provided.
+
     Args:
         uuid (UUID):
         body (RobotAccountErrorRequest):
@@ -154,7 +173,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RobotAccountDetails
+        Union[RobotAccountDetails, StateTransitionError]
     """
 
     return (

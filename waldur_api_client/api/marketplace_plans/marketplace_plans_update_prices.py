@@ -53,7 +53,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PricesUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update plan component prices
+
+     Updates the prices for one or more components of a specific plan. If the plan is already in use by
+    resources, this action updates the `future_price`, which will be applied from the next billing
+    period. Otherwise, the current `price` is updated directly.
+
     Args:
         uuid (UUID):
         body (PricesUpdateRequest):
@@ -84,7 +89,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PricesUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update plan component prices
+
+     Updates the prices for one or more components of a specific plan. If the plan is already in use by
+    resources, this action updates the `future_price`, which will be applied from the next billing
+    period. Otherwise, the current `price` is updated directly.
+
     Args:
         uuid (UUID):
         body (PricesUpdateRequest):

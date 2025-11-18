@@ -65,7 +65,10 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["MaintenanceAnnouncementOffering"]]:
-    """
+    """List affected offerings for maintenance
+
+     Returns a paginated list of offerings affected by maintenance announcements.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -96,7 +99,10 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["MaintenanceAnnouncementOffering"]:
-    """
+    """List affected offerings for maintenance
+
+     Returns a paginated list of offerings affected by maintenance announcements.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["MaintenanceAnnouncementOffering"]]:
-    """
+    """List affected offerings for maintenance
+
+     Returns a paginated list of offerings affected by maintenance announcements.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -151,7 +160,10 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["MaintenanceAnnouncementOffering"]:
-    """
+    """List affected offerings for maintenance
+
+     Returns a paginated list of offerings affected by maintenance announcements.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

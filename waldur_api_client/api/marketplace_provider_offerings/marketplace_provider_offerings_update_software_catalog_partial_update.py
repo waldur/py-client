@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOfferingSoftwareCatalogUpdateRequest,
 ) -> Response[OfferingSoftwareCatalog]:
-    """Update software catalog configuration for offering.
+    """Update software catalog configuration
+
+     Updates the configuration of a software catalog associated with an offering, such as enabled
+    architectures or partition.
 
     Args:
         uuid (UUID):
@@ -90,7 +93,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOfferingSoftwareCatalogUpdateRequest,
 ) -> OfferingSoftwareCatalog:
-    """Update software catalog configuration for offering.
+    """Update software catalog configuration
+
+     Updates the configuration of a software catalog associated with an offering, such as enabled
+    architectures or partition.
 
     Args:
         uuid (UUID):
@@ -117,7 +123,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOfferingSoftwareCatalogUpdateRequest,
 ) -> Response[OfferingSoftwareCatalog]:
-    """Update software catalog configuration for offering.
+    """Update software catalog configuration
+
+     Updates the configuration of a software catalog associated with an offering, such as enabled
+    architectures or partition.
 
     Args:
         uuid (UUID):
@@ -147,7 +156,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOfferingSoftwareCatalogUpdateRequest,
 ) -> OfferingSoftwareCatalog:
-    """Update software catalog configuration for offering.
+    """Update software catalog configuration
+
+     Updates the configuration of a software catalog associated with an offering, such as enabled
+    architectures or partition.
 
     Args:
         uuid (UUID):

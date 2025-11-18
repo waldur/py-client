@@ -78,7 +78,10 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["User"]]:
-    """
+    """List customer users for an offering
+
+     Returns a paginated list of users who have access to resources of this offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsListCustomerUsersListFieldItem]]):
@@ -115,7 +118,10 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["User"]:
-    """
+    """List customer users for an offering
+
+     Returns a paginated list of users who have access to resources of this offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsListCustomerUsersListFieldItem]]):
@@ -147,7 +153,10 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["User"]]:
-    """
+    """List customer users for an offering
+
+     Returns a paginated list of users who have access to resources of this offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsListCustomerUsersListFieldItem]]):
@@ -182,7 +191,10 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["User"]:
-    """
+    """List customer users for an offering
+
+     Returns a paginated list of users who have access to resources of this offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsListCustomerUsersListFieldItem]]):

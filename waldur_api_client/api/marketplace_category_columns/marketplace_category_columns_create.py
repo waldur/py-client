@@ -55,7 +55,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CategoryColumnRequest,
 ) -> Response[CategoryColumn]:
-    """
+    """Create a category column
+
+     Creates a new category column. Requires staff permissions.
+
     Args:
         body (CategoryColumnRequest):
 
@@ -83,7 +86,10 @@ def sync(
     client: AuthenticatedClient,
     body: CategoryColumnRequest,
 ) -> CategoryColumn:
-    """
+    """Create a category column
+
+     Creates a new category column. Requires staff permissions.
+
     Args:
         body (CategoryColumnRequest):
 
@@ -106,7 +112,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CategoryColumnRequest,
 ) -> Response[CategoryColumn]:
-    """
+    """Create a category column
+
+     Creates a new category column. Requires staff permissions.
+
     Args:
         body (CategoryColumnRequest):
 
@@ -132,7 +141,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CategoryColumnRequest,
 ) -> CategoryColumn:
-    """
+    """Create a category column
+
+     Creates a new category column. Requires staff permissions.
+
     Args:
         body (CategoryColumnRequest):
 

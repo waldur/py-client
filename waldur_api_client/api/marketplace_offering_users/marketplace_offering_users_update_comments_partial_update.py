@@ -62,7 +62,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOfferingUserServiceProviderCommentRequest,
 ) -> Response[OfferingUserServiceProviderComment]:
-    """Action for service providers to update comment and comment URL fields.
+    """Update service provider comments
+
+     Allows a service provider to update the `service_provider_comment` and
+    `service_provider_comment_url` fields for an offering user. This is often used to provide feedback
+    or instructions during a pending state.
 
     Args:
         uuid (UUID):
@@ -94,7 +98,11 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOfferingUserServiceProviderCommentRequest,
 ) -> OfferingUserServiceProviderComment:
-    """Action for service providers to update comment and comment URL fields.
+    """Update service provider comments
+
+     Allows a service provider to update the `service_provider_comment` and
+    `service_provider_comment_url` fields for an offering user. This is often used to provide feedback
+    or instructions during a pending state.
 
     Args:
         uuid (UUID):
@@ -121,7 +129,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOfferingUserServiceProviderCommentRequest,
 ) -> Response[OfferingUserServiceProviderComment]:
-    """Action for service providers to update comment and comment URL fields.
+    """Update service provider comments
+
+     Allows a service provider to update the `service_provider_comment` and
+    `service_provider_comment_url` fields for an offering user. This is often used to provide feedback
+    or instructions during a pending state.
 
     Args:
         uuid (UUID):
@@ -151,7 +163,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOfferingUserServiceProviderCommentRequest,
 ) -> OfferingUserServiceProviderComment:
-    """Action for service providers to update comment and comment URL fields.
+    """Update service provider comments
+
+     Allows a service provider to update the `service_provider_comment` and
+    `service_provider_comment_url` fields for an offering user. This is often used to provide feedback
+    or instructions during a pending state.
 
     Args:
         uuid (UUID):

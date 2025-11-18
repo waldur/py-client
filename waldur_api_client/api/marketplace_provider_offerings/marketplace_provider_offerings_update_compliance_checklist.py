@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingComplianceChecklistUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering compliance checklist
+
+     Associates a compliance checklist with an offering.
+
     Args:
         uuid (UUID):
         body (OfferingComplianceChecklistUpdateRequest):
@@ -84,7 +87,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingComplianceChecklistUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering compliance checklist
+
+     Associates a compliance checklist with an offering.
+
     Args:
         uuid (UUID):
         body (OfferingComplianceChecklistUpdateRequest):

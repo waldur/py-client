@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Unlink an offering from a maintenance announcement
+
+     Removes the association between an offering and a maintenance announcement.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +73,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Unlink an offering from a maintenance announcement
+
+     Removes the association between an offering and a maintenance announcement.
+
     Args:
         uuid (UUID):
 

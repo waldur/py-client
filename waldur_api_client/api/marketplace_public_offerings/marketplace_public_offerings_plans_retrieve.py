@@ -48,7 +48,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BasePublicPlan]:
-    """
+    """Retrieve a specific plan for an offering
+
+     Returns the details of a specific plan if it is available to the current user for the given
+    offering.
+
     Args:
         uuid (str):
         plan_uuid (str):
@@ -79,7 +83,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> BasePublicPlan:
-    """
+    """Retrieve a specific plan for an offering
+
+     Returns the details of a specific plan if it is available to the current user for the given
+    offering.
+
     Args:
         uuid (str):
         plan_uuid (str):
@@ -105,7 +113,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BasePublicPlan]:
-    """
+    """Retrieve a specific plan for an offering
+
+     Returns the details of a specific plan if it is available to the current user for the given
+    offering.
+
     Args:
         uuid (str):
         plan_uuid (str):
@@ -134,7 +146,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> BasePublicPlan:
-    """
+    """Retrieve a specific plan for an offering
+
+     Returns the details of a specific plan if it is available to the current user for the given
+    offering.
+
     Args:
         uuid (str):
         plan_uuid (str):

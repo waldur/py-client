@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MoveOfferingRequest,
 ) -> Response[PublicOfferingDetails]:
-    """
+    """Move an offering
+
+     Moves an offering to a different service provider. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (MoveOfferingRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: MoveOfferingRequest,
 ) -> PublicOfferingDetails:
-    """
+    """Move an offering
+
+     Moves an offering to a different service provider. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (MoveOfferingRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MoveOfferingRequest,
 ) -> Response[PublicOfferingDetails]:
-    """
+    """Move an offering
+
+     Moves an offering to a different service provider. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (MoveOfferingRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: MoveOfferingRequest,
 ) -> PublicOfferingDetails:
-    """
+    """Move an offering
+
+     Moves an offering to a different service provider. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (MoveOfferingRequest):

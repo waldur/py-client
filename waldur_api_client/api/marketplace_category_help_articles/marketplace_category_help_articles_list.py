@@ -65,7 +65,10 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CategoryHelpArticles"]]:
-    """
+    """List category help articles
+
+     Returns a paginated list of all help articles associated with marketplace categories.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -96,7 +99,10 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CategoryHelpArticles"]:
-    """
+    """List category help articles
+
+     Returns a paginated list of all help articles associated with marketplace categories.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CategoryHelpArticles"]]:
-    """
+    """List category help articles
+
+     Returns a paginated list of all help articles associated with marketplace categories.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -151,7 +160,10 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CategoryHelpArticles"]:
-    """
+    """List category help articles
+
+     Returns a paginated list of all help articles associated with marketplace categories.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

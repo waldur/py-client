@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a pending order
+
+     Deletes an order that is still in a pending state (e.g., `pending-consumer` or `pending-provider`).
+    Executing or completed orders cannot be deleted.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a pending order
+
+     Deletes an order that is still in a pending state (e.g., `pending-consumer` or `pending-provider`).
+    Executing or completed orders cannot be deleted.
+
     Args:
         uuid (UUID):
 

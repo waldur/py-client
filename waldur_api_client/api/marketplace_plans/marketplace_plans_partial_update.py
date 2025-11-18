@@ -58,7 +58,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedProviderPlanDetailsRequest,
 ) -> Response[ProviderPlanDetails]:
-    """
+    """Partially update a provider plan
+
+     Partially updates an existing plan. Note: A plan cannot be updated if it is already used by
+    resources.
+
     Args:
         uuid (UUID):
         body (PatchedProviderPlanDetailsRequest):
@@ -89,7 +93,11 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedProviderPlanDetailsRequest,
 ) -> ProviderPlanDetails:
-    """
+    """Partially update a provider plan
+
+     Partially updates an existing plan. Note: A plan cannot be updated if it is already used by
+    resources.
+
     Args:
         uuid (UUID):
         body (PatchedProviderPlanDetailsRequest):
@@ -115,7 +123,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedProviderPlanDetailsRequest,
 ) -> Response[ProviderPlanDetails]:
-    """
+    """Partially update a provider plan
+
+     Partially updates an existing plan. Note: A plan cannot be updated if it is already used by
+    resources.
+
     Args:
         uuid (UUID):
         body (PatchedProviderPlanDetailsRequest):
@@ -144,7 +156,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedProviderPlanDetailsRequest,
 ) -> ProviderPlanDetails:
-    """
+    """Partially update a provider plan
+
+     Partially updates an existing plan. Note: A plan cannot be updated if it is already used by
+    resources.
+
     Args:
         uuid (UUID):
         body (PatchedProviderPlanDetailsRequest):

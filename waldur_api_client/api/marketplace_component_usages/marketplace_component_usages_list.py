@@ -154,7 +154,11 @@ def sync_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUsage"]]:
-    """
+    """List component usage records
+
+     Returns a paginated list of component usage records for resources. This data is used for billing and
+    usage tracking.
+
     Args:
         billing_period (Union[Unset, datetime.date]):
         billing_period_month (Union[Unset, float]):
@@ -224,7 +228,11 @@ def sync(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["ComponentUsage"]:
-    """
+    """List component usage records
+
+     Returns a paginated list of component usage records for resources. This data is used for billing and
+    usage tracking.
+
     Args:
         billing_period (Union[Unset, datetime.date]):
         billing_period_month (Union[Unset, float]):
@@ -289,7 +297,11 @@ async def asyncio_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUsage"]]:
-    """
+    """List component usage records
+
+     Returns a paginated list of component usage records for resources. This data is used for billing and
+    usage tracking.
+
     Args:
         billing_period (Union[Unset, datetime.date]):
         billing_period_month (Union[Unset, float]):
@@ -357,7 +369,11 @@ async def asyncio(
     resource_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["ComponentUsage"]:
-    """
+    """List component usage records
+
+     Returns a paginated list of component usage records for resources. This data is used for billing and
+    usage tracking.
+
     Args:
         billing_period (Union[Unset, datetime.date]):
         billing_period_month (Union[Unset, float]):

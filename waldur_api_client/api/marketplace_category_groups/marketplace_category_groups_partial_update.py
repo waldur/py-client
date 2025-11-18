@@ -73,7 +73,10 @@ def sync_detailed(
         PatchedCategoryGroupRequestMultipart,
     ],
 ) -> Response[CategoryGroup]:
-    """
+    """Partially update a category group
+
+     Partially updates an existing category group. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCategoryGroupRequest):
@@ -110,7 +113,10 @@ def sync(
         PatchedCategoryGroupRequestMultipart,
     ],
 ) -> CategoryGroup:
-    """
+    """Partially update a category group
+
+     Partially updates an existing category group. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCategoryGroupRequest):
@@ -142,7 +148,10 @@ async def asyncio_detailed(
         PatchedCategoryGroupRequestMultipart,
     ],
 ) -> Response[CategoryGroup]:
-    """
+    """Partially update a category group
+
+     Partially updates an existing category group. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCategoryGroupRequest):
@@ -177,7 +186,10 @@ async def asyncio(
         PatchedCategoryGroupRequestMultipart,
     ],
 ) -> CategoryGroup:
-    """
+    """Partially update a category group
+
+     Partially updates an existing category group. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedCategoryGroupRequest):

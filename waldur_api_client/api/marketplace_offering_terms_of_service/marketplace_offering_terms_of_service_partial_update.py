@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedOfferingTermsOfServiceRequest,
 ) -> Response[OfferingTermsOfService]:
-    """
+    """Partially update a Terms of Service configuration
+
+     Partially updates an existing Terms of Service configuration.
+
     Args:
         uuid (UUID):
         body (PatchedOfferingTermsOfServiceRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedOfferingTermsOfServiceRequest,
 ) -> OfferingTermsOfService:
-    """
+    """Partially update a Terms of Service configuration
+
+     Partially updates an existing Terms of Service configuration.
+
     Args:
         uuid (UUID):
         body (PatchedOfferingTermsOfServiceRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedOfferingTermsOfServiceRequest,
 ) -> Response[OfferingTermsOfService]:
-    """
+    """Partially update a Terms of Service configuration
+
+     Partially updates an existing Terms of Service configuration.
+
     Args:
         uuid (UUID):
         body (PatchedOfferingTermsOfServiceRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedOfferingTermsOfServiceRequest,
 ) -> OfferingTermsOfService:
-    """
+    """Partially update a Terms of Service configuration
+
+     Partially updates an existing Terms of Service configuration.
+
     Args:
         uuid (UUID):
         body (PatchedOfferingTermsOfServiceRequest):

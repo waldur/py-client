@@ -46,7 +46,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OrderDetails]:
-    """
+    """Retrieve a specific order for an offering
+
+     Returns details of a specific order associated with an offering.
+
     Args:
         uuid (str):
         order_uuid (str):
@@ -77,7 +80,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> OrderDetails:
-    """
+    """Retrieve a specific order for an offering
+
+     Returns details of a specific order associated with an offering.
+
     Args:
         uuid (str):
         order_uuid (str):
@@ -103,7 +109,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OrderDetails]:
-    """
+    """Retrieve a specific order for an offering
+
+     Returns details of a specific order associated with an offering.
+
     Args:
         uuid (str):
         order_uuid (str):
@@ -132,7 +141,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> OrderDetails:
-    """
+    """Retrieve a specific order for an offering
+
+     Returns details of a specific order associated with an offering.
+
     Args:
         uuid (str):
         order_uuid (str):

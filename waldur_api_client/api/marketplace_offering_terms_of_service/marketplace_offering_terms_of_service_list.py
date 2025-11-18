@@ -101,7 +101,12 @@ def sync_detailed(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingTermsOfService"]]:
-    """
+    """List Terms of Service configurations
+
+     Returns a paginated list of Terms of Service configurations for offerings. Visibility depends on
+    user permissions: staff/support see all; service providers see their own; regular users see ToS for
+    offerings they have consented to or shared offerings.
+
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceOfferingTermsOfServiceListOItem]]):
@@ -150,7 +155,12 @@ def sync(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["OfferingTermsOfService"]:
-    """
+    """List Terms of Service configurations
+
+     Returns a paginated list of Terms of Service configurations for offerings. Visibility depends on
+    user permissions: staff/support see all; service providers see their own; regular users see ToS for
+    offerings they have consented to or shared offerings.
+
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceOfferingTermsOfServiceListOItem]]):
@@ -194,7 +204,12 @@ async def asyncio_detailed(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingTermsOfService"]]:
-    """
+    """List Terms of Service configurations
+
+     Returns a paginated list of Terms of Service configurations for offerings. Visibility depends on
+    user permissions: staff/support see all; service providers see their own; regular users see ToS for
+    offerings they have consented to or shared offerings.
+
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceOfferingTermsOfServiceListOItem]]):
@@ -241,7 +256,12 @@ async def asyncio(
     requires_reconsent: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["OfferingTermsOfService"]:
-    """
+    """List Terms of Service configurations
+
+     Returns a paginated list of Terms of Service configurations for offerings. Visibility depends on
+    user permissions: staff/support see all; service providers see their own; regular users see ToS for
+    offerings they have consented to or shared offerings.
+
     Args:
         is_active (Union[Unset, bool]):
         o (Union[Unset, list[MarketplaceOfferingTermsOfServiceListOItem]]):

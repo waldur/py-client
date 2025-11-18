@@ -267,7 +267,12 @@ def sync_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["PublicOfferingDetails"]]:
-    """
+    """List public offerings
+
+     Returns a paginated list of public offerings. The list is filtered to show only offerings that are
+    active or paused and available for ordering by the current user. If anonymous access is enabled, it
+    shows shared offerings available to unauthenticated users.
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
@@ -397,7 +402,12 @@ def sync(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["PublicOfferingDetails"]:
-    """
+    """List public offerings
+
+     Returns a paginated list of public offerings. The list is filtered to show only offerings that are
+    active or paused and available for ordering by the current user. If anonymous access is enabled, it
+    shows shared offerings available to unauthenticated users.
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
@@ -522,7 +532,12 @@ async def asyncio_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["PublicOfferingDetails"]]:
-    """
+    """List public offerings
+
+     Returns a paginated list of public offerings. The list is filtered to show only offerings that are
+    active or paused and available for ordering by the current user. If anonymous access is enabled, it
+    shows shared offerings available to unauthenticated users.
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
@@ -650,7 +665,12 @@ async def asyncio(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["PublicOfferingDetails"]:
-    """
+    """List public offerings
+
+     Returns a paginated list of public offerings. The list is filtered to show only offerings that are
+    active or paused and available for ordering by the current user. If anonymous access is enabled, it
+    shows shared offerings available to unauthenticated users.
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):

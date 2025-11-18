@@ -65,7 +65,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]] = UNSET,
 ) -> Response[PublicOfferingDetails]:
-    """
+    """Retrieve a public offering
+
+     Returns the details of a specific public offering. Access is granted if the offering is available
+    for ordering by the current user or if anonymous access is enabled.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]]):
@@ -96,7 +100,11 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]] = UNSET,
 ) -> PublicOfferingDetails:
-    """
+    """Retrieve a public offering
+
+     Returns the details of a specific public offering. Access is granted if the offering is available
+    for ordering by the current user or if anonymous access is enabled.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]]):
@@ -122,7 +130,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]] = UNSET,
 ) -> Response[PublicOfferingDetails]:
-    """
+    """Retrieve a public offering
+
+     Returns the details of a specific public offering. Access is granted if the offering is available
+    for ordering by the current user or if anonymous access is enabled.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]]):
@@ -151,7 +163,11 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]] = UNSET,
 ) -> PublicOfferingDetails:
-    """
+    """Retrieve a public offering
+
+     Returns the details of a specific public offering. Access is granted if the offering is available
+    for ordering by the current user or if anonymous access is enabled.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]]):

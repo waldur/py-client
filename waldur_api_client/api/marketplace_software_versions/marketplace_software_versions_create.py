@@ -43,7 +43,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SoftwareVersion]:
-    """
+    """Create a software version
+
+     Creates a new version for a software package. Requires staff permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -65,7 +68,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> SoftwareVersion:
-    """
+    """Create a software version
+
+     Creates a new version for a software package. Requires staff permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -83,7 +89,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SoftwareVersion]:
-    """
+    """Create a software version
+
+     Creates a new version for a software package. Requires staff permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -103,7 +112,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> SoftwareVersion:
-    """
+    """Create a software version
+
+     Creates a new version for a software package. Requires staff permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.

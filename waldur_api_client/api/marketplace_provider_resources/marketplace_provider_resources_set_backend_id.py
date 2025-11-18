@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceBackendIDRequest,
 ) -> Response[ResourceResponseStatus]:
-    """Set resource backend ID.
+    """Set resource backend ID
+
+     Allows a service provider to set or update the backend ID for a resource, linking it to an external
+    system's identifier.
 
     Args:
         uuid (UUID):
@@ -90,7 +93,10 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceBackendIDRequest,
 ) -> ResourceResponseStatus:
-    """Set resource backend ID.
+    """Set resource backend ID
+
+     Allows a service provider to set or update the backend ID for a resource, linking it to an external
+    system's identifier.
 
     Args:
         uuid (UUID):
@@ -117,7 +123,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceBackendIDRequest,
 ) -> Response[ResourceResponseStatus]:
-    """Set resource backend ID.
+    """Set resource backend ID
+
+     Allows a service provider to set or update the backend ID for a resource, linking it to an external
+    system's identifier.
 
     Args:
         uuid (UUID):
@@ -147,7 +156,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceBackendIDRequest,
 ) -> ResourceResponseStatus:
-    """Set resource backend ID.
+    """Set resource backend ID
+
+     Allows a service provider to set or update the backend ID for a resource, linking it to an external
+    system's identifier.
 
     Args:
         uuid (UUID):

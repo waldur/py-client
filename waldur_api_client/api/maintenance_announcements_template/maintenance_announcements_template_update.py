@@ -60,7 +60,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementTemplateRequest,
 ) -> Response[MaintenanceAnnouncementTemplate]:
-    """
+    """Update a maintenance announcement template
+
+     Updates an existing maintenance announcement template.
+
     Args:
         uuid (UUID):
         body (MaintenanceAnnouncementTemplateRequest):
@@ -91,7 +94,10 @@ def sync(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementTemplateRequest,
 ) -> MaintenanceAnnouncementTemplate:
-    """
+    """Update a maintenance announcement template
+
+     Updates an existing maintenance announcement template.
+
     Args:
         uuid (UUID):
         body (MaintenanceAnnouncementTemplateRequest):
@@ -117,7 +123,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementTemplateRequest,
 ) -> Response[MaintenanceAnnouncementTemplate]:
-    """
+    """Update a maintenance announcement template
+
+     Updates an existing maintenance announcement template.
+
     Args:
         uuid (UUID):
         body (MaintenanceAnnouncementTemplateRequest):
@@ -146,7 +155,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementTemplateRequest,
 ) -> MaintenanceAnnouncementTemplate:
-    """
+    """Update a maintenance announcement template
+
+     Updates an existing maintenance announcement template.
+
     Args:
         uuid (UUID):
         body (MaintenanceAnnouncementTemplateRequest):

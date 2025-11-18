@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingUserRequest,
 ) -> Response[OfferingUser]:
-    """
+    """Create an offering user
+
+     Associates a user with a specific offering, creating an offering-specific user account. This is
+    typically done by a service provider.
+
     Args:
         body (OfferingUserRequest):
 
@@ -81,7 +85,11 @@ def sync(
     client: AuthenticatedClient,
     body: OfferingUserRequest,
 ) -> OfferingUser:
-    """
+    """Create an offering user
+
+     Associates a user with a specific offering, creating an offering-specific user account. This is
+    typically done by a service provider.
+
     Args:
         body (OfferingUserRequest):
 
@@ -104,7 +112,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingUserRequest,
 ) -> Response[OfferingUser]:
-    """
+    """Create an offering user
+
+     Associates a user with a specific offering, creating an offering-specific user account. This is
+    typically done by a service provider.
+
     Args:
         body (OfferingUserRequest):
 
@@ -130,7 +142,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OfferingUserRequest,
 ) -> OfferingUser:
-    """
+    """Create an offering user
+
+     Associates a user with a specific offering, creating an offering-specific user account. This is
+    typically done by a service provider.
+
     Args:
         body (OfferingUserRequest):
 

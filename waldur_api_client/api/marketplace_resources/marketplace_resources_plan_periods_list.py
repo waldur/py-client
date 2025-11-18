@@ -54,7 +54,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list["ResourcePlanPeriod"]]:
-    """
+    """List resource plan periods
+
+     Returns a list of active and future plan periods for the resource. Each period includes the plan
+    details and current component usage.
+
     Args:
         uuid (UUID):
 
@@ -82,7 +86,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list["ResourcePlanPeriod"]:
-    """
+    """List resource plan periods
+
+     Returns a list of active and future plan periods for the resource. Each period includes the plan
+    details and current component usage.
+
     Args:
         uuid (UUID):
 
@@ -105,7 +113,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list["ResourcePlanPeriod"]]:
-    """
+    """List resource plan periods
+
+     Returns a list of active and future plan periods for the resource. Each period includes the plan
+    details and current component usage.
+
     Args:
         uuid (UUID):
 
@@ -131,7 +143,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list["ResourcePlanPeriod"]:
-    """
+    """List resource plan periods
+
+     Returns a list of active and future plan periods for the resource. Each period includes the plan
+    details and current component usage.
+
     Args:
         uuid (UUID):
 

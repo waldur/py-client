@@ -49,7 +49,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[IntegrationStatusDetails]:
-    """
+    """Retrieve an integration status
+
+     Returns the details of a specific integration status, including the agent type, status, and last
+    request timestamp.
+
     Args:
         uuid (UUID):
 
@@ -77,7 +81,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> IntegrationStatusDetails:
-    """
+    """Retrieve an integration status
+
+     Returns the details of a specific integration status, including the agent type, status, and last
+    request timestamp.
+
     Args:
         uuid (UUID):
 
@@ -100,7 +108,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[IntegrationStatusDetails]:
-    """
+    """Retrieve an integration status
+
+     Returns the details of a specific integration status, including the agent type, status, and last
+    request timestamp.
+
     Args:
         uuid (UUID):
 
@@ -126,7 +138,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> IntegrationStatusDetails:
-    """
+    """Retrieve an integration status
+
+     Returns the details of a specific integration status, including the agent type, status, and last
+    request timestamp.
+
     Args:
         uuid (UUID):
 

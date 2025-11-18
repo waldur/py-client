@@ -74,7 +74,9 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List Datacite referrals for offerings
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         o (Union[Unset, list[MarketplaceOfferingReferralsCountOItem]]):
@@ -109,7 +111,9 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List Datacite referrals for offerings
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         o (Union[Unset, list[MarketplaceOfferingReferralsCountOItem]]):
@@ -139,7 +143,9 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List Datacite referrals for offerings
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         o (Union[Unset, list[MarketplaceOfferingReferralsCountOItem]]):
@@ -172,7 +178,9 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List Datacite referrals for offerings
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         o (Union[Unset, list[MarketplaceOfferingReferralsCountOItem]]):

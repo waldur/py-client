@@ -125,7 +125,9 @@ def sync_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     status: Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List integration statuses
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         agent_type (Union[Unset, str]):
@@ -181,7 +183,9 @@ def sync(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     status: Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List integration statuses
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         agent_type (Union[Unset, str]):
@@ -232,7 +236,9 @@ async def asyncio_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     status: Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List integration statuses
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         agent_type (Union[Unset, str]):
@@ -286,7 +292,9 @@ async def asyncio(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     status: Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List integration statuses
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         agent_type (Union[Unset, str]):

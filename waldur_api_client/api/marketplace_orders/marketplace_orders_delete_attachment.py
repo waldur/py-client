@@ -42,7 +42,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete the attachment from a pending order.
+    """Delete order attachment
+
+     Allows deleting an attachment from a pending order.
 
     Args:
         uuid (UUID):
@@ -71,7 +73,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete the attachment from a pending order.
+    """Delete order attachment
+
+     Allows deleting an attachment from a pending order.
 
     Args:
         uuid (UUID):

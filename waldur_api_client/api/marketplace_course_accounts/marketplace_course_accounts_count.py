@@ -131,7 +131,9 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceCourseAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List course accounts
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         email (Union[Unset, str]):
@@ -190,7 +192,9 @@ def sync(
     state: Union[Unset, list[MarketplaceCourseAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List course accounts
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         email (Union[Unset, str]):
@@ -244,7 +248,9 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceCourseAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List course accounts
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         email (Union[Unset, str]):
@@ -301,7 +307,9 @@ async def asyncio(
     state: Union[Unset, list[MarketplaceCourseAccountsCountStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List course accounts
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         email (Union[Unset, str]):

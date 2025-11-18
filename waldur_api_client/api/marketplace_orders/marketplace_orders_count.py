@@ -206,7 +206,9 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersCountTypeItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List orders
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
@@ -298,7 +300,9 @@ def sync(
     state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersCountTypeItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List orders
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
@@ -385,7 +389,9 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersCountTypeItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List orders
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
@@ -475,7 +481,9 @@ async def asyncio(
     state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersCountTypeItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List orders
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         can_approve_as_consumer (Union[Unset, bool]):

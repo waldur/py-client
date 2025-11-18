@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a backend resource
+
+     Deletes a backend resource record. This is typically done when the resource is no longer available
+    for import.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a backend resource
+
+     Deletes a backend resource record. This is typically done when the resource is no longer available
+    for import.
+
     Args:
         uuid (UUID):
 

@@ -126,7 +126,10 @@ def sync_detailed(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
 ) -> Response[list["BackendResourceReq"]]:
-    """
+    """List backend resource requests
+
+     Returns a paginated list of requests for backend resources.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
@@ -178,7 +181,10 @@ def sync(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
 ) -> list["BackendResourceReq"]:
-    """
+    """List backend resource requests
+
+     Returns a paginated list of requests for backend resources.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
@@ -225,7 +231,10 @@ async def asyncio_detailed(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
 ) -> Response[list["BackendResourceReq"]]:
-    """
+    """List backend resource requests
+
+     Returns a paginated list of requests for backend resources.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
@@ -275,7 +284,10 @@ async def asyncio(
     started: Union[Unset, datetime.datetime] = UNSET,
     state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
 ) -> list["BackendResourceReq"]:
-    """
+    """List backend resource requests
+
+     Returns a paginated list of requests for backend resources.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):

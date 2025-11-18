@@ -160,7 +160,15 @@ def sync_detailed(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUserUsage"]]:
-    """
+    """List user-specific component usages
+
+
+            Returns a paginated list of component usage records attributed to specific users.
+            This provides a granular view of resource consumption, breaking down the total usage of a
+    component
+            by individual users.
+
+
     Args:
         billing_period_month (Union[Unset, float]):
         billing_period_year (Union[Unset, float]):
@@ -233,7 +241,15 @@ def sync(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ComponentUserUsage"]:
-    """
+    """List user-specific component usages
+
+
+            Returns a paginated list of component usage records attributed to specific users.
+            This provides a granular view of resource consumption, breaking down the total usage of a
+    component
+            by individual users.
+
+
     Args:
         billing_period_month (Union[Unset, float]):
         billing_period_year (Union[Unset, float]):
@@ -301,7 +317,15 @@ async def asyncio_detailed(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ComponentUserUsage"]]:
-    """
+    """List user-specific component usages
+
+
+            Returns a paginated list of component usage records attributed to specific users.
+            This provides a granular view of resource consumption, breaking down the total usage of a
+    component
+            by individual users.
+
+
     Args:
         billing_period_month (Union[Unset, float]):
         billing_period_year (Union[Unset, float]):
@@ -372,7 +396,15 @@ async def asyncio(
     type_: Union[Unset, str] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ComponentUserUsage"]:
-    """
+    """List user-specific component usages
+
+
+            Returns a paginated list of component usage records attributed to specific users.
+            This provides a granular view of resource consumption, breaking down the total usage of a
+    component
+            by individual users.
+
+
     Args:
         billing_period_month (Union[Unset, float]):
         billing_period_year (Union[Unset, float]):

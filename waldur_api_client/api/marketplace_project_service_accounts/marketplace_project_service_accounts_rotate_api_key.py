@@ -47,7 +47,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ProjectServiceAccount]:
-    """
+    """Rotate API key for a project service account
+
+     Generates a new API key for the service account, immediately invalidating the old one. The new key
+    is returned in the response.
+
     Args:
         uuid (UUID):
 
@@ -75,7 +79,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ProjectServiceAccount:
-    """
+    """Rotate API key for a project service account
+
+     Generates a new API key for the service account, immediately invalidating the old one. The new key
+    is returned in the response.
+
     Args:
         uuid (UUID):
 
@@ -98,7 +106,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ProjectServiceAccount]:
-    """
+    """Rotate API key for a project service account
+
+     Generates a new API key for the service account, immediately invalidating the old one. The new key
+    is returned in the response.
+
     Args:
         uuid (UUID):
 
@@ -124,7 +136,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ProjectServiceAccount:
-    """
+    """Rotate API key for a project service account
+
+     Generates a new API key for the service account, immediately invalidating the old one. The new key
+    is returned in the response.
+
     Args:
         uuid (UUID):
 

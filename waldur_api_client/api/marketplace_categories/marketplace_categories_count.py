@@ -117,7 +117,9 @@ def sync_detailed(
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List categories
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         customer_uuid (Union[Unset, UUID]):
@@ -174,7 +176,9 @@ def sync(
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List categories
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         customer_uuid (Union[Unset, UUID]):
@@ -226,7 +230,9 @@ async def asyncio_detailed(
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List categories
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         customer_uuid (Union[Unset, UUID]):
@@ -281,7 +287,9 @@ async def asyncio(
     resource_project_uuid: Union[Unset, UUID] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List categories
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         customer_uuid (Union[Unset, UUID]):

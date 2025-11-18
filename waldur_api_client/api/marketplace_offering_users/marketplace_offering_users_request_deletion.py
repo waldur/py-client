@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Action to request deletion of an offering user account.
+    """Request deletion of an offering user
+
+     Initiates the deletion process for an offering user account by transitioning it to the 'Deletion
+    Requested' state.
 
     Args:
         uuid (UUID):
@@ -71,7 +74,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Action to request deletion of an offering user account.
+    """Request deletion of an offering user
+
+     Initiates the deletion process for an offering user account by transitioning it to the 'Deletion
+    Requested' state.
 
     Args:
         uuid (UUID):

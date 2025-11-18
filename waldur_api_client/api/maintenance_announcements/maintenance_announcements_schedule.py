@@ -51,6 +51,8 @@ def sync_detailed(
 ) -> Response[MaintenanceActionResponse]:
     """Schedule/publish the maintenance announcement
 
+     Transitions a 'Draft' maintenance announcement to the 'Scheduled' state, making it publicly visible.
+
     Args:
         uuid (UUID):
 
@@ -80,6 +82,8 @@ def sync(
 ) -> MaintenanceActionResponse:
     """Schedule/publish the maintenance announcement
 
+     Transitions a 'Draft' maintenance announcement to the 'Scheduled' state, making it publicly visible.
+
     Args:
         uuid (UUID):
 
@@ -103,6 +107,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[MaintenanceActionResponse]:
     """Schedule/publish the maintenance announcement
+
+     Transitions a 'Draft' maintenance announcement to the 'Scheduled' state, making it publicly visible.
 
     Args:
         uuid (UUID):
@@ -130,6 +136,8 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> MaintenanceActionResponse:
     """Schedule/publish the maintenance announcement
+
+     Transitions a 'Draft' maintenance announcement to the 'Scheduled' state, making it publicly visible.
 
     Args:
         uuid (UUID):

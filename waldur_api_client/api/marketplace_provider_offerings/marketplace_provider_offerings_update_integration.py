@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingIntegrationUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering integration settings
+
+     Updates the backend integration settings for an offering, including plugin options, secret options,
+    and service attributes.
+
     Args:
         uuid (UUID):
         body (OfferingIntegrationUpdateRequest):
@@ -84,7 +88,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingIntegrationUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering integration settings
+
+     Updates the backend integration settings for an offering, including plugin options, secret options,
+    and service attributes.
+
     Args:
         uuid (UUID):
         body (OfferingIntegrationUpdateRequest):

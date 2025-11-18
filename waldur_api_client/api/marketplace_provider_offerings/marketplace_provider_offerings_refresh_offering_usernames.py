@@ -47,7 +47,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceResponseStatus]:
-    """Refresh offering user usernames.
+    """Refresh offering user usernames
+
+     Triggers a refresh of usernames for all non-restricted users associated with this offering, based on
+    the current username generation policy.
 
     Args:
         uuid (UUID):
@@ -76,7 +79,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ResourceResponseStatus:
-    """Refresh offering user usernames.
+    """Refresh offering user usernames
+
+     Triggers a refresh of usernames for all non-restricted users associated with this offering, based on
+    the current username generation policy.
 
     Args:
         uuid (UUID):
@@ -100,7 +106,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceResponseStatus]:
-    """Refresh offering user usernames.
+    """Refresh offering user usernames
+
+     Triggers a refresh of usernames for all non-restricted users associated with this offering, based on
+    the current username generation policy.
 
     Args:
         uuid (UUID):
@@ -127,7 +136,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ResourceResponseStatus:
-    """Refresh offering user usernames.
+    """Refresh offering user usernames
+
+     Triggers a refresh of usernames for all non-restricted users associated with this offering, based on
+    the current username generation policy.
 
     Args:
         uuid (UUID):

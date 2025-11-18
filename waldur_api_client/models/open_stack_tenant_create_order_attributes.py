@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.open_stack_tenant_security_group_request import OpenStackTenantSecurityGroupRequest
+
 
 T = TypeVar("T", bound="OpenStackTenantCreateOrderAttributes")
 
@@ -20,6 +24,7 @@ class OpenStackTenantCreateOrderAttributes:
         skip_creation_of_default_router (Union[Unset, bool]):  Default: False.
         availability_zone (Union[Unset, str]): Optional availability group. Will be used for all instances provisioned
             in this tenant
+        security_groups (Union[Unset, list['OpenStackTenantSecurityGroupRequest']]):
     """
 
     name: str
@@ -28,6 +33,7 @@ class OpenStackTenantCreateOrderAttributes:
     skip_connection_extnet: Union[Unset, bool] = False
     skip_creation_of_default_router: Union[Unset, bool] = False
     availability_zone: Union[Unset, str] = UNSET
+    security_groups: Union[Unset, list["OpenStackTenantSecurityGroupRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,6 +48,13 @@ class OpenStackTenantCreateOrderAttributes:
         skip_creation_of_default_router = self.skip_creation_of_default_router
 
         availability_zone = self.availability_zone
+
+        security_groups: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.security_groups, Unset):
+            security_groups = []
+            for security_groups_item_data in self.security_groups:
+                security_groups_item = security_groups_item_data.to_dict()
+                security_groups.append(security_groups_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -60,11 +73,15 @@ class OpenStackTenantCreateOrderAttributes:
             field_dict["skip_creation_of_default_router"] = skip_creation_of_default_router
         if availability_zone is not UNSET:
             field_dict["availability_zone"] = availability_zone
+        if security_groups is not UNSET:
+            field_dict["security_groups"] = security_groups
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.open_stack_tenant_security_group_request import OpenStackTenantSecurityGroupRequest
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -78,6 +95,13 @@ class OpenStackTenantCreateOrderAttributes:
 
         availability_zone = d.pop("availability_zone", UNSET)
 
+        security_groups = []
+        _security_groups = d.pop("security_groups", UNSET)
+        for security_groups_item_data in _security_groups or []:
+            security_groups_item = OpenStackTenantSecurityGroupRequest.from_dict(security_groups_item_data)
+
+            security_groups.append(security_groups_item)
+
         open_stack_tenant_create_order_attributes = cls(
             name=name,
             description=description,
@@ -85,6 +109,7 @@ class OpenStackTenantCreateOrderAttributes:
             skip_connection_extnet=skip_connection_extnet,
             skip_creation_of_default_router=skip_creation_of_default_router,
             availability_zone=availability_zone,
+            security_groups=security_groups,
         )
 
         open_stack_tenant_create_order_attributes.additional_properties = d

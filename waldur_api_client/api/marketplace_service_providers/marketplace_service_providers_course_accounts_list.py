@@ -138,12 +138,14 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceServiceProvidersCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CourseAccount"]]:
-    """Return course project accounts that have access to resources managed by the provider.
+    """List course project accounts for a service provider
 
-            Checks for:
-            - Projects with active service provider's resources
-            - Course accounts with non-blank users
+     Returns a paginated list of course project accounts that have access to resources managed by the
+    provider.
 
+            This includes:
+            - Projects with active resources of the service provider.
+            - Course accounts with non-blank users.
 
 
     Args:
@@ -206,12 +208,14 @@ def sync(
     state: Union[Unset, list[MarketplaceServiceProvidersCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
-    """Return course project accounts that have access to resources managed by the provider.
+    """List course project accounts for a service provider
 
-            Checks for:
-            - Projects with active service provider's resources
-            - Course accounts with non-blank users
+     Returns a paginated list of course project accounts that have access to resources managed by the
+    provider.
 
+            This includes:
+            - Projects with active resources of the service provider.
+            - Course accounts with non-blank users.
 
 
     Args:
@@ -269,12 +273,14 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceServiceProvidersCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CourseAccount"]]:
-    """Return course project accounts that have access to resources managed by the provider.
+    """List course project accounts for a service provider
 
-            Checks for:
-            - Projects with active service provider's resources
-            - Course accounts with non-blank users
+     Returns a paginated list of course project accounts that have access to resources managed by the
+    provider.
 
+            This includes:
+            - Projects with active resources of the service provider.
+            - Course accounts with non-blank users.
 
 
     Args:
@@ -335,12 +341,14 @@ async def asyncio(
     state: Union[Unset, list[MarketplaceServiceProvidersCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
-    """Return course project accounts that have access to resources managed by the provider.
+    """List course project accounts for a service provider
 
-            Checks for:
-            - Projects with active service provider's resources
-            - Course accounts with non-blank users
+     Returns a paginated list of course project accounts that have access to resources managed by the
+    provider.
 
+            This includes:
+            - Projects with active resources of the service provider.
+            - Course accounts with non-blank users.
 
 
     Args:

@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceBackendMetadataRequest,
 ) -> Response[ResourceResponseStatus]:
-    """
+    """Set resource backend metadata
+
+     Allows a service provider to set or update the backend-specific metadata for a resource.
+
     Args:
         uuid (UUID):
         body (ResourceBackendMetadataRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceBackendMetadataRequest,
 ) -> ResourceResponseStatus:
-    """
+    """Set resource backend metadata
+
+     Allows a service provider to set or update the backend-specific metadata for a resource.
+
     Args:
         uuid (UUID):
         body (ResourceBackendMetadataRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceBackendMetadataRequest,
 ) -> Response[ResourceResponseStatus]:
-    """
+    """Set resource backend metadata
+
+     Allows a service provider to set or update the backend-specific metadata for a resource.
+
     Args:
         uuid (UUID):
         body (ResourceBackendMetadataRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceBackendMetadataRequest,
 ) -> ResourceResponseStatus:
-    """
+    """Set resource backend metadata
+
+     Allows a service provider to set or update the backend-specific metadata for a resource.
+
     Args:
         uuid (UUID):
         body (ResourceBackendMetadataRequest):

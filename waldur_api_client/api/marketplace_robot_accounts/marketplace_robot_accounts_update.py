@@ -56,7 +56,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RobotAccountRequest,
 ) -> Response[RobotAccount]:
-    """
+    """Update a robot account
+
+     Updates the properties of a robot account, such as its username or associated users. Not allowed for
+    synchronized remote accounts.
+
     Args:
         uuid (UUID):
         body (RobotAccountRequest):
@@ -87,7 +91,11 @@ def sync(
     client: AuthenticatedClient,
     body: RobotAccountRequest,
 ) -> RobotAccount:
-    """
+    """Update a robot account
+
+     Updates the properties of a robot account, such as its username or associated users. Not allowed for
+    synchronized remote accounts.
+
     Args:
         uuid (UUID):
         body (RobotAccountRequest):
@@ -113,7 +121,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RobotAccountRequest,
 ) -> Response[RobotAccount]:
-    """
+    """Update a robot account
+
+     Updates the properties of a robot account, such as its username or associated users. Not allowed for
+    synchronized remote accounts.
+
     Args:
         uuid (UUID):
         body (RobotAccountRequest):
@@ -142,7 +154,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RobotAccountRequest,
 ) -> RobotAccount:
-    """
+    """Update a robot account
+
+     Updates the properties of a robot account, such as its username or associated users. Not allowed for
+    synchronized remote accounts.
+
     Args:
         uuid (UUID):
         body (RobotAccountRequest):

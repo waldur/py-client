@@ -44,7 +44,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[PlanComponent]:
-    """
+    """Retrieve a plan component
+
+     Returns the details of a specific plan component, including its pricing, quotas, and associated
+    offering and plan information.
+
     Args:
         id (int):
 
@@ -72,7 +76,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> PlanComponent:
-    """
+    """Retrieve a plan component
+
+     Returns the details of a specific plan component, including its pricing, quotas, and associated
+    offering and plan information.
+
     Args:
         id (int):
 
@@ -95,7 +103,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[PlanComponent]:
-    """
+    """Retrieve a plan component
+
+     Returns the details of a specific plan component, including its pricing, quotas, and associated
+    offering and plan information.
+
     Args:
         id (int):
 
@@ -121,7 +133,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> PlanComponent:
-    """
+    """Retrieve a plan component
+
+     Returns the details of a specific plan component, including its pricing, quotas, and associated
+    offering and plan information.
+
     Args:
         id (int):
 

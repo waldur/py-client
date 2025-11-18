@@ -92,7 +92,11 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProviderPlanDetails"]]:
-    """
+    """List provider plans
+
+     Returns a paginated list of plans managed by the provider. The list is filtered based on the current
+    user's access to the offering's customer.
+
     Args:
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
@@ -135,7 +139,11 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProviderPlanDetails"]:
-    """
+    """List provider plans
+
+     Returns a paginated list of plans managed by the provider. The list is filtered based on the current
+    user's access to the offering's customer.
+
     Args:
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
@@ -173,7 +181,11 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProviderPlanDetails"]]:
-    """
+    """List provider plans
+
+     Returns a paginated list of plans managed by the provider. The list is filtered based on the current
+    user's access to the offering's customer.
+
     Args:
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
@@ -214,7 +226,11 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProviderPlanDetails"]:
-    """
+    """List provider plans
+
+     Returns a paginated list of plans managed by the provider. The list is filtered based on the current
+    user's access to the offering's customer.
+
     Args:
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):

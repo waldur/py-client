@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RemoveOfferingComponentRequest,
 ) -> Response[Any]:
-    """
+    """Remove an offering component
+
+     Removes a custom component from an offering. Built-in components cannot be removed.
+
     Args:
         uuid (UUID):
         body (RemoveOfferingComponentRequest):
@@ -84,7 +87,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RemoveOfferingComponentRequest,
 ) -> Response[Any]:
-    """
+    """Remove an offering component
+
+     Removes a custom component from an offering. Built-in components cannot be removed.
+
     Args:
         uuid (UUID):
         body (RemoveOfferingComponentRequest):

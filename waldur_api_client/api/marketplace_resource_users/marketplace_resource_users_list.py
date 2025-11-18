@@ -93,7 +93,12 @@ def sync_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ResourceUser"]]:
-    """
+    """List resource users
+
+     Returns a paginated list of users associated with resources, including their roles. The list is
+    filtered based on the permissions of the current user. Staff and support users can see all resource-
+    user links. Other users can only see links for resources they have access to.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -139,7 +144,12 @@ def sync(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ResourceUser"]:
-    """
+    """List resource users
+
+     Returns a paginated list of users associated with resources, including their roles. The list is
+    filtered based on the permissions of the current user. Staff and support users can see all resource-
+    user links. Other users can only see links for resources they have access to.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -180,7 +190,12 @@ async def asyncio_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ResourceUser"]]:
-    """
+    """List resource users
+
+     Returns a paginated list of users associated with resources, including their roles. The list is
+    filtered based on the permissions of the current user. Staff and support users can see all resource-
+    user links. Other users can only see links for resources they have access to.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -224,7 +239,12 @@ async def asyncio(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ResourceUser"]:
-    """
+    """List resource users
+
+     Returns a paginated list of users associated with resources, including their roles. The list is
+    filtered based on the permissions of the current user. Staff and support users can see all resource-
+    user links. Other users can only see links for resources they have access to.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

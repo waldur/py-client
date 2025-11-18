@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: SoftwareCatalogRequest,
 ) -> Response[SoftwareCatalog]:
-    """
+    """Update a software catalog
+
+     Updates an existing software catalog. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (SoftwareCatalogRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: SoftwareCatalogRequest,
 ) -> SoftwareCatalog:
-    """
+    """Update a software catalog
+
+     Updates an existing software catalog. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (SoftwareCatalogRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: SoftwareCatalogRequest,
 ) -> Response[SoftwareCatalog]:
-    """
+    """Update a software catalog
+
+     Updates an existing software catalog. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (SoftwareCatalogRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: SoftwareCatalogRequest,
 ) -> SoftwareCatalog:
-    """
+    """Update a software catalog
+
+     Updates an existing software catalog. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (SoftwareCatalogRequest):

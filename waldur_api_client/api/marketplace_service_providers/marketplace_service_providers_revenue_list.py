@@ -68,7 +68,10 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ServiceProviderRevenues"]]:
-    """
+    """Get service provider revenue
+
+     Returns monthly revenue data for the last year for the service provider.
+
     Args:
         uuid (UUID):
         page (Union[Unset, int]):
@@ -102,7 +105,10 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ServiceProviderRevenues"]:
-    """
+    """Get service provider revenue
+
+     Returns monthly revenue data for the last year for the service provider.
+
     Args:
         uuid (UUID):
         page (Union[Unset, int]):
@@ -131,7 +137,10 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ServiceProviderRevenues"]]:
-    """
+    """Get service provider revenue
+
+     Returns monthly revenue data for the last year for the service provider.
+
     Args:
         uuid (UUID):
         page (Union[Unset, int]):
@@ -163,7 +172,10 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ServiceProviderRevenues"]:
-    """
+    """Get service provider revenue
+
+     Returns monthly revenue data for the last year for the service provider.
+
     Args:
         uuid (UUID):
         page (Union[Unset, int]):

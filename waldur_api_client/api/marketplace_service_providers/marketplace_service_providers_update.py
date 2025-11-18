@@ -75,7 +75,10 @@ def sync_detailed(
         ServiceProviderRequestMultipart,
     ],
 ) -> Response[ServiceProvider]:
-    """
+    """Update a service provider
+
+     Updates an existing service provider profile.
+
     Args:
         uuid (UUID):
         body (ServiceProviderRequest):
@@ -112,7 +115,10 @@ def sync(
         ServiceProviderRequestMultipart,
     ],
 ) -> ServiceProvider:
-    """
+    """Update a service provider
+
+     Updates an existing service provider profile.
+
     Args:
         uuid (UUID):
         body (ServiceProviderRequest):
@@ -144,7 +150,10 @@ async def asyncio_detailed(
         ServiceProviderRequestMultipart,
     ],
 ) -> Response[ServiceProvider]:
-    """
+    """Update a service provider
+
+     Updates an existing service provider profile.
+
     Args:
         uuid (UUID):
         body (ServiceProviderRequest):
@@ -179,7 +188,10 @@ async def asyncio(
         ServiceProviderRequestMultipart,
     ],
 ) -> ServiceProvider:
-    """
+    """Update a service provider
+
+     Updates an existing service provider profile.
+
     Args:
         uuid (UUID):
         body (ServiceProviderRequest):

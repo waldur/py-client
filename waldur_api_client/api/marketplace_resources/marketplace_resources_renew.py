@@ -56,7 +56,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceRenewRequest,
 ) -> Response[OrderUUID]:
-    """Create a renewal order for a prepaid resource.
+    """Renew a prepaid resource
+
+     Creates a renewal order to extend the subscription period of a prepaid resource. Optionally, limits
+    can be upgraded at the same time.
 
     Args:
         uuid (UUID):
@@ -88,7 +91,10 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceRenewRequest,
 ) -> OrderUUID:
-    """Create a renewal order for a prepaid resource.
+    """Renew a prepaid resource
+
+     Creates a renewal order to extend the subscription period of a prepaid resource. Optionally, limits
+    can be upgraded at the same time.
 
     Args:
         uuid (UUID):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceRenewRequest,
 ) -> Response[OrderUUID]:
-    """Create a renewal order for a prepaid resource.
+    """Renew a prepaid resource
+
+     Creates a renewal order to extend the subscription period of a prepaid resource. Optionally, limits
+    can be upgraded at the same time.
 
     Args:
         uuid (UUID):
@@ -145,7 +154,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceRenewRequest,
 ) -> OrderUUID:
-    """Create a renewal order for a prepaid resource.
+    """Renew a prepaid resource
+
+     Creates a renewal order to extend the subscription period of a prepaid resource. Optionally, limits
+    can be upgraded at the same time.
 
     Args:
         uuid (UUID):

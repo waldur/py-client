@@ -47,7 +47,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BackendResourceReq]:
-    """
+    """Retrieve a backend resource request
+
+     Returns the details of a specific backend resource request.
+
     Args:
         uuid (UUID):
 
@@ -75,7 +78,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> BackendResourceReq:
-    """
+    """Retrieve a backend resource request
+
+     Returns the details of a specific backend resource request.
+
     Args:
         uuid (UUID):
 
@@ -98,7 +104,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BackendResourceReq]:
-    """
+    """Retrieve a backend resource request
+
+     Returns the details of a specific backend resource request.
+
     Args:
         uuid (UUID):
 
@@ -124,7 +133,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> BackendResourceReq:
-    """
+    """Retrieve a backend resource request
+
+     Returns the details of a specific backend resource request.
+
     Args:
         uuid (UUID):
 

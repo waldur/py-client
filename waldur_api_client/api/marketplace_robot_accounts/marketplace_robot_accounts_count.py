@@ -123,7 +123,9 @@ def sync_detailed(
     state: Union[Unset, MarketplaceRobotAccountsCountState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List robot accounts
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -182,7 +184,9 @@ def sync(
     state: Union[Unset, MarketplaceRobotAccountsCountState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List robot accounts
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -236,7 +240,9 @@ async def asyncio_detailed(
     state: Union[Unset, MarketplaceRobotAccountsCountState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List robot accounts
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -293,7 +299,9 @@ async def asyncio(
     state: Union[Unset, MarketplaceRobotAccountsCountState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List robot accounts
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         created (Union[Unset, datetime.datetime]):

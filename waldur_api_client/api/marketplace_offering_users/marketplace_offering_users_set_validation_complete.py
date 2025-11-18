@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Set state to Validation Complete
+
+     Transitions the state from a pending validation state to 'OK', indicating that the user has
+    completed the required steps. This clears any service provider comments.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Set state to Validation Complete
+
+     Transitions the state from a pending validation state to 'OK', indicating that the user has
+    completed the required steps. This clears any service provider comments.
+
     Args:
         uuid (UUID):
 

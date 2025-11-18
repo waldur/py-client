@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: EndpointUUIDRequest,
 ) -> Response[Any]:
-    """Delete endpoint from offering.
+    """Delete an access endpoint from an offering
+
+     Deletes an existing access endpoint from an offering by its UUID.
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: EndpointUUIDRequest,
 ) -> Response[Any]:
-    """Delete endpoint from offering.
+    """Delete an access endpoint from an offering
+
+     Deletes an existing access endpoint from an offering by its UUID.
 
     Args:
         uuid (UUID):

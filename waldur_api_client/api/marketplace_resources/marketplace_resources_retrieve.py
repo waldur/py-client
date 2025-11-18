@@ -63,7 +63,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]] = UNSET,
 ) -> Response[Resource]:
-    """
+    """Retrieve a consumer resource
+
+     Returns details of a specific resource accessible to the consumer.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]]):
@@ -94,7 +97,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]] = UNSET,
 ) -> Resource:
-    """
+    """Retrieve a consumer resource
+
+     Returns details of a specific resource accessible to the consumer.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]]):
@@ -120,7 +126,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]] = UNSET,
 ) -> Response[Resource]:
-    """
+    """Retrieve a consumer resource
+
+     Returns details of a specific resource accessible to the consumer.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]]):
@@ -149,7 +158,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]] = UNSET,
 ) -> Resource:
-    """
+    """Retrieve a consumer resource
+
+     Returns details of a specific resource accessible to the consumer.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]]):

@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingComponentRequest,
 ) -> Response[Any]:
-    """
+    """Create an offering component
+
+     Adds a new custom component to an offering.
+
     Args:
         uuid (UUID):
         body (OfferingComponentRequest):
@@ -84,7 +87,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingComponentRequest,
 ) -> Response[Any]:
-    """
+    """Create an offering component
+
+     Adds a new custom component to an offering.
+
     Args:
         uuid (UUID):
         body (OfferingComponentRequest):

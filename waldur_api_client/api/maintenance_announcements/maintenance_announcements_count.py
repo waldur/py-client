@@ -127,7 +127,9 @@ def sync_detailed(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementsCountStateItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List maintenance announcements
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         maintenance_type (Union[Unset, int]):
@@ -183,7 +185,9 @@ def sync(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementsCountStateItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List maintenance announcements
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         maintenance_type (Union[Unset, int]):
@@ -234,7 +238,9 @@ async def asyncio_detailed(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementsCountStateItem]] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List maintenance announcements
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         maintenance_type (Union[Unset, int]):
@@ -288,7 +294,9 @@ async def asyncio(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementsCountStateItem]] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List maintenance announcements
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         maintenance_type (Union[Unset, int]):

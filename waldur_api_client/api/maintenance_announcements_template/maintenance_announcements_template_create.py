@@ -57,7 +57,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementTemplateRequest,
 ) -> Response[MaintenanceAnnouncementTemplate]:
-    """
+    """Create a maintenance announcement template
+
+     Creates a new reusable template for maintenance announcements, including a default message and type.
+
     Args:
         body (MaintenanceAnnouncementTemplateRequest):
 
@@ -85,7 +88,10 @@ def sync(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementTemplateRequest,
 ) -> MaintenanceAnnouncementTemplate:
-    """
+    """Create a maintenance announcement template
+
+     Creates a new reusable template for maintenance announcements, including a default message and type.
+
     Args:
         body (MaintenanceAnnouncementTemplateRequest):
 
@@ -108,7 +114,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementTemplateRequest,
 ) -> Response[MaintenanceAnnouncementTemplate]:
-    """
+    """Create a maintenance announcement template
+
+     Creates a new reusable template for maintenance announcements, including a default message and type.
+
     Args:
         body (MaintenanceAnnouncementTemplateRequest):
 
@@ -134,7 +143,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementTemplateRequest,
 ) -> MaintenanceAnnouncementTemplate:
-    """
+    """Create a maintenance announcement template
+
+     Creates a new reusable template for maintenance announcements, including a default message and type.
+
     Args:
         body (MaintenanceAnnouncementTemplateRequest):
 

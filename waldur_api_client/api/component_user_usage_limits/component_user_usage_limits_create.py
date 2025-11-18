@@ -55,7 +55,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ComponentUserUsageLimitRequest,
 ) -> Response[ComponentUserUsageLimit]:
-    """
+    """Create a component usage limit for a user
+
+     Sets a usage limit for a specific user on a resource's component. This is only applicable for
+    offerings that support per-user consumption limitation.
+
     Args:
         body (ComponentUserUsageLimitRequest):
 
@@ -83,7 +87,11 @@ def sync(
     client: AuthenticatedClient,
     body: ComponentUserUsageLimitRequest,
 ) -> ComponentUserUsageLimit:
-    """
+    """Create a component usage limit for a user
+
+     Sets a usage limit for a specific user on a resource's component. This is only applicable for
+    offerings that support per-user consumption limitation.
+
     Args:
         body (ComponentUserUsageLimitRequest):
 
@@ -106,7 +114,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ComponentUserUsageLimitRequest,
 ) -> Response[ComponentUserUsageLimit]:
-    """
+    """Create a component usage limit for a user
+
+     Sets a usage limit for a specific user on a resource's component. This is only applicable for
+    offerings that support per-user consumption limitation.
+
     Args:
         body (ComponentUserUsageLimitRequest):
 
@@ -132,7 +144,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ComponentUserUsageLimitRequest,
 ) -> ComponentUserUsageLimit:
-    """
+    """Create a component usage limit for a user
+
+     Sets a usage limit for a specific user on a resource's component. This is only applicable for
+    offerings that support per-user consumption limitation.
+
     Args:
         body (ComponentUserUsageLimitRequest):
 

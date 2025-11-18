@@ -68,7 +68,9 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ServiceProviderComplianceOverview"]]:
-    """Get compliance overview statistics for all offerings managed by this service provider.
+    """Get compliance overview for a service provider
+
+     Returns compliance overview statistics for all offerings managed by this service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -103,7 +105,9 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ServiceProviderComplianceOverview"]:
-    """Get compliance overview statistics for all offerings managed by this service provider.
+    """Get compliance overview for a service provider
+
+     Returns compliance overview statistics for all offerings managed by this service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -133,7 +137,9 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ServiceProviderComplianceOverview"]]:
-    """Get compliance overview statistics for all offerings managed by this service provider.
+    """Get compliance overview for a service provider
+
+     Returns compliance overview statistics for all offerings managed by this service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -166,7 +172,9 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ServiceProviderComplianceOverview"]:
-    """Get compliance overview statistics for all offerings managed by this service provider.
+    """Get compliance overview for a service provider
+
+     Returns compliance overview statistics for all offerings managed by this service provider.
 
     Args:
         service_provider_uuid (UUID):

@@ -86,7 +86,12 @@ def sync_detailed(
     plan_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
 ) -> Response[list["PlanComponent"]]:
-    """
+    """List plan components
+
+     Returns a paginated list of all plan components. A plan component defines the pricing and quotas for
+    an offering component within a billing plan. The list is filtered based on the current user's access
+    permissions and organization group memberships.
+
     Args:
         archived (Union[Unset, bool]):
         offering_uuid (Union[Unset, UUID]):
@@ -129,7 +134,12 @@ def sync(
     plan_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
 ) -> list["PlanComponent"]:
-    """
+    """List plan components
+
+     Returns a paginated list of all plan components. A plan component defines the pricing and quotas for
+    an offering component within a billing plan. The list is filtered based on the current user's access
+    permissions and organization group memberships.
+
     Args:
         archived (Union[Unset, bool]):
         offering_uuid (Union[Unset, UUID]):
@@ -167,7 +177,12 @@ async def asyncio_detailed(
     plan_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
 ) -> Response[list["PlanComponent"]]:
-    """
+    """List plan components
+
+     Returns a paginated list of all plan components. A plan component defines the pricing and quotas for
+    an offering component within a billing plan. The list is filtered based on the current user's access
+    permissions and organization group memberships.
+
     Args:
         archived (Union[Unset, bool]):
         offering_uuid (Union[Unset, UUID]):
@@ -208,7 +223,12 @@ async def asyncio(
     plan_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
 ) -> list["PlanComponent"]:
-    """
+    """List plan components
+
+     Returns a paginated list of all plan components. A plan component defines the pricing and quotas for
+    an offering component within a billing plan. The list is filtered based on the current user's access
+    permissions and organization group memberships.
+
     Args:
         archived (Union[Unset, bool]):
         offering_uuid (Union[Unset, UUID]):

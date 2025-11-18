@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
 ) -> Response[RobotAccountDetails]:
-    """
+    """Retrieve a robot account
+
+     Returns the details of a specific robot account.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
 ) -> RobotAccountDetails:
-    """
+    """Retrieve a robot account
+
+     Returns the details of a specific robot account.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
 ) -> Response[RobotAccountDetails]:
-    """
+    """Retrieve a robot account
+
+     Returns the details of a specific robot account.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
 ) -> RobotAccountDetails:
-    """
+    """Retrieve a robot account
+
+     Returns the details of a specific robot account.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):

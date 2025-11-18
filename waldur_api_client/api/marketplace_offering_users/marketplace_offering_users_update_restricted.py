@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingUserUpdateRestrictionRequest,
 ) -> Response[Any]:
-    """
+    """Update restriction status
+
+     Allows a service provider to mark an offering user as restricted or unrestricted. A restricted user
+    may have limited access to the resource.
+
     Args:
         uuid (UUID):
         body (OfferingUserUpdateRestrictionRequest):
@@ -84,7 +88,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingUserUpdateRestrictionRequest,
 ) -> Response[Any]:
-    """
+    """Update restriction status
+
+     Allows a service provider to mark an offering user as restricted or unrestricted. A restricted user
+    may have limited access to the resource.
+
     Args:
         uuid (UUID):
         body (OfferingUserUpdateRestrictionRequest):

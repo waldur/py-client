@@ -75,7 +75,10 @@ def sync_detailed(
         PatchedMarketplaceCategoryRequestMultipart,
     ],
 ) -> Response[MarketplaceCategory]:
-    """
+    """Partially update a category
+
+     Partially updates an existing marketplace category. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedMarketplaceCategoryRequest):
@@ -112,7 +115,10 @@ def sync(
         PatchedMarketplaceCategoryRequestMultipart,
     ],
 ) -> MarketplaceCategory:
-    """
+    """Partially update a category
+
+     Partially updates an existing marketplace category. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedMarketplaceCategoryRequest):
@@ -144,7 +150,10 @@ async def asyncio_detailed(
         PatchedMarketplaceCategoryRequestMultipart,
     ],
 ) -> Response[MarketplaceCategory]:
-    """
+    """Partially update a category
+
+     Partially updates an existing marketplace category. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedMarketplaceCategoryRequest):
@@ -179,7 +188,10 @@ async def asyncio(
         PatchedMarketplaceCategoryRequestMultipart,
     ],
 ) -> MarketplaceCategory:
-    """
+    """Partially update a category
+
+     Partially updates an existing marketplace category. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedMarketplaceCategoryRequest):

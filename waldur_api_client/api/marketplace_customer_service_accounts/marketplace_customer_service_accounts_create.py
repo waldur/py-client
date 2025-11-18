@@ -55,7 +55,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CustomerServiceAccountRequest,
 ) -> Response[CustomerServiceAccount]:
-    """
+    """Create a customer service account
+
+     Creates a new service account scoped to a specific customer (organization). This generates an API
+    key that can be used for automated access to resources across all projects within that customer.
+
     Args:
         body (CustomerServiceAccountRequest):
 
@@ -83,7 +87,11 @@ def sync(
     client: AuthenticatedClient,
     body: CustomerServiceAccountRequest,
 ) -> CustomerServiceAccount:
-    """
+    """Create a customer service account
+
+     Creates a new service account scoped to a specific customer (organization). This generates an API
+    key that can be used for automated access to resources across all projects within that customer.
+
     Args:
         body (CustomerServiceAccountRequest):
 
@@ -106,7 +114,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CustomerServiceAccountRequest,
 ) -> Response[CustomerServiceAccount]:
-    """
+    """Create a customer service account
+
+     Creates a new service account scoped to a specific customer (organization). This generates an API
+    key that can be used for automated access to resources across all projects within that customer.
+
     Args:
         body (CustomerServiceAccountRequest):
 
@@ -132,7 +144,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CustomerServiceAccountRequest,
 ) -> CustomerServiceAccount:
-    """
+    """Create a customer service account
+
+     Creates a new service account scoped to a specific customer (organization). This generates an API
+    key that can be used for automated access to resources across all projects within that customer.
+
     Args:
         body (CustomerServiceAccountRequest):
 

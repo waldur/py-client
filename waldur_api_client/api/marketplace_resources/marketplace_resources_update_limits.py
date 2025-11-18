@@ -56,7 +56,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceUpdateLimitsRequest,
 ) -> Response[OrderUUID]:
-    """Create marketplace order for resource limits update.
+    """Update resource limits
+
+     Creates a marketplace order to update the limits (e.g., CPU, RAM) for a resource. This action is
+    asynchronous and may require approval.
 
     Args:
         uuid (UUID):
@@ -88,7 +91,10 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceUpdateLimitsRequest,
 ) -> OrderUUID:
-    """Create marketplace order for resource limits update.
+    """Update resource limits
+
+     Creates a marketplace order to update the limits (e.g., CPU, RAM) for a resource. This action is
+    asynchronous and may require approval.
 
     Args:
         uuid (UUID):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceUpdateLimitsRequest,
 ) -> Response[OrderUUID]:
-    """Create marketplace order for resource limits update.
+    """Update resource limits
+
+     Creates a marketplace order to update the limits (e.g., CPU, RAM) for a resource. This action is
+    asynchronous and may require approval.
 
     Args:
         uuid (UUID):
@@ -145,7 +154,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceUpdateLimitsRequest,
 ) -> OrderUUID:
-    """Create marketplace order for resource limits update.
+    """Update resource limits
+
+     Creates a marketplace order to update the limits (e.g., CPU, RAM) for a resource. This action is
+    asynchronous and may require approval.
 
     Args:
         uuid (UUID):

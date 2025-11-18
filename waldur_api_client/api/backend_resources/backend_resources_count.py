@@ -116,7 +116,9 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List backend resources
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -172,7 +174,9 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List backend resources
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -223,7 +227,9 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List backend resources
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -277,7 +283,9 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List backend resources
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):

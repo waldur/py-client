@@ -70,7 +70,16 @@ def sync_detailed(
     category_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RuntimeStates"]]:
-    """Retrieve available runtime states for resources, optionally filtered by project and category.
+    """List available runtime states for resources
+
+
+            Returns a unique, sorted list of runtime states for all resources accessible to the current
+    user.
+            The runtime state is a backend-specific state of a resource (e.g., 'ACTIVE', 'SHUTOFF' for a
+    VM).
+            This endpoint is useful for building dynamic filters in a user interface.
+            The list can be optionally filtered by project or category.
+
 
     Args:
         category_uuid (Union[Unset, UUID]):
@@ -102,7 +111,16 @@ def sync(
     category_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RuntimeStates"]:
-    """Retrieve available runtime states for resources, optionally filtered by project and category.
+    """List available runtime states for resources
+
+
+            Returns a unique, sorted list of runtime states for all resources accessible to the current
+    user.
+            The runtime state is a backend-specific state of a resource (e.g., 'ACTIVE', 'SHUTOFF' for a
+    VM).
+            This endpoint is useful for building dynamic filters in a user interface.
+            The list can be optionally filtered by project or category.
+
 
     Args:
         category_uuid (Union[Unset, UUID]):
@@ -129,7 +147,16 @@ async def asyncio_detailed(
     category_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RuntimeStates"]]:
-    """Retrieve available runtime states for resources, optionally filtered by project and category.
+    """List available runtime states for resources
+
+
+            Returns a unique, sorted list of runtime states for all resources accessible to the current
+    user.
+            The runtime state is a backend-specific state of a resource (e.g., 'ACTIVE', 'SHUTOFF' for a
+    VM).
+            This endpoint is useful for building dynamic filters in a user interface.
+            The list can be optionally filtered by project or category.
+
 
     Args:
         category_uuid (Union[Unset, UUID]):
@@ -159,7 +186,16 @@ async def asyncio(
     category_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RuntimeStates"]:
-    """Retrieve available runtime states for resources, optionally filtered by project and category.
+    """List available runtime states for resources
+
+
+            Returns a unique, sorted list of runtime states for all resources accessible to the current
+    user.
+            The runtime state is a backend-specific state of a resource (e.g., 'ACTIVE', 'SHUTOFF' for a
+    VM).
+            This endpoint is useful for building dynamic filters in a user interface.
+            The list can be optionally filtered by project or category.
+
 
     Args:
         category_uuid (Union[Unset, UUID]):

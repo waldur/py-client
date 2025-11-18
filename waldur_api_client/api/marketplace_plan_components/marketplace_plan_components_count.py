@@ -85,7 +85,9 @@ def sync_detailed(
     plan_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List plan components
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         archived (Union[Unset, bool]):
@@ -129,7 +131,9 @@ def sync(
     plan_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List plan components
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         archived (Union[Unset, bool]):
@@ -168,7 +172,9 @@ async def asyncio_detailed(
     plan_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List plan components
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         archived (Union[Unset, bool]):
@@ -210,7 +216,9 @@ async def asyncio(
     plan_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List plan components
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         archived (Union[Unset, bool]):

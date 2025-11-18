@@ -50,7 +50,20 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[list["PluginOfferingType"]]:
-    """
+    """List available marketplace plugins and their components
+
+
+            Returns a list of all registered marketplace plugins (offering types) and the components
+            associated with each. This endpoint is public and does not require authentication.
+
+            Each plugin entry includes:
+            - `offering_type`: A unique identifier for the plugin.
+            - `components`: A list of components provided by the plugin, each with its `type`, `name`,
+    `measured_unit`, and `billing_type`.
+            - `available_limits`: A list of component types that support user-defined limits for this
+    plugin.
+
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -72,7 +85,20 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> list["PluginOfferingType"]:
-    """
+    """List available marketplace plugins and their components
+
+
+            Returns a list of all registered marketplace plugins (offering types) and the components
+            associated with each. This endpoint is public and does not require authentication.
+
+            Each plugin entry includes:
+            - `offering_type`: A unique identifier for the plugin.
+            - `components`: A list of components provided by the plugin, each with its `type`, `name`,
+    `measured_unit`, and `billing_type`.
+            - `available_limits`: A list of component types that support user-defined limits for this
+    plugin.
+
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -90,7 +116,20 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> Response[list["PluginOfferingType"]]:
-    """
+    """List available marketplace plugins and their components
+
+
+            Returns a list of all registered marketplace plugins (offering types) and the components
+            associated with each. This endpoint is public and does not require authentication.
+
+            Each plugin entry includes:
+            - `offering_type`: A unique identifier for the plugin.
+            - `components`: A list of components provided by the plugin, each with its `type`, `name`,
+    `measured_unit`, and `billing_type`.
+            - `available_limits`: A list of component types that support user-defined limits for this
+    plugin.
+
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -110,7 +149,20 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
 ) -> list["PluginOfferingType"]:
-    """
+    """List available marketplace plugins and their components
+
+
+            Returns a list of all registered marketplace plugins (offering types) and the components
+            associated with each. This endpoint is public and does not require authentication.
+
+            Each plugin entry includes:
+            - `offering_type`: A unique identifier for the plugin.
+            - `components`: A list of components provided by the plugin, each with its `type`, `name`,
+    `measured_unit`, and `billing_type`.
+            - `available_limits`: A list of component types that support user-defined limits for this
+    plugin.
+
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.

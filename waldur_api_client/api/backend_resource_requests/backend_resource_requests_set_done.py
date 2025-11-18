@@ -49,7 +49,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BackendResourceRequestsSetDoneResponse200]:
-    """
+    """Mark a request as done
+
+     Transitions the request state from 'Processing' to 'Done'. This is used by a site agent to signal
+    that it has successfully reported all available resources.
+
     Args:
         uuid (UUID):
 
@@ -77,7 +81,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> BackendResourceRequestsSetDoneResponse200:
-    """
+    """Mark a request as done
+
+     Transitions the request state from 'Processing' to 'Done'. This is used by a site agent to signal
+    that it has successfully reported all available resources.
+
     Args:
         uuid (UUID):
 
@@ -100,7 +108,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BackendResourceRequestsSetDoneResponse200]:
-    """
+    """Mark a request as done
+
+     Transitions the request state from 'Processing' to 'Done'. This is used by a site agent to signal
+    that it has successfully reported all available resources.
+
     Args:
         uuid (UUID):
 
@@ -126,7 +138,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> BackendResourceRequestsSetDoneResponse200:
-    """
+    """Mark a request as done
+
+     Transitions the request state from 'Processing' to 'Done'. This is used by a site agent to signal
+    that it has successfully reported all available resources.
+
     Args:
         uuid (UUID):
 

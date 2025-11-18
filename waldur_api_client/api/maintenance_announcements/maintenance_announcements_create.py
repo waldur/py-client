@@ -55,7 +55,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementRequest,
 ) -> Response[MaintenanceAnnouncement]:
-    """
+    """Create a maintenance announcement
+
+     Creates a new maintenance announcement in the 'Draft' state.
+
     Args:
         body (MaintenanceAnnouncementRequest):
 
@@ -83,7 +86,10 @@ def sync(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementRequest,
 ) -> MaintenanceAnnouncement:
-    """
+    """Create a maintenance announcement
+
+     Creates a new maintenance announcement in the 'Draft' state.
+
     Args:
         body (MaintenanceAnnouncementRequest):
 
@@ -106,7 +112,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementRequest,
 ) -> Response[MaintenanceAnnouncement]:
-    """
+    """Create a maintenance announcement
+
+     Creates a new maintenance announcement in the 'Draft' state.
+
     Args:
         body (MaintenanceAnnouncementRequest):
 
@@ -132,7 +141,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementRequest,
 ) -> MaintenanceAnnouncement:
-    """
+    """Create a maintenance announcement
+
+     Creates a new maintenance announcement in the 'Draft' state.
+
     Args:
         body (MaintenanceAnnouncementRequest):
 

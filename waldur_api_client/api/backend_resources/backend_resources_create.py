@@ -55,7 +55,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BackendResourceRequest,
 ) -> Response[BackendResource]:
-    """
+    """Create a backend resource
+
+     Creates a new backend resource record. This is typically done by a site agent to report a resource
+    that is available for import into the marketplace.
+
     Args:
         body (BackendResourceRequest):
 
@@ -83,7 +87,11 @@ def sync(
     client: AuthenticatedClient,
     body: BackendResourceRequest,
 ) -> BackendResource:
-    """
+    """Create a backend resource
+
+     Creates a new backend resource record. This is typically done by a site agent to report a resource
+    that is available for import into the marketplace.
+
     Args:
         body (BackendResourceRequest):
 
@@ -106,7 +114,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BackendResourceRequest,
 ) -> Response[BackendResource]:
-    """
+    """Create a backend resource
+
+     Creates a new backend resource record. This is typically done by a site agent to report a resource
+    that is available for import into the marketplace.
+
     Args:
         body (BackendResourceRequest):
 
@@ -132,7 +144,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: BackendResourceRequest,
 ) -> BackendResource:
-    """
+    """Create a backend resource
+
+     Creates a new backend resource record. This is typically done by a site agent to report a resource
+    that is available for import into the marketplace.
+
     Args:
         body (BackendResourceRequest):
 

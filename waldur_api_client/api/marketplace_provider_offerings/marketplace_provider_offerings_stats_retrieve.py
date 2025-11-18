@@ -6,45 +6,30 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_provider_offerings_stats_retrieve_field_item import (
-    MarketplaceProviderOfferingsStatsRetrieveFieldItem,
+from ...models.marketplace_provider_offerings_stats_retrieve_response_200 import (
+    MarketplaceProviderOfferingsStatsRetrieveResponse200,
 )
-from ...models.provider_offering_details import ProviderOfferingDetails
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
-    *,
-    field: Union[Unset, list[MarketplaceProviderOfferingsStatsRetrieveFieldItem]] = UNSET,
 ) -> dict[str, Any]:
-    params: dict[str, Any] = {}
-
-    json_field: Union[Unset, list[str]] = UNSET
-    if not isinstance(field, Unset):
-        json_field = []
-        for field_item_data in field:
-            field_item = field_item_data.value
-            json_field.append(field_item)
-
-    params["field"] = json_field
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": f"/api/marketplace-provider-offerings/{uuid}/stats/",
-        "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ProviderOfferingDetails:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> MarketplaceProviderOfferingsStatsRetrieveResponse200:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ProviderOfferingDetails.from_dict(response.json())
+        response_200 = MarketplaceProviderOfferingsStatsRetrieveResponse200.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -52,7 +37,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ProviderOfferingDetails]:
+) -> Response[MarketplaceProviderOfferingsStatsRetrieveResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,24 +50,24 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsStatsRetrieveFieldItem]] = UNSET,
-) -> Response[ProviderOfferingDetails]:
-    """
+) -> Response[MarketplaceProviderOfferingsStatsRetrieveResponse200]:
+    """Get offering statistics
+
+     Returns basic statistics for an offering, such as the number of active resources and customers.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderOfferingsStatsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProviderOfferingDetails]
+        Response[MarketplaceProviderOfferingsStatsRetrieveResponse200]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        field=field,
     )
 
     response = client.get_httpx_client().request(
@@ -96,25 +81,25 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsStatsRetrieveFieldItem]] = UNSET,
-) -> ProviderOfferingDetails:
-    """
+) -> MarketplaceProviderOfferingsStatsRetrieveResponse200:
+    """Get offering statistics
+
+     Returns basic statistics for an offering, such as the number of active resources and customers.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderOfferingsStatsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProviderOfferingDetails
+        MarketplaceProviderOfferingsStatsRetrieveResponse200
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
-        field=field,
     ).parsed
 
 
@@ -122,24 +107,24 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsStatsRetrieveFieldItem]] = UNSET,
-) -> Response[ProviderOfferingDetails]:
-    """
+) -> Response[MarketplaceProviderOfferingsStatsRetrieveResponse200]:
+    """Get offering statistics
+
+     Returns basic statistics for an offering, such as the number of active resources and customers.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderOfferingsStatsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProviderOfferingDetails]
+        Response[MarketplaceProviderOfferingsStatsRetrieveResponse200]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        field=field,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -151,25 +136,25 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsStatsRetrieveFieldItem]] = UNSET,
-) -> ProviderOfferingDetails:
-    """
+) -> MarketplaceProviderOfferingsStatsRetrieveResponse200:
+    """Get offering statistics
+
+     Returns basic statistics for an offering, such as the number of active resources and customers.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderOfferingsStatsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProviderOfferingDetails
+        MarketplaceProviderOfferingsStatsRetrieveResponse200
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            field=field,
         )
     ).parsed

@@ -79,7 +79,10 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ServiceProviderOfferingUserCompliance"]]:
-    """List offering users with their compliance status for this service provider.
+    """List offering users' compliance status
+
+     Returns a list of offering users with their compliance status for this service provider. Can be
+    filtered by offering and compliance status.
 
     Args:
         service_provider_uuid (UUID):
@@ -120,7 +123,10 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ServiceProviderOfferingUserCompliance"]:
-    """List offering users with their compliance status for this service provider.
+    """List offering users' compliance status
+
+     Returns a list of offering users with their compliance status for this service provider. Can be
+    filtered by offering and compliance status.
 
     Args:
         service_provider_uuid (UUID):
@@ -156,7 +162,10 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ServiceProviderOfferingUserCompliance"]]:
-    """List offering users with their compliance status for this service provider.
+    """List offering users' compliance status
+
+     Returns a list of offering users with their compliance status for this service provider. Can be
+    filtered by offering and compliance status.
 
     Args:
         service_provider_uuid (UUID):
@@ -195,7 +204,10 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ServiceProviderOfferingUserCompliance"]:
-    """List offering users with their compliance status for this service provider.
+    """List offering users' compliance status
+
+     Returns a list of offering users with their compliance status for this service provider. Can be
+    filtered by offering and compliance status.
 
     Args:
         service_provider_uuid (UUID):

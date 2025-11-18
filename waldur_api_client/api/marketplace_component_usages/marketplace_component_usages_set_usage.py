@@ -50,7 +50,19 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ComponentUsageCreateRequest,
 ) -> Response[Any]:
-    """
+    """Set component usage for a resource
+
+
+            Allows a service provider to report usage for one or more components of a specific resource.
+            This endpoint is typically used by backend systems or agents to submit periodic usage data.
+
+            - If a `plan_period` is provided, the usage is associated with that period.
+            - If only a `resource` is provided, the system will determine the correct plan period based
+    on the current date.
+            - If a usage record for the same resource, component, and billing period already exists, it
+    will be updated. Otherwise, a new record is created.
+
+
     Args:
         body (ComponentUsageCreateRequest):
 
@@ -78,7 +90,19 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ComponentUsageCreateRequest,
 ) -> Response[Any]:
-    """
+    """Set component usage for a resource
+
+
+            Allows a service provider to report usage for one or more components of a specific resource.
+            This endpoint is typically used by backend systems or agents to submit periodic usage data.
+
+            - If a `plan_period` is provided, the usage is associated with that period.
+            - If only a `resource` is provided, the system will determine the correct plan period based
+    on the current date.
+            - If a usage record for the same resource, component, and billing period already exists, it
+    will be updated. Otherwise, a new record is created.
+
+
     Args:
         body (ComponentUsageCreateRequest):
 

@@ -269,7 +269,9 @@ def sync_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingComponentStat"]]:
-    """Get statistics for offering components.
+    """Get statistics for offering components
+
+     Returns monthly usage statistics for the components of an offering within a specified date range.
 
     Args:
         uuid (UUID):
@@ -406,7 +408,9 @@ def sync(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["OfferingComponentStat"]:
-    """Get statistics for offering components.
+    """Get statistics for offering components
+
+     Returns monthly usage statistics for the components of an offering within a specified date range.
 
     Args:
         uuid (UUID):
@@ -538,7 +542,9 @@ async def asyncio_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingComponentStat"]]:
-    """Get statistics for offering components.
+    """Get statistics for offering components
+
+     Returns monthly usage statistics for the components of an offering within a specified date range.
 
     Args:
         uuid (UUID):
@@ -673,7 +679,9 @@ async def asyncio(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["OfferingComponentStat"]:
-    """Get statistics for offering components.
+    """Get statistics for offering components
+
+     Returns monthly usage statistics for the components of an offering within a specified date range.
 
     Args:
         uuid (UUID):

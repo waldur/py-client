@@ -1,55 +1,46 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
-from uuid import UUID
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ResourceSuggestName")
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="MarketplaceResourcesSetPausedResponse200")
 
 
 @_attrs_define
-class ResourceSuggestName:
+class MarketplaceResourcesSetPausedResponse200:
     """
     Attributes:
-        project (UUID):
-        offering (UUID):
+        status (Union[Unset, str]):
     """
 
-    project: UUID
-    offering: UUID
+    status: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        project = str(self.project)
-
-        offering = str(self.offering)
+        status = self.status
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "project": project,
-                "offering": offering,
-            }
-        )
+        field_dict.update({})
+        if status is not UNSET:
+            field_dict["status"] = status
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        project = UUID(d.pop("project"))
+        status = d.pop("status", UNSET)
 
-        offering = UUID(d.pop("offering"))
-
-        resource_suggest_name = cls(
-            project=project,
-            offering=offering,
+        marketplace_resources_set_paused_response_200 = cls(
+            status=status,
         )
 
-        resource_suggest_name.additional_properties = d
-        return resource_suggest_name
+        marketplace_resources_set_paused_response_200.additional_properties = d
+        return marketplace_resources_set_paused_response_200
 
     @property
     def additional_keys(self) -> list[str]:

@@ -138,7 +138,10 @@ def sync_detailed(
     state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["RobotAccountDetails"]]:
-    """
+    """List robot accounts
+
+     Returns a paginated list of robot accounts accessible to the current user.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
@@ -199,7 +202,10 @@ def sync(
     state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["RobotAccountDetails"]:
-    """
+    """List robot accounts
+
+     Returns a paginated list of robot accounts accessible to the current user.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
@@ -255,7 +261,10 @@ async def asyncio_detailed(
     state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["RobotAccountDetails"]]:
-    """
+    """List robot accounts
+
+     Returns a paginated list of robot accounts accessible to the current user.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
@@ -314,7 +323,10 @@ async def asyncio(
     state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["RobotAccountDetails"]:
-    """
+    """List robot accounts
+
+     Returns a paginated list of robot accounts accessible to the current user.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):

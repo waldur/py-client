@@ -47,7 +47,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[UserOfferingConsent]:
-    """Revoke consent to Terms of Service for an offering.
+    """Revoke consent to Terms of Service
+
+     Revokes a user's consent to the Terms of Service for an offering. The consent record is marked with
+    a revocation date, and the user may lose access to related resources if consent is required.
 
     Args:
         uuid (UUID):
@@ -76,7 +79,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> UserOfferingConsent:
-    """Revoke consent to Terms of Service for an offering.
+    """Revoke consent to Terms of Service
+
+     Revokes a user's consent to the Terms of Service for an offering. The consent record is marked with
+    a revocation date, and the user may lose access to related resources if consent is required.
 
     Args:
         uuid (UUID):
@@ -100,7 +106,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[UserOfferingConsent]:
-    """Revoke consent to Terms of Service for an offering.
+    """Revoke consent to Terms of Service
+
+     Revokes a user's consent to the Terms of Service for an offering. The consent record is marked with
+    a revocation date, and the user may lose access to related resources if consent is required.
 
     Args:
         uuid (UUID):
@@ -127,7 +136,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> UserOfferingConsent:
-    """Revoke consent to Terms of Service for an offering.
+    """Revoke consent to Terms of Service
+
+     Revokes a user's consent to the Terms of Service for an offering. The consent record is marked with
+    a revocation date, and the user may lose access to related resources if consent is required.
 
     Args:
         uuid (UUID):

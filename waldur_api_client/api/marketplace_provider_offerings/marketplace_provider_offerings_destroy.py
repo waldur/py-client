@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a provider offering
+
+     Deletes a provider offering. Only possible for offerings in a Draft state with no associated
+    resources.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a provider offering
+
+     Deletes a provider offering. Only possible for offerings in a Draft state with no associated
+    resources.
+
     Args:
         uuid (UUID):
 

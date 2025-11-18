@@ -58,7 +58,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingTermsOfServiceRequest,
 ) -> Response[OfferingTermsOfService]:
-    """
+    """Update a Terms of Service configuration
+
+     Updates an existing Terms of Service configuration. Note that some fields like `version` and
+    `requires_reconsent` are protected and cannot be changed after creation.
+
     Args:
         uuid (UUID):
         body (OfferingTermsOfServiceRequest):
@@ -89,7 +93,11 @@ def sync(
     client: AuthenticatedClient,
     body: OfferingTermsOfServiceRequest,
 ) -> OfferingTermsOfService:
-    """
+    """Update a Terms of Service configuration
+
+     Updates an existing Terms of Service configuration. Note that some fields like `version` and
+    `requires_reconsent` are protected and cannot be changed after creation.
+
     Args:
         uuid (UUID):
         body (OfferingTermsOfServiceRequest):
@@ -115,7 +123,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingTermsOfServiceRequest,
 ) -> Response[OfferingTermsOfService]:
-    """
+    """Update a Terms of Service configuration
+
+     Updates an existing Terms of Service configuration. Note that some fields like `version` and
+    `requires_reconsent` are protected and cannot be changed after creation.
+
     Args:
         uuid (UUID):
         body (OfferingTermsOfServiceRequest):
@@ -144,7 +156,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OfferingTermsOfServiceRequest,
 ) -> OfferingTermsOfService:
-    """
+    """Update a Terms of Service configuration
+
+     Updates an existing Terms of Service configuration. Note that some fields like `version` and
+    `requires_reconsent` are protected and cannot be changed after creation.
+
     Args:
         uuid (UUID):
         body (OfferingTermsOfServiceRequest):

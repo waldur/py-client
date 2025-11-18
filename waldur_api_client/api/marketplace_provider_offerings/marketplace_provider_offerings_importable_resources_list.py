@@ -68,7 +68,9 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ImportableResource"]]:
-    """List importable resources for offering.
+    """List importable resources
+
+     Returns a paginated list of resources that can be imported for this offering.
 
     Args:
         uuid (UUID):
@@ -103,7 +105,9 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ImportableResource"]:
-    """List importable resources for offering.
+    """List importable resources
+
+     Returns a paginated list of resources that can be imported for this offering.
 
     Args:
         uuid (UUID):
@@ -133,7 +137,9 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ImportableResource"]]:
-    """List importable resources for offering.
+    """List importable resources
+
+     Returns a paginated list of resources that can be imported for this offering.
 
     Args:
         uuid (UUID):
@@ -166,7 +172,9 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ImportableResource"]:
-    """List importable resources for offering.
+    """List importable resources
+
+     Returns a paginated list of resources that can be imported for this offering.
 
     Args:
         uuid (UUID):

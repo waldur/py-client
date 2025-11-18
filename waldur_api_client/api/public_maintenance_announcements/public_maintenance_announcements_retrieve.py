@@ -49,7 +49,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[PublicMaintenanceAnnouncement]:
-    """
+    """Retrieve a public maintenance announcement
+
+     Returns the details of a specific public maintenance announcement.
+
     Args:
         uuid (UUID):
 
@@ -77,7 +80,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> PublicMaintenanceAnnouncement:
-    """
+    """Retrieve a public maintenance announcement
+
+     Returns the details of a specific public maintenance announcement.
+
     Args:
         uuid (UUID):
 
@@ -100,7 +106,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[PublicMaintenanceAnnouncement]:
-    """
+    """Retrieve a public maintenance announcement
+
+     Returns the details of a specific public maintenance announcement.
+
     Args:
         uuid (UUID):
 
@@ -126,7 +135,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> PublicMaintenanceAnnouncement:
-    """
+    """Retrieve a public maintenance announcement
+
+     Returns the details of a specific public maintenance announcement.
+
     Args:
         uuid (UUID):
 

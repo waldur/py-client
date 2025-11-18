@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]] = UNSET,
 ) -> Response[ServiceProvider]:
-    """
+    """Retrieve a service provider
+
+     Returns details of a specific service provider.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]] = UNSET,
 ) -> ServiceProvider:
-    """
+    """Retrieve a service provider
+
+     Returns details of a specific service provider.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]] = UNSET,
 ) -> Response[ServiceProvider]:
-    """
+    """Retrieve a service provider
+
+     Returns details of a specific service provider.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]] = UNSET,
 ) -> ServiceProvider:
-    """
+    """Retrieve a service provider
+
+     Returns details of a specific service provider.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]]):

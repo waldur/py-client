@@ -122,7 +122,11 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> Response[list["SoftwarePackage"]]:
-    """
+    """List software packages
+
+     Returns a paginated list of software packages available in the catalogs. Can be filtered by catalog,
+    offering, or various package attributes.
+
     Args:
         catalog_name (Union[Unset, str]):
         catalog_uuid (Union[Unset, UUID]):
@@ -186,7 +190,11 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> list["SoftwarePackage"]:
-    """
+    """List software packages
+
+     Returns a paginated list of software packages available in the catalogs. Can be filtered by catalog,
+    offering, or various package attributes.
+
     Args:
         catalog_name (Union[Unset, str]):
         catalog_uuid (Union[Unset, UUID]):
@@ -245,7 +253,11 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> Response[list["SoftwarePackage"]]:
-    """
+    """List software packages
+
+     Returns a paginated list of software packages available in the catalogs. Can be filtered by catalog,
+    offering, or various package attributes.
+
     Args:
         catalog_name (Union[Unset, str]):
         catalog_uuid (Union[Unset, UUID]):
@@ -307,7 +319,11 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> list["SoftwarePackage"]:
-    """
+    """List software packages
+
+     Returns a paginated list of software packages available in the catalogs. Can be filtered by catalog,
+    offering, or various package attributes.
+
     Args:
         catalog_name (Union[Unset, str]):
         catalog_uuid (Union[Unset, UUID]):

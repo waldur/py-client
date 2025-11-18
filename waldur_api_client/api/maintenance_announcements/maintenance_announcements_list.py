@@ -130,7 +130,10 @@ def sync_detailed(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementsListStateItem]] = UNSET,
 ) -> Response[list["MaintenanceAnnouncement"]]:
-    """
+    """List maintenance announcements
+
+     Returns a paginated list of maintenance announcements.
+
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[MaintenanceAnnouncementsListOItem]]):
@@ -185,7 +188,10 @@ def sync(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementsListStateItem]] = UNSET,
 ) -> list["MaintenanceAnnouncement"]:
-    """
+    """List maintenance announcements
+
+     Returns a paginated list of maintenance announcements.
+
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[MaintenanceAnnouncementsListOItem]]):
@@ -235,7 +241,10 @@ async def asyncio_detailed(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementsListStateItem]] = UNSET,
 ) -> Response[list["MaintenanceAnnouncement"]]:
-    """
+    """List maintenance announcements
+
+     Returns a paginated list of maintenance announcements.
+
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[MaintenanceAnnouncementsListOItem]]):
@@ -288,7 +297,10 @@ async def asyncio(
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementsListStateItem]] = UNSET,
 ) -> list["MaintenanceAnnouncement"]:
-    """
+    """List maintenance announcements
+
+     Returns a paginated list of maintenance announcements.
+
     Args:
         maintenance_type (Union[Unset, int]):
         o (Union[Unset, list[MaintenanceAnnouncementsListOItem]]):

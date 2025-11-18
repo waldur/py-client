@@ -113,7 +113,15 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["UserChecklistCompletion"]]:
-    """Override list to add OfferingUser data optimization.
+    """List checklist completions for offering users
+
+
+            Returns a paginated list of all checklist completions for offering users that the current
+    user is allowed to see.
+            This endpoint is used by service providers to monitor compliance status and by users to see
+    their own required checklists.
+            Visibility follows the same rules as the `OfferingUsers` endpoint.
+
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -163,7 +171,15 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserChecklistCompletion"]:
-    """Override list to add OfferingUser data optimization.
+    """List checklist completions for offering users
+
+
+            Returns a paginated list of all checklist completions for offering users that the current
+    user is allowed to see.
+            This endpoint is used by service providers to monitor compliance status and by users to see
+    their own required checklists.
+            Visibility follows the same rules as the `OfferingUsers` endpoint.
+
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -208,7 +224,15 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["UserChecklistCompletion"]]:
-    """Override list to add OfferingUser data optimization.
+    """List checklist completions for offering users
+
+
+            Returns a paginated list of all checklist completions for offering users that the current
+    user is allowed to see.
+            This endpoint is used by service providers to monitor compliance status and by users to see
+    their own required checklists.
+            Visibility follows the same rules as the `OfferingUsers` endpoint.
+
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -256,7 +280,15 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserChecklistCompletion"]:
-    """Override list to add OfferingUser data optimization.
+    """List checklist completions for offering users
+
+
+            Returns a paginated list of all checklist completions for offering users that the current
+    user is allowed to see.
+            This endpoint is used by service providers to monitor compliance status and by users to see
+    their own required checklists.
+            Visibility follows the same rules as the `OfferingUsers` endpoint.
+
 
     Args:
         created (Union[Unset, datetime.datetime]):

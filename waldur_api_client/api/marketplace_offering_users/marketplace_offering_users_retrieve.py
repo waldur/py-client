@@ -63,7 +63,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceOfferingUsersRetrieveFieldItem]] = UNSET,
 ) -> Response[OfferingUser]:
-    """
+    """Retrieve an offering user
+
+     Returns the details of a specific offering-user link. Visibility follows the same rules as the list
+    view.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceOfferingUsersRetrieveFieldItem]]):
@@ -94,7 +98,11 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceOfferingUsersRetrieveFieldItem]] = UNSET,
 ) -> OfferingUser:
-    """
+    """Retrieve an offering user
+
+     Returns the details of a specific offering-user link. Visibility follows the same rules as the list
+    view.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceOfferingUsersRetrieveFieldItem]]):
@@ -120,7 +128,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceOfferingUsersRetrieveFieldItem]] = UNSET,
 ) -> Response[OfferingUser]:
-    """
+    """Retrieve an offering user
+
+     Returns the details of a specific offering-user link. Visibility follows the same rules as the list
+    view.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceOfferingUsersRetrieveFieldItem]]):
@@ -149,7 +161,11 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceOfferingUsersRetrieveFieldItem]] = UNSET,
 ) -> OfferingUser:
-    """
+    """Retrieve an offering user
+
+     Returns the details of a specific offering-user link. Visibility follows the same rules as the list
+    view.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceOfferingUsersRetrieveFieldItem]]):

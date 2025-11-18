@@ -56,7 +56,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingPauseRequest,
 ) -> Response[DetailState]:
-    """
+    """Pause an offering
+
+     Pauses an active offering, preventing new orders from being created.
+
     Args:
         uuid (UUID):
         body (OfferingPauseRequest):
@@ -87,7 +90,10 @@ def sync(
     client: AuthenticatedClient,
     body: OfferingPauseRequest,
 ) -> DetailState:
-    """
+    """Pause an offering
+
+     Pauses an active offering, preventing new orders from being created.
+
     Args:
         uuid (UUID):
         body (OfferingPauseRequest):
@@ -113,7 +119,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingPauseRequest,
 ) -> Response[DetailState]:
-    """
+    """Pause an offering
+
+     Pauses an active offering, preventing new orders from being created.
+
     Args:
         uuid (UUID):
         body (OfferingPauseRequest):
@@ -142,7 +151,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OfferingPauseRequest,
 ) -> DetailState:
-    """
+    """Pause an offering
+
+     Pauses an active offering, preventing new orders from being created.
+
     Args:
         uuid (UUID):
         body (OfferingPauseRequest):

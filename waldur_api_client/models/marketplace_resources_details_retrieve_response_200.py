@@ -4,14 +4,14 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="MarketplaceResourcesPullResponse200")
+T = TypeVar("T", bound="MarketplaceResourcesDetailsRetrieveResponse200")
 
 
 @_attrs_define
-class MarketplaceResourcesPullResponse200:
+class MarketplaceResourcesDetailsRetrieveResponse200:
     """ """
 
-    additional_properties: dict[str, str] = _attrs_field(init=False, factory=dict)
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         field_dict: dict[str, Any] = {}
@@ -22,19 +22,19 @@ class MarketplaceResourcesPullResponse200:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        marketplace_resources_pull_response_200 = cls()
+        marketplace_resources_details_retrieve_response_200 = cls()
 
-        marketplace_resources_pull_response_200.additional_properties = d
-        return marketplace_resources_pull_response_200
+        marketplace_resources_details_retrieve_response_200.additional_properties = d
+        return marketplace_resources_details_retrieve_response_200
 
     @property
     def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> str:
+    def __getitem__(self, key: str) -> Any:
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: str) -> None:
+    def __setitem__(self, key: str, value: Any) -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

@@ -262,7 +262,9 @@ def sync_detailed(
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List provider resources
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -402,7 +404,9 @@ def sync(
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List provider resources
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -537,7 +541,9 @@ async def asyncio_detailed(
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List provider resources
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):
@@ -675,7 +681,9 @@ async def asyncio(
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List provider resources
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         backend_id (Union[Unset, str]):

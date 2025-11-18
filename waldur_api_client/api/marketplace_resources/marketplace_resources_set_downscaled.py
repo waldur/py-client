@@ -6,6 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_resources_set_downscaled_response_200 import MarketplaceResourcesSetDownscaledResponse200
 from ...models.resource_downscaled_request import ResourceDownscaledRequest
 from ...types import Response
 
@@ -30,15 +31,21 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> MarketplaceResourcesSetDownscaledResponse200:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        return None
+        response_200 = MarketplaceResourcesSetDownscaledResponse200.from_dict(response.json())
+
+        return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[MarketplaceResourcesSetDownscaledResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -52,8 +59,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceDownscaledRequest,
-) -> Response[Any]:
-    """Set downscaled flag for resource.
+) -> Response[MarketplaceResourcesSetDownscaledResponse200]:
+    """Set downscaled flag for resource
+
+     Sets the 'downscaled' flag for a resource. Requires staff permissions.
 
     Args:
         uuid (UUID):
@@ -64,7 +73,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[MarketplaceResourcesSetDownscaledResponse200]
     """
 
     kwargs = _get_kwargs(
@@ -79,13 +88,15 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: ResourceDownscaledRequest,
-) -> Response[Any]:
-    """Set downscaled flag for resource.
+) -> MarketplaceResourcesSetDownscaledResponse200:
+    """Set downscaled flag for resource
+
+     Sets the 'downscaled' flag for a resource. Requires staff permissions.
 
     Args:
         uuid (UUID):
@@ -96,7 +107,36 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        MarketplaceResourcesSetDownscaledResponse200
+    """
+
+    return sync_detailed(
+        uuid=uuid,
+        client=client,
+        body=body,
+    ).parsed
+
+
+async def asyncio_detailed(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: ResourceDownscaledRequest,
+) -> Response[MarketplaceResourcesSetDownscaledResponse200]:
+    """Set downscaled flag for resource
+
+     Sets the 'downscaled' flag for a resource. Requires staff permissions.
+
+    Args:
+        uuid (UUID):
+        body (ResourceDownscaledRequest):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[MarketplaceResourcesSetDownscaledResponse200]
     """
 
     kwargs = _get_kwargs(
@@ -107,3 +147,34 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: ResourceDownscaledRequest,
+) -> MarketplaceResourcesSetDownscaledResponse200:
+    """Set downscaled flag for resource
+
+     Sets the 'downscaled' flag for a resource. Requires staff permissions.
+
+    Args:
+        uuid (UUID):
+        body (ResourceDownscaledRequest):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        MarketplaceResourcesSetDownscaledResponse200
+    """
+
+    return (
+        await asyncio_detailed(
+            uuid=uuid,
+            client=client,
+            body=body,
+        )
+    ).parsed

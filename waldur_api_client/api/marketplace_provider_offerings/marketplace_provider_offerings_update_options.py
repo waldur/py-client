@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingOptionsUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering options
+
+     Updates the order form options for an offering.
+
     Args:
         uuid (UUID):
         body (OfferingOptionsUpdateRequest):
@@ -84,7 +87,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingOptionsUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering options
+
+     Updates the order form options for an offering.
+
     Args:
         uuid (UUID):
         body (OfferingOptionsUpdateRequest):

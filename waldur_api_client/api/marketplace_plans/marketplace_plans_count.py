@@ -89,7 +89,9 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List provider plans
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         offering (Union[Unset, str]):
@@ -133,7 +135,9 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List provider plans
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         offering (Union[Unset, str]):
@@ -172,7 +176,9 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List provider plans
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         offering (Union[Unset, str]):
@@ -214,7 +220,9 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List provider plans
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         offering (Union[Unset, str]):

@@ -275,7 +275,9 @@ def sync_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["ProviderOfferingCustomer"]]:
-    """Get customers for offering.
+    """Get customers for an offering
+
+     Returns a paginated list of customers who have resources for this offering.
 
     Args:
         uuid (UUID):
@@ -409,7 +411,9 @@ def sync(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["ProviderOfferingCustomer"]:
-    """Get customers for offering.
+    """Get customers for an offering
+
+     Returns a paginated list of customers who have resources for this offering.
 
     Args:
         uuid (UUID):
@@ -538,7 +542,9 @@ async def asyncio_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["ProviderOfferingCustomer"]]:
-    """Get customers for offering.
+    """Get customers for an offering
+
+     Returns a paginated list of customers who have resources for this offering.
 
     Args:
         uuid (UUID):
@@ -670,7 +676,9 @@ async def asyncio(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["ProviderOfferingCustomer"]:
-    """Get customers for offering.
+    """Get customers for an offering
+
+     Returns a paginated list of customers who have resources for this offering.
 
     Args:
         uuid (UUID):

@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RobotAccountRequest,
 ) -> Response[RobotAccount]:
-    """
+    """Create a robot account
+
+     Creates a new robot account for a specific resource. This is typically used for automated access to
+    a resource, e.g., for CI/CD pipelines.
+
     Args:
         body (RobotAccountRequest):
 
@@ -81,7 +85,11 @@ def sync(
     client: AuthenticatedClient,
     body: RobotAccountRequest,
 ) -> RobotAccount:
-    """
+    """Create a robot account
+
+     Creates a new robot account for a specific resource. This is typically used for automated access to
+    a resource, e.g., for CI/CD pipelines.
+
     Args:
         body (RobotAccountRequest):
 
@@ -104,7 +112,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RobotAccountRequest,
 ) -> Response[RobotAccount]:
-    """
+    """Create a robot account
+
+     Creates a new robot account for a specific resource. This is typically used for automated access to
+    a resource, e.g., for CI/CD pipelines.
+
     Args:
         body (RobotAccountRequest):
 
@@ -130,7 +142,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RobotAccountRequest,
 ) -> RobotAccount:
-    """
+    """Create a robot account
+
+     Creates a new robot account for a specific resource. This is typically used for automated access to
+    a resource, e.g., for CI/CD pipelines.
+
     Args:
         body (RobotAccountRequest):
 

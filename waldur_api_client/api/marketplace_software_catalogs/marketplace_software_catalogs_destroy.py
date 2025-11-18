@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a software catalog
+
+     Deletes a software catalog. Requires staff permissions.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +73,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a software catalog
+
+     Deletes a software catalog. Requires staff permissions.
+
     Args:
         uuid (UUID):
 

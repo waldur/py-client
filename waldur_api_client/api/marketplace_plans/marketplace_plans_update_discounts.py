@@ -53,15 +53,19 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: DiscountsUpdateRequest,
 ) -> Response[Any]:
-    """Update volume discount configuration for plan components.
+    """Update plan component discounts
 
-    This endpoint allows updating discount thresholds and rates for multiple
-    plan components in a single request. Discounts are applied automatically
-    when limit quantities meet or exceed the threshold.
 
-    The discount configuration affects future billing:
-    - Creates separate invoice items showing the discount
-    - Can be enabled or disabled per component
+            Update volume discount configuration for plan components.
+
+            This endpoint allows updating discount thresholds and rates for multiple
+            plan components in a single request. Discounts are applied automatically
+            when limit quantities meet or exceed the threshold.
+
+            The discount configuration affects future billing:
+            - Creates separate invoice items showing the discount.
+            - Can be enabled or disabled per component.
+
 
     Args:
         uuid (UUID):
@@ -93,15 +97,19 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: DiscountsUpdateRequest,
 ) -> Response[Any]:
-    """Update volume discount configuration for plan components.
+    """Update plan component discounts
 
-    This endpoint allows updating discount thresholds and rates for multiple
-    plan components in a single request. Discounts are applied automatically
-    when limit quantities meet or exceed the threshold.
 
-    The discount configuration affects future billing:
-    - Creates separate invoice items showing the discount
-    - Can be enabled or disabled per component
+            Update volume discount configuration for plan components.
+
+            This endpoint allows updating discount thresholds and rates for multiple
+            plan components in a single request. Discounts are applied automatically
+            when limit quantities meet or exceed the threshold.
+
+            The discount configuration affects future billing:
+            - Creates separate invoice items showing the discount.
+            - Can be enabled or disabled per component.
+
 
     Args:
         uuid (UUID):

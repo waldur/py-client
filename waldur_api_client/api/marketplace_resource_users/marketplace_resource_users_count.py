@@ -92,7 +92,9 @@ def sync_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List resource users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
@@ -139,7 +141,9 @@ def sync(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List resource users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
@@ -181,7 +185,9 @@ async def asyncio_detailed(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List resource users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
@@ -226,7 +232,9 @@ async def asyncio(
     role_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List resource users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):

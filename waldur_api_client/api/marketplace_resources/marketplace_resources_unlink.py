@@ -23,7 +23,9 @@ def _get_kwargs(
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
+    if response.status_code == 204:
+        return None
+    if response.status_code == 403:
         return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
@@ -42,10 +44,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete marketplace resource and related plugin resource from the database without scheduling
-    operations on backend
-    and without checking current state of the resource. It is intended to be used
-    for removing resource stuck in transitioning state.
+    """Unlink a resource (staff only)
+
+     Forcefully deletes a marketplace resource and its related plugin resource from the database. This
+    action does not schedule operations on the backend and is intended for cleaning up resources stuck
+    in transitioning states. Requires staff permissions.
 
     Args:
         uuid (UUID):
@@ -74,10 +77,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Delete marketplace resource and related plugin resource from the database without scheduling
-    operations on backend
-    and without checking current state of the resource. It is intended to be used
-    for removing resource stuck in transitioning state.
+    """Unlink a resource (staff only)
+
+     Forcefully deletes a marketplace resource and its related plugin resource from the database. This
+    action does not schedule operations on the backend and is intended for cleaning up resources stuck
+    in transitioning states. Requires staff permissions.
 
     Args:
         uuid (UUID):

@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_resources_pull_response_200 import MarketplaceResourcesPullResponse200
+from ...models.marketplace_resources_pull_response_202 import MarketplaceResourcesPullResponse202
 from ...types import Response
 
 
@@ -23,19 +23,19 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> MarketplaceResourcesPullResponse200:
+) -> MarketplaceResourcesPullResponse202:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        response_200 = MarketplaceResourcesPullResponse200.from_dict(response.json())
+    if response.status_code == 202:
+        response_202 = MarketplaceResourcesPullResponse202.from_dict(response.json())
 
-        return response_200
+        return response_202
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[MarketplaceResourcesPullResponse200]:
+) -> Response[MarketplaceResourcesPullResponse202]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,8 +48,10 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[MarketplaceResourcesPullResponse200]:
-    """Starts process of pulling a resource
+) -> Response[MarketplaceResourcesPullResponse202]:
+    """Pull resource data
+
+     Schedules a task to pull the latest data for the resource from its backend.
 
     Args:
         uuid (UUID):
@@ -59,7 +61,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MarketplaceResourcesPullResponse200]
+        Response[MarketplaceResourcesPullResponse202]
     """
 
     kwargs = _get_kwargs(
@@ -77,8 +79,10 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> MarketplaceResourcesPullResponse200:
-    """Starts process of pulling a resource
+) -> MarketplaceResourcesPullResponse202:
+    """Pull resource data
+
+     Schedules a task to pull the latest data for the resource from its backend.
 
     Args:
         uuid (UUID):
@@ -88,7 +92,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MarketplaceResourcesPullResponse200
+        MarketplaceResourcesPullResponse202
     """
 
     return sync_detailed(
@@ -101,8 +105,10 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[MarketplaceResourcesPullResponse200]:
-    """Starts process of pulling a resource
+) -> Response[MarketplaceResourcesPullResponse202]:
+    """Pull resource data
+
+     Schedules a task to pull the latest data for the resource from its backend.
 
     Args:
         uuid (UUID):
@@ -112,7 +118,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MarketplaceResourcesPullResponse200]
+        Response[MarketplaceResourcesPullResponse202]
     """
 
     kwargs = _get_kwargs(
@@ -128,8 +134,10 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> MarketplaceResourcesPullResponse200:
-    """Starts process of pulling a resource
+) -> MarketplaceResourcesPullResponse202:
+    """Pull resource data
+
+     Schedules a task to pull the latest data for the resource from its backend.
 
     Args:
         uuid (UUID):
@@ -139,7 +147,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MarketplaceResourcesPullResponse200
+        MarketplaceResourcesPullResponse202
     """
 
     return (

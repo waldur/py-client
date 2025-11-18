@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Set the resource as OK.
+    """Set resource state to OK
+
+     Allows a service provider to manually set the state of a resource to 'OK', clearing any previous
+    error messages.
 
     Args:
         uuid (UUID):
@@ -71,7 +74,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Set the resource as OK.
+    """Set resource state to OK
+
+     Allows a service provider to manually set the state of a resource to 'OK', clearing any previous
+    error messages.
 
     Args:
         uuid (UUID):

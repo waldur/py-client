@@ -75,7 +75,10 @@ def sync_detailed(
         PatchedServiceProviderRequestMultipart,
     ],
 ) -> Response[ServiceProvider]:
-    """
+    """Partially update a service provider
+
+     Partially updates an existing service provider profile.
+
     Args:
         uuid (UUID):
         body (PatchedServiceProviderRequest):
@@ -112,7 +115,10 @@ def sync(
         PatchedServiceProviderRequestMultipart,
     ],
 ) -> ServiceProvider:
-    """
+    """Partially update a service provider
+
+     Partially updates an existing service provider profile.
+
     Args:
         uuid (UUID):
         body (PatchedServiceProviderRequest):
@@ -144,7 +150,10 @@ async def asyncio_detailed(
         PatchedServiceProviderRequestMultipart,
     ],
 ) -> Response[ServiceProvider]:
-    """
+    """Partially update a service provider
+
+     Partially updates an existing service provider profile.
+
     Args:
         uuid (UUID):
         body (PatchedServiceProviderRequest):
@@ -179,7 +188,10 @@ async def asyncio(
         PatchedServiceProviderRequestMultipart,
     ],
 ) -> ServiceProvider:
-    """
+    """Partially update a service provider
+
+     Partially updates an existing service provider profile.
+
     Args:
         uuid (UUID):
         body (PatchedServiceProviderRequest):

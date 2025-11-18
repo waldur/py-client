@@ -49,7 +49,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ServiceProviderStatistics]:
-    """
+    """Get service provider statistics
+
+     Returns various statistics for the service provider, such as number of active campaigns, customers,
+    and resources.
+
     Args:
         uuid (UUID):
 
@@ -77,7 +81,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ServiceProviderStatistics:
-    """
+    """Get service provider statistics
+
+     Returns various statistics for the service provider, such as number of active campaigns, customers,
+    and resources.
+
     Args:
         uuid (UUID):
 
@@ -100,7 +108,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ServiceProviderStatistics]:
-    """
+    """Get service provider statistics
+
+     Returns various statistics for the service provider, such as number of active campaigns, customers,
+    and resources.
+
     Args:
         uuid (UUID):
 
@@ -126,7 +138,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ServiceProviderStatistics:
-    """
+    """Get service provider statistics
+
+     Returns various statistics for the service provider, such as number of active campaigns, customers,
+    and resources.
+
     Args:
         uuid (UUID):
 

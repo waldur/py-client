@@ -57,7 +57,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CategoryHelpArticlesRequest,
 ) -> Response[CategoryHelpArticles]:
-    """
+    """Update a category help article
+
+     Updates an existing help article. Requires staff permissions.
+
     Args:
         id (int):
         body (CategoryHelpArticlesRequest):
@@ -88,7 +91,10 @@ def sync(
     client: AuthenticatedClient,
     body: CategoryHelpArticlesRequest,
 ) -> CategoryHelpArticles:
-    """
+    """Update a category help article
+
+     Updates an existing help article. Requires staff permissions.
+
     Args:
         id (int):
         body (CategoryHelpArticlesRequest):
@@ -114,7 +120,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CategoryHelpArticlesRequest,
 ) -> Response[CategoryHelpArticles]:
-    """
+    """Update a category help article
+
+     Updates an existing help article. Requires staff permissions.
+
     Args:
         id (int):
         body (CategoryHelpArticlesRequest):
@@ -143,7 +152,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CategoryHelpArticlesRequest,
 ) -> CategoryHelpArticles:
-    """
+    """Update a category help article
+
+     Updates an existing help article. Requires staff permissions.
+
     Args:
         id (int):
         body (CategoryHelpArticlesRequest):

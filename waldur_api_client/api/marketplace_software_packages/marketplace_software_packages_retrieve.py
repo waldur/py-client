@@ -47,7 +47,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SoftwarePackage]:
-    """
+    """Retrieve a software package
+
+     Returns the details of a specific software package, including its description, homepage, and
+    available versions.
+
     Args:
         uuid (UUID):
 
@@ -75,7 +79,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> SoftwarePackage:
-    """
+    """Retrieve a software package
+
+     Returns the details of a specific software package, including its description, homepage, and
+    available versions.
+
     Args:
         uuid (UUID):
 
@@ -98,7 +106,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SoftwarePackage]:
-    """
+    """Retrieve a software package
+
+     Returns the details of a specific software package, including its description, homepage, and
+    available versions.
+
     Args:
         uuid (UUID):
 
@@ -124,7 +136,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> SoftwarePackage:
-    """
+    """Retrieve a software package
+
+     Returns the details of a specific software package, including its description, homepage, and
+    available versions.
+
     Args:
         uuid (UUID):
 

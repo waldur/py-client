@@ -49,7 +49,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[MaintenanceAnnouncementOfferingTemplate]:
-    """
+    """Retrieve an affected offering template link
+
+     Returns the details of a specific link between a maintenance announcement template and an offering.
+
     Args:
         uuid (UUID):
 
@@ -77,7 +80,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> MaintenanceAnnouncementOfferingTemplate:
-    """
+    """Retrieve an affected offering template link
+
+     Returns the details of a specific link between a maintenance announcement template and an offering.
+
     Args:
         uuid (UUID):
 
@@ -100,7 +106,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[MaintenanceAnnouncementOfferingTemplate]:
-    """
+    """Retrieve an affected offering template link
+
+     Returns the details of a specific link between a maintenance announcement template and an offering.
+
     Args:
         uuid (UUID):
 
@@ -126,7 +135,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> MaintenanceAnnouncementOfferingTemplate:
-    """
+    """Retrieve an affected offering template link
+
+     Returns the details of a specific link between a maintenance announcement template and an offering.
+
     Args:
         uuid (UUID):
 

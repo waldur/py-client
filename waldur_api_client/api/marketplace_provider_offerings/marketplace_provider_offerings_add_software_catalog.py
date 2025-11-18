@@ -58,7 +58,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingSoftwareCatalogRequest,
 ) -> Response[SoftwareCatalogUUID]:
-    """Add software catalog to offering.
+    """Add a software catalog to an offering
+
+     Associates a software catalog with an offering and configures enabled CPU architectures.
 
     Args:
         uuid (UUID):
@@ -90,7 +92,9 @@ def sync(
     client: AuthenticatedClient,
     body: OfferingSoftwareCatalogRequest,
 ) -> SoftwareCatalogUUID:
-    """Add software catalog to offering.
+    """Add a software catalog to an offering
+
+     Associates a software catalog with an offering and configures enabled CPU architectures.
 
     Args:
         uuid (UUID):
@@ -117,7 +121,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingSoftwareCatalogRequest,
 ) -> Response[SoftwareCatalogUUID]:
-    """Add software catalog to offering.
+    """Add a software catalog to an offering
+
+     Associates a software catalog with an offering and configures enabled CPU architectures.
 
     Args:
         uuid (UUID):
@@ -147,7 +153,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OfferingSoftwareCatalogRequest,
 ) -> SoftwareCatalogUUID:
-    """Add software catalog to offering.
+    """Add a software catalog to an offering
+
+     Associates a software catalog with an offering and configures enabled CPU architectures.
 
     Args:
         uuid (UUID):

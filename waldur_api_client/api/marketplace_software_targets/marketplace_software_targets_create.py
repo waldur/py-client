@@ -43,7 +43,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SoftwareTarget]:
-    """
+    """Create a software target
+
+     Creates a new target for a software version. Requires staff permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -65,7 +68,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> SoftwareTarget:
-    """
+    """Create a software target
+
+     Creates a new target for a software version. Requires staff permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -83,7 +89,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SoftwareTarget]:
-    """
+    """Create a software target
+
+     Creates a new target for a software version. Requires staff permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -103,7 +112,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> SoftwareTarget:
-    """
+    """Create a software target
+
+     Creates a new target for a software version. Requires staff permissions.
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.

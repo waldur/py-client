@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete an offering user
+
+     Removes the association between a user and an offering. This action may trigger backend cleanup
+    processes depending on the offering type.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete an offering user
+
+     Removes the association between a user and an offering. This action may trigger backend cleanup
+    processes depending on the offering type.
+
     Args:
         uuid (UUID):
 

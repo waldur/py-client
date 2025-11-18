@@ -219,7 +219,11 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
 ) -> Response[list["OrderDetails"]]:
-    """
+    """List orders
+
+     Returns a paginated list of orders accessible to the current user. Orders are visible to service
+    consumers (project/customer members with appropriate permissions) and service providers.
+
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
         can_approve_as_provider (Union[Unset, bool]):
@@ -313,7 +317,11 @@ def sync(
     state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
 ) -> list["OrderDetails"]:
-    """
+    """List orders
+
+     Returns a paginated list of orders accessible to the current user. Orders are visible to service
+    consumers (project/customer members with appropriate permissions) and service providers.
+
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
         can_approve_as_provider (Union[Unset, bool]):
@@ -402,7 +410,11 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
 ) -> Response[list["OrderDetails"]]:
-    """
+    """List orders
+
+     Returns a paginated list of orders accessible to the current user. Orders are visible to service
+    consumers (project/customer members with appropriate permissions) and service providers.
+
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
         can_approve_as_provider (Union[Unset, bool]):
@@ -494,7 +506,11 @@ async def asyncio(
     state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
     type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
 ) -> list["OrderDetails"]:
-    """
+    """List orders
+
+     Returns a paginated list of orders accessible to the current user. Orders are visible to service
+    consumers (project/customer members with appropriate permissions) and service providers.
+
     Args:
         can_approve_as_consumer (Union[Unset, bool]):
         can_approve_as_provider (Union[Unset, bool]):

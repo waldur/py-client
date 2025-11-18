@@ -51,6 +51,9 @@ def sync_detailed(
 ) -> Response[MaintenanceActionResponse]:
     """Unschedule/unpublish the maintenance announcement
 
+     Transitions a 'Scheduled' maintenance announcement back to the 'Draft' state, hiding it from public
+    view.
+
     Args:
         uuid (UUID):
 
@@ -80,6 +83,9 @@ def sync(
 ) -> MaintenanceActionResponse:
     """Unschedule/unpublish the maintenance announcement
 
+     Transitions a 'Scheduled' maintenance announcement back to the 'Draft' state, hiding it from public
+    view.
+
     Args:
         uuid (UUID):
 
@@ -103,6 +109,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[MaintenanceActionResponse]:
     """Unschedule/unpublish the maintenance announcement
+
+     Transitions a 'Scheduled' maintenance announcement back to the 'Draft' state, hiding it from public
+    view.
 
     Args:
         uuid (UUID):
@@ -130,6 +139,9 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> MaintenanceActionResponse:
     """Unschedule/unpublish the maintenance announcement
+
+     Transitions a 'Scheduled' maintenance announcement back to the 'Draft' state, hiding it from public
+    view.
 
     Args:
         uuid (UUID):

@@ -57,7 +57,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingTemplateRequest,
 ) -> Response[MaintenanceAnnouncementOfferingTemplate]:
-    """
+    """Link an offering to a maintenance template
+
+     Creates a reusable association between an offering and a maintenance announcement template,
+    specifying a default impact level and description.
+
     Args:
         body (MaintenanceAnnouncementOfferingTemplateRequest):
 
@@ -85,7 +89,11 @@ def sync(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingTemplateRequest,
 ) -> MaintenanceAnnouncementOfferingTemplate:
-    """
+    """Link an offering to a maintenance template
+
+     Creates a reusable association between an offering and a maintenance announcement template,
+    specifying a default impact level and description.
+
     Args:
         body (MaintenanceAnnouncementOfferingTemplateRequest):
 
@@ -108,7 +116,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingTemplateRequest,
 ) -> Response[MaintenanceAnnouncementOfferingTemplate]:
-    """
+    """Link an offering to a maintenance template
+
+     Creates a reusable association between an offering and a maintenance announcement template,
+    specifying a default impact level and description.
+
     Args:
         body (MaintenanceAnnouncementOfferingTemplateRequest):
 
@@ -134,7 +146,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingTemplateRequest,
 ) -> MaintenanceAnnouncementOfferingTemplate:
-    """
+    """Link an offering to a maintenance template
+
+     Creates a reusable association between an offering and a maintenance announcement template,
+    specifying a default impact level and description.
+
     Args:
         body (MaintenanceAnnouncementOfferingTemplateRequest):
 

@@ -86,7 +86,9 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List maintenance announcement templates
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         maintenance_type (Union[Unset, int]):
@@ -127,7 +129,9 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List maintenance announcement templates
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         maintenance_type (Union[Unset, int]):
@@ -163,7 +167,9 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List maintenance announcement templates
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         maintenance_type (Union[Unset, int]):
@@ -202,7 +208,9 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List maintenance announcement templates
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         maintenance_type (Union[Unset, int]):

@@ -146,14 +146,16 @@ def sync_detailed(
     registration_code: Union[Unset, str] = UNSET,
     user_uuid: UUID,
 ) -> Response[list["MarketplaceProviderCustomer"]]:
-    """Return customers that have access role for a specified user within service provider's scope.
+    """List customers of a specific user within a service provider's scope
 
-            Checks for:
-            - Customers where user has direct permissions
-            - Customers with projects where user has project roles
-            - Customers related to service provider's resources
+     Returns a paginated list of customers that a specified user has access to within the scope of a
+    service provider.
 
-            If user UUID is invalid or missing, returns empty list.
+            This includes:
+            - Customers where the user has direct permissions.
+            - Customers with projects where the user has project roles.
+            - Customers related to the service provider's resources that the user can access.
+
 
     Args:
         service_provider_uuid (UUID):
@@ -233,14 +235,16 @@ def sync(
     registration_code: Union[Unset, str] = UNSET,
     user_uuid: UUID,
 ) -> list["MarketplaceProviderCustomer"]:
-    """Return customers that have access role for a specified user within service provider's scope.
+    """List customers of a specific user within a service provider's scope
 
-            Checks for:
-            - Customers where user has direct permissions
-            - Customers with projects where user has project roles
-            - Customers related to service provider's resources
+     Returns a paginated list of customers that a specified user has access to within the scope of a
+    service provider.
 
-            If user UUID is invalid or missing, returns empty list.
+            This includes:
+            - Customers where the user has direct permissions.
+            - Customers with projects where the user has project roles.
+            - Customers related to the service provider's resources that the user can access.
+
 
     Args:
         service_provider_uuid (UUID):
@@ -315,14 +319,16 @@ async def asyncio_detailed(
     registration_code: Union[Unset, str] = UNSET,
     user_uuid: UUID,
 ) -> Response[list["MarketplaceProviderCustomer"]]:
-    """Return customers that have access role for a specified user within service provider's scope.
+    """List customers of a specific user within a service provider's scope
 
-            Checks for:
-            - Customers where user has direct permissions
-            - Customers with projects where user has project roles
-            - Customers related to service provider's resources
+     Returns a paginated list of customers that a specified user has access to within the scope of a
+    service provider.
 
-            If user UUID is invalid or missing, returns empty list.
+            This includes:
+            - Customers where the user has direct permissions.
+            - Customers with projects where the user has project roles.
+            - Customers related to the service provider's resources that the user can access.
+
 
     Args:
         service_provider_uuid (UUID):
@@ -400,14 +406,16 @@ async def asyncio(
     registration_code: Union[Unset, str] = UNSET,
     user_uuid: UUID,
 ) -> list["MarketplaceProviderCustomer"]:
-    """Return customers that have access role for a specified user within service provider's scope.
+    """List customers of a specific user within a service provider's scope
 
-            Checks for:
-            - Customers where user has direct permissions
-            - Customers with projects where user has project roles
-            - Customers related to service provider's resources
+     Returns a paginated list of customers that a specified user has access to within the scope of a
+    service provider.
 
-            If user UUID is invalid or missing, returns empty list.
+            This includes:
+            - Customers where the user has direct permissions.
+            - Customers with projects where the user has project roles.
+            - Customers related to the service provider's resources that the user can access.
+
 
     Args:
         service_provider_uuid (UUID):

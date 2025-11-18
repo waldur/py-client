@@ -41,7 +41,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a section
+
+     Deletes a section. Requires staff permissions.
+
     Args:
         key (str):
 
@@ -69,7 +72,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete a section
+
+     Deletes a section. Requires staff permissions.
+
     Args:
         key (str):
 

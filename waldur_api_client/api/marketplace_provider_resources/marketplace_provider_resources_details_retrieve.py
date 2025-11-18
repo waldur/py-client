@@ -1,56 +1,49 @@
 from http import HTTPStatus
-from typing import Any, Union
+from typing import Any, Union, cast
 from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_provider_resources_details_retrieve_field_item import (
-    MarketplaceProviderResourcesDetailsRetrieveFieldItem,
+from ...models.marketplace_provider_resources_details_retrieve_response_200 import (
+    MarketplaceProviderResourcesDetailsRetrieveResponse200,
 )
-from ...models.resource import Resource
-from ...types import UNSET, Response, Unset
+from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
-    *,
-    field: Union[Unset, list[MarketplaceProviderResourcesDetailsRetrieveFieldItem]] = UNSET,
 ) -> dict[str, Any]:
-    params: dict[str, Any] = {}
-
-    json_field: Union[Unset, list[str]] = UNSET
-    if not isinstance(field, Unset):
-        json_field = []
-        for field_item_data in field:
-            field_item = field_item_data.value
-            json_field.append(field_item)
-
-    params["field"] = json_field
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": f"/api/marketplace-provider-resources/{uuid}/details/",
-        "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Resource:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Union[Any, MarketplaceProviderResourcesDetailsRetrieveResponse200]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = Resource.from_dict(response.json())
+        response_200 = MarketplaceProviderResourcesDetailsRetrieveResponse200.from_dict(response.json())
 
         return response_200
+    if response.status_code == 404:
+        response_404 = cast(Any, None)
+        return response_404
+    if response.status_code == 204:
+        response_204 = cast(Any, None)
+        return response_204
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Resource]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[Any, MarketplaceProviderResourcesDetailsRetrieveResponse200]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,24 +56,25 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderResourcesDetailsRetrieveFieldItem]] = UNSET,
-) -> Response[Resource]:
-    """
+) -> Response[Union[Any, MarketplaceProviderResourcesDetailsRetrieveResponse200]]:
+    """Get resource details
+
+     Returns the detailed representation of the backend resource associated with the marketplace
+    resource. The format of the response depends on the resource type.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderResourcesDetailsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Resource]
+        Response[Union[Any, MarketplaceProviderResourcesDetailsRetrieveResponse200]]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        field=field,
     )
 
     response = client.get_httpx_client().request(
@@ -94,25 +88,26 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderResourcesDetailsRetrieveFieldItem]] = UNSET,
-) -> Resource:
-    """
+) -> Union[Any, MarketplaceProviderResourcesDetailsRetrieveResponse200]:
+    """Get resource details
+
+     Returns the detailed representation of the backend resource associated with the marketplace
+    resource. The format of the response depends on the resource type.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderResourcesDetailsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Resource
+        Union[Any, MarketplaceProviderResourcesDetailsRetrieveResponse200]
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
-        field=field,
     ).parsed
 
 
@@ -120,24 +115,25 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderResourcesDetailsRetrieveFieldItem]] = UNSET,
-) -> Response[Resource]:
-    """
+) -> Response[Union[Any, MarketplaceProviderResourcesDetailsRetrieveResponse200]]:
+    """Get resource details
+
+     Returns the detailed representation of the backend resource associated with the marketplace
+    resource. The format of the response depends on the resource type.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderResourcesDetailsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Resource]
+        Response[Union[Any, MarketplaceProviderResourcesDetailsRetrieveResponse200]]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        field=field,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -149,25 +145,26 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderResourcesDetailsRetrieveFieldItem]] = UNSET,
-) -> Resource:
-    """
+) -> Union[Any, MarketplaceProviderResourcesDetailsRetrieveResponse200]:
+    """Get resource details
+
+     Returns the detailed representation of the backend resource associated with the marketplace
+    resource. The format of the response depends on the resource type.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderResourcesDetailsRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Resource
+        Union[Any, MarketplaceProviderResourcesDetailsRetrieveResponse200]
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            field=field,
         )
     ).parsed

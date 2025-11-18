@@ -94,7 +94,17 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CategoryComponentUsage"]]:
-    """
+    """List aggregated category component usages
+
+
+            Returns a paginated list of aggregated component usages for marketplace categories.
+            This data is scoped to either a customer or a project and represents the total usage
+            of a component type (e.g., total 'CPU hours' used across all resources of a certain category
+            within a project).
+
+            The list **must** be filtered by a `scope` parameter (either a customer or project URL).
+
+
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
@@ -134,7 +144,17 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CategoryComponentUsage"]:
-    """
+    """List aggregated category component usages
+
+
+            Returns a paginated list of aggregated component usages for marketplace categories.
+            This data is scoped to either a customer or a project and represents the total usage
+            of a component type (e.g., total 'CPU hours' used across all resources of a certain category
+            within a project).
+
+            The list **must** be filtered by a `scope` parameter (either a customer or project URL).
+
+
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
@@ -169,7 +189,17 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CategoryComponentUsage"]]:
-    """
+    """List aggregated category component usages
+
+
+            Returns a paginated list of aggregated component usages for marketplace categories.
+            This data is scoped to either a customer or a project and represents the total usage
+            of a component type (e.g., total 'CPU hours' used across all resources of a certain category
+            within a project).
+
+            The list **must** be filtered by a `scope` parameter (either a customer or project URL).
+
+
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
@@ -207,7 +237,17 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CategoryComponentUsage"]:
-    """
+    """List aggregated category component usages
+
+
+            Returns a paginated list of aggregated component usages for marketplace categories.
+            This data is scoped to either a customer or a project and represents the total usage
+            of a component type (e.g., total 'CPU hours' used across all resources of a certain category
+            within a project).
+
+            The list **must** be filtered by a `scope` parameter (either a customer or project URL).
+
+
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):

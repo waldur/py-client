@@ -286,10 +286,8 @@ from .count_users_of_service_providers import CountUsersOfServiceProviders
 from .country import Country
 from .country_enum import CountryEnum
 from .course_account import CourseAccount
-from .course_account_create_nested import CourseAccountCreateNested
 from .course_account_create_nested_request import CourseAccountCreateNestedRequest
 from .course_account_request import CourseAccountRequest
-from .course_accounts_bulk_create import CourseAccountsBulkCreate
 from .course_accounts_bulk_create_request import CourseAccountsBulkCreateRequest
 from .create_attachments_request import CreateAttachmentsRequest
 from .create_customer_credit import CreateCustomerCredit
@@ -565,6 +563,8 @@ from .marketplace_component_user_usages_list_o_item import MarketplaceComponentU
 from .marketplace_component_user_usages_retrieve_field_item import MarketplaceComponentUserUsagesRetrieveFieldItem
 from .marketplace_course_accounts_count_o_item import MarketplaceCourseAccountsCountOItem
 from .marketplace_course_accounts_count_state_item import MarketplaceCourseAccountsCountStateItem
+from .marketplace_course_accounts_create_bulk_o_item import MarketplaceCourseAccountsCreateBulkOItem
+from .marketplace_course_accounts_create_bulk_state_item import MarketplaceCourseAccountsCreateBulkStateItem
 from .marketplace_course_accounts_list_o_item import MarketplaceCourseAccountsListOItem
 from .marketplace_course_accounts_list_state_item import MarketplaceCourseAccountsListStateItem
 from .marketplace_customer_service_accounts_count_state_item import MarketplaceCustomerServiceAccountsCountStateItem
@@ -609,6 +609,7 @@ from .marketplace_orders_list_o_item import MarketplaceOrdersListOItem
 from .marketplace_orders_list_state_item import MarketplaceOrdersListStateItem
 from .marketplace_orders_list_type_item import MarketplaceOrdersListTypeItem
 from .marketplace_orders_retrieve_field_item import MarketplaceOrdersRetrieveFieldItem
+from .marketplace_orders_set_backend_id_response_200 import MarketplaceOrdersSetBackendIdResponse200
 from .marketplace_project_service_accounts_count_state_item import MarketplaceProjectServiceAccountsCountStateItem
 from .marketplace_project_service_accounts_list_state_item import MarketplaceProjectServiceAccountsListStateItem
 from .marketplace_project_update_requests_count_state_item import MarketplaceProjectUpdateRequestsCountStateItem
@@ -632,22 +633,31 @@ from .marketplace_provider_offerings_groups_count_o_item import MarketplaceProvi
 from .marketplace_provider_offerings_groups_count_state_item import MarketplaceProviderOfferingsGroupsCountStateItem
 from .marketplace_provider_offerings_groups_list_o_item import MarketplaceProviderOfferingsGroupsListOItem
 from .marketplace_provider_offerings_groups_list_state_item import MarketplaceProviderOfferingsGroupsListStateItem
-from .marketplace_provider_offerings_list_course_accounts_retrieve_field_item import (
-    MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem,
+from .marketplace_provider_offerings_list_course_accounts_list_o_item import (
+    MarketplaceProviderOfferingsListCourseAccountsListOItem,
+)
+from .marketplace_provider_offerings_list_course_accounts_list_state_item import (
+    MarketplaceProviderOfferingsListCourseAccountsListStateItem,
 )
 from .marketplace_provider_offerings_list_customer_projects_list_field_item import (
     MarketplaceProviderOfferingsListCustomerProjectsListFieldItem,
 )
-from .marketplace_provider_offerings_list_customer_service_accounts_retrieve_field_item import (
-    MarketplaceProviderOfferingsListCustomerServiceAccountsRetrieveFieldItem,
+from .marketplace_provider_offerings_list_customer_service_accounts_list_o_item import (
+    MarketplaceProviderOfferingsListCustomerServiceAccountsListOItem,
+)
+from .marketplace_provider_offerings_list_customer_service_accounts_list_state_item import (
+    MarketplaceProviderOfferingsListCustomerServiceAccountsListStateItem,
 )
 from .marketplace_provider_offerings_list_customer_users_list_field_item import (
     MarketplaceProviderOfferingsListCustomerUsersListFieldItem,
 )
 from .marketplace_provider_offerings_list_field_item import MarketplaceProviderOfferingsListFieldItem
 from .marketplace_provider_offerings_list_o_item import MarketplaceProviderOfferingsListOItem
-from .marketplace_provider_offerings_list_project_service_accounts_retrieve_field_item import (
-    MarketplaceProviderOfferingsListProjectServiceAccountsRetrieveFieldItem,
+from .marketplace_provider_offerings_list_project_service_accounts_list_o_item import (
+    MarketplaceProviderOfferingsListProjectServiceAccountsListOItem,
+)
+from .marketplace_provider_offerings_list_project_service_accounts_list_state_item import (
+    MarketplaceProviderOfferingsListProjectServiceAccountsListStateItem,
 )
 from .marketplace_provider_offerings_list_state_item import MarketplaceProviderOfferingsListStateItem
 from .marketplace_provider_offerings_list_users_list_field_item import (
@@ -656,21 +666,31 @@ from .marketplace_provider_offerings_list_users_list_field_item import (
 from .marketplace_provider_offerings_list_users_list_o_item import MarketplaceProviderOfferingsListUsersListOItem
 from .marketplace_provider_offerings_orders_list_field_item import MarketplaceProviderOfferingsOrdersListFieldItem
 from .marketplace_provider_offerings_retrieve_field_item import MarketplaceProviderOfferingsRetrieveFieldItem
-from .marketplace_provider_offerings_stats_retrieve_field_item import MarketplaceProviderOfferingsStatsRetrieveFieldItem
+from .marketplace_provider_offerings_stats_retrieve_response_200 import (
+    MarketplaceProviderOfferingsStatsRetrieveResponse200,
+)
 from .marketplace_provider_offerings_update_attributes_body import MarketplaceProviderOfferingsUpdateAttributesBody
 from .marketplace_provider_offerings_user_has_resource_access_retrieve_field_item import (
     MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem,
 )
 from .marketplace_provider_resources_count_o_item import MarketplaceProviderResourcesCountOItem
 from .marketplace_provider_resources_count_state_item import MarketplaceProviderResourcesCountStateItem
-from .marketplace_provider_resources_details_retrieve_field_item import (
-    MarketplaceProviderResourcesDetailsRetrieveFieldItem,
+from .marketplace_provider_resources_details_retrieve_response_200 import (
+    MarketplaceProviderResourcesDetailsRetrieveResponse200,
 )
 from .marketplace_provider_resources_list_field_item import MarketplaceProviderResourcesListFieldItem
 from .marketplace_provider_resources_list_o_item import MarketplaceProviderResourcesListOItem
 from .marketplace_provider_resources_list_state_item import MarketplaceProviderResourcesListStateItem
-from .marketplace_provider_resources_pull_response_200 import MarketplaceProviderResourcesPullResponse200
+from .marketplace_provider_resources_pull_response_202 import MarketplaceProviderResourcesPullResponse202
 from .marketplace_provider_resources_retrieve_field_item import MarketplaceProviderResourcesRetrieveFieldItem
+from .marketplace_provider_resources_set_downscaled_response_200 import (
+    MarketplaceProviderResourcesSetDownscaledResponse200,
+)
+from .marketplace_provider_resources_set_paused_response_200 import MarketplaceProviderResourcesSetPausedResponse200
+from .marketplace_provider_resources_set_restrict_member_access_response_200 import (
+    MarketplaceProviderResourcesSetRestrictMemberAccessResponse200,
+)
+from .marketplace_provider_resources_set_slug_response_200 import MarketplaceProviderResourcesSetSlugResponse200
 from .marketplace_public_offerings_count_o_item import MarketplacePublicOfferingsCountOItem
 from .marketplace_public_offerings_count_state_item import MarketplacePublicOfferingsCountStateItem
 from .marketplace_public_offerings_list_field_item import MarketplacePublicOfferingsListFieldItem
@@ -679,12 +699,19 @@ from .marketplace_public_offerings_list_state_item import MarketplacePublicOffer
 from .marketplace_public_offerings_retrieve_field_item import MarketplacePublicOfferingsRetrieveFieldItem
 from .marketplace_resources_count_o_item import MarketplaceResourcesCountOItem
 from .marketplace_resources_count_state_item import MarketplaceResourcesCountStateItem
-from .marketplace_resources_details_retrieve_field_item import MarketplaceResourcesDetailsRetrieveFieldItem
+from .marketplace_resources_details_retrieve_response_200 import MarketplaceResourcesDetailsRetrieveResponse200
 from .marketplace_resources_list_field_item import MarketplaceResourcesListFieldItem
 from .marketplace_resources_list_o_item import MarketplaceResourcesListOItem
 from .marketplace_resources_list_state_item import MarketplaceResourcesListStateItem
-from .marketplace_resources_pull_response_200 import MarketplaceResourcesPullResponse200
+from .marketplace_resources_pull_response_202 import MarketplaceResourcesPullResponse202
 from .marketplace_resources_retrieve_field_item import MarketplaceResourcesRetrieveFieldItem
+from .marketplace_resources_set_downscaled_response_200 import MarketplaceResourcesSetDownscaledResponse200
+from .marketplace_resources_set_paused_response_200 import MarketplaceResourcesSetPausedResponse200
+from .marketplace_resources_set_restrict_member_access_response_200 import (
+    MarketplaceResourcesSetRestrictMemberAccessResponse200,
+)
+from .marketplace_resources_set_slug_response_200 import MarketplaceResourcesSetSlugResponse200
+from .marketplace_resources_suggest_name_response_200 import MarketplaceResourcesSuggestNameResponse200
 from .marketplace_robot_accounts_count_state import MarketplaceRobotAccountsCountState
 from .marketplace_robot_accounts_list_field_item import MarketplaceRobotAccountsListFieldItem
 from .marketplace_robot_accounts_list_state import MarketplaceRobotAccountsListState
@@ -830,20 +857,17 @@ from .offering_attributes import OfferingAttributes
 from .offering_backend_metadata_request import OfferingBackendMetadataRequest
 from .offering_compliance_checklist_update_request import OfferingComplianceChecklistUpdateRequest
 from .offering_component import OfferingComponent
-from .offering_component_limit import OfferingComponentLimit
 from .offering_component_limit_request import OfferingComponentLimitRequest
 from .offering_component_request import OfferingComponentRequest
 from .offering_component_stat import OfferingComponentStat
 from .offering_cost import OfferingCost
 from .offering_country_stats import OfferingCountryStats
-from .offering_create import OfferingCreate
 from .offering_create_request import OfferingCreateRequest
 from .offering_create_request_form import OfferingCreateRequestForm
 from .offering_create_request_form_limits import OfferingCreateRequestFormLimits
 from .offering_create_request_limits import OfferingCreateRequestLimits
 from .offering_create_request_multipart import OfferingCreateRequestMultipart
 from .offering_create_request_multipart_limits import OfferingCreateRequestMultipartLimits
-from .offering_create_service_attributes import OfferingCreateServiceAttributes
 from .offering_description_update_request import OfferingDescriptionUpdateRequest
 from .offering_estimated_cost_policy import OfferingEstimatedCostPolicy
 from .offering_estimated_cost_policy_request import OfferingEstimatedCostPolicyRequest
@@ -1116,8 +1140,6 @@ from .order_attachment_request import OrderAttachmentRequest
 from .order_attachment_request_form import OrderAttachmentRequestForm
 from .order_attachment_request_multipart import OrderAttachmentRequestMultipart
 from .order_backend_id_request import OrderBackendIDRequest
-from .order_create import OrderCreate
-from .order_create_limits import OrderCreateLimits
 from .order_create_request import OrderCreateRequest
 from .order_create_request_limits import OrderCreateRequestLimits
 from .order_details import OrderDetails
@@ -1646,7 +1668,6 @@ from .resource_set_limits_request import ResourceSetLimitsRequest
 from .resource_set_state_erred_request import ResourceSetStateErredRequest
 from .resource_slug_request import ResourceSlugRequest
 from .resource_state import ResourceState
-from .resource_suggest_name import ResourceSuggestName
 from .resource_suggest_name_request import ResourceSuggestNameRequest
 from .resource_switch_plan_request import ResourceSwitchPlanRequest
 from .resource_terminate_request import ResourceTerminateRequest
@@ -1711,7 +1732,6 @@ from .service_provider_request import ServiceProviderRequest
 from .service_provider_request_form import ServiceProviderRequestForm
 from .service_provider_request_multipart import ServiceProviderRequestMultipart
 from .service_provider_revenues import ServiceProviderRevenues
-from .service_provider_signature import ServiceProviderSignature
 from .service_provider_signature_request import ServiceProviderSignatureRequest
 from .service_provider_statistics import ServiceProviderStatistics
 from .service_settings import ServiceSettings
@@ -2162,10 +2182,8 @@ __all__ = (
     "CountUniqueUsersConnectedWithActiveResourcesOfServiceProvider",
     "CountUsersOfServiceProviders",
     "CourseAccount",
-    "CourseAccountCreateNested",
     "CourseAccountCreateNestedRequest",
     "CourseAccountRequest",
-    "CourseAccountsBulkCreate",
     "CourseAccountsBulkCreateRequest",
     "CreateAttachmentsRequest",
     "CreateCustomerCredit",
@@ -2429,6 +2447,8 @@ __all__ = (
     "MarketplaceComponentUserUsagesRetrieveFieldItem",
     "MarketplaceCourseAccountsCountOItem",
     "MarketplaceCourseAccountsCountStateItem",
+    "MarketplaceCourseAccountsCreateBulkOItem",
+    "MarketplaceCourseAccountsCreateBulkStateItem",
     "MarketplaceCourseAccountsListOItem",
     "MarketplaceCourseAccountsListStateItem",
     "MarketplaceCustomerServiceAccountsCountStateItem",
@@ -2469,6 +2489,7 @@ __all__ = (
     "MarketplaceOrdersListStateItem",
     "MarketplaceOrdersListTypeItem",
     "MarketplaceOrdersRetrieveFieldItem",
+    "MarketplaceOrdersSetBackendIdResponse200",
     "MarketplaceProjectServiceAccountsCountStateItem",
     "MarketplaceProjectServiceAccountsListStateItem",
     "MarketplaceProjectUpdateRequestsCountStateItem",
@@ -2488,29 +2509,36 @@ __all__ = (
     "MarketplaceProviderOfferingsGroupsCountStateItem",
     "MarketplaceProviderOfferingsGroupsListOItem",
     "MarketplaceProviderOfferingsGroupsListStateItem",
-    "MarketplaceProviderOfferingsListCourseAccountsRetrieveFieldItem",
+    "MarketplaceProviderOfferingsListCourseAccountsListOItem",
+    "MarketplaceProviderOfferingsListCourseAccountsListStateItem",
     "MarketplaceProviderOfferingsListCustomerProjectsListFieldItem",
-    "MarketplaceProviderOfferingsListCustomerServiceAccountsRetrieveFieldItem",
+    "MarketplaceProviderOfferingsListCustomerServiceAccountsListOItem",
+    "MarketplaceProviderOfferingsListCustomerServiceAccountsListStateItem",
     "MarketplaceProviderOfferingsListCustomerUsersListFieldItem",
     "MarketplaceProviderOfferingsListFieldItem",
     "MarketplaceProviderOfferingsListOItem",
-    "MarketplaceProviderOfferingsListProjectServiceAccountsRetrieveFieldItem",
+    "MarketplaceProviderOfferingsListProjectServiceAccountsListOItem",
+    "MarketplaceProviderOfferingsListProjectServiceAccountsListStateItem",
     "MarketplaceProviderOfferingsListStateItem",
     "MarketplaceProviderOfferingsListUsersListFieldItem",
     "MarketplaceProviderOfferingsListUsersListOItem",
     "MarketplaceProviderOfferingsOrdersListFieldItem",
     "MarketplaceProviderOfferingsRetrieveFieldItem",
-    "MarketplaceProviderOfferingsStatsRetrieveFieldItem",
+    "MarketplaceProviderOfferingsStatsRetrieveResponse200",
     "MarketplaceProviderOfferingsUpdateAttributesBody",
     "MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem",
     "MarketplaceProviderResourcesCountOItem",
     "MarketplaceProviderResourcesCountStateItem",
-    "MarketplaceProviderResourcesDetailsRetrieveFieldItem",
+    "MarketplaceProviderResourcesDetailsRetrieveResponse200",
     "MarketplaceProviderResourcesListFieldItem",
     "MarketplaceProviderResourcesListOItem",
     "MarketplaceProviderResourcesListStateItem",
-    "MarketplaceProviderResourcesPullResponse200",
+    "MarketplaceProviderResourcesPullResponse202",
     "MarketplaceProviderResourcesRetrieveFieldItem",
+    "MarketplaceProviderResourcesSetDownscaledResponse200",
+    "MarketplaceProviderResourcesSetPausedResponse200",
+    "MarketplaceProviderResourcesSetRestrictMemberAccessResponse200",
+    "MarketplaceProviderResourcesSetSlugResponse200",
     "MarketplacePublicOfferingsCountOItem",
     "MarketplacePublicOfferingsCountStateItem",
     "MarketplacePublicOfferingsListFieldItem",
@@ -2519,12 +2547,17 @@ __all__ = (
     "MarketplacePublicOfferingsRetrieveFieldItem",
     "MarketplaceResourcesCountOItem",
     "MarketplaceResourcesCountStateItem",
-    "MarketplaceResourcesDetailsRetrieveFieldItem",
+    "MarketplaceResourcesDetailsRetrieveResponse200",
     "MarketplaceResourcesListFieldItem",
     "MarketplaceResourcesListOItem",
     "MarketplaceResourcesListStateItem",
-    "MarketplaceResourcesPullResponse200",
+    "MarketplaceResourcesPullResponse202",
     "MarketplaceResourcesRetrieveFieldItem",
+    "MarketplaceResourcesSetDownscaledResponse200",
+    "MarketplaceResourcesSetPausedResponse200",
+    "MarketplaceResourcesSetRestrictMemberAccessResponse200",
+    "MarketplaceResourcesSetSlugResponse200",
+    "MarketplaceResourcesSuggestNameResponse200",
     "MarketplaceRobotAccountsCountState",
     "MarketplaceRobotAccountsListFieldItem",
     "MarketplaceRobotAccountsListState",
@@ -2654,20 +2687,17 @@ __all__ = (
     "OfferingBackendMetadataRequest",
     "OfferingComplianceChecklistUpdateRequest",
     "OfferingComponent",
-    "OfferingComponentLimit",
     "OfferingComponentLimitRequest",
     "OfferingComponentRequest",
     "OfferingComponentStat",
     "OfferingCost",
     "OfferingCountryStats",
-    "OfferingCreate",
     "OfferingCreateRequest",
     "OfferingCreateRequestForm",
     "OfferingCreateRequestFormLimits",
     "OfferingCreateRequestLimits",
     "OfferingCreateRequestMultipart",
     "OfferingCreateRequestMultipartLimits",
-    "OfferingCreateServiceAttributes",
     "OfferingDescriptionUpdateRequest",
     "OfferingEstimatedCostPolicy",
     "OfferingEstimatedCostPolicyRequest",
@@ -2914,8 +2944,6 @@ __all__ = (
     "OrderAttachmentRequestForm",
     "OrderAttachmentRequestMultipart",
     "OrderBackendIDRequest",
-    "OrderCreate",
-    "OrderCreateLimits",
     "OrderCreateRequest",
     "OrderCreateRequestLimits",
     "OrderDetails",
@@ -3407,7 +3435,6 @@ __all__ = (
     "ResourcesLimits",
     "ResourceSlugRequest",
     "ResourceState",
-    "ResourceSuggestName",
     "ResourceSuggestNameRequest",
     "ResourceSwitchPlanRequest",
     "ResourceTerminateRequest",
@@ -3471,7 +3498,6 @@ __all__ = (
     "ServiceProviderRequestForm",
     "ServiceProviderRequestMultipart",
     "ServiceProviderRevenues",
-    "ServiceProviderSignature",
     "ServiceProviderSignatureRequest",
     "ServiceProviderStatistics",
     "ServiceSettings",

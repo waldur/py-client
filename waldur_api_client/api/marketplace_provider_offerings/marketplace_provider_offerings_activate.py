@@ -45,7 +45,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DetailState]:
-    """
+    """Activate an offering
+
+     Activates a draft or paused offering, making it available for ordering.
+
     Args:
         uuid (UUID):
 
@@ -73,7 +76,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> DetailState:
-    """
+    """Activate an offering
+
+     Activates a draft or paused offering, making it available for ordering.
+
     Args:
         uuid (UUID):
 
@@ -96,7 +102,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[DetailState]:
-    """
+    """Activate an offering
+
+     Activates a draft or paused offering, making it available for ordering.
+
     Args:
         uuid (UUID):
 
@@ -122,7 +131,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> DetailState:
-    """
+    """Activate an offering
+
+     Activates a draft or paused offering, making it available for ordering.
+
     Args:
         uuid (UUID):
 

@@ -52,7 +52,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list["BasePublicPlan"]]:
-    """
+    """List plans for an offering
+
+     Returns a list of plans available for a specific offering. The plans are filtered based on the
+    current user's permissions and organization group memberships.
+
     Args:
         uuid (UUID):
 
@@ -80,7 +84,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> list["BasePublicPlan"]:
-    """
+    """List plans for an offering
+
+     Returns a list of plans available for a specific offering. The plans are filtered based on the
+    current user's permissions and organization group memberships.
+
     Args:
         uuid (UUID):
 
@@ -103,7 +111,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[list["BasePublicPlan"]]:
-    """
+    """List plans for an offering
+
+     Returns a list of plans available for a specific offering. The plans are filtered based on the
+    current user's permissions and organization group memberships.
+
     Args:
         uuid (UUID):
 
@@ -129,7 +141,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> list["BasePublicPlan"]:
-    """
+    """List plans for an offering
+
+     Returns a list of plans available for a specific offering. The plans are filtered based on the
+    current user's permissions and organization group memberships.
+
     Args:
         uuid (UUID):
 

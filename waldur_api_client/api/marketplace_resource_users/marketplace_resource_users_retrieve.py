@@ -45,7 +45,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceUser]:
-    """
+    """Retrieve a resource-user link
+
+     Returns details of a specific link between a user and a resource, including their role.
+
     Args:
         uuid (UUID):
 
@@ -73,7 +76,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ResourceUser:
-    """
+    """Retrieve a resource-user link
+
+     Returns details of a specific link between a user and a resource, including their role.
+
     Args:
         uuid (UUID):
 
@@ -96,7 +102,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceUser]:
-    """
+    """Retrieve a resource-user link
+
+     Returns details of a specific link between a user and a resource, including their role.
+
     Args:
         uuid (UUID):
 
@@ -122,7 +131,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ResourceUser:
-    """
+    """Retrieve a resource-user link
+
+     Returns details of a specific link between a user and a resource, including their role.
+
     Args:
         uuid (UUID):
 

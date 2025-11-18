@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: SetOfferingsUsernameRequest,
 ) -> Response[Any]:
-    """
+    """Set offering username for a user
+
+     Sets or updates the offering-specific username for a user across all offerings managed by the
+    service provider that the user has access to.
+
     Args:
         uuid (UUID):
         body (SetOfferingsUsernameRequest):
@@ -84,7 +88,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: SetOfferingsUsernameRequest,
 ) -> Response[Any]:
-    """
+    """Set offering username for a user
+
+     Sets or updates the offering-specific username for a user across all offerings managed by the
+    service provider that the user has access to.
+
     Args:
         uuid (UUID):
         body (SetOfferingsUsernameRequest):

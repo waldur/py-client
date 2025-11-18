@@ -63,7 +63,10 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Section"]]:
-    """
+    """List sections
+
+     Returns a paginated list of all sections. Sections are used to group attributes within a category.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -94,7 +97,10 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Section"]:
-    """
+    """List sections
+
+     Returns a paginated list of all sections. Sections are used to group attributes within a category.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -120,7 +126,10 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Section"]]:
-    """
+    """List sections
+
+     Returns a paginated list of all sections. Sections are used to group attributes within a category.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -149,7 +158,10 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Section"]:
-    """
+    """List sections
+
+     Returns a paginated list of all sections. Sections are used to group attributes within a category.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

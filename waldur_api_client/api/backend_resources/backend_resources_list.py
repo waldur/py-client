@@ -117,7 +117,11 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["BackendResource"]]:
-    """
+    """List backend resources
+
+     Returns a paginated list of backend resources that are available for import. This endpoint is
+    typically used by site agents to see which resources they have reported.
+
     Args:
         backend_id (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
@@ -172,7 +176,11 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["BackendResource"]:
-    """
+    """List backend resources
+
+     Returns a paginated list of backend resources that are available for import. This endpoint is
+    typically used by site agents to see which resources they have reported.
+
     Args:
         backend_id (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
@@ -222,7 +230,11 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["BackendResource"]]:
-    """
+    """List backend resources
+
+     Returns a paginated list of backend resources that are available for import. This endpoint is
+    typically used by site agents to see which resources they have reported.
+
     Args:
         backend_id (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
@@ -275,7 +287,11 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["BackendResource"]:
-    """
+    """List backend resources
+
+     Returns a paginated list of backend resources that are available for import. This endpoint is
+    typically used by site agents to see which resources they have reported.
+
     Args:
         backend_id (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):

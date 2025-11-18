@@ -38,6 +38,7 @@ def _get_kwargs(
     o: Union[Unset, list[MarketplaceServiceProvidersCustomerProjectsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_customer_uuid: UUID,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
@@ -106,6 +107,9 @@ def _get_kwargs(
 
     params["page_size"] = page_size
 
+    json_project_customer_uuid = str(project_customer_uuid)
+    params["project_customer_uuid"] = json_project_customer_uuid
+
     params["query"] = query
 
     params["slug"] = slug
@@ -171,10 +175,14 @@ def sync_detailed(
     o: Union[Unset, list[MarketplaceServiceProvidersCustomerProjectsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_customer_uuid: UUID,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> Response[list["MarketplaceProviderCustomerProject"]]:
-    """Return customer projects of service provider.
+    """List customer projects of a service provider
+
+     Returns a paginated list of projects belonging to a specific customer that have consumed resources
+    from the specified service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -196,6 +204,7 @@ def sync_detailed(
         o (Union[Unset, list[MarketplaceServiceProvidersCustomerProjectsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_customer_uuid (UUID):
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
 
@@ -227,6 +236,7 @@ def sync_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        project_customer_uuid=project_customer_uuid,
         query=query,
         slug=slug,
     )
@@ -260,10 +270,14 @@ def sync(
     o: Union[Unset, list[MarketplaceServiceProvidersCustomerProjectsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_customer_uuid: UUID,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> list["MarketplaceProviderCustomerProject"]:
-    """Return customer projects of service provider.
+    """List customer projects of a service provider
+
+     Returns a paginated list of projects belonging to a specific customer that have consumed resources
+    from the specified service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -285,6 +299,7 @@ def sync(
         o (Union[Unset, list[MarketplaceServiceProvidersCustomerProjectsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_customer_uuid (UUID):
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
 
@@ -317,6 +332,7 @@ def sync(
         o=o,
         page=page,
         page_size=page_size,
+        project_customer_uuid=project_customer_uuid,
         query=query,
         slug=slug,
     ).parsed
@@ -344,10 +360,14 @@ async def asyncio_detailed(
     o: Union[Unset, list[MarketplaceServiceProvidersCustomerProjectsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_customer_uuid: UUID,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> Response[list["MarketplaceProviderCustomerProject"]]:
-    """Return customer projects of service provider.
+    """List customer projects of a service provider
+
+     Returns a paginated list of projects belonging to a specific customer that have consumed resources
+    from the specified service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -369,6 +389,7 @@ async def asyncio_detailed(
         o (Union[Unset, list[MarketplaceServiceProvidersCustomerProjectsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_customer_uuid (UUID):
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
 
@@ -400,6 +421,7 @@ async def asyncio_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        project_customer_uuid=project_customer_uuid,
         query=query,
         slug=slug,
     )
@@ -431,10 +453,14 @@ async def asyncio(
     o: Union[Unset, list[MarketplaceServiceProvidersCustomerProjectsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    project_customer_uuid: UUID,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> list["MarketplaceProviderCustomerProject"]:
-    """Return customer projects of service provider.
+    """List customer projects of a service provider
+
+     Returns a paginated list of projects belonging to a specific customer that have consumed resources
+    from the specified service provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -456,6 +482,7 @@ async def asyncio(
         o (Union[Unset, list[MarketplaceServiceProvidersCustomerProjectsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        project_customer_uuid (UUID):
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
 
@@ -489,6 +516,7 @@ async def asyncio(
             o=o,
             page=page,
             page_size=page_size,
+            project_customer_uuid=project_customer_uuid,
             query=query,
             slug=slug,
         )

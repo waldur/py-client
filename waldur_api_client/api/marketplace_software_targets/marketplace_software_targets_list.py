@@ -116,7 +116,11 @@ def sync_detailed(
     path: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["SoftwareTarget"]]:
-    """
+    """List software targets
+
+     Returns a paginated list of software targets, which represent specific builds of a software version
+    for a given CPU architecture.
+
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
@@ -171,7 +175,11 @@ def sync(
     path: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["SoftwareTarget"]:
-    """
+    """List software targets
+
+     Returns a paginated list of software targets, which represent specific builds of a software version
+    for a given CPU architecture.
+
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
@@ -221,7 +229,11 @@ async def asyncio_detailed(
     path: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["SoftwareTarget"]]:
-    """
+    """List software targets
+
+     Returns a paginated list of software targets, which represent specific builds of a software version
+    for a given CPU architecture.
+
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
@@ -274,7 +286,11 @@ async def asyncio(
     path: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["SoftwareTarget"]:
-    """
+    """List software targets
+
+     Returns a paginated list of software targets, which represent specific builds of a software version
+    for a given CPU architecture.
+
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):

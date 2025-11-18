@@ -58,7 +58,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingPartitionRequest,
 ) -> Response[OfferingPartition]:
-    """Add SLURM partition configuration to offering.
+    """Add a partition to an offering
+
+     Adds a new partition configuration to an offering.
 
     Args:
         uuid (UUID):
@@ -90,7 +92,9 @@ def sync(
     client: AuthenticatedClient,
     body: OfferingPartitionRequest,
 ) -> OfferingPartition:
-    """Add SLURM partition configuration to offering.
+    """Add a partition to an offering
+
+     Adds a new partition configuration to an offering.
 
     Args:
         uuid (UUID):
@@ -117,7 +121,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingPartitionRequest,
 ) -> Response[OfferingPartition]:
-    """Add SLURM partition configuration to offering.
+    """Add a partition to an offering
+
+     Adds a new partition configuration to an offering.
 
     Args:
         uuid (UUID):
@@ -147,7 +153,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OfferingPartitionRequest,
 ) -> OfferingPartition:
-    """Add SLURM partition configuration to offering.
+    """Add a partition to an offering
+
+     Adds a new partition configuration to an offering.
 
     Args:
         uuid (UUID):

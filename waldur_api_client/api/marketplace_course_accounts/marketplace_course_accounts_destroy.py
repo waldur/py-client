@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete (close) a course account
+
+     Deletes a course account, which triggers a 'close' operation in the backend.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +73,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Delete (close) a course account
+
+     Deletes a course account, which triggers a 'close' operation in the backend.
+
     Args:
         uuid (UUID):
 

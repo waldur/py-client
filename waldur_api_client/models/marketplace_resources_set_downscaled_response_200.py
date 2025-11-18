@@ -1,66 +1,46 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ServiceProviderSignature")
+T = TypeVar("T", bound="MarketplaceResourcesSetDownscaledResponse200")
 
 
 @_attrs_define
-class ServiceProviderSignature:
+class MarketplaceResourcesSetDownscaledResponse200:
     """
     Attributes:
-        customer (UUID):
-        data (str):
-        dry_run (Union[Unset, bool]):  Default: False.
+        status (Union[Unset, str]):
     """
 
-    customer: UUID
-    data: str
-    dry_run: Union[Unset, bool] = False
+    status: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        customer = str(self.customer)
-
-        data = self.data
-
-        dry_run = self.dry_run
+        status = self.status
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "customer": customer,
-                "data": data,
-            }
-        )
-        if dry_run is not UNSET:
-            field_dict["dry_run"] = dry_run
+        field_dict.update({})
+        if status is not UNSET:
+            field_dict["status"] = status
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        customer = UUID(d.pop("customer"))
+        status = d.pop("status", UNSET)
 
-        data = d.pop("data")
-
-        dry_run = d.pop("dry_run", UNSET)
-
-        service_provider_signature = cls(
-            customer=customer,
-            data=data,
-            dry_run=dry_run,
+        marketplace_resources_set_downscaled_response_200 = cls(
+            status=status,
         )
 
-        service_provider_signature.additional_properties = d
-        return service_provider_signature
+        marketplace_resources_set_downscaled_response_200.additional_properties = d
+        return marketplace_resources_set_downscaled_response_200
 
     @property
     def additional_keys(self) -> list[str]:

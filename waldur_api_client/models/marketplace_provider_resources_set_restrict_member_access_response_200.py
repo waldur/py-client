@@ -6,50 +6,41 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="CourseAccountCreateNested")
+T = TypeVar("T", bound="MarketplaceProviderResourcesSetRestrictMemberAccessResponse200")
 
 
 @_attrs_define
-class CourseAccountCreateNested:
+class MarketplaceProviderResourcesSetRestrictMemberAccessResponse200:
     """
     Attributes:
-        email (Union[Unset, str]):
-        description (Union[Unset, str]):
+        status (Union[Unset, str]):
     """
 
-    email: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
+    status: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        email = self.email
-
-        description = self.description
+        status = self.status
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if email is not UNSET:
-            field_dict["email"] = email
-        if description is not UNSET:
-            field_dict["description"] = description
+        if status is not UNSET:
+            field_dict["status"] = status
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        email = d.pop("email", UNSET)
+        status = d.pop("status", UNSET)
 
-        description = d.pop("description", UNSET)
-
-        course_account_create_nested = cls(
-            email=email,
-            description=description,
+        marketplace_provider_resources_set_restrict_member_access_response_200 = cls(
+            status=status,
         )
 
-        course_account_create_nested.additional_properties = d
-        return course_account_create_nested
+        marketplace_provider_resources_set_restrict_member_access_response_200.additional_properties = d
+        return marketplace_provider_resources_set_restrict_member_access_response_200
 
     @property
     def additional_keys(self) -> list[str]:

@@ -89,7 +89,9 @@ def sync_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List component usage limits for users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         component_type (Union[Unset, str]):
@@ -136,7 +138,9 @@ def sync(
     resource_uuid: Union[Unset, UUID] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List component usage limits for users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         component_type (Union[Unset, str]):
@@ -178,7 +182,9 @@ async def asyncio_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List component usage limits for users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         component_type (Union[Unset, str]):
@@ -223,7 +229,9 @@ async def asyncio(
     resource_uuid: Union[Unset, UUID] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List component usage limits for users
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         component_type (Union[Unset, str]):

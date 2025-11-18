@@ -47,7 +47,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OfferingReferral]:
-    """
+    """Retrieve a specific Datacite referral
+
+     Returns the details of a single Datacite referral record, identified by its UUID. Details include
+    the related identifier (PID), the type of relationship, and metadata about the related work.
+
     Args:
         uuid (UUID):
 
@@ -75,7 +79,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> OfferingReferral:
-    """
+    """Retrieve a specific Datacite referral
+
+     Returns the details of a single Datacite referral record, identified by its UUID. Details include
+    the related identifier (PID), the type of relationship, and metadata about the related work.
+
     Args:
         uuid (UUID):
 
@@ -98,7 +106,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[OfferingReferral]:
-    """
+    """Retrieve a specific Datacite referral
+
+     Returns the details of a single Datacite referral record, identified by its UUID. Details include
+    the related identifier (PID), the type of relationship, and metadata about the related work.
+
     Args:
         uuid (UUID):
 
@@ -124,7 +136,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> OfferingReferral:
-    """
+    """Retrieve a specific Datacite referral
+
+     Returns the details of a single Datacite referral record, identified by its UUID. Details include
+    the related identifier (PID), the type of relationship, and metadata about the related work.
+
     Args:
         uuid (UUID):
 

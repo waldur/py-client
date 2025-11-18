@@ -65,7 +65,11 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CategoryComponents"]]:
-    """
+    """List category components
+
+     Returns a paginated list of all components defined at the category level. These act as templates for
+    components in offerings.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -96,7 +100,11 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CategoryComponents"]:
-    """
+    """List category components
+
+     Returns a paginated list of all components defined at the category level. These act as templates for
+    components in offerings.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -122,7 +130,11 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CategoryComponents"]]:
-    """
+    """List category components
+
+     Returns a paginated list of all components defined at the category level. These act as templates for
+    components in offerings.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -151,7 +163,11 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CategoryComponents"]:
-    """
+    """List category components
+
+     Returns a paginated list of all components defined at the category level. These act as templates for
+    components in offerings.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

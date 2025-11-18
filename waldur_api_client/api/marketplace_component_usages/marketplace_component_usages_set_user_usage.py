@@ -53,7 +53,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ComponentUserUsageCreateRequest,
 ) -> Response[Any]:
-    """
+    """Set user-specific component usage
+
+
+            Allows a service provider to report usage for a specific user associated with a resource's
+    component.
+            This is used for detailed, per-user usage tracking within a single resource.
+
+            - If a user-specific usage record already exists for the given component usage, it will be
+    updated.
+            - Otherwise, a new record is created.
+
+
     Args:
         uuid (UUID):
         body (ComponentUserUsageCreateRequest):
@@ -84,7 +95,18 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ComponentUserUsageCreateRequest,
 ) -> Response[Any]:
-    """
+    """Set user-specific component usage
+
+
+            Allows a service provider to report usage for a specific user associated with a resource's
+    component.
+            This is used for detailed, per-user usage tracking within a single resource.
+
+            - If a user-specific usage record already exists for the given component usage, it will be
+    updated.
+            - Otherwise, a new record is created.
+
+
     Args:
         uuid (UUID):
         body (ComponentUserUsageCreateRequest):

@@ -66,7 +66,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]] = UNSET,
 ) -> Response[CategoryComponentUsage]:
-    """
+    """Retrieve an aggregated category component usage record
+
+     Returns the details of a single aggregated usage record for a category component, identified by its
+    database ID.
+
     Args:
         id (int):
         field (Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]]):
@@ -97,7 +101,11 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]] = UNSET,
 ) -> CategoryComponentUsage:
-    """
+    """Retrieve an aggregated category component usage record
+
+     Returns the details of a single aggregated usage record for a category component, identified by its
+    database ID.
+
     Args:
         id (int):
         field (Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]]):
@@ -123,7 +131,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]] = UNSET,
 ) -> Response[CategoryComponentUsage]:
-    """
+    """Retrieve an aggregated category component usage record
+
+     Returns the details of a single aggregated usage record for a category component, identified by its
+    database ID.
+
     Args:
         id (int):
         field (Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]]):
@@ -152,7 +164,11 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]] = UNSET,
 ) -> CategoryComponentUsage:
-    """
+    """Retrieve an aggregated category component usage record
+
+     Returns the details of a single aggregated usage record for a category component, identified by its
+    database ID.
+
     Args:
         id (int):
         field (Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]]):

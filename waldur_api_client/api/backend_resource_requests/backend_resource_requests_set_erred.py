@@ -60,7 +60,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: BackendResourceRequestSetErredRequest,
 ) -> Response[BackendResourceRequestsSetErredResponse200]:
-    """
+    """Mark a request as erred
+
+     Transitions the request state to 'Erred'. This is used by a site agent to report a failure during
+    the resource fetching process. An error message and traceback should be provided.
+
     Args:
         uuid (UUID):
         body (BackendResourceRequestSetErredRequest):
@@ -91,7 +95,11 @@ def sync(
     client: AuthenticatedClient,
     body: BackendResourceRequestSetErredRequest,
 ) -> BackendResourceRequestsSetErredResponse200:
-    """
+    """Mark a request as erred
+
+     Transitions the request state to 'Erred'. This is used by a site agent to report a failure during
+    the resource fetching process. An error message and traceback should be provided.
+
     Args:
         uuid (UUID):
         body (BackendResourceRequestSetErredRequest):
@@ -117,7 +125,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: BackendResourceRequestSetErredRequest,
 ) -> Response[BackendResourceRequestsSetErredResponse200]:
-    """
+    """Mark a request as erred
+
+     Transitions the request state to 'Erred'. This is used by a site agent to report a failure during
+    the resource fetching process. An error message and traceback should be provided.
+
     Args:
         uuid (UUID):
         body (BackendResourceRequestSetErredRequest):
@@ -146,7 +158,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: BackendResourceRequestSetErredRequest,
 ) -> BackendResourceRequestsSetErredResponse200:
-    """
+    """Mark a request as erred
+
+     Transitions the request state to 'Erred'. This is used by a site agent to report a failure during
+    the resource fetching process. An error message and traceback should be provided.
+
     Args:
         uuid (UUID):
         body (BackendResourceRequestSetErredRequest):

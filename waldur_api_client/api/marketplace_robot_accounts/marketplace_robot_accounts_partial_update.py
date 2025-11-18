@@ -56,7 +56,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedRobotAccountRequest,
 ) -> Response[RobotAccount]:
-    """
+    """Partially update a robot account
+
+     Partially updates the properties of a robot account. Not allowed for synchronized remote accounts.
+
     Args:
         uuid (UUID):
         body (PatchedRobotAccountRequest):
@@ -87,7 +90,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedRobotAccountRequest,
 ) -> RobotAccount:
-    """
+    """Partially update a robot account
+
+     Partially updates the properties of a robot account. Not allowed for synchronized remote accounts.
+
     Args:
         uuid (UUID):
         body (PatchedRobotAccountRequest):
@@ -113,7 +119,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedRobotAccountRequest,
 ) -> Response[RobotAccount]:
-    """
+    """Partially update a robot account
+
+     Partially updates the properties of a robot account. Not allowed for synchronized remote accounts.
+
     Args:
         uuid (UUID):
         body (PatchedRobotAccountRequest):
@@ -142,7 +151,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedRobotAccountRequest,
 ) -> RobotAccount:
-    """
+    """Partially update a robot account
+
+     Partially updates the properties of a robot account. Not allowed for synchronized remote accounts.
+
     Args:
         uuid (UUID):
         body (PatchedRobotAccountRequest):

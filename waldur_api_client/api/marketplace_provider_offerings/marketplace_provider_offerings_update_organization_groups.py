@@ -53,7 +53,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OrganizationGroupsRequest,
 ) -> Response[Any]:
-    """Update organization groups for offering.
+    """Update organization groups for offering
+
+     Sets the list of organization groups that can access this offering.
 
     Args:
         uuid (UUID):
@@ -85,7 +87,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OrganizationGroupsRequest,
 ) -> Response[Any]:
-    """Update organization groups for offering.
+    """Update organization groups for offering
+
+     Sets the list of organization groups that can access this offering.
 
     Args:
         uuid (UUID):

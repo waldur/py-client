@@ -51,7 +51,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BackendResourceRequestsStartProcessingResponse200]:
-    """
+    """Start processing a request
+
+     Transitions the request state from 'Sent' to 'Processing'. This is used by a site agent to
+    acknowledge that it has started fetching the resource list.
+
     Args:
         uuid (UUID):
 
@@ -79,7 +83,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> BackendResourceRequestsStartProcessingResponse200:
-    """
+    """Start processing a request
+
+     Transitions the request state from 'Sent' to 'Processing'. This is used by a site agent to
+    acknowledge that it has started fetching the resource list.
+
     Args:
         uuid (UUID):
 
@@ -102,7 +110,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[BackendResourceRequestsStartProcessingResponse200]:
-    """
+    """Start processing a request
+
+     Transitions the request state from 'Sent' to 'Processing'. This is used by a site agent to
+    acknowledge that it has started fetching the resource list.
+
     Args:
         uuid (UUID):
 
@@ -128,7 +140,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> BackendResourceRequestsStartProcessingResponse200:
-    """
+    """Start processing a request
+
+     Transitions the request state from 'Sent' to 'Processing'. This is used by a site agent to
+    acknowledge that it has started fetching the resource list.
+
     Args:
         uuid (UUID):
 

@@ -43,11 +43,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[str]:
-    """
-            This endpoint provides a config file for GLauth.
-            Example: https://github.com/glauth/glauth/blob/master/v2/sample-simple.cfg
-            It is assumed that the config is used by an external agent,
-            which synchronizes data from Waldur to GLauth.
+    """Get GLauth user configuration for a resource
+
+
+            This endpoint provides a GLauth configuration file for the users associated with the project
+    of this resource.
+            It is intended for use by an external agent to synchronize user data from Waldur to GLauth.
 
 
     Args:
@@ -77,11 +78,12 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> str:
-    """
-            This endpoint provides a config file for GLauth.
-            Example: https://github.com/glauth/glauth/blob/master/v2/sample-simple.cfg
-            It is assumed that the config is used by an external agent,
-            which synchronizes data from Waldur to GLauth.
+    """Get GLauth user configuration for a resource
+
+
+            This endpoint provides a GLauth configuration file for the users associated with the project
+    of this resource.
+            It is intended for use by an external agent to synchronize user data from Waldur to GLauth.
 
 
     Args:
@@ -106,11 +108,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[str]:
-    """
-            This endpoint provides a config file for GLauth.
-            Example: https://github.com/glauth/glauth/blob/master/v2/sample-simple.cfg
-            It is assumed that the config is used by an external agent,
-            which synchronizes data from Waldur to GLauth.
+    """Get GLauth user configuration for a resource
+
+
+            This endpoint provides a GLauth configuration file for the users associated with the project
+    of this resource.
+            It is intended for use by an external agent to synchronize user data from Waldur to GLauth.
 
 
     Args:
@@ -138,11 +141,12 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> str:
-    """
-            This endpoint provides a config file for GLauth.
-            Example: https://github.com/glauth/glauth/blob/master/v2/sample-simple.cfg
-            It is assumed that the config is used by an external agent,
-            which synchronizes data from Waldur to GLauth.
+    """Get GLauth user configuration for a resource
+
+
+            This endpoint provides a GLauth configuration file for the users associated with the project
+    of this resource.
+            It is intended for use by an external agent to synchronize user data from Waldur to GLauth.
 
 
     Args:

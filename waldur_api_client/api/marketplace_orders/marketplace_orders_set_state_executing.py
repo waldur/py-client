@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Set order state to executing (agent)
+
+     Used by external agents (e.g., site agent) to manually transition the order state to 'executing'.
+    This is only applicable for specific offering types.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Set order state to executing (agent)
+
+     Used by external agents (e.g., site agent) to manually transition the order state to 'executing'.
+    This is only applicable for specific offering types.
+
     Args:
         uuid (UUID):
 

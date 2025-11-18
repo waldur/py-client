@@ -55,7 +55,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectServiceAccountRequest,
 ) -> Response[ProjectServiceAccount]:
-    """
+    """Create a project service account
+
+     Creates a new service account scoped to a specific project. This generates an API key that can be
+    used for automated access to resources within that project.
+
     Args:
         body (ProjectServiceAccountRequest):
 
@@ -83,7 +87,11 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectServiceAccountRequest,
 ) -> ProjectServiceAccount:
-    """
+    """Create a project service account
+
+     Creates a new service account scoped to a specific project. This generates an API key that can be
+    used for automated access to resources within that project.
+
     Args:
         body (ProjectServiceAccountRequest):
 
@@ -106,7 +114,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectServiceAccountRequest,
 ) -> Response[ProjectServiceAccount]:
-    """
+    """Create a project service account
+
+     Creates a new service account scoped to a specific project. This generates an API key that can be
+    used for automated access to resources within that project.
+
     Args:
         body (ProjectServiceAccountRequest):
 
@@ -132,7 +144,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectServiceAccountRequest,
 ) -> ProjectServiceAccount:
-    """
+    """Create a project service account
+
+     Creates a new service account scoped to a specific project. This generates an API key that can be
+    used for automated access to resources within that project.
+
     Args:
         body (ProjectServiceAccountRequest):
 

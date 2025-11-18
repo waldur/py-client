@@ -132,7 +132,10 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CourseAccount"]]:
-    """
+    """List course accounts
+
+     Returns a paginated list of course accounts accessible to the current user.
+
     Args:
         email (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
@@ -190,7 +193,10 @@ def sync(
     state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
-    """
+    """List course accounts
+
+     Returns a paginated list of course accounts accessible to the current user.
+
     Args:
         email (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
@@ -243,7 +249,10 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CourseAccount"]]:
-    """
+    """List course accounts
+
+     Returns a paginated list of course accounts accessible to the current user.
+
     Args:
         email (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
@@ -299,7 +308,10 @@ async def asyncio(
     state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
-    """
+    """List course accounts
+
+     Returns a paginated list of course accounts accessible to the current user.
+
     Args:
         email (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):

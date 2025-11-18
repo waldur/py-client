@@ -46,7 +46,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[CategoryComponents]:
-    """
+    """Retrieve a category component
+
+     Returns the details of a specific category component, identified by its ID.
+
     Args:
         id (int):
 
@@ -74,7 +77,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> CategoryComponents:
-    """
+    """Retrieve a category component
+
+     Returns the details of a specific category component, identified by its ID.
+
     Args:
         id (int):
 
@@ -97,7 +103,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[CategoryComponents]:
-    """
+    """Retrieve a category component
+
+     Returns the details of a specific category component, identified by its ID.
+
     Args:
         id (int):
 
@@ -123,7 +132,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> CategoryComponents:
-    """
+    """Retrieve a category component
+
+     Returns the details of a specific category component, identified by its ID.
+
     Args:
         id (int):
 

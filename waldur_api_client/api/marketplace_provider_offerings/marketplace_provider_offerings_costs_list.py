@@ -271,7 +271,9 @@ def sync_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["ProviderOfferingCosts"]]:
-    """Get costs for offering.
+    """Get costs for an offering
+
+     Returns monthly cost data for an offering within a specified date range.
 
     Args:
         uuid (UUID):
@@ -411,7 +413,9 @@ def sync(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["ProviderOfferingCosts"]:
-    """Get costs for offering.
+    """Get costs for an offering
+
+     Returns monthly cost data for an offering within a specified date range.
 
     Args:
         uuid (UUID):
@@ -546,7 +550,9 @@ async def asyncio_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["ProviderOfferingCosts"]]:
-    """Get costs for offering.
+    """Get costs for an offering
+
+     Returns monthly cost data for an offering within a specified date range.
 
     Args:
         uuid (UUID):
@@ -684,7 +690,9 @@ async def asyncio(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["ProviderOfferingCosts"]:
-    """Get costs for offering.
+    """Get costs for an offering
+
+     Returns monthly cost data for an offering within a specified date range.
 
     Args:
         uuid (UUID):

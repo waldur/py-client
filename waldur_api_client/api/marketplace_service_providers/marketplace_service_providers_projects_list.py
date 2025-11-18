@@ -170,7 +170,10 @@ def sync_detailed(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> Response[list["Project"]]:
-    """Return projects of service provider.
+    """List projects of a service provider
+
+     Returns a paginated list of all projects that have consumed resources from the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -259,7 +262,10 @@ def sync(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> list["Project"]:
-    """Return projects of service provider.
+    """List projects of a service provider
+
+     Returns a paginated list of all projects that have consumed resources from the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -343,7 +349,10 @@ async def asyncio_detailed(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> Response[list["Project"]]:
-    """Return projects of service provider.
+    """List projects of a service provider
+
+     Returns a paginated list of all projects that have consumed resources from the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):
@@ -430,7 +439,10 @@ async def asyncio(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> list["Project"]:
-    """Return projects of service provider.
+    """List projects of a service provider
+
+     Returns a paginated list of all projects that have consumed resources from the specified service
+    provider.
 
     Args:
         service_provider_uuid (UUID):

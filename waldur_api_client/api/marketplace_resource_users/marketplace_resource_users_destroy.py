@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Unlink a user from a resource
+
+     Removes the association between a user and a resource, effectively revoking their role on that
+    resource. The user must have permission to manage users for the resource.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Unlink a user from a resource
+
+     Removes the association between a user and a resource, effectively revoking their role on that
+    resource. The user must have permission to manage users for the resource.
+
     Args:
         uuid (UUID):
 

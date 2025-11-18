@@ -70,7 +70,11 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
 ) -> Response[list["NameUUID"]]:
-    """
+    """List projects with robot accounts
+
+     Returns a paginated list of projects which have robot accounts for resources managed by this service
+    provider.
+
     Args:
         uuid (UUID):
         page (Union[Unset, int]):
@@ -107,7 +111,11 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
 ) -> list["NameUUID"]:
-    """
+    """List projects with robot accounts
+
+     Returns a paginated list of projects which have robot accounts for resources managed by this service
+    provider.
+
     Args:
         uuid (UUID):
         page (Union[Unset, int]):
@@ -139,7 +147,11 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
 ) -> Response[list["NameUUID"]]:
-    """
+    """List projects with robot accounts
+
+     Returns a paginated list of projects which have robot accounts for resources managed by this service
+    provider.
+
     Args:
         uuid (UUID):
         page (Union[Unset, int]):
@@ -174,7 +186,11 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
 ) -> list["NameUUID"]:
-    """
+    """List projects with robot accounts
+
+     Returns a paginated list of projects which have robot accounts for resources managed by this service
+    provider.
+
     Args:
         uuid (UUID):
         page (Union[Unset, int]):

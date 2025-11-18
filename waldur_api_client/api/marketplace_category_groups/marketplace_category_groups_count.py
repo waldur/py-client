@@ -66,7 +66,9 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List category groups
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
@@ -101,7 +103,9 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List category groups
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
@@ -131,7 +135,9 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List category groups
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
@@ -164,7 +170,9 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List category groups
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):

@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingDescriptionUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering category
+
+     Updates the category of an offering.
+
     Args:
         uuid (UUID):
         body (OfferingDescriptionUpdateRequest):
@@ -84,7 +87,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingDescriptionUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering category
+
+     Updates the category of an offering.
+
     Args:
         uuid (UUID):
         body (OfferingDescriptionUpdateRequest):

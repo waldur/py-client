@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedComponentUserUsageLimitRequest,
 ) -> Response[ComponentUserUsageLimit]:
-    """
+    """Partially update a component usage limit
+
+     Partially updates an existing usage limit for a user on a component.
+
     Args:
         uuid (UUID):
         body (PatchedComponentUserUsageLimitRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedComponentUserUsageLimitRequest,
 ) -> ComponentUserUsageLimit:
-    """
+    """Partially update a component usage limit
+
+     Partially updates an existing usage limit for a user on a component.
+
     Args:
         uuid (UUID):
         body (PatchedComponentUserUsageLimitRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedComponentUserUsageLimitRequest,
 ) -> Response[ComponentUserUsageLimit]:
-    """
+    """Partially update a component usage limit
+
+     Partially updates an existing usage limit for a user on a component.
+
     Args:
         uuid (UUID):
         body (PatchedComponentUserUsageLimitRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedComponentUserUsageLimitRequest,
 ) -> ComponentUserUsageLimit:
-    """
+    """Partially update a component usage limit
+
+     Partially updates an existing usage limit for a user on a component.
+
     Args:
         uuid (UUID):
         body (PatchedComponentUserUsageLimitRequest):

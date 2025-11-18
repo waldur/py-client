@@ -51,6 +51,9 @@ def sync_detailed(
 ) -> Response[MaintenanceActionResponse]:
     """Start the maintenance announcement
 
+     Transitions a 'Scheduled' maintenance announcement to 'In progress', indicating that the maintenance
+    work has begun.
+
     Args:
         uuid (UUID):
 
@@ -80,6 +83,9 @@ def sync(
 ) -> MaintenanceActionResponse:
     """Start the maintenance announcement
 
+     Transitions a 'Scheduled' maintenance announcement to 'In progress', indicating that the maintenance
+    work has begun.
+
     Args:
         uuid (UUID):
 
@@ -103,6 +109,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[MaintenanceActionResponse]:
     """Start the maintenance announcement
+
+     Transitions a 'Scheduled' maintenance announcement to 'In progress', indicating that the maintenance
+    work has begun.
 
     Args:
         uuid (UUID):
@@ -130,6 +139,9 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> MaintenanceActionResponse:
     """Start the maintenance announcement
+
+     Transitions a 'Scheduled' maintenance announcement to 'In progress', indicating that the maintenance
+    work has begun.
 
     Args:
         uuid (UUID):

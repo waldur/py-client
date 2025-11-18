@@ -254,7 +254,9 @@ def sync_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List offerings grouped by provider
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         accessible_via_calls (Union[Unset, bool]):
@@ -382,7 +384,9 @@ def sync(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List offerings grouped by provider
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         accessible_via_calls (Union[Unset, bool]):
@@ -505,7 +509,9 @@ async def asyncio_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List offerings grouped by provider
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         accessible_via_calls (Union[Unset, bool]):
@@ -631,7 +637,9 @@ async def asyncio(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List offerings grouped by provider
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         accessible_via_calls (Union[Unset, bool]):

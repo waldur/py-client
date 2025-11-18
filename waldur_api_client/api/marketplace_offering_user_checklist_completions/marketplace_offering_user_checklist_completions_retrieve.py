@@ -46,7 +46,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[UserChecklistCompletion]:
-    """
+    """Retrieve a checklist completion
+
+     Returns the details of a specific checklist completion for an offering user.
+
     Args:
         id (int):
 
@@ -74,7 +77,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> UserChecklistCompletion:
-    """
+    """Retrieve a checklist completion
+
+     Returns the details of a specific checklist completion for an offering user.
+
     Args:
         id (int):
 
@@ -97,7 +103,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[UserChecklistCompletion]:
-    """
+    """Retrieve a checklist completion
+
+     Returns the details of a specific checklist completion for an offering user.
+
     Args:
         id (int):
 
@@ -123,7 +132,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> UserChecklistCompletion:
-    """
+    """Retrieve a checklist completion
+
+     Returns the details of a specific checklist completion for an offering user.
+
     Args:
         id (int):
 

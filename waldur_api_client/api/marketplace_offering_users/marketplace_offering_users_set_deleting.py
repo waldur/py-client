@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Action to begin the deletion process for an offering user.
+    """Begin deletion process
+
+     Transitions the offering user to the 'Deleting' state. This is typically used by an agent to signal
+    that the deletion process has started.
 
     Args:
         uuid (UUID):
@@ -71,7 +74,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Action to begin the deletion process for an offering user.
+    """Begin deletion process
+
+     Transitions the offering user to the 'Deleting' state. This is typically used by an agent to signal
+    that the deletion process has started.
 
     Args:
         uuid (UUID):

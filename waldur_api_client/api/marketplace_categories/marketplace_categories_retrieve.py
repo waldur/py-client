@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]] = UNSET,
 ) -> Response[MarketplaceCategory]:
-    """
+    """Retrieve a category
+
+     Returns details of a specific marketplace category.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]] = UNSET,
 ) -> MarketplaceCategory:
-    """
+    """Retrieve a category
+
+     Returns details of a specific marketplace category.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]] = UNSET,
 ) -> Response[MarketplaceCategory]:
-    """
+    """Retrieve a category
+
+     Returns details of a specific marketplace category.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]] = UNSET,
 ) -> MarketplaceCategory:
-    """
+    """Retrieve a category
+
+     Returns details of a specific marketplace category.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]]):

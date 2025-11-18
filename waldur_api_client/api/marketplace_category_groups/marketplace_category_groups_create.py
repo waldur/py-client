@@ -70,7 +70,10 @@ def sync_detailed(
         CategoryGroupRequestMultipart,
     ],
 ) -> Response[CategoryGroup]:
-    """
+    """Create a category group
+
+     Creates a new category group. Requires staff permissions.
+
     Args:
         body (CategoryGroupRequest):
         body (CategoryGroupRequestForm):
@@ -104,7 +107,10 @@ def sync(
         CategoryGroupRequestMultipart,
     ],
 ) -> CategoryGroup:
-    """
+    """Create a category group
+
+     Creates a new category group. Requires staff permissions.
+
     Args:
         body (CategoryGroupRequest):
         body (CategoryGroupRequestForm):
@@ -133,7 +139,10 @@ async def asyncio_detailed(
         CategoryGroupRequestMultipart,
     ],
 ) -> Response[CategoryGroup]:
-    """
+    """Create a category group
+
+     Creates a new category group. Requires staff permissions.
+
     Args:
         body (CategoryGroupRequest):
         body (CategoryGroupRequestForm):
@@ -165,7 +174,10 @@ async def asyncio(
         CategoryGroupRequestMultipart,
     ],
 ) -> CategoryGroup:
-    """
+    """Create a category group
+
+     Creates a new category group. Requires staff permissions.
+
     Args:
         body (CategoryGroupRequest):
         body (CategoryGroupRequestForm):

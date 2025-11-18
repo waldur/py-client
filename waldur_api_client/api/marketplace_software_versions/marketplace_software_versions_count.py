@@ -112,7 +112,9 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List software versions
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         catalog_uuid (Union[Unset, UUID]):
@@ -168,7 +170,9 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List software versions
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         catalog_uuid (Union[Unset, UUID]):
@@ -219,7 +223,9 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List software versions
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         catalog_uuid (Union[Unset, UUID]):
@@ -273,7 +279,9 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List software versions
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         catalog_uuid (Union[Unset, UUID]):

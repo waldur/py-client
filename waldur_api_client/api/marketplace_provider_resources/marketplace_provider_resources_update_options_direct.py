@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceOptionsRequest,
 ) -> Response[ResourceResponseStatus]:
-    """Update resource options directly without creating orders.
+    """Update resource options directly
+
+     Allows a service provider to directly update the options of a resource without creating an order.
+    This is typically used for administrative changes or backend synchronization.
 
     Args:
         uuid (UUID):
@@ -90,7 +93,10 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceOptionsRequest,
 ) -> ResourceResponseStatus:
-    """Update resource options directly without creating orders.
+    """Update resource options directly
+
+     Allows a service provider to directly update the options of a resource without creating an order.
+    This is typically used for administrative changes or backend synchronization.
 
     Args:
         uuid (UUID):
@@ -117,7 +123,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceOptionsRequest,
 ) -> Response[ResourceResponseStatus]:
-    """Update resource options directly without creating orders.
+    """Update resource options directly
+
+     Allows a service provider to directly update the options of a resource without creating an order.
+    This is typically used for administrative changes or backend synchronization.
 
     Args:
         uuid (UUID):
@@ -147,7 +156,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceOptionsRequest,
 ) -> ResourceResponseStatus:
-    """Update resource options directly without creating orders.
+    """Update resource options directly
+
+     Allows a service provider to directly update the options of a resource without creating an order.
+    This is typically used for administrative changes or backend synchronization.
 
     Args:
         uuid (UUID):

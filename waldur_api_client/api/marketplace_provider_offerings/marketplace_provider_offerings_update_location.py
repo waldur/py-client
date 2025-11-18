@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingLocationUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering location
+
+     Updates the geographical location (latitude and longitude) of an offering.
+
     Args:
         uuid (UUID):
         body (OfferingLocationUpdateRequest):
@@ -84,7 +87,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingLocationUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update offering location
+
+     Updates the geographical location (latitude and longitude) of an offering.
+
     Args:
         uuid (UUID):
         body (OfferingLocationUpdateRequest):

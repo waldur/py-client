@@ -58,7 +58,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceSetLimitsRequest,
 ) -> Response[ResourceResponseStatus]:
-    """
+    """Set resource limits
+
+     Allows a service provider to directly set the limits for a resource. This is typically used for
+    administrative changes or backend synchronization, bypassing the normal order process.
+
     Args:
         uuid (UUID):
         body (ResourceSetLimitsRequest):
@@ -89,7 +93,11 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceSetLimitsRequest,
 ) -> ResourceResponseStatus:
-    """
+    """Set resource limits
+
+     Allows a service provider to directly set the limits for a resource. This is typically used for
+    administrative changes or backend synchronization, bypassing the normal order process.
+
     Args:
         uuid (UUID):
         body (ResourceSetLimitsRequest):
@@ -115,7 +123,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceSetLimitsRequest,
 ) -> Response[ResourceResponseStatus]:
-    """
+    """Set resource limits
+
+     Allows a service provider to directly set the limits for a resource. This is typically used for
+    administrative changes or backend synchronization, bypassing the normal order process.
+
     Args:
         uuid (UUID):
         body (ResourceSetLimitsRequest):
@@ -144,7 +156,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceSetLimitsRequest,
 ) -> ResourceResponseStatus:
-    """
+    """Set resource limits
+
+     Allows a service provider to directly set the limits for a resource. This is typically used for
+    administrative changes or backend synchronization, bypassing the normal order process.
+
     Args:
         uuid (UUID):
         body (ResourceSetLimitsRequest):

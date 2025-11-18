@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedResourceUpdateRequest,
 ) -> Response[ResourceUpdate]:
-    """
+    """Partially update a consumer resource
+
+     Partially updates the name, description, or end date of a resource.
+
     Args:
         uuid (UUID):
         body (PatchedResourceUpdateRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedResourceUpdateRequest,
 ) -> ResourceUpdate:
-    """
+    """Partially update a consumer resource
+
+     Partially updates the name, description, or end date of a resource.
+
     Args:
         uuid (UUID):
         body (PatchedResourceUpdateRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedResourceUpdateRequest,
 ) -> Response[ResourceUpdate]:
-    """
+    """Partially update a consumer resource
+
+     Partially updates the name, description, or end date of a resource.
+
     Args:
         uuid (UUID):
         body (PatchedResourceUpdateRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedResourceUpdateRequest,
 ) -> ResourceUpdate:
-    """
+    """Partially update a consumer resource
+
+     Partially updates the name, description, or end date of a resource.
+
     Args:
         uuid (UUID):
         body (PatchedResourceUpdateRequest):

@@ -60,7 +60,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedMaintenanceAnnouncementOfferingRequest,
 ) -> Response[MaintenanceAnnouncementOffering]:
-    """
+    """Partially update an affected offering link
+
+     Partially updates the impact level or description for an offering linked to a maintenance
+    announcement.
+
     Args:
         uuid (UUID):
         body (PatchedMaintenanceAnnouncementOfferingRequest):
@@ -91,7 +95,11 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedMaintenanceAnnouncementOfferingRequest,
 ) -> MaintenanceAnnouncementOffering:
-    """
+    """Partially update an affected offering link
+
+     Partially updates the impact level or description for an offering linked to a maintenance
+    announcement.
+
     Args:
         uuid (UUID):
         body (PatchedMaintenanceAnnouncementOfferingRequest):
@@ -117,7 +125,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedMaintenanceAnnouncementOfferingRequest,
 ) -> Response[MaintenanceAnnouncementOffering]:
-    """
+    """Partially update an affected offering link
+
+     Partially updates the impact level or description for an offering linked to a maintenance
+    announcement.
+
     Args:
         uuid (UUID):
         body (PatchedMaintenanceAnnouncementOfferingRequest):
@@ -146,7 +158,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedMaintenanceAnnouncementOfferingRequest,
 ) -> MaintenanceAnnouncementOffering:
-    """
+    """Partially update an affected offering link
+
+     Partially updates the impact level or description for an offering linked to a maintenance
+    announcement.
+
     Args:
         uuid (UUID):
         body (PatchedMaintenanceAnnouncementOfferingRequest):

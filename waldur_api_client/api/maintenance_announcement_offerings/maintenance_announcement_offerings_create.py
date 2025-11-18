@@ -57,7 +57,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingRequest,
 ) -> Response[MaintenanceAnnouncementOffering]:
-    """
+    """Link an offering to a maintenance announcement
+
+     Creates a new association between an offering and a maintenance announcement, specifying the
+    expected impact.
+
     Args:
         body (MaintenanceAnnouncementOfferingRequest):
 
@@ -85,7 +89,11 @@ def sync(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingRequest,
 ) -> MaintenanceAnnouncementOffering:
-    """
+    """Link an offering to a maintenance announcement
+
+     Creates a new association between an offering and a maintenance announcement, specifying the
+    expected impact.
+
     Args:
         body (MaintenanceAnnouncementOfferingRequest):
 
@@ -108,7 +116,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingRequest,
 ) -> Response[MaintenanceAnnouncementOffering]:
-    """
+    """Link an offering to a maintenance announcement
+
+     Creates a new association between an offering and a maintenance announcement, specifying the
+    expected impact.
+
     Args:
         body (MaintenanceAnnouncementOfferingRequest):
 
@@ -134,7 +146,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: MaintenanceAnnouncementOfferingRequest,
 ) -> MaintenanceAnnouncementOffering:
-    """
+    """Link an offering to a maintenance announcement
+
+     Creates a new association between an offering and a maintenance announcement, specifying the
+    expected impact.
+
     Args:
         body (MaintenanceAnnouncementOfferingRequest):
 

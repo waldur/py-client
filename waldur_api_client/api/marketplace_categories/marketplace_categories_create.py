@@ -72,7 +72,10 @@ def sync_detailed(
         MarketplaceCategoryRequestMultipart,
     ],
 ) -> Response[MarketplaceCategory]:
-    """
+    """Create a category
+
+     Creates a new marketplace category. Requires staff permissions.
+
     Args:
         body (MarketplaceCategoryRequest):
         body (MarketplaceCategoryRequestForm):
@@ -106,7 +109,10 @@ def sync(
         MarketplaceCategoryRequestMultipart,
     ],
 ) -> MarketplaceCategory:
-    """
+    """Create a category
+
+     Creates a new marketplace category. Requires staff permissions.
+
     Args:
         body (MarketplaceCategoryRequest):
         body (MarketplaceCategoryRequestForm):
@@ -135,7 +141,10 @@ async def asyncio_detailed(
         MarketplaceCategoryRequestMultipart,
     ],
 ) -> Response[MarketplaceCategory]:
-    """
+    """Create a category
+
+     Creates a new marketplace category. Requires staff permissions.
+
     Args:
         body (MarketplaceCategoryRequest):
         body (MarketplaceCategoryRequestForm):
@@ -167,7 +176,10 @@ async def asyncio(
         MarketplaceCategoryRequestMultipart,
     ],
 ) -> MarketplaceCategory:
-    """
+    """Create a category
+
+     Creates a new marketplace category. Requires staff permissions.
+
     Args:
         body (MarketplaceCategoryRequest):
         body (MarketplaceCategoryRequestForm):

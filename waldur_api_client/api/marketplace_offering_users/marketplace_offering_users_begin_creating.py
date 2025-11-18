@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Begin creation process
+
+     Transitions the offering user state from 'Requested' or 'Error Creating' to 'Creating'. This is
+    typically used by an agent to signal that the creation process has started.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Begin creation process
+
+     Transitions the offering user state from 'Requested' or 'Error Creating' to 'Creating'. This is
+    typically used by an agent to signal that the creation process has started.
+
     Args:
         uuid (UUID):
 

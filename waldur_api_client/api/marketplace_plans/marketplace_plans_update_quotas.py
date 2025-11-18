@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: QuotasUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update plan component quotas
+
+     Updates the quotas (fixed amounts) for one or more components of a specific plan. This is only
+    applicable for components with a 'fixed-price' billing type.
+
     Args:
         uuid (UUID):
         body (QuotasUpdateRequest):
@@ -84,7 +88,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: QuotasUpdateRequest,
 ) -> Response[Any]:
-    """
+    """Update plan component quotas
+
+     Updates the quotas (fixed amounts) for one or more components of a specific plan. This is only
+    applicable for components with a 'fixed-price' billing type.
+
     Args:
         uuid (UUID):
         body (QuotasUpdateRequest):

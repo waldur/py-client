@@ -128,7 +128,11 @@ def sync_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     status: Union[Unset, list[MarketplaceIntegrationStatusesListStatusItem]] = UNSET,
 ) -> Response[list["IntegrationStatusDetails"]]:
-    """
+    """List integration statuses
+
+     Returns a paginated list of integration statuses for offerings. This is used to monitor the
+    connectivity and health of backend agents (e.g., site agents) associated with offerings.
+
     Args:
         agent_type (Union[Unset, str]):
         customer_uuid (Union[Unset, str]):
@@ -183,7 +187,11 @@ def sync(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     status: Union[Unset, list[MarketplaceIntegrationStatusesListStatusItem]] = UNSET,
 ) -> list["IntegrationStatusDetails"]:
-    """
+    """List integration statuses
+
+     Returns a paginated list of integration statuses for offerings. This is used to monitor the
+    connectivity and health of backend agents (e.g., site agents) associated with offerings.
+
     Args:
         agent_type (Union[Unset, str]):
         customer_uuid (Union[Unset, str]):
@@ -233,7 +241,11 @@ async def asyncio_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     status: Union[Unset, list[MarketplaceIntegrationStatusesListStatusItem]] = UNSET,
 ) -> Response[list["IntegrationStatusDetails"]]:
-    """
+    """List integration statuses
+
+     Returns a paginated list of integration statuses for offerings. This is used to monitor the
+    connectivity and health of backend agents (e.g., site agents) associated with offerings.
+
     Args:
         agent_type (Union[Unset, str]):
         customer_uuid (Union[Unset, str]):
@@ -286,7 +298,11 @@ async def asyncio(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     status: Union[Unset, list[MarketplaceIntegrationStatusesListStatusItem]] = UNSET,
 ) -> list["IntegrationStatusDetails"]:
-    """
+    """List integration statuses
+
+     Returns a paginated list of integration statuses for offerings. This is used to monitor the
+    connectivity and health of backend agents (e.g., site agents) associated with offerings.
+
     Args:
         agent_type (Union[Unset, str]):
         customer_uuid (Union[Unset, str]):

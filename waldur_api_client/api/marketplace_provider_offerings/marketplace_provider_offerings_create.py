@@ -5,10 +5,10 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.offering_create import OfferingCreate
 from ...models.offering_create_request import OfferingCreateRequest
 from ...models.offering_create_request_form import OfferingCreateRequestForm
 from ...models.offering_create_request_multipart import OfferingCreateRequestMultipart
+from ...models.provider_offering_details import ProviderOfferingDetails
 from ...types import Response
 
 
@@ -42,11 +42,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OfferingCreate:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ProviderOfferingDetails:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 201:
-        response_201 = OfferingCreate.from_dict(response.json())
+        response_201 = ProviderOfferingDetails.from_dict(response.json())
 
         return response_201
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -54,7 +54,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[OfferingCreate]:
+) -> Response[ProviderOfferingDetails]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,8 +71,11 @@ def sync_detailed(
         OfferingCreateRequestForm,
         OfferingCreateRequestMultipart,
     ],
-) -> Response[OfferingCreate]:
-    """
+) -> Response[ProviderOfferingDetails]:
+    """Create a provider offering
+
+     Creates a new provider offering.
+
     Args:
         body (OfferingCreateRequest):
         body (OfferingCreateRequestForm):
@@ -83,7 +86,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OfferingCreate]
+        Response[ProviderOfferingDetails]
     """
 
     kwargs = _get_kwargs(
@@ -105,8 +108,11 @@ def sync(
         OfferingCreateRequestForm,
         OfferingCreateRequestMultipart,
     ],
-) -> OfferingCreate:
-    """
+) -> ProviderOfferingDetails:
+    """Create a provider offering
+
+     Creates a new provider offering.
+
     Args:
         body (OfferingCreateRequest):
         body (OfferingCreateRequestForm):
@@ -117,7 +123,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OfferingCreate
+        ProviderOfferingDetails
     """
 
     return sync_detailed(
@@ -134,8 +140,11 @@ async def asyncio_detailed(
         OfferingCreateRequestForm,
         OfferingCreateRequestMultipart,
     ],
-) -> Response[OfferingCreate]:
-    """
+) -> Response[ProviderOfferingDetails]:
+    """Create a provider offering
+
+     Creates a new provider offering.
+
     Args:
         body (OfferingCreateRequest):
         body (OfferingCreateRequestForm):
@@ -146,7 +155,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OfferingCreate]
+        Response[ProviderOfferingDetails]
     """
 
     kwargs = _get_kwargs(
@@ -166,8 +175,11 @@ async def asyncio(
         OfferingCreateRequestForm,
         OfferingCreateRequestMultipart,
     ],
-) -> OfferingCreate:
-    """
+) -> ProviderOfferingDetails:
+    """Create a provider offering
+
+     Creates a new provider offering.
+
     Args:
         body (OfferingCreateRequest):
         body (OfferingCreateRequestForm):
@@ -178,7 +190,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OfferingCreate
+        ProviderOfferingDetails
     """
 
     return (

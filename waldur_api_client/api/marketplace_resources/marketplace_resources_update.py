@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceUpdateRequest,
 ) -> Response[ResourceUpdate]:
-    """
+    """Update a consumer resource
+
+     Updates the name, description, or end date of a resource.
+
     Args:
         uuid (UUID):
         body (ResourceUpdateRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceUpdateRequest,
 ) -> ResourceUpdate:
-    """
+    """Update a consumer resource
+
+     Updates the name, description, or end date of a resource.
+
     Args:
         uuid (UUID):
         body (ResourceUpdateRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceUpdateRequest,
 ) -> Response[ResourceUpdate]:
-    """
+    """Update a consumer resource
+
+     Updates the name, description, or end date of a resource.
+
     Args:
         uuid (UUID):
         body (ResourceUpdateRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceUpdateRequest,
 ) -> ResourceUpdate:
-    """
+    """Update a consumer resource
+
+     Updates the name, description, or end date of a resource.
+
     Args:
         uuid (UUID):
         body (ResourceUpdateRequest):

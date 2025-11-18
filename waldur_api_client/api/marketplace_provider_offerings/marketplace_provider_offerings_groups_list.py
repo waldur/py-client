@@ -255,7 +255,10 @@ def sync_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingGroups"]]:
-    """
+    """List offerings grouped by provider
+
+     Returns a paginated list of active, shared offerings grouped by their service provider.
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
@@ -382,7 +385,10 @@ def sync(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["OfferingGroups"]:
-    """
+    """List offerings grouped by provider
+
+     Returns a paginated list of active, shared offerings grouped by their service provider.
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
@@ -504,7 +510,10 @@ async def asyncio_detailed(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingGroups"]]:
-    """
+    """List offerings grouped by provider
+
+     Returns a paginated list of active, shared offerings grouped by their service provider.
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
@@ -629,7 +638,10 @@ async def asyncio(
     user_has_offering_user: Union[Unset, bool] = UNSET,
     uuid_list: Union[Unset, str] = UNSET,
 ) -> list["OfferingGroups"]:
-    """
+    """List offerings grouped by provider
+
+     Returns a paginated list of active, shared offerings grouped by their service provider.
+
     Args:
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):

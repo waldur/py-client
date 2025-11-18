@@ -80,7 +80,10 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Project"]]:
-    """
+    """List customer projects for an offering
+
+     Returns a paginated list of projects that have consumed resources of this offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsListCustomerProjectsListFieldItem]]):
@@ -117,7 +120,10 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Project"]:
-    """
+    """List customer projects for an offering
+
+     Returns a paginated list of projects that have consumed resources of this offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsListCustomerProjectsListFieldItem]]):
@@ -149,7 +155,10 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Project"]]:
-    """
+    """List customer projects for an offering
+
+     Returns a paginated list of projects that have consumed resources of this offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsListCustomerProjectsListFieldItem]]):
@@ -184,7 +193,10 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Project"]:
-    """
+    """List customer projects for an offering
+
+     Returns a paginated list of projects that have consumed resources of this offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsListCustomerProjectsListFieldItem]]):

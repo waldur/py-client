@@ -65,7 +65,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceComponentUsagesRetrieveFieldItem]] = UNSET,
 ) -> Response[ComponentUsage]:
-    """
+    """Retrieve a component usage record
+
+     Returns the details of a specific component usage record.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceComponentUsagesRetrieveFieldItem]]):
@@ -96,7 +99,10 @@ def sync(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceComponentUsagesRetrieveFieldItem]] = UNSET,
 ) -> ComponentUsage:
-    """
+    """Retrieve a component usage record
+
+     Returns the details of a specific component usage record.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceComponentUsagesRetrieveFieldItem]]):
@@ -122,7 +128,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceComponentUsagesRetrieveFieldItem]] = UNSET,
 ) -> Response[ComponentUsage]:
-    """
+    """Retrieve a component usage record
+
+     Returns the details of a specific component usage record.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceComponentUsagesRetrieveFieldItem]]):
@@ -151,7 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     field: Union[Unset, list[MarketplaceComponentUsagesRetrieveFieldItem]] = UNSET,
 ) -> ComponentUsage:
-    """
+    """Retrieve a component usage record
+
+     Returns the details of a specific component usage record.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceComponentUsagesRetrieveFieldItem]]):

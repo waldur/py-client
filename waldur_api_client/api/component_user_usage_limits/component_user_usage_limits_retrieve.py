@@ -47,7 +47,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ComponentUserUsageLimit]:
-    """
+    """Retrieve a component usage limit
+
+     Returns the details of a specific user's usage limit for a component.
+
     Args:
         uuid (UUID):
 
@@ -75,7 +78,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ComponentUserUsageLimit:
-    """
+    """Retrieve a component usage limit
+
+     Returns the details of a specific user's usage limit for a component.
+
     Args:
         uuid (UUID):
 
@@ -98,7 +104,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ComponentUserUsageLimit]:
-    """
+    """Retrieve a component usage limit
+
+     Returns the details of a specific user's usage limit for a component.
+
     Args:
         uuid (UUID):
 
@@ -124,7 +133,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ComponentUserUsageLimit:
-    """
+    """Retrieve a component usage limit
+
+     Returns the details of a specific user's usage limit for a component.
+
     Args:
         uuid (UUID):
 

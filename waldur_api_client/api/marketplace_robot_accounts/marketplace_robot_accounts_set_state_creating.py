@@ -54,7 +54,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RobotAccountDetails, StateTransitionError]]:
-    """
+    """Set robot account state to creating
+
+     Transitions the robot account state from 'Requested' to 'Creating'. This is typically used by an
+    agent to signal that the creation process has started.
+
     Args:
         uuid (UUID):
 
@@ -82,7 +86,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Union[RobotAccountDetails, StateTransitionError]:
-    """
+    """Set robot account state to creating
+
+     Transitions the robot account state from 'Requested' to 'Creating'. This is typically used by an
+    agent to signal that the creation process has started.
+
     Args:
         uuid (UUID):
 
@@ -105,7 +113,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RobotAccountDetails, StateTransitionError]]:
-    """
+    """Set robot account state to creating
+
+     Transitions the robot account state from 'Requested' to 'Creating'. This is typically used by an
+    agent to signal that the creation process has started.
+
     Args:
         uuid (UUID):
 
@@ -131,7 +143,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Union[RobotAccountDetails, StateTransitionError]:
-    """
+    """Set robot account state to creating
+
+     Transitions the robot account state from 'Requested' to 'Creating'. This is typically used by an
+    agent to signal that the creation process has started.
+
     Args:
         uuid (UUID):
 

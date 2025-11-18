@@ -49,7 +49,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ServiceProviderApiSecretCode]:
-    """Generate new service provider API secret code.
+    """Generate new service provider API secret code
+
+     Generates a new API secret code for a service provider, invalidating the old one. Requires service
+    provider owner permission.
 
     Args:
         uuid (UUID):
@@ -78,7 +81,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ServiceProviderApiSecretCode:
-    """Generate new service provider API secret code.
+    """Generate new service provider API secret code
+
+     Generates a new API secret code for a service provider, invalidating the old one. Requires service
+    provider owner permission.
 
     Args:
         uuid (UUID):
@@ -102,7 +108,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ServiceProviderApiSecretCode]:
-    """Generate new service provider API secret code.
+    """Generate new service provider API secret code
+
+     Generates a new API secret code for a service provider, invalidating the old one. Requires service
+    provider owner permission.
 
     Args:
         uuid (UUID):
@@ -129,7 +138,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ServiceProviderApiSecretCode:
-    """Generate new service provider API secret code.
+    """Generate new service provider API secret code
+
+     Generates a new API secret code for a service provider, invalidating the old one. Requires service
+    provider owner permission.
 
     Args:
         uuid (UUID):

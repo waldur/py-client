@@ -53,7 +53,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: SectionRequest,
 ) -> Response[Section]:
-    """
+    """Create a section
+
+     Creates a new section within a category. Requires staff permissions.
+
     Args:
         body (SectionRequest):
 
@@ -81,7 +84,10 @@ def sync(
     client: AuthenticatedClient,
     body: SectionRequest,
 ) -> Section:
-    """
+    """Create a section
+
+     Creates a new section within a category. Requires staff permissions.
+
     Args:
         body (SectionRequest):
 
@@ -104,7 +110,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: SectionRequest,
 ) -> Response[Section]:
-    """
+    """Create a section
+
+     Creates a new section within a category. Requires staff permissions.
+
     Args:
         body (SectionRequest):
 
@@ -130,7 +139,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: SectionRequest,
 ) -> Section:
-    """
+    """Create a section
+
+     Creates a new section within a category. Requires staff permissions.
+
     Args:
         body (SectionRequest):
 

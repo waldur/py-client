@@ -5,8 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.order_create import OrderCreate
 from ...models.order_create_request import OrderCreateRequest
+from ...models.order_details import OrderDetails
 from ...types import Response
 
 
@@ -29,17 +29,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OrderCreate:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OrderDetails:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 201:
-        response_201 = OrderCreate.from_dict(response.json())
+        response_201 = OrderDetails.from_dict(response.json())
 
         return response_201
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[OrderCreate]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[OrderDetails]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -52,8 +52,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: OrderCreateRequest,
-) -> Response[OrderCreate]:
-    """
+) -> Response[OrderDetails]:
+    """Create an order
+
+     Creates a new order to provision a resource. The order will be placed in a pending state and may
+    require approval depending on the offering and user permissions.
+
     Args:
         body (OrderCreateRequest):
 
@@ -62,7 +66,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OrderCreate]
+        Response[OrderDetails]
     """
 
     kwargs = _get_kwargs(
@@ -80,8 +84,12 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: OrderCreateRequest,
-) -> OrderCreate:
-    """
+) -> OrderDetails:
+    """Create an order
+
+     Creates a new order to provision a resource. The order will be placed in a pending state and may
+    require approval depending on the offering and user permissions.
+
     Args:
         body (OrderCreateRequest):
 
@@ -90,7 +98,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OrderCreate
+        OrderDetails
     """
 
     return sync_detailed(
@@ -103,8 +111,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: OrderCreateRequest,
-) -> Response[OrderCreate]:
-    """
+) -> Response[OrderDetails]:
+    """Create an order
+
+     Creates a new order to provision a resource. The order will be placed in a pending state and may
+    require approval depending on the offering and user permissions.
+
     Args:
         body (OrderCreateRequest):
 
@@ -113,7 +125,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OrderCreate]
+        Response[OrderDetails]
     """
 
     kwargs = _get_kwargs(
@@ -129,8 +141,12 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: OrderCreateRequest,
-) -> OrderCreate:
-    """
+) -> OrderDetails:
+    """Create an order
+
+     Creates a new order to provision a resource. The order will be placed in a pending state and may
+    require approval depending on the offering and user permissions.
+
     Args:
         body (OrderCreateRequest):
 
@@ -139,7 +155,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OrderCreate
+        OrderDetails
     """
 
     return (

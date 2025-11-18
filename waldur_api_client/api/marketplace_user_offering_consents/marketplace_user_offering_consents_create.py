@@ -57,7 +57,12 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UserOfferingConsentCreateRequest,
 ) -> Response[UserOfferingConsentCreate]:
-    """
+    """Grant consent to an offering's Terms of Service
+
+     Creates a consent record for the current user and a specific offering. This indicates that the user
+    has accepted the active Terms of Service for that offering. If a consent already exists (even if
+    revoked), it will be reactivated and updated with the current ToS version.
+
     Args:
         body (UserOfferingConsentCreateRequest):
 
@@ -85,7 +90,12 @@ def sync(
     client: AuthenticatedClient,
     body: UserOfferingConsentCreateRequest,
 ) -> UserOfferingConsentCreate:
-    """
+    """Grant consent to an offering's Terms of Service
+
+     Creates a consent record for the current user and a specific offering. This indicates that the user
+    has accepted the active Terms of Service for that offering. If a consent already exists (even if
+    revoked), it will be reactivated and updated with the current ToS version.
+
     Args:
         body (UserOfferingConsentCreateRequest):
 
@@ -108,7 +118,12 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UserOfferingConsentCreateRequest,
 ) -> Response[UserOfferingConsentCreate]:
-    """
+    """Grant consent to an offering's Terms of Service
+
+     Creates a consent record for the current user and a specific offering. This indicates that the user
+    has accepted the active Terms of Service for that offering. If a consent already exists (even if
+    revoked), it will be reactivated and updated with the current ToS version.
+
     Args:
         body (UserOfferingConsentCreateRequest):
 
@@ -134,7 +149,12 @@ async def asyncio(
     client: AuthenticatedClient,
     body: UserOfferingConsentCreateRequest,
 ) -> UserOfferingConsentCreate:
-    """
+    """Grant consent to an offering's Terms of Service
+
+     Creates a consent record for the current user and a specific offering. This indicates that the user
+    has accepted the active Terms of Service for that offering. If a consent already exists (even if
+    revoked), it will be reactivated and updated with the current ToS version.
+
     Args:
         body (UserOfferingConsentCreateRequest):
 

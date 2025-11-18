@@ -56,7 +56,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ImportResourceRequest,
 ) -> Response[Resource]:
-    """
+    """Import a resource
+
+     Imports a backend resource into the marketplace.
+
     Args:
         uuid (UUID):
         body (ImportResourceRequest):
@@ -87,7 +90,10 @@ def sync(
     client: AuthenticatedClient,
     body: ImportResourceRequest,
 ) -> Resource:
-    """
+    """Import a resource
+
+     Imports a backend resource into the marketplace.
+
     Args:
         uuid (UUID):
         body (ImportResourceRequest):
@@ -113,7 +119,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ImportResourceRequest,
 ) -> Response[Resource]:
-    """
+    """Import a resource
+
+     Imports a backend resource into the marketplace.
+
     Args:
         uuid (UUID):
         body (ImportResourceRequest):
@@ -142,7 +151,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ImportResourceRequest,
 ) -> Resource:
-    """
+    """Import a resource
+
+     Imports a backend resource into the marketplace.
+
     Args:
         uuid (UUID):
         body (ImportResourceRequest):

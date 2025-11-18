@@ -113,7 +113,11 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[list["SoftwareVersion"]]:
-    """
+    """List software versions
+
+     Returns a paginated list of software versions. Can be filtered by package, catalog, offering, or CPU
+    architecture.
+
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
@@ -168,7 +172,11 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["SoftwareVersion"]:
-    """
+    """List software versions
+
+     Returns a paginated list of software versions. Can be filtered by package, catalog, offering, or CPU
+    architecture.
+
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
@@ -218,7 +226,11 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[list["SoftwareVersion"]]:
-    """
+    """List software versions
+
+     Returns a paginated list of software versions. Can be filtered by package, catalog, offering, or CPU
+    architecture.
+
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
@@ -271,7 +283,11 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["SoftwareVersion"]:
-    """
+    """List software versions
+
+     Returns a paginated list of software versions. Can be filtered by package, catalog, offering, or CPU
+    architecture.
+
     Args:
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):

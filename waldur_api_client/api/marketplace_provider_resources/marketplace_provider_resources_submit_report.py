@@ -58,7 +58,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ResourceReportRequest,
 ) -> Response[ResourceResponseStatus]:
-    """Submit resource report.
+    """Submit a report for a resource
+
+     Allows a service provider to submit a report (e.g., usage or status report) for a resource.
 
     Args:
         uuid (UUID):
@@ -90,7 +92,9 @@ def sync(
     client: AuthenticatedClient,
     body: ResourceReportRequest,
 ) -> ResourceResponseStatus:
-    """Submit resource report.
+    """Submit a report for a resource
+
+     Allows a service provider to submit a report (e.g., usage or status report) for a resource.
 
     Args:
         uuid (UUID):
@@ -117,7 +121,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ResourceReportRequest,
 ) -> Response[ResourceResponseStatus]:
-    """Submit resource report.
+    """Submit a report for a resource
+
+     Allows a service provider to submit a report (e.g., usage or status report) for a resource.
 
     Args:
         uuid (UUID):
@@ -147,7 +153,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ResourceReportRequest,
 ) -> ResourceResponseStatus:
-    """Submit resource report.
+    """Submit a report for a resource
+
+     Allows a service provider to submit a report (e.g., usage or status report) for a resource.
 
     Args:
         uuid (UUID):

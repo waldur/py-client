@@ -53,7 +53,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OfferingUserStateTransitionRequest,
 ) -> Response[Any]:
-    """
+    """Set state to Pending Account Linking
+
+     Transitions the state to 'Pending Account Linking' and allows a service provider to add a comment
+    and a URL to guide the user.
+
     Args:
         uuid (UUID):
         body (OfferingUserStateTransitionRequest):
@@ -84,7 +88,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OfferingUserStateTransitionRequest,
 ) -> Response[Any]:
-    """
+    """Set state to Pending Account Linking
+
+     Transitions the state to 'Pending Account Linking' and allows a service provider to add a comment
+    and a URL to guide the user.
+
     Args:
         uuid (UUID):
         body (OfferingUserStateTransitionRequest):

@@ -47,7 +47,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SoftwareTarget]:
-    """
+    """Partially update a software target
+
+     Partially updates an existing software target. Requires staff permissions.
+
     Args:
         uuid (UUID):
 
@@ -75,7 +78,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> SoftwareTarget:
-    """
+    """Partially update a software target
+
+     Partially updates an existing software target. Requires staff permissions.
+
     Args:
         uuid (UUID):
 
@@ -98,7 +104,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[SoftwareTarget]:
-    """
+    """Partially update a software target
+
+     Partially updates an existing software target. Requires staff permissions.
+
     Args:
         uuid (UUID):
 
@@ -124,7 +133,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> SoftwareTarget:
-    """
+    """Partially update a software target
+
+     Partially updates an existing software target. Requires staff permissions.
+
     Args:
         uuid (UUID):
 

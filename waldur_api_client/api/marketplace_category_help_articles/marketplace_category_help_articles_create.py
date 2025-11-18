@@ -55,7 +55,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CategoryHelpArticlesRequest,
 ) -> Response[CategoryHelpArticles]:
-    """
+    """Create a category help article
+
+     Creates a new help article and associates it with one or more categories. Requires staff
+    permissions.
+
     Args:
         body (CategoryHelpArticlesRequest):
 
@@ -83,7 +87,11 @@ def sync(
     client: AuthenticatedClient,
     body: CategoryHelpArticlesRequest,
 ) -> CategoryHelpArticles:
-    """
+    """Create a category help article
+
+     Creates a new help article and associates it with one or more categories. Requires staff
+    permissions.
+
     Args:
         body (CategoryHelpArticlesRequest):
 
@@ -106,7 +114,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CategoryHelpArticlesRequest,
 ) -> Response[CategoryHelpArticles]:
-    """
+    """Create a category help article
+
+     Creates a new help article and associates it with one or more categories. Requires staff
+    permissions.
+
     Args:
         body (CategoryHelpArticlesRequest):
 
@@ -132,7 +144,11 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CategoryHelpArticlesRequest,
 ) -> CategoryHelpArticles:
-    """
+    """Create a category help article
+
+     Creates a new help article and associates it with one or more categories. Requires staff
+    permissions.
+
     Args:
         body (CategoryHelpArticlesRequest):
 

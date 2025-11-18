@@ -58,7 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: PatchedSoftwarePackageRequest,
 ) -> Response[SoftwarePackage]:
-    """
+    """Partially update a software package
+
+     Partially updates an existing software package. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedSoftwarePackageRequest):
@@ -89,7 +92,10 @@ def sync(
     client: AuthenticatedClient,
     body: PatchedSoftwarePackageRequest,
 ) -> SoftwarePackage:
-    """
+    """Partially update a software package
+
+     Partially updates an existing software package. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedSoftwarePackageRequest):
@@ -115,7 +121,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: PatchedSoftwarePackageRequest,
 ) -> Response[SoftwarePackage]:
-    """
+    """Partially update a software package
+
+     Partially updates an existing software package. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedSoftwarePackageRequest):
@@ -144,7 +153,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: PatchedSoftwarePackageRequest,
 ) -> SoftwarePackage:
-    """
+    """Partially update a software package
+
+     Partially updates an existing software package. Requires staff permissions.
+
     Args:
         uuid (UUID):
         body (PatchedSoftwarePackageRequest):

@@ -175,7 +175,13 @@ def sync_detailed(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingUser"]]:
-    """
+    """List offering users
+
+     Returns a paginated list of users associated with offerings. The visibility of users depends on the
+    role of the authenticated user. Staff and support can see all users. Service providers can see users
+    of their offerings if the user has consented. Regular users can only see their own offering-user
+    records.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
@@ -251,7 +257,13 @@ def sync(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUser"]:
-    """
+    """List offering users
+
+     Returns a paginated list of users associated with offerings. The visibility of users depends on the
+    role of the authenticated user. Staff and support can see all users. Service providers can see users
+    of their offerings if the user has consented. Regular users can only see their own offering-user
+    records.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
@@ -322,7 +334,13 @@ async def asyncio_detailed(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingUser"]]:
-    """
+    """List offering users
+
+     Returns a paginated list of users associated with offerings. The visibility of users depends on the
+    role of the authenticated user. Staff and support can see all users. Service providers can see users
+    of their offerings if the user has consented. Regular users can only see their own offering-user
+    records.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
@@ -396,7 +414,13 @@ async def asyncio(
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUser"]:
-    """
+    """List offering users
+
+     Returns a paginated list of users associated with offerings. The visibility of users depends on the
+    role of the authenticated user. Staff and support can see all users. Service providers can see users
+    of their offerings if the user has consented. Regular users can only see their own offering-user
+    records.
+
     Args:
         created (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):

@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Archive a plan
+
+     Marks a plan as archived. Archived plans cannot be used for provisioning new resources, but existing
+    resources will continue to be billed according to this plan.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Archive a plan
+
+     Marks a plan as archived. Archived plans cannot be used for provisioning new resources, but existing
+    resources will continue to be billed according to this plan.
+
     Args:
         uuid (UUID):
 

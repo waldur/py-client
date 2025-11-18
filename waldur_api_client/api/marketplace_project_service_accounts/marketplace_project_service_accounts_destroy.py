@@ -42,7 +42,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Close a project service account
+
+     Deactivates a project service account and revokes its API key.
+
     Args:
         uuid (UUID):
 
@@ -70,7 +73,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Close a project service account
+
+     Deactivates a project service account and revokes its API key.
+
     Args:
         uuid (UUID):
 

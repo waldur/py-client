@@ -67,7 +67,16 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[MarketplaceGlobalCategoriesRetrieveResponse200]:
-    """Count of resource categories for all resources accessible by user.
+    """Get resource counts by category
+
+
+            Returns a dictionary mapping marketplace category UUIDs to the count of active (non-
+    terminated)
+            resources the current user has access to within that category. This is primarily used for UI
+            dashboards or sidebars to display the number of resources in each category filter.
+
+            The counts can be further filtered by providing a `project_uuid` or `customer_uuid`.
+
 
     Args:
         customer_uuid (Union[Unset, UUID]):
@@ -99,7 +108,16 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> MarketplaceGlobalCategoriesRetrieveResponse200:
-    """Count of resource categories for all resources accessible by user.
+    """Get resource counts by category
+
+
+            Returns a dictionary mapping marketplace category UUIDs to the count of active (non-
+    terminated)
+            resources the current user has access to within that category. This is primarily used for UI
+            dashboards or sidebars to display the number of resources in each category filter.
+
+            The counts can be further filtered by providing a `project_uuid` or `customer_uuid`.
+
 
     Args:
         customer_uuid (Union[Unset, UUID]):
@@ -126,7 +144,16 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[MarketplaceGlobalCategoriesRetrieveResponse200]:
-    """Count of resource categories for all resources accessible by user.
+    """Get resource counts by category
+
+
+            Returns a dictionary mapping marketplace category UUIDs to the count of active (non-
+    terminated)
+            resources the current user has access to within that category. This is primarily used for UI
+            dashboards or sidebars to display the number of resources in each category filter.
+
+            The counts can be further filtered by providing a `project_uuid` or `customer_uuid`.
+
 
     Args:
         customer_uuid (Union[Unset, UUID]):
@@ -156,7 +183,16 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> MarketplaceGlobalCategoriesRetrieveResponse200:
-    """Count of resource categories for all resources accessible by user.
+    """Get resource counts by category
+
+
+            Returns a dictionary mapping marketplace category UUIDs to the count of active (non-
+    terminated)
+            resources the current user has access to within that category. This is primarily used for UI
+            dashboards or sidebars to display the number of resources in each category filter.
+
+            The counts can be further filtered by providing a `project_uuid` or `customer_uuid`.
+
 
     Args:
         customer_uuid (Union[Unset, UUID]):

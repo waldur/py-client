@@ -101,12 +101,14 @@ def sync_detailed(
     state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectServiceAccount"]]:
-    """Return project service accounts that have access to resources managed by the provider.
+    """List project service accounts for a service provider
 
-            Checks for:
-            - Projects with active service provider's resources
-            - Service accounts with non-blank usernames
+     Returns a paginated list of project service accounts that have access to resources managed by the
+    provider.
 
+            This includes:
+            - Projects with active resources of the service provider.
+            - Service accounts with non-blank usernames.
 
 
     Args:
@@ -158,12 +160,14 @@ def sync(
     state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ProjectServiceAccount"]:
-    """Return project service accounts that have access to resources managed by the provider.
+    """List project service accounts for a service provider
 
-            Checks for:
-            - Projects with active service provider's resources
-            - Service accounts with non-blank usernames
+     Returns a paginated list of project service accounts that have access to resources managed by the
+    provider.
 
+            This includes:
+            - Projects with active resources of the service provider.
+            - Service accounts with non-blank usernames.
 
 
     Args:
@@ -210,12 +214,14 @@ async def asyncio_detailed(
     state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectServiceAccount"]]:
-    """Return project service accounts that have access to resources managed by the provider.
+    """List project service accounts for a service provider
 
-            Checks for:
-            - Projects with active service provider's resources
-            - Service accounts with non-blank usernames
+     Returns a paginated list of project service accounts that have access to resources managed by the
+    provider.
 
+            This includes:
+            - Projects with active resources of the service provider.
+            - Service accounts with non-blank usernames.
 
 
     Args:
@@ -265,12 +271,14 @@ async def asyncio(
     state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ProjectServiceAccount"]:
-    """Return project service accounts that have access to resources managed by the provider.
+    """List project service accounts for a service provider
 
-            Checks for:
-            - Projects with active service provider's resources
-            - Service accounts with non-blank usernames
+     Returns a paginated list of project service accounts that have access to resources managed by the
+    provider.
 
+            This includes:
+            - Projects with active resources of the service provider.
+            - Service accounts with non-blank usernames.
 
 
     Args:

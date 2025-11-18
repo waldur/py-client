@@ -23,7 +23,7 @@ def _get_kwargs(
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
+    if response.status_code == 202:
         return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
@@ -42,7 +42,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Cancel an order
+
+     Cancels an order. This is typically only possible for certain offering types (e.g., basic support)
+    and in specific states (pending or executing).
+
     Args:
         uuid (UUID):
 
@@ -70,7 +74,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """
+    """Cancel an order
+
+     Cancels an order. This is typically only possible for certain offering types (e.g., basic support)
+    and in specific states (pending or executing).
+
     Args:
         uuid (UUID):
 

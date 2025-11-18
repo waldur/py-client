@@ -80,7 +80,10 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OrderDetails"]]:
-    """
+    """List orders for an offering
+
+     Returns a paginated list of orders associated with a specific offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]]):
@@ -117,7 +120,10 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OrderDetails"]:
-    """
+    """List orders for an offering
+
+     Returns a paginated list of orders associated with a specific offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]]):
@@ -149,7 +155,10 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OrderDetails"]]:
-    """
+    """List orders for an offering
+
+     Returns a paginated list of orders associated with a specific offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]]):
@@ -184,7 +193,10 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OrderDetails"]:
-    """
+    """List orders for an offering
+
+     Returns a paginated list of orders associated with a specific offering.
+
     Args:
         uuid (UUID):
         field (Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]]):
