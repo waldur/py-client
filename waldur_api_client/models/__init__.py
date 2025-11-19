@@ -1012,6 +1012,7 @@ from .open_stack_security_group_marketplace_offering_plugin_options_type_0 impor
 from .open_stack_security_group_request import OpenStackSecurityGroupRequest
 from .open_stack_security_group_rule_create import OpenStackSecurityGroupRuleCreate
 from .open_stack_security_group_rule_create_request import OpenStackSecurityGroupRuleCreateRequest
+from .open_stack_security_group_rule_update_by_name_request import OpenStackSecurityGroupRuleUpdateByNameRequest
 from .open_stack_security_group_rule_update_request import OpenStackSecurityGroupRuleUpdateRequest
 from .open_stack_security_group_update import OpenStackSecurityGroupUpdate
 from .open_stack_security_group_update_request import OpenStackSecurityGroupUpdateRequest
@@ -1798,6 +1799,7 @@ from .template_attachment_request import TemplateAttachmentRequest
 from .template_request import TemplateRequest
 from .template_version import TemplateVersion
 from .tenant import Tenant
+from .tenant_security_group_update_request import TenantSecurityGroupUpdateRequest
 from .time_series_to_s_data import TimeSeriesToSData
 from .to_s_consent_dashboard import ToSConsentDashboard
 from .token_request import TokenRequest
@@ -2874,6 +2876,7 @@ __all__ = (
     "OpenStackSecurityGroupRequest",
     "OpenStackSecurityGroupRuleCreate",
     "OpenStackSecurityGroupRuleCreateRequest",
+    "OpenStackSecurityGroupRuleUpdateByNameRequest",
     "OpenStackSecurityGroupRuleUpdateRequest",
     "OpenstackSecurityGroupsCountStateItem",
     "OpenstackSecurityGroupsListFieldItem",
@@ -3562,6 +3565,7 @@ __all__ = (
     "TemplateRequest",
     "TemplateVersion",
     "Tenant",
+    "TenantSecurityGroupUpdateRequest",
     "TimeSeriesToSData",
     "TokenRequest",
     "ToSConsentDashboard",
