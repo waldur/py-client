@@ -166,6 +166,11 @@ class ConstanceSettings:
         onboarding_bolagsverket_token_api_url (Union[Unset, str]):
         onboarding_bolagsverket_client_id (Union[Unset, str]):
         onboarding_bolagsverket_client_secret (Union[Unset, str]):
+        llm_chat_enabled (Union[Unset, bool]):
+        llm_inferences_backend_type (Union[Unset, str]):
+        llm_inferences_api_url (Union[Unset, str]):
+        llm_inferences_api_token (Union[Unset, str]):
+        llm_inferences_model (Union[Unset, str]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -321,6 +326,11 @@ class ConstanceSettings:
     onboarding_bolagsverket_token_api_url: Union[Unset, str] = UNSET
     onboarding_bolagsverket_client_id: Union[Unset, str] = UNSET
     onboarding_bolagsverket_client_secret: Union[Unset, str] = UNSET
+    llm_chat_enabled: Union[Unset, bool] = UNSET
+    llm_inferences_backend_type: Union[Unset, str] = UNSET
+    llm_inferences_api_url: Union[Unset, str] = UNSET
+    llm_inferences_api_token: Union[Unset, str] = UNSET
+    llm_inferences_model: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -686,6 +696,16 @@ class ConstanceSettings:
 
         onboarding_bolagsverket_client_secret = self.onboarding_bolagsverket_client_secret
 
+        llm_chat_enabled = self.llm_chat_enabled
+
+        llm_inferences_backend_type = self.llm_inferences_backend_type
+
+        llm_inferences_api_url = self.llm_inferences_api_url
+
+        llm_inferences_api_token = self.llm_inferences_api_token
+
+        llm_inferences_model = self.llm_inferences_model
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -1001,6 +1021,16 @@ class ConstanceSettings:
             field_dict["ONBOARDING_BOLAGSVERKET_CLIENT_ID"] = onboarding_bolagsverket_client_id
         if onboarding_bolagsverket_client_secret is not UNSET:
             field_dict["ONBOARDING_BOLAGSVERKET_CLIENT_SECRET"] = onboarding_bolagsverket_client_secret
+        if llm_chat_enabled is not UNSET:
+            field_dict["LLM_CHAT_ENABLED"] = llm_chat_enabled
+        if llm_inferences_backend_type is not UNSET:
+            field_dict["LLM_INFERENCES_BACKEND_TYPE"] = llm_inferences_backend_type
+        if llm_inferences_api_url is not UNSET:
+            field_dict["LLM_INFERENCES_API_URL"] = llm_inferences_api_url
+        if llm_inferences_api_token is not UNSET:
+            field_dict["LLM_INFERENCES_API_TOKEN"] = llm_inferences_api_token
+        if llm_inferences_model is not UNSET:
+            field_dict["LLM_INFERENCES_MODEL"] = llm_inferences_model
 
         return field_dict
 
@@ -1401,6 +1431,16 @@ class ConstanceSettings:
 
         onboarding_bolagsverket_client_secret = d.pop("ONBOARDING_BOLAGSVERKET_CLIENT_SECRET", UNSET)
 
+        llm_chat_enabled = d.pop("LLM_CHAT_ENABLED", UNSET)
+
+        llm_inferences_backend_type = d.pop("LLM_INFERENCES_BACKEND_TYPE", UNSET)
+
+        llm_inferences_api_url = d.pop("LLM_INFERENCES_API_URL", UNSET)
+
+        llm_inferences_api_token = d.pop("LLM_INFERENCES_API_TOKEN", UNSET)
+
+        llm_inferences_model = d.pop("LLM_INFERENCES_MODEL", UNSET)
+
         constance_settings = cls(
             site_name=site_name,
             site_description=site_description,
@@ -1555,6 +1595,11 @@ class ConstanceSettings:
             onboarding_bolagsverket_token_api_url=onboarding_bolagsverket_token_api_url,
             onboarding_bolagsverket_client_id=onboarding_bolagsverket_client_id,
             onboarding_bolagsverket_client_secret=onboarding_bolagsverket_client_secret,
+            llm_chat_enabled=llm_chat_enabled,
+            llm_inferences_backend_type=llm_inferences_backend_type,
+            llm_inferences_api_url=llm_inferences_api_url,
+            llm_inferences_api_token=llm_inferences_api_token,
+            llm_inferences_model=llm_inferences_model,
         )
 
         constance_settings.additional_properties = d
