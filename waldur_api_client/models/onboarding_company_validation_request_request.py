@@ -1,10 +1,8 @@
-import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
@@ -20,20 +18,12 @@ class OnboardingCompanyValidationRequestRequest:
         legal_name (Union[Unset, str]): Company name (optional)
         is_manual_validation (Union[Unset, bool]): Indicates if the validation is to be performed manually Default:
             False.
-        person_identifier (Union[Unset, str]): Personal identifier (temporary workaround for Estonian civil_number)
-        first_name (Union[Unset, str]): User's first name (temporary workaround for Austrian validation)
-        last_name (Union[Unset, str]): User's last name (temporary workaround for Austrian validation)
-        birth_date (Union[None, Unset, datetime.date]): User's birth date (temporary workaround for Austrian validation)
     """
 
     country: str
     legal_person_identifier: Union[Unset, str] = UNSET
     legal_name: Union[Unset, str] = UNSET
     is_manual_validation: Union[Unset, bool] = False
-    person_identifier: Union[Unset, str] = UNSET
-    first_name: Union[Unset, str] = UNSET
-    last_name: Union[Unset, str] = UNSET
-    birth_date: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,20 +34,6 @@ class OnboardingCompanyValidationRequestRequest:
         legal_name = self.legal_name
 
         is_manual_validation = self.is_manual_validation
-
-        person_identifier = self.person_identifier
-
-        first_name = self.first_name
-
-        last_name = self.last_name
-
-        birth_date: Union[None, Unset, str]
-        if isinstance(self.birth_date, Unset):
-            birth_date = UNSET
-        elif isinstance(self.birth_date, datetime.date):
-            birth_date = self.birth_date.isoformat()
-        else:
-            birth_date = self.birth_date
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -72,14 +48,6 @@ class OnboardingCompanyValidationRequestRequest:
             field_dict["legal_name"] = legal_name
         if is_manual_validation is not UNSET:
             field_dict["is_manual_validation"] = is_manual_validation
-        if person_identifier is not UNSET:
-            field_dict["person_identifier"] = person_identifier
-        if first_name is not UNSET:
-            field_dict["first_name"] = first_name
-        if last_name is not UNSET:
-            field_dict["last_name"] = last_name
-        if birth_date is not UNSET:
-            field_dict["birth_date"] = birth_date
 
         return field_dict
 
@@ -94,38 +62,11 @@ class OnboardingCompanyValidationRequestRequest:
 
         is_manual_validation = d.pop("is_manual_validation", UNSET)
 
-        person_identifier = d.pop("person_identifier", UNSET)
-
-        first_name = d.pop("first_name", UNSET)
-
-        last_name = d.pop("last_name", UNSET)
-
-        def _parse_birth_date(data: object) -> Union[None, Unset, datetime.date]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                birth_date_type_0 = isoparse(data).date()
-
-                return birth_date_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, Unset, datetime.date], data)
-
-        birth_date = _parse_birth_date(d.pop("birth_date", UNSET))
-
         onboarding_company_validation_request_request = cls(
             country=country,
             legal_person_identifier=legal_person_identifier,
             legal_name=legal_name,
             is_manual_validation=is_manual_validation,
-            person_identifier=person_identifier,
-            first_name=first_name,
-            last_name=last_name,
-            birth_date=birth_date,
         )
 
         onboarding_company_validation_request_request.additional_properties = d

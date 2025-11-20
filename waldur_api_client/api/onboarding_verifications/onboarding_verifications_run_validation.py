@@ -6,18 +6,28 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.onboarding_run_validation_request_request import OnboardingRunValidationRequestRequest
 from ...models.onboarding_verification import OnboardingVerification
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
+    *,
+    body: OnboardingRunValidationRequestRequest,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": f"/api/onboarding-verifications/{uuid}/run_validation/",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -46,12 +56,14 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: OnboardingRunValidationRequestRequest,
 ) -> Response[OnboardingVerification]:
     """Run automatic validation using the required fields provided during verification creation. Checklist
     answers (if any) are only used for supplemental customer/intent data.
 
     Args:
         uuid (UUID):
+        body (OnboardingRunValidationRequestRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -63,6 +75,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -76,12 +89,14 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: OnboardingRunValidationRequestRequest,
 ) -> OnboardingVerification:
     """Run automatic validation using the required fields provided during verification creation. Checklist
     answers (if any) are only used for supplemental customer/intent data.
 
     Args:
         uuid (UUID):
+        body (OnboardingRunValidationRequestRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,6 +109,7 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        body=body,
     ).parsed
 
 
@@ -101,12 +117,14 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: OnboardingRunValidationRequestRequest,
 ) -> Response[OnboardingVerification]:
     """Run automatic validation using the required fields provided during verification creation. Checklist
     answers (if any) are only used for supplemental customer/intent data.
 
     Args:
         uuid (UUID):
+        body (OnboardingRunValidationRequestRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,6 +136,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -129,12 +148,14 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: OnboardingRunValidationRequestRequest,
 ) -> OnboardingVerification:
     """Run automatic validation using the required fields provided during verification creation. Checklist
     answers (if any) are only used for supplemental customer/intent data.
 
     Args:
         uuid (UUID):
+        body (OnboardingRunValidationRequestRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -148,5 +169,6 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            body=body,
         )
     ).parsed

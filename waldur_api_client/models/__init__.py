@@ -931,6 +931,7 @@ from .onboarding_justification_request import OnboardingJustificationRequest
 from .onboarding_justification_review_request import OnboardingJustificationReviewRequest
 from .onboarding_question_metadata import OnboardingQuestionMetadata
 from .onboarding_question_metadata_request import OnboardingQuestionMetadataRequest
+from .onboarding_run_validation_request_request import OnboardingRunValidationRequestRequest
 from .onboarding_verification import OnboardingVerification
 from .onboarding_verification_onboarding_metadata import OnboardingVerificationOnboardingMetadata
 from .onboarding_verification_request import OnboardingVerificationRequest
@@ -2761,6 +2762,7 @@ __all__ = (
     "OnboardingJustificationReviewRequest",
     "OnboardingQuestionMetadata",
     "OnboardingQuestionMetadataRequest",
+    "OnboardingRunValidationRequestRequest",
     "OnboardingVerification",
     "OnboardingVerificationOnboardingMetadata",
     "OnboardingVerificationRequest",
