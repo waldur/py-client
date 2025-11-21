@@ -36,6 +36,7 @@ class MaintenanceAnnouncement:
         service_provider_name (str):
         backend_id (str):
         message (Union[Unset, str]):
+        internal_notes (Union[Unset, str]):
         maintenance_type (Union[Unset, MaintenanceTypeEnum]):
         external_reference_url (Union[Unset, str]): Optional reference to an external maintenance tracker
     """
@@ -54,6 +55,7 @@ class MaintenanceAnnouncement:
     service_provider_name: str
     backend_id: str
     message: Union[Unset, str] = UNSET
+    internal_notes: Union[Unset, str] = UNSET
     maintenance_type: Union[Unset, MaintenanceTypeEnum] = UNSET
     external_reference_url: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -99,6 +101,8 @@ class MaintenanceAnnouncement:
 
         message = self.message
 
+        internal_notes = self.internal_notes
+
         maintenance_type: Union[Unset, int] = UNSET
         if not isinstance(self.maintenance_type, Unset):
             maintenance_type = self.maintenance_type.value
@@ -126,6 +130,8 @@ class MaintenanceAnnouncement:
         )
         if message is not UNSET:
             field_dict["message"] = message
+        if internal_notes is not UNSET:
+            field_dict["internal_notes"] = internal_notes
         if maintenance_type is not UNSET:
             field_dict["maintenance_type"] = maintenance_type
         if external_reference_url is not UNSET:
@@ -202,6 +208,8 @@ class MaintenanceAnnouncement:
 
         message = d.pop("message", UNSET)
 
+        internal_notes = d.pop("internal_notes", UNSET)
+
         _maintenance_type = d.pop("maintenance_type", UNSET)
         maintenance_type: Union[Unset, MaintenanceTypeEnum]
         if isinstance(_maintenance_type, Unset):
@@ -226,6 +234,7 @@ class MaintenanceAnnouncement:
             service_provider_name=service_provider_name,
             backend_id=backend_id,
             message=message,
+            internal_notes=internal_notes,
             maintenance_type=maintenance_type,
             external_reference_url=external_reference_url,
         )

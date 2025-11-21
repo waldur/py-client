@@ -21,6 +21,7 @@ class MaintenanceAnnouncementRequest:
         scheduled_end (datetime.datetime): When the maintenance is scheduled to complete
         service_provider (str): Service provider announcing the maintenance
         message (Union[Unset, str]):
+        internal_notes (Union[Unset, str]):
         maintenance_type (Union[Unset, MaintenanceTypeEnum]):
         external_reference_url (Union[Unset, str]): Optional reference to an external maintenance tracker
     """
@@ -30,6 +31,7 @@ class MaintenanceAnnouncementRequest:
     scheduled_end: datetime.datetime
     service_provider: str
     message: Union[Unset, str] = UNSET
+    internal_notes: Union[Unset, str] = UNSET
     maintenance_type: Union[Unset, MaintenanceTypeEnum] = UNSET
     external_reference_url: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -44,6 +46,8 @@ class MaintenanceAnnouncementRequest:
         service_provider = self.service_provider
 
         message = self.message
+
+        internal_notes = self.internal_notes
 
         maintenance_type: Union[Unset, int] = UNSET
         if not isinstance(self.maintenance_type, Unset):
@@ -63,6 +67,8 @@ class MaintenanceAnnouncementRequest:
         )
         if message is not UNSET:
             field_dict["message"] = message
+        if internal_notes is not UNSET:
+            field_dict["internal_notes"] = internal_notes
         if maintenance_type is not UNSET:
             field_dict["maintenance_type"] = maintenance_type
         if external_reference_url is not UNSET:
@@ -83,6 +89,8 @@ class MaintenanceAnnouncementRequest:
 
         message = d.pop("message", UNSET)
 
+        internal_notes = d.pop("internal_notes", UNSET)
+
         _maintenance_type = d.pop("maintenance_type", UNSET)
         maintenance_type: Union[Unset, MaintenanceTypeEnum]
         if isinstance(_maintenance_type, Unset):
@@ -98,6 +106,7 @@ class MaintenanceAnnouncementRequest:
             scheduled_end=scheduled_end,
             service_provider=service_provider,
             message=message,
+            internal_notes=internal_notes,
             maintenance_type=maintenance_type,
             external_reference_url=external_reference_url,
         )
