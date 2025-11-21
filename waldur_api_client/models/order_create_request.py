@@ -50,6 +50,7 @@ class OrderCreateRequest:
         request_comment (Union[None, Unset, str]):
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
         start_date (Union[None, Unset, datetime.date]): Enables delayed processing of resource provisioning order.
+        slug (Union[Unset, str]):
     """
 
     offering: str
@@ -74,6 +75,7 @@ class OrderCreateRequest:
     request_comment: Union[None, Unset, str] = UNSET
     type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
     start_date: Union[None, Unset, datetime.date] = UNSET
+    slug: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -151,6 +153,8 @@ class OrderCreateRequest:
         else:
             start_date = self.start_date
 
+        slug = self.slug
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -175,6 +179,8 @@ class OrderCreateRequest:
             field_dict["type"] = type_
         if start_date is not UNSET:
             field_dict["start_date"] = start_date
+        if slug is not UNSET:
+            field_dict["slug"] = slug
 
         return field_dict
 
@@ -351,6 +357,8 @@ class OrderCreateRequest:
 
         start_date = _parse_start_date(d.pop("start_date", UNSET))
 
+        slug = d.pop("slug", UNSET)
+
         order_create_request = cls(
             offering=offering,
             project=project,
@@ -362,6 +370,7 @@ class OrderCreateRequest:
             request_comment=request_comment,
             type_=type_,
             start_date=start_date,
+            slug=slug,
         )
 
         order_create_request.additional_properties = d

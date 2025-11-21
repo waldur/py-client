@@ -69,6 +69,7 @@ class MarketplaceOrdersListFieldItem(str, Enum):
     RESOURCE_NAME = "resource_name"
     RESOURCE_TYPE = "resource_type"
     RESOURCE_UUID = "resource_uuid"
+    SLUG = "slug"
     START_DATE = "start_date"
     STATE = "state"
     TERMINATION_COMMENT = "termination_comment"

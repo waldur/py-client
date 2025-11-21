@@ -66,6 +66,7 @@ class OrderDetails:
         attachment (Union[None, Unset, str]):
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
         start_date (Union[None, Unset, datetime.date]): Enables delayed processing of resource provisioning order.
+        slug (Union[Unset, str]):
         url (Union[Unset, str]):
         consumer_reviewed_by (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers
             and @/./+/-/_ characters
@@ -145,6 +146,7 @@ class OrderDetails:
     attachment: Union[None, Unset, str] = UNSET
     type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
     start_date: Union[None, Unset, datetime.date] = UNSET
+    slug: Union[Unset, str] = UNSET
     url: Union[Unset, str] = UNSET
     consumer_reviewed_by: Union[None, Unset, str] = UNSET
     consumer_reviewed_by_full_name: Union[None, Unset, str] = UNSET
@@ -340,6 +342,8 @@ class OrderDetails:
             start_date = self.start_date.isoformat()
         else:
             start_date = self.start_date
+
+        slug = self.slug
 
         url = self.url
 
@@ -570,6 +574,8 @@ class OrderDetails:
             field_dict["type"] = type_
         if start_date is not UNSET:
             field_dict["start_date"] = start_date
+        if slug is not UNSET:
+            field_dict["slug"] = slug
         if url is not UNSET:
             field_dict["url"] = url
         if consumer_reviewed_by is not UNSET:
@@ -897,6 +903,8 @@ class OrderDetails:
 
         start_date = _parse_start_date(d.pop("start_date", UNSET))
 
+        slug = d.pop("slug", UNSET)
+
         url = d.pop("url", UNSET)
 
         def _parse_consumer_reviewed_by(data: object) -> Union[None, Unset, str]:
@@ -1178,6 +1186,7 @@ class OrderDetails:
             attachment=attachment,
             type_=type_,
             start_date=start_date,
+            slug=slug,
             url=url,
             consumer_reviewed_by=consumer_reviewed_by,
             consumer_reviewed_by_full_name=consumer_reviewed_by_full_name,
