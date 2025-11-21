@@ -1660,6 +1660,11 @@ from .resource_offering import ResourceOffering
 from .resource_options_request import ResourceOptionsRequest
 from .resource_paused_request import ResourcePausedRequest
 from .resource_plan_period import ResourcePlanPeriod
+from .resource_reallocate_limits_request import ResourceReallocateLimitsRequest
+from .resource_reallocate_limits_request_limits import ResourceReallocateLimitsRequestLimits
+from .resource_reallocate_limits_response import ResourceReallocateLimitsResponse
+from .resource_reallocate_target_request import ResourceReallocateTargetRequest
+from .resource_reallocate_target_request_allocated_limits import ResourceReallocateTargetRequestAllocatedLimits
 from .resource_renew_request import ResourceRenewRequest
 from .resource_renew_request_limits import ResourceRenewRequestLimits
 from .resource_renewal_date_type_0 import ResourceRenewalDateType0
@@ -3429,6 +3434,11 @@ __all__ = (
     "ResourceOptionsRequest",
     "ResourcePausedRequest",
     "ResourcePlanPeriod",
+    "ResourceReallocateLimitsRequest",
+    "ResourceReallocateLimitsRequestLimits",
+    "ResourceReallocateLimitsResponse",
+    "ResourceReallocateTargetRequest",
+    "ResourceReallocateTargetRequestAllocatedLimits",
     "ResourceRenewalDateType0",
     "ResourceRenewRequest",
     "ResourceRenewRequestLimits",
