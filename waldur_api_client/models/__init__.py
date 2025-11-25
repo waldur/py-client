@@ -219,6 +219,8 @@ from .category_help_articles_request import CategoryHelpArticlesRequest
 from .category_serializer_for_for_nested_fields import CategorySerializerForForNestedFields
 from .category_serializer_for_for_nested_fields_request import CategorySerializerForForNestedFieldsRequest
 from .celery_stats_retrieve_response_200 import CeleryStatsRetrieveResponse200
+from .check_unique_backend_id_request import CheckUniqueBackendIDRequest
+from .check_unique_backend_id_response import CheckUniqueBackendIDResponse
 from .checklist import Checklist
 from .checklist_category import ChecklistCategory
 from .checklist_category_request import ChecklistCategoryRequest
@@ -2152,6 +2154,8 @@ __all__ = (
     "ChecklistTemplate",
     "ChecklistTemplateChecklist",
     "ChecklistTypeEnum",
+    "CheckUniqueBackendIDRequest",
+    "CheckUniqueBackendIDResponse",
     "ClusterSecurityGroup",
     "ClusterSecurityGroupRequest",
     "Comment",

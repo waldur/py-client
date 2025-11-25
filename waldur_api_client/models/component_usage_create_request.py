@@ -1,9 +1,11 @@
+import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
@@ -21,11 +23,14 @@ class ComponentUsageCreateRequest:
         usages (list['ComponentUsageItemRequest']):
         plan_period (Union[Unset, UUID]):
         resource (Union[Unset, UUID]):
+        date (Union[Unset, datetime.datetime]): Date for usage reporting (staff only). If not provided, current date is
+            used.
     """
 
     usages: list["ComponentUsageItemRequest"]
     plan_period: Union[Unset, UUID] = UNSET
     resource: Union[Unset, UUID] = UNSET
+    date: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,6 +47,10 @@ class ComponentUsageCreateRequest:
         if not isinstance(self.resource, Unset):
             resource = str(self.resource)
 
+        date: Union[Unset, str] = UNSET
+        if not isinstance(self.date, Unset):
+            date = self.date.isoformat()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -53,6 +62,8 @@ class ComponentUsageCreateRequest:
             field_dict["plan_period"] = plan_period
         if resource is not UNSET:
             field_dict["resource"] = resource
+        if date is not UNSET:
+            field_dict["date"] = date
 
         return field_dict
 
@@ -82,10 +93,18 @@ class ComponentUsageCreateRequest:
         else:
             resource = UUID(_resource)
 
+        _date = d.pop("date", UNSET)
+        date: Union[Unset, datetime.datetime]
+        if isinstance(_date, Unset):
+            date = UNSET
+        else:
+            date = isoparse(_date)
+
         component_usage_create_request = cls(
             usages=usages,
             plan_period=plan_period,
             resource=resource,
+            date=date,
         )
 
         component_usage_create_request.additional_properties = d

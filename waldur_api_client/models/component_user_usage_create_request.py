@@ -1,8 +1,10 @@
+import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
@@ -16,11 +18,14 @@ class ComponentUserUsageCreateRequest:
         username (str):
         usage (Union[Unset, str]):
         user (Union[Unset, str]):
+        date (Union[Unset, datetime.datetime]): Date for usage reporting (staff only). If not provided, current date is
+            used.
     """
 
     username: str
     usage: Union[Unset, str] = UNSET
     user: Union[Unset, str] = UNSET
+    date: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,6 +34,10 @@ class ComponentUserUsageCreateRequest:
         usage = self.usage
 
         user = self.user
+
+        date: Union[Unset, str] = UNSET
+        if not isinstance(self.date, Unset):
+            date = self.date.isoformat()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -41,6 +50,8 @@ class ComponentUserUsageCreateRequest:
             field_dict["usage"] = usage
         if user is not UNSET:
             field_dict["user"] = user
+        if date is not UNSET:
+            field_dict["date"] = date
 
         return field_dict
 
@@ -53,10 +64,18 @@ class ComponentUserUsageCreateRequest:
 
         user = d.pop("user", UNSET)
 
+        _date = d.pop("date", UNSET)
+        date: Union[Unset, datetime.datetime]
+        if isinstance(_date, Unset):
+            date = UNSET
+        else:
+            date = isoparse(_date)
+
         component_user_usage_create_request = cls(
             username=username,
             usage=usage,
             user=user,
+            date=date,
         )
 
         component_user_usage_create_request.additional_properties = d
