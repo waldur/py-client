@@ -44,6 +44,7 @@ from .auth_result_request import AuthResultRequest
 from .auth_result_state_enum import AuthResultStateEnum
 from .auth_result_uuid_request import AuthResultUUIDRequest
 from .auth_token import AuthToken
+from .available_checklist import AvailableChecklist
 from .aws_image import AwsImage
 from .aws_instance import AwsInstance
 from .aws_instance_marketplace_offering_plugin_options_type_0 import AwsInstanceMarketplaceOfferingPluginOptionsType0
@@ -1424,6 +1425,18 @@ from .proposal_proposals_list_o_item import ProposalProposalsListOItem
 from .proposal_proposals_list_state_item import ProposalProposalsListStateItem
 from .proposal_proposals_list_users_list_field_item import ProposalProposalsListUsersListFieldItem
 from .proposal_proposals_list_users_list_o_item import ProposalProposalsListUsersListOItem
+from .proposal_protected_calls_available_compliance_checklists_count_o_item import (
+    ProposalProtectedCallsAvailableComplianceChecklistsCountOItem,
+)
+from .proposal_protected_calls_available_compliance_checklists_count_state_item import (
+    ProposalProtectedCallsAvailableComplianceChecklistsCountStateItem,
+)
+from .proposal_protected_calls_available_compliance_checklists_list_o_item import (
+    ProposalProtectedCallsAvailableComplianceChecklistsListOItem,
+)
+from .proposal_protected_calls_available_compliance_checklists_list_state_item import (
+    ProposalProtectedCallsAvailableComplianceChecklistsListStateItem,
+)
 from .proposal_protected_calls_count_o_item import ProposalProtectedCallsCountOItem
 from .proposal_protected_calls_count_state_item import ProposalProtectedCallsCountStateItem
 from .proposal_protected_calls_list_field_item import ProposalProtectedCallsListFieldItem
@@ -1964,6 +1977,7 @@ __all__ = (
     "AuthResultStateEnum",
     "AuthResultUUIDRequest",
     "AuthToken",
+    "AvailableChecklist",
     "AwsImage",
     "AwsInstance",
     "AwsInstanceMarketplaceOfferingPluginOptionsType0",
@@ -3218,6 +3232,10 @@ __all__ = (
     "ProposalProposalsListStateItem",
     "ProposalProposalsListUsersListFieldItem",
     "ProposalProposalsListUsersListOItem",
+    "ProposalProtectedCallsAvailableComplianceChecklistsCountOItem",
+    "ProposalProtectedCallsAvailableComplianceChecklistsCountStateItem",
+    "ProposalProtectedCallsAvailableComplianceChecklistsListOItem",
+    "ProposalProtectedCallsAvailableComplianceChecklistsListStateItem",
     "ProposalProtectedCallsCountOItem",
     "ProposalProtectedCallsCountStateItem",
     "ProposalProtectedCallsListFieldItem",

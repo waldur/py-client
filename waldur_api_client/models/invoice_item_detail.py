@@ -19,6 +19,8 @@ class InvoiceItemDetail:
     Attributes:
         invoice (str):
         uuid (UUID):
+        offering_uuid (UUID):
+        offering_component_type (Union[None, str]):
         resource (Union[None, Unset, str]):
         article_code (Union[Unset, str]):
         unit_price (Union[Unset, str]):
@@ -33,6 +35,8 @@ class InvoiceItemDetail:
 
     invoice: str
     uuid: UUID
+    offering_uuid: UUID
+    offering_component_type: Union[None, str]
     resource: Union[None, Unset, str] = UNSET
     article_code: Union[Unset, str] = UNSET
     unit_price: Union[Unset, str] = UNSET
@@ -49,6 +53,11 @@ class InvoiceItemDetail:
         invoice = self.invoice
 
         uuid = str(self.uuid)
+
+        offering_uuid = str(self.offering_uuid)
+
+        offering_component_type: Union[None, str]
+        offering_component_type = self.offering_component_type
 
         resource: Union[None, Unset, str]
         if isinstance(self.resource, Unset):
@@ -86,6 +95,8 @@ class InvoiceItemDetail:
             {
                 "invoice": invoice,
                 "uuid": uuid,
+                "offering_uuid": offering_uuid,
+                "offering_component_type": offering_component_type,
             }
         )
         if resource is not UNSET:
@@ -117,6 +128,15 @@ class InvoiceItemDetail:
         invoice = d.pop("invoice")
 
         uuid = UUID(d.pop("uuid"))
+
+        offering_uuid = UUID(d.pop("offering_uuid"))
+
+        def _parse_offering_component_type(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        offering_component_type = _parse_offering_component_type(d.pop("offering_component_type"))
 
         def _parse_resource(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -163,6 +183,8 @@ class InvoiceItemDetail:
         invoice_item_detail = cls(
             invoice=invoice,
             uuid=uuid,
+            offering_uuid=offering_uuid,
+            offering_component_type=offering_component_type,
             resource=resource,
             article_code=article_code,
             unit_price=unit_price,
