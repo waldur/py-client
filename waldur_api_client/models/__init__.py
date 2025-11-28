@@ -157,9 +157,11 @@ from .booking_resource_limit_usage import BookingResourceLimitUsage
 from .booking_resource_limits import BookingResourceLimits
 from .booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
 from .booking_resources_count_o_item import BookingResourcesCountOItem
+from .booking_resources_count_order_state_item import BookingResourcesCountOrderStateItem
 from .booking_resources_count_state_item import BookingResourcesCountStateItem
 from .booking_resources_list_field_item import BookingResourcesListFieldItem
 from .booking_resources_list_o_item import BookingResourcesListOItem
+from .booking_resources_list_order_state_item import BookingResourcesListOrderStateItem
 from .booking_resources_list_state_item import BookingResourcesListStateItem
 from .booking_resources_retrieve_field_item import BookingResourcesRetrieveFieldItem
 from .booking_slot import BookingSlot
@@ -677,12 +679,14 @@ from .marketplace_provider_offerings_user_has_resource_access_retrieve_field_ite
     MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem,
 )
 from .marketplace_provider_resources_count_o_item import MarketplaceProviderResourcesCountOItem
+from .marketplace_provider_resources_count_order_state_item import MarketplaceProviderResourcesCountOrderStateItem
 from .marketplace_provider_resources_count_state_item import MarketplaceProviderResourcesCountStateItem
 from .marketplace_provider_resources_details_retrieve_response_200 import (
     MarketplaceProviderResourcesDetailsRetrieveResponse200,
 )
 from .marketplace_provider_resources_list_field_item import MarketplaceProviderResourcesListFieldItem
 from .marketplace_provider_resources_list_o_item import MarketplaceProviderResourcesListOItem
+from .marketplace_provider_resources_list_order_state_item import MarketplaceProviderResourcesListOrderStateItem
 from .marketplace_provider_resources_list_state_item import MarketplaceProviderResourcesListStateItem
 from .marketplace_provider_resources_pull_response_202 import MarketplaceProviderResourcesPullResponse202
 from .marketplace_provider_resources_retrieve_field_item import MarketplaceProviderResourcesRetrieveFieldItem
@@ -701,10 +705,12 @@ from .marketplace_public_offerings_list_o_item import MarketplacePublicOfferings
 from .marketplace_public_offerings_list_state_item import MarketplacePublicOfferingsListStateItem
 from .marketplace_public_offerings_retrieve_field_item import MarketplacePublicOfferingsRetrieveFieldItem
 from .marketplace_resources_count_o_item import MarketplaceResourcesCountOItem
+from .marketplace_resources_count_order_state_item import MarketplaceResourcesCountOrderStateItem
 from .marketplace_resources_count_state_item import MarketplaceResourcesCountStateItem
 from .marketplace_resources_details_retrieve_response_200 import MarketplaceResourcesDetailsRetrieveResponse200
 from .marketplace_resources_list_field_item import MarketplaceResourcesListFieldItem
 from .marketplace_resources_list_o_item import MarketplaceResourcesListOItem
+from .marketplace_resources_list_order_state_item import MarketplaceResourcesListOrderStateItem
 from .marketplace_resources_list_state_item import MarketplaceResourcesListStateItem
 from .marketplace_resources_pull_response_202 import MarketplaceResourcesPullResponse202
 from .marketplace_resources_retrieve_field_item import MarketplaceResourcesRetrieveFieldItem
@@ -2080,9 +2086,11 @@ __all__ = (
     "BookingResourceLimitUsage",
     "BookingResourceRenewalDateType0",
     "BookingResourcesCountOItem",
+    "BookingResourcesCountOrderStateItem",
     "BookingResourcesCountStateItem",
     "BookingResourcesListFieldItem",
     "BookingResourcesListOItem",
+    "BookingResourcesListOrderStateItem",
     "BookingResourcesListStateItem",
     "BookingResourcesRetrieveFieldItem",
     "BookingSlot",
@@ -2554,10 +2562,12 @@ __all__ = (
     "MarketplaceProviderOfferingsUpdateAttributesBody",
     "MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem",
     "MarketplaceProviderResourcesCountOItem",
+    "MarketplaceProviderResourcesCountOrderStateItem",
     "MarketplaceProviderResourcesCountStateItem",
     "MarketplaceProviderResourcesDetailsRetrieveResponse200",
     "MarketplaceProviderResourcesListFieldItem",
     "MarketplaceProviderResourcesListOItem",
+    "MarketplaceProviderResourcesListOrderStateItem",
     "MarketplaceProviderResourcesListStateItem",
     "MarketplaceProviderResourcesPullResponse202",
     "MarketplaceProviderResourcesRetrieveFieldItem",
@@ -2572,10 +2582,12 @@ __all__ = (
     "MarketplacePublicOfferingsListStateItem",
     "MarketplacePublicOfferingsRetrieveFieldItem",
     "MarketplaceResourcesCountOItem",
+    "MarketplaceResourcesCountOrderStateItem",
     "MarketplaceResourcesCountStateItem",
     "MarketplaceResourcesDetailsRetrieveResponse200",
     "MarketplaceResourcesListFieldItem",
     "MarketplaceResourcesListOItem",
+    "MarketplaceResourcesListOrderStateItem",
     "MarketplaceResourcesListStateItem",
     "MarketplaceResourcesPullResponse202",
     "MarketplaceResourcesRetrieveFieldItem",

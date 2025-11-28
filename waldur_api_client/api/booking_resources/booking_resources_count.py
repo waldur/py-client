@@ -8,6 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.booking_resources_count_o_item import BookingResourcesCountOItem
+from ...models.booking_resources_count_order_state_item import BookingResourcesCountOrderStateItem
 from ...models.booking_resources_count_state_item import BookingResourcesCountStateItem
 from ...types import UNSET, Response, Unset
 
@@ -38,6 +39,7 @@ def _get_kwargs(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
+    order_state: Union[Unset, list[BookingResourcesCountOrderStateItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -136,6 +138,15 @@ def _get_kwargs(
     params["only_limit_based"] = only_limit_based
 
     params["only_usage_based"] = only_usage_based
+
+    json_order_state: Union[Unset, list[str]] = UNSET
+    if not isinstance(order_state, Unset):
+        json_order_state = []
+        for order_state_item_data in order_state:
+            order_state_item = order_state_item_data.value
+            json_order_state.append(order_state_item)
+
+    params["order_state"] = json_order_state
 
     params["page"] = page
 
@@ -253,6 +264,7 @@ def sync_detailed(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
+    order_state: Union[Unset, list[BookingResourcesCountOrderStateItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -296,6 +308,7 @@ def sync_detailed(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
+        order_state (Union[Unset, list[BookingResourcesCountOrderStateItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -345,6 +358,7 @@ def sync_detailed(
         offering_uuid=offering_uuid,
         only_limit_based=only_limit_based,
         only_usage_based=only_usage_based,
+        order_state=order_state,
         page=page,
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
@@ -396,6 +410,7 @@ def sync(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
+    order_state: Union[Unset, list[BookingResourcesCountOrderStateItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -439,6 +454,7 @@ def sync(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
+        order_state (Union[Unset, list[BookingResourcesCountOrderStateItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -489,6 +505,7 @@ def sync(
         offering_uuid=offering_uuid,
         only_limit_based=only_limit_based,
         only_usage_based=only_usage_based,
+        order_state=order_state,
         page=page,
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
@@ -534,6 +551,7 @@ async def asyncio_detailed(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
+    order_state: Union[Unset, list[BookingResourcesCountOrderStateItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -577,6 +595,7 @@ async def asyncio_detailed(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
+        order_state (Union[Unset, list[BookingResourcesCountOrderStateItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -626,6 +645,7 @@ async def asyncio_detailed(
         offering_uuid=offering_uuid,
         only_limit_based=only_limit_based,
         only_usage_based=only_usage_based,
+        order_state=order_state,
         page=page,
         page_size=page_size,
         parent_offering_uuid=parent_offering_uuid,
@@ -675,6 +695,7 @@ async def asyncio(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
+    order_state: Union[Unset, list[BookingResourcesCountOrderStateItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -718,6 +739,7 @@ async def asyncio(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
+        order_state (Union[Unset, list[BookingResourcesCountOrderStateItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -769,6 +791,7 @@ async def asyncio(
             offering_uuid=offering_uuid,
             only_limit_based=only_limit_based,
             only_usage_based=only_usage_based,
+            order_state=order_state,
             page=page,
             page_size=page_size,
             parent_offering_uuid=parent_offering_uuid,
