@@ -24,6 +24,7 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    exclude_pending_transitional: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[MarketplaceResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -82,6 +83,8 @@ def _get_kwargs(
     params["customer_uuid"] = json_customer_uuid
 
     params["downscaled"] = downscaled
+
+    params["exclude_pending_transitional"] = exclude_pending_transitional
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -253,6 +256,7 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    exclude_pending_transitional: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[MarketplaceResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -299,6 +303,7 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        exclude_pending_transitional (Union[Unset, bool]):
         field (Union[Unset, list[MarketplaceResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -349,6 +354,7 @@ def sync_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        exclude_pending_transitional=exclude_pending_transitional,
         field=field,
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
@@ -401,6 +407,7 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    exclude_pending_transitional: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[MarketplaceResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -447,6 +454,7 @@ def sync(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        exclude_pending_transitional (Union[Unset, bool]):
         field (Union[Unset, list[MarketplaceResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -498,6 +506,7 @@ def sync(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        exclude_pending_transitional=exclude_pending_transitional,
         field=field,
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
@@ -544,6 +553,7 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    exclude_pending_transitional: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[MarketplaceResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -590,6 +600,7 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        exclude_pending_transitional (Union[Unset, bool]):
         field (Union[Unset, list[MarketplaceResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -640,6 +651,7 @@ async def asyncio_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        exclude_pending_transitional=exclude_pending_transitional,
         field=field,
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
@@ -690,6 +702,7 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    exclude_pending_transitional: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[MarketplaceResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -736,6 +749,7 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        exclude_pending_transitional (Union[Unset, bool]):
         field (Union[Unset, list[MarketplaceResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -788,6 +802,7 @@ async def asyncio(
             customer=customer,
             customer_uuid=customer_uuid,
             downscaled=downscaled,
+            exclude_pending_transitional=exclude_pending_transitional,
             field=field,
             has_terminate_date=has_terminate_date,
             lexis_links_supported=lexis_links_supported,
