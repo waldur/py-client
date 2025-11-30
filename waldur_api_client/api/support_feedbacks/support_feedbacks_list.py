@@ -9,6 +9,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.feedback import Feedback
 from ...types import UNSET, Response, Unset
+from ...utils import parse_link_header
 
 
 def _get_kwargs(
@@ -318,3 +319,197 @@ async def asyncio(
             user_uuid=user_uuid,
         )
     ).parsed
+
+
+def sync_all(
+    *,
+    client: AuthenticatedClient,
+    created_after: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
+    evaluation: Union[Unset, int] = UNSET,
+    issue: Union[Unset, str] = UNSET,
+    issue_key: Union[Unset, str] = UNSET,
+    issue_uuid: Union[Unset, UUID] = UNSET,
+    user: Union[Unset, str] = UNSET,
+    user_full_name: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
+) -> list["Feedback"]:
+    """Get All Pages
+
+     Fetch all pages of paginated results. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        created_after (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
+        evaluation (Union[Unset, int]):
+        issue (Union[Unset, str]):
+        issue_key (Union[Unset, str]):
+        issue_uuid (Union[Unset, UUID]):
+        user (Union[Unset, str]):
+        user_full_name (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['Feedback']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[Feedback] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        created_after=created_after,
+        created_before=created_before,
+        evaluation=evaluation,
+        issue=issue,
+        issue_key=issue_key,
+        issue_uuid=issue_uuid,
+        user=user,
+        user_full_name=user_full_name,
+        user_uuid=user_uuid,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = client.get_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = client.get_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results
+
+
+async def asyncio_all(
+    *,
+    client: AuthenticatedClient,
+    created_after: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
+    evaluation: Union[Unset, int] = UNSET,
+    issue: Union[Unset, str] = UNSET,
+    issue_key: Union[Unset, str] = UNSET,
+    issue_uuid: Union[Unset, UUID] = UNSET,
+    user: Union[Unset, str] = UNSET,
+    user_full_name: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
+) -> list["Feedback"]:
+    """Get All Pages (Async)
+
+     Fetch all pages of paginated results asynchronously. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        created_after (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
+        evaluation (Union[Unset, int]):
+        issue (Union[Unset, str]):
+        issue_key (Union[Unset, str]):
+        issue_uuid (Union[Unset, UUID]):
+        user (Union[Unset, str]):
+        user_full_name (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['Feedback']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[Feedback] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        created_after=created_after,
+        created_before=created_before,
+        evaluation=evaluation,
+        issue=issue,
+        issue_key=issue_key,
+        issue_uuid=issue_uuid,
+        user=user,
+        user_full_name=user_full_name,
+        user_uuid=user_uuid,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = await client.get_async_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = await client.get_async_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results

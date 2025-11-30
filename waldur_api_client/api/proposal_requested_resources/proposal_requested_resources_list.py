@@ -10,6 +10,7 @@ from ...client import AuthenticatedClient, Client
 from ...models.proposal_requested_resources_list_o_item import ProposalRequestedResourcesListOItem
 from ...models.provider_requested_resource import ProviderRequestedResource
 from ...types import UNSET, Response, Unset
+from ...utils import parse_link_header
 
 
 def _get_kwargs(
@@ -313,3 +314,191 @@ async def asyncio(
             resource_uuid=resource_uuid,
         )
     ).parsed
+
+
+def sync_all(
+    *,
+    client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    o: Union[Unset, list[ProposalRequestedResourcesListOItem]] = UNSET,
+    offering: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    proposal: Union[Unset, str] = UNSET,
+    proposal_uuid: Union[Unset, UUID] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+) -> list["ProviderRequestedResource"]:
+    """Get All Pages
+
+     Fetch all pages of paginated results. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        created (Union[Unset, datetime.datetime]):
+        o (Union[Unset, list[ProposalRequestedResourcesListOItem]]):
+        offering (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
+        proposal (Union[Unset, str]):
+        proposal_uuid (Union[Unset, UUID]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['ProviderRequestedResource']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[ProviderRequestedResource] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        created=created,
+        o=o,
+        offering=offering,
+        offering_uuid=offering_uuid,
+        proposal=proposal,
+        proposal_uuid=proposal_uuid,
+        resource=resource,
+        resource_uuid=resource_uuid,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = client.get_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = client.get_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results
+
+
+async def asyncio_all(
+    *,
+    client: AuthenticatedClient,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    o: Union[Unset, list[ProposalRequestedResourcesListOItem]] = UNSET,
+    offering: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    proposal: Union[Unset, str] = UNSET,
+    proposal_uuid: Union[Unset, UUID] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
+) -> list["ProviderRequestedResource"]:
+    """Get All Pages (Async)
+
+     Fetch all pages of paginated results asynchronously. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        created (Union[Unset, datetime.datetime]):
+        o (Union[Unset, list[ProposalRequestedResourcesListOItem]]):
+        offering (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
+        proposal (Union[Unset, str]):
+        proposal_uuid (Union[Unset, UUID]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['ProviderRequestedResource']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[ProviderRequestedResource] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        created=created,
+        o=o,
+        offering=offering,
+        offering_uuid=offering_uuid,
+        proposal=proposal,
+        proposal_uuid=proposal_uuid,
+        resource=resource,
+        resource_uuid=resource_uuid,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = await client.get_async_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = await client.get_async_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results

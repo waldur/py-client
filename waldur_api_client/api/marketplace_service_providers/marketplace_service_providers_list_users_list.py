@@ -12,6 +12,7 @@ from ...models.marketplace_service_providers_list_users_list_field_item import (
 from ...models.marketplace_service_providers_list_users_list_o_item import MarketplaceServiceProvidersListUsersListOItem
 from ...models.user_role_details import UserRoleDetails
 from ...types import UNSET, Response, Unset
+from ...utils import parse_link_header
 
 
 def _get_kwargs(
@@ -373,3 +374,209 @@ async def asyncio(
             username=username,
         )
     ).parsed
+
+
+def sync_all(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    field: Union[Unset, list[MarketplaceServiceProvidersListUsersListFieldItem]] = UNSET,
+    full_name: Union[Unset, str] = UNSET,
+    native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersListUsersListOItem]] = UNSET,
+    role: Union[Unset, UUID] = UNSET,
+    search_string: Union[Unset, str] = UNSET,
+    user: Union[Unset, UUID] = UNSET,
+    user_slug: Union[Unset, str] = UNSET,
+    user_url: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
+) -> list["UserRoleDetails"]:
+    """Get All Pages
+
+     Fetch all pages of paginated results. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        uuid (UUID):
+        field (Union[Unset, list[MarketplaceServiceProvidersListUsersListFieldItem]]):
+        full_name (Union[Unset, str]):
+        native_name (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceServiceProvidersListUsersListOItem]]):
+        role (Union[Unset, UUID]):
+        search_string (Union[Unset, str]):
+        user (Union[Unset, UUID]):
+        user_slug (Union[Unset, str]):
+        user_url (Union[Unset, str]):
+        username (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['UserRoleDetails']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[UserRoleDetails] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        uuid=uuid,
+        field=field,
+        full_name=full_name,
+        native_name=native_name,
+        o=o,
+        role=role,
+        search_string=search_string,
+        user=user,
+        user_slug=user_slug,
+        user_url=user_url,
+        username=username,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = client.get_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = client.get_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results
+
+
+async def asyncio_all(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    field: Union[Unset, list[MarketplaceServiceProvidersListUsersListFieldItem]] = UNSET,
+    full_name: Union[Unset, str] = UNSET,
+    native_name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProvidersListUsersListOItem]] = UNSET,
+    role: Union[Unset, UUID] = UNSET,
+    search_string: Union[Unset, str] = UNSET,
+    user: Union[Unset, UUID] = UNSET,
+    user_slug: Union[Unset, str] = UNSET,
+    user_url: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
+) -> list["UserRoleDetails"]:
+    """Get All Pages (Async)
+
+     Fetch all pages of paginated results asynchronously. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        uuid (UUID):
+        field (Union[Unset, list[MarketplaceServiceProvidersListUsersListFieldItem]]):
+        full_name (Union[Unset, str]):
+        native_name (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceServiceProvidersListUsersListOItem]]):
+        role (Union[Unset, UUID]):
+        search_string (Union[Unset, str]):
+        user (Union[Unset, UUID]):
+        user_slug (Union[Unset, str]):
+        user_url (Union[Unset, str]):
+        username (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['UserRoleDetails']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[UserRoleDetails] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        uuid=uuid,
+        field=field,
+        full_name=full_name,
+        native_name=native_name,
+        o=o,
+        role=role,
+        search_string=search_string,
+        user=user,
+        user_slug=user_slug,
+        user_url=user_url,
+        username=username,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = await client.get_async_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = await client.get_async_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results

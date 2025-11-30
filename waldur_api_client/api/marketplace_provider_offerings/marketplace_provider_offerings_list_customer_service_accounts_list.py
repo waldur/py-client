@@ -15,6 +15,7 @@ from ...models.marketplace_provider_offerings_list_customer_service_accounts_lis
     MarketplaceProviderOfferingsListCustomerServiceAccountsListStateItem,
 )
 from ...types import UNSET, Response, Unset
+from ...utils import parse_link_header
 
 
 def _get_kwargs(
@@ -750,3 +751,343 @@ async def asyncio(
             uuid_list=uuid_list,
         )
     ).parsed
+
+
+def sync_all(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    accessible_via_calls: Union[Unset, bool] = UNSET,
+    allowed_customer_uuid: Union[Unset, UUID] = UNSET,
+    attributes: Union[Unset, str] = UNSET,
+    billable: Union[Unset, bool] = UNSET,
+    can_create_offering_user: Union[Unset, bool] = UNSET,
+    category_group_uuid: Union[Unset, UUID] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
+    has_active_terms_of_service: Union[Unset, bool] = UNSET,
+    has_terms_of_service: Union[Unset, bool] = UNSET,
+    keyword: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceProviderOfferingsListCustomerServiceAccountsListOItem]] = UNSET,
+    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
+    parent_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    resource_customer_uuid: Union[Unset, UUID] = UNSET,
+    resource_project_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
+    service_manager_uuid: Union[Unset, UUID] = UNSET,
+    shared: Union[Unset, bool] = UNSET,
+    state: Union[Unset, list[MarketplaceProviderOfferingsListCustomerServiceAccountsListStateItem]] = UNSET,
+    type_: Union[Unset, list[str]] = UNSET,
+    user_has_consent: Union[Unset, bool] = UNSET,
+    user_has_offering_user: Union[Unset, bool] = UNSET,
+    uuid_list: Union[Unset, str] = UNSET,
+) -> list["CustomerServiceAccount"]:
+    """Get All Pages
+
+     Fetch all pages of paginated results. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        uuid (UUID):
+        accessible_via_calls (Union[Unset, bool]):
+        allowed_customer_uuid (Union[Unset, UUID]):
+        attributes (Union[Unset, str]):
+        billable (Union[Unset, bool]):
+        can_create_offering_user (Union[Unset, bool]):
+        category_group_uuid (Union[Unset, UUID]):
+        category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
+        has_active_terms_of_service (Union[Unset, bool]):
+        has_terms_of_service (Union[Unset, bool]):
+        keyword (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceProviderOfferingsListCustomerServiceAccountsListOItem]]):
+        organization_group_uuid (Union[Unset, list[UUID]]):
+        parent_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
+        resource_customer_uuid (Union[Unset, UUID]):
+        resource_project_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
+        service_manager_uuid (Union[Unset, UUID]):
+        shared (Union[Unset, bool]):
+        state (Union[Unset,
+        list[MarketplaceProviderOfferingsListCustomerServiceAccountsListStateItem]]):
+        type_ (Union[Unset, list[str]]):
+        user_has_consent (Union[Unset, bool]):
+        user_has_offering_user (Union[Unset, bool]):
+        uuid_list (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['CustomerServiceAccount']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[CustomerServiceAccount] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        uuid=uuid,
+        accessible_via_calls=accessible_via_calls,
+        allowed_customer_uuid=allowed_customer_uuid,
+        attributes=attributes,
+        billable=billable,
+        can_create_offering_user=can_create_offering_user,
+        category_group_uuid=category_group_uuid,
+        category_uuid=category_uuid,
+        created=created,
+        customer=customer,
+        customer_uuid=customer_uuid,
+        description=description,
+        has_active_terms_of_service=has_active_terms_of_service,
+        has_terms_of_service=has_terms_of_service,
+        keyword=keyword,
+        modified=modified,
+        name=name,
+        name_exact=name_exact,
+        o=o,
+        organization_group_uuid=organization_group_uuid,
+        parent_uuid=parent_uuid,
+        project_uuid=project_uuid,
+        query=query,
+        resource_customer_uuid=resource_customer_uuid,
+        resource_project_uuid=resource_project_uuid,
+        scope_uuid=scope_uuid,
+        service_manager_uuid=service_manager_uuid,
+        shared=shared,
+        state=state,
+        type_=type_,
+        user_has_consent=user_has_consent,
+        user_has_offering_user=user_has_offering_user,
+        uuid_list=uuid_list,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = client.get_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = client.get_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results
+
+
+async def asyncio_all(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    accessible_via_calls: Union[Unset, bool] = UNSET,
+    allowed_customer_uuid: Union[Unset, UUID] = UNSET,
+    attributes: Union[Unset, str] = UNSET,
+    billable: Union[Unset, bool] = UNSET,
+    can_create_offering_user: Union[Unset, bool] = UNSET,
+    category_group_uuid: Union[Unset, UUID] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    description: Union[Unset, str] = UNSET,
+    has_active_terms_of_service: Union[Unset, bool] = UNSET,
+    has_terms_of_service: Union[Unset, bool] = UNSET,
+    keyword: Union[Unset, str] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceProviderOfferingsListCustomerServiceAccountsListOItem]] = UNSET,
+    organization_group_uuid: Union[Unset, list[UUID]] = UNSET,
+    parent_uuid: Union[Unset, UUID] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    resource_customer_uuid: Union[Unset, UUID] = UNSET,
+    resource_project_uuid: Union[Unset, UUID] = UNSET,
+    scope_uuid: Union[Unset, str] = UNSET,
+    service_manager_uuid: Union[Unset, UUID] = UNSET,
+    shared: Union[Unset, bool] = UNSET,
+    state: Union[Unset, list[MarketplaceProviderOfferingsListCustomerServiceAccountsListStateItem]] = UNSET,
+    type_: Union[Unset, list[str]] = UNSET,
+    user_has_consent: Union[Unset, bool] = UNSET,
+    user_has_offering_user: Union[Unset, bool] = UNSET,
+    uuid_list: Union[Unset, str] = UNSET,
+) -> list["CustomerServiceAccount"]:
+    """Get All Pages (Async)
+
+     Fetch all pages of paginated results asynchronously. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        uuid (UUID):
+        accessible_via_calls (Union[Unset, bool]):
+        allowed_customer_uuid (Union[Unset, UUID]):
+        attributes (Union[Unset, str]):
+        billable (Union[Unset, bool]):
+        can_create_offering_user (Union[Unset, bool]):
+        category_group_uuid (Union[Unset, UUID]):
+        category_uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        description (Union[Unset, str]):
+        has_active_terms_of_service (Union[Unset, bool]):
+        has_terms_of_service (Union[Unset, bool]):
+        keyword (Union[Unset, str]):
+        modified (Union[Unset, datetime.datetime]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceProviderOfferingsListCustomerServiceAccountsListOItem]]):
+        organization_group_uuid (Union[Unset, list[UUID]]):
+        parent_uuid (Union[Unset, UUID]):
+        project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
+        resource_customer_uuid (Union[Unset, UUID]):
+        resource_project_uuid (Union[Unset, UUID]):
+        scope_uuid (Union[Unset, str]):
+        service_manager_uuid (Union[Unset, UUID]):
+        shared (Union[Unset, bool]):
+        state (Union[Unset,
+        list[MarketplaceProviderOfferingsListCustomerServiceAccountsListStateItem]]):
+        type_ (Union[Unset, list[str]]):
+        user_has_consent (Union[Unset, bool]):
+        user_has_offering_user (Union[Unset, bool]):
+        uuid_list (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['CustomerServiceAccount']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[CustomerServiceAccount] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        uuid=uuid,
+        accessible_via_calls=accessible_via_calls,
+        allowed_customer_uuid=allowed_customer_uuid,
+        attributes=attributes,
+        billable=billable,
+        can_create_offering_user=can_create_offering_user,
+        category_group_uuid=category_group_uuid,
+        category_uuid=category_uuid,
+        created=created,
+        customer=customer,
+        customer_uuid=customer_uuid,
+        description=description,
+        has_active_terms_of_service=has_active_terms_of_service,
+        has_terms_of_service=has_terms_of_service,
+        keyword=keyword,
+        modified=modified,
+        name=name,
+        name_exact=name_exact,
+        o=o,
+        organization_group_uuid=organization_group_uuid,
+        parent_uuid=parent_uuid,
+        project_uuid=project_uuid,
+        query=query,
+        resource_customer_uuid=resource_customer_uuid,
+        resource_project_uuid=resource_project_uuid,
+        scope_uuid=scope_uuid,
+        service_manager_uuid=service_manager_uuid,
+        shared=shared,
+        state=state,
+        type_=type_,
+        user_has_consent=user_has_consent,
+        user_has_offering_user=user_has_offering_user,
+        uuid_list=uuid_list,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = await client.get_async_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = await client.get_async_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results

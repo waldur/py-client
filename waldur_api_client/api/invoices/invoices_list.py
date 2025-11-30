@@ -12,6 +12,7 @@ from ...models.invoices_list_field_item import InvoicesListFieldItem
 from ...models.invoices_list_o_item import InvoicesListOItem
 from ...models.invoices_list_state_item import InvoicesListStateItem
 from ...types import UNSET, Response, Unset
+from ...utils import parse_link_header
 
 
 def _get_kwargs(
@@ -357,3 +358,203 @@ async def asyncio(
             year=year,
         )
     ).parsed
+
+
+def sync_all(
+    *,
+    client: AuthenticatedClient,
+    created: Union[Unset, datetime.date] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    end_date: Union[Unset, datetime.date] = UNSET,
+    field: Union[Unset, list[InvoicesListFieldItem]] = UNSET,
+    month: Union[Unset, int] = UNSET,
+    o: Union[Unset, list[InvoicesListOItem]] = UNSET,
+    start_date: Union[Unset, datetime.date] = UNSET,
+    state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
+    year: Union[Unset, int] = UNSET,
+) -> list["Invoice"]:
+    """Get All Pages
+
+     Fetch all pages of paginated results. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        created (Union[Unset, datetime.date]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        end_date (Union[Unset, datetime.date]):
+        field (Union[Unset, list[InvoicesListFieldItem]]):
+        month (Union[Unset, int]):
+        o (Union[Unset, list[InvoicesListOItem]]):
+        start_date (Union[Unset, datetime.date]):
+        state (Union[Unset, list[InvoicesListStateItem]]):
+        year (Union[Unset, int]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['Invoice']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[Invoice] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        created=created,
+        customer=customer,
+        customer_uuid=customer_uuid,
+        end_date=end_date,
+        field=field,
+        month=month,
+        o=o,
+        start_date=start_date,
+        state=state,
+        year=year,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = client.get_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = client.get_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results
+
+
+async def asyncio_all(
+    *,
+    client: AuthenticatedClient,
+    created: Union[Unset, datetime.date] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    end_date: Union[Unset, datetime.date] = UNSET,
+    field: Union[Unset, list[InvoicesListFieldItem]] = UNSET,
+    month: Union[Unset, int] = UNSET,
+    o: Union[Unset, list[InvoicesListOItem]] = UNSET,
+    start_date: Union[Unset, datetime.date] = UNSET,
+    state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
+    year: Union[Unset, int] = UNSET,
+) -> list["Invoice"]:
+    """Get All Pages (Async)
+
+     Fetch all pages of paginated results asynchronously. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        created (Union[Unset, datetime.date]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        end_date (Union[Unset, datetime.date]):
+        field (Union[Unset, list[InvoicesListFieldItem]]):
+        month (Union[Unset, int]):
+        o (Union[Unset, list[InvoicesListOItem]]):
+        start_date (Union[Unset, datetime.date]):
+        state (Union[Unset, list[InvoicesListStateItem]]):
+        year (Union[Unset, int]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['Invoice']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[Invoice] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        created=created,
+        customer=customer,
+        customer_uuid=customer_uuid,
+        end_date=end_date,
+        field=field,
+        month=month,
+        o=o,
+        start_date=start_date,
+        state=state,
+        year=year,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = await client.get_async_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = await client.get_async_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results

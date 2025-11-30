@@ -10,6 +10,7 @@ from ...models.open_stack_port import OpenStackPort
 from ...models.openstack_ports_list_field_item import OpenstackPortsListFieldItem
 from ...models.openstack_ports_list_o_item import OpenstackPortsListOItem
 from ...types import UNSET, Response, Unset
+from ...utils import parse_link_header
 
 
 def _get_kwargs(
@@ -474,3 +475,251 @@ async def asyncio(
             tenant_uuid=tenant_uuid,
         )
     ).parsed
+
+
+def sync_all(
+    *,
+    client: AuthenticatedClient,
+    admin_state_up: Union[Unset, bool] = UNSET,
+    backend_id: Union[Unset, str] = UNSET,
+    device_id: Union[Unset, str] = UNSET,
+    device_owner: Union[Unset, str] = UNSET,
+    exclude_subnet_uuids: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    fixed_ips: Union[Unset, str] = UNSET,
+    has_device_owner: Union[Unset, bool] = UNSET,
+    mac_address: Union[Unset, str] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    network_name: Union[Unset, str] = UNSET,
+    network_uuid: Union[Unset, UUID] = UNSET,
+    o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
+) -> list["OpenStackPort"]:
+    """Get All Pages
+
+     Fetch all pages of paginated results. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        admin_state_up (Union[Unset, bool]):
+        backend_id (Union[Unset, str]):
+        device_id (Union[Unset, str]):
+        device_owner (Union[Unset, str]):
+        exclude_subnet_uuids (Union[Unset, str]):
+        field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        fixed_ips (Union[Unset, str]):
+        has_device_owner (Union[Unset, bool]):
+        mac_address (Union[Unset, str]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        network_name (Union[Unset, str]):
+        network_uuid (Union[Unset, UUID]):
+        o (Union[Unset, list[OpenstackPortsListOItem]]):
+        query (Union[Unset, str]):
+        status (Union[Unset, str]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['OpenStackPort']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[OpenStackPort] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        admin_state_up=admin_state_up,
+        backend_id=backend_id,
+        device_id=device_id,
+        device_owner=device_owner,
+        exclude_subnet_uuids=exclude_subnet_uuids,
+        field=field,
+        fixed_ips=fixed_ips,
+        has_device_owner=has_device_owner,
+        mac_address=mac_address,
+        name=name,
+        name_exact=name_exact,
+        network_name=network_name,
+        network_uuid=network_uuid,
+        o=o,
+        query=query,
+        status=status,
+        tenant=tenant,
+        tenant_uuid=tenant_uuid,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = client.get_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = client.get_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results
+
+
+async def asyncio_all(
+    *,
+    client: AuthenticatedClient,
+    admin_state_up: Union[Unset, bool] = UNSET,
+    backend_id: Union[Unset, str] = UNSET,
+    device_id: Union[Unset, str] = UNSET,
+    device_owner: Union[Unset, str] = UNSET,
+    exclude_subnet_uuids: Union[Unset, str] = UNSET,
+    field: Union[Unset, list[OpenstackPortsListFieldItem]] = UNSET,
+    fixed_ips: Union[Unset, str] = UNSET,
+    has_device_owner: Union[Unset, bool] = UNSET,
+    mac_address: Union[Unset, str] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    network_name: Union[Unset, str] = UNSET,
+    network_uuid: Union[Unset, UUID] = UNSET,
+    o: Union[Unset, list[OpenstackPortsListOItem]] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
+) -> list["OpenStackPort"]:
+    """Get All Pages (Async)
+
+     Fetch all pages of paginated results asynchronously. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        admin_state_up (Union[Unset, bool]):
+        backend_id (Union[Unset, str]):
+        device_id (Union[Unset, str]):
+        device_owner (Union[Unset, str]):
+        exclude_subnet_uuids (Union[Unset, str]):
+        field (Union[Unset, list[OpenstackPortsListFieldItem]]):
+        fixed_ips (Union[Unset, str]):
+        has_device_owner (Union[Unset, bool]):
+        mac_address (Union[Unset, str]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        network_name (Union[Unset, str]):
+        network_uuid (Union[Unset, UUID]):
+        o (Union[Unset, list[OpenstackPortsListOItem]]):
+        query (Union[Unset, str]):
+        status (Union[Unset, str]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['OpenStackPort']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[OpenStackPort] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        admin_state_up=admin_state_up,
+        backend_id=backend_id,
+        device_id=device_id,
+        device_owner=device_owner,
+        exclude_subnet_uuids=exclude_subnet_uuids,
+        field=field,
+        fixed_ips=fixed_ips,
+        has_device_owner=has_device_owner,
+        mac_address=mac_address,
+        name=name,
+        name_exact=name_exact,
+        network_name=network_name,
+        network_uuid=network_uuid,
+        o=o,
+        query=query,
+        status=status,
+        tenant=tenant,
+        tenant_uuid=tenant_uuid,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = await client.get_async_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = await client.get_async_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results

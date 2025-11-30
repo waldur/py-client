@@ -10,6 +10,7 @@ from ...models.open_stack_flavor import OpenStackFlavor
 from ...models.openstack_flavors_list_field_item import OpenstackFlavorsListFieldItem
 from ...models.openstack_flavors_list_o_item import OpenstackFlavorsListOItem
 from ...types import UNSET, Response, Unset
+from ...utils import parse_link_header
 
 
 def _get_kwargs(
@@ -492,3 +493,257 @@ async def asyncio(
             tenant_uuid=tenant_uuid,
         )
     ).parsed
+
+
+def sync_all(
+    *,
+    client: AuthenticatedClient,
+    cores: Union[Unset, int] = UNSET,
+    cores_gte: Union[Unset, int] = UNSET,
+    cores_lte: Union[Unset, int] = UNSET,
+    disk: Union[Unset, int] = UNSET,
+    disk_gte: Union[Unset, int] = UNSET,
+    disk_lte: Union[Unset, int] = UNSET,
+    field: Union[Unset, list[OpenstackFlavorsListFieldItem]] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    name_iregex: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    ram: Union[Unset, int] = UNSET,
+    ram_gte: Union[Unset, int] = UNSET,
+    ram_lte: Union[Unset, int] = UNSET,
+    settings: Union[Unset, str] = UNSET,
+    settings_uuid: Union[Unset, UUID] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
+) -> list["OpenStackFlavor"]:
+    """Get All Pages
+
+     Fetch all pages of paginated results. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        cores (Union[Unset, int]):
+        cores_gte (Union[Unset, int]):
+        cores_lte (Union[Unset, int]):
+        disk (Union[Unset, int]):
+        disk_gte (Union[Unset, int]):
+        disk_lte (Union[Unset, int]):
+        field (Union[Unset, list[OpenstackFlavorsListFieldItem]]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        name_iregex (Union[Unset, str]):
+        o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        offering_uuid (Union[Unset, UUID]):
+        ram (Union[Unset, int]):
+        ram_gte (Union[Unset, int]):
+        ram_lte (Union[Unset, int]):
+        settings (Union[Unset, str]):
+        settings_uuid (Union[Unset, UUID]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['OpenStackFlavor']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[OpenStackFlavor] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        cores=cores,
+        cores_gte=cores_gte,
+        cores_lte=cores_lte,
+        disk=disk,
+        disk_gte=disk_gte,
+        disk_lte=disk_lte,
+        field=field,
+        name=name,
+        name_exact=name_exact,
+        name_iregex=name_iregex,
+        o=o,
+        offering_uuid=offering_uuid,
+        ram=ram,
+        ram_gte=ram_gte,
+        ram_lte=ram_lte,
+        settings=settings,
+        settings_uuid=settings_uuid,
+        tenant=tenant,
+        tenant_uuid=tenant_uuid,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = client.get_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = client.get_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results
+
+
+async def asyncio_all(
+    *,
+    client: AuthenticatedClient,
+    cores: Union[Unset, int] = UNSET,
+    cores_gte: Union[Unset, int] = UNSET,
+    cores_lte: Union[Unset, int] = UNSET,
+    disk: Union[Unset, int] = UNSET,
+    disk_gte: Union[Unset, int] = UNSET,
+    disk_lte: Union[Unset, int] = UNSET,
+    field: Union[Unset, list[OpenstackFlavorsListFieldItem]] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    name_iregex: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    ram: Union[Unset, int] = UNSET,
+    ram_gte: Union[Unset, int] = UNSET,
+    ram_lte: Union[Unset, int] = UNSET,
+    settings: Union[Unset, str] = UNSET,
+    settings_uuid: Union[Unset, UUID] = UNSET,
+    tenant: Union[Unset, str] = UNSET,
+    tenant_uuid: Union[Unset, UUID] = UNSET,
+) -> list["OpenStackFlavor"]:
+    """Get All Pages (Async)
+
+     Fetch all pages of paginated results asynchronously. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        cores (Union[Unset, int]):
+        cores_gte (Union[Unset, int]):
+        cores_lte (Union[Unset, int]):
+        disk (Union[Unset, int]):
+        disk_gte (Union[Unset, int]):
+        disk_lte (Union[Unset, int]):
+        field (Union[Unset, list[OpenstackFlavorsListFieldItem]]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        name_iregex (Union[Unset, str]):
+        o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        offering_uuid (Union[Unset, UUID]):
+        ram (Union[Unset, int]):
+        ram_gte (Union[Unset, int]):
+        ram_lte (Union[Unset, int]):
+        settings (Union[Unset, str]):
+        settings_uuid (Union[Unset, UUID]):
+        tenant (Union[Unset, str]):
+        tenant_uuid (Union[Unset, UUID]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['OpenStackFlavor']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[OpenStackFlavor] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        cores=cores,
+        cores_gte=cores_gte,
+        cores_lte=cores_lte,
+        disk=disk,
+        disk_gte=disk_gte,
+        disk_lte=disk_lte,
+        field=field,
+        name=name,
+        name_exact=name_exact,
+        name_iregex=name_iregex,
+        o=o,
+        offering_uuid=offering_uuid,
+        ram=ram,
+        ram_gte=ram_gte,
+        ram_lte=ram_lte,
+        settings=settings,
+        settings_uuid=settings_uuid,
+        tenant=tenant,
+        tenant_uuid=tenant_uuid,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = await client.get_async_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = await client.get_async_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results

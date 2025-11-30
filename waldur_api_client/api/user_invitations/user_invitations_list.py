@@ -10,6 +10,7 @@ from ...models.invitation import Invitation
 from ...models.user_invitations_list_o_item import UserInvitationsListOItem
 from ...models.user_invitations_list_state_item import UserInvitationsListStateItem
 from ...types import UNSET, Response, Unset
+from ...utils import parse_link_header
 
 
 def _get_kwargs(
@@ -369,3 +370,209 @@ async def asyncio(
             state=state,
         )
     ).parsed
+
+
+def sync_all(
+    *,
+    client: AuthenticatedClient,
+    civil_number: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    email: Union[Unset, str] = UNSET,
+    email_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[UserInvitationsListOItem]] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_description: Union[Unset, str] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
+) -> list["Invitation"]:
+    """Get All Pages
+
+     Fetch all pages of paginated results. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        civil_number (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        email (Union[Unset, str]):
+        email_exact (Union[Unset, str]):
+        o (Union[Unset, list[UserInvitationsListOItem]]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_description (Union[Unset, str]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        state (Union[Unset, list[UserInvitationsListStateItem]]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['Invitation']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[Invitation] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        civil_number=civil_number,
+        customer_uuid=customer_uuid,
+        email=email,
+        email_exact=email_exact,
+        o=o,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_description=scope_description,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        state=state,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = client.get_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = client.get_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results
+
+
+async def asyncio_all(
+    *,
+    client: AuthenticatedClient,
+    civil_number: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    email: Union[Unset, str] = UNSET,
+    email_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[UserInvitationsListOItem]] = UNSET,
+    role_name: Union[Unset, str] = UNSET,
+    role_uuid: Union[Unset, UUID] = UNSET,
+    scope_description: Union[Unset, str] = UNSET,
+    scope_name: Union[Unset, str] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
+    state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
+) -> list["Invitation"]:
+    """Get All Pages (Async)
+
+     Fetch all pages of paginated results asynchronously. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        civil_number (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        email (Union[Unset, str]):
+        email_exact (Union[Unset, str]):
+        o (Union[Unset, list[UserInvitationsListOItem]]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
+        scope_description (Union[Unset, str]):
+        scope_name (Union[Unset, str]):
+        scope_type (Union[Unset, str]):
+        state (Union[Unset, list[UserInvitationsListStateItem]]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['Invitation']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[Invitation] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        civil_number=civil_number,
+        customer_uuid=customer_uuid,
+        email=email,
+        email_exact=email_exact,
+        o=o,
+        role_name=role_name,
+        role_uuid=role_uuid,
+        scope_description=scope_description,
+        scope_name=scope_name,
+        scope_type=scope_type,
+        state=state,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = await client.get_async_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = await client.get_async_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results

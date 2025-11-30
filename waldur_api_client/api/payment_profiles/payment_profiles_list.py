@@ -10,6 +10,7 @@ from ...models.payment_profile import PaymentProfile
 from ...models.payment_profiles_list_o_item import PaymentProfilesListOItem
 from ...models.payment_profiles_list_payment_type_item import PaymentProfilesListPaymentTypeItem
 from ...types import UNSET, Response, Unset
+from ...utils import parse_link_header
 
 
 def _get_kwargs(
@@ -264,3 +265,173 @@ async def asyncio(
             payment_type=payment_type,
         )
     ).parsed
+
+
+def sync_all(
+    *,
+    client: AuthenticatedClient,
+    is_active: Union[Unset, bool] = UNSET,
+    o: Union[Unset, list[PaymentProfilesListOItem]] = UNSET,
+    organization: Union[Unset, str] = UNSET,
+    organization_uuid: Union[Unset, UUID] = UNSET,
+    payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
+) -> list["PaymentProfile"]:
+    """Get All Pages
+
+     Fetch all pages of paginated results. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        is_active (Union[Unset, bool]):
+        o (Union[Unset, list[PaymentProfilesListOItem]]):
+        organization (Union[Unset, str]):
+        organization_uuid (Union[Unset, UUID]):
+        payment_type (Union[Unset, list[PaymentProfilesListPaymentTypeItem]]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['PaymentProfile']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[PaymentProfile] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        is_active=is_active,
+        o=o,
+        organization=organization,
+        organization_uuid=organization_uuid,
+        payment_type=payment_type,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = client.get_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = client.get_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results
+
+
+async def asyncio_all(
+    *,
+    client: AuthenticatedClient,
+    is_active: Union[Unset, bool] = UNSET,
+    o: Union[Unset, list[PaymentProfilesListOItem]] = UNSET,
+    organization: Union[Unset, str] = UNSET,
+    organization_uuid: Union[Unset, UUID] = UNSET,
+    payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
+) -> list["PaymentProfile"]:
+    """Get All Pages (Async)
+
+     Fetch all pages of paginated results asynchronously. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        is_active (Union[Unset, bool]):
+        o (Union[Unset, list[PaymentProfilesListOItem]]):
+        organization (Union[Unset, str]):
+        organization_uuid (Union[Unset, UUID]):
+        payment_type (Union[Unset, list[PaymentProfilesListPaymentTypeItem]]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['PaymentProfile']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[PaymentProfile] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        is_active=is_active,
+        o=o,
+        organization=organization,
+        organization_uuid=organization_uuid,
+        payment_type=payment_type,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = await client.get_async_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = await client.get_async_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results

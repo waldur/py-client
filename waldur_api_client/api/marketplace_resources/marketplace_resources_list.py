@@ -13,6 +13,7 @@ from ...models.marketplace_resources_list_order_state_item import MarketplaceRes
 from ...models.marketplace_resources_list_state_item import MarketplaceResourcesListStateItem
 from ...models.resource import Resource
 from ...types import UNSET, Response, Unset
+from ...utils import parse_link_header
 
 
 def _get_kwargs(
@@ -838,3 +839,377 @@ async def asyncio(
             visible_to_username=visible_to_username,
         )
     ).parsed
+
+
+def sync_all(
+    *,
+    client: AuthenticatedClient,
+    backend_id: Union[Unset, str] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
+    component_count: Union[Unset, float] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    downscaled: Union[Unset, bool] = UNSET,
+    exclude_pending_transitional: Union[Unset, bool] = UNSET,
+    field: Union[Unset, list[MarketplaceResourcesListFieldItem]] = UNSET,
+    has_terminate_date: Union[Unset, bool] = UNSET,
+    lexis_links_supported: Union[Unset, bool] = UNSET,
+    limit_based: Union[Unset, bool] = UNSET,
+    limit_component_count: Union[Unset, float] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceResourcesListOItem]] = UNSET,
+    offering: Union[Unset, str] = UNSET,
+    offering_billable: Union[Unset, bool] = UNSET,
+    offering_shared: Union[Unset, bool] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
+    offering_type: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
+    only_limit_based: Union[Unset, bool] = UNSET,
+    only_usage_based: Union[Unset, bool] = UNSET,
+    order_state: Union[Unset, list[MarketplaceResourcesListOrderStateItem]] = UNSET,
+    parent_offering_uuid: Union[Unset, UUID] = UNSET,
+    paused: Union[Unset, bool] = UNSET,
+    plan_uuid: Union[Unset, UUID] = UNSET,
+    project_name: Union[Unset, str] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    restrict_member_access: Union[Unset, bool] = UNSET,
+    runtime_state: Union[Unset, str] = UNSET,
+    service_manager_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[MarketplaceResourcesListStateItem]] = UNSET,
+    usage_based: Union[Unset, bool] = UNSET,
+    visible_to_username: Union[Unset, str] = UNSET,
+) -> list["Resource"]:
+    """Get All Pages
+
+     Fetch all pages of paginated results. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        backend_id (Union[Unset, str]):
+        category_uuid (Union[Unset, UUID]):
+        component_count (Union[Unset, float]):
+        created (Union[Unset, datetime.datetime]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        downscaled (Union[Unset, bool]):
+        exclude_pending_transitional (Union[Unset, bool]):
+        field (Union[Unset, list[MarketplaceResourcesListFieldItem]]):
+        has_terminate_date (Union[Unset, bool]):
+        lexis_links_supported (Union[Unset, bool]):
+        limit_based (Union[Unset, bool]):
+        limit_component_count (Union[Unset, float]):
+        modified (Union[Unset, datetime.datetime]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceResourcesListOItem]]):
+        offering (Union[Unset, str]):
+        offering_billable (Union[Unset, bool]):
+        offering_shared (Union[Unset, bool]):
+        offering_slug (Union[Unset, list[str]]):
+        offering_type (Union[Unset, str]):
+        offering_uuid (Union[Unset, list[UUID]]):
+        only_limit_based (Union[Unset, bool]):
+        only_usage_based (Union[Unset, bool]):
+        order_state (Union[Unset, list[MarketplaceResourcesListOrderStateItem]]):
+        parent_offering_uuid (Union[Unset, UUID]):
+        paused (Union[Unset, bool]):
+        plan_uuid (Union[Unset, UUID]):
+        project_name (Union[Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
+        restrict_member_access (Union[Unset, bool]):
+        runtime_state (Union[Unset, str]):
+        service_manager_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[MarketplaceResourcesListStateItem]]):
+        usage_based (Union[Unset, bool]):
+        visible_to_username (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['Resource']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[Resource] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        backend_id=backend_id,
+        category_uuid=category_uuid,
+        component_count=component_count,
+        created=created,
+        customer=customer,
+        customer_uuid=customer_uuid,
+        downscaled=downscaled,
+        exclude_pending_transitional=exclude_pending_transitional,
+        field=field,
+        has_terminate_date=has_terminate_date,
+        lexis_links_supported=lexis_links_supported,
+        limit_based=limit_based,
+        limit_component_count=limit_component_count,
+        modified=modified,
+        name=name,
+        name_exact=name_exact,
+        o=o,
+        offering=offering,
+        offering_billable=offering_billable,
+        offering_shared=offering_shared,
+        offering_slug=offering_slug,
+        offering_type=offering_type,
+        offering_uuid=offering_uuid,
+        only_limit_based=only_limit_based,
+        only_usage_based=only_usage_based,
+        order_state=order_state,
+        parent_offering_uuid=parent_offering_uuid,
+        paused=paused,
+        plan_uuid=plan_uuid,
+        project_name=project_name,
+        project_uuid=project_uuid,
+        provider_uuid=provider_uuid,
+        query=query,
+        restrict_member_access=restrict_member_access,
+        runtime_state=runtime_state,
+        service_manager_uuid=service_manager_uuid,
+        state=state,
+        usage_based=usage_based,
+        visible_to_username=visible_to_username,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = client.get_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = client.get_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results
+
+
+async def asyncio_all(
+    *,
+    client: AuthenticatedClient,
+    backend_id: Union[Unset, str] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
+    component_count: Union[Unset, float] = UNSET,
+    created: Union[Unset, datetime.datetime] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    downscaled: Union[Unset, bool] = UNSET,
+    exclude_pending_transitional: Union[Unset, bool] = UNSET,
+    field: Union[Unset, list[MarketplaceResourcesListFieldItem]] = UNSET,
+    has_terminate_date: Union[Unset, bool] = UNSET,
+    lexis_links_supported: Union[Unset, bool] = UNSET,
+    limit_based: Union[Unset, bool] = UNSET,
+    limit_component_count: Union[Unset, float] = UNSET,
+    modified: Union[Unset, datetime.datetime] = UNSET,
+    name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[MarketplaceResourcesListOItem]] = UNSET,
+    offering: Union[Unset, str] = UNSET,
+    offering_billable: Union[Unset, bool] = UNSET,
+    offering_shared: Union[Unset, bool] = UNSET,
+    offering_slug: Union[Unset, list[str]] = UNSET,
+    offering_type: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, list[UUID]] = UNSET,
+    only_limit_based: Union[Unset, bool] = UNSET,
+    only_usage_based: Union[Unset, bool] = UNSET,
+    order_state: Union[Unset, list[MarketplaceResourcesListOrderStateItem]] = UNSET,
+    parent_offering_uuid: Union[Unset, UUID] = UNSET,
+    paused: Union[Unset, bool] = UNSET,
+    plan_uuid: Union[Unset, UUID] = UNSET,
+    project_name: Union[Unset, str] = UNSET,
+    project_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
+    restrict_member_access: Union[Unset, bool] = UNSET,
+    runtime_state: Union[Unset, str] = UNSET,
+    service_manager_uuid: Union[Unset, UUID] = UNSET,
+    state: Union[Unset, list[MarketplaceResourcesListStateItem]] = UNSET,
+    usage_based: Union[Unset, bool] = UNSET,
+    visible_to_username: Union[Unset, str] = UNSET,
+) -> list["Resource"]:
+    """Get All Pages (Async)
+
+     Fetch all pages of paginated results asynchronously. This function automatically handles pagination
+     by following the 'next' link in the Link header until all results are retrieved.
+
+     Note: page_size will be set to 100 (the maximum allowed) automatically.
+
+    Args:
+        backend_id (Union[Unset, str]):
+        category_uuid (Union[Unset, UUID]):
+        component_count (Union[Unset, float]):
+        created (Union[Unset, datetime.datetime]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        downscaled (Union[Unset, bool]):
+        exclude_pending_transitional (Union[Unset, bool]):
+        field (Union[Unset, list[MarketplaceResourcesListFieldItem]]):
+        has_terminate_date (Union[Unset, bool]):
+        lexis_links_supported (Union[Unset, bool]):
+        limit_based (Union[Unset, bool]):
+        limit_component_count (Union[Unset, float]):
+        modified (Union[Unset, datetime.datetime]):
+        name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
+        o (Union[Unset, list[MarketplaceResourcesListOItem]]):
+        offering (Union[Unset, str]):
+        offering_billable (Union[Unset, bool]):
+        offering_shared (Union[Unset, bool]):
+        offering_slug (Union[Unset, list[str]]):
+        offering_type (Union[Unset, str]):
+        offering_uuid (Union[Unset, list[UUID]]):
+        only_limit_based (Union[Unset, bool]):
+        only_usage_based (Union[Unset, bool]):
+        order_state (Union[Unset, list[MarketplaceResourcesListOrderStateItem]]):
+        parent_offering_uuid (Union[Unset, UUID]):
+        paused (Union[Unset, bool]):
+        plan_uuid (Union[Unset, UUID]):
+        project_name (Union[Unset, str]):
+        project_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
+        restrict_member_access (Union[Unset, bool]):
+        runtime_state (Union[Unset, str]):
+        service_manager_uuid (Union[Unset, UUID]):
+        state (Union[Unset, list[MarketplaceResourcesListStateItem]]):
+        usage_based (Union[Unset, bool]):
+        visible_to_username (Union[Unset, str]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        list['Resource']: Combined results from all pages
+    """
+    from urllib.parse import parse_qs, urlparse
+
+    all_results: list[Resource] = []
+
+    # Get initial request kwargs
+    kwargs = _get_kwargs(
+        backend_id=backend_id,
+        category_uuid=category_uuid,
+        component_count=component_count,
+        created=created,
+        customer=customer,
+        customer_uuid=customer_uuid,
+        downscaled=downscaled,
+        exclude_pending_transitional=exclude_pending_transitional,
+        field=field,
+        has_terminate_date=has_terminate_date,
+        lexis_links_supported=lexis_links_supported,
+        limit_based=limit_based,
+        limit_component_count=limit_component_count,
+        modified=modified,
+        name=name,
+        name_exact=name_exact,
+        o=o,
+        offering=offering,
+        offering_billable=offering_billable,
+        offering_shared=offering_shared,
+        offering_slug=offering_slug,
+        offering_type=offering_type,
+        offering_uuid=offering_uuid,
+        only_limit_based=only_limit_based,
+        only_usage_based=only_usage_based,
+        order_state=order_state,
+        parent_offering_uuid=parent_offering_uuid,
+        paused=paused,
+        plan_uuid=plan_uuid,
+        project_name=project_name,
+        project_uuid=project_uuid,
+        provider_uuid=provider_uuid,
+        query=query,
+        restrict_member_access=restrict_member_access,
+        runtime_state=runtime_state,
+        service_manager_uuid=service_manager_uuid,
+        state=state,
+        usage_based=usage_based,
+        visible_to_username=visible_to_username,
+    )
+
+    # Set page_size to maximum
+    if "params" not in kwargs:
+        kwargs["params"] = {}
+    kwargs["params"]["page_size"] = 100
+
+    # Make initial request
+    response = await client.get_async_httpx_client().request(**kwargs)
+    parsed_response = _parse_response(client=client, response=response)
+
+    if parsed_response:
+        all_results.extend(parsed_response)
+
+    # Follow pagination links
+    while True:
+        link_header = response.headers.get("Link", "")
+        links = parse_link_header(link_header)
+
+        if "next" not in links:
+            break
+
+        # Extract page number from next URL
+        next_url = links["next"]
+        parsed_url = urlparse(next_url)
+        next_params = parse_qs(parsed_url.query)
+
+        if "page" not in next_params:
+            break
+
+        # Update only the page parameter, keep all other params
+        page_number = next_params["page"][0]
+        kwargs["params"]["page"] = page_number
+
+        # Fetch next page
+        response = await client.get_async_httpx_client().request(**kwargs)
+        parsed_response = _parse_response(client=client, response=response)
+
+        if parsed_response:
+            all_results.extend(parsed_response)
+
+    return all_results
