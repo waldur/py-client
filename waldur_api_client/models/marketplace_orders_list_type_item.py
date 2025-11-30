@@ -3,6 +3,7 @@ from enum import Enum
 
 class MarketplaceOrdersListTypeItem(str, Enum):
     CREATE = "Create"
+    RESTORE = "Restore"
     TERMINATE = "Terminate"
     UPDATE = "Update"
 

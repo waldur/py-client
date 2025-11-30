@@ -4,6 +4,7 @@ from enum import Enum
 class DryRunTypeEnum(str, Enum):
     CREATE = "Create"
     PULL = "Pull"
+    RESTORE = "Restore"
     TERMINATE = "Terminate"
     UPDATE = "Update"
 

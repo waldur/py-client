@@ -3,6 +3,7 @@ from enum import Enum
 
 class RequestTypes(str, Enum):
     CREATE = "Create"
+    RESTORE = "Restore"
     TERMINATE = "Terminate"
     UPDATE = "Update"
 

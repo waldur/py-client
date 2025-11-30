@@ -1690,6 +1690,7 @@ from .resource_renew_request import ResourceRenewRequest
 from .resource_renew_request_limits import ResourceRenewRequestLimits
 from .resource_renewal_date_type_0 import ResourceRenewalDateType0
 from .resource_report_request import ResourceReportRequest
+from .resource_request import ResourceRequest
 from .resource_response_status import ResourceResponseStatus
 from .resource_restrict_member_access_request import ResourceRestrictMemberAccessRequest
 from .resource_set_limits_request import ResourceSetLimitsRequest
@@ -3477,6 +3478,7 @@ __all__ = (
     "ResourceRenewRequest",
     "ResourceRenewRequestLimits",
     "ResourceReportRequest",
+    "ResourceRequest",
     "ResourceResponseStatus",
     "ResourceRestrictMemberAccessRequest",
     "ResourceSetLimitsRequest",

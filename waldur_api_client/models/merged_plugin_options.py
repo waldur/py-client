@@ -43,6 +43,7 @@ class MergedPluginOptions:
         conceal_billing_data (Union[Unset, bool]): If set to True, pricing and components tab would be concealed.
         create_orders_on_resource_option_change (Union[Unset, bool]): If set to True, create orders when options of
             related resources are changed.
+        can_restore_resource (Union[Unset, bool]): If set to True, resource can be restored.
         default_internal_network_mtu (Union[Unset, int]): If set, it will be used as a default MTU for the first network
             in a tenant
         max_instances (Union[Unset, int]): Default limit for number of instances in OpenStack tenant
@@ -107,6 +108,7 @@ class MergedPluginOptions:
     require_purchase_order_upload: Union[Unset, bool] = UNSET
     conceal_billing_data: Union[Unset, bool] = UNSET
     create_orders_on_resource_option_change: Union[Unset, bool] = UNSET
+    can_restore_resource: Union[Unset, bool] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
     max_volumes: Union[Unset, int] = UNSET
@@ -185,6 +187,8 @@ class MergedPluginOptions:
         conceal_billing_data = self.conceal_billing_data
 
         create_orders_on_resource_option_change = self.create_orders_on_resource_option_change
+
+        can_restore_resource = self.can_restore_resource
 
         default_internal_network_mtu = self.default_internal_network_mtu
 
@@ -317,6 +321,8 @@ class MergedPluginOptions:
             field_dict["conceal_billing_data"] = conceal_billing_data
         if create_orders_on_resource_option_change is not UNSET:
             field_dict["create_orders_on_resource_option_change"] = create_orders_on_resource_option_change
+        if can_restore_resource is not UNSET:
+            field_dict["can_restore_resource"] = can_restore_resource
         if default_internal_network_mtu is not UNSET:
             field_dict["default_internal_network_mtu"] = default_internal_network_mtu
         if max_instances is not UNSET:
@@ -451,6 +457,8 @@ class MergedPluginOptions:
         conceal_billing_data = d.pop("conceal_billing_data", UNSET)
 
         create_orders_on_resource_option_change = d.pop("create_orders_on_resource_option_change", UNSET)
+
+        can_restore_resource = d.pop("can_restore_resource", UNSET)
 
         default_internal_network_mtu = d.pop("default_internal_network_mtu", UNSET)
 
@@ -589,6 +597,7 @@ class MergedPluginOptions:
             require_purchase_order_upload=require_purchase_order_upload,
             conceal_billing_data=conceal_billing_data,
             create_orders_on_resource_option_change=create_orders_on_resource_option_change,
+            can_restore_resource=can_restore_resource,
             default_internal_network_mtu=default_internal_network_mtu,
             max_instances=max_instances,
             max_volumes=max_volumes,
