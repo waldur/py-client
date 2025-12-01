@@ -173,6 +173,16 @@ class ConstanceSettingsRequestForm:
         llm_inferences_api_url (Union[Unset, str]):
         llm_inferences_api_token (Union[Unset, str]):
         llm_inferences_model (Union[Unset, str]):
+        software_catalog_eessi_update_enabled (Union[Unset, bool]):
+        software_catalog_eessi_version (Union[Unset, str]):
+        software_catalog_eessi_api_url (Union[Unset, str]):
+        software_catalog_eessi_include_extensions (Union[Unset, bool]):
+        software_catalog_spack_update_enabled (Union[Unset, bool]):
+        software_catalog_spack_version (Union[Unset, str]):
+        software_catalog_spack_data_url (Union[Unset, str]):
+        software_catalog_update_existing_packages (Union[Unset, bool]):
+        software_catalog_cleanup_enabled (Union[Unset, bool]):
+        software_catalog_retention_days (Union[Unset, int]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -333,6 +343,16 @@ class ConstanceSettingsRequestForm:
     llm_inferences_api_url: Union[Unset, str] = UNSET
     llm_inferences_api_token: Union[Unset, str] = UNSET
     llm_inferences_model: Union[Unset, str] = UNSET
+    software_catalog_eessi_update_enabled: Union[Unset, bool] = UNSET
+    software_catalog_eessi_version: Union[Unset, str] = UNSET
+    software_catalog_eessi_api_url: Union[Unset, str] = UNSET
+    software_catalog_eessi_include_extensions: Union[Unset, bool] = UNSET
+    software_catalog_spack_update_enabled: Union[Unset, bool] = UNSET
+    software_catalog_spack_version: Union[Unset, str] = UNSET
+    software_catalog_spack_data_url: Union[Unset, str] = UNSET
+    software_catalog_update_existing_packages: Union[Unset, bool] = UNSET
+    software_catalog_cleanup_enabled: Union[Unset, bool] = UNSET
+    software_catalog_retention_days: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -744,6 +764,26 @@ class ConstanceSettingsRequestForm:
 
         llm_inferences_model = self.llm_inferences_model
 
+        software_catalog_eessi_update_enabled = self.software_catalog_eessi_update_enabled
+
+        software_catalog_eessi_version = self.software_catalog_eessi_version
+
+        software_catalog_eessi_api_url = self.software_catalog_eessi_api_url
+
+        software_catalog_eessi_include_extensions = self.software_catalog_eessi_include_extensions
+
+        software_catalog_spack_update_enabled = self.software_catalog_spack_update_enabled
+
+        software_catalog_spack_version = self.software_catalog_spack_version
+
+        software_catalog_spack_data_url = self.software_catalog_spack_data_url
+
+        software_catalog_update_existing_packages = self.software_catalog_update_existing_packages
+
+        software_catalog_cleanup_enabled = self.software_catalog_cleanup_enabled
+
+        software_catalog_retention_days = self.software_catalog_retention_days
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -1069,6 +1109,26 @@ class ConstanceSettingsRequestForm:
             field_dict["LLM_INFERENCES_API_TOKEN"] = llm_inferences_api_token
         if llm_inferences_model is not UNSET:
             field_dict["LLM_INFERENCES_MODEL"] = llm_inferences_model
+        if software_catalog_eessi_update_enabled is not UNSET:
+            field_dict["SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED"] = software_catalog_eessi_update_enabled
+        if software_catalog_eessi_version is not UNSET:
+            field_dict["SOFTWARE_CATALOG_EESSI_VERSION"] = software_catalog_eessi_version
+        if software_catalog_eessi_api_url is not UNSET:
+            field_dict["SOFTWARE_CATALOG_EESSI_API_URL"] = software_catalog_eessi_api_url
+        if software_catalog_eessi_include_extensions is not UNSET:
+            field_dict["SOFTWARE_CATALOG_EESSI_INCLUDE_EXTENSIONS"] = software_catalog_eessi_include_extensions
+        if software_catalog_spack_update_enabled is not UNSET:
+            field_dict["SOFTWARE_CATALOG_SPACK_UPDATE_ENABLED"] = software_catalog_spack_update_enabled
+        if software_catalog_spack_version is not UNSET:
+            field_dict["SOFTWARE_CATALOG_SPACK_VERSION"] = software_catalog_spack_version
+        if software_catalog_spack_data_url is not UNSET:
+            field_dict["SOFTWARE_CATALOG_SPACK_DATA_URL"] = software_catalog_spack_data_url
+        if software_catalog_update_existing_packages is not UNSET:
+            field_dict["SOFTWARE_CATALOG_UPDATE_EXISTING_PACKAGES"] = software_catalog_update_existing_packages
+        if software_catalog_cleanup_enabled is not UNSET:
+            field_dict["SOFTWARE_CATALOG_CLEANUP_ENABLED"] = software_catalog_cleanup_enabled
+        if software_catalog_retention_days is not UNSET:
+            field_dict["SOFTWARE_CATALOG_RETENTION_DAYS"] = software_catalog_retention_days
 
         return field_dict
 
@@ -1575,6 +1635,26 @@ class ConstanceSettingsRequestForm:
 
         llm_inferences_model = d.pop("LLM_INFERENCES_MODEL", UNSET)
 
+        software_catalog_eessi_update_enabled = d.pop("SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED", UNSET)
+
+        software_catalog_eessi_version = d.pop("SOFTWARE_CATALOG_EESSI_VERSION", UNSET)
+
+        software_catalog_eessi_api_url = d.pop("SOFTWARE_CATALOG_EESSI_API_URL", UNSET)
+
+        software_catalog_eessi_include_extensions = d.pop("SOFTWARE_CATALOG_EESSI_INCLUDE_EXTENSIONS", UNSET)
+
+        software_catalog_spack_update_enabled = d.pop("SOFTWARE_CATALOG_SPACK_UPDATE_ENABLED", UNSET)
+
+        software_catalog_spack_version = d.pop("SOFTWARE_CATALOG_SPACK_VERSION", UNSET)
+
+        software_catalog_spack_data_url = d.pop("SOFTWARE_CATALOG_SPACK_DATA_URL", UNSET)
+
+        software_catalog_update_existing_packages = d.pop("SOFTWARE_CATALOG_UPDATE_EXISTING_PACKAGES", UNSET)
+
+        software_catalog_cleanup_enabled = d.pop("SOFTWARE_CATALOG_CLEANUP_ENABLED", UNSET)
+
+        software_catalog_retention_days = d.pop("SOFTWARE_CATALOG_RETENTION_DAYS", UNSET)
+
         constance_settings_request_form = cls(
             site_name=site_name,
             site_description=site_description,
@@ -1734,6 +1814,16 @@ class ConstanceSettingsRequestForm:
             llm_inferences_api_url=llm_inferences_api_url,
             llm_inferences_api_token=llm_inferences_api_token,
             llm_inferences_model=llm_inferences_model,
+            software_catalog_eessi_update_enabled=software_catalog_eessi_update_enabled,
+            software_catalog_eessi_version=software_catalog_eessi_version,
+            software_catalog_eessi_api_url=software_catalog_eessi_api_url,
+            software_catalog_eessi_include_extensions=software_catalog_eessi_include_extensions,
+            software_catalog_spack_update_enabled=software_catalog_spack_update_enabled,
+            software_catalog_spack_version=software_catalog_spack_version,
+            software_catalog_spack_data_url=software_catalog_spack_data_url,
+            software_catalog_update_existing_packages=software_catalog_update_existing_packages,
+            software_catalog_cleanup_enabled=software_catalog_cleanup_enabled,
+            software_catalog_retention_days=software_catalog_retention_days,
         )
 
         constance_settings_request_form.additional_properties = d

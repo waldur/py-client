@@ -20,7 +20,10 @@ class SoftwareVersion:
         modified (datetime.datetime):
         version (str):
         release_date (Union[None, datetime.date]):
+        dependencies (Any): Package dependencies (format varies by catalog type)
+        metadata (Any): Version-specific metadata (toolchains, build info, modules, etc.)
         package_name (str):
+        catalog_type (str):
         target_count (int):
     """
 
@@ -30,7 +33,10 @@ class SoftwareVersion:
     modified: datetime.datetime
     version: str
     release_date: Union[None, datetime.date]
+    dependencies: Any
+    metadata: Any
     package_name: str
+    catalog_type: str
     target_count: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -51,7 +57,13 @@ class SoftwareVersion:
         else:
             release_date = self.release_date
 
+        dependencies = self.dependencies
+
+        metadata = self.metadata
+
         package_name = self.package_name
+
+        catalog_type = self.catalog_type
 
         target_count = self.target_count
 
@@ -65,7 +77,10 @@ class SoftwareVersion:
                 "modified": modified,
                 "version": version,
                 "release_date": release_date,
+                "dependencies": dependencies,
+                "metadata": metadata,
                 "package_name": package_name,
+                "catalog_type": catalog_type,
                 "target_count": target_count,
             }
         )
@@ -100,7 +115,13 @@ class SoftwareVersion:
 
         release_date = _parse_release_date(d.pop("release_date"))
 
+        dependencies = d.pop("dependencies")
+
+        metadata = d.pop("metadata")
+
         package_name = d.pop("package_name")
+
+        catalog_type = d.pop("catalog_type")
 
         target_count = d.pop("target_count")
 
@@ -111,7 +132,10 @@ class SoftwareVersion:
             modified=modified,
             version=version,
             release_date=release_date,
+            dependencies=dependencies,
+            metadata=metadata,
             package_name=package_name,
+            catalog_type=catalog_type,
             target_count=target_count,
         )
 

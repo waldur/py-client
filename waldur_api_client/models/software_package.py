@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -28,10 +28,18 @@ class SoftwarePackage:
         name (str):
         catalog_name (str):
         catalog_version (str):
+        catalog_type (str):
+        catalog_type_display (str):
         version_count (int):
+        extension_count (int):
         versions (list['NestedSoftwareVersion']):
         description (Union[Unset, str]):
-        homepage (Union[Unset, str]):
+        homepage (Union[None, Unset, str]):
+        categories (Union[Unset, Any]): Package categories (e.g., ['bio', 'hpc', 'build-tools'])
+        licenses (Union[Unset, Any]): Software licenses (e.g., ['GPL-3.0', 'MIT'])
+        maintainers (Union[Unset, Any]): Package maintainers
+        is_extension (Union[Unset, bool]): Whether this package is an extension of another package
+        parent_software (Union[None, Unset, str]): Parent package for extensions (e.g., Python package within Python)
     """
 
     url: str
@@ -42,10 +50,18 @@ class SoftwarePackage:
     name: str
     catalog_name: str
     catalog_version: str
+    catalog_type: str
+    catalog_type_display: str
     version_count: int
+    extension_count: int
     versions: list["NestedSoftwareVersion"]
     description: Union[Unset, str] = UNSET
-    homepage: Union[Unset, str] = UNSET
+    homepage: Union[None, Unset, str] = UNSET
+    categories: Union[Unset, Any] = UNSET
+    licenses: Union[Unset, Any] = UNSET
+    maintainers: Union[Unset, Any] = UNSET
+    is_extension: Union[Unset, bool] = UNSET
+    parent_software: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -65,7 +81,13 @@ class SoftwarePackage:
 
         catalog_version = self.catalog_version
 
+        catalog_type = self.catalog_type
+
+        catalog_type_display = self.catalog_type_display
+
         version_count = self.version_count
+
+        extension_count = self.extension_count
 
         versions = []
         for versions_item_data in self.versions:
@@ -74,7 +96,25 @@ class SoftwarePackage:
 
         description = self.description
 
-        homepage = self.homepage
+        homepage: Union[None, Unset, str]
+        if isinstance(self.homepage, Unset):
+            homepage = UNSET
+        else:
+            homepage = self.homepage
+
+        categories = self.categories
+
+        licenses = self.licenses
+
+        maintainers = self.maintainers
+
+        is_extension = self.is_extension
+
+        parent_software: Union[None, Unset, str]
+        if isinstance(self.parent_software, Unset):
+            parent_software = UNSET
+        else:
+            parent_software = self.parent_software
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -88,7 +128,10 @@ class SoftwarePackage:
                 "name": name,
                 "catalog_name": catalog_name,
                 "catalog_version": catalog_version,
+                "catalog_type": catalog_type,
+                "catalog_type_display": catalog_type_display,
                 "version_count": version_count,
+                "extension_count": extension_count,
                 "versions": versions,
             }
         )
@@ -96,6 +139,16 @@ class SoftwarePackage:
             field_dict["description"] = description
         if homepage is not UNSET:
             field_dict["homepage"] = homepage
+        if categories is not UNSET:
+            field_dict["categories"] = categories
+        if licenses is not UNSET:
+            field_dict["licenses"] = licenses
+        if maintainers is not UNSET:
+            field_dict["maintainers"] = maintainers
+        if is_extension is not UNSET:
+            field_dict["is_extension"] = is_extension
+        if parent_software is not UNSET:
+            field_dict["parent_software"] = parent_software
 
         return field_dict
 
@@ -120,7 +173,13 @@ class SoftwarePackage:
 
         catalog_version = d.pop("catalog_version")
 
+        catalog_type = d.pop("catalog_type")
+
+        catalog_type_display = d.pop("catalog_type_display")
+
         version_count = d.pop("version_count")
+
+        extension_count = d.pop("extension_count")
 
         versions = []
         _versions = d.pop("versions")
@@ -131,7 +190,31 @@ class SoftwarePackage:
 
         description = d.pop("description", UNSET)
 
-        homepage = d.pop("homepage", UNSET)
+        def _parse_homepage(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        homepage = _parse_homepage(d.pop("homepage", UNSET))
+
+        categories = d.pop("categories", UNSET)
+
+        licenses = d.pop("licenses", UNSET)
+
+        maintainers = d.pop("maintainers", UNSET)
+
+        is_extension = d.pop("is_extension", UNSET)
+
+        def _parse_parent_software(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        parent_software = _parse_parent_software(d.pop("parent_software", UNSET))
 
         software_package = cls(
             url=url,
@@ -142,10 +225,18 @@ class SoftwarePackage:
             name=name,
             catalog_name=catalog_name,
             catalog_version=catalog_version,
+            catalog_type=catalog_type,
+            catalog_type_display=catalog_type_display,
             version_count=version_count,
+            extension_count=extension_count,
             versions=versions,
             description=description,
             homepage=homepage,
+            categories=categories,
+            licenses=licenses,
+            maintainers=maintainers,
+            is_extension=is_extension,
+            parent_software=parent_software,
         )
 
         software_package.additional_properties = d

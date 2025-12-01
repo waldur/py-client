@@ -7,6 +7,7 @@ class MarketplacePublicOfferingsListFieldItem(str, Enum):
     BACKEND_ID = "backend_id"
     BACKEND_METADATA = "backend_metadata"
     BILLABLE = "billable"
+    BILLING_TYPE_CLASSIFICATION = "billing_type_classification"
     CATEGORY = "category"
     CATEGORY_TITLE = "category_title"
     CATEGORY_UUID = "category_uuid"

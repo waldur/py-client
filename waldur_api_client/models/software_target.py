@@ -18,18 +18,22 @@ class SoftwareTarget:
         uuid (UUID):
         created (datetime.datetime):
         modified (datetime.datetime):
-        cpu_family (str):
-        cpu_microarchitecture (str):
-        path (str):
+        target_type (str): Type of target (architecture, platform, variant, etc.)
+        target_name (str): Target identifier (x86_64/generic, linux, variant_name, etc.)
+        target_subtype (str): Target subtype (microarchitecture, distribution, etc.)
+        location (str): Target location (CVMFS path, download URL, etc.)
+        metadata (Any): Target-specific metadata (build options, system requirements, etc.)
     """
 
     url: str
     uuid: UUID
     created: datetime.datetime
     modified: datetime.datetime
-    cpu_family: str
-    cpu_microarchitecture: str
-    path: str
+    target_type: str
+    target_name: str
+    target_subtype: str
+    location: str
+    metadata: Any
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,11 +45,15 @@ class SoftwareTarget:
 
         modified = self.modified.isoformat()
 
-        cpu_family = self.cpu_family
+        target_type = self.target_type
 
-        cpu_microarchitecture = self.cpu_microarchitecture
+        target_name = self.target_name
 
-        path = self.path
+        target_subtype = self.target_subtype
+
+        location = self.location
+
+        metadata = self.metadata
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -55,9 +63,11 @@ class SoftwareTarget:
                 "uuid": uuid,
                 "created": created,
                 "modified": modified,
-                "cpu_family": cpu_family,
-                "cpu_microarchitecture": cpu_microarchitecture,
-                "path": path,
+                "target_type": target_type,
+                "target_name": target_name,
+                "target_subtype": target_subtype,
+                "location": location,
+                "metadata": metadata,
             }
         )
 
@@ -74,20 +84,26 @@ class SoftwareTarget:
 
         modified = isoparse(d.pop("modified"))
 
-        cpu_family = d.pop("cpu_family")
+        target_type = d.pop("target_type")
 
-        cpu_microarchitecture = d.pop("cpu_microarchitecture")
+        target_name = d.pop("target_name")
 
-        path = d.pop("path")
+        target_subtype = d.pop("target_subtype")
+
+        location = d.pop("location")
+
+        metadata = d.pop("metadata")
 
         software_target = cls(
             url=url,
             uuid=uuid,
             created=created,
             modified=modified,
-            cpu_family=cpu_family,
-            cpu_microarchitecture=cpu_microarchitecture,
-            path=path,
+            target_type=target_type,
+            target_name=target_name,
+            target_subtype=target_subtype,
+            location=location,
+            metadata=metadata,
         )
 
         software_target.additional_properties = d

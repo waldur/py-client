@@ -1,8 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="NestedSoftwareTargetRequest")
 
@@ -11,48 +13,66 @@ T = TypeVar("T", bound="NestedSoftwareTargetRequest")
 class NestedSoftwareTargetRequest:
     """
     Attributes:
-        cpu_family (str):
-        cpu_microarchitecture (str):
-        path (str):
+        target_type (Union[Unset, str]): Type of target (architecture, platform, variant, etc.)
+        target_name (Union[Unset, str]): Target identifier (x86_64/generic, linux, variant_name, etc.)
+        target_subtype (Union[Unset, str]): Target subtype (microarchitecture, distribution, etc.)
+        location (Union[Unset, str]): Target location (CVMFS path, download URL, etc.)
+        metadata (Union[Unset, Any]): Target-specific metadata (build options, system requirements, etc.)
     """
 
-    cpu_family: str
-    cpu_microarchitecture: str
-    path: str
+    target_type: Union[Unset, str] = UNSET
+    target_name: Union[Unset, str] = UNSET
+    target_subtype: Union[Unset, str] = UNSET
+    location: Union[Unset, str] = UNSET
+    metadata: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        cpu_family = self.cpu_family
+        target_type = self.target_type
 
-        cpu_microarchitecture = self.cpu_microarchitecture
+        target_name = self.target_name
 
-        path = self.path
+        target_subtype = self.target_subtype
+
+        location = self.location
+
+        metadata = self.metadata
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "cpu_family": cpu_family,
-                "cpu_microarchitecture": cpu_microarchitecture,
-                "path": path,
-            }
-        )
+        field_dict.update({})
+        if target_type is not UNSET:
+            field_dict["target_type"] = target_type
+        if target_name is not UNSET:
+            field_dict["target_name"] = target_name
+        if target_subtype is not UNSET:
+            field_dict["target_subtype"] = target_subtype
+        if location is not UNSET:
+            field_dict["location"] = location
+        if metadata is not UNSET:
+            field_dict["metadata"] = metadata
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        cpu_family = d.pop("cpu_family")
+        target_type = d.pop("target_type", UNSET)
 
-        cpu_microarchitecture = d.pop("cpu_microarchitecture")
+        target_name = d.pop("target_name", UNSET)
 
-        path = d.pop("path")
+        target_subtype = d.pop("target_subtype", UNSET)
+
+        location = d.pop("location", UNSET)
+
+        metadata = d.pop("metadata", UNSET)
 
         nested_software_target_request = cls(
-            cpu_family=cpu_family,
-            cpu_microarchitecture=cpu_microarchitecture,
-            path=path,
+            target_type=target_type,
+            target_name=target_name,
+            target_subtype=target_subtype,
+            location=location,
+            metadata=metadata,
         )
 
         nested_software_target_request.additional_properties = d

@@ -204,6 +204,7 @@ from .cascade_config_request import CascadeConfigRequest
 from .cascade_step import CascadeStep
 from .cascade_step_request import CascadeStepRequest
 from .cascade_step_type_enum import CascadeStepTypeEnum
+from .catalog_type_enum import CatalogTypeEnum
 from .category_column import CategoryColumn
 from .category_column_request import CategoryColumnRequest
 from .category_component import CategoryComponent
@@ -2134,6 +2135,7 @@ __all__ = (
     "CascadeStep",
     "CascadeStepRequest",
     "CascadeStepTypeEnum",
+    "CatalogTypeEnum",
     "CategoryColumn",
     "CategoryColumnRequest",
     "CategoryComponent",
