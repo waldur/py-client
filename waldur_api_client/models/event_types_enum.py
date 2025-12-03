@@ -257,6 +257,8 @@ class EventTypesEnum(str, Enum):
     USER_DELETION_SUCCEEDED = "user_deletion_succeeded"
     USER_DETAILS_UPDATE_SUCCEEDED = "user_details_update_succeeded"
     USER_HAS_BEEN_CREATED_BY_STAFF = "user_has_been_created_by_staff"
+    USER_INVITATION_DELETED = "user_invitation_deleted"
+    USER_INVITATION_UPDATED = "user_invitation_updated"
     USER_PASSWORD_UPDATED = "user_password_updated"
     USER_PASSWORD_UPDATED_BY_STAFF = "user_password_updated_by_staff"
     USER_UPDATE_SUCCEEDED = "user_update_succeeded"

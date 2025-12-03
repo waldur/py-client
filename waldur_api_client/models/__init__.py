@@ -450,6 +450,8 @@ from .invitation_check import InvitationCheck
 from .invitation_request import InvitationRequest
 from .invitation_state import InvitationState
 from .invitation_state_enum import InvitationStateEnum
+from .invitation_update import InvitationUpdate
+from .invitation_update_request import InvitationUpdateRequest
 from .invoice import Invoice
 from .invoice_cost import InvoiceCost
 from .invoice_growth import InvoiceGrowth
@@ -1206,6 +1208,7 @@ from .patched_external_link_request_form import PatchedExternalLinkRequestForm
 from .patched_external_link_request_multipart import PatchedExternalLinkRequestMultipart
 from .patched_firecrest_job_request import PatchedFirecrestJobRequest
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
+from .patched_invitation_update_request import PatchedInvitationUpdateRequest
 from .patched_invoice_item_update_request import PatchedInvoiceItemUpdateRequest
 from .patched_issue_request import PatchedIssueRequest
 from .patched_issue_status_request import PatchedIssueStatusRequest
@@ -2371,6 +2374,8 @@ __all__ = (
     "InvitationRequest",
     "InvitationState",
     "InvitationStateEnum",
+    "InvitationUpdate",
+    "InvitationUpdateRequest",
     "Invoice",
     "InvoiceCost",
     "InvoiceGrowth",
@@ -3041,6 +3046,7 @@ __all__ = (
     "PatchedExternalLinkRequestMultipart",
     "PatchedFirecrestJobRequest",
     "PatchedIdentityProviderRequest",
+    "PatchedInvitationUpdateRequest",
     "PatchedInvoiceItemUpdateRequest",
     "PatchedIssueRequest",
     "PatchedIssueStatusRequest",

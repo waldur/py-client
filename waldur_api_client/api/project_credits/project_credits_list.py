@@ -22,6 +22,7 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -53,6 +54,8 @@ def _get_kwargs(
     if not isinstance(project_uuid, Unset):
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
+
+    params["query"] = query
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -102,6 +105,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectCredit"]]:
     """
     Args:
@@ -113,6 +117,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -131,6 +136,7 @@ def sync_detailed(
         page_size=page_size,
         project_name=project_name,
         project_uuid=project_uuid,
+        query=query,
     )
 
     response = client.get_httpx_client().request(
@@ -151,6 +157,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["ProjectCredit"]:
     """
     Args:
@@ -162,6 +169,7 @@ def sync(
         page_size (Union[Unset, int]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -181,6 +189,7 @@ def sync(
         page_size=page_size,
         project_name=project_name,
         project_uuid=project_uuid,
+        query=query,
     ).parsed
 
 
@@ -195,6 +204,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectCredit"]]:
     """
     Args:
@@ -206,6 +216,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -224,6 +235,7 @@ async def asyncio_detailed(
         page_size=page_size,
         project_name=project_name,
         project_uuid=project_uuid,
+        query=query,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -242,6 +254,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["ProjectCredit"]:
     """
     Args:
@@ -253,6 +266,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -273,6 +287,7 @@ async def asyncio(
             page_size=page_size,
             project_name=project_name,
             project_uuid=project_uuid,
+            query=query,
         )
     ).parsed
 
@@ -286,6 +301,7 @@ def sync_all(
     o: Union[Unset, list[ProjectCreditsListOItem]] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["ProjectCredit"]:
     """Get All Pages
 
@@ -301,6 +317,7 @@ def sync_all(
         o (Union[Unset, list[ProjectCreditsListOItem]]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -321,6 +338,7 @@ def sync_all(
         o=o,
         project_name=project_name,
         project_uuid=project_uuid,
+        query=query,
     )
 
     # Set page_size to maximum
@@ -374,6 +392,7 @@ async def asyncio_all(
     o: Union[Unset, list[ProjectCreditsListOItem]] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["ProjectCredit"]:
     """Get All Pages (Async)
 
@@ -389,6 +408,7 @@ async def asyncio_all(
         o (Union[Unset, list[ProjectCreditsListOItem]]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -409,6 +429,7 @@ async def asyncio_all(
         o=o,
         project_name=project_name,
         project_uuid=project_uuid,
+        query=query,
     )
 
     # Set page_size to maximum

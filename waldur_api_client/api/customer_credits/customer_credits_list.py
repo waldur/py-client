@@ -20,6 +20,7 @@ def _get_kwargs(
     o: Union[Unset, list[CustomerCreditsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -44,6 +45,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["query"] = query
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -91,6 +94,7 @@ def sync_detailed(
     o: Union[Unset, list[CustomerCreditsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> Response[list["CustomerCredit"]]:
     """
     Args:
@@ -100,6 +104,7 @@ def sync_detailed(
         o (Union[Unset, list[CustomerCreditsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -116,6 +121,7 @@ def sync_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        query=query,
     )
 
     response = client.get_httpx_client().request(
@@ -134,6 +140,7 @@ def sync(
     o: Union[Unset, list[CustomerCreditsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["CustomerCredit"]:
     """
     Args:
@@ -143,6 +150,7 @@ def sync(
         o (Union[Unset, list[CustomerCreditsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -160,6 +168,7 @@ def sync(
         o=o,
         page=page,
         page_size=page_size,
+        query=query,
     ).parsed
 
 
@@ -172,6 +181,7 @@ async def asyncio_detailed(
     o: Union[Unset, list[CustomerCreditsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> Response[list["CustomerCredit"]]:
     """
     Args:
@@ -181,6 +191,7 @@ async def asyncio_detailed(
         o (Union[Unset, list[CustomerCreditsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -197,6 +208,7 @@ async def asyncio_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        query=query,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -213,6 +225,7 @@ async def asyncio(
     o: Union[Unset, list[CustomerCreditsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["CustomerCredit"]:
     """
     Args:
@@ -222,6 +235,7 @@ async def asyncio(
         o (Union[Unset, list[CustomerCreditsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -240,6 +254,7 @@ async def asyncio(
             o=o,
             page=page,
             page_size=page_size,
+            query=query,
         )
     ).parsed
 
@@ -251,6 +266,7 @@ def sync_all(
     customer_slug: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[CustomerCreditsListOItem]] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["CustomerCredit"]:
     """Get All Pages
 
@@ -264,6 +280,7 @@ def sync_all(
         customer_slug (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[CustomerCreditsListOItem]]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -282,6 +299,7 @@ def sync_all(
         customer_slug=customer_slug,
         customer_uuid=customer_uuid,
         o=o,
+        query=query,
     )
 
     # Set page_size to maximum
@@ -333,6 +351,7 @@ async def asyncio_all(
     customer_slug: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[CustomerCreditsListOItem]] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["CustomerCredit"]:
     """Get All Pages (Async)
 
@@ -346,6 +365,7 @@ async def asyncio_all(
         customer_slug (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[CustomerCreditsListOItem]]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -364,6 +384,7 @@ async def asyncio_all(
         customer_slug=customer_slug,
         customer_uuid=customer_uuid,
         o=o,
+        query=query,
     )
 
     # Set page_size to maximum
