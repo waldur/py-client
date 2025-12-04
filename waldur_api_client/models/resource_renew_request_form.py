@@ -9,24 +9,25 @@ from .. import types
 from ..types import UNSET, File, Unset
 
 if TYPE_CHECKING:
-    from ..models.resource_renew_request_limits import ResourceRenewRequestLimits
+    from ..models.resource_renew_request_form_limits import ResourceRenewRequestFormLimits
 
 
-T = TypeVar("T", bound="ResourceRenewRequest")
+T = TypeVar("T", bound="ResourceRenewRequestForm")
 
 
 @_attrs_define
-class ResourceRenewRequest:
+class ResourceRenewRequestForm:
     """
     Attributes:
         extension_months (int): Number of months to extend the subscription by.
-        limits (Union[Unset, ResourceRenewRequestLimits]): Optional new limits for the resource. Supports upgrades only.
+        limits (Union[Unset, ResourceRenewRequestFormLimits]): Optional new limits for the resource. Supports upgrades
+            only.
         request_comment (Union[Unset, str]): Optional comment for the renewal request.
         attachment (Union[Unset, File]): Optional PDF attachment for the renewal request.
     """
 
     extension_months: int
-    limits: Union[Unset, "ResourceRenewRequestLimits"] = UNSET
+    limits: Union[Unset, "ResourceRenewRequestFormLimits"] = UNSET
     request_comment: Union[Unset, str] = UNSET
     attachment: Union[Unset, File] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -62,17 +63,17 @@ class ResourceRenewRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.resource_renew_request_limits import ResourceRenewRequestLimits
+        from ..models.resource_renew_request_form_limits import ResourceRenewRequestFormLimits
 
         d = dict(src_dict)
         extension_months = d.pop("extension_months")
 
         _limits = d.pop("limits", UNSET)
-        limits: Union[Unset, ResourceRenewRequestLimits]
+        limits: Union[Unset, ResourceRenewRequestFormLimits]
         if isinstance(_limits, Unset):
             limits = UNSET
         else:
-            limits = ResourceRenewRequestLimits.from_dict(_limits)
+            limits = ResourceRenewRequestFormLimits.from_dict(_limits)
 
         request_comment = d.pop("request_comment", UNSET)
 
@@ -83,15 +84,15 @@ class ResourceRenewRequest:
         else:
             attachment = File(payload=BytesIO(_attachment))
 
-        resource_renew_request = cls(
+        resource_renew_request_form = cls(
             extension_months=extension_months,
             limits=limits,
             request_comment=request_comment,
             attachment=attachment,
         )
 
-        resource_renew_request.additional_properties = d
-        return resource_renew_request
+        resource_renew_request_form.additional_properties = d
+        return resource_renew_request_form
 
     @property
     def additional_keys(self) -> list[str]:

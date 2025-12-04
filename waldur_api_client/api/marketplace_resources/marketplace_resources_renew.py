@@ -8,13 +8,19 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.order_uuid import OrderUUID
 from ...models.resource_renew_request import ResourceRenewRequest
+from ...models.resource_renew_request_form import ResourceRenewRequestForm
+from ...models.resource_renew_request_multipart import ResourceRenewRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ResourceRenewRequest,
+    body: Union[
+        ResourceRenewRequest,
+        ResourceRenewRequestForm,
+        ResourceRenewRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -23,9 +29,16 @@ def _get_kwargs(
         "url": f"/api/marketplace-resources/{uuid}/renew/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, ResourceRenewRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, ResourceRenewRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, ResourceRenewRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -54,7 +67,11 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceRenewRequest,
+    body: Union[
+        ResourceRenewRequest,
+        ResourceRenewRequestForm,
+        ResourceRenewRequestMultipart,
+    ],
 ) -> Response[OrderUUID]:
     """Renew a prepaid resource
 
@@ -64,6 +81,8 @@ def sync_detailed(
     Args:
         uuid (UUID):
         body (ResourceRenewRequest):
+        body (ResourceRenewRequestForm):
+        body (ResourceRenewRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -89,7 +108,11 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceRenewRequest,
+    body: Union[
+        ResourceRenewRequest,
+        ResourceRenewRequestForm,
+        ResourceRenewRequestMultipart,
+    ],
 ) -> OrderUUID:
     """Renew a prepaid resource
 
@@ -99,6 +122,8 @@ def sync(
     Args:
         uuid (UUID):
         body (ResourceRenewRequest):
+        body (ResourceRenewRequestForm):
+        body (ResourceRenewRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -119,7 +144,11 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceRenewRequest,
+    body: Union[
+        ResourceRenewRequest,
+        ResourceRenewRequestForm,
+        ResourceRenewRequestMultipart,
+    ],
 ) -> Response[OrderUUID]:
     """Renew a prepaid resource
 
@@ -129,6 +158,8 @@ async def asyncio_detailed(
     Args:
         uuid (UUID):
         body (ResourceRenewRequest):
+        body (ResourceRenewRequestForm):
+        body (ResourceRenewRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -152,7 +183,11 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceRenewRequest,
+    body: Union[
+        ResourceRenewRequest,
+        ResourceRenewRequestForm,
+        ResourceRenewRequestMultipart,
+    ],
 ) -> OrderUUID:
     """Renew a prepaid resource
 
@@ -162,6 +197,8 @@ async def asyncio(
     Args:
         uuid (UUID):
         body (ResourceRenewRequest):
+        body (ResourceRenewRequestForm):
+        body (ResourceRenewRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

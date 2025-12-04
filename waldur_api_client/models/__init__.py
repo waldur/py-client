@@ -1691,7 +1691,11 @@ from .resource_reallocate_limits_response import ResourceReallocateLimitsRespons
 from .resource_reallocate_target_request import ResourceReallocateTargetRequest
 from .resource_reallocate_target_request_allocated_limits import ResourceReallocateTargetRequestAllocatedLimits
 from .resource_renew_request import ResourceRenewRequest
+from .resource_renew_request_form import ResourceRenewRequestForm
+from .resource_renew_request_form_limits import ResourceRenewRequestFormLimits
 from .resource_renew_request_limits import ResourceRenewRequestLimits
+from .resource_renew_request_multipart import ResourceRenewRequestMultipart
+from .resource_renew_request_multipart_limits import ResourceRenewRequestMultipartLimits
 from .resource_renewal_date_type_0 import ResourceRenewalDateType0
 from .resource_report_request import ResourceReportRequest
 from .resource_request import ResourceRequest
@@ -3484,7 +3488,11 @@ __all__ = (
     "ResourceReallocateTargetRequestAllocatedLimits",
     "ResourceRenewalDateType0",
     "ResourceRenewRequest",
+    "ResourceRenewRequestForm",
+    "ResourceRenewRequestFormLimits",
     "ResourceRenewRequestLimits",
+    "ResourceRenewRequestMultipart",
+    "ResourceRenewRequestMultipartLimits",
     "ResourceReportRequest",
     "ResourceRequest",
     "ResourceResponseStatus",

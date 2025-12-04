@@ -1,3 +1,4 @@
+import json
 from collections.abc import Mapping
 from io import BytesIO
 from typing import TYPE_CHECKING, Any, TypeVar, Union
@@ -9,24 +10,25 @@ from .. import types
 from ..types import UNSET, File, Unset
 
 if TYPE_CHECKING:
-    from ..models.resource_renew_request_limits import ResourceRenewRequestLimits
+    from ..models.resource_renew_request_multipart_limits import ResourceRenewRequestMultipartLimits
 
 
-T = TypeVar("T", bound="ResourceRenewRequest")
+T = TypeVar("T", bound="ResourceRenewRequestMultipart")
 
 
 @_attrs_define
-class ResourceRenewRequest:
+class ResourceRenewRequestMultipart:
     """
     Attributes:
         extension_months (int): Number of months to extend the subscription by.
-        limits (Union[Unset, ResourceRenewRequestLimits]): Optional new limits for the resource. Supports upgrades only.
+        limits (Union[Unset, ResourceRenewRequestMultipartLimits]): Optional new limits for the resource. Supports
+            upgrades only.
         request_comment (Union[Unset, str]): Optional comment for the renewal request.
         attachment (Union[Unset, File]): Optional PDF attachment for the renewal request.
     """
 
     extension_months: int
-    limits: Union[Unset, "ResourceRenewRequestLimits"] = UNSET
+    limits: Union[Unset, "ResourceRenewRequestMultipartLimits"] = UNSET
     request_comment: Union[Unset, str] = UNSET
     attachment: Union[Unset, File] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -60,19 +62,38 @@ class ResourceRenewRequest:
 
         return field_dict
 
+    def to_multipart(self) -> types.RequestFiles:
+        files: types.RequestFiles = []
+
+        files.append(("extension_months", (None, str(self.extension_months).encode(), "text/plain")))
+
+        if not isinstance(self.limits, Unset):
+            files.append(("limits", (None, json.dumps(self.limits.to_dict()).encode(), "application/json")))
+
+        if not isinstance(self.request_comment, Unset):
+            files.append(("request_comment", (None, str(self.request_comment).encode(), "text/plain")))
+
+        if not isinstance(self.attachment, Unset):
+            files.append(("attachment", self.attachment.to_tuple()))
+
+        for prop_name, prop in self.additional_properties.items():
+            files.append((prop_name, (None, str(prop).encode(), "text/plain")))
+
+        return files
+
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.resource_renew_request_limits import ResourceRenewRequestLimits
+        from ..models.resource_renew_request_multipart_limits import ResourceRenewRequestMultipartLimits
 
         d = dict(src_dict)
         extension_months = d.pop("extension_months")
 
         _limits = d.pop("limits", UNSET)
-        limits: Union[Unset, ResourceRenewRequestLimits]
+        limits: Union[Unset, ResourceRenewRequestMultipartLimits]
         if isinstance(_limits, Unset):
             limits = UNSET
         else:
-            limits = ResourceRenewRequestLimits.from_dict(_limits)
+            limits = ResourceRenewRequestMultipartLimits.from_dict(_limits)
 
         request_comment = d.pop("request_comment", UNSET)
 
@@ -83,15 +104,15 @@ class ResourceRenewRequest:
         else:
             attachment = File(payload=BytesIO(_attachment))
 
-        resource_renew_request = cls(
+        resource_renew_request_multipart = cls(
             extension_months=extension_months,
             limits=limits,
             request_comment=request_comment,
             attachment=attachment,
         )
 
-        resource_renew_request.additional_properties = d
-        return resource_renew_request
+        resource_renew_request_multipart.additional_properties = d
+        return resource_renew_request_multipart
 
     @property
     def additional_keys(self) -> list[str]:
