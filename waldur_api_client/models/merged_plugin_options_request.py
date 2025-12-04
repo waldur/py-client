@@ -86,6 +86,8 @@ class MergedPluginOptionsRequest:
         managed_rancher_tenant_max_disk (Union[Unset, int]): Max size of disk space for tenants (GB)
         account_name_generation_policy (Union[AccountNameGenerationPolicyEnum, None, Unset]): Slurm account name
             generation policy
+        auto_approve_marketplace_script (Union[Unset, bool]): If set to False, an order requires manual provider
+            approval Default: True.
         highlight_backend_id_display (Union[Unset, bool]): Defines if backend_id should be shown more prominently by the
             UI Default: False.
         backend_id_display_label (Union[Unset, str]): Label used by UI for showing value of the backend_id Default:
@@ -149,6 +151,7 @@ class MergedPluginOptionsRequest:
     managed_rancher_tenant_max_ram: Union[Unset, int] = UNSET
     managed_rancher_tenant_max_disk: Union[Unset, int] = UNSET
     account_name_generation_policy: Union[AccountNameGenerationPolicyEnum, None, Unset] = UNSET
+    auto_approve_marketplace_script: Union[Unset, bool] = True
     highlight_backend_id_display: Union[Unset, bool] = False
     backend_id_display_label: Union[Unset, str] = "Backend ID"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -282,6 +285,8 @@ class MergedPluginOptionsRequest:
         else:
             account_name_generation_policy = self.account_name_generation_policy
 
+        auto_approve_marketplace_script = self.auto_approve_marketplace_script
+
         highlight_backend_id_display = self.highlight_backend_id_display
 
         backend_id_display_label = self.backend_id_display_label
@@ -411,6 +416,8 @@ class MergedPluginOptionsRequest:
             field_dict["managed_rancher_tenant_max_disk"] = managed_rancher_tenant_max_disk
         if account_name_generation_policy is not UNSET:
             field_dict["account_name_generation_policy"] = account_name_generation_policy
+        if auto_approve_marketplace_script is not UNSET:
+            field_dict["auto_approve_marketplace_script"] = auto_approve_marketplace_script
         if highlight_backend_id_display is not UNSET:
             field_dict["highlight_backend_id_display"] = highlight_backend_id_display
         if backend_id_display_label is not UNSET:
@@ -576,6 +583,8 @@ class MergedPluginOptionsRequest:
             d.pop("account_name_generation_policy", UNSET)
         )
 
+        auto_approve_marketplace_script = d.pop("auto_approve_marketplace_script", UNSET)
+
         highlight_backend_id_display = d.pop("highlight_backend_id_display", UNSET)
 
         backend_id_display_label = d.pop("backend_id_display_label", UNSET)
@@ -636,6 +645,7 @@ class MergedPluginOptionsRequest:
             managed_rancher_tenant_max_ram=managed_rancher_tenant_max_ram,
             managed_rancher_tenant_max_disk=managed_rancher_tenant_max_disk,
             account_name_generation_policy=account_name_generation_policy,
+            auto_approve_marketplace_script=auto_approve_marketplace_script,
             highlight_backend_id_display=highlight_backend_id_display,
             backend_id_display_label=backend_id_display_label,
         )
