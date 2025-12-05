@@ -85,7 +85,7 @@ class RobotAccount:
 
         error_traceback = self.error_traceback
 
-        state: Union[Unset, int] = UNSET
+        state: Union[Unset, str] = UNSET
         if not isinstance(self.state, Unset):
             state = self.state.value
 

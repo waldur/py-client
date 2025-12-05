@@ -1,13 +1,13 @@
-from enum import IntEnum
+from enum import Enum
 
 
-class RobotAccountStates(IntEnum):
-    VALUE_1 = 1
-    VALUE_2 = 2
-    VALUE_3 = 3
-    VALUE_4 = 4
-    VALUE_5 = 5
-    VALUE_6 = 6
+class RobotAccountStates(str, Enum):
+    CREATING = "Creating"
+    DELETED = "Deleted"
+    ERROR = "Error"
+    OK = "OK"
+    REQUESTED = "Requested"
+    REQUESTED_DELETION = "Requested deletion"
 
     def __str__(self) -> str:
         return str(self.value)
