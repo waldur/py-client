@@ -48,6 +48,7 @@ class MarketplaceOrdersListFieldItem(str, Enum):
     OLD_COST_ESTIMATE = "old_cost_estimate"
     OLD_PLAN_NAME = "old_plan_name"
     OLD_PLAN_UUID = "old_plan_uuid"
+    ORDER_SUBTYPE = "order_subtype"
     OUTPUT = "output"
     PLAN = "plan"
     PLAN_DESCRIPTION = "plan_description"

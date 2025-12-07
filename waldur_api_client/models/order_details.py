@@ -102,6 +102,7 @@ class OrderDetails:
         activation_price (Union[Unset, float]):
         termination_comment (Union[None, Unset, str]):
         backend_id (Union[Unset, str]):
+        order_subtype (Union[None, Unset, str]):
         issue (Union['IssueReference', None, Unset]):
     """
 
@@ -177,6 +178,7 @@ class OrderDetails:
     activation_price: Union[Unset, float] = UNSET
     termination_comment: Union[None, Unset, str] = UNSET
     backend_id: Union[Unset, str] = UNSET
+    order_subtype: Union[None, Unset, str] = UNSET
     issue: Union["IssueReference", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -477,6 +479,12 @@ class OrderDetails:
 
         backend_id = self.backend_id
 
+        order_subtype: Union[None, Unset, str]
+        if isinstance(self.order_subtype, Unset):
+            order_subtype = UNSET
+        else:
+            order_subtype = self.order_subtype
+
         issue: Union[None, Unset, dict[str, Any]]
         if isinstance(self.issue, Unset):
             issue = UNSET
@@ -632,6 +640,8 @@ class OrderDetails:
             field_dict["termination_comment"] = termination_comment
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
+        if order_subtype is not UNSET:
+            field_dict["order_subtype"] = order_subtype
         if issue is not UNSET:
             field_dict["issue"] = issue
 
@@ -1116,6 +1126,15 @@ class OrderDetails:
 
         backend_id = d.pop("backend_id", UNSET)
 
+        def _parse_order_subtype(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        order_subtype = _parse_order_subtype(d.pop("order_subtype", UNSET))
+
         def _parse_issue(data: object) -> Union["IssueReference", None, Unset]:
             if data is None:
                 return data
@@ -1206,6 +1225,7 @@ class OrderDetails:
             activation_price=activation_price,
             termination_comment=termination_comment,
             backend_id=backend_id,
+            order_subtype=order_subtype,
             issue=issue,
         )
 
