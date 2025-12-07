@@ -166,6 +166,7 @@ class ConstanceSettings:
         onboarding_bolagsverket_token_api_url (Union[Unset, str]):
         onboarding_bolagsverket_client_id (Union[Unset, str]):
         onboarding_bolagsverket_client_secret (Union[Unset, str]):
+        onboarding_breg_api_url (Union[Unset, str]):
         llm_chat_enabled (Union[Unset, bool]):
         llm_inferences_backend_type (Union[Unset, str]):
         llm_inferences_api_url (Union[Unset, str]):
@@ -336,6 +337,7 @@ class ConstanceSettings:
     onboarding_bolagsverket_token_api_url: Union[Unset, str] = UNSET
     onboarding_bolagsverket_client_id: Union[Unset, str] = UNSET
     onboarding_bolagsverket_client_secret: Union[Unset, str] = UNSET
+    onboarding_breg_api_url: Union[Unset, str] = UNSET
     llm_chat_enabled: Union[Unset, bool] = UNSET
     llm_inferences_backend_type: Union[Unset, str] = UNSET
     llm_inferences_api_url: Union[Unset, str] = UNSET
@@ -716,6 +718,8 @@ class ConstanceSettings:
 
         onboarding_bolagsverket_client_secret = self.onboarding_bolagsverket_client_secret
 
+        onboarding_breg_api_url = self.onboarding_breg_api_url
+
         llm_chat_enabled = self.llm_chat_enabled
 
         llm_inferences_backend_type = self.llm_inferences_backend_type
@@ -1061,6 +1065,8 @@ class ConstanceSettings:
             field_dict["ONBOARDING_BOLAGSVERKET_CLIENT_ID"] = onboarding_bolagsverket_client_id
         if onboarding_bolagsverket_client_secret is not UNSET:
             field_dict["ONBOARDING_BOLAGSVERKET_CLIENT_SECRET"] = onboarding_bolagsverket_client_secret
+        if onboarding_breg_api_url is not UNSET:
+            field_dict["ONBOARDING_BREG_API_URL"] = onboarding_breg_api_url
         if llm_chat_enabled is not UNSET:
             field_dict["LLM_CHAT_ENABLED"] = llm_chat_enabled
         if llm_inferences_backend_type is not UNSET:
@@ -1491,6 +1497,8 @@ class ConstanceSettings:
 
         onboarding_bolagsverket_client_secret = d.pop("ONBOARDING_BOLAGSVERKET_CLIENT_SECRET", UNSET)
 
+        onboarding_breg_api_url = d.pop("ONBOARDING_BREG_API_URL", UNSET)
+
         llm_chat_enabled = d.pop("LLM_CHAT_ENABLED", UNSET)
 
         llm_inferences_backend_type = d.pop("LLM_INFERENCES_BACKEND_TYPE", UNSET)
@@ -1675,6 +1683,7 @@ class ConstanceSettings:
             onboarding_bolagsverket_token_api_url=onboarding_bolagsverket_token_api_url,
             onboarding_bolagsverket_client_id=onboarding_bolagsverket_client_id,
             onboarding_bolagsverket_client_secret=onboarding_bolagsverket_client_secret,
+            onboarding_breg_api_url=onboarding_breg_api_url,
             llm_chat_enabled=llm_chat_enabled,
             llm_inferences_backend_type=llm_inferences_backend_type,
             llm_inferences_api_url=llm_inferences_api_url,

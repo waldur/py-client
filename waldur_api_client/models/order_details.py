@@ -95,7 +95,7 @@ class OrderDetails:
         new_plan_name (Union[None, Unset, str]):
         old_plan_uuid (Union[None, UUID, Unset]):
         new_plan_uuid (Union[None, UUID, Unset]):
-        old_cost_estimate (Union[None, Unset, str]):
+        old_cost_estimate (Union[Unset, float]):
         new_cost_estimate (Union[None, Unset, str]):
         can_terminate (Union[Unset, bool]):
         fixed_price (Union[Unset, float]):
@@ -170,7 +170,7 @@ class OrderDetails:
     new_plan_name: Union[None, Unset, str] = UNSET
     old_plan_uuid: Union[None, UUID, Unset] = UNSET
     new_plan_uuid: Union[None, UUID, Unset] = UNSET
-    old_cost_estimate: Union[None, Unset, str] = UNSET
+    old_cost_estimate: Union[Unset, float] = UNSET
     new_cost_estimate: Union[None, Unset, str] = UNSET
     can_terminate: Union[Unset, bool] = UNSET
     fixed_price: Union[Unset, float] = UNSET
@@ -455,11 +455,7 @@ class OrderDetails:
         else:
             new_plan_uuid = self.new_plan_uuid
 
-        old_cost_estimate: Union[None, Unset, str]
-        if isinstance(self.old_cost_estimate, Unset):
-            old_cost_estimate = UNSET
-        else:
-            old_cost_estimate = self.old_cost_estimate
+        old_cost_estimate = self.old_cost_estimate
 
         new_cost_estimate: Union[None, Unset, str]
         if isinstance(self.new_cost_estimate, Unset):
@@ -1092,14 +1088,7 @@ class OrderDetails:
 
         new_plan_uuid = _parse_new_plan_uuid(d.pop("new_plan_uuid", UNSET))
 
-        def _parse_old_cost_estimate(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        old_cost_estimate = _parse_old_cost_estimate(d.pop("old_cost_estimate", UNSET))
+        old_cost_estimate = d.pop("old_cost_estimate", UNSET)
 
         def _parse_new_cost_estimate(data: object) -> Union[None, Unset, str]:
             if data is None:

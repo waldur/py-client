@@ -883,6 +883,8 @@ from .offering_create_request_multipart_limits import OfferingCreateRequestMulti
 from .offering_description_update_request import OfferingDescriptionUpdateRequest
 from .offering_estimated_cost_policy import OfferingEstimatedCostPolicy
 from .offering_estimated_cost_policy_request import OfferingEstimatedCostPolicyRequest
+from .offering_export_parameters_request import OfferingExportParametersRequest
+from .offering_export_response import OfferingExportResponse
 from .offering_file import OfferingFile
 from .offering_file_request import OfferingFileRequest
 from .offering_file_request_form import OfferingFileRequestForm
@@ -891,6 +893,8 @@ from .offering_groups import OfferingGroups
 from .offering_image_request import OfferingImageRequest
 from .offering_image_request_form import OfferingImageRequestForm
 from .offering_image_request_multipart import OfferingImageRequestMultipart
+from .offering_import_parameters_request import OfferingImportParametersRequest
+from .offering_import_response import OfferingImportResponse
 from .offering_integration_update_request import OfferingIntegrationUpdateRequest
 from .offering_location_update_request import OfferingLocationUpdateRequest
 from .offering_options import OfferingOptions
@@ -2751,6 +2755,8 @@ __all__ = (
     "OfferingDescriptionUpdateRequest",
     "OfferingEstimatedCostPolicy",
     "OfferingEstimatedCostPolicyRequest",
+    "OfferingExportParametersRequest",
+    "OfferingExportResponse",
     "OfferingFile",
     "OfferingFileRequest",
     "OfferingFileRequestForm",
@@ -2759,6 +2765,8 @@ __all__ = (
     "OfferingImageRequest",
     "OfferingImageRequestForm",
     "OfferingImageRequestMultipart",
+    "OfferingImportParametersRequest",
+    "OfferingImportResponse",
     "OfferingIntegrationUpdateRequest",
     "OfferingLocationUpdateRequest",
     "OfferingOptions",
