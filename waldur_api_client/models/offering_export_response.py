@@ -1,11 +1,15 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+if TYPE_CHECKING:
+    from ..models.offering_export_data import OfferingExportData
+
 
 T = TypeVar("T", bound="OfferingExportResponse")
 
@@ -16,14 +20,14 @@ class OfferingExportResponse:
     Attributes:
         offering_uuid (UUID):
         offering_name (str):
-        export_data (Any):
+        export_data (OfferingExportData):
         exported_components (list[str]): List of exported component types
         export_timestamp (datetime.datetime):
     """
 
     offering_uuid: UUID
     offering_name: str
-    export_data: Any
+    export_data: "OfferingExportData"
     exported_components: list[str]
     export_timestamp: datetime.datetime
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -33,7 +37,7 @@ class OfferingExportResponse:
 
         offering_name = self.offering_name
 
-        export_data = self.export_data
+        export_data = self.export_data.to_dict()
 
         exported_components = self.exported_components
 
@@ -55,12 +59,14 @@ class OfferingExportResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.offering_export_data import OfferingExportData
+
         d = dict(src_dict)
         offering_uuid = UUID(d.pop("offering_uuid"))
 
         offering_name = d.pop("offering_name")
 
-        export_data = d.pop("export_data")
+        export_data = OfferingExportData.from_dict(d.pop("export_data"))
 
         exported_components = cast(list[str], d.pop("exported_components"))
 

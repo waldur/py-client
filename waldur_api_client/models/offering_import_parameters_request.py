@@ -1,11 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.offering_export_data_request import OfferingExportDataRequest
+
 
 T = TypeVar("T", bound="OfferingImportParametersRequest")
 
@@ -14,7 +18,7 @@ T = TypeVar("T", bound="OfferingImportParametersRequest")
 class OfferingImportParametersRequest:
     """
     Attributes:
-        offering_data (Any): The exported offering data to import
+        offering_data (OfferingExportDataRequest):
         customer (Union[None, UUID, Unset]): Target customer for imported offering. If not provided, uses current user's
             customer
         category (Union[None, Unset, str]): Target category name for imported offering. If not provided, uses category
@@ -37,7 +41,7 @@ class OfferingImportParametersRequest:
             False.
     """
 
-    offering_data: Any
+    offering_data: "OfferingExportDataRequest"
     customer: Union[None, UUID, Unset] = UNSET
     category: Union[None, Unset, str] = UNSET
     project: Union[None, UUID, Unset] = UNSET
@@ -55,7 +59,7 @@ class OfferingImportParametersRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        offering_data = self.offering_data
+        offering_data = self.offering_data.to_dict()
 
         customer: Union[None, Unset, str]
         if isinstance(self.customer, Unset):
@@ -141,8 +145,10 @@ class OfferingImportParametersRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.offering_export_data_request import OfferingExportDataRequest
+
         d = dict(src_dict)
-        offering_data = d.pop("offering_data")
+        offering_data = OfferingExportDataRequest.from_dict(d.pop("offering_data"))
 
         def _parse_customer(data: object) -> Union[None, UUID, Unset]:
             if data is None:
