@@ -40,7 +40,6 @@ class CustomersListFieldItem(str, Enum):
     PAYMENT_PROFILES = "payment_profiles"
     PHONE_NUMBER = "phone_number"
     POSTAL = "postal"
-    PROJECTS = "projects"
     PROJECTS_COUNT = "projects_count"
     PROJECT_METADATA_CHECKLIST = "project_metadata_checklist"
     REGISTRATION_CODE = "registration_code"

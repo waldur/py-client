@@ -1365,7 +1365,6 @@ from .permission_metadata_response_permissions_additional_property import (
 )
 from .permission_metadata_response_roles import PermissionMetadataResponseRoles
 from .permission_metadata_response_roles_additional_property import PermissionMetadataResponseRolesAdditionalProperty
-from .permission_project import PermissionProject
 from .permission_request import PermissionRequest
 from .plan_component import PlanComponent
 from .plan_usage_response import PlanUsageResponse
@@ -3219,7 +3218,6 @@ __all__ = (
     "PermissionMetadataResponsePermissionsAdditionalProperty",
     "PermissionMetadataResponseRoles",
     "PermissionMetadataResponseRolesAdditionalProperty",
-    "PermissionProject",
     "PermissionRequest",
     "PlanComponent",
     "PlanUsageResponse",

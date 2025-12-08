@@ -15,7 +15,6 @@ if TYPE_CHECKING:
     from ..models.nested_price_estimate import NestedPriceEstimate
     from ..models.organization_group import OrganizationGroup
     from ..models.payment_profile import PaymentProfile
-    from ..models.permission_project import PermissionProject
 
 
 T = TypeVar("T", bound="Customer")
@@ -30,7 +29,6 @@ class Customer:
         created (Union[Unset, datetime.datetime]):
         organization_groups (Union[Unset, list['OrganizationGroup']]):
         display_name (Union[Unset, str]):
-        projects (Union[Unset, list['PermissionProject']]):
         backend_id (Union[Unset, str]): Organization identifier in another application.
         image (Union[None, Unset, str]):
         blocked (Union[Unset, bool]):
@@ -84,7 +82,6 @@ class Customer:
     created: Union[Unset, datetime.datetime] = UNSET
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     display_name: Union[Unset, str] = UNSET
-    projects: Union[Unset, list["PermissionProject"]] = UNSET
     backend_id: Union[Unset, str] = UNSET
     image: Union[None, Unset, str] = UNSET
     blocked: Union[Unset, bool] = UNSET
@@ -150,13 +147,6 @@ class Customer:
                 organization_groups.append(organization_groups_item)
 
         display_name = self.display_name
-
-        projects: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.projects, Unset):
-            projects = []
-            for projects_item_data in self.projects:
-                projects_item = projects_item_data.to_dict()
-                projects.append(projects_item)
 
         backend_id = self.backend_id
 
@@ -326,8 +316,6 @@ class Customer:
             field_dict["organization_groups"] = organization_groups
         if display_name is not UNSET:
             field_dict["display_name"] = display_name
-        if projects is not UNSET:
-            field_dict["projects"] = projects
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
         if image is not UNSET:
@@ -424,7 +412,6 @@ class Customer:
         from ..models.nested_price_estimate import NestedPriceEstimate
         from ..models.organization_group import OrganizationGroup
         from ..models.payment_profile import PaymentProfile
-        from ..models.permission_project import PermissionProject
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -451,13 +438,6 @@ class Customer:
             organization_groups.append(organization_groups_item)
 
         display_name = d.pop("display_name", UNSET)
-
-        projects = []
-        _projects = d.pop("projects", UNSET)
-        for projects_item_data in _projects or []:
-            projects_item = PermissionProject.from_dict(projects_item_data)
-
-            projects.append(projects_item)
 
         backend_id = d.pop("backend_id", UNSET)
 
@@ -687,7 +667,6 @@ class Customer:
             created=created,
             organization_groups=organization_groups,
             display_name=display_name,
-            projects=projects,
             backend_id=backend_id,
             image=image,
             blocked=blocked,
