@@ -6,6 +6,7 @@ class MarketplaceProviderOfferingsCustomersListStateItem(str, Enum):
     ARCHIVED = "Archived"
     DRAFT = "Draft"
     PAUSED = "Paused"
+    UNAVAILABLE = "Unavailable"
 
     def __str__(self) -> str:
         return str(self.value)
