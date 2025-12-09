@@ -41,6 +41,9 @@ class OnboardingVerification:
             extracted from checklist answers
         user_submitted_customer_data (OnboardingVerificationUserSubmittedCustomerData): Get customer data submitted by
             the user during onboarding.
+        can_customer_be_created (bool): Boolean indicating if a customer can be created from this verification
+        customer_creation_error_message (Union[None, str]): Reason why customer cannot be created (null if can be
+            created)
         created (datetime.datetime):
         modified (datetime.datetime):
         legal_person_identifier (Union[Unset, str]): Official company registration code (required for automatic
@@ -63,6 +66,8 @@ class OnboardingVerification:
     customer: Union[None, int]
     onboarding_metadata: "OnboardingVerificationOnboardingMetadata"
     user_submitted_customer_data: "OnboardingVerificationUserSubmittedCustomerData"
+    can_customer_be_created: bool
+    customer_creation_error_message: Union[None, str]
     created: datetime.datetime
     modified: datetime.datetime
     legal_person_identifier: Union[Unset, str] = UNSET
@@ -104,6 +109,11 @@ class OnboardingVerification:
 
         user_submitted_customer_data = self.user_submitted_customer_data.to_dict()
 
+        can_customer_be_created = self.can_customer_be_created
+
+        customer_creation_error_message: Union[None, str]
+        customer_creation_error_message = self.customer_creation_error_message
+
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
@@ -138,6 +148,8 @@ class OnboardingVerification:
                 "customer": customer,
                 "onboarding_metadata": onboarding_metadata,
                 "user_submitted_customer_data": user_submitted_customer_data,
+                "can_customer_be_created": can_customer_be_created,
+                "customer_creation_error_message": customer_creation_error_message,
                 "created": created,
                 "modified": modified,
             }
@@ -207,6 +219,17 @@ class OnboardingVerification:
             d.pop("user_submitted_customer_data")
         )
 
+        can_customer_be_created = d.pop("can_customer_be_created")
+
+        def _parse_customer_creation_error_message(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        customer_creation_error_message = _parse_customer_creation_error_message(
+            d.pop("customer_creation_error_message")
+        )
+
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
@@ -247,6 +270,8 @@ class OnboardingVerification:
             customer=customer,
             onboarding_metadata=onboarding_metadata,
             user_submitted_customer_data=user_submitted_customer_data,
+            can_customer_be_created=can_customer_be_created,
+            customer_creation_error_message=customer_creation_error_message,
             created=created,
             modified=modified,
             legal_person_identifier=legal_person_identifier,
