@@ -212,6 +212,7 @@ from .category_component_request import CategoryComponentRequest
 from .category_component_usage import CategoryComponentUsage
 from .category_components import CategoryComponents
 from .category_components_request import CategoryComponentsRequest
+from .category_enum import CategoryEnum
 from .category_group import CategoryGroup
 from .category_group_request import CategoryGroupRequest
 from .category_group_request_form import CategoryGroupRequestForm
@@ -281,6 +282,8 @@ from .constance_settings_request_multipart import ConstanceSettingsRequestMultip
 from .container_format_enum import ContainerFormatEnum
 from .core_auth_token import CoreAuthToken
 from .core_states import CoreStates
+from .corrective_action import CorrectiveAction
+from .corrective_action_metadata import CorrectiveActionMetadata
 from .costs_for_period import CostsForPeriod
 from .count_projects_of_service_providers import CountProjectsOfServiceProviders
 from .count_projects_of_service_providers_grouped_by_oecd import CountProjectsOfServiceProvidersGroupedByOecd
@@ -1806,6 +1809,7 @@ from .set_mtu_request import SetMtuRequest
 from .set_offerings_username_request import SetOfferingsUsernameRequest
 from .settings_metadata_response import SettingsMetadataResponse
 from .settings_metadata_response_settings_item import SettingsMetadataResponseSettingsItem
+from .severity_enum import SeverityEnum
 from .slurm_allocation import SlurmAllocation
 from .slurm_allocation_marketplace_offering_plugin_options_type_0 import (
     SlurmAllocationMarketplaceOfferingPluginOptionsType0,
@@ -1864,7 +1868,13 @@ from .to_s_consent_dashboard import ToSConsentDashboard
 from .token_request import TokenRequest
 from .total_customer_cost import TotalCustomerCost
 from .update_offering_component_request import UpdateOfferingComponentRequest
+from .urgency_enum import UrgencyEnum
 from .user import User
+from .user_action import UserAction
+from .user_action_execution import UserActionExecution
+from .user_action_provider import UserActionProvider
+from .user_action_request import UserActionRequest
+from .user_actions_list_urgency import UserActionsListUrgency
 from .user_agreement import UserAgreement
 from .user_agreement_request import UserAgreementRequest
 from .user_agreements_count_agreement_type import UserAgreementsCountAgreementType
@@ -2173,6 +2183,7 @@ __all__ = (
     "CategoryComponents",
     "CategoryComponentsRequest",
     "CategoryComponentUsage",
+    "CategoryEnum",
     "CategoryGroup",
     "CategoryGroupRequest",
     "CategoryGroupRequestForm",
@@ -2240,6 +2251,8 @@ __all__ = (
     "ContainerFormatEnum",
     "CoreAuthToken",
     "CoreStates",
+    "CorrectiveAction",
+    "CorrectiveActionMetadata",
     "CostsForPeriod",
     "CountProjectsOfServiceProviders",
     "CountProjectsOfServiceProvidersGroupedByOecd",
@@ -3625,6 +3638,7 @@ __all__ = (
     "SetOfferingsUsernameRequest",
     "SettingsMetadataResponse",
     "SettingsMetadataResponseSettingsItem",
+    "SeverityEnum",
     "SlurmAllocation",
     "SlurmAllocationMarketplaceOfferingPluginOptionsType0",
     "SlurmAllocationRequest",
@@ -3681,7 +3695,13 @@ __all__ = (
     "ToSConsentDashboard",
     "TotalCustomerCost",
     "UpdateOfferingComponentRequest",
+    "UrgencyEnum",
     "User",
+    "UserAction",
+    "UserActionExecution",
+    "UserActionProvider",
+    "UserActionRequest",
+    "UserActionsListUrgency",
     "UserAgreement",
     "UserAgreementRequest",
     "UserAgreementsCountAgreementType",
