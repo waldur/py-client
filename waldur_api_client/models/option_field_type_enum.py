@@ -9,6 +9,7 @@ class OptionFieldTypeEnum(str, Enum):
     HTML_TEXT = "html_text"
     INTEGER = "integer"
     MONEY = "money"
+    MULTI_DATACENTER_K8S_CONFIG = "multi_datacenter_k8s_config"
     SELECT_MULTIPLE_OPENSTACK_INSTANCES = "select_multiple_openstack_instances"
     SELECT_MULTIPLE_OPENSTACK_TENANTS = "select_multiple_openstack_tenants"
     SELECT_OPENSTACK_INSTANCE = "select_openstack_instance"
