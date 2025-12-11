@@ -916,8 +916,8 @@ from .offering_groups import OfferingGroups
 from .offering_image_request import OfferingImageRequest
 from .offering_image_request_form import OfferingImageRequestForm
 from .offering_image_request_multipart import OfferingImageRequestMultipart
+from .offering_import_parameters import OfferingImportParameters
 from .offering_import_parameters_request import OfferingImportParametersRequest
-from .offering_import_response import OfferingImportResponse
 from .offering_integration_update_request import OfferingIntegrationUpdateRequest
 from .offering_location_update_request import OfferingLocationUpdateRequest
 from .offering_options import OfferingOptions
@@ -2817,8 +2817,8 @@ __all__ = (
     "OfferingImageRequest",
     "OfferingImageRequestForm",
     "OfferingImageRequestMultipart",
+    "OfferingImportParameters",
     "OfferingImportParametersRequest",
-    "OfferingImportResponse",
     "OfferingIntegrationUpdateRequest",
     "OfferingLocationUpdateRequest",
     "OfferingOptions",

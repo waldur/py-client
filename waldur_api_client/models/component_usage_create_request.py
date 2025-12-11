@@ -23,8 +23,8 @@ class ComponentUsageCreateRequest:
         usages (list['ComponentUsageItemRequest']):
         plan_period (Union[Unset, UUID]):
         resource (Union[Unset, UUID]):
-        date (Union[Unset, datetime.datetime]): Date for usage reporting (staff only). If not provided, current date is
-            used.
+        date (Union[Unset, datetime.datetime]): Date for usage reporting (staff and service providers for limit-based
+            components). If not provided, current date is used.
     """
 
     usages: list["ComponentUsageItemRequest"]

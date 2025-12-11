@@ -5,8 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.offering_import_parameters import OfferingImportParameters
 from ...models.offering_import_parameters_request import OfferingImportParametersRequest
-from ...models.offering_import_response import OfferingImportResponse
 from ...types import Response
 
 
@@ -29,11 +29,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OfferingImportResponse:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> OfferingImportParameters:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = OfferingImportResponse.from_dict(response.json())
+        response_200 = OfferingImportParameters.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -41,7 +43,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[OfferingImportResponse]:
+) -> Response[OfferingImportParameters]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,11 +56,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: OfferingImportParametersRequest,
-) -> Response[OfferingImportResponse]:
-    """Import offering data
-
-     Imports an offering and all its connected parts from YAML format. Allows configuration of which
-    components to import and how to handle conflicts.
+) -> Response[OfferingImportParameters]:
+    """Import offering data with configurable parameters.
 
     Args:
         body (OfferingImportParametersRequest):
@@ -68,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OfferingImportResponse]
+        Response[OfferingImportParameters]
     """
 
     kwargs = _get_kwargs(
@@ -86,11 +85,8 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: OfferingImportParametersRequest,
-) -> OfferingImportResponse:
-    """Import offering data
-
-     Imports an offering and all its connected parts from YAML format. Allows configuration of which
-    components to import and how to handle conflicts.
+) -> OfferingImportParameters:
+    """Import offering data with configurable parameters.
 
     Args:
         body (OfferingImportParametersRequest):
@@ -100,7 +96,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OfferingImportResponse
+        OfferingImportParameters
     """
 
     return sync_detailed(
@@ -113,11 +109,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: OfferingImportParametersRequest,
-) -> Response[OfferingImportResponse]:
-    """Import offering data
-
-     Imports an offering and all its connected parts from YAML format. Allows configuration of which
-    components to import and how to handle conflicts.
+) -> Response[OfferingImportParameters]:
+    """Import offering data with configurable parameters.
 
     Args:
         body (OfferingImportParametersRequest):
@@ -127,7 +120,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OfferingImportResponse]
+        Response[OfferingImportParameters]
     """
 
     kwargs = _get_kwargs(
@@ -143,11 +136,8 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: OfferingImportParametersRequest,
-) -> OfferingImportResponse:
-    """Import offering data
-
-     Imports an offering and all its connected parts from YAML format. Allows configuration of which
-    components to import and how to handle conflicts.
+) -> OfferingImportParameters:
+    """Import offering data with configurable parameters.
 
     Args:
         body (OfferingImportParametersRequest):
@@ -157,7 +147,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OfferingImportResponse
+        OfferingImportParameters
     """
 
     return (

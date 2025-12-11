@@ -8,17 +8,17 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.offering_export_data_request import OfferingExportDataRequest
+    from ..models.offering_export_data import OfferingExportData
 
 
-T = TypeVar("T", bound="OfferingImportParametersRequest")
+T = TypeVar("T", bound="OfferingImportParameters")
 
 
 @_attrs_define
-class OfferingImportParametersRequest:
+class OfferingImportParameters:
     """
     Attributes:
-        offering_data (OfferingExportDataRequest):
+        offering_data (OfferingExportData):
         customer (Union[None, UUID, Unset]): Target customer for imported offering. If not provided, uses current user's
             customer
         category (Union[None, Unset, str]): Target category name for imported offering. If not provided, uses category
@@ -39,7 +39,7 @@ class OfferingImportParametersRequest:
             False.
     """
 
-    offering_data: "OfferingExportDataRequest"
+    offering_data: "OfferingExportData"
     customer: Union[None, UUID, Unset] = UNSET
     category: Union[None, Unset, str] = UNSET
     project: Union[None, UUID, Unset] = UNSET
@@ -138,10 +138,10 @@ class OfferingImportParametersRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.offering_export_data_request import OfferingExportDataRequest
+        from ..models.offering_export_data import OfferingExportData
 
         d = dict(src_dict)
-        offering_data = OfferingExportDataRequest.from_dict(d.pop("offering_data"))
+        offering_data = OfferingExportData.from_dict(d.pop("offering_data"))
 
         def _parse_customer(data: object) -> Union[None, UUID, Unset]:
             if data is None:
@@ -206,7 +206,7 @@ class OfferingImportParametersRequest:
 
         overwrite_existing = d.pop("overwrite_existing", UNSET)
 
-        offering_import_parameters_request = cls(
+        offering_import_parameters = cls(
             offering_data=offering_data,
             customer=customer,
             category=category,
@@ -223,8 +223,8 @@ class OfferingImportParametersRequest:
             overwrite_existing=overwrite_existing,
         )
 
-        offering_import_parameters_request.additional_properties = d
-        return offering_import_parameters_request
+        offering_import_parameters.additional_properties = d
+        return offering_import_parameters
 
     @property
     def additional_keys(self) -> list[str]:

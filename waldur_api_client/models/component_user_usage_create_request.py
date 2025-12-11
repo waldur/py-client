@@ -18,8 +18,8 @@ class ComponentUserUsageCreateRequest:
         username (str):
         usage (Union[Unset, str]):
         user (Union[Unset, str]):
-        date (Union[Unset, datetime.datetime]): Date for usage reporting (staff only). If not provided, current date is
-            used.
+        date (Union[Unset, datetime.datetime]): Date for usage reporting (staff and service providers for limit-based
+            components). If not provided, current date is used.
     """
 
     username: str
