@@ -11,7 +11,7 @@ T = TypeVar("T", bound="ResourceResponseStatus")
 class ResourceResponseStatus:
     """
     Attributes:
-        status (str):
+        status (str): Status of the resource response
     """
 
     status: str

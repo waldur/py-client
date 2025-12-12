@@ -12,11 +12,11 @@ T = TypeVar("T", bound="PlanUsageResponse")
 class PlanUsageResponse:
     """
     Attributes:
-        plan_uuid (UUID):
-        plan_name (str):
-        limit (int):
-        usage (int):
-        remaining (int):
+        plan_uuid (UUID): UUID of the plan
+        plan_name (str): Name of the plan
+        limit (int): Usage limit
+        usage (int): Current usage count
+        remaining (int): Remaining usage
         offering_uuid (UUID):
         offering_name (str):
         customer_provider_uuid (UUID):

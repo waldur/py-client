@@ -11,7 +11,7 @@ T = TypeVar("T", bound="OfferingUserUpdateRestrictionRequest")
 class OfferingUserUpdateRestrictionRequest:
     """
     Attributes:
-        is_restricted (bool):
+        is_restricted (bool): Whether the offering user should be restricted from accessing resources
     """
 
     is_restricted: bool

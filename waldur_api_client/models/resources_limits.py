@@ -12,12 +12,12 @@ T = TypeVar("T", bound="ResourcesLimits")
 class ResourcesLimits:
     """
     Attributes:
-        offering_uuid (UUID):
-        name (str):
-        value (int):
-        offering_country (str):
-        organization_group_name (str):
-        organization_group_uuid (str):
+        offering_uuid (UUID): UUID of the offering
+        name (str): Name of the limit
+        value (int): Limit value
+        offering_country (str): Country of the offering
+        organization_group_name (str): Name of the organization group
+        organization_group_uuid (str): UUID of the organization group
     """
 
     offering_uuid: UUID

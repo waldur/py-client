@@ -15,7 +15,7 @@ T = TypeVar("T", bound="QuotasUpdateRequest")
 class QuotasUpdateRequest:
     """
     Attributes:
-        quotas (QuotasUpdateRequestQuotas):
+        quotas (QuotasUpdateRequestQuotas): Dictionary of quotas to update
     """
 
     quotas: "QuotasUpdateRequestQuotas"

@@ -9,7 +9,7 @@ T = TypeVar("T", bound="QuotasUpdateRequestQuotas")
 
 @_attrs_define
 class QuotasUpdateRequestQuotas:
-    """ """
+    """Dictionary of quotas to update"""
 
     additional_properties: dict[str, int] = _attrs_field(init=False, factory=dict)
 

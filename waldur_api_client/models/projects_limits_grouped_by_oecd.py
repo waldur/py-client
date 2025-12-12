@@ -15,7 +15,7 @@ T = TypeVar("T", bound="ProjectsLimitsGroupedByOecd")
 class ProjectsLimitsGroupedByOecd:
     """
     Attributes:
-        limits (ProjectsLimitsGroupedByOecdLimits):
+        limits (ProjectsLimitsGroupedByOecdLimits): Nested dictionary of resource limits by category and component type
     """
 
     limits: "ProjectsLimitsGroupedByOecdLimits"

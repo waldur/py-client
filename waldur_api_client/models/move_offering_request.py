@@ -11,8 +11,8 @@ T = TypeVar("T", bound="MoveOfferingRequest")
 class MoveOfferingRequest:
     """
     Attributes:
-        customer (str):
-        preserve_permissions (bool):
+        customer (str): Target customer URL with service provider profile where the offering should be moved
+        preserve_permissions (bool): Whether to preserve existing permissions when moving the offering
     """
 
     customer: str

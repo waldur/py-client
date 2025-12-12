@@ -13,8 +13,8 @@ T = TypeVar("T", bound="CheckUniqueBackendIDRequest")
 class CheckUniqueBackendIDRequest:
     """
     Attributes:
-        backend_id (str):
-        check_all_offerings (Union[Unset, bool]):  Default: False.
+        backend_id (str): Backend identifier to check
+        check_all_offerings (Union[Unset, bool]): Check across all offerings Default: False.
     """
 
     backend_id: str

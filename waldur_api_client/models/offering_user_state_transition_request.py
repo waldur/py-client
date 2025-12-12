@@ -13,8 +13,8 @@ T = TypeVar("T", bound="OfferingUserStateTransitionRequest")
 class OfferingUserStateTransitionRequest:
     """
     Attributes:
-        comment (Union[Unset, str]):
-        comment_url (Union[Unset, str]):
+        comment (Union[Unset, str]): Comment explaining the state transition
+        comment_url (Union[Unset, str]): URL reference related to the state transition comment
     """
 
     comment: Union[Unset, str] = UNSET

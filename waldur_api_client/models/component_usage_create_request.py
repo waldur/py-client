@@ -20,9 +20,9 @@ T = TypeVar("T", bound="ComponentUsageCreateRequest")
 class ComponentUsageCreateRequest:
     """
     Attributes:
-        usages (list['ComponentUsageItemRequest']):
-        plan_period (Union[Unset, UUID]):
-        resource (Union[Unset, UUID]):
+        usages (list['ComponentUsageItemRequest']): List of component usage items to report
+        plan_period (Union[Unset, UUID]): UUID of the specific resource plan period for usage reporting
+        resource (Union[Unset, UUID]): UUID of the resource for usage reporting (required if plan_period not provided)
         date (Union[Unset, datetime.datetime]): Date for usage reporting (staff and service providers for limit-based
             components). If not provided, current date is used.
     """

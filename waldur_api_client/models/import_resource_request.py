@@ -14,8 +14,8 @@ T = TypeVar("T", bound="ImportResourceRequest")
 class ImportResourceRequest:
     """
     Attributes:
-        backend_id (str):
-        project (UUID):
+        backend_id (str): Backend identifier of the resource
+        project (UUID): Target project for the resource
         plan (Union[Unset, UUID]):
         additional_details (Union[Unset, Any]):  Default: {}.
     """

@@ -11,10 +11,10 @@ T = TypeVar("T", bound="CustomerOecdCodeStats")
 class CustomerOecdCodeStats:
     """
     Attributes:
-        name (str):
-        uuid (str):
-        count (int):
-        abbreviation (str):
+        name (str): Name from the record
+        uuid (str): UUID from the record
+        count (int): Count value from the record
+        abbreviation (str): Customer abbreviation from the record
         oecd (str):
     """
 

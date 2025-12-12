@@ -11,8 +11,8 @@ T = TypeVar("T", bound="VersionAdoption")
 class VersionAdoption:
     """
     Attributes:
-        version (str):
-        users_count (int):
+        version (str): Version identifier
+        users_count (int): Number of users on this version
     """
 
     version: str

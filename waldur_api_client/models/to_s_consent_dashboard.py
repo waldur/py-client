@@ -16,12 +16,12 @@ T = TypeVar("T", bound="ToSConsentDashboard")
 class ToSConsentDashboard:
     """
     Attributes:
-        active_users_count (int):
-        total_users_count (int):
-        active_users_percentage (float):
-        accepted_consents_count (int):
-        revoked_consents_count (int):
-        total_consents_count (int):
+        active_users_count (int): Number of active users
+        total_users_count (int): Total number of users
+        active_users_percentage (float): Percentage of active users
+        accepted_consents_count (int): Number of accepted consents
+        revoked_consents_count (int): Number of revoked consents
+        total_consents_count (int): Total number of consents
         revoked_consents_over_time (list['TimeSeriesToSData']):
         tos_version_adoption (list['VersionAdoption']):
         active_users_over_time (list['TimeSeriesToSData']):

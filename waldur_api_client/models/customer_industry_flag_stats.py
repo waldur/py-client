@@ -11,11 +11,11 @@ T = TypeVar("T", bound="CustomerIndustryFlagStats")
 class CustomerIndustryFlagStats:
     """
     Attributes:
-        name (str):
-        uuid (str):
-        count (int):
-        abbreviation (str):
-        is_industry (str):
+        name (str): Name from the record
+        uuid (str): UUID from the record
+        count (int): Count value from the record
+        abbreviation (str): Customer abbreviation from the record
+        is_industry (str): Industry classification flag
     """
 
     name: str

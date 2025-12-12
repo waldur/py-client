@@ -12,8 +12,8 @@ T = TypeVar("T", bound="SubresourceOffering")
 class SubresourceOffering:
     """
     Attributes:
-        uuid (UUID):
-        type_ (str):
+        uuid (UUID): UUID of the offering
+        type_ (str): Type of the offering
     """
 
     uuid: UUID

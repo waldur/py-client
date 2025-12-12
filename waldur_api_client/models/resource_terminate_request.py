@@ -13,7 +13,7 @@ T = TypeVar("T", bound="ResourceTerminateRequest")
 class ResourceTerminateRequest:
     """
     Attributes:
-        attributes (Union[Unset, Any]):
+        attributes (Union[Unset, Any]): Optional attributes/parameters to pass to the termination operation
     """
 
     attributes: Union[Unset, Any] = UNSET

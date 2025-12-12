@@ -11,9 +11,9 @@ T = TypeVar("T", bound="CountStats")
 class CountStats:
     """
     Attributes:
-        name (str):
-        uuid (str):
-        count (int):
+        name (str): Name from the record
+        uuid (str): UUID from the record
+        count (int): Count value from the record
     """
 
     name: str

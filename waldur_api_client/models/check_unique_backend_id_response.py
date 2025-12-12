@@ -11,7 +11,7 @@ T = TypeVar("T", bound="CheckUniqueBackendIDResponse")
 class CheckUniqueBackendIDResponse:
     """
     Attributes:
-        is_unique (bool):
+        is_unique (bool): Whether the backend ID is unique
     """
 
     is_unique: bool

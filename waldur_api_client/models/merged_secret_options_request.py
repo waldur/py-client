@@ -21,7 +21,7 @@ class MergedSecretOptionsRequest:
         heappe_cluster_password (Union[Unset, str]): HEAppE cluster password
         heappe_password (Union[Unset, str]): HEAppE password
         ipv4_external_ip_mapping (Union[Unset, list['IPMappingRequest']]): OpenStack IPv4 external IP mapping
-        openstack_api_tls_certificate (Union[Unset, str]):
+        openstack_api_tls_certificate (Union[Unset, str]): TLS certificate for OpenStack API connection verification
         dns_nameservers (Union[Unset, list[str]]): Default value for new subnets DNS name servers. Should be defined as
             list.
         shared_user_password (Union[Unset, str]): GLAuth shared user password
@@ -38,8 +38,9 @@ class MergedSecretOptionsRequest:
         backend_url (Union[Unset, str]):
         username (Union[Unset, str]):
         password (Union[Unset, str]):
-        cloud_init_template (Union[Unset, str]):
-        managed_rancher_load_balancer_cloud_init_template (Union[Unset, str]):
+        cloud_init_template (Union[Unset, str]): Cloud-init template for Rancher cluster node initialization
+        managed_rancher_load_balancer_cloud_init_template (Union[Unset, str]): Cloud-init template for managed Rancher
+            load balancer initialization
         vault_host (Union[Unset, str]): Host of the Vault server
         vault_port (Union[Unset, int]): Port of the Vault server
         vault_token (Union[Unset, str]): Token for the Vault server

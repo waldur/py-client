@@ -15,7 +15,7 @@ T = TypeVar("T", bound="ProjectsUsagesGroupedByIndustryFlagUsages")
 
 @_attrs_define
 class ProjectsUsagesGroupedByIndustryFlagUsages:
-    """ """
+    """Nested dictionary of usage values by category and component type"""
 
     additional_properties: dict[str, "ProjectsUsagesGroupedByIndustryFlagUsagesAdditionalProperty"] = _attrs_field(
         init=False, factory=dict

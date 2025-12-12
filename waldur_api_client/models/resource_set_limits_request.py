@@ -11,7 +11,7 @@ T = TypeVar("T", bound="ResourceSetLimitsRequest")
 class ResourceSetLimitsRequest:
     """
     Attributes:
-        limits (Any):
+        limits (Any): Dictionary mapping component types to their new limit values
     """
 
     limits: Any

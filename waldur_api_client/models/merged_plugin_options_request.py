@@ -69,18 +69,28 @@ class MergedPluginOptionsRequest:
         flavors_regex (Union[Unset, str]): Regular expression to limit flavors list
         openstack_offering_uuid_list (Union[Unset, list[str]]): List of UUID of OpenStack offerings where tenant can be
             created
-        managed_rancher_server_flavor_name (Union[Unset, str]):
-        managed_rancher_server_system_volume_size_gb (Union[Unset, int]):
-        managed_rancher_server_system_volume_type_name (Union[Unset, str]):
-        managed_rancher_server_data_volume_size_gb (Union[Unset, int]):
-        managed_rancher_server_data_volume_type_name (Union[Unset, str]):
-        managed_rancher_worker_system_volume_size_gb (Union[Unset, int]):
-        managed_rancher_worker_system_volume_type_name (Union[Unset, str]):
-        managed_rancher_load_balancer_flavor_name (Union[Unset, str]):
-        managed_rancher_load_balancer_system_volume_size_gb (Union[Unset, int]):
-        managed_rancher_load_balancer_system_volume_type_name (Union[Unset, str]):
-        managed_rancher_load_balancer_data_volume_size_gb (Union[Unset, int]):
-        managed_rancher_load_balancer_data_volume_type_name (Union[Unset, str]):
+        managed_rancher_server_flavor_name (Union[Unset, str]): Flavor name for managed Rancher server instances
+        managed_rancher_server_system_volume_size_gb (Union[Unset, int]): System volume size in GB for managed Rancher
+            server
+        managed_rancher_server_system_volume_type_name (Union[Unset, str]): System volume type name for managed Rancher
+            server
+        managed_rancher_server_data_volume_size_gb (Union[Unset, int]): Data volume size in GB for managed Rancher
+            server
+        managed_rancher_server_data_volume_type_name (Union[Unset, str]): Data volume type name for managed Rancher
+            server
+        managed_rancher_worker_system_volume_size_gb (Union[Unset, int]): System volume size in GB for managed Rancher
+            worker nodes
+        managed_rancher_worker_system_volume_type_name (Union[Unset, str]): System volume type name for managed Rancher
+            worker nodes
+        managed_rancher_load_balancer_flavor_name (Union[Unset, str]): Flavor name for managed Rancher load balancer
+        managed_rancher_load_balancer_system_volume_size_gb (Union[Unset, int]): System volume size in GB for managed
+            Rancher load balancer
+        managed_rancher_load_balancer_system_volume_type_name (Union[Unset, str]): System volume type name for managed
+            Rancher load balancer
+        managed_rancher_load_balancer_data_volume_size_gb (Union[Unset, int]): Data volume size in GB for managed
+            Rancher load balancer
+        managed_rancher_load_balancer_data_volume_type_name (Union[Unset, str]): Data volume type name for managed
+            Rancher load balancer
         managed_rancher_tenant_max_cpu (Union[Unset, int]): Max number of vCPUs for tenants
         managed_rancher_tenant_max_ram (Union[Unset, int]): Max number of RAM for tenants (GB)
         managed_rancher_tenant_max_disk (Union[Unset, int]): Max size of disk space for tenants (GB)

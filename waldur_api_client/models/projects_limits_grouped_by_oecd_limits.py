@@ -15,7 +15,7 @@ T = TypeVar("T", bound="ProjectsLimitsGroupedByOecdLimits")
 
 @_attrs_define
 class ProjectsLimitsGroupedByOecdLimits:
-    """ """
+    """Nested dictionary of resource limits by category and component type"""
 
     additional_properties: dict[str, "ProjectsLimitsGroupedByOecdLimitsAdditionalProperty"] = _attrs_field(
         init=False, factory=dict

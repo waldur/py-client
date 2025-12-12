@@ -15,7 +15,8 @@ T = TypeVar("T", bound="ProjectsUsagesGroupedByIndustryFlag")
 class ProjectsUsagesGroupedByIndustryFlag:
     """
     Attributes:
-        usages (ProjectsUsagesGroupedByIndustryFlagUsages):
+        usages (ProjectsUsagesGroupedByIndustryFlagUsages): Nested dictionary of usage values by category and component
+            type
     """
 
     usages: "ProjectsUsagesGroupedByIndustryFlagUsages"

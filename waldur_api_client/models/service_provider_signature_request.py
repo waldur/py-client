@@ -14,9 +14,9 @@ T = TypeVar("T", bound="ServiceProviderSignatureRequest")
 class ServiceProviderSignatureRequest:
     """
     Attributes:
-        customer (UUID):
-        data (str):
-        dry_run (Union[Unset, bool]):  Default: False.
+        customer (UUID): Service provider customer UUID
+        data (str): JWT-encoded data signed with the service provider's API secret code
+        dry_run (Union[Unset, bool]): If true, validates the signature without executing the operation Default: False.
     """
 
     customer: UUID
