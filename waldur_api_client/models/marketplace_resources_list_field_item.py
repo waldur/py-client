@@ -39,6 +39,7 @@ class MarketplaceResourcesListFieldItem(str, Enum):
     OFFERING_PLUGIN_OPTIONS = "offering_plugin_options"
     OFFERING_SHARED = "offering_shared"
     OFFERING_SLUG = "offering_slug"
+    OFFERING_STATE = "offering_state"
     OFFERING_THUMBNAIL = "offering_thumbnail"
     OFFERING_TYPE = "offering_type"
     OFFERING_UUID = "offering_uuid"

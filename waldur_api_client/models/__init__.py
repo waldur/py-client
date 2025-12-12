@@ -175,6 +175,7 @@ from .broadcast_messages_list_o_item import BroadcastMessagesListOItem
 from .broadcast_messages_list_state import BroadcastMessagesListState
 from .broadcast_messages_recipients_retrieve_field_item import BroadcastMessagesRecipientsRetrieveFieldItem
 from .broadcast_messages_retrieve_field_item import BroadcastMessagesRetrieveFieldItem
+from .bulk_silence_response import BulkSilenceResponse
 from .call_attach_documents_request import CallAttachDocumentsRequest
 from .call_compliance_overview import CallComplianceOverview
 from .call_compliance_overview_checklist_type_0 import CallComplianceOverviewChecklistType0
@@ -402,6 +403,10 @@ from .events_list_field_item import EventsListFieldItem
 from .events_list_o_item import EventsListOItem
 from .events_retrieve_field_item import EventsRetrieveFieldItem
 from .events_scope_types_retrieve_field_item import EventsScopeTypesRetrieveFieldItem
+from .execute_action_error_response import ExecuteActionErrorResponse
+from .execute_action_request import ExecuteActionRequest
+from .execute_action_response import ExecuteActionResponse
+from .execute_action_response_metadata import ExecuteActionResponseMetadata
 from .execution_state_enum import ExecutionStateEnum
 from .export_component_data import ExportComponentData
 from .export_component_data_request import ExportComponentDataRequest
@@ -519,6 +524,8 @@ from .jira_issue_fields_request_comment import JiraIssueFieldsRequestComment
 from .jira_issue_project import JiraIssueProject
 from .jira_issue_project_request import JiraIssueProjectRequest
 from .jira_issue_request import JiraIssueRequest
+from .k8s_default_configuration import K8SDefaultConfiguration
+from .k8s_default_configuration_request import K8SDefaultConfigurationRequest
 from .keycloak_group import KeycloakGroup
 from .keycloak_user_group_membership import KeycloakUserGroupMembership
 from .keycloak_user_group_membership_request import KeycloakUserGroupMembershipRequest
@@ -1810,6 +1817,8 @@ from .set_offerings_username_request import SetOfferingsUsernameRequest
 from .settings_metadata_response import SettingsMetadataResponse
 from .settings_metadata_response_settings_item import SettingsMetadataResponseSettingsItem
 from .severity_enum import SeverityEnum
+from .silence_action_request import SilenceActionRequest
+from .silence_action_response import SilenceActionResponse
 from .slurm_allocation import SlurmAllocation
 from .slurm_allocation_marketplace_offering_plugin_options_type_0 import (
     SlurmAllocationMarketplaceOfferingPluginOptionsType0,
@@ -1867,13 +1876,19 @@ from .time_series_to_s_data import TimeSeriesToSData
 from .to_s_consent_dashboard import ToSConsentDashboard
 from .token_request import TokenRequest
 from .total_customer_cost import TotalCustomerCost
+from .unsilence_action_response import UnsilenceActionResponse
+from .update_actions_request import UpdateActionsRequest
+from .update_actions_response import UpdateActionsResponse
 from .update_offering_component_request import UpdateOfferingComponentRequest
 from .urgency_enum import UrgencyEnum
 from .user import User
 from .user_action import UserAction
 from .user_action_execution import UserActionExecution
 from .user_action_provider import UserActionProvider
-from .user_action_request import UserActionRequest
+from .user_action_summary import UserActionSummary
+from .user_action_summary_by_type import UserActionSummaryByType
+from .user_action_summary_by_urgency import UserActionSummaryByUrgency
+from .user_actions_count_urgency import UserActionsCountUrgency
 from .user_actions_list_urgency import UserActionsListUrgency
 from .user_agreement import UserAgreement
 from .user_agreement_request import UserAgreementRequest
@@ -2146,6 +2161,7 @@ __all__ = (
     "BroadcastMessagesRecipientsRetrieveFieldItem",
     "BroadcastMessagesRetrieveFieldItem",
     "BroadcastMessageStateEnum",
+    "BulkSilenceResponse",
     "CallAttachDocumentsRequest",
     "CallComplianceOverview",
     "CallComplianceOverviewChecklistType0",
@@ -2365,6 +2381,10 @@ __all__ = (
     "EventSubscriptionsCountOItem",
     "EventSubscriptionsListOItem",
     "EventTypesEnum",
+    "ExecuteActionErrorResponse",
+    "ExecuteActionRequest",
+    "ExecuteActionResponse",
+    "ExecuteActionResponseMetadata",
     "ExecutionStateEnum",
     "ExportComponentData",
     "ExportComponentDataRequest",
@@ -2480,6 +2500,8 @@ __all__ = (
     "JiraIssueProject",
     "JiraIssueProjectRequest",
     "JiraIssueRequest",
+    "K8SDefaultConfiguration",
+    "K8SDefaultConfigurationRequest",
     "KeycloakGroup",
     "KeycloakUserGroupMembership",
     "KeycloakUserGroupMembershipRequest",
@@ -3639,6 +3661,8 @@ __all__ = (
     "SettingsMetadataResponse",
     "SettingsMetadataResponseSettingsItem",
     "SeverityEnum",
+    "SilenceActionRequest",
+    "SilenceActionResponse",
     "SlurmAllocation",
     "SlurmAllocationMarketplaceOfferingPluginOptionsType0",
     "SlurmAllocationRequest",
@@ -3694,14 +3718,20 @@ __all__ = (
     "TokenRequest",
     "ToSConsentDashboard",
     "TotalCustomerCost",
+    "UnsilenceActionResponse",
+    "UpdateActionsRequest",
+    "UpdateActionsResponse",
     "UpdateOfferingComponentRequest",
     "UrgencyEnum",
     "User",
     "UserAction",
     "UserActionExecution",
     "UserActionProvider",
-    "UserActionRequest",
+    "UserActionsCountUrgency",
     "UserActionsListUrgency",
+    "UserActionSummary",
+    "UserActionSummaryByType",
+    "UserActionSummaryByUrgency",
     "UserAgreement",
     "UserAgreementRequest",
     "UserAgreementsCountAgreementType",

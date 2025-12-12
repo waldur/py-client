@@ -16,6 +16,7 @@ class OptionFieldTypeEnum(str, Enum):
     SELECT_OPENSTACK_TENANT = "select_openstack_tenant"
     SELECT_STRING = "select_string"
     SELECT_STRING_MULTI = "select_string_multi"
+    SINGLE_DATACENTER_K8S_CONFIG = "single_datacenter_k8s_config"
     STRING = "string"
     TEXT = "text"
     TIME = "time"

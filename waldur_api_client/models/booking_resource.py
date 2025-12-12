@@ -111,6 +111,7 @@ class BookingResource:
         user_requires_reconsent (Union[Unset, bool]): Check if the current user needs to re-consent for this resource's
             offering.
         renewal_date (Union['BookingResourceRenewalDateType0', None, Unset]):
+        offering_state (Union[Unset, ResourceState]):
         created_by (Union[Unset, str]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
@@ -198,6 +199,7 @@ class BookingResource:
     customer_slug: Union[Unset, str] = UNSET
     user_requires_reconsent: Union[Unset, bool] = UNSET
     renewal_date: Union["BookingResourceRenewalDateType0", None, Unset] = UNSET
+    offering_state: Union[Unset, ResourceState] = UNSET
     created_by: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
@@ -479,6 +481,10 @@ class BookingResource:
         else:
             renewal_date = self.renewal_date
 
+        offering_state: Union[Unset, str] = UNSET
+        if not isinstance(self.offering_state, Unset):
+            offering_state = self.offering_state.value
+
         created_by = self.created_by
 
         created_by_username = self.created_by_username
@@ -653,6 +659,8 @@ class BookingResource:
             field_dict["user_requires_reconsent"] = user_requires_reconsent
         if renewal_date is not UNSET:
             field_dict["renewal_date"] = renewal_date
+        if offering_state is not UNSET:
+            field_dict["offering_state"] = offering_state
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_username is not UNSET:
@@ -1091,6 +1099,13 @@ class BookingResource:
 
         renewal_date = _parse_renewal_date(d.pop("renewal_date", UNSET))
 
+        _offering_state = d.pop("offering_state", UNSET)
+        offering_state: Union[Unset, ResourceState]
+        if isinstance(_offering_state, Unset):
+            offering_state = UNSET
+        else:
+            offering_state = ResourceState(_offering_state)
+
         created_by = d.pop("created_by", UNSET)
 
         created_by_username = d.pop("created_by_username", UNSET)
@@ -1187,6 +1202,7 @@ class BookingResource:
             customer_slug=customer_slug,
             user_requires_reconsent=user_requires_reconsent,
             renewal_date=renewal_date,
+            offering_state=offering_state,
             created_by=created_by,
             created_by_username=created_by_username,
             created_by_full_name=created_by_full_name,

@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.user_action import UserAction
-from ...models.user_action_request import UserActionRequest
+from ...models.silence_action_request import SilenceActionRequest
+from ...models.silence_action_response import SilenceActionResponse
 from ...types import Response
 
 
 def _get_kwargs(
     id: int,
     *,
-    body: UserActionRequest,
+    body: SilenceActionRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -30,17 +30,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> UserAction:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> SilenceActionResponse:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = UserAction.from_dict(response.json())
+        response_200 = SilenceActionResponse.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[UserAction]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[SilenceActionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,20 +55,20 @@ def sync_detailed(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: UserActionRequest,
-) -> Response[UserAction]:
+    body: SilenceActionRequest,
+) -> Response[SilenceActionResponse]:
     """Silence an action temporarily or permanently
 
     Args:
         id (int):
-        body (UserActionRequest):
+        body (SilenceActionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[UserAction]
+        Response[SilenceActionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -85,20 +87,20 @@ def sync(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: UserActionRequest,
-) -> UserAction:
+    body: SilenceActionRequest,
+) -> SilenceActionResponse:
     """Silence an action temporarily or permanently
 
     Args:
         id (int):
-        body (UserActionRequest):
+        body (SilenceActionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        UserAction
+        SilenceActionResponse
     """
 
     return sync_detailed(
@@ -112,20 +114,20 @@ async def asyncio_detailed(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: UserActionRequest,
-) -> Response[UserAction]:
+    body: SilenceActionRequest,
+) -> Response[SilenceActionResponse]:
     """Silence an action temporarily or permanently
 
     Args:
         id (int):
-        body (UserActionRequest):
+        body (SilenceActionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[UserAction]
+        Response[SilenceActionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -142,20 +144,20 @@ async def asyncio(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: UserActionRequest,
-) -> UserAction:
+    body: SilenceActionRequest,
+) -> SilenceActionResponse:
     """Silence an action temporarily or permanently
 
     Args:
         id (int):
-        body (UserActionRequest):
+        body (SilenceActionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        UserAction
+        SilenceActionResponse
     """
 
     return (

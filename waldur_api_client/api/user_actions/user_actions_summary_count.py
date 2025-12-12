@@ -5,32 +5,36 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.user_action_summary import UserActionSummary
 from ...types import Response
 
 
 def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
-        "method": "get",
+        "method": "head",
         "url": "/api/user-actions/summary/",
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> UserActionSummary:
-    if response.status_code == 404:
-        raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        response_200 = UserActionSummary.from_dict(response.json())
-
-        return response_200
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> int:
+    if response.status_code == HTTPStatus.OK:
+        try:
+            return int(response.headers["x-result-count"])
+        except KeyError:
+            raise errors.UnexpectedStatus(
+                response.status_code,
+                b"Expected 'X-Result-Count' header for HEAD request, but it was not found.",
+                response.url,
+            )
+        except ValueError:
+            count_val = response.headers.get("x-result-count")
+            msg = f"Expected 'X-Result-Count' header to be an integer, but got '{count_val}'."
+            raise errors.UnexpectedStatus(response.status_code, msg.encode(), response.url)
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[UserActionSummary]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[int]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -42,15 +46,15 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[UserActionSummary]:
-    """Get action summary counts
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[UserActionSummary]
+        Response[int]
     """
 
     kwargs = _get_kwargs()
@@ -65,15 +69,15 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> UserActionSummary:
-    """Get action summary counts
+) -> int:
+    """Get number of items in the collection matching the request parameters.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        UserActionSummary
+        int
     """
 
     return sync_detailed(
@@ -84,15 +88,15 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[UserActionSummary]:
-    """Get action summary counts
+) -> Response[int]:
+    """Get number of items in the collection matching the request parameters.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[UserActionSummary]
+        Response[int]
     """
 
     kwargs = _get_kwargs()
@@ -105,15 +109,15 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> UserActionSummary:
-    """Get action summary counts
+) -> int:
+    """Get number of items in the collection matching the request parameters.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        UserActionSummary
+        int
     """
 
     return (

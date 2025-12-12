@@ -5,15 +5,16 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.user_action import UserAction
-from ...models.user_action_request import UserActionRequest
+from ...models.execute_action_error_response import ExecuteActionErrorResponse
+from ...models.execute_action_request import ExecuteActionRequest
+from ...models.execute_action_response import ExecuteActionResponse
 from ...types import Response
 
 
 def _get_kwargs(
     id: int,
     *,
-    body: UserActionRequest,
+    body: ExecuteActionRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -30,17 +31,29 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> UserAction:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Union[ExecuteActionErrorResponse, ExecuteActionResponse]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = UserAction.from_dict(response.json())
+        response_200 = ExecuteActionResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 404:
+        response_404 = ExecuteActionErrorResponse.from_dict(response.json())
+
+        return response_404
+    if response.status_code == 500:
+        response_500 = ExecuteActionErrorResponse.from_dict(response.json())
+
+        return response_500
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[UserAction]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ExecuteActionErrorResponse, ExecuteActionResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,20 +66,20 @@ def sync_detailed(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: UserActionRequest,
-) -> Response[UserAction]:
+    body: ExecuteActionRequest,
+) -> Response[Union[ExecuteActionErrorResponse, ExecuteActionResponse]]:
     """Execute a corrective action
 
     Args:
         id (int):
-        body (UserActionRequest):
+        body (ExecuteActionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[UserAction]
+        Response[Union[ExecuteActionErrorResponse, ExecuteActionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -85,20 +98,20 @@ def sync(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: UserActionRequest,
-) -> UserAction:
+    body: ExecuteActionRequest,
+) -> Union[ExecuteActionErrorResponse, ExecuteActionResponse]:
     """Execute a corrective action
 
     Args:
         id (int):
-        body (UserActionRequest):
+        body (ExecuteActionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        UserAction
+        Union[ExecuteActionErrorResponse, ExecuteActionResponse]
     """
 
     return sync_detailed(
@@ -112,20 +125,20 @@ async def asyncio_detailed(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: UserActionRequest,
-) -> Response[UserAction]:
+    body: ExecuteActionRequest,
+) -> Response[Union[ExecuteActionErrorResponse, ExecuteActionResponse]]:
     """Execute a corrective action
 
     Args:
         id (int):
-        body (UserActionRequest):
+        body (ExecuteActionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[UserAction]
+        Response[Union[ExecuteActionErrorResponse, ExecuteActionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -142,20 +155,20 @@ async def asyncio(
     id: int,
     *,
     client: AuthenticatedClient,
-    body: UserActionRequest,
-) -> UserAction:
+    body: ExecuteActionRequest,
+) -> Union[ExecuteActionErrorResponse, ExecuteActionResponse]:
     """Execute a corrective action
 
     Args:
         id (int):
-        body (UserActionRequest):
+        body (ExecuteActionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        UserAction
+        Union[ExecuteActionErrorResponse, ExecuteActionResponse]
     """
 
     return (

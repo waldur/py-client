@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.cascade_config import CascadeConfig
     from ..models.component_multiplier_config import ComponentMultiplierConfig
+    from ..models.k8s_default_configuration import K8SDefaultConfiguration
 
 
 T = TypeVar("T", bound="OptionField")
@@ -29,6 +30,7 @@ class OptionField:
         max_ (Union[Unset, int]):
         cascade_config (Union[Unset, CascadeConfig]):
         component_multiplier_config (Union[Unset, ComponentMultiplierConfig]):
+        default_configs (Union[Unset, K8SDefaultConfiguration]):
     """
 
     type_: OptionFieldTypeEnum
@@ -41,6 +43,7 @@ class OptionField:
     max_: Union[Unset, int] = UNSET
     cascade_config: Union[Unset, "CascadeConfig"] = UNSET
     component_multiplier_config: Union[Unset, "ComponentMultiplierConfig"] = UNSET
+    default_configs: Union[Unset, "K8SDefaultConfiguration"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -70,6 +73,10 @@ class OptionField:
         if not isinstance(self.component_multiplier_config, Unset):
             component_multiplier_config = self.component_multiplier_config.to_dict()
 
+        default_configs: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.default_configs, Unset):
+            default_configs = self.default_configs.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -94,6 +101,8 @@ class OptionField:
             field_dict["cascade_config"] = cascade_config
         if component_multiplier_config is not UNSET:
             field_dict["component_multiplier_config"] = component_multiplier_config
+        if default_configs is not UNSET:
+            field_dict["default_configs"] = default_configs
 
         return field_dict
 
@@ -101,6 +110,7 @@ class OptionField:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.cascade_config import CascadeConfig
         from ..models.component_multiplier_config import ComponentMultiplierConfig
+        from ..models.k8s_default_configuration import K8SDefaultConfiguration
 
         d = dict(src_dict)
         type_ = OptionFieldTypeEnum(d.pop("type"))
@@ -133,6 +143,13 @@ class OptionField:
         else:
             component_multiplier_config = ComponentMultiplierConfig.from_dict(_component_multiplier_config)
 
+        _default_configs = d.pop("default_configs", UNSET)
+        default_configs: Union[Unset, K8SDefaultConfiguration]
+        if isinstance(_default_configs, Unset):
+            default_configs = UNSET
+        else:
+            default_configs = K8SDefaultConfiguration.from_dict(_default_configs)
+
         option_field = cls(
             type_=type_,
             label=label,
@@ -144,6 +161,7 @@ class OptionField:
             max_=max_,
             cascade_config=cascade_config,
             component_multiplier_config=component_multiplier_config,
+            default_configs=default_configs,
         )
 
         option_field.additional_properties = d

@@ -110,6 +110,7 @@ class Resource:
         user_requires_reconsent (Union[Unset, bool]): Check if the current user needs to re-consent for this resource's
             offering.
         renewal_date (Union['ResourceRenewalDateType0', None, Unset]):
+        offering_state (Union[Unset, ResourceState]):
     """
 
     offering: Union[Unset, str] = UNSET
@@ -188,6 +189,7 @@ class Resource:
     customer_slug: Union[Unset, str] = UNSET
     user_requires_reconsent: Union[Unset, bool] = UNSET
     renewal_date: Union["ResourceRenewalDateType0", None, Unset] = UNSET
+    offering_state: Union[Unset, ResourceState] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -462,6 +464,10 @@ class Resource:
         else:
             renewal_date = self.renewal_date
 
+        offering_state: Union[Unset, str] = UNSET
+        if not isinstance(self.offering_state, Unset):
+            offering_state = self.offering_state.value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -617,6 +623,8 @@ class Resource:
             field_dict["user_requires_reconsent"] = user_requires_reconsent
         if renewal_date is not UNSET:
             field_dict["renewal_date"] = renewal_date
+        if offering_state is not UNSET:
+            field_dict["offering_state"] = offering_state
 
         return field_dict
 
@@ -1040,6 +1048,13 @@ class Resource:
 
         renewal_date = _parse_renewal_date(d.pop("renewal_date", UNSET))
 
+        _offering_state = d.pop("offering_state", UNSET)
+        offering_state: Union[Unset, ResourceState]
+        if isinstance(_offering_state, Unset):
+            offering_state = UNSET
+        else:
+            offering_state = ResourceState(_offering_state)
+
         resource = cls(
             offering=offering,
             offering_name=offering_name,
@@ -1117,6 +1132,7 @@ class Resource:
             customer_slug=customer_slug,
             user_requires_reconsent=user_requires_reconsent,
             renewal_date=renewal_date,
+            offering_state=offering_state,
         )
 
         resource.additional_properties = d
