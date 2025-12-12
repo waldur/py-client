@@ -12,7 +12,7 @@ T = TypeVar("T", bound="EndpointUUIDRequest")
 class EndpointUUIDRequest:
     """
     Attributes:
-        uuid (UUID):
+        uuid (UUID): UUID of the access endpoint
     """
 
     uuid: UUID

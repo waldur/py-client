@@ -12,7 +12,7 @@ T = TypeVar("T", bound="RemoveOfferingComponentRequest")
 class RemoveOfferingComponentRequest:
     """
     Attributes:
-        uuid (UUID):
+        uuid (UUID): UUID of the component to remove
     """
 
     uuid: UUID

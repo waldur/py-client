@@ -12,7 +12,7 @@ T = TypeVar("T", bound="OrderUUID")
 class OrderUUID:
     """
     Attributes:
-        order_uuid (UUID):
+        order_uuid (UUID): UUID of the created or updated order
     """
 
     order_uuid: UUID

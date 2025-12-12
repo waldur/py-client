@@ -16,7 +16,7 @@ class NestedEndpoint:
     Attributes:
         uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
-        url (Union[Unset, str]):
+        url (Union[Unset, str]): URL of the access endpoint
     """
 
     uuid: Union[Unset, UUID] = UNSET

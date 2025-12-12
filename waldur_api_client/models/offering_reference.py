@@ -12,8 +12,8 @@ T = TypeVar("T", bound="OfferingReference")
 class OfferingReference:
     """
     Attributes:
-        offering_name (str):
-        offering_uuid (UUID):
+        offering_name (str): Name of the offering
+        offering_uuid (UUID): UUID of the offering
     """
 
     offering_name: str

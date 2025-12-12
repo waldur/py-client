@@ -12,8 +12,8 @@ T = TypeVar("T", bound="ResourceReallocateLimitsResponse")
 class ResourceReallocateLimitsResponse:
     """
     Attributes:
-        source_order_uuid (UUID):
-        target_order_uuids (list[UUID]):
+        source_order_uuid (UUID): UUID of the source order for limit reallocation
+        target_order_uuids (list[UUID]): List of UUIDs for target orders receiving the reallocated limits
     """
 
     source_order_uuid: UUID

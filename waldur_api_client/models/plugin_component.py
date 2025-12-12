@@ -13,9 +13,9 @@ T = TypeVar("T", bound="PluginComponent")
 class PluginComponent:
     """
     Attributes:
-        type_ (str):
-        name (str):
-        measured_unit (str):
+        type_ (str): Type identifier of the component
+        name (str): Display name of the component
+        measured_unit (str): Unit of measurement for the component
         billing_type (BillingTypeEnum):
     """
 

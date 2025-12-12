@@ -12,7 +12,7 @@ class NestedEndpointRequest:
     """
     Attributes:
         name (str):
-        url (str):
+        url (str): URL of the access endpoint
     """
 
     name: str

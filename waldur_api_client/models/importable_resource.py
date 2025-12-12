@@ -11,10 +11,10 @@ T = TypeVar("T", bound="ImportableResource")
 class ImportableResource:
     """
     Attributes:
-        backend_id (str):
-        name (str):
-        type_ (str):
-        description (str):
+        backend_id (str): Backend identifier of the resource
+        name (str): Name of the resource
+        type_ (str): Type of the resource
+        description (str): Description of the resource
     """
 
     backend_id: str

@@ -13,10 +13,10 @@ T = TypeVar("T", bound="ComponentUsageItemRequest")
 class ComponentUsageItemRequest:
     """
     Attributes:
-        type_ (str):
-        amount (str):
-        description (Union[Unset, str]):
-        recurring (Union[Unset, bool]):  Default: False.
+        type_ (str): Type of the component
+        amount (str): Usage amount
+        description (Union[Unset, str]): Optional description of usage
+        recurring (Union[Unset, bool]): Whether this usage is recurring Default: False.
     """
 
     type_: str

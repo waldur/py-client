@@ -12,8 +12,8 @@ T = TypeVar("T", bound="SetOfferingsUsernameRequest")
 class SetOfferingsUsernameRequest:
     """
     Attributes:
-        user_uuid (UUID):
-        username (str):
+        user_uuid (UUID): UUID of the user
+        username (str): Username for offering access
     """
 
     user_uuid: UUID

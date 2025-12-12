@@ -12,7 +12,7 @@ T = TypeVar("T", bound="SoftwareCatalogUUID")
 class SoftwareCatalogUUID:
     """
     Attributes:
-        uuid (UUID):
+        uuid (UUID): UUID of the software catalog
     """
 
     uuid: UUID
