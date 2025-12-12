@@ -11,15 +11,15 @@ T = TypeVar("T", bound="ServiceProviderStatistics")
 class ServiceProviderStatistics:
     """
     Attributes:
-        active_campaigns (int):
-        current_customers (int):
-        customers_number_change (int):
-        active_resources (int):
-        resources_number_change (int):
-        active_and_paused_offerings (int):
-        unresolved_tickets (int):
-        pending_orders (int):
-        erred_resources (int):
+        active_campaigns (int): Number of active campaigns
+        current_customers (int): Number of current customers
+        customers_number_change (int): Change in number of customers
+        active_resources (int): Number of active resources
+        resources_number_change (int): Change in number of resources
+        active_and_paused_offerings (int): Number of active and paused offerings
+        unresolved_tickets (int): Number of unresolved support tickets
+        pending_orders (int): Number of pending orders
+        erred_resources (int): Number of resources in error state
     """
 
     active_campaigns: int

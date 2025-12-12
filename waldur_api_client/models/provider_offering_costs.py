@@ -11,10 +11,10 @@ T = TypeVar("T", bound="ProviderOfferingCosts")
 class ProviderOfferingCosts:
     """
     Attributes:
-        period (str):
-        price (float):
-        tax (float):
-        total (float):
+        period (str): Billing period (YYYY-MM)
+        price (float): Price amount excluding tax
+        tax (float): Tax amount
+        total (float): Total amount including tax
     """
 
     period: str

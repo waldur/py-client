@@ -13,10 +13,10 @@ T = TypeVar("T", bound="BackendMetadata")
 class BackendMetadata:
     """
     Attributes:
-        state (Union[Unset, str]):
-        runtime_state (Union[Unset, str]):
-        action (Union[Unset, str]):
-        instance_name (Union[None, Unset, str]):
+        state (Union[Unset, str]): Backend resource state
+        runtime_state (Union[Unset, str]): Runtime state of the backend resource
+        action (Union[Unset, str]): Current action being performed
+        instance_name (Union[None, Unset, str]): Name of the backend instance
     """
 
     state: Union[Unset, str] = UNSET

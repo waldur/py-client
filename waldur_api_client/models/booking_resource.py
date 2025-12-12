@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from ..models.booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
     from ..models.booking_slot import BookingSlot
     from ..models.nested_endpoint import NestedEndpoint
+    from ..models.offering_component import OfferingComponent
     from ..models.order_details import OrderDetails
     from ..models.report_section import ReportSection
 
@@ -112,6 +113,7 @@ class BookingResource:
             offering.
         renewal_date (Union['BookingResourceRenewalDateType0', None, Unset]):
         offering_state (Union[Unset, ResourceState]):
+        offering_components (Union[Unset, list['OfferingComponent']]):
         created_by (Union[Unset, str]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
@@ -200,6 +202,7 @@ class BookingResource:
     user_requires_reconsent: Union[Unset, bool] = UNSET
     renewal_date: Union["BookingResourceRenewalDateType0", None, Unset] = UNSET
     offering_state: Union[Unset, ResourceState] = UNSET
+    offering_components: Union[Unset, list["OfferingComponent"]] = UNSET
     created_by: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
@@ -485,6 +488,13 @@ class BookingResource:
         if not isinstance(self.offering_state, Unset):
             offering_state = self.offering_state.value
 
+        offering_components: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.offering_components, Unset):
+            offering_components = []
+            for offering_components_item_data in self.offering_components:
+                offering_components_item = offering_components_item_data.to_dict()
+                offering_components.append(offering_components_item)
+
         created_by = self.created_by
 
         created_by_username = self.created_by_username
@@ -661,6 +671,8 @@ class BookingResource:
             field_dict["renewal_date"] = renewal_date
         if offering_state is not UNSET:
             field_dict["offering_state"] = offering_state
+        if offering_components is not UNSET:
+            field_dict["offering_components"] = offering_components
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_username is not UNSET:
@@ -688,6 +700,7 @@ class BookingResource:
         from ..models.booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
         from ..models.booking_slot import BookingSlot
         from ..models.nested_endpoint import NestedEndpoint
+        from ..models.offering_component import OfferingComponent
         from ..models.order_details import OrderDetails
         from ..models.report_section import ReportSection
 
@@ -1106,6 +1119,13 @@ class BookingResource:
         else:
             offering_state = ResourceState(_offering_state)
 
+        offering_components = []
+        _offering_components = d.pop("offering_components", UNSET)
+        for offering_components_item_data in _offering_components or []:
+            offering_components_item = OfferingComponent.from_dict(offering_components_item_data)
+
+            offering_components.append(offering_components_item)
+
         created_by = d.pop("created_by", UNSET)
 
         created_by_username = d.pop("created_by_username", UNSET)
@@ -1203,6 +1223,7 @@ class BookingResource:
             user_requires_reconsent=user_requires_reconsent,
             renewal_date=renewal_date,
             offering_state=offering_state,
+            offering_components=offering_components,
             created_by=created_by,
             created_by_username=created_by_username,
             created_by_full_name=created_by_full_name,

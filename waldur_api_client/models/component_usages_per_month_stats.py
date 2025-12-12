@@ -18,8 +18,8 @@ class ComponentUsagesPerMonthStats:
         offering_country (str): Country of the offering
         organization_group_name (str): Name of the organization group
         organization_group_uuid (str): UUID of the organization group
-        month (int):
-        year (int):
+        month (int): Month of the billing period
+        year (int): Year of the billing period
     """
 
     usage: str

@@ -14,6 +14,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.backend_metadata import BackendMetadata
     from ..models.nested_endpoint import NestedEndpoint
+    from ..models.offering_component import OfferingComponent
     from ..models.order_details import OrderDetails
     from ..models.report_section import ReportSection
     from ..models.resource_attributes import ResourceAttributes
@@ -111,6 +112,7 @@ class Resource:
             offering.
         renewal_date (Union['ResourceRenewalDateType0', None, Unset]):
         offering_state (Union[Unset, ResourceState]):
+        offering_components (Union[Unset, list['OfferingComponent']]):
     """
 
     offering: Union[Unset, str] = UNSET
@@ -190,6 +192,7 @@ class Resource:
     user_requires_reconsent: Union[Unset, bool] = UNSET
     renewal_date: Union["ResourceRenewalDateType0", None, Unset] = UNSET
     offering_state: Union[Unset, ResourceState] = UNSET
+    offering_components: Union[Unset, list["OfferingComponent"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -468,6 +471,13 @@ class Resource:
         if not isinstance(self.offering_state, Unset):
             offering_state = self.offering_state.value
 
+        offering_components: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.offering_components, Unset):
+            offering_components = []
+            for offering_components_item_data in self.offering_components:
+                offering_components_item = offering_components_item_data.to_dict()
+                offering_components.append(offering_components_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -625,6 +635,8 @@ class Resource:
             field_dict["renewal_date"] = renewal_date
         if offering_state is not UNSET:
             field_dict["offering_state"] = offering_state
+        if offering_components is not UNSET:
+            field_dict["offering_components"] = offering_components
 
         return field_dict
 
@@ -632,6 +644,7 @@ class Resource:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.backend_metadata import BackendMetadata
         from ..models.nested_endpoint import NestedEndpoint
+        from ..models.offering_component import OfferingComponent
         from ..models.order_details import OrderDetails
         from ..models.report_section import ReportSection
         from ..models.resource_attributes import ResourceAttributes
@@ -1055,6 +1068,13 @@ class Resource:
         else:
             offering_state = ResourceState(_offering_state)
 
+        offering_components = []
+        _offering_components = d.pop("offering_components", UNSET)
+        for offering_components_item_data in _offering_components or []:
+            offering_components_item = OfferingComponent.from_dict(offering_components_item_data)
+
+            offering_components.append(offering_components_item)
+
         resource = cls(
             offering=offering,
             offering_name=offering_name,
@@ -1133,6 +1153,7 @@ class Resource:
             user_requires_reconsent=user_requires_reconsent,
             renewal_date=renewal_date,
             offering_state=offering_state,
+            offering_components=offering_components,
         )
 
         resource.additional_properties = d

@@ -12,8 +12,8 @@ T = TypeVar("T", bound="NameUUID")
 class NameUUID:
     """
     Attributes:
-        name (str):
-        uuid (UUID):
+        name (str): Name of the entity
+        uuid (UUID): UUID of the entity
     """
 
     name: str

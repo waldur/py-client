@@ -12,11 +12,11 @@ T = TypeVar("T", bound="CustomerMemberCount")
 class CustomerMemberCount:
     """
     Attributes:
-        uuid (UUID):
-        name (str):
-        abbreviation (str):
-        count (int):
-        has_resources (bool):
+        uuid (UUID): UUID of the customer
+        name (str): Name of the customer
+        abbreviation (str): Abbreviation of the customer
+        count (int): Number of members
+        has_resources (bool): Whether the customer has resources
     """
 
     uuid: UUID

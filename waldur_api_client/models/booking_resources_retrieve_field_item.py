@@ -39,6 +39,7 @@ class BookingResourcesRetrieveFieldItem(str, Enum):
     NAME = "name"
     OFFERING = "offering"
     OFFERING_BILLABLE = "offering_billable"
+    OFFERING_COMPONENTS = "offering_components"
     OFFERING_DESCRIPTION = "offering_description"
     OFFERING_IMAGE = "offering_image"
     OFFERING_NAME = "offering_name"

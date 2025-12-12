@@ -18,11 +18,11 @@ T = TypeVar("T", bound="OfferingExportResponse")
 class OfferingExportResponse:
     """
     Attributes:
-        offering_uuid (UUID):
-        offering_name (str):
+        offering_uuid (UUID): UUID of the exported offering
+        offering_name (str): Name of the exported offering
         export_data (OfferingExportData):
         exported_components (list[str]): List of exported component types
-        export_timestamp (datetime.datetime):
+        export_timestamp (datetime.datetime): Timestamp when the export was completed
     """
 
     offering_uuid: UUID
