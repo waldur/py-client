@@ -85,7 +85,7 @@ class BookingResource:
         is_usage_based (Union[Unset, bool]):
         is_limit_based (Union[Unset, bool]):
         name (Union[Unset, str]):
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         current_usages (Union[Unset, BookingResourceCurrentUsages]):
         can_terminate (Union[Unset, bool]):
         report (Union[Unset, list['ReportSection']]):

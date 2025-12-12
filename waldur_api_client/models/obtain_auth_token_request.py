@@ -11,8 +11,8 @@ T = TypeVar("T", bound="ObtainAuthTokenRequest")
 class ObtainAuthTokenRequest:
     """
     Attributes:
-        username (str):
-        password (str):
+        username (str): Username for authentication
+        password (str): Password for authentication
     """
 
     username: str

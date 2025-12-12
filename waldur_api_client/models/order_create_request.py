@@ -50,7 +50,7 @@ class OrderCreateRequest:
         request_comment (Union[None, Unset, str]):
         type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
         start_date (Union[None, Unset, datetime.date]): Enables delayed processing of resource provisioning order.
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
     """
 
     offering: str

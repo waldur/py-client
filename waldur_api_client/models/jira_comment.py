@@ -11,7 +11,7 @@ T = TypeVar("T", bound="JiraComment")
 class JiraComment:
     """
     Attributes:
-        id (str):
+        id (str): Jira comment ID
     """
 
     id: str

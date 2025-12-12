@@ -27,33 +27,36 @@ class Project:
         url (Union[Unset, str]):
         uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
         customer_slug (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         customer_abbreviation (Union[Unset, str]):
-        description (Union[Unset, str]):
+        description (Union[Unset, str]): Project description (HTML content will be sanitized)
         customer_display_billing_info_in_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         type_ (Union[None, Unset, str]):
         type_name (Union[None, Unset, str]):
         type_uuid (Union[None, UUID, Unset]):
         backend_id (Union[Unset, str]):
-        start_date (Union[None, Unset, datetime.date]):
-        end_date (Union[None, Unset, datetime.date]):
+        start_date (Union[None, Unset, datetime.date]): Project start date. Cannot be edited after the start date has
+            arrived.
+        end_date (Union[None, Unset, datetime.date]): Project end date. Setting this field requires DELETE_PROJECT
+            permission.
         end_date_requested_by (Union[None, Unset, str]):
         oecd_fos_2007_code (Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]):
-        oecd_fos_2007_label (Union[Unset, str]):
+        oecd_fos_2007_label (Union[Unset, str]): Human-readable label for the OECD FOS 2007 classification code
         is_industry (Union[Unset, bool]):
         image (Union[None, Unset, str]):
-        resources_count (Union[Unset, int]):
+        resources_count (Union[Unset, int]): Number of active resources in this project
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
         kind (Union[Unset, KindEnum]):
         is_removed (Union[Unset, bool]):
-        termination_metadata (Union[Unset, Any]):
-        staff_notes (Union[Unset, str]):
+        termination_metadata (Union[Unset, Any]): Metadata about project termination (read-only)
+        staff_notes (Union[Unset, str]): Internal notes visible only to staff and support users (HTML content will be
+            sanitized)
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated. Overrides customer-level setting.
         project_credit (Union[None, Unset, float]):

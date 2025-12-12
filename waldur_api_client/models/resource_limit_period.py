@@ -13,11 +13,11 @@ T = TypeVar("T", bound="ResourceLimitPeriod")
 class ResourceLimitPeriod:
     """
     Attributes:
-        start (Union[Unset, str]):
-        end (Union[Unset, str]):
-        quantity (Union[Unset, int]):
-        billing_periods (Union[Unset, int]):
-        total (Union[Unset, str]):
+        start (Union[Unset, str]): Start date of the resource limit period
+        end (Union[Unset, str]): End date of the resource limit period
+        quantity (Union[Unset, int]): Quantity of resources consumed during this period
+        billing_periods (Union[Unset, int]): Number of billing periods
+        total (Union[Unset, str]): Total amount for this period
     """
 
     start: Union[Unset, str] = UNSET

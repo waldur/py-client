@@ -11,7 +11,7 @@ T = TypeVar("T", bound="JiraChangelog")
 class JiraChangelog:
     """
     Attributes:
-        items (list[Any]):
+        items (list[Any]): List of changelog items
     """
 
     items: list[Any]

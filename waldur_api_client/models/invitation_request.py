@@ -14,8 +14,8 @@ T = TypeVar("T", bound="InvitationRequest")
 class InvitationRequest:
     """
     Attributes:
-        role (UUID):
-        scope (str):
+        role (UUID): UUID of the role to grant to the invited user
+        scope (str): URL of the scope (Customer or Project) for this invitation
         email (str): Invitation link will be sent to this email. Note that user can accept invitation with different
             email.
         full_name (Union[Unset, str]):

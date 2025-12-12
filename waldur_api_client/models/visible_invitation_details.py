@@ -15,18 +15,17 @@ T = TypeVar("T", bound="VisibleInvitationDetails")
 class VisibleInvitationDetails:
     """
     Attributes:
-        scope_uuid (UUID):
-        scope_name (str):
-        scope_description (str): Get the description field from the scope if it exists.
-            Returns empty string if scope doesn't have a description field.
-        scope_type (Union[None, str]):
-        customer_uuid (UUID):
-        customer_name (str):
-        role_name (str):
-        role_description (str):
-        created_by_full_name (str):
-        created_by_username (str):
-        created_by_image (str):
+        scope_uuid (UUID): UUID of the invitation scope (Customer or Project)
+        scope_name (str): Name of the invitation scope
+        scope_description (str): Description of the invitation scope
+        scope_type (Union[None, str]): Type of the invitation scope (e.g., 'customer', 'project')
+        customer_uuid (UUID): UUID of the customer organization
+        customer_name (str): Name of the customer organization
+        role_name (str): Name of the role being granted (e.g., 'PROJECT.ADMIN')
+        role_description (str): Description of the role being granted
+        created_by_full_name (str): Full name of the user who created this invitation
+        created_by_username (str): Username of the user who created this invitation
+        created_by_image (str): Profile image of the user who created this invitation
         email (str): Invitation link will be sent to this email. Note that user can accept invitation with different
             email.
         error_message (str):

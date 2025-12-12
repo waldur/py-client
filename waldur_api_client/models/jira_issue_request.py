@@ -15,7 +15,7 @@ T = TypeVar("T", bound="JiraIssueRequest")
 class JiraIssueRequest:
     """
     Attributes:
-        key (str):
+        key (str): Jira issue key
         fields (JiraIssueFieldsRequest):
     """
 

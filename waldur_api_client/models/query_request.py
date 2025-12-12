@@ -11,7 +11,7 @@ T = TypeVar("T", bound="QueryRequest")
 class QueryRequest:
     """
     Attributes:
-        query (str):
+        query (str): Search query string
     """
 
     query: str

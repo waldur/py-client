@@ -11,7 +11,7 @@ T = TypeVar("T", bound="ServiceProviderApiSecretCode")
 class ServiceProviderApiSecretCode:
     """
     Attributes:
-        api_secret_code (str):
+        api_secret_code (str): API secret code for authenticating service provider requests
     """
 
     api_secret_code: str

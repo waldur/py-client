@@ -11,7 +11,7 @@ T = TypeVar("T", bound="Logout")
 class Logout:
     """
     Attributes:
-        logout_url (str):
+        logout_url (str): URL to redirect to after logout
     """
 
     logout_url: str

@@ -11,7 +11,7 @@ T = TypeVar("T", bound="InvoiceItemTotalPrice")
 class InvoiceItemTotalPrice:
     """
     Attributes:
-        total_price (str):
+        total_price (str): Total price for the invoice item
     """
 
     total_price: str

@@ -11,7 +11,7 @@ T = TypeVar("T", bound="CoreAuthToken")
 class CoreAuthToken:
     """
     Attributes:
-        token (str):
+        token (str): Authentication token for API access
     """
 
     token: str

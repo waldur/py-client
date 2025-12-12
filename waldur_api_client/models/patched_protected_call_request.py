@@ -14,7 +14,7 @@ T = TypeVar("T", bound="PatchedProtectedCallRequest")
 class PatchedProtectedCallRequest:
     """
     Attributes:
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         name (Union[Unset, str]):
         description (Union[Unset, str]):
         fixed_duration_in_days (Union[None, Unset, int]):

@@ -11,9 +11,9 @@ T = TypeVar("T", bound="JiraIssueProject")
 class JiraIssueProject:
     """
     Attributes:
-        id (str):
-        name (str):
-        key (str):
+        id (str): Jira field ID
+        name (str): Jira field name
+        key (str): Jira project key
     """
 
     id: str

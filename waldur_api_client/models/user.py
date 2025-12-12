@@ -24,7 +24,7 @@ class User:
         uuid (Union[Unset, UUID]):
         username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
             characters
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
         job_title (Union[Unset, str]):

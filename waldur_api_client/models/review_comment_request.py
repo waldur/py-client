@@ -13,7 +13,7 @@ T = TypeVar("T", bound="ReviewCommentRequest")
 class ReviewCommentRequest:
     """
     Attributes:
-        comment (Union[Unset, str]):
+        comment (Union[Unset, str]): Optional comment for review
     """
 
     comment: Union[Unset, str] = UNSET

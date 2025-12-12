@@ -25,7 +25,7 @@ class ProviderOffering:
         uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         category_title (Union[Unset, str]):
         type_ (Union[Unset, str]):
         state (Union[Unset, OfferingState]):

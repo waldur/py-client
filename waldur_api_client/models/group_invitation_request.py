@@ -14,15 +14,15 @@ T = TypeVar("T", bound="GroupInvitationRequest")
 class GroupInvitationRequest:
     """
     Attributes:
-        role (UUID):
-        scope (str):
+        role (UUID): UUID of the role to grant to the invited user
+        scope (str): URL of the scope (Customer or Project) for this invitation
         is_public (Union[Unset, bool]): Allow non-authenticated users to see and accept this invitation. Only staff can
             create public invitations.
         auto_create_project (Union[Unset, bool]): Create project and grant project permissions instead of customer
             permissions
         project_name_template (Union[None, Unset, str]): Template for project name. Supports {username}, {email},
             {full_name} variables
-        project_role (Union[None, UUID, Unset]):
+        project_role (Union[None, UUID, Unset]): UUID of the project role to grant if auto_create_project is enabled
         user_affiliations (Union[Unset, Any]):
         user_email_patterns (Union[Unset, Any]):
     """

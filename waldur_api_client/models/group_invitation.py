@@ -16,32 +16,31 @@ T = TypeVar("T", bound="GroupInvitation")
 class GroupInvitation:
     """
     Attributes:
-        scope_uuid (UUID):
-        scope_name (str):
-        scope_description (str): Get the description field from the scope if it exists.
-            Returns empty string if scope doesn't have a description field.
-        scope_type (Union[None, str]):
-        customer_uuid (UUID):
-        customer_name (str):
-        role_name (str):
-        role_description (str):
-        created_by_full_name (str):
-        created_by_username (str):
-        created_by_image (str):
+        scope_uuid (UUID): UUID of the invitation scope (Customer or Project)
+        scope_name (str): Name of the invitation scope
+        scope_description (str): Description of the invitation scope
+        scope_type (Union[None, str]): Type of the invitation scope (e.g., 'customer', 'project')
+        customer_uuid (UUID): UUID of the customer organization
+        customer_name (str): Name of the customer organization
+        role_name (str): Name of the role being granted (e.g., 'PROJECT.ADMIN')
+        role_description (str): Description of the role being granted
+        created_by_full_name (str): Full name of the user who created this invitation
+        created_by_username (str): Username of the user who created this invitation
+        created_by_image (str): Profile image of the user who created this invitation
         url (str):
         uuid (UUID):
-        role (UUID):
+        role (UUID): UUID of the role to grant to the invited user
         created (datetime.datetime):
-        expires (datetime.datetime):
+        expires (datetime.datetime): Expiration date and time of the invitation
         is_active (bool):
-        scope_image (Union[None, str]):
+        scope_image (Union[None, str]): Image URL of the invitation scope (Customer or Project)
         is_public (Union[Unset, bool]): Allow non-authenticated users to see and accept this invitation. Only staff can
             create public invitations.
         auto_create_project (Union[Unset, bool]): Create project and grant project permissions instead of customer
             permissions
         project_name_template (Union[None, Unset, str]): Template for project name. Supports {username}, {email},
             {full_name} variables
-        project_role (Union[None, UUID, Unset]):
+        project_role (Union[None, UUID, Unset]): UUID of the project role to grant if auto_create_project is enabled
         user_affiliations (Union[Unset, Any]):
         user_email_patterns (Union[Unset, Any]):
     """

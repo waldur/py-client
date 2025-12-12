@@ -27,8 +27,8 @@ class Customer:
         url (Union[Unset, str]):
         uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
-        organization_groups (Union[Unset, list['OrganizationGroup']]):
-        display_name (Union[Unset, str]):
+        organization_groups (Union[Unset, list['OrganizationGroup']]): Organization groups this customer belongs to
+        display_name (Union[Unset, str]): Display name of the organization (includes native name if available)
         backend_id (Union[Unset, str]): Organization identifier in another application.
         image (Union[None, Unset, str]):
         blocked (Union[Unset, bool]):
@@ -36,16 +36,17 @@ class Customer:
         display_billing_info_in_projects (Union[Unset, bool]):
         default_tax_percent (Union[Unset, str]):
         accounting_start_date (Union[Unset, datetime.datetime]):
-        projects_count (Union[Unset, int]):
-        users_count (Union[Unset, int]):
+        projects_count (Union[Unset, int]): Number of projects in this organization
+        users_count (Union[Unset, int]): Number of users with access to this organization
         sponsor_number (Union[None, Unset, int]): External ID of the sponsor covering the costs
-        country_name (Union[Unset, str]):
+        country_name (Union[Unset, str]): Human-readable country name
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
-        project_metadata_checklist (Union[None, UUID, Unset]):
+        project_metadata_checklist (Union[None, UUID, Unset]): Checklist to be used for project metadata validation in
+            this organization
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated
         name (Union[Unset, str]):
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         native_name (Union[Unset, str]):
         abbreviation (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -65,7 +66,7 @@ class Customer:
         latitude (Union[None, Unset, float]):
         longitude (Union[None, Unset, float]):
         bank_account (Union[Unset, str]):
-        country (Union[BlankEnum, CountryEnum, Unset]):
+        country (Union[BlankEnum, CountryEnum, Unset]): Country code (ISO 3166-1 alpha-2)
         notification_emails (Union[Unset, str]): Comma-separated list of notification email addresses
         payment_profiles (Union[Unset, list['PaymentProfile']]):
         customer_credit (Union[None, Unset, float]):

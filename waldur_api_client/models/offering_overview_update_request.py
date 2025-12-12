@@ -20,7 +20,7 @@ class OfferingOverviewUpdateRequest:
         access_url (Union[Unset, str]): Publicly accessible offering access URL
         getting_started (Union[Unset, str]):
         integration_guide (Union[Unset, str]):
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
     """
 
     name: str

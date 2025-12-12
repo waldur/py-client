@@ -13,9 +13,9 @@ T = TypeVar("T", bound="NestedFeedback")
 class NestedFeedback:
     """
     Attributes:
-        evaluation (int):
-        evaluation_number (int):
-        state (str):
+        evaluation (int): Customer satisfaction rating (1-5 stars)
+        evaluation_number (int): Numeric value of the rating
+        state (str): Current state of the feedback
         comment (Union[Unset, str]):
     """
 

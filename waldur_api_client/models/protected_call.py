@@ -29,7 +29,7 @@ class ProtectedCall:
         created (Union[Unset, datetime.datetime]):
         start_date (Union[Unset, datetime.datetime]):
         end_date (Union[Unset, datetime.datetime]):
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         name (Union[Unset, str]):
         description (Union[Unset, str]):
         state (Union[Unset, CallStates]):

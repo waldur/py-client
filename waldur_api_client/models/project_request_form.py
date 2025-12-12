@@ -22,17 +22,20 @@ class ProjectRequestForm:
     Attributes:
         name (str):
         customer (str):
-        slug (Union[Unset, str]):
-        description (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
+        description (Union[Unset, str]): Project description (HTML content will be sanitized)
         type_ (Union[None, Unset, str]):
         backend_id (Union[Unset, str]):
-        start_date (Union[None, Unset, datetime.date]):
-        end_date (Union[None, Unset, datetime.date]):
+        start_date (Union[None, Unset, datetime.date]): Project start date. Cannot be edited after the start date has
+            arrived.
+        end_date (Union[None, Unset, datetime.date]): Project end date. Setting this field requires DELETE_PROJECT
+            permission.
         oecd_fos_2007_code (Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]):
         is_industry (Union[Unset, bool]):
         image (Union[File, None, Unset]):
         kind (Union[Unset, KindEnum]):
-        staff_notes (Union[Unset, str]):
+        staff_notes (Union[Unset, str]): Internal notes visible only to staff and support users (HTML content will be
+            sanitized)
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated. Overrides customer-level setting.
     """

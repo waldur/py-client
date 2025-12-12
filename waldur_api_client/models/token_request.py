@@ -11,7 +11,7 @@ T = TypeVar("T", bound="TokenRequest")
 class TokenRequest:
     """
     Attributes:
-        token (str):
+        token (str): Authentication token for invitation acceptance
     """
 
     token: str

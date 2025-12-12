@@ -13,8 +13,8 @@ T = TypeVar("T", bound="InvitationCheck")
 class InvitationCheck:
     """
     Attributes:
-        email (str):
-        civil_number_required (Union[Unset, bool]):
+        email (str): Email address to check for existing invitations
+        civil_number_required (Union[Unset, bool]): Whether civil number verification is required
     """
 
     email: str

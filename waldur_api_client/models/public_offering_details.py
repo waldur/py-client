@@ -41,7 +41,7 @@ class PublicOfferingDetails:
         uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         description (Union[Unset, str]):
         full_description (Union[Unset, str]):
         privacy_policy_link (Union[Unset, str]):
@@ -87,7 +87,7 @@ class PublicOfferingDetails:
         citation_count (Union[Unset, int]): Number of citations of a DOI
         latitude (Union[None, Unset, float]):
         longitude (Union[None, Unset, float]):
-        country (Union[BlankEnum, CountryEnum, Unset]):
+        country (Union[BlankEnum, CountryEnum, Unset]): Country code (ISO 3166-1 alpha-2)
         backend_id (Union[Unset, str]):
         organization_groups (Union[Unset, list['OrganizationGroup']]):
         image (Union[None, Unset, str]):
@@ -916,9 +916,9 @@ class PublicOfferingDetails:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                scope_state_type_1 = CoreStates(data)
+                scope_state_type_0 = CoreStates(data)
 
-                return scope_state_type_1
+                return scope_state_type_0
             except:  # noqa: E722
                 pass
             return cast(Union[CoreStates, None, Unset], data)

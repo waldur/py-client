@@ -11,8 +11,8 @@ T = TypeVar("T", bound="ReportSectionRequest")
 class ReportSectionRequest:
     """
     Attributes:
-        header (str):
-        body (str):
+        header (str): Section header text
+        body (str): Section body content
     """
 
     header: str

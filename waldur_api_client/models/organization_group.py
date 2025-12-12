@@ -17,10 +17,10 @@ class OrganizationGroup:
         uuid (Union[Unset, UUID]):
         url (Union[Unset, str]):
         name (Union[Unset, str]):
-        parent_uuid (Union[Unset, UUID]):
-        parent_name (Union[Unset, str]):
+        parent_uuid (Union[Unset, UUID]): UUID of the parent organization group
+        parent_name (Union[Unset, str]): Name of the parent organization group
         parent (Union[None, Unset, str]):
-        customers_count (Union[Unset, int]):
+        customers_count (Union[Unset, int]): Number of customers in this organization group
     """
 
     uuid: Union[Unset, UUID] = UNSET

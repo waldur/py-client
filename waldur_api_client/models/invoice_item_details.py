@@ -18,19 +18,20 @@ T = TypeVar("T", bound="InvoiceItemDetails")
 class InvoiceItemDetails:
     """
     Attributes:
-        resource_name (Union[Unset, str]):
-        resource_uuid (Union[Unset, UUID]):
-        plan_name (Union[Unset, str]):
-        plan_uuid (Union[Unset, UUID]):
-        offering_type (Union[Unset, str]):
-        offering_name (Union[Unset, str]):
-        offering_uuid (Union[Unset, UUID]):
-        service_provider_name (Union[Unset, str]):
-        service_provider_uuid (Union[Unset, UUID]):
-        plan_component_id (Union[Unset, int]):
-        offering_component_type (Union[Unset, str]):
-        offering_component_name (Union[Unset, str]):
-        resource_limit_periods (Union[Unset, list['ResourceLimitPeriod']]):
+        resource_name (Union[Unset, str]): Name of the marketplace resource
+        resource_uuid (Union[Unset, UUID]): UUID of the marketplace resource
+        plan_name (Union[Unset, str]): Name of the pricing plan
+        plan_uuid (Union[Unset, UUID]): UUID of the pricing plan
+        offering_type (Union[Unset, str]): Type of the offering
+        offering_name (Union[Unset, str]): Name of the offering
+        offering_uuid (Union[Unset, UUID]): UUID of the offering
+        service_provider_name (Union[Unset, str]): Name of the service provider
+        service_provider_uuid (Union[Unset, UUID]): UUID of the service provider
+        plan_component_id (Union[Unset, int]): ID of the plan component
+        offering_component_type (Union[Unset, str]): Type of the offering component
+        offering_component_name (Union[Unset, str]): Name of the offering component
+        resource_limit_periods (Union[Unset, list['ResourceLimitPeriod']]): List of resource limit periods for this
+            invoice item
     """
 
     resource_name: Union[Unset, str] = UNSET

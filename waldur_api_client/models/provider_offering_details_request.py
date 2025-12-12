@@ -25,7 +25,7 @@ class ProviderOfferingDetailsRequest:
         name (str):
         category (str):
         type_ (str):
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         description (Union[Unset, str]):
         full_description (Union[Unset, str]):
         privacy_policy_link (Union[Unset, str]):
@@ -43,7 +43,7 @@ class ProviderOfferingDetailsRequest:
         datacite_doi (Union[Unset, str]):
         latitude (Union[None, Unset, float]):
         longitude (Union[None, Unset, float]):
-        country (Union[BlankEnum, CountryEnum, Unset]):
+        country (Union[BlankEnum, CountryEnum, Unset]): Country code (ISO 3166-1 alpha-2)
         backend_id (Union[Unset, str]):
         image (Union[File, None, Unset]):
         backend_metadata (Union[Unset, Any]):

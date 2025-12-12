@@ -30,10 +30,11 @@ class CustomerRequestForm:
         accounting_start_date (Union[Unset, datetime.datetime]):
         sponsor_number (Union[None, Unset, int]): External ID of the sponsor covering the costs
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
-        project_metadata_checklist (Union[None, UUID, Unset]):
+        project_metadata_checklist (Union[None, UUID, Unset]): Checklist to be used for project metadata validation in
+            this organization
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         native_name (Union[Unset, str]):
         abbreviation (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -53,7 +54,7 @@ class CustomerRequestForm:
         latitude (Union[None, Unset, float]):
         longitude (Union[None, Unset, float]):
         bank_account (Union[Unset, str]):
-        country (Union[BlankEnum, CountryEnum, Unset]):
+        country (Union[BlankEnum, CountryEnum, Unset]): Country code (ISO 3166-1 alpha-2)
         notification_emails (Union[Unset, str]): Comma-separated list of notification email addresses
     """
 

@@ -16,7 +16,7 @@ class InvitationUpdate:
     Attributes:
         email (str): Invitation link will be sent to this email. Note that user can accept invitation with different
             email.
-        role (Union[Unset, UUID]):
+        role (Union[Unset, UUID]): UUID of the new role to assign. Must be compatible with the invitation scope.
     """
 
     email: str

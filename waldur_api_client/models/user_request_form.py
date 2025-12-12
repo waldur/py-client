@@ -19,7 +19,7 @@ class UserRequestForm:
     Attributes:
         username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_ characters
         email (str):
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         native_name (Union[Unset, str]):
         job_title (Union[Unset, str]):
         phone_number (Union[Unset, str]):

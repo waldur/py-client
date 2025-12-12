@@ -13,8 +13,8 @@ T = TypeVar("T", bound="ReportSection")
 class ReportSection:
     """
     Attributes:
-        header (Union[Unset, str]):
-        body (Union[Unset, str]):
+        header (Union[Unset, str]): Section header text
+        body (Union[Unset, str]): Section body content
     """
 
     header: Union[Unset, str] = UNSET

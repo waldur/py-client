@@ -11,7 +11,7 @@ T = TypeVar("T", bound="InvoiceItemCompensationRequest")
 class InvoiceItemCompensationRequest:
     """
     Attributes:
-        offering_component_name (str):
+        offering_component_name (str): Name of the offering component for compensation
     """
 
     offering_component_name: str

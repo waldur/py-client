@@ -16,7 +16,7 @@ class ProtectedCallRequest:
     Attributes:
         name (str):
         manager (str):
-        slug (Union[Unset, str]):
+        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         description (Union[Unset, str]):
         fixed_duration_in_days (Union[None, Unset, int]):
         backend_id (Union[Unset, str]):

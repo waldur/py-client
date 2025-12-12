@@ -11,10 +11,10 @@ T = TypeVar("T", bound="TableSize")
 class TableSize:
     """
     Attributes:
-        table_name (str):
-        total_size (int):
-        data_size (int):
-        external_size (int):
+        table_name (str): Name of the database table
+        total_size (int): Total size of the table in bytes
+        data_size (int): Size of the actual data in bytes
+        external_size (int): Size of external data (e.g., TOAST) in bytes
     """
 
     table_name: str

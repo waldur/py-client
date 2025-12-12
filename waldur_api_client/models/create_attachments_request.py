@@ -14,7 +14,7 @@ T = TypeVar("T", bound="CreateAttachmentsRequest")
 class CreateAttachmentsRequest:
     """
     Attributes:
-        attachments (list[File]):
+        attachments (list[File]): List of files to attach
     """
 
     attachments: list[File]
