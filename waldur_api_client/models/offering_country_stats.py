@@ -11,8 +11,8 @@ T = TypeVar("T", bound="OfferingCountryStats")
 class OfferingCountryStats:
     """
     Attributes:
-        country (str):
-        count (int):
+        country (str): Country code of the offering
+        count (int): Number of offerings in this country
     """
 
     country: str

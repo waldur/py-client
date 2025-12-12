@@ -12,12 +12,12 @@ T = TypeVar("T", bound="CountProjectsOfServiceProvidersGroupedByOecd")
 class CountProjectsOfServiceProvidersGroupedByOecd:
     """
     Attributes:
-        service_provider_uuid (UUID):
-        customer_uuid (UUID):
-        customer_name (str):
-        customer_organization_group_uuid (str):
-        customer_organization_group_name (str):
-        count (int):
+        service_provider_uuid (UUID): UUID of the service provider
+        customer_uuid (UUID): UUID of the customer
+        customer_name (str): Name of the customer
+        customer_organization_group_uuid (str): UUID of the customer's organization group
+        customer_organization_group_name (str): Name of the customer's organization group
+        count (int): Count value
         oecd_fos_2007_name (str):
     """
 

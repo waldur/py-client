@@ -11,8 +11,8 @@ T = TypeVar("T", bound="RuntimeStates")
 class RuntimeStates:
     """
     Attributes:
-        value (str):
-        label (str):
+        value (str): Value of the runtime state
+        label (str): Human-readable label for the runtime state
     """
 
     value: str

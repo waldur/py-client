@@ -12,7 +12,7 @@ T = TypeVar("T", bound="RemoveSoftwareCatalogRequest")
 class RemoveSoftwareCatalogRequest:
     """
     Attributes:
-        offering_catalog_uuid (UUID):
+        offering_catalog_uuid (UUID): UUID of the offering catalog to remove
     """
 
     offering_catalog_uuid: UUID

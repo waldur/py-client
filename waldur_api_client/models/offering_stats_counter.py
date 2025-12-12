@@ -12,11 +12,11 @@ T = TypeVar("T", bound="OfferingStatsCounter")
 class OfferingStatsCounter:
     """
     Attributes:
-        category_uuid (UUID):
-        category_title (str):
-        service_provider_name (str):
-        service_provider_uuid (UUID):
-        count (int):
+        category_uuid (UUID): UUID of the category
+        category_title (str): Title of the category
+        service_provider_name (str): Name of the service provider
+        service_provider_uuid (UUID): UUID of the service provider
+        count (int): Number of offerings
     """
 
     category_uuid: UUID

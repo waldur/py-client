@@ -11,9 +11,9 @@ T = TypeVar("T", bound="OfferingComponentLimitRequest")
 class OfferingComponentLimitRequest:
     """
     Attributes:
-        min_ (int):
-        max_ (int):
-        max_available_limit (int):
+        min_ (int): Minimum allowed value
+        max_ (int): Maximum allowed value
+        max_available_limit (int): Maximum available limit across all resources
     """
 
     min_: int

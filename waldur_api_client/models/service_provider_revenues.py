@@ -11,9 +11,9 @@ T = TypeVar("T", bound="ServiceProviderRevenues")
 class ServiceProviderRevenues:
     """
     Attributes:
-        total (int):
-        year (int):
-        month (int):
+        total (int): Total revenue amount
+        year (int): Invoice year
+        month (int): Invoice month
     """
 
     total: int

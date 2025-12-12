@@ -12,9 +12,9 @@ T = TypeVar("T", bound="CountUniqueUsersConnectedWithActiveResourcesOfServicePro
 class CountUniqueUsersConnectedWithActiveResourcesOfServiceProvider:
     """
     Attributes:
-        customer_uuid (UUID):
-        customer_name (str):
-        count_users (int):
+        customer_uuid (UUID): UUID of the customer
+        customer_name (str): Name of the customer
+        count_users (int): Number of unique users
     """
 
     customer_uuid: UUID

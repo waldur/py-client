@@ -12,8 +12,8 @@ T = TypeVar("T", bound="OfferingCost")
 class OfferingCost:
     """
     Attributes:
-        offering_uuid (UUID):
-        cost (float):
+        offering_uuid (UUID): UUID of the offering
+        cost (float): Total cost for the offering
     """
 
     offering_uuid: UUID

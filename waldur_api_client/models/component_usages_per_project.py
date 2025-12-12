@@ -12,9 +12,9 @@ T = TypeVar("T", bound="ComponentUsagesPerProject")
 class ComponentUsagesPerProject:
     """
     Attributes:
-        project_uuid (UUID):
-        component_type (str):
-        usage (int):
+        project_uuid (UUID): UUID of the project
+        component_type (str): Type of the component
+        usage (int): Total usage for the component
     """
 
     project_uuid: UUID

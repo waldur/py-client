@@ -11,10 +11,10 @@ T = TypeVar("T", bound="OfferingStats")
 class OfferingStats:
     """
     Attributes:
-        count (int):
-        name (str):
-        uuid (str):
-        country (str):
+        count (int): Number of resources for the offering
+        name (str): Name of the offering
+        uuid (str): UUID of the offering
+        country (str): Country of the offering
     """
 
     count: int

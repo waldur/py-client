@@ -13,8 +13,8 @@ T = TypeVar("T", bound="TimeSeriesToSData")
 class TimeSeriesToSData:
     """
     Attributes:
-        date (datetime.date):
-        count (int):
+        date (datetime.date): Date of the data point
+        count (int): Count for the date
     """
 
     date: datetime.date

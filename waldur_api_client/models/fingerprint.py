@@ -13,9 +13,9 @@ T = TypeVar("T", bound="Fingerprint")
 class Fingerprint:
     """
     Attributes:
-        md5 (Union[Unset, str]):
-        sha256 (Union[Unset, str]):
-        sha512 (Union[Unset, str]):
+        md5 (Union[Unset, str]): MD5 fingerprint of SSH key
+        sha256 (Union[Unset, str]): SHA256 fingerprint of SSH key
+        sha512 (Union[Unset, str]): SHA512 fingerprint of SSH key
     """
 
     md5: Union[Unset, str] = UNSET

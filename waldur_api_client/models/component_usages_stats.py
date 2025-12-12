@@ -12,12 +12,12 @@ T = TypeVar("T", bound="ComponentUsagesStats")
 class ComponentUsagesStats:
     """
     Attributes:
-        usage (str):
-        offering_uuid (UUID):
-        component_type (str):
-        offering_country (str):
-        organization_group_name (str):
-        organization_group_uuid (str):
+        usage (str): Total usage amount
+        offering_uuid (UUID): UUID of the offering
+        component_type (str): Type of the component
+        offering_country (str): Country of the offering
+        organization_group_name (str): Name of the organization group
+        organization_group_uuid (str): UUID of the organization group
     """
 
     usage: str
