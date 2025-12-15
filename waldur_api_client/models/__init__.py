@@ -225,6 +225,7 @@ from .category_help_articles_request import CategoryHelpArticlesRequest
 from .category_serializer_for_for_nested_fields import CategorySerializerForForNestedFields
 from .category_serializer_for_for_nested_fields_request import CategorySerializerForForNestedFieldsRequest
 from .celery_stats_retrieve_response_200 import CeleryStatsRetrieveResponse200
+from .chat_request_request import ChatRequestRequest
 from .check_unique_backend_id_request import CheckUniqueBackendIDRequest
 from .check_unique_backend_id_response import CheckUniqueBackendIDResponse
 from .checklist import Checklist
@@ -2211,6 +2212,7 @@ __all__ = (
     "CategorySerializerForForNestedFields",
     "CategorySerializerForForNestedFieldsRequest",
     "CeleryStatsRetrieveResponse200",
+    "ChatRequestRequest",
     "Checklist",
     "ChecklistCategory",
     "ChecklistCategoryRequest",
