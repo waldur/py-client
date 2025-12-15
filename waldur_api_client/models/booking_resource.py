@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.billing_unit import BillingUnit
+from ..models.offering_state_enum import OfferingStateEnum
 from ..models.resource_state import ResourceState
 from ..types import UNSET, Unset
 
@@ -112,7 +113,7 @@ class BookingResource:
         user_requires_reconsent (Union[Unset, bool]): Check if the current user needs to re-consent for this resource's
             offering.
         renewal_date (Union['BookingResourceRenewalDateType0', None, Unset]):
-        offering_state (Union[Unset, ResourceState]):
+        offering_state (Union[Unset, OfferingStateEnum]):
         offering_components (Union[Unset, list['OfferingComponent']]):
         created_by (Union[Unset, str]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
@@ -201,7 +202,7 @@ class BookingResource:
     customer_slug: Union[Unset, str] = UNSET
     user_requires_reconsent: Union[Unset, bool] = UNSET
     renewal_date: Union["BookingResourceRenewalDateType0", None, Unset] = UNSET
-    offering_state: Union[Unset, ResourceState] = UNSET
+    offering_state: Union[Unset, OfferingStateEnum] = UNSET
     offering_components: Union[Unset, list["OfferingComponent"]] = UNSET
     created_by: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
@@ -484,7 +485,7 @@ class BookingResource:
         else:
             renewal_date = self.renewal_date
 
-        offering_state: Union[Unset, str] = UNSET
+        offering_state: Union[Unset, int] = UNSET
         if not isinstance(self.offering_state, Unset):
             offering_state = self.offering_state.value
 
@@ -1113,11 +1114,11 @@ class BookingResource:
         renewal_date = _parse_renewal_date(d.pop("renewal_date", UNSET))
 
         _offering_state = d.pop("offering_state", UNSET)
-        offering_state: Union[Unset, ResourceState]
+        offering_state: Union[Unset, OfferingStateEnum]
         if isinstance(_offering_state, Unset):
             offering_state = UNSET
         else:
-            offering_state = ResourceState(_offering_state)
+            offering_state = OfferingStateEnum(_offering_state)
 
         offering_components = []
         _offering_components = d.pop("offering_components", UNSET)

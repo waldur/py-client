@@ -24,7 +24,6 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    exclude_pending_transitional: Union[Unset, bool] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -56,6 +55,7 @@ def _get_kwargs(
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceProviderResourcesCountStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
+    visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -82,8 +82,6 @@ def _get_kwargs(
     params["customer_uuid"] = json_customer_uuid
 
     params["downscaled"] = downscaled
-
-    params["exclude_pending_transitional"] = exclude_pending_transitional
 
     params["has_terminate_date"] = has_terminate_date
 
@@ -197,6 +195,8 @@ def _get_kwargs(
 
     params["usage_based"] = usage_based
 
+    params["visible_to_providers"] = visible_to_providers
+
     params["visible_to_username"] = visible_to_username
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
@@ -246,7 +246,6 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    exclude_pending_transitional: Union[Unset, bool] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -278,6 +277,7 @@ def sync_detailed(
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceProviderResourcesCountStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
+    visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List provider resources
@@ -292,7 +292,6 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        exclude_pending_transitional (Union[Unset, bool]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -324,6 +323,7 @@ def sync_detailed(
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceProviderResourcesCountStateItem]]):
         usage_based (Union[Unset, bool]):
+        visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
 
     Raises:
@@ -342,7 +342,6 @@ def sync_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
-        exclude_pending_transitional=exclude_pending_transitional,
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
@@ -374,6 +373,7 @@ def sync_detailed(
         service_manager_uuid=service_manager_uuid,
         state=state,
         usage_based=usage_based,
+        visible_to_providers=visible_to_providers,
         visible_to_username=visible_to_username,
     )
 
@@ -394,7 +394,6 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    exclude_pending_transitional: Union[Unset, bool] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -426,6 +425,7 @@ def sync(
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceProviderResourcesCountStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
+    visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> int:
     """List provider resources
@@ -440,7 +440,6 @@ def sync(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        exclude_pending_transitional (Union[Unset, bool]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -472,6 +471,7 @@ def sync(
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceProviderResourcesCountStateItem]]):
         usage_based (Union[Unset, bool]):
+        visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
 
     Raises:
@@ -491,7 +491,6 @@ def sync(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
-        exclude_pending_transitional=exclude_pending_transitional,
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
@@ -523,6 +522,7 @@ def sync(
         service_manager_uuid=service_manager_uuid,
         state=state,
         usage_based=usage_based,
+        visible_to_providers=visible_to_providers,
         visible_to_username=visible_to_username,
     ).parsed
 
@@ -537,7 +537,6 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    exclude_pending_transitional: Union[Unset, bool] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -569,6 +568,7 @@ async def asyncio_detailed(
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceProviderResourcesCountStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
+    visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List provider resources
@@ -583,7 +583,6 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        exclude_pending_transitional (Union[Unset, bool]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -615,6 +614,7 @@ async def asyncio_detailed(
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceProviderResourcesCountStateItem]]):
         usage_based (Union[Unset, bool]):
+        visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
 
     Raises:
@@ -633,7 +633,6 @@ async def asyncio_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
-        exclude_pending_transitional=exclude_pending_transitional,
         has_terminate_date=has_terminate_date,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
@@ -665,6 +664,7 @@ async def asyncio_detailed(
         service_manager_uuid=service_manager_uuid,
         state=state,
         usage_based=usage_based,
+        visible_to_providers=visible_to_providers,
         visible_to_username=visible_to_username,
     )
 
@@ -683,7 +683,6 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    exclude_pending_transitional: Union[Unset, bool] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -715,6 +714,7 @@ async def asyncio(
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceProviderResourcesCountStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
+    visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
 ) -> int:
     """List provider resources
@@ -729,7 +729,6 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        exclude_pending_transitional (Union[Unset, bool]):
         has_terminate_date (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -761,6 +760,7 @@ async def asyncio(
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceProviderResourcesCountStateItem]]):
         usage_based (Union[Unset, bool]):
+        visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
 
     Raises:
@@ -781,7 +781,6 @@ async def asyncio(
             customer=customer,
             customer_uuid=customer_uuid,
             downscaled=downscaled,
-            exclude_pending_transitional=exclude_pending_transitional,
             has_terminate_date=has_terminate_date,
             lexis_links_supported=lexis_links_supported,
             limit_based=limit_based,
@@ -813,6 +812,7 @@ async def asyncio(
             service_manager_uuid=service_manager_uuid,
             state=state,
             usage_based=usage_based,
+            visible_to_providers=visible_to_providers,
             visible_to_username=visible_to_username,
         )
     ).parsed

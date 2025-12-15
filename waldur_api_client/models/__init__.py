@@ -944,6 +944,7 @@ from .offering_resource_options_update_request import OfferingResourceOptionsUpd
 from .offering_software_catalog import OfferingSoftwareCatalog
 from .offering_software_catalog_request import OfferingSoftwareCatalogRequest
 from .offering_state import OfferingState
+from .offering_state_enum import OfferingStateEnum
 from .offering_stats import OfferingStats
 from .offering_stats_counter import OfferingStatsCounter
 from .offering_terms_of_service import OfferingTermsOfService
@@ -2861,6 +2862,7 @@ __all__ = (
     "OfferingSoftwareCatalog",
     "OfferingSoftwareCatalogRequest",
     "OfferingState",
+    "OfferingStateEnum",
     "OfferingStats",
     "OfferingStatsCounter",
     "OfferingTermsOfService",
