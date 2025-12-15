@@ -152,6 +152,7 @@ class ConstanceSettingsRequest:
         oidc_access_token_enabled (Union[Unset, bool]):
         oidc_block_creation_of_uninvited_users (Union[Unset, bool]):
         deactivate_user_if_no_roles (Union[Unset, bool]):
+        waldur_auth_social_role_claim (Union[Unset, str]):
         maintenance_announcement_notify_before_minutes (Union[Unset, int]):
         maintenance_announcement_notify_system (Union[Unset, list[str]]):
         enforce_user_consent_for_offerings (Union[Unset, bool]):
@@ -323,6 +324,7 @@ class ConstanceSettingsRequest:
     oidc_access_token_enabled: Union[Unset, bool] = UNSET
     oidc_block_creation_of_uninvited_users: Union[Unset, bool] = UNSET
     deactivate_user_if_no_roles: Union[Unset, bool] = UNSET
+    waldur_auth_social_role_claim: Union[Unset, str] = UNSET
     maintenance_announcement_notify_before_minutes: Union[Unset, int] = UNSET
     maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
     enforce_user_consent_for_offerings: Union[Unset, bool] = UNSET
@@ -720,6 +722,8 @@ class ConstanceSettingsRequest:
 
         deactivate_user_if_no_roles = self.deactivate_user_if_no_roles
 
+        waldur_auth_social_role_claim = self.waldur_auth_social_role_claim
+
         maintenance_announcement_notify_before_minutes = self.maintenance_announcement_notify_before_minutes
 
         maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
@@ -1069,6 +1073,8 @@ class ConstanceSettingsRequest:
             field_dict["OIDC_BLOCK_CREATION_OF_UNINVITED_USERS"] = oidc_block_creation_of_uninvited_users
         if deactivate_user_if_no_roles is not UNSET:
             field_dict["DEACTIVATE_USER_IF_NO_ROLES"] = deactivate_user_if_no_roles
+        if waldur_auth_social_role_claim is not UNSET:
+            field_dict["WALDUR_AUTH_SOCIAL_ROLE_CLAIM"] = waldur_auth_social_role_claim
         if maintenance_announcement_notify_before_minutes is not UNSET:
             field_dict["MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES"] = (
                 maintenance_announcement_notify_before_minutes
@@ -1599,6 +1605,8 @@ class ConstanceSettingsRequest:
 
         deactivate_user_if_no_roles = d.pop("DEACTIVATE_USER_IF_NO_ROLES", UNSET)
 
+        waldur_auth_social_role_claim = d.pop("WALDUR_AUTH_SOCIAL_ROLE_CLAIM", UNSET)
+
         maintenance_announcement_notify_before_minutes = d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES", UNSET)
 
         maintenance_announcement_notify_system = cast(list[str], d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM", UNSET))
@@ -1801,6 +1809,7 @@ class ConstanceSettingsRequest:
             oidc_access_token_enabled=oidc_access_token_enabled,
             oidc_block_creation_of_uninvited_users=oidc_block_creation_of_uninvited_users,
             deactivate_user_if_no_roles=deactivate_user_if_no_roles,
+            waldur_auth_social_role_claim=waldur_auth_social_role_claim,
             maintenance_announcement_notify_before_minutes=maintenance_announcement_notify_before_minutes,
             maintenance_announcement_notify_system=maintenance_announcement_notify_system,
             enforce_user_consent_for_offerings=enforce_user_consent_for_offerings,
