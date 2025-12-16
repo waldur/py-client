@@ -15,7 +15,6 @@ T = TypeVar("T", bound="PatchedOnboardingVerificationRequest")
 class PatchedOnboardingVerificationRequest:
     """
     Attributes:
-        user (Union[Unset, int]): User requesting company onboarding
         country (Union[Unset, str]): ISO country code (e.g., 'EE' for Estonia)
         legal_person_identifier (Union[Unset, str]): Official company registration code (required for automatic
             validation)
@@ -23,7 +22,6 @@ class PatchedOnboardingVerificationRequest:
         expires_at (Union[None, Unset, datetime.datetime]): When this verification expires
     """
 
-    user: Union[Unset, int] = UNSET
     country: Union[Unset, str] = UNSET
     legal_person_identifier: Union[Unset, str] = UNSET
     legal_name: Union[Unset, str] = UNSET
@@ -31,8 +29,6 @@ class PatchedOnboardingVerificationRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        user = self.user
-
         country = self.country
 
         legal_person_identifier = self.legal_person_identifier
@@ -50,8 +46,6 @@ class PatchedOnboardingVerificationRequest:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if user is not UNSET:
-            field_dict["user"] = user
         if country is not UNSET:
             field_dict["country"] = country
         if legal_person_identifier is not UNSET:
@@ -66,8 +60,6 @@ class PatchedOnboardingVerificationRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        user = d.pop("user", UNSET)
-
         country = d.pop("country", UNSET)
 
         legal_person_identifier = d.pop("legal_person_identifier", UNSET)
@@ -92,7 +84,6 @@ class PatchedOnboardingVerificationRequest:
         expires_at = _parse_expires_at(d.pop("expires_at", UNSET))
 
         patched_onboarding_verification_request = cls(
-            user=user,
             country=country,
             legal_person_identifier=legal_person_identifier,
             legal_name=legal_name,

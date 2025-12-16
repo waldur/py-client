@@ -974,8 +974,10 @@ from .onboarding_justification_documentation_request_form import OnboardingJusti
 from .onboarding_justification_documentation_request_multipart import (
     OnboardingJustificationDocumentationRequestMultipart,
 )
+from .onboarding_justification_onboarding_metadata import OnboardingJustificationOnboardingMetadata
 from .onboarding_justification_request import OnboardingJustificationRequest
 from .onboarding_justification_review_request import OnboardingJustificationReviewRequest
+from .onboarding_justification_user_submitted_customer_data import OnboardingJustificationUserSubmittedCustomerData
 from .onboarding_question_metadata import OnboardingQuestionMetadata
 from .onboarding_question_metadata_request import OnboardingQuestionMetadataRequest
 from .onboarding_run_validation_request_request import OnboardingRunValidationRequestRequest
@@ -2889,8 +2891,10 @@ __all__ = (
     "OnboardingJustificationDocumentationRequest",
     "OnboardingJustificationDocumentationRequestForm",
     "OnboardingJustificationDocumentationRequestMultipart",
+    "OnboardingJustificationOnboardingMetadata",
     "OnboardingJustificationRequest",
     "OnboardingJustificationReviewRequest",
+    "OnboardingJustificationUserSubmittedCustomerData",
     "OnboardingQuestionMetadata",
     "OnboardingQuestionMetadataRequest",
     "OnboardingRunValidationRequestRequest",

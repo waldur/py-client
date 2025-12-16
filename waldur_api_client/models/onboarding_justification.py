@@ -12,6 +12,10 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.onboarding_justification_documentation import OnboardingJustificationDocumentation
+    from ..models.onboarding_justification_onboarding_metadata import OnboardingJustificationOnboardingMetadata
+    from ..models.onboarding_justification_user_submitted_customer_data import (
+        OnboardingJustificationUserSubmittedCustomerData,
+    )
 
 
 T = TypeVar("T", bound="OnboardingJustification")
@@ -26,6 +30,7 @@ class OnboardingJustification:
         verification_uuid (UUID):
         country (str):
         user (str):
+        user_full_name (str):
         legal_person_identifier (str):
         legal_name (str):
         error_message (str):
@@ -35,6 +40,10 @@ class OnboardingJustification:
         validation_decision (ValidationDecisionEnum):
         staff_notes (str): Administrator notes on the review decision
         supporting_documentation (list['OnboardingJustificationDocumentation']):
+        onboarding_metadata (OnboardingJustificationOnboardingMetadata): Onboarding-specific data like intents, purposes
+            extracted from checklist answers
+        user_submitted_customer_data (OnboardingJustificationUserSubmittedCustomerData): Customer-related data submitted
+            by the user via checklist answers
         created (datetime.datetime):
         modified (datetime.datetime):
         user_justification (Union[None, Unset, str]): User's explanation for why they should be authorized
@@ -45,6 +54,7 @@ class OnboardingJustification:
     verification_uuid: UUID
     country: str
     user: str
+    user_full_name: str
     legal_person_identifier: str
     legal_name: str
     error_message: str
@@ -54,6 +64,8 @@ class OnboardingJustification:
     validation_decision: ValidationDecisionEnum
     staff_notes: str
     supporting_documentation: list["OnboardingJustificationDocumentation"]
+    onboarding_metadata: "OnboardingJustificationOnboardingMetadata"
+    user_submitted_customer_data: "OnboardingJustificationUserSubmittedCustomerData"
     created: datetime.datetime
     modified: datetime.datetime
     user_justification: Union[None, Unset, str] = UNSET
@@ -69,6 +81,8 @@ class OnboardingJustification:
         country = self.country
 
         user = self.user
+
+        user_full_name = self.user_full_name
 
         legal_person_identifier = self.legal_person_identifier
 
@@ -96,6 +110,10 @@ class OnboardingJustification:
             supporting_documentation_item = supporting_documentation_item_data.to_dict()
             supporting_documentation.append(supporting_documentation_item)
 
+        onboarding_metadata = self.onboarding_metadata.to_dict()
+
+        user_submitted_customer_data = self.user_submitted_customer_data.to_dict()
+
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
@@ -115,6 +133,7 @@ class OnboardingJustification:
                 "verification_uuid": verification_uuid,
                 "country": country,
                 "user": user,
+                "user_full_name": user_full_name,
                 "legal_person_identifier": legal_person_identifier,
                 "legal_name": legal_name,
                 "error_message": error_message,
@@ -124,6 +143,8 @@ class OnboardingJustification:
                 "validation_decision": validation_decision,
                 "staff_notes": staff_notes,
                 "supporting_documentation": supporting_documentation,
+                "onboarding_metadata": onboarding_metadata,
+                "user_submitted_customer_data": user_submitted_customer_data,
                 "created": created,
                 "modified": modified,
             }
@@ -136,6 +157,10 @@ class OnboardingJustification:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.onboarding_justification_documentation import OnboardingJustificationDocumentation
+        from ..models.onboarding_justification_onboarding_metadata import OnboardingJustificationOnboardingMetadata
+        from ..models.onboarding_justification_user_submitted_customer_data import (
+            OnboardingJustificationUserSubmittedCustomerData,
+        )
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -147,6 +172,8 @@ class OnboardingJustification:
         country = d.pop("country")
 
         user = d.pop("user")
+
+        user_full_name = d.pop("user_full_name")
 
         legal_person_identifier = d.pop("legal_person_identifier")
 
@@ -191,6 +218,12 @@ class OnboardingJustification:
 
             supporting_documentation.append(supporting_documentation_item)
 
+        onboarding_metadata = OnboardingJustificationOnboardingMetadata.from_dict(d.pop("onboarding_metadata"))
+
+        user_submitted_customer_data = OnboardingJustificationUserSubmittedCustomerData.from_dict(
+            d.pop("user_submitted_customer_data")
+        )
+
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
@@ -210,6 +243,7 @@ class OnboardingJustification:
             verification_uuid=verification_uuid,
             country=country,
             user=user,
+            user_full_name=user_full_name,
             legal_person_identifier=legal_person_identifier,
             legal_name=legal_name,
             error_message=error_message,
@@ -219,6 +253,8 @@ class OnboardingJustification:
             validation_decision=validation_decision,
             staff_notes=staff_notes,
             supporting_documentation=supporting_documentation,
+            onboarding_metadata=onboarding_metadata,
+            user_submitted_customer_data=user_submitted_customer_data,
             created=created,
             modified=modified,
             user_justification=user_justification,

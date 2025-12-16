@@ -26,7 +26,8 @@ class OnboardingVerification:
     """
     Attributes:
         uuid (UUID):
-        user (int): User requesting company onboarding
+        user (str): User requesting company onboarding
+        user_full_name (str):
         country (str): ISO country code (e.g., 'EE' for Estonia)
         status (OnboardingVerificationStatusEnum):
         validation_method (ValidationMethodEnum):
@@ -36,7 +37,7 @@ class OnboardingVerification:
         error_traceback (str):
         error_message (str):
         validated_at (Union[None, datetime.datetime]): When validation was completed
-        customer (Union[None, int]): Customer created after successful validation
+        customer (Union[None, str]): Customer created after successful validation
         onboarding_metadata (OnboardingVerificationOnboardingMetadata): Onboarding-specific data like intents, purposes
             extracted from checklist answers
         user_submitted_customer_data (OnboardingVerificationUserSubmittedCustomerData): Get customer data submitted by
@@ -53,7 +54,8 @@ class OnboardingVerification:
     """
 
     uuid: UUID
-    user: int
+    user: str
+    user_full_name: str
     country: str
     status: OnboardingVerificationStatusEnum
     validation_method: ValidationMethodEnum
@@ -63,7 +65,7 @@ class OnboardingVerification:
     error_traceback: str
     error_message: str
     validated_at: Union[None, datetime.datetime]
-    customer: Union[None, int]
+    customer: Union[None, str]
     onboarding_metadata: "OnboardingVerificationOnboardingMetadata"
     user_submitted_customer_data: "OnboardingVerificationUserSubmittedCustomerData"
     can_customer_be_created: bool
@@ -79,6 +81,8 @@ class OnboardingVerification:
         uuid = str(self.uuid)
 
         user = self.user
+
+        user_full_name = self.user_full_name
 
         country = self.country
 
@@ -102,7 +106,7 @@ class OnboardingVerification:
         else:
             validated_at = self.validated_at
 
-        customer: Union[None, int]
+        customer: Union[None, str]
         customer = self.customer
 
         onboarding_metadata = self.onboarding_metadata.to_dict()
@@ -136,6 +140,7 @@ class OnboardingVerification:
             {
                 "uuid": uuid,
                 "user": user,
+                "user_full_name": user_full_name,
                 "country": country,
                 "status": status,
                 "validation_method": validation_method,
@@ -175,6 +180,8 @@ class OnboardingVerification:
 
         user = d.pop("user")
 
+        user_full_name = d.pop("user_full_name")
+
         country = d.pop("country")
 
         status = OnboardingVerificationStatusEnum(d.pop("status"))
@@ -206,10 +213,10 @@ class OnboardingVerification:
 
         validated_at = _parse_validated_at(d.pop("validated_at"))
 
-        def _parse_customer(data: object) -> Union[None, int]:
+        def _parse_customer(data: object) -> Union[None, str]:
             if data is None:
                 return data
-            return cast(Union[None, int], data)
+            return cast(Union[None, str], data)
 
         customer = _parse_customer(d.pop("customer"))
 
@@ -258,6 +265,7 @@ class OnboardingVerification:
         onboarding_verification = cls(
             uuid=uuid,
             user=user,
+            user_full_name=user_full_name,
             country=country,
             status=status,
             validation_method=validation_method,

@@ -15,7 +15,6 @@ T = TypeVar("T", bound="OnboardingVerificationRequest")
 class OnboardingVerificationRequest:
     """
     Attributes:
-        user (int): User requesting company onboarding
         country (str): ISO country code (e.g., 'EE' for Estonia)
         legal_person_identifier (Union[Unset, str]): Official company registration code (required for automatic
             validation)
@@ -23,7 +22,6 @@ class OnboardingVerificationRequest:
         expires_at (Union[None, Unset, datetime.datetime]): When this verification expires
     """
 
-    user: int
     country: str
     legal_person_identifier: Union[Unset, str] = UNSET
     legal_name: Union[Unset, str] = UNSET
@@ -31,8 +29,6 @@ class OnboardingVerificationRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        user = self.user
-
         country = self.country
 
         legal_person_identifier = self.legal_person_identifier
@@ -51,7 +47,6 @@ class OnboardingVerificationRequest:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "user": user,
                 "country": country,
             }
         )
@@ -67,8 +62,6 @@ class OnboardingVerificationRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        user = d.pop("user")
-
         country = d.pop("country")
 
         legal_person_identifier = d.pop("legal_person_identifier", UNSET)
@@ -93,7 +86,6 @@ class OnboardingVerificationRequest:
         expires_at = _parse_expires_at(d.pop("expires_at", UNSET))
 
         onboarding_verification_request = cls(
-            user=user,
             country=country,
             legal_person_identifier=legal_person_identifier,
             legal_name=legal_name,

@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -12,14 +13,32 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
+    country: Union[Unset, str] = UNSET,
+    legal_name: Union[Unset, str] = UNSET,
+    legal_person_identifier: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["country"] = country
+
+    params["legal_name"] = legal_name
+
+    params["legal_person_identifier"] = legal_person_identifier
 
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["status"] = status
+
+    json_user_uuid: Union[Unset, str] = UNSET
+    if not isinstance(user_uuid, Unset):
+        json_user_uuid = str(user_uuid)
+    params["user_uuid"] = json_user_uuid
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -63,13 +82,23 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    country: Union[Unset, str] = UNSET,
+    legal_name: Union[Unset, str] = UNSET,
+    legal_person_identifier: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OnboardingVerification"]]:
     """
     Args:
+        country (Union[Unset, str]):
+        legal_name (Union[Unset, str]):
+        legal_person_identifier (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        status (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -80,8 +109,13 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        country=country,
+        legal_name=legal_name,
+        legal_person_identifier=legal_person_identifier,
         page=page,
         page_size=page_size,
+        status=status,
+        user_uuid=user_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -94,13 +128,23 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    country: Union[Unset, str] = UNSET,
+    legal_name: Union[Unset, str] = UNSET,
+    legal_person_identifier: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OnboardingVerification"]:
     """
     Args:
+        country (Union[Unset, str]):
+        legal_name (Union[Unset, str]):
+        legal_person_identifier (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        status (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -112,21 +156,36 @@ def sync(
 
     return sync_detailed(
         client=client,
+        country=country,
+        legal_name=legal_name,
+        legal_person_identifier=legal_person_identifier,
         page=page,
         page_size=page_size,
+        status=status,
+        user_uuid=user_uuid,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    country: Union[Unset, str] = UNSET,
+    legal_name: Union[Unset, str] = UNSET,
+    legal_person_identifier: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OnboardingVerification"]]:
     """
     Args:
+        country (Union[Unset, str]):
+        legal_name (Union[Unset, str]):
+        legal_person_identifier (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        status (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -137,8 +196,13 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        country=country,
+        legal_name=legal_name,
+        legal_person_identifier=legal_person_identifier,
         page=page,
         page_size=page_size,
+        status=status,
+        user_uuid=user_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -149,13 +213,23 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    country: Union[Unset, str] = UNSET,
+    legal_name: Union[Unset, str] = UNSET,
+    legal_person_identifier: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OnboardingVerification"]:
     """
     Args:
+        country (Union[Unset, str]):
+        legal_name (Union[Unset, str]):
+        legal_person_identifier (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        status (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -168,8 +242,13 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            country=country,
+            legal_name=legal_name,
+            legal_person_identifier=legal_person_identifier,
             page=page,
             page_size=page_size,
+            status=status,
+            user_uuid=user_uuid,
         )
     ).parsed
 
@@ -177,6 +256,11 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
+    country: Union[Unset, str] = UNSET,
+    legal_name: Union[Unset, str] = UNSET,
+    legal_person_identifier: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OnboardingVerification"]:
     """Get All Pages
 
@@ -186,6 +270,11 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        country (Union[Unset, str]):
+        legal_name (Union[Unset, str]):
+        legal_person_identifier (Union[Unset, str]):
+        status (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -199,7 +288,13 @@ def sync_all(
     all_results: list[OnboardingVerification] = []
 
     # Get initial request kwargs
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        country=country,
+        legal_name=legal_name,
+        legal_person_identifier=legal_person_identifier,
+        status=status,
+        user_uuid=user_uuid,
+    )
 
     # Set page_size to maximum
     if "params" not in kwargs:
@@ -246,6 +341,11 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
+    country: Union[Unset, str] = UNSET,
+    legal_name: Union[Unset, str] = UNSET,
+    legal_person_identifier: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OnboardingVerification"]:
     """Get All Pages (Async)
 
@@ -255,6 +355,11 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        country (Union[Unset, str]):
+        legal_name (Union[Unset, str]):
+        legal_person_identifier (Union[Unset, str]):
+        status (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -268,7 +373,13 @@ async def asyncio_all(
     all_results: list[OnboardingVerification] = []
 
     # Get initial request kwargs
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        country=country,
+        legal_name=legal_name,
+        legal_person_identifier=legal_person_identifier,
+        status=status,
+        user_uuid=user_uuid,
+    )
 
     # Set page_size to maximum
     if "params" not in kwargs:
