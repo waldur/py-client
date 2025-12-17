@@ -96,6 +96,8 @@ class MergedPluginOptionsRequest:
         managed_rancher_tenant_max_disk (Union[Unset, int]): Max size of disk space for tenants (GB)
         account_name_generation_policy (Union[AccountNameGenerationPolicyEnum, None, Unset]): Slurm account name
             generation policy
+        enable_display_of_order_actions_for_service_provider (Union[Unset, bool]): Enable display of order actions for
+            service provider Default: True.
         auto_approve_marketplace_script (Union[Unset, bool]): If set to False, an order requires manual provider
             approval Default: True.
         highlight_backend_id_display (Union[Unset, bool]): Defines if backend_id should be shown more prominently by the
@@ -161,6 +163,7 @@ class MergedPluginOptionsRequest:
     managed_rancher_tenant_max_ram: Union[Unset, int] = UNSET
     managed_rancher_tenant_max_disk: Union[Unset, int] = UNSET
     account_name_generation_policy: Union[AccountNameGenerationPolicyEnum, None, Unset] = UNSET
+    enable_display_of_order_actions_for_service_provider: Union[Unset, bool] = True
     auto_approve_marketplace_script: Union[Unset, bool] = True
     highlight_backend_id_display: Union[Unset, bool] = False
     backend_id_display_label: Union[Unset, str] = "Backend ID"
@@ -295,6 +298,8 @@ class MergedPluginOptionsRequest:
         else:
             account_name_generation_policy = self.account_name_generation_policy
 
+        enable_display_of_order_actions_for_service_provider = self.enable_display_of_order_actions_for_service_provider
+
         auto_approve_marketplace_script = self.auto_approve_marketplace_script
 
         highlight_backend_id_display = self.highlight_backend_id_display
@@ -426,6 +431,10 @@ class MergedPluginOptionsRequest:
             field_dict["managed_rancher_tenant_max_disk"] = managed_rancher_tenant_max_disk
         if account_name_generation_policy is not UNSET:
             field_dict["account_name_generation_policy"] = account_name_generation_policy
+        if enable_display_of_order_actions_for_service_provider is not UNSET:
+            field_dict["enable_display_of_order_actions_for_service_provider"] = (
+                enable_display_of_order_actions_for_service_provider
+            )
         if auto_approve_marketplace_script is not UNSET:
             field_dict["auto_approve_marketplace_script"] = auto_approve_marketplace_script
         if highlight_backend_id_display is not UNSET:
@@ -593,6 +602,10 @@ class MergedPluginOptionsRequest:
             d.pop("account_name_generation_policy", UNSET)
         )
 
+        enable_display_of_order_actions_for_service_provider = d.pop(
+            "enable_display_of_order_actions_for_service_provider", UNSET
+        )
+
         auto_approve_marketplace_script = d.pop("auto_approve_marketplace_script", UNSET)
 
         highlight_backend_id_display = d.pop("highlight_backend_id_display", UNSET)
@@ -655,6 +668,7 @@ class MergedPluginOptionsRequest:
             managed_rancher_tenant_max_ram=managed_rancher_tenant_max_ram,
             managed_rancher_tenant_max_disk=managed_rancher_tenant_max_disk,
             account_name_generation_policy=account_name_generation_policy,
+            enable_display_of_order_actions_for_service_provider=enable_display_of_order_actions_for_service_provider,
             auto_approve_marketplace_script=auto_approve_marketplace_script,
             highlight_backend_id_display=highlight_backend_id_display,
             backend_id_display_label=backend_id_display_label,
