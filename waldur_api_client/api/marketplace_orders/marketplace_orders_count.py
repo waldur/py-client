@@ -33,6 +33,7 @@ def _get_kwargs(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
+    resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
@@ -114,6 +115,8 @@ def _get_kwargs(
     params["query"] = query
 
     params["resource"] = resource
+
+    params["resource_name"] = resource_name
 
     json_resource_uuid: Union[Unset, str] = UNSET
     if not isinstance(resource_uuid, Unset):
@@ -201,6 +204,7 @@ def sync_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
+    resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
@@ -229,6 +233,7 @@ def sync_detailed(
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         resource (Union[Unset, str]):
+        resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceOrdersCountStateItem]]):
@@ -261,6 +266,7 @@ def sync_detailed(
         provider_uuid=provider_uuid,
         query=query,
         resource=resource,
+        resource_name=resource_name,
         resource_uuid=resource_uuid,
         service_manager_uuid=service_manager_uuid,
         state=state,
@@ -295,6 +301,7 @@ def sync(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
+    resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
@@ -323,6 +330,7 @@ def sync(
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         resource (Union[Unset, str]):
+        resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceOrdersCountStateItem]]):
@@ -356,6 +364,7 @@ def sync(
         provider_uuid=provider_uuid,
         query=query,
         resource=resource,
+        resource_name=resource_name,
         resource_uuid=resource_uuid,
         service_manager_uuid=service_manager_uuid,
         state=state,
@@ -384,6 +393,7 @@ async def asyncio_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
+    resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
@@ -412,6 +422,7 @@ async def asyncio_detailed(
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         resource (Union[Unset, str]):
+        resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceOrdersCountStateItem]]):
@@ -444,6 +455,7 @@ async def asyncio_detailed(
         provider_uuid=provider_uuid,
         query=query,
         resource=resource,
+        resource_name=resource_name,
         resource_uuid=resource_uuid,
         service_manager_uuid=service_manager_uuid,
         state=state,
@@ -476,6 +488,7 @@ async def asyncio(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
+    resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
@@ -504,6 +517,7 @@ async def asyncio(
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         resource (Union[Unset, str]):
+        resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceOrdersCountStateItem]]):
@@ -538,6 +552,7 @@ async def asyncio(
             provider_uuid=provider_uuid,
             query=query,
             resource=resource,
+            resource_name=resource_name,
             resource_uuid=resource_uuid,
             service_manager_uuid=service_manager_uuid,
             state=state,
