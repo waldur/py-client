@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -11,7 +12,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: int,
+    uuid: UUID,
     *,
     body: SilenceActionRequest,
 ) -> dict[str, Any]:
@@ -19,7 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/user-actions/{id}/silence/",
+        "url": f"/api/user-actions/{uuid}/silence/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -52,7 +53,7 @@ def _build_response(
 
 
 def sync_detailed(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: SilenceActionRequest,
@@ -60,7 +61,7 @@ def sync_detailed(
     """Silence an action temporarily or permanently
 
     Args:
-        id (int):
+        uuid (UUID):
         body (SilenceActionRequest):
 
     Raises:
@@ -72,7 +73,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        id=id,
+        uuid=uuid,
         body=body,
     )
 
@@ -84,7 +85,7 @@ def sync_detailed(
 
 
 def sync(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: SilenceActionRequest,
@@ -92,7 +93,7 @@ def sync(
     """Silence an action temporarily or permanently
 
     Args:
-        id (int):
+        uuid (UUID):
         body (SilenceActionRequest):
 
     Raises:
@@ -104,14 +105,14 @@ def sync(
     """
 
     return sync_detailed(
-        id=id,
+        uuid=uuid,
         client=client,
         body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: SilenceActionRequest,
@@ -119,7 +120,7 @@ async def asyncio_detailed(
     """Silence an action temporarily or permanently
 
     Args:
-        id (int):
+        uuid (UUID):
         body (SilenceActionRequest):
 
     Raises:
@@ -131,7 +132,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        id=id,
+        uuid=uuid,
         body=body,
     )
 
@@ -141,7 +142,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: SilenceActionRequest,
@@ -149,7 +150,7 @@ async def asyncio(
     """Silence an action temporarily or permanently
 
     Args:
-        id (int):
+        uuid (UUID):
         body (SilenceActionRequest):
 
     Raises:
@@ -162,7 +163,7 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            id=id,
+            uuid=uuid,
             client=client,
             body=body,
         )

@@ -286,6 +286,7 @@ from .core_auth_token import CoreAuthToken
 from .core_states import CoreStates
 from .corrective_action import CorrectiveAction
 from .corrective_action_metadata import CorrectiveActionMetadata
+from .corrective_action_route_params import CorrectiveActionRouteParams
 from .costs_for_period import CostsForPeriod
 from .count_projects_of_service_providers import CountProjectsOfServiceProviders
 from .count_projects_of_service_providers_grouped_by_oecd import CountProjectsOfServiceProvidersGroupedByOecd
@@ -2273,6 +2274,7 @@ __all__ = (
     "CoreStates",
     "CorrectiveAction",
     "CorrectiveActionMetadata",
+    "CorrectiveActionRouteParams",
     "CostsForPeriod",
     "CountProjectsOfServiceProviders",
     "CountProjectsOfServiceProvidersGroupedByOecd",

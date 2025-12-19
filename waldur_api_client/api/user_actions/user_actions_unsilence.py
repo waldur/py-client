@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -10,11 +11,11 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: int,
+    uuid: UUID,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/user-actions/{id}/unsilence/",
+        "url": f"/api/user-actions/{uuid}/unsilence/",
     }
 
     return _kwargs
@@ -42,14 +43,14 @@ def _build_response(
 
 
 def sync_detailed(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[UnsilenceActionResponse]:
     """Remove silence from an action
 
     Args:
-        id (int):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -60,7 +61,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        id=id,
+        uuid=uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -71,14 +72,14 @@ def sync_detailed(
 
 
 def sync(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
 ) -> UnsilenceActionResponse:
     """Remove silence from an action
 
     Args:
-        id (int):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -89,20 +90,20 @@ def sync(
     """
 
     return sync_detailed(
-        id=id,
+        uuid=uuid,
         client=client,
     ).parsed
 
 
 async def asyncio_detailed(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[UnsilenceActionResponse]:
     """Remove silence from an action
 
     Args:
-        id (int):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -113,7 +114,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        id=id,
+        uuid=uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -122,14 +123,14 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
 ) -> UnsilenceActionResponse:
     """Remove silence from an action
 
     Args:
-        id (int):
+        uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -141,7 +142,7 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            id=id,
+            uuid=uuid,
             client=client,
         )
     ).parsed

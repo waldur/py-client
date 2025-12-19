@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -12,7 +13,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    id: int,
+    uuid: UUID,
     *,
     body: ExecuteActionRequest,
 ) -> dict[str, Any]:
@@ -20,7 +21,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/user-actions/{id}/execute_action/",
+        "url": f"/api/user-actions/{uuid}/execute_action/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -63,7 +64,7 @@ def _build_response(
 
 
 def sync_detailed(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: ExecuteActionRequest,
@@ -71,7 +72,7 @@ def sync_detailed(
     """Execute a corrective action
 
     Args:
-        id (int):
+        uuid (UUID):
         body (ExecuteActionRequest):
 
     Raises:
@@ -83,7 +84,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        id=id,
+        uuid=uuid,
         body=body,
     )
 
@@ -95,7 +96,7 @@ def sync_detailed(
 
 
 def sync(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: ExecuteActionRequest,
@@ -103,7 +104,7 @@ def sync(
     """Execute a corrective action
 
     Args:
-        id (int):
+        uuid (UUID):
         body (ExecuteActionRequest):
 
     Raises:
@@ -115,14 +116,14 @@ def sync(
     """
 
     return sync_detailed(
-        id=id,
+        uuid=uuid,
         client=client,
         body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: ExecuteActionRequest,
@@ -130,7 +131,7 @@ async def asyncio_detailed(
     """Execute a corrective action
 
     Args:
-        id (int):
+        uuid (UUID):
         body (ExecuteActionRequest):
 
     Raises:
@@ -142,7 +143,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        id=id,
+        uuid=uuid,
         body=body,
     )
 
@@ -152,7 +153,7 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    id: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: ExecuteActionRequest,
@@ -160,7 +161,7 @@ async def asyncio(
     """Execute a corrective action
 
     Args:
-        id (int):
+        uuid (UUID):
         body (ExecuteActionRequest):
 
     Raises:
@@ -173,7 +174,7 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            id=id,
+            uuid=uuid,
             client=client,
             body=body,
         )

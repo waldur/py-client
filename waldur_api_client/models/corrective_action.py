@@ -10,6 +10,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.corrective_action_metadata import CorrectiveActionMetadata
+    from ..models.corrective_action_route_params import CorrectiveActionRouteParams
 
 
 T = TypeVar("T", bound="CorrectiveAction")
@@ -20,7 +21,6 @@ class CorrectiveAction:
     """
     Attributes:
         label (str):
-        url (str):
         category (CategoryEnum):
         severity (SeverityEnum):
         method (Union[Unset, str]):  Default: 'GET'.
@@ -28,10 +28,11 @@ class CorrectiveAction:
         confirmation_required (Union[Unset, bool]):  Default: False.
         permissions_required (Union[Unset, list[str]]):
         metadata (Union[Unset, CorrectiveActionMetadata]):
+        route_name (Union[None, Unset, str]):
+        route_params (Union[Unset, CorrectiveActionRouteParams]):
     """
 
     label: str
-    url: str
     category: CategoryEnum
     severity: SeverityEnum
     method: Union[Unset, str] = "GET"
@@ -39,12 +40,12 @@ class CorrectiveAction:
     confirmation_required: Union[Unset, bool] = False
     permissions_required: Union[Unset, list[str]] = UNSET
     metadata: Union[Unset, "CorrectiveActionMetadata"] = UNSET
+    route_name: Union[None, Unset, str] = UNSET
+    route_params: Union[Unset, "CorrectiveActionRouteParams"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         label = self.label
-
-        url = self.url
 
         category = self.category.value
 
@@ -64,12 +65,21 @@ class CorrectiveAction:
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
+        route_name: Union[None, Unset, str]
+        if isinstance(self.route_name, Unset):
+            route_name = UNSET
+        else:
+            route_name = self.route_name
+
+        route_params: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.route_params, Unset):
+            route_params = self.route_params.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "label": label,
-                "url": url,
                 "category": category,
                 "severity": severity,
             }
@@ -84,17 +94,20 @@ class CorrectiveAction:
             field_dict["permissions_required"] = permissions_required
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
+        if route_name is not UNSET:
+            field_dict["route_name"] = route_name
+        if route_params is not UNSET:
+            field_dict["route_params"] = route_params
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.corrective_action_metadata import CorrectiveActionMetadata
+        from ..models.corrective_action_route_params import CorrectiveActionRouteParams
 
         d = dict(src_dict)
         label = d.pop("label")
-
-        url = d.pop("url")
 
         category = CategoryEnum(d.pop("category"))
 
@@ -115,9 +128,24 @@ class CorrectiveAction:
         else:
             metadata = CorrectiveActionMetadata.from_dict(_metadata)
 
+        def _parse_route_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        route_name = _parse_route_name(d.pop("route_name", UNSET))
+
+        _route_params = d.pop("route_params", UNSET)
+        route_params: Union[Unset, CorrectiveActionRouteParams]
+        if isinstance(_route_params, Unset):
+            route_params = UNSET
+        else:
+            route_params = CorrectiveActionRouteParams.from_dict(_route_params)
+
         corrective_action = cls(
             label=label,
-            url=url,
             category=category,
             severity=severity,
             method=method,
@@ -125,6 +153,8 @@ class CorrectiveAction:
             confirmation_required=confirmation_required,
             permissions_required=permissions_required,
             metadata=metadata,
+            route_name=route_name,
+            route_params=route_params,
         )
 
         corrective_action.additional_properties = d
