@@ -1722,6 +1722,7 @@ from .resource_offering import ResourceOffering
 from .resource_options_request import ResourceOptionsRequest
 from .resource_paused_request import ResourcePausedRequest
 from .resource_plan_period import ResourcePlanPeriod
+from .resource_provisioning_stats import ResourceProvisioningStats
 from .resource_reallocate_limits_request import ResourceReallocateLimitsRequest
 from .resource_reallocate_limits_request_limits import ResourceReallocateLimitsRequestLimits
 from .resource_reallocate_limits_response import ResourceReallocateLimitsResponse
@@ -3570,6 +3571,7 @@ __all__ = (
     "ResourceOptionsRequest",
     "ResourcePausedRequest",
     "ResourcePlanPeriod",
+    "ResourceProvisioningStats",
     "ResourceReallocateLimitsRequest",
     "ResourceReallocateLimitsRequestLimits",
     "ResourceReallocateLimitsResponse",
