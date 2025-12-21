@@ -1895,16 +1895,19 @@ from .user_action_summary_by_type import UserActionSummaryByType
 from .user_action_summary_by_urgency import UserActionSummaryByUrgency
 from .user_actions_count_urgency import UserActionsCountUrgency
 from .user_actions_list_urgency import UserActionsListUrgency
+from .user_affiliation_count import UserAffiliationCount
 from .user_agreement import UserAgreement
 from .user_agreement_request import UserAgreementRequest
 from .user_agreements_count_agreement_type import UserAgreementsCountAgreementType
 from .user_agreements_list_agreement_type import UserAgreementsListAgreementType
+from .user_auth_method_count import UserAuthMethodCount
 from .user_auth_token import UserAuthToken
 from .user_checklist_completion import UserChecklistCompletion
 from .user_consent_info import UserConsentInfo
 from .user_email_change_request import UserEmailChangeRequest
 from .user_group_invitations_count_o_item import UserGroupInvitationsCountOItem
 from .user_group_invitations_list_o_item import UserGroupInvitationsListOItem
+from .user_identity_source_count import UserIdentitySourceCount
 from .user_info import UserInfo
 from .user_info_request import UserInfoRequest
 from .user_invitations_count_o_item import UserInvitationsCountOItem
@@ -1915,6 +1918,7 @@ from .user_offering_consent import UserOfferingConsent
 from .user_offering_consent_create import UserOfferingConsentCreate
 from .user_offering_consent_create_request import UserOfferingConsentCreateRequest
 from .user_offering_consent_request import UserOfferingConsentRequest
+from .user_organization_count import UserOrganizationCount
 from .user_permission_requests_count_o_item import UserPermissionRequestsCountOItem
 from .user_permission_requests_count_state_item import UserPermissionRequestsCountStateItem
 from .user_permission_requests_list_o_item import UserPermissionRequestsListOItem
@@ -3742,16 +3746,19 @@ __all__ = (
     "UserActionSummary",
     "UserActionSummaryByType",
     "UserActionSummaryByUrgency",
+    "UserAffiliationCount",
     "UserAgreement",
     "UserAgreementRequest",
     "UserAgreementsCountAgreementType",
     "UserAgreementsListAgreementType",
+    "UserAuthMethodCount",
     "UserAuthToken",
     "UserChecklistCompletion",
     "UserConsentInfo",
     "UserEmailChangeRequest",
     "UserGroupInvitationsCountOItem",
     "UserGroupInvitationsListOItem",
+    "UserIdentitySourceCount",
     "UserInfo",
     "UserInfoRequest",
     "UserInvitationsCountOItem",
@@ -3763,6 +3770,7 @@ __all__ = (
     "UserOfferingConsentCreate",
     "UserOfferingConsentCreateRequest",
     "UserOfferingConsentRequest",
+    "UserOrganizationCount",
     "UserPermissionRequestsCountOItem",
     "UserPermissionRequestsCountStateItem",
     "UserPermissionRequestsListOItem",
