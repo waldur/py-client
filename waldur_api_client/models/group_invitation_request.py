@@ -20,6 +20,8 @@ class GroupInvitationRequest:
             create public invitations.
         auto_create_project (Union[Unset, bool]): Create project and grant project permissions instead of customer
             permissions
+        auto_approve (Union[Unset, bool]): Automatically approve permission requests from users matching email patterns
+            or affiliations
         project_name_template (Union[None, Unset, str]): Template for project name. Supports {username}, {email},
             {full_name} variables
         project_role (Union[None, UUID, Unset]): UUID of the project role to grant if auto_create_project is enabled
@@ -31,6 +33,7 @@ class GroupInvitationRequest:
     scope: str
     is_public: Union[Unset, bool] = UNSET
     auto_create_project: Union[Unset, bool] = UNSET
+    auto_approve: Union[Unset, bool] = UNSET
     project_name_template: Union[None, Unset, str] = UNSET
     project_role: Union[None, UUID, Unset] = UNSET
     user_affiliations: Union[Unset, Any] = UNSET
@@ -45,6 +48,8 @@ class GroupInvitationRequest:
         is_public = self.is_public
 
         auto_create_project = self.auto_create_project
+
+        auto_approve = self.auto_approve
 
         project_name_template: Union[None, Unset, str]
         if isinstance(self.project_name_template, Unset):
@@ -76,6 +81,8 @@ class GroupInvitationRequest:
             field_dict["is_public"] = is_public
         if auto_create_project is not UNSET:
             field_dict["auto_create_project"] = auto_create_project
+        if auto_approve is not UNSET:
+            field_dict["auto_approve"] = auto_approve
         if project_name_template is not UNSET:
             field_dict["project_name_template"] = project_name_template
         if project_role is not UNSET:
@@ -97,6 +104,8 @@ class GroupInvitationRequest:
         is_public = d.pop("is_public", UNSET)
 
         auto_create_project = d.pop("auto_create_project", UNSET)
+
+        auto_approve = d.pop("auto_approve", UNSET)
 
         def _parse_project_name_template(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -133,6 +142,7 @@ class GroupInvitationRequest:
             scope=scope,
             is_public=is_public,
             auto_create_project=auto_create_project,
+            auto_approve=auto_approve,
             project_name_template=project_name_template,
             project_role=project_role,
             user_affiliations=user_affiliations,

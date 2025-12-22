@@ -14,11 +14,13 @@ class SubmitRequestResponse:
         uuid (str): UUID of the created permission request
         scope_name (str): Name of the invitation scope
         scope_uuid (str): UUID of the invitation scope
+        auto_approved (bool): Whether the request was automatically approved
     """
 
     uuid: str
     scope_name: str
     scope_uuid: str
+    auto_approved: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -28,6 +30,8 @@ class SubmitRequestResponse:
 
         scope_uuid = self.scope_uuid
 
+        auto_approved = self.auto_approved
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -35,6 +39,7 @@ class SubmitRequestResponse:
                 "uuid": uuid,
                 "scope_name": scope_name,
                 "scope_uuid": scope_uuid,
+                "auto_approved": auto_approved,
             }
         )
 
@@ -49,10 +54,13 @@ class SubmitRequestResponse:
 
         scope_uuid = d.pop("scope_uuid")
 
+        auto_approved = d.pop("auto_approved")
+
         submit_request_response = cls(
             uuid=uuid,
             scope_name=scope_name,
             scope_uuid=scope_uuid,
+            auto_approved=auto_approved,
         )
 
         submit_request_response.additional_properties = d

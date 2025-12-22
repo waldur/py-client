@@ -49,7 +49,9 @@ def sync_detailed(
 ) -> Response[SubmitRequestResponse]:
     """Submit a permission request
 
-     Creates a permission request based on a group invitation for the currently authenticated user.
+     Creates a permission request based on a group invitation for the currently authenticated user. If
+    the invitation has auto_approve enabled and the user matches the required patterns, the request is
+    automatically approved.
 
     Args:
         uuid (UUID):
@@ -80,7 +82,9 @@ def sync(
 ) -> SubmitRequestResponse:
     """Submit a permission request
 
-     Creates a permission request based on a group invitation for the currently authenticated user.
+     Creates a permission request based on a group invitation for the currently authenticated user. If
+    the invitation has auto_approve enabled and the user matches the required patterns, the request is
+    automatically approved.
 
     Args:
         uuid (UUID):
@@ -106,7 +110,9 @@ async def asyncio_detailed(
 ) -> Response[SubmitRequestResponse]:
     """Submit a permission request
 
-     Creates a permission request based on a group invitation for the currently authenticated user.
+     Creates a permission request based on a group invitation for the currently authenticated user. If
+    the invitation has auto_approve enabled and the user matches the required patterns, the request is
+    automatically approved.
 
     Args:
         uuid (UUID):
@@ -135,7 +141,9 @@ async def asyncio(
 ) -> SubmitRequestResponse:
     """Submit a permission request
 
-     Creates a permission request based on a group invitation for the currently authenticated user.
+     Creates a permission request based on a group invitation for the currently authenticated user. If
+    the invitation has auto_approve enabled and the user matches the required patterns, the request is
+    automatically approved.
 
     Args:
         uuid (UUID):
