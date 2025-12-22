@@ -12,6 +12,7 @@ from ..models.validation_method_enum import ValidationMethodEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.onboarding_justification import OnboardingJustification
     from ..models.onboarding_verification_onboarding_metadata import OnboardingVerificationOnboardingMetadata
     from ..models.onboarding_verification_user_submitted_customer_data import (
         OnboardingVerificationUserSubmittedCustomerData,
@@ -30,6 +31,7 @@ class OnboardingVerification:
         user_full_name (str):
         country (str): ISO country code (e.g., 'EE' for Estonia)
         status (OnboardingVerificationStatusEnum):
+        justifications (list['OnboardingJustification']):
         validation_method (ValidationMethodEnum):
         verified_user_roles (Any): Roles the user has in the company
         verified_company_data (Any): Company information retrieved during validation
@@ -58,6 +60,7 @@ class OnboardingVerification:
     user_full_name: str
     country: str
     status: OnboardingVerificationStatusEnum
+    justifications: list["OnboardingJustification"]
     validation_method: ValidationMethodEnum
     verified_user_roles: Any
     verified_company_data: Any
@@ -87,6 +90,11 @@ class OnboardingVerification:
         country = self.country
 
         status = self.status.value
+
+        justifications = []
+        for justifications_item_data in self.justifications:
+            justifications_item = justifications_item_data.to_dict()
+            justifications.append(justifications_item)
 
         validation_method = self.validation_method.value
 
@@ -143,6 +151,7 @@ class OnboardingVerification:
                 "user_full_name": user_full_name,
                 "country": country,
                 "status": status,
+                "justifications": justifications,
                 "validation_method": validation_method,
                 "verified_user_roles": verified_user_roles,
                 "verified_company_data": verified_company_data,
@@ -170,6 +179,7 @@ class OnboardingVerification:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.onboarding_justification import OnboardingJustification
         from ..models.onboarding_verification_onboarding_metadata import OnboardingVerificationOnboardingMetadata
         from ..models.onboarding_verification_user_submitted_customer_data import (
             OnboardingVerificationUserSubmittedCustomerData,
@@ -185,6 +195,13 @@ class OnboardingVerification:
         country = d.pop("country")
 
         status = OnboardingVerificationStatusEnum(d.pop("status"))
+
+        justifications = []
+        _justifications = d.pop("justifications")
+        for justifications_item_data in _justifications:
+            justifications_item = OnboardingJustification.from_dict(justifications_item_data)
+
+            justifications.append(justifications_item)
 
         validation_method = ValidationMethodEnum(d.pop("validation_method"))
 
@@ -268,6 +285,7 @@ class OnboardingVerification:
             user_full_name=user_full_name,
             country=country,
             status=status,
+            justifications=justifications,
             validation_method=validation_method,
             verified_user_roles=verified_user_roles,
             verified_company_data=verified_company_data,
