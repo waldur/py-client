@@ -6,11 +6,11 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="OrderSetStateErredRequest")
+T = TypeVar("T", bound="OrderErrorDetailsRequest")
 
 
 @_attrs_define
-class OrderSetStateErredRequest:
+class OrderErrorDetailsRequest:
     """
     Attributes:
         error_message (Union[Unset, str]):
@@ -43,13 +43,13 @@ class OrderSetStateErredRequest:
 
         error_traceback = d.pop("error_traceback", UNSET)
 
-        order_set_state_erred_request = cls(
+        order_error_details_request = cls(
             error_message=error_message,
             error_traceback=error_traceback,
         )
 
-        order_set_state_erred_request.additional_properties = d
-        return order_set_state_erred_request
+        order_error_details_request.additional_properties = d
+        return order_error_details_request
 
     @property
     def additional_keys(self) -> list[str]:

@@ -1196,7 +1196,7 @@ from .order_create_request import OrderCreateRequest
 from .order_create_request_limits import OrderCreateRequestLimits
 from .order_details import OrderDetails
 from .order_details_limits import OrderDetailsLimits
-from .order_set_state_erred_request import OrderSetStateErredRequest
+from .order_error_details_request import OrderErrorDetailsRequest
 from .order_state import OrderState
 from .order_uuid import OrderUUID
 from .organization_group import OrganizationGroup
@@ -3095,7 +3095,7 @@ __all__ = (
     "OrderCreateRequestLimits",
     "OrderDetails",
     "OrderDetailsLimits",
-    "OrderSetStateErredRequest",
+    "OrderErrorDetailsRequest",
     "OrderState",
     "OrderUUID",
     "OrganizationGroup",

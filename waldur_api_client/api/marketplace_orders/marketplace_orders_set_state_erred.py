@@ -6,14 +6,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.order_set_state_erred_request import OrderSetStateErredRequest
+from ...models.order_error_details_request import OrderErrorDetailsRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: OrderSetStateErredRequest,
+    body: OrderErrorDetailsRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -51,7 +51,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OrderSetStateErredRequest,
+    body: OrderErrorDetailsRequest,
 ) -> Response[Any]:
     """Set order state to erred (agent)
 
@@ -60,7 +60,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        body (OrderSetStateErredRequest):
+        body (OrderErrorDetailsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -86,7 +86,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OrderSetStateErredRequest,
+    body: OrderErrorDetailsRequest,
 ) -> Response[Any]:
     """Set order state to erred (agent)
 
@@ -95,7 +95,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        body (OrderSetStateErredRequest):
+        body (OrderErrorDetailsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
