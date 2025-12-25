@@ -14,6 +14,7 @@ def _get_kwargs(
     *,
     checklist_type: Union[Unset, ChecklistsAdminQuestionsCountChecklistType] = UNSET,
     checklist_uuid: Union[Unset, UUID] = UNSET,
+    has_onboarding_mapping: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -29,6 +30,8 @@ def _get_kwargs(
     if not isinstance(checklist_uuid, Unset):
         json_checklist_uuid = str(checklist_uuid)
     params["checklist_uuid"] = json_checklist_uuid
+
+    params["has_onboarding_mapping"] = has_onboarding_mapping
 
     params["page"] = page
 
@@ -76,6 +79,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     checklist_type: Union[Unset, ChecklistsAdminQuestionsCountChecklistType] = UNSET,
     checklist_uuid: Union[Unset, UUID] = UNSET,
+    has_onboarding_mapping: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
@@ -84,6 +88,7 @@ def sync_detailed(
     Args:
         checklist_type (Union[Unset, ChecklistsAdminQuestionsCountChecklistType]):
         checklist_uuid (Union[Unset, UUID]):
+        has_onboarding_mapping (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -98,6 +103,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         checklist_type=checklist_type,
         checklist_uuid=checklist_uuid,
+        has_onboarding_mapping=has_onboarding_mapping,
         page=page,
         page_size=page_size,
     )
@@ -114,6 +120,7 @@ def sync(
     client: AuthenticatedClient,
     checklist_type: Union[Unset, ChecklistsAdminQuestionsCountChecklistType] = UNSET,
     checklist_uuid: Union[Unset, UUID] = UNSET,
+    has_onboarding_mapping: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
@@ -122,6 +129,7 @@ def sync(
     Args:
         checklist_type (Union[Unset, ChecklistsAdminQuestionsCountChecklistType]):
         checklist_uuid (Union[Unset, UUID]):
+        has_onboarding_mapping (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -137,6 +145,7 @@ def sync(
         client=client,
         checklist_type=checklist_type,
         checklist_uuid=checklist_uuid,
+        has_onboarding_mapping=has_onboarding_mapping,
         page=page,
         page_size=page_size,
     ).parsed
@@ -147,6 +156,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     checklist_type: Union[Unset, ChecklistsAdminQuestionsCountChecklistType] = UNSET,
     checklist_uuid: Union[Unset, UUID] = UNSET,
+    has_onboarding_mapping: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
@@ -155,6 +165,7 @@ async def asyncio_detailed(
     Args:
         checklist_type (Union[Unset, ChecklistsAdminQuestionsCountChecklistType]):
         checklist_uuid (Union[Unset, UUID]):
+        has_onboarding_mapping (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -169,6 +180,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         checklist_type=checklist_type,
         checklist_uuid=checklist_uuid,
+        has_onboarding_mapping=has_onboarding_mapping,
         page=page,
         page_size=page_size,
     )
@@ -183,6 +195,7 @@ async def asyncio(
     client: AuthenticatedClient,
     checklist_type: Union[Unset, ChecklistsAdminQuestionsCountChecklistType] = UNSET,
     checklist_uuid: Union[Unset, UUID] = UNSET,
+    has_onboarding_mapping: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
@@ -191,6 +204,7 @@ async def asyncio(
     Args:
         checklist_type (Union[Unset, ChecklistsAdminQuestionsCountChecklistType]):
         checklist_uuid (Union[Unset, UUID]):
+        has_onboarding_mapping (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -207,6 +221,7 @@ async def asyncio(
             client=client,
             checklist_type=checklist_type,
             checklist_uuid=checklist_uuid,
+            has_onboarding_mapping=has_onboarding_mapping,
             page=page,
             page_size=page_size,
         )

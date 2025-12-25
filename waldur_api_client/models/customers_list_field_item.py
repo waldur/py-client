@@ -49,6 +49,9 @@ class CustomersListFieldItem(str, Enum):
     SPONSOR_NUMBER = "sponsor_number"
     URL = "url"
     USERS_COUNT = "users_count"
+    USER_AFFILIATIONS = "user_affiliations"
+    USER_EMAIL_PATTERNS = "user_email_patterns"
+    USER_IDENTITY_SOURCES = "user_identity_sources"
     UUID = "uuid"
     VAT_CODE = "vat_code"
 

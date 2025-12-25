@@ -45,6 +45,9 @@ class Customer:
             this organization
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated
+        user_email_patterns (Union[Unset, Any]):
+        user_affiliations (Union[Unset, Any]):
+        user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
         name (Union[Unset, str]):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         native_name (Union[Unset, str]):
@@ -97,6 +100,9 @@ class Customer:
     max_service_accounts: Union[None, Unset, int] = UNSET
     project_metadata_checklist: Union[None, UUID, Unset] = UNSET
     grace_period_days: Union[None, Unset, int] = UNSET
+    user_email_patterns: Union[Unset, Any] = UNSET
+    user_affiliations: Union[Unset, Any] = UNSET
+    user_identity_sources: Union[Unset, Any] = UNSET
     name: Union[Unset, str] = UNSET
     slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
@@ -200,6 +206,12 @@ class Customer:
             grace_period_days = UNSET
         else:
             grace_period_days = self.grace_period_days
+
+        user_email_patterns = self.user_email_patterns
+
+        user_affiliations = self.user_affiliations
+
+        user_identity_sources = self.user_identity_sources
 
         name = self.name
 
@@ -345,6 +357,12 @@ class Customer:
             field_dict["project_metadata_checklist"] = project_metadata_checklist
         if grace_period_days is not UNSET:
             field_dict["grace_period_days"] = grace_period_days
+        if user_email_patterns is not UNSET:
+            field_dict["user_email_patterns"] = user_email_patterns
+        if user_affiliations is not UNSET:
+            field_dict["user_affiliations"] = user_affiliations
+        if user_identity_sources is not UNSET:
+            field_dict["user_identity_sources"] = user_identity_sources
         if name is not UNSET:
             field_dict["name"] = name
         if slug is not UNSET:
@@ -516,6 +534,12 @@ class Customer:
 
         grace_period_days = _parse_grace_period_days(d.pop("grace_period_days", UNSET))
 
+        user_email_patterns = d.pop("user_email_patterns", UNSET)
+
+        user_affiliations = d.pop("user_affiliations", UNSET)
+
+        user_identity_sources = d.pop("user_identity_sources", UNSET)
+
         name = d.pop("name", UNSET)
 
         slug = d.pop("slug", UNSET)
@@ -682,6 +706,9 @@ class Customer:
             max_service_accounts=max_service_accounts,
             project_metadata_checklist=project_metadata_checklist,
             grace_period_days=grace_period_days,
+            user_email_patterns=user_email_patterns,
+            user_affiliations=user_affiliations,
+            user_identity_sources=user_identity_sources,
             name=name,
             slug=slug,
             native_name=native_name,

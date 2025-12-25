@@ -38,6 +38,9 @@ class ProjectRequestMultipart:
             sanitized)
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated. Overrides customer-level setting.
+        user_email_patterns (Union[Unset, Any]):
+        user_affiliations (Union[Unset, Any]):
+        user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
     """
 
     name: str
@@ -54,6 +57,9 @@ class ProjectRequestMultipart:
     kind: Union[Unset, KindEnum] = UNSET
     staff_notes: Union[Unset, str] = UNSET
     grace_period_days: Union[None, Unset, int] = UNSET
+    user_email_patterns: Union[Unset, Any] = UNSET
+    user_affiliations: Union[Unset, Any] = UNSET
+    user_identity_sources: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -122,6 +128,12 @@ class ProjectRequestMultipart:
         else:
             grace_period_days = self.grace_period_days
 
+        user_email_patterns = self.user_email_patterns
+
+        user_affiliations = self.user_affiliations
+
+        user_identity_sources = self.user_identity_sources
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -154,6 +166,12 @@ class ProjectRequestMultipart:
             field_dict["staff_notes"] = staff_notes
         if grace_period_days is not UNSET:
             field_dict["grace_period_days"] = grace_period_days
+        if user_email_patterns is not UNSET:
+            field_dict["user_email_patterns"] = user_email_patterns
+        if user_affiliations is not UNSET:
+            field_dict["user_affiliations"] = user_affiliations
+        if user_identity_sources is not UNSET:
+            field_dict["user_identity_sources"] = user_identity_sources
 
         return field_dict
 
@@ -221,6 +239,15 @@ class ProjectRequestMultipart:
                 files.append(("grace_period_days", (None, str(self.grace_period_days).encode(), "text/plain")))
             else:
                 files.append(("grace_period_days", (None, str(self.grace_period_days).encode(), "text/plain")))
+
+        if not isinstance(self.user_email_patterns, Unset):
+            files.append(("user_email_patterns", (None, str(self.user_email_patterns).encode(), "text/plain")))
+
+        if not isinstance(self.user_affiliations, Unset):
+            files.append(("user_affiliations", (None, str(self.user_affiliations).encode(), "text/plain")))
+
+        if not isinstance(self.user_identity_sources, Unset):
+            files.append(("user_identity_sources", (None, str(self.user_identity_sources).encode(), "text/plain")))
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -345,6 +372,12 @@ class ProjectRequestMultipart:
 
         grace_period_days = _parse_grace_period_days(d.pop("grace_period_days", UNSET))
 
+        user_email_patterns = d.pop("user_email_patterns", UNSET)
+
+        user_affiliations = d.pop("user_affiliations", UNSET)
+
+        user_identity_sources = d.pop("user_identity_sources", UNSET)
+
         project_request_multipart = cls(
             name=name,
             customer=customer,
@@ -360,6 +393,9 @@ class ProjectRequestMultipart:
             kind=kind,
             staff_notes=staff_notes,
             grace_period_days=grace_period_days,
+            user_email_patterns=user_email_patterns,
+            user_affiliations=user_affiliations,
+            user_identity_sources=user_identity_sources,
         )
 
         project_request_multipart.additional_properties = d

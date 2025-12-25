@@ -35,6 +35,9 @@ class OpenportalUnmanagedProjectsRetrieveFieldItem(str, Enum):
     TYPE_NAME = "type_name"
     TYPE_UUID = "type_uuid"
     URL = "url"
+    USER_AFFILIATIONS = "user_affiliations"
+    USER_EMAIL_PATTERNS = "user_email_patterns"
+    USER_IDENTITY_SOURCES = "user_identity_sources"
     UUID = "uuid"
 
     def __str__(self) -> str:

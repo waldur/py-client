@@ -27,6 +27,7 @@ class GroupInvitationRequest:
         project_role (Union[None, UUID, Unset]): UUID of the project role to grant if auto_create_project is enabled
         user_affiliations (Union[Unset, Any]):
         user_email_patterns (Union[Unset, Any]):
+        user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
     """
 
     role: UUID
@@ -38,6 +39,7 @@ class GroupInvitationRequest:
     project_role: Union[None, UUID, Unset] = UNSET
     user_affiliations: Union[Unset, Any] = UNSET
     user_email_patterns: Union[Unset, Any] = UNSET
+    user_identity_sources: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -69,6 +71,8 @@ class GroupInvitationRequest:
 
         user_email_patterns = self.user_email_patterns
 
+        user_identity_sources = self.user_identity_sources
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -91,6 +95,8 @@ class GroupInvitationRequest:
             field_dict["user_affiliations"] = user_affiliations
         if user_email_patterns is not UNSET:
             field_dict["user_email_patterns"] = user_email_patterns
+        if user_identity_sources is not UNSET:
+            field_dict["user_identity_sources"] = user_identity_sources
 
         return field_dict
 
@@ -137,6 +143,8 @@ class GroupInvitationRequest:
 
         user_email_patterns = d.pop("user_email_patterns", UNSET)
 
+        user_identity_sources = d.pop("user_identity_sources", UNSET)
+
         group_invitation_request = cls(
             role=role,
             scope=scope,
@@ -147,6 +155,7 @@ class GroupInvitationRequest:
             project_role=project_role,
             user_affiliations=user_affiliations,
             user_email_patterns=user_email_patterns,
+            user_identity_sources=user_identity_sources,
         )
 
         group_invitation_request.additional_properties = d
