@@ -28,6 +28,7 @@ def _get_kwargs(
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -101,6 +102,8 @@ def _get_kwargs(
     params["field"] = json_field
 
     params["has_terminate_date"] = has_terminate_date
+
+    params["is_attached"] = is_attached
 
     params["lexis_links_supported"] = lexis_links_supported
 
@@ -266,6 +269,7 @@ def sync_detailed(
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -311,6 +315,7 @@ def sync_detailed(
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
+        is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -363,6 +368,7 @@ def sync_detailed(
         downscaled=downscaled,
         field=field,
         has_terminate_date=has_terminate_date,
+        is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,
@@ -417,6 +423,7 @@ def sync(
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -462,6 +469,7 @@ def sync(
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
+        is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -515,6 +523,7 @@ def sync(
         downscaled=downscaled,
         field=field,
         has_terminate_date=has_terminate_date,
+        is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,
@@ -563,6 +572,7 @@ async def asyncio_detailed(
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -608,6 +618,7 @@ async def asyncio_detailed(
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
+        is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -660,6 +671,7 @@ async def asyncio_detailed(
         downscaled=downscaled,
         field=field,
         has_terminate_date=has_terminate_date,
+        is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,
@@ -712,6 +724,7 @@ async def asyncio(
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -757,6 +770,7 @@ async def asyncio(
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
+        is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -811,6 +825,7 @@ async def asyncio(
             downscaled=downscaled,
             field=field,
             has_terminate_date=has_terminate_date,
+            is_attached=is_attached,
             lexis_links_supported=lexis_links_supported,
             limit_based=limit_based,
             limit_component_count=limit_component_count,
@@ -860,6 +875,7 @@ def sync_all(
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -909,6 +925,7 @@ def sync_all(
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
+        is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -963,6 +980,7 @@ def sync_all(
         downscaled=downscaled,
         field=field,
         has_terminate_date=has_terminate_date,
+        is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,
@@ -1050,6 +1068,7 @@ async def asyncio_all(
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -1099,6 +1118,7 @@ async def asyncio_all(
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[BookingResourcesListFieldItem]]):
         has_terminate_date (Union[Unset, bool]):
+        is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -1153,6 +1173,7 @@ async def asyncio_all(
         downscaled=downscaled,
         field=field,
         has_terminate_date=has_terminate_date,
+        is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,

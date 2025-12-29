@@ -31,7 +31,6 @@ class GroupInvitation:
         uuid (UUID):
         role (UUID): UUID of the role to grant to the invited user
         created (datetime.datetime):
-        expires (datetime.datetime): Expiration date and time of the invitation
         is_active (bool):
         scope_image (Union[None, str]): Image URL of the invitation scope (Customer or Project)
         is_public (Union[Unset, bool]): Allow non-authenticated users to see and accept this invitation. Only staff can
@@ -63,7 +62,6 @@ class GroupInvitation:
     uuid: UUID
     role: UUID
     created: datetime.datetime
-    expires: datetime.datetime
     is_active: bool
     scope_image: Union[None, str]
     is_public: Union[Unset, bool] = UNSET
@@ -107,8 +105,6 @@ class GroupInvitation:
         role = str(self.role)
 
         created = self.created.isoformat()
-
-        expires = self.expires.isoformat()
 
         is_active = self.is_active
 
@@ -160,7 +156,6 @@ class GroupInvitation:
                 "uuid": uuid,
                 "role": role,
                 "created": created,
-                "expires": expires,
                 "is_active": is_active,
                 "scope_image": scope_image,
             }
@@ -221,8 +216,6 @@ class GroupInvitation:
         role = UUID(d.pop("role"))
 
         created = isoparse(d.pop("created"))
-
-        expires = isoparse(d.pop("expires"))
 
         is_active = d.pop("is_active")
 
@@ -287,7 +280,6 @@ class GroupInvitation:
             uuid=uuid,
             role=role,
             created=created,
-            expires=expires,
             is_active=is_active,
             scope_image=scope_image,
             is_public=is_public,

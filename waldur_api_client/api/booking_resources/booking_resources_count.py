@@ -24,6 +24,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -88,6 +89,8 @@ def _get_kwargs(
     params["downscaled"] = downscaled
 
     params["has_terminate_date"] = has_terminate_date
+
+    params["is_attached"] = is_attached
 
     params["lexis_links_supported"] = lexis_links_supported
 
@@ -252,6 +255,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -297,6 +301,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         has_terminate_date (Union[Unset, bool]):
+        is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -348,6 +353,7 @@ def sync_detailed(
         customer_uuid=customer_uuid,
         downscaled=downscaled,
         has_terminate_date=has_terminate_date,
+        is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,
@@ -401,6 +407,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -446,6 +453,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         has_terminate_date (Union[Unset, bool]):
+        is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -498,6 +506,7 @@ def sync(
         customer_uuid=customer_uuid,
         downscaled=downscaled,
         has_terminate_date=has_terminate_date,
+        is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,
@@ -545,6 +554,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -590,6 +600,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         has_terminate_date (Union[Unset, bool]):
+        is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -641,6 +652,7 @@ async def asyncio_detailed(
         customer_uuid=customer_uuid,
         downscaled=downscaled,
         has_terminate_date=has_terminate_date,
+        is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,
@@ -692,6 +704,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -737,6 +750,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         has_terminate_date (Union[Unset, bool]):
+        is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -790,6 +804,7 @@ async def asyncio(
             customer_uuid=customer_uuid,
             downscaled=downscaled,
             has_terminate_date=has_terminate_date,
+            is_attached=is_attached,
             lexis_links_supported=lexis_links_supported,
             limit_based=limit_based,
             limit_component_count=limit_component_count,
