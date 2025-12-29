@@ -51,6 +51,7 @@ class Issue:
         destroy_is_available (bool):
         add_comment_is_available (bool):
         add_attachment_is_available (bool):
+        processing_log (Any): Internal processing log for debugging order lifecycle events. Visible only to staff.
         remote_id (Union[None, Unset, str]):
         description (Union[Unset, str]):
         priority (Union[Unset, str]):
@@ -93,6 +94,7 @@ class Issue:
     destroy_is_available: bool
     add_comment_is_available: bool
     add_attachment_is_available: bool
+    processing_log: Any
     remote_id: Union[None, Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     priority: Union[Unset, str] = UNSET
@@ -201,6 +203,8 @@ class Issue:
 
         add_attachment_is_available = self.add_attachment_is_available
 
+        processing_log = self.processing_log
+
         remote_id: Union[None, Unset, str]
         if isinstance(self.remote_id, Unset):
             remote_id = UNSET
@@ -278,6 +282,7 @@ class Issue:
                 "destroy_is_available": destroy_is_available,
                 "add_comment_is_available": add_comment_is_available,
                 "add_attachment_is_available": add_attachment_is_available,
+                "processing_log": processing_log,
             }
         )
         if remote_id is not UNSET:
@@ -486,6 +491,8 @@ class Issue:
 
         add_attachment_is_available = d.pop("add_attachment_is_available")
 
+        processing_log = d.pop("processing_log")
+
         def _parse_remote_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -578,6 +585,7 @@ class Issue:
             destroy_is_available=destroy_is_available,
             add_comment_is_available=add_comment_is_available,
             add_attachment_is_available=add_attachment_is_available,
+            processing_log=processing_log,
             remote_id=remote_id,
             description=description,
             priority=priority,

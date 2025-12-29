@@ -346,6 +346,11 @@ from .data_volume import DataVolume
 from .data_volume_request import DataVolumeRequest
 from .deciding_entity_enum import DecidingEntityEnum
 from .delete_attachments_request import DeleteAttachmentsRequest
+from .demo_preset import DemoPreset
+from .demo_preset_entity_counts import DemoPresetEntityCounts
+from .demo_preset_load_request_request import DemoPresetLoadRequestRequest
+from .demo_preset_load_response import DemoPresetLoadResponse
+from .demo_preset_user import DemoPresetUser
 from .dependency_logic_operator_enum import DependencyLogicOperatorEnum
 from .deployment_mode_enum import DeploymentModeEnum
 from .deprecated_network_rbac_policy import DeprecatedNetworkRBACPolicy
@@ -2337,6 +2342,11 @@ __all__ = (
     "DataVolumeRequest",
     "DecidingEntityEnum",
     "DeleteAttachmentsRequest",
+    "DemoPreset",
+    "DemoPresetEntityCounts",
+    "DemoPresetLoadRequestRequest",
+    "DemoPresetLoadResponse",
+    "DemoPresetUser",
     "DependencyLogicOperatorEnum",
     "DeploymentModeEnum",
     "DeprecatedNetworkRBACPolicy",
