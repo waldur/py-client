@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.celery_stats_retrieve_response_200 import CeleryStatsRetrieveResponse200
+from ...models.celery_stats_response import CeleryStatsResponse
 from ...types import Response
 
 
@@ -18,13 +18,11 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> CeleryStatsRetrieveResponse200:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> CeleryStatsResponse:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = CeleryStatsRetrieveResponse200.from_dict(response.json())
+        response_200 = CeleryStatsResponse.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -32,7 +30,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[CeleryStatsRetrieveResponse200]:
+) -> Response[CeleryStatsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,18 +42,30 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[CeleryStatsRetrieveResponse200]:
+) -> Response[CeleryStatsResponse]:
     """Get Celery worker statistics
 
-     Provides a snapshot of the Celery workers' status, including active, scheduled, reserved, and
-    revoked tasks, as well as worker-specific statistics. Requires support user permissions.
+     Provides a comprehensive snapshot of all Celery workers' status.
+
+    This endpoint returns detailed information about:
+    - **active**: Tasks currently being executed by workers
+    - **scheduled**: Tasks scheduled for future execution (with ETA)
+    - **reserved**: Tasks received by workers but not yet started
+    - **revoked**: Task IDs that have been cancelled/revoked
+    - **query_task**: Results of task queries (if any)
+    - **stats**: Detailed worker statistics including uptime, pool info, and broker connection
+
+    Each field is a dictionary where keys are worker names (e.g., 'celery@hostname').
+    If no workers are available, fields will be `null`.
+
+    Requires support user permissions.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CeleryStatsRetrieveResponse200]
+        Response[CeleryStatsResponse]
     """
 
     kwargs = _get_kwargs()
@@ -70,18 +80,30 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> CeleryStatsRetrieveResponse200:
+) -> CeleryStatsResponse:
     """Get Celery worker statistics
 
-     Provides a snapshot of the Celery workers' status, including active, scheduled, reserved, and
-    revoked tasks, as well as worker-specific statistics. Requires support user permissions.
+     Provides a comprehensive snapshot of all Celery workers' status.
+
+    This endpoint returns detailed information about:
+    - **active**: Tasks currently being executed by workers
+    - **scheduled**: Tasks scheduled for future execution (with ETA)
+    - **reserved**: Tasks received by workers but not yet started
+    - **revoked**: Task IDs that have been cancelled/revoked
+    - **query_task**: Results of task queries (if any)
+    - **stats**: Detailed worker statistics including uptime, pool info, and broker connection
+
+    Each field is a dictionary where keys are worker names (e.g., 'celery@hostname').
+    If no workers are available, fields will be `null`.
+
+    Requires support user permissions.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CeleryStatsRetrieveResponse200
+        CeleryStatsResponse
     """
 
     return sync_detailed(
@@ -92,18 +114,30 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[CeleryStatsRetrieveResponse200]:
+) -> Response[CeleryStatsResponse]:
     """Get Celery worker statistics
 
-     Provides a snapshot of the Celery workers' status, including active, scheduled, reserved, and
-    revoked tasks, as well as worker-specific statistics. Requires support user permissions.
+     Provides a comprehensive snapshot of all Celery workers' status.
+
+    This endpoint returns detailed information about:
+    - **active**: Tasks currently being executed by workers
+    - **scheduled**: Tasks scheduled for future execution (with ETA)
+    - **reserved**: Tasks received by workers but not yet started
+    - **revoked**: Task IDs that have been cancelled/revoked
+    - **query_task**: Results of task queries (if any)
+    - **stats**: Detailed worker statistics including uptime, pool info, and broker connection
+
+    Each field is a dictionary where keys are worker names (e.g., 'celery@hostname').
+    If no workers are available, fields will be `null`.
+
+    Requires support user permissions.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CeleryStatsRetrieveResponse200]
+        Response[CeleryStatsResponse]
     """
 
     kwargs = _get_kwargs()
@@ -116,18 +150,30 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> CeleryStatsRetrieveResponse200:
+) -> CeleryStatsResponse:
     """Get Celery worker statistics
 
-     Provides a snapshot of the Celery workers' status, including active, scheduled, reserved, and
-    revoked tasks, as well as worker-specific statistics. Requires support user permissions.
+     Provides a comprehensive snapshot of all Celery workers' status.
+
+    This endpoint returns detailed information about:
+    - **active**: Tasks currently being executed by workers
+    - **scheduled**: Tasks scheduled for future execution (with ETA)
+    - **reserved**: Tasks received by workers but not yet started
+    - **revoked**: Task IDs that have been cancelled/revoked
+    - **query_task**: Results of task queries (if any)
+    - **stats**: Detailed worker statistics including uptime, pool info, and broker connection
+
+    Each field is a dictionary where keys are worker names (e.g., 'celery@hostname').
+    If no workers are available, fields will be `null`.
+
+    Requires support user permissions.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CeleryStatsRetrieveResponse200
+        CeleryStatsResponse
     """
 
     return (

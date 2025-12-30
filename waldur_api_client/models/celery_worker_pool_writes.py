@@ -4,12 +4,12 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="CeleryStatsRetrieveResponse200")
+T = TypeVar("T", bound="CeleryWorkerPoolWrites")
 
 
 @_attrs_define
-class CeleryStatsRetrieveResponse200:
-    """ """
+class CeleryWorkerPoolWrites:
+    """Write statistics"""
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -22,10 +22,10 @@ class CeleryStatsRetrieveResponse200:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        celery_stats_retrieve_response_200 = cls()
+        celery_worker_pool_writes = cls()
 
-        celery_stats_retrieve_response_200.additional_properties = d
-        return celery_stats_retrieve_response_200
+        celery_worker_pool_writes.additional_properties = d
+        return celery_worker_pool_writes
 
     @property
     def additional_keys(self) -> list[str]:

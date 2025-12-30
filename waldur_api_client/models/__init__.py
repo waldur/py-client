@@ -224,7 +224,24 @@ from .category_help_articles import CategoryHelpArticles
 from .category_help_articles_request import CategoryHelpArticlesRequest
 from .category_serializer_for_for_nested_fields import CategorySerializerForForNestedFields
 from .category_serializer_for_for_nested_fields_request import CategorySerializerForForNestedFieldsRequest
-from .celery_stats_retrieve_response_200 import CeleryStatsRetrieveResponse200
+from .celery_broker import CeleryBroker
+from .celery_broker_transport_options import CeleryBrokerTransportOptions
+from .celery_scheduled_task import CeleryScheduledTask
+from .celery_stats_response import CeleryStatsResponse
+from .celery_stats_response_active_type_0 import CeleryStatsResponseActiveType0
+from .celery_stats_response_query_task_type_0 import CeleryStatsResponseQueryTaskType0
+from .celery_stats_response_reserved_type_0 import CeleryStatsResponseReservedType0
+from .celery_stats_response_revoked_type_0 import CeleryStatsResponseRevokedType0
+from .celery_stats_response_scheduled_type_0 import CeleryStatsResponseScheduledType0
+from .celery_stats_response_stats_type_0 import CeleryStatsResponseStatsType0
+from .celery_task import CeleryTask
+from .celery_task_delivery_info import CeleryTaskDeliveryInfo
+from .celery_task_kwargs import CeleryTaskKwargs
+from .celery_worker_pool import CeleryWorkerPool
+from .celery_worker_pool_writes import CeleryWorkerPoolWrites
+from .celery_worker_stats import CeleryWorkerStats
+from .celery_worker_stats_rusage import CeleryWorkerStatsRusage
+from .celery_worker_stats_total import CeleryWorkerStatsTotal
 from .chat_request_request import ChatRequestRequest
 from .check_unique_backend_id_request import CheckUniqueBackendIDRequest
 from .check_unique_backend_id_response import CheckUniqueBackendIDResponse
@@ -2224,7 +2241,24 @@ __all__ = (
     "CategoryHelpArticlesRequest",
     "CategorySerializerForForNestedFields",
     "CategorySerializerForForNestedFieldsRequest",
-    "CeleryStatsRetrieveResponse200",
+    "CeleryBroker",
+    "CeleryBrokerTransportOptions",
+    "CeleryScheduledTask",
+    "CeleryStatsResponse",
+    "CeleryStatsResponseActiveType0",
+    "CeleryStatsResponseQueryTaskType0",
+    "CeleryStatsResponseReservedType0",
+    "CeleryStatsResponseRevokedType0",
+    "CeleryStatsResponseScheduledType0",
+    "CeleryStatsResponseStatsType0",
+    "CeleryTask",
+    "CeleryTaskDeliveryInfo",
+    "CeleryTaskKwargs",
+    "CeleryWorkerPool",
+    "CeleryWorkerPoolWrites",
+    "CeleryWorkerStats",
+    "CeleryWorkerStatsRusage",
+    "CeleryWorkerStatsTotal",
     "ChatRequestRequest",
     "Checklist",
     "ChecklistCategory",
