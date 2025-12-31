@@ -16,10 +16,13 @@ class PatchedUserAgreementRequest:
     Attributes:
         content (Union[Unset, str]):
         agreement_type (Union[Unset, AgreementTypeEnum]):
+        language (Union[Unset, str]): ISO 639-1 language code (e.g., 'en', 'de', 'et'). Leave empty for the default
+            version.
     """
 
     content: Union[Unset, str] = UNSET
     agreement_type: Union[Unset, AgreementTypeEnum] = UNSET
+    language: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,6 +32,8 @@ class PatchedUserAgreementRequest:
         if not isinstance(self.agreement_type, Unset):
             agreement_type = self.agreement_type.value
 
+        language = self.language
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -36,6 +41,8 @@ class PatchedUserAgreementRequest:
             field_dict["content"] = content
         if agreement_type is not UNSET:
             field_dict["agreement_type"] = agreement_type
+        if language is not UNSET:
+            field_dict["language"] = language
 
         return field_dict
 
@@ -51,9 +58,12 @@ class PatchedUserAgreementRequest:
         else:
             agreement_type = AgreementTypeEnum(_agreement_type)
 
+        language = d.pop("language", UNSET)
+
         patched_user_agreement_request = cls(
             content=content,
             agreement_type=agreement_type,
+            language=language,
         )
 
         patched_user_agreement_request.additional_properties = d

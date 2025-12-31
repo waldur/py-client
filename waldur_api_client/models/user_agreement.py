@@ -20,6 +20,7 @@ class UserAgreement:
         uuid (UUID):
         content (str):
         agreement_type (AgreementTypeEnum):
+        language (str): ISO 639-1 language code (e.g., 'en', 'de', 'et'). Leave empty for the default version.
         created (datetime.datetime):
         modified (datetime.datetime):
     """
@@ -28,6 +29,7 @@ class UserAgreement:
     uuid: UUID
     content: str
     agreement_type: AgreementTypeEnum
+    language: str
     created: datetime.datetime
     modified: datetime.datetime
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -41,6 +43,8 @@ class UserAgreement:
 
         agreement_type = self.agreement_type.value
 
+        language = self.language
+
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
@@ -53,6 +57,7 @@ class UserAgreement:
                 "uuid": uuid,
                 "content": content,
                 "agreement_type": agreement_type,
+                "language": language,
                 "created": created,
                 "modified": modified,
             }
@@ -71,6 +76,8 @@ class UserAgreement:
 
         agreement_type = AgreementTypeEnum(d.pop("agreement_type"))
 
+        language = d.pop("language")
+
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
@@ -80,6 +87,7 @@ class UserAgreement:
             uuid=uuid,
             content=content,
             agreement_type=agreement_type,
+            language=language,
             created=created,
             modified=modified,
         )

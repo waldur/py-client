@@ -15,10 +15,12 @@ class UserAgreementRequest:
     Attributes:
         content (str):
         agreement_type (AgreementTypeEnum):
+        language (str): ISO 639-1 language code (e.g., 'en', 'de', 'et'). Leave empty for the default version.
     """
 
     content: str
     agreement_type: AgreementTypeEnum
+    language: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -26,12 +28,15 @@ class UserAgreementRequest:
 
         agreement_type = self.agreement_type.value
 
+        language = self.language
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "content": content,
                 "agreement_type": agreement_type,
+                "language": language,
             }
         )
 
@@ -44,9 +49,12 @@ class UserAgreementRequest:
 
         agreement_type = AgreementTypeEnum(d.pop("agreement_type"))
 
+        language = d.pop("language")
+
         user_agreement_request = cls(
             content=content,
             agreement_type=agreement_type,
+            language=language,
         )
 
         user_agreement_request.additional_properties = d
