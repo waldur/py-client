@@ -53,6 +53,8 @@ class ProtectedCall:
         compliance_checklist (Union[None, UUID, Unset]): Compliance checklist that proposals must complete before
             submission
         compliance_checklist_name (Union[Unset, str]):
+        proposal_slug_template (Union[None, Unset, str]): Template for proposal slugs. Supports: {call_slug},
+            {round_slug}, {org_slug}, {year}, {month}, {counter}, {counter_padded}. Default: {round_slug}-{counter_padded}
     """
 
     url: Union[Unset, str] = UNSET
@@ -81,6 +83,7 @@ class ProtectedCall:
     reference_code: Union[Unset, str] = UNSET
     compliance_checklist: Union[None, UUID, Unset] = UNSET
     compliance_checklist_name: Union[Unset, str] = UNSET
+    proposal_slug_template: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -188,6 +191,12 @@ class ProtectedCall:
 
         compliance_checklist_name = self.compliance_checklist_name
 
+        proposal_slug_template: Union[None, Unset, str]
+        if isinstance(self.proposal_slug_template, Unset):
+            proposal_slug_template = UNSET
+        else:
+            proposal_slug_template = self.proposal_slug_template
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -243,6 +252,8 @@ class ProtectedCall:
             field_dict["compliance_checklist"] = compliance_checklist
         if compliance_checklist_name is not UNSET:
             field_dict["compliance_checklist_name"] = compliance_checklist_name
+        if proposal_slug_template is not UNSET:
+            field_dict["proposal_slug_template"] = proposal_slug_template
 
         return field_dict
 
@@ -397,6 +408,15 @@ class ProtectedCall:
 
         compliance_checklist_name = d.pop("compliance_checklist_name", UNSET)
 
+        def _parse_proposal_slug_template(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        proposal_slug_template = _parse_proposal_slug_template(d.pop("proposal_slug_template", UNSET))
+
         protected_call = cls(
             url=url,
             uuid=uuid,
@@ -424,6 +444,7 @@ class ProtectedCall:
             reference_code=reference_code,
             compliance_checklist=compliance_checklist,
             compliance_checklist_name=compliance_checklist_name,
+            proposal_slug_template=proposal_slug_template,
         )
 
         protected_call.additional_properties = d

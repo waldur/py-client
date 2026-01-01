@@ -18,6 +18,7 @@ class ProposalProtectedCallsListFieldItem(str, Enum):
     MANAGER_UUID = "manager_uuid"
     NAME = "name"
     OFFERINGS = "offerings"
+    PROPOSAL_SLUG_TEMPLATE = "proposal_slug_template"
     REFERENCE_CODE = "reference_code"
     RESOURCE_TEMPLATES = "resource_templates"
     REVIEWER_IDENTITY_VISIBLE_TO_SUBMITTERS = "reviewer_identity_visible_to_submitters"
