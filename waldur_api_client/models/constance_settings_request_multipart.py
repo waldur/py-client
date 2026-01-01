@@ -1,12 +1,19 @@
+import json
 from collections.abc import Mapping
 from io import BytesIO
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from .. import types
 from ..types import UNSET, File, Unset
+
+if TYPE_CHECKING:
+    from ..models.constance_settings_request_multipart_loginlogomultilingual import (
+        ConstanceSettingsRequestMultipartLOGINLOGOMULTILINGUAL,
+    )
+
 
 T = TypeVar("T", bound="ConstanceSettingsRequestMultipart")
 
@@ -69,6 +76,7 @@ class ConstanceSettingsRequestMultipart:
         sidebar_style (Union[Unset, str]):
         site_logo (Union[File, None, Unset]):
         login_logo (Union[File, None, Unset]):
+        login_logo_multilingual (Union[Unset, ConstanceSettingsRequestMultipartLOGINLOGOMULTILINGUAL]):
         favicon (Union[File, None, Unset]):
         offering_logo_placeholder (Union[File, None, Unset]):
         waldur_support_enabled (Union[Unset, bool]):
@@ -241,6 +249,7 @@ class ConstanceSettingsRequestMultipart:
     sidebar_style: Union[Unset, str] = UNSET
     site_logo: Union[File, None, Unset] = UNSET
     login_logo: Union[File, None, Unset] = UNSET
+    login_logo_multilingual: Union[Unset, "ConstanceSettingsRequestMultipartLOGINLOGOMULTILINGUAL"] = UNSET
     favicon: Union[File, None, Unset] = UNSET
     offering_logo_placeholder: Union[File, None, Unset] = UNSET
     waldur_support_enabled: Union[Unset, bool] = UNSET
@@ -530,6 +539,10 @@ class ConstanceSettingsRequestMultipart:
 
         else:
             login_logo = self.login_logo
+
+        login_logo_multilingual: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.login_logo_multilingual, Unset):
+            login_logo_multilingual = self.login_logo_multilingual.to_dict()
 
         favicon: Union[None, Unset, types.FileTypes]
         if isinstance(self.favicon, Unset):
@@ -905,6 +918,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["SITE_LOGO"] = site_logo
         if login_logo is not UNSET:
             field_dict["LOGIN_LOGO"] = login_logo
+        if login_logo_multilingual is not UNSET:
+            field_dict["LOGIN_LOGO_MULTILINGUAL"] = login_logo_multilingual
         if favicon is not UNSET:
             field_dict["FAVICON"] = favicon
         if offering_logo_placeholder is not UNSET:
@@ -1379,6 +1394,14 @@ class ConstanceSettingsRequestMultipart:
                 files.append(("LOGIN_LOGO", self.login_logo.to_tuple()))
             else:
                 files.append(("LOGIN_LOGO", (None, str(self.login_logo).encode(), "text/plain")))
+
+        if not isinstance(self.login_logo_multilingual, Unset):
+            files.append(
+                (
+                    "LOGIN_LOGO_MULTILINGUAL",
+                    (None, json.dumps(self.login_logo_multilingual.to_dict()).encode(), "application/json"),
+                )
+            )
 
         if not isinstance(self.favicon, Unset):
             if isinstance(self.favicon, File):
@@ -2004,6 +2027,10 @@ class ConstanceSettingsRequestMultipart:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.constance_settings_request_multipart_loginlogomultilingual import (
+            ConstanceSettingsRequestMultipartLOGINLOGOMULTILINGUAL,
+        )
+
         d = dict(src_dict)
         site_name = d.pop("SITE_NAME", UNSET)
 
@@ -2249,6 +2276,15 @@ class ConstanceSettingsRequestMultipart:
             return cast(Union[File, None, Unset], data)
 
         login_logo = _parse_login_logo(d.pop("LOGIN_LOGO", UNSET))
+
+        _login_logo_multilingual = d.pop("LOGIN_LOGO_MULTILINGUAL", UNSET)
+        login_logo_multilingual: Union[Unset, ConstanceSettingsRequestMultipartLOGINLOGOMULTILINGUAL]
+        if isinstance(_login_logo_multilingual, Unset):
+            login_logo_multilingual = UNSET
+        else:
+            login_logo_multilingual = ConstanceSettingsRequestMultipartLOGINLOGOMULTILINGUAL.from_dict(
+                _login_logo_multilingual
+            )
 
         def _parse_favicon(data: object) -> Union[File, None, Unset]:
             if data is None:
@@ -2584,6 +2620,7 @@ class ConstanceSettingsRequestMultipart:
             sidebar_style=sidebar_style,
             site_logo=site_logo,
             login_logo=login_logo,
+            login_logo_multilingual=login_logo_multilingual,
             favicon=favicon,
             offering_logo_placeholder=offering_logo_placeholder,
             waldur_support_enabled=waldur_support_enabled,
