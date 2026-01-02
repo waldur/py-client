@@ -1,6 +1,7 @@
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,12 +16,14 @@ T = TypeVar("T", bound="ProposalDocumentation")
 class ProposalDocumentation:
     """
     Attributes:
+        uuid (UUID):
         file_name (str):
         file_size (int):
         created (datetime.datetime):
         file (Union[None, Unset, str]): Upload supporting documentation in PDF format.
     """
 
+    uuid: UUID
     file_name: str
     file_size: int
     created: datetime.datetime
@@ -28,6 +31,8 @@ class ProposalDocumentation:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        uuid = str(self.uuid)
+
         file_name = self.file_name
 
         file_size = self.file_size
@@ -44,6 +49,7 @@ class ProposalDocumentation:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "uuid": uuid,
                 "file_name": file_name,
                 "file_size": file_size,
                 "created": created,
@@ -57,6 +63,8 @@ class ProposalDocumentation:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        uuid = UUID(d.pop("uuid"))
+
         file_name = d.pop("file_name")
 
         file_size = d.pop("file_size")
@@ -73,6 +81,7 @@ class ProposalDocumentation:
         file = _parse_file(d.pop("file", UNSET))
 
         proposal_documentation = cls(
+            uuid=uuid,
             file_name=file_name,
             file_size=file_size,
             created=created,

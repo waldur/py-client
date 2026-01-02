@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from ..models.question_type_enum import QuestionTypeEnum
 
 if TYPE_CHECKING:
+    from ..models.question_with_answer_dependencies_info_type_0 import QuestionWithAnswerDependenciesInfoType0
     from ..models.question_with_answer_existing_answer_type_0 import QuestionWithAnswerExistingAnswerType0
 
 
@@ -36,6 +37,7 @@ class QuestionWithAnswer:
         max_file_size_mb (Union[None, int]): Maximum file size in megabytes. If not set, no size limit is enforced.
         max_files_count (Union[None, int]): Maximum number of files allowed for MULTIPLE_FILES type questions. If not
             set, no count limit is enforced.
+        dependencies_info (Union['QuestionWithAnswerDependenciesInfoType0', None]):
     """
 
     uuid: UUID
@@ -52,9 +54,11 @@ class QuestionWithAnswer:
     allowed_mime_types: Any
     max_file_size_mb: Union[None, int]
     max_files_count: Union[None, int]
+    dependencies_info: Union["QuestionWithAnswerDependenciesInfoType0", None]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.question_with_answer_dependencies_info_type_0 import QuestionWithAnswerDependenciesInfoType0
         from ..models.question_with_answer_existing_answer_type_0 import QuestionWithAnswerExistingAnswerType0
 
         uuid = str(self.uuid)
@@ -99,6 +103,12 @@ class QuestionWithAnswer:
         max_files_count: Union[None, int]
         max_files_count = self.max_files_count
 
+        dependencies_info: Union[None, dict[str, Any]]
+        if isinstance(self.dependencies_info, QuestionWithAnswerDependenciesInfoType0):
+            dependencies_info = self.dependencies_info.to_dict()
+        else:
+            dependencies_info = self.dependencies_info
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -117,6 +127,7 @@ class QuestionWithAnswer:
                 "allowed_mime_types": allowed_mime_types,
                 "max_file_size_mb": max_file_size_mb,
                 "max_files_count": max_files_count,
+                "dependencies_info": dependencies_info,
             }
         )
 
@@ -124,6 +135,7 @@ class QuestionWithAnswer:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.question_with_answer_dependencies_info_type_0 import QuestionWithAnswerDependenciesInfoType0
         from ..models.question_with_answer_existing_answer_type_0 import QuestionWithAnswerExistingAnswerType0
 
         d = dict(src_dict)
@@ -206,6 +218,21 @@ class QuestionWithAnswer:
 
         max_files_count = _parse_max_files_count(d.pop("max_files_count"))
 
+        def _parse_dependencies_info(data: object) -> Union["QuestionWithAnswerDependenciesInfoType0", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                dependencies_info_type_0 = QuestionWithAnswerDependenciesInfoType0.from_dict(data)
+
+                return dependencies_info_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["QuestionWithAnswerDependenciesInfoType0", None], data)
+
+        dependencies_info = _parse_dependencies_info(d.pop("dependencies_info"))
+
         question_with_answer = cls(
             uuid=uuid,
             description=description,
@@ -221,6 +248,7 @@ class QuestionWithAnswer:
             allowed_mime_types=allowed_mime_types,
             max_file_size_mb=max_file_size_mb,
             max_files_count=max_files_count,
+            dependencies_info=dependencies_info,
         )
 
         question_with_answer.additional_properties = d

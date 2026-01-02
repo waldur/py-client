@@ -1488,6 +1488,7 @@ from .proposal_approve_request import ProposalApproveRequest
 from .proposal_can_submit import ProposalCanSubmit
 from .proposal_checklist_answer_submit_response import ProposalChecklistAnswerSubmitResponse
 from .proposal_compliance_status_type_0 import ProposalComplianceStatusType0
+from .proposal_detach_documents_request import ProposalDetachDocumentsRequest
 from .proposal_documentation import ProposalDocumentation
 from .proposal_documentation_request import ProposalDocumentationRequest
 from .proposal_documentation_request_form import ProposalDocumentationRequestForm
@@ -1601,8 +1602,10 @@ from .question_options_admin import QuestionOptionsAdmin
 from .question_options_admin_request import QuestionOptionsAdminRequest
 from .question_type_enum import QuestionTypeEnum
 from .question_with_answer import QuestionWithAnswer
+from .question_with_answer_dependencies_info_type_0 import QuestionWithAnswerDependenciesInfoType0
 from .question_with_answer_existing_answer_type_0 import QuestionWithAnswerExistingAnswerType0
 from .question_with_answer_reviewer import QuestionWithAnswerReviewer
+from .question_with_answer_reviewer_dependencies_info_type_0 import QuestionWithAnswerReviewerDependenciesInfoType0
 from .question_with_answer_reviewer_existing_answer_type_0 import QuestionWithAnswerReviewerExistingAnswerType0
 from .quota import Quota
 from .quota_request import QuotaRequest
@@ -3393,6 +3396,7 @@ __all__ = (
     "ProposalCanSubmit",
     "ProposalChecklistAnswerSubmitResponse",
     "ProposalComplianceStatusType0",
+    "ProposalDetachDocumentsRequest",
     "ProposalDocumentation",
     "ProposalDocumentationRequest",
     "ProposalDocumentationRequestForm",
@@ -3492,8 +3496,10 @@ __all__ = (
     "QuestionOptionsAdminRequest",
     "QuestionTypeEnum",
     "QuestionWithAnswer",
+    "QuestionWithAnswerDependenciesInfoType0",
     "QuestionWithAnswerExistingAnswerType0",
     "QuestionWithAnswerReviewer",
+    "QuestionWithAnswerReviewerDependenciesInfoType0",
     "QuestionWithAnswerReviewerExistingAnswerType0",
     "Quota",
     "QuotaRequest",

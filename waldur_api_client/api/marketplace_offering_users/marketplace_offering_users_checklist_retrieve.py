@@ -7,15 +7,24 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.checklist_response import ChecklistResponse
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
+    *,
+    include_all: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    params["include_all"] = include_all
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": f"/api/marketplace-offering-users/{uuid}/checklist/",
+        "params": params,
     }
 
     return _kwargs
@@ -54,11 +63,13 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    include_all: Union[Unset, bool] = UNSET,
 ) -> Response[Union[Any, ChecklistResponse]]:
     """Get checklist with questions and existing answers.
 
     Args:
         uuid (UUID):
+        include_all (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -70,6 +81,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        include_all=include_all,
     )
 
     response = client.get_httpx_client().request(
@@ -83,11 +95,13 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    include_all: Union[Unset, bool] = UNSET,
 ) -> Union[Any, ChecklistResponse]:
     """Get checklist with questions and existing answers.
 
     Args:
         uuid (UUID):
+        include_all (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -100,6 +114,7 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        include_all=include_all,
     ).parsed
 
 
@@ -107,11 +122,13 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    include_all: Union[Unset, bool] = UNSET,
 ) -> Response[Union[Any, ChecklistResponse]]:
     """Get checklist with questions and existing answers.
 
     Args:
         uuid (UUID):
+        include_all (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -123,6 +140,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        include_all=include_all,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -134,11 +152,13 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    include_all: Union[Unset, bool] = UNSET,
 ) -> Union[Any, ChecklistResponse]:
     """Get checklist with questions and existing answers.
 
     Args:
         uuid (UUID):
+        include_all (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -152,5 +172,6 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            include_all=include_all,
         )
     ).parsed
