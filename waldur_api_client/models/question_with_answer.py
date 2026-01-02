@@ -26,8 +26,8 @@ class QuestionWithAnswer:
         order (int):
         existing_answer (Union['QuestionWithAnswerExistingAnswerType0', None]):
         question_options (Union[None, list[Any]]):
-        min_value (Union[None, str]): Minimum value allowed for NUMBER type questions
-        max_value (Union[None, str]): Maximum value allowed for NUMBER type questions
+        min_value (Union[None, str]): Minimum value allowed for NUMBER, YEAR, and RATING type questions
+        max_value (Union[None, str]): Maximum value allowed for NUMBER, YEAR, and RATING type questions
         allowed_file_types (Any): List of allowed file extensions (e.g., ['.pdf', '.doc', '.docx']). If empty, all file
             types are allowed.
         allowed_mime_types (Any): List of allowed MIME types (e.g., ['application/pdf', 'application/msword']). If
