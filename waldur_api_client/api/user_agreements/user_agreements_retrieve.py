@@ -45,7 +45,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[UserAgreement]:
-    """
+    """Retrieve user agreement
+
+     Fetch the details of a specific user agreement by its UUID.
+
     Args:
         uuid (UUID):
 
@@ -73,7 +76,10 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> UserAgreement:
-    """
+    """Retrieve user agreement
+
+     Fetch the details of a specific user agreement by its UUID.
+
     Args:
         uuid (UUID):
 
@@ -96,7 +102,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[UserAgreement]:
-    """
+    """Retrieve user agreement
+
+     Fetch the details of a specific user agreement by its UUID.
+
     Args:
         uuid (UUID):
 
@@ -122,7 +131,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> UserAgreement:
-    """
+    """Retrieve user agreement
+
+     Fetch the details of a specific user agreement by its UUID.
+
     Args:
         uuid (UUID):
 

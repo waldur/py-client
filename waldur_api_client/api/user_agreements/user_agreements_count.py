@@ -12,6 +12,7 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     agreement_type: Union[Unset, UserAgreementsCountAgreementType] = UNSET,
+    language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -22,6 +23,8 @@ def _get_kwargs(
         json_agreement_type = agreement_type.value
 
     params["agreement_type"] = json_agreement_type
+
+    params["language"] = language
 
     params["page"] = page
 
@@ -68,13 +71,17 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     agreement_type: Union[Unset, UserAgreementsCountAgreementType] = UNSET,
+    language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List user agreements
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         agreement_type (Union[Unset, UserAgreementsCountAgreementType]):
+        language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -88,6 +95,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         agreement_type=agreement_type,
+        language=language,
         page=page,
         page_size=page_size,
     )
@@ -103,13 +111,17 @@ def sync(
     *,
     client: AuthenticatedClient,
     agreement_type: Union[Unset, UserAgreementsCountAgreementType] = UNSET,
+    language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List user agreements
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         agreement_type (Union[Unset, UserAgreementsCountAgreementType]):
+        language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -124,6 +136,7 @@ def sync(
     return sync_detailed(
         client=client,
         agreement_type=agreement_type,
+        language=language,
         page=page,
         page_size=page_size,
     ).parsed
@@ -133,13 +146,17 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     agreement_type: Union[Unset, UserAgreementsCountAgreementType] = UNSET,
+    language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
-    """Get number of items in the collection matching the request parameters.
+    """List user agreements
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         agreement_type (Union[Unset, UserAgreementsCountAgreementType]):
+        language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -153,6 +170,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         agreement_type=agreement_type,
+        language=language,
         page=page,
         page_size=page_size,
     )
@@ -166,13 +184,17 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     agreement_type: Union[Unset, UserAgreementsCountAgreementType] = UNSET,
+    language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
-    """Get number of items in the collection matching the request parameters.
+    """List user agreements
+
+     Get number of items in the collection matching the request parameters.
 
     Args:
         agreement_type (Union[Unset, UserAgreementsCountAgreementType]):
+        language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -188,6 +210,7 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             agreement_type=agreement_type,
+            language=language,
             page=page,
             page_size=page_size,
         )
