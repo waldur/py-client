@@ -98,8 +98,8 @@ class MergedPluginOptionsRequest:
             generation policy
         enable_display_of_order_actions_for_service_provider (Union[Unset, bool]): Enable display of order actions for
             service provider Default: True.
-        auto_approve_marketplace_script (Union[Unset, bool]): If set to False, an order requires manual provider
-            approval Default: True.
+        auto_approve_marketplace_script (Union[Unset, bool]): If set to False, all orders require manual provider
+            approval, including for service provider owners and staff Default: True.
         highlight_backend_id_display (Union[Unset, bool]): Defines if backend_id should be shown more prominently by the
             UI Default: False.
         backend_id_display_label (Union[Unset, str]): Label used by UI for showing value of the backend_id Default:
