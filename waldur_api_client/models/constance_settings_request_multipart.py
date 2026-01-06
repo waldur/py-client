@@ -77,6 +77,11 @@ class ConstanceSettingsRequestMultipart:
         site_logo (Union[File, None, Unset]):
         login_logo (Union[File, None, Unset]):
         login_logo_multilingual (Union[Unset, ConstanceSettingsRequestMultipartLOGINLOGOMULTILINGUAL]):
+        login_page_layout (Union[Unset, str]):
+        login_page_video_url (Union[Unset, str]):
+        login_page_stats (Union[Unset, list[Any]]):
+        login_page_carousel_slides (Union[Unset, list[Any]]):
+        login_page_news (Union[Unset, list[Any]]):
         favicon (Union[File, None, Unset]):
         offering_logo_placeholder (Union[File, None, Unset]):
         waldur_support_enabled (Union[Unset, bool]):
@@ -250,6 +255,11 @@ class ConstanceSettingsRequestMultipart:
     site_logo: Union[File, None, Unset] = UNSET
     login_logo: Union[File, None, Unset] = UNSET
     login_logo_multilingual: Union[Unset, "ConstanceSettingsRequestMultipartLOGINLOGOMULTILINGUAL"] = UNSET
+    login_page_layout: Union[Unset, str] = UNSET
+    login_page_video_url: Union[Unset, str] = UNSET
+    login_page_stats: Union[Unset, list[Any]] = UNSET
+    login_page_carousel_slides: Union[Unset, list[Any]] = UNSET
+    login_page_news: Union[Unset, list[Any]] = UNSET
     favicon: Union[File, None, Unset] = UNSET
     offering_logo_placeholder: Union[File, None, Unset] = UNSET
     waldur_support_enabled: Union[Unset, bool] = UNSET
@@ -543,6 +553,22 @@ class ConstanceSettingsRequestMultipart:
         login_logo_multilingual: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.login_logo_multilingual, Unset):
             login_logo_multilingual = self.login_logo_multilingual.to_dict()
+
+        login_page_layout = self.login_page_layout
+
+        login_page_video_url = self.login_page_video_url
+
+        login_page_stats: Union[Unset, list[Any]] = UNSET
+        if not isinstance(self.login_page_stats, Unset):
+            login_page_stats = self.login_page_stats
+
+        login_page_carousel_slides: Union[Unset, list[Any]] = UNSET
+        if not isinstance(self.login_page_carousel_slides, Unset):
+            login_page_carousel_slides = self.login_page_carousel_slides
+
+        login_page_news: Union[Unset, list[Any]] = UNSET
+        if not isinstance(self.login_page_news, Unset):
+            login_page_news = self.login_page_news
 
         favicon: Union[None, Unset, types.FileTypes]
         if isinstance(self.favicon, Unset):
@@ -920,6 +946,16 @@ class ConstanceSettingsRequestMultipart:
             field_dict["LOGIN_LOGO"] = login_logo
         if login_logo_multilingual is not UNSET:
             field_dict["LOGIN_LOGO_MULTILINGUAL"] = login_logo_multilingual
+        if login_page_layout is not UNSET:
+            field_dict["LOGIN_PAGE_LAYOUT"] = login_page_layout
+        if login_page_video_url is not UNSET:
+            field_dict["LOGIN_PAGE_VIDEO_URL"] = login_page_video_url
+        if login_page_stats is not UNSET:
+            field_dict["LOGIN_PAGE_STATS"] = login_page_stats
+        if login_page_carousel_slides is not UNSET:
+            field_dict["LOGIN_PAGE_CAROUSEL_SLIDES"] = login_page_carousel_slides
+        if login_page_news is not UNSET:
+            field_dict["LOGIN_PAGE_NEWS"] = login_page_news
         if favicon is not UNSET:
             field_dict["FAVICON"] = favicon
         if offering_logo_placeholder is not UNSET:
@@ -1402,6 +1438,29 @@ class ConstanceSettingsRequestMultipart:
                     (None, json.dumps(self.login_logo_multilingual.to_dict()).encode(), "application/json"),
                 )
             )
+
+        if not isinstance(self.login_page_layout, Unset):
+            files.append(("LOGIN_PAGE_LAYOUT", (None, str(self.login_page_layout).encode(), "text/plain")))
+
+        if not isinstance(self.login_page_video_url, Unset):
+            files.append(("LOGIN_PAGE_VIDEO_URL", (None, str(self.login_page_video_url).encode(), "text/plain")))
+
+        if not isinstance(self.login_page_stats, Unset):
+            for login_page_stats_item_element in self.login_page_stats:
+                files.append(("LOGIN_PAGE_STATS", (None, str(login_page_stats_item_element).encode(), "text/plain")))
+
+        if not isinstance(self.login_page_carousel_slides, Unset):
+            for login_page_carousel_slides_item_element in self.login_page_carousel_slides:
+                files.append(
+                    (
+                        "LOGIN_PAGE_CAROUSEL_SLIDES",
+                        (None, str(login_page_carousel_slides_item_element).encode(), "text/plain"),
+                    )
+                )
+
+        if not isinstance(self.login_page_news, Unset):
+            for login_page_news_item_element in self.login_page_news:
+                files.append(("LOGIN_PAGE_NEWS", (None, str(login_page_news_item_element).encode(), "text/plain")))
 
         if not isinstance(self.favicon, Unset):
             if isinstance(self.favicon, File):
@@ -2286,6 +2345,16 @@ class ConstanceSettingsRequestMultipart:
                 _login_logo_multilingual
             )
 
+        login_page_layout = d.pop("LOGIN_PAGE_LAYOUT", UNSET)
+
+        login_page_video_url = d.pop("LOGIN_PAGE_VIDEO_URL", UNSET)
+
+        login_page_stats = cast(list[Any], d.pop("LOGIN_PAGE_STATS", UNSET))
+
+        login_page_carousel_slides = cast(list[Any], d.pop("LOGIN_PAGE_CAROUSEL_SLIDES", UNSET))
+
+        login_page_news = cast(list[Any], d.pop("LOGIN_PAGE_NEWS", UNSET))
+
         def _parse_favicon(data: object) -> Union[File, None, Unset]:
             if data is None:
                 return data
@@ -2621,6 +2690,11 @@ class ConstanceSettingsRequestMultipart:
             site_logo=site_logo,
             login_logo=login_logo,
             login_logo_multilingual=login_logo_multilingual,
+            login_page_layout=login_page_layout,
+            login_page_video_url=login_page_video_url,
+            login_page_stats=login_page_stats,
+            login_page_carousel_slides=login_page_carousel_slides,
+            login_page_news=login_page_news,
             favicon=favicon,
             offering_logo_placeholder=offering_logo_placeholder,
             waldur_support_enabled=waldur_support_enabled,
