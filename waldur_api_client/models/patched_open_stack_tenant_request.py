@@ -23,6 +23,7 @@ class PatchedOpenStackTenantRequest:
             in this tenant
         default_volume_type_name (Union[Unset, str]): Volume type name to use when creating volumes.
         security_groups (Union[Unset, list['OpenStackTenantSecurityGroupRequest']]):
+        skip_creation_of_default_subnet (Union[Unset, bool]):  Default: False.
     """
 
     name: Union[Unset, str] = UNSET
@@ -30,6 +31,7 @@ class PatchedOpenStackTenantRequest:
     availability_zone: Union[Unset, str] = UNSET
     default_volume_type_name: Union[Unset, str] = UNSET
     security_groups: Union[Unset, list["OpenStackTenantSecurityGroupRequest"]] = UNSET
+    skip_creation_of_default_subnet: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,6 +50,8 @@ class PatchedOpenStackTenantRequest:
                 security_groups_item = security_groups_item_data.to_dict()
                 security_groups.append(security_groups_item)
 
+        skip_creation_of_default_subnet = self.skip_creation_of_default_subnet
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -61,6 +65,8 @@ class PatchedOpenStackTenantRequest:
             field_dict["default_volume_type_name"] = default_volume_type_name
         if security_groups is not UNSET:
             field_dict["security_groups"] = security_groups
+        if skip_creation_of_default_subnet is not UNSET:
+            field_dict["skip_creation_of_default_subnet"] = skip_creation_of_default_subnet
 
         return field_dict
 
@@ -84,12 +90,15 @@ class PatchedOpenStackTenantRequest:
 
             security_groups.append(security_groups_item)
 
+        skip_creation_of_default_subnet = d.pop("skip_creation_of_default_subnet", UNSET)
+
         patched_open_stack_tenant_request = cls(
             name=name,
             description=description,
             availability_zone=availability_zone,
             default_volume_type_name=default_volume_type_name,
             security_groups=security_groups,
+            skip_creation_of_default_subnet=skip_creation_of_default_subnet,
         )
 
         patched_open_stack_tenant_request.additional_properties = d

@@ -104,8 +104,6 @@ class ConstanceSettingsRequestMultipart:
         atlassian_custom_issue_field_mapping_enabled (Union[Unset, bool]):
         atlassian_default_offering_issue_type (Union[Unset, str]):
         atlassian_excluded_attachment_types (Union[Unset, str]):
-        atlassian_issue_types (Union[Unset, str]):
-        atlassian_support_type_mapping (Union[Unset, str]):
         atlassian_description_template (Union[Unset, str]):
         atlassian_summary_template (Union[Unset, str]):
         atlassian_affected_resource_field (Union[Unset, str]):
@@ -282,8 +280,6 @@ class ConstanceSettingsRequestMultipart:
     atlassian_custom_issue_field_mapping_enabled: Union[Unset, bool] = UNSET
     atlassian_default_offering_issue_type: Union[Unset, str] = UNSET
     atlassian_excluded_attachment_types: Union[Unset, str] = UNSET
-    atlassian_issue_types: Union[Unset, str] = UNSET
-    atlassian_support_type_mapping: Union[Unset, str] = UNSET
     atlassian_description_template: Union[Unset, str] = UNSET
     atlassian_summary_template: Union[Unset, str] = UNSET
     atlassian_affected_resource_field: Union[Unset, str] = UNSET
@@ -627,10 +623,6 @@ class ConstanceSettingsRequestMultipart:
         atlassian_default_offering_issue_type = self.atlassian_default_offering_issue_type
 
         atlassian_excluded_attachment_types = self.atlassian_excluded_attachment_types
-
-        atlassian_issue_types = self.atlassian_issue_types
-
-        atlassian_support_type_mapping = self.atlassian_support_type_mapping
 
         atlassian_description_template = self.atlassian_description_template
 
@@ -1002,10 +994,6 @@ class ConstanceSettingsRequestMultipart:
             field_dict["ATLASSIAN_DEFAULT_OFFERING_ISSUE_TYPE"] = atlassian_default_offering_issue_type
         if atlassian_excluded_attachment_types is not UNSET:
             field_dict["ATLASSIAN_EXCLUDED_ATTACHMENT_TYPES"] = atlassian_excluded_attachment_types
-        if atlassian_issue_types is not UNSET:
-            field_dict["ATLASSIAN_ISSUE_TYPES"] = atlassian_issue_types
-        if atlassian_support_type_mapping is not UNSET:
-            field_dict["ATLASSIAN_SUPPORT_TYPE_MAPPING"] = atlassian_support_type_mapping
         if atlassian_description_template is not UNSET:
             field_dict["ATLASSIAN_DESCRIPTION_TEMPLATE"] = atlassian_description_template
         if atlassian_summary_template is not UNSET:
@@ -1579,17 +1567,6 @@ class ConstanceSettingsRequestMultipart:
                 (
                     "ATLASSIAN_EXCLUDED_ATTACHMENT_TYPES",
                     (None, str(self.atlassian_excluded_attachment_types).encode(), "text/plain"),
-                )
-            )
-
-        if not isinstance(self.atlassian_issue_types, Unset):
-            files.append(("ATLASSIAN_ISSUE_TYPES", (None, str(self.atlassian_issue_types).encode(), "text/plain")))
-
-        if not isinstance(self.atlassian_support_type_mapping, Unset):
-            files.append(
-                (
-                    "ATLASSIAN_SUPPORT_TYPE_MAPPING",
-                    (None, str(self.atlassian_support_type_mapping).encode(), "text/plain"),
                 )
             )
 
@@ -2431,10 +2408,6 @@ class ConstanceSettingsRequestMultipart:
 
         atlassian_excluded_attachment_types = d.pop("ATLASSIAN_EXCLUDED_ATTACHMENT_TYPES", UNSET)
 
-        atlassian_issue_types = d.pop("ATLASSIAN_ISSUE_TYPES", UNSET)
-
-        atlassian_support_type_mapping = d.pop("ATLASSIAN_SUPPORT_TYPE_MAPPING", UNSET)
-
         atlassian_description_template = d.pop("ATLASSIAN_DESCRIPTION_TEMPLATE", UNSET)
 
         atlassian_summary_template = d.pop("ATLASSIAN_SUMMARY_TEMPLATE", UNSET)
@@ -2717,8 +2690,6 @@ class ConstanceSettingsRequestMultipart:
             atlassian_custom_issue_field_mapping_enabled=atlassian_custom_issue_field_mapping_enabled,
             atlassian_default_offering_issue_type=atlassian_default_offering_issue_type,
             atlassian_excluded_attachment_types=atlassian_excluded_attachment_types,
-            atlassian_issue_types=atlassian_issue_types,
-            atlassian_support_type_mapping=atlassian_support_type_mapping,
             atlassian_description_template=atlassian_description_template,
             atlassian_summary_template=atlassian_summary_template,
             atlassian_affected_resource_field=atlassian_affected_resource_field,

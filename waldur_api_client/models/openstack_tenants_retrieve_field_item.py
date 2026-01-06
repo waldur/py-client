@@ -39,6 +39,7 @@ class OpenstackTenantsRetrieveFieldItem(str, Enum):
     SERVICE_SETTINGS_ERROR_MESSAGE = "service_settings_error_message"
     SERVICE_SETTINGS_STATE = "service_settings_state"
     SERVICE_SETTINGS_UUID = "service_settings_uuid"
+    SKIP_CREATION_OF_DEFAULT_SUBNET = "skip_creation_of_default_subnet"
     STATE = "state"
     SUBNET_CIDR = "subnet_cidr"
     URL = "url"

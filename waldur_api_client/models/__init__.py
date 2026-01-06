@@ -35,10 +35,20 @@ from .answer import Answer
 from .answer_submit_request import AnswerSubmitRequest
 from .answer_submit_response import AnswerSubmitResponse
 from .association import Association
+from .atlassian_credentials_request import AtlassianCredentialsRequest
+from .atlassian_custom_field_response import AtlassianCustomFieldResponse
+from .atlassian_priority_response import AtlassianPriorityResponse
+from .atlassian_project_response import AtlassianProjectResponse
+from .atlassian_request_type_response import AtlassianRequestTypeResponse
+from .atlassian_settings_preview_request import AtlassianSettingsPreviewRequest
+from .atlassian_settings_preview_request_support_type_mapping import AtlassianSettingsPreviewRequestSupportTypeMapping
+from .atlassian_settings_save_request import AtlassianSettingsSaveRequest
+from .atlassian_settings_save_request_support_type_mapping import AtlassianSettingsSaveRequestSupportTypeMapping
 from .attachment import Attachment
 from .attachment_request import AttachmentRequest
 from .attachment_request_form import AttachmentRequestForm
 from .attachment_request_multipart import AttachmentRequestMultipart
+from .auth_method_enum import AuthMethodEnum
 from .auth_result import AuthResult
 from .auth_result_request import AuthResultRequest
 from .auth_result_state_enum import AuthResultStateEnum
@@ -400,6 +410,10 @@ from .discount_config_request import DiscountConfigRequest
 from .discount_type_enum import DiscountTypeEnum
 from .discounts_update_request import DiscountsUpdateRequest
 from .discounts_update_request_discounts import DiscountsUpdateRequestDiscounts
+from .discover_custom_fields_request_request import DiscoverCustomFieldsRequestRequest
+from .discover_priorities_request_request import DiscoverPrioritiesRequestRequest
+from .discover_projects_request_request import DiscoverProjectsRequestRequest
+from .discover_request_types_request_request import DiscoverRequestTypesRequestRequest
 from .disk_format_enum import DiskFormatEnum
 from .dry_run import DryRun
 from .dry_run_request import DryRunRequest
@@ -1351,6 +1365,7 @@ from .patched_rancher_service_request import PatchedRancherServiceRequest
 from .patched_rancher_workload_request import PatchedRancherWorkloadRequest
 from .patched_remote_allocation_request import PatchedRemoteAllocationRequest
 from .patched_remote_synchronisation_request import PatchedRemoteSynchronisationRequest
+from .patched_request_type_admin_request import PatchedRequestTypeAdminRequest
 from .patched_requested_offering_request import PatchedRequestedOfferingRequest
 from .patched_requested_resource_request import PatchedRequestedResourceRequest
 from .patched_resource_update_request import PatchedResourceUpdateRequest
@@ -1733,6 +1748,9 @@ from .remove_partition_request import RemovePartitionRequest
 from .remove_software_catalog_request import RemoveSoftwareCatalogRequest
 from .report_section import ReportSection
 from .report_section_request import ReportSectionRequest
+from .request_type import RequestType
+from .request_type_admin import RequestTypeAdmin
+from .request_type_admin_request import RequestTypeAdminRequest
 from .request_types import RequestTypes
 from .requested_offering import RequestedOffering
 from .requested_offering_request import RequestedOfferingRequest
@@ -2071,10 +2089,20 @@ __all__ = (
     "AnswerSubmitRequest",
     "AnswerSubmitResponse",
     "Association",
+    "AtlassianCredentialsRequest",
+    "AtlassianCustomFieldResponse",
+    "AtlassianPriorityResponse",
+    "AtlassianProjectResponse",
+    "AtlassianRequestTypeResponse",
+    "AtlassianSettingsPreviewRequest",
+    "AtlassianSettingsPreviewRequestSupportTypeMapping",
+    "AtlassianSettingsSaveRequest",
+    "AtlassianSettingsSaveRequestSupportTypeMapping",
     "Attachment",
     "AttachmentRequest",
     "AttachmentRequestForm",
     "AttachmentRequestMultipart",
+    "AuthMethodEnum",
     "AuthResult",
     "AuthResultRequest",
     "AuthResultStateEnum",
@@ -2418,6 +2446,10 @@ __all__ = (
     "DiscountsUpdateRequest",
     "DiscountsUpdateRequestDiscounts",
     "DiscountTypeEnum",
+    "DiscoverCustomFieldsRequestRequest",
+    "DiscoverPrioritiesRequestRequest",
+    "DiscoverProjectsRequestRequest",
+    "DiscoverRequestTypesRequestRequest",
     "DiskFormatEnum",
     "DryRun",
     "DryRunRequest",
@@ -3275,6 +3307,7 @@ __all__ = (
     "PatchedRemoteSynchronisationRequest",
     "PatchedRequestedOfferingRequest",
     "PatchedRequestedResourceRequest",
+    "PatchedRequestTypeAdminRequest",
     "PatchedResourceUpdateRequest",
     "PatchedRobotAccountRequest",
     "PatchedRoleDetailsRequest",
@@ -3620,6 +3653,9 @@ __all__ = (
     "RequestedOfferingStates",
     "RequestedResource",
     "RequestedResourceRequest",
+    "RequestType",
+    "RequestTypeAdmin",
+    "RequestTypeAdminRequest",
     "RequestTypes",
     "Resource",
     "ResourceAttributes",

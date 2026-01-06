@@ -22,6 +22,7 @@ class OpenStackTenantCreateOrderAttributes:
         subnet_cidr (Union[Unset, str]):  Default: '192.168.42.0/24'.
         skip_connection_extnet (Union[Unset, bool]):  Default: False.
         skip_creation_of_default_router (Union[Unset, bool]):  Default: False.
+        skip_creation_of_default_subnet (Union[Unset, bool]):  Default: False.
         availability_zone (Union[Unset, str]): Optional availability group. Will be used for all instances provisioned
             in this tenant
         security_groups (Union[Unset, list['OpenStackTenantSecurityGroupRequest']]):
@@ -32,6 +33,7 @@ class OpenStackTenantCreateOrderAttributes:
     subnet_cidr: Union[Unset, str] = "192.168.42.0/24"
     skip_connection_extnet: Union[Unset, bool] = False
     skip_creation_of_default_router: Union[Unset, bool] = False
+    skip_creation_of_default_subnet: Union[Unset, bool] = False
     availability_zone: Union[Unset, str] = UNSET
     security_groups: Union[Unset, list["OpenStackTenantSecurityGroupRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -46,6 +48,8 @@ class OpenStackTenantCreateOrderAttributes:
         skip_connection_extnet = self.skip_connection_extnet
 
         skip_creation_of_default_router = self.skip_creation_of_default_router
+
+        skip_creation_of_default_subnet = self.skip_creation_of_default_subnet
 
         availability_zone = self.availability_zone
 
@@ -71,6 +75,8 @@ class OpenStackTenantCreateOrderAttributes:
             field_dict["skip_connection_extnet"] = skip_connection_extnet
         if skip_creation_of_default_router is not UNSET:
             field_dict["skip_creation_of_default_router"] = skip_creation_of_default_router
+        if skip_creation_of_default_subnet is not UNSET:
+            field_dict["skip_creation_of_default_subnet"] = skip_creation_of_default_subnet
         if availability_zone is not UNSET:
             field_dict["availability_zone"] = availability_zone
         if security_groups is not UNSET:
@@ -93,6 +99,8 @@ class OpenStackTenantCreateOrderAttributes:
 
         skip_creation_of_default_router = d.pop("skip_creation_of_default_router", UNSET)
 
+        skip_creation_of_default_subnet = d.pop("skip_creation_of_default_subnet", UNSET)
+
         availability_zone = d.pop("availability_zone", UNSET)
 
         security_groups = []
@@ -108,6 +116,7 @@ class OpenStackTenantCreateOrderAttributes:
             subnet_cidr=subnet_cidr,
             skip_connection_extnet=skip_connection_extnet,
             skip_creation_of_default_router=skip_creation_of_default_router,
+            skip_creation_of_default_subnet=skip_creation_of_default_subnet,
             availability_zone=availability_zone,
             security_groups=security_groups,
         )
