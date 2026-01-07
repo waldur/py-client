@@ -24,6 +24,7 @@ class OpenStackTenantRequest:
         default_volume_type_name (Union[Unset, str]): Volume type name to use when creating volumes.
         security_groups (Union[Unset, list['OpenStackTenantSecurityGroupRequest']]):
         skip_creation_of_default_subnet (Union[Unset, bool]):  Default: False.
+        skip_creation_of_default_router (Union[Unset, bool]):  Default: False.
     """
 
     name: str
@@ -32,6 +33,7 @@ class OpenStackTenantRequest:
     default_volume_type_name: Union[Unset, str] = UNSET
     security_groups: Union[Unset, list["OpenStackTenantSecurityGroupRequest"]] = UNSET
     skip_creation_of_default_subnet: Union[Unset, bool] = False
+    skip_creation_of_default_router: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,6 +54,8 @@ class OpenStackTenantRequest:
 
         skip_creation_of_default_subnet = self.skip_creation_of_default_subnet
 
+        skip_creation_of_default_router = self.skip_creation_of_default_router
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -69,6 +73,8 @@ class OpenStackTenantRequest:
             field_dict["security_groups"] = security_groups
         if skip_creation_of_default_subnet is not UNSET:
             field_dict["skip_creation_of_default_subnet"] = skip_creation_of_default_subnet
+        if skip_creation_of_default_router is not UNSET:
+            field_dict["skip_creation_of_default_router"] = skip_creation_of_default_router
 
         return field_dict
 
@@ -94,6 +100,8 @@ class OpenStackTenantRequest:
 
         skip_creation_of_default_subnet = d.pop("skip_creation_of_default_subnet", UNSET)
 
+        skip_creation_of_default_router = d.pop("skip_creation_of_default_router", UNSET)
+
         open_stack_tenant_request = cls(
             name=name,
             description=description,
@@ -101,6 +109,7 @@ class OpenStackTenantRequest:
             default_volume_type_name=default_volume_type_name,
             security_groups=security_groups,
             skip_creation_of_default_subnet=skip_creation_of_default_subnet,
+            skip_creation_of_default_router=skip_creation_of_default_router,
         )
 
         open_stack_tenant_request.additional_properties = d

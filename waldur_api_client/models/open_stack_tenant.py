@@ -57,6 +57,7 @@ class OpenStackTenant:
         user_password (Union[Unset, str]): Password of the tenant user
         quotas (Union[Unset, list['Quota']]):
         default_volume_type_name (Union[Unset, str]): Volume type name to use when creating volumes.
+        skip_creation_of_default_router (Union[Unset, bool]):  Default: False.
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_plugin_options (Union['OpenStackTenantMarketplaceOfferingPluginOptionsType0', None,
@@ -102,6 +103,7 @@ class OpenStackTenant:
     user_password: Union[Unset, str] = UNSET
     quotas: Union[Unset, list["Quota"]] = UNSET
     default_volume_type_name: Union[Unset, str] = UNSET
+    skip_creation_of_default_router: Union[Unset, bool] = False
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_plugin_options: Union["OpenStackTenantMarketplaceOfferingPluginOptionsType0", None, Unset] = (
@@ -211,6 +213,8 @@ class OpenStackTenant:
                 quotas.append(quotas_item)
 
         default_volume_type_name = self.default_volume_type_name
+
+        skip_creation_of_default_router = self.skip_creation_of_default_router
 
         marketplace_offering_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_offering_uuid, Unset):
@@ -341,6 +345,8 @@ class OpenStackTenant:
             field_dict["quotas"] = quotas
         if default_volume_type_name is not UNSET:
             field_dict["default_volume_type_name"] = default_volume_type_name
+        if skip_creation_of_default_router is not UNSET:
+            field_dict["skip_creation_of_default_router"] = skip_creation_of_default_router
         if marketplace_offering_uuid is not UNSET:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
@@ -490,6 +496,8 @@ class OpenStackTenant:
 
         default_volume_type_name = d.pop("default_volume_type_name", UNSET)
 
+        skip_creation_of_default_router = d.pop("skip_creation_of_default_router", UNSET)
+
         def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -627,6 +635,7 @@ class OpenStackTenant:
             user_password=user_password,
             quotas=quotas,
             default_volume_type_name=default_volume_type_name,
+            skip_creation_of_default_router=skip_creation_of_default_router,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
             marketplace_offering_plugin_options=marketplace_offering_plugin_options,
