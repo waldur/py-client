@@ -30,6 +30,8 @@ class MergedPluginOptions:
             resource termination
         auto_approve_in_service_provider_projects (Union[Unset, bool]): Skip approval of public offering belonging to
             the same organization under which the request is done
+        disable_autoapprove (Union[Unset, bool]): If set to True, orders for this offering will always require manual
+            approval, overriding auto_approve_in_service_provider_projects
         supports_downscaling (Union[Unset, bool]): If set to True, it will be possible to downscale resources
         supports_pausing (Union[Unset, bool]): If set to True, it will be possible to pause resources
         minimal_team_count_for_provisioning (Union[Unset, int]): Minimal team count required for provisioning of
@@ -113,6 +115,7 @@ class MergedPluginOptions:
     is_resource_termination_date_required: Union[Unset, bool] = UNSET
     latest_date_for_resource_termination: Union[Unset, datetime.date] = UNSET
     auto_approve_in_service_provider_projects: Union[Unset, bool] = UNSET
+    disable_autoapprove: Union[Unset, bool] = UNSET
     supports_downscaling: Union[Unset, bool] = UNSET
     supports_pausing: Union[Unset, bool] = UNSET
     minimal_team_count_for_provisioning: Union[Unset, int] = UNSET
@@ -185,6 +188,8 @@ class MergedPluginOptions:
             latest_date_for_resource_termination = self.latest_date_for_resource_termination.isoformat()
 
         auto_approve_in_service_provider_projects = self.auto_approve_in_service_provider_projects
+
+        disable_autoapprove = self.disable_autoapprove
 
         supports_downscaling = self.supports_downscaling
 
@@ -323,6 +328,8 @@ class MergedPluginOptions:
             field_dict["latest_date_for_resource_termination"] = latest_date_for_resource_termination
         if auto_approve_in_service_provider_projects is not UNSET:
             field_dict["auto_approve_in_service_provider_projects"] = auto_approve_in_service_provider_projects
+        if disable_autoapprove is not UNSET:
+            field_dict["disable_autoapprove"] = disable_autoapprove
         if supports_downscaling is not UNSET:
             field_dict["supports_downscaling"] = supports_downscaling
         if supports_pausing is not UNSET:
@@ -465,6 +472,8 @@ class MergedPluginOptions:
             latest_date_for_resource_termination = isoparse(_latest_date_for_resource_termination).date()
 
         auto_approve_in_service_provider_projects = d.pop("auto_approve_in_service_provider_projects", UNSET)
+
+        disable_autoapprove = d.pop("disable_autoapprove", UNSET)
 
         supports_downscaling = d.pop("supports_downscaling", UNSET)
 
@@ -620,6 +629,7 @@ class MergedPluginOptions:
             is_resource_termination_date_required=is_resource_termination_date_required,
             latest_date_for_resource_termination=latest_date_for_resource_termination,
             auto_approve_in_service_provider_projects=auto_approve_in_service_provider_projects,
+            disable_autoapprove=disable_autoapprove,
             supports_downscaling=supports_downscaling,
             supports_pausing=supports_pausing,
             minimal_team_count_for_provisioning=minimal_team_count_for_provisioning,
