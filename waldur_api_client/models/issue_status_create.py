@@ -7,18 +7,18 @@ from attrs import field as _attrs_field
 from ..models.issue_status_type import IssueStatusType
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="PatchedIssueStatusRequest")
+T = TypeVar("T", bound="IssueStatusCreate")
 
 
 @_attrs_define
-class PatchedIssueStatusRequest:
+class IssueStatusCreate:
     """
     Attributes:
-        name (Union[Unset, str]): Status name in Jira.
+        name (str): Status name in Jira.
         type_ (Union[Unset, IssueStatusType]):
     """
 
-    name: Union[Unset, str] = UNSET
+    name: str
     type_: Union[Unset, IssueStatusType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -31,9 +31,11 @@ class PatchedIssueStatusRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
+        field_dict.update(
+            {
+                "name": name,
+            }
+        )
         if type_ is not UNSET:
             field_dict["type"] = type_
 
@@ -42,7 +44,7 @@ class PatchedIssueStatusRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name", UNSET)
+        name = d.pop("name")
 
         _type_ = d.pop("type", UNSET)
         type_: Union[Unset, IssueStatusType]
@@ -51,13 +53,13 @@ class PatchedIssueStatusRequest:
         else:
             type_ = IssueStatusType(_type_)
 
-        patched_issue_status_request = cls(
+        issue_status_create = cls(
             name=name,
             type_=type_,
         )
 
-        patched_issue_status_request.additional_properties = d
-        return patched_issue_status_request
+        issue_status_create.additional_properties = d
+        return issue_status_create
 
     @property
     def additional_keys(self) -> list[str]:

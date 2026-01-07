@@ -1,7 +1,7 @@
 from enum import IntEnum
 
 
-class IssueStatusTypeEnum(IntEnum):
+class IssueStatusType(IntEnum):
     VALUE_0 = 0
     VALUE_1 = 1
 

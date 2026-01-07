@@ -52,6 +52,10 @@ class Issue:
         add_comment_is_available (bool):
         add_attachment_is_available (bool):
         processing_log (Any): Internal processing log for debugging order lifecycle events. Visible only to staff.
+        order_uuid (Union[None, str]): Return order UUID if the issue's resource is an Order.
+        order_project_uuid (Union[None, str]): Return order's project UUID if the issue's resource is an Order.
+        order_customer_uuid (Union[None, str]): Return order's customer UUID if the issue's resource is an Order.
+        order_resource_name (Union[None, str]): Return order's resource name if the issue's resource is an Order.
         remote_id (Union[None, Unset, str]):
         description (Union[Unset, str]):
         priority (Union[Unset, str]):
@@ -95,6 +99,10 @@ class Issue:
     add_comment_is_available: bool
     add_attachment_is_available: bool
     processing_log: Any
+    order_uuid: Union[None, str]
+    order_project_uuid: Union[None, str]
+    order_customer_uuid: Union[None, str]
+    order_resource_name: Union[None, str]
     remote_id: Union[None, Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     priority: Union[Unset, str] = UNSET
@@ -205,6 +213,18 @@ class Issue:
 
         processing_log = self.processing_log
 
+        order_uuid: Union[None, str]
+        order_uuid = self.order_uuid
+
+        order_project_uuid: Union[None, str]
+        order_project_uuid = self.order_project_uuid
+
+        order_customer_uuid: Union[None, str]
+        order_customer_uuid = self.order_customer_uuid
+
+        order_resource_name: Union[None, str]
+        order_resource_name = self.order_resource_name
+
         remote_id: Union[None, Unset, str]
         if isinstance(self.remote_id, Unset):
             remote_id = UNSET
@@ -283,6 +303,10 @@ class Issue:
                 "add_comment_is_available": add_comment_is_available,
                 "add_attachment_is_available": add_attachment_is_available,
                 "processing_log": processing_log,
+                "order_uuid": order_uuid,
+                "order_project_uuid": order_project_uuid,
+                "order_customer_uuid": order_customer_uuid,
+                "order_resource_name": order_resource_name,
             }
         )
         if remote_id is not UNSET:
@@ -493,6 +517,34 @@ class Issue:
 
         processing_log = d.pop("processing_log")
 
+        def _parse_order_uuid(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        order_uuid = _parse_order_uuid(d.pop("order_uuid"))
+
+        def _parse_order_project_uuid(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        order_project_uuid = _parse_order_project_uuid(d.pop("order_project_uuid"))
+
+        def _parse_order_customer_uuid(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        order_customer_uuid = _parse_order_customer_uuid(d.pop("order_customer_uuid"))
+
+        def _parse_order_resource_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        order_resource_name = _parse_order_resource_name(d.pop("order_resource_name"))
+
         def _parse_remote_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -586,6 +638,10 @@ class Issue:
             add_comment_is_available=add_comment_is_available,
             add_attachment_is_available=add_attachment_is_available,
             processing_log=processing_log,
+            order_uuid=order_uuid,
+            order_project_uuid=order_project_uuid,
+            order_customer_uuid=order_customer_uuid,
+            order_resource_name=order_resource_name,
             remote_id=remote_id,
             description=description,
             priority=priority,

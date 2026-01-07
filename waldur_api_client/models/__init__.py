@@ -553,8 +553,9 @@ from .issue import Issue
 from .issue_reference import IssueReference
 from .issue_request import IssueRequest
 from .issue_status import IssueStatus
-from .issue_status_request import IssueStatusRequest
-from .issue_status_type_enum import IssueStatusTypeEnum
+from .issue_status_create import IssueStatusCreate
+from .issue_status_create_request import IssueStatusCreateRequest
+from .issue_status_type import IssueStatusType
 from .issue_type_enum import IssueTypeEnum
 from .jira_changelog import JiraChangelog
 from .jira_changelog_request import JiraChangelogRequest
@@ -2050,7 +2051,6 @@ from .web_hook_content_type_enum import WebHookContentTypeEnum
 from .web_hook_receiver import WebHookReceiver
 from .web_hook_receiver_request import WebHookReceiverRequest
 from .web_hook_request import WebHookRequest
-from .webhook_event_enum import WebhookEventEnum
 from .widget_enum import WidgetEnum
 
 __all__ = (
@@ -2585,8 +2585,9 @@ __all__ = (
     "IssueReference",
     "IssueRequest",
     "IssueStatus",
-    "IssueStatusRequest",
-    "IssueStatusTypeEnum",
+    "IssueStatusCreate",
+    "IssueStatusCreateRequest",
+    "IssueStatusType",
     "IssueTypeEnum",
     "JiraChangelog",
     "JiraChangelogRequest",
@@ -3937,7 +3938,6 @@ __all__ = (
     "VolumeTypeMappingRequest",
     "WebHook",
     "WebHookContentTypeEnum",
-    "WebhookEventEnum",
     "WebHookReceiver",
     "WebHookReceiverRequest",
     "WebHookRequest",

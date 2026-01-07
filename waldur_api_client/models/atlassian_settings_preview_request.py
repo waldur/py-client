@@ -44,6 +44,7 @@ class AtlassianSettingsPreviewRequest:
         satisfaction_field (Union[Unset, str]):
         request_feedback_field (Union[Unset, str]):
         waldur_backend_id_field (Union[Unset, str]):
+        default_offering_issue_type (Union[Unset, str]): Default issue type for marketplace request-based orders
         use_old_api (Union[Unset, bool]):  Default: False.
         custom_field_mapping_enabled (Union[Unset, bool]):  Default: True.
     """
@@ -71,6 +72,7 @@ class AtlassianSettingsPreviewRequest:
     satisfaction_field: Union[Unset, str] = UNSET
     request_feedback_field: Union[Unset, str] = UNSET
     waldur_backend_id_field: Union[Unset, str] = UNSET
+    default_offering_issue_type: Union[Unset, str] = UNSET
     use_old_api: Union[Unset, bool] = False
     custom_field_mapping_enabled: Union[Unset, bool] = True
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -126,6 +128,8 @@ class AtlassianSettingsPreviewRequest:
 
         waldur_backend_id_field = self.waldur_backend_id_field
 
+        default_offering_issue_type = self.default_offering_issue_type
+
         use_old_api = self.use_old_api
 
         custom_field_mapping_enabled = self.custom_field_mapping_enabled
@@ -179,6 +183,8 @@ class AtlassianSettingsPreviewRequest:
             field_dict["request_feedback_field"] = request_feedback_field
         if waldur_backend_id_field is not UNSET:
             field_dict["waldur_backend_id_field"] = waldur_backend_id_field
+        if default_offering_issue_type is not UNSET:
+            field_dict["default_offering_issue_type"] = default_offering_issue_type
         if use_old_api is not UNSET:
             field_dict["use_old_api"] = use_old_api
         if custom_field_mapping_enabled is not UNSET:
@@ -244,6 +250,8 @@ class AtlassianSettingsPreviewRequest:
 
         waldur_backend_id_field = d.pop("waldur_backend_id_field", UNSET)
 
+        default_offering_issue_type = d.pop("default_offering_issue_type", UNSET)
+
         use_old_api = d.pop("use_old_api", UNSET)
 
         custom_field_mapping_enabled = d.pop("custom_field_mapping_enabled", UNSET)
@@ -272,6 +280,7 @@ class AtlassianSettingsPreviewRequest:
             satisfaction_field=satisfaction_field,
             request_feedback_field=request_feedback_field,
             waldur_backend_id_field=waldur_backend_id_field,
+            default_offering_issue_type=default_offering_issue_type,
             use_old_api=use_old_api,
             custom_field_mapping_enabled=custom_field_mapping_enabled,
         )

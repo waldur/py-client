@@ -5,7 +5,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.issue_status_type_enum import IssueStatusTypeEnum
+from ..models.issue_status_type import IssueStatusType
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="IssueStatus")
@@ -19,14 +19,14 @@ class IssueStatus:
         uuid (UUID):
         name (str): Status name in Jira.
         type_display (str):
-        type_ (Union[Unset, IssueStatusTypeEnum]):
+        type_ (Union[Unset, IssueStatusType]):
     """
 
     url: str
     uuid: UUID
     name: str
     type_display: str
-    type_: Union[Unset, IssueStatusTypeEnum] = UNSET
+    type_: Union[Unset, IssueStatusType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -69,11 +69,11 @@ class IssueStatus:
         type_display = d.pop("type_display")
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, IssueStatusTypeEnum]
+        type_: Union[Unset, IssueStatusType]
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
-            type_ = IssueStatusTypeEnum(_type_)
+            type_ = IssueStatusType(_type_)
 
         issue_status = cls(
             url=url,

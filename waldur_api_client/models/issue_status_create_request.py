@@ -4,22 +4,22 @@ from typing import Any, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.issue_status_type_enum import IssueStatusTypeEnum
+from ..models.issue_status_type import IssueStatusType
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="IssueStatusRequest")
+T = TypeVar("T", bound="IssueStatusCreateRequest")
 
 
 @_attrs_define
-class IssueStatusRequest:
+class IssueStatusCreateRequest:
     """
     Attributes:
         name (str): Status name in Jira.
-        type_ (Union[Unset, IssueStatusTypeEnum]):
+        type_ (Union[Unset, IssueStatusType]):
     """
 
     name: str
-    type_: Union[Unset, IssueStatusTypeEnum] = UNSET
+    type_: Union[Unset, IssueStatusType] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -47,19 +47,19 @@ class IssueStatusRequest:
         name = d.pop("name")
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, IssueStatusTypeEnum]
+        type_: Union[Unset, IssueStatusType]
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
-            type_ = IssueStatusTypeEnum(_type_)
+            type_ = IssueStatusType(_type_)
 
-        issue_status_request = cls(
+        issue_status_create_request = cls(
             name=name,
             type_=type_,
         )
 
-        issue_status_request.additional_properties = d
-        return issue_status_request
+        issue_status_create_request.additional_properties = d
+        return issue_status_create_request
 
     @property
     def additional_keys(self) -> list[str]:

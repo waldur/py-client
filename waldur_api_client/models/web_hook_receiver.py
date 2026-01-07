@@ -4,7 +4,6 @@ from typing import TYPE_CHECKING, Any, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.webhook_event_enum import WebhookEventEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -20,14 +19,14 @@ T = TypeVar("T", bound="WebHookReceiver")
 class WebHookReceiver:
     """
     Attributes:
-        webhook_event (WebhookEventEnum):
+        webhook_event (str):
         issue (JiraIssue):
         comment (Union[Unset, JiraComment]):
         changelog (Union[Unset, JiraChangelog]):
         issue_event_type_name (Union[Unset, str]):
     """
 
-    webhook_event: WebhookEventEnum
+    webhook_event: str
     issue: "JiraIssue"
     comment: Union[Unset, "JiraComment"] = UNSET
     changelog: Union[Unset, "JiraChangelog"] = UNSET
@@ -35,7 +34,7 @@ class WebHookReceiver:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        webhook_event = self.webhook_event.value
+        webhook_event = self.webhook_event
 
         issue = self.issue.to_dict()
 
@@ -73,7 +72,7 @@ class WebHookReceiver:
         from ..models.jira_issue import JiraIssue
 
         d = dict(src_dict)
-        webhook_event = WebhookEventEnum(d.pop("webhookEvent"))
+        webhook_event = d.pop("webhookEvent")
 
         issue = JiraIssue.from_dict(d.pop("issue"))
 
