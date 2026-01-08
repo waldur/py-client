@@ -1055,6 +1055,7 @@ from .open_stack_floating_ip_description_update_request import OpenStackFloating
 from .open_stack_floating_ip_marketplace_offering_plugin_options_type_0 import (
     OpenStackFloatingIPMarketplaceOfferingPluginOptionsType0,
 )
+from .open_stack_floating_ip_request import OpenStackFloatingIPRequest
 from .open_stack_image import OpenStackImage
 from .open_stack_instance import OpenStackInstance
 from .open_stack_instance_allowed_address_pairs_update_request import OpenStackInstanceAllowedAddressPairsUpdateRequest
@@ -1199,7 +1200,9 @@ from .openstack_ports_count_o_item import OpenstackPortsCountOItem
 from .openstack_ports_list_field_item import OpenstackPortsListFieldItem
 from .openstack_ports_list_o_item import OpenstackPortsListOItem
 from .openstack_ports_retrieve_field_item import OpenstackPortsRetrieveFieldItem
+from .openstack_routers_count_state import OpenstackRoutersCountState
 from .openstack_routers_list_field_item import OpenstackRoutersListFieldItem
+from .openstack_routers_list_state import OpenstackRoutersListState
 from .openstack_routers_retrieve_field_item import OpenstackRoutersRetrieveFieldItem
 from .openstack_security_groups_count_state_item import OpenstackSecurityGroupsCountStateItem
 from .openstack_security_groups_list_field_item import OpenstackSecurityGroupsListFieldItem
@@ -3047,6 +3050,7 @@ __all__ = (
     "OpenStackFloatingIPAttachRequest",
     "OpenStackFloatingIPDescriptionUpdateRequest",
     "OpenStackFloatingIPMarketplaceOfferingPluginOptionsType0",
+    "OpenStackFloatingIPRequest",
     "OpenstackFloatingIpsCountStateItem",
     "OpenstackFloatingIpsListFieldItem",
     "OpenstackFloatingIpsListStateItem",
@@ -3100,9 +3104,11 @@ __all__ = (
     "OpenStackRouter",
     "OpenStackRouterInterfaceRequest",
     "OpenStackRouterMarketplaceOfferingPluginOptionsType0",
+    "OpenstackRoutersCountState",
     "OpenStackRouterSetRoutes",
     "OpenStackRouterSetRoutesRequest",
     "OpenstackRoutersListFieldItem",
+    "OpenstackRoutersListState",
     "OpenstackRoutersRetrieveFieldItem",
     "OpenStackSecurityGroup",
     "OpenStackSecurityGroupHyperlinkRequest",

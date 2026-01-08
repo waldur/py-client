@@ -7,17 +7,27 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_floating_ip import OpenStackFloatingIP
+from ...models.open_stack_floating_ip_request import OpenStackFloatingIPRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
+    *,
+    body: OpenStackFloatingIPRequest,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": f"/api/openstack-tenants/{uuid}/create_floating_ip/",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -46,6 +56,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: OpenStackFloatingIPRequest,
 ) -> Response[OpenStackFloatingIP]:
     """Create floating IP for tenant
 
@@ -53,6 +64,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
+        body (OpenStackFloatingIPRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -64,6 +76,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -77,6 +90,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: OpenStackFloatingIPRequest,
 ) -> OpenStackFloatingIP:
     """Create floating IP for tenant
 
@@ -84,6 +98,7 @@ def sync(
 
     Args:
         uuid (UUID):
+        body (OpenStackFloatingIPRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -96,6 +111,7 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        body=body,
     ).parsed
 
 
@@ -103,6 +119,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: OpenStackFloatingIPRequest,
 ) -> Response[OpenStackFloatingIP]:
     """Create floating IP for tenant
 
@@ -110,6 +127,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
+        body (OpenStackFloatingIPRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -121,6 +139,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -132,6 +151,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: OpenStackFloatingIPRequest,
 ) -> OpenStackFloatingIP:
     """Create floating IP for tenant
 
@@ -139,6 +159,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
+        body (OpenStackFloatingIPRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -152,5 +173,6 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            body=body,
         )
     ).parsed

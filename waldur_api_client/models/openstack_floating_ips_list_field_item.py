@@ -37,6 +37,7 @@ class OpenstackFloatingIpsListFieldItem(str, Enum):
     PROJECT_NAME = "project_name"
     PROJECT_UUID = "project_uuid"
     RESOURCE_TYPE = "resource_type"
+    ROUTER = "router"
     RUNTIME_STATE = "runtime_state"
     SERVICE_NAME = "service_name"
     SERVICE_SETTINGS = "service_settings"

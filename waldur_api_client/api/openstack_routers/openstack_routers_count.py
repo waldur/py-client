@@ -6,6 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.openstack_routers_count_state import OpenstackRoutersCountState
 from ...types import UNSET, Response, Unset
 
 
@@ -15,6 +16,7 @@ def _get_kwargs(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, OpenstackRoutersCountState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -27,6 +29,12 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    json_state: Union[Unset, int] = UNSET
+    if not isinstance(state, Unset):
+        json_state = state.value
+
+    params["state"] = json_state
 
     params["tenant"] = tenant
 
@@ -79,6 +87,7 @@ def sync_detailed(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, OpenstackRoutersCountState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -91,6 +100,7 @@ def sync_detailed(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, OpenstackRoutersCountState]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -107,6 +117,7 @@ def sync_detailed(
         name_exact=name_exact,
         page=page,
         page_size=page_size,
+        state=state,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
@@ -125,6 +136,7 @@ def sync(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, OpenstackRoutersCountState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -137,6 +149,7 @@ def sync(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, OpenstackRoutersCountState]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -154,6 +167,7 @@ def sync(
         name_exact=name_exact,
         page=page,
         page_size=page_size,
+        state=state,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     ).parsed
@@ -166,6 +180,7 @@ async def asyncio_detailed(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, OpenstackRoutersCountState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -178,6 +193,7 @@ async def asyncio_detailed(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, OpenstackRoutersCountState]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -194,6 +210,7 @@ async def asyncio_detailed(
         name_exact=name_exact,
         page=page,
         page_size=page_size,
+        state=state,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
@@ -210,6 +227,7 @@ async def asyncio(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, OpenstackRoutersCountState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -222,6 +240,7 @@ async def asyncio(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, OpenstackRoutersCountState]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -240,6 +259,7 @@ async def asyncio(
             name_exact=name_exact,
             page=page,
             page_size=page_size,
+            state=state,
             tenant=tenant,
             tenant_uuid=tenant_uuid,
         )

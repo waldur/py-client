@@ -8,6 +8,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_router import OpenStackRouter
 from ...models.openstack_routers_list_field_item import OpenstackRoutersListFieldItem
+from ...models.openstack_routers_list_state import OpenstackRoutersListState
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -19,6 +20,7 @@ def _get_kwargs(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, OpenstackRoutersListState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -40,6 +42,12 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    json_state: Union[Unset, int] = UNSET
+    if not isinstance(state, Unset):
+        json_state = state.value
+
+    params["state"] = json_state
 
     params["tenant"] = tenant
 
@@ -93,6 +101,7 @@ def sync_detailed(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, OpenstackRoutersListState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackRouter"]]:
@@ -106,6 +115,7 @@ def sync_detailed(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, OpenstackRoutersListState]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -123,6 +133,7 @@ def sync_detailed(
         name_exact=name_exact,
         page=page,
         page_size=page_size,
+        state=state,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
@@ -142,6 +153,7 @@ def sync(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, OpenstackRoutersListState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackRouter"]:
@@ -155,6 +167,7 @@ def sync(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, OpenstackRoutersListState]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -173,6 +186,7 @@ def sync(
         name_exact=name_exact,
         page=page,
         page_size=page_size,
+        state=state,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     ).parsed
@@ -186,6 +200,7 @@ async def asyncio_detailed(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, OpenstackRoutersListState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackRouter"]]:
@@ -199,6 +214,7 @@ async def asyncio_detailed(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, OpenstackRoutersListState]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -216,6 +232,7 @@ async def asyncio_detailed(
         name_exact=name_exact,
         page=page,
         page_size=page_size,
+        state=state,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
@@ -233,6 +250,7 @@ async def asyncio(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    state: Union[Unset, OpenstackRoutersListState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackRouter"]:
@@ -246,6 +264,7 @@ async def asyncio(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        state (Union[Unset, OpenstackRoutersListState]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -265,6 +284,7 @@ async def asyncio(
             name_exact=name_exact,
             page=page,
             page_size=page_size,
+            state=state,
             tenant=tenant,
             tenant_uuid=tenant_uuid,
         )
@@ -277,6 +297,7 @@ def sync_all(
     field: Union[Unset, list[OpenstackRoutersListFieldItem]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    state: Union[Unset, OpenstackRoutersListState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackRouter"]:
@@ -291,6 +312,7 @@ def sync_all(
         field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        state (Union[Unset, OpenstackRoutersListState]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -310,6 +332,7 @@ def sync_all(
         field=field,
         name=name,
         name_exact=name_exact,
+        state=state,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
@@ -362,6 +385,7 @@ async def asyncio_all(
     field: Union[Unset, list[OpenstackRoutersListFieldItem]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    state: Union[Unset, OpenstackRoutersListState] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackRouter"]:
@@ -376,6 +400,7 @@ async def asyncio_all(
         field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        state (Union[Unset, OpenstackRoutersListState]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -395,6 +420,7 @@ async def asyncio_all(
         field=field,
         name=name,
         name_exact=name_exact,
+        state=state,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
