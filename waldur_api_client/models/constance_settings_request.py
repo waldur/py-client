@@ -138,6 +138,21 @@ class ConstanceSettingsRequest:
         enable_mock_service_account_backend (Union[Unset, bool]):
         enable_mock_course_account_backend (Union[Unset, bool]):
         proposal_review_duration (Union[Unset, int]):
+        orcid_client_id (Union[Unset, str]):
+        orcid_client_secret (Union[Unset, str]):
+        orcid_redirect_uri (Union[Unset, str]):
+        orcid_api_url (Union[Unset, str]):
+        orcid_auth_url (Union[Unset, str]):
+        orcid_sandbox_mode (Union[Unset, bool]):
+        semantic_scholar_api_key (Union[Unset, str]):
+        crossref_mailto (Union[Unset, str]):
+        reviewer_profiles_enabled (Union[Unset, bool]):
+        coi_detection_enabled (Union[Unset, bool]):
+        coi_disclosure_required (Union[Unset, bool]):
+        automated_matching_enabled (Union[Unset, bool]):
+        coi_coauthorship_lookback_years (Union[Unset, int]):
+        coi_coauthorship_threshold_papers (Union[Unset, int]):
+        coi_institutional_lookback_years (Union[Unset, int]):
         user_table_columns (Union[Unset, str]):
         auto_approve_user_tos (Union[Unset, bool]):
         freeipa_enabled (Union[Unset, bool]):
@@ -314,6 +329,21 @@ class ConstanceSettingsRequest:
     enable_mock_service_account_backend: Union[Unset, bool] = UNSET
     enable_mock_course_account_backend: Union[Unset, bool] = UNSET
     proposal_review_duration: Union[Unset, int] = UNSET
+    orcid_client_id: Union[Unset, str] = UNSET
+    orcid_client_secret: Union[Unset, str] = UNSET
+    orcid_redirect_uri: Union[Unset, str] = UNSET
+    orcid_api_url: Union[Unset, str] = UNSET
+    orcid_auth_url: Union[Unset, str] = UNSET
+    orcid_sandbox_mode: Union[Unset, bool] = UNSET
+    semantic_scholar_api_key: Union[Unset, str] = UNSET
+    crossref_mailto: Union[Unset, str] = UNSET
+    reviewer_profiles_enabled: Union[Unset, bool] = UNSET
+    coi_detection_enabled: Union[Unset, bool] = UNSET
+    coi_disclosure_required: Union[Unset, bool] = UNSET
+    automated_matching_enabled: Union[Unset, bool] = UNSET
+    coi_coauthorship_lookback_years: Union[Unset, int] = UNSET
+    coi_coauthorship_threshold_papers: Union[Unset, int] = UNSET
+    coi_institutional_lookback_years: Union[Unset, int] = UNSET
     user_table_columns: Union[Unset, str] = UNSET
     auto_approve_user_tos: Union[Unset, bool] = UNSET
     freeipa_enabled: Union[Unset, bool] = UNSET
@@ -695,6 +725,36 @@ class ConstanceSettingsRequest:
 
         proposal_review_duration = self.proposal_review_duration
 
+        orcid_client_id = self.orcid_client_id
+
+        orcid_client_secret = self.orcid_client_secret
+
+        orcid_redirect_uri = self.orcid_redirect_uri
+
+        orcid_api_url = self.orcid_api_url
+
+        orcid_auth_url = self.orcid_auth_url
+
+        orcid_sandbox_mode = self.orcid_sandbox_mode
+
+        semantic_scholar_api_key = self.semantic_scholar_api_key
+
+        crossref_mailto = self.crossref_mailto
+
+        reviewer_profiles_enabled = self.reviewer_profiles_enabled
+
+        coi_detection_enabled = self.coi_detection_enabled
+
+        coi_disclosure_required = self.coi_disclosure_required
+
+        automated_matching_enabled = self.automated_matching_enabled
+
+        coi_coauthorship_lookback_years = self.coi_coauthorship_lookback_years
+
+        coi_coauthorship_threshold_papers = self.coi_coauthorship_threshold_papers
+
+        coi_institutional_lookback_years = self.coi_institutional_lookback_years
+
         user_table_columns = self.user_table_columns
 
         auto_approve_user_tos = self.auto_approve_user_tos
@@ -1065,6 +1125,36 @@ class ConstanceSettingsRequest:
             field_dict["ENABLE_MOCK_COURSE_ACCOUNT_BACKEND"] = enable_mock_course_account_backend
         if proposal_review_duration is not UNSET:
             field_dict["PROPOSAL_REVIEW_DURATION"] = proposal_review_duration
+        if orcid_client_id is not UNSET:
+            field_dict["ORCID_CLIENT_ID"] = orcid_client_id
+        if orcid_client_secret is not UNSET:
+            field_dict["ORCID_CLIENT_SECRET"] = orcid_client_secret
+        if orcid_redirect_uri is not UNSET:
+            field_dict["ORCID_REDIRECT_URI"] = orcid_redirect_uri
+        if orcid_api_url is not UNSET:
+            field_dict["ORCID_API_URL"] = orcid_api_url
+        if orcid_auth_url is not UNSET:
+            field_dict["ORCID_AUTH_URL"] = orcid_auth_url
+        if orcid_sandbox_mode is not UNSET:
+            field_dict["ORCID_SANDBOX_MODE"] = orcid_sandbox_mode
+        if semantic_scholar_api_key is not UNSET:
+            field_dict["SEMANTIC_SCHOLAR_API_KEY"] = semantic_scholar_api_key
+        if crossref_mailto is not UNSET:
+            field_dict["CROSSREF_MAILTO"] = crossref_mailto
+        if reviewer_profiles_enabled is not UNSET:
+            field_dict["REVIEWER_PROFILES_ENABLED"] = reviewer_profiles_enabled
+        if coi_detection_enabled is not UNSET:
+            field_dict["COI_DETECTION_ENABLED"] = coi_detection_enabled
+        if coi_disclosure_required is not UNSET:
+            field_dict["COI_DISCLOSURE_REQUIRED"] = coi_disclosure_required
+        if automated_matching_enabled is not UNSET:
+            field_dict["AUTOMATED_MATCHING_ENABLED"] = automated_matching_enabled
+        if coi_coauthorship_lookback_years is not UNSET:
+            field_dict["COI_COAUTHORSHIP_LOOKBACK_YEARS"] = coi_coauthorship_lookback_years
+        if coi_coauthorship_threshold_papers is not UNSET:
+            field_dict["COI_COAUTHORSHIP_THRESHOLD_PAPERS"] = coi_coauthorship_threshold_papers
+        if coi_institutional_lookback_years is not UNSET:
+            field_dict["COI_INSTITUTIONAL_LOOKBACK_YEARS"] = coi_institutional_lookback_years
         if user_table_columns is not UNSET:
             field_dict["USER_TABLE_COLUMNS"] = user_table_columns
         if auto_approve_user_tos is not UNSET:
@@ -1599,6 +1689,36 @@ class ConstanceSettingsRequest:
 
         proposal_review_duration = d.pop("PROPOSAL_REVIEW_DURATION", UNSET)
 
+        orcid_client_id = d.pop("ORCID_CLIENT_ID", UNSET)
+
+        orcid_client_secret = d.pop("ORCID_CLIENT_SECRET", UNSET)
+
+        orcid_redirect_uri = d.pop("ORCID_REDIRECT_URI", UNSET)
+
+        orcid_api_url = d.pop("ORCID_API_URL", UNSET)
+
+        orcid_auth_url = d.pop("ORCID_AUTH_URL", UNSET)
+
+        orcid_sandbox_mode = d.pop("ORCID_SANDBOX_MODE", UNSET)
+
+        semantic_scholar_api_key = d.pop("SEMANTIC_SCHOLAR_API_KEY", UNSET)
+
+        crossref_mailto = d.pop("CROSSREF_MAILTO", UNSET)
+
+        reviewer_profiles_enabled = d.pop("REVIEWER_PROFILES_ENABLED", UNSET)
+
+        coi_detection_enabled = d.pop("COI_DETECTION_ENABLED", UNSET)
+
+        coi_disclosure_required = d.pop("COI_DISCLOSURE_REQUIRED", UNSET)
+
+        automated_matching_enabled = d.pop("AUTOMATED_MATCHING_ENABLED", UNSET)
+
+        coi_coauthorship_lookback_years = d.pop("COI_COAUTHORSHIP_LOOKBACK_YEARS", UNSET)
+
+        coi_coauthorship_threshold_papers = d.pop("COI_COAUTHORSHIP_THRESHOLD_PAPERS", UNSET)
+
+        coi_institutional_lookback_years = d.pop("COI_INSTITUTIONAL_LOOKBACK_YEARS", UNSET)
+
         user_table_columns = d.pop("USER_TABLE_COLUMNS", UNSET)
 
         auto_approve_user_tos = d.pop("AUTO_APPROVE_USER_TOS", UNSET)
@@ -1844,6 +1964,21 @@ class ConstanceSettingsRequest:
             enable_mock_service_account_backend=enable_mock_service_account_backend,
             enable_mock_course_account_backend=enable_mock_course_account_backend,
             proposal_review_duration=proposal_review_duration,
+            orcid_client_id=orcid_client_id,
+            orcid_client_secret=orcid_client_secret,
+            orcid_redirect_uri=orcid_redirect_uri,
+            orcid_api_url=orcid_api_url,
+            orcid_auth_url=orcid_auth_url,
+            orcid_sandbox_mode=orcid_sandbox_mode,
+            semantic_scholar_api_key=semantic_scholar_api_key,
+            crossref_mailto=crossref_mailto,
+            reviewer_profiles_enabled=reviewer_profiles_enabled,
+            coi_detection_enabled=coi_detection_enabled,
+            coi_disclosure_required=coi_disclosure_required,
+            automated_matching_enabled=automated_matching_enabled,
+            coi_coauthorship_lookback_years=coi_coauthorship_lookback_years,
+            coi_coauthorship_threshold_papers=coi_coauthorship_threshold_papers,
+            coi_institutional_lookback_years=coi_institutional_lookback_years,
             user_table_columns=user_table_columns,
             auto_approve_user_tos=auto_approve_user_tos,
             freeipa_enabled=freeipa_enabled,

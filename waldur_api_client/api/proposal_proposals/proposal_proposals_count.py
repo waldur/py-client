@@ -14,12 +14,15 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     call_uuid: Union[Unset, UUID] = UNSET,
+    created_by_uuid: Union[Unset, UUID] = UNSET,
+    my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalProposalsCountOItem]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
+    round_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalProposalsCountStateItem]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -28,6 +31,13 @@ def _get_kwargs(
     if not isinstance(call_uuid, Unset):
         json_call_uuid = str(call_uuid)
     params["call_uuid"] = json_call_uuid
+
+    json_created_by_uuid: Union[Unset, str] = UNSET
+    if not isinstance(created_by_uuid, Unset):
+        json_created_by_uuid = str(created_by_uuid)
+    params["created_by_uuid"] = json_created_by_uuid
+
+    params["my_proposals"] = my_proposals
 
     params["name"] = name
 
@@ -53,6 +63,11 @@ def _get_kwargs(
     if not isinstance(round_, Unset):
         json_round_ = str(round_)
     params["round"] = json_round_
+
+    json_round_uuid: Union[Unset, str] = UNSET
+    if not isinstance(round_uuid, Unset):
+        json_round_uuid = str(round_uuid)
+    params["round_uuid"] = json_round_uuid
 
     json_state: Union[Unset, list[str]] = UNSET
     if not isinstance(state, Unset):
@@ -104,24 +119,30 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
+    created_by_uuid: Union[Unset, UUID] = UNSET,
+    my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalProposalsCountOItem]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
+    round_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalProposalsCountStateItem]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
+        created_by_uuid (Union[Unset, UUID]):
+        my_proposals (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[ProposalProposalsCountOItem]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         round_ (Union[Unset, UUID]):
+        round_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[ProposalProposalsCountStateItem]]):
 
     Raises:
@@ -134,12 +155,15 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         call_uuid=call_uuid,
+        created_by_uuid=created_by_uuid,
+        my_proposals=my_proposals,
         name=name,
         o=o,
         organization_uuid=organization_uuid,
         page=page,
         page_size=page_size,
         round_=round_,
+        round_uuid=round_uuid,
         state=state,
     )
 
@@ -154,24 +178,30 @@ def sync(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
+    created_by_uuid: Union[Unset, UUID] = UNSET,
+    my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalProposalsCountOItem]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
+    round_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalProposalsCountStateItem]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
+        created_by_uuid (Union[Unset, UUID]):
+        my_proposals (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[ProposalProposalsCountOItem]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         round_ (Union[Unset, UUID]):
+        round_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[ProposalProposalsCountStateItem]]):
 
     Raises:
@@ -185,12 +215,15 @@ def sync(
     return sync_detailed(
         client=client,
         call_uuid=call_uuid,
+        created_by_uuid=created_by_uuid,
+        my_proposals=my_proposals,
         name=name,
         o=o,
         organization_uuid=organization_uuid,
         page=page,
         page_size=page_size,
         round_=round_,
+        round_uuid=round_uuid,
         state=state,
     ).parsed
 
@@ -199,24 +232,30 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
+    created_by_uuid: Union[Unset, UUID] = UNSET,
+    my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalProposalsCountOItem]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
+    round_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalProposalsCountStateItem]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
+        created_by_uuid (Union[Unset, UUID]):
+        my_proposals (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[ProposalProposalsCountOItem]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         round_ (Union[Unset, UUID]):
+        round_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[ProposalProposalsCountStateItem]]):
 
     Raises:
@@ -229,12 +268,15 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         call_uuid=call_uuid,
+        created_by_uuid=created_by_uuid,
+        my_proposals=my_proposals,
         name=name,
         o=o,
         organization_uuid=organization_uuid,
         page=page,
         page_size=page_size,
         round_=round_,
+        round_uuid=round_uuid,
         state=state,
     )
 
@@ -247,24 +289,30 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
+    created_by_uuid: Union[Unset, UUID] = UNSET,
+    my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalProposalsCountOItem]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
+    round_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[ProposalProposalsCountStateItem]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
+        created_by_uuid (Union[Unset, UUID]):
+        my_proposals (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[ProposalProposalsCountOItem]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         round_ (Union[Unset, UUID]):
+        round_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[ProposalProposalsCountStateItem]]):
 
     Raises:
@@ -279,12 +327,15 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             call_uuid=call_uuid,
+            created_by_uuid=created_by_uuid,
+            my_proposals=my_proposals,
             name=name,
             o=o,
             organization_uuid=organization_uuid,
             page=page,
             page_size=page_size,
             round_=round_,
+            round_uuid=round_uuid,
             state=state,
         )
     ).parsed

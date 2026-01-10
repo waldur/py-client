@@ -20,9 +20,9 @@ class PatchedProtectedCallRequest:
         fixed_duration_in_days (Union[None, Unset, int]):
         backend_id (Union[Unset, str]):
         external_url (Union[None, Unset, str]):
-        reviewer_identity_visible_to_submitters (Union[Unset, bool]): Whether proposal submitters can see reviewer
+        reviewer_identity_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see reviewer
             identities
-        reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal submitters can see review comments and
+        reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see review comments and
             scores
         created_by (Union[None, Unset, str]):
         reference_code (Union[Unset, str]):

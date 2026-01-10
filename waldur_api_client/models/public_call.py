@@ -45,10 +45,10 @@ class PublicCall:
             call
         backend_id (Union[Unset, str]):
         external_url (Union[None, Unset, str]):
-        reviewer_identity_visible_to_submitters (Union[Unset, bool]): Whether proposal submitters can see reviewer
+        reviewer_identity_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see reviewer
             identities. If False, reviewers appear as 'Reviewer 1', 'Reviewer 2', etc.
-        reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal submitters can see review comments and
-            scores. If False, submitters only see final approval/rejection status.
+        reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see review comments and
+            scores. If False, applicants only see final approval/rejection status.
     """
 
     url: Union[Unset, str] = UNSET

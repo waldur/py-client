@@ -2,7 +2,6 @@ from enum import Enum
 
 
 class ProposalReviewsCountStateItem(str, Enum):
-    CREATED = "created"
     IN_REVIEW = "in_review"
     REJECTED = "rejected"
     SUBMITTED = "submitted"

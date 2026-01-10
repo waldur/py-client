@@ -13,8 +13,8 @@ def _get_kwargs(
     uuid: UUID,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": f"/api/proposal-reviews/{uuid}/accept/",
+        "method": "delete",
+        "url": f"/api/reviewer-suggestions/{uuid}/",
     }
 
     return _kwargs
@@ -23,7 +23,7 @@ def _get_kwargs(
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
+    if response.status_code == 204:
         return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
@@ -42,7 +42,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Accept a review, changing its state to IN_REVIEW.
+    """Delete a reviewer suggestion.
 
     Args:
         uuid (UUID):
@@ -71,7 +71,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
-    """Accept a review, changing its state to IN_REVIEW.
+    """Delete a reviewer suggestion.
 
     Args:
         uuid (UUID):

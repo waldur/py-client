@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class SeverityEnum(str, Enum):
+class CorrectiveActionSeverityEnum(str, Enum):
     CRITICAL = "critical"
     HIGH = "high"
     LOW = "low"

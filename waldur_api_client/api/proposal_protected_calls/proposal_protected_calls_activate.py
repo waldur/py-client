@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.protected_call import ProtectedCall
+from ...models.message_response import MessageResponse
 from ...types import Response
 
 
@@ -21,17 +21,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ProtectedCall:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> MessageResponse:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ProtectedCall.from_dict(response.json())
+        response_200 = MessageResponse.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[ProtectedCall]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[MessageResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,7 +46,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ProtectedCall]:
+) -> Response[MessageResponse]:
     """Activate a call.
 
     Args:
@@ -55,7 +57,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProtectedCall]
+        Response[MessageResponse]
     """
 
     kwargs = _get_kwargs(
@@ -73,7 +75,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> ProtectedCall:
+) -> MessageResponse:
     """Activate a call.
 
     Args:
@@ -84,7 +86,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProtectedCall
+        MessageResponse
     """
 
     return sync_detailed(
@@ -97,7 +99,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ProtectedCall]:
+) -> Response[MessageResponse]:
     """Activate a call.
 
     Args:
@@ -108,7 +110,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProtectedCall]
+        Response[MessageResponse]
     """
 
     kwargs = _get_kwargs(
@@ -124,7 +126,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> ProtectedCall:
+) -> MessageResponse:
     """Activate a call.
 
     Args:
@@ -135,7 +137,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProtectedCall
+        MessageResponse
     """
 
     return (
