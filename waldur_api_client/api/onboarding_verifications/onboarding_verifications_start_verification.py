@@ -55,9 +55,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: OnboardingCompanyValidationRequestRequest,
 ) -> Response[OnboardingVerification]:
-    """Start company validation process by creating a verification record. If a checklist is configured for
-    the country, use checklist endpoints to submit additional answers. Then call run_validation to
-    perform automatic validation.
+    """Start company validation process by creating a verification record. User selects validation_method
+    (e.g., 'ariregister', 'wirtschaftscompass'). Checklists are used for intent and customer data
+    collection. Then call run_validation to perform automatic validation or create manual justification.
 
     Args:
         body (OnboardingCompanyValidationRequestRequest):
@@ -86,9 +86,9 @@ def sync(
     client: AuthenticatedClient,
     body: OnboardingCompanyValidationRequestRequest,
 ) -> OnboardingVerification:
-    """Start company validation process by creating a verification record. If a checklist is configured for
-    the country, use checklist endpoints to submit additional answers. Then call run_validation to
-    perform automatic validation.
+    """Start company validation process by creating a verification record. User selects validation_method
+    (e.g., 'ariregister', 'wirtschaftscompass'). Checklists are used for intent and customer data
+    collection. Then call run_validation to perform automatic validation or create manual justification.
 
     Args:
         body (OnboardingCompanyValidationRequestRequest):
@@ -112,9 +112,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: OnboardingCompanyValidationRequestRequest,
 ) -> Response[OnboardingVerification]:
-    """Start company validation process by creating a verification record. If a checklist is configured for
-    the country, use checklist endpoints to submit additional answers. Then call run_validation to
-    perform automatic validation.
+    """Start company validation process by creating a verification record. User selects validation_method
+    (e.g., 'ariregister', 'wirtschaftscompass'). Checklists are used for intent and customer data
+    collection. Then call run_validation to perform automatic validation or create manual justification.
 
     Args:
         body (OnboardingCompanyValidationRequestRequest):
@@ -141,9 +141,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: OnboardingCompanyValidationRequestRequest,
 ) -> OnboardingVerification:
-    """Start company validation process by creating a verification record. If a checklist is configured for
-    the country, use checklist endpoints to submit additional answers. Then call run_validation to
-    perform automatic validation.
+    """Start company validation process by creating a verification record. User selects validation_method
+    (e.g., 'ariregister', 'wirtschaftscompass'). Checklists are used for intent and customer data
+    collection. Then call run_validation to perform automatic validation or create manual justification.
 
     Args:
         body (OnboardingCompanyValidationRequestRequest):

@@ -182,7 +182,8 @@ class ConstanceSettingsRequestForm:
         maintenance_announcement_notify_system (Union[Unset, list[str]]):
         enforce_user_consent_for_offerings (Union[Unset, bool]):
         disabled_offering_types (Union[Unset, list[str]]):
-        onboarding_country (Union[Unset, str]):
+        onboarding_supported_countries (Union[Unset, list[str]]):
+        onboarding_validation_methods (Union[Unset, list[str]]):
         onboarding_verification_expiry_hours (Union[Unset, int]):
         onboarding_ariregister_base_url (Union[Unset, str]):
         onboarding_ariregister_username (Union[Unset, str]):
@@ -373,7 +374,8 @@ class ConstanceSettingsRequestForm:
     maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
     enforce_user_consent_for_offerings: Union[Unset, bool] = UNSET
     disabled_offering_types: Union[Unset, list[str]] = UNSET
-    onboarding_country: Union[Unset, str] = UNSET
+    onboarding_supported_countries: Union[Unset, list[str]] = UNSET
+    onboarding_validation_methods: Union[Unset, list[str]] = UNSET
     onboarding_verification_expiry_hours: Union[Unset, int] = UNSET
     onboarding_ariregister_base_url: Union[Unset, str] = UNSET
     onboarding_ariregister_username: Union[Unset, str] = UNSET
@@ -826,7 +828,13 @@ class ConstanceSettingsRequestForm:
         if not isinstance(self.disabled_offering_types, Unset):
             disabled_offering_types = self.disabled_offering_types
 
-        onboarding_country = self.onboarding_country
+        onboarding_supported_countries: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.onboarding_supported_countries, Unset):
+            onboarding_supported_countries = self.onboarding_supported_countries
+
+        onboarding_validation_methods: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.onboarding_validation_methods, Unset):
+            onboarding_validation_methods = self.onboarding_validation_methods
 
         onboarding_verification_expiry_hours = self.onboarding_verification_expiry_hours
 
@@ -1213,8 +1221,10 @@ class ConstanceSettingsRequestForm:
             field_dict["ENFORCE_USER_CONSENT_FOR_OFFERINGS"] = enforce_user_consent_for_offerings
         if disabled_offering_types is not UNSET:
             field_dict["DISABLED_OFFERING_TYPES"] = disabled_offering_types
-        if onboarding_country is not UNSET:
-            field_dict["ONBOARDING_COUNTRY"] = onboarding_country
+        if onboarding_supported_countries is not UNSET:
+            field_dict["ONBOARDING_SUPPORTED_COUNTRIES"] = onboarding_supported_countries
+        if onboarding_validation_methods is not UNSET:
+            field_dict["ONBOARDING_VALIDATION_METHODS"] = onboarding_validation_methods
         if onboarding_verification_expiry_hours is not UNSET:
             field_dict["ONBOARDING_VERIFICATION_EXPIRY_HOURS"] = onboarding_verification_expiry_hours
         if onboarding_ariregister_base_url is not UNSET:
@@ -1792,7 +1802,9 @@ class ConstanceSettingsRequestForm:
 
         disabled_offering_types = cast(list[str], d.pop("DISABLED_OFFERING_TYPES", UNSET))
 
-        onboarding_country = d.pop("ONBOARDING_COUNTRY", UNSET)
+        onboarding_supported_countries = cast(list[str], d.pop("ONBOARDING_SUPPORTED_COUNTRIES", UNSET))
+
+        onboarding_validation_methods = cast(list[str], d.pop("ONBOARDING_VALIDATION_METHODS", UNSET))
 
         onboarding_verification_expiry_hours = d.pop("ONBOARDING_VERIFICATION_EXPIRY_HOURS", UNSET)
 
@@ -2010,7 +2022,8 @@ class ConstanceSettingsRequestForm:
             maintenance_announcement_notify_system=maintenance_announcement_notify_system,
             enforce_user_consent_for_offerings=enforce_user_consent_for_offerings,
             disabled_offering_types=disabled_offering_types,
-            onboarding_country=onboarding_country,
+            onboarding_supported_countries=onboarding_supported_countries,
+            onboarding_validation_methods=onboarding_validation_methods,
             onboarding_verification_expiry_hours=onboarding_verification_expiry_hours,
             onboarding_ariregister_base_url=onboarding_ariregister_base_url,
             onboarding_ariregister_username=onboarding_ariregister_username,

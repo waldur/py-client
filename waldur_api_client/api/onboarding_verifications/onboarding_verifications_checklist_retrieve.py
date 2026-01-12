@@ -7,15 +7,27 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.checklist_response import ChecklistResponse
+from ...models.onboarding_verifications_checklist_retrieve_checklist_type import (
+    OnboardingVerificationsChecklistRetrieveChecklistType,
+)
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    include_all: Union[Unset, bool] = UNSET,
+    checklist_type: Union[
+        Unset, OnboardingVerificationsChecklistRetrieveChecklistType
+    ] = OnboardingVerificationsChecklistRetrieveChecklistType.INTENT,
+    include_all: Union[Unset, bool] = False,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_checklist_type: Union[Unset, str] = UNSET
+    if not isinstance(checklist_type, Unset):
+        json_checklist_type = checklist_type.value
+
+    params["checklist_type"] = json_checklist_type
 
     params["include_all"] = include_all
 
@@ -30,27 +42,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[Any, ChecklistResponse]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ChecklistResponse:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = ChecklistResponse.from_dict(response.json())
 
         return response_200
-    if response.status_code == 400:
-        response_400 = response.json()
-        return response_400
-    if response.status_code == 404:
-        response_404 = response.json()
-        return response_404
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ChecklistResponse]]:
+) -> Response[ChecklistResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,24 +67,31 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    include_all: Union[Unset, bool] = UNSET,
-) -> Response[Union[Any, ChecklistResponse]]:
-    """Get checklist with questions and existing answers.
+    checklist_type: Union[
+        Unset, OnboardingVerificationsChecklistRetrieveChecklistType
+    ] = OnboardingVerificationsChecklistRetrieveChecklistType.INTENT,
+    include_all: Union[Unset, bool] = False,
+) -> Response[ChecklistResponse]:
+    """Get checklist with questions and existing answers. Supports both customer and intent checklists via
+    checklist_type parameter.
 
     Args:
         uuid (UUID):
-        include_all (Union[Unset, bool]):
+        checklist_type (Union[Unset, OnboardingVerificationsChecklistRetrieveChecklistType]):
+            Default: OnboardingVerificationsChecklistRetrieveChecklistType.INTENT.
+        include_all (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ChecklistResponse]]
+        Response[ChecklistResponse]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        checklist_type=checklist_type,
         include_all=include_all,
     )
 
@@ -95,25 +106,32 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    include_all: Union[Unset, bool] = UNSET,
-) -> Union[Any, ChecklistResponse]:
-    """Get checklist with questions and existing answers.
+    checklist_type: Union[
+        Unset, OnboardingVerificationsChecklistRetrieveChecklistType
+    ] = OnboardingVerificationsChecklistRetrieveChecklistType.INTENT,
+    include_all: Union[Unset, bool] = False,
+) -> ChecklistResponse:
+    """Get checklist with questions and existing answers. Supports both customer and intent checklists via
+    checklist_type parameter.
 
     Args:
         uuid (UUID):
-        include_all (Union[Unset, bool]):
+        checklist_type (Union[Unset, OnboardingVerificationsChecklistRetrieveChecklistType]):
+            Default: OnboardingVerificationsChecklistRetrieveChecklistType.INTENT.
+        include_all (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ChecklistResponse]
+        ChecklistResponse
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
+        checklist_type=checklist_type,
         include_all=include_all,
     ).parsed
 
@@ -122,24 +140,31 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    include_all: Union[Unset, bool] = UNSET,
-) -> Response[Union[Any, ChecklistResponse]]:
-    """Get checklist with questions and existing answers.
+    checklist_type: Union[
+        Unset, OnboardingVerificationsChecklistRetrieveChecklistType
+    ] = OnboardingVerificationsChecklistRetrieveChecklistType.INTENT,
+    include_all: Union[Unset, bool] = False,
+) -> Response[ChecklistResponse]:
+    """Get checklist with questions and existing answers. Supports both customer and intent checklists via
+    checklist_type parameter.
 
     Args:
         uuid (UUID):
-        include_all (Union[Unset, bool]):
+        checklist_type (Union[Unset, OnboardingVerificationsChecklistRetrieveChecklistType]):
+            Default: OnboardingVerificationsChecklistRetrieveChecklistType.INTENT.
+        include_all (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ChecklistResponse]]
+        Response[ChecklistResponse]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        checklist_type=checklist_type,
         include_all=include_all,
     )
 
@@ -152,26 +177,33 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    include_all: Union[Unset, bool] = UNSET,
-) -> Union[Any, ChecklistResponse]:
-    """Get checklist with questions and existing answers.
+    checklist_type: Union[
+        Unset, OnboardingVerificationsChecklistRetrieveChecklistType
+    ] = OnboardingVerificationsChecklistRetrieveChecklistType.INTENT,
+    include_all: Union[Unset, bool] = False,
+) -> ChecklistResponse:
+    """Get checklist with questions and existing answers. Supports both customer and intent checklists via
+    checklist_type parameter.
 
     Args:
         uuid (UUID):
-        include_all (Union[Unset, bool]):
+        checklist_type (Union[Unset, OnboardingVerificationsChecklistRetrieveChecklistType]):
+            Default: OnboardingVerificationsChecklistRetrieveChecklistType.INTENT.
+        include_all (Union[Unset, bool]):  Default: False.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ChecklistResponse]
+        ChecklistResponse
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            checklist_type=checklist_type,
             include_all=include_all,
         )
     ).parsed

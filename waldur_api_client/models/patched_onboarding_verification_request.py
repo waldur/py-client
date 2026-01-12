@@ -15,7 +15,8 @@ T = TypeVar("T", bound="PatchedOnboardingVerificationRequest")
 class PatchedOnboardingVerificationRequest:
     """
     Attributes:
-        country (Union[Unset, str]): ISO country code (e.g., 'EE' for Estonia)
+        country (Union[Unset, str]): ISO country code (e.g., 'EE', 'AT') for context. Can be inferred from
+            validation_method.
         legal_person_identifier (Union[Unset, str]): Official company registration code (required for automatic
             validation)
         legal_name (Union[Unset, str]): Company name(optional, for reference)

@@ -7,7 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.answer_submit_request import AnswerSubmitRequest
-from ...models.answer_submit_response import AnswerSubmitResponse
+from ...models.onboarding_verification import OnboardingVerification
 from ...types import Response
 
 
@@ -34,27 +34,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[AnswerSubmitResponse, Any]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OnboardingVerification:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = AnswerSubmitResponse.from_dict(response.json())
+        response_200 = OnboardingVerification.from_dict(response.json())
 
         return response_200
-    if response.status_code == 400:
-        response_400 = response.json()
-        return response_400
-    if response.status_code == 404:
-        response_404 = response.json()
-        return response_404
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AnswerSubmitResponse, Any]]:
+) -> Response[OnboardingVerification]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,8 +60,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-) -> Response[Union[AnswerSubmitResponse, Any]]:
-    """Submit checklist answers.
+) -> Response[OnboardingVerification]:
+    """Submit answers to checklist questions. Automatically detects which checklist (customer or intent)
+    each question belongs to.
 
     Args:
         uuid (UUID):
@@ -80,7 +73,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AnswerSubmitResponse, Any]]
+        Response[OnboardingVerification]
     """
 
     kwargs = _get_kwargs(
@@ -100,8 +93,9 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-) -> Union[AnswerSubmitResponse, Any]:
-    """Submit checklist answers.
+) -> OnboardingVerification:
+    """Submit answers to checklist questions. Automatically detects which checklist (customer or intent)
+    each question belongs to.
 
     Args:
         uuid (UUID):
@@ -112,7 +106,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AnswerSubmitResponse, Any]
+        OnboardingVerification
     """
 
     return sync_detailed(
@@ -127,8 +121,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-) -> Response[Union[AnswerSubmitResponse, Any]]:
-    """Submit checklist answers.
+) -> Response[OnboardingVerification]:
+    """Submit answers to checklist questions. Automatically detects which checklist (customer or intent)
+    each question belongs to.
 
     Args:
         uuid (UUID):
@@ -139,7 +134,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AnswerSubmitResponse, Any]]
+        Response[OnboardingVerification]
     """
 
     kwargs = _get_kwargs(
@@ -157,8 +152,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-) -> Union[AnswerSubmitResponse, Any]:
-    """Submit checklist answers.
+) -> OnboardingVerification:
+    """Submit answers to checklist questions. Automatically detects which checklist (customer or intent)
+    each question belongs to.
 
     Args:
         uuid (UUID):
@@ -169,7 +165,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AnswerSubmitResponse, Any]
+        OnboardingVerification
     """
 
     return (

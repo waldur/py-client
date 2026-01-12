@@ -80,6 +80,9 @@ from .auth_result_state_enum import AuthResultStateEnum
 from .auth_result_uuid_request import AuthResultUUIDRequest
 from .auth_token import AuthToken
 from .available_checklist import AvailableChecklist
+from .available_checklists_response import AvailableChecklistsResponse
+from .available_checklists_response_customer_checklist_type_0 import AvailableChecklistsResponseCustomerChecklistType0
+from .available_checklists_response_intent_checklist_type_0 import AvailableChecklistsResponseIntentChecklistType0
 from .aws_image import AwsImage
 from .aws_instance import AwsInstance
 from .aws_instance_marketplace_offering_plugin_options_type_0 import AwsInstanceMarketplaceOfferingPluginOptionsType0
@@ -1118,8 +1121,6 @@ from .offering_user_state import OfferingUserState
 from .offering_user_state_transition_request import OfferingUserStateTransitionRequest
 from .offering_user_update_restriction_request import OfferingUserUpdateRestrictionRequest
 from .onboarding_company_validation_request_request import OnboardingCompanyValidationRequestRequest
-from .onboarding_country_checklist_configuration import OnboardingCountryChecklistConfiguration
-from .onboarding_country_checklist_configuration_request import OnboardingCountryChecklistConfigurationRequest
 from .onboarding_justification import OnboardingJustification
 from .onboarding_justification_create_request import OnboardingJustificationCreateRequest
 from .onboarding_justification_documentation import OnboardingJustificationDocumentation
@@ -1140,6 +1141,18 @@ from .onboarding_verification_onboarding_metadata import OnboardingVerificationO
 from .onboarding_verification_request import OnboardingVerificationRequest
 from .onboarding_verification_status_enum import OnboardingVerificationStatusEnum
 from .onboarding_verification_user_submitted_customer_data import OnboardingVerificationUserSubmittedCustomerData
+from .onboarding_verifications_available_checklists_count_checklist_type import (
+    OnboardingVerificationsAvailableChecklistsCountChecklistType,
+)
+from .onboarding_verifications_available_checklists_retrieve_checklist_type import (
+    OnboardingVerificationsAvailableChecklistsRetrieveChecklistType,
+)
+from .onboarding_verifications_checklist_retrieve_checklist_type import (
+    OnboardingVerificationsChecklistRetrieveChecklistType,
+)
+from .onboarding_verifications_completion_status_retrieve_checklist_type import (
+    OnboardingVerificationsCompletionStatusRetrieveChecklistType,
+)
 from .open_stack_allowed_address_pair import OpenStackAllowedAddressPair
 from .open_stack_allowed_address_pair_request import OpenStackAllowedAddressPairRequest
 from .open_stack_backend_instance import OpenStackBackendInstance
@@ -1443,9 +1456,6 @@ from .patched_offering_usage_policy_request import PatchedOfferingUsagePolicyReq
 from .patched_offering_user_request import PatchedOfferingUserRequest
 from .patched_offering_user_role_request import PatchedOfferingUserRoleRequest
 from .patched_offering_user_service_provider_comment_request import PatchedOfferingUserServiceProviderCommentRequest
-from .patched_onboarding_country_checklist_configuration_request import (
-    PatchedOnboardingCountryChecklistConfigurationRequest,
-)
 from .patched_onboarding_justification_request import PatchedOnboardingJustificationRequest
 from .patched_onboarding_question_metadata_request import PatchedOnboardingQuestionMetadataRequest
 from .patched_onboarding_verification_request import PatchedOnboardingVerificationRequest
@@ -2333,6 +2343,9 @@ __all__ = (
     "AuthResultUUIDRequest",
     "AuthToken",
     "AvailableChecklist",
+    "AvailableChecklistsResponse",
+    "AvailableChecklistsResponseCustomerChecklistType0",
+    "AvailableChecklistsResponseIntentChecklistType0",
     "AwsImage",
     "AwsInstance",
     "AwsInstanceMarketplaceOfferingPluginOptionsType0",
@@ -3289,8 +3302,6 @@ __all__ = (
     "OfferingUserStateTransitionRequest",
     "OfferingUserUpdateRestrictionRequest",
     "OnboardingCompanyValidationRequestRequest",
-    "OnboardingCountryChecklistConfiguration",
-    "OnboardingCountryChecklistConfigurationRequest",
     "OnboardingJustification",
     "OnboardingJustificationCreateRequest",
     "OnboardingJustificationDocumentation",
@@ -3307,6 +3318,10 @@ __all__ = (
     "OnboardingVerification",
     "OnboardingVerificationOnboardingMetadata",
     "OnboardingVerificationRequest",
+    "OnboardingVerificationsAvailableChecklistsCountChecklistType",
+    "OnboardingVerificationsAvailableChecklistsRetrieveChecklistType",
+    "OnboardingVerificationsChecklistRetrieveChecklistType",
+    "OnboardingVerificationsCompletionStatusRetrieveChecklistType",
     "OnboardingVerificationStatusEnum",
     "OnboardingVerificationUserSubmittedCustomerData",
     "OpenportalAllocationsCountStateItem",
@@ -3584,7 +3599,6 @@ __all__ = (
     "PatchedOfferingUserRequest",
     "PatchedOfferingUserRoleRequest",
     "PatchedOfferingUserServiceProviderCommentRequest",
-    "PatchedOnboardingCountryChecklistConfigurationRequest",
     "PatchedOnboardingJustificationRequest",
     "PatchedOnboardingQuestionMetadataRequest",
     "PatchedOnboardingVerificationRequest",

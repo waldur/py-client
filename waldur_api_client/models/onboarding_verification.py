@@ -29,7 +29,6 @@ class OnboardingVerification:
         uuid (UUID):
         user (str): User requesting company onboarding
         user_full_name (str):
-        country (str): ISO country code (e.g., 'EE' for Estonia)
         status (OnboardingVerificationStatusEnum):
         justifications (list['OnboardingJustification']):
         validation_method (ValidationMethodEnum):
@@ -49,6 +48,8 @@ class OnboardingVerification:
             created)
         created (datetime.datetime):
         modified (datetime.datetime):
+        country (Union[Unset, str]): ISO country code (e.g., 'EE', 'AT') for context. Can be inferred from
+            validation_method.
         legal_person_identifier (Union[Unset, str]): Official company registration code (required for automatic
             validation)
         legal_name (Union[Unset, str]): Company name(optional, for reference)
@@ -58,7 +59,6 @@ class OnboardingVerification:
     uuid: UUID
     user: str
     user_full_name: str
-    country: str
     status: OnboardingVerificationStatusEnum
     justifications: list["OnboardingJustification"]
     validation_method: ValidationMethodEnum
@@ -75,6 +75,7 @@ class OnboardingVerification:
     customer_creation_error_message: Union[None, str]
     created: datetime.datetime
     modified: datetime.datetime
+    country: Union[Unset, str] = UNSET
     legal_person_identifier: Union[Unset, str] = UNSET
     legal_name: Union[Unset, str] = UNSET
     expires_at: Union[None, Unset, datetime.datetime] = UNSET
@@ -86,8 +87,6 @@ class OnboardingVerification:
         user = self.user
 
         user_full_name = self.user_full_name
-
-        country = self.country
 
         status = self.status.value
 
@@ -130,6 +129,8 @@ class OnboardingVerification:
 
         modified = self.modified.isoformat()
 
+        country = self.country
+
         legal_person_identifier = self.legal_person_identifier
 
         legal_name = self.legal_name
@@ -149,7 +150,6 @@ class OnboardingVerification:
                 "uuid": uuid,
                 "user": user,
                 "user_full_name": user_full_name,
-                "country": country,
                 "status": status,
                 "justifications": justifications,
                 "validation_method": validation_method,
@@ -168,6 +168,8 @@ class OnboardingVerification:
                 "modified": modified,
             }
         )
+        if country is not UNSET:
+            field_dict["country"] = country
         if legal_person_identifier is not UNSET:
             field_dict["legal_person_identifier"] = legal_person_identifier
         if legal_name is not UNSET:
@@ -191,8 +193,6 @@ class OnboardingVerification:
         user = d.pop("user")
 
         user_full_name = d.pop("user_full_name")
-
-        country = d.pop("country")
 
         status = OnboardingVerificationStatusEnum(d.pop("status"))
 
@@ -258,6 +258,8 @@ class OnboardingVerification:
 
         modified = isoparse(d.pop("modified"))
 
+        country = d.pop("country", UNSET)
+
         legal_person_identifier = d.pop("legal_person_identifier", UNSET)
 
         legal_name = d.pop("legal_name", UNSET)
@@ -283,7 +285,6 @@ class OnboardingVerification:
             uuid=uuid,
             user=user,
             user_full_name=user_full_name,
-            country=country,
             status=status,
             justifications=justifications,
             validation_method=validation_method,
@@ -300,6 +301,7 @@ class OnboardingVerification:
             customer_creation_error_message=customer_creation_error_message,
             created=created,
             modified=modified,
+            country=country,
             legal_person_identifier=legal_person_identifier,
             legal_name=legal_name,
             expires_at=expires_at,

@@ -5,31 +5,31 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.onboarding_verifications_available_checklists_count_checklist_type import (
+    OnboardingVerificationsAvailableChecklistsCountChecklistType,
+)
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    country: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
+    checklist_type: Union[
+        Unset, OnboardingVerificationsAvailableChecklistsCountChecklistType
+    ] = OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    params["country"] = country
+    json_checklist_type: Union[Unset, str] = UNSET
+    if not isinstance(checklist_type, Unset):
+        json_checklist_type = checklist_type.value
 
-    params["is_active"] = is_active
-
-    params["page"] = page
-
-    params["page_size"] = page_size
+    params["checklist_type"] = json_checklist_type
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "head",
-        "url": "/api/onboarding-country-configs/",
+        "url": "/api/onboarding-verifications/available_checklists/",
         "params": params,
     }
 
@@ -65,18 +65,16 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    country: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
+    checklist_type: Union[
+        Unset, OnboardingVerificationsAvailableChecklistsCountChecklistType
+    ] = OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        country (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
+        checklist_type (Union[Unset,
+            OnboardingVerificationsAvailableChecklistsCountChecklistType]):  Default:
+            OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -87,10 +85,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        country=country,
-        is_active=is_active,
-        page=page,
-        page_size=page_size,
+        checklist_type=checklist_type,
     )
 
     response = client.get_httpx_client().request(
@@ -103,18 +98,16 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    country: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
+    checklist_type: Union[
+        Unset, OnboardingVerificationsAvailableChecklistsCountChecklistType
+    ] = OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        country (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
+        checklist_type (Union[Unset,
+            OnboardingVerificationsAvailableChecklistsCountChecklistType]):  Default:
+            OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,28 +119,23 @@ def sync(
 
     return sync_detailed(
         client=client,
-        country=country,
-        is_active=is_active,
-        page=page,
-        page_size=page_size,
+        checklist_type=checklist_type,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    country: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
+    checklist_type: Union[
+        Unset, OnboardingVerificationsAvailableChecklistsCountChecklistType
+    ] = OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        country (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
+        checklist_type (Union[Unset,
+            OnboardingVerificationsAvailableChecklistsCountChecklistType]):  Default:
+            OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,10 +146,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        country=country,
-        is_active=is_active,
-        page=page,
-        page_size=page_size,
+        checklist_type=checklist_type,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -172,18 +157,16 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    country: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
+    checklist_type: Union[
+        Unset, OnboardingVerificationsAvailableChecklistsCountChecklistType
+    ] = OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        country (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
+        checklist_type (Union[Unset,
+            OnboardingVerificationsAvailableChecklistsCountChecklistType]):  Default:
+            OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -196,9 +179,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            country=country,
-            is_active=is_active,
-            page=page,
-            page_size=page_size,
+            checklist_type=checklist_type,
         )
     ).parsed
