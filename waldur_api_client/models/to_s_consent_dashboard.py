@@ -25,6 +25,7 @@ class ToSConsentDashboard:
         revoked_consents_over_time (list['TimeSeriesToSData']):
         tos_version_adoption (list['VersionAdoption']):
         active_users_over_time (list['TimeSeriesToSData']):
+        accepted_consents_over_time (list['TimeSeriesToSData']):
     """
 
     active_users_count: int
@@ -36,6 +37,7 @@ class ToSConsentDashboard:
     revoked_consents_over_time: list["TimeSeriesToSData"]
     tos_version_adoption: list["VersionAdoption"]
     active_users_over_time: list["TimeSeriesToSData"]
+    accepted_consents_over_time: list["TimeSeriesToSData"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -66,6 +68,11 @@ class ToSConsentDashboard:
             active_users_over_time_item = active_users_over_time_item_data.to_dict()
             active_users_over_time.append(active_users_over_time_item)
 
+        accepted_consents_over_time = []
+        for accepted_consents_over_time_item_data in self.accepted_consents_over_time:
+            accepted_consents_over_time_item = accepted_consents_over_time_item_data.to_dict()
+            accepted_consents_over_time.append(accepted_consents_over_time_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -79,6 +86,7 @@ class ToSConsentDashboard:
                 "revoked_consents_over_time": revoked_consents_over_time,
                 "tos_version_adoption": tos_version_adoption,
                 "active_users_over_time": active_users_over_time,
+                "accepted_consents_over_time": accepted_consents_over_time,
             }
         )
 
@@ -123,6 +131,13 @@ class ToSConsentDashboard:
 
             active_users_over_time.append(active_users_over_time_item)
 
+        accepted_consents_over_time = []
+        _accepted_consents_over_time = d.pop("accepted_consents_over_time")
+        for accepted_consents_over_time_item_data in _accepted_consents_over_time:
+            accepted_consents_over_time_item = TimeSeriesToSData.from_dict(accepted_consents_over_time_item_data)
+
+            accepted_consents_over_time.append(accepted_consents_over_time_item)
+
         to_s_consent_dashboard = cls(
             active_users_count=active_users_count,
             total_users_count=total_users_count,
@@ -133,6 +148,7 @@ class ToSConsentDashboard:
             revoked_consents_over_time=revoked_consents_over_time,
             tos_version_adoption=tos_version_adoption,
             active_users_over_time=active_users_over_time,
+            accepted_consents_over_time=accepted_consents_over_time,
         )
 
         to_s_consent_dashboard.additional_properties = d

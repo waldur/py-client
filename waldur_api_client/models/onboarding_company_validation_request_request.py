@@ -20,15 +20,12 @@ class OnboardingCompanyValidationRequestRequest:
         country (Union[Unset, str]): ISO country code (e.g., 'EE', 'AT') - optional, for display context
         legal_person_identifier (Union[Unset, str]): Official company registration code
         legal_name (Union[Unset, str]): Company name (optional)
-        is_manual_validation (Union[Unset, bool]): Indicates if the validation is to be performed manually Default:
-            False.
     """
 
     validation_method: Union[BlankEnum, Unset, ValidationMethodEnum] = UNSET
     country: Union[Unset, str] = UNSET
     legal_person_identifier: Union[Unset, str] = UNSET
     legal_name: Union[Unset, str] = UNSET
-    is_manual_validation: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,8 +43,6 @@ class OnboardingCompanyValidationRequestRequest:
 
         legal_name = self.legal_name
 
-        is_manual_validation = self.is_manual_validation
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -59,8 +54,6 @@ class OnboardingCompanyValidationRequestRequest:
             field_dict["legal_person_identifier"] = legal_person_identifier
         if legal_name is not UNSET:
             field_dict["legal_name"] = legal_name
-        if is_manual_validation is not UNSET:
-            field_dict["is_manual_validation"] = is_manual_validation
 
         return field_dict
 
@@ -93,14 +86,11 @@ class OnboardingCompanyValidationRequestRequest:
 
         legal_name = d.pop("legal_name", UNSET)
 
-        is_manual_validation = d.pop("is_manual_validation", UNSET)
-
         onboarding_company_validation_request_request = cls(
             validation_method=validation_method,
             country=country,
             legal_person_identifier=legal_person_identifier,
             legal_name=legal_name,
-            is_manual_validation=is_manual_validation,
         )
 
         onboarding_company_validation_request_request.additional_properties = d

@@ -2004,9 +2004,15 @@ from .reviewer_suggestions_count_status_item import ReviewerSuggestionsCountStat
 from .reviewer_suggestions_list_o_item import ReviewerSuggestionsListOItem
 from .reviewer_suggestions_list_status_item import ReviewerSuggestionsListStatusItem
 from .rmq_connection import RmqConnection
+from .rmq_purge_response import RmqPurgeResponse
+from .rmq_queue_stats import RmqQueueStats
+from .rmq_stats_error import RmqStatsError
+from .rmq_stats_response import RmqStatsResponse
+from .rmq_stats_user import RmqStatsUser
 from .rmq_subscription import RmqSubscription
 from .rmq_user_stats_item import RmqUserStatsItem
 from .rmq_v_host_stats_item import RmqVHostStatsItem
+from .rmq_vhost_stats import RmqVhostStats
 from .rmq_waldur_user import RmqWaldurUser
 from .robot_account import RobotAccount
 from .robot_account_details import RobotAccountDetails
@@ -4103,8 +4109,14 @@ __all__ = (
     "ReviewStrategyEnum",
     "ReviewSubmitRequest",
     "RmqConnection",
+    "RmqPurgeResponse",
+    "RmqQueueStats",
+    "RmqStatsError",
+    "RmqStatsResponse",
+    "RmqStatsUser",
     "RmqSubscription",
     "RmqUserStatsItem",
+    "RmqVhostStats",
     "RmqVHostStatsItem",
     "RmqWaldurUser",
     "RobotAccount",
