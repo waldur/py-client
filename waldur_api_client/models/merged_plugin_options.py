@@ -20,6 +20,7 @@ class MergedPluginOptions:
     """
     Attributes:
         auto_approve_remote_orders (Union[Unset, bool]): If set to True, an order can be processed without approval
+        resource_expiration_threshold (Union[Unset, int]): Resource expiration threshold in days. Default: 30.
         service_provider_can_create_offering_user (Union[Unset, bool]): Service provider can create offering user
         max_resource_termination_offset_in_days (Union[Unset, int]): Maximum resource termination offset in days
         default_resource_termination_offset_in_days (Union[Unset, int]): If set, it will be used as a default resource
@@ -109,6 +110,7 @@ class MergedPluginOptions:
     """
 
     auto_approve_remote_orders: Union[Unset, bool] = UNSET
+    resource_expiration_threshold: Union[Unset, int] = 30
     service_provider_can_create_offering_user: Union[Unset, bool] = UNSET
     max_resource_termination_offset_in_days: Union[Unset, int] = UNSET
     default_resource_termination_offset_in_days: Union[Unset, int] = UNSET
@@ -174,6 +176,8 @@ class MergedPluginOptions:
 
     def to_dict(self) -> dict[str, Any]:
         auto_approve_remote_orders = self.auto_approve_remote_orders
+
+        resource_expiration_threshold = self.resource_expiration_threshold
 
         service_provider_can_create_offering_user = self.service_provider_can_create_offering_user
 
@@ -316,6 +320,8 @@ class MergedPluginOptions:
         field_dict.update({})
         if auto_approve_remote_orders is not UNSET:
             field_dict["auto_approve_remote_orders"] = auto_approve_remote_orders
+        if resource_expiration_threshold is not UNSET:
+            field_dict["resource_expiration_threshold"] = resource_expiration_threshold
         if service_provider_can_create_offering_user is not UNSET:
             field_dict["service_provider_can_create_offering_user"] = service_provider_can_create_offering_user
         if max_resource_termination_offset_in_days is not UNSET:
@@ -455,6 +461,8 @@ class MergedPluginOptions:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         auto_approve_remote_orders = d.pop("auto_approve_remote_orders", UNSET)
+
+        resource_expiration_threshold = d.pop("resource_expiration_threshold", UNSET)
 
         service_provider_can_create_offering_user = d.pop("service_provider_can_create_offering_user", UNSET)
 
@@ -623,6 +631,7 @@ class MergedPluginOptions:
 
         merged_plugin_options = cls(
             auto_approve_remote_orders=auto_approve_remote_orders,
+            resource_expiration_threshold=resource_expiration_threshold,
             service_provider_can_create_offering_user=service_provider_can_create_offering_user,
             max_resource_termination_offset_in_days=max_resource_termination_offset_in_days,
             default_resource_termination_offset_in_days=default_resource_termination_offset_in_days,

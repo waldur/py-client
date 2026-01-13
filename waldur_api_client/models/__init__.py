@@ -1294,7 +1294,6 @@ from .openportal_unmanaged_projects_list_field_item import OpenportalUnmanagedPr
 from .openportal_unmanaged_projects_list_o_item import OpenportalUnmanagedProjectsListOItem
 from .openportal_unmanaged_projects_list_users_list_field_item import OpenportalUnmanagedProjectsListUsersListFieldItem
 from .openportal_unmanaged_projects_list_users_list_o_item import OpenportalUnmanagedProjectsListUsersListOItem
-from .openportal_unmanaged_projects_move_project_response_400 import OpenportalUnmanagedProjectsMoveProjectResponse400
 from .openportal_unmanaged_projects_retrieve_field_item import OpenportalUnmanagedProjectsRetrieveFieldItem
 from .openstack_backups_count_state_item import OpenstackBackupsCountStateItem
 from .openstack_backups_list_field_item import OpenstackBackupsListFieldItem
@@ -1325,9 +1324,9 @@ from .openstack_ports_count_o_item import OpenstackPortsCountOItem
 from .openstack_ports_list_field_item import OpenstackPortsListFieldItem
 from .openstack_ports_list_o_item import OpenstackPortsListOItem
 from .openstack_ports_retrieve_field_item import OpenstackPortsRetrieveFieldItem
-from .openstack_routers_count_state import OpenstackRoutersCountState
+from .openstack_routers_count_state_item import OpenstackRoutersCountStateItem
 from .openstack_routers_list_field_item import OpenstackRoutersListFieldItem
-from .openstack_routers_list_state import OpenstackRoutersListState
+from .openstack_routers_list_state_item import OpenstackRoutersListStateItem
 from .openstack_routers_retrieve_field_item import OpenstackRoutersRetrieveFieldItem
 from .openstack_security_groups_count_state_item import OpenstackSecurityGroupsCountStateItem
 from .openstack_security_groups_list_field_item import OpenstackSecurityGroupsListFieldItem
@@ -1623,7 +1622,6 @@ from .projects_list_field_item import ProjectsListFieldItem
 from .projects_list_o_item import ProjectsListOItem
 from .projects_list_users_list_field_item import ProjectsListUsersListFieldItem
 from .projects_list_users_list_o_item import ProjectsListUsersListOItem
-from .projects_move_project_response_400 import ProjectsMoveProjectResponse400
 from .projects_other_users_list_o import ProjectsOtherUsersListO
 from .projects_retrieve_field_item import ProjectsRetrieveFieldItem
 from .projects_usages_grouped_by_industry_flag import ProjectsUsagesGroupedByIndustryFlag
@@ -3349,7 +3347,6 @@ __all__ = (
     "OpenportalUnmanagedProjectsListOItem",
     "OpenportalUnmanagedProjectsListUsersListFieldItem",
     "OpenportalUnmanagedProjectsListUsersListOItem",
-    "OpenportalUnmanagedProjectsMoveProjectResponse400",
     "OpenportalUnmanagedProjectsRetrieveFieldItem",
     "OpenStackAllowedAddressPair",
     "OpenStackAllowedAddressPairRequest",
@@ -3435,11 +3432,11 @@ __all__ = (
     "OpenStackRouter",
     "OpenStackRouterInterfaceRequest",
     "OpenStackRouterMarketplaceOfferingPluginOptionsType0",
-    "OpenstackRoutersCountState",
+    "OpenstackRoutersCountStateItem",
     "OpenStackRouterSetRoutes",
     "OpenStackRouterSetRoutesRequest",
     "OpenstackRoutersListFieldItem",
-    "OpenstackRoutersListState",
+    "OpenstackRoutersListStateItem",
     "OpenstackRoutersRetrieveFieldItem",
     "OpenStackSecurityGroup",
     "OpenStackSecurityGroupHyperlinkRequest",
@@ -3758,7 +3755,6 @@ __all__ = (
     "ProjectsListOItem",
     "ProjectsListUsersListFieldItem",
     "ProjectsListUsersListOItem",
-    "ProjectsMoveProjectResponse400",
     "ProjectsOtherUsersListO",
     "ProjectsRetrieveFieldItem",
     "ProjectsUsagesGroupedByIndustryFlag",

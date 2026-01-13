@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.openstack_routers_count_state import OpenstackRoutersCountState
+from ...models.openstack_routers_count_state_item import OpenstackRoutersCountStateItem
 from ...types import UNSET, Response, Unset
 
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, OpenstackRoutersCountState] = UNSET,
+    state: Union[Unset, list[OpenstackRoutersCountStateItem]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -30,9 +30,12 @@ def _get_kwargs(
 
     params["page_size"] = page_size
 
-    json_state: Union[Unset, int] = UNSET
+    json_state: Union[Unset, list[str]] = UNSET
     if not isinstance(state, Unset):
-        json_state = state.value
+        json_state = []
+        for state_item_data in state:
+            state_item = state_item_data.value
+            json_state.append(state_item)
 
     params["state"] = json_state
 
@@ -87,7 +90,7 @@ def sync_detailed(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, OpenstackRoutersCountState] = UNSET,
+    state: Union[Unset, list[OpenstackRoutersCountStateItem]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -100,7 +103,7 @@ def sync_detailed(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, OpenstackRoutersCountState]):
+        state (Union[Unset, list[OpenstackRoutersCountStateItem]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -136,7 +139,7 @@ def sync(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, OpenstackRoutersCountState] = UNSET,
+    state: Union[Unset, list[OpenstackRoutersCountStateItem]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -149,7 +152,7 @@ def sync(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, OpenstackRoutersCountState]):
+        state (Union[Unset, list[OpenstackRoutersCountStateItem]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -180,7 +183,7 @@ async def asyncio_detailed(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, OpenstackRoutersCountState] = UNSET,
+    state: Union[Unset, list[OpenstackRoutersCountStateItem]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -193,7 +196,7 @@ async def asyncio_detailed(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, OpenstackRoutersCountState]):
+        state (Union[Unset, list[OpenstackRoutersCountStateItem]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -227,7 +230,7 @@ async def asyncio(
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, OpenstackRoutersCountState] = UNSET,
+    state: Union[Unset, list[OpenstackRoutersCountStateItem]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -240,7 +243,7 @@ async def asyncio(
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, OpenstackRoutersCountState]):
+        state (Union[Unset, list[OpenstackRoutersCountStateItem]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 

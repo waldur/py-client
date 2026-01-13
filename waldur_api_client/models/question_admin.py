@@ -27,6 +27,7 @@ class QuestionAdmin:
         url (str):
         checklist_name (str):
         checklist_uuid (UUID):
+        checklist_type (str):
         checklist (str):
         required (Union[Unset, bool]):
         description (Union[Unset, str]):
@@ -60,6 +61,7 @@ class QuestionAdmin:
     url: str
     checklist_name: str
     checklist_uuid: UUID
+    checklist_type: str
     checklist: str
     required: Union[Unset, bool] = UNSET
     description: Union[Unset, str] = UNSET
@@ -94,6 +96,8 @@ class QuestionAdmin:
         checklist_name = self.checklist_name
 
         checklist_uuid = str(self.checklist_uuid)
+
+        checklist_type = self.checklist_type
 
         checklist = self.checklist
 
@@ -174,6 +178,7 @@ class QuestionAdmin:
                 "url": url,
                 "checklist_name": checklist_name,
                 "checklist_uuid": checklist_uuid,
+                "checklist_type": checklist_type,
                 "checklist": checklist,
             }
         )
@@ -235,6 +240,8 @@ class QuestionAdmin:
         checklist_name = d.pop("checklist_name")
 
         checklist_uuid = UUID(d.pop("checklist_uuid"))
+
+        checklist_type = d.pop("checklist_type")
 
         checklist = d.pop("checklist")
 
@@ -352,6 +359,7 @@ class QuestionAdmin:
             url=url,
             checklist_name=checklist_name,
             checklist_uuid=checklist_uuid,
+            checklist_type=checklist_type,
             checklist=checklist,
             required=required,
             description=description,

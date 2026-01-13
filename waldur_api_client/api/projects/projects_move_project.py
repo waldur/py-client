@@ -8,7 +8,6 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.move_project_request import MoveProjectRequest
 from ...models.project import Project
-from ...models.projects_move_project_response_400 import ProjectsMoveProjectResponse400
 from ...types import Response
 
 
@@ -32,25 +31,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[Project, ProjectsMoveProjectResponse400]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Project:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = Project.from_dict(response.json())
 
         return response_200
-    if response.status_code == 400:
-        response_400 = ProjectsMoveProjectResponse400.from_dict(response.json())
-
-        return response_400
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Project, ProjectsMoveProjectResponse400]]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Project]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,11 +55,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: MoveProjectRequest,
-) -> Response[Union[Project, ProjectsMoveProjectResponse400]]:
+) -> Response[Project]:
     """Move project to another customer
 
      Moves a project and its associated resources to a different customer. This is a staff-only action.
-    You can choose whether to preserve existing project permissions for users.
+    You can choose whether to preserve existing project permissions for users. Terminated projects can
+    also be moved.
 
     Args:
         uuid (UUID):
@@ -79,7 +71,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Project, ProjectsMoveProjectResponse400]]
+        Response[Project]
     """
 
     kwargs = _get_kwargs(
@@ -99,11 +91,12 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: MoveProjectRequest,
-) -> Union[Project, ProjectsMoveProjectResponse400]:
+) -> Project:
     """Move project to another customer
 
      Moves a project and its associated resources to a different customer. This is a staff-only action.
-    You can choose whether to preserve existing project permissions for users.
+    You can choose whether to preserve existing project permissions for users. Terminated projects can
+    also be moved.
 
     Args:
         uuid (UUID):
@@ -114,7 +107,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Project, ProjectsMoveProjectResponse400]
+        Project
     """
 
     return sync_detailed(
@@ -129,11 +122,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: MoveProjectRequest,
-) -> Response[Union[Project, ProjectsMoveProjectResponse400]]:
+) -> Response[Project]:
     """Move project to another customer
 
      Moves a project and its associated resources to a different customer. This is a staff-only action.
-    You can choose whether to preserve existing project permissions for users.
+    You can choose whether to preserve existing project permissions for users. Terminated projects can
+    also be moved.
 
     Args:
         uuid (UUID):
@@ -144,7 +138,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Project, ProjectsMoveProjectResponse400]]
+        Response[Project]
     """
 
     kwargs = _get_kwargs(
@@ -162,11 +156,12 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: MoveProjectRequest,
-) -> Union[Project, ProjectsMoveProjectResponse400]:
+) -> Project:
     """Move project to another customer
 
      Moves a project and its associated resources to a different customer. This is a staff-only action.
-    You can choose whether to preserve existing project permissions for users.
+    You can choose whether to preserve existing project permissions for users. Terminated projects can
+    also be moved.
 
     Args:
         uuid (UUID):
@@ -177,7 +172,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Project, ProjectsMoveProjectResponse400]
+        Project
     """
 
     return (
