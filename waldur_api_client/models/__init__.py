@@ -292,6 +292,8 @@ from .celery_worker_stats import CeleryWorkerStats
 from .celery_worker_stats_rusage import CeleryWorkerStatsRusage
 from .celery_worker_stats_total import CeleryWorkerStatsTotal
 from .chat_request_request import ChatRequestRequest
+from .chat_response import ChatResponse
+from .chat_response_m import ChatResponseM
 from .check_unique_backend_id_request import CheckUniqueBackendIDRequest
 from .check_unique_backend_id_response import CheckUniqueBackendIDResponse
 from .checklist import Checklist
@@ -2551,6 +2553,8 @@ __all__ = (
     "CeleryWorkerStatsRusage",
     "CeleryWorkerStatsTotal",
     "ChatRequestRequest",
+    "ChatResponse",
+    "ChatResponseM",
     "Checklist",
     "ChecklistCategory",
     "ChecklistCategoryRequest",

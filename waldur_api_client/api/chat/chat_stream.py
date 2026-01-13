@@ -31,8 +31,6 @@ def _get_kwargs(
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
