@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.corrective_action import CorrectiveAction
+    from ..models.user_action_route_params import UserActionRouteParams
 
 
 T = TypeVar("T", bound="UserAction")
@@ -34,17 +35,21 @@ class UserAction:
         related_object_type (str):
         corrective_actions (list['CorrectiveAction']):
         days_until_due (Union[None, int]):
+        route_params (UserActionRouteParams):
         due_date (Union[None, Unset, datetime.datetime]):
         is_silenced (Union[Unset, bool]):
         silenced_until (Union[None, Unset, datetime.datetime]):
         route_name (Union[Unset, str]): UI-Router state name for navigation
-        route_params (Union[Unset, str]): Parameters for route navigation
         project_name (Union[Unset, str]):
         project_uuid (Union[None, UUID, Unset]):
         organization_name (Union[Unset, str]):
         organization_uuid (Union[None, UUID, Unset]):
         offering_name (Union[Unset, str]):
+        offering_uuid (Union[None, UUID, Unset]):
         offering_type (Union[Unset, str]):
+        resource_name (Union[Unset, str]):
+        resource_uuid (Union[None, UUID, Unset]):
+        order_type (Union[Unset, str]):
     """
 
     uuid: UUID
@@ -60,17 +65,21 @@ class UserAction:
     related_object_type: str
     corrective_actions: list["CorrectiveAction"]
     days_until_due: Union[None, int]
+    route_params: "UserActionRouteParams"
     due_date: Union[None, Unset, datetime.datetime] = UNSET
     is_silenced: Union[Unset, bool] = UNSET
     silenced_until: Union[None, Unset, datetime.datetime] = UNSET
     route_name: Union[Unset, str] = UNSET
-    route_params: Union[Unset, str] = UNSET
     project_name: Union[Unset, str] = UNSET
     project_uuid: Union[None, UUID, Unset] = UNSET
     organization_name: Union[Unset, str] = UNSET
     organization_uuid: Union[None, UUID, Unset] = UNSET
     offering_name: Union[Unset, str] = UNSET
+    offering_uuid: Union[None, UUID, Unset] = UNSET
     offering_type: Union[Unset, str] = UNSET
+    resource_name: Union[Unset, str] = UNSET
+    resource_uuid: Union[None, UUID, Unset] = UNSET
+    order_type: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -104,6 +113,8 @@ class UserAction:
         days_until_due: Union[None, int]
         days_until_due = self.days_until_due
 
+        route_params = self.route_params.to_dict()
+
         due_date: Union[None, Unset, str]
         if isinstance(self.due_date, Unset):
             due_date = UNSET
@@ -123,8 +134,6 @@ class UserAction:
             silenced_until = self.silenced_until
 
         route_name = self.route_name
-
-        route_params = self.route_params
 
         project_name = self.project_name
 
@@ -148,7 +157,27 @@ class UserAction:
 
         offering_name = self.offering_name
 
+        offering_uuid: Union[None, Unset, str]
+        if isinstance(self.offering_uuid, Unset):
+            offering_uuid = UNSET
+        elif isinstance(self.offering_uuid, UUID):
+            offering_uuid = str(self.offering_uuid)
+        else:
+            offering_uuid = self.offering_uuid
+
         offering_type = self.offering_type
+
+        resource_name = self.resource_name
+
+        resource_uuid: Union[None, Unset, str]
+        if isinstance(self.resource_uuid, Unset):
+            resource_uuid = UNSET
+        elif isinstance(self.resource_uuid, UUID):
+            resource_uuid = str(self.resource_uuid)
+        else:
+            resource_uuid = self.resource_uuid
+
+        order_type = self.order_type
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -167,6 +196,7 @@ class UserAction:
                 "related_object_type": related_object_type,
                 "corrective_actions": corrective_actions,
                 "days_until_due": days_until_due,
+                "route_params": route_params,
             }
         )
         if due_date is not UNSET:
@@ -177,8 +207,6 @@ class UserAction:
             field_dict["silenced_until"] = silenced_until
         if route_name is not UNSET:
             field_dict["route_name"] = route_name
-        if route_params is not UNSET:
-            field_dict["route_params"] = route_params
         if project_name is not UNSET:
             field_dict["project_name"] = project_name
         if project_uuid is not UNSET:
@@ -189,14 +217,23 @@ class UserAction:
             field_dict["organization_uuid"] = organization_uuid
         if offering_name is not UNSET:
             field_dict["offering_name"] = offering_name
+        if offering_uuid is not UNSET:
+            field_dict["offering_uuid"] = offering_uuid
         if offering_type is not UNSET:
             field_dict["offering_type"] = offering_type
+        if resource_name is not UNSET:
+            field_dict["resource_name"] = resource_name
+        if resource_uuid is not UNSET:
+            field_dict["resource_uuid"] = resource_uuid
+        if order_type is not UNSET:
+            field_dict["order_type"] = order_type
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.corrective_action import CorrectiveAction
+        from ..models.user_action_route_params import UserActionRouteParams
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -235,6 +272,8 @@ class UserAction:
 
         days_until_due = _parse_days_until_due(d.pop("days_until_due"))
 
+        route_params = UserActionRouteParams.from_dict(d.pop("route_params"))
+
         def _parse_due_date(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
                 return data
@@ -272,8 +311,6 @@ class UserAction:
         silenced_until = _parse_silenced_until(d.pop("silenced_until", UNSET))
 
         route_name = d.pop("route_name", UNSET)
-
-        route_params = d.pop("route_params", UNSET)
 
         project_name = d.pop("project_name", UNSET)
 
@@ -315,7 +352,45 @@ class UserAction:
 
         offering_name = d.pop("offering_name", UNSET)
 
+        def _parse_offering_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                offering_uuid_type_0 = UUID(data)
+
+                return offering_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        offering_uuid = _parse_offering_uuid(d.pop("offering_uuid", UNSET))
+
         offering_type = d.pop("offering_type", UNSET)
+
+        resource_name = d.pop("resource_name", UNSET)
+
+        def _parse_resource_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resource_uuid_type_0 = UUID(data)
+
+                return resource_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        resource_uuid = _parse_resource_uuid(d.pop("resource_uuid", UNSET))
+
+        order_type = d.pop("order_type", UNSET)
 
         user_action = cls(
             uuid=uuid,
@@ -331,17 +406,21 @@ class UserAction:
             related_object_type=related_object_type,
             corrective_actions=corrective_actions,
             days_until_due=days_until_due,
+            route_params=route_params,
             due_date=due_date,
             is_silenced=is_silenced,
             silenced_until=silenced_until,
             route_name=route_name,
-            route_params=route_params,
             project_name=project_name,
             project_uuid=project_uuid,
             organization_name=organization_name,
             organization_uuid=organization_uuid,
             offering_name=offering_name,
+            offering_uuid=offering_uuid,
             offering_type=offering_type,
+            resource_name=resource_name,
+            resource_uuid=resource_uuid,
+            order_type=order_type,
         )
 
         user_action.additional_properties = d

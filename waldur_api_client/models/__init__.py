@@ -2154,6 +2154,7 @@ from .user import User
 from .user_action import UserAction
 from .user_action_execution import UserActionExecution
 from .user_action_provider import UserActionProvider
+from .user_action_route_params import UserActionRouteParams
 from .user_action_summary import UserActionSummary
 from .user_action_summary_by_type import UserActionSummaryByType
 from .user_action_summary_by_urgency import UserActionSummaryByUrgency
@@ -4257,6 +4258,7 @@ __all__ = (
     "UserAction",
     "UserActionExecution",
     "UserActionProvider",
+    "UserActionRouteParams",
     "UserActionsCountUrgency",
     "UserActionsListUrgency",
     "UserActionSummary",

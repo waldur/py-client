@@ -31,6 +31,10 @@ class PatchedIdentityProviderRequest:
         attribute_mapping (Union[Unset, Any]): A JSON object mapping Waldur User model fields to OIDC claims. Example:
             {"first_name": "given_name", "last_name": "family_name", "email": "email"}
         extra_fields (Union[None, Unset, str]): Space-separated list of extra fields to persist.
+        allowed_redirects (Union[Unset, Any]): List of allowed redirect URLs for OAuth authentication. URLs must be
+            exact matches (origin only: scheme + domain + port). HTTPS required except for localhost. No wildcards, paths,
+            query params, or fragments. Example: ["https://portal1.example.com", "https://portal2.example.com:8443"]. If
+            empty, falls back to HOMEPORT_URL setting.
     """
 
     provider: Union[Unset, str] = UNSET
@@ -49,6 +53,7 @@ class PatchedIdentityProviderRequest:
     user_claim: Union[Unset, str] = UNSET
     attribute_mapping: Union[Unset, Any] = UNSET
     extra_fields: Union[None, Unset, str] = UNSET
+    allowed_redirects: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -92,6 +97,8 @@ class PatchedIdentityProviderRequest:
         else:
             extra_fields = self.extra_fields
 
+        allowed_redirects = self.allowed_redirects
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -127,6 +134,8 @@ class PatchedIdentityProviderRequest:
             field_dict["attribute_mapping"] = attribute_mapping
         if extra_fields is not UNSET:
             field_dict["extra_fields"] = extra_fields
+        if allowed_redirects is not UNSET:
+            field_dict["allowed_redirects"] = allowed_redirects
 
         return field_dict
 
@@ -179,6 +188,8 @@ class PatchedIdentityProviderRequest:
 
         extra_fields = _parse_extra_fields(d.pop("extra_fields", UNSET))
 
+        allowed_redirects = d.pop("allowed_redirects", UNSET)
+
         patched_identity_provider_request = cls(
             provider=provider,
             is_active=is_active,
@@ -196,6 +207,7 @@ class PatchedIdentityProviderRequest:
             user_claim=user_claim,
             attribute_mapping=attribute_mapping,
             extra_fields=extra_fields,
+            allowed_redirects=allowed_redirects,
         )
 
         patched_identity_provider_request.additional_properties = d
