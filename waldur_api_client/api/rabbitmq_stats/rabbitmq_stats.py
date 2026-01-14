@@ -5,17 +5,28 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.rmq_purge_request_request import RmqPurgeRequestRequest
 from ...models.rmq_purge_response import RmqPurgeResponse
 from ...models.rmq_stats_error import RmqStatsError
 from ...types import Response
 
 
-def _get_kwargs() -> dict[str, Any]:
+def _get_kwargs(
+    *,
+    body: RmqPurgeRequestRequest,
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
     _kwargs: dict[str, Any] = {
-        "method": "delete",
+        "method": "post",
         "url": "/api/rabbitmq-stats/",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -57,17 +68,26 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    body: RmqPurgeRequestRequest,
 ) -> Response[Union[RmqPurgeResponse, RmqStatsError]]:
-    """Purge RabbitMQ subscription queues
+    """Purge or delete RabbitMQ subscription queues
 
-     Purges messages from specified RabbitMQ subscription queues.
+     Purges messages from or deletes specified RabbitMQ subscription queues.
 
-    Accepts either:
+    **Purge operations** (remove messages, keep queue):
     - `vhost` and `queue_name`: Purge a specific queue
     - `vhost` and `queue_pattern`: Purge queues matching pattern (e.g., '*_resource')
     - `purge_all_subscription_queues`: Purge all subscription queues across all vhosts
 
+    **Delete operations** (remove queue entirely):
+    - `vhost`, `queue_name`, and `delete_queue=true`: Delete a specific queue
+    - `vhost`, `queue_pattern`, and `delete_queue=true`: Delete queues matching pattern
+    - `delete_all_subscription_queues`: Delete all subscription queues across all vhosts
+
     Requires staff permissions (more restrictive than viewing).
+
+    Args:
+        body (RmqPurgeRequestRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -77,7 +97,9 @@ def sync_detailed(
         Response[Union[RmqPurgeResponse, RmqStatsError]]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        body=body,
+    )
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -89,17 +111,26 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    body: RmqPurgeRequestRequest,
 ) -> Union[RmqPurgeResponse, RmqStatsError]:
-    """Purge RabbitMQ subscription queues
+    """Purge or delete RabbitMQ subscription queues
 
-     Purges messages from specified RabbitMQ subscription queues.
+     Purges messages from or deletes specified RabbitMQ subscription queues.
 
-    Accepts either:
+    **Purge operations** (remove messages, keep queue):
     - `vhost` and `queue_name`: Purge a specific queue
     - `vhost` and `queue_pattern`: Purge queues matching pattern (e.g., '*_resource')
     - `purge_all_subscription_queues`: Purge all subscription queues across all vhosts
 
+    **Delete operations** (remove queue entirely):
+    - `vhost`, `queue_name`, and `delete_queue=true`: Delete a specific queue
+    - `vhost`, `queue_pattern`, and `delete_queue=true`: Delete queues matching pattern
+    - `delete_all_subscription_queues`: Delete all subscription queues across all vhosts
+
     Requires staff permissions (more restrictive than viewing).
+
+    Args:
+        body (RmqPurgeRequestRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -111,23 +142,33 @@ def sync(
 
     return sync_detailed(
         client=client,
+        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    body: RmqPurgeRequestRequest,
 ) -> Response[Union[RmqPurgeResponse, RmqStatsError]]:
-    """Purge RabbitMQ subscription queues
+    """Purge or delete RabbitMQ subscription queues
 
-     Purges messages from specified RabbitMQ subscription queues.
+     Purges messages from or deletes specified RabbitMQ subscription queues.
 
-    Accepts either:
+    **Purge operations** (remove messages, keep queue):
     - `vhost` and `queue_name`: Purge a specific queue
     - `vhost` and `queue_pattern`: Purge queues matching pattern (e.g., '*_resource')
     - `purge_all_subscription_queues`: Purge all subscription queues across all vhosts
 
+    **Delete operations** (remove queue entirely):
+    - `vhost`, `queue_name`, and `delete_queue=true`: Delete a specific queue
+    - `vhost`, `queue_pattern`, and `delete_queue=true`: Delete queues matching pattern
+    - `delete_all_subscription_queues`: Delete all subscription queues across all vhosts
+
     Requires staff permissions (more restrictive than viewing).
+
+    Args:
+        body (RmqPurgeRequestRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -137,7 +178,9 @@ async def asyncio_detailed(
         Response[Union[RmqPurgeResponse, RmqStatsError]]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        body=body,
+    )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -147,17 +190,26 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    body: RmqPurgeRequestRequest,
 ) -> Union[RmqPurgeResponse, RmqStatsError]:
-    """Purge RabbitMQ subscription queues
+    """Purge or delete RabbitMQ subscription queues
 
-     Purges messages from specified RabbitMQ subscription queues.
+     Purges messages from or deletes specified RabbitMQ subscription queues.
 
-    Accepts either:
+    **Purge operations** (remove messages, keep queue):
     - `vhost` and `queue_name`: Purge a specific queue
     - `vhost` and `queue_pattern`: Purge queues matching pattern (e.g., '*_resource')
     - `purge_all_subscription_queues`: Purge all subscription queues across all vhosts
 
+    **Delete operations** (remove queue entirely):
+    - `vhost`, `queue_name`, and `delete_queue=true`: Delete a specific queue
+    - `vhost`, `queue_pattern`, and `delete_queue=true`: Delete queues matching pattern
+    - `delete_all_subscription_queues`: Delete all subscription queues across all vhosts
+
     Requires staff permissions (more restrictive than viewing).
+
+    Args:
+        body (RmqPurgeRequestRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -170,5 +222,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            body=body,
         )
     ).parsed

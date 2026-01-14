@@ -16,7 +16,7 @@ T = TypeVar("T", bound="AgentIdentityRequest")
 class AgentIdentityRequest:
     """
     Attributes:
-        offering (UUID):
+        offering (UUID): UUID of an offering with type 'Marketplace.Slurm'. Only site-agent offerings are accepted.
         name (str):
         version (Union[None, Unset, str]):
         dependencies (Union[Unset, Any]):

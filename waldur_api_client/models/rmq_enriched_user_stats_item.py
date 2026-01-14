@@ -5,22 +5,22 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.rmq_connection import RmqConnection
+    from ..models.rmq_enriched_connection import RmqEnrichedConnection
 
 
-T = TypeVar("T", bound="RmqUserStatsItem")
+T = TypeVar("T", bound="RmqEnrichedUserStatsItem")
 
 
 @_attrs_define
-class RmqUserStatsItem:
+class RmqEnrichedUserStatsItem:
     """
     Attributes:
-        username (str):
-        connections (list['RmqConnection']):
+        username (str): RabbitMQ username (corresponds to EventSubscription UUID)
+        connections (list['RmqEnrichedConnection']): List of active connections with detailed statistics
     """
 
     username: str
-    connections: list["RmqConnection"]
+    connections: list["RmqEnrichedConnection"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,7 +44,7 @@ class RmqUserStatsItem:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.rmq_connection import RmqConnection
+        from ..models.rmq_enriched_connection import RmqEnrichedConnection
 
         d = dict(src_dict)
         username = d.pop("username")
@@ -52,17 +52,17 @@ class RmqUserStatsItem:
         connections = []
         _connections = d.pop("connections")
         for connections_item_data in _connections:
-            connections_item = RmqConnection.from_dict(connections_item_data)
+            connections_item = RmqEnrichedConnection.from_dict(connections_item_data)
 
             connections.append(connections_item)
 
-        rmq_user_stats_item = cls(
+        rmq_enriched_user_stats_item = cls(
             username=username,
             connections=connections,
         )
 
-        rmq_user_stats_item.additional_properties = d
-        return rmq_user_stats_item
+        rmq_enriched_user_stats_item.additional_properties = d
+        return rmq_enriched_user_stats_item
 
     @property
     def additional_keys(self) -> list[str]:

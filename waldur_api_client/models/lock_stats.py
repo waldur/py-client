@@ -1,36 +1,40 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="RmqConnection")
+T = TypeVar("T", bound="LockStats")
 
 
 @_attrs_define
-class RmqConnection:
+class LockStats:
     """
     Attributes:
-        source_ip (str): An IPv4 or IPv6 address.
-        vhost (str):
+        total_locks (int): Total number of locks currently held
+        waiting_locks (int): Number of locks being waited for
+        access_exclusive_locks (int): Number of AccessExclusive locks (blocks all access)
     """
 
-    source_ip: str
-    vhost: str
+    total_locks: int
+    waiting_locks: int
+    access_exclusive_locks: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        source_ip: str
-        source_ip = self.source_ip
+        total_locks = self.total_locks
 
-        vhost = self.vhost
+        waiting_locks = self.waiting_locks
+
+        access_exclusive_locks = self.access_exclusive_locks
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "source_ip": source_ip,
-                "vhost": vhost,
+                "total_locks": total_locks,
+                "waiting_locks": waiting_locks,
+                "access_exclusive_locks": access_exclusive_locks,
             }
         )
 
@@ -39,21 +43,20 @@ class RmqConnection:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        total_locks = d.pop("total_locks")
 
-        def _parse_source_ip(data: object) -> str:
-            return cast(str, data)
+        waiting_locks = d.pop("waiting_locks")
 
-        source_ip = _parse_source_ip(d.pop("source_ip"))
+        access_exclusive_locks = d.pop("access_exclusive_locks")
 
-        vhost = d.pop("vhost")
-
-        rmq_connection = cls(
-            source_ip=source_ip,
-            vhost=vhost,
+        lock_stats = cls(
+            total_locks=total_locks,
+            waiting_locks=waiting_locks,
+            access_exclusive_locks=access_exclusive_locks,
         )
 
-        rmq_connection.additional_properties = d
-        return rmq_connection
+        lock_stats.additional_properties = d
+        return lock_stats
 
     @property
     def additional_keys(self) -> list[str]:

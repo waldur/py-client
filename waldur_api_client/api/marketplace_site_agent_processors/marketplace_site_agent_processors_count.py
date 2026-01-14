@@ -15,9 +15,11 @@ def _get_kwargs(
     backend_type: Union[Unset, str] = UNSET,
     backend_version: Union[Unset, str] = UNSET,
     last_run: Union[Unset, datetime.datetime] = UNSET,
+    last_run_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     service_uuid: Union[Unset, UUID] = UNSET,
+    stale: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -30,6 +32,11 @@ def _get_kwargs(
         json_last_run = last_run.isoformat()
     params["last_run"] = json_last_run
 
+    json_last_run_before: Union[Unset, str] = UNSET
+    if not isinstance(last_run_before, Unset):
+        json_last_run_before = last_run_before.isoformat()
+    params["last_run_before"] = json_last_run_before
+
     params["page"] = page
 
     params["page_size"] = page_size
@@ -38,6 +45,8 @@ def _get_kwargs(
     if not isinstance(service_uuid, Unset):
         json_service_uuid = str(service_uuid)
     params["service_uuid"] = json_service_uuid
+
+    params["stale"] = stale
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -82,9 +91,11 @@ def sync_detailed(
     backend_type: Union[Unset, str] = UNSET,
     backend_version: Union[Unset, str] = UNSET,
     last_run: Union[Unset, datetime.datetime] = UNSET,
+    last_run_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     service_uuid: Union[Unset, UUID] = UNSET,
+    stale: Union[Unset, bool] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -92,9 +103,11 @@ def sync_detailed(
         backend_type (Union[Unset, str]):
         backend_version (Union[Unset, str]):
         last_run (Union[Unset, datetime.datetime]):
+        last_run_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         service_uuid (Union[Unset, UUID]):
+        stale (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -108,9 +121,11 @@ def sync_detailed(
         backend_type=backend_type,
         backend_version=backend_version,
         last_run=last_run,
+        last_run_before=last_run_before,
         page=page,
         page_size=page_size,
         service_uuid=service_uuid,
+        stale=stale,
     )
 
     response = client.get_httpx_client().request(
@@ -126,9 +141,11 @@ def sync(
     backend_type: Union[Unset, str] = UNSET,
     backend_version: Union[Unset, str] = UNSET,
     last_run: Union[Unset, datetime.datetime] = UNSET,
+    last_run_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     service_uuid: Union[Unset, UUID] = UNSET,
+    stale: Union[Unset, bool] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -136,9 +153,11 @@ def sync(
         backend_type (Union[Unset, str]):
         backend_version (Union[Unset, str]):
         last_run (Union[Unset, datetime.datetime]):
+        last_run_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         service_uuid (Union[Unset, UUID]):
+        stale (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -153,9 +172,11 @@ def sync(
         backend_type=backend_type,
         backend_version=backend_version,
         last_run=last_run,
+        last_run_before=last_run_before,
         page=page,
         page_size=page_size,
         service_uuid=service_uuid,
+        stale=stale,
     ).parsed
 
 
@@ -165,9 +186,11 @@ async def asyncio_detailed(
     backend_type: Union[Unset, str] = UNSET,
     backend_version: Union[Unset, str] = UNSET,
     last_run: Union[Unset, datetime.datetime] = UNSET,
+    last_run_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     service_uuid: Union[Unset, UUID] = UNSET,
+    stale: Union[Unset, bool] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -175,9 +198,11 @@ async def asyncio_detailed(
         backend_type (Union[Unset, str]):
         backend_version (Union[Unset, str]):
         last_run (Union[Unset, datetime.datetime]):
+        last_run_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         service_uuid (Union[Unset, UUID]):
+        stale (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -191,9 +216,11 @@ async def asyncio_detailed(
         backend_type=backend_type,
         backend_version=backend_version,
         last_run=last_run,
+        last_run_before=last_run_before,
         page=page,
         page_size=page_size,
         service_uuid=service_uuid,
+        stale=stale,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -207,9 +234,11 @@ async def asyncio(
     backend_type: Union[Unset, str] = UNSET,
     backend_version: Union[Unset, str] = UNSET,
     last_run: Union[Unset, datetime.datetime] = UNSET,
+    last_run_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     service_uuid: Union[Unset, UUID] = UNSET,
+    stale: Union[Unset, bool] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -217,9 +246,11 @@ async def asyncio(
         backend_type (Union[Unset, str]):
         backend_version (Union[Unset, str]):
         last_run (Union[Unset, datetime.datetime]):
+        last_run_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         service_uuid (Union[Unset, UUID]):
+        stale (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -235,8 +266,10 @@ async def asyncio(
             backend_type=backend_type,
             backend_version=backend_version,
             last_run=last_run,
+            last_run_before=last_run_before,
             page=page,
             page_size=page_size,
             service_uuid=service_uuid,
+            stale=stale,
         )
     ).parsed

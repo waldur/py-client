@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.rmq_user_stats_item import RmqUserStatsItem
+from ...models.rmq_enriched_user_stats_item import RmqEnrichedUserStatsItem
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -34,14 +34,14 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> list["RmqUserStatsItem"]:
+) -> list["RmqEnrichedUserStatsItem"]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = RmqUserStatsItem.from_dict(response_200_item_data)
+            response_200_item = RmqEnrichedUserStatsItem.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -51,7 +51,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["RmqUserStatsItem"]]:
+) -> Response[list["RmqEnrichedUserStatsItem"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,8 +65,20 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Response[list["RmqUserStatsItem"]]:
-    """
+) -> Response[list["RmqEnrichedUserStatsItem"]]:
+    """Get RabbitMQ user connection statistics
+
+     Returns enriched connection data for all RabbitMQ users.
+
+    For each user (which corresponds to an EventSubscription), provides:
+    - Connection state (running, blocked, blocking)
+    - Traffic statistics (bytes sent/received)
+    - Connection timestamp
+    - Client properties (product, version, platform)
+    - Channel count and heartbeat timeout
+
+    Requires support user permissions.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -76,7 +88,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['RmqUserStatsItem']]
+        Response[list['RmqEnrichedUserStatsItem']]
     """
 
     kwargs = _get_kwargs(
@@ -96,8 +108,20 @@ def sync(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> list["RmqUserStatsItem"]:
-    """
+) -> list["RmqEnrichedUserStatsItem"]:
+    """Get RabbitMQ user connection statistics
+
+     Returns enriched connection data for all RabbitMQ users.
+
+    For each user (which corresponds to an EventSubscription), provides:
+    - Connection state (running, blocked, blocking)
+    - Traffic statistics (bytes sent/received)
+    - Connection timestamp
+    - Client properties (product, version, platform)
+    - Channel count and heartbeat timeout
+
+    Requires support user permissions.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -107,7 +131,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['RmqUserStatsItem']
+        list['RmqEnrichedUserStatsItem']
     """
 
     return sync_detailed(
@@ -122,8 +146,20 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Response[list["RmqUserStatsItem"]]:
-    """
+) -> Response[list["RmqEnrichedUserStatsItem"]]:
+    """Get RabbitMQ user connection statistics
+
+     Returns enriched connection data for all RabbitMQ users.
+
+    For each user (which corresponds to an EventSubscription), provides:
+    - Connection state (running, blocked, blocking)
+    - Traffic statistics (bytes sent/received)
+    - Connection timestamp
+    - Client properties (product, version, platform)
+    - Channel count and heartbeat timeout
+
+    Requires support user permissions.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -133,7 +169,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['RmqUserStatsItem']]
+        Response[list['RmqEnrichedUserStatsItem']]
     """
 
     kwargs = _get_kwargs(
@@ -151,8 +187,20 @@ async def asyncio(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> list["RmqUserStatsItem"]:
-    """
+) -> list["RmqEnrichedUserStatsItem"]:
+    """Get RabbitMQ user connection statistics
+
+     Returns enriched connection data for all RabbitMQ users.
+
+    For each user (which corresponds to an EventSubscription), provides:
+    - Connection state (running, blocked, blocking)
+    - Traffic statistics (bytes sent/received)
+    - Connection timestamp
+    - Client properties (product, version, platform)
+    - Channel count and heartbeat timeout
+
+    Requires support user permissions.
+
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -162,7 +210,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['RmqUserStatsItem']
+        list['RmqEnrichedUserStatsItem']
     """
 
     return (
@@ -177,7 +225,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-) -> list["RmqUserStatsItem"]:
+) -> list["RmqEnrichedUserStatsItem"]:
     """Get All Pages
 
      Fetch all pages of paginated results. This function automatically handles pagination
@@ -192,11 +240,11 @@ def sync_all(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['RmqUserStatsItem']: Combined results from all pages
+        list['RmqEnrichedUserStatsItem']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[RmqUserStatsItem] = []
+    all_results: list[RmqEnrichedUserStatsItem] = []
 
     # Get initial request kwargs
     kwargs = _get_kwargs()
@@ -246,7 +294,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-) -> list["RmqUserStatsItem"]:
+) -> list["RmqEnrichedUserStatsItem"]:
     """Get All Pages (Async)
 
      Fetch all pages of paginated results asynchronously. This function automatically handles pagination
@@ -261,11 +309,11 @@ async def asyncio_all(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['RmqUserStatsItem']: Combined results from all pages
+        list['RmqEnrichedUserStatsItem']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[RmqUserStatsItem] = []
+    all_results: list[RmqEnrichedUserStatsItem] = []
 
     # Get initial request kwargs
     kwargs = _get_kwargs()

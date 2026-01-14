@@ -4,37 +4,37 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="RmqPurgeResponse")
+T = TypeVar("T", bound="RmqQueueTotals")
 
 
 @_attrs_define
-class RmqPurgeResponse:
+class RmqQueueTotals:
     """
     Attributes:
-        purged_queues (int): Number of queues that were purged
-        purged_messages (int): Total number of messages that were purged
-        deleted_queues (int): Number of queues that were deleted
+        messages (int): Total messages across all queues
+        messages_ready (int): Messages ready for delivery
+        messages_unacknowledged (int): Messages awaiting acknowledgement
     """
 
-    purged_queues: int
-    purged_messages: int
-    deleted_queues: int
+    messages: int
+    messages_ready: int
+    messages_unacknowledged: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        purged_queues = self.purged_queues
+        messages = self.messages
 
-        purged_messages = self.purged_messages
+        messages_ready = self.messages_ready
 
-        deleted_queues = self.deleted_queues
+        messages_unacknowledged = self.messages_unacknowledged
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "purged_queues": purged_queues,
-                "purged_messages": purged_messages,
-                "deleted_queues": deleted_queues,
+                "messages": messages,
+                "messages_ready": messages_ready,
+                "messages_unacknowledged": messages_unacknowledged,
             }
         )
 
@@ -43,20 +43,20 @@ class RmqPurgeResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        purged_queues = d.pop("purged_queues")
+        messages = d.pop("messages")
 
-        purged_messages = d.pop("purged_messages")
+        messages_ready = d.pop("messages_ready")
 
-        deleted_queues = d.pop("deleted_queues")
+        messages_unacknowledged = d.pop("messages_unacknowledged")
 
-        rmq_purge_response = cls(
-            purged_queues=purged_queues,
-            purged_messages=purged_messages,
-            deleted_queues=deleted_queues,
+        rmq_queue_totals = cls(
+            messages=messages,
+            messages_ready=messages_ready,
+            messages_unacknowledged=messages_unacknowledged,
         )
 
-        rmq_purge_response.additional_properties = d
-        return rmq_purge_response
+        rmq_queue_totals.additional_properties = d
+        return rmq_queue_totals
 
     @property
     def additional_keys(self) -> list[str]:

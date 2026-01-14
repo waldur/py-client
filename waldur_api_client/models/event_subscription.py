@@ -26,7 +26,10 @@ class EventSubscription:
         modified (datetime.datetime):
         source_ip (Union[None, str]): An IPv4 or IPv6 address.
         description (Union[Unset, str]):
-        observable_objects (Union[Unset, Any]):
+        observable_objects (Union[Unset, Any]): List of objects to observe. Each item must have 'object_type' (one of:
+            order, user_role, resource, offering_user, importable_resources, service_account, course_account,
+            resource_periodic_limits) and optionally 'object_id' (integer). Example: [{"object_type": "resource"},
+            {"object_type": "order", "object_id": 123}]
     """
 
     uuid: UUID

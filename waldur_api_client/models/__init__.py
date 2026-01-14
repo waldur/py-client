@@ -3,6 +3,8 @@
 from .access_subnet import AccessSubnet
 from .access_subnet_request import AccessSubnetRequest
 from .account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
+from .active_queries_stats import ActiveQueriesStats
+from .active_query import ActiveQuery
 from .admin_announcement import AdminAnnouncement
 from .admin_announcement_maintenance_affected_offerings_item import AdminAnnouncementMaintenanceAffectedOfferingsItem
 from .admin_announcement_request import AdminAnnouncementRequest
@@ -17,15 +19,30 @@ from .affiliation_type_enum import AffiliationTypeEnum
 from .affinity_matrix_entry import AffinityMatrixEntry
 from .affinity_matrix_response import AffinityMatrixResponse
 from .affinity_method_enum import AffinityMethodEnum
+from .agent_connection_info import AgentConnectionInfo
+from .agent_connection_stats_response import AgentConnectionStatsResponse
+from .agent_connection_summary import AgentConnectionSummary
 from .agent_event_subscription_create_request import AgentEventSubscriptionCreateRequest
+from .agent_event_subscription_with_connection import AgentEventSubscriptionWithConnection
 from .agent_identity import AgentIdentity
 from .agent_identity_request import AgentIdentityRequest
 from .agent_processor import AgentProcessor
 from .agent_processor_create_request import AgentProcessorCreateRequest
+from .agent_queue_info import AgentQueueInfo
+from .agent_rmq_connection import AgentRmqConnection
 from .agent_service import AgentService
 from .agent_service_create_request import AgentServiceCreateRequest
 from .agent_service_state import AgentServiceState
 from .agent_service_statistics_request import AgentServiceStatisticsRequest
+from .agent_service_status import AgentServiceStatus
+from .agent_stats_response import AgentStatsResponse
+from .agent_stats_response_identities import AgentStatsResponseIdentities
+from .agent_stats_response_processors import AgentStatsResponseProcessors
+from .agent_stats_response_services import AgentStatsResponseServices
+from .agent_task_stats_response import AgentTaskStatsResponse
+from .agent_task_stats_response_active_tasks_item import AgentTaskStatsResponseActiveTasksItem
+from .agent_task_stats_response_reserved_tasks_item import AgentTaskStatsResponseReservedTasksItem
+from .agent_task_stats_response_scheduled_tasks_item import AgentTaskStatsResponseScheduledTasksItem
 from .agent_type_enum import AgentTypeEnum
 from .agreement_type_enum import AgreementTypeEnum
 from .allocation import Allocation
@@ -215,6 +232,7 @@ from .broadcast_messages_list_state import BroadcastMessagesListState
 from .broadcast_messages_recipients_retrieve_field_item import BroadcastMessagesRecipientsRetrieveFieldItem
 from .broadcast_messages_retrieve_field_item import BroadcastMessagesRetrieveFieldItem
 from .bulk_silence_response import BulkSilenceResponse
+from .cache_performance import CachePerformance
 from .call_assignment_configuration import CallAssignmentConfiguration
 from .call_assignment_configuration_request import CallAssignmentConfigurationRequest
 from .call_attach_documents_request import CallAttachDocumentsRequest
@@ -323,6 +341,9 @@ from .checklists_admin_list_checklist_type import ChecklistsAdminListChecklistTy
 from .checklists_admin_list_checklist_type_in_item import ChecklistsAdminListChecklistTypeInItem
 from .checklists_admin_questions_count_checklist_type import ChecklistsAdminQuestionsCountChecklistType
 from .checklists_admin_questions_list_checklist_type import ChecklistsAdminQuestionsListChecklistType
+from .cleanup_request_request import CleanupRequestRequest
+from .cleanup_response import CleanupResponse
+from .cleanup_response_items_item import CleanupResponseItemsItem
 from .cluster_security_group import ClusterSecurityGroup
 from .cluster_security_group_request import ClusterSecurityGroupRequest
 from .coi_detection_job import COIDetectionJob
@@ -381,6 +402,7 @@ from .conflicts_of_interest_list_detection_method_item import ConflictsOfInteres
 from .conflicts_of_interest_list_o_item import ConflictsOfInterestListOItem
 from .conflicts_of_interest_list_severity import ConflictsOfInterestListSeverity
 from .conflicts_of_interest_list_status_item import ConflictsOfInterestListStatusItem
+from .connection_stats import ConnectionStats
 from .console_url import ConsoleUrl
 from .constance_settings import ConstanceSettings
 from .constance_settings_loginlogomultilingual import ConstanceSettingsLOGINLOGOMULTILINGUAL
@@ -459,6 +481,8 @@ from .customers_users_list_project_role_item_type_0 import CustomersUsersListPro
 from .daily_quotas_retrieve_response_200 import DailyQuotasRetrieveResponse200
 from .data_volume import DataVolume
 from .data_volume_request import DataVolumeRequest
+from .database_size_stats import DatabaseSizeStats
+from .database_stats_response import DatabaseStatsResponse
 from .deciding_entity_enum import DecidingEntityEnum
 from .delete_attachments_request import DeleteAttachmentsRequest
 from .demo_preset import DemoPreset
@@ -699,6 +723,7 @@ from .limit_type_enum import LimitTypeEnum
 from .link_openstack_request import LinkOpenstackRequest
 from .link_to_invoice import LinkToInvoice
 from .link_to_invoice_request import LinkToInvoiceRequest
+from .lock_stats import LockStats
 from .logout import Logout
 from .maintenance_action_response import MaintenanceActionResponse
 from .maintenance_announcement import MaintenanceAnnouncement
@@ -718,6 +743,7 @@ from .maintenance_announcements_list_o_item import MaintenanceAnnouncementsListO
 from .maintenance_announcements_list_state_item import MaintenanceAnnouncementsListStateItem
 from .maintenance_announcements_template_count_o_item import MaintenanceAnnouncementsTemplateCountOItem
 from .maintenance_announcements_template_list_o_item import MaintenanceAnnouncementsTemplateListOItem
+from .maintenance_stats import MaintenanceStats
 from .maintenance_type_enum import MaintenanceTypeEnum
 from .managed_project import ManagedProject
 from .managed_rancher_cluster_resources_list_field_item import ManagedRancherClusterResourcesListFieldItem
@@ -1760,6 +1786,7 @@ from .public_offering_details import PublicOfferingDetails
 from .public_offering_details_attributes import PublicOfferingDetailsAttributes
 from .pull_marketplace_script_resource_request import PullMarketplaceScriptResourceRequest
 from .qos_strategy_enum import QosStrategyEnum
+from .query_performance import QueryPerformance
 from .query_request import QueryRequest
 from .question import Question
 from .question_admin import QuestionAdmin
@@ -1906,6 +1933,7 @@ from .remote_synchronisation_request import RemoteSynchronisationRequest
 from .remove_offering_component_request import RemoveOfferingComponentRequest
 from .remove_partition_request import RemovePartitionRequest
 from .remove_software_catalog_request import RemoveSoftwareCatalogRequest
+from .replication_stats import ReplicationStats
 from .report_section import ReportSection
 from .report_section_request import ReportSectionRequest
 from .request_type import RequestType
@@ -2003,14 +2031,21 @@ from .reviewer_suggestions_count_o_item import ReviewerSuggestionsCountOItem
 from .reviewer_suggestions_count_status_item import ReviewerSuggestionsCountStatusItem
 from .reviewer_suggestions_list_o_item import ReviewerSuggestionsListOItem
 from .reviewer_suggestions_list_status_item import ReviewerSuggestionsListStatusItem
-from .rmq_connection import RmqConnection
+from .rmq_client_properties import RmqClientProperties
+from .rmq_enriched_connection import RmqEnrichedConnection
+from .rmq_enriched_user_stats_item import RmqEnrichedUserStatsItem
+from .rmq_listener import RmqListener
+from .rmq_message_stats import RmqMessageStats
+from .rmq_object_totals import RmqObjectTotals
+from .rmq_overview import RmqOverview
+from .rmq_purge_request_request import RmqPurgeRequestRequest
 from .rmq_purge_response import RmqPurgeResponse
 from .rmq_queue_stats import RmqQueueStats
+from .rmq_queue_totals import RmqQueueTotals
 from .rmq_stats_error import RmqStatsError
 from .rmq_stats_response import RmqStatsResponse
 from .rmq_stats_user import RmqStatsUser
 from .rmq_subscription import RmqSubscription
-from .rmq_user_stats_item import RmqUserStatsItem
 from .rmq_v_host_stats_item import RmqVHostStatsItem
 from .rmq_vhost_stats import RmqVhostStats
 from .rmq_waldur_user import RmqWaldurUser
@@ -2143,6 +2178,7 @@ from .time_series_to_s_data import TimeSeriesToSData
 from .to_s_consent_dashboard import ToSConsentDashboard
 from .token_request import TokenRequest
 from .total_customer_cost import TotalCustomerCost
+from .transaction_stats import TransactionStats
 from .trigger_coi_detection_job_type_enum import TriggerCOIDetectionJobTypeEnum
 from .trigger_coi_detection_request import TriggerCOIDetectionRequest
 from .unsilence_action_response import UnsilenceActionResponse
@@ -2273,6 +2309,8 @@ __all__ = (
     "AccessSubnet",
     "AccessSubnetRequest",
     "AccountNameGenerationPolicyEnum",
+    "ActiveQueriesStats",
+    "ActiveQuery",
     "AdminAnnouncement",
     "AdminAnnouncementMaintenanceAffectedOfferingsItem",
     "AdminAnnouncementRequest",
@@ -2287,15 +2325,30 @@ __all__ = (
     "AffinityMatrixEntry",
     "AffinityMatrixResponse",
     "AffinityMethodEnum",
+    "AgentConnectionInfo",
+    "AgentConnectionStatsResponse",
+    "AgentConnectionSummary",
     "AgentEventSubscriptionCreateRequest",
+    "AgentEventSubscriptionWithConnection",
     "AgentIdentity",
     "AgentIdentityRequest",
     "AgentProcessor",
     "AgentProcessorCreateRequest",
+    "AgentQueueInfo",
+    "AgentRmqConnection",
     "AgentService",
     "AgentServiceCreateRequest",
     "AgentServiceState",
     "AgentServiceStatisticsRequest",
+    "AgentServiceStatus",
+    "AgentStatsResponse",
+    "AgentStatsResponseIdentities",
+    "AgentStatsResponseProcessors",
+    "AgentStatsResponseServices",
+    "AgentTaskStatsResponse",
+    "AgentTaskStatsResponseActiveTasksItem",
+    "AgentTaskStatsResponseReservedTasksItem",
+    "AgentTaskStatsResponseScheduledTasksItem",
     "AgentTypeEnum",
     "AgreementTypeEnum",
     "Allocation",
@@ -2475,6 +2528,7 @@ __all__ = (
     "BroadcastMessagesRetrieveFieldItem",
     "BroadcastMessageStateEnum",
     "BulkSilenceResponse",
+    "CachePerformance",
     "CallAssignmentConfiguration",
     "CallAssignmentConfigurationRequest",
     "CallAttachDocumentsRequest",
@@ -2581,6 +2635,9 @@ __all__ = (
     "ChecklistTypeEnum",
     "CheckUniqueBackendIDRequest",
     "CheckUniqueBackendIDResponse",
+    "CleanupRequestRequest",
+    "CleanupResponse",
+    "CleanupResponseItemsItem",
     "ClusterSecurityGroup",
     "ClusterSecurityGroupRequest",
     "COIDetectionJob",
@@ -2639,6 +2696,7 @@ __all__ = (
     "ConflictSummaryResponseBySeverity",
     "ConflictSummaryResponseByStatus",
     "ConflictSummaryResponseByType",
+    "ConnectionStats",
     "ConsoleUrl",
     "ConstanceSettings",
     "ConstanceSettingsLOGINLOGOMULTILINGUAL",
@@ -2711,6 +2769,8 @@ __all__ = (
     "CustomersUsersListProjectRoleItemType0",
     "CustomerUser",
     "DailyQuotasRetrieveResponse200",
+    "DatabaseSizeStats",
+    "DatabaseStatsResponse",
     "DataVolume",
     "DataVolumeRequest",
     "DecidingEntityEnum",
@@ -2947,6 +3007,7 @@ __all__ = (
     "LinkOpenstackRequest",
     "LinkToInvoice",
     "LinkToInvoiceRequest",
+    "LockStats",
     "Logout",
     "MaintenanceActionResponse",
     "MaintenanceAnnouncement",
@@ -2966,6 +3027,7 @@ __all__ = (
     "MaintenanceAnnouncementTemplateOfferingsCountOItem",
     "MaintenanceAnnouncementTemplateOfferingsListOItem",
     "MaintenanceAnnouncementTemplateRequest",
+    "MaintenanceStats",
     "MaintenanceTypeEnum",
     "ManagedProject",
     "ManagedRancherClusterResourcesListFieldItem",
@@ -3878,6 +3940,7 @@ __all__ = (
     "PublicOfferingDetailsAttributes",
     "PullMarketplaceScriptResourceRequest",
     "QosStrategyEnum",
+    "QueryPerformance",
     "QueryRequest",
     "Question",
     "QuestionAdmin",
@@ -4012,6 +4075,7 @@ __all__ = (
     "RemoveOfferingComponentRequest",
     "RemovePartitionRequest",
     "RemoveSoftwareCatalogRequest",
+    "ReplicationStats",
     "ReportSection",
     "ReportSectionRequest",
     "RequestedOffering",
@@ -4109,14 +4173,21 @@ __all__ = (
     "ReviewerSuggestionStatusEnum",
     "ReviewStrategyEnum",
     "ReviewSubmitRequest",
-    "RmqConnection",
+    "RmqClientProperties",
+    "RmqEnrichedConnection",
+    "RmqEnrichedUserStatsItem",
+    "RmqListener",
+    "RmqMessageStats",
+    "RmqObjectTotals",
+    "RmqOverview",
+    "RmqPurgeRequestRequest",
     "RmqPurgeResponse",
     "RmqQueueStats",
+    "RmqQueueTotals",
     "RmqStatsError",
     "RmqStatsResponse",
     "RmqStatsUser",
     "RmqSubscription",
-    "RmqUserStatsItem",
     "RmqVhostStats",
     "RmqVHostStatsItem",
     "RmqWaldurUser",
@@ -4247,6 +4318,7 @@ __all__ = (
     "TokenRequest",
     "ToSConsentDashboard",
     "TotalCustomerCost",
+    "TransactionStats",
     "TriggerCOIDetectionJobTypeEnum",
     "TriggerCOIDetectionRequest",
     "UnsilenceActionResponse",

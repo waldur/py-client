@@ -17,6 +17,7 @@ def _get_kwargs(
     last_restarted: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
+    orphaned: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -34,6 +35,8 @@ def _get_kwargs(
     if not isinstance(offering_uuid, Unset):
         json_offering_uuid = str(offering_uuid)
     params["offering_uuid"] = json_offering_uuid
+
+    params["orphaned"] = orphaned
 
     params["page"] = page
 
@@ -84,6 +87,7 @@ def sync_detailed(
     last_restarted: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
+    orphaned: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -93,6 +97,7 @@ def sync_detailed(
         last_restarted (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
+        orphaned (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):
@@ -109,6 +114,7 @@ def sync_detailed(
         last_restarted=last_restarted,
         name=name,
         offering_uuid=offering_uuid,
+        orphaned=orphaned,
         page=page,
         page_size=page_size,
         version=version,
@@ -127,6 +133,7 @@ def sync(
     last_restarted: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
+    orphaned: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -136,6 +143,7 @@ def sync(
         last_restarted (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
+        orphaned (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):
@@ -153,6 +161,7 @@ def sync(
         last_restarted=last_restarted,
         name=name,
         offering_uuid=offering_uuid,
+        orphaned=orphaned,
         page=page,
         page_size=page_size,
         version=version,
@@ -165,6 +174,7 @@ async def asyncio_detailed(
     last_restarted: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
+    orphaned: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -174,6 +184,7 @@ async def asyncio_detailed(
         last_restarted (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
+        orphaned (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):
@@ -190,6 +201,7 @@ async def asyncio_detailed(
         last_restarted=last_restarted,
         name=name,
         offering_uuid=offering_uuid,
+        orphaned=orphaned,
         page=page,
         page_size=page_size,
         version=version,
@@ -206,6 +218,7 @@ async def asyncio(
     last_restarted: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
+    orphaned: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -215,6 +228,7 @@ async def asyncio(
         last_restarted (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
+        orphaned (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):
@@ -233,6 +247,7 @@ async def asyncio(
             last_restarted=last_restarted,
             name=name,
             offering_uuid=offering_uuid,
+            orphaned=orphaned,
             page=page,
             page_size=page_size,
             version=version,
@@ -246,6 +261,7 @@ def sync_all(
     last_restarted: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
+    orphaned: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["AgentIdentity"]:
     """Get All Pages
@@ -259,6 +275,7 @@ def sync_all(
         last_restarted (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
+        orphaned (Union[Unset, bool]):
         version (Union[Unset, str]):
 
     Raises:
@@ -277,6 +294,7 @@ def sync_all(
         last_restarted=last_restarted,
         name=name,
         offering_uuid=offering_uuid,
+        orphaned=orphaned,
         version=version,
     )
 
@@ -328,6 +346,7 @@ async def asyncio_all(
     last_restarted: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
+    orphaned: Union[Unset, bool] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["AgentIdentity"]:
     """Get All Pages (Async)
@@ -341,6 +360,7 @@ async def asyncio_all(
         last_restarted (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
+        orphaned (Union[Unset, bool]):
         version (Union[Unset, str]):
 
     Raises:
@@ -359,6 +379,7 @@ async def asyncio_all(
         last_restarted=last_restarted,
         name=name,
         offering_uuid=offering_uuid,
+        orphaned=orphaned,
         version=version,
     )
 

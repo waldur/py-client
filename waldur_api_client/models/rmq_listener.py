@@ -4,37 +4,32 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="RmqPurgeResponse")
+T = TypeVar("T", bound="RmqListener")
 
 
 @_attrs_define
-class RmqPurgeResponse:
+class RmqListener:
     """
     Attributes:
-        purged_queues (int): Number of queues that were purged
-        purged_messages (int): Total number of messages that were purged
-        deleted_queues (int): Number of queues that were deleted
+        protocol (str): Protocol name (e.g., 'amqp', 'http', 'clustering')
+        port (int): Listening port number
     """
 
-    purged_queues: int
-    purged_messages: int
-    deleted_queues: int
+    protocol: str
+    port: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        purged_queues = self.purged_queues
+        protocol = self.protocol
 
-        purged_messages = self.purged_messages
-
-        deleted_queues = self.deleted_queues
+        port = self.port
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "purged_queues": purged_queues,
-                "purged_messages": purged_messages,
-                "deleted_queues": deleted_queues,
+                "protocol": protocol,
+                "port": port,
             }
         )
 
@@ -43,20 +38,17 @@ class RmqPurgeResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        purged_queues = d.pop("purged_queues")
+        protocol = d.pop("protocol")
 
-        purged_messages = d.pop("purged_messages")
+        port = d.pop("port")
 
-        deleted_queues = d.pop("deleted_queues")
-
-        rmq_purge_response = cls(
-            purged_queues=purged_queues,
-            purged_messages=purged_messages,
-            deleted_queues=deleted_queues,
+        rmq_listener = cls(
+            protocol=protocol,
+            port=port,
         )
 
-        rmq_purge_response.additional_properties = d
-        return rmq_purge_response
+        rmq_listener.additional_properties = d
+        return rmq_listener
 
     @property
     def additional_keys(self) -> list[str]:

@@ -1,3 +1,4 @@
+import datetime
 from http import HTTPStatus
 from typing import Any, Union
 from uuid import UUID
@@ -14,8 +15,11 @@ def _get_kwargs(
     *,
     identity_uuid: Union[Unset, UUID] = UNSET,
     mode: Union[Unset, str] = UNSET,
+    modified_after: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    stale: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -27,9 +31,21 @@ def _get_kwargs(
 
     params["mode"] = mode
 
+    json_modified_after: Union[Unset, str] = UNSET
+    if not isinstance(modified_after, Unset):
+        json_modified_after = modified_after.isoformat()
+    params["modified_after"] = json_modified_after
+
+    json_modified_before: Union[Unset, str] = UNSET
+    if not isinstance(modified_before, Unset):
+        json_modified_before = modified_before.isoformat()
+    params["modified_before"] = json_modified_before
+
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["stale"] = stale
 
     json_state: Union[Unset, list[int]] = UNSET
     if not isinstance(state, Unset):
@@ -82,8 +98,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     identity_uuid: Union[Unset, UUID] = UNSET,
     mode: Union[Unset, str] = UNSET,
+    modified_after: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    stale: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -91,8 +110,11 @@ def sync_detailed(
     Args:
         identity_uuid (Union[Unset, UUID]):
         mode (Union[Unset, str]):
+        modified_after (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        stale (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]]):
 
     Raises:
@@ -106,8 +128,11 @@ def sync_detailed(
     kwargs = _get_kwargs(
         identity_uuid=identity_uuid,
         mode=mode,
+        modified_after=modified_after,
+        modified_before=modified_before,
         page=page,
         page_size=page_size,
+        stale=stale,
         state=state,
     )
 
@@ -123,8 +148,11 @@ def sync(
     client: AuthenticatedClient,
     identity_uuid: Union[Unset, UUID] = UNSET,
     mode: Union[Unset, str] = UNSET,
+    modified_after: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    stale: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -132,8 +160,11 @@ def sync(
     Args:
         identity_uuid (Union[Unset, UUID]):
         mode (Union[Unset, str]):
+        modified_after (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        stale (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]]):
 
     Raises:
@@ -148,8 +179,11 @@ def sync(
         client=client,
         identity_uuid=identity_uuid,
         mode=mode,
+        modified_after=modified_after,
+        modified_before=modified_before,
         page=page,
         page_size=page_size,
+        stale=stale,
         state=state,
     ).parsed
 
@@ -159,8 +193,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     identity_uuid: Union[Unset, UUID] = UNSET,
     mode: Union[Unset, str] = UNSET,
+    modified_after: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    stale: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -168,8 +205,11 @@ async def asyncio_detailed(
     Args:
         identity_uuid (Union[Unset, UUID]):
         mode (Union[Unset, str]):
+        modified_after (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        stale (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]]):
 
     Raises:
@@ -183,8 +223,11 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         identity_uuid=identity_uuid,
         mode=mode,
+        modified_after=modified_after,
+        modified_before=modified_before,
         page=page,
         page_size=page_size,
+        stale=stale,
         state=state,
     )
 
@@ -198,8 +241,11 @@ async def asyncio(
     client: AuthenticatedClient,
     identity_uuid: Union[Unset, UUID] = UNSET,
     mode: Union[Unset, str] = UNSET,
+    modified_after: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    stale: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -207,8 +253,11 @@ async def asyncio(
     Args:
         identity_uuid (Union[Unset, UUID]):
         mode (Union[Unset, str]):
+        modified_after (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        stale (Union[Unset, bool]):
         state (Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]]):
 
     Raises:
@@ -224,8 +273,11 @@ async def asyncio(
             client=client,
             identity_uuid=identity_uuid,
             mode=mode,
+            modified_after=modified_after,
+            modified_before=modified_before,
             page=page,
             page_size=page_size,
+            stale=stale,
             state=state,
         )
     ).parsed

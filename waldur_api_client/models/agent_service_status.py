@@ -1,40 +1,48 @@
+import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
-T = TypeVar("T", bound="RmqPurgeResponse")
+T = TypeVar("T", bound="AgentServiceStatus")
 
 
 @_attrs_define
-class RmqPurgeResponse:
+class AgentServiceStatus:
     """
     Attributes:
-        purged_queues (int): Number of queues that were purged
-        purged_messages (int): Total number of messages that were purged
-        deleted_queues (int): Number of queues that were deleted
+        uuid (UUID): Service UUID
+        name (str): Service name
+        state (str): Service state: ACTIVE, IDLE, or ERROR
+        modified (datetime.datetime): Last modification timestamp
     """
 
-    purged_queues: int
-    purged_messages: int
-    deleted_queues: int
+    uuid: UUID
+    name: str
+    state: str
+    modified: datetime.datetime
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        purged_queues = self.purged_queues
+        uuid = str(self.uuid)
 
-        purged_messages = self.purged_messages
+        name = self.name
 
-        deleted_queues = self.deleted_queues
+        state = self.state
+
+        modified = self.modified.isoformat()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "purged_queues": purged_queues,
-                "purged_messages": purged_messages,
-                "deleted_queues": deleted_queues,
+                "uuid": uuid,
+                "name": name,
+                "state": state,
+                "modified": modified,
             }
         )
 
@@ -43,20 +51,23 @@ class RmqPurgeResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        purged_queues = d.pop("purged_queues")
+        uuid = UUID(d.pop("uuid"))
 
-        purged_messages = d.pop("purged_messages")
+        name = d.pop("name")
 
-        deleted_queues = d.pop("deleted_queues")
+        state = d.pop("state")
 
-        rmq_purge_response = cls(
-            purged_queues=purged_queues,
-            purged_messages=purged_messages,
-            deleted_queues=deleted_queues,
+        modified = isoparse(d.pop("modified"))
+
+        agent_service_status = cls(
+            uuid=uuid,
+            name=name,
+            state=state,
+            modified=modified,
         )
 
-        rmq_purge_response.additional_properties = d
-        return rmq_purge_response
+        agent_service_status.additional_properties = d
+        return agent_service_status
 
     @property
     def additional_keys(self) -> list[str]:

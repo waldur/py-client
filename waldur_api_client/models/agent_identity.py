@@ -22,7 +22,7 @@ class AgentIdentity:
     Attributes:
         uuid (UUID):
         url (str):
-        offering (UUID):
+        offering (UUID): UUID of an offering with type 'Marketplace.Slurm'. Only site-agent offerings are accepted.
         name (str):
         created (datetime.datetime):
         modified (datetime.datetime):
