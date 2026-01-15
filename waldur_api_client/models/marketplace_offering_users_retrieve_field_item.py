@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class MarketplaceOfferingUsersRetrieveFieldItem(str, Enum):
+    CONSENT_DATA = "consent_data"
     CREATED = "created"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_UUID = "customer_uuid"

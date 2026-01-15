@@ -15,20 +15,20 @@ T = TypeVar("T", bound="OnboardingRunValidationRequestRequest")
 class OnboardingRunValidationRequestRequest:
     """
     Attributes:
-        person_identifier (Union[Unset, str]): Personal identifier (temporary workaround for Estonian civil_number)
+        civil_number (Union[Unset, str]): Personal identifier (temporary workaround for Estonian civil_number)
         first_name (Union[Unset, str]): User's first name (temporary workaround for Austrian validation)
         last_name (Union[Unset, str]): User's last name (temporary workaround for Austrian validation)
         birth_date (Union[None, Unset, datetime.date]): User's birth date (temporary workaround for Austrian validation)
     """
 
-    person_identifier: Union[Unset, str] = UNSET
+    civil_number: Union[Unset, str] = UNSET
     first_name: Union[Unset, str] = UNSET
     last_name: Union[Unset, str] = UNSET
     birth_date: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        person_identifier = self.person_identifier
+        civil_number = self.civil_number
 
         first_name = self.first_name
 
@@ -45,8 +45,8 @@ class OnboardingRunValidationRequestRequest:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if person_identifier is not UNSET:
-            field_dict["person_identifier"] = person_identifier
+        if civil_number is not UNSET:
+            field_dict["civil_number"] = civil_number
         if first_name is not UNSET:
             field_dict["first_name"] = first_name
         if last_name is not UNSET:
@@ -59,7 +59,7 @@ class OnboardingRunValidationRequestRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        person_identifier = d.pop("person_identifier", UNSET)
+        civil_number = d.pop("civil_number", UNSET)
 
         first_name = d.pop("first_name", UNSET)
 
@@ -83,7 +83,7 @@ class OnboardingRunValidationRequestRequest:
         birth_date = _parse_birth_date(d.pop("birth_date", UNSET))
 
         onboarding_run_validation_request_request = cls(
-            person_identifier=person_identifier,
+            civil_number=civil_number,
             first_name=first_name,
             last_name=last_name,
             birth_date=birth_date,

@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,10 @@ from dateutil.parser import isoparse
 
 from ..models.offering_user_state import OfferingUserState
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.offering_user_consent_data_type_0 import OfferingUserConsentDataType0
+
 
 T = TypeVar("T", bound="OfferingUser")
 
@@ -43,6 +47,8 @@ class OfferingUser:
         requires_reconsent (Union[Unset, bool]): Check if the user needs to re-consent due to ToS changes.
         has_compliance_checklist (Union[Unset, bool]): Check if the offering user has a connected compliance checklist
             completion.
+        consent_data (Union['OfferingUserConsentDataType0', None, Unset]): User consent data including uuid, version,
+            and agreement_date
     """
 
     url: Union[Unset, str] = UNSET
@@ -67,9 +73,12 @@ class OfferingUser:
     has_consent: Union[Unset, bool] = UNSET
     requires_reconsent: Union[Unset, bool] = UNSET
     has_compliance_checklist: Union[Unset, bool] = UNSET
+    consent_data: Union["OfferingUserConsentDataType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.offering_user_consent_data_type_0 import OfferingUserConsentDataType0
+
         url = self.url
 
         uuid: Union[Unset, str] = UNSET
@@ -132,6 +141,14 @@ class OfferingUser:
 
         has_compliance_checklist = self.has_compliance_checklist
 
+        consent_data: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.consent_data, Unset):
+            consent_data = UNSET
+        elif isinstance(self.consent_data, OfferingUserConsentDataType0):
+            consent_data = self.consent_data.to_dict()
+        else:
+            consent_data = self.consent_data
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -179,11 +196,15 @@ class OfferingUser:
             field_dict["requires_reconsent"] = requires_reconsent
         if has_compliance_checklist is not UNSET:
             field_dict["has_compliance_checklist"] = has_compliance_checklist
+        if consent_data is not UNSET:
+            field_dict["consent_data"] = consent_data
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.offering_user_consent_data_type_0 import OfferingUserConsentDataType0
+
         d = dict(src_dict)
         url = d.pop("url", UNSET)
 
@@ -271,6 +292,23 @@ class OfferingUser:
 
         has_compliance_checklist = d.pop("has_compliance_checklist", UNSET)
 
+        def _parse_consent_data(data: object) -> Union["OfferingUserConsentDataType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                consent_data_type_0 = OfferingUserConsentDataType0.from_dict(data)
+
+                return consent_data_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["OfferingUserConsentDataType0", None, Unset], data)
+
+        consent_data = _parse_consent_data(d.pop("consent_data", UNSET))
+
         offering_user = cls(
             url=url,
             uuid=uuid,
@@ -294,6 +332,7 @@ class OfferingUser:
             has_consent=has_consent,
             requires_reconsent=requires_reconsent,
             has_compliance_checklist=has_compliance_checklist,
+            consent_data=consent_data,
         )
 
         offering_user.additional_properties = d

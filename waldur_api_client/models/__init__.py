@@ -1141,6 +1141,7 @@ from .offering_thumbnail_request_multipart import OfferingThumbnailRequestMultip
 from .offering_usage_policy import OfferingUsagePolicy
 from .offering_usage_policy_request import OfferingUsagePolicyRequest
 from .offering_user import OfferingUser
+from .offering_user_consent_data_type_0 import OfferingUserConsentDataType0
 from .offering_user_request import OfferingUserRequest
 from .offering_user_role import OfferingUserRole
 from .offering_user_role_request import OfferingUserRoleRequest
@@ -1161,6 +1162,9 @@ from .onboarding_justification_onboarding_metadata import OnboardingJustificatio
 from .onboarding_justification_request import OnboardingJustificationRequest
 from .onboarding_justification_review_request import OnboardingJustificationReviewRequest
 from .onboarding_justification_user_submitted_customer_data import OnboardingJustificationUserSubmittedCustomerData
+from .onboarding_person_identifier_fields_retrieve_validation_method import (
+    OnboardingPersonIdentifierFieldsRetrieveValidationMethod,
+)
 from .onboarding_question_metadata import OnboardingQuestionMetadata
 from .onboarding_question_metadata_request import OnboardingQuestionMetadataRequest
 from .onboarding_run_validation_request_request import OnboardingRunValidationRequestRequest
@@ -1591,6 +1595,10 @@ from .permission_metadata_response_permissions_additional_property import (
 from .permission_metadata_response_roles import PermissionMetadataResponseRoles
 from .permission_metadata_response_roles_additional_property import PermissionMetadataResponseRolesAdditionalProperty
 from .permission_request import PermissionRequest
+from .person_identifier_fields_response import PersonIdentifierFieldsResponse
+from .person_identifier_fields_response_person_identifier_fields import (
+    PersonIdentifierFieldsResponsePersonIdentifierFields,
+)
 from .plan_component import PlanComponent
 from .plan_usage_response import PlanUsageResponse
 from .plugin_component import PluginComponent
@@ -3365,6 +3373,7 @@ __all__ = (
     "OfferingUsagePolicy",
     "OfferingUsagePolicyRequest",
     "OfferingUser",
+    "OfferingUserConsentDataType0",
     "OfferingUserRequest",
     "OfferingUserRole",
     "OfferingUserRoleRequest",
@@ -3383,6 +3392,7 @@ __all__ = (
     "OnboardingJustificationRequest",
     "OnboardingJustificationReviewRequest",
     "OnboardingJustificationUserSubmittedCustomerData",
+    "OnboardingPersonIdentifierFieldsRetrieveValidationMethod",
     "OnboardingQuestionMetadata",
     "OnboardingQuestionMetadataRequest",
     "OnboardingRunValidationRequestRequest",
@@ -3771,6 +3781,8 @@ __all__ = (
     "PermissionMetadataResponseRoles",
     "PermissionMetadataResponseRolesAdditionalProperty",
     "PermissionRequest",
+    "PersonIdentifierFieldsResponse",
+    "PersonIdentifierFieldsResponsePersonIdentifierFields",
     "PlanComponent",
     "PlanUsageResponse",
     "PluginComponent",
