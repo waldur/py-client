@@ -211,6 +211,12 @@ class ConstanceSettingsRequestMultipart:
         software_catalog_update_existing_packages (Union[Unset, bool]):
         software_catalog_cleanup_enabled (Union[Unset, bool]):
         software_catalog_retention_days (Union[Unset, int]):
+        user_actions_enabled (Union[Unset, bool]):
+        user_actions_pending_order_hours (Union[Unset, int]):
+        user_actions_high_urgency_notification (Union[Unset, bool]):
+        user_actions_notification_threshold (Union[Unset, int]):
+        user_actions_execution_retention_days (Union[Unset, int]):
+        user_actions_default_expiration_reminders (Union[Unset, list[str]]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -402,6 +408,12 @@ class ConstanceSettingsRequestMultipart:
     software_catalog_update_existing_packages: Union[Unset, bool] = UNSET
     software_catalog_cleanup_enabled: Union[Unset, bool] = UNSET
     software_catalog_retention_days: Union[Unset, int] = UNSET
+    user_actions_enabled: Union[Unset, bool] = UNSET
+    user_actions_pending_order_hours: Union[Unset, int] = UNSET
+    user_actions_high_urgency_notification: Union[Unset, bool] = UNSET
+    user_actions_notification_threshold: Union[Unset, int] = UNSET
+    user_actions_execution_retention_days: Union[Unset, int] = UNSET
+    user_actions_default_expiration_reminders: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -885,6 +897,20 @@ class ConstanceSettingsRequestMultipart:
 
         software_catalog_retention_days = self.software_catalog_retention_days
 
+        user_actions_enabled = self.user_actions_enabled
+
+        user_actions_pending_order_hours = self.user_actions_pending_order_hours
+
+        user_actions_high_urgency_notification = self.user_actions_high_urgency_notification
+
+        user_actions_notification_threshold = self.user_actions_notification_threshold
+
+        user_actions_execution_retention_days = self.user_actions_execution_retention_days
+
+        user_actions_default_expiration_reminders: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.user_actions_default_expiration_reminders, Unset):
+            user_actions_default_expiration_reminders = self.user_actions_default_expiration_reminders
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -1272,6 +1298,18 @@ class ConstanceSettingsRequestMultipart:
             field_dict["SOFTWARE_CATALOG_CLEANUP_ENABLED"] = software_catalog_cleanup_enabled
         if software_catalog_retention_days is not UNSET:
             field_dict["SOFTWARE_CATALOG_RETENTION_DAYS"] = software_catalog_retention_days
+        if user_actions_enabled is not UNSET:
+            field_dict["USER_ACTIONS_ENABLED"] = user_actions_enabled
+        if user_actions_pending_order_hours is not UNSET:
+            field_dict["USER_ACTIONS_PENDING_ORDER_HOURS"] = user_actions_pending_order_hours
+        if user_actions_high_urgency_notification is not UNSET:
+            field_dict["USER_ACTIONS_HIGH_URGENCY_NOTIFICATION"] = user_actions_high_urgency_notification
+        if user_actions_notification_threshold is not UNSET:
+            field_dict["USER_ACTIONS_NOTIFICATION_THRESHOLD"] = user_actions_notification_threshold
+        if user_actions_execution_retention_days is not UNSET:
+            field_dict["USER_ACTIONS_EXECUTION_RETENTION_DAYS"] = user_actions_execution_retention_days
+        if user_actions_default_expiration_reminders is not UNSET:
+            field_dict["USER_ACTIONS_DEFAULT_EXPIRATION_REMINDERS"] = user_actions_default_expiration_reminders
 
         return field_dict
 
@@ -2220,6 +2258,52 @@ class ConstanceSettingsRequestMultipart:
                 )
             )
 
+        if not isinstance(self.user_actions_enabled, Unset):
+            files.append(("USER_ACTIONS_ENABLED", (None, str(self.user_actions_enabled).encode(), "text/plain")))
+
+        if not isinstance(self.user_actions_pending_order_hours, Unset):
+            files.append(
+                (
+                    "USER_ACTIONS_PENDING_ORDER_HOURS",
+                    (None, str(self.user_actions_pending_order_hours).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.user_actions_high_urgency_notification, Unset):
+            files.append(
+                (
+                    "USER_ACTIONS_HIGH_URGENCY_NOTIFICATION",
+                    (None, str(self.user_actions_high_urgency_notification).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.user_actions_notification_threshold, Unset):
+            files.append(
+                (
+                    "USER_ACTIONS_NOTIFICATION_THRESHOLD",
+                    (None, str(self.user_actions_notification_threshold).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.user_actions_execution_retention_days, Unset):
+            files.append(
+                (
+                    "USER_ACTIONS_EXECUTION_RETENTION_DAYS",
+                    (None, str(self.user_actions_execution_retention_days).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.user_actions_default_expiration_reminders, Unset):
+            for (
+                user_actions_default_expiration_reminders_item_element
+            ) in self.user_actions_default_expiration_reminders:
+                files.append(
+                    (
+                        "USER_ACTIONS_DEFAULT_EXPIRATION_REMINDERS",
+                        (None, str(user_actions_default_expiration_reminders_item_element).encode(), "text/plain"),
+                    )
+                )
+
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
 
@@ -2801,6 +2885,20 @@ class ConstanceSettingsRequestMultipart:
 
         software_catalog_retention_days = d.pop("SOFTWARE_CATALOG_RETENTION_DAYS", UNSET)
 
+        user_actions_enabled = d.pop("USER_ACTIONS_ENABLED", UNSET)
+
+        user_actions_pending_order_hours = d.pop("USER_ACTIONS_PENDING_ORDER_HOURS", UNSET)
+
+        user_actions_high_urgency_notification = d.pop("USER_ACTIONS_HIGH_URGENCY_NOTIFICATION", UNSET)
+
+        user_actions_notification_threshold = d.pop("USER_ACTIONS_NOTIFICATION_THRESHOLD", UNSET)
+
+        user_actions_execution_retention_days = d.pop("USER_ACTIONS_EXECUTION_RETENTION_DAYS", UNSET)
+
+        user_actions_default_expiration_reminders = cast(
+            list[str], d.pop("USER_ACTIONS_DEFAULT_EXPIRATION_REMINDERS", UNSET)
+        )
+
         constance_settings_request_multipart = cls(
             site_name=site_name,
             site_description=site_description,
@@ -2991,6 +3089,12 @@ class ConstanceSettingsRequestMultipart:
             software_catalog_update_existing_packages=software_catalog_update_existing_packages,
             software_catalog_cleanup_enabled=software_catalog_cleanup_enabled,
             software_catalog_retention_days=software_catalog_retention_days,
+            user_actions_enabled=user_actions_enabled,
+            user_actions_pending_order_hours=user_actions_pending_order_hours,
+            user_actions_high_urgency_notification=user_actions_high_urgency_notification,
+            user_actions_notification_threshold=user_actions_notification_threshold,
+            user_actions_execution_retention_days=user_actions_execution_retention_days,
+            user_actions_default_expiration_reminders=user_actions_default_expiration_reminders,
         )
 
         constance_settings_request_multipart.additional_properties = d
