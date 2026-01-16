@@ -38,6 +38,8 @@ class MergedPluginOptionsRequest:
         minimal_team_count_for_provisioning (Union[Unset, int]): Minimal team count required for provisioning of
             resources
         maximal_resource_count_per_project (Union[Unset, int]): Maximal number of offering resources allowed per project
+        unique_resource_per_attribute (Union[Unset, str]): Attribute name to enforce uniqueness per value. E.g.,
+            'storage_data_type' ensures only one resource per storage type per project.
         required_team_role_for_provisioning (Union[Unset, str]): Required user role in a project for provisioning of
             resources
         enable_purchase_order_upload (Union[Unset, bool]): If set to True, users will be able to upload purchase orders.
@@ -122,6 +124,7 @@ class MergedPluginOptionsRequest:
     supports_pausing: Union[Unset, bool] = UNSET
     minimal_team_count_for_provisioning: Union[Unset, int] = UNSET
     maximal_resource_count_per_project: Union[Unset, int] = UNSET
+    unique_resource_per_attribute: Union[Unset, str] = UNSET
     required_team_role_for_provisioning: Union[Unset, str] = UNSET
     enable_purchase_order_upload: Union[Unset, bool] = UNSET
     require_purchase_order_upload: Union[Unset, bool] = UNSET
@@ -202,6 +205,8 @@ class MergedPluginOptionsRequest:
         minimal_team_count_for_provisioning = self.minimal_team_count_for_provisioning
 
         maximal_resource_count_per_project = self.maximal_resource_count_per_project
+
+        unique_resource_per_attribute = self.unique_resource_per_attribute
 
         required_team_role_for_provisioning = self.required_team_role_for_provisioning
 
@@ -344,6 +349,8 @@ class MergedPluginOptionsRequest:
             field_dict["minimal_team_count_for_provisioning"] = minimal_team_count_for_provisioning
         if maximal_resource_count_per_project is not UNSET:
             field_dict["maximal_resource_count_per_project"] = maximal_resource_count_per_project
+        if unique_resource_per_attribute is not UNSET:
+            field_dict["unique_resource_per_attribute"] = unique_resource_per_attribute
         if required_team_role_for_provisioning is not UNSET:
             field_dict["required_team_role_for_provisioning"] = required_team_role_for_provisioning
         if enable_purchase_order_upload is not UNSET:
@@ -490,6 +497,8 @@ class MergedPluginOptionsRequest:
         minimal_team_count_for_provisioning = d.pop("minimal_team_count_for_provisioning", UNSET)
 
         maximal_resource_count_per_project = d.pop("maximal_resource_count_per_project", UNSET)
+
+        unique_resource_per_attribute = d.pop("unique_resource_per_attribute", UNSET)
 
         required_team_role_for_provisioning = d.pop("required_team_role_for_provisioning", UNSET)
 
@@ -643,6 +652,7 @@ class MergedPluginOptionsRequest:
             supports_pausing=supports_pausing,
             minimal_team_count_for_provisioning=minimal_team_count_for_provisioning,
             maximal_resource_count_per_project=maximal_resource_count_per_project,
+            unique_resource_per_attribute=unique_resource_per_attribute,
             required_team_role_for_provisioning=required_team_role_for_provisioning,
             enable_purchase_order_upload=enable_purchase_order_upload,
             require_purchase_order_upload=require_purchase_order_upload,
