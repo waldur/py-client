@@ -316,10 +316,6 @@ from .chat_tools_execute_response_200 import ChatToolsExecuteResponse200
 from .check_unique_backend_id_request import CheckUniqueBackendIDRequest
 from .check_unique_backend_id_response import CheckUniqueBackendIDResponse
 from .checklist import Checklist
-from .checklist_category import ChecklistCategory
-from .checklist_category_request import ChecklistCategoryRequest
-from .checklist_category_request_form import ChecklistCategoryRequestForm
-from .checklist_category_request_multipart import ChecklistCategoryRequestMultipart
 from .checklist_completion import ChecklistCompletion
 from .checklist_completion_reviewer import ChecklistCompletionReviewer
 from .checklist_info import ChecklistInfo
@@ -1444,9 +1440,6 @@ from .patched_category_group_request import PatchedCategoryGroupRequest
 from .patched_category_group_request_form import PatchedCategoryGroupRequestForm
 from .patched_category_group_request_multipart import PatchedCategoryGroupRequestMultipart
 from .patched_category_help_articles_request import PatchedCategoryHelpArticlesRequest
-from .patched_checklist_category_request import PatchedChecklistCategoryRequest
-from .patched_checklist_category_request_form import PatchedChecklistCategoryRequestForm
-from .patched_checklist_category_request_multipart import PatchedChecklistCategoryRequestMultipart
 from .patched_checklist_request import PatchedChecklistRequest
 from .patched_cluster_security_group_request import PatchedClusterSecurityGroupRequest
 from .patched_comment_request import PatchedCommentRequest
@@ -2635,10 +2628,6 @@ __all__ = (
     "ChatResponseM",
     "ChatToolsExecuteResponse200",
     "Checklist",
-    "ChecklistCategory",
-    "ChecklistCategoryRequest",
-    "ChecklistCategoryRequestForm",
-    "ChecklistCategoryRequestMultipart",
     "ChecklistCompletion",
     "ChecklistCompletionReviewer",
     "ChecklistInfo",
@@ -3657,9 +3646,6 @@ __all__ = (
     "PatchedCategoryGroupRequestForm",
     "PatchedCategoryGroupRequestMultipart",
     "PatchedCategoryHelpArticlesRequest",
-    "PatchedChecklistCategoryRequest",
-    "PatchedChecklistCategoryRequestForm",
-    "PatchedChecklistCategoryRequestMultipart",
     "PatchedChecklistRequest",
     "PatchedClusterSecurityGroupRequest",
     "PatchedCommentRequest",

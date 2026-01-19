@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -16,14 +16,12 @@ class ServiceProviderChecklistSummary:
         checklist_name (str):
         questions_count (int):
         offerings_count (int):
-        category_name (Union[None, str]):
     """
 
     checklist_uuid: UUID
     checklist_name: str
     questions_count: int
     offerings_count: int
-    category_name: Union[None, str]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -35,9 +33,6 @@ class ServiceProviderChecklistSummary:
 
         offerings_count = self.offerings_count
 
-        category_name: Union[None, str]
-        category_name = self.category_name
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -46,7 +41,6 @@ class ServiceProviderChecklistSummary:
                 "checklist_name": checklist_name,
                 "questions_count": questions_count,
                 "offerings_count": offerings_count,
-                "category_name": category_name,
             }
         )
 
@@ -63,19 +57,11 @@ class ServiceProviderChecklistSummary:
 
         offerings_count = d.pop("offerings_count")
 
-        def _parse_category_name(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        category_name = _parse_category_name(d.pop("category_name"))
-
         service_provider_checklist_summary = cls(
             checklist_uuid=checklist_uuid,
             checklist_name=checklist_name,
             questions_count=questions_count,
             offerings_count=offerings_count,
-            category_name=category_name,
         )
 
         service_provider_checklist_summary.additional_properties = d
