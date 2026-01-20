@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,9 +17,12 @@ T = TypeVar("T", bound="ChatResponse")
 class ChatResponse:
     """
     Attributes:
-        k (Union[Unset, str]): Component Alias (e.g. 'markdown', 'code').
+        k (Union[Unset, str]): Component Alias (e.g. 'markdown', 'code', 'table').
         c (Union[Unset, str]): Content payload.
         t (Union[Unset, str]): Tag or language for dynamic blocks.
+        h (Union[Unset, list[Any]]): Table headers.
+        r (Union[Unset, list[Any]]): Table rows.
+        n (Union[Unset, int]): Total row count.
         m (Union[Unset, ChatResponseM]): System metadata.
         e (Union[Unset, str]): Error message.
     """
@@ -27,6 +30,9 @@ class ChatResponse:
     k: Union[Unset, str] = UNSET
     c: Union[Unset, str] = UNSET
     t: Union[Unset, str] = UNSET
+    h: Union[Unset, list[Any]] = UNSET
+    r: Union[Unset, list[Any]] = UNSET
+    n: Union[Unset, int] = UNSET
     m: Union[Unset, "ChatResponseM"] = UNSET
     e: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -37,6 +43,16 @@ class ChatResponse:
         c = self.c
 
         t = self.t
+
+        h: Union[Unset, list[Any]] = UNSET
+        if not isinstance(self.h, Unset):
+            h = self.h
+
+        r: Union[Unset, list[Any]] = UNSET
+        if not isinstance(self.r, Unset):
+            r = self.r
+
+        n = self.n
 
         m: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.m, Unset):
@@ -53,6 +69,12 @@ class ChatResponse:
             field_dict["c"] = c
         if t is not UNSET:
             field_dict["t"] = t
+        if h is not UNSET:
+            field_dict["h"] = h
+        if r is not UNSET:
+            field_dict["r"] = r
+        if n is not UNSET:
+            field_dict["n"] = n
         if m is not UNSET:
             field_dict["m"] = m
         if e is not UNSET:
@@ -71,6 +93,12 @@ class ChatResponse:
 
         t = d.pop("t", UNSET)
 
+        h = cast(list[Any], d.pop("h", UNSET))
+
+        r = cast(list[Any], d.pop("r", UNSET))
+
+        n = d.pop("n", UNSET)
+
         _m = d.pop("m", UNSET)
         m: Union[Unset, ChatResponseM]
         if isinstance(_m, Unset):
@@ -84,6 +112,9 @@ class ChatResponse:
             k=k,
             c=c,
             t=t,
+            h=h,
+            r=r,
+            n=n,
             m=m,
             e=e,
         )
