@@ -35,7 +35,7 @@ class InvoiceItem:
         end (Union[Unset, datetime.datetime]): Date and time when item usage has ended.
         article_code (Union[Unset, str]):
         project_name (Union[Unset, str]):
-        project_uuid (Union[Unset, UUID]):
+        project_uuid (Union[None, UUID, Unset]):
         quantity (Union[Unset, str]):
         details (Union[Unset, InvoiceItemDetails]):
         resource (Union[None, Unset, str]):
@@ -60,7 +60,7 @@ class InvoiceItem:
     end: Union[Unset, datetime.datetime] = UNSET
     article_code: Union[Unset, str] = UNSET
     project_name: Union[Unset, str] = UNSET
-    project_uuid: Union[Unset, UUID] = UNSET
+    project_uuid: Union[None, UUID, Unset] = UNSET
     quantity: Union[Unset, str] = UNSET
     details: Union[Unset, "InvoiceItemDetails"] = UNSET
     resource: Union[None, Unset, str] = UNSET
@@ -108,9 +108,13 @@ class InvoiceItem:
 
         project_name = self.project_name
 
-        project_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.project_uuid, Unset):
+        project_uuid: Union[None, Unset, str]
+        if isinstance(self.project_uuid, Unset):
+            project_uuid = UNSET
+        elif isinstance(self.project_uuid, UUID):
             project_uuid = str(self.project_uuid)
+        else:
+            project_uuid = self.project_uuid
 
         quantity = self.quantity
 
@@ -247,12 +251,22 @@ class InvoiceItem:
 
         project_name = d.pop("project_name", UNSET)
 
-        _project_uuid = d.pop("project_uuid", UNSET)
-        project_uuid: Union[Unset, UUID]
-        if isinstance(_project_uuid, Unset):
-            project_uuid = UNSET
-        else:
-            project_uuid = UUID(_project_uuid)
+        def _parse_project_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                project_uuid_type_0 = UUID(data)
+
+                return project_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        project_uuid = _parse_project_uuid(d.pop("project_uuid", UNSET))
 
         quantity = d.pop("quantity", UNSET)
 

@@ -636,6 +636,10 @@ from .impact_level_enum import ImpactLevelEnum
 from .import_publications_request import ImportPublicationsRequest
 from .import_publications_source_enum import ImportPublicationsSourceEnum
 from .import_resource_request import ImportResourceRequest
+from .import_usage_item_request import ImportUsageItemRequest
+from .import_usage_request import ImportUsageRequest
+from .import_usage_response import ImportUsageResponse
+from .import_usage_response_errors_item import ImportUsageResponseErrorsItem
 from .importable_resource import ImportableResource
 from .instance_flavor_change_request import InstanceFlavorChangeRequest
 from .integration_status import IntegrationStatus
@@ -2939,6 +2943,10 @@ __all__ = (
     "ImportPublicationsRequest",
     "ImportPublicationsSourceEnum",
     "ImportResourceRequest",
+    "ImportUsageItemRequest",
+    "ImportUsageRequest",
+    "ImportUsageResponse",
+    "ImportUsageResponseErrorsItem",
     "InstanceFlavorChangeRequest",
     "IntegrationStatus",
     "IntegrationStatusDetails",

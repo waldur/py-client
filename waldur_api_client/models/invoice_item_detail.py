@@ -19,8 +19,13 @@ class InvoiceItemDetail:
     Attributes:
         invoice (str):
         uuid (UUID):
+        price (float):
         offering_uuid (UUID):
         offering_component_type (Union[None, str]):
+        project_uuid (Union[None, UUID]):
+        project_name (str):
+        customer_uuid (UUID):
+        customer_name (str):
         resource (Union[None, Unset, str]):
         article_code (Union[Unset, str]):
         unit_price (Union[Unset, str]):
@@ -35,8 +40,13 @@ class InvoiceItemDetail:
 
     invoice: str
     uuid: UUID
+    price: float
     offering_uuid: UUID
     offering_component_type: Union[None, str]
+    project_uuid: Union[None, UUID]
+    project_name: str
+    customer_uuid: UUID
+    customer_name: str
     resource: Union[None, Unset, str] = UNSET
     article_code: Union[Unset, str] = UNSET
     unit_price: Union[Unset, str] = UNSET
@@ -54,10 +64,24 @@ class InvoiceItemDetail:
 
         uuid = str(self.uuid)
 
+        price = self.price
+
         offering_uuid = str(self.offering_uuid)
 
         offering_component_type: Union[None, str]
         offering_component_type = self.offering_component_type
+
+        project_uuid: Union[None, str]
+        if isinstance(self.project_uuid, UUID):
+            project_uuid = str(self.project_uuid)
+        else:
+            project_uuid = self.project_uuid
+
+        project_name = self.project_name
+
+        customer_uuid = str(self.customer_uuid)
+
+        customer_name = self.customer_name
 
         resource: Union[None, Unset, str]
         if isinstance(self.resource, Unset):
@@ -95,8 +119,13 @@ class InvoiceItemDetail:
             {
                 "invoice": invoice,
                 "uuid": uuid,
+                "price": price,
                 "offering_uuid": offering_uuid,
                 "offering_component_type": offering_component_type,
+                "project_uuid": project_uuid,
+                "project_name": project_name,
+                "customer_uuid": customer_uuid,
+                "customer_name": customer_name,
             }
         )
         if resource is not UNSET:
@@ -129,6 +158,8 @@ class InvoiceItemDetail:
 
         uuid = UUID(d.pop("uuid"))
 
+        price = d.pop("price")
+
         offering_uuid = UUID(d.pop("offering_uuid"))
 
         def _parse_offering_component_type(data: object) -> Union[None, str]:
@@ -137,6 +168,27 @@ class InvoiceItemDetail:
             return cast(Union[None, str], data)
 
         offering_component_type = _parse_offering_component_type(d.pop("offering_component_type"))
+
+        def _parse_project_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                project_uuid_type_0 = UUID(data)
+
+                return project_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        project_uuid = _parse_project_uuid(d.pop("project_uuid"))
+
+        project_name = d.pop("project_name")
+
+        customer_uuid = UUID(d.pop("customer_uuid"))
+
+        customer_name = d.pop("customer_name")
 
         def _parse_resource(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -183,8 +235,13 @@ class InvoiceItemDetail:
         invoice_item_detail = cls(
             invoice=invoice,
             uuid=uuid,
+            price=price,
             offering_uuid=offering_uuid,
             offering_component_type=offering_component_type,
+            project_uuid=project_uuid,
+            project_name=project_name,
+            customer_uuid=customer_uuid,
+            customer_name=customer_name,
             resource=resource,
             article_code=article_code,
             unit_price=unit_price,
