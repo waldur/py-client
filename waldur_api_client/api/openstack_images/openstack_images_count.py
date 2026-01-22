@@ -18,6 +18,7 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
+    show_duplicate_names: Union[Unset, bool] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -42,6 +43,8 @@ def _get_kwargs(
     if not isinstance(settings_uuid, Unset):
         json_settings_uuid = str(settings_uuid)
     params["settings_uuid"] = json_settings_uuid
+
+    params["show_duplicate_names"] = show_duplicate_names
 
     params["tenant"] = tenant
 
@@ -97,6 +100,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
+    show_duplicate_names: Union[Unset, bool] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -112,6 +116,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):
+        show_duplicate_names (Union[Unset, bool]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -131,6 +136,7 @@ def sync_detailed(
         page_size=page_size,
         settings=settings,
         settings_uuid=settings_uuid,
+        show_duplicate_names=show_duplicate_names,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
@@ -152,6 +158,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
+    show_duplicate_names: Union[Unset, bool] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -167,6 +174,7 @@ def sync(
         page_size (Union[Unset, int]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):
+        show_duplicate_names (Union[Unset, bool]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -187,6 +195,7 @@ def sync(
         page_size=page_size,
         settings=settings,
         settings_uuid=settings_uuid,
+        show_duplicate_names=show_duplicate_names,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     ).parsed
@@ -202,6 +211,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
+    show_duplicate_names: Union[Unset, bool] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -217,6 +227,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):
+        show_duplicate_names (Union[Unset, bool]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -236,6 +247,7 @@ async def asyncio_detailed(
         page_size=page_size,
         settings=settings,
         settings_uuid=settings_uuid,
+        show_duplicate_names=show_duplicate_names,
         tenant=tenant,
         tenant_uuid=tenant_uuid,
     )
@@ -255,6 +267,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
+    show_duplicate_names: Union[Unset, bool] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -270,6 +283,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):
+        show_duplicate_names (Union[Unset, bool]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -291,6 +305,7 @@ async def asyncio(
             page_size=page_size,
             settings=settings,
             settings_uuid=settings_uuid,
+            show_duplicate_names=show_duplicate_names,
             tenant=tenant,
             tenant_uuid=tenant_uuid,
         )
