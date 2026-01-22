@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from ..models.cascade_config import CascadeConfig
     from ..models.component_multiplier_config import ComponentMultiplierConfig
     from ..models.k8s_default_configuration import K8SDefaultConfiguration
+    from ..models.storage_folder_config import StorageFolderConfig
 
 
 T = TypeVar("T", bound="OptionField")
@@ -30,6 +31,7 @@ class OptionField:
         max_ (Union[Unset, int]):
         cascade_config (Union[Unset, CascadeConfig]):
         component_multiplier_config (Union[Unset, ComponentMultiplierConfig]):
+        storage_folder_config (Union[Unset, StorageFolderConfig]):
         default_configs (Union[Unset, K8SDefaultConfiguration]):
     """
 
@@ -43,6 +45,7 @@ class OptionField:
     max_: Union[Unset, int] = UNSET
     cascade_config: Union[Unset, "CascadeConfig"] = UNSET
     component_multiplier_config: Union[Unset, "ComponentMultiplierConfig"] = UNSET
+    storage_folder_config: Union[Unset, "StorageFolderConfig"] = UNSET
     default_configs: Union[Unset, "K8SDefaultConfiguration"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -73,6 +76,10 @@ class OptionField:
         if not isinstance(self.component_multiplier_config, Unset):
             component_multiplier_config = self.component_multiplier_config.to_dict()
 
+        storage_folder_config: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.storage_folder_config, Unset):
+            storage_folder_config = self.storage_folder_config.to_dict()
+
         default_configs: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.default_configs, Unset):
             default_configs = self.default_configs.to_dict()
@@ -101,6 +108,8 @@ class OptionField:
             field_dict["cascade_config"] = cascade_config
         if component_multiplier_config is not UNSET:
             field_dict["component_multiplier_config"] = component_multiplier_config
+        if storage_folder_config is not UNSET:
+            field_dict["storage_folder_config"] = storage_folder_config
         if default_configs is not UNSET:
             field_dict["default_configs"] = default_configs
 
@@ -111,6 +120,7 @@ class OptionField:
         from ..models.cascade_config import CascadeConfig
         from ..models.component_multiplier_config import ComponentMultiplierConfig
         from ..models.k8s_default_configuration import K8SDefaultConfiguration
+        from ..models.storage_folder_config import StorageFolderConfig
 
         d = dict(src_dict)
         type_ = OptionFieldTypeEnum(d.pop("type"))
@@ -143,6 +153,13 @@ class OptionField:
         else:
             component_multiplier_config = ComponentMultiplierConfig.from_dict(_component_multiplier_config)
 
+        _storage_folder_config = d.pop("storage_folder_config", UNSET)
+        storage_folder_config: Union[Unset, StorageFolderConfig]
+        if isinstance(_storage_folder_config, Unset):
+            storage_folder_config = UNSET
+        else:
+            storage_folder_config = StorageFolderConfig.from_dict(_storage_folder_config)
+
         _default_configs = d.pop("default_configs", UNSET)
         default_configs: Union[Unset, K8SDefaultConfiguration]
         if isinstance(_default_configs, Unset):
@@ -161,6 +178,7 @@ class OptionField:
             max_=max_,
             cascade_config=cascade_config,
             component_multiplier_config=component_multiplier_config,
+            storage_folder_config=storage_folder_config,
             default_configs=default_configs,
         )
 

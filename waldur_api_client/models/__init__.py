@@ -486,6 +486,7 @@ from .database_size_stats import DatabaseSizeStats
 from .database_stats_response import DatabaseStatsResponse
 from .dead_letter_queue import DeadLetterQueue
 from .deciding_entity_enum import DecidingEntityEnum
+from .default_permission_enum import DefaultPermissionEnum
 from .delete_attachments_request import DeleteAttachmentsRequest
 from .demo_preset import DemoPreset
 from .demo_preset_entity_counts import DemoPresetEntityCounts
@@ -2170,6 +2171,10 @@ from .source_type_enum import SourceTypeEnum
 from .ssh_key import SshKey
 from .ssh_key_request import SshKeyRequest
 from .state_transition_error import StateTransitionError
+from .storage_data_type import StorageDataType
+from .storage_data_type_request import StorageDataTypeRequest
+from .storage_folder_config import StorageFolderConfig
+from .storage_folder_config_request import StorageFolderConfigRequest
 from .storage_mode_enum import StorageModeEnum
 from .sub_net_mapping import SubNetMapping
 from .sub_net_mapping_request import SubNetMappingRequest
@@ -2804,6 +2809,7 @@ __all__ = (
     "DataVolumeRequest",
     "DeadLetterQueue",
     "DecidingEntityEnum",
+    "DefaultPermissionEnum",
     "DeleteAttachmentsRequest",
     "DemoPreset",
     "DemoPresetEntityCounts",
@@ -4334,6 +4340,10 @@ __all__ = (
     "SshKey",
     "SshKeyRequest",
     "StateTransitionError",
+    "StorageDataType",
+    "StorageDataTypeRequest",
+    "StorageFolderConfig",
+    "StorageFolderConfigRequest",
     "StorageModeEnum",
     "SubmitRequestResponse",
     "SubNetMapping",

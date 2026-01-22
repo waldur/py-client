@@ -17,6 +17,7 @@ class OptionFieldTypeEnum(str, Enum):
     SELECT_STRING = "select_string"
     SELECT_STRING_MULTI = "select_string_multi"
     SINGLE_DATACENTER_K8S_CONFIG = "single_datacenter_k8s_config"
+    STORAGE_FOLDER_MANAGER = "storage_folder_manager"
     STRING = "string"
     TEXT = "text"
     TIME = "time"
