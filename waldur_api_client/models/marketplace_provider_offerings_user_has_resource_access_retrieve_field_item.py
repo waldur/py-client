@@ -63,6 +63,7 @@ class MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem(str, En
     SLUG = "slug"
     SOFTWARE_CATALOGS = "software_catalogs"
     STATE = "state"
+    TAGS = "tags"
     THUMBNAIL = "thumbnail"
     TOTAL_COST = "total_cost"
     TOTAL_COST_ESTIMATED = "total_cost_estimated"

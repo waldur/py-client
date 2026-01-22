@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from ..models.nested_role import NestedRole
     from ..models.nested_screenshot import NestedScreenshot
     from ..models.nested_software_catalog import NestedSoftwareCatalog
+    from ..models.nested_tag import NestedTag
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
     from ..models.organization_group import OrganizationGroup
@@ -90,6 +91,7 @@ class PublicOfferingDetails:
         country (Union[BlankEnum, CountryEnum, Unset]): Country code (ISO 3166-1 alpha-2)
         backend_id (Union[Unset, str]):
         organization_groups (Union[Unset, list['OrganizationGroup']]):
+        tags (Union[Unset, list['NestedTag']]):
         image (Union[None, Unset, str]):
         total_customers (Union[None, Unset, int]):
         total_cost (Union[None, Unset, int]):
@@ -161,6 +163,7 @@ class PublicOfferingDetails:
     country: Union[BlankEnum, CountryEnum, Unset] = UNSET
     backend_id: Union[Unset, str] = UNSET
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
+    tags: Union[Unset, list["NestedTag"]] = UNSET
     image: Union[None, Unset, str] = UNSET
     total_customers: Union[None, Unset, int] = UNSET
     total_cost: Union[None, Unset, int] = UNSET
@@ -419,6 +422,13 @@ class PublicOfferingDetails:
                 organization_groups_item = organization_groups_item_data.to_dict()
                 organization_groups.append(organization_groups_item)
 
+        tags: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.tags, Unset):
+            tags = []
+            for tags_item_data in self.tags:
+                tags_item = tags_item_data.to_dict()
+                tags.append(tags_item)
+
         image: Union[None, Unset, str]
         if isinstance(self.image, Unset):
             image = UNSET
@@ -605,6 +615,8 @@ class PublicOfferingDetails:
             field_dict["backend_id"] = backend_id
         if organization_groups is not UNSET:
             field_dict["organization_groups"] = organization_groups
+        if tags is not UNSET:
+            field_dict["tags"] = tags
         if image is not UNSET:
             field_dict["image"] = image
         if total_customers is not UNSET:
@@ -649,6 +661,7 @@ class PublicOfferingDetails:
         from ..models.nested_role import NestedRole
         from ..models.nested_screenshot import NestedScreenshot
         from ..models.nested_software_catalog import NestedSoftwareCatalog
+        from ..models.nested_tag import NestedTag
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
         from ..models.organization_group import OrganizationGroup
@@ -1000,6 +1013,13 @@ class PublicOfferingDetails:
 
             organization_groups.append(organization_groups_item)
 
+        tags = []
+        _tags = d.pop("tags", UNSET)
+        for tags_item_data in _tags or []:
+            tags_item = NestedTag.from_dict(tags_item_data)
+
+            tags.append(tags_item)
+
         def _parse_image(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -1167,6 +1187,7 @@ class PublicOfferingDetails:
             country=country,
             backend_id=backend_id,
             organization_groups=organization_groups,
+            tags=tags,
             image=image,
             total_customers=total_customers,
             total_cost=total_cost,

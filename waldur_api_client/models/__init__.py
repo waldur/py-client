@@ -1076,6 +1076,8 @@ from .nested_software_target import NestedSoftwareTarget
 from .nested_software_target_request import NestedSoftwareTargetRequest
 from .nested_software_version import NestedSoftwareVersion
 from .nested_software_version_request import NestedSoftwareVersionRequest
+from .nested_tag import NestedTag
+from .nested_tag_request import NestedTagRequest
 from .network_rbac_policy import NetworkRBACPolicy
 from .network_rbac_policy_request import NetworkRBACPolicyRequest
 from .node_disk_driver_enum import NodeDiskDriverEnum
@@ -1562,6 +1564,7 @@ from .patched_slurm_allocation_request import PatchedSlurmAllocationRequest
 from .patched_slurm_periodic_usage_policy_request import PatchedSlurmPeriodicUsagePolicyRequest
 from .patched_software_catalog_request import PatchedSoftwareCatalogRequest
 from .patched_software_package_request import PatchedSoftwarePackageRequest
+from .patched_tag_request import PatchedTagRequest
 from .patched_template_request import PatchedTemplateRequest
 from .patched_user_agreement_request import PatchedUserAgreementRequest
 from .patched_user_info_request import PatchedUserInfoRequest
@@ -2187,6 +2190,9 @@ from .support_user import SupportUser
 from .supported_countries_response import SupportedCountriesResponse
 from .sync_status_enum import SyncStatusEnum
 from .table_size import TableSize
+from .tag import Tag
+from .tag_request import TagRequest
+from .tags_request import TagsRequest
 from .template import Template
 from .template_attachment import TemplateAttachment
 from .template_attachment_request import TemplateAttachmentRequest
@@ -3322,6 +3328,8 @@ __all__ = (
     "NestedSoftwareTargetRequest",
     "NestedSoftwareVersion",
     "NestedSoftwareVersionRequest",
+    "NestedTag",
+    "NestedTagRequest",
     "NetworkRBACPolicy",
     "NetworkRBACPolicyRequest",
     "NodeDiskDriverEnum",
@@ -3768,6 +3776,7 @@ __all__ = (
     "PatchedSlurmPeriodicUsagePolicyRequest",
     "PatchedSoftwareCatalogRequest",
     "PatchedSoftwarePackageRequest",
+    "PatchedTagRequest",
     "PatchedTemplateRequest",
     "PatchedUserAgreementRequest",
     "PatchedUserInfoRequest",
@@ -4345,6 +4354,9 @@ __all__ = (
     "SupportUser",
     "SyncStatusEnum",
     "TableSize",
+    "Tag",
+    "TagRequest",
+    "TagsRequest",
     "Template",
     "TemplateAttachment",
     "TemplateAttachmentRequest",

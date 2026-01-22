@@ -52,6 +52,10 @@ def _get_kwargs(
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
+    tag: Union[Unset, list[UUID]] = UNSET,
+    tag_name: Union[Unset, list[str]] = UNSET,
+    tag_names_and: Union[Unset, str] = UNSET,
+    tags_and: Union[Unset, str] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
     user_has_offering_user: Union[Unset, bool] = UNSET,
@@ -179,6 +183,25 @@ def _get_kwargs(
 
     params["state"] = json_state
 
+    json_tag: Union[Unset, list[str]] = UNSET
+    if not isinstance(tag, Unset):
+        json_tag = []
+        for tag_item_data in tag:
+            tag_item = str(tag_item_data)
+            json_tag.append(tag_item)
+
+    params["tag"] = json_tag
+
+    json_tag_name: Union[Unset, list[str]] = UNSET
+    if not isinstance(tag_name, Unset):
+        json_tag_name = tag_name
+
+    params["tag_name"] = json_tag_name
+
+    params["tag_names_and"] = tag_names_and
+
+    params["tags_and"] = tags_and
+
     json_type_: Union[Unset, list[str]] = UNSET
     if not isinstance(type_, Unset):
         json_type_ = type_
@@ -267,6 +290,10 @@ def sync_detailed(
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
+    tag: Union[Unset, list[UUID]] = UNSET,
+    tag_name: Union[Unset, list[str]] = UNSET,
+    tag_names_and: Union[Unset, str] = UNSET,
+    tags_and: Union[Unset, str] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
     user_has_offering_user: Union[Unset, bool] = UNSET,
@@ -311,6 +338,10 @@ def sync_detailed(
         shared (Union[Unset, bool]):
         start (Union[Unset, str]):
         state (Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]]):
+        tag (Union[Unset, list[UUID]]):
+        tag_name (Union[Unset, list[str]]):
+        tag_names_and (Union[Unset, str]):
+        tags_and (Union[Unset, str]):
         type_ (Union[Unset, list[str]]):
         user_has_consent (Union[Unset, bool]):
         user_has_offering_user (Union[Unset, bool]):
@@ -359,6 +390,10 @@ def sync_detailed(
         shared=shared,
         start=start,
         state=state,
+        tag=tag,
+        tag_name=tag_name,
+        tag_names_and=tag_names_and,
+        tags_and=tags_and,
         type_=type_,
         user_has_consent=user_has_consent,
         user_has_offering_user=user_has_offering_user,
@@ -409,6 +444,10 @@ def sync(
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
+    tag: Union[Unset, list[UUID]] = UNSET,
+    tag_name: Union[Unset, list[str]] = UNSET,
+    tag_names_and: Union[Unset, str] = UNSET,
+    tags_and: Union[Unset, str] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
     user_has_offering_user: Union[Unset, bool] = UNSET,
@@ -453,6 +492,10 @@ def sync(
         shared (Union[Unset, bool]):
         start (Union[Unset, str]):
         state (Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]]):
+        tag (Union[Unset, list[UUID]]):
+        tag_name (Union[Unset, list[str]]):
+        tag_names_and (Union[Unset, str]):
+        tags_and (Union[Unset, str]):
         type_ (Union[Unset, list[str]]):
         user_has_consent (Union[Unset, bool]):
         user_has_offering_user (Union[Unset, bool]):
@@ -502,6 +545,10 @@ def sync(
         shared=shared,
         start=start,
         state=state,
+        tag=tag,
+        tag_name=tag_name,
+        tag_names_and=tag_names_and,
+        tags_and=tags_and,
         type_=type_,
         user_has_consent=user_has_consent,
         user_has_offering_user=user_has_offering_user,
@@ -546,6 +593,10 @@ async def asyncio_detailed(
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
+    tag: Union[Unset, list[UUID]] = UNSET,
+    tag_name: Union[Unset, list[str]] = UNSET,
+    tag_names_and: Union[Unset, str] = UNSET,
+    tags_and: Union[Unset, str] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
     user_has_offering_user: Union[Unset, bool] = UNSET,
@@ -590,6 +641,10 @@ async def asyncio_detailed(
         shared (Union[Unset, bool]):
         start (Union[Unset, str]):
         state (Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]]):
+        tag (Union[Unset, list[UUID]]):
+        tag_name (Union[Unset, list[str]]):
+        tag_names_and (Union[Unset, str]):
+        tags_and (Union[Unset, str]):
         type_ (Union[Unset, list[str]]):
         user_has_consent (Union[Unset, bool]):
         user_has_offering_user (Union[Unset, bool]):
@@ -638,6 +693,10 @@ async def asyncio_detailed(
         shared=shared,
         start=start,
         state=state,
+        tag=tag,
+        tag_name=tag_name,
+        tag_names_and=tag_names_and,
+        tags_and=tags_and,
         type_=type_,
         user_has_consent=user_has_consent,
         user_has_offering_user=user_has_offering_user,
@@ -686,6 +745,10 @@ async def asyncio(
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
+    tag: Union[Unset, list[UUID]] = UNSET,
+    tag_name: Union[Unset, list[str]] = UNSET,
+    tag_names_and: Union[Unset, str] = UNSET,
+    tags_and: Union[Unset, str] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
     user_has_offering_user: Union[Unset, bool] = UNSET,
@@ -730,6 +793,10 @@ async def asyncio(
         shared (Union[Unset, bool]):
         start (Union[Unset, str]):
         state (Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]]):
+        tag (Union[Unset, list[UUID]]):
+        tag_name (Union[Unset, list[str]]):
+        tag_names_and (Union[Unset, str]):
+        tags_and (Union[Unset, str]):
         type_ (Union[Unset, list[str]]):
         user_has_consent (Union[Unset, bool]):
         user_has_offering_user (Union[Unset, bool]):
@@ -780,6 +847,10 @@ async def asyncio(
             shared=shared,
             start=start,
             state=state,
+            tag=tag,
+            tag_name=tag_name,
+            tag_names_and=tag_names_and,
+            tags_and=tags_and,
             type_=type_,
             user_has_consent=user_has_consent,
             user_has_offering_user=user_has_offering_user,
@@ -823,6 +894,10 @@ def sync_all(
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
+    tag: Union[Unset, list[UUID]] = UNSET,
+    tag_name: Union[Unset, list[str]] = UNSET,
+    tag_names_and: Union[Unset, str] = UNSET,
+    tags_and: Union[Unset, str] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
     user_has_offering_user: Union[Unset, bool] = UNSET,
@@ -868,6 +943,10 @@ def sync_all(
         shared (Union[Unset, bool]):
         start (Union[Unset, str]):
         state (Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]]):
+        tag (Union[Unset, list[UUID]]):
+        tag_name (Union[Unset, list[str]]):
+        tag_names_and (Union[Unset, str]):
+        tags_and (Union[Unset, str]):
         type_ (Union[Unset, list[str]]):
         user_has_consent (Union[Unset, bool]):
         user_has_offering_user (Union[Unset, bool]):
@@ -918,6 +997,10 @@ def sync_all(
         shared=shared,
         start=start,
         state=state,
+        tag=tag,
+        tag_name=tag_name,
+        tag_names_and=tag_names_and,
+        tags_and=tags_and,
         type_=type_,
         user_has_consent=user_has_consent,
         user_has_offering_user=user_has_offering_user,
@@ -1001,6 +1084,10 @@ async def asyncio_all(
     shared: Union[Unset, bool] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]] = UNSET,
+    tag: Union[Unset, list[UUID]] = UNSET,
+    tag_name: Union[Unset, list[str]] = UNSET,
+    tag_names_and: Union[Unset, str] = UNSET,
+    tags_and: Union[Unset, str] = UNSET,
     type_: Union[Unset, list[str]] = UNSET,
     user_has_consent: Union[Unset, bool] = UNSET,
     user_has_offering_user: Union[Unset, bool] = UNSET,
@@ -1046,6 +1133,10 @@ async def asyncio_all(
         shared (Union[Unset, bool]):
         start (Union[Unset, str]):
         state (Union[Unset, list[MarketplaceProviderOfferingsCostsListStateItem]]):
+        tag (Union[Unset, list[UUID]]):
+        tag_name (Union[Unset, list[str]]):
+        tag_names_and (Union[Unset, str]):
+        tags_and (Union[Unset, str]):
         type_ (Union[Unset, list[str]]):
         user_has_consent (Union[Unset, bool]):
         user_has_offering_user (Union[Unset, bool]):
@@ -1096,6 +1187,10 @@ async def asyncio_all(
         shared=shared,
         start=start,
         state=state,
+        tag=tag,
+        tag_name=tag_name,
+        tag_names_and=tag_names_and,
+        tags_and=tags_and,
         type_=type_,
         user_has_consent=user_has_consent,
         user_has_offering_user=user_has_offering_user,
