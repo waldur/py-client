@@ -14,6 +14,7 @@ class ProposalProtectedCallsRetrieveFieldItem(str, Enum):
     END_DATE = "end_date"
     EXTERNAL_URL = "external_url"
     FIXED_DURATION_IN_DAYS = "fixed_duration_in_days"
+    HAS_ELIGIBILITY_RESTRICTIONS = "has_eligibility_restrictions"
     MANAGER = "manager"
     MANAGER_UUID = "manager_uuid"
     NAME = "name"
@@ -28,6 +29,12 @@ class ProposalProtectedCallsRetrieveFieldItem(str, Enum):
     START_DATE = "start_date"
     STATE = "state"
     URL = "url"
+    USER_AFFILIATIONS = "user_affiliations"
+    USER_ASSURANCE_LEVELS = "user_assurance_levels"
+    USER_EMAIL_PATTERNS = "user_email_patterns"
+    USER_IDENTITY_SOURCES = "user_identity_sources"
+    USER_NATIONALITIES = "user_nationalities"
+    USER_ORGANIZATION_TYPES = "user_organization_types"
     UUID = "uuid"
 
     def __str__(self) -> str:

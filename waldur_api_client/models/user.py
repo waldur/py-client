@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.gender_enum import GenderEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -60,6 +61,15 @@ class User:
         identity_source (Union[Unset, str]): Indicates what identity provider was used.
         has_active_session (Union[Unset, bool]):
         ip_address (Union[None, Unset, str]):
+        gender (Union[GenderEnum, None, Unset]): ISO 5218 gender code
+        personal_title (Union[Unset, str]): Honorific title (Mr, Ms, Dr, Prof, etc.)
+        place_of_birth (Union[Unset, str]):
+        country_of_residence (Union[Unset, str]):
+        nationality (Union[Unset, str]): Primary citizenship (ISO 3166-1 alpha-2 code)
+        nationalities (Union[Unset, Any]): List of all citizenships (ISO 3166-1 alpha-2 codes)
+        organization_country (Union[Unset, str]):
+        organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
+        eduperson_assurance (Union[Unset, Any]): REFEDS assurance profile URIs from identity provider
     """
 
     url: Union[Unset, str] = UNSET
@@ -99,6 +109,15 @@ class User:
     identity_source: Union[Unset, str] = UNSET
     has_active_session: Union[Unset, bool] = UNSET
     ip_address: Union[None, Unset, str] = UNSET
+    gender: Union[GenderEnum, None, Unset] = UNSET
+    personal_title: Union[Unset, str] = UNSET
+    place_of_birth: Union[Unset, str] = UNSET
+    country_of_residence: Union[Unset, str] = UNSET
+    nationality: Union[Unset, str] = UNSET
+    nationalities: Union[Unset, Any] = UNSET
+    organization_country: Union[Unset, str] = UNSET
+    organization_type: Union[Unset, str] = UNSET
+    eduperson_assurance: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -225,6 +244,30 @@ class User:
         else:
             ip_address = self.ip_address
 
+        gender: Union[None, Unset, int]
+        if isinstance(self.gender, Unset):
+            gender = UNSET
+        elif isinstance(self.gender, GenderEnum):
+            gender = self.gender.value
+        else:
+            gender = self.gender
+
+        personal_title = self.personal_title
+
+        place_of_birth = self.place_of_birth
+
+        country_of_residence = self.country_of_residence
+
+        nationality = self.nationality
+
+        nationalities = self.nationalities
+
+        organization_country = self.organization_country
+
+        organization_type = self.organization_type
+
+        eduperson_assurance = self.eduperson_assurance
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -302,6 +345,24 @@ class User:
             field_dict["has_active_session"] = has_active_session
         if ip_address is not UNSET:
             field_dict["ip_address"] = ip_address
+        if gender is not UNSET:
+            field_dict["gender"] = gender
+        if personal_title is not UNSET:
+            field_dict["personal_title"] = personal_title
+        if place_of_birth is not UNSET:
+            field_dict["place_of_birth"] = place_of_birth
+        if country_of_residence is not UNSET:
+            field_dict["country_of_residence"] = country_of_residence
+        if nationality is not UNSET:
+            field_dict["nationality"] = nationality
+        if nationalities is not UNSET:
+            field_dict["nationalities"] = nationalities
+        if organization_country is not UNSET:
+            field_dict["organization_country"] = organization_country
+        if organization_type is not UNSET:
+            field_dict["organization_type"] = organization_type
+        if eduperson_assurance is not UNSET:
+            field_dict["eduperson_assurance"] = eduperson_assurance
 
         return field_dict
 
@@ -479,6 +540,39 @@ class User:
 
         ip_address = _parse_ip_address(d.pop("ip_address", UNSET))
 
+        def _parse_gender(data: object) -> Union[GenderEnum, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, int):
+                    raise TypeError()
+                gender_type_0 = GenderEnum(data)
+
+                return gender_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[GenderEnum, None, Unset], data)
+
+        gender = _parse_gender(d.pop("gender", UNSET))
+
+        personal_title = d.pop("personal_title", UNSET)
+
+        place_of_birth = d.pop("place_of_birth", UNSET)
+
+        country_of_residence = d.pop("country_of_residence", UNSET)
+
+        nationality = d.pop("nationality", UNSET)
+
+        nationalities = d.pop("nationalities", UNSET)
+
+        organization_country = d.pop("organization_country", UNSET)
+
+        organization_type = d.pop("organization_type", UNSET)
+
+        eduperson_assurance = d.pop("eduperson_assurance", UNSET)
+
         user = cls(
             url=url,
             uuid=uuid,
@@ -517,6 +611,15 @@ class User:
             identity_source=identity_source,
             has_active_session=has_active_session,
             ip_address=ip_address,
+            gender=gender,
+            personal_title=personal_title,
+            place_of_birth=place_of_birth,
+            country_of_residence=country_of_residence,
+            nationality=nationality,
+            nationalities=nationalities,
+            organization_country=organization_country,
+            organization_type=organization_type,
+            eduperson_assurance=eduperson_assurance,
         )
 
         user.additional_properties = d

@@ -11,6 +11,7 @@ class ProposalPublicCallsRetrieveFieldItem(str, Enum):
     END_DATE = "end_date"
     EXTERNAL_URL = "external_url"
     FIXED_DURATION_IN_DAYS = "fixed_duration_in_days"
+    HAS_ELIGIBILITY_RESTRICTIONS = "has_eligibility_restrictions"
     MANAGER = "manager"
     MANAGER_UUID = "manager_uuid"
     NAME = "name"

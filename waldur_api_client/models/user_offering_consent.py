@@ -31,6 +31,7 @@ class UserOfferingConsent:
         modified (datetime.datetime):
         has_consent (bool):
         requires_reconsent (bool):
+        collected_attributes (list[str]): List of user attributes that will be shared with service provider
         version (Union[Unset, str]):
     """
 
@@ -49,6 +50,7 @@ class UserOfferingConsent:
     modified: datetime.datetime
     has_consent: bool
     requires_reconsent: bool
+    collected_attributes: list[str]
     version: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -87,6 +89,8 @@ class UserOfferingConsent:
 
         requires_reconsent = self.requires_reconsent
 
+        collected_attributes = self.collected_attributes
+
         version = self.version
 
         field_dict: dict[str, Any] = {}
@@ -108,6 +112,7 @@ class UserOfferingConsent:
                 "modified": modified,
                 "has_consent": has_consent,
                 "requires_reconsent": requires_reconsent,
+                "collected_attributes": collected_attributes,
             }
         )
         if version is not UNSET:
@@ -161,6 +166,8 @@ class UserOfferingConsent:
 
         requires_reconsent = d.pop("requires_reconsent")
 
+        collected_attributes = cast(list[str], d.pop("collected_attributes"))
+
         version = d.pop("version", UNSET)
 
         user_offering_consent = cls(
@@ -179,6 +186,7 @@ class UserOfferingConsent:
             modified=modified,
             has_consent=has_consent,
             requires_reconsent=requires_reconsent,
+            collected_attributes=collected_attributes,
             version=version,
         )
 

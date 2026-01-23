@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from .. import types
+from ..models.gender_enum import GenderEnum
 from ..types import UNSET, File, Unset
 
 T = TypeVar("T", bound="PatchedUserRequestMultipart")
@@ -38,6 +39,15 @@ class PatchedUserRequestMultipart:
         last_name (Union[Unset, str]):
         birth_date (Union[None, Unset, datetime.date]):
         image (Union[File, None, Unset]):
+        gender (Union[GenderEnum, None, Unset]): ISO 5218 gender code
+        personal_title (Union[Unset, str]): Honorific title (Mr, Ms, Dr, Prof, etc.)
+        place_of_birth (Union[Unset, str]):
+        country_of_residence (Union[Unset, str]):
+        nationality (Union[Unset, str]): Primary citizenship (ISO 3166-1 alpha-2 code)
+        nationalities (Union[Unset, Any]): List of all citizenships (ISO 3166-1 alpha-2 codes)
+        organization_country (Union[Unset, str]):
+        organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
+        eduperson_assurance (Union[Unset, Any]): REFEDS assurance profile URIs from identity provider
     """
 
     username: Union[Unset, str] = UNSET
@@ -58,6 +68,15 @@ class PatchedUserRequestMultipart:
     last_name: Union[Unset, str] = UNSET
     birth_date: Union[None, Unset, datetime.date] = UNSET
     image: Union[File, None, Unset] = UNSET
+    gender: Union[GenderEnum, None, Unset] = UNSET
+    personal_title: Union[Unset, str] = UNSET
+    place_of_birth: Union[Unset, str] = UNSET
+    country_of_residence: Union[Unset, str] = UNSET
+    nationality: Union[Unset, str] = UNSET
+    nationalities: Union[Unset, Any] = UNSET
+    organization_country: Union[Unset, str] = UNSET
+    organization_type: Union[Unset, str] = UNSET
+    eduperson_assurance: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -114,6 +133,30 @@ class PatchedUserRequestMultipart:
         else:
             image = self.image
 
+        gender: Union[None, Unset, int]
+        if isinstance(self.gender, Unset):
+            gender = UNSET
+        elif isinstance(self.gender, GenderEnum):
+            gender = self.gender.value
+        else:
+            gender = self.gender
+
+        personal_title = self.personal_title
+
+        place_of_birth = self.place_of_birth
+
+        country_of_residence = self.country_of_residence
+
+        nationality = self.nationality
+
+        nationalities = self.nationalities
+
+        organization_country = self.organization_country
+
+        organization_type = self.organization_type
+
+        eduperson_assurance = self.eduperson_assurance
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -153,6 +196,24 @@ class PatchedUserRequestMultipart:
             field_dict["birth_date"] = birth_date
         if image is not UNSET:
             field_dict["image"] = image
+        if gender is not UNSET:
+            field_dict["gender"] = gender
+        if personal_title is not UNSET:
+            field_dict["personal_title"] = personal_title
+        if place_of_birth is not UNSET:
+            field_dict["place_of_birth"] = place_of_birth
+        if country_of_residence is not UNSET:
+            field_dict["country_of_residence"] = country_of_residence
+        if nationality is not UNSET:
+            field_dict["nationality"] = nationality
+        if nationalities is not UNSET:
+            field_dict["nationalities"] = nationalities
+        if organization_country is not UNSET:
+            field_dict["organization_country"] = organization_country
+        if organization_type is not UNSET:
+            field_dict["organization_type"] = organization_type
+        if eduperson_assurance is not UNSET:
+            field_dict["eduperson_assurance"] = eduperson_assurance
 
         return field_dict
 
@@ -221,6 +282,38 @@ class PatchedUserRequestMultipart:
                 files.append(("image", self.image.to_tuple()))
             else:
                 files.append(("image", (None, str(self.image).encode(), "text/plain")))
+
+        if not isinstance(self.gender, Unset):
+            if isinstance(self.gender, GenderEnum):
+                files.append(("gender", (None, str(self.gender.value).encode(), "text/plain")))
+            elif self.gender is None:
+                files.append(("gender", (None, str(self.gender).encode(), "text/plain")))
+            else:
+                files.append(("gender", (None, str(self.gender).encode(), "text/plain")))
+
+        if not isinstance(self.personal_title, Unset):
+            files.append(("personal_title", (None, str(self.personal_title).encode(), "text/plain")))
+
+        if not isinstance(self.place_of_birth, Unset):
+            files.append(("place_of_birth", (None, str(self.place_of_birth).encode(), "text/plain")))
+
+        if not isinstance(self.country_of_residence, Unset):
+            files.append(("country_of_residence", (None, str(self.country_of_residence).encode(), "text/plain")))
+
+        if not isinstance(self.nationality, Unset):
+            files.append(("nationality", (None, str(self.nationality).encode(), "text/plain")))
+
+        if not isinstance(self.nationalities, Unset):
+            files.append(("nationalities", (None, str(self.nationalities).encode(), "text/plain")))
+
+        if not isinstance(self.organization_country, Unset):
+            files.append(("organization_country", (None, str(self.organization_country).encode(), "text/plain")))
+
+        if not isinstance(self.organization_type, Unset):
+            files.append(("organization_type", (None, str(self.organization_type).encode(), "text/plain")))
+
+        if not isinstance(self.eduperson_assurance, Unset):
+            files.append(("eduperson_assurance", (None, str(self.eduperson_assurance).encode(), "text/plain")))
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -303,6 +396,39 @@ class PatchedUserRequestMultipart:
 
         image = _parse_image(d.pop("image", UNSET))
 
+        def _parse_gender(data: object) -> Union[GenderEnum, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, int):
+                    raise TypeError()
+                gender_type_0 = GenderEnum(data)
+
+                return gender_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[GenderEnum, None, Unset], data)
+
+        gender = _parse_gender(d.pop("gender", UNSET))
+
+        personal_title = d.pop("personal_title", UNSET)
+
+        place_of_birth = d.pop("place_of_birth", UNSET)
+
+        country_of_residence = d.pop("country_of_residence", UNSET)
+
+        nationality = d.pop("nationality", UNSET)
+
+        nationalities = d.pop("nationalities", UNSET)
+
+        organization_country = d.pop("organization_country", UNSET)
+
+        organization_type = d.pop("organization_type", UNSET)
+
+        eduperson_assurance = d.pop("eduperson_assurance", UNSET)
+
         patched_user_request_multipart = cls(
             username=username,
             slug=slug,
@@ -322,6 +448,15 @@ class PatchedUserRequestMultipart:
             last_name=last_name,
             birth_date=birth_date,
             image=image,
+            gender=gender,
+            personal_title=personal_title,
+            place_of_birth=place_of_birth,
+            country_of_residence=country_of_residence,
+            nationality=nationality,
+            nationalities=nationalities,
+            organization_country=organization_country,
+            organization_type=organization_type,
+            eduperson_assurance=eduperson_assurance,
         )
 
         patched_user_request_multipart.additional_properties = d

@@ -49,6 +49,7 @@ class PublicCall:
             identities. If False, reviewers appear as 'Reviewer 1', 'Reviewer 2', etc.
         reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see review comments and
             scores. If False, applicants only see final approval/rejection status.
+        has_eligibility_restrictions (Union[Unset, bool]): Check if call has any eligibility restrictions configured.
     """
 
     url: Union[Unset, str] = UNSET
@@ -73,6 +74,7 @@ class PublicCall:
     external_url: Union[None, Unset, str] = UNSET
     reviewer_identity_visible_to_submitters: Union[Unset, bool] = UNSET
     reviews_visible_to_submitters: Union[Unset, bool] = UNSET
+    has_eligibility_restrictions: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -162,6 +164,8 @@ class PublicCall:
 
         reviews_visible_to_submitters = self.reviews_visible_to_submitters
 
+        has_eligibility_restrictions = self.has_eligibility_restrictions
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -209,6 +213,8 @@ class PublicCall:
             field_dict["reviewer_identity_visible_to_submitters"] = reviewer_identity_visible_to_submitters
         if reviews_visible_to_submitters is not UNSET:
             field_dict["reviews_visible_to_submitters"] = reviews_visible_to_submitters
+        if has_eligibility_restrictions is not UNSET:
+            field_dict["has_eligibility_restrictions"] = has_eligibility_restrictions
 
         return field_dict
 
@@ -333,6 +339,8 @@ class PublicCall:
 
         reviews_visible_to_submitters = d.pop("reviews_visible_to_submitters", UNSET)
 
+        has_eligibility_restrictions = d.pop("has_eligibility_restrictions", UNSET)
+
         public_call = cls(
             url=url,
             uuid=uuid,
@@ -356,6 +364,7 @@ class PublicCall:
             external_url=external_url,
             reviewer_identity_visible_to_submitters=reviewer_identity_visible_to_submitters,
             reviews_visible_to_submitters=reviews_visible_to_submitters,
+            has_eligibility_restrictions=has_eligibility_restrictions,
         )
 
         public_call.additional_properties = d

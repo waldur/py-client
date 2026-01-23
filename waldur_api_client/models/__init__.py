@@ -2,6 +2,9 @@
 
 from .access_subnet import AccessSubnet
 from .access_subnet_request import AccessSubnetRequest
+from .access_type_enum import AccessTypeEnum
+from .accessor_type_enum import AccessorTypeEnum
+from .accessor_user import AccessorUser
 from .account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
 from .active_queries_stats import ActiveQueriesStats
 from .active_query import ActiveQuery
@@ -15,6 +18,8 @@ from .admin_announcements_list_field_item import AdminAnnouncementsListFieldItem
 from .admin_announcements_list_o_item import AdminAnnouncementsListOItem
 from .admin_announcements_list_type_item import AdminAnnouncementsListTypeItem
 from .admin_announcements_retrieve_field_item import AdminAnnouncementsRetrieveFieldItem
+from .admin_user import AdminUser
+from .administrative_access import AdministrativeAccess
 from .affiliation_type_enum import AffiliationTypeEnum
 from .affinity_matrix_entry import AffinityMatrixEntry
 from .affinity_matrix_response import AffinityMatrixResponse
@@ -233,6 +238,8 @@ from .broadcast_messages_recipients_retrieve_field_item import BroadcastMessages
 from .broadcast_messages_retrieve_field_item import BroadcastMessagesRetrieveFieldItem
 from .bulk_silence_response import BulkSilenceResponse
 from .cache_performance import CachePerformance
+from .call_applicant_attribute_config import CallApplicantAttributeConfig
+from .call_applicant_attribute_config_request import CallApplicantAttributeConfigRequest
 from .call_assignment_configuration import CallAssignmentConfiguration
 from .call_assignment_configuration_request import CallAssignmentConfigurationRequest
 from .call_attach_documents_request import CallAttachDocumentsRequest
@@ -480,6 +487,11 @@ from .customers_users_list_o import CustomersUsersListO
 from .customers_users_list_organization_role_item_type_0 import CustomersUsersListOrganizationRoleItemType0
 from .customers_users_list_project_role_item_type_0 import CustomersUsersListProjectRoleItemType0
 from .daily_quotas_retrieve_response_200 import DailyQuotasRetrieveResponse200
+from .data_access_logs_count_accessor_type import DataAccessLogsCountAccessorType
+from .data_access_logs_count_o_item import DataAccessLogsCountOItem
+from .data_access_logs_list_accessor_type import DataAccessLogsListAccessorType
+from .data_access_logs_list_o_item import DataAccessLogsListOItem
+from .data_access_summary import DataAccessSummary
 from .data_volume import DataVolume
 from .data_volume_request import DataVolumeRequest
 from .database_size_stats import DatabaseSizeStats
@@ -530,6 +542,7 @@ from .dry_run import DryRun
 from .dry_run_request import DryRunRequest
 from .dry_run_state_enum import DryRunStateEnum
 from .dry_run_type_enum import DryRunTypeEnum
+from .eligibility_check import EligibilityCheck
 from .email_hook import EmailHook
 from .email_hook_request import EmailHookRequest
 from .email_invitation_request import EmailInvitationRequest
@@ -609,6 +622,7 @@ from .firecrest_job_request_form import FirecrestJobRequestForm
 from .firecrest_job_request_multipart import FirecrestJobRequestMultipart
 from .freeipa_profile import FreeipaProfile
 from .freeipa_profile_request import FreeipaProfileRequest
+from .gender_enum import GenderEnum
 from .generate_assignments_request import GenerateAssignmentsRequest
 from .generate_assignments_response import GenerateAssignmentsResponse
 from .generate_assignments_response_skipped_proposals_item import GenerateAssignmentsResponseSkippedProposalsItem
@@ -616,6 +630,8 @@ from .generate_suggestions_request_request import GenerateSuggestionsRequestRequ
 from .generate_suggestions_request_source_enum import GenerateSuggestionsRequestSourceEnum
 from .generate_suggestions_response import GenerateSuggestionsResponse
 from .generic_order_attributes import GenericOrderAttributes
+from .global_user_data_access_log import GlobalUserDataAccessLog
+from .global_user_data_access_log_context import GlobalUserDataAccessLogContext
 from .google_auth_authorize_retrieve_field_item import GoogleAuthAuthorizeRetrieveFieldItem
 from .google_auth_list_field_item import GoogleAuthListFieldItem
 from .google_auth_retrieve_field_item import GoogleAuthRetrieveFieldItem
@@ -1154,6 +1170,8 @@ from .offering_thumbnail_request_multipart import OfferingThumbnailRequestMultip
 from .offering_usage_policy import OfferingUsagePolicy
 from .offering_usage_policy_request import OfferingUsagePolicyRequest
 from .offering_user import OfferingUser
+from .offering_user_attribute_config import OfferingUserAttributeConfig
+from .offering_user_attribute_config_request import OfferingUserAttributeConfigRequest
 from .offering_user_consent_data_type_0 import OfferingUserConsentDataType0
 from .offering_user_request import OfferingUserRequest
 from .offering_user_role import OfferingUserRole
@@ -1419,6 +1437,8 @@ from .order_uuid import OrderUUID
 from .organization_group import OrganizationGroup
 from .organization_group_request import OrganizationGroupRequest
 from .organization_groups_request import OrganizationGroupsRequest
+from .organizational_access import OrganizationalAccess
+from .organizational_user import OrganizationalUser
 from .paid_request import PaidRequest
 from .paid_request_form import PaidRequestForm
 from .paid_request_multipart import PaidRequestMultipart
@@ -1434,6 +1454,7 @@ from .patched_azure_sql_database_request import PatchedAzureSqlDatabaseRequest
 from .patched_azure_sql_server_request import PatchedAzureSqlServerRequest
 from .patched_azure_virtual_machine_request import PatchedAzureVirtualMachineRequest
 from .patched_broadcast_message_request import PatchedBroadcastMessageRequest
+from .patched_call_applicant_attribute_config_request import PatchedCallApplicantAttributeConfigRequest
 from .patched_call_assignment_configuration_request import PatchedCallAssignmentConfigurationRequest
 from .patched_call_coi_configuration_request import PatchedCallCOIConfigurationRequest
 from .patched_call_managing_organisation_request import PatchedCallManagingOrganisationRequest
@@ -1494,6 +1515,7 @@ from .patched_offering_partition_update_request import PatchedOfferingPartitionU
 from .patched_offering_software_catalog_update_request import PatchedOfferingSoftwareCatalogUpdateRequest
 from .patched_offering_terms_of_service_request import PatchedOfferingTermsOfServiceRequest
 from .patched_offering_usage_policy_request import PatchedOfferingUsagePolicyRequest
+from .patched_offering_user_attribute_config_request import PatchedOfferingUserAttributeConfigRequest
 from .patched_offering_user_request import PatchedOfferingUserRequest
 from .patched_offering_user_role_request import PatchedOfferingUserRoleRequest
 from .patched_offering_user_service_provider_comment_request import PatchedOfferingUserServiceProviderCommentRequest
@@ -1792,6 +1814,7 @@ from .provider_plan_details_request import ProviderPlanDetailsRequest
 from .provider_project import ProviderProject
 from .provider_requested_offering import ProviderRequestedOffering
 from .provider_requested_resource import ProviderRequestedResource
+from .provider_team_user import ProviderTeamUser
 from .provider_user import ProviderUser
 from .public_call import PublicCall
 from .public_invitation import PublicInvitation
@@ -2115,6 +2138,7 @@ from .send_assignment_batch_response import SendAssignmentBatchResponse
 from .send_invitations_response import SendInvitationsResponse
 from .service_account_state import ServiceAccountState
 from .service_provider import ServiceProvider
+from .service_provider_access import ServiceProviderAccess
 from .service_provider_api_secret_code import ServiceProviderApiSecretCode
 from .service_provider_checklist_summary import ServiceProviderChecklistSummary
 from .service_provider_compliance_overview import ServiceProviderComplianceOverview
@@ -2198,6 +2222,7 @@ from .table_size import TableSize
 from .tag import Tag
 from .tag_request import TagRequest
 from .tags_request import TagsRequest
+from .target_user import TargetUser
 from .template import Template
 from .template_attachment import TemplateAttachment
 from .template_attachment_request import TemplateAttachmentRequest
@@ -2238,6 +2263,9 @@ from .user_auth_method_count import UserAuthMethodCount
 from .user_auth_token import UserAuthToken
 from .user_checklist_completion import UserChecklistCompletion
 from .user_consent_info import UserConsentInfo
+from .user_data_access import UserDataAccess
+from .user_data_access_log import UserDataAccessLog
+from .user_data_access_log_context import UserDataAccessLogContext
 from .user_email_change_request import UserEmailChangeRequest
 from .user_group_invitations_count_o_item import UserGroupInvitationsCountOItem
 from .user_group_invitations_list_o_item import UserGroupInvitationsListOItem
@@ -2269,6 +2297,7 @@ from .user_role_expiration_time import UserRoleExpirationTime
 from .user_role_update_request import UserRoleUpdateRequest
 from .username_generation_policy_enum import UsernameGenerationPolicyEnum
 from .users_count_o_item import UsersCountOItem
+from .users_data_access_history_list_o_item import UsersDataAccessHistoryListOItem
 from .users_list_field_item import UsersListFieldItem
 from .users_list_o_item import UsersListOItem
 from .users_me_retrieve_field_item import UsersMeRetrieveFieldItem
@@ -2339,8 +2368,11 @@ from .web_hook_request import WebHookRequest
 from .widget_enum import WidgetEnum
 
 __all__ = (
+    "AccessorTypeEnum",
+    "AccessorUser",
     "AccessSubnet",
     "AccessSubnetRequest",
+    "AccessTypeEnum",
     "AccountNameGenerationPolicyEnum",
     "ActiveQueriesStats",
     "ActiveQuery",
@@ -2354,6 +2386,8 @@ __all__ = (
     "AdminAnnouncementsListTypeItem",
     "AdminAnnouncementsRetrieveFieldItem",
     "AdminAnnouncementTypeEnum",
+    "AdministrativeAccess",
+    "AdminUser",
     "AffiliationTypeEnum",
     "AffinityMatrixEntry",
     "AffinityMatrixResponse",
@@ -2562,6 +2596,8 @@ __all__ = (
     "BroadcastMessageStateEnum",
     "BulkSilenceResponse",
     "CachePerformance",
+    "CallApplicantAttributeConfig",
+    "CallApplicantAttributeConfigRequest",
     "CallAssignmentConfiguration",
     "CallAssignmentConfigurationRequest",
     "CallAttachDocumentsRequest",
@@ -2803,6 +2839,11 @@ __all__ = (
     "CustomersUsersListProjectRoleItemType0",
     "CustomerUser",
     "DailyQuotasRetrieveResponse200",
+    "DataAccessLogsCountAccessorType",
+    "DataAccessLogsCountOItem",
+    "DataAccessLogsListAccessorType",
+    "DataAccessLogsListOItem",
+    "DataAccessSummary",
     "DatabaseSizeStats",
     "DatabaseStatsResponse",
     "DataVolume",
@@ -2851,6 +2892,7 @@ __all__ = (
     "DryRunRequest",
     "DryRunStateEnum",
     "DryRunTypeEnum",
+    "EligibilityCheck",
     "EmailHook",
     "EmailHookRequest",
     "EmailInvitationRequest",
@@ -2926,6 +2968,7 @@ __all__ = (
     "FirecrestJobRequestMultipart",
     "FreeipaProfile",
     "FreeipaProfileRequest",
+    "GenderEnum",
     "GenerateAssignmentsRequest",
     "GenerateAssignmentsResponse",
     "GenerateAssignmentsResponseSkippedProposalsItem",
@@ -2933,6 +2976,8 @@ __all__ = (
     "GenerateSuggestionsRequestSourceEnum",
     "GenerateSuggestionsResponse",
     "GenericOrderAttributes",
+    "GlobalUserDataAccessLog",
+    "GlobalUserDataAccessLogContext",
     "GoogleAuthAuthorizeRetrieveFieldItem",
     "GoogleAuthListFieldItem",
     "GoogleAuthRetrieveFieldItem",
@@ -3411,6 +3456,8 @@ __all__ = (
     "OfferingUsagePolicy",
     "OfferingUsagePolicyRequest",
     "OfferingUser",
+    "OfferingUserAttributeConfig",
+    "OfferingUserAttributeConfigRequest",
     "OfferingUserConsentDataType0",
     "OfferingUserRequest",
     "OfferingUserRole",
@@ -3637,6 +3684,8 @@ __all__ = (
     "OrderErrorDetailsRequest",
     "OrderState",
     "OrderUUID",
+    "OrganizationalAccess",
+    "OrganizationalUser",
     "OrganizationGroup",
     "OrganizationGroupRequest",
     "OrganizationGroupsRequest",
@@ -3655,6 +3704,7 @@ __all__ = (
     "PatchedAzureSqlServerRequest",
     "PatchedAzureVirtualMachineRequest",
     "PatchedBroadcastMessageRequest",
+    "PatchedCallApplicantAttributeConfigRequest",
     "PatchedCallAssignmentConfigurationRequest",
     "PatchedCallCOIConfigurationRequest",
     "PatchedCallManagingOrganisationRequest",
@@ -3711,6 +3761,7 @@ __all__ = (
     "PatchedOfferingSoftwareCatalogUpdateRequest",
     "PatchedOfferingTermsOfServiceRequest",
     "PatchedOfferingUsagePolicyRequest",
+    "PatchedOfferingUserAttributeConfigRequest",
     "PatchedOfferingUserRequest",
     "PatchedOfferingUserRoleRequest",
     "PatchedOfferingUserServiceProviderCommentRequest",
@@ -3975,6 +4026,7 @@ __all__ = (
     "ProviderProject",
     "ProviderRequestedOffering",
     "ProviderRequestedResource",
+    "ProviderTeamUser",
     "ProviderUser",
     "PublicCall",
     "PublicInvitation",
@@ -4286,6 +4338,7 @@ __all__ = (
     "SendInvitationsResponse",
     "ServiceAccountState",
     "ServiceProvider",
+    "ServiceProviderAccess",
     "ServiceProviderApiSecretCode",
     "ServiceProviderChecklistSummary",
     "ServiceProviderComplianceOverview",
@@ -4367,6 +4420,7 @@ __all__ = (
     "Tag",
     "TagRequest",
     "TagsRequest",
+    "TargetUser",
     "Template",
     "TemplateAttachment",
     "TemplateAttachmentRequest",
@@ -4407,6 +4461,9 @@ __all__ = (
     "UserAuthToken",
     "UserChecklistCompletion",
     "UserConsentInfo",
+    "UserDataAccess",
+    "UserDataAccessLog",
+    "UserDataAccessLogContext",
     "UserEmailChangeRequest",
     "UserGroupInvitationsCountOItem",
     "UserGroupInvitationsListOItem",
@@ -4438,6 +4495,7 @@ __all__ = (
     "UserRoleExpirationTime",
     "UserRoleUpdateRequest",
     "UsersCountOItem",
+    "UsersDataAccessHistoryListOItem",
     "UsersListFieldItem",
     "UsersListOItem",
     "UsersMeRetrieveFieldItem",

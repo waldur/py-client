@@ -176,6 +176,9 @@ class ConstanceSettingsRequest:
         oidc_block_creation_of_uninvited_users (Union[Unset, bool]):
         deactivate_user_if_no_roles (Union[Unset, bool]):
         waldur_auth_social_role_claim (Union[Unset, str]):
+        default_offering_user_attributes (Union[Unset, list[str]]):
+        invitation_allowed_fields (Union[Unset, list[str]]):
+        enabled_user_profile_attributes (Union[Unset, list[str]]):
         maintenance_announcement_notify_before_minutes (Union[Unset, int]):
         maintenance_announcement_notify_system (Union[Unset, list[str]]):
         enforce_user_consent_for_offerings (Union[Unset, bool]):
@@ -214,6 +217,9 @@ class ConstanceSettingsRequest:
         user_actions_notification_threshold (Union[Unset, int]):
         user_actions_execution_retention_days (Union[Unset, int]):
         user_actions_default_expiration_reminders (Union[Unset, list[str]]):
+        user_data_access_logging_enabled (Union[Unset, bool]):
+        user_data_access_log_retention_days (Union[Unset, int]):
+        user_data_access_log_self_access (Union[Unset, bool]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -373,6 +379,9 @@ class ConstanceSettingsRequest:
     oidc_block_creation_of_uninvited_users: Union[Unset, bool] = UNSET
     deactivate_user_if_no_roles: Union[Unset, bool] = UNSET
     waldur_auth_social_role_claim: Union[Unset, str] = UNSET
+    default_offering_user_attributes: Union[Unset, list[str]] = UNSET
+    invitation_allowed_fields: Union[Unset, list[str]] = UNSET
+    enabled_user_profile_attributes: Union[Unset, list[str]] = UNSET
     maintenance_announcement_notify_before_minutes: Union[Unset, int] = UNSET
     maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
     enforce_user_consent_for_offerings: Union[Unset, bool] = UNSET
@@ -411,6 +420,9 @@ class ConstanceSettingsRequest:
     user_actions_notification_threshold: Union[Unset, int] = UNSET
     user_actions_execution_retention_days: Union[Unset, int] = UNSET
     user_actions_default_expiration_reminders: Union[Unset, list[str]] = UNSET
+    user_data_access_logging_enabled: Union[Unset, bool] = UNSET
+    user_data_access_log_retention_days: Union[Unset, int] = UNSET
+    user_data_access_log_self_access: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -824,6 +836,18 @@ class ConstanceSettingsRequest:
 
         waldur_auth_social_role_claim = self.waldur_auth_social_role_claim
 
+        default_offering_user_attributes: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.default_offering_user_attributes, Unset):
+            default_offering_user_attributes = self.default_offering_user_attributes
+
+        invitation_allowed_fields: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.invitation_allowed_fields, Unset):
+            invitation_allowed_fields = self.invitation_allowed_fields
+
+        enabled_user_profile_attributes: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.enabled_user_profile_attributes, Unset):
+            enabled_user_profile_attributes = self.enabled_user_profile_attributes
+
         maintenance_announcement_notify_before_minutes = self.maintenance_announcement_notify_before_minutes
 
         maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
@@ -907,6 +931,12 @@ class ConstanceSettingsRequest:
         user_actions_default_expiration_reminders: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_actions_default_expiration_reminders, Unset):
             user_actions_default_expiration_reminders = self.user_actions_default_expiration_reminders
+
+        user_data_access_logging_enabled = self.user_data_access_logging_enabled
+
+        user_data_access_log_retention_days = self.user_data_access_log_retention_days
+
+        user_data_access_log_self_access = self.user_data_access_log_self_access
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -1229,6 +1259,12 @@ class ConstanceSettingsRequest:
             field_dict["DEACTIVATE_USER_IF_NO_ROLES"] = deactivate_user_if_no_roles
         if waldur_auth_social_role_claim is not UNSET:
             field_dict["WALDUR_AUTH_SOCIAL_ROLE_CLAIM"] = waldur_auth_social_role_claim
+        if default_offering_user_attributes is not UNSET:
+            field_dict["DEFAULT_OFFERING_USER_ATTRIBUTES"] = default_offering_user_attributes
+        if invitation_allowed_fields is not UNSET:
+            field_dict["INVITATION_ALLOWED_FIELDS"] = invitation_allowed_fields
+        if enabled_user_profile_attributes is not UNSET:
+            field_dict["ENABLED_USER_PROFILE_ATTRIBUTES"] = enabled_user_profile_attributes
         if maintenance_announcement_notify_before_minutes is not UNSET:
             field_dict["MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES"] = (
                 maintenance_announcement_notify_before_minutes
@@ -1307,6 +1343,12 @@ class ConstanceSettingsRequest:
             field_dict["USER_ACTIONS_EXECUTION_RETENTION_DAYS"] = user_actions_execution_retention_days
         if user_actions_default_expiration_reminders is not UNSET:
             field_dict["USER_ACTIONS_DEFAULT_EXPIRATION_REMINDERS"] = user_actions_default_expiration_reminders
+        if user_data_access_logging_enabled is not UNSET:
+            field_dict["USER_DATA_ACCESS_LOGGING_ENABLED"] = user_data_access_logging_enabled
+        if user_data_access_log_retention_days is not UNSET:
+            field_dict["USER_DATA_ACCESS_LOG_RETENTION_DAYS"] = user_data_access_log_retention_days
+        if user_data_access_log_self_access is not UNSET:
+            field_dict["USER_DATA_ACCESS_LOG_SELF_ACCESS"] = user_data_access_log_self_access
 
         return field_dict
 
@@ -1820,6 +1862,12 @@ class ConstanceSettingsRequest:
 
         waldur_auth_social_role_claim = d.pop("WALDUR_AUTH_SOCIAL_ROLE_CLAIM", UNSET)
 
+        default_offering_user_attributes = cast(list[str], d.pop("DEFAULT_OFFERING_USER_ATTRIBUTES", UNSET))
+
+        invitation_allowed_fields = cast(list[str], d.pop("INVITATION_ALLOWED_FIELDS", UNSET))
+
+        enabled_user_profile_attributes = cast(list[str], d.pop("ENABLED_USER_PROFILE_ATTRIBUTES", UNSET))
+
         maintenance_announcement_notify_before_minutes = d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES", UNSET)
 
         maintenance_announcement_notify_system = cast(list[str], d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM", UNSET))
@@ -1897,6 +1945,12 @@ class ConstanceSettingsRequest:
         user_actions_default_expiration_reminders = cast(
             list[str], d.pop("USER_ACTIONS_DEFAULT_EXPIRATION_REMINDERS", UNSET)
         )
+
+        user_data_access_logging_enabled = d.pop("USER_DATA_ACCESS_LOGGING_ENABLED", UNSET)
+
+        user_data_access_log_retention_days = d.pop("USER_DATA_ACCESS_LOG_RETENTION_DAYS", UNSET)
+
+        user_data_access_log_self_access = d.pop("USER_DATA_ACCESS_LOG_SELF_ACCESS", UNSET)
 
         constance_settings_request = cls(
             site_name=site_name,
@@ -2056,6 +2110,9 @@ class ConstanceSettingsRequest:
             oidc_block_creation_of_uninvited_users=oidc_block_creation_of_uninvited_users,
             deactivate_user_if_no_roles=deactivate_user_if_no_roles,
             waldur_auth_social_role_claim=waldur_auth_social_role_claim,
+            default_offering_user_attributes=default_offering_user_attributes,
+            invitation_allowed_fields=invitation_allowed_fields,
+            enabled_user_profile_attributes=enabled_user_profile_attributes,
             maintenance_announcement_notify_before_minutes=maintenance_announcement_notify_before_minutes,
             maintenance_announcement_notify_system=maintenance_announcement_notify_system,
             enforce_user_consent_for_offerings=enforce_user_consent_for_offerings,
@@ -2094,6 +2151,9 @@ class ConstanceSettingsRequest:
             user_actions_notification_threshold=user_actions_notification_threshold,
             user_actions_execution_retention_days=user_actions_execution_retention_days,
             user_actions_default_expiration_reminders=user_actions_default_expiration_reminders,
+            user_data_access_logging_enabled=user_data_access_logging_enabled,
+            user_data_access_log_retention_days=user_data_access_log_retention_days,
+            user_data_access_log_self_access=user_data_access_log_self_access,
         )
 
         constance_settings_request.additional_properties = d

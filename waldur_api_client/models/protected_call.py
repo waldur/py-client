@@ -48,6 +48,7 @@ class ProtectedCall:
             identities
         reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see review comments and
             scores
+        has_eligibility_restrictions (Union[Unset, bool]): Check if call has any eligibility restrictions configured.
         created_by (Union[None, Unset, str]):
         reference_code (Union[Unset, str]):
         compliance_checklist (Union[None, UUID, Unset]): Compliance checklist that proposals must complete before
@@ -55,6 +56,15 @@ class ProtectedCall:
         compliance_checklist_name (Union[Unset, str]):
         proposal_slug_template (Union[None, Unset, str]): Template for proposal slugs. Supports: {call_slug},
             {round_slug}, {org_slug}, {year}, {month}, {counter}, {counter_padded}. Default: {round_slug}-{counter_padded}
+        user_email_patterns (Union[Unset, Any]): List of email regex patterns. User must match one.
+        user_affiliations (Union[Unset, Any]): List of allowed affiliations. User must have one.
+        user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
+        user_nationalities (Union[Unset, Any]): List of allowed nationality codes (ISO 3166-1 alpha-2). User must have
+            one.
+        user_organization_types (Union[Unset, Any]): List of allowed organization type URNs (SCHAC). User must match
+            one.
+        user_assurance_levels (Union[Unset, Any]): List of required assurance URIs (REFEDS). User must have ALL of
+            these.
     """
 
     url: Union[Unset, str] = UNSET
@@ -79,11 +89,18 @@ class ProtectedCall:
     external_url: Union[None, Unset, str] = UNSET
     reviewer_identity_visible_to_submitters: Union[Unset, bool] = UNSET
     reviews_visible_to_submitters: Union[Unset, bool] = UNSET
+    has_eligibility_restrictions: Union[Unset, bool] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     reference_code: Union[Unset, str] = UNSET
     compliance_checklist: Union[None, UUID, Unset] = UNSET
     compliance_checklist_name: Union[Unset, str] = UNSET
     proposal_slug_template: Union[None, Unset, str] = UNSET
+    user_email_patterns: Union[Unset, Any] = UNSET
+    user_affiliations: Union[Unset, Any] = UNSET
+    user_identity_sources: Union[Unset, Any] = UNSET
+    user_nationalities: Union[Unset, Any] = UNSET
+    user_organization_types: Union[Unset, Any] = UNSET
+    user_assurance_levels: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -173,6 +190,8 @@ class ProtectedCall:
 
         reviews_visible_to_submitters = self.reviews_visible_to_submitters
 
+        has_eligibility_restrictions = self.has_eligibility_restrictions
+
         created_by: Union[None, Unset, str]
         if isinstance(self.created_by, Unset):
             created_by = UNSET
@@ -196,6 +215,18 @@ class ProtectedCall:
             proposal_slug_template = UNSET
         else:
             proposal_slug_template = self.proposal_slug_template
+
+        user_email_patterns = self.user_email_patterns
+
+        user_affiliations = self.user_affiliations
+
+        user_identity_sources = self.user_identity_sources
+
+        user_nationalities = self.user_nationalities
+
+        user_organization_types = self.user_organization_types
+
+        user_assurance_levels = self.user_assurance_levels
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -244,6 +275,8 @@ class ProtectedCall:
             field_dict["reviewer_identity_visible_to_submitters"] = reviewer_identity_visible_to_submitters
         if reviews_visible_to_submitters is not UNSET:
             field_dict["reviews_visible_to_submitters"] = reviews_visible_to_submitters
+        if has_eligibility_restrictions is not UNSET:
+            field_dict["has_eligibility_restrictions"] = has_eligibility_restrictions
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if reference_code is not UNSET:
@@ -254,6 +287,18 @@ class ProtectedCall:
             field_dict["compliance_checklist_name"] = compliance_checklist_name
         if proposal_slug_template is not UNSET:
             field_dict["proposal_slug_template"] = proposal_slug_template
+        if user_email_patterns is not UNSET:
+            field_dict["user_email_patterns"] = user_email_patterns
+        if user_affiliations is not UNSET:
+            field_dict["user_affiliations"] = user_affiliations
+        if user_identity_sources is not UNSET:
+            field_dict["user_identity_sources"] = user_identity_sources
+        if user_nationalities is not UNSET:
+            field_dict["user_nationalities"] = user_nationalities
+        if user_organization_types is not UNSET:
+            field_dict["user_organization_types"] = user_organization_types
+        if user_assurance_levels is not UNSET:
+            field_dict["user_assurance_levels"] = user_assurance_levels
 
         return field_dict
 
@@ -378,6 +423,8 @@ class ProtectedCall:
 
         reviews_visible_to_submitters = d.pop("reviews_visible_to_submitters", UNSET)
 
+        has_eligibility_restrictions = d.pop("has_eligibility_restrictions", UNSET)
+
         def _parse_created_by(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -417,6 +464,18 @@ class ProtectedCall:
 
         proposal_slug_template = _parse_proposal_slug_template(d.pop("proposal_slug_template", UNSET))
 
+        user_email_patterns = d.pop("user_email_patterns", UNSET)
+
+        user_affiliations = d.pop("user_affiliations", UNSET)
+
+        user_identity_sources = d.pop("user_identity_sources", UNSET)
+
+        user_nationalities = d.pop("user_nationalities", UNSET)
+
+        user_organization_types = d.pop("user_organization_types", UNSET)
+
+        user_assurance_levels = d.pop("user_assurance_levels", UNSET)
+
         protected_call = cls(
             url=url,
             uuid=uuid,
@@ -440,11 +499,18 @@ class ProtectedCall:
             external_url=external_url,
             reviewer_identity_visible_to_submitters=reviewer_identity_visible_to_submitters,
             reviews_visible_to_submitters=reviews_visible_to_submitters,
+            has_eligibility_restrictions=has_eligibility_restrictions,
             created_by=created_by,
             reference_code=reference_code,
             compliance_checklist=compliance_checklist,
             compliance_checklist_name=compliance_checklist_name,
             proposal_slug_template=proposal_slug_template,
+            user_email_patterns=user_email_patterns,
+            user_affiliations=user_affiliations,
+            user_identity_sources=user_identity_sources,
+            user_nationalities=user_nationalities,
+            user_organization_types=user_organization_types,
+            user_assurance_levels=user_assurance_levels,
         )
 
         protected_call.additional_properties = d

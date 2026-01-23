@@ -252,6 +252,7 @@ class EventTypesEnum(str, Enum):
     UPDATE_OF_CREDIT_BY_STAFF = "update_of_credit_by_staff"
     USER_ACTIVATED = "user_activated"
     USER_CREATION_SUCCEEDED = "user_creation_succeeded"
+    USER_DATA_ACCESSED = "user_data_accessed"
     USER_DEACTIVATED = "user_deactivated"
     USER_DEACTIVATED_NO_ROLES = "user_deactivated_no_roles"
     USER_DELETION_SUCCEEDED = "user_deletion_succeeded"
