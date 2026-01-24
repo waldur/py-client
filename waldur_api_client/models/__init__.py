@@ -2254,6 +2254,7 @@ from .user_action_summary_by_type import UserActionSummaryByType
 from .user_action_summary_by_urgency import UserActionSummaryByUrgency
 from .user_actions_count_urgency import UserActionsCountUrgency
 from .user_actions_list_urgency import UserActionsListUrgency
+from .user_active_status_count import UserActiveStatusCount
 from .user_affiliation_count import UserAffiliationCount
 from .user_agreement import UserAgreement
 from .user_agreement_request import UserAgreementRequest
@@ -2276,6 +2277,7 @@ from .user_invitations_count_o_item import UserInvitationsCountOItem
 from .user_invitations_count_state_item import UserInvitationsCountStateItem
 from .user_invitations_list_o_item import UserInvitationsListOItem
 from .user_invitations_list_state_item import UserInvitationsListStateItem
+from .user_language_count import UserLanguageCount
 from .user_offering_consent import UserOfferingConsent
 from .user_offering_consent_create import UserOfferingConsentCreate
 from .user_offering_consent_create_request import UserOfferingConsentCreateRequest
@@ -2287,6 +2289,7 @@ from .user_permission_requests_list_o_item import UserPermissionRequestsListOIte
 from .user_permission_requests_list_state_item import UserPermissionRequestsListStateItem
 from .user_permissions_count_o_item import UserPermissionsCountOItem
 from .user_permissions_list_o_item import UserPermissionsListOItem
+from .user_registration_trend import UserRegistrationTrend
 from .user_request import UserRequest
 from .user_request_form import UserRequestForm
 from .user_request_multipart import UserRequestMultipart
@@ -2302,6 +2305,12 @@ from .users_list_field_item import UsersListFieldItem
 from .users_list_o_item import UsersListOItem
 from .users_me_retrieve_field_item import UsersMeRetrieveFieldItem
 from .users_retrieve_field_item import UsersRetrieveFieldItem
+from .users_user_active_status_count_count_o_item import UsersUserActiveStatusCountCountOItem
+from .users_user_active_status_count_list_o_item import UsersUserActiveStatusCountListOItem
+from .users_user_language_count_count_o_item import UsersUserLanguageCountCountOItem
+from .users_user_language_count_list_o_item import UsersUserLanguageCountListOItem
+from .users_user_registration_trend_count_o_item import UsersUserRegistrationTrendCountOItem
+from .users_user_registration_trend_list_o_item import UsersUserRegistrationTrendListOItem
 from .v_mware_virtual_machine_create_order_attributes import VMwareVirtualMachineCreateOrderAttributes
 from .v_mware_virtual_machine_create_order_attributes_guest_os_type_1 import (
     VMwareVirtualMachineCreateOrderAttributesGuestOsType1,
@@ -4452,6 +4461,7 @@ __all__ = (
     "UserActionSummary",
     "UserActionSummaryByType",
     "UserActionSummaryByUrgency",
+    "UserActiveStatusCount",
     "UserAffiliationCount",
     "UserAgreement",
     "UserAgreementRequest",
@@ -4474,6 +4484,7 @@ __all__ = (
     "UserInvitationsCountStateItem",
     "UserInvitationsListOItem",
     "UserInvitationsListStateItem",
+    "UserLanguageCount",
     "UsernameGenerationPolicyEnum",
     "UserOfferingConsent",
     "UserOfferingConsentCreate",
@@ -4486,6 +4497,7 @@ __all__ = (
     "UserPermissionRequestsListStateItem",
     "UserPermissionsCountOItem",
     "UserPermissionsListOItem",
+    "UserRegistrationTrend",
     "UserRequest",
     "UserRequestForm",
     "UserRequestMultipart",
@@ -4500,6 +4512,12 @@ __all__ = (
     "UsersListOItem",
     "UsersMeRetrieveFieldItem",
     "UsersRetrieveFieldItem",
+    "UsersUserActiveStatusCountCountOItem",
+    "UsersUserActiveStatusCountListOItem",
+    "UsersUserLanguageCountCountOItem",
+    "UsersUserLanguageCountListOItem",
+    "UsersUserRegistrationTrendCountOItem",
+    "UsersUserRegistrationTrendListOItem",
     "ValidationDecisionEnum",
     "ValidationMethodEnum",
     "VenueTypeEnum",
