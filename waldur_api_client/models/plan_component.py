@@ -1,5 +1,6 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,7 +16,9 @@ T = TypeVar("T", bound="PlanComponent")
 class PlanComponent:
     """
     Attributes:
+        offering_uuid (UUID):
         offering_name (str):
+        plan_uuid (UUID):
         plan_name (str):
         plan_unit (BillingUnit):
         component_name (str): Display name for the measured unit, for example, Floating IP.
@@ -28,7 +31,9 @@ class PlanComponent:
         discount_rate (Union[None, Unset, int]): Discount rate in percentage.
     """
 
+    offering_uuid: UUID
     offering_name: str
+    plan_uuid: UUID
     plan_name: str
     plan_unit: BillingUnit
     component_name: str
@@ -42,7 +47,11 @@ class PlanComponent:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        offering_uuid = str(self.offering_uuid)
+
         offering_name = self.offering_name
+
+        plan_uuid = str(self.plan_uuid)
 
         plan_name = self.plan_name
 
@@ -80,7 +89,9 @@ class PlanComponent:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "offering_uuid": offering_uuid,
                 "offering_name": offering_name,
+                "plan_uuid": plan_uuid,
                 "plan_name": plan_name,
                 "plan_unit": plan_unit,
                 "component_name": component_name,
@@ -104,7 +115,11 @@ class PlanComponent:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        offering_uuid = UUID(d.pop("offering_uuid"))
+
         offering_name = d.pop("offering_name")
+
+        plan_uuid = UUID(d.pop("plan_uuid"))
 
         plan_name = d.pop("plan_name")
 
@@ -148,7 +163,9 @@ class PlanComponent:
         discount_rate = _parse_discount_rate(d.pop("discount_rate", UNSET))
 
         plan_component = cls(
+            offering_uuid=offering_uuid,
             offering_name=offering_name,
+            plan_uuid=plan_uuid,
             plan_name=plan_name,
             plan_unit=plan_unit,
             component_name=component_name,
