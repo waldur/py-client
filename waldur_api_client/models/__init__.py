@@ -536,6 +536,9 @@ from .discount_type_enum import DiscountTypeEnum
 from .discounts_update_request import DiscountsUpdateRequest
 from .discounts_update_request_discounts import DiscountsUpdateRequestDiscounts
 from .discover_custom_fields_request_request import DiscoverCustomFieldsRequestRequest
+from .discover_metadata_request_request import DiscoverMetadataRequestRequest
+from .discover_metadata_response import DiscoverMetadataResponse
+from .discover_metadata_response_endpoints import DiscoverMetadataResponseEndpoints
 from .discover_priorities_request_request import DiscoverPrioritiesRequestRequest
 from .discover_projects_request_request import DiscoverProjectsRequestRequest
 from .discover_request_types_request_request import DiscoverRequestTypesRequestRequest
@@ -565,6 +568,9 @@ from .event_metadata_response_event_groups_additional_property_item import (
 )
 from .event_stats import EventStats
 from .event_subscription import EventSubscription
+from .event_subscription_queue import EventSubscriptionQueue
+from .event_subscription_queue_create_request import EventSubscriptionQueueCreateRequest
+from .event_subscription_queues_overview import EventSubscriptionQueuesOverview
 from .event_subscription_request import EventSubscriptionRequest
 from .event_subscriptions_count_o_item import EventSubscriptionsCountOItem
 from .event_subscriptions_list_o_item import EventSubscriptionsListOItem
@@ -648,6 +654,10 @@ from .hooks_web_count_content_type import HooksWebCountContentType
 from .hooks_web_list_content_type import HooksWebListContentType
 from .identity_provider import IdentityProvider
 from .identity_provider_request import IdentityProviderRequest
+from .identity_providers_generate_mapping_response_200 import IdentityProvidersGenerateMappingResponse200
+from .identity_providers_generate_mapping_response_200_attribute_mapping import (
+    IdentityProvidersGenerateMappingResponse200AttributeMapping,
+)
 from .image_create_request import ImageCreateRequest
 from .image_create_response import ImageCreateResponse
 from .image_upload_response import ImageUploadResponse
@@ -2222,7 +2232,6 @@ from .sub_net_mapping import SubNetMapping
 from .sub_net_mapping_request import SubNetMappingRequest
 from .submit_request_response import SubmitRequestResponse
 from .subresource_offering import SubresourceOffering
-from .subscription_queues_overview import SubscriptionQueuesOverview
 from .suggest_alternative_reviewers import SuggestAlternativeReviewers
 from .suggest_alternative_reviewers_suggestions_item import SuggestAlternativeReviewersSuggestionsItem
 from .suggestion_reject_request import SuggestionRejectRequest
@@ -2387,6 +2396,7 @@ from .volume_attach_request import VolumeAttachRequest
 from .volume_type_enum import VolumeTypeEnum
 from .volume_type_mapping import VolumeTypeMapping
 from .volume_type_mapping_request import VolumeTypeMappingRequest
+from .waldur_field_suggestion import WaldurFieldSuggestion
 from .web_hook import WebHook
 from .web_hook_content_type_enum import WebHookContentTypeEnum
 from .web_hook_receiver import WebHookReceiver
@@ -2913,6 +2923,9 @@ __all__ = (
     "DiscountsUpdateRequestDiscounts",
     "DiscountTypeEnum",
     "DiscoverCustomFieldsRequestRequest",
+    "DiscoverMetadataRequestRequest",
+    "DiscoverMetadataResponse",
+    "DiscoverMetadataResponseEndpoints",
     "DiscoverPrioritiesRequestRequest",
     "DiscoverProjectsRequestRequest",
     "DiscoverRequestTypesRequestRequest",
@@ -2947,6 +2960,9 @@ __all__ = (
     "EventsScopeTypesRetrieveFieldItem",
     "EventStats",
     "EventSubscription",
+    "EventSubscriptionQueue",
+    "EventSubscriptionQueueCreateRequest",
+    "EventSubscriptionQueuesOverview",
     "EventSubscriptionRequest",
     "EventSubscriptionsCountOItem",
     "EventSubscriptionsListOItem",
@@ -3021,6 +3037,8 @@ __all__ = (
     "HooksWebListContentType",
     "IdentityProvider",
     "IdentityProviderRequest",
+    "IdentityProvidersGenerateMappingResponse200",
+    "IdentityProvidersGenerateMappingResponse200AttributeMapping",
     "ImageCreateRequest",
     "ImageCreateResponse",
     "ImageUploadResponse",
@@ -4447,7 +4465,6 @@ __all__ = (
     "SubNetMapping",
     "SubNetMappingRequest",
     "SubresourceOffering",
-    "SubscriptionQueuesOverview",
     "SuggestAlternativeReviewers",
     "SuggestAlternativeReviewersSuggestionsItem",
     "SuggestionRejectRequest",
@@ -4604,6 +4621,7 @@ __all__ = (
     "VolumeTypeEnum",
     "VolumeTypeMapping",
     "VolumeTypeMappingRequest",
+    "WaldurFieldSuggestion",
     "WebHook",
     "WebHookContentTypeEnum",
     "WebHookReceiver",

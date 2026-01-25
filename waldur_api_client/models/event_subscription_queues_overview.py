@@ -8,11 +8,11 @@ if TYPE_CHECKING:
     from ..models.top_queue import TopQueue
 
 
-T = TypeVar("T", bound="SubscriptionQueuesOverview")
+T = TypeVar("T", bound="EventSubscriptionQueuesOverview")
 
 
 @_attrs_define
-class SubscriptionQueuesOverview:
+class EventSubscriptionQueuesOverview:
     """
     Attributes:
         total_vhosts (int): Total number of vhosts with subscription queues
@@ -70,15 +70,15 @@ class SubscriptionQueuesOverview:
 
             top_queues_by_messages.append(top_queues_by_messages_item)
 
-        subscription_queues_overview = cls(
+        event_subscription_queues_overview = cls(
             total_vhosts=total_vhosts,
             total_queues=total_queues,
             total_messages=total_messages,
             top_queues_by_messages=top_queues_by_messages,
         )
 
-        subscription_queues_overview.additional_properties = d
-        return subscription_queues_overview
+        event_subscription_queues_overview.additional_properties = d
+        return event_subscription_queues_overview
 
     @property
     def additional_keys(self) -> list[str]:

@@ -60,7 +60,8 @@ def sync_detailed(
 ) -> Response[OpenStackTenantQuota]:
     """Set tenant quotas
 
-     A quota can be set for a particular tenant. Only staff users can do that.
+     A quota can be set for a particular tenant. Only staff users and service provider owners/managers
+    can do that.
     In order to set quota submit POST request to /api/openstack-tenants/<uuid>/set_quotas/.
     The quota values are propagated to the backend.
 
@@ -120,7 +121,8 @@ def sync(
 ) -> OpenStackTenantQuota:
     """Set tenant quotas
 
-     A quota can be set for a particular tenant. Only staff users can do that.
+     A quota can be set for a particular tenant. Only staff users and service provider owners/managers
+    can do that.
     In order to set quota submit POST request to /api/openstack-tenants/<uuid>/set_quotas/.
     The quota values are propagated to the backend.
 
@@ -175,7 +177,8 @@ async def asyncio_detailed(
 ) -> Response[OpenStackTenantQuota]:
     """Set tenant quotas
 
-     A quota can be set for a particular tenant. Only staff users can do that.
+     A quota can be set for a particular tenant. Only staff users and service provider owners/managers
+    can do that.
     In order to set quota submit POST request to /api/openstack-tenants/<uuid>/set_quotas/.
     The quota values are propagated to the backend.
 
@@ -233,7 +236,8 @@ async def asyncio(
 ) -> OpenStackTenantQuota:
     """Set tenant quotas
 
-     A quota can be set for a particular tenant. Only staff users can do that.
+     A quota can be set for a particular tenant. Only staff users and service provider owners/managers
+    can do that.
     In order to set quota submit POST request to /api/openstack-tenants/<uuid>/set_quotas/.
     The quota values are propagated to the backend.
 
