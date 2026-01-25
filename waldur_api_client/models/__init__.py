@@ -570,6 +570,8 @@ from .event_stats import EventStats
 from .event_subscription import EventSubscription
 from .event_subscription_queue import EventSubscriptionQueue
 from .event_subscription_queue_create_request import EventSubscriptionQueueCreateRequest
+from .event_subscription_queues_count_o_item import EventSubscriptionQueuesCountOItem
+from .event_subscription_queues_list_o_item import EventSubscriptionQueuesListOItem
 from .event_subscription_queues_overview import EventSubscriptionQueuesOverview
 from .event_subscription_request import EventSubscriptionRequest
 from .event_subscriptions_count_o_item import EventSubscriptionsCountOItem
@@ -2963,6 +2965,8 @@ __all__ = (
     "EventSubscription",
     "EventSubscriptionQueue",
     "EventSubscriptionQueueCreateRequest",
+    "EventSubscriptionQueuesCountOItem",
+    "EventSubscriptionQueuesListOItem",
     "EventSubscriptionQueuesOverview",
     "EventSubscriptionRequest",
     "EventSubscriptionsCountOItem",

@@ -17,8 +17,8 @@ class EventSubscriptionQueue:
         uuid (UUID):
         url (str):
         event_subscription (str):
-        event_subscription_uuid (UUID):
-        offering_uuid (UUID): UUID of the offering this queue receives events for
+        event_subscription_uuid (str):
+        offering_uuid (str):
         object_type (str): Observable object type (e.g., 'resource', 'order')
         queue_name (str):
         vhost (str):
@@ -28,8 +28,8 @@ class EventSubscriptionQueue:
     uuid: UUID
     url: str
     event_subscription: str
-    event_subscription_uuid: UUID
-    offering_uuid: UUID
+    event_subscription_uuid: str
+    offering_uuid: str
     object_type: str
     queue_name: str
     vhost: str
@@ -43,9 +43,9 @@ class EventSubscriptionQueue:
 
         event_subscription = self.event_subscription
 
-        event_subscription_uuid = str(self.event_subscription_uuid)
+        event_subscription_uuid = self.event_subscription_uuid
 
-        offering_uuid = str(self.offering_uuid)
+        offering_uuid = self.offering_uuid
 
         object_type = self.object_type
 
@@ -82,9 +82,9 @@ class EventSubscriptionQueue:
 
         event_subscription = d.pop("event_subscription")
 
-        event_subscription_uuid = UUID(d.pop("event_subscription_uuid"))
+        event_subscription_uuid = d.pop("event_subscription_uuid")
 
-        offering_uuid = UUID(d.pop("offering_uuid"))
+        offering_uuid = d.pop("offering_uuid")
 
         object_type = d.pop("object_type")
 
