@@ -1659,6 +1659,7 @@ from .prices_update_request import PricesUpdateRequest
 from .prices_update_request_prices import PricesUpdateRequestPrices
 from .priority import Priority
 from .proficiency_level_enum import ProficiencyLevelEnum
+from .profile_completeness import ProfileCompleteness
 from .project import Project
 from .project_answer import ProjectAnswer
 from .project_attach_request import ProjectAttachRequest
@@ -3932,6 +3933,7 @@ __all__ = (
     "PricesUpdateRequestPrices",
     "Priority",
     "ProficiencyLevelEnum",
+    "ProfileCompleteness",
     "Project",
     "ProjectAnswer",
     "ProjectAttachRequest",

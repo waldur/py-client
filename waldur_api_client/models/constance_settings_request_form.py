@@ -181,6 +181,8 @@ class ConstanceSettingsRequestForm:
         default_offering_user_attributes (Union[Unset, list[str]]):
         invitation_allowed_fields (Union[Unset, list[str]]):
         enabled_user_profile_attributes (Union[Unset, list[str]]):
+        mandatory_user_attributes (Union[Unset, list[str]]):
+        enforce_mandatory_user_attributes (Union[Unset, bool]):
         maintenance_announcement_notify_before_minutes (Union[Unset, int]):
         maintenance_announcement_notify_system (Union[Unset, list[str]]):
         enforce_user_consent_for_offerings (Union[Unset, bool]):
@@ -384,6 +386,8 @@ class ConstanceSettingsRequestForm:
     default_offering_user_attributes: Union[Unset, list[str]] = UNSET
     invitation_allowed_fields: Union[Unset, list[str]] = UNSET
     enabled_user_profile_attributes: Union[Unset, list[str]] = UNSET
+    mandatory_user_attributes: Union[Unset, list[str]] = UNSET
+    enforce_mandatory_user_attributes: Union[Unset, bool] = UNSET
     maintenance_announcement_notify_before_minutes: Union[Unset, int] = UNSET
     maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
     enforce_user_consent_for_offerings: Union[Unset, bool] = UNSET
@@ -850,6 +854,12 @@ class ConstanceSettingsRequestForm:
         if not isinstance(self.enabled_user_profile_attributes, Unset):
             enabled_user_profile_attributes = self.enabled_user_profile_attributes
 
+        mandatory_user_attributes: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.mandatory_user_attributes, Unset):
+            mandatory_user_attributes = self.mandatory_user_attributes
+
+        enforce_mandatory_user_attributes = self.enforce_mandatory_user_attributes
+
         maintenance_announcement_notify_before_minutes = self.maintenance_announcement_notify_before_minutes
 
         maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
@@ -1267,6 +1277,10 @@ class ConstanceSettingsRequestForm:
             field_dict["INVITATION_ALLOWED_FIELDS"] = invitation_allowed_fields
         if enabled_user_profile_attributes is not UNSET:
             field_dict["ENABLED_USER_PROFILE_ATTRIBUTES"] = enabled_user_profile_attributes
+        if mandatory_user_attributes is not UNSET:
+            field_dict["MANDATORY_USER_ATTRIBUTES"] = mandatory_user_attributes
+        if enforce_mandatory_user_attributes is not UNSET:
+            field_dict["ENFORCE_MANDATORY_USER_ATTRIBUTES"] = enforce_mandatory_user_attributes
         if maintenance_announcement_notify_before_minutes is not UNSET:
             field_dict["MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES"] = (
                 maintenance_announcement_notify_before_minutes
@@ -1872,6 +1886,10 @@ class ConstanceSettingsRequestForm:
 
         enabled_user_profile_attributes = cast(list[str], d.pop("ENABLED_USER_PROFILE_ATTRIBUTES", UNSET))
 
+        mandatory_user_attributes = cast(list[str], d.pop("MANDATORY_USER_ATTRIBUTES", UNSET))
+
+        enforce_mandatory_user_attributes = d.pop("ENFORCE_MANDATORY_USER_ATTRIBUTES", UNSET)
+
         maintenance_announcement_notify_before_minutes = d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES", UNSET)
 
         maintenance_announcement_notify_system = cast(list[str], d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM", UNSET))
@@ -2117,6 +2135,8 @@ class ConstanceSettingsRequestForm:
             default_offering_user_attributes=default_offering_user_attributes,
             invitation_allowed_fields=invitation_allowed_fields,
             enabled_user_profile_attributes=enabled_user_profile_attributes,
+            mandatory_user_attributes=mandatory_user_attributes,
+            enforce_mandatory_user_attributes=enforce_mandatory_user_attributes,
             maintenance_announcement_notify_before_minutes=maintenance_announcement_notify_before_minutes,
             maintenance_announcement_notify_system=maintenance_announcement_notify_system,
             enforce_user_consent_for_offerings=enforce_user_consent_for_offerings,

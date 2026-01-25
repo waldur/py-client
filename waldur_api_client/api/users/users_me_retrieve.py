@@ -62,7 +62,7 @@ def sync_detailed(
 ) -> Response[User]:
     """Get current user details
 
-     Get current user details, including authentication token.
+     Get current user details, including authentication token and profile completeness status.
 
     Args:
         field (Union[Unset, list[UsersMeRetrieveFieldItem]]):
@@ -93,7 +93,7 @@ def sync(
 ) -> User:
     """Get current user details
 
-     Get current user details, including authentication token.
+     Get current user details, including authentication token and profile completeness status.
 
     Args:
         field (Union[Unset, list[UsersMeRetrieveFieldItem]]):
@@ -119,7 +119,7 @@ async def asyncio_detailed(
 ) -> Response[User]:
     """Get current user details
 
-     Get current user details, including authentication token.
+     Get current user details, including authentication token and profile completeness status.
 
     Args:
         field (Union[Unset, list[UsersMeRetrieveFieldItem]]):
@@ -148,7 +148,7 @@ async def asyncio(
 ) -> User:
     """Get current user details
 
-     Get current user details, including authentication token.
+     Get current user details, including authentication token and profile completeness status.
 
     Args:
         field (Union[Unset, list[UsersMeRetrieveFieldItem]]):
