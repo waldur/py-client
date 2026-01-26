@@ -13,6 +13,7 @@ class OrderStatsSummary:
     Attributes:
         total (int): Total number of orders
         total_cost (Union[None, str]): Total cost of orders
+        total_revenue (Union[None, str]): Total revenue from create/update orders
         pending (int): Number of pending orders
         executing (int): Number of executing orders
         done (int): Number of completed orders
@@ -23,6 +24,7 @@ class OrderStatsSummary:
 
     total: int
     total_cost: Union[None, str]
+    total_revenue: Union[None, str]
     pending: int
     executing: int
     done: int
@@ -36,6 +38,9 @@ class OrderStatsSummary:
 
         total_cost: Union[None, str]
         total_cost = self.total_cost
+
+        total_revenue: Union[None, str]
+        total_revenue = self.total_revenue
 
         pending = self.pending
 
@@ -55,6 +60,7 @@ class OrderStatsSummary:
             {
                 "total": total,
                 "total_cost": total_cost,
+                "total_revenue": total_revenue,
                 "pending": pending,
                 "executing": executing,
                 "done": done,
@@ -78,6 +84,13 @@ class OrderStatsSummary:
 
         total_cost = _parse_total_cost(d.pop("total_cost"))
 
+        def _parse_total_revenue(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        total_revenue = _parse_total_revenue(d.pop("total_revenue"))
+
         pending = d.pop("pending")
 
         executing = d.pop("executing")
@@ -93,6 +106,7 @@ class OrderStatsSummary:
         order_stats_summary = cls(
             total=total,
             total_cost=total_cost,
+            total_revenue=total_revenue,
             pending=pending,
             executing=executing,
             done=done,

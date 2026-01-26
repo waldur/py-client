@@ -21,6 +21,7 @@ class DailyOrderStats:
         date (datetime.date): Date of the statistics
         total (int): Total number of orders
         total_cost (Union[None, str]): Total cost of orders
+        revenue (Union[None, str]): Revenue from create/update orders
         by_state (DailyOrderStatsByState): Order counts grouped by state
         by_type (DailyOrderStatsByType): Order counts grouped by type
     """
@@ -28,6 +29,7 @@ class DailyOrderStats:
     date: datetime.date
     total: int
     total_cost: Union[None, str]
+    revenue: Union[None, str]
     by_state: "DailyOrderStatsByState"
     by_type: "DailyOrderStatsByType"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -40,6 +42,9 @@ class DailyOrderStats:
         total_cost: Union[None, str]
         total_cost = self.total_cost
 
+        revenue: Union[None, str]
+        revenue = self.revenue
+
         by_state = self.by_state.to_dict()
 
         by_type = self.by_type.to_dict()
@@ -51,6 +56,7 @@ class DailyOrderStats:
                 "date": date,
                 "total": total,
                 "total_cost": total_cost,
+                "revenue": revenue,
                 "by_state": by_state,
                 "by_type": by_type,
             }
@@ -75,6 +81,13 @@ class DailyOrderStats:
 
         total_cost = _parse_total_cost(d.pop("total_cost"))
 
+        def _parse_revenue(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        revenue = _parse_revenue(d.pop("revenue"))
+
         by_state = DailyOrderStatsByState.from_dict(d.pop("by_state"))
 
         by_type = DailyOrderStatsByType.from_dict(d.pop("by_type"))
@@ -83,6 +96,7 @@ class DailyOrderStats:
             date=date,
             total=total,
             total_cost=total_cost,
+            revenue=revenue,
             by_state=by_state,
             by_type=by_type,
         )
