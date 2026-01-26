@@ -103,6 +103,9 @@ class MergedPluginOptionsRequest:
             generation policy
         enable_display_of_order_actions_for_service_provider (Union[Unset, bool]): Enable display of order actions for
             service provider Default: True.
+        slurm_periodic_policy_enabled (Union[Unset, bool]): Enable SLURM periodic usage policy configuration. When
+            enabled, allows configuring QoS-based threshold enforcement, carryover logic, and fairshare decay for site-agent
+            managed SLURM offerings. Default: False.
         auto_approve_marketplace_script (Union[Unset, bool]): If set to False, all orders require manual provider
             approval, including for service provider owners and staff Default: True.
         highlight_backend_id_display (Union[Unset, bool]): Defines if backend_id should be shown more prominently by the
@@ -172,6 +175,7 @@ class MergedPluginOptionsRequest:
     managed_rancher_tenant_max_disk: Union[Unset, int] = UNSET
     account_name_generation_policy: Union[AccountNameGenerationPolicyEnum, None, Unset] = UNSET
     enable_display_of_order_actions_for_service_provider: Union[Unset, bool] = True
+    slurm_periodic_policy_enabled: Union[Unset, bool] = False
     auto_approve_marketplace_script: Union[Unset, bool] = True
     highlight_backend_id_display: Union[Unset, bool] = False
     backend_id_display_label: Union[Unset, str] = "Backend ID"
@@ -314,6 +318,8 @@ class MergedPluginOptionsRequest:
 
         enable_display_of_order_actions_for_service_provider = self.enable_display_of_order_actions_for_service_provider
 
+        slurm_periodic_policy_enabled = self.slurm_periodic_policy_enabled
+
         auto_approve_marketplace_script = self.auto_approve_marketplace_script
 
         highlight_backend_id_display = self.highlight_backend_id_display
@@ -455,6 +461,8 @@ class MergedPluginOptionsRequest:
             field_dict["enable_display_of_order_actions_for_service_provider"] = (
                 enable_display_of_order_actions_for_service_provider
             )
+        if slurm_periodic_policy_enabled is not UNSET:
+            field_dict["slurm_periodic_policy_enabled"] = slurm_periodic_policy_enabled
         if auto_approve_marketplace_script is not UNSET:
             field_dict["auto_approve_marketplace_script"] = auto_approve_marketplace_script
         if highlight_backend_id_display is not UNSET:
@@ -632,6 +640,8 @@ class MergedPluginOptionsRequest:
             "enable_display_of_order_actions_for_service_provider", UNSET
         )
 
+        slurm_periodic_policy_enabled = d.pop("slurm_periodic_policy_enabled", UNSET)
+
         auto_approve_marketplace_script = d.pop("auto_approve_marketplace_script", UNSET)
 
         highlight_backend_id_display = d.pop("highlight_backend_id_display", UNSET)
@@ -698,6 +708,7 @@ class MergedPluginOptionsRequest:
             managed_rancher_tenant_max_disk=managed_rancher_tenant_max_disk,
             account_name_generation_policy=account_name_generation_policy,
             enable_display_of_order_actions_for_service_provider=enable_display_of_order_actions_for_service_provider,
+            slurm_periodic_policy_enabled=slurm_periodic_policy_enabled,
             auto_approve_marketplace_script=auto_approve_marketplace_script,
             highlight_backend_id_display=highlight_backend_id_display,
             backend_id_display_label=backend_id_display_label,

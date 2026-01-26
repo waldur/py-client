@@ -453,6 +453,7 @@ from .create_manual_assignment_response import CreateManualAssignmentResponse
 from .create_manual_assignment_response_skipped_proposals_item import CreateManualAssignmentResponseSkippedProposalsItem
 from .create_router import CreateRouter
 from .create_router_request import CreateRouterRequest
+from .current_qos_status_enum import CurrentQosStatusEnum
 from .customer import Customer
 from .customer_component_usage_policy import CustomerComponentUsagePolicy
 from .customer_component_usage_policy_request import CustomerComponentUsagePolicyRequest
@@ -588,6 +589,7 @@ from .execute_action_error_response import ExecuteActionErrorResponse
 from .execute_action_request import ExecuteActionRequest
 from .execute_action_response import ExecuteActionResponse
 from .execute_action_response_metadata import ExecuteActionResponseMetadata
+from .execution_mode_enum import ExecutionModeEnum
 from .execution_state_enum import ExecutionStateEnum
 from .expertise_categories_count_o_item import ExpertiseCategoriesCountOItem
 from .expertise_categories_list_o_item import ExpertiseCategoriesListOItem
@@ -2195,6 +2197,7 @@ from .settings_metadata_response import SettingsMetadataResponse
 from .settings_metadata_response_settings_item import SettingsMetadataResponseSettingsItem
 from .silence_action_request import SilenceActionRequest
 from .silence_action_response import SilenceActionResponse
+from .site_agent_config_generation_request import SiteAgentConfigGenerationRequest
 from .slurm_allocation import SlurmAllocation
 from .slurm_allocation_marketplace_offering_plugin_options_type_0 import (
     SlurmAllocationMarketplaceOfferingPluginOptionsType0,
@@ -2208,11 +2211,21 @@ from .slurm_allocations_list_field_item import SlurmAllocationsListFieldItem
 from .slurm_allocations_list_state_item import SlurmAllocationsListStateItem
 from .slurm_allocations_retrieve_field_item import SlurmAllocationsRetrieveFieldItem
 from .slurm_association import SlurmAssociation
+from .slurm_command import SlurmCommand
+from .slurm_command_history import SlurmCommandHistory
+from .slurm_command_parameters import SlurmCommandParameters
 from .slurm_invoices_slurm_package_create_order_attributes import SlurmInvoicesSlurmPackageCreateOrderAttributes
 from .slurm_jobs_list_field_item import SlurmJobsListFieldItem
 from .slurm_jobs_retrieve_field_item import SlurmJobsRetrieveFieldItem
 from .slurm_periodic_usage_policy import SlurmPeriodicUsagePolicy
 from .slurm_periodic_usage_policy_request import SlurmPeriodicUsagePolicyRequest
+from .slurm_policy_carryover import SlurmPolicyCarryover
+from .slurm_policy_date_projection import SlurmPolicyDateProjection
+from .slurm_policy_date_projection_status_enum import SlurmPolicyDateProjectionStatusEnum
+from .slurm_policy_date_projections import SlurmPolicyDateProjections
+from .slurm_policy_preview_request_request import SlurmPolicyPreviewRequestRequest
+from .slurm_policy_preview_response import SlurmPolicyPreviewResponse
+from .slurm_policy_thresholds import SlurmPolicyThresholds
 from .smax_web_hook_receiver import SmaxWebHookReceiver
 from .smax_web_hook_receiver_request import SmaxWebHookReceiverRequest
 from .software_catalog import SoftwareCatalog
@@ -2845,6 +2858,7 @@ __all__ = (
     "CreateManualAssignmentResponseSkippedProposalsItem",
     "CreateRouter",
     "CreateRouterRequest",
+    "CurrentQosStatusEnum",
     "Customer",
     "CustomerComponentUsagePolicy",
     "CustomerComponentUsagePolicyRequest",
@@ -2976,6 +2990,7 @@ __all__ = (
     "ExecuteActionRequest",
     "ExecuteActionResponse",
     "ExecuteActionResponseMetadata",
+    "ExecutionModeEnum",
     "ExecutionStateEnum",
     "ExpertiseCategoriesCountOItem",
     "ExpertiseCategoriesListOItem",
@@ -4433,6 +4448,7 @@ __all__ = (
     "SettingsMetadataResponseSettingsItem",
     "SilenceActionRequest",
     "SilenceActionResponse",
+    "SiteAgentConfigGenerationRequest",
     "SlurmAllocation",
     "SlurmAllocationMarketplaceOfferingPluginOptionsType0",
     "SlurmAllocationRequest",
@@ -4444,11 +4460,21 @@ __all__ = (
     "SlurmAllocationsRetrieveFieldItem",
     "SlurmAllocationUserUsage",
     "SlurmAssociation",
+    "SlurmCommand",
+    "SlurmCommandHistory",
+    "SlurmCommandParameters",
     "SlurmInvoicesSlurmPackageCreateOrderAttributes",
     "SlurmJobsListFieldItem",
     "SlurmJobsRetrieveFieldItem",
     "SlurmPeriodicUsagePolicy",
     "SlurmPeriodicUsagePolicyRequest",
+    "SlurmPolicyCarryover",
+    "SlurmPolicyDateProjection",
+    "SlurmPolicyDateProjections",
+    "SlurmPolicyDateProjectionStatusEnum",
+    "SlurmPolicyPreviewRequestRequest",
+    "SlurmPolicyPreviewResponse",
+    "SlurmPolicyThresholds",
     "SmaxWebHookReceiver",
     "SmaxWebHookReceiverRequest",
     "SoftwareCatalog",
