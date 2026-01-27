@@ -26,7 +26,6 @@ class NestedSoftwareVersion:
         version (str):
         targets (list['NestedSoftwareTarget']):
         module (NestedSoftwareVersionModule):
-        modulename (str):
         required_modules (list[Any]):
         extensions (list[Any]):
         toolchain (NestedSoftwareVersionToolchain):
@@ -38,7 +37,6 @@ class NestedSoftwareVersion:
     version: str
     targets: list["NestedSoftwareTarget"]
     module: "NestedSoftwareVersionModule"
-    modulename: str
     required_modules: list[Any]
     extensions: list[Any]
     toolchain: "NestedSoftwareVersionToolchain"
@@ -57,8 +55,6 @@ class NestedSoftwareVersion:
             targets.append(targets_item)
 
         module = self.module.to_dict()
-
-        modulename = self.modulename
 
         required_modules = self.required_modules
 
@@ -84,7 +80,6 @@ class NestedSoftwareVersion:
                 "version": version,
                 "targets": targets,
                 "module": module,
-                "modulename": modulename,
                 "required_modules": required_modules,
                 "extensions": extensions,
                 "toolchain": toolchain,
@@ -116,8 +111,6 @@ class NestedSoftwareVersion:
 
         module = NestedSoftwareVersionModule.from_dict(d.pop("module"))
 
-        modulename = d.pop("modulename")
-
         required_modules = cast(list[Any], d.pop("required_modules"))
 
         extensions = cast(list[Any], d.pop("extensions"))
@@ -148,7 +141,6 @@ class NestedSoftwareVersion:
             version=version,
             targets=targets,
             module=module,
-            modulename=modulename,
             required_modules=required_modules,
             extensions=extensions,
             toolchain=toolchain,

@@ -31,7 +31,6 @@ class SoftwareVersion:
         catalog_type (str):
         target_count (int):
         module (SoftwareVersionModule):
-        modulename (str):
         required_modules (list[Any]):
         extensions (list[Any]):
         toolchain (SoftwareVersionToolchain):
@@ -50,7 +49,6 @@ class SoftwareVersion:
     catalog_type: str
     target_count: int
     module: "SoftwareVersionModule"
-    modulename: str
     required_modules: list[Any]
     extensions: list[Any]
     toolchain: "SoftwareVersionToolchain"
@@ -86,8 +84,6 @@ class SoftwareVersion:
 
         module = self.module.to_dict()
 
-        modulename = self.modulename
-
         required_modules = self.required_modules
 
         extensions = self.extensions
@@ -112,7 +108,6 @@ class SoftwareVersion:
                 "catalog_type": catalog_type,
                 "target_count": target_count,
                 "module": module,
-                "modulename": modulename,
                 "required_modules": required_modules,
                 "extensions": extensions,
                 "toolchain": toolchain,
@@ -165,8 +160,6 @@ class SoftwareVersion:
 
         module = SoftwareVersionModule.from_dict(d.pop("module"))
 
-        modulename = d.pop("modulename")
-
         required_modules = cast(list[Any], d.pop("required_modules"))
 
         extensions = cast(list[Any], d.pop("extensions"))
@@ -188,7 +181,6 @@ class SoftwareVersion:
             catalog_type=catalog_type,
             target_count=target_count,
             module=module,
-            modulename=modulename,
             required_modules=required_modules,
             extensions=extensions,
             toolchain=toolchain,
