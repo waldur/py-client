@@ -30,6 +30,7 @@ class ConstanceSettingsRequest:
         thumbnail_size (Union[Unset, str]):
         anonymous_user_can_view_offerings (Union[Unset, bool]):
         anonymous_user_can_view_plans (Union[Unset, bool]):
+        restricted_offering_visibility_mode (Union[Unset, str]):
         notify_staff_about_approvals (Union[Unset, bool]):
         notify_about_resource_change (Union[Unset, bool]):
         disable_sending_notifications_about_resource_update (Union[Unset, bool]):
@@ -203,6 +204,9 @@ class ConstanceSettingsRequest:
         llm_inferences_api_url (Union[Unset, str]):
         llm_inferences_api_token (Union[Unset, str]):
         llm_inferences_model (Union[Unset, str]):
+        llm_token_limit_daily (Union[Unset, int]):
+        llm_token_limit_weekly (Union[Unset, int]):
+        llm_token_limit_monthly (Union[Unset, int]):
         software_catalog_eessi_update_enabled (Union[Unset, bool]):
         software_catalog_eessi_version (Union[Unset, str]):
         software_catalog_eessi_api_url (Union[Unset, str]):
@@ -213,6 +217,11 @@ class ConstanceSettingsRequest:
         software_catalog_update_existing_packages (Union[Unset, bool]):
         software_catalog_cleanup_enabled (Union[Unset, bool]):
         software_catalog_retention_days (Union[Unset, int]):
+        table_growth_monitoring_enabled (Union[Unset, bool]):
+        table_growth_weekly_threshold_percent (Union[Unset, int]):
+        table_growth_monthly_threshold_percent (Union[Unset, int]):
+        table_growth_retention_days (Union[Unset, int]):
+        table_growth_min_size_bytes (Union[Unset, int]):
         user_actions_enabled (Union[Unset, bool]):
         user_actions_pending_order_hours (Union[Unset, int]):
         user_actions_high_urgency_notification (Union[Unset, bool]):
@@ -235,6 +244,7 @@ class ConstanceSettingsRequest:
     thumbnail_size: Union[Unset, str] = UNSET
     anonymous_user_can_view_offerings: Union[Unset, bool] = UNSET
     anonymous_user_can_view_plans: Union[Unset, bool] = UNSET
+    restricted_offering_visibility_mode: Union[Unset, str] = UNSET
     notify_staff_about_approvals: Union[Unset, bool] = UNSET
     notify_about_resource_change: Union[Unset, bool] = UNSET
     disable_sending_notifications_about_resource_update: Union[Unset, bool] = UNSET
@@ -408,6 +418,9 @@ class ConstanceSettingsRequest:
     llm_inferences_api_url: Union[Unset, str] = UNSET
     llm_inferences_api_token: Union[Unset, str] = UNSET
     llm_inferences_model: Union[Unset, str] = UNSET
+    llm_token_limit_daily: Union[Unset, int] = UNSET
+    llm_token_limit_weekly: Union[Unset, int] = UNSET
+    llm_token_limit_monthly: Union[Unset, int] = UNSET
     software_catalog_eessi_update_enabled: Union[Unset, bool] = UNSET
     software_catalog_eessi_version: Union[Unset, str] = UNSET
     software_catalog_eessi_api_url: Union[Unset, str] = UNSET
@@ -418,6 +431,11 @@ class ConstanceSettingsRequest:
     software_catalog_update_existing_packages: Union[Unset, bool] = UNSET
     software_catalog_cleanup_enabled: Union[Unset, bool] = UNSET
     software_catalog_retention_days: Union[Unset, int] = UNSET
+    table_growth_monitoring_enabled: Union[Unset, bool] = UNSET
+    table_growth_weekly_threshold_percent: Union[Unset, int] = UNSET
+    table_growth_monthly_threshold_percent: Union[Unset, int] = UNSET
+    table_growth_retention_days: Union[Unset, int] = UNSET
+    table_growth_min_size_bytes: Union[Unset, int] = UNSET
     user_actions_enabled: Union[Unset, bool] = UNSET
     user_actions_pending_order_hours: Union[Unset, int] = UNSET
     user_actions_high_urgency_notification: Union[Unset, bool] = UNSET
@@ -451,6 +469,8 @@ class ConstanceSettingsRequest:
         anonymous_user_can_view_offerings = self.anonymous_user_can_view_offerings
 
         anonymous_user_can_view_plans = self.anonymous_user_can_view_plans
+
+        restricted_offering_visibility_mode = self.restricted_offering_visibility_mode
 
         notify_staff_about_approvals = self.notify_staff_about_approvals
 
@@ -908,6 +928,12 @@ class ConstanceSettingsRequest:
 
         llm_inferences_model = self.llm_inferences_model
 
+        llm_token_limit_daily = self.llm_token_limit_daily
+
+        llm_token_limit_weekly = self.llm_token_limit_weekly
+
+        llm_token_limit_monthly = self.llm_token_limit_monthly
+
         software_catalog_eessi_update_enabled = self.software_catalog_eessi_update_enabled
 
         software_catalog_eessi_version = self.software_catalog_eessi_version
@@ -927,6 +953,16 @@ class ConstanceSettingsRequest:
         software_catalog_cleanup_enabled = self.software_catalog_cleanup_enabled
 
         software_catalog_retention_days = self.software_catalog_retention_days
+
+        table_growth_monitoring_enabled = self.table_growth_monitoring_enabled
+
+        table_growth_weekly_threshold_percent = self.table_growth_weekly_threshold_percent
+
+        table_growth_monthly_threshold_percent = self.table_growth_monthly_threshold_percent
+
+        table_growth_retention_days = self.table_growth_retention_days
+
+        table_growth_min_size_bytes = self.table_growth_min_size_bytes
 
         user_actions_enabled = self.user_actions_enabled
 
@@ -973,6 +1009,8 @@ class ConstanceSettingsRequest:
             field_dict["ANONYMOUS_USER_CAN_VIEW_OFFERINGS"] = anonymous_user_can_view_offerings
         if anonymous_user_can_view_plans is not UNSET:
             field_dict["ANONYMOUS_USER_CAN_VIEW_PLANS"] = anonymous_user_can_view_plans
+        if restricted_offering_visibility_mode is not UNSET:
+            field_dict["RESTRICTED_OFFERING_VISIBILITY_MODE"] = restricted_offering_visibility_mode
         if notify_staff_about_approvals is not UNSET:
             field_dict["NOTIFY_STAFF_ABOUT_APPROVALS"] = notify_staff_about_approvals
         if notify_about_resource_change is not UNSET:
@@ -1325,6 +1363,12 @@ class ConstanceSettingsRequest:
             field_dict["LLM_INFERENCES_API_TOKEN"] = llm_inferences_api_token
         if llm_inferences_model is not UNSET:
             field_dict["LLM_INFERENCES_MODEL"] = llm_inferences_model
+        if llm_token_limit_daily is not UNSET:
+            field_dict["LLM_TOKEN_LIMIT_DAILY"] = llm_token_limit_daily
+        if llm_token_limit_weekly is not UNSET:
+            field_dict["LLM_TOKEN_LIMIT_WEEKLY"] = llm_token_limit_weekly
+        if llm_token_limit_monthly is not UNSET:
+            field_dict["LLM_TOKEN_LIMIT_MONTHLY"] = llm_token_limit_monthly
         if software_catalog_eessi_update_enabled is not UNSET:
             field_dict["SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED"] = software_catalog_eessi_update_enabled
         if software_catalog_eessi_version is not UNSET:
@@ -1345,6 +1389,16 @@ class ConstanceSettingsRequest:
             field_dict["SOFTWARE_CATALOG_CLEANUP_ENABLED"] = software_catalog_cleanup_enabled
         if software_catalog_retention_days is not UNSET:
             field_dict["SOFTWARE_CATALOG_RETENTION_DAYS"] = software_catalog_retention_days
+        if table_growth_monitoring_enabled is not UNSET:
+            field_dict["TABLE_GROWTH_MONITORING_ENABLED"] = table_growth_monitoring_enabled
+        if table_growth_weekly_threshold_percent is not UNSET:
+            field_dict["TABLE_GROWTH_WEEKLY_THRESHOLD_PERCENT"] = table_growth_weekly_threshold_percent
+        if table_growth_monthly_threshold_percent is not UNSET:
+            field_dict["TABLE_GROWTH_MONTHLY_THRESHOLD_PERCENT"] = table_growth_monthly_threshold_percent
+        if table_growth_retention_days is not UNSET:
+            field_dict["TABLE_GROWTH_RETENTION_DAYS"] = table_growth_retention_days
+        if table_growth_min_size_bytes is not UNSET:
+            field_dict["TABLE_GROWTH_MIN_SIZE_BYTES"] = table_growth_min_size_bytes
         if user_actions_enabled is not UNSET:
             field_dict["USER_ACTIONS_ENABLED"] = user_actions_enabled
         if user_actions_pending_order_hours is not UNSET:
@@ -1394,6 +1448,8 @@ class ConstanceSettingsRequest:
         anonymous_user_can_view_offerings = d.pop("ANONYMOUS_USER_CAN_VIEW_OFFERINGS", UNSET)
 
         anonymous_user_can_view_plans = d.pop("ANONYMOUS_USER_CAN_VIEW_PLANS", UNSET)
+
+        restricted_offering_visibility_mode = d.pop("RESTRICTED_OFFERING_VISIBILITY_MODE", UNSET)
 
         notify_staff_about_approvals = d.pop("NOTIFY_STAFF_ABOUT_APPROVALS", UNSET)
 
@@ -1930,6 +1986,12 @@ class ConstanceSettingsRequest:
 
         llm_inferences_model = d.pop("LLM_INFERENCES_MODEL", UNSET)
 
+        llm_token_limit_daily = d.pop("LLM_TOKEN_LIMIT_DAILY", UNSET)
+
+        llm_token_limit_weekly = d.pop("LLM_TOKEN_LIMIT_WEEKLY", UNSET)
+
+        llm_token_limit_monthly = d.pop("LLM_TOKEN_LIMIT_MONTHLY", UNSET)
+
         software_catalog_eessi_update_enabled = d.pop("SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED", UNSET)
 
         software_catalog_eessi_version = d.pop("SOFTWARE_CATALOG_EESSI_VERSION", UNSET)
@@ -1949,6 +2011,16 @@ class ConstanceSettingsRequest:
         software_catalog_cleanup_enabled = d.pop("SOFTWARE_CATALOG_CLEANUP_ENABLED", UNSET)
 
         software_catalog_retention_days = d.pop("SOFTWARE_CATALOG_RETENTION_DAYS", UNSET)
+
+        table_growth_monitoring_enabled = d.pop("TABLE_GROWTH_MONITORING_ENABLED", UNSET)
+
+        table_growth_weekly_threshold_percent = d.pop("TABLE_GROWTH_WEEKLY_THRESHOLD_PERCENT", UNSET)
+
+        table_growth_monthly_threshold_percent = d.pop("TABLE_GROWTH_MONTHLY_THRESHOLD_PERCENT", UNSET)
+
+        table_growth_retention_days = d.pop("TABLE_GROWTH_RETENTION_DAYS", UNSET)
+
+        table_growth_min_size_bytes = d.pop("TABLE_GROWTH_MIN_SIZE_BYTES", UNSET)
 
         user_actions_enabled = d.pop("USER_ACTIONS_ENABLED", UNSET)
 
@@ -1982,6 +2054,7 @@ class ConstanceSettingsRequest:
             thumbnail_size=thumbnail_size,
             anonymous_user_can_view_offerings=anonymous_user_can_view_offerings,
             anonymous_user_can_view_plans=anonymous_user_can_view_plans,
+            restricted_offering_visibility_mode=restricted_offering_visibility_mode,
             notify_staff_about_approvals=notify_staff_about_approvals,
             notify_about_resource_change=notify_about_resource_change,
             disable_sending_notifications_about_resource_update=disable_sending_notifications_about_resource_update,
@@ -2155,6 +2228,9 @@ class ConstanceSettingsRequest:
             llm_inferences_api_url=llm_inferences_api_url,
             llm_inferences_api_token=llm_inferences_api_token,
             llm_inferences_model=llm_inferences_model,
+            llm_token_limit_daily=llm_token_limit_daily,
+            llm_token_limit_weekly=llm_token_limit_weekly,
+            llm_token_limit_monthly=llm_token_limit_monthly,
             software_catalog_eessi_update_enabled=software_catalog_eessi_update_enabled,
             software_catalog_eessi_version=software_catalog_eessi_version,
             software_catalog_eessi_api_url=software_catalog_eessi_api_url,
@@ -2165,6 +2241,11 @@ class ConstanceSettingsRequest:
             software_catalog_update_existing_packages=software_catalog_update_existing_packages,
             software_catalog_cleanup_enabled=software_catalog_cleanup_enabled,
             software_catalog_retention_days=software_catalog_retention_days,
+            table_growth_monitoring_enabled=table_growth_monitoring_enabled,
+            table_growth_weekly_threshold_percent=table_growth_weekly_threshold_percent,
+            table_growth_monthly_threshold_percent=table_growth_monthly_threshold_percent,
+            table_growth_retention_days=table_growth_retention_days,
+            table_growth_min_size_bytes=table_growth_min_size_bytes,
             user_actions_enabled=user_actions_enabled,
             user_actions_pending_order_hours=user_actions_pending_order_hours,
             user_actions_high_urgency_notification=user_actions_high_urgency_notification,

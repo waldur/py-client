@@ -29,6 +29,7 @@ class BookingOfferingsRetrieveFieldItem(str, Enum):
     HAS_COMPLIANCE_REQUIREMENTS = "has_compliance_requirements"
     IMAGE = "image"
     INTEGRATION_GUIDE = "integration_guide"
+    IS_ACCESSIBLE = "is_accessible"
     LATITUDE = "latitude"
     LONGITUDE = "longitude"
     NAME = "name"

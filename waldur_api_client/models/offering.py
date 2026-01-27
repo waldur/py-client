@@ -105,6 +105,7 @@ class Offering:
             Returns 'limit_only', 'usage_only', or 'mixed'.
         compliance_checklist (Union[None, Unset, str]):
         user_has_consent (Union[Unset, bool]):
+        is_accessible (Union[Unset, bool]):
         googlecalendar (Union[Unset, GoogleCalendar]):
     """
 
@@ -174,6 +175,7 @@ class Offering:
     billing_type_classification: Union[Unset, str] = UNSET
     compliance_checklist: Union[None, Unset, str] = UNSET
     user_has_consent: Union[Unset, bool] = UNSET
+    is_accessible: Union[Unset, bool] = UNSET
     googlecalendar: Union[Unset, "GoogleCalendar"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -483,6 +485,8 @@ class Offering:
 
         user_has_consent = self.user_has_consent
 
+        is_accessible = self.is_accessible
+
         googlecalendar: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.googlecalendar, Unset):
             googlecalendar = self.googlecalendar.to_dict()
@@ -622,6 +626,8 @@ class Offering:
             field_dict["compliance_checklist"] = compliance_checklist
         if user_has_consent is not UNSET:
             field_dict["user_has_consent"] = user_has_consent
+        if is_accessible is not UNSET:
+            field_dict["is_accessible"] = is_accessible
         if googlecalendar is not UNSET:
             field_dict["googlecalendar"] = googlecalendar
 
@@ -1085,6 +1091,8 @@ class Offering:
 
         user_has_consent = d.pop("user_has_consent", UNSET)
 
+        is_accessible = d.pop("is_accessible", UNSET)
+
         _googlecalendar = d.pop("googlecalendar", UNSET)
         googlecalendar: Union[Unset, GoogleCalendar]
         if isinstance(_googlecalendar, Unset):
@@ -1159,6 +1167,7 @@ class Offering:
             billing_type_classification=billing_type_classification,
             compliance_checklist=compliance_checklist,
             user_has_consent=user_has_consent,
+            is_accessible=is_accessible,
             googlecalendar=googlecalendar,
         )
 

@@ -487,6 +487,8 @@ from .customers_users_list_field_item import CustomersUsersListFieldItem
 from .customers_users_list_o import CustomersUsersListO
 from .customers_users_list_organization_role_item_type_0 import CustomersUsersListOrganizationRoleItemType0
 from .customers_users_list_project_role_item_type_0 import CustomersUsersListProjectRoleItemType0
+from .daily_maintenance_stats import DailyMaintenanceStats
+from .daily_maintenance_stats_by_state import DailyMaintenanceStatsByState
 from .daily_order_stats import DailyOrderStats
 from .daily_order_stats_by_state import DailyOrderStatsByState
 from .daily_order_stats_by_type import DailyOrderStatsByType
@@ -784,7 +786,13 @@ from .maintenance_announcements_list_o_item import MaintenanceAnnouncementsListO
 from .maintenance_announcements_list_state_item import MaintenanceAnnouncementsListStateItem
 from .maintenance_announcements_template_count_o_item import MaintenanceAnnouncementsTemplateCountOItem
 from .maintenance_announcements_template_list_o_item import MaintenanceAnnouncementsTemplateListOItem
+from .maintenance_provider_stats import MaintenanceProviderStats
 from .maintenance_stats import MaintenanceStats
+from .maintenance_stats_response import MaintenanceStatsResponse
+from .maintenance_stats_response_by_impact_level import MaintenanceStatsResponseByImpactLevel
+from .maintenance_stats_response_by_state import MaintenanceStatsResponseByState
+from .maintenance_stats_response_by_type import MaintenanceStatsResponseByType
+from .maintenance_stats_summary import MaintenanceStatsSummary
 from .maintenance_type_enum import MaintenanceTypeEnum
 from .managed_project import ManagedProject
 from .managed_rancher_cluster_resources_list_field_item import ManagedRancherClusterResourcesListFieldItem
@@ -2214,6 +2222,7 @@ from .service_settings_state_enum import ServiceSettingsStateEnum
 from .set_mtu import SetMtu
 from .set_mtu_request import SetMtuRequest
 from .set_offerings_username_request import SetOfferingsUsernameRequest
+from .set_token_quota_request import SetTokenQuotaRequest
 from .settings_metadata_response import SettingsMetadataResponse
 from .settings_metadata_response_settings_item import SettingsMetadataResponseSettingsItem
 from .silence_action_request import SilenceActionRequest
@@ -2284,6 +2293,8 @@ from .support_stats import SupportStats
 from .support_user import SupportUser
 from .supported_countries_response import SupportedCountriesResponse
 from .sync_status_enum import SyncStatusEnum
+from .table_growth_stats import TableGrowthStats
+from .table_growth_stats_response import TableGrowthStatsResponse
 from .table_size import TableSize
 from .tag import Tag
 from .tag_request import TagRequest
@@ -2298,6 +2309,7 @@ from .tenant import Tenant
 from .tenant_security_group_update_request import TenantSecurityGroupUpdateRequest
 from .time_series_to_s_data import TimeSeriesToSData
 from .to_s_consent_dashboard import ToSConsentDashboard
+from .token_quota_usage_response import TokenQuotaUsageResponse
 from .token_request import TokenRequest
 from .tool_execute_request import ToolExecuteRequest
 from .top_queue import TopQueue
@@ -2915,6 +2927,8 @@ __all__ = (
     "CustomersUsersListOrganizationRoleItemType0",
     "CustomersUsersListProjectRoleItemType0",
     "CustomerUser",
+    "DailyMaintenanceStats",
+    "DailyMaintenanceStatsByState",
     "DailyOrderStats",
     "DailyOrderStatsByState",
     "DailyOrderStatsByType",
@@ -3204,7 +3218,13 @@ __all__ = (
     "MaintenanceAnnouncementTemplateOfferingsCountOItem",
     "MaintenanceAnnouncementTemplateOfferingsListOItem",
     "MaintenanceAnnouncementTemplateRequest",
+    "MaintenanceProviderStats",
     "MaintenanceStats",
+    "MaintenanceStatsResponse",
+    "MaintenanceStatsResponseByImpactLevel",
+    "MaintenanceStatsResponseByState",
+    "MaintenanceStatsResponseByType",
+    "MaintenanceStatsSummary",
     "MaintenanceTypeEnum",
     "ManagedProject",
     "ManagedRancherClusterResourcesListFieldItem",
@@ -4484,6 +4504,7 @@ __all__ = (
     "SetOfferingsUsernameRequest",
     "SettingsMetadataResponse",
     "SettingsMetadataResponseSettingsItem",
+    "SetTokenQuotaRequest",
     "SilenceActionRequest",
     "SilenceActionResponse",
     "SiteAgentConfigGenerationRequest",
@@ -4550,6 +4571,8 @@ __all__ = (
     "SupportStats",
     "SupportUser",
     "SyncStatusEnum",
+    "TableGrowthStats",
+    "TableGrowthStatsResponse",
     "TableSize",
     "Tag",
     "TagRequest",
@@ -4563,6 +4586,7 @@ __all__ = (
     "Tenant",
     "TenantSecurityGroupUpdateRequest",
     "TimeSeriesToSData",
+    "TokenQuotaUsageResponse",
     "TokenRequest",
     "ToolExecuteRequest",
     "TopQueue",

@@ -20,21 +20,21 @@ class ChatResponse:
         k (Union[Unset, str]): Component Alias (e.g. 'markdown', 'code', 'table').
         c (Union[Unset, str]): Content payload.
         t (Union[Unset, str]): Tag or language for dynamic blocks.
+        e (Union[Unset, str]): Error message.
         h (Union[Unset, list[Any]]): Table headers.
         r (Union[Unset, list[Any]]): Table rows.
         n (Union[Unset, int]): Total row count.
         m (Union[Unset, ChatResponseM]): System metadata.
-        e (Union[Unset, str]): Error message.
     """
 
     k: Union[Unset, str] = UNSET
     c: Union[Unset, str] = UNSET
     t: Union[Unset, str] = UNSET
+    e: Union[Unset, str] = UNSET
     h: Union[Unset, list[Any]] = UNSET
     r: Union[Unset, list[Any]] = UNSET
     n: Union[Unset, int] = UNSET
     m: Union[Unset, "ChatResponseM"] = UNSET
-    e: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -43,6 +43,8 @@ class ChatResponse:
         c = self.c
 
         t = self.t
+
+        e = self.e
 
         h: Union[Unset, list[Any]] = UNSET
         if not isinstance(self.h, Unset):
@@ -58,8 +60,6 @@ class ChatResponse:
         if not isinstance(self.m, Unset):
             m = self.m.to_dict()
 
-        e = self.e
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -69,6 +69,8 @@ class ChatResponse:
             field_dict["c"] = c
         if t is not UNSET:
             field_dict["t"] = t
+        if e is not UNSET:
+            field_dict["e"] = e
         if h is not UNSET:
             field_dict["h"] = h
         if r is not UNSET:
@@ -77,8 +79,6 @@ class ChatResponse:
             field_dict["n"] = n
         if m is not UNSET:
             field_dict["m"] = m
-        if e is not UNSET:
-            field_dict["e"] = e
 
         return field_dict
 
@@ -93,6 +93,8 @@ class ChatResponse:
 
         t = d.pop("t", UNSET)
 
+        e = d.pop("e", UNSET)
+
         h = cast(list[Any], d.pop("h", UNSET))
 
         r = cast(list[Any], d.pop("r", UNSET))
@@ -106,17 +108,15 @@ class ChatResponse:
         else:
             m = ChatResponseM.from_dict(_m)
 
-        e = d.pop("e", UNSET)
-
         chat_response = cls(
             k=k,
             c=c,
             t=t,
+            e=e,
             h=h,
             r=r,
             n=n,
             m=m,
-            e=e,
         )
 
         chat_response.additional_properties = d
