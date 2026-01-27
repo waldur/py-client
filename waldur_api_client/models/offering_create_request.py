@@ -12,6 +12,7 @@ from ..types import UNSET, File, Unset
 
 if TYPE_CHECKING:
     from ..models.base_provider_plan_request import BaseProviderPlanRequest
+    from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
     from ..models.offering_component_request import OfferingComponentRequest
     from ..models.offering_create_request_limits import OfferingCreateRequestLimits
     from ..models.offering_options_request import OfferingOptionsRequest
@@ -37,6 +38,7 @@ class OfferingCreateRequest:
         options (Union[Unset, OfferingOptionsRequest]):
         resource_options (Union[Unset, OfferingOptionsRequest]):
         components (Union[Unset, list['OfferingComponentRequest']]):
+        plugin_options (Union[Unset, MergedPluginOptionsRequest]):
         vendor_details (Union[Unset, str]):
         getting_started (Union[Unset, str]):
         integration_guide (Union[Unset, str]):
@@ -68,6 +70,7 @@ class OfferingCreateRequest:
     options: Union[Unset, "OfferingOptionsRequest"] = UNSET
     resource_options: Union[Unset, "OfferingOptionsRequest"] = UNSET
     components: Union[Unset, list["OfferingComponentRequest"]] = UNSET
+    plugin_options: Union[Unset, "MergedPluginOptionsRequest"] = UNSET
     vendor_details: Union[Unset, str] = UNSET
     getting_started: Union[Unset, str] = UNSET
     integration_guide: Union[Unset, str] = UNSET
@@ -125,6 +128,10 @@ class OfferingCreateRequest:
             for components_item_data in self.components:
                 components_item = components_item_data.to_dict()
                 components.append(components_item)
+
+        plugin_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.plugin_options, Unset):
+            plugin_options = self.plugin_options.to_dict()
 
         vendor_details = self.vendor_details
 
@@ -226,6 +233,8 @@ class OfferingCreateRequest:
             field_dict["resource_options"] = resource_options
         if components is not UNSET:
             field_dict["components"] = components
+        if plugin_options is not UNSET:
+            field_dict["plugin_options"] = plugin_options
         if vendor_details is not UNSET:
             field_dict["vendor_details"] = vendor_details
         if getting_started is not UNSET:
@@ -264,6 +273,7 @@ class OfferingCreateRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.base_provider_plan_request import BaseProviderPlanRequest
+        from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
         from ..models.offering_component_request import OfferingComponentRequest
         from ..models.offering_create_request_limits import OfferingCreateRequestLimits
         from ..models.offering_options_request import OfferingOptionsRequest
@@ -316,6 +326,13 @@ class OfferingCreateRequest:
             components_item = OfferingComponentRequest.from_dict(components_item_data)
 
             components.append(components_item)
+
+        _plugin_options = d.pop("plugin_options", UNSET)
+        plugin_options: Union[Unset, MergedPluginOptionsRequest]
+        if isinstance(_plugin_options, Unset):
+            plugin_options = UNSET
+        else:
+            plugin_options = MergedPluginOptionsRequest.from_dict(_plugin_options)
 
         vendor_details = d.pop("vendor_details", UNSET)
 
@@ -441,6 +458,7 @@ class OfferingCreateRequest:
             options=options,
             resource_options=resource_options,
             components=components,
+            plugin_options=plugin_options,
             vendor_details=vendor_details,
             getting_started=getting_started,
             integration_guide=integration_guide,
