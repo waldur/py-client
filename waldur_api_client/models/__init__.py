@@ -936,6 +936,17 @@ from .marketplace_provider_resources_count_state_item import MarketplaceProvider
 from .marketplace_provider_resources_details_retrieve_response_200 import (
     MarketplaceProviderResourcesDetailsRetrieveResponse200,
 )
+from .marketplace_provider_resources_history_at_retrieve_response_400 import (
+    MarketplaceProviderResourcesHistoryAtRetrieveResponse400,
+)
+from .marketplace_provider_resources_history_at_retrieve_response_404 import (
+    MarketplaceProviderResourcesHistoryAtRetrieveResponse404,
+)
+from .marketplace_provider_resources_history_list_o_item import MarketplaceProviderResourcesHistoryListOItem
+from .marketplace_provider_resources_history_list_order_state_item import (
+    MarketplaceProviderResourcesHistoryListOrderStateItem,
+)
+from .marketplace_provider_resources_history_list_state_item import MarketplaceProviderResourcesHistoryListStateItem
 from .marketplace_provider_resources_list_field_item import MarketplaceProviderResourcesListFieldItem
 from .marketplace_provider_resources_list_o_item import MarketplaceProviderResourcesListOItem
 from .marketplace_provider_resources_list_order_state_item import MarketplaceProviderResourcesListOrderStateItem
@@ -960,6 +971,11 @@ from .marketplace_resources_count_o_item import MarketplaceResourcesCountOItem
 from .marketplace_resources_count_order_state_item import MarketplaceResourcesCountOrderStateItem
 from .marketplace_resources_count_state_item import MarketplaceResourcesCountStateItem
 from .marketplace_resources_details_retrieve_response_200 import MarketplaceResourcesDetailsRetrieveResponse200
+from .marketplace_resources_history_at_retrieve_response_400 import MarketplaceResourcesHistoryAtRetrieveResponse400
+from .marketplace_resources_history_at_retrieve_response_404 import MarketplaceResourcesHistoryAtRetrieveResponse404
+from .marketplace_resources_history_list_o_item import MarketplaceResourcesHistoryListOItem
+from .marketplace_resources_history_list_order_state_item import MarketplaceResourcesHistoryListOrderStateItem
+from .marketplace_resources_history_list_state_item import MarketplaceResourcesHistoryListStateItem
 from .marketplace_resources_list_field_item import MarketplaceResourcesListFieldItem
 from .marketplace_resources_list_o_item import MarketplaceResourcesListOItem
 from .marketplace_resources_list_order_state_item import MarketplaceResourcesListOrderStateItem
@@ -1109,7 +1125,9 @@ from .nested_software_catalog_request import NestedSoftwareCatalogRequest
 from .nested_software_target import NestedSoftwareTarget
 from .nested_software_target_request import NestedSoftwareTargetRequest
 from .nested_software_version import NestedSoftwareVersion
+from .nested_software_version_module import NestedSoftwareVersionModule
 from .nested_software_version_request import NestedSoftwareVersionRequest
+from .nested_software_version_toolchain import NestedSoftwareVersionToolchain
 from .nested_tag import NestedTag
 from .nested_tag_request import NestedTagRequest
 from .network_rbac_policy import NetworkRBACPolicy
@@ -2068,6 +2086,9 @@ from .resource_update_limits_request_limits import ResourceUpdateLimitsRequestLi
 from .resource_update_request import ResourceUpdateRequest
 from .resource_user import ResourceUser
 from .resource_user_request import ResourceUserRequest
+from .resource_version import ResourceVersion
+from .resource_version_revision_user_type_0 import ResourceVersionRevisionUserType0
+from .resource_version_serialized_data import ResourceVersionSerializedData
 from .resources_limits import ResourcesLimits
 from .review_comment_request import ReviewCommentRequest
 from .review_strategy_enum import ReviewStrategyEnum
@@ -2235,6 +2256,8 @@ from .software_package import SoftwarePackage
 from .software_package_request import SoftwarePackageRequest
 from .software_target import SoftwareTarget
 from .software_version import SoftwareVersion
+from .software_version_module import SoftwareVersionModule
+from .software_version_toolchain import SoftwareVersionToolchain
 from .source_type_enum import SourceTypeEnum
 from .ssh_key import SshKey
 from .ssh_key_request import SshKeyRequest
@@ -3295,6 +3318,11 @@ __all__ = (
     "MarketplaceProviderResourcesCountOrderStateItem",
     "MarketplaceProviderResourcesCountStateItem",
     "MarketplaceProviderResourcesDetailsRetrieveResponse200",
+    "MarketplaceProviderResourcesHistoryAtRetrieveResponse400",
+    "MarketplaceProviderResourcesHistoryAtRetrieveResponse404",
+    "MarketplaceProviderResourcesHistoryListOItem",
+    "MarketplaceProviderResourcesHistoryListOrderStateItem",
+    "MarketplaceProviderResourcesHistoryListStateItem",
     "MarketplaceProviderResourcesListFieldItem",
     "MarketplaceProviderResourcesListOItem",
     "MarketplaceProviderResourcesListOrderStateItem",
@@ -3315,6 +3343,11 @@ __all__ = (
     "MarketplaceResourcesCountOrderStateItem",
     "MarketplaceResourcesCountStateItem",
     "MarketplaceResourcesDetailsRetrieveResponse200",
+    "MarketplaceResourcesHistoryAtRetrieveResponse400",
+    "MarketplaceResourcesHistoryAtRetrieveResponse404",
+    "MarketplaceResourcesHistoryListOItem",
+    "MarketplaceResourcesHistoryListOrderStateItem",
+    "MarketplaceResourcesHistoryListStateItem",
     "MarketplaceResourcesListFieldItem",
     "MarketplaceResourcesListOItem",
     "MarketplaceResourcesListOrderStateItem",
@@ -3446,7 +3479,9 @@ __all__ = (
     "NestedSoftwareTarget",
     "NestedSoftwareTargetRequest",
     "NestedSoftwareVersion",
+    "NestedSoftwareVersionModule",
     "NestedSoftwareVersionRequest",
+    "NestedSoftwareVersionToolchain",
     "NestedTag",
     "NestedTagRequest",
     "NetworkRBACPolicy",
@@ -4320,6 +4355,9 @@ __all__ = (
     "ResourceUpdateRequest",
     "ResourceUser",
     "ResourceUserRequest",
+    "ResourceVersion",
+    "ResourceVersionRevisionUserType0",
+    "ResourceVersionSerializedData",
     "ReviewCommentRequest",
     "ReviewerAffiliation",
     "ReviewerAffiliationRequest",
@@ -4484,6 +4522,8 @@ __all__ = (
     "SoftwarePackageRequest",
     "SoftwareTarget",
     "SoftwareVersion",
+    "SoftwareVersionModule",
+    "SoftwareVersionToolchain",
     "SourceTypeEnum",
     "SshKey",
     "SshKeyRequest",

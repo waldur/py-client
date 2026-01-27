@@ -18,6 +18,8 @@ def _get_kwargs(
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    extension_name: Union[Unset, str] = UNSET,
+    extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesCountOItem]] = UNSET,
@@ -42,6 +44,10 @@ def _get_kwargs(
     params["cpu_microarchitecture"] = cpu_microarchitecture
 
     params["description"] = description
+
+    params["extension_name"] = extension_name
+
+    params["extension_type"] = extension_type
 
     params["has_version"] = has_version
 
@@ -113,6 +119,8 @@ def sync_detailed(
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    extension_name: Union[Unset, str] = UNSET,
+    extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesCountOItem]] = UNSET,
@@ -132,6 +140,8 @@ def sync_detailed(
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
         description (Union[Unset, str]):
+        extension_name (Union[Unset, str]):
+        extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesCountOItem]]):
@@ -155,6 +165,8 @@ def sync_detailed(
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
         description=description,
+        extension_name=extension_name,
+        extension_type=extension_type,
         has_version=has_version,
         name=name,
         o=o,
@@ -180,6 +192,8 @@ def sync(
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    extension_name: Union[Unset, str] = UNSET,
+    extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesCountOItem]] = UNSET,
@@ -199,6 +213,8 @@ def sync(
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
         description (Union[Unset, str]):
+        extension_name (Union[Unset, str]):
+        extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesCountOItem]]):
@@ -223,6 +239,8 @@ def sync(
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
         description=description,
+        extension_name=extension_name,
+        extension_type=extension_type,
         has_version=has_version,
         name=name,
         o=o,
@@ -242,6 +260,8 @@ async def asyncio_detailed(
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    extension_name: Union[Unset, str] = UNSET,
+    extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesCountOItem]] = UNSET,
@@ -261,6 +281,8 @@ async def asyncio_detailed(
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
         description (Union[Unset, str]):
+        extension_name (Union[Unset, str]):
+        extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesCountOItem]]):
@@ -284,6 +306,8 @@ async def asyncio_detailed(
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
         description=description,
+        extension_name=extension_name,
+        extension_type=extension_type,
         has_version=has_version,
         name=name,
         o=o,
@@ -307,6 +331,8 @@ async def asyncio(
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    extension_name: Union[Unset, str] = UNSET,
+    extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesCountOItem]] = UNSET,
@@ -326,6 +352,8 @@ async def asyncio(
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
         description (Union[Unset, str]):
+        extension_name (Union[Unset, str]):
+        extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesCountOItem]]):
@@ -351,6 +379,8 @@ async def asyncio(
             cpu_family=cpu_family,
             cpu_microarchitecture=cpu_microarchitecture,
             description=description,
+            extension_name=extension_name,
+            extension_type=extension_type,
             has_version=has_version,
             name=name,
             o=o,

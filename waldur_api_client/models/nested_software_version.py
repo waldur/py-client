@@ -11,6 +11,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_software_target import NestedSoftwareTarget
+    from ..models.nested_software_version_module import NestedSoftwareVersionModule
+    from ..models.nested_software_version_toolchain import NestedSoftwareVersionToolchain
 
 
 T = TypeVar("T", bound="NestedSoftwareVersion")
@@ -23,12 +25,24 @@ class NestedSoftwareVersion:
         uuid (UUID):
         version (str):
         targets (list['NestedSoftwareTarget']):
+        module (NestedSoftwareVersionModule):
+        modulename (str):
+        required_modules (list[Any]):
+        extensions (list[Any]):
+        toolchain (NestedSoftwareVersionToolchain):
+        toolchain_families_compatibility (list[Any]):
         release_date (Union[None, Unset, datetime.date]):
     """
 
     uuid: UUID
     version: str
     targets: list["NestedSoftwareTarget"]
+    module: "NestedSoftwareVersionModule"
+    modulename: str
+    required_modules: list[Any]
+    extensions: list[Any]
+    toolchain: "NestedSoftwareVersionToolchain"
+    toolchain_families_compatibility: list[Any]
     release_date: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -41,6 +55,18 @@ class NestedSoftwareVersion:
         for targets_item_data in self.targets:
             targets_item = targets_item_data.to_dict()
             targets.append(targets_item)
+
+        module = self.module.to_dict()
+
+        modulename = self.modulename
+
+        required_modules = self.required_modules
+
+        extensions = self.extensions
+
+        toolchain = self.toolchain.to_dict()
+
+        toolchain_families_compatibility = self.toolchain_families_compatibility
 
         release_date: Union[None, Unset, str]
         if isinstance(self.release_date, Unset):
@@ -57,6 +83,12 @@ class NestedSoftwareVersion:
                 "uuid": uuid,
                 "version": version,
                 "targets": targets,
+                "module": module,
+                "modulename": modulename,
+                "required_modules": required_modules,
+                "extensions": extensions,
+                "toolchain": toolchain,
+                "toolchain_families_compatibility": toolchain_families_compatibility,
             }
         )
         if release_date is not UNSET:
@@ -67,6 +99,8 @@ class NestedSoftwareVersion:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_software_target import NestedSoftwareTarget
+        from ..models.nested_software_version_module import NestedSoftwareVersionModule
+        from ..models.nested_software_version_toolchain import NestedSoftwareVersionToolchain
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -79,6 +113,18 @@ class NestedSoftwareVersion:
             targets_item = NestedSoftwareTarget.from_dict(targets_item_data)
 
             targets.append(targets_item)
+
+        module = NestedSoftwareVersionModule.from_dict(d.pop("module"))
+
+        modulename = d.pop("modulename")
+
+        required_modules = cast(list[Any], d.pop("required_modules"))
+
+        extensions = cast(list[Any], d.pop("extensions"))
+
+        toolchain = NestedSoftwareVersionToolchain.from_dict(d.pop("toolchain"))
+
+        toolchain_families_compatibility = cast(list[Any], d.pop("toolchain_families_compatibility"))
 
         def _parse_release_date(data: object) -> Union[None, Unset, datetime.date]:
             if data is None:
@@ -101,6 +147,12 @@ class NestedSoftwareVersion:
             uuid=uuid,
             version=version,
             targets=targets,
+            module=module,
+            modulename=modulename,
+            required_modules=required_modules,
+            extensions=extensions,
+            toolchain=toolchain,
+            toolchain_families_compatibility=toolchain_families_compatibility,
             release_date=release_date,
         )
 

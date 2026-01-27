@@ -1,11 +1,16 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+if TYPE_CHECKING:
+    from ..models.software_version_module import SoftwareVersionModule
+    from ..models.software_version_toolchain import SoftwareVersionToolchain
+
 
 T = TypeVar("T", bound="SoftwareVersion")
 
@@ -25,6 +30,12 @@ class SoftwareVersion:
         package_name (str):
         catalog_type (str):
         target_count (int):
+        module (SoftwareVersionModule):
+        modulename (str):
+        required_modules (list[Any]):
+        extensions (list[Any]):
+        toolchain (SoftwareVersionToolchain):
+        toolchain_families_compatibility (list[Any]):
     """
 
     url: str
@@ -38,6 +49,12 @@ class SoftwareVersion:
     package_name: str
     catalog_type: str
     target_count: int
+    module: "SoftwareVersionModule"
+    modulename: str
+    required_modules: list[Any]
+    extensions: list[Any]
+    toolchain: "SoftwareVersionToolchain"
+    toolchain_families_compatibility: list[Any]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -67,6 +84,18 @@ class SoftwareVersion:
 
         target_count = self.target_count
 
+        module = self.module.to_dict()
+
+        modulename = self.modulename
+
+        required_modules = self.required_modules
+
+        extensions = self.extensions
+
+        toolchain = self.toolchain.to_dict()
+
+        toolchain_families_compatibility = self.toolchain_families_compatibility
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -82,6 +111,12 @@ class SoftwareVersion:
                 "package_name": package_name,
                 "catalog_type": catalog_type,
                 "target_count": target_count,
+                "module": module,
+                "modulename": modulename,
+                "required_modules": required_modules,
+                "extensions": extensions,
+                "toolchain": toolchain,
+                "toolchain_families_compatibility": toolchain_families_compatibility,
             }
         )
 
@@ -89,6 +124,9 @@ class SoftwareVersion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.software_version_module import SoftwareVersionModule
+        from ..models.software_version_toolchain import SoftwareVersionToolchain
+
         d = dict(src_dict)
         url = d.pop("url")
 
@@ -125,6 +163,18 @@ class SoftwareVersion:
 
         target_count = d.pop("target_count")
 
+        module = SoftwareVersionModule.from_dict(d.pop("module"))
+
+        modulename = d.pop("modulename")
+
+        required_modules = cast(list[Any], d.pop("required_modules"))
+
+        extensions = cast(list[Any], d.pop("extensions"))
+
+        toolchain = SoftwareVersionToolchain.from_dict(d.pop("toolchain"))
+
+        toolchain_families_compatibility = cast(list[Any], d.pop("toolchain_families_compatibility"))
+
         software_version = cls(
             url=url,
             uuid=uuid,
@@ -137,6 +187,12 @@ class SoftwareVersion:
             package_name=package_name,
             catalog_type=catalog_type,
             target_count=target_count,
+            module=module,
+            modulename=modulename,
+            required_modules=required_modules,
+            extensions=extensions,
+            toolchain=toolchain,
+            toolchain_families_compatibility=toolchain_families_compatibility,
         )
 
         software_version.additional_properties = d
