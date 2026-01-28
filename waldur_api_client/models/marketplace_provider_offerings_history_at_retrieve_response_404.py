@@ -4,11 +4,11 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ResourceVersionRevisionUserType0")
+T = TypeVar("T", bound="MarketplaceProviderOfferingsHistoryAtRetrieveResponse404")
 
 
 @_attrs_define
-class ResourceVersionRevisionUserType0:
+class MarketplaceProviderOfferingsHistoryAtRetrieveResponse404:
     """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -22,10 +22,10 @@ class ResourceVersionRevisionUserType0:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        resource_version_revision_user_type_0 = cls()
+        marketplace_provider_offerings_history_at_retrieve_response_404 = cls()
 
-        resource_version_revision_user_type_0.additional_properties = d
-        return resource_version_revision_user_type_0
+        marketplace_provider_offerings_history_at_retrieve_response_404.additional_properties = d
+        return marketplace_provider_offerings_history_at_retrieve_response_404
 
     @property
     def additional_keys(self) -> list[str]:

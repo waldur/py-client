@@ -12,7 +12,7 @@ from ...models.marketplace_resources_history_at_retrieve_response_400 import (
 from ...models.marketplace_resources_history_at_retrieve_response_404 import (
     MarketplaceResourcesHistoryAtRetrieveResponse404,
 )
-from ...models.resource_version import ResourceVersion
+from ...models.version_history import VersionHistory
 from ...types import UNSET, Response
 
 
@@ -39,12 +39,12 @@ def _get_kwargs(
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Union[
-    MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, ResourceVersion
+    MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, VersionHistory
 ]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ResourceVersion.from_dict(response.json())
+        response_200 = VersionHistory.from_dict(response.json())
 
         return response_200
     if response.status_code == 400:
@@ -64,7 +64,7 @@ def _build_response(
     Union[
         MarketplaceResourcesHistoryAtRetrieveResponse400,
         MarketplaceResourcesHistoryAtRetrieveResponse404,
-        ResourceVersion,
+        VersionHistory,
     ]
 ]:
     return Response(
@@ -84,12 +84,12 @@ def sync_detailed(
     Union[
         MarketplaceResourcesHistoryAtRetrieveResponse400,
         MarketplaceResourcesHistoryAtRetrieveResponse404,
-        ResourceVersion,
+        VersionHistory,
     ]
 ]:
-    """Get resource state at a specific timestamp
+    """Get object state at a specific timestamp
 
-     Returns the state of the resource as it was at the specified timestamp. Only accessible by staff and
+     Returns the state of the object as it was at the specified timestamp. Only accessible by staff and
     support users.
 
     Args:
@@ -101,7 +101,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, ResourceVersion]]
+        Response[Union[MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, VersionHistory]]
     """
 
     kwargs = _get_kwargs(
@@ -122,11 +122,11 @@ def sync(
     client: AuthenticatedClient,
     timestamp: str,
 ) -> Union[
-    MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, ResourceVersion
+    MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, VersionHistory
 ]:
-    """Get resource state at a specific timestamp
+    """Get object state at a specific timestamp
 
-     Returns the state of the resource as it was at the specified timestamp. Only accessible by staff and
+     Returns the state of the object as it was at the specified timestamp. Only accessible by staff and
     support users.
 
     Args:
@@ -138,7 +138,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, ResourceVersion]
+        Union[MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, VersionHistory]
     """
 
     return sync_detailed(
@@ -157,12 +157,12 @@ async def asyncio_detailed(
     Union[
         MarketplaceResourcesHistoryAtRetrieveResponse400,
         MarketplaceResourcesHistoryAtRetrieveResponse404,
-        ResourceVersion,
+        VersionHistory,
     ]
 ]:
-    """Get resource state at a specific timestamp
+    """Get object state at a specific timestamp
 
-     Returns the state of the resource as it was at the specified timestamp. Only accessible by staff and
+     Returns the state of the object as it was at the specified timestamp. Only accessible by staff and
     support users.
 
     Args:
@@ -174,7 +174,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, ResourceVersion]]
+        Response[Union[MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, VersionHistory]]
     """
 
     kwargs = _get_kwargs(
@@ -193,11 +193,11 @@ async def asyncio(
     client: AuthenticatedClient,
     timestamp: str,
 ) -> Union[
-    MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, ResourceVersion
+    MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, VersionHistory
 ]:
-    """Get resource state at a specific timestamp
+    """Get object state at a specific timestamp
 
-     Returns the state of the resource as it was at the specified timestamp. Only accessible by staff and
+     Returns the state of the object as it was at the specified timestamp. Only accessible by staff and
     support users.
 
     Args:
@@ -209,7 +209,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, ResourceVersion]
+        Union[MarketplaceResourcesHistoryAtRetrieveResponse400, MarketplaceResourcesHistoryAtRetrieveResponse404, VersionHistory]
     """
 
     return (

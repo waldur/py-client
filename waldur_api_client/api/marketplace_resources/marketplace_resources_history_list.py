@@ -10,7 +10,7 @@ from ...client import AuthenticatedClient, Client
 from ...models.marketplace_resources_history_list_o_item import MarketplaceResourcesHistoryListOItem
 from ...models.marketplace_resources_history_list_order_state_item import MarketplaceResourcesHistoryListOrderStateItem
 from ...models.marketplace_resources_history_list_state_item import MarketplaceResourcesHistoryListStateItem
-from ...models.resource_version import ResourceVersion
+from ...models.version_history import VersionHistory
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -220,14 +220,14 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["ResourceVersion"]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["VersionHistory"]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = ResourceVersion.from_dict(response_200_item_data)
+            response_200_item = VersionHistory.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -237,7 +237,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["ResourceVersion"]]:
+) -> Response[list["VersionHistory"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -293,11 +293,10 @@ def sync_detailed(
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
-) -> Response[list["ResourceVersion"]]:
-    """Get resource version history
+) -> Response[list["VersionHistory"]]:
+    """Get version history
 
-     Returns the version history of changes made to this resource. Only accessible by staff and support
-    users.
+     Returns the version history for this object. Only accessible by staff and support users.
 
     Args:
         uuid (UUID):
@@ -350,7 +349,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['ResourceVersion']]
+        Response[list['VersionHistory']]
     """
 
     kwargs = _get_kwargs(
@@ -454,11 +453,10 @@ def sync(
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
-) -> list["ResourceVersion"]:
-    """Get resource version history
+) -> list["VersionHistory"]:
+    """Get version history
 
-     Returns the version history of changes made to this resource. Only accessible by staff and support
-    users.
+     Returns the version history for this object. Only accessible by staff and support users.
 
     Args:
         uuid (UUID):
@@ -511,7 +509,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ResourceVersion']
+        list['VersionHistory']
     """
 
     return sync_detailed(
@@ -610,11 +608,10 @@ async def asyncio_detailed(
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
-) -> Response[list["ResourceVersion"]]:
-    """Get resource version history
+) -> Response[list["VersionHistory"]]:
+    """Get version history
 
-     Returns the version history of changes made to this resource. Only accessible by staff and support
-    users.
+     Returns the version history for this object. Only accessible by staff and support users.
 
     Args:
         uuid (UUID):
@@ -667,7 +664,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['ResourceVersion']]
+        Response[list['VersionHistory']]
     """
 
     kwargs = _get_kwargs(
@@ -769,11 +766,10 @@ async def asyncio(
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
-) -> list["ResourceVersion"]:
-    """Get resource version history
+) -> list["VersionHistory"]:
+    """Get version history
 
-     Returns the version history of changes made to this resource. Only accessible by staff and support
-    users.
+     Returns the version history for this object. Only accessible by staff and support users.
 
     Args:
         uuid (UUID):
@@ -826,7 +822,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ResourceVersion']
+        list['VersionHistory']
     """
 
     return (
@@ -925,7 +921,7 @@ def sync_all(
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
-) -> list["ResourceVersion"]:
+) -> list["VersionHistory"]:
     """Get All Pages
 
      Fetch all pages of paginated results. This function automatically handles pagination
@@ -982,11 +978,11 @@ def sync_all(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ResourceVersion']: Combined results from all pages
+        list['VersionHistory']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[ResourceVersion] = []
+    all_results: list[VersionHistory] = []
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
@@ -1121,7 +1117,7 @@ async def asyncio_all(
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
-) -> list["ResourceVersion"]:
+) -> list["VersionHistory"]:
     """Get All Pages (Async)
 
      Fetch all pages of paginated results asynchronously. This function automatically handles pagination
@@ -1178,11 +1174,11 @@ async def asyncio_all(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ResourceVersion']: Combined results from all pages
+        list['VersionHistory']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[ResourceVersion] = []
+    all_results: list[VersionHistory] = []
 
     # Get initial request kwargs
     kwargs = _get_kwargs(

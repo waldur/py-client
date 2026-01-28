@@ -7,40 +7,40 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 if TYPE_CHECKING:
-    from ..models.resource_version_revision_user_type_0 import ResourceVersionRevisionUserType0
-    from ..models.resource_version_serialized_data import ResourceVersionSerializedData
+    from ..models.version_history_revision_user_type_0 import VersionHistoryRevisionUserType0
+    from ..models.version_history_serialized_data import VersionHistorySerializedData
 
 
-T = TypeVar("T", bound="ResourceVersion")
+T = TypeVar("T", bound="VersionHistory")
 
 
 @_attrs_define
-class ResourceVersion:
+class VersionHistory:
     """
     Attributes:
-        id (int):
-        revision_date (datetime.datetime):
-        revision_user (Union['ResourceVersionRevisionUserType0', None]):
-        revision_comment (str):
-        serialized_data (ResourceVersionSerializedData):
+        id (int): Version ID
+        revision_date (datetime.datetime): When this revision was created
+        revision_user (Union['VersionHistoryRevisionUserType0', None]): User who created this revision
+        revision_comment (str): Comment describing the revision
+        serialized_data (VersionHistorySerializedData): Serialized model fields at this revision
     """
 
     id: int
     revision_date: datetime.datetime
-    revision_user: Union["ResourceVersionRevisionUserType0", None]
+    revision_user: Union["VersionHistoryRevisionUserType0", None]
     revision_comment: str
-    serialized_data: "ResourceVersionSerializedData"
+    serialized_data: "VersionHistorySerializedData"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.resource_version_revision_user_type_0 import ResourceVersionRevisionUserType0
+        from ..models.version_history_revision_user_type_0 import VersionHistoryRevisionUserType0
 
         id = self.id
 
         revision_date = self.revision_date.isoformat()
 
         revision_user: Union[None, dict[str, Any]]
-        if isinstance(self.revision_user, ResourceVersionRevisionUserType0):
+        if isinstance(self.revision_user, VersionHistoryRevisionUserType0):
             revision_user = self.revision_user.to_dict()
         else:
             revision_user = self.revision_user
@@ -65,34 +65,34 @@ class ResourceVersion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.resource_version_revision_user_type_0 import ResourceVersionRevisionUserType0
-        from ..models.resource_version_serialized_data import ResourceVersionSerializedData
+        from ..models.version_history_revision_user_type_0 import VersionHistoryRevisionUserType0
+        from ..models.version_history_serialized_data import VersionHistorySerializedData
 
         d = dict(src_dict)
         id = d.pop("id")
 
         revision_date = isoparse(d.pop("revision_date"))
 
-        def _parse_revision_user(data: object) -> Union["ResourceVersionRevisionUserType0", None]:
+        def _parse_revision_user(data: object) -> Union["VersionHistoryRevisionUserType0", None]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                revision_user_type_0 = ResourceVersionRevisionUserType0.from_dict(data)
+                revision_user_type_0 = VersionHistoryRevisionUserType0.from_dict(data)
 
                 return revision_user_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union["ResourceVersionRevisionUserType0", None], data)
+            return cast(Union["VersionHistoryRevisionUserType0", None], data)
 
         revision_user = _parse_revision_user(d.pop("revision_user"))
 
         revision_comment = d.pop("revision_comment")
 
-        serialized_data = ResourceVersionSerializedData.from_dict(d.pop("serialized_data"))
+        serialized_data = VersionHistorySerializedData.from_dict(d.pop("serialized_data"))
 
-        resource_version = cls(
+        version_history = cls(
             id=id,
             revision_date=revision_date,
             revision_user=revision_user,
@@ -100,8 +100,8 @@ class ResourceVersion:
             serialized_data=serialized_data,
         )
 
-        resource_version.additional_properties = d
-        return resource_version
+        version_history.additional_properties = d
+        return version_history
 
     @property
     def additional_keys(self) -> list[str]:

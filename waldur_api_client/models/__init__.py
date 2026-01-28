@@ -481,6 +481,8 @@ from .customer_request_multipart import CustomerRequestMultipart
 from .customer_service_account import CustomerServiceAccount
 from .customer_service_account_request import CustomerServiceAccountRequest
 from .customer_user import CustomerUser
+from .customers_history_at_retrieve_response_400 import CustomersHistoryAtRetrieveResponse400
+from .customers_history_at_retrieve_response_404 import CustomersHistoryAtRetrieveResponse404
 from .customers_list_field_item import CustomersListFieldItem
 from .customers_list_users_list_field_item import CustomersListUsersListFieldItem
 from .customers_list_users_list_o_item import CustomersListUsersListOItem
@@ -717,6 +719,10 @@ from .invoice_state_enum import InvoiceStateEnum
 from .invoice_stats_offering import InvoiceStatsOffering
 from .invoices_count_o_item import InvoicesCountOItem
 from .invoices_count_state_item import InvoicesCountStateItem
+from .invoices_history_at_retrieve_response_400 import InvoicesHistoryAtRetrieveResponse400
+from .invoices_history_at_retrieve_response_404 import InvoicesHistoryAtRetrieveResponse404
+from .invoices_history_list_o_item import InvoicesHistoryListOItem
+from .invoices_history_list_state_item import InvoicesHistoryListStateItem
 from .invoices_items_retrieve_o import InvoicesItemsRetrieveO
 from .invoices_list_field_item import InvoicesListFieldItem
 from .invoices_list_o_item import InvoicesListOItem
@@ -755,6 +761,9 @@ from .keycloak_user_group_membership_state import KeycloakUserGroupMembershipSta
 from .keycloak_user_group_memberships_count_state_item import KeycloakUserGroupMembershipsCountStateItem
 from .keycloak_user_group_memberships_list_state_item import KeycloakUserGroupMembershipsListStateItem
 from .keys_count_o_item import KeysCountOItem
+from .keys_history_at_retrieve_response_400 import KeysHistoryAtRetrieveResponse400
+from .keys_history_at_retrieve_response_404 import KeysHistoryAtRetrieveResponse404
+from .keys_history_list_o_item import KeysHistoryListOItem
 from .keys_list_field_item import KeysListFieldItem
 from .keys_list_o_item import KeysListOItem
 from .keys_retrieve_field_item import KeysRetrieveFieldItem
@@ -877,6 +886,8 @@ from .marketplace_orders_list_state_item import MarketplaceOrdersListStateItem
 from .marketplace_orders_list_type_item import MarketplaceOrdersListTypeItem
 from .marketplace_orders_retrieve_field_item import MarketplaceOrdersRetrieveFieldItem
 from .marketplace_orders_set_backend_id_response_200 import MarketplaceOrdersSetBackendIdResponse200
+from .marketplace_plans_history_at_retrieve_response_400 import MarketplacePlansHistoryAtRetrieveResponse400
+from .marketplace_plans_history_at_retrieve_response_404 import MarketplacePlansHistoryAtRetrieveResponse404
 from .marketplace_project_service_accounts_count_state_item import MarketplaceProjectServiceAccountsCountStateItem
 from .marketplace_project_service_accounts_list_state_item import MarketplaceProjectServiceAccountsListStateItem
 from .marketplace_project_update_requests_count_state_item import MarketplaceProjectUpdateRequestsCountStateItem
@@ -900,6 +911,14 @@ from .marketplace_provider_offerings_groups_count_o_item import MarketplaceProvi
 from .marketplace_provider_offerings_groups_count_state_item import MarketplaceProviderOfferingsGroupsCountStateItem
 from .marketplace_provider_offerings_groups_list_o_item import MarketplaceProviderOfferingsGroupsListOItem
 from .marketplace_provider_offerings_groups_list_state_item import MarketplaceProviderOfferingsGroupsListStateItem
+from .marketplace_provider_offerings_history_at_retrieve_response_400 import (
+    MarketplaceProviderOfferingsHistoryAtRetrieveResponse400,
+)
+from .marketplace_provider_offerings_history_at_retrieve_response_404 import (
+    MarketplaceProviderOfferingsHistoryAtRetrieveResponse404,
+)
+from .marketplace_provider_offerings_history_list_o_item import MarketplaceProviderOfferingsHistoryListOItem
+from .marketplace_provider_offerings_history_list_state_item import MarketplaceProviderOfferingsHistoryListStateItem
 from .marketplace_provider_offerings_list_course_accounts_list_o_item import (
     MarketplaceProviderOfferingsListCourseAccountsListOItem,
 )
@@ -2106,9 +2125,6 @@ from .resource_usage_by_customer_usages import ResourceUsageByCustomerUsages
 from .resource_usage_by_org_type import ResourceUsageByOrgType
 from .resource_user import ResourceUser
 from .resource_user_request import ResourceUserRequest
-from .resource_version import ResourceVersion
-from .resource_version_revision_user_type_0 import ResourceVersionRevisionUserType0
-from .resource_version_serialized_data import ResourceVersionSerializedData
 from .resources_geography_summary import ResourcesGeographySummary
 from .resources_limits import ResourcesLimits
 from .review_comment_request import ReviewCommentRequest
@@ -2392,6 +2408,9 @@ from .user_role_update_request import UserRoleUpdateRequest
 from .username_generation_policy_enum import UsernameGenerationPolicyEnum
 from .users_count_o_item import UsersCountOItem
 from .users_data_access_history_list_o_item import UsersDataAccessHistoryListOItem
+from .users_history_at_retrieve_response_400 import UsersHistoryAtRetrieveResponse400
+from .users_history_at_retrieve_response_404 import UsersHistoryAtRetrieveResponse404
+from .users_history_list_o_item import UsersHistoryListOItem
 from .users_list_field_item import UsersListFieldItem
 from .users_list_o_item import UsersListOItem
 from .users_me_retrieve_field_item import UsersMeRetrieveFieldItem
@@ -2417,6 +2436,9 @@ from .validation_method_enum import ValidationMethodEnum
 from .venue_type_enum import VenueTypeEnum
 from .version import Version
 from .version_adoption import VersionAdoption
+from .version_history import VersionHistory
+from .version_history_revision_user_type_0 import VersionHistoryRevisionUserType0
+from .version_history_serialized_data import VersionHistorySerializedData
 from .visibility_enum import VisibilityEnum
 from .visible_invitation_details import VisibleInvitationDetails
 from .vmware_cluster import VmwareCluster
@@ -2933,6 +2955,8 @@ __all__ = (
     "CustomerRequestMultipart",
     "CustomerServiceAccount",
     "CustomerServiceAccountRequest",
+    "CustomersHistoryAtRetrieveResponse400",
+    "CustomersHistoryAtRetrieveResponse404",
     "CustomersListFieldItem",
     "CustomersListUsersListFieldItem",
     "CustomersListUsersListOItem",
@@ -3160,6 +3184,10 @@ __all__ = (
     "InvoiceItemUpdateRequest",
     "InvoicesCountOItem",
     "InvoicesCountStateItem",
+    "InvoicesHistoryAtRetrieveResponse400",
+    "InvoicesHistoryAtRetrieveResponse404",
+    "InvoicesHistoryListOItem",
+    "InvoicesHistoryListStateItem",
     "InvoicesItemsRetrieveO",
     "InvoicesListFieldItem",
     "InvoicesListOItem",
@@ -3200,6 +3228,9 @@ __all__ = (
     "KeycloakUserGroupMembershipsListStateItem",
     "KeycloakUserGroupMembershipState",
     "KeysCountOItem",
+    "KeysHistoryAtRetrieveResponse400",
+    "KeysHistoryAtRetrieveResponse404",
+    "KeysHistoryListOItem",
     "KeysListFieldItem",
     "KeysListOItem",
     "KeysRetrieveFieldItem",
@@ -3312,6 +3343,8 @@ __all__ = (
     "MarketplaceOrdersListTypeItem",
     "MarketplaceOrdersRetrieveFieldItem",
     "MarketplaceOrdersSetBackendIdResponse200",
+    "MarketplacePlansHistoryAtRetrieveResponse400",
+    "MarketplacePlansHistoryAtRetrieveResponse404",
     "MarketplaceProjectServiceAccountsCountStateItem",
     "MarketplaceProjectServiceAccountsListStateItem",
     "MarketplaceProjectUpdateRequestsCountStateItem",
@@ -3331,6 +3364,10 @@ __all__ = (
     "MarketplaceProviderOfferingsGroupsCountStateItem",
     "MarketplaceProviderOfferingsGroupsListOItem",
     "MarketplaceProviderOfferingsGroupsListStateItem",
+    "MarketplaceProviderOfferingsHistoryAtRetrieveResponse400",
+    "MarketplaceProviderOfferingsHistoryAtRetrieveResponse404",
+    "MarketplaceProviderOfferingsHistoryListOItem",
+    "MarketplaceProviderOfferingsHistoryListStateItem",
     "MarketplaceProviderOfferingsListCourseAccountsListOItem",
     "MarketplaceProviderOfferingsListCourseAccountsListStateItem",
     "MarketplaceProviderOfferingsListCustomerProjectsListFieldItem",
@@ -4401,9 +4438,6 @@ __all__ = (
     "ResourceUsageByOrgType",
     "ResourceUser",
     "ResourceUserRequest",
-    "ResourceVersion",
-    "ResourceVersionRevisionUserType0",
-    "ResourceVersionSerializedData",
     "ReviewCommentRequest",
     "ReviewerAffiliation",
     "ReviewerAffiliationRequest",
@@ -4683,6 +4717,9 @@ __all__ = (
     "UserRoleUpdateRequest",
     "UsersCountOItem",
     "UsersDataAccessHistoryListOItem",
+    "UsersHistoryAtRetrieveResponse400",
+    "UsersHistoryAtRetrieveResponse404",
+    "UsersHistoryListOItem",
     "UsersListFieldItem",
     "UsersListOItem",
     "UsersMeRetrieveFieldItem",
@@ -4698,6 +4735,9 @@ __all__ = (
     "VenueTypeEnum",
     "Version",
     "VersionAdoption",
+    "VersionHistory",
+    "VersionHistoryRevisionUserType0",
+    "VersionHistorySerializedData",
     "VisibilityEnum",
     "VisibleInvitationDetails",
     "VmwareCluster",

@@ -6,12 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_provider_resources_history_at_retrieve_response_400 import (
-    MarketplaceProviderResourcesHistoryAtRetrieveResponse400,
-)
-from ...models.marketplace_provider_resources_history_at_retrieve_response_404 import (
-    MarketplaceProviderResourcesHistoryAtRetrieveResponse404,
-)
+from ...models.customers_history_at_retrieve_response_400 import CustomersHistoryAtRetrieveResponse400
+from ...models.customers_history_at_retrieve_response_404 import CustomersHistoryAtRetrieveResponse404
 from ...models.version_history import VersionHistory
 from ...types import UNSET, Response
 
@@ -29,7 +25,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/api/marketplace-provider-resources/{uuid}/history/at/",
+        "url": f"/api/customers/{uuid}/history/at/",
         "params": params,
     }
 
@@ -38,11 +34,7 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[
-    MarketplaceProviderResourcesHistoryAtRetrieveResponse400,
-    MarketplaceProviderResourcesHistoryAtRetrieveResponse404,
-    VersionHistory,
-]:
+) -> Union[CustomersHistoryAtRetrieveResponse400, CustomersHistoryAtRetrieveResponse404, VersionHistory]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
@@ -50,11 +42,11 @@ def _parse_response(
 
         return response_200
     if response.status_code == 400:
-        response_400 = MarketplaceProviderResourcesHistoryAtRetrieveResponse400.from_dict(response.json())
+        response_400 = CustomersHistoryAtRetrieveResponse400.from_dict(response.json())
 
         return response_400
     if response.status_code == 404:
-        response_404 = MarketplaceProviderResourcesHistoryAtRetrieveResponse404.from_dict(response.json())
+        response_404 = CustomersHistoryAtRetrieveResponse404.from_dict(response.json())
 
         return response_404
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -62,13 +54,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[
-    Union[
-        MarketplaceProviderResourcesHistoryAtRetrieveResponse400,
-        MarketplaceProviderResourcesHistoryAtRetrieveResponse404,
-        VersionHistory,
-    ]
-]:
+) -> Response[Union[CustomersHistoryAtRetrieveResponse400, CustomersHistoryAtRetrieveResponse404, VersionHistory]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,13 +68,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     timestamp: str,
-) -> Response[
-    Union[
-        MarketplaceProviderResourcesHistoryAtRetrieveResponse400,
-        MarketplaceProviderResourcesHistoryAtRetrieveResponse404,
-        VersionHistory,
-    ]
-]:
+) -> Response[Union[CustomersHistoryAtRetrieveResponse400, CustomersHistoryAtRetrieveResponse404, VersionHistory]]:
     """Get object state at a specific timestamp
 
      Returns the state of the object as it was at the specified timestamp. Only accessible by staff and
@@ -103,7 +83,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[MarketplaceProviderResourcesHistoryAtRetrieveResponse400, MarketplaceProviderResourcesHistoryAtRetrieveResponse404, VersionHistory]]
+        Response[Union[CustomersHistoryAtRetrieveResponse400, CustomersHistoryAtRetrieveResponse404, VersionHistory]]
     """
 
     kwargs = _get_kwargs(
@@ -123,11 +103,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     timestamp: str,
-) -> Union[
-    MarketplaceProviderResourcesHistoryAtRetrieveResponse400,
-    MarketplaceProviderResourcesHistoryAtRetrieveResponse404,
-    VersionHistory,
-]:
+) -> Union[CustomersHistoryAtRetrieveResponse400, CustomersHistoryAtRetrieveResponse404, VersionHistory]:
     """Get object state at a specific timestamp
 
      Returns the state of the object as it was at the specified timestamp. Only accessible by staff and
@@ -142,7 +118,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[MarketplaceProviderResourcesHistoryAtRetrieveResponse400, MarketplaceProviderResourcesHistoryAtRetrieveResponse404, VersionHistory]
+        Union[CustomersHistoryAtRetrieveResponse400, CustomersHistoryAtRetrieveResponse404, VersionHistory]
     """
 
     return sync_detailed(
@@ -157,13 +133,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     timestamp: str,
-) -> Response[
-    Union[
-        MarketplaceProviderResourcesHistoryAtRetrieveResponse400,
-        MarketplaceProviderResourcesHistoryAtRetrieveResponse404,
-        VersionHistory,
-    ]
-]:
+) -> Response[Union[CustomersHistoryAtRetrieveResponse400, CustomersHistoryAtRetrieveResponse404, VersionHistory]]:
     """Get object state at a specific timestamp
 
      Returns the state of the object as it was at the specified timestamp. Only accessible by staff and
@@ -178,7 +148,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[MarketplaceProviderResourcesHistoryAtRetrieveResponse400, MarketplaceProviderResourcesHistoryAtRetrieveResponse404, VersionHistory]]
+        Response[Union[CustomersHistoryAtRetrieveResponse400, CustomersHistoryAtRetrieveResponse404, VersionHistory]]
     """
 
     kwargs = _get_kwargs(
@@ -196,11 +166,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     timestamp: str,
-) -> Union[
-    MarketplaceProviderResourcesHistoryAtRetrieveResponse400,
-    MarketplaceProviderResourcesHistoryAtRetrieveResponse404,
-    VersionHistory,
-]:
+) -> Union[CustomersHistoryAtRetrieveResponse400, CustomersHistoryAtRetrieveResponse404, VersionHistory]:
     """Get object state at a specific timestamp
 
      Returns the state of the object as it was at the specified timestamp. Only accessible by staff and
@@ -215,7 +181,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[MarketplaceProviderResourcesHistoryAtRetrieveResponse400, MarketplaceProviderResourcesHistoryAtRetrieveResponse404, VersionHistory]
+        Union[CustomersHistoryAtRetrieveResponse400, CustomersHistoryAtRetrieveResponse404, VersionHistory]
     """
 
     return (
