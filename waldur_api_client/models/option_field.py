@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from ..models.cascade_config import CascadeConfig
     from ..models.component_multiplier_config import ComponentMultiplierConfig
     from ..models.k8s_default_configuration import K8SDefaultConfiguration
+    from ..models.option_validator import OptionValidator
     from ..models.storage_folder_config import StorageFolderConfig
 
 
@@ -33,6 +34,7 @@ class OptionField:
         component_multiplier_config (Union[Unset, ComponentMultiplierConfig]):
         storage_folder_config (Union[Unset, StorageFolderConfig]):
         default_configs (Union[Unset, K8SDefaultConfiguration]):
+        validators (Union[Unset, list['OptionValidator']]):
     """
 
     type_: OptionFieldTypeEnum
@@ -47,6 +49,7 @@ class OptionField:
     component_multiplier_config: Union[Unset, "ComponentMultiplierConfig"] = UNSET
     storage_folder_config: Union[Unset, "StorageFolderConfig"] = UNSET
     default_configs: Union[Unset, "K8SDefaultConfiguration"] = UNSET
+    validators: Union[Unset, list["OptionValidator"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -84,6 +87,13 @@ class OptionField:
         if not isinstance(self.default_configs, Unset):
             default_configs = self.default_configs.to_dict()
 
+        validators: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.validators, Unset):
+            validators = []
+            for validators_item_data in self.validators:
+                validators_item = validators_item_data.to_dict()
+                validators.append(validators_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -112,6 +122,8 @@ class OptionField:
             field_dict["storage_folder_config"] = storage_folder_config
         if default_configs is not UNSET:
             field_dict["default_configs"] = default_configs
+        if validators is not UNSET:
+            field_dict["validators"] = validators
 
         return field_dict
 
@@ -120,6 +132,7 @@ class OptionField:
         from ..models.cascade_config import CascadeConfig
         from ..models.component_multiplier_config import ComponentMultiplierConfig
         from ..models.k8s_default_configuration import K8SDefaultConfiguration
+        from ..models.option_validator import OptionValidator
         from ..models.storage_folder_config import StorageFolderConfig
 
         d = dict(src_dict)
@@ -167,6 +180,13 @@ class OptionField:
         else:
             default_configs = K8SDefaultConfiguration.from_dict(_default_configs)
 
+        validators = []
+        _validators = d.pop("validators", UNSET)
+        for validators_item_data in _validators or []:
+            validators_item = OptionValidator.from_dict(validators_item_data)
+
+            validators.append(validators_item)
+
         option_field = cls(
             type_=type_,
             label=label,
@@ -180,6 +200,7 @@ class OptionField:
             component_multiplier_config=component_multiplier_config,
             storage_folder_config=storage_folder_config,
             default_configs=default_configs,
+            validators=validators,
         )
 
         option_field.additional_properties = d

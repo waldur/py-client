@@ -49,6 +49,7 @@ from .agent_task_stats_response_active_tasks_item import AgentTaskStatsResponseA
 from .agent_task_stats_response_reserved_tasks_item import AgentTaskStatsResponseReservedTasksItem
 from .agent_task_stats_response_scheduled_tasks_item import AgentTaskStatsResponseScheduledTasksItem
 from .agent_type_enum import AgentTypeEnum
+from .aggregated_usage_trend import AggregatedUsageTrend
 from .agreement_type_enum import AgreementTypeEnum
 from .allocation import Allocation
 from .allocation_marketplace_offering_plugin_options_type_0 import AllocationMarketplaceOfferingPluginOptionsType0
@@ -1463,6 +1464,9 @@ from .openstack_volumes_retrieve_field_item import OpenstackVolumesRetrieveField
 from .option_field import OptionField
 from .option_field_request import OptionFieldRequest
 from .option_field_type_enum import OptionFieldTypeEnum
+from .option_validator import OptionValidator
+from .option_validator_request import OptionValidatorRequest
+from .option_validator_type_enum import OptionValidatorTypeEnum
 from .orcid_callback_request import OrcidCallbackRequest
 from .orcid_disconnect_response import OrcidDisconnectResponse
 from .orcid_sync_response import OrcidSyncResponse
@@ -2514,6 +2518,7 @@ __all__ = (
     "AgentTaskStatsResponseReservedTasksItem",
     "AgentTaskStatsResponseScheduledTasksItem",
     "AgentTypeEnum",
+    "AggregatedUsageTrend",
     "AgreementTypeEnum",
     "Allocation",
     "AllocationMarketplaceOfferingPluginOptionsType0",
@@ -3802,6 +3807,9 @@ __all__ = (
     "OptionField",
     "OptionFieldRequest",
     "OptionFieldTypeEnum",
+    "OptionValidator",
+    "OptionValidatorRequest",
+    "OptionValidatorTypeEnum",
     "OrcidCallbackRequest",
     "OrcidDisconnectResponse",
     "OrcidSyncResponse",
