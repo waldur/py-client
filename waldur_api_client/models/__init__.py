@@ -2095,6 +2095,11 @@ from .resource_update import ResourceUpdate
 from .resource_update_limits_request import ResourceUpdateLimitsRequest
 from .resource_update_limits_request_limits import ResourceUpdateLimitsRequestLimits
 from .resource_update_request import ResourceUpdateRequest
+from .resource_usage_by_affiliation import ResourceUsageByAffiliation
+from .resource_usage_by_customer import ResourceUsageByCustomer
+from .resource_usage_by_customer_limits import ResourceUsageByCustomerLimits
+from .resource_usage_by_customer_usages import ResourceUsageByCustomerUsages
+from .resource_usage_by_org_type import ResourceUsageByOrgType
 from .resource_user import ResourceUser
 from .resource_user_request import ResourceUserRequest
 from .resource_version import ResourceVersion
@@ -4381,6 +4386,11 @@ __all__ = (
     "ResourceUpdateLimitsRequest",
     "ResourceUpdateLimitsRequestLimits",
     "ResourceUpdateRequest",
+    "ResourceUsageByAffiliation",
+    "ResourceUsageByCustomer",
+    "ResourceUsageByCustomerLimits",
+    "ResourceUsageByCustomerUsages",
+    "ResourceUsageByOrgType",
     "ResourceUser",
     "ResourceUserRequest",
     "ResourceVersion",
