@@ -2384,12 +2384,14 @@ from .user_invitations_count_o_item import UserInvitationsCountOItem
 from .user_invitations_count_state_item import UserInvitationsCountStateItem
 from .user_invitations_list_o_item import UserInvitationsListOItem
 from .user_invitations_list_state_item import UserInvitationsListStateItem
+from .user_job_title_count import UserJobTitleCount
 from .user_language_count import UserLanguageCount
 from .user_offering_consent import UserOfferingConsent
 from .user_offering_consent_create import UserOfferingConsentCreate
 from .user_offering_consent_create_request import UserOfferingConsentCreateRequest
 from .user_offering_consent_request import UserOfferingConsentRequest
 from .user_organization_count import UserOrganizationCount
+from .user_organization_type_count import UserOrganizationTypeCount
 from .user_permission_requests_count_o_item import UserPermissionRequestsCountOItem
 from .user_permission_requests_count_state_item import UserPermissionRequestsCountStateItem
 from .user_permission_requests_list_o_item import UserPermissionRequestsListOItem
@@ -4693,6 +4695,7 @@ __all__ = (
     "UserInvitationsCountStateItem",
     "UserInvitationsListOItem",
     "UserInvitationsListStateItem",
+    "UserJobTitleCount",
     "UserLanguageCount",
     "UsernameGenerationPolicyEnum",
     "UserOfferingConsent",
@@ -4700,6 +4703,7 @@ __all__ = (
     "UserOfferingConsentCreateRequest",
     "UserOfferingConsentRequest",
     "UserOrganizationCount",
+    "UserOrganizationTypeCount",
     "UserPermissionRequestsCountOItem",
     "UserPermissionRequestsCountStateItem",
     "UserPermissionRequestsListOItem",

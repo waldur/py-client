@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_usage_by_org_type import ResourceUsageByOrgType
+from ...models.user_job_title_count import UserJobTitleCount
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -25,7 +25,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/marketplace-stats/resource_usage_by_organization_type/",
+        "url": "/api/marketplace-stats/user_job_title_count/",
         "params": params,
     }
 
@@ -34,14 +34,14 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> list["ResourceUsageByOrgType"]:
+) -> list["UserJobTitleCount"]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = ResourceUsageByOrgType.from_dict(response_200_item_data)
+            response_200_item = UserJobTitleCount.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -51,7 +51,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["ResourceUsageByOrgType"]]:
+) -> Response[list["UserJobTitleCount"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -65,8 +65,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Response[list["ResourceUsageByOrgType"]]:
-    """Return component usages grouped by project members' organization type.
+) -> Response[list["UserJobTitleCount"]]:
+    """Return user count grouped by job title.
 
     Args:
         page (Union[Unset, int]):
@@ -77,7 +77,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['ResourceUsageByOrgType']]
+        Response[list['UserJobTitleCount']]
     """
 
     kwargs = _get_kwargs(
@@ -97,8 +97,8 @@ def sync(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> list["ResourceUsageByOrgType"]:
-    """Return component usages grouped by project members' organization type.
+) -> list["UserJobTitleCount"]:
+    """Return user count grouped by job title.
 
     Args:
         page (Union[Unset, int]):
@@ -109,7 +109,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ResourceUsageByOrgType']
+        list['UserJobTitleCount']
     """
 
     return sync_detailed(
@@ -124,8 +124,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Response[list["ResourceUsageByOrgType"]]:
-    """Return component usages grouped by project members' organization type.
+) -> Response[list["UserJobTitleCount"]]:
+    """Return user count grouped by job title.
 
     Args:
         page (Union[Unset, int]):
@@ -136,7 +136,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['ResourceUsageByOrgType']]
+        Response[list['UserJobTitleCount']]
     """
 
     kwargs = _get_kwargs(
@@ -154,8 +154,8 @@ async def asyncio(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> list["ResourceUsageByOrgType"]:
-    """Return component usages grouped by project members' organization type.
+) -> list["UserJobTitleCount"]:
+    """Return user count grouped by job title.
 
     Args:
         page (Union[Unset, int]):
@@ -166,7 +166,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ResourceUsageByOrgType']
+        list['UserJobTitleCount']
     """
 
     return (
@@ -181,7 +181,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-) -> list["ResourceUsageByOrgType"]:
+) -> list["UserJobTitleCount"]:
     """Get All Pages
 
      Fetch all pages of paginated results. This function automatically handles pagination
@@ -196,11 +196,11 @@ def sync_all(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ResourceUsageByOrgType']: Combined results from all pages
+        list['UserJobTitleCount']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[ResourceUsageByOrgType] = []
+    all_results: list[UserJobTitleCount] = []
 
     # Get initial request kwargs
     kwargs = _get_kwargs()
@@ -250,7 +250,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-) -> list["ResourceUsageByOrgType"]:
+) -> list["UserJobTitleCount"]:
     """Get All Pages (Async)
 
      Fetch all pages of paginated results asynchronously. This function automatically handles pagination
@@ -265,11 +265,11 @@ async def asyncio_all(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ResourceUsageByOrgType']: Combined results from all pages
+        list['UserJobTitleCount']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[ResourceUsageByOrgType] = []
+    all_results: list[UserJobTitleCount] = []
 
     # Get initial request kwargs
     kwargs = _get_kwargs()
