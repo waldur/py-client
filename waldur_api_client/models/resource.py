@@ -80,6 +80,7 @@ class Resource:
         parent_offering_uuid (Union[Unset, UUID]):
         parent_offering_name (Union[Unset, str]):
         parent_offering_slug (Union[Unset, str]):
+        offering_backend_id (Union[Unset, str]):
         parent_uuid (Union[Unset, UUID]):
         parent_name (Union[Unset, str]):
         backend_metadata (Union[Unset, BackendMetadata]):
@@ -162,6 +163,7 @@ class Resource:
     parent_offering_uuid: Union[Unset, UUID] = UNSET
     parent_offering_name: Union[Unset, str] = UNSET
     parent_offering_slug: Union[Unset, str] = UNSET
+    offering_backend_id: Union[Unset, str] = UNSET
     parent_uuid: Union[Unset, UUID] = UNSET
     parent_name: Union[Unset, str] = UNSET
     backend_metadata: Union[Unset, "BackendMetadata"] = UNSET
@@ -351,6 +353,8 @@ class Resource:
         parent_offering_name = self.parent_offering_name
 
         parent_offering_slug = self.parent_offering_slug
+
+        offering_backend_id = self.offering_backend_id
 
         parent_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.parent_uuid, Unset):
@@ -574,6 +578,8 @@ class Resource:
             field_dict["parent_offering_name"] = parent_offering_name
         if parent_offering_slug is not UNSET:
             field_dict["parent_offering_slug"] = parent_offering_slug
+        if offering_backend_id is not UNSET:
+            field_dict["offering_backend_id"] = offering_backend_id
         if parent_uuid is not UNSET:
             field_dict["parent_uuid"] = parent_uuid
         if parent_name is not UNSET:
@@ -888,6 +894,8 @@ class Resource:
 
         parent_offering_slug = d.pop("parent_offering_slug", UNSET)
 
+        offering_backend_id = d.pop("offering_backend_id", UNSET)
+
         _parent_uuid = d.pop("parent_uuid", UNSET)
         parent_uuid: Union[Unset, UUID]
         if isinstance(_parent_uuid, Unset):
@@ -1123,6 +1131,7 @@ class Resource:
             parent_offering_uuid=parent_offering_uuid,
             parent_offering_name=parent_offering_name,
             parent_offering_slug=parent_offering_slug,
+            offering_backend_id=offering_backend_id,
             parent_uuid=parent_uuid,
             parent_name=parent_name,
             backend_metadata=backend_metadata,

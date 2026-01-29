@@ -1505,6 +1505,10 @@ from .order_stats_response import OrderStatsResponse
 from .order_stats_response_by_state import OrderStatsResponseByState
 from .order_stats_response_by_type import OrderStatsResponseByType
 from .order_stats_summary import OrderStatsSummary
+from .order_update import OrderUpdate
+from .order_update_limits import OrderUpdateLimits
+from .order_update_request import OrderUpdateRequest
+from .order_update_request_limits import OrderUpdateRequestLimits
 from .order_uuid import OrderUUID
 from .organization_group import OrganizationGroup
 from .organization_group_request import OrganizationGroupRequest
@@ -1604,6 +1608,8 @@ from .patched_open_stack_snapshot_request import PatchedOpenStackSnapshotRequest
 from .patched_open_stack_sub_net_request import PatchedOpenStackSubNetRequest
 from .patched_open_stack_tenant_request import PatchedOpenStackTenantRequest
 from .patched_open_stack_volume_request import PatchedOpenStackVolumeRequest
+from .patched_order_update_request import PatchedOrderUpdateRequest
+from .patched_order_update_request_limits import PatchedOrderUpdateRequestLimits
 from .patched_organization_group_request import PatchedOrganizationGroupRequest
 from .patched_payment_profile_request import PatchedPaymentProfileRequest
 from .patched_payment_request import PatchedPaymentRequest
@@ -3868,6 +3874,10 @@ __all__ = (
     "OrderStatsResponseByState",
     "OrderStatsResponseByType",
     "OrderStatsSummary",
+    "OrderUpdate",
+    "OrderUpdateLimits",
+    "OrderUpdateRequest",
+    "OrderUpdateRequestLimits",
     "OrderUUID",
     "OrganizationalAccess",
     "OrganizationalUser",
@@ -3963,6 +3973,8 @@ __all__ = (
     "PatchedOpenStackSubNetRequest",
     "PatchedOpenStackTenantRequest",
     "PatchedOpenStackVolumeRequest",
+    "PatchedOrderUpdateRequest",
+    "PatchedOrderUpdateRequestLimits",
     "PatchedOrganizationGroupRequest",
     "PatchedPaymentProfileRequest",
     "PatchedPaymentRequest",
