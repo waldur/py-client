@@ -168,6 +168,10 @@ class ConstanceSettingsRequestMultipart:
         freeipa_groupname_prefix (Union[Unset, str]):
         freeipa_blacklisted_usernames (Union[Unset, list[str]]):
         freeipa_group_synchronization_enabled (Union[Unset, bool]):
+        scim_membership_sync_enabled (Union[Unset, bool]):
+        scim_api_url (Union[Unset, str]):
+        scim_api_key (Union[Unset, str]):
+        scim_urn_namespace (Union[Unset, str]):
         keycloak_icon (Union[File, None, Unset]):
         countries (Union[Unset, list[str]]):
         oidc_auth_url (Union[Unset, str]):
@@ -383,6 +387,10 @@ class ConstanceSettingsRequestMultipart:
     freeipa_groupname_prefix: Union[Unset, str] = UNSET
     freeipa_blacklisted_usernames: Union[Unset, list[str]] = UNSET
     freeipa_group_synchronization_enabled: Union[Unset, bool] = UNSET
+    scim_membership_sync_enabled: Union[Unset, bool] = UNSET
+    scim_api_url: Union[Unset, str] = UNSET
+    scim_api_key: Union[Unset, str] = UNSET
+    scim_urn_namespace: Union[Unset, str] = UNSET
     keycloak_icon: Union[File, None, Unset] = UNSET
     countries: Union[Unset, list[str]] = UNSET
     oidc_auth_url: Union[Unset, str] = UNSET
@@ -831,6 +839,14 @@ class ConstanceSettingsRequestMultipart:
             freeipa_blacklisted_usernames = self.freeipa_blacklisted_usernames
 
         freeipa_group_synchronization_enabled = self.freeipa_group_synchronization_enabled
+
+        scim_membership_sync_enabled = self.scim_membership_sync_enabled
+
+        scim_api_url = self.scim_api_url
+
+        scim_api_key = self.scim_api_key
+
+        scim_urn_namespace = self.scim_urn_namespace
 
         keycloak_icon: Union[None, Unset, types.FileTypes]
         if isinstance(self.keycloak_icon, Unset):
@@ -1290,6 +1306,14 @@ class ConstanceSettingsRequestMultipart:
             field_dict["FREEIPA_BLACKLISTED_USERNAMES"] = freeipa_blacklisted_usernames
         if freeipa_group_synchronization_enabled is not UNSET:
             field_dict["FREEIPA_GROUP_SYNCHRONIZATION_ENABLED"] = freeipa_group_synchronization_enabled
+        if scim_membership_sync_enabled is not UNSET:
+            field_dict["SCIM_MEMBERSHIP_SYNC_ENABLED"] = scim_membership_sync_enabled
+        if scim_api_url is not UNSET:
+            field_dict["SCIM_API_URL"] = scim_api_url
+        if scim_api_key is not UNSET:
+            field_dict["SCIM_API_KEY"] = scim_api_key
+        if scim_urn_namespace is not UNSET:
+            field_dict["SCIM_URN_NAMESPACE"] = scim_urn_namespace
         if keycloak_icon is not UNSET:
             field_dict["KEYCLOAK_ICON"] = keycloak_icon
         if countries is not UNSET:
@@ -2104,6 +2128,20 @@ class ConstanceSettingsRequestMultipart:
                     (None, str(self.freeipa_group_synchronization_enabled).encode(), "text/plain"),
                 )
             )
+
+        if not isinstance(self.scim_membership_sync_enabled, Unset):
+            files.append(
+                ("SCIM_MEMBERSHIP_SYNC_ENABLED", (None, str(self.scim_membership_sync_enabled).encode(), "text/plain"))
+            )
+
+        if not isinstance(self.scim_api_url, Unset):
+            files.append(("SCIM_API_URL", (None, str(self.scim_api_url).encode(), "text/plain")))
+
+        if not isinstance(self.scim_api_key, Unset):
+            files.append(("SCIM_API_KEY", (None, str(self.scim_api_key).encode(), "text/plain")))
+
+        if not isinstance(self.scim_urn_namespace, Unset):
+            files.append(("SCIM_URN_NAMESPACE", (None, str(self.scim_urn_namespace).encode(), "text/plain")))
 
         if not isinstance(self.keycloak_icon, Unset):
             if isinstance(self.keycloak_icon, File):
@@ -3027,6 +3065,14 @@ class ConstanceSettingsRequestMultipart:
 
         freeipa_group_synchronization_enabled = d.pop("FREEIPA_GROUP_SYNCHRONIZATION_ENABLED", UNSET)
 
+        scim_membership_sync_enabled = d.pop("SCIM_MEMBERSHIP_SYNC_ENABLED", UNSET)
+
+        scim_api_url = d.pop("SCIM_API_URL", UNSET)
+
+        scim_api_key = d.pop("SCIM_API_KEY", UNSET)
+
+        scim_urn_namespace = d.pop("SCIM_URN_NAMESPACE", UNSET)
+
         def _parse_keycloak_icon(data: object) -> Union[File, None, Unset]:
             if data is None:
                 return data
@@ -3325,6 +3371,10 @@ class ConstanceSettingsRequestMultipart:
             freeipa_groupname_prefix=freeipa_groupname_prefix,
             freeipa_blacklisted_usernames=freeipa_blacklisted_usernames,
             freeipa_group_synchronization_enabled=freeipa_group_synchronization_enabled,
+            scim_membership_sync_enabled=scim_membership_sync_enabled,
+            scim_api_url=scim_api_url,
+            scim_api_key=scim_api_key,
+            scim_urn_namespace=scim_urn_namespace,
             keycloak_icon=keycloak_icon,
             countries=countries,
             oidc_auth_url=oidc_auth_url,

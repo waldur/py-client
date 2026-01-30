@@ -641,6 +641,7 @@ from .firecrest_job_request_form import FirecrestJobRequestForm
 from .firecrest_job_request_multipart import FirecrestJobRequestMultipart
 from .freeipa_profile import FreeipaProfile
 from .freeipa_profile_request import FreeipaProfileRequest
+from .frequency_enum import FrequencyEnum
 from .gender_enum import GenderEnum
 from .generate_assignments_request import GenerateAssignmentsRequest
 from .generate_assignments_response import GenerateAssignmentsResponse
@@ -1617,6 +1618,7 @@ from .patched_payment_request import PatchedPaymentRequest
 from .patched_payment_request_form import PatchedPaymentRequestForm
 from .patched_payment_request_multipart import PatchedPaymentRequestMultipart
 from .patched_project_credit_request import PatchedProjectCreditRequest
+from .patched_project_digest_config_request import PatchedProjectDigestConfigRequest
 from .patched_project_estimated_cost_policy_request import PatchedProjectEstimatedCostPolicyRequest
 from .patched_project_info_request import PatchedProjectInfoRequest
 from .patched_project_request import PatchedProjectRequest
@@ -1732,6 +1734,11 @@ from .project_credits_count_o_item import ProjectCreditsCountOItem
 from .project_credits_list_o_item import ProjectCreditsListOItem
 from .project_detail import ProjectDetail
 from .project_details_response import ProjectDetailsResponse
+from .project_digest_config import ProjectDigestConfig
+from .project_digest_config_available_sections_item import ProjectDigestConfigAvailableSectionsItem
+from .project_digest_config_request import ProjectDigestConfigRequest
+from .project_digest_preview_request import ProjectDigestPreviewRequest
+from .project_digest_preview_response import ProjectDigestPreviewResponse
 from .project_estimated_cost_policy import ProjectEstimatedCostPolicy
 from .project_estimated_cost_policy_request import ProjectEstimatedCostPolicyRequest
 from .project_hyperlink_request import ProjectHyperlinkRequest
@@ -2222,6 +2229,7 @@ from .saml_2_login_request import Saml2LoginRequest
 from .saml_2_logout_complete import Saml2LogoutComplete
 from .saml_2_logout_complete_request import Saml2LogoutCompleteRequest
 from .saml_2_provider import Saml2Provider
+from .scim_sync_all_response import ScimSyncAllResponse
 from .screenshot import Screenshot
 from .screenshot_request import ScreenshotRequest
 from .screenshot_request_form import ScreenshotRequestForm
@@ -3128,6 +3136,7 @@ __all__ = (
     "FirecrestJobRequestMultipart",
     "FreeipaProfile",
     "FreeipaProfileRequest",
+    "FrequencyEnum",
     "GenderEnum",
     "GenerateAssignmentsRequest",
     "GenerateAssignmentsResponse",
@@ -3992,6 +4001,7 @@ __all__ = (
     "PatchedPaymentRequestForm",
     "PatchedPaymentRequestMultipart",
     "PatchedProjectCreditRequest",
+    "PatchedProjectDigestConfigRequest",
     "PatchedProjectEstimatedCostPolicyRequest",
     "PatchedProjectInfoRequest",
     "PatchedProjectRequest",
@@ -4099,6 +4109,11 @@ __all__ = (
     "ProjectCreditsListOItem",
     "ProjectDetail",
     "ProjectDetailsResponse",
+    "ProjectDigestConfig",
+    "ProjectDigestConfigAvailableSectionsItem",
+    "ProjectDigestConfigRequest",
+    "ProjectDigestPreviewRequest",
+    "ProjectDigestPreviewResponse",
     "ProjectEstimatedCostPolicy",
     "ProjectEstimatedCostPolicyRequest",
     "ProjectHyperlinkRequest",
@@ -4551,6 +4566,7 @@ __all__ = (
     "Saml2LogoutComplete",
     "Saml2LogoutCompleteRequest",
     "Saml2Provider",
+    "ScimSyncAllResponse",
     "Screenshot",
     "ScreenshotRequest",
     "ScreenshotRequestForm",
