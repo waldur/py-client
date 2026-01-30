@@ -234,6 +234,7 @@ class ConstanceSettingsRequestMultipart:
         user_data_access_logging_enabled (Union[Unset, bool]):
         user_data_access_log_retention_days (Union[Unset, int]):
         user_data_access_log_self_access (Union[Unset, bool]):
+        slurm_policy_evaluation_log_retention_days (Union[Unset, int]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -448,6 +449,7 @@ class ConstanceSettingsRequestMultipart:
     user_data_access_logging_enabled: Union[Unset, bool] = UNSET
     user_data_access_log_retention_days: Union[Unset, int] = UNSET
     user_data_access_log_self_access: Union[Unset, bool] = UNSET
+    slurm_policy_evaluation_log_retention_days: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -987,6 +989,8 @@ class ConstanceSettingsRequestMultipart:
 
         user_data_access_log_self_access = self.user_data_access_log_self_access
 
+        slurm_policy_evaluation_log_retention_days = self.slurm_policy_evaluation_log_retention_days
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -1420,6 +1424,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["USER_DATA_ACCESS_LOG_RETENTION_DAYS"] = user_data_access_log_retention_days
         if user_data_access_log_self_access is not UNSET:
             field_dict["USER_DATA_ACCESS_LOG_SELF_ACCESS"] = user_data_access_log_self_access
+        if slurm_policy_evaluation_log_retention_days is not UNSET:
+            field_dict["SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS"] = slurm_policy_evaluation_log_retention_days
 
         return field_dict
 
@@ -2533,6 +2539,14 @@ class ConstanceSettingsRequestMultipart:
                 )
             )
 
+        if not isinstance(self.slurm_policy_evaluation_log_retention_days, Unset):
+            files.append(
+                (
+                    "SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS",
+                    (None, str(self.slurm_policy_evaluation_log_retention_days).encode(), "text/plain"),
+                )
+            )
+
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
 
@@ -3162,6 +3176,8 @@ class ConstanceSettingsRequestMultipart:
 
         user_data_access_log_self_access = d.pop("USER_DATA_ACCESS_LOG_SELF_ACCESS", UNSET)
 
+        slurm_policy_evaluation_log_retention_days = d.pop("SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS", UNSET)
+
         constance_settings_request_multipart = cls(
             site_name=site_name,
             site_description=site_description,
@@ -3375,6 +3391,7 @@ class ConstanceSettingsRequestMultipart:
             user_data_access_logging_enabled=user_data_access_logging_enabled,
             user_data_access_log_retention_days=user_data_access_log_retention_days,
             user_data_access_log_self_access=user_data_access_log_self_access,
+            slurm_policy_evaluation_log_retention_days=slurm_policy_evaluation_log_retention_days,
         )
 
         constance_settings_request_multipart.additional_properties = d

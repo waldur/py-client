@@ -1094,6 +1094,7 @@ from .migration_create_request import MigrationCreateRequest
 from .migration_details import MigrationDetails
 from .migration_details_request import MigrationDetailsRequest
 from .minimal_consumption_logic_enum import MinimalConsumptionLogicEnum
+from .mode_enum import ModeEnum
 from .move_offering_request import MoveOfferingRequest
 from .move_project_request import MoveProjectRequest
 from .move_resource_request import MoveResourceRequest
@@ -2279,6 +2280,7 @@ from .slurm_association import SlurmAssociation
 from .slurm_command import SlurmCommand
 from .slurm_command_history import SlurmCommandHistory
 from .slurm_command_parameters import SlurmCommandParameters
+from .slurm_command_result_request import SlurmCommandResultRequest
 from .slurm_invoices_slurm_package_create_order_attributes import SlurmInvoicesSlurmPackageCreateOrderAttributes
 from .slurm_jobs_list_field_item import SlurmJobsListFieldItem
 from .slurm_jobs_retrieve_field_item import SlurmJobsRetrieveFieldItem
@@ -2288,6 +2290,14 @@ from .slurm_policy_carryover import SlurmPolicyCarryover
 from .slurm_policy_date_projection import SlurmPolicyDateProjection
 from .slurm_policy_date_projection_status_enum import SlurmPolicyDateProjectionStatusEnum
 from .slurm_policy_date_projections import SlurmPolicyDateProjections
+from .slurm_policy_dry_run_resource import SlurmPolicyDryRunResource
+from .slurm_policy_dry_run_response import SlurmPolicyDryRunResponse
+from .slurm_policy_evaluate_request_request import SlurmPolicyEvaluateRequestRequest
+from .slurm_policy_evaluate_resource import SlurmPolicyEvaluateResource
+from .slurm_policy_evaluate_resource_new_state import SlurmPolicyEvaluateResourceNewState
+from .slurm_policy_evaluate_resource_previous_state import SlurmPolicyEvaluateResourcePreviousState
+from .slurm_policy_evaluate_response import SlurmPolicyEvaluateResponse
+from .slurm_policy_evaluation_log import SlurmPolicyEvaluationLog
 from .slurm_policy_preview_request_request import SlurmPolicyPreviewRequestRequest
 from .slurm_policy_preview_response import SlurmPolicyPreviewResponse
 from .slurm_policy_thresholds import SlurmPolicyThresholds
@@ -3499,6 +3509,7 @@ __all__ = (
     "MigrationDetails",
     "MigrationDetailsRequest",
     "MinimalConsumptionLogicEnum",
+    "ModeEnum",
     "MoveOfferingRequest",
     "MoveProjectRequest",
     "MoveResourceRequest",
@@ -4596,6 +4607,7 @@ __all__ = (
     "SlurmCommand",
     "SlurmCommandHistory",
     "SlurmCommandParameters",
+    "SlurmCommandResultRequest",
     "SlurmInvoicesSlurmPackageCreateOrderAttributes",
     "SlurmJobsListFieldItem",
     "SlurmJobsRetrieveFieldItem",
@@ -4605,6 +4617,14 @@ __all__ = (
     "SlurmPolicyDateProjection",
     "SlurmPolicyDateProjections",
     "SlurmPolicyDateProjectionStatusEnum",
+    "SlurmPolicyDryRunResource",
+    "SlurmPolicyDryRunResponse",
+    "SlurmPolicyEvaluateRequestRequest",
+    "SlurmPolicyEvaluateResource",
+    "SlurmPolicyEvaluateResourceNewState",
+    "SlurmPolicyEvaluateResourcePreviousState",
+    "SlurmPolicyEvaluateResponse",
+    "SlurmPolicyEvaluationLog",
     "SlurmPolicyPreviewRequestRequest",
     "SlurmPolicyPreviewResponse",
     "SlurmPolicyThresholds",
