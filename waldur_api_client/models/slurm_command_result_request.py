@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -19,12 +19,14 @@ class SlurmCommandResultRequest:
         success (bool): Whether the command was applied successfully
         error_message (Union[Unset, str]): Error message if the command failed Default: ''.
         mode (Union[Unset, ModeEnum]):  Default: ModeEnum.PRODUCTION.
+        commands_executed (Union[Unset, list[str]]): List of shell commands actually executed by the site agent
     """
 
     resource_uuid: UUID
     success: bool
     error_message: Union[Unset, str] = ""
     mode: Union[Unset, ModeEnum] = ModeEnum.PRODUCTION
+    commands_executed: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,6 +40,10 @@ class SlurmCommandResultRequest:
         if not isinstance(self.mode, Unset):
             mode = self.mode.value
 
+        commands_executed: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.commands_executed, Unset):
+            commands_executed = self.commands_executed
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -50,6 +56,8 @@ class SlurmCommandResultRequest:
             field_dict["error_message"] = error_message
         if mode is not UNSET:
             field_dict["mode"] = mode
+        if commands_executed is not UNSET:
+            field_dict["commands_executed"] = commands_executed
 
         return field_dict
 
@@ -69,11 +77,14 @@ class SlurmCommandResultRequest:
         else:
             mode = ModeEnum(_mode)
 
+        commands_executed = cast(list[str], d.pop("commands_executed", UNSET))
+
         slurm_command_result_request = cls(
             resource_uuid=resource_uuid,
             success=success,
             error_message=error_message,
             mode=mode,
+            commands_executed=commands_executed,
         )
 
         slurm_command_result_request.additional_properties = d

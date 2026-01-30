@@ -18,9 +18,9 @@ class SlurmPolicyPreviewRequestRequest:
             1000.0.
         grace_ratio (Union[Unset, float]): Grace ratio for overconsumption allowance (0.2 = 20%) Default: 0.2.
         previous_usage (Union[Unset, float]): Usage from the previous period Default: 0.0.
-        fairshare_decay_half_life (Union[Unset, int]): Decay half-life in days for fairshare calculations Default: 15.
+        carryover_factor (Union[Unset, int]): Maximum percentage of base allocation that can carry over (0-100) Default:
+            50.
         carryover_enabled (Union[Unset, bool]): Whether unused allocation carries over to next period Default: True.
-        days_elapsed (Union[Unset, int]): Days elapsed since previous period (90 for quarterly) Default: 90.
         resource_uuid (Union[None, UUID, Unset]): Optional resource UUID to use for current usage data
         current_usage (Union[Unset, float]): Current usage in this period (manual input or from resource) Default: 0.0.
         daily_usage_rate (Union[Unset, float]): Average daily usage rate for projections Default: 0.0.
@@ -29,9 +29,8 @@ class SlurmPolicyPreviewRequestRequest:
     allocation: Union[Unset, float] = 1000.0
     grace_ratio: Union[Unset, float] = 0.2
     previous_usage: Union[Unset, float] = 0.0
-    fairshare_decay_half_life: Union[Unset, int] = 15
+    carryover_factor: Union[Unset, int] = 50
     carryover_enabled: Union[Unset, bool] = True
-    days_elapsed: Union[Unset, int] = 90
     resource_uuid: Union[None, UUID, Unset] = UNSET
     current_usage: Union[Unset, float] = 0.0
     daily_usage_rate: Union[Unset, float] = 0.0
@@ -44,11 +43,9 @@ class SlurmPolicyPreviewRequestRequest:
 
         previous_usage = self.previous_usage
 
-        fairshare_decay_half_life = self.fairshare_decay_half_life
+        carryover_factor = self.carryover_factor
 
         carryover_enabled = self.carryover_enabled
-
-        days_elapsed = self.days_elapsed
 
         resource_uuid: Union[None, Unset, str]
         if isinstance(self.resource_uuid, Unset):
@@ -71,12 +68,10 @@ class SlurmPolicyPreviewRequestRequest:
             field_dict["grace_ratio"] = grace_ratio
         if previous_usage is not UNSET:
             field_dict["previous_usage"] = previous_usage
-        if fairshare_decay_half_life is not UNSET:
-            field_dict["fairshare_decay_half_life"] = fairshare_decay_half_life
+        if carryover_factor is not UNSET:
+            field_dict["carryover_factor"] = carryover_factor
         if carryover_enabled is not UNSET:
             field_dict["carryover_enabled"] = carryover_enabled
-        if days_elapsed is not UNSET:
-            field_dict["days_elapsed"] = days_elapsed
         if resource_uuid is not UNSET:
             field_dict["resource_uuid"] = resource_uuid
         if current_usage is not UNSET:
@@ -95,11 +90,9 @@ class SlurmPolicyPreviewRequestRequest:
 
         previous_usage = d.pop("previous_usage", UNSET)
 
-        fairshare_decay_half_life = d.pop("fairshare_decay_half_life", UNSET)
+        carryover_factor = d.pop("carryover_factor", UNSET)
 
         carryover_enabled = d.pop("carryover_enabled", UNSET)
-
-        days_elapsed = d.pop("days_elapsed", UNSET)
 
         def _parse_resource_uuid(data: object) -> Union[None, UUID, Unset]:
             if data is None:
@@ -126,9 +119,8 @@ class SlurmPolicyPreviewRequestRequest:
             allocation=allocation,
             grace_ratio=grace_ratio,
             previous_usage=previous_usage,
-            fairshare_decay_half_life=fairshare_decay_half_life,
+            carryover_factor=carryover_factor,
             carryover_enabled=carryover_enabled,
-            days_elapsed=days_elapsed,
             resource_uuid=resource_uuid,
             current_usage=current_usage,
             daily_usage_rate=daily_usage_rate,

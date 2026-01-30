@@ -45,8 +45,8 @@ class SlurmPeriodicUsagePolicy:
         tres_billing_enabled (Union[Unset, bool]): Use TRES billing units instead of raw TRES values
         tres_billing_weights (Union[Unset, Any]): TRES billing weights (e.g., {"CPU": 0.015625, "Mem": 0.001953125,
             "GRES/gpu": 0.25})
-        fairshare_decay_half_life (Union[Unset, int]): Fairshare decay half-life in days (matches SLURM
-            PriorityDecayHalfLife)
+        carryover_factor (Union[Unset, int]): Maximum percentage of base allocation that can carry over from unused
+            previous period (0-100)
         grace_ratio (Union[Unset, float]): Grace period ratio (0.2 = 20% overconsumption allowed)
         carryover_enabled (Union[Unset, bool]): Enable unused allocation carryover to next period
         raw_usage_reset (Union[Unset, bool]): Reset raw usage at period transitions (PriorityUsageResetPeriod=None)
@@ -73,7 +73,7 @@ class SlurmPeriodicUsagePolicy:
     limit_type: Union[Unset, LimitTypeEnum] = UNSET
     tres_billing_enabled: Union[Unset, bool] = UNSET
     tres_billing_weights: Union[Unset, Any] = UNSET
-    fairshare_decay_half_life: Union[Unset, int] = UNSET
+    carryover_factor: Union[Unset, int] = UNSET
     grace_ratio: Union[Unset, float] = UNSET
     carryover_enabled: Union[Unset, bool] = UNSET
     raw_usage_reset: Union[Unset, bool] = UNSET
@@ -130,7 +130,7 @@ class SlurmPeriodicUsagePolicy:
 
         tres_billing_weights = self.tres_billing_weights
 
-        fairshare_decay_half_life = self.fairshare_decay_half_life
+        carryover_factor = self.carryover_factor
 
         grace_ratio = self.grace_ratio
 
@@ -175,8 +175,8 @@ class SlurmPeriodicUsagePolicy:
             field_dict["tres_billing_enabled"] = tres_billing_enabled
         if tres_billing_weights is not UNSET:
             field_dict["tres_billing_weights"] = tres_billing_weights
-        if fairshare_decay_half_life is not UNSET:
-            field_dict["fairshare_decay_half_life"] = fairshare_decay_half_life
+        if carryover_factor is not UNSET:
+            field_dict["carryover_factor"] = carryover_factor
         if grace_ratio is not UNSET:
             field_dict["grace_ratio"] = grace_ratio
         if carryover_enabled is not UNSET:
@@ -248,7 +248,7 @@ class SlurmPeriodicUsagePolicy:
 
         tres_billing_weights = d.pop("tres_billing_weights", UNSET)
 
-        fairshare_decay_half_life = d.pop("fairshare_decay_half_life", UNSET)
+        carryover_factor = d.pop("carryover_factor", UNSET)
 
         grace_ratio = d.pop("grace_ratio", UNSET)
 
@@ -284,7 +284,7 @@ class SlurmPeriodicUsagePolicy:
             limit_type=limit_type,
             tres_billing_enabled=tres_billing_enabled,
             tres_billing_weights=tres_billing_weights,
-            fairshare_decay_half_life=fairshare_decay_half_life,
+            carryover_factor=carryover_factor,
             grace_ratio=grace_ratio,
             carryover_enabled=carryover_enabled,
             raw_usage_reset=raw_usage_reset,

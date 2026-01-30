@@ -12,39 +12,35 @@ class SlurmPolicyCarryover:
     """
     Attributes:
         previous_usage (float):
-        days_elapsed (int):
-        half_life (int):
-        decay_factor (float):
-        effective_usage (float):
+        carryover_factor (int):
         base_allocation (float):
-        unused_carryover (float):
+        unused (float):
+        carryover_cap (float):
+        carryover (float):
         total_allocation (float):
     """
 
     previous_usage: float
-    days_elapsed: int
-    half_life: int
-    decay_factor: float
-    effective_usage: float
+    carryover_factor: int
     base_allocation: float
-    unused_carryover: float
+    unused: float
+    carryover_cap: float
+    carryover: float
     total_allocation: float
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         previous_usage = self.previous_usage
 
-        days_elapsed = self.days_elapsed
-
-        half_life = self.half_life
-
-        decay_factor = self.decay_factor
-
-        effective_usage = self.effective_usage
+        carryover_factor = self.carryover_factor
 
         base_allocation = self.base_allocation
 
-        unused_carryover = self.unused_carryover
+        unused = self.unused
+
+        carryover_cap = self.carryover_cap
+
+        carryover = self.carryover
 
         total_allocation = self.total_allocation
 
@@ -53,12 +49,11 @@ class SlurmPolicyCarryover:
         field_dict.update(
             {
                 "previous_usage": previous_usage,
-                "days_elapsed": days_elapsed,
-                "half_life": half_life,
-                "decay_factor": decay_factor,
-                "effective_usage": effective_usage,
+                "carryover_factor": carryover_factor,
                 "base_allocation": base_allocation,
-                "unused_carryover": unused_carryover,
+                "unused": unused,
+                "carryover_cap": carryover_cap,
+                "carryover": carryover,
                 "total_allocation": total_allocation,
             }
         )
@@ -70,28 +65,25 @@ class SlurmPolicyCarryover:
         d = dict(src_dict)
         previous_usage = d.pop("previous_usage")
 
-        days_elapsed = d.pop("days_elapsed")
-
-        half_life = d.pop("half_life")
-
-        decay_factor = d.pop("decay_factor")
-
-        effective_usage = d.pop("effective_usage")
+        carryover_factor = d.pop("carryover_factor")
 
         base_allocation = d.pop("base_allocation")
 
-        unused_carryover = d.pop("unused_carryover")
+        unused = d.pop("unused")
+
+        carryover_cap = d.pop("carryover_cap")
+
+        carryover = d.pop("carryover")
 
         total_allocation = d.pop("total_allocation")
 
         slurm_policy_carryover = cls(
             previous_usage=previous_usage,
-            days_elapsed=days_elapsed,
-            half_life=half_life,
-            decay_factor=decay_factor,
-            effective_usage=effective_usage,
+            carryover_factor=carryover_factor,
             base_allocation=base_allocation,
-            unused_carryover=unused_carryover,
+            unused=unused,
+            carryover_cap=carryover_cap,
+            carryover=carryover,
             total_allocation=total_allocation,
         )
 

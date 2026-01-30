@@ -30,7 +30,7 @@ class SlurmPolicyPreviewResponse:
         carryover (Union['SlurmPolicyCarryover', None]):
         thresholds (SlurmPolicyThresholds):
         grace_ratio (float):
-        half_life (int):
+        carryover_factor (int):
         current_usage (Union[Unset, float]):
         daily_usage_rate (Union[Unset, float]):
         usage_percentage (Union[Unset, float]):
@@ -48,7 +48,7 @@ class SlurmPolicyPreviewResponse:
     carryover: Union["SlurmPolicyCarryover", None]
     thresholds: "SlurmPolicyThresholds"
     grace_ratio: float
-    half_life: int
+    carryover_factor: int
     current_usage: Union[Unset, float] = UNSET
     daily_usage_rate: Union[Unset, float] = UNSET
     usage_percentage: Union[Unset, float] = UNSET
@@ -79,7 +79,7 @@ class SlurmPolicyPreviewResponse:
 
         grace_ratio = self.grace_ratio
 
-        half_life = self.half_life
+        carryover_factor = self.carryover_factor
 
         current_usage = self.current_usage
 
@@ -127,7 +127,7 @@ class SlurmPolicyPreviewResponse:
                 "carryover": carryover,
                 "thresholds": thresholds,
                 "grace_ratio": grace_ratio,
-                "half_life": half_life,
+                "carryover_factor": carryover_factor,
             }
         )
         if current_usage is not UNSET:
@@ -185,7 +185,7 @@ class SlurmPolicyPreviewResponse:
 
         grace_ratio = d.pop("grace_ratio")
 
-        half_life = d.pop("half_life")
+        carryover_factor = d.pop("carryover_factor")
 
         current_usage = d.pop("current_usage", UNSET)
 
@@ -242,7 +242,7 @@ class SlurmPolicyPreviewResponse:
             carryover=carryover,
             thresholds=thresholds,
             grace_ratio=grace_ratio,
-            half_life=half_life,
+            carryover_factor=carryover_factor,
             current_usage=current_usage,
             daily_usage_rate=daily_usage_rate,
             usage_percentage=usage_percentage,
