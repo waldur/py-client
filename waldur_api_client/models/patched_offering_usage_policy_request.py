@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.period_enum import PeriodEnum
+from ..models.policy_period_enum import PolicyPeriodEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -25,7 +25,7 @@ class PatchedOfferingUsagePolicyRequest:
         apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
             organization_groups.
         component_limits_set (Union[Unset, list['NestedOfferingComponentLimitRequest']]):
-        period (Union[Unset, PeriodEnum]):
+        period (Union[Unset, PolicyPeriodEnum]):
     """
 
     scope: Union[Unset, str] = UNSET
@@ -34,7 +34,7 @@ class PatchedOfferingUsagePolicyRequest:
     organization_groups: Union[Unset, list[str]] = UNSET
     apply_to_all: Union[Unset, bool] = UNSET
     component_limits_set: Union[Unset, list["NestedOfferingComponentLimitRequest"]] = UNSET
-    period: Union[Unset, PeriodEnum] = UNSET
+    period: Union[Unset, PolicyPeriodEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -104,11 +104,11 @@ class PatchedOfferingUsagePolicyRequest:
             component_limits_set.append(component_limits_set_item)
 
         _period = d.pop("period", UNSET)
-        period: Union[Unset, PeriodEnum]
+        period: Union[Unset, PolicyPeriodEnum]
         if isinstance(_period, Unset):
             period = UNSET
         else:
-            period = PeriodEnum(_period)
+            period = PolicyPeriodEnum(_period)
 
         patched_offering_usage_policy_request = cls(
             scope=scope,

@@ -7,7 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.period_enum import PeriodEnum
+from ..models.policy_period_enum import PolicyPeriodEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="OfferingEstimatedCostPolicy")
@@ -31,7 +31,7 @@ class OfferingEstimatedCostPolicy:
         limit_cost (int):
         period_name (str):
         options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
-        period (Union[Unset, PeriodEnum]):
+        period (Union[Unset, PolicyPeriodEnum]):
         organization_groups (Union[Unset, list[str]]):
         apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
             organization_groups.
@@ -51,7 +51,7 @@ class OfferingEstimatedCostPolicy:
     limit_cost: int
     period_name: str
     options: Union[Unset, Any] = UNSET
-    period: Union[Unset, PeriodEnum] = UNSET
+    period: Union[Unset, PolicyPeriodEnum] = UNSET
     organization_groups: Union[Unset, list[str]] = UNSET
     apply_to_all: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -157,11 +157,11 @@ class OfferingEstimatedCostPolicy:
         options = d.pop("options", UNSET)
 
         _period = d.pop("period", UNSET)
-        period: Union[Unset, PeriodEnum]
+        period: Union[Unset, PolicyPeriodEnum]
         if isinstance(_period, Unset):
             period = UNSET
         else:
-            period = PeriodEnum(_period)
+            period = PolicyPeriodEnum(_period)
 
         organization_groups = cast(list[str], d.pop("organization_groups", UNSET))
 

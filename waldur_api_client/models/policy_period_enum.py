@@ -1,7 +1,7 @@
 from enum import IntEnum
 
 
-class PeriodEnum(IntEnum):
+class PolicyPeriodEnum(IntEnum):
     VALUE_1 = 1
     VALUE_2 = 2
     VALUE_3 = 3

@@ -5,7 +5,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.period_enum import PeriodEnum
+from ..models.policy_period_enum import PolicyPeriodEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="NestedCustomerUsagePolicyComponent")
@@ -19,14 +19,14 @@ class NestedCustomerUsagePolicyComponent:
         limit (int):
         period_name (str):
         component (UUID):
-        period (Union[Unset, PeriodEnum]):
+        period (Union[Unset, PolicyPeriodEnum]):
     """
 
     type_: str
     limit: int
     period_name: str
     component: UUID
-    period: Union[Unset, PeriodEnum] = UNSET
+    period: Union[Unset, PolicyPeriodEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -69,11 +69,11 @@ class NestedCustomerUsagePolicyComponent:
         component = UUID(d.pop("component"))
 
         _period = d.pop("period", UNSET)
-        period: Union[Unset, PeriodEnum]
+        period: Union[Unset, PolicyPeriodEnum]
         if isinstance(_period, Unset):
             period = UNSET
         else:
-            period = PeriodEnum(_period)
+            period = PolicyPeriodEnum(_period)
 
         nested_customer_usage_policy_component = cls(
             type_=type_,

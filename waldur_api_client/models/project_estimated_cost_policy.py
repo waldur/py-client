@@ -7,7 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.period_enum import PeriodEnum
+from ..models.policy_period_enum import PolicyPeriodEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -38,7 +38,7 @@ class ProjectEstimatedCostPolicy:
         customer_credit (Union[None, float]):
         billing_price_estimate (NestedPriceEstimate):
         options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
-        period (Union[Unset, PeriodEnum]):
+        period (Union[Unset, PolicyPeriodEnum]):
     """
 
     uuid: UUID
@@ -58,7 +58,7 @@ class ProjectEstimatedCostPolicy:
     customer_credit: Union[None, float]
     billing_price_estimate: "NestedPriceEstimate"
     options: Union[Unset, Any] = UNSET
-    period: Union[Unset, PeriodEnum] = UNSET
+    period: Union[Unset, PolicyPeriodEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -181,11 +181,11 @@ class ProjectEstimatedCostPolicy:
         options = d.pop("options", UNSET)
 
         _period = d.pop("period", UNSET)
-        period: Union[Unset, PeriodEnum]
+        period: Union[Unset, PolicyPeriodEnum]
         if isinstance(_period, Unset):
             period = UNSET
         else:
-            period = PeriodEnum(_period)
+            period = PolicyPeriodEnum(_period)
 
         project_estimated_cost_policy = cls(
             uuid=uuid,

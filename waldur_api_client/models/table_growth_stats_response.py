@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 if TYPE_CHECKING:
+    from ..models.table_growth_alert import TableGrowthAlert
     from ..models.table_growth_stats import TableGrowthStats
 
 
@@ -21,12 +22,14 @@ class TableGrowthStatsResponse:
         weekly_threshold_percent (int): Configured weekly growth alert threshold
         monthly_threshold_percent (int): Configured monthly growth alert threshold
         tables (list['TableGrowthStats']): Table growth statistics sorted by growth rate
+        alerts (list['TableGrowthAlert']): List of tables that exceeded configured growth thresholds
     """
 
     date: datetime.date
     weekly_threshold_percent: int
     monthly_threshold_percent: int
     tables: list["TableGrowthStats"]
+    alerts: list["TableGrowthAlert"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,6 +44,11 @@ class TableGrowthStatsResponse:
             tables_item = tables_item_data.to_dict()
             tables.append(tables_item)
 
+        alerts = []
+        for alerts_item_data in self.alerts:
+            alerts_item = alerts_item_data.to_dict()
+            alerts.append(alerts_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -49,6 +57,7 @@ class TableGrowthStatsResponse:
                 "weekly_threshold_percent": weekly_threshold_percent,
                 "monthly_threshold_percent": monthly_threshold_percent,
                 "tables": tables,
+                "alerts": alerts,
             }
         )
 
@@ -56,6 +65,7 @@ class TableGrowthStatsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.table_growth_alert import TableGrowthAlert
         from ..models.table_growth_stats import TableGrowthStats
 
         d = dict(src_dict)
@@ -72,11 +82,19 @@ class TableGrowthStatsResponse:
 
             tables.append(tables_item)
 
+        alerts = []
+        _alerts = d.pop("alerts")
+        for alerts_item_data in _alerts:
+            alerts_item = TableGrowthAlert.from_dict(alerts_item_data)
+
+            alerts.append(alerts_item)
+
         table_growth_stats_response = cls(
             date=date,
             weekly_threshold_percent=weekly_threshold_percent,
             monthly_threshold_percent=monthly_threshold_percent,
             tables=tables,
+            alerts=alerts,
         )
 
         table_growth_stats_response.additional_properties = d

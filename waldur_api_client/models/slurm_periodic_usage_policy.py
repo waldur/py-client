@@ -8,7 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.limit_type_enum import LimitTypeEnum
-from ..models.period_enum import PeriodEnum
+from ..models.policy_period_enum import PolicyPeriodEnum
 from ..models.qos_strategy_enum import QosStrategyEnum
 from ..types import UNSET, Unset
 
@@ -40,7 +40,7 @@ class SlurmPeriodicUsagePolicy:
         organization_groups (Union[Unset, list[str]]):
         apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
             organization_groups.
-        period (Union[Unset, PeriodEnum]):
+        period (Union[Unset, PolicyPeriodEnum]):
         limit_type (Union[Unset, LimitTypeEnum]):
         tres_billing_enabled (Union[Unset, bool]): Use TRES billing units instead of raw TRES values
         tres_billing_weights (Union[Unset, Any]): TRES billing weights (e.g., {"CPU": 0.015625, "Mem": 0.001953125,
@@ -69,7 +69,7 @@ class SlurmPeriodicUsagePolicy:
     options: Union[Unset, Any] = UNSET
     organization_groups: Union[Unset, list[str]] = UNSET
     apply_to_all: Union[Unset, bool] = UNSET
-    period: Union[Unset, PeriodEnum] = UNSET
+    period: Union[Unset, PolicyPeriodEnum] = UNSET
     limit_type: Union[Unset, LimitTypeEnum] = UNSET
     tres_billing_enabled: Union[Unset, bool] = UNSET
     tres_billing_weights: Union[Unset, Any] = UNSET
@@ -231,11 +231,11 @@ class SlurmPeriodicUsagePolicy:
         apply_to_all = d.pop("apply_to_all", UNSET)
 
         _period = d.pop("period", UNSET)
-        period: Union[Unset, PeriodEnum]
+        period: Union[Unset, PolicyPeriodEnum]
         if isinstance(_period, Unset):
             period = UNSET
         else:
-            period = PeriodEnum(_period)
+            period = PolicyPeriodEnum(_period)
 
         _limit_type = d.pop("limit_type", UNSET)
         limit_type: Union[Unset, LimitTypeEnum]
