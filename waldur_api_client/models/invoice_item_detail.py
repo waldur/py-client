@@ -21,6 +21,7 @@ class InvoiceItemDetail:
         uuid (UUID):
         price (float):
         offering_uuid (UUID):
+        offering_name (Union[None, str]):
         offering_component_type (Union[None, str]):
         project_uuid (Union[None, UUID]):
         project_name (str):
@@ -42,6 +43,7 @@ class InvoiceItemDetail:
     uuid: UUID
     price: float
     offering_uuid: UUID
+    offering_name: Union[None, str]
     offering_component_type: Union[None, str]
     project_uuid: Union[None, UUID]
     project_name: str
@@ -67,6 +69,9 @@ class InvoiceItemDetail:
         price = self.price
 
         offering_uuid = str(self.offering_uuid)
+
+        offering_name: Union[None, str]
+        offering_name = self.offering_name
 
         offering_component_type: Union[None, str]
         offering_component_type = self.offering_component_type
@@ -121,6 +126,7 @@ class InvoiceItemDetail:
                 "uuid": uuid,
                 "price": price,
                 "offering_uuid": offering_uuid,
+                "offering_name": offering_name,
                 "offering_component_type": offering_component_type,
                 "project_uuid": project_uuid,
                 "project_name": project_name,
@@ -161,6 +167,13 @@ class InvoiceItemDetail:
         price = d.pop("price")
 
         offering_uuid = UUID(d.pop("offering_uuid"))
+
+        def _parse_offering_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        offering_name = _parse_offering_name(d.pop("offering_name"))
 
         def _parse_offering_component_type(data: object) -> Union[None, str]:
             if data is None:
@@ -237,6 +250,7 @@ class InvoiceItemDetail:
             uuid=uuid,
             price=price,
             offering_uuid=offering_uuid,
+            offering_name=offering_name,
             offering_component_type=offering_component_type,
             project_uuid=project_uuid,
             project_name=project_name,

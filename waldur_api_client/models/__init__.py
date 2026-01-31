@@ -62,6 +62,30 @@ from .amount_range_enum import AmountRangeEnum
 from .answer import Answer
 from .answer_submit_request import AnswerSubmitRequest
 from .answer_submit_response import AnswerSubmitResponse
+from .arrow_billing_line import ArrowBillingLine
+from .arrow_billing_sync import ArrowBillingSync
+from .arrow_billing_sync_item import ArrowBillingSyncItem
+from .arrow_billing_sync_item_detail import ArrowBillingSyncItemDetail
+from .arrow_billing_sync_state_enum import ArrowBillingSyncStateEnum
+from .arrow_consumption_line import ArrowConsumptionLine
+from .arrow_consumption_record import ArrowConsumptionRecord
+from .arrow_credentials_request import ArrowCredentialsRequest
+from .arrow_credentials_validation_response import ArrowCredentialsValidationResponse
+from .arrow_credentials_validation_response_partner_info import ArrowCredentialsValidationResponsePartnerInfo
+from .arrow_customer_discovery import ArrowCustomerDiscovery
+from .arrow_customer_mapping import ArrowCustomerMapping
+from .arrow_customer_mapping_create import ArrowCustomerMappingCreate
+from .arrow_customer_mapping_create_request import ArrowCustomerMappingCreateRequest
+from .arrow_customer_mapping_request import ArrowCustomerMappingRequest
+from .arrow_license import ArrowLicense
+from .arrow_settings import ArrowSettings
+from .arrow_settings_create import ArrowSettingsCreate
+from .arrow_settings_create_request import ArrowSettingsCreateRequest
+from .arrow_settings_request import ArrowSettingsRequest
+from .arrow_vendor_offering_mapping import ArrowVendorOfferingMapping
+from .arrow_vendor_offering_mapping_create import ArrowVendorOfferingMappingCreate
+from .arrow_vendor_offering_mapping_create_request import ArrowVendorOfferingMappingCreateRequest
+from .arrow_vendor_offering_mapping_request import ArrowVendorOfferingMappingRequest
 from .assignment_batch import AssignmentBatch
 from .assignment_batch_list import AssignmentBatchList
 from .assignment_batch_request import AssignmentBatchRequest
@@ -102,6 +126,7 @@ from .auth_result_request import AuthResultRequest
 from .auth_result_state_enum import AuthResultStateEnum
 from .auth_result_uuid_request import AuthResultUUIDRequest
 from .auth_token import AuthToken
+from .available_arrow_customers_response import AvailableArrowCustomersResponse
 from .available_checklist import AvailableChecklist
 from .available_checklists_response import AvailableChecklistsResponse
 from .available_checklists_response_customer_checklist_type_0 import AvailableChecklistsResponseCustomerChecklistType0
@@ -350,6 +375,8 @@ from .circuit_breaker_config import CircuitBreakerConfig
 from .circuit_breaker_reset import CircuitBreakerReset
 from .circuit_breaker_state_change import CircuitBreakerStateChange
 from .circuit_breaker_status import CircuitBreakerStatus
+from .cleanup_consumption_request_request import CleanupConsumptionRequestRequest
+from .cleanup_consumption_response import CleanupConsumptionResponse
 from .cleanup_request_request import CleanupRequestRequest
 from .cleanup_response import CleanupResponse
 from .cleanup_response_items_item import CleanupResponseItemsItem
@@ -423,6 +450,8 @@ from .constance_settings_request_multipart import ConstanceSettingsRequestMultip
 from .constance_settings_request_multipart_loginlogomultilingual import (
     ConstanceSettingsRequestMultipartLOGINLOGOMULTILINGUAL,
 )
+from .consumption_statistics_response import ConsumptionStatisticsResponse
+from .consumption_status_response import ConsumptionStatusResponse
 from .container_format_enum import ContainerFormatEnum
 from .core_auth_token import CoreAuthToken
 from .core_states import CoreStates
@@ -456,6 +485,9 @@ from .create_router import CreateRouter
 from .create_router_request import CreateRouterRequest
 from .current_qos_status_enum import CurrentQosStatusEnum
 from .customer import Customer
+from .customer_billing_summary_billing_sync import CustomerBillingSummaryBillingSync
+from .customer_billing_summary_consumption_record import CustomerBillingSummaryConsumptionRecord
+from .customer_billing_summary_response import CustomerBillingSummaryResponse
 from .customer_component_usage_policy import CustomerComponentUsagePolicy
 from .customer_component_usage_policy_request import CustomerComponentUsagePolicyRequest
 from .customer_credit import CustomerCredit
@@ -468,6 +500,8 @@ from .customer_details import CustomerDetails
 from .customer_estimated_cost_policy import CustomerEstimatedCostPolicy
 from .customer_estimated_cost_policy_request import CustomerEstimatedCostPolicyRequest
 from .customer_industry_flag_stats import CustomerIndustryFlagStats
+from .customer_mapping_input_request import CustomerMappingInputRequest
+from .customer_mapping_suggestion import CustomerMappingSuggestion
 from .customer_member_count import CustomerMemberCount
 from .customer_member_summary import CustomerMemberSummary
 from .customer_oecd_code_stats import CustomerOecdCodeStats
@@ -543,6 +577,9 @@ from .discount_type_enum import DiscountTypeEnum
 from .discounts_update_request import DiscountsUpdateRequest
 from .discounts_update_request_discounts import DiscountsUpdateRequestDiscounts
 from .discover_custom_fields_request_request import DiscoverCustomFieldsRequestRequest
+from .discover_customers_request_request import DiscoverCustomersRequestRequest
+from .discover_customers_response import DiscoverCustomersResponse
+from .discover_licenses_response import DiscoverLicensesResponse
 from .discover_metadata_request_request import DiscoverMetadataRequestRequest
 from .discover_metadata_response import DiscoverMetadataResponse
 from .discover_metadata_response_endpoints import DiscoverMetadataResponseEndpoints
@@ -632,6 +669,16 @@ from .feature_metadata_response_feature_enums_additional_property import (
 from .feature_metadata_response_features_item import FeatureMetadataResponseFeaturesItem
 from .feature_values_body import FeatureValuesBody
 from .feedback import Feedback
+from .fetch_billing_export_request_request import FetchBillingExportRequestRequest
+from .fetch_billing_export_response import FetchBillingExportResponse
+from .fetch_billing_export_response_data_item import FetchBillingExportResponseDataItem
+from .fetch_consumption_request_request import FetchConsumptionRequestRequest
+from .fetch_consumption_response import FetchConsumptionResponse
+from .fetch_consumption_response_data_item import FetchConsumptionResponseDataItem
+from .fetch_customer_arrow_data_response import FetchCustomerArrowDataResponse
+from .fetch_license_info_request_request import FetchLicenseInfoRequestRequest
+from .fetch_license_info_response import FetchLicenseInfoResponse
+from .fetch_license_info_response_data import FetchLicenseInfoResponseData
 from .financial_report import FinancialReport
 from .financial_report_email_request import FinancialReportEmailRequest
 from .fingerprint import Fingerprint
@@ -675,6 +722,8 @@ from .image_create_response import ImageCreateResponse
 from .image_upload_response import ImageUploadResponse
 from .impact_level_display_enum import ImpactLevelDisplayEnum
 from .impact_level_enum import ImpactLevelEnum
+from .import_license_request_request import ImportLicenseRequestRequest
+from .import_license_response import ImportLicenseResponse
 from .import_publications_request import ImportPublicationsRequest
 from .import_publications_source_enum import ImportPublicationsSourceEnum
 from .import_resource_request import ImportResourceRequest
@@ -717,6 +766,7 @@ from .invoice_item_migrate_to_request import InvoiceItemMigrateToRequest
 from .invoice_item_total_price import InvoiceItemTotalPrice
 from .invoice_item_update import InvoiceItemUpdate
 from .invoice_item_update_request import InvoiceItemUpdateRequest
+from .invoice_price_source_enum import InvoicePriceSourceEnum
 from .invoice_state_enum import InvoiceStateEnum
 from .invoice_stats_offering import InvoiceStatsOffering
 from .invoices_count_o_item import InvoicesCountOItem
@@ -774,9 +824,12 @@ from .kind_enum import KindEnum
 from .lexis_link import LexisLink
 from .lexis_link_create_request import LexisLinkCreateRequest
 from .lexis_link_request import LexisLinkRequest
+from .license_suggestion import LicenseSuggestion
 from .limit_period_enum import LimitPeriodEnum
 from .limit_type_enum import LimitTypeEnum
 from .link_openstack_request import LinkOpenstackRequest
+from .link_resource_request_request import LinkResourceRequestRequest
+from .link_resource_response import LinkResourceResponse
 from .link_to_invoice import LinkToInvoice
 from .link_to_invoice_request import LinkToInvoiceRequest
 from .lock_stats import LockStats
@@ -1525,6 +1578,9 @@ from .password_change_request import PasswordChangeRequest
 from .patched_access_subnet_request import PatchedAccessSubnetRequest
 from .patched_admin_announcement_request import PatchedAdminAnnouncementRequest
 from .patched_allocation_request import PatchedAllocationRequest
+from .patched_arrow_customer_mapping_request import PatchedArrowCustomerMappingRequest
+from .patched_arrow_settings_request import PatchedArrowSettingsRequest
+from .patched_arrow_vendor_offering_mapping_request import PatchedArrowVendorOfferingMappingRequest
 from .patched_assignment_batch_request import PatchedAssignmentBatchRequest
 from .patched_assignment_item_request import PatchedAssignmentItemRequest
 from .patched_aws_instance_request import PatchedAwsInstanceRequest
@@ -1693,6 +1749,8 @@ from .payment_request_form import PaymentRequestForm
 from .payment_request_multipart import PaymentRequestMultipart
 from .payment_type_enum import PaymentTypeEnum
 from .payment_url_request import PaymentURLRequest
+from .pending_record import PendingRecord
+from .period_breakdown import PeriodBreakdown
 from .permission import Permission
 from .permission_metadata_response import PermissionMetadataResponse
 from .permission_metadata_response_permission_descriptions_item import (
@@ -1720,6 +1778,8 @@ from .plugin_offering_type import PluginOfferingType
 from .policy_enum import PolicyEnum
 from .policy_period_enum import PolicyPeriodEnum
 from .policy_type_enum import PolicyTypeEnum
+from .preview_settings_request_request import PreviewSettingsRequestRequest
+from .preview_settings_response import PreviewSettingsResponse
 from .prices_update_request import PricesUpdateRequest
 from .prices_update_request_prices import PricesUpdateRequestPrices
 from .priority import Priority
@@ -2050,6 +2110,7 @@ from .rancher_workloads_count_o_item import RancherWorkloadsCountOItem
 from .rancher_workloads_list_o_item import RancherWorkloadsListOItem
 from .reassign_item_request import ReassignItemRequest
 from .reassign_item_response import ReassignItemResponse
+from .reconcile_request_request import ReconcileRequestRequest
 from .reference_number_request import ReferenceNumberRequest
 from .relationship_type_enum import RelationshipTypeEnum
 from .remote_allocation import RemoteAllocation
@@ -2230,6 +2291,8 @@ from .saml_2_login_request import Saml2LoginRequest
 from .saml_2_logout_complete import Saml2LogoutComplete
 from .saml_2_logout_complete_request import Saml2LogoutCompleteRequest
 from .saml_2_provider import Saml2Provider
+from .save_settings_request_request import SaveSettingsRequestRequest
+from .save_settings_response import SaveSettingsResponse
 from .scim_sync_all_response import ScimSyncAllResponse
 from .screenshot import Screenshot
 from .screenshot_request import ScreenshotRequest
@@ -2346,6 +2409,17 @@ from .support_issues_list_o_item import SupportIssuesListOItem
 from .support_stats import SupportStats
 from .support_user import SupportUser
 from .supported_countries_response import SupportedCountriesResponse
+from .sync_from_arrow_request_request import SyncFromArrowRequestRequest
+from .sync_pause_request_request import SyncPauseRequestRequest
+from .sync_pause_response import SyncPauseResponse
+from .sync_resource_historical_consumption_request_request import SyncResourceHistoricalConsumptionRequestRequest
+from .sync_resource_historical_consumption_response import SyncResourceHistoricalConsumptionResponse
+from .sync_resource_historical_consumption_response_errors_item import (
+    SyncResourceHistoricalConsumptionResponseErrorsItem,
+)
+from .sync_resources_request_request import SyncResourcesRequestRequest
+from .sync_resources_response import SyncResourcesResponse
+from .sync_resources_response_errors_item import SyncResourcesResponseErrorsItem
 from .sync_status_enum import SyncStatusEnum
 from .table_growth_alert import TableGrowthAlert
 from .table_growth_stats import TableGrowthStats
@@ -2372,6 +2446,8 @@ from .total_customer_cost import TotalCustomerCost
 from .transaction_stats import TransactionStats
 from .trigger_coi_detection_job_type_enum import TriggerCOIDetectionJobTypeEnum
 from .trigger_coi_detection_request import TriggerCOIDetectionRequest
+from .trigger_consumption_sync_request_request import TriggerConsumptionSyncRequestRequest
+from .trigger_sync_request_request import TriggerSyncRequestRequest
 from .unsilence_action_response import UnsilenceActionResponse
 from .update_actions_request import UpdateActionsRequest
 from .update_actions_response import UpdateActionsResponse
@@ -2461,6 +2537,7 @@ from .v_mware_virtual_machine_create_order_attributes_guest_os_type_3_type_1 imp
 )
 from .validation_decision_enum import ValidationDecisionEnum
 from .validation_method_enum import ValidationMethodEnum
+from .vendor_name_choice import VendorNameChoice
 from .venue_type_enum import VenueTypeEnum
 from .version import Version
 from .version_adoption import VersionAdoption
@@ -2510,7 +2587,9 @@ from .volume_attach_request import VolumeAttachRequest
 from .volume_type_enum import VolumeTypeEnum
 from .volume_type_mapping import VolumeTypeMapping
 from .volume_type_mapping_request import VolumeTypeMappingRequest
+from .waldur_customer_brief import WaldurCustomerBrief
 from .waldur_field_suggestion import WaldurFieldSuggestion
+from .waldur_resource_for_linking import WaldurResourceForLinking
 from .web_hook import WebHook
 from .web_hook_content_type_enum import WebHookContentTypeEnum
 from .web_hook_receiver import WebHookReceiver
@@ -2581,6 +2660,30 @@ __all__ = (
     "Answer",
     "AnswerSubmitRequest",
     "AnswerSubmitResponse",
+    "ArrowBillingLine",
+    "ArrowBillingSync",
+    "ArrowBillingSyncItem",
+    "ArrowBillingSyncItemDetail",
+    "ArrowBillingSyncStateEnum",
+    "ArrowConsumptionLine",
+    "ArrowConsumptionRecord",
+    "ArrowCredentialsRequest",
+    "ArrowCredentialsValidationResponse",
+    "ArrowCredentialsValidationResponsePartnerInfo",
+    "ArrowCustomerDiscovery",
+    "ArrowCustomerMapping",
+    "ArrowCustomerMappingCreate",
+    "ArrowCustomerMappingCreateRequest",
+    "ArrowCustomerMappingRequest",
+    "ArrowLicense",
+    "ArrowSettings",
+    "ArrowSettingsCreate",
+    "ArrowSettingsCreateRequest",
+    "ArrowSettingsRequest",
+    "ArrowVendorOfferingMapping",
+    "ArrowVendorOfferingMappingCreate",
+    "ArrowVendorOfferingMappingCreateRequest",
+    "ArrowVendorOfferingMappingRequest",
     "AssignmentBatch",
     "AssignmentBatchesCountOItem",
     "AssignmentBatchesCountSourceItem",
@@ -2621,6 +2724,7 @@ __all__ = (
     "AuthResultStateEnum",
     "AuthResultUUIDRequest",
     "AuthToken",
+    "AvailableArrowCustomersResponse",
     "AvailableChecklist",
     "AvailableChecklistsResponse",
     "AvailableChecklistsResponseCustomerChecklistType0",
@@ -2857,6 +2961,8 @@ __all__ = (
     "CircuitBreakerReset",
     "CircuitBreakerStateChange",
     "CircuitBreakerStatus",
+    "CleanupConsumptionRequestRequest",
+    "CleanupConsumptionResponse",
     "CleanupRequestRequest",
     "CleanupResponse",
     "CleanupResponseItemsItem",
@@ -2928,6 +3034,8 @@ __all__ = (
     "ConstanceSettingsRequestLOGINLOGOMULTILINGUAL",
     "ConstanceSettingsRequestMultipart",
     "ConstanceSettingsRequestMultipartLOGINLOGOMULTILINGUAL",
+    "ConsumptionStatisticsResponse",
+    "ConsumptionStatusResponse",
     "ContainerFormatEnum",
     "CoreAuthToken",
     "CoreStates",
@@ -2959,6 +3067,9 @@ __all__ = (
     "CreateRouterRequest",
     "CurrentQosStatusEnum",
     "Customer",
+    "CustomerBillingSummaryBillingSync",
+    "CustomerBillingSummaryConsumptionRecord",
+    "CustomerBillingSummaryResponse",
     "CustomerComponentUsagePolicy",
     "CustomerComponentUsagePolicyRequest",
     "CustomerCredit",
@@ -2971,6 +3082,8 @@ __all__ = (
     "CustomerEstimatedCostPolicy",
     "CustomerEstimatedCostPolicyRequest",
     "CustomerIndustryFlagStats",
+    "CustomerMappingInputRequest",
+    "CustomerMappingSuggestion",
     "CustomerMemberCount",
     "CustomerMemberSummary",
     "CustomerOecdCodeStats",
@@ -3043,7 +3156,10 @@ __all__ = (
     "DiscountsUpdateRequest",
     "DiscountsUpdateRequestDiscounts",
     "DiscountTypeEnum",
+    "DiscoverCustomersRequestRequest",
+    "DiscoverCustomersResponse",
     "DiscoverCustomFieldsRequestRequest",
+    "DiscoverLicensesResponse",
     "DiscoverMetadataRequestRequest",
     "DiscoverMetadataResponse",
     "DiscoverMetadataResponseEndpoints",
@@ -3129,6 +3245,16 @@ __all__ = (
     "FeatureMetadataResponseFeaturesItem",
     "FeatureValuesBody",
     "Feedback",
+    "FetchBillingExportRequestRequest",
+    "FetchBillingExportResponse",
+    "FetchBillingExportResponseDataItem",
+    "FetchConsumptionRequestRequest",
+    "FetchConsumptionResponse",
+    "FetchConsumptionResponseDataItem",
+    "FetchCustomerArrowDataResponse",
+    "FetchLicenseInfoRequestRequest",
+    "FetchLicenseInfoResponse",
+    "FetchLicenseInfoResponseData",
     "FinancialReport",
     "FinancialReportEmailRequest",
     "Fingerprint",
@@ -3171,6 +3297,8 @@ __all__ = (
     "ImpactLevelDisplayEnum",
     "ImpactLevelEnum",
     "ImportableResource",
+    "ImportLicenseRequestRequest",
+    "ImportLicenseResponse",
     "ImportPublicationsRequest",
     "ImportPublicationsSourceEnum",
     "ImportResourceRequest",
@@ -3212,6 +3340,7 @@ __all__ = (
     "InvoiceItemTotalPrice",
     "InvoiceItemUpdate",
     "InvoiceItemUpdateRequest",
+    "InvoicePriceSourceEnum",
     "InvoicesCountOItem",
     "InvoicesCountStateItem",
     "InvoicesHistoryAtRetrieveResponse400",
@@ -3269,9 +3398,12 @@ __all__ = (
     "LexisLink",
     "LexisLinkCreateRequest",
     "LexisLinkRequest",
+    "LicenseSuggestion",
     "LimitPeriodEnum",
     "LimitTypeEnum",
     "LinkOpenstackRequest",
+    "LinkResourceRequestRequest",
+    "LinkResourceResponse",
     "LinkToInvoice",
     "LinkToInvoiceRequest",
     "LockStats",
@@ -3914,6 +4046,9 @@ __all__ = (
     "PatchedAccessSubnetRequest",
     "PatchedAdminAnnouncementRequest",
     "PatchedAllocationRequest",
+    "PatchedArrowCustomerMappingRequest",
+    "PatchedArrowSettingsRequest",
+    "PatchedArrowVendorOfferingMappingRequest",
     "PatchedAssignmentBatchRequest",
     "PatchedAssignmentItemRequest",
     "PatchedAwsInstanceRequest",
@@ -4078,6 +4213,8 @@ __all__ = (
     "PaymentRequestMultipart",
     "PaymentTypeEnum",
     "PaymentURLRequest",
+    "PendingRecord",
+    "PeriodBreakdown",
     "Permission",
     "PermissionMetadataResponse",
     "PermissionMetadataResponsePermissionDescriptionsItem",
@@ -4097,6 +4234,8 @@ __all__ = (
     "PolicyEnum",
     "PolicyPeriodEnum",
     "PolicyTypeEnum",
+    "PreviewSettingsRequestRequest",
+    "PreviewSettingsResponse",
     "PricesUpdateRequest",
     "PricesUpdateRequestPrices",
     "Priority",
@@ -4391,6 +4530,7 @@ __all__ = (
     "RancherWorkloadsListOItem",
     "ReassignItemRequest",
     "ReassignItemResponse",
+    "ReconcileRequestRequest",
     "ReferenceNumberRequest",
     "RelationshipTypeEnum",
     "RemoteAllocation",
@@ -4569,6 +4709,8 @@ __all__ = (
     "Saml2LogoutComplete",
     "Saml2LogoutCompleteRequest",
     "Saml2Provider",
+    "SaveSettingsRequestRequest",
+    "SaveSettingsResponse",
     "ScimSyncAllResponse",
     "Screenshot",
     "ScreenshotRequest",
@@ -4683,6 +4825,15 @@ __all__ = (
     "SupportIssuesListOItem",
     "SupportStats",
     "SupportUser",
+    "SyncFromArrowRequestRequest",
+    "SyncPauseRequestRequest",
+    "SyncPauseResponse",
+    "SyncResourceHistoricalConsumptionRequestRequest",
+    "SyncResourceHistoricalConsumptionResponse",
+    "SyncResourceHistoricalConsumptionResponseErrorsItem",
+    "SyncResourcesRequestRequest",
+    "SyncResourcesResponse",
+    "SyncResourcesResponseErrorsItem",
     "SyncStatusEnum",
     "TableGrowthAlert",
     "TableGrowthStats",
@@ -4709,6 +4860,8 @@ __all__ = (
     "TransactionStats",
     "TriggerCOIDetectionJobTypeEnum",
     "TriggerCOIDetectionRequest",
+    "TriggerConsumptionSyncRequestRequest",
+    "TriggerSyncRequestRequest",
     "UnsilenceActionResponse",
     "UpdateActionsRequest",
     "UpdateActionsResponse",
@@ -4788,6 +4941,7 @@ __all__ = (
     "UsersUserRegistrationTrendListOItem",
     "ValidationDecisionEnum",
     "ValidationMethodEnum",
+    "VendorNameChoice",
     "VenueTypeEnum",
     "Version",
     "VersionAdoption",
@@ -4839,7 +4993,9 @@ __all__ = (
     "VolumeTypeEnum",
     "VolumeTypeMapping",
     "VolumeTypeMappingRequest",
+    "WaldurCustomerBrief",
     "WaldurFieldSuggestion",
+    "WaldurResourceForLinking",
     "WebHook",
     "WebHookContentTypeEnum",
     "WebHookReceiver",

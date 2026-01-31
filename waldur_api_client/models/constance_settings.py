@@ -233,6 +233,11 @@ class ConstanceSettings:
         user_data_access_logging_enabled (Union[Unset, bool]):
         user_data_access_log_retention_days (Union[Unset, int]):
         user_data_access_log_self_access (Union[Unset, bool]):
+        arrow_auto_reconciliation (Union[Unset, bool]):
+        arrow_sync_interval_hours (Union[Unset, int]):
+        arrow_consumption_sync_enabled (Union[Unset, bool]):
+        arrow_consumption_sync_interval_hours (Union[Unset, int]):
+        arrow_billing_check_interval_hours (Union[Unset, int]):
         slurm_policy_evaluation_log_retention_days (Union[Unset, int]):
     """
 
@@ -452,6 +457,11 @@ class ConstanceSettings:
     user_data_access_logging_enabled: Union[Unset, bool] = UNSET
     user_data_access_log_retention_days: Union[Unset, int] = UNSET
     user_data_access_log_self_access: Union[Unset, bool] = UNSET
+    arrow_auto_reconciliation: Union[Unset, bool] = UNSET
+    arrow_sync_interval_hours: Union[Unset, int] = UNSET
+    arrow_consumption_sync_enabled: Union[Unset, bool] = UNSET
+    arrow_consumption_sync_interval_hours: Union[Unset, int] = UNSET
+    arrow_billing_check_interval_hours: Union[Unset, int] = UNSET
     slurm_policy_evaluation_log_retention_days: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -964,6 +974,16 @@ class ConstanceSettings:
 
         user_data_access_log_self_access = self.user_data_access_log_self_access
 
+        arrow_auto_reconciliation = self.arrow_auto_reconciliation
+
+        arrow_sync_interval_hours = self.arrow_sync_interval_hours
+
+        arrow_consumption_sync_enabled = self.arrow_consumption_sync_enabled
+
+        arrow_consumption_sync_interval_hours = self.arrow_consumption_sync_interval_hours
+
+        arrow_billing_check_interval_hours = self.arrow_billing_check_interval_hours
+
         slurm_policy_evaluation_log_retention_days = self.slurm_policy_evaluation_log_retention_days
 
         field_dict: dict[str, Any] = {}
@@ -1407,6 +1427,16 @@ class ConstanceSettings:
             field_dict["USER_DATA_ACCESS_LOG_RETENTION_DAYS"] = user_data_access_log_retention_days
         if user_data_access_log_self_access is not UNSET:
             field_dict["USER_DATA_ACCESS_LOG_SELF_ACCESS"] = user_data_access_log_self_access
+        if arrow_auto_reconciliation is not UNSET:
+            field_dict["ARROW_AUTO_RECONCILIATION"] = arrow_auto_reconciliation
+        if arrow_sync_interval_hours is not UNSET:
+            field_dict["ARROW_SYNC_INTERVAL_HOURS"] = arrow_sync_interval_hours
+        if arrow_consumption_sync_enabled is not UNSET:
+            field_dict["ARROW_CONSUMPTION_SYNC_ENABLED"] = arrow_consumption_sync_enabled
+        if arrow_consumption_sync_interval_hours is not UNSET:
+            field_dict["ARROW_CONSUMPTION_SYNC_INTERVAL_HOURS"] = arrow_consumption_sync_interval_hours
+        if arrow_billing_check_interval_hours is not UNSET:
+            field_dict["ARROW_BILLING_CHECK_INTERVAL_HOURS"] = arrow_billing_check_interval_hours
         if slurm_policy_evaluation_log_retention_days is not UNSET:
             field_dict["SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS"] = slurm_policy_evaluation_log_retention_days
 
@@ -1944,6 +1974,16 @@ class ConstanceSettings:
 
         user_data_access_log_self_access = d.pop("USER_DATA_ACCESS_LOG_SELF_ACCESS", UNSET)
 
+        arrow_auto_reconciliation = d.pop("ARROW_AUTO_RECONCILIATION", UNSET)
+
+        arrow_sync_interval_hours = d.pop("ARROW_SYNC_INTERVAL_HOURS", UNSET)
+
+        arrow_consumption_sync_enabled = d.pop("ARROW_CONSUMPTION_SYNC_ENABLED", UNSET)
+
+        arrow_consumption_sync_interval_hours = d.pop("ARROW_CONSUMPTION_SYNC_INTERVAL_HOURS", UNSET)
+
+        arrow_billing_check_interval_hours = d.pop("ARROW_BILLING_CHECK_INTERVAL_HOURS", UNSET)
+
         slurm_policy_evaluation_log_retention_days = d.pop("SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS", UNSET)
 
         constance_settings = cls(
@@ -2163,6 +2203,11 @@ class ConstanceSettings:
             user_data_access_logging_enabled=user_data_access_logging_enabled,
             user_data_access_log_retention_days=user_data_access_log_retention_days,
             user_data_access_log_self_access=user_data_access_log_self_access,
+            arrow_auto_reconciliation=arrow_auto_reconciliation,
+            arrow_sync_interval_hours=arrow_sync_interval_hours,
+            arrow_consumption_sync_enabled=arrow_consumption_sync_enabled,
+            arrow_consumption_sync_interval_hours=arrow_consumption_sync_interval_hours,
+            arrow_billing_check_interval_hours=arrow_billing_check_interval_hours,
             slurm_policy_evaluation_log_retention_days=slurm_policy_evaluation_log_retention_days,
         )
 
