@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,14 +16,14 @@ class ProjectDigestConfigRequest:
     Attributes:
         is_enabled (Union[Unset, bool]):
         frequency (Union[Unset, FrequencyEnum]):
-        enabled_sections (Union[Unset, str]): List of section keys to include. Empty means all.
+        enabled_sections (Union[Unset, list[str]]):
         day_of_week (Union[Unset, int]): For weekly/biweekly: 0=Sunday..6=Saturday
         day_of_month (Union[Unset, int]): For monthly: day of month (1-28)
     """
 
     is_enabled: Union[Unset, bool] = UNSET
     frequency: Union[Unset, FrequencyEnum] = UNSET
-    enabled_sections: Union[Unset, str] = UNSET
+    enabled_sections: Union[Unset, list[str]] = UNSET
     day_of_week: Union[Unset, int] = UNSET
     day_of_month: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -35,7 +35,9 @@ class ProjectDigestConfigRequest:
         if not isinstance(self.frequency, Unset):
             frequency = self.frequency.value
 
-        enabled_sections = self.enabled_sections
+        enabled_sections: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.enabled_sections, Unset):
+            enabled_sections = self.enabled_sections
 
         day_of_week = self.day_of_week
 
@@ -69,7 +71,7 @@ class ProjectDigestConfigRequest:
         else:
             frequency = FrequencyEnum(_frequency)
 
-        enabled_sections = d.pop("enabled_sections", UNSET)
+        enabled_sections = cast(list[str], d.pop("enabled_sections", UNSET))
 
         day_of_week = d.pop("day_of_week", UNSET)
 
