@@ -1989,7 +1989,9 @@ from .publishing_metrics import PublishingMetrics
 from .pubsub_circuit_breaker_summary import PubsubCircuitBreakerSummary
 from .pubsub_metrics_summary import PubsubMetricsSummary
 from .pubsub_overview import PubsubOverview
+from .pull_conflict_response import PullConflictResponse
 from .pull_marketplace_script_resource_request import PullMarketplaceScriptResourceRequest
+from .pull_response import PullResponse
 from .qos_strategy_enum import QosStrategyEnum
 from .query_performance import QueryPerformance
 from .query_request import QueryRequest
@@ -2277,6 +2279,8 @@ from .roles_list_field_item import RolesListFieldItem
 from .roles_retrieve_field_item import RolesRetrieveFieldItem
 from .round_reviewer import RoundReviewer
 from .round_status import RoundStatus
+from .router_set_erred_response import RouterSetErredResponse
+from .router_set_ok_response import RouterSetOkResponse
 from .rule import Rule
 from .rule_plan_attributes import RulePlanAttributes
 from .rule_plan_limits import RulePlanLimits
@@ -2327,9 +2331,12 @@ from .service_settings_list_state_item import ServiceSettingsListStateItem
 from .service_settings_options import ServiceSettingsOptions
 from .service_settings_retrieve_field_item import ServiceSettingsRetrieveFieldItem
 from .service_settings_state_enum import ServiceSettingsStateEnum
+from .set_erred_request import SetErredRequest
+from .set_erred_response import SetErredResponse
 from .set_mtu import SetMtu
 from .set_mtu_request import SetMtuRequest
 from .set_offerings_username_request import SetOfferingsUsernameRequest
+from .set_ok_response import SetOkResponse
 from .set_token_quota_request import SetTokenQuotaRequest
 from .settings_metadata_response import SettingsMetadataResponse
 from .settings_metadata_response_settings_item import SettingsMetadataResponseSettingsItem
@@ -4419,7 +4426,9 @@ __all__ = (
     "PubsubCircuitBreakerSummary",
     "PubsubMetricsSummary",
     "PubsubOverview",
+    "PullConflictResponse",
     "PullMarketplaceScriptResourceRequest",
+    "PullResponse",
     "QosStrategyEnum",
     "QueryPerformance",
     "QueryRequest",
@@ -4695,6 +4704,8 @@ __all__ = (
     "RoleType",
     "RoundReviewer",
     "RoundStatus",
+    "RouterSetErredResponse",
+    "RouterSetOkResponse",
     "Rule",
     "RulePlanAttributes",
     "RulePlanLimits",
@@ -4745,9 +4756,12 @@ __all__ = (
     "ServiceSettingsOptions",
     "ServiceSettingsRetrieveFieldItem",
     "ServiceSettingsStateEnum",
+    "SetErredRequest",
+    "SetErredResponse",
     "SetMtu",
     "SetMtuRequest",
     "SetOfferingsUsernameRequest",
+    "SetOkResponse",
     "SettingsMetadataResponse",
     "SettingsMetadataResponseSettingsItem",
     "SetTokenQuotaRequest",
