@@ -126,6 +126,7 @@ from .auth_result_request import AuthResultRequest
 from .auth_result_state_enum import AuthResultStateEnum
 from .auth_result_uuid_request import AuthResultUUIDRequest
 from .auth_token import AuthToken
+from .availability_zone_response import AvailabilityZoneResponse
 from .available_arrow_customers_response import AvailableArrowCustomersResponse
 from .available_checklist import AvailableChecklist
 from .available_checklists_response import AvailableChecklistsResponse
@@ -483,6 +484,7 @@ from .create_manual_assignment_response import CreateManualAssignmentResponse
 from .create_manual_assignment_response_skipped_proposals_item import CreateManualAssignmentResponseSkippedProposalsItem
 from .create_router import CreateRouter
 from .create_router_request import CreateRouterRequest
+from .credentials_validation_response import CredentialsValidationResponse
 from .current_qos_status_enum import CurrentQosStatusEnum
 from .customer import Customer
 from .customer_billing_summary_billing_sync import CustomerBillingSummaryBillingSync
@@ -579,6 +581,9 @@ from .discounts_update_request_discounts import DiscountsUpdateRequestDiscounts
 from .discover_custom_fields_request_request import DiscoverCustomFieldsRequestRequest
 from .discover_customers_request_request import DiscoverCustomersRequestRequest
 from .discover_customers_response import DiscoverCustomersResponse
+from .discover_external_networks_request_request import DiscoverExternalNetworksRequestRequest
+from .discover_flavors_request_request import DiscoverFlavorsRequestRequest
+from .discover_instance_availability_zones_request_request import DiscoverInstanceAvailabilityZonesRequestRequest
 from .discover_licenses_response import DiscoverLicensesResponse
 from .discover_metadata_request_request import DiscoverMetadataRequestRequest
 from .discover_metadata_response import DiscoverMetadataResponse
@@ -586,6 +591,8 @@ from .discover_metadata_response_endpoints import DiscoverMetadataResponseEndpoi
 from .discover_priorities_request_request import DiscoverPrioritiesRequestRequest
 from .discover_projects_request_request import DiscoverProjectsRequestRequest
 from .discover_request_types_request_request import DiscoverRequestTypesRequestRequest
+from .discover_volume_availability_zones_request_request import DiscoverVolumeAvailabilityZonesRequestRequest
+from .discover_volume_types_request_request import DiscoverVolumeTypesRequestRequest
 from .disk_format_enum import DiskFormatEnum
 from .dlq_queue import DLQQueue
 from .dry_run import DryRun
@@ -661,6 +668,10 @@ from .external_link import ExternalLink
 from .external_link_request import ExternalLinkRequest
 from .external_link_request_form import ExternalLinkRequestForm
 from .external_link_request_multipart import ExternalLinkRequestMultipart
+from .external_network import ExternalNetwork
+from .external_network_response import ExternalNetworkResponse
+from .external_network_subnet_response import ExternalNetworkSubnetResponse
+from .external_subnet import ExternalSubnet
 from .feature_metadata_response import FeatureMetadataResponse
 from .feature_metadata_response_feature_enums import FeatureMetadataResponseFeatureEnums
 from .feature_metadata_response_feature_enums_additional_property import (
@@ -686,6 +697,7 @@ from .firecrest_job import FirecrestJob
 from .firecrest_job_request import FirecrestJobRequest
 from .firecrest_job_request_form import FirecrestJobRequestForm
 from .firecrest_job_request_multipart import FirecrestJobRequestMultipart
+from .flavor_response import FlavorResponse
 from .freeipa_profile import FreeipaProfile
 from .freeipa_profile_request import FreeipaProfileRequest
 from .frequency_enum import FrequencyEnum
@@ -1352,6 +1364,7 @@ from .open_stack_backup_restoration_request import OpenStackBackupRestorationReq
 from .open_stack_create_floating_ip_request import OpenStackCreateFloatingIPRequest
 from .open_stack_create_instance_port_request import OpenStackCreateInstancePortRequest
 from .open_stack_create_port_request import OpenStackCreatePortRequest
+from .open_stack_credentials_request import OpenStackCredentialsRequest
 from .open_stack_data_volume_request import OpenStackDataVolumeRequest
 from .open_stack_fixed_ip import OpenStackFixedIp
 from .open_stack_fixed_ip_request import OpenStackFixedIpRequest
@@ -1481,6 +1494,8 @@ from .openstack_backups_count_state_item import OpenstackBackupsCountStateItem
 from .openstack_backups_list_field_item import OpenstackBackupsListFieldItem
 from .openstack_backups_list_state_item import OpenstackBackupsListStateItem
 from .openstack_backups_retrieve_field_item import OpenstackBackupsRetrieveFieldItem
+from .openstack_external_networks_list_field_item import OpenstackExternalNetworksListFieldItem
+from .openstack_external_networks_retrieve_field_item import OpenstackExternalNetworksRetrieveFieldItem
 from .openstack_flavors_count_o_item import OpenstackFlavorsCountOItem
 from .openstack_flavors_list_field_item import OpenstackFlavorsListFieldItem
 from .openstack_flavors_list_o_item import OpenstackFlavorsListOItem
@@ -1778,6 +1793,7 @@ from .plugin_offering_type import PluginOfferingType
 from .policy_enum import PolicyEnum
 from .policy_period_enum import PolicyPeriodEnum
 from .policy_type_enum import PolicyTypeEnum
+from .preview_service_attributes_request_request import PreviewServiceAttributesRequestRequest
 from .preview_settings_request_request import PreviewSettingsRequestRequest
 from .preview_settings_response import PreviewSettingsResponse
 from .prices_update_request import PricesUpdateRequest
@@ -2310,7 +2326,11 @@ from .send_all_assignment_batches_response import SendAllAssignmentBatchesRespon
 from .send_assignment_batch_request import SendAssignmentBatchRequest
 from .send_assignment_batch_response import SendAssignmentBatchResponse
 from .send_invitations_response import SendInvitationsResponse
+from .server_info import ServerInfo
 from .service_account_state import ServiceAccountState
+from .service_attributes_preview import ServiceAttributesPreview
+from .service_attributes_preview_plugin_options import ServiceAttributesPreviewPluginOptions
+from .service_attributes_preview_service_attributes import ServiceAttributesPreviewServiceAttributes
 from .service_provider import ServiceProvider
 from .service_provider_access import ServiceProviderAccess
 from .service_provider_api_secret_code import ServiceProviderApiSecretCode
@@ -2594,6 +2614,7 @@ from .volume_attach_request import VolumeAttachRequest
 from .volume_type_enum import VolumeTypeEnum
 from .volume_type_mapping import VolumeTypeMapping
 from .volume_type_mapping_request import VolumeTypeMappingRequest
+from .volume_type_response import VolumeTypeResponse
 from .waldur_customer_brief import WaldurCustomerBrief
 from .waldur_field_suggestion import WaldurFieldSuggestion
 from .waldur_resource_for_linking import WaldurResourceForLinking
@@ -2731,6 +2752,7 @@ __all__ = (
     "AuthResultStateEnum",
     "AuthResultUUIDRequest",
     "AuthToken",
+    "AvailabilityZoneResponse",
     "AvailableArrowCustomersResponse",
     "AvailableChecklist",
     "AvailableChecklistsResponse",
@@ -3072,6 +3094,7 @@ __all__ = (
     "CreateManualAssignmentResponseSkippedProposalsItem",
     "CreateRouter",
     "CreateRouterRequest",
+    "CredentialsValidationResponse",
     "CurrentQosStatusEnum",
     "Customer",
     "CustomerBillingSummaryBillingSync",
@@ -3166,6 +3189,9 @@ __all__ = (
     "DiscoverCustomersRequestRequest",
     "DiscoverCustomersResponse",
     "DiscoverCustomFieldsRequestRequest",
+    "DiscoverExternalNetworksRequestRequest",
+    "DiscoverFlavorsRequestRequest",
+    "DiscoverInstanceAvailabilityZonesRequestRequest",
     "DiscoverLicensesResponse",
     "DiscoverMetadataRequestRequest",
     "DiscoverMetadataResponse",
@@ -3173,6 +3199,8 @@ __all__ = (
     "DiscoverPrioritiesRequestRequest",
     "DiscoverProjectsRequestRequest",
     "DiscoverRequestTypesRequestRequest",
+    "DiscoverVolumeAvailabilityZonesRequestRequest",
+    "DiscoverVolumeTypesRequestRequest",
     "DiskFormatEnum",
     "DLQQueue",
     "DryRun",
@@ -3246,6 +3274,10 @@ __all__ = (
     "ExternalLinkRequest",
     "ExternalLinkRequestForm",
     "ExternalLinkRequestMultipart",
+    "ExternalNetwork",
+    "ExternalNetworkResponse",
+    "ExternalNetworkSubnetResponse",
+    "ExternalSubnet",
     "FeatureMetadataResponse",
     "FeatureMetadataResponseFeatureEnums",
     "FeatureMetadataResponseFeatureEnumsAdditionalProperty",
@@ -3269,6 +3301,7 @@ __all__ = (
     "FirecrestJobRequest",
     "FirecrestJobRequestForm",
     "FirecrestJobRequestMultipart",
+    "FlavorResponse",
     "FreeipaProfile",
     "FreeipaProfileRequest",
     "FrequencyEnum",
@@ -3869,7 +3902,10 @@ __all__ = (
     "OpenStackCreateFloatingIPRequest",
     "OpenStackCreateInstancePortRequest",
     "OpenStackCreatePortRequest",
+    "OpenStackCredentialsRequest",
     "OpenStackDataVolumeRequest",
+    "OpenstackExternalNetworksListFieldItem",
+    "OpenstackExternalNetworksRetrieveFieldItem",
     "OpenStackFixedIp",
     "OpenStackFixedIpRequest",
     "OpenStackFlavor",
@@ -4241,6 +4277,7 @@ __all__ = (
     "PolicyEnum",
     "PolicyPeriodEnum",
     "PolicyTypeEnum",
+    "PreviewServiceAttributesRequestRequest",
     "PreviewSettingsRequestRequest",
     "PreviewSettingsResponse",
     "PricesUpdateRequest",
@@ -4735,7 +4772,11 @@ __all__ = (
     "SendAssignmentBatchRequest",
     "SendAssignmentBatchResponse",
     "SendInvitationsResponse",
+    "ServerInfo",
     "ServiceAccountState",
+    "ServiceAttributesPreview",
+    "ServiceAttributesPreviewPluginOptions",
+    "ServiceAttributesPreviewServiceAttributes",
     "ServiceProvider",
     "ServiceProviderAccess",
     "ServiceProviderApiSecretCode",
@@ -5007,6 +5048,7 @@ __all__ = (
     "VolumeTypeEnum",
     "VolumeTypeMapping",
     "VolumeTypeMappingRequest",
+    "VolumeTypeResponse",
     "WaldurCustomerBrief",
     "WaldurFieldSuggestion",
     "WaldurResourceForLinking",

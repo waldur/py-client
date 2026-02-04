@@ -1,26 +1,24 @@
 from http import HTTPStatus
 from typing import Any, Union
-from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.move_project_request import MoveProjectRequest
-from ...models.project import Project
+from ...models.credentials_validation_response import CredentialsValidationResponse
+from ...models.open_stack_credentials_request import OpenStackCredentialsRequest
 from ...types import Response
 
 
 def _get_kwargs(
-    uuid: UUID,
     *,
-    body: MoveProjectRequest,
+    body: OpenStackCredentialsRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/openportal-unmanaged-projects/{uuid}/move_project/",
+        "url": "/api/openstack/discovery/validate_credentials/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -31,17 +29,21 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Project:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> CredentialsValidationResponse:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = Project.from_dict(response.json())
+        response_200 = CredentialsValidationResponse.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Project]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[CredentialsValidationResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -51,30 +53,24 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MoveProjectRequest,
-) -> Response[Project]:
-    """Move project to another customer
-
-     Moves a project and its associated resources to a different customer. You can choose whether to
-    preserve existing project permissions for users. Terminated projects can also be moved.
+    body: OpenStackCredentialsRequest,
+) -> Response[CredentialsValidationResponse]:
+    """Validate OpenStack credentials without saving them.
 
     Args:
-        uuid (UUID):
-        body (MoveProjectRequest):
+        body (OpenStackCredentialsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Project]
+        Response[CredentialsValidationResponse]
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
         body=body,
     )
 
@@ -86,60 +82,48 @@ def sync_detailed(
 
 
 def sync(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MoveProjectRequest,
-) -> Project:
-    """Move project to another customer
-
-     Moves a project and its associated resources to a different customer. You can choose whether to
-    preserve existing project permissions for users. Terminated projects can also be moved.
+    body: OpenStackCredentialsRequest,
+) -> CredentialsValidationResponse:
+    """Validate OpenStack credentials without saving them.
 
     Args:
-        uuid (UUID):
-        body (MoveProjectRequest):
+        body (OpenStackCredentialsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Project
+        CredentialsValidationResponse
     """
 
     return sync_detailed(
-        uuid=uuid,
         client=client,
         body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MoveProjectRequest,
-) -> Response[Project]:
-    """Move project to another customer
-
-     Moves a project and its associated resources to a different customer. You can choose whether to
-    preserve existing project permissions for users. Terminated projects can also be moved.
+    body: OpenStackCredentialsRequest,
+) -> Response[CredentialsValidationResponse]:
+    """Validate OpenStack credentials without saving them.
 
     Args:
-        uuid (UUID):
-        body (MoveProjectRequest):
+        body (OpenStackCredentialsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Project]
+        Response[CredentialsValidationResponse]
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
         body=body,
     )
 
@@ -149,31 +133,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MoveProjectRequest,
-) -> Project:
-    """Move project to another customer
-
-     Moves a project and its associated resources to a different customer. You can choose whether to
-    preserve existing project permissions for users. Terminated projects can also be moved.
+    body: OpenStackCredentialsRequest,
+) -> CredentialsValidationResponse:
+    """Validate OpenStack credentials without saving them.
 
     Args:
-        uuid (UUID):
-        body (MoveProjectRequest):
+        body (OpenStackCredentialsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Project
+        CredentialsValidationResponse
     """
 
     return (
         await asyncio_detailed(
-            uuid=uuid,
             client=client,
             body=body,
         )

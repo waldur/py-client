@@ -58,9 +58,8 @@ def sync_detailed(
 ) -> Response[Project]:
     """Move project to another customer
 
-     Moves a project and its associated resources to a different customer. This is a staff-only action.
-    You can choose whether to preserve existing project permissions for users. Terminated projects can
-    also be moved.
+     Moves a project and its associated resources to a different customer. You can choose whether to
+    preserve existing project permissions for users. Terminated projects can also be moved.
 
     Args:
         uuid (UUID):
@@ -94,9 +93,8 @@ def sync(
 ) -> Project:
     """Move project to another customer
 
-     Moves a project and its associated resources to a different customer. This is a staff-only action.
-    You can choose whether to preserve existing project permissions for users. Terminated projects can
-    also be moved.
+     Moves a project and its associated resources to a different customer. You can choose whether to
+    preserve existing project permissions for users. Terminated projects can also be moved.
 
     Args:
         uuid (UUID):
@@ -125,9 +123,8 @@ async def asyncio_detailed(
 ) -> Response[Project]:
     """Move project to another customer
 
-     Moves a project and its associated resources to a different customer. This is a staff-only action.
-    You can choose whether to preserve existing project permissions for users. Terminated projects can
-    also be moved.
+     Moves a project and its associated resources to a different customer. You can choose whether to
+    preserve existing project permissions for users. Terminated projects can also be moved.
 
     Args:
         uuid (UUID):
@@ -159,9 +156,8 @@ async def asyncio(
 ) -> Project:
     """Move project to another customer
 
-     Moves a project and its associated resources to a different customer. This is a staff-only action.
-    You can choose whether to preserve existing project permissions for users. Terminated projects can
-    also be moved.
+     Moves a project and its associated resources to a different customer. You can choose whether to
+    preserve existing project permissions for users. Terminated projects can also be moved.
 
     Args:
         uuid (UUID):

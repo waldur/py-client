@@ -6,42 +6,51 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.move_project_request import MoveProjectRequest
-from ...models.project import Project
-from ...types import Response
+from ...models.external_network import ExternalNetwork
+from ...models.openstack_external_networks_retrieve_field_item import OpenstackExternalNetworksRetrieveFieldItem
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: MoveProjectRequest,
+    field: Union[Unset, list[OpenstackExternalNetworksRetrieveFieldItem]] = UNSET,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
+    params: dict[str, Any] = {}
+
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": f"/api/openportal-unmanaged-projects/{uuid}/move_project/",
+        "method": "get",
+        "url": f"/api/openstack-external-networks/{uuid}/",
+        "params": params,
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Project:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ExternalNetwork:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = Project.from_dict(response.json())
+        response_200 = ExternalNetwork.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Project]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[ExternalNetwork]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,28 +63,27 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MoveProjectRequest,
-) -> Response[Project]:
-    """Move project to another customer
+    field: Union[Unset, list[OpenstackExternalNetworksRetrieveFieldItem]] = UNSET,
+) -> Response[ExternalNetwork]:
+    """Get external network details
 
-     Moves a project and its associated resources to a different customer. You can choose whether to
-    preserve existing project permissions for users. Terminated projects can also be moved.
+     Retrieve details of a specific external network, including its subnets.
 
     Args:
         uuid (UUID):
-        body (MoveProjectRequest):
+        field (Union[Unset, list[OpenstackExternalNetworksRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Project]
+        Response[ExternalNetwork]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
+        field=field,
     )
 
     response = client.get_httpx_client().request(
@@ -89,29 +97,28 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MoveProjectRequest,
-) -> Project:
-    """Move project to another customer
+    field: Union[Unset, list[OpenstackExternalNetworksRetrieveFieldItem]] = UNSET,
+) -> ExternalNetwork:
+    """Get external network details
 
-     Moves a project and its associated resources to a different customer. You can choose whether to
-    preserve existing project permissions for users. Terminated projects can also be moved.
+     Retrieve details of a specific external network, including its subnets.
 
     Args:
         uuid (UUID):
-        body (MoveProjectRequest):
+        field (Union[Unset, list[OpenstackExternalNetworksRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Project
+        ExternalNetwork
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
-        body=body,
+        field=field,
     ).parsed
 
 
@@ -119,28 +126,27 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MoveProjectRequest,
-) -> Response[Project]:
-    """Move project to another customer
+    field: Union[Unset, list[OpenstackExternalNetworksRetrieveFieldItem]] = UNSET,
+) -> Response[ExternalNetwork]:
+    """Get external network details
 
-     Moves a project and its associated resources to a different customer. You can choose whether to
-    preserve existing project permissions for users. Terminated projects can also be moved.
+     Retrieve details of a specific external network, including its subnets.
 
     Args:
         uuid (UUID):
-        body (MoveProjectRequest):
+        field (Union[Unset, list[OpenstackExternalNetworksRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Project]
+        Response[ExternalNetwork]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
+        field=field,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -152,29 +158,28 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: MoveProjectRequest,
-) -> Project:
-    """Move project to another customer
+    field: Union[Unset, list[OpenstackExternalNetworksRetrieveFieldItem]] = UNSET,
+) -> ExternalNetwork:
+    """Get external network details
 
-     Moves a project and its associated resources to a different customer. You can choose whether to
-    preserve existing project permissions for users. Terminated projects can also be moved.
+     Retrieve details of a specific external network, including its subnets.
 
     Args:
         uuid (UUID):
-        body (MoveProjectRequest):
+        field (Union[Unset, list[OpenstackExternalNetworksRetrieveFieldItem]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Project
+        ExternalNetwork
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            body=body,
+            field=field,
         )
     ).parsed

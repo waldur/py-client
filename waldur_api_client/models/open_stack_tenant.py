@@ -53,6 +53,8 @@ class OpenStackTenant:
             in this tenant
         internal_network_id (Union[Unset, str]): ID of internal network in OpenStack tenant
         external_network_id (Union[Unset, str]): ID of external network connected to OpenStack tenant
+        external_network_ref_uuid (Union[Unset, UUID]):
+        external_network_ref_name (Union[Unset, str]):  Default: ''.
         user_username (Union[Unset, str]): Username of the tenant user
         user_password (Union[Unset, str]): Password of the tenant user
         quotas (Union[Unset, list['Quota']]):
@@ -99,6 +101,8 @@ class OpenStackTenant:
     availability_zone: Union[Unset, str] = UNSET
     internal_network_id: Union[Unset, str] = UNSET
     external_network_id: Union[Unset, str] = UNSET
+    external_network_ref_uuid: Union[Unset, UUID] = UNSET
+    external_network_ref_name: Union[Unset, str] = ""
     user_username: Union[Unset, str] = UNSET
     user_password: Union[Unset, str] = UNSET
     quotas: Union[Unset, list["Quota"]] = UNSET
@@ -200,6 +204,12 @@ class OpenStackTenant:
         internal_network_id = self.internal_network_id
 
         external_network_id = self.external_network_id
+
+        external_network_ref_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.external_network_ref_uuid, Unset):
+            external_network_ref_uuid = str(self.external_network_ref_uuid)
+
+        external_network_ref_name = self.external_network_ref_name
 
         user_username = self.user_username
 
@@ -337,6 +347,10 @@ class OpenStackTenant:
             field_dict["internal_network_id"] = internal_network_id
         if external_network_id is not UNSET:
             field_dict["external_network_id"] = external_network_id
+        if external_network_ref_uuid is not UNSET:
+            field_dict["external_network_ref_uuid"] = external_network_ref_uuid
+        if external_network_ref_name is not UNSET:
+            field_dict["external_network_ref_name"] = external_network_ref_name
         if user_username is not UNSET:
             field_dict["user_username"] = user_username
         if user_password is not UNSET:
@@ -482,6 +496,15 @@ class OpenStackTenant:
         internal_network_id = d.pop("internal_network_id", UNSET)
 
         external_network_id = d.pop("external_network_id", UNSET)
+
+        _external_network_ref_uuid = d.pop("external_network_ref_uuid", UNSET)
+        external_network_ref_uuid: Union[Unset, UUID]
+        if isinstance(_external_network_ref_uuid, Unset):
+            external_network_ref_uuid = UNSET
+        else:
+            external_network_ref_uuid = UUID(_external_network_ref_uuid)
+
+        external_network_ref_name = d.pop("external_network_ref_name", UNSET)
 
         user_username = d.pop("user_username", UNSET)
 
@@ -631,6 +654,8 @@ class OpenStackTenant:
             availability_zone=availability_zone,
             internal_network_id=internal_network_id,
             external_network_id=external_network_id,
+            external_network_ref_uuid=external_network_ref_uuid,
+            external_network_ref_name=external_network_ref_name,
             user_username=user_username,
             user_password=user_password,
             quotas=quotas,

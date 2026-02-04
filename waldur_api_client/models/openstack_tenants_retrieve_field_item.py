@@ -15,6 +15,8 @@ class OpenstackTenantsRetrieveFieldItem(str, Enum):
     ERROR_MESSAGE = "error_message"
     ERROR_TRACEBACK = "error_traceback"
     EXTERNAL_NETWORK_ID = "external_network_id"
+    EXTERNAL_NETWORK_REF_NAME = "external_network_ref_name"
+    EXTERNAL_NETWORK_REF_UUID = "external_network_ref_uuid"
     INTERNAL_NETWORK_ID = "internal_network_id"
     IS_LIMIT_BASED = "is_limit_based"
     IS_USAGE_BASED = "is_usage_based"
