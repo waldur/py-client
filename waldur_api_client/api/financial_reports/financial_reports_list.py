@@ -18,6 +18,7 @@ def _get_kwargs(
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -41,6 +42,8 @@ def _get_kwargs(
     params["backend_id"] = backend_id
 
     params["contact_details"] = contact_details
+
+    params["current_user_has_project_create_permission"] = current_user_has_project_create_permission
 
     params["name"] = name
 
@@ -116,6 +119,7 @@ def sync_detailed(
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -135,6 +139,7 @@ def sync_detailed(
         archived (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -161,6 +166,7 @@ def sync_detailed(
         archived=archived,
         backend_id=backend_id,
         contact_details=contact_details,
+        current_user_has_project_create_permission=current_user_has_project_create_permission,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
@@ -189,6 +195,7 @@ def sync(
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -208,6 +215,7 @@ def sync(
         archived (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -235,6 +243,7 @@ def sync(
         archived=archived,
         backend_id=backend_id,
         contact_details=contact_details,
+        current_user_has_project_create_permission=current_user_has_project_create_permission,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
@@ -257,6 +266,7 @@ async def asyncio_detailed(
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -276,6 +286,7 @@ async def asyncio_detailed(
         archived (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -302,6 +313,7 @@ async def asyncio_detailed(
         archived=archived,
         backend_id=backend_id,
         contact_details=contact_details,
+        current_user_has_project_create_permission=current_user_has_project_create_permission,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
@@ -328,6 +340,7 @@ async def asyncio(
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -347,6 +360,7 @@ async def asyncio(
         archived (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -375,6 +389,7 @@ async def asyncio(
             archived=archived,
             backend_id=backend_id,
             contact_details=contact_details,
+            current_user_has_project_create_permission=current_user_has_project_create_permission,
             name=name,
             name_exact=name_exact,
             native_name=native_name,
@@ -398,6 +413,7 @@ def sync_all(
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -421,6 +437,7 @@ def sync_all(
         archived (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -449,6 +466,7 @@ def sync_all(
         archived=archived,
         backend_id=backend_id,
         contact_details=contact_details,
+        current_user_has_project_create_permission=current_user_has_project_create_permission,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
@@ -510,6 +528,7 @@ async def asyncio_all(
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -533,6 +552,7 @@ async def asyncio_all(
         archived (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -561,6 +581,7 @@ async def asyncio_all(
         archived=archived,
         backend_id=backend_id,
         contact_details=contact_details,
+        current_user_has_project_create_permission=current_user_has_project_create_permission,
         name=name,
         name_exact=name_exact,
         native_name=native_name,

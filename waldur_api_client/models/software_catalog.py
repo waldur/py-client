@@ -27,6 +27,8 @@ class SoftwareCatalog:
         last_update_attempt (Union[None, datetime.datetime]):
         last_successful_update (Union[None, datetime.datetime]):
         package_count (int):
+        version_count (int):
+        target_count (int):
         catalog_type (Union[Unset, CatalogTypeEnum]):  Default: CatalogTypeEnum.BINARY_RUNTIME.
         source_url (Union[Unset, str]): Catalog source URL
         description (Union[Unset, str]):
@@ -45,6 +47,8 @@ class SoftwareCatalog:
     last_update_attempt: Union[None, datetime.datetime]
     last_successful_update: Union[None, datetime.datetime]
     package_count: int
+    version_count: int
+    target_count: int
     catalog_type: Union[Unset, CatalogTypeEnum] = CatalogTypeEnum.BINARY_RUNTIME
     source_url: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -82,6 +86,10 @@ class SoftwareCatalog:
 
         package_count = self.package_count
 
+        version_count = self.version_count
+
+        target_count = self.target_count
+
         catalog_type: Union[Unset, str] = UNSET
         if not isinstance(self.catalog_type, Unset):
             catalog_type = self.catalog_type.value
@@ -110,6 +118,8 @@ class SoftwareCatalog:
                 "last_update_attempt": last_update_attempt,
                 "last_successful_update": last_successful_update,
                 "package_count": package_count,
+                "version_count": version_count,
+                "target_count": target_count,
             }
         )
         if catalog_type is not UNSET:
@@ -176,6 +186,10 @@ class SoftwareCatalog:
 
         package_count = d.pop("package_count")
 
+        version_count = d.pop("version_count")
+
+        target_count = d.pop("target_count")
+
         _catalog_type = d.pop("catalog_type", UNSET)
         catalog_type: Union[Unset, CatalogTypeEnum]
         if isinstance(_catalog_type, Unset):
@@ -204,6 +218,8 @@ class SoftwareCatalog:
             last_update_attempt=last_update_attempt,
             last_successful_update=last_successful_update,
             package_count=package_count,
+            version_count=version_count,
+            target_count=target_count,
             catalog_type=catalog_type,
             source_url=source_url,
             description=description,

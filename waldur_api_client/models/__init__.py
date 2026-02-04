@@ -1135,6 +1135,8 @@ from .marketplace_service_providers_users_list_o_item import MarketplaceServiceP
 from .marketplace_site_agent_services_count_state_item import MarketplaceSiteAgentServicesCountStateItem
 from .marketplace_site_agent_services_list_state_item import MarketplaceSiteAgentServicesListStateItem
 from .marketplace_software_catalogs_count_o_item import MarketplaceSoftwareCatalogsCountOItem
+from .marketplace_software_catalogs_discover_count_o_item import MarketplaceSoftwareCatalogsDiscoverCountOItem
+from .marketplace_software_catalogs_discover_list_o_item import MarketplaceSoftwareCatalogsDiscoverListOItem
 from .marketplace_software_catalogs_list_o_item import MarketplaceSoftwareCatalogsListOItem
 from .marketplace_software_packages_count_o_item import MarketplaceSoftwarePackagesCountOItem
 from .marketplace_software_packages_list_o_item import MarketplaceSoftwarePackagesListOItem
@@ -1168,6 +1170,7 @@ from .move_resource_request import MoveResourceRequest
 from .my_assignment_batch import MyAssignmentBatch
 from .my_assignment_batch_detail import MyAssignmentBatchDetail
 from .my_assignment_item import MyAssignmentItem
+from .name_enum import NameEnum
 from .name_uuid import NameUUID
 from .nested_agent_processor import NestedAgentProcessor
 from .nested_agent_service import NestedAgentService
@@ -2403,6 +2406,8 @@ from .slurm_policy_thresholds import SlurmPolicyThresholds
 from .smax_web_hook_receiver import SmaxWebHookReceiver
 from .smax_web_hook_receiver_request import SmaxWebHookReceiverRequest
 from .software_catalog import SoftwareCatalog
+from .software_catalog_discover import SoftwareCatalogDiscover
+from .software_catalog_import_request import SoftwareCatalogImportRequest
 from .software_catalog_request import SoftwareCatalogRequest
 from .software_catalog_uuid import SoftwareCatalogUUID
 from .software_package import SoftwarePackage
@@ -3667,6 +3672,8 @@ __all__ = (
     "MarketplaceSiteAgentServicesCountStateItem",
     "MarketplaceSiteAgentServicesListStateItem",
     "MarketplaceSoftwareCatalogsCountOItem",
+    "MarketplaceSoftwareCatalogsDiscoverCountOItem",
+    "MarketplaceSoftwareCatalogsDiscoverListOItem",
     "MarketplaceSoftwareCatalogsListOItem",
     "MarketplaceSoftwarePackagesCountOItem",
     "MarketplaceSoftwarePackagesListOItem",
@@ -3700,6 +3707,7 @@ __all__ = (
     "MyAssignmentBatch",
     "MyAssignmentBatchDetail",
     "MyAssignmentItem",
+    "NameEnum",
     "NameUUID",
     "NestedAgentProcessor",
     "NestedAgentService",
@@ -4847,6 +4855,8 @@ __all__ = (
     "SmaxWebHookReceiver",
     "SmaxWebHookReceiverRequest",
     "SoftwareCatalog",
+    "SoftwareCatalogDiscover",
+    "SoftwareCatalogImportRequest",
     "SoftwareCatalogRequest",
     "SoftwareCatalogUUID",
     "SoftwarePackage",

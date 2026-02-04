@@ -21,6 +21,7 @@ def _get_kwargs(
     contact_details: Union[Unset, str] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -48,6 +49,8 @@ def _get_kwargs(
     params["created_after"] = created_after
 
     params["created_before"] = created_before
+
+    params["current_user_has_project_create_permission"] = current_user_has_project_create_permission
 
     params["name"] = name
 
@@ -126,6 +129,7 @@ def sync_detailed(
     contact_details: Union[Unset, str] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -151,6 +155,7 @@ def sync_detailed(
         contact_details (Union[Unset, str]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -180,6 +185,7 @@ def sync_detailed(
         contact_details=contact_details,
         created_after=created_after,
         created_before=created_before,
+        current_user_has_project_create_permission=current_user_has_project_create_permission,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
@@ -211,6 +217,7 @@ def sync(
     contact_details: Union[Unset, str] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -236,6 +243,7 @@ def sync(
         contact_details (Union[Unset, str]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -266,6 +274,7 @@ def sync(
         contact_details=contact_details,
         created_after=created_after,
         created_before=created_before,
+        current_user_has_project_create_permission=current_user_has_project_create_permission,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
@@ -291,6 +300,7 @@ async def asyncio_detailed(
     contact_details: Union[Unset, str] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -316,6 +326,7 @@ async def asyncio_detailed(
         contact_details (Union[Unset, str]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -345,6 +356,7 @@ async def asyncio_detailed(
         contact_details=contact_details,
         created_after=created_after,
         created_before=created_before,
+        current_user_has_project_create_permission=current_user_has_project_create_permission,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
@@ -374,6 +386,7 @@ async def asyncio(
     contact_details: Union[Unset, str] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -399,6 +412,7 @@ async def asyncio(
         contact_details (Union[Unset, str]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -430,6 +444,7 @@ async def asyncio(
             contact_details=contact_details,
             created_after=created_after,
             created_before=created_before,
+            current_user_has_project_create_permission=current_user_has_project_create_permission,
             name=name,
             name_exact=name_exact,
             native_name=native_name,
@@ -456,6 +471,7 @@ def sync_all(
     contact_details: Union[Unset, str] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -482,6 +498,7 @@ def sync_all(
         contact_details (Union[Unset, str]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -513,6 +530,7 @@ def sync_all(
         contact_details=contact_details,
         created_after=created_after,
         created_before=created_before,
+        current_user_has_project_create_permission=current_user_has_project_create_permission,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
@@ -577,6 +595,7 @@ async def asyncio_all(
     contact_details: Union[Unset, str] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
+    current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -603,6 +622,7 @@ async def asyncio_all(
         contact_details (Union[Unset, str]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
+        current_user_has_project_create_permission (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -634,6 +654,7 @@ async def asyncio_all(
         contact_details=contact_details,
         created_after=created_after,
         created_before=created_before,
+        current_user_has_project_create_permission=current_user_has_project_create_permission,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
