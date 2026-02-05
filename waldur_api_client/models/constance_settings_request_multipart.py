@@ -214,6 +214,8 @@ class ConstanceSettingsRequestMultipart:
         llm_token_limit_daily (Union[Unset, int]):
         llm_token_limit_weekly (Union[Unset, int]):
         llm_token_limit_monthly (Union[Unset, int]):
+        llm_chat_session_retention_days (Union[Unset, int]):
+        llm_chat_storage_enabled (Union[Unset, bool]):
         software_catalog_eessi_update_enabled (Union[Unset, bool]):
         software_catalog_eessi_version (Union[Unset, str]):
         software_catalog_eessi_api_url (Union[Unset, str]):
@@ -438,6 +440,8 @@ class ConstanceSettingsRequestMultipart:
     llm_token_limit_daily: Union[Unset, int] = UNSET
     llm_token_limit_weekly: Union[Unset, int] = UNSET
     llm_token_limit_monthly: Union[Unset, int] = UNSET
+    llm_chat_session_retention_days: Union[Unset, int] = UNSET
+    llm_chat_storage_enabled: Union[Unset, bool] = UNSET
     software_catalog_eessi_update_enabled: Union[Unset, bool] = UNSET
     software_catalog_eessi_version: Union[Unset, str] = UNSET
     software_catalog_eessi_api_url: Union[Unset, str] = UNSET
@@ -965,6 +969,10 @@ class ConstanceSettingsRequestMultipart:
 
         llm_token_limit_monthly = self.llm_token_limit_monthly
 
+        llm_chat_session_retention_days = self.llm_chat_session_retention_days
+
+        llm_chat_storage_enabled = self.llm_chat_storage_enabled
+
         software_catalog_eessi_update_enabled = self.software_catalog_eessi_update_enabled
 
         software_catalog_eessi_version = self.software_catalog_eessi_version
@@ -1420,6 +1428,10 @@ class ConstanceSettingsRequestMultipart:
             field_dict["LLM_TOKEN_LIMIT_WEEKLY"] = llm_token_limit_weekly
         if llm_token_limit_monthly is not UNSET:
             field_dict["LLM_TOKEN_LIMIT_MONTHLY"] = llm_token_limit_monthly
+        if llm_chat_session_retention_days is not UNSET:
+            field_dict["LLM_CHAT_SESSION_RETENTION_DAYS"] = llm_chat_session_retention_days
+        if llm_chat_storage_enabled is not UNSET:
+            field_dict["LLM_CHAT_STORAGE_ENABLED"] = llm_chat_storage_enabled
         if software_catalog_eessi_update_enabled is not UNSET:
             field_dict["SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED"] = software_catalog_eessi_update_enabled
         if software_catalog_eessi_version is not UNSET:
@@ -2423,6 +2435,19 @@ class ConstanceSettingsRequestMultipart:
         if not isinstance(self.llm_token_limit_monthly, Unset):
             files.append(("LLM_TOKEN_LIMIT_MONTHLY", (None, str(self.llm_token_limit_monthly).encode(), "text/plain")))
 
+        if not isinstance(self.llm_chat_session_retention_days, Unset):
+            files.append(
+                (
+                    "LLM_CHAT_SESSION_RETENTION_DAYS",
+                    (None, str(self.llm_chat_session_retention_days).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.llm_chat_storage_enabled, Unset):
+            files.append(
+                ("LLM_CHAT_STORAGE_ENABLED", (None, str(self.llm_chat_storage_enabled).encode(), "text/plain"))
+            )
+
         if not isinstance(self.software_catalog_eessi_update_enabled, Unset):
             files.append(
                 (
@@ -3236,6 +3261,10 @@ class ConstanceSettingsRequestMultipart:
 
         llm_token_limit_monthly = d.pop("LLM_TOKEN_LIMIT_MONTHLY", UNSET)
 
+        llm_chat_session_retention_days = d.pop("LLM_CHAT_SESSION_RETENTION_DAYS", UNSET)
+
+        llm_chat_storage_enabled = d.pop("LLM_CHAT_STORAGE_ENABLED", UNSET)
+
         software_catalog_eessi_update_enabled = d.pop("SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED", UNSET)
 
         software_catalog_eessi_version = d.pop("SOFTWARE_CATALOG_EESSI_VERSION", UNSET)
@@ -3491,6 +3520,8 @@ class ConstanceSettingsRequestMultipart:
             llm_token_limit_daily=llm_token_limit_daily,
             llm_token_limit_weekly=llm_token_limit_weekly,
             llm_token_limit_monthly=llm_token_limit_monthly,
+            llm_chat_session_retention_days=llm_chat_session_retention_days,
+            llm_chat_storage_enabled=llm_chat_storage_enabled,
             software_catalog_eessi_update_enabled=software_catalog_eessi_update_enabled,
             software_catalog_eessi_version=software_catalog_eessi_version,
             software_catalog_eessi_api_url=software_catalog_eessi_api_url,

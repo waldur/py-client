@@ -306,6 +306,8 @@ from .cascade_config_request import CascadeConfigRequest
 from .cascade_step import CascadeStep
 from .cascade_step_request import CascadeStepRequest
 from .cascade_step_type_enum import CascadeStepTypeEnum
+from .catalog_summary import CatalogSummary
+from .catalog_summary_request import CatalogSummaryRequest
 from .catalog_type_enum import CatalogTypeEnum
 from .category_column import CategoryColumn
 from .category_column_request import CategoryColumnRequest
@@ -343,9 +345,15 @@ from .celery_worker_pool_writes import CeleryWorkerPoolWrites
 from .celery_worker_stats import CeleryWorkerStats
 from .celery_worker_stats_rusage import CeleryWorkerStatsRusage
 from .celery_worker_stats_total import CeleryWorkerStatsTotal
+from .chat_messages_edit_body import ChatMessagesEditBody
 from .chat_request_request import ChatRequestRequest
 from .chat_response import ChatResponse
 from .chat_response_m import ChatResponseM
+from .chat_session import ChatSession
+from .chat_sessions_list_field_item import ChatSessionsListFieldItem
+from .chat_sessions_retrieve_field_item import ChatSessionsRetrieveFieldItem
+from .chat_threads_list_field_item import ChatThreadsListFieldItem
+from .chat_threads_retrieve_field_item import ChatThreadsRetrieveFieldItem
 from .chat_tools_execute_response_200 import ChatToolsExecuteResponse200
 from .check_unique_backend_id_request import CheckUniqueBackendIDRequest
 from .check_unique_backend_id_response import CheckUniqueBackendIDResponse
@@ -1152,7 +1160,10 @@ from .merged_plugin_options import MergedPluginOptions
 from .merged_plugin_options_request import MergedPluginOptionsRequest
 from .merged_secret_options import MergedSecretOptions
 from .merged_secret_options_request import MergedSecretOptionsRequest
+from .message import Message
+from .message_request import MessageRequest
 from .message_response import MessageResponse
+from .message_role_enum import MessageRoleEnum
 from .message_state_cache import MessageStateCache
 from .message_state_cache_filter import MessageStateCacheFilter
 from .message_template import MessageTemplate
@@ -1219,8 +1230,6 @@ from .nested_section_request import NestedSectionRequest
 from .nested_security_group_rule import NestedSecurityGroupRule
 from .nested_security_group_rule_request import NestedSecurityGroupRuleRequest
 from .nested_software_catalog import NestedSoftwareCatalog
-from .nested_software_catalog_catalog import NestedSoftwareCatalogCatalog
-from .nested_software_catalog_partition import NestedSoftwareCatalogPartition
 from .nested_software_catalog_request import NestedSoftwareCatalogRequest
 from .nested_software_target import NestedSoftwareTarget
 from .nested_software_target_request import NestedSoftwareTargetRequest
@@ -1592,6 +1601,8 @@ from .organizational_user import OrganizationalUser
 from .paid_request import PaidRequest
 from .paid_request_form import PaidRequestForm
 from .paid_request_multipart import PaidRequestMultipart
+from .partition_summary import PartitionSummary
+from .partition_summary_request import PartitionSummaryRequest
 from .password_change_request import PasswordChangeRequest
 from .patched_access_subnet_request import PatchedAccessSubnetRequest
 from .patched_admin_announcement_request import PatchedAdminAnnouncementRequest
@@ -1745,6 +1756,7 @@ from .patched_software_catalog_request import PatchedSoftwareCatalogRequest
 from .patched_software_package_request import PatchedSoftwarePackageRequest
 from .patched_tag_request import PatchedTagRequest
 from .patched_template_request import PatchedTemplateRequest
+from .patched_thread_session_request import PatchedThreadSessionRequest
 from .patched_user_agreement_request import PatchedUserAgreementRequest
 from .patched_user_info_request import PatchedUserInfoRequest
 from .patched_user_offering_consent_request import PatchedUserOfferingConsentRequest
@@ -2468,6 +2480,8 @@ from .template_request import TemplateRequest
 from .template_version import TemplateVersion
 from .tenant import Tenant
 from .tenant_security_group_update_request import TenantSecurityGroupUpdateRequest
+from .thread_session import ThreadSession
+from .thread_session_request import ThreadSessionRequest
 from .time_series_to_s_data import TimeSeriesToSData
 from .to_s_consent_dashboard import ToSConsentDashboard
 from .token_quota_usage_response import TokenQuotaUsageResponse
@@ -2927,6 +2941,8 @@ __all__ = (
     "CascadeStep",
     "CascadeStepRequest",
     "CascadeStepTypeEnum",
+    "CatalogSummary",
+    "CatalogSummaryRequest",
     "CatalogTypeEnum",
     "CategoryColumn",
     "CategoryColumnRequest",
@@ -2964,9 +2980,15 @@ __all__ = (
     "CeleryWorkerStats",
     "CeleryWorkerStatsRusage",
     "CeleryWorkerStatsTotal",
+    "ChatMessagesEditBody",
     "ChatRequestRequest",
     "ChatResponse",
     "ChatResponseM",
+    "ChatSession",
+    "ChatSessionsListFieldItem",
+    "ChatSessionsRetrieveFieldItem",
+    "ChatThreadsListFieldItem",
+    "ChatThreadsRetrieveFieldItem",
     "ChatToolsExecuteResponse200",
     "Checklist",
     "ChecklistCompletion",
@@ -3689,7 +3711,10 @@ __all__ = (
     "MergedPluginOptionsRequest",
     "MergedSecretOptions",
     "MergedSecretOptionsRequest",
+    "Message",
+    "MessageRequest",
     "MessageResponse",
+    "MessageRoleEnum",
     "MessageStateCache",
     "MessageStateCacheFilter",
     "MessageTemplate",
@@ -3756,8 +3781,6 @@ __all__ = (
     "NestedSecurityGroupRule",
     "NestedSecurityGroupRuleRequest",
     "NestedSoftwareCatalog",
-    "NestedSoftwareCatalogCatalog",
-    "NestedSoftwareCatalogPartition",
     "NestedSoftwareCatalogRequest",
     "NestedSoftwareTarget",
     "NestedSoftwareTargetRequest",
@@ -4093,6 +4116,8 @@ __all__ = (
     "PaidRequest",
     "PaidRequestForm",
     "PaidRequestMultipart",
+    "PartitionSummary",
+    "PartitionSummaryRequest",
     "PasswordChangeRequest",
     "PatchedAccessSubnetRequest",
     "PatchedAdminAnnouncementRequest",
@@ -4242,6 +4267,7 @@ __all__ = (
     "PatchedSoftwarePackageRequest",
     "PatchedTagRequest",
     "PatchedTemplateRequest",
+    "PatchedThreadSessionRequest",
     "PatchedUserAgreementRequest",
     "PatchedUserInfoRequest",
     "PatchedUserOfferingConsentRequest",
@@ -4915,6 +4941,8 @@ __all__ = (
     "TemplateVersion",
     "Tenant",
     "TenantSecurityGroupUpdateRequest",
+    "ThreadSession",
+    "ThreadSessionRequest",
     "TimeSeriesToSData",
     "TokenQuotaUsageResponse",
     "TokenRequest",

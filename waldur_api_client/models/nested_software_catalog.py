@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,8 +8,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.nested_software_catalog_catalog import NestedSoftwareCatalogCatalog
-    from ..models.nested_software_catalog_partition import NestedSoftwareCatalogPartition
+    from ..models.catalog_summary import CatalogSummary
+    from ..models.partition_summary import PartitionSummary
 
 
 T = TypeVar("T", bound="NestedSoftwareCatalog")
@@ -20,22 +20,24 @@ class NestedSoftwareCatalog:
     """
     Attributes:
         uuid (Union[Unset, UUID]):
-        catalog (Union[Unset, NestedSoftwareCatalogCatalog]):
+        catalog (Union[Unset, CatalogSummary]):
         enabled_cpu_family (Union[Unset, Any]): List of enabled CPU families: ['x86_64', 'aarch64']
         enabled_cpu_microarchitectures (Union[Unset, Any]): List of enabled CPU microarchitectures: ['generic', 'zen3']
         package_count (Union[Unset, int]):
-        partition (Union[Unset, NestedSoftwareCatalogPartition]):
+        partition (Union['PartitionSummary', None, Unset]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
-    catalog: Union[Unset, "NestedSoftwareCatalogCatalog"] = UNSET
+    catalog: Union[Unset, "CatalogSummary"] = UNSET
     enabled_cpu_family: Union[Unset, Any] = UNSET
     enabled_cpu_microarchitectures: Union[Unset, Any] = UNSET
     package_count: Union[Unset, int] = UNSET
-    partition: Union[Unset, "NestedSoftwareCatalogPartition"] = UNSET
+    partition: Union["PartitionSummary", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.partition_summary import PartitionSummary
+
         uuid: Union[Unset, str] = UNSET
         if not isinstance(self.uuid, Unset):
             uuid = str(self.uuid)
@@ -50,9 +52,13 @@ class NestedSoftwareCatalog:
 
         package_count = self.package_count
 
-        partition: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.partition, Unset):
+        partition: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.partition, Unset):
+            partition = UNSET
+        elif isinstance(self.partition, PartitionSummary):
             partition = self.partition.to_dict()
+        else:
+            partition = self.partition
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -74,8 +80,8 @@ class NestedSoftwareCatalog:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.nested_software_catalog_catalog import NestedSoftwareCatalogCatalog
-        from ..models.nested_software_catalog_partition import NestedSoftwareCatalogPartition
+        from ..models.catalog_summary import CatalogSummary
+        from ..models.partition_summary import PartitionSummary
 
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
@@ -86,11 +92,11 @@ class NestedSoftwareCatalog:
             uuid = UUID(_uuid)
 
         _catalog = d.pop("catalog", UNSET)
-        catalog: Union[Unset, NestedSoftwareCatalogCatalog]
+        catalog: Union[Unset, CatalogSummary]
         if isinstance(_catalog, Unset):
             catalog = UNSET
         else:
-            catalog = NestedSoftwareCatalogCatalog.from_dict(_catalog)
+            catalog = CatalogSummary.from_dict(_catalog)
 
         enabled_cpu_family = d.pop("enabled_cpu_family", UNSET)
 
@@ -98,12 +104,22 @@ class NestedSoftwareCatalog:
 
         package_count = d.pop("package_count", UNSET)
 
-        _partition = d.pop("partition", UNSET)
-        partition: Union[Unset, NestedSoftwareCatalogPartition]
-        if isinstance(_partition, Unset):
-            partition = UNSET
-        else:
-            partition = NestedSoftwareCatalogPartition.from_dict(_partition)
+        def _parse_partition(data: object) -> Union["PartitionSummary", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                partition_type_1 = PartitionSummary.from_dict(data)
+
+                return partition_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["PartitionSummary", None, Unset], data)
+
+        partition = _parse_partition(d.pop("partition", UNSET))
 
         nested_software_catalog = cls(
             uuid=uuid,

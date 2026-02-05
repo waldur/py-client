@@ -1,32 +1,35 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="NestedSoftwareCatalogCatalog")
+T = TypeVar("T", bound="CatalogSummary")
 
 
 @_attrs_define
-class NestedSoftwareCatalogCatalog:
+class CatalogSummary:
     """
     Attributes:
-        uuid (Union[Unset, str]):
-        name (Union[Unset, str]):
-        version (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        name (Union[Unset, str]): Catalog name (e.g., EESSI, Spack)
+        version (Union[Unset, str]): Catalog version (e.g., 2023.06, 0.21.0)
         description (Union[Unset, str]):
     """
 
-    uuid: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
     name: Union[Unset, str] = UNSET
     version: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = self.uuid
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         name = self.name
 
@@ -51,7 +54,12 @@ class NestedSoftwareCatalogCatalog:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = d.pop("uuid", UNSET)
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
         name = d.pop("name", UNSET)
 
@@ -59,15 +67,15 @@ class NestedSoftwareCatalogCatalog:
 
         description = d.pop("description", UNSET)
 
-        nested_software_catalog_catalog = cls(
+        catalog_summary = cls(
             uuid=uuid,
             name=name,
             version=version,
             description=description,
         )
 
-        nested_software_catalog_catalog.additional_properties = d
-        return nested_software_catalog_catalog
+        catalog_summary.additional_properties = d
+        return catalog_summary
 
     @property
     def additional_keys(self) -> list[str]:

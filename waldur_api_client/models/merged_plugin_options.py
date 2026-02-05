@@ -1,10 +1,8 @@
-import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..models.account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
 from ..models.deployment_mode_enum import DeploymentModeEnum
@@ -27,8 +25,8 @@ class MergedPluginOptions:
             termination offset in days
         is_resource_termination_date_required (Union[Unset, bool]): If set to True, resource termination date is
             required
-        latest_date_for_resource_termination (Union[Unset, datetime.date]): If set, it will be used as a latest date for
-            resource termination
+        latest_date_for_resource_termination (Union[Unset, str]): If set, it will be used as a latest date for resource
+            termination. Format: YYYY-MM-DD
         auto_approve_in_service_provider_projects (Union[Unset, bool]): Skip approval of public offering belonging to
             the same organization under which the request is done
         disable_autoapprove (Union[Unset, bool]): If set to True, orders for this offering will always require manual
@@ -122,7 +120,7 @@ class MergedPluginOptions:
     max_resource_termination_offset_in_days: Union[Unset, int] = UNSET
     default_resource_termination_offset_in_days: Union[Unset, int] = UNSET
     is_resource_termination_date_required: Union[Unset, bool] = UNSET
-    latest_date_for_resource_termination: Union[Unset, datetime.date] = UNSET
+    latest_date_for_resource_termination: Union[Unset, str] = UNSET
     auto_approve_in_service_provider_projects: Union[Unset, bool] = UNSET
     disable_autoapprove: Union[Unset, bool] = UNSET
     supports_downscaling: Union[Unset, bool] = UNSET
@@ -197,9 +195,7 @@ class MergedPluginOptions:
 
         is_resource_termination_date_required = self.is_resource_termination_date_required
 
-        latest_date_for_resource_termination: Union[Unset, str] = UNSET
-        if not isinstance(self.latest_date_for_resource_termination, Unset):
-            latest_date_for_resource_termination = self.latest_date_for_resource_termination.isoformat()
+        latest_date_for_resource_termination = self.latest_date_for_resource_termination
 
         auto_approve_in_service_provider_projects = self.auto_approve_in_service_provider_projects
 
@@ -496,12 +492,7 @@ class MergedPluginOptions:
 
         is_resource_termination_date_required = d.pop("is_resource_termination_date_required", UNSET)
 
-        _latest_date_for_resource_termination = d.pop("latest_date_for_resource_termination", UNSET)
-        latest_date_for_resource_termination: Union[Unset, datetime.date]
-        if isinstance(_latest_date_for_resource_termination, Unset):
-            latest_date_for_resource_termination = UNSET
-        else:
-            latest_date_for_resource_termination = isoparse(_latest_date_for_resource_termination).date()
+        latest_date_for_resource_termination = d.pop("latest_date_for_resource_termination", UNSET)
 
         auto_approve_in_service_provider_projects = d.pop("auto_approve_in_service_provider_projects", UNSET)
 
