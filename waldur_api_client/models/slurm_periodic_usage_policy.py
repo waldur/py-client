@@ -36,6 +36,7 @@ class SlurmPeriodicUsagePolicy:
         fired_datetime (datetime.datetime):
         component_limits_set (list['NestedOfferingComponentLimit']):
         period_name (str):
+        warnings (list[str]): Warnings about misconfiguration, e.g. missing site agent queue registration.
         options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
         organization_groups (Union[Unset, list[str]]):
         apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
@@ -66,6 +67,7 @@ class SlurmPeriodicUsagePolicy:
     fired_datetime: datetime.datetime
     component_limits_set: list["NestedOfferingComponentLimit"]
     period_name: str
+    warnings: list[str]
     options: Union[Unset, Any] = UNSET
     organization_groups: Union[Unset, list[str]] = UNSET
     apply_to_all: Union[Unset, bool] = UNSET
@@ -109,6 +111,8 @@ class SlurmPeriodicUsagePolicy:
             component_limits_set.append(component_limits_set_item)
 
         period_name = self.period_name
+
+        warnings = self.warnings
 
         options = self.options
 
@@ -159,6 +163,7 @@ class SlurmPeriodicUsagePolicy:
                 "fired_datetime": fired_datetime,
                 "component_limits_set": component_limits_set,
                 "period_name": period_name,
+                "warnings": warnings,
             }
         )
         if options is not UNSET:
@@ -224,6 +229,8 @@ class SlurmPeriodicUsagePolicy:
 
         period_name = d.pop("period_name")
 
+        warnings = cast(list[str], d.pop("warnings"))
+
         options = d.pop("options", UNSET)
 
         organization_groups = cast(list[str], d.pop("organization_groups", UNSET))
@@ -277,6 +284,7 @@ class SlurmPeriodicUsagePolicy:
             fired_datetime=fired_datetime,
             component_limits_set=component_limits_set,
             period_name=period_name,
+            warnings=warnings,
             options=options,
             organization_groups=organization_groups,
             apply_to_all=apply_to_all,

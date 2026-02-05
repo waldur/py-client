@@ -112,6 +112,8 @@ class MergedPluginOptionsRequest:
             UI Default: False.
         backend_id_display_label (Union[Unset, str]): Label used by UI for showing value of the backend_id Default:
             'Backend ID'.
+        disabled_resource_actions (Union[Unset, list[str]]): List of disabled marketplace resource actions for this
+            offering.
     """
 
     auto_approve_remote_orders: Union[Unset, bool] = UNSET
@@ -179,6 +181,7 @@ class MergedPluginOptionsRequest:
     auto_approve_marketplace_script: Union[Unset, bool] = True
     highlight_backend_id_display: Union[Unset, bool] = False
     backend_id_display_label: Union[Unset, str] = "Backend ID"
+    disabled_resource_actions: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -326,6 +329,10 @@ class MergedPluginOptionsRequest:
 
         backend_id_display_label = self.backend_id_display_label
 
+        disabled_resource_actions: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.disabled_resource_actions, Unset):
+            disabled_resource_actions = self.disabled_resource_actions
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -469,6 +476,8 @@ class MergedPluginOptionsRequest:
             field_dict["highlight_backend_id_display"] = highlight_backend_id_display
         if backend_id_display_label is not UNSET:
             field_dict["backend_id_display_label"] = backend_id_display_label
+        if disabled_resource_actions is not UNSET:
+            field_dict["disabled_resource_actions"] = disabled_resource_actions
 
         return field_dict
 
@@ -648,6 +657,8 @@ class MergedPluginOptionsRequest:
 
         backend_id_display_label = d.pop("backend_id_display_label", UNSET)
 
+        disabled_resource_actions = cast(list[str], d.pop("disabled_resource_actions", UNSET))
+
         merged_plugin_options_request = cls(
             auto_approve_remote_orders=auto_approve_remote_orders,
             resource_expiration_threshold=resource_expiration_threshold,
@@ -712,6 +723,7 @@ class MergedPluginOptionsRequest:
             auto_approve_marketplace_script=auto_approve_marketplace_script,
             highlight_backend_id_display=highlight_backend_id_display,
             backend_id_display_label=backend_id_display_label,
+            disabled_resource_actions=disabled_resource_actions,
         )
 
         merged_plugin_options_request.additional_properties = d
