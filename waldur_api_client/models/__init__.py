@@ -1579,6 +1579,7 @@ from .orcid_callback_request import OrcidCallbackRequest
 from .orcid_disconnect_response import OrcidDisconnectResponse
 from .orcid_sync_response import OrcidSyncResponse
 from .orcid_sync_response_imported import OrcidSyncResponseImported
+from .order_approve_by_provider_request import OrderApproveByProviderRequest
 from .order_attachment import OrderAttachment
 from .order_attachment_request import OrderAttachmentRequest
 from .order_attachment_request_form import OrderAttachmentRequestForm
@@ -4105,6 +4106,7 @@ __all__ = (
     "OrcidDisconnectResponse",
     "OrcidSyncResponse",
     "OrcidSyncResponseImported",
+    "OrderApproveByProviderRequest",
     "OrderAttachment",
     "OrderAttachmentRequest",
     "OrderAttachmentRequestForm",
