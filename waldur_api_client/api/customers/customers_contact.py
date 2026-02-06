@@ -1,27 +1,26 @@
 from http import HTTPStatus
-from typing import Any, Union, cast
+from typing import Any, Union
 from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.order_uuid import OrderUUID
-from ...models.resource_options_request import ResourceOptionsRequest
-from ...models.resource_response_status import ResourceResponseStatus
+from ...models.customer_contact_update import CustomerContactUpdate
+from ...models.customer_contact_update_request import CustomerContactUpdateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ResourceOptionsRequest,
+    body: CustomerContactUpdateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/marketplace-provider-resources/{uuid}/update_options/",
+        "url": f"/api/customers/{uuid}/contact/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -32,28 +31,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[Any, OrderUUID, ResourceResponseStatus]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> CustomerContactUpdate:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ResourceResponseStatus.from_dict(response.json())
+        response_200 = CustomerContactUpdate.from_dict(response.json())
 
         return response_200
-    if response.status_code == 201:
-        response_201 = OrderUUID.from_dict(response.json())
-
-        return response_201
-    if response.status_code == 409:
-        response_409 = cast(Any, None)
-        return response_409
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, OrderUUID, ResourceResponseStatus]]:
+) -> Response[CustomerContactUpdate]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -66,23 +56,23 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceOptionsRequest,
-) -> Response[Union[Any, OrderUUID, ResourceResponseStatus]]:
-    """Update resource options
+    body: CustomerContactUpdateRequest,
+) -> Response[CustomerContactUpdate]:
+    """Update customer contact details
 
-     Updates the options of a resource. If the offering is configured to create orders for option
-    changes, a new UPDATE order will be created. Otherwise, the options are updated directly.
+     Update organization contact information. Requires CUSTOMER_CONTACT_UPDATE or CUSTOMER.UPDATE
+    permission.
 
     Args:
         uuid (UUID):
-        body (ResourceOptionsRequest):
+        body (CustomerContactUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, OrderUUID, ResourceResponseStatus]]
+        Response[CustomerContactUpdate]
     """
 
     kwargs = _get_kwargs(
@@ -101,23 +91,23 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceOptionsRequest,
-) -> Union[Any, OrderUUID, ResourceResponseStatus]:
-    """Update resource options
+    body: CustomerContactUpdateRequest,
+) -> CustomerContactUpdate:
+    """Update customer contact details
 
-     Updates the options of a resource. If the offering is configured to create orders for option
-    changes, a new UPDATE order will be created. Otherwise, the options are updated directly.
+     Update organization contact information. Requires CUSTOMER_CONTACT_UPDATE or CUSTOMER.UPDATE
+    permission.
 
     Args:
         uuid (UUID):
-        body (ResourceOptionsRequest):
+        body (CustomerContactUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, OrderUUID, ResourceResponseStatus]
+        CustomerContactUpdate
     """
 
     return sync_detailed(
@@ -131,23 +121,23 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceOptionsRequest,
-) -> Response[Union[Any, OrderUUID, ResourceResponseStatus]]:
-    """Update resource options
+    body: CustomerContactUpdateRequest,
+) -> Response[CustomerContactUpdate]:
+    """Update customer contact details
 
-     Updates the options of a resource. If the offering is configured to create orders for option
-    changes, a new UPDATE order will be created. Otherwise, the options are updated directly.
+     Update organization contact information. Requires CUSTOMER_CONTACT_UPDATE or CUSTOMER.UPDATE
+    permission.
 
     Args:
         uuid (UUID):
-        body (ResourceOptionsRequest):
+        body (CustomerContactUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, OrderUUID, ResourceResponseStatus]]
+        Response[CustomerContactUpdate]
     """
 
     kwargs = _get_kwargs(
@@ -164,23 +154,23 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceOptionsRequest,
-) -> Union[Any, OrderUUID, ResourceResponseStatus]:
-    """Update resource options
+    body: CustomerContactUpdateRequest,
+) -> CustomerContactUpdate:
+    """Update customer contact details
 
-     Updates the options of a resource. If the offering is configured to create orders for option
-    changes, a new UPDATE order will be created. Otherwise, the options are updated directly.
+     Update organization contact information. Requires CUSTOMER_CONTACT_UPDATE or CUSTOMER.UPDATE
+    permission.
 
     Args:
         uuid (UUID):
-        body (ResourceOptionsRequest):
+        body (CustomerContactUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, OrderUUID, ResourceResponseStatus]
+        CustomerContactUpdate
     """
 
     return (

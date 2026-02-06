@@ -500,6 +500,8 @@ from .customer_billing_summary_consumption_record import CustomerBillingSummaryC
 from .customer_billing_summary_response import CustomerBillingSummaryResponse
 from .customer_component_usage_policy import CustomerComponentUsagePolicy
 from .customer_component_usage_policy_request import CustomerComponentUsagePolicyRequest
+from .customer_contact_update import CustomerContactUpdate
+from .customer_contact_update_request import CustomerContactUpdateRequest
 from .customer_credit import CustomerCredit
 from .customer_credit_consumption import CustomerCreditConsumption
 from .customer_credit_request import CustomerCreditRequest
@@ -3129,6 +3131,8 @@ __all__ = (
     "CustomerBillingSummaryResponse",
     "CustomerComponentUsagePolicy",
     "CustomerComponentUsagePolicyRequest",
+    "CustomerContactUpdate",
+    "CustomerContactUpdateRequest",
     "CustomerCredit",
     "CustomerCreditConsumption",
     "CustomerCreditRequest",
