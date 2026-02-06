@@ -1,6 +1,7 @@
 import datetime
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -25,6 +26,7 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -59,6 +61,11 @@ def _get_kwargs(
         json_urgency = urgency.value
 
     params["urgency"] = json_urgency
+
+    json_user_uuid: Union[Unset, str] = UNSET
+    if not isinstance(user_uuid, Unset):
+        json_user_uuid = str(user_uuid)
+    params["user_uuid"] = json_user_uuid
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -111,6 +118,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["UserAction"]]:
     """
     Args:
@@ -125,6 +133,7 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         urgency (Union[Unset, UserActionsListUrgency]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -146,6 +155,7 @@ def sync_detailed(
         page=page,
         page_size=page_size,
         urgency=urgency,
+        user_uuid=user_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -169,6 +179,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserAction"]:
     """
     Args:
@@ -183,6 +194,7 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         urgency (Union[Unset, UserActionsListUrgency]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -205,6 +217,7 @@ def sync(
         page=page,
         page_size=page_size,
         urgency=urgency,
+        user_uuid=user_uuid,
     ).parsed
 
 
@@ -222,6 +235,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["UserAction"]]:
     """
     Args:
@@ -236,6 +250,7 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         urgency (Union[Unset, UserActionsListUrgency]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -257,6 +272,7 @@ async def asyncio_detailed(
         page=page,
         page_size=page_size,
         urgency=urgency,
+        user_uuid=user_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -278,6 +294,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserAction"]:
     """
     Args:
@@ -292,6 +309,7 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         urgency (Union[Unset, UserActionsListUrgency]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -315,6 +333,7 @@ async def asyncio(
             page=page,
             page_size=page_size,
             urgency=urgency,
+            user_uuid=user_uuid,
         )
     ).parsed
 
@@ -331,6 +350,7 @@ def sync_all(
     o: Union[Unset, str] = UNSET,
     overdue: Union[Unset, bool] = UNSET,
     urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserAction"]:
     """Get All Pages
 
@@ -349,6 +369,7 @@ def sync_all(
         o (Union[Unset, str]):
         overdue (Union[Unset, bool]):
         urgency (Union[Unset, UserActionsListUrgency]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -372,6 +393,7 @@ def sync_all(
         o=o,
         overdue=overdue,
         urgency=urgency,
+        user_uuid=user_uuid,
     )
 
     # Set page_size to maximum
@@ -428,6 +450,7 @@ async def asyncio_all(
     o: Union[Unset, str] = UNSET,
     overdue: Union[Unset, bool] = UNSET,
     urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserAction"]:
     """Get All Pages (Async)
 
@@ -446,6 +469,7 @@ async def asyncio_all(
         o (Union[Unset, str]):
         overdue (Union[Unset, bool]):
         urgency (Union[Unset, UserActionsListUrgency]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -469,6 +493,7 @@ async def asyncio_all(
         o=o,
         overdue=overdue,
         urgency=urgency,
+        user_uuid=user_uuid,
     )
 
     # Set page_size to maximum

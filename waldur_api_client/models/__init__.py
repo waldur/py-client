@@ -766,6 +766,10 @@ from .invitation_check import InvitationCheck
 from .invitation_coi_configuration import InvitationCOIConfiguration
 from .invitation_decline_request import InvitationDeclineRequest
 from .invitation_decline_response import InvitationDeclineResponse
+from .invitation_duplicate import InvitationDuplicate
+from .invitation_duplicate_check_item_request import InvitationDuplicateCheckItemRequest
+from .invitation_duplicate_check_request import InvitationDuplicateCheckRequest
+from .invitation_duplicate_check_response import InvitationDuplicateCheckResponse
 from .invitation_proposal_disclosure_enum import InvitationProposalDisclosureEnum
 from .invitation_proposal_summary import InvitationProposalSummary
 from .invitation_request import InvitationRequest
@@ -2174,6 +2178,10 @@ from .remote_synchronisation_request import RemoteSynchronisationRequest
 from .remove_offering_component_request import RemoveOfferingComponentRequest
 from .remove_partition_request import RemovePartitionRequest
 from .remove_software_catalog_request import RemoveSoftwareCatalogRequest
+from .renewal_estimate_component import RenewalEstimateComponent
+from .renewal_estimate_request_request import RenewalEstimateRequestRequest
+from .renewal_estimate_request_request_limits import RenewalEstimateRequestRequestLimits
+from .renewal_estimate_response import RenewalEstimateResponse
 from .replication_stats import ReplicationStats
 from .report_section import ReportSection
 from .report_section_request import ReportSectionRequest
@@ -2343,6 +2351,7 @@ from .send_all_assignment_batches_response import SendAllAssignmentBatchesRespon
 from .send_assignment_batch_request import SendAssignmentBatchRequest
 from .send_assignment_batch_response import SendAssignmentBatchResponse
 from .send_invitations_response import SendInvitationsResponse
+from .send_notification_response import SendNotificationResponse
 from .server_info import ServerInfo
 from .service_account_state import ServiceAccountState
 from .service_attributes_preview import ServiceAttributesPreview
@@ -3389,6 +3398,10 @@ __all__ = (
     "InvitationCOIConfiguration",
     "InvitationDeclineRequest",
     "InvitationDeclineResponse",
+    "InvitationDuplicate",
+    "InvitationDuplicateCheckItemRequest",
+    "InvitationDuplicateCheckRequest",
+    "InvitationDuplicateCheckResponse",
     "InvitationProposalDisclosureEnum",
     "InvitationProposalSummary",
     "InvitationRequest",
@@ -4641,6 +4654,10 @@ __all__ = (
     "RemoveOfferingComponentRequest",
     "RemovePartitionRequest",
     "RemoveSoftwareCatalogRequest",
+    "RenewalEstimateComponent",
+    "RenewalEstimateRequestRequest",
+    "RenewalEstimateRequestRequestLimits",
+    "RenewalEstimateResponse",
     "ReplicationStats",
     "ReportSection",
     "ReportSectionRequest",
@@ -4810,6 +4827,7 @@ __all__ = (
     "SendAssignmentBatchRequest",
     "SendAssignmentBatchResponse",
     "SendInvitationsResponse",
+    "SendNotificationResponse",
     "ServerInfo",
     "ServiceAccountState",
     "ServiceAttributesPreview",
