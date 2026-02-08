@@ -50,6 +50,8 @@ class OfferingUser:
         user_civil_number (Union[None, Unset, str]):
         user_birth_date (Union[None, Unset, datetime.date]):
         user_identity_source (Union[Unset, str]): Indicates what identity provider was used.
+        user_active_isds (Union[Unset, Any]): List of ISDs that have asserted this user exists. User is deactivated when
+            this becomes empty.
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
@@ -95,6 +97,7 @@ class OfferingUser:
     user_civil_number: Union[None, Unset, str] = UNSET
     user_birth_date: Union[None, Unset, datetime.date] = UNSET
     user_identity_source: Union[Unset, str] = UNSET
+    user_active_isds: Union[Unset, Any] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     modified: Union[Unset, datetime.datetime] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
@@ -192,6 +195,8 @@ class OfferingUser:
 
         user_identity_source = self.user_identity_source
 
+        user_active_isds = self.user_active_isds
+
         created: Union[Unset, str] = UNSET
         if not isinstance(self.created, Unset):
             created = self.created.isoformat()
@@ -287,6 +292,8 @@ class OfferingUser:
             field_dict["user_birth_date"] = user_birth_date
         if user_identity_source is not UNSET:
             field_dict["user_identity_source"] = user_identity_source
+        if user_active_isds is not UNSET:
+            field_dict["user_active_isds"] = user_active_isds
         if created is not UNSET:
             field_dict["created"] = created
         if modified is not UNSET:
@@ -432,6 +439,8 @@ class OfferingUser:
 
         user_identity_source = d.pop("user_identity_source", UNSET)
 
+        user_active_isds = d.pop("user_active_isds", UNSET)
+
         _created = d.pop("created", UNSET)
         created: Union[Unset, datetime.datetime]
         if isinstance(_created, Unset):
@@ -519,6 +528,7 @@ class OfferingUser:
             user_civil_number=user_civil_number,
             user_birth_date=user_birth_date,
             user_identity_source=user_identity_source,
+            user_active_isds=user_active_isds,
             created=created,
             modified=modified,
             customer_uuid=customer_uuid,

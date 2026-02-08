@@ -2,9 +2,11 @@ from enum import Enum
 
 
 class UsersRetrieveFieldItem(str, Enum):
+    ACTIVE_ISDS = "active_isds"
     AFFILIATIONS = "affiliations"
     AGREEMENT_DATE = "agreement_date"
     AGREE_WITH_POLICY = "agree_with_policy"
+    ATTRIBUTE_SOURCES = "attribute_sources"
     BIRTH_DATE = "birth_date"
     CIVIL_NUMBER = "civil_number"
     COUNTRY_OF_RESIDENCE = "country_of_residence"
@@ -24,10 +26,12 @@ class UsersRetrieveFieldItem(str, Enum):
     IMAGE = "image"
     IP_ADDRESS = "ip_address"
     IS_ACTIVE = "is_active"
+    IS_IDENTITY_MANAGER = "is_identity_manager"
     IS_STAFF = "is_staff"
     IS_SUPPORT = "is_support"
     JOB_TITLE = "job_title"
     LAST_NAME = "last_name"
+    MANAGED_ISDS = "managed_isds"
     NATIONALITIES = "nationalities"
     NATIONALITY = "nationality"
     NATIVE_NAME = "native_name"

@@ -120,6 +120,7 @@ from .attachment import Attachment
 from .attachment_request import AttachmentRequest
 from .attachment_request_form import AttachmentRequestForm
 from .attachment_request_multipart import AttachmentRequestMultipart
+from .attribute_source_detail import AttributeSourceDetail
 from .auth_method_enum import AuthMethodEnum
 from .auth_result import AuthResult
 from .auth_result_request import AuthResultRequest
@@ -735,6 +736,14 @@ from .guest_os_enum import GuestOsEnum
 from .guest_power_state_enum import GuestPowerStateEnum
 from .hooks_web_count_content_type import HooksWebCountContentType
 from .hooks_web_list_content_type import HooksWebListContentType
+from .identity_bridge_remove_request import IdentityBridgeRemoveRequest
+from .identity_bridge_remove_response import IdentityBridgeRemoveResponse
+from .identity_bridge_request_request import IdentityBridgeRequestRequest
+from .identity_bridge_response import IdentityBridgeResponse
+from .identity_bridge_stats import IdentityBridgeStats
+from .identity_bridge_user_status import IdentityBridgeUserStatus
+from .identity_bridge_user_status_attribute_sources import IdentityBridgeUserStatusAttributeSources
+from .identity_manager import IdentityManager
 from .identity_provider import IdentityProvider
 from .identity_provider_request import IdentityProviderRequest
 from .identity_providers_generate_mapping_response_200 import IdentityProvidersGenerateMappingResponse200
@@ -812,6 +821,7 @@ from .invoices_stats_list_o_item import InvoicesStatsListOItem
 from .invoices_stats_list_state_item import InvoicesStatsListStateItem
 from .ip_mapping import IPMapping
 from .ip_mapping_request import IPMappingRequest
+from .isd_user_count import ISDUserCount
 from .issue import Issue
 from .issue_reference import IssueReference
 from .issue_request import IssueRequest
@@ -2780,6 +2790,7 @@ __all__ = (
     "AttachmentRequest",
     "AttachmentRequestForm",
     "AttachmentRequestMultipart",
+    "AttributeSourceDetail",
     "AuthMethodEnum",
     "AuthResult",
     "AuthResultRequest",
@@ -3373,6 +3384,14 @@ __all__ = (
     "GuestPowerStateEnum",
     "HooksWebCountContentType",
     "HooksWebListContentType",
+    "IdentityBridgeRemoveRequest",
+    "IdentityBridgeRemoveResponse",
+    "IdentityBridgeRequestRequest",
+    "IdentityBridgeResponse",
+    "IdentityBridgeStats",
+    "IdentityBridgeUserStatus",
+    "IdentityBridgeUserStatusAttributeSources",
+    "IdentityManager",
     "IdentityProvider",
     "IdentityProviderRequest",
     "IdentityProvidersGenerateMappingResponse200",
@@ -3448,6 +3467,7 @@ __all__ = (
     "InvoiceStatsOffering",
     "IPMapping",
     "IPMappingRequest",
+    "ISDUserCount",
     "Issue",
     "IssueReference",
     "IssueRequest",

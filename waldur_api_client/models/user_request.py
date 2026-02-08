@@ -49,6 +49,10 @@ class UserRequest:
         organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if known
         eduperson_assurance (Union[Unset, Any]): REFEDS assurance profile URIs from identity provider
+        is_identity_manager (Union[Unset, bool]): Designates whether the user is allowed to manage remote user
+            identities.
+        managed_isds (Union[Unset, Any]): List of ISD source identifiers this user can manage via Identity Bridge. E.g.,
+            ['isd:puhuri', 'isd:fenix']. Non-empty list implies identity manager role.
     """
 
     username: str
@@ -80,6 +84,8 @@ class UserRequest:
     organization_type: Union[Unset, str] = UNSET
     organization_registry_code: Union[Unset, str] = UNSET
     eduperson_assurance: Union[Unset, Any] = UNSET
+    is_identity_manager: Union[Unset, bool] = UNSET
+    managed_isds: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -164,6 +170,10 @@ class UserRequest:
 
         eduperson_assurance = self.eduperson_assurance
 
+        is_identity_manager = self.is_identity_manager
+
+        managed_isds = self.managed_isds
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -226,6 +236,10 @@ class UserRequest:
             field_dict["organization_registry_code"] = organization_registry_code
         if eduperson_assurance is not UNSET:
             field_dict["eduperson_assurance"] = eduperson_assurance
+        if is_identity_manager is not UNSET:
+            field_dict["is_identity_manager"] = is_identity_manager
+        if managed_isds is not UNSET:
+            field_dict["managed_isds"] = managed_isds
 
         return field_dict
 
@@ -342,6 +356,10 @@ class UserRequest:
 
         eduperson_assurance = d.pop("eduperson_assurance", UNSET)
 
+        is_identity_manager = d.pop("is_identity_manager", UNSET)
+
+        managed_isds = d.pop("managed_isds", UNSET)
+
         user_request = cls(
             username=username,
             email=email,
@@ -372,6 +390,8 @@ class UserRequest:
             organization_type=organization_type,
             organization_registry_code=organization_registry_code,
             eduperson_assurance=eduperson_assurance,
+            is_identity_manager=is_identity_manager,
+            managed_isds=managed_isds,
         )
 
         user_request.additional_properties = d

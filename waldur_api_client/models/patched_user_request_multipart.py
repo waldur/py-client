@@ -49,6 +49,10 @@ class PatchedUserRequestMultipart:
         organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if known
         eduperson_assurance (Union[Unset, Any]): REFEDS assurance profile URIs from identity provider
+        is_identity_manager (Union[Unset, bool]): Designates whether the user is allowed to manage remote user
+            identities.
+        managed_isds (Union[Unset, Any]): List of ISD source identifiers this user can manage via Identity Bridge. E.g.,
+            ['isd:puhuri', 'isd:fenix']. Non-empty list implies identity manager role.
     """
 
     username: Union[Unset, str] = UNSET
@@ -79,6 +83,8 @@ class PatchedUserRequestMultipart:
     organization_type: Union[Unset, str] = UNSET
     organization_registry_code: Union[Unset, str] = UNSET
     eduperson_assurance: Union[Unset, Any] = UNSET
+    is_identity_manager: Union[Unset, bool] = UNSET
+    managed_isds: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -161,6 +167,10 @@ class PatchedUserRequestMultipart:
 
         eduperson_assurance = self.eduperson_assurance
 
+        is_identity_manager = self.is_identity_manager
+
+        managed_isds = self.managed_isds
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -220,6 +230,10 @@ class PatchedUserRequestMultipart:
             field_dict["organization_registry_code"] = organization_registry_code
         if eduperson_assurance is not UNSET:
             field_dict["eduperson_assurance"] = eduperson_assurance
+        if is_identity_manager is not UNSET:
+            field_dict["is_identity_manager"] = is_identity_manager
+        if managed_isds is not UNSET:
+            field_dict["managed_isds"] = managed_isds
 
         return field_dict
 
@@ -325,6 +339,12 @@ class PatchedUserRequestMultipart:
 
         if not isinstance(self.eduperson_assurance, Unset):
             files.append(("eduperson_assurance", (None, str(self.eduperson_assurance).encode(), "text/plain")))
+
+        if not isinstance(self.is_identity_manager, Unset):
+            files.append(("is_identity_manager", (None, str(self.is_identity_manager).encode(), "text/plain")))
+
+        if not isinstance(self.managed_isds, Unset):
+            files.append(("managed_isds", (None, str(self.managed_isds).encode(), "text/plain")))
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -442,6 +462,10 @@ class PatchedUserRequestMultipart:
 
         eduperson_assurance = d.pop("eduperson_assurance", UNSET)
 
+        is_identity_manager = d.pop("is_identity_manager", UNSET)
+
+        managed_isds = d.pop("managed_isds", UNSET)
+
         patched_user_request_multipart = cls(
             username=username,
             slug=slug,
@@ -471,6 +495,8 @@ class PatchedUserRequestMultipart:
             organization_type=organization_type,
             organization_registry_code=organization_registry_code,
             eduperson_assurance=eduperson_assurance,
+            is_identity_manager=is_identity_manager,
+            managed_isds=managed_isds,
         )
 
         patched_user_request_multipart.additional_properties = d

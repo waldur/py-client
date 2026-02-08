@@ -244,6 +244,9 @@ class ConstanceSettingsRequest:
         arrow_consumption_sync_interval_hours (Union[Unset, int]):
         arrow_billing_check_interval_hours (Union[Unset, int]):
         slurm_policy_evaluation_log_retention_days (Union[Unset, int]):
+        federated_identity_sync_enabled (Union[Unset, bool]):
+        federated_identity_sync_allowed_attributes (Union[Unset, list[str]]):
+        federated_identity_deactivation_policy (Union[Unset, str]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -471,6 +474,9 @@ class ConstanceSettingsRequest:
     arrow_consumption_sync_interval_hours: Union[Unset, int] = UNSET
     arrow_billing_check_interval_hours: Union[Unset, int] = UNSET
     slurm_policy_evaluation_log_retention_days: Union[Unset, int] = UNSET
+    federated_identity_sync_enabled: Union[Unset, bool] = UNSET
+    federated_identity_sync_allowed_attributes: Union[Unset, list[str]] = UNSET
+    federated_identity_deactivation_policy: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -1036,6 +1042,14 @@ class ConstanceSettingsRequest:
 
         slurm_policy_evaluation_log_retention_days = self.slurm_policy_evaluation_log_retention_days
 
+        federated_identity_sync_enabled = self.federated_identity_sync_enabled
+
+        federated_identity_sync_allowed_attributes: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.federated_identity_sync_allowed_attributes, Unset):
+            federated_identity_sync_allowed_attributes = self.federated_identity_sync_allowed_attributes
+
+        federated_identity_deactivation_policy = self.federated_identity_deactivation_policy
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -1495,6 +1509,12 @@ class ConstanceSettingsRequest:
             field_dict["ARROW_BILLING_CHECK_INTERVAL_HOURS"] = arrow_billing_check_interval_hours
         if slurm_policy_evaluation_log_retention_days is not UNSET:
             field_dict["SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS"] = slurm_policy_evaluation_log_retention_days
+        if federated_identity_sync_enabled is not UNSET:
+            field_dict["FEDERATED_IDENTITY_SYNC_ENABLED"] = federated_identity_sync_enabled
+        if federated_identity_sync_allowed_attributes is not UNSET:
+            field_dict["FEDERATED_IDENTITY_SYNC_ALLOWED_ATTRIBUTES"] = federated_identity_sync_allowed_attributes
+        if federated_identity_deactivation_policy is not UNSET:
+            field_dict["FEDERATED_IDENTITY_DEACTIVATION_POLICY"] = federated_identity_deactivation_policy
 
         return field_dict
 
@@ -2146,6 +2166,14 @@ class ConstanceSettingsRequest:
 
         slurm_policy_evaluation_log_retention_days = d.pop("SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS", UNSET)
 
+        federated_identity_sync_enabled = d.pop("FEDERATED_IDENTITY_SYNC_ENABLED", UNSET)
+
+        federated_identity_sync_allowed_attributes = cast(
+            list[str], d.pop("FEDERATED_IDENTITY_SYNC_ALLOWED_ATTRIBUTES", UNSET)
+        )
+
+        federated_identity_deactivation_policy = d.pop("FEDERATED_IDENTITY_DEACTIVATION_POLICY", UNSET)
+
         constance_settings_request = cls(
             site_name=site_name,
             site_description=site_description,
@@ -2372,6 +2400,9 @@ class ConstanceSettingsRequest:
             arrow_consumption_sync_interval_hours=arrow_consumption_sync_interval_hours,
             arrow_billing_check_interval_hours=arrow_billing_check_interval_hours,
             slurm_policy_evaluation_log_retention_days=slurm_policy_evaluation_log_retention_days,
+            federated_identity_sync_enabled=federated_identity_sync_enabled,
+            federated_identity_sync_allowed_attributes=federated_identity_sync_allowed_attributes,
+            federated_identity_deactivation_policy=federated_identity_deactivation_policy,
         )
 
         constance_settings_request.additional_properties = d
