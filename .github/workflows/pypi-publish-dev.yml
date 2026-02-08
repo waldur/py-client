@@ -1,0 +1,61 @@
+name: Publish dev version to PyPI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'waldur_api_client/**'
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+
+  publish-dev:
+    runs-on: ubuntu-latest
+    environment: pypi
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v5
+
+    - name: Configure Git
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'github-actions@github.com'
+
+    - name: Bump dev version
+      run: |
+        current_version=$(python -c "
+        import re
+        with open('pyproject.toml') as f:
+            match = re.search(r'version\s*=\s*\"(.+?)\"', f.read())
+            print(match.group(1))
+        ")
+        if [[ $current_version == *".dev"* ]]; then
+          base=$(echo "$current_version" | sed 's/.dev[0-9]*//')
+          dev_num=$(echo "$current_version" | grep -o 'dev[0-9]*' | grep -o '[0-9]*')
+          new_dev=$((dev_num + 1))
+          new_version="$base.dev$new_dev"
+        else
+          new_version="$current_version.dev1"
+        fi
+        sed -i "s/version = \"$current_version\"/version = \"$new_version\"/" pyproject.toml
+        echo "NEW_VERSION=$new_version" >> $GITHUB_ENV
+
+    - name: Commit and push version bump
+      run: |
+        git add pyproject.toml
+        git commit -m "$NEW_VERSION"
+        git push
+
+    - name: Build package
+      run: uv build
+
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
