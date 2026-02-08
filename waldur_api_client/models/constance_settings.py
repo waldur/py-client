@@ -179,6 +179,7 @@ class ConstanceSettings:
         oidc_block_creation_of_uninvited_users (Union[Unset, bool]):
         deactivate_user_if_no_roles (Union[Unset, bool]):
         waldur_auth_social_role_claim (Union[Unset, str]):
+        remote_eduteams_refresh_token (Union[Unset, str]):
         default_offering_user_attributes (Union[Unset, list[str]]):
         invitation_allowed_fields (Union[Unset, list[str]]):
         enabled_user_profile_attributes (Union[Unset, list[str]]):
@@ -405,6 +406,7 @@ class ConstanceSettings:
     oidc_block_creation_of_uninvited_users: Union[Unset, bool] = UNSET
     deactivate_user_if_no_roles: Union[Unset, bool] = UNSET
     waldur_auth_social_role_claim: Union[Unset, str] = UNSET
+    remote_eduteams_refresh_token: Union[Unset, str] = UNSET
     default_offering_user_attributes: Union[Unset, list[str]] = UNSET
     invitation_allowed_fields: Union[Unset, list[str]] = UNSET
     enabled_user_profile_attributes: Union[Unset, list[str]] = UNSET
@@ -853,6 +855,8 @@ class ConstanceSettings:
         deactivate_user_if_no_roles = self.deactivate_user_if_no_roles
 
         waldur_auth_social_role_claim = self.waldur_auth_social_role_claim
+
+        remote_eduteams_refresh_token = self.remote_eduteams_refresh_token
 
         default_offering_user_attributes: Union[Unset, list[str]] = UNSET
         if not isinstance(self.default_offering_user_attributes, Unset):
@@ -1325,6 +1329,8 @@ class ConstanceSettings:
             field_dict["DEACTIVATE_USER_IF_NO_ROLES"] = deactivate_user_if_no_roles
         if waldur_auth_social_role_claim is not UNSET:
             field_dict["WALDUR_AUTH_SOCIAL_ROLE_CLAIM"] = waldur_auth_social_role_claim
+        if remote_eduteams_refresh_token is not UNSET:
+            field_dict["REMOTE_EDUTEAMS_REFRESH_TOKEN"] = remote_eduteams_refresh_token
         if default_offering_user_attributes is not UNSET:
             field_dict["DEFAULT_OFFERING_USER_ATTRIBUTES"] = default_offering_user_attributes
         if invitation_allowed_fields is not UNSET:
@@ -1876,6 +1882,8 @@ class ConstanceSettings:
 
         waldur_auth_social_role_claim = d.pop("WALDUR_AUTH_SOCIAL_ROLE_CLAIM", UNSET)
 
+        remote_eduteams_refresh_token = d.pop("REMOTE_EDUTEAMS_REFRESH_TOKEN", UNSET)
+
         default_offering_user_attributes = cast(list[str], d.pop("DEFAULT_OFFERING_USER_ATTRIBUTES", UNSET))
 
         invitation_allowed_fields = cast(list[str], d.pop("INVITATION_ALLOWED_FIELDS", UNSET))
@@ -2165,6 +2173,7 @@ class ConstanceSettings:
             oidc_block_creation_of_uninvited_users=oidc_block_creation_of_uninvited_users,
             deactivate_user_if_no_roles=deactivate_user_if_no_roles,
             waldur_auth_social_role_claim=waldur_auth_social_role_claim,
+            remote_eduteams_refresh_token=remote_eduteams_refresh_token,
             default_offering_user_attributes=default_offering_user_attributes,
             invitation_allowed_fields=invitation_allowed_fields,
             enabled_user_profile_attributes=enabled_user_profile_attributes,
