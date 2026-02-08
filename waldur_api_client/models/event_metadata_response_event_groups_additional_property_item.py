@@ -262,6 +262,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     USER_DEACTIVATED_NO_ROLES = "user_deactivated_no_roles"
     USER_DELETION_SUCCEEDED = "user_deletion_succeeded"
     USER_DETAILS_UPDATE_SUCCEEDED = "user_details_update_succeeded"
+    USER_GROUP_INVITATION_UPDATED = "user_group_invitation_updated"
     USER_HAS_BEEN_CREATED_BY_STAFF = "user_has_been_created_by_staff"
     USER_INVITATION_DELETED = "user_invitation_deleted"
     USER_INVITATION_UPDATED = "user_invitation_updated"

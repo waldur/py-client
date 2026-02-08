@@ -47,6 +47,7 @@ class PatchedUserRequestForm:
         nationalities (Union[Unset, Any]): List of all citizenships (ISO 3166-1 alpha-2 codes)
         organization_country (Union[Unset, str]):
         organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
+        organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if known
         eduperson_assurance (Union[Unset, Any]): REFEDS assurance profile URIs from identity provider
     """
 
@@ -76,6 +77,7 @@ class PatchedUserRequestForm:
     nationalities: Union[Unset, Any] = UNSET
     organization_country: Union[Unset, str] = UNSET
     organization_type: Union[Unset, str] = UNSET
+    organization_registry_code: Union[Unset, str] = UNSET
     eduperson_assurance: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -155,6 +157,8 @@ class PatchedUserRequestForm:
 
         organization_type = self.organization_type
 
+        organization_registry_code = self.organization_registry_code
+
         eduperson_assurance = self.eduperson_assurance
 
         field_dict: dict[str, Any] = {}
@@ -212,6 +216,8 @@ class PatchedUserRequestForm:
             field_dict["organization_country"] = organization_country
         if organization_type is not UNSET:
             field_dict["organization_type"] = organization_type
+        if organization_registry_code is not UNSET:
+            field_dict["organization_registry_code"] = organization_registry_code
         if eduperson_assurance is not UNSET:
             field_dict["eduperson_assurance"] = eduperson_assurance
 
@@ -324,6 +330,8 @@ class PatchedUserRequestForm:
 
         organization_type = d.pop("organization_type", UNSET)
 
+        organization_registry_code = d.pop("organization_registry_code", UNSET)
+
         eduperson_assurance = d.pop("eduperson_assurance", UNSET)
 
         patched_user_request_form = cls(
@@ -353,6 +361,7 @@ class PatchedUserRequestForm:
             nationalities=nationalities,
             organization_country=organization_country,
             organization_type=organization_type,
+            organization_registry_code=organization_registry_code,
             eduperson_assurance=eduperson_assurance,
         )
 

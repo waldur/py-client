@@ -7,17 +7,17 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="GroupInvitationRequest")
+T = TypeVar("T", bound="GroupInvitationUpdateRequest")
 
 
 @_attrs_define
-class GroupInvitationRequest:
+class GroupInvitationUpdateRequest:
     """
     Attributes:
-        role (UUID): UUID of the role to grant to the invited user
-        scope (str): URL of the scope (Customer or Project) for this invitation
         is_public (Union[Unset, bool]): Allow non-authenticated users to see and accept this invitation. Only staff can
             create public invitations.
+        role (Union[Unset, UUID]): UUID of the role to grant.
+        scope (Union[Unset, str]): URL of the scope (Customer or Project) for this invitation
         auto_create_project (Union[Unset, bool]): Create project and grant project permissions instead of customer
             permissions
         auto_approve (Union[Unset, bool]): Automatically approve permission requests from users matching email patterns
@@ -31,9 +31,9 @@ class GroupInvitationRequest:
         custom_text (Union[Unset, str]): Custom description text displayed to users viewing this invitation.
     """
 
-    role: UUID
-    scope: str
     is_public: Union[Unset, bool] = UNSET
+    role: Union[Unset, UUID] = UNSET
+    scope: Union[Unset, str] = UNSET
     auto_create_project: Union[Unset, bool] = UNSET
     auto_approve: Union[Unset, bool] = UNSET
     project_name_template: Union[None, Unset, str] = UNSET
@@ -45,11 +45,13 @@ class GroupInvitationRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        role = str(self.role)
+        is_public = self.is_public
+
+        role: Union[Unset, str] = UNSET
+        if not isinstance(self.role, Unset):
+            role = str(self.role)
 
         scope = self.scope
-
-        is_public = self.is_public
 
         auto_create_project = self.auto_create_project
 
@@ -79,14 +81,13 @@ class GroupInvitationRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "role": role,
-                "scope": scope,
-            }
-        )
+        field_dict.update({})
         if is_public is not UNSET:
             field_dict["is_public"] = is_public
+        if role is not UNSET:
+            field_dict["role"] = role
+        if scope is not UNSET:
+            field_dict["scope"] = scope
         if auto_create_project is not UNSET:
             field_dict["auto_create_project"] = auto_create_project
         if auto_approve is not UNSET:
@@ -109,11 +110,16 @@ class GroupInvitationRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        role = UUID(d.pop("role"))
-
-        scope = d.pop("scope")
-
         is_public = d.pop("is_public", UNSET)
+
+        _role = d.pop("role", UNSET)
+        role: Union[Unset, UUID]
+        if isinstance(_role, Unset):
+            role = UNSET
+        else:
+            role = UUID(_role)
+
+        scope = d.pop("scope", UNSET)
 
         auto_create_project = d.pop("auto_create_project", UNSET)
 
@@ -153,10 +159,10 @@ class GroupInvitationRequest:
 
         custom_text = d.pop("custom_text", UNSET)
 
-        group_invitation_request = cls(
+        group_invitation_update_request = cls(
+            is_public=is_public,
             role=role,
             scope=scope,
-            is_public=is_public,
             auto_create_project=auto_create_project,
             auto_approve=auto_approve,
             project_name_template=project_name_template,
@@ -167,8 +173,8 @@ class GroupInvitationRequest:
             custom_text=custom_text,
         )
 
-        group_invitation_request.additional_properties = d
-        return group_invitation_request
+        group_invitation_update_request.additional_properties = d
+        return group_invitation_update_request
 
     @property
     def additional_keys(self) -> list[str]:

@@ -728,6 +728,8 @@ from .google_calendar import GoogleCalendar
 from .google_credentials import GoogleCredentials
 from .group_invitation import GroupInvitation
 from .group_invitation_request import GroupInvitationRequest
+from .group_invitation_update import GroupInvitationUpdate
+from .group_invitation_update_request import GroupInvitationUpdateRequest
 from .growth_period_enum import GrowthPeriodEnum
 from .guest_os_enum import GuestOsEnum
 from .guest_power_state_enum import GuestPowerStateEnum
@@ -1657,6 +1659,7 @@ from .patched_external_link_request import PatchedExternalLinkRequest
 from .patched_external_link_request_form import PatchedExternalLinkRequestForm
 from .patched_external_link_request_multipart import PatchedExternalLinkRequestMultipart
 from .patched_firecrest_job_request import PatchedFirecrestJobRequest
+from .patched_group_invitation_update_request import PatchedGroupInvitationUpdateRequest
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
 from .patched_invitation_update_request import PatchedInvitationUpdateRequest
 from .patched_invoice_item_update_request import PatchedInvoiceItemUpdateRequest
@@ -3363,6 +3366,8 @@ __all__ = (
     "GoogleCredentials",
     "GroupInvitation",
     "GroupInvitationRequest",
+    "GroupInvitationUpdate",
+    "GroupInvitationUpdateRequest",
     "GrowthPeriodEnum",
     "GuestOsEnum",
     "GuestPowerStateEnum",
@@ -4184,6 +4189,7 @@ __all__ = (
     "PatchedExternalLinkRequestForm",
     "PatchedExternalLinkRequestMultipart",
     "PatchedFirecrestJobRequest",
+    "PatchedGroupInvitationUpdateRequest",
     "PatchedIdentityProviderRequest",
     "PatchedInvitationUpdateRequest",
     "PatchedInvoiceItemUpdateRequest",

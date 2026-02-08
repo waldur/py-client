@@ -34,6 +34,7 @@ class UsersMeRetrieveFieldItem(str, Enum):
     NOTIFICATIONS_ENABLED = "notifications_enabled"
     ORGANIZATION = "organization"
     ORGANIZATION_COUNTRY = "organization_country"
+    ORGANIZATION_REGISTRY_CODE = "organization_registry_code"
     ORGANIZATION_TYPE = "organization_type"
     PERMISSIONS = "permissions"
     PERSONAL_TITLE = "personal_title"

@@ -45,6 +45,7 @@ class GroupInvitation:
         user_affiliations (Union[Unset, Any]):
         user_email_patterns (Union[Unset, Any]):
         user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
+        custom_text (Union[Unset, str]): Custom description text displayed to users viewing this invitation.
     """
 
     scope_uuid: UUID
@@ -72,6 +73,7 @@ class GroupInvitation:
     user_affiliations: Union[Unset, Any] = UNSET
     user_email_patterns: Union[Unset, Any] = UNSET
     user_identity_sources: Union[Unset, Any] = UNSET
+    custom_text: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -137,6 +139,8 @@ class GroupInvitation:
 
         user_identity_sources = self.user_identity_sources
 
+        custom_text = self.custom_text
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -176,6 +180,8 @@ class GroupInvitation:
             field_dict["user_email_patterns"] = user_email_patterns
         if user_identity_sources is not UNSET:
             field_dict["user_identity_sources"] = user_identity_sources
+        if custom_text is not UNSET:
+            field_dict["custom_text"] = custom_text
 
         return field_dict
 
@@ -264,6 +270,8 @@ class GroupInvitation:
 
         user_identity_sources = d.pop("user_identity_sources", UNSET)
 
+        custom_text = d.pop("custom_text", UNSET)
+
         group_invitation = cls(
             scope_uuid=scope_uuid,
             scope_name=scope_name,
@@ -290,6 +298,7 @@ class GroupInvitation:
             user_affiliations=user_affiliations,
             user_email_patterns=user_email_patterns,
             user_identity_sources=user_identity_sources,
+            custom_text=custom_text,
         )
 
         group_invitation.additional_properties = d
