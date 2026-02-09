@@ -250,6 +250,7 @@ class ConstanceSettingsRequestMultipart:
         federated_identity_sync_enabled (Union[Unset, bool]):
         federated_identity_sync_allowed_attributes (Union[Unset, list[str]]):
         federated_identity_deactivation_policy (Union[Unset, str]):
+        enable_project_digest (Union[Unset, bool]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -480,6 +481,7 @@ class ConstanceSettingsRequestMultipart:
     federated_identity_sync_enabled: Union[Unset, bool] = UNSET
     federated_identity_sync_allowed_attributes: Union[Unset, list[str]] = UNSET
     federated_identity_deactivation_policy: Union[Unset, str] = UNSET
+    enable_project_digest: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -1053,6 +1055,8 @@ class ConstanceSettingsRequestMultipart:
 
         federated_identity_deactivation_policy = self.federated_identity_deactivation_policy
 
+        enable_project_digest = self.enable_project_digest
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -1518,6 +1522,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["FEDERATED_IDENTITY_SYNC_ALLOWED_ATTRIBUTES"] = federated_identity_sync_allowed_attributes
         if federated_identity_deactivation_policy is not UNSET:
             field_dict["FEDERATED_IDENTITY_DEACTIVATION_POLICY"] = federated_identity_deactivation_policy
+        if enable_project_digest is not UNSET:
+            field_dict["ENABLE_PROJECT_DIGEST"] = enable_project_digest
 
         return field_dict
 
@@ -2735,6 +2741,9 @@ class ConstanceSettingsRequestMultipart:
                 )
             )
 
+        if not isinstance(self.enable_project_digest, Unset):
+            files.append(("ENABLE_PROJECT_DIGEST", (None, str(self.enable_project_digest).encode(), "text/plain")))
+
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
 
@@ -3398,6 +3407,8 @@ class ConstanceSettingsRequestMultipart:
 
         federated_identity_deactivation_policy = d.pop("FEDERATED_IDENTITY_DEACTIVATION_POLICY", UNSET)
 
+        enable_project_digest = d.pop("ENABLE_PROJECT_DIGEST", UNSET)
+
         constance_settings_request_multipart = cls(
             site_name=site_name,
             site_description=site_description,
@@ -3627,6 +3638,7 @@ class ConstanceSettingsRequestMultipart:
             federated_identity_sync_enabled=federated_identity_sync_enabled,
             federated_identity_sync_allowed_attributes=federated_identity_sync_allowed_attributes,
             federated_identity_deactivation_policy=federated_identity_deactivation_policy,
+            enable_project_digest=enable_project_digest,
         )
 
         constance_settings_request_multipart.additional_properties = d
