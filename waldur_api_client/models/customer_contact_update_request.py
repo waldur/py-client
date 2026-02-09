@@ -16,18 +16,14 @@ class CustomerContactUpdateRequest:
         contact_details (Union[Unset, str]):
         email (Union[Unset, str]):
         phone_number (Union[Unset, str]):
-        address (Union[Unset, str]):
-        postal (Union[Unset, str]):
-        country (Union[Unset, str]):
+        homepage (Union[Unset, str]):
         notification_emails (Union[Unset, str]): Comma-separated list of notification email addresses
     """
 
     contact_details: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
     phone_number: Union[Unset, str] = UNSET
-    address: Union[Unset, str] = UNSET
-    postal: Union[Unset, str] = UNSET
-    country: Union[Unset, str] = UNSET
+    homepage: Union[Unset, str] = UNSET
     notification_emails: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -38,11 +34,7 @@ class CustomerContactUpdateRequest:
 
         phone_number = self.phone_number
 
-        address = self.address
-
-        postal = self.postal
-
-        country = self.country
+        homepage = self.homepage
 
         notification_emails = self.notification_emails
 
@@ -55,12 +47,8 @@ class CustomerContactUpdateRequest:
             field_dict["email"] = email
         if phone_number is not UNSET:
             field_dict["phone_number"] = phone_number
-        if address is not UNSET:
-            field_dict["address"] = address
-        if postal is not UNSET:
-            field_dict["postal"] = postal
-        if country is not UNSET:
-            field_dict["country"] = country
+        if homepage is not UNSET:
+            field_dict["homepage"] = homepage
         if notification_emails is not UNSET:
             field_dict["notification_emails"] = notification_emails
 
@@ -75,11 +63,7 @@ class CustomerContactUpdateRequest:
 
         phone_number = d.pop("phone_number", UNSET)
 
-        address = d.pop("address", UNSET)
-
-        postal = d.pop("postal", UNSET)
-
-        country = d.pop("country", UNSET)
+        homepage = d.pop("homepage", UNSET)
 
         notification_emails = d.pop("notification_emails", UNSET)
 
@@ -87,9 +71,7 @@ class CustomerContactUpdateRequest:
             contact_details=contact_details,
             email=email,
             phone_number=phone_number,
-            address=address,
-            postal=postal,
-            country=country,
+            homepage=homepage,
             notification_emails=notification_emails,
         )
 
