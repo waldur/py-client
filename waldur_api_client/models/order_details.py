@@ -84,6 +84,10 @@ class OrderDetails:
             @/./+/-/_ characters
         created_by_full_name (Union[Unset, str]):
         created_by_civil_number (Union[None, Unset, str]):
+        created_by_email (Union[None, Unset, str]):
+        created_by_organization (Union[None, Unset, str]):
+        created_by_organization_registry_code (Union[None, Unset, str]): Company registration code of the user's
+            organization, if known
         customer_name (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         customer_slug (Union[Unset, str]):
@@ -165,6 +169,9 @@ class OrderDetails:
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
     created_by_civil_number: Union[None, Unset, str] = UNSET
+    created_by_email: Union[None, Unset, str] = UNSET
+    created_by_organization: Union[None, Unset, str] = UNSET
+    created_by_organization_registry_code: Union[None, Unset, str] = UNSET
     customer_name: Union[Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_slug: Union[Unset, str] = UNSET
@@ -421,6 +428,24 @@ class OrderDetails:
         else:
             created_by_civil_number = self.created_by_civil_number
 
+        created_by_email: Union[None, Unset, str]
+        if isinstance(self.created_by_email, Unset):
+            created_by_email = UNSET
+        else:
+            created_by_email = self.created_by_email
+
+        created_by_organization: Union[None, Unset, str]
+        if isinstance(self.created_by_organization, Unset):
+            created_by_organization = UNSET
+        else:
+            created_by_organization = self.created_by_organization
+
+        created_by_organization_registry_code: Union[None, Unset, str]
+        if isinstance(self.created_by_organization_registry_code, Unset):
+            created_by_organization_registry_code = UNSET
+        else:
+            created_by_organization_registry_code = self.created_by_organization_registry_code
+
         customer_name = self.customer_name
 
         customer_uuid: Union[Unset, str] = UNSET
@@ -632,6 +657,12 @@ class OrderDetails:
             field_dict["created_by_full_name"] = created_by_full_name
         if created_by_civil_number is not UNSET:
             field_dict["created_by_civil_number"] = created_by_civil_number
+        if created_by_email is not UNSET:
+            field_dict["created_by_email"] = created_by_email
+        if created_by_organization is not UNSET:
+            field_dict["created_by_organization"] = created_by_organization
+        if created_by_organization_registry_code is not UNSET:
+            field_dict["created_by_organization_registry_code"] = created_by_organization_registry_code
         if customer_name is not UNSET:
             field_dict["customer_name"] = customer_name
         if customer_uuid is not UNSET:
@@ -1060,6 +1091,35 @@ class OrderDetails:
 
         created_by_civil_number = _parse_created_by_civil_number(d.pop("created_by_civil_number", UNSET))
 
+        def _parse_created_by_email(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        created_by_email = _parse_created_by_email(d.pop("created_by_email", UNSET))
+
+        def _parse_created_by_organization(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        created_by_organization = _parse_created_by_organization(d.pop("created_by_organization", UNSET))
+
+        def _parse_created_by_organization_registry_code(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        created_by_organization_registry_code = _parse_created_by_organization_registry_code(
+            d.pop("created_by_organization_registry_code", UNSET)
+        )
+
         customer_name = d.pop("customer_name", UNSET)
 
         _customer_uuid = d.pop("customer_uuid", UNSET)
@@ -1269,6 +1329,9 @@ class OrderDetails:
             created_by_username=created_by_username,
             created_by_full_name=created_by_full_name,
             created_by_civil_number=created_by_civil_number,
+            created_by_email=created_by_email,
+            created_by_organization=created_by_organization,
+            created_by_organization_registry_code=created_by_organization_registry_code,
             customer_name=customer_name,
             customer_uuid=customer_uuid,
             customer_slug=customer_slug,
