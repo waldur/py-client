@@ -6,26 +6,39 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.order_approve_by_provider_request import OrderApproveByProviderRequest
 from ...models.order_info_response import OrderInfoResponse
+from ...models.order_provider_info_request import OrderProviderInfoRequest
+from ...models.order_provider_info_request_form import OrderProviderInfoRequestForm
+from ...models.order_provider_info_request_multipart import OrderProviderInfoRequestMultipart
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: OrderApproveByProviderRequest,
+    body: Union[
+        OrderProviderInfoRequest,
+        OrderProviderInfoRequestForm,
+        OrderProviderInfoRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/marketplace-orders/{uuid}/approve_by_provider/",
+        "url": f"/api/marketplace-orders/{uuid}/set_provider_info/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, OrderProviderInfoRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, OrderProviderInfoRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, OrderProviderInfoRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -56,16 +69,22 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OrderApproveByProviderRequest,
+    body: Union[
+        OrderProviderInfoRequest,
+        OrderProviderInfoRequestForm,
+        OrderProviderInfoRequestMultipart,
+    ],
 ) -> Response[OrderInfoResponse]:
-    """Approve an order (provider)
+    """Set provider info on order
 
-     Approves a pending order from the provider's side. This typically transitions the order to the
-    executing state.
+     Allows a service provider to send a message with an optional URL and file attachment to the consumer
+    on a pending order.
 
     Args:
         uuid (UUID):
-        body (OrderApproveByProviderRequest):
+        body (OrderProviderInfoRequest):
+        body (OrderProviderInfoRequestForm):
+        body (OrderProviderInfoRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -91,16 +110,22 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OrderApproveByProviderRequest,
+    body: Union[
+        OrderProviderInfoRequest,
+        OrderProviderInfoRequestForm,
+        OrderProviderInfoRequestMultipart,
+    ],
 ) -> OrderInfoResponse:
-    """Approve an order (provider)
+    """Set provider info on order
 
-     Approves a pending order from the provider's side. This typically transitions the order to the
-    executing state.
+     Allows a service provider to send a message with an optional URL and file attachment to the consumer
+    on a pending order.
 
     Args:
         uuid (UUID):
-        body (OrderApproveByProviderRequest):
+        body (OrderProviderInfoRequest):
+        body (OrderProviderInfoRequestForm):
+        body (OrderProviderInfoRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -121,16 +146,22 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OrderApproveByProviderRequest,
+    body: Union[
+        OrderProviderInfoRequest,
+        OrderProviderInfoRequestForm,
+        OrderProviderInfoRequestMultipart,
+    ],
 ) -> Response[OrderInfoResponse]:
-    """Approve an order (provider)
+    """Set provider info on order
 
-     Approves a pending order from the provider's side. This typically transitions the order to the
-    executing state.
+     Allows a service provider to send a message with an optional URL and file attachment to the consumer
+    on a pending order.
 
     Args:
         uuid (UUID):
-        body (OrderApproveByProviderRequest):
+        body (OrderProviderInfoRequest):
+        body (OrderProviderInfoRequestForm):
+        body (OrderProviderInfoRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -154,16 +185,22 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OrderApproveByProviderRequest,
+    body: Union[
+        OrderProviderInfoRequest,
+        OrderProviderInfoRequestForm,
+        OrderProviderInfoRequestMultipart,
+    ],
 ) -> OrderInfoResponse:
-    """Approve an order (provider)
+    """Set provider info on order
 
-     Approves a pending order from the provider's side. This typically transitions the order to the
-    executing state.
+     Allows a service provider to send a message with an optional URL and file attachment to the consumer
+    on a pending order.
 
     Args:
         uuid (UUID):
-        body (OrderApproveByProviderRequest):
+        body (OrderProviderInfoRequest):
+        body (OrderProviderInfoRequestForm):
+        body (OrderProviderInfoRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

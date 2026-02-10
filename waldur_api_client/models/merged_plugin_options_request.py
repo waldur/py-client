@@ -47,6 +47,10 @@ class MergedPluginOptionsRequest:
         create_orders_on_resource_option_change (Union[Unset, bool]): If set to True, create orders when options of
             related resources are changed.
         can_restore_resource (Union[Unset, bool]): If set to True, resource can be restored.
+        enable_provider_consumer_messaging (Union[Unset, bool]): If set to True, service providers can send messages
+            with attachments to consumers on pending orders, and consumers can respond.
+        notify_about_provider_consumer_messages (Union[Unset, bool]): If set to True, send email notifications when
+            providers or consumers exchange messages on pending orders.
         default_internal_network_mtu (Union[Unset, int]): If set, it will be used as a default MTU for the first network
             in a tenant
         max_instances (Union[Unset, int]): Default limit for number of instances in OpenStack tenant
@@ -134,6 +138,8 @@ class MergedPluginOptionsRequest:
     conceal_billing_data: Union[Unset, bool] = UNSET
     create_orders_on_resource_option_change: Union[Unset, bool] = UNSET
     can_restore_resource: Union[Unset, bool] = UNSET
+    enable_provider_consumer_messaging: Union[Unset, bool] = UNSET
+    notify_about_provider_consumer_messages: Union[Unset, bool] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
     max_volumes: Union[Unset, int] = UNSET
@@ -222,6 +228,10 @@ class MergedPluginOptionsRequest:
         create_orders_on_resource_option_change = self.create_orders_on_resource_option_change
 
         can_restore_resource = self.can_restore_resource
+
+        enable_provider_consumer_messaging = self.enable_provider_consumer_messaging
+
+        notify_about_provider_consumer_messages = self.notify_about_provider_consumer_messages
 
         default_internal_network_mtu = self.default_internal_network_mtu
 
@@ -372,6 +382,10 @@ class MergedPluginOptionsRequest:
             field_dict["create_orders_on_resource_option_change"] = create_orders_on_resource_option_change
         if can_restore_resource is not UNSET:
             field_dict["can_restore_resource"] = can_restore_resource
+        if enable_provider_consumer_messaging is not UNSET:
+            field_dict["enable_provider_consumer_messaging"] = enable_provider_consumer_messaging
+        if notify_about_provider_consumer_messages is not UNSET:
+            field_dict["notify_about_provider_consumer_messages"] = notify_about_provider_consumer_messages
         if default_internal_network_mtu is not UNSET:
             field_dict["default_internal_network_mtu"] = default_internal_network_mtu
         if max_instances is not UNSET:
@@ -519,6 +533,10 @@ class MergedPluginOptionsRequest:
         create_orders_on_resource_option_change = d.pop("create_orders_on_resource_option_change", UNSET)
 
         can_restore_resource = d.pop("can_restore_resource", UNSET)
+
+        enable_provider_consumer_messaging = d.pop("enable_provider_consumer_messaging", UNSET)
+
+        notify_about_provider_consumer_messages = d.pop("notify_about_provider_consumer_messages", UNSET)
 
         default_internal_network_mtu = d.pop("default_internal_network_mtu", UNSET)
 
@@ -671,6 +689,8 @@ class MergedPluginOptionsRequest:
             conceal_billing_data=conceal_billing_data,
             create_orders_on_resource_option_change=create_orders_on_resource_option_change,
             can_restore_resource=can_restore_resource,
+            enable_provider_consumer_messaging=enable_provider_consumer_messaging,
+            notify_about_provider_consumer_messages=notify_about_provider_consumer_messages,
             default_internal_network_mtu=default_internal_network_mtu,
             max_instances=max_instances,
             max_volumes=max_volumes,

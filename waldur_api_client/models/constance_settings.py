@@ -21,6 +21,7 @@ class ConstanceSettings:
         site_description (Union[Unset, str]):
         homeport_url (Union[Unset, str]):
         rancher_username_input_label (Union[Unset, str]):
+        disclaimer_area_text (Union[Unset, str]):
         site_address (Union[Unset, str]):
         site_email (Union[Unset, str]):
         site_phone (Union[Unset, str]):
@@ -80,6 +81,7 @@ class ConstanceSettings:
         login_page_news (Union[Unset, list[Any]]):
         favicon (Union[None, Unset, str]):
         offering_logo_placeholder (Union[None, Unset, str]):
+        disclaimer_area_logo (Union[None, Unset, str]):
         waldur_support_enabled (Union[Unset, bool]):
         waldur_support_active_backend_type (Union[Unset, str]):
         waldur_support_display_request_type (Union[Unset, bool]):
@@ -252,6 +254,7 @@ class ConstanceSettings:
     site_description: Union[Unset, str] = UNSET
     homeport_url: Union[Unset, str] = UNSET
     rancher_username_input_label: Union[Unset, str] = UNSET
+    disclaimer_area_text: Union[Unset, str] = UNSET
     site_address: Union[Unset, str] = UNSET
     site_email: Union[Unset, str] = UNSET
     site_phone: Union[Unset, str] = UNSET
@@ -311,6 +314,7 @@ class ConstanceSettings:
     login_page_news: Union[Unset, list[Any]] = UNSET
     favicon: Union[None, Unset, str] = UNSET
     offering_logo_placeholder: Union[None, Unset, str] = UNSET
+    disclaimer_area_logo: Union[None, Unset, str] = UNSET
     waldur_support_enabled: Union[Unset, bool] = UNSET
     waldur_support_active_backend_type: Union[Unset, str] = UNSET
     waldur_support_display_request_type: Union[Unset, bool] = UNSET
@@ -488,6 +492,8 @@ class ConstanceSettings:
 
         rancher_username_input_label = self.rancher_username_input_label
 
+        disclaimer_area_text = self.disclaimer_area_text
+
         site_address = self.site_address
 
         site_email = self.site_email
@@ -657,6 +663,12 @@ class ConstanceSettings:
             offering_logo_placeholder = UNSET
         else:
             offering_logo_placeholder = self.offering_logo_placeholder
+
+        disclaimer_area_logo: Union[None, Unset, str]
+        if isinstance(self.disclaimer_area_logo, Unset):
+            disclaimer_area_logo = UNSET
+        else:
+            disclaimer_area_logo = self.disclaimer_area_logo
 
         waldur_support_enabled = self.waldur_support_enabled
 
@@ -1027,6 +1039,8 @@ class ConstanceSettings:
             field_dict["HOMEPORT_URL"] = homeport_url
         if rancher_username_input_label is not UNSET:
             field_dict["RANCHER_USERNAME_INPUT_LABEL"] = rancher_username_input_label
+        if disclaimer_area_text is not UNSET:
+            field_dict["DISCLAIMER_AREA_TEXT"] = disclaimer_area_text
         if site_address is not UNSET:
             field_dict["SITE_ADDRESS"] = site_address
         if site_email is not UNSET:
@@ -1147,6 +1161,8 @@ class ConstanceSettings:
             field_dict["FAVICON"] = favicon
         if offering_logo_placeholder is not UNSET:
             field_dict["OFFERING_LOGO_PLACEHOLDER"] = offering_logo_placeholder
+        if disclaimer_area_logo is not UNSET:
+            field_dict["DISCLAIMER_AREA_LOGO"] = disclaimer_area_logo
         if waldur_support_enabled is not UNSET:
             field_dict["WALDUR_SUPPORT_ENABLED"] = waldur_support_enabled
         if waldur_support_active_backend_type is not UNSET:
@@ -1499,6 +1515,8 @@ class ConstanceSettings:
 
         rancher_username_input_label = d.pop("RANCHER_USERNAME_INPUT_LABEL", UNSET)
 
+        disclaimer_area_text = d.pop("DISCLAIMER_AREA_TEXT", UNSET)
+
         site_address = d.pop("SITE_ADDRESS", UNSET)
 
         site_email = d.pop("SITE_EMAIL", UNSET)
@@ -1700,6 +1718,15 @@ class ConstanceSettings:
             return cast(Union[None, Unset, str], data)
 
         offering_logo_placeholder = _parse_offering_logo_placeholder(d.pop("OFFERING_LOGO_PLACEHOLDER", UNSET))
+
+        def _parse_disclaimer_area_logo(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        disclaimer_area_logo = _parse_disclaimer_area_logo(d.pop("DISCLAIMER_AREA_LOGO", UNSET))
 
         waldur_support_enabled = d.pop("WALDUR_SUPPORT_ENABLED", UNSET)
 
@@ -2051,6 +2078,7 @@ class ConstanceSettings:
             site_description=site_description,
             homeport_url=homeport_url,
             rancher_username_input_label=rancher_username_input_label,
+            disclaimer_area_text=disclaimer_area_text,
             site_address=site_address,
             site_email=site_email,
             site_phone=site_phone,
@@ -2110,6 +2138,7 @@ class ConstanceSettings:
             login_page_news=login_page_news,
             favicon=favicon,
             offering_logo_placeholder=offering_logo_placeholder,
+            disclaimer_area_logo=disclaimer_area_logo,
             waldur_support_enabled=waldur_support_enabled,
             waldur_support_active_backend_type=waldur_support_active_backend_type,
             waldur_support_display_request_type=waldur_support_display_request_type,

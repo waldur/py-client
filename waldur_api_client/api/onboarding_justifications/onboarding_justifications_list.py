@@ -7,27 +7,54 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.onboarding_justification import OnboardingJustification
+from ...models.onboarding_justifications_list_o_item import OnboardingJustificationsListOItem
+from ...models.onboarding_justifications_list_validation_decision_item import (
+    OnboardingJustificationsListValidationDecisionItem,
+)
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
+    o: Union[Unset, list[OnboardingJustificationsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationsListValidationDecisionItem]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_o: Union[Unset, list[str]] = UNSET
+    if not isinstance(o, Unset):
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
+
+    params["o"] = json_o
 
     params["page"] = page
 
     params["page_size"] = page_size
 
+    params["query"] = query
+
     json_user_uuid: Union[Unset, str] = UNSET
     if not isinstance(user_uuid, Unset):
         json_user_uuid = str(user_uuid)
     params["user_uuid"] = json_user_uuid
+
+    json_validation_decision: Union[Unset, list[str]] = UNSET
+    if not isinstance(validation_decision, Unset):
+        json_validation_decision = []
+        for validation_decision_item_data in validation_decision:
+            validation_decision_item = validation_decision_item_data.value
+            json_validation_decision.append(validation_decision_item)
+
+    params["validation_decision"] = json_validation_decision
 
     json_verification_uuid: Union[Unset, str] = UNSET
     if not isinstance(verification_uuid, Unset):
@@ -76,16 +103,23 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    o: Union[Unset, list[OnboardingJustificationsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationsListValidationDecisionItem]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OnboardingJustification"]]:
     """
     Args:
+        o (Union[Unset, list[OnboardingJustificationsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
+        validation_decision (Union[Unset,
+            list[OnboardingJustificationsListValidationDecisionItem]]):
         verification_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -97,9 +131,12 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        o=o,
         page=page,
         page_size=page_size,
+        query=query,
         user_uuid=user_uuid,
+        validation_decision=validation_decision,
         verification_uuid=verification_uuid,
     )
 
@@ -113,16 +150,23 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    o: Union[Unset, list[OnboardingJustificationsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationsListValidationDecisionItem]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OnboardingJustification"]:
     """
     Args:
+        o (Union[Unset, list[OnboardingJustificationsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
+        validation_decision (Union[Unset,
+            list[OnboardingJustificationsListValidationDecisionItem]]):
         verification_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -135,9 +179,12 @@ def sync(
 
     return sync_detailed(
         client=client,
+        o=o,
         page=page,
         page_size=page_size,
+        query=query,
         user_uuid=user_uuid,
+        validation_decision=validation_decision,
         verification_uuid=verification_uuid,
     ).parsed
 
@@ -145,16 +192,23 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    o: Union[Unset, list[OnboardingJustificationsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationsListValidationDecisionItem]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OnboardingJustification"]]:
     """
     Args:
+        o (Union[Unset, list[OnboardingJustificationsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
+        validation_decision (Union[Unset,
+            list[OnboardingJustificationsListValidationDecisionItem]]):
         verification_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -166,9 +220,12 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        o=o,
         page=page,
         page_size=page_size,
+        query=query,
         user_uuid=user_uuid,
+        validation_decision=validation_decision,
         verification_uuid=verification_uuid,
     )
 
@@ -180,16 +237,23 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    o: Union[Unset, list[OnboardingJustificationsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationsListValidationDecisionItem]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OnboardingJustification"]:
     """
     Args:
+        o (Union[Unset, list[OnboardingJustificationsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
+        validation_decision (Union[Unset,
+            list[OnboardingJustificationsListValidationDecisionItem]]):
         verification_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -203,9 +267,12 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            o=o,
             page=page,
             page_size=page_size,
+            query=query,
             user_uuid=user_uuid,
+            validation_decision=validation_decision,
             verification_uuid=verification_uuid,
         )
     ).parsed
@@ -214,7 +281,10 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
+    o: Union[Unset, list[OnboardingJustificationsListOItem]] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationsListValidationDecisionItem]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OnboardingJustification"]:
     """Get All Pages
@@ -225,7 +295,11 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        o (Union[Unset, list[OnboardingJustificationsListOItem]]):
+        query (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
+        validation_decision (Union[Unset,
+        list[OnboardingJustificationsListValidationDecisionItem]]):
         verification_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -241,7 +315,10 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        o=o,
+        query=query,
         user_uuid=user_uuid,
+        validation_decision=validation_decision,
         verification_uuid=verification_uuid,
     )
 
@@ -290,7 +367,10 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
+    o: Union[Unset, list[OnboardingJustificationsListOItem]] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationsListValidationDecisionItem]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OnboardingJustification"]:
     """Get All Pages (Async)
@@ -301,7 +381,11 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        o (Union[Unset, list[OnboardingJustificationsListOItem]]):
+        query (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
+        validation_decision (Union[Unset,
+        list[OnboardingJustificationsListValidationDecisionItem]]):
         verification_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -317,7 +401,10 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        o=o,
+        query=query,
         user_uuid=user_uuid,
+        validation_decision=validation_decision,
         verification_uuid=verification_uuid,
     )
 
