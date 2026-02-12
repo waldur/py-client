@@ -1271,6 +1271,7 @@ from .obtain_auth_token_request import ObtainAuthTokenRequest
 from .oecd_fos_2007_code_enum import OecdFos2007CodeEnum
 from .offering import Offering
 from .offering_attributes import OfferingAttributes
+from .offering_backend_id_rules_update_request import OfferingBackendIdRulesUpdateRequest
 from .offering_backend_metadata_request import OfferingBackendMetadataRequest
 from .offering_compliance_checklist_update_request import OfferingComplianceChecklistUpdateRequest
 from .offering_component import OfferingComponent
@@ -1730,7 +1731,6 @@ from .patched_open_stack_instance_request import PatchedOpenStackInstanceRequest
 from .patched_open_stack_network_request import PatchedOpenStackNetworkRequest
 from .patched_open_stack_port_request import PatchedOpenStackPortRequest
 from .patched_open_stack_security_group_update_request import PatchedOpenStackSecurityGroupUpdateRequest
-from .patched_open_stack_server_group_request import PatchedOpenStackServerGroupRequest
 from .patched_open_stack_snapshot_request import PatchedOpenStackSnapshotRequest
 from .patched_open_stack_sub_net_request import PatchedOpenStackSubNetRequest
 from .patched_open_stack_tenant_request import PatchedOpenStackTenantRequest
@@ -3866,6 +3866,7 @@ __all__ = (
     "OecdFos2007CodeEnum",
     "Offering",
     "OfferingAttributes",
+    "OfferingBackendIdRulesUpdateRequest",
     "OfferingBackendMetadataRequest",
     "OfferingComplianceChecklistUpdateRequest",
     "OfferingComponent",
@@ -4283,7 +4284,6 @@ __all__ = (
     "PatchedOpenStackNetworkRequest",
     "PatchedOpenStackPortRequest",
     "PatchedOpenStackSecurityGroupUpdateRequest",
-    "PatchedOpenStackServerGroupRequest",
     "PatchedOpenStackSnapshotRequest",
     "PatchedOpenStackSubNetRequest",
     "PatchedOpenStackTenantRequest",

@@ -15,16 +15,21 @@ class CheckUniqueBackendIDRequest:
     Attributes:
         backend_id (str): Backend identifier to check
         check_all_offerings (Union[Unset, bool]): Check across all offerings Default: False.
+        use_offering_rules (Union[Unset, bool]): Apply the offering's backend_id_rules for format and uniqueness
+            validation Default: False.
     """
 
     backend_id: str
     check_all_offerings: Union[Unset, bool] = False
+    use_offering_rules: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         backend_id = self.backend_id
 
         check_all_offerings = self.check_all_offerings
+
+        use_offering_rules = self.use_offering_rules
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -35,6 +40,8 @@ class CheckUniqueBackendIDRequest:
         )
         if check_all_offerings is not UNSET:
             field_dict["check_all_offerings"] = check_all_offerings
+        if use_offering_rules is not UNSET:
+            field_dict["use_offering_rules"] = use_offering_rules
 
         return field_dict
 
@@ -45,9 +52,12 @@ class CheckUniqueBackendIDRequest:
 
         check_all_offerings = d.pop("check_all_offerings", UNSET)
 
+        use_offering_rules = d.pop("use_offering_rules", UNSET)
+
         check_unique_backend_id_request = cls(
             backend_id=backend_id,
             check_all_offerings=check_all_offerings,
+            use_offering_rules=use_offering_rules,
         )
 
         check_unique_backend_id_request.additional_properties = d

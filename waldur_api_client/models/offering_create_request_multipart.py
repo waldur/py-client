@@ -52,6 +52,8 @@ class OfferingCreateRequestMultipart:
         longitude (Union[None, Unset, float]):
         country (Union[BlankEnum, CountryEnum, Unset]): Country code (ISO 3166-1 alpha-2)
         backend_id (Union[Unset, str]):
+        backend_id_rules (Union[Unset, Any]): Validation rules for resource backend_id: format regex and uniqueness
+            scope.
         image (Union[File, None, Unset]):
         backend_metadata (Union[Unset, Any]):
         compliance_checklist (Union[None, Unset, str]):
@@ -84,6 +86,7 @@ class OfferingCreateRequestMultipart:
     longitude: Union[None, Unset, float] = UNSET
     country: Union[BlankEnum, CountryEnum, Unset] = UNSET
     backend_id: Union[Unset, str] = UNSET
+    backend_id_rules: Union[Unset, Any] = UNSET
     image: Union[File, None, Unset] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
     compliance_checklist: Union[None, Unset, str] = UNSET
@@ -184,6 +187,8 @@ class OfferingCreateRequestMultipart:
 
         backend_id = self.backend_id
 
+        backend_id_rules = self.backend_id_rules
+
         image: Union[None, Unset, types.FileTypes]
         if isinstance(self.image, Unset):
             image = UNSET
@@ -260,6 +265,8 @@ class OfferingCreateRequestMultipart:
             field_dict["country"] = country
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
+        if backend_id_rules is not UNSET:
+            field_dict["backend_id_rules"] = backend_id_rules
         if image is not UNSET:
             field_dict["image"] = image
         if backend_metadata is not UNSET:
@@ -371,6 +378,9 @@ class OfferingCreateRequestMultipart:
 
         if not isinstance(self.backend_id, Unset):
             files.append(("backend_id", (None, str(self.backend_id).encode(), "text/plain")))
+
+        if not isinstance(self.backend_id_rules, Unset):
+            files.append(("backend_id_rules", (None, str(self.backend_id_rules).encode(), "text/plain")))
 
         if not isinstance(self.image, Unset):
             if isinstance(self.image, File):
@@ -534,6 +544,8 @@ class OfferingCreateRequestMultipart:
 
         backend_id = d.pop("backend_id", UNSET)
 
+        backend_id_rules = d.pop("backend_id_rules", UNSET)
+
         def _parse_image(data: object) -> Union[File, None, Unset]:
             if data is None:
                 return data
@@ -596,6 +608,7 @@ class OfferingCreateRequestMultipart:
             longitude=longitude,
             country=country,
             backend_id=backend_id,
+            backend_id_rules=backend_id_rules,
             image=image,
             backend_metadata=backend_metadata,
             compliance_checklist=compliance_checklist,

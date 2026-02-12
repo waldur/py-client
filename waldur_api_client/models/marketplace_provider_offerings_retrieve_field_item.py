@@ -5,6 +5,7 @@ class MarketplaceProviderOfferingsRetrieveFieldItem(str, Enum):
     ACCESS_URL = "access_url"
     ATTRIBUTES = "attributes"
     BACKEND_ID = "backend_id"
+    BACKEND_ID_RULES = "backend_id_rules"
     BACKEND_METADATA = "backend_metadata"
     BILLABLE = "billable"
     BILLING_TYPE_CLASSIFICATION = "billing_type_classification"

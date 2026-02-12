@@ -33,6 +33,8 @@ class OfferingUser:
         user_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
             characters
         user_full_name (Union[Unset, str]):
+        user_first_name (Union[Unset, str]):
+        user_last_name (Union[Unset, str]):
         user_email (Union[Unset, str]):
         user_phone_number (Union[Unset, str]):
         user_organization (Union[Unset, str]):
@@ -80,6 +82,8 @@ class OfferingUser:
     user_uuid: Union[Unset, UUID] = UNSET
     user_username: Union[Unset, str] = UNSET
     user_full_name: Union[Unset, str] = UNSET
+    user_first_name: Union[Unset, str] = UNSET
+    user_last_name: Union[Unset, str] = UNSET
     user_email: Union[Unset, str] = UNSET
     user_phone_number: Union[Unset, str] = UNSET
     user_organization: Union[Unset, str] = UNSET
@@ -144,6 +148,10 @@ class OfferingUser:
         user_username = self.user_username
 
         user_full_name = self.user_full_name
+
+        user_first_name = self.user_first_name
+
+        user_last_name = self.user_last_name
 
         user_email = self.user_email
 
@@ -258,6 +266,10 @@ class OfferingUser:
             field_dict["user_username"] = user_username
         if user_full_name is not UNSET:
             field_dict["user_full_name"] = user_full_name
+        if user_first_name is not UNSET:
+            field_dict["user_first_name"] = user_first_name
+        if user_last_name is not UNSET:
+            field_dict["user_last_name"] = user_last_name
         if user_email is not UNSET:
             field_dict["user_email"] = user_email
         if user_phone_number is not UNSET:
@@ -367,6 +379,10 @@ class OfferingUser:
         user_username = d.pop("user_username", UNSET)
 
         user_full_name = d.pop("user_full_name", UNSET)
+
+        user_first_name = d.pop("user_first_name", UNSET)
+
+        user_last_name = d.pop("user_last_name", UNSET)
 
         user_email = d.pop("user_email", UNSET)
 
@@ -511,6 +527,8 @@ class OfferingUser:
             user_uuid=user_uuid,
             user_username=user_username,
             user_full_name=user_full_name,
+            user_first_name=user_first_name,
+            user_last_name=user_last_name,
             user_email=user_email,
             user_phone_number=user_phone_number,
             user_organization=user_organization,

@@ -94,6 +94,8 @@ class ProviderOfferingDetails:
         longitude (Union[None, Unset, float]):
         country (Union[BlankEnum, CountryEnum, Unset]): Country code (ISO 3166-1 alpha-2)
         backend_id (Union[Unset, str]):
+        backend_id_rules (Union[Unset, Any]): Validation rules for resource backend_id: format regex and uniqueness
+            scope.
         organization_groups (Union[Unset, list['OrganizationGroup']]):
         tags (Union[Unset, list['NestedTag']]):
         image (Union[None, Unset, str]):
@@ -167,6 +169,7 @@ class ProviderOfferingDetails:
     longitude: Union[None, Unset, float] = UNSET
     country: Union[BlankEnum, CountryEnum, Unset] = UNSET
     backend_id: Union[Unset, str] = UNSET
+    backend_id_rules: Union[Unset, Any] = UNSET
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     tags: Union[Unset, list["NestedTag"]] = UNSET
     image: Union[None, Unset, str] = UNSET
@@ -427,6 +430,8 @@ class ProviderOfferingDetails:
 
         backend_id = self.backend_id
 
+        backend_id_rules = self.backend_id_rules
+
         organization_groups: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.organization_groups, Unset):
             organization_groups = []
@@ -632,6 +637,8 @@ class ProviderOfferingDetails:
             field_dict["country"] = country
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
+        if backend_id_rules is not UNSET:
+            field_dict["backend_id_rules"] = backend_id_rules
         if organization_groups is not UNSET:
             field_dict["organization_groups"] = organization_groups
         if tags is not UNSET:
@@ -1039,6 +1046,8 @@ class ProviderOfferingDetails:
 
         backend_id = d.pop("backend_id", UNSET)
 
+        backend_id_rules = d.pop("backend_id_rules", UNSET)
+
         organization_groups = []
         _organization_groups = d.pop("organization_groups", UNSET)
         for organization_groups_item_data in _organization_groups or []:
@@ -1234,6 +1243,7 @@ class ProviderOfferingDetails:
             longitude=longitude,
             country=country,
             backend_id=backend_id,
+            backend_id_rules=backend_id_rules,
             organization_groups=organization_groups,
             tags=tags,
             image=image,
