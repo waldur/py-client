@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class ModeEnum(str, Enum):
+class SlurmCommandResultModeEnum(str, Enum):
     EMULATOR = "emulator"
     PRODUCTION = "production"
 

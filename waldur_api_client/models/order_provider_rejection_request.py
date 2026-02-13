@@ -6,50 +6,41 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="PatchedThreadSessionRequest")
+T = TypeVar("T", bound="OrderProviderRejectionRequest")
 
 
 @_attrs_define
-class PatchedThreadSessionRequest:
+class OrderProviderRejectionRequest:
     """
     Attributes:
-        name (Union[Unset, str]):
-        is_archived (Union[Unset, bool]):
+        provider_rejection_comment (Union[Unset, str]):
     """
 
-    name: Union[Unset, str] = UNSET
-    is_archived: Union[Unset, bool] = UNSET
+    provider_rejection_comment: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
-
-        is_archived = self.is_archived
+        provider_rejection_comment = self.provider_rejection_comment
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if name is not UNSET:
-            field_dict["name"] = name
-        if is_archived is not UNSET:
-            field_dict["is_archived"] = is_archived
+        if provider_rejection_comment is not UNSET:
+            field_dict["provider_rejection_comment"] = provider_rejection_comment
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name", UNSET)
+        provider_rejection_comment = d.pop("provider_rejection_comment", UNSET)
 
-        is_archived = d.pop("is_archived", UNSET)
-
-        patched_thread_session_request = cls(
-            name=name,
-            is_archived=is_archived,
+        order_provider_rejection_request = cls(
+            provider_rejection_comment=provider_rejection_comment,
         )
 
-        patched_thread_session_request.additional_properties = d
-        return patched_thread_session_request
+        order_provider_rejection_request.additional_properties = d
+        return order_provider_rejection_request
 
     @property
     def additional_keys(self) -> list[str]:

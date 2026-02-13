@@ -1,3 +1,4 @@
+import datetime
 from http import HTTPStatus
 from typing import Any, Union
 from uuid import UUID
@@ -7,6 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.chat_threads_list_field_item import ChatThreadsListFieldItem
+from ...models.chat_threads_list_o_item import ChatThreadsListOItem
 from ...models.thread_session import ThreadSession
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
@@ -14,13 +16,22 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
+    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_created: Union[Unset, str] = UNSET
+    if not isinstance(created, Unset):
+        json_created = created.isoformat()
+    params["created"] = json_created
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -33,9 +44,25 @@ def _get_kwargs(
 
     params["is_archived"] = is_archived
 
+    json_modified: Union[Unset, str] = UNSET
+    if not isinstance(modified, Unset):
+        json_modified = modified.isoformat()
+    params["modified"] = json_modified
+
+    json_o: Union[Unset, list[str]] = UNSET
+    if not isinstance(o, Unset):
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
+
+    params["o"] = json_o
+
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["query"] = query
 
     json_user: Union[Unset, str] = UNSET
     if not isinstance(user, Unset):
@@ -82,18 +109,26 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
+    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ThreadSession"]]:
     """
     Args:
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ChatThreadsListFieldItem]]):
         is_archived (Union[Unset, bool]):
+        modified (Union[Unset, datetime.date]):
+        o (Union[Unset, list[ChatThreadsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         user (Union[Unset, UUID]):
 
     Raises:
@@ -105,10 +140,14 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        created=created,
         field=field,
         is_archived=is_archived,
+        modified=modified,
+        o=o,
         page=page,
         page_size=page_size,
+        query=query,
         user=user,
     )
 
@@ -122,18 +161,26 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
+    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> list["ThreadSession"]:
     """
     Args:
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ChatThreadsListFieldItem]]):
         is_archived (Union[Unset, bool]):
+        modified (Union[Unset, datetime.date]):
+        o (Union[Unset, list[ChatThreadsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         user (Union[Unset, UUID]):
 
     Raises:
@@ -146,10 +193,14 @@ def sync(
 
     return sync_detailed(
         client=client,
+        created=created,
         field=field,
         is_archived=is_archived,
+        modified=modified,
+        o=o,
         page=page,
         page_size=page_size,
+        query=query,
         user=user,
     ).parsed
 
@@ -157,18 +208,26 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
+    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ThreadSession"]]:
     """
     Args:
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ChatThreadsListFieldItem]]):
         is_archived (Union[Unset, bool]):
+        modified (Union[Unset, datetime.date]):
+        o (Union[Unset, list[ChatThreadsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         user (Union[Unset, UUID]):
 
     Raises:
@@ -180,10 +239,14 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        created=created,
         field=field,
         is_archived=is_archived,
+        modified=modified,
+        o=o,
         page=page,
         page_size=page_size,
+        query=query,
         user=user,
     )
 
@@ -195,18 +258,26 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
+    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> list["ThreadSession"]:
     """
     Args:
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ChatThreadsListFieldItem]]):
         is_archived (Union[Unset, bool]):
+        modified (Union[Unset, datetime.date]):
+        o (Union[Unset, list[ChatThreadsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         user (Union[Unset, UUID]):
 
     Raises:
@@ -220,10 +291,14 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            created=created,
             field=field,
             is_archived=is_archived,
+            modified=modified,
+            o=o,
             page=page,
             page_size=page_size,
+            query=query,
             user=user,
         )
     ).parsed
@@ -232,8 +307,12 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
+    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> list["ThreadSession"]:
     """Get All Pages
@@ -244,8 +323,12 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ChatThreadsListFieldItem]]):
         is_archived (Union[Unset, bool]):
+        modified (Union[Unset, datetime.date]):
+        o (Union[Unset, list[ChatThreadsListOItem]]):
+        query (Union[Unset, str]):
         user (Union[Unset, UUID]):
 
     Raises:
@@ -261,8 +344,12 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        created=created,
         field=field,
         is_archived=is_archived,
+        modified=modified,
+        o=o,
+        query=query,
         user=user,
     )
 
@@ -311,8 +398,12 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
+    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
+    query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> list["ThreadSession"]:
     """Get All Pages (Async)
@@ -323,8 +414,12 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ChatThreadsListFieldItem]]):
         is_archived (Union[Unset, bool]):
+        modified (Union[Unset, datetime.date]):
+        o (Union[Unset, list[ChatThreadsListOItem]]):
+        query (Union[Unset, str]):
         user (Union[Unset, UUID]):
 
     Raises:
@@ -340,8 +435,12 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        created=created,
         field=field,
         is_archived=is_archived,
+        modified=modified,
+        o=o,
+        query=query,
         user=user,
     )
 

@@ -112,6 +112,8 @@ class OrderDetails:
         provider_message_attachment (Union[None, Unset, str]):
         consumer_message (Union[Unset, str]):
         consumer_message_attachment (Union[None, Unset, str]):
+        consumer_rejection_comment (Union[Unset, str]):
+        provider_rejection_comment (Union[Unset, str]):
         issue (Union['IssueReference', None, Unset]):
     """
 
@@ -196,6 +198,8 @@ class OrderDetails:
     provider_message_attachment: Union[None, Unset, str] = UNSET
     consumer_message: Union[Unset, str] = UNSET
     consumer_message_attachment: Union[None, Unset, str] = UNSET
+    consumer_rejection_comment: Union[Unset, str] = UNSET
+    provider_rejection_comment: Union[Unset, str] = UNSET
     issue: Union["IssueReference", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -538,6 +542,10 @@ class OrderDetails:
         else:
             consumer_message_attachment = self.consumer_message_attachment
 
+        consumer_rejection_comment = self.consumer_rejection_comment
+
+        provider_rejection_comment = self.provider_rejection_comment
+
         issue: Union[None, Unset, dict[str, Any]]
         if isinstance(self.issue, Unset):
             issue = UNSET
@@ -711,6 +719,10 @@ class OrderDetails:
             field_dict["consumer_message"] = consumer_message
         if consumer_message_attachment is not UNSET:
             field_dict["consumer_message_attachment"] = consumer_message_attachment
+        if consumer_rejection_comment is not UNSET:
+            field_dict["consumer_rejection_comment"] = consumer_rejection_comment
+        if provider_rejection_comment is not UNSET:
+            field_dict["provider_rejection_comment"] = provider_rejection_comment
         if issue is not UNSET:
             field_dict["issue"] = issue
 
@@ -1257,6 +1269,10 @@ class OrderDetails:
 
         consumer_message_attachment = _parse_consumer_message_attachment(d.pop("consumer_message_attachment", UNSET))
 
+        consumer_rejection_comment = d.pop("consumer_rejection_comment", UNSET)
+
+        provider_rejection_comment = d.pop("provider_rejection_comment", UNSET)
+
         def _parse_issue(data: object) -> Union["IssueReference", None, Unset]:
             if data is None:
                 return data
@@ -1356,6 +1372,8 @@ class OrderDetails:
             provider_message_attachment=provider_message_attachment,
             consumer_message=consumer_message,
             consumer_message_attachment=consumer_message_attachment,
+            consumer_rejection_comment=consumer_rejection_comment,
+            provider_rejection_comment=provider_rejection_comment,
             issue=issue,
         )
 

@@ -13,11 +13,14 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
+    include_history: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["include_history"] = include_history
 
     params["page"] = page
 
@@ -68,12 +71,14 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    include_history: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Message"]]:
     """
     Args:
+        include_history (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         thread (Union[Unset, UUID]):
@@ -87,6 +92,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        include_history=include_history,
         page=page,
         page_size=page_size,
         thread=thread,
@@ -102,12 +108,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    include_history: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> list["Message"]:
     """
     Args:
+        include_history (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         thread (Union[Unset, UUID]):
@@ -122,6 +130,7 @@ def sync(
 
     return sync_detailed(
         client=client,
+        include_history=include_history,
         page=page,
         page_size=page_size,
         thread=thread,
@@ -131,12 +140,14 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    include_history: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Message"]]:
     """
     Args:
+        include_history (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         thread (Union[Unset, UUID]):
@@ -150,6 +161,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        include_history=include_history,
         page=page,
         page_size=page_size,
         thread=thread,
@@ -163,12 +175,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    include_history: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> list["Message"]:
     """
     Args:
+        include_history (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         thread (Union[Unset, UUID]):
@@ -184,6 +198,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            include_history=include_history,
             page=page,
             page_size=page_size,
             thread=thread,
@@ -194,6 +209,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
+    include_history: Union[Unset, bool] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> list["Message"]:
     """Get All Pages
@@ -204,6 +220,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        include_history (Union[Unset, bool]):
         thread (Union[Unset, UUID]):
 
     Raises:
@@ -219,6 +236,7 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        include_history=include_history,
         thread=thread,
     )
 
@@ -267,6 +285,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
+    include_history: Union[Unset, bool] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> list["Message"]:
     """Get All Pages (Async)
@@ -277,6 +296,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        include_history (Union[Unset, bool]):
         thread (Union[Unset, UUID]):
 
     Raises:
@@ -292,6 +312,7 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        include_history=include_history,
         thread=thread,
     )
 

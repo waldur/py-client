@@ -6,17 +6,27 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.order_provider_rejection_request import OrderProviderRejectionRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
+    *,
+    body: OrderProviderRejectionRequest,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": f"/api/marketplace-orders/{uuid}/reject_by_provider/",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -41,6 +51,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: OrderProviderRejectionRequest,
 ) -> Response[Any]:
     """Reject an order (provider)
 
@@ -48,6 +59,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
+        body (OrderProviderRejectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -59,6 +71,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -72,6 +85,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: OrderProviderRejectionRequest,
 ) -> Response[Any]:
     """Reject an order (provider)
 
@@ -79,6 +93,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
+        body (OrderProviderRejectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -90,6 +105,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)

@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,7 +8,6 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.message_role_enum import MessageRoleEnum
-from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="Message")
 
@@ -22,8 +21,8 @@ class Message:
         role (MessageRoleEnum):
         content (str):
         sequence_index (int):
+        replaces (UUID):
         created (datetime.datetime):
-        replaces (Union[None, UUID, Unset]):
     """
 
     uuid: UUID
@@ -31,8 +30,8 @@ class Message:
     role: MessageRoleEnum
     content: str
     sequence_index: int
+    replaces: UUID
     created: datetime.datetime
-    replaces: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,15 +45,9 @@ class Message:
 
         sequence_index = self.sequence_index
 
-        created = self.created.isoformat()
+        replaces = str(self.replaces)
 
-        replaces: Union[None, Unset, str]
-        if isinstance(self.replaces, Unset):
-            replaces = UNSET
-        elif isinstance(self.replaces, UUID):
-            replaces = str(self.replaces)
-        else:
-            replaces = self.replaces
+        created = self.created.isoformat()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -65,11 +58,10 @@ class Message:
                 "role": role,
                 "content": content,
                 "sequence_index": sequence_index,
+                "replaces": replaces,
                 "created": created,
             }
         )
-        if replaces is not UNSET:
-            field_dict["replaces"] = replaces
 
         return field_dict
 
@@ -86,24 +78,9 @@ class Message:
 
         sequence_index = d.pop("sequence_index")
 
+        replaces = UUID(d.pop("replaces"))
+
         created = isoparse(d.pop("created"))
-
-        def _parse_replaces(data: object) -> Union[None, UUID, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                replaces_type_0 = UUID(data)
-
-                return replaces_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, UUID, Unset], data)
-
-        replaces = _parse_replaces(d.pop("replaces", UNSET))
 
         message = cls(
             uuid=uuid,
@@ -111,8 +88,8 @@ class Message:
             role=role,
             content=content,
             sequence_index=sequence_index,
-            created=created,
             replaces=replaces,
+            created=created,
         )
 
         message.additional_properties = d

@@ -180,6 +180,7 @@ class ConstanceSettings:
         oidc_cache_timeout (Union[Unset, int]):
         oidc_access_token_enabled (Union[Unset, bool]):
         oidc_block_creation_of_uninvited_users (Union[Unset, bool]):
+        oidc_matchmaking_by_email (Union[Unset, bool]):
         deactivate_user_if_no_roles (Union[Unset, bool]):
         waldur_auth_social_role_claim (Union[Unset, str]):
         remote_eduteams_refresh_token (Union[Unset, str]):
@@ -414,6 +415,7 @@ class ConstanceSettings:
     oidc_cache_timeout: Union[Unset, int] = UNSET
     oidc_access_token_enabled: Union[Unset, bool] = UNSET
     oidc_block_creation_of_uninvited_users: Union[Unset, bool] = UNSET
+    oidc_matchmaking_by_email: Union[Unset, bool] = UNSET
     deactivate_user_if_no_roles: Union[Unset, bool] = UNSET
     waldur_auth_social_role_claim: Union[Unset, str] = UNSET
     remote_eduteams_refresh_token: Union[Unset, str] = UNSET
@@ -875,6 +877,8 @@ class ConstanceSettings:
         oidc_access_token_enabled = self.oidc_access_token_enabled
 
         oidc_block_creation_of_uninvited_users = self.oidc_block_creation_of_uninvited_users
+
+        oidc_matchmaking_by_email = self.oidc_matchmaking_by_email
 
         deactivate_user_if_no_roles = self.deactivate_user_if_no_roles
 
@@ -1365,6 +1369,8 @@ class ConstanceSettings:
             field_dict["OIDC_ACCESS_TOKEN_ENABLED"] = oidc_access_token_enabled
         if oidc_block_creation_of_uninvited_users is not UNSET:
             field_dict["OIDC_BLOCK_CREATION_OF_UNINVITED_USERS"] = oidc_block_creation_of_uninvited_users
+        if oidc_matchmaking_by_email is not UNSET:
+            field_dict["OIDC_MATCHMAKING_BY_EMAIL"] = oidc_matchmaking_by_email
         if deactivate_user_if_no_roles is not UNSET:
             field_dict["DEACTIVATE_USER_IF_NO_ROLES"] = deactivate_user_if_no_roles
         if waldur_auth_social_role_claim is not UNSET:
@@ -1939,6 +1945,8 @@ class ConstanceSettings:
 
         oidc_block_creation_of_uninvited_users = d.pop("OIDC_BLOCK_CREATION_OF_UNINVITED_USERS", UNSET)
 
+        oidc_matchmaking_by_email = d.pop("OIDC_MATCHMAKING_BY_EMAIL", UNSET)
+
         deactivate_user_if_no_roles = d.pop("DEACTIVATE_USER_IF_NO_ROLES", UNSET)
 
         waldur_auth_social_role_claim = d.pop("WALDUR_AUTH_SOCIAL_ROLE_CLAIM", UNSET)
@@ -2245,6 +2253,7 @@ class ConstanceSettings:
             oidc_cache_timeout=oidc_cache_timeout,
             oidc_access_token_enabled=oidc_access_token_enabled,
             oidc_block_creation_of_uninvited_users=oidc_block_creation_of_uninvited_users,
+            oidc_matchmaking_by_email=oidc_matchmaking_by_email,
             deactivate_user_if_no_roles=deactivate_user_if_no_roles,
             waldur_auth_social_role_claim=waldur_auth_social_role_claim,
             remote_eduteams_refresh_token=remote_eduteams_refresh_token,

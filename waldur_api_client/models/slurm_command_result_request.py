@@ -5,7 +5,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.mode_enum import ModeEnum
+from ..models.slurm_command_result_mode_enum import SlurmCommandResultModeEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="SlurmCommandResultRequest")
@@ -18,14 +18,14 @@ class SlurmCommandResultRequest:
         resource_uuid (UUID): UUID of the resource the command was applied to
         success (bool): Whether the command was applied successfully
         error_message (Union[Unset, str]): Error message if the command failed Default: ''.
-        mode (Union[Unset, ModeEnum]):  Default: ModeEnum.PRODUCTION.
+        mode (Union[Unset, SlurmCommandResultModeEnum]):  Default: SlurmCommandResultModeEnum.PRODUCTION.
         commands_executed (Union[Unset, list[str]]): List of shell commands actually executed by the site agent
     """
 
     resource_uuid: UUID
     success: bool
     error_message: Union[Unset, str] = ""
-    mode: Union[Unset, ModeEnum] = ModeEnum.PRODUCTION
+    mode: Union[Unset, SlurmCommandResultModeEnum] = SlurmCommandResultModeEnum.PRODUCTION
     commands_executed: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -71,11 +71,11 @@ class SlurmCommandResultRequest:
         error_message = d.pop("error_message", UNSET)
 
         _mode = d.pop("mode", UNSET)
-        mode: Union[Unset, ModeEnum]
+        mode: Union[Unset, SlurmCommandResultModeEnum]
         if isinstance(_mode, Unset):
             mode = UNSET
         else:
-            mode = ModeEnum(_mode)
+            mode = SlurmCommandResultModeEnum(_mode)
 
         commands_executed = cast(list[str], d.pop("commands_executed", UNSET))
 

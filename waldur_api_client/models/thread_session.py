@@ -22,7 +22,10 @@ class ThreadSession:
         flags (Union[Unset, Any]):
         is_archived (Union[Unset, bool]):
         message_count (Union[Unset, int]):
+        user_username (Union[Unset, str]):
+        user_full_name (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
+        modified (Union[Unset, datetime.datetime]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -31,7 +34,10 @@ class ThreadSession:
     flags: Union[Unset, Any] = UNSET
     is_archived: Union[Unset, bool] = UNSET
     message_count: Union[Unset, int] = UNSET
+    user_username: Union[Unset, str] = UNSET
+    user_full_name: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
+    modified: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -51,9 +57,17 @@ class ThreadSession:
 
         message_count = self.message_count
 
+        user_username = self.user_username
+
+        user_full_name = self.user_full_name
+
         created: Union[Unset, str] = UNSET
         if not isinstance(self.created, Unset):
             created = self.created.isoformat()
+
+        modified: Union[Unset, str] = UNSET
+        if not isinstance(self.modified, Unset):
+            modified = self.modified.isoformat()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -70,8 +84,14 @@ class ThreadSession:
             field_dict["is_archived"] = is_archived
         if message_count is not UNSET:
             field_dict["message_count"] = message_count
+        if user_username is not UNSET:
+            field_dict["user_username"] = user_username
+        if user_full_name is not UNSET:
+            field_dict["user_full_name"] = user_full_name
         if created is not UNSET:
             field_dict["created"] = created
+        if modified is not UNSET:
+            field_dict["modified"] = modified
 
         return field_dict
 
@@ -100,12 +120,23 @@ class ThreadSession:
 
         message_count = d.pop("message_count", UNSET)
 
+        user_username = d.pop("user_username", UNSET)
+
+        user_full_name = d.pop("user_full_name", UNSET)
+
         _created = d.pop("created", UNSET)
         created: Union[Unset, datetime.datetime]
         if isinstance(_created, Unset):
             created = UNSET
         else:
             created = isoparse(_created)
+
+        _modified = d.pop("modified", UNSET)
+        modified: Union[Unset, datetime.datetime]
+        if isinstance(_modified, Unset):
+            modified = UNSET
+        else:
+            modified = isoparse(_modified)
 
         thread_session = cls(
             uuid=uuid,
@@ -114,7 +145,10 @@ class ThreadSession:
             flags=flags,
             is_archived=is_archived,
             message_count=message_count,
+            user_username=user_username,
+            user_full_name=user_full_name,
             created=created,
+            modified=modified,
         )
 
         thread_session.additional_properties = d

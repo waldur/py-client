@@ -347,6 +347,7 @@ from .celery_worker_stats import CeleryWorkerStats
 from .celery_worker_stats_rusage import CeleryWorkerStatsRusage
 from .celery_worker_stats_total import CeleryWorkerStatsTotal
 from .chat_messages_edit_body import ChatMessagesEditBody
+from .chat_request_mode_enum import ChatRequestModeEnum
 from .chat_request_request import ChatRequestRequest
 from .chat_response import ChatResponse
 from .chat_response_m import ChatResponseM
@@ -354,6 +355,7 @@ from .chat_session import ChatSession
 from .chat_sessions_list_field_item import ChatSessionsListFieldItem
 from .chat_sessions_retrieve_field_item import ChatSessionsRetrieveFieldItem
 from .chat_threads_list_field_item import ChatThreadsListFieldItem
+from .chat_threads_list_o_item import ChatThreadsListOItem
 from .chat_threads_retrieve_field_item import ChatThreadsRetrieveFieldItem
 from .chat_tools_execute_response_200 import ChatToolsExecuteResponse200
 from .check_unique_backend_id_request import CheckUniqueBackendIDRequest
@@ -1179,7 +1181,6 @@ from .merged_plugin_options_request import MergedPluginOptionsRequest
 from .merged_secret_options import MergedSecretOptions
 from .merged_secret_options_request import MergedSecretOptionsRequest
 from .message import Message
-from .message_request import MessageRequest
 from .message_response import MessageResponse
 from .message_role_enum import MessageRoleEnum
 from .message_state_cache import MessageStateCache
@@ -1192,7 +1193,6 @@ from .migration_create_request import MigrationCreateRequest
 from .migration_details import MigrationDetails
 from .migration_details_request import MigrationDetailsRequest
 from .minimal_consumption_logic_enum import MinimalConsumptionLogicEnum
-from .mode_enum import ModeEnum
 from .move_offering_request import MoveOfferingRequest
 from .move_project_request import MoveProjectRequest
 from .move_resource_request import MoveResourceRequest
@@ -1622,6 +1622,7 @@ from .order_info_response import OrderInfoResponse
 from .order_provider_info_request import OrderProviderInfoRequest
 from .order_provider_info_request_form import OrderProviderInfoRequestForm
 from .order_provider_info_request_multipart import OrderProviderInfoRequestMultipart
+from .order_provider_rejection_request import OrderProviderRejectionRequest
 from .order_state import OrderState
 from .order_stats_response import OrderStatsResponse
 from .order_stats_response_by_state import OrderStatsResponseByState
@@ -1795,7 +1796,6 @@ from .patched_software_catalog_request import PatchedSoftwareCatalogRequest
 from .patched_software_package_request import PatchedSoftwarePackageRequest
 from .patched_tag_request import PatchedTagRequest
 from .patched_template_request import PatchedTemplateRequest
-from .patched_thread_session_request import PatchedThreadSessionRequest
 from .patched_user_agreement_request import PatchedUserAgreementRequest
 from .patched_user_info_request import PatchedUserInfoRequest
 from .patched_user_offering_consent_request import PatchedUserOfferingConsentRequest
@@ -2438,6 +2438,7 @@ from .slurm_association import SlurmAssociation
 from .slurm_command import SlurmCommand
 from .slurm_command_history import SlurmCommandHistory
 from .slurm_command_parameters import SlurmCommandParameters
+from .slurm_command_result_mode_enum import SlurmCommandResultModeEnum
 from .slurm_command_result_request import SlurmCommandResultRequest
 from .slurm_invoices_slurm_package_create_order_attributes import SlurmInvoicesSlurmPackageCreateOrderAttributes
 from .slurm_jobs_list_field_item import SlurmJobsListFieldItem
@@ -3026,6 +3027,7 @@ __all__ = (
     "CeleryWorkerStatsRusage",
     "CeleryWorkerStatsTotal",
     "ChatMessagesEditBody",
+    "ChatRequestModeEnum",
     "ChatRequestRequest",
     "ChatResponse",
     "ChatResponseM",
@@ -3033,6 +3035,7 @@ __all__ = (
     "ChatSessionsListFieldItem",
     "ChatSessionsRetrieveFieldItem",
     "ChatThreadsListFieldItem",
+    "ChatThreadsListOItem",
     "ChatThreadsRetrieveFieldItem",
     "ChatToolsExecuteResponse200",
     "Checklist",
@@ -3774,7 +3777,6 @@ __all__ = (
     "MergedSecretOptions",
     "MergedSecretOptionsRequest",
     "Message",
-    "MessageRequest",
     "MessageResponse",
     "MessageRoleEnum",
     "MessageStateCache",
@@ -3787,7 +3789,6 @@ __all__ = (
     "MigrationDetails",
     "MigrationDetailsRequest",
     "MinimalConsumptionLogicEnum",
-    "ModeEnum",
     "MoveOfferingRequest",
     "MoveProjectRequest",
     "MoveResourceRequest",
@@ -4179,6 +4180,7 @@ __all__ = (
     "OrderProviderInfoRequest",
     "OrderProviderInfoRequestForm",
     "OrderProviderInfoRequestMultipart",
+    "OrderProviderRejectionRequest",
     "OrderState",
     "OrderStatsResponse",
     "OrderStatsResponseByState",
@@ -4348,7 +4350,6 @@ __all__ = (
     "PatchedSoftwarePackageRequest",
     "PatchedTagRequest",
     "PatchedTemplateRequest",
-    "PatchedThreadSessionRequest",
     "PatchedUserAgreementRequest",
     "PatchedUserInfoRequest",
     "PatchedUserOfferingConsentRequest",
@@ -4943,6 +4944,7 @@ __all__ = (
     "SlurmCommand",
     "SlurmCommandHistory",
     "SlurmCommandParameters",
+    "SlurmCommandResultModeEnum",
     "SlurmCommandResultRequest",
     "SlurmInvoicesSlurmPackageCreateOrderAttributes",
     "SlurmJobsListFieldItem",
