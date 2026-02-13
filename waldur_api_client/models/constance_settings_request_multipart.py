@@ -35,7 +35,7 @@ class ConstanceSettingsRequestMultipart:
         anonymous_user_can_view_offerings (Union[Unset, bool]):
         anonymous_user_can_view_plans (Union[Unset, bool]):
         restricted_offering_visibility_mode (Union[Unset, str]):
-        allow_service_provider_offering_activation (Union[Unset, bool]):
+        allow_service_provider_offering_management (Union[Unset, bool]):
         notify_staff_about_approvals (Union[Unset, bool]):
         notify_about_resource_change (Union[Unset, bool]):
         disable_sending_notifications_about_resource_update (Union[Unset, bool]):
@@ -269,7 +269,7 @@ class ConstanceSettingsRequestMultipart:
     anonymous_user_can_view_offerings: Union[Unset, bool] = UNSET
     anonymous_user_can_view_plans: Union[Unset, bool] = UNSET
     restricted_offering_visibility_mode: Union[Unset, str] = UNSET
-    allow_service_provider_offering_activation: Union[Unset, bool] = UNSET
+    allow_service_provider_offering_management: Union[Unset, bool] = UNSET
     notify_staff_about_approvals: Union[Unset, bool] = UNSET
     notify_about_resource_change: Union[Unset, bool] = UNSET
     disable_sending_notifications_about_resource_update: Union[Unset, bool] = UNSET
@@ -517,7 +517,7 @@ class ConstanceSettingsRequestMultipart:
 
         restricted_offering_visibility_mode = self.restricted_offering_visibility_mode
 
-        allow_service_provider_offering_activation = self.allow_service_provider_offering_activation
+        allow_service_provider_offering_management = self.allow_service_provider_offering_management
 
         notify_staff_about_approvals = self.notify_staff_about_approvals
 
@@ -1105,8 +1105,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["ANONYMOUS_USER_CAN_VIEW_PLANS"] = anonymous_user_can_view_plans
         if restricted_offering_visibility_mode is not UNSET:
             field_dict["RESTRICTED_OFFERING_VISIBILITY_MODE"] = restricted_offering_visibility_mode
-        if allow_service_provider_offering_activation is not UNSET:
-            field_dict["ALLOW_SERVICE_PROVIDER_OFFERING_ACTIVATION"] = allow_service_provider_offering_activation
+        if allow_service_provider_offering_management is not UNSET:
+            field_dict["ALLOW_SERVICE_PROVIDER_OFFERING_MANAGEMENT"] = allow_service_provider_offering_management
         if notify_staff_about_approvals is not UNSET:
             field_dict["NOTIFY_STAFF_ABOUT_APPROVALS"] = notify_staff_about_approvals
         if notify_about_resource_change is not UNSET:
@@ -1611,11 +1611,11 @@ class ConstanceSettingsRequestMultipart:
                 )
             )
 
-        if not isinstance(self.allow_service_provider_offering_activation, Unset):
+        if not isinstance(self.allow_service_provider_offering_management, Unset):
             files.append(
                 (
-                    "ALLOW_SERVICE_PROVIDER_OFFERING_ACTIVATION",
-                    (None, str(self.allow_service_provider_offering_activation).encode(), "text/plain"),
+                    "ALLOW_SERVICE_PROVIDER_OFFERING_MANAGEMENT",
+                    (None, str(self.allow_service_provider_offering_management).encode(), "text/plain"),
                 )
             )
 
@@ -2824,7 +2824,7 @@ class ConstanceSettingsRequestMultipart:
 
         restricted_offering_visibility_mode = d.pop("RESTRICTED_OFFERING_VISIBILITY_MODE", UNSET)
 
-        allow_service_provider_offering_activation = d.pop("ALLOW_SERVICE_PROVIDER_OFFERING_ACTIVATION", UNSET)
+        allow_service_provider_offering_management = d.pop("ALLOW_SERVICE_PROVIDER_OFFERING_MANAGEMENT", UNSET)
 
         notify_staff_about_approvals = d.pop("NOTIFY_STAFF_ABOUT_APPROVALS", UNSET)
 
@@ -3486,7 +3486,7 @@ class ConstanceSettingsRequestMultipart:
             anonymous_user_can_view_offerings=anonymous_user_can_view_offerings,
             anonymous_user_can_view_plans=anonymous_user_can_view_plans,
             restricted_offering_visibility_mode=restricted_offering_visibility_mode,
-            allow_service_provider_offering_activation=allow_service_provider_offering_activation,
+            allow_service_provider_offering_management=allow_service_provider_offering_management,
             notify_staff_about_approvals=notify_staff_about_approvals,
             notify_about_resource_change=notify_about_resource_change,
             disable_sending_notifications_about_resource_update=disable_sending_notifications_about_resource_update,
