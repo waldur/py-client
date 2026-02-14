@@ -51,6 +51,8 @@ class MergedPluginOptions:
             with attachments to consumers on pending orders, and consumers can respond.
         notify_about_provider_consumer_messages (Union[Unset, bool]): If set to True, send email notifications when
             providers or consumers exchange messages on pending orders.
+        restrict_deletion_with_active_resources (Union[Unset, bool]): If set to True, offering cannot be deleted while
+            it has non-terminated resources.
         default_internal_network_mtu (Union[Unset, int]): If set, it will be used as a default MTU for the first network
             in a tenant
         max_instances (Union[Unset, int]): Default limit for number of instances in OpenStack tenant
@@ -140,6 +142,7 @@ class MergedPluginOptions:
     can_restore_resource: Union[Unset, bool] = UNSET
     enable_provider_consumer_messaging: Union[Unset, bool] = UNSET
     notify_about_provider_consumer_messages: Union[Unset, bool] = UNSET
+    restrict_deletion_with_active_resources: Union[Unset, bool] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
     max_volumes: Union[Unset, int] = UNSET
@@ -232,6 +235,8 @@ class MergedPluginOptions:
         enable_provider_consumer_messaging = self.enable_provider_consumer_messaging
 
         notify_about_provider_consumer_messages = self.notify_about_provider_consumer_messages
+
+        restrict_deletion_with_active_resources = self.restrict_deletion_with_active_resources
 
         default_internal_network_mtu = self.default_internal_network_mtu
 
@@ -386,6 +391,8 @@ class MergedPluginOptions:
             field_dict["enable_provider_consumer_messaging"] = enable_provider_consumer_messaging
         if notify_about_provider_consumer_messages is not UNSET:
             field_dict["notify_about_provider_consumer_messages"] = notify_about_provider_consumer_messages
+        if restrict_deletion_with_active_resources is not UNSET:
+            field_dict["restrict_deletion_with_active_resources"] = restrict_deletion_with_active_resources
         if default_internal_network_mtu is not UNSET:
             field_dict["default_internal_network_mtu"] = default_internal_network_mtu
         if max_instances is not UNSET:
@@ -537,6 +544,8 @@ class MergedPluginOptions:
         enable_provider_consumer_messaging = d.pop("enable_provider_consumer_messaging", UNSET)
 
         notify_about_provider_consumer_messages = d.pop("notify_about_provider_consumer_messages", UNSET)
+
+        restrict_deletion_with_active_resources = d.pop("restrict_deletion_with_active_resources", UNSET)
 
         default_internal_network_mtu = d.pop("default_internal_network_mtu", UNSET)
 
@@ -691,6 +700,7 @@ class MergedPluginOptions:
             can_restore_resource=can_restore_resource,
             enable_provider_consumer_messaging=enable_provider_consumer_messaging,
             notify_about_provider_consumer_messages=notify_about_provider_consumer_messages,
+            restrict_deletion_with_active_resources=restrict_deletion_with_active_resources,
             default_internal_network_mtu=default_internal_network_mtu,
             max_instances=max_instances,
             max_volumes=max_volumes,
