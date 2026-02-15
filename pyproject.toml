@@ -10,7 +10,13 @@ readme = "README.md"
 packages = [
     {include = "waldur_api_client"},
 ]
-include = ["CHANGELOG.md", "waldur_api_client/py.typed"]
+include = [
+    "CHANGELOG.md",
+    "waldur_api_client/py.typed",
+    "waldur_api_client/llms.txt",
+    "waldur_api_client/llms-full.txt",
+    "waldur_api_client/api-map.md",
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
