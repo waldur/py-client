@@ -2514,6 +2514,23 @@ from .sync_resources_request_request import SyncResourcesRequestRequest
 from .sync_resources_response import SyncResourcesResponse
 from .sync_resources_response_errors_item import SyncResourcesResponseErrorsItem
 from .sync_status_enum import SyncStatusEnum
+from .system_log import SystemLog
+from .system_log_instance import SystemLogInstance
+from .system_log_source_enum import SystemLogSourceEnum
+from .system_log_stats_instance import SystemLogStatsInstance
+from .system_log_stats_response import SystemLogStatsResponse
+from .system_logs_count_level import SystemLogsCountLevel
+from .system_logs_count_o_item import SystemLogsCountOItem
+from .system_logs_count_source import SystemLogsCountSource
+from .system_logs_instances_count_level import SystemLogsInstancesCountLevel
+from .system_logs_instances_count_o_item import SystemLogsInstancesCountOItem
+from .system_logs_instances_count_source import SystemLogsInstancesCountSource
+from .system_logs_instances_list_level import SystemLogsInstancesListLevel
+from .system_logs_instances_list_o_item import SystemLogsInstancesListOItem
+from .system_logs_instances_list_source import SystemLogsInstancesListSource
+from .system_logs_list_level import SystemLogsListLevel
+from .system_logs_list_o_item import SystemLogsListOItem
+from .system_logs_list_source import SystemLogsListSource
 from .table_growth_alert import TableGrowthAlert
 from .table_growth_stats import TableGrowthStats
 from .table_growth_stats_response import TableGrowthStatsResponse
@@ -5020,6 +5037,23 @@ __all__ = (
     "SyncResourcesResponse",
     "SyncResourcesResponseErrorsItem",
     "SyncStatusEnum",
+    "SystemLog",
+    "SystemLogInstance",
+    "SystemLogsCountLevel",
+    "SystemLogsCountOItem",
+    "SystemLogsCountSource",
+    "SystemLogsInstancesCountLevel",
+    "SystemLogsInstancesCountOItem",
+    "SystemLogsInstancesCountSource",
+    "SystemLogsInstancesListLevel",
+    "SystemLogsInstancesListOItem",
+    "SystemLogsInstancesListSource",
+    "SystemLogsListLevel",
+    "SystemLogsListOItem",
+    "SystemLogsListSource",
+    "SystemLogSourceEnum",
+    "SystemLogStatsInstance",
+    "SystemLogStatsResponse",
     "TableGrowthAlert",
     "TableGrowthStats",
     "TableGrowthStatsResponse",

@@ -228,6 +228,8 @@ class ConstanceSettingsRequest:
         software_catalog_update_existing_packages (Union[Unset, bool]):
         software_catalog_cleanup_enabled (Union[Unset, bool]):
         software_catalog_retention_days (Union[Unset, int]):
+        system_log_enabled (Union[Unset, bool]):
+        system_log_max_rows_per_source (Union[Unset, int]):
         table_growth_monitoring_enabled (Union[Unset, bool]):
         table_growth_weekly_threshold_percent (Union[Unset, int]):
         table_growth_monthly_threshold_percent (Union[Unset, int]):
@@ -463,6 +465,8 @@ class ConstanceSettingsRequest:
     software_catalog_update_existing_packages: Union[Unset, bool] = UNSET
     software_catalog_cleanup_enabled: Union[Unset, bool] = UNSET
     software_catalog_retention_days: Union[Unset, int] = UNSET
+    system_log_enabled: Union[Unset, bool] = UNSET
+    system_log_max_rows_per_source: Union[Unset, int] = UNSET
     table_growth_monitoring_enabled: Union[Unset, bool] = UNSET
     table_growth_weekly_threshold_percent: Union[Unset, int] = UNSET
     table_growth_monthly_threshold_percent: Union[Unset, int] = UNSET
@@ -1025,6 +1029,10 @@ class ConstanceSettingsRequest:
 
         software_catalog_retention_days = self.software_catalog_retention_days
 
+        system_log_enabled = self.system_log_enabled
+
+        system_log_max_rows_per_source = self.system_log_max_rows_per_source
+
         table_growth_monitoring_enabled = self.table_growth_monitoring_enabled
 
         table_growth_weekly_threshold_percent = self.table_growth_weekly_threshold_percent
@@ -1504,6 +1512,10 @@ class ConstanceSettingsRequest:
             field_dict["SOFTWARE_CATALOG_CLEANUP_ENABLED"] = software_catalog_cleanup_enabled
         if software_catalog_retention_days is not UNSET:
             field_dict["SOFTWARE_CATALOG_RETENTION_DAYS"] = software_catalog_retention_days
+        if system_log_enabled is not UNSET:
+            field_dict["SYSTEM_LOG_ENABLED"] = system_log_enabled
+        if system_log_max_rows_per_source is not UNSET:
+            field_dict["SYSTEM_LOG_MAX_ROWS_PER_SOURCE"] = system_log_max_rows_per_source
         if table_growth_monitoring_enabled is not UNSET:
             field_dict["TABLE_GROWTH_MONITORING_ENABLED"] = table_growth_monitoring_enabled
         if table_growth_weekly_threshold_percent is not UNSET:
@@ -2184,6 +2196,10 @@ class ConstanceSettingsRequest:
 
         software_catalog_retention_days = d.pop("SOFTWARE_CATALOG_RETENTION_DAYS", UNSET)
 
+        system_log_enabled = d.pop("SYSTEM_LOG_ENABLED", UNSET)
+
+        system_log_max_rows_per_source = d.pop("SYSTEM_LOG_MAX_ROWS_PER_SOURCE", UNSET)
+
         table_growth_monitoring_enabled = d.pop("TABLE_GROWTH_MONITORING_ENABLED", UNSET)
 
         table_growth_weekly_threshold_percent = d.pop("TABLE_GROWTH_WEEKLY_THRESHOLD_PERCENT", UNSET)
@@ -2446,6 +2462,8 @@ class ConstanceSettingsRequest:
             software_catalog_update_existing_packages=software_catalog_update_existing_packages,
             software_catalog_cleanup_enabled=software_catalog_cleanup_enabled,
             software_catalog_retention_days=software_catalog_retention_days,
+            system_log_enabled=system_log_enabled,
+            system_log_max_rows_per_source=system_log_max_rows_per_source,
             table_growth_monitoring_enabled=table_growth_monitoring_enabled,
             table_growth_weekly_threshold_percent=table_growth_weekly_threshold_percent,
             table_growth_monthly_threshold_percent=table_growth_monthly_threshold_percent,
