@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -17,12 +17,14 @@ class ArrowVendorOfferingMappingCreateRequest:
         settings (UUID):
         arrow_vendor_name (str): Arrow vendor name (e.g., 'Microsoft', 'Amazon Web Services')
         offering (UUID):
+        plan (Union[None, UUID, Unset]):
         is_active (Union[Unset, bool]): Whether this mapping is active
     """
 
     settings: UUID
     arrow_vendor_name: str
     offering: UUID
+    plan: Union[None, UUID, Unset] = UNSET
     is_active: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -32,6 +34,14 @@ class ArrowVendorOfferingMappingCreateRequest:
         arrow_vendor_name = self.arrow_vendor_name
 
         offering = str(self.offering)
+
+        plan: Union[None, Unset, str]
+        if isinstance(self.plan, Unset):
+            plan = UNSET
+        elif isinstance(self.plan, UUID):
+            plan = str(self.plan)
+        else:
+            plan = self.plan
 
         is_active = self.is_active
 
@@ -44,6 +54,8 @@ class ArrowVendorOfferingMappingCreateRequest:
                 "offering": offering,
             }
         )
+        if plan is not UNSET:
+            field_dict["plan"] = plan
         if is_active is not UNSET:
             field_dict["is_active"] = is_active
 
@@ -58,12 +70,30 @@ class ArrowVendorOfferingMappingCreateRequest:
 
         offering = UUID(d.pop("offering"))
 
+        def _parse_plan(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                plan_type_0 = UUID(data)
+
+                return plan_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        plan = _parse_plan(d.pop("plan", UNSET))
+
         is_active = d.pop("is_active", UNSET)
 
         arrow_vendor_offering_mapping_create_request = cls(
             settings=settings,
             arrow_vendor_name=arrow_vendor_name,
             offering=offering,
+            plan=plan,
             is_active=is_active,
         )
 

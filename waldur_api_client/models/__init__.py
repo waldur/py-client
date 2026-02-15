@@ -675,6 +675,7 @@ from .export_screenshot_data import ExportScreenshotData
 from .export_screenshot_data_request import ExportScreenshotDataRequest
 from .export_terms_of_service_data import ExportTermsOfServiceData
 from .export_terms_of_service_data_request import ExportTermsOfServiceDataRequest
+from .export_type_compatibility import ExportTypeCompatibility
 from .extend_deadline_request_request import ExtendDeadlineRequestRequest
 from .extend_deadline_response import ExtendDeadlineResponse
 from .external_link import ExternalLink
@@ -2506,6 +2507,9 @@ from .sync_resource_historical_consumption_response import SyncResourceHistorica
 from .sync_resource_historical_consumption_response_errors_item import (
     SyncResourceHistoricalConsumptionResponseErrorsItem,
 )
+from .sync_resource_historical_consumption_response_preview_periods_item import (
+    SyncResourceHistoricalConsumptionResponsePreviewPeriodsItem,
+)
 from .sync_resources_request_request import SyncResourcesRequestRequest
 from .sync_resources_response import SyncResourcesResponse
 from .sync_resources_response_errors_item import SyncResourcesResponseErrorsItem
@@ -3345,6 +3349,7 @@ __all__ = (
     "ExportScreenshotDataRequest",
     "ExportTermsOfServiceData",
     "ExportTermsOfServiceDataRequest",
+    "ExportTypeCompatibility",
     "ExtendDeadlineRequestRequest",
     "ExtendDeadlineResponse",
     "ExternalLink",
@@ -5010,6 +5015,7 @@ __all__ = (
     "SyncResourceHistoricalConsumptionRequestRequest",
     "SyncResourceHistoricalConsumptionResponse",
     "SyncResourceHistoricalConsumptionResponseErrorsItem",
+    "SyncResourceHistoricalConsumptionResponsePreviewPeriodsItem",
     "SyncResourcesRequestRequest",
     "SyncResourcesResponse",
     "SyncResourcesResponseErrorsItem",

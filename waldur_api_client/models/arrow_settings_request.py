@@ -21,6 +21,7 @@ class ArrowSettingsRequest:
         is_active (Union[Unset, bool]): Whether this settings record is active
         sync_enabled (Union[Unset, bool]): Whether automatic billing sync is enabled
         invoice_price_source (Union[Unset, InvoicePriceSourceEnum]):
+        invoice_item_prefix (Union[Unset, str]): Prefix for invoice item names (e.g. 'Arrow consumption')
     """
 
     api_url: str
@@ -30,6 +31,7 @@ class ArrowSettingsRequest:
     is_active: Union[Unset, bool] = UNSET
     sync_enabled: Union[Unset, bool] = UNSET
     invoice_price_source: Union[Unset, InvoicePriceSourceEnum] = UNSET
+    invoice_item_prefix: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,6 +50,8 @@ class ArrowSettingsRequest:
         invoice_price_source: Union[Unset, str] = UNSET
         if not isinstance(self.invoice_price_source, Unset):
             invoice_price_source = self.invoice_price_source.value
+
+        invoice_item_prefix = self.invoice_item_prefix
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -68,6 +72,8 @@ class ArrowSettingsRequest:
             field_dict["sync_enabled"] = sync_enabled
         if invoice_price_source is not UNSET:
             field_dict["invoice_price_source"] = invoice_price_source
+        if invoice_item_prefix is not UNSET:
+            field_dict["invoice_item_prefix"] = invoice_item_prefix
 
         return field_dict
 
@@ -93,6 +99,8 @@ class ArrowSettingsRequest:
         else:
             invoice_price_source = InvoicePriceSourceEnum(_invoice_price_source)
 
+        invoice_item_prefix = d.pop("invoice_item_prefix", UNSET)
+
         arrow_settings_request = cls(
             api_url=api_url,
             api_key=api_key,
@@ -101,6 +109,7 @@ class ArrowSettingsRequest:
             is_active=is_active,
             sync_enabled=sync_enabled,
             invoice_price_source=invoice_price_source,
+            invoice_item_prefix=invoice_item_prefix,
         )
 
         arrow_settings_request.additional_properties = d

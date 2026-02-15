@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 if TYPE_CHECKING:
     from ..models.arrow_customer_discovery import ArrowCustomerDiscovery
     from ..models.customer_mapping_suggestion import CustomerMappingSuggestion
+    from ..models.export_type_compatibility import ExportTypeCompatibility
     from ..models.waldur_customer_brief import WaldurCustomerBrief
 
 
@@ -20,11 +21,13 @@ class DiscoverCustomersResponse:
         arrow_customers (list['ArrowCustomerDiscovery']):
         waldur_customers (list['WaldurCustomerBrief']):
         suggestions (list['CustomerMappingSuggestion']):
+        export_types (list['ExportTypeCompatibility']):
     """
 
     arrow_customers: list["ArrowCustomerDiscovery"]
     waldur_customers: list["WaldurCustomerBrief"]
     suggestions: list["CustomerMappingSuggestion"]
+    export_types: list["ExportTypeCompatibility"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -43,6 +46,11 @@ class DiscoverCustomersResponse:
             suggestions_item = suggestions_item_data.to_dict()
             suggestions.append(suggestions_item)
 
+        export_types = []
+        for export_types_item_data in self.export_types:
+            export_types_item = export_types_item_data.to_dict()
+            export_types.append(export_types_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -50,6 +58,7 @@ class DiscoverCustomersResponse:
                 "arrow_customers": arrow_customers,
                 "waldur_customers": waldur_customers,
                 "suggestions": suggestions,
+                "export_types": export_types,
             }
         )
 
@@ -59,6 +68,7 @@ class DiscoverCustomersResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.arrow_customer_discovery import ArrowCustomerDiscovery
         from ..models.customer_mapping_suggestion import CustomerMappingSuggestion
+        from ..models.export_type_compatibility import ExportTypeCompatibility
         from ..models.waldur_customer_brief import WaldurCustomerBrief
 
         d = dict(src_dict)
@@ -83,10 +93,18 @@ class DiscoverCustomersResponse:
 
             suggestions.append(suggestions_item)
 
+        export_types = []
+        _export_types = d.pop("export_types")
+        for export_types_item_data in _export_types:
+            export_types_item = ExportTypeCompatibility.from_dict(export_types_item_data)
+
+            export_types.append(export_types_item)
+
         discover_customers_response = cls(
             arrow_customers=arrow_customers,
             waldur_customers=waldur_customers,
             suggestions=suggestions,
+            export_types=export_types,
         )
 
         discover_customers_response.additional_properties = d
