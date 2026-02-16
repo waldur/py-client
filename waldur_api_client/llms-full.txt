@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.3-dev.20260216143708
+# Version: 8.0.3-dev.20260216205236
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2507,7 +2507,7 @@ Description: Get current token quota and usage for the requesting user.
         - usage: Tokens used in current period
         - remainin...
 Query parameters (1):
-  - user_uuid — UUID of user to view quota for (staff/support only). Omit to view your own quota.
+  - user_uuid (required) — UUID of user to view quota for (staff/support only). Omit to view your own quota.
 
 ============================================================
 ## chat-sessions  (module: waldur_api_client.api.chat_sessions)
@@ -6549,6 +6549,16 @@ Description: Get number of items in the collection matching the request paramete
 Query parameters (1):
   - parent_uuid (required) — UUID of the parent object (e.g., customer UUID for new projects)
 
+### marketplace_offering_users_profile_field_warnings_retrieve
+GET /api/marketplace-offering-users/profile_field_warnings/
+Summary: Get profile field warnings
+Description: Returns a mapping of user profile field names to offerings that expose those fields. When ENFORCE_OFFERING_USER_PROFILE_COMPLETENESS is enabled, clearing a field listed here would make the user invisible to the service provider for the associated offerings.
+
+### marketplace_offering_users_profile_field_warnings_count
+HEAD /api/marketplace-offering-users/profile_field_warnings/
+Summary: Get profile field warnings
+Description: Get number of items in the collection matching the request parameters.
+
 ### marketplace_offering_users_retrieve
 GET /api/marketplace-offering-users/{uuid}/
 Summary: Retrieve an offering user
@@ -6975,7 +6985,7 @@ GET /api/marketplace-plans/usage_stats/
 Summary: Get plan usage statistics
 Description: Returns aggregated statistics on how many resources are currently using each plan. Can be filtered by offering or service provider.
 Query parameters (6):
-  - customer_provider_uuid — Filter by service provider's customer UUID.
+  - customer_provider_uuid — Filter by offering customer provider UUID.
   - o — Ordering field. Available options: `usage`, `limit`, `remaining`, and their descending counterparts (e.g., `-usage`).
   - offering
   - offering_slug — Multiple values may be separated by commas.
@@ -6987,7 +6997,7 @@ HEAD /api/marketplace-plans/usage_stats/
 Summary: Get plan usage statistics
 Description: Get number of items in the collection matching the request parameters.
 Query parameters (6):
-  - customer_provider_uuid — Filter by service provider's customer UUID.
+  - customer_provider_uuid — Filter by offering customer provider UUID.
   - o — Ordering field. Available options: `usage`, `limit`, `remaining`, and their descending counterparts (e.g., `-usage`).
   - offering
   - offering_slug — Multiple values may be separated by commas.

@@ -1234,6 +1234,8 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_create` POST `/api/marketplace-offering-users/` — Create an offering user (request body)
 - `marketplace_offering_users_checklist_template_retrieve` GET `/api/marketplace-offering-users/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `marketplace_offering_users_checklist_template_count` HEAD `/api/marketplace-offering-users/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
+- `marketplace_offering_users_profile_field_warnings_retrieve` GET `/api/marketplace-offering-users/profile_field_warnings/` — Get profile field warnings (no params)
+- `marketplace_offering_users_profile_field_warnings_count` HEAD `/api/marketplace-offering-users/profile_field_warnings/` — Get profile field warnings (no params)
 - `marketplace_offering_users_retrieve` GET `/api/marketplace-offering-users/{uuid}/` — Retrieve an offering user (path: uuid | 1 query param)
 - `marketplace_offering_users_update` PUT `/api/marketplace-offering-users/{uuid}/` (path: uuid | request body)
 - `marketplace_offering_users_partial_update` PATCH `/api/marketplace-offering-users/{uuid}/` (path: uuid | request body)
