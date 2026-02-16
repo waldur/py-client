@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.3-dev.20260216030707
+# Version: 8.0.3-dev.20260216121008
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10390,7 +10390,7 @@ Request body: yes
 GET /api/marketplace-software-packages/
 Summary: List software packages
 Description: Returns a paginated list of software packages available in the catalogs. Can be filtered by catalog, offering, or various package attributes.
-Query parameters (13):
+Query parameters (14):
   - catalog_name — Filter packages by catalog name (case-insensitive partial match)
   - catalog_uuid — Filter packages from a specific software catalog
   - catalog_version — Filter packages by catalog version (case-insensitive partial match)
@@ -10400,6 +10400,7 @@ Query parameters (13):
   - extension_name — Filter packages having extensions with a specific name
   - extension_type — Filter packages having extensions of a specific type (e.g., 'python')
   - has_version — Filter packages that have a specific version
+  - is_extension — Filter packages that are extensions of other packages
   - name — Filter packages by name (case-insensitive partial match)
   - o — Ordering
   - offering_uuid — Filter packages available for a specific offering
@@ -10409,7 +10410,7 @@ Query parameters (13):
 HEAD /api/marketplace-software-packages/
 Summary: List software packages
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (13):
+Query parameters (14):
   - catalog_name — Filter packages by catalog name (case-insensitive partial match)
   - catalog_uuid — Filter packages from a specific software catalog
   - catalog_version — Filter packages by catalog version (case-insensitive partial match)
@@ -10419,6 +10420,7 @@ Query parameters (13):
   - extension_name — Filter packages having extensions with a specific name
   - extension_type — Filter packages having extensions of a specific type (e.g., 'python')
   - has_version — Filter packages that have a specific version
+  - is_extension — Filter packages that are extensions of other packages
   - name — Filter packages by name (case-insensitive partial match)
   - o — Ordering
   - offering_uuid — Filter packages available for a specific offering

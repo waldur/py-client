@@ -23,6 +23,7 @@ def _get_kwargs(
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
+    is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -52,6 +53,8 @@ def _get_kwargs(
     params["extension_type"] = extension_type
 
     params["has_version"] = has_version
+
+    params["is_extension"] = is_extension
 
     params["name"] = name
 
@@ -124,6 +127,7 @@ def sync_detailed(
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
+    is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -146,6 +150,7 @@ def sync_detailed(
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
+        is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
@@ -171,6 +176,7 @@ def sync_detailed(
         extension_name=extension_name,
         extension_type=extension_type,
         has_version=has_version,
+        is_extension=is_extension,
         name=name,
         o=o,
         offering_uuid=offering_uuid,
@@ -198,6 +204,7 @@ def sync(
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
+    is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -220,6 +227,7 @@ def sync(
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
+        is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
@@ -246,6 +254,7 @@ def sync(
         extension_name=extension_name,
         extension_type=extension_type,
         has_version=has_version,
+        is_extension=is_extension,
         name=name,
         o=o,
         offering_uuid=offering_uuid,
@@ -267,6 +276,7 @@ async def asyncio_detailed(
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
+    is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -289,6 +299,7 @@ async def asyncio_detailed(
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
+        is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
@@ -314,6 +325,7 @@ async def asyncio_detailed(
         extension_name=extension_name,
         extension_type=extension_type,
         has_version=has_version,
+        is_extension=is_extension,
         name=name,
         o=o,
         offering_uuid=offering_uuid,
@@ -339,6 +351,7 @@ async def asyncio(
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
+    is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -361,6 +374,7 @@ async def asyncio(
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
+        is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
@@ -388,6 +402,7 @@ async def asyncio(
             extension_name=extension_name,
             extension_type=extension_type,
             has_version=has_version,
+            is_extension=is_extension,
             name=name,
             o=o,
             offering_uuid=offering_uuid,
@@ -410,6 +425,7 @@ def sync_all(
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
+    is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -432,6 +448,7 @@ def sync_all(
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
+        is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
@@ -459,6 +476,7 @@ def sync_all(
         extension_name=extension_name,
         extension_type=extension_type,
         has_version=has_version,
+        is_extension=is_extension,
         name=name,
         o=o,
         offering_uuid=offering_uuid,
@@ -519,6 +537,7 @@ async def asyncio_all(
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
+    is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -541,6 +560,7 @@ async def asyncio_all(
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
+        is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
@@ -568,6 +588,7 @@ async def asyncio_all(
         extension_name=extension_name,
         extension_type=extension_type,
         has_version=has_version,
+        is_extension=is_extension,
         name=name,
         o=o,
         offering_uuid=offering_uuid,
