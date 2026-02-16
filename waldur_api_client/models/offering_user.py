@@ -70,6 +70,8 @@ class OfferingUser:
             completion.
         consent_data (Union['OfferingUserConsentDataType0', None, Unset]): User consent data including uuid, version,
             and agreement_date
+        is_profile_complete (Union[Unset, bool]):
+        missing_profile_attributes (Union[Unset, list[str]]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -114,6 +116,8 @@ class OfferingUser:
     requires_reconsent: Union[Unset, bool] = UNSET
     has_compliance_checklist: Union[Unset, bool] = UNSET
     consent_data: Union["OfferingUserConsentDataType0", None, Unset] = UNSET
+    is_profile_complete: Union[Unset, bool] = UNSET
+    missing_profile_attributes: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -243,6 +247,12 @@ class OfferingUser:
         else:
             consent_data = self.consent_data
 
+        is_profile_complete = self.is_profile_complete
+
+        missing_profile_attributes: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.missing_profile_attributes, Unset):
+            missing_profile_attributes = self.missing_profile_attributes
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -330,6 +340,10 @@ class OfferingUser:
             field_dict["has_compliance_checklist"] = has_compliance_checklist
         if consent_data is not UNSET:
             field_dict["consent_data"] = consent_data
+        if is_profile_complete is not UNSET:
+            field_dict["is_profile_complete"] = is_profile_complete
+        if missing_profile_attributes is not UNSET:
+            field_dict["missing_profile_attributes"] = missing_profile_attributes
 
         return field_dict
 
@@ -516,6 +530,10 @@ class OfferingUser:
 
         consent_data = _parse_consent_data(d.pop("consent_data", UNSET))
 
+        is_profile_complete = d.pop("is_profile_complete", UNSET)
+
+        missing_profile_attributes = cast(list[str], d.pop("missing_profile_attributes", UNSET))
+
         offering_user = cls(
             url=url,
             uuid=uuid,
@@ -559,6 +577,8 @@ class OfferingUser:
             requires_reconsent=requires_reconsent,
             has_compliance_checklist=has_compliance_checklist,
             consent_data=consent_data,
+            is_profile_complete=is_profile_complete,
+            missing_profile_attributes=missing_profile_attributes,
         )
 
         offering_user.additional_properties = d

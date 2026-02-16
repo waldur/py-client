@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.3-dev.20260216121008
+# Version: 8.0.3-dev.20260216135542
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -6490,9 +6490,10 @@ Path parameters:
 GET /api/marketplace-offering-users/
 Summary: List offering users
 Description: Returns a paginated list of users associated with offerings. The visibility of users depends on the role of the authenticated user. Staff and support can see all users. Service providers can see users of their offerings if the user has consented. Regular users can only see their own offering-user...
-Query parameters (15):
+Query parameters (16):
   - created — Created after
   - field
+  - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
   - is_restricted — Is restricted
   - modified — Modified after
@@ -6511,8 +6512,9 @@ Query parameters (15):
 HEAD /api/marketplace-offering-users/
 Summary: List offering users
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (14):
+Query parameters (15):
   - created — Created after
+  - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
   - is_restricted — Is restricted
   - modified — Modified after

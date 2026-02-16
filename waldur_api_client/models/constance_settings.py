@@ -192,6 +192,7 @@ class ConstanceSettings:
         maintenance_announcement_notify_before_minutes (Union[Unset, int]):
         maintenance_announcement_notify_system (Union[Unset, list[str]]):
         enforce_user_consent_for_offerings (Union[Unset, bool]):
+        enforce_offering_user_profile_completeness (Union[Unset, bool]):
         disabled_offering_types (Union[Unset, list[str]]):
         onboarding_validation_methods (Union[Unset, list[str]]):
         onboarding_verification_expiry_hours (Union[Unset, int]):
@@ -429,6 +430,7 @@ class ConstanceSettings:
     maintenance_announcement_notify_before_minutes: Union[Unset, int] = UNSET
     maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
     enforce_user_consent_for_offerings: Union[Unset, bool] = UNSET
+    enforce_offering_user_profile_completeness: Union[Unset, bool] = UNSET
     disabled_offering_types: Union[Unset, list[str]] = UNSET
     onboarding_validation_methods: Union[Unset, list[str]] = UNSET
     onboarding_verification_expiry_hours: Union[Unset, int] = UNSET
@@ -915,6 +917,8 @@ class ConstanceSettings:
             maintenance_announcement_notify_system = self.maintenance_announcement_notify_system
 
         enforce_user_consent_for_offerings = self.enforce_user_consent_for_offerings
+
+        enforce_offering_user_profile_completeness = self.enforce_offering_user_profile_completeness
 
         disabled_offering_types: Union[Unset, list[str]] = UNSET
         if not isinstance(self.disabled_offering_types, Unset):
@@ -1403,6 +1407,8 @@ class ConstanceSettings:
             field_dict["MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM"] = maintenance_announcement_notify_system
         if enforce_user_consent_for_offerings is not UNSET:
             field_dict["ENFORCE_USER_CONSENT_FOR_OFFERINGS"] = enforce_user_consent_for_offerings
+        if enforce_offering_user_profile_completeness is not UNSET:
+            field_dict["ENFORCE_OFFERING_USER_PROFILE_COMPLETENESS"] = enforce_offering_user_profile_completeness
         if disabled_offering_types is not UNSET:
             field_dict["DISABLED_OFFERING_TYPES"] = disabled_offering_types
         if onboarding_validation_methods is not UNSET:
@@ -1981,6 +1987,8 @@ class ConstanceSettings:
 
         enforce_user_consent_for_offerings = d.pop("ENFORCE_USER_CONSENT_FOR_OFFERINGS", UNSET)
 
+        enforce_offering_user_profile_completeness = d.pop("ENFORCE_OFFERING_USER_PROFILE_COMPLETENESS", UNSET)
+
         disabled_offering_types = cast(list[str], d.pop("DISABLED_OFFERING_TYPES", UNSET))
 
         onboarding_validation_methods = cast(list[str], d.pop("ONBOARDING_VALIDATION_METHODS", UNSET))
@@ -2281,6 +2289,7 @@ class ConstanceSettings:
             maintenance_announcement_notify_before_minutes=maintenance_announcement_notify_before_minutes,
             maintenance_announcement_notify_system=maintenance_announcement_notify_system,
             enforce_user_consent_for_offerings=enforce_user_consent_for_offerings,
+            enforce_offering_user_profile_completeness=enforce_offering_user_profile_completeness,
             disabled_offering_types=disabled_offering_types,
             onboarding_validation_methods=onboarding_validation_methods,
             onboarding_verification_expiry_hours=onboarding_verification_expiry_hours,

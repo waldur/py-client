@@ -1229,8 +1229,8 @@ Module: `waldur_api_client.api.marketplace_offering_user_roles`
 ## marketplace-offering-users
 Module: `waldur_api_client.api.marketplace_offering_users`
 
-- `marketplace_offering_users_list` GET `/api/marketplace-offering-users/` — List offering users (15 query params)
-- `marketplace_offering_users_count` HEAD `/api/marketplace-offering-users/` — List offering users (14 query params)
+- `marketplace_offering_users_list` GET `/api/marketplace-offering-users/` — List offering users (16 query params)
+- `marketplace_offering_users_count` HEAD `/api/marketplace-offering-users/` — List offering users (15 query params)
 - `marketplace_offering_users_create` POST `/api/marketplace-offering-users/` — Create an offering user (request body)
 - `marketplace_offering_users_checklist_template_retrieve` GET `/api/marketplace-offering-users/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `marketplace_offering_users_checklist_template_count` HEAD `/api/marketplace-offering-users/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
