@@ -24,6 +24,7 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -61,6 +62,8 @@ def _get_kwargs(
     if not isinstance(role_uuid, Unset):
         json_role_uuid = str(role_uuid)
     params["role_uuid"] = json_role_uuid
+
+    params["scope"] = scope
 
     params["scope_description"] = scope_description
 
@@ -126,6 +129,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -145,6 +149,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
@@ -168,6 +173,7 @@ def sync_detailed(
         page_size=page_size,
         role_name=role_name,
         role_uuid=role_uuid,
+        scope=scope,
         scope_description=scope_description,
         scope_name=scope_name,
         scope_type=scope_type,
@@ -193,6 +199,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -212,6 +219,7 @@ def sync(
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
@@ -236,6 +244,7 @@ def sync(
         page_size=page_size,
         role_name=role_name,
         role_uuid=role_uuid,
+        scope=scope,
         scope_description=scope_description,
         scope_name=scope_name,
         scope_type=scope_type,
@@ -255,6 +264,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -274,6 +284,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
@@ -297,6 +308,7 @@ async def asyncio_detailed(
         page_size=page_size,
         role_name=role_name,
         role_uuid=role_uuid,
+        scope=scope,
         scope_description=scope_description,
         scope_name=scope_name,
         scope_type=scope_type,
@@ -320,6 +332,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -339,6 +352,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
@@ -364,6 +378,7 @@ async def asyncio(
             page_size=page_size,
             role_name=role_name,
             role_uuid=role_uuid,
+            scope=scope,
             scope_description=scope_description,
             scope_name=scope_name,
             scope_type=scope_type,
@@ -382,6 +397,7 @@ def sync_all(
     o: Union[Unset, list[UserInvitationsListOItem]] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -402,6 +418,7 @@ def sync_all(
         o (Union[Unset, list[UserInvitationsListOItem]]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
@@ -427,6 +444,7 @@ def sync_all(
         o=o,
         role_name=role_name,
         role_uuid=role_uuid,
+        scope=scope,
         scope_description=scope_description,
         scope_name=scope_name,
         scope_type=scope_type,
@@ -485,6 +503,7 @@ async def asyncio_all(
     o: Union[Unset, list[UserInvitationsListOItem]] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -505,6 +524,7 @@ async def asyncio_all(
         o (Union[Unset, list[UserInvitationsListOItem]]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
@@ -530,6 +550,7 @@ async def asyncio_all(
         o=o,
         role_name=role_name,
         role_uuid=role_uuid,
+        scope=scope,
         scope_description=scope_description,
         scope_name=scope_name,
         scope_type=scope_type,

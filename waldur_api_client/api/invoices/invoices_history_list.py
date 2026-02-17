@@ -17,6 +17,7 @@ from ...utils import parse_link_header
 def _get_kwargs(
     uuid: UUID,
     *,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
@@ -32,6 +33,8 @@ def _get_kwargs(
     year: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["accounting_is_running"] = accounting_is_running
 
     json_created: Union[Unset, str] = UNSET
     if not isinstance(created, Unset):
@@ -126,6 +129,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
@@ -146,6 +150,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
@@ -170,6 +175,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        accounting_is_running=accounting_is_running,
         created=created,
         created_after=created_after,
         created_before=created_before,
@@ -196,6 +202,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
@@ -216,6 +223,7 @@ def sync(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
@@ -241,6 +249,7 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        accounting_is_running=accounting_is_running,
         created=created,
         created_after=created_after,
         created_before=created_before,
@@ -261,6 +270,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
@@ -281,6 +291,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
@@ -305,6 +316,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        accounting_is_running=accounting_is_running,
         created=created,
         created_after=created_after,
         created_before=created_before,
@@ -329,6 +341,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
@@ -349,6 +362,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
@@ -375,6 +389,7 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            accounting_is_running=accounting_is_running,
             created=created,
             created_after=created_after,
             created_before=created_before,
@@ -396,6 +411,7 @@ def sync_all(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
@@ -417,6 +433,7 @@ def sync_all(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
@@ -443,6 +460,7 @@ def sync_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         uuid=uuid,
+        accounting_is_running=accounting_is_running,
         created=created,
         created_after=created_after,
         created_before=created_before,
@@ -502,6 +520,7 @@ async def asyncio_all(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
@@ -523,6 +542,7 @@ async def asyncio_all(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
@@ -549,6 +569,7 @@ async def asyncio_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         uuid=uuid,
+        accounting_is_running=accounting_is_running,
         created=created,
         created_after=created_after,
         created_before=created_before,

@@ -21,6 +21,7 @@ def _get_kwargs(
     field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -46,6 +47,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["scope"] = scope
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -94,6 +97,7 @@ def sync_detailed(
     field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> Response[list["CategoryComponentUsage"]]:
     """List aggregated category component usages
 
@@ -112,6 +116,7 @@ def sync_detailed(
         field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -127,6 +132,7 @@ def sync_detailed(
         field=field,
         page=page,
         page_size=page_size,
+        scope=scope,
     )
 
     response = client.get_httpx_client().request(
@@ -144,6 +150,7 @@ def sync(
     field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> list["CategoryComponentUsage"]:
     """List aggregated category component usages
 
@@ -162,6 +169,7 @@ def sync(
         field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -178,6 +186,7 @@ def sync(
         field=field,
         page=page,
         page_size=page_size,
+        scope=scope,
     ).parsed
 
 
@@ -189,6 +198,7 @@ async def asyncio_detailed(
     field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> Response[list["CategoryComponentUsage"]]:
     """List aggregated category component usages
 
@@ -207,6 +217,7 @@ async def asyncio_detailed(
         field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -222,6 +233,7 @@ async def asyncio_detailed(
         field=field,
         page=page,
         page_size=page_size,
+        scope=scope,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -237,6 +249,7 @@ async def asyncio(
     field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> list["CategoryComponentUsage"]:
     """List aggregated category component usages
 
@@ -255,6 +268,7 @@ async def asyncio(
         field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -272,6 +286,7 @@ async def asyncio(
             field=field,
             page=page,
             page_size=page_size,
+            scope=scope,
         )
     ).parsed
 
@@ -282,6 +297,7 @@ def sync_all(
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> list["CategoryComponentUsage"]:
     """Get All Pages
 
@@ -294,6 +310,7 @@ def sync_all(
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
         field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -311,6 +328,7 @@ def sync_all(
         date_after=date_after,
         date_before=date_before,
         field=field,
+        scope=scope,
     )
 
     # Set page_size to maximum
@@ -361,6 +379,7 @@ async def asyncio_all(
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> list["CategoryComponentUsage"]:
     """Get All Pages (Async)
 
@@ -373,6 +392,7 @@ async def asyncio_all(
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
         field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -390,6 +410,7 @@ async def asyncio_all(
         date_after=date_after,
         date_before=date_before,
         field=field,
+        scope=scope,
     )
 
     # Set page_size to maximum

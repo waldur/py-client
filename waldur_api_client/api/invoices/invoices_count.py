@@ -14,6 +14,7 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -27,6 +28,8 @@ def _get_kwargs(
     year: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["accounting_is_running"] = accounting_is_running
 
     json_created: Union[Unset, str] = UNSET
     if not isinstance(created, Unset):
@@ -116,6 +119,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -131,6 +135,7 @@ def sync_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -152,6 +157,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        accounting_is_running=accounting_is_running,
         created=created,
         customer=customer,
         customer_uuid=customer_uuid,
@@ -175,6 +181,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -190,6 +197,7 @@ def sync(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -212,6 +220,7 @@ def sync(
 
     return sync_detailed(
         client=client,
+        accounting_is_running=accounting_is_running,
         created=created,
         customer=customer,
         customer_uuid=customer_uuid,
@@ -229,6 +238,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -244,6 +254,7 @@ async def asyncio_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -265,6 +276,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        accounting_is_running=accounting_is_running,
         created=created,
         customer=customer,
         customer_uuid=customer_uuid,
@@ -286,6 +298,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -301,6 +314,7 @@ async def asyncio(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -324,6 +338,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            accounting_is_running=accounting_is_running,
             created=created,
             customer=customer,
             customer_uuid=customer_uuid,

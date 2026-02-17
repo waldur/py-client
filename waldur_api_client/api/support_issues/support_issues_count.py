@@ -29,6 +29,7 @@ def _get_kwargs(
     reporter: Union[Unset, str] = UNSET,
     reporter_name: Union[Unset, str] = UNSET,
     resolution_year_month: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
@@ -84,6 +85,8 @@ def _get_kwargs(
     params["reporter_name"] = reporter_name
 
     params["resolution_year_month"] = resolution_year_month
+
+    params["resource"] = resource
 
     params["resource_external_ip"] = resource_external_ip
 
@@ -157,6 +160,7 @@ def sync_detailed(
     reporter: Union[Unset, str] = UNSET,
     reporter_name: Union[Unset, str] = UNSET,
     resolution_year_month: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
@@ -184,6 +188,7 @@ def sync_detailed(
         reporter (Union[Unset, str]):
         reporter_name (Union[Unset, str]):
         resolution_year_month (Union[Unset, str]):
+        resource (Union[Unset, str]):
         resource_external_ip (Union[Unset, str]):
         resource_internal_ip (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
@@ -217,6 +222,7 @@ def sync_detailed(
         reporter=reporter,
         reporter_name=reporter_name,
         resolution_year_month=resolution_year_month,
+        resource=resource,
         resource_external_ip=resource_external_ip,
         resource_internal_ip=resource_internal_ip,
         resource_uuid=resource_uuid,
@@ -252,6 +258,7 @@ def sync(
     reporter: Union[Unset, str] = UNSET,
     reporter_name: Union[Unset, str] = UNSET,
     resolution_year_month: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
@@ -279,6 +286,7 @@ def sync(
         reporter (Union[Unset, str]):
         reporter_name (Union[Unset, str]):
         resolution_year_month (Union[Unset, str]):
+        resource (Union[Unset, str]):
         resource_external_ip (Union[Unset, str]):
         resource_internal_ip (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
@@ -313,6 +321,7 @@ def sync(
         reporter=reporter,
         reporter_name=reporter_name,
         resolution_year_month=resolution_year_month,
+        resource=resource,
         resource_external_ip=resource_external_ip,
         resource_internal_ip=resource_internal_ip,
         resource_uuid=resource_uuid,
@@ -342,6 +351,7 @@ async def asyncio_detailed(
     reporter: Union[Unset, str] = UNSET,
     reporter_name: Union[Unset, str] = UNSET,
     resolution_year_month: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
@@ -369,6 +379,7 @@ async def asyncio_detailed(
         reporter (Union[Unset, str]):
         reporter_name (Union[Unset, str]):
         resolution_year_month (Union[Unset, str]):
+        resource (Union[Unset, str]):
         resource_external_ip (Union[Unset, str]):
         resource_internal_ip (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
@@ -402,6 +413,7 @@ async def asyncio_detailed(
         reporter=reporter,
         reporter_name=reporter_name,
         resolution_year_month=resolution_year_month,
+        resource=resource,
         resource_external_ip=resource_external_ip,
         resource_internal_ip=resource_internal_ip,
         resource_uuid=resource_uuid,
@@ -435,6 +447,7 @@ async def asyncio(
     reporter: Union[Unset, str] = UNSET,
     reporter_name: Union[Unset, str] = UNSET,
     resolution_year_month: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
@@ -462,6 +475,7 @@ async def asyncio(
         reporter (Union[Unset, str]):
         reporter_name (Union[Unset, str]):
         resolution_year_month (Union[Unset, str]):
+        resource (Union[Unset, str]):
         resource_external_ip (Union[Unset, str]):
         resource_internal_ip (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
@@ -497,6 +511,7 @@ async def asyncio(
             reporter=reporter,
             reporter_name=reporter_name,
             resolution_year_month=resolution_year_month,
+            resource=resource,
             resource_external_ip=resource_external_ip,
             resource_internal_ip=resource_internal_ip,
             resource_uuid=resource_uuid,

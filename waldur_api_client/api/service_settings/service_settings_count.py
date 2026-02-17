@@ -19,6 +19,7 @@ def _get_kwargs(
     o: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[ServiceSettingsCountStateItem]] = UNSET,
@@ -45,6 +46,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["scope"] = scope
 
     params["scope_uuid"] = scope_uuid
 
@@ -108,6 +111,7 @@ def sync_detailed(
     o: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[ServiceSettingsCountStateItem]] = UNSET,
@@ -123,6 +127,7 @@ def sync_detailed(
         o (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
         state (Union[Unset, list[ServiceSettingsCountStateItem]]):
@@ -144,6 +149,7 @@ def sync_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        scope=scope,
         scope_uuid=scope_uuid,
         shared=shared,
         state=state,
@@ -167,6 +173,7 @@ def sync(
     o: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[ServiceSettingsCountStateItem]] = UNSET,
@@ -182,6 +189,7 @@ def sync(
         o (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
         state (Union[Unset, list[ServiceSettingsCountStateItem]]):
@@ -204,6 +212,7 @@ def sync(
         o=o,
         page=page,
         page_size=page_size,
+        scope=scope,
         scope_uuid=scope_uuid,
         shared=shared,
         state=state,
@@ -221,6 +230,7 @@ async def asyncio_detailed(
     o: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[ServiceSettingsCountStateItem]] = UNSET,
@@ -236,6 +246,7 @@ async def asyncio_detailed(
         o (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
         state (Union[Unset, list[ServiceSettingsCountStateItem]]):
@@ -257,6 +268,7 @@ async def asyncio_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        scope=scope,
         scope_uuid=scope_uuid,
         shared=shared,
         state=state,
@@ -278,6 +290,7 @@ async def asyncio(
     o: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
     state: Union[Unset, list[ServiceSettingsCountStateItem]] = UNSET,
@@ -293,6 +306,7 @@ async def asyncio(
         o (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
         state (Union[Unset, list[ServiceSettingsCountStateItem]]):
@@ -316,6 +330,7 @@ async def asyncio(
             o=o,
             page=page,
             page_size=page_size,
+            scope=scope,
             scope_uuid=scope_uuid,
             shared=shared,
             state=state,

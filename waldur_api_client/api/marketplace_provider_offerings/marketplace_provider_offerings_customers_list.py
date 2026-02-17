@@ -38,6 +38,7 @@ def _get_kwargs(
     field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -115,6 +116,8 @@ def _get_kwargs(
     params["has_active_terms_of_service"] = has_active_terms_of_service
 
     params["has_terms_of_service"] = has_terms_of_service
+
+    params["importable"] = importable
 
     params["keyword"] = keyword
 
@@ -273,6 +276,7 @@ def sync_detailed(
     field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -319,6 +323,7 @@ def sync_detailed(
         field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
+        importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -369,6 +374,7 @@ def sync_detailed(
         field=field,
         has_active_terms_of_service=has_active_terms_of_service,
         has_terms_of_service=has_terms_of_service,
+        importable=importable,
         keyword=keyword,
         modified=modified,
         name=name,
@@ -421,6 +427,7 @@ def sync(
     field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -467,6 +474,7 @@ def sync(
         field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
+        importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -518,6 +526,7 @@ def sync(
         field=field,
         has_active_terms_of_service=has_active_terms_of_service,
         has_terms_of_service=has_terms_of_service,
+        importable=importable,
         keyword=keyword,
         modified=modified,
         name=name,
@@ -564,6 +573,7 @@ async def asyncio_detailed(
     field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -610,6 +620,7 @@ async def asyncio_detailed(
         field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
+        importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -660,6 +671,7 @@ async def asyncio_detailed(
         field=field,
         has_active_terms_of_service=has_active_terms_of_service,
         has_terms_of_service=has_terms_of_service,
+        importable=importable,
         keyword=keyword,
         modified=modified,
         name=name,
@@ -710,6 +722,7 @@ async def asyncio(
     field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -756,6 +769,7 @@ async def asyncio(
         field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
+        importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -808,6 +822,7 @@ async def asyncio(
             field=field,
             has_active_terms_of_service=has_active_terms_of_service,
             has_terms_of_service=has_terms_of_service,
+            importable=importable,
             keyword=keyword,
             modified=modified,
             name=name,
@@ -855,6 +870,7 @@ def sync_all(
     field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -902,6 +918,7 @@ def sync_all(
         field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
+        importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -954,6 +971,7 @@ def sync_all(
         field=field,
         has_active_terms_of_service=has_active_terms_of_service,
         has_terms_of_service=has_terms_of_service,
+        importable=importable,
         keyword=keyword,
         modified=modified,
         name=name,
@@ -1039,6 +1057,7 @@ async def asyncio_all(
     field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -1086,6 +1105,7 @@ async def asyncio_all(
         field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
+        importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -1138,6 +1158,7 @@ async def asyncio_all(
         field=field,
         has_active_terms_of_service=has_active_terms_of_service,
         has_terms_of_service=has_terms_of_service,
+        importable=importable,
         keyword=keyword,
         modified=modified,
         name=name,

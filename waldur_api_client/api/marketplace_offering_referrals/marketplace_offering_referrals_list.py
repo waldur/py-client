@@ -16,6 +16,7 @@ def _get_kwargs(
     o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -31,6 +32,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["scope"] = scope
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -77,6 +80,7 @@ def sync_detailed(
     o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingReferral"]]:
     """List Datacite referrals for offerings
 
@@ -88,6 +92,7 @@ def sync_detailed(
         o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -101,6 +106,7 @@ def sync_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        scope=scope,
     )
 
     response = client.get_httpx_client().request(
@@ -116,6 +122,7 @@ def sync(
     o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> list["OfferingReferral"]:
     """List Datacite referrals for offerings
 
@@ -127,6 +134,7 @@ def sync(
         o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -141,6 +149,7 @@ def sync(
         o=o,
         page=page,
         page_size=page_size,
+        scope=scope,
     ).parsed
 
 
@@ -150,6 +159,7 @@ async def asyncio_detailed(
     o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingReferral"]]:
     """List Datacite referrals for offerings
 
@@ -161,6 +171,7 @@ async def asyncio_detailed(
         o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -174,6 +185,7 @@ async def asyncio_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        scope=scope,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -187,6 +199,7 @@ async def asyncio(
     o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> list["OfferingReferral"]:
     """List Datacite referrals for offerings
 
@@ -198,6 +211,7 @@ async def asyncio(
         o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -213,6 +227,7 @@ async def asyncio(
             o=o,
             page=page,
             page_size=page_size,
+            scope=scope,
         )
     ).parsed
 
@@ -221,6 +236,7 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> list["OfferingReferral"]:
     """Get All Pages
 
@@ -231,6 +247,7 @@ def sync_all(
 
     Args:
         o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -246,6 +263,7 @@ def sync_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         o=o,
+        scope=scope,
     )
 
     # Set page_size to maximum
@@ -294,6 +312,7 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> list["OfferingReferral"]:
     """Get All Pages (Async)
 
@@ -304,6 +323,7 @@ async def asyncio_all(
 
     Args:
         o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -319,6 +339,7 @@ async def asyncio_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         o=o,
+        scope=scope,
     )
 
     # Set page_size to maximum

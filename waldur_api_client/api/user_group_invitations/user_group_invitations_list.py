@@ -22,6 +22,7 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -54,6 +55,8 @@ def _get_kwargs(
     if not isinstance(role_uuid, Unset):
         json_role_uuid = str(role_uuid)
     params["role_uuid"] = json_role_uuid
+
+    params["scope"] = scope
 
     params["scope_type"] = scope_type
 
@@ -105,6 +108,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
 ) -> Response[list["GroupInvitation"]]:
     """List group invitations
@@ -120,6 +124,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_type (Union[Unset, str]):
 
     Raises:
@@ -139,6 +144,7 @@ def sync_detailed(
         page_size=page_size,
         role_name=role_name,
         role_uuid=role_uuid,
+        scope=scope,
         scope_type=scope_type,
     )
 
@@ -160,6 +166,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
 ) -> list["GroupInvitation"]:
     """List group invitations
@@ -175,6 +182,7 @@ def sync(
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_type (Union[Unset, str]):
 
     Raises:
@@ -195,6 +203,7 @@ def sync(
         page_size=page_size,
         role_name=role_name,
         role_uuid=role_uuid,
+        scope=scope,
         scope_type=scope_type,
     ).parsed
 
@@ -210,6 +219,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
 ) -> Response[list["GroupInvitation"]]:
     """List group invitations
@@ -225,6 +235,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_type (Union[Unset, str]):
 
     Raises:
@@ -244,6 +255,7 @@ async def asyncio_detailed(
         page_size=page_size,
         role_name=role_name,
         role_uuid=role_uuid,
+        scope=scope,
         scope_type=scope_type,
     )
 
@@ -263,6 +275,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
 ) -> list["GroupInvitation"]:
     """List group invitations
@@ -278,6 +291,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_type (Union[Unset, str]):
 
     Raises:
@@ -299,6 +313,7 @@ async def asyncio(
             page_size=page_size,
             role_name=role_name,
             role_uuid=role_uuid,
+            scope=scope,
             scope_type=scope_type,
         )
     ).parsed
@@ -313,6 +328,7 @@ def sync_all(
     o: Union[Unset, list[UserGroupInvitationsListOItem]] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
 ) -> list["GroupInvitation"]:
     """Get All Pages
@@ -329,6 +345,7 @@ def sync_all(
         o (Union[Unset, list[UserGroupInvitationsListOItem]]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_type (Union[Unset, str]):
 
     Raises:
@@ -350,6 +367,7 @@ def sync_all(
         o=o,
         role_name=role_name,
         role_uuid=role_uuid,
+        scope=scope,
         scope_type=scope_type,
     )
 
@@ -404,6 +422,7 @@ async def asyncio_all(
     o: Union[Unset, list[UserGroupInvitationsListOItem]] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
 ) -> list["GroupInvitation"]:
     """Get All Pages (Async)
@@ -420,6 +439,7 @@ async def asyncio_all(
         o (Union[Unset, list[UserGroupInvitationsListOItem]]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         scope_type (Union[Unset, str]):
 
     Raises:
@@ -441,6 +461,7 @@ async def asyncio_all(
         o=o,
         role_name=role_name,
         role_uuid=role_uuid,
+        scope=scope,
         scope_type=scope_type,
     )
 

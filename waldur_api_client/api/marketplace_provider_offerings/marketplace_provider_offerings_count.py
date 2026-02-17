@@ -27,6 +27,7 @@ def _get_kwargs(
     description: Union[Unset, str] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -95,6 +96,8 @@ def _get_kwargs(
     params["has_active_terms_of_service"] = has_active_terms_of_service
 
     params["has_terms_of_service"] = has_terms_of_service
+
+    params["importable"] = importable
 
     params["keyword"] = keyword
 
@@ -249,6 +252,7 @@ def sync_detailed(
     description: Union[Unset, str] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -293,6 +297,7 @@ def sync_detailed(
         description (Union[Unset, str]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
+        importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -341,6 +346,7 @@ def sync_detailed(
         description=description,
         has_active_terms_of_service=has_active_terms_of_service,
         has_terms_of_service=has_terms_of_service,
+        importable=importable,
         keyword=keyword,
         modified=modified,
         name=name,
@@ -391,6 +397,7 @@ def sync(
     description: Union[Unset, str] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -435,6 +442,7 @@ def sync(
         description (Union[Unset, str]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
+        importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -484,6 +492,7 @@ def sync(
         description=description,
         has_active_terms_of_service=has_active_terms_of_service,
         has_terms_of_service=has_terms_of_service,
+        importable=importable,
         keyword=keyword,
         modified=modified,
         name=name,
@@ -528,6 +537,7 @@ async def asyncio_detailed(
     description: Union[Unset, str] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -572,6 +582,7 @@ async def asyncio_detailed(
         description (Union[Unset, str]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
+        importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -620,6 +631,7 @@ async def asyncio_detailed(
         description=description,
         has_active_terms_of_service=has_active_terms_of_service,
         has_terms_of_service=has_terms_of_service,
+        importable=importable,
         keyword=keyword,
         modified=modified,
         name=name,
@@ -668,6 +680,7 @@ async def asyncio(
     description: Union[Unset, str] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
+    importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -712,6 +725,7 @@ async def asyncio(
         description (Union[Unset, str]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
+        importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
@@ -762,6 +776,7 @@ async def asyncio(
             description=description,
             has_active_terms_of_service=has_active_terms_of_service,
             has_terms_of_service=has_terms_of_service,
+            importable=importable,
             keyword=keyword,
             modified=modified,
             name=name,

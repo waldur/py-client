@@ -8,6 +8,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_instance import OpenStackInstance
 from ...models.openstack_instances_list_field_item import OpenstackInstancesListFieldItem
+from ...models.openstack_instances_list_o import OpenstackInstancesListO
 from ...models.openstack_instances_list_state_item import OpenstackInstancesListStateItem
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
@@ -29,6 +30,7 @@ def _get_kwargs(
     field: Union[Unset, list[OpenstackInstancesListFieldItem]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesListO] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -88,6 +90,12 @@ def _get_kwargs(
     params["name"] = name
 
     params["name_exact"] = name_exact
+
+    json_o: Union[Unset, str] = UNSET
+    if not isinstance(o, Unset):
+        json_o = o.value
+
+    params["o"] = json_o
 
     params["page"] = page
 
@@ -193,6 +201,7 @@ def sync_detailed(
     field: Union[Unset, list[OpenstackInstancesListFieldItem]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesListO] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -226,6 +235,7 @@ def sync_detailed(
         field (Union[Unset, list[OpenstackInstancesListFieldItem]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        o (Union[Unset, OpenstackInstancesListO]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -263,6 +273,7 @@ def sync_detailed(
         field=field,
         name=name,
         name_exact=name_exact,
+        o=o,
         page=page,
         page_size=page_size,
         project=project,
@@ -302,6 +313,7 @@ def sync(
     field: Union[Unset, list[OpenstackInstancesListFieldItem]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesListO] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -335,6 +347,7 @@ def sync(
         field (Union[Unset, list[OpenstackInstancesListFieldItem]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        o (Union[Unset, OpenstackInstancesListO]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -373,6 +386,7 @@ def sync(
         field=field,
         name=name,
         name_exact=name_exact,
+        o=o,
         page=page,
         page_size=page_size,
         project=project,
@@ -406,6 +420,7 @@ async def asyncio_detailed(
     field: Union[Unset, list[OpenstackInstancesListFieldItem]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesListO] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -439,6 +454,7 @@ async def asyncio_detailed(
         field (Union[Unset, list[OpenstackInstancesListFieldItem]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        o (Union[Unset, OpenstackInstancesListO]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -476,6 +492,7 @@ async def asyncio_detailed(
         field=field,
         name=name,
         name_exact=name_exact,
+        o=o,
         page=page,
         page_size=page_size,
         project=project,
@@ -513,6 +530,7 @@ async def asyncio(
     field: Union[Unset, list[OpenstackInstancesListFieldItem]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesListO] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -546,6 +564,7 @@ async def asyncio(
         field (Union[Unset, list[OpenstackInstancesListFieldItem]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        o (Union[Unset, OpenstackInstancesListO]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -585,6 +604,7 @@ async def asyncio(
             field=field,
             name=name,
             name_exact=name_exact,
+            o=o,
             page=page,
             page_size=page_size,
             project=project,
@@ -619,6 +639,7 @@ def sync_all(
     field: Union[Unset, list[OpenstackInstancesListFieldItem]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesListO] = UNSET,
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -653,6 +674,7 @@ def sync_all(
         field (Union[Unset, list[OpenstackInstancesListFieldItem]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        o (Union[Unset, OpenstackInstancesListO]):
         project (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
@@ -692,6 +714,7 @@ def sync_all(
         field=field,
         name=name,
         name_exact=name_exact,
+        o=o,
         project=project,
         project_name=project_name,
         project_uuid=project_uuid,
@@ -764,6 +787,7 @@ async def asyncio_all(
     field: Union[Unset, list[OpenstackInstancesListFieldItem]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesListO] = UNSET,
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -798,6 +822,7 @@ async def asyncio_all(
         field (Union[Unset, list[OpenstackInstancesListFieldItem]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        o (Union[Unset, OpenstackInstancesListO]):
         project (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
@@ -837,6 +862,7 @@ async def asyncio_all(
         field=field,
         name=name,
         name_exact=name_exact,
+        o=o,
         project=project,
         project_name=project_name,
         project_uuid=project_uuid,

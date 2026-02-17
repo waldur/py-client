@@ -56,6 +56,7 @@ def _get_kwargs(
     query: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceResourcesHistoryListStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
@@ -189,6 +190,8 @@ def _get_kwargs(
 
     params["runtime_state"] = runtime_state
 
+    params["scope"] = scope
+
     json_service_manager_uuid: Union[Unset, str] = UNSET
     if not isinstance(service_manager_uuid, Unset):
         json_service_manager_uuid = str(service_manager_uuid)
@@ -288,6 +291,7 @@ def sync_detailed(
     query: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceResourcesHistoryListStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
@@ -338,6 +342,7 @@ def sync_detailed(
         query (Union[Unset, str]):
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
+        scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceResourcesHistoryListStateItem]]):
         usage_based (Union[Unset, bool]):
@@ -392,6 +397,7 @@ def sync_detailed(
         query=query,
         restrict_member_access=restrict_member_access,
         runtime_state=runtime_state,
+        scope=scope,
         service_manager_uuid=service_manager_uuid,
         state=state,
         usage_based=usage_based,
@@ -448,6 +454,7 @@ def sync(
     query: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceResourcesHistoryListStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
@@ -498,6 +505,7 @@ def sync(
         query (Union[Unset, str]):
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
+        scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceResourcesHistoryListStateItem]]):
         usage_based (Union[Unset, bool]):
@@ -553,6 +561,7 @@ def sync(
         query=query,
         restrict_member_access=restrict_member_access,
         runtime_state=runtime_state,
+        scope=scope,
         service_manager_uuid=service_manager_uuid,
         state=state,
         usage_based=usage_based,
@@ -603,6 +612,7 @@ async def asyncio_detailed(
     query: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceResourcesHistoryListStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
@@ -653,6 +663,7 @@ async def asyncio_detailed(
         query (Union[Unset, str]):
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
+        scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceResourcesHistoryListStateItem]]):
         usage_based (Union[Unset, bool]):
@@ -707,6 +718,7 @@ async def asyncio_detailed(
         query=query,
         restrict_member_access=restrict_member_access,
         runtime_state=runtime_state,
+        scope=scope,
         service_manager_uuid=service_manager_uuid,
         state=state,
         usage_based=usage_based,
@@ -761,6 +773,7 @@ async def asyncio(
     query: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceResourcesHistoryListStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
@@ -811,6 +824,7 @@ async def asyncio(
         query (Union[Unset, str]):
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
+        scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceResourcesHistoryListStateItem]]):
         usage_based (Union[Unset, bool]):
@@ -867,6 +881,7 @@ async def asyncio(
             query=query,
             restrict_member_access=restrict_member_access,
             runtime_state=runtime_state,
+            scope=scope,
             service_manager_uuid=service_manager_uuid,
             state=state,
             usage_based=usage_based,
@@ -916,6 +931,7 @@ def sync_all(
     query: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceResourcesHistoryListStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
@@ -967,6 +983,7 @@ def sync_all(
         query (Union[Unset, str]):
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
+        scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceResourcesHistoryListStateItem]]):
         usage_based (Union[Unset, bool]):
@@ -1023,6 +1040,7 @@ def sync_all(
         query=query,
         restrict_member_access=restrict_member_access,
         runtime_state=runtime_state,
+        scope=scope,
         service_manager_uuid=service_manager_uuid,
         state=state,
         usage_based=usage_based,
@@ -1112,6 +1130,7 @@ async def asyncio_all(
     query: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MarketplaceResourcesHistoryListStateItem]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
@@ -1163,6 +1182,7 @@ async def asyncio_all(
         query (Union[Unset, str]):
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
+        scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MarketplaceResourcesHistoryListStateItem]]):
         usage_based (Union[Unset, bool]):
@@ -1219,6 +1239,7 @@ async def asyncio_all(
         query=query,
         restrict_member_access=restrict_member_access,
         runtime_state=runtime_state,
+        scope=scope,
         service_manager_uuid=service_manager_uuid,
         state=state,
         usage_based=usage_based,

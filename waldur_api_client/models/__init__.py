@@ -1539,8 +1539,10 @@ from .openstack_floating_ips_count_state_item import OpenstackFloatingIpsCountSt
 from .openstack_floating_ips_list_field_item import OpenstackFloatingIpsListFieldItem
 from .openstack_floating_ips_list_state_item import OpenstackFloatingIpsListStateItem
 from .openstack_floating_ips_retrieve_field_item import OpenstackFloatingIpsRetrieveFieldItem
+from .openstack_instances_count_o import OpenstackInstancesCountO
 from .openstack_instances_count_state_item import OpenstackInstancesCountStateItem
 from .openstack_instances_list_field_item import OpenstackInstancesListFieldItem
+from .openstack_instances_list_o import OpenstackInstancesListO
 from .openstack_instances_list_state_item import OpenstackInstancesListStateItem
 from .openstack_instances_retrieve_field_item import OpenstackInstancesRetrieveFieldItem
 from .openstack_marketplace_tenants_count_state_item import OpenstackMarketplaceTenantsCountStateItem
@@ -4031,9 +4033,11 @@ __all__ = (
     "OpenStackInstanceMarketplaceOfferingPluginOptionsType0",
     "OpenStackInstancePortsUpdateRequest",
     "OpenStackInstanceRequest",
+    "OpenstackInstancesCountO",
     "OpenstackInstancesCountStateItem",
     "OpenStackInstanceSecurityGroupsUpdateRequest",
     "OpenstackInstancesListFieldItem",
+    "OpenstackInstancesListO",
     "OpenstackInstancesListStateItem",
     "OpenstackInstancesRetrieveFieldItem",
     "OpenstackMarketplaceTenantsCountStateItem",

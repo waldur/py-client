@@ -12,11 +12,13 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     abbreviation: Union[Unset, str] = UNSET,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     agreement_number: Union[Unset, str] = UNSET,
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
+    month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -28,10 +30,13 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
+    year: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["abbreviation"] = abbreviation
+
+    params["accounting_is_running"] = accounting_is_running
 
     params["agreement_number"] = agreement_number
 
@@ -42,6 +47,8 @@ def _get_kwargs(
     params["contact_details"] = contact_details
 
     params["current_user_has_project_create_permission"] = current_user_has_project_create_permission
+
+    params["month"] = month
 
     params["name"] = name
 
@@ -71,6 +78,8 @@ def _get_kwargs(
     params["query"] = query
 
     params["registration_code"] = registration_code
+
+    params["year"] = year
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -113,11 +122,13 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     abbreviation: Union[Unset, str] = UNSET,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     agreement_number: Union[Unset, str] = UNSET,
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
+    month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -129,16 +140,19 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
+    year: Union[Unset, int] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         abbreviation (Union[Unset, str]):
+        accounting_is_running (Union[Unset, bool]):
         agreement_number (Union[Unset, str]):
         archived (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
+        month (Union[Unset, int]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -150,6 +164,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         registration_code (Union[Unset, str]):
+        year (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -161,11 +176,13 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         abbreviation=abbreviation,
+        accounting_is_running=accounting_is_running,
         agreement_number=agreement_number,
         archived=archived,
         backend_id=backend_id,
         contact_details=contact_details,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
+        month=month,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
@@ -177,6 +194,7 @@ def sync_detailed(
         page_size=page_size,
         query=query,
         registration_code=registration_code,
+        year=year,
     )
 
     response = client.get_httpx_client().request(
@@ -190,11 +208,13 @@ def sync(
     *,
     client: AuthenticatedClient,
     abbreviation: Union[Unset, str] = UNSET,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     agreement_number: Union[Unset, str] = UNSET,
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
+    month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -206,16 +226,19 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
+    year: Union[Unset, int] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         abbreviation (Union[Unset, str]):
+        accounting_is_running (Union[Unset, bool]):
         agreement_number (Union[Unset, str]):
         archived (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
+        month (Union[Unset, int]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -227,6 +250,7 @@ def sync(
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         registration_code (Union[Unset, str]):
+        year (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -239,11 +263,13 @@ def sync(
     return sync_detailed(
         client=client,
         abbreviation=abbreviation,
+        accounting_is_running=accounting_is_running,
         agreement_number=agreement_number,
         archived=archived,
         backend_id=backend_id,
         contact_details=contact_details,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
+        month=month,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
@@ -255,6 +281,7 @@ def sync(
         page_size=page_size,
         query=query,
         registration_code=registration_code,
+        year=year,
     ).parsed
 
 
@@ -262,11 +289,13 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     abbreviation: Union[Unset, str] = UNSET,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     agreement_number: Union[Unset, str] = UNSET,
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
+    month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -278,16 +307,19 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
+    year: Union[Unset, int] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         abbreviation (Union[Unset, str]):
+        accounting_is_running (Union[Unset, bool]):
         agreement_number (Union[Unset, str]):
         archived (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
+        month (Union[Unset, int]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -299,6 +331,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         registration_code (Union[Unset, str]):
+        year (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -310,11 +343,13 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         abbreviation=abbreviation,
+        accounting_is_running=accounting_is_running,
         agreement_number=agreement_number,
         archived=archived,
         backend_id=backend_id,
         contact_details=contact_details,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
+        month=month,
         name=name,
         name_exact=name_exact,
         native_name=native_name,
@@ -326,6 +361,7 @@ async def asyncio_detailed(
         page_size=page_size,
         query=query,
         registration_code=registration_code,
+        year=year,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -337,11 +373,13 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     abbreviation: Union[Unset, str] = UNSET,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     agreement_number: Union[Unset, str] = UNSET,
     archived: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
+    month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -353,16 +391,19 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     registration_code: Union[Unset, str] = UNSET,
+    year: Union[Unset, int] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         abbreviation (Union[Unset, str]):
+        accounting_is_running (Union[Unset, bool]):
         agreement_number (Union[Unset, str]):
         archived (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
+        month (Union[Unset, int]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -374,6 +415,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         registration_code (Union[Unset, str]):
+        year (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -387,11 +429,13 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             abbreviation=abbreviation,
+            accounting_is_running=accounting_is_running,
             agreement_number=agreement_number,
             archived=archived,
             backend_id=backend_id,
             contact_details=contact_details,
             current_user_has_project_create_permission=current_user_has_project_create_permission,
+            month=month,
             name=name,
             name_exact=name_exact,
             native_name=native_name,
@@ -403,5 +447,6 @@ async def asyncio(
             page_size=page_size,
             query=query,
             registration_code=registration_code,
+            year=year,
         )
     ).parsed

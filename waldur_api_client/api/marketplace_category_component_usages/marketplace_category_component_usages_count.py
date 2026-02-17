@@ -15,6 +15,7 @@ def _get_kwargs(
     date_before: Union[Unset, datetime.date] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -31,6 +32,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["scope"] = scope
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -76,6 +79,7 @@ def sync_detailed(
     date_before: Union[Unset, datetime.date] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List aggregated category component usages
 
@@ -86,6 +90,7 @@ def sync_detailed(
         date_before (Union[Unset, datetime.date]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -100,6 +105,7 @@ def sync_detailed(
         date_before=date_before,
         page=page,
         page_size=page_size,
+        scope=scope,
     )
 
     response = client.get_httpx_client().request(
@@ -116,6 +122,7 @@ def sync(
     date_before: Union[Unset, datetime.date] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> int:
     """List aggregated category component usages
 
@@ -126,6 +133,7 @@ def sync(
         date_before (Union[Unset, datetime.date]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -141,6 +149,7 @@ def sync(
         date_before=date_before,
         page=page,
         page_size=page_size,
+        scope=scope,
     ).parsed
 
 
@@ -151,6 +160,7 @@ async def asyncio_detailed(
     date_before: Union[Unset, datetime.date] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List aggregated category component usages
 
@@ -161,6 +171,7 @@ async def asyncio_detailed(
         date_before (Union[Unset, datetime.date]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -175,6 +186,7 @@ async def asyncio_detailed(
         date_before=date_before,
         page=page,
         page_size=page_size,
+        scope=scope,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -189,6 +201,7 @@ async def asyncio(
     date_before: Union[Unset, datetime.date] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> int:
     """List aggregated category component usages
 
@@ -199,6 +212,7 @@ async def asyncio(
         date_before (Union[Unset, datetime.date]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -215,5 +229,6 @@ async def asyncio(
             date_before=date_before,
             page=page,
             page_size=page_size,
+            scope=scope,
         )
     ).parsed

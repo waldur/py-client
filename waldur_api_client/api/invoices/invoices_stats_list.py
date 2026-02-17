@@ -17,6 +17,7 @@ from ...utils import parse_link_header
 def _get_kwargs(
     uuid: UUID,
     *,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -25,12 +26,14 @@ def _get_kwargs(
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    provider_uuid: Union[Unset, str] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
     state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["accounting_is_running"] = accounting_is_running
 
     json_created: Union[Unset, str] = UNSET
     if not isinstance(created, Unset):
@@ -64,7 +67,10 @@ def _get_kwargs(
 
     params["page_size"] = page_size
 
-    params["provider_uuid"] = provider_uuid
+    json_provider_uuid: Union[Unset, str] = UNSET
+    if not isinstance(provider_uuid, Unset):
+        json_provider_uuid = str(provider_uuid)
+    params["provider_uuid"] = json_provider_uuid
 
     json_start_date: Union[Unset, str] = UNSET
     if not isinstance(start_date, Unset):
@@ -125,6 +131,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -133,7 +140,7 @@ def sync_detailed(
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    provider_uuid: Union[Unset, str] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
     state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
@@ -142,6 +149,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -150,7 +158,7 @@ def sync_detailed(
         o (Union[Unset, list[InvoicesStatsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        provider_uuid (Union[Unset, str]):
+        provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
         state (Union[Unset, list[InvoicesStatsListStateItem]]):
         year (Union[Unset, int]):
@@ -165,6 +173,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        accounting_is_running=accounting_is_running,
         created=created,
         customer=customer,
         customer_uuid=customer_uuid,
@@ -190,6 +199,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -198,7 +208,7 @@ def sync(
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    provider_uuid: Union[Unset, str] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
     state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
@@ -207,6 +217,7 @@ def sync(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -215,7 +226,7 @@ def sync(
         o (Union[Unset, list[InvoicesStatsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        provider_uuid (Union[Unset, str]):
+        provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
         state (Union[Unset, list[InvoicesStatsListStateItem]]):
         year (Union[Unset, int]):
@@ -231,6 +242,7 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        accounting_is_running=accounting_is_running,
         created=created,
         customer=customer,
         customer_uuid=customer_uuid,
@@ -250,6 +262,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -258,7 +271,7 @@ async def asyncio_detailed(
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    provider_uuid: Union[Unset, str] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
     state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
@@ -267,6 +280,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -275,7 +289,7 @@ async def asyncio_detailed(
         o (Union[Unset, list[InvoicesStatsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        provider_uuid (Union[Unset, str]):
+        provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
         state (Union[Unset, list[InvoicesStatsListStateItem]]):
         year (Union[Unset, int]):
@@ -290,6 +304,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        accounting_is_running=accounting_is_running,
         created=created,
         customer=customer,
         customer_uuid=customer_uuid,
@@ -313,6 +328,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -321,7 +337,7 @@ async def asyncio(
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    provider_uuid: Union[Unset, str] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
     state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
@@ -330,6 +346,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
@@ -338,7 +355,7 @@ async def asyncio(
         o (Union[Unset, list[InvoicesStatsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        provider_uuid (Union[Unset, str]):
+        provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
         state (Union[Unset, list[InvoicesStatsListStateItem]]):
         year (Union[Unset, int]):
@@ -355,6 +372,7 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            accounting_is_running=accounting_is_running,
             created=created,
             customer=customer,
             customer_uuid=customer_uuid,
@@ -375,13 +393,14 @@ def sync_all(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
-    provider_uuid: Union[Unset, str] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
     state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
@@ -395,13 +414,14 @@ def sync_all(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
         o (Union[Unset, list[InvoicesStatsListOItem]]):
-        provider_uuid (Union[Unset, str]):
+        provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
         state (Union[Unset, list[InvoicesStatsListStateItem]]):
         year (Union[Unset, int]):
@@ -420,6 +440,7 @@ def sync_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         uuid=uuid,
+        accounting_is_running=accounting_is_running,
         created=created,
         customer=customer,
         customer_uuid=customer_uuid,
@@ -478,13 +499,14 @@ async def asyncio_all(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.date] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
     o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
-    provider_uuid: Union[Unset, str] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
     state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
     year: Union[Unset, int] = UNSET,
@@ -498,13 +520,14 @@ async def asyncio_all(
 
     Args:
         uuid (UUID):
+        accounting_is_running (Union[Unset, bool]):
         created (Union[Unset, datetime.date]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
         o (Union[Unset, list[InvoicesStatsListOItem]]):
-        provider_uuid (Union[Unset, str]):
+        provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
         state (Union[Unset, list[InvoicesStatsListStateItem]]):
         year (Union[Unset, int]):
@@ -523,6 +546,7 @@ async def asyncio_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         uuid=uuid,
+        accounting_is_running=accounting_is_running,
         created=created,
         customer=customer,
         customer_uuid=customer_uuid,

@@ -19,6 +19,7 @@ def _get_kwargs(
     o: Union[Unset, list[UserPermissionRequestsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsCountStateItem]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -50,6 +51,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["scope"] = scope
 
     json_state: Union[Unset, list[str]] = UNSET
     if not isinstance(state, Unset):
@@ -106,6 +109,7 @@ def sync_detailed(
     o: Union[Unset, list[UserPermissionRequestsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsCountStateItem]] = UNSET,
 ) -> Response[int]:
     """List permission requests
@@ -119,6 +123,7 @@ def sync_detailed(
         o (Union[Unset, list[UserPermissionRequestsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
         state (Union[Unset, list[UserPermissionRequestsCountStateItem]]):
 
     Raises:
@@ -136,6 +141,7 @@ def sync_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        scope=scope,
         state=state,
     )
 
@@ -155,6 +161,7 @@ def sync(
     o: Union[Unset, list[UserPermissionRequestsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsCountStateItem]] = UNSET,
 ) -> int:
     """List permission requests
@@ -168,6 +175,7 @@ def sync(
         o (Union[Unset, list[UserPermissionRequestsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
         state (Union[Unset, list[UserPermissionRequestsCountStateItem]]):
 
     Raises:
@@ -186,6 +194,7 @@ def sync(
         o=o,
         page=page,
         page_size=page_size,
+        scope=scope,
         state=state,
     ).parsed
 
@@ -199,6 +208,7 @@ async def asyncio_detailed(
     o: Union[Unset, list[UserPermissionRequestsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsCountStateItem]] = UNSET,
 ) -> Response[int]:
     """List permission requests
@@ -212,6 +222,7 @@ async def asyncio_detailed(
         o (Union[Unset, list[UserPermissionRequestsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
         state (Union[Unset, list[UserPermissionRequestsCountStateItem]]):
 
     Raises:
@@ -229,6 +240,7 @@ async def asyncio_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        scope=scope,
         state=state,
     )
 
@@ -246,6 +258,7 @@ async def asyncio(
     o: Union[Unset, list[UserPermissionRequestsCountOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     state: Union[Unset, list[UserPermissionRequestsCountStateItem]] = UNSET,
 ) -> int:
     """List permission requests
@@ -259,6 +272,7 @@ async def asyncio(
         o (Union[Unset, list[UserPermissionRequestsCountOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
         state (Union[Unset, list[UserPermissionRequestsCountStateItem]]):
 
     Raises:
@@ -278,6 +292,7 @@ async def asyncio(
             o=o,
             page=page,
             page_size=page_size,
+            scope=scope,
             state=state,
         )
     ).parsed

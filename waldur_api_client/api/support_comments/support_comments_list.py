@@ -24,6 +24,7 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     remote_id_is_set: Union[Unset, bool] = UNSET,
+    resource: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -56,6 +57,8 @@ def _get_kwargs(
     params["page_size"] = page_size
 
     params["remote_id_is_set"] = remote_id_is_set
+
+    params["resource"] = resource
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -107,6 +110,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     remote_id_is_set: Union[Unset, bool] = UNSET,
+    resource: Union[Unset, str] = UNSET,
 ) -> Response[list["Comment"]]:
     """
     Args:
@@ -120,6 +124,7 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         remote_id_is_set (Union[Unset, bool]):
+        resource (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -140,6 +145,7 @@ def sync_detailed(
         page=page,
         page_size=page_size,
         remote_id_is_set=remote_id_is_set,
+        resource=resource,
     )
 
     response = client.get_httpx_client().request(
@@ -162,6 +168,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     remote_id_is_set: Union[Unset, bool] = UNSET,
+    resource: Union[Unset, str] = UNSET,
 ) -> list["Comment"]:
     """
     Args:
@@ -175,6 +182,7 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         remote_id_is_set (Union[Unset, bool]):
+        resource (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -196,6 +204,7 @@ def sync(
         page=page,
         page_size=page_size,
         remote_id_is_set=remote_id_is_set,
+        resource=resource,
     ).parsed
 
 
@@ -212,6 +221,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     remote_id_is_set: Union[Unset, bool] = UNSET,
+    resource: Union[Unset, str] = UNSET,
 ) -> Response[list["Comment"]]:
     """
     Args:
@@ -225,6 +235,7 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         remote_id_is_set (Union[Unset, bool]):
+        resource (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -245,6 +256,7 @@ async def asyncio_detailed(
         page=page,
         page_size=page_size,
         remote_id_is_set=remote_id_is_set,
+        resource=resource,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -265,6 +277,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     remote_id_is_set: Union[Unset, bool] = UNSET,
+    resource: Union[Unset, str] = UNSET,
 ) -> list["Comment"]:
     """
     Args:
@@ -278,6 +291,7 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         remote_id_is_set (Union[Unset, bool]):
+        resource (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -300,6 +314,7 @@ async def asyncio(
             page=page,
             page_size=page_size,
             remote_id_is_set=remote_id_is_set,
+            resource=resource,
         )
     ).parsed
 
@@ -315,6 +330,7 @@ def sync_all(
     issue_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[SupportCommentsListOItem]] = UNSET,
     remote_id_is_set: Union[Unset, bool] = UNSET,
+    resource: Union[Unset, str] = UNSET,
 ) -> list["Comment"]:
     """Get All Pages
 
@@ -332,6 +348,7 @@ def sync_all(
         issue_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[SupportCommentsListOItem]]):
         remote_id_is_set (Union[Unset, bool]):
+        resource (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -354,6 +371,7 @@ def sync_all(
         issue_uuid=issue_uuid,
         o=o,
         remote_id_is_set=remote_id_is_set,
+        resource=resource,
     )
 
     # Set page_size to maximum
@@ -409,6 +427,7 @@ async def asyncio_all(
     issue_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[SupportCommentsListOItem]] = UNSET,
     remote_id_is_set: Union[Unset, bool] = UNSET,
+    resource: Union[Unset, str] = UNSET,
 ) -> list["Comment"]:
     """Get All Pages (Async)
 
@@ -426,6 +445,7 @@ async def asyncio_all(
         issue_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[SupportCommentsListOItem]]):
         remote_id_is_set (Union[Unset, bool]):
+        resource (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -448,6 +468,7 @@ async def asyncio_all(
         issue_uuid=issue_uuid,
         o=o,
         remote_id_is_set=remote_id_is_set,
+        resource=resource,
     )
 
     # Set page_size to maximum

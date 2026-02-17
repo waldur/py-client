@@ -18,12 +18,15 @@ def _get_kwargs(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     field: Union[Unset, list[EventsListFieldItem]] = UNSET,
     message: Union[Unset, str] = UNSET,
     o: Union[Unset, list[EventsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -36,6 +39,18 @@ def _get_kwargs(
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
     params["customer_uuid"] = json_customer_uuid
+
+    json_event_type: Union[Unset, list[str]] = UNSET
+    if not isinstance(event_type, Unset):
+        json_event_type = event_type
+
+    params["event_type"] = json_event_type
+
+    json_feature: Union[Unset, list[str]] = UNSET
+    if not isinstance(feature, Unset):
+        json_feature = feature
+
+    params["feature"] = json_feature
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -65,6 +80,8 @@ def _get_kwargs(
     if not isinstance(project_uuid, Unset):
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
+
+    params["scope"] = scope
 
     json_user_uuid: Union[Unset, str] = UNSET
     if not isinstance(user_uuid, Unset):
@@ -112,12 +129,15 @@ def sync_detailed(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     field: Union[Unset, list[EventsListFieldItem]] = UNSET,
     message: Union[Unset, str] = UNSET,
     o: Union[Unset, list[EventsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Event"]]:
     """
@@ -125,12 +145,15 @@ def sync_detailed(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
+        event_type (Union[Unset, list[str]]):
+        feature (Union[Unset, list[str]]):
         field (Union[Unset, list[EventsListFieldItem]]):
         message (Union[Unset, str]):
         o (Union[Unset, list[EventsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -145,12 +168,15 @@ def sync_detailed(
         created_from=created_from,
         created_to=created_to,
         customer_uuid=customer_uuid,
+        event_type=event_type,
+        feature=feature,
         field=field,
         message=message,
         o=o,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
+        scope=scope,
         user_uuid=user_uuid,
     )
 
@@ -167,12 +193,15 @@ def sync(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     field: Union[Unset, list[EventsListFieldItem]] = UNSET,
     message: Union[Unset, str] = UNSET,
     o: Union[Unset, list[EventsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Event"]:
     """
@@ -180,12 +209,15 @@ def sync(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
+        event_type (Union[Unset, list[str]]):
+        feature (Union[Unset, list[str]]):
         field (Union[Unset, list[EventsListFieldItem]]):
         message (Union[Unset, str]):
         o (Union[Unset, list[EventsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -201,12 +233,15 @@ def sync(
         created_from=created_from,
         created_to=created_to,
         customer_uuid=customer_uuid,
+        event_type=event_type,
+        feature=feature,
         field=field,
         message=message,
         o=o,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
+        scope=scope,
         user_uuid=user_uuid,
     ).parsed
 
@@ -217,12 +252,15 @@ async def asyncio_detailed(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     field: Union[Unset, list[EventsListFieldItem]] = UNSET,
     message: Union[Unset, str] = UNSET,
     o: Union[Unset, list[EventsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Event"]]:
     """
@@ -230,12 +268,15 @@ async def asyncio_detailed(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
+        event_type (Union[Unset, list[str]]):
+        feature (Union[Unset, list[str]]):
         field (Union[Unset, list[EventsListFieldItem]]):
         message (Union[Unset, str]):
         o (Union[Unset, list[EventsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -250,12 +291,15 @@ async def asyncio_detailed(
         created_from=created_from,
         created_to=created_to,
         customer_uuid=customer_uuid,
+        event_type=event_type,
+        feature=feature,
         field=field,
         message=message,
         o=o,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
+        scope=scope,
         user_uuid=user_uuid,
     )
 
@@ -270,12 +314,15 @@ async def asyncio(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     field: Union[Unset, list[EventsListFieldItem]] = UNSET,
     message: Union[Unset, str] = UNSET,
     o: Union[Unset, list[EventsListOItem]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Event"]:
     """
@@ -283,12 +330,15 @@ async def asyncio(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
+        event_type (Union[Unset, list[str]]):
+        feature (Union[Unset, list[str]]):
         field (Union[Unset, list[EventsListFieldItem]]):
         message (Union[Unset, str]):
         o (Union[Unset, list[EventsListOItem]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -305,12 +355,15 @@ async def asyncio(
             created_from=created_from,
             created_to=created_to,
             customer_uuid=customer_uuid,
+            event_type=event_type,
+            feature=feature,
             field=field,
             message=message,
             o=o,
             page=page,
             page_size=page_size,
             project_uuid=project_uuid,
+            scope=scope,
             user_uuid=user_uuid,
         )
     ).parsed
@@ -322,10 +375,13 @@ def sync_all(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     field: Union[Unset, list[EventsListFieldItem]] = UNSET,
     message: Union[Unset, str] = UNSET,
     o: Union[Unset, list[EventsListOItem]] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Event"]:
     """Get All Pages
@@ -339,10 +395,13 @@ def sync_all(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
+        event_type (Union[Unset, list[str]]):
+        feature (Union[Unset, list[str]]):
         field (Union[Unset, list[EventsListFieldItem]]):
         message (Union[Unset, str]):
         o (Union[Unset, list[EventsListOItem]]):
         project_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -361,10 +420,13 @@ def sync_all(
         created_from=created_from,
         created_to=created_to,
         customer_uuid=customer_uuid,
+        event_type=event_type,
+        feature=feature,
         field=field,
         message=message,
         o=o,
         project_uuid=project_uuid,
+        scope=scope,
         user_uuid=user_uuid,
     )
 
@@ -416,10 +478,13 @@ async def asyncio_all(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     field: Union[Unset, list[EventsListFieldItem]] = UNSET,
     message: Union[Unset, str] = UNSET,
     o: Union[Unset, list[EventsListOItem]] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Event"]:
     """Get All Pages (Async)
@@ -433,10 +498,13 @@ async def asyncio_all(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
+        event_type (Union[Unset, list[str]]):
+        feature (Union[Unset, list[str]]):
         field (Union[Unset, list[EventsListFieldItem]]):
         message (Union[Unset, str]):
         o (Union[Unset, list[EventsListOItem]]):
         project_uuid (Union[Unset, UUID]):
+        scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -455,10 +523,13 @@ async def asyncio_all(
         created_from=created_from,
         created_to=created_to,
         customer_uuid=customer_uuid,
+        event_type=event_type,
+        feature=feature,
         field=field,
         message=message,
         o=o,
         project_uuid=project_uuid,
+        scope=scope,
         user_uuid=user_uuid,
     )
 

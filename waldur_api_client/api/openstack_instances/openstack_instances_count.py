@@ -6,6 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.openstack_instances_count_o import OpenstackInstancesCountO
 from ...models.openstack_instances_count_state_item import OpenstackInstancesCountStateItem
 from ...types import UNSET, Response, Unset
 
@@ -25,6 +26,7 @@ def _get_kwargs(
     external_ip: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesCountO] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -75,6 +77,12 @@ def _get_kwargs(
     params["name"] = name
 
     params["name_exact"] = name_exact
+
+    json_o: Union[Unset, str] = UNSET
+    if not isinstance(o, Unset):
+        json_o = o.value
+
+    params["o"] = json_o
 
     params["page"] = page
 
@@ -177,6 +185,7 @@ def sync_detailed(
     external_ip: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesCountO] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -209,6 +218,7 @@ def sync_detailed(
         external_ip (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        o (Union[Unset, OpenstackInstancesCountO]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -245,6 +255,7 @@ def sync_detailed(
         external_ip=external_ip,
         name=name,
         name_exact=name_exact,
+        o=o,
         page=page,
         page_size=page_size,
         project=project,
@@ -283,6 +294,7 @@ def sync(
     external_ip: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesCountO] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -315,6 +327,7 @@ def sync(
         external_ip (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        o (Union[Unset, OpenstackInstancesCountO]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -352,6 +365,7 @@ def sync(
         external_ip=external_ip,
         name=name,
         name_exact=name_exact,
+        o=o,
         page=page,
         page_size=page_size,
         project=project,
@@ -384,6 +398,7 @@ async def asyncio_detailed(
     external_ip: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesCountO] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -416,6 +431,7 @@ async def asyncio_detailed(
         external_ip (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        o (Union[Unset, OpenstackInstancesCountO]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -452,6 +468,7 @@ async def asyncio_detailed(
         external_ip=external_ip,
         name=name,
         name_exact=name_exact,
+        o=o,
         page=page,
         page_size=page_size,
         project=project,
@@ -488,6 +505,7 @@ async def asyncio(
     external_ip: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
+    o: Union[Unset, OpenstackInstancesCountO] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -520,6 +538,7 @@ async def asyncio(
         external_ip (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
+        o (Union[Unset, OpenstackInstancesCountO]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -558,6 +577,7 @@ async def asyncio(
             external_ip=external_ip,
             name=name,
             name_exact=name_exact,
+            o=o,
             page=page,
             page_size=page_size,
             project=project,

@@ -10,14 +10,31 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_event_type: Union[Unset, list[str]] = UNSET
+    if not isinstance(event_type, Unset):
+        json_event_type = event_type
+
+    params["event_type"] = json_event_type
+
+    json_feature: Union[Unset, list[str]] = UNSET
+    if not isinstance(feature, Unset):
+        json_feature = feature
+
+    params["feature"] = json_feature
 
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["scope"] = scope
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -59,14 +76,20 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        event_type (Union[Unset, list[str]]):
+        feature (Union[Unset, list[str]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -77,8 +100,11 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        event_type=event_type,
+        feature=feature,
         page=page,
         page_size=page_size,
+        scope=scope,
     )
 
     response = client.get_httpx_client().request(
@@ -91,14 +117,20 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        event_type (Union[Unset, list[str]]):
+        feature (Union[Unset, list[str]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -110,22 +142,31 @@ def sync(
 
     return sync_detailed(
         client=client,
+        event_type=event_type,
+        feature=feature,
         page=page,
         page_size=page_size,
+        scope=scope,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        event_type (Union[Unset, list[str]]):
+        feature (Union[Unset, list[str]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -136,8 +177,11 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        event_type=event_type,
+        feature=feature,
         page=page,
         page_size=page_size,
+        scope=scope,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -148,14 +192,20 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    event_type: Union[Unset, list[str]] = UNSET,
+    feature: Union[Unset, list[str]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    scope: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        event_type (Union[Unset, list[str]]):
+        feature (Union[Unset, list[str]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        scope (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -168,7 +218,10 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            event_type=event_type,
+            feature=feature,
             page=page,
             page_size=page_size,
+            scope=scope,
         )
     ).parsed

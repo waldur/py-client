@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.3-dev.20260217030714
+# Version: 8.0.3-dev.20260217210726
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3102,14 +3102,18 @@ Description: Get number of items in the collection matching the request paramete
 GET /api/customers/
 Summary: List customers
 Description: Retrieve a list of customers. The list is filtered based on the user's permissions.
-Query parameters (16):
+Query parameters (22):
   - abbreviation — Abbreviation
+  - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
   - archived
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
   - field
+  - has_resources — Filter by customers with resources.
+  - is_call_managing_organization — Filter by customers that are call managing organizations.
+  - is_service_provider — Filter by customers that are service providers.
   - name — Name
   - name_exact — Name (exact)
   - native_name — Native name
@@ -3119,18 +3123,24 @@ Query parameters (16):
   - owned_by_current_user — Return a list of customers where current user is owner.
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
+  - service_provider_uuid — Filter by service provider UUID.
+  - user_uuid — Filter by user UUID.
 
 ### customers_count
 HEAD /api/customers/
 Summary: List customers
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (15):
+Query parameters (21):
   - abbreviation — Abbreviation
+  - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
   - archived
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - has_resources — Filter by customers with resources.
+  - is_call_managing_organization — Filter by customers that are call managing organizations.
+  - is_service_provider — Filter by customers that are service providers.
   - name — Name
   - name_exact — Name (exact)
   - native_name — Native name
@@ -3140,6 +3150,8 @@ Query parameters (15):
   - owned_by_current_user — Return a list of customers where current user is owner.
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
+  - service_provider_uuid — Filter by service provider UUID.
+  - user_uuid — Filter by user UUID.
 
 ### customers_create
 POST /api/customers/
@@ -3151,13 +3163,17 @@ Request body: yes
 GET /api/customers/countries/
 Summary: Get list of available countries
 Description: Returns a list of countries that can be used when creating or updating a customer. The list can be configured by the service provider.
-Query parameters (15):
+Query parameters (21):
   - abbreviation — Abbreviation
+  - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
   - archived
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - has_resources — Filter by customers with resources.
+  - is_call_managing_organization — Filter by customers that are call managing organizations.
+  - is_service_provider — Filter by customers that are service providers.
   - name — Name
   - name_exact — Name (exact)
   - native_name — Native name
@@ -3167,18 +3183,24 @@ Query parameters (15):
   - owned_by_current_user — Return a list of customers where current user is owner.
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
+  - service_provider_uuid — Filter by service provider UUID.
+  - user_uuid — Filter by user UUID.
 
 ### customers_countries_count
 HEAD /api/customers/countries/
 Summary: Get list of available countries
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (15):
+Query parameters (21):
   - abbreviation — Abbreviation
+  - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
   - archived
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - has_resources — Filter by customers with resources.
+  - is_call_managing_organization — Filter by customers that are call managing organizations.
+  - is_service_provider — Filter by customers that are service providers.
   - name — Name
   - name_exact — Name (exact)
   - native_name — Native name
@@ -3188,6 +3210,8 @@ Query parameters (15):
   - owned_by_current_user — Return a list of customers where current user is owner.
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
+  - service_provider_uuid — Filter by service provider UUID.
+  - user_uuid — Filter by user UUID.
 
 ### customers_project_metadata_compliance_details_list
 GET /api/customers/{customer_uuid}/project-metadata-compliance-details/
@@ -3306,8 +3330,9 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (17):
+Query parameters (23):
   - abbreviation — Abbreviation
+  - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
   - archived
   - backend_id
@@ -3315,6 +3340,9 @@ Query parameters (17):
   - created_after — Filter versions created after this timestamp (ISO 8601)
   - created_before — Filter versions created before this timestamp (ISO 8601)
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - has_resources — Filter by customers with resources.
+  - is_call_managing_organization — Filter by customers that are call managing organizations.
+  - is_service_provider — Filter by customers that are service providers.
   - name — Name
   - name_exact — Name (exact)
   - native_name — Native name
@@ -3324,6 +3352,8 @@ Query parameters (17):
   - owned_by_current_user — Return a list of customers where current user is owner.
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
+  - service_provider_uuid — Filter by service provider UUID.
+  - user_uuid — Filter by user UUID.
 
 ### customers_history_at_retrieve
 GET /api/customers/{uuid}/history/at/
@@ -3896,27 +3926,33 @@ Request body: yes
 
 ### events_list
 GET /api/events/
-Query parameters (8):
+Query parameters (11):
   - created_from
   - created_to
   - customer_uuid — Customer UUID
+  - event_type — Filter by event type. Can be specified multiple times.
+  - feature — Filter by feature (event group). Can be specified multiple times.
   - field
   - message
   - o — Ordering
   - project_uuid — Project UUID
+  - scope — Filter by scope URL.
   - user_uuid — User UUID
 
 ### events_count
 HEAD /api/events/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (10):
   - created_from
   - created_to
   - customer_uuid — Customer UUID
+  - event_type — Filter by event type. Can be specified multiple times.
+  - feature — Filter by feature (event group). Can be specified multiple times.
   - message
   - o — Ordering
   - project_uuid — Project UUID
+  - scope — Filter by scope URL.
   - user_uuid — User UUID
 
 ### events_count_retrieve
@@ -3967,11 +4003,19 @@ Query parameters (1):
 
 ### events_stats_list
 GET /api/events-stats/
+Query parameters (3):
+  - event_type — Filter by event type. Can be specified multiple times.
+  - feature — Filter by feature (event group). Can be specified multiple times.
+  - scope — Filter by scope URL.
 
 ### events_stats_count
 HEAD /api/events-stats/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - event_type — Filter by event type. Can be specified multiple times.
+  - feature — Filter by feature (event group). Can be specified multiple times.
+  - scope — Filter by scope URL.
 
 ============================================================
 ## expertise-categories  (module: waldur_api_client.api.expertise_categories)
@@ -4074,13 +4118,15 @@ Request body: yes
 
 ### financial_reports_list
 GET /api/financial-reports/
-Query parameters (15):
+Query parameters (18):
   - abbreviation — Abbreviation
+  - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
   - archived
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - month — Filter by month.
   - name — Name
   - name_exact — Name (exact)
   - native_name — Native name
@@ -4090,18 +4136,21 @@ Query parameters (15):
   - owned_by_current_user — Return a list of customers where current user is owner.
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
+  - year — Filter by year.
 
 ### financial_reports_count
 HEAD /api/financial-reports/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (15):
+Query parameters (18):
   - abbreviation — Abbreviation
+  - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
   - archived
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - month — Filter by month.
   - name — Name
   - name_exact — Name (exact)
   - native_name — Native name
@@ -4111,6 +4160,7 @@ Query parameters (15):
   - owned_by_current_user — Return a list of customers where current user is owner.
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
+  - year — Filter by year.
 
 ### financial_reports_retrieve
 GET /api/financial-reports/{uuid}/
@@ -4215,11 +4265,17 @@ Query parameters (1):
 
 ### hooks_list
 GET /api/hooks/
+Query parameters (2):
+  - author_uuid — Filter by author UUID.
+  - is_active — Filter by active status.
 
 ### hooks_count
 HEAD /api/hooks/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - author_uuid — Filter by author UUID.
+  - is_active — Filter by active status.
 
 ============================================================
 ## hooks-email  (module: waldur_api_client.api.hooks_email)
@@ -4579,7 +4635,8 @@ Request body: yes
 
 ### invoices_list
 GET /api/invoices/
-Query parameters (10):
+Query parameters (11):
+  - accounting_is_running — Filter by whether accounting is running.
   - created
   - customer
   - customer_uuid
@@ -4595,7 +4652,8 @@ Query parameters (10):
 HEAD /api/invoices/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
+  - accounting_is_running — Filter by whether accounting is running.
   - created
   - customer
   - customer_uuid
@@ -4643,7 +4701,8 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (11):
+Query parameters (12):
+  - accounting_is_running — Filter by whether accounting is running.
   - created
   - created_after — Filter versions created after this timestamp (ISO 8601)
   - created_before — Filter versions created before this timestamp (ISO 8601)
@@ -4724,7 +4783,8 @@ Summary: Spendings grouped by offerings and filtered by provider
 Description: Spendings grouped by offerings and filtered by provider.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
+  - accounting_is_running — Filter by whether accounting is running.
   - created
   - customer
   - customer_uuid
@@ -5417,18 +5477,20 @@ Description: Returns a paginated list of aggregated component usages for marketp
         This data is scoped to either a customer or a project and represents the total usage
         of a component type (e.g., total 'CPU hours' used across all resources of a certain category
         within a pr...
-Query parameters (3):
+Query parameters (4):
   - date_after — Date after or equal to
   - date_before — Date before or equal to
   - field
+  - scope — Filter by scope URL.
 
 ### marketplace_category_component_usages_count
 HEAD /api/marketplace-category-component-usages/
 Summary: List aggregated category component usages
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (2):
+Query parameters (3):
   - date_after — Date after or equal to
   - date_before — Date before or equal to
+  - scope — Filter by scope URL.
 
 ### marketplace_category_component_usages_retrieve
 GET /api/marketplace-category-component-usages/{id}/
@@ -6264,15 +6326,17 @@ Path parameters:
 GET /api/marketplace-offering-referrals/
 Summary: List Datacite referrals for offerings
 Description: Returns a paginated list of Datacite referrals associated with marketplace offerings. Referrals represent relationships between an offering (identified by a DOI) and other research outputs, such as publications or datasets. The list must be filtered by the offering's scope.
-Query parameters (1):
+Query parameters (2):
   - o — Ordering
+  - scope — Filter by scope URL.
 
 ### marketplace_offering_referrals_count
 HEAD /api/marketplace-offering-referrals/
 Summary: List Datacite referrals for offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (1):
+Query parameters (2):
   - o — Ordering
+  - scope — Filter by scope URL.
 
 ### marketplace_offering_referrals_retrieve
 GET /api/marketplace-offering-referrals/{uuid}/
@@ -7299,7 +7363,7 @@ Request body: yes
 GET /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Returns a paginated list of offerings for the provider.
-Query parameters (37):
+Query parameters (38):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7314,6 +7378,7 @@ Query parameters (37):
   - field
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
+  - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
   - name — Name
@@ -7342,7 +7407,7 @@ Query parameters (37):
 HEAD /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (36):
+Query parameters (37):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7356,6 +7421,7 @@ Query parameters (36):
   - description — Description contains
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
+  - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
   - name — Name
@@ -7552,7 +7618,7 @@ Summary: Get statistics for offering components
 Description: Returns monthly usage statistics for the components of an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (38):
+Query parameters (39):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7567,6 +7633,7 @@ Query parameters (38):
   - end — End date in format YYYY-MM.
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
+  - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
   - name — Name
@@ -7598,7 +7665,7 @@ Summary: Get costs for an offering
 Description: Returns monthly cost data for an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (39):
+Query parameters (40):
   - accessible_via_calls — Accessible via calls
   - accounting_is_running
   - allowed_customer_uuid — Allowed customer UUID
@@ -7614,6 +7681,7 @@ Query parameters (39):
   - end — End date in format YYYY-MM.
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
+  - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
   - name — Name
@@ -7653,7 +7721,7 @@ Summary: Get customers for an offering
 Description: Returns a paginated list of customers who have resources for this offering.
 Path parameters:
   - uuid
-Query parameters (37):
+Query parameters (38):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7668,6 +7736,7 @@ Query parameters (37):
   - field
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
+  - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
   - name — Name
@@ -7780,7 +7849,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (38):
+Query parameters (39):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7796,6 +7865,7 @@ Query parameters (38):
   - description — Description contains
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
+  - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
   - name — Name
@@ -7850,7 +7920,7 @@ Summary: List course accounts for an offering
 Description: Returns a paginated list of course accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (36):
+Query parameters (37):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7864,6 +7934,7 @@ Query parameters (36):
   - description — Description contains
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
+  - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
   - name — Name
@@ -7903,7 +7974,7 @@ Summary: List customer service accounts for an offering
 Description: Returns a paginated list of customer-level service accounts for customers who have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (36):
+Query parameters (37):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7917,6 +7988,7 @@ Query parameters (36):
   - description — Description contains
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
+  - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
   - name — Name
@@ -7956,7 +8028,7 @@ Summary: List project service accounts for an offering
 Description: Returns a paginated list of project-level service accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (36):
+Query parameters (37):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7970,6 +8042,7 @@ Query parameters (36):
   - description — Description contains
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
+  - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
   - name — Name
@@ -8311,7 +8384,7 @@ Query parameters (2):
 GET /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Returns a paginated list of resources for offerings managed by the current user as a service provider.
-Query parameters (40):
+Query parameters (41):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -8347,6 +8420,7 @@ Query parameters (40):
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
+  - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
   - state — Resource state
   - usage_based — Filter by usage-based offerings
@@ -8357,7 +8431,7 @@ Query parameters (40):
 HEAD /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (39):
+Query parameters (40):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -8392,6 +8466,7 @@ Query parameters (39):
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
+  - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
   - state — Resource state
   - usage_based — Filter by usage-based offerings
@@ -8444,7 +8519,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (41):
+Query parameters (42):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -8481,6 +8556,7 @@ Query parameters (41):
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
+  - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
   - state — Resource state
   - usage_based — Filter by usage-based offerings
@@ -8943,7 +9019,7 @@ Path parameters:
 GET /api/marketplace-resources/
 Summary: List consumer resources
 Description: Returns a paginated list of resources accessible to the current user as a service consumer.
-Query parameters (40):
+Query parameters (41):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -8979,6 +9055,7 @@ Query parameters (40):
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
+  - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
   - state — Resource state
   - usage_based — Filter by usage-based offerings
@@ -8989,7 +9066,7 @@ Query parameters (40):
 HEAD /api/marketplace-resources/
 Summary: List consumer resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (39):
+Query parameters (40):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9024,6 +9101,7 @@ Query parameters (39):
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
+  - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
   - state — Resource state
   - usage_based — Filter by usage-based offerings
@@ -9089,7 +9167,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (41):
+Query parameters (42):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9126,6 +9204,7 @@ Query parameters (41):
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
+  - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
   - state — Resource state
   - usage_based — Filter by usage-based offerings
@@ -12139,7 +12218,8 @@ Path parameters:
 GET /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (19):
+Query parameters (21):
+  - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -12159,12 +12239,14 @@ Query parameters (19):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
+  - user_uuid — Filter by user UUID.
 
 ### openportal_unmanaged_projects_count
 HEAD /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (18):
+Query parameters (20):
+  - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -12183,6 +12265,7 @@ Query parameters (18):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
+  - user_uuid — Filter by user UUID.
 
 ### openportal_unmanaged_projects_create
 POST /api/openportal-unmanaged-projects/
@@ -12920,7 +13003,7 @@ Path parameters:
 GET /api/openstack-instances/
 Summary: List instances
 Description: Get a list of VM instances.
-Query parameters (25):
+Query parameters (26):
   - attach_volume_uuid — Filter for attachment to volume UUID
   - availability_zone_name — Availability zone name
   - backend_id — Backend ID
@@ -12935,6 +13018,7 @@ Query parameters (25):
   - field
   - name — Name
   - name_exact — Name (exact)
+  - o — Ordering. Sort by start time.
   - project — Project UUID
   - project_name — Project name
   - project_uuid — Project UUID
@@ -12951,7 +13035,7 @@ Query parameters (25):
 HEAD /api/openstack-instances/
 Summary: List instances
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (24):
+Query parameters (25):
   - attach_volume_uuid — Filter for attachment to volume UUID
   - availability_zone_name — Availability zone name
   - backend_id — Backend ID
@@ -12965,6 +13049,7 @@ Query parameters (24):
   - external_ip — External IP
   - name — Name
   - name_exact — Name (exact)
+  - o — Ordering. Sort by start time.
   - project — Project UUID
   - project_name — Project name
   - project_uuid — Project UUID
@@ -15061,7 +15146,8 @@ Path parameters:
 GET /api/projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (19):
+Query parameters (21):
+  - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -15081,12 +15167,14 @@ Query parameters (19):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
+  - user_uuid — Filter by user UUID.
 
 ### projects_count
 HEAD /api/projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (18):
+Query parameters (20):
+  - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -15105,6 +15193,7 @@ Query parameters (18):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
+  - user_uuid — Filter by user UUID.
 
 ### projects_create
 POST /api/projects/
@@ -18161,13 +18250,14 @@ Request body: yes
 
 ### service_settings_list
 GET /api/service-settings/
-Query parameters (10):
+Query parameters (11):
   - customer — Customer UUID
   - customer_uuid — Customer UUID
   - field
   - name — Name
   - name_exact — Name (exact)
   - o — Which field to use when ordering the results.
+  - scope — Filter by scope URL.
   - scope_uuid — Scope UUID
   - shared
   - state — State
@@ -18177,12 +18267,13 @@ Query parameters (10):
 HEAD /api/service-settings/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
   - customer — Customer UUID
   - customer_uuid — Customer UUID
   - name — Name
   - name_exact — Name (exact)
   - o — Which field to use when ordering the results.
+  - scope — Filter by scope URL.
   - scope_uuid — Scope UUID
   - shared
   - state — State
@@ -18597,7 +18688,7 @@ Path parameters:
 
 ### support_comments_list
 GET /api/support-comments/
-Query parameters (8):
+Query parameters (9):
   - author_name
   - author_user
   - description
@@ -18606,12 +18697,13 @@ Query parameters (8):
   - issue_uuid
   - o — Ordering
   - remote_id_is_set — Remote ID is set.
+  - resource — Filter by resource URL.
 
 ### support_comments_count
 HEAD /api/support-comments/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (8):
+Query parameters (9):
   - author_name
   - author_user
   - description
@@ -18620,6 +18712,7 @@ Query parameters (8):
   - issue_uuid
   - o — Ordering
   - remote_id_is_set — Remote ID is set.
+  - resource — Filter by resource URL.
 
 ### support_comments_retrieve
 GET /api/support-comments/{uuid}/
@@ -18742,7 +18835,7 @@ Path parameters:
 
 ### support_issues_list
 GET /api/support-issues/
-Query parameters (21):
+Query parameters (22):
   - assignee
   - assignee_name
   - caller
@@ -18758,6 +18851,7 @@ Query parameters (21):
   - reporter
   - reporter_name
   - resolution_year_month
+  - resource — Filter by resource URL.
   - resource_external_ip — Resource external IP
   - resource_internal_ip — Resource internal IP
   - resource_uuid — Resource UUID
@@ -18769,7 +18863,7 @@ Query parameters (21):
 HEAD /api/support-issues/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (21):
+Query parameters (22):
   - assignee
   - assignee_name
   - caller
@@ -18785,6 +18879,7 @@ Query parameters (21):
   - reporter
   - reporter_name
   - resolution_year_month
+  - resource — Filter by resource URL.
   - resource_external_ip — Resource external IP
   - resource_internal_ip — Resource internal IP
   - resource_uuid — Resource UUID
@@ -19306,26 +19401,28 @@ Path parameters:
 GET /api/user-group-invitations/
 Summary: List group invitations
 Description: Retrieve a list of group invitations. Unauthenticated users can only see public invitations.
-Query parameters (7):
+Query parameters (8):
   - customer_uuid
   - is_active
   - is_public
   - o — Ordering
   - role_name
   - role_uuid
+  - scope — Filter by scope URL.
   - scope_type
 
 ### user_group_invitations_count
 HEAD /api/user-group-invitations/
 Summary: List group invitations
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (8):
   - customer_uuid
   - is_active
   - is_public
   - o — Ordering
   - role_name
   - role_uuid
+  - scope — Filter by scope URL.
   - scope_type
 
 ### user_group_invitations_create
@@ -19393,7 +19490,7 @@ Path parameters:
 GET /api/user-invitations/
 Summary: List user invitations
 Description: Retrieve a list of user invitations visible to the current user.
-Query parameters (11):
+Query parameters (12):
   - civil_number
   - customer_uuid
   - email
@@ -19401,6 +19498,7 @@ Query parameters (11):
   - o — Ordering
   - role_name
   - role_uuid
+  - scope — Filter by scope URL.
   - scope_description
   - scope_name
   - scope_type
@@ -19410,7 +19508,7 @@ Query parameters (11):
 HEAD /api/user-invitations/
 Summary: List user invitations
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (11):
+Query parameters (12):
   - civil_number
   - customer_uuid
   - email
@@ -19418,6 +19516,7 @@ Query parameters (11):
   - o — Ordering
   - role_name
   - role_uuid
+  - scope — Filter by scope URL.
   - scope_description
   - scope_name
   - scope_type
@@ -19529,22 +19628,24 @@ Path parameters:
 GET /api/user-permission-requests/
 Summary: List permission requests
 Description: Retrieve a list of permission requests visible to the user.
-Query parameters (5):
+Query parameters (6):
   - created_by
   - customer_uuid
   - invitation
   - o — Ordering
+  - scope — Filter by scope URL.
   - state
 
 ### user_permission_requests_count
 HEAD /api/user-permission-requests/
 Summary: List permission requests
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (5):
+Query parameters (6):
   - created_by
   - customer_uuid
   - invitation
   - o — Ordering
+  - scope — Filter by scope URL.
   - state
 
 ### user_permission_requests_retrieve

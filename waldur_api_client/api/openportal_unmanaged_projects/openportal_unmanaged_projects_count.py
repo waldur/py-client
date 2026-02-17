@@ -13,6 +13,7 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
@@ -33,8 +34,11 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["accounting_is_running"] = accounting_is_running
 
     params["backend_id"] = backend_id
 
@@ -96,6 +100,11 @@ def _get_kwargs(
 
     params["slug"] = slug
 
+    json_user_uuid: Union[Unset, str] = UNSET
+    if not isinstance(user_uuid, Unset):
+        json_user_uuid = str(user_uuid)
+    params["user_uuid"] = json_user_uuid
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
@@ -136,6 +145,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
@@ -156,12 +166,14 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """List projects
 
      Get number of items in the collection matching the request parameters.
 
     Args:
+        accounting_is_running (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
@@ -182,6 +194,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -192,6 +205,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        accounting_is_running=accounting_is_running,
         backend_id=backend_id,
         can_admin=can_admin,
         can_manage=can_manage,
@@ -212,6 +226,7 @@ def sync_detailed(
         page_size=page_size,
         query=query,
         slug=slug,
+        user_uuid=user_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -224,6 +239,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
@@ -244,12 +260,14 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """List projects
 
      Get number of items in the collection matching the request parameters.
 
     Args:
+        accounting_is_running (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
@@ -270,6 +288,7 @@ def sync(
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -281,6 +300,7 @@ def sync(
 
     return sync_detailed(
         client=client,
+        accounting_is_running=accounting_is_running,
         backend_id=backend_id,
         can_admin=can_admin,
         can_manage=can_manage,
@@ -301,12 +321,14 @@ def sync(
         page_size=page_size,
         query=query,
         slug=slug,
+        user_uuid=user_uuid,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
@@ -327,12 +349,14 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """List projects
 
      Get number of items in the collection matching the request parameters.
 
     Args:
+        accounting_is_running (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
@@ -353,6 +377,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -363,6 +388,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        accounting_is_running=accounting_is_running,
         backend_id=backend_id,
         can_admin=can_admin,
         can_manage=can_manage,
@@ -383,6 +409,7 @@ async def asyncio_detailed(
         page_size=page_size,
         query=query,
         slug=slug,
+        user_uuid=user_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -393,6 +420,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    accounting_is_running: Union[Unset, bool] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
@@ -413,12 +441,14 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
+    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """List projects
 
      Get number of items in the collection matching the request parameters.
 
     Args:
+        accounting_is_running (Union[Unset, bool]):
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
@@ -439,6 +469,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
+        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -451,6 +482,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            accounting_is_running=accounting_is_running,
             backend_id=backend_id,
             can_admin=can_admin,
             can_manage=can_manage,
@@ -471,5 +503,6 @@ async def asyncio(
             page_size=page_size,
             query=query,
             slug=slug,
+            user_uuid=user_uuid,
         )
     ).parsed
