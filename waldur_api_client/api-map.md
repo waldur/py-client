@@ -772,8 +772,8 @@ Module: `waldur_api_client.api.feature_values`
 ## financial-reports
 Module: `waldur_api_client.api.financial_reports`
 
-- `financial_reports_list` GET `/api/financial-reports/` (18 query params)
-- `financial_reports_count` HEAD `/api/financial-reports/` — Get number of items in the collection matching the request parameters (18 query params)
+- `financial_reports_list` GET `/api/financial-reports/` (19 query params)
+- `financial_reports_count` HEAD `/api/financial-reports/` — Get number of items in the collection matching the request parameters (19 query params)
 - `financial_reports_retrieve` GET `/api/financial-reports/{uuid}/` (path: uuid)
 
 ## freeipa-profiles

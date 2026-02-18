@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.3-dev.20260218012101
+# Version: 8.0.3-dev.20260218015036
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -4118,7 +4118,7 @@ Request body: yes
 
 ### financial_reports_list
 GET /api/financial-reports/
-Query parameters (18):
+Query parameters (19):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -4126,6 +4126,7 @@ Query parameters (18):
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - customer_uuid — Filter by customer UUID.
   - month — Filter by month.
   - name — Name
   - name_exact — Name (exact)
@@ -4142,7 +4143,7 @@ Query parameters (18):
 HEAD /api/financial-reports/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (18):
+Query parameters (19):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -4150,6 +4151,7 @@ Query parameters (18):
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - customer_uuid — Filter by customer UUID.
   - month — Filter by month.
   - name — Name
   - name_exact — Name (exact)
