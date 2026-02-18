@@ -17,8 +17,10 @@ class OpenStackServerGroupRequest:
     Attributes:
         name (str):
         description (Union[Unset, str]):
-        policy (Union[BlankEnum, PolicyEnum, Unset]): Server group policy determining the rules for scheduling servers
-            in this group
+        policy (Union[BlankEnum, PolicyEnum, Unset]): affinity — all instances are placed on the same hypervisor. anti-
+            affinity — all instances are placed on different hypervisors. soft-affinity — instances are placed on the same
+            hypervisor if possible, but not enforced. soft-anti-affinity — instances are placed on different hypervisors if
+            possible, but not enforced.
     """
 
     name: str
