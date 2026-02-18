@@ -1457,6 +1457,7 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_set_downscaled` POST `/api/marketplace-provider-resources/{uuid}/set_downscaled/` — Set downscaled flag for resource (path: uuid | request body)
 - `marketplace_provider_resources_set_end_date_by_provider` POST `/api/marketplace-provider-resources/{uuid}/set_end_date_by_provider/` — Set end date by provider (path: uuid | request body)
 - `marketplace_provider_resources_set_end_date_by_staff` POST `/api/marketplace-provider-resources/{uuid}/set_end_date_by_staff/` — Set end date of the resource by staff (path: uuid | request body)
+- `marketplace_provider_resources_set_keycloak_scopes` POST `/api/marketplace-provider-resources/{uuid}/set_keycloak_scopes/` — Set Keycloak scope options for a resource (path: uuid | request body)
 - `marketplace_provider_resources_set_limits` POST `/api/marketplace-provider-resources/{uuid}/set_limits/` — Set resource limits (path: uuid | request body)
 - `marketplace_provider_resources_set_paused` POST `/api/marketplace-provider-resources/{uuid}/set_paused/` — Set paused flag for resource (path: uuid | request body)
 - `marketplace_provider_resources_set_restrict_member_access` POST `/api/marketplace-provider-resources/{uuid}/set_restrict_member_access/` — Set restrict member access flag (path: uuid | request body)
@@ -1917,6 +1918,35 @@ Module: `waldur_api_client.api.notification_messages_templates`
 - `notification_messages_templates_partial_update` PATCH `/api/notification-messages-templates/{uuid}/` (path: uuid | request body)
 - `notification_messages_templates_destroy` DELETE `/api/notification-messages-templates/{uuid}/` (path: uuid)
 - `notification_messages_templates_override` POST `/api/notification-messages-templates/{uuid}/override/` — Override notification template content (path: uuid | request body)
+
+## offering-keycloak-groups
+Module: `waldur_api_client.api.offering_keycloak_groups`
+
+- `offering_keycloak_groups_list` GET `/api/offering-keycloak-groups/` (3 query params)
+- `offering_keycloak_groups_count` HEAD `/api/offering-keycloak-groups/` — Get number of items in the collection matching the request parameters (3 query params)
+- `offering_keycloak_groups_import_remote` POST `/api/offering-keycloak-groups/import_remote/` — Import a remote Keycloak group as a local OfferingKeycloakGroup (request body)
+- `offering_keycloak_groups_remote_group_members_list` GET `/api/offering-keycloak-groups/remote_group_members/` — List members of a remote Keycloak group (4 query params)
+- `offering_keycloak_groups_remote_group_members_count` HEAD `/api/offering-keycloak-groups/remote_group_members/` — List members of a remote Keycloak group (4 query params)
+- `offering_keycloak_groups_remote_groups_list` GET `/api/offering-keycloak-groups/remote_groups/` — List remote Keycloak groups for an offering (3 query params)
+- `offering_keycloak_groups_remote_groups_count` HEAD `/api/offering-keycloak-groups/remote_groups/` — List remote Keycloak groups for an offering (3 query params)
+- `offering_keycloak_groups_search_remote_users_list` GET `/api/offering-keycloak-groups/search_remote_users/` — Search for users in remote Keycloak instance (4 query params)
+- `offering_keycloak_groups_search_remote_users_count` HEAD `/api/offering-keycloak-groups/search_remote_users/` — Search for users in remote Keycloak instance (4 query params)
+- `offering_keycloak_groups_sync_status_retrieve` GET `/api/offering-keycloak-groups/sync_status/` — Compare local and remote Keycloak group state (1 query param)
+- `offering_keycloak_groups_sync_status_count` HEAD `/api/offering-keycloak-groups/sync_status/` — Compare local and remote Keycloak group state (1 query param)
+- `offering_keycloak_groups_test_connection` POST `/api/offering-keycloak-groups/test_connection/` — Test Keycloak connection for an offering (request body)
+- `offering_keycloak_groups_retrieve` GET `/api/offering-keycloak-groups/{uuid}/` (path: uuid)
+- `offering_keycloak_groups_destroy` DELETE `/api/offering-keycloak-groups/{uuid}/` (path: uuid)
+- `offering_keycloak_groups_pull_members` POST `/api/offering-keycloak-groups/{uuid}/pull_members/` — Pull members from Keycloak for a group (path: uuid)
+- `offering_keycloak_groups_set_backend_id` POST `/api/offering-keycloak-groups/{uuid}/set_backend_id/` — Set or unlink the backend_id (remote Keycloak group ID) for a local group (path: uuid | request body)
+
+## offering-keycloak-memberships
+Module: `waldur_api_client.api.offering_keycloak_memberships`
+
+- `offering_keycloak_memberships_list` GET `/api/offering-keycloak-memberships/` (9 query params)
+- `offering_keycloak_memberships_count` HEAD `/api/offering-keycloak-memberships/` — Get number of items in the collection matching the request parameters (9 query params)
+- `offering_keycloak_memberships_create` POST `/api/offering-keycloak-memberships/` (request body)
+- `offering_keycloak_memberships_retrieve` GET `/api/offering-keycloak-memberships/{uuid}/` (path: uuid)
+- `offering_keycloak_memberships_destroy` DELETE `/api/offering-keycloak-memberships/{uuid}/` (path: uuid)
 
 ## onboarding
 Module: `waldur_api_client.api.onboarding`

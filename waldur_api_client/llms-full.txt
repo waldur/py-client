@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.3-dev.20260218030703
+# Version: 8.0.3-dev.20260218150853
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8678,6 +8678,14 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_resources_set_keycloak_scopes
+POST /api/marketplace-provider-resources/{uuid}/set_keycloak_scopes/
+Summary: Set Keycloak scope options for a resource
+Description: Allows a service provider to configure available scope options for Keycloak memberships on a resource. Requires Keycloak integration to be enabled on the offering.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_resources_set_limits
 POST /api/marketplace-provider-resources/{uuid}/set_limits/
 Summary: Set resource limits
@@ -11427,6 +11435,173 @@ Summary: Override notification template content
 Path parameters:
   - uuid
 Request body: yes
+
+============================================================
+## offering-keycloak-groups  (module: waldur_api_client.api.offering_keycloak_groups)
+============================================================
+
+### offering_keycloak_groups_list
+GET /api/offering-keycloak-groups/
+Query parameters (3):
+  - offering_uuid
+  - resource_uuid
+  - role_uuid
+
+### offering_keycloak_groups_count
+HEAD /api/offering-keycloak-groups/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - offering_uuid
+  - resource_uuid
+  - role_uuid
+
+### offering_keycloak_groups_import_remote
+POST /api/offering-keycloak-groups/import_remote/
+Summary: Import a remote Keycloak group as a local OfferingKeycloakGroup
+Request body: yes
+
+### offering_keycloak_groups_remote_group_members_list
+GET /api/offering-keycloak-groups/remote_group_members/
+Summary: List members of a remote Keycloak group
+Query parameters (4):
+  - group_id (required) — Keycloak group ID
+  - offering_uuid (required) — UUID of the offering
+  - resource_uuid
+  - role_uuid
+
+### offering_keycloak_groups_remote_group_members_count
+HEAD /api/offering-keycloak-groups/remote_group_members/
+Summary: List members of a remote Keycloak group
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - group_id (required) — Keycloak group ID
+  - offering_uuid (required) — UUID of the offering
+  - resource_uuid
+  - role_uuid
+
+### offering_keycloak_groups_remote_groups_list
+GET /api/offering-keycloak-groups/remote_groups/
+Summary: List remote Keycloak groups for an offering
+Query parameters (3):
+  - offering_uuid (required) — UUID of the offering
+  - resource_uuid
+  - role_uuid
+
+### offering_keycloak_groups_remote_groups_count
+HEAD /api/offering-keycloak-groups/remote_groups/
+Summary: List remote Keycloak groups for an offering
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - offering_uuid (required) — UUID of the offering
+  - resource_uuid
+  - role_uuid
+
+### offering_keycloak_groups_search_remote_users_list
+GET /api/offering-keycloak-groups/search_remote_users/
+Summary: Search for users in remote Keycloak instance
+Query parameters (4):
+  - offering_uuid (required) — UUID of the offering
+  - q (required) — Search query for username, email, or name
+  - resource_uuid
+  - role_uuid
+
+### offering_keycloak_groups_search_remote_users_count
+HEAD /api/offering-keycloak-groups/search_remote_users/
+Summary: Search for users in remote Keycloak instance
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - offering_uuid (required) — UUID of the offering
+  - q (required) — Search query for username, email, or name
+  - resource_uuid
+  - role_uuid
+
+### offering_keycloak_groups_sync_status_retrieve
+GET /api/offering-keycloak-groups/sync_status/
+Summary: Compare local and remote Keycloak group state
+Query parameters (1):
+  - offering_uuid (required) — UUID of the offering
+
+### offering_keycloak_groups_sync_status_count
+HEAD /api/offering-keycloak-groups/sync_status/
+Summary: Compare local and remote Keycloak group state
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - offering_uuid (required) — UUID of the offering
+
+### offering_keycloak_groups_test_connection
+POST /api/offering-keycloak-groups/test_connection/
+Summary: Test Keycloak connection for an offering
+Request body: yes
+
+### offering_keycloak_groups_retrieve
+GET /api/offering-keycloak-groups/{uuid}/
+Path parameters:
+  - uuid
+
+### offering_keycloak_groups_destroy
+DELETE /api/offering-keycloak-groups/{uuid}/
+Path parameters:
+  - uuid
+
+### offering_keycloak_groups_pull_members
+POST /api/offering-keycloak-groups/{uuid}/pull_members/
+Summary: Pull members from Keycloak for a group
+Path parameters:
+  - uuid
+
+### offering_keycloak_groups_set_backend_id
+POST /api/offering-keycloak-groups/{uuid}/set_backend_id/
+Summary: Set or unlink the backend_id (remote Keycloak group ID) for a local group
+Path parameters:
+  - uuid
+Request body: yes
+
+============================================================
+## offering-keycloak-memberships  (module: waldur_api_client.api.offering_keycloak_memberships)
+============================================================
+
+### offering_keycloak_memberships_list
+GET /api/offering-keycloak-memberships/
+Query parameters (9):
+  - email
+  - first_name
+  - group_uuid
+  - last_name
+  - offering_uuid
+  - resource_uuid
+  - role_uuid
+  - state
+  - username
+
+### offering_keycloak_memberships_count
+HEAD /api/offering-keycloak-memberships/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (9):
+  - email
+  - first_name
+  - group_uuid
+  - last_name
+  - offering_uuid
+  - resource_uuid
+  - role_uuid
+  - state
+  - username
+
+### offering_keycloak_memberships_create
+POST /api/offering-keycloak-memberships/
+Request body: yes
+
+### offering_keycloak_memberships_retrieve
+GET /api/offering-keycloak-memberships/{uuid}/
+Path parameters:
+  - uuid
+
+### offering_keycloak_memberships_destroy
+DELETE /api/offering-keycloak-memberships/{uuid}/
+Path parameters:
+  - uuid
 
 ============================================================
 ## onboarding  (module: waldur_api_client.api.onboarding)

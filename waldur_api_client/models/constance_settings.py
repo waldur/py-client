@@ -72,7 +72,6 @@ class ConstanceSettings:
         sidebar_logo_dark (Union[None, Unset, str]):
         sidebar_logo_mobile (Union[None, Unset, str]):
         sidebar_style (Union[Unset, str]):
-        site_logo (Union[None, Unset, str]):
         login_logo (Union[None, Unset, str]):
         login_logo_multilingual (Union[Unset, ConstanceSettingsLOGINLOGOMULTILINGUAL]):
         login_page_layout (Union[Unset, str]):
@@ -310,7 +309,6 @@ class ConstanceSettings:
     sidebar_logo_dark: Union[None, Unset, str] = UNSET
     sidebar_logo_mobile: Union[None, Unset, str] = UNSET
     sidebar_style: Union[Unset, str] = UNSET
-    site_logo: Union[None, Unset, str] = UNSET
     login_logo: Union[None, Unset, str] = UNSET
     login_logo_multilingual: Union[Unset, "ConstanceSettingsLOGINLOGOMULTILINGUAL"] = UNSET
     login_page_layout: Union[Unset, str] = UNSET
@@ -631,12 +629,6 @@ class ConstanceSettings:
             sidebar_logo_mobile = self.sidebar_logo_mobile
 
         sidebar_style = self.sidebar_style
-
-        site_logo: Union[None, Unset, str]
-        if isinstance(self.site_logo, Unset):
-            site_logo = UNSET
-        else:
-            site_logo = self.site_logo
 
         login_logo: Union[None, Unset, str]
         if isinstance(self.login_logo, Unset):
@@ -1163,8 +1155,6 @@ class ConstanceSettings:
             field_dict["SIDEBAR_LOGO_MOBILE"] = sidebar_logo_mobile
         if sidebar_style is not UNSET:
             field_dict["SIDEBAR_STYLE"] = sidebar_style
-        if site_logo is not UNSET:
-            field_dict["SITE_LOGO"] = site_logo
         if login_logo is not UNSET:
             field_dict["LOGIN_LOGO"] = login_logo
         if login_logo_multilingual is not UNSET:
@@ -1698,15 +1688,6 @@ class ConstanceSettings:
 
         sidebar_style = d.pop("SIDEBAR_STYLE", UNSET)
 
-        def _parse_site_logo(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        site_logo = _parse_site_logo(d.pop("SITE_LOGO", UNSET))
-
         def _parse_login_logo(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -2169,7 +2150,6 @@ class ConstanceSettings:
             sidebar_logo_dark=sidebar_logo_dark,
             sidebar_logo_mobile=sidebar_logo_mobile,
             sidebar_style=sidebar_style,
-            site_logo=site_logo,
             login_logo=login_logo,
             login_logo_multilingual=login_logo_multilingual,
             login_page_layout=login_page_layout,

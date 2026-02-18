@@ -760,6 +760,7 @@ from .import_license_request_request import ImportLicenseRequestRequest
 from .import_license_response import ImportLicenseResponse
 from .import_publications_request import ImportPublicationsRequest
 from .import_publications_source_enum import ImportPublicationsSourceEnum
+from .import_remote_group_request import ImportRemoteGroupRequest
 from .import_resource_request import ImportResourceRequest
 from .import_usage_item_request import ImportUsageItemRequest
 from .import_usage_request import ImportUsageRequest
@@ -846,6 +847,7 @@ from .jira_issue_request import JiraIssueRequest
 from .k8s_default_configuration import K8SDefaultConfiguration
 from .k8s_default_configuration_request import K8SDefaultConfigurationRequest
 from .keycloak_group import KeycloakGroup
+from .keycloak_scope_option_request import KeycloakScopeOptionRequest
 from .keycloak_user_group_membership import KeycloakUserGroupMembership
 from .keycloak_user_group_membership_request import KeycloakUserGroupMembershipRequest
 from .keycloak_user_group_membership_state import KeycloakUserGroupMembershipState
@@ -1302,6 +1304,11 @@ from .offering_image_request_multipart import OfferingImageRequestMultipart
 from .offering_import_parameters_request import OfferingImportParametersRequest
 from .offering_import_response import OfferingImportResponse
 from .offering_integration_update_request import OfferingIntegrationUpdateRequest
+from .offering_keycloak_group import OfferingKeycloakGroup
+from .offering_keycloak_membership import OfferingKeycloakMembership
+from .offering_keycloak_membership_request import OfferingKeycloakMembershipRequest
+from .offering_keycloak_memberships_count_state_item import OfferingKeycloakMembershipsCountStateItem
+from .offering_keycloak_memberships_list_state_item import OfferingKeycloakMembershipsListStateItem
 from .offering_location_update_request import OfferingLocationUpdateRequest
 from .offering_options import OfferingOptions
 from .offering_options_options import OfferingOptionsOptions
@@ -1341,6 +1348,7 @@ from .offering_user_service_provider_comment import OfferingUserServiceProviderC
 from .offering_user_state import OfferingUserState
 from .offering_user_state_transition_request import OfferingUserStateTransitionRequest
 from .offering_user_update_restriction_request import OfferingUserUpdateRestrictionRequest
+from .offering_uuid_request import OfferingUUIDRequest
 from .onboarding_company_validation_request_request import OnboardingCompanyValidationRequestRequest
 from .onboarding_justification import OnboardingJustification
 from .onboarding_justification_create_request import OnboardingJustificationCreateRequest
@@ -2054,6 +2062,7 @@ from .pubsub_metrics_summary import PubsubMetricsSummary
 from .pubsub_overview import PubsubOverview
 from .pull_conflict_response import PullConflictResponse
 from .pull_marketplace_script_resource_request import PullMarketplaceScriptResourceRequest
+from .pull_members_response import PullMembersResponse
 from .pull_response import PullResponse
 from .qos_strategy_enum import QosStrategyEnum
 from .query_performance import QueryPerformance
@@ -2190,6 +2199,8 @@ from .remote_credentials_request import RemoteCredentialsRequest
 from .remote_customer import RemoteCustomer
 from .remote_eduteams_request_request import RemoteEduteamsRequestRequest
 from .remote_eduteams_uuid import RemoteEduteamsUUID
+from .remote_group import RemoteGroup
+from .remote_group_member import RemoteGroupMember
 from .remote_offering import RemoteOffering
 from .remote_offering_create_request import RemoteOfferingCreateRequest
 from .remote_offering_create_response import RemoteOfferingCreateResponse
@@ -2227,6 +2238,7 @@ from .resource_backend_metadata_request import ResourceBackendMetadataRequest
 from .resource_current_usages import ResourceCurrentUsages
 from .resource_downscaled_request import ResourceDownscaledRequest
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
+from .resource_keycloak_scopes_request import ResourceKeycloakScopesRequest
 from .resource_limit_period import ResourceLimitPeriod
 from .resource_limit_usage import ResourceLimitUsage
 from .resource_limits import ResourceLimits
@@ -2403,6 +2415,7 @@ from .service_settings_list_state_item import ServiceSettingsListStateItem
 from .service_settings_options import ServiceSettingsOptions
 from .service_settings_retrieve_field_item import ServiceSettingsRetrieveFieldItem
 from .service_settings_state_enum import ServiceSettingsStateEnum
+from .set_backend_id_request import SetBackendIdRequest
 from .set_erred_request import SetErredRequest
 from .set_erred_response import SetErredResponse
 from .set_mtu import SetMtu
@@ -2505,6 +2518,8 @@ from .sync_resources_request_request import SyncResourcesRequestRequest
 from .sync_resources_response import SyncResourcesResponse
 from .sync_resources_response_errors_item import SyncResourcesResponseErrorsItem
 from .sync_status_enum import SyncStatusEnum
+from .sync_status_response import SyncStatusResponse
+from .synced_group import SyncedGroup
 from .system_log import SystemLog
 from .system_log_instance import SystemLogInstance
 from .system_log_source_enum import SystemLogSourceEnum
@@ -2537,6 +2552,7 @@ from .template_request import TemplateRequest
 from .template_version import TemplateVersion
 from .tenant import Tenant
 from .tenant_security_group_update_request import TenantSecurityGroupUpdateRequest
+from .test_connection_response import TestConnectionResponse
 from .thread_session import ThreadSession
 from .thread_session_request import ThreadSessionRequest
 from .time_series_to_s_data import TimeSeriesToSData
@@ -3429,6 +3445,7 @@ __all__ = (
     "ImportLicenseResponse",
     "ImportPublicationsRequest",
     "ImportPublicationsSourceEnum",
+    "ImportRemoteGroupRequest",
     "ImportResourceRequest",
     "ImportUsageItemRequest",
     "ImportUsageRequest",
@@ -3514,6 +3531,7 @@ __all__ = (
     "K8SDefaultConfiguration",
     "K8SDefaultConfigurationRequest",
     "KeycloakGroup",
+    "KeycloakScopeOptionRequest",
     "KeycloakUserGroupMembership",
     "KeycloakUserGroupMembershipRequest",
     "KeycloakUserGroupMembershipsCountStateItem",
@@ -3900,6 +3918,11 @@ __all__ = (
     "OfferingImportParametersRequest",
     "OfferingImportResponse",
     "OfferingIntegrationUpdateRequest",
+    "OfferingKeycloakGroup",
+    "OfferingKeycloakMembership",
+    "OfferingKeycloakMembershipRequest",
+    "OfferingKeycloakMembershipsCountStateItem",
+    "OfferingKeycloakMembershipsListStateItem",
     "OfferingLocationUpdateRequest",
     "OfferingOptions",
     "OfferingOptionsOptions",
@@ -3939,6 +3962,7 @@ __all__ = (
     "OfferingUserState",
     "OfferingUserStateTransitionRequest",
     "OfferingUserUpdateRestrictionRequest",
+    "OfferingUUIDRequest",
     "OnboardingCompanyValidationRequestRequest",
     "OnboardingJustification",
     "OnboardingJustificationCreateRequest",
@@ -4576,6 +4600,7 @@ __all__ = (
     "PubsubOverview",
     "PullConflictResponse",
     "PullMarketplaceScriptResourceRequest",
+    "PullMembersResponse",
     "PullResponse",
     "QosStrategyEnum",
     "QueryPerformance",
@@ -4700,6 +4725,8 @@ __all__ = (
     "RemoteCustomer",
     "RemoteEduteamsRequestRequest",
     "RemoteEduteamsUUID",
+    "RemoteGroup",
+    "RemoteGroupMember",
     "RemoteOffering",
     "RemoteOfferingCreateRequest",
     "RemoteOfferingCreateResponse",
@@ -4737,6 +4764,7 @@ __all__ = (
     "ResourceCurrentUsages",
     "ResourceDownscaledRequest",
     "ResourceEndDateByProviderRequest",
+    "ResourceKeycloakScopesRequest",
     "ResourceLimitPeriod",
     "ResourceLimits",
     "ResourceLimitUsage",
@@ -4913,6 +4941,7 @@ __all__ = (
     "ServiceSettingsOptions",
     "ServiceSettingsRetrieveFieldItem",
     "ServiceSettingsStateEnum",
+    "SetBackendIdRequest",
     "SetErredRequest",
     "SetErredResponse",
     "SetMtu",
@@ -4998,6 +5027,7 @@ __all__ = (
     "SupportIssuesListOItem",
     "SupportStats",
     "SupportUser",
+    "SyncedGroup",
     "SyncFromArrowRequestRequest",
     "SyncPauseRequestRequest",
     "SyncPauseResponse",
@@ -5009,6 +5039,7 @@ __all__ = (
     "SyncResourcesResponse",
     "SyncResourcesResponseErrorsItem",
     "SyncStatusEnum",
+    "SyncStatusResponse",
     "SystemLog",
     "SystemLogInstance",
     "SystemLogsCountLevel",
@@ -5041,6 +5072,7 @@ __all__ = (
     "TemplateVersion",
     "Tenant",
     "TenantSecurityGroupUpdateRequest",
+    "TestConnectionResponse",
     "ThreadSession",
     "ThreadSessionRequest",
     "TimeSeriesToSData",
