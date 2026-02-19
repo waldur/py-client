@@ -48,6 +48,8 @@ class OfferingUser:
         user_nationalities (Union[Unset, Any]): List of all citizenships (ISO 3166-1 alpha-2 codes)
         user_organization_country (Union[Unset, str]):
         user_organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
+        user_organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if
+            known
         user_eduperson_assurance (Union[Unset, Any]): REFEDS assurance profile URIs from identity provider
         user_civil_number (Union[None, Unset, str]):
         user_birth_date (Union[None, Unset, datetime.date]):
@@ -99,6 +101,7 @@ class OfferingUser:
     user_nationalities: Union[Unset, Any] = UNSET
     user_organization_country: Union[Unset, str] = UNSET
     user_organization_type: Union[Unset, str] = UNSET
+    user_organization_registry_code: Union[Unset, str] = UNSET
     user_eduperson_assurance: Union[Unset, Any] = UNSET
     user_civil_number: Union[None, Unset, str] = UNSET
     user_birth_date: Union[None, Unset, datetime.date] = UNSET
@@ -188,6 +191,8 @@ class OfferingUser:
         user_organization_country = self.user_organization_country
 
         user_organization_type = self.user_organization_type
+
+        user_organization_registry_code = self.user_organization_registry_code
 
         user_eduperson_assurance = self.user_eduperson_assurance
 
@@ -306,6 +311,8 @@ class OfferingUser:
             field_dict["user_organization_country"] = user_organization_country
         if user_organization_type is not UNSET:
             field_dict["user_organization_type"] = user_organization_type
+        if user_organization_registry_code is not UNSET:
+            field_dict["user_organization_registry_code"] = user_organization_registry_code
         if user_eduperson_assurance is not UNSET:
             field_dict["user_eduperson_assurance"] = user_eduperson_assurance
         if user_civil_number is not UNSET:
@@ -439,6 +446,8 @@ class OfferingUser:
 
         user_organization_type = d.pop("user_organization_type", UNSET)
 
+        user_organization_registry_code = d.pop("user_organization_registry_code", UNSET)
+
         user_eduperson_assurance = d.pop("user_eduperson_assurance", UNSET)
 
         def _parse_user_civil_number(data: object) -> Union[None, Unset, str]:
@@ -560,6 +569,7 @@ class OfferingUser:
             user_nationalities=user_nationalities,
             user_organization_country=user_organization_country,
             user_organization_type=user_organization_type,
+            user_organization_registry_code=user_organization_registry_code,
             user_eduperson_assurance=user_eduperson_assurance,
             user_civil_number=user_civil_number,
             user_birth_date=user_birth_date,

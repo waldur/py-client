@@ -30,10 +30,12 @@ class PatchedOfferingUserAttributeConfigRequest:
         expose_nationalities (Union[Unset, bool]):
         expose_organization_country (Union[Unset, bool]):
         expose_organization_type (Union[Unset, bool]):
+        expose_organization_registry_code (Union[Unset, bool]):
         expose_eduperson_assurance (Union[Unset, bool]):
         expose_civil_number (Union[Unset, bool]):
         expose_birth_date (Union[Unset, bool]):
         expose_identity_source (Union[Unset, bool]):
+        expose_active_isds (Union[Unset, bool]):
     """
 
     offering: Union[Unset, UUID] = UNSET
@@ -52,10 +54,12 @@ class PatchedOfferingUserAttributeConfigRequest:
     expose_nationalities: Union[Unset, bool] = UNSET
     expose_organization_country: Union[Unset, bool] = UNSET
     expose_organization_type: Union[Unset, bool] = UNSET
+    expose_organization_registry_code: Union[Unset, bool] = UNSET
     expose_eduperson_assurance: Union[Unset, bool] = UNSET
     expose_civil_number: Union[Unset, bool] = UNSET
     expose_birth_date: Union[Unset, bool] = UNSET
     expose_identity_source: Union[Unset, bool] = UNSET
+    expose_active_isds: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -93,6 +97,8 @@ class PatchedOfferingUserAttributeConfigRequest:
 
         expose_organization_type = self.expose_organization_type
 
+        expose_organization_registry_code = self.expose_organization_registry_code
+
         expose_eduperson_assurance = self.expose_eduperson_assurance
 
         expose_civil_number = self.expose_civil_number
@@ -100,6 +106,8 @@ class PatchedOfferingUserAttributeConfigRequest:
         expose_birth_date = self.expose_birth_date
 
         expose_identity_source = self.expose_identity_source
+
+        expose_active_isds = self.expose_active_isds
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -136,6 +144,8 @@ class PatchedOfferingUserAttributeConfigRequest:
             field_dict["expose_organization_country"] = expose_organization_country
         if expose_organization_type is not UNSET:
             field_dict["expose_organization_type"] = expose_organization_type
+        if expose_organization_registry_code is not UNSET:
+            field_dict["expose_organization_registry_code"] = expose_organization_registry_code
         if expose_eduperson_assurance is not UNSET:
             field_dict["expose_eduperson_assurance"] = expose_eduperson_assurance
         if expose_civil_number is not UNSET:
@@ -144,6 +154,8 @@ class PatchedOfferingUserAttributeConfigRequest:
             field_dict["expose_birth_date"] = expose_birth_date
         if expose_identity_source is not UNSET:
             field_dict["expose_identity_source"] = expose_identity_source
+        if expose_active_isds is not UNSET:
+            field_dict["expose_active_isds"] = expose_active_isds
 
         return field_dict
 
@@ -187,6 +199,8 @@ class PatchedOfferingUserAttributeConfigRequest:
 
         expose_organization_type = d.pop("expose_organization_type", UNSET)
 
+        expose_organization_registry_code = d.pop("expose_organization_registry_code", UNSET)
+
         expose_eduperson_assurance = d.pop("expose_eduperson_assurance", UNSET)
 
         expose_civil_number = d.pop("expose_civil_number", UNSET)
@@ -194,6 +208,8 @@ class PatchedOfferingUserAttributeConfigRequest:
         expose_birth_date = d.pop("expose_birth_date", UNSET)
 
         expose_identity_source = d.pop("expose_identity_source", UNSET)
+
+        expose_active_isds = d.pop("expose_active_isds", UNSET)
 
         patched_offering_user_attribute_config_request = cls(
             offering=offering,
@@ -212,10 +228,12 @@ class PatchedOfferingUserAttributeConfigRequest:
             expose_nationalities=expose_nationalities,
             expose_organization_country=expose_organization_country,
             expose_organization_type=expose_organization_type,
+            expose_organization_registry_code=expose_organization_registry_code,
             expose_eduperson_assurance=expose_eduperson_assurance,
             expose_civil_number=expose_civil_number,
             expose_birth_date=expose_birth_date,
             expose_identity_source=expose_identity_source,
+            expose_active_isds=expose_active_isds,
         )
 
         patched_offering_user_attribute_config_request.additional_properties = d

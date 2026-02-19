@@ -39,6 +39,7 @@ class MarketplaceOfferingUsersListFieldItem(str, Enum):
     USER_NATIONALITY = "user_nationality"
     USER_ORGANIZATION = "user_organization"
     USER_ORGANIZATION_COUNTRY = "user_organization_country"
+    USER_ORGANIZATION_REGISTRY_CODE = "user_organization_registry_code"
     USER_ORGANIZATION_TYPE = "user_organization_type"
     USER_PERSONAL_TITLE = "user_personal_title"
     USER_PHONE_NUMBER = "user_phone_number"
