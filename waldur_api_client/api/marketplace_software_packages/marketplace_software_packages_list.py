@@ -25,6 +25,7 @@ def _get_kwargs(
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -57,6 +58,8 @@ def _get_kwargs(
     params["is_extension"] = is_extension
 
     params["name"] = name
+
+    params["name_exact"] = name_exact
 
     json_o: Union[Unset, list[str]] = UNSET
     if not isinstance(o, Unset):
@@ -129,6 +132,7 @@ def sync_detailed(
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -152,6 +156,7 @@ def sync_detailed(
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -178,6 +183,7 @@ def sync_detailed(
         has_version=has_version,
         is_extension=is_extension,
         name=name,
+        name_exact=name_exact,
         o=o,
         offering_uuid=offering_uuid,
         page=page,
@@ -206,6 +212,7 @@ def sync(
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -229,6 +236,7 @@ def sync(
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -256,6 +264,7 @@ def sync(
         has_version=has_version,
         is_extension=is_extension,
         name=name,
+        name_exact=name_exact,
         o=o,
         offering_uuid=offering_uuid,
         page=page,
@@ -278,6 +287,7 @@ async def asyncio_detailed(
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -301,6 +311,7 @@ async def asyncio_detailed(
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -327,6 +338,7 @@ async def asyncio_detailed(
         has_version=has_version,
         is_extension=is_extension,
         name=name,
+        name_exact=name_exact,
         o=o,
         offering_uuid=offering_uuid,
         page=page,
@@ -353,6 +365,7 @@ async def asyncio(
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -376,6 +389,7 @@ async def asyncio(
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -404,6 +418,7 @@ async def asyncio(
             has_version=has_version,
             is_extension=is_extension,
             name=name,
+            name_exact=name_exact,
             o=o,
             offering_uuid=offering_uuid,
             page=page,
@@ -427,6 +442,7 @@ def sync_all(
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -450,6 +466,7 @@ def sync_all(
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
@@ -478,6 +495,7 @@ def sync_all(
         has_version=has_version,
         is_extension=is_extension,
         name=name,
+        name_exact=name_exact,
         o=o,
         offering_uuid=offering_uuid,
         query=query,
@@ -539,6 +557,7 @@ async def asyncio_all(
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -562,6 +581,7 @@ async def asyncio_all(
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
+        name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
         offering_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
@@ -590,6 +610,7 @@ async def asyncio_all(
         has_version=has_version,
         is_extension=is_extension,
         name=name,
+        name_exact=name_exact,
         o=o,
         offering_uuid=offering_uuid,
         query=query,

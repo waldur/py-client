@@ -74,6 +74,7 @@ class ConstanceSettingsRequest:
         sidebar_logo_dark (Union[File, None, Unset]):
         sidebar_logo_mobile (Union[File, None, Unset]):
         sidebar_style (Union[Unset, str]):
+        font_family (Union[Unset, str]):
         login_logo (Union[File, None, Unset]):
         login_logo_multilingual (Union[Unset, ConstanceSettingsRequestLOGINLOGOMULTILINGUAL]):
         login_page_layout (Union[Unset, str]):
@@ -218,6 +219,7 @@ class ConstanceSettingsRequest:
         llm_token_limit_monthly (Union[Unset, int]):
         llm_chat_session_retention_days (Union[Unset, int]):
         llm_chat_storage_enabled (Union[Unset, bool]):
+        llm_chat_history_limit (Union[Unset, int]):
         software_catalog_eessi_update_enabled (Union[Unset, bool]):
         software_catalog_eessi_version (Union[Unset, str]):
         software_catalog_eessi_api_url (Union[Unset, str]):
@@ -311,6 +313,7 @@ class ConstanceSettingsRequest:
     sidebar_logo_dark: Union[File, None, Unset] = UNSET
     sidebar_logo_mobile: Union[File, None, Unset] = UNSET
     sidebar_style: Union[Unset, str] = UNSET
+    font_family: Union[Unset, str] = UNSET
     login_logo: Union[File, None, Unset] = UNSET
     login_logo_multilingual: Union[Unset, "ConstanceSettingsRequestLOGINLOGOMULTILINGUAL"] = UNSET
     login_page_layout: Union[Unset, str] = UNSET
@@ -455,6 +458,7 @@ class ConstanceSettingsRequest:
     llm_token_limit_monthly: Union[Unset, int] = UNSET
     llm_chat_session_retention_days: Union[Unset, int] = UNSET
     llm_chat_storage_enabled: Union[Unset, bool] = UNSET
+    llm_chat_history_limit: Union[Unset, int] = UNSET
     software_catalog_eessi_update_enabled: Union[Unset, bool] = UNSET
     software_catalog_eessi_version: Union[Unset, str] = UNSET
     software_catalog_eessi_api_url: Union[Unset, str] = UNSET
@@ -652,6 +656,8 @@ class ConstanceSettingsRequest:
             sidebar_logo_mobile = self.sidebar_logo_mobile
 
         sidebar_style = self.sidebar_style
+
+        font_family = self.font_family
 
         login_logo: Union[None, Unset, types.FileTypes]
         if isinstance(self.login_logo, Unset):
@@ -1002,6 +1008,8 @@ class ConstanceSettingsRequest:
 
         llm_chat_storage_enabled = self.llm_chat_storage_enabled
 
+        llm_chat_history_limit = self.llm_chat_history_limit
+
         software_catalog_eessi_update_enabled = self.software_catalog_eessi_update_enabled
 
         software_catalog_eessi_version = self.software_catalog_eessi_version
@@ -1193,6 +1201,8 @@ class ConstanceSettingsRequest:
             field_dict["SIDEBAR_LOGO_MOBILE"] = sidebar_logo_mobile
         if sidebar_style is not UNSET:
             field_dict["SIDEBAR_STYLE"] = sidebar_style
+        if font_family is not UNSET:
+            field_dict["FONT_FAMILY"] = font_family
         if login_logo is not UNSET:
             field_dict["LOGIN_LOGO"] = login_logo
         if login_logo_multilingual is not UNSET:
@@ -1485,6 +1495,8 @@ class ConstanceSettingsRequest:
             field_dict["LLM_CHAT_SESSION_RETENTION_DAYS"] = llm_chat_session_retention_days
         if llm_chat_storage_enabled is not UNSET:
             field_dict["LLM_CHAT_STORAGE_ENABLED"] = llm_chat_storage_enabled
+        if llm_chat_history_limit is not UNSET:
+            field_dict["LLM_CHAT_HISTORY_LIMIT"] = llm_chat_history_limit
         if software_catalog_eessi_update_enabled is not UNSET:
             field_dict["SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED"] = software_catalog_eessi_update_enabled
         if software_catalog_eessi_version is not UNSET:
@@ -1783,6 +1795,8 @@ class ConstanceSettingsRequest:
         sidebar_logo_mobile = _parse_sidebar_logo_mobile(d.pop("SIDEBAR_LOGO_MOBILE", UNSET))
 
         sidebar_style = d.pop("SIDEBAR_STYLE", UNSET)
+
+        font_family = d.pop("FONT_FAMILY", UNSET)
 
         def _parse_login_logo(data: object) -> Union[File, None, Unset]:
             if data is None:
@@ -2154,6 +2168,8 @@ class ConstanceSettingsRequest:
 
         llm_chat_storage_enabled = d.pop("LLM_CHAT_STORAGE_ENABLED", UNSET)
 
+        llm_chat_history_limit = d.pop("LLM_CHAT_HISTORY_LIMIT", UNSET)
+
         software_catalog_eessi_update_enabled = d.pop("SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED", UNSET)
 
         software_catalog_eessi_version = d.pop("SOFTWARE_CATALOG_EESSI_VERSION", UNSET)
@@ -2286,6 +2302,7 @@ class ConstanceSettingsRequest:
             sidebar_logo_dark=sidebar_logo_dark,
             sidebar_logo_mobile=sidebar_logo_mobile,
             sidebar_style=sidebar_style,
+            font_family=font_family,
             login_logo=login_logo,
             login_logo_multilingual=login_logo_multilingual,
             login_page_layout=login_page_layout,
@@ -2430,6 +2447,7 @@ class ConstanceSettingsRequest:
             llm_token_limit_monthly=llm_token_limit_monthly,
             llm_chat_session_retention_days=llm_chat_session_retention_days,
             llm_chat_storage_enabled=llm_chat_storage_enabled,
+            llm_chat_history_limit=llm_chat_history_limit,
             software_catalog_eessi_update_enabled=software_catalog_eessi_update_enabled,
             software_catalog_eessi_version=software_catalog_eessi_version,
             software_catalog_eessi_api_url=software_catalog_eessi_api_url,

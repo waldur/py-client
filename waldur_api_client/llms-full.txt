@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.3-dev.20260219161126
+# Version: 8.0.4-dev.20260219210620
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10491,7 +10491,7 @@ Request body: yes
 GET /api/marketplace-software-packages/
 Summary: List software packages
 Description: Returns a paginated list of software packages available in the catalogs. Can be filtered by catalog, offering, or various package attributes.
-Query parameters (14):
+Query parameters (15):
   - catalog_name — Filter packages by catalog name (case-insensitive partial match)
   - catalog_uuid — Filter packages from a specific software catalog
   - catalog_version — Filter packages by catalog version (case-insensitive partial match)
@@ -10503,6 +10503,7 @@ Query parameters (14):
   - has_version — Filter packages that have a specific version
   - is_extension — Filter packages that are extensions of other packages
   - name — Filter packages by name (case-insensitive partial match)
+  - name_exact — Filter packages by exact name (case-insensitive)
   - o — Ordering
   - offering_uuid — Filter packages available for a specific offering
   - query — Query packages by name, description, or version (case-insensitive partial match)
@@ -10511,7 +10512,7 @@ Query parameters (14):
 HEAD /api/marketplace-software-packages/
 Summary: List software packages
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (14):
+Query parameters (15):
   - catalog_name — Filter packages by catalog name (case-insensitive partial match)
   - catalog_uuid — Filter packages from a specific software catalog
   - catalog_version — Filter packages by catalog version (case-insensitive partial match)
@@ -10523,6 +10524,7 @@ Query parameters (14):
   - has_version — Filter packages that have a specific version
   - is_extension — Filter packages that are extensions of other packages
   - name — Filter packages by name (case-insensitive partial match)
+  - name_exact — Filter packages by exact name (case-insensitive)
   - o — Ordering
   - offering_uuid — Filter packages available for a specific offering
   - query — Query packages by name, description, or version (case-insensitive partial match)

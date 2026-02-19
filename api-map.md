@@ -1733,8 +1733,8 @@ Module: `waldur_api_client.api.marketplace_software_catalogs`
 ## marketplace-software-packages
 Module: `waldur_api_client.api.marketplace_software_packages`
 
-- `marketplace_software_packages_list` GET `/api/marketplace-software-packages/` — List software packages (14 query params)
-- `marketplace_software_packages_count` HEAD `/api/marketplace-software-packages/` — List software packages (14 query params)
+- `marketplace_software_packages_list` GET `/api/marketplace-software-packages/` — List software packages (15 query params)
+- `marketplace_software_packages_count` HEAD `/api/marketplace-software-packages/` — List software packages (15 query params)
 - `marketplace_software_packages_create` POST `/api/marketplace-software-packages/` — Create a software package (request body)
 - `marketplace_software_packages_retrieve` GET `/api/marketplace-software-packages/{uuid}/` — Retrieve a software package (path: uuid)
 - `marketplace_software_packages_update` PUT `/api/marketplace-software-packages/{uuid}/` — Update a software package (path: uuid | request body)
