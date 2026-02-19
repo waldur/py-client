@@ -6,7 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.identity_bridge_remove_request import IdentityBridgeRemoveRequest
-from ...models.identity_bridge_remove_response import IdentityBridgeRemoveResponse
+from ...models.identity_bridge_remove_result import IdentityBridgeRemoveResult
 from ...types import Response
 
 
@@ -31,11 +31,11 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> IdentityBridgeRemoveResponse:
+) -> IdentityBridgeRemoveResult:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = IdentityBridgeRemoveResponse.from_dict(response.json())
+        response_200 = IdentityBridgeRemoveResult.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -43,7 +43,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[IdentityBridgeRemoveResponse]:
+) -> Response[IdentityBridgeRemoveResult]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,7 +56,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: IdentityBridgeRemoveRequest,
-) -> Response[IdentityBridgeRemoveResponse]:
+) -> Response[IdentityBridgeRemoveResult]:
     """Remove a user from an ISD
 
      Signals that a user has been removed from an ISD. Removes the source from active_isds, clears
@@ -72,7 +72,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[IdentityBridgeRemoveResponse]
+        Response[IdentityBridgeRemoveResult]
     """
 
     kwargs = _get_kwargs(
@@ -90,7 +90,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: IdentityBridgeRemoveRequest,
-) -> IdentityBridgeRemoveResponse:
+) -> IdentityBridgeRemoveResult:
     """Remove a user from an ISD
 
      Signals that a user has been removed from an ISD. Removes the source from active_isds, clears
@@ -106,7 +106,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        IdentityBridgeRemoveResponse
+        IdentityBridgeRemoveResult
     """
 
     return sync_detailed(
@@ -119,7 +119,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: IdentityBridgeRemoveRequest,
-) -> Response[IdentityBridgeRemoveResponse]:
+) -> Response[IdentityBridgeRemoveResult]:
     """Remove a user from an ISD
 
      Signals that a user has been removed from an ISD. Removes the source from active_isds, clears
@@ -135,7 +135,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[IdentityBridgeRemoveResponse]
+        Response[IdentityBridgeRemoveResult]
     """
 
     kwargs = _get_kwargs(
@@ -151,7 +151,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: IdentityBridgeRemoveRequest,
-) -> IdentityBridgeRemoveResponse:
+) -> IdentityBridgeRemoveResult:
     """Remove a user from an ISD
 
      Signals that a user has been removed from an ISD. Removes the source from active_isds, clears
@@ -167,7 +167,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        IdentityBridgeRemoveResponse
+        IdentityBridgeRemoveResult
     """
 
     return (

@@ -6,7 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.identity_bridge_request_request import IdentityBridgeRequestRequest
-from ...models.identity_bridge_response import IdentityBridgeResponse
+from ...models.identity_bridge_result import IdentityBridgeResult
 from ...types import Response
 
 
@@ -29,11 +29,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> IdentityBridgeResponse:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> IdentityBridgeResult:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = IdentityBridgeResponse.from_dict(response.json())
+        response_200 = IdentityBridgeResult.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -41,7 +41,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[IdentityBridgeResponse]:
+) -> Response[IdentityBridgeResult]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,7 +54,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: IdentityBridgeRequestRequest,
-) -> Response[IdentityBridgeResponse]:
+) -> Response[IdentityBridgeResult]:
     """Push user attributes from an ISD
 
      Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user
@@ -69,7 +69,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[IdentityBridgeResponse]
+        Response[IdentityBridgeResult]
     """
 
     kwargs = _get_kwargs(
@@ -87,7 +87,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: IdentityBridgeRequestRequest,
-) -> IdentityBridgeResponse:
+) -> IdentityBridgeResult:
     """Push user attributes from an ISD
 
      Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user
@@ -102,7 +102,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        IdentityBridgeResponse
+        IdentityBridgeResult
     """
 
     return sync_detailed(
@@ -115,7 +115,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: IdentityBridgeRequestRequest,
-) -> Response[IdentityBridgeResponse]:
+) -> Response[IdentityBridgeResult]:
     """Push user attributes from an ISD
 
      Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user
@@ -130,7 +130,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[IdentityBridgeResponse]
+        Response[IdentityBridgeResult]
     """
 
     kwargs = _get_kwargs(
@@ -146,7 +146,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: IdentityBridgeRequestRequest,
-) -> IdentityBridgeResponse:
+) -> IdentityBridgeResult:
     """Push user attributes from an ISD
 
      Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user
@@ -161,7 +161,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        IdentityBridgeResponse
+        IdentityBridgeResult
     """
 
     return (

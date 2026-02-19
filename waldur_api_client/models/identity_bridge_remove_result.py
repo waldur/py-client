@@ -1,41 +1,36 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="IdentityBridgeResponse")
+T = TypeVar("T", bound="IdentityBridgeRemoveResult")
 
 
 @_attrs_define
-class IdentityBridgeResponse:
+class IdentityBridgeRemoveResult:
     """
     Attributes:
         uuid (UUID):
-        created (bool):
-        updated_fields (list[str]):
+        deactivated (bool):
     """
 
     uuid: UUID
-    created: bool
-    updated_fields: list[str]
+    deactivated: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         uuid = str(self.uuid)
 
-        created = self.created
-
-        updated_fields = self.updated_fields
+        deactivated = self.deactivated
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "uuid": uuid,
-                "created": created,
-                "updated_fields": updated_fields,
+                "deactivated": deactivated,
             }
         )
 
@@ -46,18 +41,15 @@ class IdentityBridgeResponse:
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
-        created = d.pop("created")
+        deactivated = d.pop("deactivated")
 
-        updated_fields = cast(list[str], d.pop("updated_fields"))
-
-        identity_bridge_response = cls(
+        identity_bridge_remove_result = cls(
             uuid=uuid,
-            created=created,
-            updated_fields=updated_fields,
+            deactivated=deactivated,
         )
 
-        identity_bridge_response.additional_properties = d
-        return identity_bridge_response
+        identity_bridge_remove_result.additional_properties = d
+        return identity_bridge_remove_result
 
     @property
     def additional_keys(self) -> list[str]:

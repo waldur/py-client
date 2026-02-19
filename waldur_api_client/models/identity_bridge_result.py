@@ -1,36 +1,41 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="IdentityBridgeRemoveResponse")
+T = TypeVar("T", bound="IdentityBridgeResult")
 
 
 @_attrs_define
-class IdentityBridgeRemoveResponse:
+class IdentityBridgeResult:
     """
     Attributes:
         uuid (UUID):
-        deactivated (bool):
+        created (bool):
+        updated_fields (list[str]):
     """
 
     uuid: UUID
-    deactivated: bool
+    created: bool
+    updated_fields: list[str]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         uuid = str(self.uuid)
 
-        deactivated = self.deactivated
+        created = self.created
+
+        updated_fields = self.updated_fields
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "uuid": uuid,
-                "deactivated": deactivated,
+                "created": created,
+                "updated_fields": updated_fields,
             }
         )
 
@@ -41,15 +46,18 @@ class IdentityBridgeRemoveResponse:
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
-        deactivated = d.pop("deactivated")
+        created = d.pop("created")
 
-        identity_bridge_remove_response = cls(
+        updated_fields = cast(list[str], d.pop("updated_fields"))
+
+        identity_bridge_result = cls(
             uuid=uuid,
-            deactivated=deactivated,
+            created=created,
+            updated_fields=updated_fields,
         )
 
-        identity_bridge_remove_response.additional_properties = d
-        return identity_bridge_remove_response
+        identity_bridge_result.additional_properties = d
+        return identity_bridge_result
 
     @property
     def additional_keys(self) -> list[str]:

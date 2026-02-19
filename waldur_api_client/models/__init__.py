@@ -738,9 +738,9 @@ from .guest_power_state_enum import GuestPowerStateEnum
 from .hooks_web_count_content_type import HooksWebCountContentType
 from .hooks_web_list_content_type import HooksWebListContentType
 from .identity_bridge_remove_request import IdentityBridgeRemoveRequest
-from .identity_bridge_remove_response import IdentityBridgeRemoveResponse
+from .identity_bridge_remove_result import IdentityBridgeRemoveResult
 from .identity_bridge_request_request import IdentityBridgeRequestRequest
-from .identity_bridge_response import IdentityBridgeResponse
+from .identity_bridge_result import IdentityBridgeResult
 from .identity_bridge_stats import IdentityBridgeStats
 from .identity_bridge_user_status import IdentityBridgeUserStatus
 from .identity_bridge_user_status_attribute_sources import IdentityBridgeUserStatusAttributeSources
@@ -3424,9 +3424,9 @@ __all__ = (
     "HooksWebCountContentType",
     "HooksWebListContentType",
     "IdentityBridgeRemoveRequest",
-    "IdentityBridgeRemoveResponse",
+    "IdentityBridgeRemoveResult",
     "IdentityBridgeRequestRequest",
-    "IdentityBridgeResponse",
+    "IdentityBridgeResult",
     "IdentityBridgeStats",
     "IdentityBridgeUserStatus",
     "IdentityBridgeUserStatusAttributeSources",
