@@ -85,18 +85,22 @@ class BookingResource:
         parent_uuid (Union[Unset, UUID]):
         parent_name (Union[Unset, str]):
         backend_metadata (Union[Unset, BackendMetadata]):
-        is_usage_based (Union[Unset, bool]):
-        is_limit_based (Union[Unset, bool]):
+        is_usage_based (Union[Unset, bool]): Returns True if the resource has usage-based components that track variable
+            consumption.
+        is_limit_based (Union[Unset, bool]): Returns True if the resource has limit-based components with user-
+            adjustable quotas.
         name (Union[Unset, str]):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
-        current_usages (Union[Unset, BookingResourceCurrentUsages]):
+        current_usages (Union[Unset, BookingResourceCurrentUsages]): Dictionary mapping component types to their latest
+            reported usage amounts.
         can_terminate (Union[Unset, bool]):
         report (Union[Unset, list['ReportSection']]):
         end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, a resource will be scheduled
             for termination.
         end_date_requested_by (Union[None, Unset, str]):
         username (Union[None, Unset, str]):
-        limit_usage (Union[Unset, BookingResourceLimitUsage]):
+        limit_usage (Union[Unset, BookingResourceLimitUsage]): Dictionary mapping limit-based component types to their
+            consumed usage. For monthly periods, maps from current_usages; for longer periods, aggregates historical usage.
         downscaled (Union[Unset, bool]):
         restrict_member_access (Union[Unset, bool]):
         paused (Union[Unset, bool]):

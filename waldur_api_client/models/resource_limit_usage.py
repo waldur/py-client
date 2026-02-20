@@ -9,7 +9,10 @@ T = TypeVar("T", bound="ResourceLimitUsage")
 
 @_attrs_define
 class ResourceLimitUsage:
-    """ """
+    """Dictionary mapping limit-based component types to their consumed usage. For monthly periods, maps from
+    current_usages; for longer periods, aggregates historical usage.
+
+    """
 
     additional_properties: dict[str, float] = _attrs_field(init=False, factory=dict)
 
