@@ -793,6 +793,7 @@ from .invitation_update import InvitationUpdate
 from .invitation_update_request import InvitationUpdateRequest
 from .invoice import Invoice
 from .invoice_cost import InvoiceCost
+from .invoice_cost_item import InvoiceCostItem
 from .invoice_growth import InvoiceGrowth
 from .invoice_growth_customer_period import InvoiceGrowthCustomerPeriod
 from .invoice_item import InvoiceItem
@@ -3477,6 +3478,7 @@ __all__ = (
     "InvitationUpdateRequest",
     "Invoice",
     "InvoiceCost",
+    "InvoiceCostItem",
     "InvoiceGrowth",
     "InvoiceGrowthCustomerPeriod",
     "InvoiceItem",
