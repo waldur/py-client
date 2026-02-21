@@ -1064,6 +1064,7 @@ Module: `waldur_api_client.api.marketplace_component_usages`
 - `marketplace_component_usages_set_usage` POST `/api/marketplace-component-usages/set_usage/` — Set component usage for a resource (request body)
 - `marketplace_component_usages_retrieve` GET `/api/marketplace-component-usages/{uuid}/` — Retrieve a component usage record (path: uuid | 1 query param)
 - `marketplace_component_usages_set_user_usage` POST `/api/marketplace-component-usages/{uuid}/set_user_usage/` — Set user-specific component usage (path: uuid | request body)
+- `marketplace_component_usages_set_user_usages` POST `/api/marketplace-component-usages/{uuid}/set_user_usages/` — Bulk set user-specific component usages (path: uuid | request body)
 
 ## marketplace-component-user-usages
 Module: `waldur_api_client.api.marketplace_component_user_usages`

@@ -16,8 +16,7 @@ class ChatRequestRequest:
     """
     Attributes:
         input_ (str): User input text for the chat model.
-        thread_uuid (Union[None, UUID, Unset]): Existing thread UUID. If omitted, a new thread is created when storage
-            is enabled.
+        thread_uuid (Union[None, UUID, Unset]): Existing thread UUID. If omitted, a new thread is created.
         update_thread_name (Union[None, UUID, Unset]): Thread UUID whose name should be set to the assistant's response.
             Skips message persistence for this call.
         mode (Union[ChatRequestModeEnum, None, Unset]): 'reload': replace the last assistant response. Omit for normal

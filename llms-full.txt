@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.4-dev.20260221030632
+# Version: 8.0.4-dev.20260221190838
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5728,6 +5728,18 @@ Description: Allows a service provider to report usage for a specific user assoc
 
         - If a user-specific usage record already exists for the given component usage, it will be updated.
  ...
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_component_usages_set_user_usages
+POST /api/marketplace-component-usages/{uuid}/set_user_usages/
+Summary: Bulk set user-specific component usages
+Description: Allows a service provider to report usage for multiple users associated with a resource's component
+        in a single request. This avoids the need for one API call per user.
+
+        - All usages are processed atomically: if any item fails validation, none are persisted.
+        - If a user-sp...
 Path parameters:
   - uuid
 Request body: yes

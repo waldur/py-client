@@ -424,6 +424,7 @@ from .component_usages_per_month_stats import ComponentUsagesPerMonthStats
 from .component_usages_per_project import ComponentUsagesPerProject
 from .component_usages_stats import ComponentUsagesStats
 from .component_user_usage import ComponentUserUsage
+from .component_user_usage_bulk_create_request import ComponentUserUsageBulkCreateRequest
 from .component_user_usage_create_request import ComponentUserUsageCreateRequest
 from .component_user_usage_limit import ComponentUserUsageLimit
 from .component_user_usage_limit_request import ComponentUserUsageLimitRequest
@@ -3122,6 +3123,7 @@ __all__ = (
     "ComponentUsagesPerProject",
     "ComponentUsagesStats",
     "ComponentUserUsage",
+    "ComponentUserUsageBulkCreateRequest",
     "ComponentUserUsageCreateRequest",
     "ComponentUserUsageLimit",
     "ComponentUserUsageLimitRequest",

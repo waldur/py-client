@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.0.4-dev.20260221030632).
+> Auto-generated Python SDK for the Waldur API (version 8.0.4-dev.20260221190838).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -132,7 +132,7 @@ waldur_api_client/
 - **marketplace-category-components** (7 endpoints)
 - **marketplace-category-groups** (7 endpoints)
 - **marketplace-category-help-articles** (7 endpoints)
-- **marketplace-component-usages** (5 endpoints)
+- **marketplace-component-usages** (6 endpoints)
 - **marketplace-component-user-usages** (3 endpoints)
 - **marketplace-course-accounts** (6 endpoints)
 - **marketplace-customer-component-usage-policies** (9 endpoints)

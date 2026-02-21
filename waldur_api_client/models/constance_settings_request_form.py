@@ -220,7 +220,6 @@ class ConstanceSettingsRequestForm:
         llm_token_limit_weekly (Union[Unset, int]):
         llm_token_limit_monthly (Union[Unset, int]):
         llm_chat_session_retention_days (Union[Unset, int]):
-        llm_chat_storage_enabled (Union[Unset, bool]):
         llm_chat_history_limit (Union[Unset, int]):
         software_catalog_eessi_update_enabled (Union[Unset, bool]):
         software_catalog_eessi_version (Union[Unset, str]):
@@ -459,7 +458,6 @@ class ConstanceSettingsRequestForm:
     llm_token_limit_weekly: Union[Unset, int] = UNSET
     llm_token_limit_monthly: Union[Unset, int] = UNSET
     llm_chat_session_retention_days: Union[Unset, int] = UNSET
-    llm_chat_storage_enabled: Union[Unset, bool] = UNSET
     llm_chat_history_limit: Union[Unset, int] = UNSET
     software_catalog_eessi_update_enabled: Union[Unset, bool] = UNSET
     software_catalog_eessi_version: Union[Unset, str] = UNSET
@@ -1008,8 +1006,6 @@ class ConstanceSettingsRequestForm:
 
         llm_chat_session_retention_days = self.llm_chat_session_retention_days
 
-        llm_chat_storage_enabled = self.llm_chat_storage_enabled
-
         llm_chat_history_limit = self.llm_chat_history_limit
 
         software_catalog_eessi_update_enabled = self.software_catalog_eessi_update_enabled
@@ -1495,8 +1491,6 @@ class ConstanceSettingsRequestForm:
             field_dict["LLM_TOKEN_LIMIT_MONTHLY"] = llm_token_limit_monthly
         if llm_chat_session_retention_days is not UNSET:
             field_dict["LLM_CHAT_SESSION_RETENTION_DAYS"] = llm_chat_session_retention_days
-        if llm_chat_storage_enabled is not UNSET:
-            field_dict["LLM_CHAT_STORAGE_ENABLED"] = llm_chat_storage_enabled
         if llm_chat_history_limit is not UNSET:
             field_dict["LLM_CHAT_HISTORY_LIMIT"] = llm_chat_history_limit
         if software_catalog_eessi_update_enabled is not UNSET:
@@ -2170,8 +2164,6 @@ class ConstanceSettingsRequestForm:
 
         llm_chat_session_retention_days = d.pop("LLM_CHAT_SESSION_RETENTION_DAYS", UNSET)
 
-        llm_chat_storage_enabled = d.pop("LLM_CHAT_STORAGE_ENABLED", UNSET)
-
         llm_chat_history_limit = d.pop("LLM_CHAT_HISTORY_LIMIT", UNSET)
 
         software_catalog_eessi_update_enabled = d.pop("SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED", UNSET)
@@ -2450,7 +2442,6 @@ class ConstanceSettingsRequestForm:
             llm_token_limit_weekly=llm_token_limit_weekly,
             llm_token_limit_monthly=llm_token_limit_monthly,
             llm_chat_session_retention_days=llm_chat_session_retention_days,
-            llm_chat_storage_enabled=llm_chat_storage_enabled,
             llm_chat_history_limit=llm_chat_history_limit,
             software_catalog_eessi_update_enabled=software_catalog_eessi_update_enabled,
             software_catalog_eessi_version=software_catalog_eessi_version,
