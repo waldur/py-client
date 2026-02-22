@@ -6,13 +6,13 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_flavor import OpenStackFlavor
-from ...models.openstack_flavors_usage_stats_retrieve_field_item import OpenstackFlavorsUsageStatsRetrieveFieldItem
+from ...models.open_stack_flavor_field_enum import OpenStackFlavorFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -60,7 +60,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
 ) -> Response[OpenStackFlavor]:
     """Get flavor usage statistics
 
@@ -68,7 +68,7 @@ def sync_detailed(
     each flavor.
 
     Args:
-        field (Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,7 +92,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
 ) -> OpenStackFlavor:
     """Get flavor usage statistics
 
@@ -100,7 +100,7 @@ def sync(
     each flavor.
 
     Args:
-        field (Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -119,7 +119,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
 ) -> Response[OpenStackFlavor]:
     """Get flavor usage statistics
 
@@ -127,7 +127,7 @@ async def asyncio_detailed(
     each flavor.
 
     Args:
-        field (Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,7 +149,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
 ) -> OpenStackFlavor:
     """Get flavor usage statistics
 
@@ -157,7 +157,7 @@ async def asyncio(
     each flavor.
 
     Args:
-        field (Union[Unset, list[OpenstackFlavorsUsageStatsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

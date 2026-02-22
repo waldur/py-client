@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.call_managing_organisations_count_o_item import CallManagingOrganisationsCountOItem
+from ...models.call_managing_organisation_o_enum import CallManagingOrganisationOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsCountOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -86,7 +86,7 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsCountOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
@@ -96,7 +96,7 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CallManagingOrganisationsCountOItem]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -130,7 +130,7 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsCountOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
@@ -140,7 +140,7 @@ def sync(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CallManagingOrganisationsCountOItem]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -169,7 +169,7 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsCountOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
@@ -179,7 +179,7 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CallManagingOrganisationsCountOItem]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -211,7 +211,7 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsCountOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
@@ -221,7 +221,7 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CallManagingOrganisationsCountOItem]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 

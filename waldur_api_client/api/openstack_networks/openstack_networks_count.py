@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.openstack_networks_count_state_item import OpenstackNetworksCountStateItem
+from ...models.core_states import CoreStates
 from ...types import UNSET, Response, Unset
 
 
@@ -33,7 +33,7 @@ def _get_kwargs(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackNetworksCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -182,7 +182,7 @@ def sync_detailed(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackNetworksCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -214,7 +214,7 @@ def sync_detailed(
         rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackNetworksCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         type_ (Union[Unset, str]):
@@ -288,7 +288,7 @@ def sync(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackNetworksCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -320,7 +320,7 @@ def sync(
         rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackNetworksCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         type_ (Union[Unset, str]):
@@ -389,7 +389,7 @@ async def asyncio_detailed(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackNetworksCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -421,7 +421,7 @@ async def asyncio_detailed(
         rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackNetworksCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         type_ (Union[Unset, str]):
@@ -493,7 +493,7 @@ async def asyncio(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackNetworksCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -525,7 +525,7 @@ async def asyncio(
         rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackNetworksCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         type_ (Union[Unset, str]):

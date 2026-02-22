@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.backend_resources_count_o_item import BackendResourcesCountOItem
+from ...models.backend_resource_req_o_enum import BackendResourceReqOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -18,7 +18,7 @@ def _get_kwargs(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BackendResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -110,7 +110,7 @@ def sync_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BackendResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -126,7 +126,7 @@ def sync_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[BackendResourcesCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -168,7 +168,7 @@ def sync(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BackendResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -184,7 +184,7 @@ def sync(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[BackendResourcesCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -221,7 +221,7 @@ async def asyncio_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BackendResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -237,7 +237,7 @@ async def asyncio_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[BackendResourcesCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -277,7 +277,7 @@ async def asyncio(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BackendResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -293,7 +293,7 @@ async def asyncio(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[BackendResourcesCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

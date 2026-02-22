@@ -6,13 +6,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.checklists_admin_questions_count_checklist_type import ChecklistsAdminQuestionsCountChecklistType
+from ...models.checklist_type_enum import ChecklistTypeEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    checklist_type: Union[Unset, ChecklistsAdminQuestionsCountChecklistType] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
     checklist_uuid: Union[Unset, UUID] = UNSET,
     has_onboarding_mapping: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -77,7 +77,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminQuestionsCountChecklistType] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
     checklist_uuid: Union[Unset, UUID] = UNSET,
     has_onboarding_mapping: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -86,7 +86,7 @@ def sync_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminQuestionsCountChecklistType]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
         checklist_uuid (Union[Unset, UUID]):
         has_onboarding_mapping (Union[Unset, bool]):
         page (Union[Unset, int]):
@@ -118,7 +118,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminQuestionsCountChecklistType] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
     checklist_uuid: Union[Unset, UUID] = UNSET,
     has_onboarding_mapping: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -127,7 +127,7 @@ def sync(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminQuestionsCountChecklistType]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
         checklist_uuid (Union[Unset, UUID]):
         has_onboarding_mapping (Union[Unset, bool]):
         page (Union[Unset, int]):
@@ -154,7 +154,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminQuestionsCountChecklistType] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
     checklist_uuid: Union[Unset, UUID] = UNSET,
     has_onboarding_mapping: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -163,7 +163,7 @@ async def asyncio_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminQuestionsCountChecklistType]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
         checklist_uuid (Union[Unset, UUID]):
         has_onboarding_mapping (Union[Unset, bool]):
         page (Union[Unset, int]):
@@ -193,7 +193,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminQuestionsCountChecklistType] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
     checklist_uuid: Union[Unset, UUID] = UNSET,
     has_onboarding_mapping: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -202,7 +202,7 @@ async def asyncio(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminQuestionsCountChecklistType]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
         checklist_uuid (Union[Unset, UUID]):
         has_onboarding_mapping (Union[Unset, bool]):
         page (Union[Unset, int]):

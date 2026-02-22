@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_project_update_requests_list_state_item import MarketplaceProjectUpdateRequestsListStateItem
 from ...models.remote_project_update_request import RemoteProjectUpdateRequest
+from ...models.remote_project_update_request_state_enum import RemoteProjectUpdateRequestStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -20,7 +20,7 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -105,7 +105,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> Response[list["RemoteProjectUpdateRequest"]]:
     """
     Args:
@@ -115,7 +115,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -151,7 +151,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["RemoteProjectUpdateRequest"]:
     """
     Args:
@@ -161,7 +161,7 @@ def sync(
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -192,7 +192,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> Response[list["RemoteProjectUpdateRequest"]]:
     """
     Args:
@@ -202,7 +202,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -236,7 +236,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["RemoteProjectUpdateRequest"]:
     """
     Args:
@@ -246,7 +246,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -277,7 +277,7 @@ def sync_all(
     offering_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["RemoteProjectUpdateRequest"]:
     """Get All Pages
 
@@ -291,7 +291,7 @@ def sync_all(
         offering_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -362,7 +362,7 @@ async def asyncio_all(
     offering_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["RemoteProjectUpdateRequest"]:
     """Get All Pages (Async)
 
@@ -376,7 +376,7 @@ async def asyncio_all(
         offering_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProjectUpdateRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

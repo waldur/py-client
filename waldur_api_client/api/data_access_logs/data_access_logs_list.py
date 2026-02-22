@@ -7,19 +7,19 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.data_access_logs_list_accessor_type import DataAccessLogsListAccessorType
-from ...models.data_access_logs_list_o_item import DataAccessLogsListOItem
+from ...models.accessor_type_enum import AccessorTypeEnum
 from ...models.global_user_data_access_log import GlobalUserDataAccessLog
+from ...models.global_user_data_access_log_o_enum import GlobalUserDataAccessLogOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    accessor_type: Union[Unset, DataAccessLogsListAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsListOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -111,10 +111,10 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    accessor_type: Union[Unset, DataAccessLogsListAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsListOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -123,10 +123,10 @@ def sync_detailed(
 ) -> Response[list["GlobalUserDataAccessLog"]]:
     """
     Args:
-        accessor_type (Union[Unset, DataAccessLogsListAccessorType]):
+        accessor_type (Union[Unset, AccessorTypeEnum]):
         accessor_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[DataAccessLogsListOItem]]):
+        o (Union[Unset, list[GlobalUserDataAccessLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -163,10 +163,10 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    accessor_type: Union[Unset, DataAccessLogsListAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsListOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -175,10 +175,10 @@ def sync(
 ) -> list["GlobalUserDataAccessLog"]:
     """
     Args:
-        accessor_type (Union[Unset, DataAccessLogsListAccessorType]):
+        accessor_type (Union[Unset, AccessorTypeEnum]):
         accessor_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[DataAccessLogsListOItem]]):
+        o (Union[Unset, list[GlobalUserDataAccessLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -210,10 +210,10 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    accessor_type: Union[Unset, DataAccessLogsListAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsListOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -222,10 +222,10 @@ async def asyncio_detailed(
 ) -> Response[list["GlobalUserDataAccessLog"]]:
     """
     Args:
-        accessor_type (Union[Unset, DataAccessLogsListAccessorType]):
+        accessor_type (Union[Unset, AccessorTypeEnum]):
         accessor_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[DataAccessLogsListOItem]]):
+        o (Union[Unset, list[GlobalUserDataAccessLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -260,10 +260,10 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    accessor_type: Union[Unset, DataAccessLogsListAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsListOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -272,10 +272,10 @@ async def asyncio(
 ) -> list["GlobalUserDataAccessLog"]:
     """
     Args:
-        accessor_type (Union[Unset, DataAccessLogsListAccessorType]):
+        accessor_type (Union[Unset, AccessorTypeEnum]):
         accessor_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[DataAccessLogsListOItem]]):
+        o (Union[Unset, list[GlobalUserDataAccessLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -309,10 +309,10 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    accessor_type: Union[Unset, DataAccessLogsListAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsListOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -325,10 +325,10 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        accessor_type (Union[Unset, DataAccessLogsListAccessorType]):
+        accessor_type (Union[Unset, AccessorTypeEnum]):
         accessor_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[DataAccessLogsListOItem]]):
+        o (Union[Unset, list[GlobalUserDataAccessLogOEnum]]):
         query (Union[Unset, str]):
         start_date (Union[Unset, datetime.date]):
         user_uuid (Union[Unset, UUID]):
@@ -400,10 +400,10 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    accessor_type: Union[Unset, DataAccessLogsListAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsListOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -416,10 +416,10 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        accessor_type (Union[Unset, DataAccessLogsListAccessorType]):
+        accessor_type (Union[Unset, AccessorTypeEnum]):
         accessor_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[DataAccessLogsListOItem]]):
+        o (Union[Unset, list[GlobalUserDataAccessLogOEnum]]):
         query (Union[Unset, str]):
         start_date (Union[Unset, datetime.date]):
         user_uuid (Union[Unset, UUID]):

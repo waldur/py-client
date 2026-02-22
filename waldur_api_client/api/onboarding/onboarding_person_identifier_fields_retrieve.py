@@ -5,16 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.onboarding_person_identifier_fields_retrieve_validation_method import (
-    OnboardingPersonIdentifierFieldsRetrieveValidationMethod,
-)
 from ...models.person_identifier_fields_response import PersonIdentifierFieldsResponse
+from ...models.validation_method_enum import ValidationMethodEnum
 from ...types import UNSET, Response
 
 
 def _get_kwargs(
     *,
-    validation_method: OnboardingPersonIdentifierFieldsRetrieveValidationMethod,
+    validation_method: ValidationMethodEnum,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -58,14 +56,14 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    validation_method: OnboardingPersonIdentifierFieldsRetrieveValidationMethod,
+    validation_method: ValidationMethodEnum,
 ) -> Response[PersonIdentifierFieldsResponse]:
     """Return person identifier field specification for a specific validation method. The validation_method
     parameter should match one of the available methods (e.g., 'ariregister', 'wirtschaftscompass',
     'bolagsverket', 'breg').
 
     Args:
-        validation_method (OnboardingPersonIdentifierFieldsRetrieveValidationMethod):
+        validation_method (ValidationMethodEnum):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -89,14 +87,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    validation_method: OnboardingPersonIdentifierFieldsRetrieveValidationMethod,
+    validation_method: ValidationMethodEnum,
 ) -> PersonIdentifierFieldsResponse:
     """Return person identifier field specification for a specific validation method. The validation_method
     parameter should match one of the available methods (e.g., 'ariregister', 'wirtschaftscompass',
     'bolagsverket', 'breg').
 
     Args:
-        validation_method (OnboardingPersonIdentifierFieldsRetrieveValidationMethod):
+        validation_method (ValidationMethodEnum):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -115,14 +113,14 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    validation_method: OnboardingPersonIdentifierFieldsRetrieveValidationMethod,
+    validation_method: ValidationMethodEnum,
 ) -> Response[PersonIdentifierFieldsResponse]:
     """Return person identifier field specification for a specific validation method. The validation_method
     parameter should match one of the available methods (e.g., 'ariregister', 'wirtschaftscompass',
     'bolagsverket', 'breg').
 
     Args:
-        validation_method (OnboardingPersonIdentifierFieldsRetrieveValidationMethod):
+        validation_method (ValidationMethodEnum):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -144,14 +142,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    validation_method: OnboardingPersonIdentifierFieldsRetrieveValidationMethod,
+    validation_method: ValidationMethodEnum,
 ) -> PersonIdentifierFieldsResponse:
     """Return person identifier field specification for a specific validation method. The validation_method
     parameter should match one of the available methods (e.g., 'ariregister', 'wirtschaftscompass',
     'bolagsverket', 'breg').
 
     Args:
-        validation_method (OnboardingPersonIdentifierFieldsRetrieveValidationMethod):
+        validation_method (ValidationMethodEnum):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

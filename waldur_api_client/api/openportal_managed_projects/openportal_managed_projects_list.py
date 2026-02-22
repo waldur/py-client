@@ -7,7 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.managed_project import ManagedProject
-from ...models.openportal_managed_projects_list_state_item import OpenportalManagedProjectsListStateItem
+from ...models.remote_project_update_request_state_enum import RemoteProjectUpdateRequestStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -22,7 +22,7 @@ def _get_kwargs(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -105,7 +105,7 @@ def sync_detailed(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> Response[list["ManagedProject"]]:
     """List all managed projects
 
@@ -118,7 +118,7 @@ def sync_detailed(
         project_template (Union[Unset, str]):
         project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenportalManagedProjectsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,7 +158,7 @@ def sync(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["ManagedProject"]:
     """List all managed projects
 
@@ -171,7 +171,7 @@ def sync(
         project_template (Union[Unset, str]):
         project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenportalManagedProjectsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -206,7 +206,7 @@ async def asyncio_detailed(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> Response[list["ManagedProject"]]:
     """List all managed projects
 
@@ -219,7 +219,7 @@ async def asyncio_detailed(
         project_template (Union[Unset, str]):
         project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenportalManagedProjectsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -257,7 +257,7 @@ async def asyncio(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["ManagedProject"]:
     """List all managed projects
 
@@ -270,7 +270,7 @@ async def asyncio(
         project_template (Union[Unset, str]):
         project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenportalManagedProjectsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -305,7 +305,7 @@ def sync_all(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["ManagedProject"]:
     """Get All Pages
 
@@ -321,7 +321,7 @@ def sync_all(
         project_template (Union[Unset, str]):
         project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenportalManagedProjectsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -396,7 +396,7 @@ async def asyncio_all(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["ManagedProject"]:
     """Get All Pages (Async)
 
@@ -412,7 +412,7 @@ async def asyncio_all(
         project_template (Union[Unset, str]):
         project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenportalManagedProjectsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.proposal_protected_calls_count_o_item import ProposalProtectedCallsCountOItem
-from ...models.proposal_protected_calls_count_state_item import ProposalProtectedCallsCountStateItem
+from ...models.call_states import CallStates
+from ...models.protected_call_o_enum import ProtectedCallOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -18,12 +18,12 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -117,12 +117,12 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -132,12 +132,12 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsCountOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsCountStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -176,12 +176,12 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -191,12 +191,12 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsCountOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsCountStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -230,12 +230,12 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -245,12 +245,12 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsCountOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsCountStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -287,12 +287,12 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -302,12 +302,12 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsCountOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsCountStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

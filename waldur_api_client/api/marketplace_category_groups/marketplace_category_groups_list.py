@@ -6,14 +6,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.category_group import CategoryGroup
-from ...models.marketplace_category_groups_list_field_item import MarketplaceCategoryGroupsListFieldItem
+from ...models.category_group_field_enum import CategoryGroupFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryGroupFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
@@ -75,7 +75,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryGroupFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
@@ -85,7 +85,7 @@ def sync_detailed(
      Returns a paginated list of category groups.
 
     Args:
-        field (Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]]):
+        field (Union[Unset, list[CategoryGroupFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         title (Union[Unset, str]):
@@ -115,7 +115,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryGroupFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
@@ -125,7 +125,7 @@ def sync(
      Returns a paginated list of category groups.
 
     Args:
-        field (Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]]):
+        field (Union[Unset, list[CategoryGroupFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         title (Union[Unset, str]):
@@ -150,7 +150,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryGroupFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
@@ -160,7 +160,7 @@ async def asyncio_detailed(
      Returns a paginated list of category groups.
 
     Args:
-        field (Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]]):
+        field (Union[Unset, list[CategoryGroupFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         title (Union[Unset, str]):
@@ -188,7 +188,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryGroupFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     title: Union[Unset, str] = UNSET,
@@ -198,7 +198,7 @@ async def asyncio(
      Returns a paginated list of category groups.
 
     Args:
-        field (Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]]):
+        field (Union[Unset, list[CategoryGroupFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         title (Union[Unset, str]):
@@ -225,7 +225,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryGroupFieldEnum]] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> list["CategoryGroup"]:
     """Get All Pages
@@ -236,7 +236,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]]):
+        field (Union[Unset, list[CategoryGroupFieldEnum]]):
         title (Union[Unset, str]):
 
     Raises:
@@ -301,7 +301,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryGroupFieldEnum]] = UNSET,
     title: Union[Unset, str] = UNSET,
 ) -> list["CategoryGroup"]:
     """Get All Pages (Async)
@@ -312,7 +312,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[MarketplaceCategoryGroupsListFieldItem]]):
+        field (Union[Unset, list[CategoryGroupFieldEnum]]):
         title (Union[Unset, str]):
 
     Raises:

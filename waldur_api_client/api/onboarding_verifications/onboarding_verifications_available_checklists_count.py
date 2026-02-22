@@ -5,17 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.onboarding_verifications_available_checklists_count_checklist_type import (
-    OnboardingVerificationsAvailableChecklistsCountChecklistType,
-)
+from ...models.available_checklists_response_checklist_type_enum import AvailableChecklistsResponseChecklistTypeEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsAvailableChecklistsCountChecklistType
-    ] = OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL,
+    checklist_type: Union[Unset, AvailableChecklistsResponseChecklistTypeEnum] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -65,16 +61,12 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsAvailableChecklistsCountChecklistType
-    ] = OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL,
+    checklist_type: Union[Unset, AvailableChecklistsResponseChecklistTypeEnum] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset,
-            OnboardingVerificationsAvailableChecklistsCountChecklistType]):  Default:
-            OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL.
+        checklist_type (Union[Unset, AvailableChecklistsResponseChecklistTypeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -98,16 +90,12 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsAvailableChecklistsCountChecklistType
-    ] = OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL,
+    checklist_type: Union[Unset, AvailableChecklistsResponseChecklistTypeEnum] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset,
-            OnboardingVerificationsAvailableChecklistsCountChecklistType]):  Default:
-            OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL.
+        checklist_type (Union[Unset, AvailableChecklistsResponseChecklistTypeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,16 +114,12 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsAvailableChecklistsCountChecklistType
-    ] = OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL,
+    checklist_type: Union[Unset, AvailableChecklistsResponseChecklistTypeEnum] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset,
-            OnboardingVerificationsAvailableChecklistsCountChecklistType]):  Default:
-            OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL.
+        checklist_type (Union[Unset, AvailableChecklistsResponseChecklistTypeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -157,16 +141,12 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsAvailableChecklistsCountChecklistType
-    ] = OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL,
+    checklist_type: Union[Unset, AvailableChecklistsResponseChecklistTypeEnum] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset,
-            OnboardingVerificationsAvailableChecklistsCountChecklistType]):  Default:
-            OnboardingVerificationsAvailableChecklistsCountChecklistType.ALL.
+        checklist_type (Union[Unset, AvailableChecklistsResponseChecklistTypeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

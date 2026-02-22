@@ -22,6 +22,8 @@ class ThreadSession:
         flags (Union[Unset, Any]):
         is_archived (Union[Unset, bool]):
         message_count (Union[Unset, int]):
+        is_flagged (Union[Unset, bool]):
+        max_severity (Union[Unset, str]):
         user_username (Union[Unset, str]):
         user_full_name (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
@@ -34,6 +36,8 @@ class ThreadSession:
     flags: Union[Unset, Any] = UNSET
     is_archived: Union[Unset, bool] = UNSET
     message_count: Union[Unset, int] = UNSET
+    is_flagged: Union[Unset, bool] = UNSET
+    max_severity: Union[Unset, str] = UNSET
     user_username: Union[Unset, str] = UNSET
     user_full_name: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
@@ -56,6 +60,10 @@ class ThreadSession:
         is_archived = self.is_archived
 
         message_count = self.message_count
+
+        is_flagged = self.is_flagged
+
+        max_severity = self.max_severity
 
         user_username = self.user_username
 
@@ -84,6 +92,10 @@ class ThreadSession:
             field_dict["is_archived"] = is_archived
         if message_count is not UNSET:
             field_dict["message_count"] = message_count
+        if is_flagged is not UNSET:
+            field_dict["is_flagged"] = is_flagged
+        if max_severity is not UNSET:
+            field_dict["max_severity"] = max_severity
         if user_username is not UNSET:
             field_dict["user_username"] = user_username
         if user_full_name is not UNSET:
@@ -120,6 +132,10 @@ class ThreadSession:
 
         message_count = d.pop("message_count", UNSET)
 
+        is_flagged = d.pop("is_flagged", UNSET)
+
+        max_severity = d.pop("max_severity", UNSET)
+
         user_username = d.pop("user_username", UNSET)
 
         user_full_name = d.pop("user_full_name", UNSET)
@@ -145,6 +161,8 @@ class ThreadSession:
             flags=flags,
             is_archived=is_archived,
             message_count=message_count,
+            is_flagged=is_flagged,
+            max_severity=max_severity,
             user_username=user_username,
             user_full_name=user_full_name,
             created=created,

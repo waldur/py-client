@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_resources_retrieve_field_item import MarketplaceResourcesRetrieveFieldItem
 from ...models.resource import Resource
+from ...models.resource_field_enum import ResourceFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,7 +61,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
 ) -> Response[Resource]:
     """Retrieve a consumer resource
 
@@ -69,7 +69,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]]):
+        field (Union[Unset, list[ResourceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -95,7 +95,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
 ) -> Resource:
     """Retrieve a consumer resource
 
@@ -103,7 +103,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]]):
+        field (Union[Unset, list[ResourceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -124,7 +124,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
 ) -> Response[Resource]:
     """Retrieve a consumer resource
 
@@ -132,7 +132,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]]):
+        field (Union[Unset, list[ResourceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -156,7 +156,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
 ) -> Resource:
     """Retrieve a consumer resource
 
@@ -164,7 +164,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceResourcesRetrieveFieldItem]]):
+        field (Union[Unset, list[ResourceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

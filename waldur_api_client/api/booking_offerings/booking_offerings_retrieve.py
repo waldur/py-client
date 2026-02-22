@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.booking_offerings_retrieve_field_item import BookingOfferingsRetrieveFieldItem
 from ...models.offering import Offering
+from ...models.offering_field_enum import OfferingFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[BookingOfferingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingOfferingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
 ) -> Response[Offering]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[BookingOfferingsRetrieveFieldItem]]):
+        field (Union[Unset, list[OfferingFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingOfferingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
 ) -> Offering:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[BookingOfferingsRetrieveFieldItem]]):
+        field (Union[Unset, list[OfferingFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingOfferingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
 ) -> Response[Offering]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[BookingOfferingsRetrieveFieldItem]]):
+        field (Union[Unset, list[OfferingFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingOfferingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
 ) -> Offering:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[BookingOfferingsRetrieveFieldItem]]):
+        field (Union[Unset, list[OfferingFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

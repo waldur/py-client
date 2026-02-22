@@ -7,9 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.category_component_usage import CategoryComponentUsage
-from ...models.marketplace_category_component_usages_list_field_item import (
-    MarketplaceCategoryComponentUsagesListFieldItem,
-)
+from ...models.category_component_usage_field_enum import CategoryComponentUsageFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,7 +16,7 @@ def _get_kwargs(
     *,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -94,7 +92,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -113,7 +111,7 @@ def sync_detailed(
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
+        field (Union[Unset, list[CategoryComponentUsageFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
@@ -147,7 +145,7 @@ def sync(
     client: AuthenticatedClient,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -166,7 +164,7 @@ def sync(
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
+        field (Union[Unset, list[CategoryComponentUsageFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
@@ -195,7 +193,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -214,7 +212,7 @@ async def asyncio_detailed(
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
+        field (Union[Unset, list[CategoryComponentUsageFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
@@ -246,7 +244,7 @@ async def asyncio(
     client: AuthenticatedClient,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -265,7 +263,7 @@ async def asyncio(
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
+        field (Union[Unset, list[CategoryComponentUsageFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
@@ -296,7 +294,7 @@ def sync_all(
     client: AuthenticatedClient,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
     scope: Union[Unset, str] = UNSET,
 ) -> list["CategoryComponentUsage"]:
     """Get All Pages
@@ -309,7 +307,7 @@ def sync_all(
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
+        field (Union[Unset, list[CategoryComponentUsageFieldEnum]]):
         scope (Union[Unset, str]):
 
     Raises:
@@ -378,7 +376,7 @@ async def asyncio_all(
     client: AuthenticatedClient,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
     scope: Union[Unset, str] = UNSET,
 ) -> list["CategoryComponentUsage"]:
     """Get All Pages (Async)
@@ -391,7 +389,7 @@ async def asyncio_all(
     Args:
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceCategoryComponentUsagesListFieldItem]]):
+        field (Union[Unset, list[CategoryComponentUsageFieldEnum]]):
         scope (Union[Unset, str]):
 
     Raises:

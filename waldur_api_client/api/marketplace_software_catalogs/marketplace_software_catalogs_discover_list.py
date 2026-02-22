@@ -5,8 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_software_catalogs_discover_list_o_item import MarketplaceSoftwareCatalogsDiscoverListOItem
 from ...models.software_catalog_discover import SoftwareCatalogDiscover
+from ...models.software_catalog_o_enum import SoftwareCatalogOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -14,7 +14,7 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -81,7 +81,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -93,7 +93,7 @@ def sync_detailed(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]]):
+        o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):
@@ -125,7 +125,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -137,7 +137,7 @@ def sync(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]]):
+        o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):
@@ -164,7 +164,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -176,7 +176,7 @@ async def asyncio_detailed(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]]):
+        o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):
@@ -206,7 +206,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -218,7 +218,7 @@ async def asyncio(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]]):
+        o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):
@@ -247,7 +247,7 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["SoftwareCatalogDiscover"]:
     """Get All Pages
@@ -259,7 +259,7 @@ def sync_all(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]]):
+        o (Union[Unset, list[SoftwareCatalogOEnum]]):
         version (Union[Unset, str]):
 
     Raises:
@@ -326,7 +326,7 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> list["SoftwareCatalogDiscover"]:
     """Get All Pages (Async)
@@ -338,7 +338,7 @@ async def asyncio_all(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverListOItem]]):
+        o (Union[Unset, list[SoftwareCatalogOEnum]]):
         version (Union[Unset, str]):
 
     Raises:

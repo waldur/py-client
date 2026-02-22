@@ -6,11 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_categories_list_customers_offerings_state_item import (
-    MarketplaceCategoriesListCustomersOfferingsStateItem,
-)
-from ...models.marketplace_categories_list_field_item import MarketplaceCategoriesListFieldItem
+from ...models.maintenance_type_enum import MaintenanceTypeEnum
 from ...models.marketplace_category import MarketplaceCategory
+from ...models.marketplace_category_field_enum import MarketplaceCategoryFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,8 +16,8 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesListCustomersOfferingsStateItem]] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoriesListFieldItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -122,8 +120,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesListCustomersOfferingsStateItem]] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoriesListFieldItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -139,9 +137,8 @@ def sync_detailed(
 
     Args:
         customer_uuid (Union[Unset, UUID]):
-        customers_offerings_state (Union[Unset,
-            list[MarketplaceCategoriesListCustomersOfferingsStateItem]]):
-        field (Union[Unset, list[MarketplaceCategoriesListFieldItem]]):
+        customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
+        field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
         offering_name (Union[Unset, str]):
@@ -184,8 +181,8 @@ def sync(
     *,
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesListCustomersOfferingsStateItem]] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoriesListFieldItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -201,9 +198,8 @@ def sync(
 
     Args:
         customer_uuid (Union[Unset, UUID]):
-        customers_offerings_state (Union[Unset,
-            list[MarketplaceCategoriesListCustomersOfferingsStateItem]]):
-        field (Union[Unset, list[MarketplaceCategoriesListFieldItem]]):
+        customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
+        field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
         offering_name (Union[Unset, str]):
@@ -241,8 +237,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesListCustomersOfferingsStateItem]] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoriesListFieldItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -258,9 +254,8 @@ async def asyncio_detailed(
 
     Args:
         customer_uuid (Union[Unset, UUID]):
-        customers_offerings_state (Union[Unset,
-            list[MarketplaceCategoriesListCustomersOfferingsStateItem]]):
-        field (Union[Unset, list[MarketplaceCategoriesListFieldItem]]):
+        customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
+        field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
         offering_name (Union[Unset, str]):
@@ -301,8 +296,8 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesListCustomersOfferingsStateItem]] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoriesListFieldItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -318,9 +313,8 @@ async def asyncio(
 
     Args:
         customer_uuid (Union[Unset, UUID]):
-        customers_offerings_state (Union[Unset,
-            list[MarketplaceCategoriesListCustomersOfferingsStateItem]]):
-        field (Union[Unset, list[MarketplaceCategoriesListFieldItem]]):
+        customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
+        field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
         offering_name (Union[Unset, str]):
@@ -360,8 +354,8 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesListCustomersOfferingsStateItem]] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoriesListFieldItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -378,9 +372,8 @@ def sync_all(
 
     Args:
         customer_uuid (Union[Unset, UUID]):
-        customers_offerings_state (Union[Unset,
-        list[MarketplaceCategoriesListCustomersOfferingsStateItem]]):
-        field (Union[Unset, list[MarketplaceCategoriesListFieldItem]]):
+        customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
+        field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
         offering_name (Union[Unset, str]):
@@ -458,8 +451,8 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesListCustomersOfferingsStateItem]] = UNSET,
-    field: Union[Unset, list[MarketplaceCategoriesListFieldItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -476,9 +469,8 @@ async def asyncio_all(
 
     Args:
         customer_uuid (Union[Unset, UUID]):
-        customers_offerings_state (Union[Unset,
-        list[MarketplaceCategoriesListCustomersOfferingsStateItem]]):
-        field (Union[Unset, list[MarketplaceCategoriesListFieldItem]]):
+        customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
+        field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
         offering_name (Union[Unset, str]):

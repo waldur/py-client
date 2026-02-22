@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.google_auth_authorize_retrieve_field_item import GoogleAuthAuthorizeRetrieveFieldItem
 from ...models.google_credentials import GoogleCredentials
+from ...models.google_credentials_field_enum import GoogleCredentialsFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[GoogleAuthAuthorizeRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,12 +63,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[GoogleAuthAuthorizeRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
 ) -> Response[GoogleCredentials]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[GoogleAuthAuthorizeRetrieveFieldItem]]):
+        field (Union[Unset, list[GoogleCredentialsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,12 +94,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[GoogleAuthAuthorizeRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
 ) -> GoogleCredentials:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[GoogleAuthAuthorizeRetrieveFieldItem]]):
+        field (Union[Unset, list[GoogleCredentialsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -120,12 +120,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[GoogleAuthAuthorizeRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
 ) -> Response[GoogleCredentials]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[GoogleAuthAuthorizeRetrieveFieldItem]]):
+        field (Union[Unset, list[GoogleCredentialsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,12 +149,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[GoogleAuthAuthorizeRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
 ) -> GoogleCredentials:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[GoogleAuthAuthorizeRetrieveFieldItem]]):
+        field (Union[Unset, list[GoogleCredentialsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

@@ -6,16 +6,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.category_component_usage import CategoryComponentUsage
-from ...models.marketplace_category_component_usages_retrieve_field_item import (
-    MarketplaceCategoryComponentUsagesRetrieveFieldItem,
-)
+from ...models.category_component_usage_field_enum import CategoryComponentUsageFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     id: int,
     *,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -64,7 +62,7 @@ def sync_detailed(
     id: int,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
 ) -> Response[CategoryComponentUsage]:
     """Retrieve an aggregated category component usage record
 
@@ -73,7 +71,7 @@ def sync_detailed(
 
     Args:
         id (int):
-        field (Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]]):
+        field (Union[Unset, list[CategoryComponentUsageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -99,7 +97,7 @@ def sync(
     id: int,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
 ) -> CategoryComponentUsage:
     """Retrieve an aggregated category component usage record
 
@@ -108,7 +106,7 @@ def sync(
 
     Args:
         id (int):
-        field (Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]]):
+        field (Union[Unset, list[CategoryComponentUsageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -129,7 +127,7 @@ async def asyncio_detailed(
     id: int,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
 ) -> Response[CategoryComponentUsage]:
     """Retrieve an aggregated category component usage record
 
@@ -138,7 +136,7 @@ async def asyncio_detailed(
 
     Args:
         id (int):
-        field (Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]]):
+        field (Union[Unset, list[CategoryComponentUsageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -162,7 +160,7 @@ async def asyncio(
     id: int,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[CategoryComponentUsageFieldEnum]] = UNSET,
 ) -> CategoryComponentUsage:
     """Retrieve an aggregated category component usage record
 
@@ -171,7 +169,7 @@ async def asyncio(
 
     Args:
         id (int):
-        field (Union[Unset, list[MarketplaceCategoryComponentUsagesRetrieveFieldItem]]):
+        field (Union[Unset, list[CategoryComponentUsageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

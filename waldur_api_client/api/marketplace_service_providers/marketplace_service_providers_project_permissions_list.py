@@ -7,13 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_service_providers_project_permissions_list_field_item import (
-    MarketplaceServiceProvidersProjectPermissionsListFieldItem,
-)
-from ...models.marketplace_service_providers_project_permissions_list_o_item import (
-    MarketplaceServiceProvidersProjectPermissionsListOItem,
-)
+from ...models.offering_permission_o_enum import OfferingPermissionOEnum
 from ...models.project_permission_log import ProjectPermissionLog
+from ...models.project_permission_log_field_enum import ProjectPermissionLogFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -23,11 +19,11 @@ def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -152,11 +148,11 @@ def sync_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -178,11 +174,11 @@ def sync_detailed(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
+        field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -238,11 +234,11 @@ def sync(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -264,11 +260,11 @@ def sync(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
+        field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -319,11 +315,11 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -345,11 +341,11 @@ async def asyncio_detailed(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
+        field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -403,11 +399,11 @@ async def asyncio(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -429,11 +425,11 @@ async def asyncio(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
+        field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -486,11 +482,11 @@ def sync_all(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
@@ -512,11 +508,11 @@ def sync_all(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
+        field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
         scope_name (Union[Unset, str]):
@@ -607,11 +603,11 @@ async def asyncio_all(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
@@ -633,11 +629,11 @@ async def asyncio_all(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListFieldItem]]):
+        field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
         scope_name (Union[Unset, str]):

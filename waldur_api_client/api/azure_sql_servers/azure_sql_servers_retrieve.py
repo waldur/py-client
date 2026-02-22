@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.azure_sql_server import AzureSqlServer
-from ...models.azure_sql_servers_retrieve_field_item import AzureSqlServersRetrieveFieldItem
+from ...models.azure_sql_server_field_enum import AzureSqlServerFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[AzureSqlServersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureSqlServerFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,12 +63,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureSqlServersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureSqlServerFieldEnum]] = UNSET,
 ) -> Response[AzureSqlServer]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureSqlServersRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureSqlServerFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,12 +94,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureSqlServersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureSqlServerFieldEnum]] = UNSET,
 ) -> AzureSqlServer:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureSqlServersRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureSqlServerFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -120,12 +120,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureSqlServersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureSqlServerFieldEnum]] = UNSET,
 ) -> Response[AzureSqlServer]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureSqlServersRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureSqlServerFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,12 +149,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureSqlServersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureSqlServerFieldEnum]] = UNSET,
 ) -> AzureSqlServer:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureSqlServersRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureSqlServerFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

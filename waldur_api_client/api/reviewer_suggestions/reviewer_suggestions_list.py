@@ -7,8 +7,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.reviewer_suggestion import ReviewerSuggestion
-from ...models.reviewer_suggestions_list_o_item import ReviewerSuggestionsListOItem
-from ...models.reviewer_suggestions_list_status_item import ReviewerSuggestionsListStatusItem
+from ...models.reviewer_suggestion_o_enum import ReviewerSuggestionOEnum
+from ...models.reviewer_suggestion_status_enum import ReviewerSuggestionStatusEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,11 +17,11 @@ def _get_kwargs(
     *,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsListStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -103,21 +103,21 @@ def sync_detailed(
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsListStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> Response[list["ReviewerSuggestion"]]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[ReviewerSuggestionsListOItem]]):
+        o (Union[Unset, list[ReviewerSuggestionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[ReviewerSuggestionsListStatusItem]]):
+        status (Union[Unset, list[ReviewerSuggestionStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,21 +149,21 @@ def sync(
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsListStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> list["ReviewerSuggestion"]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[ReviewerSuggestionsListOItem]]):
+        o (Union[Unset, list[ReviewerSuggestionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[ReviewerSuggestionsListStatusItem]]):
+        status (Union[Unset, list[ReviewerSuggestionStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -190,21 +190,21 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsListStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> Response[list["ReviewerSuggestion"]]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[ReviewerSuggestionsListOItem]]):
+        o (Union[Unset, list[ReviewerSuggestionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[ReviewerSuggestionsListStatusItem]]):
+        status (Union[Unset, list[ReviewerSuggestionStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -234,21 +234,21 @@ async def asyncio(
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsListStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> list["ReviewerSuggestion"]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[ReviewerSuggestionsListOItem]]):
+        o (Union[Unset, list[ReviewerSuggestionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[ReviewerSuggestionsListStatusItem]]):
+        status (Union[Unset, list[ReviewerSuggestionStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -277,9 +277,9 @@ def sync_all(
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsListStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> list["ReviewerSuggestion"]:
     """Get All Pages
 
@@ -291,9 +291,9 @@ def sync_all(
     Args:
         call_uuid (Union[Unset, UUID]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[ReviewerSuggestionsListOItem]]):
+        o (Union[Unset, list[ReviewerSuggestionOEnum]]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[ReviewerSuggestionsListStatusItem]]):
+        status (Union[Unset, list[ReviewerSuggestionStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -362,9 +362,9 @@ async def asyncio_all(
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsListStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> list["ReviewerSuggestion"]:
     """Get All Pages (Async)
 
@@ -376,9 +376,9 @@ async def asyncio_all(
     Args:
         call_uuid (Union[Unset, UUID]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[ReviewerSuggestionsListOItem]]):
+        o (Union[Unset, list[ReviewerSuggestionOEnum]]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[ReviewerSuggestionsListStatusItem]]):
+        status (Union[Unset, list[ReviewerSuggestionStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

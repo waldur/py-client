@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_site_agent_services_count_state_item import MarketplaceSiteAgentServicesCountStateItem
+from ...models.agent_service_state_enum import AgentServiceStateEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -20,7 +20,7 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -103,7 +103,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -115,7 +115,7 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         stale (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]]):
+        state (Union[Unset, list[AgentServiceStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -153,7 +153,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -165,7 +165,7 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         stale (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]]):
+        state (Union[Unset, list[AgentServiceStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -198,7 +198,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -210,7 +210,7 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         stale (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]]):
+        state (Union[Unset, list[AgentServiceStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -246,7 +246,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -258,7 +258,7 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         stale (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceSiteAgentServicesCountStateItem]]):
+        state (Union[Unset, list[AgentServiceStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.project import Project
-from ...models.projects_retrieve_field_item import ProjectsRetrieveFieldItem
+from ...models.project_field_enum import ProjectFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[ProjectsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,7 +61,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ProjectsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
 ) -> Response[Project]:
     """Retrieve project details
 
@@ -70,7 +70,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ProjectsRetrieveFieldItem]]):
+        field (Union[Unset, list[ProjectFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -96,7 +96,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ProjectsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
 ) -> Project:
     """Retrieve project details
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ProjectsRetrieveFieldItem]]):
+        field (Union[Unset, list[ProjectFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ProjectsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
 ) -> Response[Project]:
     """Retrieve project details
 
@@ -135,7 +135,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ProjectsRetrieveFieldItem]]):
+        field (Union[Unset, list[ProjectFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -159,7 +159,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ProjectsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
 ) -> Project:
     """Retrieve project details
 
@@ -168,7 +168,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ProjectsRetrieveFieldItem]]):
+        field (Union[Unset, list[ProjectFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

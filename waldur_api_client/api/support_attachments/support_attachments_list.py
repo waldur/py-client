@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.attachment import Attachment
-from ...models.support_attachments_list_field_item import SupportAttachmentsListFieldItem
+from ...models.attachment_field_enum import AttachmentFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[SupportAttachmentsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
     issue: Union[Unset, str] = UNSET,
     issue_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -82,7 +82,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SupportAttachmentsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
     issue: Union[Unset, str] = UNSET,
     issue_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -90,7 +90,7 @@ def sync_detailed(
 ) -> Response[list["Attachment"]]:
     """
     Args:
-        field (Union[Unset, list[SupportAttachmentsListFieldItem]]):
+        field (Union[Unset, list[AttachmentFieldEnum]]):
         issue (Union[Unset, str]):
         issue_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -122,7 +122,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SupportAttachmentsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
     issue: Union[Unset, str] = UNSET,
     issue_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -130,7 +130,7 @@ def sync(
 ) -> list["Attachment"]:
     """
     Args:
-        field (Union[Unset, list[SupportAttachmentsListFieldItem]]):
+        field (Union[Unset, list[AttachmentFieldEnum]]):
         issue (Union[Unset, str]):
         issue_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -157,7 +157,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SupportAttachmentsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
     issue: Union[Unset, str] = UNSET,
     issue_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -165,7 +165,7 @@ async def asyncio_detailed(
 ) -> Response[list["Attachment"]]:
     """
     Args:
-        field (Union[Unset, list[SupportAttachmentsListFieldItem]]):
+        field (Union[Unset, list[AttachmentFieldEnum]]):
         issue (Union[Unset, str]):
         issue_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -195,7 +195,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SupportAttachmentsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
     issue: Union[Unset, str] = UNSET,
     issue_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -203,7 +203,7 @@ async def asyncio(
 ) -> list["Attachment"]:
     """
     Args:
-        field (Union[Unset, list[SupportAttachmentsListFieldItem]]):
+        field (Union[Unset, list[AttachmentFieldEnum]]):
         issue (Union[Unset, str]):
         issue_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -232,7 +232,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SupportAttachmentsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
     issue: Union[Unset, str] = UNSET,
     issue_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Attachment"]:
@@ -244,7 +244,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[SupportAttachmentsListFieldItem]]):
+        field (Union[Unset, list[AttachmentFieldEnum]]):
         issue (Union[Unset, str]):
         issue_uuid (Union[Unset, UUID]):
 
@@ -311,7 +311,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SupportAttachmentsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
     issue: Union[Unset, str] = UNSET,
     issue_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Attachment"]:
@@ -323,7 +323,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[SupportAttachmentsListFieldItem]]):
+        field (Union[Unset, list[AttachmentFieldEnum]]):
         issue (Union[Unset, str]):
         issue_uuid (Union[Unset, UUID]):
 

@@ -6,16 +6,16 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.reviewer_bids_my_bids_count_bid_item import ReviewerBidsMyBidsCountBidItem
-from ...models.reviewer_bids_my_bids_count_o_item import ReviewerBidsMyBidsCountOItem
+from ...models.bid_enum import BidEnum
+from ...models.reviewer_bid_o_enum import ReviewerBidOEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    bid: Union[Unset, list[ReviewerBidsMyBidsCountBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsMyBidsCountOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
@@ -100,9 +100,9 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    bid: Union[Unset, list[ReviewerBidsMyBidsCountBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsMyBidsCountOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
@@ -111,9 +111,9 @@ def sync_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        bid (Union[Unset, list[ReviewerBidsMyBidsCountBidItem]]):
+        bid (Union[Unset, list[BidEnum]]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ReviewerBidsMyBidsCountOItem]]):
+        o (Union[Unset, list[ReviewerBidOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
@@ -147,9 +147,9 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    bid: Union[Unset, list[ReviewerBidsMyBidsCountBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsMyBidsCountOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
@@ -158,9 +158,9 @@ def sync(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        bid (Union[Unset, list[ReviewerBidsMyBidsCountBidItem]]):
+        bid (Union[Unset, list[BidEnum]]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ReviewerBidsMyBidsCountOItem]]):
+        o (Union[Unset, list[ReviewerBidOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
@@ -189,9 +189,9 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    bid: Union[Unset, list[ReviewerBidsMyBidsCountBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsMyBidsCountOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
@@ -200,9 +200,9 @@ async def asyncio_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        bid (Union[Unset, list[ReviewerBidsMyBidsCountBidItem]]):
+        bid (Union[Unset, list[BidEnum]]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ReviewerBidsMyBidsCountOItem]]):
+        o (Union[Unset, list[ReviewerBidOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
@@ -234,9 +234,9 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    bid: Union[Unset, list[ReviewerBidsMyBidsCountBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsMyBidsCountOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
@@ -245,9 +245,9 @@ async def asyncio(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        bid (Union[Unset, list[ReviewerBidsMyBidsCountBidItem]]):
+        bid (Union[Unset, list[BidEnum]]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ReviewerBidsMyBidsCountOItem]]):
+        o (Union[Unset, list[ReviewerBidOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):

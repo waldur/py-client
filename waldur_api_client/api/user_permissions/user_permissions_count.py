@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.user_permissions_count_o_item import UserPermissionsCountOItem
+from ...models.offering_permission_o_enum import OfferingPermissionOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -18,7 +18,7 @@ def _get_kwargs(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserPermissionsCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -134,7 +134,7 @@ def sync_detailed(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserPermissionsCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -157,7 +157,7 @@ def sync_detailed(
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[UserPermissionsCountOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -213,7 +213,7 @@ def sync(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserPermissionsCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -236,7 +236,7 @@ def sync(
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[UserPermissionsCountOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -287,7 +287,7 @@ async def asyncio_detailed(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserPermissionsCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -310,7 +310,7 @@ async def asyncio_detailed(
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[UserPermissionsCountOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -364,7 +364,7 @@ async def asyncio(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserPermissionsCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -387,7 +387,7 @@ async def asyncio(
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[UserPermissionsCountOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):

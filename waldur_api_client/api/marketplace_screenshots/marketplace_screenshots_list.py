@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_screenshots_list_o_item import MarketplaceScreenshotsListOItem
+from ...models.maintenance_announcement_template_o_enum import MaintenanceAnnouncementTemplateOEnum
 from ...models.screenshot import Screenshot
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
@@ -14,7 +14,7 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
-    o: Union[Unset, list[MarketplaceScreenshotsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -99,7 +99,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceScreenshotsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -109,7 +109,7 @@ def sync_detailed(
 ) -> Response[list["Screenshot"]]:
     """
     Args:
-        o (Union[Unset, list[MarketplaceScreenshotsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -145,7 +145,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceScreenshotsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -155,7 +155,7 @@ def sync(
 ) -> list["Screenshot"]:
     """
     Args:
-        o (Union[Unset, list[MarketplaceScreenshotsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -186,7 +186,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceScreenshotsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -196,7 +196,7 @@ async def asyncio_detailed(
 ) -> Response[list["Screenshot"]]:
     """
     Args:
-        o (Union[Unset, list[MarketplaceScreenshotsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -230,7 +230,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceScreenshotsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -240,7 +240,7 @@ async def asyncio(
 ) -> list["Screenshot"]:
     """
     Args:
-        o (Union[Unset, list[MarketplaceScreenshotsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -273,7 +273,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceScreenshotsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -287,7 +287,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        o (Union[Unset, list[MarketplaceScreenshotsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -358,7 +358,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceScreenshotsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -372,7 +372,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        o (Union[Unset, list[MarketplaceScreenshotsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):

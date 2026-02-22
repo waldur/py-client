@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_software_targets_list_o_item import MarketplaceSoftwareTargetsListOItem
 from ...models.software_target import SoftwareTarget
+from ...models.software_target_o_enum import SoftwareTargetOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,7 +17,7 @@ def _get_kwargs(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareTargetsListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -109,7 +109,7 @@ def sync_detailed(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareTargetsListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -126,7 +126,7 @@ def sync_detailed(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareTargetsListOItem]]):
+        o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -168,7 +168,7 @@ def sync(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareTargetsListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -185,7 +185,7 @@ def sync(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareTargetsListOItem]]):
+        o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -222,7 +222,7 @@ async def asyncio_detailed(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareTargetsListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -239,7 +239,7 @@ async def asyncio_detailed(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareTargetsListOItem]]):
+        o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -279,7 +279,7 @@ async def asyncio(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareTargetsListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -296,7 +296,7 @@ async def asyncio(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareTargetsListOItem]]):
+        o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -335,7 +335,7 @@ def sync_all(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareTargetsListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
     path: Union[Unset, str] = UNSET,
@@ -352,7 +352,7 @@ def sync_all(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareTargetsListOItem]]):
+        o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
         path (Union[Unset, str]):
@@ -429,7 +429,7 @@ async def asyncio_all(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareTargetsListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
     path: Union[Unset, str] = UNSET,
@@ -446,7 +446,7 @@ async def asyncio_all(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareTargetsListOItem]]):
+        o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
         path (Union[Unset, str]):

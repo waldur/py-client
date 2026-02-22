@@ -7,8 +7,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.call_reviewer_pool import CallReviewerPool
-from ...models.call_reviewer_pools_list_invitation_status_item import CallReviewerPoolsListInvitationStatusItem
-from ...models.call_reviewer_pools_list_o_item import CallReviewerPoolsListOItem
+from ...models.call_reviewer_pool_o_enum import CallReviewerPoolOEnum
+from ...models.invitation_status_enum import InvitationStatusEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -16,9 +16,9 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     call_uuid: Union[Unset, UUID] = UNSET,
-    invitation_status: Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]] = UNSET,
+    invitation_status: Union[Unset, list[InvitationStatusEnum]] = UNSET,
     my_invitations: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CallReviewerPoolsListOItem]] = UNSET,
+    o: Union[Unset, list[CallReviewerPoolOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
@@ -102,9 +102,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    invitation_status: Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]] = UNSET,
+    invitation_status: Union[Unset, list[InvitationStatusEnum]] = UNSET,
     my_invitations: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CallReviewerPoolsListOItem]] = UNSET,
+    o: Union[Unset, list[CallReviewerPoolOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
@@ -112,9 +112,9 @@ def sync_detailed(
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        invitation_status (Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]]):
+        invitation_status (Union[Unset, list[InvitationStatusEnum]]):
         my_invitations (Union[Unset, bool]):
-        o (Union[Unset, list[CallReviewerPoolsListOItem]]):
+        o (Union[Unset, list[CallReviewerPoolOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
@@ -148,9 +148,9 @@ def sync(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    invitation_status: Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]] = UNSET,
+    invitation_status: Union[Unset, list[InvitationStatusEnum]] = UNSET,
     my_invitations: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CallReviewerPoolsListOItem]] = UNSET,
+    o: Union[Unset, list[CallReviewerPoolOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
@@ -158,9 +158,9 @@ def sync(
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        invitation_status (Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]]):
+        invitation_status (Union[Unset, list[InvitationStatusEnum]]):
         my_invitations (Union[Unset, bool]):
-        o (Union[Unset, list[CallReviewerPoolsListOItem]]):
+        o (Union[Unset, list[CallReviewerPoolOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
@@ -189,9 +189,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    invitation_status: Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]] = UNSET,
+    invitation_status: Union[Unset, list[InvitationStatusEnum]] = UNSET,
     my_invitations: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CallReviewerPoolsListOItem]] = UNSET,
+    o: Union[Unset, list[CallReviewerPoolOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
@@ -199,9 +199,9 @@ async def asyncio_detailed(
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        invitation_status (Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]]):
+        invitation_status (Union[Unset, list[InvitationStatusEnum]]):
         my_invitations (Union[Unset, bool]):
-        o (Union[Unset, list[CallReviewerPoolsListOItem]]):
+        o (Union[Unset, list[CallReviewerPoolOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
@@ -233,9 +233,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    invitation_status: Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]] = UNSET,
+    invitation_status: Union[Unset, list[InvitationStatusEnum]] = UNSET,
     my_invitations: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CallReviewerPoolsListOItem]] = UNSET,
+    o: Union[Unset, list[CallReviewerPoolOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
@@ -243,9 +243,9 @@ async def asyncio(
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        invitation_status (Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]]):
+        invitation_status (Union[Unset, list[InvitationStatusEnum]]):
         my_invitations (Union[Unset, bool]):
-        o (Union[Unset, list[CallReviewerPoolsListOItem]]):
+        o (Union[Unset, list[CallReviewerPoolOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
@@ -276,9 +276,9 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    invitation_status: Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]] = UNSET,
+    invitation_status: Union[Unset, list[InvitationStatusEnum]] = UNSET,
     my_invitations: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CallReviewerPoolsListOItem]] = UNSET,
+    o: Union[Unset, list[CallReviewerPoolOEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["CallReviewerPool"]:
     """Get All Pages
@@ -290,9 +290,9 @@ def sync_all(
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        invitation_status (Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]]):
+        invitation_status (Union[Unset, list[InvitationStatusEnum]]):
         my_invitations (Union[Unset, bool]):
-        o (Union[Unset, list[CallReviewerPoolsListOItem]]):
+        o (Union[Unset, list[CallReviewerPoolOEnum]]):
         reviewer_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -361,9 +361,9 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    invitation_status: Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]] = UNSET,
+    invitation_status: Union[Unset, list[InvitationStatusEnum]] = UNSET,
     my_invitations: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CallReviewerPoolsListOItem]] = UNSET,
+    o: Union[Unset, list[CallReviewerPoolOEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["CallReviewerPool"]:
     """Get All Pages (Async)
@@ -375,9 +375,9 @@ async def asyncio_all(
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        invitation_status (Union[Unset, list[CallReviewerPoolsListInvitationStatusItem]]):
+        invitation_status (Union[Unset, list[InvitationStatusEnum]]):
         my_invitations (Union[Unset, bool]):
-        o (Union[Unset, list[CallReviewerPoolsListOItem]]):
+        o (Union[Unset, list[CallReviewerPoolOEnum]]):
         reviewer_uuid (Union[Unset, UUID]):
 
     Raises:

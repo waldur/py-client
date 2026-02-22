@@ -7,7 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.call_managing_organisation import CallManagingOrganisation
-from ...models.call_managing_organisations_list_o_item import CallManagingOrganisationsListOItem
+from ...models.call_managing_organisation_o_enum import CallManagingOrganisationOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,7 +17,7 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -90,7 +90,7 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CallManagingOrganisation"]]:
@@ -99,7 +99,7 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CallManagingOrganisationsListOItem]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -133,7 +133,7 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CallManagingOrganisation"]:
@@ -142,7 +142,7 @@ def sync(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CallManagingOrganisationsListOItem]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -171,7 +171,7 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CallManagingOrganisation"]]:
@@ -180,7 +180,7 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CallManagingOrganisationsListOItem]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -212,7 +212,7 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CallManagingOrganisation"]:
@@ -221,7 +221,7 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CallManagingOrganisationsListOItem]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -252,7 +252,7 @@ def sync_all(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
 ) -> list["CallManagingOrganisation"]:
     """Get All Pages
 
@@ -265,7 +265,7 @@ def sync_all(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CallManagingOrganisationsListOItem]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -334,7 +334,7 @@ async def asyncio_all(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListOItem]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
 ) -> list["CallManagingOrganisation"]:
     """Get All Pages (Async)
 
@@ -347,7 +347,7 @@ async def asyncio_all(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CallManagingOrganisationsListOItem]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

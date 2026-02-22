@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.4-dev.20260222030634
+# Version: 8.0.4-dev.20260222140956
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2472,17 +2472,10 @@ Request body: yes
 
 ### chat_messages_list
 GET /api/chat-messages/
-Query parameters (2):
+Query parameters (3):
   - include_history
+  - is_flagged
   - thread
-
-### chat_messages_edit
-POST /api/chat-messages/{uuid}/edit/
-Summary: Edit message
-Description: Edit a message (creates a new message with replaces reference). Only allows editing the last user message in a thread.
-Path parameters:
-  - uuid
-Request body: yes
 
 ============================================================
 ## chat-quota  (module: waldur_api_client.api.chat_quota)
@@ -2536,10 +2529,12 @@ Query parameters (1):
 
 ### chat_threads_list
 GET /api/chat-threads/
-Query parameters (7):
+Query parameters (9):
   - created
   - field
   - is_archived
+  - is_flagged
+  - max_severity
   - modified
   - o — Ordering
   - query

@@ -7,16 +7,10 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_provider_offerings_customers_list_field_item import (
-    MarketplaceProviderOfferingsCustomersListFieldItem,
-)
-from ...models.marketplace_provider_offerings_customers_list_o_item import (
-    MarketplaceProviderOfferingsCustomersListOItem,
-)
-from ...models.marketplace_provider_offerings_customers_list_state_item import (
-    MarketplaceProviderOfferingsCustomersListStateItem,
-)
+from ...models.offering_state import OfferingState
 from ...models.provider_offering_customer import ProviderOfferingCustomer
+from ...models.provider_offering_customer_field_enum import ProviderOfferingCustomerFieldEnum
+from ...models.provider_offering_details_o_enum import ProviderOfferingDetailsOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -35,7 +29,7 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingCustomerFieldEnum]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     importable: Union[Unset, str] = UNSET,
@@ -43,7 +37,7 @@ def _get_kwargs(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -55,7 +49,7 @@ def _get_kwargs(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -273,7 +267,7 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingCustomerFieldEnum]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     importable: Union[Unset, str] = UNSET,
@@ -281,7 +275,7 @@ def sync_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -293,7 +287,7 @@ def sync_detailed(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -320,7 +314,7 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
+        field (Union[Unset, list[ProviderOfferingCustomerFieldEnum]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
         importable (Union[Unset, str]):
@@ -328,7 +322,7 @@ def sync_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]]):
+        o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -340,7 +334,7 @@ def sync_detailed(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]]):
+        state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
         tag_names_and (Union[Unset, str]):
@@ -424,7 +418,7 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingCustomerFieldEnum]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     importable: Union[Unset, str] = UNSET,
@@ -432,7 +426,7 @@ def sync(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -444,7 +438,7 @@ def sync(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -471,7 +465,7 @@ def sync(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
+        field (Union[Unset, list[ProviderOfferingCustomerFieldEnum]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
         importable (Union[Unset, str]):
@@ -479,7 +473,7 @@ def sync(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]]):
+        o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -491,7 +485,7 @@ def sync(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]]):
+        state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
         tag_names_and (Union[Unset, str]):
@@ -570,7 +564,7 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingCustomerFieldEnum]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     importable: Union[Unset, str] = UNSET,
@@ -578,7 +572,7 @@ async def asyncio_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -590,7 +584,7 @@ async def asyncio_detailed(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -617,7 +611,7 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
+        field (Union[Unset, list[ProviderOfferingCustomerFieldEnum]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
         importable (Union[Unset, str]):
@@ -625,7 +619,7 @@ async def asyncio_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]]):
+        o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -637,7 +631,7 @@ async def asyncio_detailed(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]]):
+        state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
         tag_names_and (Union[Unset, str]):
@@ -719,7 +713,7 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingCustomerFieldEnum]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     importable: Union[Unset, str] = UNSET,
@@ -727,7 +721,7 @@ async def asyncio(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -739,7 +733,7 @@ async def asyncio(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -766,7 +760,7 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
+        field (Union[Unset, list[ProviderOfferingCustomerFieldEnum]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
         importable (Union[Unset, str]):
@@ -774,7 +768,7 @@ async def asyncio(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]]):
+        o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -786,7 +780,7 @@ async def asyncio(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]]):
+        state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
         tag_names_and (Union[Unset, str]):
@@ -867,7 +861,7 @@ def sync_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingCustomerFieldEnum]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     importable: Union[Unset, str] = UNSET,
@@ -875,7 +869,7 @@ def sync_all(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -885,7 +879,7 @@ def sync_all(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -915,7 +909,7 @@ def sync_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
+        field (Union[Unset, list[ProviderOfferingCustomerFieldEnum]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
         importable (Union[Unset, str]):
@@ -923,7 +917,7 @@ def sync_all(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]]):
+        o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         organization_group_uuid (Union[Unset, UUID]):
         parent_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
@@ -933,7 +927,7 @@ def sync_all(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]]):
+        state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
         tag_names_and (Union[Unset, str]):
@@ -1054,7 +1048,7 @@ async def asyncio_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingCustomerFieldEnum]] = UNSET,
     has_active_terms_of_service: Union[Unset, bool] = UNSET,
     has_terms_of_service: Union[Unset, bool] = UNSET,
     importable: Union[Unset, str] = UNSET,
@@ -1062,7 +1056,7 @@ async def asyncio_all(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -1072,7 +1066,7 @@ async def asyncio_all(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -1102,7 +1096,7 @@ async def asyncio_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceProviderOfferingsCustomersListFieldItem]]):
+        field (Union[Unset, list[ProviderOfferingCustomerFieldEnum]]):
         has_active_terms_of_service (Union[Unset, bool]):
         has_terms_of_service (Union[Unset, bool]):
         importable (Union[Unset, str]):
@@ -1110,7 +1104,7 @@ async def asyncio_all(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderOfferingsCustomersListOItem]]):
+        o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         organization_group_uuid (Union[Unset, UUID]):
         parent_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
@@ -1120,7 +1114,7 @@ async def asyncio_all(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceProviderOfferingsCustomersListStateItem]]):
+        state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
         tag_names_and (Union[Unset, str]):

@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.user import User
-from ...models.users_retrieve_field_item import UsersRetrieveFieldItem
+from ...models.user_field_enum import UserFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[UsersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[UserFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[UsersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[UserFieldEnum]] = UNSET,
 ) -> Response[User]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[UsersRetrieveFieldItem]]):
+        field (Union[Unset, list[UserFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[UsersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[UserFieldEnum]] = UNSET,
 ) -> User:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[UsersRetrieveFieldItem]]):
+        field (Union[Unset, list[UserFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[UsersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[UserFieldEnum]] = UNSET,
 ) -> Response[User]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[UsersRetrieveFieldItem]]):
+        field (Union[Unset, list[UserFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[UsersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[UserFieldEnum]] = UNSET,
 ) -> User:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[UsersRetrieveFieldItem]]):
+        field (Union[Unset, list[UserFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

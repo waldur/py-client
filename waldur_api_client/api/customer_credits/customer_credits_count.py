@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.customer_credits_count_o_item import CustomerCreditsCountOItem
+from ...models.customer_credit_o_enum import CustomerCreditOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     customer_name: Union[Unset, str] = UNSET,
     customer_slug: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CustomerCreditsCountOItem]] = UNSET,
+    o: Union[Unset, list[CustomerCreditOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -89,7 +89,7 @@ def sync_detailed(
     customer_name: Union[Unset, str] = UNSET,
     customer_slug: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CustomerCreditsCountOItem]] = UNSET,
+    o: Union[Unset, list[CustomerCreditOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -100,7 +100,7 @@ def sync_detailed(
         customer_name (Union[Unset, str]):
         customer_slug (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CustomerCreditsCountOItem]]):
+        o (Union[Unset, list[CustomerCreditOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -136,7 +136,7 @@ def sync(
     customer_name: Union[Unset, str] = UNSET,
     customer_slug: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CustomerCreditsCountOItem]] = UNSET,
+    o: Union[Unset, list[CustomerCreditOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -147,7 +147,7 @@ def sync(
         customer_name (Union[Unset, str]):
         customer_slug (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CustomerCreditsCountOItem]]):
+        o (Union[Unset, list[CustomerCreditOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -178,7 +178,7 @@ async def asyncio_detailed(
     customer_name: Union[Unset, str] = UNSET,
     customer_slug: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CustomerCreditsCountOItem]] = UNSET,
+    o: Union[Unset, list[CustomerCreditOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -189,7 +189,7 @@ async def asyncio_detailed(
         customer_name (Union[Unset, str]):
         customer_slug (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CustomerCreditsCountOItem]]):
+        o (Union[Unset, list[CustomerCreditOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -223,7 +223,7 @@ async def asyncio(
     customer_name: Union[Unset, str] = UNSET,
     customer_slug: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CustomerCreditsCountOItem]] = UNSET,
+    o: Union[Unset, list[CustomerCreditOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -234,7 +234,7 @@ async def asyncio(
         customer_name (Union[Unset, str]):
         customer_slug (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CustomerCreditsCountOItem]]):
+        o (Union[Unset, list[CustomerCreditOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):

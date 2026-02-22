@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_integration_statuses_count_o_item import MarketplaceIntegrationStatusesCountOItem
-from ...models.marketplace_integration_statuses_count_status_item import MarketplaceIntegrationStatusesCountStatusItem
+from ...models.integration_status_details_o_enum import IntegrationStatusDetailsOEnum
+from ...models.integration_status_details_status_enum import IntegrationStatusDetailsStatusEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -15,14 +15,14 @@ def _get_kwargs(
     *,
     agent_type: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceIntegrationStatusesCountOItem]] = UNSET,
+    o: Union[Unset, list[IntegrationStatusDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]] = UNSET,
+    status: Union[Unset, list[IntegrationStatusDetailsStatusEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -116,14 +116,14 @@ def sync_detailed(
     client: AuthenticatedClient,
     agent_type: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceIntegrationStatusesCountOItem]] = UNSET,
+    o: Union[Unset, list[IntegrationStatusDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]] = UNSET,
+    status: Union[Unset, list[IntegrationStatusDetailsStatusEnum]] = UNSET,
 ) -> Response[int]:
     """List integration statuses
 
@@ -132,14 +132,14 @@ def sync_detailed(
     Args:
         agent_type (Union[Unset, str]):
         customer_uuid (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceIntegrationStatusesCountOItem]]):
+        o (Union[Unset, list[IntegrationStatusDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]]):
+        status (Union[Unset, list[IntegrationStatusDetailsStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -174,14 +174,14 @@ def sync(
     client: AuthenticatedClient,
     agent_type: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceIntegrationStatusesCountOItem]] = UNSET,
+    o: Union[Unset, list[IntegrationStatusDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]] = UNSET,
+    status: Union[Unset, list[IntegrationStatusDetailsStatusEnum]] = UNSET,
 ) -> int:
     """List integration statuses
 
@@ -190,14 +190,14 @@ def sync(
     Args:
         agent_type (Union[Unset, str]):
         customer_uuid (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceIntegrationStatusesCountOItem]]):
+        o (Union[Unset, list[IntegrationStatusDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]]):
+        status (Union[Unset, list[IntegrationStatusDetailsStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -227,14 +227,14 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     agent_type: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceIntegrationStatusesCountOItem]] = UNSET,
+    o: Union[Unset, list[IntegrationStatusDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]] = UNSET,
+    status: Union[Unset, list[IntegrationStatusDetailsStatusEnum]] = UNSET,
 ) -> Response[int]:
     """List integration statuses
 
@@ -243,14 +243,14 @@ async def asyncio_detailed(
     Args:
         agent_type (Union[Unset, str]):
         customer_uuid (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceIntegrationStatusesCountOItem]]):
+        o (Union[Unset, list[IntegrationStatusDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]]):
+        status (Union[Unset, list[IntegrationStatusDetailsStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -283,14 +283,14 @@ async def asyncio(
     client: AuthenticatedClient,
     agent_type: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceIntegrationStatusesCountOItem]] = UNSET,
+    o: Union[Unset, list[IntegrationStatusDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]] = UNSET,
+    status: Union[Unset, list[IntegrationStatusDetailsStatusEnum]] = UNSET,
 ) -> int:
     """List integration statuses
 
@@ -299,14 +299,14 @@ async def asyncio(
     Args:
         agent_type (Union[Unset, str]):
         customer_uuid (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceIntegrationStatusesCountOItem]]):
+        o (Union[Unset, list[IntegrationStatusDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[MarketplaceIntegrationStatusesCountStatusItem]]):
+        status (Union[Unset, list[IntegrationStatusDetailsStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

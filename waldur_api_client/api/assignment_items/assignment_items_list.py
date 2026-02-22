@@ -7,8 +7,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.assignment_item import AssignmentItem
-from ...models.assignment_items_list_o_item import AssignmentItemsListOItem
-from ...models.assignment_items_list_status_item import AssignmentItemsListStatusItem
+from ...models.assignment_item_o_enum import AssignmentItemOEnum
+from ...models.assignment_item_status import AssignmentItemStatus
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -19,12 +19,12 @@ def _get_kwargs(
     call_uuid: Union[Unset, UUID] = UNSET,
     has_coi: Union[Unset, bool] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[AssignmentItemsListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentItemOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[AssignmentItemsListStatusItem]] = UNSET,
+    status: Union[Unset, list[AssignmentItemStatus]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -118,12 +118,12 @@ def sync_detailed(
     call_uuid: Union[Unset, UUID] = UNSET,
     has_coi: Union[Unset, bool] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[AssignmentItemsListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentItemOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[AssignmentItemsListStatusItem]] = UNSET,
+    status: Union[Unset, list[AssignmentItemStatus]] = UNSET,
 ) -> Response[list["AssignmentItem"]]:
     """
     Args:
@@ -131,12 +131,12 @@ def sync_detailed(
         call_uuid (Union[Unset, UUID]):
         has_coi (Union[Unset, bool]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[AssignmentItemsListOItem]]):
+        o (Union[Unset, list[AssignmentItemOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[AssignmentItemsListStatusItem]]):
+        status (Union[Unset, list[AssignmentItemStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -173,12 +173,12 @@ def sync(
     call_uuid: Union[Unset, UUID] = UNSET,
     has_coi: Union[Unset, bool] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[AssignmentItemsListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentItemOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[AssignmentItemsListStatusItem]] = UNSET,
+    status: Union[Unset, list[AssignmentItemStatus]] = UNSET,
 ) -> list["AssignmentItem"]:
     """
     Args:
@@ -186,12 +186,12 @@ def sync(
         call_uuid (Union[Unset, UUID]):
         has_coi (Union[Unset, bool]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[AssignmentItemsListOItem]]):
+        o (Union[Unset, list[AssignmentItemOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[AssignmentItemsListStatusItem]]):
+        status (Union[Unset, list[AssignmentItemStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -223,12 +223,12 @@ async def asyncio_detailed(
     call_uuid: Union[Unset, UUID] = UNSET,
     has_coi: Union[Unset, bool] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[AssignmentItemsListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentItemOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[AssignmentItemsListStatusItem]] = UNSET,
+    status: Union[Unset, list[AssignmentItemStatus]] = UNSET,
 ) -> Response[list["AssignmentItem"]]:
     """
     Args:
@@ -236,12 +236,12 @@ async def asyncio_detailed(
         call_uuid (Union[Unset, UUID]):
         has_coi (Union[Unset, bool]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[AssignmentItemsListOItem]]):
+        o (Union[Unset, list[AssignmentItemOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[AssignmentItemsListStatusItem]]):
+        status (Union[Unset, list[AssignmentItemStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -276,12 +276,12 @@ async def asyncio(
     call_uuid: Union[Unset, UUID] = UNSET,
     has_coi: Union[Unset, bool] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[AssignmentItemsListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentItemOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[AssignmentItemsListStatusItem]] = UNSET,
+    status: Union[Unset, list[AssignmentItemStatus]] = UNSET,
 ) -> list["AssignmentItem"]:
     """
     Args:
@@ -289,12 +289,12 @@ async def asyncio(
         call_uuid (Union[Unset, UUID]):
         has_coi (Union[Unset, bool]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[AssignmentItemsListOItem]]):
+        o (Union[Unset, list[AssignmentItemOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[AssignmentItemsListStatusItem]]):
+        status (Union[Unset, list[AssignmentItemStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -328,10 +328,10 @@ def sync_all(
     call_uuid: Union[Unset, UUID] = UNSET,
     has_coi: Union[Unset, bool] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[AssignmentItemsListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentItemOEnum]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[AssignmentItemsListStatusItem]] = UNSET,
+    status: Union[Unset, list[AssignmentItemStatus]] = UNSET,
 ) -> list["AssignmentItem"]:
     """Get All Pages
 
@@ -345,10 +345,10 @@ def sync_all(
         call_uuid (Union[Unset, UUID]):
         has_coi (Union[Unset, bool]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[AssignmentItemsListOItem]]):
+        o (Union[Unset, list[AssignmentItemOEnum]]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[AssignmentItemsListStatusItem]]):
+        status (Union[Unset, list[AssignmentItemStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -422,10 +422,10 @@ async def asyncio_all(
     call_uuid: Union[Unset, UUID] = UNSET,
     has_coi: Union[Unset, bool] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[AssignmentItemsListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentItemOEnum]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[AssignmentItemsListStatusItem]] = UNSET,
+    status: Union[Unset, list[AssignmentItemStatus]] = UNSET,
 ) -> list["AssignmentItem"]:
     """Get All Pages (Async)
 
@@ -439,10 +439,10 @@ async def asyncio_all(
         call_uuid (Union[Unset, UUID]):
         has_coi (Union[Unset, bool]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[AssignmentItemsListOItem]]):
+        o (Union[Unset, list[AssignmentItemOEnum]]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[AssignmentItemsListStatusItem]]):
+        status (Union[Unset, list[AssignmentItemStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

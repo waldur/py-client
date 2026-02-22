@@ -14,17 +14,14 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     include_history: Union[Unset, bool] = UNSET,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["include_history"] = include_history
 
-    params["page"] = page
-
-    params["page_size"] = page_size
+    params["is_flagged"] = is_flagged
 
     json_thread: Union[Unset, str] = UNSET
     if not isinstance(thread, Unset):
@@ -72,15 +69,13 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     include_history: Union[Unset, bool] = UNSET,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Message"]]:
     """
     Args:
         include_history (Union[Unset, bool]):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
+        is_flagged (Union[Unset, bool]):
         thread (Union[Unset, UUID]):
 
     Raises:
@@ -93,8 +88,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         include_history=include_history,
-        page=page,
-        page_size=page_size,
+        is_flagged=is_flagged,
         thread=thread,
     )
 
@@ -109,15 +103,13 @@ def sync(
     *,
     client: AuthenticatedClient,
     include_history: Union[Unset, bool] = UNSET,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> list["Message"]:
     """
     Args:
         include_history (Union[Unset, bool]):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
+        is_flagged (Union[Unset, bool]):
         thread (Union[Unset, UUID]):
 
     Raises:
@@ -131,8 +123,7 @@ def sync(
     return sync_detailed(
         client=client,
         include_history=include_history,
-        page=page,
-        page_size=page_size,
+        is_flagged=is_flagged,
         thread=thread,
     ).parsed
 
@@ -141,15 +132,13 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     include_history: Union[Unset, bool] = UNSET,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Message"]]:
     """
     Args:
         include_history (Union[Unset, bool]):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
+        is_flagged (Union[Unset, bool]):
         thread (Union[Unset, UUID]):
 
     Raises:
@@ -162,8 +151,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         include_history=include_history,
-        page=page,
-        page_size=page_size,
+        is_flagged=is_flagged,
         thread=thread,
     )
 
@@ -176,15 +164,13 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     include_history: Union[Unset, bool] = UNSET,
-    page: Union[Unset, int] = UNSET,
-    page_size: Union[Unset, int] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> list["Message"]:
     """
     Args:
         include_history (Union[Unset, bool]):
-        page (Union[Unset, int]):
-        page_size (Union[Unset, int]):
+        is_flagged (Union[Unset, bool]):
         thread (Union[Unset, UUID]):
 
     Raises:
@@ -199,8 +185,7 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             include_history=include_history,
-            page=page,
-            page_size=page_size,
+            is_flagged=is_flagged,
             thread=thread,
         )
     ).parsed
@@ -210,6 +195,7 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     include_history: Union[Unset, bool] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> list["Message"]:
     """Get All Pages
@@ -221,6 +207,7 @@ def sync_all(
 
     Args:
         include_history (Union[Unset, bool]):
+        is_flagged (Union[Unset, bool]):
         thread (Union[Unset, UUID]):
 
     Raises:
@@ -237,6 +224,7 @@ def sync_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         include_history=include_history,
+        is_flagged=is_flagged,
         thread=thread,
     )
 
@@ -286,6 +274,7 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     include_history: Union[Unset, bool] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
     thread: Union[Unset, UUID] = UNSET,
 ) -> list["Message"]:
     """Get All Pages (Async)
@@ -297,6 +286,7 @@ async def asyncio_all(
 
     Args:
         include_history (Union[Unset, bool]):
+        is_flagged (Union[Unset, bool]):
         thread (Union[Unset, UUID]):
 
     Raises:
@@ -313,6 +303,7 @@ async def asyncio_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         include_history=include_history,
+        is_flagged=is_flagged,
         thread=thread,
     )
 

@@ -7,11 +7,11 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_orders_list_field_item import MarketplaceOrdersListFieldItem
-from ...models.marketplace_orders_list_o_item import MarketplaceOrdersListOItem
-from ...models.marketplace_orders_list_state_item import MarketplaceOrdersListStateItem
-from ...models.marketplace_orders_list_type_item import MarketplaceOrdersListTypeItem
 from ...models.order_details import OrderDetails
+from ...models.order_details_field_enum import OrderDetailsFieldEnum
+from ...models.order_details_o_enum import OrderDetailsOEnum
+from ...models.order_state import OrderState
+from ...models.request_types import RequestTypes
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -23,9 +23,9 @@ def _get_kwargs(
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -40,8 +40,8 @@ def _get_kwargs(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -204,9 +204,9 @@ def sync_detailed(
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -221,8 +221,8 @@ def sync_detailed(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> Response[list["OrderDetails"]]:
     """List orders
 
@@ -235,9 +235,9 @@ def sync_detailed(
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOrdersListOItem]]):
+        o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
@@ -252,8 +252,8 @@ def sync_detailed(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceOrdersListStateItem]]):
-        type_ (Union[Unset, list[MarketplaceOrdersListTypeItem]]):
+        state (Union[Unset, list[OrderState]]):
+        type_ (Union[Unset, list[RequestTypes]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -305,9 +305,9 @@ def sync(
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -322,8 +322,8 @@ def sync(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> list["OrderDetails"]:
     """List orders
 
@@ -336,9 +336,9 @@ def sync(
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOrdersListOItem]]):
+        o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
@@ -353,8 +353,8 @@ def sync(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceOrdersListStateItem]]):
-        type_ (Union[Unset, list[MarketplaceOrdersListTypeItem]]):
+        state (Union[Unset, list[OrderState]]):
+        type_ (Union[Unset, list[RequestTypes]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -401,9 +401,9 @@ async def asyncio_detailed(
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -418,8 +418,8 @@ async def asyncio_detailed(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> Response[list["OrderDetails"]]:
     """List orders
 
@@ -432,9 +432,9 @@ async def asyncio_detailed(
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOrdersListOItem]]):
+        o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
@@ -449,8 +449,8 @@ async def asyncio_detailed(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceOrdersListStateItem]]):
-        type_ (Union[Unset, list[MarketplaceOrdersListTypeItem]]):
+        state (Union[Unset, list[OrderState]]):
+        type_ (Union[Unset, list[RequestTypes]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -500,9 +500,9 @@ async def asyncio(
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -517,8 +517,8 @@ async def asyncio(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> list["OrderDetails"]:
     """List orders
 
@@ -531,9 +531,9 @@ async def asyncio(
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOrdersListOItem]]):
+        o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
@@ -548,8 +548,8 @@ async def asyncio(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceOrdersListStateItem]]):
-        type_ (Union[Unset, list[MarketplaceOrdersListTypeItem]]):
+        state (Union[Unset, list[OrderState]]):
+        type_ (Union[Unset, list[RequestTypes]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -598,9 +598,9 @@ def sync_all(
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -613,8 +613,8 @@ def sync_all(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> list["OrderDetails"]:
     """Get All Pages
 
@@ -629,9 +629,9 @@ def sync_all(
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOrdersListOItem]]):
+        o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
@@ -644,8 +644,8 @@ def sync_all(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceOrdersListStateItem]]):
-        type_ (Union[Unset, list[MarketplaceOrdersListTypeItem]]):
+        state (Union[Unset, list[OrderState]]):
+        type_ (Union[Unset, list[RequestTypes]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -734,9 +734,9 @@ async def asyncio_all(
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersListOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -749,8 +749,8 @@ async def asyncio_all(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersListStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersListTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> list["OrderDetails"]:
     """Get All Pages (Async)
 
@@ -765,9 +765,9 @@ async def asyncio_all(
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOrdersListOItem]]):
+        o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
@@ -780,8 +780,8 @@ async def asyncio_all(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceOrdersListStateItem]]):
-        type_ (Union[Unset, list[MarketplaceOrdersListTypeItem]]):
+        state (Union[Unset, list[OrderState]]):
+        type_ (Union[Unset, list[RequestTypes]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

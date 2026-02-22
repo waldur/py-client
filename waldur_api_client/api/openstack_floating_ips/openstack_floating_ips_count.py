@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.openstack_floating_ips_count_state_item import OpenstackFloatingIpsCountStateItem
+from ...models.core_states import CoreStates
 from ...types import UNSET, Response, Unset
 
 
@@ -33,7 +33,7 @@ def _get_kwargs(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -179,7 +179,7 @@ def sync_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -210,7 +210,7 @@ def sync_detailed(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackFloatingIpsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -282,7 +282,7 @@ def sync(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -313,7 +313,7 @@ def sync(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackFloatingIpsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -380,7 +380,7 @@ async def asyncio_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -411,7 +411,7 @@ async def asyncio_detailed(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackFloatingIpsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -481,7 +481,7 @@ async def asyncio(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -512,7 +512,7 @@ async def asyncio(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackFloatingIpsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):

@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_component_user_usages_count_o_item import MarketplaceComponentUserUsagesCountOItem
+from ...models.component_user_usage_o_enum import ComponentUserUsageOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -19,7 +19,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesCountOItem]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -135,7 +135,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesCountOItem]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -156,7 +156,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        o (Union[Unset, list[MarketplaceComponentUserUsagesCountOItem]]):
+        o (Union[Unset, list[ComponentUserUsageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -208,7 +208,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesCountOItem]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -229,7 +229,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        o (Union[Unset, list[MarketplaceComponentUserUsagesCountOItem]]):
+        o (Union[Unset, list[ComponentUserUsageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -276,7 +276,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesCountOItem]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -297,7 +297,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        o (Union[Unset, list[MarketplaceComponentUserUsagesCountOItem]]):
+        o (Union[Unset, list[ComponentUserUsageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -347,7 +347,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesCountOItem]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -368,7 +368,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        o (Union[Unset, list[MarketplaceComponentUserUsagesCountOItem]]):
+        o (Union[Unset, list[ComponentUserUsageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

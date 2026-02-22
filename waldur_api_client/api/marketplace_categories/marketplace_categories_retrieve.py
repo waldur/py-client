@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_categories_retrieve_field_item import MarketplaceCategoriesRetrieveFieldItem
 from ...models.marketplace_category import MarketplaceCategory
+from ...models.marketplace_category_field_enum import MarketplaceCategoryFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
 ) -> Response[MarketplaceCategory]:
     """Retrieve a category
 
@@ -71,7 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]]):
+        field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -97,7 +97,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
 ) -> MarketplaceCategory:
     """Retrieve a category
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]]):
+        field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
 ) -> Response[MarketplaceCategory]:
     """Retrieve a category
 
@@ -134,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]]):
+        field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,7 +158,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
 ) -> MarketplaceCategory:
     """Retrieve a category
 
@@ -166,7 +166,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceCategoriesRetrieveFieldItem]]):
+        field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

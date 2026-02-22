@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_software_catalogs_discover_count_o_item import MarketplaceSoftwareCatalogsDiscoverCountOItem
+from ...models.software_catalog_o_enum import SoftwareCatalogOEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverCountOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -77,7 +77,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverCountOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -88,7 +88,7 @@ def sync_detailed(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverCountOItem]]):
+        o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):
@@ -120,7 +120,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverCountOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -131,7 +131,7 @@ def sync(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverCountOItem]]):
+        o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):
@@ -158,7 +158,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverCountOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -169,7 +169,7 @@ async def asyncio_detailed(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverCountOItem]]):
+        o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):
@@ -199,7 +199,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverCountOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -210,7 +210,7 @@ async def asyncio(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareCatalogsDiscoverCountOItem]]):
+        o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         version (Union[Unset, str]):

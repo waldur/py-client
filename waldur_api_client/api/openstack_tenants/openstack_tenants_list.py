@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.open_stack_tenant import OpenStackTenant
-from ...models.openstack_tenants_list_field_item import OpenstackTenantsListFieldItem
-from ...models.openstack_tenants_list_state_item import OpenstackTenantsListStateItem
+from ...models.open_stack_tenant_field_enum import OpenStackTenantFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -24,7 +24,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackTenantsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -34,7 +34,7 @@ def _get_kwargs(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -162,7 +162,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackTenantsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -172,7 +172,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackTenant"]]:
     """List tenants
@@ -189,7 +189,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackTenantsListFieldItem]]):
+        field (Union[Unset, list[OpenStackTenantFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -199,7 +199,7 @@ def sync_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -253,7 +253,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackTenantsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -263,7 +263,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackTenant"]:
     """List tenants
@@ -280,7 +280,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackTenantsListFieldItem]]):
+        field (Union[Unset, list[OpenStackTenantFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -290,7 +290,7 @@ def sync(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -339,7 +339,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackTenantsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -349,7 +349,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackTenant"]]:
     """List tenants
@@ -366,7 +366,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackTenantsListFieldItem]]):
+        field (Union[Unset, list[OpenStackTenantFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -376,7 +376,7 @@ async def asyncio_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -428,7 +428,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackTenantsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -438,7 +438,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackTenant"]:
     """List tenants
@@ -455,7 +455,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackTenantsListFieldItem]]):
+        field (Union[Unset, list[OpenStackTenantFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -465,7 +465,7 @@ async def asyncio(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -516,7 +516,7 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackTenantsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -524,7 +524,7 @@ def sync_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackTenant"]:
     """Get All Pages
@@ -544,7 +544,7 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackTenantsListFieldItem]]):
+        field (Union[Unset, list[OpenStackTenantFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         project (Union[Unset, UUID]):
@@ -552,7 +552,7 @@ def sync_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -643,7 +643,7 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackTenantsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -651,7 +651,7 @@ async def asyncio_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackTenant"]:
     """Get All Pages (Async)
@@ -671,7 +671,7 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackTenantsListFieldItem]]):
+        field (Union[Unset, list[OpenStackTenantFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         project (Union[Unset, UUID]):
@@ -679,7 +679,7 @@ async def asyncio_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:

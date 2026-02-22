@@ -6,9 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.maintenance_announcement_template_offerings_count_o_item import (
-    MaintenanceAnnouncementTemplateOfferingsCountOItem,
-)
+from ...models.backend_resource_req_o_enum import BackendResourceReqOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -16,7 +14,7 @@ def _get_kwargs(
     *,
     impact_level: Union[Unset, int] = UNSET,
     maintenance_template_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementTemplateOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -96,7 +94,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     impact_level: Union[Unset, int] = UNSET,
     maintenance_template_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementTemplateOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -109,7 +107,7 @@ def sync_detailed(
     Args:
         impact_level (Union[Unset, int]):
         maintenance_template_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MaintenanceAnnouncementTemplateOfferingsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -145,7 +143,7 @@ def sync(
     client: AuthenticatedClient,
     impact_level: Union[Unset, int] = UNSET,
     maintenance_template_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementTemplateOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -158,7 +156,7 @@ def sync(
     Args:
         impact_level (Union[Unset, int]):
         maintenance_template_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MaintenanceAnnouncementTemplateOfferingsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -189,7 +187,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     impact_level: Union[Unset, int] = UNSET,
     maintenance_template_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementTemplateOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -202,7 +200,7 @@ async def asyncio_detailed(
     Args:
         impact_level (Union[Unset, int]):
         maintenance_template_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MaintenanceAnnouncementTemplateOfferingsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -236,7 +234,7 @@ async def asyncio(
     client: AuthenticatedClient,
     impact_level: Union[Unset, int] = UNSET,
     maintenance_template_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementTemplateOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -249,7 +247,7 @@ async def asyncio(
     Args:
         impact_level (Union[Unset, int]):
         maintenance_template_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[MaintenanceAnnouncementTemplateOfferingsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

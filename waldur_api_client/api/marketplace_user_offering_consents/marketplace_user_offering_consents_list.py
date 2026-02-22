@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_user_offering_consents_list_o_item import MarketplaceUserOfferingConsentsListOItem
 from ...models.user_offering_consent import UserOfferingConsent
+from ...models.user_offering_consent_o_enum import UserOfferingConsentOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -15,7 +15,7 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     has_consent: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]] = UNSET,
+    o: Union[Unset, list[UserOfferingConsentOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -103,7 +103,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     has_consent: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]] = UNSET,
+    o: Union[Unset, list[UserOfferingConsentOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -120,7 +120,7 @@ def sync_detailed(
 
     Args:
         has_consent (Union[Unset, bool]):
-        o (Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]]):
+        o (Union[Unset, list[UserOfferingConsentOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -162,7 +162,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     has_consent: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]] = UNSET,
+    o: Union[Unset, list[UserOfferingConsentOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -179,7 +179,7 @@ def sync(
 
     Args:
         has_consent (Union[Unset, bool]):
-        o (Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]]):
+        o (Union[Unset, list[UserOfferingConsentOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -216,7 +216,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     has_consent: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]] = UNSET,
+    o: Union[Unset, list[UserOfferingConsentOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -233,7 +233,7 @@ async def asyncio_detailed(
 
     Args:
         has_consent (Union[Unset, bool]):
-        o (Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]]):
+        o (Union[Unset, list[UserOfferingConsentOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -273,7 +273,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     has_consent: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]] = UNSET,
+    o: Union[Unset, list[UserOfferingConsentOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -290,7 +290,7 @@ async def asyncio(
 
     Args:
         has_consent (Union[Unset, bool]):
-        o (Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]]):
+        o (Union[Unset, list[UserOfferingConsentOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -329,7 +329,7 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     has_consent: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]] = UNSET,
+    o: Union[Unset, list[UserOfferingConsentOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     requires_reconsent: Union[Unset, bool] = UNSET,
@@ -346,7 +346,7 @@ def sync_all(
 
     Args:
         has_consent (Union[Unset, bool]):
-        o (Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]]):
+        o (Union[Unset, list[UserOfferingConsentOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         requires_reconsent (Union[Unset, bool]):
@@ -423,7 +423,7 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     has_consent: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]] = UNSET,
+    o: Union[Unset, list[UserOfferingConsentOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     requires_reconsent: Union[Unset, bool] = UNSET,
@@ -440,7 +440,7 @@ async def asyncio_all(
 
     Args:
         has_consent (Union[Unset, bool]):
-        o (Union[Unset, list[MarketplaceUserOfferingConsentsListOItem]]):
+        o (Union[Unset, list[UserOfferingConsentOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         requires_reconsent (Union[Unset, bool]):

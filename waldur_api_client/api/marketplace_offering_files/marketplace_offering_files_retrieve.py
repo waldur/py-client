@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_offering_files_retrieve_field_item import MarketplaceOfferingFilesRetrieveFieldItem
 from ...models.offering_file import OfferingFile
+from ...models.offering_file_field_enum import OfferingFileFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[MarketplaceOfferingFilesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFileFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceOfferingFilesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFileFieldEnum]] = UNSET,
 ) -> Response[OfferingFile]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceOfferingFilesRetrieveFieldItem]]):
+        field (Union[Unset, list[OfferingFileFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceOfferingFilesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFileFieldEnum]] = UNSET,
 ) -> OfferingFile:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceOfferingFilesRetrieveFieldItem]]):
+        field (Union[Unset, list[OfferingFileFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceOfferingFilesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFileFieldEnum]] = UNSET,
 ) -> Response[OfferingFile]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceOfferingFilesRetrieveFieldItem]]):
+        field (Union[Unset, list[OfferingFileFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceOfferingFilesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFileFieldEnum]] = UNSET,
 ) -> OfferingFile:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceOfferingFilesRetrieveFieldItem]]):
+        field (Union[Unset, list[OfferingFileFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

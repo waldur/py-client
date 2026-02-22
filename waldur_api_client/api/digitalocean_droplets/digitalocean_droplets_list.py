@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.digital_ocean_droplet import DigitalOceanDroplet
-from ...models.digitalocean_droplets_list_field_item import DigitaloceanDropletsListFieldItem
-from ...models.digitalocean_droplets_list_state_item import DigitaloceanDropletsListStateItem
+from ...models.digital_ocean_droplet_field_enum import DigitalOceanDropletFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -24,7 +24,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[DigitaloceanDropletsListFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -34,7 +34,7 @@ def _get_kwargs(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[DigitaloceanDropletsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -164,7 +164,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[DigitaloceanDropletsListFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -174,7 +174,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[DigitaloceanDropletsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["DigitalOceanDroplet"]]:
     """
@@ -188,7 +188,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[DigitaloceanDropletsListFieldItem]]):
+        field (Union[Unset, list[DigitalOceanDropletFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -198,7 +198,7 @@ def sync_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[DigitaloceanDropletsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -252,7 +252,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[DigitaloceanDropletsListFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -262,7 +262,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[DigitaloceanDropletsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["DigitalOceanDroplet"]:
     """
@@ -276,7 +276,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[DigitaloceanDropletsListFieldItem]]):
+        field (Union[Unset, list[DigitalOceanDropletFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -286,7 +286,7 @@ def sync(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[DigitaloceanDropletsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -335,7 +335,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[DigitaloceanDropletsListFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -345,7 +345,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[DigitaloceanDropletsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["DigitalOceanDroplet"]]:
     """
@@ -359,7 +359,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[DigitaloceanDropletsListFieldItem]]):
+        field (Union[Unset, list[DigitalOceanDropletFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -369,7 +369,7 @@ async def asyncio_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[DigitaloceanDropletsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -421,7 +421,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[DigitaloceanDropletsListFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -431,7 +431,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[DigitaloceanDropletsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["DigitalOceanDroplet"]:
     """
@@ -445,7 +445,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[DigitaloceanDropletsListFieldItem]]):
+        field (Union[Unset, list[DigitalOceanDropletFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -455,7 +455,7 @@ async def asyncio(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[DigitaloceanDropletsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -506,7 +506,7 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[DigitaloceanDropletsListFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -514,7 +514,7 @@ def sync_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[DigitaloceanDropletsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["DigitalOceanDroplet"]:
     """Get All Pages
@@ -534,7 +534,7 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[DigitaloceanDropletsListFieldItem]]):
+        field (Union[Unset, list[DigitalOceanDropletFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         project (Union[Unset, UUID]):
@@ -542,7 +542,7 @@ def sync_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[DigitaloceanDropletsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -633,7 +633,7 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[DigitaloceanDropletsListFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -641,7 +641,7 @@ async def asyncio_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[DigitaloceanDropletsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["DigitalOceanDroplet"]:
     """Get All Pages (Async)
@@ -661,7 +661,7 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[DigitaloceanDropletsListFieldItem]]):
+        field (Union[Unset, list[DigitalOceanDropletFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         project (Union[Unset, UUID]):
@@ -669,7 +669,7 @@ async def asyncio_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[DigitaloceanDropletsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:

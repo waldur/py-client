@@ -8,8 +8,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.backend_resource_req import BackendResourceReq
-from ...models.backend_resource_requests_list_o_item import BackendResourceRequestsListOItem
-from ...models.backend_resource_requests_list_state_item import BackendResourceRequestsListStateItem
+from ...models.backend_resource_req_o_enum import BackendResourceReqOEnum
+from ...models.backend_resource_req_state_enum import BackendResourceReqStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -19,12 +19,12 @@ def _get_kwargs(
     created: Union[Unset, datetime.datetime] = UNSET,
     finished: Union[Unset, datetime.datetime] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[BackendResourceRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     started: Union[Unset, datetime.datetime] = UNSET,
-    state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[BackendResourceReqStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -120,12 +120,12 @@ def sync_detailed(
     created: Union[Unset, datetime.datetime] = UNSET,
     finished: Union[Unset, datetime.datetime] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[BackendResourceRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     started: Union[Unset, datetime.datetime] = UNSET,
-    state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[BackendResourceReqStateEnum]] = UNSET,
 ) -> Response[list["BackendResourceReq"]]:
     """List backend resource requests
 
@@ -135,12 +135,12 @@ def sync_detailed(
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[BackendResourceRequestsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         started (Union[Unset, datetime.datetime]):
-        state (Union[Unset, list[BackendResourceRequestsListStateItem]]):
+        state (Union[Unset, list[BackendResourceReqStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -175,12 +175,12 @@ def sync(
     created: Union[Unset, datetime.datetime] = UNSET,
     finished: Union[Unset, datetime.datetime] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[BackendResourceRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     started: Union[Unset, datetime.datetime] = UNSET,
-    state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[BackendResourceReqStateEnum]] = UNSET,
 ) -> list["BackendResourceReq"]:
     """List backend resource requests
 
@@ -190,12 +190,12 @@ def sync(
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[BackendResourceRequestsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         started (Union[Unset, datetime.datetime]):
-        state (Union[Unset, list[BackendResourceRequestsListStateItem]]):
+        state (Union[Unset, list[BackendResourceReqStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -225,12 +225,12 @@ async def asyncio_detailed(
     created: Union[Unset, datetime.datetime] = UNSET,
     finished: Union[Unset, datetime.datetime] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[BackendResourceRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     started: Union[Unset, datetime.datetime] = UNSET,
-    state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[BackendResourceReqStateEnum]] = UNSET,
 ) -> Response[list["BackendResourceReq"]]:
     """List backend resource requests
 
@@ -240,12 +240,12 @@ async def asyncio_detailed(
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[BackendResourceRequestsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         started (Union[Unset, datetime.datetime]):
-        state (Union[Unset, list[BackendResourceRequestsListStateItem]]):
+        state (Union[Unset, list[BackendResourceReqStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -278,12 +278,12 @@ async def asyncio(
     created: Union[Unset, datetime.datetime] = UNSET,
     finished: Union[Unset, datetime.datetime] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[BackendResourceRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     started: Union[Unset, datetime.datetime] = UNSET,
-    state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[BackendResourceReqStateEnum]] = UNSET,
 ) -> list["BackendResourceReq"]:
     """List backend resource requests
 
@@ -293,12 +293,12 @@ async def asyncio(
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[BackendResourceRequestsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         started (Union[Unset, datetime.datetime]):
-        state (Union[Unset, list[BackendResourceRequestsListStateItem]]):
+        state (Union[Unset, list[BackendResourceReqStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -330,10 +330,10 @@ def sync_all(
     created: Union[Unset, datetime.datetime] = UNSET,
     finished: Union[Unset, datetime.datetime] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[BackendResourceRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     started: Union[Unset, datetime.datetime] = UNSET,
-    state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[BackendResourceReqStateEnum]] = UNSET,
 ) -> list["BackendResourceReq"]:
     """Get All Pages
 
@@ -346,10 +346,10 @@ def sync_all(
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[BackendResourceRequestsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         started (Union[Unset, datetime.datetime]):
-        state (Union[Unset, list[BackendResourceRequestsListStateItem]]):
+        state (Union[Unset, list[BackendResourceReqStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -421,10 +421,10 @@ async def asyncio_all(
     created: Union[Unset, datetime.datetime] = UNSET,
     finished: Union[Unset, datetime.datetime] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[BackendResourceRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     started: Union[Unset, datetime.datetime] = UNSET,
-    state: Union[Unset, list[BackendResourceRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[BackendResourceReqStateEnum]] = UNSET,
 ) -> list["BackendResourceReq"]:
     """Get All Pages (Async)
 
@@ -437,10 +437,10 @@ async def asyncio_all(
         created (Union[Unset, datetime.datetime]):
         finished (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[BackendResourceRequestsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         started (Union[Unset, datetime.datetime]):
-        state (Union[Unset, list[BackendResourceRequestsListStateItem]]):
+        state (Union[Unset, list[BackendResourceReqStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

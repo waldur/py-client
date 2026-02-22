@@ -6,11 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.onboarding_verifications_count_o_item import OnboardingVerificationsCountOItem
-from ...models.onboarding_verifications_count_status_item import OnboardingVerificationsCountStatusItem
-from ...models.onboarding_verifications_count_validation_method_item import (
-    OnboardingVerificationsCountValidationMethodItem,
-)
+from ...models.onboarding_verification_o_enum import OnboardingVerificationOEnum
+from ...models.onboarding_verification_status_enum_1 import OnboardingVerificationStatusEnum1
+from ...models.onboarding_verification_validation_method_enum import OnboardingVerificationValidationMethodEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -19,13 +17,13 @@ def _get_kwargs(
     country: Union[Unset, str] = UNSET,
     legal_name: Union[Unset, str] = UNSET,
     legal_person_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OnboardingVerificationsCountOItem]] = UNSET,
+    o: Union[Unset, list[OnboardingVerificationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
-    status: Union[Unset, list[OnboardingVerificationsCountStatusItem]] = UNSET,
+    status: Union[Unset, list[OnboardingVerificationStatusEnum1]] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-    validation_method: Union[Unset, list[OnboardingVerificationsCountValidationMethodItem]] = UNSET,
+    validation_method: Union[Unset, list[OnboardingVerificationValidationMethodEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -116,13 +114,13 @@ def sync_detailed(
     country: Union[Unset, str] = UNSET,
     legal_name: Union[Unset, str] = UNSET,
     legal_person_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OnboardingVerificationsCountOItem]] = UNSET,
+    o: Union[Unset, list[OnboardingVerificationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
-    status: Union[Unset, list[OnboardingVerificationsCountStatusItem]] = UNSET,
+    status: Union[Unset, list[OnboardingVerificationStatusEnum1]] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-    validation_method: Union[Unset, list[OnboardingVerificationsCountValidationMethodItem]] = UNSET,
+    validation_method: Union[Unset, list[OnboardingVerificationValidationMethodEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -130,13 +128,13 @@ def sync_detailed(
         country (Union[Unset, str]):
         legal_name (Union[Unset, str]):
         legal_person_identifier (Union[Unset, str]):
-        o (Union[Unset, list[OnboardingVerificationsCountOItem]]):
+        o (Union[Unset, list[OnboardingVerificationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
-        status (Union[Unset, list[OnboardingVerificationsCountStatusItem]]):
+        status (Union[Unset, list[OnboardingVerificationStatusEnum1]]):
         user_uuid (Union[Unset, UUID]):
-        validation_method (Union[Unset, list[OnboardingVerificationsCountValidationMethodItem]]):
+        validation_method (Union[Unset, list[OnboardingVerificationValidationMethodEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -172,13 +170,13 @@ def sync(
     country: Union[Unset, str] = UNSET,
     legal_name: Union[Unset, str] = UNSET,
     legal_person_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OnboardingVerificationsCountOItem]] = UNSET,
+    o: Union[Unset, list[OnboardingVerificationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
-    status: Union[Unset, list[OnboardingVerificationsCountStatusItem]] = UNSET,
+    status: Union[Unset, list[OnboardingVerificationStatusEnum1]] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-    validation_method: Union[Unset, list[OnboardingVerificationsCountValidationMethodItem]] = UNSET,
+    validation_method: Union[Unset, list[OnboardingVerificationValidationMethodEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -186,13 +184,13 @@ def sync(
         country (Union[Unset, str]):
         legal_name (Union[Unset, str]):
         legal_person_identifier (Union[Unset, str]):
-        o (Union[Unset, list[OnboardingVerificationsCountOItem]]):
+        o (Union[Unset, list[OnboardingVerificationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
-        status (Union[Unset, list[OnboardingVerificationsCountStatusItem]]):
+        status (Union[Unset, list[OnboardingVerificationStatusEnum1]]):
         user_uuid (Union[Unset, UUID]):
-        validation_method (Union[Unset, list[OnboardingVerificationsCountValidationMethodItem]]):
+        validation_method (Union[Unset, list[OnboardingVerificationValidationMethodEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -223,13 +221,13 @@ async def asyncio_detailed(
     country: Union[Unset, str] = UNSET,
     legal_name: Union[Unset, str] = UNSET,
     legal_person_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OnboardingVerificationsCountOItem]] = UNSET,
+    o: Union[Unset, list[OnboardingVerificationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
-    status: Union[Unset, list[OnboardingVerificationsCountStatusItem]] = UNSET,
+    status: Union[Unset, list[OnboardingVerificationStatusEnum1]] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-    validation_method: Union[Unset, list[OnboardingVerificationsCountValidationMethodItem]] = UNSET,
+    validation_method: Union[Unset, list[OnboardingVerificationValidationMethodEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -237,13 +235,13 @@ async def asyncio_detailed(
         country (Union[Unset, str]):
         legal_name (Union[Unset, str]):
         legal_person_identifier (Union[Unset, str]):
-        o (Union[Unset, list[OnboardingVerificationsCountOItem]]):
+        o (Union[Unset, list[OnboardingVerificationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
-        status (Union[Unset, list[OnboardingVerificationsCountStatusItem]]):
+        status (Union[Unset, list[OnboardingVerificationStatusEnum1]]):
         user_uuid (Union[Unset, UUID]):
-        validation_method (Union[Unset, list[OnboardingVerificationsCountValidationMethodItem]]):
+        validation_method (Union[Unset, list[OnboardingVerificationValidationMethodEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -277,13 +275,13 @@ async def asyncio(
     country: Union[Unset, str] = UNSET,
     legal_name: Union[Unset, str] = UNSET,
     legal_person_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OnboardingVerificationsCountOItem]] = UNSET,
+    o: Union[Unset, list[OnboardingVerificationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
-    status: Union[Unset, list[OnboardingVerificationsCountStatusItem]] = UNSET,
+    status: Union[Unset, list[OnboardingVerificationStatusEnum1]] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-    validation_method: Union[Unset, list[OnboardingVerificationsCountValidationMethodItem]] = UNSET,
+    validation_method: Union[Unset, list[OnboardingVerificationValidationMethodEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -291,13 +289,13 @@ async def asyncio(
         country (Union[Unset, str]):
         legal_name (Union[Unset, str]):
         legal_person_identifier (Union[Unset, str]):
-        o (Union[Unset, list[OnboardingVerificationsCountOItem]]):
+        o (Union[Unset, list[OnboardingVerificationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
-        status (Union[Unset, list[OnboardingVerificationsCountStatusItem]]):
+        status (Union[Unset, list[OnboardingVerificationStatusEnum1]]):
         user_uuid (Union[Unset, UUID]):
-        validation_method (Union[Unset, list[OnboardingVerificationsCountValidationMethodItem]]):
+        validation_method (Union[Unset, list[OnboardingVerificationValidationMethodEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

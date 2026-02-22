@@ -7,9 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.marketplace_provider_customer import MarketplaceProviderCustomer
-from ...models.marketplace_service_providers_customers_list_field_item import (
-    MarketplaceServiceProvidersCustomersListFieldItem,
-)
+from ...models.marketplace_provider_customer_field_enum import MarketplaceProviderCustomerFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -23,7 +21,7 @@ def _get_kwargs(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderCustomerFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -134,7 +132,7 @@ def sync_detailed(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderCustomerFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -159,7 +157,7 @@ def sync_detailed(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]]):
+        field (Union[Unset, list[MarketplaceProviderCustomerFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -217,7 +215,7 @@ def sync(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderCustomerFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -242,7 +240,7 @@ def sync(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]]):
+        field (Union[Unset, list[MarketplaceProviderCustomerFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -295,7 +293,7 @@ async def asyncio_detailed(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderCustomerFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -320,7 +318,7 @@ async def asyncio_detailed(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]]):
+        field (Union[Unset, list[MarketplaceProviderCustomerFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -376,7 +374,7 @@ async def asyncio(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderCustomerFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -401,7 +399,7 @@ async def asyncio(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]]):
+        field (Union[Unset, list[MarketplaceProviderCustomerFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -456,7 +454,7 @@ def sync_all(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderCustomerFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -481,7 +479,7 @@ def sync_all(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]]):
+        field (Union[Unset, list[MarketplaceProviderCustomerFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):
@@ -574,7 +572,7 @@ async def asyncio_all(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[MarketplaceProviderCustomerFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -599,7 +597,7 @@ async def asyncio_all(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceServiceProvidersCustomersListFieldItem]]):
+        field (Union[Unset, list[MarketplaceProviderCustomerFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         native_name (Union[Unset, str]):

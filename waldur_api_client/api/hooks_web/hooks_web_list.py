@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.hooks_web_list_content_type import HooksWebListContentType
 from ...models.web_hook import WebHook
+from ...models.web_hook_content_type_enum_1 import WebHookContentTypeEnum1
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -19,7 +19,7 @@ def _get_kwargs(
     author_fullname: Union[Unset, str] = UNSET,
     author_username: Union[Unset, str] = UNSET,
     author_uuid: Union[Unset, UUID] = UNSET,
-    content_type: Union[Unset, HooksWebListContentType] = UNSET,
+    content_type: Union[Unset, WebHookContentTypeEnum1] = UNSET,
     destination_url: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     last_published: Union[Unset, datetime.datetime] = UNSET,
@@ -105,7 +105,7 @@ def sync_detailed(
     author_fullname: Union[Unset, str] = UNSET,
     author_username: Union[Unset, str] = UNSET,
     author_uuid: Union[Unset, UUID] = UNSET,
-    content_type: Union[Unset, HooksWebListContentType] = UNSET,
+    content_type: Union[Unset, WebHookContentTypeEnum1] = UNSET,
     destination_url: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     last_published: Union[Unset, datetime.datetime] = UNSET,
@@ -119,7 +119,7 @@ def sync_detailed(
         author_fullname (Union[Unset, str]):
         author_username (Union[Unset, str]):
         author_uuid (Union[Unset, UUID]):
-        content_type (Union[Unset, HooksWebListContentType]):
+        content_type (Union[Unset, WebHookContentTypeEnum1]):
         destination_url (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         last_published (Union[Unset, datetime.datetime]):
@@ -163,7 +163,7 @@ def sync(
     author_fullname: Union[Unset, str] = UNSET,
     author_username: Union[Unset, str] = UNSET,
     author_uuid: Union[Unset, UUID] = UNSET,
-    content_type: Union[Unset, HooksWebListContentType] = UNSET,
+    content_type: Union[Unset, WebHookContentTypeEnum1] = UNSET,
     destination_url: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     last_published: Union[Unset, datetime.datetime] = UNSET,
@@ -177,7 +177,7 @@ def sync(
         author_fullname (Union[Unset, str]):
         author_username (Union[Unset, str]):
         author_uuid (Union[Unset, UUID]):
-        content_type (Union[Unset, HooksWebListContentType]):
+        content_type (Union[Unset, WebHookContentTypeEnum1]):
         destination_url (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         last_published (Union[Unset, datetime.datetime]):
@@ -216,7 +216,7 @@ async def asyncio_detailed(
     author_fullname: Union[Unset, str] = UNSET,
     author_username: Union[Unset, str] = UNSET,
     author_uuid: Union[Unset, UUID] = UNSET,
-    content_type: Union[Unset, HooksWebListContentType] = UNSET,
+    content_type: Union[Unset, WebHookContentTypeEnum1] = UNSET,
     destination_url: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     last_published: Union[Unset, datetime.datetime] = UNSET,
@@ -230,7 +230,7 @@ async def asyncio_detailed(
         author_fullname (Union[Unset, str]):
         author_username (Union[Unset, str]):
         author_uuid (Union[Unset, UUID]):
-        content_type (Union[Unset, HooksWebListContentType]):
+        content_type (Union[Unset, WebHookContentTypeEnum1]):
         destination_url (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         last_published (Union[Unset, datetime.datetime]):
@@ -272,7 +272,7 @@ async def asyncio(
     author_fullname: Union[Unset, str] = UNSET,
     author_username: Union[Unset, str] = UNSET,
     author_uuid: Union[Unset, UUID] = UNSET,
-    content_type: Union[Unset, HooksWebListContentType] = UNSET,
+    content_type: Union[Unset, WebHookContentTypeEnum1] = UNSET,
     destination_url: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     last_published: Union[Unset, datetime.datetime] = UNSET,
@@ -286,7 +286,7 @@ async def asyncio(
         author_fullname (Union[Unset, str]):
         author_username (Union[Unset, str]):
         author_uuid (Union[Unset, UUID]):
-        content_type (Union[Unset, HooksWebListContentType]):
+        content_type (Union[Unset, WebHookContentTypeEnum1]):
         destination_url (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         last_published (Union[Unset, datetime.datetime]):
@@ -327,7 +327,7 @@ def sync_all(
     author_fullname: Union[Unset, str] = UNSET,
     author_username: Union[Unset, str] = UNSET,
     author_uuid: Union[Unset, UUID] = UNSET,
-    content_type: Union[Unset, HooksWebListContentType] = UNSET,
+    content_type: Union[Unset, WebHookContentTypeEnum1] = UNSET,
     destination_url: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     last_published: Union[Unset, datetime.datetime] = UNSET,
@@ -345,7 +345,7 @@ def sync_all(
         author_fullname (Union[Unset, str]):
         author_username (Union[Unset, str]):
         author_uuid (Union[Unset, UUID]):
-        content_type (Union[Unset, HooksWebListContentType]):
+        content_type (Union[Unset, WebHookContentTypeEnum1]):
         destination_url (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         last_published (Union[Unset, datetime.datetime]):
@@ -424,7 +424,7 @@ async def asyncio_all(
     author_fullname: Union[Unset, str] = UNSET,
     author_username: Union[Unset, str] = UNSET,
     author_uuid: Union[Unset, UUID] = UNSET,
-    content_type: Union[Unset, HooksWebListContentType] = UNSET,
+    content_type: Union[Unset, WebHookContentTypeEnum1] = UNSET,
     destination_url: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     last_published: Union[Unset, datetime.datetime] = UNSET,
@@ -442,7 +442,7 @@ async def asyncio_all(
         author_fullname (Union[Unset, str]):
         author_username (Union[Unset, str]):
         author_uuid (Union[Unset, UUID]):
-        content_type (Union[Unset, HooksWebListContentType]):
+        content_type (Union[Unset, WebHookContentTypeEnum1]):
         destination_url (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         last_published (Union[Unset, datetime.datetime]):

@@ -6,9 +6,9 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.system_log import SystemLog
-from ...models.system_logs_list_level import SystemLogsListLevel
-from ...models.system_logs_list_o_item import SystemLogsListOItem
-from ...models.system_logs_list_source import SystemLogsListSource
+from ...models.system_log_level_enum import SystemLogLevelEnum
+from ...models.system_log_o_enum import SystemLogOEnum
+from ...models.system_log_source_enum import SystemLogSourceEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,14 +18,14 @@ def _get_kwargs(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsListLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsListOItem]] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    source: Union[Unset, SystemLogsListSource] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -109,28 +109,28 @@ def sync_detailed(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsListLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsListOItem]] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    source: Union[Unset, SystemLogsListSource] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> Response[list["SystemLog"]]:
     """
     Args:
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         instance (Union[Unset, str]):
-        level (Union[Unset, SystemLogsListLevel]):
+        level (Union[Unset, SystemLogLevelEnum]):
         level_gte (Union[Unset, int]):
         logger_name (Union[Unset, str]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[SystemLogsListOItem]]):
+        o (Union[Unset, list[SystemLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        source (Union[Unset, SystemLogsListSource]):
+        source (Union[Unset, SystemLogSourceEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -167,28 +167,28 @@ def sync(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsListLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsListOItem]] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    source: Union[Unset, SystemLogsListSource] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> list["SystemLog"]:
     """
     Args:
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         instance (Union[Unset, str]):
-        level (Union[Unset, SystemLogsListLevel]):
+        level (Union[Unset, SystemLogLevelEnum]):
         level_gte (Union[Unset, int]):
         logger_name (Union[Unset, str]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[SystemLogsListOItem]]):
+        o (Union[Unset, list[SystemLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        source (Union[Unset, SystemLogsListSource]):
+        source (Union[Unset, SystemLogSourceEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -220,28 +220,28 @@ async def asyncio_detailed(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsListLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsListOItem]] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    source: Union[Unset, SystemLogsListSource] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> Response[list["SystemLog"]]:
     """
     Args:
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         instance (Union[Unset, str]):
-        level (Union[Unset, SystemLogsListLevel]):
+        level (Union[Unset, SystemLogLevelEnum]):
         level_gte (Union[Unset, int]):
         logger_name (Union[Unset, str]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[SystemLogsListOItem]]):
+        o (Union[Unset, list[SystemLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        source (Union[Unset, SystemLogsListSource]):
+        source (Union[Unset, SystemLogSourceEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -276,28 +276,28 @@ async def asyncio(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsListLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsListOItem]] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    source: Union[Unset, SystemLogsListSource] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> list["SystemLog"]:
     """
     Args:
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         instance (Union[Unset, str]):
-        level (Union[Unset, SystemLogsListLevel]):
+        level (Union[Unset, SystemLogLevelEnum]):
         level_gte (Union[Unset, int]):
         logger_name (Union[Unset, str]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[SystemLogsListOItem]]):
+        o (Union[Unset, list[SystemLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        source (Union[Unset, SystemLogsListSource]):
+        source (Union[Unset, SystemLogSourceEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -331,12 +331,12 @@ def sync_all(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsListLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsListOItem]] = UNSET,
-    source: Union[Unset, SystemLogsListSource] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> list["SystemLog"]:
     """Get All Pages
 
@@ -349,12 +349,12 @@ def sync_all(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         instance (Union[Unset, str]):
-        level (Union[Unset, SystemLogsListLevel]):
+        level (Union[Unset, SystemLogLevelEnum]):
         level_gte (Union[Unset, int]):
         logger_name (Union[Unset, str]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[SystemLogsListOItem]]):
-        source (Union[Unset, SystemLogsListSource]):
+        o (Union[Unset, list[SystemLogOEnum]]):
+        source (Union[Unset, SystemLogSourceEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -428,12 +428,12 @@ async def asyncio_all(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsListLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsListOItem]] = UNSET,
-    source: Union[Unset, SystemLogsListSource] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> list["SystemLog"]:
     """Get All Pages (Async)
 
@@ -446,12 +446,12 @@ async def asyncio_all(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         instance (Union[Unset, str]):
-        level (Union[Unset, SystemLogsListLevel]):
+        level (Union[Unset, SystemLogLevelEnum]):
         level_gte (Union[Unset, int]):
         logger_name (Union[Unset, str]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[SystemLogsListOItem]]):
-        source (Union[Unset, SystemLogsListSource]):
+        o (Union[Unset, list[SystemLogOEnum]]):
+        source (Union[Unset, SystemLogSourceEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

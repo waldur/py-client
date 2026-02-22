@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.vmware_disk import VmwareDisk
-from ...models.vmware_disks_retrieve_field_item import VmwareDisksRetrieveFieldItem
+from ...models.vmware_disk_field_enum import VmwareDiskFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[VmwareDisksRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[VmwareDisksRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
 ) -> Response[VmwareDisk]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[VmwareDisksRetrieveFieldItem]]):
+        field (Union[Unset, list[VmwareDiskFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[VmwareDisksRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
 ) -> VmwareDisk:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[VmwareDisksRetrieveFieldItem]]):
+        field (Union[Unset, list[VmwareDiskFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[VmwareDisksRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
 ) -> Response[VmwareDisk]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[VmwareDisksRetrieveFieldItem]]):
+        field (Union[Unset, list[VmwareDiskFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[VmwareDisksRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
 ) -> VmwareDisk:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[VmwareDisksRetrieveFieldItem]]):
+        field (Union[Unset, list[VmwareDiskFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

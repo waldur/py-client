@@ -8,8 +8,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.campaign import Campaign
-from ...models.promotions_campaigns_list_o_item import PromotionsCampaignsListOItem
-from ...models.promotions_campaigns_list_state_item import PromotionsCampaignsListStateItem
+from ...models.campaign_o_enum import CampaignOEnum
+from ...models.campaign_state_enum import CampaignStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,7 +18,7 @@ def _get_kwargs(
     *,
     discount_type: Union[Unset, str] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[PromotionsCampaignsListOItem]] = UNSET,
+    o: Union[Unset, list[CampaignOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -26,7 +26,7 @@ def _get_kwargs(
     query: Union[Unset, str] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[PromotionsCampaignsListStateItem]] = UNSET,
+    state: Union[Unset, list[CampaignStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -120,7 +120,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     discount_type: Union[Unset, str] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[PromotionsCampaignsListOItem]] = UNSET,
+    o: Union[Unset, list[CampaignOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -128,13 +128,13 @@ def sync_detailed(
     query: Union[Unset, str] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[PromotionsCampaignsListStateItem]] = UNSET,
+    state: Union[Unset, list[CampaignStateEnum]] = UNSET,
 ) -> Response[list["Campaign"]]:
     """
     Args:
         discount_type (Union[Unset, str]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[PromotionsCampaignsListOItem]]):
+        o (Union[Unset, list[CampaignOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -142,7 +142,7 @@ def sync_detailed(
         query (Union[Unset, str]):
         service_provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[PromotionsCampaignsListStateItem]]):
+        state (Union[Unset, list[CampaignStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -178,7 +178,7 @@ def sync(
     client: AuthenticatedClient,
     discount_type: Union[Unset, str] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[PromotionsCampaignsListOItem]] = UNSET,
+    o: Union[Unset, list[CampaignOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -186,13 +186,13 @@ def sync(
     query: Union[Unset, str] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[PromotionsCampaignsListStateItem]] = UNSET,
+    state: Union[Unset, list[CampaignStateEnum]] = UNSET,
 ) -> list["Campaign"]:
     """
     Args:
         discount_type (Union[Unset, str]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[PromotionsCampaignsListOItem]]):
+        o (Union[Unset, list[CampaignOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -200,7 +200,7 @@ def sync(
         query (Union[Unset, str]):
         service_provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[PromotionsCampaignsListStateItem]]):
+        state (Union[Unset, list[CampaignStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -231,7 +231,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     discount_type: Union[Unset, str] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[PromotionsCampaignsListOItem]] = UNSET,
+    o: Union[Unset, list[CampaignOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -239,13 +239,13 @@ async def asyncio_detailed(
     query: Union[Unset, str] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[PromotionsCampaignsListStateItem]] = UNSET,
+    state: Union[Unset, list[CampaignStateEnum]] = UNSET,
 ) -> Response[list["Campaign"]]:
     """
     Args:
         discount_type (Union[Unset, str]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[PromotionsCampaignsListOItem]]):
+        o (Union[Unset, list[CampaignOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -253,7 +253,7 @@ async def asyncio_detailed(
         query (Union[Unset, str]):
         service_provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[PromotionsCampaignsListStateItem]]):
+        state (Union[Unset, list[CampaignStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -287,7 +287,7 @@ async def asyncio(
     client: AuthenticatedClient,
     discount_type: Union[Unset, str] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[PromotionsCampaignsListOItem]] = UNSET,
+    o: Union[Unset, list[CampaignOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -295,13 +295,13 @@ async def asyncio(
     query: Union[Unset, str] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[PromotionsCampaignsListStateItem]] = UNSET,
+    state: Union[Unset, list[CampaignStateEnum]] = UNSET,
 ) -> list["Campaign"]:
     """
     Args:
         discount_type (Union[Unset, str]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[PromotionsCampaignsListOItem]]):
+        o (Union[Unset, list[CampaignOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -309,7 +309,7 @@ async def asyncio(
         query (Union[Unset, str]):
         service_provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[PromotionsCampaignsListStateItem]]):
+        state (Union[Unset, list[CampaignStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -342,13 +342,13 @@ def sync_all(
     client: AuthenticatedClient,
     discount_type: Union[Unset, str] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[PromotionsCampaignsListOItem]] = UNSET,
+    o: Union[Unset, list[CampaignOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[PromotionsCampaignsListStateItem]] = UNSET,
+    state: Union[Unset, list[CampaignStateEnum]] = UNSET,
 ) -> list["Campaign"]:
     """Get All Pages
 
@@ -360,13 +360,13 @@ def sync_all(
     Args:
         discount_type (Union[Unset, str]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[PromotionsCampaignsListOItem]]):
+        o (Union[Unset, list[CampaignOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         service_provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[PromotionsCampaignsListStateItem]]):
+        state (Union[Unset, list[CampaignStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -439,13 +439,13 @@ async def asyncio_all(
     client: AuthenticatedClient,
     discount_type: Union[Unset, str] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[PromotionsCampaignsListOItem]] = UNSET,
+    o: Union[Unset, list[CampaignOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[PromotionsCampaignsListStateItem]] = UNSET,
+    state: Union[Unset, list[CampaignStateEnum]] = UNSET,
 ) -> list["Campaign"]:
     """Get All Pages (Async)
 
@@ -457,13 +457,13 @@ async def asyncio_all(
     Args:
         discount_type (Union[Unset, str]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[PromotionsCampaignsListOItem]]):
+        o (Union[Unset, list[CampaignOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         service_provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[PromotionsCampaignsListStateItem]]):
+        state (Union[Unset, list[CampaignStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

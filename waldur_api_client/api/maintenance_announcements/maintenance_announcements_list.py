@@ -8,8 +8,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.maintenance_announcement import MaintenanceAnnouncement
-from ...models.maintenance_announcements_list_o_item import MaintenanceAnnouncementsListOItem
-from ...models.maintenance_announcements_list_state_item import MaintenanceAnnouncementsListStateItem
+from ...models.maintenance_announcement_o_enum import MaintenanceAnnouncementOEnum
+from ...models.maintenance_announcement_state_enum import MaintenanceAnnouncementStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,7 +17,7 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scheduled_end_after: Union[Unset, datetime.datetime] = UNSET,
@@ -25,7 +25,7 @@ def _get_kwargs(
     scheduled_start_after: Union[Unset, datetime.datetime] = UNSET,
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MaintenanceAnnouncementsListStateItem]] = UNSET,
+    state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -121,7 +121,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scheduled_end_after: Union[Unset, datetime.datetime] = UNSET,
@@ -129,7 +129,7 @@ def sync_detailed(
     scheduled_start_after: Union[Unset, datetime.datetime] = UNSET,
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MaintenanceAnnouncementsListStateItem]] = UNSET,
+    state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
 ) -> Response[list["MaintenanceAnnouncement"]]:
     """List maintenance announcements
 
@@ -137,7 +137,7 @@ def sync_detailed(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scheduled_end_after (Union[Unset, datetime.datetime]):
@@ -145,7 +145,7 @@ def sync_detailed(
         scheduled_start_after (Union[Unset, datetime.datetime]):
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MaintenanceAnnouncementsListStateItem]]):
+        state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -179,7 +179,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scheduled_end_after: Union[Unset, datetime.datetime] = UNSET,
@@ -187,7 +187,7 @@ def sync(
     scheduled_start_after: Union[Unset, datetime.datetime] = UNSET,
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MaintenanceAnnouncementsListStateItem]] = UNSET,
+    state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
 ) -> list["MaintenanceAnnouncement"]:
     """List maintenance announcements
 
@@ -195,7 +195,7 @@ def sync(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scheduled_end_after (Union[Unset, datetime.datetime]):
@@ -203,7 +203,7 @@ def sync(
         scheduled_start_after (Union[Unset, datetime.datetime]):
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MaintenanceAnnouncementsListStateItem]]):
+        state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -232,7 +232,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scheduled_end_after: Union[Unset, datetime.datetime] = UNSET,
@@ -240,7 +240,7 @@ async def asyncio_detailed(
     scheduled_start_after: Union[Unset, datetime.datetime] = UNSET,
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MaintenanceAnnouncementsListStateItem]] = UNSET,
+    state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
 ) -> Response[list["MaintenanceAnnouncement"]]:
     """List maintenance announcements
 
@@ -248,7 +248,7 @@ async def asyncio_detailed(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scheduled_end_after (Union[Unset, datetime.datetime]):
@@ -256,7 +256,7 @@ async def asyncio_detailed(
         scheduled_start_after (Union[Unset, datetime.datetime]):
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MaintenanceAnnouncementsListStateItem]]):
+        state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -288,7 +288,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scheduled_end_after: Union[Unset, datetime.datetime] = UNSET,
@@ -296,7 +296,7 @@ async def asyncio(
     scheduled_start_after: Union[Unset, datetime.datetime] = UNSET,
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MaintenanceAnnouncementsListStateItem]] = UNSET,
+    state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
 ) -> list["MaintenanceAnnouncement"]:
     """List maintenance announcements
 
@@ -304,7 +304,7 @@ async def asyncio(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scheduled_end_after (Union[Unset, datetime.datetime]):
@@ -312,7 +312,7 @@ async def asyncio(
         scheduled_start_after (Union[Unset, datetime.datetime]):
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MaintenanceAnnouncementsListStateItem]]):
+        state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -343,13 +343,13 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementOEnum]] = UNSET,
     scheduled_end_after: Union[Unset, datetime.datetime] = UNSET,
     scheduled_end_before: Union[Unset, datetime.datetime] = UNSET,
     scheduled_start_after: Union[Unset, datetime.datetime] = UNSET,
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MaintenanceAnnouncementsListStateItem]] = UNSET,
+    state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
 ) -> list["MaintenanceAnnouncement"]:
     """Get All Pages
 
@@ -360,13 +360,13 @@ def sync_all(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementOEnum]]):
         scheduled_end_after (Union[Unset, datetime.datetime]):
         scheduled_end_before (Union[Unset, datetime.datetime]):
         scheduled_start_after (Union[Unset, datetime.datetime]):
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MaintenanceAnnouncementsListStateItem]]):
+        state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -437,13 +437,13 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementOEnum]] = UNSET,
     scheduled_end_after: Union[Unset, datetime.datetime] = UNSET,
     scheduled_end_before: Union[Unset, datetime.datetime] = UNSET,
     scheduled_start_after: Union[Unset, datetime.datetime] = UNSET,
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MaintenanceAnnouncementsListStateItem]] = UNSET,
+    state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
 ) -> list["MaintenanceAnnouncement"]:
     """Get All Pages (Async)
 
@@ -454,13 +454,13 @@ async def asyncio_all(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementOEnum]]):
         scheduled_end_after (Union[Unset, datetime.datetime]):
         scheduled_end_before (Union[Unset, datetime.datetime]):
         scheduled_start_after (Union[Unset, datetime.datetime]):
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MaintenanceAnnouncementsListStateItem]]):
+        state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.openstack_snapshots_count_state_item import OpenstackSnapshotsCountStateItem
+from ...models.core_states import CoreStates
 from ...types import UNSET, Response, Unset
 
 
@@ -35,7 +35,7 @@ def _get_kwargs(
     service_settings_uuid: Union[Unset, UUID] = UNSET,
     source_volume: Union[Unset, str] = UNSET,
     source_volume_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSnapshotsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -193,7 +193,7 @@ def sync_detailed(
     service_settings_uuid: Union[Unset, UUID] = UNSET,
     source_volume: Union[Unset, str] = UNSET,
     source_volume_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSnapshotsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -226,7 +226,7 @@ def sync_detailed(
         service_settings_uuid (Union[Unset, UUID]):
         source_volume (Union[Unset, str]):
         source_volume_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackSnapshotsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -302,7 +302,7 @@ def sync(
     service_settings_uuid: Union[Unset, UUID] = UNSET,
     source_volume: Union[Unset, str] = UNSET,
     source_volume_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSnapshotsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -335,7 +335,7 @@ def sync(
         service_settings_uuid (Union[Unset, UUID]):
         source_volume (Union[Unset, str]):
         source_volume_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackSnapshotsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -406,7 +406,7 @@ async def asyncio_detailed(
     service_settings_uuid: Union[Unset, UUID] = UNSET,
     source_volume: Union[Unset, str] = UNSET,
     source_volume_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSnapshotsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -439,7 +439,7 @@ async def asyncio_detailed(
         service_settings_uuid (Union[Unset, UUID]):
         source_volume (Union[Unset, str]):
         source_volume_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackSnapshotsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -513,7 +513,7 @@ async def asyncio(
     service_settings_uuid: Union[Unset, UUID] = UNSET,
     source_volume: Union[Unset, str] = UNSET,
     source_volume_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSnapshotsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -546,7 +546,7 @@ async def asyncio(
         service_settings_uuid (Union[Unset, UUID]):
         source_volume (Union[Unset, str]):
         source_volume_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackSnapshotsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):

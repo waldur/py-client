@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.open_stack_floating_ip import OpenStackFloatingIP
-from ...models.openstack_floating_ips_list_field_item import OpenstackFloatingIpsListFieldItem
-from ...models.openstack_floating_ips_list_state_item import OpenstackFloatingIpsListStateItem
+from ...models.open_stack_floating_ip_field_enum import OpenStackFloatingIPFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -25,7 +25,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackFloatingIpsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFloatingIPFieldEnum]] = UNSET,
     free: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -37,7 +37,7 @@ def _get_kwargs(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -183,7 +183,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackFloatingIpsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFloatingIPFieldEnum]] = UNSET,
     free: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -195,7 +195,7 @@ def sync_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -216,7 +216,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackFloatingIpsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFloatingIPFieldEnum]]):
         free (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -228,7 +228,7 @@ def sync_detailed(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackFloatingIpsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -290,7 +290,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackFloatingIpsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFloatingIPFieldEnum]] = UNSET,
     free: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -302,7 +302,7 @@ def sync(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -323,7 +323,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackFloatingIpsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFloatingIPFieldEnum]]):
         free (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -335,7 +335,7 @@ def sync(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackFloatingIpsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -392,7 +392,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackFloatingIpsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFloatingIPFieldEnum]] = UNSET,
     free: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -404,7 +404,7 @@ async def asyncio_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -425,7 +425,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackFloatingIpsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFloatingIPFieldEnum]]):
         free (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -437,7 +437,7 @@ async def asyncio_detailed(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackFloatingIpsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -497,7 +497,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackFloatingIpsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFloatingIPFieldEnum]] = UNSET,
     free: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -509,7 +509,7 @@ async def asyncio(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -530,7 +530,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackFloatingIpsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFloatingIPFieldEnum]]):
         free (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -542,7 +542,7 @@ async def asyncio(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackFloatingIpsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -601,7 +601,7 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackFloatingIpsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFloatingIPFieldEnum]] = UNSET,
     free: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -611,7 +611,7 @@ def sync_all(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -634,7 +634,7 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackFloatingIpsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFloatingIPFieldEnum]]):
         free (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -644,7 +644,7 @@ def sync_all(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackFloatingIpsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -743,7 +743,7 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackFloatingIpsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFloatingIPFieldEnum]] = UNSET,
     free: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -753,7 +753,7 @@ async def asyncio_all(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackFloatingIpsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -776,7 +776,7 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackFloatingIpsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFloatingIPFieldEnum]]):
         free (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -786,7 +786,7 @@ async def asyncio_all(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackFloatingIpsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):

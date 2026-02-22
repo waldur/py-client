@@ -6,18 +6,18 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.bid_enum import BidEnum
 from ...models.reviewer_bid import ReviewerBid
-from ...models.reviewer_bids_list_bid_item import ReviewerBidsListBidItem
-from ...models.reviewer_bids_list_o_item import ReviewerBidsListOItem
+from ...models.reviewer_bid_o_enum import ReviewerBidOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    bid: Union[Unset, list[ReviewerBidsListBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
@@ -102,9 +102,9 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    bid: Union[Unset, list[ReviewerBidsListBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
@@ -112,9 +112,9 @@ def sync_detailed(
 ) -> Response[list["ReviewerBid"]]:
     """
     Args:
-        bid (Union[Unset, list[ReviewerBidsListBidItem]]):
+        bid (Union[Unset, list[BidEnum]]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ReviewerBidsListOItem]]):
+        o (Union[Unset, list[ReviewerBidOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
@@ -148,9 +148,9 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    bid: Union[Unset, list[ReviewerBidsListBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
@@ -158,9 +158,9 @@ def sync(
 ) -> list["ReviewerBid"]:
     """
     Args:
-        bid (Union[Unset, list[ReviewerBidsListBidItem]]):
+        bid (Union[Unset, list[BidEnum]]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ReviewerBidsListOItem]]):
+        o (Union[Unset, list[ReviewerBidOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
@@ -189,9 +189,9 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    bid: Union[Unset, list[ReviewerBidsListBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
@@ -199,9 +199,9 @@ async def asyncio_detailed(
 ) -> Response[list["ReviewerBid"]]:
     """
     Args:
-        bid (Union[Unset, list[ReviewerBidsListBidItem]]):
+        bid (Union[Unset, list[BidEnum]]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ReviewerBidsListOItem]]):
+        o (Union[Unset, list[ReviewerBidOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
@@ -233,9 +233,9 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    bid: Union[Unset, list[ReviewerBidsListBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
@@ -243,9 +243,9 @@ async def asyncio(
 ) -> list["ReviewerBid"]:
     """
     Args:
-        bid (Union[Unset, list[ReviewerBidsListBidItem]]):
+        bid (Union[Unset, list[BidEnum]]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ReviewerBidsListOItem]]):
+        o (Union[Unset, list[ReviewerBidOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
@@ -276,9 +276,9 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    bid: Union[Unset, list[ReviewerBidsListBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ReviewerBid"]:
@@ -290,9 +290,9 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        bid (Union[Unset, list[ReviewerBidsListBidItem]]):
+        bid (Union[Unset, list[BidEnum]]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ReviewerBidsListOItem]]):
+        o (Union[Unset, list[ReviewerBidOEnum]]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
 
@@ -361,9 +361,9 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    bid: Union[Unset, list[ReviewerBidsListBidItem]] = UNSET,
+    bid: Union[Unset, list[BidEnum]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ReviewerBidsListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerBidOEnum]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ReviewerBid"]:
@@ -375,9 +375,9 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        bid (Union[Unset, list[ReviewerBidsListBidItem]]):
+        bid (Union[Unset, list[BidEnum]]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ReviewerBidsListOItem]]):
+        o (Union[Unset, list[ReviewerBidOEnum]]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
 

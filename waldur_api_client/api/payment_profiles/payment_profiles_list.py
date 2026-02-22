@@ -7,8 +7,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.payment_profile import PaymentProfile
-from ...models.payment_profiles_list_o_item import PaymentProfilesListOItem
-from ...models.payment_profiles_list_payment_type_item import PaymentProfilesListPaymentTypeItem
+from ...models.payment_profile_o_enum import PaymentProfileOEnum
+from ...models.payment_type_enum import PaymentTypeEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -16,12 +16,12 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -97,22 +97,22 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> Response[list["PaymentProfile"]]:
     """
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[PaymentProfilesListOItem]]):
+        o (Union[Unset, list[PaymentProfileOEnum]]):
         organization (Union[Unset, str]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        payment_type (Union[Unset, list[PaymentProfilesListPaymentTypeItem]]):
+        payment_type (Union[Unset, list[PaymentTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -143,22 +143,22 @@ def sync(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> list["PaymentProfile"]:
     """
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[PaymentProfilesListOItem]]):
+        o (Union[Unset, list[PaymentProfileOEnum]]):
         organization (Union[Unset, str]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        payment_type (Union[Unset, list[PaymentProfilesListPaymentTypeItem]]):
+        payment_type (Union[Unset, list[PaymentTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -184,22 +184,22 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> Response[list["PaymentProfile"]]:
     """
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[PaymentProfilesListOItem]]):
+        o (Union[Unset, list[PaymentProfileOEnum]]):
         organization (Union[Unset, str]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        payment_type (Union[Unset, list[PaymentProfilesListPaymentTypeItem]]):
+        payment_type (Union[Unset, list[PaymentTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -228,22 +228,22 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> list["PaymentProfile"]:
     """
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[PaymentProfilesListOItem]]):
+        o (Union[Unset, list[PaymentProfileOEnum]]):
         organization (Union[Unset, str]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        payment_type (Union[Unset, list[PaymentProfilesListPaymentTypeItem]]):
+        payment_type (Union[Unset, list[PaymentTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -271,10 +271,10 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> list["PaymentProfile"]:
     """Get All Pages
 
@@ -285,10 +285,10 @@ def sync_all(
 
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[PaymentProfilesListOItem]]):
+        o (Union[Unset, list[PaymentProfileOEnum]]):
         organization (Union[Unset, str]):
         organization_uuid (Union[Unset, UUID]):
-        payment_type (Union[Unset, list[PaymentProfilesListPaymentTypeItem]]):
+        payment_type (Union[Unset, list[PaymentTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -356,10 +356,10 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesListPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> list["PaymentProfile"]:
     """Get All Pages (Async)
 
@@ -370,10 +370,10 @@ async def asyncio_all(
 
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[PaymentProfilesListOItem]]):
+        o (Union[Unset, list[PaymentProfileOEnum]]):
         organization (Union[Unset, str]):
         organization_uuid (Union[Unset, UUID]):
-        payment_type (Union[Unset, list[PaymentProfilesListPaymentTypeItem]]):
+        payment_type (Union[Unset, list[PaymentTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

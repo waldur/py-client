@@ -6,14 +6,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.event import Event
-from ...models.events_retrieve_field_item import EventsRetrieveFieldItem
+from ...models.event_field_enum import EventFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     id: int,
     *,
-    field: Union[Unset, list[EventsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -60,12 +60,12 @@ def sync_detailed(
     id: int,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Response[Event]:
     """
     Args:
         id (int):
-        field (Union[Unset, list[EventsRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -91,12 +91,12 @@ def sync(
     id: int,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Event:
     """
     Args:
         id (int):
-        field (Union[Unset, list[EventsRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -117,12 +117,12 @@ async def asyncio_detailed(
     id: int,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Response[Event]:
     """
     Args:
         id (int):
-        field (Union[Unset, list[EventsRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -146,12 +146,12 @@ async def asyncio(
     id: int,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Event:
     """
     Args:
         id (int):
-        field (Union[Unset, list[EventsRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

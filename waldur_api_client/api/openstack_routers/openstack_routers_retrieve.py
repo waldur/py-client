@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_router import OpenStackRouter
-from ...models.openstack_routers_retrieve_field_item import OpenstackRoutersRetrieveFieldItem
+from ...models.open_stack_router_field_enum import OpenStackRouterFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[OpenstackRoutersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackRoutersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
 ) -> Response[OpenStackRouter]:
     """Get router details
 
@@ -71,7 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackRoutersRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackRouterFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -97,7 +97,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackRoutersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
 ) -> OpenStackRouter:
     """Get router details
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackRoutersRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackRouterFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackRoutersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
 ) -> Response[OpenStackRouter]:
     """Get router details
 
@@ -134,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackRoutersRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackRouterFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,7 +158,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackRoutersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
 ) -> OpenStackRouter:
     """Get router details
 
@@ -166,7 +166,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackRoutersRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackRouterFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

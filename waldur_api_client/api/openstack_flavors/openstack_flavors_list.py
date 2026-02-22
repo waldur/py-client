@@ -7,8 +7,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_flavor import OpenStackFlavor
-from ...models.openstack_flavors_list_field_item import OpenstackFlavorsListFieldItem
-from ...models.openstack_flavors_list_o_item import OpenstackFlavorsListOItem
+from ...models.open_stack_flavor_field_enum import OpenStackFlavorFieldEnum
+from ...models.open_stack_flavor_o_enum import OpenStackFlavorOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -21,11 +21,11 @@ def _get_kwargs(
     disk: Union[Unset, int] = UNSET,
     disk_gte: Union[Unset, int] = UNSET,
     disk_lte: Union[Unset, int] = UNSET,
-    field: Union[Unset, list[OpenstackFlavorsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -150,11 +150,11 @@ def sync_detailed(
     disk: Union[Unset, int] = UNSET,
     disk_gte: Union[Unset, int] = UNSET,
     disk_lte: Union[Unset, int] = UNSET,
-    field: Union[Unset, list[OpenstackFlavorsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -177,11 +177,11 @@ def sync_detailed(
         disk (Union[Unset, int]):
         disk_gte (Union[Unset, int]):
         disk_lte (Union[Unset, int]):
-        field (Union[Unset, list[OpenstackFlavorsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
-        o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        o (Union[Unset, list[OpenStackFlavorOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -241,11 +241,11 @@ def sync(
     disk: Union[Unset, int] = UNSET,
     disk_gte: Union[Unset, int] = UNSET,
     disk_lte: Union[Unset, int] = UNSET,
-    field: Union[Unset, list[OpenstackFlavorsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -268,11 +268,11 @@ def sync(
         disk (Union[Unset, int]):
         disk_gte (Union[Unset, int]):
         disk_lte (Union[Unset, int]):
-        field (Union[Unset, list[OpenstackFlavorsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
-        o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        o (Union[Unset, list[OpenStackFlavorOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -327,11 +327,11 @@ async def asyncio_detailed(
     disk: Union[Unset, int] = UNSET,
     disk_gte: Union[Unset, int] = UNSET,
     disk_lte: Union[Unset, int] = UNSET,
-    field: Union[Unset, list[OpenstackFlavorsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -354,11 +354,11 @@ async def asyncio_detailed(
         disk (Union[Unset, int]):
         disk_gte (Union[Unset, int]):
         disk_lte (Union[Unset, int]):
-        field (Union[Unset, list[OpenstackFlavorsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
-        o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        o (Union[Unset, list[OpenStackFlavorOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -416,11 +416,11 @@ async def asyncio(
     disk: Union[Unset, int] = UNSET,
     disk_gte: Union[Unset, int] = UNSET,
     disk_lte: Union[Unset, int] = UNSET,
-    field: Union[Unset, list[OpenstackFlavorsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -443,11 +443,11 @@ async def asyncio(
         disk (Union[Unset, int]):
         disk_gte (Union[Unset, int]):
         disk_lte (Union[Unset, int]):
-        field (Union[Unset, list[OpenstackFlavorsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
-        o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        o (Union[Unset, list[OpenStackFlavorOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -504,11 +504,11 @@ def sync_all(
     disk: Union[Unset, int] = UNSET,
     disk_gte: Union[Unset, int] = UNSET,
     disk_lte: Union[Unset, int] = UNSET,
-    field: Union[Unset, list[OpenstackFlavorsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     ram: Union[Unset, int] = UNSET,
     ram_gte: Union[Unset, int] = UNSET,
@@ -532,11 +532,11 @@ def sync_all(
         disk (Union[Unset, int]):
         disk_gte (Union[Unset, int]):
         disk_lte (Union[Unset, int]):
-        field (Union[Unset, list[OpenstackFlavorsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
-        o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        o (Union[Unset, list[OpenStackFlavorOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         ram (Union[Unset, int]):
         ram_gte (Union[Unset, int]):
@@ -631,11 +631,11 @@ async def asyncio_all(
     disk: Union[Unset, int] = UNSET,
     disk_gte: Union[Unset, int] = UNSET,
     disk_lte: Union[Unset, int] = UNSET,
-    field: Union[Unset, list[OpenstackFlavorsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsListOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     ram: Union[Unset, int] = UNSET,
     ram_gte: Union[Unset, int] = UNSET,
@@ -659,11 +659,11 @@ async def asyncio_all(
         disk (Union[Unset, int]):
         disk_gte (Union[Unset, int]):
         disk_lte (Union[Unset, int]):
-        field (Union[Unset, list[OpenstackFlavorsListFieldItem]]):
+        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
-        o (Union[Unset, list[OpenstackFlavorsListOItem]]):
+        o (Union[Unset, list[OpenStackFlavorOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         ram (Union[Unset, int]):
         ram_gte (Union[Unset, int]):

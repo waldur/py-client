@@ -7,18 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.checklist_response import ChecklistResponse
-from ...models.onboarding_verifications_checklist_retrieve_checklist_type import (
-    OnboardingVerificationsChecklistRetrieveChecklistType,
-)
+from ...models.checklist_response_checklist_type_enum import ChecklistResponseChecklistTypeEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsChecklistRetrieveChecklistType
-    ] = OnboardingVerificationsChecklistRetrieveChecklistType.INTENT,
+    checklist_type: Union[Unset, ChecklistResponseChecklistTypeEnum] = UNSET,
     include_all: Union[Unset, bool] = False,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -67,9 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsChecklistRetrieveChecklistType
-    ] = OnboardingVerificationsChecklistRetrieveChecklistType.INTENT,
+    checklist_type: Union[Unset, ChecklistResponseChecklistTypeEnum] = UNSET,
     include_all: Union[Unset, bool] = False,
 ) -> Response[ChecklistResponse]:
     """Get checklist with questions and existing answers. Supports both customer and intent checklists via
@@ -77,8 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        checklist_type (Union[Unset, OnboardingVerificationsChecklistRetrieveChecklistType]):
-            Default: OnboardingVerificationsChecklistRetrieveChecklistType.INTENT.
+        checklist_type (Union[Unset, ChecklistResponseChecklistTypeEnum]):
         include_all (Union[Unset, bool]):  Default: False.
 
     Raises:
@@ -106,9 +99,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsChecklistRetrieveChecklistType
-    ] = OnboardingVerificationsChecklistRetrieveChecklistType.INTENT,
+    checklist_type: Union[Unset, ChecklistResponseChecklistTypeEnum] = UNSET,
     include_all: Union[Unset, bool] = False,
 ) -> ChecklistResponse:
     """Get checklist with questions and existing answers. Supports both customer and intent checklists via
@@ -116,8 +107,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        checklist_type (Union[Unset, OnboardingVerificationsChecklistRetrieveChecklistType]):
-            Default: OnboardingVerificationsChecklistRetrieveChecklistType.INTENT.
+        checklist_type (Union[Unset, ChecklistResponseChecklistTypeEnum]):
         include_all (Union[Unset, bool]):  Default: False.
 
     Raises:
@@ -140,9 +130,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsChecklistRetrieveChecklistType
-    ] = OnboardingVerificationsChecklistRetrieveChecklistType.INTENT,
+    checklist_type: Union[Unset, ChecklistResponseChecklistTypeEnum] = UNSET,
     include_all: Union[Unset, bool] = False,
 ) -> Response[ChecklistResponse]:
     """Get checklist with questions and existing answers. Supports both customer and intent checklists via
@@ -150,8 +138,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        checklist_type (Union[Unset, OnboardingVerificationsChecklistRetrieveChecklistType]):
-            Default: OnboardingVerificationsChecklistRetrieveChecklistType.INTENT.
+        checklist_type (Union[Unset, ChecklistResponseChecklistTypeEnum]):
         include_all (Union[Unset, bool]):  Default: False.
 
     Raises:
@@ -177,9 +164,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsChecklistRetrieveChecklistType
-    ] = OnboardingVerificationsChecklistRetrieveChecklistType.INTENT,
+    checklist_type: Union[Unset, ChecklistResponseChecklistTypeEnum] = UNSET,
     include_all: Union[Unset, bool] = False,
 ) -> ChecklistResponse:
     """Get checklist with questions and existing answers. Supports both customer and intent checklists via
@@ -187,8 +172,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        checklist_type (Union[Unset, OnboardingVerificationsChecklistRetrieveChecklistType]):
-            Default: OnboardingVerificationsChecklistRetrieveChecklistType.INTENT.
+        checklist_type (Union[Unset, ChecklistResponseChecklistTypeEnum]):
         include_all (Union[Unset, bool]):  Default: False.
 
     Raises:

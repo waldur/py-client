@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.user_agreements_count_agreement_type import UserAgreementsCountAgreementType
+from ...models.agreement_type_enum import AgreementTypeEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    agreement_type: Union[Unset, UserAgreementsCountAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -70,7 +70,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    agreement_type: Union[Unset, UserAgreementsCountAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -80,7 +80,7 @@ def sync_detailed(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        agreement_type (Union[Unset, UserAgreementsCountAgreementType]):
+        agreement_type (Union[Unset, AgreementTypeEnum]):
         language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -110,7 +110,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    agreement_type: Union[Unset, UserAgreementsCountAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -120,7 +120,7 @@ def sync(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        agreement_type (Union[Unset, UserAgreementsCountAgreementType]):
+        agreement_type (Union[Unset, AgreementTypeEnum]):
         language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -145,7 +145,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    agreement_type: Union[Unset, UserAgreementsCountAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -155,7 +155,7 @@ async def asyncio_detailed(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        agreement_type (Union[Unset, UserAgreementsCountAgreementType]):
+        agreement_type (Union[Unset, AgreementTypeEnum]):
         language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -183,7 +183,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    agreement_type: Union[Unset, UserAgreementsCountAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -193,7 +193,7 @@ async def asyncio(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        agreement_type (Union[Unset, UserAgreementsCountAgreementType]):
+        agreement_type (Union[Unset, AgreementTypeEnum]):
         language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

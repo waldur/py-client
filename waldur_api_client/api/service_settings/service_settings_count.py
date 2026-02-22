@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.service_settings_count_state_item import ServiceSettingsCountStateItem
+from ...models.core_states import CoreStates
 from ...types import UNSET, Response, Unset
 
 
@@ -22,7 +22,7 @@ def _get_kwargs(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -114,7 +114,7 @@ def sync_detailed(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -130,7 +130,7 @@ def sync_detailed(
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[ServiceSettingsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -176,7 +176,7 @@ def sync(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -192,7 +192,7 @@ def sync(
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[ServiceSettingsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -233,7 +233,7 @@ async def asyncio_detailed(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -249,7 +249,7 @@ async def asyncio_detailed(
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[ServiceSettingsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -293,7 +293,7 @@ async def asyncio(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -309,7 +309,7 @@ async def asyncio(
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[ServiceSettingsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         type_ (Union[Unset, str]):
 
     Raises:

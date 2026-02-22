@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.allocation import Allocation
-from ...models.openportal_allocations_retrieve_field_item import OpenportalAllocationsRetrieveFieldItem
+from ...models.allocation_field_enum import AllocationFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[OpenportalAllocationsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AllocationFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenportalAllocationsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AllocationFieldEnum]] = UNSET,
 ) -> Response[Allocation]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenportalAllocationsRetrieveFieldItem]]):
+        field (Union[Unset, list[AllocationFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenportalAllocationsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AllocationFieldEnum]] = UNSET,
 ) -> Allocation:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenportalAllocationsRetrieveFieldItem]]):
+        field (Union[Unset, list[AllocationFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenportalAllocationsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AllocationFieldEnum]] = UNSET,
 ) -> Response[Allocation]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenportalAllocationsRetrieveFieldItem]]):
+        field (Union[Unset, list[AllocationFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenportalAllocationsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AllocationFieldEnum]] = UNSET,
 ) -> Allocation:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenportalAllocationsRetrieveFieldItem]]):
+        field (Union[Unset, list[AllocationFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

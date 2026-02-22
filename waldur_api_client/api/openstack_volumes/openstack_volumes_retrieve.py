@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_volume import OpenStackVolume
-from ...models.openstack_volumes_retrieve_field_item import OpenstackVolumesRetrieveFieldItem
+from ...models.open_stack_volume_field_enum import OpenStackVolumeFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[OpenstackVolumesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackVolumeFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackVolumesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackVolumeFieldEnum]] = UNSET,
 ) -> Response[OpenStackVolume]:
     """Get volume details
 
@@ -71,7 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackVolumesRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackVolumeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -97,7 +97,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackVolumesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackVolumeFieldEnum]] = UNSET,
 ) -> OpenStackVolume:
     """Get volume details
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackVolumesRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackVolumeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackVolumesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackVolumeFieldEnum]] = UNSET,
 ) -> Response[OpenStackVolume]:
     """Get volume details
 
@@ -134,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackVolumesRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackVolumeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,7 +158,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackVolumesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackVolumeFieldEnum]] = UNSET,
 ) -> OpenStackVolume:
     """Get volume details
 
@@ -166,7 +166,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackVolumesRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackVolumeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

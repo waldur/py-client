@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.support_issues_count_o_item import SupportIssuesCountOItem
+from ...models.issue_o_enum import IssueOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -19,7 +19,7 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     key: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SupportIssuesCountOItem]] = UNSET,
+    o: Union[Unset, list[IssueOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
@@ -150,7 +150,7 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     key: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SupportIssuesCountOItem]] = UNSET,
+    o: Union[Unset, list[IssueOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
@@ -178,7 +178,7 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         key (Union[Unset, str]):
-        o (Union[Unset, list[SupportIssuesCountOItem]]):
+        o (Union[Unset, list[IssueOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
@@ -248,7 +248,7 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     key: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SupportIssuesCountOItem]] = UNSET,
+    o: Union[Unset, list[IssueOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
@@ -276,7 +276,7 @@ def sync(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         key (Union[Unset, str]):
-        o (Union[Unset, list[SupportIssuesCountOItem]]):
+        o (Union[Unset, list[IssueOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
@@ -341,7 +341,7 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     key: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SupportIssuesCountOItem]] = UNSET,
+    o: Union[Unset, list[IssueOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
@@ -369,7 +369,7 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         key (Union[Unset, str]):
-        o (Union[Unset, list[SupportIssuesCountOItem]]):
+        o (Union[Unset, list[IssueOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
@@ -437,7 +437,7 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     key: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SupportIssuesCountOItem]] = UNSET,
+    o: Union[Unset, list[IssueOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
@@ -465,7 +465,7 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         key (Union[Unset, str]):
-        o (Union[Unset, list[SupportIssuesCountOItem]]):
+        o (Union[Unset, list[IssueOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):

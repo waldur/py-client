@@ -6,21 +6,21 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.open_stack_router import OpenStackRouter
-from ...models.openstack_routers_list_field_item import OpenstackRoutersListFieldItem
-from ...models.openstack_routers_list_state_item import OpenstackRoutersListStateItem
+from ...models.open_stack_router_field_enum import OpenStackRouterFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[OpenstackRoutersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[OpenstackRoutersListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -99,12 +99,12 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackRoutersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[OpenstackRoutersListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackRouter"]]:
@@ -113,12 +113,12 @@ def sync_detailed(
      Get a list of routers.
 
     Args:
-        field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
+        field (Union[Unset, list[OpenStackRouterFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[OpenstackRoutersListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -151,12 +151,12 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackRoutersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[OpenstackRoutersListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackRouter"]:
@@ -165,12 +165,12 @@ def sync(
      Get a list of routers.
 
     Args:
-        field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
+        field (Union[Unset, list[OpenStackRouterFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[OpenstackRoutersListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -198,12 +198,12 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackRoutersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[OpenstackRoutersListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackRouter"]]:
@@ -212,12 +212,12 @@ async def asyncio_detailed(
      Get a list of routers.
 
     Args:
-        field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
+        field (Union[Unset, list[OpenStackRouterFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[OpenstackRoutersListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -248,12 +248,12 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackRoutersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[OpenstackRoutersListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackRouter"]:
@@ -262,12 +262,12 @@ async def asyncio(
      Get a list of routers.
 
     Args:
-        field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
+        field (Union[Unset, list[OpenStackRouterFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[OpenstackRoutersListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -297,10 +297,10 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackRoutersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[OpenstackRoutersListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackRouter"]:
@@ -312,10 +312,10 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
+        field (Union[Unset, list[OpenStackRouterFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        state (Union[Unset, list[OpenstackRoutersListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 
@@ -385,10 +385,10 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackRoutersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackRouterFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[OpenstackRoutersListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackRouter"]:
@@ -400,10 +400,10 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[OpenstackRoutersListFieldItem]]):
+        field (Union[Unset, list[OpenStackRouterFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        state (Union[Unset, list[OpenstackRoutersListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
 

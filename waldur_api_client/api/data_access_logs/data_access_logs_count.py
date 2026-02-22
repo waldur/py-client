@@ -7,17 +7,17 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.data_access_logs_count_accessor_type import DataAccessLogsCountAccessorType
-from ...models.data_access_logs_count_o_item import DataAccessLogsCountOItem
+from ...models.accessor_type_enum import AccessorTypeEnum
+from ...models.global_user_data_access_log_o_enum import GlobalUserDataAccessLogOEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    accessor_type: Union[Unset, DataAccessLogsCountAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsCountOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -107,10 +107,10 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    accessor_type: Union[Unset, DataAccessLogsCountAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsCountOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -120,10 +120,10 @@ def sync_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        accessor_type (Union[Unset, DataAccessLogsCountAccessorType]):
+        accessor_type (Union[Unset, AccessorTypeEnum]):
         accessor_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[DataAccessLogsCountOItem]]):
+        o (Union[Unset, list[GlobalUserDataAccessLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -160,10 +160,10 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    accessor_type: Union[Unset, DataAccessLogsCountAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsCountOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -173,10 +173,10 @@ def sync(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        accessor_type (Union[Unset, DataAccessLogsCountAccessorType]):
+        accessor_type (Union[Unset, AccessorTypeEnum]):
         accessor_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[DataAccessLogsCountOItem]]):
+        o (Union[Unset, list[GlobalUserDataAccessLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -208,10 +208,10 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    accessor_type: Union[Unset, DataAccessLogsCountAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsCountOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -221,10 +221,10 @@ async def asyncio_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        accessor_type (Union[Unset, DataAccessLogsCountAccessorType]):
+        accessor_type (Union[Unset, AccessorTypeEnum]):
         accessor_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[DataAccessLogsCountOItem]]):
+        o (Union[Unset, list[GlobalUserDataAccessLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -259,10 +259,10 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    accessor_type: Union[Unset, DataAccessLogsCountAccessorType] = UNSET,
+    accessor_type: Union[Unset, AccessorTypeEnum] = UNSET,
     accessor_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[DataAccessLogsCountOItem]] = UNSET,
+    o: Union[Unset, list[GlobalUserDataAccessLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -272,10 +272,10 @@ async def asyncio(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        accessor_type (Union[Unset, DataAccessLogsCountAccessorType]):
+        accessor_type (Union[Unset, AccessorTypeEnum]):
         accessor_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        o (Union[Unset, list[DataAccessLogsCountOItem]]):
+        o (Union[Unset, list[GlobalUserDataAccessLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):

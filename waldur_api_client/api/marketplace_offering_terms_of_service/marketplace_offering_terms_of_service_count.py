@@ -6,14 +6,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_offering_terms_of_service_count_o_item import MarketplaceOfferingTermsOfServiceCountOItem
+from ...models.offering_terms_of_service_o_enum import OfferingTermsOfServiceOEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingTermsOfServiceCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingTermsOfServiceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -90,7 +90,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingTermsOfServiceCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingTermsOfServiceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -104,7 +104,7 @@ def sync_detailed(
 
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[MarketplaceOfferingTermsOfServiceCountOItem]]):
+        o (Union[Unset, list[OfferingTermsOfServiceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -142,7 +142,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingTermsOfServiceCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingTermsOfServiceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -156,7 +156,7 @@ def sync(
 
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[MarketplaceOfferingTermsOfServiceCountOItem]]):
+        o (Union[Unset, list[OfferingTermsOfServiceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -189,7 +189,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingTermsOfServiceCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingTermsOfServiceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -203,7 +203,7 @@ async def asyncio_detailed(
 
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[MarketplaceOfferingTermsOfServiceCountOItem]]):
+        o (Union[Unset, list[OfferingTermsOfServiceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -239,7 +239,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingTermsOfServiceCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingTermsOfServiceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -253,7 +253,7 @@ async def asyncio(
 
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[MarketplaceOfferingTermsOfServiceCountOItem]]):
+        o (Union[Unset, list[OfferingTermsOfServiceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):

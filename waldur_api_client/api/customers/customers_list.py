@@ -7,7 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.customer import Customer
-from ...models.customers_list_field_item import CustomersListFieldItem
+from ...models.customer_field_enum import CustomerFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -21,7 +21,7 @@ def _get_kwargs(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[CustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -156,7 +156,7 @@ def sync_detailed(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[CustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -186,7 +186,7 @@ def sync_detailed(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[CustomersListFieldItem]]):
+        field (Union[Unset, list[CustomerFieldEnum]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
@@ -256,7 +256,7 @@ def sync(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[CustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -286,7 +286,7 @@ def sync(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[CustomersListFieldItem]]):
+        field (Union[Unset, list[CustomerFieldEnum]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
@@ -351,7 +351,7 @@ async def asyncio_detailed(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[CustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -381,7 +381,7 @@ async def asyncio_detailed(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[CustomersListFieldItem]]):
+        field (Union[Unset, list[CustomerFieldEnum]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
@@ -449,7 +449,7 @@ async def asyncio(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[CustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -479,7 +479,7 @@ async def asyncio(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[CustomersListFieldItem]]):
+        field (Union[Unset, list[CustomerFieldEnum]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
@@ -546,7 +546,7 @@ def sync_all(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[CustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -577,7 +577,7 @@ def sync_all(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[CustomersListFieldItem]]):
+        field (Union[Unset, list[CustomerFieldEnum]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
@@ -682,7 +682,7 @@ async def asyncio_all(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[CustomersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -713,7 +713,7 @@ async def asyncio_all(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        field (Union[Unset, list[CustomersListFieldItem]]):
+        field (Union[Unset, list[CustomerFieldEnum]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):

@@ -8,7 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.agent_service import AgentService
-from ...models.marketplace_site_agent_services_list_state_item import MarketplaceSiteAgentServicesListStateItem
+from ...models.agent_service_state_enum import AgentServiceStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -22,7 +22,7 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -105,7 +105,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> Response[list["AgentService"]]:
     """
     Args:
@@ -116,7 +116,7 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         stale (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]]):
+        state (Union[Unset, list[AgentServiceStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -154,7 +154,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> list["AgentService"]:
     """
     Args:
@@ -165,7 +165,7 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         stale (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]]):
+        state (Union[Unset, list[AgentServiceStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -198,7 +198,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> Response[list["AgentService"]]:
     """
     Args:
@@ -209,7 +209,7 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         stale (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]]):
+        state (Union[Unset, list[AgentServiceStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -245,7 +245,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> list["AgentService"]:
     """
     Args:
@@ -256,7 +256,7 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         stale (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]]):
+        state (Union[Unset, list[AgentServiceStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -289,7 +289,7 @@ def sync_all(
     modified_after: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> list["AgentService"]:
     """Get All Pages
 
@@ -304,7 +304,7 @@ def sync_all(
         modified_after (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         stale (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]]):
+        state (Union[Unset, list[AgentServiceStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -377,7 +377,7 @@ async def asyncio_all(
     modified_after: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     stale: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]] = UNSET,
+    state: Union[Unset, list[AgentServiceStateEnum]] = UNSET,
 ) -> list["AgentService"]:
     """Get All Pages (Async)
 
@@ -392,7 +392,7 @@ async def asyncio_all(
         modified_after (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         stale (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplaceSiteAgentServicesListStateItem]]):
+        state (Union[Unset, list[AgentServiceStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

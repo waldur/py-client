@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.slurm_allocation import SlurmAllocation
-from ...models.slurm_allocations_retrieve_field_item import SlurmAllocationsRetrieveFieldItem
+from ...models.slurm_allocation_field_enum import SlurmAllocationFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[SlurmAllocationsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[SlurmAllocationFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,12 +63,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SlurmAllocationsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[SlurmAllocationFieldEnum]] = UNSET,
 ) -> Response[SlurmAllocation]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SlurmAllocationsRetrieveFieldItem]]):
+        field (Union[Unset, list[SlurmAllocationFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,12 +94,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SlurmAllocationsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[SlurmAllocationFieldEnum]] = UNSET,
 ) -> SlurmAllocation:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SlurmAllocationsRetrieveFieldItem]]):
+        field (Union[Unset, list[SlurmAllocationFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -120,12 +120,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SlurmAllocationsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[SlurmAllocationFieldEnum]] = UNSET,
 ) -> Response[SlurmAllocation]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SlurmAllocationsRetrieveFieldItem]]):
+        field (Union[Unset, list[SlurmAllocationFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,12 +149,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SlurmAllocationsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[SlurmAllocationFieldEnum]] = UNSET,
 ) -> SlurmAllocation:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SlurmAllocationsRetrieveFieldItem]]):
+        field (Union[Unset, list[SlurmAllocationFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

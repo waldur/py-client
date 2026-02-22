@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.rancher_apps_count_state_item import RancherAppsCountStateItem
+from ...models.core_states import CoreStates
 from ...types import UNSET, Response, Unset
 
 
@@ -32,7 +32,7 @@ def _get_kwargs(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -178,7 +178,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -205,7 +205,7 @@ def sync_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherAppsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         template_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 
@@ -273,7 +273,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -300,7 +300,7 @@ def sync(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherAppsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         template_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 
@@ -363,7 +363,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -390,7 +390,7 @@ async def asyncio_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherAppsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         template_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 
@@ -456,7 +456,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -483,7 +483,7 @@ async def asyncio(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherAppsCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         template_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 

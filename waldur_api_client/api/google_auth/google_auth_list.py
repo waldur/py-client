@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.google_auth_list_field_item import GoogleAuthListFieldItem
 from ...models.google_credentials import GoogleCredentials
+from ...models.google_credentials_field_enum import GoogleCredentialsFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[GoogleAuthListFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
     has_credentials: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -77,14 +77,14 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[GoogleAuthListFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
     has_credentials: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["GoogleCredentials"]]:
     """
     Args:
-        field (Union[Unset, list[GoogleAuthListFieldItem]]):
+        field (Union[Unset, list[GoogleCredentialsFieldEnum]]):
         has_credentials (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -114,14 +114,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[GoogleAuthListFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
     has_credentials: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["GoogleCredentials"]:
     """
     Args:
-        field (Union[Unset, list[GoogleAuthListFieldItem]]):
+        field (Union[Unset, list[GoogleCredentialsFieldEnum]]):
         has_credentials (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -146,14 +146,14 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[GoogleAuthListFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
     has_credentials: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["GoogleCredentials"]]:
     """
     Args:
-        field (Union[Unset, list[GoogleAuthListFieldItem]]):
+        field (Union[Unset, list[GoogleCredentialsFieldEnum]]):
         has_credentials (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -181,14 +181,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[GoogleAuthListFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
     has_credentials: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["GoogleCredentials"]:
     """
     Args:
-        field (Union[Unset, list[GoogleAuthListFieldItem]]):
+        field (Union[Unset, list[GoogleCredentialsFieldEnum]]):
         has_credentials (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -215,7 +215,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[GoogleAuthListFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
     has_credentials: Union[Unset, bool] = UNSET,
 ) -> list["GoogleCredentials"]:
     """Get All Pages
@@ -226,7 +226,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[GoogleAuthListFieldItem]]):
+        field (Union[Unset, list[GoogleCredentialsFieldEnum]]):
         has_credentials (Union[Unset, bool]):
 
     Raises:
@@ -291,7 +291,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[GoogleAuthListFieldItem]] = UNSET,
+    field: Union[Unset, list[GoogleCredentialsFieldEnum]] = UNSET,
     has_credentials: Union[Unset, bool] = UNSET,
 ) -> list["GoogleCredentials"]:
     """Get All Pages (Async)
@@ -302,7 +302,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[GoogleAuthListFieldItem]]):
+        field (Union[Unset, list[GoogleCredentialsFieldEnum]]):
         has_credentials (Union[Unset, bool]):
 
     Raises:

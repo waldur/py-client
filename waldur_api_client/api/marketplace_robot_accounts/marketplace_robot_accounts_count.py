@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_robot_accounts_count_state import MarketplaceRobotAccountsCountState
+from ...models.remote_resource_sync_status_remote_state_enum import RemoteResourceSyncStatusRemoteStateEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -22,7 +22,7 @@ def _get_kwargs(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsCountState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -120,7 +120,7 @@ def sync_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsCountState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List robot accounts
@@ -137,7 +137,7 @@ def sync_detailed(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
-        state (Union[Unset, MarketplaceRobotAccountsCountState]):
+        state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -181,7 +181,7 @@ def sync(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsCountState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> int:
     """List robot accounts
@@ -198,7 +198,7 @@ def sync(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
-        state (Union[Unset, MarketplaceRobotAccountsCountState]):
+        state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -237,7 +237,7 @@ async def asyncio_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsCountState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List robot accounts
@@ -254,7 +254,7 @@ async def asyncio_detailed(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
-        state (Union[Unset, MarketplaceRobotAccountsCountState]):
+        state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -296,7 +296,7 @@ async def asyncio(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsCountState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> int:
     """List robot accounts
@@ -313,7 +313,7 @@ async def asyncio(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
-        state (Union[Unset, MarketplaceRobotAccountsCountState]):
+        state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
 
     Raises:

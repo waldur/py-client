@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.expertise_categories_list_o_item import ExpertiseCategoriesListOItem
 from ...models.expertise_category import ExpertiseCategory
+from ...models.expertise_category_o_enum import ExpertiseCategoryOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,7 +17,7 @@ def _get_kwargs(
     code: Union[Unset, str] = UNSET,
     level: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ExpertiseCategoriesListOItem]] = UNSET,
+    o: Union[Unset, list[ExpertiseCategoryOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
@@ -93,7 +93,7 @@ def sync_detailed(
     code: Union[Unset, str] = UNSET,
     level: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ExpertiseCategoriesListOItem]] = UNSET,
+    o: Union[Unset, list[ExpertiseCategoryOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
@@ -103,7 +103,7 @@ def sync_detailed(
         code (Union[Unset, str]):
         level (Union[Unset, int]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ExpertiseCategoriesListOItem]]):
+        o (Union[Unset, list[ExpertiseCategoryOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_uuid (Union[Unset, UUID]):
@@ -139,7 +139,7 @@ def sync(
     code: Union[Unset, str] = UNSET,
     level: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ExpertiseCategoriesListOItem]] = UNSET,
+    o: Union[Unset, list[ExpertiseCategoryOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
@@ -149,7 +149,7 @@ def sync(
         code (Union[Unset, str]):
         level (Union[Unset, int]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ExpertiseCategoriesListOItem]]):
+        o (Union[Unset, list[ExpertiseCategoryOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_uuid (Union[Unset, UUID]):
@@ -180,7 +180,7 @@ async def asyncio_detailed(
     code: Union[Unset, str] = UNSET,
     level: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ExpertiseCategoriesListOItem]] = UNSET,
+    o: Union[Unset, list[ExpertiseCategoryOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
@@ -190,7 +190,7 @@ async def asyncio_detailed(
         code (Union[Unset, str]):
         level (Union[Unset, int]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ExpertiseCategoriesListOItem]]):
+        o (Union[Unset, list[ExpertiseCategoryOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_uuid (Union[Unset, UUID]):
@@ -224,7 +224,7 @@ async def asyncio(
     code: Union[Unset, str] = UNSET,
     level: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ExpertiseCategoriesListOItem]] = UNSET,
+    o: Union[Unset, list[ExpertiseCategoryOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
@@ -234,7 +234,7 @@ async def asyncio(
         code (Union[Unset, str]):
         level (Union[Unset, int]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ExpertiseCategoriesListOItem]]):
+        o (Union[Unset, list[ExpertiseCategoryOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_uuid (Union[Unset, UUID]):
@@ -267,7 +267,7 @@ def sync_all(
     code: Union[Unset, str] = UNSET,
     level: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ExpertiseCategoriesListOItem]] = UNSET,
+    o: Union[Unset, list[ExpertiseCategoryOEnum]] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ExpertiseCategory"]:
     """Get All Pages
@@ -281,7 +281,7 @@ def sync_all(
         code (Union[Unset, str]):
         level (Union[Unset, int]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ExpertiseCategoriesListOItem]]):
+        o (Union[Unset, list[ExpertiseCategoryOEnum]]):
         parent_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -352,7 +352,7 @@ async def asyncio_all(
     code: Union[Unset, str] = UNSET,
     level: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ExpertiseCategoriesListOItem]] = UNSET,
+    o: Union[Unset, list[ExpertiseCategoryOEnum]] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ExpertiseCategory"]:
     """Get All Pages (Async)
@@ -366,7 +366,7 @@ async def asyncio_all(
         code (Union[Unset, str]):
         level (Union[Unset, int]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ExpertiseCategoriesListOItem]]):
+        o (Union[Unset, list[ExpertiseCategoryOEnum]]):
         parent_uuid (Union[Unset, UUID]):
 
     Raises:

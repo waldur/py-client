@@ -8,8 +8,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.customer_user import CustomerUser
-from ...models.customers_users_list_field_item import CustomersUsersListFieldItem
-from ...models.customers_users_list_o import CustomersUsersListO
+from ...models.customer_user_field_enum import CustomerUserFieldEnum
+from ...models.customer_user_o_enum import CustomerUserOEnum
 from ...models.customers_users_list_organization_role_item_type_0 import CustomersUsersListOrganizationRoleItemType0
 from ...models.customers_users_list_project_role_item_type_0 import CustomersUsersListProjectRoleItemType0
 from ...types import UNSET, Response, Unset
@@ -24,13 +24,13 @@ def _get_kwargs(
     date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[CustomersUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerUserFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, CustomersUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_role: Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0, str]]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -173,13 +173,13 @@ def sync_detailed(
     date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[CustomersUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerUserFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, CustomersUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_role: Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0, str]]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -202,13 +202,13 @@ def sync_detailed(
         date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
-        field (Union[Unset, list[CustomersUsersListFieldItem]]):
+        field (Union[Unset, list[CustomerUserFieldEnum]]):
         full_name (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, CustomersUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         organization_role (Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0,
             str]]]):
@@ -269,13 +269,13 @@ def sync(
     date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[CustomersUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerUserFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, CustomersUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_role: Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0, str]]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -298,13 +298,13 @@ def sync(
         date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
-        field (Union[Unset, list[CustomersUsersListFieldItem]]):
+        field (Union[Unset, list[CustomerUserFieldEnum]]):
         full_name (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, CustomersUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         organization_role (Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0,
             str]]]):
@@ -360,13 +360,13 @@ async def asyncio_detailed(
     date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[CustomersUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerUserFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, CustomersUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_role: Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0, str]]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -389,13 +389,13 @@ async def asyncio_detailed(
         date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
-        field (Union[Unset, list[CustomersUsersListFieldItem]]):
+        field (Union[Unset, list[CustomerUserFieldEnum]]):
         full_name (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, CustomersUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         organization_role (Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0,
             str]]]):
@@ -454,13 +454,13 @@ async def asyncio(
     date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[CustomersUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerUserFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, CustomersUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_role: Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0, str]]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -483,13 +483,13 @@ async def asyncio(
         date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
-        field (Union[Unset, list[CustomersUsersListFieldItem]]):
+        field (Union[Unset, list[CustomerUserFieldEnum]]):
         full_name (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, CustomersUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         organization_role (Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0,
             str]]]):
@@ -547,13 +547,13 @@ def sync_all(
     date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[CustomersUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerUserFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, CustomersUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_role: Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0, str]]] = UNSET,
     phone_number: Union[Unset, str] = UNSET,
@@ -576,13 +576,13 @@ def sync_all(
         date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
-        field (Union[Unset, list[CustomersUsersListFieldItem]]):
+        field (Union[Unset, list[CustomerUserFieldEnum]]):
         full_name (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, CustomersUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         organization_role (Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0,
         str]]]):
@@ -678,13 +678,13 @@ async def asyncio_all(
     date_joined: Union[Unset, datetime.datetime] = UNSET,
     description: Union[Unset, str] = UNSET,
     email: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[CustomersUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerUserFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, CustomersUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_role: Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0, str]]] = UNSET,
     phone_number: Union[Unset, str] = UNSET,
@@ -707,13 +707,13 @@ async def asyncio_all(
         date_joined (Union[Unset, datetime.datetime]):
         description (Union[Unset, str]):
         email (Union[Unset, str]):
-        field (Union[Unset, list[CustomersUsersListFieldItem]]):
+        field (Union[Unset, list[CustomerUserFieldEnum]]):
         full_name (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, CustomersUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         organization_role (Union[Unset, list[Union[CustomersUsersListOrganizationRoleItemType0,
         str]]]):

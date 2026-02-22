@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.open_stack_backup import OpenStackBackup
-from ...models.openstack_backups_list_field_item import OpenstackBackupsListFieldItem
-from ...models.openstack_backups_list_state_item import OpenstackBackupsListStateItem
+from ...models.open_stack_backup_field_enum import OpenStackBackupFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -24,7 +24,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackBackupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
     instance: Union[Unset, str] = UNSET,
     instance_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -36,7 +36,7 @@ def _get_kwargs(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackBackupsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -180,7 +180,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackBackupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
     instance: Union[Unset, str] = UNSET,
     instance_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -192,7 +192,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackBackupsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -211,7 +211,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackBackupsListFieldItem]]):
+        field (Union[Unset, list[OpenStackBackupFieldEnum]]):
         instance (Union[Unset, str]):
         instance_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -223,7 +223,7 @@ def sync_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackBackupsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -283,7 +283,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackBackupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
     instance: Union[Unset, str] = UNSET,
     instance_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -295,7 +295,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackBackupsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -314,7 +314,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackBackupsListFieldItem]]):
+        field (Union[Unset, list[OpenStackBackupFieldEnum]]):
         instance (Union[Unset, str]):
         instance_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -326,7 +326,7 @@ def sync(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackBackupsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -381,7 +381,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackBackupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
     instance: Union[Unset, str] = UNSET,
     instance_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -393,7 +393,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackBackupsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -412,7 +412,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackBackupsListFieldItem]]):
+        field (Union[Unset, list[OpenStackBackupFieldEnum]]):
         instance (Union[Unset, str]):
         instance_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -424,7 +424,7 @@ async def asyncio_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackBackupsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -482,7 +482,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackBackupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
     instance: Union[Unset, str] = UNSET,
     instance_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -494,7 +494,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackBackupsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -513,7 +513,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackBackupsListFieldItem]]):
+        field (Union[Unset, list[OpenStackBackupFieldEnum]]):
         instance (Union[Unset, str]):
         instance_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -525,7 +525,7 @@ async def asyncio(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackBackupsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -582,7 +582,7 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackBackupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
     instance: Union[Unset, str] = UNSET,
     instance_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -592,7 +592,7 @@ def sync_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackBackupsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -614,7 +614,7 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackBackupsListFieldItem]]):
+        field (Union[Unset, list[OpenStackBackupFieldEnum]]):
         instance (Union[Unset, str]):
         instance_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -624,7 +624,7 @@ def sync_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackBackupsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -721,7 +721,7 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackBackupsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
     instance: Union[Unset, str] = UNSET,
     instance_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -731,7 +731,7 @@ async def asyncio_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackBackupsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -753,7 +753,7 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackBackupsListFieldItem]]):
+        field (Union[Unset, list[OpenStackBackupFieldEnum]]):
         instance (Union[Unset, str]):
         instance_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
@@ -763,7 +763,7 @@ async def asyncio_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackBackupsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):

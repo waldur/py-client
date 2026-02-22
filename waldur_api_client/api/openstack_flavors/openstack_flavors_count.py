@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.openstack_flavors_count_o_item import OpenstackFlavorsCountOItem
+from ...models.open_stack_flavor_o_enum import OpenStackFlavorOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -21,7 +21,7 @@ def _get_kwargs(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsCountOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -140,7 +140,7 @@ def sync_detailed(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsCountOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -166,7 +166,7 @@ def sync_detailed(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
-        o (Union[Unset, list[OpenstackFlavorsCountOItem]]):
+        o (Union[Unset, list[OpenStackFlavorOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -228,7 +228,7 @@ def sync(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsCountOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -254,7 +254,7 @@ def sync(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
-        o (Union[Unset, list[OpenstackFlavorsCountOItem]]):
+        o (Union[Unset, list[OpenStackFlavorOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -311,7 +311,7 @@ async def asyncio_detailed(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsCountOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -337,7 +337,7 @@ async def asyncio_detailed(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
-        o (Union[Unset, list[OpenstackFlavorsCountOItem]]):
+        o (Union[Unset, list[OpenStackFlavorOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -397,7 +397,7 @@ async def asyncio(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     name_iregex: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[OpenstackFlavorsCountOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackFlavorOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -423,7 +423,7 @@ async def asyncio(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         name_iregex (Union[Unset, str]):
-        o (Union[Unset, list[OpenstackFlavorsCountOItem]]):
+        o (Union[Unset, list[OpenStackFlavorOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):

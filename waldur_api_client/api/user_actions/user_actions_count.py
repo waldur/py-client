@@ -7,7 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.user_actions_count_urgency import UserActionsCountUrgency
+from ...models.urgency_enum import UrgencyEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -23,7 +23,7 @@ def _get_kwargs(
     overdue: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    urgency: Union[Unset, UserActionsCountUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -115,7 +115,7 @@ def sync_detailed(
     overdue: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    urgency: Union[Unset, UserActionsCountUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -131,7 +131,7 @@ def sync_detailed(
         overdue (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        urgency (Union[Unset, UserActionsCountUrgency]):
+        urgency (Union[Unset, UrgencyEnum]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -177,7 +177,7 @@ def sync(
     overdue: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    urgency: Union[Unset, UserActionsCountUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -193,7 +193,7 @@ def sync(
         overdue (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        urgency (Union[Unset, UserActionsCountUrgency]):
+        urgency (Union[Unset, UrgencyEnum]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -234,7 +234,7 @@ async def asyncio_detailed(
     overdue: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    urgency: Union[Unset, UserActionsCountUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -250,7 +250,7 @@ async def asyncio_detailed(
         overdue (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        urgency (Union[Unset, UserActionsCountUrgency]):
+        urgency (Union[Unset, UrgencyEnum]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -294,7 +294,7 @@ async def asyncio(
     overdue: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    urgency: Union[Unset, UserActionsCountUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -310,7 +310,7 @@ async def asyncio(
         overdue (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        urgency (Union[Unset, UserActionsCountUrgency]):
+        urgency (Union[Unset, UrgencyEnum]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:

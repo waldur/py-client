@@ -7,7 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.maintenance_announcement_template import MaintenanceAnnouncementTemplate
-from ...models.maintenance_announcements_template_list_o_item import MaintenanceAnnouncementsTemplateListOItem
+from ...models.maintenance_announcement_template_o_enum import MaintenanceAnnouncementTemplateOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -15,7 +15,7 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
@@ -85,7 +85,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
@@ -96,7 +96,7 @@ def sync_detailed(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         service_provider_uuid (Union[Unset, UUID]):
@@ -128,7 +128,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
@@ -139,7 +139,7 @@ def sync(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         service_provider_uuid (Union[Unset, UUID]):
@@ -166,7 +166,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
@@ -177,7 +177,7 @@ async def asyncio_detailed(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         service_provider_uuid (Union[Unset, UUID]):
@@ -207,7 +207,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
@@ -218,7 +218,7 @@ async def asyncio(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         service_provider_uuid (Union[Unset, UUID]):
@@ -247,7 +247,7 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["MaintenanceAnnouncementTemplate"]:
     """Get All Pages
@@ -259,7 +259,7 @@ def sync_all(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         service_provider_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -326,7 +326,7 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     maintenance_type: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["MaintenanceAnnouncementTemplate"]:
     """Get All Pages (Async)
@@ -338,7 +338,7 @@ async def asyncio_all(
 
     Args:
         maintenance_type (Union[Unset, int]):
-        o (Union[Unset, list[MaintenanceAnnouncementsTemplateListOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         service_provider_uuid (Union[Unset, UUID]):
 
     Raises:

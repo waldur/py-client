@@ -7,16 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.affinity_matrix_response import AffinityMatrixResponse
-from ...models.proposal_protected_calls_affinity_matrix_retrieve_scope import (
-    ProposalProtectedCallsAffinityMatrixRetrieveScope,
-)
+from ...models.affinity_matrix_response_scope_enum import AffinityMatrixResponseScopeEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    scope: Union[Unset, ProposalProtectedCallsAffinityMatrixRetrieveScope] = UNSET,
+    scope: Union[Unset, AffinityMatrixResponseScopeEnum] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -62,13 +60,13 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    scope: Union[Unset, ProposalProtectedCallsAffinityMatrixRetrieveScope] = UNSET,
+    scope: Union[Unset, AffinityMatrixResponseScopeEnum] = UNSET,
 ) -> Response[AffinityMatrixResponse]:
     """Get affinity matrix for reviewer-proposal matching.
 
     Args:
         uuid (UUID):
-        scope (Union[Unset, ProposalProtectedCallsAffinityMatrixRetrieveScope]):
+        scope (Union[Unset, AffinityMatrixResponseScopeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,13 +92,13 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    scope: Union[Unset, ProposalProtectedCallsAffinityMatrixRetrieveScope] = UNSET,
+    scope: Union[Unset, AffinityMatrixResponseScopeEnum] = UNSET,
 ) -> AffinityMatrixResponse:
     """Get affinity matrix for reviewer-proposal matching.
 
     Args:
         uuid (UUID):
-        scope (Union[Unset, ProposalProtectedCallsAffinityMatrixRetrieveScope]):
+        scope (Union[Unset, AffinityMatrixResponseScopeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -121,13 +119,13 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    scope: Union[Unset, ProposalProtectedCallsAffinityMatrixRetrieveScope] = UNSET,
+    scope: Union[Unset, AffinityMatrixResponseScopeEnum] = UNSET,
 ) -> Response[AffinityMatrixResponse]:
     """Get affinity matrix for reviewer-proposal matching.
 
     Args:
         uuid (UUID):
-        scope (Union[Unset, ProposalProtectedCallsAffinityMatrixRetrieveScope]):
+        scope (Union[Unset, AffinityMatrixResponseScopeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -151,13 +149,13 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    scope: Union[Unset, ProposalProtectedCallsAffinityMatrixRetrieveScope] = UNSET,
+    scope: Union[Unset, AffinityMatrixResponseScopeEnum] = UNSET,
 ) -> AffinityMatrixResponse:
     """Get affinity matrix for reviewer-proposal matching.
 
     Args:
         uuid (UUID):
-        scope (Union[Unset, ProposalProtectedCallsAffinityMatrixRetrieveScope]):
+        scope (Union[Unset, AffinityMatrixResponseScopeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.event_subscriptions_count_o_item import EventSubscriptionsCountOItem
+from ...models.backend_resource_req_o_enum import BackendResourceReqOEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    o: Union[Unset, list[EventSubscriptionsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -76,7 +76,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[EventSubscriptionsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -85,7 +85,7 @@ def sync_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[EventSubscriptionsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_username (Union[Unset, str]):
@@ -117,7 +117,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[EventSubscriptionsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -126,7 +126,7 @@ def sync(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[EventSubscriptionsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_username (Union[Unset, str]):
@@ -153,7 +153,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[EventSubscriptionsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -162,7 +162,7 @@ async def asyncio_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[EventSubscriptionsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_username (Union[Unset, str]):
@@ -192,7 +192,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[EventSubscriptionsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -201,7 +201,7 @@ async def asyncio(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[EventSubscriptionsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_username (Union[Unset, str]):

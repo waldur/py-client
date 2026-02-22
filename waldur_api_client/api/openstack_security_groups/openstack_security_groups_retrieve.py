@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_security_group import OpenStackSecurityGroup
-from ...models.openstack_security_groups_retrieve_field_item import OpenstackSecurityGroupsRetrieveFieldItem
+from ...models.open_stack_security_group_field_enum import OpenStackSecurityGroupFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[OpenstackSecurityGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSecurityGroupFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackSecurityGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSecurityGroupFieldEnum]] = UNSET,
 ) -> Response[OpenStackSecurityGroup]:
     """Get security group details
 
@@ -71,7 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackSecurityGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackSecurityGroupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -97,7 +97,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackSecurityGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSecurityGroupFieldEnum]] = UNSET,
 ) -> OpenStackSecurityGroup:
     """Get security group details
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackSecurityGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackSecurityGroupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackSecurityGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSecurityGroupFieldEnum]] = UNSET,
 ) -> Response[OpenStackSecurityGroup]:
     """Get security group details
 
@@ -134,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackSecurityGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackSecurityGroupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,7 +158,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackSecurityGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSecurityGroupFieldEnum]] = UNSET,
 ) -> OpenStackSecurityGroup:
     """Get security group details
 
@@ -166,7 +166,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackSecurityGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackSecurityGroupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

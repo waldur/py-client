@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.rancher_service import RancherService
-from ...models.rancher_services_retrieve_field_item import RancherServicesRetrieveFieldItem
+from ...models.rancher_service_field_enum import RancherServiceFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[RancherServicesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherServiceFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,12 +63,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RancherServicesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherServiceFieldEnum]] = UNSET,
 ) -> Response[RancherService]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RancherServicesRetrieveFieldItem]]):
+        field (Union[Unset, list[RancherServiceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,12 +94,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RancherServicesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherServiceFieldEnum]] = UNSET,
 ) -> RancherService:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RancherServicesRetrieveFieldItem]]):
+        field (Union[Unset, list[RancherServiceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -120,12 +120,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RancherServicesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherServiceFieldEnum]] = UNSET,
 ) -> Response[RancherService]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RancherServicesRetrieveFieldItem]]):
+        field (Union[Unset, list[RancherServiceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,12 +149,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RancherServicesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherServiceFieldEnum]] = UNSET,
 ) -> RancherService:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RancherServicesRetrieveFieldItem]]):
+        field (Union[Unset, list[RancherServiceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

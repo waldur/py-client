@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.vmware_disks_count_state_item import VmwareDisksCountStateItem
+from ...models.core_states import CoreStates
 from ...types import UNSET, Response, Unset
 
 
@@ -30,7 +30,7 @@ def _get_kwargs(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -167,7 +167,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -193,7 +193,7 @@ def sync_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareDisksCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
         vm (Union[Unset, str]):
         vm_uuid (Union[Unset, UUID]):
@@ -259,7 +259,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -285,7 +285,7 @@ def sync(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareDisksCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
         vm (Union[Unset, str]):
         vm_uuid (Union[Unset, UUID]):
@@ -346,7 +346,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -372,7 +372,7 @@ async def asyncio_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareDisksCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
         vm (Union[Unset, str]):
         vm_uuid (Union[Unset, UUID]):
@@ -436,7 +436,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -462,7 +462,7 @@ async def asyncio(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareDisksCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
         vm (Union[Unset, str]):
         vm_uuid (Union[Unset, UUID]):

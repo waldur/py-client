@@ -7,9 +7,10 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.chat_threads_list_field_item import ChatThreadsListFieldItem
-from ...models.chat_threads_list_o_item import ChatThreadsListOItem
 from ...models.thread_session import ThreadSession
+from ...models.thread_session_field_enum import ThreadSessionFieldEnum
+from ...models.thread_session_max_severity_enum import ThreadSessionMaxSeverityEnum
+from ...models.thread_session_o_enum import ThreadSessionOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,10 +18,12 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     created: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
+    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
+    o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -43,6 +46,14 @@ def _get_kwargs(
     params["field"] = json_field
 
     params["is_archived"] = is_archived
+
+    params["is_flagged"] = is_flagged
+
+    json_max_severity: Union[Unset, str] = UNSET
+    if not isinstance(max_severity, Unset):
+        json_max_severity = max_severity.value
+
+    params["max_severity"] = json_max_severity
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -110,10 +121,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
+    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
+    o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -122,10 +135,12 @@ def sync_detailed(
     """
     Args:
         created (Union[Unset, datetime.date]):
-        field (Union[Unset, list[ChatThreadsListFieldItem]]):
+        field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
+        is_flagged (Union[Unset, bool]):
+        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
         modified (Union[Unset, datetime.date]):
-        o (Union[Unset, list[ChatThreadsListOItem]]):
+        o (Union[Unset, list[ThreadSessionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -143,6 +158,8 @@ def sync_detailed(
         created=created,
         field=field,
         is_archived=is_archived,
+        is_flagged=is_flagged,
+        max_severity=max_severity,
         modified=modified,
         o=o,
         page=page,
@@ -162,10 +179,12 @@ def sync(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
+    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
+    o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -174,10 +193,12 @@ def sync(
     """
     Args:
         created (Union[Unset, datetime.date]):
-        field (Union[Unset, list[ChatThreadsListFieldItem]]):
+        field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
+        is_flagged (Union[Unset, bool]):
+        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
         modified (Union[Unset, datetime.date]):
-        o (Union[Unset, list[ChatThreadsListOItem]]):
+        o (Union[Unset, list[ThreadSessionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -196,6 +217,8 @@ def sync(
         created=created,
         field=field,
         is_archived=is_archived,
+        is_flagged=is_flagged,
+        max_severity=max_severity,
         modified=modified,
         o=o,
         page=page,
@@ -209,10 +232,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
+    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
+    o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -221,10 +246,12 @@ async def asyncio_detailed(
     """
     Args:
         created (Union[Unset, datetime.date]):
-        field (Union[Unset, list[ChatThreadsListFieldItem]]):
+        field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
+        is_flagged (Union[Unset, bool]):
+        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
         modified (Union[Unset, datetime.date]):
-        o (Union[Unset, list[ChatThreadsListOItem]]):
+        o (Union[Unset, list[ThreadSessionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -242,6 +269,8 @@ async def asyncio_detailed(
         created=created,
         field=field,
         is_archived=is_archived,
+        is_flagged=is_flagged,
+        max_severity=max_severity,
         modified=modified,
         o=o,
         page=page,
@@ -259,10 +288,12 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
+    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
+    o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -271,10 +302,12 @@ async def asyncio(
     """
     Args:
         created (Union[Unset, datetime.date]):
-        field (Union[Unset, list[ChatThreadsListFieldItem]]):
+        field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
+        is_flagged (Union[Unset, bool]):
+        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
         modified (Union[Unset, datetime.date]):
-        o (Union[Unset, list[ChatThreadsListOItem]]):
+        o (Union[Unset, list[ThreadSessionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -294,6 +327,8 @@ async def asyncio(
             created=created,
             field=field,
             is_archived=is_archived,
+            is_flagged=is_flagged,
+            max_severity=max_severity,
             modified=modified,
             o=o,
             page=page,
@@ -308,10 +343,12 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
+    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
+    o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> list["ThreadSession"]:
@@ -324,10 +361,12 @@ def sync_all(
 
     Args:
         created (Union[Unset, datetime.date]):
-        field (Union[Unset, list[ChatThreadsListFieldItem]]):
+        field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
+        is_flagged (Union[Unset, bool]):
+        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
         modified (Union[Unset, datetime.date]):
-        o (Union[Unset, list[ChatThreadsListOItem]]):
+        o (Union[Unset, list[ThreadSessionOEnum]]):
         query (Union[Unset, str]):
         user (Union[Unset, UUID]):
 
@@ -347,6 +386,8 @@ def sync_all(
         created=created,
         field=field,
         is_archived=is_archived,
+        is_flagged=is_flagged,
+        max_severity=max_severity,
         modified=modified,
         o=o,
         query=query,
@@ -399,10 +440,12 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[ChatThreadsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
+    is_flagged: Union[Unset, bool] = UNSET,
+    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
-    o: Union[Unset, list[ChatThreadsListOItem]] = UNSET,
+    o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
 ) -> list["ThreadSession"]:
@@ -415,10 +458,12 @@ async def asyncio_all(
 
     Args:
         created (Union[Unset, datetime.date]):
-        field (Union[Unset, list[ChatThreadsListFieldItem]]):
+        field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
+        is_flagged (Union[Unset, bool]):
+        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
         modified (Union[Unset, datetime.date]):
-        o (Union[Unset, list[ChatThreadsListOItem]]):
+        o (Union[Unset, list[ThreadSessionOEnum]]):
         query (Union[Unset, str]):
         user (Union[Unset, UUID]):
 
@@ -438,6 +483,8 @@ async def asyncio_all(
         created=created,
         field=field,
         is_archived=is_archived,
+        is_flagged=is_flagged,
+        max_severity=max_severity,
         modified=modified,
         o=o,
         query=query,

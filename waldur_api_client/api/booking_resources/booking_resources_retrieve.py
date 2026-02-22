@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.booking_resource import BookingResource
-from ...models.booking_resources_retrieve_field_item import BookingResourcesRetrieveFieldItem
+from ...models.booking_resource_field_enum import BookingResourceFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[BookingResourcesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,12 +63,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingResourcesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
 ) -> Response[BookingResource]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[BookingResourcesRetrieveFieldItem]]):
+        field (Union[Unset, list[BookingResourceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,12 +94,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingResourcesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
 ) -> BookingResource:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[BookingResourcesRetrieveFieldItem]]):
+        field (Union[Unset, list[BookingResourceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -120,12 +120,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingResourcesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
 ) -> Response[BookingResource]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[BookingResourcesRetrieveFieldItem]]):
+        field (Union[Unset, list[BookingResourceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,12 +149,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingResourcesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
 ) -> BookingResource:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[BookingResourcesRetrieveFieldItem]]):
+        field (Union[Unset, list[BookingResourceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

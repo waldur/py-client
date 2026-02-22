@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.digital_ocean_droplet import DigitalOceanDroplet
-from ...models.digitalocean_droplets_retrieve_field_item import DigitaloceanDropletsRetrieveFieldItem
+from ...models.digital_ocean_droplet_field_enum import DigitalOceanDropletFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[DigitaloceanDropletsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,12 +63,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[DigitaloceanDropletsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
 ) -> Response[DigitalOceanDroplet]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[DigitaloceanDropletsRetrieveFieldItem]]):
+        field (Union[Unset, list[DigitalOceanDropletFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,12 +94,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[DigitaloceanDropletsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
 ) -> DigitalOceanDroplet:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[DigitaloceanDropletsRetrieveFieldItem]]):
+        field (Union[Unset, list[DigitalOceanDropletFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -120,12 +120,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[DigitaloceanDropletsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
 ) -> Response[DigitalOceanDroplet]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[DigitaloceanDropletsRetrieveFieldItem]]):
+        field (Union[Unset, list[DigitalOceanDropletFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,12 +149,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[DigitaloceanDropletsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[DigitalOceanDropletFieldEnum]] = UNSET,
 ) -> DigitalOceanDroplet:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[DigitaloceanDropletsRetrieveFieldItem]]):
+        field (Union[Unset, list[DigitalOceanDropletFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

@@ -7,7 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.reviewer_profile import ReviewerProfile
-from ...models.reviewer_profiles_list_o_item import ReviewerProfilesListOItem
+from ...models.reviewer_profile_o_enum import ReviewerProfileOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,7 +17,7 @@ def _get_kwargs(
     expertise_category_uuid: Union[Unset, UUID] = UNSET,
     expertise_keyword: Union[Unset, str] = UNSET,
     has_orcid: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ReviewerProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerProfileOEnum]] = UNSET,
     orcid_id: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -103,7 +103,7 @@ def sync_detailed(
     expertise_category_uuid: Union[Unset, UUID] = UNSET,
     expertise_keyword: Union[Unset, str] = UNSET,
     has_orcid: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ReviewerProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerProfileOEnum]] = UNSET,
     orcid_id: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -116,7 +116,7 @@ def sync_detailed(
         expertise_category_uuid (Union[Unset, UUID]):
         expertise_keyword (Union[Unset, str]):
         has_orcid (Union[Unset, bool]):
-        o (Union[Unset, list[ReviewerProfilesListOItem]]):
+        o (Union[Unset, list[ReviewerProfileOEnum]]):
         orcid_id (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -158,7 +158,7 @@ def sync(
     expertise_category_uuid: Union[Unset, UUID] = UNSET,
     expertise_keyword: Union[Unset, str] = UNSET,
     has_orcid: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ReviewerProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerProfileOEnum]] = UNSET,
     orcid_id: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -171,7 +171,7 @@ def sync(
         expertise_category_uuid (Union[Unset, UUID]):
         expertise_keyword (Union[Unset, str]):
         has_orcid (Union[Unset, bool]):
-        o (Union[Unset, list[ReviewerProfilesListOItem]]):
+        o (Union[Unset, list[ReviewerProfileOEnum]]):
         orcid_id (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -208,7 +208,7 @@ async def asyncio_detailed(
     expertise_category_uuid: Union[Unset, UUID] = UNSET,
     expertise_keyword: Union[Unset, str] = UNSET,
     has_orcid: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ReviewerProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerProfileOEnum]] = UNSET,
     orcid_id: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -221,7 +221,7 @@ async def asyncio_detailed(
         expertise_category_uuid (Union[Unset, UUID]):
         expertise_keyword (Union[Unset, str]):
         has_orcid (Union[Unset, bool]):
-        o (Union[Unset, list[ReviewerProfilesListOItem]]):
+        o (Union[Unset, list[ReviewerProfileOEnum]]):
         orcid_id (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -261,7 +261,7 @@ async def asyncio(
     expertise_category_uuid: Union[Unset, UUID] = UNSET,
     expertise_keyword: Union[Unset, str] = UNSET,
     has_orcid: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ReviewerProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerProfileOEnum]] = UNSET,
     orcid_id: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -274,7 +274,7 @@ async def asyncio(
         expertise_category_uuid (Union[Unset, UUID]):
         expertise_keyword (Union[Unset, str]):
         has_orcid (Union[Unset, bool]):
-        o (Union[Unset, list[ReviewerProfilesListOItem]]):
+        o (Union[Unset, list[ReviewerProfileOEnum]]):
         orcid_id (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -313,7 +313,7 @@ def sync_all(
     expertise_category_uuid: Union[Unset, UUID] = UNSET,
     expertise_keyword: Union[Unset, str] = UNSET,
     has_orcid: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ReviewerProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerProfileOEnum]] = UNSET,
     orcid_id: Union[Unset, str] = UNSET,
     user_email: Union[Unset, str] = UNSET,
     user_name: Union[Unset, str] = UNSET,
@@ -330,7 +330,7 @@ def sync_all(
         expertise_category_uuid (Union[Unset, UUID]):
         expertise_keyword (Union[Unset, str]):
         has_orcid (Union[Unset, bool]):
-        o (Union[Unset, list[ReviewerProfilesListOItem]]):
+        o (Union[Unset, list[ReviewerProfileOEnum]]):
         orcid_id (Union[Unset, str]):
         user_email (Union[Unset, str]):
         user_name (Union[Unset, str]):
@@ -407,7 +407,7 @@ async def asyncio_all(
     expertise_category_uuid: Union[Unset, UUID] = UNSET,
     expertise_keyword: Union[Unset, str] = UNSET,
     has_orcid: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ReviewerProfilesListOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerProfileOEnum]] = UNSET,
     orcid_id: Union[Unset, str] = UNSET,
     user_email: Union[Unset, str] = UNSET,
     user_name: Union[Unset, str] = UNSET,
@@ -424,7 +424,7 @@ async def asyncio_all(
         expertise_category_uuid (Union[Unset, UUID]):
         expertise_keyword (Union[Unset, str]):
         has_orcid (Union[Unset, bool]):
-        o (Union[Unset, list[ReviewerProfilesListOItem]]):
+        o (Union[Unset, list[ReviewerProfileOEnum]]):
         orcid_id (Union[Unset, str]):
         user_email (Union[Unset, str]):
         user_name (Union[Unset, str]):

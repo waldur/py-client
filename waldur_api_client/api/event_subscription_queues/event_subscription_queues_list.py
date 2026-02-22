@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.backend_resource_req_o_enum import BackendResourceReqOEnum
 from ...models.event_subscription_queue import EventSubscriptionQueue
-from ...models.event_subscription_queues_list_o_item import EventSubscriptionQueuesListOItem
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -15,7 +15,7 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     event_subscription_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[EventSubscriptionQueuesListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     object_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -91,7 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     event_subscription_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[EventSubscriptionQueuesListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     object_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -100,7 +100,7 @@ def sync_detailed(
     """
     Args:
         event_subscription_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[EventSubscriptionQueuesListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         object_type (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -134,7 +134,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     event_subscription_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[EventSubscriptionQueuesListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     object_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -143,7 +143,7 @@ def sync(
     """
     Args:
         event_subscription_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[EventSubscriptionQueuesListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         object_type (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -172,7 +172,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     event_subscription_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[EventSubscriptionQueuesListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     object_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -181,7 +181,7 @@ async def asyncio_detailed(
     """
     Args:
         event_subscription_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[EventSubscriptionQueuesListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         object_type (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -213,7 +213,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     event_subscription_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[EventSubscriptionQueuesListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     object_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -222,7 +222,7 @@ async def asyncio(
     """
     Args:
         event_subscription_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[EventSubscriptionQueuesListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         object_type (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -253,7 +253,7 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     event_subscription_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[EventSubscriptionQueuesListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     object_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["EventSubscriptionQueue"]:
@@ -266,7 +266,7 @@ def sync_all(
 
     Args:
         event_subscription_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[EventSubscriptionQueuesListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         object_type (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
 
@@ -335,7 +335,7 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     event_subscription_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[EventSubscriptionQueuesListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     object_type: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["EventSubscriptionQueue"]:
@@ -348,7 +348,7 @@ async def asyncio_all(
 
     Args:
         event_subscription_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[EventSubscriptionQueuesListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         object_type (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
 

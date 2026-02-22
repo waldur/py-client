@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.aws_volume import AwsVolume
-from ...models.aws_volumes_retrieve_field_item import AwsVolumesRetrieveFieldItem
+from ...models.aws_volume_field_enum import AwsVolumeFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[AwsVolumesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AwsVolumeFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AwsVolumesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AwsVolumeFieldEnum]] = UNSET,
 ) -> Response[AwsVolume]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AwsVolumesRetrieveFieldItem]]):
+        field (Union[Unset, list[AwsVolumeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AwsVolumesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AwsVolumeFieldEnum]] = UNSET,
 ) -> AwsVolume:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AwsVolumesRetrieveFieldItem]]):
+        field (Union[Unset, list[AwsVolumeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AwsVolumesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AwsVolumeFieldEnum]] = UNSET,
 ) -> Response[AwsVolume]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AwsVolumesRetrieveFieldItem]]):
+        field (Union[Unset, list[AwsVolumeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AwsVolumesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AwsVolumeFieldEnum]] = UNSET,
 ) -> AwsVolume:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AwsVolumesRetrieveFieldItem]]):
+        field (Union[Unset, list[AwsVolumeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

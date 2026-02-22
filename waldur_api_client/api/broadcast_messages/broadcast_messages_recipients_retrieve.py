@@ -6,13 +6,13 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.broadcast_message import BroadcastMessage
-from ...models.broadcast_messages_recipients_retrieve_field_item import BroadcastMessagesRecipientsRetrieveFieldItem
+from ...models.broadcast_message_field_enum import BroadcastMessageFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[BroadcastMessagesRecipientsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -60,11 +60,11 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BroadcastMessagesRecipientsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
 ) -> Response[BroadcastMessage]:
     """
     Args:
-        field (Union[Unset, list[BroadcastMessagesRecipientsRetrieveFieldItem]]):
+        field (Union[Unset, list[BroadcastMessageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -88,11 +88,11 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BroadcastMessagesRecipientsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
 ) -> BroadcastMessage:
     """
     Args:
-        field (Union[Unset, list[BroadcastMessagesRecipientsRetrieveFieldItem]]):
+        field (Union[Unset, list[BroadcastMessageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -111,11 +111,11 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BroadcastMessagesRecipientsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
 ) -> Response[BroadcastMessage]:
     """
     Args:
-        field (Union[Unset, list[BroadcastMessagesRecipientsRetrieveFieldItem]]):
+        field (Union[Unset, list[BroadcastMessageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -137,11 +137,11 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BroadcastMessagesRecipientsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
 ) -> BroadcastMessage:
     """
     Args:
-        field (Union[Unset, list[BroadcastMessagesRecipientsRetrieveFieldItem]]):
+        field (Union[Unset, list[BroadcastMessageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

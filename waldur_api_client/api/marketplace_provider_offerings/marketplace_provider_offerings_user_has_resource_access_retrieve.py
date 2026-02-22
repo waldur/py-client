@@ -6,17 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_provider_offerings_user_has_resource_access_retrieve_field_item import (
-    MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem,
-)
 from ...models.provider_offering_details import ProviderOfferingDetails
+from ...models.provider_offering_details_field_enum import ProviderOfferingDetailsFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingDetailsFieldEnum]] = UNSET,
     username: str,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -68,7 +66,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingDetailsFieldEnum]] = UNSET,
     username: str,
 ) -> Response[ProviderOfferingDetails]:
     """Check user access to offering resources
@@ -77,8 +75,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset,
-            list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]]):
+        field (Union[Unset, list[ProviderOfferingDetailsFieldEnum]]):
         username (str):
 
     Raises:
@@ -106,7 +103,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingDetailsFieldEnum]] = UNSET,
     username: str,
 ) -> ProviderOfferingDetails:
     """Check user access to offering resources
@@ -115,8 +112,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset,
-            list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]]):
+        field (Union[Unset, list[ProviderOfferingDetailsFieldEnum]]):
         username (str):
 
     Raises:
@@ -139,7 +135,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingDetailsFieldEnum]] = UNSET,
     username: str,
 ) -> Response[ProviderOfferingDetails]:
     """Check user access to offering resources
@@ -148,8 +144,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset,
-            list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]]):
+        field (Union[Unset, list[ProviderOfferingDetailsFieldEnum]]):
         username (str):
 
     Raises:
@@ -175,7 +170,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProviderOfferingDetailsFieldEnum]] = UNSET,
     username: str,
 ) -> ProviderOfferingDetails:
     """Check user access to offering resources
@@ -184,8 +179,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset,
-            list[MarketplaceProviderOfferingsUserHasResourceAccessRetrieveFieldItem]]):
+        field (Union[Unset, list[ProviderOfferingDetailsFieldEnum]]):
         username (str):
 
     Raises:

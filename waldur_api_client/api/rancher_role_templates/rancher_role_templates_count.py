@@ -6,14 +6,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.rancher_role_templates_count_o_item import RancherRoleTemplatesCountOItem
+from ...models.role_template_o_enum import RoleTemplateOEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[RancherRoleTemplatesCountOItem]] = UNSET,
+    o: Union[Unset, list[RoleTemplateOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -84,7 +84,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[RancherRoleTemplatesCountOItem]] = UNSET,
+    o: Union[Unset, list[RoleTemplateOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -94,7 +94,7 @@ def sync_detailed(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[RancherRoleTemplatesCountOItem]]):
+        o (Union[Unset, list[RoleTemplateOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope_type (Union[Unset, str]):
@@ -128,7 +128,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[RancherRoleTemplatesCountOItem]] = UNSET,
+    o: Union[Unset, list[RoleTemplateOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -138,7 +138,7 @@ def sync(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[RancherRoleTemplatesCountOItem]]):
+        o (Union[Unset, list[RoleTemplateOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope_type (Union[Unset, str]):
@@ -167,7 +167,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[RancherRoleTemplatesCountOItem]] = UNSET,
+    o: Union[Unset, list[RoleTemplateOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -177,7 +177,7 @@ async def asyncio_detailed(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[RancherRoleTemplatesCountOItem]]):
+        o (Union[Unset, list[RoleTemplateOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope_type (Union[Unset, str]):
@@ -209,7 +209,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[RancherRoleTemplatesCountOItem]] = UNSET,
+    o: Union[Unset, list[RoleTemplateOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
@@ -219,7 +219,7 @@ async def asyncio(
 
     Args:
         name (Union[Unset, str]):
-        o (Union[Unset, list[RancherRoleTemplatesCountOItem]]):
+        o (Union[Unset, list[RoleTemplateOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope_type (Union[Unset, str]):

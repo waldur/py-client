@@ -6,13 +6,13 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.event import Event
-from ...models.events_event_groups_retrieve_field_item import EventsEventGroupsRetrieveFieldItem
+from ...models.event_field_enum import EventFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[EventsEventGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -58,13 +58,13 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsEventGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Response[Event]:
     """Returns a list of groups with event types.
     Group is used in exclude_features query param.
 
     Args:
-        field (Union[Unset, list[EventsEventGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -88,13 +88,13 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsEventGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Event:
     """Returns a list of groups with event types.
     Group is used in exclude_features query param.
 
     Args:
-        field (Union[Unset, list[EventsEventGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -113,13 +113,13 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsEventGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Response[Event]:
     """Returns a list of groups with event types.
     Group is used in exclude_features query param.
 
     Args:
-        field (Union[Unset, list[EventsEventGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -141,13 +141,13 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsEventGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Event:
     """Returns a list of groups with event types.
     Group is used in exclude_features query param.
 
     Args:
-        field (Union[Unset, list[EventsEventGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

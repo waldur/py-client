@@ -8,8 +8,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.course_account import CourseAccount
-from ...models.marketplace_course_accounts_list_o_item import MarketplaceCourseAccountsListOItem
-from ...models.marketplace_course_accounts_list_state_item import MarketplaceCourseAccountsListStateItem
+from ...models.course_account_o_enum import CourseAccountOEnum
+from ...models.service_account_state import ServiceAccountState
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,7 +17,7 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     email: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceCourseAccountsListOItem]] = UNSET,
+    o: Union[Unset, list[CourseAccountOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_end_date_after: Union[Unset, datetime.date] = UNSET,
@@ -25,7 +25,7 @@ def _get_kwargs(
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -122,7 +122,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     email: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceCourseAccountsListOItem]] = UNSET,
+    o: Union[Unset, list[CourseAccountOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_end_date_after: Union[Unset, datetime.date] = UNSET,
@@ -130,7 +130,7 @@ def sync_detailed(
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CourseAccount"]]:
     """List course accounts
@@ -139,7 +139,7 @@ def sync_detailed(
 
     Args:
         email (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
+        o (Union[Unset, list[CourseAccountOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_end_date_after (Union[Unset, datetime.date]):
@@ -147,7 +147,7 @@ def sync_detailed(
         project_start_date_after (Union[Unset, datetime.date]):
         project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceCourseAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -183,7 +183,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     email: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceCourseAccountsListOItem]] = UNSET,
+    o: Union[Unset, list[CourseAccountOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_end_date_after: Union[Unset, datetime.date] = UNSET,
@@ -191,7 +191,7 @@ def sync(
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
     """List course accounts
@@ -200,7 +200,7 @@ def sync(
 
     Args:
         email (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
+        o (Union[Unset, list[CourseAccountOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_end_date_after (Union[Unset, datetime.date]):
@@ -208,7 +208,7 @@ def sync(
         project_start_date_after (Union[Unset, datetime.date]):
         project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceCourseAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -239,7 +239,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     email: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceCourseAccountsListOItem]] = UNSET,
+    o: Union[Unset, list[CourseAccountOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_end_date_after: Union[Unset, datetime.date] = UNSET,
@@ -247,7 +247,7 @@ async def asyncio_detailed(
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CourseAccount"]]:
     """List course accounts
@@ -256,7 +256,7 @@ async def asyncio_detailed(
 
     Args:
         email (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
+        o (Union[Unset, list[CourseAccountOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_end_date_after (Union[Unset, datetime.date]):
@@ -264,7 +264,7 @@ async def asyncio_detailed(
         project_start_date_after (Union[Unset, datetime.date]):
         project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceCourseAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -298,7 +298,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     email: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceCourseAccountsListOItem]] = UNSET,
+    o: Union[Unset, list[CourseAccountOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_end_date_after: Union[Unset, datetime.date] = UNSET,
@@ -306,7 +306,7 @@ async def asyncio(
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
     """List course accounts
@@ -315,7 +315,7 @@ async def asyncio(
 
     Args:
         email (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
+        o (Union[Unset, list[CourseAccountOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_end_date_after (Union[Unset, datetime.date]):
@@ -323,7 +323,7 @@ async def asyncio(
         project_start_date_after (Union[Unset, datetime.date]):
         project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceCourseAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -356,13 +356,13 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     email: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceCourseAccountsListOItem]] = UNSET,
+    o: Union[Unset, list[CourseAccountOEnum]] = UNSET,
     project_end_date_after: Union[Unset, datetime.date] = UNSET,
     project_end_date_before: Union[Unset, datetime.date] = UNSET,
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
     """Get All Pages
@@ -374,13 +374,13 @@ def sync_all(
 
     Args:
         email (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
+        o (Union[Unset, list[CourseAccountOEnum]]):
         project_end_date_after (Union[Unset, datetime.date]):
         project_end_date_before (Union[Unset, datetime.date]):
         project_start_date_after (Union[Unset, datetime.date]):
         project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceCourseAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -453,13 +453,13 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     email: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceCourseAccountsListOItem]] = UNSET,
+    o: Union[Unset, list[CourseAccountOEnum]] = UNSET,
     project_end_date_after: Union[Unset, datetime.date] = UNSET,
     project_end_date_before: Union[Unset, datetime.date] = UNSET,
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceCourseAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
     """Get All Pages (Async)
@@ -471,13 +471,13 @@ async def asyncio_all(
 
     Args:
         email (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceCourseAccountsListOItem]]):
+        o (Union[Unset, list[CourseAccountOEnum]]):
         project_end_date_after (Union[Unset, datetime.date]):
         project_end_date_before (Union[Unset, datetime.date]):
         project_start_date_after (Union[Unset, datetime.date]):
         project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceCourseAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:

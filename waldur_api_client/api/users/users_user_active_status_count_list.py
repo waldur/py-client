@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_service_provider_user_o_enum import MarketplaceServiceProviderUserOEnum
 from ...models.user_active_status_count import UserActiveStatusCount
-from ...models.users_user_active_status_count_list_o_item import UsersUserActiveStatusCountListOItem
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -28,7 +28,7 @@ def _get_kwargs(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UsersUserActiveStatusCountListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProviderUserOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_roles: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -173,7 +173,7 @@ def sync_detailed(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UsersUserActiveStatusCountListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProviderUserOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_roles: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -205,7 +205,7 @@ def sync_detailed(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[UsersUserActiveStatusCountListOItem]]):
+        o (Union[Unset, list[MarketplaceServiceProviderUserOEnum]]):
         organization (Union[Unset, str]):
         organization_roles (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -279,7 +279,7 @@ def sync(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UsersUserActiveStatusCountListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProviderUserOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_roles: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -311,7 +311,7 @@ def sync(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[UsersUserActiveStatusCountListOItem]]):
+        o (Union[Unset, list[MarketplaceServiceProviderUserOEnum]]):
         organization (Union[Unset, str]):
         organization_roles (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -380,7 +380,7 @@ async def asyncio_detailed(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UsersUserActiveStatusCountListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProviderUserOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_roles: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -412,7 +412,7 @@ async def asyncio_detailed(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[UsersUserActiveStatusCountListOItem]]):
+        o (Union[Unset, list[MarketplaceServiceProviderUserOEnum]]):
         organization (Union[Unset, str]):
         organization_roles (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -484,7 +484,7 @@ async def asyncio(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UsersUserActiveStatusCountListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProviderUserOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_roles: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -516,7 +516,7 @@ async def asyncio(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[UsersUserActiveStatusCountListOItem]]):
+        o (Union[Unset, list[MarketplaceServiceProviderUserOEnum]]):
         organization (Union[Unset, str]):
         organization_roles (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -587,7 +587,7 @@ def sync_all(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UsersUserActiveStatusCountListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProviderUserOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_roles: Union[Unset, str] = UNSET,
     phone_number: Union[Unset, str] = UNSET,
@@ -620,7 +620,7 @@ def sync_all(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[UsersUserActiveStatusCountListOItem]]):
+        o (Union[Unset, list[MarketplaceServiceProviderUserOEnum]]):
         organization (Union[Unset, str]):
         organization_roles (Union[Unset, str]):
         phone_number (Union[Unset, str]):
@@ -729,7 +729,7 @@ async def asyncio_all(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UsersUserActiveStatusCountListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceServiceProviderUserOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_roles: Union[Unset, str] = UNSET,
     phone_number: Union[Unset, str] = UNSET,
@@ -762,7 +762,7 @@ async def asyncio_all(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[UsersUserActiveStatusCountListOItem]]):
+        o (Union[Unset, list[MarketplaceServiceProviderUserOEnum]]):
         organization (Union[Unset, str]):
         organization_roles (Union[Unset, str]):
         phone_number (Union[Unset, str]):

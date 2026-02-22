@@ -7,7 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.rancher_workload import RancherWorkload
-from ...models.rancher_workloads_list_o_item import RancherWorkloadsListOItem
+from ...models.rancher_workload_o_enum import RancherWorkloadOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,7 +18,7 @@ def _get_kwargs(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsListOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -110,7 +110,7 @@ def sync_detailed(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsListOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -123,7 +123,7 @@ def sync_detailed(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[RancherWorkloadsListOItem]]):
+        o (Union[Unset, list[RancherWorkloadOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -165,7 +165,7 @@ def sync(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsListOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -178,7 +178,7 @@ def sync(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[RancherWorkloadsListOItem]]):
+        o (Union[Unset, list[RancherWorkloadOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -215,7 +215,7 @@ async def asyncio_detailed(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsListOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -228,7 +228,7 @@ async def asyncio_detailed(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[RancherWorkloadsListOItem]]):
+        o (Union[Unset, list[RancherWorkloadOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -268,7 +268,7 @@ async def asyncio(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsListOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -281,7 +281,7 @@ async def asyncio(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[RancherWorkloadsListOItem]]):
+        o (Union[Unset, list[RancherWorkloadOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -320,7 +320,7 @@ def sync_all(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsListOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
@@ -337,7 +337,7 @@ def sync_all(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[RancherWorkloadsListOItem]]):
+        o (Union[Unset, list[RancherWorkloadOEnum]]):
         project_uuid (Union[Unset, UUID]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):
@@ -414,7 +414,7 @@ async def asyncio_all(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsListOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
@@ -431,7 +431,7 @@ async def asyncio_all(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[RancherWorkloadsListOItem]]):
+        o (Union[Unset, list[RancherWorkloadOEnum]]):
         project_uuid (Union[Unset, UUID]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):

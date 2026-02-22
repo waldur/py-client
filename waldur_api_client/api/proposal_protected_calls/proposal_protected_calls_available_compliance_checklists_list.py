@@ -7,12 +7,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.available_checklist import AvailableChecklist
-from ...models.proposal_protected_calls_available_compliance_checklists_list_o_item import (
-    ProposalProtectedCallsAvailableComplianceChecklistsListOItem,
-)
-from ...models.proposal_protected_calls_available_compliance_checklists_list_state_item import (
-    ProposalProtectedCallsAvailableComplianceChecklistsListStateItem,
-)
+from ...models.call_states import CallStates
+from ...models.protected_call_o_enum import ProtectedCallOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -25,12 +21,12 @@ def _get_kwargs(
     customer_uuid: str,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -126,12 +122,12 @@ def sync_detailed(
     customer_uuid: str,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> Response[list["AvailableChecklist"]]:
     """Get available compliance checklists for call creation/editing.
 
@@ -142,13 +138,12 @@ def sync_detailed(
         customer_uuid (str):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset,
-            list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -189,12 +184,12 @@ def sync(
     customer_uuid: str,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["AvailableChecklist"]:
     """Get available compliance checklists for call creation/editing.
 
@@ -205,13 +200,12 @@ def sync(
         customer_uuid (str):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset,
-            list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -247,12 +241,12 @@ async def asyncio_detailed(
     customer_uuid: str,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> Response[list["AvailableChecklist"]]:
     """Get available compliance checklists for call creation/editing.
 
@@ -263,13 +257,12 @@ async def asyncio_detailed(
         customer_uuid (str):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset,
-            list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -308,12 +301,12 @@ async def asyncio(
     customer_uuid: str,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["AvailableChecklist"]:
     """Get available compliance checklists for call creation/editing.
 
@@ -324,13 +317,12 @@ async def asyncio(
         customer_uuid (str):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset,
-            list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -368,10 +360,10 @@ def sync_all(
     customer_uuid: str,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["AvailableChecklist"]:
     """Get All Pages
 
@@ -387,11 +379,10 @@ def sync_all(
         customer_uuid (str):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset,
-        list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -469,10 +460,10 @@ async def asyncio_all(
     customer_uuid: str,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["AvailableChecklist"]:
     """Get All Pages (Async)
 
@@ -488,11 +479,10 @@ async def asyncio_all(
         customer_uuid (str):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsAvailableComplianceChecklistsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset,
-        list[ProposalProtectedCallsAvailableComplianceChecklistsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

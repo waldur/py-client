@@ -8,9 +8,9 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.assignment_batch_list import AssignmentBatchList
-from ...models.assignment_batches_list_o_item import AssignmentBatchesListOItem
-from ...models.assignment_batches_list_source_item import AssignmentBatchesListSourceItem
-from ...models.assignment_batches_list_status_item import AssignmentBatchesListStatusItem
+from ...models.assignment_batch_list_o_enum import AssignmentBatchListOEnum
+from ...models.assignment_batch_status import AssignmentBatchStatus
+from ...models.assignment_source import AssignmentSource
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,15 +18,15 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesListSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesListStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -129,28 +129,28 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesListSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesListStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> Response[list["AssignmentBatchList"]]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[AssignmentBatchesListOItem]]):
+        o (Union[Unset, list[AssignmentBatchListOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_pool_entry_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         sent_after (Union[Unset, datetime.datetime]):
         sent_before (Union[Unset, datetime.datetime]):
-        source (Union[Unset, list[AssignmentBatchesListSourceItem]]):
-        status (Union[Unset, list[AssignmentBatchesListStatusItem]]):
+        source (Union[Unset, list[AssignmentSource]]):
+        status (Union[Unset, list[AssignmentBatchStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -184,28 +184,28 @@ def sync(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesListSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesListStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> list["AssignmentBatchList"]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[AssignmentBatchesListOItem]]):
+        o (Union[Unset, list[AssignmentBatchListOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_pool_entry_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         sent_after (Union[Unset, datetime.datetime]):
         sent_before (Union[Unset, datetime.datetime]):
-        source (Union[Unset, list[AssignmentBatchesListSourceItem]]):
-        status (Union[Unset, list[AssignmentBatchesListStatusItem]]):
+        source (Union[Unset, list[AssignmentSource]]):
+        status (Union[Unset, list[AssignmentBatchStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -234,28 +234,28 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesListSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesListStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> Response[list["AssignmentBatchList"]]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[AssignmentBatchesListOItem]]):
+        o (Union[Unset, list[AssignmentBatchListOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_pool_entry_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         sent_after (Union[Unset, datetime.datetime]):
         sent_before (Union[Unset, datetime.datetime]):
-        source (Union[Unset, list[AssignmentBatchesListSourceItem]]):
-        status (Union[Unset, list[AssignmentBatchesListStatusItem]]):
+        source (Union[Unset, list[AssignmentSource]]):
+        status (Union[Unset, list[AssignmentBatchStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -287,28 +287,28 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesListSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesListStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> list["AssignmentBatchList"]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[AssignmentBatchesListOItem]]):
+        o (Union[Unset, list[AssignmentBatchListOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_pool_entry_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         sent_after (Union[Unset, datetime.datetime]):
         sent_before (Union[Unset, datetime.datetime]):
-        source (Union[Unset, list[AssignmentBatchesListSourceItem]]):
-        status (Union[Unset, list[AssignmentBatchesListStatusItem]]):
+        source (Union[Unset, list[AssignmentSource]]):
+        status (Union[Unset, list[AssignmentBatchStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -339,13 +339,13 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesListSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesListStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> list["AssignmentBatchList"]:
     """Get All Pages
 
@@ -356,13 +356,13 @@ def sync_all(
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[AssignmentBatchesListOItem]]):
+        o (Union[Unset, list[AssignmentBatchListOEnum]]):
         reviewer_pool_entry_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         sent_after (Union[Unset, datetime.datetime]):
         sent_before (Union[Unset, datetime.datetime]):
-        source (Union[Unset, list[AssignmentBatchesListSourceItem]]):
-        status (Union[Unset, list[AssignmentBatchesListStatusItem]]):
+        source (Union[Unset, list[AssignmentSource]]):
+        status (Union[Unset, list[AssignmentBatchStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -433,13 +433,13 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesListOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesListSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesListStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> list["AssignmentBatchList"]:
     """Get All Pages (Async)
 
@@ -450,13 +450,13 @@ async def asyncio_all(
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[AssignmentBatchesListOItem]]):
+        o (Union[Unset, list[AssignmentBatchListOEnum]]):
         reviewer_pool_entry_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         sent_after (Union[Unset, datetime.datetime]):
         sent_before (Union[Unset, datetime.datetime]):
-        source (Union[Unset, list[AssignmentBatchesListSourceItem]]):
-        status (Union[Unset, list[AssignmentBatchesListStatusItem]]):
+        source (Union[Unset, list[AssignmentSource]]):
+        status (Union[Unset, list[AssignmentBatchStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

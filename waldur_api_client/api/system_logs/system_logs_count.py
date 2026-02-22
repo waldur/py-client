@@ -5,9 +5,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.system_logs_count_level import SystemLogsCountLevel
-from ...models.system_logs_count_o_item import SystemLogsCountOItem
-from ...models.system_logs_count_source import SystemLogsCountSource
+from ...models.system_log_level_enum import SystemLogLevelEnum
+from ...models.system_log_o_enum import SystemLogOEnum
+from ...models.system_log_source_enum import SystemLogSourceEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -16,14 +16,14 @@ def _get_kwargs(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsCountLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsCountOItem]] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    source: Union[Unset, SystemLogsCountSource] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -107,14 +107,14 @@ def sync_detailed(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsCountLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsCountOItem]] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    source: Union[Unset, SystemLogsCountSource] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -122,14 +122,14 @@ def sync_detailed(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         instance (Union[Unset, str]):
-        level (Union[Unset, SystemLogsCountLevel]):
+        level (Union[Unset, SystemLogLevelEnum]):
         level_gte (Union[Unset, int]):
         logger_name (Union[Unset, str]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[SystemLogsCountOItem]]):
+        o (Union[Unset, list[SystemLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        source (Union[Unset, SystemLogsCountSource]):
+        source (Union[Unset, SystemLogSourceEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -166,14 +166,14 @@ def sync(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsCountLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsCountOItem]] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    source: Union[Unset, SystemLogsCountSource] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -181,14 +181,14 @@ def sync(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         instance (Union[Unset, str]):
-        level (Union[Unset, SystemLogsCountLevel]):
+        level (Union[Unset, SystemLogLevelEnum]):
         level_gte (Union[Unset, int]):
         logger_name (Union[Unset, str]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[SystemLogsCountOItem]]):
+        o (Union[Unset, list[SystemLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        source (Union[Unset, SystemLogsCountSource]):
+        source (Union[Unset, SystemLogSourceEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -220,14 +220,14 @@ async def asyncio_detailed(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsCountLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsCountOItem]] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    source: Union[Unset, SystemLogsCountSource] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -235,14 +235,14 @@ async def asyncio_detailed(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         instance (Union[Unset, str]):
-        level (Union[Unset, SystemLogsCountLevel]):
+        level (Union[Unset, SystemLogLevelEnum]):
         level_gte (Union[Unset, int]):
         logger_name (Union[Unset, str]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[SystemLogsCountOItem]]):
+        o (Union[Unset, list[SystemLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        source (Union[Unset, SystemLogsCountSource]):
+        source (Union[Unset, SystemLogSourceEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -277,14 +277,14 @@ async def asyncio(
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     instance: Union[Unset, str] = UNSET,
-    level: Union[Unset, SystemLogsCountLevel] = UNSET,
+    level: Union[Unset, SystemLogLevelEnum] = UNSET,
     level_gte: Union[Unset, int] = UNSET,
     logger_name: Union[Unset, str] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[SystemLogsCountOItem]] = UNSET,
+    o: Union[Unset, list[SystemLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    source: Union[Unset, SystemLogsCountSource] = UNSET,
+    source: Union[Unset, SystemLogSourceEnum] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -292,14 +292,14 @@ async def asyncio(
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         instance (Union[Unset, str]):
-        level (Union[Unset, SystemLogsCountLevel]):
+        level (Union[Unset, SystemLogLevelEnum]):
         level_gte (Union[Unset, int]):
         logger_name (Union[Unset, str]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[SystemLogsCountOItem]]):
+        o (Union[Unset, list[SystemLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        source (Union[Unset, SystemLogsCountSource]):
+        source (Union[Unset, SystemLogSourceEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

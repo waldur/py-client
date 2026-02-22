@@ -6,7 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.role_details import RoleDetails
-from ...models.roles_list_field_item import RolesListFieldItem
+from ...models.role_details_field_enum import RoleDetailsFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -14,7 +14,7 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RolesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -82,7 +82,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RolesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -94,7 +94,7 @@ def sync_detailed(
 
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[RolesListFieldItem]]):
+        field (Union[Unset, list[RoleDetailsFieldEnum]]):
         is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -128,7 +128,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RolesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -140,7 +140,7 @@ def sync(
 
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[RolesListFieldItem]]):
+        field (Union[Unset, list[RoleDetailsFieldEnum]]):
         is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -169,7 +169,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RolesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -181,7 +181,7 @@ async def asyncio_detailed(
 
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[RolesListFieldItem]]):
+        field (Union[Unset, list[RoleDetailsFieldEnum]]):
         is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -213,7 +213,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RolesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -225,7 +225,7 @@ async def asyncio(
 
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[RolesListFieldItem]]):
+        field (Union[Unset, list[RoleDetailsFieldEnum]]):
         is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -256,7 +256,7 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RolesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
 ) -> list["RoleDetails"]:
@@ -269,7 +269,7 @@ def sync_all(
 
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[RolesListFieldItem]]):
+        field (Union[Unset, list[RoleDetailsFieldEnum]]):
         is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
 
@@ -338,7 +338,7 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RolesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
 ) -> list["RoleDetails"]:
@@ -351,7 +351,7 @@ async def asyncio_all(
 
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[RolesListFieldItem]]):
+        field (Union[Unset, list[RoleDetailsFieldEnum]]):
         is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
 

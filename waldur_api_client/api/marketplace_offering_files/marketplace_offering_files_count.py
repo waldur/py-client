@@ -6,13 +6,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_offering_files_count_o_item import MarketplaceOfferingFilesCountOItem
+from ...models.maintenance_announcement_template_o_enum import MaintenanceAnnouncementTemplateOEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    o: Union[Unset, list[MarketplaceOfferingFilesCountOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -97,7 +97,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingFilesCountOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -108,7 +108,7 @@ def sync_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingFilesCountOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -144,7 +144,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingFilesCountOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -155,7 +155,7 @@ def sync(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingFilesCountOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -186,7 +186,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingFilesCountOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -197,7 +197,7 @@ async def asyncio_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingFilesCountOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -231,7 +231,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingFilesCountOItem]] = UNSET,
+    o: Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -242,7 +242,7 @@ async def asyncio(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingFilesCountOItem]]):
+        o (Union[Unset, list[MaintenanceAnnouncementTemplateOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):

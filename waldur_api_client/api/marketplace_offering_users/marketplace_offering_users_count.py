@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_offering_users_count_o_item import MarketplaceOfferingUsersCountOItem
-from ...models.marketplace_offering_users_count_state_item import MarketplaceOfferingUsersCountStateItem
+from ...models.offering_user_o_enum import OfferingUserOEnum
+from ...models.offering_user_state import OfferingUserState
 from ...types import UNSET, Response, Unset
 
 
@@ -19,7 +19,7 @@ def _get_kwargs(
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -28,7 +28,7 @@ def _get_kwargs(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersCountStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -153,7 +153,7 @@ def sync_detailed(
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -162,7 +162,7 @@ def sync_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersCountStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -176,7 +176,7 @@ def sync_detailed(
         has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUsersCountOItem]]):
+        o (Union[Unset, list[OfferingUserOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -185,7 +185,7 @@ def sync_detailed(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[MarketplaceOfferingUsersCountStateItem]]):
+        state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -232,7 +232,7 @@ def sync(
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -241,7 +241,7 @@ def sync(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersCountStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -255,7 +255,7 @@ def sync(
         has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUsersCountOItem]]):
+        o (Union[Unset, list[OfferingUserOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -264,7 +264,7 @@ def sync(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[MarketplaceOfferingUsersCountStateItem]]):
+        state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -306,7 +306,7 @@ async def asyncio_detailed(
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -315,7 +315,7 @@ async def asyncio_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersCountStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -329,7 +329,7 @@ async def asyncio_detailed(
         has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUsersCountOItem]]):
+        o (Union[Unset, list[OfferingUserOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -338,7 +338,7 @@ async def asyncio_detailed(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[MarketplaceOfferingUsersCountStateItem]]):
+        state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -383,7 +383,7 @@ async def asyncio(
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -392,7 +392,7 @@ async def asyncio(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersCountStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -406,7 +406,7 @@ async def asyncio(
         has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUsersCountOItem]]):
+        o (Union[Unset, list[OfferingUserOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -415,7 +415,7 @@ async def asyncio(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[MarketplaceOfferingUsersCountStateItem]]):
+        state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 

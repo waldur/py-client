@@ -5,13 +5,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_offering_referrals_count_o_item import MarketplaceOfferingReferralsCountOItem
+from ...models.offering_referral_o_enum import OfferingReferralOEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    o: Union[Unset, list[MarketplaceOfferingReferralsCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -73,7 +73,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingReferralsCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -83,7 +83,7 @@ def sync_detailed(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingReferralsCountOItem]]):
+        o (Union[Unset, list[OfferingReferralOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
@@ -113,7 +113,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingReferralsCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -123,7 +123,7 @@ def sync(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingReferralsCountOItem]]):
+        o (Union[Unset, list[OfferingReferralOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
@@ -148,7 +148,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingReferralsCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -158,7 +158,7 @@ async def asyncio_detailed(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingReferralsCountOItem]]):
+        o (Union[Unset, list[OfferingReferralOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
@@ -186,7 +186,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingReferralsCountOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -196,7 +196,7 @@ async def asyncio(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingReferralsCountOItem]]):
+        o (Union[Unset, list[OfferingReferralOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):

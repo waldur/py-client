@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.rancher_workloads_count_o_item import RancherWorkloadsCountOItem
+from ...models.rancher_workload_o_enum import RancherWorkloadOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsCountOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -108,7 +108,7 @@ def sync_detailed(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsCountOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -122,7 +122,7 @@ def sync_detailed(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[RancherWorkloadsCountOItem]]):
+        o (Union[Unset, list[RancherWorkloadOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -164,7 +164,7 @@ def sync(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsCountOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -178,7 +178,7 @@ def sync(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[RancherWorkloadsCountOItem]]):
+        o (Union[Unset, list[RancherWorkloadOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -215,7 +215,7 @@ async def asyncio_detailed(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsCountOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -229,7 +229,7 @@ async def asyncio_detailed(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[RancherWorkloadsCountOItem]]):
+        o (Union[Unset, list[RancherWorkloadOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -269,7 +269,7 @@ async def asyncio(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[RancherWorkloadsCountOItem]] = UNSET,
+    o: Union[Unset, list[RancherWorkloadOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -283,7 +283,7 @@ async def asyncio(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[RancherWorkloadsCountOItem]]):
+        o (Union[Unset, list[RancherWorkloadOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):

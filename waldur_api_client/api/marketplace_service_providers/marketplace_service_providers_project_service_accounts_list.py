@@ -6,10 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_service_providers_project_service_accounts_list_state_item import (
-    MarketplaceServiceProvidersProjectServiceAccountsListStateItem,
-)
 from ...models.project_service_account import ProjectServiceAccount
+from ...models.service_account_state import ServiceAccountState
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -22,7 +20,7 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -99,7 +97,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectServiceAccount"]]:
     """List project service accounts for a service provider
@@ -119,8 +117,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset,
-            list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -158,7 +155,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ProjectServiceAccount"]:
     """List project service accounts for a service provider
@@ -178,8 +175,7 @@ def sync(
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset,
-            list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -212,7 +208,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["ProjectServiceAccount"]]:
     """List project service accounts for a service provider
@@ -232,8 +228,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset,
-            list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -269,7 +264,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ProjectServiceAccount"]:
     """List project service accounts for a service provider
@@ -289,8 +284,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset,
-            list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -323,7 +317,7 @@ def sync_all(
     email: Union[Unset, str] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ProjectServiceAccount"]:
     """Get All Pages
@@ -338,8 +332,7 @@ def sync_all(
         email (Union[Unset, str]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset,
-        list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -412,7 +405,7 @@ async def asyncio_all(
     email: Union[Unset, str] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["ProjectServiceAccount"]:
     """Get All Pages (Async)
@@ -427,8 +420,7 @@ async def asyncio_all(
         email (Union[Unset, str]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset,
-        list[MarketplaceServiceProvidersProjectServiceAccountsListStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:

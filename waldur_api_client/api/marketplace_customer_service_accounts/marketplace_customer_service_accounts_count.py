@@ -6,9 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_customer_service_accounts_count_state_item import (
-    MarketplaceCustomerServiceAccountsCountStateItem,
-)
+from ...models.service_account_state import ServiceAccountState
 from ...types import UNSET, Response, Unset
 
 
@@ -19,7 +17,7 @@ def _get_kwargs(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -93,7 +91,7 @@ def sync_detailed(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List service accounts
@@ -106,7 +104,7 @@ def sync_detailed(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -142,7 +140,7 @@ def sync(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
     """List service accounts
@@ -155,7 +153,7 @@ def sync(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -186,7 +184,7 @@ async def asyncio_detailed(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List service accounts
@@ -199,7 +197,7 @@ async def asyncio_detailed(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -233,7 +231,7 @@ async def asyncio(
     email: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]] = UNSET,
+    state: Union[Unset, list[ServiceAccountState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
     """List service accounts
@@ -246,7 +244,7 @@ async def asyncio(
         email (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[MarketplaceCustomerServiceAccountsCountStateItem]]):
+        state (Union[Unset, list[ServiceAccountState]]):
         username (Union[Unset, str]):
 
     Raises:

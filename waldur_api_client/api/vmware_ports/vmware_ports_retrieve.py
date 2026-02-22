@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.vmware_port import VmwarePort
-from ...models.vmware_ports_retrieve_field_item import VmwarePortsRetrieveFieldItem
+from ...models.vmware_port_field_enum import VmwarePortFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[VmwarePortsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwarePortFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[VmwarePortsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwarePortFieldEnum]] = UNSET,
 ) -> Response[VmwarePort]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[VmwarePortsRetrieveFieldItem]]):
+        field (Union[Unset, list[VmwarePortFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[VmwarePortsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwarePortFieldEnum]] = UNSET,
 ) -> VmwarePort:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[VmwarePortsRetrieveFieldItem]]):
+        field (Union[Unset, list[VmwarePortFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[VmwarePortsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwarePortFieldEnum]] = UNSET,
 ) -> Response[VmwarePort]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[VmwarePortsRetrieveFieldItem]]):
+        field (Union[Unset, list[VmwarePortFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[VmwarePortsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwarePortFieldEnum]] = UNSET,
 ) -> VmwarePort:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[VmwarePortsRetrieveFieldItem]]):
+        field (Union[Unset, list[VmwarePortFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

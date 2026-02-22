@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.user_group_invitations_count_o_item import UserGroupInvitationsCountOItem
+from ...models.backend_resource_req_o_enum import BackendResourceReqOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     is_public: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[UserGroupInvitationsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -101,7 +101,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     is_public: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[UserGroupInvitationsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -117,7 +117,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         is_active (Union[Unset, bool]):
         is_public (Union[Unset, bool]):
-        o (Union[Unset, list[UserGroupInvitationsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -159,7 +159,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     is_public: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[UserGroupInvitationsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -175,7 +175,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         is_active (Union[Unset, bool]):
         is_public (Union[Unset, bool]):
-        o (Union[Unset, list[UserGroupInvitationsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -212,7 +212,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     is_public: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[UserGroupInvitationsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -228,7 +228,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         is_active (Union[Unset, bool]):
         is_public (Union[Unset, bool]):
-        o (Union[Unset, list[UserGroupInvitationsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -268,7 +268,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     is_public: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[UserGroupInvitationsCountOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -284,7 +284,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         is_active (Union[Unset, bool]):
         is_public (Union[Unset, bool]):
-        o (Union[Unset, list[UserGroupInvitationsCountOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):

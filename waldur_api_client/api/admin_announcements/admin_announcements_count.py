@@ -5,8 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.admin_announcements_count_o_item import AdminAnnouncementsCountOItem
-from ...models.admin_announcements_count_type_item import AdminAnnouncementsCountTypeItem
+from ...models.admin_announcement_o_enum import AdminAnnouncementOEnum
+from ...models.admin_announcement_type_enum import AdminAnnouncementTypeEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -14,10 +14,10 @@ def _get_kwargs(
     *,
     description: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsCountOItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsCountTypeItem]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -89,20 +89,20 @@ def sync_detailed(
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsCountOItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsCountTypeItem]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         description (Union[Unset, str]):
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[AdminAnnouncementsCountOItem]]):
+        o (Union[Unset, list[AdminAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        type_ (Union[Unset, list[AdminAnnouncementsCountTypeItem]]):
+        type_ (Union[Unset, list[AdminAnnouncementTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -133,20 +133,20 @@ def sync(
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsCountOItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsCountTypeItem]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         description (Union[Unset, str]):
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[AdminAnnouncementsCountOItem]]):
+        o (Union[Unset, list[AdminAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        type_ (Union[Unset, list[AdminAnnouncementsCountTypeItem]]):
+        type_ (Union[Unset, list[AdminAnnouncementTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -172,20 +172,20 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsCountOItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsCountTypeItem]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         description (Union[Unset, str]):
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[AdminAnnouncementsCountOItem]]):
+        o (Union[Unset, list[AdminAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        type_ (Union[Unset, list[AdminAnnouncementsCountTypeItem]]):
+        type_ (Union[Unset, list[AdminAnnouncementTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -214,20 +214,20 @@ async def asyncio(
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsCountOItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsCountTypeItem]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         description (Union[Unset, str]):
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[AdminAnnouncementsCountOItem]]):
+        o (Union[Unset, list[AdminAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        type_ (Union[Unset, list[AdminAnnouncementsCountTypeItem]]):
+        type_ (Union[Unset, list[AdminAnnouncementTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

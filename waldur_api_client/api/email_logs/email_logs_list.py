@@ -7,7 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.email_log import EmailLog
-from ...models.email_logs_list_o_item import EmailLogsListOItem
+from ...models.email_log_o_enum import EmailLogOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     *,
     body: Union[Unset, str] = UNSET,
     emails: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EmailLogsListOItem]] = UNSET,
+    o: Union[Unset, list[EmailLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     sent_at: Union[Unset, datetime.date] = UNSET,
@@ -90,7 +90,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: Union[Unset, str] = UNSET,
     emails: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EmailLogsListOItem]] = UNSET,
+    o: Union[Unset, list[EmailLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     sent_at: Union[Unset, datetime.date] = UNSET,
@@ -100,7 +100,7 @@ def sync_detailed(
     Args:
         body (Union[Unset, str]):
         emails (Union[Unset, str]):
-        o (Union[Unset, list[EmailLogsListOItem]]):
+        o (Union[Unset, list[EmailLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         sent_at (Union[Unset, datetime.date]):
@@ -136,7 +136,7 @@ def sync(
     client: AuthenticatedClient,
     body: Union[Unset, str] = UNSET,
     emails: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EmailLogsListOItem]] = UNSET,
+    o: Union[Unset, list[EmailLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     sent_at: Union[Unset, datetime.date] = UNSET,
@@ -146,7 +146,7 @@ def sync(
     Args:
         body (Union[Unset, str]):
         emails (Union[Unset, str]):
-        o (Union[Unset, list[EmailLogsListOItem]]):
+        o (Union[Unset, list[EmailLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         sent_at (Union[Unset, datetime.date]):
@@ -177,7 +177,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: Union[Unset, str] = UNSET,
     emails: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EmailLogsListOItem]] = UNSET,
+    o: Union[Unset, list[EmailLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     sent_at: Union[Unset, datetime.date] = UNSET,
@@ -187,7 +187,7 @@ async def asyncio_detailed(
     Args:
         body (Union[Unset, str]):
         emails (Union[Unset, str]):
-        o (Union[Unset, list[EmailLogsListOItem]]):
+        o (Union[Unset, list[EmailLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         sent_at (Union[Unset, datetime.date]):
@@ -221,7 +221,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: Union[Unset, str] = UNSET,
     emails: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EmailLogsListOItem]] = UNSET,
+    o: Union[Unset, list[EmailLogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     sent_at: Union[Unset, datetime.date] = UNSET,
@@ -231,7 +231,7 @@ async def asyncio(
     Args:
         body (Union[Unset, str]):
         emails (Union[Unset, str]):
-        o (Union[Unset, list[EmailLogsListOItem]]):
+        o (Union[Unset, list[EmailLogOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         sent_at (Union[Unset, datetime.date]):
@@ -264,7 +264,7 @@ def sync_all(
     client: AuthenticatedClient,
     body: Union[Unset, str] = UNSET,
     emails: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EmailLogsListOItem]] = UNSET,
+    o: Union[Unset, list[EmailLogOEnum]] = UNSET,
     sent_at: Union[Unset, datetime.date] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> list["EmailLog"]:
@@ -278,7 +278,7 @@ def sync_all(
     Args:
         body (Union[Unset, str]):
         emails (Union[Unset, str]):
-        o (Union[Unset, list[EmailLogsListOItem]]):
+        o (Union[Unset, list[EmailLogOEnum]]):
         sent_at (Union[Unset, datetime.date]):
         subject (Union[Unset, str]):
 
@@ -349,7 +349,7 @@ async def asyncio_all(
     client: AuthenticatedClient,
     body: Union[Unset, str] = UNSET,
     emails: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EmailLogsListOItem]] = UNSET,
+    o: Union[Unset, list[EmailLogOEnum]] = UNSET,
     sent_at: Union[Unset, datetime.date] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> list["EmailLog"]:
@@ -363,7 +363,7 @@ async def asyncio_all(
     Args:
         body (Union[Unset, str]):
         emails (Union[Unset, str]):
-        o (Union[Unset, list[EmailLogsListOItem]]):
+        o (Union[Unset, list[EmailLogOEnum]]):
         sent_at (Union[Unset, datetime.date]):
         subject (Union[Unset, str]):
 

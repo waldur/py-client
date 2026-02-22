@@ -7,9 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_resources_count_o_item import MarketplaceResourcesCountOItem
-from ...models.marketplace_resources_count_order_state_item import MarketplaceResourcesCountOrderStateItem
-from ...models.marketplace_resources_count_state_item import MarketplaceResourcesCountStateItem
+from ...models.order_state import OrderState
+from ...models.resource_o_enum import ResourceOEnum
+from ...models.resource_state import ResourceState
 from ...types import UNSET, Response, Unset
 
 
@@ -30,7 +30,7 @@ def _get_kwargs(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -39,7 +39,7 @@ def _get_kwargs(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceResourcesCountOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -53,7 +53,7 @@ def _get_kwargs(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceResourcesCountStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -258,7 +258,7 @@ def sync_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -267,7 +267,7 @@ def sync_detailed(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceResourcesCountOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -281,7 +281,7 @@ def sync_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceResourcesCountStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -306,7 +306,7 @@ def sync_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceResourcesCountOItem]]):
+        o (Union[Unset, list[ResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -315,7 +315,7 @@ def sync_detailed(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[MarketplaceResourcesCountOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -329,7 +329,7 @@ def sync_detailed(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceResourcesCountStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -412,7 +412,7 @@ def sync(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -421,7 +421,7 @@ def sync(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceResourcesCountOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -435,7 +435,7 @@ def sync(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceResourcesCountStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -460,7 +460,7 @@ def sync(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceResourcesCountOItem]]):
+        o (Union[Unset, list[ResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -469,7 +469,7 @@ def sync(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[MarketplaceResourcesCountOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -483,7 +483,7 @@ def sync(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceResourcesCountStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -561,7 +561,7 @@ async def asyncio_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -570,7 +570,7 @@ async def asyncio_detailed(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceResourcesCountOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -584,7 +584,7 @@ async def asyncio_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceResourcesCountStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -609,7 +609,7 @@ async def asyncio_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceResourcesCountOItem]]):
+        o (Union[Unset, list[ResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -618,7 +618,7 @@ async def asyncio_detailed(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[MarketplaceResourcesCountOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -632,7 +632,7 @@ async def asyncio_detailed(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceResourcesCountStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -713,7 +713,7 @@ async def asyncio(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -722,7 +722,7 @@ async def asyncio(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceResourcesCountOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -736,7 +736,7 @@ async def asyncio(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceResourcesCountStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -761,7 +761,7 @@ async def asyncio(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceResourcesCountOItem]]):
+        o (Union[Unset, list[ResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -770,7 +770,7 @@ async def asyncio(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[MarketplaceResourcesCountOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -784,7 +784,7 @@ async def asyncio(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceResourcesCountStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):

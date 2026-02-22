@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_public_offerings_retrieve_field_item import MarketplacePublicOfferingsRetrieveFieldItem
 from ...models.public_offering_details import PublicOfferingDetails
+from ...models.public_offering_details_field_enum import PublicOfferingDetailsFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[PublicOfferingDetailsFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[PublicOfferingDetailsFieldEnum]] = UNSET,
 ) -> Response[PublicOfferingDetails]:
     """Retrieve a public offering
 
@@ -72,7 +72,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]]):
+        field (Union[Unset, list[PublicOfferingDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -98,7 +98,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[PublicOfferingDetailsFieldEnum]] = UNSET,
 ) -> PublicOfferingDetails:
     """Retrieve a public offering
 
@@ -107,7 +107,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]]):
+        field (Union[Unset, list[PublicOfferingDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -128,7 +128,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[PublicOfferingDetailsFieldEnum]] = UNSET,
 ) -> Response[PublicOfferingDetails]:
     """Retrieve a public offering
 
@@ -137,7 +137,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]]):
+        field (Union[Unset, list[PublicOfferingDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -161,7 +161,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[PublicOfferingDetailsFieldEnum]] = UNSET,
 ) -> PublicOfferingDetails:
     """Retrieve a public offering
 
@@ -170,7 +170,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplacePublicOfferingsRetrieveFieldItem]]):
+        field (Union[Unset, list[PublicOfferingDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

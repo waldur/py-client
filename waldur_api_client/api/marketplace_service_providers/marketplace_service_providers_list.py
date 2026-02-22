@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_service_providers_list_field_item import MarketplaceServiceProvidersListFieldItem
-from ...models.marketplace_service_providers_list_o_item import MarketplaceServiceProvidersListOItem
+from ...models.call_managing_organisation_o_enum import CallManagingOrganisationOEnum
 from ...models.service_provider import ServiceProvider
+from ...models.service_provider_field_enum import ServiceProviderFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,8 +18,8 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersListOItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -99,8 +99,8 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersListOItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ServiceProvider"]]:
@@ -112,8 +112,8 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceServiceProvidersListFieldItem]]):
-        o (Union[Unset, list[MarketplaceServiceProvidersListOItem]]):
+        field (Union[Unset, list[ServiceProviderFieldEnum]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -148,8 +148,8 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersListOItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ServiceProvider"]:
@@ -161,8 +161,8 @@ def sync(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceServiceProvidersListFieldItem]]):
-        o (Union[Unset, list[MarketplaceServiceProvidersListOItem]]):
+        field (Union[Unset, list[ServiceProviderFieldEnum]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -192,8 +192,8 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersListOItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ServiceProvider"]]:
@@ -205,8 +205,8 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceServiceProvidersListFieldItem]]):
-        o (Union[Unset, list[MarketplaceServiceProvidersListOItem]]):
+        field (Union[Unset, list[ServiceProviderFieldEnum]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -239,8 +239,8 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersListOItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ServiceProvider"]:
@@ -252,8 +252,8 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceServiceProvidersListFieldItem]]):
-        o (Union[Unset, list[MarketplaceServiceProvidersListOItem]]):
+        field (Union[Unset, list[ServiceProviderFieldEnum]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -285,8 +285,8 @@ def sync_all(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersListOItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
 ) -> list["ServiceProvider"]:
     """Get All Pages
 
@@ -299,8 +299,8 @@ def sync_all(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceServiceProvidersListFieldItem]]):
-        o (Union[Unset, list[MarketplaceServiceProvidersListOItem]]):
+        field (Union[Unset, list[ServiceProviderFieldEnum]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -370,8 +370,8 @@ async def asyncio_all(
     customer: Union[Unset, str] = UNSET,
     customer_keyword: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersListOItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
+    o: Union[Unset, list[CallManagingOrganisationOEnum]] = UNSET,
 ) -> list["ServiceProvider"]:
     """Get All Pages (Async)
 
@@ -384,8 +384,8 @@ async def asyncio_all(
         customer (Union[Unset, str]):
         customer_keyword (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceServiceProvidersListFieldItem]]):
-        o (Union[Unset, list[MarketplaceServiceProvidersListOItem]]):
+        field (Union[Unset, list[ServiceProviderFieldEnum]]):
+        o (Union[Unset, list[CallManagingOrganisationOEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

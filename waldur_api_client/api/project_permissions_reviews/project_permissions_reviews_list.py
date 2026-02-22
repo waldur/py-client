@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.customer_permission_review_o_enum import CustomerPermissionReviewOEnum
 from ...models.project_permission_review import ProjectPermissionReview
-from ...models.project_permissions_reviews_list_o_item import ProjectPermissionsReviewsListOItem
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,7 +17,7 @@ def _get_kwargs(
     *,
     closed: Union[Unset, datetime.datetime] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[CustomerPermissionReviewOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -99,7 +99,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     closed: Union[Unset, datetime.datetime] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[CustomerPermissionReviewOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -109,7 +109,7 @@ def sync_detailed(
     Args:
         closed (Union[Unset, datetime.datetime]):
         is_pending (Union[Unset, bool]):
-        o (Union[Unset, list[ProjectPermissionsReviewsListOItem]]):
+        o (Union[Unset, list[CustomerPermissionReviewOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -145,7 +145,7 @@ def sync(
     client: AuthenticatedClient,
     closed: Union[Unset, datetime.datetime] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[CustomerPermissionReviewOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -155,7 +155,7 @@ def sync(
     Args:
         closed (Union[Unset, datetime.datetime]):
         is_pending (Union[Unset, bool]):
-        o (Union[Unset, list[ProjectPermissionsReviewsListOItem]]):
+        o (Union[Unset, list[CustomerPermissionReviewOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -186,7 +186,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     closed: Union[Unset, datetime.datetime] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[CustomerPermissionReviewOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -196,7 +196,7 @@ async def asyncio_detailed(
     Args:
         closed (Union[Unset, datetime.datetime]):
         is_pending (Union[Unset, bool]):
-        o (Union[Unset, list[ProjectPermissionsReviewsListOItem]]):
+        o (Union[Unset, list[CustomerPermissionReviewOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -230,7 +230,7 @@ async def asyncio(
     client: AuthenticatedClient,
     closed: Union[Unset, datetime.datetime] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[CustomerPermissionReviewOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -240,7 +240,7 @@ async def asyncio(
     Args:
         closed (Union[Unset, datetime.datetime]):
         is_pending (Union[Unset, bool]):
-        o (Union[Unset, list[ProjectPermissionsReviewsListOItem]]):
+        o (Union[Unset, list[CustomerPermissionReviewOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -273,7 +273,7 @@ def sync_all(
     client: AuthenticatedClient,
     closed: Union[Unset, datetime.datetime] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[CustomerPermissionReviewOEnum]] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProjectPermissionReview"]:
@@ -287,7 +287,7 @@ def sync_all(
     Args:
         closed (Union[Unset, datetime.datetime]):
         is_pending (Union[Unset, bool]):
-        o (Union[Unset, list[ProjectPermissionsReviewsListOItem]]):
+        o (Union[Unset, list[CustomerPermissionReviewOEnum]]):
         project_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
 
@@ -358,7 +358,7 @@ async def asyncio_all(
     client: AuthenticatedClient,
     closed: Union[Unset, datetime.datetime] = UNSET,
     is_pending: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[ProjectPermissionsReviewsListOItem]] = UNSET,
+    o: Union[Unset, list[CustomerPermissionReviewOEnum]] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProjectPermissionReview"]:
@@ -372,7 +372,7 @@ async def asyncio_all(
     Args:
         closed (Union[Unset, datetime.datetime]):
         is_pending (Union[Unset, bool]):
-        o (Union[Unset, list[ProjectPermissionsReviewsListOItem]]):
+        o (Union[Unset, list[CustomerPermissionReviewOEnum]]):
         project_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
 

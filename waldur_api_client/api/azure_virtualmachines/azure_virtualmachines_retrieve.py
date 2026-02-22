@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.azure_virtual_machine import AzureVirtualMachine
-from ...models.azure_virtualmachines_retrieve_field_item import AzureVirtualmachinesRetrieveFieldItem
+from ...models.azure_virtual_machine_field_enum import AzureVirtualMachineFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[AzureVirtualmachinesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureVirtualMachineFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,12 +63,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureVirtualmachinesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureVirtualMachineFieldEnum]] = UNSET,
 ) -> Response[AzureVirtualMachine]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureVirtualmachinesRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureVirtualMachineFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,12 +94,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureVirtualmachinesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureVirtualMachineFieldEnum]] = UNSET,
 ) -> AzureVirtualMachine:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureVirtualmachinesRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureVirtualMachineFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -120,12 +120,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureVirtualmachinesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureVirtualMachineFieldEnum]] = UNSET,
 ) -> Response[AzureVirtualMachine]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureVirtualmachinesRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureVirtualMachineFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,12 +149,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureVirtualmachinesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureVirtualMachineFieldEnum]] = UNSET,
 ) -> AzureVirtualMachine:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureVirtualmachinesRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureVirtualMachineFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

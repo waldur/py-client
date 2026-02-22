@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.vmware_disk import VmwareDisk
-from ...models.vmware_disks_list_field_item import VmwareDisksListFieldItem
-from ...models.vmware_disks_list_state_item import VmwareDisksListStateItem
+from ...models.vmware_disk_field_enum import VmwareDiskFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -24,7 +24,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareDisksListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -34,7 +34,7 @@ def _get_kwargs(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -171,7 +171,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareDisksListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -181,7 +181,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -197,7 +197,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareDisksListFieldItem]]):
+        field (Union[Unset, list[VmwareDiskFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -207,7 +207,7 @@ def sync_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareDisksListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
         vm (Union[Unset, str]):
         vm_uuid (Union[Unset, UUID]):
@@ -265,7 +265,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareDisksListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -275,7 +275,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -291,7 +291,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareDisksListFieldItem]]):
+        field (Union[Unset, list[VmwareDiskFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -301,7 +301,7 @@ def sync(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareDisksListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
         vm (Union[Unset, str]):
         vm_uuid (Union[Unset, UUID]):
@@ -354,7 +354,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareDisksListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -364,7 +364,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -380,7 +380,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareDisksListFieldItem]]):
+        field (Union[Unset, list[VmwareDiskFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -390,7 +390,7 @@ async def asyncio_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareDisksListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
         vm (Union[Unset, str]):
         vm_uuid (Union[Unset, UUID]):
@@ -446,7 +446,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareDisksListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -456,7 +456,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -472,7 +472,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareDisksListFieldItem]]):
+        field (Union[Unset, list[VmwareDiskFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -482,7 +482,7 @@ async def asyncio(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareDisksListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
         vm (Union[Unset, str]):
         vm_uuid (Union[Unset, UUID]):
@@ -537,7 +537,7 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareDisksListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -545,7 +545,7 @@ def sync_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -567,7 +567,7 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareDisksListFieldItem]]):
+        field (Union[Unset, list[VmwareDiskFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         project (Union[Unset, UUID]):
@@ -575,7 +575,7 @@ def sync_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareDisksListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
         vm (Union[Unset, str]):
         vm_uuid (Union[Unset, UUID]):
@@ -670,7 +670,7 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareDisksListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareDiskFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -678,7 +678,7 @@ async def asyncio_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareDisksListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
     vm: Union[Unset, str] = UNSET,
     vm_uuid: Union[Unset, UUID] = UNSET,
@@ -700,7 +700,7 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareDisksListFieldItem]]):
+        field (Union[Unset, list[VmwareDiskFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         project (Union[Unset, UUID]):
@@ -708,7 +708,7 @@ async def asyncio_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareDisksListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
         vm (Union[Unset, str]):
         vm_uuid (Union[Unset, UUID]):

@@ -6,12 +6,12 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.coi_severity_level import COISeverityLevel
+from ...models.coi_type_enum import CoiTypeEnum
 from ...models.conflict_of_interest import ConflictOfInterest
-from ...models.conflicts_of_interest_list_coi_type_item import ConflictsOfInterestListCoiTypeItem
-from ...models.conflicts_of_interest_list_detection_method_item import ConflictsOfInterestListDetectionMethodItem
-from ...models.conflicts_of_interest_list_o_item import ConflictsOfInterestListOItem
-from ...models.conflicts_of_interest_list_severity import ConflictsOfInterestListSeverity
-from ...models.conflicts_of_interest_list_status_item import ConflictsOfInterestListStatusItem
+from ...models.conflict_of_interest_o_enum import ConflictOfInterestOEnum
+from ...models.conflict_of_interest_status_enum import ConflictOfInterestStatusEnum
+from ...models.detection_method_enum import DetectionMethodEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -19,17 +19,17 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     call_uuid: Union[Unset, UUID] = UNSET,
-    coi_type: Union[Unset, list[ConflictsOfInterestListCoiTypeItem]] = UNSET,
-    detection_method: Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]] = UNSET,
-    o: Union[Unset, list[ConflictsOfInterestListOItem]] = UNSET,
+    coi_type: Union[Unset, list[CoiTypeEnum]] = UNSET,
+    detection_method: Union[Unset, list[DetectionMethodEnum]] = UNSET,
+    o: Union[Unset, list[ConflictOfInterestOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_name: Union[Unset, str] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    severity: Union[Unset, ConflictsOfInterestListSeverity] = UNSET,
-    status: Union[Unset, list[ConflictsOfInterestListStatusItem]] = UNSET,
+    severity: Union[Unset, COISeverityLevel] = UNSET,
+    status: Union[Unset, list[ConflictOfInterestStatusEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -144,32 +144,32 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    coi_type: Union[Unset, list[ConflictsOfInterestListCoiTypeItem]] = UNSET,
-    detection_method: Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]] = UNSET,
-    o: Union[Unset, list[ConflictsOfInterestListOItem]] = UNSET,
+    coi_type: Union[Unset, list[CoiTypeEnum]] = UNSET,
+    detection_method: Union[Unset, list[DetectionMethodEnum]] = UNSET,
+    o: Union[Unset, list[ConflictOfInterestOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_name: Union[Unset, str] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    severity: Union[Unset, ConflictsOfInterestListSeverity] = UNSET,
-    status: Union[Unset, list[ConflictsOfInterestListStatusItem]] = UNSET,
+    severity: Union[Unset, COISeverityLevel] = UNSET,
+    status: Union[Unset, list[ConflictOfInterestStatusEnum]] = UNSET,
 ) -> Response[list["ConflictOfInterest"]]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        coi_type (Union[Unset, list[ConflictsOfInterestListCoiTypeItem]]):
-        detection_method (Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]]):
-        o (Union[Unset, list[ConflictsOfInterestListOItem]]):
+        coi_type (Union[Unset, list[CoiTypeEnum]]):
+        detection_method (Union[Unset, list[DetectionMethodEnum]]):
+        o (Union[Unset, list[ConflictOfInterestOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_name (Union[Unset, str]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
-        severity (Union[Unset, ConflictsOfInterestListSeverity]):
-        status (Union[Unset, list[ConflictsOfInterestListStatusItem]]):
+        severity (Union[Unset, COISeverityLevel]):
+        status (Union[Unset, list[ConflictOfInterestStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -205,32 +205,32 @@ def sync(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    coi_type: Union[Unset, list[ConflictsOfInterestListCoiTypeItem]] = UNSET,
-    detection_method: Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]] = UNSET,
-    o: Union[Unset, list[ConflictsOfInterestListOItem]] = UNSET,
+    coi_type: Union[Unset, list[CoiTypeEnum]] = UNSET,
+    detection_method: Union[Unset, list[DetectionMethodEnum]] = UNSET,
+    o: Union[Unset, list[ConflictOfInterestOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_name: Union[Unset, str] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    severity: Union[Unset, ConflictsOfInterestListSeverity] = UNSET,
-    status: Union[Unset, list[ConflictsOfInterestListStatusItem]] = UNSET,
+    severity: Union[Unset, COISeverityLevel] = UNSET,
+    status: Union[Unset, list[ConflictOfInterestStatusEnum]] = UNSET,
 ) -> list["ConflictOfInterest"]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        coi_type (Union[Unset, list[ConflictsOfInterestListCoiTypeItem]]):
-        detection_method (Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]]):
-        o (Union[Unset, list[ConflictsOfInterestListOItem]]):
+        coi_type (Union[Unset, list[CoiTypeEnum]]):
+        detection_method (Union[Unset, list[DetectionMethodEnum]]):
+        o (Union[Unset, list[ConflictOfInterestOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_name (Union[Unset, str]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
-        severity (Union[Unset, ConflictsOfInterestListSeverity]):
-        status (Union[Unset, list[ConflictsOfInterestListStatusItem]]):
+        severity (Union[Unset, COISeverityLevel]):
+        status (Union[Unset, list[ConflictOfInterestStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -261,32 +261,32 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    coi_type: Union[Unset, list[ConflictsOfInterestListCoiTypeItem]] = UNSET,
-    detection_method: Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]] = UNSET,
-    o: Union[Unset, list[ConflictsOfInterestListOItem]] = UNSET,
+    coi_type: Union[Unset, list[CoiTypeEnum]] = UNSET,
+    detection_method: Union[Unset, list[DetectionMethodEnum]] = UNSET,
+    o: Union[Unset, list[ConflictOfInterestOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_name: Union[Unset, str] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    severity: Union[Unset, ConflictsOfInterestListSeverity] = UNSET,
-    status: Union[Unset, list[ConflictsOfInterestListStatusItem]] = UNSET,
+    severity: Union[Unset, COISeverityLevel] = UNSET,
+    status: Union[Unset, list[ConflictOfInterestStatusEnum]] = UNSET,
 ) -> Response[list["ConflictOfInterest"]]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        coi_type (Union[Unset, list[ConflictsOfInterestListCoiTypeItem]]):
-        detection_method (Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]]):
-        o (Union[Unset, list[ConflictsOfInterestListOItem]]):
+        coi_type (Union[Unset, list[CoiTypeEnum]]):
+        detection_method (Union[Unset, list[DetectionMethodEnum]]):
+        o (Union[Unset, list[ConflictOfInterestOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_name (Union[Unset, str]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
-        severity (Union[Unset, ConflictsOfInterestListSeverity]):
-        status (Union[Unset, list[ConflictsOfInterestListStatusItem]]):
+        severity (Union[Unset, COISeverityLevel]):
+        status (Union[Unset, list[ConflictOfInterestStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -320,32 +320,32 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    coi_type: Union[Unset, list[ConflictsOfInterestListCoiTypeItem]] = UNSET,
-    detection_method: Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]] = UNSET,
-    o: Union[Unset, list[ConflictsOfInterestListOItem]] = UNSET,
+    coi_type: Union[Unset, list[CoiTypeEnum]] = UNSET,
+    detection_method: Union[Unset, list[DetectionMethodEnum]] = UNSET,
+    o: Union[Unset, list[ConflictOfInterestOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_name: Union[Unset, str] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    severity: Union[Unset, ConflictsOfInterestListSeverity] = UNSET,
-    status: Union[Unset, list[ConflictsOfInterestListStatusItem]] = UNSET,
+    severity: Union[Unset, COISeverityLevel] = UNSET,
+    status: Union[Unset, list[ConflictOfInterestStatusEnum]] = UNSET,
 ) -> list["ConflictOfInterest"]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        coi_type (Union[Unset, list[ConflictsOfInterestListCoiTypeItem]]):
-        detection_method (Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]]):
-        o (Union[Unset, list[ConflictsOfInterestListOItem]]):
+        coi_type (Union[Unset, list[CoiTypeEnum]]):
+        detection_method (Union[Unset, list[DetectionMethodEnum]]):
+        o (Union[Unset, list[ConflictOfInterestOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_name (Union[Unset, str]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
-        severity (Union[Unset, ConflictsOfInterestListSeverity]):
-        status (Union[Unset, list[ConflictsOfInterestListStatusItem]]):
+        severity (Union[Unset, COISeverityLevel]):
+        status (Union[Unset, list[ConflictOfInterestStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -378,15 +378,15 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    coi_type: Union[Unset, list[ConflictsOfInterestListCoiTypeItem]] = UNSET,
-    detection_method: Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]] = UNSET,
-    o: Union[Unset, list[ConflictsOfInterestListOItem]] = UNSET,
+    coi_type: Union[Unset, list[CoiTypeEnum]] = UNSET,
+    detection_method: Union[Unset, list[DetectionMethodEnum]] = UNSET,
+    o: Union[Unset, list[ConflictOfInterestOEnum]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_name: Union[Unset, str] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    severity: Union[Unset, ConflictsOfInterestListSeverity] = UNSET,
-    status: Union[Unset, list[ConflictsOfInterestListStatusItem]] = UNSET,
+    severity: Union[Unset, COISeverityLevel] = UNSET,
+    status: Union[Unset, list[ConflictOfInterestStatusEnum]] = UNSET,
 ) -> list["ConflictOfInterest"]:
     """Get All Pages
 
@@ -397,15 +397,15 @@ def sync_all(
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        coi_type (Union[Unset, list[ConflictsOfInterestListCoiTypeItem]]):
-        detection_method (Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]]):
-        o (Union[Unset, list[ConflictsOfInterestListOItem]]):
+        coi_type (Union[Unset, list[CoiTypeEnum]]):
+        detection_method (Union[Unset, list[DetectionMethodEnum]]):
+        o (Union[Unset, list[ConflictOfInterestOEnum]]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_name (Union[Unset, str]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
-        severity (Union[Unset, ConflictsOfInterestListSeverity]):
-        status (Union[Unset, list[ConflictsOfInterestListStatusItem]]):
+        severity (Union[Unset, COISeverityLevel]):
+        status (Union[Unset, list[ConflictOfInterestStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -478,15 +478,15 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    coi_type: Union[Unset, list[ConflictsOfInterestListCoiTypeItem]] = UNSET,
-    detection_method: Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]] = UNSET,
-    o: Union[Unset, list[ConflictsOfInterestListOItem]] = UNSET,
+    coi_type: Union[Unset, list[CoiTypeEnum]] = UNSET,
+    detection_method: Union[Unset, list[DetectionMethodEnum]] = UNSET,
+    o: Union[Unset, list[ConflictOfInterestOEnum]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_name: Union[Unset, str] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    severity: Union[Unset, ConflictsOfInterestListSeverity] = UNSET,
-    status: Union[Unset, list[ConflictsOfInterestListStatusItem]] = UNSET,
+    severity: Union[Unset, COISeverityLevel] = UNSET,
+    status: Union[Unset, list[ConflictOfInterestStatusEnum]] = UNSET,
 ) -> list["ConflictOfInterest"]:
     """Get All Pages (Async)
 
@@ -497,15 +497,15 @@ async def asyncio_all(
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        coi_type (Union[Unset, list[ConflictsOfInterestListCoiTypeItem]]):
-        detection_method (Union[Unset, list[ConflictsOfInterestListDetectionMethodItem]]):
-        o (Union[Unset, list[ConflictsOfInterestListOItem]]):
+        coi_type (Union[Unset, list[CoiTypeEnum]]):
+        detection_method (Union[Unset, list[DetectionMethodEnum]]):
+        o (Union[Unset, list[ConflictOfInterestOEnum]]):
         proposal_uuid (Union[Unset, UUID]):
         reviewer_name (Union[Unset, str]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
-        severity (Union[Unset, ConflictsOfInterestListSeverity]):
-        status (Union[Unset, list[ConflictsOfInterestListStatusItem]]):
+        severity (Union[Unset, COISeverityLevel]):
+        status (Union[Unset, list[ConflictOfInterestStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

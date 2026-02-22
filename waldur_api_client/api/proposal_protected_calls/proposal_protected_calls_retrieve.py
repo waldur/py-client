@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.proposal_protected_calls_retrieve_field_item import ProposalProtectedCallsRetrieveFieldItem
 from ...models.protected_call import ProtectedCall
+from ...models.protected_call_field_enum import ProtectedCallFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[ProposalProtectedCallsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProtectedCallFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ProposalProtectedCallsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProtectedCallFieldEnum]] = UNSET,
 ) -> Response[ProtectedCall]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ProposalProtectedCallsRetrieveFieldItem]]):
+        field (Union[Unset, list[ProtectedCallFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ProposalProtectedCallsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProtectedCallFieldEnum]] = UNSET,
 ) -> ProtectedCall:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ProposalProtectedCallsRetrieveFieldItem]]):
+        field (Union[Unset, list[ProtectedCallFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ProposalProtectedCallsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProtectedCallFieldEnum]] = UNSET,
 ) -> Response[ProtectedCall]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ProposalProtectedCallsRetrieveFieldItem]]):
+        field (Union[Unset, list[ProtectedCallFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ProposalProtectedCallsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ProtectedCallFieldEnum]] = UNSET,
 ) -> ProtectedCall:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ProposalProtectedCallsRetrieveFieldItem]]):
+        field (Union[Unset, list[ProtectedCallFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

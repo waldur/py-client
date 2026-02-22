@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.vmware_virtual_machine import VmwareVirtualMachine
-from ...models.vmware_virtual_machine_list_field_item import VmwareVirtualMachineListFieldItem
-from ...models.vmware_virtual_machine_list_state_item import VmwareVirtualMachineListStateItem
+from ...models.vmware_virtual_machine_field_enum import VmwareVirtualMachineFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -24,7 +24,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareVirtualMachineListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareVirtualMachineFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -35,7 +35,7 @@ def _get_kwargs(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareVirtualMachineListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -167,7 +167,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareVirtualMachineListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareVirtualMachineFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -178,7 +178,7 @@ def sync_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareVirtualMachineListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["VmwareVirtualMachine"]]:
     """
@@ -192,7 +192,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareVirtualMachineListFieldItem]]):
+        field (Union[Unset, list[VmwareVirtualMachineFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -203,7 +203,7 @@ def sync_detailed(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareVirtualMachineListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -258,7 +258,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareVirtualMachineListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareVirtualMachineFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -269,7 +269,7 @@ def sync(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareVirtualMachineListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["VmwareVirtualMachine"]:
     """
@@ -283,7 +283,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareVirtualMachineListFieldItem]]):
+        field (Union[Unset, list[VmwareVirtualMachineFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -294,7 +294,7 @@ def sync(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareVirtualMachineListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -344,7 +344,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareVirtualMachineListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareVirtualMachineFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -355,7 +355,7 @@ async def asyncio_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareVirtualMachineListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["VmwareVirtualMachine"]]:
     """
@@ -369,7 +369,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareVirtualMachineListFieldItem]]):
+        field (Union[Unset, list[VmwareVirtualMachineFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -380,7 +380,7 @@ async def asyncio_detailed(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareVirtualMachineListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -433,7 +433,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareVirtualMachineListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareVirtualMachineFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -444,7 +444,7 @@ async def asyncio(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareVirtualMachineListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["VmwareVirtualMachine"]:
     """
@@ -458,7 +458,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareVirtualMachineListFieldItem]]):
+        field (Union[Unset, list[VmwareVirtualMachineFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -469,7 +469,7 @@ async def asyncio(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareVirtualMachineListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -521,7 +521,7 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareVirtualMachineListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareVirtualMachineFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -530,7 +530,7 @@ def sync_all(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareVirtualMachineListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["VmwareVirtualMachine"]:
     """Get All Pages
@@ -550,7 +550,7 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareVirtualMachineListFieldItem]]):
+        field (Union[Unset, list[VmwareVirtualMachineFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         project (Union[Unset, UUID]):
@@ -559,7 +559,7 @@ def sync_all(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareVirtualMachineListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -651,7 +651,7 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[VmwareVirtualMachineListFieldItem]] = UNSET,
+    field: Union[Unset, list[VmwareVirtualMachineFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -660,7 +660,7 @@ async def asyncio_all(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[VmwareVirtualMachineListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["VmwareVirtualMachine"]:
     """Get All Pages (Async)
@@ -680,7 +680,7 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[VmwareVirtualMachineListFieldItem]]):
+        field (Union[Unset, list[VmwareVirtualMachineFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         project (Union[Unset, UUID]):
@@ -689,7 +689,7 @@ async def asyncio_all(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[VmwareVirtualMachineListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:

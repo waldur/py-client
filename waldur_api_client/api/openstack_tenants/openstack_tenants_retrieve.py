@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_tenant import OpenStackTenant
-from ...models.openstack_tenants_retrieve_field_item import OpenstackTenantsRetrieveFieldItem
+from ...models.open_stack_tenant_field_enum import OpenStackTenantFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[OpenstackTenantsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackTenantsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
 ) -> Response[OpenStackTenant]:
     """Get tenant details
 
@@ -71,7 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackTenantsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackTenantFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -97,7 +97,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackTenantsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
 ) -> OpenStackTenant:
     """Get tenant details
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackTenantsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackTenantFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackTenantsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
 ) -> Response[OpenStackTenant]:
     """Get tenant details
 
@@ -134,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackTenantsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackTenantFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,7 +158,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackTenantsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackTenantFieldEnum]] = UNSET,
 ) -> OpenStackTenant:
     """Get tenant details
 
@@ -166,7 +166,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackTenantsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackTenantFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

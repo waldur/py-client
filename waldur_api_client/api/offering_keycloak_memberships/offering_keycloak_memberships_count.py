@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.offering_keycloak_memberships_count_state_item import OfferingKeycloakMembershipsCountStateItem
+from ...models.keycloak_user_group_membership_state import KeycloakUserGroupMembershipState
 from ...types import UNSET, Response, Unset
 
 
@@ -21,7 +21,7 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsCountStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -116,7 +116,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsCountStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -131,7 +131,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         resource_uuid (Union[Unset, UUID]):
         role_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OfferingKeycloakMembershipsCountStateItem]]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -175,7 +175,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsCountStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -190,7 +190,7 @@ def sync(
         page_size (Union[Unset, int]):
         resource_uuid (Union[Unset, UUID]):
         role_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OfferingKeycloakMembershipsCountStateItem]]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -229,7 +229,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsCountStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -244,7 +244,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         resource_uuid (Union[Unset, UUID]):
         role_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OfferingKeycloakMembershipsCountStateItem]]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -286,7 +286,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsCountStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -301,7 +301,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         resource_uuid (Union[Unset, UUID]):
         role_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OfferingKeycloakMembershipsCountStateItem]]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipState]]):
         username (Union[Unset, str]):
 
     Raises:

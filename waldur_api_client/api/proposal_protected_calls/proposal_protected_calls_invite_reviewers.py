@@ -7,10 +7,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.call_reviewer_pool import CallReviewerPool
-from ...models.proposal_protected_calls_invite_reviewers_o_item import ProposalProtectedCallsInviteReviewersOItem
-from ...models.proposal_protected_calls_invite_reviewers_state_item import (
-    ProposalProtectedCallsInviteReviewersStateItem,
-)
+from ...models.call_states import CallStates
+from ...models.protected_call_o_enum import ProtectedCallOEnum
 from ...models.reviewer_invitation_request import ReviewerInvitationRequest
 from ...types import UNSET, Response, Unset
 
@@ -24,12 +22,12 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsInviteReviewersOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsInviteReviewersStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -134,12 +132,12 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsInviteReviewersOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsInviteReviewersStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> Response[list["CallReviewerPool"]]:
     """Invite reviewers to join the call's reviewer pool.
 
@@ -150,12 +148,12 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsInviteReviewersOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsInviteReviewersStateItem]]):
+        state (Union[Unset, list[CallStates]]):
         body (ReviewerInvitationRequest):
 
     Raises:
@@ -199,12 +197,12 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsInviteReviewersOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsInviteReviewersStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["CallReviewerPool"]:
     """Invite reviewers to join the call's reviewer pool.
 
@@ -215,12 +213,12 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsInviteReviewersOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsInviteReviewersStateItem]]):
+        state (Union[Unset, list[CallStates]]):
         body (ReviewerInvitationRequest):
 
     Raises:
@@ -259,12 +257,12 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsInviteReviewersOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsInviteReviewersStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> Response[list["CallReviewerPool"]]:
     """Invite reviewers to join the call's reviewer pool.
 
@@ -275,12 +273,12 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsInviteReviewersOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsInviteReviewersStateItem]]):
+        state (Union[Unset, list[CallStates]]):
         body (ReviewerInvitationRequest):
 
     Raises:
@@ -322,12 +320,12 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsInviteReviewersOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsInviteReviewersStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["CallReviewerPool"]:
     """Invite reviewers to join the call's reviewer pool.
 
@@ -338,12 +336,12 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsInviteReviewersOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsInviteReviewersStateItem]]):
+        state (Union[Unset, list[CallStates]]):
         body (ReviewerInvitationRequest):
 
     Raises:

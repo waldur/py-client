@@ -8,7 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.basic_user import BasicUser
-from ...models.projects_other_users_list_o import ProjectsOtherUsersListO
+from ...models.customer_user_o_enum import CustomerUserOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -26,7 +26,7 @@ def _get_kwargs(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -137,7 +137,7 @@ def sync_detailed(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -160,7 +160,7 @@ def sync_detailed(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, ProjectsOtherUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -220,7 +220,7 @@ def sync(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -243,7 +243,7 @@ def sync(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, ProjectsOtherUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -298,7 +298,7 @@ async def asyncio_detailed(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -321,7 +321,7 @@ async def asyncio_detailed(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, ProjectsOtherUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -379,7 +379,7 @@ async def asyncio(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -402,7 +402,7 @@ async def asyncio(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, ProjectsOtherUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -459,7 +459,7 @@ def sync_all(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     phone_number: Union[Unset, str] = UNSET,
     registration_method: Union[Unset, str] = UNSET,
@@ -485,7 +485,7 @@ def sync_all(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, ProjectsOtherUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         phone_number (Union[Unset, str]):
         registration_method (Union[Unset, str]):
@@ -580,7 +580,7 @@ async def asyncio_all(
     job_title: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, ProjectsOtherUsersListO] = UNSET,
+    o: Union[Unset, CustomerUserOEnum] = UNSET,
     organization: Union[Unset, str] = UNSET,
     phone_number: Union[Unset, str] = UNSET,
     registration_method: Union[Unset, str] = UNSET,
@@ -606,7 +606,7 @@ async def asyncio_all(
         job_title (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, ProjectsOtherUsersListO]):
+        o (Union[Unset, CustomerUserOEnum]):
         organization (Union[Unset, str]):
         phone_number (Union[Unset, str]):
         registration_method (Union[Unset, str]):

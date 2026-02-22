@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_offering_referrals_list_o_item import MarketplaceOfferingReferralsListOItem
 from ...models.offering_referral import OfferingReferral
+from ...models.offering_referral_o_enum import OfferingReferralOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -77,7 +77,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -89,7 +89,7 @@ def sync_detailed(
     as publications or datasets. The list must be filtered by the offering's scope.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
+        o (Union[Unset, list[OfferingReferralOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
@@ -119,7 +119,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -131,7 +131,7 @@ def sync(
     as publications or datasets. The list must be filtered by the offering's scope.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
+        o (Union[Unset, list[OfferingReferralOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
@@ -156,7 +156,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -168,7 +168,7 @@ async def asyncio_detailed(
     as publications or datasets. The list must be filtered by the offering's scope.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
+        o (Union[Unset, list[OfferingReferralOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
@@ -196,7 +196,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -208,7 +208,7 @@ async def asyncio(
     as publications or datasets. The list must be filtered by the offering's scope.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
+        o (Union[Unset, list[OfferingReferralOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
@@ -235,7 +235,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     scope: Union[Unset, str] = UNSET,
 ) -> list["OfferingReferral"]:
     """Get All Pages
@@ -246,7 +246,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
+        o (Union[Unset, list[OfferingReferralOEnum]]):
         scope (Union[Unset, str]):
 
     Raises:
@@ -311,7 +311,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[MarketplaceOfferingReferralsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingReferralOEnum]] = UNSET,
     scope: Union[Unset, str] = UNSET,
 ) -> list["OfferingReferral"]:
     """Get All Pages (Async)
@@ -322,7 +322,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        o (Union[Unset, list[MarketplaceOfferingReferralsListOItem]]):
+        o (Union[Unset, list[OfferingReferralOEnum]]):
         scope (Union[Unset, str]):
 
     Raises:

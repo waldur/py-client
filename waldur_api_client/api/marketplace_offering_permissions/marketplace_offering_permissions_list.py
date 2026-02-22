@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_offering_permissions_list_o_item import MarketplaceOfferingPermissionsListOItem
 from ...models.offering_permission import OfferingPermission
+from ...models.offering_permission_o_enum import OfferingPermissionOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -20,7 +20,7 @@ def _get_kwargs(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     offering: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -144,7 +144,7 @@ def sync_detailed(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     offering: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -165,7 +165,7 @@ def sync_detailed(
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceOfferingPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         offering (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -223,7 +223,7 @@ def sync(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     offering: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -244,7 +244,7 @@ def sync(
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceOfferingPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         offering (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -297,7 +297,7 @@ async def asyncio_detailed(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     offering: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -318,7 +318,7 @@ async def asyncio_detailed(
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceOfferingPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         offering (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -374,7 +374,7 @@ async def asyncio(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     offering: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -395,7 +395,7 @@ async def asyncio(
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceOfferingPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         offering (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -450,7 +450,7 @@ def sync_all(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     offering: Union[Unset, UUID] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
@@ -475,7 +475,7 @@ def sync_all(
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceOfferingPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         offering (Union[Unset, UUID]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
@@ -568,7 +568,7 @@ async def asyncio_all(
     full_name: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingPermissionsListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingPermissionOEnum]] = UNSET,
     offering: Union[Unset, UUID] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
@@ -593,7 +593,7 @@ async def asyncio_all(
         full_name (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceOfferingPermissionsListOItem]]):
+        o (Union[Unset, list[OfferingPermissionOEnum]]):
         offering (Union[Unset, UUID]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):

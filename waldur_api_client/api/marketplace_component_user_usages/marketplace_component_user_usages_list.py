@@ -8,8 +8,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.component_user_usage import ComponentUserUsage
-from ...models.marketplace_component_user_usages_list_field_item import MarketplaceComponentUserUsagesListFieldItem
-from ...models.marketplace_component_user_usages_list_o_item import MarketplaceComponentUserUsagesListOItem
+from ...models.component_user_usage_field_enum import ComponentUserUsageFieldEnum
+from ...models.component_user_usage_o_enum import ComponentUserUsageOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -22,8 +22,8 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -150,8 +150,8 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -177,8 +177,8 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]]):
-        o (Union[Unset, list[MarketplaceComponentUserUsagesListOItem]]):
+        field (Union[Unset, list[ComponentUserUsageFieldEnum]]):
+        o (Union[Unset, list[ComponentUserUsageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -231,8 +231,8 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -258,8 +258,8 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]]):
-        o (Union[Unset, list[MarketplaceComponentUserUsagesListOItem]]):
+        field (Union[Unset, list[ComponentUserUsageFieldEnum]]):
+        o (Union[Unset, list[ComponentUserUsageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -307,8 +307,8 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -334,8 +334,8 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]]):
-        o (Union[Unset, list[MarketplaceComponentUserUsagesListOItem]]):
+        field (Union[Unset, list[ComponentUserUsageFieldEnum]]):
+        o (Union[Unset, list[ComponentUserUsageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -386,8 +386,8 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -413,8 +413,8 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]]):
-        o (Union[Unset, list[MarketplaceComponentUserUsagesListOItem]]):
+        field (Union[Unset, list[ComponentUserUsageFieldEnum]]):
+        o (Union[Unset, list[ComponentUserUsageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -464,8 +464,8 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
@@ -487,8 +487,8 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]]):
-        o (Union[Unset, list[MarketplaceComponentUserUsagesListOItem]]):
+        field (Union[Unset, list[ComponentUserUsageFieldEnum]]):
+        o (Union[Unset, list[ComponentUserUsageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
@@ -576,8 +576,8 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     date_after: Union[Unset, datetime.date] = UNSET,
     date_before: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[MarketplaceComponentUserUsagesListOItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
+    o: Union[Unset, list[ComponentUserUsageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
@@ -599,8 +599,8 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         date_after (Union[Unset, datetime.date]):
         date_before (Union[Unset, datetime.date]):
-        field (Union[Unset, list[MarketplaceComponentUserUsagesListFieldItem]]):
-        o (Union[Unset, list[MarketplaceComponentUserUsagesListOItem]]):
+        field (Union[Unset, list[ComponentUserUsageFieldEnum]]):
+        o (Union[Unset, list[ComponentUserUsageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):

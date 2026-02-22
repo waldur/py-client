@@ -7,10 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_offering_user_checklist_completions_list_o_item import (
-    MarketplaceOfferingUserChecklistCompletionsListOItem,
-)
 from ...models.user_checklist_completion import UserChecklistCompletion
+from ...models.user_checklist_completion_o_enum import UserChecklistCompletionOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -20,7 +18,7 @@ def _get_kwargs(
     created: Union[Unset, datetime.datetime] = UNSET,
     is_completed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]] = UNSET,
+    o: Union[Unset, list[UserChecklistCompletionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -108,7 +106,7 @@ def sync_detailed(
     created: Union[Unset, datetime.datetime] = UNSET,
     is_completed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]] = UNSET,
+    o: Union[Unset, list[UserChecklistCompletionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -128,7 +126,7 @@ def sync_detailed(
         created (Union[Unset, datetime.datetime]):
         is_completed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]]):
+        o (Union[Unset, list[UserChecklistCompletionOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -166,7 +164,7 @@ def sync(
     created: Union[Unset, datetime.datetime] = UNSET,
     is_completed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]] = UNSET,
+    o: Union[Unset, list[UserChecklistCompletionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -186,7 +184,7 @@ def sync(
         created (Union[Unset, datetime.datetime]):
         is_completed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]]):
+        o (Union[Unset, list[UserChecklistCompletionOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -219,7 +217,7 @@ async def asyncio_detailed(
     created: Union[Unset, datetime.datetime] = UNSET,
     is_completed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]] = UNSET,
+    o: Union[Unset, list[UserChecklistCompletionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -239,7 +237,7 @@ async def asyncio_detailed(
         created (Union[Unset, datetime.datetime]):
         is_completed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]]):
+        o (Union[Unset, list[UserChecklistCompletionOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -275,7 +273,7 @@ async def asyncio(
     created: Union[Unset, datetime.datetime] = UNSET,
     is_completed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]] = UNSET,
+    o: Union[Unset, list[UserChecklistCompletionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -295,7 +293,7 @@ async def asyncio(
         created (Union[Unset, datetime.datetime]):
         is_completed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]]):
+        o (Union[Unset, list[UserChecklistCompletionOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -330,7 +328,7 @@ def sync_all(
     created: Union[Unset, datetime.datetime] = UNSET,
     is_completed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]] = UNSET,
+    o: Union[Unset, list[UserChecklistCompletionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserChecklistCompletion"]:
@@ -345,7 +343,7 @@ def sync_all(
         created (Union[Unset, datetime.datetime]):
         is_completed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]]):
+        o (Union[Unset, list[UserChecklistCompletionOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         user_uuid (Union[Unset, UUID]):
 
@@ -418,7 +416,7 @@ async def asyncio_all(
     created: Union[Unset, datetime.datetime] = UNSET,
     is_completed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]] = UNSET,
+    o: Union[Unset, list[UserChecklistCompletionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserChecklistCompletion"]:
@@ -433,7 +431,7 @@ async def asyncio_all(
         created (Union[Unset, datetime.datetime]):
         is_completed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUserChecklistCompletionsListOItem]]):
+        o (Union[Unset, list[UserChecklistCompletionOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         user_uuid (Union[Unset, UUID]):
 

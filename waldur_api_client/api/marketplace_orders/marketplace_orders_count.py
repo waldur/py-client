@@ -7,9 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_orders_count_o_item import MarketplaceOrdersCountOItem
-from ...models.marketplace_orders_count_state_item import MarketplaceOrdersCountStateItem
-from ...models.marketplace_orders_count_type_item import MarketplaceOrdersCountTypeItem
+from ...models.order_details_o_enum import OrderDetailsOEnum
+from ...models.order_state import OrderState
+from ...models.request_types import RequestTypes
 from ...types import UNSET, Response, Unset
 
 
@@ -21,7 +21,7 @@ def _get_kwargs(
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersCountOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -36,8 +36,8 @@ def _get_kwargs(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersCountTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -192,7 +192,7 @@ def sync_detailed(
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersCountOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -207,8 +207,8 @@ def sync_detailed(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersCountTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> Response[int]:
     """List orders
 
@@ -221,7 +221,7 @@ def sync_detailed(
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOrdersCountOItem]]):
+        o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
@@ -236,8 +236,8 @@ def sync_detailed(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceOrdersCountStateItem]]):
-        type_ (Union[Unset, list[MarketplaceOrdersCountTypeItem]]):
+        state (Union[Unset, list[OrderState]]):
+        type_ (Union[Unset, list[RequestTypes]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -289,7 +289,7 @@ def sync(
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersCountOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -304,8 +304,8 @@ def sync(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersCountTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> int:
     """List orders
 
@@ -318,7 +318,7 @@ def sync(
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOrdersCountOItem]]):
+        o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
@@ -333,8 +333,8 @@ def sync(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceOrdersCountStateItem]]):
-        type_ (Union[Unset, list[MarketplaceOrdersCountTypeItem]]):
+        state (Union[Unset, list[OrderState]]):
+        type_ (Union[Unset, list[RequestTypes]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -381,7 +381,7 @@ async def asyncio_detailed(
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersCountOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -396,8 +396,8 @@ async def asyncio_detailed(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersCountTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> Response[int]:
     """List orders
 
@@ -410,7 +410,7 @@ async def asyncio_detailed(
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOrdersCountOItem]]):
+        o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
@@ -425,8 +425,8 @@ async def asyncio_detailed(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceOrdersCountStateItem]]):
-        type_ (Union[Unset, list[MarketplaceOrdersCountTypeItem]]):
+        state (Union[Unset, list[OrderState]]):
+        type_ (Union[Unset, list[RequestTypes]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -476,7 +476,7 @@ async def asyncio(
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOrdersCountOItem]] = UNSET,
+    o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_type: Union[Unset, list[str]] = UNSET,
@@ -491,8 +491,8 @@ async def asyncio(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceOrdersCountStateItem]] = UNSET,
-    type_: Union[Unset, list[MarketplaceOrdersCountTypeItem]] = UNSET,
+    state: Union[Unset, list[OrderState]] = UNSET,
+    type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> int:
     """List orders
 
@@ -505,7 +505,7 @@ async def asyncio(
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOrdersCountOItem]]):
+        o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_type (Union[Unset, list[str]]):
@@ -520,8 +520,8 @@ async def asyncio(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceOrdersCountStateItem]]):
-        type_ (Union[Unset, list[MarketplaceOrdersCountTypeItem]]):
+        state (Union[Unset, list[OrderState]]):
+        type_ (Union[Unset, list[RequestTypes]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

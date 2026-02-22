@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.chat_threads_retrieve_field_item import ChatThreadsRetrieveFieldItem
 from ...models.thread_session import ThreadSession
+from ...models.thread_session_field_enum import ThreadSessionFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[ChatThreadsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ChatThreadsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
 ) -> Response[ThreadSession]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ChatThreadsRetrieveFieldItem]]):
+        field (Union[Unset, list[ThreadSessionFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ChatThreadsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
 ) -> ThreadSession:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ChatThreadsRetrieveFieldItem]]):
+        field (Union[Unset, list[ThreadSessionFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ChatThreadsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
 ) -> Response[ThreadSession]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ChatThreadsRetrieveFieldItem]]):
+        field (Union[Unset, list[ThreadSessionFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ChatThreadsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
 ) -> ThreadSession:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ChatThreadsRetrieveFieldItem]]):
+        field (Union[Unset, list[ThreadSessionFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

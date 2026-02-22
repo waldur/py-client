@@ -7,8 +7,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.invitation import Invitation
-from ...models.user_invitations_list_o_item import UserInvitationsListOItem
-from ...models.user_invitations_list_state_item import UserInvitationsListStateItem
+from ...models.invitation_o_enum import InvitationOEnum
+from ...models.invitation_state import InvitationState
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -19,7 +19,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
     email_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserInvitationsListOItem]] = UNSET,
+    o: Union[Unset, list[InvitationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -28,7 +28,7 @@ def _get_kwargs(
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvitationState]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -124,7 +124,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
     email_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserInvitationsListOItem]] = UNSET,
+    o: Union[Unset, list[InvitationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -133,7 +133,7 @@ def sync_detailed(
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvitationState]] = UNSET,
 ) -> Response[list["Invitation"]]:
     """List user invitations
 
@@ -144,7 +144,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         email (Union[Unset, str]):
         email_exact (Union[Unset, str]):
-        o (Union[Unset, list[UserInvitationsListOItem]]):
+        o (Union[Unset, list[InvitationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -153,7 +153,7 @@ def sync_detailed(
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
-        state (Union[Unset, list[UserInvitationsListStateItem]]):
+        state (Union[Unset, list[InvitationState]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -194,7 +194,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
     email_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserInvitationsListOItem]] = UNSET,
+    o: Union[Unset, list[InvitationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -203,7 +203,7 @@ def sync(
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvitationState]] = UNSET,
 ) -> list["Invitation"]:
     """List user invitations
 
@@ -214,7 +214,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         email (Union[Unset, str]):
         email_exact (Union[Unset, str]):
-        o (Union[Unset, list[UserInvitationsListOItem]]):
+        o (Union[Unset, list[InvitationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -223,7 +223,7 @@ def sync(
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
-        state (Union[Unset, list[UserInvitationsListStateItem]]):
+        state (Union[Unset, list[InvitationState]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -259,7 +259,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
     email_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserInvitationsListOItem]] = UNSET,
+    o: Union[Unset, list[InvitationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -268,7 +268,7 @@ async def asyncio_detailed(
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvitationState]] = UNSET,
 ) -> Response[list["Invitation"]]:
     """List user invitations
 
@@ -279,7 +279,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         email (Union[Unset, str]):
         email_exact (Union[Unset, str]):
-        o (Union[Unset, list[UserInvitationsListOItem]]):
+        o (Union[Unset, list[InvitationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -288,7 +288,7 @@ async def asyncio_detailed(
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
-        state (Union[Unset, list[UserInvitationsListStateItem]]):
+        state (Union[Unset, list[InvitationState]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -327,7 +327,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
     email_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserInvitationsListOItem]] = UNSET,
+    o: Union[Unset, list[InvitationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role_name: Union[Unset, str] = UNSET,
@@ -336,7 +336,7 @@ async def asyncio(
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvitationState]] = UNSET,
 ) -> list["Invitation"]:
     """List user invitations
 
@@ -347,7 +347,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         email (Union[Unset, str]):
         email_exact (Union[Unset, str]):
-        o (Union[Unset, list[UserInvitationsListOItem]]):
+        o (Union[Unset, list[InvitationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role_name (Union[Unset, str]):
@@ -356,7 +356,7 @@ async def asyncio(
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
-        state (Union[Unset, list[UserInvitationsListStateItem]]):
+        state (Union[Unset, list[InvitationState]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -394,14 +394,14 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
     email_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserInvitationsListOItem]] = UNSET,
+    o: Union[Unset, list[InvitationOEnum]] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvitationState]] = UNSET,
 ) -> list["Invitation"]:
     """Get All Pages
 
@@ -415,14 +415,14 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         email (Union[Unset, str]):
         email_exact (Union[Unset, str]):
-        o (Union[Unset, list[UserInvitationsListOItem]]):
+        o (Union[Unset, list[InvitationOEnum]]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
-        state (Union[Unset, list[UserInvitationsListStateItem]]):
+        state (Union[Unset, list[InvitationState]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -500,14 +500,14 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     email: Union[Unset, str] = UNSET,
     email_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[UserInvitationsListOItem]] = UNSET,
+    o: Union[Unset, list[InvitationOEnum]] = UNSET,
     role_name: Union[Unset, str] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     scope_description: Union[Unset, str] = UNSET,
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserInvitationsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvitationState]] = UNSET,
 ) -> list["Invitation"]:
     """Get All Pages (Async)
 
@@ -521,14 +521,14 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         email (Union[Unset, str]):
         email_exact (Union[Unset, str]):
-        o (Union[Unset, list[UserInvitationsListOItem]]):
+        o (Union[Unset, list[InvitationOEnum]]):
         role_name (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         scope_description (Union[Unset, str]):
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
-        state (Union[Unset, list[UserInvitationsListStateItem]]):
+        state (Union[Unset, list[InvitationState]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

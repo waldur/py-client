@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.role_details import RoleDetails
-from ...models.roles_retrieve_field_item import RolesRetrieveFieldItem
+from ...models.role_details_field_enum import RoleDetailsFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[RolesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,7 +61,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RolesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
 ) -> Response[RoleDetails]:
     """Get role details
 
@@ -69,7 +69,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RolesRetrieveFieldItem]]):
+        field (Union[Unset, list[RoleDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -95,7 +95,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RolesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
 ) -> RoleDetails:
     """Get role details
 
@@ -103,7 +103,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RolesRetrieveFieldItem]]):
+        field (Union[Unset, list[RoleDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -124,7 +124,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RolesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
 ) -> Response[RoleDetails]:
     """Get role details
 
@@ -132,7 +132,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RolesRetrieveFieldItem]]):
+        field (Union[Unset, list[RoleDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -156,7 +156,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[RolesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
 ) -> RoleDetails:
     """Get role details
 
@@ -164,7 +164,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[RolesRetrieveFieldItem]]):
+        field (Union[Unset, list[RoleDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

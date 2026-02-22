@@ -7,9 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.invoice_o_enum import InvoiceOEnum
+from ...models.invoice_state_enum import InvoiceStateEnum
 from ...models.invoice_stats_offering import InvoiceStatsOffering
-from ...models.invoices_stats_list_o_item import InvoicesStatsListOItem
-from ...models.invoices_stats_list_state_item import InvoicesStatsListStateItem
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -23,12 +23,12 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -137,12 +137,12 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["InvoiceStatsOffering"]]:
     """Spendings grouped by offerings and filtered by provider.
@@ -155,12 +155,12 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesStatsListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesStatsListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -205,12 +205,12 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["InvoiceStatsOffering"]:
     """Spendings grouped by offerings and filtered by provider.
@@ -223,12 +223,12 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesStatsListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesStatsListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -268,12 +268,12 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["InvoiceStatsOffering"]]:
     """Spendings grouped by offerings and filtered by provider.
@@ -286,12 +286,12 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesStatsListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesStatsListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -334,12 +334,12 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["InvoiceStatsOffering"]:
     """Spendings grouped by offerings and filtered by provider.
@@ -352,12 +352,12 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesStatsListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesStatsListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -399,10 +399,10 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["InvoiceStatsOffering"]:
     """Get All Pages
@@ -420,10 +420,10 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesStatsListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesStatsListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -505,10 +505,10 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesStatsListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesStatsListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["InvoiceStatsOffering"]:
     """Get All Pages (Async)
@@ -526,10 +526,10 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesStatsListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         provider_uuid (Union[Unset, UUID]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesStatsListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:

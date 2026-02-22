@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_service_providers_retrieve_field_item import MarketplaceServiceProvidersRetrieveFieldItem
 from ...models.service_provider import ServiceProvider
+from ...models.service_provider_field_enum import ServiceProviderFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
 ) -> Response[ServiceProvider]:
     """Retrieve a service provider
 
@@ -71,7 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]]):
+        field (Union[Unset, list[ServiceProviderFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -97,7 +97,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
 ) -> ServiceProvider:
     """Retrieve a service provider
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]]):
+        field (Union[Unset, list[ServiceProviderFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
 ) -> Response[ServiceProvider]:
     """Retrieve a service provider
 
@@ -134,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]]):
+        field (Union[Unset, list[ServiceProviderFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,7 +158,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceProviderFieldEnum]] = UNSET,
 ) -> ServiceProvider:
     """Retrieve a service provider
 
@@ -166,7 +166,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceServiceProvidersRetrieveFieldItem]]):
+        field (Union[Unset, list[ServiceProviderFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

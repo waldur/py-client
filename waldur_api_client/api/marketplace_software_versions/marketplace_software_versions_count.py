@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_software_versions_count_o_item import MarketplaceSoftwareVersionsCountOItem
+from ...models.software_version_o_enum import SoftwareVersionOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareVersionsCountOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareVersionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_name: Union[Unset, str] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -104,7 +104,7 @@ def sync_detailed(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareVersionsCountOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareVersionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_name: Union[Unset, str] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -120,7 +120,7 @@ def sync_detailed(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareVersionsCountOItem]]):
+        o (Union[Unset, list[SoftwareVersionOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_name (Union[Unset, str]):
         package_uuid (Union[Unset, UUID]):
@@ -162,7 +162,7 @@ def sync(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareVersionsCountOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareVersionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_name: Union[Unset, str] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -178,7 +178,7 @@ def sync(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareVersionsCountOItem]]):
+        o (Union[Unset, list[SoftwareVersionOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_name (Union[Unset, str]):
         package_uuid (Union[Unset, UUID]):
@@ -215,7 +215,7 @@ async def asyncio_detailed(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareVersionsCountOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareVersionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_name: Union[Unset, str] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -231,7 +231,7 @@ async def asyncio_detailed(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareVersionsCountOItem]]):
+        o (Union[Unset, list[SoftwareVersionOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_name (Union[Unset, str]):
         package_uuid (Union[Unset, UUID]):
@@ -271,7 +271,7 @@ async def asyncio(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwareVersionsCountOItem]] = UNSET,
+    o: Union[Unset, list[SoftwareVersionOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_name: Union[Unset, str] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -287,7 +287,7 @@ async def asyncio(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwareVersionsCountOItem]]):
+        o (Union[Unset, list[SoftwareVersionOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_name (Union[Unset, str]):
         package_uuid (Union[Unset, UUID]):

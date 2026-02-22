@@ -7,8 +7,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.permission_request import PermissionRequest
-from ...models.user_permission_requests_list_o_item import UserPermissionRequestsListOItem
-from ...models.user_permission_requests_list_state_item import UserPermissionRequestsListStateItem
+from ...models.proposal_review_o_enum import ProposalReviewOEnum
+from ...models.remote_project_update_request_state_enum import RemoteProjectUpdateRequestStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,11 +18,11 @@ def _get_kwargs(
     created_by: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     invitation: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[UserPermissionRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserPermissionRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -110,11 +110,11 @@ def sync_detailed(
     created_by: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     invitation: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[UserPermissionRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserPermissionRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> Response[list["PermissionRequest"]]:
     """List permission requests
 
@@ -124,11 +124,11 @@ def sync_detailed(
         created_by (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         invitation (Union[Unset, UUID]):
-        o (Union[Unset, list[UserPermissionRequestsListOItem]]):
+        o (Union[Unset, list[ProposalReviewOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
-        state (Union[Unset, list[UserPermissionRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -162,11 +162,11 @@ def sync(
     created_by: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     invitation: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[UserPermissionRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserPermissionRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["PermissionRequest"]:
     """List permission requests
 
@@ -176,11 +176,11 @@ def sync(
         created_by (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         invitation (Union[Unset, UUID]):
-        o (Union[Unset, list[UserPermissionRequestsListOItem]]):
+        o (Union[Unset, list[ProposalReviewOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
-        state (Union[Unset, list[UserPermissionRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -209,11 +209,11 @@ async def asyncio_detailed(
     created_by: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     invitation: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[UserPermissionRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserPermissionRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> Response[list["PermissionRequest"]]:
     """List permission requests
 
@@ -223,11 +223,11 @@ async def asyncio_detailed(
         created_by (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         invitation (Union[Unset, UUID]):
-        o (Union[Unset, list[UserPermissionRequestsListOItem]]):
+        o (Union[Unset, list[ProposalReviewOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
-        state (Union[Unset, list[UserPermissionRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -259,11 +259,11 @@ async def asyncio(
     created_by: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     invitation: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[UserPermissionRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     scope: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserPermissionRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["PermissionRequest"]:
     """List permission requests
 
@@ -273,11 +273,11 @@ async def asyncio(
         created_by (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         invitation (Union[Unset, UUID]):
-        o (Union[Unset, list[UserPermissionRequestsListOItem]]):
+        o (Union[Unset, list[ProposalReviewOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         scope (Union[Unset, str]):
-        state (Union[Unset, list[UserPermissionRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -308,9 +308,9 @@ def sync_all(
     created_by: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     invitation: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[UserPermissionRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     scope: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserPermissionRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["PermissionRequest"]:
     """Get All Pages
 
@@ -323,9 +323,9 @@ def sync_all(
         created_by (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         invitation (Union[Unset, UUID]):
-        o (Union[Unset, list[UserPermissionRequestsListOItem]]):
+        o (Union[Unset, list[ProposalReviewOEnum]]):
         scope (Union[Unset, str]):
-        state (Union[Unset, list[UserPermissionRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -396,9 +396,9 @@ async def asyncio_all(
     created_by: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     invitation: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[UserPermissionRequestsListOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     scope: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[UserPermissionRequestsListStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> list["PermissionRequest"]:
     """Get All Pages (Async)
 
@@ -411,9 +411,9 @@ async def asyncio_all(
         created_by (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
         invitation (Union[Unset, UUID]):
-        o (Union[Unset, list[UserPermissionRequestsListOItem]]):
+        o (Union[Unset, list[ProposalReviewOEnum]]):
         scope (Union[Unset, str]):
-        state (Union[Unset, list[UserPermissionRequestsListStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

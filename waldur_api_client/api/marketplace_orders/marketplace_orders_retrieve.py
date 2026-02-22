@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_orders_retrieve_field_item import MarketplaceOrdersRetrieveFieldItem
 from ...models.order_details import OrderDetails
+from ...models.order_details_field_enum import OrderDetailsFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,7 +61,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> Response[OrderDetails]:
     """Retrieve an order
 
@@ -69,7 +69,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -95,7 +95,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> OrderDetails:
     """Retrieve an order
 
@@ -103,7 +103,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -124,7 +124,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> Response[OrderDetails]:
     """Retrieve an order
 
@@ -132,7 +132,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -156,7 +156,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> OrderDetails:
     """Retrieve an order
 
@@ -164,7 +164,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceOrdersRetrieveFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

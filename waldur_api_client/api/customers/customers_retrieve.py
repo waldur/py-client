@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.customer import Customer
-from ...models.customers_retrieve_field_item import CustomersRetrieveFieldItem
+from ...models.customer_field_enum import CustomerFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[CustomersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,7 +61,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[CustomersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
 ) -> Response[Customer]:
     """Retrieve customer details
 
@@ -69,7 +69,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[CustomersRetrieveFieldItem]]):
+        field (Union[Unset, list[CustomerFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -95,7 +95,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[CustomersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
 ) -> Customer:
     """Retrieve customer details
 
@@ -103,7 +103,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[CustomersRetrieveFieldItem]]):
+        field (Union[Unset, list[CustomerFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -124,7 +124,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[CustomersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
 ) -> Response[Customer]:
     """Retrieve customer details
 
@@ -132,7 +132,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[CustomersRetrieveFieldItem]]):
+        field (Union[Unset, list[CustomerFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -156,7 +156,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[CustomersRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[CustomerFieldEnum]] = UNSET,
 ) -> Customer:
     """Retrieve customer details
 
@@ -164,7 +164,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[CustomersRetrieveFieldItem]]):
+        field (Union[Unset, list[CustomerFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

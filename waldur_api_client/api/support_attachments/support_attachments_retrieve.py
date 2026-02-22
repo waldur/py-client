@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.attachment import Attachment
-from ...models.support_attachments_retrieve_field_item import SupportAttachmentsRetrieveFieldItem
+from ...models.attachment_field_enum import AttachmentFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[SupportAttachmentsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SupportAttachmentsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
 ) -> Response[Attachment]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SupportAttachmentsRetrieveFieldItem]]):
+        field (Union[Unset, list[AttachmentFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SupportAttachmentsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
 ) -> Attachment:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SupportAttachmentsRetrieveFieldItem]]):
+        field (Union[Unset, list[AttachmentFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SupportAttachmentsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
 ) -> Response[Attachment]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SupportAttachmentsRetrieveFieldItem]]):
+        field (Union[Unset, list[AttachmentFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SupportAttachmentsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AttachmentFieldEnum]] = UNSET,
 ) -> Attachment:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SupportAttachmentsRetrieveFieldItem]]):
+        field (Union[Unset, list[AttachmentFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

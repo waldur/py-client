@@ -23,6 +23,10 @@ class Message:
         sequence_index (int):
         replaces (UUID):
         created (datetime.datetime):
+        is_flagged (bool):
+        injection_score (float):
+        injection_severity (str):
+        injection_categories (Any):
     """
 
     uuid: UUID
@@ -32,6 +36,10 @@ class Message:
     sequence_index: int
     replaces: UUID
     created: datetime.datetime
+    is_flagged: bool
+    injection_score: float
+    injection_severity: str
+    injection_categories: Any
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,6 +57,14 @@ class Message:
 
         created = self.created.isoformat()
 
+        is_flagged = self.is_flagged
+
+        injection_score = self.injection_score
+
+        injection_severity = self.injection_severity
+
+        injection_categories = self.injection_categories
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -60,6 +76,10 @@ class Message:
                 "sequence_index": sequence_index,
                 "replaces": replaces,
                 "created": created,
+                "is_flagged": is_flagged,
+                "injection_score": injection_score,
+                "injection_severity": injection_severity,
+                "injection_categories": injection_categories,
             }
         )
 
@@ -82,6 +102,14 @@ class Message:
 
         created = isoparse(d.pop("created"))
 
+        is_flagged = d.pop("is_flagged")
+
+        injection_score = d.pop("injection_score")
+
+        injection_severity = d.pop("injection_severity")
+
+        injection_categories = d.pop("injection_categories")
+
         message = cls(
             uuid=uuid,
             thread=thread,
@@ -90,6 +118,10 @@ class Message:
             sequence_index=sequence_index,
             replaces=replaces,
             created=created,
+            is_flagged=is_flagged,
+            injection_score=injection_score,
+            injection_severity=injection_severity,
+            injection_categories=injection_categories,
         )
 
         message.additional_properties = d

@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.openportal_managed_projects_count_state_item import OpenportalManagedProjectsCountStateItem
+from ...models.remote_project_update_request_state_enum import RemoteProjectUpdateRequestStateEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -20,7 +20,7 @@ def _get_kwargs(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsCountStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -103,7 +103,7 @@ def sync_detailed(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsCountStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -116,7 +116,7 @@ def sync_detailed(
         project_template (Union[Unset, str]):
         project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenportalManagedProjectsCountStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -156,7 +156,7 @@ def sync(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsCountStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -169,7 +169,7 @@ def sync(
         project_template (Union[Unset, str]):
         project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenportalManagedProjectsCountStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -204,7 +204,7 @@ async def asyncio_detailed(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsCountStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -217,7 +217,7 @@ async def asyncio_detailed(
         project_template (Union[Unset, str]):
         project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenportalManagedProjectsCountStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -255,7 +255,7 @@ async def asyncio(
     project_template: Union[Unset, str] = UNSET,
     project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenportalManagedProjectsCountStateItem]] = UNSET,
+    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -268,7 +268,7 @@ async def asyncio(
         project_template (Union[Unset, str]):
         project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenportalManagedProjectsCountStateItem]]):
+        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

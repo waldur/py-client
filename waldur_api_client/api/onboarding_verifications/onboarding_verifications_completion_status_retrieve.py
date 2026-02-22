@@ -7,18 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.checklist_completion import ChecklistCompletion
-from ...models.onboarding_verifications_completion_status_retrieve_checklist_type import (
-    OnboardingVerificationsCompletionStatusRetrieveChecklistType,
-)
+from ...models.checklist_response_checklist_type_enum import ChecklistResponseChecklistTypeEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsCompletionStatusRetrieveChecklistType
-    ] = OnboardingVerificationsCompletionStatusRetrieveChecklistType.INTENT,
+    checklist_type: Union[Unset, ChecklistResponseChecklistTypeEnum] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -64,18 +60,14 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsCompletionStatusRetrieveChecklistType
-    ] = OnboardingVerificationsCompletionStatusRetrieveChecklistType.INTENT,
+    checklist_type: Union[Unset, ChecklistResponseChecklistTypeEnum] = UNSET,
 ) -> Response[ChecklistCompletion]:
     """Get checklist completion status. Supports both customer and intent checklists via checklist_type
     parameter.
 
     Args:
         uuid (UUID):
-        checklist_type (Union[Unset,
-            OnboardingVerificationsCompletionStatusRetrieveChecklistType]):  Default:
-            OnboardingVerificationsCompletionStatusRetrieveChecklistType.INTENT.
+        checklist_type (Union[Unset, ChecklistResponseChecklistTypeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -101,18 +93,14 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsCompletionStatusRetrieveChecklistType
-    ] = OnboardingVerificationsCompletionStatusRetrieveChecklistType.INTENT,
+    checklist_type: Union[Unset, ChecklistResponseChecklistTypeEnum] = UNSET,
 ) -> ChecklistCompletion:
     """Get checklist completion status. Supports both customer and intent checklists via checklist_type
     parameter.
 
     Args:
         uuid (UUID):
-        checklist_type (Union[Unset,
-            OnboardingVerificationsCompletionStatusRetrieveChecklistType]):  Default:
-            OnboardingVerificationsCompletionStatusRetrieveChecklistType.INTENT.
+        checklist_type (Union[Unset, ChecklistResponseChecklistTypeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -133,18 +121,14 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsCompletionStatusRetrieveChecklistType
-    ] = OnboardingVerificationsCompletionStatusRetrieveChecklistType.INTENT,
+    checklist_type: Union[Unset, ChecklistResponseChecklistTypeEnum] = UNSET,
 ) -> Response[ChecklistCompletion]:
     """Get checklist completion status. Supports both customer and intent checklists via checklist_type
     parameter.
 
     Args:
         uuid (UUID):
-        checklist_type (Union[Unset,
-            OnboardingVerificationsCompletionStatusRetrieveChecklistType]):  Default:
-            OnboardingVerificationsCompletionStatusRetrieveChecklistType.INTENT.
+        checklist_type (Union[Unset, ChecklistResponseChecklistTypeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -168,18 +152,14 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[
-        Unset, OnboardingVerificationsCompletionStatusRetrieveChecklistType
-    ] = OnboardingVerificationsCompletionStatusRetrieveChecklistType.INTENT,
+    checklist_type: Union[Unset, ChecklistResponseChecklistTypeEnum] = UNSET,
 ) -> ChecklistCompletion:
     """Get checklist completion status. Supports both customer and intent checklists via checklist_type
     parameter.
 
     Args:
         uuid (UUID):
-        checklist_type (Union[Unset,
-            OnboardingVerificationsCompletionStatusRetrieveChecklistType]):  Default:
-            OnboardingVerificationsCompletionStatusRetrieveChecklistType.INTENT.
+        checklist_type (Union[Unset, ChecklistResponseChecklistTypeEnum]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

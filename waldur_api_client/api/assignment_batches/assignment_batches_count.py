@@ -7,24 +7,24 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.assignment_batches_count_o_item import AssignmentBatchesCountOItem
-from ...models.assignment_batches_count_source_item import AssignmentBatchesCountSourceItem
-from ...models.assignment_batches_count_status_item import AssignmentBatchesCountStatusItem
+from ...models.assignment_batch_list_o_enum import AssignmentBatchListOEnum
+from ...models.assignment_batch_status import AssignmentBatchStatus
+from ...models.assignment_source import AssignmentSource
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesCountOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesCountSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesCountStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -125,29 +125,29 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesCountOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesCountSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesCountStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[AssignmentBatchesCountOItem]]):
+        o (Union[Unset, list[AssignmentBatchListOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_pool_entry_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         sent_after (Union[Unset, datetime.datetime]):
         sent_before (Union[Unset, datetime.datetime]):
-        source (Union[Unset, list[AssignmentBatchesCountSourceItem]]):
-        status (Union[Unset, list[AssignmentBatchesCountStatusItem]]):
+        source (Union[Unset, list[AssignmentSource]]):
+        status (Union[Unset, list[AssignmentBatchStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -181,29 +181,29 @@ def sync(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesCountOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesCountSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesCountStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[AssignmentBatchesCountOItem]]):
+        o (Union[Unset, list[AssignmentBatchListOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_pool_entry_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         sent_after (Union[Unset, datetime.datetime]):
         sent_before (Union[Unset, datetime.datetime]):
-        source (Union[Unset, list[AssignmentBatchesCountSourceItem]]):
-        status (Union[Unset, list[AssignmentBatchesCountStatusItem]]):
+        source (Union[Unset, list[AssignmentSource]]):
+        status (Union[Unset, list[AssignmentBatchStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -232,29 +232,29 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesCountOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesCountSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesCountStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[AssignmentBatchesCountOItem]]):
+        o (Union[Unset, list[AssignmentBatchListOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_pool_entry_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         sent_after (Union[Unset, datetime.datetime]):
         sent_before (Union[Unset, datetime.datetime]):
-        source (Union[Unset, list[AssignmentBatchesCountSourceItem]]):
-        status (Union[Unset, list[AssignmentBatchesCountStatusItem]]):
+        source (Union[Unset, list[AssignmentSource]]):
+        status (Union[Unset, list[AssignmentBatchStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -286,29 +286,29 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[AssignmentBatchesCountOItem]] = UNSET,
+    o: Union[Unset, list[AssignmentBatchListOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_pool_entry_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     sent_after: Union[Unset, datetime.datetime] = UNSET,
     sent_before: Union[Unset, datetime.datetime] = UNSET,
-    source: Union[Unset, list[AssignmentBatchesCountSourceItem]] = UNSET,
-    status: Union[Unset, list[AssignmentBatchesCountStatusItem]] = UNSET,
+    source: Union[Unset, list[AssignmentSource]] = UNSET,
+    status: Union[Unset, list[AssignmentBatchStatus]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[AssignmentBatchesCountOItem]]):
+        o (Union[Unset, list[AssignmentBatchListOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_pool_entry_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         sent_after (Union[Unset, datetime.datetime]):
         sent_before (Union[Unset, datetime.datetime]):
-        source (Union[Unset, list[AssignmentBatchesCountSourceItem]]):
-        status (Union[Unset, list[AssignmentBatchesCountStatusItem]]):
+        source (Union[Unset, list[AssignmentSource]]):
+        status (Union[Unset, list[AssignmentBatchStatus]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

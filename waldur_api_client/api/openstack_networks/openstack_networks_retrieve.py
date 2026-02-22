@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_network import OpenStackNetwork
-from ...models.openstack_networks_retrieve_field_item import OpenstackNetworksRetrieveFieldItem
+from ...models.open_stack_network_field_enum import OpenStackNetworkFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[OpenstackNetworksRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackNetworkFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackNetworksRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackNetworkFieldEnum]] = UNSET,
 ) -> Response[OpenStackNetwork]:
     """Get network details
 
@@ -71,7 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackNetworksRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackNetworkFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -97,7 +97,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackNetworksRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackNetworkFieldEnum]] = UNSET,
 ) -> OpenStackNetwork:
     """Get network details
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackNetworksRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackNetworkFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackNetworksRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackNetworkFieldEnum]] = UNSET,
 ) -> Response[OpenStackNetwork]:
     """Get network details
 
@@ -134,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackNetworksRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackNetworkFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,7 +158,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackNetworksRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackNetworkFieldEnum]] = UNSET,
 ) -> OpenStackNetwork:
     """Get network details
 
@@ -166,7 +166,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackNetworksRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackNetworkFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

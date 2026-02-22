@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.proposal_reviews_count_o_item import ProposalReviewsCountOItem
-from ...models.proposal_reviews_count_state_item import ProposalReviewsCountStateItem
+from ...models.proposal_review_o_enum import ProposalReviewOEnum
+from ...models.proposal_review_state_enum import ProposalReviewStateEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ProposalReviewsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -23,7 +23,7 @@ def _get_kwargs(
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalReviewsCountStateItem]] = UNSET,
+    state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -119,7 +119,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ProposalReviewsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -128,13 +128,13 @@ def sync_detailed(
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalReviewsCountStateItem]] = UNSET,
+    state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ProposalReviewsCountOItem]]):
+        o (Union[Unset, list[ProposalReviewOEnum]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -143,7 +143,7 @@ def sync_detailed(
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ProposalReviewsCountStateItem]]):
+        state (Union[Unset, list[ProposalReviewStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -178,7 +178,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ProposalReviewsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -187,13 +187,13 @@ def sync(
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalReviewsCountStateItem]] = UNSET,
+    state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ProposalReviewsCountOItem]]):
+        o (Union[Unset, list[ProposalReviewOEnum]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -202,7 +202,7 @@ def sync(
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ProposalReviewsCountStateItem]]):
+        state (Union[Unset, list[ProposalReviewStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -232,7 +232,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ProposalReviewsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -241,13 +241,13 @@ async def asyncio_detailed(
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalReviewsCountStateItem]] = UNSET,
+    state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ProposalReviewsCountOItem]]):
+        o (Union[Unset, list[ProposalReviewOEnum]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -256,7 +256,7 @@ async def asyncio_detailed(
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ProposalReviewsCountStateItem]]):
+        state (Union[Unset, list[ProposalReviewStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -289,7 +289,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ProposalReviewsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProposalReviewOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -298,13 +298,13 @@ async def asyncio(
     proposal_uuid: Union[Unset, UUID] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalReviewsCountStateItem]] = UNSET,
+    state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ProposalReviewsCountOItem]]):
+        o (Union[Unset, list[ProposalReviewOEnum]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -313,7 +313,7 @@ async def asyncio(
         proposal_uuid (Union[Unset, UUID]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ProposalReviewsCountStateItem]]):
+        state (Union[Unset, list[ProposalReviewStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

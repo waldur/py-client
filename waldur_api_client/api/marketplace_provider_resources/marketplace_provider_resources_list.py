@@ -7,13 +7,11 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_provider_resources_list_field_item import MarketplaceProviderResourcesListFieldItem
-from ...models.marketplace_provider_resources_list_o_item import MarketplaceProviderResourcesListOItem
-from ...models.marketplace_provider_resources_list_order_state_item import (
-    MarketplaceProviderResourcesListOrderStateItem,
-)
-from ...models.marketplace_provider_resources_list_state_item import MarketplaceProviderResourcesListStateItem
+from ...models.order_state import OrderState
 from ...models.resource import Resource
+from ...models.resource_field_enum import ResourceFieldEnum
+from ...models.resource_o_enum import ResourceOEnum
+from ...models.resource_state import ResourceState
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -27,7 +25,7 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -36,7 +34,7 @@ def _get_kwargs(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -45,7 +43,7 @@ def _get_kwargs(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -59,7 +57,7 @@ def _get_kwargs(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -265,7 +263,7 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -274,7 +272,7 @@ def sync_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -283,7 +281,7 @@ def sync_detailed(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -297,7 +295,7 @@ def sync_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -315,7 +313,7 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceProviderResourcesListFieldItem]]):
+        field (Union[Unset, list[ResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -324,7 +322,7 @@ def sync_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderResourcesListOItem]]):
+        o (Union[Unset, list[ResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -333,7 +331,7 @@ def sync_detailed(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -347,7 +345,7 @@ def sync_detailed(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProviderResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -423,7 +421,7 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -432,7 +430,7 @@ def sync(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -441,7 +439,7 @@ def sync(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -455,7 +453,7 @@ def sync(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -473,7 +471,7 @@ def sync(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceProviderResourcesListFieldItem]]):
+        field (Union[Unset, list[ResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -482,7 +480,7 @@ def sync(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderResourcesListOItem]]):
+        o (Union[Unset, list[ResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -491,7 +489,7 @@ def sync(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -505,7 +503,7 @@ def sync(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProviderResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -576,7 +574,7 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -585,7 +583,7 @@ async def asyncio_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -594,7 +592,7 @@ async def asyncio_detailed(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -608,7 +606,7 @@ async def asyncio_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -626,7 +624,7 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceProviderResourcesListFieldItem]]):
+        field (Union[Unset, list[ResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -635,7 +633,7 @@ async def asyncio_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderResourcesListOItem]]):
+        o (Union[Unset, list[ResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -644,7 +642,7 @@ async def asyncio_detailed(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -658,7 +656,7 @@ async def asyncio_detailed(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProviderResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -732,7 +730,7 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -741,7 +739,7 @@ async def asyncio(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -750,7 +748,7 @@ async def asyncio(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -764,7 +762,7 @@ async def asyncio(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -782,7 +780,7 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceProviderResourcesListFieldItem]]):
+        field (Union[Unset, list[ResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -791,7 +789,7 @@ async def asyncio(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderResourcesListOItem]]):
+        o (Union[Unset, list[ResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -800,7 +798,7 @@ async def asyncio(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -814,7 +812,7 @@ async def asyncio(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProviderResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -887,7 +885,7 @@ def sync_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -896,7 +894,7 @@ def sync_all(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -905,7 +903,7 @@ def sync_all(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     paused: Union[Unset, bool] = UNSET,
     plan_uuid: Union[Unset, UUID] = UNSET,
@@ -917,7 +915,7 @@ def sync_all(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -937,7 +935,7 @@ def sync_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceProviderResourcesListFieldItem]]):
+        field (Union[Unset, list[ResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -946,7 +944,7 @@ def sync_all(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderResourcesListOItem]]):
+        o (Union[Unset, list[ResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -955,7 +953,7 @@ def sync_all(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         parent_offering_uuid (Union[Unset, UUID]):
         paused (Union[Unset, bool]):
         plan_uuid (Union[Unset, UUID]):
@@ -967,7 +965,7 @@ def sync_all(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProviderResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -1080,7 +1078,7 @@ async def asyncio_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[MarketplaceProviderResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -1089,7 +1087,7 @@ async def asyncio_all(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceProviderResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[ResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -1098,7 +1096,7 @@ async def asyncio_all(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     paused: Union[Unset, bool] = UNSET,
     plan_uuid: Union[Unset, UUID] = UNSET,
@@ -1110,7 +1108,7 @@ async def asyncio_all(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[MarketplaceProviderResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -1130,7 +1128,7 @@ async def asyncio_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[MarketplaceProviderResourcesListFieldItem]]):
+        field (Union[Unset, list[ResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -1139,7 +1137,7 @@ async def asyncio_all(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceProviderResourcesListOItem]]):
+        o (Union[Unset, list[ResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -1148,7 +1146,7 @@ async def asyncio_all(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[MarketplaceProviderResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         parent_offering_uuid (Union[Unset, UUID]):
         paused (Union[Unset, bool]):
         plan_uuid (Union[Unset, UUID]):
@@ -1160,7 +1158,7 @@ async def asyncio_all(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[MarketplaceProviderResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):

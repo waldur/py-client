@@ -7,16 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.component_user_usage import ComponentUserUsage
-from ...models.marketplace_component_user_usages_retrieve_field_item import (
-    MarketplaceComponentUserUsagesRetrieveFieldItem,
-)
+from ...models.component_user_usage_field_enum import ComponentUserUsageFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -65,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
 ) -> Response[ComponentUserUsage]:
     """Retrieve a user-specific component usage record
 
@@ -73,7 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceComponentUserUsagesRetrieveFieldItem]]):
+        field (Union[Unset, list[ComponentUserUsageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -99,7 +97,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
 ) -> ComponentUserUsage:
     """Retrieve a user-specific component usage record
 
@@ -107,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceComponentUserUsagesRetrieveFieldItem]]):
+        field (Union[Unset, list[ComponentUserUsageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -128,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
 ) -> Response[ComponentUserUsage]:
     """Retrieve a user-specific component usage record
 
@@ -136,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceComponentUserUsagesRetrieveFieldItem]]):
+        field (Union[Unset, list[ComponentUserUsageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -160,7 +158,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceComponentUserUsagesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ComponentUserUsageFieldEnum]] = UNSET,
 ) -> ComponentUserUsage:
     """Retrieve a user-specific component usage record
 
@@ -168,7 +166,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceComponentUserUsagesRetrieveFieldItem]]):
+        field (Union[Unset, list[ComponentUserUsageFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

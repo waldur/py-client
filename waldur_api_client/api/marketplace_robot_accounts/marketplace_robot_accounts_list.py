@@ -7,9 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_robot_accounts_list_field_item import MarketplaceRobotAccountsListFieldItem
-from ...models.marketplace_robot_accounts_list_state import MarketplaceRobotAccountsListState
+from ...models.remote_resource_sync_status_remote_state_enum import RemoteResourceSyncStatusRemoteStateEnum
 from ...models.robot_account_details import RobotAccountDetails
+from ...models.robot_account_details_field_enum import RobotAccountDetailsFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,7 +18,7 @@ def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -26,7 +26,7 @@ def _get_kwargs(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -128,7 +128,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -136,7 +136,7 @@ def sync_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["RobotAccountDetails"]]:
     """List robot accounts
@@ -146,7 +146,7 @@ def sync_detailed(
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceRobotAccountsListFieldItem]]):
+        field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -154,7 +154,7 @@ def sync_detailed(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
-        state (Union[Unset, MarketplaceRobotAccountsListState]):
+        state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -192,7 +192,7 @@ def sync(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -200,7 +200,7 @@ def sync(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["RobotAccountDetails"]:
     """List robot accounts
@@ -210,7 +210,7 @@ def sync(
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceRobotAccountsListFieldItem]]):
+        field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -218,7 +218,7 @@ def sync(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
-        state (Union[Unset, MarketplaceRobotAccountsListState]):
+        state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -251,7 +251,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -259,7 +259,7 @@ async def asyncio_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["RobotAccountDetails"]]:
     """List robot accounts
@@ -269,7 +269,7 @@ async def asyncio_detailed(
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceRobotAccountsListFieldItem]]):
+        field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -277,7 +277,7 @@ async def asyncio_detailed(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
-        state (Union[Unset, MarketplaceRobotAccountsListState]):
+        state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -313,7 +313,7 @@ async def asyncio(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -321,7 +321,7 @@ async def asyncio(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["RobotAccountDetails"]:
     """List robot accounts
@@ -331,7 +331,7 @@ async def asyncio(
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceRobotAccountsListFieldItem]]):
+        field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -339,7 +339,7 @@ async def asyncio(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
-        state (Union[Unset, MarketplaceRobotAccountsListState]):
+        state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -374,13 +374,13 @@ def sync_all(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["RobotAccountDetails"]:
     """Get All Pages
@@ -393,13 +393,13 @@ def sync_all(
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceRobotAccountsListFieldItem]]):
+        field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
-        state (Union[Unset, MarketplaceRobotAccountsListState]):
+        state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -474,13 +474,13 @@ async def asyncio_all(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[MarketplaceRobotAccountsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, MarketplaceRobotAccountsListState] = UNSET,
+    state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["RobotAccountDetails"]:
     """Get All Pages (Async)
@@ -493,13 +493,13 @@ async def asyncio_all(
     Args:
         created (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[MarketplaceRobotAccountsListFieldItem]]):
+        field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
-        state (Union[Unset, MarketplaceRobotAccountsListState]):
+        state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
 
     Raises:

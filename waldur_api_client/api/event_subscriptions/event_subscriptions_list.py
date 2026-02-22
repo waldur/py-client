@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.backend_resource_req_o_enum import BackendResourceReqOEnum
 from ...models.event_subscription import EventSubscription
-from ...models.event_subscriptions_list_o_item import EventSubscriptionsListOItem
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    o: Union[Unset, list[EventSubscriptionsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -80,7 +80,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[EventSubscriptionsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -88,7 +88,7 @@ def sync_detailed(
 ) -> Response[list["EventSubscription"]]:
     """
     Args:
-        o (Union[Unset, list[EventSubscriptionsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_username (Union[Unset, str]):
@@ -120,7 +120,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[EventSubscriptionsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -128,7 +128,7 @@ def sync(
 ) -> list["EventSubscription"]:
     """
     Args:
-        o (Union[Unset, list[EventSubscriptionsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_username (Union[Unset, str]):
@@ -155,7 +155,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[EventSubscriptionsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -163,7 +163,7 @@ async def asyncio_detailed(
 ) -> Response[list["EventSubscription"]]:
     """
     Args:
-        o (Union[Unset, list[EventSubscriptionsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_username (Union[Unset, str]):
@@ -193,7 +193,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[EventSubscriptionsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_username: Union[Unset, str] = UNSET,
@@ -201,7 +201,7 @@ async def asyncio(
 ) -> list["EventSubscription"]:
     """
     Args:
-        o (Union[Unset, list[EventSubscriptionsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_username (Union[Unset, str]):
@@ -230,7 +230,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[EventSubscriptionsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, str] = UNSET,
 ) -> list["EventSubscription"]:
@@ -242,7 +242,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        o (Union[Unset, list[EventSubscriptionsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, str]):
 
@@ -309,7 +309,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[EventSubscriptionsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, str] = UNSET,
 ) -> list["EventSubscription"]:
@@ -321,7 +321,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        o (Union[Unset, list[EventSubscriptionsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, str]):
 

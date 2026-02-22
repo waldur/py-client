@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_public_offerings_count_o_item import MarketplacePublicOfferingsCountOItem
-from ...models.marketplace_public_offerings_count_state_item import MarketplacePublicOfferingsCountStateItem
+from ...models.offering_state import OfferingState
+from ...models.provider_offering_details_o_enum import ProviderOfferingDetailsOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -31,7 +31,7 @@ def _get_kwargs(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplacePublicOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -43,7 +43,7 @@ def _get_kwargs(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplacePublicOfferingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -253,7 +253,7 @@ def sync_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplacePublicOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -265,7 +265,7 @@ def sync_detailed(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplacePublicOfferingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -297,7 +297,7 @@ def sync_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplacePublicOfferingsCountOItem]]):
+        o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -309,7 +309,7 @@ def sync_detailed(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplacePublicOfferingsCountStateItem]]):
+        state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
         tag_names_and (Union[Unset, str]):
@@ -395,7 +395,7 @@ def sync(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplacePublicOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -407,7 +407,7 @@ def sync(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplacePublicOfferingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -439,7 +439,7 @@ def sync(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplacePublicOfferingsCountOItem]]):
+        o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -451,7 +451,7 @@ def sync(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplacePublicOfferingsCountStateItem]]):
+        state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
         tag_names_and (Union[Unset, str]):
@@ -532,7 +532,7 @@ async def asyncio_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplacePublicOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -544,7 +544,7 @@ async def asyncio_detailed(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplacePublicOfferingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -576,7 +576,7 @@ async def asyncio_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplacePublicOfferingsCountOItem]]):
+        o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -588,7 +588,7 @@ async def asyncio_detailed(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplacePublicOfferingsCountStateItem]]):
+        state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
         tag_names_and (Union[Unset, str]):
@@ -672,7 +672,7 @@ async def asyncio(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplacePublicOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -684,7 +684,7 @@ async def asyncio(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[MarketplacePublicOfferingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
     tag_names_and: Union[Unset, str] = UNSET,
@@ -716,7 +716,7 @@ async def asyncio(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplacePublicOfferingsCountOItem]]):
+        o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -728,7 +728,7 @@ async def asyncio(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[MarketplacePublicOfferingsCountStateItem]]):
+        state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
         tag_names_and (Union[Unset, str]):

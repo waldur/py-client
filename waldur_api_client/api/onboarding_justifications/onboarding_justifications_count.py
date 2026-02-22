@@ -6,21 +6,19 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.onboarding_justifications_count_o_item import OnboardingJustificationsCountOItem
-from ...models.onboarding_justifications_count_validation_decision_item import (
-    OnboardingJustificationsCountValidationDecisionItem,
-)
+from ...models.onboarding_justification_o_enum import OnboardingJustificationOEnum
+from ...models.onboarding_justification_validation_decision_enum import OnboardingJustificationValidationDecisionEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    o: Union[Unset, list[OnboardingJustificationsCountOItem]] = UNSET,
+    o: Union[Unset, list[OnboardingJustificationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-    validation_decision: Union[Unset, list[OnboardingJustificationsCountValidationDecisionItem]] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationValidationDecisionEnum]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -99,24 +97,23 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[OnboardingJustificationsCountOItem]] = UNSET,
+    o: Union[Unset, list[OnboardingJustificationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-    validation_decision: Union[Unset, list[OnboardingJustificationsCountValidationDecisionItem]] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationValidationDecisionEnum]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[OnboardingJustificationsCountOItem]]):
+        o (Union[Unset, list[OnboardingJustificationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
-        validation_decision (Union[Unset,
-            list[OnboardingJustificationsCountValidationDecisionItem]]):
+        validation_decision (Union[Unset, list[OnboardingJustificationValidationDecisionEnum]]):
         verification_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -147,24 +144,23 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[OnboardingJustificationsCountOItem]] = UNSET,
+    o: Union[Unset, list[OnboardingJustificationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-    validation_decision: Union[Unset, list[OnboardingJustificationsCountValidationDecisionItem]] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationValidationDecisionEnum]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[OnboardingJustificationsCountOItem]]):
+        o (Union[Unset, list[OnboardingJustificationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
-        validation_decision (Union[Unset,
-            list[OnboardingJustificationsCountValidationDecisionItem]]):
+        validation_decision (Union[Unset, list[OnboardingJustificationValidationDecisionEnum]]):
         verification_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -190,24 +186,23 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[OnboardingJustificationsCountOItem]] = UNSET,
+    o: Union[Unset, list[OnboardingJustificationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-    validation_decision: Union[Unset, list[OnboardingJustificationsCountValidationDecisionItem]] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationValidationDecisionEnum]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[OnboardingJustificationsCountOItem]]):
+        o (Union[Unset, list[OnboardingJustificationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
-        validation_decision (Union[Unset,
-            list[OnboardingJustificationsCountValidationDecisionItem]]):
+        validation_decision (Union[Unset, list[OnboardingJustificationValidationDecisionEnum]]):
         verification_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -236,24 +231,23 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[OnboardingJustificationsCountOItem]] = UNSET,
+    o: Union[Unset, list[OnboardingJustificationOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
-    validation_decision: Union[Unset, list[OnboardingJustificationsCountValidationDecisionItem]] = UNSET,
+    validation_decision: Union[Unset, list[OnboardingJustificationValidationDecisionEnum]] = UNSET,
     verification_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[OnboardingJustificationsCountOItem]]):
+        o (Union[Unset, list[OnboardingJustificationOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
-        validation_decision (Union[Unset,
-            list[OnboardingJustificationsCountValidationDecisionItem]]):
+        validation_decision (Union[Unset, list[OnboardingJustificationValidationDecisionEnum]]):
         verification_uuid (Union[Unset, UUID]):
 
     Raises:

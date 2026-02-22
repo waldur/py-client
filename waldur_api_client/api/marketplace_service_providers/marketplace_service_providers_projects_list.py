@@ -7,11 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_service_providers_projects_list_field_item import (
-    MarketplaceServiceProvidersProjectsListFieldItem,
-)
-from ...models.marketplace_service_providers_projects_list_o_item import MarketplaceServiceProvidersProjectsListOItem
+from ...models.marketplace_provider_customer_project_o_enum import MarketplaceProviderCustomerProjectOEnum
 from ...models.project import Project
+from ...models.project_field_enum import ProjectFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -29,12 +27,12 @@ def _get_kwargs(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -160,12 +158,12 @@ def sync_detailed(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -188,12 +186,12 @@ def sync_detailed(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]]):
+        field (Union[Unset, list[ProjectFieldEnum]]):
         is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]]):
+        o (Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -252,12 +250,12 @@ def sync(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -280,12 +278,12 @@ def sync(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]]):
+        field (Union[Unset, list[ProjectFieldEnum]]):
         is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]]):
+        o (Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -339,12 +337,12 @@ async def asyncio_detailed(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -367,12 +365,12 @@ async def asyncio_detailed(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]]):
+        field (Union[Unset, list[ProjectFieldEnum]]):
         is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]]):
+        o (Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -429,12 +427,12 @@ async def asyncio(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -457,12 +455,12 @@ async def asyncio(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]]):
+        field (Union[Unset, list[ProjectFieldEnum]]):
         is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]]):
+        o (Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -518,12 +516,12 @@ def sync_all(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> list["Project"]:
@@ -546,12 +544,12 @@ def sync_all(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]]):
+        field (Union[Unset, list[ProjectFieldEnum]]):
         is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]]):
+        o (Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]]):
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
 
@@ -645,12 +643,12 @@ async def asyncio_all(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ProjectFieldEnum]] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]] = UNSET,
+    o: Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
 ) -> list["Project"]:
@@ -673,12 +671,12 @@ async def asyncio_all(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
-        field (Union[Unset, list[MarketplaceServiceProvidersProjectsListFieldItem]]):
+        field (Union[Unset, list[ProjectFieldEnum]]):
         is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersProjectsListOItem]]):
+        o (Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]]):
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
 

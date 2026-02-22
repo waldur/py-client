@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.rancher_ingress import RancherIngress
-from ...models.rancher_ingresses_list_field_item import RancherIngressesListFieldItem
-from ...models.rancher_ingresses_list_state_item import RancherIngressesListStateItem
+from ...models.rancher_ingress_field_enum import RancherIngressFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -25,7 +25,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherIngressesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherIngressFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -37,7 +37,7 @@ def _get_kwargs(
     rancher_project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherIngressesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -181,7 +181,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherIngressesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherIngressFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -193,7 +193,7 @@ def sync_detailed(
     rancher_project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherIngressesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RancherIngress"]]:
     """
@@ -208,7 +208,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherIngressesListFieldItem]]):
+        field (Union[Unset, list[RancherIngressFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -220,7 +220,7 @@ def sync_detailed(
         rancher_project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherIngressesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -278,7 +278,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherIngressesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherIngressFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -290,7 +290,7 @@ def sync(
     rancher_project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherIngressesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RancherIngress"]:
     """
@@ -305,7 +305,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherIngressesListFieldItem]]):
+        field (Union[Unset, list[RancherIngressFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -317,7 +317,7 @@ def sync(
         rancher_project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherIngressesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -370,7 +370,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherIngressesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherIngressFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -382,7 +382,7 @@ async def asyncio_detailed(
     rancher_project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherIngressesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RancherIngress"]]:
     """
@@ -397,7 +397,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherIngressesListFieldItem]]):
+        field (Union[Unset, list[RancherIngressFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -409,7 +409,7 @@ async def asyncio_detailed(
         rancher_project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherIngressesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -465,7 +465,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherIngressesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherIngressFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -477,7 +477,7 @@ async def asyncio(
     rancher_project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherIngressesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RancherIngress"]:
     """
@@ -492,7 +492,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherIngressesListFieldItem]]):
+        field (Union[Unset, list[RancherIngressFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -504,7 +504,7 @@ async def asyncio(
         rancher_project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherIngressesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -559,7 +559,7 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherIngressesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherIngressFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -569,7 +569,7 @@ def sync_all(
     rancher_project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherIngressesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RancherIngress"]:
     """Get All Pages
@@ -590,7 +590,7 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherIngressesListFieldItem]]):
+        field (Union[Unset, list[RancherIngressFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -600,7 +600,7 @@ def sync_all(
         rancher_project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherIngressesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:
@@ -695,7 +695,7 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherIngressesListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherIngressFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -705,7 +705,7 @@ async def asyncio_all(
     rancher_project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherIngressesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RancherIngress"]:
     """Get All Pages (Async)
@@ -726,7 +726,7 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherIngressesListFieldItem]]):
+        field (Union[Unset, list[RancherIngressFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -736,7 +736,7 @@ async def asyncio_all(
         rancher_project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherIngressesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid (Union[Unset, UUID]):
 
     Raises:

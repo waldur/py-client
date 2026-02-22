@@ -7,10 +7,10 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_offering_users_list_field_item import MarketplaceOfferingUsersListFieldItem
-from ...models.marketplace_offering_users_list_o_item import MarketplaceOfferingUsersListOItem
-from ...models.marketplace_offering_users_list_state_item import MarketplaceOfferingUsersListStateItem
 from ...models.offering_user import OfferingUser
+from ...models.offering_user_field_enum import OfferingUserFieldEnum
+from ...models.offering_user_o_enum import OfferingUserOEnum
+from ...models.offering_user_state import OfferingUserState
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,12 +18,12 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -32,7 +32,7 @@ def _get_kwargs(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -162,12 +162,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -176,7 +176,7 @@ def sync_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingUser"]]:
@@ -189,12 +189,12 @@ def sync_detailed(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
+        field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
+        o (Union[Unset, list[OfferingUserOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -203,7 +203,7 @@ def sync_detailed(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[MarketplaceOfferingUsersListStateItem]]):
+        state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -247,12 +247,12 @@ def sync(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -261,7 +261,7 @@ def sync(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUser"]:
@@ -274,12 +274,12 @@ def sync(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
+        field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
+        o (Union[Unset, list[OfferingUserOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -288,7 +288,7 @@ def sync(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[MarketplaceOfferingUsersListStateItem]]):
+        state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -327,12 +327,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -341,7 +341,7 @@ async def asyncio_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OfferingUser"]]:
@@ -354,12 +354,12 @@ async def asyncio_detailed(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
+        field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
+        o (Union[Unset, list[OfferingUserOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -368,7 +368,7 @@ async def asyncio_detailed(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[MarketplaceOfferingUsersListStateItem]]):
+        state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -410,12 +410,12 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -424,7 +424,7 @@ async def asyncio(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUser"]:
@@ -437,12 +437,12 @@ async def asyncio(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
+        field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
+        o (Union[Unset, list[OfferingUserOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
@@ -451,7 +451,7 @@ async def asyncio(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[MarketplaceOfferingUsersListStateItem]]):
+        state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -492,19 +492,19 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUser"]:
@@ -517,19 +517,19 @@ def sync_all(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
+        field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
+        o (Union[Unset, list[OfferingUserOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[MarketplaceOfferingUsersListStateItem]]):
+        state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -610,19 +610,19 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceOfferingUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[MarketplaceOfferingUsersListOItem]] = UNSET,
+    o: Union[Unset, list[OfferingUserOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[MarketplaceOfferingUsersListStateItem]] = UNSET,
+    state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["OfferingUser"]:
@@ -635,19 +635,19 @@ async def asyncio_all(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceOfferingUsersListFieldItem]]):
+        field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[MarketplaceOfferingUsersListOItem]]):
+        o (Union[Unset, list[OfferingUserOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
         offering_uuid (Union[Unset, list[UUID]]):
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[MarketplaceOfferingUsersListStateItem]]):
+        state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 

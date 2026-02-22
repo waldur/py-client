@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.open_stack_sub_net import OpenStackSubNet
-from ...models.openstack_subnets_list_field_item import OpenstackSubnetsListFieldItem
-from ...models.openstack_subnets_list_state_item import OpenstackSubnetsListStateItem
+from ...models.open_stack_sub_net_field_enum import OpenStackSubNetFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -26,7 +26,7 @@ def _get_kwargs(
     direct_only: Union[Unset, bool] = UNSET,
     enable_dhcp: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackSubnetsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSubNetFieldEnum]] = UNSET,
     ip_version: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -40,7 +40,7 @@ def _get_kwargs(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSubnetsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -194,7 +194,7 @@ def sync_detailed(
     direct_only: Union[Unset, bool] = UNSET,
     enable_dhcp: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackSubnetsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSubNetFieldEnum]] = UNSET,
     ip_version: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -208,7 +208,7 @@ def sync_detailed(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSubnetsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -229,7 +229,7 @@ def sync_detailed(
         direct_only (Union[Unset, bool]):
         enable_dhcp (Union[Unset, bool]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackSubnetsListFieldItem]]):
+        field (Union[Unset, list[OpenStackSubNetFieldEnum]]):
         ip_version (Union[Unset, int]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -243,7 +243,7 @@ def sync_detailed(
         rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackSubnetsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -309,7 +309,7 @@ def sync(
     direct_only: Union[Unset, bool] = UNSET,
     enable_dhcp: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackSubnetsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSubNetFieldEnum]] = UNSET,
     ip_version: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -323,7 +323,7 @@ def sync(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSubnetsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -344,7 +344,7 @@ def sync(
         direct_only (Union[Unset, bool]):
         enable_dhcp (Union[Unset, bool]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackSubnetsListFieldItem]]):
+        field (Union[Unset, list[OpenStackSubNetFieldEnum]]):
         ip_version (Union[Unset, int]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -358,7 +358,7 @@ def sync(
         rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackSubnetsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -419,7 +419,7 @@ async def asyncio_detailed(
     direct_only: Union[Unset, bool] = UNSET,
     enable_dhcp: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackSubnetsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSubNetFieldEnum]] = UNSET,
     ip_version: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -433,7 +433,7 @@ async def asyncio_detailed(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSubnetsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -454,7 +454,7 @@ async def asyncio_detailed(
         direct_only (Union[Unset, bool]):
         enable_dhcp (Union[Unset, bool]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackSubnetsListFieldItem]]):
+        field (Union[Unset, list[OpenStackSubNetFieldEnum]]):
         ip_version (Union[Unset, int]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -468,7 +468,7 @@ async def asyncio_detailed(
         rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackSubnetsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -532,7 +532,7 @@ async def asyncio(
     direct_only: Union[Unset, bool] = UNSET,
     enable_dhcp: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackSubnetsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSubNetFieldEnum]] = UNSET,
     ip_version: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -546,7 +546,7 @@ async def asyncio(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSubnetsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -567,7 +567,7 @@ async def asyncio(
         direct_only (Union[Unset, bool]):
         enable_dhcp (Union[Unset, bool]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackSubnetsListFieldItem]]):
+        field (Union[Unset, list[OpenStackSubNetFieldEnum]]):
         ip_version (Union[Unset, int]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -581,7 +581,7 @@ async def asyncio(
         rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackSubnetsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -644,7 +644,7 @@ def sync_all(
     direct_only: Union[Unset, bool] = UNSET,
     enable_dhcp: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackSubnetsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSubNetFieldEnum]] = UNSET,
     ip_version: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -656,7 +656,7 @@ def sync_all(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSubnetsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -680,7 +680,7 @@ def sync_all(
         direct_only (Union[Unset, bool]):
         enable_dhcp (Union[Unset, bool]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackSubnetsListFieldItem]]):
+        field (Union[Unset, list[OpenStackSubNetFieldEnum]]):
         ip_version (Union[Unset, int]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -692,7 +692,7 @@ def sync_all(
         rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackSubnetsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -795,7 +795,7 @@ async def asyncio_all(
     direct_only: Union[Unset, bool] = UNSET,
     enable_dhcp: Union[Unset, bool] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[OpenstackSubnetsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSubNetFieldEnum]] = UNSET,
     ip_version: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
@@ -807,7 +807,7 @@ async def asyncio_all(
     rbac_only: Union[Unset, bool] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackSubnetsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -831,7 +831,7 @@ async def asyncio_all(
         direct_only (Union[Unset, bool]):
         enable_dhcp (Union[Unset, bool]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[OpenstackSubnetsListFieldItem]]):
+        field (Union[Unset, list[OpenStackSubNetFieldEnum]]):
         ip_version (Union[Unset, int]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
@@ -843,7 +843,7 @@ async def asyncio_all(
         rbac_only (Union[Unset, bool]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackSubnetsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):

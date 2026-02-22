@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.urgency_enum import UrgencyEnum
 from ...models.user_action import UserAction
-from ...models.user_actions_list_urgency import UserActionsListUrgency
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -25,7 +25,7 @@ def _get_kwargs(
     overdue: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -117,7 +117,7 @@ def sync_detailed(
     overdue: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["UserAction"]]:
     """
@@ -132,7 +132,7 @@ def sync_detailed(
         overdue (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        urgency (Union[Unset, UserActionsListUrgency]):
+        urgency (Union[Unset, UrgencyEnum]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -178,7 +178,7 @@ def sync(
     overdue: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserAction"]:
     """
@@ -193,7 +193,7 @@ def sync(
         overdue (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        urgency (Union[Unset, UserActionsListUrgency]):
+        urgency (Union[Unset, UrgencyEnum]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -234,7 +234,7 @@ async def asyncio_detailed(
     overdue: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["UserAction"]]:
     """
@@ -249,7 +249,7 @@ async def asyncio_detailed(
         overdue (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        urgency (Union[Unset, UserActionsListUrgency]):
+        urgency (Union[Unset, UrgencyEnum]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -293,7 +293,7 @@ async def asyncio(
     overdue: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserAction"]:
     """
@@ -308,7 +308,7 @@ async def asyncio(
         overdue (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        urgency (Union[Unset, UserActionsListUrgency]):
+        urgency (Union[Unset, UrgencyEnum]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -349,7 +349,7 @@ def sync_all(
     is_silenced: Union[Unset, bool] = UNSET,
     o: Union[Unset, str] = UNSET,
     overdue: Union[Unset, bool] = UNSET,
-    urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserAction"]:
     """Get All Pages
@@ -368,7 +368,7 @@ def sync_all(
         is_silenced (Union[Unset, bool]):
         o (Union[Unset, str]):
         overdue (Union[Unset, bool]):
-        urgency (Union[Unset, UserActionsListUrgency]):
+        urgency (Union[Unset, UrgencyEnum]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -449,7 +449,7 @@ async def asyncio_all(
     is_silenced: Union[Unset, bool] = UNSET,
     o: Union[Unset, str] = UNSET,
     overdue: Union[Unset, bool] = UNSET,
-    urgency: Union[Unset, UserActionsListUrgency] = UNSET,
+    urgency: Union[Unset, UrgencyEnum] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["UserAction"]:
     """Get All Pages (Async)
@@ -468,7 +468,7 @@ async def asyncio_all(
         is_silenced (Union[Unset, bool]):
         o (Union[Unset, str]):
         overdue (Union[Unset, bool]):
-        urgency (Union[Unset, UserActionsListUrgency]):
+        urgency (Union[Unset, UrgencyEnum]):
         user_uuid (Union[Unset, UUID]):
 
     Raises:

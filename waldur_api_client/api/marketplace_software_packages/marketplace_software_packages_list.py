@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_software_packages_list_o_item import MarketplaceSoftwarePackagesListOItem
 from ...models.software_package import SoftwarePackage
+from ...models.software_package_o_enum import SoftwarePackageOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -26,7 +26,7 @@ def _get_kwargs(
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -133,7 +133,7 @@ def sync_detailed(
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -157,7 +157,7 @@ def sync_detailed(
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
+        o (Union[Unset, list[SoftwarePackageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -213,7 +213,7 @@ def sync(
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -237,7 +237,7 @@ def sync(
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
+        o (Union[Unset, list[SoftwarePackageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -288,7 +288,7 @@ async def asyncio_detailed(
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -312,7 +312,7 @@ async def asyncio_detailed(
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
+        o (Union[Unset, list[SoftwarePackageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -366,7 +366,7 @@ async def asyncio(
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -390,7 +390,7 @@ async def asyncio(
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
+        o (Union[Unset, list[SoftwarePackageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -443,7 +443,7 @@ def sync_all(
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> list["SoftwarePackage"]:
@@ -467,7 +467,7 @@ def sync_all(
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
+        o (Union[Unset, list[SoftwarePackageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
 
@@ -558,7 +558,7 @@ async def asyncio_all(
     is_extension: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceSoftwarePackagesListOItem]] = UNSET,
+    o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
 ) -> list["SoftwarePackage"]:
@@ -582,7 +582,7 @@ async def asyncio_all(
         is_extension (Union[Unset, bool]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceSoftwarePackagesListOItem]]):
+        o (Union[Unset, list[SoftwarePackageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
 

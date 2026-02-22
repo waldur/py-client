@@ -8,10 +8,10 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.booking_resource import BookingResource
-from ...models.booking_resources_list_field_item import BookingResourcesListFieldItem
-from ...models.booking_resources_list_o_item import BookingResourcesListOItem
-from ...models.booking_resources_list_order_state_item import BookingResourcesListOrderStateItem
-from ...models.booking_resources_list_state_item import BookingResourcesListStateItem
+from ...models.booking_resource_field_enum import BookingResourceFieldEnum
+from ...models.booking_resource_o_enum import BookingResourceOEnum
+from ...models.order_state import OrderState
+from ...models.resource_state import ResourceState
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -26,7 +26,7 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -35,7 +35,7 @@ def _get_kwargs(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[BookingResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -44,7 +44,7 @@ def _get_kwargs(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[BookingResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -57,7 +57,7 @@ def _get_kwargs(
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -267,7 +267,7 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -276,7 +276,7 @@ def sync_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[BookingResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -285,7 +285,7 @@ def sync_detailed(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[BookingResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -298,7 +298,7 @@ def sync_detailed(
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -313,7 +313,7 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[BookingResourcesListFieldItem]]):
+        field (Union[Unset, list[BookingResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -322,7 +322,7 @@ def sync_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[BookingResourcesListOItem]]):
+        o (Union[Unset, list[BookingResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -331,7 +331,7 @@ def sync_detailed(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[BookingResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -344,7 +344,7 @@ def sync_detailed(
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[BookingResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -421,7 +421,7 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -430,7 +430,7 @@ def sync(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[BookingResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -439,7 +439,7 @@ def sync(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[BookingResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -452,7 +452,7 @@ def sync(
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -467,7 +467,7 @@ def sync(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[BookingResourcesListFieldItem]]):
+        field (Union[Unset, list[BookingResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -476,7 +476,7 @@ def sync(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[BookingResourcesListOItem]]):
+        o (Union[Unset, list[BookingResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -485,7 +485,7 @@ def sync(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[BookingResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -498,7 +498,7 @@ def sync(
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[BookingResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -570,7 +570,7 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -579,7 +579,7 @@ async def asyncio_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[BookingResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -588,7 +588,7 @@ async def asyncio_detailed(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[BookingResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -601,7 +601,7 @@ async def asyncio_detailed(
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -616,7 +616,7 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[BookingResourcesListFieldItem]]):
+        field (Union[Unset, list[BookingResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -625,7 +625,7 @@ async def asyncio_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[BookingResourcesListOItem]]):
+        o (Union[Unset, list[BookingResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -634,7 +634,7 @@ async def asyncio_detailed(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[BookingResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -647,7 +647,7 @@ async def asyncio_detailed(
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[BookingResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -722,7 +722,7 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -731,7 +731,7 @@ async def asyncio(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[BookingResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -740,7 +740,7 @@ async def asyncio(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[BookingResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
@@ -753,7 +753,7 @@ async def asyncio(
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -768,7 +768,7 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[BookingResourcesListFieldItem]]):
+        field (Union[Unset, list[BookingResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -777,7 +777,7 @@ async def asyncio(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[BookingResourcesListOItem]]):
+        o (Union[Unset, list[BookingResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -786,7 +786,7 @@ async def asyncio(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[BookingResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         parent_offering_uuid (Union[Unset, UUID]):
@@ -799,7 +799,7 @@ async def asyncio(
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[BookingResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -873,7 +873,7 @@ def sync_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -882,7 +882,7 @@ def sync_all(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[BookingResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -891,7 +891,7 @@ def sync_all(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[BookingResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     paused: Union[Unset, bool] = UNSET,
     plan_uuid: Union[Unset, UUID] = UNSET,
@@ -902,7 +902,7 @@ def sync_all(
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -923,7 +923,7 @@ def sync_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[BookingResourcesListFieldItem]]):
+        field (Union[Unset, list[BookingResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -932,7 +932,7 @@ def sync_all(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[BookingResourcesListOItem]]):
+        o (Union[Unset, list[BookingResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -941,7 +941,7 @@ def sync_all(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[BookingResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         parent_offering_uuid (Union[Unset, UUID]):
         paused (Union[Unset, bool]):
         plan_uuid (Union[Unset, UUID]):
@@ -952,7 +952,7 @@ def sync_all(
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[BookingResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):
@@ -1066,7 +1066,7 @@ async def asyncio_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
-    field: Union[Unset, list[BookingResourcesListFieldItem]] = UNSET,
+    field: Union[Unset, list[BookingResourceFieldEnum]] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
@@ -1075,7 +1075,7 @@ async def asyncio_all(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[BookingResourcesListOItem]] = UNSET,
+    o: Union[Unset, list[BookingResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_billable: Union[Unset, bool] = UNSET,
     offering_shared: Union[Unset, bool] = UNSET,
@@ -1084,7 +1084,7 @@ async def asyncio_all(
     offering_uuid: Union[Unset, list[UUID]] = UNSET,
     only_limit_based: Union[Unset, bool] = UNSET,
     only_usage_based: Union[Unset, bool] = UNSET,
-    order_state: Union[Unset, list[BookingResourcesListOrderStateItem]] = UNSET,
+    order_state: Union[Unset, list[OrderState]] = UNSET,
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     paused: Union[Unset, bool] = UNSET,
     plan_uuid: Union[Unset, UUID] = UNSET,
@@ -1095,7 +1095,7 @@ async def asyncio_all(
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[BookingResourcesListStateItem]] = UNSET,
+    state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
     visible_to_username: Union[Unset, str] = UNSET,
@@ -1116,7 +1116,7 @@ async def asyncio_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
-        field (Union[Unset, list[BookingResourcesListFieldItem]]):
+        field (Union[Unset, list[BookingResourceFieldEnum]]):
         has_terminate_date (Union[Unset, bool]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
@@ -1125,7 +1125,7 @@ async def asyncio_all(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[BookingResourcesListOItem]]):
+        o (Union[Unset, list[BookingResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_billable (Union[Unset, bool]):
         offering_shared (Union[Unset, bool]):
@@ -1134,7 +1134,7 @@ async def asyncio_all(
         offering_uuid (Union[Unset, list[UUID]]):
         only_limit_based (Union[Unset, bool]):
         only_usage_based (Union[Unset, bool]):
-        order_state (Union[Unset, list[BookingResourcesListOrderStateItem]]):
+        order_state (Union[Unset, list[OrderState]]):
         parent_offering_uuid (Union[Unset, UUID]):
         paused (Union[Unset, bool]):
         plan_uuid (Union[Unset, UUID]):
@@ -1145,7 +1145,7 @@ async def asyncio_all(
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[BookingResourcesListStateItem]]):
+        state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
         visible_to_username (Union[Unset, str]):

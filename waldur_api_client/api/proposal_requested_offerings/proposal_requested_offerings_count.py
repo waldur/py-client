@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.proposal_requested_offerings_count_o_item import ProposalRequestedOfferingsCountOItem
-from ...models.proposal_requested_offerings_count_state_item import ProposalRequestedOfferingsCountStateItem
+from ...models.provider_requested_offering_o_enum import ProviderRequestedOfferingOEnum
+from ...models.requested_offering_states import RequestedOfferingStates
 from ...types import UNSET, Response, Unset
 
 
@@ -15,14 +15,14 @@ def _get_kwargs(
     *,
     call: Union[Unset, str] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ProposalRequestedOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalRequestedOfferingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[RequestedOfferingStates]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -114,28 +114,28 @@ def sync_detailed(
     client: AuthenticatedClient,
     call: Union[Unset, str] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ProposalRequestedOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalRequestedOfferingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[RequestedOfferingStates]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call (Union[Unset, str]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ProposalRequestedOfferingsCountOItem]]):
+        o (Union[Unset, list[ProviderRequestedOfferingOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ProposalRequestedOfferingsCountStateItem]]):
+        state (Union[Unset, list[RequestedOfferingStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -170,28 +170,28 @@ def sync(
     client: AuthenticatedClient,
     call: Union[Unset, str] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ProposalRequestedOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalRequestedOfferingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[RequestedOfferingStates]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call (Union[Unset, str]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ProposalRequestedOfferingsCountOItem]]):
+        o (Union[Unset, list[ProviderRequestedOfferingOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ProposalRequestedOfferingsCountStateItem]]):
+        state (Union[Unset, list[RequestedOfferingStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -221,28 +221,28 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     call: Union[Unset, str] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ProposalRequestedOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalRequestedOfferingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[RequestedOfferingStates]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call (Union[Unset, str]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ProposalRequestedOfferingsCountOItem]]):
+        o (Union[Unset, list[ProviderRequestedOfferingOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ProposalRequestedOfferingsCountStateItem]]):
+        state (Union[Unset, list[RequestedOfferingStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -275,28 +275,28 @@ async def asyncio(
     client: AuthenticatedClient,
     call: Union[Unset, str] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[ProposalRequestedOfferingsCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalRequestedOfferingsCountStateItem]] = UNSET,
+    state: Union[Unset, list[RequestedOfferingStates]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call (Union[Unset, str]):
         call_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[ProposalRequestedOfferingsCountOItem]]):
+        o (Union[Unset, list[ProviderRequestedOfferingOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ProposalRequestedOfferingsCountStateItem]]):
+        state (Union[Unset, list[RequestedOfferingStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

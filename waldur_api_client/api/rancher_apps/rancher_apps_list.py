@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.rancher_application import RancherApplication
-from ...models.rancher_apps_list_field_item import RancherAppsListFieldItem
-from ...models.rancher_apps_list_state_item import RancherAppsListStateItem
+from ...models.rancher_application_field_enum import RancherApplicationFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -25,7 +25,7 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherAppsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherApplicationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -36,7 +36,7 @@ def _get_kwargs(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -183,7 +183,7 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherAppsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherApplicationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -194,7 +194,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RancherApplication"]]:
@@ -210,7 +210,7 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherAppsListFieldItem]]):
+        field (Union[Unset, list[RancherApplicationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -221,7 +221,7 @@ def sync_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherAppsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         template_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 
@@ -280,7 +280,7 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherAppsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherApplicationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -291,7 +291,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RancherApplication"]:
@@ -307,7 +307,7 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherAppsListFieldItem]]):
+        field (Union[Unset, list[RancherApplicationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -318,7 +318,7 @@ def sync(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherAppsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         template_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 
@@ -372,7 +372,7 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherAppsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherApplicationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -383,7 +383,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RancherApplication"]]:
@@ -399,7 +399,7 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherAppsListFieldItem]]):
+        field (Union[Unset, list[RancherApplicationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -410,7 +410,7 @@ async def asyncio_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherAppsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         template_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 
@@ -467,7 +467,7 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherAppsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherApplicationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -478,7 +478,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RancherApplication"]:
@@ -494,7 +494,7 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherAppsListFieldItem]]):
+        field (Union[Unset, list[RancherApplicationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -505,7 +505,7 @@ async def asyncio(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherAppsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         template_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 
@@ -561,7 +561,7 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherAppsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherApplicationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -570,7 +570,7 @@ def sync_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RancherApplication"]:
@@ -592,7 +592,7 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherAppsListFieldItem]]):
+        field (Union[Unset, list[RancherApplicationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -601,7 +601,7 @@ def sync_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherAppsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         template_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 
@@ -697,7 +697,7 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     external_ip: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[RancherAppsListFieldItem]] = UNSET,
+    field: Union[Unset, list[RancherApplicationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     namespace_uuid: Union[Unset, UUID] = UNSET,
@@ -706,7 +706,7 @@ async def asyncio_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[RancherAppsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     template_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RancherApplication"]:
@@ -728,7 +728,7 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         external_ip (Union[Unset, str]):
-        field (Union[Unset, list[RancherAppsListFieldItem]]):
+        field (Union[Unset, list[RancherApplicationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         namespace_uuid (Union[Unset, UUID]):
@@ -737,7 +737,7 @@ async def asyncio_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[RancherAppsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         template_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 

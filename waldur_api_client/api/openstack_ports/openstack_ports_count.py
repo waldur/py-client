@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.openstack_ports_count_o_item import OpenstackPortsCountOItem
+from ...models.open_stack_port_o_enum import OpenStackPortOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -24,7 +24,7 @@ def _get_kwargs(
     name_exact: Union[Unset, str] = UNSET,
     network_name: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[OpenstackPortsCountOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackPortOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -137,7 +137,7 @@ def sync_detailed(
     name_exact: Union[Unset, str] = UNSET,
     network_name: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[OpenstackPortsCountOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackPortOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -162,7 +162,7 @@ def sync_detailed(
         name_exact (Union[Unset, str]):
         network_name (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[OpenstackPortsCountOItem]]):
+        o (Union[Unset, list[OpenStackPortOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -222,7 +222,7 @@ def sync(
     name_exact: Union[Unset, str] = UNSET,
     network_name: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[OpenstackPortsCountOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackPortOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -247,7 +247,7 @@ def sync(
         name_exact (Union[Unset, str]):
         network_name (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[OpenstackPortsCountOItem]]):
+        o (Union[Unset, list[OpenStackPortOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -302,7 +302,7 @@ async def asyncio_detailed(
     name_exact: Union[Unset, str] = UNSET,
     network_name: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[OpenstackPortsCountOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackPortOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -327,7 +327,7 @@ async def asyncio_detailed(
         name_exact (Union[Unset, str]):
         network_name (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[OpenstackPortsCountOItem]]):
+        o (Union[Unset, list[OpenStackPortOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
@@ -385,7 +385,7 @@ async def asyncio(
     name_exact: Union[Unset, str] = UNSET,
     network_name: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[OpenstackPortsCountOItem]] = UNSET,
+    o: Union[Unset, list[OpenStackPortOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -410,7 +410,7 @@ async def asyncio(
         name_exact (Union[Unset, str]):
         network_name (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[OpenstackPortsCountOItem]]):
+        o (Union[Unset, list[OpenStackPortOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):

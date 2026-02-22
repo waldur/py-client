@@ -7,9 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_service_providers_keys_list_field_item import MarketplaceServiceProvidersKeysListFieldItem
-from ...models.marketplace_service_providers_keys_list_o_item import MarketplaceServiceProvidersKeysListOItem
 from ...models.ssh_key import SshKey
+from ...models.ssh_key_field_enum import SshKeyFieldEnum
+from ...models.ssh_key_o_enum import SshKeyOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,7 +18,7 @@ def _get_kwargs(
     service_provider_uuid: UUID,
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
@@ -26,7 +26,7 @@ def _get_kwargs(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]] = UNSET,
+    o: Union[Unset, list[SshKeyOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -130,7 +130,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
@@ -138,7 +138,7 @@ def sync_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]] = UNSET,
+    o: Union[Unset, list[SshKeyOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -152,7 +152,7 @@ def sync_detailed(
     Args:
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]]):
+        field (Union[Unset, list[SshKeyFieldEnum]]):
         fingerprint_md5 (Union[Unset, str]):
         fingerprint_sha256 (Union[Unset, str]):
         fingerprint_sha512 (Union[Unset, str]):
@@ -160,7 +160,7 @@ def sync_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]]):
+        o (Union[Unset, list[SshKeyOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_uuid (Union[Unset, UUID]):
@@ -204,7 +204,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
@@ -212,7 +212,7 @@ def sync(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]] = UNSET,
+    o: Union[Unset, list[SshKeyOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -226,7 +226,7 @@ def sync(
     Args:
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]]):
+        field (Union[Unset, list[SshKeyFieldEnum]]):
         fingerprint_md5 (Union[Unset, str]):
         fingerprint_sha256 (Union[Unset, str]):
         fingerprint_sha512 (Union[Unset, str]):
@@ -234,7 +234,7 @@ def sync(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]]):
+        o (Union[Unset, list[SshKeyOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_uuid (Union[Unset, UUID]):
@@ -273,7 +273,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
@@ -281,7 +281,7 @@ async def asyncio_detailed(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]] = UNSET,
+    o: Union[Unset, list[SshKeyOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -295,7 +295,7 @@ async def asyncio_detailed(
     Args:
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]]):
+        field (Union[Unset, list[SshKeyFieldEnum]]):
         fingerprint_md5 (Union[Unset, str]):
         fingerprint_sha256 (Union[Unset, str]):
         fingerprint_sha512 (Union[Unset, str]):
@@ -303,7 +303,7 @@ async def asyncio_detailed(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]]):
+        o (Union[Unset, list[SshKeyOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_uuid (Union[Unset, UUID]):
@@ -345,7 +345,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
@@ -353,7 +353,7 @@ async def asyncio(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]] = UNSET,
+    o: Union[Unset, list[SshKeyOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -367,7 +367,7 @@ async def asyncio(
     Args:
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]]):
+        field (Union[Unset, list[SshKeyFieldEnum]]):
         fingerprint_md5 (Union[Unset, str]):
         fingerprint_sha256 (Union[Unset, str]):
         fingerprint_sha512 (Union[Unset, str]):
@@ -375,7 +375,7 @@ async def asyncio(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]]):
+        o (Union[Unset, list[SshKeyOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user_uuid (Union[Unset, UUID]):
@@ -416,7 +416,7 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
@@ -424,7 +424,7 @@ def sync_all(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]] = UNSET,
+    o: Union[Unset, list[SshKeyOEnum]] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["SshKey"]:
@@ -438,7 +438,7 @@ def sync_all(
     Args:
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]]):
+        field (Union[Unset, list[SshKeyFieldEnum]]):
         fingerprint_md5 (Union[Unset, str]):
         fingerprint_sha256 (Union[Unset, str]):
         fingerprint_sha512 (Union[Unset, str]):
@@ -446,7 +446,7 @@ def sync_all(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]]):
+        o (Union[Unset, list[SshKeyOEnum]]):
         user_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 
@@ -525,7 +525,7 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    field: Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
     fingerprint_md5: Union[Unset, str] = UNSET,
     fingerprint_sha256: Union[Unset, str] = UNSET,
     fingerprint_sha512: Union[Unset, str] = UNSET,
@@ -533,7 +533,7 @@ async def asyncio_all(
     modified: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]] = UNSET,
+    o: Union[Unset, list[SshKeyOEnum]] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
 ) -> list["SshKey"]:
@@ -547,7 +547,7 @@ async def asyncio_all(
     Args:
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
-        field (Union[Unset, list[MarketplaceServiceProvidersKeysListFieldItem]]):
+        field (Union[Unset, list[SshKeyFieldEnum]]):
         fingerprint_md5 (Union[Unset, str]):
         fingerprint_sha256 (Union[Unset, str]):
         fingerprint_sha512 (Union[Unset, str]):
@@ -555,7 +555,7 @@ async def asyncio_all(
         modified (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[MarketplaceServiceProvidersKeysListOItem]]):
+        o (Union[Unset, list[SshKeyOEnum]]):
         user_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
 

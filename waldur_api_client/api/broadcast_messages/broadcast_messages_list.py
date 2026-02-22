@@ -6,20 +6,20 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.broadcast_message import BroadcastMessage
-from ...models.broadcast_messages_list_field_item import BroadcastMessagesListFieldItem
-from ...models.broadcast_messages_list_o_item import BroadcastMessagesListOItem
-from ...models.broadcast_messages_list_state import BroadcastMessagesListState
+from ...models.broadcast_message_field_enum import BroadcastMessageFieldEnum
+from ...models.broadcast_message_o_enum import BroadcastMessageOEnum
+from ...models.broadcast_message_state_enum import BroadcastMessageStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[BroadcastMessagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[BroadcastMessagesListOItem]] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, BroadcastMessagesListState] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -96,20 +96,20 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BroadcastMessagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[BroadcastMessagesListOItem]] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, BroadcastMessagesListState] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> Response[list["BroadcastMessage"]]:
     """
     Args:
-        field (Union[Unset, list[BroadcastMessagesListFieldItem]]):
-        o (Union[Unset, list[BroadcastMessagesListOItem]]):
+        field (Union[Unset, list[BroadcastMessageFieldEnum]]):
+        o (Union[Unset, list[BroadcastMessageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, BroadcastMessagesListState]):
+        state (Union[Unset, BroadcastMessageStateEnum]):
         subject (Union[Unset, str]):
 
     Raises:
@@ -139,20 +139,20 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BroadcastMessagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[BroadcastMessagesListOItem]] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, BroadcastMessagesListState] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> list["BroadcastMessage"]:
     """
     Args:
-        field (Union[Unset, list[BroadcastMessagesListFieldItem]]):
-        o (Union[Unset, list[BroadcastMessagesListOItem]]):
+        field (Union[Unset, list[BroadcastMessageFieldEnum]]):
+        o (Union[Unset, list[BroadcastMessageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, BroadcastMessagesListState]):
+        state (Union[Unset, BroadcastMessageStateEnum]):
         subject (Union[Unset, str]):
 
     Raises:
@@ -177,20 +177,20 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BroadcastMessagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[BroadcastMessagesListOItem]] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, BroadcastMessagesListState] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> Response[list["BroadcastMessage"]]:
     """
     Args:
-        field (Union[Unset, list[BroadcastMessagesListFieldItem]]):
-        o (Union[Unset, list[BroadcastMessagesListOItem]]):
+        field (Union[Unset, list[BroadcastMessageFieldEnum]]):
+        o (Union[Unset, list[BroadcastMessageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, BroadcastMessagesListState]):
+        state (Union[Unset, BroadcastMessageStateEnum]):
         subject (Union[Unset, str]):
 
     Raises:
@@ -218,20 +218,20 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BroadcastMessagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[BroadcastMessagesListOItem]] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, BroadcastMessagesListState] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> list["BroadcastMessage"]:
     """
     Args:
-        field (Union[Unset, list[BroadcastMessagesListFieldItem]]):
-        o (Union[Unset, list[BroadcastMessagesListOItem]]):
+        field (Union[Unset, list[BroadcastMessageFieldEnum]]):
+        o (Union[Unset, list[BroadcastMessageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, BroadcastMessagesListState]):
+        state (Union[Unset, BroadcastMessageStateEnum]):
         subject (Union[Unset, str]):
 
     Raises:
@@ -258,9 +258,9 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BroadcastMessagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[BroadcastMessagesListOItem]] = UNSET,
-    state: Union[Unset, BroadcastMessagesListState] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> list["BroadcastMessage"]:
     """Get All Pages
@@ -271,9 +271,9 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[BroadcastMessagesListFieldItem]]):
-        o (Union[Unset, list[BroadcastMessagesListOItem]]):
-        state (Union[Unset, BroadcastMessagesListState]):
+        field (Union[Unset, list[BroadcastMessageFieldEnum]]):
+        o (Union[Unset, list[BroadcastMessageOEnum]]):
+        state (Union[Unset, BroadcastMessageStateEnum]):
         subject (Union[Unset, str]):
 
     Raises:
@@ -340,9 +340,9 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BroadcastMessagesListFieldItem]] = UNSET,
-    o: Union[Unset, list[BroadcastMessagesListOItem]] = UNSET,
-    state: Union[Unset, BroadcastMessagesListState] = UNSET,
+    field: Union[Unset, list[BroadcastMessageFieldEnum]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> list["BroadcastMessage"]:
     """Get All Pages (Async)
@@ -353,9 +353,9 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[BroadcastMessagesListFieldItem]]):
-        o (Union[Unset, list[BroadcastMessagesListOItem]]):
-        state (Union[Unset, BroadcastMessagesListState]):
+        field (Union[Unset, list[BroadcastMessageFieldEnum]]):
+        o (Union[Unset, list[BroadcastMessageOEnum]]):
+        state (Union[Unset, BroadcastMessageStateEnum]):
         subject (Union[Unset, str]):
 
     Raises:

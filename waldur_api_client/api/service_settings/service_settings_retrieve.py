@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.service_settings import ServiceSettings
-from ...models.service_settings_retrieve_field_item import ServiceSettingsRetrieveFieldItem
+from ...models.service_settings_field_enum import ServiceSettingsFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[ServiceSettingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,12 +63,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ServiceSettingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
 ) -> Response[ServiceSettings]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ServiceSettingsRetrieveFieldItem]]):
+        field (Union[Unset, list[ServiceSettingsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,12 +94,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ServiceSettingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
 ) -> ServiceSettings:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ServiceSettingsRetrieveFieldItem]]):
+        field (Union[Unset, list[ServiceSettingsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -120,12 +120,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ServiceSettingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
 ) -> Response[ServiceSettings]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ServiceSettingsRetrieveFieldItem]]):
+        field (Union[Unset, list[ServiceSettingsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,12 +149,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ServiceSettingsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
 ) -> ServiceSettings:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[ServiceSettingsRetrieveFieldItem]]):
+        field (Union[Unset, list[ServiceSettingsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

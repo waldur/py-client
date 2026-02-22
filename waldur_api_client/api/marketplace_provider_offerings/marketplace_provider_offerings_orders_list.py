@@ -6,10 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_provider_offerings_orders_list_field_item import (
-    MarketplaceProviderOfferingsOrdersListFieldItem,
-)
 from ...models.order_details import OrderDetails
+from ...models.order_details_field_enum import OrderDetailsFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,7 +15,7 @@ from ...utils import parse_link_header
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -77,7 +75,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OrderDetails"]]:
@@ -87,7 +85,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -117,7 +115,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OrderDetails"]:
@@ -127,7 +125,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -152,7 +150,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["OrderDetails"]]:
@@ -162,7 +160,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -190,7 +188,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["OrderDetails"]:
@@ -200,7 +198,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -227,7 +225,7 @@ def sync_all(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> list["OrderDetails"]:
     """Get All Pages
 
@@ -238,7 +236,7 @@ def sync_all(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -303,7 +301,7 @@ async def asyncio_all(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]] = UNSET,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> list["OrderDetails"]:
     """Get All Pages (Async)
 
@@ -314,7 +312,7 @@ async def asyncio_all(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceProviderOfferingsOrdersListFieldItem]]):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

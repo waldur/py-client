@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_snapshot import OpenStackSnapshot
-from ...models.openstack_snapshots_retrieve_field_item import OpenstackSnapshotsRetrieveFieldItem
+from ...models.open_stack_snapshot_field_enum import OpenStackSnapshotFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[OpenstackSnapshotsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSnapshotFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackSnapshotsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSnapshotFieldEnum]] = UNSET,
 ) -> Response[OpenStackSnapshot]:
     """Get snapshot details
 
@@ -71,7 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackSnapshotsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackSnapshotFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -97,7 +97,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackSnapshotsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSnapshotFieldEnum]] = UNSET,
 ) -> OpenStackSnapshot:
     """Get snapshot details
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackSnapshotsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackSnapshotFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackSnapshotsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSnapshotFieldEnum]] = UNSET,
 ) -> Response[OpenStackSnapshot]:
     """Get snapshot details
 
@@ -134,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackSnapshotsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackSnapshotFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,7 +158,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackSnapshotsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackSnapshotFieldEnum]] = UNSET,
 ) -> OpenStackSnapshot:
     """Get snapshot details
 
@@ -166,7 +166,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackSnapshotsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackSnapshotFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

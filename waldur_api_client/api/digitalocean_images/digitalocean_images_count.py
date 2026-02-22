@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.digitalocean_images_count_o_item import DigitaloceanImagesCountOItem
+from ...models.digital_ocean_image_o_enum import DigitalOceanImageOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -14,7 +14,7 @@ def _get_kwargs(
     distribution: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[DigitaloceanImagesCountOItem]] = UNSET,
+    o: Union[Unset, list[DigitalOceanImageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -85,7 +85,7 @@ def sync_detailed(
     distribution: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[DigitaloceanImagesCountOItem]] = UNSET,
+    o: Union[Unset, list[DigitalOceanImageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -96,7 +96,7 @@ def sync_detailed(
         distribution (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[DigitaloceanImagesCountOItem]]):
+        o (Union[Unset, list[DigitalOceanImageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         type_ (Union[Unset, str]):
@@ -132,7 +132,7 @@ def sync(
     distribution: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[DigitaloceanImagesCountOItem]] = UNSET,
+    o: Union[Unset, list[DigitalOceanImageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -143,7 +143,7 @@ def sync(
         distribution (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[DigitaloceanImagesCountOItem]]):
+        o (Union[Unset, list[DigitalOceanImageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         type_ (Union[Unset, str]):
@@ -174,7 +174,7 @@ async def asyncio_detailed(
     distribution: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[DigitaloceanImagesCountOItem]] = UNSET,
+    o: Union[Unset, list[DigitalOceanImageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -185,7 +185,7 @@ async def asyncio_detailed(
         distribution (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[DigitaloceanImagesCountOItem]]):
+        o (Union[Unset, list[DigitalOceanImageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         type_ (Union[Unset, str]):
@@ -219,7 +219,7 @@ async def asyncio(
     distribution: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[DigitaloceanImagesCountOItem]] = UNSET,
+    o: Union[Unset, list[DigitalOceanImageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -230,7 +230,7 @@ async def asyncio(
         distribution (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, list[DigitaloceanImagesCountOItem]]):
+        o (Union[Unset, list[DigitalOceanImageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         type_ (Union[Unset, str]):

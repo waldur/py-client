@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.open_stack_backend_volumes import OpenStackBackendVolumes
-from ...models.openstack_tenants_backend_volumes_list_state_item import OpenstackTenantsBackendVolumesListStateItem
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -33,7 +33,7 @@ def _get_kwargs(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid_query: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -164,7 +164,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid_query: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackBackendVolumes"]]:
     """List backend volumes
@@ -191,7 +191,7 @@ def sync_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid_query (Union[Unset, UUID]):
 
     Raises:
@@ -255,7 +255,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid_query: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackBackendVolumes"]:
     """List backend volumes
@@ -282,7 +282,7 @@ def sync(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid_query (Union[Unset, UUID]):
 
     Raises:
@@ -341,7 +341,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid_query: Union[Unset, UUID] = UNSET,
 ) -> Response[list["OpenStackBackendVolumes"]]:
     """List backend volumes
@@ -368,7 +368,7 @@ async def asyncio_detailed(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid_query (Union[Unset, UUID]):
 
     Raises:
@@ -430,7 +430,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid_query: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackBackendVolumes"]:
     """List backend volumes
@@ -457,7 +457,7 @@ async def asyncio(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid_query (Union[Unset, UUID]):
 
     Raises:
@@ -516,7 +516,7 @@ def sync_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid_query: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackBackendVolumes"]:
     """Get All Pages
@@ -544,7 +544,7 @@ def sync_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid_query (Union[Unset, UUID]):
 
     Raises:
@@ -643,7 +643,7 @@ async def asyncio_all(
     project_uuid: Union[Unset, UUID] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     uuid_query: Union[Unset, UUID] = UNSET,
 ) -> list["OpenStackBackendVolumes"]:
     """Get All Pages (Async)
@@ -671,7 +671,7 @@ async def asyncio_all(
         project_uuid (Union[Unset, UUID]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackTenantsBackendVolumesListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         uuid_query (Union[Unset, UUID]):
 
     Raises:

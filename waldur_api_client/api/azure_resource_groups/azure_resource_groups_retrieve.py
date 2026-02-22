@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.azure_resource_group import AzureResourceGroup
-from ...models.azure_resource_groups_retrieve_field_item import AzureResourceGroupsRetrieveFieldItem
+from ...models.azure_resource_group_field_enum import AzureResourceGroupFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[AzureResourceGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureResourceGroupFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,12 +63,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureResourceGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureResourceGroupFieldEnum]] = UNSET,
 ) -> Response[AzureResourceGroup]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureResourceGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureResourceGroupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,12 +94,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureResourceGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureResourceGroupFieldEnum]] = UNSET,
 ) -> AzureResourceGroup:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureResourceGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureResourceGroupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -120,12 +120,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureResourceGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureResourceGroupFieldEnum]] = UNSET,
 ) -> Response[AzureResourceGroup]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureResourceGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureResourceGroupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,12 +149,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzureResourceGroupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzureResourceGroupFieldEnum]] = UNSET,
 ) -> AzureResourceGroup:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzureResourceGroupsRetrieveFieldItem]]):
+        field (Union[Unset, list[AzureResourceGroupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

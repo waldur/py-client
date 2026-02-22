@@ -6,16 +6,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_categories_count_customers_offerings_state_item import (
-    MarketplaceCategoriesCountCustomersOfferingsStateItem,
-)
+from ...models.maintenance_type_enum import MaintenanceTypeEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesCountCustomersOfferingsStateItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -107,7 +105,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesCountCustomersOfferingsStateItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -123,8 +121,7 @@ def sync_detailed(
 
     Args:
         customer_uuid (Union[Unset, UUID]):
-        customers_offerings_state (Union[Unset,
-            list[MarketplaceCategoriesCountCustomersOfferingsStateItem]]):
+        customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
         offering_name (Union[Unset, str]):
@@ -166,7 +163,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesCountCustomersOfferingsStateItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -182,8 +179,7 @@ def sync(
 
     Args:
         customer_uuid (Union[Unset, UUID]):
-        customers_offerings_state (Union[Unset,
-            list[MarketplaceCategoriesCountCustomersOfferingsStateItem]]):
+        customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
         offering_name (Union[Unset, str]):
@@ -220,7 +216,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesCountCustomersOfferingsStateItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -236,8 +232,7 @@ async def asyncio_detailed(
 
     Args:
         customer_uuid (Union[Unset, UUID]):
-        customers_offerings_state (Union[Unset,
-            list[MarketplaceCategoriesCountCustomersOfferingsStateItem]]):
+        customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
         offering_name (Union[Unset, str]):
@@ -277,7 +272,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    customers_offerings_state: Union[Unset, list[MarketplaceCategoriesCountCustomersOfferingsStateItem]] = UNSET,
+    customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
@@ -293,8 +288,7 @@ async def asyncio(
 
     Args:
         customer_uuid (Union[Unset, UUID]):
-        customers_offerings_state (Union[Unset,
-            list[MarketplaceCategoriesCountCustomersOfferingsStateItem]]):
+        customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
         offering_name (Union[Unset, str]):

@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.keycloak_user_group_membership_state import KeycloakUserGroupMembershipState
 from ...models.offering_keycloak_membership import OfferingKeycloakMembership
-from ...models.offering_keycloak_memberships_list_state_item import OfferingKeycloakMembershipsListStateItem
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -23,7 +23,7 @@ def _get_kwargs(
     page_size: Union[Unset, int] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsListStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -120,7 +120,7 @@ def sync_detailed(
     page_size: Union[Unset, int] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsListStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingKeycloakMembership"]]:
     """
@@ -134,7 +134,7 @@ def sync_detailed(
         page_size (Union[Unset, int]):
         resource_uuid (Union[Unset, UUID]):
         role_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OfferingKeycloakMembershipsListStateItem]]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -178,7 +178,7 @@ def sync(
     page_size: Union[Unset, int] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsListStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["OfferingKeycloakMembership"]:
     """
@@ -192,7 +192,7 @@ def sync(
         page_size (Union[Unset, int]):
         resource_uuid (Union[Unset, UUID]):
         role_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OfferingKeycloakMembershipsListStateItem]]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -231,7 +231,7 @@ async def asyncio_detailed(
     page_size: Union[Unset, int] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsListStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["OfferingKeycloakMembership"]]:
     """
@@ -245,7 +245,7 @@ async def asyncio_detailed(
         page_size (Union[Unset, int]):
         resource_uuid (Union[Unset, UUID]):
         role_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OfferingKeycloakMembershipsListStateItem]]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -287,7 +287,7 @@ async def asyncio(
     page_size: Union[Unset, int] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsListStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["OfferingKeycloakMembership"]:
     """
@@ -301,7 +301,7 @@ async def asyncio(
         page_size (Union[Unset, int]):
         resource_uuid (Union[Unset, UUID]):
         role_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OfferingKeycloakMembershipsListStateItem]]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -340,7 +340,7 @@ def sync_all(
     offering_uuid: Union[Unset, UUID] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsListStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["OfferingKeycloakMembership"]:
     """Get All Pages
@@ -358,7 +358,7 @@ def sync_all(
         offering_uuid (Union[Unset, UUID]):
         resource_uuid (Union[Unset, UUID]):
         role_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OfferingKeycloakMembershipsListStateItem]]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipState]]):
         username (Union[Unset, str]):
 
     Raises:
@@ -437,7 +437,7 @@ async def asyncio_all(
     offering_uuid: Union[Unset, UUID] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     role_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OfferingKeycloakMembershipsListStateItem]] = UNSET,
+    state: Union[Unset, list[KeycloakUserGroupMembershipState]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["OfferingKeycloakMembership"]:
     """Get All Pages (Async)
@@ -455,7 +455,7 @@ async def asyncio_all(
         offering_uuid (Union[Unset, UUID]):
         resource_uuid (Union[Unset, UUID]):
         role_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OfferingKeycloakMembershipsListStateItem]]):
+        state (Union[Unset, list[KeycloakUserGroupMembershipState]]):
         username (Union[Unset, str]):
 
     Raises:

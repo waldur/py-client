@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.openstack_network_rbac_policies_count_policy_type import OpenstackNetworkRbacPoliciesCountPolicyType
+from ...models.policy_type_enum import PolicyTypeEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     network_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    policy_type: Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType] = UNSET,
+    policy_type: Union[Unset, PolicyTypeEnum] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
     tenant: Union[Unset, str] = UNSET,
@@ -99,7 +99,7 @@ def sync_detailed(
     network_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    policy_type: Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType] = UNSET,
+    policy_type: Union[Unset, PolicyTypeEnum] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
     tenant: Union[Unset, str] = UNSET,
@@ -114,7 +114,7 @@ def sync_detailed(
         network_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        policy_type (Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType]):
+        policy_type (Union[Unset, PolicyTypeEnum]):
         target_tenant (Union[Unset, str]):
         target_tenant_uuid (Union[Unset, UUID]):
         tenant (Union[Unset, str]):
@@ -154,7 +154,7 @@ def sync(
     network_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    policy_type: Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType] = UNSET,
+    policy_type: Union[Unset, PolicyTypeEnum] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
     tenant: Union[Unset, str] = UNSET,
@@ -169,7 +169,7 @@ def sync(
         network_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        policy_type (Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType]):
+        policy_type (Union[Unset, PolicyTypeEnum]):
         target_tenant (Union[Unset, str]):
         target_tenant_uuid (Union[Unset, UUID]):
         tenant (Union[Unset, str]):
@@ -204,7 +204,7 @@ async def asyncio_detailed(
     network_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    policy_type: Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType] = UNSET,
+    policy_type: Union[Unset, PolicyTypeEnum] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
     tenant: Union[Unset, str] = UNSET,
@@ -219,7 +219,7 @@ async def asyncio_detailed(
         network_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        policy_type (Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType]):
+        policy_type (Union[Unset, PolicyTypeEnum]):
         target_tenant (Union[Unset, str]):
         target_tenant_uuid (Union[Unset, UUID]):
         tenant (Union[Unset, str]):
@@ -257,7 +257,7 @@ async def asyncio(
     network_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    policy_type: Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType] = UNSET,
+    policy_type: Union[Unset, PolicyTypeEnum] = UNSET,
     target_tenant: Union[Unset, str] = UNSET,
     target_tenant_uuid: Union[Unset, UUID] = UNSET,
     tenant: Union[Unset, str] = UNSET,
@@ -272,7 +272,7 @@ async def asyncio(
         network_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        policy_type (Union[Unset, OpenstackNetworkRbacPoliciesCountPolicyType]):
+        policy_type (Union[Unset, PolicyTypeEnum]):
         target_tenant (Union[Unset, str]):
         target_tenant_uuid (Union[Unset, UUID]):
         tenant (Union[Unset, str]):

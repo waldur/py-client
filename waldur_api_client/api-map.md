@@ -455,8 +455,7 @@ Module: `waldur_api_client.api.chat`
 ## chat-messages
 Module: `waldur_api_client.api.chat_messages`
 
-- `chat_messages_list` GET `/api/chat-messages/` (2 query params)
-- `chat_messages_edit` POST `/api/chat-messages/{uuid}/edit/` — Edit message (path: uuid | request body)
+- `chat_messages_list` GET `/api/chat-messages/` (3 query params)
 
 ## chat-quota
 Module: `waldur_api_client.api.chat_quota`
@@ -474,7 +473,7 @@ Module: `waldur_api_client.api.chat_sessions`
 ## chat-threads
 Module: `waldur_api_client.api.chat_threads`
 
-- `chat_threads_list` GET `/api/chat-threads/` (7 query params)
+- `chat_threads_list` GET `/api/chat-threads/` (9 query params)
 - `chat_threads_retrieve` GET `/api/chat-threads/{uuid}/` (path: uuid | 1 query param)
 - `chat_threads_archive` POST `/api/chat-threads/{uuid}/archive/` — Archive thread (path: uuid | request body)
 - `chat_threads_unarchive` POST `/api/chat-threads/{uuid}/unarchive/` — Unarchive thread (path: uuid | request body)

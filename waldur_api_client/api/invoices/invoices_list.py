@@ -8,9 +8,9 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.invoice import Invoice
-from ...models.invoices_list_field_item import InvoicesListFieldItem
-from ...models.invoices_list_o_item import InvoicesListOItem
-from ...models.invoices_list_state_item import InvoicesListStateItem
+from ...models.invoice_field_enum import InvoiceFieldEnum
+from ...models.invoice_o_enum import InvoiceOEnum
+from ...models.invoice_state_enum import InvoiceStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -22,13 +22,13 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[InvoicesListFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -137,13 +137,13 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[InvoicesListFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["Invoice"]]:
     """
@@ -153,13 +153,13 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        field (Union[Unset, list[InvoicesListFieldItem]]):
+        field (Union[Unset, list[InvoiceFieldEnum]]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -201,13 +201,13 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[InvoicesListFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["Invoice"]:
     """
@@ -217,13 +217,13 @@ def sync(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        field (Union[Unset, list[InvoicesListFieldItem]]):
+        field (Union[Unset, list[InvoiceFieldEnum]]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -260,13 +260,13 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[InvoicesListFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["Invoice"]]:
     """
@@ -276,13 +276,13 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        field (Union[Unset, list[InvoicesListFieldItem]]):
+        field (Union[Unset, list[InvoiceFieldEnum]]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -322,13 +322,13 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[InvoicesListFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["Invoice"]:
     """
@@ -338,13 +338,13 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        field (Union[Unset, list[InvoicesListFieldItem]]):
+        field (Union[Unset, list[InvoiceFieldEnum]]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -383,11 +383,11 @@ def sync_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[InvoicesListFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["Invoice"]:
     """Get All Pages
@@ -403,11 +403,11 @@ def sync_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        field (Union[Unset, list[InvoicesListFieldItem]]):
+        field (Union[Unset, list[InvoiceFieldEnum]]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -486,11 +486,11 @@ async def asyncio_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
-    field: Union[Unset, list[InvoicesListFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["Invoice"]:
     """Get All Pages (Async)
@@ -506,11 +506,11 @@ async def asyncio_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
-        field (Union[Unset, list[InvoicesListFieldItem]]):
+        field (Union[Unset, list[InvoiceFieldEnum]]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:

@@ -7,9 +7,9 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.coi_detection_job import COIDetectionJob
-from ...models.coi_detection_jobs_list_job_type import CoiDetectionJobsListJobType
-from ...models.coi_detection_jobs_list_o_item import CoiDetectionJobsListOItem
-from ...models.coi_detection_jobs_list_state_item import CoiDetectionJobsListStateItem
+from ...models.coi_detection_job_job_type_enum import COIDetectionJobJobTypeEnum
+from ...models.coi_detection_job_o_enum import COIDetectionJobOEnum
+from ...models.coi_detection_job_state_enum import COIDetectionJobStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,11 +17,11 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsListJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsListOItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsListStateItem]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -99,20 +99,20 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsListJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsListOItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsListStateItem]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> Response[list["COIDetectionJob"]]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        job_type (Union[Unset, CoiDetectionJobsListJobType]):
-        o (Union[Unset, list[CoiDetectionJobsListOItem]]):
+        job_type (Union[Unset, COIDetectionJobJobTypeEnum]):
+        o (Union[Unset, list[COIDetectionJobOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[CoiDetectionJobsListStateItem]]):
+        state (Union[Unset, list[COIDetectionJobStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -142,20 +142,20 @@ def sync(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsListJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsListOItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsListStateItem]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> list["COIDetectionJob"]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        job_type (Union[Unset, CoiDetectionJobsListJobType]):
-        o (Union[Unset, list[CoiDetectionJobsListOItem]]):
+        job_type (Union[Unset, COIDetectionJobJobTypeEnum]):
+        o (Union[Unset, list[COIDetectionJobOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[CoiDetectionJobsListStateItem]]):
+        state (Union[Unset, list[COIDetectionJobStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -180,20 +180,20 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsListJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsListOItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsListStateItem]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> Response[list["COIDetectionJob"]]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        job_type (Union[Unset, CoiDetectionJobsListJobType]):
-        o (Union[Unset, list[CoiDetectionJobsListOItem]]):
+        job_type (Union[Unset, COIDetectionJobJobTypeEnum]):
+        o (Union[Unset, list[COIDetectionJobOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[CoiDetectionJobsListStateItem]]):
+        state (Union[Unset, list[COIDetectionJobStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -221,20 +221,20 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsListJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsListOItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsListStateItem]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> list["COIDetectionJob"]:
     """
     Args:
         call_uuid (Union[Unset, UUID]):
-        job_type (Union[Unset, CoiDetectionJobsListJobType]):
-        o (Union[Unset, list[CoiDetectionJobsListOItem]]):
+        job_type (Union[Unset, COIDetectionJobJobTypeEnum]):
+        o (Union[Unset, list[COIDetectionJobOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[CoiDetectionJobsListStateItem]]):
+        state (Union[Unset, list[COIDetectionJobStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -261,9 +261,9 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsListJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsListOItem]] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsListStateItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> list["COIDetectionJob"]:
     """Get All Pages
 
@@ -274,9 +274,9 @@ def sync_all(
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        job_type (Union[Unset, CoiDetectionJobsListJobType]):
-        o (Union[Unset, list[CoiDetectionJobsListOItem]]):
-        state (Union[Unset, list[CoiDetectionJobsListStateItem]]):
+        job_type (Union[Unset, COIDetectionJobJobTypeEnum]):
+        o (Union[Unset, list[COIDetectionJobOEnum]]):
+        state (Union[Unset, list[COIDetectionJobStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -343,9 +343,9 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsListJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsListOItem]] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsListStateItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> list["COIDetectionJob"]:
     """Get All Pages (Async)
 
@@ -356,9 +356,9 @@ async def asyncio_all(
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        job_type (Union[Unset, CoiDetectionJobsListJobType]):
-        o (Union[Unset, list[CoiDetectionJobsListOItem]]):
-        state (Union[Unset, list[CoiDetectionJobsListStateItem]]):
+        job_type (Union[Unset, COIDetectionJobJobTypeEnum]):
+        o (Union[Unset, list[COIDetectionJobOEnum]]):
+        state (Union[Unset, list[COIDetectionJobStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

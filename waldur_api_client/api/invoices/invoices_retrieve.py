@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.invoice import Invoice
-from ...models.invoices_retrieve_field_item import InvoicesRetrieveFieldItem
+from ...models.invoice_field_enum import InvoiceFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[InvoicesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[InvoicesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
 ) -> Response[Invoice]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[InvoicesRetrieveFieldItem]]):
+        field (Union[Unset, list[InvoiceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[InvoicesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
 ) -> Invoice:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[InvoicesRetrieveFieldItem]]):
+        field (Union[Unset, list[InvoiceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[InvoicesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
 ) -> Response[Invoice]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[InvoicesRetrieveFieldItem]]):
+        field (Union[Unset, list[InvoiceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[InvoicesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[InvoiceFieldEnum]] = UNSET,
 ) -> Invoice:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[InvoicesRetrieveFieldItem]]):
+        field (Union[Unset, list[InvoiceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

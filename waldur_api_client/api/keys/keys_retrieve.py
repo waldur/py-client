@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.keys_retrieve_field_item import KeysRetrieveFieldItem
 from ...models.ssh_key import SshKey
+from ...models.ssh_key_field_enum import SshKeyFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[KeysRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[KeysRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
 ) -> Response[SshKey]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[KeysRetrieveFieldItem]]):
+        field (Union[Unset, list[SshKeyFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[KeysRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
 ) -> SshKey:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[KeysRetrieveFieldItem]]):
+        field (Union[Unset, list[SshKeyFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[KeysRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
 ) -> Response[SshKey]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[KeysRetrieveFieldItem]]):
+        field (Union[Unset, list[SshKeyFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[KeysRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[SshKeyFieldEnum]] = UNSET,
 ) -> SshKey:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[KeysRetrieveFieldItem]]):
+        field (Union[Unset, list[SshKeyFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

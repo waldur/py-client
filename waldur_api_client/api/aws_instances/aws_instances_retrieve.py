@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.aws_instance import AwsInstance
-from ...models.aws_instances_retrieve_field_item import AwsInstancesRetrieveFieldItem
+from ...models.aws_instance_field_enum import AwsInstanceFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[AwsInstancesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AwsInstanceFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AwsInstancesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AwsInstanceFieldEnum]] = UNSET,
 ) -> Response[AwsInstance]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AwsInstancesRetrieveFieldItem]]):
+        field (Union[Unset, list[AwsInstanceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AwsInstancesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AwsInstanceFieldEnum]] = UNSET,
 ) -> AwsInstance:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AwsInstancesRetrieveFieldItem]]):
+        field (Union[Unset, list[AwsInstanceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AwsInstancesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AwsInstanceFieldEnum]] = UNSET,
 ) -> Response[AwsInstance]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AwsInstancesRetrieveFieldItem]]):
+        field (Union[Unset, list[AwsInstanceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AwsInstancesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AwsInstanceFieldEnum]] = UNSET,
 ) -> AwsInstance:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AwsInstancesRetrieveFieldItem]]):
+        field (Union[Unset, list[AwsInstanceFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

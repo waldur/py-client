@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_robot_accounts_retrieve_field_item import MarketplaceRobotAccountsRetrieveFieldItem
 from ...models.robot_account_details import RobotAccountDetails
+from ...models.robot_account_details_field_enum import RobotAccountDetailsFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
 ) -> Response[RobotAccountDetails]:
     """Retrieve a robot account
 
@@ -71,7 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):
+        field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -97,7 +97,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
 ) -> RobotAccountDetails:
     """Retrieve a robot account
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):
+        field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
 ) -> Response[RobotAccountDetails]:
     """Retrieve a robot account
 
@@ -134,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):
+        field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,7 +158,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
 ) -> RobotAccountDetails:
     """Retrieve a robot account
 
@@ -166,7 +166,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[MarketplaceRobotAccountsRetrieveFieldItem]]):
+        field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

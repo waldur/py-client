@@ -6,10 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.proposal_protected_calls_suggestions_list_o_item import ProposalProtectedCallsSuggestionsListOItem
-from ...models.proposal_protected_calls_suggestions_list_state_item import (
-    ProposalProtectedCallsSuggestionsListStateItem,
-)
+from ...models.call_states import CallStates
+from ...models.protected_call_o_enum import ProtectedCallOEnum
 from ...models.reviewer_suggestion import ReviewerSuggestion
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
@@ -23,12 +21,12 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -125,12 +123,12 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> Response[list["ReviewerSuggestion"]]:
     """List all reviewer suggestions for this call with affinity scores.
 
@@ -141,12 +139,12 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -187,12 +185,12 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["ReviewerSuggestion"]:
     """List all reviewer suggestions for this call with affinity scores.
 
@@ -203,12 +201,12 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -244,12 +242,12 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> Response[list["ReviewerSuggestion"]]:
     """List all reviewer suggestions for this call with affinity scores.
 
@@ -260,12 +258,12 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -304,12 +302,12 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["ReviewerSuggestion"]:
     """List all reviewer suggestions for this call with affinity scores.
 
@@ -320,12 +318,12 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -363,10 +361,10 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["ReviewerSuggestion"]:
     """Get All Pages
 
@@ -382,10 +380,10 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -463,10 +461,10 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     has_active_round: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]] = UNSET,
+    o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]] = UNSET,
+    state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["ReviewerSuggestion"]:
     """Get All Pages (Async)
 
@@ -482,10 +480,10 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         has_active_round (Union[Unset, bool]):
         name (Union[Unset, str]):
-        o (Union[Unset, list[ProposalProtectedCallsSuggestionsListOItem]]):
+        o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ProposalProtectedCallsSuggestionsListStateItem]]):
+        state (Union[Unset, list[CallStates]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

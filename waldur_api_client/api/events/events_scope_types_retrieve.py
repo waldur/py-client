@@ -6,13 +6,13 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.event import Event
-from ...models.events_scope_types_retrieve_field_item import EventsScopeTypesRetrieveFieldItem
+from ...models.event_field_enum import EventFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[EventsScopeTypesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -58,12 +58,12 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsScopeTypesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Response[Event]:
     """Returns a list of scope types acceptable by events filter.
 
     Args:
-        field (Union[Unset, list[EventsScopeTypesRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -87,12 +87,12 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsScopeTypesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Event:
     """Returns a list of scope types acceptable by events filter.
 
     Args:
-        field (Union[Unset, list[EventsScopeTypesRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -111,12 +111,12 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsScopeTypesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Response[Event]:
     """Returns a list of scope types acceptable by events filter.
 
     Args:
-        field (Union[Unset, list[EventsScopeTypesRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -138,12 +138,12 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[EventsScopeTypesRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
 ) -> Event:
     """Returns a list of scope types acceptable by events filter.
 
     Args:
-        field (Union[Unset, list[EventsScopeTypesRetrieveFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

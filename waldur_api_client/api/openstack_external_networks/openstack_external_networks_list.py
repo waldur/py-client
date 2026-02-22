@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.external_network import ExternalNetwork
-from ...models.openstack_external_networks_list_field_item import OpenstackExternalNetworksListFieldItem
+from ...models.external_network_field_enum import ExternalNetworkFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[OpenstackExternalNetworksListFieldItem]] = UNSET,
+    field: Union[Unset, list[ExternalNetworkFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -88,7 +88,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackExternalNetworksListFieldItem]] = UNSET,
+    field: Union[Unset, list[ExternalNetworkFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -101,7 +101,7 @@ def sync_detailed(
      Get a list of provider-level external networks discovered from OpenStack.
 
     Args:
-        field (Union[Unset, list[OpenstackExternalNetworksListFieldItem]]):
+        field (Union[Unset, list[ExternalNetworkFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -137,7 +137,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackExternalNetworksListFieldItem]] = UNSET,
+    field: Union[Unset, list[ExternalNetworkFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -150,7 +150,7 @@ def sync(
      Get a list of provider-level external networks discovered from OpenStack.
 
     Args:
-        field (Union[Unset, list[OpenstackExternalNetworksListFieldItem]]):
+        field (Union[Unset, list[ExternalNetworkFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -181,7 +181,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackExternalNetworksListFieldItem]] = UNSET,
+    field: Union[Unset, list[ExternalNetworkFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -194,7 +194,7 @@ async def asyncio_detailed(
      Get a list of provider-level external networks discovered from OpenStack.
 
     Args:
-        field (Union[Unset, list[OpenstackExternalNetworksListFieldItem]]):
+        field (Union[Unset, list[ExternalNetworkFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -228,7 +228,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackExternalNetworksListFieldItem]] = UNSET,
+    field: Union[Unset, list[ExternalNetworkFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -241,7 +241,7 @@ async def asyncio(
      Get a list of provider-level external networks discovered from OpenStack.
 
     Args:
-        field (Union[Unset, list[OpenstackExternalNetworksListFieldItem]]):
+        field (Union[Unset, list[ExternalNetworkFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         page (Union[Unset, int]):
@@ -274,7 +274,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackExternalNetworksListFieldItem]] = UNSET,
+    field: Union[Unset, list[ExternalNetworkFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     settings: Union[Unset, str] = UNSET,
@@ -288,7 +288,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[OpenstackExternalNetworksListFieldItem]]):
+        field (Union[Unset, list[ExternalNetworkFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         settings (Union[Unset, str]):
@@ -359,7 +359,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackExternalNetworksListFieldItem]] = UNSET,
+    field: Union[Unset, list[ExternalNetworkFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     settings: Union[Unset, str] = UNSET,
@@ -373,7 +373,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[OpenstackExternalNetworksListFieldItem]]):
+        field (Union[Unset, list[ExternalNetworkFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         settings (Union[Unset, str]):

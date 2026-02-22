@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.openstack_instances_count_o import OpenstackInstancesCountO
-from ...models.openstack_instances_count_state_item import OpenstackInstancesCountStateItem
+from ...models.core_states import CoreStates
+from ...models.open_stack_instance_o_enum import OpenStackInstanceOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -26,7 +26,7 @@ def _get_kwargs(
     external_ip: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, OpenstackInstancesCountO] = UNSET,
+    o: Union[Unset, OpenStackInstanceOEnum] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -36,7 +36,7 @@ def _get_kwargs(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackInstancesCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -185,7 +185,7 @@ def sync_detailed(
     external_ip: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, OpenstackInstancesCountO] = UNSET,
+    o: Union[Unset, OpenStackInstanceOEnum] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -195,7 +195,7 @@ def sync_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackInstancesCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -218,7 +218,7 @@ def sync_detailed(
         external_ip (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, OpenstackInstancesCountO]):
+        o (Union[Unset, OpenStackInstanceOEnum]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -228,7 +228,7 @@ def sync_detailed(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackInstancesCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -294,7 +294,7 @@ def sync(
     external_ip: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, OpenstackInstancesCountO] = UNSET,
+    o: Union[Unset, OpenStackInstanceOEnum] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -304,7 +304,7 @@ def sync(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackInstancesCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -327,7 +327,7 @@ def sync(
         external_ip (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, OpenstackInstancesCountO]):
+        o (Union[Unset, OpenStackInstanceOEnum]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -337,7 +337,7 @@ def sync(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackInstancesCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -398,7 +398,7 @@ async def asyncio_detailed(
     external_ip: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, OpenstackInstancesCountO] = UNSET,
+    o: Union[Unset, OpenStackInstanceOEnum] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -408,7 +408,7 @@ async def asyncio_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackInstancesCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -431,7 +431,7 @@ async def asyncio_detailed(
         external_ip (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, OpenstackInstancesCountO]):
+        o (Union[Unset, OpenStackInstanceOEnum]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -441,7 +441,7 @@ async def asyncio_detailed(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackInstancesCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):
@@ -505,7 +505,7 @@ async def asyncio(
     external_ip: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, OpenstackInstancesCountO] = UNSET,
+    o: Union[Unset, OpenStackInstanceOEnum] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, UUID] = UNSET,
@@ -515,7 +515,7 @@ async def asyncio(
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[OpenstackInstancesCountStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     tenant: Union[Unset, str] = UNSET,
     tenant_uuid: Union[Unset, UUID] = UNSET,
     uuid: Union[Unset, UUID] = UNSET,
@@ -538,7 +538,7 @@ async def asyncio(
         external_ip (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, OpenstackInstancesCountO]):
+        o (Union[Unset, OpenStackInstanceOEnum]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, UUID]):
@@ -548,7 +548,7 @@ async def asyncio(
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[OpenstackInstancesCountStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         tenant (Union[Unset, str]):
         tenant_uuid (Union[Unset, UUID]):
         uuid (Union[Unset, UUID]):

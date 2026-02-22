@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.admin_announcement import AdminAnnouncement
-from ...models.admin_announcements_retrieve_field_item import AdminAnnouncementsRetrieveFieldItem
+from ...models.admin_announcement_field_enum import AdminAnnouncementFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[AdminAnnouncementsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,12 +63,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AdminAnnouncementsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
 ) -> Response[AdminAnnouncement]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AdminAnnouncementsRetrieveFieldItem]]):
+        field (Union[Unset, list[AdminAnnouncementFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -94,12 +94,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AdminAnnouncementsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
 ) -> AdminAnnouncement:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AdminAnnouncementsRetrieveFieldItem]]):
+        field (Union[Unset, list[AdminAnnouncementFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -120,12 +120,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AdminAnnouncementsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
 ) -> Response[AdminAnnouncement]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AdminAnnouncementsRetrieveFieldItem]]):
+        field (Union[Unset, list[AdminAnnouncementFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,12 +149,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AdminAnnouncementsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
 ) -> AdminAnnouncement:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AdminAnnouncementsRetrieveFieldItem]]):
+        field (Union[Unset, list[AdminAnnouncementFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

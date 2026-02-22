@@ -6,9 +6,9 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.admin_announcement import AdminAnnouncement
-from ...models.admin_announcements_list_field_item import AdminAnnouncementsListFieldItem
-from ...models.admin_announcements_list_o_item import AdminAnnouncementsListOItem
-from ...models.admin_announcements_list_type_item import AdminAnnouncementsListTypeItem
+from ...models.admin_announcement_field_enum import AdminAnnouncementFieldEnum
+from ...models.admin_announcement_o_enum import AdminAnnouncementOEnum
+from ...models.admin_announcement_type_enum import AdminAnnouncementTypeEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -16,12 +16,12 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[AdminAnnouncementsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsListTypeItem]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -103,22 +103,22 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[AdminAnnouncementsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsListTypeItem]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> Response[list["AdminAnnouncement"]]:
     """
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[AdminAnnouncementsListFieldItem]]):
+        field (Union[Unset, list[AdminAnnouncementFieldEnum]]):
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[AdminAnnouncementsListOItem]]):
+        o (Union[Unset, list[AdminAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        type_ (Union[Unset, list[AdminAnnouncementsListTypeItem]]):
+        type_ (Union[Unset, list[AdminAnnouncementTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -149,22 +149,22 @@ def sync(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[AdminAnnouncementsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsListTypeItem]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> list["AdminAnnouncement"]:
     """
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[AdminAnnouncementsListFieldItem]]):
+        field (Union[Unset, list[AdminAnnouncementFieldEnum]]):
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[AdminAnnouncementsListOItem]]):
+        o (Union[Unset, list[AdminAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        type_ (Union[Unset, list[AdminAnnouncementsListTypeItem]]):
+        type_ (Union[Unset, list[AdminAnnouncementTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -190,22 +190,22 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[AdminAnnouncementsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsListTypeItem]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> Response[list["AdminAnnouncement"]]:
     """
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[AdminAnnouncementsListFieldItem]]):
+        field (Union[Unset, list[AdminAnnouncementFieldEnum]]):
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[AdminAnnouncementsListOItem]]):
+        o (Union[Unset, list[AdminAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        type_ (Union[Unset, list[AdminAnnouncementsListTypeItem]]):
+        type_ (Union[Unset, list[AdminAnnouncementTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -234,22 +234,22 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[AdminAnnouncementsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsListOItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsListTypeItem]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> list["AdminAnnouncement"]:
     """
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[AdminAnnouncementsListFieldItem]]):
+        field (Union[Unset, list[AdminAnnouncementFieldEnum]]):
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[AdminAnnouncementsListOItem]]):
+        o (Union[Unset, list[AdminAnnouncementOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        type_ (Union[Unset, list[AdminAnnouncementsListTypeItem]]):
+        type_ (Union[Unset, list[AdminAnnouncementTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -277,10 +277,10 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[AdminAnnouncementsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsListOItem]] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsListTypeItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> list["AdminAnnouncement"]:
     """Get All Pages
 
@@ -291,10 +291,10 @@ def sync_all(
 
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[AdminAnnouncementsListFieldItem]]):
+        field (Union[Unset, list[AdminAnnouncementFieldEnum]]):
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[AdminAnnouncementsListOItem]]):
-        type_ (Union[Unset, list[AdminAnnouncementsListTypeItem]]):
+        o (Union[Unset, list[AdminAnnouncementOEnum]]):
+        type_ (Union[Unset, list[AdminAnnouncementTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -362,10 +362,10 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     description: Union[Unset, str] = UNSET,
-    field: Union[Unset, list[AdminAnnouncementsListFieldItem]] = UNSET,
+    field: Union[Unset, list[AdminAnnouncementFieldEnum]] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[AdminAnnouncementsListOItem]] = UNSET,
-    type_: Union[Unset, list[AdminAnnouncementsListTypeItem]] = UNSET,
+    o: Union[Unset, list[AdminAnnouncementOEnum]] = UNSET,
+    type_: Union[Unset, list[AdminAnnouncementTypeEnum]] = UNSET,
 ) -> list["AdminAnnouncement"]:
     """Get All Pages (Async)
 
@@ -376,10 +376,10 @@ async def asyncio_all(
 
     Args:
         description (Union[Unset, str]):
-        field (Union[Unset, list[AdminAnnouncementsListFieldItem]]):
+        field (Union[Unset, list[AdminAnnouncementFieldEnum]]):
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[AdminAnnouncementsListOItem]]):
-        type_ (Union[Unset, list[AdminAnnouncementsListTypeItem]]):
+        o (Union[Unset, list[AdminAnnouncementOEnum]]):
+        type_ (Union[Unset, list[AdminAnnouncementTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.invoices_count_o_item import InvoicesCountOItem
-from ...models.invoices_count_state_item import InvoicesCountStateItem
+from ...models.invoice_o_enum import InvoiceOEnum
+from ...models.invoice_state_enum import InvoiceStateEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -20,11 +20,11 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesCountOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesCountStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -125,11 +125,11 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesCountOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesCountStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -141,11 +141,11 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesCountOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesCountStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -187,11 +187,11 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesCountOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesCountStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -203,11 +203,11 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesCountOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesCountStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -244,11 +244,11 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesCountOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesCountStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -260,11 +260,11 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesCountOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesCountStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -304,11 +304,11 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesCountOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesCountStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -320,11 +320,11 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesCountOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesCountStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:

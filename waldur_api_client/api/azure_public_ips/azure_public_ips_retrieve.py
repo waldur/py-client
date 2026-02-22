@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.azure_public_ip import AzurePublicIP
-from ...models.azure_public_ips_retrieve_field_item import AzurePublicIpsRetrieveFieldItem
+from ...models.azure_public_ip_field_enum import AzurePublicIPFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[AzurePublicIpsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzurePublicIPFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzurePublicIpsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzurePublicIPFieldEnum]] = UNSET,
 ) -> Response[AzurePublicIP]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzurePublicIpsRetrieveFieldItem]]):
+        field (Union[Unset, list[AzurePublicIPFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzurePublicIpsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzurePublicIPFieldEnum]] = UNSET,
 ) -> AzurePublicIP:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzurePublicIpsRetrieveFieldItem]]):
+        field (Union[Unset, list[AzurePublicIPFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzurePublicIpsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzurePublicIPFieldEnum]] = UNSET,
 ) -> Response[AzurePublicIP]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzurePublicIpsRetrieveFieldItem]]):
+        field (Union[Unset, list[AzurePublicIPFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AzurePublicIpsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[AzurePublicIPFieldEnum]] = UNSET,
 ) -> AzurePublicIP:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AzurePublicIpsRetrieveFieldItem]]):
+        field (Union[Unset, list[AzurePublicIPFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

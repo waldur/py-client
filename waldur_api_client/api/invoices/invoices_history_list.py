@@ -7,8 +7,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.invoices_history_list_o_item import InvoicesHistoryListOItem
-from ...models.invoices_history_list_state_item import InvoicesHistoryListStateItem
+from ...models.invoice_o_enum import InvoiceOEnum
+from ...models.invoice_state_enum import InvoiceStateEnum
 from ...models.version_history import VersionHistory
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
@@ -25,11 +25,11 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesHistoryListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesHistoryListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -137,11 +137,11 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesHistoryListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesHistoryListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["VersionHistory"]]:
     """Get version history
@@ -158,11 +158,11 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesHistoryListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesHistoryListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -210,11 +210,11 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesHistoryListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesHistoryListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["VersionHistory"]:
     """Get version history
@@ -231,11 +231,11 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesHistoryListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesHistoryListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -278,11 +278,11 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesHistoryListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesHistoryListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> Response[list["VersionHistory"]]:
     """Get version history
@@ -299,11 +299,11 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesHistoryListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesHistoryListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -349,11 +349,11 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesHistoryListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesHistoryListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["VersionHistory"]:
     """Get version history
@@ -370,11 +370,11 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesHistoryListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesHistoryListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -419,9 +419,9 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesHistoryListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesHistoryListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["VersionHistory"]:
     """Get All Pages
@@ -441,9 +441,9 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesHistoryListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesHistoryListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:
@@ -528,9 +528,9 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     end_date: Union[Unset, datetime.date] = UNSET,
     month: Union[Unset, int] = UNSET,
-    o: Union[Unset, list[InvoicesHistoryListOItem]] = UNSET,
+    o: Union[Unset, list[InvoiceOEnum]] = UNSET,
     start_date: Union[Unset, datetime.date] = UNSET,
-    state: Union[Unset, list[InvoicesHistoryListStateItem]] = UNSET,
+    state: Union[Unset, list[InvoiceStateEnum]] = UNSET,
     year: Union[Unset, int] = UNSET,
 ) -> list["VersionHistory"]:
     """Get All Pages (Async)
@@ -550,9 +550,9 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         end_date (Union[Unset, datetime.date]):
         month (Union[Unset, int]):
-        o (Union[Unset, list[InvoicesHistoryListOItem]]):
+        o (Union[Unset, list[InvoiceOEnum]]):
         start_date (Union[Unset, datetime.date]):
-        state (Union[Unset, list[InvoicesHistoryListStateItem]]):
+        state (Union[Unset, list[InvoiceStateEnum]]):
         year (Union[Unset, int]):
 
     Raises:

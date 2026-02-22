@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.core_states import CoreStates
 from ...models.service_settings import ServiceSettings
-from ...models.service_settings_list_field_item import ServiceSettingsListFieldItem
-from ...models.service_settings_list_state_item import ServiceSettingsListStateItem
+from ...models.service_settings_field_enum import ServiceSettingsFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,7 +17,7 @@ def _get_kwargs(
     *,
     customer: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ServiceSettingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -26,7 +26,7 @@ def _get_kwargs(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -119,7 +119,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     customer: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ServiceSettingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -128,14 +128,14 @@ def sync_detailed(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["ServiceSettings"]]:
     """
     Args:
         customer (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ServiceSettingsListFieldItem]]):
+        field (Union[Unset, list[ServiceSettingsFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -144,7 +144,7 @@ def sync_detailed(
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[ServiceSettingsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -183,7 +183,7 @@ def sync(
     client: AuthenticatedClient,
     customer: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ServiceSettingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -192,14 +192,14 @@ def sync(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["ServiceSettings"]:
     """
     Args:
         customer (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ServiceSettingsListFieldItem]]):
+        field (Union[Unset, list[ServiceSettingsFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -208,7 +208,7 @@ def sync(
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[ServiceSettingsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -242,7 +242,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     customer: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ServiceSettingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -251,14 +251,14 @@ async def asyncio_detailed(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> Response[list["ServiceSettings"]]:
     """
     Args:
         customer (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ServiceSettingsListFieldItem]]):
+        field (Union[Unset, list[ServiceSettingsFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -267,7 +267,7 @@ async def asyncio_detailed(
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[ServiceSettingsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -304,7 +304,7 @@ async def asyncio(
     client: AuthenticatedClient,
     customer: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ServiceSettingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -313,14 +313,14 @@ async def asyncio(
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["ServiceSettings"]:
     """
     Args:
         customer (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ServiceSettingsListFieldItem]]):
+        field (Union[Unset, list[ServiceSettingsFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -329,7 +329,7 @@ async def asyncio(
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[ServiceSettingsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -365,14 +365,14 @@ def sync_all(
     client: AuthenticatedClient,
     customer: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ServiceSettingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["ServiceSettings"]:
     """Get All Pages
@@ -385,14 +385,14 @@ def sync_all(
     Args:
         customer (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ServiceSettingsListFieldItem]]):
+        field (Union[Unset, list[ServiceSettingsFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[ServiceSettingsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         type_ (Union[Unset, str]):
 
     Raises:
@@ -468,14 +468,14 @@ async def asyncio_all(
     client: AuthenticatedClient,
     customer: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ServiceSettingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ServiceSettingsFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
     shared: Union[Unset, bool] = UNSET,
-    state: Union[Unset, list[ServiceSettingsListStateItem]] = UNSET,
+    state: Union[Unset, list[CoreStates]] = UNSET,
     type_: Union[Unset, str] = UNSET,
 ) -> list["ServiceSettings"]:
     """Get All Pages (Async)
@@ -488,14 +488,14 @@ async def asyncio_all(
     Args:
         customer (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ServiceSettingsListFieldItem]]):
+        field (Union[Unset, list[ServiceSettingsFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
         shared (Union[Unset, bool]):
-        state (Union[Unset, list[ServiceSettingsListStateItem]]):
+        state (Union[Unset, list[CoreStates]]):
         type_ (Union[Unset, str]):
 
     Raises:

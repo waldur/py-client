@@ -6,14 +6,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.chat_session import ChatSession
-from ...models.chat_sessions_list_field_item import ChatSessionsListFieldItem
+from ...models.chat_session_field_enum import ChatSessionFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[ChatSessionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ChatSessionFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -72,13 +72,13 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ChatSessionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ChatSessionFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ChatSession"]]:
     """
     Args:
-        field (Union[Unset, list[ChatSessionsListFieldItem]]):
+        field (Union[Unset, list[ChatSessionFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -106,13 +106,13 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ChatSessionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ChatSessionFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ChatSession"]:
     """
     Args:
-        field (Union[Unset, list[ChatSessionsListFieldItem]]):
+        field (Union[Unset, list[ChatSessionFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -135,13 +135,13 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ChatSessionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ChatSessionFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ChatSession"]]:
     """
     Args:
-        field (Union[Unset, list[ChatSessionsListFieldItem]]):
+        field (Union[Unset, list[ChatSessionFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -167,13 +167,13 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ChatSessionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ChatSessionFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ChatSession"]:
     """
     Args:
-        field (Union[Unset, list[ChatSessionsListFieldItem]]):
+        field (Union[Unset, list[ChatSessionFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -198,7 +198,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ChatSessionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ChatSessionFieldEnum]] = UNSET,
 ) -> list["ChatSession"]:
     """Get All Pages
 
@@ -208,7 +208,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[ChatSessionsListFieldItem]]):
+        field (Union[Unset, list[ChatSessionFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -271,7 +271,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[ChatSessionsListFieldItem]] = UNSET,
+    field: Union[Unset, list[ChatSessionFieldEnum]] = UNSET,
 ) -> list["ChatSession"]:
     """Get All Pages (Async)
 
@@ -281,7 +281,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[ChatSessionsListFieldItem]]):
+        field (Union[Unset, list[ChatSessionFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

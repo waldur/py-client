@@ -5,17 +5,17 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.broadcast_messages_count_o_item import BroadcastMessagesCountOItem
-from ...models.broadcast_messages_count_state import BroadcastMessagesCountState
+from ...models.broadcast_message_o_enum import BroadcastMessageOEnum
+from ...models.broadcast_message_state_enum import BroadcastMessageStateEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    o: Union[Unset, list[BroadcastMessagesCountOItem]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, BroadcastMessagesCountState] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -81,19 +81,19 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[BroadcastMessagesCountOItem]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, BroadcastMessagesCountState] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[BroadcastMessagesCountOItem]]):
+        o (Union[Unset, list[BroadcastMessageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, BroadcastMessagesCountState]):
+        state (Union[Unset, BroadcastMessageStateEnum]):
         subject (Union[Unset, str]):
 
     Raises:
@@ -122,19 +122,19 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[BroadcastMessagesCountOItem]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, BroadcastMessagesCountState] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[BroadcastMessagesCountOItem]]):
+        o (Union[Unset, list[BroadcastMessageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, BroadcastMessagesCountState]):
+        state (Union[Unset, BroadcastMessageStateEnum]):
         subject (Union[Unset, str]):
 
     Raises:
@@ -158,19 +158,19 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[BroadcastMessagesCountOItem]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, BroadcastMessagesCountState] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[BroadcastMessagesCountOItem]]):
+        o (Union[Unset, list[BroadcastMessageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, BroadcastMessagesCountState]):
+        state (Union[Unset, BroadcastMessageStateEnum]):
         subject (Union[Unset, str]):
 
     Raises:
@@ -197,19 +197,19 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    o: Union[Unset, list[BroadcastMessagesCountOItem]] = UNSET,
+    o: Union[Unset, list[BroadcastMessageOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, BroadcastMessagesCountState] = UNSET,
+    state: Union[Unset, BroadcastMessageStateEnum] = UNSET,
     subject: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        o (Union[Unset, list[BroadcastMessagesCountOItem]]):
+        o (Union[Unset, list[BroadcastMessageOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, BroadcastMessagesCountState]):
+        state (Union[Unset, BroadcastMessageStateEnum]):
         subject (Union[Unset, str]):
 
     Raises:

@@ -6,20 +6,20 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.coi_detection_jobs_count_job_type import CoiDetectionJobsCountJobType
-from ...models.coi_detection_jobs_count_o_item import CoiDetectionJobsCountOItem
-from ...models.coi_detection_jobs_count_state_item import CoiDetectionJobsCountStateItem
+from ...models.coi_detection_job_job_type_enum import COIDetectionJobJobTypeEnum
+from ...models.coi_detection_job_o_enum import COIDetectionJobOEnum
+from ...models.coi_detection_job_state_enum import COIDetectionJobStateEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsCountJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsCountOItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsCountStateItem]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -97,21 +97,21 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsCountJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsCountOItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsCountStateItem]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        job_type (Union[Unset, CoiDetectionJobsCountJobType]):
-        o (Union[Unset, list[CoiDetectionJobsCountOItem]]):
+        job_type (Union[Unset, COIDetectionJobJobTypeEnum]):
+        o (Union[Unset, list[COIDetectionJobOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[CoiDetectionJobsCountStateItem]]):
+        state (Union[Unset, list[COIDetectionJobStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -141,21 +141,21 @@ def sync(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsCountJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsCountOItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsCountStateItem]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        job_type (Union[Unset, CoiDetectionJobsCountJobType]):
-        o (Union[Unset, list[CoiDetectionJobsCountOItem]]):
+        job_type (Union[Unset, COIDetectionJobJobTypeEnum]):
+        o (Union[Unset, list[COIDetectionJobOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[CoiDetectionJobsCountStateItem]]):
+        state (Union[Unset, list[COIDetectionJobStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -180,21 +180,21 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsCountJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsCountOItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsCountStateItem]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        job_type (Union[Unset, CoiDetectionJobsCountJobType]):
-        o (Union[Unset, list[CoiDetectionJobsCountOItem]]):
+        job_type (Union[Unset, COIDetectionJobJobTypeEnum]):
+        o (Union[Unset, list[COIDetectionJobOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[CoiDetectionJobsCountStateItem]]):
+        state (Union[Unset, list[COIDetectionJobStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -222,21 +222,21 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
-    job_type: Union[Unset, CoiDetectionJobsCountJobType] = UNSET,
-    o: Union[Unset, list[CoiDetectionJobsCountOItem]] = UNSET,
+    job_type: Union[Unset, COIDetectionJobJobTypeEnum] = UNSET,
+    o: Union[Unset, list[COIDetectionJobOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    state: Union[Unset, list[CoiDetectionJobsCountStateItem]] = UNSET,
+    state: Union[Unset, list[COIDetectionJobStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
-        job_type (Union[Unset, CoiDetectionJobsCountJobType]):
-        o (Union[Unset, list[CoiDetectionJobsCountOItem]]):
+        job_type (Union[Unset, COIDetectionJobJobTypeEnum]):
+        o (Union[Unset, list[COIDetectionJobOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        state (Union[Unset, list[CoiDetectionJobsCountStateItem]]):
+        state (Union[Unset, list[COIDetectionJobStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

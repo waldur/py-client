@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.reviewer_suggestions_count_o_item import ReviewerSuggestionsCountOItem
-from ...models.reviewer_suggestions_count_status_item import ReviewerSuggestionsCountStatusItem
+from ...models.reviewer_suggestion_o_enum import ReviewerSuggestionOEnum
+from ...models.reviewer_suggestion_status_enum import ReviewerSuggestionStatusEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -15,11 +15,11 @@ def _get_kwargs(
     *,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsCountOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsCountStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -99,22 +99,22 @@ def sync_detailed(
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsCountOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsCountStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[ReviewerSuggestionsCountOItem]]):
+        o (Union[Unset, list[ReviewerSuggestionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[ReviewerSuggestionsCountStatusItem]]):
+        status (Union[Unset, list[ReviewerSuggestionStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -146,22 +146,22 @@ def sync(
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsCountOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsCountStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[ReviewerSuggestionsCountOItem]]):
+        o (Union[Unset, list[ReviewerSuggestionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[ReviewerSuggestionsCountStatusItem]]):
+        status (Union[Unset, list[ReviewerSuggestionStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -188,22 +188,22 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsCountOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsCountStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[ReviewerSuggestionsCountOItem]]):
+        o (Union[Unset, list[ReviewerSuggestionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[ReviewerSuggestionsCountStatusItem]]):
+        status (Union[Unset, list[ReviewerSuggestionStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -233,22 +233,22 @@ async def asyncio(
     client: AuthenticatedClient,
     call_uuid: Union[Unset, UUID] = UNSET,
     min_affinity_score: Union[Unset, float] = UNSET,
-    o: Union[Unset, list[ReviewerSuggestionsCountOItem]] = UNSET,
+    o: Union[Unset, list[ReviewerSuggestionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
-    status: Union[Unset, list[ReviewerSuggestionsCountStatusItem]] = UNSET,
+    status: Union[Unset, list[ReviewerSuggestionStatusEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         call_uuid (Union[Unset, UUID]):
         min_affinity_score (Union[Unset, float]):
-        o (Union[Unset, list[ReviewerSuggestionsCountOItem]]):
+        o (Union[Unset, list[ReviewerSuggestionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
-        status (Union[Unset, list[ReviewerSuggestionsCountStatusItem]]):
+        status (Union[Unset, list[ReviewerSuggestionStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

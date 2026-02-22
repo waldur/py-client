@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_backup import OpenStackBackup
-from ...models.openstack_backups_retrieve_field_item import OpenstackBackupsRetrieveFieldItem
+from ...models.open_stack_backup_field_enum import OpenStackBackupFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[OpenstackBackupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -63,7 +63,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackBackupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
 ) -> Response[OpenStackBackup]:
     """Get backup details
 
@@ -71,7 +71,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackBackupsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackBackupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -97,7 +97,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackBackupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
 ) -> OpenStackBackup:
     """Get backup details
 
@@ -105,7 +105,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackBackupsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackBackupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,7 +126,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackBackupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
 ) -> Response[OpenStackBackup]:
     """Get backup details
 
@@ -134,7 +134,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackBackupsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackBackupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -158,7 +158,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenstackBackupsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[OpenStackBackupFieldEnum]] = UNSET,
 ) -> OpenStackBackup:
     """Get backup details
 
@@ -166,7 +166,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[OpenstackBackupsRetrieveFieldItem]]):
+        field (Union[Unset, list[OpenStackBackupFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

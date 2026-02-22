@@ -19,14 +19,16 @@ class ChatRequestRequest:
         thread_uuid (Union[None, UUID, Unset]): Existing thread UUID. If omitted, a new thread is created.
         update_thread_name (Union[None, UUID, Unset]): Thread UUID whose name should be set to the assistant's response.
             Skips message persistence for this call.
-        mode (Union[ChatRequestModeEnum, None, Unset]): 'reload': replace the last assistant response. Omit for normal
-            new-message behavior.
+        mode (Union[ChatRequestModeEnum, None, Unset]): 'reload': replace the last assistant response. 'edit': edit a
+            user message and re-stream. Omit for normal new-message behavior.
+        edit_message_uuid (Union[None, UUID, Unset]): UUID of the user message to edit. Required when mode='edit'.
     """
 
     input_: str
     thread_uuid: Union[None, UUID, Unset] = UNSET
     update_thread_name: Union[None, UUID, Unset] = UNSET
     mode: Union[ChatRequestModeEnum, None, Unset] = UNSET
+    edit_message_uuid: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,6 +58,14 @@ class ChatRequestRequest:
         else:
             mode = self.mode
 
+        edit_message_uuid: Union[None, Unset, str]
+        if isinstance(self.edit_message_uuid, Unset):
+            edit_message_uuid = UNSET
+        elif isinstance(self.edit_message_uuid, UUID):
+            edit_message_uuid = str(self.edit_message_uuid)
+        else:
+            edit_message_uuid = self.edit_message_uuid
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -69,6 +79,8 @@ class ChatRequestRequest:
             field_dict["update_thread_name"] = update_thread_name
         if mode is not UNSET:
             field_dict["mode"] = mode
+        if edit_message_uuid is not UNSET:
+            field_dict["edit_message_uuid"] = edit_message_uuid
 
         return field_dict
 
@@ -128,11 +140,29 @@ class ChatRequestRequest:
 
         mode = _parse_mode(d.pop("mode", UNSET))
 
+        def _parse_edit_message_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                edit_message_uuid_type_0 = UUID(data)
+
+                return edit_message_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        edit_message_uuid = _parse_edit_message_uuid(d.pop("edit_message_uuid", UNSET))
+
         chat_request_request = cls(
             input_=input_,
             thread_uuid=thread_uuid,
             update_thread_name=update_thread_name,
             mode=mode,
+            edit_message_uuid=edit_message_uuid,
         )
 
         chat_request_request.additional_properties = d

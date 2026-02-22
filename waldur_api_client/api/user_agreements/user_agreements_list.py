@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.agreement_type_enum import AgreementTypeEnum
 from ...models.user_agreement import UserAgreement
-from ...models.user_agreements_list_agreement_type import UserAgreementsListAgreementType
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    agreement_type: Union[Unset, UserAgreementsListAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -72,7 +72,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    agreement_type: Union[Unset, UserAgreementsListAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -83,7 +83,7 @@ def sync_detailed(
     agreement type and language with fallback behavior.
 
     Args:
-        agreement_type (Union[Unset, UserAgreementsListAgreementType]):
+        agreement_type (Union[Unset, AgreementTypeEnum]):
         language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -113,7 +113,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    agreement_type: Union[Unset, UserAgreementsListAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -124,7 +124,7 @@ def sync(
     agreement type and language with fallback behavior.
 
     Args:
-        agreement_type (Union[Unset, UserAgreementsListAgreementType]):
+        agreement_type (Union[Unset, AgreementTypeEnum]):
         language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -149,7 +149,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    agreement_type: Union[Unset, UserAgreementsListAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -160,7 +160,7 @@ async def asyncio_detailed(
     agreement type and language with fallback behavior.
 
     Args:
-        agreement_type (Union[Unset, UserAgreementsListAgreementType]):
+        agreement_type (Union[Unset, AgreementTypeEnum]):
         language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -188,7 +188,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    agreement_type: Union[Unset, UserAgreementsListAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -199,7 +199,7 @@ async def asyncio(
     agreement type and language with fallback behavior.
 
     Args:
-        agreement_type (Union[Unset, UserAgreementsListAgreementType]):
+        agreement_type (Union[Unset, AgreementTypeEnum]):
         language (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -226,7 +226,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    agreement_type: Union[Unset, UserAgreementsListAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
 ) -> list["UserAgreement"]:
     """Get All Pages
@@ -237,7 +237,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        agreement_type (Union[Unset, UserAgreementsListAgreementType]):
+        agreement_type (Union[Unset, AgreementTypeEnum]):
         language (Union[Unset, str]):
 
     Raises:
@@ -302,7 +302,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    agreement_type: Union[Unset, UserAgreementsListAgreementType] = UNSET,
+    agreement_type: Union[Unset, AgreementTypeEnum] = UNSET,
     language: Union[Unset, str] = UNSET,
 ) -> list["UserAgreement"]:
     """Get All Pages (Async)
@@ -313,7 +313,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        agreement_type (Union[Unset, UserAgreementsListAgreementType]):
+        agreement_type (Union[Unset, AgreementTypeEnum]):
         language (Union[Unset, str]):
 
     Raises:

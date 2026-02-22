@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.firecrest_job import FirecrestJob
-from ...models.slurm_jobs_retrieve_field_item import SlurmJobsRetrieveFieldItem
+from ...models.firecrest_job_field_enum import FirecrestJobFieldEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[SlurmJobsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[FirecrestJobFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -61,12 +61,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SlurmJobsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[FirecrestJobFieldEnum]] = UNSET,
 ) -> Response[FirecrestJob]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SlurmJobsRetrieveFieldItem]]):
+        field (Union[Unset, list[FirecrestJobFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -92,12 +92,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SlurmJobsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[FirecrestJobFieldEnum]] = UNSET,
 ) -> FirecrestJob:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SlurmJobsRetrieveFieldItem]]):
+        field (Union[Unset, list[FirecrestJobFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -118,12 +118,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SlurmJobsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[FirecrestJobFieldEnum]] = UNSET,
 ) -> Response[FirecrestJob]:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SlurmJobsRetrieveFieldItem]]):
+        field (Union[Unset, list[FirecrestJobFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -147,12 +147,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[SlurmJobsRetrieveFieldItem]] = UNSET,
+    field: Union[Unset, list[FirecrestJobFieldEnum]] = UNSET,
 ) -> FirecrestJob:
     """
     Args:
         uuid (UUID):
-        field (Union[Unset, list[SlurmJobsRetrieveFieldItem]]):
+        field (Union[Unset, list[FirecrestJobFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

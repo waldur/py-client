@@ -6,16 +6,15 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.checklist import Checklist
-from ...models.checklists_admin_list_checklist_type import ChecklistsAdminListChecklistType
-from ...models.checklists_admin_list_checklist_type_in_item import ChecklistsAdminListChecklistTypeInItem
+from ...models.checklist_type_enum import ChecklistTypeEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -80,15 +79,15 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Checklist"]]:
     """
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminListChecklistType]):
-        checklist_type_in (Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
+        checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -117,15 +116,15 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Checklist"]:
     """
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminListChecklistType]):
-        checklist_type_in (Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
+        checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -149,15 +148,15 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Checklist"]]:
     """
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminListChecklistType]):
-        checklist_type_in (Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
+        checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -184,15 +183,15 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Checklist"]:
     """
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminListChecklistType]):
-        checklist_type_in (Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
+        checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -218,8 +217,8 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
 ) -> list["Checklist"]:
     """Get All Pages
 
@@ -229,8 +228,8 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminListChecklistType]):
-        checklist_type_in (Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
+        checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -294,8 +293,8 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminListChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
 ) -> list["Checklist"]:
     """Get All Pages (Async)
 
@@ -305,8 +304,8 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminListChecklistType]):
-        checklist_type_in (Union[Unset, list[ChecklistsAdminListChecklistTypeInItem]]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
+        checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

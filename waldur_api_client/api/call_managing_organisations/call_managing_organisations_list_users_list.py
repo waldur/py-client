@@ -6,11 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.call_managing_organisations_list_users_list_field_item import (
-    CallManagingOrganisationsListUsersListFieldItem,
-)
-from ...models.call_managing_organisations_list_users_list_o_item import CallManagingOrganisationsListUsersListOItem
 from ...models.user_role_details import UserRoleDetails
+from ...models.user_role_details_field_enum import UserRoleDetailsFieldEnum
+from ...models.user_role_details_o_enum import UserRoleDetailsOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -18,10 +16,10 @@ from ...utils import parse_link_header
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[UserRoleDetailsFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListUsersListOItem]] = UNSET,
+    o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role: Union[Unset, UUID] = UNSET,
@@ -118,10 +116,10 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[UserRoleDetailsFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListUsersListOItem]] = UNSET,
+    o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role: Union[Unset, UUID] = UNSET,
@@ -138,10 +136,10 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]]):
+        field (Union[Unset, list[UserRoleDetailsFieldEnum]]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[CallManagingOrganisationsListUsersListOItem]]):
+        o (Union[Unset, list[UserRoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role (Union[Unset, UUID]):
@@ -186,10 +184,10 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[UserRoleDetailsFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListUsersListOItem]] = UNSET,
+    o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role: Union[Unset, UUID] = UNSET,
@@ -206,10 +204,10 @@ def sync(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]]):
+        field (Union[Unset, list[UserRoleDetailsFieldEnum]]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[CallManagingOrganisationsListUsersListOItem]]):
+        o (Union[Unset, list[UserRoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role (Union[Unset, UUID]):
@@ -249,10 +247,10 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[UserRoleDetailsFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListUsersListOItem]] = UNSET,
+    o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role: Union[Unset, UUID] = UNSET,
@@ -269,10 +267,10 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]]):
+        field (Union[Unset, list[UserRoleDetailsFieldEnum]]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[CallManagingOrganisationsListUsersListOItem]]):
+        o (Union[Unset, list[UserRoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role (Union[Unset, UUID]):
@@ -315,10 +313,10 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[UserRoleDetailsFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListUsersListOItem]] = UNSET,
+    o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     role: Union[Unset, UUID] = UNSET,
@@ -335,10 +333,10 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]]):
+        field (Union[Unset, list[UserRoleDetailsFieldEnum]]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[CallManagingOrganisationsListUsersListOItem]]):
+        o (Union[Unset, list[UserRoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         role (Union[Unset, UUID]):
@@ -380,10 +378,10 @@ def sync_all(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[UserRoleDetailsFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListUsersListOItem]] = UNSET,
+    o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -400,10 +398,10 @@ def sync_all(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]]):
+        field (Union[Unset, list[UserRoleDetailsFieldEnum]]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[CallManagingOrganisationsListUsersListOItem]]):
+        o (Union[Unset, list[UserRoleDetailsOEnum]]):
         role (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
@@ -483,10 +481,10 @@ async def asyncio_all(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]] = UNSET,
+    field: Union[Unset, list[UserRoleDetailsFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     native_name: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[CallManagingOrganisationsListUsersListOItem]] = UNSET,
+    o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     role: Union[Unset, UUID] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
@@ -503,10 +501,10 @@ async def asyncio_all(
 
     Args:
         uuid (UUID):
-        field (Union[Unset, list[CallManagingOrganisationsListUsersListFieldItem]]):
+        field (Union[Unset, list[UserRoleDetailsFieldEnum]]):
         full_name (Union[Unset, str]):
         native_name (Union[Unset, str]):
-        o (Union[Unset, list[CallManagingOrganisationsListUsersListOItem]]):
+        o (Union[Unset, list[UserRoleDetailsOEnum]]):
         role (Union[Unset, UUID]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):

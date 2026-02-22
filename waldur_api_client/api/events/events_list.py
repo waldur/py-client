@@ -6,9 +6,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.backend_resource_req_o_enum import BackendResourceReqOEnum
 from ...models.event import Event
-from ...models.events_list_field_item import EventsListFieldItem
-from ...models.events_list_o_item import EventsListOItem
+from ...models.event_field_enum import EventFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -20,9 +20,9 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     event_type: Union[Unset, list[str]] = UNSET,
     feature: Union[Unset, list[str]] = UNSET,
-    field: Union[Unset, list[EventsListFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EventsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -131,9 +131,9 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     event_type: Union[Unset, list[str]] = UNSET,
     feature: Union[Unset, list[str]] = UNSET,
-    field: Union[Unset, list[EventsListFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EventsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -147,9 +147,9 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         event_type (Union[Unset, list[str]]):
         feature (Union[Unset, list[str]]):
-        field (Union[Unset, list[EventsListFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[EventsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -195,9 +195,9 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     event_type: Union[Unset, list[str]] = UNSET,
     feature: Union[Unset, list[str]] = UNSET,
-    field: Union[Unset, list[EventsListFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EventsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -211,9 +211,9 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         event_type (Union[Unset, list[str]]):
         feature (Union[Unset, list[str]]):
-        field (Union[Unset, list[EventsListFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[EventsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -254,9 +254,9 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     event_type: Union[Unset, list[str]] = UNSET,
     feature: Union[Unset, list[str]] = UNSET,
-    field: Union[Unset, list[EventsListFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EventsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -270,9 +270,9 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         event_type (Union[Unset, list[str]]):
         feature (Union[Unset, list[str]]):
-        field (Union[Unset, list[EventsListFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[EventsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -316,9 +316,9 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     event_type: Union[Unset, list[str]] = UNSET,
     feature: Union[Unset, list[str]] = UNSET,
-    field: Union[Unset, list[EventsListFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EventsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -332,9 +332,9 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         event_type (Union[Unset, list[str]]):
         feature (Union[Unset, list[str]]):
-        field (Union[Unset, list[EventsListFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[EventsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -377,9 +377,9 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     event_type: Union[Unset, list[str]] = UNSET,
     feature: Union[Unset, list[str]] = UNSET,
-    field: Union[Unset, list[EventsListFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EventsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -397,9 +397,9 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         event_type (Union[Unset, list[str]]):
         feature (Union[Unset, list[str]]):
-        field (Union[Unset, list[EventsListFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[EventsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         project_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -480,9 +480,9 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     event_type: Union[Unset, list[str]] = UNSET,
     feature: Union[Unset, list[str]] = UNSET,
-    field: Union[Unset, list[EventsListFieldItem]] = UNSET,
+    field: Union[Unset, list[EventFieldEnum]] = UNSET,
     message: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[EventsListOItem]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -500,9 +500,9 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         event_type (Union[Unset, list[str]]):
         feature (Union[Unset, list[str]]):
-        field (Union[Unset, list[EventsListFieldItem]]):
+        field (Union[Unset, list[EventFieldEnum]]):
         message (Union[Unset, str]):
-        o (Union[Unset, list[EventsListOItem]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         project_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):

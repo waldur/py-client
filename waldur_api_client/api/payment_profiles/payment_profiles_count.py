@@ -6,20 +6,20 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.payment_profiles_count_o_item import PaymentProfilesCountOItem
-from ...models.payment_profiles_count_payment_type_item import PaymentProfilesCountPaymentTypeItem
+from ...models.payment_profile_o_enum import PaymentProfileOEnum
+from ...models.payment_type_enum import PaymentTypeEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesCountOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesCountPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -95,23 +95,23 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesCountOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesCountPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[PaymentProfilesCountOItem]]):
+        o (Union[Unset, list[PaymentProfileOEnum]]):
         organization (Union[Unset, str]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        payment_type (Union[Unset, list[PaymentProfilesCountPaymentTypeItem]]):
+        payment_type (Union[Unset, list[PaymentTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -142,23 +142,23 @@ def sync(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesCountOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesCountPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[PaymentProfilesCountOItem]]):
+        o (Union[Unset, list[PaymentProfileOEnum]]):
         organization (Union[Unset, str]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        payment_type (Union[Unset, list[PaymentProfilesCountPaymentTypeItem]]):
+        payment_type (Union[Unset, list[PaymentTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -184,23 +184,23 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesCountOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesCountPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[PaymentProfilesCountOItem]]):
+        o (Union[Unset, list[PaymentProfileOEnum]]):
         organization (Union[Unset, str]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        payment_type (Union[Unset, list[PaymentProfilesCountPaymentTypeItem]]):
+        payment_type (Union[Unset, list[PaymentTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -229,23 +229,23 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     is_active: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[PaymentProfilesCountOItem]] = UNSET,
+    o: Union[Unset, list[PaymentProfileOEnum]] = UNSET,
     organization: Union[Unset, str] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    payment_type: Union[Unset, list[PaymentProfilesCountPaymentTypeItem]] = UNSET,
+    payment_type: Union[Unset, list[PaymentTypeEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         is_active (Union[Unset, bool]):
-        o (Union[Unset, list[PaymentProfilesCountOItem]]):
+        o (Union[Unset, list[PaymentProfileOEnum]]):
         organization (Union[Unset, str]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        payment_type (Union[Unset, list[PaymentProfilesCountPaymentTypeItem]]):
+        payment_type (Union[Unset, list[PaymentTypeEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

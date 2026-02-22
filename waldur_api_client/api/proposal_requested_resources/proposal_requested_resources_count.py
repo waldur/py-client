@@ -7,14 +7,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.proposal_requested_resources_count_o_item import ProposalRequestedResourcesCountOItem
+from ...models.provider_requested_resource_o_enum import ProviderRequestedResourceOEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[ProposalRequestedResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -106,7 +106,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[ProposalRequestedResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -120,7 +120,7 @@ def sync_detailed(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[ProposalRequestedResourcesCountOItem]]):
+        o (Union[Unset, list[ProviderRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -162,7 +162,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[ProposalRequestedResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -176,7 +176,7 @@ def sync(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[ProposalRequestedResourcesCountOItem]]):
+        o (Union[Unset, list[ProviderRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -213,7 +213,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[ProposalRequestedResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -227,7 +227,7 @@ async def asyncio_detailed(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[ProposalRequestedResourcesCountOItem]]):
+        o (Union[Unset, list[ProviderRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -267,7 +267,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[ProposalRequestedResourcesCountOItem]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -281,7 +281,7 @@ async def asyncio(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[ProposalRequestedResourcesCountOItem]]):
+        o (Union[Unset, list[ProviderRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):

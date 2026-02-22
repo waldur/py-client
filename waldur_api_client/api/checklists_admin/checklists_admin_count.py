@@ -5,15 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.checklists_admin_count_checklist_type import ChecklistsAdminCountChecklistType
-from ...models.checklists_admin_count_checklist_type_in_item import ChecklistsAdminCountChecklistTypeInItem
+from ...models.checklist_type_enum import ChecklistTypeEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    checklist_type: Union[Unset, ChecklistsAdminCountChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminCountChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -78,16 +77,16 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminCountChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminCountChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminCountChecklistType]):
-        checklist_type_in (Union[Unset, list[ChecklistsAdminCountChecklistTypeInItem]]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
+        checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -116,16 +115,16 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminCountChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminCountChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminCountChecklistType]):
-        checklist_type_in (Union[Unset, list[ChecklistsAdminCountChecklistTypeInItem]]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
+        checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -149,16 +148,16 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminCountChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminCountChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminCountChecklistType]):
-        checklist_type_in (Union[Unset, list[ChecklistsAdminCountChecklistTypeInItem]]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
+        checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -185,16 +184,16 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    checklist_type: Union[Unset, ChecklistsAdminCountChecklistType] = UNSET,
-    checklist_type_in: Union[Unset, list[ChecklistsAdminCountChecklistTypeInItem]] = UNSET,
+    checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
+    checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        checklist_type (Union[Unset, ChecklistsAdminCountChecklistType]):
-        checklist_type_in (Union[Unset, list[ChecklistsAdminCountChecklistTypeInItem]]):
+        checklist_type (Union[Unset, ChecklistTypeEnum]):
+        checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 

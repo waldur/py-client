@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.coi_disclosures_count_o_item import CoiDisclosuresCountOItem
+from ...models.coi_disclosure_form_o_enum import COIDisclosureFormOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     call_uuid: Union[Unset, UUID] = UNSET,
     certified: Union[Unset, bool] = UNSET,
     is_current: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CoiDisclosuresCountOItem]] = UNSET,
+    o: Union[Unset, list[COIDisclosureFormOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
@@ -92,7 +92,7 @@ def sync_detailed(
     call_uuid: Union[Unset, UUID] = UNSET,
     certified: Union[Unset, bool] = UNSET,
     is_current: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CoiDisclosuresCountOItem]] = UNSET,
+    o: Union[Unset, list[COIDisclosureFormOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
@@ -103,7 +103,7 @@ def sync_detailed(
         call_uuid (Union[Unset, UUID]):
         certified (Union[Unset, bool]):
         is_current (Union[Unset, bool]):
-        o (Union[Unset, list[CoiDisclosuresCountOItem]]):
+        o (Union[Unset, list[COIDisclosureFormOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
@@ -139,7 +139,7 @@ def sync(
     call_uuid: Union[Unset, UUID] = UNSET,
     certified: Union[Unset, bool] = UNSET,
     is_current: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CoiDisclosuresCountOItem]] = UNSET,
+    o: Union[Unset, list[COIDisclosureFormOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
@@ -150,7 +150,7 @@ def sync(
         call_uuid (Union[Unset, UUID]):
         certified (Union[Unset, bool]):
         is_current (Union[Unset, bool]):
-        o (Union[Unset, list[CoiDisclosuresCountOItem]]):
+        o (Union[Unset, list[COIDisclosureFormOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
@@ -181,7 +181,7 @@ async def asyncio_detailed(
     call_uuid: Union[Unset, UUID] = UNSET,
     certified: Union[Unset, bool] = UNSET,
     is_current: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CoiDisclosuresCountOItem]] = UNSET,
+    o: Union[Unset, list[COIDisclosureFormOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
@@ -192,7 +192,7 @@ async def asyncio_detailed(
         call_uuid (Union[Unset, UUID]):
         certified (Union[Unset, bool]):
         is_current (Union[Unset, bool]):
-        o (Union[Unset, list[CoiDisclosuresCountOItem]]):
+        o (Union[Unset, list[COIDisclosureFormOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):
@@ -226,7 +226,7 @@ async def asyncio(
     call_uuid: Union[Unset, UUID] = UNSET,
     certified: Union[Unset, bool] = UNSET,
     is_current: Union[Unset, bool] = UNSET,
-    o: Union[Unset, list[CoiDisclosuresCountOItem]] = UNSET,
+    o: Union[Unset, list[COIDisclosureFormOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
@@ -237,7 +237,7 @@ async def asyncio(
         call_uuid (Union[Unset, UUID]):
         certified (Union[Unset, bool]):
         is_current (Union[Unset, bool]):
-        o (Union[Unset, list[CoiDisclosuresCountOItem]]):
+        o (Union[Unset, list[COIDisclosureFormOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         reviewer_uuid (Union[Unset, UUID]):

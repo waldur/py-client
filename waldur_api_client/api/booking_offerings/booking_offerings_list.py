@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.booking_offerings_list_field_item import BookingOfferingsListFieldItem
 from ...models.offering import Offering
+from ...models.offering_field_enum import OfferingFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    field: Union[Unset, list[BookingOfferingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -72,13 +72,13 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingOfferingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Offering"]]:
     """
     Args:
-        field (Union[Unset, list[BookingOfferingsListFieldItem]]):
+        field (Union[Unset, list[OfferingFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -106,13 +106,13 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingOfferingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Offering"]:
     """
     Args:
-        field (Union[Unset, list[BookingOfferingsListFieldItem]]):
+        field (Union[Unset, list[OfferingFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -135,13 +135,13 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingOfferingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Offering"]]:
     """
     Args:
-        field (Union[Unset, list[BookingOfferingsListFieldItem]]):
+        field (Union[Unset, list[OfferingFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -167,13 +167,13 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingOfferingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Offering"]:
     """
     Args:
-        field (Union[Unset, list[BookingOfferingsListFieldItem]]):
+        field (Union[Unset, list[OfferingFieldEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -198,7 +198,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingOfferingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
 ) -> list["Offering"]:
     """Get All Pages
 
@@ -208,7 +208,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[BookingOfferingsListFieldItem]]):
+        field (Union[Unset, list[OfferingFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -271,7 +271,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[BookingOfferingsListFieldItem]] = UNSET,
+    field: Union[Unset, list[OfferingFieldEnum]] = UNSET,
 ) -> list["Offering"]:
     """Get All Pages (Async)
 
@@ -281,7 +281,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        field (Union[Unset, list[BookingOfferingsListFieldItem]]):
+        field (Union[Unset, list[OfferingFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
