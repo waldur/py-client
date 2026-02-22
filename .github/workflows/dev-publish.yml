@@ -1,56 +1,63 @@
-name: Publish to PyPI
+name: Publish dev release to PyPI
 
 on:
   push:
-    tags:
-      - '[0-9]+.[0-9]+.[0-9]+'
+    branches:
+      - main
+    tags-ignore:
+      - '*'
 
-  release:
-    types: [published]
-
-  # Optionally, allow manual triggering
   workflow_dispatch:
 
 jobs:
 
-  publish:
+  publish-dev:
     runs-on: ubuntu-latest
     environment: pypi
     permissions:
       id-token: write  # Required for trusted publishing
-    
+
     steps:
     - name: Check out repository
       uses: actions/checkout@v4
-      
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.x'
-        
+
     - name: Install Poetry
       uses: snok/install-poetry@v1
       with:
         version: latest
         virtualenvs-create: true
         virtualenvs-in-project: true
-        
+
     - name: Load cached venv
       id: cached-poetry-dependencies
       uses: actions/cache@v3
       with:
         path: .venv
         key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
-        
+
     - name: Install dependencies
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       run: poetry install --no-interaction --no-root
-      
+
     - name: Install project
       run: poetry install --no-interaction
-        
+
+    - name: Set dev version
+      run: |
+        CURRENT=$(poetry version -s)
+        IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
+        NEXT_PATCH=$((PATCH + 1))
+        DEV_VERSION="${MAJOR}.${MINOR}.${NEXT_PATCH}.dev${{ github.run_number }}"
+        echo "Publishing dev version: $DEV_VERSION"
+        poetry version "$DEV_VERSION"
+
     - name: Build package
       run: poetry build
-      
+
     - name: Publish package distributions to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
