@@ -59,7 +59,10 @@ def sync_detailed(
 ) -> Response[MarketplaceResourcesSuggestNameResponse200]:
     """Suggest a resource name
 
-     Generates a suggested name for a new resource based on the project and offering.
+     Generates a suggested name for a new resource based on the project and offering. If the offering has
+    a `resource_name_pattern` in `plugin_options`, it is used as a Python format string with variables:
+    `{customer_name}`, `{customer_slug}`, `{project_name}`, `{project_slug}`, `{offering_name}`,
+    `{offering_slug}`, `{plan_name}`, `{counter}`, and `{attributes[KEY]}` for any order form value.
 
     Args:
         body (ResourceSuggestNameRequest):
@@ -90,7 +93,10 @@ def sync(
 ) -> MarketplaceResourcesSuggestNameResponse200:
     """Suggest a resource name
 
-     Generates a suggested name for a new resource based on the project and offering.
+     Generates a suggested name for a new resource based on the project and offering. If the offering has
+    a `resource_name_pattern` in `plugin_options`, it is used as a Python format string with variables:
+    `{customer_name}`, `{customer_slug}`, `{project_name}`, `{project_slug}`, `{offering_name}`,
+    `{offering_slug}`, `{plan_name}`, `{counter}`, and `{attributes[KEY]}` for any order form value.
 
     Args:
         body (ResourceSuggestNameRequest):
@@ -116,7 +122,10 @@ async def asyncio_detailed(
 ) -> Response[MarketplaceResourcesSuggestNameResponse200]:
     """Suggest a resource name
 
-     Generates a suggested name for a new resource based on the project and offering.
+     Generates a suggested name for a new resource based on the project and offering. If the offering has
+    a `resource_name_pattern` in `plugin_options`, it is used as a Python format string with variables:
+    `{customer_name}`, `{customer_slug}`, `{project_name}`, `{project_slug}`, `{offering_name}`,
+    `{offering_slug}`, `{plan_name}`, `{counter}`, and `{attributes[KEY]}` for any order form value.
 
     Args:
         body (ResourceSuggestNameRequest):
@@ -145,7 +154,10 @@ async def asyncio(
 ) -> MarketplaceResourcesSuggestNameResponse200:
     """Suggest a resource name
 
-     Generates a suggested name for a new resource based on the project and offering.
+     Generates a suggested name for a new resource based on the project and offering. If the offering has
+    a `resource_name_pattern` in `plugin_options`, it is used as a Python format string with variables:
+    `{customer_name}`, `{customer_slug}`, `{project_name}`, `{project_slug}`, `{offering_name}`,
+    `{offering_slug}`, `{plan_name}`, `{counter}`, and `{attributes[KEY]}` for any order form value.
 
     Args:
         body (ResourceSuggestNameRequest):

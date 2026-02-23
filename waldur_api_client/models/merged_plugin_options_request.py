@@ -53,6 +53,9 @@ class MergedPluginOptionsRequest:
             providers or consumers exchange messages on pending orders.
         restrict_deletion_with_active_resources (Union[Unset, bool]): If set to True, offering cannot be deleted while
             it has non-terminated resources.
+        resource_name_pattern (Union[Unset, str]): Python format string for generating resource names. Available
+            variables: {customer_name}, {customer_slug}, {project_name}, {project_slug}, {offering_name}, {offering_slug},
+            {plan_name}, {counter}, {attributes[KEY]}.
         default_internal_network_mtu (Union[Unset, int]): If set, it will be used as a default MTU for the first network
             in a tenant
         max_instances (Union[Unset, int]): Default limit for number of instances in OpenStack tenant
@@ -154,6 +157,7 @@ class MergedPluginOptionsRequest:
     enable_provider_consumer_messaging: Union[Unset, bool] = UNSET
     notify_about_provider_consumer_messages: Union[Unset, bool] = UNSET
     restrict_deletion_with_active_resources: Union[Unset, bool] = UNSET
+    resource_name_pattern: Union[Unset, str] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
     max_volumes: Union[Unset, int] = UNSET
@@ -253,6 +257,8 @@ class MergedPluginOptionsRequest:
         notify_about_provider_consumer_messages = self.notify_about_provider_consumer_messages
 
         restrict_deletion_with_active_resources = self.restrict_deletion_with_active_resources
+
+        resource_name_pattern = self.resource_name_pattern
 
         default_internal_network_mtu = self.default_internal_network_mtu
 
@@ -419,6 +425,8 @@ class MergedPluginOptionsRequest:
             field_dict["notify_about_provider_consumer_messages"] = notify_about_provider_consumer_messages
         if restrict_deletion_with_active_resources is not UNSET:
             field_dict["restrict_deletion_with_active_resources"] = restrict_deletion_with_active_resources
+        if resource_name_pattern is not UNSET:
+            field_dict["resource_name_pattern"] = resource_name_pattern
         if default_internal_network_mtu is not UNSET:
             field_dict["default_internal_network_mtu"] = default_internal_network_mtu
         if max_instances is not UNSET:
@@ -582,6 +590,8 @@ class MergedPluginOptionsRequest:
         notify_about_provider_consumer_messages = d.pop("notify_about_provider_consumer_messages", UNSET)
 
         restrict_deletion_with_active_resources = d.pop("restrict_deletion_with_active_resources", UNSET)
+
+        resource_name_pattern = d.pop("resource_name_pattern", UNSET)
 
         default_internal_network_mtu = d.pop("default_internal_network_mtu", UNSET)
 
@@ -747,6 +757,7 @@ class MergedPluginOptionsRequest:
             enable_provider_consumer_messaging=enable_provider_consumer_messaging,
             notify_about_provider_consumer_messages=notify_about_provider_consumer_messages,
             restrict_deletion_with_active_resources=restrict_deletion_with_active_resources,
+            resource_name_pattern=resource_name_pattern,
             default_internal_network_mtu=default_internal_network_mtu,
             max_instances=max_instances,
             max_volumes=max_volumes,

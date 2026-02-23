@@ -4,6 +4,20 @@ from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.blank_enum import BlankEnum
+from ..models.defaultidp_enum import DEFAULTIDPEnum
+from ..models.federatedidentitydeactivationpolicy_enum import FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum
+from ..models.fontfamily_enum import FONTFAMILYEnum
+from ..models.loginpagelayout_enum import LOGINPAGELAYOUTEnum
+from ..models.notify_system_enum import NotifySystemEnum
+from ..models.offering_type_enum import OfferingTypeEnum
+from ..models.onboarding_validation_enum import OnboardingValidationEnum
+from ..models.restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
+from ..models.scriptrunmode_enum import SCRIPTRUNMODEEnum
+from ..models.sidebarstyle_enum import SIDEBARSTYLEEnum
+from ..models.user_attribute_enum import UserAttributeEnum
+from ..models.waldursupportactivebackendtype_enum import WALDURSUPPORTACTIVEBACKENDTYPEEnum
+from ..models.zammadarticletype_enum import ZAMMADARTICLETYPEEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -29,7 +43,7 @@ class ConstanceSettings:
         thumbnail_size (Union[Unset, str]):
         anonymous_user_can_view_offerings (Union[Unset, bool]):
         anonymous_user_can_view_plans (Union[Unset, bool]):
-        restricted_offering_visibility_mode (Union[Unset, str]):
+        restricted_offering_visibility_mode (Union[Unset, RESTRICTEDOFFERINGVISIBILITYMODEEnum]):
         allow_service_provider_offering_management (Union[Unset, bool]):
         notify_staff_about_approvals (Union[Unset, bool]):
         notify_about_resource_change (Union[Unset, bool]):
@@ -38,7 +52,7 @@ class ConstanceSettings:
         enable_stale_resource_notifications (Union[Unset, bool]):
         telemetry_url (Union[Unset, str]):
         telemetry_version (Union[Unset, int]):
-        script_run_mode (Union[Unset, str]):
+        script_run_mode (Union[Unset, SCRIPTRUNMODEEnum]):
         docker_client (Union[Unset, str]):
         docker_run_options (Union[Unset, str]):
         docker_script_dir (Union[Unset, str]):
@@ -50,7 +64,7 @@ class ConstanceSettings:
         k8s_job_timeout (Union[Unset, int]):
         enable_strict_check_accepting_invitation (Union[Unset, bool]):
         invitation_disable_multiple_roles (Union[Unset, bool]):
-        default_idp (Union[Unset, str]):
+        default_idp (Union[BlankEnum, DEFAULTIDPEnum, Unset]):
         docs_url (Union[Unset, str]):
         short_page_title (Union[Unset, str]):
         full_page_title (Union[Unset, str]):
@@ -71,11 +85,11 @@ class ConstanceSettings:
         sidebar_logo (Union[None, Unset, str]):
         sidebar_logo_dark (Union[None, Unset, str]):
         sidebar_logo_mobile (Union[None, Unset, str]):
-        sidebar_style (Union[Unset, str]):
-        font_family (Union[Unset, str]):
+        sidebar_style (Union[Unset, SIDEBARSTYLEEnum]):
+        font_family (Union[Unset, FONTFAMILYEnum]):
         login_logo (Union[None, Unset, str]):
         login_logo_multilingual (Union[Unset, ConstanceSettingsLOGINLOGOMULTILINGUAL]):
-        login_page_layout (Union[Unset, str]):
+        login_page_layout (Union[Unset, LOGINPAGELAYOUTEnum]):
         login_page_video_url (Union[Unset, str]):
         login_page_stats (Union[Unset, list[Any]]):
         login_page_carousel_slides (Union[Unset, list[Any]]):
@@ -84,7 +98,7 @@ class ConstanceSettings:
         offering_logo_placeholder (Union[None, Unset, str]):
         disclaimer_area_logo (Union[None, Unset, str]):
         waldur_support_enabled (Union[Unset, bool]):
-        waldur_support_active_backend_type (Union[Unset, str]):
+        waldur_support_active_backend_type (Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum]):
         waldur_support_display_request_type (Union[Unset, bool]):
         atlassian_map_waldur_users_to_servicedesk_agents (Union[Unset, bool]):
         atlassian_api_url (Union[Unset, str]):
@@ -121,7 +135,7 @@ class ConstanceSettings:
         zammad_api_url (Union[Unset, str]):
         zammad_token (Union[Unset, str]):
         zammad_group (Union[Unset, str]):
-        zammad_article_type (Union[Unset, str]):
+        zammad_article_type (Union[Unset, ZAMMADARTICLETYPEEnum]):
         zammad_comment_marker (Union[Unset, str]):
         zammad_comment_prefix (Union[Unset, str]):
         zammad_comment_cooldown_duration (Union[Unset, int]):
@@ -184,17 +198,17 @@ class ConstanceSettings:
         deactivate_user_if_no_roles (Union[Unset, bool]):
         waldur_auth_social_role_claim (Union[Unset, str]):
         remote_eduteams_refresh_token (Union[Unset, str]):
-        default_offering_user_attributes (Union[Unset, list[str]]):
-        invitation_allowed_fields (Union[Unset, list[str]]):
-        enabled_user_profile_attributes (Union[Unset, list[str]]):
-        mandatory_user_attributes (Union[Unset, list[str]]):
+        default_offering_user_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
+        invitation_allowed_fields (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
+        enabled_user_profile_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
+        mandatory_user_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         enforce_mandatory_user_attributes (Union[Unset, bool]):
         maintenance_announcement_notify_before_minutes (Union[Unset, int]):
-        maintenance_announcement_notify_system (Union[Unset, list[str]]):
+        maintenance_announcement_notify_system (Union[Unset, list[Union[BlankEnum, NotifySystemEnum]]]):
         enforce_user_consent_for_offerings (Union[Unset, bool]):
         enforce_offering_user_profile_completeness (Union[Unset, bool]):
-        disabled_offering_types (Union[Unset, list[str]]):
-        onboarding_validation_methods (Union[Unset, list[str]]):
+        disabled_offering_types (Union[Unset, list[Union[BlankEnum, OfferingTypeEnum]]]):
+        onboarding_validation_methods (Union[Unset, list[Union[BlankEnum, OnboardingValidationEnum]]]):
         onboarding_verification_expiry_hours (Union[Unset, int]):
         onboarding_ariregister_base_url (Union[Unset, str]):
         onboarding_ariregister_username (Union[Unset, str]):
@@ -251,8 +265,8 @@ class ConstanceSettings:
         arrow_billing_check_interval_hours (Union[Unset, int]):
         slurm_policy_evaluation_log_retention_days (Union[Unset, int]):
         federated_identity_sync_enabled (Union[Unset, bool]):
-        federated_identity_sync_allowed_attributes (Union[Unset, list[str]]):
-        federated_identity_deactivation_policy (Union[Unset, str]):
+        federated_identity_sync_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
+        federated_identity_deactivation_policy (Union[Unset, FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum]):
         enable_project_digest (Union[Unset, bool]):
     """
 
@@ -268,7 +282,7 @@ class ConstanceSettings:
     thumbnail_size: Union[Unset, str] = UNSET
     anonymous_user_can_view_offerings: Union[Unset, bool] = UNSET
     anonymous_user_can_view_plans: Union[Unset, bool] = UNSET
-    restricted_offering_visibility_mode: Union[Unset, str] = UNSET
+    restricted_offering_visibility_mode: Union[Unset, RESTRICTEDOFFERINGVISIBILITYMODEEnum] = UNSET
     allow_service_provider_offering_management: Union[Unset, bool] = UNSET
     notify_staff_about_approvals: Union[Unset, bool] = UNSET
     notify_about_resource_change: Union[Unset, bool] = UNSET
@@ -277,7 +291,7 @@ class ConstanceSettings:
     enable_stale_resource_notifications: Union[Unset, bool] = UNSET
     telemetry_url: Union[Unset, str] = UNSET
     telemetry_version: Union[Unset, int] = UNSET
-    script_run_mode: Union[Unset, str] = UNSET
+    script_run_mode: Union[Unset, SCRIPTRUNMODEEnum] = UNSET
     docker_client: Union[Unset, str] = UNSET
     docker_run_options: Union[Unset, str] = UNSET
     docker_script_dir: Union[Unset, str] = UNSET
@@ -289,7 +303,7 @@ class ConstanceSettings:
     k8s_job_timeout: Union[Unset, int] = UNSET
     enable_strict_check_accepting_invitation: Union[Unset, bool] = UNSET
     invitation_disable_multiple_roles: Union[Unset, bool] = UNSET
-    default_idp: Union[Unset, str] = UNSET
+    default_idp: Union[BlankEnum, DEFAULTIDPEnum, Unset] = UNSET
     docs_url: Union[Unset, str] = UNSET
     short_page_title: Union[Unset, str] = UNSET
     full_page_title: Union[Unset, str] = UNSET
@@ -310,11 +324,11 @@ class ConstanceSettings:
     sidebar_logo: Union[None, Unset, str] = UNSET
     sidebar_logo_dark: Union[None, Unset, str] = UNSET
     sidebar_logo_mobile: Union[None, Unset, str] = UNSET
-    sidebar_style: Union[Unset, str] = UNSET
-    font_family: Union[Unset, str] = UNSET
+    sidebar_style: Union[Unset, SIDEBARSTYLEEnum] = UNSET
+    font_family: Union[Unset, FONTFAMILYEnum] = UNSET
     login_logo: Union[None, Unset, str] = UNSET
     login_logo_multilingual: Union[Unset, "ConstanceSettingsLOGINLOGOMULTILINGUAL"] = UNSET
-    login_page_layout: Union[Unset, str] = UNSET
+    login_page_layout: Union[Unset, LOGINPAGELAYOUTEnum] = UNSET
     login_page_video_url: Union[Unset, str] = UNSET
     login_page_stats: Union[Unset, list[Any]] = UNSET
     login_page_carousel_slides: Union[Unset, list[Any]] = UNSET
@@ -323,7 +337,7 @@ class ConstanceSettings:
     offering_logo_placeholder: Union[None, Unset, str] = UNSET
     disclaimer_area_logo: Union[None, Unset, str] = UNSET
     waldur_support_enabled: Union[Unset, bool] = UNSET
-    waldur_support_active_backend_type: Union[Unset, str] = UNSET
+    waldur_support_active_backend_type: Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum] = UNSET
     waldur_support_display_request_type: Union[Unset, bool] = UNSET
     atlassian_map_waldur_users_to_servicedesk_agents: Union[Unset, bool] = UNSET
     atlassian_api_url: Union[Unset, str] = UNSET
@@ -360,7 +374,7 @@ class ConstanceSettings:
     zammad_api_url: Union[Unset, str] = UNSET
     zammad_token: Union[Unset, str] = UNSET
     zammad_group: Union[Unset, str] = UNSET
-    zammad_article_type: Union[Unset, str] = UNSET
+    zammad_article_type: Union[Unset, ZAMMADARTICLETYPEEnum] = UNSET
     zammad_comment_marker: Union[Unset, str] = UNSET
     zammad_comment_prefix: Union[Unset, str] = UNSET
     zammad_comment_cooldown_duration: Union[Unset, int] = UNSET
@@ -423,17 +437,17 @@ class ConstanceSettings:
     deactivate_user_if_no_roles: Union[Unset, bool] = UNSET
     waldur_auth_social_role_claim: Union[Unset, str] = UNSET
     remote_eduteams_refresh_token: Union[Unset, str] = UNSET
-    default_offering_user_attributes: Union[Unset, list[str]] = UNSET
-    invitation_allowed_fields: Union[Unset, list[str]] = UNSET
-    enabled_user_profile_attributes: Union[Unset, list[str]] = UNSET
-    mandatory_user_attributes: Union[Unset, list[str]] = UNSET
+    default_offering_user_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
+    invitation_allowed_fields: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
+    enabled_user_profile_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
+    mandatory_user_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     enforce_mandatory_user_attributes: Union[Unset, bool] = UNSET
     maintenance_announcement_notify_before_minutes: Union[Unset, int] = UNSET
-    maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
+    maintenance_announcement_notify_system: Union[Unset, list[Union[BlankEnum, NotifySystemEnum]]] = UNSET
     enforce_user_consent_for_offerings: Union[Unset, bool] = UNSET
     enforce_offering_user_profile_completeness: Union[Unset, bool] = UNSET
-    disabled_offering_types: Union[Unset, list[str]] = UNSET
-    onboarding_validation_methods: Union[Unset, list[str]] = UNSET
+    disabled_offering_types: Union[Unset, list[Union[BlankEnum, OfferingTypeEnum]]] = UNSET
+    onboarding_validation_methods: Union[Unset, list[Union[BlankEnum, OnboardingValidationEnum]]] = UNSET
     onboarding_verification_expiry_hours: Union[Unset, int] = UNSET
     onboarding_ariregister_base_url: Union[Unset, str] = UNSET
     onboarding_ariregister_username: Union[Unset, str] = UNSET
@@ -490,8 +504,8 @@ class ConstanceSettings:
     arrow_billing_check_interval_hours: Union[Unset, int] = UNSET
     slurm_policy_evaluation_log_retention_days: Union[Unset, int] = UNSET
     federated_identity_sync_enabled: Union[Unset, bool] = UNSET
-    federated_identity_sync_allowed_attributes: Union[Unset, list[str]] = UNSET
-    federated_identity_deactivation_policy: Union[Unset, str] = UNSET
+    federated_identity_sync_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
+    federated_identity_deactivation_policy: Union[Unset, FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum] = UNSET
     enable_project_digest: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -520,7 +534,9 @@ class ConstanceSettings:
 
         anonymous_user_can_view_plans = self.anonymous_user_can_view_plans
 
-        restricted_offering_visibility_mode = self.restricted_offering_visibility_mode
+        restricted_offering_visibility_mode: Union[Unset, str] = UNSET
+        if not isinstance(self.restricted_offering_visibility_mode, Unset):
+            restricted_offering_visibility_mode = self.restricted_offering_visibility_mode.value
 
         allow_service_provider_offering_management = self.allow_service_provider_offering_management
 
@@ -538,7 +554,9 @@ class ConstanceSettings:
 
         telemetry_version = self.telemetry_version
 
-        script_run_mode = self.script_run_mode
+        script_run_mode: Union[Unset, str] = UNSET
+        if not isinstance(self.script_run_mode, Unset):
+            script_run_mode = self.script_run_mode.value
 
         docker_client = self.docker_client
 
@@ -562,7 +580,13 @@ class ConstanceSettings:
 
         invitation_disable_multiple_roles = self.invitation_disable_multiple_roles
 
-        default_idp = self.default_idp
+        default_idp: Union[Unset, str]
+        if isinstance(self.default_idp, Unset):
+            default_idp = UNSET
+        elif isinstance(self.default_idp, DEFAULTIDPEnum):
+            default_idp = self.default_idp.value
+        else:
+            default_idp = self.default_idp.value
 
         docs_url = self.docs_url
 
@@ -632,9 +656,13 @@ class ConstanceSettings:
         else:
             sidebar_logo_mobile = self.sidebar_logo_mobile
 
-        sidebar_style = self.sidebar_style
+        sidebar_style: Union[Unset, str] = UNSET
+        if not isinstance(self.sidebar_style, Unset):
+            sidebar_style = self.sidebar_style.value
 
-        font_family = self.font_family
+        font_family: Union[Unset, str] = UNSET
+        if not isinstance(self.font_family, Unset):
+            font_family = self.font_family.value
 
         login_logo: Union[None, Unset, str]
         if isinstance(self.login_logo, Unset):
@@ -646,7 +674,9 @@ class ConstanceSettings:
         if not isinstance(self.login_logo_multilingual, Unset):
             login_logo_multilingual = self.login_logo_multilingual.to_dict()
 
-        login_page_layout = self.login_page_layout
+        login_page_layout: Union[Unset, str] = UNSET
+        if not isinstance(self.login_page_layout, Unset):
+            login_page_layout = self.login_page_layout.value
 
         login_page_video_url = self.login_page_video_url
 
@@ -682,7 +712,9 @@ class ConstanceSettings:
 
         waldur_support_enabled = self.waldur_support_enabled
 
-        waldur_support_active_backend_type = self.waldur_support_active_backend_type
+        waldur_support_active_backend_type: Union[Unset, str] = UNSET
+        if not isinstance(self.waldur_support_active_backend_type, Unset):
+            waldur_support_active_backend_type = self.waldur_support_active_backend_type.value
 
         waldur_support_display_request_type = self.waldur_support_display_request_type
 
@@ -756,7 +788,9 @@ class ConstanceSettings:
 
         zammad_group = self.zammad_group
 
-        zammad_article_type = self.zammad_article_type
+        zammad_article_type: Union[Unset, str] = UNSET
+        if not isinstance(self.zammad_article_type, Unset):
+            zammad_article_type = self.zammad_article_type.value
 
         zammad_comment_marker = self.zammad_comment_marker
 
@@ -892,19 +926,51 @@ class ConstanceSettings:
 
         default_offering_user_attributes: Union[Unset, list[str]] = UNSET
         if not isinstance(self.default_offering_user_attributes, Unset):
-            default_offering_user_attributes = self.default_offering_user_attributes
+            default_offering_user_attributes = []
+            for default_offering_user_attributes_item_data in self.default_offering_user_attributes:
+                default_offering_user_attributes_item: str
+                if isinstance(default_offering_user_attributes_item_data, UserAttributeEnum):
+                    default_offering_user_attributes_item = default_offering_user_attributes_item_data.value
+                else:
+                    default_offering_user_attributes_item = default_offering_user_attributes_item_data.value
+
+                default_offering_user_attributes.append(default_offering_user_attributes_item)
 
         invitation_allowed_fields: Union[Unset, list[str]] = UNSET
         if not isinstance(self.invitation_allowed_fields, Unset):
-            invitation_allowed_fields = self.invitation_allowed_fields
+            invitation_allowed_fields = []
+            for invitation_allowed_fields_item_data in self.invitation_allowed_fields:
+                invitation_allowed_fields_item: str
+                if isinstance(invitation_allowed_fields_item_data, UserAttributeEnum):
+                    invitation_allowed_fields_item = invitation_allowed_fields_item_data.value
+                else:
+                    invitation_allowed_fields_item = invitation_allowed_fields_item_data.value
+
+                invitation_allowed_fields.append(invitation_allowed_fields_item)
 
         enabled_user_profile_attributes: Union[Unset, list[str]] = UNSET
         if not isinstance(self.enabled_user_profile_attributes, Unset):
-            enabled_user_profile_attributes = self.enabled_user_profile_attributes
+            enabled_user_profile_attributes = []
+            for enabled_user_profile_attributes_item_data in self.enabled_user_profile_attributes:
+                enabled_user_profile_attributes_item: str
+                if isinstance(enabled_user_profile_attributes_item_data, UserAttributeEnum):
+                    enabled_user_profile_attributes_item = enabled_user_profile_attributes_item_data.value
+                else:
+                    enabled_user_profile_attributes_item = enabled_user_profile_attributes_item_data.value
+
+                enabled_user_profile_attributes.append(enabled_user_profile_attributes_item)
 
         mandatory_user_attributes: Union[Unset, list[str]] = UNSET
         if not isinstance(self.mandatory_user_attributes, Unset):
-            mandatory_user_attributes = self.mandatory_user_attributes
+            mandatory_user_attributes = []
+            for mandatory_user_attributes_item_data in self.mandatory_user_attributes:
+                mandatory_user_attributes_item: str
+                if isinstance(mandatory_user_attributes_item_data, UserAttributeEnum):
+                    mandatory_user_attributes_item = mandatory_user_attributes_item_data.value
+                else:
+                    mandatory_user_attributes_item = mandatory_user_attributes_item_data.value
+
+                mandatory_user_attributes.append(mandatory_user_attributes_item)
 
         enforce_mandatory_user_attributes = self.enforce_mandatory_user_attributes
 
@@ -912,7 +978,15 @@ class ConstanceSettings:
 
         maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
         if not isinstance(self.maintenance_announcement_notify_system, Unset):
-            maintenance_announcement_notify_system = self.maintenance_announcement_notify_system
+            maintenance_announcement_notify_system = []
+            for maintenance_announcement_notify_system_item_data in self.maintenance_announcement_notify_system:
+                maintenance_announcement_notify_system_item: str
+                if isinstance(maintenance_announcement_notify_system_item_data, NotifySystemEnum):
+                    maintenance_announcement_notify_system_item = maintenance_announcement_notify_system_item_data.value
+                else:
+                    maintenance_announcement_notify_system_item = maintenance_announcement_notify_system_item_data.value
+
+                maintenance_announcement_notify_system.append(maintenance_announcement_notify_system_item)
 
         enforce_user_consent_for_offerings = self.enforce_user_consent_for_offerings
 
@@ -920,11 +994,27 @@ class ConstanceSettings:
 
         disabled_offering_types: Union[Unset, list[str]] = UNSET
         if not isinstance(self.disabled_offering_types, Unset):
-            disabled_offering_types = self.disabled_offering_types
+            disabled_offering_types = []
+            for disabled_offering_types_item_data in self.disabled_offering_types:
+                disabled_offering_types_item: str
+                if isinstance(disabled_offering_types_item_data, OfferingTypeEnum):
+                    disabled_offering_types_item = disabled_offering_types_item_data.value
+                else:
+                    disabled_offering_types_item = disabled_offering_types_item_data.value
+
+                disabled_offering_types.append(disabled_offering_types_item)
 
         onboarding_validation_methods: Union[Unset, list[str]] = UNSET
         if not isinstance(self.onboarding_validation_methods, Unset):
-            onboarding_validation_methods = self.onboarding_validation_methods
+            onboarding_validation_methods = []
+            for onboarding_validation_methods_item_data in self.onboarding_validation_methods:
+                onboarding_validation_methods_item: str
+                if isinstance(onboarding_validation_methods_item_data, OnboardingValidationEnum):
+                    onboarding_validation_methods_item = onboarding_validation_methods_item_data.value
+                else:
+                    onboarding_validation_methods_item = onboarding_validation_methods_item_data.value
+
+                onboarding_validation_methods.append(onboarding_validation_methods_item)
 
         onboarding_verification_expiry_hours = self.onboarding_verification_expiry_hours
 
@@ -1042,9 +1132,23 @@ class ConstanceSettings:
 
         federated_identity_sync_allowed_attributes: Union[Unset, list[str]] = UNSET
         if not isinstance(self.federated_identity_sync_allowed_attributes, Unset):
-            federated_identity_sync_allowed_attributes = self.federated_identity_sync_allowed_attributes
+            federated_identity_sync_allowed_attributes = []
+            for federated_identity_sync_allowed_attributes_item_data in self.federated_identity_sync_allowed_attributes:
+                federated_identity_sync_allowed_attributes_item: str
+                if isinstance(federated_identity_sync_allowed_attributes_item_data, UserAttributeEnum):
+                    federated_identity_sync_allowed_attributes_item = (
+                        federated_identity_sync_allowed_attributes_item_data.value
+                    )
+                else:
+                    federated_identity_sync_allowed_attributes_item = (
+                        federated_identity_sync_allowed_attributes_item_data.value
+                    )
 
-        federated_identity_deactivation_policy = self.federated_identity_deactivation_policy
+                federated_identity_sync_allowed_attributes.append(federated_identity_sync_allowed_attributes_item)
+
+        federated_identity_deactivation_policy: Union[Unset, str] = UNSET
+        if not isinstance(self.federated_identity_deactivation_policy, Unset):
+            federated_identity_deactivation_policy = self.federated_identity_deactivation_policy.value
 
         enable_project_digest = self.enable_project_digest
 
@@ -1563,7 +1667,14 @@ class ConstanceSettings:
 
         anonymous_user_can_view_plans = d.pop("ANONYMOUS_USER_CAN_VIEW_PLANS", UNSET)
 
-        restricted_offering_visibility_mode = d.pop("RESTRICTED_OFFERING_VISIBILITY_MODE", UNSET)
+        _restricted_offering_visibility_mode = d.pop("RESTRICTED_OFFERING_VISIBILITY_MODE", UNSET)
+        restricted_offering_visibility_mode: Union[Unset, RESTRICTEDOFFERINGVISIBILITYMODEEnum]
+        if isinstance(_restricted_offering_visibility_mode, Unset):
+            restricted_offering_visibility_mode = UNSET
+        else:
+            restricted_offering_visibility_mode = RESTRICTEDOFFERINGVISIBILITYMODEEnum(
+                _restricted_offering_visibility_mode
+            )
 
         allow_service_provider_offering_management = d.pop("ALLOW_SERVICE_PROVIDER_OFFERING_MANAGEMENT", UNSET)
 
@@ -1583,7 +1694,12 @@ class ConstanceSettings:
 
         telemetry_version = d.pop("TELEMETRY_VERSION", UNSET)
 
-        script_run_mode = d.pop("SCRIPT_RUN_MODE", UNSET)
+        _script_run_mode = d.pop("SCRIPT_RUN_MODE", UNSET)
+        script_run_mode: Union[Unset, SCRIPTRUNMODEEnum]
+        if isinstance(_script_run_mode, Unset):
+            script_run_mode = UNSET
+        else:
+            script_run_mode = SCRIPTRUNMODEEnum(_script_run_mode)
 
         docker_client = d.pop("DOCKER_CLIENT", UNSET)
 
@@ -1607,7 +1723,24 @@ class ConstanceSettings:
 
         invitation_disable_multiple_roles = d.pop("INVITATION_DISABLE_MULTIPLE_ROLES", UNSET)
 
-        default_idp = d.pop("DEFAULT_IDP", UNSET)
+        def _parse_default_idp(data: object) -> Union[BlankEnum, DEFAULTIDPEnum, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                default_idp_type_0 = DEFAULTIDPEnum(data)
+
+                return default_idp_type_0
+            except:  # noqa: E722
+                pass
+            if not isinstance(data, str):
+                raise TypeError()
+            default_idp_type_1 = BlankEnum(data)
+
+            return default_idp_type_1
+
+        default_idp = _parse_default_idp(d.pop("DEFAULT_IDP", UNSET))
 
         docs_url = d.pop("DOCS_URL", UNSET)
 
@@ -1698,9 +1831,19 @@ class ConstanceSettings:
 
         sidebar_logo_mobile = _parse_sidebar_logo_mobile(d.pop("SIDEBAR_LOGO_MOBILE", UNSET))
 
-        sidebar_style = d.pop("SIDEBAR_STYLE", UNSET)
+        _sidebar_style = d.pop("SIDEBAR_STYLE", UNSET)
+        sidebar_style: Union[Unset, SIDEBARSTYLEEnum]
+        if isinstance(_sidebar_style, Unset):
+            sidebar_style = UNSET
+        else:
+            sidebar_style = SIDEBARSTYLEEnum(_sidebar_style)
 
-        font_family = d.pop("FONT_FAMILY", UNSET)
+        _font_family = d.pop("FONT_FAMILY", UNSET)
+        font_family: Union[Unset, FONTFAMILYEnum]
+        if isinstance(_font_family, Unset):
+            font_family = UNSET
+        else:
+            font_family = FONTFAMILYEnum(_font_family)
 
         def _parse_login_logo(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -1718,7 +1861,12 @@ class ConstanceSettings:
         else:
             login_logo_multilingual = ConstanceSettingsLOGINLOGOMULTILINGUAL.from_dict(_login_logo_multilingual)
 
-        login_page_layout = d.pop("LOGIN_PAGE_LAYOUT", UNSET)
+        _login_page_layout = d.pop("LOGIN_PAGE_LAYOUT", UNSET)
+        login_page_layout: Union[Unset, LOGINPAGELAYOUTEnum]
+        if isinstance(_login_page_layout, Unset):
+            login_page_layout = UNSET
+        else:
+            login_page_layout = LOGINPAGELAYOUTEnum(_login_page_layout)
 
         login_page_video_url = d.pop("LOGIN_PAGE_VIDEO_URL", UNSET)
 
@@ -1757,7 +1905,12 @@ class ConstanceSettings:
 
         waldur_support_enabled = d.pop("WALDUR_SUPPORT_ENABLED", UNSET)
 
-        waldur_support_active_backend_type = d.pop("WALDUR_SUPPORT_ACTIVE_BACKEND_TYPE", UNSET)
+        _waldur_support_active_backend_type = d.pop("WALDUR_SUPPORT_ACTIVE_BACKEND_TYPE", UNSET)
+        waldur_support_active_backend_type: Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum]
+        if isinstance(_waldur_support_active_backend_type, Unset):
+            waldur_support_active_backend_type = UNSET
+        else:
+            waldur_support_active_backend_type = WALDURSUPPORTACTIVEBACKENDTYPEEnum(_waldur_support_active_backend_type)
 
         waldur_support_display_request_type = d.pop("WALDUR_SUPPORT_DISPLAY_REQUEST_TYPE", UNSET)
 
@@ -1833,7 +1986,12 @@ class ConstanceSettings:
 
         zammad_group = d.pop("ZAMMAD_GROUP", UNSET)
 
-        zammad_article_type = d.pop("ZAMMAD_ARTICLE_TYPE", UNSET)
+        _zammad_article_type = d.pop("ZAMMAD_ARTICLE_TYPE", UNSET)
+        zammad_article_type: Union[Unset, ZAMMADARTICLETYPEEnum]
+        if isinstance(_zammad_article_type, Unset):
+            zammad_article_type = UNSET
+        else:
+            zammad_article_type = ZAMMADARTICLETYPEEnum(_zammad_article_type)
 
         zammad_comment_marker = d.pop("ZAMMAD_COMMENT_MARKER", UNSET)
 
@@ -1966,27 +2124,182 @@ class ConstanceSettings:
 
         remote_eduteams_refresh_token = d.pop("REMOTE_EDUTEAMS_REFRESH_TOKEN", UNSET)
 
-        default_offering_user_attributes = cast(list[str], d.pop("DEFAULT_OFFERING_USER_ATTRIBUTES", UNSET))
+        default_offering_user_attributes = []
+        _default_offering_user_attributes = d.pop("DEFAULT_OFFERING_USER_ATTRIBUTES", UNSET)
+        for default_offering_user_attributes_item_data in _default_offering_user_attributes or []:
 
-        invitation_allowed_fields = cast(list[str], d.pop("INVITATION_ALLOWED_FIELDS", UNSET))
+            def _parse_default_offering_user_attributes_item(data: object) -> Union[BlankEnum, UserAttributeEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    default_offering_user_attributes_item_type_0 = UserAttributeEnum(data)
 
-        enabled_user_profile_attributes = cast(list[str], d.pop("ENABLED_USER_PROFILE_ATTRIBUTES", UNSET))
+                    return default_offering_user_attributes_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                default_offering_user_attributes_item_type_1 = BlankEnum(data)
 
-        mandatory_user_attributes = cast(list[str], d.pop("MANDATORY_USER_ATTRIBUTES", UNSET))
+                return default_offering_user_attributes_item_type_1
+
+            default_offering_user_attributes_item = _parse_default_offering_user_attributes_item(
+                default_offering_user_attributes_item_data
+            )
+
+            default_offering_user_attributes.append(default_offering_user_attributes_item)
+
+        invitation_allowed_fields = []
+        _invitation_allowed_fields = d.pop("INVITATION_ALLOWED_FIELDS", UNSET)
+        for invitation_allowed_fields_item_data in _invitation_allowed_fields or []:
+
+            def _parse_invitation_allowed_fields_item(data: object) -> Union[BlankEnum, UserAttributeEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    invitation_allowed_fields_item_type_0 = UserAttributeEnum(data)
+
+                    return invitation_allowed_fields_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                invitation_allowed_fields_item_type_1 = BlankEnum(data)
+
+                return invitation_allowed_fields_item_type_1
+
+            invitation_allowed_fields_item = _parse_invitation_allowed_fields_item(invitation_allowed_fields_item_data)
+
+            invitation_allowed_fields.append(invitation_allowed_fields_item)
+
+        enabled_user_profile_attributes = []
+        _enabled_user_profile_attributes = d.pop("ENABLED_USER_PROFILE_ATTRIBUTES", UNSET)
+        for enabled_user_profile_attributes_item_data in _enabled_user_profile_attributes or []:
+
+            def _parse_enabled_user_profile_attributes_item(data: object) -> Union[BlankEnum, UserAttributeEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    enabled_user_profile_attributes_item_type_0 = UserAttributeEnum(data)
+
+                    return enabled_user_profile_attributes_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                enabled_user_profile_attributes_item_type_1 = BlankEnum(data)
+
+                return enabled_user_profile_attributes_item_type_1
+
+            enabled_user_profile_attributes_item = _parse_enabled_user_profile_attributes_item(
+                enabled_user_profile_attributes_item_data
+            )
+
+            enabled_user_profile_attributes.append(enabled_user_profile_attributes_item)
+
+        mandatory_user_attributes = []
+        _mandatory_user_attributes = d.pop("MANDATORY_USER_ATTRIBUTES", UNSET)
+        for mandatory_user_attributes_item_data in _mandatory_user_attributes or []:
+
+            def _parse_mandatory_user_attributes_item(data: object) -> Union[BlankEnum, UserAttributeEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    mandatory_user_attributes_item_type_0 = UserAttributeEnum(data)
+
+                    return mandatory_user_attributes_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                mandatory_user_attributes_item_type_1 = BlankEnum(data)
+
+                return mandatory_user_attributes_item_type_1
+
+            mandatory_user_attributes_item = _parse_mandatory_user_attributes_item(mandatory_user_attributes_item_data)
+
+            mandatory_user_attributes.append(mandatory_user_attributes_item)
 
         enforce_mandatory_user_attributes = d.pop("ENFORCE_MANDATORY_USER_ATTRIBUTES", UNSET)
 
         maintenance_announcement_notify_before_minutes = d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES", UNSET)
 
-        maintenance_announcement_notify_system = cast(list[str], d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM", UNSET))
+        maintenance_announcement_notify_system = []
+        _maintenance_announcement_notify_system = d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM", UNSET)
+        for maintenance_announcement_notify_system_item_data in _maintenance_announcement_notify_system or []:
+
+            def _parse_maintenance_announcement_notify_system_item(data: object) -> Union[BlankEnum, NotifySystemEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    maintenance_announcement_notify_system_item_type_0 = NotifySystemEnum(data)
+
+                    return maintenance_announcement_notify_system_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                maintenance_announcement_notify_system_item_type_1 = BlankEnum(data)
+
+                return maintenance_announcement_notify_system_item_type_1
+
+            maintenance_announcement_notify_system_item = _parse_maintenance_announcement_notify_system_item(
+                maintenance_announcement_notify_system_item_data
+            )
+
+            maintenance_announcement_notify_system.append(maintenance_announcement_notify_system_item)
 
         enforce_user_consent_for_offerings = d.pop("ENFORCE_USER_CONSENT_FOR_OFFERINGS", UNSET)
 
         enforce_offering_user_profile_completeness = d.pop("ENFORCE_OFFERING_USER_PROFILE_COMPLETENESS", UNSET)
 
-        disabled_offering_types = cast(list[str], d.pop("DISABLED_OFFERING_TYPES", UNSET))
+        disabled_offering_types = []
+        _disabled_offering_types = d.pop("DISABLED_OFFERING_TYPES", UNSET)
+        for disabled_offering_types_item_data in _disabled_offering_types or []:
 
-        onboarding_validation_methods = cast(list[str], d.pop("ONBOARDING_VALIDATION_METHODS", UNSET))
+            def _parse_disabled_offering_types_item(data: object) -> Union[BlankEnum, OfferingTypeEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    disabled_offering_types_item_type_0 = OfferingTypeEnum(data)
+
+                    return disabled_offering_types_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                disabled_offering_types_item_type_1 = BlankEnum(data)
+
+                return disabled_offering_types_item_type_1
+
+            disabled_offering_types_item = _parse_disabled_offering_types_item(disabled_offering_types_item_data)
+
+            disabled_offering_types.append(disabled_offering_types_item)
+
+        onboarding_validation_methods = []
+        _onboarding_validation_methods = d.pop("ONBOARDING_VALIDATION_METHODS", UNSET)
+        for onboarding_validation_methods_item_data in _onboarding_validation_methods or []:
+
+            def _parse_onboarding_validation_methods_item(data: object) -> Union[BlankEnum, OnboardingValidationEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    onboarding_validation_methods_item_type_0 = OnboardingValidationEnum(data)
+
+                    return onboarding_validation_methods_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                onboarding_validation_methods_item_type_1 = BlankEnum(data)
+
+                return onboarding_validation_methods_item_type_1
+
+            onboarding_validation_methods_item = _parse_onboarding_validation_methods_item(
+                onboarding_validation_methods_item_data
+            )
+
+            onboarding_validation_methods.append(onboarding_validation_methods_item)
 
         onboarding_verification_expiry_hours = d.pop("ONBOARDING_VERIFICATION_EXPIRY_HOURS", UNSET)
 
@@ -2102,11 +2415,41 @@ class ConstanceSettings:
 
         federated_identity_sync_enabled = d.pop("FEDERATED_IDENTITY_SYNC_ENABLED", UNSET)
 
-        federated_identity_sync_allowed_attributes = cast(
-            list[str], d.pop("FEDERATED_IDENTITY_SYNC_ALLOWED_ATTRIBUTES", UNSET)
-        )
+        federated_identity_sync_allowed_attributes = []
+        _federated_identity_sync_allowed_attributes = d.pop("FEDERATED_IDENTITY_SYNC_ALLOWED_ATTRIBUTES", UNSET)
+        for federated_identity_sync_allowed_attributes_item_data in _federated_identity_sync_allowed_attributes or []:
 
-        federated_identity_deactivation_policy = d.pop("FEDERATED_IDENTITY_DEACTIVATION_POLICY", UNSET)
+            def _parse_federated_identity_sync_allowed_attributes_item(
+                data: object,
+            ) -> Union[BlankEnum, UserAttributeEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    federated_identity_sync_allowed_attributes_item_type_0 = UserAttributeEnum(data)
+
+                    return federated_identity_sync_allowed_attributes_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                federated_identity_sync_allowed_attributes_item_type_1 = BlankEnum(data)
+
+                return federated_identity_sync_allowed_attributes_item_type_1
+
+            federated_identity_sync_allowed_attributes_item = _parse_federated_identity_sync_allowed_attributes_item(
+                federated_identity_sync_allowed_attributes_item_data
+            )
+
+            federated_identity_sync_allowed_attributes.append(federated_identity_sync_allowed_attributes_item)
+
+        _federated_identity_deactivation_policy = d.pop("FEDERATED_IDENTITY_DEACTIVATION_POLICY", UNSET)
+        federated_identity_deactivation_policy: Union[Unset, FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum]
+        if isinstance(_federated_identity_deactivation_policy, Unset):
+            federated_identity_deactivation_policy = UNSET
+        else:
+            federated_identity_deactivation_policy = FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum(
+                _federated_identity_deactivation_policy
+            )
 
         enable_project_digest = d.pop("ENABLE_PROJECT_DIGEST", UNSET)
 

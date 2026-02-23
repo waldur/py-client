@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.4-dev.20260223030637
+# Version: 8.0.4-dev.20260223134346
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9128,7 +9128,7 @@ Query parameters (40):
 ### marketplace_resources_suggest_name
 POST /api/marketplace-resources/suggest_name/
 Summary: Suggest a resource name
-Description: Generates a suggested name for a new resource based on the project and offering.
+Description: Generates a suggested name for a new resource based on the project and offering. If the offering has a `resource_name_pattern` in `plugin_options`, it is used as a Python format string with variables: `{customer_name}`, `{customer_slug}`, `{project_name}`, `{project_slug}`, `{offering_name}`, `{o...
 Request body: yes
 
 ### marketplace_resources_retrieve
