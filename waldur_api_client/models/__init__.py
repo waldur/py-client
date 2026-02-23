@@ -673,6 +673,7 @@ from .import_usage_request import ImportUsageRequest
 from .import_usage_response import ImportUsageResponse
 from .import_usage_response_errors_item import ImportUsageResponseErrorsItem
 from .importable_resource import ImportableResource
+from .injection_severity_enum import InjectionSeverityEnum
 from .instance_flavor_change_request import InstanceFlavorChangeRequest
 from .integration_status import IntegrationStatus
 from .integration_status_details import IntegrationStatusDetails
@@ -2043,7 +2044,6 @@ from .tenant_security_group_update_request import TenantSecurityGroupUpdateReque
 from .test_connection_response import TestConnectionResponse
 from .thread_session import ThreadSession
 from .thread_session_field_enum import ThreadSessionFieldEnum
-from .thread_session_max_severity_enum import ThreadSessionMaxSeverityEnum
 from .thread_session_o_enum import ThreadSessionOEnum
 from .thread_session_request import ThreadSessionRequest
 from .time_series_to_s_data import TimeSeriesToSData
@@ -2818,6 +2818,7 @@ __all__ = (
     "ImportUsageRequest",
     "ImportUsageResponse",
     "ImportUsageResponseErrorsItem",
+    "InjectionSeverityEnum",
     "InstanceFlavorChangeRequest",
     "IntegrationStatus",
     "IntegrationStatusDetails",
@@ -4104,7 +4105,6 @@ __all__ = (
     "TestConnectionResponse",
     "ThreadSession",
     "ThreadSessionFieldEnum",
-    "ThreadSessionMaxSeverityEnum",
     "ThreadSessionOEnum",
     "ThreadSessionRequest",
     "TimeSeriesToSData",

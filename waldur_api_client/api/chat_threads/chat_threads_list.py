@@ -7,9 +7,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.injection_severity_enum import InjectionSeverityEnum
 from ...models.thread_session import ThreadSession
 from ...models.thread_session_field_enum import ThreadSessionFieldEnum
-from ...models.thread_session_max_severity_enum import ThreadSessionMaxSeverityEnum
 from ...models.thread_session_o_enum import ThreadSessionOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
@@ -21,7 +21,7 @@ def _get_kwargs(
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
-    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
+    max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -124,7 +124,7 @@ def sync_detailed(
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
-    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
+    max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -138,7 +138,7 @@ def sync_detailed(
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
-        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
+        max_severity (Union[Unset, InjectionSeverityEnum]):
         modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         page (Union[Unset, int]):
@@ -182,7 +182,7 @@ def sync(
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
-    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
+    max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -196,7 +196,7 @@ def sync(
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
-        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
+        max_severity (Union[Unset, InjectionSeverityEnum]):
         modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         page (Union[Unset, int]):
@@ -235,7 +235,7 @@ async def asyncio_detailed(
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
-    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
+    max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -249,7 +249,7 @@ async def asyncio_detailed(
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
-        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
+        max_severity (Union[Unset, InjectionSeverityEnum]):
         modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         page (Union[Unset, int]):
@@ -291,7 +291,7 @@ async def asyncio(
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
-    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
+    max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -305,7 +305,7 @@ async def asyncio(
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
-        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
+        max_severity (Union[Unset, InjectionSeverityEnum]):
         modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         page (Union[Unset, int]):
@@ -346,7 +346,7 @@ def sync_all(
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
-    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
+    max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -364,7 +364,7 @@ def sync_all(
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
-        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
+        max_severity (Union[Unset, InjectionSeverityEnum]):
         modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         query (Union[Unset, str]):
@@ -443,7 +443,7 @@ async def asyncio_all(
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
-    max_severity: Union[Unset, ThreadSessionMaxSeverityEnum] = UNSET,
+    max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -461,7 +461,7 @@ async def asyncio_all(
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
-        max_severity (Union[Unset, ThreadSessionMaxSeverityEnum]):
+        max_severity (Union[Unset, InjectionSeverityEnum]):
         modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         query (Union[Unset, str]):

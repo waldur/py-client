@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class ThreadSessionMaxSeverityEnum(str, Enum):
+class InjectionSeverityEnum(str, Enum):
     CRITICAL = "critical"
     HIGH = "high"
     LOW = "low"

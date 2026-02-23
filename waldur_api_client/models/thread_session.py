@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.injection_severity_enum import InjectionSeverityEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ThreadSession")
@@ -23,7 +24,7 @@ class ThreadSession:
         is_archived (Union[Unset, bool]):
         message_count (Union[Unset, int]):
         is_flagged (Union[Unset, bool]):
-        max_severity (Union[Unset, str]):
+        max_severity (Union[Unset, InjectionSeverityEnum]):
         user_username (Union[Unset, str]):
         user_full_name (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
@@ -37,7 +38,7 @@ class ThreadSession:
     is_archived: Union[Unset, bool] = UNSET
     message_count: Union[Unset, int] = UNSET
     is_flagged: Union[Unset, bool] = UNSET
-    max_severity: Union[Unset, str] = UNSET
+    max_severity: Union[Unset, InjectionSeverityEnum] = UNSET
     user_username: Union[Unset, str] = UNSET
     user_full_name: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
@@ -63,7 +64,9 @@ class ThreadSession:
 
         is_flagged = self.is_flagged
 
-        max_severity = self.max_severity
+        max_severity: Union[Unset, str] = UNSET
+        if not isinstance(self.max_severity, Unset):
+            max_severity = self.max_severity.value
 
         user_username = self.user_username
 
@@ -134,7 +137,12 @@ class ThreadSession:
 
         is_flagged = d.pop("is_flagged", UNSET)
 
-        max_severity = d.pop("max_severity", UNSET)
+        _max_severity = d.pop("max_severity", UNSET)
+        max_severity: Union[Unset, InjectionSeverityEnum]
+        if isinstance(_max_severity, Unset):
+            max_severity = UNSET
+        else:
+            max_severity = InjectionSeverityEnum(_max_severity)
 
         user_username = d.pop("user_username", UNSET)
 

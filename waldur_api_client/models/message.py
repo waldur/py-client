@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.injection_severity_enum import InjectionSeverityEnum
 from ..models.message_role_enum import MessageRoleEnum
 
 T = TypeVar("T", bound="Message")
@@ -25,7 +26,7 @@ class Message:
         created (datetime.datetime):
         is_flagged (bool):
         injection_score (float):
-        injection_severity (str):
+        injection_severity (InjectionSeverityEnum):
         injection_categories (Any):
     """
 
@@ -38,7 +39,7 @@ class Message:
     created: datetime.datetime
     is_flagged: bool
     injection_score: float
-    injection_severity: str
+    injection_severity: InjectionSeverityEnum
     injection_categories: Any
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -61,7 +62,7 @@ class Message:
 
         injection_score = self.injection_score
 
-        injection_severity = self.injection_severity
+        injection_severity = self.injection_severity.value
 
         injection_categories = self.injection_categories
 
@@ -106,7 +107,7 @@ class Message:
 
         injection_score = d.pop("injection_score")
 
-        injection_severity = d.pop("injection_severity")
+        injection_severity = InjectionSeverityEnum(d.pop("injection_severity"))
 
         injection_categories = d.pop("injection_categories")
 
