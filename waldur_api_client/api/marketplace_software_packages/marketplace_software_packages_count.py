@@ -6,6 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.catalog_type_enum import CatalogTypeEnum
 from ...models.software_package_o_enum import SoftwarePackageOEnum
 from ...types import UNSET, Response, Unset
 
@@ -13,8 +14,10 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -22,17 +25,27 @@ def _get_kwargs(
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
+    license_: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    parent_software_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    toolchain_families_compatibility: Union[Unset, str] = UNSET,
+    toolchain_name: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["catalog_name"] = catalog_name
+
+    json_catalog_type: Union[Unset, str] = UNSET
+    if not isinstance(catalog_type, Unset):
+        json_catalog_type = catalog_type.value
+
+    params["catalog_type"] = json_catalog_type
 
     json_catalog_uuid: Union[Unset, str] = UNSET
     if not isinstance(catalog_uuid, Unset):
@@ -40,6 +53,8 @@ def _get_kwargs(
     params["catalog_uuid"] = json_catalog_uuid
 
     params["catalog_version"] = catalog_version
+
+    params["category"] = category
 
     params["cpu_family"] = cpu_family
 
@@ -54,6 +69,8 @@ def _get_kwargs(
     params["has_version"] = has_version
 
     params["is_extension"] = is_extension
+
+    params["license"] = license_
 
     params["name"] = name
 
@@ -77,7 +94,16 @@ def _get_kwargs(
 
     params["page_size"] = page_size
 
+    json_parent_software_uuid: Union[Unset, str] = UNSET
+    if not isinstance(parent_software_uuid, Unset):
+        json_parent_software_uuid = str(parent_software_uuid)
+    params["parent_software_uuid"] = json_parent_software_uuid
+
     params["query"] = query
+
+    params["toolchain_families_compatibility"] = toolchain_families_compatibility
+
+    params["toolchain_name"] = toolchain_name
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -120,8 +146,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -129,13 +157,17 @@ def sync_detailed(
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
+    license_: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    parent_software_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    toolchain_families_compatibility: Union[Unset, str] = UNSET,
+    toolchain_name: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List software packages
 
@@ -143,8 +175,10 @@ def sync_detailed(
 
     Args:
         catalog_name (Union[Unset, str]):
+        catalog_type (Union[Unset, CatalogTypeEnum]):
         catalog_uuid (Union[Unset, UUID]):
         catalog_version (Union[Unset, str]):
+        category (Union[Unset, str]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -152,13 +186,17 @@ def sync_detailed(
         extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
+        license_ (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[SoftwarePackageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        parent_software_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        toolchain_families_compatibility (Union[Unset, str]):
+        toolchain_name (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -170,8 +208,10 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         catalog_name=catalog_name,
+        catalog_type=catalog_type,
         catalog_uuid=catalog_uuid,
         catalog_version=catalog_version,
+        category=category,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
         description=description,
@@ -179,13 +219,17 @@ def sync_detailed(
         extension_type=extension_type,
         has_version=has_version,
         is_extension=is_extension,
+        license_=license_,
         name=name,
         name_exact=name_exact,
         o=o,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
+        parent_software_uuid=parent_software_uuid,
         query=query,
+        toolchain_families_compatibility=toolchain_families_compatibility,
+        toolchain_name=toolchain_name,
     )
 
     response = client.get_httpx_client().request(
@@ -199,8 +243,10 @@ def sync(
     *,
     client: AuthenticatedClient,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -208,13 +254,17 @@ def sync(
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
+    license_: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    parent_software_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    toolchain_families_compatibility: Union[Unset, str] = UNSET,
+    toolchain_name: Union[Unset, str] = UNSET,
 ) -> int:
     """List software packages
 
@@ -222,8 +272,10 @@ def sync(
 
     Args:
         catalog_name (Union[Unset, str]):
+        catalog_type (Union[Unset, CatalogTypeEnum]):
         catalog_uuid (Union[Unset, UUID]):
         catalog_version (Union[Unset, str]):
+        category (Union[Unset, str]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -231,13 +283,17 @@ def sync(
         extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
+        license_ (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[SoftwarePackageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        parent_software_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        toolchain_families_compatibility (Union[Unset, str]):
+        toolchain_name (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -250,8 +306,10 @@ def sync(
     return sync_detailed(
         client=client,
         catalog_name=catalog_name,
+        catalog_type=catalog_type,
         catalog_uuid=catalog_uuid,
         catalog_version=catalog_version,
+        category=category,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
         description=description,
@@ -259,13 +317,17 @@ def sync(
         extension_type=extension_type,
         has_version=has_version,
         is_extension=is_extension,
+        license_=license_,
         name=name,
         name_exact=name_exact,
         o=o,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
+        parent_software_uuid=parent_software_uuid,
         query=query,
+        toolchain_families_compatibility=toolchain_families_compatibility,
+        toolchain_name=toolchain_name,
     ).parsed
 
 
@@ -273,8 +335,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -282,13 +346,17 @@ async def asyncio_detailed(
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
+    license_: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    parent_software_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    toolchain_families_compatibility: Union[Unset, str] = UNSET,
+    toolchain_name: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List software packages
 
@@ -296,8 +364,10 @@ async def asyncio_detailed(
 
     Args:
         catalog_name (Union[Unset, str]):
+        catalog_type (Union[Unset, CatalogTypeEnum]):
         catalog_uuid (Union[Unset, UUID]):
         catalog_version (Union[Unset, str]):
+        category (Union[Unset, str]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -305,13 +375,17 @@ async def asyncio_detailed(
         extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
+        license_ (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[SoftwarePackageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        parent_software_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        toolchain_families_compatibility (Union[Unset, str]):
+        toolchain_name (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -323,8 +397,10 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         catalog_name=catalog_name,
+        catalog_type=catalog_type,
         catalog_uuid=catalog_uuid,
         catalog_version=catalog_version,
+        category=category,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
         description=description,
@@ -332,13 +408,17 @@ async def asyncio_detailed(
         extension_type=extension_type,
         has_version=has_version,
         is_extension=is_extension,
+        license_=license_,
         name=name,
         name_exact=name_exact,
         o=o,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
+        parent_software_uuid=parent_software_uuid,
         query=query,
+        toolchain_families_compatibility=toolchain_families_compatibility,
+        toolchain_name=toolchain_name,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -350,8 +430,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -359,13 +441,17 @@ async def asyncio(
     extension_type: Union[Unset, str] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
+    license_: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwarePackageOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    parent_software_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    toolchain_families_compatibility: Union[Unset, str] = UNSET,
+    toolchain_name: Union[Unset, str] = UNSET,
 ) -> int:
     """List software packages
 
@@ -373,8 +459,10 @@ async def asyncio(
 
     Args:
         catalog_name (Union[Unset, str]):
+        catalog_type (Union[Unset, CatalogTypeEnum]):
         catalog_uuid (Union[Unset, UUID]):
         catalog_version (Union[Unset, str]):
+        category (Union[Unset, str]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -382,13 +470,17 @@ async def asyncio(
         extension_type (Union[Unset, str]):
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
+        license_ (Union[Unset, str]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[SoftwarePackageOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        parent_software_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        toolchain_families_compatibility (Union[Unset, str]):
+        toolchain_name (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -402,8 +494,10 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             catalog_name=catalog_name,
+            catalog_type=catalog_type,
             catalog_uuid=catalog_uuid,
             catalog_version=catalog_version,
+            category=category,
             cpu_family=cpu_family,
             cpu_microarchitecture=cpu_microarchitecture,
             description=description,
@@ -411,12 +505,16 @@ async def asyncio(
             extension_type=extension_type,
             has_version=has_version,
             is_extension=is_extension,
+            license_=license_,
             name=name,
             name_exact=name_exact,
             o=o,
             offering_uuid=offering_uuid,
             page=page,
             page_size=page_size,
+            parent_software_uuid=parent_software_uuid,
             query=query,
+            toolchain_families_compatibility=toolchain_families_compatibility,
+            toolchain_name=toolchain_name,
         )
     ).parsed

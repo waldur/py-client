@@ -21,6 +21,9 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     path: Union[Unset, str] = UNSET,
+    target_name: Union[Unset, str] = UNSET,
+    target_subtype: Union[Unset, str] = UNSET,
+    target_type: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -58,6 +61,12 @@ def _get_kwargs(
     params["page_size"] = page_size
 
     params["path"] = path
+
+    params["target_name"] = target_name
+
+    params["target_subtype"] = target_subtype
+
+    params["target_type"] = target_type
 
     json_version_uuid: Union[Unset, str] = UNSET
     if not isinstance(version_uuid, Unset):
@@ -113,6 +122,9 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     path: Union[Unset, str] = UNSET,
+    target_name: Union[Unset, str] = UNSET,
+    target_subtype: Union[Unset, str] = UNSET,
+    target_type: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """List software targets
@@ -129,6 +141,9 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         path (Union[Unset, str]):
+        target_name (Union[Unset, str]):
+        target_subtype (Union[Unset, str]):
+        target_type (Union[Unset, str]):
         version_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -149,6 +164,9 @@ def sync_detailed(
         page=page,
         page_size=page_size,
         path=path,
+        target_name=target_name,
+        target_subtype=target_subtype,
+        target_type=target_type,
         version_uuid=version_uuid,
     )
 
@@ -171,6 +189,9 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     path: Union[Unset, str] = UNSET,
+    target_name: Union[Unset, str] = UNSET,
+    target_subtype: Union[Unset, str] = UNSET,
+    target_type: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """List software targets
@@ -187,6 +208,9 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         path (Union[Unset, str]):
+        target_name (Union[Unset, str]):
+        target_subtype (Union[Unset, str]):
+        target_type (Union[Unset, str]):
         version_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -208,6 +232,9 @@ def sync(
         page=page,
         page_size=page_size,
         path=path,
+        target_name=target_name,
+        target_subtype=target_subtype,
+        target_type=target_type,
         version_uuid=version_uuid,
     ).parsed
 
@@ -224,6 +251,9 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     path: Union[Unset, str] = UNSET,
+    target_name: Union[Unset, str] = UNSET,
+    target_subtype: Union[Unset, str] = UNSET,
+    target_type: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """List software targets
@@ -240,6 +270,9 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         path (Union[Unset, str]):
+        target_name (Union[Unset, str]):
+        target_subtype (Union[Unset, str]):
+        target_type (Union[Unset, str]):
         version_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -260,6 +293,9 @@ async def asyncio_detailed(
         page=page,
         page_size=page_size,
         path=path,
+        target_name=target_name,
+        target_subtype=target_subtype,
+        target_type=target_type,
         version_uuid=version_uuid,
     )
 
@@ -280,6 +316,9 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     path: Union[Unset, str] = UNSET,
+    target_name: Union[Unset, str] = UNSET,
+    target_subtype: Union[Unset, str] = UNSET,
+    target_type: Union[Unset, str] = UNSET,
     version_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """List software targets
@@ -296,6 +335,9 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         path (Union[Unset, str]):
+        target_name (Union[Unset, str]):
+        target_subtype (Union[Unset, str]):
+        target_type (Union[Unset, str]):
         version_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -318,6 +360,9 @@ async def asyncio(
             page=page,
             page_size=page_size,
             path=path,
+            target_name=target_name,
+            target_subtype=target_subtype,
+            target_type=target_type,
             version_uuid=version_uuid,
         )
     ).parsed

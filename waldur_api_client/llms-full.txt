@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.5-dev.20260224143316
+# Version: 8.0.5-dev.20260224175149
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10408,7 +10408,10 @@ Request body: yes
 GET /api/marketplace-software-catalogs/
 Summary: List software catalogs
 Description: Returns a paginated list of available software catalogs, such as EESSI or Spack.
-Query parameters (3):
+Query parameters (6):
+  - auto_update_enabled — Filter catalogs by auto-update status
+  - catalog_type — Filter by catalog type (binary_runtime, source_package, package_manager)
+  - description — Filter catalogs by description (case-insensitive partial match)
   - name
   - o — Ordering
   - version
@@ -10417,7 +10420,10 @@ Query parameters (3):
 HEAD /api/marketplace-software-catalogs/
 Summary: List software catalogs
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (3):
+Query parameters (6):
+  - auto_update_enabled — Filter catalogs by auto-update status
+  - catalog_type — Filter by catalog type (binary_runtime, source_package, package_manager)
+  - description — Filter catalogs by description (case-insensitive partial match)
   - name
   - o — Ordering
   - version
@@ -10432,7 +10438,10 @@ Request body: yes
 GET /api/marketplace-software-catalogs/discover/
 Summary: Discover available software catalog versions
 Description: Queries upstream sources (EESSI, Spack) for available catalog versions without creating anything. Returns detected versions and whether an update is available compared to existing database records.
-Query parameters (3):
+Query parameters (6):
+  - auto_update_enabled — Filter catalogs by auto-update status
+  - catalog_type — Filter by catalog type (binary_runtime, source_package, package_manager)
+  - description — Filter catalogs by description (case-insensitive partial match)
   - name
   - o — Ordering
   - version
@@ -10441,7 +10450,10 @@ Query parameters (3):
 HEAD /api/marketplace-software-catalogs/discover/
 Summary: Discover available software catalog versions
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (3):
+Query parameters (6):
+  - auto_update_enabled — Filter catalogs by auto-update status
+  - catalog_type — Filter by catalog type (binary_runtime, source_package, package_manager)
+  - description — Filter catalogs by description (case-insensitive partial match)
   - name
   - o — Ordering
   - version
@@ -10498,10 +10510,12 @@ Request body: yes
 GET /api/marketplace-software-packages/
 Summary: List software packages
 Description: Returns a paginated list of software packages available in the catalogs. Can be filtered by catalog, offering, or various package attributes.
-Query parameters (15):
+Query parameters (21):
   - catalog_name — Filter packages by catalog name (case-insensitive partial match)
+  - catalog_type — Filter packages by catalog type (binary_runtime, source_package, package_manager)
   - catalog_uuid — Filter packages from a specific software catalog
   - catalog_version — Filter packages by catalog version (case-insensitive partial match)
+  - category — Filter packages by category (e.g., bio, hpc, chemistry)
   - cpu_family — Filter packages available for specific CPU family (e.g., x86_64, aarch64)
   - cpu_microarchitecture — Filter packages available for specific CPU microarchitecture (e.g., generic, zen2, haswell)
   - description — Filter packages by description (case-insensitive partial match)
@@ -10509,20 +10523,26 @@ Query parameters (15):
   - extension_type — Filter packages having extensions of a specific type (e.g., 'python')
   - has_version — Filter packages that have a specific version
   - is_extension — Filter packages that are extensions of other packages
+  - license — Filter packages by license (e.g., GPL-3.0, MIT)
   - name — Filter packages by name (case-insensitive partial match)
   - name_exact — Filter packages by exact name (case-insensitive)
   - o — Ordering
   - offering_uuid — Filter packages available for a specific offering
+  - parent_software_uuid — Filter extension packages belonging to a specific parent package
   - query — Query packages by name, description, or version (case-insensitive partial match)
+  - toolchain_families_compatibility — Filter packages compatible with a specific toolchain family (e.g., foss_2022b)
+  - toolchain_name — Filter packages by toolchain name (e.g., foss, gfbf)
 
 ### marketplace_software_packages_count
 HEAD /api/marketplace-software-packages/
 Summary: List software packages
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (15):
+Query parameters (21):
   - catalog_name — Filter packages by catalog name (case-insensitive partial match)
+  - catalog_type — Filter packages by catalog type (binary_runtime, source_package, package_manager)
   - catalog_uuid — Filter packages from a specific software catalog
   - catalog_version — Filter packages by catalog version (case-insensitive partial match)
+  - category — Filter packages by category (e.g., bio, hpc, chemistry)
   - cpu_family — Filter packages available for specific CPU family (e.g., x86_64, aarch64)
   - cpu_microarchitecture — Filter packages available for specific CPU microarchitecture (e.g., generic, zen2, haswell)
   - description — Filter packages by description (case-insensitive partial match)
@@ -10530,11 +10550,15 @@ Query parameters (15):
   - extension_type — Filter packages having extensions of a specific type (e.g., 'python')
   - has_version — Filter packages that have a specific version
   - is_extension — Filter packages that are extensions of other packages
+  - license — Filter packages by license (e.g., GPL-3.0, MIT)
   - name — Filter packages by name (case-insensitive partial match)
   - name_exact — Filter packages by exact name (case-insensitive)
   - o — Ordering
   - offering_uuid — Filter packages available for a specific offering
+  - parent_software_uuid — Filter extension packages belonging to a specific parent package
   - query — Query packages by name, description, or version (case-insensitive partial match)
+  - toolchain_families_compatibility — Filter packages compatible with a specific toolchain family (e.g., foss_2022b)
+  - toolchain_name — Filter packages by toolchain name (e.g., foss, gfbf)
 
 ### marketplace_software_packages_create
 POST /api/marketplace-software-packages/
@@ -10580,7 +10604,7 @@ Path parameters:
 GET /api/marketplace-software-targets/
 Summary: List software targets
 Description: Returns a paginated list of software targets, which represent specific builds of a software version for a given CPU architecture.
-Query parameters (8):
+Query parameters (11):
   - catalog_uuid
   - cpu_family
   - cpu_microarchitecture
@@ -10588,13 +10612,16 @@ Query parameters (8):
   - offering_uuid
   - package_uuid
   - path
+  - target_name — Filter targets by name (e.g., x86_64, aarch64)
+  - target_subtype — Filter targets by subtype (e.g., microarchitecture, distribution)
+  - target_type — Filter targets by type (e.g., architecture, platform, variant)
   - version_uuid
 
 ### marketplace_software_targets_count
 HEAD /api/marketplace-software-targets/
 Summary: List software targets
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (8):
+Query parameters (11):
   - catalog_uuid
   - cpu_family
   - cpu_microarchitecture
@@ -10602,6 +10629,9 @@ Query parameters (8):
   - offering_uuid
   - package_uuid
   - path
+  - target_name — Filter targets by name (e.g., x86_64, aarch64)
+  - target_subtype — Filter targets by subtype (e.g., microarchitecture, distribution)
+  - target_type — Filter targets by type (e.g., architecture, platform, variant)
   - version_uuid
 
 ### marketplace_software_targets_create
@@ -10645,7 +10675,8 @@ Path parameters:
 GET /api/marketplace-software-versions/
 Summary: List software versions
 Description: Returns a paginated list of software versions. Can be filtered by package, catalog, offering, or CPU architecture.
-Query parameters (8):
+Query parameters (15):
+  - catalog_type — Filter versions by catalog type (binary_runtime, source_package, package_manager)
   - catalog_uuid
   - cpu_family
   - cpu_microarchitecture
@@ -10653,13 +10684,20 @@ Query parameters (8):
   - offering_uuid
   - package_name
   - package_uuid
+  - release_date_after — Filter versions by release date range (release_date_after, release_date_before)
+  - release_date_before — Filter versions by release date range (release_date_after, release_date_before)
+  - toolchain_families_compatibility — Filter versions compatible with a specific toolchain family (e.g., foss_2022b)
+  - toolchain_name — Filter versions by toolchain name (e.g., foss, gfbf)
+  - toolchain_version — Filter versions by toolchain version (e.g., 2023b)
   - version
+  - version_exact — Filter versions by exact version string
 
 ### marketplace_software_versions_count
 HEAD /api/marketplace-software-versions/
 Summary: List software versions
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (8):
+Query parameters (15):
+  - catalog_type — Filter versions by catalog type (binary_runtime, source_package, package_manager)
   - catalog_uuid
   - cpu_family
   - cpu_microarchitecture
@@ -10667,7 +10705,13 @@ Query parameters (8):
   - offering_uuid
   - package_name
   - package_uuid
+  - release_date_after — Filter versions by release date range (release_date_after, release_date_before)
+  - release_date_before — Filter versions by release date range (release_date_after, release_date_before)
+  - toolchain_families_compatibility — Filter versions compatible with a specific toolchain family (e.g., foss_2022b)
+  - toolchain_name — Filter versions by toolchain name (e.g., foss, gfbf)
+  - toolchain_version — Filter versions by toolchain version (e.g., 2023b)
   - version
+  - version_exact — Filter versions by exact version string
 
 ### marketplace_software_versions_create
 POST /api/marketplace-software-versions/
@@ -19838,6 +19882,13 @@ Query parameters (6):
 GET /api/user-permission-requests/{uuid}/
 Summary: Retrieve permission request
 Description: Retrieve details of a specific permission request.
+Path parameters:
+  - uuid
+
+### user_permission_requests_destroy
+DELETE /api/user-permission-requests/{uuid}/
+Summary: Delete a permission request (staff only)
+Description: Deletes a permission request. This action is restricted to staff users.
 Path parameters:
   - uuid
 

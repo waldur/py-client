@@ -1718,11 +1718,11 @@ Module: `waldur_api_client.api.marketplace_slurm_periodic_usage_policies`
 ## marketplace-software-catalogs
 Module: `waldur_api_client.api.marketplace_software_catalogs`
 
-- `marketplace_software_catalogs_list` GET `/api/marketplace-software-catalogs/` — List software catalogs (3 query params)
-- `marketplace_software_catalogs_count` HEAD `/api/marketplace-software-catalogs/` — List software catalogs (3 query params)
+- `marketplace_software_catalogs_list` GET `/api/marketplace-software-catalogs/` — List software catalogs (6 query params)
+- `marketplace_software_catalogs_count` HEAD `/api/marketplace-software-catalogs/` — List software catalogs (6 query params)
 - `marketplace_software_catalogs_create` POST `/api/marketplace-software-catalogs/` — Create a software catalog (request body)
-- `marketplace_software_catalogs_discover_list` GET `/api/marketplace-software-catalogs/discover/` — Discover available software catalog versions (3 query params)
-- `marketplace_software_catalogs_discover_count` HEAD `/api/marketplace-software-catalogs/discover/` — Discover available software catalog versions (3 query params)
+- `marketplace_software_catalogs_discover_list` GET `/api/marketplace-software-catalogs/discover/` — Discover available software catalog versions (6 query params)
+- `marketplace_software_catalogs_discover_count` HEAD `/api/marketplace-software-catalogs/discover/` — Discover available software catalog versions (6 query params)
 - `marketplace_software_catalogs_import_catalog` POST `/api/marketplace-software-catalogs/import_catalog/` — Import a new software catalog (request body)
 - `marketplace_software_catalogs_retrieve` GET `/api/marketplace-software-catalogs/{uuid}/` — Retrieve a software catalog (path: uuid)
 - `marketplace_software_catalogs_update` PUT `/api/marketplace-software-catalogs/{uuid}/` — Update a software catalog (path: uuid | request body)
@@ -1733,8 +1733,8 @@ Module: `waldur_api_client.api.marketplace_software_catalogs`
 ## marketplace-software-packages
 Module: `waldur_api_client.api.marketplace_software_packages`
 
-- `marketplace_software_packages_list` GET `/api/marketplace-software-packages/` — List software packages (15 query params)
-- `marketplace_software_packages_count` HEAD `/api/marketplace-software-packages/` — List software packages (15 query params)
+- `marketplace_software_packages_list` GET `/api/marketplace-software-packages/` — List software packages (21 query params)
+- `marketplace_software_packages_count` HEAD `/api/marketplace-software-packages/` — List software packages (21 query params)
 - `marketplace_software_packages_create` POST `/api/marketplace-software-packages/` — Create a software package (request body)
 - `marketplace_software_packages_retrieve` GET `/api/marketplace-software-packages/{uuid}/` — Retrieve a software package (path: uuid)
 - `marketplace_software_packages_update` PUT `/api/marketplace-software-packages/{uuid}/` — Update a software package (path: uuid | request body)
@@ -1744,8 +1744,8 @@ Module: `waldur_api_client.api.marketplace_software_packages`
 ## marketplace-software-targets
 Module: `waldur_api_client.api.marketplace_software_targets`
 
-- `marketplace_software_targets_list` GET `/api/marketplace-software-targets/` — List software targets (8 query params)
-- `marketplace_software_targets_count` HEAD `/api/marketplace-software-targets/` — List software targets (8 query params)
+- `marketplace_software_targets_list` GET `/api/marketplace-software-targets/` — List software targets (11 query params)
+- `marketplace_software_targets_count` HEAD `/api/marketplace-software-targets/` — List software targets (11 query params)
 - `marketplace_software_targets_create` POST `/api/marketplace-software-targets/` — Create a software target (no params)
 - `marketplace_software_targets_retrieve` GET `/api/marketplace-software-targets/{uuid}/` — Retrieve a software target (path: uuid)
 - `marketplace_software_targets_update` PUT `/api/marketplace-software-targets/{uuid}/` — Update a software target (path: uuid)
@@ -1755,8 +1755,8 @@ Module: `waldur_api_client.api.marketplace_software_targets`
 ## marketplace-software-versions
 Module: `waldur_api_client.api.marketplace_software_versions`
 
-- `marketplace_software_versions_list` GET `/api/marketplace-software-versions/` — List software versions (8 query params)
-- `marketplace_software_versions_count` HEAD `/api/marketplace-software-versions/` — List software versions (8 query params)
+- `marketplace_software_versions_list` GET `/api/marketplace-software-versions/` — List software versions (15 query params)
+- `marketplace_software_versions_count` HEAD `/api/marketplace-software-versions/` — List software versions (15 query params)
 - `marketplace_software_versions_create` POST `/api/marketplace-software-versions/` — Create a software version (no params)
 - `marketplace_software_versions_retrieve` GET `/api/marketplace-software-versions/{uuid}/` — Retrieve a software version (path: uuid)
 - `marketplace_software_versions_update` PUT `/api/marketplace-software-versions/{uuid}/` — Update a software version (path: uuid)
@@ -3331,6 +3331,7 @@ Module: `waldur_api_client.api.user_permission_requests`
 - `user_permission_requests_list` GET `/api/user-permission-requests/` — List permission requests (6 query params)
 - `user_permission_requests_count` HEAD `/api/user-permission-requests/` — List permission requests (6 query params)
 - `user_permission_requests_retrieve` GET `/api/user-permission-requests/{uuid}/` — Retrieve permission request (path: uuid)
+- `user_permission_requests_destroy` DELETE `/api/user-permission-requests/{uuid}/` — Delete a permission request (staff only) (path: uuid)
 - `user_permission_requests_approve` POST `/api/user-permission-requests/{uuid}/approve/` — Approve a permission request (path: uuid | request body)
 - `user_permission_requests_cancel_request` POST `/api/user-permission-requests/{uuid}/cancel_request/` — Cancel a permission request (path: uuid)
 - `user_permission_requests_reject` POST `/api/user-permission-requests/{uuid}/reject/` — Reject a permission request (path: uuid | request body)

@@ -5,6 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.catalog_type_enum import CatalogTypeEnum
 from ...models.software_catalog_discover import SoftwareCatalogDiscover
 from ...models.software_catalog_o_enum import SoftwareCatalogOEnum
 from ...types import UNSET, Response, Unset
@@ -13,6 +14,9 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
+    auto_update_enabled: Union[Unset, bool] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
+    description: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -20,6 +24,16 @@ def _get_kwargs(
     version: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["auto_update_enabled"] = auto_update_enabled
+
+    json_catalog_type: Union[Unset, str] = UNSET
+    if not isinstance(catalog_type, Unset):
+        json_catalog_type = catalog_type.value
+
+    params["catalog_type"] = json_catalog_type
+
+    params["description"] = description
 
     params["name"] = name
 
@@ -80,6 +94,9 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    auto_update_enabled: Union[Unset, bool] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
+    description: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -92,6 +109,9 @@ def sync_detailed(
     Returns detected versions and whether an update is available compared to existing database records.
 
     Args:
+        auto_update_enabled (Union[Unset, bool]):
+        catalog_type (Union[Unset, CatalogTypeEnum]):
+        description (Union[Unset, str]):
         name (Union[Unset, str]):
         o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
@@ -107,6 +127,9 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        auto_update_enabled=auto_update_enabled,
+        catalog_type=catalog_type,
+        description=description,
         name=name,
         o=o,
         page=page,
@@ -124,6 +147,9 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    auto_update_enabled: Union[Unset, bool] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
+    description: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -136,6 +162,9 @@ def sync(
     Returns detected versions and whether an update is available compared to existing database records.
 
     Args:
+        auto_update_enabled (Union[Unset, bool]):
+        catalog_type (Union[Unset, CatalogTypeEnum]):
+        description (Union[Unset, str]):
         name (Union[Unset, str]):
         o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
@@ -152,6 +181,9 @@ def sync(
 
     return sync_detailed(
         client=client,
+        auto_update_enabled=auto_update_enabled,
+        catalog_type=catalog_type,
+        description=description,
         name=name,
         o=o,
         page=page,
@@ -163,6 +195,9 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    auto_update_enabled: Union[Unset, bool] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
+    description: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -175,6 +210,9 @@ async def asyncio_detailed(
     Returns detected versions and whether an update is available compared to existing database records.
 
     Args:
+        auto_update_enabled (Union[Unset, bool]):
+        catalog_type (Union[Unset, CatalogTypeEnum]):
+        description (Union[Unset, str]):
         name (Union[Unset, str]):
         o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
@@ -190,6 +228,9 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        auto_update_enabled=auto_update_enabled,
+        catalog_type=catalog_type,
+        description=description,
         name=name,
         o=o,
         page=page,
@@ -205,6 +246,9 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    auto_update_enabled: Union[Unset, bool] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
+    description: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -217,6 +261,9 @@ async def asyncio(
     Returns detected versions and whether an update is available compared to existing database records.
 
     Args:
+        auto_update_enabled (Union[Unset, bool]):
+        catalog_type (Union[Unset, CatalogTypeEnum]):
+        description (Union[Unset, str]):
         name (Union[Unset, str]):
         o (Union[Unset, list[SoftwareCatalogOEnum]]):
         page (Union[Unset, int]):
@@ -234,6 +281,9 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            auto_update_enabled=auto_update_enabled,
+            catalog_type=catalog_type,
+            description=description,
             name=name,
             o=o,
             page=page,
@@ -246,6 +296,9 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
+    auto_update_enabled: Union[Unset, bool] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
+    description: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -258,6 +311,9 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        auto_update_enabled (Union[Unset, bool]):
+        catalog_type (Union[Unset, CatalogTypeEnum]):
+        description (Union[Unset, str]):
         name (Union[Unset, str]):
         o (Union[Unset, list[SoftwareCatalogOEnum]]):
         version (Union[Unset, str]):
@@ -275,6 +331,9 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        auto_update_enabled=auto_update_enabled,
+        catalog_type=catalog_type,
+        description=description,
         name=name,
         o=o,
         version=version,
@@ -325,6 +384,9 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
+    auto_update_enabled: Union[Unset, bool] = UNSET,
+    catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
+    description: Union[Unset, str] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SoftwareCatalogOEnum]] = UNSET,
     version: Union[Unset, str] = UNSET,
@@ -337,6 +399,9 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        auto_update_enabled (Union[Unset, bool]):
+        catalog_type (Union[Unset, CatalogTypeEnum]):
+        description (Union[Unset, str]):
         name (Union[Unset, str]):
         o (Union[Unset, list[SoftwareCatalogOEnum]]):
         version (Union[Unset, str]):
@@ -354,6 +419,9 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        auto_update_enabled=auto_update_enabled,
+        catalog_type=catalog_type,
+        description=description,
         name=name,
         o=o,
         version=version,
