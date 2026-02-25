@@ -18,6 +18,7 @@ class UserFieldEnum(str, Enum):
     FULL_NAME = "full_name"
     GENDER = "gender"
     HAS_ACTIVE_SESSION = "has_active_session"
+    HAS_USABLE_PASSWORD = "has_usable_password"
     IDENTITY_PROVIDER_FIELDS = "identity_provider_fields"
     IDENTITY_PROVIDER_LABEL = "identity_provider_label"
     IDENTITY_PROVIDER_MANAGEMENT_URL = "identity_provider_management_url"

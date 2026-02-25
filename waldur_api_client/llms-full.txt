@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.5-dev.20260225140927
+# Version: 8.0.5-dev.20260225155945
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -20404,6 +20404,13 @@ Path parameters:
 ### users_refresh_token
 POST /api/users/{uuid}/refresh_token/
 Summary: Refresh user auth token
+Path parameters:
+  - uuid
+
+### users_remove_password
+POST /api/users/{uuid}/remove_password/
+Summary: Remove user password
+Description: Allows staff user to remove password for any user, making it unusable.
 Path parameters:
   - uuid
 

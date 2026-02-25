@@ -60,6 +60,7 @@ class User:
         image (Union[None, Unset, str]):
         identity_source (Union[Unset, str]): Indicates what identity provider was used.
         has_active_session (Union[Unset, bool]):
+        has_usable_password (Union[Unset, bool]):
         ip_address (Union[None, Unset, str]):
         gender (Union[GenderEnum, None, Unset]): ISO 5218 gender code
         personal_title (Union[Unset, str]): Honorific title (Mr, Ms, Dr, Prof, etc.)
@@ -117,6 +118,7 @@ class User:
     image: Union[None, Unset, str] = UNSET
     identity_source: Union[Unset, str] = UNSET
     has_active_session: Union[Unset, bool] = UNSET
+    has_usable_password: Union[Unset, bool] = UNSET
     ip_address: Union[None, Unset, str] = UNSET
     gender: Union[GenderEnum, None, Unset] = UNSET
     personal_title: Union[Unset, str] = UNSET
@@ -252,6 +254,8 @@ class User:
 
         has_active_session = self.has_active_session
 
+        has_usable_password = self.has_usable_password
+
         ip_address: Union[None, Unset, str]
         if isinstance(self.ip_address, Unset):
             ip_address = UNSET
@@ -367,6 +371,8 @@ class User:
             field_dict["identity_source"] = identity_source
         if has_active_session is not UNSET:
             field_dict["has_active_session"] = has_active_session
+        if has_usable_password is not UNSET:
+            field_dict["has_usable_password"] = has_usable_password
         if ip_address is not UNSET:
             field_dict["ip_address"] = ip_address
         if gender is not UNSET:
@@ -565,6 +571,8 @@ class User:
 
         has_active_session = d.pop("has_active_session", UNSET)
 
+        has_usable_password = d.pop("has_usable_password", UNSET)
+
         def _parse_ip_address(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -654,6 +662,7 @@ class User:
             image=image,
             identity_source=identity_source,
             has_active_session=has_active_session,
+            has_usable_password=has_usable_password,
             ip_address=ip_address,
             gender=gender,
             personal_title=personal_title,

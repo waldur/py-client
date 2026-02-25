@@ -3375,6 +3375,7 @@ Module: `waldur_api_client.api.users`
 - `users_identity_bridge_status_retrieve` GET `/api/users/{uuid}/identity_bridge_status/` — Get identity bridge status for a user (path: uuid)
 - `users_pull_remote_user` POST `/api/users/{uuid}/pull_remote_user/` — Synchronize user details from eduTEAMS (path: uuid)
 - `users_refresh_token` POST `/api/users/{uuid}/refresh_token/` — Refresh user auth token (path: uuid)
+- `users_remove_password` POST `/api/users/{uuid}/remove_password/` — Remove user password (path: uuid)
 - `users_send_notification` POST `/api/users/{uuid}/send_notification/` — Send action notification to a specific user (path: uuid)
 - `users_token_retrieve` GET `/api/users/{uuid}/token/` — Get user auth token (path: uuid)
 - `users_update_actions` POST `/api/users/{uuid}/update_actions/` — Recalculate user actions for a specific user (path: uuid | request body)
