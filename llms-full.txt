@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.5-dev.20260225102805
+# Version: 8.0.5-dev.20260225114114
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3083,11 +3083,15 @@ Path parameters:
 GET /api/customer-quotas/
 Summary: List customer quotas
 Description: List customer quotas.
+Query parameters (1):
+  - quota_name (required) — Name of the quota
 
 ### customer_quotas_count
 HEAD /api/customer-quotas/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - quota_name (required) — Name of the quota
 
 ============================================================
 ## customers  (module: waldur_api_client.api.customers)
@@ -15335,11 +15339,15 @@ Path parameters:
 GET /api/project-quotas/
 Summary: List project quotas
 Description: List project quotas.
+Query parameters (1):
+  - quota_name (required) — Name of the quota
 
 ### project_quotas_count
 HEAD /api/project-quotas/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - quota_name (required) — Name of the quota
 
 ============================================================
 ## project-types  (module: waldur_api_client.api.project_types)

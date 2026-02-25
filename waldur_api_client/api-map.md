@@ -596,8 +596,8 @@ Module: `waldur_api_client.api.customer_permissions_reviews`
 ## customer-quotas
 Module: `waldur_api_client.api.customer_quotas`
 
-- `customer_quotas_list` GET `/api/customer-quotas/` — List customer quotas (no params)
-- `customer_quotas_count` HEAD `/api/customer-quotas/` — Get number of items in the collection matching the request parameters (no params)
+- `customer_quotas_list` GET `/api/customer-quotas/` — List customer quotas (1 query param)
+- `customer_quotas_count` HEAD `/api/customer-quotas/` — Get number of items in the collection matching the request parameters (1 query param)
 
 ## customers
 Module: `waldur_api_client.api.customers`
@@ -2502,8 +2502,8 @@ Module: `waldur_api_client.api.project_permissions_reviews`
 ## project-quotas
 Module: `waldur_api_client.api.project_quotas`
 
-- `project_quotas_list` GET `/api/project-quotas/` — List project quotas (no params)
-- `project_quotas_count` HEAD `/api/project-quotas/` — Get number of items in the collection matching the request parameters (no params)
+- `project_quotas_list` GET `/api/project-quotas/` — List project quotas (1 query param)
+- `project_quotas_count` HEAD `/api/project-quotas/` — Get number of items in the collection matching the request parameters (1 query param)
 
 ## project-types
 Module: `waldur_api_client.api.project_types`

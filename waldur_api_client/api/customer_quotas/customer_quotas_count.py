@@ -5,6 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.customer_quotas_quota_name_enum import CustomerQuotasQuotaNameEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -12,12 +13,16 @@ def _get_kwargs(
     *,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    quota_name: CustomerQuotasQuotaNameEnum,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["page"] = page
 
     params["page_size"] = page_size
+
+    json_quota_name = quota_name.value
+    params["quota_name"] = json_quota_name
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -61,12 +66,14 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    quota_name: CustomerQuotasQuotaNameEnum,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        quota_name (CustomerQuotasQuotaNameEnum):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -79,6 +86,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         page=page,
         page_size=page_size,
+        quota_name=quota_name,
     )
 
     response = client.get_httpx_client().request(
@@ -93,12 +101,14 @@ def sync(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    quota_name: CustomerQuotasQuotaNameEnum,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        quota_name (CustomerQuotasQuotaNameEnum):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -112,6 +122,7 @@ def sync(
         client=client,
         page=page,
         page_size=page_size,
+        quota_name=quota_name,
     ).parsed
 
 
@@ -120,12 +131,14 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    quota_name: CustomerQuotasQuotaNameEnum,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        quota_name (CustomerQuotasQuotaNameEnum):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -138,6 +151,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         page=page,
         page_size=page_size,
+        quota_name=quota_name,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -150,12 +164,14 @@ async def asyncio(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    quota_name: CustomerQuotasQuotaNameEnum,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        quota_name (CustomerQuotasQuotaNameEnum):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -170,5 +186,6 @@ async def asyncio(
             client=client,
             page=page,
             page_size=page_size,
+            quota_name=quota_name,
         )
     ).parsed

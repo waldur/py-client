@@ -453,6 +453,7 @@ from .customer_oecd_code_stats import CustomerOecdCodeStats
 from .customer_permission_review import CustomerPermissionReview
 from .customer_permission_review_o_enum import CustomerPermissionReviewOEnum
 from .customer_quotas import CustomerQuotas
+from .customer_quotas_quota_name_enum import CustomerQuotasQuotaNameEnum
 from .customer_request import CustomerRequest
 from .customer_request_form import CustomerRequestForm
 from .customer_request_multipart import CustomerRequestMultipart
@@ -2619,6 +2620,7 @@ __all__ = (
     "CustomerPermissionReview",
     "CustomerPermissionReviewOEnum",
     "CustomerQuotas",
+    "CustomerQuotasQuotaNameEnum",
     "CustomerRequest",
     "CustomerRequestForm",
     "CustomerRequestMultipart",
