@@ -23,6 +23,7 @@ class AgentIdentity:
         uuid (UUID):
         url (str):
         offering (UUID): UUID of an offering with a site-agent compatible type.
+        created_by (UUID):
         name (str):
         created (datetime.datetime):
         modified (datetime.datetime):
@@ -37,6 +38,7 @@ class AgentIdentity:
     uuid: UUID
     url: str
     offering: UUID
+    created_by: UUID
     name: str
     created: datetime.datetime
     modified: datetime.datetime
@@ -54,6 +56,8 @@ class AgentIdentity:
         url = self.url
 
         offering = str(self.offering)
+
+        created_by = str(self.created_by)
 
         name = self.name
 
@@ -97,6 +101,7 @@ class AgentIdentity:
                 "uuid": uuid,
                 "url": url,
                 "offering": offering,
+                "created_by": created_by,
                 "name": name,
                 "created": created,
                 "modified": modified,
@@ -126,6 +131,8 @@ class AgentIdentity:
         url = d.pop("url")
 
         offering = UUID(d.pop("offering"))
+
+        created_by = UUID(d.pop("created_by"))
 
         name = d.pop("name")
 
@@ -180,6 +187,7 @@ class AgentIdentity:
             uuid=uuid,
             url=url,
             offering=offering,
+            created_by=created_by,
             name=name,
             created=created,
             modified=modified,
