@@ -17,6 +17,7 @@ from ..models.onboarding_validation_enum import OnboardingValidationEnum
 from ..models.restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
 from ..models.scriptrunmode_enum import SCRIPTRUNMODEEnum
 from ..models.sidebarstyle_enum import SIDEBARSTYLEEnum
+from ..models.sshkeyallowedtypes_enum import SSHKEYALLOWEDTYPESEnum
 from ..models.user_attribute_enum import UserAttributeEnum
 from ..models.waldursupportactivebackendtype_enum import WALDURSUPPORTACTIVEBACKENDTYPEEnum
 from ..models.zammadarticletype_enum import ZAMMADARTICLETYPEEnum
@@ -54,6 +55,7 @@ class ConstanceSettingsRequestForm:
         disable_sending_notifications_about_resource_update (Union[Unset, bool]):
         marketplace_landing_page (Union[Unset, str]):
         enable_stale_resource_notifications (Union[Unset, bool]):
+        enable_issues_for_user_ssh_key_changes (Union[Unset, bool]):
         telemetry_url (Union[Unset, str]):
         telemetry_version (Union[Unset, int]):
         script_run_mode (Union[Unset, SCRIPTRUNMODEEnum]):
@@ -272,6 +274,8 @@ class ConstanceSettingsRequestForm:
         federated_identity_sync_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         federated_identity_deactivation_policy (Union[Unset, FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum]):
         enable_project_digest (Union[Unset, bool]):
+        ssh_key_allowed_types (Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]]):
+        ssh_key_min_rsa_key_size (Union[Unset, int]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -293,6 +297,7 @@ class ConstanceSettingsRequestForm:
     disable_sending_notifications_about_resource_update: Union[Unset, bool] = UNSET
     marketplace_landing_page: Union[Unset, str] = UNSET
     enable_stale_resource_notifications: Union[Unset, bool] = UNSET
+    enable_issues_for_user_ssh_key_changes: Union[Unset, bool] = UNSET
     telemetry_url: Union[Unset, str] = UNSET
     telemetry_version: Union[Unset, int] = UNSET
     script_run_mode: Union[Unset, SCRIPTRUNMODEEnum] = UNSET
@@ -511,6 +516,8 @@ class ConstanceSettingsRequestForm:
     federated_identity_sync_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     federated_identity_deactivation_policy: Union[Unset, FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum] = UNSET
     enable_project_digest: Union[Unset, bool] = UNSET
+    ssh_key_allowed_types: Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]] = UNSET
+    ssh_key_min_rsa_key_size: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -553,6 +560,8 @@ class ConstanceSettingsRequestForm:
         marketplace_landing_page = self.marketplace_landing_page
 
         enable_stale_resource_notifications = self.enable_stale_resource_notifications
+
+        enable_issues_for_user_ssh_key_changes = self.enable_issues_for_user_ssh_key_changes
 
         telemetry_url = self.telemetry_url
 
@@ -1192,6 +1201,20 @@ class ConstanceSettingsRequestForm:
 
         enable_project_digest = self.enable_project_digest
 
+        ssh_key_allowed_types: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.ssh_key_allowed_types, Unset):
+            ssh_key_allowed_types = []
+            for ssh_key_allowed_types_item_data in self.ssh_key_allowed_types:
+                ssh_key_allowed_types_item: str
+                if isinstance(ssh_key_allowed_types_item_data, SSHKEYALLOWEDTYPESEnum):
+                    ssh_key_allowed_types_item = ssh_key_allowed_types_item_data.value
+                else:
+                    ssh_key_allowed_types_item = ssh_key_allowed_types_item_data.value
+
+                ssh_key_allowed_types.append(ssh_key_allowed_types_item)
+
+        ssh_key_min_rsa_key_size = self.ssh_key_min_rsa_key_size
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -1235,6 +1258,8 @@ class ConstanceSettingsRequestForm:
             field_dict["MARKETPLACE_LANDING_PAGE"] = marketplace_landing_page
         if enable_stale_resource_notifications is not UNSET:
             field_dict["ENABLE_STALE_RESOURCE_NOTIFICATIONS"] = enable_stale_resource_notifications
+        if enable_issues_for_user_ssh_key_changes is not UNSET:
+            field_dict["ENABLE_ISSUES_FOR_USER_SSH_KEY_CHANGES"] = enable_issues_for_user_ssh_key_changes
         if telemetry_url is not UNSET:
             field_dict["TELEMETRY_URL"] = telemetry_url
         if telemetry_version is not UNSET:
@@ -1675,6 +1700,10 @@ class ConstanceSettingsRequestForm:
             field_dict["FEDERATED_IDENTITY_DEACTIVATION_POLICY"] = federated_identity_deactivation_policy
         if enable_project_digest is not UNSET:
             field_dict["ENABLE_PROJECT_DIGEST"] = enable_project_digest
+        if ssh_key_allowed_types is not UNSET:
+            field_dict["SSH_KEY_ALLOWED_TYPES"] = ssh_key_allowed_types
+        if ssh_key_min_rsa_key_size is not UNSET:
+            field_dict["SSH_KEY_MIN_RSA_KEY_SIZE"] = ssh_key_min_rsa_key_size
 
         return field_dict
 
@@ -1731,6 +1760,8 @@ class ConstanceSettingsRequestForm:
         marketplace_landing_page = d.pop("MARKETPLACE_LANDING_PAGE", UNSET)
 
         enable_stale_resource_notifications = d.pop("ENABLE_STALE_RESOURCE_NOTIFICATIONS", UNSET)
+
+        enable_issues_for_user_ssh_key_changes = d.pop("ENABLE_ISSUES_FOR_USER_SSH_KEY_CHANGES", UNSET)
 
         telemetry_url = d.pop("TELEMETRY_URL", UNSET)
 
@@ -2593,6 +2624,31 @@ class ConstanceSettingsRequestForm:
 
         enable_project_digest = d.pop("ENABLE_PROJECT_DIGEST", UNSET)
 
+        ssh_key_allowed_types = []
+        _ssh_key_allowed_types = d.pop("SSH_KEY_ALLOWED_TYPES", UNSET)
+        for ssh_key_allowed_types_item_data in _ssh_key_allowed_types or []:
+
+            def _parse_ssh_key_allowed_types_item(data: object) -> Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    ssh_key_allowed_types_item_type_0 = SSHKEYALLOWEDTYPESEnum(data)
+
+                    return ssh_key_allowed_types_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                ssh_key_allowed_types_item_type_1 = BlankEnum(data)
+
+                return ssh_key_allowed_types_item_type_1
+
+            ssh_key_allowed_types_item = _parse_ssh_key_allowed_types_item(ssh_key_allowed_types_item_data)
+
+            ssh_key_allowed_types.append(ssh_key_allowed_types_item)
+
+        ssh_key_min_rsa_key_size = d.pop("SSH_KEY_MIN_RSA_KEY_SIZE", UNSET)
+
         constance_settings_request_form = cls(
             site_name=site_name,
             site_description=site_description,
@@ -2613,6 +2669,7 @@ class ConstanceSettingsRequestForm:
             disable_sending_notifications_about_resource_update=disable_sending_notifications_about_resource_update,
             marketplace_landing_page=marketplace_landing_page,
             enable_stale_resource_notifications=enable_stale_resource_notifications,
+            enable_issues_for_user_ssh_key_changes=enable_issues_for_user_ssh_key_changes,
             telemetry_url=telemetry_url,
             telemetry_version=telemetry_version,
             script_run_mode=script_run_mode,
@@ -2831,6 +2888,8 @@ class ConstanceSettingsRequestForm:
             federated_identity_sync_allowed_attributes=federated_identity_sync_allowed_attributes,
             federated_identity_deactivation_policy=federated_identity_deactivation_policy,
             enable_project_digest=enable_project_digest,
+            ssh_key_allowed_types=ssh_key_allowed_types,
+            ssh_key_min_rsa_key_size=ssh_key_min_rsa_key_size,
         )
 
         constance_settings_request_form.additional_properties = d

@@ -1997,6 +1997,7 @@ from .ssh_key import SshKey
 from .ssh_key_field_enum import SshKeyFieldEnum
 from .ssh_key_o_enum import SshKeyOEnum
 from .ssh_key_request import SshKeyRequest
+from .sshkeyallowedtypes_enum import SSHKEYALLOWEDTYPESEnum
 from .state_transition_error import StateTransitionError
 from .storage_data_type import StorageDataType
 from .storage_data_type_request import StorageDataTypeRequest
@@ -4073,6 +4074,7 @@ __all__ = (
     "SoftwareVersionToolchain",
     "SourceTypeEnum",
     "SshKey",
+    "SSHKEYALLOWEDTYPESEnum",
     "SshKeyFieldEnum",
     "SshKeyOEnum",
     "SshKeyRequest",
