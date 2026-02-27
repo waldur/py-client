@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.0.5-dev.20260227155420).
+> Auto-generated Python SDK for the Waldur API (version 8.0.5-dev.20260227210619).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -275,7 +275,7 @@ waldur_api_client/
 - **remote-waldur-api** (20 endpoints)
 - **reviewer-bids** (11 endpoints)
 - **reviewer-invitations** (3 endpoints)
-- **reviewer-profiles** (42 endpoints)
+- **reviewer-profiles** (36 endpoints)
 - **reviewer-suggestions** (6 endpoints)
 - **roles** (10 endpoints)
 - **service-settings** (3 endpoints)

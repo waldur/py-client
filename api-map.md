@@ -2992,16 +2992,10 @@ Module: `waldur_api_client.api.reviewer_profiles`
 - `reviewer_profiles_update` PUT `/api/reviewer-profiles/{uuid}/` (path: uuid | request body)
 - `reviewer_profiles_partial_update` PATCH `/api/reviewer-profiles/{uuid}/` (path: uuid | request body)
 - `reviewer_profiles_destroy` DELETE `/api/reviewer-profiles/{uuid}/` (path: uuid)
-- `reviewer_profiles_affiliations_list` GET `/api/reviewer-profiles/{uuid}/affiliations/` — List affiliations for a reviewer profile (path: uuid)
-- `reviewer_profiles_affiliations_create` POST `/api/reviewer-profiles/{uuid}/affiliations/` — Create affiliation for a reviewer profile (path: uuid | request body)
 - `reviewer_profiles_connect_orcid_retrieve` GET `/api/reviewer-profiles/{uuid}/connect-orcid/` — Get ORCID OAuth authorization URL (path: uuid)
 - `reviewer_profiles_connect_orcid_callback` POST `/api/reviewer-profiles/{uuid}/connect-orcid/callback/` — Complete ORCID OAuth connection with authorization code (path: uuid | request body)
 - `reviewer_profiles_disconnect_orcid` POST `/api/reviewer-profiles/{uuid}/disconnect-orcid/` — Disconnect ORCID from profile (path: uuid | request body)
-- `reviewer_profiles_expertise_list` GET `/api/reviewer-profiles/{uuid}/expertise/` — List expertise keywords for a reviewer profile (path: uuid)
-- `reviewer_profiles_expertise_create` POST `/api/reviewer-profiles/{uuid}/expertise/` — Create expertise entry for a reviewer profile (path: uuid | request body)
 - `reviewer_profiles_import_publications` POST `/api/reviewer-profiles/{uuid}/import-publications/` — Import publications from ORCID or other sources (path: uuid | request body)
-- `reviewer_profiles_publications_list` GET `/api/reviewer-profiles/{uuid}/publications/` — List publications for a reviewer profile (path: uuid)
-- `reviewer_profiles_publications_create` POST `/api/reviewer-profiles/{uuid}/publications/` — Create publication for a reviewer profile (path: uuid | request body)
 - `reviewer_profiles_sync_orcid` POST `/api/reviewer-profiles/{uuid}/sync-orcid/` — Sync profile data from ORCID (path: uuid | request body)
 
 ## reviewer-suggestions

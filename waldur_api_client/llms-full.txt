@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.5-dev.20260227155420
+# Version: 8.0.5-dev.20260227210619
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -18265,21 +18265,6 @@ DELETE /api/reviewer-profiles/{uuid}/
 Path parameters:
   - uuid
 
-### reviewer_profiles_affiliations_list
-GET /api/reviewer-profiles/{uuid}/affiliations/
-Summary: List affiliations for a reviewer profile
-Description: List affiliations for a reviewer profile.
-Path parameters:
-  - uuid
-
-### reviewer_profiles_affiliations_create
-POST /api/reviewer-profiles/{uuid}/affiliations/
-Summary: Create affiliation for a reviewer profile
-Description: Create affiliation for a reviewer profile.
-Path parameters:
-  - uuid
-Request body: yes
-
 ### reviewer_profiles_connect_orcid_retrieve
 GET /api/reviewer-profiles/{uuid}/connect-orcid/
 Summary: Get ORCID OAuth authorization URL
@@ -18303,40 +18288,10 @@ Path parameters:
   - uuid
 Request body: yes
 
-### reviewer_profiles_expertise_list
-GET /api/reviewer-profiles/{uuid}/expertise/
-Summary: List expertise keywords for a reviewer profile
-Description: List expertise keywords for a reviewer profile.
-Path parameters:
-  - uuid
-
-### reviewer_profiles_expertise_create
-POST /api/reviewer-profiles/{uuid}/expertise/
-Summary: Create expertise entry for a reviewer profile
-Description: Create expertise entry for a reviewer profile.
-Path parameters:
-  - uuid
-Request body: yes
-
 ### reviewer_profiles_import_publications
 POST /api/reviewer-profiles/{uuid}/import-publications/
 Summary: Import publications from ORCID or other sources
 Description: Import publications from ORCID or other sources.
-Path parameters:
-  - uuid
-Request body: yes
-
-### reviewer_profiles_publications_list
-GET /api/reviewer-profiles/{uuid}/publications/
-Summary: List publications for a reviewer profile
-Description: List publications for a reviewer profile.
-Path parameters:
-  - uuid
-
-### reviewer_profiles_publications_create
-POST /api/reviewer-profiles/{uuid}/publications/
-Summary: Create publication for a reviewer profile
-Description: Create publication for a reviewer profile.
 Path parameters:
   - uuid
 Request body: yes
