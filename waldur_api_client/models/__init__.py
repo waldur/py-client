@@ -164,12 +164,14 @@ from .azure_sql_database_marketplace_offering_plugin_options_type_0 import (
 )
 from .azure_sql_database_request import AzureSqlDatabaseRequest
 from .azure_sql_server import AzureSqlServer
+from .azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
 from .azure_sql_server_field_enum import AzureSqlServerFieldEnum
 from .azure_sql_server_marketplace_offering_plugin_options_type_0 import (
     AzureSqlServerMarketplaceOfferingPluginOptionsType0,
 )
 from .azure_sql_server_request import AzureSqlServerRequest
 from .azure_virtual_machine import AzureVirtualMachine
+from .azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
 from .azure_virtual_machine_field_enum import AzureVirtualMachineFieldEnum
 from .azure_virtual_machine_marketplace_offering_plugin_options_type_0 import (
     AzureVirtualMachineMarketplaceOfferingPluginOptionsType0,
@@ -809,6 +811,8 @@ from .marketplace_category_request_form import MarketplaceCategoryRequestForm
 from .marketplace_category_request_multipart import MarketplaceCategoryRequestMultipart
 from .marketplace_customer_stats import MarketplaceCustomerStats
 from .marketplace_global_categories_retrieve_response_200 import MarketplaceGlobalCategoriesRetrieveResponse200
+from .marketplace_open_portal_create_order_attributes import MarketplaceOpenPortalCreateOrderAttributes
+from .marketplace_open_portal_remote_create_order_attributes import MarketplaceOpenPortalRemoteCreateOrderAttributes
 from .marketplace_orders_set_backend_id_response_200 import MarketplaceOrdersSetBackendIdResponse200
 from .marketplace_plans_history_at_retrieve_response_400 import MarketplacePlansHistoryAtRetrieveResponse400
 from .marketplace_plans_history_at_retrieve_response_404 import MarketplacePlansHistoryAtRetrieveResponse404
@@ -1083,8 +1087,10 @@ from .open_stack_backup_restoration import OpenStackBackupRestoration
 from .open_stack_backup_restoration_create_request import OpenStackBackupRestorationCreateRequest
 from .open_stack_backup_restoration_request import OpenStackBackupRestorationRequest
 from .open_stack_create_floating_ip_request import OpenStackCreateFloatingIPRequest
+from .open_stack_create_instance_port_request import OpenStackCreateInstancePortRequest
 from .open_stack_create_port_request import OpenStackCreatePortRequest
 from .open_stack_credentials_request import OpenStackCredentialsRequest
+from .open_stack_data_volume_request import OpenStackDataVolumeRequest
 from .open_stack_fixed_ip import OpenStackFixedIp
 from .open_stack_fixed_ip_request import OpenStackFixedIpRequest
 from .open_stack_flavor import OpenStackFlavor
@@ -1102,6 +1108,7 @@ from .open_stack_image import OpenStackImage
 from .open_stack_instance import OpenStackInstance
 from .open_stack_instance_allowed_address_pairs_update_request import OpenStackInstanceAllowedAddressPairsUpdateRequest
 from .open_stack_instance_availability_zone import OpenStackInstanceAvailabilityZone
+from .open_stack_instance_create_order_attributes import OpenStackInstanceCreateOrderAttributes
 from .open_stack_instance_field_enum import OpenStackInstanceFieldEnum
 from .open_stack_instance_floating_i_ps_update_request import OpenStackInstanceFloatingIPsUpdateRequest
 from .open_stack_instance_marketplace_offering_plugin_options_type_0 import (
@@ -1161,6 +1168,7 @@ from .open_stack_security_group_update import OpenStackSecurityGroupUpdate
 from .open_stack_security_group_update_request import OpenStackSecurityGroupUpdateRequest
 from .open_stack_server_group import OpenStackServerGroup
 from .open_stack_server_group_field_enum import OpenStackServerGroupFieldEnum
+from .open_stack_server_group_hyperlink_request import OpenStackServerGroupHyperlinkRequest
 from .open_stack_server_group_marketplace_offering_plugin_options_type_0 import (
     OpenStackServerGroupMarketplaceOfferingPluginOptionsType0,
 )
@@ -1185,6 +1193,7 @@ from .open_stack_sub_net_marketplace_offering_plugin_options_type_0 import (
 from .open_stack_sub_net_request import OpenStackSubNetRequest
 from .open_stack_tenant import OpenStackTenant
 from .open_stack_tenant_change_password_request import OpenStackTenantChangePasswordRequest
+from .open_stack_tenant_create_order_attributes import OpenStackTenantCreateOrderAttributes
 from .open_stack_tenant_field_enum import OpenStackTenantFieldEnum
 from .open_stack_tenant_marketplace_offering_plugin_options_type_0 import (
     OpenStackTenantMarketplaceOfferingPluginOptionsType0,
@@ -1196,6 +1205,7 @@ from .open_stack_tenant_security_group import OpenStackTenantSecurityGroup
 from .open_stack_tenant_security_group_request import OpenStackTenantSecurityGroupRequest
 from .open_stack_volume import OpenStackVolume
 from .open_stack_volume_availability_zone import OpenStackVolumeAvailabilityZone
+from .open_stack_volume_create_order_attributes import OpenStackVolumeCreateOrderAttributes
 from .open_stack_volume_extend_request import OpenStackVolumeExtendRequest
 from .open_stack_volume_field_enum import OpenStackVolumeFieldEnum
 from .open_stack_volume_marketplace_offering_plugin_options_type_0 import (
@@ -1958,6 +1968,7 @@ from .slurm_command_history import SlurmCommandHistory
 from .slurm_command_parameters import SlurmCommandParameters
 from .slurm_command_result_mode_enum import SlurmCommandResultModeEnum
 from .slurm_command_result_request import SlurmCommandResultRequest
+from .slurm_invoices_slurm_package_create_order_attributes import SlurmInvoicesSlurmPackageCreateOrderAttributes
 from .slurm_periodic_usage_policy import SlurmPeriodicUsagePolicy
 from .slurm_periodic_usage_policy_request import SlurmPeriodicUsagePolicyRequest
 from .slurm_policy_carryover import SlurmPolicyCarryover
@@ -2124,6 +2135,16 @@ from .user_role_update_request import UserRoleUpdateRequest
 from .username_generation_policy_enum import UsernameGenerationPolicyEnum
 from .users_history_at_retrieve_response_400 import UsersHistoryAtRetrieveResponse400
 from .users_history_at_retrieve_response_404 import UsersHistoryAtRetrieveResponse404
+from .v_mware_virtual_machine_create_order_attributes import VMwareVirtualMachineCreateOrderAttributes
+from .v_mware_virtual_machine_create_order_attributes_guest_os_type_1 import (
+    VMwareVirtualMachineCreateOrderAttributesGuestOsType1,
+)
+from .v_mware_virtual_machine_create_order_attributes_guest_os_type_2_type_1 import (
+    VMwareVirtualMachineCreateOrderAttributesGuestOsType2Type1,
+)
+from .v_mware_virtual_machine_create_order_attributes_guest_os_type_3_type_1 import (
+    VMwareVirtualMachineCreateOrderAttributesGuestOsType3Type1,
+)
 from .validation_decision_enum import ValidationDecisionEnum
 from .validation_method_enum import ValidationMethodEnum
 from .vendor_name_choice import VendorNameChoice
@@ -2340,10 +2361,12 @@ __all__ = (
     "AzureSqlDatabaseMarketplaceOfferingPluginOptionsType0",
     "AzureSqlDatabaseRequest",
     "AzureSqlServer",
+    "AzureSQLServerCreateOrderAttributes",
     "AzureSqlServerFieldEnum",
     "AzureSqlServerMarketplaceOfferingPluginOptionsType0",
     "AzureSqlServerRequest",
     "AzureVirtualMachine",
+    "AzureVirtualMachineCreateOrderAttributes",
     "AzureVirtualMachineFieldEnum",
     "AzureVirtualMachineMarketplaceOfferingPluginOptionsType0",
     "AzureVirtualMachineRequest",
@@ -2969,6 +2992,8 @@ __all__ = (
     "MarketplaceCategoryRequestMultipart",
     "MarketplaceCustomerStats",
     "MarketplaceGlobalCategoriesRetrieveResponse200",
+    "MarketplaceOpenPortalCreateOrderAttributes",
+    "MarketplaceOpenPortalRemoteCreateOrderAttributes",
     "MarketplaceOrdersSetBackendIdResponse200",
     "MarketplacePlansHistoryAtRetrieveResponse400",
     "MarketplacePlansHistoryAtRetrieveResponse404",
@@ -3221,8 +3246,10 @@ __all__ = (
     "OpenStackBackupRestorationCreateRequest",
     "OpenStackBackupRestorationRequest",
     "OpenStackCreateFloatingIPRequest",
+    "OpenStackCreateInstancePortRequest",
     "OpenStackCreatePortRequest",
     "OpenStackCredentialsRequest",
+    "OpenStackDataVolumeRequest",
     "OpenStackFixedIp",
     "OpenStackFixedIpRequest",
     "OpenStackFlavor",
@@ -3238,6 +3265,7 @@ __all__ = (
     "OpenStackInstance",
     "OpenStackInstanceAllowedAddressPairsUpdateRequest",
     "OpenStackInstanceAvailabilityZone",
+    "OpenStackInstanceCreateOrderAttributes",
     "OpenStackInstanceFieldEnum",
     "OpenStackInstanceFloatingIPsUpdateRequest",
     "OpenStackInstanceMarketplaceOfferingPluginOptionsType0",
@@ -3287,6 +3315,7 @@ __all__ = (
     "OpenStackSecurityGroupUpdateRequest",
     "OpenStackServerGroup",
     "OpenStackServerGroupFieldEnum",
+    "OpenStackServerGroupHyperlinkRequest",
     "OpenStackServerGroupMarketplaceOfferingPluginOptionsType0",
     "OpenStackServerGroupRequest",
     "OpenStackSnapshot",
@@ -3305,6 +3334,7 @@ __all__ = (
     "OpenStackSubNetRequest",
     "OpenStackTenant",
     "OpenStackTenantChangePasswordRequest",
+    "OpenStackTenantCreateOrderAttributes",
     "OpenStackTenantFieldEnum",
     "OpenStackTenantMarketplaceOfferingPluginOptionsType0",
     "OpenStackTenantQuota",
@@ -3314,6 +3344,7 @@ __all__ = (
     "OpenStackTenantSecurityGroupRequest",
     "OpenStackVolume",
     "OpenStackVolumeAvailabilityZone",
+    "OpenStackVolumeCreateOrderAttributes",
     "OpenStackVolumeExtendRequest",
     "OpenStackVolumeFieldEnum",
     "OpenStackVolumeMarketplaceOfferingPluginOptionsType0",
@@ -4038,6 +4069,7 @@ __all__ = (
     "SlurmCommandParameters",
     "SlurmCommandResultModeEnum",
     "SlurmCommandResultRequest",
+    "SlurmInvoicesSlurmPackageCreateOrderAttributes",
     "SlurmPeriodicUsagePolicy",
     "SlurmPeriodicUsagePolicyRequest",
     "SlurmPolicyCarryover",
@@ -4234,6 +4266,10 @@ __all__ = (
     "VmwarePortRequest",
     "VmwareTemplate",
     "VmwareVirtualMachine",
+    "VMwareVirtualMachineCreateOrderAttributes",
+    "VMwareVirtualMachineCreateOrderAttributesGuestOsType1",
+    "VMwareVirtualMachineCreateOrderAttributesGuestOsType2Type1",
+    "VMwareVirtualMachineCreateOrderAttributesGuestOsType3Type1",
     "VmwareVirtualMachineFieldEnum",
     "VmwareVirtualMachineMarketplaceOfferingPluginOptionsType0",
     "VmwareVirtualMachineRequest",

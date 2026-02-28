@@ -10,8 +10,21 @@ from ..models.request_types import RequestTypes
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
+    from ..models.azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
     from ..models.generic_order_attributes import GenericOrderAttributes
+    from ..models.marketplace_open_portal_create_order_attributes import MarketplaceOpenPortalCreateOrderAttributes
+    from ..models.marketplace_open_portal_remote_create_order_attributes import (
+        MarketplaceOpenPortalRemoteCreateOrderAttributes,
+    )
+    from ..models.open_stack_instance_create_order_attributes import OpenStackInstanceCreateOrderAttributes
+    from ..models.open_stack_tenant_create_order_attributes import OpenStackTenantCreateOrderAttributes
+    from ..models.open_stack_volume_create_order_attributes import OpenStackVolumeCreateOrderAttributes
     from ..models.order_create_request_limits import OrderCreateRequestLimits
+    from ..models.slurm_invoices_slurm_package_create_order_attributes import (
+        SlurmInvoicesSlurmPackageCreateOrderAttributes,
+    )
+    from ..models.v_mware_virtual_machine_create_order_attributes import VMwareVirtualMachineCreateOrderAttributes
 
 
 T = TypeVar("T", bound="OrderCreateRequest")
@@ -24,7 +37,13 @@ class OrderCreateRequest:
         offering (str):
         project (str):
         plan (Union[Unset, str]):
-        attributes (Union[Unset, GenericOrderAttributes]):
+        attributes (Union['AzureSQLServerCreateOrderAttributes', 'AzureVirtualMachineCreateOrderAttributes',
+            'GenericOrderAttributes', 'MarketplaceOpenPortalCreateOrderAttributes',
+            'MarketplaceOpenPortalRemoteCreateOrderAttributes', 'OpenStackInstanceCreateOrderAttributes',
+            'OpenStackTenantCreateOrderAttributes', 'OpenStackVolumeCreateOrderAttributes',
+            'SlurmInvoicesSlurmPackageCreateOrderAttributes', 'VMwareVirtualMachineCreateOrderAttributes', Unset]):
+            Attributes structure depends on the offering type specified in the parent object. Can also be a generic object
+            for offerings without a specific attributes schema.
         limits (Union[Unset, OrderCreateRequestLimits]):
         accepting_terms_of_service (Union[Unset, bool]):
         callback_url (Union[None, Unset, str]):
@@ -37,7 +56,19 @@ class OrderCreateRequest:
     offering: str
     project: str
     plan: Union[Unset, str] = UNSET
-    attributes: Union[Unset, "GenericOrderAttributes"] = UNSET
+    attributes: Union[
+        "AzureSQLServerCreateOrderAttributes",
+        "AzureVirtualMachineCreateOrderAttributes",
+        "GenericOrderAttributes",
+        "MarketplaceOpenPortalCreateOrderAttributes",
+        "MarketplaceOpenPortalRemoteCreateOrderAttributes",
+        "OpenStackInstanceCreateOrderAttributes",
+        "OpenStackTenantCreateOrderAttributes",
+        "OpenStackVolumeCreateOrderAttributes",
+        "SlurmInvoicesSlurmPackageCreateOrderAttributes",
+        "VMwareVirtualMachineCreateOrderAttributes",
+        Unset,
+    ] = UNSET
     limits: Union[Unset, "OrderCreateRequestLimits"] = UNSET
     accepting_terms_of_service: Union[Unset, bool] = UNSET
     callback_url: Union[None, Unset, str] = UNSET
@@ -48,14 +79,48 @@ class OrderCreateRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
+        from ..models.azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
+        from ..models.marketplace_open_portal_create_order_attributes import MarketplaceOpenPortalCreateOrderAttributes
+        from ..models.marketplace_open_portal_remote_create_order_attributes import (
+            MarketplaceOpenPortalRemoteCreateOrderAttributes,
+        )
+        from ..models.open_stack_instance_create_order_attributes import OpenStackInstanceCreateOrderAttributes
+        from ..models.open_stack_tenant_create_order_attributes import OpenStackTenantCreateOrderAttributes
+        from ..models.open_stack_volume_create_order_attributes import OpenStackVolumeCreateOrderAttributes
+        from ..models.slurm_invoices_slurm_package_create_order_attributes import (
+            SlurmInvoicesSlurmPackageCreateOrderAttributes,
+        )
+        from ..models.v_mware_virtual_machine_create_order_attributes import VMwareVirtualMachineCreateOrderAttributes
+
         offering = self.offering
 
         project = self.project
 
         plan = self.plan
 
-        attributes: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.attributes, Unset):
+        attributes: Union[Unset, dict[str, Any]]
+        if isinstance(self.attributes, Unset):
+            attributes = UNSET
+        elif isinstance(self.attributes, AzureVirtualMachineCreateOrderAttributes):
+            attributes = self.attributes.to_dict()
+        elif isinstance(self.attributes, AzureSQLServerCreateOrderAttributes):
+            attributes = self.attributes.to_dict()
+        elif isinstance(self.attributes, MarketplaceOpenPortalCreateOrderAttributes):
+            attributes = self.attributes.to_dict()
+        elif isinstance(self.attributes, MarketplaceOpenPortalRemoteCreateOrderAttributes):
+            attributes = self.attributes.to_dict()
+        elif isinstance(self.attributes, OpenStackTenantCreateOrderAttributes):
+            attributes = self.attributes.to_dict()
+        elif isinstance(self.attributes, OpenStackInstanceCreateOrderAttributes):
+            attributes = self.attributes.to_dict()
+        elif isinstance(self.attributes, OpenStackVolumeCreateOrderAttributes):
+            attributes = self.attributes.to_dict()
+        elif isinstance(self.attributes, SlurmInvoicesSlurmPackageCreateOrderAttributes):
+            attributes = self.attributes.to_dict()
+        elif isinstance(self.attributes, VMwareVirtualMachineCreateOrderAttributes):
+            attributes = self.attributes.to_dict()
+        else:
             attributes = self.attributes.to_dict()
 
         limits: Union[Unset, dict[str, Any]] = UNSET
@@ -121,8 +186,21 @@ class OrderCreateRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
+        from ..models.azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
         from ..models.generic_order_attributes import GenericOrderAttributes
+        from ..models.marketplace_open_portal_create_order_attributes import MarketplaceOpenPortalCreateOrderAttributes
+        from ..models.marketplace_open_portal_remote_create_order_attributes import (
+            MarketplaceOpenPortalRemoteCreateOrderAttributes,
+        )
+        from ..models.open_stack_instance_create_order_attributes import OpenStackInstanceCreateOrderAttributes
+        from ..models.open_stack_tenant_create_order_attributes import OpenStackTenantCreateOrderAttributes
+        from ..models.open_stack_volume_create_order_attributes import OpenStackVolumeCreateOrderAttributes
         from ..models.order_create_request_limits import OrderCreateRequestLimits
+        from ..models.slurm_invoices_slurm_package_create_order_attributes import (
+            SlurmInvoicesSlurmPackageCreateOrderAttributes,
+        )
+        from ..models.v_mware_virtual_machine_create_order_attributes import VMwareVirtualMachineCreateOrderAttributes
 
         d = dict(src_dict)
         offering = d.pop("offering")
@@ -131,12 +209,102 @@ class OrderCreateRequest:
 
         plan = d.pop("plan", UNSET)
 
-        _attributes = d.pop("attributes", UNSET)
-        attributes: Union[Unset, GenericOrderAttributes]
-        if isinstance(_attributes, Unset):
-            attributes = UNSET
-        else:
-            attributes = GenericOrderAttributes.from_dict(_attributes)
+        def _parse_attributes(
+            data: object,
+        ) -> Union[
+            "AzureSQLServerCreateOrderAttributes",
+            "AzureVirtualMachineCreateOrderAttributes",
+            "GenericOrderAttributes",
+            "MarketplaceOpenPortalCreateOrderAttributes",
+            "MarketplaceOpenPortalRemoteCreateOrderAttributes",
+            "OpenStackInstanceCreateOrderAttributes",
+            "OpenStackTenantCreateOrderAttributes",
+            "OpenStackVolumeCreateOrderAttributes",
+            "SlurmInvoicesSlurmPackageCreateOrderAttributes",
+            "VMwareVirtualMachineCreateOrderAttributes",
+            Unset,
+        ]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attributes_type_0 = AzureVirtualMachineCreateOrderAttributes.from_dict(data)
+
+                return attributes_type_0
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attributes_type_1 = AzureSQLServerCreateOrderAttributes.from_dict(data)
+
+                return attributes_type_1
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attributes_type_2 = MarketplaceOpenPortalCreateOrderAttributes.from_dict(data)
+
+                return attributes_type_2
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attributes_type_3 = MarketplaceOpenPortalRemoteCreateOrderAttributes.from_dict(data)
+
+                return attributes_type_3
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attributes_type_4 = OpenStackTenantCreateOrderAttributes.from_dict(data)
+
+                return attributes_type_4
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attributes_type_5 = OpenStackInstanceCreateOrderAttributes.from_dict(data)
+
+                return attributes_type_5
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attributes_type_6 = OpenStackVolumeCreateOrderAttributes.from_dict(data)
+
+                return attributes_type_6
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attributes_type_7 = SlurmInvoicesSlurmPackageCreateOrderAttributes.from_dict(data)
+
+                return attributes_type_7
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attributes_type_8 = VMwareVirtualMachineCreateOrderAttributes.from_dict(data)
+
+                return attributes_type_8
+            except:  # noqa: E722
+                pass
+            if not isinstance(data, dict):
+                raise TypeError()
+            attributes_type_9 = GenericOrderAttributes.from_dict(data)
+
+            return attributes_type_9
+
+        attributes = _parse_attributes(d.pop("attributes", UNSET))
 
         _limits = d.pop("limits", UNSET)
         limits: Union[Unset, OrderCreateRequestLimits]
