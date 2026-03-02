@@ -119,6 +119,7 @@ from .auth_result_request import AuthResultRequest
 from .auth_result_state_enum import AuthResultStateEnum
 from .auth_result_uuid_request import AuthResultUUIDRequest
 from .auth_token import AuthToken
+from .auth_type_enum import AuthTypeEnum
 from .availability_zone_response import AvailabilityZoneResponse
 from .available_arrow_customers_response import AvailableArrowCustomersResponse
 from .available_checklist import AvailableChecklist
@@ -2322,6 +2323,7 @@ __all__ = (
     "AuthResultStateEnum",
     "AuthResultUUIDRequest",
     "AuthToken",
+    "AuthTypeEnum",
     "AvailabilityZoneResponse",
     "AvailableArrowCustomersResponse",
     "AvailableChecklist",

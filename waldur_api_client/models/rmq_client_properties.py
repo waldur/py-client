@@ -13,7 +13,7 @@ class RmqClientProperties:
     Attributes:
         product (Union[None, str]): Client product name (e.g., 'pika', 'amqp-client')
         version (Union[None, str]): Client library version
-        platform (Union[None, str]): Client platform (e.g., 'Python 3.11')
+        platform (Union[None, str]): Client platform (e.g., 'Python 3.12')
     """
 
     product: Union[None, str]

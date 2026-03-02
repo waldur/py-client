@@ -26,11 +26,11 @@ class OfferingKeycloakGroup:
         role (str):
         role_name (str):
         role_scope_type (str): Level this role applies at, e.g. 'cluster', 'project'. Empty means offering-wide.
-        resource (Union[None, str]):
         resource_uuid (UUID):
         resource_name (Union[None, str]):
         created (datetime.datetime):
         modified (datetime.datetime):
+        resource (Union[None, Unset, str]):
         scope_id (Union[Unset, str]): Sub-entity identifier within a resource, e.g. Rancher project ID within a cluster.
             Default: ''.
     """
@@ -45,11 +45,11 @@ class OfferingKeycloakGroup:
     role: str
     role_name: str
     role_scope_type: str
-    resource: Union[None, str]
     resource_uuid: UUID
     resource_name: Union[None, str]
     created: datetime.datetime
     modified: datetime.datetime
+    resource: Union[None, Unset, str] = UNSET
     scope_id: Union[Unset, str] = ""
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -74,9 +74,6 @@ class OfferingKeycloakGroup:
 
         role_scope_type = self.role_scope_type
 
-        resource: Union[None, str]
-        resource = self.resource
-
         resource_uuid = str(self.resource_uuid)
 
         resource_name: Union[None, str]
@@ -85,6 +82,12 @@ class OfferingKeycloakGroup:
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
+
+        resource: Union[None, Unset, str]
+        if isinstance(self.resource, Unset):
+            resource = UNSET
+        else:
+            resource = self.resource
 
         scope_id = self.scope_id
 
@@ -102,13 +105,14 @@ class OfferingKeycloakGroup:
                 "role": role,
                 "role_name": role_name,
                 "role_scope_type": role_scope_type,
-                "resource": resource,
                 "resource_uuid": resource_uuid,
                 "resource_name": resource_name,
                 "created": created,
                 "modified": modified,
             }
         )
+        if resource is not UNSET:
+            field_dict["resource"] = resource
         if scope_id is not UNSET:
             field_dict["scope_id"] = scope_id
 
@@ -137,13 +141,6 @@ class OfferingKeycloakGroup:
 
         role_scope_type = d.pop("role_scope_type")
 
-        def _parse_resource(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        resource = _parse_resource(d.pop("resource"))
-
         resource_uuid = UUID(d.pop("resource_uuid"))
 
         def _parse_resource_name(data: object) -> Union[None, str]:
@@ -156,6 +153,15 @@ class OfferingKeycloakGroup:
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
+
+        def _parse_resource(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        resource = _parse_resource(d.pop("resource", UNSET))
 
         scope_id = d.pop("scope_id", UNSET)
 
@@ -170,11 +176,11 @@ class OfferingKeycloakGroup:
             role=role,
             role_name=role_name,
             role_scope_type=role_scope_type,
-            resource=resource,
             resource_uuid=resource_uuid,
             resource_name=resource_name,
             created=created,
             modified=modified,
+            resource=resource,
             scope_id=scope_id,
         )
 

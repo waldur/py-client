@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.6-rc.1-dev.20260302030621
+# Version: 8.0.6-rc.2-dev.20260302142804
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9736,7 +9736,7 @@ Summary: List customer projects of a service provider
 Description: Returns a paginated list of projects belonging to a specific customer that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (19):
+Query parameters (20):
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -9756,6 +9756,7 @@ Query parameters (19):
   - project_customer_uuid (required) — UUID of the customer to filter projects by.
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
+  - user_uuid — Filter projects where the given user has a role.
 
 ### marketplace_service_providers_customers_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/customers/
@@ -9892,7 +9893,7 @@ Summary: List projects of a service provider
 Description: Returns a paginated list of all projects that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (18):
+Query parameters (19):
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -9911,6 +9912,7 @@ Query parameters (18):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
+  - user_uuid — Filter projects where the given user has a role.
 
 ### marketplace_service_providers_user_customers_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/user_customers/
@@ -12473,7 +12475,7 @@ Query parameters (21):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
-  - user_uuid — Filter by user UUID.
+  - user_uuid — Filter projects where the given user has a role.
 
 ### openportal_unmanaged_projects_count
 HEAD /api/openportal-unmanaged-projects/
@@ -12499,7 +12501,7 @@ Query parameters (20):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
-  - user_uuid — Filter by user UUID.
+  - user_uuid — Filter projects where the given user has a role.
 
 ### openportal_unmanaged_projects_create
 POST /api/openportal-unmanaged-projects/
@@ -15405,7 +15407,7 @@ Query parameters (21):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
-  - user_uuid — Filter by user UUID.
+  - user_uuid — Filter projects where the given user has a role.
 
 ### projects_count
 HEAD /api/projects/
@@ -15431,7 +15433,7 @@ Query parameters (20):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
-  - user_uuid — Filter by user UUID.
+  - user_uuid — Filter projects where the given user has a role.
 
 ### projects_create
 POST /api/projects/

@@ -17,16 +17,16 @@ class SupportUser:
         url (str):
         uuid (UUID):
         name (str):
-        backend_id (Union[None, str]):
-        user (Union[None, str]):
+        backend_id (Union[None, Unset, str]):
+        user (Union[None, Unset, str]):
         backend_name (Union[None, Unset, str]):
     """
 
     url: str
     uuid: UUID
     name: str
-    backend_id: Union[None, str]
-    user: Union[None, str]
+    backend_id: Union[None, Unset, str] = UNSET
+    user: Union[None, Unset, str] = UNSET
     backend_name: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -37,11 +37,17 @@ class SupportUser:
 
         name = self.name
 
-        backend_id: Union[None, str]
-        backend_id = self.backend_id
+        backend_id: Union[None, Unset, str]
+        if isinstance(self.backend_id, Unset):
+            backend_id = UNSET
+        else:
+            backend_id = self.backend_id
 
-        user: Union[None, str]
-        user = self.user
+        user: Union[None, Unset, str]
+        if isinstance(self.user, Unset):
+            user = UNSET
+        else:
+            user = self.user
 
         backend_name: Union[None, Unset, str]
         if isinstance(self.backend_name, Unset):
@@ -56,10 +62,12 @@ class SupportUser:
                 "url": url,
                 "uuid": uuid,
                 "name": name,
-                "backend_id": backend_id,
-                "user": user,
             }
         )
+        if backend_id is not UNSET:
+            field_dict["backend_id"] = backend_id
+        if user is not UNSET:
+            field_dict["user"] = user
         if backend_name is not UNSET:
             field_dict["backend_name"] = backend_name
 
@@ -74,19 +82,23 @@ class SupportUser:
 
         name = d.pop("name")
 
-        def _parse_backend_id(data: object) -> Union[None, str]:
+        def _parse_backend_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        backend_id = _parse_backend_id(d.pop("backend_id"))
+        backend_id = _parse_backend_id(d.pop("backend_id", UNSET))
 
-        def _parse_user(data: object) -> Union[None, str]:
+        def _parse_user(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        user = _parse_user(d.pop("user"))
+        user = _parse_user(d.pop("user", UNSET))
 
         def _parse_backend_name(data: object) -> Union[None, Unset, str]:
             if data is None:

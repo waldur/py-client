@@ -14,11 +14,11 @@ class ProjectTemplateRequest:
     """
     Attributes:
         name (str):
-        offering (Union[None, str]): The offering for which this template applies.
         provider (str):
         portal (str):
         customer (str):
         offerings (list[str]):
+        offering (Union[None, Unset, str]): The offering for which this template applies.
         key (Union[None, Unset, str]): The key that is used to authenticate requests for this class.
         shortname (Union[None, Unset, str]):
         approval_limit (Union[None, Unset, str]): The credit limit beyond which requests need to be approved by a local
@@ -34,11 +34,11 @@ class ProjectTemplateRequest:
     """
 
     name: str
-    offering: Union[None, str]
     provider: str
     portal: str
     customer: str
     offerings: list[str]
+    offering: Union[None, Unset, str] = UNSET
     key: Union[None, Unset, str] = UNSET
     shortname: Union[None, Unset, str] = UNSET
     approval_limit: Union[None, Unset, str] = UNSET
@@ -50,9 +50,6 @@ class ProjectTemplateRequest:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        offering: Union[None, str]
-        offering = self.offering
-
         provider = self.provider
 
         portal = self.portal
@@ -60,6 +57,12 @@ class ProjectTemplateRequest:
         customer = self.customer
 
         offerings = self.offerings
+
+        offering: Union[None, Unset, str]
+        if isinstance(self.offering, Unset):
+            offering = UNSET
+        else:
+            offering = self.offering
 
         key: Union[None, Unset, str]
         if isinstance(self.key, Unset):
@@ -94,13 +97,14 @@ class ProjectTemplateRequest:
         field_dict.update(
             {
                 "name": name,
-                "offering": offering,
                 "provider": provider,
                 "portal": portal,
                 "customer": customer,
                 "offerings": offerings,
             }
         )
+        if offering is not UNSET:
+            field_dict["offering"] = offering
         if key is not UNSET:
             field_dict["key"] = key
         if shortname is not UNSET:
@@ -121,13 +125,6 @@ class ProjectTemplateRequest:
         d = dict(src_dict)
         name = d.pop("name")
 
-        def _parse_offering(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        offering = _parse_offering(d.pop("offering"))
-
         provider = d.pop("provider")
 
         portal = d.pop("portal")
@@ -135,6 +132,15 @@ class ProjectTemplateRequest:
         customer = d.pop("customer")
 
         offerings = cast(list[str], d.pop("offerings"))
+
+        def _parse_offering(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        offering = _parse_offering(d.pop("offering", UNSET))
 
         def _parse_key(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -178,11 +184,11 @@ class ProjectTemplateRequest:
 
         project_template_request = cls(
             name=name,
-            offering=offering,
             provider=provider,
             portal=portal,
             customer=customer,
             offerings=offerings,
+            offering=offering,
             key=key,
             shortname=shortname,
             approval_limit=approval_limit,

@@ -6,6 +6,8 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.agent_type_enum import AgentTypeEnum
+
 T = TypeVar("T", bound="IntegrationStatusDetails")
 
 
@@ -13,12 +15,14 @@ T = TypeVar("T", bound="IntegrationStatusDetails")
 class IntegrationStatusDetails:
     """
     Attributes:
+        agent_type (AgentTypeEnum):
         status (str):
         last_request_timestamp (Union[None, datetime.datetime]):
         offering (str):
         url (str):
     """
 
+    agent_type: AgentTypeEnum
     status: str
     last_request_timestamp: Union[None, datetime.datetime]
     offering: str
@@ -26,6 +30,8 @@ class IntegrationStatusDetails:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        agent_type = self.agent_type.value
+
         status = self.status
 
         last_request_timestamp: Union[None, str]
@@ -42,6 +48,7 @@ class IntegrationStatusDetails:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "agent_type": agent_type,
                 "status": status,
                 "last_request_timestamp": last_request_timestamp,
                 "offering": offering,
@@ -54,6 +61,8 @@ class IntegrationStatusDetails:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        agent_type = AgentTypeEnum(d.pop("agent_type"))
+
         status = d.pop("status")
 
         def _parse_last_request_timestamp(data: object) -> Union[None, datetime.datetime]:
@@ -76,6 +85,7 @@ class IntegrationStatusDetails:
         url = d.pop("url")
 
         integration_status_details = cls(
+            agent_type=agent_type,
             status=status,
             last_request_timestamp=last_request_timestamp,
             offering=offering,

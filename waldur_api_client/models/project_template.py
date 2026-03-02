@@ -22,7 +22,6 @@ class ProjectTemplate:
     Attributes:
         uuid (UUID):
         name (str):
-        offering (Union[None, str]): The offering for which this template applies.
         provider (str):
         provider_data (Customer):
         portal (str):
@@ -32,6 +31,7 @@ class ProjectTemplate:
         offerings_data (list['ProviderOfferingDetails']):
         role_mapping_data (ProjectTemplateRoleMappingData): Serialize the role mapping dictionary returned by
             get_role_mapping()
+        offering (Union[None, Unset, str]): The offering for which this template applies.
         key (Union[None, Unset, str]): The key that is used to authenticate requests for this class.
         shortname (Union[None, Unset, str]):
         approval_limit (Union[None, Unset, str]): The credit limit beyond which requests need to be approved by a local
@@ -48,7 +48,6 @@ class ProjectTemplate:
 
     uuid: UUID
     name: str
-    offering: Union[None, str]
     provider: str
     provider_data: "Customer"
     portal: str
@@ -57,6 +56,7 @@ class ProjectTemplate:
     offerings: list[str]
     offerings_data: list["ProviderOfferingDetails"]
     role_mapping_data: "ProjectTemplateRoleMappingData"
+    offering: Union[None, Unset, str] = UNSET
     key: Union[None, Unset, str] = UNSET
     shortname: Union[None, Unset, str] = UNSET
     approval_limit: Union[None, Unset, str] = UNSET
@@ -69,9 +69,6 @@ class ProjectTemplate:
         uuid = str(self.uuid)
 
         name = self.name
-
-        offering: Union[None, str]
-        offering = self.offering
 
         provider = self.provider
 
@@ -91,6 +88,12 @@ class ProjectTemplate:
             offerings_data.append(offerings_data_item)
 
         role_mapping_data = self.role_mapping_data.to_dict()
+
+        offering: Union[None, Unset, str]
+        if isinstance(self.offering, Unset):
+            offering = UNSET
+        else:
+            offering = self.offering
 
         key: Union[None, Unset, str]
         if isinstance(self.key, Unset):
@@ -126,7 +129,6 @@ class ProjectTemplate:
             {
                 "uuid": uuid,
                 "name": name,
-                "offering": offering,
                 "provider": provider,
                 "provider_data": provider_data,
                 "portal": portal,
@@ -137,6 +139,8 @@ class ProjectTemplate:
                 "role_mapping_data": role_mapping_data,
             }
         )
+        if offering is not UNSET:
+            field_dict["offering"] = offering
         if key is not UNSET:
             field_dict["key"] = key
         if shortname is not UNSET:
@@ -163,13 +167,6 @@ class ProjectTemplate:
 
         name = d.pop("name")
 
-        def _parse_offering(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        offering = _parse_offering(d.pop("offering"))
-
         provider = d.pop("provider")
 
         provider_data = Customer.from_dict(d.pop("provider_data"))
@@ -190,6 +187,15 @@ class ProjectTemplate:
             offerings_data.append(offerings_data_item)
 
         role_mapping_data = ProjectTemplateRoleMappingData.from_dict(d.pop("role_mapping_data"))
+
+        def _parse_offering(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        offering = _parse_offering(d.pop("offering", UNSET))
 
         def _parse_key(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -234,7 +240,6 @@ class ProjectTemplate:
         project_template = cls(
             uuid=uuid,
             name=name,
-            offering=offering,
             provider=provider,
             provider_data=provider_data,
             portal=portal,
@@ -243,6 +248,7 @@ class ProjectTemplate:
             offerings=offerings,
             offerings_data=offerings_data,
             role_mapping_data=role_mapping_data,
+            offering=offering,
             key=key,
             shortname=shortname,
             approval_limit=approval_limit,
