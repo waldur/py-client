@@ -21,6 +21,7 @@ class EventTypesEnum(str, Enum):
     CALL_DOCUMENT_ADDED = "call_document_added"
     CALL_DOCUMENT_REMOVED = "call_document_removed"
     CHAT_INJECTION_DETECTED = "chat_injection_detected"
+    CHAT_PII_DETECTED = "chat_pii_detected"
     CHAT_SESSION_ACCESSED = "chat_session_accessed"
     CHAT_THREAD_ACCESSED = "chat_thread_accessed"
     CREATE_OF_CREDIT_BY_STAFF = "create_of_credit_by_staff"

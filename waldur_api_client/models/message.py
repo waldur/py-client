@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.action_taken_enum import ActionTakenEnum
 from ..models.injection_severity_enum import InjectionSeverityEnum
 from ..models.message_role_enum import MessageRoleEnum
 
@@ -25,9 +26,10 @@ class Message:
         replaces (UUID):
         created (datetime.datetime):
         is_flagged (bool):
-        injection_score (float):
-        injection_severity (InjectionSeverityEnum):
+        severity (InjectionSeverityEnum):
         injection_categories (Any):
+        pii_categories (Any):
+        action_taken (ActionTakenEnum):
     """
 
     uuid: UUID
@@ -38,9 +40,10 @@ class Message:
     replaces: UUID
     created: datetime.datetime
     is_flagged: bool
-    injection_score: float
-    injection_severity: InjectionSeverityEnum
+    severity: InjectionSeverityEnum
     injection_categories: Any
+    pii_categories: Any
+    action_taken: ActionTakenEnum
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,11 +63,13 @@ class Message:
 
         is_flagged = self.is_flagged
 
-        injection_score = self.injection_score
-
-        injection_severity = self.injection_severity.value
+        severity = self.severity.value
 
         injection_categories = self.injection_categories
+
+        pii_categories = self.pii_categories
+
+        action_taken = self.action_taken.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -78,9 +83,10 @@ class Message:
                 "replaces": replaces,
                 "created": created,
                 "is_flagged": is_flagged,
-                "injection_score": injection_score,
-                "injection_severity": injection_severity,
+                "severity": severity,
                 "injection_categories": injection_categories,
+                "pii_categories": pii_categories,
+                "action_taken": action_taken,
             }
         )
 
@@ -105,11 +111,13 @@ class Message:
 
         is_flagged = d.pop("is_flagged")
 
-        injection_score = d.pop("injection_score")
-
-        injection_severity = InjectionSeverityEnum(d.pop("injection_severity"))
+        severity = InjectionSeverityEnum(d.pop("severity"))
 
         injection_categories = d.pop("injection_categories")
+
+        pii_categories = d.pop("pii_categories")
+
+        action_taken = ActionTakenEnum(d.pop("action_taken"))
 
         message = cls(
             uuid=uuid,
@@ -120,9 +128,10 @@ class Message:
             replaces=replaces,
             created=created,
             is_flagged=is_flagged,
-            injection_score=injection_score,
-            injection_severity=injection_severity,
+            severity=severity,
             injection_categories=injection_categories,
+            pii_categories=pii_categories,
+            action_taken=action_taken,
         )
 
         message.additional_properties = d

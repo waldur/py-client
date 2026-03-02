@@ -6,6 +6,7 @@ from .access_type_enum import AccessTypeEnum
 from .accessor_type_enum import AccessorTypeEnum
 from .accessor_user import AccessorUser
 from .account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
+from .action_taken_enum import ActionTakenEnum
 from .active_queries_stats import ActiveQueriesStats
 from .active_query import ActiveQuery
 from .admin_announcement import AdminAnnouncement
@@ -2210,6 +2211,7 @@ __all__ = (
     "AccessSubnetRequest",
     "AccessTypeEnum",
     "AccountNameGenerationPolicyEnum",
+    "ActionTakenEnum",
     "ActiveQueriesStats",
     "ActiveQuery",
     "AdminAnnouncement",

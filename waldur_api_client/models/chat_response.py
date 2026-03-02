@@ -25,6 +25,7 @@ class ChatResponse:
         r (Union[Unset, list[Any]]): Table rows.
         n (Union[Unset, int]): Total row count.
         m (Union[Unset, ChatResponseM]): System metadata.
+        w (Union[Unset, str]): PII detection warning message.
     """
 
     k: Union[Unset, str] = UNSET
@@ -35,6 +36,7 @@ class ChatResponse:
     r: Union[Unset, list[Any]] = UNSET
     n: Union[Unset, int] = UNSET
     m: Union[Unset, "ChatResponseM"] = UNSET
+    w: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,6 +62,8 @@ class ChatResponse:
         if not isinstance(self.m, Unset):
             m = self.m.to_dict()
 
+        w = self.w
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -79,6 +83,8 @@ class ChatResponse:
             field_dict["n"] = n
         if m is not UNSET:
             field_dict["m"] = m
+        if w is not UNSET:
+            field_dict["w"] = w
 
         return field_dict
 
@@ -108,6 +114,8 @@ class ChatResponse:
         else:
             m = ChatResponseM.from_dict(_m)
 
+        w = d.pop("w", UNSET)
+
         chat_response = cls(
             k=k,
             c=c,
@@ -117,6 +125,7 @@ class ChatResponse:
             r=r,
             n=n,
             m=m,
+            w=w,
         )
 
         chat_response.additional_properties = d
