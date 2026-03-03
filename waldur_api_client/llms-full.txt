@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.6-rc.2-dev.20260303210628
+# Version: 8.0.6-rc.2-dev.20260303223636
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10397,6 +10397,14 @@ Path parameters:
 Query parameters (2):
   - scope
   - scope_uuid
+
+### marketplace_slurm_periodic_usage_policies_force_period_reset
+POST /api/marketplace-slurm-periodic-usage-policies/{uuid}/force-period-reset/
+Summary: Staff-only
+Description: Staff-only. Force-trigger period reset: re-evaluates paused/downscaled resources whose usage in the current period is below thresholds. Useful after a Celery beat outage or to immediately unblock resources.
+Path parameters:
+  - uuid
+Request body: yes
 
 ### marketplace_slurm_periodic_usage_policies_report_command_result
 POST /api/marketplace-slurm-periodic-usage-policies/{uuid}/report-command-result/

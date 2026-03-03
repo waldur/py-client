@@ -1713,6 +1713,7 @@ Module: `waldur_api_client.api.marketplace_slurm_periodic_usage_policies`
 - `marketplace_slurm_periodic_usage_policies_dry_run` POST `/api/marketplace-slurm-periodic-usage-policies/{uuid}/dry-run/` — Staff-only (path: uuid | request body)
 - `marketplace_slurm_periodic_usage_policies_evaluate` POST `/api/marketplace-slurm-periodic-usage-policies/{uuid}/evaluate/` — Staff-only (path: uuid | request body)
 - `marketplace_slurm_periodic_usage_policies_evaluation_logs_list` GET `/api/marketplace-slurm-periodic-usage-policies/{uuid}/evaluation-logs/` — List evaluation logs for this policy (path: uuid | 2 query params)
+- `marketplace_slurm_periodic_usage_policies_force_period_reset` POST `/api/marketplace-slurm-periodic-usage-policies/{uuid}/force-period-reset/` — Staff-only (path: uuid | request body)
 - `marketplace_slurm_periodic_usage_policies_report_command_result` POST `/api/marketplace-slurm-periodic-usage-policies/{uuid}/report-command-result/` — Report command execution result from site agent (path: uuid | request body)
 
 ## marketplace-software-catalogs
