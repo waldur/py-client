@@ -3081,6 +3081,7 @@ Module: `waldur_api_client.api.stats`
 - `stats_database_retrieve` GET `/api/stats/database/` — Get comprehensive database statistics (no params)
 - `stats_query` POST `/api/stats/query/` — Execute read-only SQL query (request body)
 - `stats_table_growth_retrieve` GET `/api/stats/table-growth/` — Get table growth statistics (no params)
+- `stats_table_growth` POST `/api/stats/table-growth/` — Trigger table size sampling (no params)
 
 ## support
 Module: `waldur_api_client.api.support`

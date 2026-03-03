@@ -20,6 +20,9 @@ class MergedPluginOptionsRequest:
         auto_approve_remote_orders (Union[Unset, bool]): If set to True, an order can be processed without approval
         resource_expiration_threshold (Union[Unset, int]): Resource expiration threshold in days. Default: 30.
         service_provider_can_create_offering_user (Union[Unset, bool]): Service provider can create offering user
+        offering_user_auto_deletion (Union[Unset, bool]): If set to True, offering users will be automatically marked
+            for deletion by the cleanup task when users lose project access. If False (default), deletion must be triggered
+            manually by the service provider. Default: False.
         max_resource_termination_offset_in_days (Union[Unset, int]): Maximum resource termination offset in days
         default_resource_termination_offset_in_days (Union[Unset, int]): If set, it will be used as a default resource
             termination offset in days
@@ -137,6 +140,7 @@ class MergedPluginOptionsRequest:
     auto_approve_remote_orders: Union[Unset, bool] = UNSET
     resource_expiration_threshold: Union[Unset, int] = 30
     service_provider_can_create_offering_user: Union[Unset, bool] = UNSET
+    offering_user_auto_deletion: Union[Unset, bool] = False
     max_resource_termination_offset_in_days: Union[Unset, int] = UNSET
     default_resource_termination_offset_in_days: Union[Unset, int] = UNSET
     is_resource_termination_date_required: Union[Unset, bool] = UNSET
@@ -217,6 +221,8 @@ class MergedPluginOptionsRequest:
         resource_expiration_threshold = self.resource_expiration_threshold
 
         service_provider_can_create_offering_user = self.service_provider_can_create_offering_user
+
+        offering_user_auto_deletion = self.offering_user_auto_deletion
 
         max_resource_termination_offset_in_days = self.max_resource_termination_offset_in_days
 
@@ -385,6 +391,8 @@ class MergedPluginOptionsRequest:
             field_dict["resource_expiration_threshold"] = resource_expiration_threshold
         if service_provider_can_create_offering_user is not UNSET:
             field_dict["service_provider_can_create_offering_user"] = service_provider_can_create_offering_user
+        if offering_user_auto_deletion is not UNSET:
+            field_dict["offering_user_auto_deletion"] = offering_user_auto_deletion
         if max_resource_termination_offset_in_days is not UNSET:
             field_dict["max_resource_termination_offset_in_days"] = max_resource_termination_offset_in_days
         if default_resource_termination_offset_in_days is not UNSET:
@@ -550,6 +558,8 @@ class MergedPluginOptionsRequest:
         resource_expiration_threshold = d.pop("resource_expiration_threshold", UNSET)
 
         service_provider_can_create_offering_user = d.pop("service_provider_can_create_offering_user", UNSET)
+
+        offering_user_auto_deletion = d.pop("offering_user_auto_deletion", UNSET)
 
         max_resource_termination_offset_in_days = d.pop("max_resource_termination_offset_in_days", UNSET)
 
@@ -737,6 +747,7 @@ class MergedPluginOptionsRequest:
             auto_approve_remote_orders=auto_approve_remote_orders,
             resource_expiration_threshold=resource_expiration_threshold,
             service_provider_can_create_offering_user=service_provider_can_create_offering_user,
+            offering_user_auto_deletion=offering_user_auto_deletion,
             max_resource_termination_offset_in_days=max_resource_termination_offset_in_days,
             default_resource_termination_offset_in_days=default_resource_termination_offset_in_days,
             is_resource_termination_date_required=is_resource_termination_date_required,

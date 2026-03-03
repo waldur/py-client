@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.6-rc.2-dev.20260303030644
+# Version: 8.0.6-rc.2-dev.20260303101100
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -18764,6 +18764,11 @@ This endpoint returns:
 - **date**: Current date of the statistics
 - **weekly_threshold_percent**: Configured alert threshold for weekly growth
 - **monthly_threshold_percent**: Configured alert threshold for monthly gro...
+
+### stats_table_growth
+POST /api/stats/table-growth/
+Summary: Trigger table size sampling
+Description: Triggers the sample_table_sizes Celery task to collect current table size data. Requires staff permissions.
 
 ============================================================
 ## support  (module: waldur_api_client.api.support)

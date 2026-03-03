@@ -2054,6 +2054,7 @@ from .system_log_stats_response import SystemLogStatsResponse
 from .table_growth_alert import TableGrowthAlert
 from .table_growth_stats import TableGrowthStats
 from .table_growth_stats_response import TableGrowthStatsResponse
+from .table_growth_trigger_response import TableGrowthTriggerResponse
 from .table_size import TableSize
 from .tag import Tag
 from .tag_request import TagRequest
@@ -4153,6 +4154,7 @@ __all__ = (
     "TableGrowthAlert",
     "TableGrowthStats",
     "TableGrowthStatsResponse",
+    "TableGrowthTriggerResponse",
     "TableSize",
     "Tag",
     "TagRequest",
