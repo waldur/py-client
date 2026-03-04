@@ -16,11 +16,15 @@ class PartitionSummaryRequest:
         partition_name (str): Name of the SLURM partition
         priority_tier (Union[None, Unset, int]): Priority tier for scheduling and preemption
         qos (Union[Unset, str]): Quality of Service (QOS) name
+        cpu_arch (Union[Unset, str]): CPU architecture of the partition (e.g., x86_64/amd/zen3)
+        gpu_arch (Union[Unset, str]): GPU architecture of the partition (e.g., nvidia/cc90, amd/gfx90a)
     """
 
     partition_name: str
     priority_tier: Union[None, Unset, int] = UNSET
     qos: Union[Unset, str] = UNSET
+    cpu_arch: Union[Unset, str] = UNSET
+    gpu_arch: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -34,6 +38,10 @@ class PartitionSummaryRequest:
 
         qos = self.qos
 
+        cpu_arch = self.cpu_arch
+
+        gpu_arch = self.gpu_arch
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -45,6 +53,10 @@ class PartitionSummaryRequest:
             field_dict["priority_tier"] = priority_tier
         if qos is not UNSET:
             field_dict["qos"] = qos
+        if cpu_arch is not UNSET:
+            field_dict["cpu_arch"] = cpu_arch
+        if gpu_arch is not UNSET:
+            field_dict["gpu_arch"] = gpu_arch
 
         return field_dict
 
@@ -64,10 +76,16 @@ class PartitionSummaryRequest:
 
         qos = d.pop("qos", UNSET)
 
+        cpu_arch = d.pop("cpu_arch", UNSET)
+
+        gpu_arch = d.pop("gpu_arch", UNSET)
+
         partition_summary_request = cls(
             partition_name=partition_name,
             priority_tier=priority_tier,
             qos=qos,
+            cpu_arch=cpu_arch,
+            gpu_arch=gpu_arch,
         )
 
         partition_summary_request.additional_properties = d

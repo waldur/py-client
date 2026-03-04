@@ -25,6 +25,8 @@ def _get_kwargs(
     description: Union[Unset, str] = UNSET,
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     license_: Union[Unset, str] = UNSET,
@@ -67,6 +69,10 @@ def _get_kwargs(
     params["extension_name"] = extension_name
 
     params["extension_type"] = extension_type
+
+    params["gpu_arch"] = gpu_arch
+
+    params["has_gpu"] = has_gpu
 
     params["has_version"] = has_version
 
@@ -157,6 +163,8 @@ def sync_detailed(
     description: Union[Unset, str] = UNSET,
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     license_: Union[Unset, str] = UNSET,
@@ -187,6 +195,8 @@ def sync_detailed(
         description (Union[Unset, str]):
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         license_ (Union[Unset, str]):
@@ -220,6 +230,8 @@ def sync_detailed(
         description=description,
         extension_name=extension_name,
         extension_type=extension_type,
+        gpu_arch=gpu_arch,
+        has_gpu=has_gpu,
         has_version=has_version,
         is_extension=is_extension,
         license_=license_,
@@ -255,6 +267,8 @@ def sync(
     description: Union[Unset, str] = UNSET,
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     license_: Union[Unset, str] = UNSET,
@@ -285,6 +299,8 @@ def sync(
         description (Union[Unset, str]):
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         license_ (Union[Unset, str]):
@@ -319,6 +335,8 @@ def sync(
         description=description,
         extension_name=extension_name,
         extension_type=extension_type,
+        gpu_arch=gpu_arch,
+        has_gpu=has_gpu,
         has_version=has_version,
         is_extension=is_extension,
         license_=license_,
@@ -348,6 +366,8 @@ async def asyncio_detailed(
     description: Union[Unset, str] = UNSET,
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     license_: Union[Unset, str] = UNSET,
@@ -378,6 +398,8 @@ async def asyncio_detailed(
         description (Union[Unset, str]):
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         license_ (Union[Unset, str]):
@@ -411,6 +433,8 @@ async def asyncio_detailed(
         description=description,
         extension_name=extension_name,
         extension_type=extension_type,
+        gpu_arch=gpu_arch,
+        has_gpu=has_gpu,
         has_version=has_version,
         is_extension=is_extension,
         license_=license_,
@@ -444,6 +468,8 @@ async def asyncio(
     description: Union[Unset, str] = UNSET,
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     license_: Union[Unset, str] = UNSET,
@@ -474,6 +500,8 @@ async def asyncio(
         description (Union[Unset, str]):
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         license_ (Union[Unset, str]):
@@ -509,6 +537,8 @@ async def asyncio(
             description=description,
             extension_name=extension_name,
             extension_type=extension_type,
+            gpu_arch=gpu_arch,
+            has_gpu=has_gpu,
             has_version=has_version,
             is_extension=is_extension,
             license_=license_,
@@ -539,6 +569,8 @@ def sync_all(
     description: Union[Unset, str] = UNSET,
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     license_: Union[Unset, str] = UNSET,
@@ -569,6 +601,8 @@ def sync_all(
         description (Union[Unset, str]):
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         license_ (Union[Unset, str]):
@@ -604,6 +638,8 @@ def sync_all(
         description=description,
         extension_name=extension_name,
         extension_type=extension_type,
+        gpu_arch=gpu_arch,
+        has_gpu=has_gpu,
         has_version=has_version,
         is_extension=is_extension,
         license_=license_,
@@ -672,6 +708,8 @@ async def asyncio_all(
     description: Union[Unset, str] = UNSET,
     extension_name: Union[Unset, str] = UNSET,
     extension_type: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     has_version: Union[Unset, str] = UNSET,
     is_extension: Union[Unset, bool] = UNSET,
     license_: Union[Unset, str] = UNSET,
@@ -702,6 +740,8 @@ async def asyncio_all(
         description (Union[Unset, str]):
         extension_name (Union[Unset, str]):
         extension_type (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         has_version (Union[Unset, str]):
         is_extension (Union[Unset, bool]):
         license_ (Union[Unset, str]):
@@ -737,6 +777,8 @@ async def asyncio_all(
         description=description,
         extension_name=extension_name,
         extension_type=extension_type,
+        gpu_arch=gpu_arch,
+        has_gpu=has_gpu,
         has_version=has_version,
         is_extension=is_extension,
         license_=license_,

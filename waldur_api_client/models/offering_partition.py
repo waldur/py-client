@@ -22,6 +22,8 @@ class OfferingPartition:
         offering (UUID):
         offering_name (str):
         partition_name (str): Name of the SLURM partition
+        cpu_arch (Union[Unset, str]): CPU architecture of the partition (e.g., x86_64/amd/zen3)
+        gpu_arch (Union[Unset, str]): GPU architecture of the partition (e.g., nvidia/cc90, amd/gfx90a)
         cpu_bind (Union[None, Unset, int]): Default task binding policy (SLURM cpu_bind)
         def_cpu_per_gpu (Union[None, Unset, int]): Default CPUs allocated per GPU
         max_cpus_per_node (Union[None, Unset, int]): Maximum allocated CPUs per node
@@ -49,6 +51,8 @@ class OfferingPartition:
     offering: UUID
     offering_name: str
     partition_name: str
+    cpu_arch: Union[Unset, str] = UNSET
+    gpu_arch: Union[Unset, str] = UNSET
     cpu_bind: Union[None, Unset, int] = UNSET
     def_cpu_per_gpu: Union[None, Unset, int] = UNSET
     max_cpus_per_node: Union[None, Unset, int] = UNSET
@@ -82,6 +86,10 @@ class OfferingPartition:
         offering_name = self.offering_name
 
         partition_name = self.partition_name
+
+        cpu_arch = self.cpu_arch
+
+        gpu_arch = self.gpu_arch
 
         cpu_bind: Union[None, Unset, int]
         if isinstance(self.cpu_bind, Unset):
@@ -193,6 +201,10 @@ class OfferingPartition:
                 "partition_name": partition_name,
             }
         )
+        if cpu_arch is not UNSET:
+            field_dict["cpu_arch"] = cpu_arch
+        if gpu_arch is not UNSET:
+            field_dict["gpu_arch"] = gpu_arch
         if cpu_bind is not UNSET:
             field_dict["cpu_bind"] = cpu_bind
         if def_cpu_per_gpu is not UNSET:
@@ -248,6 +260,10 @@ class OfferingPartition:
         offering_name = d.pop("offering_name")
 
         partition_name = d.pop("partition_name")
+
+        cpu_arch = d.pop("cpu_arch", UNSET)
+
+        gpu_arch = d.pop("gpu_arch", UNSET)
 
         def _parse_cpu_bind(data: object) -> Union[None, Unset, int]:
             if data is None:
@@ -399,6 +415,8 @@ class OfferingPartition:
             offering=offering,
             offering_name=offering_name,
             partition_name=partition_name,
+            cpu_arch=cpu_arch,
+            gpu_arch=gpu_arch,
             cpu_bind=cpu_bind,
             def_cpu_per_gpu=def_cpu_per_gpu,
             max_cpus_per_node=max_cpus_per_node,

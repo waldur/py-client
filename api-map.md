@@ -1734,8 +1734,8 @@ Module: `waldur_api_client.api.marketplace_software_catalogs`
 ## marketplace-software-packages
 Module: `waldur_api_client.api.marketplace_software_packages`
 
-- `marketplace_software_packages_list` GET `/api/marketplace-software-packages/` — List software packages (21 query params)
-- `marketplace_software_packages_count` HEAD `/api/marketplace-software-packages/` — List software packages (21 query params)
+- `marketplace_software_packages_list` GET `/api/marketplace-software-packages/` — List software packages (23 query params)
+- `marketplace_software_packages_count` HEAD `/api/marketplace-software-packages/` — List software packages (23 query params)
 - `marketplace_software_packages_create` POST `/api/marketplace-software-packages/` — Create a software package (request body)
 - `marketplace_software_packages_retrieve` GET `/api/marketplace-software-packages/{uuid}/` — Retrieve a software package (path: uuid)
 - `marketplace_software_packages_update` PUT `/api/marketplace-software-packages/{uuid}/` — Update a software package (path: uuid | request body)
@@ -1745,8 +1745,8 @@ Module: `waldur_api_client.api.marketplace_software_packages`
 ## marketplace-software-targets
 Module: `waldur_api_client.api.marketplace_software_targets`
 
-- `marketplace_software_targets_list` GET `/api/marketplace-software-targets/` — List software targets (11 query params)
-- `marketplace_software_targets_count` HEAD `/api/marketplace-software-targets/` — List software targets (11 query params)
+- `marketplace_software_targets_list` GET `/api/marketplace-software-targets/` — List software targets (13 query params)
+- `marketplace_software_targets_count` HEAD `/api/marketplace-software-targets/` — List software targets (13 query params)
 - `marketplace_software_targets_create` POST `/api/marketplace-software-targets/` — Create a software target (no params)
 - `marketplace_software_targets_retrieve` GET `/api/marketplace-software-targets/{uuid}/` — Retrieve a software target (path: uuid)
 - `marketplace_software_targets_update` PUT `/api/marketplace-software-targets/{uuid}/` — Update a software target (path: uuid)
@@ -1756,8 +1756,8 @@ Module: `waldur_api_client.api.marketplace_software_targets`
 ## marketplace-software-versions
 Module: `waldur_api_client.api.marketplace_software_versions`
 
-- `marketplace_software_versions_list` GET `/api/marketplace-software-versions/` — List software versions (15 query params)
-- `marketplace_software_versions_count` HEAD `/api/marketplace-software-versions/` — List software versions (15 query params)
+- `marketplace_software_versions_list` GET `/api/marketplace-software-versions/` — List software versions (17 query params)
+- `marketplace_software_versions_count` HEAD `/api/marketplace-software-versions/` — List software versions (17 query params)
 - `marketplace_software_versions_create` POST `/api/marketplace-software-versions/` — Create a software version (no params)
 - `marketplace_software_versions_retrieve` GET `/api/marketplace-software-versions/{uuid}/` — Retrieve a software version (path: uuid)
 - `marketplace_software_versions_update` PUT `/api/marketplace-software-versions/{uuid}/` — Update a software version (path: uuid)

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.6-rc.3-dev.20260304163116
+# Version: 8.0.6-rc.3-dev.20260304215004
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10524,7 +10524,7 @@ Request body: yes
 GET /api/marketplace-software-packages/
 Summary: List software packages
 Description: Returns a paginated list of software packages available in the catalogs. Can be filtered by catalog, offering, or various package attributes.
-Query parameters (21):
+Query parameters (23):
   - catalog_name — Filter packages by catalog name (case-insensitive partial match)
   - catalog_type — Filter packages by catalog type (binary_runtime, source_package, package_manager)
   - catalog_uuid — Filter packages from a specific software catalog
@@ -10535,6 +10535,8 @@ Query parameters (21):
   - description — Filter packages by description (case-insensitive partial match)
   - extension_name — Filter packages having extensions with a specific name
   - extension_type — Filter packages having extensions of a specific type (e.g., 'python')
+  - gpu_arch — Filter packages by GPU architecture (e.g., nvidia/cc90)
+  - has_gpu — Filter packages that have GPU-enabled builds
   - has_version — Filter packages that have a specific version
   - is_extension — Filter packages that are extensions of other packages
   - license — Filter packages by license (e.g., GPL-3.0, MIT)
@@ -10551,7 +10553,7 @@ Query parameters (21):
 HEAD /api/marketplace-software-packages/
 Summary: List software packages
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (21):
+Query parameters (23):
   - catalog_name — Filter packages by catalog name (case-insensitive partial match)
   - catalog_type — Filter packages by catalog type (binary_runtime, source_package, package_manager)
   - catalog_uuid — Filter packages from a specific software catalog
@@ -10562,6 +10564,8 @@ Query parameters (21):
   - description — Filter packages by description (case-insensitive partial match)
   - extension_name — Filter packages having extensions with a specific name
   - extension_type — Filter packages having extensions of a specific type (e.g., 'python')
+  - gpu_arch — Filter packages by GPU architecture (e.g., nvidia/cc90)
+  - has_gpu — Filter packages that have GPU-enabled builds
   - has_version — Filter packages that have a specific version
   - is_extension — Filter packages that are extensions of other packages
   - license — Filter packages by license (e.g., GPL-3.0, MIT)
@@ -10618,10 +10622,12 @@ Path parameters:
 GET /api/marketplace-software-targets/
 Summary: List software targets
 Description: Returns a paginated list of software targets, which represent specific builds of a software version for a given CPU architecture.
-Query parameters (11):
+Query parameters (13):
   - catalog_uuid
   - cpu_family
   - cpu_microarchitecture
+  - gpu_arch — Filter targets by GPU architecture (e.g., nvidia/cc90)
+  - has_gpu — Filter targets that have GPU architectures
   - o — Ordering
   - offering_uuid
   - package_uuid
@@ -10635,10 +10641,12 @@ Query parameters (11):
 HEAD /api/marketplace-software-targets/
 Summary: List software targets
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (11):
+Query parameters (13):
   - catalog_uuid
   - cpu_family
   - cpu_microarchitecture
+  - gpu_arch — Filter targets by GPU architecture (e.g., nvidia/cc90)
+  - has_gpu — Filter targets that have GPU architectures
   - o — Ordering
   - offering_uuid
   - package_uuid
@@ -10689,11 +10697,13 @@ Path parameters:
 GET /api/marketplace-software-versions/
 Summary: List software versions
 Description: Returns a paginated list of software versions. Can be filtered by package, catalog, offering, or CPU architecture.
-Query parameters (15):
+Query parameters (17):
   - catalog_type — Filter versions by catalog type (binary_runtime, source_package, package_manager)
   - catalog_uuid
   - cpu_family
   - cpu_microarchitecture
+  - gpu_arch — Filter versions by GPU architecture (e.g., nvidia/cc90)
+  - has_gpu — Filter versions that have GPU-enabled builds
   - o — Ordering
   - offering_uuid
   - package_name
@@ -10710,11 +10720,13 @@ Query parameters (15):
 HEAD /api/marketplace-software-versions/
 Summary: List software versions
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (15):
+Query parameters (17):
   - catalog_type — Filter versions by catalog type (binary_runtime, source_package, package_manager)
   - catalog_uuid
   - cpu_family
   - cpu_microarchitecture
+  - gpu_arch — Filter versions by GPU architecture (e.g., nvidia/cc90)
+  - has_gpu — Filter versions that have GPU-enabled builds
   - o — Ordering
   - offering_uuid
   - package_name

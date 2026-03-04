@@ -18,6 +18,8 @@ class NestedSoftwareTargetRequest:
         target_subtype (Union[Unset, str]): Target subtype (microarchitecture, distribution, etc.)
         location (Union[Unset, str]): Target location (CVMFS path, download URL, etc.)
         metadata (Union[Unset, Any]): Target-specific metadata (build options, system requirements, etc.)
+        gpu_architectures (Union[Unset, Any]): List of GPU architectures this target supports (e.g., ['nvidia/cc70',
+            'nvidia/cc90'])
     """
 
     target_type: Union[Unset, str] = UNSET
@@ -25,6 +27,7 @@ class NestedSoftwareTargetRequest:
     target_subtype: Union[Unset, str] = UNSET
     location: Union[Unset, str] = UNSET
     metadata: Union[Unset, Any] = UNSET
+    gpu_architectures: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -37,6 +40,8 @@ class NestedSoftwareTargetRequest:
         location = self.location
 
         metadata = self.metadata
+
+        gpu_architectures = self.gpu_architectures
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -51,6 +56,8 @@ class NestedSoftwareTargetRequest:
             field_dict["location"] = location
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
+        if gpu_architectures is not UNSET:
+            field_dict["gpu_architectures"] = gpu_architectures
 
         return field_dict
 
@@ -67,12 +74,15 @@ class NestedSoftwareTargetRequest:
 
         metadata = d.pop("metadata", UNSET)
 
+        gpu_architectures = d.pop("gpu_architectures", UNSET)
+
         nested_software_target_request = cls(
             target_type=target_type,
             target_name=target_name,
             target_subtype=target_subtype,
             location=location,
             metadata=metadata,
+            gpu_architectures=gpu_architectures,
         )
 
         nested_software_target_request.additional_properties = d

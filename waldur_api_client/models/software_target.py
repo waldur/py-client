@@ -23,6 +23,7 @@ class SoftwareTarget:
         target_subtype (str): Target subtype (microarchitecture, distribution, etc.)
         location (str): Target location (CVMFS path, download URL, etc.)
         metadata (Any): Target-specific metadata (build options, system requirements, etc.)
+        gpu_architectures (Any): List of GPU architectures this target supports (e.g., ['nvidia/cc70', 'nvidia/cc90'])
     """
 
     url: str
@@ -34,6 +35,7 @@ class SoftwareTarget:
     target_subtype: str
     location: str
     metadata: Any
+    gpu_architectures: Any
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,6 +57,8 @@ class SoftwareTarget:
 
         metadata = self.metadata
 
+        gpu_architectures = self.gpu_architectures
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -68,6 +72,7 @@ class SoftwareTarget:
                 "target_subtype": target_subtype,
                 "location": location,
                 "metadata": metadata,
+                "gpu_architectures": gpu_architectures,
             }
         )
 
@@ -94,6 +99,8 @@ class SoftwareTarget:
 
         metadata = d.pop("metadata")
 
+        gpu_architectures = d.pop("gpu_architectures")
+
         software_target = cls(
             url=url,
             uuid=uuid,
@@ -104,6 +111,7 @@ class SoftwareTarget:
             target_subtype=target_subtype,
             location=location,
             metadata=metadata,
+            gpu_architectures=gpu_architectures,
         )
 
         software_target.additional_properties = d

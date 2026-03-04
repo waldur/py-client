@@ -17,6 +17,8 @@ def _get_kwargs(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -38,6 +40,10 @@ def _get_kwargs(
     params["cpu_family"] = cpu_family
 
     params["cpu_microarchitecture"] = cpu_microarchitecture
+
+    params["gpu_arch"] = gpu_arch
+
+    params["has_gpu"] = has_gpu
 
     json_o: Union[Unset, list[str]] = UNSET
     if not isinstance(o, Unset):
@@ -118,6 +124,8 @@ def sync_detailed(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -138,6 +146,8 @@ def sync_detailed(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
@@ -161,6 +171,8 @@ def sync_detailed(
         catalog_uuid=catalog_uuid,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
+        gpu_arch=gpu_arch,
+        has_gpu=has_gpu,
         o=o,
         offering_uuid=offering_uuid,
         package_uuid=package_uuid,
@@ -186,6 +198,8 @@ def sync(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -206,6 +220,8 @@ def sync(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
@@ -230,6 +246,8 @@ def sync(
         catalog_uuid=catalog_uuid,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
+        gpu_arch=gpu_arch,
+        has_gpu=has_gpu,
         o=o,
         offering_uuid=offering_uuid,
         package_uuid=package_uuid,
@@ -249,6 +267,8 @@ async def asyncio_detailed(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -269,6 +289,8 @@ async def asyncio_detailed(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
@@ -292,6 +314,8 @@ async def asyncio_detailed(
         catalog_uuid=catalog_uuid,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
+        gpu_arch=gpu_arch,
+        has_gpu=has_gpu,
         o=o,
         offering_uuid=offering_uuid,
         package_uuid=package_uuid,
@@ -315,6 +339,8 @@ async def asyncio(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -335,6 +361,8 @@ async def asyncio(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
@@ -360,6 +388,8 @@ async def asyncio(
             catalog_uuid=catalog_uuid,
             cpu_family=cpu_family,
             cpu_microarchitecture=cpu_microarchitecture,
+            gpu_arch=gpu_arch,
+            has_gpu=has_gpu,
             o=o,
             offering_uuid=offering_uuid,
             package_uuid=package_uuid,
@@ -380,6 +410,8 @@ def sync_all(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -400,6 +432,8 @@ def sync_all(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
@@ -425,6 +459,8 @@ def sync_all(
         catalog_uuid=catalog_uuid,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
+        gpu_arch=gpu_arch,
+        has_gpu=has_gpu,
         o=o,
         offering_uuid=offering_uuid,
         package_uuid=package_uuid,
@@ -483,6 +519,8 @@ async def asyncio_all(
     catalog_uuid: Union[Unset, UUID] = UNSET,
     cpu_family: Union[Unset, str] = UNSET,
     cpu_microarchitecture: Union[Unset, str] = UNSET,
+    gpu_arch: Union[Unset, str] = UNSET,
+    has_gpu: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[SoftwareTargetOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     package_uuid: Union[Unset, UUID] = UNSET,
@@ -503,6 +541,8 @@ async def asyncio_all(
         catalog_uuid (Union[Unset, UUID]):
         cpu_family (Union[Unset, str]):
         cpu_microarchitecture (Union[Unset, str]):
+        gpu_arch (Union[Unset, str]):
+        has_gpu (Union[Unset, bool]):
         o (Union[Unset, list[SoftwareTargetOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         package_uuid (Union[Unset, UUID]):
@@ -528,6 +568,8 @@ async def asyncio_all(
         catalog_uuid=catalog_uuid,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
+        gpu_arch=gpu_arch,
+        has_gpu=has_gpu,
         o=o,
         offering_uuid=offering_uuid,
         package_uuid=package_uuid,
