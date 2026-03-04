@@ -8,7 +8,7 @@ from attrs import field as _attrs_field
 from ..models.blank_enum import BlankEnum
 from ..models.direction_enum import DirectionEnum
 from ..models.ethertype_enum import EthertypeEnum
-from ..models.protocol_enum import ProtocolEnum
+from ..models.security_group_rule_protocol_enum import SecurityGroupRuleProtocolEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="NestedSecurityGroupRule")
@@ -20,8 +20,8 @@ class NestedSecurityGroupRule:
     Attributes:
         ethertype (Union[Unset, EthertypeEnum]):
         direction (Union[Unset, DirectionEnum]):
-        protocol (Union[BlankEnum, ProtocolEnum, Unset]): The network protocol (TCP, UDP, ICMP, or empty for any
-            protocol)
+        protocol (Union[BlankEnum, SecurityGroupRuleProtocolEnum, Unset]): The network protocol (TCP, UDP, ICMP, or
+            empty for any protocol)
         from_port (Union[None, Unset, int]): Starting port number in the range (1-65535)
         to_port (Union[None, Unset, int]): Ending port number in the range (1-65535)
         cidr (Union[None, Unset, str]): CIDR notation for the source/destination network address range
@@ -33,7 +33,7 @@ class NestedSecurityGroupRule:
 
     ethertype: Union[Unset, EthertypeEnum] = UNSET
     direction: Union[Unset, DirectionEnum] = UNSET
-    protocol: Union[BlankEnum, ProtocolEnum, Unset] = UNSET
+    protocol: Union[BlankEnum, SecurityGroupRuleProtocolEnum, Unset] = UNSET
     from_port: Union[None, Unset, int] = UNSET
     to_port: Union[None, Unset, int] = UNSET
     cidr: Union[None, Unset, str] = UNSET
@@ -55,7 +55,7 @@ class NestedSecurityGroupRule:
         protocol: Union[Unset, str]
         if isinstance(self.protocol, Unset):
             protocol = UNSET
-        elif isinstance(self.protocol, ProtocolEnum):
+        elif isinstance(self.protocol, SecurityGroupRuleProtocolEnum):
             protocol = self.protocol.value
         else:
             protocol = self.protocol.value
@@ -131,13 +131,13 @@ class NestedSecurityGroupRule:
         else:
             direction = DirectionEnum(_direction)
 
-        def _parse_protocol(data: object) -> Union[BlankEnum, ProtocolEnum, Unset]:
+        def _parse_protocol(data: object) -> Union[BlankEnum, SecurityGroupRuleProtocolEnum, Unset]:
             if isinstance(data, Unset):
                 return data
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                protocol_type_0 = ProtocolEnum(data)
+                protocol_type_0 = SecurityGroupRuleProtocolEnum(data)
 
                 return protocol_type_0
             except:  # noqa: E722

@@ -1,10 +1,9 @@
 from enum import Enum
 
 
-class ProtocolEnum(str, Enum):
-    ICMP = "icmp"
-    TCP = "tcp"
-    UDP = "udp"
+class LoadBalancerProtocolEnum(str, Enum):
+    TCP = "TCP"
+    UDP = "UDP"
 
     def __str__(self) -> str:
         return str(self.value)

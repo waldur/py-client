@@ -26,6 +26,7 @@ class OpenStackPortFieldEnum(str, Enum):
     MARKETPLACE_CATEGORY_UUID = "marketplace_category_uuid"
     MARKETPLACE_OFFERING_NAME = "marketplace_offering_name"
     MARKETPLACE_OFFERING_PLUGIN_OPTIONS = "marketplace_offering_plugin_options"
+    MARKETPLACE_OFFERING_TYPE = "marketplace_offering_type"
     MARKETPLACE_OFFERING_UUID = "marketplace_offering_uuid"
     MARKETPLACE_PLAN_UUID = "marketplace_plan_uuid"
     MARKETPLACE_RESOURCE_STATE = "marketplace_resource_state"

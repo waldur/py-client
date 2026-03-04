@@ -52,6 +52,7 @@ class AzurePublicIP:
         resource_group (Union[Unset, str]):
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
+        marketplace_offering_type (Union[None, Unset, str]):
         marketplace_offering_plugin_options (Union['AzurePublicIPMarketplaceOfferingPluginOptionsType0', None, Unset]):
         marketplace_category_uuid (Union[None, Unset, str]):
         marketplace_category_name (Union[None, Unset, str]):
@@ -91,6 +92,7 @@ class AzurePublicIP:
     resource_group: Union[Unset, str] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
+    marketplace_offering_type: Union[None, Unset, str] = UNSET
     marketplace_offering_plugin_options: Union["AzurePublicIPMarketplaceOfferingPluginOptionsType0", None, Unset] = (
         UNSET
     )
@@ -191,6 +193,12 @@ class AzurePublicIP:
             marketplace_offering_name = UNSET
         else:
             marketplace_offering_name = self.marketplace_offering_name
+
+        marketplace_offering_type: Union[None, Unset, str]
+        if isinstance(self.marketplace_offering_type, Unset):
+            marketplace_offering_type = UNSET
+        else:
+            marketplace_offering_type = self.marketplace_offering_type
 
         marketplace_offering_plugin_options: Union[None, Unset, dict[str, Any]]
         if isinstance(self.marketplace_offering_plugin_options, Unset):
@@ -303,6 +311,8 @@ class AzurePublicIP:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
             field_dict["marketplace_offering_name"] = marketplace_offering_name
+        if marketplace_offering_type is not UNSET:
+            field_dict["marketplace_offering_type"] = marketplace_offering_type
         if marketplace_offering_plugin_options is not UNSET:
             field_dict["marketplace_offering_plugin_options"] = marketplace_offering_plugin_options
         if marketplace_category_uuid is not UNSET:
@@ -443,6 +453,15 @@ class AzurePublicIP:
 
         marketplace_offering_name = _parse_marketplace_offering_name(d.pop("marketplace_offering_name", UNSET))
 
+        def _parse_marketplace_offering_type(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        marketplace_offering_type = _parse_marketplace_offering_type(d.pop("marketplace_offering_type", UNSET))
+
         def _parse_marketplace_offering_plugin_options(
             data: object,
         ) -> Union["AzurePublicIPMarketplaceOfferingPluginOptionsType0", None, Unset]:
@@ -559,6 +578,7 @@ class AzurePublicIP:
             resource_group=resource_group,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
+            marketplace_offering_type=marketplace_offering_type,
             marketplace_offering_plugin_options=marketplace_offering_plugin_options,
             marketplace_category_uuid=marketplace_category_uuid,
             marketplace_category_name=marketplace_category_name,

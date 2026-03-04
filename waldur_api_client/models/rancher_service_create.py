@@ -48,6 +48,7 @@ class RancherServiceCreate:
         namespace_name (str):
         marketplace_offering_uuid (Union[None, str]):
         marketplace_offering_name (Union[None, str]):
+        marketplace_offering_type (Union[None, str]):
         marketplace_offering_plugin_options (Union['RancherServiceCreateMarketplaceOfferingPluginOptionsType0', None]):
         marketplace_category_uuid (Union[None, str]):
         marketplace_category_name (Union[None, str]):
@@ -91,6 +92,7 @@ class RancherServiceCreate:
     namespace_name: str
     marketplace_offering_uuid: Union[None, str]
     marketplace_offering_name: Union[None, str]
+    marketplace_offering_type: Union[None, str]
     marketplace_offering_plugin_options: Union["RancherServiceCreateMarketplaceOfferingPluginOptionsType0", None]
     marketplace_category_uuid: Union[None, str]
     marketplace_category_name: Union[None, str]
@@ -165,6 +167,9 @@ class RancherServiceCreate:
 
         marketplace_offering_name: Union[None, str]
         marketplace_offering_name = self.marketplace_offering_name
+
+        marketplace_offering_type: Union[None, str]
+        marketplace_offering_type = self.marketplace_offering_type
 
         marketplace_offering_plugin_options: Union[None, dict[str, Any]]
         if isinstance(
@@ -250,6 +255,7 @@ class RancherServiceCreate:
                 "namespace_name": namespace_name,
                 "marketplace_offering_uuid": marketplace_offering_uuid,
                 "marketplace_offering_name": marketplace_offering_name,
+                "marketplace_offering_type": marketplace_offering_type,
                 "marketplace_offering_plugin_options": marketplace_offering_plugin_options,
                 "marketplace_category_uuid": marketplace_category_uuid,
                 "marketplace_category_name": marketplace_category_name,
@@ -351,6 +357,13 @@ class RancherServiceCreate:
             return cast(Union[None, str], data)
 
         marketplace_offering_name = _parse_marketplace_offering_name(d.pop("marketplace_offering_name"))
+
+        def _parse_marketplace_offering_type(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        marketplace_offering_type = _parse_marketplace_offering_type(d.pop("marketplace_offering_type"))
 
         def _parse_marketplace_offering_plugin_options(
             data: object,
@@ -477,6 +490,7 @@ class RancherServiceCreate:
             namespace_name=namespace_name,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
+            marketplace_offering_type=marketplace_offering_type,
             marketplace_offering_plugin_options=marketplace_offering_plugin_options,
             marketplace_category_uuid=marketplace_category_uuid,
             marketplace_category_name=marketplace_category_name,

@@ -425,9 +425,19 @@ from .create_customer_credit import CreateCustomerCredit
 from .create_customer_credit_request import CreateCustomerCreditRequest
 from .create_feedback import CreateFeedback
 from .create_feedback_request import CreateFeedbackRequest
+from .create_health_monitor import CreateHealthMonitor
+from .create_health_monitor_request import CreateHealthMonitorRequest
+from .create_listener import CreateListener
+from .create_listener_request import CreateListenerRequest
+from .create_load_balancer import CreateLoadBalancer
+from .create_load_balancer_request import CreateLoadBalancerRequest
 from .create_manual_assignment_request import CreateManualAssignmentRequest
 from .create_manual_assignment_response import CreateManualAssignmentResponse
 from .create_manual_assignment_response_skipped_proposals_item import CreateManualAssignmentResponseSkippedProposalsItem
+from .create_pool import CreatePool
+from .create_pool_member import CreatePoolMember
+from .create_pool_member_request import CreatePoolMemberRequest
+from .create_pool_request import CreatePoolRequest
 from .create_router import CreateRouter
 from .create_router_request import CreateRouterRequest
 from .credentials_validation_response import CredentialsValidationResponse
@@ -768,6 +778,7 @@ from .keys_history_at_retrieve_response_400 import KeysHistoryAtRetrieveResponse
 from .keys_history_at_retrieve_response_404 import KeysHistoryAtRetrieveResponse404
 from .keyword_search_mode_enum import KeywordSearchModeEnum
 from .kind_enum import KindEnum
+from .lb_algorithm_enum import LbAlgorithmEnum
 from .lexis_link import LexisLink
 from .lexis_link_create_request import LexisLinkCreateRequest
 from .lexis_link_request import LexisLinkRequest
@@ -779,6 +790,9 @@ from .link_resource_request_request import LinkResourceRequestRequest
 from .link_resource_response import LinkResourceResponse
 from .link_to_invoice import LinkToInvoice
 from .link_to_invoice_request import LinkToInvoiceRequest
+from .load_balancer_attach_floating_ip_request import LoadBalancerAttachFloatingIPRequest
+from .load_balancer_protocol_enum import LoadBalancerProtocolEnum
+from .load_balancer_update_vip_security_groups_request import LoadBalancerUpdateVIPSecurityGroupsRequest
 from .lock_stats import LockStats
 from .loginpagelayout_enum import LOGINPAGELAYOUTEnum
 from .logout import Logout
@@ -1106,8 +1120,15 @@ from .open_stack_floating_ip_marketplace_offering_plugin_options_type_0 import (
     OpenStackFloatingIPMarketplaceOfferingPluginOptionsType0,
 )
 from .open_stack_floating_ip_request import OpenStackFloatingIPRequest
+from .open_stack_health_monitor import OpenStackHealthMonitor
+from .open_stack_health_monitor_field_enum import OpenStackHealthMonitorFieldEnum
+from .open_stack_health_monitor_marketplace_offering_plugin_options_type_0 import (
+    OpenStackHealthMonitorMarketplaceOfferingPluginOptionsType0,
+)
 from .open_stack_image import OpenStackImage
 from .open_stack_instance import OpenStackInstance
+from .open_stack_instance_aggregate import OpenStackInstanceAggregate
+from .open_stack_instance_aggregate_group_by_enum import OpenStackInstanceAggregateGroupByEnum
 from .open_stack_instance_allowed_address_pairs_update_request import OpenStackInstanceAllowedAddressPairsUpdateRequest
 from .open_stack_instance_availability_zone import OpenStackInstanceAvailabilityZone
 from .open_stack_instance_create_order_attributes import OpenStackInstanceCreateOrderAttributes
@@ -1118,8 +1139,20 @@ from .open_stack_instance_marketplace_offering_plugin_options_type_0 import (
 )
 from .open_stack_instance_o_enum import OpenStackInstanceOEnum
 from .open_stack_instance_ports_update_request import OpenStackInstancePortsUpdateRequest
+from .open_stack_instance_report import OpenStackInstanceReport
 from .open_stack_instance_request import OpenStackInstanceRequest
 from .open_stack_instance_security_groups_update_request import OpenStackInstanceSecurityGroupsUpdateRequest
+from .open_stack_listener import OpenStackListener
+from .open_stack_listener_field_enum import OpenStackListenerFieldEnum
+from .open_stack_listener_marketplace_offering_plugin_options_type_0 import (
+    OpenStackListenerMarketplaceOfferingPluginOptionsType0,
+)
+from .open_stack_load_balancer import OpenStackLoadBalancer
+from .open_stack_load_balancer_field_enum import OpenStackLoadBalancerFieldEnum
+from .open_stack_load_balancer_marketplace_offering_plugin_options_type_0 import (
+    OpenStackLoadBalancerMarketplaceOfferingPluginOptionsType0,
+)
+from .open_stack_load_balancer_request import OpenStackLoadBalancerRequest
 from .open_stack_nested_floating_ip import OpenStackNestedFloatingIP
 from .open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
 from .open_stack_nested_instance import OpenStackNestedInstance
@@ -1137,6 +1170,17 @@ from .open_stack_network_marketplace_offering_plugin_options_type_0 import (
     OpenStackNetworkMarketplaceOfferingPluginOptionsType0,
 )
 from .open_stack_network_request import OpenStackNetworkRequest
+from .open_stack_pool import OpenStackPool
+from .open_stack_pool_field_enum import OpenStackPoolFieldEnum
+from .open_stack_pool_marketplace_offering_plugin_options_type_0 import (
+    OpenStackPoolMarketplaceOfferingPluginOptionsType0,
+)
+from .open_stack_pool_member import OpenStackPoolMember
+from .open_stack_pool_member_field_enum import OpenStackPoolMemberFieldEnum
+from .open_stack_pool_member_marketplace_offering_plugin_options_type_0 import (
+    OpenStackPoolMemberMarketplaceOfferingPluginOptionsType0,
+)
+from .open_stack_pool_request import OpenStackPoolRequest
 from .open_stack_port import OpenStackPort
 from .open_stack_port_field_enum import OpenStackPortFieldEnum
 from .open_stack_port_ip_update_request import OpenStackPortIPUpdateRequest
@@ -1353,7 +1397,9 @@ from .patched_onboarding_question_metadata_request import PatchedOnboardingQuest
 from .patched_onboarding_verification_request import PatchedOnboardingVerificationRequest
 from .patched_open_stack_backup_request import PatchedOpenStackBackupRequest
 from .patched_open_stack_instance_request import PatchedOpenStackInstanceRequest
+from .patched_open_stack_load_balancer_request import PatchedOpenStackLoadBalancerRequest
 from .patched_open_stack_network_request import PatchedOpenStackNetworkRequest
+from .patched_open_stack_pool_request import PatchedOpenStackPoolRequest
 from .patched_open_stack_port_request import PatchedOpenStackPortRequest
 from .patched_open_stack_security_group_update_request import PatchedOpenStackSecurityGroupUpdateRequest
 from .patched_open_stack_snapshot_request import PatchedOpenStackSnapshotRequest
@@ -1420,6 +1466,9 @@ from .patched_software_catalog_request import PatchedSoftwareCatalogRequest
 from .patched_software_package_request import PatchedSoftwarePackageRequest
 from .patched_tag_request import PatchedTagRequest
 from .patched_template_request import PatchedTemplateRequest
+from .patched_update_health_monitor_request import PatchedUpdateHealthMonitorRequest
+from .patched_update_listener_request import PatchedUpdateListenerRequest
+from .patched_update_pool_member_request import PatchedUpdatePoolMemberRequest
 from .patched_user_agreement_request import PatchedUserAgreementRequest
 from .patched_user_info_request import PatchedUserInfoRequest
 from .patched_user_offering_consent_request import PatchedUserOfferingConsentRequest
@@ -1565,7 +1614,6 @@ from .protected_proposal_list import ProtectedProposalList
 from .protected_proposal_list_request import ProtectedProposalListRequest
 from .protected_round import ProtectedRound
 from .protected_round_request import ProtectedRoundRequest
-from .protocol_enum import ProtocolEnum
 from .provider_customer_stats import ProviderCustomerStats
 from .provider_customer_stats_monthly_item import ProviderCustomerStatsMonthlyItem
 from .provider_customer_stats_top_by_resources_item import ProviderCustomerStatsTopByResourcesItem
@@ -1911,6 +1959,7 @@ from .screenshot_request_multipart import ScreenshotRequestMultipart
 from .scriptrunmode_enum import SCRIPTRUNMODEEnum
 from .section import Section
 from .section_request import SectionRequest
+from .security_group_rule_protocol_enum import SecurityGroupRuleProtocolEnum
 from .self_declared_conflict_request import SelfDeclaredConflictRequest
 from .send_all_assignment_batches_request import SendAllAssignmentBatchesRequest
 from .send_all_assignment_batches_response import SendAllAssignmentBatchesResponse
@@ -2087,7 +2136,13 @@ from .trigger_sync_request_request import TriggerSyncRequestRequest
 from .unsilence_action_response import UnsilenceActionResponse
 from .update_actions_request import UpdateActionsRequest
 from .update_actions_response import UpdateActionsResponse
+from .update_health_monitor import UpdateHealthMonitor
+from .update_health_monitor_request import UpdateHealthMonitorRequest
+from .update_listener import UpdateListener
+from .update_listener_request import UpdateListenerRequest
 from .update_offering_component_request import UpdateOfferingComponentRequest
+from .update_pool_member import UpdatePoolMember
+from .update_pool_member_request import UpdatePoolMemberRequest
 from .urgency_enum import UrgencyEnum
 from .user import User
 from .user_action import UserAction
@@ -2617,9 +2672,19 @@ __all__ = (
     "CreateCustomerCreditRequest",
     "CreateFeedback",
     "CreateFeedbackRequest",
+    "CreateHealthMonitor",
+    "CreateHealthMonitorRequest",
+    "CreateListener",
+    "CreateListenerRequest",
+    "CreateLoadBalancer",
+    "CreateLoadBalancerRequest",
     "CreateManualAssignmentRequest",
     "CreateManualAssignmentResponse",
     "CreateManualAssignmentResponseSkippedProposalsItem",
+    "CreatePool",
+    "CreatePoolMember",
+    "CreatePoolMemberRequest",
+    "CreatePoolRequest",
     "CreateRouter",
     "CreateRouterRequest",
     "CredentialsValidationResponse",
@@ -2952,6 +3017,7 @@ __all__ = (
     "KeysHistoryAtRetrieveResponse404",
     "KeywordSearchModeEnum",
     "KindEnum",
+    "LbAlgorithmEnum",
     "LexisLink",
     "LexisLinkCreateRequest",
     "LexisLinkRequest",
@@ -2963,6 +3029,9 @@ __all__ = (
     "LinkResourceResponse",
     "LinkToInvoice",
     "LinkToInvoiceRequest",
+    "LoadBalancerAttachFloatingIPRequest",
+    "LoadBalancerProtocolEnum",
+    "LoadBalancerUpdateVIPSecurityGroupsRequest",
     "LockStats",
     "LOGINPAGELAYOUTEnum",
     "Logout",
@@ -3266,8 +3335,13 @@ __all__ = (
     "OpenStackFloatingIPFieldEnum",
     "OpenStackFloatingIPMarketplaceOfferingPluginOptionsType0",
     "OpenStackFloatingIPRequest",
+    "OpenStackHealthMonitor",
+    "OpenStackHealthMonitorFieldEnum",
+    "OpenStackHealthMonitorMarketplaceOfferingPluginOptionsType0",
     "OpenStackImage",
     "OpenStackInstance",
+    "OpenStackInstanceAggregate",
+    "OpenStackInstanceAggregateGroupByEnum",
     "OpenStackInstanceAllowedAddressPairsUpdateRequest",
     "OpenStackInstanceAvailabilityZone",
     "OpenStackInstanceCreateOrderAttributes",
@@ -3276,8 +3350,16 @@ __all__ = (
     "OpenStackInstanceMarketplaceOfferingPluginOptionsType0",
     "OpenStackInstanceOEnum",
     "OpenStackInstancePortsUpdateRequest",
+    "OpenStackInstanceReport",
     "OpenStackInstanceRequest",
     "OpenStackInstanceSecurityGroupsUpdateRequest",
+    "OpenStackListener",
+    "OpenStackListenerFieldEnum",
+    "OpenStackListenerMarketplaceOfferingPluginOptionsType0",
+    "OpenStackLoadBalancer",
+    "OpenStackLoadBalancerFieldEnum",
+    "OpenStackLoadBalancerMarketplaceOfferingPluginOptionsType0",
+    "OpenStackLoadBalancerRequest",
     "OpenStackNestedFloatingIP",
     "OpenStackNestedFloatingIPRequest",
     "OpenStackNestedInstance",
@@ -3293,6 +3375,13 @@ __all__ = (
     "OpenStackNetworkFieldEnum",
     "OpenStackNetworkMarketplaceOfferingPluginOptionsType0",
     "OpenStackNetworkRequest",
+    "OpenStackPool",
+    "OpenStackPoolFieldEnum",
+    "OpenStackPoolMarketplaceOfferingPluginOptionsType0",
+    "OpenStackPoolMember",
+    "OpenStackPoolMemberFieldEnum",
+    "OpenStackPoolMemberMarketplaceOfferingPluginOptionsType0",
+    "OpenStackPoolRequest",
     "OpenStackPort",
     "OpenStackPortFieldEnum",
     "OpenStackPortIPUpdateRequest",
@@ -3489,7 +3578,9 @@ __all__ = (
     "PatchedOnboardingVerificationRequest",
     "PatchedOpenStackBackupRequest",
     "PatchedOpenStackInstanceRequest",
+    "PatchedOpenStackLoadBalancerRequest",
     "PatchedOpenStackNetworkRequest",
+    "PatchedOpenStackPoolRequest",
     "PatchedOpenStackPortRequest",
     "PatchedOpenStackSecurityGroupUpdateRequest",
     "PatchedOpenStackSnapshotRequest",
@@ -3556,6 +3647,9 @@ __all__ = (
     "PatchedSoftwarePackageRequest",
     "PatchedTagRequest",
     "PatchedTemplateRequest",
+    "PatchedUpdateHealthMonitorRequest",
+    "PatchedUpdateListenerRequest",
+    "PatchedUpdatePoolMemberRequest",
     "PatchedUserAgreementRequest",
     "PatchedUserInfoRequest",
     "PatchedUserOfferingConsentRequest",
@@ -3683,7 +3777,6 @@ __all__ = (
     "ProtectedProposalListRequest",
     "ProtectedRound",
     "ProtectedRoundRequest",
-    "ProtocolEnum",
     "ProviderCustomerStats",
     "ProviderCustomerStatsMonthlyItem",
     "ProviderCustomerStatsTopByResourcesItem",
@@ -4017,6 +4110,7 @@ __all__ = (
     "SCRIPTRUNMODEEnum",
     "Section",
     "SectionRequest",
+    "SecurityGroupRuleProtocolEnum",
     "SelfDeclaredConflictRequest",
     "SendAllAssignmentBatchesRequest",
     "SendAllAssignmentBatchesResponse",
@@ -4187,7 +4281,13 @@ __all__ = (
     "UnsilenceActionResponse",
     "UpdateActionsRequest",
     "UpdateActionsResponse",
+    "UpdateHealthMonitor",
+    "UpdateHealthMonitorRequest",
+    "UpdateListener",
+    "UpdateListenerRequest",
     "UpdateOfferingComponentRequest",
+    "UpdatePoolMember",
+    "UpdatePoolMemberRequest",
     "UrgencyEnum",
     "User",
     "UserAction",

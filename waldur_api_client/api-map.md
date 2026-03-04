@@ -1801,6 +1801,10 @@ Module: `waldur_api_client.api.marketplace_stats`
 - `marketplace_stats_offering_costs_summary_count` HEAD `/api/marketplace-stats/offering_costs_summary/` — Get number of items in the collection matching the request parameters (no params)
 - `marketplace_stats_offerings_counter_stats_list` GET `/api/marketplace-stats/offerings_counter_stats/` — Retrieve statistics about the number of offerings, grouped by category and service provider (no params)
 - `marketplace_stats_offerings_counter_stats_count` HEAD `/api/marketplace-stats/offerings_counter_stats/` — Get number of items in the collection matching the request parameters (no params)
+- `marketplace_stats_openstack_instances_list` GET `/api/marketplace-stats/openstack_instances/` — List all OpenStack instances with infrastructure details. (18 query params)
+- `marketplace_stats_openstack_instances_count` HEAD `/api/marketplace-stats/openstack_instances/` — List all OpenStack instances with infrastructure details. (18 query params)
+- `marketplace_stats_openstack_instances_aggregate_list` GET `/api/marketplace-stats/openstack_instances_aggregate/` — Aggregate OpenStack instances by a dimension. (11 query params)
+- `marketplace_stats_openstack_instances_aggregate_count` HEAD `/api/marketplace-stats/openstack_instances_aggregate/` — Aggregate OpenStack instances by a dimension. (11 query params)
 - `marketplace_stats_order_stats_retrieve` GET `/api/marketplace-stats/order_stats/` — Return comprehensive order statistics including daily breakdown, state/type aggregations, and summary stats (4 query params)
 - `marketplace_stats_order_stats_count` HEAD `/api/marketplace-stats/order_stats/` — Get number of items in the collection matching the request parameters (4 query params)
 - `marketplace_stats_organization_project_count_list` GET `/api/marketplace-stats/organization_project_count/` — Return project count per organization (no params)
@@ -2193,6 +2197,17 @@ Module: `waldur_api_client.api.openstack_floating_ips`
 - `openstack_floating_ips_unlink` POST `/api/openstack-floating-ips/{uuid}/unlink/` — Unlink resource (path: uuid)
 - `openstack_floating_ips_update_description` POST `/api/openstack-floating-ips/{uuid}/update_description/` — Update floating IP description (path: uuid | request body)
 
+## openstack-health-monitors
+Module: `waldur_api_client.api.openstack_health_monitors`
+
+- `openstack_health_monitors_list` GET `/api/openstack-health-monitors/` — List health monitors (8 query params)
+- `openstack_health_monitors_count` HEAD `/api/openstack-health-monitors/` — List health monitors (7 query params)
+- `openstack_health_monitors_create` POST `/api/openstack-health-monitors/` — Create health monitor (request body)
+- `openstack_health_monitors_retrieve` GET `/api/openstack-health-monitors/{uuid}/` — Get health monitor details (path: uuid | 1 query param)
+- `openstack_health_monitors_update` PUT `/api/openstack-health-monitors/{uuid}/` — Update health monitor (path: uuid | request body)
+- `openstack_health_monitors_partial_update` PATCH `/api/openstack-health-monitors/{uuid}/` — Partially update health monitor (path: uuid | request body)
+- `openstack_health_monitors_destroy` DELETE `/api/openstack-health-monitors/{uuid}/` — Delete health monitor (path: uuid)
+
 ## openstack-images
 Module: `waldur_api_client.api.openstack_images`
 
@@ -2234,6 +2249,31 @@ Module: `waldur_api_client.api.openstack_instances`
 - `openstack_instances_update_floating_ips` POST `/api/openstack-instances/{uuid}/update_floating_ips/` — Update instance floating IPs (path: uuid | request body)
 - `openstack_instances_update_ports` POST `/api/openstack-instances/{uuid}/update_ports/` — Update instance ports (path: uuid | request body)
 - `openstack_instances_update_security_groups` POST `/api/openstack-instances/{uuid}/update_security_groups/` — Update instance security groups (path: uuid | request body)
+
+## openstack-listeners
+Module: `waldur_api_client.api.openstack_listeners`
+
+- `openstack_listeners_list` GET `/api/openstack-listeners/` — List listeners (7 query params)
+- `openstack_listeners_count` HEAD `/api/openstack-listeners/` — List listeners (6 query params)
+- `openstack_listeners_create` POST `/api/openstack-listeners/` — Create listener (request body)
+- `openstack_listeners_retrieve` GET `/api/openstack-listeners/{uuid}/` — Get listener details (path: uuid | 1 query param)
+- `openstack_listeners_update` PUT `/api/openstack-listeners/{uuid}/` — Update listener (path: uuid | request body)
+- `openstack_listeners_partial_update` PATCH `/api/openstack-listeners/{uuid}/` — Partially update listener (path: uuid | request body)
+- `openstack_listeners_destroy` DELETE `/api/openstack-listeners/{uuid}/` — Delete listener (path: uuid)
+
+## openstack-loadbalancers
+Module: `waldur_api_client.api.openstack_loadbalancers`
+
+- `openstack_loadbalancers_list` GET `/api/openstack-loadbalancers/` — List load balancers (6 query params)
+- `openstack_loadbalancers_count` HEAD `/api/openstack-loadbalancers/` — List load balancers (5 query params)
+- `openstack_loadbalancers_create` POST `/api/openstack-loadbalancers/` — Create load balancer (request body)
+- `openstack_loadbalancers_retrieve` GET `/api/openstack-loadbalancers/{uuid}/` — Get load balancer details (path: uuid | 1 query param)
+- `openstack_loadbalancers_update` PUT `/api/openstack-loadbalancers/{uuid}/` — Update load balancer (path: uuid | request body)
+- `openstack_loadbalancers_partial_update` PATCH `/api/openstack-loadbalancers/{uuid}/` — Partially update load balancer (path: uuid | request body)
+- `openstack_loadbalancers_destroy` DELETE `/api/openstack-loadbalancers/{uuid}/` — Delete load balancer (path: uuid)
+- `openstack_loadbalancers_attach_floating_ip` POST `/api/openstack-loadbalancers/{uuid}/attach_floating_ip/` — Attach floating IP to VIP (path: uuid | request body)
+- `openstack_loadbalancers_detach_floating_ip` POST `/api/openstack-loadbalancers/{uuid}/detach_floating_ip/` — Detach floating IP from VIP (path: uuid)
+- `openstack_loadbalancers_update_vip_security_groups` POST `/api/openstack-loadbalancers/{uuid}/update_vip_security_groups/` — Update VIP security groups (path: uuid | request body)
 
 ## openstack-marketplace-tenants
 Module: `waldur_api_client.api.openstack_marketplace_tenants`
@@ -2283,6 +2323,28 @@ Module: `waldur_api_client.api.openstack_networks`
 - `openstack_networks_set_mtu` POST `/api/openstack-networks/{uuid}/set_mtu/` — Set network MTU (path: uuid | request body)
 - `openstack_networks_set_ok` POST `/api/openstack-networks/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `openstack_networks_unlink` POST `/api/openstack-networks/{uuid}/unlink/` — Unlink resource (path: uuid)
+
+## openstack-pool-members
+Module: `waldur_api_client.api.openstack_pool_members`
+
+- `openstack_pool_members_list` GET `/api/openstack-pool-members/` — List pool members (8 query params)
+- `openstack_pool_members_count` HEAD `/api/openstack-pool-members/` — List pool members (7 query params)
+- `openstack_pool_members_create` POST `/api/openstack-pool-members/` — Create pool member (request body)
+- `openstack_pool_members_retrieve` GET `/api/openstack-pool-members/{uuid}/` — Get pool member details (path: uuid | 1 query param)
+- `openstack_pool_members_update` PUT `/api/openstack-pool-members/{uuid}/` — Update pool member (path: uuid | request body)
+- `openstack_pool_members_partial_update` PATCH `/api/openstack-pool-members/{uuid}/` — Partially update pool member (path: uuid | request body)
+- `openstack_pool_members_destroy` DELETE `/api/openstack-pool-members/{uuid}/` — Delete pool member (path: uuid)
+
+## openstack-pools
+Module: `waldur_api_client.api.openstack_pools`
+
+- `openstack_pools_list` GET `/api/openstack-pools/` — List pools (7 query params)
+- `openstack_pools_count` HEAD `/api/openstack-pools/` — List pools (6 query params)
+- `openstack_pools_create` POST `/api/openstack-pools/` — Create pool (request body)
+- `openstack_pools_retrieve` GET `/api/openstack-pools/{uuid}/` — Get pool details (path: uuid | 1 query param)
+- `openstack_pools_update` PUT `/api/openstack-pools/{uuid}/` — Update pool (path: uuid | request body)
+- `openstack_pools_partial_update` PATCH `/api/openstack-pools/{uuid}/` — Partially update pool (path: uuid | request body)
+- `openstack_pools_destroy` DELETE `/api/openstack-pools/{uuid}/` — Delete pool (path: uuid)
 
 ## openstack-ports
 Module: `waldur_api_client.api.openstack_ports`

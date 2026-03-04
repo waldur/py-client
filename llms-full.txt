@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.6-rc.3-dev.20260304030645
+# Version: 8.0.6-rc.3-dev.20260304123252
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10932,6 +10932,88 @@ HEAD /api/marketplace-stats/offerings_counter_stats/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
 
+### marketplace_stats_openstack_instances_list
+GET /api/marketplace-stats/openstack_instances/
+Summary: List all OpenStack instances with infrastructure details.
+Description: Returns a paginated flat list of all OpenStack instances across all clusters. Staff and support users can filter by infrastructure properties.
+Query parameters (18):
+  - availability_zone_name — Filter by availability zone name.
+  - cores_max — Maximum number of vCPUs.
+  - cores_min — Minimum number of vCPUs.
+  - customer_uuid — Filter by customer UUID.
+  - disk_max — Maximum disk in MiB.
+  - disk_min — Minimum disk in MiB.
+  - flavor_name — Filter by flavor name (case-insensitive partial match).
+  - hypervisor_hostname — Filter by hypervisor hostname (case-insensitive partial match).
+  - image_name — Filter by image name (case-insensitive partial match).
+  - name — Filter by instance name (case-insensitive partial match).
+  - o — Ordering field. Prefix with - for descending. Options: name, cores, ram, disk, created, runtime_state, flavor_name, hypervisor_hostname, customer_name, project_name, cluster_name, start_time.
+  - project_uuid — Filter by project UUID.
+  - ram_max — Maximum RAM in MiB.
+  - ram_min — Minimum RAM in MiB.
+  - runtime_state — Filter by runtime state (e.g. ACTIVE, SHUTOFF).
+  - service_settings_uuid — Filter by cluster (service settings) UUID.
+  - state — Filter by provisioning state (e.g. OK, ERRED). Supports multiple values.
+  - tenant_uuid — Filter by tenant UUID.
+
+### marketplace_stats_openstack_instances_count
+HEAD /api/marketplace-stats/openstack_instances/
+Summary: List all OpenStack instances with infrastructure details.
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (18):
+  - availability_zone_name — Filter by availability zone name.
+  - cores_max — Maximum number of vCPUs.
+  - cores_min — Minimum number of vCPUs.
+  - customer_uuid — Filter by customer UUID.
+  - disk_max — Maximum disk in MiB.
+  - disk_min — Minimum disk in MiB.
+  - flavor_name — Filter by flavor name (case-insensitive partial match).
+  - hypervisor_hostname — Filter by hypervisor hostname (case-insensitive partial match).
+  - image_name — Filter by image name (case-insensitive partial match).
+  - name — Filter by instance name (case-insensitive partial match).
+  - o — Ordering field. Prefix with - for descending. Options: name, cores, ram, disk, created, runtime_state, flavor_name, hypervisor_hostname, customer_name, project_name, cluster_name, start_time.
+  - project_uuid — Filter by project UUID.
+  - ram_max — Maximum RAM in MiB.
+  - ram_min — Minimum RAM in MiB.
+  - runtime_state — Filter by runtime state (e.g. ACTIVE, SHUTOFF).
+  - service_settings_uuid — Filter by cluster (service settings) UUID.
+  - state — Filter by provisioning state (e.g. OK, ERRED). Supports multiple values.
+  - tenant_uuid — Filter by tenant UUID.
+
+### marketplace_stats_openstack_instances_aggregate_list
+GET /api/marketplace-stats/openstack_instances_aggregate/
+Summary: Aggregate OpenStack instances by a dimension.
+Description: Returns aggregated metrics (count, cores, RAM, disk) grouped by the specified dimension.
+Query parameters (11):
+  - customer_uuid — Filter by customer UUID.
+  - flavor_name — Filter by flavor name (case-insensitive partial match).
+  - group_by (required) — Dimension to group by.
+  - hypervisor_hostname — Filter by hypervisor hostname (case-insensitive partial match).
+  - image_name — Filter by image name (case-insensitive partial match).
+  - name — Filter by instance name (case-insensitive partial match).
+  - project_uuid — Filter by project UUID.
+  - runtime_state — Filter by runtime state (e.g. ACTIVE, SHUTOFF).
+  - service_settings_uuid — Filter by cluster (service settings) UUID.
+  - state — Filter by provisioning state (e.g. OK, ERRED).
+  - tenant_uuid — Filter by tenant UUID.
+
+### marketplace_stats_openstack_instances_aggregate_count
+HEAD /api/marketplace-stats/openstack_instances_aggregate/
+Summary: Aggregate OpenStack instances by a dimension.
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (11):
+  - customer_uuid — Filter by customer UUID.
+  - flavor_name — Filter by flavor name (case-insensitive partial match).
+  - group_by (required) — Dimension to group by.
+  - hypervisor_hostname — Filter by hypervisor hostname (case-insensitive partial match).
+  - image_name — Filter by image name (case-insensitive partial match).
+  - name — Filter by instance name (case-insensitive partial match).
+  - project_uuid — Filter by project UUID.
+  - runtime_state — Filter by runtime state (e.g. ACTIVE, SHUTOFF).
+  - service_settings_uuid — Filter by cluster (service settings) UUID.
+  - state — Filter by provisioning state (e.g. OK, ERRED).
+  - tenant_uuid — Filter by tenant UUID.
+
 ### marketplace_stats_order_stats_retrieve
 GET /api/marketplace-stats/order_stats/
 Summary: Return comprehensive order statistics including daily breakdown, state/type aggregations, and summary stats
@@ -13156,6 +13238,75 @@ Path parameters:
 Request body: yes
 
 ============================================================
+## openstack-health-monitors  (module: waldur_api_client.api.openstack_health_monitors)
+============================================================
+
+### openstack_health_monitors_list
+GET /api/openstack-health-monitors/
+Summary: List health monitors
+Description: Get a list of pool health monitors.
+Query parameters (8):
+  - field
+  - load_balancer_uuid — Load balancer UUID
+  - name — Name
+  - name_exact — Name (exact)
+  - pool — Pool URL
+  - pool_uuid — Pool UUID
+  - state — State
+  - tenant_uuid — Tenant UUID
+
+### openstack_health_monitors_count
+HEAD /api/openstack-health-monitors/
+Summary: List health monitors
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (7):
+  - load_balancer_uuid — Load balancer UUID
+  - name — Name
+  - name_exact — Name (exact)
+  - pool — Pool URL
+  - pool_uuid — Pool UUID
+  - state — State
+  - tenant_uuid — Tenant UUID
+
+### openstack_health_monitors_create
+POST /api/openstack-health-monitors/
+Summary: Create health monitor
+Description: Create a new health monitor for a pool.
+Request body: yes
+
+### openstack_health_monitors_retrieve
+GET /api/openstack-health-monitors/{uuid}/
+Summary: Get health monitor details
+Description: Retrieve details of a specific health monitor.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - field
+
+### openstack_health_monitors_update
+PUT /api/openstack-health-monitors/{uuid}/
+Summary: Update health monitor
+Description: Update an existing health monitor.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_health_monitors_partial_update
+PATCH /api/openstack-health-monitors/{uuid}/
+Summary: Partially update health monitor
+Description: Update specific fields of a health monitor.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_health_monitors_destroy
+DELETE /api/openstack-health-monitors/{uuid}/
+Summary: Delete health monitor
+Description: Delete a health monitor.
+Path parameters:
+  - uuid
+
+============================================================
 ## openstack-images  (module: waldur_api_client.api.openstack_images)
 ============================================================
 
@@ -13457,6 +13608,161 @@ Request body: yes
 POST /api/openstack-instances/{uuid}/update_security_groups/
 Summary: Update instance security groups
 Description: Update security groups of the instance
+Path parameters:
+  - uuid
+Request body: yes
+
+============================================================
+## openstack-listeners  (module: waldur_api_client.api.openstack_listeners)
+============================================================
+
+### openstack_listeners_list
+GET /api/openstack-listeners/
+Summary: List listeners
+Description: Get a list of load balancer listeners.
+Query parameters (7):
+  - field
+  - load_balancer — Load balancer URL
+  - load_balancer_uuid — Load balancer UUID
+  - name — Name
+  - name_exact — Name (exact)
+  - state — State
+  - tenant_uuid — Tenant UUID
+
+### openstack_listeners_count
+HEAD /api/openstack-listeners/
+Summary: List listeners
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (6):
+  - load_balancer — Load balancer URL
+  - load_balancer_uuid — Load balancer UUID
+  - name — Name
+  - name_exact — Name (exact)
+  - state — State
+  - tenant_uuid — Tenant UUID
+
+### openstack_listeners_create
+POST /api/openstack-listeners/
+Summary: Create listener
+Description: Create a new listener for a load balancer.
+Request body: yes
+
+### openstack_listeners_retrieve
+GET /api/openstack-listeners/{uuid}/
+Summary: Get listener details
+Description: Retrieve details of a specific listener.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - field
+
+### openstack_listeners_update
+PUT /api/openstack-listeners/{uuid}/
+Summary: Update listener
+Description: Update an existing listener.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_listeners_partial_update
+PATCH /api/openstack-listeners/{uuid}/
+Summary: Partially update listener
+Description: Update specific fields of a listener.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_listeners_destroy
+DELETE /api/openstack-listeners/{uuid}/
+Summary: Delete listener
+Description: Delete a listener.
+Path parameters:
+  - uuid
+
+============================================================
+## openstack-loadbalancers  (module: waldur_api_client.api.openstack_loadbalancers)
+============================================================
+
+### openstack_loadbalancers_list
+GET /api/openstack-loadbalancers/
+Summary: List load balancers
+Description: Get a list of load balancers.
+Query parameters (6):
+  - field
+  - name — Name
+  - name_exact — Name (exact)
+  - state — State
+  - tenant — Tenant URL
+  - tenant_uuid — Tenant UUID
+
+### openstack_loadbalancers_count
+HEAD /api/openstack-loadbalancers/
+Summary: List load balancers
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (5):
+  - name — Name
+  - name_exact — Name (exact)
+  - state — State
+  - tenant — Tenant URL
+  - tenant_uuid — Tenant UUID
+
+### openstack_loadbalancers_create
+POST /api/openstack-loadbalancers/
+Summary: Create load balancer
+Description: Create a new load balancer.
+Request body: yes
+
+### openstack_loadbalancers_retrieve
+GET /api/openstack-loadbalancers/{uuid}/
+Summary: Get load balancer details
+Description: Retrieve details of a specific load balancer.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - field
+
+### openstack_loadbalancers_update
+PUT /api/openstack-loadbalancers/{uuid}/
+Summary: Update load balancer
+Description: Update an existing load balancer.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_loadbalancers_partial_update
+PATCH /api/openstack-loadbalancers/{uuid}/
+Summary: Partially update load balancer
+Description: Update specific fields of a load balancer.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_loadbalancers_destroy
+DELETE /api/openstack-loadbalancers/{uuid}/
+Summary: Delete load balancer
+Description: Delete a load balancer.
+Path parameters:
+  - uuid
+
+### openstack_loadbalancers_attach_floating_ip
+POST /api/openstack-loadbalancers/{uuid}/attach_floating_ip/
+Summary: Attach floating IP to VIP
+Description: Attach a floating IP to the load balancer VIP port.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_loadbalancers_detach_floating_ip
+POST /api/openstack-loadbalancers/{uuid}/detach_floating_ip/
+Summary: Detach floating IP from VIP
+Description: Detach floating IP from the load balancer VIP port.
+Path parameters:
+  - uuid
+
+### openstack_loadbalancers_update_vip_security_groups
+POST /api/openstack-loadbalancers/{uuid}/update_vip_security_groups/
+Summary: Update VIP security groups
+Description: Update security groups on the load balancer VIP port.
 Path parameters:
   - uuid
 Request body: yes
@@ -13792,6 +14098,142 @@ Summary: Unlink resource
 Description: Delete resource from the database without scheduling operations on backend
         and without checking current state of the resource. It is intended to be used
         for removing resource stuck in transitioning state.
+Path parameters:
+  - uuid
+
+============================================================
+## openstack-pool-members  (module: waldur_api_client.api.openstack_pool_members)
+============================================================
+
+### openstack_pool_members_list
+GET /api/openstack-pool-members/
+Summary: List pool members
+Description: Get a list of pool members.
+Query parameters (8):
+  - field
+  - load_balancer_uuid — Load balancer UUID
+  - name — Name
+  - name_exact — Name (exact)
+  - pool — Pool URL
+  - pool_uuid — Pool UUID
+  - state — State
+  - tenant_uuid — Tenant UUID
+
+### openstack_pool_members_count
+HEAD /api/openstack-pool-members/
+Summary: List pool members
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (7):
+  - load_balancer_uuid — Load balancer UUID
+  - name — Name
+  - name_exact — Name (exact)
+  - pool — Pool URL
+  - pool_uuid — Pool UUID
+  - state — State
+  - tenant_uuid — Tenant UUID
+
+### openstack_pool_members_create
+POST /api/openstack-pool-members/
+Summary: Create pool member
+Description: Create a new member for a pool.
+Request body: yes
+
+### openstack_pool_members_retrieve
+GET /api/openstack-pool-members/{uuid}/
+Summary: Get pool member details
+Description: Retrieve details of a specific pool member.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - field
+
+### openstack_pool_members_update
+PUT /api/openstack-pool-members/{uuid}/
+Summary: Update pool member
+Description: Update an existing pool member.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_pool_members_partial_update
+PATCH /api/openstack-pool-members/{uuid}/
+Summary: Partially update pool member
+Description: Update specific fields of a pool member.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_pool_members_destroy
+DELETE /api/openstack-pool-members/{uuid}/
+Summary: Delete pool member
+Description: Delete a pool member.
+Path parameters:
+  - uuid
+
+============================================================
+## openstack-pools  (module: waldur_api_client.api.openstack_pools)
+============================================================
+
+### openstack_pools_list
+GET /api/openstack-pools/
+Summary: List pools
+Description: Get a list of load balancer pools.
+Query parameters (7):
+  - field
+  - load_balancer — Load balancer URL
+  - load_balancer_uuid — Load balancer UUID
+  - name — Name
+  - name_exact — Name (exact)
+  - state — State
+  - tenant_uuid — Tenant UUID
+
+### openstack_pools_count
+HEAD /api/openstack-pools/
+Summary: List pools
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (6):
+  - load_balancer — Load balancer URL
+  - load_balancer_uuid — Load balancer UUID
+  - name — Name
+  - name_exact — Name (exact)
+  - state — State
+  - tenant_uuid — Tenant UUID
+
+### openstack_pools_create
+POST /api/openstack-pools/
+Summary: Create pool
+Description: Create a new pool for a load balancer.
+Request body: yes
+
+### openstack_pools_retrieve
+GET /api/openstack-pools/{uuid}/
+Summary: Get pool details
+Description: Retrieve details of a specific pool.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - field
+
+### openstack_pools_update
+PUT /api/openstack-pools/{uuid}/
+Summary: Update pool
+Description: Update an existing pool.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_pools_partial_update
+PATCH /api/openstack-pools/{uuid}/
+Summary: Partially update pool
+Description: Update specific fields of a pool.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_pools_destroy
+DELETE /api/openstack-pools/{uuid}/
+Summary: Delete pool
+Description: Delete a pool.
 Path parameters:
   - uuid
 
