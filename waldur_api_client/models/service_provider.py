@@ -36,6 +36,8 @@ class ServiceProvider:
         image (Union[None, Unset, str]):
         organization_groups (Union[Unset, list['OrganizationGroup']]):
         offering_count (Union[Unset, int]):
+        allowed_domains (Union[Unset, Any]): List of allowed domains for offering endpoints. Only staff can modify this
+            field.
     """
 
     url: Union[Unset, str] = UNSET
@@ -54,6 +56,7 @@ class ServiceProvider:
     image: Union[None, Unset, str] = UNSET
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     offering_count: Union[Unset, int] = UNSET
+    allowed_domains: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -104,6 +107,8 @@ class ServiceProvider:
 
         offering_count = self.offering_count
 
+        allowed_domains = self.allowed_domains
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -139,6 +144,8 @@ class ServiceProvider:
             field_dict["organization_groups"] = organization_groups
         if offering_count is not UNSET:
             field_dict["offering_count"] = offering_count
+        if allowed_domains is not UNSET:
+            field_dict["allowed_domains"] = allowed_domains
 
         return field_dict
 
@@ -206,6 +213,8 @@ class ServiceProvider:
 
         offering_count = d.pop("offering_count", UNSET)
 
+        allowed_domains = d.pop("allowed_domains", UNSET)
+
         service_provider = cls(
             url=url,
             uuid=uuid,
@@ -223,6 +232,7 @@ class ServiceProvider:
             image=image,
             organization_groups=organization_groups,
             offering_count=offering_count,
+            allowed_domains=allowed_domains,
         )
 
         service_provider.additional_properties = d

@@ -927,6 +927,8 @@ from .nested_offering_component_limit import NestedOfferingComponentLimit
 from .nested_offering_component_limit_request import NestedOfferingComponentLimitRequest
 from .nested_offering_file import NestedOfferingFile
 from .nested_offering_file_request import NestedOfferingFileRequest
+from .nested_parent_software import NestedParentSoftware
+from .nested_parent_software_request import NestedParentSoftwareRequest
 from .nested_partition import NestedPartition
 from .nested_partition_request import NestedPartitionRequest
 from .nested_plan_component import NestedPlanComponent
@@ -3148,6 +3150,8 @@ __all__ = (
     "NestedOfferingComponentLimitRequest",
     "NestedOfferingFile",
     "NestedOfferingFileRequest",
+    "NestedParentSoftware",
+    "NestedParentSoftwareRequest",
     "NestedPartition",
     "NestedPartitionRequest",
     "NestedPlanComponent",

@@ -19,12 +19,15 @@ class ServiceProviderRequestMultipart:
         description (Union[Unset, str]):
         enable_notifications (Union[Unset, bool]):
         image (Union[File, None, Unset]):
+        allowed_domains (Union[Unset, Any]): List of allowed domains for offering endpoints. Only staff can modify this
+            field.
     """
 
     customer: str
     description: Union[Unset, str] = UNSET
     enable_notifications: Union[Unset, bool] = UNSET
     image: Union[File, None, Unset] = UNSET
+    allowed_domains: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -43,6 +46,8 @@ class ServiceProviderRequestMultipart:
         else:
             image = self.image
 
+        allowed_domains = self.allowed_domains
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -56,6 +61,8 @@ class ServiceProviderRequestMultipart:
             field_dict["enable_notifications"] = enable_notifications
         if image is not UNSET:
             field_dict["image"] = image
+        if allowed_domains is not UNSET:
+            field_dict["allowed_domains"] = allowed_domains
 
         return field_dict
 
@@ -75,6 +82,9 @@ class ServiceProviderRequestMultipart:
                 files.append(("image", self.image.to_tuple()))
             else:
                 files.append(("image", (None, str(self.image).encode(), "text/plain")))
+
+        if not isinstance(self.allowed_domains, Unset):
+            files.append(("allowed_domains", (None, str(self.allowed_domains).encode(), "text/plain")))
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -107,11 +117,14 @@ class ServiceProviderRequestMultipart:
 
         image = _parse_image(d.pop("image", UNSET))
 
+        allowed_domains = d.pop("allowed_domains", UNSET)
+
         service_provider_request_multipart = cls(
             customer=customer,
             description=description,
             enable_notifications=enable_notifications,
             image=image,
+            allowed_domains=allowed_domains,
         )
 
         service_provider_request_multipart.additional_properties = d

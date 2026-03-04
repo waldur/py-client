@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class ServiceProviderFieldEnum(str, Enum):
+    ALLOWED_DOMAINS = "allowed_domains"
     CREATED = "created"
     CUSTOMER = "customer"
     CUSTOMER_ABBREVIATION = "customer_abbreviation"

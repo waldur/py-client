@@ -21,7 +21,6 @@ class PatchedSoftwarePackageRequest:
         licenses (Union[Unset, Any]): Software licenses (e.g., ['GPL-3.0', 'MIT'])
         maintainers (Union[Unset, Any]): Package maintainers
         is_extension (Union[Unset, bool]): Whether this package is an extension of another package
-        parent_software (Union[None, Unset, str]): Parent package for extensions (e.g., Python package within Python)
     """
 
     catalog: Union[Unset, str] = UNSET
@@ -32,7 +31,6 @@ class PatchedSoftwarePackageRequest:
     licenses: Union[Unset, Any] = UNSET
     maintainers: Union[Unset, Any] = UNSET
     is_extension: Union[Unset, bool] = UNSET
-    parent_software: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,12 +54,6 @@ class PatchedSoftwarePackageRequest:
 
         is_extension = self.is_extension
 
-        parent_software: Union[None, Unset, str]
-        if isinstance(self.parent_software, Unset):
-            parent_software = UNSET
-        else:
-            parent_software = self.parent_software
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -81,8 +73,6 @@ class PatchedSoftwarePackageRequest:
             field_dict["maintainers"] = maintainers
         if is_extension is not UNSET:
             field_dict["is_extension"] = is_extension
-        if parent_software is not UNSET:
-            field_dict["parent_software"] = parent_software
 
         return field_dict
 
@@ -112,15 +102,6 @@ class PatchedSoftwarePackageRequest:
 
         is_extension = d.pop("is_extension", UNSET)
 
-        def _parse_parent_software(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        parent_software = _parse_parent_software(d.pop("parent_software", UNSET))
-
         patched_software_package_request = cls(
             catalog=catalog,
             name=name,
@@ -130,7 +111,6 @@ class PatchedSoftwarePackageRequest:
             licenses=licenses,
             maintainers=maintainers,
             is_extension=is_extension,
-            parent_software=parent_software,
         )
 
         patched_software_package_request.additional_properties = d

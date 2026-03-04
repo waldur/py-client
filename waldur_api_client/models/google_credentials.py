@@ -36,6 +36,8 @@ class GoogleCredentials:
         image (Union[None, Unset, str]):
         organization_groups (Union[Unset, list['OrganizationGroup']]):
         offering_count (Union[Unset, int]):
+        allowed_domains (Union[Unset, Any]): List of allowed domains for offering endpoints. Only staff can modify this
+            field.
         calendar_token (Union[Unset, str]):
         calendar_refresh_token (Union[Unset, str]):
         google_auth_url (Union[Unset, str]):
@@ -57,6 +59,7 @@ class GoogleCredentials:
     image: Union[None, Unset, str] = UNSET
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     offering_count: Union[Unset, int] = UNSET
+    allowed_domains: Union[Unset, Any] = UNSET
     calendar_token: Union[Unset, str] = UNSET
     calendar_refresh_token: Union[Unset, str] = UNSET
     google_auth_url: Union[Unset, str] = UNSET
@@ -110,6 +113,8 @@ class GoogleCredentials:
 
         offering_count = self.offering_count
 
+        allowed_domains = self.allowed_domains
+
         calendar_token = self.calendar_token
 
         calendar_refresh_token = self.calendar_refresh_token
@@ -151,6 +156,8 @@ class GoogleCredentials:
             field_dict["organization_groups"] = organization_groups
         if offering_count is not UNSET:
             field_dict["offering_count"] = offering_count
+        if allowed_domains is not UNSET:
+            field_dict["allowed_domains"] = allowed_domains
         if calendar_token is not UNSET:
             field_dict["calendar_token"] = calendar_token
         if calendar_refresh_token is not UNSET:
@@ -224,6 +231,8 @@ class GoogleCredentials:
 
         offering_count = d.pop("offering_count", UNSET)
 
+        allowed_domains = d.pop("allowed_domains", UNSET)
+
         calendar_token = d.pop("calendar_token", UNSET)
 
         calendar_refresh_token = d.pop("calendar_refresh_token", UNSET)
@@ -247,6 +256,7 @@ class GoogleCredentials:
             image=image,
             organization_groups=organization_groups,
             offering_count=offering_count,
+            allowed_domains=allowed_domains,
             calendar_token=calendar_token,
             calendar_refresh_token=calendar_refresh_token,
             google_auth_url=google_auth_url,

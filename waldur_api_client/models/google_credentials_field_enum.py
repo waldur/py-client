@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class GoogleCredentialsFieldEnum(str, Enum):
+    ALLOWED_DOMAINS = "allowed_domains"
     CALENDAR_REFRESH_TOKEN = "calendar_refresh_token"
     CALENDAR_TOKEN = "calendar_token"
     CREATED = "created"
