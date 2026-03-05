@@ -419,6 +419,7 @@ from .course_account import CourseAccount
 from .course_account_create_nested_request import CourseAccountCreateNestedRequest
 from .course_account_o_enum import CourseAccountOEnum
 from .course_account_request import CourseAccountRequest
+from .course_account_state_enum import CourseAccountStateEnum
 from .course_accounts_bulk_create_request import CourseAccountsBulkCreateRequest
 from .create_attachments_request import CreateAttachmentsRequest
 from .create_customer_credit import CreateCustomerCredit
@@ -2669,6 +2670,7 @@ __all__ = (
     "CourseAccountOEnum",
     "CourseAccountRequest",
     "CourseAccountsBulkCreateRequest",
+    "CourseAccountStateEnum",
     "CreateAttachmentsRequest",
     "CreateCustomerCredit",
     "CreateCustomerCreditRequest",

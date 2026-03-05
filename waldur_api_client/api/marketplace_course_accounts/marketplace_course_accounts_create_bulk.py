@@ -9,8 +9,8 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.course_account import CourseAccount
 from ...models.course_account_o_enum import CourseAccountOEnum
+from ...models.course_account_state_enum import CourseAccountStateEnum
 from ...models.course_accounts_bulk_create_request import CourseAccountsBulkCreateRequest
-from ...models.service_account_state import ServiceAccountState
 from ...types import UNSET, Response, Unset
 
 
@@ -26,7 +26,7 @@ def _get_kwargs(
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ServiceAccountState]] = UNSET,
+    state: Union[Unset, list[CourseAccountStateEnum]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -139,7 +139,7 @@ def sync_detailed(
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ServiceAccountState]] = UNSET,
+    state: Union[Unset, list[CourseAccountStateEnum]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CourseAccount"]]:
     """Bulk create course accounts
@@ -156,7 +156,7 @@ def sync_detailed(
         project_start_date_after (Union[Unset, datetime.date]):
         project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ServiceAccountState]]):
+        state (Union[Unset, list[CourseAccountStateEnum]]):
         username (Union[Unset, str]):
         body (CourseAccountsBulkCreateRequest):
 
@@ -203,7 +203,7 @@ def sync(
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ServiceAccountState]] = UNSET,
+    state: Union[Unset, list[CourseAccountStateEnum]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
     """Bulk create course accounts
@@ -220,7 +220,7 @@ def sync(
         project_start_date_after (Union[Unset, datetime.date]):
         project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ServiceAccountState]]):
+        state (Union[Unset, list[CourseAccountStateEnum]]):
         username (Union[Unset, str]):
         body (CourseAccountsBulkCreateRequest):
 
@@ -262,7 +262,7 @@ async def asyncio_detailed(
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ServiceAccountState]] = UNSET,
+    state: Union[Unset, list[CourseAccountStateEnum]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> Response[list["CourseAccount"]]:
     """Bulk create course accounts
@@ -279,7 +279,7 @@ async def asyncio_detailed(
         project_start_date_after (Union[Unset, datetime.date]):
         project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ServiceAccountState]]):
+        state (Union[Unset, list[CourseAccountStateEnum]]):
         username (Union[Unset, str]):
         body (CourseAccountsBulkCreateRequest):
 
@@ -324,7 +324,7 @@ async def asyncio(
     project_start_date_after: Union[Unset, datetime.date] = UNSET,
     project_start_date_before: Union[Unset, datetime.date] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    state: Union[Unset, list[ServiceAccountState]] = UNSET,
+    state: Union[Unset, list[CourseAccountStateEnum]] = UNSET,
     username: Union[Unset, str] = UNSET,
 ) -> list["CourseAccount"]:
     """Bulk create course accounts
@@ -341,7 +341,7 @@ async def asyncio(
         project_start_date_after (Union[Unset, datetime.date]):
         project_start_date_before (Union[Unset, datetime.date]):
         project_uuid (Union[Unset, UUID]):
-        state (Union[Unset, list[ServiceAccountState]]):
+        state (Union[Unset, list[CourseAccountStateEnum]]):
         username (Union[Unset, str]):
         body (CourseAccountsBulkCreateRequest):
 

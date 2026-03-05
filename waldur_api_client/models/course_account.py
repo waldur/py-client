@@ -7,7 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.service_account_state import ServiceAccountState
+from ..models.course_account_state_enum import CourseAccountStateEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CourseAccount")
@@ -31,7 +31,7 @@ class CourseAccount:
         username (str):
         customer_uuid (UUID):
         customer_name (str):
-        state (ServiceAccountState):
+        state (CourseAccountStateEnum):
         error_message (str):
         error_traceback (str):
         email (Union[Unset, str]):
@@ -52,7 +52,7 @@ class CourseAccount:
     username: str
     customer_uuid: UUID
     customer_name: str
-    state: ServiceAccountState
+    state: CourseAccountStateEnum
     error_message: str
     error_traceback: str
     email: Union[Unset, str] = UNSET
@@ -159,7 +159,7 @@ class CourseAccount:
 
         customer_name = d.pop("customer_name")
 
-        state = ServiceAccountState(d.pop("state"))
+        state = CourseAccountStateEnum(d.pop("state"))
 
         error_message = d.pop("error_message")
 
