@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -23,7 +23,7 @@ class Message:
         role (MessageRoleEnum):
         content (str):
         sequence_index (int):
-        replaces (UUID):
+        replaces (Union[None, UUID]):
         created (datetime.datetime):
         is_flagged (bool):
         severity (InjectionSeverityEnum):
@@ -37,7 +37,7 @@ class Message:
     role: MessageRoleEnum
     content: str
     sequence_index: int
-    replaces: UUID
+    replaces: Union[None, UUID]
     created: datetime.datetime
     is_flagged: bool
     severity: InjectionSeverityEnum
@@ -57,7 +57,11 @@ class Message:
 
         sequence_index = self.sequence_index
 
-        replaces = str(self.replaces)
+        replaces: Union[None, str]
+        if isinstance(self.replaces, UUID):
+            replaces = str(self.replaces)
+        else:
+            replaces = self.replaces
 
         created = self.created.isoformat()
 
@@ -105,7 +109,20 @@ class Message:
 
         sequence_index = d.pop("sequence_index")
 
-        replaces = UUID(d.pop("replaces"))
+        def _parse_replaces(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                replaces_type_0 = UUID(data)
+
+                return replaces_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        replaces = _parse_replaces(d.pop("replaces"))
 
         created = isoparse(d.pop("created"))
 
