@@ -35,6 +35,7 @@ def _get_kwargs(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -105,6 +106,11 @@ def _get_kwargs(
         json_user_uuid = str(user_uuid)
     params["user_uuid"] = json_user_uuid
 
+    json_user_uuid_with_active_role: Union[Unset, str] = UNSET
+    if not isinstance(user_uuid_with_active_role, Unset):
+        json_user_uuid_with_active_role = str(user_uuid_with_active_role)
+    params["user_uuid_with_active_role"] = json_user_uuid_with_active_role
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
@@ -167,6 +173,7 @@ def sync_detailed(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """List projects
 
@@ -195,6 +202,7 @@ def sync_detailed(
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
+        user_uuid_with_active_role (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -227,6 +235,7 @@ def sync_detailed(
         query=query,
         slug=slug,
         user_uuid=user_uuid,
+        user_uuid_with_active_role=user_uuid_with_active_role,
     )
 
     response = client.get_httpx_client().request(
@@ -261,6 +270,7 @@ def sync(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
 ) -> int:
     """List projects
 
@@ -289,6 +299,7 @@ def sync(
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
+        user_uuid_with_active_role (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -322,6 +333,7 @@ def sync(
         query=query,
         slug=slug,
         user_uuid=user_uuid,
+        user_uuid_with_active_role=user_uuid_with_active_role,
     ).parsed
 
 
@@ -350,6 +362,7 @@ async def asyncio_detailed(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """List projects
 
@@ -378,6 +391,7 @@ async def asyncio_detailed(
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
+        user_uuid_with_active_role (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -410,6 +424,7 @@ async def asyncio_detailed(
         query=query,
         slug=slug,
         user_uuid=user_uuid,
+        user_uuid_with_active_role=user_uuid_with_active_role,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -442,6 +457,7 @@ async def asyncio(
     query: Union[Unset, str] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
+    user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
 ) -> int:
     """List projects
 
@@ -470,6 +486,7 @@ async def asyncio(
         query (Union[Unset, str]):
         slug (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
+        user_uuid_with_active_role (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -504,5 +521,6 @@ async def asyncio(
             query=query,
             slug=slug,
             user_uuid=user_uuid,
+            user_uuid_with_active_role=user_uuid_with_active_role,
         )
     ).parsed

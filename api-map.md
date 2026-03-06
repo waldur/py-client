@@ -2100,8 +2100,8 @@ Module: `waldur_api_client.api.openportal_remote_associations`
 ## openportal-unmanaged-projects
 Module: `waldur_api_client.api.openportal_unmanaged_projects`
 
-- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (21 query params)
-- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (20 query params)
+- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (22 query params)
+- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (21 query params)
 - `openportal_unmanaged_projects_create` POST `/api/openportal-unmanaged-projects/` — Create a new project (request body)
 - `openportal_unmanaged_projects_checklist_template_retrieve` GET `/api/openportal-unmanaged-projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `openportal_unmanaged_projects_checklist_template_count` HEAD `/api/openportal-unmanaged-projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -2578,8 +2578,8 @@ Module: `waldur_api_client.api.project_types`
 ## projects
 Module: `waldur_api_client.api.projects`
 
-- `projects_list` GET `/api/projects/` — List projects (21 query params)
-- `projects_count` HEAD `/api/projects/` — List projects (20 query params)
+- `projects_list` GET `/api/projects/` — List projects (22 query params)
+- `projects_count` HEAD `/api/projects/` — List projects (21 query params)
 - `projects_create` POST `/api/projects/` — Create a new project (request body)
 - `projects_checklist_template_retrieve` GET `/api/projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `projects_checklist_template_count` HEAD `/api/projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -2981,7 +2981,6 @@ Module: `waldur_api_client.api.remote_waldur_api`
 - `remote_waldur_api_cancel_termination` POST `/api/remote-waldur-api/cancel_termination/{uuid}` — Cancel termination order (path: uuid)
 - `remote_waldur_api_import_offering` POST `/api/remote-waldur-api/import_offering/` — Create local offering from remote (request body)
 - `remote_waldur_api_pull_offering_details` POST `/api/remote-waldur-api/pull_offering_details/{uuid}/` (path: uuid)
-- `remote_waldur_api_pull_offering_invoices` POST `/api/remote-waldur-api/pull_offering_invoices/{uuid}/` (path: uuid)
 - `remote_waldur_api_pull_offering_orders` POST `/api/remote-waldur-api/pull_offering_orders/{uuid}/` (path: uuid)
 - `remote_waldur_api_pull_offering_resources` POST `/api/remote-waldur-api/pull_offering_resources/{uuid}/` (path: uuid)
 - `remote_waldur_api_pull_offering_robot_accounts` POST `/api/remote-waldur-api/pull_offering_robot_accounts/{uuid}/` (path: uuid)

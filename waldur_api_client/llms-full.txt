@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.6-rc.4-dev.20260306030652
+# Version: 8.0.6-dev.20260306123424
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9756,7 +9756,7 @@ Query parameters (20):
   - project_customer_uuid (required) — UUID of the customer to filter projects by.
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
-  - user_uuid — Filter projects where the given user has a role.
+  - user_uuid_with_active_role — Filter projects where the given user has a role.
 
 ### marketplace_service_providers_customers_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/customers/
@@ -9912,7 +9912,7 @@ Query parameters (19):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
-  - user_uuid — Filter projects where the given user has a role.
+  - user_uuid_with_active_role — Filter projects where the given user has a role.
 
 ### marketplace_service_providers_user_customers_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/user_customers/
@@ -12556,7 +12556,7 @@ Path parameters:
 GET /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (21):
+Query parameters (22):
   - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
@@ -12577,13 +12577,14 @@ Query parameters (21):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
-  - user_uuid — Filter projects where the given user has a role.
+  - user_uuid — Filter by user UUID.
+  - user_uuid_with_active_role — Filter projects where the given user has a role.
 
 ### openportal_unmanaged_projects_count
 HEAD /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (20):
+Query parameters (21):
   - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
@@ -12603,7 +12604,8 @@ Query parameters (20):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
-  - user_uuid — Filter projects where the given user has a role.
+  - user_uuid — Filter by user UUID.
+  - user_uuid_with_active_role — Filter projects where the given user has a role.
 
 ### openportal_unmanaged_projects_create
 POST /api/openportal-unmanaged-projects/
@@ -15848,7 +15850,7 @@ Path parameters:
 GET /api/projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (21):
+Query parameters (22):
   - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
@@ -15869,13 +15871,14 @@ Query parameters (21):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
-  - user_uuid — Filter projects where the given user has a role.
+  - user_uuid — Filter by user UUID.
+  - user_uuid_with_active_role — Filter projects where the given user has a role.
 
 ### projects_count
 HEAD /api/projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (20):
+Query parameters (21):
   - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
@@ -15895,7 +15898,8 @@ Query parameters (20):
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
   - slug — Slug
-  - user_uuid — Filter projects where the given user has a role.
+  - user_uuid — Filter by user UUID.
+  - user_uuid_with_active_role — Filter projects where the given user has a role.
 
 ### projects_create
 POST /api/projects/
@@ -18323,11 +18327,6 @@ Request body: yes
 
 ### remote_waldur_api_pull_offering_details
 POST /api/remote-waldur-api/pull_offering_details/{uuid}/
-Path parameters:
-  - uuid
-
-### remote_waldur_api_pull_offering_invoices
-POST /api/remote-waldur-api/pull_offering_invoices/{uuid}/
 Path parameters:
   - uuid
 
