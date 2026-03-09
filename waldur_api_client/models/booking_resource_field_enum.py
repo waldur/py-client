@@ -71,6 +71,7 @@ class BookingResourceFieldEnum(str, Enum):
     PROJECT_NAME = "project_name"
     PROJECT_SLUG = "project_slug"
     PROJECT_UUID = "project_uuid"
+    PROVIDER_DESCRIPTION = "provider_description"
     PROVIDER_NAME = "provider_name"
     PROVIDER_SLUG = "provider_slug"
     PROVIDER_UUID = "provider_uuid"

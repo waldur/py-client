@@ -47,6 +47,7 @@ class BookingResource:
         provider_name (Union[Unset, str]):
         provider_uuid (Union[Unset, UUID]):
         provider_slug (Union[Unset, str]):
+        provider_description (Union[Unset, str]):
         category_title (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
         category_icon (Union[Unset, str]):
@@ -144,6 +145,7 @@ class BookingResource:
     provider_name: Union[Unset, str] = UNSET
     provider_uuid: Union[Unset, UUID] = UNSET
     provider_slug: Union[Unset, str] = UNSET
+    provider_description: Union[Unset, str] = UNSET
     category_title: Union[Unset, str] = UNSET
     category_uuid: Union[Unset, UUID] = UNSET
     category_icon: Union[Unset, str] = UNSET
@@ -252,6 +254,8 @@ class BookingResource:
             provider_uuid = str(self.provider_uuid)
 
         provider_slug = self.provider_slug
+
+        provider_description = self.provider_description
 
         category_title = self.category_title
 
@@ -552,6 +556,8 @@ class BookingResource:
             field_dict["provider_uuid"] = provider_uuid
         if provider_slug is not UNSET:
             field_dict["provider_slug"] = provider_slug
+        if provider_description is not UNSET:
+            field_dict["provider_description"] = provider_description
         if category_title is not UNSET:
             field_dict["category_title"] = category_title
         if category_uuid is not UNSET:
@@ -751,6 +757,8 @@ class BookingResource:
             provider_uuid = UUID(_provider_uuid)
 
         provider_slug = d.pop("provider_slug", UNSET)
+
+        provider_description = d.pop("provider_description", UNSET)
 
         category_title = d.pop("category_title", UNSET)
 
@@ -1172,6 +1180,7 @@ class BookingResource:
             provider_name=provider_name,
             provider_uuid=provider_uuid,
             provider_slug=provider_slug,
+            provider_description=provider_description,
             category_title=category_title,
             category_uuid=category_uuid,
             category_icon=category_icon,
