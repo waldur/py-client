@@ -1553,8 +1553,8 @@ Module: `waldur_api_client.api.marketplace_resources`
 ## marketplace-robot-accounts
 Module: `waldur_api_client.api.marketplace_robot_accounts`
 
-- `marketplace_robot_accounts_list` GET `/api/marketplace-robot-accounts/` — List robot accounts (10 query params)
-- `marketplace_robot_accounts_count` HEAD `/api/marketplace-robot-accounts/` — List robot accounts (9 query params)
+- `marketplace_robot_accounts_list` GET `/api/marketplace-robot-accounts/` — List robot accounts (13 query params)
+- `marketplace_robot_accounts_count` HEAD `/api/marketplace-robot-accounts/` — List robot accounts (12 query params)
 - `marketplace_robot_accounts_create` POST `/api/marketplace-robot-accounts/` — Create a robot account (request body)
 - `marketplace_robot_accounts_retrieve` GET `/api/marketplace-robot-accounts/{uuid}/` — Retrieve a robot account (path: uuid | 1 query param)
 - `marketplace_robot_accounts_update` PUT `/api/marketplace-robot-accounts/{uuid}/` — Update a robot account (path: uuid | request body)

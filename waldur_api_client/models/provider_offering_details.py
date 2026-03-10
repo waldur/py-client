@@ -48,6 +48,8 @@ class ProviderOfferingDetails:
         description (Union[Unset, str]):
         full_description (Union[Unset, str]):
         privacy_policy_link (Union[Unset, str]):
+        helpdesk_url (Union[Unset, str]):
+        documentation_url (Union[Unset, str]):
         access_url (Union[Unset, str]): Publicly accessible offering access URL
         endpoints (Union[Unset, list['NestedEndpoint']]):
         software_catalogs (Union[Unset, list['NestedSoftwareCatalog']]):
@@ -123,6 +125,8 @@ class ProviderOfferingDetails:
     description: Union[Unset, str] = UNSET
     full_description: Union[Unset, str] = UNSET
     privacy_policy_link: Union[Unset, str] = UNSET
+    helpdesk_url: Union[Unset, str] = UNSET
+    documentation_url: Union[Unset, str] = UNSET
     access_url: Union[Unset, str] = UNSET
     endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
     software_catalogs: Union[Unset, list["NestedSoftwareCatalog"]] = UNSET
@@ -208,6 +212,10 @@ class ProviderOfferingDetails:
         full_description = self.full_description
 
         privacy_policy_link = self.privacy_policy_link
+
+        helpdesk_url = self.helpdesk_url
+
+        documentation_url = self.documentation_url
 
         access_url = self.access_url
 
@@ -545,6 +553,10 @@ class ProviderOfferingDetails:
             field_dict["full_description"] = full_description
         if privacy_policy_link is not UNSET:
             field_dict["privacy_policy_link"] = privacy_policy_link
+        if helpdesk_url is not UNSET:
+            field_dict["helpdesk_url"] = helpdesk_url
+        if documentation_url is not UNSET:
+            field_dict["documentation_url"] = documentation_url
         if access_url is not UNSET:
             field_dict["access_url"] = access_url
         if endpoints is not UNSET:
@@ -720,6 +732,10 @@ class ProviderOfferingDetails:
         full_description = d.pop("full_description", UNSET)
 
         privacy_policy_link = d.pop("privacy_policy_link", UNSET)
+
+        helpdesk_url = d.pop("helpdesk_url", UNSET)
+
+        documentation_url = d.pop("documentation_url", UNSET)
 
         access_url = d.pop("access_url", UNSET)
 
@@ -1197,6 +1213,8 @@ class ProviderOfferingDetails:
             description=description,
             full_description=full_description,
             privacy_policy_link=privacy_policy_link,
+            helpdesk_url=helpdesk_url,
+            documentation_url=documentation_url,
             access_url=access_url,
             endpoints=endpoints,
             software_catalogs=software_catalogs,

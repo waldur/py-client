@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.6-dev.20260310030634
+# Version: 8.0.7-rc.2-dev.20260310144845
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9393,7 +9393,7 @@ Request body: yes
 GET /api/marketplace-robot-accounts/
 Summary: List robot accounts
 Description: Returns a paginated list of robot accounts accessible to the current user.
-Query parameters (10):
+Query parameters (13):
   - created — Created after
   - customer_uuid — Customer UUID
   - field
@@ -9402,14 +9402,17 @@ Query parameters (10):
   - provider_uuid — Provider UUID
   - resource — Resource URL
   - resource_uuid — Resource UUID
+  - responsible_user_uuid — Responsible user UUID
   - state — Robot account state
   - type
+  - user_email — Connected user email contains
+  - username — Username contains
 
 ### marketplace_robot_accounts_count
 HEAD /api/marketplace-robot-accounts/
 Summary: List robot accounts
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (12):
   - created — Created after
   - customer_uuid — Customer UUID
   - modified — Modified after
@@ -9417,8 +9420,11 @@ Query parameters (9):
   - provider_uuid — Provider UUID
   - resource — Resource URL
   - resource_uuid — Resource UUID
+  - responsible_user_uuid — Responsible user UUID
   - state — Robot account state
   - type
+  - user_email — Connected user email contains
+  - username — Username contains
 
 ### marketplace_robot_accounts_create
 POST /api/marketplace-robot-accounts/

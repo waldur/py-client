@@ -26,8 +26,11 @@ def _get_kwargs(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    responsible_user_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    user_email: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -76,6 +79,11 @@ def _get_kwargs(
         json_resource_uuid = str(resource_uuid)
     params["resource_uuid"] = json_resource_uuid
 
+    json_responsible_user_uuid: Union[Unset, str] = UNSET
+    if not isinstance(responsible_user_uuid, Unset):
+        json_responsible_user_uuid = str(responsible_user_uuid)
+    params["responsible_user_uuid"] = json_responsible_user_uuid
+
     json_state: Union[Unset, int] = UNSET
     if not isinstance(state, Unset):
         json_state = state.value
@@ -83,6 +91,10 @@ def _get_kwargs(
     params["state"] = json_state
 
     params["type"] = type_
+
+    params["user_email"] = user_email
+
+    params["username"] = username
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -136,8 +148,11 @@ def sync_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    responsible_user_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    user_email: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Response[list["RobotAccountDetails"]]:
     """List robot accounts
 
@@ -154,8 +169,11 @@ def sync_detailed(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        responsible_user_uuid (Union[Unset, UUID]):
         state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
+        user_email (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -176,8 +194,11 @@ def sync_detailed(
         provider_uuid=provider_uuid,
         resource=resource,
         resource_uuid=resource_uuid,
+        responsible_user_uuid=responsible_user_uuid,
         state=state,
         type_=type_,
+        user_email=user_email,
+        username=username,
     )
 
     response = client.get_httpx_client().request(
@@ -200,8 +221,11 @@ def sync(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    responsible_user_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    user_email: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> list["RobotAccountDetails"]:
     """List robot accounts
 
@@ -218,8 +242,11 @@ def sync(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        responsible_user_uuid (Union[Unset, UUID]):
         state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
+        user_email (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -241,8 +268,11 @@ def sync(
         provider_uuid=provider_uuid,
         resource=resource,
         resource_uuid=resource_uuid,
+        responsible_user_uuid=responsible_user_uuid,
         state=state,
         type_=type_,
+        user_email=user_email,
+        username=username,
     ).parsed
 
 
@@ -259,8 +289,11 @@ async def asyncio_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    responsible_user_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    user_email: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> Response[list["RobotAccountDetails"]]:
     """List robot accounts
 
@@ -277,8 +310,11 @@ async def asyncio_detailed(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        responsible_user_uuid (Union[Unset, UUID]):
         state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
+        user_email (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -299,8 +335,11 @@ async def asyncio_detailed(
         provider_uuid=provider_uuid,
         resource=resource,
         resource_uuid=resource_uuid,
+        responsible_user_uuid=responsible_user_uuid,
         state=state,
         type_=type_,
+        user_email=user_email,
+        username=username,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -321,8 +360,11 @@ async def asyncio(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    responsible_user_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    user_email: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> list["RobotAccountDetails"]:
     """List robot accounts
 
@@ -339,8 +381,11 @@ async def asyncio(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        responsible_user_uuid (Union[Unset, UUID]):
         state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
+        user_email (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -363,8 +408,11 @@ async def asyncio(
             provider_uuid=provider_uuid,
             resource=resource,
             resource_uuid=resource_uuid,
+            responsible_user_uuid=responsible_user_uuid,
             state=state,
             type_=type_,
+            user_email=user_email,
+            username=username,
         )
     ).parsed
 
@@ -380,8 +428,11 @@ def sync_all(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    responsible_user_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    user_email: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> list["RobotAccountDetails"]:
     """Get All Pages
 
@@ -399,8 +450,11 @@ def sync_all(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        responsible_user_uuid (Union[Unset, UUID]):
         state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
+        user_email (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -423,8 +477,11 @@ def sync_all(
         provider_uuid=provider_uuid,
         resource=resource,
         resource_uuid=resource_uuid,
+        responsible_user_uuid=responsible_user_uuid,
         state=state,
         type_=type_,
+        user_email=user_email,
+        username=username,
     )
 
     # Set page_size to maximum
@@ -480,8 +537,11 @@ async def asyncio_all(
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    responsible_user_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, RemoteResourceSyncStatusRemoteStateEnum] = UNSET,
     type_: Union[Unset, str] = UNSET,
+    user_email: Union[Unset, str] = UNSET,
+    username: Union[Unset, str] = UNSET,
 ) -> list["RobotAccountDetails"]:
     """Get All Pages (Async)
 
@@ -499,8 +559,11 @@ async def asyncio_all(
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        responsible_user_uuid (Union[Unset, UUID]):
         state (Union[Unset, RemoteResourceSyncStatusRemoteStateEnum]):
         type_ (Union[Unset, str]):
+        user_email (Union[Unset, str]):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -523,8 +586,11 @@ async def asyncio_all(
         provider_uuid=provider_uuid,
         resource=resource,
         resource_uuid=resource_uuid,
+        responsible_user_uuid=responsible_user_uuid,
         state=state,
         type_=type_,
+        user_email=user_email,
+        username=username,
     )
 
     # Set page_size to maximum
