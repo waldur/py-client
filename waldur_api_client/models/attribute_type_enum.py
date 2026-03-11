@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class NestedAttributeTypeEnum(str, Enum):
+class AttributeTypeEnum(str, Enum):
     BOOLEAN = "boolean"
     CHOICE = "choice"
     INTEGER = "integer"

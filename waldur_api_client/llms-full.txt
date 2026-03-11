@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.2-dev.20260311030624
+# Version: 8.0.7-rc.3-dev.20260311113654
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5330,6 +5330,114 @@ POST /api/managed-rancher-cluster-resources/{uuid}/add_node/
 Path parameters:
   - uuid
 Request body: yes
+
+============================================================
+## marketplace-attribute-options  (module: waldur_api_client.api.marketplace_attribute_options)
+============================================================
+
+### marketplace_attribute_options_list
+GET /api/marketplace-attribute-options/
+Summary: List attribute options
+Description: Returns a paginated list of options for choice-type attributes. Filter by attribute (URL). Default option is determined by attribute.default.
+Query parameters (1):
+  - attribute — Attribute URL
+
+### marketplace_attribute_options_count
+HEAD /api/marketplace-attribute-options/
+Summary: List attribute options
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - attribute — Attribute URL
+
+### marketplace_attribute_options_create
+POST /api/marketplace-attribute-options/
+Summary: Create an attribute option
+Description: Creates a new option for a choice-type attribute. Requires staff permissions.
+Request body: yes
+
+### marketplace_attribute_options_retrieve
+GET /api/marketplace-attribute-options/{uuid}/
+Summary: Retrieve an attribute option
+Description: Returns the details of a specific attribute option.
+Path parameters:
+  - uuid
+
+### marketplace_attribute_options_update
+PUT /api/marketplace-attribute-options/{uuid}/
+Summary: Update an attribute option
+Description: Updates an existing attribute option. Requires staff permissions.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_attribute_options_partial_update
+PATCH /api/marketplace-attribute-options/{uuid}/
+Summary: Partially update an attribute option
+Description: Partially updates an existing attribute option. To set the default option, PATCH the attribute with default=<option_key>. Requires staff permissions.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_attribute_options_destroy
+DELETE /api/marketplace-attribute-options/{uuid}/
+Summary: Delete an attribute option
+Description: Deletes an attribute option. Requires staff permissions.
+Path parameters:
+  - uuid
+
+============================================================
+## marketplace-attributes  (module: waldur_api_client.api.marketplace_attributes)
+============================================================
+
+### marketplace_attributes_list
+GET /api/marketplace-attributes/
+Summary: List attributes
+Description: Returns a paginated list of all attributes. Attributes define form fields within section. Filter by section (URL).
+Query parameters (1):
+  - section — Section URL
+
+### marketplace_attributes_count
+HEAD /api/marketplace-attributes/
+Summary: List attributes
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - section — Section URL
+
+### marketplace_attributes_create
+POST /api/marketplace-attributes/
+Summary: Create an attribute
+Description: Creates a new attribute within a section. Requires staff permissions.
+Request body: yes
+
+### marketplace_attributes_retrieve
+GET /api/marketplace-attributes/{uuid}/
+Summary: Retrieve an attribute
+Description: Returns the details of a specific attribute, identified by its UUID.
+Path parameters:
+  - uuid
+
+### marketplace_attributes_update
+PUT /api/marketplace-attributes/{uuid}/
+Summary: Update an attribute
+Description: Updates an existing attribute. Requires staff permissions.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_attributes_partial_update
+PATCH /api/marketplace-attributes/{uuid}/
+Summary: Partially update an attribute
+Description: Partially updates an existing attribute. Requires staff permissions.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_attributes_destroy
+DELETE /api/marketplace-attributes/{uuid}/
+Summary: Delete an attribute
+Description: Deletes an attribute. Requires staff permissions.
+Path parameters:
+  - uuid
 
 ============================================================
 ## marketplace-bookings  (module: waldur_api_client.api.marketplace_bookings)

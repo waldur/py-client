@@ -1,81 +1,64 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="NestedAttributeOption")
+T = TypeVar("T", bound="PatchedAttributeOptionRequest")
 
 
 @_attrs_define
-class NestedAttributeOption:
+class PatchedAttributeOptionRequest:
     """
     Attributes:
-        uuid (Union[Unset, UUID]):
         key (Union[Unset, str]):
         title (Union[Unset, str]):
-        is_default (Union[Unset, bool]): Return True if this option is the default for its attribute.
+        attribute (Union[Unset, str]):
     """
 
-    uuid: Union[Unset, UUID] = UNSET
     key: Union[Unset, str] = UNSET
     title: Union[Unset, str] = UNSET
-    is_default: Union[Unset, bool] = UNSET
+    attribute: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.uuid, Unset):
-            uuid = str(self.uuid)
-
         key = self.key
 
         title = self.title
 
-        is_default = self.is_default
+        attribute = self.attribute
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if uuid is not UNSET:
-            field_dict["uuid"] = uuid
         if key is not UNSET:
             field_dict["key"] = key
         if title is not UNSET:
             field_dict["title"] = title
-        if is_default is not UNSET:
-            field_dict["is_default"] = is_default
+        if attribute is not UNSET:
+            field_dict["attribute"] = attribute
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        _uuid = d.pop("uuid", UNSET)
-        uuid: Union[Unset, UUID]
-        if isinstance(_uuid, Unset):
-            uuid = UNSET
-        else:
-            uuid = UUID(_uuid)
-
         key = d.pop("key", UNSET)
 
         title = d.pop("title", UNSET)
 
-        is_default = d.pop("is_default", UNSET)
+        attribute = d.pop("attribute", UNSET)
 
-        nested_attribute_option = cls(
-            uuid=uuid,
+        patched_attribute_option_request = cls(
             key=key,
             title=title,
-            is_default=is_default,
+            attribute=attribute,
         )
 
-        nested_attribute_option.additional_properties = d
-        return nested_attribute_option
+        patched_attribute_option_request.additional_properties = d
+        return patched_attribute_option_request
 
     @property
     def additional_keys(self) -> list[str]:

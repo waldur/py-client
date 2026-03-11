@@ -113,7 +113,12 @@ from .attachment_field_enum import AttachmentFieldEnum
 from .attachment_request import AttachmentRequest
 from .attachment_request_form import AttachmentRequestForm
 from .attachment_request_multipart import AttachmentRequestMultipart
+from .attribute import Attribute
+from .attribute_option import AttributeOption
+from .attribute_option_request import AttributeOptionRequest
+from .attribute_request import AttributeRequest
 from .attribute_source_detail import AttributeSourceDetail
+from .attribute_type_enum import AttributeTypeEnum
 from .auth_method_enum import AuthMethodEnum
 from .auth_result import AuthResult
 from .auth_result_request import AuthResultRequest
@@ -914,7 +919,6 @@ from .nested_attribute import NestedAttribute
 from .nested_attribute_option import NestedAttributeOption
 from .nested_attribute_option_request import NestedAttributeOptionRequest
 from .nested_attribute_request import NestedAttributeRequest
-from .nested_attribute_type_enum import NestedAttributeTypeEnum
 from .nested_campaign import NestedCampaign
 from .nested_column import NestedColumn
 from .nested_column_request import NestedColumnRequest
@@ -1323,6 +1327,8 @@ from .patched_arrow_settings_request import PatchedArrowSettingsRequest
 from .patched_arrow_vendor_offering_mapping_request import PatchedArrowVendorOfferingMappingRequest
 from .patched_assignment_batch_request import PatchedAssignmentBatchRequest
 from .patched_assignment_item_request import PatchedAssignmentItemRequest
+from .patched_attribute_option_request import PatchedAttributeOptionRequest
+from .patched_attribute_request import PatchedAttributeRequest
 from .patched_aws_instance_request import PatchedAwsInstanceRequest
 from .patched_azure_public_ip_request import PatchedAzurePublicIPRequest
 from .patched_azure_sql_database_request import PatchedAzureSqlDatabaseRequest
@@ -2377,7 +2383,12 @@ __all__ = (
     "AttachmentRequest",
     "AttachmentRequestForm",
     "AttachmentRequestMultipart",
+    "Attribute",
+    "AttributeOption",
+    "AttributeOptionRequest",
+    "AttributeRequest",
     "AttributeSourceDetail",
+    "AttributeTypeEnum",
     "AuthMethodEnum",
     "AuthResult",
     "AuthResultRequest",
@@ -3138,7 +3149,6 @@ __all__ = (
     "NestedAttributeOption",
     "NestedAttributeOptionRequest",
     "NestedAttributeRequest",
-    "NestedAttributeTypeEnum",
     "NestedCampaign",
     "NestedColumn",
     "NestedColumnRequest",
@@ -3511,6 +3521,8 @@ __all__ = (
     "PatchedArrowVendorOfferingMappingRequest",
     "PatchedAssignmentBatchRequest",
     "PatchedAssignmentItemRequest",
+    "PatchedAttributeOptionRequest",
+    "PatchedAttributeRequest",
     "PatchedAwsInstanceRequest",
     "PatchedAzurePublicIPRequest",
     "PatchedAzureSqlDatabaseRequest",

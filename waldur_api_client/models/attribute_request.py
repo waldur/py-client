@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -7,29 +7,25 @@ from attrs import field as _attrs_field
 from ..models.attribute_type_enum import AttributeTypeEnum
 from ..types import UNSET, Unset
 
-if TYPE_CHECKING:
-    from ..models.nested_attribute_option_request import NestedAttributeOptionRequest
-
-
-T = TypeVar("T", bound="NestedAttributeRequest")
+T = TypeVar("T", bound="AttributeRequest")
 
 
 @_attrs_define
-class NestedAttributeRequest:
+class AttributeRequest:
     """
     Attributes:
         key (str):
         title (str):
+        section (str):
         type_ (AttributeTypeEnum):
-        options (list['NestedAttributeOptionRequest']):
         required (Union[Unset, bool]): A value must be provided for the attribute.
         default (Union[Unset, Any]):
     """
 
     key: str
     title: str
+    section: str
     type_: AttributeTypeEnum
-    options: list["NestedAttributeOptionRequest"]
     required: Union[Unset, bool] = UNSET
     default: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -39,12 +35,9 @@ class NestedAttributeRequest:
 
         title = self.title
 
-        type_ = self.type_.value
+        section = self.section
 
-        options = []
-        for options_item_data in self.options:
-            options_item = options_item_data.to_dict()
-            options.append(options_item)
+        type_ = self.type_.value
 
         required = self.required
 
@@ -56,8 +49,8 @@ class NestedAttributeRequest:
             {
                 "key": key,
                 "title": title,
+                "section": section,
                 "type": type_,
-                "options": options,
             }
         )
         if required is not UNSET:
@@ -69,37 +62,30 @@ class NestedAttributeRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.nested_attribute_option_request import NestedAttributeOptionRequest
-
         d = dict(src_dict)
         key = d.pop("key")
 
         title = d.pop("title")
 
+        section = d.pop("section")
+
         type_ = AttributeTypeEnum(d.pop("type"))
-
-        options = []
-        _options = d.pop("options")
-        for options_item_data in _options:
-            options_item = NestedAttributeOptionRequest.from_dict(options_item_data)
-
-            options.append(options_item)
 
         required = d.pop("required", UNSET)
 
         default = d.pop("default", UNSET)
 
-        nested_attribute_request = cls(
+        attribute_request = cls(
             key=key,
             title=title,
+            section=section,
             type_=type_,
-            options=options,
             required=required,
             default=default,
         )
 
-        nested_attribute_request.additional_properties = d
-        return nested_attribute_request
+        attribute_request.additional_properties = d
+        return attribute_request
 
     @property
     def additional_keys(self) -> list[str]:

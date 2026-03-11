@@ -988,6 +988,28 @@ Module: `waldur_api_client.api.managed_rancher_cluster_resources`
 - `managed_rancher_cluster_resources_retrieve` GET `/api/managed-rancher-cluster-resources/{uuid}/` (path: uuid | 1 query param)
 - `managed_rancher_cluster_resources_add_node` POST `/api/managed-rancher-cluster-resources/{uuid}/add_node/` (path: uuid | request body)
 
+## marketplace-attribute-options
+Module: `waldur_api_client.api.marketplace_attribute_options`
+
+- `marketplace_attribute_options_list` GET `/api/marketplace-attribute-options/` — List attribute options (1 query param)
+- `marketplace_attribute_options_count` HEAD `/api/marketplace-attribute-options/` — List attribute options (1 query param)
+- `marketplace_attribute_options_create` POST `/api/marketplace-attribute-options/` — Create an attribute option (request body)
+- `marketplace_attribute_options_retrieve` GET `/api/marketplace-attribute-options/{uuid}/` — Retrieve an attribute option (path: uuid)
+- `marketplace_attribute_options_update` PUT `/api/marketplace-attribute-options/{uuid}/` — Update an attribute option (path: uuid | request body)
+- `marketplace_attribute_options_partial_update` PATCH `/api/marketplace-attribute-options/{uuid}/` — Partially update an attribute option (path: uuid | request body)
+- `marketplace_attribute_options_destroy` DELETE `/api/marketplace-attribute-options/{uuid}/` — Delete an attribute option (path: uuid)
+
+## marketplace-attributes
+Module: `waldur_api_client.api.marketplace_attributes`
+
+- `marketplace_attributes_list` GET `/api/marketplace-attributes/` — List attributes (1 query param)
+- `marketplace_attributes_count` HEAD `/api/marketplace-attributes/` — List attributes (1 query param)
+- `marketplace_attributes_create` POST `/api/marketplace-attributes/` — Create an attribute (request body)
+- `marketplace_attributes_retrieve` GET `/api/marketplace-attributes/{uuid}/` — Retrieve an attribute (path: uuid)
+- `marketplace_attributes_update` PUT `/api/marketplace-attributes/{uuid}/` — Update an attribute (path: uuid | request body)
+- `marketplace_attributes_partial_update` PATCH `/api/marketplace-attributes/{uuid}/` — Partially update an attribute (path: uuid | request body)
+- `marketplace_attributes_destroy` DELETE `/api/marketplace-attributes/{uuid}/` — Delete an attribute (path: uuid)
+
 ## marketplace-bookings
 Module: `waldur_api_client.api.marketplace_bookings`
 

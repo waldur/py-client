@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -7,29 +7,25 @@ from attrs import field as _attrs_field
 from ..models.attribute_type_enum import AttributeTypeEnum
 from ..types import UNSET, Unset
 
-if TYPE_CHECKING:
-    from ..models.nested_attribute_option_request import NestedAttributeOptionRequest
-
-
-T = TypeVar("T", bound="NestedAttributeRequest")
+T = TypeVar("T", bound="PatchedAttributeRequest")
 
 
 @_attrs_define
-class NestedAttributeRequest:
+class PatchedAttributeRequest:
     """
     Attributes:
-        key (str):
-        title (str):
-        type_ (AttributeTypeEnum):
-        options (list['NestedAttributeOptionRequest']):
+        key (Union[Unset, str]):
+        title (Union[Unset, str]):
+        section (Union[Unset, str]):
+        type_ (Union[Unset, AttributeTypeEnum]):
         required (Union[Unset, bool]): A value must be provided for the attribute.
         default (Union[Unset, Any]):
     """
 
-    key: str
-    title: str
-    type_: AttributeTypeEnum
-    options: list["NestedAttributeOptionRequest"]
+    key: Union[Unset, str] = UNSET
+    title: Union[Unset, str] = UNSET
+    section: Union[Unset, str] = UNSET
+    type_: Union[Unset, AttributeTypeEnum] = UNSET
     required: Union[Unset, bool] = UNSET
     default: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -39,12 +35,11 @@ class NestedAttributeRequest:
 
         title = self.title
 
-        type_ = self.type_.value
+        section = self.section
 
-        options = []
-        for options_item_data in self.options:
-            options_item = options_item_data.to_dict()
-            options.append(options_item)
+        type_: Union[Unset, str] = UNSET
+        if not isinstance(self.type_, Unset):
+            type_ = self.type_.value
 
         required = self.required
 
@@ -52,14 +47,15 @@ class NestedAttributeRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "key": key,
-                "title": title,
-                "type": type_,
-                "options": options,
-            }
-        )
+        field_dict.update({})
+        if key is not UNSET:
+            field_dict["key"] = key
+        if title is not UNSET:
+            field_dict["title"] = title
+        if section is not UNSET:
+            field_dict["section"] = section
+        if type_ is not UNSET:
+            field_dict["type"] = type_
         if required is not UNSET:
             field_dict["required"] = required
         if default is not UNSET:
@@ -69,37 +65,35 @@ class NestedAttributeRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.nested_attribute_option_request import NestedAttributeOptionRequest
-
         d = dict(src_dict)
-        key = d.pop("key")
+        key = d.pop("key", UNSET)
 
-        title = d.pop("title")
+        title = d.pop("title", UNSET)
 
-        type_ = AttributeTypeEnum(d.pop("type"))
+        section = d.pop("section", UNSET)
 
-        options = []
-        _options = d.pop("options")
-        for options_item_data in _options:
-            options_item = NestedAttributeOptionRequest.from_dict(options_item_data)
-
-            options.append(options_item)
+        _type_ = d.pop("type", UNSET)
+        type_: Union[Unset, AttributeTypeEnum]
+        if isinstance(_type_, Unset):
+            type_ = UNSET
+        else:
+            type_ = AttributeTypeEnum(_type_)
 
         required = d.pop("required", UNSET)
 
         default = d.pop("default", UNSET)
 
-        nested_attribute_request = cls(
+        patched_attribute_request = cls(
             key=key,
             title=title,
+            section=section,
             type_=type_,
-            options=options,
             required=required,
             default=default,
         )
 
-        nested_attribute_request.additional_properties = d
-        return nested_attribute_request
+        patched_attribute_request.additional_properties = d
+        return patched_attribute_request
 
     @property
     def additional_keys(self) -> list[str]:

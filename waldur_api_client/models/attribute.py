@@ -1,50 +1,62 @@
+import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import Any, TypeVar, Union
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from ..models.attribute_type_enum import AttributeTypeEnum
 from ..types import UNSET, Unset
 
-if TYPE_CHECKING:
-    from ..models.nested_attribute_option_request import NestedAttributeOptionRequest
-
-
-T = TypeVar("T", bound="NestedAttributeRequest")
+T = TypeVar("T", bound="Attribute")
 
 
 @_attrs_define
-class NestedAttributeRequest:
+class Attribute:
     """
     Attributes:
+        url (str):
+        uuid (UUID):
         key (str):
+        created (datetime.datetime):
         title (str):
+        section (str):
+        section_title (str):
         type_ (AttributeTypeEnum):
-        options (list['NestedAttributeOptionRequest']):
         required (Union[Unset, bool]): A value must be provided for the attribute.
         default (Union[Unset, Any]):
     """
 
+    url: str
+    uuid: UUID
     key: str
+    created: datetime.datetime
     title: str
+    section: str
+    section_title: str
     type_: AttributeTypeEnum
-    options: list["NestedAttributeOptionRequest"]
     required: Union[Unset, bool] = UNSET
     default: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        url = self.url
+
+        uuid = str(self.uuid)
+
         key = self.key
+
+        created = self.created.isoformat()
 
         title = self.title
 
-        type_ = self.type_.value
+        section = self.section
 
-        options = []
-        for options_item_data in self.options:
-            options_item = options_item_data.to_dict()
-            options.append(options_item)
+        section_title = self.section_title
+
+        type_ = self.type_.value
 
         required = self.required
 
@@ -54,10 +66,14 @@ class NestedAttributeRequest:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "url": url,
+                "uuid": uuid,
                 "key": key,
+                "created": created,
                 "title": title,
+                "section": section,
+                "section_title": section_title,
                 "type": type_,
-                "options": options,
             }
         )
         if required is not UNSET:
@@ -69,37 +85,42 @@ class NestedAttributeRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.nested_attribute_option_request import NestedAttributeOptionRequest
-
         d = dict(src_dict)
+        url = d.pop("url")
+
+        uuid = UUID(d.pop("uuid"))
+
         key = d.pop("key")
+
+        created = isoparse(d.pop("created"))
 
         title = d.pop("title")
 
+        section = d.pop("section")
+
+        section_title = d.pop("section_title")
+
         type_ = AttributeTypeEnum(d.pop("type"))
-
-        options = []
-        _options = d.pop("options")
-        for options_item_data in _options:
-            options_item = NestedAttributeOptionRequest.from_dict(options_item_data)
-
-            options.append(options_item)
 
         required = d.pop("required", UNSET)
 
         default = d.pop("default", UNSET)
 
-        nested_attribute_request = cls(
+        attribute = cls(
+            url=url,
+            uuid=uuid,
             key=key,
+            created=created,
             title=title,
+            section=section,
+            section_title=section_title,
             type_=type_,
-            options=options,
             required=required,
             default=default,
         )
 
-        nested_attribute_request.additional_properties = d
-        return nested_attribute_request
+        attribute.additional_properties = d
+        return attribute
 
     @property
     def additional_keys(self) -> list[str]:
