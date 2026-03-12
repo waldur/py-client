@@ -17,9 +17,11 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -39,6 +41,11 @@ def _get_kwargs(
         json_created = created.isoformat()
     params["created"] = json_created
 
+    json_created_before: Union[Unset, str] = UNSET
+    if not isinstance(created_before, Unset):
+        json_created_before = created_before.isoformat()
+    params["created_before"] = json_created_before
+
     json_customer_uuid: Union[Unset, str] = UNSET
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
@@ -57,6 +64,11 @@ def _get_kwargs(
     if not isinstance(modified, Unset):
         json_modified = modified.isoformat()
     params["modified"] = json_modified
+
+    json_modified_before: Union[Unset, str] = UNSET
+    if not isinstance(modified_before, Unset):
+        json_modified_before = modified_before.isoformat()
+    params["modified_before"] = json_modified_before
 
     params["page"] = page
 
@@ -139,9 +151,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -160,9 +174,11 @@ def sync_detailed(
 
     Args:
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -185,9 +201,11 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         created=created,
+        created_before=created_before,
         customer_uuid=customer_uuid,
         field=field,
         modified=modified,
+        modified_before=modified_before,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
@@ -212,9 +230,11 @@ def sync(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -233,9 +253,11 @@ def sync(
 
     Args:
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -259,9 +281,11 @@ def sync(
     return sync_detailed(
         client=client,
         created=created,
+        created_before=created_before,
         customer_uuid=customer_uuid,
         field=field,
         modified=modified,
+        modified_before=modified_before,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
@@ -280,9 +304,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -301,9 +327,11 @@ async def asyncio_detailed(
 
     Args:
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -326,9 +354,11 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         created=created,
+        created_before=created_before,
         customer_uuid=customer_uuid,
         field=field,
         modified=modified,
+        modified_before=modified_before,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
@@ -351,9 +381,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -372,9 +404,11 @@ async def asyncio(
 
     Args:
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -399,9 +433,11 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             created=created,
+            created_before=created_before,
             customer_uuid=customer_uuid,
             field=field,
             modified=modified,
+            modified_before=modified_before,
             page=page,
             page_size=page_size,
             project_uuid=project_uuid,
@@ -421,9 +457,11 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
@@ -443,9 +481,11 @@ def sync_all(
 
     Args:
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
@@ -470,9 +510,11 @@ def sync_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         created=created,
+        created_before=created_before,
         customer_uuid=customer_uuid,
         field=field,
         modified=modified,
+        modified_before=modified_before,
         project_uuid=project_uuid,
         provider_uuid=provider_uuid,
         resource=resource,
@@ -530,9 +572,11 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     field: Union[Unset, list[RobotAccountDetailsFieldEnum]] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     resource: Union[Unset, str] = UNSET,
@@ -552,9 +596,11 @@ async def asyncio_all(
 
     Args:
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         field (Union[Unset, list[RobotAccountDetailsFieldEnum]]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         resource (Union[Unset, str]):
@@ -579,9 +625,11 @@ async def asyncio_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         created=created,
+        created_before=created_before,
         customer_uuid=customer_uuid,
         field=field,
         modified=modified,
+        modified_before=modified_before,
         project_uuid=project_uuid,
         provider_uuid=provider_uuid,
         resource=resource,

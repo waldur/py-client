@@ -25,6 +25,7 @@ def _get_kwargs(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -34,6 +35,7 @@ def _get_kwargs(
     importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
@@ -88,6 +90,11 @@ def _get_kwargs(
         json_created = created.isoformat()
     params["created"] = json_created
 
+    json_created_before: Union[Unset, str] = UNSET
+    if not isinstance(created_before, Unset):
+        json_created_before = created_before.isoformat()
+    params["created_before"] = json_created_before
+
     params["customer"] = customer
 
     json_customer_uuid: Union[Unset, str] = UNSET
@@ -118,6 +125,11 @@ def _get_kwargs(
     if not isinstance(modified, Unset):
         json_modified = modified.isoformat()
     params["modified"] = json_modified
+
+    json_modified_before: Union[Unset, str] = UNSET
+    if not isinstance(modified_before, Unset):
+        json_modified_before = modified_before.isoformat()
+    params["modified_before"] = json_modified_before
 
     params["name"] = name
 
@@ -262,6 +274,7 @@ def sync_detailed(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -271,6 +284,7 @@ def sync_detailed(
     importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
@@ -308,6 +322,7 @@ def sync_detailed(
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
@@ -317,6 +332,7 @@ def sync_detailed(
         importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
@@ -358,6 +374,7 @@ def sync_detailed(
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
         created=created,
+        created_before=created_before,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
@@ -367,6 +384,7 @@ def sync_detailed(
         importable=importable,
         keyword=keyword,
         modified=modified,
+        modified_before=modified_before,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -410,6 +428,7 @@ def sync(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -419,6 +438,7 @@ def sync(
     importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
@@ -456,6 +476,7 @@ def sync(
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
@@ -465,6 +486,7 @@ def sync(
         importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
@@ -507,6 +529,7 @@ def sync(
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
         created=created,
+        created_before=created_before,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
@@ -516,6 +539,7 @@ def sync(
         importable=importable,
         keyword=keyword,
         modified=modified,
+        modified_before=modified_before,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -553,6 +577,7 @@ async def asyncio_detailed(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -562,6 +587,7 @@ async def asyncio_detailed(
     importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
@@ -599,6 +625,7 @@ async def asyncio_detailed(
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
@@ -608,6 +635,7 @@ async def asyncio_detailed(
         importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
@@ -649,6 +677,7 @@ async def asyncio_detailed(
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
         created=created,
+        created_before=created_before,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
@@ -658,6 +687,7 @@ async def asyncio_detailed(
         importable=importable,
         keyword=keyword,
         modified=modified,
+        modified_before=modified_before,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -699,6 +729,7 @@ async def asyncio(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -708,6 +739,7 @@ async def asyncio(
     importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
@@ -745,6 +777,7 @@ async def asyncio(
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
@@ -754,6 +787,7 @@ async def asyncio(
         importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
@@ -797,6 +831,7 @@ async def asyncio(
             category_group_uuid=category_group_uuid,
             category_uuid=category_uuid,
             created=created,
+            created_before=created_before,
             customer=customer,
             customer_uuid=customer_uuid,
             description=description,
@@ -806,6 +841,7 @@ async def asyncio(
             importable=importable,
             keyword=keyword,
             modified=modified,
+            modified_before=modified_before,
             name=name,
             name_exact=name_exact,
             o=o,
@@ -844,6 +880,7 @@ def sync_all(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -853,6 +890,7 @@ def sync_all(
     importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
@@ -891,6 +929,7 @@ def sync_all(
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
@@ -900,6 +939,7 @@ def sync_all(
         importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
@@ -943,6 +983,7 @@ def sync_all(
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
         created=created,
+        created_before=created_before,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
@@ -952,6 +993,7 @@ def sync_all(
         importable=importable,
         keyword=keyword,
         modified=modified,
+        modified_before=modified_before,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -1028,6 +1070,7 @@ async def asyncio_all(
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
@@ -1037,6 +1080,7 @@ async def asyncio_all(
     importable: Union[Unset, str] = UNSET,
     keyword: Union[Unset, str] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
@@ -1075,6 +1119,7 @@ async def asyncio_all(
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
@@ -1084,6 +1129,7 @@ async def asyncio_all(
         importable (Union[Unset, str]):
         keyword (Union[Unset, str]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
@@ -1127,6 +1173,7 @@ async def asyncio_all(
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
         created=created,
+        created_before=created_before,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
@@ -1136,6 +1183,7 @@ async def asyncio_all(
         importable=importable,
         keyword=keyword,
         modified=modified,
+        modified_before=modified_before,
         name=name,
         name_exact=name_exact,
         o=o,

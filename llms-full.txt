@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.6-dev.20260312030638
+# Version: 8.0.7-rc.6-dev.20260312182011
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -1801,10 +1801,12 @@ Path parameters:
 GET /api/backend-resource-requests/
 Summary: List backend resource requests
 Description: Returns a paginated list of requests for backend resources.
-Query parameters (7):
+Query parameters (9):
   - created — Created after
+  - created_before — Created before
   - finished — Modified after
   - modified — Modified after
+  - modified_before — Modified before
   - o — Ordering
   - offering_uuid — Offering UUID
   - started — Created after
@@ -1814,10 +1816,12 @@ Query parameters (7):
 HEAD /api/backend-resource-requests/
 Summary: List backend resource requests
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (9):
   - created — Created after
+  - created_before — Created before
   - finished — Modified after
   - modified — Modified after
+  - modified_before — Modified before
   - o — Ordering
   - offering_uuid — Offering UUID
   - started — Created after
@@ -1866,10 +1870,12 @@ Path parameters:
 GET /api/backend-resources/
 Summary: List backend resources
 Description: Returns a paginated list of backend resources that are available for import. This endpoint is typically used by site agents to see which resources they have reported.
-Query parameters (8):
+Query parameters (10):
   - backend_id — Backend ID
   - created — Created after
+  - created_before — Created before
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -1880,10 +1886,12 @@ Query parameters (8):
 HEAD /api/backend-resources/
 Summary: List backend resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (8):
+Query parameters (10):
   - backend_id — Backend ID
   - created — Created after
+  - created_before — Created before
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -1975,12 +1983,13 @@ Path parameters:
 
 ### booking_resources_list
 GET /api/booking-resources/
-Query parameters (41):
+Query parameters (43):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
   - connected_customer_uuid
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
@@ -1991,6 +2000,7 @@ Query parameters (41):
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -2022,12 +2032,13 @@ Query parameters (41):
 HEAD /api/booking-resources/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (40):
+Query parameters (42):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
   - connected_customer_uuid
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
@@ -2037,6 +2048,7 @@ Query parameters (40):
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -4886,14 +4898,16 @@ Path parameters:
 
 ### keys_list
 GET /api/keys/
-Query parameters (12):
+Query parameters (14):
   - created — Created after
+  - created_before — Created before
   - field
   - fingerprint_md5
   - fingerprint_sha256
   - fingerprint_sha512
   - is_shared
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -4904,13 +4918,15 @@ Query parameters (12):
 HEAD /api/keys/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (11):
+Query parameters (13):
   - created — Created after
+  - created_before — Created before
   - fingerprint_md5
   - fingerprint_sha256
   - fingerprint_sha512
   - is_shared
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -4939,7 +4955,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (13):
+Query parameters (14):
   - created — Created after
   - created_after — Filter versions created after this timestamp (ISO 8601)
   - created_before — Filter versions created before this timestamp (ISO 8601)
@@ -4948,6 +4964,7 @@ Query parameters (13):
   - fingerprint_sha512
   - is_shared
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -6343,11 +6360,13 @@ Path parameters:
 
 ### marketplace_offering_permissions_list
 GET /api/marketplace-offering-permissions/
-Query parameters (16):
+Query parameters (18):
   - created — Created after
+  - created_before — Created before
   - customer
   - full_name — User full name contains
   - modified — Modified after
+  - modified_before — Modified before
   - native_name
   - o — Ordering
   - offering
@@ -6365,11 +6384,13 @@ Query parameters (16):
 HEAD /api/marketplace-offering-permissions/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (16):
+Query parameters (18):
   - created — Created after
+  - created_before — Created before
   - customer
   - full_name — User full name contains
   - modified — Modified after
+  - modified_before — Modified before
   - native_name
   - o — Ordering
   - offering
@@ -6394,11 +6415,13 @@ Path parameters:
 
 ### marketplace_offering_permissions_log_list
 GET /api/marketplace-offering-permissions-log/
-Query parameters (16):
+Query parameters (18):
   - created — Created after
+  - created_before — Created before
   - customer
   - full_name — User full name contains
   - modified — Modified after
+  - modified_before — Modified before
   - native_name
   - o — Ordering
   - offering
@@ -6416,11 +6439,13 @@ Query parameters (16):
 HEAD /api/marketplace-offering-permissions-log/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (16):
+Query parameters (18):
   - created — Created after
+  - created_before — Created before
   - customer
   - full_name — User full name contains
   - modified — Modified after
+  - modified_before — Modified before
   - native_name
   - o — Ordering
   - offering
@@ -6592,10 +6617,12 @@ Summary: List checklist completions for offering users
 Description: Returns a paginated list of all checklist completions for offering users that the current user is allowed to see.
         This endpoint is used by service providers to monitor compliance status and by users to see their own required checklists.
         Visibility follows the same rules as the `Of...
-Query parameters (6):
+Query parameters (8):
   - created — Created after
+  - created_before — Created before
   - is_completed
   - modified — Modified after
+  - modified_before — Modified before
   - o — Ordering
   - offering_uuid — Filter by offering UUID
   - user_uuid — Filter by user UUID
@@ -6604,10 +6631,12 @@ Query parameters (6):
 HEAD /api/marketplace-offering-user-checklist-completions/
 Summary: List checklist completions for offering users
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (6):
+Query parameters (8):
   - created — Created after
+  - created_before — Created before
   - is_completed
   - modified — Modified after
+  - modified_before — Modified before
   - o — Ordering
   - offering_uuid — Filter by offering UUID
   - user_uuid — Filter by user UUID
@@ -6675,13 +6704,15 @@ Path parameters:
 GET /api/marketplace-offering-users/
 Summary: List offering users
 Description: Returns a paginated list of users associated with offerings. The visibility of users depends on the role of the authenticated user. Staff and support can see all users. Service providers can see users of their offerings if the user has consented. Regular users can only see their own offering-user...
-Query parameters (16):
+Query parameters (18):
   - created — Created after
+  - created_before — Created before
   - field
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
   - is_restricted — Is restricted
   - modified — Modified after
+  - modified_before — Modified before
   - o — Ordering
   - offering
   - offering_slug — Multiple values may be separated by commas.
@@ -6697,12 +6728,14 @@ Query parameters (16):
 HEAD /api/marketplace-offering-users/
 Summary: List offering users
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (15):
+Query parameters (17):
   - created — Created after
+  - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
   - is_restricted — Is restricted
   - modified — Modified after
+  - modified_before — Modified before
   - o — Ordering
   - offering
   - offering_slug — Multiple values may be separated by commas.
@@ -6906,14 +6939,16 @@ Request body: yes
 GET /api/marketplace-orders/
 Summary: List orders
 Description: Returns a paginated list of orders accessible to the current user. Orders are visible to service consumers (project/customer members with appropriate permissions) and service providers.
-Query parameters (22):
+Query parameters (24):
   - can_approve_as_consumer — Can approve as consumer
   - can_approve_as_provider — Can approve as provider
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer_uuid — Customer UUID
   - field
   - modified — Modified after
+  - modified_before — Modified before
   - o — Ordering
   - offering
   - offering_slug — Multiple values may be separated by commas.
@@ -6934,13 +6969,15 @@ Query parameters (22):
 HEAD /api/marketplace-orders/
 Summary: List orders
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (21):
+Query parameters (23):
   - can_approve_as_consumer — Can approve as consumer
   - can_approve_as_provider — Can approve as provider
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer_uuid — Customer UUID
   - modified — Modified after
+  - modified_before — Modified before
   - o — Ordering
   - offering
   - offering_slug — Multiple values may be separated by commas.
@@ -7484,7 +7521,7 @@ Request body: yes
 GET /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Returns a paginated list of offerings for the provider.
-Query parameters (38):
+Query parameters (40):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7493,6 +7530,7 @@ Query parameters (38):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -7502,6 +7540,7 @@ Query parameters (38):
   - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -7528,7 +7567,7 @@ Query parameters (38):
 HEAD /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (37):
+Query parameters (39):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7537,6 +7576,7 @@ Query parameters (37):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -7545,6 +7585,7 @@ Query parameters (37):
   - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -7577,7 +7618,7 @@ Request body: yes
 GET /api/marketplace-provider-offerings/groups/
 Summary: List offerings grouped by provider
 Description: Returns a paginated list of active, shared offerings grouped by their service provider.
-Query parameters (36):
+Query parameters (38):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7586,6 +7627,7 @@ Query parameters (36):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -7593,6 +7635,7 @@ Query parameters (36):
   - has_terms_of_service — Has Terms of Service
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -7619,7 +7662,7 @@ Query parameters (36):
 HEAD /api/marketplace-provider-offerings/groups/
 Summary: List offerings grouped by provider
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (36):
+Query parameters (38):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7628,6 +7671,7 @@ Query parameters (36):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -7635,6 +7679,7 @@ Query parameters (36):
   - has_terms_of_service — Has Terms of Service
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -7739,7 +7784,7 @@ Summary: Get statistics for offering components
 Description: Returns monthly usage statistics for the components of an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (39):
+Query parameters (41):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7748,6 +7793,7 @@ Query parameters (39):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -7757,6 +7803,7 @@ Query parameters (39):
   - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -7786,7 +7833,7 @@ Summary: Get costs for an offering
 Description: Returns monthly cost data for an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (40):
+Query parameters (42):
   - accessible_via_calls — Accessible via calls
   - accounting_is_running
   - allowed_customer_uuid — Allowed customer UUID
@@ -7796,6 +7843,7 @@ Query parameters (40):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -7805,6 +7853,7 @@ Query parameters (40):
   - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -7842,7 +7891,7 @@ Summary: Get customers for an offering
 Description: Returns a paginated list of customers who have resources for this offering.
 Path parameters:
   - uuid
-Query parameters (38):
+Query parameters (40):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7851,6 +7900,7 @@ Query parameters (38):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -7860,6 +7910,7 @@ Query parameters (38):
   - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -7970,7 +8021,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (39):
+Query parameters (40):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7989,6 +8040,7 @@ Query parameters (39):
   - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -8041,7 +8093,7 @@ Summary: List course accounts for an offering
 Description: Returns a paginated list of course accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (37):
+Query parameters (39):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8050,6 +8102,7 @@ Query parameters (37):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -8058,6 +8111,7 @@ Query parameters (37):
   - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -8095,7 +8149,7 @@ Summary: List customer service accounts for an offering
 Description: Returns a paginated list of customer-level service accounts for customers who have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (37):
+Query parameters (39):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8104,6 +8158,7 @@ Query parameters (37):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -8112,6 +8167,7 @@ Query parameters (37):
   - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -8149,7 +8205,7 @@ Summary: List project service accounts for an offering
 Description: Returns a paginated list of project-level service accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (37):
+Query parameters (39):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8158,6 +8214,7 @@ Query parameters (37):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -8166,6 +8223,7 @@ Query parameters (37):
   - importable — Filter by importable offerings.
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -8505,11 +8563,12 @@ Query parameters (2):
 GET /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Returns a paginated list of resources for offerings managed by the current user as a service provider.
-Query parameters (41):
+Query parameters (43):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
@@ -8520,6 +8579,7 @@ Query parameters (41):
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -8552,11 +8612,12 @@ Query parameters (41):
 HEAD /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (40):
+Query parameters (42):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
@@ -8566,6 +8627,7 @@ Query parameters (40):
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -8640,7 +8702,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (42):
+Query parameters (43):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -8656,6 +8718,7 @@ Query parameters (42):
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -8922,7 +8985,7 @@ Request body: yes
 GET /api/marketplace-public-offerings/
 Summary: List public offerings
 Description: Returns a paginated list of public offerings. The list is filtered to show only offerings that are active or paused and available for ordering by the current user. If anonymous access is enabled, it shows shared offerings available to unauthenticated users.
-Query parameters (37):
+Query parameters (39):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8931,6 +8994,7 @@ Query parameters (37):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -8939,6 +9003,7 @@ Query parameters (37):
   - has_terms_of_service — Has Terms of Service
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -8965,7 +9030,7 @@ Query parameters (37):
 HEAD /api/marketplace-public-offerings/
 Summary: List public offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (36):
+Query parameters (38):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8974,6 +9039,7 @@ Query parameters (36):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -8981,6 +9047,7 @@ Query parameters (36):
   - has_terms_of_service — Has Terms of Service
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -9148,11 +9215,12 @@ Path parameters:
 GET /api/marketplace-resources/
 Summary: List consumer resources
 Description: Returns a paginated list of resources accessible to the current user as a service consumer.
-Query parameters (41):
+Query parameters (43):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
@@ -9163,6 +9231,7 @@ Query parameters (41):
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -9195,11 +9264,12 @@ Query parameters (41):
 HEAD /api/marketplace-resources/
 Summary: List consumer resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (40):
+Query parameters (42):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
@@ -9209,6 +9279,7 @@ Query parameters (40):
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -9296,7 +9367,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (42):
+Query parameters (43):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9312,6 +9383,7 @@ Query parameters (42):
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -9501,11 +9573,13 @@ Request body: yes
 GET /api/marketplace-robot-accounts/
 Summary: List robot accounts
 Description: Returns a paginated list of robot accounts accessible to the current user.
-Query parameters (13):
+Query parameters (15):
   - created — Created after
+  - created_before — Created before
   - customer_uuid — Customer UUID
   - field
   - modified — Modified after
+  - modified_before — Modified before
   - project_uuid — Project UUID
   - provider_uuid — Provider UUID
   - resource — Resource URL
@@ -9520,10 +9594,12 @@ Query parameters (13):
 HEAD /api/marketplace-robot-accounts/
 Summary: List robot accounts
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (12):
+Query parameters (14):
   - created — Created after
+  - created_before — Created before
   - customer_uuid — Customer UUID
   - modified — Modified after
+  - modified_before — Modified before
   - project_uuid — Project UUID
   - provider_uuid — Provider UUID
   - resource — Resource URL
@@ -9850,12 +9926,13 @@ Summary: List customer projects of a service provider
 Description: Returns a paginated list of projects belonging to a specific customer that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (20):
+Query parameters (22):
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
+  - created_before — Created before
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name
@@ -9864,6 +9941,7 @@ Query parameters (20):
   - field
   - is_removed — Is removed
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -9901,14 +9979,16 @@ Summary: List SSH keys of a service provider
 Description: Returns a paginated list of SSH public keys for all users who have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (12):
+Query parameters (14):
   - created — Created after
+  - created_before — Created before
   - field
   - fingerprint_md5
   - fingerprint_sha256
   - fingerprint_sha512
   - is_shared
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -9921,7 +10001,7 @@ Summary: List offerings of a service provider
 Description: Returns a paginated list of all billable, shared offerings provided by the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (37):
+Query parameters (39):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -9930,6 +10010,7 @@ Query parameters (37):
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
   - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
@@ -9938,6 +10019,7 @@ Query parameters (37):
   - has_terms_of_service — Has Terms of Service
   - keyword — Keyword
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -9966,12 +10048,14 @@ Summary: List project permissions of a service provider
 Description: Returns a paginated list of project permissions for all projects that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (16):
+Query parameters (18):
   - created — Created after
+  - created_before — Created before
   - expiration_time
   - field
   - full_name — User full name contains
   - modified — Modified after
+  - modified_before — Modified before
   - native_name
   - o — Ordering
   - role_name — Role name contains
@@ -10007,12 +10091,13 @@ Summary: List projects of a service provider
 Description: Returns a paginated list of all projects that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (19):
+Query parameters (21):
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
+  - created_before — Created before
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name
@@ -10021,6 +10106,7 @@ Query parameters (19):
   - field
   - is_removed — Is removed
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -12670,13 +12756,14 @@ Path parameters:
 GET /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (22):
+Query parameters (24):
   - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
+  - created_before — Created before
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name
@@ -12686,6 +12773,7 @@ Query parameters (22):
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -12698,13 +12786,14 @@ Query parameters (22):
 HEAD /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (21):
+Query parameters (23):
   - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
+  - created_before — Created before
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name
@@ -12713,6 +12802,7 @@ Query parameters (21):
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -15964,13 +16054,14 @@ Path parameters:
 GET /api/projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (22):
+Query parameters (24):
   - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
+  - created_before — Created before
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name
@@ -15980,6 +16071,7 @@ Query parameters (22):
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -15992,13 +16084,14 @@ Query parameters (22):
 HEAD /api/projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (21):
+Query parameters (23):
   - accounting_is_running — Filter by whether accounting is running.
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
+  - created_before — Created before
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name
@@ -16007,6 +16100,7 @@ Query parameters (21):
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
+  - modified_before — Modified before
   - name — Name
   - name_exact — Name (exact)
   - o — Ordering
@@ -20468,11 +20562,13 @@ Request body: yes
 GET /api/user-permissions/
 Summary: List user permissions
 Description: Get a list of all permissions for the current user. Staff and support users can view all user permissions. The list can be filtered by user, scope, role, etc.
-Query parameters (15):
+Query parameters (17):
   - created — Created after
+  - created_before — Created before
   - expiration_time
   - full_name — User full name contains
   - modified — Modified after
+  - modified_before — Modified before
   - native_name
   - o — Ordering
   - role_name — Role name contains
@@ -20489,11 +20585,13 @@ Query parameters (15):
 HEAD /api/user-permissions/
 Summary: List user permissions
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (15):
+Query parameters (17):
   - created — Created after
+  - created_before — Created before
   - expiration_time
   - full_name — User full name contains
   - modified — Modified after
+  - modified_before — Modified before
   - native_name
   - o — Ordering
   - role_name — Role name contains

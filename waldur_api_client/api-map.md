@@ -318,8 +318,8 @@ Module: `waldur_api_client.api.azure_virtualmachines`
 ## backend-resource-requests
 Module: `waldur_api_client.api.backend_resource_requests`
 
-- `backend_resource_requests_list` GET `/api/backend-resource-requests/` — List backend resource requests (7 query params)
-- `backend_resource_requests_count` HEAD `/api/backend-resource-requests/` — List backend resource requests (7 query params)
+- `backend_resource_requests_list` GET `/api/backend-resource-requests/` — List backend resource requests (9 query params)
+- `backend_resource_requests_count` HEAD `/api/backend-resource-requests/` — List backend resource requests (9 query params)
 - `backend_resource_requests_create` POST `/api/backend-resource-requests/` — Create a backend resource request (request body)
 - `backend_resource_requests_retrieve` GET `/api/backend-resource-requests/{uuid}/` — Retrieve a backend resource request (path: uuid)
 - `backend_resource_requests_set_done` POST `/api/backend-resource-requests/{uuid}/set_done/` — Mark a request as done (path: uuid)
@@ -329,8 +329,8 @@ Module: `waldur_api_client.api.backend_resource_requests`
 ## backend-resources
 Module: `waldur_api_client.api.backend_resources`
 
-- `backend_resources_list` GET `/api/backend-resources/` — List backend resources (8 query params)
-- `backend_resources_count` HEAD `/api/backend-resources/` — List backend resources (8 query params)
+- `backend_resources_list` GET `/api/backend-resources/` — List backend resources (10 query params)
+- `backend_resources_count` HEAD `/api/backend-resources/` — List backend resources (10 query params)
 - `backend_resources_create` POST `/api/backend-resources/` — Create a backend resource (request body)
 - `backend_resources_retrieve` GET `/api/backend-resources/{uuid}/` — Retrieve a backend resource (path: uuid)
 - `backend_resources_destroy` DELETE `/api/backend-resources/{uuid}/` — Delete a backend resource (path: uuid)
@@ -354,8 +354,8 @@ Module: `waldur_api_client.api.booking_offerings`
 ## booking-resources
 Module: `waldur_api_client.api.booking_resources`
 
-- `booking_resources_list` GET `/api/booking-resources/` (41 query params)
-- `booking_resources_count` HEAD `/api/booking-resources/` — Get number of items in the collection matching the request parameters (40 query params)
+- `booking_resources_list` GET `/api/booking-resources/` (43 query params)
+- `booking_resources_count` HEAD `/api/booking-resources/` — Get number of items in the collection matching the request parameters (42 query params)
 - `booking_resources_retrieve` GET `/api/booking-resources/{uuid}/` (path: uuid | 1 query param)
 - `booking_resources_accept` POST `/api/booking-resources/{uuid}/accept/` (path: uuid)
 - `booking_resources_reject` POST `/api/booking-resources/{uuid}/reject/` (path: uuid)
@@ -910,12 +910,12 @@ Module: `waldur_api_client.api.keycloak_user_group_memberships`
 ## keys
 Module: `waldur_api_client.api.keys`
 
-- `keys_list` GET `/api/keys/` (12 query params)
-- `keys_count` HEAD `/api/keys/` — Get number of items in the collection matching the request parameters (11 query params)
+- `keys_list` GET `/api/keys/` (14 query params)
+- `keys_count` HEAD `/api/keys/` — Get number of items in the collection matching the request parameters (13 query params)
 - `keys_create` POST `/api/keys/` (request body)
 - `keys_retrieve` GET `/api/keys/{uuid}/` (path: uuid | 1 query param)
 - `keys_destroy` DELETE `/api/keys/{uuid}/` (path: uuid)
-- `keys_history_list` GET `/api/keys/{uuid}/history/` — Get version history (path: uuid | 13 query params)
+- `keys_history_list` GET `/api/keys/{uuid}/history/` — Get version history (path: uuid | 14 query params)
 - `keys_history_at_retrieve` GET `/api/keys/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 
 ## lexis-links
@@ -1188,15 +1188,15 @@ Module: `waldur_api_client.api.marketplace_offering_files`
 ## marketplace-offering-permissions
 Module: `waldur_api_client.api.marketplace_offering_permissions`
 
-- `marketplace_offering_permissions_list` GET `/api/marketplace-offering-permissions/` (16 query params)
-- `marketplace_offering_permissions_count` HEAD `/api/marketplace-offering-permissions/` — Get number of items in the collection matching the request parameters (16 query params)
+- `marketplace_offering_permissions_list` GET `/api/marketplace-offering-permissions/` (18 query params)
+- `marketplace_offering_permissions_count` HEAD `/api/marketplace-offering-permissions/` — Get number of items in the collection matching the request parameters (18 query params)
 - `marketplace_offering_permissions_retrieve` GET `/api/marketplace-offering-permissions/{id}/` (path: id)
 
 ## marketplace-offering-permissions-log
 Module: `waldur_api_client.api.marketplace_offering_permissions_log`
 
-- `marketplace_offering_permissions_log_list` GET `/api/marketplace-offering-permissions-log/` (16 query params)
-- `marketplace_offering_permissions_log_count` HEAD `/api/marketplace-offering-permissions-log/` — Get number of items in the collection matching the request parameters (16 query params)
+- `marketplace_offering_permissions_log_list` GET `/api/marketplace-offering-permissions-log/` (18 query params)
+- `marketplace_offering_permissions_log_count` HEAD `/api/marketplace-offering-permissions-log/` — Get number of items in the collection matching the request parameters (18 query params)
 - `marketplace_offering_permissions_log_retrieve` GET `/api/marketplace-offering-permissions-log/{id}/` (path: id)
 
 ## marketplace-offering-referrals
@@ -1233,8 +1233,8 @@ Module: `waldur_api_client.api.marketplace_offering_usage_policies`
 ## marketplace-offering-user-checklist-completions
 Module: `waldur_api_client.api.marketplace_offering_user_checklist_completions`
 
-- `marketplace_offering_user_checklist_completions_list` GET `/api/marketplace-offering-user-checklist-completions/` — List checklist completions for offering users (6 query params)
-- `marketplace_offering_user_checklist_completions_count` HEAD `/api/marketplace-offering-user-checklist-completions/` — List checklist completions for offering users (6 query params)
+- `marketplace_offering_user_checklist_completions_list` GET `/api/marketplace-offering-user-checklist-completions/` — List checklist completions for offering users (8 query params)
+- `marketplace_offering_user_checklist_completions_count` HEAD `/api/marketplace-offering-user-checklist-completions/` — List checklist completions for offering users (8 query params)
 - `marketplace_offering_user_checklist_completions_retrieve` GET `/api/marketplace-offering-user-checklist-completions/{id}/` — Retrieve a checklist completion (path: id)
 
 ## marketplace-offering-user-roles
@@ -1251,8 +1251,8 @@ Module: `waldur_api_client.api.marketplace_offering_user_roles`
 ## marketplace-offering-users
 Module: `waldur_api_client.api.marketplace_offering_users`
 
-- `marketplace_offering_users_list` GET `/api/marketplace-offering-users/` — List offering users (16 query params)
-- `marketplace_offering_users_count` HEAD `/api/marketplace-offering-users/` — List offering users (15 query params)
+- `marketplace_offering_users_list` GET `/api/marketplace-offering-users/` — List offering users (18 query params)
+- `marketplace_offering_users_count` HEAD `/api/marketplace-offering-users/` — List offering users (17 query params)
 - `marketplace_offering_users_create` POST `/api/marketplace-offering-users/` — Create an offering user (request body)
 - `marketplace_offering_users_checklist_template_retrieve` GET `/api/marketplace-offering-users/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `marketplace_offering_users_checklist_template_count` HEAD `/api/marketplace-offering-users/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -1283,8 +1283,8 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 ## marketplace-orders
 Module: `waldur_api_client.api.marketplace_orders`
 
-- `marketplace_orders_list` GET `/api/marketplace-orders/` — List orders (22 query params)
-- `marketplace_orders_count` HEAD `/api/marketplace-orders/` — List orders (21 query params)
+- `marketplace_orders_list` GET `/api/marketplace-orders/` — List orders (24 query params)
+- `marketplace_orders_count` HEAD `/api/marketplace-orders/` — List orders (23 query params)
 - `marketplace_orders_create` POST `/api/marketplace-orders/` — Create an order (request body)
 - `marketplace_orders_retrieve` GET `/api/marketplace-orders/{uuid}/` — Retrieve an order (path: uuid | 1 query param)
 - `marketplace_orders_update` PUT `/api/marketplace-orders/{uuid}/` (path: uuid | request body)
@@ -1376,11 +1376,11 @@ Module: `waldur_api_client.api.marketplace_project_update_requests`
 ## marketplace-provider-offerings
 Module: `waldur_api_client.api.marketplace_provider_offerings`
 
-- `marketplace_provider_offerings_list` GET `/api/marketplace-provider-offerings/` — List provider offerings (38 query params)
-- `marketplace_provider_offerings_count` HEAD `/api/marketplace-provider-offerings/` — List provider offerings (37 query params)
+- `marketplace_provider_offerings_list` GET `/api/marketplace-provider-offerings/` — List provider offerings (40 query params)
+- `marketplace_provider_offerings_count` HEAD `/api/marketplace-provider-offerings/` — List provider offerings (39 query params)
 - `marketplace_provider_offerings_create` POST `/api/marketplace-provider-offerings/` — Create a provider offering (request body)
-- `marketplace_provider_offerings_groups_list` GET `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (36 query params)
-- `marketplace_provider_offerings_groups_count` HEAD `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (36 query params)
+- `marketplace_provider_offerings_groups_list` GET `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (38 query params)
+- `marketplace_provider_offerings_groups_count` HEAD `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (38 query params)
 - `marketplace_provider_offerings_import_offering` POST `/api/marketplace-provider-offerings/import_offering/` — Import offering data (request body)
 - `marketplace_provider_offerings_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/` — Retrieve a provider offering (path: uuid | 1 query param)
 - `marketplace_provider_offerings_destroy` DELETE `/api/marketplace-provider-offerings/{uuid}/` — Delete a provider offering (path: uuid)
@@ -1391,10 +1391,10 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_add_user` POST `/api/marketplace-provider-offerings/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `marketplace_provider_offerings_archive` POST `/api/marketplace-provider-offerings/{uuid}/archive/` — Archive an offering (path: uuid)
 - `marketplace_provider_offerings_check_unique_backend_id` POST `/api/marketplace-provider-offerings/{uuid}/check_unique_backend_id/` — Check if backend_id is unique (path: uuid | request body)
-- `marketplace_provider_offerings_component_stats_list` GET `/api/marketplace-provider-offerings/{uuid}/component_stats/` — Get statistics for offering components (path: uuid | 39 query params)
-- `marketplace_provider_offerings_costs_list` GET `/api/marketplace-provider-offerings/{uuid}/costs/` — Get costs for an offering (path: uuid | 40 query params)
+- `marketplace_provider_offerings_component_stats_list` GET `/api/marketplace-provider-offerings/{uuid}/component_stats/` — Get statistics for offering components (path: uuid | 41 query params)
+- `marketplace_provider_offerings_costs_list` GET `/api/marketplace-provider-offerings/{uuid}/costs/` — Get costs for an offering (path: uuid | 42 query params)
 - `marketplace_provider_offerings_create_offering_component` POST `/api/marketplace-provider-offerings/{uuid}/create_offering_component/` — Create an offering component (path: uuid | request body)
-- `marketplace_provider_offerings_customers_list` GET `/api/marketplace-provider-offerings/{uuid}/customers/` — Get customers for an offering (path: uuid | 38 query params)
+- `marketplace_provider_offerings_customers_list` GET `/api/marketplace-provider-offerings/{uuid}/customers/` — Get customers for an offering (path: uuid | 40 query params)
 - `marketplace_provider_offerings_delete_user_attribute_config_destroy` DELETE `/api/marketplace-provider-offerings/{uuid}/delete-user-attribute-config/` — Delete user attribute config (path: uuid)
 - `marketplace_provider_offerings_delete_endpoint` POST `/api/marketplace-provider-offerings/{uuid}/delete_endpoint/` — Delete an access endpoint from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_delete_image` POST `/api/marketplace-provider-offerings/{uuid}/delete_image/` — Delete offering image (path: uuid)
@@ -1405,15 +1405,15 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_draft` POST `/api/marketplace-provider-offerings/{uuid}/draft/` — Move an offering to draft (path: uuid)
 - `marketplace_provider_offerings_export_offering` POST `/api/marketplace-provider-offerings/{uuid}/export_offering/` — Export offering data (path: uuid | request body)
 - `marketplace_provider_offerings_glauth_users_config_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/glauth_users_config/` — Get GLauth user configuration (path: uuid)
-- `marketplace_provider_offerings_history_list` GET `/api/marketplace-provider-offerings/{uuid}/history/` — Get version history (path: uuid | 39 query params)
+- `marketplace_provider_offerings_history_list` GET `/api/marketplace-provider-offerings/{uuid}/history/` — Get version history (path: uuid | 40 query params)
 - `marketplace_provider_offerings_history_at_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `marketplace_provider_offerings_import_resource` POST `/api/marketplace-provider-offerings/{uuid}/import_resource/` — Import a resource (path: uuid | request body)
 - `marketplace_provider_offerings_importable_resources_list` GET `/api/marketplace-provider-offerings/{uuid}/importable_resources/` — List importable resources (path: uuid)
-- `marketplace_provider_offerings_list_course_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_course_accounts/` — List course accounts for an offering (path: uuid | 37 query params)
+- `marketplace_provider_offerings_list_course_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_course_accounts/` — List course accounts for an offering (path: uuid | 39 query params)
 - `marketplace_provider_offerings_list_customer_projects_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_projects/` — List customer projects for an offering (path: uuid | 1 query param)
-- `marketplace_provider_offerings_list_customer_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_service_accounts/` — List customer service accounts for an offering (path: uuid | 37 query params)
+- `marketplace_provider_offerings_list_customer_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_service_accounts/` — List customer service accounts for an offering (path: uuid | 39 query params)
 - `marketplace_provider_offerings_list_customer_users_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_users/` — List customer users for an offering (path: uuid | 1 query param)
-- `marketplace_provider_offerings_list_project_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_project_service_accounts/` — List project service accounts for an offering (path: uuid | 37 query params)
+- `marketplace_provider_offerings_list_project_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_project_service_accounts/` — List project service accounts for an offering (path: uuid | 39 query params)
 - `marketplace_provider_offerings_list_users_list` GET `/api/marketplace-provider-offerings/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `marketplace_provider_offerings_make_available` POST `/api/marketplace-provider-offerings/{uuid}/make_available/` — Mark an offering as available (path: uuid)
 - `marketplace_provider_offerings_make_unavailable` POST `/api/marketplace-provider-offerings/{uuid}/make_unavailable/` — Mark an offering as unavailable (path: uuid)
@@ -1456,14 +1456,14 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 ## marketplace-provider-resources
 Module: `waldur_api_client.api.marketplace_provider_resources`
 
-- `marketplace_provider_resources_list` GET `/api/marketplace-provider-resources/` — List provider resources (41 query params)
-- `marketplace_provider_resources_count` HEAD `/api/marketplace-provider-resources/` — List provider resources (40 query params)
+- `marketplace_provider_resources_list` GET `/api/marketplace-provider-resources/` — List provider resources (43 query params)
+- `marketplace_provider_resources_count` HEAD `/api/marketplace-provider-resources/` — List provider resources (42 query params)
 - `marketplace_provider_resources_retrieve` GET `/api/marketplace-provider-resources/{uuid}/` — Retrieve a provider resource (path: uuid | 1 query param)
 - `marketplace_provider_resources_update` PUT `/api/marketplace-provider-resources/{uuid}/` — Update a provider resource (path: uuid | request body)
 - `marketplace_provider_resources_partial_update` PATCH `/api/marketplace-provider-resources/{uuid}/` — Partially update a provider resource (path: uuid | request body)
 - `marketplace_provider_resources_details_retrieve` GET `/api/marketplace-provider-resources/{uuid}/details/` — Get resource details (path: uuid)
 - `marketplace_provider_resources_glauth_users_config_retrieve` GET `/api/marketplace-provider-resources/{uuid}/glauth_users_config/` — Get GLauth user configuration for a resource (path: uuid)
-- `marketplace_provider_resources_history_list` GET `/api/marketplace-provider-resources/{uuid}/history/` — Get version history (path: uuid | 42 query params)
+- `marketplace_provider_resources_history_list` GET `/api/marketplace-provider-resources/{uuid}/history/` — Get version history (path: uuid | 43 query params)
 - `marketplace_provider_resources_history_at_retrieve` GET `/api/marketplace-provider-resources/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `marketplace_provider_resources_move_resource` POST `/api/marketplace-provider-resources/{uuid}/move_resource/` — Move a resource to another project (path: uuid | request body)
 - `marketplace_provider_resources_offering_retrieve` GET `/api/marketplace-provider-resources/{uuid}/offering/` — Get offering details (path: uuid)
@@ -1501,8 +1501,8 @@ Module: `waldur_api_client.api.marketplace_public_api`
 ## marketplace-public-offerings
 Module: `waldur_api_client.api.marketplace_public_offerings`
 
-- `marketplace_public_offerings_list` GET `/api/marketplace-public-offerings/` — List public offerings (37 query params)
-- `marketplace_public_offerings_count` HEAD `/api/marketplace-public-offerings/` — List public offerings (36 query params)
+- `marketplace_public_offerings_list` GET `/api/marketplace-public-offerings/` — List public offerings (39 query params)
+- `marketplace_public_offerings_count` HEAD `/api/marketplace-public-offerings/` — List public offerings (38 query params)
 - `marketplace_public_offerings_retrieve` GET `/api/marketplace-public-offerings/{uuid}/` — Retrieve a public offering (path: uuid | 1 query param)
 - `marketplace_public_offerings_plans_list` GET `/api/marketplace-public-offerings/{uuid}/plans/` — List plans for an offering (path: uuid)
 - `marketplace_public_offerings_plans_retrieve` GET `/api/marketplace-public-offerings/{uuid}/plans/{plan_uuid}/` — Retrieve a specific plan for an offering (path: plan_uuid, uuid)
@@ -1541,8 +1541,8 @@ Module: `waldur_api_client.api.marketplace_resource_users`
 ## marketplace-resources
 Module: `waldur_api_client.api.marketplace_resources`
 
-- `marketplace_resources_list` GET `/api/marketplace-resources/` — List consumer resources (41 query params)
-- `marketplace_resources_count` HEAD `/api/marketplace-resources/` — List consumer resources (40 query params)
+- `marketplace_resources_list` GET `/api/marketplace-resources/` — List consumer resources (43 query params)
+- `marketplace_resources_count` HEAD `/api/marketplace-resources/` — List consumer resources (42 query params)
 - `marketplace_resources_suggest_name` POST `/api/marketplace-resources/suggest_name/` — Suggest a resource name (request body)
 - `marketplace_resources_retrieve` GET `/api/marketplace-resources/{uuid}/` — Retrieve a consumer resource (path: uuid | 1 query param)
 - `marketplace_resources_update` PUT `/api/marketplace-resources/{uuid}/` — Update a consumer resource (path: uuid | request body)
@@ -1550,7 +1550,7 @@ Module: `waldur_api_client.api.marketplace_resources`
 - `marketplace_resources_details_retrieve` GET `/api/marketplace-resources/{uuid}/details/` — Get resource details (path: uuid)
 - `marketplace_resources_estimate_renewal` POST `/api/marketplace-resources/{uuid}/estimate_renewal/` — Estimate renewal cost breakdown (path: uuid | request body)
 - `marketplace_resources_glauth_users_config_retrieve` GET `/api/marketplace-resources/{uuid}/glauth_users_config/` — Get GLauth user configuration for a resource (path: uuid)
-- `marketplace_resources_history_list` GET `/api/marketplace-resources/{uuid}/history/` — Get version history (path: uuid | 42 query params)
+- `marketplace_resources_history_list` GET `/api/marketplace-resources/{uuid}/history/` — Get version history (path: uuid | 43 query params)
 - `marketplace_resources_history_at_retrieve` GET `/api/marketplace-resources/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `marketplace_resources_move_resource` POST `/api/marketplace-resources/{uuid}/move_resource/` — Move a resource to another project (path: uuid | request body)
 - `marketplace_resources_offering_retrieve` GET `/api/marketplace-resources/{uuid}/offering/` — Get offering details (path: uuid)
@@ -1575,8 +1575,8 @@ Module: `waldur_api_client.api.marketplace_resources`
 ## marketplace-robot-accounts
 Module: `waldur_api_client.api.marketplace_robot_accounts`
 
-- `marketplace_robot_accounts_list` GET `/api/marketplace-robot-accounts/` — List robot accounts (13 query params)
-- `marketplace_robot_accounts_count` HEAD `/api/marketplace-robot-accounts/` — List robot accounts (12 query params)
+- `marketplace_robot_accounts_list` GET `/api/marketplace-robot-accounts/` — List robot accounts (15 query params)
+- `marketplace_robot_accounts_count` HEAD `/api/marketplace-robot-accounts/` — List robot accounts (14 query params)
 - `marketplace_robot_accounts_create` POST `/api/marketplace-robot-accounts/` — Create a robot account (request body)
 - `marketplace_robot_accounts_retrieve` GET `/api/marketplace-robot-accounts/{uuid}/` — Retrieve a robot account (path: uuid | 1 query param)
 - `marketplace_robot_accounts_update` PUT `/api/marketplace-robot-accounts/{uuid}/` — Update a robot account (path: uuid | request body)
@@ -1645,13 +1645,13 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `service_provider_compliance_overview` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/compliance_overview/` — Get compliance overview for a service provider (path: service_provider_uuid)
 - `service_provider_offering_users_compliance` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/offering_users/` — List offering users' compliance status (path: service_provider_uuid | 2 query params)
 - `marketplace_service_providers_course_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/course_accounts/` — List course project accounts for a service provider (path: service_provider_uuid | 9 query params)
-- `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 20 query params)
+- `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 22 query params)
 - `marketplace_service_providers_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customers/` — List customers of a service provider (path: service_provider_uuid | 15 query params)
-- `marketplace_service_providers_keys_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 12 query params)
-- `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 37 query params)
-- `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 16 query params)
+- `marketplace_service_providers_keys_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 14 query params)
+- `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 39 query params)
+- `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 18 query params)
 - `marketplace_service_providers_project_service_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/` — List project service accounts for a service provider (path: service_provider_uuid | 5 query params)
-- `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 19 query params)
+- `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 21 query params)
 - `marketplace_service_providers_user_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/user_customers/` — List customers of a specific user within a service provider's scope (path: service_provider_uuid | 16 query params)
 - `marketplace_service_providers_users_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/users/` — List users of a service provider (path: service_provider_uuid | 25 query params)
 - `marketplace_service_providers_retrieve` GET `/api/marketplace-service-providers/{uuid}/` — Retrieve a service provider (path: uuid | 1 query param)
@@ -2122,8 +2122,8 @@ Module: `waldur_api_client.api.openportal_remote_associations`
 ## openportal-unmanaged-projects
 Module: `waldur_api_client.api.openportal_unmanaged_projects`
 
-- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (22 query params)
-- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (21 query params)
+- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (24 query params)
+- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (23 query params)
 - `openportal_unmanaged_projects_create` POST `/api/openportal-unmanaged-projects/` — Create a new project (request body)
 - `openportal_unmanaged_projects_checklist_template_retrieve` GET `/api/openportal-unmanaged-projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `openportal_unmanaged_projects_checklist_template_count` HEAD `/api/openportal-unmanaged-projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -2600,8 +2600,8 @@ Module: `waldur_api_client.api.project_types`
 ## projects
 Module: `waldur_api_client.api.projects`
 
-- `projects_list` GET `/api/projects/` — List projects (22 query params)
-- `projects_count` HEAD `/api/projects/` — List projects (21 query params)
+- `projects_list` GET `/api/projects/` — List projects (24 query params)
+- `projects_count` HEAD `/api/projects/` — List projects (23 query params)
 - `projects_create` POST `/api/projects/` — Create a new project (request body)
 - `projects_checklist_template_retrieve` GET `/api/projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `projects_checklist_template_count` HEAD `/api/projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -3418,8 +3418,8 @@ Module: `waldur_api_client.api.user_permission_requests`
 ## user-permissions
 Module: `waldur_api_client.api.user_permissions`
 
-- `user_permissions_list` GET `/api/user-permissions/` — List user permissions (15 query params)
-- `user_permissions_count` HEAD `/api/user-permissions/` — List user permissions (15 query params)
+- `user_permissions_list` GET `/api/user-permissions/` — List user permissions (17 query params)
+- `user_permissions_count` HEAD `/api/user-permissions/` — List user permissions (17 query params)
 - `user_permissions_retrieve` GET `/api/user-permissions/{uuid}/` — Get permission details (path: uuid)
 
 ## users

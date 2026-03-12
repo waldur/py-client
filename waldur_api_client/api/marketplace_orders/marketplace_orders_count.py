@@ -19,8 +19,10 @@ def _get_kwargs(
     can_approve_as_provider: Union[Unset, bool] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
@@ -55,6 +57,11 @@ def _get_kwargs(
         json_created = created.isoformat()
     params["created"] = json_created
 
+    json_created_before: Union[Unset, str] = UNSET
+    if not isinstance(created_before, Unset):
+        json_created_before = created_before.isoformat()
+    params["created_before"] = json_created_before
+
     json_customer_uuid: Union[Unset, str] = UNSET
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
@@ -64,6 +71,11 @@ def _get_kwargs(
     if not isinstance(modified, Unset):
         json_modified = modified.isoformat()
     params["modified"] = json_modified
+
+    json_modified_before: Union[Unset, str] = UNSET
+    if not isinstance(modified_before, Unset):
+        json_modified_before = modified_before.isoformat()
+    params["modified_before"] = json_modified_before
 
     json_o: Union[Unset, list[str]] = UNSET
     if not isinstance(o, Unset):
@@ -190,8 +202,10 @@ def sync_detailed(
     can_approve_as_provider: Union[Unset, bool] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
@@ -219,8 +233,10 @@ def sync_detailed(
         can_approve_as_provider (Union[Unset, bool]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
@@ -252,8 +268,10 @@ def sync_detailed(
         can_approve_as_provider=can_approve_as_provider,
         category_uuid=category_uuid,
         created=created,
+        created_before=created_before,
         customer_uuid=customer_uuid,
         modified=modified,
+        modified_before=modified_before,
         o=o,
         offering=offering,
         offering_slug=offering_slug,
@@ -287,8 +305,10 @@ def sync(
     can_approve_as_provider: Union[Unset, bool] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
@@ -316,8 +336,10 @@ def sync(
         can_approve_as_provider (Union[Unset, bool]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
@@ -350,8 +372,10 @@ def sync(
         can_approve_as_provider=can_approve_as_provider,
         category_uuid=category_uuid,
         created=created,
+        created_before=created_before,
         customer_uuid=customer_uuid,
         modified=modified,
+        modified_before=modified_before,
         o=o,
         offering=offering,
         offering_slug=offering_slug,
@@ -379,8 +403,10 @@ async def asyncio_detailed(
     can_approve_as_provider: Union[Unset, bool] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
@@ -408,8 +434,10 @@ async def asyncio_detailed(
         can_approve_as_provider (Union[Unset, bool]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
@@ -441,8 +469,10 @@ async def asyncio_detailed(
         can_approve_as_provider=can_approve_as_provider,
         category_uuid=category_uuid,
         created=created,
+        created_before=created_before,
         customer_uuid=customer_uuid,
         modified=modified,
+        modified_before=modified_before,
         o=o,
         offering=offering,
         offering_slug=offering_slug,
@@ -474,8 +504,10 @@ async def asyncio(
     can_approve_as_provider: Union[Unset, bool] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
+    created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
+    modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_slug: Union[Unset, list[str]] = UNSET,
@@ -503,8 +535,10 @@ async def asyncio(
         can_approve_as_provider (Union[Unset, bool]):
         category_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         modified (Union[Unset, datetime.datetime]):
+        modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
         offering (Union[Unset, str]):
         offering_slug (Union[Unset, list[str]]):
@@ -538,8 +572,10 @@ async def asyncio(
             can_approve_as_provider=can_approve_as_provider,
             category_uuid=category_uuid,
             created=created,
+            created_before=created_before,
             customer_uuid=customer_uuid,
             modified=modified,
+            modified_before=modified_before,
             o=o,
             offering=offering,
             offering_slug=offering_slug,
