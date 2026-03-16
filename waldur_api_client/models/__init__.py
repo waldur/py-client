@@ -557,6 +557,7 @@ from .email_hook_request import EmailHookRequest
 from .email_invitation_request import EmailInvitationRequest
 from .email_log import EmailLog
 from .email_log_o_enum import EmailLogOEnum
+from .enabledreportingscreens_enum import ENABLEDREPORTINGSCREENSEnum
 from .endpoint_uuid import EndpointUUID
 from .endpoint_uuid_request import EndpointUUIDRequest
 from .entity_type_enum import EntityTypeEnum
@@ -2811,6 +2812,7 @@ __all__ = (
     "EmailInvitationRequest",
     "EmailLog",
     "EmailLogOEnum",
+    "ENABLEDREPORTINGSCREENSEnum",
     "EndpointUUID",
     "EndpointUUIDRequest",
     "EntityTypeEnum",

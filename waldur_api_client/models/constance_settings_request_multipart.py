@@ -9,6 +9,7 @@ from attrs import field as _attrs_field
 from .. import types
 from ..models.blank_enum import BlankEnum
 from ..models.defaultidp_enum import DEFAULTIDPEnum
+from ..models.enabledreportingscreens_enum import ENABLEDREPORTINGSCREENSEnum
 from ..models.federatedidentitydeactivationpolicy_enum import FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum
 from ..models.fontfamily_enum import FONTFAMILYEnum
 from ..models.loginpagelayout_enum import LOGINPAGELAYOUTEnum
@@ -234,6 +235,7 @@ class ConstanceSettingsRequestMultipart:
         llm_inferences_api_url (Union[Unset, str]):
         llm_inferences_api_token (Union[Unset, str]):
         llm_inferences_model (Union[Unset, str]):
+        llm_completion_kwargs (Union[Unset, str]):
         llm_token_limit_daily (Union[Unset, int]):
         llm_token_limit_weekly (Union[Unset, int]):
         llm_token_limit_monthly (Union[Unset, int]):
@@ -278,6 +280,7 @@ class ConstanceSettingsRequestMultipart:
         enable_project_digest (Union[Unset, bool]):
         ssh_key_allowed_types (Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]]):
         ssh_key_min_rsa_key_size (Union[Unset, int]):
+        enabled_reporting_screens (Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -477,6 +480,7 @@ class ConstanceSettingsRequestMultipart:
     llm_inferences_api_url: Union[Unset, str] = UNSET
     llm_inferences_api_token: Union[Unset, str] = UNSET
     llm_inferences_model: Union[Unset, str] = UNSET
+    llm_completion_kwargs: Union[Unset, str] = UNSET
     llm_token_limit_daily: Union[Unset, int] = UNSET
     llm_token_limit_weekly: Union[Unset, int] = UNSET
     llm_token_limit_monthly: Union[Unset, int] = UNSET
@@ -521,6 +525,7 @@ class ConstanceSettingsRequestMultipart:
     enable_project_digest: Union[Unset, bool] = UNSET
     ssh_key_allowed_types: Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]] = UNSET
     ssh_key_min_rsa_key_size: Union[Unset, int] = UNSET
+    enabled_reporting_screens: Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -1104,6 +1109,8 @@ class ConstanceSettingsRequestMultipart:
 
         llm_inferences_model = self.llm_inferences_model
 
+        llm_completion_kwargs = self.llm_completion_kwargs
+
         llm_token_limit_daily = self.llm_token_limit_daily
 
         llm_token_limit_weekly = self.llm_token_limit_weekly
@@ -1219,6 +1226,18 @@ class ConstanceSettingsRequestMultipart:
                 ssh_key_allowed_types.append(ssh_key_allowed_types_item)
 
         ssh_key_min_rsa_key_size = self.ssh_key_min_rsa_key_size
+
+        enabled_reporting_screens: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.enabled_reporting_screens, Unset):
+            enabled_reporting_screens = []
+            for enabled_reporting_screens_item_data in self.enabled_reporting_screens:
+                enabled_reporting_screens_item: str
+                if isinstance(enabled_reporting_screens_item_data, ENABLEDREPORTINGSCREENSEnum):
+                    enabled_reporting_screens_item = enabled_reporting_screens_item_data.value
+                else:
+                    enabled_reporting_screens_item = enabled_reporting_screens_item_data.value
+
+                enabled_reporting_screens.append(enabled_reporting_screens_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -1623,6 +1642,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["LLM_INFERENCES_API_TOKEN"] = llm_inferences_api_token
         if llm_inferences_model is not UNSET:
             field_dict["LLM_INFERENCES_MODEL"] = llm_inferences_model
+        if llm_completion_kwargs is not UNSET:
+            field_dict["LLM_COMPLETION_KWARGS"] = llm_completion_kwargs
         if llm_token_limit_daily is not UNSET:
             field_dict["LLM_TOKEN_LIMIT_DAILY"] = llm_token_limit_daily
         if llm_token_limit_weekly is not UNSET:
@@ -1711,6 +1732,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["SSH_KEY_ALLOWED_TYPES"] = ssh_key_allowed_types
         if ssh_key_min_rsa_key_size is not UNSET:
             field_dict["SSH_KEY_MIN_RSA_KEY_SIZE"] = ssh_key_min_rsa_key_size
+        if enabled_reporting_screens is not UNSET:
+            field_dict["ENABLED_REPORTING_SCREENS"] = enabled_reporting_screens
 
         return field_dict
 
@@ -2758,6 +2781,9 @@ class ConstanceSettingsRequestMultipart:
         if not isinstance(self.llm_inferences_model, Unset):
             files.append(("LLM_INFERENCES_MODEL", (None, str(self.llm_inferences_model).encode(), "text/plain")))
 
+        if not isinstance(self.llm_completion_kwargs, Unset):
+            files.append(("LLM_COMPLETION_KWARGS", (None, str(self.llm_completion_kwargs).encode(), "text/plain")))
+
         if not isinstance(self.llm_token_limit_daily, Unset):
             files.append(("LLM_TOKEN_LIMIT_DAILY", (None, str(self.llm_token_limit_daily).encode(), "text/plain")))
 
@@ -3085,6 +3111,23 @@ class ConstanceSettingsRequestMultipart:
             files.append(
                 ("SSH_KEY_MIN_RSA_KEY_SIZE", (None, str(self.ssh_key_min_rsa_key_size).encode(), "text/plain"))
             )
+
+        if not isinstance(self.enabled_reporting_screens, Unset):
+            for enabled_reporting_screens_item_element in self.enabled_reporting_screens:
+                if isinstance(enabled_reporting_screens_item_element, ENABLEDREPORTINGSCREENSEnum):
+                    files.append(
+                        (
+                            "ENABLED_REPORTING_SCREENS",
+                            (None, str(enabled_reporting_screens_item_element.value).encode(), "text/plain"),
+                        )
+                    )
+                else:
+                    files.append(
+                        (
+                            "ENABLED_REPORTING_SCREENS",
+                            (None, str(enabled_reporting_screens_item_element.value).encode(), "text/plain"),
+                        )
+                    )
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -3892,6 +3935,8 @@ class ConstanceSettingsRequestMultipart:
 
         llm_inferences_model = d.pop("LLM_INFERENCES_MODEL", UNSET)
 
+        llm_completion_kwargs = d.pop("LLM_COMPLETION_KWARGS", UNSET)
+
         llm_token_limit_daily = d.pop("LLM_TOKEN_LIMIT_DAILY", UNSET)
 
         llm_token_limit_weekly = d.pop("LLM_TOKEN_LIMIT_WEEKLY", UNSET)
@@ -4034,6 +4079,29 @@ class ConstanceSettingsRequestMultipart:
             ssh_key_allowed_types.append(ssh_key_allowed_types_item)
 
         ssh_key_min_rsa_key_size = d.pop("SSH_KEY_MIN_RSA_KEY_SIZE", UNSET)
+
+        enabled_reporting_screens = []
+        _enabled_reporting_screens = d.pop("ENABLED_REPORTING_SCREENS", UNSET)
+        for enabled_reporting_screens_item_data in _enabled_reporting_screens or []:
+
+            def _parse_enabled_reporting_screens_item(data: object) -> Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    enabled_reporting_screens_item_type_0 = ENABLEDREPORTINGSCREENSEnum(data)
+
+                    return enabled_reporting_screens_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                enabled_reporting_screens_item_type_1 = BlankEnum(data)
+
+                return enabled_reporting_screens_item_type_1
+
+            enabled_reporting_screens_item = _parse_enabled_reporting_screens_item(enabled_reporting_screens_item_data)
+
+            enabled_reporting_screens.append(enabled_reporting_screens_item)
 
         constance_settings_request_multipart = cls(
             site_name=site_name,
@@ -4233,6 +4301,7 @@ class ConstanceSettingsRequestMultipart:
             llm_inferences_api_url=llm_inferences_api_url,
             llm_inferences_api_token=llm_inferences_api_token,
             llm_inferences_model=llm_inferences_model,
+            llm_completion_kwargs=llm_completion_kwargs,
             llm_token_limit_daily=llm_token_limit_daily,
             llm_token_limit_weekly=llm_token_limit_weekly,
             llm_token_limit_monthly=llm_token_limit_monthly,
@@ -4277,6 +4346,7 @@ class ConstanceSettingsRequestMultipart:
             enable_project_digest=enable_project_digest,
             ssh_key_allowed_types=ssh_key_allowed_types,
             ssh_key_min_rsa_key_size=ssh_key_min_rsa_key_size,
+            enabled_reporting_screens=enabled_reporting_screens,
         )
 
         constance_settings_request_multipart.additional_properties = d
