@@ -59,6 +59,10 @@ class Project:
             sanitized)
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated. Overrides customer-level setting.
+        effective_end_date (Union[Unset, datetime.date]): Effective end date including grace period. After this date,
+            project resources will be terminated.
+        is_in_grace_period (Union[Unset, bool]): True if the project is past its end date but still within the grace
+            period.
         user_email_patterns (Union[Unset, Any]):
         user_affiliations (Union[Unset, Any]):
         user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
@@ -98,6 +102,8 @@ class Project:
     termination_metadata: Union[Unset, Any] = UNSET
     staff_notes: Union[Unset, str] = UNSET
     grace_period_days: Union[None, Unset, int] = UNSET
+    effective_end_date: Union[Unset, datetime.date] = UNSET
+    is_in_grace_period: Union[Unset, bool] = UNSET
     user_email_patterns: Union[Unset, Any] = UNSET
     user_affiliations: Union[Unset, Any] = UNSET
     user_identity_sources: Union[Unset, Any] = UNSET
@@ -227,6 +233,12 @@ class Project:
         else:
             grace_period_days = self.grace_period_days
 
+        effective_end_date: Union[Unset, str] = UNSET
+        if not isinstance(self.effective_end_date, Unset):
+            effective_end_date = self.effective_end_date.isoformat()
+
+        is_in_grace_period = self.is_in_grace_period
+
         user_email_patterns = self.user_email_patterns
 
         user_affiliations = self.user_affiliations
@@ -312,6 +324,10 @@ class Project:
             field_dict["staff_notes"] = staff_notes
         if grace_period_days is not UNSET:
             field_dict["grace_period_days"] = grace_period_days
+        if effective_end_date is not UNSET:
+            field_dict["effective_end_date"] = effective_end_date
+        if is_in_grace_period is not UNSET:
+            field_dict["is_in_grace_period"] = is_in_grace_period
         if user_email_patterns is not UNSET:
             field_dict["user_email_patterns"] = user_email_patterns
         if user_affiliations is not UNSET:
@@ -525,6 +541,15 @@ class Project:
 
         grace_period_days = _parse_grace_period_days(d.pop("grace_period_days", UNSET))
 
+        _effective_end_date = d.pop("effective_end_date", UNSET)
+        effective_end_date: Union[Unset, datetime.date]
+        if isinstance(_effective_end_date, Unset):
+            effective_end_date = UNSET
+        else:
+            effective_end_date = isoparse(_effective_end_date).date()
+
+        is_in_grace_period = d.pop("is_in_grace_period", UNSET)
+
         user_email_patterns = d.pop("user_email_patterns", UNSET)
 
         user_affiliations = d.pop("user_affiliations", UNSET)
@@ -586,6 +611,8 @@ class Project:
             termination_metadata=termination_metadata,
             staff_notes=staff_notes,
             grace_period_days=grace_period_days,
+            effective_end_date=effective_end_date,
+            is_in_grace_period=is_in_grace_period,
             user_email_patterns=user_email_patterns,
             user_affiliations=user_affiliations,
             user_identity_sources=user_identity_sources,

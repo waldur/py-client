@@ -66,6 +66,7 @@ class BookingResourceFieldEnum(str, Enum):
     PLAN_UUID = "plan_uuid"
     PROJECT = "project"
     PROJECT_DESCRIPTION = "project_description"
+    PROJECT_EFFECTIVE_END_DATE = "project_effective_end_date"
     PROJECT_END_DATE = "project_end_date"
     PROJECT_END_DATE_REQUESTED_BY = "project_end_date_requested_by"
     PROJECT_NAME = "project_name"
