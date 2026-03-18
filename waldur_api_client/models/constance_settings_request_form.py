@@ -6,12 +6,12 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from .. import types
+from ..models.aiassistantenabledroles_enum import AIASSISTANTENABLEDROLESEnum
 from ..models.blank_enum import BlankEnum
 from ..models.defaultidp_enum import DEFAULTIDPEnum
 from ..models.enabledreportingscreens_enum import ENABLEDREPORTINGSCREENSEnum
 from ..models.federatedidentitydeactivationpolicy_enum import FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum
 from ..models.fontfamily_enum import FONTFAMILYEnum
-from ..models.llmchatenabledroles_enum import LLMCHATENABLEDROLESEnum
 from ..models.loginpagelayout_enum import LOGINPAGELAYOUTEnum
 from ..models.notify_system_enum import NotifySystemEnum
 from ..models.offering_type_enum import OfferingTypeEnum
@@ -230,19 +230,19 @@ class ConstanceSettingsRequestForm:
         onboarding_bolagsverket_client_id (Union[Unset, str]):
         onboarding_bolagsverket_client_secret (Union[Unset, str]):
         onboarding_breg_api_url (Union[Unset, str]):
-        llm_chat_enabled (Union[Unset, bool]):
-        llm_chat_enabled_roles (Union[Unset, LLMCHATENABLEDROLESEnum]):
-        llm_inferences_backend_type (Union[Unset, str]):
-        llm_inferences_api_url (Union[Unset, str]):
-        llm_inferences_api_token (Union[Unset, str]):
-        llm_inferences_model (Union[Unset, str]):
-        llm_completion_kwargs (Union[Unset, str]):
-        llm_token_limit_daily (Union[Unset, int]):
-        llm_token_limit_weekly (Union[Unset, int]):
-        llm_token_limit_monthly (Union[Unset, int]):
-        llm_chat_session_retention_days (Union[Unset, int]):
-        llm_chat_history_limit (Union[Unset, int]):
-        llm_injection_allowlist (Union[Unset, str]):
+        ai_assistant_enabled (Union[Unset, bool]):
+        ai_assistant_enabled_roles (Union[Unset, AIASSISTANTENABLEDROLESEnum]):
+        ai_assistant_backend_type (Union[Unset, str]):
+        ai_assistant_api_url (Union[Unset, str]):
+        ai_assistant_api_token (Union[Unset, str]):
+        ai_assistant_model (Union[Unset, str]):
+        ai_assistant_completion_kwargs (Union[Unset, str]):
+        ai_assistant_token_limit_daily (Union[Unset, int]):
+        ai_assistant_token_limit_weekly (Union[Unset, int]):
+        ai_assistant_token_limit_monthly (Union[Unset, int]):
+        ai_assistant_session_retention_days (Union[Unset, int]):
+        ai_assistant_history_limit (Union[Unset, int]):
+        ai_assistant_injection_allowlist (Union[Unset, str]):
         software_catalog_eessi_update_enabled (Union[Unset, bool]):
         software_catalog_eessi_version (Union[Unset, str]):
         software_catalog_eessi_api_url (Union[Unset, str]):
@@ -476,19 +476,19 @@ class ConstanceSettingsRequestForm:
     onboarding_bolagsverket_client_id: Union[Unset, str] = UNSET
     onboarding_bolagsverket_client_secret: Union[Unset, str] = UNSET
     onboarding_breg_api_url: Union[Unset, str] = UNSET
-    llm_chat_enabled: Union[Unset, bool] = UNSET
-    llm_chat_enabled_roles: Union[Unset, LLMCHATENABLEDROLESEnum] = UNSET
-    llm_inferences_backend_type: Union[Unset, str] = UNSET
-    llm_inferences_api_url: Union[Unset, str] = UNSET
-    llm_inferences_api_token: Union[Unset, str] = UNSET
-    llm_inferences_model: Union[Unset, str] = UNSET
-    llm_completion_kwargs: Union[Unset, str] = UNSET
-    llm_token_limit_daily: Union[Unset, int] = UNSET
-    llm_token_limit_weekly: Union[Unset, int] = UNSET
-    llm_token_limit_monthly: Union[Unset, int] = UNSET
-    llm_chat_session_retention_days: Union[Unset, int] = UNSET
-    llm_chat_history_limit: Union[Unset, int] = UNSET
-    llm_injection_allowlist: Union[Unset, str] = UNSET
+    ai_assistant_enabled: Union[Unset, bool] = UNSET
+    ai_assistant_enabled_roles: Union[Unset, AIASSISTANTENABLEDROLESEnum] = UNSET
+    ai_assistant_backend_type: Union[Unset, str] = UNSET
+    ai_assistant_api_url: Union[Unset, str] = UNSET
+    ai_assistant_api_token: Union[Unset, str] = UNSET
+    ai_assistant_model: Union[Unset, str] = UNSET
+    ai_assistant_completion_kwargs: Union[Unset, str] = UNSET
+    ai_assistant_token_limit_daily: Union[Unset, int] = UNSET
+    ai_assistant_token_limit_weekly: Union[Unset, int] = UNSET
+    ai_assistant_token_limit_monthly: Union[Unset, int] = UNSET
+    ai_assistant_session_retention_days: Union[Unset, int] = UNSET
+    ai_assistant_history_limit: Union[Unset, int] = UNSET
+    ai_assistant_injection_allowlist: Union[Unset, str] = UNSET
     software_catalog_eessi_update_enabled: Union[Unset, bool] = UNSET
     software_catalog_eessi_version: Union[Unset, str] = UNSET
     software_catalog_eessi_api_url: Union[Unset, str] = UNSET
@@ -1101,33 +1101,33 @@ class ConstanceSettingsRequestForm:
 
         onboarding_breg_api_url = self.onboarding_breg_api_url
 
-        llm_chat_enabled = self.llm_chat_enabled
+        ai_assistant_enabled = self.ai_assistant_enabled
 
-        llm_chat_enabled_roles: Union[Unset, str] = UNSET
-        if not isinstance(self.llm_chat_enabled_roles, Unset):
-            llm_chat_enabled_roles = self.llm_chat_enabled_roles.value
+        ai_assistant_enabled_roles: Union[Unset, str] = UNSET
+        if not isinstance(self.ai_assistant_enabled_roles, Unset):
+            ai_assistant_enabled_roles = self.ai_assistant_enabled_roles.value
 
-        llm_inferences_backend_type = self.llm_inferences_backend_type
+        ai_assistant_backend_type = self.ai_assistant_backend_type
 
-        llm_inferences_api_url = self.llm_inferences_api_url
+        ai_assistant_api_url = self.ai_assistant_api_url
 
-        llm_inferences_api_token = self.llm_inferences_api_token
+        ai_assistant_api_token = self.ai_assistant_api_token
 
-        llm_inferences_model = self.llm_inferences_model
+        ai_assistant_model = self.ai_assistant_model
 
-        llm_completion_kwargs = self.llm_completion_kwargs
+        ai_assistant_completion_kwargs = self.ai_assistant_completion_kwargs
 
-        llm_token_limit_daily = self.llm_token_limit_daily
+        ai_assistant_token_limit_daily = self.ai_assistant_token_limit_daily
 
-        llm_token_limit_weekly = self.llm_token_limit_weekly
+        ai_assistant_token_limit_weekly = self.ai_assistant_token_limit_weekly
 
-        llm_token_limit_monthly = self.llm_token_limit_monthly
+        ai_assistant_token_limit_monthly = self.ai_assistant_token_limit_monthly
 
-        llm_chat_session_retention_days = self.llm_chat_session_retention_days
+        ai_assistant_session_retention_days = self.ai_assistant_session_retention_days
 
-        llm_chat_history_limit = self.llm_chat_history_limit
+        ai_assistant_history_limit = self.ai_assistant_history_limit
 
-        llm_injection_allowlist = self.llm_injection_allowlist
+        ai_assistant_injection_allowlist = self.ai_assistant_injection_allowlist
 
         software_catalog_eessi_update_enabled = self.software_catalog_eessi_update_enabled
 
@@ -1638,32 +1638,32 @@ class ConstanceSettingsRequestForm:
             field_dict["ONBOARDING_BOLAGSVERKET_CLIENT_SECRET"] = onboarding_bolagsverket_client_secret
         if onboarding_breg_api_url is not UNSET:
             field_dict["ONBOARDING_BREG_API_URL"] = onboarding_breg_api_url
-        if llm_chat_enabled is not UNSET:
-            field_dict["LLM_CHAT_ENABLED"] = llm_chat_enabled
-        if llm_chat_enabled_roles is not UNSET:
-            field_dict["LLM_CHAT_ENABLED_ROLES"] = llm_chat_enabled_roles
-        if llm_inferences_backend_type is not UNSET:
-            field_dict["LLM_INFERENCES_BACKEND_TYPE"] = llm_inferences_backend_type
-        if llm_inferences_api_url is not UNSET:
-            field_dict["LLM_INFERENCES_API_URL"] = llm_inferences_api_url
-        if llm_inferences_api_token is not UNSET:
-            field_dict["LLM_INFERENCES_API_TOKEN"] = llm_inferences_api_token
-        if llm_inferences_model is not UNSET:
-            field_dict["LLM_INFERENCES_MODEL"] = llm_inferences_model
-        if llm_completion_kwargs is not UNSET:
-            field_dict["LLM_COMPLETION_KWARGS"] = llm_completion_kwargs
-        if llm_token_limit_daily is not UNSET:
-            field_dict["LLM_TOKEN_LIMIT_DAILY"] = llm_token_limit_daily
-        if llm_token_limit_weekly is not UNSET:
-            field_dict["LLM_TOKEN_LIMIT_WEEKLY"] = llm_token_limit_weekly
-        if llm_token_limit_monthly is not UNSET:
-            field_dict["LLM_TOKEN_LIMIT_MONTHLY"] = llm_token_limit_monthly
-        if llm_chat_session_retention_days is not UNSET:
-            field_dict["LLM_CHAT_SESSION_RETENTION_DAYS"] = llm_chat_session_retention_days
-        if llm_chat_history_limit is not UNSET:
-            field_dict["LLM_CHAT_HISTORY_LIMIT"] = llm_chat_history_limit
-        if llm_injection_allowlist is not UNSET:
-            field_dict["LLM_INJECTION_ALLOWLIST"] = llm_injection_allowlist
+        if ai_assistant_enabled is not UNSET:
+            field_dict["AI_ASSISTANT_ENABLED"] = ai_assistant_enabled
+        if ai_assistant_enabled_roles is not UNSET:
+            field_dict["AI_ASSISTANT_ENABLED_ROLES"] = ai_assistant_enabled_roles
+        if ai_assistant_backend_type is not UNSET:
+            field_dict["AI_ASSISTANT_BACKEND_TYPE"] = ai_assistant_backend_type
+        if ai_assistant_api_url is not UNSET:
+            field_dict["AI_ASSISTANT_API_URL"] = ai_assistant_api_url
+        if ai_assistant_api_token is not UNSET:
+            field_dict["AI_ASSISTANT_API_TOKEN"] = ai_assistant_api_token
+        if ai_assistant_model is not UNSET:
+            field_dict["AI_ASSISTANT_MODEL"] = ai_assistant_model
+        if ai_assistant_completion_kwargs is not UNSET:
+            field_dict["AI_ASSISTANT_COMPLETION_KWARGS"] = ai_assistant_completion_kwargs
+        if ai_assistant_token_limit_daily is not UNSET:
+            field_dict["AI_ASSISTANT_TOKEN_LIMIT_DAILY"] = ai_assistant_token_limit_daily
+        if ai_assistant_token_limit_weekly is not UNSET:
+            field_dict["AI_ASSISTANT_TOKEN_LIMIT_WEEKLY"] = ai_assistant_token_limit_weekly
+        if ai_assistant_token_limit_monthly is not UNSET:
+            field_dict["AI_ASSISTANT_TOKEN_LIMIT_MONTHLY"] = ai_assistant_token_limit_monthly
+        if ai_assistant_session_retention_days is not UNSET:
+            field_dict["AI_ASSISTANT_SESSION_RETENTION_DAYS"] = ai_assistant_session_retention_days
+        if ai_assistant_history_limit is not UNSET:
+            field_dict["AI_ASSISTANT_HISTORY_LIMIT"] = ai_assistant_history_limit
+        if ai_assistant_injection_allowlist is not UNSET:
+            field_dict["AI_ASSISTANT_INJECTION_ALLOWLIST"] = ai_assistant_injection_allowlist
         if software_catalog_eessi_update_enabled is not UNSET:
             field_dict["SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED"] = software_catalog_eessi_update_enabled
         if software_catalog_eessi_version is not UNSET:
@@ -2536,36 +2536,36 @@ class ConstanceSettingsRequestForm:
 
         onboarding_breg_api_url = d.pop("ONBOARDING_BREG_API_URL", UNSET)
 
-        llm_chat_enabled = d.pop("LLM_CHAT_ENABLED", UNSET)
+        ai_assistant_enabled = d.pop("AI_ASSISTANT_ENABLED", UNSET)
 
-        _llm_chat_enabled_roles = d.pop("LLM_CHAT_ENABLED_ROLES", UNSET)
-        llm_chat_enabled_roles: Union[Unset, LLMCHATENABLEDROLESEnum]
-        if isinstance(_llm_chat_enabled_roles, Unset):
-            llm_chat_enabled_roles = UNSET
+        _ai_assistant_enabled_roles = d.pop("AI_ASSISTANT_ENABLED_ROLES", UNSET)
+        ai_assistant_enabled_roles: Union[Unset, AIASSISTANTENABLEDROLESEnum]
+        if isinstance(_ai_assistant_enabled_roles, Unset):
+            ai_assistant_enabled_roles = UNSET
         else:
-            llm_chat_enabled_roles = LLMCHATENABLEDROLESEnum(_llm_chat_enabled_roles)
+            ai_assistant_enabled_roles = AIASSISTANTENABLEDROLESEnum(_ai_assistant_enabled_roles)
 
-        llm_inferences_backend_type = d.pop("LLM_INFERENCES_BACKEND_TYPE", UNSET)
+        ai_assistant_backend_type = d.pop("AI_ASSISTANT_BACKEND_TYPE", UNSET)
 
-        llm_inferences_api_url = d.pop("LLM_INFERENCES_API_URL", UNSET)
+        ai_assistant_api_url = d.pop("AI_ASSISTANT_API_URL", UNSET)
 
-        llm_inferences_api_token = d.pop("LLM_INFERENCES_API_TOKEN", UNSET)
+        ai_assistant_api_token = d.pop("AI_ASSISTANT_API_TOKEN", UNSET)
 
-        llm_inferences_model = d.pop("LLM_INFERENCES_MODEL", UNSET)
+        ai_assistant_model = d.pop("AI_ASSISTANT_MODEL", UNSET)
 
-        llm_completion_kwargs = d.pop("LLM_COMPLETION_KWARGS", UNSET)
+        ai_assistant_completion_kwargs = d.pop("AI_ASSISTANT_COMPLETION_KWARGS", UNSET)
 
-        llm_token_limit_daily = d.pop("LLM_TOKEN_LIMIT_DAILY", UNSET)
+        ai_assistant_token_limit_daily = d.pop("AI_ASSISTANT_TOKEN_LIMIT_DAILY", UNSET)
 
-        llm_token_limit_weekly = d.pop("LLM_TOKEN_LIMIT_WEEKLY", UNSET)
+        ai_assistant_token_limit_weekly = d.pop("AI_ASSISTANT_TOKEN_LIMIT_WEEKLY", UNSET)
 
-        llm_token_limit_monthly = d.pop("LLM_TOKEN_LIMIT_MONTHLY", UNSET)
+        ai_assistant_token_limit_monthly = d.pop("AI_ASSISTANT_TOKEN_LIMIT_MONTHLY", UNSET)
 
-        llm_chat_session_retention_days = d.pop("LLM_CHAT_SESSION_RETENTION_DAYS", UNSET)
+        ai_assistant_session_retention_days = d.pop("AI_ASSISTANT_SESSION_RETENTION_DAYS", UNSET)
 
-        llm_chat_history_limit = d.pop("LLM_CHAT_HISTORY_LIMIT", UNSET)
+        ai_assistant_history_limit = d.pop("AI_ASSISTANT_HISTORY_LIMIT", UNSET)
 
-        llm_injection_allowlist = d.pop("LLM_INJECTION_ALLOWLIST", UNSET)
+        ai_assistant_injection_allowlist = d.pop("AI_ASSISTANT_INJECTION_ALLOWLIST", UNSET)
 
         software_catalog_eessi_update_enabled = d.pop("SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED", UNSET)
 
@@ -2914,19 +2914,19 @@ class ConstanceSettingsRequestForm:
             onboarding_bolagsverket_client_id=onboarding_bolagsverket_client_id,
             onboarding_bolagsverket_client_secret=onboarding_bolagsverket_client_secret,
             onboarding_breg_api_url=onboarding_breg_api_url,
-            llm_chat_enabled=llm_chat_enabled,
-            llm_chat_enabled_roles=llm_chat_enabled_roles,
-            llm_inferences_backend_type=llm_inferences_backend_type,
-            llm_inferences_api_url=llm_inferences_api_url,
-            llm_inferences_api_token=llm_inferences_api_token,
-            llm_inferences_model=llm_inferences_model,
-            llm_completion_kwargs=llm_completion_kwargs,
-            llm_token_limit_daily=llm_token_limit_daily,
-            llm_token_limit_weekly=llm_token_limit_weekly,
-            llm_token_limit_monthly=llm_token_limit_monthly,
-            llm_chat_session_retention_days=llm_chat_session_retention_days,
-            llm_chat_history_limit=llm_chat_history_limit,
-            llm_injection_allowlist=llm_injection_allowlist,
+            ai_assistant_enabled=ai_assistant_enabled,
+            ai_assistant_enabled_roles=ai_assistant_enabled_roles,
+            ai_assistant_backend_type=ai_assistant_backend_type,
+            ai_assistant_api_url=ai_assistant_api_url,
+            ai_assistant_api_token=ai_assistant_api_token,
+            ai_assistant_model=ai_assistant_model,
+            ai_assistant_completion_kwargs=ai_assistant_completion_kwargs,
+            ai_assistant_token_limit_daily=ai_assistant_token_limit_daily,
+            ai_assistant_token_limit_weekly=ai_assistant_token_limit_weekly,
+            ai_assistant_token_limit_monthly=ai_assistant_token_limit_monthly,
+            ai_assistant_session_retention_days=ai_assistant_session_retention_days,
+            ai_assistant_history_limit=ai_assistant_history_limit,
+            ai_assistant_injection_allowlist=ai_assistant_injection_allowlist,
             software_catalog_eessi_update_enabled=software_catalog_eessi_update_enabled,
             software_catalog_eessi_version=software_catalog_eessi_version,
             software_catalog_eessi_api_url=software_catalog_eessi_api_url,

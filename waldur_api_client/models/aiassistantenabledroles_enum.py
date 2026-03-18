@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class LLMCHATENABLEDROLESEnum(str, Enum):
+class AIASSISTANTENABLEDROLESEnum(str, Enum):
     ALL = "all"
     DISABLED = "disabled"
     STAFF = "staff"

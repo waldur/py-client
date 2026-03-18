@@ -50,6 +50,7 @@ from .agent_task_stats_response_scheduled_tasks_item import AgentTaskStatsRespon
 from .agent_type_enum import AgentTypeEnum
 from .aggregated_usage_trend import AggregatedUsageTrend
 from .agreement_type_enum import AgreementTypeEnum
+from .aiassistantenabledroles_enum import AIASSISTANTENABLEDROLESEnum
 from .allocation import Allocation
 from .allocation_field_enum import AllocationFieldEnum
 from .allocation_marketplace_offering_plugin_options_type_0 import AllocationMarketplaceOfferingPluginOptionsType0
@@ -799,7 +800,6 @@ from .link_resource_request_request import LinkResourceRequestRequest
 from .link_resource_response import LinkResourceResponse
 from .link_to_invoice import LinkToInvoice
 from .link_to_invoice_request import LinkToInvoiceRequest
-from .llmchatenabledroles_enum import LLMCHATENABLEDROLESEnum
 from .load_balancer_attach_floating_ip_request import LoadBalancerAttachFloatingIPRequest
 from .load_balancer_protocol_enum import LoadBalancerProtocolEnum
 from .load_balancer_update_vip_security_groups_request import LoadBalancerUpdateVIPSecurityGroupsRequest
@@ -2328,6 +2328,7 @@ __all__ = (
     "AgentTypeEnum",
     "AggregatedUsageTrend",
     "AgreementTypeEnum",
+    "AIASSISTANTENABLEDROLESEnum",
     "Allocation",
     "AllocationFieldEnum",
     "AllocationMarketplaceOfferingPluginOptionsType0",
@@ -3055,7 +3056,6 @@ __all__ = (
     "LinkResourceResponse",
     "LinkToInvoice",
     "LinkToInvoiceRequest",
-    "LLMCHATENABLEDROLESEnum",
     "LoadBalancerAttachFloatingIPRequest",
     "LoadBalancerProtocolEnum",
     "LoadBalancerUpdateVIPSecurityGroupsRequest",
