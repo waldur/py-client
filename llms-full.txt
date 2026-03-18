@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.8-dev.20260318031515
+# Version: 8.0.7-rc.8-dev.20260318132626
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -799,6 +799,14 @@ Path parameters:
 POST /api/assignment-items/{uuid}/decline/
 Summary: Decline this assignment item
 Description: Decline this assignment item.
+Path parameters:
+  - uuid
+Request body: yes
+
+### assignment_items_force_unblock
+POST /api/assignment-items/{uuid}/force-unblock/
+Summary: Force-unblock a COI-blocked assignment item (manager override)
+Description: Force-unblock a COI-blocked assignment item (manager override).
 Path parameters:
   - uuid
 Request body: yes
@@ -2428,6 +2436,14 @@ Request body: yes
 POST /api/call-reviewer-pools/{uuid}/decline/
 Summary: Decline a pool invitation (authenticated users only)
 Description: Decline a pool invitation (authenticated users only).
+Path parameters:
+  - uuid
+Request body: yes
+
+### call_reviewer_pools_force_accept
+POST /api/call-reviewer-pools/{uuid}/force-accept/
+Summary: Force-accept a pool invitation (manager override)
+Description: Force-accept a pool invitation (manager override).
 Path parameters:
   - uuid
 Request body: yes
@@ -5989,6 +6005,12 @@ Path parameters:
 DELETE /api/marketplace-course-accounts/{uuid}/
 Summary: Delete (close) a course account
 Description: Deletes a course account, which triggers a 'close' operation in the backend.
+Path parameters:
+  - uuid
+
+### marketplace_course_accounts_retry
+POST /api/marketplace-course-accounts/{uuid}/retry/
+Summary: Retry a failed course account
 Path parameters:
   - uuid
 
@@ -15964,6 +15986,59 @@ Request body: yes
 DELETE /api/project-credits/{uuid}/
 Path parameters:
   - uuid
+
+============================================================
+## project-end-date-change-requests  (module: waldur_api_client.api.project_end_date_change_requests)
+============================================================
+
+### project_end_date_change_requests_list
+GET /api/project-end-date-change-requests/
+Query parameters (4):
+  - created_by_uuid — Created by UUID
+  - customer_uuid — Customer UUID
+  - project_uuid — Project UUID
+  - state
+
+### project_end_date_change_requests_count
+HEAD /api/project-end-date-change-requests/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - created_by_uuid — Created by UUID
+  - customer_uuid — Customer UUID
+  - project_uuid — Project UUID
+  - state
+
+### project_end_date_change_requests_create
+POST /api/project-end-date-change-requests/
+Request body: yes
+
+### project_end_date_change_requests_retrieve
+GET /api/project-end-date-change-requests/{uuid}/
+Path parameters:
+  - uuid
+
+### project_end_date_change_requests_approve
+POST /api/project-end-date-change-requests/{uuid}/approve/
+Summary: Approve project end date change request
+Path parameters:
+  - uuid
+Request body: yes
+
+### project_end_date_change_requests_cancel
+POST /api/project-end-date-change-requests/{uuid}/cancel/
+Summary: Cancel project end date change request
+Description: Cancel project end date change request. Only the creator can cancel.
+Path parameters:
+  - uuid
+Request body: yes
+
+### project_end_date_change_requests_reject
+POST /api/project-end-date-change-requests/{uuid}/reject/
+Summary: Reject project end date change request
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## project-permissions-reviews  (module: waldur_api_client.api.project_permissions_reviews)

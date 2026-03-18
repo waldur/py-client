@@ -137,6 +137,7 @@ Module: `waldur_api_client.api.assignment_items`
 - `assignment_items_destroy` DELETE `/api/assignment-items/{uuid}/` (path: uuid)
 - `assignment_items_accept` POST `/api/assignment-items/{uuid}/accept/` — Accept this assignment item (path: uuid)
 - `assignment_items_decline` POST `/api/assignment-items/{uuid}/decline/` — Decline this assignment item (path: uuid | request body)
+- `assignment_items_force_unblock` POST `/api/assignment-items/{uuid}/force-unblock/` — Force-unblock a COI-blocked assignment item (manager override) (path: uuid | request body)
 - `assignment_items_reassign` POST `/api/assignment-items/{uuid}/reassign/` — Reassign this item to a different reviewer (path: uuid | request body)
 - `assignment_items_suggest_alternatives_retrieve` GET `/api/assignment-items/{uuid}/suggest_alternatives/` — Suggest alternative reviewers for a declined assignment (path: uuid)
 
@@ -433,6 +434,7 @@ Module: `waldur_api_client.api.call_reviewer_pools`
 - `call_reviewer_pools_partial_update` PATCH `/api/call-reviewer-pools/{uuid}/` (path: uuid | request body)
 - `call_reviewer_pools_accept` POST `/api/call-reviewer-pools/{uuid}/accept/` — Accept a pool invitation (authenticated users only) (path: uuid | request body)
 - `call_reviewer_pools_decline` POST `/api/call-reviewer-pools/{uuid}/decline/` — Decline a pool invitation (authenticated users only) (path: uuid | request body)
+- `call_reviewer_pools_force_accept` POST `/api/call-reviewer-pools/{uuid}/force-accept/` — Force-accept a pool invitation (manager override) (path: uuid | request body)
 
 ## call-rounds
 Module: `waldur_api_client.api.call_rounds`
@@ -1103,6 +1105,7 @@ Module: `waldur_api_client.api.marketplace_course_accounts`
 - `marketplace_course_accounts_create_bulk` POST `/api/marketplace-course-accounts/create_bulk/` — Bulk create course accounts (9 query params | request body)
 - `marketplace_course_accounts_retrieve` GET `/api/marketplace-course-accounts/{uuid}/` — Retrieve a course account (path: uuid)
 - `marketplace_course_accounts_destroy` DELETE `/api/marketplace-course-accounts/{uuid}/` — Delete (close) a course account (path: uuid)
+- `marketplace_course_accounts_retry` POST `/api/marketplace-course-accounts/{uuid}/retry/` — Retry a failed course account (path: uuid)
 
 ## marketplace-customer-component-usage-policies
 Module: `waldur_api_client.api.marketplace_customer_component_usage_policies`
@@ -2575,6 +2578,17 @@ Module: `waldur_api_client.api.project_credits`
 - `project_credits_update` PUT `/api/project-credits/{uuid}/` (path: uuid | request body)
 - `project_credits_partial_update` PATCH `/api/project-credits/{uuid}/` (path: uuid | request body)
 - `project_credits_destroy` DELETE `/api/project-credits/{uuid}/` (path: uuid)
+
+## project-end-date-change-requests
+Module: `waldur_api_client.api.project_end_date_change_requests`
+
+- `project_end_date_change_requests_list` GET `/api/project-end-date-change-requests/` (4 query params)
+- `project_end_date_change_requests_count` HEAD `/api/project-end-date-change-requests/` — Get number of items in the collection matching the request parameters (4 query params)
+- `project_end_date_change_requests_create` POST `/api/project-end-date-change-requests/` (request body)
+- `project_end_date_change_requests_retrieve` GET `/api/project-end-date-change-requests/{uuid}/` (path: uuid)
+- `project_end_date_change_requests_approve` POST `/api/project-end-date-change-requests/{uuid}/approve/` — Approve project end date change request (path: uuid | request body)
+- `project_end_date_change_requests_cancel` POST `/api/project-end-date-change-requests/{uuid}/cancel/` — Cancel project end date change request (path: uuid | request body)
+- `project_end_date_change_requests_reject` POST `/api/project-end-date-change-requests/{uuid}/reject/` — Reject project end date change request (path: uuid | request body)
 
 ## project-permissions-reviews
 Module: `waldur_api_client.api.project_permissions_reviews`

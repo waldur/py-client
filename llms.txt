@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.0.7-rc.8-dev.20260318031515).
+> Auto-generated Python SDK for the Waldur API (version 8.0.7-rc.8-dev.20260318132626).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -40,7 +40,7 @@ waldur_api_client/
 - **admin-announcements** (7 endpoints)
 - **api-auth** (14 endpoints)
 - **assignment-batches** (10 endpoints)
-- **assignment-items** (11 endpoints)
+- **assignment-items** (12 endpoints)
 - **auth-tokens** (4 endpoints)
 - **auth-valimo** (2 endpoints)
 - **autoprovisioning-rules** (7 endpoints)
@@ -67,7 +67,7 @@ waldur_api_client/
 - **call-assignment-configurations** (7 endpoints)
 - **call-managing-organisations** (12 endpoints)
 - **call-proposal-project-role-mappings** (7 endpoints)
-- **call-reviewer-pools** (6 endpoints)
+- **call-reviewer-pools** (7 endpoints)
 - **call-rounds** (4 endpoints)
 - **celery-stats** (1 endpoint)
 - **chat** (1 endpoint)
@@ -136,7 +136,7 @@ waldur_api_client/
 - **marketplace-category-help-articles** (7 endpoints)
 - **marketplace-component-usages** (6 endpoints)
 - **marketplace-component-user-usages** (3 endpoints)
-- **marketplace-course-accounts** (6 endpoints)
+- **marketplace-course-accounts** (7 endpoints)
 - **marketplace-customer-component-usage-policies** (9 endpoints)
 - **marketplace-customer-estimated-cost-policies** (9 endpoints)
 - **marketplace-customer-service-accounts** (8 endpoints)
@@ -244,6 +244,7 @@ waldur_api_client/
 - **payment-profiles** (8 endpoints)
 - **payments** (9 endpoints)
 - **project-credits** (7 endpoints)
+- **project-end-date-change-requests** (7 endpoints)
 - **project-permissions-reviews** (4 endpoints)
 - **project-quotas** (2 endpoints)
 - **project-types** (3 endpoints)

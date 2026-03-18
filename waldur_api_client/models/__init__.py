@@ -644,6 +644,8 @@ from .firecrest_job_request_form import FirecrestJobRequestForm
 from .firecrest_job_request_multipart import FirecrestJobRequestMultipart
 from .flavor_response import FlavorResponse
 from .fontfamily_enum import FONTFAMILYEnum
+from .force_accept_pool_request import ForceAcceptPoolRequest
+from .force_unblock_request import ForceUnblockRequest
 from .freeipa_profile import FreeipaProfile
 from .freeipa_profile_request import FreeipaProfileRequest
 from .frequency_enum import FrequencyEnum
@@ -797,6 +799,7 @@ from .link_resource_request_request import LinkResourceRequestRequest
 from .link_resource_response import LinkResourceResponse
 from .link_to_invoice import LinkToInvoice
 from .link_to_invoice_request import LinkToInvoiceRequest
+from .llmchatenabledroles_enum import LLMCHATENABLEDROLESEnum
 from .load_balancer_attach_floating_ip_request import LoadBalancerAttachFloatingIPRequest
 from .load_balancer_protocol_enum import LoadBalancerProtocolEnum
 from .load_balancer_update_vip_security_groups_request import LoadBalancerUpdateVIPSecurityGroupsRequest
@@ -1549,6 +1552,10 @@ from .project_digest_config_available_sections_item import ProjectDigestConfigAv
 from .project_digest_config_request import ProjectDigestConfigRequest
 from .project_digest_preview_request import ProjectDigestPreviewRequest
 from .project_digest_preview_response import ProjectDigestPreviewResponse
+from .project_end_date_change_request import ProjectEndDateChangeRequest
+from .project_end_date_change_request_create import ProjectEndDateChangeRequestCreate
+from .project_end_date_change_request_create_request import ProjectEndDateChangeRequestCreateRequest
+from .project_end_date_change_request_request import ProjectEndDateChangeRequestRequest
 from .project_estimated_cost_policy import ProjectEstimatedCostPolicy
 from .project_estimated_cost_policy_request import ProjectEstimatedCostPolicyRequest
 from .project_field_enum import ProjectFieldEnum
@@ -2895,6 +2902,8 @@ __all__ = (
     "FirecrestJobRequestMultipart",
     "FlavorResponse",
     "FONTFAMILYEnum",
+    "ForceAcceptPoolRequest",
+    "ForceUnblockRequest",
     "FreeipaProfile",
     "FreeipaProfileRequest",
     "FrequencyEnum",
@@ -3046,6 +3055,7 @@ __all__ = (
     "LinkResourceResponse",
     "LinkToInvoice",
     "LinkToInvoiceRequest",
+    "LLMCHATENABLEDROLESEnum",
     "LoadBalancerAttachFloatingIPRequest",
     "LoadBalancerProtocolEnum",
     "LoadBalancerUpdateVIPSecurityGroupsRequest",
@@ -3732,6 +3742,10 @@ __all__ = (
     "ProjectDigestConfigRequest",
     "ProjectDigestPreviewRequest",
     "ProjectDigestPreviewResponse",
+    "ProjectEndDateChangeRequest",
+    "ProjectEndDateChangeRequestCreate",
+    "ProjectEndDateChangeRequestCreateRequest",
+    "ProjectEndDateChangeRequestRequest",
     "ProjectEstimatedCostPolicy",
     "ProjectEstimatedCostPolicyRequest",
     "ProjectFieldEnum",

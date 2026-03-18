@@ -53,6 +53,9 @@ class CallReviewerPool:
             Kept for backwards compatibility with frontend.
         reviews_in_progress (int): Count reviews in 'in_review' state.
         reviews_completed (int): Count reviews in 'submitted' state.
+        override_reason (str): Reason for manager override of invitation status.
+        overridden_by_name (str):  Default: ''.
+        overridden_at (Union[None, datetime.datetime]):
         max_assignments (Union[Unset, int]):
         expertise_match_score (Union[None, Unset, float]): Calculated affinity to call topics (0-1)
     """
@@ -85,6 +88,9 @@ class CallReviewerPool:
     reviews_pending: int
     reviews_in_progress: int
     reviews_completed: int
+    override_reason: str
+    overridden_at: Union[None, datetime.datetime]
+    overridden_by_name: str = ""
     max_assignments: Union[Unset, int] = UNSET
     expertise_match_score: Union[None, Unset, float] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -159,6 +165,16 @@ class CallReviewerPool:
 
         reviews_completed = self.reviews_completed
 
+        override_reason = self.override_reason
+
+        overridden_by_name = self.overridden_by_name
+
+        overridden_at: Union[None, str]
+        if isinstance(self.overridden_at, datetime.datetime):
+            overridden_at = self.overridden_at.isoformat()
+        else:
+            overridden_at = self.overridden_at
+
         max_assignments = self.max_assignments
 
         expertise_match_score: Union[None, Unset, float]
@@ -199,6 +215,9 @@ class CallReviewerPool:
                 "reviews_pending": reviews_pending,
                 "reviews_in_progress": reviews_in_progress,
                 "reviews_completed": reviews_completed,
+                "override_reason": override_reason,
+                "overridden_by_name": overridden_by_name,
+                "overridden_at": overridden_at,
             }
         )
         if max_assignments is not UNSET:
@@ -320,6 +339,25 @@ class CallReviewerPool:
 
         reviews_completed = d.pop("reviews_completed")
 
+        override_reason = d.pop("override_reason")
+
+        overridden_by_name = d.pop("overridden_by_name")
+
+        def _parse_overridden_at(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                overridden_at_type_0 = isoparse(data)
+
+                return overridden_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        overridden_at = _parse_overridden_at(d.pop("overridden_at"))
+
         max_assignments = d.pop("max_assignments", UNSET)
 
         def _parse_expertise_match_score(data: object) -> Union[None, Unset, float]:
@@ -360,6 +398,9 @@ class CallReviewerPool:
             reviews_pending=reviews_pending,
             reviews_in_progress=reviews_in_progress,
             reviews_completed=reviews_completed,
+            override_reason=override_reason,
+            overridden_by_name=overridden_by_name,
+            overridden_at=overridden_at,
             max_assignments=max_assignments,
             expertise_match_score=expertise_match_score,
         )

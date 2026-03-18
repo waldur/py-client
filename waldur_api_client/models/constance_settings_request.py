@@ -11,6 +11,7 @@ from ..models.defaultidp_enum import DEFAULTIDPEnum
 from ..models.enabledreportingscreens_enum import ENABLEDREPORTINGSCREENSEnum
 from ..models.federatedidentitydeactivationpolicy_enum import FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum
 from ..models.fontfamily_enum import FONTFAMILYEnum
+from ..models.llmchatenabledroles_enum import LLMCHATENABLEDROLESEnum
 from ..models.loginpagelayout_enum import LOGINPAGELAYOUTEnum
 from ..models.notify_system_enum import NotifySystemEnum
 from ..models.offering_type_enum import OfferingTypeEnum
@@ -228,6 +229,7 @@ class ConstanceSettingsRequest:
         onboarding_bolagsverket_client_secret (Union[Unset, str]):
         onboarding_breg_api_url (Union[Unset, str]):
         llm_chat_enabled (Union[Unset, bool]):
+        llm_chat_enabled_roles (Union[Unset, LLMCHATENABLEDROLESEnum]):
         llm_inferences_backend_type (Union[Unset, str]):
         llm_inferences_api_url (Union[Unset, str]):
         llm_inferences_api_token (Union[Unset, str]):
@@ -473,6 +475,7 @@ class ConstanceSettingsRequest:
     onboarding_bolagsverket_client_secret: Union[Unset, str] = UNSET
     onboarding_breg_api_url: Union[Unset, str] = UNSET
     llm_chat_enabled: Union[Unset, bool] = UNSET
+    llm_chat_enabled_roles: Union[Unset, LLMCHATENABLEDROLESEnum] = UNSET
     llm_inferences_backend_type: Union[Unset, str] = UNSET
     llm_inferences_api_url: Union[Unset, str] = UNSET
     llm_inferences_api_token: Union[Unset, str] = UNSET
@@ -1098,6 +1101,10 @@ class ConstanceSettingsRequest:
 
         llm_chat_enabled = self.llm_chat_enabled
 
+        llm_chat_enabled_roles: Union[Unset, str] = UNSET
+        if not isinstance(self.llm_chat_enabled_roles, Unset):
+            llm_chat_enabled_roles = self.llm_chat_enabled_roles.value
+
         llm_inferences_backend_type = self.llm_inferences_backend_type
 
         llm_inferences_api_url = self.llm_inferences_api_url
@@ -1631,6 +1638,8 @@ class ConstanceSettingsRequest:
             field_dict["ONBOARDING_BREG_API_URL"] = onboarding_breg_api_url
         if llm_chat_enabled is not UNSET:
             field_dict["LLM_CHAT_ENABLED"] = llm_chat_enabled
+        if llm_chat_enabled_roles is not UNSET:
+            field_dict["LLM_CHAT_ENABLED_ROLES"] = llm_chat_enabled_roles
         if llm_inferences_backend_type is not UNSET:
             field_dict["LLM_INFERENCES_BACKEND_TYPE"] = llm_inferences_backend_type
         if llm_inferences_api_url is not UNSET:
@@ -2525,6 +2534,13 @@ class ConstanceSettingsRequest:
 
         llm_chat_enabled = d.pop("LLM_CHAT_ENABLED", UNSET)
 
+        _llm_chat_enabled_roles = d.pop("LLM_CHAT_ENABLED_ROLES", UNSET)
+        llm_chat_enabled_roles: Union[Unset, LLMCHATENABLEDROLESEnum]
+        if isinstance(_llm_chat_enabled_roles, Unset):
+            llm_chat_enabled_roles = UNSET
+        else:
+            llm_chat_enabled_roles = LLMCHATENABLEDROLESEnum(_llm_chat_enabled_roles)
+
         llm_inferences_backend_type = d.pop("LLM_INFERENCES_BACKEND_TYPE", UNSET)
 
         llm_inferences_api_url = d.pop("LLM_INFERENCES_API_URL", UNSET)
@@ -2895,6 +2911,7 @@ class ConstanceSettingsRequest:
             onboarding_bolagsverket_client_secret=onboarding_bolagsverket_client_secret,
             onboarding_breg_api_url=onboarding_breg_api_url,
             llm_chat_enabled=llm_chat_enabled,
+            llm_chat_enabled_roles=llm_chat_enabled_roles,
             llm_inferences_backend_type=llm_inferences_backend_type,
             llm_inferences_api_url=llm_inferences_api_url,
             llm_inferences_api_token=llm_inferences_api_token,
