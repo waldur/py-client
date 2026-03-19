@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.9-dev.20260319031548
+# Version: 8.0.7-rc.9-dev.20260319102810
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7101,6 +7101,13 @@ Description: Rejects a pending order from the provider's side. This moves the or
 Path parameters:
   - uuid
 Request body: yes
+
+### marketplace_orders_retry
+POST /api/marketplace-orders/{uuid}/retry/
+Summary: Retry an erred order
+Description: Resets an erred order and its resource back to an active state so that the order can be reprocessed.
+Path parameters:
+  - uuid
 
 ### marketplace_orders_set_backend_id
 POST /api/marketplace-orders/{uuid}/set_backend_id/

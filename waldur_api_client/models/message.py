@@ -22,6 +22,7 @@ class Message:
         thread (UUID):
         role (MessageRoleEnum):
         content (str):
+        content_display (str):
         tool_calls (Any):
         sequence_index (int):
         replaces (Union[None, UUID]):
@@ -37,6 +38,7 @@ class Message:
     thread: UUID
     role: MessageRoleEnum
     content: str
+    content_display: str
     tool_calls: Any
     sequence_index: int
     replaces: Union[None, UUID]
@@ -56,6 +58,8 @@ class Message:
         role = self.role.value
 
         content = self.content
+
+        content_display = self.content_display
 
         tool_calls = self.tool_calls
 
@@ -87,6 +91,7 @@ class Message:
                 "thread": thread,
                 "role": role,
                 "content": content,
+                "content_display": content_display,
                 "tool_calls": tool_calls,
                 "sequence_index": sequence_index,
                 "replaces": replaces,
@@ -111,6 +116,8 @@ class Message:
         role = MessageRoleEnum(d.pop("role"))
 
         content = d.pop("content")
+
+        content_display = d.pop("content_display")
 
         tool_calls = d.pop("tool_calls")
 
@@ -148,6 +155,7 @@ class Message:
             thread=thread,
             role=role,
             content=content,
+            content_display=content_display,
             tool_calls=tool_calls,
             sequence_index=sequence_index,
             replaces=replaces,

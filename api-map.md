@@ -1300,6 +1300,7 @@ Module: `waldur_api_client.api.marketplace_orders`
 - `marketplace_orders_offering_retrieve` GET `/api/marketplace-orders/{uuid}/offering/` — Get offering details (path: uuid)
 - `marketplace_orders_reject_by_consumer` POST `/api/marketplace-orders/{uuid}/reject_by_consumer/` — Reject an order (consumer) (path: uuid | request body)
 - `marketplace_orders_reject_by_provider` POST `/api/marketplace-orders/{uuid}/reject_by_provider/` — Reject an order (provider) (path: uuid | request body)
+- `marketplace_orders_retry` POST `/api/marketplace-orders/{uuid}/retry/` — Retry an erred order (path: uuid)
 - `marketplace_orders_set_backend_id` POST `/api/marketplace-orders/{uuid}/set_backend_id/` — Set order backend ID (path: uuid | request body)
 - `marketplace_orders_set_consumer_info` POST `/api/marketplace-orders/{uuid}/set_consumer_info/` — Set consumer info on order (path: uuid | request body)
 - `marketplace_orders_set_provider_info` POST `/api/marketplace-orders/{uuid}/set_provider_info/` — Set provider info on order (path: uuid | request body)
