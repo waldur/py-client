@@ -31,6 +31,7 @@ class ProjectEndDateChangeRequest:
         reviewed_at (Union[None, datetime.datetime]): Timestamp when the review was completed
         reviewed_by_uuid (Union[None, UUID]):
         reviewed_by_full_name (Union[None, str]):
+        comment (Union[None, Unset, str]): Optional comment from the requester
         review_comment (Union[None, Unset, str]): Optional comment provided during review
     """
 
@@ -49,6 +50,7 @@ class ProjectEndDateChangeRequest:
     reviewed_at: Union[None, datetime.datetime]
     reviewed_by_uuid: Union[None, UUID]
     reviewed_by_full_name: Union[None, str]
+    comment: Union[None, Unset, str] = UNSET
     review_comment: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -97,6 +99,12 @@ class ProjectEndDateChangeRequest:
         reviewed_by_full_name: Union[None, str]
         reviewed_by_full_name = self.reviewed_by_full_name
 
+        comment: Union[None, Unset, str]
+        if isinstance(self.comment, Unset):
+            comment = UNSET
+        else:
+            comment = self.comment
+
         review_comment: Union[None, Unset, str]
         if isinstance(self.review_comment, Unset):
             review_comment = UNSET
@@ -124,6 +132,8 @@ class ProjectEndDateChangeRequest:
                 "reviewed_by_full_name": reviewed_by_full_name,
             }
         )
+        if comment is not UNSET:
+            field_dict["comment"] = comment
         if review_comment is not UNSET:
             field_dict["review_comment"] = review_comment
 
@@ -211,6 +221,15 @@ class ProjectEndDateChangeRequest:
 
         reviewed_by_full_name = _parse_reviewed_by_full_name(d.pop("reviewed_by_full_name"))
 
+        def _parse_comment(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        comment = _parse_comment(d.pop("comment", UNSET))
+
         def _parse_review_comment(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -236,6 +255,7 @@ class ProjectEndDateChangeRequest:
             reviewed_at=reviewed_at,
             reviewed_by_uuid=reviewed_by_uuid,
             reviewed_by_full_name=reviewed_by_full_name,
+            comment=comment,
             review_comment=review_comment,
         )
 

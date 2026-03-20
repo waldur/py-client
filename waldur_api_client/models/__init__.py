@@ -1555,7 +1555,6 @@ from .project_digest_preview_response import ProjectDigestPreviewResponse
 from .project_end_date_change_request import ProjectEndDateChangeRequest
 from .project_end_date_change_request_create import ProjectEndDateChangeRequestCreate
 from .project_end_date_change_request_create_request import ProjectEndDateChangeRequestCreateRequest
-from .project_end_date_change_request_request import ProjectEndDateChangeRequestRequest
 from .project_estimated_cost_policy import ProjectEstimatedCostPolicy
 from .project_estimated_cost_policy_request import ProjectEstimatedCostPolicyRequest
 from .project_field_enum import ProjectFieldEnum
@@ -3745,7 +3744,6 @@ __all__ = (
     "ProjectEndDateChangeRequest",
     "ProjectEndDateChangeRequestCreate",
     "ProjectEndDateChangeRequestCreateRequest",
-    "ProjectEndDateChangeRequestRequest",
     "ProjectEstimatedCostPolicy",
     "ProjectEstimatedCostPolicyRequest",
     "ProjectFieldEnum",

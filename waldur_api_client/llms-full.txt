@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.9-dev.20260319122324
+# Version: 8.0.7-rc.9-dev.20260320094843
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -16038,7 +16038,6 @@ Summary: Cancel project end date change request
 Description: Cancel project end date change request. Only the creator can cancel.
 Path parameters:
   - uuid
-Request body: yes
 
 ### project_end_date_change_requests_reject
 POST /api/project-end-date-change-requests/{uuid}/reject/

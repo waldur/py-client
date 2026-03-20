@@ -2588,7 +2588,7 @@ Module: `waldur_api_client.api.project_end_date_change_requests`
 - `project_end_date_change_requests_create` POST `/api/project-end-date-change-requests/` (request body)
 - `project_end_date_change_requests_retrieve` GET `/api/project-end-date-change-requests/{uuid}/` (path: uuid)
 - `project_end_date_change_requests_approve` POST `/api/project-end-date-change-requests/{uuid}/approve/` — Approve project end date change request (path: uuid | request body)
-- `project_end_date_change_requests_cancel` POST `/api/project-end-date-change-requests/{uuid}/cancel/` — Cancel project end date change request (path: uuid | request body)
+- `project_end_date_change_requests_cancel` POST `/api/project-end-date-change-requests/{uuid}/cancel/` — Cancel project end date change request (path: uuid)
 - `project_end_date_change_requests_reject` POST `/api/project-end-date-change-requests/{uuid}/reject/` — Reject project end date change request (path: uuid | request body)
 
 ## project-permissions-reviews
