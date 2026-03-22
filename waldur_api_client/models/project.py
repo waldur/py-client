@@ -60,8 +60,8 @@ class Project:
             sanitized)
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated. Overrides customer-level setting.
-        effective_end_date (Union[Unset, datetime.date]): Effective end date including grace period. After this date,
-            project resources will be terminated.
+        effective_end_date (Union[None, Unset, datetime.date]): Effective end date including grace period. After this
+            date, project resources will be terminated.
         is_in_grace_period (Union[Unset, bool]): True if the project is past its end date but still within the grace
             period.
         user_email_patterns (Union[Unset, Any]):
@@ -104,7 +104,7 @@ class Project:
     termination_metadata: Union[Unset, Any] = UNSET
     staff_notes: Union[Unset, str] = UNSET
     grace_period_days: Union[None, Unset, int] = UNSET
-    effective_end_date: Union[Unset, datetime.date] = UNSET
+    effective_end_date: Union[None, Unset, datetime.date] = UNSET
     is_in_grace_period: Union[Unset, bool] = UNSET
     user_email_patterns: Union[Unset, Any] = UNSET
     user_affiliations: Union[Unset, Any] = UNSET
@@ -243,9 +243,13 @@ class Project:
         else:
             grace_period_days = self.grace_period_days
 
-        effective_end_date: Union[Unset, str] = UNSET
-        if not isinstance(self.effective_end_date, Unset):
+        effective_end_date: Union[None, Unset, str]
+        if isinstance(self.effective_end_date, Unset):
+            effective_end_date = UNSET
+        elif isinstance(self.effective_end_date, datetime.date):
             effective_end_date = self.effective_end_date.isoformat()
+        else:
+            effective_end_date = self.effective_end_date
 
         is_in_grace_period = self.is_in_grace_period
 
@@ -570,12 +574,22 @@ class Project:
 
         grace_period_days = _parse_grace_period_days(d.pop("grace_period_days", UNSET))
 
-        _effective_end_date = d.pop("effective_end_date", UNSET)
-        effective_end_date: Union[Unset, datetime.date]
-        if isinstance(_effective_end_date, Unset):
-            effective_end_date = UNSET
-        else:
-            effective_end_date = isoparse(_effective_end_date).date()
+        def _parse_effective_end_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                effective_end_date_type_0 = isoparse(data).date()
+
+                return effective_end_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        effective_end_date = _parse_effective_end_date(d.pop("effective_end_date", UNSET))
 
         is_in_grace_period = d.pop("is_in_grace_period", UNSET)
 
