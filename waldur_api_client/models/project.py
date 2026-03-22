@@ -46,6 +46,7 @@ class Project:
         end_date (Union[None, Unset, datetime.date]): Project end date. Setting this field requires DELETE_PROJECT
             permission.
         end_date_requested_by (Union[None, Unset, str]):
+        end_date_updated_at (Union[None, Unset, datetime.datetime]): Timestamp of the last end_date change.
         oecd_fos_2007_code (Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]):
         oecd_fos_2007_label (Union[Unset, str]): Human-readable label for the OECD FOS 2007 classification code
         is_industry (Union[Unset, bool]):
@@ -91,6 +92,7 @@ class Project:
     start_date: Union[None, Unset, datetime.date] = UNSET
     end_date: Union[None, Unset, datetime.date] = UNSET
     end_date_requested_by: Union[None, Unset, str] = UNSET
+    end_date_updated_at: Union[None, Unset, datetime.datetime] = UNSET
     oecd_fos_2007_code: Union[BlankEnum, None, OecdFos2007CodeEnum, Unset] = UNSET
     oecd_fos_2007_label: Union[Unset, str] = UNSET
     is_industry: Union[Unset, bool] = UNSET
@@ -188,6 +190,14 @@ class Project:
             end_date_requested_by = UNSET
         else:
             end_date_requested_by = self.end_date_requested_by
+
+        end_date_updated_at: Union[None, Unset, str]
+        if isinstance(self.end_date_updated_at, Unset):
+            end_date_updated_at = UNSET
+        elif isinstance(self.end_date_updated_at, datetime.datetime):
+            end_date_updated_at = self.end_date_updated_at.isoformat()
+        else:
+            end_date_updated_at = self.end_date_updated_at
 
         oecd_fos_2007_code: Union[None, Unset, str]
         if isinstance(self.oecd_fos_2007_code, Unset):
@@ -302,6 +312,8 @@ class Project:
             field_dict["end_date"] = end_date
         if end_date_requested_by is not UNSET:
             field_dict["end_date_requested_by"] = end_date_requested_by
+        if end_date_updated_at is not UNSET:
+            field_dict["end_date_updated_at"] = end_date_updated_at
         if oecd_fos_2007_code is not UNSET:
             field_dict["oecd_fos_2007_code"] = oecd_fos_2007_code
         if oecd_fos_2007_label is not UNSET:
@@ -470,6 +482,23 @@ class Project:
 
         end_date_requested_by = _parse_end_date_requested_by(d.pop("end_date_requested_by", UNSET))
 
+        def _parse_end_date_updated_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                end_date_updated_at_type_0 = isoparse(data)
+
+                return end_date_updated_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        end_date_updated_at = _parse_end_date_updated_at(d.pop("end_date_updated_at", UNSET))
+
         def _parse_oecd_fos_2007_code(data: object) -> Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]:
             if data is None:
                 return data
@@ -600,6 +629,7 @@ class Project:
             start_date=start_date,
             end_date=end_date,
             end_date_requested_by=end_date_requested_by,
+            end_date_updated_at=end_date_updated_at,
             oecd_fos_2007_code=oecd_fos_2007_code,
             oecd_fos_2007_label=oecd_fos_2007_label,
             is_industry=is_industry,

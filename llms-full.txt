@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.9-dev.20260322031611
+# Version: 8.0.7-rc.9-dev.20260322081427
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8873,10 +8873,18 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_resources_set_end_date
+POST /api/marketplace-provider-resources/{uuid}/set_end_date/
+Summary: Set end date of the resource
+Description: Allows a service provider to set or update the end date for a resource.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_resources_set_end_date_by_provider
 POST /api/marketplace-provider-resources/{uuid}/set_end_date_by_provider/
 Summary: Set end date by provider
-Description: Allows a service provider to set or update the end date for a resource, scheduling it for termination. A notification is sent to the consumer.
+Description: Deprecated: Use set_end_date instead. Allows a service provider to set or update the end date for a resource.
 Path parameters:
   - uuid
 Request body: yes
@@ -8884,7 +8892,7 @@ Request body: yes
 ### marketplace_provider_resources_set_end_date_by_staff
 POST /api/marketplace-provider-resources/{uuid}/set_end_date_by_staff/
 Summary: Set end date of the resource by staff
-Description: Allows a staff user to set or update the end date for a resource, which will schedule it for termination.
+Description: Deprecated: Use set_end_date instead. Allows a staff user to set or update the end date for a resource.
 Path parameters:
   - uuid
 Request body: yes
@@ -9516,10 +9524,18 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_resources_set_end_date
+POST /api/marketplace-resources/{uuid}/set_end_date/
+Summary: Set end date of the resource
+Description: Allows a consumer (customer owner) to set or update the end date for a resource.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_resources_set_end_date_by_staff
 POST /api/marketplace-resources/{uuid}/set_end_date_by_staff/
 Summary: Set end date of the resource by staff
-Description: Allows a staff user to set or update the end date for a resource, which will schedule it for termination.
+Description: Deprecated: Use set_end_date instead. Allows a staff user to set or update the end date for a resource.
 Path parameters:
   - uuid
 Request body: yes

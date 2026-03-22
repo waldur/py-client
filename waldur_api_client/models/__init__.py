@@ -1836,6 +1836,7 @@ from .resource_backend_metadata_request import ResourceBackendMetadataRequest
 from .resource_current_usages import ResourceCurrentUsages
 from .resource_downscaled_request import ResourceDownscaledRequest
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
+from .resource_end_date_request import ResourceEndDateRequest
 from .resource_field_enum import ResourceFieldEnum
 from .resource_keycloak_scopes_request import ResourceKeycloakScopesRequest
 from .resource_limit_period import ResourceLimitPeriod
@@ -4003,6 +4004,7 @@ __all__ = (
     "ResourceCurrentUsages",
     "ResourceDownscaledRequest",
     "ResourceEndDateByProviderRequest",
+    "ResourceEndDateRequest",
     "ResourceFieldEnum",
     "ResourceKeycloakScopesRequest",
     "ResourceLimitPeriod",

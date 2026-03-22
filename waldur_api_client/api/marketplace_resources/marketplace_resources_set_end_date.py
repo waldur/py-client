@@ -6,20 +6,20 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
+from ...models.resource_end_date_request import ResourceEndDateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ResourceEndDateByProviderRequest,
+    body: ResourceEndDateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/marketplace-provider-resources/{uuid}/set_end_date_by_staff/",
+        "url": f"/api/marketplace-resources/{uuid}/set_end_date/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -51,16 +51,15 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceEndDateByProviderRequest,
+    body: ResourceEndDateRequest,
 ) -> Response[Any]:
-    """Set end date of the resource by staff
+    """Set end date of the resource
 
-     Deprecated: Use set_end_date instead. Allows a staff user to set or update the end date for a
-    resource.
+     Allows a consumer (customer owner) to set or update the end date for a resource.
 
     Args:
         uuid (UUID):
-        body (ResourceEndDateByProviderRequest):
+        body (ResourceEndDateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -86,16 +85,15 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceEndDateByProviderRequest,
+    body: ResourceEndDateRequest,
 ) -> Response[Any]:
-    """Set end date of the resource by staff
+    """Set end date of the resource
 
-     Deprecated: Use set_end_date instead. Allows a staff user to set or update the end date for a
-    resource.
+     Allows a consumer (customer owner) to set or update the end date for a resource.
 
     Args:
         uuid (UUID):
-        body (ResourceEndDateByProviderRequest):
+        body (ResourceEndDateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
