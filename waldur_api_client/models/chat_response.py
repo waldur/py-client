@@ -42,6 +42,8 @@ class ChatResponse:
             status='form'.
         projects (Union[Unset, list[Any]]): Available project options [{name, organization, uuid}]. Present when
             status='project_form'.
+        offerings (Union[Unset, list[Any]]): Available offering options [{uuid, name}]. Present when
+            status='offering_form'.
     """
 
     k: Union[Unset, str] = UNSET
@@ -67,6 +69,7 @@ class ChatResponse:
     flavors: Union[Unset, list[Any]] = UNSET
     images: Union[Unset, list[Any]] = UNSET
     projects: Union[Unset, list[Any]] = UNSET
+    offerings: Union[Unset, list[Any]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -128,6 +131,10 @@ class ChatResponse:
         if not isinstance(self.projects, Unset):
             projects = self.projects
 
+        offerings: Union[Unset, list[Any]] = UNSET
+        if not isinstance(self.offerings, Unset):
+            offerings = self.offerings
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -177,6 +184,8 @@ class ChatResponse:
             field_dict["images"] = images
         if projects is not UNSET:
             field_dict["projects"] = projects
+        if offerings is not UNSET:
+            field_dict["offerings"] = offerings
 
         return field_dict
 
@@ -236,6 +245,8 @@ class ChatResponse:
 
         projects = cast(list[Any], d.pop("projects", UNSET))
 
+        offerings = cast(list[Any], d.pop("offerings", UNSET))
+
         chat_response = cls(
             k=k,
             c=c,
@@ -260,6 +271,7 @@ class ChatResponse:
             flavors=flavors,
             images=images,
             projects=projects,
+            offerings=offerings,
         )
 
         chat_response.additional_properties = d

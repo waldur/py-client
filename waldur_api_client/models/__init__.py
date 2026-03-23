@@ -1542,6 +1542,7 @@ from .project import Project
 from .project_answer import ProjectAnswer
 from .project_attach_request import ProjectAttachRequest
 from .project_classification_summary import ProjectClassificationSummary
+from .project_creation_trend import ProjectCreationTrend
 from .project_credit import ProjectCredit
 from .project_credit_o_enum import ProjectCreditOEnum
 from .project_credit_request import ProjectCreditRequest
@@ -2144,6 +2145,7 @@ from .token_quota_usage_response import TokenQuotaUsageResponse
 from .token_request import TokenRequest
 from .tool_execute_request import ToolExecuteRequest
 from .top_queue import TopQueue
+from .top_service_provider_by_resources import TopServiceProviderByResources
 from .total_customer_cost import TotalCustomerCost
 from .transaction_stats import TransactionStats
 from .trigger_coi_detection_job_type_enum import TriggerCOIDetectionJobTypeEnum
@@ -2189,6 +2191,7 @@ from .user_info import UserInfo
 from .user_info_request import UserInfoRequest
 from .user_job_title_count import UserJobTitleCount
 from .user_language_count import UserLanguageCount
+from .user_nationality_stats import UserNationalityStats
 from .user_offering_consent import UserOfferingConsent
 from .user_offering_consent_create import UserOfferingConsentCreate
 from .user_offering_consent_create_request import UserOfferingConsentCreateRequest
@@ -2200,6 +2203,7 @@ from .user_registration_trend import UserRegistrationTrend
 from .user_request import UserRequest
 from .user_request_form import UserRequestForm
 from .user_request_multipart import UserRequestMultipart
+from .user_residence_country_stats import UserResidenceCountryStats
 from .user_role_create_request import UserRoleCreateRequest
 from .user_role_delete_request import UserRoleDeleteRequest
 from .user_role_details import UserRoleDetails
@@ -3732,6 +3736,7 @@ __all__ = (
     "ProjectAnswer",
     "ProjectAttachRequest",
     "ProjectClassificationSummary",
+    "ProjectCreationTrend",
     "ProjectCredit",
     "ProjectCreditOEnum",
     "ProjectCreditRequest",
@@ -4305,6 +4310,7 @@ __all__ = (
     "TokenRequest",
     "ToolExecuteRequest",
     "TopQueue",
+    "TopServiceProviderByResources",
     "ToSConsentDashboard",
     "TotalCustomerCost",
     "TransactionStats",
@@ -4352,6 +4358,7 @@ __all__ = (
     "UserJobTitleCount",
     "UserLanguageCount",
     "UsernameGenerationPolicyEnum",
+    "UserNationalityStats",
     "UserOfferingConsent",
     "UserOfferingConsentCreate",
     "UserOfferingConsentCreateRequest",
@@ -4363,6 +4370,7 @@ __all__ = (
     "UserRequest",
     "UserRequestForm",
     "UserRequestMultipart",
+    "UserResidenceCountryStats",
     "UserRoleCreateRequest",
     "UserRoleDeleteRequest",
     "UserRoleDetails",

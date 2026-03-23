@@ -5,20 +5,17 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.offering_stats import OfferingStats
+from ...models.user_nationality_stats import UserNationalityStats
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    limit: Union[Unset, int] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["limit"] = limit
 
     params["page"] = page
 
@@ -28,21 +25,23 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/marketplace-stats/count_active_resources_grouped_by_offering/",
+        "url": "/api/marketplace-stats/user_nationality/",
         "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["OfferingStats"]:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> list["UserNationalityStats"]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = OfferingStats.from_dict(response_200_item_data)
+            response_200_item = UserNationalityStats.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -52,7 +51,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["OfferingStats"]]:
+) -> Response[list["UserNationalityStats"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,14 +63,12 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Response[list["OfferingStats"]]:
-    """Count active resources grouped by offering.
+) -> Response[list["UserNationalityStats"]]:
+    """Return user count per nationality.
 
     Args:
-        limit (Union[Unset, int]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -80,11 +77,10 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['OfferingStats']]
+        Response[list['UserNationalityStats']]
     """
 
     kwargs = _get_kwargs(
-        limit=limit,
         page=page,
         page_size=page_size,
     )
@@ -99,14 +95,12 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> list["OfferingStats"]:
-    """Count active resources grouped by offering.
+) -> list["UserNationalityStats"]:
+    """Return user count per nationality.
 
     Args:
-        limit (Union[Unset, int]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -115,12 +109,11 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['OfferingStats']
+        list['UserNationalityStats']
     """
 
     return sync_detailed(
         client=client,
-        limit=limit,
         page=page,
         page_size=page_size,
     ).parsed
@@ -129,14 +122,12 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Response[list["OfferingStats"]]:
-    """Count active resources grouped by offering.
+) -> Response[list["UserNationalityStats"]]:
+    """Return user count per nationality.
 
     Args:
-        limit (Union[Unset, int]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -145,11 +136,10 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['OfferingStats']]
+        Response[list['UserNationalityStats']]
     """
 
     kwargs = _get_kwargs(
-        limit=limit,
         page=page,
         page_size=page_size,
     )
@@ -162,14 +152,12 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> list["OfferingStats"]:
-    """Count active resources grouped by offering.
+) -> list["UserNationalityStats"]:
+    """Return user count per nationality.
 
     Args:
-        limit (Union[Unset, int]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -178,13 +166,12 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['OfferingStats']
+        list['UserNationalityStats']
     """
 
     return (
         await asyncio_detailed(
             client=client,
-            limit=limit,
             page=page,
             page_size=page_size,
         )
@@ -194,8 +181,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-) -> list["OfferingStats"]:
+) -> list["UserNationalityStats"]:
     """Get All Pages
 
      Fetch all pages of paginated results. This function automatically handles pagination
@@ -204,23 +190,20 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        limit (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['OfferingStats']: Combined results from all pages
+        list['UserNationalityStats']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[OfferingStats] = []
+    all_results: list[UserNationalityStats] = []
 
     # Get initial request kwargs
-    kwargs = _get_kwargs(
-        limit=limit,
-    )
+    kwargs = _get_kwargs()
 
     # Set page_size to maximum
     if "params" not in kwargs:
@@ -267,8 +250,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-) -> list["OfferingStats"]:
+) -> list["UserNationalityStats"]:
     """Get All Pages (Async)
 
      Fetch all pages of paginated results asynchronously. This function automatically handles pagination
@@ -277,23 +259,20 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        limit (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['OfferingStats']: Combined results from all pages
+        list['UserNationalityStats']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[OfferingStats] = []
+    all_results: list[UserNationalityStats] = []
 
     # Get initial request kwargs
-    kwargs = _get_kwargs(
-        limit=limit,
-    )
+    kwargs = _get_kwargs()
 
     # Set page_size to maximum
     if "params" not in kwargs:

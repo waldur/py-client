@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.10-dev.20260323090617
+# Version: 8.0.7-rc.11-dev.20260323201520
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -11065,11 +11065,15 @@ Description: Get number of items in the collection matching the request paramete
 GET /api/marketplace-stats/count_active_resources_grouped_by_offering/
 Summary: Count active resources grouped by offering
 Description: Count active resources grouped by offering.
+Query parameters (1):
+  - limit — Limit number of results (e.g. top N offerings). No limit by default.
 
 ### marketplace_stats_count_active_resources_grouped_by_offering_count
 HEAD /api/marketplace-stats/count_active_resources_grouped_by_offering/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - limit — Limit number of results (e.g. top N offerings). No limit by default.
 
 ### marketplace_stats_count_active_resources_grouped_by_offering_country_list
 GET /api/marketplace-stats/count_active_resources_grouped_by_offering_country/
@@ -11321,6 +11325,16 @@ HEAD /api/marketplace-stats/project_classification_summary/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
 
+### marketplace_stats_project_creation_trend_list
+GET /api/marketplace-stats/project_creation_trend/
+Summary: Return project creation counts grouped by month
+Description: Return project creation counts grouped by month.
+
+### marketplace_stats_project_creation_trend_count
+HEAD /api/marketplace-stats/project_creation_trend/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
 ### marketplace_stats_projects_limits_grouped_by_industry_flag_retrieve
 GET /api/marketplace-stats/projects_limits_grouped_by_industry_flag/
 Summary: Group project limits by industry flag
@@ -11403,6 +11417,16 @@ Description: Get number of items in the collection matching the request paramete
 Query parameters (1):
   - provider_uuid (required) — Service provider UUID.
 
+### marketplace_stats_resource_creation_trend_list
+GET /api/marketplace-stats/resource_creation_trend/
+Summary: Return resource creation counts grouped by month
+Description: Return resource creation counts grouped by month.
+
+### marketplace_stats_resource_creation_trend_count
+HEAD /api/marketplace-stats/resource_creation_trend/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
 ### marketplace_stats_resource_provisioning_stats_list
 GET /api/marketplace-stats/resource_provisioning_stats/
 Summary: Get resource provisioning statistics
@@ -11483,6 +11507,20 @@ Query parameters (2):
   - billing_period — Billing period in YYYY-MM format. Defaults to current month.
   - provider_uuid — Filter by service provider UUID.
 
+### marketplace_stats_top_service_providers_by_resources_list
+GET /api/marketplace-stats/top_service_providers_by_resources/
+Summary: Return top service providers by number of active resources
+Description: Return top service providers by number of active resources.
+Query parameters (1):
+  - limit — Number of top providers to return. Default is 5.
+
+### marketplace_stats_top_service_providers_by_resources_count
+HEAD /api/marketplace-stats/top_service_providers_by_resources/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - limit — Number of top providers to return. Default is 5.
+
 ### marketplace_stats_total_cost_of_active_resources_per_offering_list
 GET /api/marketplace-stats/total_cost_of_active_resources_per_offering/
 Summary: Total cost of active resources per offering
@@ -11533,6 +11571,16 @@ HEAD /api/marketplace-stats/user_job_title_count/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
 
+### marketplace_stats_user_nationality_list
+GET /api/marketplace-stats/user_nationality/
+Summary: Return user count per nationality
+Description: Return user count per nationality.
+
+### marketplace_stats_user_nationality_count
+HEAD /api/marketplace-stats/user_nationality/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
 ### marketplace_stats_user_organization_count_list
 GET /api/marketplace-stats/user_organization_count/
 Summary: Return user count grouped by organization
@@ -11550,6 +11598,16 @@ Description: Return user count grouped by organization type (SCHAC URN).
 
 ### marketplace_stats_user_organization_type_count_count
 HEAD /api/marketplace-stats/user_organization_type_count/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### marketplace_stats_user_residence_country_list
+GET /api/marketplace-stats/user_residence_country/
+Summary: Return user count per residence country
+Description: Return user count per residence country.
+
+### marketplace_stats_user_residence_country_count
+HEAD /api/marketplace-stats/user_residence_country/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
 

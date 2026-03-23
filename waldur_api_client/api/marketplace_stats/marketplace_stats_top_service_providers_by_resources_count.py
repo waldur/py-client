@@ -26,7 +26,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "head",
-        "url": "/api/marketplace-stats/count_active_resources_grouped_by_offering/",
+        "url": "/api/marketplace-stats/top_service_providers_by_resources/",
         "params": params,
     }
 

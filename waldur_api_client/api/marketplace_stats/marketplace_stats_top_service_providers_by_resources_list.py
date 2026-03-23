@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.offering_stats import OfferingStats
+from ...models.top_service_provider_by_resources import TopServiceProviderByResources
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -28,21 +28,23 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/marketplace-stats/count_active_resources_grouped_by_offering/",
+        "url": "/api/marketplace-stats/top_service_providers_by_resources/",
         "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["OfferingStats"]:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> list["TopServiceProviderByResources"]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = OfferingStats.from_dict(response_200_item_data)
+            response_200_item = TopServiceProviderByResources.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -52,7 +54,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["OfferingStats"]]:
+) -> Response[list["TopServiceProviderByResources"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,8 +69,8 @@ def sync_detailed(
     limit: Union[Unset, int] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Response[list["OfferingStats"]]:
-    """Count active resources grouped by offering.
+) -> Response[list["TopServiceProviderByResources"]]:
+    """Return top service providers by number of active resources.
 
     Args:
         limit (Union[Unset, int]):
@@ -80,7 +82,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['OfferingStats']]
+        Response[list['TopServiceProviderByResources']]
     """
 
     kwargs = _get_kwargs(
@@ -102,8 +104,8 @@ def sync(
     limit: Union[Unset, int] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> list["OfferingStats"]:
-    """Count active resources grouped by offering.
+) -> list["TopServiceProviderByResources"]:
+    """Return top service providers by number of active resources.
 
     Args:
         limit (Union[Unset, int]):
@@ -115,7 +117,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['OfferingStats']
+        list['TopServiceProviderByResources']
     """
 
     return sync_detailed(
@@ -132,8 +134,8 @@ async def asyncio_detailed(
     limit: Union[Unset, int] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> Response[list["OfferingStats"]]:
-    """Count active resources grouped by offering.
+) -> Response[list["TopServiceProviderByResources"]]:
+    """Return top service providers by number of active resources.
 
     Args:
         limit (Union[Unset, int]):
@@ -145,7 +147,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['OfferingStats']]
+        Response[list['TopServiceProviderByResources']]
     """
 
     kwargs = _get_kwargs(
@@ -165,8 +167,8 @@ async def asyncio(
     limit: Union[Unset, int] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-) -> list["OfferingStats"]:
-    """Count active resources grouped by offering.
+) -> list["TopServiceProviderByResources"]:
+    """Return top service providers by number of active resources.
 
     Args:
         limit (Union[Unset, int]):
@@ -178,7 +180,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['OfferingStats']
+        list['TopServiceProviderByResources']
     """
 
     return (
@@ -195,7 +197,7 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     limit: Union[Unset, int] = UNSET,
-) -> list["OfferingStats"]:
+) -> list["TopServiceProviderByResources"]:
     """Get All Pages
 
      Fetch all pages of paginated results. This function automatically handles pagination
@@ -211,11 +213,11 @@ def sync_all(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['OfferingStats']: Combined results from all pages
+        list['TopServiceProviderByResources']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[OfferingStats] = []
+    all_results: list[TopServiceProviderByResources] = []
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
@@ -268,7 +270,7 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     limit: Union[Unset, int] = UNSET,
-) -> list["OfferingStats"]:
+) -> list["TopServiceProviderByResources"]:
     """Get All Pages (Async)
 
      Fetch all pages of paginated results asynchronously. This function automatically handles pagination
@@ -284,11 +286,11 @@ async def asyncio_all(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['OfferingStats']: Combined results from all pages
+        list['TopServiceProviderByResources']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[OfferingStats] = []
+    all_results: list[TopServiceProviderByResources] = []
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
