@@ -41,7 +41,7 @@ class CallReviewerPool:
         decline_reason (str):
         current_assignments (int):
         invited_by_name (str):
-        invitation_token (str):
+        invitation_link (Union[None, str]):
         invitation_expires_at (Union[None, datetime.datetime]):
         created (datetime.datetime):
         coi_count (int): Count total COIs for this reviewer in this call.
@@ -80,7 +80,7 @@ class CallReviewerPool:
     decline_reason: str
     current_assignments: int
     invited_by_name: str
-    invitation_token: str
+    invitation_link: Union[None, str]
     invitation_expires_at: Union[None, datetime.datetime]
     created: datetime.datetime
     coi_count: int
@@ -145,7 +145,8 @@ class CallReviewerPool:
 
         invited_by_name = self.invited_by_name
 
-        invitation_token = self.invitation_token
+        invitation_link: Union[None, str]
+        invitation_link = self.invitation_link
 
         invitation_expires_at: Union[None, str]
         if isinstance(self.invitation_expires_at, datetime.datetime):
@@ -207,7 +208,7 @@ class CallReviewerPool:
                 "decline_reason": decline_reason,
                 "current_assignments": current_assignments,
                 "invited_by_name": invited_by_name,
-                "invitation_token": invitation_token,
+                "invitation_link": invitation_link,
                 "invitation_expires_at": invitation_expires_at,
                 "created": created,
                 "coi_count": coi_count,
@@ -310,7 +311,12 @@ class CallReviewerPool:
 
         invited_by_name = d.pop("invited_by_name")
 
-        invitation_token = d.pop("invitation_token")
+        def _parse_invitation_link(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        invitation_link = _parse_invitation_link(d.pop("invitation_link"))
 
         def _parse_invitation_expires_at(data: object) -> Union[None, datetime.datetime]:
             if data is None:
@@ -390,7 +396,7 @@ class CallReviewerPool:
             decline_reason=decline_reason,
             current_assignments=current_assignments,
             invited_by_name=invited_by_name,
-            invitation_token=invitation_token,
+            invitation_link=invitation_link,
             invitation_expires_at=invitation_expires_at,
             created=created,
             coi_count=coi_count,
