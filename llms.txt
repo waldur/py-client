@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.0.7-rc.9-dev.20260322224930).
+> Auto-generated Python SDK for the Waldur API (version 8.0.7-rc.10-dev.20260323031600).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
