@@ -32,6 +32,7 @@ class ENABLEDREPORTINGSCREENSEnum(str, Enum):
     USAGE_MONITORING = "usage-monitoring"
     USAGE_TRENDS = "usage-trends"
     USER_AFFILIATIONS = "user-affiliations"
+    USER_ANALYTICS = "user-analytics"
     USER_DEMOGRAPHICS = "user-demographics"
     USER_ORGANIZATIONS = "user-organizations"
     USER_ROLES = "user-roles"
