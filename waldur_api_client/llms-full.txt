@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.12-dev.20260324031530
+# Version: 8.0.7-rc.12-dev.20260324102534
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8869,6 +8869,14 @@ Request body: yes
 POST /api/marketplace-provider-resources/{uuid}/set_downscaled/
 Summary: Set downscaled flag for resource
 Description: Sets the 'downscaled' flag for a resource. Requires staff permissions.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resources_set_effective_id
+POST /api/marketplace-provider-resources/{uuid}/set_effective_id/
+Summary: Set resource effective ID
+Description: Allows a service provider to set or update the effective ID for a resource. The effective ID represents the backend identifier assigned by a downstream provider in federated Waldur deployments.
 Path parameters:
   - uuid
 Request body: yes

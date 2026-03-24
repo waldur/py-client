@@ -1481,6 +1481,7 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_set_backend_id` POST `/api/marketplace-provider-resources/{uuid}/set_backend_id/` — Set resource backend ID (path: uuid | request body)
 - `marketplace_provider_resources_set_backend_metadata` POST `/api/marketplace-provider-resources/{uuid}/set_backend_metadata/` — Set resource backend metadata (path: uuid | request body)
 - `marketplace_provider_resources_set_downscaled` POST `/api/marketplace-provider-resources/{uuid}/set_downscaled/` — Set downscaled flag for resource (path: uuid | request body)
+- `marketplace_provider_resources_set_effective_id` POST `/api/marketplace-provider-resources/{uuid}/set_effective_id/` — Set resource effective ID (path: uuid | request body)
 - `marketplace_provider_resources_set_end_date` POST `/api/marketplace-provider-resources/{uuid}/set_end_date/` — Set end date of the resource (path: uuid | request body)
 - `marketplace_provider_resources_set_end_date_by_provider` POST `/api/marketplace-provider-resources/{uuid}/set_end_date_by_provider/` — Set end date by provider (path: uuid | request body)
 - `marketplace_provider_resources_set_end_date_by_staff` POST `/api/marketplace-provider-resources/{uuid}/set_end_date_by_staff/` — Set end date of the resource by staff (path: uuid | request body)
