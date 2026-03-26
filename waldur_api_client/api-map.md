@@ -830,6 +830,7 @@ Module: `waldur_api_client.api.hooks_web`
 Module: `waldur_api_client.api.identity_bridge`
 
 - `identity_bridge` POST `/api/identity-bridge/` — Push user attributes from an ISD (request body)
+- `identity_bridge_allowed_fields_retrieve` GET `/api/identity-bridge/allowed-fields/` — Get allowed Identity Bridge fields (no params)
 - `identity_bridge_remove` POST `/api/identity-bridge/remove/` — Remove a user from an ISD (request body)
 - `identity_bridge_stats_retrieve` GET `/api/identity-bridge/stats/` — Get Identity Bridge statistics (no params)
 
