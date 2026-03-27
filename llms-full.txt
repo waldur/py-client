@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.14-dev.20260326091343
+# Version: 8.0.7-rc.16-dev.20260327211729
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10889,7 +10889,7 @@ Query parameters (13):
   - o — Ordering
   - offering_uuid
   - package_uuid
-  - path
+  - path — Filter targets by location/path (case-insensitive partial match)
   - target_name — Filter targets by name (e.g., x86_64, aarch64)
   - target_subtype — Filter targets by subtype (e.g., microarchitecture, distribution)
   - target_type — Filter targets by type (e.g., architecture, platform, variant)
@@ -10908,7 +10908,7 @@ Query parameters (13):
   - o — Ordering
   - offering_uuid
   - package_uuid
-  - path
+  - path — Filter targets by location/path (case-insensitive partial match)
   - target_name — Filter targets by name (e.g., x86_64, aarch64)
   - target_subtype — Filter targets by subtype (e.g., microarchitecture, distribution)
   - target_type — Filter targets by type (e.g., architecture, platform, variant)
