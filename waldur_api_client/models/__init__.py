@@ -890,6 +890,8 @@ from .marketplace_resources_suggest_name_response_200 import MarketplaceResource
 from .marketplace_service_provider_user import MarketplaceServiceProviderUser
 from .marketplace_service_provider_user_field_enum import MarketplaceServiceProviderUserFieldEnum
 from .marketplace_service_provider_user_o_enum import MarketplaceServiceProviderUserOEnum
+from .marketplacecardstyle_enum import MARKETPLACECARDSTYLEEnum
+from .marketplacelayoutmode_enum import MARKETPLACELAYOUTMODEEnum
 from .matching_algorithm import MatchingAlgorithm
 from .matching_configuration import MatchingConfiguration
 from .merged_plugin_options import MergedPluginOptions
@@ -3093,6 +3095,7 @@ __all__ = (
     "ManagedRancherCreateNodeRequest",
     "Mapping",
     "MappingRequest",
+    "MARKETPLACECARDSTYLEEnum",
     "MarketplaceCategory",
     "MarketplaceCategoryFieldEnum",
     "MarketplaceCategoryRequest",
@@ -3100,6 +3103,7 @@ __all__ = (
     "MarketplaceCategoryRequestMultipart",
     "MarketplaceCustomerStats",
     "MarketplaceGlobalCategoriesRetrieveResponse200",
+    "MARKETPLACELAYOUTMODEEnum",
     "MarketplaceOpenPortalCreateOrderAttributes",
     "MarketplaceOpenPortalRemoteCreateOrderAttributes",
     "MarketplaceOrdersSetBackendIdResponse200",

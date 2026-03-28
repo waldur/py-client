@@ -13,6 +13,8 @@ from ..models.enabledreportingscreens_enum import ENABLEDREPORTINGSCREENSEnum
 from ..models.federatedidentitydeactivationpolicy_enum import FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum
 from ..models.fontfamily_enum import FONTFAMILYEnum
 from ..models.loginpagelayout_enum import LOGINPAGELAYOUTEnum
+from ..models.marketplacecardstyle_enum import MARKETPLACECARDSTYLEEnum
+from ..models.marketplacelayoutmode_enum import MARKETPLACELAYOUTMODEEnum
 from ..models.notify_system_enum import NotifySystemEnum
 from ..models.offering_type_enum import OfferingTypeEnum
 from ..models.onboarding_validation_enum import OnboardingValidationEnum
@@ -54,6 +56,8 @@ class ConstanceSettingsRequest:
         notify_about_resource_change (Union[Unset, bool]):
         disable_sending_notifications_about_resource_update (Union[Unset, bool]):
         marketplace_landing_page (Union[Unset, str]):
+        marketplace_layout_mode (Union[Unset, MARKETPLACELAYOUTMODEEnum]):
+        marketplace_card_style (Union[Unset, MARKETPLACECARDSTYLEEnum]):
         enable_stale_resource_notifications (Union[Unset, bool]):
         enable_issues_for_user_ssh_key_changes (Union[Unset, bool]):
         telemetry_url (Union[Unset, str]):
@@ -300,6 +304,8 @@ class ConstanceSettingsRequest:
     notify_about_resource_change: Union[Unset, bool] = UNSET
     disable_sending_notifications_about_resource_update: Union[Unset, bool] = UNSET
     marketplace_landing_page: Union[Unset, str] = UNSET
+    marketplace_layout_mode: Union[Unset, MARKETPLACELAYOUTMODEEnum] = UNSET
+    marketplace_card_style: Union[Unset, MARKETPLACECARDSTYLEEnum] = UNSET
     enable_stale_resource_notifications: Union[Unset, bool] = UNSET
     enable_issues_for_user_ssh_key_changes: Union[Unset, bool] = UNSET
     telemetry_url: Union[Unset, str] = UNSET
@@ -566,6 +572,14 @@ class ConstanceSettingsRequest:
         disable_sending_notifications_about_resource_update = self.disable_sending_notifications_about_resource_update
 
         marketplace_landing_page = self.marketplace_landing_page
+
+        marketplace_layout_mode: Union[Unset, str] = UNSET
+        if not isinstance(self.marketplace_layout_mode, Unset):
+            marketplace_layout_mode = self.marketplace_layout_mode.value
+
+        marketplace_card_style: Union[Unset, str] = UNSET
+        if not isinstance(self.marketplace_card_style, Unset):
+            marketplace_card_style = self.marketplace_card_style.value
 
         enable_stale_resource_notifications = self.enable_stale_resource_notifications
 
@@ -1284,6 +1298,10 @@ class ConstanceSettingsRequest:
             )
         if marketplace_landing_page is not UNSET:
             field_dict["MARKETPLACE_LANDING_PAGE"] = marketplace_landing_page
+        if marketplace_layout_mode is not UNSET:
+            field_dict["MARKETPLACE_LAYOUT_MODE"] = marketplace_layout_mode
+        if marketplace_card_style is not UNSET:
+            field_dict["MARKETPLACE_CARD_STYLE"] = marketplace_card_style
         if enable_stale_resource_notifications is not UNSET:
             field_dict["ENABLE_STALE_RESOURCE_NOTIFICATIONS"] = enable_stale_resource_notifications
         if enable_issues_for_user_ssh_key_changes is not UNSET:
@@ -1794,6 +1812,20 @@ class ConstanceSettingsRequest:
         )
 
         marketplace_landing_page = d.pop("MARKETPLACE_LANDING_PAGE", UNSET)
+
+        _marketplace_layout_mode = d.pop("MARKETPLACE_LAYOUT_MODE", UNSET)
+        marketplace_layout_mode: Union[Unset, MARKETPLACELAYOUTMODEEnum]
+        if isinstance(_marketplace_layout_mode, Unset):
+            marketplace_layout_mode = UNSET
+        else:
+            marketplace_layout_mode = MARKETPLACELAYOUTMODEEnum(_marketplace_layout_mode)
+
+        _marketplace_card_style = d.pop("MARKETPLACE_CARD_STYLE", UNSET)
+        marketplace_card_style: Union[Unset, MARKETPLACECARDSTYLEEnum]
+        if isinstance(_marketplace_card_style, Unset):
+            marketplace_card_style = UNSET
+        else:
+            marketplace_card_style = MARKETPLACECARDSTYLEEnum(_marketplace_card_style)
 
         enable_stale_resource_notifications = d.pop("ENABLE_STALE_RESOURCE_NOTIFICATIONS", UNSET)
 
@@ -2736,6 +2768,8 @@ class ConstanceSettingsRequest:
             notify_about_resource_change=notify_about_resource_change,
             disable_sending_notifications_about_resource_update=disable_sending_notifications_about_resource_update,
             marketplace_landing_page=marketplace_landing_page,
+            marketplace_layout_mode=marketplace_layout_mode,
+            marketplace_card_style=marketplace_card_style,
             enable_stale_resource_notifications=enable_stale_resource_notifications,
             enable_issues_for_user_ssh_key_changes=enable_issues_for_user_ssh_key_changes,
             telemetry_url=telemetry_url,
