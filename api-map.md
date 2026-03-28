@@ -1347,8 +1347,8 @@ Module: `waldur_api_client.api.marketplace_plugins`
 ## marketplace-project-estimated-cost-policies
 Module: `waldur_api_client.api.marketplace_project_estimated_cost_policies`
 
-- `marketplace_project_estimated_cost_policies_list` GET `/api/marketplace-project-estimated-cost-policies/` (6 query params)
-- `marketplace_project_estimated_cost_policies_count` HEAD `/api/marketplace-project-estimated-cost-policies/` — Get number of items in the collection matching the request parameters (6 query params)
+- `marketplace_project_estimated_cost_policies_list` GET `/api/marketplace-project-estimated-cost-policies/` (7 query params)
+- `marketplace_project_estimated_cost_policies_count` HEAD `/api/marketplace-project-estimated-cost-policies/` — Get number of items in the collection matching the request parameters (7 query params)
 - `marketplace_project_estimated_cost_policies_create` POST `/api/marketplace-project-estimated-cost-policies/` (request body)
 - `marketplace_project_estimated_cost_policies_actions_retrieve` GET `/api/marketplace-project-estimated-cost-policies/actions/` (no params)
 - `marketplace_project_estimated_cost_policies_actions_count` HEAD `/api/marketplace-project-estimated-cost-policies/actions/` — Get number of items in the collection matching the request parameters (no params)

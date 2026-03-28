@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.16-dev.20260327211729
+# Version: 8.0.7-rc.16-dev.20260328031824
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7385,11 +7385,12 @@ Description: Returns a list of all registered marketplace plugins (offering type
 
 ### marketplace_project_estimated_cost_policies_list
 GET /api/marketplace-project-estimated-cost-policies/
-Query parameters (6):
+Query parameters (7):
   - customer
   - customer_uuid
   - project
   - project_uuid
+  - query
   - scope
   - scope_uuid
 
@@ -7397,11 +7398,12 @@ Query parameters (6):
 HEAD /api/marketplace-project-estimated-cost-policies/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (6):
+Query parameters (7):
   - customer
   - customer_uuid
   - project
   - project_uuid
+  - query
   - scope
   - scope_uuid
 
