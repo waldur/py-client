@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.19-dev.20260330082804
+# Version: 8.0.7-rc.21-dev.20260330211558
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2275,6 +2275,66 @@ Query parameters (4):
 ### call_managing_organisations_create
 POST /api/call-managing-organisations/
 Request body: yes
+
+### call_managing_organisations_global_stats_performance_list
+GET /api/call-managing-organisations/global_stats_performance/
+Summary: Get call performance statistics across all calls
+Description: Get call performance statistics across all calls.
+Query parameters (4):
+  - customer
+  - customer_keyword
+  - customer_uuid
+  - o — Ordering
+
+### call_managing_organisations_global_stats_performance_count
+HEAD /api/call-managing-organisations/global_stats_performance/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - customer
+  - customer_keyword
+  - customer_uuid
+  - o — Ordering
+
+### call_managing_organisations_global_stats_resource_demand_list
+GET /api/call-managing-organisations/global_stats_resource_demand/
+Summary: Get resource demand statistics across all calls and offerings
+Description: Get resource demand statistics across all calls and offerings.
+Query parameters (4):
+  - customer
+  - customer_keyword
+  - customer_uuid
+  - o — Ordering
+
+### call_managing_organisations_global_stats_resource_demand_count
+HEAD /api/call-managing-organisations/global_stats_resource_demand/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - customer
+  - customer_keyword
+  - customer_uuid
+  - o — Ordering
+
+### call_managing_organisations_global_stats_review_progress_list
+GET /api/call-managing-organisations/global_stats_review_progress/
+Summary: Get review progress statistics across all reviewers
+Description: Get review progress statistics across all reviewers.
+Query parameters (4):
+  - customer
+  - customer_keyword
+  - customer_uuid
+  - o — Ordering
+
+### call_managing_organisations_global_stats_review_progress_count
+HEAD /api/call-managing-organisations/global_stats_review_progress/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - customer
+  - customer_keyword
+  - customer_uuid
+  - o — Ordering
 
 ### call_managing_organisations_retrieve
 GET /api/call-managing-organisations/{uuid}/

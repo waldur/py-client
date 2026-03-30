@@ -250,6 +250,7 @@ from .call_managing_organisation_request import CallManagingOrganisationRequest
 from .call_managing_organisation_request_form import CallManagingOrganisationRequestForm
 from .call_managing_organisation_request_multipart import CallManagingOrganisationRequestMultipart
 from .call_managing_organisation_stat import CallManagingOrganisationStat
+from .call_performance_stat import CallPerformanceStat
 from .call_resource_template import CallResourceTemplate
 from .call_resource_template_request import CallResourceTemplateRequest
 from .call_reviewer_pool import CallReviewerPool
@@ -1838,6 +1839,9 @@ from .resource_attributes import ResourceAttributes
 from .resource_backend_id_request import ResourceBackendIDRequest
 from .resource_backend_metadata_request import ResourceBackendMetadataRequest
 from .resource_current_usages import ResourceCurrentUsages
+from .resource_demand_stat import ResourceDemandStat
+from .resource_demand_stat_total_approved_limits import ResourceDemandStatTotalApprovedLimits
+from .resource_demand_stat_total_requested_limits import ResourceDemandStatTotalRequestedLimits
 from .resource_downscaled_request import ResourceDownscaledRequest
 from .resource_effective_id_request import ResourceEffectiveIDRequest
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
@@ -1892,6 +1896,7 @@ from .resources_geography_summary import ResourcesGeographySummary
 from .resources_limits import ResourcesLimits
 from .restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
 from .review_comment_request import ReviewCommentRequest
+from .review_progress_stat import ReviewProgressStat
 from .review_strategy_enum import ReviewStrategyEnum
 from .review_submit_request import ReviewSubmitRequest
 from .reviewer_affiliation import ReviewerAffiliation
@@ -2526,6 +2531,7 @@ __all__ = (
     "CallManagingOrganisationRequestForm",
     "CallManagingOrganisationRequestMultipart",
     "CallManagingOrganisationStat",
+    "CallPerformanceStat",
     "CallResourceTemplate",
     "CallResourceTemplateRequest",
     "CallReviewerPool",
@@ -4014,6 +4020,9 @@ __all__ = (
     "ResourceBackendIDRequest",
     "ResourceBackendMetadataRequest",
     "ResourceCurrentUsages",
+    "ResourceDemandStat",
+    "ResourceDemandStatTotalApprovedLimits",
+    "ResourceDemandStatTotalRequestedLimits",
     "ResourceDownscaledRequest",
     "ResourceEffectiveIDRequest",
     "ResourceEndDateByProviderRequest",
@@ -4095,6 +4104,7 @@ __all__ = (
     "ReviewerSuggestionOEnum",
     "ReviewerSuggestionRequest",
     "ReviewerSuggestionStatusEnum",
+    "ReviewProgressStat",
     "ReviewStrategyEnum",
     "ReviewSubmitRequest",
     "RmqClientProperties",

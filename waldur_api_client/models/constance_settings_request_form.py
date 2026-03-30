@@ -247,6 +247,7 @@ class ConstanceSettingsRequestForm:
         ai_assistant_session_retention_days (Union[Unset, int]):
         ai_assistant_history_limit (Union[Unset, int]):
         ai_assistant_injection_allowlist (Union[Unset, str]):
+        ai_assistant_name (Union[Unset, str]):
         software_catalog_eessi_update_enabled (Union[Unset, bool]):
         software_catalog_eessi_version (Union[Unset, str]):
         software_catalog_eessi_api_url (Union[Unset, str]):
@@ -495,6 +496,7 @@ class ConstanceSettingsRequestForm:
     ai_assistant_session_retention_days: Union[Unset, int] = UNSET
     ai_assistant_history_limit: Union[Unset, int] = UNSET
     ai_assistant_injection_allowlist: Union[Unset, str] = UNSET
+    ai_assistant_name: Union[Unset, str] = UNSET
     software_catalog_eessi_update_enabled: Union[Unset, bool] = UNSET
     software_catalog_eessi_version: Union[Unset, str] = UNSET
     software_catalog_eessi_api_url: Union[Unset, str] = UNSET
@@ -1143,6 +1145,8 @@ class ConstanceSettingsRequestForm:
 
         ai_assistant_injection_allowlist = self.ai_assistant_injection_allowlist
 
+        ai_assistant_name = self.ai_assistant_name
+
         software_catalog_eessi_update_enabled = self.software_catalog_eessi_update_enabled
 
         software_catalog_eessi_version = self.software_catalog_eessi_version
@@ -1682,6 +1686,8 @@ class ConstanceSettingsRequestForm:
             field_dict["AI_ASSISTANT_HISTORY_LIMIT"] = ai_assistant_history_limit
         if ai_assistant_injection_allowlist is not UNSET:
             field_dict["AI_ASSISTANT_INJECTION_ALLOWLIST"] = ai_assistant_injection_allowlist
+        if ai_assistant_name is not UNSET:
+            field_dict["AI_ASSISTANT_NAME"] = ai_assistant_name
         if software_catalog_eessi_update_enabled is not UNSET:
             field_dict["SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED"] = software_catalog_eessi_update_enabled
         if software_catalog_eessi_version is not UNSET:
@@ -2599,6 +2605,8 @@ class ConstanceSettingsRequestForm:
 
         ai_assistant_injection_allowlist = d.pop("AI_ASSISTANT_INJECTION_ALLOWLIST", UNSET)
 
+        ai_assistant_name = d.pop("AI_ASSISTANT_NAME", UNSET)
+
         software_catalog_eessi_update_enabled = d.pop("SOFTWARE_CATALOG_EESSI_UPDATE_ENABLED", UNSET)
 
         software_catalog_eessi_version = d.pop("SOFTWARE_CATALOG_EESSI_VERSION", UNSET)
@@ -2961,6 +2969,7 @@ class ConstanceSettingsRequestForm:
             ai_assistant_session_retention_days=ai_assistant_session_retention_days,
             ai_assistant_history_limit=ai_assistant_history_limit,
             ai_assistant_injection_allowlist=ai_assistant_injection_allowlist,
+            ai_assistant_name=ai_assistant_name,
             software_catalog_eessi_update_enabled=software_catalog_eessi_update_enabled,
             software_catalog_eessi_version=software_catalog_eessi_version,
             software_catalog_eessi_api_url=software_catalog_eessi_api_url,
