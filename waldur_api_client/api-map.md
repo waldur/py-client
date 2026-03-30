@@ -478,6 +478,7 @@ Module: `waldur_api_client.api.chat_threads`
 - `chat_threads_list` GET `/api/chat-threads/` (9 query params)
 - `chat_threads_retrieve` GET `/api/chat-threads/{uuid}/` (path: uuid | 1 query param)
 - `chat_threads_archive` POST `/api/chat-threads/{uuid}/archive/` — Archive thread (path: uuid | request body)
+- `chat_threads_cancel` POST `/api/chat-threads/{uuid}/cancel/` — Cancel active stream (path: uuid | request body)
 - `chat_threads_unarchive` POST `/api/chat-threads/{uuid}/unarchive/` — Unarchive thread (path: uuid | request body)
 
 ## chat-tools

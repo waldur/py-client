@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.19-dev.20260330021617
+# Version: 8.0.7-rc.19-dev.20260330082804
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2579,6 +2579,14 @@ Query parameters (1):
 POST /api/chat-threads/{uuid}/archive/
 Summary: Archive thread
 Description: Archive a thread (soft delete).
+Path parameters:
+  - uuid
+Request body: yes
+
+### chat_threads_cancel
+POST /api/chat-threads/{uuid}/cancel/
+Summary: Cancel active stream
+Description: Request cancellation of the active LLM stream for this thread.
 Path parameters:
   - uuid
 Request body: yes

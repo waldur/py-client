@@ -10,6 +10,7 @@ from dateutil.parser import isoparse
 from ..models.action_taken_enum import ActionTakenEnum
 from ..models.injection_severity_enum import InjectionSeverityEnum
 from ..models.message_role_enum import MessageRoleEnum
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="Message")
 
@@ -21,7 +22,6 @@ class Message:
         uuid (UUID):
         thread (UUID):
         role (MessageRoleEnum):
-        content (str):
         content_display (str):
         tool_calls (Any):
         sequence_index (int):
@@ -32,12 +32,12 @@ class Message:
         injection_categories (Any):
         pii_categories (Any):
         action_taken (ActionTakenEnum):
+        content (Union[Unset, str]):
     """
 
     uuid: UUID
     thread: UUID
     role: MessageRoleEnum
-    content: str
     content_display: str
     tool_calls: Any
     sequence_index: int
@@ -48,6 +48,7 @@ class Message:
     injection_categories: Any
     pii_categories: Any
     action_taken: ActionTakenEnum
+    content: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,8 +57,6 @@ class Message:
         thread = str(self.thread)
 
         role = self.role.value
-
-        content = self.content
 
         content_display = self.content_display
 
@@ -83,6 +82,8 @@ class Message:
 
         action_taken = self.action_taken.value
 
+        content = self.content
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -90,7 +91,6 @@ class Message:
                 "uuid": uuid,
                 "thread": thread,
                 "role": role,
-                "content": content,
                 "content_display": content_display,
                 "tool_calls": tool_calls,
                 "sequence_index": sequence_index,
@@ -103,6 +103,8 @@ class Message:
                 "action_taken": action_taken,
             }
         )
+        if content is not UNSET:
+            field_dict["content"] = content
 
         return field_dict
 
@@ -114,8 +116,6 @@ class Message:
         thread = UUID(d.pop("thread"))
 
         role = MessageRoleEnum(d.pop("role"))
-
-        content = d.pop("content")
 
         content_display = d.pop("content_display")
 
@@ -150,11 +150,12 @@ class Message:
 
         action_taken = ActionTakenEnum(d.pop("action_taken"))
 
+        content = d.pop("content", UNSET)
+
         message = cls(
             uuid=uuid,
             thread=thread,
             role=role,
-            content=content,
             content_display=content_display,
             tool_calls=tool_calls,
             sequence_index=sequence_index,
@@ -165,6 +166,7 @@ class Message:
             injection_categories=injection_categories,
             pii_categories=pii_categories,
             action_taken=action_taken,
+            content=content,
         )
 
         message.additional_properties = d
