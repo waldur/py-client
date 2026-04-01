@@ -87,6 +87,10 @@ from .arrow_vendor_offering_mapping import ArrowVendorOfferingMapping
 from .arrow_vendor_offering_mapping_create import ArrowVendorOfferingMappingCreate
 from .arrow_vendor_offering_mapping_create_request import ArrowVendorOfferingMappingCreateRequest
 from .arrow_vendor_offering_mapping_request import ArrowVendorOfferingMappingRequest
+from .article_code_update_apply_request import ArticleCodeUpdateApplyRequest
+from .article_code_update_apply_response import ArticleCodeUpdateApplyResponse
+from .article_code_update_preview_item import ArticleCodeUpdatePreviewItem
+from .article_code_update_preview_request import ArticleCodeUpdatePreviewRequest
 from .assignment_batch import AssignmentBatch
 from .assignment_batch_list import AssignmentBatchList
 from .assignment_batch_list_o_enum import AssignmentBatchListOEnum
@@ -2378,6 +2382,10 @@ __all__ = (
     "ArrowVendorOfferingMappingCreate",
     "ArrowVendorOfferingMappingCreateRequest",
     "ArrowVendorOfferingMappingRequest",
+    "ArticleCodeUpdateApplyRequest",
+    "ArticleCodeUpdateApplyResponse",
+    "ArticleCodeUpdatePreviewItem",
+    "ArticleCodeUpdatePreviewRequest",
     "AssignmentBatch",
     "AssignmentBatchList",
     "AssignmentBatchListOEnum",

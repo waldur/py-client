@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.22-dev.20260401021555
+# Version: 8.0.7-rc.22-dev.20260401112751
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5435,6 +5435,20 @@ Query parameters (1):
 POST /api/managed-rancher-cluster-resources/{uuid}/add_node/
 Path parameters:
   - uuid
+Request body: yes
+
+============================================================
+## marketplace-article-code-update  (module: waldur_api_client.api.marketplace_article_code_update)
+============================================================
+
+### marketplace_article_code_update_apply
+POST /api/marketplace-article-code-update/apply/
+Summary: Apply article code replacements
+Request body: yes
+
+### marketplace_article_code_update_preview
+POST /api/marketplace-article-code-update/preview/
+Summary: Preview article code replacements
 Request body: yes
 
 ============================================================

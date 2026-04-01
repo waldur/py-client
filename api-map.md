@@ -998,6 +998,12 @@ Module: `waldur_api_client.api.managed_rancher_cluster_resources`
 - `managed_rancher_cluster_resources_retrieve` GET `/api/managed-rancher-cluster-resources/{uuid}/` (path: uuid | 1 query param)
 - `managed_rancher_cluster_resources_add_node` POST `/api/managed-rancher-cluster-resources/{uuid}/add_node/` (path: uuid | request body)
 
+## marketplace-article-code-update
+Module: `waldur_api_client.api.marketplace_article_code_update`
+
+- `marketplace_article_code_update_apply` POST `/api/marketplace-article-code-update/apply/` — Apply article code replacements (request body)
+- `marketplace_article_code_update_preview` POST `/api/marketplace-article-code-update/preview/` — Preview article code replacements (request body)
+
 ## marketplace-attribute-options
 Module: `waldur_api_client.api.marketplace_attribute_options`
 
