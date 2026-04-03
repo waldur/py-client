@@ -52,6 +52,7 @@ def _get_kwargs(
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource_attributes: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
@@ -194,6 +195,8 @@ def _get_kwargs(
 
     params["query"] = query
 
+    params["resource_attributes"] = resource_attributes
+
     params["restrict_member_access"] = restrict_member_access
 
     params["runtime_state"] = runtime_state
@@ -295,6 +298,7 @@ def sync_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource_attributes: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
@@ -343,6 +347,7 @@ def sync_detailed(
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        resource_attributes (Union[Unset, str]):
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
@@ -397,6 +402,7 @@ def sync_detailed(
         project_uuid=project_uuid,
         provider_uuid=provider_uuid,
         query=query,
+        resource_attributes=resource_attributes,
         restrict_member_access=restrict_member_access,
         runtime_state=runtime_state,
         service_manager_uuid=service_manager_uuid,
@@ -453,6 +459,7 @@ def sync(
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource_attributes: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
@@ -501,6 +508,7 @@ def sync(
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        resource_attributes (Union[Unset, str]):
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
@@ -556,6 +564,7 @@ def sync(
         project_uuid=project_uuid,
         provider_uuid=provider_uuid,
         query=query,
+        resource_attributes=resource_attributes,
         restrict_member_access=restrict_member_access,
         runtime_state=runtime_state,
         service_manager_uuid=service_manager_uuid,
@@ -606,6 +615,7 @@ async def asyncio_detailed(
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource_attributes: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
@@ -654,6 +664,7 @@ async def asyncio_detailed(
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        resource_attributes (Union[Unset, str]):
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
@@ -708,6 +719,7 @@ async def asyncio_detailed(
         project_uuid=project_uuid,
         provider_uuid=provider_uuid,
         query=query,
+        resource_attributes=resource_attributes,
         restrict_member_access=restrict_member_access,
         runtime_state=runtime_state,
         service_manager_uuid=service_manager_uuid,
@@ -762,6 +774,7 @@ async def asyncio(
     project_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource_attributes: Union[Unset, str] = UNSET,
     restrict_member_access: Union[Unset, bool] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
@@ -810,6 +823,7 @@ async def asyncio(
         project_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        resource_attributes (Union[Unset, str]):
         restrict_member_access (Union[Unset, bool]):
         runtime_state (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
@@ -866,6 +880,7 @@ async def asyncio(
             project_uuid=project_uuid,
             provider_uuid=provider_uuid,
             query=query,
+            resource_attributes=resource_attributes,
             restrict_member_access=restrict_member_access,
             runtime_state=runtime_state,
             service_manager_uuid=service_manager_uuid,

@@ -204,6 +204,7 @@ class ConstanceSettingsRequest:
         oidc_cache_timeout (Union[Unset, int]):
         oidc_access_token_enabled (Union[Unset, bool]):
         oidc_block_creation_of_uninvited_users (Union[Unset, bool]):
+        oidc_block_creation_of_uninvited_users_response_message (Union[Unset, str]):
         oidc_matchmaking_by_email (Union[Unset, bool]):
         oidc_default_logout_url (Union[Unset, str]):
         deactivate_user_if_no_roles (Union[Unset, bool]):
@@ -453,6 +454,7 @@ class ConstanceSettingsRequest:
     oidc_cache_timeout: Union[Unset, int] = UNSET
     oidc_access_token_enabled: Union[Unset, bool] = UNSET
     oidc_block_creation_of_uninvited_users: Union[Unset, bool] = UNSET
+    oidc_block_creation_of_uninvited_users_response_message: Union[Unset, str] = UNSET
     oidc_matchmaking_by_email: Union[Unset, bool] = UNSET
     oidc_default_logout_url: Union[Unset, str] = UNSET
     deactivate_user_if_no_roles: Union[Unset, bool] = UNSET
@@ -988,6 +990,10 @@ class ConstanceSettingsRequest:
         oidc_access_token_enabled = self.oidc_access_token_enabled
 
         oidc_block_creation_of_uninvited_users = self.oidc_block_creation_of_uninvited_users
+
+        oidc_block_creation_of_uninvited_users_response_message = (
+            self.oidc_block_creation_of_uninvited_users_response_message
+        )
 
         oidc_matchmaking_by_email = self.oidc_matchmaking_by_email
 
@@ -1600,6 +1606,10 @@ class ConstanceSettingsRequest:
             field_dict["OIDC_ACCESS_TOKEN_ENABLED"] = oidc_access_token_enabled
         if oidc_block_creation_of_uninvited_users is not UNSET:
             field_dict["OIDC_BLOCK_CREATION_OF_UNINVITED_USERS"] = oidc_block_creation_of_uninvited_users
+        if oidc_block_creation_of_uninvited_users_response_message is not UNSET:
+            field_dict["OIDC_BLOCK_CREATION_OF_UNINVITED_USERS_RESPONSE_MESSAGE"] = (
+                oidc_block_creation_of_uninvited_users_response_message
+            )
         if oidc_matchmaking_by_email is not UNSET:
             field_dict["OIDC_MATCHMAKING_BY_EMAIL"] = oidc_matchmaking_by_email
         if oidc_default_logout_url is not UNSET:
@@ -2359,6 +2369,10 @@ class ConstanceSettingsRequest:
 
         oidc_block_creation_of_uninvited_users = d.pop("OIDC_BLOCK_CREATION_OF_UNINVITED_USERS", UNSET)
 
+        oidc_block_creation_of_uninvited_users_response_message = d.pop(
+            "OIDC_BLOCK_CREATION_OF_UNINVITED_USERS_RESPONSE_MESSAGE", UNSET
+        )
+
         oidc_matchmaking_by_email = d.pop("OIDC_MATCHMAKING_BY_EMAIL", UNSET)
 
         oidc_default_logout_url = d.pop("OIDC_DEFAULT_LOGOUT_URL", UNSET)
@@ -2924,6 +2938,7 @@ class ConstanceSettingsRequest:
             oidc_cache_timeout=oidc_cache_timeout,
             oidc_access_token_enabled=oidc_access_token_enabled,
             oidc_block_creation_of_uninvited_users=oidc_block_creation_of_uninvited_users,
+            oidc_block_creation_of_uninvited_users_response_message=oidc_block_creation_of_uninvited_users_response_message,
             oidc_matchmaking_by_email=oidc_matchmaking_by_email,
             oidc_default_logout_url=oidc_default_logout_url,
             deactivate_user_if_no_roles=deactivate_user_if_no_roles,

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.22-dev.20260402021612
+# Version: 8.0.7-rc.25-dev.20260403021643
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -1991,7 +1991,7 @@ Path parameters:
 
 ### booking_resources_list
 GET /api/booking-resources/
-Query parameters (43):
+Query parameters (44):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -2028,6 +2028,7 @@ Query parameters (43):
   - project_uuid — Project UUID
   - provider_uuid — Provider UUID
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
+  - resource_attributes — Resource attributes (JSON)
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
   - service_manager_uuid — Service manager UUID
@@ -2040,7 +2041,7 @@ Query parameters (43):
 HEAD /api/booking-resources/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (42):
+Query parameters (43):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -2076,6 +2077,7 @@ Query parameters (42):
   - project_uuid — Project UUID
   - provider_uuid — Provider UUID
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
+  - resource_attributes — Resource attributes (JSON)
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
   - service_manager_uuid — Service manager UUID
@@ -8681,7 +8683,7 @@ Query parameters (2):
 GET /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Returns a paginated list of resources for offerings managed by the current user as a service provider.
-Query parameters (43):
+Query parameters (44):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -8717,6 +8719,7 @@ Query parameters (43):
   - project_uuid — Project UUID
   - provider_uuid — Provider UUID
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
+  - resource_attributes — Resource attributes (JSON)
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
@@ -8730,7 +8733,7 @@ Query parameters (43):
 HEAD /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (42):
+Query parameters (43):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -8765,6 +8768,7 @@ Query parameters (42):
   - project_uuid — Project UUID
   - provider_uuid — Provider UUID
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
+  - resource_attributes — Resource attributes (JSON)
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
@@ -8820,7 +8824,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (43):
+Query parameters (44):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -8856,6 +8860,7 @@ Query parameters (43):
   - project_uuid — Project UUID
   - provider_uuid — Provider UUID
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
+  - resource_attributes — Resource attributes (JSON)
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
@@ -9349,7 +9354,7 @@ Path parameters:
 GET /api/marketplace-resources/
 Summary: List consumer resources
 Description: Returns a paginated list of resources accessible to the current user as a service consumer.
-Query parameters (43):
+Query parameters (44):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9385,6 +9390,7 @@ Query parameters (43):
   - project_uuid — Project UUID
   - provider_uuid — Provider UUID
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
+  - resource_attributes — Resource attributes (JSON)
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
@@ -9398,7 +9404,7 @@ Query parameters (43):
 HEAD /api/marketplace-resources/
 Summary: List consumer resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (42):
+Query parameters (43):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9433,6 +9439,7 @@ Query parameters (42):
   - project_uuid — Project UUID
   - provider_uuid — Provider UUID
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
+  - resource_attributes — Resource attributes (JSON)
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
@@ -9501,7 +9508,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (43):
+Query parameters (44):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9537,6 +9544,7 @@ Query parameters (43):
   - project_uuid — Project UUID
   - provider_uuid — Provider UUID
   - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
+  - resource_attributes — Resource attributes (JSON)
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
