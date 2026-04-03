@@ -27,6 +27,8 @@ class Message:
         sequence_index (int):
         replaces (Union[None, UUID]):
         created (datetime.datetime):
+        input_tokens (Union[None, int]):
+        output_tokens (Union[None, int]):
         is_flagged (bool):
         severity (InjectionSeverityEnum):
         injection_categories (Any):
@@ -43,6 +45,8 @@ class Message:
     sequence_index: int
     replaces: Union[None, UUID]
     created: datetime.datetime
+    input_tokens: Union[None, int]
+    output_tokens: Union[None, int]
     is_flagged: bool
     severity: InjectionSeverityEnum
     injection_categories: Any
@@ -72,6 +76,12 @@ class Message:
 
         created = self.created.isoformat()
 
+        input_tokens: Union[None, int]
+        input_tokens = self.input_tokens
+
+        output_tokens: Union[None, int]
+        output_tokens = self.output_tokens
+
         is_flagged = self.is_flagged
 
         severity = self.severity.value
@@ -96,6 +106,8 @@ class Message:
                 "sequence_index": sequence_index,
                 "replaces": replaces,
                 "created": created,
+                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
                 "is_flagged": is_flagged,
                 "severity": severity,
                 "injection_categories": injection_categories,
@@ -140,6 +152,20 @@ class Message:
 
         created = isoparse(d.pop("created"))
 
+        def _parse_input_tokens(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        input_tokens = _parse_input_tokens(d.pop("input_tokens"))
+
+        def _parse_output_tokens(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        output_tokens = _parse_output_tokens(d.pop("output_tokens"))
+
         is_flagged = d.pop("is_flagged")
 
         severity = InjectionSeverityEnum(d.pop("severity"))
@@ -161,6 +187,8 @@ class Message:
             sequence_index=sequence_index,
             replaces=replaces,
             created=created,
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
             is_flagged=is_flagged,
             severity=severity,
             injection_categories=injection_categories,

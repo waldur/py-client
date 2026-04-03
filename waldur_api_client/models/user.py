@@ -80,6 +80,7 @@ class User:
             ['isd:puhuri', 'isd:fenix']. Non-empty list implies identity manager role.
         active_isds (Union[Unset, Any]): List of ISDs that have asserted this user exists. User is deactivated when this
             becomes empty.
+        deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.
     """
 
     url: Union[Unset, str] = UNSET
@@ -134,6 +135,7 @@ class User:
     attribute_sources: Union[Unset, Any] = UNSET
     managed_isds: Union[Unset, Any] = UNSET
     active_isds: Union[Unset, Any] = UNSET
+    deactivation_reason: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -296,6 +298,8 @@ class User:
 
         active_isds = self.active_isds
 
+        deactivation_reason = self.deactivation_reason
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -403,6 +407,8 @@ class User:
             field_dict["managed_isds"] = managed_isds
         if active_isds is not UNSET:
             field_dict["active_isds"] = active_isds
+        if deactivation_reason is not UNSET:
+            field_dict["deactivation_reason"] = deactivation_reason
 
         return field_dict
 
@@ -625,6 +631,8 @@ class User:
 
         active_isds = d.pop("active_isds", UNSET)
 
+        deactivation_reason = d.pop("deactivation_reason", UNSET)
+
         user = cls(
             url=url,
             uuid=uuid,
@@ -678,6 +686,7 @@ class User:
             attribute_sources=attribute_sources,
             managed_isds=managed_isds,
             active_isds=active_isds,
+            deactivation_reason=deactivation_reason,
         )
 
         user.additional_properties = d

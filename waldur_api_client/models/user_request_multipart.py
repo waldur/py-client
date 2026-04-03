@@ -53,6 +53,7 @@ class UserRequestMultipart:
             identities.
         managed_isds (Union[Unset, Any]): List of ISD source identifiers this user can manage via Identity Bridge. E.g.,
             ['isd:puhuri', 'isd:fenix']. Non-empty list implies identity manager role.
+        deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.
     """
 
     username: str
@@ -86,6 +87,7 @@ class UserRequestMultipart:
     eduperson_assurance: Union[Unset, Any] = UNSET
     is_identity_manager: Union[Unset, bool] = UNSET
     managed_isds: Union[Unset, Any] = UNSET
+    deactivation_reason: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -174,6 +176,8 @@ class UserRequestMultipart:
 
         managed_isds = self.managed_isds
 
+        deactivation_reason = self.deactivation_reason
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -240,6 +244,8 @@ class UserRequestMultipart:
             field_dict["is_identity_manager"] = is_identity_manager
         if managed_isds is not UNSET:
             field_dict["managed_isds"] = managed_isds
+        if deactivation_reason is not UNSET:
+            field_dict["deactivation_reason"] = deactivation_reason
 
         return field_dict
 
@@ -352,6 +358,9 @@ class UserRequestMultipart:
 
         if not isinstance(self.managed_isds, Unset):
             files.append(("managed_isds", (None, str(self.managed_isds).encode(), "text/plain")))
+
+        if not isinstance(self.deactivation_reason, Unset):
+            files.append(("deactivation_reason", (None, str(self.deactivation_reason).encode(), "text/plain")))
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -475,6 +484,8 @@ class UserRequestMultipart:
 
         managed_isds = d.pop("managed_isds", UNSET)
 
+        deactivation_reason = d.pop("deactivation_reason", UNSET)
+
         user_request_multipart = cls(
             username=username,
             email=email,
@@ -507,6 +518,7 @@ class UserRequestMultipart:
             eduperson_assurance=eduperson_assurance,
             is_identity_manager=is_identity_manager,
             managed_isds=managed_isds,
+            deactivation_reason=deactivation_reason,
         )
 
         user_request_multipart.additional_properties = d

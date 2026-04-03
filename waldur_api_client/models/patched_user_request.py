@@ -53,6 +53,7 @@ class PatchedUserRequest:
             identities.
         managed_isds (Union[Unset, Any]): List of ISD source identifiers this user can manage via Identity Bridge. E.g.,
             ['isd:puhuri', 'isd:fenix']. Non-empty list implies identity manager role.
+        deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.
     """
 
     username: Union[Unset, str] = UNSET
@@ -85,6 +86,7 @@ class PatchedUserRequest:
     eduperson_assurance: Union[Unset, Any] = UNSET
     is_identity_manager: Union[Unset, bool] = UNSET
     managed_isds: Union[Unset, Any] = UNSET
+    deactivation_reason: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -171,6 +173,8 @@ class PatchedUserRequest:
 
         managed_isds = self.managed_isds
 
+        deactivation_reason = self.deactivation_reason
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -234,6 +238,8 @@ class PatchedUserRequest:
             field_dict["is_identity_manager"] = is_identity_manager
         if managed_isds is not UNSET:
             field_dict["managed_isds"] = managed_isds
+        if deactivation_reason is not UNSET:
+            field_dict["deactivation_reason"] = deactivation_reason
 
         return field_dict
 
@@ -352,6 +358,8 @@ class PatchedUserRequest:
 
         managed_isds = d.pop("managed_isds", UNSET)
 
+        deactivation_reason = d.pop("deactivation_reason", UNSET)
+
         patched_user_request = cls(
             username=username,
             slug=slug,
@@ -383,6 +391,7 @@ class PatchedUserRequest:
             eduperson_assurance=eduperson_assurance,
             is_identity_manager=is_identity_manager,
             managed_isds=managed_isds,
+            deactivation_reason=deactivation_reason,
         )
 
         patched_user_request.additional_properties = d

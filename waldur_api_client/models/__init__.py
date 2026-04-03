@@ -363,6 +363,7 @@ from .coi_status_update_request import COIStatusUpdateRequest
 from .coi_status_update_status_enum import COIStatusUpdateStatusEnum
 from .coi_type_enum import CoiTypeEnum
 from .comment import Comment
+from .comment_o_enum import CommentOEnum
 from .comment_request import CommentRequest
 from .compliance_overview import ComplianceOverview
 from .component_multiplier_config import ComponentMultiplierConfig
@@ -2648,6 +2649,7 @@ __all__ = (
     "COIStatusUpdateStatusEnum",
     "CoiTypeEnum",
     "Comment",
+    "CommentOEnum",
     "CommentRequest",
     "ComplianceOverview",
     "ComponentMultiplierConfig",
