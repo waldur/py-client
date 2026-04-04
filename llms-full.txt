@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.26-dev.20260404021556
+# Version: 8.0.7-rc.26-dev.20260404114708
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -16122,6 +16122,51 @@ Request body: yes
 POST /api/payments/{uuid}/unlink_from_invoice/
 Summary: Unlink a payment from an invoice
 Description: Unlink a payment from an invoice. Remove connection between payment and existing linked invoice.
+Path parameters:
+  - uuid
+
+============================================================
+## personal-access-tokens  (module: waldur_api_client.api.personal_access_tokens)
+============================================================
+
+### personal_access_tokens_list
+GET /api/personal-access-tokens/
+
+### personal_access_tokens_count
+HEAD /api/personal-access-tokens/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### personal_access_tokens_create
+POST /api/personal-access-tokens/
+Summary: Create a personal access token
+Request body: yes
+
+### personal_access_tokens_available_scopes_list
+GET /api/personal-access-tokens/available_scopes/
+Summary: List available scopes for PAT creation
+Description: Return permissions the current user can delegate to a PAT.
+
+### personal_access_tokens_available_scopes_count
+HEAD /api/personal-access-tokens/available_scopes/
+Summary: List available scopes for PAT creation
+Description: Get number of items in the collection matching the request parameters.
+
+### personal_access_tokens_retrieve
+GET /api/personal-access-tokens/{uuid}/
+Path parameters:
+  - uuid
+
+### personal_access_tokens_destroy
+DELETE /api/personal-access-tokens/{uuid}/
+Summary: Revoke a personal access token
+Path parameters:
+  - uuid
+
+### personal_access_tokens_rotate
+POST /api/personal-access-tokens/{uuid}/rotate/
+Summary: Rotate a personal access token
+Description: Atomically revoke the old token and create a new one with the same scopes.
 Path parameters:
   - uuid
 

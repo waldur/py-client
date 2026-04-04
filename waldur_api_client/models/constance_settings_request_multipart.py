@@ -289,6 +289,9 @@ class ConstanceSettingsRequestMultipart:
         ssh_key_allowed_types (Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]]):
         ssh_key_min_rsa_key_size (Union[Unset, int]):
         enabled_reporting_screens (Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]]):
+        pat_enabled (Union[Unset, bool]):
+        pat_max_lifetime_days (Union[Unset, int]):
+        pat_max_tokens_per_user (Union[Unset, int]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -539,6 +542,9 @@ class ConstanceSettingsRequestMultipart:
     ssh_key_allowed_types: Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]] = UNSET
     ssh_key_min_rsa_key_size: Union[Unset, int] = UNSET
     enabled_reporting_screens: Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]] = UNSET
+    pat_enabled: Union[Unset, bool] = UNSET
+    pat_max_lifetime_days: Union[Unset, int] = UNSET
+    pat_max_tokens_per_user: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -1270,6 +1276,12 @@ class ConstanceSettingsRequestMultipart:
 
                 enabled_reporting_screens.append(enabled_reporting_screens_item)
 
+        pat_enabled = self.pat_enabled
+
+        pat_max_lifetime_days = self.pat_max_lifetime_days
+
+        pat_max_tokens_per_user = self.pat_max_tokens_per_user
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -1777,6 +1789,12 @@ class ConstanceSettingsRequestMultipart:
             field_dict["SSH_KEY_MIN_RSA_KEY_SIZE"] = ssh_key_min_rsa_key_size
         if enabled_reporting_screens is not UNSET:
             field_dict["ENABLED_REPORTING_SCREENS"] = enabled_reporting_screens
+        if pat_enabled is not UNSET:
+            field_dict["PAT_ENABLED"] = pat_enabled
+        if pat_max_lifetime_days is not UNSET:
+            field_dict["PAT_MAX_LIFETIME_DAYS"] = pat_max_lifetime_days
+        if pat_max_tokens_per_user is not UNSET:
+            field_dict["PAT_MAX_TOKENS_PER_USER"] = pat_max_tokens_per_user
 
         return field_dict
 
@@ -3226,6 +3244,15 @@ class ConstanceSettingsRequestMultipart:
                         )
                     )
 
+        if not isinstance(self.pat_enabled, Unset):
+            files.append(("PAT_ENABLED", (None, str(self.pat_enabled).encode(), "text/plain")))
+
+        if not isinstance(self.pat_max_lifetime_days, Unset):
+            files.append(("PAT_MAX_LIFETIME_DAYS", (None, str(self.pat_max_lifetime_days).encode(), "text/plain")))
+
+        if not isinstance(self.pat_max_tokens_per_user, Unset):
+            files.append(("PAT_MAX_TOKENS_PER_USER", (None, str(self.pat_max_tokens_per_user).encode(), "text/plain")))
+
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
 
@@ -4227,6 +4254,12 @@ class ConstanceSettingsRequestMultipart:
 
             enabled_reporting_screens.append(enabled_reporting_screens_item)
 
+        pat_enabled = d.pop("PAT_ENABLED", UNSET)
+
+        pat_max_lifetime_days = d.pop("PAT_MAX_LIFETIME_DAYS", UNSET)
+
+        pat_max_tokens_per_user = d.pop("PAT_MAX_TOKENS_PER_USER", UNSET)
+
         constance_settings_request_multipart = cls(
             site_name=site_name,
             site_description=site_description,
@@ -4476,6 +4509,9 @@ class ConstanceSettingsRequestMultipart:
             ssh_key_allowed_types=ssh_key_allowed_types,
             ssh_key_min_rsa_key_size=ssh_key_min_rsa_key_size,
             enabled_reporting_screens=enabled_reporting_screens,
+            pat_enabled=pat_enabled,
+            pat_max_lifetime_days=pat_max_lifetime_days,
+            pat_max_tokens_per_user=pat_max_tokens_per_user,
         )
 
         constance_settings_request_multipart.additional_properties = d

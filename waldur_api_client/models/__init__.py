@@ -138,6 +138,7 @@ from .available_checklists_response import AvailableChecklistsResponse
 from .available_checklists_response_checklist_type_enum import AvailableChecklistsResponseChecklistTypeEnum
 from .available_checklists_response_customer_checklist_type_0 import AvailableChecklistsResponseCustomerChecklistType0
 from .available_checklists_response_intent_checklist_type_0 import AvailableChecklistsResponseIntentChecklistType0
+from .available_scope import AvailableScope
 from .aws_image import AwsImage
 from .aws_instance import AwsInstance
 from .aws_instance_field_enum import AwsInstanceFieldEnum
@@ -1532,6 +1533,9 @@ from .person_identifier_fields_response import PersonIdentifierFieldsResponse
 from .person_identifier_fields_response_person_identifier_fields import (
     PersonIdentifierFieldsResponsePersonIdentifierFields,
 )
+from .personal_access_token import PersonalAccessToken
+from .personal_access_token_create_request import PersonalAccessTokenCreateRequest
+from .personal_access_token_created import PersonalAccessTokenCreated
 from .plan_component import PlanComponent
 from .plan_usage_response import PlanUsageResponse
 from .plugin_component import PluginComponent
@@ -2434,6 +2438,7 @@ __all__ = (
     "AvailableChecklistsResponseChecklistTypeEnum",
     "AvailableChecklistsResponseCustomerChecklistType0",
     "AvailableChecklistsResponseIntentChecklistType0",
+    "AvailableScope",
     "AwsImage",
     "AwsInstance",
     "AwsInstanceFieldEnum",
@@ -3738,6 +3743,9 @@ __all__ = (
     "PermissionMetadataResponseRoles",
     "PermissionMetadataResponseRolesAdditionalProperty",
     "PermissionRequest",
+    "PersonalAccessToken",
+    "PersonalAccessTokenCreated",
+    "PersonalAccessTokenCreateRequest",
     "PersonIdentifierFieldsResponse",
     "PersonIdentifierFieldsResponsePersonIdentifierFields",
     "PlanComponent",
