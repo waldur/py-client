@@ -105,6 +105,7 @@ class PublicOfferingDetails:
         has_compliance_requirements (Union[Unset, bool]):
         billing_type_classification (Union[Unset, str]): Classify offering components by billing type.
             Returns 'limit_only', 'usage_only', or 'mixed'.
+        effective_available_limits (Union[Unset, list[str]]):
         compliance_checklist (Union[None, Unset, str]):
         user_has_consent (Union[Unset, bool]):
         is_accessible (Union[Unset, bool]):
@@ -179,6 +180,7 @@ class PublicOfferingDetails:
     backend_metadata: Union[Unset, Any] = UNSET
     has_compliance_requirements: Union[Unset, bool] = UNSET
     billing_type_classification: Union[Unset, str] = UNSET
+    effective_available_limits: Union[Unset, list[str]] = UNSET
     compliance_checklist: Union[None, Unset, str] = UNSET
     user_has_consent: Union[Unset, bool] = UNSET
     is_accessible: Union[Unset, bool] = UNSET
@@ -489,6 +491,10 @@ class PublicOfferingDetails:
 
         billing_type_classification = self.billing_type_classification
 
+        effective_available_limits: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.effective_available_limits, Unset):
+            effective_available_limits = self.effective_available_limits
+
         compliance_checklist: Union[None, Unset, str]
         if isinstance(self.compliance_checklist, Unset):
             compliance_checklist = UNSET
@@ -653,6 +659,8 @@ class PublicOfferingDetails:
             field_dict["has_compliance_requirements"] = has_compliance_requirements
         if billing_type_classification is not UNSET:
             field_dict["billing_type_classification"] = billing_type_classification
+        if effective_available_limits is not UNSET:
+            field_dict["effective_available_limits"] = effective_available_limits
         if compliance_checklist is not UNSET:
             field_dict["compliance_checklist"] = compliance_checklist
         if user_has_consent is not UNSET:
@@ -1119,6 +1127,8 @@ class PublicOfferingDetails:
 
         billing_type_classification = d.pop("billing_type_classification", UNSET)
 
+        effective_available_limits = cast(list[str], d.pop("effective_available_limits", UNSET))
+
         def _parse_compliance_checklist(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -1224,6 +1234,7 @@ class PublicOfferingDetails:
             backend_metadata=backend_metadata,
             has_compliance_requirements=has_compliance_requirements,
             billing_type_classification=billing_type_classification,
+            effective_available_limits=effective_available_limits,
             compliance_checklist=compliance_checklist,
             user_has_consent=user_has_consent,
             is_accessible=is_accessible,

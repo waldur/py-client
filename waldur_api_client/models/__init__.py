@@ -217,6 +217,7 @@ from .base_public_plan_request import BasePublicPlanRequest
 from .basic_customer import BasicCustomer
 from .basic_user import BasicUser
 from .bid_enum import BidEnum
+from .billing_mode_enum import BillingModeEnum
 from .billing_type_enum import BillingTypeEnum
 from .billing_unit import BillingUnit
 from .blank_enum import BlankEnum
@@ -2112,6 +2113,7 @@ from .suggestion_reject_request import SuggestionRejectRequest
 from .support_stats import SupportStats
 from .support_user import SupportUser
 from .supported_countries_response import SupportedCountriesResponse
+from .switch_billing_mode_request import SwitchBillingModeRequest
 from .sync_from_arrow_request_request import SyncFromArrowRequestRequest
 from .sync_pause_request_request import SyncPauseRequestRequest
 from .sync_pause_response import SyncPauseResponse
@@ -2507,6 +2509,7 @@ __all__ = (
     "BasicCustomer",
     "BasicUser",
     "BidEnum",
+    "BillingModeEnum",
     "BillingTypeEnum",
     "BillingUnit",
     "BlankEnum",
@@ -4300,6 +4303,7 @@ __all__ = (
     "SupportedCountriesResponse",
     "SupportStats",
     "SupportUser",
+    "SwitchBillingModeRequest",
     "SyncedGroup",
     "SyncFromArrowRequestRequest",
     "SyncPauseRequestRequest",

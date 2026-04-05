@@ -23,6 +23,7 @@ class ProviderOfferingDetailsFieldEnum(str, Enum):
     DATACITE_DOI = "datacite_doi"
     DESCRIPTION = "description"
     DOCUMENTATION_URL = "documentation_url"
+    EFFECTIVE_AVAILABLE_LIMITS = "effective_available_limits"
     ENDPOINTS = "endpoints"
     FILES = "files"
     FULL_DESCRIPTION = "full_description"

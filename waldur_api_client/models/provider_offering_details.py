@@ -111,6 +111,7 @@ class ProviderOfferingDetails:
         has_compliance_requirements (Union[Unset, bool]):
         billing_type_classification (Union[Unset, str]): Classify offering components by billing type.
             Returns 'limit_only', 'usage_only', or 'mixed'.
+        effective_available_limits (Union[Unset, list[str]]):
         compliance_checklist (Union[None, Unset, str]):
         integration_status (Union[None, Unset, list['IntegrationStatus']]):
         google_calendar_is_public (Union[None, Unset, bool]):
@@ -186,6 +187,7 @@ class ProviderOfferingDetails:
     backend_metadata: Union[Unset, Any] = UNSET
     has_compliance_requirements: Union[Unset, bool] = UNSET
     billing_type_classification: Union[Unset, str] = UNSET
+    effective_available_limits: Union[Unset, list[str]] = UNSET
     compliance_checklist: Union[None, Unset, str] = UNSET
     integration_status: Union[None, Unset, list["IntegrationStatus"]] = UNSET
     google_calendar_is_public: Union[None, Unset, bool] = UNSET
@@ -504,6 +506,10 @@ class ProviderOfferingDetails:
 
         billing_type_classification = self.billing_type_classification
 
+        effective_available_limits: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.effective_available_limits, Unset):
+            effective_available_limits = self.effective_available_limits
+
         compliance_checklist: Union[None, Unset, str]
         if isinstance(self.compliance_checklist, Unset):
             compliance_checklist = UNSET
@@ -675,6 +681,8 @@ class ProviderOfferingDetails:
             field_dict["has_compliance_requirements"] = has_compliance_requirements
         if billing_type_classification is not UNSET:
             field_dict["billing_type_classification"] = billing_type_classification
+        if effective_available_limits is not UNSET:
+            field_dict["effective_available_limits"] = effective_available_limits
         if compliance_checklist is not UNSET:
             field_dict["compliance_checklist"] = compliance_checklist
         if integration_status is not UNSET:
@@ -1155,6 +1163,8 @@ class ProviderOfferingDetails:
 
         billing_type_classification = d.pop("billing_type_classification", UNSET)
 
+        effective_available_limits = cast(list[str], d.pop("effective_available_limits", UNSET))
+
         def _parse_compliance_checklist(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -1274,6 +1284,7 @@ class ProviderOfferingDetails:
             backend_metadata=backend_metadata,
             has_compliance_requirements=has_compliance_requirements,
             billing_type_classification=billing_type_classification,
+            effective_available_limits=effective_available_limits,
             compliance_checklist=compliance_checklist,
             integration_status=integration_status,
             google_calendar_is_public=google_calendar_is_public,
