@@ -55,8 +55,8 @@ def sync_detailed(
 ) -> Response[Any]:
     """Switch billing mode for builtin components
 
-     Switches all builtin components between monthly (LIMIT) and prepaid (ONE_TIME + is_prepaid) billing
-    modes.
+     Switches all builtin components between monthly (LIMIT), prepaid (ONE_TIME + is_prepaid), and usage-
+    based billing modes. Works for any offering type that has registered builtin components.
 
     Args:
         uuid (UUID):
@@ -90,8 +90,8 @@ async def asyncio_detailed(
 ) -> Response[Any]:
     """Switch billing mode for builtin components
 
-     Switches all builtin components between monthly (LIMIT) and prepaid (ONE_TIME + is_prepaid) billing
-    modes.
+     Switches all builtin components between monthly (LIMIT), prepaid (ONE_TIME + is_prepaid), and usage-
+    based billing modes. Works for any offering type that has registered builtin components.
 
     Args:
         uuid (UUID):

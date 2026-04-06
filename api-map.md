@@ -1444,6 +1444,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_remove_partition` POST `/api/marketplace-provider-offerings/{uuid}/remove_partition/` — Remove a partition from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_remove_software_catalog` POST `/api/marketplace-provider-offerings/{uuid}/remove_software_catalog/` — Remove a software catalog from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_set_backend_metadata` POST `/api/marketplace-provider-offerings/{uuid}/set_backend_metadata/` — Set offering backend metadata (path: uuid | request body)
+- `marketplace_provider_offerings_state_counters_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/state_counters/` — Get offering resource and user state counters (path: uuid)
 - `marketplace_provider_offerings_stats_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/stats/` — Get offering statistics (path: uuid)
 - `marketplace_provider_offerings_switch_billing_mode` POST `/api/marketplace-provider-offerings/{uuid}/switch_billing_mode/` — Switch billing mode for builtin components (path: uuid | request body)
 - `marketplace_provider_offerings_sync` POST `/api/marketplace-provider-offerings/{uuid}/sync/` — Synchronize offering service settings (path: uuid)

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.27-dev.20260406134003
+# Version: 8.0.7-rc.27-dev.20260406211604
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8476,6 +8476,13 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_offerings_state_counters_retrieve
+GET /api/marketplace-provider-offerings/{uuid}/state_counters/
+Summary: Get offering resource and user state counters
+Description: Returns resource and offering-user counts grouped by state for the given offering.
+Path parameters:
+  - uuid
+
 ### marketplace_provider_offerings_stats_retrieve
 GET /api/marketplace-provider-offerings/{uuid}/stats/
 Summary: Get offering statistics
@@ -8486,7 +8493,7 @@ Path parameters:
 ### marketplace_provider_offerings_switch_billing_mode
 POST /api/marketplace-provider-offerings/{uuid}/switch_billing_mode/
 Summary: Switch billing mode for builtin components
-Description: Switches all builtin components between monthly (LIMIT) and prepaid (ONE_TIME + is_prepaid) billing modes.
+Description: Switches all builtin components between monthly (LIMIT), prepaid (ONE_TIME + is_prepaid), and usage-based billing modes. Works for any offering type that has registered builtin components.
 Path parameters:
   - uuid
 Request body: yes
