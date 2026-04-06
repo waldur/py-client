@@ -797,7 +797,6 @@ from .keys_history_at_retrieve_response_400 import KeysHistoryAtRetrieveResponse
 from .keys_history_at_retrieve_response_404 import KeysHistoryAtRetrieveResponse404
 from .keyword_search_mode_enum import KeywordSearchModeEnum
 from .kind_enum import KindEnum
-from .lb_algorithm_enum import LbAlgorithmEnum
 from .lexis_link import LexisLink
 from .lexis_link_create_request import LexisLinkCreateRequest
 from .lexis_link_request import LexisLinkRequest
@@ -809,9 +808,9 @@ from .link_resource_request_request import LinkResourceRequestRequest
 from .link_resource_response import LinkResourceResponse
 from .link_to_invoice import LinkToInvoice
 from .link_to_invoice_request import LinkToInvoiceRequest
+from .load_balancer_async_operation_response import LoadBalancerAsyncOperationResponse
 from .load_balancer_attach_floating_ip_request import LoadBalancerAttachFloatingIPRequest
 from .load_balancer_protocol_enum import LoadBalancerProtocolEnum
-from .load_balancer_update_vip_security_groups_request import LoadBalancerUpdateVIPSecurityGroupsRequest
 from .lock_stats import LockStats
 from .loginpagelayout_enum import LOGINPAGELAYOUTEnum
 from .logout import Logout
@@ -1174,7 +1173,6 @@ from .open_stack_load_balancer_field_enum import OpenStackLoadBalancerFieldEnum
 from .open_stack_load_balancer_marketplace_offering_plugin_options_type_0 import (
     OpenStackLoadBalancerMarketplaceOfferingPluginOptionsType0,
 )
-from .open_stack_load_balancer_request import OpenStackLoadBalancerRequest
 from .open_stack_nested_floating_ip import OpenStackNestedFloatingIP
 from .open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
 from .open_stack_nested_instance import OpenStackNestedInstance
@@ -1202,7 +1200,6 @@ from .open_stack_pool_member_field_enum import OpenStackPoolMemberFieldEnum
 from .open_stack_pool_member_marketplace_offering_plugin_options_type_0 import (
     OpenStackPoolMemberMarketplaceOfferingPluginOptionsType0,
 )
-from .open_stack_pool_request import OpenStackPoolRequest
 from .open_stack_port import OpenStackPort
 from .open_stack_port_field_enum import OpenStackPortFieldEnum
 from .open_stack_port_ip_update_request import OpenStackPortIPUpdateRequest
@@ -1421,9 +1418,7 @@ from .patched_onboarding_question_metadata_request import PatchedOnboardingQuest
 from .patched_onboarding_verification_request import PatchedOnboardingVerificationRequest
 from .patched_open_stack_backup_request import PatchedOpenStackBackupRequest
 from .patched_open_stack_instance_request import PatchedOpenStackInstanceRequest
-from .patched_open_stack_load_balancer_request import PatchedOpenStackLoadBalancerRequest
 from .patched_open_stack_network_request import PatchedOpenStackNetworkRequest
-from .patched_open_stack_pool_request import PatchedOpenStackPoolRequest
 from .patched_open_stack_port_request import PatchedOpenStackPortRequest
 from .patched_open_stack_security_group_update_request import PatchedOpenStackSecurityGroupUpdateRequest
 from .patched_open_stack_snapshot_request import PatchedOpenStackSnapshotRequest
@@ -1492,7 +1487,9 @@ from .patched_tag_request import PatchedTagRequest
 from .patched_template_request import PatchedTemplateRequest
 from .patched_update_health_monitor_request import PatchedUpdateHealthMonitorRequest
 from .patched_update_listener_request import PatchedUpdateListenerRequest
+from .patched_update_load_balancer_request import PatchedUpdateLoadBalancerRequest
 from .patched_update_pool_member_request import PatchedUpdatePoolMemberRequest
+from .patched_update_pool_request import PatchedUpdatePoolRequest
 from .patched_user_agreement_request import PatchedUserAgreementRequest
 from .patched_user_info_request import PatchedUserInfoRequest
 from .patched_user_offering_consent_request import PatchedUserOfferingConsentRequest
@@ -2179,9 +2176,13 @@ from .update_health_monitor import UpdateHealthMonitor
 from .update_health_monitor_request import UpdateHealthMonitorRequest
 from .update_listener import UpdateListener
 from .update_listener_request import UpdateListenerRequest
+from .update_load_balancer import UpdateLoadBalancer
+from .update_load_balancer_request import UpdateLoadBalancerRequest
 from .update_offering_component_request import UpdateOfferingComponentRequest
+from .update_pool import UpdatePool
 from .update_pool_member import UpdatePoolMember
 from .update_pool_member_request import UpdatePoolMemberRequest
+from .update_pool_request import UpdatePoolRequest
 from .urgency_enum import UrgencyEnum
 from .user import User
 from .user_action import UserAction
@@ -3077,7 +3078,6 @@ __all__ = (
     "KeysHistoryAtRetrieveResponse404",
     "KeywordSearchModeEnum",
     "KindEnum",
-    "LbAlgorithmEnum",
     "LexisLink",
     "LexisLinkCreateRequest",
     "LexisLinkRequest",
@@ -3089,9 +3089,9 @@ __all__ = (
     "LinkResourceResponse",
     "LinkToInvoice",
     "LinkToInvoiceRequest",
+    "LoadBalancerAsyncOperationResponse",
     "LoadBalancerAttachFloatingIPRequest",
     "LoadBalancerProtocolEnum",
-    "LoadBalancerUpdateVIPSecurityGroupsRequest",
     "LockStats",
     "LOGINPAGELAYOUTEnum",
     "Logout",
@@ -3422,7 +3422,6 @@ __all__ = (
     "OpenStackLoadBalancer",
     "OpenStackLoadBalancerFieldEnum",
     "OpenStackLoadBalancerMarketplaceOfferingPluginOptionsType0",
-    "OpenStackLoadBalancerRequest",
     "OpenStackNestedFloatingIP",
     "OpenStackNestedFloatingIPRequest",
     "OpenStackNestedInstance",
@@ -3444,7 +3443,6 @@ __all__ = (
     "OpenStackPoolMember",
     "OpenStackPoolMemberFieldEnum",
     "OpenStackPoolMemberMarketplaceOfferingPluginOptionsType0",
-    "OpenStackPoolRequest",
     "OpenStackPort",
     "OpenStackPortFieldEnum",
     "OpenStackPortIPUpdateRequest",
@@ -3643,9 +3641,7 @@ __all__ = (
     "PatchedOnboardingVerificationRequest",
     "PatchedOpenStackBackupRequest",
     "PatchedOpenStackInstanceRequest",
-    "PatchedOpenStackLoadBalancerRequest",
     "PatchedOpenStackNetworkRequest",
-    "PatchedOpenStackPoolRequest",
     "PatchedOpenStackPortRequest",
     "PatchedOpenStackSecurityGroupUpdateRequest",
     "PatchedOpenStackSnapshotRequest",
@@ -3714,7 +3710,9 @@ __all__ = (
     "PatchedTemplateRequest",
     "PatchedUpdateHealthMonitorRequest",
     "PatchedUpdateListenerRequest",
+    "PatchedUpdateLoadBalancerRequest",
     "PatchedUpdatePoolMemberRequest",
+    "PatchedUpdatePoolRequest",
     "PatchedUserAgreementRequest",
     "PatchedUserInfoRequest",
     "PatchedUserOfferingConsentRequest",
@@ -4365,9 +4363,13 @@ __all__ = (
     "UpdateHealthMonitorRequest",
     "UpdateListener",
     "UpdateListenerRequest",
+    "UpdateLoadBalancer",
+    "UpdateLoadBalancerRequest",
     "UpdateOfferingComponentRequest",
+    "UpdatePool",
     "UpdatePoolMember",
     "UpdatePoolMemberRequest",
+    "UpdatePoolRequest",
     "UrgencyEnum",
     "User",
     "UserAction",

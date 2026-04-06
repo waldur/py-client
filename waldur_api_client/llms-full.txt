@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.27-dev.20260406075010
+# Version: 8.0.7-rc.27-dev.20260406134003
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -14199,13 +14199,12 @@ Description: Detach floating IP from the load balancer VIP port.
 Path parameters:
   - uuid
 
-### openstack_loadbalancers_update_vip_security_groups
-POST /api/openstack-loadbalancers/{uuid}/update_vip_security_groups/
-Summary: Update VIP security groups
-Description: Update security groups on the load balancer VIP port.
+### openstack_loadbalancers_unlink
+POST /api/openstack-loadbalancers/{uuid}/unlink/
+Summary: Unlink load balancer
+Description: Delete the load balancer from the Waldur database without scheduling operations on the OpenStack backend and without checking resource state. Staff-only; intended for cleaning up records stuck in transitional states.
 Path parameters:
   - uuid
-Request body: yes
 
 ============================================================
 ## openstack-marketplace-tenants  (module: waldur_api_client.api.openstack_marketplace_tenants)

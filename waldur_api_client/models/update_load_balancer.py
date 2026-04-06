@@ -5,25 +5,21 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="CreateLoadBalancer")
+T = TypeVar("T", bound="UpdateLoadBalancer")
 
 
 @_attrs_define
-class CreateLoadBalancer:
+class UpdateLoadBalancer:
     """
     Attributes:
         url (str):
         uuid (UUID):
         name (str):
-        tenant (str): OpenStack tenant this load balancer belongs to
-        vip_subnet (str):
     """
 
     url: str
     uuid: UUID
     name: str
-    tenant: str
-    vip_subnet: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -33,10 +29,6 @@ class CreateLoadBalancer:
 
         name = self.name
 
-        tenant = self.tenant
-
-        vip_subnet = self.vip_subnet
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -44,8 +36,6 @@ class CreateLoadBalancer:
                 "url": url,
                 "uuid": uuid,
                 "name": name,
-                "tenant": tenant,
-                "vip_subnet": vip_subnet,
             }
         )
 
@@ -60,20 +50,14 @@ class CreateLoadBalancer:
 
         name = d.pop("name")
 
-        tenant = d.pop("tenant")
-
-        vip_subnet = d.pop("vip_subnet")
-
-        create_load_balancer = cls(
+        update_load_balancer = cls(
             url=url,
             uuid=uuid,
             name=name,
-            tenant=tenant,
-            vip_subnet=vip_subnet,
         )
 
-        create_load_balancer.additional_properties = d
-        return create_load_balancer
+        update_load_balancer.additional_properties = d
+        return update_load_balancer
 
     @property
     def additional_keys(self) -> list[str]:

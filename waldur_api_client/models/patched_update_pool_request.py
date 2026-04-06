@@ -1,62 +1,46 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="CreateLoadBalancerRequest")
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="PatchedUpdatePoolRequest")
 
 
 @_attrs_define
-class CreateLoadBalancerRequest:
+class PatchedUpdatePoolRequest:
     """
     Attributes:
-        name (str):
-        tenant (str): OpenStack tenant this load balancer belongs to
-        vip_subnet (str):
+        name (Union[Unset, str]):
     """
 
-    name: str
-    tenant: str
-    vip_subnet: str
+    name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        tenant = self.tenant
-
-        vip_subnet = self.vip_subnet
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "name": name,
-                "tenant": tenant,
-                "vip_subnet": vip_subnet,
-            }
-        )
+        field_dict.update({})
+        if name is not UNSET:
+            field_dict["name"] = name
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        tenant = d.pop("tenant")
-
-        vip_subnet = d.pop("vip_subnet")
-
-        create_load_balancer_request = cls(
+        patched_update_pool_request = cls(
             name=name,
-            tenant=tenant,
-            vip_subnet=vip_subnet,
         )
 
-        create_load_balancer_request.additional_properties = d
-        return create_load_balancer_request
+        patched_update_pool_request.additional_properties = d
+        return patched_update_pool_request
 
     @property
     def additional_keys(self) -> list[str]:

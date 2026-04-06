@@ -2327,7 +2327,7 @@ Module: `waldur_api_client.api.openstack_loadbalancers`
 - `openstack_loadbalancers_destroy` DELETE `/api/openstack-loadbalancers/{uuid}/` — Delete load balancer (path: uuid)
 - `openstack_loadbalancers_attach_floating_ip` POST `/api/openstack-loadbalancers/{uuid}/attach_floating_ip/` — Attach floating IP to VIP (path: uuid | request body)
 - `openstack_loadbalancers_detach_floating_ip` POST `/api/openstack-loadbalancers/{uuid}/detach_floating_ip/` — Detach floating IP from VIP (path: uuid)
-- `openstack_loadbalancers_update_vip_security_groups` POST `/api/openstack-loadbalancers/{uuid}/update_vip_security_groups/` — Update VIP security groups (path: uuid | request body)
+- `openstack_loadbalancers_unlink` POST `/api/openstack-loadbalancers/{uuid}/unlink/` — Unlink load balancer (path: uuid)
 
 ## openstack-marketplace-tenants
 Module: `waldur_api_client.api.openstack_marketplace_tenants`

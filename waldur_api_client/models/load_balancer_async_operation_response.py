@@ -1,51 +1,30 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="CreateLoadBalancer")
+T = TypeVar("T", bound="LoadBalancerAsyncOperationResponse")
 
 
 @_attrs_define
-class CreateLoadBalancer:
+class LoadBalancerAsyncOperationResponse:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        name (str):
-        tenant (str): OpenStack tenant this load balancer belongs to
-        vip_subnet (str):
+        status (str): Message that execution of the operation was scheduled.
     """
 
-    url: str
-    uuid: UUID
-    name: str
-    tenant: str
-    vip_subnet: str
+    status: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        url = self.url
-
-        uuid = str(self.uuid)
-
-        name = self.name
-
-        tenant = self.tenant
-
-        vip_subnet = self.vip_subnet
+        status = self.status
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "url": url,
-                "uuid": uuid,
-                "name": name,
-                "tenant": tenant,
-                "vip_subnet": vip_subnet,
+                "status": status,
             }
         )
 
@@ -54,26 +33,14 @@ class CreateLoadBalancer:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
+        status = d.pop("status")
 
-        uuid = UUID(d.pop("uuid"))
-
-        name = d.pop("name")
-
-        tenant = d.pop("tenant")
-
-        vip_subnet = d.pop("vip_subnet")
-
-        create_load_balancer = cls(
-            url=url,
-            uuid=uuid,
-            name=name,
-            tenant=tenant,
-            vip_subnet=vip_subnet,
+        load_balancer_async_operation_response = cls(
+            status=status,
         )
 
-        create_load_balancer.additional_properties = d
-        return create_load_balancer
+        load_balancer_async_operation_response.additional_properties = d
+        return load_balancer_async_operation_response
 
     @property
     def additional_keys(self) -> list[str]:

@@ -6,34 +6,24 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.load_balancer_update_vip_security_groups_request import LoadBalancerUpdateVIPSecurityGroupsRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
-    *,
-    body: LoadBalancerUpdateVIPSecurityGroupsRequest,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/openstack-loadbalancers/{uuid}/update_vip_security_groups/",
+        "url": f"/api/openstack-loadbalancers/{uuid}/unlink/",
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
+    if response.status_code == 204:
         return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
@@ -51,15 +41,15 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: LoadBalancerUpdateVIPSecurityGroupsRequest,
 ) -> Response[Any]:
-    """Update VIP security groups
+    """Unlink load balancer
 
-     Update security groups on the load balancer VIP port.
+     Delete the load balancer from the Waldur database without scheduling operations on the OpenStack
+    backend and without checking resource state. Staff-only; intended for cleaning up records stuck in
+    transitional states.
 
     Args:
         uuid (UUID):
-        body (LoadBalancerUpdateVIPSecurityGroupsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -71,7 +61,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -85,15 +74,15 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: LoadBalancerUpdateVIPSecurityGroupsRequest,
 ) -> Response[Any]:
-    """Update VIP security groups
+    """Unlink load balancer
 
-     Update security groups on the load balancer VIP port.
+     Delete the load balancer from the Waldur database without scheduling operations on the OpenStack
+    backend and without checking resource state. Staff-only; intended for cleaning up records stuck in
+    transitional states.
 
     Args:
         uuid (UUID):
-        body (LoadBalancerUpdateVIPSecurityGroupsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -105,7 +94,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
