@@ -50,6 +50,7 @@ def _get_kwargs(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
@@ -182,6 +183,8 @@ def _get_kwargs(
 
     params["shared"] = shared
 
+    params["slug"] = slug
+
     json_state: Union[Unset, list[str]] = UNSET
     if not isinstance(state, Unset):
         json_state = []
@@ -297,6 +300,7 @@ def sync_detailed(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
@@ -346,6 +350,7 @@ def sync_detailed(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
@@ -398,6 +403,7 @@ def sync_detailed(
         scope_uuid=scope_uuid,
         service_manager_uuid=service_manager_uuid,
         shared=shared,
+        slug=slug,
         state=state,
         tag=tag,
         tag_name=tag_name,
@@ -452,6 +458,7 @@ def sync(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
@@ -501,6 +508,7 @@ def sync(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
@@ -554,6 +562,7 @@ def sync(
         scope_uuid=scope_uuid,
         service_manager_uuid=service_manager_uuid,
         shared=shared,
+        slug=slug,
         state=state,
         tag=tag,
         tag_name=tag_name,
@@ -602,6 +611,7 @@ async def asyncio_detailed(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
@@ -651,6 +661,7 @@ async def asyncio_detailed(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
@@ -703,6 +714,7 @@ async def asyncio_detailed(
         scope_uuid=scope_uuid,
         service_manager_uuid=service_manager_uuid,
         shared=shared,
+        slug=slug,
         state=state,
         tag=tag,
         tag_name=tag_name,
@@ -755,6 +767,7 @@ async def asyncio(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
@@ -804,6 +817,7 @@ async def asyncio(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
@@ -858,6 +872,7 @@ async def asyncio(
             scope_uuid=scope_uuid,
             service_manager_uuid=service_manager_uuid,
             shared=shared,
+            slug=slug,
             state=state,
             tag=tag,
             tag_name=tag_name,
@@ -905,6 +920,7 @@ def sync_all(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
@@ -954,6 +970,7 @@ def sync_all(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
@@ -1008,6 +1025,7 @@ def sync_all(
         scope_uuid=scope_uuid,
         service_manager_uuid=service_manager_uuid,
         shared=shared,
+        slug=slug,
         state=state,
         tag=tag,
         tag_name=tag_name,
@@ -1095,6 +1113,7 @@ async def asyncio_all(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
     tag_name: Union[Unset, list[str]] = UNSET,
@@ -1144,6 +1163,7 @@ async def asyncio_all(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
         tag_name (Union[Unset, list[str]]):
@@ -1198,6 +1218,7 @@ async def asyncio_all(
         scope_uuid=scope_uuid,
         service_manager_uuid=service_manager_uuid,
         shared=shared,
+        slug=slug,
         state=state,
         tag=tag,
         tag_name=tag_name,

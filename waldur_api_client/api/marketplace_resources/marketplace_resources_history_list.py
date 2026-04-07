@@ -60,6 +60,7 @@ def _get_kwargs(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
@@ -206,6 +207,8 @@ def _get_kwargs(
         json_service_manager_uuid = str(service_manager_uuid)
     params["service_manager_uuid"] = json_service_manager_uuid
 
+    params["slug"] = slug
+
     json_state: Union[Unset, list[str]] = UNSET
     if not isinstance(state, Unset):
         json_state = []
@@ -304,6 +307,7 @@ def sync_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
@@ -357,6 +361,7 @@ def sync_detailed(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
@@ -414,6 +419,7 @@ def sync_detailed(
         runtime_state=runtime_state,
         scope=scope,
         service_manager_uuid=service_manager_uuid,
+        slug=slug,
         state=state,
         usage_based=usage_based,
         visible_to_providers=visible_to_providers,
@@ -473,6 +479,7 @@ def sync(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
@@ -526,6 +533,7 @@ def sync(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
@@ -584,6 +592,7 @@ def sync(
         runtime_state=runtime_state,
         scope=scope,
         service_manager_uuid=service_manager_uuid,
+        slug=slug,
         state=state,
         usage_based=usage_based,
         visible_to_providers=visible_to_providers,
@@ -637,6 +646,7 @@ async def asyncio_detailed(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
@@ -690,6 +700,7 @@ async def asyncio_detailed(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
@@ -747,6 +758,7 @@ async def asyncio_detailed(
         runtime_state=runtime_state,
         scope=scope,
         service_manager_uuid=service_manager_uuid,
+        slug=slug,
         state=state,
         usage_based=usage_based,
         visible_to_providers=visible_to_providers,
@@ -804,6 +816,7 @@ async def asyncio(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
@@ -857,6 +870,7 @@ async def asyncio(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
@@ -916,6 +930,7 @@ async def asyncio(
             runtime_state=runtime_state,
             scope=scope,
             service_manager_uuid=service_manager_uuid,
+            slug=slug,
             state=state,
             usage_based=usage_based,
             visible_to_providers=visible_to_providers,
@@ -968,6 +983,7 @@ def sync_all(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
@@ -1022,6 +1038,7 @@ def sync_all(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
@@ -1081,6 +1098,7 @@ def sync_all(
         runtime_state=runtime_state,
         scope=scope,
         service_manager_uuid=service_manager_uuid,
+        slug=slug,
         state=state,
         usage_based=usage_based,
         visible_to_providers=visible_to_providers,
@@ -1173,6 +1191,7 @@ async def asyncio_all(
     runtime_state: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ResourceState]] = UNSET,
     usage_based: Union[Unset, bool] = UNSET,
     visible_to_providers: Union[Unset, bool] = UNSET,
@@ -1227,6 +1246,7 @@ async def asyncio_all(
         runtime_state (Union[Unset, str]):
         scope (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[ResourceState]]):
         usage_based (Union[Unset, bool]):
         visible_to_providers (Union[Unset, bool]):
@@ -1286,6 +1306,7 @@ async def asyncio_all(
         runtime_state=runtime_state,
         scope=scope,
         service_manager_uuid=service_manager_uuid,
+        slug=slug,
         state=state,
         usage_based=usage_based,
         visible_to_providers=visible_to_providers,

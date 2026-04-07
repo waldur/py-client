@@ -38,6 +38,7 @@ def _get_kwargs(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OrderState]] = UNSET,
     type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> dict[str, Any]:
@@ -140,6 +141,8 @@ def _get_kwargs(
         json_service_manager_uuid = str(service_manager_uuid)
     params["service_manager_uuid"] = json_service_manager_uuid
 
+    params["slug"] = slug
+
     json_state: Union[Unset, list[str]] = UNSET
     if not isinstance(state, Unset):
         json_state = []
@@ -221,6 +224,7 @@ def sync_detailed(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OrderState]] = UNSET,
     type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> Response[int]:
@@ -252,6 +256,7 @@ def sync_detailed(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[OrderState]]):
         type_ (Union[Unset, list[RequestTypes]]):
 
@@ -287,6 +292,7 @@ def sync_detailed(
         resource_name=resource_name,
         resource_uuid=resource_uuid,
         service_manager_uuid=service_manager_uuid,
+        slug=slug,
         state=state,
         type_=type_,
     )
@@ -324,6 +330,7 @@ def sync(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OrderState]] = UNSET,
     type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> int:
@@ -355,6 +362,7 @@ def sync(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[OrderState]]):
         type_ (Union[Unset, list[RequestTypes]]):
 
@@ -391,6 +399,7 @@ def sync(
         resource_name=resource_name,
         resource_uuid=resource_uuid,
         service_manager_uuid=service_manager_uuid,
+        slug=slug,
         state=state,
         type_=type_,
     ).parsed
@@ -422,6 +431,7 @@ async def asyncio_detailed(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OrderState]] = UNSET,
     type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> Response[int]:
@@ -453,6 +463,7 @@ async def asyncio_detailed(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[OrderState]]):
         type_ (Union[Unset, list[RequestTypes]]):
 
@@ -488,6 +499,7 @@ async def asyncio_detailed(
         resource_name=resource_name,
         resource_uuid=resource_uuid,
         service_manager_uuid=service_manager_uuid,
+        slug=slug,
         state=state,
         type_=type_,
     )
@@ -523,6 +535,7 @@ async def asyncio(
     resource_name: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OrderState]] = UNSET,
     type_: Union[Unset, list[RequestTypes]] = UNSET,
 ) -> int:
@@ -554,6 +567,7 @@ async def asyncio(
         resource_name (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
         service_manager_uuid (Union[Unset, UUID]):
+        slug (Union[Unset, str]):
         state (Union[Unset, list[OrderState]]):
         type_ (Union[Unset, list[RequestTypes]]):
 
@@ -591,6 +605,7 @@ async def asyncio(
             resource_name=resource_name,
             resource_uuid=resource_uuid,
             service_manager_uuid=service_manager_uuid,
+            slug=slug,
             state=state,
             type_=type_,
         )

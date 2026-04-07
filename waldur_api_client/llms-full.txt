@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.27-dev.20260407100338
+# Version: 8.0.7-rc.27-dev.20260407211636
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -1991,7 +1991,7 @@ Path parameters:
 
 ### booking_resources_list
 GET /api/booking-resources/
-Query parameters (44):
+Query parameters (45):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -2032,6 +2032,7 @@ Query parameters (44):
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
   - service_manager_uuid — Service manager UUID
+  - slug — Slug
   - state — Resource state
   - usage_based — Filter by usage-based offerings
   - visible_to_providers — Include only resources visible to service providers
@@ -2041,7 +2042,7 @@ Query parameters (44):
 HEAD /api/booking-resources/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (43):
+Query parameters (44):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -2081,6 +2082,7 @@ Query parameters (43):
   - restrict_member_access — Restrict member access
   - runtime_state — Runtime state
   - service_manager_uuid — Service manager UUID
+  - slug — Slug
   - state — Resource state
   - usage_based — Filter by usage-based offerings
   - visible_to_providers — Include only resources visible to service providers
@@ -3205,7 +3207,7 @@ Query parameters (1):
 GET /api/customers/
 Summary: List customers
 Description: Retrieve a list of customers. The list is filtered based on the user's permissions.
-Query parameters (22):
+Query parameters (23):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -3227,13 +3229,14 @@ Query parameters (22):
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
   - service_provider_uuid — Filter by service provider UUID.
+  - slug — Slug
   - user_uuid — Filter by user UUID.
 
 ### customers_count
 HEAD /api/customers/
 Summary: List customers
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (21):
+Query parameters (22):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -3254,6 +3257,7 @@ Query parameters (21):
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
   - service_provider_uuid — Filter by service provider UUID.
+  - slug — Slug
   - user_uuid — Filter by user UUID.
 
 ### customers_create
@@ -3266,7 +3270,7 @@ Request body: yes
 GET /api/customers/countries/
 Summary: Get list of available countries
 Description: Returns a list of countries that can be used when creating or updating a customer. The list can be configured by the service provider.
-Query parameters (21):
+Query parameters (22):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -3287,13 +3291,14 @@ Query parameters (21):
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
   - service_provider_uuid — Filter by service provider UUID.
+  - slug — Slug
   - user_uuid — Filter by user UUID.
 
 ### customers_countries_count
 HEAD /api/customers/countries/
 Summary: Get list of available countries
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (21):
+Query parameters (22):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -3314,6 +3319,7 @@ Query parameters (21):
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
   - service_provider_uuid — Filter by service provider UUID.
+  - slug — Slug
   - user_uuid — Filter by user UUID.
 
 ### customers_project_metadata_compliance_details_list
@@ -3433,7 +3439,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (23):
+Query parameters (24):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -3456,6 +3462,7 @@ Query parameters (23):
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
   - service_provider_uuid — Filter by service provider UUID.
+  - slug — Slug
   - user_uuid — Filter by user UUID.
 
 ### customers_history_at_retrieve
@@ -4221,7 +4228,7 @@ Request body: yes
 
 ### financial_reports_list
 GET /api/financial-reports/
-Query parameters (19):
+Query parameters (20):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -4240,13 +4247,14 @@ Query parameters (19):
   - owned_by_current_user — Return a list of customers where current user is owner.
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
+  - slug — Slug
   - year — Filter by year.
 
 ### financial_reports_count
 HEAD /api/financial-reports/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (19):
+Query parameters (20):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -4265,6 +4273,7 @@ Query parameters (19):
   - owned_by_current_user — Return a list of customers where current user is owner.
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
+  - slug — Slug
   - year — Filter by year.
 
 ### financial_reports_retrieve
@@ -7056,7 +7065,7 @@ Request body: yes
 GET /api/marketplace-orders/
 Summary: List orders
 Description: Returns a paginated list of orders accessible to the current user. Orders are visible to service consumers (project/customer members with appropriate permissions) and service providers.
-Query parameters (24):
+Query parameters (25):
   - can_approve_as_consumer — Can approve as consumer
   - can_approve_as_provider — Can approve as provider
   - category_uuid — Category UUID
@@ -7079,6 +7088,7 @@ Query parameters (24):
   - resource_name — Resource name
   - resource_uuid — Resource UUID
   - service_manager_uuid — Service manager UUID
+  - slug — Slug
   - state — Order state
   - type — Order type
 
@@ -7086,7 +7096,7 @@ Query parameters (24):
 HEAD /api/marketplace-orders/
 Summary: List orders
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (23):
+Query parameters (24):
   - can_approve_as_consumer — Can approve as consumer
   - can_approve_as_provider — Can approve as provider
   - category_uuid — Category UUID
@@ -7108,6 +7118,7 @@ Query parameters (23):
   - resource_name — Resource name
   - resource_uuid — Resource UUID
   - service_manager_uuid — Service manager UUID
+  - slug — Slug
   - state — Order state
   - type — Order type
 
@@ -7647,7 +7658,7 @@ Request body: yes
 GET /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Returns a paginated list of offerings for the provider.
-Query parameters (40):
+Query parameters (41):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7679,6 +7690,7 @@ Query parameters (40):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -7693,7 +7705,7 @@ Query parameters (40):
 HEAD /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (39):
+Query parameters (40):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7724,6 +7736,7 @@ Query parameters (39):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -7744,7 +7757,7 @@ Request body: yes
 GET /api/marketplace-provider-offerings/groups/
 Summary: List offerings grouped by provider
 Description: Returns a paginated list of active, shared offerings grouped by their service provider.
-Query parameters (38):
+Query parameters (39):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7774,6 +7787,7 @@ Query parameters (38):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -7788,7 +7802,7 @@ Query parameters (38):
 HEAD /api/marketplace-provider-offerings/groups/
 Summary: List offerings grouped by provider
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (38):
+Query parameters (39):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7818,6 +7832,7 @@ Query parameters (38):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -7910,7 +7925,7 @@ Summary: Get statistics for offering components
 Description: Returns monthly usage statistics for the components of an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (41):
+Query parameters (42):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -7942,6 +7957,7 @@ Query parameters (41):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - start — Start date in format YYYY-MM.
   - state — Offering state
   - tag — Tag UUID (OR logic)
@@ -7959,7 +7975,7 @@ Summary: Get costs for an offering
 Description: Returns monthly cost data for an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (42):
+Query parameters (43):
   - accessible_via_calls — Accessible via calls
   - accounting_is_running
   - allowed_customer_uuid — Allowed customer UUID
@@ -7992,6 +8008,7 @@ Query parameters (42):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - start — Start date in format YYYY-MM.
   - state — Offering state
   - tag — Tag UUID (OR logic)
@@ -8017,7 +8034,7 @@ Summary: Get customers for an offering
 Description: Returns a paginated list of customers who have resources for this offering.
 Path parameters:
   - uuid
-Query parameters (40):
+Query parameters (41):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8049,6 +8066,7 @@ Query parameters (40):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -8147,7 +8165,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (40):
+Query parameters (41):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8179,6 +8197,7 @@ Query parameters (40):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -8219,7 +8238,7 @@ Summary: List course accounts for an offering
 Description: Returns a paginated list of course accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (39):
+Query parameters (40):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8250,6 +8269,7 @@ Query parameters (39):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -8275,7 +8295,7 @@ Summary: List customer service accounts for an offering
 Description: Returns a paginated list of customer-level service accounts for customers who have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (39):
+Query parameters (40):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8306,6 +8326,7 @@ Query parameters (39):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -8331,7 +8352,7 @@ Summary: List project service accounts for an offering
 Description: Returns a paginated list of project-level service accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (39):
+Query parameters (40):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8362,6 +8383,7 @@ Query parameters (39):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -8704,7 +8726,7 @@ Query parameters (2):
 GET /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Returns a paginated list of resources for offerings managed by the current user as a service provider.
-Query parameters (44):
+Query parameters (45):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -8745,6 +8767,7 @@ Query parameters (44):
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
+  - slug — Slug
   - state — Resource state
   - usage_based — Filter by usage-based offerings
   - visible_to_providers — Include only resources visible to service providers
@@ -8754,7 +8777,7 @@ Query parameters (44):
 HEAD /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (43):
+Query parameters (44):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -8794,6 +8817,7 @@ Query parameters (43):
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
+  - slug — Slug
   - state — Resource state
   - usage_based — Filter by usage-based offerings
   - visible_to_providers — Include only resources visible to service providers
@@ -8845,7 +8869,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (44):
+Query parameters (45):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -8886,6 +8910,7 @@ Query parameters (44):
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
+  - slug — Slug
   - state — Resource state
   - usage_based — Filter by usage-based offerings
   - visible_to_providers — Include only resources visible to service providers
@@ -9145,7 +9170,7 @@ Request body: yes
 GET /api/marketplace-public-offerings/
 Summary: List public offerings
 Description: Returns a paginated list of public offerings. The list is filtered to show only offerings that are active or paused and available for ordering by the current user. If anonymous access is enabled, it shows shared offerings available to unauthenticated users.
-Query parameters (39):
+Query parameters (40):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -9176,6 +9201,7 @@ Query parameters (39):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -9190,7 +9216,7 @@ Query parameters (39):
 HEAD /api/marketplace-public-offerings/
 Summary: List public offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (38):
+Query parameters (39):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -9220,6 +9246,7 @@ Query parameters (38):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -9375,7 +9402,7 @@ Path parameters:
 GET /api/marketplace-resources/
 Summary: List consumer resources
 Description: Returns a paginated list of resources accessible to the current user as a service consumer.
-Query parameters (44):
+Query parameters (45):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9416,6 +9443,7 @@ Query parameters (44):
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
+  - slug — Slug
   - state — Resource state
   - usage_based — Filter by usage-based offerings
   - visible_to_providers — Include only resources visible to service providers
@@ -9425,7 +9453,7 @@ Query parameters (44):
 HEAD /api/marketplace-resources/
 Summary: List consumer resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (43):
+Query parameters (44):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9465,6 +9493,7 @@ Query parameters (43):
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
+  - slug — Slug
   - state — Resource state
   - usage_based — Filter by usage-based offerings
   - visible_to_providers — Include only resources visible to service providers
@@ -9529,7 +9558,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (44):
+Query parameters (45):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9570,6 +9599,7 @@ Query parameters (44):
   - runtime_state — Runtime state
   - scope — Filter by scope URL.
   - service_manager_uuid — Service manager UUID
+  - slug — Slug
   - state — Resource state
   - usage_based — Filter by usage-based offerings
   - visible_to_providers — Include only resources visible to service providers
@@ -10127,7 +10157,7 @@ Summary: List customers of a service provider
 Description: Returns a paginated list of customers who have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (15):
+Query parameters (16):
   - abbreviation — Abbreviation
   - agreement_number
   - archived
@@ -10143,6 +10173,7 @@ Query parameters (15):
   - owned_by_current_user — Return a list of customers where current user is owner.
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
+  - slug — Slug
 
 ### marketplace_service_providers_keys_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/keys/
@@ -10172,7 +10203,7 @@ Summary: List offerings of a service provider
 Description: Returns a paginated list of all billable, shared offerings provided by the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (39):
+Query parameters (40):
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -10203,6 +10234,7 @@ Query parameters (39):
   - scope_uuid — Scope UUID
   - service_manager_uuid — Service manager UUID
   - shared — Shared
+  - slug — Slug
   - state — Offering state
   - tag — Tag UUID (OR logic)
   - tag_name — Tag name (OR logic)
@@ -10296,7 +10328,7 @@ Description: Returns a paginated list of customers that a specified user has acc
         - Customers related to t...
 Path parameters:
   - service_provider_uuid
-Query parameters (16):
+Query parameters (17):
   - abbreviation — Abbreviation
   - agreement_number
   - archived
@@ -10312,6 +10344,7 @@ Query parameters (16):
   - owned_by_current_user — Return a list of customers where current user is owner.
   - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
   - registration_code
+  - slug — Slug
   - user_uuid (required) — UUID of the user to get related customers for.
 
 ### marketplace_service_providers_users_list
@@ -16698,7 +16731,7 @@ Path parameters:
 
 ### proposal_proposals_list
 GET /api/proposal-proposals/
-Query parameters (9):
+Query parameters (10):
   - call_uuid
   - created_by_uuid
   - my_proposals
@@ -16707,13 +16740,14 @@ Query parameters (9):
   - organization_uuid
   - round
   - round_uuid
+  - slug — Slug
   - state
 
 ### proposal_proposals_count
 HEAD /api/proposal-proposals/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
   - call_uuid
   - created_by_uuid
   - my_proposals
@@ -16722,6 +16756,7 @@ Query parameters (9):
   - organization_uuid
   - round
   - round_uuid
+  - slug — Slug
   - state
 
 ### proposal_proposals_create
@@ -16926,7 +16961,7 @@ Request body: yes
 
 ### proposal_protected_calls_list
 GET /api/proposal-protected-calls/
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -16936,13 +16971,14 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - slug — Slug
   - state
 
 ### proposal_protected_calls_count
 HEAD /api/proposal-protected-calls/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
   - customer
   - customer_keyword
   - customer_uuid
@@ -16951,6 +16987,7 @@ Query parameters (9):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - slug — Slug
   - state
 
 ### proposal_protected_calls_create
@@ -16961,7 +16998,7 @@ Request body: yes
 GET /api/proposal-protected-calls/available_compliance_checklists/
 Summary: Get available compliance checklists for call creation/editing
 Description: Get available compliance checklists for call creation/editing.
-Query parameters (10):
+Query parameters (11):
   - checklist_type — Filter by checklist type (default: proposal_compliance)
   - customer
   - customer_keyword
@@ -16971,13 +17008,14 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - slug — Slug
   - state
 
 ### proposal_protected_calls_available_compliance_checklists_count
 HEAD /api/proposal-protected-calls/available_compliance_checklists/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (10):
+Query parameters (11):
   - checklist_type — Filter by checklist type (default: proposal_compliance)
   - customer
   - customer_keyword
@@ -16987,6 +17025,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - slug — Slug
   - state
 
 ### proposal_protected_calls_retrieve
@@ -17102,7 +17141,7 @@ Summary: List all conflicts of interest detected for this call
 Description: List all conflicts of interest detected for this call.
 Path parameters:
   - uuid
-Query parameters (9):
+Query parameters (10):
   - customer
   - customer_keyword
   - customer_uuid
@@ -17111,6 +17150,7 @@ Query parameters (9):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - slug — Slug
   - state
 
 ### proposal_protected_calls_create_manual_assignment
@@ -17259,7 +17299,7 @@ Description: Get detailed compliance answers for a specific proposal (call manag
 Path parameters:
   - proposal_uuid — UUID of the proposal
   - uuid
-Query parameters (9):
+Query parameters (10):
   - customer
   - customer_keyword
   - customer_uuid
@@ -17268,6 +17308,7 @@ Query parameters (9):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - slug — Slug
   - state
 
 ### proposal_protected_calls_proposed_assignments_list
@@ -17276,7 +17317,7 @@ Summary: Get proposed reviewer-proposal assignments
 Description: Get proposed reviewer-proposal assignments.
 Path parameters:
   - uuid
-Query parameters (9):
+Query parameters (10):
   - customer
   - customer_keyword
   - customer_uuid
@@ -17285,6 +17326,7 @@ Query parameters (9):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - slug — Slug
   - state
 
 ### proposal_protected_calls_resource_templates_list
@@ -17349,7 +17391,7 @@ Summary: Invite reviewers to join the call's reviewer pool
 Description: Invite reviewers to join the call's reviewer pool.
 Path parameters:
   - uuid
-Query parameters (9):
+Query parameters (10):
   - customer
   - customer_keyword
   - customer_uuid
@@ -17358,6 +17400,7 @@ Query parameters (9):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - slug — Slug
   - state
 Request body: yes
 
@@ -17430,7 +17473,7 @@ Summary: List all reviewer suggestions for this call with affinity scores
 Description: List all reviewer suggestions for this call with affinity scores.
 Path parameters:
   - uuid
-Query parameters (9):
+Query parameters (10):
   - customer
   - customer_keyword
   - customer_uuid
@@ -17439,6 +17482,7 @@ Query parameters (9):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - slug — Slug
   - state
 
 ### proposal_protected_calls_update_applicant_attribute_config
@@ -17471,7 +17515,7 @@ Request body: yes
 
 ### proposal_public_calls_list
 GET /api/proposal-public-calls/
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -17481,13 +17525,14 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - slug — Slug
   - state
 
 ### proposal_public_calls_count
 HEAD /api/proposal-public-calls/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
   - customer
   - customer_keyword
   - customer_uuid
@@ -17496,6 +17541,7 @@ Query parameters (9):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - slug — Slug
   - state
 
 ### proposal_public_calls_retrieve

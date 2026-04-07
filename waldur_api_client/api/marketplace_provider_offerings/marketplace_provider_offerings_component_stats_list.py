@@ -50,6 +50,7 @@ def _get_kwargs(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
@@ -178,6 +179,8 @@ def _get_kwargs(
 
     params["shared"] = shared
 
+    params["slug"] = slug
+
     params["start"] = start
 
     json_state: Union[Unset, list[str]] = UNSET
@@ -296,6 +299,7 @@ def sync_detailed(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
@@ -346,6 +350,7 @@ def sync_detailed(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         start (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
@@ -400,6 +405,7 @@ def sync_detailed(
         scope_uuid=scope_uuid,
         service_manager_uuid=service_manager_uuid,
         shared=shared,
+        slug=slug,
         start=start,
         state=state,
         tag=tag,
@@ -456,6 +462,7 @@ def sync(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
@@ -506,6 +513,7 @@ def sync(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         start (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
@@ -561,6 +569,7 @@ def sync(
         scope_uuid=scope_uuid,
         service_manager_uuid=service_manager_uuid,
         shared=shared,
+        slug=slug,
         start=start,
         state=state,
         tag=tag,
@@ -611,6 +620,7 @@ async def asyncio_detailed(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
@@ -661,6 +671,7 @@ async def asyncio_detailed(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         start (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
@@ -715,6 +726,7 @@ async def asyncio_detailed(
         scope_uuid=scope_uuid,
         service_manager_uuid=service_manager_uuid,
         shared=shared,
+        slug=slug,
         start=start,
         state=state,
         tag=tag,
@@ -769,6 +781,7 @@ async def asyncio(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
@@ -819,6 +832,7 @@ async def asyncio(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         start (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
@@ -875,6 +889,7 @@ async def asyncio(
             scope_uuid=scope_uuid,
             service_manager_uuid=service_manager_uuid,
             shared=shared,
+            slug=slug,
             start=start,
             state=state,
             tag=tag,
@@ -924,6 +939,7 @@ def sync_all(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
@@ -975,6 +991,7 @@ def sync_all(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         start (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
@@ -1031,6 +1048,7 @@ def sync_all(
         scope_uuid=scope_uuid,
         service_manager_uuid=service_manager_uuid,
         shared=shared,
+        slug=slug,
         start=start,
         state=state,
         tag=tag,
@@ -1120,6 +1138,7 @@ async def asyncio_all(
     scope_uuid: Union[Unset, str] = UNSET,
     service_manager_uuid: Union[Unset, UUID] = UNSET,
     shared: Union[Unset, bool] = UNSET,
+    slug: Union[Unset, str] = UNSET,
     start: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OfferingState]] = UNSET,
     tag: Union[Unset, list[UUID]] = UNSET,
@@ -1171,6 +1190,7 @@ async def asyncio_all(
         scope_uuid (Union[Unset, str]):
         service_manager_uuid (Union[Unset, UUID]):
         shared (Union[Unset, bool]):
+        slug (Union[Unset, str]):
         start (Union[Unset, str]):
         state (Union[Unset, list[OfferingState]]):
         tag (Union[Unset, list[UUID]]):
@@ -1227,6 +1247,7 @@ async def asyncio_all(
         scope_uuid=scope_uuid,
         service_manager_uuid=service_manager_uuid,
         shared=shared,
+        slug=slug,
         start=start,
         state=state,
         tag=tag,
