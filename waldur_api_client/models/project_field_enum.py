@@ -8,6 +8,7 @@ class ProjectFieldEnum(str, Enum):
     CUSTOMER = "customer"
     CUSTOMER_ABBREVIATION = "customer_abbreviation"
     CUSTOMER_DISPLAY_BILLING_INFO_IN_PROJECTS = "customer_display_billing_info_in_projects"
+    CUSTOMER_GRACE_PERIOD_DAYS = "customer_grace_period_days"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_NATIVE_NAME = "customer_native_name"
     CUSTOMER_SLUG = "customer_slug"
