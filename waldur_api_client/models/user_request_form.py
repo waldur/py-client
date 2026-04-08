@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from .. import types
+from ..models.blank_enum import BlankEnum
 from ..models.gender_enum import GenderEnum
 from ..types import UNSET, File, Unset
 
@@ -39,7 +40,7 @@ class UserRequestForm:
         last_name (Union[Unset, str]):
         birth_date (Union[None, Unset, datetime.date]):
         image (Union[File, None, Unset]):
-        gender (Union[GenderEnum, None, Unset]): ISO 5218 gender code
+        gender (Union[BlankEnum, GenderEnum, None, Unset]): User's gender (male, female, or unknown)
         personal_title (Union[Unset, str]): Honorific title (Mr, Ms, Dr, Prof, etc.)
         place_of_birth (Union[Unset, str]):
         country_of_residence (Union[Unset, str]):
@@ -75,7 +76,7 @@ class UserRequestForm:
     last_name: Union[Unset, str] = UNSET
     birth_date: Union[None, Unset, datetime.date] = UNSET
     image: Union[File, None, Unset] = UNSET
-    gender: Union[GenderEnum, None, Unset] = UNSET
+    gender: Union[BlankEnum, GenderEnum, None, Unset] = UNSET
     personal_title: Union[Unset, str] = UNSET
     place_of_birth: Union[Unset, str] = UNSET
     country_of_residence: Union[Unset, str] = UNSET
@@ -146,10 +147,12 @@ class UserRequestForm:
         else:
             image = self.image
 
-        gender: Union[None, Unset, int]
+        gender: Union[None, Unset, str]
         if isinstance(self.gender, Unset):
             gender = UNSET
         elif isinstance(self.gender, GenderEnum):
+            gender = self.gender.value
+        elif isinstance(self.gender, BlankEnum):
             gender = self.gender.value
         else:
             gender = self.gender
@@ -327,20 +330,28 @@ class UserRequestForm:
 
         image = _parse_image(d.pop("image", UNSET))
 
-        def _parse_gender(data: object) -> Union[GenderEnum, None, Unset]:
+        def _parse_gender(data: object) -> Union[BlankEnum, GenderEnum, None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
             try:
-                if not isinstance(data, int):
+                if not isinstance(data, str):
                     raise TypeError()
                 gender_type_0 = GenderEnum(data)
 
                 return gender_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[GenderEnum, None, Unset], data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                gender_type_1 = BlankEnum(data)
+
+                return gender_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union[BlankEnum, GenderEnum, None, Unset], data)
 
         gender = _parse_gender(d.pop("gender", UNSET))
 
