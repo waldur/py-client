@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.27-dev.20260408021623
+# Version: 8.0.7-rc.27-dev.20260408084800
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7207,6 +7207,13 @@ Description: Rejects a pending order from the provider's side. This moves the or
 Path parameters:
   - uuid
 Request body: yes
+
+### marketplace_orders_resource_retrieve
+GET /api/marketplace-orders/{uuid}/resource/
+Summary: Get resource details
+Description: Returns details of the resource connected to the requested object.
+Path parameters:
+  - uuid
 
 ### marketplace_orders_retry
 POST /api/marketplace-orders/{uuid}/retry/
