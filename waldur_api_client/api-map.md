@@ -3439,7 +3439,7 @@ Module: `waldur_api_client.api.user_group_invitations`
 - `user_group_invitations_destroy` DELETE `/api/user-group-invitations/{uuid}/` — Delete a group invitation (path: uuid)
 - `user_group_invitations_cancel` POST `/api/user-group-invitations/{uuid}/cancel/` — Cancel a group invitation (path: uuid)
 - `user_group_invitations_projects_list` GET `/api/user-group-invitations/{uuid}/projects/` — List projects for a customer-scoped group invitation (path: uuid)
-- `user_group_invitations_submit_request` POST `/api/user-group-invitations/{uuid}/submit_request/` — Submit a permission request (path: uuid)
+- `user_group_invitations_submit_request` POST `/api/user-group-invitations/{uuid}/submit_request/` — Submit a permission request (path: uuid | request body)
 
 ## user-invitations
 Module: `waldur_api_client.api.user_invitations`

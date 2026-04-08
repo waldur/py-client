@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.27-dev.20260408183831
+# Version: 8.0.7-rc.27-dev.20260408211538
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -20728,6 +20728,7 @@ Summary: Submit a permission request
 Description: Creates a permission request based on a group invitation for the currently authenticated user. If the invitation has auto_approve enabled and the user matches the required patterns, the request is automatically approved.
 Path parameters:
   - uuid
+Request body: yes
 
 ============================================================
 ## user-invitations  (module: waldur_api_client.api.user_invitations)

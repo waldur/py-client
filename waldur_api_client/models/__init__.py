@@ -2104,6 +2104,7 @@ from .storage_folder_config_request import StorageFolderConfigRequest
 from .storage_mode_enum import StorageModeEnum
 from .sub_net_mapping import SubNetMapping
 from .sub_net_mapping_request import SubNetMappingRequest
+from .submit_request_request import SubmitRequestRequest
 from .submit_request_response import SubmitRequestResponse
 from .subresource_offering import SubresourceOffering
 from .suggest_alternative_reviewers import SuggestAlternativeReviewers
@@ -4295,6 +4296,7 @@ __all__ = (
     "StorageFolderConfig",
     "StorageFolderConfigRequest",
     "StorageModeEnum",
+    "SubmitRequestRequest",
     "SubmitRequestResponse",
     "SubNetMapping",
     "SubNetMappingRequest",
