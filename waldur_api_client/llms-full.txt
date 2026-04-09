@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-rc.27-dev.20260409021604
+# Version: 8.0.7-dev.20260409154843
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -13793,6 +13793,13 @@ Description: Delete a health monitor.
 Path parameters:
   - uuid
 
+### openstack_health_monitors_pull
+POST /api/openstack-health-monitors/{uuid}/pull/
+Summary: Pull health monitor
+Description: Synchronize health monitor state from the OpenStack backend. Also pulls the associated pool and load balancer.
+Path parameters:
+  - uuid
+
 ============================================================
 ## openstack-images  (module: waldur_api_client.api.openstack_images)
 ============================================================
@@ -14166,6 +14173,13 @@ Description: Delete a listener.
 Path parameters:
   - uuid
 
+### openstack_listeners_pull
+POST /api/openstack-listeners/{uuid}/pull/
+Summary: Pull listener
+Description: Synchronize listener state from the OpenStack backend. Also pulls pools of the load balancer and the load balancer itself.
+Path parameters:
+  - uuid
+
 ============================================================
 ## openstack-loadbalancers  (module: waldur_api_client.api.openstack_loadbalancers)
 ============================================================
@@ -14243,6 +14257,13 @@ Request body: yes
 POST /api/openstack-loadbalancers/{uuid}/detach_floating_ip/
 Summary: Detach floating IP from VIP
 Description: Detach floating IP from the load balancer VIP port.
+Path parameters:
+  - uuid
+
+### openstack_loadbalancers_pull
+POST /api/openstack-loadbalancers/{uuid}/pull/
+Summary: Pull load balancer
+Description: Synchronize load balancer state from the OpenStack backend.
 Path parameters:
   - uuid
 
@@ -14656,6 +14677,13 @@ Description: Delete a pool member.
 Path parameters:
   - uuid
 
+### openstack_pool_members_pull
+POST /api/openstack-pool-members/{uuid}/pull/
+Summary: Pull pool member
+Description: Synchronize pool member state from the OpenStack backend. Also pulls the associated pool and load balancer.
+Path parameters:
+  - uuid
+
 ============================================================
 ## openstack-pools  (module: waldur_api_client.api.openstack_pools)
 ============================================================
@@ -14720,6 +14748,13 @@ Request body: yes
 DELETE /api/openstack-pools/{uuid}/
 Summary: Delete pool
 Description: Delete a pool.
+Path parameters:
+  - uuid
+
+### openstack_pools_pull
+POST /api/openstack-pools/{uuid}/pull/
+Summary: Pull pool
+Description: Synchronize pool state from the OpenStack backend. Also pulls the associated load balancer.
 Path parameters:
   - uuid
 

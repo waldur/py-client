@@ -80,7 +80,7 @@ class Offering:
         billable (Union[Unset, bool]): Purchase and usage is invoiced.
         scope (Union[Unset, str]):
         scope_uuid (Union[None, UUID, Unset]):
-        scope_name (Union[None, UUID, Unset]):
+        scope_name (Union[None, Unset, str]):
         scope_state (Union[CoreStates, None, Unset]):
         scope_error_message (Union[None, Unset, str]):
         files (Union[Unset, list['NestedOfferingFile']]):
@@ -154,7 +154,7 @@ class Offering:
     billable: Union[Unset, bool] = UNSET
     scope: Union[Unset, str] = UNSET
     scope_uuid: Union[None, UUID, Unset] = UNSET
-    scope_name: Union[None, UUID, Unset] = UNSET
+    scope_name: Union[None, Unset, str] = UNSET
     scope_state: Union[CoreStates, None, Unset] = UNSET
     scope_error_message: Union[None, Unset, str] = UNSET
     files: Union[Unset, list["NestedOfferingFile"]] = UNSET
@@ -362,8 +362,6 @@ class Offering:
         scope_name: Union[None, Unset, str]
         if isinstance(self.scope_name, Unset):
             scope_name = UNSET
-        elif isinstance(self.scope_name, UUID):
-            scope_name = str(self.scope_name)
         else:
             scope_name = self.scope_name
 
@@ -911,20 +909,12 @@ class Offering:
 
         scope_uuid = _parse_scope_uuid(d.pop("scope_uuid", UNSET))
 
-        def _parse_scope_name(data: object) -> Union[None, UUID, Unset]:
+        def _parse_scope_name(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                scope_name_type_0 = UUID(data)
-
-                return scope_name_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(Union[None, Unset, str], data)
 
         scope_name = _parse_scope_name(d.pop("scope_name", UNSET))
 

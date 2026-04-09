@@ -2263,6 +2263,7 @@ Module: `waldur_api_client.api.openstack_health_monitors`
 - `openstack_health_monitors_update` PUT `/api/openstack-health-monitors/{uuid}/` — Update health monitor (path: uuid | request body)
 - `openstack_health_monitors_partial_update` PATCH `/api/openstack-health-monitors/{uuid}/` — Partially update health monitor (path: uuid | request body)
 - `openstack_health_monitors_destroy` DELETE `/api/openstack-health-monitors/{uuid}/` — Delete health monitor (path: uuid)
+- `openstack_health_monitors_pull` POST `/api/openstack-health-monitors/{uuid}/pull/` — Pull health monitor (path: uuid)
 
 ## openstack-images
 Module: `waldur_api_client.api.openstack_images`
@@ -2316,6 +2317,7 @@ Module: `waldur_api_client.api.openstack_listeners`
 - `openstack_listeners_update` PUT `/api/openstack-listeners/{uuid}/` — Update listener (path: uuid | request body)
 - `openstack_listeners_partial_update` PATCH `/api/openstack-listeners/{uuid}/` — Partially update listener (path: uuid | request body)
 - `openstack_listeners_destroy` DELETE `/api/openstack-listeners/{uuid}/` — Delete listener (path: uuid)
+- `openstack_listeners_pull` POST `/api/openstack-listeners/{uuid}/pull/` — Pull listener (path: uuid)
 
 ## openstack-loadbalancers
 Module: `waldur_api_client.api.openstack_loadbalancers`
@@ -2329,6 +2331,7 @@ Module: `waldur_api_client.api.openstack_loadbalancers`
 - `openstack_loadbalancers_destroy` DELETE `/api/openstack-loadbalancers/{uuid}/` — Delete load balancer (path: uuid)
 - `openstack_loadbalancers_attach_floating_ip` POST `/api/openstack-loadbalancers/{uuid}/attach_floating_ip/` — Attach floating IP to VIP (path: uuid | request body)
 - `openstack_loadbalancers_detach_floating_ip` POST `/api/openstack-loadbalancers/{uuid}/detach_floating_ip/` — Detach floating IP from VIP (path: uuid)
+- `openstack_loadbalancers_pull` POST `/api/openstack-loadbalancers/{uuid}/pull/` — Pull load balancer (path: uuid)
 - `openstack_loadbalancers_unlink` POST `/api/openstack-loadbalancers/{uuid}/unlink/` — Unlink load balancer (path: uuid)
 
 ## openstack-marketplace-tenants
@@ -2390,6 +2393,7 @@ Module: `waldur_api_client.api.openstack_pool_members`
 - `openstack_pool_members_update` PUT `/api/openstack-pool-members/{uuid}/` — Update pool member (path: uuid | request body)
 - `openstack_pool_members_partial_update` PATCH `/api/openstack-pool-members/{uuid}/` — Partially update pool member (path: uuid | request body)
 - `openstack_pool_members_destroy` DELETE `/api/openstack-pool-members/{uuid}/` — Delete pool member (path: uuid)
+- `openstack_pool_members_pull` POST `/api/openstack-pool-members/{uuid}/pull/` — Pull pool member (path: uuid)
 
 ## openstack-pools
 Module: `waldur_api_client.api.openstack_pools`
@@ -2401,6 +2405,7 @@ Module: `waldur_api_client.api.openstack_pools`
 - `openstack_pools_update` PUT `/api/openstack-pools/{uuid}/` — Update pool (path: uuid | request body)
 - `openstack_pools_partial_update` PATCH `/api/openstack-pools/{uuid}/` — Partially update pool (path: uuid | request body)
 - `openstack_pools_destroy` DELETE `/api/openstack-pools/{uuid}/` — Delete pool (path: uuid)
+- `openstack_pools_pull` POST `/api/openstack-pools/{uuid}/pull/` — Pull pool (path: uuid)
 
 ## openstack-ports
 Module: `waldur_api_client.api.openstack_ports`
