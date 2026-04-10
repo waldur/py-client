@@ -797,6 +797,7 @@ from .keys_history_at_retrieve_response_400 import KeysHistoryAtRetrieveResponse
 from .keys_history_at_retrieve_response_404 import KeysHistoryAtRetrieveResponse404
 from .keyword_search_mode_enum import KeywordSearchModeEnum
 from .kind_enum import KindEnum
+from .lb_algorithm_enum import LbAlgorithmEnum
 from .lexis_link import LexisLink
 from .lexis_link_create_request import LexisLinkCreateRequest
 from .lexis_link_request import LexisLinkRequest
@@ -811,6 +812,7 @@ from .link_to_invoice_request import LinkToInvoiceRequest
 from .load_balancer_async_operation_response import LoadBalancerAsyncOperationResponse
 from .load_balancer_attach_floating_ip_request import LoadBalancerAttachFloatingIPRequest
 from .load_balancer_protocol_enum import LoadBalancerProtocolEnum
+from .load_balancer_set_security_groups_request import LoadBalancerSetSecurityGroupsRequest
 from .lock_stats import LockStats
 from .loginpagelayout_enum import LOGINPAGELAYOUTEnum
 from .logout import Logout
@@ -1175,6 +1177,7 @@ from .open_stack_load_balancer_field_enum import OpenStackLoadBalancerFieldEnum
 from .open_stack_load_balancer_marketplace_offering_plugin_options_type_0 import (
     OpenStackLoadBalancerMarketplaceOfferingPluginOptionsType0,
 )
+from .open_stack_load_balancer_vip_security_groups_item import OpenStackLoadBalancerVipSecurityGroupsItem
 from .open_stack_nested_floating_ip import OpenStackNestedFloatingIP
 from .open_stack_nested_floating_ip_request import OpenStackNestedFloatingIPRequest
 from .open_stack_nested_instance import OpenStackNestedInstance
@@ -3081,6 +3084,7 @@ __all__ = (
     "KeysHistoryAtRetrieveResponse404",
     "KeywordSearchModeEnum",
     "KindEnum",
+    "LbAlgorithmEnum",
     "LexisLink",
     "LexisLinkCreateRequest",
     "LexisLinkRequest",
@@ -3095,6 +3099,7 @@ __all__ = (
     "LoadBalancerAsyncOperationResponse",
     "LoadBalancerAttachFloatingIPRequest",
     "LoadBalancerProtocolEnum",
+    "LoadBalancerSetSecurityGroupsRequest",
     "LockStats",
     "LOGINPAGELAYOUTEnum",
     "Logout",
@@ -3427,6 +3432,7 @@ __all__ = (
     "OpenStackLoadBalancer",
     "OpenStackLoadBalancerFieldEnum",
     "OpenStackLoadBalancerMarketplaceOfferingPluginOptionsType0",
+    "OpenStackLoadBalancerVipSecurityGroupsItem",
     "OpenStackNestedFloatingIP",
     "OpenStackNestedFloatingIPRequest",
     "OpenStackNestedInstance",

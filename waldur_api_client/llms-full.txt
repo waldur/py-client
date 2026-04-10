@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-dev.20260410021654
+# Version: 8.0.7-dev.20260410084611
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -14266,6 +14266,14 @@ Summary: Pull load balancer
 Description: Synchronize load balancer state from the OpenStack backend.
 Path parameters:
   - uuid
+
+### openstack_loadbalancers_set_security_groups
+POST /api/openstack-loadbalancers/{uuid}/set_security_groups/
+Summary: Set security groups on VIP port
+Description: Set security groups on the load balancer VIP port to control access.
+Path parameters:
+  - uuid
+Request body: yes
 
 ### openstack_loadbalancers_unlink
 POST /api/openstack-loadbalancers/{uuid}/unlink/

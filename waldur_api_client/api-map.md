@@ -2332,6 +2332,7 @@ Module: `waldur_api_client.api.openstack_loadbalancers`
 - `openstack_loadbalancers_attach_floating_ip` POST `/api/openstack-loadbalancers/{uuid}/attach_floating_ip/` — Attach floating IP to VIP (path: uuid | request body)
 - `openstack_loadbalancers_detach_floating_ip` POST `/api/openstack-loadbalancers/{uuid}/detach_floating_ip/` — Detach floating IP from VIP (path: uuid)
 - `openstack_loadbalancers_pull` POST `/api/openstack-loadbalancers/{uuid}/pull/` — Pull load balancer (path: uuid)
+- `openstack_loadbalancers_set_security_groups` POST `/api/openstack-loadbalancers/{uuid}/set_security_groups/` — Set security groups on VIP port (path: uuid | request body)
 - `openstack_loadbalancers_unlink` POST `/api/openstack-loadbalancers/{uuid}/unlink/` — Unlink load balancer (path: uuid)
 
 ## openstack-marketplace-tenants
