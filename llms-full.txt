@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-dev.20260410090924
+# Version: 8.0.7-dev.20260410103209
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5903,6 +5903,43 @@ Summary: Delete a category help article
 Description: Deletes a help article. Requires staff permissions.
 Path parameters:
   - id — A unique integer value identifying this category help article.
+
+============================================================
+## marketplace-component-usage-monthly  (module: waldur_api_client.api.marketplace_component_usage_monthly)
+============================================================
+
+### marketplace_component_usage_monthly_list
+GET /api/marketplace-component-usage-monthly/
+Summary: List monthly component usage summaries globally
+Description: Returns paginated monthly component usage across all offerings and service providers. Results are automatically filtered by the user's permissions. Defaults to the current month if no time filters ('billing_period', 'start', 'end') are provided.
+Query parameters (11):
+  - billing_period
+  - billing_type
+  - component_type
+  - customer_uuid
+  - end
+  - field
+  - o — Which field to use when ordering the results.
+  - offering_type
+  - offering_uuid
+  - project_uuid
+  - start
+
+### marketplace_component_usage_monthly_count
+HEAD /api/marketplace-component-usage-monthly/
+Summary: List monthly component usage summaries globally
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (10):
+  - billing_period
+  - billing_type
+  - component_type
+  - customer_uuid
+  - end
+  - o — Which field to use when ordering the results.
+  - offering_type
+  - offering_uuid
+  - project_uuid
+  - start
 
 ============================================================
 ## marketplace-component-usages  (module: waldur_api_client.api.marketplace_component_usages)

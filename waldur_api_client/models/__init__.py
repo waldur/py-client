@@ -375,6 +375,8 @@ from .component_usage import ComponentUsage
 from .component_usage_create_request import ComponentUsageCreateRequest
 from .component_usage_field_enum import ComponentUsageFieldEnum
 from .component_usage_item_request import ComponentUsageItemRequest
+from .component_usage_monthly import ComponentUsageMonthly
+from .component_usage_monthly_field_enum import ComponentUsageMonthlyFieldEnum
 from .component_usage_o_enum import ComponentUsageOEnum
 from .component_usages_per_month_stats import ComponentUsagesPerMonthStats
 from .component_usages_per_project import ComponentUsagesPerProject
@@ -2675,6 +2677,8 @@ __all__ = (
     "ComponentUsageCreateRequest",
     "ComponentUsageFieldEnum",
     "ComponentUsageItemRequest",
+    "ComponentUsageMonthly",
+    "ComponentUsageMonthlyFieldEnum",
     "ComponentUsageOEnum",
     "ComponentUsagesPerMonthStats",
     "ComponentUsagesPerProject",

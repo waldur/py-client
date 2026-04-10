@@ -1093,6 +1093,12 @@ Module: `waldur_api_client.api.marketplace_category_help_articles`
 - `marketplace_category_help_articles_partial_update` PATCH `/api/marketplace-category-help-articles/{id}/` — Partially update a category help article (path: id | request body)
 - `marketplace_category_help_articles_destroy` DELETE `/api/marketplace-category-help-articles/{id}/` — Delete a category help article (path: id)
 
+## marketplace-component-usage-monthly
+Module: `waldur_api_client.api.marketplace_component_usage_monthly`
+
+- `marketplace_component_usage_monthly_list` GET `/api/marketplace-component-usage-monthly/` — List monthly component usage summaries globally (11 query params)
+- `marketplace_component_usage_monthly_count` HEAD `/api/marketplace-component-usage-monthly/` — List monthly component usage summaries globally (10 query params)
+
 ## marketplace-component-usages
 Module: `waldur_api_client.api.marketplace_component_usages`
 
