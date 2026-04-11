@@ -13,6 +13,7 @@ from ..models.oecd_fos_2007_code_enum import OecdFos2007CodeEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.affiliated_organization import AffiliatedOrganization
     from ..models.nested_price_estimate import NestedPriceEstimate
     from ..models.project_marketplace_resource_count import ProjectMarketplaceResourceCount
 
@@ -69,6 +70,7 @@ class Project:
         user_email_patterns (Union[Unset, Any]):
         user_affiliations (Union[Unset, Any]):
         user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
+        affiliated_organizations (Union[Unset, list['AffiliatedOrganization']]):
         project_credit (Union[None, Unset, float]):
         marketplace_resource_count (Union[Unset, ProjectMarketplaceResourceCount]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
@@ -112,6 +114,7 @@ class Project:
     user_email_patterns: Union[Unset, Any] = UNSET
     user_affiliations: Union[Unset, Any] = UNSET
     user_identity_sources: Union[Unset, Any] = UNSET
+    affiliated_organizations: Union[Unset, list["AffiliatedOrganization"]] = UNSET
     project_credit: Union[None, Unset, float] = UNSET
     marketplace_resource_count: Union[Unset, "ProjectMarketplaceResourceCount"] = UNSET
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
@@ -268,6 +271,13 @@ class Project:
 
         user_identity_sources = self.user_identity_sources
 
+        affiliated_organizations: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.affiliated_organizations, Unset):
+            affiliated_organizations = []
+            for affiliated_organizations_item_data in self.affiliated_organizations:
+                affiliated_organizations_item = affiliated_organizations_item_data.to_dict()
+                affiliated_organizations.append(affiliated_organizations_item)
+
         project_credit: Union[None, Unset, float]
         if isinstance(self.project_credit, Unset):
             project_credit = UNSET
@@ -361,6 +371,8 @@ class Project:
             field_dict["user_affiliations"] = user_affiliations
         if user_identity_sources is not UNSET:
             field_dict["user_identity_sources"] = user_identity_sources
+        if affiliated_organizations is not UNSET:
+            field_dict["affiliated_organizations"] = affiliated_organizations
         if project_credit is not UNSET:
             field_dict["project_credit"] = project_credit
         if marketplace_resource_count is not UNSET:
@@ -372,6 +384,7 @@ class Project:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.affiliated_organization import AffiliatedOrganization
         from ..models.nested_price_estimate import NestedPriceEstimate
         from ..models.project_marketplace_resource_count import ProjectMarketplaceResourceCount
 
@@ -619,6 +632,13 @@ class Project:
 
         user_identity_sources = d.pop("user_identity_sources", UNSET)
 
+        affiliated_organizations = []
+        _affiliated_organizations = d.pop("affiliated_organizations", UNSET)
+        for affiliated_organizations_item_data in _affiliated_organizations or []:
+            affiliated_organizations_item = AffiliatedOrganization.from_dict(affiliated_organizations_item_data)
+
+            affiliated_organizations.append(affiliated_organizations_item)
+
         def _parse_project_credit(data: object) -> Union[None, Unset, float]:
             if data is None:
                 return data
@@ -681,6 +701,7 @@ class Project:
             user_email_patterns=user_email_patterns,
             user_affiliations=user_affiliations,
             user_identity_sources=user_identity_sources,
+            affiliated_organizations=affiliated_organizations,
             project_credit=project_credit,
             marketplace_resource_count=marketplace_resource_count,
             billing_price_estimate=billing_price_estimate,

@@ -14,6 +14,8 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     *,
     accounting_is_running: Union[Unset, bool] = UNSET,
+    affiliated_organization_name: Union[Unset, str] = UNSET,
+    affiliated_organization_uuid: Union[Unset, list[UUID]] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
@@ -25,6 +27,7 @@ def _get_kwargs(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    has_affiliated_organization: Union[Unset, bool] = UNSET,
     include_terminated: Union[Unset, bool] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
@@ -42,6 +45,17 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["accounting_is_running"] = accounting_is_running
+
+    params["affiliated_organization_name"] = affiliated_organization_name
+
+    json_affiliated_organization_uuid: Union[Unset, list[str]] = UNSET
+    if not isinstance(affiliated_organization_uuid, Unset):
+        json_affiliated_organization_uuid = []
+        for affiliated_organization_uuid_item_data in affiliated_organization_uuid:
+            affiliated_organization_uuid_item = str(affiliated_organization_uuid_item_data)
+            json_affiliated_organization_uuid.append(affiliated_organization_uuid_item)
+
+    params["affiliated_organization_uuid"] = json_affiliated_organization_uuid
 
     params["backend_id"] = backend_id
 
@@ -77,6 +91,8 @@ def _get_kwargs(
     params["customer_native_name"] = customer_native_name
 
     params["description"] = description
+
+    params["has_affiliated_organization"] = has_affiliated_organization
 
     params["include_terminated"] = include_terminated
 
@@ -164,6 +180,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     accounting_is_running: Union[Unset, bool] = UNSET,
+    affiliated_organization_name: Union[Unset, str] = UNSET,
+    affiliated_organization_uuid: Union[Unset, list[UUID]] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
@@ -175,6 +193,7 @@ def sync_detailed(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    has_affiliated_organization: Union[Unset, bool] = UNSET,
     include_terminated: Union[Unset, bool] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
@@ -195,6 +214,8 @@ def sync_detailed(
 
     Args:
         accounting_is_running (Union[Unset, bool]):
+        affiliated_organization_name (Union[Unset, str]):
+        affiliated_organization_uuid (Union[Unset, list[UUID]]):
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
@@ -206,6 +227,7 @@ def sync_detailed(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
+        has_affiliated_organization (Union[Unset, bool]):
         include_terminated (Union[Unset, bool]):
         is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
@@ -230,6 +252,8 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         accounting_is_running=accounting_is_running,
+        affiliated_organization_name=affiliated_organization_name,
+        affiliated_organization_uuid=affiliated_organization_uuid,
         backend_id=backend_id,
         can_admin=can_admin,
         can_manage=can_manage,
@@ -241,6 +265,7 @@ def sync_detailed(
         customer_name=customer_name,
         customer_native_name=customer_native_name,
         description=description,
+        has_affiliated_organization=has_affiliated_organization,
         include_terminated=include_terminated,
         is_removed=is_removed,
         modified=modified,
@@ -267,6 +292,8 @@ def sync(
     *,
     client: AuthenticatedClient,
     accounting_is_running: Union[Unset, bool] = UNSET,
+    affiliated_organization_name: Union[Unset, str] = UNSET,
+    affiliated_organization_uuid: Union[Unset, list[UUID]] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
@@ -278,6 +305,7 @@ def sync(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    has_affiliated_organization: Union[Unset, bool] = UNSET,
     include_terminated: Union[Unset, bool] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
@@ -298,6 +326,8 @@ def sync(
 
     Args:
         accounting_is_running (Union[Unset, bool]):
+        affiliated_organization_name (Union[Unset, str]):
+        affiliated_organization_uuid (Union[Unset, list[UUID]]):
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
@@ -309,6 +339,7 @@ def sync(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
+        has_affiliated_organization (Union[Unset, bool]):
         include_terminated (Union[Unset, bool]):
         is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
@@ -334,6 +365,8 @@ def sync(
     return sync_detailed(
         client=client,
         accounting_is_running=accounting_is_running,
+        affiliated_organization_name=affiliated_organization_name,
+        affiliated_organization_uuid=affiliated_organization_uuid,
         backend_id=backend_id,
         can_admin=can_admin,
         can_manage=can_manage,
@@ -345,6 +378,7 @@ def sync(
         customer_name=customer_name,
         customer_native_name=customer_native_name,
         description=description,
+        has_affiliated_organization=has_affiliated_organization,
         include_terminated=include_terminated,
         is_removed=is_removed,
         modified=modified,
@@ -365,6 +399,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     accounting_is_running: Union[Unset, bool] = UNSET,
+    affiliated_organization_name: Union[Unset, str] = UNSET,
+    affiliated_organization_uuid: Union[Unset, list[UUID]] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
@@ -376,6 +412,7 @@ async def asyncio_detailed(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    has_affiliated_organization: Union[Unset, bool] = UNSET,
     include_terminated: Union[Unset, bool] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
@@ -396,6 +433,8 @@ async def asyncio_detailed(
 
     Args:
         accounting_is_running (Union[Unset, bool]):
+        affiliated_organization_name (Union[Unset, str]):
+        affiliated_organization_uuid (Union[Unset, list[UUID]]):
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
@@ -407,6 +446,7 @@ async def asyncio_detailed(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
+        has_affiliated_organization (Union[Unset, bool]):
         include_terminated (Union[Unset, bool]):
         is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
@@ -431,6 +471,8 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         accounting_is_running=accounting_is_running,
+        affiliated_organization_name=affiliated_organization_name,
+        affiliated_organization_uuid=affiliated_organization_uuid,
         backend_id=backend_id,
         can_admin=can_admin,
         can_manage=can_manage,
@@ -442,6 +484,7 @@ async def asyncio_detailed(
         customer_name=customer_name,
         customer_native_name=customer_native_name,
         description=description,
+        has_affiliated_organization=has_affiliated_organization,
         include_terminated=include_terminated,
         is_removed=is_removed,
         modified=modified,
@@ -466,6 +509,8 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     accounting_is_running: Union[Unset, bool] = UNSET,
+    affiliated_organization_name: Union[Unset, str] = UNSET,
+    affiliated_organization_uuid: Union[Unset, list[UUID]] = UNSET,
     backend_id: Union[Unset, str] = UNSET,
     can_admin: Union[Unset, bool] = UNSET,
     can_manage: Union[Unset, bool] = UNSET,
@@ -477,6 +522,7 @@ async def asyncio(
     customer_name: Union[Unset, str] = UNSET,
     customer_native_name: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
+    has_affiliated_organization: Union[Unset, bool] = UNSET,
     include_terminated: Union[Unset, bool] = UNSET,
     is_removed: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
@@ -497,6 +543,8 @@ async def asyncio(
 
     Args:
         accounting_is_running (Union[Unset, bool]):
+        affiliated_organization_name (Union[Unset, str]):
+        affiliated_organization_uuid (Union[Unset, list[UUID]]):
         backend_id (Union[Unset, str]):
         can_admin (Union[Unset, bool]):
         can_manage (Union[Unset, bool]):
@@ -508,6 +556,7 @@ async def asyncio(
         customer_name (Union[Unset, str]):
         customer_native_name (Union[Unset, str]):
         description (Union[Unset, str]):
+        has_affiliated_organization (Union[Unset, bool]):
         include_terminated (Union[Unset, bool]):
         is_removed (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
@@ -534,6 +583,8 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             accounting_is_running=accounting_is_running,
+            affiliated_organization_name=affiliated_organization_name,
+            affiliated_organization_uuid=affiliated_organization_uuid,
             backend_id=backend_id,
             can_admin=can_admin,
             can_manage=can_manage,
@@ -545,6 +596,7 @@ async def asyncio(
             customer_name=customer_name,
             customer_native_name=customer_native_name,
             description=description,
+            has_affiliated_organization=has_affiliated_organization,
             include_terminated=include_terminated,
             is_removed=is_removed,
             modified=modified,

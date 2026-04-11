@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class ProjectFieldEnum(str, Enum):
+    AFFILIATED_ORGANIZATIONS = "affiliated_organizations"
     BACKEND_ID = "backend_id"
     BILLING_PRICE_ESTIMATE = "billing_price_estimate"
     CREATED = "created"

@@ -93,6 +93,20 @@ Module: `waldur_api_client.api.admin_announcements`
 - `admin_announcements_partial_update` PATCH `/api/admin-announcements/{uuid}/` (path: uuid | request body)
 - `admin_announcements_destroy` DELETE `/api/admin-announcements/{uuid}/` (path: uuid)
 
+## affiliated-organizations
+Module: `waldur_api_client.api.affiliated_organizations`
+
+- `affiliated_organizations_list` GET `/api/affiliated-organizations/` (7 query params)
+- `affiliated_organizations_count` HEAD `/api/affiliated-organizations/` — Get number of items in the collection matching the request parameters (7 query params)
+- `affiliated_organizations_create` POST `/api/affiliated-organizations/` (request body)
+- `affiliated_organizations_report_list` GET `/api/affiliated-organizations/report/` — Get affiliated organizations report (7 query params)
+- `affiliated_organizations_report_count` HEAD `/api/affiliated-organizations/report/` — Get affiliated organizations report (7 query params)
+- `affiliated_organizations_retrieve` GET `/api/affiliated-organizations/{uuid}/` (path: uuid)
+- `affiliated_organizations_update` PUT `/api/affiliated-organizations/{uuid}/` (path: uuid | request body)
+- `affiliated_organizations_partial_update` PATCH `/api/affiliated-organizations/{uuid}/` (path: uuid | request body)
+- `affiliated_organizations_destroy` DELETE `/api/affiliated-organizations/{uuid}/` (path: uuid)
+- `affiliated_organizations_stats_retrieve` GET `/api/affiliated-organizations/{uuid}/stats/` — Get affiliated organization statistics (path: uuid)
+
 ## api-auth
 Module: `waldur_api_client.api.api_auth`
 
@@ -1675,13 +1689,13 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `service_provider_compliance_overview` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/compliance_overview/` — Get compliance overview for a service provider (path: service_provider_uuid)
 - `service_provider_offering_users_compliance` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/offering_users/` — List offering users' compliance status (path: service_provider_uuid | 2 query params)
 - `marketplace_service_providers_course_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/course_accounts/` — List course project accounts for a service provider (path: service_provider_uuid | 9 query params)
-- `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 22 query params)
+- `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 25 query params)
 - `marketplace_service_providers_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customers/` — List customers of a service provider (path: service_provider_uuid | 16 query params)
 - `marketplace_service_providers_keys_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 14 query params)
 - `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 40 query params)
 - `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 18 query params)
 - `marketplace_service_providers_project_service_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/` — List project service accounts for a service provider (path: service_provider_uuid | 5 query params)
-- `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 21 query params)
+- `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 24 query params)
 - `marketplace_service_providers_user_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/user_customers/` — List customers of a specific user within a service provider's scope (path: service_provider_uuid | 17 query params)
 - `marketplace_service_providers_users_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/users/` — List users of a service provider (path: service_provider_uuid | 25 query params)
 - `marketplace_service_providers_retrieve` GET `/api/marketplace-service-providers/{uuid}/` — Retrieve a service provider (path: uuid | 1 query param)
@@ -2162,8 +2176,8 @@ Module: `waldur_api_client.api.openportal_remote_associations`
 ## openportal-unmanaged-projects
 Module: `waldur_api_client.api.openportal_unmanaged_projects`
 
-- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (24 query params)
-- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (23 query params)
+- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (27 query params)
+- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (26 query params)
 - `openportal_unmanaged_projects_create` POST `/api/openportal-unmanaged-projects/` — Create a new project (request body)
 - `openportal_unmanaged_projects_checklist_template_retrieve` GET `/api/openportal-unmanaged-projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `openportal_unmanaged_projects_checklist_template_count` HEAD `/api/openportal-unmanaged-projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -2180,6 +2194,7 @@ Module: `waldur_api_client.api.openportal_unmanaged_projects`
 - `openportal_unmanaged_projects_recover` POST `/api/openportal-unmanaged-projects/{uuid}/recover/` — Recover a soft-deleted project (path: uuid | request body)
 - `openportal_unmanaged_projects_stats_retrieve` GET `/api/openportal-unmanaged-projects/{uuid}/stats/` — Get project resource usage statistics (path: uuid | 1 query param)
 - `openportal_unmanaged_projects_submit_answers` POST `/api/openportal-unmanaged-projects/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
+- `openportal_unmanaged_projects_update_affiliated_organizations` POST `/api/openportal-unmanaged-projects/{uuid}/update_affiliated_organizations/` — Update affiliated organizations for a project (path: uuid | request body)
 - `openportal_unmanaged_projects_update_user` POST `/api/openportal-unmanaged-projects/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## openportal-userinfo
@@ -2669,8 +2684,8 @@ Module: `waldur_api_client.api.project_types`
 ## projects
 Module: `waldur_api_client.api.projects`
 
-- `projects_list` GET `/api/projects/` — List projects (24 query params)
-- `projects_count` HEAD `/api/projects/` — List projects (23 query params)
+- `projects_list` GET `/api/projects/` — List projects (27 query params)
+- `projects_count` HEAD `/api/projects/` — List projects (26 query params)
 - `projects_create` POST `/api/projects/` — Create a new project (request body)
 - `projects_checklist_template_retrieve` GET `/api/projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `projects_checklist_template_count` HEAD `/api/projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -2689,6 +2704,7 @@ Module: `waldur_api_client.api.projects`
 - `projects_stats_retrieve` GET `/api/projects/{uuid}/stats/` — Get project resource usage statistics (path: uuid | 1 query param)
 - `projects_submit_answers` POST `/api/projects/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
 - `projects_sync_user_roles` POST `/api/projects/{uuid}/sync_user_roles/` — Trigger user role sync for this project (path: uuid)
+- `projects_update_affiliated_organizations` POST `/api/projects/{uuid}/update_affiliated_organizations/` — Update affiliated organizations for a project (path: uuid | request body)
 - `projects_update_user` POST `/api/projects/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## promotions-campaigns

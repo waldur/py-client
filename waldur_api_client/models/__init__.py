@@ -17,6 +17,11 @@ from .admin_announcement_request import AdminAnnouncementRequest
 from .admin_announcement_type_enum import AdminAnnouncementTypeEnum
 from .admin_user import AdminUser
 from .administrative_access import AdministrativeAccess
+from .affiliated_organization import AffiliatedOrganization
+from .affiliated_organization_report_row import AffiliatedOrganizationReportRow
+from .affiliated_organization_request import AffiliatedOrganizationRequest
+from .affiliated_organization_stats import AffiliatedOrganizationStats
+from .affiliated_organizations_update_request import AffiliatedOrganizationsUpdateRequest
 from .affiliation_type_enum import AffiliationTypeEnum
 from .affinity_matrix_entry import AffinityMatrixEntry
 from .affinity_matrix_response import AffinityMatrixResponse
@@ -1340,6 +1345,7 @@ from .partition_summary_request import PartitionSummaryRequest
 from .password_change_request import PasswordChangeRequest
 from .patched_access_subnet_request import PatchedAccessSubnetRequest
 from .patched_admin_announcement_request import PatchedAdminAnnouncementRequest
+from .patched_affiliated_organization_request import PatchedAffiliatedOrganizationRequest
 from .patched_allocation_request import PatchedAllocationRequest
 from .patched_arrow_customer_mapping_request import PatchedArrowCustomerMappingRequest
 from .patched_arrow_settings_request import PatchedArrowSettingsRequest
@@ -2328,6 +2334,11 @@ __all__ = (
     "AdminAnnouncementTypeEnum",
     "AdministrativeAccess",
     "AdminUser",
+    "AffiliatedOrganization",
+    "AffiliatedOrganizationReportRow",
+    "AffiliatedOrganizationRequest",
+    "AffiliatedOrganizationStats",
+    "AffiliatedOrganizationsUpdateRequest",
     "AffiliationTypeEnum",
     "AffinityMatrixEntry",
     "AffinityMatrixResponse",
@@ -3575,6 +3586,7 @@ __all__ = (
     "PasswordChangeRequest",
     "PatchedAccessSubnetRequest",
     "PatchedAdminAnnouncementRequest",
+    "PatchedAffiliatedOrganizationRequest",
     "PatchedAllocationRequest",
     "PatchedArrowCustomerMappingRequest",
     "PatchedArrowSettingsRequest",
