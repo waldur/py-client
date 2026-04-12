@@ -47,6 +47,7 @@ class ConstanceSettings:
         currency_name (Union[Unset, str]):
         thumbnail_size (Union[Unset, str]):
         anonymous_user_can_view_offerings (Union[Unset, bool]):
+        show_offering_cover_image (Union[Unset, bool]):
         anonymous_user_can_view_plans (Union[Unset, bool]):
         restricted_offering_visibility_mode (Union[Unset, RESTRICTEDOFFERINGVISIBILITYMODEEnum]):
         allow_service_provider_offering_management (Union[Unset, bool]):
@@ -300,6 +301,7 @@ class ConstanceSettings:
     currency_name: Union[Unset, str] = UNSET
     thumbnail_size: Union[Unset, str] = UNSET
     anonymous_user_can_view_offerings: Union[Unset, bool] = UNSET
+    show_offering_cover_image: Union[Unset, bool] = UNSET
     anonymous_user_can_view_plans: Union[Unset, bool] = UNSET
     restricted_offering_visibility_mode: Union[Unset, RESTRICTEDOFFERINGVISIBILITYMODEEnum] = UNSET
     allow_service_provider_offering_management: Union[Unset, bool] = UNSET
@@ -564,6 +566,8 @@ class ConstanceSettings:
         thumbnail_size = self.thumbnail_size
 
         anonymous_user_can_view_offerings = self.anonymous_user_can_view_offerings
+
+        show_offering_cover_image = self.show_offering_cover_image
 
         anonymous_user_can_view_plans = self.anonymous_user_can_view_plans
 
@@ -1266,6 +1270,8 @@ class ConstanceSettings:
             field_dict["THUMBNAIL_SIZE"] = thumbnail_size
         if anonymous_user_can_view_offerings is not UNSET:
             field_dict["ANONYMOUS_USER_CAN_VIEW_OFFERINGS"] = anonymous_user_can_view_offerings
+        if show_offering_cover_image is not UNSET:
+            field_dict["SHOW_OFFERING_COVER_IMAGE"] = show_offering_cover_image
         if anonymous_user_can_view_plans is not UNSET:
             field_dict["ANONYMOUS_USER_CAN_VIEW_PLANS"] = anonymous_user_can_view_plans
         if restricted_offering_visibility_mode is not UNSET:
@@ -1783,6 +1789,8 @@ class ConstanceSettings:
         thumbnail_size = d.pop("THUMBNAIL_SIZE", UNSET)
 
         anonymous_user_can_view_offerings = d.pop("ANONYMOUS_USER_CAN_VIEW_OFFERINGS", UNSET)
+
+        show_offering_cover_image = d.pop("SHOW_OFFERING_COVER_IMAGE", UNSET)
 
         anonymous_user_can_view_plans = d.pop("ANONYMOUS_USER_CAN_VIEW_PLANS", UNSET)
 
@@ -2671,6 +2679,7 @@ class ConstanceSettings:
             currency_name=currency_name,
             thumbnail_size=thumbnail_size,
             anonymous_user_can_view_offerings=anonymous_user_can_view_offerings,
+            show_offering_cover_image=show_offering_cover_image,
             anonymous_user_can_view_plans=anonymous_user_can_view_plans,
             restricted_offering_visibility_mode=restricted_offering_visibility_mode,
             allow_service_provider_offering_management=allow_service_provider_offering_management,
