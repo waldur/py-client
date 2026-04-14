@@ -29,6 +29,7 @@ class IdentityBridgeRequestRequest:
         personal_title (Union[Unset, str]):
         birth_date (Union[None, Unset, datetime.date]):
         place_of_birth (Union[Unset, str]):
+        address (Union[Unset, str]):
         country_of_residence (Union[Unset, str]):
         nationality (Union[Unset, str]):
         nationalities (Union[Unset, list[str]]):
@@ -51,6 +52,7 @@ class IdentityBridgeRequestRequest:
     personal_title: Union[Unset, str] = UNSET
     birth_date: Union[None, Unset, datetime.date] = UNSET
     place_of_birth: Union[Unset, str] = UNSET
+    address: Union[Unset, str] = UNSET
     country_of_residence: Union[Unset, str] = UNSET
     nationality: Union[Unset, str] = UNSET
     nationalities: Union[Unset, list[str]] = UNSET
@@ -100,6 +102,8 @@ class IdentityBridgeRequestRequest:
 
         place_of_birth = self.place_of_birth
 
+        address = self.address
+
         country_of_residence = self.country_of_residence
 
         nationality = self.nationality
@@ -148,6 +152,8 @@ class IdentityBridgeRequestRequest:
             field_dict["birth_date"] = birth_date
         if place_of_birth is not UNSET:
             field_dict["place_of_birth"] = place_of_birth
+        if address is not UNSET:
+            field_dict["address"] = address
         if country_of_residence is not UNSET:
             field_dict["country_of_residence"] = country_of_residence
         if nationality is not UNSET:
@@ -216,6 +222,8 @@ class IdentityBridgeRequestRequest:
 
         place_of_birth = d.pop("place_of_birth", UNSET)
 
+        address = d.pop("address", UNSET)
+
         country_of_residence = d.pop("country_of_residence", UNSET)
 
         nationality = d.pop("nationality", UNSET)
@@ -243,6 +251,7 @@ class IdentityBridgeRequestRequest:
             personal_title=personal_title,
             birth_date=birth_date,
             place_of_birth=place_of_birth,
+            address=address,
             country_of_residence=country_of_residence,
             nationality=nationality,
             nationalities=nationalities,

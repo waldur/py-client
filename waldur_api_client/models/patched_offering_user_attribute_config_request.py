@@ -25,6 +25,7 @@ class PatchedOfferingUserAttributeConfigRequest:
         expose_gender (Union[Unset, bool]):
         expose_personal_title (Union[Unset, bool]):
         expose_place_of_birth (Union[Unset, bool]):
+        expose_address (Union[Unset, bool]):
         expose_country_of_residence (Union[Unset, bool]):
         expose_nationality (Union[Unset, bool]):
         expose_nationalities (Union[Unset, bool]):
@@ -49,6 +50,7 @@ class PatchedOfferingUserAttributeConfigRequest:
     expose_gender: Union[Unset, bool] = UNSET
     expose_personal_title: Union[Unset, bool] = UNSET
     expose_place_of_birth: Union[Unset, bool] = UNSET
+    expose_address: Union[Unset, bool] = UNSET
     expose_country_of_residence: Union[Unset, bool] = UNSET
     expose_nationality: Union[Unset, bool] = UNSET
     expose_nationalities: Union[Unset, bool] = UNSET
@@ -86,6 +88,8 @@ class PatchedOfferingUserAttributeConfigRequest:
         expose_personal_title = self.expose_personal_title
 
         expose_place_of_birth = self.expose_place_of_birth
+
+        expose_address = self.expose_address
 
         expose_country_of_residence = self.expose_country_of_residence
 
@@ -134,6 +138,8 @@ class PatchedOfferingUserAttributeConfigRequest:
             field_dict["expose_personal_title"] = expose_personal_title
         if expose_place_of_birth is not UNSET:
             field_dict["expose_place_of_birth"] = expose_place_of_birth
+        if expose_address is not UNSET:
+            field_dict["expose_address"] = expose_address
         if expose_country_of_residence is not UNSET:
             field_dict["expose_country_of_residence"] = expose_country_of_residence
         if expose_nationality is not UNSET:
@@ -189,6 +195,8 @@ class PatchedOfferingUserAttributeConfigRequest:
 
         expose_place_of_birth = d.pop("expose_place_of_birth", UNSET)
 
+        expose_address = d.pop("expose_address", UNSET)
+
         expose_country_of_residence = d.pop("expose_country_of_residence", UNSET)
 
         expose_nationality = d.pop("expose_nationality", UNSET)
@@ -223,6 +231,7 @@ class PatchedOfferingUserAttributeConfigRequest:
             expose_gender=expose_gender,
             expose_personal_title=expose_personal_title,
             expose_place_of_birth=expose_place_of_birth,
+            expose_address=expose_address,
             expose_country_of_residence=expose_country_of_residence,
             expose_nationality=expose_nationality,
             expose_nationalities=expose_nationalities,

@@ -44,6 +44,7 @@ class OfferingUser:
         user_gender (Union[BlankEnum, GenderEnum, None, Unset]): User's gender (male, female, or unknown)
         user_personal_title (Union[Unset, str]): Honorific title (Mr, Ms, Dr, Prof, etc.)
         user_place_of_birth (Union[Unset, str]):
+        user_address (Union[Unset, str]):
         user_country_of_residence (Union[Unset, str]):
         user_nationality (Union[Unset, str]): Primary citizenship (ISO 3166-1 alpha-2 code)
         user_nationalities (Union[Unset, Any]): List of all citizenships (ISO 3166-1 alpha-2 codes)
@@ -97,6 +98,7 @@ class OfferingUser:
     user_gender: Union[BlankEnum, GenderEnum, None, Unset] = UNSET
     user_personal_title: Union[Unset, str] = UNSET
     user_place_of_birth: Union[Unset, str] = UNSET
+    user_address: Union[Unset, str] = UNSET
     user_country_of_residence: Union[Unset, str] = UNSET
     user_nationality: Union[Unset, str] = UNSET
     user_nationalities: Union[Unset, Any] = UNSET
@@ -184,6 +186,8 @@ class OfferingUser:
         user_personal_title = self.user_personal_title
 
         user_place_of_birth = self.user_place_of_birth
+
+        user_address = self.user_address
 
         user_country_of_residence = self.user_country_of_residence
 
@@ -304,6 +308,8 @@ class OfferingUser:
             field_dict["user_personal_title"] = user_personal_title
         if user_place_of_birth is not UNSET:
             field_dict["user_place_of_birth"] = user_place_of_birth
+        if user_address is not UNSET:
+            field_dict["user_address"] = user_address
         if user_country_of_residence is not UNSET:
             field_dict["user_country_of_residence"] = user_country_of_residence
         if user_nationality is not UNSET:
@@ -447,6 +453,8 @@ class OfferingUser:
 
         user_place_of_birth = d.pop("user_place_of_birth", UNSET)
 
+        user_address = d.pop("user_address", UNSET)
+
         user_country_of_residence = d.pop("user_country_of_residence", UNSET)
 
         user_nationality = d.pop("user_nationality", UNSET)
@@ -575,6 +583,7 @@ class OfferingUser:
             user_gender=user_gender,
             user_personal_title=user_personal_title,
             user_place_of_birth=user_place_of_birth,
+            user_address=user_address,
             user_country_of_residence=user_country_of_residence,
             user_nationality=user_nationality,
             user_nationalities=user_nationalities,

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.7-dev.20260413054017
+# Version: 8.0.8-rc.1-dev.20260414021654
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -11361,15 +11361,11 @@ Description: Get number of items in the collection matching the request paramete
 GET /api/marketplace-stats/count_active_resources_grouped_by_offering/
 Summary: Count active resources grouped by offering
 Description: Count active resources grouped by offering.
-Query parameters (1):
-  - limit — Limit number of results (e.g. top N offerings). No limit by default.
 
 ### marketplace_stats_count_active_resources_grouped_by_offering_count
 HEAD /api/marketplace-stats/count_active_resources_grouped_by_offering/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (1):
-  - limit — Limit number of results (e.g. top N offerings). No limit by default.
 
 ### marketplace_stats_count_active_resources_grouped_by_offering_country_list
 GET /api/marketplace-stats/count_active_resources_grouped_by_offering_country/

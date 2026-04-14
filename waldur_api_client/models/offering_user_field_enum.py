@@ -23,6 +23,7 @@ class OfferingUserFieldEnum(str, Enum):
     USER = "user"
     USERNAME = "username"
     USER_ACTIVE_ISDS = "user_active_isds"
+    USER_ADDRESS = "user_address"
     USER_AFFILIATIONS = "user_affiliations"
     USER_BIRTH_DATE = "user_birth_date"
     USER_CIVIL_NUMBER = "user_civil_number"
