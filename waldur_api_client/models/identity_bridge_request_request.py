@@ -6,6 +6,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.identity_bridge_request_gender_enum import IdentityBridgeRequestGenderEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="IdentityBridgeRequestRequest")
@@ -25,7 +26,7 @@ class IdentityBridgeRequestRequest:
         civil_number (Union[Unset, str]):
         phone_number (Union[Unset, str]):
         identity_source (Union[Unset, str]):
-        gender (Union[None, Unset, int]):
+        gender (Union[IdentityBridgeRequestGenderEnum, None, Unset]):
         personal_title (Union[Unset, str]):
         birth_date (Union[None, Unset, datetime.date]):
         place_of_birth (Union[Unset, str]):
@@ -48,7 +49,7 @@ class IdentityBridgeRequestRequest:
     civil_number: Union[Unset, str] = UNSET
     phone_number: Union[Unset, str] = UNSET
     identity_source: Union[Unset, str] = UNSET
-    gender: Union[None, Unset, int] = UNSET
+    gender: Union[IdentityBridgeRequestGenderEnum, None, Unset] = UNSET
     personal_title: Union[Unset, str] = UNSET
     birth_date: Union[None, Unset, datetime.date] = UNSET
     place_of_birth: Union[Unset, str] = UNSET
@@ -84,9 +85,11 @@ class IdentityBridgeRequestRequest:
 
         identity_source = self.identity_source
 
-        gender: Union[None, Unset, int]
+        gender: Union[None, Unset, str]
         if isinstance(self.gender, Unset):
             gender = UNSET
+        elif isinstance(self.gender, IdentityBridgeRequestGenderEnum):
+            gender = self.gender.value
         else:
             gender = self.gender
 
@@ -192,12 +195,20 @@ class IdentityBridgeRequestRequest:
 
         identity_source = d.pop("identity_source", UNSET)
 
-        def _parse_gender(data: object) -> Union[None, Unset, int]:
+        def _parse_gender(data: object) -> Union[IdentityBridgeRequestGenderEnum, None, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                gender_type_0 = IdentityBridgeRequestGenderEnum(data)
+
+                return gender_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[IdentityBridgeRequestGenderEnum, None, Unset], data)
 
         gender = _parse_gender(d.pop("gender", UNSET))
 

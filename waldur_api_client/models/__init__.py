@@ -691,6 +691,7 @@ from .hypervisor_summary import HypervisorSummary
 from .identity_bridge_allowed_fields import IdentityBridgeAllowedFields
 from .identity_bridge_remove_request import IdentityBridgeRemoveRequest
 from .identity_bridge_remove_result import IdentityBridgeRemoveResult
+from .identity_bridge_request_gender_enum import IdentityBridgeRequestGenderEnum
 from .identity_bridge_request_request import IdentityBridgeRequestRequest
 from .identity_bridge_result import IdentityBridgeResult
 from .identity_bridge_stats import IdentityBridgeStats
@@ -2990,6 +2991,7 @@ __all__ = (
     "IdentityBridgeAllowedFields",
     "IdentityBridgeRemoveRequest",
     "IdentityBridgeRemoveResult",
+    "IdentityBridgeRequestGenderEnum",
     "IdentityBridgeRequestRequest",
     "IdentityBridgeResult",
     "IdentityBridgeStats",
