@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.1-dev.20260414021654
+# Version: 8.0.8-rc.2-dev.20260414121509
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -13937,6 +13937,49 @@ Path parameters:
 POST /api/openstack-health-monitors/{uuid}/pull/
 Summary: Pull health monitor
 Description: Synchronize health monitor state from the OpenStack backend. Also pulls the associated pool and load balancer.
+Path parameters:
+  - uuid
+
+============================================================
+## openstack-hypervisors  (module: waldur_api_client.api.openstack_hypervisors)
+============================================================
+
+### openstack_hypervisors_list
+GET /api/openstack-hypervisors/
+Query parameters (7):
+  - hypervisor_type
+  - name — Name
+  - name_exact — Name (exact)
+  - settings — Settings URL
+  - settings_uuid — Settings UUID
+  - state
+  - status
+
+### openstack_hypervisors_count
+HEAD /api/openstack-hypervisors/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (7):
+  - hypervisor_type
+  - name — Name
+  - name_exact — Name (exact)
+  - settings — Settings URL
+  - settings_uuid — Settings UUID
+  - state
+  - status
+
+### openstack_hypervisors_summary_retrieve
+GET /api/openstack-hypervisors/summary/
+Summary: Get hypervisor summary statistics
+Description: Return aggregated vCPU, RAM and disk totals across all hypervisors matching the current filter (e.g. settings_uuid).
+
+### openstack_hypervisors_summary_count
+HEAD /api/openstack-hypervisors/summary/
+Summary: Get hypervisor summary statistics
+Description: Get number of items in the collection matching the request parameters.
+
+### openstack_hypervisors_retrieve
+GET /api/openstack-hypervisors/{uuid}/
 Path parameters:
   - uuid
 

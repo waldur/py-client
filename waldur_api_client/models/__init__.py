@@ -686,6 +686,8 @@ from .group_invitation_update_request import GroupInvitationUpdateRequest
 from .growth_period_enum import GrowthPeriodEnum
 from .guest_os_enum import GuestOsEnum
 from .guest_power_state_enum import GuestPowerStateEnum
+from .hypervisor import Hypervisor
+from .hypervisor_summary import HypervisorSummary
 from .identity_bridge_allowed_fields import IdentityBridgeAllowedFields
 from .identity_bridge_remove_request import IdentityBridgeRemoveRequest
 from .identity_bridge_remove_result import IdentityBridgeRemoveResult
@@ -2983,6 +2985,8 @@ __all__ = (
     "GrowthPeriodEnum",
     "GuestOsEnum",
     "GuestPowerStateEnum",
+    "Hypervisor",
+    "HypervisorSummary",
     "IdentityBridgeAllowedFields",
     "IdentityBridgeRemoveRequest",
     "IdentityBridgeRemoveResult",
