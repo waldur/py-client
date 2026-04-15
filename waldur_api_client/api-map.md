@@ -2082,6 +2082,13 @@ Module: `waldur_api_client.api.onboarding_verifications`
 - `onboarding_verifications_run_validation` POST `/api/onboarding-verifications/{uuid}/run_validation/` — Run automatic validation using the required fields provided during verification creation (path: uuid | request body)
 - `onboarding_verifications_submit_answers` POST `/api/onboarding-verifications/{uuid}/submit_answers/` — Submit answers to checklist questions (path: uuid | request body)
 
+## openportal-accounting-summary
+Module: `waldur_api_client.api.openportal_accounting_summary`
+
+- `openportal_accounting_summary_list` GET `/api/openportal-accounting-summary/` (3 query params)
+- `openportal_accounting_summary_count` HEAD `/api/openportal-accounting-summary/` — Get number of items in the collection matching the request parameters (3 query params)
+- `openportal_accounting_summary_retrieve` GET `/api/openportal-accounting-summary/{uuid}/` (path: uuid)
+
 ## openportal-allocation-user-usage
 Module: `waldur_api_client.api.openportal_allocation_user_usage`
 
@@ -2115,8 +2122,8 @@ Module: `waldur_api_client.api.openportal_associations`
 ## openportal-managed-projects
 Module: `waldur_api_client.api.openportal_managed_projects`
 
-- `openportal_managed_projects_list` GET `/api/openportal-managed-projects/` — List all managed projects (7 query params)
-- `openportal_managed_projects_count` HEAD `/api/openportal-managed-projects/` — Get number of items in the collection matching the request parameters (7 query params)
+- `openportal_managed_projects_list` GET `/api/openportal-managed-projects/` — List all managed projects (9 query params)
+- `openportal_managed_projects_count` HEAD `/api/openportal-managed-projects/` — Get number of items in the collection matching the request parameters (9 query params)
 - `openportal_managed_projects_retrieve_get` GET `/api/openportal-managed-projects/{identifier}/{destination}/` — Retrieve a managed project (path: destination, identifier)
 - `openportal_managed_projects_retrieve_head` HEAD `/api/openportal-managed-projects/{identifier}/{destination}/` — Get number of items in the collection matching the request parameters (path: destination, identifier)
 - `openportal_managed_projects_approve` POST `/api/openportal-managed-projects/{identifier}/{destination}/approve/` — Approve managed project request (path: destination, identifier | request body)
@@ -2124,6 +2131,13 @@ Module: `waldur_api_client.api.openportal_managed_projects`
 - `openportal_managed_projects_delete_destroy` DELETE `/api/openportal-managed-projects/{identifier}/{destination}/delete/` — Delete ManagedProject object (path: destination, identifier)
 - `openportal_managed_projects_detach` POST `/api/openportal-managed-projects/{identifier}/{destination}/detach/` — Detach the project from this managed project (path: destination, identifier)
 - `openportal_managed_projects_reject` POST `/api/openportal-managed-projects/{identifier}/{destination}/reject/` — Reject managed project request (path: destination, identifier | request body)
+
+## openportal-project-storage-reports
+Module: `waldur_api_client.api.openportal_project_storage_reports`
+
+- `openportal_project_storage_reports_list` GET `/api/openportal-project-storage-reports/` (5 query params)
+- `openportal_project_storage_reports_count` HEAD `/api/openportal-project-storage-reports/` — Get number of items in the collection matching the request parameters (5 query params)
+- `openportal_project_storage_reports_retrieve` GET `/api/openportal-project-storage-reports/{id}/` (path: id)
 
 ## openportal-project-template
 Module: `waldur_api_client.api.openportal_project_template`
@@ -2136,6 +2150,13 @@ Module: `waldur_api_client.api.openportal_project_template`
 - `openportal_project_template_partial_update` PATCH `/api/openportal-project-template/{uuid}/` — Partially update ProjectTemplate object (path: uuid | request body)
 - `openportal_project_template_destroy` DELETE `/api/openportal-project-template/{uuid}/` (path: uuid)
 - `openportal_project_template_delete_destroy` DELETE `/api/openportal-project-template/{uuid}/delete/` — Delete ProjectTemplate object (path: uuid)
+
+## openportal-project-usage-reports
+Module: `waldur_api_client.api.openportal_project_usage_reports`
+
+- `openportal_project_usage_reports_list` GET `/api/openportal-project-usage-reports/` (6 query params)
+- `openportal_project_usage_reports_count` HEAD `/api/openportal-project-usage-reports/` — Get number of items in the collection matching the request parameters (6 query params)
+- `openportal_project_usage_reports_retrieve` GET `/api/openportal-project-usage-reports/{id}/` (path: id)
 
 ## openportal-projectinfo
 Module: `waldur_api_client.api.openportal_projectinfo`

@@ -6,82 +6,58 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.managed_project import ManagedProject
-from ...models.remote_project_update_request_state_enum import RemoteProjectUpdateRequestStateEnum
+from ...models.project_accounting_summary import ProjectAccountingSummary
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    params["identifier"] = identifier
+    json_customer_uuid: Union[Unset, str] = UNSET
+    if not isinstance(customer_uuid, Unset):
+        json_customer_uuid = str(customer_uuid)
+    params["customer_uuid"] = json_customer_uuid
 
-    params["local_identifier"] = local_identifier
-
-    params["o"] = o
+    params["is_active"] = is_active
 
     params["page"] = page
 
     params["page_size"] = page_size
-
-    params["project"] = project
-
-    params["project_template"] = project_template
-
-    json_project_template_uuid: Union[Unset, str] = UNSET
-    if not isinstance(project_template_uuid, Unset):
-        json_project_template_uuid = str(project_template_uuid)
-    params["project_template_uuid"] = json_project_template_uuid
 
     json_project_uuid: Union[Unset, str] = UNSET
     if not isinstance(project_uuid, Unset):
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
 
-    params["query"] = query
-
-    json_state: Union[Unset, list[str]] = UNSET
-    if not isinstance(state, Unset):
-        json_state = []
-        for state_item_data in state:
-            state_item = state_item_data.value
-            json_state.append(state_item)
-
-    params["state"] = json_state
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/openportal-managed-projects/",
+        "url": "/api/openportal-accounting-summary/",
         "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list["ManagedProject"]:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> list["ProjectAccountingSummary"]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
         for response_200_item_data in _response_200:
-            response_200_item = ManagedProject.from_dict(response_200_item_data)
+            response_200_item = ProjectAccountingSummary.from_dict(response_200_item_data)
 
             response_200.append(response_200_item)
 
@@ -91,7 +67,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[list["ManagedProject"]]:
+) -> Response[list["ProjectAccountingSummary"]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -103,53 +79,34 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
-) -> Response[list["ManagedProject"]]:
-    """List all managed projects
-
+) -> Response[list["ProjectAccountingSummary"]]:
+    """
     Args:
-        identifier (Union[Unset, str]):
-        local_identifier (Union[Unset, str]):
-        o (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        project (Union[Unset, str]):
-        project_template (Union[Unset, str]):
-        project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        query (Union[Unset, str]):
-        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['ManagedProject']]
+        Response[list['ProjectAccountingSummary']]
     """
 
     kwargs = _get_kwargs(
-        identifier=identifier,
-        local_identifier=local_identifier,
-        o=o,
+        customer_uuid=customer_uuid,
+        is_active=is_active,
         page=page,
         page_size=page_size,
-        project=project,
-        project_template=project_template,
-        project_template_uuid=project_template_uuid,
         project_uuid=project_uuid,
-        query=query,
-        state=state,
     )
 
     response = client.get_httpx_client().request(
@@ -162,107 +119,69 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
-) -> list["ManagedProject"]:
-    """List all managed projects
-
+) -> list["ProjectAccountingSummary"]:
+    """
     Args:
-        identifier (Union[Unset, str]):
-        local_identifier (Union[Unset, str]):
-        o (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        project (Union[Unset, str]):
-        project_template (Union[Unset, str]):
-        project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        query (Union[Unset, str]):
-        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ManagedProject']
+        list['ProjectAccountingSummary']
     """
 
     return sync_detailed(
         client=client,
-        identifier=identifier,
-        local_identifier=local_identifier,
-        o=o,
+        customer_uuid=customer_uuid,
+        is_active=is_active,
         page=page,
         page_size=page_size,
-        project=project,
-        project_template=project_template,
-        project_template_uuid=project_template_uuid,
         project_uuid=project_uuid,
-        query=query,
-        state=state,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
-) -> Response[list["ManagedProject"]]:
-    """List all managed projects
-
+) -> Response[list["ProjectAccountingSummary"]]:
+    """
     Args:
-        identifier (Union[Unset, str]):
-        local_identifier (Union[Unset, str]):
-        o (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        project (Union[Unset, str]):
-        project_template (Union[Unset, str]):
-        project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        query (Union[Unset, str]):
-        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[list['ManagedProject']]
+        Response[list['ProjectAccountingSummary']]
     """
 
     kwargs = _get_kwargs(
-        identifier=identifier,
-        local_identifier=local_identifier,
-        o=o,
+        customer_uuid=customer_uuid,
+        is_active=is_active,
         page=page,
         page_size=page_size,
-        project=project,
-        project_template=project_template,
-        project_template_uuid=project_template_uuid,
         project_uuid=project_uuid,
-        query=query,
-        state=state,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -273,55 +192,36 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
-) -> list["ManagedProject"]:
-    """List all managed projects
-
+) -> list["ProjectAccountingSummary"]:
+    """
     Args:
-        identifier (Union[Unset, str]):
-        local_identifier (Union[Unset, str]):
-        o (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        project (Union[Unset, str]):
-        project_template (Union[Unset, str]):
-        project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
-        query (Union[Unset, str]):
-        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ManagedProject']
+        list['ProjectAccountingSummary']
     """
 
     return (
         await asyncio_detailed(
             client=client,
-            identifier=identifier,
-            local_identifier=local_identifier,
-            o=o,
+            customer_uuid=customer_uuid,
+            is_active=is_active,
             page=page,
             page_size=page_size,
-            project=project,
-            project_template=project_template,
-            project_template_uuid=project_template_uuid,
             project_uuid=project_uuid,
-            query=query,
-            state=state,
         )
     ).parsed
 
@@ -329,16 +229,10 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
-    project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
-) -> list["ManagedProject"]:
+) -> list["ProjectAccountingSummary"]:
     """Get All Pages
 
      Fetch all pages of paginated results. This function automatically handles pagination
@@ -347,38 +241,26 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        identifier (Union[Unset, str]):
-        local_identifier (Union[Unset, str]):
-        o (Union[Unset, str]):
-        project (Union[Unset, str]):
-        project_template (Union[Unset, str]):
-        project_template_uuid (Union[Unset, UUID]):
+        customer_uuid (Union[Unset, UUID]):
+        is_active (Union[Unset, bool]):
         project_uuid (Union[Unset, UUID]):
-        query (Union[Unset, str]):
-        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ManagedProject']: Combined results from all pages
+        list['ProjectAccountingSummary']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[ManagedProject] = []
+    all_results: list[ProjectAccountingSummary] = []
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        identifier=identifier,
-        local_identifier=local_identifier,
-        o=o,
-        project=project,
-        project_template=project_template,
-        project_template_uuid=project_template_uuid,
+        customer_uuid=customer_uuid,
+        is_active=is_active,
         project_uuid=project_uuid,
-        query=query,
-        state=state,
     )
 
     # Set page_size to maximum
@@ -426,16 +308,10 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
-    project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
-) -> list["ManagedProject"]:
+) -> list["ProjectAccountingSummary"]:
     """Get All Pages (Async)
 
      Fetch all pages of paginated results asynchronously. This function automatically handles pagination
@@ -444,38 +320,26 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        identifier (Union[Unset, str]):
-        local_identifier (Union[Unset, str]):
-        o (Union[Unset, str]):
-        project (Union[Unset, str]):
-        project_template (Union[Unset, str]):
-        project_template_uuid (Union[Unset, UUID]):
+        customer_uuid (Union[Unset, UUID]):
+        is_active (Union[Unset, bool]):
         project_uuid (Union[Unset, UUID]):
-        query (Union[Unset, str]):
-        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        list['ManagedProject']: Combined results from all pages
+        list['ProjectAccountingSummary']: Combined results from all pages
     """
     from urllib.parse import parse_qs, urlparse
 
-    all_results: list[ManagedProject] = []
+    all_results: list[ProjectAccountingSummary] = []
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        identifier=identifier,
-        local_identifier=local_identifier,
-        o=o,
-        project=project,
-        project_template=project_template,
-        project_template_uuid=project_template_uuid,
+        customer_uuid=customer_uuid,
+        is_active=is_active,
         project_uuid=project_uuid,
-        query=query,
-        state=state,
     )
 
     # Set page_size to maximum

@@ -220,6 +220,8 @@ from .base_public_plan_prices import BasePublicPlanPrices
 from .base_public_plan_quotas import BasePublicPlanQuotas
 from .base_public_plan_request import BasePublicPlanRequest
 from .basic_customer import BasicCustomer
+from .basic_customer_request import BasicCustomerRequest
+from .basic_project import BasicProject
 from .basic_user import BasicUser
 from .bid_enum import BidEnum
 from .billing_mode_enum import BillingModeEnum
@@ -243,6 +245,8 @@ from .broadcast_message_request import BroadcastMessageRequest
 from .broadcast_message_state_enum import BroadcastMessageStateEnum
 from .bulk_silence_response import BulkSilenceResponse
 from .cache_performance import CachePerformance
+from .cached_project_storage_report import CachedProjectStorageReport
+from .cached_project_usage_report import CachedProjectUsageReport
 from .call_applicant_attribute_config import CallApplicantAttributeConfig
 from .call_applicant_attribute_config_request import CallApplicantAttributeConfigRequest
 from .call_assignment_configuration import CallAssignmentConfiguration
@@ -1566,6 +1570,7 @@ from .priority import Priority
 from .proficiency_level_enum import ProficiencyLevelEnum
 from .profile_completeness import ProfileCompleteness
 from .project import Project
+from .project_accounting_summary import ProjectAccountingSummary
 from .project_answer import ProjectAnswer
 from .project_attach_request import ProjectAttachRequest
 from .project_classification_summary import ProjectClassificationSummary
@@ -1670,7 +1675,6 @@ from .provider_offering_details import ProviderOfferingDetails
 from .provider_offering_details_attributes import ProviderOfferingDetailsAttributes
 from .provider_offering_details_field_enum import ProviderOfferingDetailsFieldEnum
 from .provider_offering_details_o_enum import ProviderOfferingDetailsOEnum
-from .provider_offering_details_request import ProviderOfferingDetailsRequest
 from .provider_offering_details_service_attributes import ProviderOfferingDetailsServiceAttributes
 from .provider_offering_field_enum import ProviderOfferingFieldEnum
 from .provider_offering_stats import ProviderOfferingStats
@@ -1877,6 +1881,7 @@ from .resource_limits import ResourceLimits
 from .resource_missing_usage import ResourceMissingUsage
 from .resource_o_enum import ResourceOEnum
 from .resource_offering import ResourceOffering
+from .resource_offering_request import ResourceOfferingRequest
 from .resource_options_request import ResourceOptionsRequest
 from .resource_paused_request import ResourcePausedRequest
 from .resource_plan_period import ResourcePlanPeriod
@@ -2530,6 +2535,8 @@ __all__ = (
     "BasePublicPlanQuotas",
     "BasePublicPlanRequest",
     "BasicCustomer",
+    "BasicCustomerRequest",
+    "BasicProject",
     "BasicUser",
     "BidEnum",
     "BillingModeEnum",
@@ -2552,6 +2559,8 @@ __all__ = (
     "BroadcastMessageRequest",
     "BroadcastMessageStateEnum",
     "BulkSilenceResponse",
+    "CachedProjectStorageReport",
+    "CachedProjectUsageReport",
     "CachePerformance",
     "CallApplicantAttributeConfig",
     "CallApplicantAttributeConfigRequest",
@@ -3798,6 +3807,7 @@ __all__ = (
     "ProficiencyLevelEnum",
     "ProfileCompleteness",
     "Project",
+    "ProjectAccountingSummary",
     "ProjectAnswer",
     "ProjectAttachRequest",
     "ProjectClassificationSummary",
@@ -3892,7 +3902,6 @@ __all__ = (
     "ProviderOfferingDetailsAttributes",
     "ProviderOfferingDetailsFieldEnum",
     "ProviderOfferingDetailsOEnum",
-    "ProviderOfferingDetailsRequest",
     "ProviderOfferingDetailsServiceAttributes",
     "ProviderOfferingFieldEnum",
     "ProviderOfferingStats",
@@ -4087,6 +4096,7 @@ __all__ = (
     "ResourceMissingUsage",
     "ResourceOEnum",
     "ResourceOffering",
+    "ResourceOfferingRequest",
     "ResourceOptionsRequest",
     "ResourcePausedRequest",
     "ResourcePlanPeriod",

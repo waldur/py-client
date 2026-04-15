@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.2-dev.20260415050311
+# Version: 8.0.8-rc.3-dev.20260415102251
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -12638,6 +12638,31 @@ Path parameters:
 Request body: yes
 
 ============================================================
+## openportal-accounting-summary  (module: waldur_api_client.api.openportal_accounting_summary)
+============================================================
+
+### openportal_accounting_summary_list
+GET /api/openportal-accounting-summary/
+Query parameters (3):
+  - customer_uuid
+  - is_active
+  - project_uuid
+
+### openportal_accounting_summary_count
+HEAD /api/openportal-accounting-summary/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - customer_uuid
+  - is_active
+  - project_uuid
+
+### openportal_accounting_summary_retrieve
+GET /api/openportal-accounting-summary/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## openportal-allocation-user-usage  (module: waldur_api_client.api.openportal_allocation_user_usage)
 ============================================================
 
@@ -12816,26 +12841,30 @@ Path parameters:
 ### openportal_managed_projects_list
 GET /api/openportal-managed-projects/
 Summary: List all managed projects
-Query parameters (7):
+Query parameters (9):
   - identifier
   - local_identifier
+  - o — Which field to use when ordering the results.
   - project
   - project_template
   - project_template_uuid
   - project_uuid
+  - query
   - state
 
 ### openportal_managed_projects_count
 HEAD /api/openportal-managed-projects/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (9):
   - identifier
   - local_identifier
+  - o — Which field to use when ordering the results.
   - project
   - project_template
   - project_template_uuid
   - project_uuid
+  - query
   - state
 
 ### openportal_managed_projects_retrieve_get
@@ -12892,6 +12921,35 @@ Path parameters:
 Request body: yes
 
 ============================================================
+## openportal-project-storage-reports  (module: waldur_api_client.api.openportal_project_storage_reports)
+============================================================
+
+### openportal_project_storage_reports_list
+GET /api/openportal-project-storage-reports/
+Query parameters (5):
+  - month
+  - project_identifier
+  - project_uuid
+  - resource
+  - year
+
+### openportal_project_storage_reports_count
+HEAD /api/openportal-project-storage-reports/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (5):
+  - month
+  - project_identifier
+  - project_uuid
+  - resource
+  - year
+
+### openportal_project_storage_reports_retrieve
+GET /api/openportal-project-storage-reports/{id}/
+Path parameters:
+  - id — A unique integer value identifying this cached project storage report.
+
+============================================================
 ## openportal-project-template  (module: waldur_api_client.api.openportal_project_template)
 ============================================================
 
@@ -12945,6 +13003,37 @@ DELETE /api/openportal-project-template/{uuid}/delete/
 Summary: Delete ProjectTemplate object
 Path parameters:
   - uuid
+
+============================================================
+## openportal-project-usage-reports  (module: waldur_api_client.api.openportal_project_usage_reports)
+============================================================
+
+### openportal_project_usage_reports_list
+GET /api/openportal-project-usage-reports/
+Query parameters (6):
+  - is_complete
+  - month
+  - project_identifier
+  - project_uuid
+  - resource
+  - year
+
+### openportal_project_usage_reports_count
+HEAD /api/openportal-project-usage-reports/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (6):
+  - is_complete
+  - month
+  - project_identifier
+  - project_uuid
+  - resource
+  - year
+
+### openportal_project_usage_reports_retrieve
+GET /api/openportal-project-usage-reports/{id}/
+Path parameters:
+  - id — A unique integer value identifying this cached project usage report.
 
 ============================================================
 ## openportal-projectinfo  (module: waldur_api_client.api.openportal_projectinfo)
