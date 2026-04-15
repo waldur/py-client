@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.project_usage_report import ProjectUsageReport
+
 
 T = TypeVar("T", bound="CachedProjectUsageReport")
 
@@ -18,7 +22,7 @@ class CachedProjectUsageReport:
         month (int):
         project_identifier (str):
         resource (str):
-        report (Any):
+        report (ProjectUsageReport):
         is_complete (Union[Unset, bool]):
     """
 
@@ -27,7 +31,7 @@ class CachedProjectUsageReport:
     month: int
     project_identifier: str
     resource: str
-    report: Any
+    report: "ProjectUsageReport"
     is_complete: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -42,7 +46,7 @@ class CachedProjectUsageReport:
 
         resource = self.resource
 
-        report = self.report
+        report = self.report.to_dict()
 
         is_complete = self.is_complete
 
@@ -65,6 +69,8 @@ class CachedProjectUsageReport:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.project_usage_report import ProjectUsageReport
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -76,7 +82,7 @@ class CachedProjectUsageReport:
 
         resource = d.pop("resource")
 
-        report = d.pop("report")
+        report = ProjectUsageReport.from_dict(d.pop("report"))
 
         is_complete = d.pop("is_complete", UNSET)
 

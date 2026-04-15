@@ -1,8 +1,12 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+if TYPE_CHECKING:
+    from ..models.project_storage_report import ProjectStorageReport
+
 
 T = TypeVar("T", bound="CachedProjectStorageReport")
 
@@ -16,7 +20,7 @@ class CachedProjectStorageReport:
         month (int):
         project_identifier (str):
         resource (str):
-        report (Any):
+        report (ProjectStorageReport):
     """
 
     id: int
@@ -24,7 +28,7 @@ class CachedProjectStorageReport:
     month: int
     project_identifier: str
     resource: str
-    report: Any
+    report: "ProjectStorageReport"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,7 +42,7 @@ class CachedProjectStorageReport:
 
         resource = self.resource
 
-        report = self.report
+        report = self.report.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -57,6 +61,8 @@ class CachedProjectStorageReport:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.project_storage_report import ProjectStorageReport
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -68,7 +74,7 @@ class CachedProjectStorageReport:
 
         resource = d.pop("resource")
 
-        report = d.pop("report")
+        report = ProjectStorageReport.from_dict(d.pop("report"))
 
         cached_project_storage_report = cls(
             id=id,

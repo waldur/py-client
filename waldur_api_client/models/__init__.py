@@ -511,7 +511,19 @@ from .daily_maintenance_stats_by_state import DailyMaintenanceStatsByState
 from .daily_order_stats import DailyOrderStats
 from .daily_order_stats_by_state import DailyOrderStatsByState
 from .daily_order_stats_by_type import DailyOrderStatsByType
+from .daily_project_usage_report import DailyProjectUsageReport
+from .daily_project_usage_report_components import DailyProjectUsageReportComponents
+from .daily_project_usage_report_components_additional_property import (
+    DailyProjectUsageReportComponentsAdditionalProperty,
+)
+from .daily_project_usage_report_reports import DailyProjectUsageReportReports
+from .daily_project_usage_report_user_job_counts import DailyProjectUsageReportUserJobCounts
+from .daily_project_usage_report_user_wait_seconds import DailyProjectUsageReportUserWaitSeconds
 from .daily_quotas_retrieve_response_200 import DailyQuotasRetrieveResponse200
+from .daily_storage_report import DailyStorageReport
+from .daily_storage_report_project_quotas import DailyStorageReportProjectQuotas
+from .daily_storage_report_user_quotas import DailyStorageReportUserQuotas
+from .daily_storage_report_user_quotas_additional_property import DailyStorageReportUserQuotasAdditionalProperty
 from .data_access_summary import DataAccessSummary
 from .data_volume import DataVolume
 from .data_volume_request import DataVolumeRequest
@@ -1128,6 +1140,7 @@ from .onboarding_verification_status_enum import OnboardingVerificationStatusEnu
 from .onboarding_verification_status_enum_1 import OnboardingVerificationStatusEnum1
 from .onboarding_verification_user_submitted_customer_data import OnboardingVerificationUserSubmittedCustomerData
 from .onboarding_verification_validation_method_enum import OnboardingVerificationValidationMethodEnum
+from .open_portal_quota import OpenPortalQuota
 from .open_stack_allowed_address_pair import OpenStackAllowedAddressPair
 from .open_stack_allowed_address_pair_request import OpenStackAllowedAddressPairRequest
 from .open_stack_backend_instance import OpenStackBackendInstance
@@ -1605,11 +1618,20 @@ from .project_request_form import ProjectRequestForm
 from .project_request_multipart import ProjectRequestMultipart
 from .project_service_account import ProjectServiceAccount
 from .project_service_account_request import ProjectServiceAccountRequest
+from .project_storage_report import ProjectStorageReport
+from .project_storage_report_daily_reports import ProjectStorageReportDailyReports
+from .project_storage_report_project_quotas import ProjectStorageReportProjectQuotas
+from .project_storage_report_user_quotas import ProjectStorageReportUserQuotas
+from .project_storage_report_user_quotas_additional_property import ProjectStorageReportUserQuotasAdditionalProperty
+from .project_storage_report_users import ProjectStorageReportUsers
 from .project_template import ProjectTemplate
 from .project_template_request import ProjectTemplateRequest
 from .project_template_role_mapping_data import ProjectTemplateRoleMappingData
 from .project_template_role_mapping_data_additional_property import ProjectTemplateRoleMappingDataAdditionalProperty
 from .project_type import ProjectType
+from .project_usage_report import ProjectUsageReport
+from .project_usage_report_reports import ProjectUsageReportReports
+from .project_usage_report_users import ProjectUsageReportUsers
 from .project_user import ProjectUser
 from .projects_limits_grouped_by_industry_flag import ProjectsLimitsGroupedByIndustryFlag
 from .projects_limits_grouped_by_industry_flag_limits import ProjectsLimitsGroupedByIndustryFlagLimits
@@ -2206,6 +2228,7 @@ from .update_pool_member import UpdatePoolMember
 from .update_pool_member_request import UpdatePoolMemberRequest
 from .update_pool_request import UpdatePoolRequest
 from .urgency_enum import UrgencyEnum
+from .usage import Usage
 from .user import User
 from .user_action import UserAction
 from .user_action_execution import UserActionExecution
@@ -2822,7 +2845,17 @@ __all__ = (
     "DailyOrderStats",
     "DailyOrderStatsByState",
     "DailyOrderStatsByType",
+    "DailyProjectUsageReport",
+    "DailyProjectUsageReportComponents",
+    "DailyProjectUsageReportComponentsAdditionalProperty",
+    "DailyProjectUsageReportReports",
+    "DailyProjectUsageReportUserJobCounts",
+    "DailyProjectUsageReportUserWaitSeconds",
     "DailyQuotasRetrieveResponse200",
+    "DailyStorageReport",
+    "DailyStorageReportProjectQuotas",
+    "DailyStorageReportUserQuotas",
+    "DailyStorageReportUserQuotasAdditionalProperty",
     "DataAccessSummary",
     "DatabaseSizeStats",
     "DatabaseStatsResponse",
@@ -3411,6 +3444,7 @@ __all__ = (
     "OnboardingVerificationStatusEnum1",
     "OnboardingVerificationUserSubmittedCustomerData",
     "OnboardingVerificationValidationMethodEnum",
+    "OpenPortalQuota",
     "OpenStackAllowedAddressPair",
     "OpenStackAllowedAddressPairRequest",
     "OpenStackBackendInstance",
@@ -3848,6 +3882,12 @@ __all__ = (
     "ProjectsLimitsGroupedByOecd",
     "ProjectsLimitsGroupedByOecdLimits",
     "ProjectsLimitsGroupedByOecdLimitsAdditionalProperty",
+    "ProjectStorageReport",
+    "ProjectStorageReportDailyReports",
+    "ProjectStorageReportProjectQuotas",
+    "ProjectStorageReportUserQuotas",
+    "ProjectStorageReportUserQuotasAdditionalProperty",
+    "ProjectStorageReportUsers",
     "ProjectsUsagesGroupedByIndustryFlag",
     "ProjectsUsagesGroupedByIndustryFlagUsages",
     "ProjectsUsagesGroupedByIndustryFlagUsagesAdditionalProperty",
@@ -3859,6 +3899,9 @@ __all__ = (
     "ProjectTemplateRoleMappingData",
     "ProjectTemplateRoleMappingDataAdditionalProperty",
     "ProjectType",
+    "ProjectUsageReport",
+    "ProjectUsageReportReports",
+    "ProjectUsageReportUsers",
     "ProjectUser",
     "Proposal",
     "ProposalApproveRequest",
@@ -4415,6 +4458,7 @@ __all__ = (
     "UpdatePoolMemberRequest",
     "UpdatePoolRequest",
     "UrgencyEnum",
+    "Usage",
     "User",
     "UserAction",
     "UserActionExecution",
