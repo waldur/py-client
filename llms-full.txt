@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.4-dev.20260416193240
+# Version: 8.0.8-rc.4-dev.20260416211520
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -6955,7 +6955,7 @@ Path parameters:
 GET /api/marketplace-offering-users/
 Summary: List offering users
 Description: Returns a paginated list of users associated with offerings. The visibility of users depends on the role of the authenticated user. Staff and support can see all users. Service providers can see users of their offerings if the user has consented. Regular users can only see their own offering-user...
-Query parameters (18):
+Query parameters (19):
   - created — Created after
   - created_before — Created before
   - field
@@ -6966,6 +6966,7 @@ Query parameters (18):
   - modified_before — Modified before
   - o — Ordering
   - offering
+  - offering_has_active_tos — Offering has active Terms of Service
   - offering_slug — Multiple values may be separated by commas.
   - offering_uuid — Multiple values may be separated by commas.
   - parent_offering_uuid
@@ -6979,7 +6980,7 @@ Query parameters (18):
 HEAD /api/marketplace-offering-users/
 Summary: List offering users
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (17):
+Query parameters (18):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
@@ -6989,6 +6990,7 @@ Query parameters (17):
   - modified_before — Modified before
   - o — Ordering
   - offering
+  - offering_has_active_tos — Offering has active Terms of Service
   - offering_slug — Multiple values may be separated by commas.
   - offering_uuid — Multiple values may be separated by commas.
   - parent_offering_uuid

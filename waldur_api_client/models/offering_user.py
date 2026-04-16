@@ -70,6 +70,7 @@ class OfferingUser:
             service provider comment
         has_consent (Union[Unset, bool]): Check if the user has active consent for this offering.
         requires_reconsent (Union[Unset, bool]): Check if the user needs to re-consent due to ToS changes.
+        offering_has_active_tos (Union[Unset, bool]):
         has_compliance_checklist (Union[Unset, bool]): Check if the offering user has a connected compliance checklist
             completion.
         consent_data (Union['OfferingUserConsentDataType0', None, Unset]): User consent data including uuid, version,
@@ -120,6 +121,7 @@ class OfferingUser:
     service_provider_comment_url: Union[Unset, str] = UNSET
     has_consent: Union[Unset, bool] = UNSET
     requires_reconsent: Union[Unset, bool] = UNSET
+    offering_has_active_tos: Union[Unset, bool] = UNSET
     has_compliance_checklist: Union[Unset, bool] = UNSET
     consent_data: Union["OfferingUserConsentDataType0", None, Unset] = UNSET
     is_profile_complete: Union[Unset, bool] = UNSET
@@ -249,6 +251,8 @@ class OfferingUser:
 
         requires_reconsent = self.requires_reconsent
 
+        offering_has_active_tos = self.offering_has_active_tos
+
         has_compliance_checklist = self.has_compliance_checklist
 
         consent_data: Union[None, Unset, dict[str, Any]]
@@ -352,6 +356,8 @@ class OfferingUser:
             field_dict["has_consent"] = has_consent
         if requires_reconsent is not UNSET:
             field_dict["requires_reconsent"] = requires_reconsent
+        if offering_has_active_tos is not UNSET:
+            field_dict["offering_has_active_tos"] = offering_has_active_tos
         if has_compliance_checklist is not UNSET:
             field_dict["has_compliance_checklist"] = has_compliance_checklist
         if consent_data is not UNSET:
@@ -539,6 +545,8 @@ class OfferingUser:
 
         requires_reconsent = d.pop("requires_reconsent", UNSET)
 
+        offering_has_active_tos = d.pop("offering_has_active_tos", UNSET)
+
         has_compliance_checklist = d.pop("has_compliance_checklist", UNSET)
 
         def _parse_consent_data(data: object) -> Union["OfferingUserConsentDataType0", None, Unset]:
@@ -605,6 +613,7 @@ class OfferingUser:
             service_provider_comment_url=service_provider_comment_url,
             has_consent=has_consent,
             requires_reconsent=requires_reconsent,
+            offering_has_active_tos=offering_has_active_tos,
             has_compliance_checklist=has_compliance_checklist,
             consent_data=consent_data,
             is_profile_complete=is_profile_complete,

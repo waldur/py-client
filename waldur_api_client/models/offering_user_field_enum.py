@@ -13,6 +13,7 @@ class OfferingUserFieldEnum(str, Enum):
     MISSING_PROFILE_ATTRIBUTES = "missing_profile_attributes"
     MODIFIED = "modified"
     OFFERING = "offering"
+    OFFERING_HAS_ACTIVE_TOS = "offering_has_active_tos"
     OFFERING_NAME = "offering_name"
     OFFERING_UUID = "offering_uuid"
     REQUIRES_RECONSENT = "requires_reconsent"
