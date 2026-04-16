@@ -45,11 +45,6 @@ class ChatResponse:
         category_uuid (Union[Unset, str]): Category UUID filter hint. Present when k='resource_list'.
         state (Union[Unset, list[Any]]): State display name filters (e.g. ['OK', 'Erred']). Present when
             k='resource_list'.
-        h (Union[Unset, list[Any]]): Table headers - list of column names. Present when k='table'.
-        r (Union[Unset, list[Any]]): Table rows - list of row data (each row is a list of strings). Present when
-            k='table'.
-        n (Union[None, Unset, int]): Total count of rows in the table (used for pagination display). Present when
-            k='table'.
     """
 
     k: Union[Unset, str] = UNSET
@@ -76,9 +71,6 @@ class ChatResponse:
     customer_uuid: Union[Unset, str] = UNSET
     category_uuid: Union[Unset, str] = UNSET
     state: Union[Unset, list[Any]] = UNSET
-    h: Union[Unset, list[Any]] = UNSET
-    r: Union[Unset, list[Any]] = UNSET
-    n: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -142,20 +134,6 @@ class ChatResponse:
         if not isinstance(self.state, Unset):
             state = self.state
 
-        h: Union[Unset, list[Any]] = UNSET
-        if not isinstance(self.h, Unset):
-            h = self.h
-
-        r: Union[Unset, list[Any]] = UNSET
-        if not isinstance(self.r, Unset):
-            r = self.r
-
-        n: Union[None, Unset, int]
-        if isinstance(self.n, Unset):
-            n = UNSET
-        else:
-            n = self.n
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -207,12 +185,6 @@ class ChatResponse:
             field_dict["category_uuid"] = category_uuid
         if state is not UNSET:
             field_dict["state"] = state
-        if h is not UNSET:
-            field_dict["h"] = h
-        if r is not UNSET:
-            field_dict["r"] = r
-        if n is not UNSET:
-            field_dict["n"] = n
 
         return field_dict
 
@@ -274,19 +246,6 @@ class ChatResponse:
 
         state = cast(list[Any], d.pop("state", UNSET))
 
-        h = cast(list[Any], d.pop("h", UNSET))
-
-        r = cast(list[Any], d.pop("r", UNSET))
-
-        def _parse_n(data: object) -> Union[None, Unset, int]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, int], data)
-
-        n = _parse_n(d.pop("n", UNSET))
-
         chat_response = cls(
             k=k,
             c=c,
@@ -312,9 +271,6 @@ class ChatResponse:
             customer_uuid=customer_uuid,
             category_uuid=category_uuid,
             state=state,
-            h=h,
-            r=r,
-            n=n,
         )
 
         chat_response.additional_properties = d

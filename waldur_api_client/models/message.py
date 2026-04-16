@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -10,7 +10,10 @@ from dateutil.parser import isoparse
 from ..models.action_taken_enum import ActionTakenEnum
 from ..models.injection_severity_enum import InjectionSeverityEnum
 from ..models.message_role_enum import MessageRoleEnum
-from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.message_blocks_item import MessageBlocksItem
+
 
 T = TypeVar("T", bound="Message")
 
@@ -22,8 +25,8 @@ class Message:
         uuid (UUID):
         thread (UUID):
         role (MessageRoleEnum):
-        content_display (str):
-        tool_calls (Any):
+        blocks (list['MessageBlocksItem']):
+        warning (str):
         sequence_index (int):
         replaces (Union[None, UUID]):
         created (datetime.datetime):
@@ -34,14 +37,13 @@ class Message:
         injection_categories (Any):
         pii_categories (Any):
         action_taken (ActionTakenEnum):
-        content (Union[Unset, str]):
     """
 
     uuid: UUID
     thread: UUID
     role: MessageRoleEnum
-    content_display: str
-    tool_calls: Any
+    blocks: list["MessageBlocksItem"]
+    warning: str
     sequence_index: int
     replaces: Union[None, UUID]
     created: datetime.datetime
@@ -52,7 +54,6 @@ class Message:
     injection_categories: Any
     pii_categories: Any
     action_taken: ActionTakenEnum
-    content: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -62,9 +63,12 @@ class Message:
 
         role = self.role.value
 
-        content_display = self.content_display
+        blocks = []
+        for blocks_item_data in self.blocks:
+            blocks_item = blocks_item_data.to_dict()
+            blocks.append(blocks_item)
 
-        tool_calls = self.tool_calls
+        warning = self.warning
 
         sequence_index = self.sequence_index
 
@@ -92,8 +96,6 @@ class Message:
 
         action_taken = self.action_taken.value
 
-        content = self.content
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -101,8 +103,8 @@ class Message:
                 "uuid": uuid,
                 "thread": thread,
                 "role": role,
-                "content_display": content_display,
-                "tool_calls": tool_calls,
+                "blocks": blocks,
+                "warning": warning,
                 "sequence_index": sequence_index,
                 "replaces": replaces,
                 "created": created,
@@ -115,13 +117,13 @@ class Message:
                 "action_taken": action_taken,
             }
         )
-        if content is not UNSET:
-            field_dict["content"] = content
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.message_blocks_item import MessageBlocksItem
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -129,9 +131,14 @@ class Message:
 
         role = MessageRoleEnum(d.pop("role"))
 
-        content_display = d.pop("content_display")
+        blocks = []
+        _blocks = d.pop("blocks")
+        for blocks_item_data in _blocks:
+            blocks_item = MessageBlocksItem.from_dict(blocks_item_data)
 
-        tool_calls = d.pop("tool_calls")
+            blocks.append(blocks_item)
+
+        warning = d.pop("warning")
 
         sequence_index = d.pop("sequence_index")
 
@@ -176,14 +183,12 @@ class Message:
 
         action_taken = ActionTakenEnum(d.pop("action_taken"))
 
-        content = d.pop("content", UNSET)
-
         message = cls(
             uuid=uuid,
             thread=thread,
             role=role,
-            content_display=content_display,
-            tool_calls=tool_calls,
+            blocks=blocks,
+            warning=warning,
             sequence_index=sequence_index,
             replaces=replaces,
             created=created,
@@ -194,7 +199,6 @@ class Message:
             injection_categories=injection_categories,
             pii_categories=pii_categories,
             action_taken=action_taken,
-            content=content,
         )
 
         message.additional_properties = d

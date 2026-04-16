@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.4-dev.20260416153200
+# Version: 8.0.8-rc.4-dev.20260416193240
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2708,7 +2708,7 @@ Query parameters (1):
 
 ### chat_threads_list
 GET /api/chat-threads/
-Query parameters (15):
+Query parameters (16):
   - created
   - field
   - input_tokens_max
@@ -2721,6 +2721,7 @@ Query parameters (15):
   - output_tokens_max
   - output_tokens_min
   - query
+  - scope
   - total_tokens_max
   - total_tokens_min
   - user

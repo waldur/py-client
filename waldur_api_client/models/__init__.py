@@ -937,6 +937,8 @@ from .merged_plugin_options_request import MergedPluginOptionsRequest
 from .merged_secret_options import MergedSecretOptions
 from .merged_secret_options_request import MergedSecretOptionsRequest
 from .message import Message
+from .message_blocks_item import MessageBlocksItem
+from .message_blocks_item_key import MessageBlocksItemKey
 from .message_response import MessageResponse
 from .message_role_enum import MessageRoleEnum
 from .message_state_cache import MessageStateCache
@@ -2205,6 +2207,7 @@ from .thread_session import ThreadSession
 from .thread_session_field_enum import ThreadSessionFieldEnum
 from .thread_session_o_enum import ThreadSessionOEnum
 from .thread_session_request import ThreadSessionRequest
+from .thread_session_scope_enum import ThreadSessionScopeEnum
 from .time_series_to_s_data import TimeSeriesToSData
 from .to_s_consent_dashboard import ToSConsentDashboard
 from .token_quota_usage_response import TokenQuotaUsageResponse
@@ -3248,6 +3251,8 @@ __all__ = (
     "MergedSecretOptions",
     "MergedSecretOptionsRequest",
     "Message",
+    "MessageBlocksItem",
+    "MessageBlocksItemKey",
     "MessageResponse",
     "MessageRoleEnum",
     "MessageStateCache",
@@ -4440,6 +4445,7 @@ __all__ = (
     "ThreadSessionFieldEnum",
     "ThreadSessionOEnum",
     "ThreadSessionRequest",
+    "ThreadSessionScopeEnum",
     "TimeSeriesToSData",
     "TokenQuotaUsageResponse",
     "TokenRequest",
