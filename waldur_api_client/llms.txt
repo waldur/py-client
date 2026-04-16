@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.0.8-rc.4-dev.20260416021655).
+> Auto-generated Python SDK for the Waldur API (version 8.0.8-rc.4-dev.20260416144205).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -237,7 +237,7 @@ waldur_api_client/
 - **openstack-pool-members** (8 endpoints)
 - **openstack-pools** (8 endpoints)
 - **openstack-ports** (17 endpoints)
-- **openstack-routers** (10 endpoints)
+- **openstack-routers** (13 endpoints)
 - **openstack-security-groups** (11 endpoints)
 - **openstack-server-groups** (9 endpoints)
 - **openstack-snapshots** (12 endpoints)

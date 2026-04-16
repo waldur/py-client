@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.4-dev.20260416021655
+# Version: 8.0.8-rc.4-dev.20260416144205
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -15259,6 +15259,26 @@ Path parameters:
   - uuid
 Request body: yes
 
+### openstack_routers_available_external_networks_list
+GET /api/openstack-routers/{uuid}/available_external_networks/
+Summary: List available external networks
+Description: Returns a merged list of external networks available for this router's tenant, from both global external networks and RBAC-exposed networks.
+Path parameters:
+  - uuid
+Query parameters (5):
+  - name — Name
+  - name_exact — Name (exact)
+  - state — State
+  - tenant — Tenant URL
+  - tenant_uuid — Tenant UUID
+
+### openstack_routers_remove_external_gateway
+POST /api/openstack-routers/{uuid}/remove_external_gateway/
+Summary: Remove external gateway
+Description: Remove the external gateway from this router.
+Path parameters:
+  - uuid
+
 ### openstack_routers_remove_router_interface
 POST /api/openstack-routers/{uuid}/remove_router_interface/
 Summary: Remove router interface
@@ -15271,6 +15291,14 @@ Request body: yes
 POST /api/openstack-routers/{uuid}/set_erred/
 Summary: Mark router as ERRED
 Description: Manually transition the router to ERRED state. This is useful for routers stuck in transitional states (CREATING, UPDATING, DELETING) that cannot be synced via pull. Staff-only operation.
+Path parameters:
+  - uuid
+Request body: yes
+
+### openstack_routers_set_external_gateway
+POST /api/openstack-routers/{uuid}/set_external_gateway/
+Summary: Set external gateway
+Description: Set an external network as the gateway for this router. Advanced options (SNAT control, fixed IPs) require additional permissions.
 Path parameters:
   - uuid
 Request body: yes

@@ -143,6 +143,9 @@ from .available_checklists_response import AvailableChecklistsResponse
 from .available_checklists_response_checklist_type_enum import AvailableChecklistsResponseChecklistTypeEnum
 from .available_checklists_response_customer_checklist_type_0 import AvailableChecklistsResponseCustomerChecklistType0
 from .available_checklists_response_intent_checklist_type_0 import AvailableChecklistsResponseIntentChecklistType0
+from .available_external_network import AvailableExternalNetwork
+from .available_external_network_source_enum import AvailableExternalNetworkSourceEnum
+from .available_external_network_subnets_item import AvailableExternalNetworkSubnetsItem
 from .available_scope import AvailableScope
 from .aws_image import AwsImage
 from .aws_instance import AwsInstance
@@ -2070,6 +2073,8 @@ from .service_settings_state_enum import ServiceSettingsStateEnum
 from .set_backend_id_request import SetBackendIdRequest
 from .set_erred_request import SetErredRequest
 from .set_erred_response import SetErredResponse
+from .set_external_gateway_request import SetExternalGatewayRequest
+from .set_external_gateway_request_external_fixed_ips_item import SetExternalGatewayRequestExternalFixedIpsItem
 from .set_mtu import SetMtu
 from .set_mtu_request import SetMtuRequest
 from .set_offerings_username_request import SetOfferingsUsernameRequest
@@ -2491,6 +2496,9 @@ __all__ = (
     "AvailableChecklistsResponseChecklistTypeEnum",
     "AvailableChecklistsResponseCustomerChecklistType0",
     "AvailableChecklistsResponseIntentChecklistType0",
+    "AvailableExternalNetwork",
+    "AvailableExternalNetworkSourceEnum",
+    "AvailableExternalNetworkSubnetsItem",
     "AvailableScope",
     "AwsImage",
     "AwsInstance",
@@ -4306,6 +4314,8 @@ __all__ = (
     "SetBackendIdRequest",
     "SetErredRequest",
     "SetErredResponse",
+    "SetExternalGatewayRequest",
+    "SetExternalGatewayRequestExternalFixedIpsItem",
     "SetMtu",
     "SetMtuRequest",
     "SetOfferingsUsernameRequest",

@@ -2489,8 +2489,11 @@ Module: `waldur_api_client.api.openstack_routers`
 - `openstack_routers_retrieve` GET `/api/openstack-routers/{uuid}/` — Get router details (path: uuid | 1 query param)
 - `openstack_routers_destroy` DELETE `/api/openstack-routers/{uuid}/` — Delete router (path: uuid)
 - `openstack_routers_add_router_interface` POST `/api/openstack-routers/{uuid}/add_router_interface/` — Add router interface (path: uuid | request body)
+- `openstack_routers_available_external_networks_list` GET `/api/openstack-routers/{uuid}/available_external_networks/` — List available external networks (path: uuid | 5 query params)
+- `openstack_routers_remove_external_gateway` POST `/api/openstack-routers/{uuid}/remove_external_gateway/` — Remove external gateway (path: uuid)
 - `openstack_routers_remove_router_interface` POST `/api/openstack-routers/{uuid}/remove_router_interface/` — Remove router interface (path: uuid | request body)
 - `openstack_routers_set_erred` POST `/api/openstack-routers/{uuid}/set_erred/` — Mark router as ERRED (path: uuid | request body)
+- `openstack_routers_set_external_gateway` POST `/api/openstack-routers/{uuid}/set_external_gateway/` — Set external gateway (path: uuid | request body)
 - `openstack_routers_set_ok` POST `/api/openstack-routers/{uuid}/set_ok/` — Mark router as OK (path: uuid)
 - `openstack_routers_set_routes` POST `/api/openstack-routers/{uuid}/set_routes/` — Set static routes (path: uuid | request body)
 
