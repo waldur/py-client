@@ -17,6 +17,7 @@ class OfferingComponent:
     """
     Attributes:
         uuid (Union[Unset, UUID]):
+        offering_uuid (Union[Unset, UUID]):
         billing_type (Union[Unset, BillingTypeEnum]):
         type_ (Union[Unset, str]): Unique internal name of the measured unit, for example floating_ip.
         name (Union[Unset, str]): Display name for the measured unit, for example, Floating IP.
@@ -47,6 +48,7 @@ class OfferingComponent:
     """
 
     uuid: Union[Unset, UUID] = UNSET
+    offering_uuid: Union[Unset, UUID] = UNSET
     billing_type: Union[Unset, BillingTypeEnum] = UNSET
     type_: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
@@ -77,6 +79,10 @@ class OfferingComponent:
         uuid: Union[Unset, str] = UNSET
         if not isinstance(self.uuid, Unset):
             uuid = str(self.uuid)
+
+        offering_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.offering_uuid, Unset):
+            offering_uuid = str(self.offering_uuid)
 
         billing_type: Union[Unset, str] = UNSET
         if not isinstance(self.billing_type, Unset):
@@ -193,6 +199,8 @@ class OfferingComponent:
         field_dict.update({})
         if uuid is not UNSET:
             field_dict["uuid"] = uuid
+        if offering_uuid is not UNSET:
+            field_dict["offering_uuid"] = offering_uuid
         if billing_type is not UNSET:
             field_dict["billing_type"] = billing_type
         if type_ is not UNSET:
@@ -253,6 +261,13 @@ class OfferingComponent:
             uuid = UNSET
         else:
             uuid = UUID(_uuid)
+
+        _offering_uuid = d.pop("offering_uuid", UNSET)
+        offering_uuid: Union[Unset, UUID]
+        if isinstance(_offering_uuid, Unset):
+            offering_uuid = UNSET
+        else:
+            offering_uuid = UUID(_offering_uuid)
 
         _billing_type = d.pop("billing_type", UNSET)
         billing_type: Union[Unset, BillingTypeEnum]
@@ -423,6 +438,7 @@ class OfferingComponent:
 
         offering_component = cls(
             uuid=uuid,
+            offering_uuid=offering_uuid,
             billing_type=billing_type,
             type_=type_,
             name=name,
