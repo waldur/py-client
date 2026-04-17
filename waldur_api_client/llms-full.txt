@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.5-dev.20260417021540
+# Version: 8.0.8-rc.6-dev.20260417140802
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -12639,6 +12639,15 @@ Description: Submit answers to checklist questions. Automatically detects which 
 Path parameters:
   - uuid
 Request body: yes
+
+============================================================
+## openportal  (module: waldur_api_client.api.openportal)
+============================================================
+
+### openportal_access_for_email_list
+GET /api/openportal/access_for_email/
+Query parameters (1):
+  - q (required) — Free text search query (email, short_name, project_name, or project_id)
 
 ============================================================
 ## openportal-accounting-summary  (module: waldur_api_client.api.openportal_accounting_summary)

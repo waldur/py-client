@@ -1,5 +1,9 @@
 """Contains all the data models used in inputs/outputs"""
 
+from .access_project import AccessProject
+from .access_resource import AccessResource
+from .access_response import AccessResponse
+from .access_response_projects import AccessResponseProjects
 from .access_subnet import AccessSubnet
 from .access_subnet_request import AccessSubnetRequest
 from .access_type_enum import AccessTypeEnum
@@ -2358,6 +2362,10 @@ from .zammadarticletype_enum import ZAMMADARTICLETYPEEnum
 __all__ = (
     "AccessorTypeEnum",
     "AccessorUser",
+    "AccessProject",
+    "AccessResource",
+    "AccessResponse",
+    "AccessResponseProjects",
     "AccessSubnet",
     "AccessSubnetRequest",
     "AccessTypeEnum",

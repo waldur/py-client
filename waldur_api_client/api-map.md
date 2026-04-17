@@ -2082,6 +2082,11 @@ Module: `waldur_api_client.api.onboarding_verifications`
 - `onboarding_verifications_run_validation` POST `/api/onboarding-verifications/{uuid}/run_validation/` — Run automatic validation using the required fields provided during verification creation (path: uuid | request body)
 - `onboarding_verifications_submit_answers` POST `/api/onboarding-verifications/{uuid}/submit_answers/` — Submit answers to checklist questions (path: uuid | request body)
 
+## openportal
+Module: `waldur_api_client.api.openportal`
+
+- `openportal_access_for_email_list` GET `/api/openportal/access_for_email/` (1 query param)
+
 ## openportal-accounting-summary
 Module: `waldur_api_client.api.openportal_accounting_summary`
 
