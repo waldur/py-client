@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.8-dev.20260420113922
+# Version: 8.0.8-rc.8-dev.20260420121253
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2651,10 +2651,18 @@ Request body: yes
 
 ### chat_messages_list
 GET /api/chat-messages/
-Query parameters (3):
+Query parameters (4):
+  - feedback_score
   - include_history
   - is_flagged
   - thread
+
+### chat_messages_feedback
+POST /api/chat-messages/{uuid}/feedback/
+Summary: Submit or update feedback for an assistant message
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## chat-quota  (module: waldur_api_client.api.chat_quota)
@@ -2708,9 +2716,10 @@ Query parameters (1):
 
 ### chat_threads_list
 GET /api/chat-threads/
-Query parameters (16):
+Query parameters (17):
   - created
   - field
+  - has_feedback
   - input_tokens_max
   - input_tokens_min
   - is_archived

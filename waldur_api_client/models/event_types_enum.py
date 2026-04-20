@@ -20,6 +20,7 @@ class EventTypesEnum(str, Enum):
     BLOCK_MODIFICATION_OF_EXISTING_RESOURCES = "block_modification_of_existing_resources"
     CALL_DOCUMENT_ADDED = "call_document_added"
     CALL_DOCUMENT_REMOVED = "call_document_removed"
+    CHAT_FEEDBACK_SUBMITTED = "chat_feedback_submitted"
     CHAT_INJECTION_DETECTED = "chat_injection_detected"
     CHAT_PII_DETECTED = "chat_pii_detected"
     CHAT_SESSION_ACCESSED = "chat_session_accessed"

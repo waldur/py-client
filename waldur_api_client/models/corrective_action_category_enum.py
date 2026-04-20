@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class CategoryEnum(str, Enum):
+class CorrectiveActionCategoryEnum(str, Enum):
     APPROVE = "approve"
     BACKUP = "backup"
     CONFIGURE = "configure"

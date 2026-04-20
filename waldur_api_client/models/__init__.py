@@ -303,7 +303,6 @@ from .category_component_usage import CategoryComponentUsage
 from .category_component_usage_field_enum import CategoryComponentUsageFieldEnum
 from .category_components import CategoryComponents
 from .category_components_request import CategoryComponentsRequest
-from .category_enum import CategoryEnum
 from .category_group import CategoryGroup
 from .category_group_field_enum import CategoryGroupFieldEnum
 from .category_group_request import CategoryGroupRequest
@@ -434,6 +433,7 @@ from .container_format_enum import ContainerFormatEnum
 from .core_auth_token import CoreAuthToken
 from .core_states import CoreStates
 from .corrective_action import CorrectiveAction
+from .corrective_action_category_enum import CorrectiveActionCategoryEnum
 from .corrective_action_metadata import CorrectiveActionMetadata
 from .corrective_action_route_params import CorrectiveActionRouteParams
 from .corrective_action_severity_enum import CorrectiveActionSeverityEnum
@@ -663,6 +663,7 @@ from .feature_metadata_response_features_item import FeatureMetadataResponseFeat
 from .feature_values_body import FeatureValuesBody
 from .federatedidentitydeactivationpolicy_enum import FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum
 from .feedback import Feedback
+from .feedback_category_enum import FeedbackCategoryEnum
 from .fetch_billing_export_request_request import FetchBillingExportRequestRequest
 from .fetch_billing_export_response import FetchBillingExportResponse
 from .fetch_billing_export_response_data_item import FetchBillingExportResponseDataItem
@@ -943,6 +944,7 @@ from .merged_secret_options_request import MergedSecretOptionsRequest
 from .message import Message
 from .message_blocks_item import MessageBlocksItem
 from .message_blocks_item_key import MessageBlocksItemKey
+from .message_feedback_request import MessageFeedbackRequest
 from .message_response import MessageResponse
 from .message_role_enum import MessageRoleEnum
 from .message_state_cache import MessageStateCache
@@ -2653,7 +2655,6 @@ __all__ = (
     "CategoryComponentsRequest",
     "CategoryComponentUsage",
     "CategoryComponentUsageFieldEnum",
-    "CategoryEnum",
     "CategoryGroup",
     "CategoryGroupFieldEnum",
     "CategoryGroupRequest",
@@ -2782,6 +2783,7 @@ __all__ = (
     "CoreAuthToken",
     "CoreStates",
     "CorrectiveAction",
+    "CorrectiveActionCategoryEnum",
     "CorrectiveActionMetadata",
     "CorrectiveActionRouteParams",
     "CorrectiveActionSeverityEnum",
@@ -3001,6 +3003,7 @@ __all__ = (
     "FeatureValuesBody",
     "FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum",
     "Feedback",
+    "FeedbackCategoryEnum",
     "FetchBillingExportRequestRequest",
     "FetchBillingExportResponse",
     "FetchBillingExportResponseDataItem",
@@ -3261,6 +3264,7 @@ __all__ = (
     "Message",
     "MessageBlocksItem",
     "MessageBlocksItemKey",
+    "MessageFeedbackRequest",
     "MessageResponse",
     "MessageRoleEnum",
     "MessageStateCache",

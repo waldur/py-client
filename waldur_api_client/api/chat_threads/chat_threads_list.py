@@ -20,6 +20,7 @@ def _get_kwargs(
     *,
     created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
     input_tokens_min: Union[Unset, float] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
@@ -52,6 +53,8 @@ def _get_kwargs(
             json_field.append(field_item)
 
     params["field"] = json_field
+
+    params["has_feedback"] = has_feedback
 
     params["input_tokens_max"] = input_tokens_max
 
@@ -148,6 +151,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
     input_tokens_min: Union[Unset, float] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
@@ -169,6 +173,7 @@ def sync_detailed(
     Args:
         created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
+        has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
         input_tokens_min (Union[Unset, float]):
         is_archived (Union[Unset, bool]):
@@ -197,6 +202,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         created=created,
         field=field,
+        has_feedback=has_feedback,
         input_tokens_max=input_tokens_max,
         input_tokens_min=input_tokens_min,
         is_archived=is_archived,
@@ -227,6 +233,7 @@ def sync(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
     input_tokens_min: Union[Unset, float] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
@@ -248,6 +255,7 @@ def sync(
     Args:
         created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
+        has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
         input_tokens_min (Union[Unset, float]):
         is_archived (Union[Unset, bool]):
@@ -277,6 +285,7 @@ def sync(
         client=client,
         created=created,
         field=field,
+        has_feedback=has_feedback,
         input_tokens_max=input_tokens_max,
         input_tokens_min=input_tokens_min,
         is_archived=is_archived,
@@ -301,6 +310,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
     input_tokens_min: Union[Unset, float] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
@@ -322,6 +332,7 @@ async def asyncio_detailed(
     Args:
         created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
+        has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
         input_tokens_min (Union[Unset, float]):
         is_archived (Union[Unset, bool]):
@@ -350,6 +361,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         created=created,
         field=field,
+        has_feedback=has_feedback,
         input_tokens_max=input_tokens_max,
         input_tokens_min=input_tokens_min,
         is_archived=is_archived,
@@ -378,6 +390,7 @@ async def asyncio(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
     input_tokens_min: Union[Unset, float] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
@@ -399,6 +412,7 @@ async def asyncio(
     Args:
         created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
+        has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
         input_tokens_min (Union[Unset, float]):
         is_archived (Union[Unset, bool]):
@@ -429,6 +443,7 @@ async def asyncio(
             client=client,
             created=created,
             field=field,
+            has_feedback=has_feedback,
             input_tokens_max=input_tokens_max,
             input_tokens_min=input_tokens_min,
             is_archived=is_archived,
@@ -454,6 +469,7 @@ def sync_all(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
     input_tokens_min: Union[Unset, float] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
@@ -479,6 +495,7 @@ def sync_all(
     Args:
         created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
+        has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
         input_tokens_min (Union[Unset, float]):
         is_archived (Union[Unset, bool]):
@@ -509,6 +526,7 @@ def sync_all(
     kwargs = _get_kwargs(
         created=created,
         field=field,
+        has_feedback=has_feedback,
         input_tokens_max=input_tokens_max,
         input_tokens_min=input_tokens_min,
         is_archived=is_archived,
@@ -572,6 +590,7 @@ async def asyncio_all(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
     input_tokens_min: Union[Unset, float] = UNSET,
     is_archived: Union[Unset, bool] = UNSET,
@@ -597,6 +616,7 @@ async def asyncio_all(
     Args:
         created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
+        has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
         input_tokens_min (Union[Unset, float]):
         is_archived (Union[Unset, bool]):
@@ -627,6 +647,7 @@ async def asyncio_all(
     kwargs = _get_kwargs(
         created=created,
         field=field,
+        has_feedback=has_feedback,
         input_tokens_max=input_tokens_max,
         input_tokens_min=input_tokens_min,
         is_archived=is_archived,
