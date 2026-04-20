@@ -2087,6 +2087,9 @@ Module: `waldur_api_client.api.onboarding_verifications`
 Module: `waldur_api_client.api.openportal`
 
 - `openportal_access_for_email_list` GET `/api/openportal/access_for_email/` (1 query param)
+- `openportal_offering_mapping_retrieve` GET `/api/openportal/offering_mapping/` — Map OpenPortal destination strings to Waldur Offering objects (1 query param)
+- `openportal_project_mapping_retrieve` GET `/api/openportal/project_mapping/` — Map OpenPortal ProjectIdentifier strings to Waldur Project objects (1 query param)
+- `openportal_user_mapping_retrieve` GET `/api/openportal/user_mapping/` — Map OpenPortal UserIdentifier strings (or email addresses) to Waldur User objects (1 query param)
 
 ## openportal-accounting-summary
 Module: `waldur_api_client.api.openportal_accounting_summary`

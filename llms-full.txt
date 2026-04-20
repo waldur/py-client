@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.8-dev.20260420121253
+# Version: 8.0.8-rc.8-dev.20260420211531
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -12657,6 +12657,27 @@ Request body: yes
 GET /api/openportal/access_for_email/
 Query parameters (1):
   - q (required) — Free text search query (email, short_name, project_name, or project_id)
+
+### openportal_offering_mapping_retrieve
+GET /api/openportal/offering_mapping/
+Summary: Map OpenPortal destination strings to Waldur Offering objects
+Description: Map OpenPortal destination strings to Waldur Offering objects. Pass each destination as a repeated 'identifier' query parameter. Returns a dict keyed by identifier; unknown destinations map to null. Accessible to all authenticated users.
+Query parameters (1):
+  - identifier — OpenPortal destination string (repeatable).
+
+### openportal_project_mapping_retrieve
+GET /api/openportal/project_mapping/
+Summary: Map OpenPortal ProjectIdentifier strings to Waldur Project objects
+Description: Map OpenPortal ProjectIdentifier strings to Waldur Project objects. Pass each identifier as a repeated 'identifier' query parameter. Returns a dict keyed by identifier; unknown identifiers map to null. Staff and support see all projects; regular users see only projects they are a member of.
+Query parameters (1):
+  - identifier — OpenPortal ProjectIdentifier string (repeatable).
+
+### openportal_user_mapping_retrieve
+GET /api/openportal/user_mapping/
+Summary: Map OpenPortal UserIdentifier strings (or email addresses) to Waldur User objects
+Description: Map OpenPortal UserIdentifier strings (or email addresses) to Waldur User objects. Pass each value as a repeated 'identifier' query parameter. If the values contain '@' they are treated as email addresses (used for cached reports from remote portals); otherwise they are treated as UserIdentifier ...
+Query parameters (1):
+  - identifier — OpenPortal UserIdentifier string or email address (repeatable). All values in a single request must be the same type.
 
 ============================================================
 ## openportal-accounting-summary  (module: waldur_api_client.api.openportal_accounting_summary)

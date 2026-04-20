@@ -1077,6 +1077,7 @@ from .offering_keycloak_group import OfferingKeycloakGroup
 from .offering_keycloak_membership import OfferingKeycloakMembership
 from .offering_keycloak_membership_request import OfferingKeycloakMembershipRequest
 from .offering_location_update_request import OfferingLocationUpdateRequest
+from .offering_mapping_response import OfferingMappingResponse
 from .offering_options import OfferingOptions
 from .offering_options_options import OfferingOptionsOptions
 from .offering_options_request import OfferingOptionsRequest
@@ -1618,6 +1619,7 @@ from .project_field_enum import ProjectFieldEnum
 from .project_hyperlink_request import ProjectHyperlinkRequest
 from .project_info import ProjectInfo
 from .project_info_request import ProjectInfoRequest
+from .project_mapping_response import ProjectMappingResponse
 from .project_marketplace_resource_count import ProjectMarketplaceResourceCount
 from .project_permission_log import ProjectPermissionLog
 from .project_permission_log_field_enum import ProjectPermissionLogFieldEnum
@@ -2271,6 +2273,7 @@ from .user_info import UserInfo
 from .user_info_request import UserInfoRequest
 from .user_job_title_count import UserJobTitleCount
 from .user_language_count import UserLanguageCount
+from .user_mapping_response import UserMappingResponse
 from .user_nationality_stats import UserNationalityStats
 from .user_offering_consent import UserOfferingConsent
 from .user_offering_consent_create import UserOfferingConsentCreate
@@ -3397,6 +3400,7 @@ __all__ = (
     "OfferingKeycloakMembership",
     "OfferingKeycloakMembershipRequest",
     "OfferingLocationUpdateRequest",
+    "OfferingMappingResponse",
     "OfferingOptions",
     "OfferingOptionsOptions",
     "OfferingOptionsRequest",
@@ -3890,6 +3894,7 @@ __all__ = (
     "ProjectHyperlinkRequest",
     "ProjectInfo",
     "ProjectInfoRequest",
+    "ProjectMappingResponse",
     "ProjectMarketplaceResourceCount",
     "ProjectPermissionLog",
     "ProjectPermissionLogFieldEnum",
@@ -4515,6 +4520,7 @@ __all__ = (
     "UserInfoRequest",
     "UserJobTitleCount",
     "UserLanguageCount",
+    "UserMappingResponse",
     "UsernameGenerationPolicyEnum",
     "UserNationalityStats",
     "UserOfferingConsent",
