@@ -823,8 +823,8 @@ Module: `waldur_api_client.api.google_auth`
 ## hooks
 Module: `waldur_api_client.api.hooks`
 
-- `hooks_list` GET `/api/hooks/` (2 query params)
-- `hooks_count` HEAD `/api/hooks/` — Get number of items in the collection matching the request parameters (2 query params)
+- `hooks_list` GET `/api/hooks/` (7 query params)
+- `hooks_count` HEAD `/api/hooks/` — Get number of items in the collection matching the request parameters (7 query params)
 
 ## hooks-email
 Module: `waldur_api_client.api.hooks_email`

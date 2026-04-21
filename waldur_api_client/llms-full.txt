@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.8-dev.20260420211531
+# Version: 8.0.8-rc.8-dev.20260421063211
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -4476,17 +4476,27 @@ Query parameters (1):
 
 ### hooks_list
 GET /api/hooks/
-Query parameters (2):
-  - author_uuid — Filter by author UUID.
-  - is_active — Filter by active status.
+Query parameters (7):
+  - author_email
+  - author_fullname — User full name contains
+  - author_username
+  - author_uuid
+  - is_active
+  - last_published
+  - query — Filter by author name, username and email
 
 ### hooks_count
 HEAD /api/hooks/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (2):
-  - author_uuid — Filter by author UUID.
-  - is_active — Filter by active status.
+Query parameters (7):
+  - author_email
+  - author_fullname — User full name contains
+  - author_username
+  - author_uuid
+  - is_active
+  - last_published
+  - query — Filter by author name, username and email
 
 ============================================================
 ## hooks-email  (module: waldur_api_client.api.hooks_email)

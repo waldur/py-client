@@ -1946,7 +1946,11 @@ from .resource_switch_plan_request import ResourceSwitchPlanRequest
 from .resource_terminate_request import ResourceTerminateRequest
 from .resource_update import ResourceUpdate
 from .resource_update_limits_request import ResourceUpdateLimitsRequest
+from .resource_update_limits_request_form import ResourceUpdateLimitsRequestForm
+from .resource_update_limits_request_form_limits import ResourceUpdateLimitsRequestFormLimits
 from .resource_update_limits_request_limits import ResourceUpdateLimitsRequestLimits
+from .resource_update_limits_request_multipart import ResourceUpdateLimitsRequestMultipart
+from .resource_update_limits_request_multipart_limits import ResourceUpdateLimitsRequestMultipartLimits
 from .resource_update_request import ResourceUpdateRequest
 from .resource_usage_by_affiliation import ResourceUsageByAffiliation
 from .resource_usage_by_customer import ResourceUsageByCustomer
@@ -4201,7 +4205,11 @@ __all__ = (
     "ResourceTerminateRequest",
     "ResourceUpdate",
     "ResourceUpdateLimitsRequest",
+    "ResourceUpdateLimitsRequestForm",
+    "ResourceUpdateLimitsRequestFormLimits",
     "ResourceUpdateLimitsRequestLimits",
+    "ResourceUpdateLimitsRequestMultipart",
+    "ResourceUpdateLimitsRequestMultipartLimits",
     "ResourceUpdateRequest",
     "ResourceUsageByAffiliation",
     "ResourceUsageByCustomer",

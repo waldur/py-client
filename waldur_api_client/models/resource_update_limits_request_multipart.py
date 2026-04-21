@@ -1,3 +1,4 @@
+import json
 from collections.abc import Mapping
 from io import BytesIO
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
@@ -9,22 +10,22 @@ from .. import types
 from ..types import UNSET, File, Unset
 
 if TYPE_CHECKING:
-    from ..models.resource_update_limits_request_limits import ResourceUpdateLimitsRequestLimits
+    from ..models.resource_update_limits_request_multipart_limits import ResourceUpdateLimitsRequestMultipartLimits
 
 
-T = TypeVar("T", bound="ResourceUpdateLimitsRequest")
+T = TypeVar("T", bound="ResourceUpdateLimitsRequestMultipart")
 
 
 @_attrs_define
-class ResourceUpdateLimitsRequest:
+class ResourceUpdateLimitsRequestMultipart:
     """
     Attributes:
-        limits (ResourceUpdateLimitsRequestLimits):
+        limits (ResourceUpdateLimitsRequestMultipartLimits):
         request_comment (Union[None, Unset, str]):
         attachment (Union[Unset, File]): Optional PDF attachment for the limit update request.
     """
 
-    limits: "ResourceUpdateLimitsRequestLimits"
+    limits: "ResourceUpdateLimitsRequestMultipartLimits"
     request_comment: Union[None, Unset, str] = UNSET
     attachment: Union[Unset, File] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -56,12 +57,31 @@ class ResourceUpdateLimitsRequest:
 
         return field_dict
 
+    def to_multipart(self) -> types.RequestFiles:
+        files: types.RequestFiles = []
+
+        files.append(("limits", (None, json.dumps(self.limits.to_dict()).encode(), "application/json")))
+
+        if not isinstance(self.request_comment, Unset):
+            if isinstance(self.request_comment, str):
+                files.append(("request_comment", (None, str(self.request_comment).encode(), "text/plain")))
+            else:
+                files.append(("request_comment", (None, str(self.request_comment).encode(), "text/plain")))
+
+        if not isinstance(self.attachment, Unset):
+            files.append(("attachment", self.attachment.to_tuple()))
+
+        for prop_name, prop in self.additional_properties.items():
+            files.append((prop_name, (None, str(prop).encode(), "text/plain")))
+
+        return files
+
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.resource_update_limits_request_limits import ResourceUpdateLimitsRequestLimits
+        from ..models.resource_update_limits_request_multipart_limits import ResourceUpdateLimitsRequestMultipartLimits
 
         d = dict(src_dict)
-        limits = ResourceUpdateLimitsRequestLimits.from_dict(d.pop("limits"))
+        limits = ResourceUpdateLimitsRequestMultipartLimits.from_dict(d.pop("limits"))
 
         def _parse_request_comment(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -79,14 +99,14 @@ class ResourceUpdateLimitsRequest:
         else:
             attachment = File(payload=BytesIO(_attachment))
 
-        resource_update_limits_request = cls(
+        resource_update_limits_request_multipart = cls(
             limits=limits,
             request_comment=request_comment,
             attachment=attachment,
         )
 
-        resource_update_limits_request.additional_properties = d
-        return resource_update_limits_request
+        resource_update_limits_request_multipart.additional_properties = d
+        return resource_update_limits_request_multipart
 
     @property
     def additional_keys(self) -> list[str]:

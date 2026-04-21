@@ -9,22 +9,22 @@ from .. import types
 from ..types import UNSET, File, Unset
 
 if TYPE_CHECKING:
-    from ..models.resource_update_limits_request_limits import ResourceUpdateLimitsRequestLimits
+    from ..models.resource_update_limits_request_form_limits import ResourceUpdateLimitsRequestFormLimits
 
 
-T = TypeVar("T", bound="ResourceUpdateLimitsRequest")
+T = TypeVar("T", bound="ResourceUpdateLimitsRequestForm")
 
 
 @_attrs_define
-class ResourceUpdateLimitsRequest:
+class ResourceUpdateLimitsRequestForm:
     """
     Attributes:
-        limits (ResourceUpdateLimitsRequestLimits):
+        limits (ResourceUpdateLimitsRequestFormLimits):
         request_comment (Union[None, Unset, str]):
         attachment (Union[Unset, File]): Optional PDF attachment for the limit update request.
     """
 
-    limits: "ResourceUpdateLimitsRequestLimits"
+    limits: "ResourceUpdateLimitsRequestFormLimits"
     request_comment: Union[None, Unset, str] = UNSET
     attachment: Union[Unset, File] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -58,10 +58,10 @@ class ResourceUpdateLimitsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.resource_update_limits_request_limits import ResourceUpdateLimitsRequestLimits
+        from ..models.resource_update_limits_request_form_limits import ResourceUpdateLimitsRequestFormLimits
 
         d = dict(src_dict)
-        limits = ResourceUpdateLimitsRequestLimits.from_dict(d.pop("limits"))
+        limits = ResourceUpdateLimitsRequestFormLimits.from_dict(d.pop("limits"))
 
         def _parse_request_comment(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -79,14 +79,14 @@ class ResourceUpdateLimitsRequest:
         else:
             attachment = File(payload=BytesIO(_attachment))
 
-        resource_update_limits_request = cls(
+        resource_update_limits_request_form = cls(
             limits=limits,
             request_comment=request_comment,
             attachment=attachment,
         )
 
-        resource_update_limits_request.additional_properties = d
-        return resource_update_limits_request
+        resource_update_limits_request_form.additional_properties = d
+        return resource_update_limits_request_form
 
     @property
     def additional_keys(self) -> list[str]:
