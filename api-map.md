@@ -191,8 +191,8 @@ Module: `waldur_api_client.api.aws_images`
 ## aws-instances
 Module: `waldur_api_client.api.aws_instances`
 
-- `aws_instances_list` GET `/api/aws-instances/` (19 query params)
-- `aws_instances_count` HEAD `/api/aws-instances/` — Get number of items in the collection matching the request parameters (18 query params)
+- `aws_instances_list` GET `/api/aws-instances/` (18 query params)
+- `aws_instances_count` HEAD `/api/aws-instances/` — Get number of items in the collection matching the request parameters (17 query params)
 - `aws_instances_create` POST `/api/aws-instances/` (request body)
 - `aws_instances_retrieve` GET `/api/aws-instances/{uuid}/` (path: uuid | 1 query param)
 - `aws_instances_update` PUT `/api/aws-instances/{uuid}/` (path: uuid | request body)
@@ -255,8 +255,8 @@ Module: `waldur_api_client.api.azure_locations`
 ## azure-public-ips
 Module: `waldur_api_client.api.azure_public_ips`
 
-- `azure_public_ips_list` GET `/api/azure-public-ips/` (21 query params)
-- `azure_public_ips_count` HEAD `/api/azure-public-ips/` — Get number of items in the collection matching the request parameters (20 query params)
+- `azure_public_ips_list` GET `/api/azure-public-ips/` (20 query params)
+- `azure_public_ips_count` HEAD `/api/azure-public-ips/` — Get number of items in the collection matching the request parameters (19 query params)
 - `azure_public_ips_create` POST `/api/azure-public-ips/` (request body)
 - `azure_public_ips_retrieve` GET `/api/azure-public-ips/{uuid}/` (path: uuid | 1 query param)
 - `azure_public_ips_update` PUT `/api/azure-public-ips/{uuid}/` (path: uuid | request body)
@@ -284,8 +284,8 @@ Module: `waldur_api_client.api.azure_sizes`
 ## azure-sql-databases
 Module: `waldur_api_client.api.azure_sql_databases`
 
-- `azure_sql_databases_list` GET `/api/azure-sql-databases/` (23 query params)
-- `azure_sql_databases_count` HEAD `/api/azure-sql-databases/` — Get number of items in the collection matching the request parameters (22 query params)
+- `azure_sql_databases_list` GET `/api/azure-sql-databases/` (22 query params)
+- `azure_sql_databases_count` HEAD `/api/azure-sql-databases/` — Get number of items in the collection matching the request parameters (21 query params)
 - `azure_sql_databases_create` POST `/api/azure-sql-databases/` (request body)
 - `azure_sql_databases_retrieve` GET `/api/azure-sql-databases/{uuid}/` (path: uuid | 1 query param)
 - `azure_sql_databases_update` PUT `/api/azure-sql-databases/{uuid}/` (path: uuid | request body)
@@ -299,8 +299,8 @@ Module: `waldur_api_client.api.azure_sql_databases`
 ## azure-sql-servers
 Module: `waldur_api_client.api.azure_sql_servers`
 
-- `azure_sql_servers_list` GET `/api/azure-sql-servers/` (21 query params)
-- `azure_sql_servers_count` HEAD `/api/azure-sql-servers/` — Get number of items in the collection matching the request parameters (20 query params)
+- `azure_sql_servers_list` GET `/api/azure-sql-servers/` (20 query params)
+- `azure_sql_servers_count` HEAD `/api/azure-sql-servers/` — Get number of items in the collection matching the request parameters (19 query params)
 - `azure_sql_servers_create` POST `/api/azure-sql-servers/` (request body)
 - `azure_sql_servers_retrieve` GET `/api/azure-sql-servers/{uuid}/` (path: uuid | 1 query param)
 - `azure_sql_servers_update` PUT `/api/azure-sql-servers/{uuid}/` (path: uuid | request body)
@@ -315,8 +315,8 @@ Module: `waldur_api_client.api.azure_sql_servers`
 ## azure-virtualmachines
 Module: `waldur_api_client.api.azure_virtualmachines`
 
-- `azure_virtualmachines_list` GET `/api/azure-virtualmachines/` (21 query params)
-- `azure_virtualmachines_count` HEAD `/api/azure-virtualmachines/` — Get number of items in the collection matching the request parameters (20 query params)
+- `azure_virtualmachines_list` GET `/api/azure-virtualmachines/` (20 query params)
+- `azure_virtualmachines_count` HEAD `/api/azure-virtualmachines/` — Get number of items in the collection matching the request parameters (19 query params)
 - `azure_virtualmachines_create` POST `/api/azure-virtualmachines/` (request body)
 - `azure_virtualmachines_retrieve` GET `/api/azure-virtualmachines/{uuid}/` (path: uuid | 1 query param)
 - `azure_virtualmachines_update` PUT `/api/azure-virtualmachines/{uuid}/` (path: uuid | request body)
@@ -688,8 +688,8 @@ Module: `waldur_api_client.api.debug`
 ## digitalocean-droplets
 Module: `waldur_api_client.api.digitalocean_droplets`
 
-- `digitalocean_droplets_list` GET `/api/digitalocean-droplets/` (19 query params)
-- `digitalocean_droplets_count` HEAD `/api/digitalocean-droplets/` — Get number of items in the collection matching the request parameters (18 query params)
+- `digitalocean_droplets_list` GET `/api/digitalocean-droplets/` (18 query params)
+- `digitalocean_droplets_count` HEAD `/api/digitalocean-droplets/` — Get number of items in the collection matching the request parameters (17 query params)
 - `digitalocean_droplets_create` POST `/api/digitalocean-droplets/` (request body)
 - `digitalocean_droplets_retrieve` GET `/api/digitalocean-droplets/{uuid}/` (path: uuid | 1 query param)
 - `digitalocean_droplets_update` PUT `/api/digitalocean-droplets/{uuid}/` (path: uuid | request body)
@@ -935,12 +935,12 @@ Module: `waldur_api_client.api.keycloak_user_group_memberships`
 ## keys
 Module: `waldur_api_client.api.keys`
 
-- `keys_list` GET `/api/keys/` (14 query params)
-- `keys_count` HEAD `/api/keys/` — Get number of items in the collection matching the request parameters (13 query params)
+- `keys_list` GET `/api/keys/` (13 query params)
+- `keys_count` HEAD `/api/keys/` — Get number of items in the collection matching the request parameters (12 query params)
 - `keys_create` POST `/api/keys/` (request body)
 - `keys_retrieve` GET `/api/keys/{uuid}/` (path: uuid | 1 query param)
 - `keys_destroy` DELETE `/api/keys/{uuid}/` (path: uuid)
-- `keys_history_list` GET `/api/keys/{uuid}/history/` — Get version history (path: uuid | 14 query params)
+- `keys_history_list` GET `/api/keys/{uuid}/history/` — Get version history (path: uuid | 13 query params)
 - `keys_history_at_retrieve` GET `/api/keys/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 
 ## lexis-links
@@ -1530,7 +1530,7 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_set_slug` POST `/api/marketplace-provider-resources/{uuid}/set_slug/` — Set resource slug (path: uuid | request body)
 - `marketplace_provider_resources_set_state_ok` POST `/api/marketplace-provider-resources/{uuid}/set_state_ok/` — Set resource state to OK (path: uuid)
 - `marketplace_provider_resources_submit_report` POST `/api/marketplace-provider-resources/{uuid}/submit_report/` — Submit a report for a resource (path: uuid | request body)
-- `marketplace_provider_resources_team_list` GET `/api/marketplace-provider-resources/{uuid}/team/` — Get resource team (path: uuid)
+- `marketplace_provider_resources_team_list` GET `/api/marketplace-provider-resources/{uuid}/team/` — Get resource team (path: uuid | 1 query param)
 - `marketplace_provider_resources_terminate` POST `/api/marketplace-provider-resources/{uuid}/terminate/` — Terminate a resource (path: uuid | request body)
 - `marketplace_provider_resources_unlink` POST `/api/marketplace-provider-resources/{uuid}/unlink/` — Unlink a resource (staff only) (path: uuid)
 - `marketplace_provider_resources_update_options` POST `/api/marketplace-provider-resources/{uuid}/update_options/` — Update resource options (path: uuid | request body)
@@ -1611,7 +1611,7 @@ Module: `waldur_api_client.api.marketplace_resources`
 - `marketplace_resources_set_restrict_member_access` POST `/api/marketplace-resources/{uuid}/set_restrict_member_access/` — Set restrict member access flag (path: uuid | request body)
 - `marketplace_resources_set_slug` POST `/api/marketplace-resources/{uuid}/set_slug/` — Set resource slug (path: uuid | request body)
 - `marketplace_resources_switch_plan` POST `/api/marketplace-resources/{uuid}/switch_plan/` — Switch resource plan (path: uuid | request body)
-- `marketplace_resources_team_list` GET `/api/marketplace-resources/{uuid}/team/` — Get resource team (path: uuid)
+- `marketplace_resources_team_list` GET `/api/marketplace-resources/{uuid}/team/` — Get resource team (path: uuid | 1 query param)
 - `marketplace_resources_terminate` POST `/api/marketplace-resources/{uuid}/terminate/` — Terminate a resource (path: uuid | request body)
 - `marketplace_resources_unlink` POST `/api/marketplace-resources/{uuid}/unlink/` — Unlink a resource (staff only) (path: uuid)
 - `marketplace_resources_update_limits` POST `/api/marketplace-resources/{uuid}/update_limits/` — Update resource limits (path: uuid | request body)
@@ -1692,7 +1692,7 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `marketplace_service_providers_course_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/course_accounts/` — List course project accounts for a service provider (path: service_provider_uuid | 9 query params)
 - `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 25 query params)
 - `marketplace_service_providers_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customers/` — List customers of a service provider (path: service_provider_uuid | 16 query params)
-- `marketplace_service_providers_keys_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 14 query params)
+- `marketplace_service_providers_keys_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 13 query params)
 - `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 40 query params)
 - `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 18 query params)
 - `marketplace_service_providers_project_service_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/` — List project service accounts for a service provider (path: service_provider_uuid | 5 query params)
@@ -2108,8 +2108,8 @@ Module: `waldur_api_client.api.openportal_allocation_user_usage`
 ## openportal-allocations
 Module: `waldur_api_client.api.openportal_allocations`
 
-- `openportal_allocations_list` GET `/api/openportal-allocations/` (20 query params)
-- `openportal_allocations_count` HEAD `/api/openportal-allocations/` — Get number of items in the collection matching the request parameters (19 query params)
+- `openportal_allocations_list` GET `/api/openportal-allocations/` (19 query params)
+- `openportal_allocations_count` HEAD `/api/openportal-allocations/` — Get number of items in the collection matching the request parameters (18 query params)
 - `openportal_allocations_create` POST `/api/openportal-allocations/` (request body)
 - `openportal_allocations_retrieve` GET `/api/openportal-allocations/{uuid}/` (path: uuid | 1 query param)
 - `openportal_allocations_update` PUT `/api/openportal-allocations/{uuid}/` (path: uuid | request body)
@@ -2183,8 +2183,8 @@ Module: `waldur_api_client.api.openportal_projectinfo`
 ## openportal-remote-allocations
 Module: `waldur_api_client.api.openportal_remote_allocations`
 
-- `openportal_remote_allocations_list` GET `/api/openportal-remote-allocations/` (20 query params)
-- `openportal_remote_allocations_count` HEAD `/api/openportal-remote-allocations/` — Get number of items in the collection matching the request parameters (19 query params)
+- `openportal_remote_allocations_list` GET `/api/openportal-remote-allocations/` (19 query params)
+- `openportal_remote_allocations_count` HEAD `/api/openportal-remote-allocations/` — Get number of items in the collection matching the request parameters (18 query params)
 - `openportal_remote_allocations_create` POST `/api/openportal-remote-allocations/` (request body)
 - `openportal_remote_allocations_retrieve` GET `/api/openportal-remote-allocations/{uuid}/` (path: uuid | 1 query param)
 - `openportal_remote_allocations_update` PUT `/api/openportal-remote-allocations/{uuid}/` (path: uuid | request body)
@@ -2261,8 +2261,8 @@ Module: `waldur_api_client.api.openstack`
 ## openstack-backups
 Module: `waldur_api_client.api.openstack_backups`
 
-- `openstack_backups_list` GET `/api/openstack-backups/` — List backups (23 query params)
-- `openstack_backups_count` HEAD `/api/openstack-backups/` — List backups (22 query params)
+- `openstack_backups_list` GET `/api/openstack-backups/` — List backups (22 query params)
+- `openstack_backups_count` HEAD `/api/openstack-backups/` — List backups (21 query params)
 - `openstack_backups_retrieve` GET `/api/openstack-backups/{uuid}/` — Get backup details (path: uuid | 1 query param)
 - `openstack_backups_update` PUT `/api/openstack-backups/{uuid}/` — Update backup (path: uuid | request body)
 - `openstack_backups_partial_update` PATCH `/api/openstack-backups/{uuid}/` — Partially update backup (path: uuid | request body)
@@ -2292,8 +2292,8 @@ Module: `waldur_api_client.api.openstack_flavors`
 ## openstack-floating-ips
 Module: `waldur_api_client.api.openstack_floating_ips`
 
-- `openstack_floating_ips_list` GET `/api/openstack-floating-ips/` — List floating IPs (24 query params)
-- `openstack_floating_ips_count` HEAD `/api/openstack-floating-ips/` — List floating IPs (23 query params)
+- `openstack_floating_ips_list` GET `/api/openstack-floating-ips/` — List floating IPs (23 query params)
+- `openstack_floating_ips_count` HEAD `/api/openstack-floating-ips/` — List floating IPs (22 query params)
 - `openstack_floating_ips_retrieve` GET `/api/openstack-floating-ips/{uuid}/` — Get floating IP details (path: uuid | 1 query param)
 - `openstack_floating_ips_destroy` DELETE `/api/openstack-floating-ips/{uuid}/` — Delete floating IP (path: uuid)
 - `openstack_floating_ips_attach_to_port` POST `/api/openstack-floating-ips/{uuid}/attach_to_port/` — Attach floating IP to a port (path: uuid | request body)
@@ -2344,8 +2344,8 @@ Module: `waldur_api_client.api.openstack_instance_availability_zones`
 ## openstack-instances
 Module: `waldur_api_client.api.openstack_instances`
 
-- `openstack_instances_list` GET `/api/openstack-instances/` — List instances (26 query params)
-- `openstack_instances_count` HEAD `/api/openstack-instances/` — List instances (25 query params)
+- `openstack_instances_list` GET `/api/openstack-instances/` — List instances (25 query params)
+- `openstack_instances_count` HEAD `/api/openstack-instances/` — List instances (24 query params)
 - `openstack_instances_retrieve` GET `/api/openstack-instances/{uuid}/` — Get instance details (path: uuid | 1 query param)
 - `openstack_instances_update` PUT `/api/openstack-instances/{uuid}/` — Update instance (path: uuid | request body)
 - `openstack_instances_partial_update` PATCH `/api/openstack-instances/{uuid}/` — Partially update instance (path: uuid | request body)
@@ -2398,8 +2398,8 @@ Module: `waldur_api_client.api.openstack_loadbalancers`
 ## openstack-marketplace-tenants
 Module: `waldur_api_client.api.openstack_marketplace_tenants`
 
-- `openstack_marketplace_tenants_list` GET `/api/openstack-marketplace-tenants/` (18 query params)
-- `openstack_marketplace_tenants_count` HEAD `/api/openstack-marketplace-tenants/` — Get number of items in the collection matching the request parameters (18 query params)
+- `openstack_marketplace_tenants_list` GET `/api/openstack-marketplace-tenants/` (17 query params)
+- `openstack_marketplace_tenants_count` HEAD `/api/openstack-marketplace-tenants/` — Get number of items in the collection matching the request parameters (17 query params)
 - `openstack_marketplace_tenants_retrieve` GET `/api/openstack-marketplace-tenants/{uuid}/` (path: uuid)
 - `openstack_marketplace_tenants_create_image` POST `/api/openstack-marketplace-tenants/{uuid}/create_image/` (path: uuid | request body)
 - `openstack_marketplace_tenants_upload_image_data` POST `/api/openstack-marketplace-tenants/{uuid}/upload_image_data/{image_id}/` (path: image_id, uuid | request body)
@@ -2429,8 +2429,8 @@ Module: `waldur_api_client.api.openstack_network_rbac_policies`
 ## openstack-networks
 Module: `waldur_api_client.api.openstack_networks`
 
-- `openstack_networks_list` GET `/api/openstack-networks/` — List networks (25 query params)
-- `openstack_networks_count` HEAD `/api/openstack-networks/` — List networks (24 query params)
+- `openstack_networks_list` GET `/api/openstack-networks/` — List networks (24 query params)
+- `openstack_networks_count` HEAD `/api/openstack-networks/` — List networks (23 query params)
 - `openstack_networks_retrieve` GET `/api/openstack-networks/{uuid}/` — Get network details (path: uuid | 1 query param)
 - `openstack_networks_update` PUT `/api/openstack-networks/{uuid}/` — Update network (path: uuid | request body)
 - `openstack_networks_partial_update` PATCH `/api/openstack-networks/{uuid}/` — Partially update network (path: uuid | request body)
@@ -2509,8 +2509,8 @@ Module: `waldur_api_client.api.openstack_routers`
 ## openstack-security-groups
 Module: `waldur_api_client.api.openstack_security_groups`
 
-- `openstack_security_groups_list` GET `/api/openstack-security-groups/` — List security groups (22 query params)
-- `openstack_security_groups_count` HEAD `/api/openstack-security-groups/` — List security groups (21 query params)
+- `openstack_security_groups_list` GET `/api/openstack-security-groups/` — List security groups (21 query params)
+- `openstack_security_groups_count` HEAD `/api/openstack-security-groups/` — List security groups (20 query params)
 - `openstack_security_groups_retrieve` GET `/api/openstack-security-groups/{uuid}/` — Get security group details (path: uuid | 1 query param)
 - `openstack_security_groups_update` PUT `/api/openstack-security-groups/{uuid}/` (path: uuid | request body)
 - `openstack_security_groups_partial_update` PATCH `/api/openstack-security-groups/{uuid}/` — Partially update security group (path: uuid | request body)
@@ -2524,8 +2524,8 @@ Module: `waldur_api_client.api.openstack_security_groups`
 ## openstack-server-groups
 Module: `waldur_api_client.api.openstack_server_groups`
 
-- `openstack_server_groups_list` GET `/api/openstack-server-groups/` — List server groups (21 query params)
-- `openstack_server_groups_count` HEAD `/api/openstack-server-groups/` — List server groups (20 query params)
+- `openstack_server_groups_list` GET `/api/openstack-server-groups/` — List server groups (20 query params)
+- `openstack_server_groups_count` HEAD `/api/openstack-server-groups/` — List server groups (19 query params)
 - `openstack_server_groups_create` POST `/api/openstack-server-groups/` (request body)
 - `openstack_server_groups_retrieve` GET `/api/openstack-server-groups/{uuid}/` — Get server group details (path: uuid | 1 query param)
 - `openstack_server_groups_destroy` DELETE `/api/openstack-server-groups/{uuid}/` — Delete server group (path: uuid)
@@ -2537,8 +2537,8 @@ Module: `waldur_api_client.api.openstack_server_groups`
 ## openstack-snapshots
 Module: `waldur_api_client.api.openstack_snapshots`
 
-- `openstack_snapshots_list` GET `/api/openstack-snapshots/` — List snapshots (26 query params)
-- `openstack_snapshots_count` HEAD `/api/openstack-snapshots/` — List snapshots (25 query params)
+- `openstack_snapshots_list` GET `/api/openstack-snapshots/` — List snapshots (25 query params)
+- `openstack_snapshots_count` HEAD `/api/openstack-snapshots/` — List snapshots (24 query params)
 - `openstack_snapshots_retrieve` GET `/api/openstack-snapshots/{uuid}/` — Get snapshot details (path: uuid | 1 query param)
 - `openstack_snapshots_update` PUT `/api/openstack-snapshots/{uuid}/` — Update snapshot (path: uuid | request body)
 - `openstack_snapshots_partial_update` PATCH `/api/openstack-snapshots/{uuid}/` — Partially update snapshot (path: uuid | request body)
@@ -2553,8 +2553,8 @@ Module: `waldur_api_client.api.openstack_snapshots`
 ## openstack-subnets
 Module: `waldur_api_client.api.openstack_subnets`
 
-- `openstack_subnets_list` GET `/api/openstack-subnets/` — List subnets (27 query params)
-- `openstack_subnets_count` HEAD `/api/openstack-subnets/` — List subnets (26 query params)
+- `openstack_subnets_list` GET `/api/openstack-subnets/` — List subnets (26 query params)
+- `openstack_subnets_count` HEAD `/api/openstack-subnets/` — List subnets (25 query params)
 - `openstack_subnets_retrieve` GET `/api/openstack-subnets/{uuid}/` — Get subnet details (path: uuid | 1 query param)
 - `openstack_subnets_update` PUT `/api/openstack-subnets/{uuid}/` — Update subnet (path: uuid | request body)
 - `openstack_subnets_partial_update` PATCH `/api/openstack-subnets/{uuid}/` — Partially update subnet (path: uuid | request body)
@@ -2569,13 +2569,13 @@ Module: `waldur_api_client.api.openstack_subnets`
 ## openstack-tenants
 Module: `waldur_api_client.api.openstack_tenants`
 
-- `openstack_tenants_list` GET `/api/openstack-tenants/` — List tenants (19 query params)
-- `openstack_tenants_count` HEAD `/api/openstack-tenants/` — List tenants (18 query params)
+- `openstack_tenants_list` GET `/api/openstack-tenants/` — List tenants (18 query params)
+- `openstack_tenants_count` HEAD `/api/openstack-tenants/` — List tenants (17 query params)
 - `openstack_tenants_retrieve` GET `/api/openstack-tenants/{uuid}/` — Get tenant details (path: uuid | 1 query param)
 - `openstack_tenants_update` PUT `/api/openstack-tenants/{uuid}/` — Update tenant (path: uuid | request body)
 - `openstack_tenants_partial_update` PATCH `/api/openstack-tenants/{uuid}/` — Partially update tenant (path: uuid | request body)
-- `openstack_tenants_backend_instances_list` GET `/api/openstack-tenants/{uuid}/backend_instances/` — List backend instances (path: uuid | 18 query params)
-- `openstack_tenants_backend_volumes_list` GET `/api/openstack-tenants/{uuid}/backend_volumes/` — List backend volumes (path: uuid | 18 query params)
+- `openstack_tenants_backend_instances_list` GET `/api/openstack-tenants/{uuid}/backend_instances/` — List backend instances (path: uuid | 17 query params)
+- `openstack_tenants_backend_volumes_list` GET `/api/openstack-tenants/{uuid}/backend_volumes/` — List backend volumes (path: uuid | 17 query params)
 - `openstack_tenants_change_password` POST `/api/openstack-tenants/{uuid}/change_password/` — Change tenant user password (path: uuid | request body)
 - `openstack_tenants_create_floating_ip` POST `/api/openstack-tenants/{uuid}/create_floating_ip/` — Create floating IP for tenant (path: uuid | request body)
 - `openstack_tenants_create_network` POST `/api/openstack-tenants/{uuid}/create_network/` — Create network for tenant (path: uuid | request body)
@@ -2611,8 +2611,8 @@ Module: `waldur_api_client.api.openstack_volume_types`
 ## openstack-volumes
 Module: `waldur_api_client.api.openstack_volumes`
 
-- `openstack_volumes_list` GET `/api/openstack-volumes/` — List volumes (28 query params)
-- `openstack_volumes_count` HEAD `/api/openstack-volumes/` — List volumes (27 query params)
+- `openstack_volumes_list` GET `/api/openstack-volumes/` — List volumes (27 query params)
+- `openstack_volumes_count` HEAD `/api/openstack-volumes/` — List volumes (26 query params)
 - `openstack_volumes_retrieve` GET `/api/openstack-volumes/{uuid}/` — Get volume details (path: uuid | 1 query param)
 - `openstack_volumes_update` PUT `/api/openstack-volumes/{uuid}/` — Update volume (path: uuid | request body)
 - `openstack_volumes_partial_update` PATCH `/api/openstack-volumes/{uuid}/` — Partially update volume (path: uuid | request body)
@@ -2941,8 +2941,8 @@ Module: `waldur_api_client.api.rabbitmq_vhost_stats`
 ## rancher-apps
 Module: `waldur_api_client.api.rancher_apps`
 
-- `rancher_apps_list` GET `/api/rancher-apps/` (22 query params)
-- `rancher_apps_count` HEAD `/api/rancher-apps/` — Get number of items in the collection matching the request parameters (21 query params)
+- `rancher_apps_list` GET `/api/rancher-apps/` (21 query params)
+- `rancher_apps_count` HEAD `/api/rancher-apps/` — Get number of items in the collection matching the request parameters (20 query params)
 - `rancher_apps_create` POST `/api/rancher-apps/` (request body)
 - `rancher_apps_retrieve` GET `/api/rancher-apps/{uuid}/` (path: uuid | 1 query param)
 - `rancher_apps_update` PUT `/api/rancher-apps/{uuid}/` (path: uuid | request body)
@@ -2984,8 +2984,8 @@ Module: `waldur_api_client.api.rancher_cluster_templates`
 ## rancher-clusters
 Module: `waldur_api_client.api.rancher_clusters`
 
-- `rancher_clusters_list` GET `/api/rancher-clusters/` (19 query params)
-- `rancher_clusters_count` HEAD `/api/rancher-clusters/` — Get number of items in the collection matching the request parameters (18 query params)
+- `rancher_clusters_list` GET `/api/rancher-clusters/` (18 query params)
+- `rancher_clusters_count` HEAD `/api/rancher-clusters/` — Get number of items in the collection matching the request parameters (17 query params)
 - `rancher_clusters_retrieve` GET `/api/rancher-clusters/{uuid}/` (path: uuid | 1 query param)
 - `rancher_clusters_update` PUT `/api/rancher-clusters/{uuid}/` (path: uuid | request body)
 - `rancher_clusters_partial_update` PATCH `/api/rancher-clusters/{uuid}/` (path: uuid | request body)
@@ -3016,8 +3016,8 @@ Module: `waldur_api_client.api.rancher_hpas`
 ## rancher-ingresses
 Module: `waldur_api_client.api.rancher_ingresses`
 
-- `rancher_ingresses_list` GET `/api/rancher-ingresses/` (22 query params)
-- `rancher_ingresses_count` HEAD `/api/rancher-ingresses/` — Get number of items in the collection matching the request parameters (21 query params)
+- `rancher_ingresses_list` GET `/api/rancher-ingresses/` (21 query params)
+- `rancher_ingresses_count` HEAD `/api/rancher-ingresses/` — Get number of items in the collection matching the request parameters (20 query params)
 - `rancher_ingresses_create` POST `/api/rancher-ingresses/` (request body)
 - `rancher_ingresses_retrieve` GET `/api/rancher-ingresses/{uuid}/` (path: uuid | 1 query param)
 - `rancher_ingresses_update` PUT `/api/rancher-ingresses/{uuid}/` (path: uuid | request body)
@@ -3072,8 +3072,8 @@ Module: `waldur_api_client.api.rancher_role_templates`
 ## rancher-services
 Module: `waldur_api_client.api.rancher_services`
 
-- `rancher_services_list` GET `/api/rancher-services/` (22 query params)
-- `rancher_services_count` HEAD `/api/rancher-services/` — Get number of items in the collection matching the request parameters (21 query params)
+- `rancher_services_list` GET `/api/rancher-services/` (21 query params)
+- `rancher_services_count` HEAD `/api/rancher-services/` — Get number of items in the collection matching the request parameters (20 query params)
 - `rancher_services_create` POST `/api/rancher-services/` (request body)
 - `rancher_services_retrieve` GET `/api/rancher-services/{uuid}/` (path: uuid | 1 query param)
 - `rancher_services_update` PUT `/api/rancher-services/{uuid}/` (path: uuid | request body)
@@ -3250,8 +3250,8 @@ Module: `waldur_api_client.api.slurm_allocation_user_usage`
 ## slurm-allocations
 Module: `waldur_api_client.api.slurm_allocations`
 
-- `slurm_allocations_list` GET `/api/slurm-allocations/` (20 query params)
-- `slurm_allocations_count` HEAD `/api/slurm-allocations/` — Get number of items in the collection matching the request parameters (19 query params)
+- `slurm_allocations_list` GET `/api/slurm-allocations/` (19 query params)
+- `slurm_allocations_count` HEAD `/api/slurm-allocations/` — Get number of items in the collection matching the request parameters (18 query params)
 - `slurm_allocations_create` POST `/api/slurm-allocations/` (request body)
 - `slurm_allocations_retrieve` GET `/api/slurm-allocations/{uuid}/` (path: uuid | 1 query param)
 - `slurm_allocations_update` PUT `/api/slurm-allocations/{uuid}/` (path: uuid | request body)
@@ -3608,8 +3608,8 @@ Module: `waldur_api_client.api.vmware_datastores`
 ## vmware-disks
 Module: `waldur_api_client.api.vmware_disks`
 
-- `vmware_disks_list` GET `/api/vmware-disks/` (21 query params)
-- `vmware_disks_count` HEAD `/api/vmware-disks/` — Get number of items in the collection matching the request parameters (20 query params)
+- `vmware_disks_list` GET `/api/vmware-disks/` (20 query params)
+- `vmware_disks_count` HEAD `/api/vmware-disks/` — Get number of items in the collection matching the request parameters (19 query params)
 - `vmware_disks_retrieve` GET `/api/vmware-disks/{uuid}/` (path: uuid | 1 query param)
 - `vmware_disks_destroy` DELETE `/api/vmware-disks/{uuid}/` (path: uuid)
 - `vmware_disks_extend` POST `/api/vmware-disks/{uuid}/extend/` — Increase disk capacity (path: uuid | request body)
@@ -3640,8 +3640,8 @@ Module: `waldur_api_client.api.vmware_networks`
 ## vmware-ports
 Module: `waldur_api_client.api.vmware_ports`
 
-- `vmware_ports_list` GET `/api/vmware-ports/` (23 query params)
-- `vmware_ports_count` HEAD `/api/vmware-ports/` — Get number of items in the collection matching the request parameters (22 query params)
+- `vmware_ports_list` GET `/api/vmware-ports/` (22 query params)
+- `vmware_ports_count` HEAD `/api/vmware-ports/` — Get number of items in the collection matching the request parameters (21 query params)
 - `vmware_ports_retrieve` GET `/api/vmware-ports/{uuid}/` (path: uuid | 1 query param)
 - `vmware_ports_destroy` DELETE `/api/vmware-ports/{uuid}/` (path: uuid)
 - `vmware_ports_pull` POST `/api/vmware-ports/{uuid}/pull/` — Synchronize resource state (path: uuid)
@@ -3659,8 +3659,8 @@ Module: `waldur_api_client.api.vmware_templates`
 ## vmware-virtual-machine
 Module: `waldur_api_client.api.vmware_virtual_machine`
 
-- `vmware_virtual_machine_list` GET `/api/vmware-virtual-machine/` (20 query params)
-- `vmware_virtual_machine_count` HEAD `/api/vmware-virtual-machine/` — Get number of items in the collection matching the request parameters (19 query params)
+- `vmware_virtual_machine_list` GET `/api/vmware-virtual-machine/` (19 query params)
+- `vmware_virtual_machine_count` HEAD `/api/vmware-virtual-machine/` — Get number of items in the collection matching the request parameters (18 query params)
 - `vmware_virtual_machine_create` POST `/api/vmware-virtual-machine/` (request body)
 - `vmware_virtual_machine_retrieve` GET `/api/vmware-virtual-machine/{uuid}/` (path: uuid | 1 query param)
 - `vmware_virtual_machine_update` PUT `/api/vmware-virtual-machine/{uuid}/` (path: uuid | request body)

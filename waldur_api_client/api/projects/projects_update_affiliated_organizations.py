@@ -6,14 +6,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.affiliated_organizations_update_request import AffiliatedOrganizationsUpdateRequest
+from ...models.project_affiliated_organizations_update_request import ProjectAffiliatedOrganizationsUpdateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: AffiliatedOrganizationsUpdateRequest,
+    body: ProjectAffiliatedOrganizationsUpdateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -51,7 +51,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: AffiliatedOrganizationsUpdateRequest,
+    body: ProjectAffiliatedOrganizationsUpdateRequest,
 ) -> Response[Any]:
     """Update affiliated organizations for a project
 
@@ -59,7 +59,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        body (AffiliatedOrganizationsUpdateRequest):
+        body (ProjectAffiliatedOrganizationsUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -85,7 +85,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: AffiliatedOrganizationsUpdateRequest,
+    body: ProjectAffiliatedOrganizationsUpdateRequest,
 ) -> Response[Any]:
     """Update affiliated organizations for a project
 
@@ -93,7 +93,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        body (AffiliatedOrganizationsUpdateRequest):
+        body (ProjectAffiliatedOrganizationsUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

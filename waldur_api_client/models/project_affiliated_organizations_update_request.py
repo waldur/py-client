@@ -7,11 +7,11 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="AffiliatedOrganizationsUpdateRequest")
+T = TypeVar("T", bound="ProjectAffiliatedOrganizationsUpdateRequest")
 
 
 @_attrs_define
-class AffiliatedOrganizationsUpdateRequest:
+class ProjectAffiliatedOrganizationsUpdateRequest:
     """
     Attributes:
         affiliated_organizations (Union[Unset, list[UUID]]):
@@ -46,12 +46,12 @@ class AffiliatedOrganizationsUpdateRequest:
 
             affiliated_organizations.append(affiliated_organizations_item)
 
-        affiliated_organizations_update_request = cls(
+        project_affiliated_organizations_update_request = cls(
             affiliated_organizations=affiliated_organizations,
         )
 
-        affiliated_organizations_update_request.additional_properties = d
-        return affiliated_organizations_update_request
+        project_affiliated_organizations_update_request.additional_properties = d
+        return project_affiliated_organizations_update_request
 
     @property
     def additional_keys(self) -> list[str]:

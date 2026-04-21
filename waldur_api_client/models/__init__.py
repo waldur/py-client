@@ -25,7 +25,6 @@ from .affiliated_organization import AffiliatedOrganization
 from .affiliated_organization_report_row import AffiliatedOrganizationReportRow
 from .affiliated_organization_request import AffiliatedOrganizationRequest
 from .affiliated_organization_stats import AffiliatedOrganizationStats
-from .affiliated_organizations_update_request import AffiliatedOrganizationsUpdateRequest
 from .affiliation_type_enum import AffiliationTypeEnum
 from .affinity_matrix_entry import AffinityMatrixEntry
 from .affinity_matrix_response import AffinityMatrixResponse
@@ -1596,6 +1595,7 @@ from .proficiency_level_enum import ProficiencyLevelEnum
 from .profile_completeness import ProfileCompleteness
 from .project import Project
 from .project_accounting_summary import ProjectAccountingSummary
+from .project_affiliated_organizations_update_request import ProjectAffiliatedOrganizationsUpdateRequest
 from .project_answer import ProjectAnswer
 from .project_attach_request import ProjectAttachRequest
 from .project_classification_summary import ProjectClassificationSummary
@@ -2394,7 +2394,6 @@ __all__ = (
     "AffiliatedOrganizationReportRow",
     "AffiliatedOrganizationRequest",
     "AffiliatedOrganizationStats",
-    "AffiliatedOrganizationsUpdateRequest",
     "AffiliationTypeEnum",
     "AffinityMatrixEntry",
     "AffinityMatrixResponse",
@@ -3875,6 +3874,7 @@ __all__ = (
     "ProfileCompleteness",
     "Project",
     "ProjectAccountingSummary",
+    "ProjectAffiliatedOrganizationsUpdateRequest",
     "ProjectAnswer",
     "ProjectAttachRequest",
     "ProjectClassificationSummary",

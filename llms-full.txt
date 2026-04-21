@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.8-dev.20260421063211
+# Version: 8.0.8-rc.10-dev.20260421172701
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -1037,7 +1037,7 @@ Path parameters:
 
 ### aws_instances_list
 GET /api/aws-instances/
-Query parameters (19):
+Query parameters (18):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -1056,13 +1056,12 @@ Query parameters (19):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### aws_instances_count
 HEAD /api/aws-instances/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (18):
+Query parameters (17):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -1080,7 +1079,6 @@ Query parameters (18):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### aws_instances_create
 POST /api/aws-instances/
@@ -1359,7 +1357,7 @@ Path parameters:
 
 ### azure_public_ips_list
 GET /api/azure-public-ips/
-Query parameters (21):
+Query parameters (20):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -1380,13 +1378,12 @@ Query parameters (21):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### azure_public_ips_count
 HEAD /api/azure-public-ips/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (20):
+Query parameters (19):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -1406,7 +1403,6 @@ Query parameters (20):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### azure_public_ips_create
 POST /api/azure-public-ips/
@@ -1527,7 +1523,7 @@ Path parameters:
 
 ### azure_sql_databases_list
 GET /api/azure-sql-databases/
-Query parameters (23):
+Query parameters (22):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -1550,13 +1546,12 @@ Query parameters (23):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### azure_sql_databases_count
 HEAD /api/azure-sql-databases/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (22):
+Query parameters (21):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -1578,7 +1573,6 @@ Query parameters (22):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### azure_sql_databases_create
 POST /api/azure-sql-databases/
@@ -1645,7 +1639,7 @@ Path parameters:
 
 ### azure_sql_servers_list
 GET /api/azure-sql-servers/
-Query parameters (21):
+Query parameters (20):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -1666,13 +1660,12 @@ Query parameters (21):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### azure_sql_servers_count
 HEAD /api/azure-sql-servers/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (20):
+Query parameters (19):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -1692,7 +1685,6 @@ Query parameters (20):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### azure_sql_servers_create
 POST /api/azure-sql-servers/
@@ -1765,7 +1757,7 @@ Path parameters:
 
 ### azure_virtualmachines_list
 GET /api/azure-virtualmachines/
-Query parameters (21):
+Query parameters (20):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -1786,13 +1778,12 @@ Query parameters (21):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### azure_virtualmachines_count
 HEAD /api/azure-virtualmachines/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (20):
+Query parameters (19):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -1812,7 +1803,6 @@ Query parameters (20):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### azure_virtualmachines_create
 POST /api/azure-virtualmachines/
@@ -3812,7 +3802,7 @@ Requires staff permissions.
 
 ### digitalocean_droplets_list
 GET /api/digitalocean-droplets/
-Query parameters (19):
+Query parameters (18):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -3831,13 +3821,12 @@ Query parameters (19):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### digitalocean_droplets_count
 HEAD /api/digitalocean-droplets/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (18):
+Query parameters (17):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -3855,7 +3844,6 @@ Query parameters (18):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### digitalocean_droplets_create
 POST /api/digitalocean-droplets/
@@ -5111,7 +5099,7 @@ Path parameters:
 
 ### keys_list
 GET /api/keys/
-Query parameters (14):
+Query parameters (13):
   - created — Created after
   - created_before — Created before
   - field
@@ -5125,13 +5113,12 @@ Query parameters (14):
   - name_exact — Name (exact)
   - o — Ordering
   - user_uuid — User UUID
-  - uuid — UUID
 
 ### keys_count
 HEAD /api/keys/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (13):
+Query parameters (12):
   - created — Created after
   - created_before — Created before
   - fingerprint_md5
@@ -5144,7 +5131,6 @@ Query parameters (13):
   - name_exact — Name (exact)
   - o — Ordering
   - user_uuid — User UUID
-  - uuid — UUID
 
 ### keys_create
 POST /api/keys/
@@ -5168,7 +5154,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (14):
+Query parameters (13):
   - created — Created after
   - created_after — Filter versions created after this timestamp (ISO 8601)
   - created_before — Filter versions created before this timestamp (ISO 8601)
@@ -5182,7 +5168,6 @@ Query parameters (14):
   - name_exact — Name (exact)
   - o — Ordering
   - user_uuid — User UUID
-  - uuid — UUID
 
 ### keys_history_at_retrieve
 GET /api/keys/{uuid}/history/at/
@@ -9259,6 +9244,8 @@ Summary: Get resource team
 Description: Returns a list of users connected to the project of this resource, including their project roles and offering-specific usernames.
 Path parameters:
   - uuid
+Query parameters (1):
+  - has_consent — When true, return only users who have active consent for this offering.
 
 ### marketplace_provider_resources_terminate
 POST /api/marketplace-provider-resources/{uuid}/terminate/
@@ -9887,6 +9874,8 @@ Summary: Get resource team
 Description: Returns a list of users connected to the project of this resource, including their project roles and offering-specific usernames.
 Path parameters:
   - uuid
+Query parameters (1):
+  - has_consent — When true, return only users who have active consent for this offering.
 
 ### marketplace_resources_terminate
 POST /api/marketplace-resources/{uuid}/terminate/
@@ -10337,7 +10326,7 @@ Summary: List SSH keys of a service provider
 Description: Returns a paginated list of SSH public keys for all users who have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (14):
+Query parameters (13):
   - created — Created after
   - created_before — Created before
   - field
@@ -10351,7 +10340,6 @@ Query parameters (14):
   - name_exact — Name (exact)
   - o — Ordering
   - user_uuid — User UUID
-  - uuid — UUID
 
 ### marketplace_service_providers_offerings_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/offerings/
@@ -12751,7 +12739,7 @@ Path parameters:
 
 ### openportal_allocations_list
 GET /api/openportal-allocations/
-Query parameters (20):
+Query parameters (19):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -12771,13 +12759,12 @@ Query parameters (20):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### openportal_allocations_count
 HEAD /api/openportal-allocations/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (19):
+Query parameters (18):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -12796,7 +12783,6 @@ Query parameters (19):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### openportal_allocations_create
 POST /api/openportal-allocations/
@@ -13149,7 +13135,7 @@ Request body: yes
 
 ### openportal_remote_allocations_list
 GET /api/openportal-remote-allocations/
-Query parameters (20):
+Query parameters (19):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -13169,13 +13155,12 @@ Query parameters (20):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### openportal_remote_allocations_count
 HEAD /api/openportal-remote-allocations/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (19):
+Query parameters (18):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -13194,7 +13179,6 @@ Query parameters (19):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### openportal_remote_allocations_create
 POST /api/openportal-remote-allocations/
@@ -13642,7 +13626,7 @@ Path parameters:
 GET /api/openstack-backups/
 Summary: List backups
 Description: Get a list of instance backups.
-Query parameters (23):
+Query parameters (22):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -13665,13 +13649,12 @@ Query parameters (23):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_backups_count
 HEAD /api/openstack-backups/
 Summary: List backups
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (22):
+Query parameters (21):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -13693,7 +13676,6 @@ Query parameters (22):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_backups_retrieve
 GET /api/openstack-backups/{uuid}/
@@ -13881,7 +13863,7 @@ Query parameters (1):
 GET /api/openstack-floating-ips/
 Summary: List floating IPs
 Description: Get a list of floating IP addresses. Status *DOWN* means that floating IP is not linked to a VM, status *ACTIVE* means that it is in use.
-Query parameters (24):
+Query parameters (23):
   - address
   - backend_id — Backend ID
   - can_manage — Can manage
@@ -13905,13 +13887,12 @@ Query parameters (24):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_floating_ips_count
 HEAD /api/openstack-floating-ips/
 Summary: List floating IPs
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (23):
+Query parameters (22):
   - address
   - backend_id — Backend ID
   - can_manage — Can manage
@@ -13934,7 +13915,6 @@ Query parameters (23):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_floating_ips_retrieve
 GET /api/openstack-floating-ips/{uuid}/
@@ -14216,7 +14196,7 @@ Path parameters:
 GET /api/openstack-instances/
 Summary: List instances
 Description: Get a list of VM instances.
-Query parameters (26):
+Query parameters (25):
   - attach_volume_uuid — Filter for attachment to volume UUID
   - availability_zone_name — Availability zone name
   - backend_id — Backend ID
@@ -14242,13 +14222,12 @@ Query parameters (26):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_instances_count
 HEAD /api/openstack-instances/
 Summary: List instances
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (25):
+Query parameters (24):
   - attach_volume_uuid — Filter for attachment to volume UUID
   - availability_zone_name — Availability zone name
   - backend_id — Backend ID
@@ -14273,7 +14252,6 @@ Query parameters (25):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_instances_retrieve
 GET /api/openstack-instances/{uuid}/
@@ -14612,7 +14590,7 @@ Path parameters:
 
 ### openstack_marketplace_tenants_list
 GET /api/openstack-marketplace-tenants/
-Query parameters (18):
+Query parameters (17):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -14630,13 +14608,12 @@ Query parameters (18):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### openstack_marketplace_tenants_count
 HEAD /api/openstack-marketplace-tenants/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (18):
+Query parameters (17):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -14654,7 +14631,6 @@ Query parameters (18):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### openstack_marketplace_tenants_retrieve
 GET /api/openstack-marketplace-tenants/{uuid}/
@@ -14788,7 +14764,7 @@ Path parameters:
 GET /api/openstack-networks/
 Summary: List networks
 Description: Get a list of networks.
-Query parameters (25):
+Query parameters (24):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -14813,13 +14789,12 @@ Query parameters (25):
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
   - type
-  - uuid — UUID
 
 ### openstack_networks_count
 HEAD /api/openstack-networks/
 Summary: List networks
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (24):
+Query parameters (23):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -14843,7 +14818,6 @@ Query parameters (24):
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
   - type
-  - uuid — UUID
 
 ### openstack_networks_retrieve
 GET /api/openstack-networks/{uuid}/
@@ -15378,7 +15352,7 @@ Request body: yes
 GET /api/openstack-security-groups/
 Summary: List security groups
 Description: Get a list of security groups.
-Query parameters (22):
+Query parameters (21):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -15400,13 +15374,12 @@ Query parameters (22):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_security_groups_count
 HEAD /api/openstack-security-groups/
 Summary: List security groups
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (21):
+Query parameters (20):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -15427,7 +15400,6 @@ Query parameters (21):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_security_groups_retrieve
 GET /api/openstack-security-groups/{uuid}/
@@ -15506,7 +15478,7 @@ Path parameters:
 GET /api/openstack-server-groups/
 Summary: List server groups
 Description: Get a list of server groups.
-Query parameters (21):
+Query parameters (20):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -15527,13 +15499,12 @@ Query parameters (21):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_server_groups_count
 HEAD /api/openstack-server-groups/
 Summary: List server groups
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (20):
+Query parameters (19):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -15553,7 +15524,6 @@ Query parameters (20):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_server_groups_create
 POST /api/openstack-server-groups/
@@ -15614,7 +15584,7 @@ Path parameters:
 GET /api/openstack-snapshots/
 Summary: List snapshots
 Description: Get a list of snapshots.
-Query parameters (26):
+Query parameters (25):
   - backend_id — Backend ID
   - backup — Backup URL
   - backup_uuid — Backup UUID
@@ -15640,13 +15610,12 @@ Query parameters (26):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_snapshots_count
 HEAD /api/openstack-snapshots/
 Summary: List snapshots
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (25):
+Query parameters (24):
   - backend_id — Backend ID
   - backup — Backup URL
   - backup_uuid — Backup UUID
@@ -15671,7 +15640,6 @@ Query parameters (25):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_snapshots_retrieve
 GET /api/openstack-snapshots/{uuid}/
@@ -15758,7 +15726,7 @@ Path parameters:
 GET /api/openstack-subnets/
 Summary: List subnets
 Description: Get a list of subnets.
-Query parameters (27):
+Query parameters (26):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -15785,13 +15753,12 @@ Query parameters (27):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_subnets_count
 HEAD /api/openstack-subnets/
 Summary: List subnets
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (26):
+Query parameters (25):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -15817,7 +15784,6 @@ Query parameters (26):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_subnets_retrieve
 GET /api/openstack-subnets/{uuid}/
@@ -15904,7 +15870,7 @@ Path parameters:
 GET /api/openstack-tenants/
 Summary: List tenants
 Description: Get a list of OpenStack tenants.
-Query parameters (19):
+Query parameters (18):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -15923,13 +15889,12 @@ Query parameters (19):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### openstack_tenants_count
 HEAD /api/openstack-tenants/
 Summary: List tenants
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (18):
+Query parameters (17):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -15947,7 +15912,6 @@ Query parameters (18):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### openstack_tenants_retrieve
 GET /api/openstack-tenants/{uuid}/
@@ -15980,7 +15944,7 @@ Summary: List backend instances
 Description: Return a list of volumes from backend
 Path parameters:
   - uuid
-Query parameters (18):
+Query parameters (17):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -15998,7 +15962,6 @@ Query parameters (18):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### openstack_tenants_backend_volumes_list
 GET /api/openstack-tenants/{uuid}/backend_volumes/
@@ -16006,7 +15969,7 @@ Summary: List backend volumes
 Description: Return a list of volumes from backend
 Path parameters:
   - uuid
-Query parameters (18):
+Query parameters (17):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -16024,7 +15987,6 @@ Query parameters (18):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### openstack_tenants_change_password
 POST /api/openstack-tenants/{uuid}/change_password/
@@ -16238,7 +16200,7 @@ Path parameters:
 GET /api/openstack-volumes/
 Summary: List volumes
 Description: Get a list of volumes.
-Query parameters (28):
+Query parameters (27):
   - attach_instance_uuid — Filter for attachment to instance UUID
   - availability_zone_name — Availability zone name
   - backend_id — Backend ID
@@ -16266,13 +16228,12 @@ Query parameters (28):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_volumes_count
 HEAD /api/openstack-volumes/
 Summary: List volumes
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (27):
+Query parameters (26):
   - attach_instance_uuid — Filter for attachment to instance UUID
   - availability_zone_name — Availability zone name
   - backend_id — Backend ID
@@ -16299,7 +16260,6 @@ Query parameters (27):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
-  - uuid — UUID
 
 ### openstack_volumes_retrieve
 GET /api/openstack-volumes/{uuid}/
@@ -18282,7 +18242,7 @@ GET /api/rabbitmq-vhost-stats/
 
 ### rancher_apps_list
 GET /api/rancher-apps/
-Query parameters (22):
+Query parameters (21):
   - backend_id — Backend ID
   - can_manage — Can manage
   - cluster_uuid
@@ -18304,13 +18264,12 @@ Query parameters (22):
   - service_settings_uuid — Service settings UUID
   - state — State
   - template_uuid
-  - uuid — UUID
 
 ### rancher_apps_count
 HEAD /api/rancher-apps/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (21):
+Query parameters (20):
   - backend_id — Backend ID
   - can_manage — Can manage
   - cluster_uuid
@@ -18331,7 +18290,6 @@ Query parameters (21):
   - service_settings_uuid — Service settings UUID
   - state — State
   - template_uuid
-  - uuid — UUID
 
 ### rancher_apps_create
 POST /api/rancher-apps/
@@ -18496,7 +18454,7 @@ Path parameters:
 
 ### rancher_clusters_list
 GET /api/rancher-clusters/
-Query parameters (19):
+Query parameters (18):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -18515,13 +18473,12 @@ Query parameters (19):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### rancher_clusters_count
 HEAD /api/rancher-clusters/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (18):
+Query parameters (17):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -18539,7 +18496,6 @@ Query parameters (18):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### rancher_clusters_retrieve
 GET /api/rancher-clusters/{uuid}/
@@ -18707,7 +18663,7 @@ Request body: yes
 
 ### rancher_ingresses_list
 GET /api/rancher-ingresses/
-Query parameters (22):
+Query parameters (21):
   - backend_id — Backend ID
   - can_manage — Can manage
   - cluster_uuid
@@ -18729,13 +18685,12 @@ Query parameters (22):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### rancher_ingresses_count
 HEAD /api/rancher-ingresses/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (21):
+Query parameters (20):
   - backend_id — Backend ID
   - can_manage — Can manage
   - cluster_uuid
@@ -18756,7 +18711,6 @@ Query parameters (21):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### rancher_ingresses_create
 POST /api/rancher-ingresses/
@@ -19024,7 +18978,7 @@ Path parameters:
 
 ### rancher_services_list
 GET /api/rancher-services/
-Query parameters (22):
+Query parameters (21):
   - backend_id — Backend ID
   - can_manage — Can manage
   - cluster_uuid
@@ -19046,13 +19000,12 @@ Query parameters (22):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### rancher_services_count
 HEAD /api/rancher-services/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (21):
+Query parameters (20):
   - backend_id — Backend ID
   - can_manage — Can manage
   - cluster_uuid
@@ -19073,7 +19026,6 @@ Query parameters (21):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### rancher_services_create
 POST /api/rancher-services/
@@ -19974,7 +19926,7 @@ Path parameters:
 
 ### slurm_allocations_list
 GET /api/slurm-allocations/
-Query parameters (20):
+Query parameters (19):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -19994,13 +19946,12 @@ Query parameters (20):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### slurm_allocations_count
 HEAD /api/slurm-allocations/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (19):
+Query parameters (18):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -20019,7 +19970,6 @@ Query parameters (19):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### slurm_allocations_create
 POST /api/slurm-allocations/
@@ -21931,7 +21881,7 @@ Path parameters:
 
 ### vmware_disks_list
 GET /api/vmware-disks/
-Query parameters (21):
+Query parameters (20):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -21950,7 +21900,6 @@ Query parameters (21):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
   - vm
   - vm_uuid
 
@@ -21958,7 +21907,7 @@ Query parameters (21):
 HEAD /api/vmware-disks/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (20):
+Query parameters (19):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -21976,7 +21925,6 @@ Query parameters (20):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
   - vm
   - vm_uuid
 
@@ -22105,7 +22053,7 @@ Path parameters:
 
 ### vmware_ports_list
 GET /api/vmware-ports/
-Query parameters (23):
+Query parameters (22):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -22126,7 +22074,6 @@ Query parameters (23):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
   - vm
   - vm_uuid
 
@@ -22134,7 +22081,7 @@ Query parameters (23):
 HEAD /api/vmware-ports/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (22):
+Query parameters (21):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -22154,7 +22101,6 @@ Query parameters (22):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
   - vm
   - vm_uuid
 
@@ -22234,7 +22180,7 @@ Path parameters:
 
 ### vmware_virtual_machine_list
 GET /api/vmware-virtual-machine/
-Query parameters (20):
+Query parameters (19):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -22254,13 +22200,12 @@ Query parameters (20):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### vmware_virtual_machine_count
 HEAD /api/vmware-virtual-machine/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (19):
+Query parameters (18):
   - backend_id — Backend ID
   - can_manage — Can manage
   - customer — Customer UUID
@@ -22279,7 +22224,6 @@ Query parameters (19):
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
-  - uuid — UUID
 
 ### vmware_virtual_machine_create
 POST /api/vmware-virtual-machine/
