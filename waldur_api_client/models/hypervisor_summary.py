@@ -18,6 +18,8 @@ class HypervisorSummary:
         total_local_gb (int):
         used_local_gb (int):
         total_running_vms (int):
+        cpu_allocation_ratio (float):
+        effective_vcpus (int):
     """
 
     total_vcpus: int
@@ -27,6 +29,8 @@ class HypervisorSummary:
     total_local_gb: int
     used_local_gb: int
     total_running_vms: int
+    cpu_allocation_ratio: float
+    effective_vcpus: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,6 +48,10 @@ class HypervisorSummary:
 
         total_running_vms = self.total_running_vms
 
+        cpu_allocation_ratio = self.cpu_allocation_ratio
+
+        effective_vcpus = self.effective_vcpus
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -55,6 +63,8 @@ class HypervisorSummary:
                 "total_local_gb": total_local_gb,
                 "used_local_gb": used_local_gb,
                 "total_running_vms": total_running_vms,
+                "cpu_allocation_ratio": cpu_allocation_ratio,
+                "effective_vcpus": effective_vcpus,
             }
         )
 
@@ -77,6 +87,10 @@ class HypervisorSummary:
 
         total_running_vms = d.pop("total_running_vms")
 
+        cpu_allocation_ratio = d.pop("cpu_allocation_ratio")
+
+        effective_vcpus = d.pop("effective_vcpus")
+
         hypervisor_summary = cls(
             total_vcpus=total_vcpus,
             used_vcpus=used_vcpus,
@@ -85,6 +99,8 @@ class HypervisorSummary:
             total_local_gb=total_local_gb,
             used_local_gb=used_local_gb,
             total_running_vms=total_running_vms,
+            cpu_allocation_ratio=cpu_allocation_ratio,
+            effective_vcpus=effective_vcpus,
         )
 
         hypervisor_summary.additional_properties = d
