@@ -493,6 +493,19 @@ Module: `waldur_api_client.api.chat_sessions`
 - `chat_sessions_current_retrieve` GET `/api/chat-sessions/current/` — Get or create current user's chat session (no params)
 - `chat_sessions_retrieve` GET `/api/chat-sessions/{uuid}/` (path: uuid | 1 query param)
 
+## chat-system-prompts
+Module: `waldur_api_client.api.chat_system_prompts`
+
+- `chat_system_prompts_list` GET `/api/chat-system-prompts/` (no params)
+- `chat_system_prompts_count` HEAD `/api/chat-system-prompts/` — Get number of items in the collection matching the request parameters (no params)
+- `chat_system_prompts_create` POST `/api/chat-system-prompts/` (request body)
+- `chat_system_prompts_retrieve` GET `/api/chat-system-prompts/{uuid}/` (path: uuid)
+- `chat_system_prompts_update` PUT `/api/chat-system-prompts/{uuid}/` (path: uuid | request body)
+- `chat_system_prompts_partial_update` PATCH `/api/chat-system-prompts/{uuid}/` (path: uuid | request body)
+- `chat_system_prompts_destroy` DELETE `/api/chat-system-prompts/{uuid}/` (path: uuid)
+- `chat_system_prompts_activate` POST `/api/chat-system-prompts/{uuid}/activate/` — Activate a system prompt (path: uuid | request body)
+- `chat_system_prompts_deactivate` POST `/api/chat-system-prompts/{uuid}/deactivate/` — Deactivate the active system prompt (path: uuid | request body)
+
 ## chat-threads
 Module: `waldur_api_client.api.chat_threads`
 

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.11-dev.20260423020700
+# Version: 8.0.8-rc.11-dev.20260423210627
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2699,6 +2699,60 @@ Path parameters:
   - uuid
 Query parameters (1):
   - field
+
+============================================================
+## chat-system-prompts  (module: waldur_api_client.api.chat_system_prompts)
+============================================================
+
+### chat_system_prompts_list
+GET /api/chat-system-prompts/
+
+### chat_system_prompts_count
+HEAD /api/chat-system-prompts/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### chat_system_prompts_create
+POST /api/chat-system-prompts/
+Request body: yes
+
+### chat_system_prompts_retrieve
+GET /api/chat-system-prompts/{uuid}/
+Path parameters:
+  - uuid
+
+### chat_system_prompts_update
+PUT /api/chat-system-prompts/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### chat_system_prompts_partial_update
+PATCH /api/chat-system-prompts/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### chat_system_prompts_destroy
+DELETE /api/chat-system-prompts/{uuid}/
+Path parameters:
+  - uuid
+
+### chat_system_prompts_activate
+POST /api/chat-system-prompts/{uuid}/activate/
+Summary: Activate a system prompt
+Description: Set this prompt as the active one. Deactivates any currently active prompt.
+Path parameters:
+  - uuid
+Request body: yes
+
+### chat_system_prompts_deactivate
+POST /api/chat-system-prompts/{uuid}/deactivate/
+Summary: Deactivate the active system prompt
+Description: Deactivate this prompt. The system will fall back to Constance overrides or built-in defaults.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## chat-threads  (module: waldur_api_client.api.chat_threads)

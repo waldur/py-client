@@ -1527,6 +1527,7 @@ from .patched_slurm_allocation_request import PatchedSlurmAllocationRequest
 from .patched_slurm_periodic_usage_policy_request import PatchedSlurmPeriodicUsagePolicyRequest
 from .patched_software_catalog_request import PatchedSoftwareCatalogRequest
 from .patched_software_package_request import PatchedSoftwarePackageRequest
+from .patched_system_prompt_request import PatchedSystemPromptRequest
 from .patched_tag_request import PatchedTagRequest
 from .patched_template_request import PatchedTemplateRequest
 from .patched_update_health_monitor_request import PatchedUpdateHealthMonitorRequest
@@ -2198,6 +2199,8 @@ from .system_log_o_enum import SystemLogOEnum
 from .system_log_source_enum import SystemLogSourceEnum
 from .system_log_stats_instance import SystemLogStatsInstance
 from .system_log_stats_response import SystemLogStatsResponse
+from .system_prompt import SystemPrompt
+from .system_prompt_request import SystemPromptRequest
 from .table_growth_alert import TableGrowthAlert
 from .table_growth_stats import TableGrowthStats
 from .table_growth_stats_response import TableGrowthStatsResponse
@@ -3814,6 +3817,7 @@ __all__ = (
     "PatchedSlurmPeriodicUsagePolicyRequest",
     "PatchedSoftwareCatalogRequest",
     "PatchedSoftwarePackageRequest",
+    "PatchedSystemPromptRequest",
     "PatchedTagRequest",
     "PatchedTemplateRequest",
     "PatchedUpdateHealthMonitorRequest",
@@ -4449,6 +4453,8 @@ __all__ = (
     "SystemLogSourceEnum",
     "SystemLogStatsInstance",
     "SystemLogStatsResponse",
+    "SystemPrompt",
+    "SystemPromptRequest",
     "TableGrowthAlert",
     "TableGrowthStats",
     "TableGrowthStatsResponse",
