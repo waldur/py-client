@@ -5,6 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.science_domain_o_enum import ScienceDomainOEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -12,7 +13,7 @@ def _get_kwargs(
     *,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceDomainOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -22,7 +23,14 @@ def _get_kwargs(
 
     params["name_exact"] = name_exact
 
-    params["o"] = o
+    json_o: Union[Unset, list[str]] = UNSET
+    if not isinstance(o, Unset):
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
+
+    params["o"] = json_o
 
     params["page"] = page
 
@@ -70,7 +78,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceDomainOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
@@ -81,7 +89,7 @@ def sync_detailed(
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, str]):
+        o (Union[Unset, list[ScienceDomainOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -113,7 +121,7 @@ def sync(
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceDomainOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
@@ -124,7 +132,7 @@ def sync(
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, str]):
+        o (Union[Unset, list[ScienceDomainOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -151,7 +159,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceDomainOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
@@ -162,7 +170,7 @@ async def asyncio_detailed(
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, str]):
+        o (Union[Unset, list[ScienceDomainOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -192,7 +200,7 @@ async def asyncio(
     client: AuthenticatedClient,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceDomainOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
@@ -203,7 +211,7 @@ async def asyncio(
     Args:
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, str]):
+        o (Union[Unset, list[ScienceDomainOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 

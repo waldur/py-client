@@ -1284,6 +1284,7 @@ from .open_stack_server_group_marketplace_offering_plugin_options_type_0 import 
 )
 from .open_stack_server_group_request import OpenStackServerGroupRequest
 from .open_stack_snapshot import OpenStackSnapshot
+from .open_stack_snapshot_backup import OpenStackSnapshotBackup
 from .open_stack_snapshot_field_enum import OpenStackSnapshotFieldEnum
 from .open_stack_snapshot_marketplace_offering_plugin_options_type_0 import (
     OpenStackSnapshotMarketplaceOfferingPluginOptionsType0,
@@ -2052,9 +2053,11 @@ from .saml_2_provider import Saml2Provider
 from .save_settings_request_request import SaveSettingsRequestRequest
 from .save_settings_response import SaveSettingsResponse
 from .science_domain import ScienceDomain
+from .science_domain_o_enum import ScienceDomainOEnum
 from .science_domain_preset import ScienceDomainPreset
 from .science_domain_request import ScienceDomainRequest
 from .science_sub_domain import ScienceSubDomain
+from .science_sub_domain_o_enum import ScienceSubDomainOEnum
 from .science_sub_domain_request import ScienceSubDomainRequest
 from .scim_sync_all_response import ScimSyncAllResponse
 from .screenshot import Screenshot
@@ -3596,6 +3599,7 @@ __all__ = (
     "OpenStackServerGroupMarketplaceOfferingPluginOptionsType0",
     "OpenStackServerGroupRequest",
     "OpenStackSnapshot",
+    "OpenStackSnapshotBackup",
     "OpenStackSnapshotFieldEnum",
     "OpenStackSnapshotMarketplaceOfferingPluginOptionsType0",
     "OpenStackSnapshotRequest",
@@ -4322,9 +4326,11 @@ __all__ = (
     "SaveSettingsRequestRequest",
     "SaveSettingsResponse",
     "ScienceDomain",
+    "ScienceDomainOEnum",
     "ScienceDomainPreset",
     "ScienceDomainRequest",
     "ScienceSubDomain",
+    "ScienceSubDomainOEnum",
     "ScienceSubDomainRequest",
     "ScimSyncAllResponse",
     "Screenshot",

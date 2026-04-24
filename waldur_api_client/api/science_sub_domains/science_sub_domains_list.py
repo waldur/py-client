@@ -7,6 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.science_sub_domain import ScienceSubDomain
+from ...models.science_sub_domain_o_enum import ScienceSubDomainOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,7 +18,7 @@ def _get_kwargs(
     domain_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceSubDomainOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -34,7 +35,14 @@ def _get_kwargs(
 
     params["name_exact"] = name_exact
 
-    params["o"] = o
+    json_o: Union[Unset, list[str]] = UNSET
+    if not isinstance(o, Unset):
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
+
+    params["o"] = json_o
 
     params["page"] = page
 
@@ -86,7 +94,7 @@ def sync_detailed(
     domain_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceSubDomainOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ScienceSubDomain"]]:
@@ -96,7 +104,7 @@ def sync_detailed(
         domain_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, str]):
+        o (Union[Unset, list[ScienceSubDomainOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -132,7 +140,7 @@ def sync(
     domain_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceSubDomainOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ScienceSubDomain"]:
@@ -142,7 +150,7 @@ def sync(
         domain_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, str]):
+        o (Union[Unset, list[ScienceSubDomainOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -173,7 +181,7 @@ async def asyncio_detailed(
     domain_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceSubDomainOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["ScienceSubDomain"]]:
@@ -183,7 +191,7 @@ async def asyncio_detailed(
         domain_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, str]):
+        o (Union[Unset, list[ScienceSubDomainOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -217,7 +225,7 @@ async def asyncio(
     domain_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceSubDomainOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["ScienceSubDomain"]:
@@ -227,7 +235,7 @@ async def asyncio(
         domain_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, str]):
+        o (Union[Unset, list[ScienceSubDomainOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -260,7 +268,7 @@ def sync_all(
     domain_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceSubDomainOEnum]] = UNSET,
 ) -> list["ScienceSubDomain"]:
     """Get All Pages
 
@@ -274,7 +282,7 @@ def sync_all(
         domain_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, str]):
+        o (Union[Unset, list[ScienceSubDomainOEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -345,7 +353,7 @@ async def asyncio_all(
     domain_uuid: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
-    o: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[ScienceSubDomainOEnum]] = UNSET,
 ) -> list["ScienceSubDomain"]:
     """Get All Pages (Async)
 
@@ -359,7 +367,7 @@ async def asyncio_all(
         domain_uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
-        o (Union[Unset, str]):
+        o (Union[Unset, list[ScienceSubDomainOEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

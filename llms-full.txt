@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.11-dev.20260424132251
+# Version: 8.0.8-rc.11-dev.20260424153823
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -19922,7 +19922,7 @@ GET /api/science-domains/
 Query parameters (3):
   - name — Name
   - name_exact — Name (exact)
-  - o — Which field to use when ordering the results.
+  - o — Ordering
 
 ### science_domains_count
 HEAD /api/science-domains/
@@ -19931,7 +19931,7 @@ Description: Get number of items in the collection matching the request paramete
 Query parameters (3):
   - name — Name
   - name_exact — Name (exact)
-  - o — Which field to use when ordering the results.
+  - o — Ordering
 
 ### science_domains_create
 POST /api/science-domains/
@@ -19948,7 +19948,7 @@ Summary: List available science domain presets
 Query parameters (3):
   - name — Name
   - name_exact — Name (exact)
-  - o — Which field to use when ordering the results.
+  - o — Ordering
 
 ### science_domains_presets_count
 HEAD /api/science-domains/presets/
@@ -19957,7 +19957,7 @@ Description: Get number of items in the collection matching the request paramete
 Query parameters (3):
   - name — Name
   - name_exact — Name (exact)
-  - o — Which field to use when ordering the results.
+  - o — Ordering
 
 ### science_domains_retrieve
 GET /api/science-domains/{uuid}/
@@ -19992,7 +19992,7 @@ Query parameters (5):
   - domain_uuid — Domain UUID
   - name — Name
   - name_exact — Name (exact)
-  - o — Which field to use when ordering the results.
+  - o — Ordering
 
 ### science_sub_domains_count
 HEAD /api/science-sub-domains/
@@ -20003,7 +20003,7 @@ Query parameters (5):
   - domain_uuid — Domain UUID
   - name — Name
   - name_exact — Name (exact)
-  - o — Which field to use when ordering the results.
+  - o — Ordering
 
 ### science_sub_domains_create
 POST /api/science-sub-domains/

@@ -11,6 +11,7 @@ from ..models.core_states import CoreStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.open_stack_snapshot_backup import OpenStackSnapshotBackup
     from ..models.open_stack_snapshot_marketplace_offering_plugin_options_type_0 import (
         OpenStackSnapshotMarketplaceOfferingPluginOptionsType0,
     )
@@ -58,6 +59,7 @@ class OpenStackSnapshot:
         action (Union[Unset, str]):
         action_details (Union[Unset, Any]):
         restorations (Union[Unset, list['OpenStackSnapshotRestoration']]):
+        backups (Union[Unset, list['OpenStackSnapshotBackup']]):
         kept_until (Union[None, Unset, datetime.datetime]): Guaranteed time of snapshot retention. If null - keep
             forever.
         marketplace_offering_uuid (Union[None, Unset, str]):
@@ -108,6 +110,7 @@ class OpenStackSnapshot:
     action: Union[Unset, str] = UNSET
     action_details: Union[Unset, Any] = UNSET
     restorations: Union[Unset, list["OpenStackSnapshotRestoration"]] = UNSET
+    backups: Union[Unset, list["OpenStackSnapshotBackup"]] = UNSET
     kept_until: Union[None, Unset, datetime.datetime] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
@@ -232,6 +235,13 @@ class OpenStackSnapshot:
             for restorations_item_data in self.restorations:
                 restorations_item = restorations_item_data.to_dict()
                 restorations.append(restorations_item)
+
+        backups: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.backups, Unset):
+            backups = []
+            for backups_item_data in self.backups:
+                backups_item = backups_item_data.to_dict()
+                backups.append(backups_item)
 
         kept_until: Union[None, Unset, str]
         if isinstance(self.kept_until, Unset):
@@ -382,6 +392,8 @@ class OpenStackSnapshot:
             field_dict["action_details"] = action_details
         if restorations is not UNSET:
             field_dict["restorations"] = restorations
+        if backups is not UNSET:
+            field_dict["backups"] = backups
         if kept_until is not UNSET:
             field_dict["kept_until"] = kept_until
         if marketplace_offering_uuid is not UNSET:
@@ -411,6 +423,7 @@ class OpenStackSnapshot:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.open_stack_snapshot_backup import OpenStackSnapshotBackup
         from ..models.open_stack_snapshot_marketplace_offering_plugin_options_type_0 import (
             OpenStackSnapshotMarketplaceOfferingPluginOptionsType0,
         )
@@ -558,6 +571,13 @@ class OpenStackSnapshot:
             restorations_item = OpenStackSnapshotRestoration.from_dict(restorations_item_data)
 
             restorations.append(restorations_item)
+
+        backups = []
+        _backups = d.pop("backups", UNSET)
+        for backups_item_data in _backups or []:
+            backups_item = OpenStackSnapshotBackup.from_dict(backups_item_data)
+
+            backups.append(backups_item)
 
         def _parse_kept_until(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
@@ -724,6 +744,7 @@ class OpenStackSnapshot:
             action=action,
             action_details=action_details,
             restorations=restorations,
+            backups=backups,
             kept_until=kept_until,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
