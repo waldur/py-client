@@ -42,6 +42,8 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    science_domain_uuid: Union[Unset, UUID] = UNSET,
+    science_sub_domain_uuid: Union[Unset, UUID] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
     user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
@@ -140,6 +142,16 @@ def _get_kwargs(
 
     params["query"] = query
 
+    json_science_domain_uuid: Union[Unset, str] = UNSET
+    if not isinstance(science_domain_uuid, Unset):
+        json_science_domain_uuid = str(science_domain_uuid)
+    params["science_domain_uuid"] = json_science_domain_uuid
+
+    json_science_sub_domain_uuid: Union[Unset, str] = UNSET
+    if not isinstance(science_sub_domain_uuid, Unset):
+        json_science_sub_domain_uuid = str(science_sub_domain_uuid)
+    params["science_sub_domain_uuid"] = json_science_sub_domain_uuid
+
     params["slug"] = slug
 
     json_user_uuid: Union[Unset, str] = UNSET
@@ -218,6 +230,8 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    science_domain_uuid: Union[Unset, UUID] = UNSET,
+    science_sub_domain_uuid: Union[Unset, UUID] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
     user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
@@ -254,6 +268,8 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        science_domain_uuid (Union[Unset, UUID]):
+        science_sub_domain_uuid (Union[Unset, UUID]):
         slug (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
         user_uuid_with_active_role (Union[Unset, UUID]):
@@ -293,6 +309,8 @@ def sync_detailed(
         page=page,
         page_size=page_size,
         query=query,
+        science_domain_uuid=science_domain_uuid,
+        science_sub_domain_uuid=science_sub_domain_uuid,
         slug=slug,
         user_uuid=user_uuid,
         user_uuid_with_active_role=user_uuid_with_active_role,
@@ -334,6 +352,8 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    science_domain_uuid: Union[Unset, UUID] = UNSET,
+    science_sub_domain_uuid: Union[Unset, UUID] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
     user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
@@ -370,6 +390,8 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        science_domain_uuid (Union[Unset, UUID]):
+        science_sub_domain_uuid (Union[Unset, UUID]):
         slug (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
         user_uuid_with_active_role (Union[Unset, UUID]):
@@ -410,6 +432,8 @@ def sync(
         page=page,
         page_size=page_size,
         query=query,
+        science_domain_uuid=science_domain_uuid,
+        science_sub_domain_uuid=science_sub_domain_uuid,
         slug=slug,
         user_uuid=user_uuid,
         user_uuid_with_active_role=user_uuid_with_active_role,
@@ -445,6 +469,8 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    science_domain_uuid: Union[Unset, UUID] = UNSET,
+    science_sub_domain_uuid: Union[Unset, UUID] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
     user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
@@ -481,6 +507,8 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        science_domain_uuid (Union[Unset, UUID]):
+        science_sub_domain_uuid (Union[Unset, UUID]):
         slug (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
         user_uuid_with_active_role (Union[Unset, UUID]):
@@ -520,6 +548,8 @@ async def asyncio_detailed(
         page=page,
         page_size=page_size,
         query=query,
+        science_domain_uuid=science_domain_uuid,
+        science_sub_domain_uuid=science_sub_domain_uuid,
         slug=slug,
         user_uuid=user_uuid,
         user_uuid_with_active_role=user_uuid_with_active_role,
@@ -559,6 +589,8 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     query: Union[Unset, str] = UNSET,
+    science_domain_uuid: Union[Unset, UUID] = UNSET,
+    science_sub_domain_uuid: Union[Unset, UUID] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
     user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
@@ -595,6 +627,8 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         query (Union[Unset, str]):
+        science_domain_uuid (Union[Unset, UUID]):
+        science_sub_domain_uuid (Union[Unset, UUID]):
         slug (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
         user_uuid_with_active_role (Union[Unset, UUID]):
@@ -636,6 +670,8 @@ async def asyncio(
             page=page,
             page_size=page_size,
             query=query,
+            science_domain_uuid=science_domain_uuid,
+            science_sub_domain_uuid=science_sub_domain_uuid,
             slug=slug,
             user_uuid=user_uuid,
             user_uuid_with_active_role=user_uuid_with_active_role,
@@ -670,6 +706,8 @@ def sync_all(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
+    science_domain_uuid: Union[Unset, UUID] = UNSET,
+    science_sub_domain_uuid: Union[Unset, UUID] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
     user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
@@ -706,6 +744,8 @@ def sync_all(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]]):
         query (Union[Unset, str]):
+        science_domain_uuid (Union[Unset, UUID]):
+        science_sub_domain_uuid (Union[Unset, UUID]):
         slug (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
         user_uuid_with_active_role (Union[Unset, UUID]):
@@ -747,6 +787,8 @@ def sync_all(
         name_exact=name_exact,
         o=o,
         query=query,
+        science_domain_uuid=science_domain_uuid,
+        science_sub_domain_uuid=science_sub_domain_uuid,
         slug=slug,
         user_uuid=user_uuid,
         user_uuid_with_active_role=user_uuid_with_active_role,
@@ -821,6 +863,8 @@ async def asyncio_all(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
+    science_domain_uuid: Union[Unset, UUID] = UNSET,
+    science_sub_domain_uuid: Union[Unset, UUID] = UNSET,
     slug: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
     user_uuid_with_active_role: Union[Unset, UUID] = UNSET,
@@ -857,6 +901,8 @@ async def asyncio_all(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[MarketplaceProviderCustomerProjectOEnum]]):
         query (Union[Unset, str]):
+        science_domain_uuid (Union[Unset, UUID]):
+        science_sub_domain_uuid (Union[Unset, UUID]):
         slug (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
         user_uuid_with_active_role (Union[Unset, UUID]):
@@ -898,6 +944,8 @@ async def asyncio_all(
         name_exact=name_exact,
         o=o,
         query=query,
+        science_domain_uuid=science_domain_uuid,
+        science_sub_domain_uuid=science_sub_domain_uuid,
         slug=slug,
         user_uuid=user_uuid,
         user_uuid_with_active_role=user_uuid_with_active_role,

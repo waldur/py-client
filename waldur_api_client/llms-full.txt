@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.11-dev.20260424020645
+# Version: 8.0.8-rc.11-dev.20260424074908
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10323,7 +10323,7 @@ Summary: List customer projects of a service provider
 Description: Returns a paginated list of projects belonging to a specific customer that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (25):
+Query parameters (27):
   - affiliated_organization_name — Affiliated organization name
   - affiliated_organization_uuid — Affiliated organization UUID
   - backend_id
@@ -10347,6 +10347,8 @@ Query parameters (25):
   - o — Ordering
   - project_customer_uuid (required) — UUID of the customer to filter projects by.
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
+  - science_domain_uuid — Science domain UUID
+  - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
@@ -10492,7 +10494,7 @@ Summary: List projects of a service provider
 Description: Returns a paginated list of all projects that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (24):
+Query parameters (26):
   - affiliated_organization_name — Affiliated organization name
   - affiliated_organization_uuid — Affiliated organization UUID
   - backend_id
@@ -10515,6 +10517,8 @@ Query parameters (24):
   - name_exact — Name (exact)
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
+  - science_domain_uuid — Science domain UUID
+  - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
@@ -13330,7 +13334,7 @@ Path parameters:
 GET /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (27):
+Query parameters (29):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliated_organization_name — Affiliated organization name
   - affiliated_organization_uuid — Affiliated organization UUID
@@ -13355,6 +13359,8 @@ Query parameters (27):
   - name_exact — Name (exact)
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
+  - science_domain_uuid — Science domain UUID
+  - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
@@ -13363,7 +13369,7 @@ Query parameters (27):
 HEAD /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (26):
+Query parameters (28):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliated_organization_name — Affiliated organization name
   - affiliated_organization_uuid — Affiliated organization UUID
@@ -13387,6 +13393,8 @@ Query parameters (26):
   - name_exact — Name (exact)
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
+  - science_domain_uuid — Science domain UUID
+  - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
@@ -16828,7 +16836,7 @@ Path parameters:
 GET /api/projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (27):
+Query parameters (29):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliated_organization_name — Affiliated organization name
   - affiliated_organization_uuid — Affiliated organization UUID
@@ -16853,6 +16861,8 @@ Query parameters (27):
   - name_exact — Name (exact)
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
+  - science_domain_uuid — Science domain UUID
+  - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
@@ -16861,7 +16871,7 @@ Query parameters (27):
 HEAD /api/projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (26):
+Query parameters (28):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliated_organization_name — Affiliated organization name
   - affiliated_organization_uuid — Affiliated organization UUID
@@ -16885,6 +16895,8 @@ Query parameters (26):
   - name_exact — Name (exact)
   - o — Ordering
   - query — Filter by name, slug, UUID, backend ID or resource effective ID
+  - science_domain_uuid — Science domain UUID
+  - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
@@ -19900,6 +19912,124 @@ Description: Allows staff users to update the multilingual descriptions of a rol
 Path parameters:
   - uuid
 Request body: yes
+
+============================================================
+## science-domains  (module: waldur_api_client.api.science_domains)
+============================================================
+
+### science_domains_list
+GET /api/science-domains/
+Query parameters (3):
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Which field to use when ordering the results.
+
+### science_domains_count
+HEAD /api/science-domains/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Which field to use when ordering the results.
+
+### science_domains_create
+POST /api/science-domains/
+Request body: yes
+
+### science_domains_load_preset
+POST /api/science-domains/load_preset/
+Summary: Load a science domain preset
+Request body: yes
+
+### science_domains_presets_list
+GET /api/science-domains/presets/
+Summary: List available science domain presets
+Query parameters (3):
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Which field to use when ordering the results.
+
+### science_domains_presets_count
+HEAD /api/science-domains/presets/
+Summary: List available science domain presets
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Which field to use when ordering the results.
+
+### science_domains_retrieve
+GET /api/science-domains/{uuid}/
+Path parameters:
+  - uuid
+
+### science_domains_update
+PUT /api/science-domains/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### science_domains_partial_update
+PATCH /api/science-domains/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### science_domains_destroy
+DELETE /api/science-domains/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
+## science-sub-domains  (module: waldur_api_client.api.science_sub_domains)
+============================================================
+
+### science_sub_domains_list
+GET /api/science-sub-domains/
+Query parameters (5):
+  - domain_name — Domain name
+  - domain_uuid — Domain UUID
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Which field to use when ordering the results.
+
+### science_sub_domains_count
+HEAD /api/science-sub-domains/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (5):
+  - domain_name — Domain name
+  - domain_uuid — Domain UUID
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Which field to use when ordering the results.
+
+### science_sub_domains_create
+POST /api/science-sub-domains/
+Request body: yes
+
+### science_sub_domains_retrieve
+GET /api/science-sub-domains/{uuid}/
+Path parameters:
+  - uuid
+
+### science_sub_domains_update
+PUT /api/science-sub-domains/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### science_sub_domains_partial_update
+PATCH /api/science-sub-domains/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### science_sub_domains_destroy
+DELETE /api/science-sub-domains/{uuid}/
+Path parameters:
+  - uuid
 
 ============================================================
 ## service-settings  (module: waldur_api_client.api.service_settings)

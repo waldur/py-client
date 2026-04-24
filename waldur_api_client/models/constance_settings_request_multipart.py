@@ -283,6 +283,7 @@ class ConstanceSettingsRequestMultipart:
         arrow_consumption_sync_enabled (Union[Unset, bool]):
         arrow_consumption_sync_interval_hours (Union[Unset, int]):
         arrow_billing_check_interval_hours (Union[Unset, int]):
+        usage_poll_record_retention_months (Union[Unset, int]):
         slurm_policy_evaluation_log_retention_days (Union[Unset, int]):
         federated_identity_sync_enabled (Union[Unset, bool]):
         federated_identity_sync_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
@@ -538,6 +539,7 @@ class ConstanceSettingsRequestMultipart:
     arrow_consumption_sync_enabled: Union[Unset, bool] = UNSET
     arrow_consumption_sync_interval_hours: Union[Unset, int] = UNSET
     arrow_billing_check_interval_hours: Union[Unset, int] = UNSET
+    usage_poll_record_retention_months: Union[Unset, int] = UNSET
     slurm_policy_evaluation_log_retention_days: Union[Unset, int] = UNSET
     federated_identity_sync_enabled: Union[Unset, bool] = UNSET
     federated_identity_sync_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
@@ -1232,6 +1234,8 @@ class ConstanceSettingsRequestMultipart:
 
         arrow_billing_check_interval_hours = self.arrow_billing_check_interval_hours
 
+        usage_poll_record_retention_months = self.usage_poll_record_retention_months
+
         slurm_policy_evaluation_log_retention_days = self.slurm_policy_evaluation_log_retention_days
 
         federated_identity_sync_enabled = self.federated_identity_sync_enabled
@@ -1787,6 +1791,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["ARROW_CONSUMPTION_SYNC_INTERVAL_HOURS"] = arrow_consumption_sync_interval_hours
         if arrow_billing_check_interval_hours is not UNSET:
             field_dict["ARROW_BILLING_CHECK_INTERVAL_HOURS"] = arrow_billing_check_interval_hours
+        if usage_poll_record_retention_months is not UNSET:
+            field_dict["USAGE_POLL_RECORD_RETENTION_MONTHS"] = usage_poll_record_retention_months
         if slurm_policy_evaluation_log_retention_days is not UNSET:
             field_dict["SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS"] = slurm_policy_evaluation_log_retention_days
         if federated_identity_sync_enabled is not UNSET:
@@ -3178,6 +3184,14 @@ class ConstanceSettingsRequestMultipart:
                 )
             )
 
+        if not isinstance(self.usage_poll_record_retention_months, Unset):
+            files.append(
+                (
+                    "USAGE_POLL_RECORD_RETENTION_MONTHS",
+                    (None, str(self.usage_poll_record_retention_months).encode(), "text/plain"),
+                )
+            )
+
         if not isinstance(self.slurm_policy_evaluation_log_retention_days, Unset):
             files.append(
                 (
@@ -4195,6 +4209,8 @@ class ConstanceSettingsRequestMultipart:
 
         arrow_billing_check_interval_hours = d.pop("ARROW_BILLING_CHECK_INTERVAL_HOURS", UNSET)
 
+        usage_poll_record_retention_months = d.pop("USAGE_POLL_RECORD_RETENTION_MONTHS", UNSET)
+
         slurm_policy_evaluation_log_retention_days = d.pop("SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS", UNSET)
 
         federated_identity_sync_enabled = d.pop("FEDERATED_IDENTITY_SYNC_ENABLED", UNSET)
@@ -4534,6 +4550,7 @@ class ConstanceSettingsRequestMultipart:
             arrow_consumption_sync_enabled=arrow_consumption_sync_enabled,
             arrow_consumption_sync_interval_hours=arrow_consumption_sync_interval_hours,
             arrow_billing_check_interval_hours=arrow_billing_check_interval_hours,
+            usage_poll_record_retention_months=usage_poll_record_retention_months,
             slurm_policy_evaluation_log_retention_days=slurm_policy_evaluation_log_retention_days,
             federated_identity_sync_enabled=federated_identity_sync_enabled,
             federated_identity_sync_allowed_attributes=federated_identity_sync_allowed_attributes,

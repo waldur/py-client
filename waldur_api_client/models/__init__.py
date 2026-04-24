@@ -846,6 +846,8 @@ from .load_balancer_async_operation_response import LoadBalancerAsyncOperationRe
 from .load_balancer_attach_floating_ip_request import LoadBalancerAttachFloatingIPRequest
 from .load_balancer_protocol_enum import LoadBalancerProtocolEnum
 from .load_balancer_set_security_groups_request import LoadBalancerSetSecurityGroupsRequest
+from .load_science_domain_preset_request import LoadScienceDomainPresetRequest
+from .load_science_domain_preset_response import LoadScienceDomainPresetResponse
 from .lock_stats import LockStats
 from .loginpagelayout_enum import LOGINPAGELAYOUTEnum
 from .logout import Logout
@@ -1518,6 +1520,8 @@ from .patched_role_details_request import PatchedRoleDetailsRequest
 from .patched_rule_request import PatchedRuleRequest
 from .patched_rule_request_plan_attributes import PatchedRuleRequestPlanAttributes
 from .patched_rule_request_plan_limits import PatchedRuleRequestPlanLimits
+from .patched_science_domain_request import PatchedScienceDomainRequest
+from .patched_science_sub_domain_request import PatchedScienceSubDomainRequest
 from .patched_screenshot_request import PatchedScreenshotRequest
 from .patched_section_request import PatchedSectionRequest
 from .patched_service_provider_request import PatchedServiceProviderRequest
@@ -1586,6 +1590,7 @@ from .plugin_offering_type import PluginOfferingType
 from .policy_enum import PolicyEnum
 from .policy_period_enum import PolicyPeriodEnum
 from .policy_type_enum import PolicyTypeEnum
+from .preset_enum import PresetEnum
 from .preview_service_attributes_request_request import PreviewServiceAttributesRequestRequest
 from .preview_settings_request_request import PreviewSettingsRequestRequest
 from .preview_settings_response import PreviewSettingsResponse
@@ -2046,6 +2051,11 @@ from .saml_2_logout_complete_request import Saml2LogoutCompleteRequest
 from .saml_2_provider import Saml2Provider
 from .save_settings_request_request import SaveSettingsRequestRequest
 from .save_settings_response import SaveSettingsResponse
+from .science_domain import ScienceDomain
+from .science_domain_preset import ScienceDomainPreset
+from .science_domain_request import ScienceDomainRequest
+from .science_sub_domain import ScienceSubDomain
+from .science_sub_domain_request import ScienceSubDomainRequest
 from .scim_sync_all_response import ScimSyncAllResponse
 from .screenshot import Screenshot
 from .screenshot_request import ScreenshotRequest
@@ -3194,6 +3204,8 @@ __all__ = (
     "LoadBalancerAttachFloatingIPRequest",
     "LoadBalancerProtocolEnum",
     "LoadBalancerSetSecurityGroupsRequest",
+    "LoadScienceDomainPresetRequest",
+    "LoadScienceDomainPresetResponse",
     "LockStats",
     "LOGINPAGELAYOUTEnum",
     "Logout",
@@ -3808,6 +3820,8 @@ __all__ = (
     "PatchedRuleRequest",
     "PatchedRuleRequestPlanAttributes",
     "PatchedRuleRequestPlanLimits",
+    "PatchedScienceDomainRequest",
+    "PatchedScienceSubDomainRequest",
     "PatchedScreenshotRequest",
     "PatchedSectionRequest",
     "PatchedServiceProviderRequest",
@@ -3868,6 +3882,7 @@ __all__ = (
     "PolicyEnum",
     "PolicyPeriodEnum",
     "PolicyTypeEnum",
+    "PresetEnum",
     "PreviewServiceAttributesRequestRequest",
     "PreviewSettingsRequestRequest",
     "PreviewSettingsResponse",
@@ -4306,6 +4321,11 @@ __all__ = (
     "Saml2Provider",
     "SaveSettingsRequestRequest",
     "SaveSettingsResponse",
+    "ScienceDomain",
+    "ScienceDomainPreset",
+    "ScienceDomainRequest",
+    "ScienceSubDomain",
+    "ScienceSubDomainRequest",
     "ScimSyncAllResponse",
     "Screenshot",
     "ScreenshotRequest",

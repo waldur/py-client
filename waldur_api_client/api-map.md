@@ -1703,13 +1703,13 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `service_provider_compliance_overview` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/compliance_overview/` — Get compliance overview for a service provider (path: service_provider_uuid)
 - `service_provider_offering_users_compliance` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/offering_users/` — List offering users' compliance status (path: service_provider_uuid | 2 query params)
 - `marketplace_service_providers_course_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/course_accounts/` — List course project accounts for a service provider (path: service_provider_uuid | 9 query params)
-- `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 25 query params)
+- `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 27 query params)
 - `marketplace_service_providers_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customers/` — List customers of a service provider (path: service_provider_uuid | 16 query params)
 - `marketplace_service_providers_keys_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 13 query params)
 - `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 40 query params)
 - `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 18 query params)
 - `marketplace_service_providers_project_service_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/` — List project service accounts for a service provider (path: service_provider_uuid | 5 query params)
-- `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 24 query params)
+- `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 26 query params)
 - `marketplace_service_providers_user_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/user_customers/` — List customers of a specific user within a service provider's scope (path: service_provider_uuid | 17 query params)
 - `marketplace_service_providers_users_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/users/` — List users of a service provider (path: service_provider_uuid | 25 query params)
 - `marketplace_service_providers_retrieve` GET `/api/marketplace-service-providers/{uuid}/` — Retrieve a service provider (path: uuid | 1 query param)
@@ -2219,8 +2219,8 @@ Module: `waldur_api_client.api.openportal_remote_associations`
 ## openportal-unmanaged-projects
 Module: `waldur_api_client.api.openportal_unmanaged_projects`
 
-- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (27 query params)
-- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (26 query params)
+- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (29 query params)
+- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (28 query params)
 - `openportal_unmanaged_projects_create` POST `/api/openportal-unmanaged-projects/` — Create a new project (request body)
 - `openportal_unmanaged_projects_checklist_template_retrieve` GET `/api/openportal-unmanaged-projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `openportal_unmanaged_projects_checklist_template_count` HEAD `/api/openportal-unmanaged-projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -2739,8 +2739,8 @@ Module: `waldur_api_client.api.project_types`
 ## projects
 Module: `waldur_api_client.api.projects`
 
-- `projects_list` GET `/api/projects/` — List projects (27 query params)
-- `projects_count` HEAD `/api/projects/` — List projects (26 query params)
+- `projects_list` GET `/api/projects/` — List projects (29 query params)
+- `projects_count` HEAD `/api/projects/` — List projects (28 query params)
 - `projects_create` POST `/api/projects/` — Create a new project (request body)
 - `projects_checklist_template_retrieve` GET `/api/projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `projects_checklist_template_count` HEAD `/api/projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -3245,6 +3245,31 @@ Module: `waldur_api_client.api.roles`
 - `roles_disable` POST `/api/roles/{uuid}/disable/` — Disable a role (path: uuid)
 - `roles_enable` POST `/api/roles/{uuid}/enable/` — Enable a role (path: uuid)
 - `roles_update_descriptions_update` PUT `/api/roles/{uuid}/update_descriptions/` — Update role descriptions (path: uuid | request body)
+
+## science-domains
+Module: `waldur_api_client.api.science_domains`
+
+- `science_domains_list` GET `/api/science-domains/` (3 query params)
+- `science_domains_count` HEAD `/api/science-domains/` — Get number of items in the collection matching the request parameters (3 query params)
+- `science_domains_create` POST `/api/science-domains/` (request body)
+- `science_domains_load_preset` POST `/api/science-domains/load_preset/` — Load a science domain preset (request body)
+- `science_domains_presets_list` GET `/api/science-domains/presets/` — List available science domain presets (3 query params)
+- `science_domains_presets_count` HEAD `/api/science-domains/presets/` — List available science domain presets (3 query params)
+- `science_domains_retrieve` GET `/api/science-domains/{uuid}/` (path: uuid)
+- `science_domains_update` PUT `/api/science-domains/{uuid}/` (path: uuid | request body)
+- `science_domains_partial_update` PATCH `/api/science-domains/{uuid}/` (path: uuid | request body)
+- `science_domains_destroy` DELETE `/api/science-domains/{uuid}/` (path: uuid)
+
+## science-sub-domains
+Module: `waldur_api_client.api.science_sub_domains`
+
+- `science_sub_domains_list` GET `/api/science-sub-domains/` (5 query params)
+- `science_sub_domains_count` HEAD `/api/science-sub-domains/` — Get number of items in the collection matching the request parameters (5 query params)
+- `science_sub_domains_create` POST `/api/science-sub-domains/` (request body)
+- `science_sub_domains_retrieve` GET `/api/science-sub-domains/{uuid}/` (path: uuid)
+- `science_sub_domains_update` PUT `/api/science-sub-domains/{uuid}/` (path: uuid | request body)
+- `science_sub_domains_partial_update` PATCH `/api/science-sub-domains/{uuid}/` (path: uuid | request body)
+- `science_sub_domains_destroy` DELETE `/api/science-sub-domains/{uuid}/` (path: uuid)
 
 ## service-settings
 Module: `waldur_api_client.api.service_settings`
