@@ -1,17 +1,29 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import Response
+from ...types import UNSET, Response
 
 
-def _get_kwargs() -> dict[str, Any]:
+def _get_kwargs(
+    *,
+    settings_uuid: UUID,
+) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    json_settings_uuid = str(settings_uuid)
+    params["settings_uuid"] = json_settings_uuid
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "head",
         "url": "/api/openstack-hypervisors/summary/",
+        "params": params,
     }
 
     return _kwargs
@@ -46,10 +58,14 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    settings_uuid: UUID,
 ) -> Response[int]:
     """Get hypervisor summary statistics
 
      Get number of items in the collection matching the request parameters.
+
+    Args:
+        settings_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -59,7 +75,9 @@ def sync_detailed(
         Response[int]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        settings_uuid=settings_uuid,
+    )
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -71,10 +89,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    settings_uuid: UUID,
 ) -> int:
     """Get hypervisor summary statistics
 
      Get number of items in the collection matching the request parameters.
+
+    Args:
+        settings_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -86,16 +108,21 @@ def sync(
 
     return sync_detailed(
         client=client,
+        settings_uuid=settings_uuid,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    settings_uuid: UUID,
 ) -> Response[int]:
     """Get hypervisor summary statistics
 
      Get number of items in the collection matching the request parameters.
+
+    Args:
+        settings_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -105,7 +132,9 @@ async def asyncio_detailed(
         Response[int]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        settings_uuid=settings_uuid,
+    )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -115,10 +144,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    settings_uuid: UUID,
 ) -> int:
     """Get hypervisor summary statistics
 
      Get number of items in the collection matching the request parameters.
+
+    Args:
+        settings_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -131,5 +164,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            settings_uuid=settings_uuid,
         )
     ).parsed

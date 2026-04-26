@@ -2334,8 +2334,8 @@ Module: `waldur_api_client.api.openstack_hypervisors`
 
 - `openstack_hypervisors_list` GET `/api/openstack-hypervisors/` (7 query params)
 - `openstack_hypervisors_count` HEAD `/api/openstack-hypervisors/` — Get number of items in the collection matching the request parameters (7 query params)
-- `openstack_hypervisors_summary_retrieve` GET `/api/openstack-hypervisors/summary/` — Get hypervisor summary statistics (no params)
-- `openstack_hypervisors_summary_count` HEAD `/api/openstack-hypervisors/summary/` — Get hypervisor summary statistics (no params)
+- `openstack_hypervisors_summary_retrieve` GET `/api/openstack-hypervisors/summary/` — Get hypervisor summary statistics (1 query param)
+- `openstack_hypervisors_summary_count` HEAD `/api/openstack-hypervisors/summary/` — Get hypervisor summary statistics (1 query param)
 - `openstack_hypervisors_retrieve` GET `/api/openstack-hypervisors/{uuid}/` (path: uuid)
 
 ## openstack-images
