@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class MessageBlocksItemKey(str, Enum):
+    ASK_USER_FORM = "ask_user_form"
     CODE = "code"
     HOMEPORT_NAV = "homeport_nav"
     MARKDOWN = "markdown"

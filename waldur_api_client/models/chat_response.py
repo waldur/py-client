@@ -41,6 +41,9 @@ class ChatResponse:
             status='project_form'.
         offerings (Union[Unset, list[Any]]): Available offering options [{uuid, name}]. Present when
             status='offering_form'.
+        network (Union[Unset, str]): Network name (e.g. 'default'). Present when status='preview'.
+        ssh_key_name (Union[Unset, str]): SSH key name. Present when status='preview'.
+        system_volume_size (Union[Unset, int]): System volume size in GB. Present when status='preview'.
         customer_uuid (Union[Unset, str]): Customer/organization UUID filter hint. Present when k='resource_list'.
         category_uuid (Union[Unset, str]): Category UUID filter hint. Present when k='resource_list'.
         state (Union[Unset, list[Any]]): State display name filters (e.g. ['OK', 'Erred']). Present when
@@ -68,6 +71,9 @@ class ChatResponse:
     images: Union[Unset, list[Any]] = UNSET
     projects: Union[Unset, list[Any]] = UNSET
     offerings: Union[Unset, list[Any]] = UNSET
+    network: Union[Unset, str] = UNSET
+    ssh_key_name: Union[Unset, str] = UNSET
+    system_volume_size: Union[Unset, int] = UNSET
     customer_uuid: Union[Unset, str] = UNSET
     category_uuid: Union[Unset, str] = UNSET
     state: Union[Unset, list[Any]] = UNSET
@@ -126,6 +132,12 @@ class ChatResponse:
         if not isinstance(self.offerings, Unset):
             offerings = self.offerings
 
+        network = self.network
+
+        ssh_key_name = self.ssh_key_name
+
+        system_volume_size = self.system_volume_size
+
         customer_uuid = self.customer_uuid
 
         category_uuid = self.category_uuid
@@ -179,6 +191,12 @@ class ChatResponse:
             field_dict["projects"] = projects
         if offerings is not UNSET:
             field_dict["offerings"] = offerings
+        if network is not UNSET:
+            field_dict["network"] = network
+        if ssh_key_name is not UNSET:
+            field_dict["ssh_key_name"] = ssh_key_name
+        if system_volume_size is not UNSET:
+            field_dict["system_volume_size"] = system_volume_size
         if customer_uuid is not UNSET:
             field_dict["customer_uuid"] = customer_uuid
         if category_uuid is not UNSET:
@@ -240,6 +258,12 @@ class ChatResponse:
 
         offerings = cast(list[Any], d.pop("offerings", UNSET))
 
+        network = d.pop("network", UNSET)
+
+        ssh_key_name = d.pop("ssh_key_name", UNSET)
+
+        system_volume_size = d.pop("system_volume_size", UNSET)
+
         customer_uuid = d.pop("customer_uuid", UNSET)
 
         category_uuid = d.pop("category_uuid", UNSET)
@@ -268,6 +292,9 @@ class ChatResponse:
             images=images,
             projects=projects,
             offerings=offerings,
+            network=network,
+            ssh_key_name=ssh_key_name,
+            system_volume_size=system_volume_size,
             customer_uuid=customer_uuid,
             category_uuid=category_uuid,
             state=state,
