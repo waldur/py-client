@@ -255,6 +255,8 @@ from .cached_project_storage_report import CachedProjectStorageReport
 from .cached_project_usage_report import CachedProjectUsageReport
 from .call_applicant_attribute_config import CallApplicantAttributeConfig
 from .call_applicant_attribute_config_request import CallApplicantAttributeConfigRequest
+from .call_applicant_visibility_config import CallApplicantVisibilityConfig
+from .call_applicant_visibility_config_request import CallApplicantVisibilityConfigRequest
 from .call_assignment_configuration import CallAssignmentConfiguration
 from .call_assignment_configuration_request import CallAssignmentConfigurationRequest
 from .call_attach_documents_request import CallAttachDocumentsRequest
@@ -2630,6 +2632,8 @@ __all__ = (
     "CachePerformance",
     "CallApplicantAttributeConfig",
     "CallApplicantAttributeConfigRequest",
+    "CallApplicantVisibilityConfig",
+    "CallApplicantVisibilityConfigRequest",
     "CallAssignmentConfiguration",
     "CallAssignmentConfigurationRequest",
     "CallAttachDocumentsRequest",

@@ -1,28 +1,18 @@
-import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
-from uuid import UUID
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="OfferingUserAttributeConfig")
+T = TypeVar("T", bound="CallApplicantVisibilityConfigRequest")
 
 
 @_attrs_define
-class OfferingUserAttributeConfig:
+class CallApplicantVisibilityConfigRequest:
     """
     Attributes:
-        uuid (UUID):
-        created (datetime.datetime):
-        modified (datetime.datetime):
-        exposed_fields (list[str]):
-        is_default (bool): Return True if this is a default (unsaved) config.
-        offering_uuid (UUID):
-        offering_name (str):
         expose_full_name (Union[Unset, bool]):
         expose_email (Union[Unset, bool]):
         expose_username (Union[Unset, bool]):
@@ -48,13 +38,6 @@ class OfferingUserAttributeConfig:
         expose_active_isds (Union[Unset, bool]):
     """
 
-    uuid: UUID
-    created: datetime.datetime
-    modified: datetime.datetime
-    exposed_fields: list[str]
-    is_default: bool
-    offering_uuid: UUID
-    offering_name: str
     expose_full_name: Union[Unset, bool] = UNSET
     expose_email: Union[Unset, bool] = UNSET
     expose_username: Union[Unset, bool] = UNSET
@@ -81,20 +64,6 @@ class OfferingUserAttributeConfig:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
-
-        created = self.created.isoformat()
-
-        modified = self.modified.isoformat()
-
-        exposed_fields = self.exposed_fields
-
-        is_default = self.is_default
-
-        offering_uuid = str(self.offering_uuid)
-
-        offering_name = self.offering_name
-
         expose_full_name = self.expose_full_name
 
         expose_email = self.expose_email
@@ -143,17 +112,7 @@ class OfferingUserAttributeConfig:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "created": created,
-                "modified": modified,
-                "exposed_fields": exposed_fields,
-                "is_default": is_default,
-                "offering_uuid": offering_uuid,
-                "offering_name": offering_name,
-            }
-        )
+        field_dict.update({})
         if expose_full_name is not UNSET:
             field_dict["expose_full_name"] = expose_full_name
         if expose_email is not UNSET:
@@ -206,20 +165,6 @@ class OfferingUserAttributeConfig:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
-
-        created = isoparse(d.pop("created"))
-
-        modified = isoparse(d.pop("modified"))
-
-        exposed_fields = cast(list[str], d.pop("exposed_fields"))
-
-        is_default = d.pop("is_default")
-
-        offering_uuid = UUID(d.pop("offering_uuid"))
-
-        offering_name = d.pop("offering_name")
-
         expose_full_name = d.pop("expose_full_name", UNSET)
 
         expose_email = d.pop("expose_email", UNSET)
@@ -266,14 +211,7 @@ class OfferingUserAttributeConfig:
 
         expose_active_isds = d.pop("expose_active_isds", UNSET)
 
-        offering_user_attribute_config = cls(
-            uuid=uuid,
-            created=created,
-            modified=modified,
-            exposed_fields=exposed_fields,
-            is_default=is_default,
-            offering_uuid=offering_uuid,
-            offering_name=offering_name,
+        call_applicant_visibility_config_request = cls(
             expose_full_name=expose_full_name,
             expose_email=expose_email,
             expose_username=expose_username,
@@ -299,8 +237,8 @@ class OfferingUserAttributeConfig:
             expose_active_isds=expose_active_isds,
         )
 
-        offering_user_attribute_config.additional_properties = d
-        return offering_user_attribute_config
+        call_applicant_visibility_config_request.additional_properties = d
+        return call_applicant_visibility_config_request
 
     @property
     def additional_keys(self) -> list[str]:

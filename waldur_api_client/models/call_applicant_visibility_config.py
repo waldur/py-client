@@ -9,20 +9,16 @@ from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="OfferingUserAttributeConfig")
+T = TypeVar("T", bound="CallApplicantVisibilityConfig")
 
 
 @_attrs_define
-class OfferingUserAttributeConfig:
+class CallApplicantVisibilityConfig:
     """
     Attributes:
-        uuid (UUID):
-        created (datetime.datetime):
-        modified (datetime.datetime):
-        exposed_fields (list[str]):
-        is_default (bool): Return True if this is a default (unsaved) config.
-        offering_uuid (UUID):
-        offering_name (str):
+        uuid (Union[Unset, UUID]):
+        created (Union[Unset, datetime.datetime]):
+        modified (Union[Unset, datetime.datetime]):
         expose_full_name (Union[Unset, bool]):
         expose_email (Union[Unset, bool]):
         expose_username (Union[Unset, bool]):
@@ -46,15 +42,13 @@ class OfferingUserAttributeConfig:
         expose_civil_number (Union[Unset, bool]):
         expose_birth_date (Union[Unset, bool]):
         expose_active_isds (Union[Unset, bool]):
+        exposed_fields (Union[Unset, list[str]]):
+        is_default (Union[Unset, bool]): Return True if this is a default (unsaved) config.
     """
 
-    uuid: UUID
-    created: datetime.datetime
-    modified: datetime.datetime
-    exposed_fields: list[str]
-    is_default: bool
-    offering_uuid: UUID
-    offering_name: str
+    uuid: Union[Unset, UUID] = UNSET
+    created: Union[Unset, datetime.datetime] = UNSET
+    modified: Union[Unset, datetime.datetime] = UNSET
     expose_full_name: Union[Unset, bool] = UNSET
     expose_email: Union[Unset, bool] = UNSET
     expose_username: Union[Unset, bool] = UNSET
@@ -78,22 +72,22 @@ class OfferingUserAttributeConfig:
     expose_civil_number: Union[Unset, bool] = UNSET
     expose_birth_date: Union[Unset, bool] = UNSET
     expose_active_isds: Union[Unset, bool] = UNSET
+    exposed_fields: Union[Unset, list[str]] = UNSET
+    is_default: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
-        created = self.created.isoformat()
+        created: Union[Unset, str] = UNSET
+        if not isinstance(self.created, Unset):
+            created = self.created.isoformat()
 
-        modified = self.modified.isoformat()
-
-        exposed_fields = self.exposed_fields
-
-        is_default = self.is_default
-
-        offering_uuid = str(self.offering_uuid)
-
-        offering_name = self.offering_name
+        modified: Union[Unset, str] = UNSET
+        if not isinstance(self.modified, Unset):
+            modified = self.modified.isoformat()
 
         expose_full_name = self.expose_full_name
 
@@ -141,19 +135,21 @@ class OfferingUserAttributeConfig:
 
         expose_active_isds = self.expose_active_isds
 
+        exposed_fields: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.exposed_fields, Unset):
+            exposed_fields = self.exposed_fields
+
+        is_default = self.is_default
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "uuid": uuid,
-                "created": created,
-                "modified": modified,
-                "exposed_fields": exposed_fields,
-                "is_default": is_default,
-                "offering_uuid": offering_uuid,
-                "offering_name": offering_name,
-            }
-        )
+        field_dict.update({})
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if created is not UNSET:
+            field_dict["created"] = created
+        if modified is not UNSET:
+            field_dict["modified"] = modified
         if expose_full_name is not UNSET:
             field_dict["expose_full_name"] = expose_full_name
         if expose_email is not UNSET:
@@ -200,25 +196,36 @@ class OfferingUserAttributeConfig:
             field_dict["expose_birth_date"] = expose_birth_date
         if expose_active_isds is not UNSET:
             field_dict["expose_active_isds"] = expose_active_isds
+        if exposed_fields is not UNSET:
+            field_dict["exposed_fields"] = exposed_fields
+        if is_default is not UNSET:
+            field_dict["is_default"] = is_default
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        created = isoparse(d.pop("created"))
+        _created = d.pop("created", UNSET)
+        created: Union[Unset, datetime.datetime]
+        if isinstance(_created, Unset):
+            created = UNSET
+        else:
+            created = isoparse(_created)
 
-        modified = isoparse(d.pop("modified"))
-
-        exposed_fields = cast(list[str], d.pop("exposed_fields"))
-
-        is_default = d.pop("is_default")
-
-        offering_uuid = UUID(d.pop("offering_uuid"))
-
-        offering_name = d.pop("offering_name")
+        _modified = d.pop("modified", UNSET)
+        modified: Union[Unset, datetime.datetime]
+        if isinstance(_modified, Unset):
+            modified = UNSET
+        else:
+            modified = isoparse(_modified)
 
         expose_full_name = d.pop("expose_full_name", UNSET)
 
@@ -266,14 +273,14 @@ class OfferingUserAttributeConfig:
 
         expose_active_isds = d.pop("expose_active_isds", UNSET)
 
-        offering_user_attribute_config = cls(
+        exposed_fields = cast(list[str], d.pop("exposed_fields", UNSET))
+
+        is_default = d.pop("is_default", UNSET)
+
+        call_applicant_visibility_config = cls(
             uuid=uuid,
             created=created,
             modified=modified,
-            exposed_fields=exposed_fields,
-            is_default=is_default,
-            offering_uuid=offering_uuid,
-            offering_name=offering_name,
             expose_full_name=expose_full_name,
             expose_email=expose_email,
             expose_username=expose_username,
@@ -297,10 +304,12 @@ class OfferingUserAttributeConfig:
             expose_civil_number=expose_civil_number,
             expose_birth_date=expose_birth_date,
             expose_active_isds=expose_active_isds,
+            exposed_fields=exposed_fields,
+            is_default=is_default,
         )
 
-        offering_user_attribute_config.additional_properties = d
-        return offering_user_attribute_config
+        call_applicant_visibility_config.additional_properties = d
+        return call_applicant_visibility_config
 
     @property
     def additional_keys(self) -> list[str]:

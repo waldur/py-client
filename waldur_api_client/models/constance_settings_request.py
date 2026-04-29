@@ -212,6 +212,7 @@ class ConstanceSettingsRequest:
         waldur_auth_social_role_claim (Union[Unset, str]):
         remote_eduteams_refresh_token (Union[Unset, str]):
         default_offering_user_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
+        default_call_user_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         invitation_allowed_fields (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         enabled_user_profile_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         mandatory_user_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
@@ -468,6 +469,7 @@ class ConstanceSettingsRequest:
     waldur_auth_social_role_claim: Union[Unset, str] = UNSET
     remote_eduteams_refresh_token: Union[Unset, str] = UNSET
     default_offering_user_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
+    default_call_user_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     invitation_allowed_fields: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     enabled_user_profile_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     mandatory_user_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
@@ -1030,6 +1032,18 @@ class ConstanceSettingsRequest:
                     default_offering_user_attributes_item = default_offering_user_attributes_item_data.value
 
                 default_offering_user_attributes.append(default_offering_user_attributes_item)
+
+        default_call_user_attributes: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.default_call_user_attributes, Unset):
+            default_call_user_attributes = []
+            for default_call_user_attributes_item_data in self.default_call_user_attributes:
+                default_call_user_attributes_item: str
+                if isinstance(default_call_user_attributes_item_data, UserAttributeEnum):
+                    default_call_user_attributes_item = default_call_user_attributes_item_data.value
+                else:
+                    default_call_user_attributes_item = default_call_user_attributes_item_data.value
+
+                default_call_user_attributes.append(default_call_user_attributes_item)
 
         invitation_allowed_fields: Union[Unset, list[str]] = UNSET
         if not isinstance(self.invitation_allowed_fields, Unset):
@@ -1648,6 +1662,8 @@ class ConstanceSettingsRequest:
             field_dict["REMOTE_EDUTEAMS_REFRESH_TOKEN"] = remote_eduteams_refresh_token
         if default_offering_user_attributes is not UNSET:
             field_dict["DEFAULT_OFFERING_USER_ATTRIBUTES"] = default_offering_user_attributes
+        if default_call_user_attributes is not UNSET:
+            field_dict["DEFAULT_CALL_USER_ATTRIBUTES"] = default_call_user_attributes
         if invitation_allowed_fields is not UNSET:
             field_dict["INVITATION_ALLOWED_FIELDS"] = invitation_allowed_fields
         if enabled_user_profile_attributes is not UNSET:
@@ -2448,6 +2464,31 @@ class ConstanceSettingsRequest:
 
             default_offering_user_attributes.append(default_offering_user_attributes_item)
 
+        default_call_user_attributes = []
+        _default_call_user_attributes = d.pop("DEFAULT_CALL_USER_ATTRIBUTES", UNSET)
+        for default_call_user_attributes_item_data in _default_call_user_attributes or []:
+
+            def _parse_default_call_user_attributes_item(data: object) -> Union[BlankEnum, UserAttributeEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    default_call_user_attributes_item_type_0 = UserAttributeEnum(data)
+
+                    return default_call_user_attributes_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                default_call_user_attributes_item_type_1 = BlankEnum(data)
+
+                return default_call_user_attributes_item_type_1
+
+            default_call_user_attributes_item = _parse_default_call_user_attributes_item(
+                default_call_user_attributes_item_data
+            )
+
+            default_call_user_attributes.append(default_call_user_attributes_item)
+
         invitation_allowed_fields = []
         _invitation_allowed_fields = d.pop("INVITATION_ALLOWED_FIELDS", UNSET)
         for invitation_allowed_fields_item_data in _invitation_allowed_fields or []:
@@ -2996,6 +3037,7 @@ class ConstanceSettingsRequest:
             waldur_auth_social_role_claim=waldur_auth_social_role_claim,
             remote_eduteams_refresh_token=remote_eduteams_refresh_token,
             default_offering_user_attributes=default_offering_user_attributes,
+            default_call_user_attributes=default_call_user_attributes,
             invitation_allowed_fields=invitation_allowed_fields,
             enabled_user_profile_attributes=enabled_user_profile_attributes,
             mandatory_user_attributes=mandatory_user_attributes,
