@@ -253,8 +253,6 @@ from .bulk_silence_response import BulkSilenceResponse
 from .cache_performance import CachePerformance
 from .cached_project_storage_report import CachedProjectStorageReport
 from .cached_project_usage_report import CachedProjectUsageReport
-from .call_applicant_attribute_config import CallApplicantAttributeConfig
-from .call_applicant_attribute_config_request import CallApplicantAttributeConfigRequest
 from .call_applicant_visibility_config import CallApplicantVisibilityConfig
 from .call_applicant_visibility_config_request import CallApplicantVisibilityConfigRequest
 from .call_assignment_configuration import CallAssignmentConfiguration
@@ -1396,7 +1394,6 @@ from .patched_azure_sql_database_request import PatchedAzureSqlDatabaseRequest
 from .patched_azure_sql_server_request import PatchedAzureSqlServerRequest
 from .patched_azure_virtual_machine_request import PatchedAzureVirtualMachineRequest
 from .patched_broadcast_message_request import PatchedBroadcastMessageRequest
-from .patched_call_applicant_attribute_config_request import PatchedCallApplicantAttributeConfigRequest
 from .patched_call_assignment_configuration_request import PatchedCallAssignmentConfigurationRequest
 from .patched_call_coi_configuration_request import PatchedCallCOIConfigurationRequest
 from .patched_call_managing_organisation_request import PatchedCallManagingOrganisationRequest
@@ -2630,8 +2627,6 @@ __all__ = (
     "CachedProjectStorageReport",
     "CachedProjectUsageReport",
     "CachePerformance",
-    "CallApplicantAttributeConfig",
-    "CallApplicantAttributeConfigRequest",
     "CallApplicantVisibilityConfig",
     "CallApplicantVisibilityConfigRequest",
     "CallAssignmentConfiguration",
@@ -3705,7 +3700,6 @@ __all__ = (
     "PatchedAzureSqlServerRequest",
     "PatchedAzureVirtualMachineRequest",
     "PatchedBroadcastMessageRequest",
-    "PatchedCallApplicantAttributeConfigRequest",
     "PatchedCallAssignmentConfigurationRequest",
     "PatchedCallCOIConfigurationRequest",
     "PatchedCallManagingOrganisationRequest",

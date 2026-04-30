@@ -2823,7 +2823,6 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_activate` POST `/api/proposal-protected-calls/{uuid}/activate/` — Activate a call (path: uuid)
 - `proposal_protected_calls_add_user` POST `/api/proposal-protected-calls/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `proposal_protected_calls_affinity_matrix_retrieve` GET `/api/proposal-protected-calls/{uuid}/affinity-matrix/` — Get affinity matrix for reviewer-proposal matching (path: uuid | 1 query param)
-- `proposal_protected_calls_applicant_attribute_config_retrieve` GET `/api/proposal-protected-calls/{uuid}/applicant_attribute_config/` — Get applicant attribute exposure configuration for this call (path: uuid)
 - `proposal_protected_calls_archive` POST `/api/proposal-protected-calls/{uuid}/archive/` — Archive a call (path: uuid)
 - `proposal_protected_calls_attach_documents` POST `/api/proposal-protected-calls/{uuid}/attach_documents/` — Attach documents to call (path: uuid | request body)
 - `proposal_protected_calls_coi_configuration_retrieve` GET `/api/proposal-protected-calls/{uuid}/coi-configuration/` — Get COI configuration for this call (path: uuid)
@@ -2833,7 +2832,6 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_conflict_summary_retrieve` GET `/api/proposal-protected-calls/{uuid}/conflict-summary/` — Get summary statistics of conflicts for this call (path: uuid)
 - `proposal_protected_calls_conflicts_list` GET `/api/proposal-protected-calls/{uuid}/conflicts/` — List all conflicts of interest detected for this call (path: uuid | 10 query params)
 - `proposal_protected_calls_create_manual_assignment` POST `/api/proposal-protected-calls/{uuid}/create-manual-assignment/` — Create a manual assignment batch for a specific reviewer (path: uuid | request body)
-- `proposal_protected_calls_delete_applicant_attribute_config_destroy` DELETE `/api/proposal-protected-calls/{uuid}/delete_applicant_attribute_config/` — Delete custom applicant attribute config, reverting to system defaults (path: uuid)
 - `proposal_protected_calls_delete_user` POST `/api/proposal-protected-calls/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `proposal_protected_calls_detach_documents` POST `/api/proposal-protected-calls/{uuid}/detach_documents/` — Detach documents from call (path: uuid | request body)
 - `proposal_protected_calls_detect_conflicts` POST `/api/proposal-protected-calls/{uuid}/detect-conflicts/` — Trigger automated COI detection for all reviewer-proposal pairs (path: uuid | request body)
@@ -2870,8 +2868,6 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_send_all_assignments` POST `/api/proposal-protected-calls/{uuid}/send-all-assignments/` — Send all draft assignment batches for this call (path: uuid | request body)
 - `proposal_protected_calls_send_invitations` POST `/api/proposal-protected-calls/{uuid}/send-invitations/` — Send invitations to all confirmed suggestions (path: uuid)
 - `proposal_protected_calls_suggestions_list` GET `/api/proposal-protected-calls/{uuid}/suggestions/` — List all reviewer suggestions for this call with affinity scores (path: uuid | 10 query params)
-- `proposal_protected_calls_update_applicant_attribute_config` POST `/api/proposal-protected-calls/{uuid}/update_applicant_attribute_config/` — Create or update applicant attribute exposure configuration (path: uuid | request body)
-- `proposal_protected_calls_update_applicant_attribute_config_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/update_applicant_attribute_config/` — Create or update applicant attribute exposure configuration (path: uuid | request body)
 - `proposal_protected_calls_update_user` POST `/api/proposal-protected-calls/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## proposal-public-calls

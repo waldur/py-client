@@ -23,6 +23,7 @@ class UserAttributeEnum(str, Enum):
     PERSONAL_TITLE = "personal_title"
     PHONE_NUMBER = "phone_number"
     PLACE_OF_BIRTH = "place_of_birth"
+    REGISTRATION_METHOD = "registration_method"
     USERNAME = "username"
 
     def __str__(self) -> str:

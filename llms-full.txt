@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.12-dev.20260429233341
+# Version: 8.0.8-rc.12-dev.20260430082912
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -17522,13 +17522,6 @@ Path parameters:
 Query parameters (1):
   - scope — Filter by reviewer source: 'pool' (accepted reviewers), 'suggestions' (suggested reviewers), or 'all' (both). Default: 'pool'
 
-### proposal_protected_calls_applicant_attribute_config_retrieve
-GET /api/proposal-protected-calls/{uuid}/applicant_attribute_config/
-Summary: Get applicant attribute exposure configuration for this call
-Description: Get applicant attribute exposure configuration for this call.
-Path parameters:
-  - uuid
-
 ### proposal_protected_calls_archive
 POST /api/proposal-protected-calls/{uuid}/archive/
 Summary: Archive a call
@@ -17606,13 +17599,6 @@ Description: Create a manual assignment batch for a specific reviewer. This allo
 Path parameters:
   - uuid
 Request body: yes
-
-### proposal_protected_calls_delete_applicant_attribute_config_destroy
-DELETE /api/proposal-protected-calls/{uuid}/delete_applicant_attribute_config/
-Summary: Delete custom applicant attribute config, reverting to system defaults
-Description: Delete custom applicant attribute config, reverting to system defaults.
-Path parameters:
-  - uuid
 
 ### proposal_protected_calls_delete_user
 POST /api/proposal-protected-calls/{uuid}/delete_user/
@@ -17930,22 +17916,6 @@ Query parameters (10):
   - offerings_provider_uuid
   - slug — Slug
   - state
-
-### proposal_protected_calls_update_applicant_attribute_config
-POST /api/proposal-protected-calls/{uuid}/update_applicant_attribute_config/
-Summary: Create or update applicant attribute exposure configuration
-Description: Create or update applicant attribute exposure configuration.
-Path parameters:
-  - uuid
-Request body: yes
-
-### proposal_protected_calls_update_applicant_attribute_config_partial_update
-PATCH /api/proposal-protected-calls/{uuid}/update_applicant_attribute_config/
-Summary: Create or update applicant attribute exposure configuration
-Description: Create or update applicant attribute exposure configuration.
-Path parameters:
-  - uuid
-Request body: yes
 
 ### proposal_protected_calls_update_user
 POST /api/proposal-protected-calls/{uuid}/update_user/
