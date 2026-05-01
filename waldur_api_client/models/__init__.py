@@ -429,6 +429,7 @@ from .constance_settings_request_multipart_loginlogomultilingual import (
 from .consumption_statistics_response import ConsumptionStatisticsResponse
 from .consumption_status_response import ConsumptionStatusResponse
 from .container_format_enum import ContainerFormatEnum
+from .content_type_input_enum import ContentTypeInputEnum
 from .core_auth_token import CoreAuthToken
 from .core_states import CoreStates
 from .corrective_action import CorrectiveAction
@@ -1003,8 +1004,7 @@ from .nested_remote_local_category import NestedRemoteLocalCategory
 from .nested_remote_local_category_request import NestedRemoteLocalCategoryRequest
 from .nested_requested_offering import NestedRequestedOffering
 from .nested_requested_offering_request import NestedRequestedOfferingRequest
-from .nested_role import NestedRole
-from .nested_role_request import NestedRoleRequest
+from .nested_resource_project_permission import NestedResourceProjectPermission
 from .nested_round import NestedRound
 from .nested_round_request import NestedRoundRequest
 from .nested_screenshot import NestedScreenshot
@@ -1090,10 +1090,18 @@ from .offering_partition_request import OfferingPartitionRequest
 from .offering_pause_request import OfferingPauseRequest
 from .offering_permission import OfferingPermission
 from .offering_permission_o_enum import OfferingPermissionOEnum
+from .offering_profile import OfferingProfile
+from .offering_profile_bind_request import OfferingProfileBindRequest
+from .offering_profile_request import OfferingProfileRequest
+from .offering_profile_role import OfferingProfileRole
+from .offering_profile_role_assign import OfferingProfileRoleAssign
+from .offering_profile_role_assign_request import OfferingProfileRoleAssignRequest
 from .offering_reference import OfferingReference
 from .offering_referral import OfferingReferral
 from .offering_referral_o_enum import OfferingReferralOEnum
 from .offering_resource_options_update_request import OfferingResourceOptionsUpdateRequest
+from .offering_role import OfferingRole
+from .offering_role_request import OfferingRoleRequest
 from .offering_software_catalog import OfferingSoftwareCatalog
 from .offering_software_catalog_request import OfferingSoftwareCatalogRequest
 from .offering_state import OfferingState
@@ -1119,8 +1127,6 @@ from .offering_user_consent_data_type_0 import OfferingUserConsentDataType0
 from .offering_user_field_enum import OfferingUserFieldEnum
 from .offering_user_o_enum import OfferingUserOEnum
 from .offering_user_request import OfferingUserRequest
-from .offering_user_role import OfferingUserRole
-from .offering_user_role_request import OfferingUserRoleRequest
 from .offering_user_service_provider_comment import OfferingUserServiceProviderComment
 from .offering_user_state import OfferingUserState
 from .offering_user_state_transition_request import OfferingUserStateTransitionRequest
@@ -1452,12 +1458,13 @@ from .patched_notification_template_detail_serializers_request import (
 )
 from .patched_offering_estimated_cost_policy_request import PatchedOfferingEstimatedCostPolicyRequest
 from .patched_offering_partition_update_request import PatchedOfferingPartitionUpdateRequest
+from .patched_offering_profile_request import PatchedOfferingProfileRequest
+from .patched_offering_role_request import PatchedOfferingRoleRequest
 from .patched_offering_software_catalog_update_request import PatchedOfferingSoftwareCatalogUpdateRequest
 from .patched_offering_terms_of_service_request import PatchedOfferingTermsOfServiceRequest
 from .patched_offering_usage_policy_request import PatchedOfferingUsagePolicyRequest
 from .patched_offering_user_attribute_config_request import PatchedOfferingUserAttributeConfigRequest
 from .patched_offering_user_request import PatchedOfferingUserRequest
-from .patched_offering_user_role_request import PatchedOfferingUserRoleRequest
 from .patched_offering_user_service_provider_comment_request import PatchedOfferingUserServiceProviderCommentRequest
 from .patched_onboarding_justification_request import PatchedOnboardingJustificationRequest
 from .patched_onboarding_question_metadata_request import PatchedOnboardingQuestionMetadataRequest
@@ -1508,6 +1515,7 @@ from .patched_remote_synchronisation_request import PatchedRemoteSynchronisation
 from .patched_request_type_admin_request import PatchedRequestTypeAdminRequest
 from .patched_requested_offering_request import PatchedRequestedOfferingRequest
 from .patched_requested_resource_request import PatchedRequestedResourceRequest
+from .patched_resource_project_request import PatchedResourceProjectRequest
 from .patched_resource_update_request import PatchedResourceUpdateRequest
 from .patched_reviewer_affiliation_request import PatchedReviewerAffiliationRequest
 from .patched_reviewer_bid_request import PatchedReviewerBidRequest
@@ -1926,6 +1934,10 @@ from .resource_offering_request import ResourceOfferingRequest
 from .resource_options_request import ResourceOptionsRequest
 from .resource_paused_request import ResourcePausedRequest
 from .resource_plan_period import ResourcePlanPeriod
+from .resource_project import ResourceProject
+from .resource_project_backend_id import ResourceProjectBackendId
+from .resource_project_backend_id_request import ResourceProjectBackendIdRequest
+from .resource_project_request import ResourceProjectRequest
 from .resource_provisioning_stats import ResourceProvisioningStats
 from .resource_reallocate_limits_request import ResourceReallocateLimitsRequest
 from .resource_reallocate_limits_request_limits import ResourceReallocateLimitsRequestLimits
@@ -1949,6 +1961,7 @@ from .resource_slug_request import ResourceSlugRequest
 from .resource_state import ResourceState
 from .resource_suggest_name_request import ResourceSuggestNameRequest
 from .resource_switch_plan_request import ResourceSwitchPlanRequest
+from .resource_team_member import ResourceTeamMember
 from .resource_terminate_request import ResourceTerminateRequest
 from .resource_update import ResourceUpdate
 from .resource_update_limits_request import ResourceUpdateLimitsRequest
@@ -1963,8 +1976,6 @@ from .resource_usage_by_customer import ResourceUsageByCustomer
 from .resource_usage_by_customer_limits import ResourceUsageByCustomerLimits
 from .resource_usage_by_customer_usages import ResourceUsageByCustomerUsages
 from .resource_usage_by_org_type import ResourceUsageByOrgType
-from .resource_user import ResourceUser
-from .resource_user_request import ResourceUserRequest
 from .resources_geography_summary import ResourcesGeographySummary
 from .resources_limits import ResourcesLimits
 from .restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
@@ -2023,6 +2034,7 @@ from .robot_account_details_field_enum import RobotAccountDetailsFieldEnum
 from .robot_account_error_request import RobotAccountErrorRequest
 from .robot_account_request import RobotAccountRequest
 from .robot_account_states import RobotAccountStates
+from .role_availability_details import RoleAvailabilityDetails
 from .role_description import RoleDescription
 from .role_description_request import RoleDescriptionRequest
 from .role_details import RoleDetails
@@ -2801,6 +2813,7 @@ __all__ = (
     "ConsumptionStatisticsResponse",
     "ConsumptionStatusResponse",
     "ContainerFormatEnum",
+    "ContentTypeInputEnum",
     "CoreAuthToken",
     "CoreStates",
     "CorrectiveAction",
@@ -3345,8 +3358,7 @@ __all__ = (
     "NestedRemoteLocalCategoryRequest",
     "NestedRequestedOffering",
     "NestedRequestedOfferingRequest",
-    "NestedRole",
-    "NestedRoleRequest",
+    "NestedResourceProjectPermission",
     "NestedRound",
     "NestedRoundRequest",
     "NestedScreenshot",
@@ -3432,10 +3444,18 @@ __all__ = (
     "OfferingPauseRequest",
     "OfferingPermission",
     "OfferingPermissionOEnum",
+    "OfferingProfile",
+    "OfferingProfileBindRequest",
+    "OfferingProfileRequest",
+    "OfferingProfileRole",
+    "OfferingProfileRoleAssign",
+    "OfferingProfileRoleAssignRequest",
     "OfferingReference",
     "OfferingReferral",
     "OfferingReferralOEnum",
     "OfferingResourceOptionsUpdateRequest",
+    "OfferingRole",
+    "OfferingRoleRequest",
     "OfferingSoftwareCatalog",
     "OfferingSoftwareCatalogRequest",
     "OfferingState",
@@ -3461,8 +3481,6 @@ __all__ = (
     "OfferingUserFieldEnum",
     "OfferingUserOEnum",
     "OfferingUserRequest",
-    "OfferingUserRole",
-    "OfferingUserRoleRequest",
     "OfferingUserServiceProviderComment",
     "OfferingUserState",
     "OfferingUserStateTransitionRequest",
@@ -3754,12 +3772,13 @@ __all__ = (
     "PatchedNotificationTemplateDetailSerializersRequest",
     "PatchedOfferingEstimatedCostPolicyRequest",
     "PatchedOfferingPartitionUpdateRequest",
+    "PatchedOfferingProfileRequest",
+    "PatchedOfferingRoleRequest",
     "PatchedOfferingSoftwareCatalogUpdateRequest",
     "PatchedOfferingTermsOfServiceRequest",
     "PatchedOfferingUsagePolicyRequest",
     "PatchedOfferingUserAttributeConfigRequest",
     "PatchedOfferingUserRequest",
-    "PatchedOfferingUserRoleRequest",
     "PatchedOfferingUserServiceProviderCommentRequest",
     "PatchedOnboardingJustificationRequest",
     "PatchedOnboardingQuestionMetadataRequest",
@@ -3810,6 +3829,7 @@ __all__ = (
     "PatchedRequestedOfferingRequest",
     "PatchedRequestedResourceRequest",
     "PatchedRequestTypeAdminRequest",
+    "PatchedResourceProjectRequest",
     "PatchedResourceUpdateRequest",
     "PatchedReviewerAffiliationRequest",
     "PatchedReviewerBidRequest",
@@ -4198,6 +4218,10 @@ __all__ = (
     "ResourceOptionsRequest",
     "ResourcePausedRequest",
     "ResourcePlanPeriod",
+    "ResourceProject",
+    "ResourceProjectBackendId",
+    "ResourceProjectBackendIdRequest",
+    "ResourceProjectRequest",
     "ResourceProvisioningStats",
     "ResourceReallocateLimitsRequest",
     "ResourceReallocateLimitsRequestLimits",
@@ -4223,6 +4247,7 @@ __all__ = (
     "ResourceState",
     "ResourceSuggestNameRequest",
     "ResourceSwitchPlanRequest",
+    "ResourceTeamMember",
     "ResourceTerminateRequest",
     "ResourceUpdate",
     "ResourceUpdateLimitsRequest",
@@ -4237,8 +4262,6 @@ __all__ = (
     "ResourceUsageByCustomerLimits",
     "ResourceUsageByCustomerUsages",
     "ResourceUsageByOrgType",
-    "ResourceUser",
-    "ResourceUserRequest",
     "RESTRICTEDOFFERINGVISIBILITYMODEEnum",
     "ReviewCommentRequest",
     "ReviewerAffiliation",
@@ -4295,6 +4318,7 @@ __all__ = (
     "RobotAccountErrorRequest",
     "RobotAccountRequest",
     "RobotAccountStates",
+    "RoleAvailabilityDetails",
     "RoleDescription",
     "RoleDescriptionRequest",
     "RoleDetails",

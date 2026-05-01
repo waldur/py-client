@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.0.8-rc.13-dev.20260430233338).
+> Auto-generated Python SDK for the Waldur API (version 8.0.8-rc.13-dev.20260501225623).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -151,11 +151,12 @@ waldur_api_client/
 - **marketplace-offering-files** (5 endpoints)
 - **marketplace-offering-permissions** (3 endpoints)
 - **marketplace-offering-permissions-log** (3 endpoints)
+- **marketplace-offering-profiles** (9 endpoints)
 - **marketplace-offering-referrals** (3 endpoints)
+- **marketplace-offering-roles** (7 endpoints)
 - **marketplace-offering-terms-of-service** (7 endpoints)
 - **marketplace-offering-usage-policies** (9 endpoints)
 - **marketplace-offering-user-checklist-completions** (3 endpoints)
-- **marketplace-offering-user-roles** (7 endpoints)
 - **marketplace-offering-users** (28 endpoints)
 - **marketplace-orders** (24 endpoints)
 - **marketplace-plan-components** (3 endpoints)
@@ -164,15 +165,16 @@ waldur_api_client/
 - **marketplace-project-estimated-cost-policies** (9 endpoints)
 - **marketplace-project-service-accounts** (8 endpoints)
 - **marketplace-project-update-requests** (5 endpoints)
-- **marketplace-provider-offerings** (78 endpoints)
+- **marketplace-provider-offerings** (79 endpoints)
+- **marketplace-provider-resource-projects** (12 endpoints)
 - **marketplace-provider-resources** (37 endpoints)
 - **marketplace-public-api** (2 endpoints)
 - **marketplace-public-offerings** (5 endpoints)
 - **marketplace-related-customers** (1 endpoint)
 - **marketplace-remote-synchronisations** (8 endpoints)
 - **marketplace-resource-offerings** (1 endpoint)
-- **marketplace-resource-users** (5 endpoints)
-- **marketplace-resources** (31 endpoints)
+- **marketplace-resource-projects** (11 endpoints)
+- **marketplace-resources** (36 endpoints)
 - **marketplace-robot-accounts** (12 endpoints)
 - **marketplace-runtime-states** (1 endpoint)
 - **marketplace-screenshots** (7 endpoints)
@@ -295,6 +297,7 @@ waldur_api_client/
 - **reviewer-invitations** (3 endpoints)
 - **reviewer-profiles** (36 endpoints)
 - **reviewer-suggestions** (6 endpoints)
+- **role-availabilities** (4 endpoints)
 - **roles** (10 endpoints)
 - **science-domains** (10 endpoints)
 - **science-sub-domains** (7 endpoints)

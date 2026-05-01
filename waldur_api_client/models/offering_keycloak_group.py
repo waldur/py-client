@@ -25,7 +25,6 @@ class OfferingKeycloakGroup:
         offering_name (str):
         role (str):
         role_name (str):
-        role_scope_type (str): Level this role applies at, e.g. 'cluster', 'project'. Empty means offering-wide.
         resource_uuid (UUID):
         resource_name (Union[None, str]):
         created (datetime.datetime):
@@ -44,7 +43,6 @@ class OfferingKeycloakGroup:
     offering_name: str
     role: str
     role_name: str
-    role_scope_type: str
     resource_uuid: UUID
     resource_name: Union[None, str]
     created: datetime.datetime
@@ -71,8 +69,6 @@ class OfferingKeycloakGroup:
         role = self.role
 
         role_name = self.role_name
-
-        role_scope_type = self.role_scope_type
 
         resource_uuid = str(self.resource_uuid)
 
@@ -104,7 +100,6 @@ class OfferingKeycloakGroup:
                 "offering_name": offering_name,
                 "role": role,
                 "role_name": role_name,
-                "role_scope_type": role_scope_type,
                 "resource_uuid": resource_uuid,
                 "resource_name": resource_name,
                 "created": created,
@@ -138,8 +133,6 @@ class OfferingKeycloakGroup:
         role = d.pop("role")
 
         role_name = d.pop("role_name")
-
-        role_scope_type = d.pop("role_scope_type")
 
         resource_uuid = UUID(d.pop("resource_uuid"))
 
@@ -175,7 +168,6 @@ class OfferingKeycloakGroup:
             offering_name=offering_name,
             role=role,
             role_name=role_name,
-            role_scope_type=role_scope_type,
             resource_uuid=resource_uuid,
             resource_name=resource_name,
             created=created,

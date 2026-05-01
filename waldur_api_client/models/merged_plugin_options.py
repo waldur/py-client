@@ -49,6 +49,9 @@ class MergedPluginOptions:
         conceal_billing_data (Union[Unset, bool]): If set to True, pricing and components tab would be concealed.
         create_orders_on_resource_option_change (Union[Unset, bool]): If set to True, create orders when options of
             related resources are changed.
+        enable_resource_projects (Union[Unset, bool]): Enable sub-project management within resources.
+        create_orders_on_resource_project_change (Union[Unset, bool]): If set to True, create orders when resource
+            projects are created, updated or deleted.
         can_restore_resource (Union[Unset, bool]): If set to True, resource can be restored.
         enable_provider_consumer_messaging (Union[Unset, bool]): If set to True, service providers can send messages
             with attachments to consumers on pending orders, and consumers can respond.
@@ -161,6 +164,8 @@ class MergedPluginOptions:
     require_purchase_order_upload: Union[Unset, bool] = UNSET
     conceal_billing_data: Union[Unset, bool] = UNSET
     create_orders_on_resource_option_change: Union[Unset, bool] = UNSET
+    enable_resource_projects: Union[Unset, bool] = UNSET
+    create_orders_on_resource_project_change: Union[Unset, bool] = UNSET
     can_restore_resource: Union[Unset, bool] = UNSET
     enable_provider_consumer_messaging: Union[Unset, bool] = UNSET
     notify_about_provider_consumer_messages: Union[Unset, bool] = UNSET
@@ -261,6 +266,10 @@ class MergedPluginOptions:
         conceal_billing_data = self.conceal_billing_data
 
         create_orders_on_resource_option_change = self.create_orders_on_resource_option_change
+
+        enable_resource_projects = self.enable_resource_projects
+
+        create_orders_on_resource_project_change = self.create_orders_on_resource_project_change
 
         can_restore_resource = self.can_restore_resource
 
@@ -435,6 +444,10 @@ class MergedPluginOptions:
             field_dict["conceal_billing_data"] = conceal_billing_data
         if create_orders_on_resource_option_change is not UNSET:
             field_dict["create_orders_on_resource_option_change"] = create_orders_on_resource_option_change
+        if enable_resource_projects is not UNSET:
+            field_dict["enable_resource_projects"] = enable_resource_projects
+        if create_orders_on_resource_project_change is not UNSET:
+            field_dict["create_orders_on_resource_project_change"] = create_orders_on_resource_project_change
         if can_restore_resource is not UNSET:
             field_dict["can_restore_resource"] = can_restore_resource
         if enable_provider_consumer_messaging is not UNSET:
@@ -606,6 +619,10 @@ class MergedPluginOptions:
         conceal_billing_data = d.pop("conceal_billing_data", UNSET)
 
         create_orders_on_resource_option_change = d.pop("create_orders_on_resource_option_change", UNSET)
+
+        enable_resource_projects = d.pop("enable_resource_projects", UNSET)
+
+        create_orders_on_resource_project_change = d.pop("create_orders_on_resource_project_change", UNSET)
 
         can_restore_resource = d.pop("can_restore_resource", UNSET)
 
@@ -782,6 +799,8 @@ class MergedPluginOptions:
             require_purchase_order_upload=require_purchase_order_upload,
             conceal_billing_data=conceal_billing_data,
             create_orders_on_resource_option_change=create_orders_on_resource_option_change,
+            enable_resource_projects=enable_resource_projects,
+            create_orders_on_resource_project_change=create_orders_on_resource_project_change,
             can_restore_resource=can_restore_resource,
             enable_provider_consumer_messaging=enable_provider_consumer_messaging,
             notify_about_provider_consumer_messages=notify_about_provider_consumer_messages,

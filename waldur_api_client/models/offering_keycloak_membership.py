@@ -31,9 +31,6 @@ class OfferingKeycloakMembership:
         group_resource_name (str):
         group_resource_uuid (UUID):
         group_scope_id (str): Sub-entity identifier within a resource, e.g. Rancher project ID within a cluster.
-        group_role_scope_type (str): Level this role applies at, e.g. 'cluster', 'project'. Empty means offering-wide.
-        group_role_scope_type_label (str): Human-readable label for scope_type shown to end users, e.g. 'Rancher
-            Project', 'Cluster Namespace'. Falls back to capitalized scope_type if empty. Default: ''.
         state (KeycloakUserGroupMembershipState):
         created (datetime.datetime):
         modified (datetime.datetime):
@@ -57,14 +54,12 @@ class OfferingKeycloakMembership:
     group_resource_name: str
     group_resource_uuid: UUID
     group_scope_id: str
-    group_role_scope_type: str
     state: KeycloakUserGroupMembershipState
     created: datetime.datetime
     modified: datetime.datetime
     last_checked: datetime.datetime
     error_message: str
     error_traceback: str
-    group_role_scope_type_label: str = ""
     user: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -96,10 +91,6 @@ class OfferingKeycloakMembership:
         group_resource_uuid = str(self.group_resource_uuid)
 
         group_scope_id = self.group_scope_id
-
-        group_role_scope_type = self.group_role_scope_type
-
-        group_role_scope_type_label = self.group_role_scope_type_label
 
         state = self.state.value
 
@@ -137,8 +128,6 @@ class OfferingKeycloakMembership:
                 "group_resource_name": group_resource_name,
                 "group_resource_uuid": group_resource_uuid,
                 "group_scope_id": group_scope_id,
-                "group_role_scope_type": group_role_scope_type,
-                "group_role_scope_type_label": group_role_scope_type_label,
                 "state": state,
                 "created": created,
                 "modified": modified,
@@ -183,10 +172,6 @@ class OfferingKeycloakMembership:
 
         group_scope_id = d.pop("group_scope_id")
 
-        group_role_scope_type = d.pop("group_role_scope_type")
-
-        group_role_scope_type_label = d.pop("group_role_scope_type_label")
-
         state = KeycloakUserGroupMembershipState(d.pop("state"))
 
         created = isoparse(d.pop("created"))
@@ -223,8 +208,6 @@ class OfferingKeycloakMembership:
             group_resource_name=group_resource_name,
             group_resource_uuid=group_resource_uuid,
             group_scope_id=group_scope_id,
-            group_role_scope_type=group_role_scope_type,
-            group_role_scope_type_label=group_role_scope_type_label,
             state=state,
             created=created,
             modified=modified,

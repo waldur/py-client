@@ -1250,12 +1250,36 @@ Module: `waldur_api_client.api.marketplace_offering_permissions_log`
 - `marketplace_offering_permissions_log_count` HEAD `/api/marketplace-offering-permissions-log/` — Get number of items in the collection matching the request parameters (18 query params)
 - `marketplace_offering_permissions_log_retrieve` GET `/api/marketplace-offering-permissions-log/{id}/` (path: id)
 
+## marketplace-offering-profiles
+Module: `waldur_api_client.api.marketplace_offering_profiles`
+
+- `marketplace_offering_profiles_list` GET `/api/marketplace-offering-profiles/` (no params)
+- `marketplace_offering_profiles_count` HEAD `/api/marketplace-offering-profiles/` — Get number of items in the collection matching the request parameters (no params)
+- `marketplace_offering_profiles_create` POST `/api/marketplace-offering-profiles/` (request body)
+- `marketplace_offering_profiles_retrieve` GET `/api/marketplace-offering-profiles/{uuid}/` (path: uuid)
+- `marketplace_offering_profiles_update` PUT `/api/marketplace-offering-profiles/{uuid}/` (path: uuid | request body)
+- `marketplace_offering_profiles_partial_update` PATCH `/api/marketplace-offering-profiles/{uuid}/` (path: uuid | request body)
+- `marketplace_offering_profiles_destroy` DELETE `/api/marketplace-offering-profiles/{uuid}/` (path: uuid)
+- `marketplace_offering_profiles_add_role` POST `/api/marketplace-offering-profiles/{uuid}/add_role/` (path: uuid | request body)
+- `marketplace_offering_profiles_remove_role` POST `/api/marketplace-offering-profiles/{uuid}/remove_role/` (path: uuid | request body)
+
 ## marketplace-offering-referrals
 Module: `waldur_api_client.api.marketplace_offering_referrals`
 
 - `marketplace_offering_referrals_list` GET `/api/marketplace-offering-referrals/` — List Datacite referrals for offerings (2 query params)
 - `marketplace_offering_referrals_count` HEAD `/api/marketplace-offering-referrals/` — List Datacite referrals for offerings (2 query params)
 - `marketplace_offering_referrals_retrieve` GET `/api/marketplace-offering-referrals/{uuid}/` — Retrieve a specific Datacite referral (path: uuid)
+
+## marketplace-offering-roles
+Module: `waldur_api_client.api.marketplace_offering_roles`
+
+- `marketplace_offering_roles_list` GET `/api/marketplace-offering-roles/` (3 query params)
+- `marketplace_offering_roles_count` HEAD `/api/marketplace-offering-roles/` — Get number of items in the collection matching the request parameters (3 query params)
+- `marketplace_offering_roles_create` POST `/api/marketplace-offering-roles/` (request body)
+- `marketplace_offering_roles_retrieve` GET `/api/marketplace-offering-roles/{uuid}/` (path: uuid)
+- `marketplace_offering_roles_update` PUT `/api/marketplace-offering-roles/{uuid}/` (path: uuid | request body)
+- `marketplace_offering_roles_partial_update` PATCH `/api/marketplace-offering-roles/{uuid}/` (path: uuid | request body)
+- `marketplace_offering_roles_destroy` DELETE `/api/marketplace-offering-roles/{uuid}/` (path: uuid)
 
 ## marketplace-offering-terms-of-service
 Module: `waldur_api_client.api.marketplace_offering_terms_of_service`
@@ -1287,17 +1311,6 @@ Module: `waldur_api_client.api.marketplace_offering_user_checklist_completions`
 - `marketplace_offering_user_checklist_completions_list` GET `/api/marketplace-offering-user-checklist-completions/` — List checklist completions for offering users (8 query params)
 - `marketplace_offering_user_checklist_completions_count` HEAD `/api/marketplace-offering-user-checklist-completions/` — List checklist completions for offering users (8 query params)
 - `marketplace_offering_user_checklist_completions_retrieve` GET `/api/marketplace-offering-user-checklist-completions/{id}/` — Retrieve a checklist completion (path: id)
-
-## marketplace-offering-user-roles
-Module: `waldur_api_client.api.marketplace_offering_user_roles`
-
-- `marketplace_offering_user_roles_list` GET `/api/marketplace-offering-user-roles/` (4 query params)
-- `marketplace_offering_user_roles_count` HEAD `/api/marketplace-offering-user-roles/` — Get number of items in the collection matching the request parameters (4 query params)
-- `marketplace_offering_user_roles_create` POST `/api/marketplace-offering-user-roles/` (request body)
-- `marketplace_offering_user_roles_retrieve` GET `/api/marketplace-offering-user-roles/{uuid}/` (path: uuid)
-- `marketplace_offering_user_roles_update` PUT `/api/marketplace-offering-user-roles/{uuid}/` (path: uuid | request body)
-- `marketplace_offering_user_roles_partial_update` PATCH `/api/marketplace-offering-user-roles/{uuid}/` (path: uuid | request body)
-- `marketplace_offering_user_roles_destroy` DELETE `/api/marketplace-offering-user-roles/{uuid}/` (path: uuid)
 
 ## marketplace-offering-users
 Module: `waldur_api_client.api.marketplace_offering_users`
@@ -1479,6 +1492,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_remove_partition` POST `/api/marketplace-provider-offerings/{uuid}/remove_partition/` — Remove a partition from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_remove_software_catalog` POST `/api/marketplace-provider-offerings/{uuid}/remove_software_catalog/` — Remove a software catalog from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_set_backend_metadata` POST `/api/marketplace-provider-offerings/{uuid}/set_backend_metadata/` — Set offering backend metadata (path: uuid | request body)
+- `marketplace_provider_offerings_set_profile` POST `/api/marketplace-provider-offerings/{uuid}/set_profile/` — Bind / unbind offering to a service profile (path: uuid | request body)
 - `marketplace_provider_offerings_state_counters_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/state_counters/` — Get offering resource and user state counters (path: uuid)
 - `marketplace_provider_offerings_stats_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/stats/` — Get offering statistics (path: uuid)
 - `marketplace_provider_offerings_switch_billing_mode` POST `/api/marketplace-provider-offerings/{uuid}/switch_billing_mode/` — Switch billing mode for builtin components (path: uuid | request body)
@@ -1507,6 +1521,22 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_update_user` POST `/api/marketplace-provider-offerings/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 - `marketplace_provider_offerings_user_attribute_config_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/user-attribute-config/` — Get user attribute config (path: uuid)
 - `marketplace_provider_offerings_user_has_resource_access_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/user_has_resource_access/` — Check user access to offering resources (path: uuid | 2 query params)
+
+## marketplace-provider-resource-projects
+Module: `waldur_api_client.api.marketplace_provider_resource_projects`
+
+- `marketplace_provider_resource_projects_list` GET `/api/marketplace-provider-resource-projects/` (3 query params)
+- `marketplace_provider_resource_projects_count` HEAD `/api/marketplace-provider-resource-projects/` — Get number of items in the collection matching the request parameters (3 query params)
+- `marketplace_provider_resource_projects_retrieve` GET `/api/marketplace-provider-resource-projects/{uuid}/` (path: uuid)
+- `marketplace_provider_resource_projects_update` PUT `/api/marketplace-provider-resource-projects/{uuid}/` (path: uuid | request body)
+- `marketplace_provider_resource_projects_partial_update` PATCH `/api/marketplace-provider-resource-projects/{uuid}/` (path: uuid | request body)
+- `marketplace_provider_resource_projects_add_user` POST `/api/marketplace-provider-resource-projects/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
+- `marketplace_provider_resource_projects_delete_user` POST `/api/marketplace-provider-resource-projects/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
+- `marketplace_provider_resource_projects_list_users_list` GET `/api/marketplace-provider-resource-projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `marketplace_provider_resource_projects_set_backend_id` POST `/api/marketplace-provider-resource-projects/{uuid}/set_backend_id/` (path: uuid | request body)
+- `marketplace_provider_resource_projects_set_state_erred` POST `/api/marketplace-provider-resource-projects/{uuid}/set_state_erred/` (path: uuid | request body)
+- `marketplace_provider_resource_projects_set_state_ok` POST `/api/marketplace-provider-resource-projects/{uuid}/set_state_ok/` (path: uuid | request body)
+- `marketplace_provider_resource_projects_update_user` POST `/api/marketplace-provider-resource-projects/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## marketplace-provider-resources
 Module: `waldur_api_client.api.marketplace_provider_resources`
@@ -1586,14 +1616,20 @@ Module: `waldur_api_client.api.marketplace_resource_offerings`
 
 - `marketplace_resource_offerings_list` GET `/api/marketplace-resource-offerings/{category_uuid}/` (path: category_uuid | 2 query params)
 
-## marketplace-resource-users
-Module: `waldur_api_client.api.marketplace_resource_users`
+## marketplace-resource-projects
+Module: `waldur_api_client.api.marketplace_resource_projects`
 
-- `marketplace_resource_users_list` GET `/api/marketplace-resource-users/` — List resource users (5 query params)
-- `marketplace_resource_users_count` HEAD `/api/marketplace-resource-users/` — List resource users (5 query params)
-- `marketplace_resource_users_create` POST `/api/marketplace-resource-users/` — Link a user to a resource (request body)
-- `marketplace_resource_users_retrieve` GET `/api/marketplace-resource-users/{uuid}/` — Retrieve a resource-user link (path: uuid)
-- `marketplace_resource_users_destroy` DELETE `/api/marketplace-resource-users/{uuid}/` — Unlink a user from a resource (path: uuid)
+- `marketplace_resource_projects_list` GET `/api/marketplace-resource-projects/` (3 query params)
+- `marketplace_resource_projects_count` HEAD `/api/marketplace-resource-projects/` — Get number of items in the collection matching the request parameters (3 query params)
+- `marketplace_resource_projects_create` POST `/api/marketplace-resource-projects/` (request body)
+- `marketplace_resource_projects_retrieve` GET `/api/marketplace-resource-projects/{uuid}/` (path: uuid)
+- `marketplace_resource_projects_update` PUT `/api/marketplace-resource-projects/{uuid}/` (path: uuid | request body)
+- `marketplace_resource_projects_partial_update` PATCH `/api/marketplace-resource-projects/{uuid}/` (path: uuid | request body)
+- `marketplace_resource_projects_destroy` DELETE `/api/marketplace-resource-projects/{uuid}/` (path: uuid)
+- `marketplace_resource_projects_add_user` POST `/api/marketplace-resource-projects/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
+- `marketplace_resource_projects_delete_user` POST `/api/marketplace-resource-projects/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
+- `marketplace_resource_projects_list_users_list` GET `/api/marketplace-resource-projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `marketplace_resource_projects_update_user` POST `/api/marketplace-resource-projects/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## marketplace-resources
 Module: `waldur_api_client.api.marketplace_resources`
@@ -1604,11 +1640,14 @@ Module: `waldur_api_client.api.marketplace_resources`
 - `marketplace_resources_retrieve` GET `/api/marketplace-resources/{uuid}/` — Retrieve a consumer resource (path: uuid | 1 query param)
 - `marketplace_resources_update` PUT `/api/marketplace-resources/{uuid}/` — Update a consumer resource (path: uuid | request body)
 - `marketplace_resources_partial_update` PATCH `/api/marketplace-resources/{uuid}/` — Partially update a consumer resource (path: uuid | request body)
+- `marketplace_resources_add_user` POST `/api/marketplace-resources/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
+- `marketplace_resources_delete_user` POST `/api/marketplace-resources/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `marketplace_resources_details_retrieve` GET `/api/marketplace-resources/{uuid}/details/` — Get resource details (path: uuid)
 - `marketplace_resources_estimate_renewal` POST `/api/marketplace-resources/{uuid}/estimate_renewal/` — Estimate renewal cost breakdown (path: uuid | request body)
 - `marketplace_resources_glauth_users_config_retrieve` GET `/api/marketplace-resources/{uuid}/glauth_users_config/` — Get GLauth user configuration for a resource (path: uuid)
 - `marketplace_resources_history_list` GET `/api/marketplace-resources/{uuid}/history/` — Get version history (path: uuid | 45 query params)
 - `marketplace_resources_history_at_retrieve` GET `/api/marketplace-resources/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
+- `marketplace_resources_list_users_list` GET `/api/marketplace-resources/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `marketplace_resources_move_resource` POST `/api/marketplace-resources/{uuid}/move_resource/` — Move a resource to another project (path: uuid | request body)
 - `marketplace_resources_offering_retrieve` GET `/api/marketplace-resources/{uuid}/offering/` — Get offering details (path: uuid)
 - `marketplace_resources_offering_for_subresources_list` GET `/api/marketplace-resources/{uuid}/offering_for_subresources/` — List offerings for sub-resources (path: uuid)
@@ -1625,10 +1664,12 @@ Module: `waldur_api_client.api.marketplace_resources`
 - `marketplace_resources_set_slug` POST `/api/marketplace-resources/{uuid}/set_slug/` — Set resource slug (path: uuid | request body)
 - `marketplace_resources_switch_plan` POST `/api/marketplace-resources/{uuid}/switch_plan/` — Switch resource plan (path: uuid | request body)
 - `marketplace_resources_team_list` GET `/api/marketplace-resources/{uuid}/team/` — Get resource team (path: uuid | 1 query param)
+- `marketplace_resources_team_members_list` GET `/api/marketplace-resources/{uuid}/team_members/` — List team members of a resource (path: uuid | 44 query params)
 - `marketplace_resources_terminate` POST `/api/marketplace-resources/{uuid}/terminate/` — Terminate a resource (path: uuid | request body)
 - `marketplace_resources_unlink` POST `/api/marketplace-resources/{uuid}/unlink/` — Unlink a resource (staff only) (path: uuid)
 - `marketplace_resources_update_limits` POST `/api/marketplace-resources/{uuid}/update_limits/` — Update resource limits (path: uuid | request body)
 - `marketplace_resources_update_options` POST `/api/marketplace-resources/{uuid}/update_options/` — Update resource options (path: uuid | request body)
+- `marketplace_resources_update_user` POST `/api/marketplace-resources/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## marketplace-robot-accounts
 Module: `waldur_api_client.api.marketplace_robot_accounts`
@@ -3227,6 +3268,14 @@ Module: `waldur_api_client.api.reviewer_suggestions`
 - `reviewer_suggestions_destroy` DELETE `/api/reviewer-suggestions/{uuid}/` — Delete a reviewer suggestion (path: uuid)
 - `reviewer_suggestions_confirm` POST `/api/reviewer-suggestions/{uuid}/confirm/` — Confirm a reviewer suggestion (path: uuid | request body)
 - `reviewer_suggestions_reject` POST `/api/reviewer-suggestions/{uuid}/reject/` — Reject a reviewer suggestion (path: uuid | request body)
+
+## role-availabilities
+Module: `waldur_api_client.api.role_availabilities`
+
+- `role_availabilities_list` GET `/api/role-availabilities/` (4 query params)
+- `role_availabilities_count` HEAD `/api/role-availabilities/` — Get number of items in the collection matching the request parameters (4 query params)
+- `role_availabilities_retrieve` GET `/api/role-availabilities/{uuid}/` (path: uuid)
+- `role_availabilities_destroy` DELETE `/api/role-availabilities/{uuid}/` (path: uuid)
 
 ## roles
 Module: `waldur_api_client.api.roles`

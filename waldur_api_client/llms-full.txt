@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.13-dev.20260430233338
+# Version: 8.0.8-rc.13-dev.20260501225623
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -6774,6 +6774,56 @@ Path parameters:
   - id — A unique integer value identifying this user role.
 
 ============================================================
+## marketplace-offering-profiles  (module: waldur_api_client.api.marketplace_offering_profiles)
+============================================================
+
+### marketplace_offering_profiles_list
+GET /api/marketplace-offering-profiles/
+
+### marketplace_offering_profiles_count
+HEAD /api/marketplace-offering-profiles/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### marketplace_offering_profiles_create
+POST /api/marketplace-offering-profiles/
+Request body: yes
+
+### marketplace_offering_profiles_retrieve
+GET /api/marketplace-offering-profiles/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_offering_profiles_update
+PUT /api/marketplace-offering-profiles/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_profiles_partial_update
+PATCH /api/marketplace-offering-profiles/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_profiles_destroy
+DELETE /api/marketplace-offering-profiles/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_offering_profiles_add_role
+POST /api/marketplace-offering-profiles/{uuid}/add_role/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_profiles_remove_role
+POST /api/marketplace-offering-profiles/{uuid}/remove_role/
+Path parameters:
+  - uuid
+Request body: yes
+
+============================================================
 ## marketplace-offering-referrals  (module: waldur_api_client.api.marketplace_offering_referrals)
 ============================================================
 
@@ -6797,6 +6847,52 @@ Query parameters (2):
 GET /api/marketplace-offering-referrals/{uuid}/
 Summary: Retrieve a specific Datacite referral
 Description: Returns the details of a single Datacite referral record, identified by its UUID. Details include the related identifier (PID), the type of relationship, and metadata about the related work.
+Path parameters:
+  - uuid
+
+============================================================
+## marketplace-offering-roles  (module: waldur_api_client.api.marketplace_offering_roles)
+============================================================
+
+### marketplace_offering_roles_list
+GET /api/marketplace-offering-roles/
+Query parameters (3):
+  - content_type
+  - name
+  - offering_uuid
+
+### marketplace_offering_roles_count
+HEAD /api/marketplace-offering-roles/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - content_type
+  - name
+  - offering_uuid
+
+### marketplace_offering_roles_create
+POST /api/marketplace-offering-roles/
+Request body: yes
+
+### marketplace_offering_roles_retrieve
+GET /api/marketplace-offering-roles/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_offering_roles_update
+PUT /api/marketplace-offering-roles/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_roles_partial_update
+PATCH /api/marketplace-offering-roles/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_roles_destroy
+DELETE /api/marketplace-offering-roles/{uuid}/
 Path parameters:
   - uuid
 
@@ -6956,54 +7052,6 @@ Summary: Retrieve a checklist completion
 Description: Returns the details of a specific checklist completion for an offering user.
 Path parameters:
   - id — A unique integer value identifying this Checklist completion.
-
-============================================================
-## marketplace-offering-user-roles  (module: waldur_api_client.api.marketplace_offering_user_roles)
-============================================================
-
-### marketplace_offering_user_roles_list
-GET /api/marketplace-offering-user-roles/
-Query parameters (4):
-  - offering
-  - offering_slug — Multiple values may be separated by commas.
-  - offering_uuid — Multiple values may be separated by commas.
-  - parent_offering_uuid
-
-### marketplace_offering_user_roles_count
-HEAD /api/marketplace-offering-user-roles/
-Summary: Get number of items in the collection matching the request parameters
-Description: Get number of items in the collection matching the request parameters.
-Query parameters (4):
-  - offering
-  - offering_slug — Multiple values may be separated by commas.
-  - offering_uuid — Multiple values may be separated by commas.
-  - parent_offering_uuid
-
-### marketplace_offering_user_roles_create
-POST /api/marketplace-offering-user-roles/
-Request body: yes
-
-### marketplace_offering_user_roles_retrieve
-GET /api/marketplace-offering-user-roles/{uuid}/
-Path parameters:
-  - uuid
-
-### marketplace_offering_user_roles_update
-PUT /api/marketplace-offering-user-roles/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
-### marketplace_offering_user_roles_partial_update
-PATCH /api/marketplace-offering-user-roles/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
-### marketplace_offering_user_roles_destroy
-DELETE /api/marketplace-offering-user-roles/{uuid}/
-Path parameters:
-  - uuid
 
 ============================================================
 ## marketplace-offering-users  (module: waldur_api_client.api.marketplace_offering_users)
@@ -8690,6 +8738,14 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_offerings_set_profile
+POST /api/marketplace-provider-offerings/{uuid}/set_profile/
+Summary: Bind / unbind offering to a service profile
+Description: Sets the offering's `profile` FK. Pass `profile: <uuid>` to bind, or `profile: null` to unbind. Requires UPDATE_OFFERING permission on the offering's customer (service-provider owners and staff). Triggers async reconciliation of RoleAvailability rows on this offering against the profile's role ca...
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_offerings_state_counters_retrieve
 GET /api/marketplace-provider-offerings/{uuid}/state_counters/
 Summary: Get offering resource and user state counters
@@ -8909,6 +8965,103 @@ Path parameters:
 Query parameters (2):
   - field
   - username (required) — Username of the user to check.
+
+============================================================
+## marketplace-provider-resource-projects  (module: waldur_api_client.api.marketplace_provider_resource_projects)
+============================================================
+
+### marketplace_provider_resource_projects_list
+GET /api/marketplace-provider-resource-projects/
+Query parameters (3):
+  - name
+  - resource — Resource URL
+  - resource_uuid — Resource UUID
+
+### marketplace_provider_resource_projects_count
+HEAD /api/marketplace-provider-resource-projects/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - name
+  - resource — Resource URL
+  - resource_uuid — Resource UUID
+
+### marketplace_provider_resource_projects_retrieve
+GET /api/marketplace-provider-resource-projects/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_provider_resource_projects_update
+PUT /api/marketplace-provider-resource-projects/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resource_projects_partial_update
+PATCH /api/marketplace-provider-resource-projects/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resource_projects_add_user
+POST /api/marketplace-provider-resource-projects/{uuid}/add_user/
+Summary: Grant a role to a user
+Description: Assigns a specific role to a user within the current scope. An optional expiration time for the role can be set.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resource_projects_delete_user
+POST /api/marketplace-provider-resource-projects/{uuid}/delete_user/
+Summary: Revoke a role from a user
+Description: Removes a specific role from a user within the current scope. This effectively revokes their permissions associated with that role.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resource_projects_list_users_list
+GET /api/marketplace-provider-resource-projects/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
+### marketplace_provider_resource_projects_set_backend_id
+POST /api/marketplace-provider-resource-projects/{uuid}/set_backend_id/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resource_projects_set_state_erred
+POST /api/marketplace-provider-resource-projects/{uuid}/set_state_erred/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resource_projects_set_state_ok
+POST /api/marketplace-provider-resource-projects/{uuid}/set_state_ok/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resource_projects_update_user
+POST /api/marketplace-provider-resource-projects/{uuid}/update_user/
+Summary: Update a user's role expiration
+Description: Updates the expiration time for a user's existing role in the current scope. This is useful for extending or shortening the duration of a permission. To make a role permanent, set expiration_time to null.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## marketplace-provider-resources  (module: waldur_api_client.api.marketplace_provider_resources)
@@ -9543,50 +9696,92 @@ Query parameters (2):
   - name_exact — Name (exact)
 
 ============================================================
-## marketplace-resource-users  (module: waldur_api_client.api.marketplace_resource_users)
+## marketplace-resource-projects  (module: waldur_api_client.api.marketplace_resource_projects)
 ============================================================
 
-### marketplace_resource_users_list
-GET /api/marketplace-resource-users/
-Summary: List resource users
-Description: Returns a paginated list of users associated with resources, including their roles. The list is filtered based on the permissions of the current user. Staff and support users can see all resource-user links. Other users can only see links for resources they have access to.
-Query parameters (5):
+### marketplace_resource_projects_list
+GET /api/marketplace-resource-projects/
+Query parameters (3):
+  - name
   - resource — Resource URL
   - resource_uuid — Resource UUID
-  - role_name — Role name
-  - role_uuid — Role UUID
-  - user_uuid — User UUID
 
-### marketplace_resource_users_count
-HEAD /api/marketplace-resource-users/
-Summary: List resource users
+### marketplace_resource_projects_count
+HEAD /api/marketplace-resource-projects/
+Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (5):
+Query parameters (3):
+  - name
   - resource — Resource URL
   - resource_uuid — Resource UUID
-  - role_name — Role name
-  - role_uuid — Role UUID
-  - user_uuid — User UUID
 
-### marketplace_resource_users_create
-POST /api/marketplace-resource-users/
-Summary: Link a user to a resource
-Description: Creates a new association between a user and a resource with a specific role. The user must have permission to manage users for the resource (typically service provider staff or owners).
+### marketplace_resource_projects_create
+POST /api/marketplace-resource-projects/
 Request body: yes
 
-### marketplace_resource_users_retrieve
-GET /api/marketplace-resource-users/{uuid}/
-Summary: Retrieve a resource-user link
-Description: Returns details of a specific link between a user and a resource, including their role.
+### marketplace_resource_projects_retrieve
+GET /api/marketplace-resource-projects/{uuid}/
 Path parameters:
   - uuid
 
-### marketplace_resource_users_destroy
-DELETE /api/marketplace-resource-users/{uuid}/
-Summary: Unlink a user from a resource
-Description: Removes the association between a user and a resource, effectively revoking their role on that resource. The user must have permission to manage users for the resource.
+### marketplace_resource_projects_update
+PUT /api/marketplace-resource-projects/{uuid}/
 Path parameters:
   - uuid
+Request body: yes
+
+### marketplace_resource_projects_partial_update
+PATCH /api/marketplace-resource-projects/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_projects_destroy
+DELETE /api/marketplace-resource-projects/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_resource_projects_add_user
+POST /api/marketplace-resource-projects/{uuid}/add_user/
+Summary: Grant a role to a user
+Description: Assigns a specific role to a user within the current scope. An optional expiration time for the role can be set.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_projects_delete_user
+POST /api/marketplace-resource-projects/{uuid}/delete_user/
+Summary: Revoke a role from a user
+Description: Removes a specific role from a user within the current scope. This effectively revokes their permissions associated with that role.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_projects_list_users_list
+GET /api/marketplace-resource-projects/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
+### marketplace_resource_projects_update_user
+POST /api/marketplace-resource-projects/{uuid}/update_user/
+Summary: Update a user's role expiration
+Description: Updates the expiration time for a user's existing role in the current scope. This is useful for extending or shortening the duration of a permission. To make a role permanent, set expiration_time to null.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## marketplace-resources  (module: waldur_api_client.api.marketplace_resources)
@@ -9724,6 +9919,22 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_resources_add_user
+POST /api/marketplace-resources/{uuid}/add_user/
+Summary: Grant a role to a user
+Description: Assigns a specific role to a user within the current scope. An optional expiration time for the role can be set.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resources_delete_user
+POST /api/marketplace-resources/{uuid}/delete_user/
+Summary: Revoke a role from a user
+Description: Removes a specific role from a user within the current scope. This effectively revokes their permissions associated with that role.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_resources_details_retrieve
 GET /api/marketplace-resources/{uuid}/details/
 Summary: Get resource details
@@ -9807,6 +10018,24 @@ Path parameters:
   - uuid
 Query parameters (1):
   - timestamp (required) — ISO 8601 timestamp to query the object state at
+
+### marketplace_resources_list_users_list
+GET /api/marketplace-resources/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
 
 ### marketplace_resources_move_resource
 POST /api/marketplace-resources/{uuid}/move_resource/
@@ -9931,6 +10160,58 @@ Path parameters:
 Query parameters (1):
   - has_consent — When true, return only users who have active consent for this offering.
 
+### marketplace_resources_team_members_list
+GET /api/marketplace-resources/{uuid}/team_members/
+Summary: List team members of a resource
+Description: One row per user (deduplicated) with their direct Resource role and a nested `resource_projects[]` array of their per-ResourceProject grants under this resource. Mirrors the org-level `customers/{uuid}/users/` shape so the frontend can render an expandable per-user view.
+Path parameters:
+  - uuid
+Query parameters (44):
+  - backend_id — Backend ID
+  - category_uuid — Category UUID
+  - component_count — Filter by exact number of components
+  - created — Created after
+  - created_before — Created before
+  - customer — Customer URL
+  - customer_uuid — Customer UUID
+  - downscaled — Downscaled
+  - has_terminate_date — Has termination date
+  - is_attached — Filter by attached state
+  - lexis_links_supported — LEXIS links supported
+  - limit_based — Filter by limit-based offerings
+  - limit_component_count — Filter by exact number of limit-based components
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - offering
+  - offering_billable — Offering billable
+  - offering_shared — Offering shared
+  - offering_slug — Multiple values may be separated by commas.
+  - offering_type — Offering type
+  - offering_uuid — Multiple values may be separated by commas.
+  - only_limit_based — Filter resources with only limit-based components
+  - only_usage_based — Filter resources with only usage-based components
+  - order_state — Order state
+  - parent_offering_uuid
+  - paused — Paused
+  - plan_uuid — Plan UUID
+  - project_name — Project name
+  - project_uuid — Project UUID
+  - provider_uuid — Provider UUID
+  - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
+  - resource_attributes — Resource attributes (JSON)
+  - restrict_member_access — Restrict member access
+  - runtime_state — Runtime state
+  - scope — Filter by scope URL.
+  - service_manager_uuid — Service manager UUID
+  - slug — Slug
+  - state — Resource state
+  - usage_based — Filter by usage-based offerings
+  - visible_to_providers — Include only resources visible to service providers
+  - visible_to_username — Visible to username
+
 ### marketplace_resources_terminate
 POST /api/marketplace-resources/{uuid}/terminate/
 Summary: Terminate a resource
@@ -9958,6 +10239,14 @@ Request body: yes
 POST /api/marketplace-resources/{uuid}/update_options/
 Summary: Update resource options
 Description: Updates the options of a resource. If the offering is configured to create orders for option changes, a new UPDATE order will be created. Otherwise, the options are updated directly.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resources_update_user
+POST /api/marketplace-resources/{uuid}/update_user/
+Summary: Update a user's role expiration
+Description: Updates the expiration time for a user's existing role in the current scope. This is useful for extending or shortening the duration of a permission. To make a role permanent, set expiration_time to null.
 Path parameters:
   - uuid
 Request body: yes
@@ -19805,6 +20094,38 @@ Description: Reject a reviewer suggestion.
 Path parameters:
   - uuid
 Request body: yes
+
+============================================================
+## role-availabilities  (module: waldur_api_client.api.role_availabilities)
+============================================================
+
+### role_availabilities_list
+GET /api/role-availabilities/
+Query parameters (4):
+  - object_id — Scope object id
+  - role_name — Role name contains
+  - role_uuid — Role UUID
+  - scope_type — Scope content type (e.g. 'offering', 'customer')
+
+### role_availabilities_count
+HEAD /api/role-availabilities/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - object_id — Scope object id
+  - role_name — Role name contains
+  - role_uuid — Role UUID
+  - scope_type — Scope content type (e.g. 'offering', 'customer')
+
+### role_availabilities_retrieve
+GET /api/role-availabilities/{uuid}/
+Path parameters:
+  - uuid
+
+### role_availabilities_destroy
+DELETE /api/role-availabilities/{uuid}/
+Path parameters:
+  - uuid
 
 ============================================================
 ## roles  (module: waldur_api_client.api.roles)
