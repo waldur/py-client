@@ -1,40 +1,36 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="TestConnectionResponse")
+T = TypeVar("T", bound="RequestTypeReorderItemRequest")
 
 
 @_attrs_define
-class TestConnectionResponse:
+class RequestTypeReorderItemRequest:
     """
     Attributes:
-        status (str):
-        groups_count (int):
-        groups (list[str]):
+        uuid (UUID):
+        order (int):
     """
 
-    status: str
-    groups_count: int
-    groups: list[str]
+    uuid: UUID
+    order: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        status = self.status
+        uuid = str(self.uuid)
 
-        groups_count = self.groups_count
-
-        groups = self.groups
+        order = self.order
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "status": status,
-                "groups_count": groups_count,
-                "groups": groups,
+                "uuid": uuid,
+                "order": order,
             }
         )
 
@@ -43,20 +39,17 @@ class TestConnectionResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        status = d.pop("status")
+        uuid = UUID(d.pop("uuid"))
 
-        groups_count = d.pop("groups_count")
+        order = d.pop("order")
 
-        groups = cast(list[str], d.pop("groups"))
-
-        test_connection_response = cls(
-            status=status,
-            groups_count=groups_count,
-            groups=groups,
+        request_type_reorder_item_request = cls(
+            uuid=uuid,
+            order=order,
         )
 
-        test_connection_response.additional_properties = d
-        return test_connection_response
+        request_type_reorder_item_request.additional_properties = d
+        return request_type_reorder_item_request
 
     @property
     def additional_keys(self) -> list[str]:

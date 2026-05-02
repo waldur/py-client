@@ -1,40 +1,37 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="SyncedGroup")
+if TYPE_CHECKING:
+    from ..models.request_type_reorder_item_request import RequestTypeReorderItemRequest
+
+
+T = TypeVar("T", bound="RequestTypeReorderRequest")
 
 
 @_attrs_define
-class SyncedGroup:
+class RequestTypeReorderRequest:
     """
     Attributes:
-        local_name (str):
-        remote_name (str):
-        backend_id (str):
+        items (list['RequestTypeReorderItemRequest']):
     """
 
-    local_name: str
-    remote_name: str
-    backend_id: str
+    items: list["RequestTypeReorderItemRequest"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        local_name = self.local_name
-
-        remote_name = self.remote_name
-
-        backend_id = self.backend_id
+        items = []
+        for items_item_data in self.items:
+            items_item = items_item_data.to_dict()
+            items.append(items_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "local_name": local_name,
-                "remote_name": remote_name,
-                "backend_id": backend_id,
+                "items": items,
             }
         )
 
@@ -42,21 +39,22 @@ class SyncedGroup:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.request_type_reorder_item_request import RequestTypeReorderItemRequest
+
         d = dict(src_dict)
-        local_name = d.pop("local_name")
+        items = []
+        _items = d.pop("items")
+        for items_item_data in _items:
+            items_item = RequestTypeReorderItemRequest.from_dict(items_item_data)
 
-        remote_name = d.pop("remote_name")
+            items.append(items_item)
 
-        backend_id = d.pop("backend_id")
-
-        synced_group = cls(
-            local_name=local_name,
-            remote_name=remote_name,
-            backend_id=backend_id,
+        request_type_reorder_request = cls(
+            items=items,
         )
 
-        synced_group.additional_properties = d
-        return synced_group
+        request_type_reorder_request.additional_properties = d
+        return request_type_reorder_request
 
     @property
     def additional_keys(self) -> list[str]:
