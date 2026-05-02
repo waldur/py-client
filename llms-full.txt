@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.13-dev.20260502162841
+# Version: 8.0.8-rc.13-dev.20260502233338
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -14238,6 +14238,31 @@ Path parameters:
   - uuid
 
 ============================================================
+## openstack-hypervisor-inventories  (module: waldur_api_client.api.openstack_hypervisor_inventories)
+============================================================
+
+### openstack_hypervisor_inventories_list
+GET /api/openstack-hypervisor-inventories/
+Query parameters (3):
+  - hypervisor_uuid
+  - resource_class
+  - settings_uuid
+
+### openstack_hypervisor_inventories_count
+HEAD /api/openstack-hypervisor-inventories/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - hypervisor_uuid
+  - resource_class
+  - settings_uuid
+
+### openstack_hypervisor_inventories_retrieve
+GET /api/openstack-hypervisor-inventories/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## openstack-hypervisors  (module: waldur_api_client.api.openstack_hypervisors)
 ============================================================
 
@@ -14264,6 +14289,26 @@ Query parameters (7):
   - settings_uuid — Settings UUID
   - state
   - status
+
+### openstack_hypervisors_allocation_candidates_retrieve
+GET /api/openstack-hypervisors/allocation_candidates/
+Summary: Pre-flight allocation candidates
+Description: Ask Placement which compute hosts could currently satisfy a request for the given resources (and required traits). Useful as a pre-flight check before placing an order on a fully-booked cloud. Returns 0 candidates when nothing fits, with the same provider_summaries Placement returns for diagnosti...
+Query parameters (4):
+  - limit — Cap on returned candidates (default 10).
+  - required — e.g. HW_CPU_X86_AVX2,STORAGE_DISK_SSD
+  - resources (required) — e.g. VCPU:4,MEMORY_MB:8192,DISK_GB:10
+  - settings_uuid (required)
+
+### openstack_hypervisors_allocation_candidates_count
+HEAD /api/openstack-hypervisors/allocation_candidates/
+Summary: Pre-flight allocation candidates
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - limit — Cap on returned candidates (default 10).
+  - required — e.g. HW_CPU_X86_AVX2,STORAGE_DISK_SSD
+  - resources (required) — e.g. VCPU:4,MEMORY_MB:8192,DISK_GB:10
+  - settings_uuid (required)
 
 ### openstack_hypervisors_summary_retrieve
 GET /api/openstack-hypervisors/summary/

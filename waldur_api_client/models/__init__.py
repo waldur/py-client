@@ -60,6 +60,11 @@ from .aggregated_usage_trend import AggregatedUsageTrend
 from .agreement_type_enum import AgreementTypeEnum
 from .aiassistantenabledroles_enum import AIASSISTANTENABLEDROLESEnum
 from .allocation import Allocation
+from .allocation_candidates_response import AllocationCandidatesResponse
+from .allocation_candidates_response_provider_summaries import AllocationCandidatesResponseProviderSummaries
+from .allocation_candidates_response_provider_summaries_additional_property import (
+    AllocationCandidatesResponseProviderSummariesAdditionalProperty,
+)
 from .allocation_field_enum import AllocationFieldEnum
 from .allocation_marketplace_offering_plugin_options_type_0 import AllocationMarketplaceOfferingPluginOptionsType0
 from .allocation_request import AllocationRequest
@@ -711,6 +716,7 @@ from .growth_period_enum import GrowthPeriodEnum
 from .guest_os_enum import GuestOsEnum
 from .guest_power_state_enum import GuestPowerStateEnum
 from .hypervisor import Hypervisor
+from .hypervisor_inventory import HypervisorInventory
 from .hypervisor_summary import HypervisorSummary
 from .identity_bridge_allowed_fields import IdentityBridgeAllowedFields
 from .identity_bridge_remove_request import IdentityBridgeRemoveRequest
@@ -2444,6 +2450,9 @@ __all__ = (
     "AgreementTypeEnum",
     "AIASSISTANTENABLEDROLESEnum",
     "Allocation",
+    "AllocationCandidatesResponse",
+    "AllocationCandidatesResponseProviderSummaries",
+    "AllocationCandidatesResponseProviderSummariesAdditionalProperty",
     "AllocationFieldEnum",
     "AllocationMarketplaceOfferingPluginOptionsType0",
     "AllocationRequest",
@@ -3073,6 +3082,7 @@ __all__ = (
     "GuestOsEnum",
     "GuestPowerStateEnum",
     "Hypervisor",
+    "HypervisorInventory",
     "HypervisorSummary",
     "IdentityBridgeAllowedFields",
     "IdentityBridgeRemoveRequest",

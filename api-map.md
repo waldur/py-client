@@ -2340,11 +2340,20 @@ Module: `waldur_api_client.api.openstack_health_monitors`
 - `openstack_health_monitors_destroy` DELETE `/api/openstack-health-monitors/{uuid}/` — Delete health monitor (path: uuid)
 - `openstack_health_monitors_pull` POST `/api/openstack-health-monitors/{uuid}/pull/` — Pull health monitor (path: uuid)
 
+## openstack-hypervisor-inventories
+Module: `waldur_api_client.api.openstack_hypervisor_inventories`
+
+- `openstack_hypervisor_inventories_list` GET `/api/openstack-hypervisor-inventories/` (3 query params)
+- `openstack_hypervisor_inventories_count` HEAD `/api/openstack-hypervisor-inventories/` — Get number of items in the collection matching the request parameters (3 query params)
+- `openstack_hypervisor_inventories_retrieve` GET `/api/openstack-hypervisor-inventories/{uuid}/` (path: uuid)
+
 ## openstack-hypervisors
 Module: `waldur_api_client.api.openstack_hypervisors`
 
 - `openstack_hypervisors_list` GET `/api/openstack-hypervisors/` (7 query params)
 - `openstack_hypervisors_count` HEAD `/api/openstack-hypervisors/` — Get number of items in the collection matching the request parameters (7 query params)
+- `openstack_hypervisors_allocation_candidates_retrieve` GET `/api/openstack-hypervisors/allocation_candidates/` — Pre-flight allocation candidates (4 query params)
+- `openstack_hypervisors_allocation_candidates_count` HEAD `/api/openstack-hypervisors/allocation_candidates/` — Pre-flight allocation candidates (4 query params)
 - `openstack_hypervisors_summary_retrieve` GET `/api/openstack-hypervisors/summary/` — Get hypervisor summary statistics (1 query param)
 - `openstack_hypervisors_summary_count` HEAD `/api/openstack-hypervisors/summary/` — Get hypervisor summary statistics (1 query param)
 - `openstack_hypervisors_retrieve` GET `/api/openstack-hypervisors/{uuid}/` (path: uuid)

@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.0.8-rc.13-dev.20260502162841).
+> Auto-generated Python SDK for the Waldur API (version 8.0.8-rc.13-dev.20260502233338).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -226,7 +226,8 @@ waldur_api_client/
 - **openstack-flavors** (5 endpoints)
 - **openstack-floating-ips** (11 endpoints)
 - **openstack-health-monitors** (8 endpoints)
-- **openstack-hypervisors** (5 endpoints)
+- **openstack-hypervisor-inventories** (3 endpoints)
+- **openstack-hypervisors** (7 endpoints)
 - **openstack-images** (5 endpoints)
 - **openstack-instance-availability-zones** (3 endpoints)
 - **openstack-instances** (22 endpoints)
