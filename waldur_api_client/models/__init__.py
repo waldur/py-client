@@ -73,6 +73,19 @@ from .allocation_set_limits_request import AllocationSetLimitsRequest
 from .allocation_time_enum import AllocationTimeEnum
 from .allocation_user_usage import AllocationUserUsage
 from .amount_range_enum import AmountRangeEnum
+from .anonymous_chat_budget_snapshot import AnonymousChatBudgetSnapshot
+from .anonymous_chat_click_request_request import AnonymousChatClickRequestRequest
+from .anonymous_chat_feedback import AnonymousChatFeedback
+from .anonymous_chat_feedback_o_enum import AnonymousChatFeedbackOEnum
+from .anonymous_chat_feedback_request_request import AnonymousChatFeedbackRequestRequest
+from .anonymous_chat_interaction import AnonymousChatInteraction
+from .anonymous_chat_interaction_o_enum import AnonymousChatInteractionOEnum
+from .anonymous_chat_kpi_response import AnonymousChatKpiResponse
+from .anonymous_chat_kpi_response_daily_volume_item import AnonymousChatKpiResponseDailyVolumeItem
+from .anonymous_chat_kpi_response_llm_intent_distribution import AnonymousChatKpiResponseLlmIntentDistribution
+from .anonymous_chat_kpi_response_severity_by_day import AnonymousChatKpiResponseSeverityByDay
+from .anonymous_chat_stream_request_request import AnonymousChatStreamRequestRequest
+from .anonymous_chat_user_aggregate import AnonymousChatUserAggregate
 from .answer import Answer
 from .answer_submit_request import AnswerSubmitRequest
 from .answer_submit_response import AnswerSubmitResponse
@@ -2464,6 +2477,19 @@ __all__ = (
     "AllocationTimeEnum",
     "AllocationUserUsage",
     "AmountRangeEnum",
+    "AnonymousChatBudgetSnapshot",
+    "AnonymousChatClickRequestRequest",
+    "AnonymousChatFeedback",
+    "AnonymousChatFeedbackOEnum",
+    "AnonymousChatFeedbackRequestRequest",
+    "AnonymousChatInteraction",
+    "AnonymousChatInteractionOEnum",
+    "AnonymousChatKpiResponse",
+    "AnonymousChatKpiResponseDailyVolumeItem",
+    "AnonymousChatKpiResponseLlmIntentDistribution",
+    "AnonymousChatKpiResponseSeverityByDay",
+    "AnonymousChatStreamRequestRequest",
+    "AnonymousChatUserAggregate",
     "Answer",
     "AnswerSubmitRequest",
     "AnswerSubmitResponse",

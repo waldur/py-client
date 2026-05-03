@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.13-dev.20260503140318
+# Version: 8.0.8-rc.13-dev.20260503233336
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -667,6 +667,102 @@ Path parameters:
 GET /api/affiliated-organizations/{uuid}/stats/
 Summary: Get affiliated organization statistics
 Description: Returns permission-filtered statistics for this affiliated organization.
+Path parameters:
+  - uuid
+
+============================================================
+## anonymous-chat-feedbacks  (module: waldur_api_client.api.anonymous_chat_feedbacks)
+============================================================
+
+### anonymous_chat_feedbacks_list
+GET /api/anonymous-chat-feedbacks/
+Query parameters (6):
+  - category
+  - has_comment
+  - o — Ordering
+  - score
+  - submitted_from
+  - submitted_to
+
+### anonymous_chat_feedbacks_retrieve
+GET /api/anonymous-chat-feedbacks/{interaction_uuid}/
+Path parameters:
+  - interaction_uuid
+
+============================================================
+## anonymous-chat-interactions  (module: waldur_api_client.api.anonymous_chat_interactions)
+============================================================
+
+### anonymous_chat_interactions_list
+GET /api/anonymous-chat-interactions/
+Query parameters (8):
+  - created_from
+  - created_to
+  - has_negative_feedback
+  - is_flagged
+  - o — Ordering
+  - session_id
+  - severity
+  - user_slug
+
+### anonymous_chat_interactions_budget_retrieve
+GET /api/anonymous-chat-interactions/budget/
+Summary: Today's global tenant budget snapshot
+Description: Returns the site-wide token + request usage accumulated since 00:00 UTC today and the configured daily caps. Powers the budget gauges card on the staff analytics dashboard.
+
+### anonymous_chat_interactions_by_session_list
+GET /api/anonymous-chat-interactions/by-session/{session_id}/
+Summary: Full transcript for one anonymous session
+Description: Returns the ordered list of interactions belonging to the given ``session_id``. Use this to read a conversation as a transcript.
+Path parameters:
+  - session_id
+Query parameters (8):
+  - created_from
+  - created_to
+  - has_negative_feedback
+  - is_flagged
+  - o — Ordering
+  - session_id
+  - severity
+  - user_slug
+
+### anonymous_chat_interactions_by_user_aggregate
+GET /api/anonymous-chat-interactions/by-user/
+Summary: Aggregate user list (no slug)
+Description: Returns one row per user_slug with aggregate counters. Powers the staff Users page in the admin analytics.
+Query parameters (8):
+  - created_from
+  - created_to
+  - has_negative_feedback
+  - is_flagged
+  - o — Ordering
+  - session_id
+  - severity
+  - user_slug
+
+### anonymous_chat_interactions_by_user_list
+GET /api/anonymous-chat-interactions/by-user/{user_slug}/
+Summary: All sessions for one pseudonymous user
+Description: Returns interactions sharing a ``user_slug`` (Scrypt of originating IP) — across however many sessions that anon user opened, ordered chronologically.
+Path parameters:
+  - user_slug
+Query parameters (8):
+  - created_from
+  - created_to
+  - has_negative_feedback
+  - is_flagged
+  - o — Ordering
+  - session_id
+  - severity
+  - user_slug
+
+### anonymous_chat_interactions_kpi_retrieve
+GET /api/anonymous-chat-interactions/kpi/
+Summary: Aggregate KPI roll-up
+Description: Returns aggregate counters and rates for the anonymous chat flow. Filters are honoured (date range etc.) so the same parameters work as on the list endpoint.
+
+### anonymous_chat_interactions_retrieve
+GET /api/anonymous-chat-interactions/{uuid}/
 Path parameters:
   - uuid
 
@@ -6049,6 +6145,24 @@ Summary: Delete a category help article
 Description: Deletes a help article. Requires staff permissions.
 Path parameters:
   - id — A unique integer value identifying this category help article.
+
+============================================================
+## marketplace-chat  (module: waldur_api_client.api.marketplace_chat)
+============================================================
+
+### marketplace_chat_click
+POST /api/marketplace-chat/click/
+Request body: yes
+
+### marketplace_chat_feedback
+POST /api/marketplace-chat/feedback/
+Request body: yes
+
+### marketplace_chat_stream
+POST /api/marketplace-chat/stream/
+Summary: Anonymous chat streaming endpoint
+Description: Anonymous chat streaming endpoint. Returns NDJSON with one assistant content block per line. Final `m` frame carries input/output token counts.
+Request body: yes
 
 ============================================================
 ## marketplace-component-usage-monthly  (module: waldur_api_client.api.marketplace_component_usage_monthly)

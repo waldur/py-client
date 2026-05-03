@@ -107,6 +107,23 @@ Module: `waldur_api_client.api.affiliated_organizations`
 - `affiliated_organizations_destroy` DELETE `/api/affiliated-organizations/{uuid}/` (path: uuid)
 - `affiliated_organizations_stats_retrieve` GET `/api/affiliated-organizations/{uuid}/stats/` — Get affiliated organization statistics (path: uuid)
 
+## anonymous-chat-feedbacks
+Module: `waldur_api_client.api.anonymous_chat_feedbacks`
+
+- `anonymous_chat_feedbacks_list` GET `/api/anonymous-chat-feedbacks/` (6 query params)
+- `anonymous_chat_feedbacks_retrieve` GET `/api/anonymous-chat-feedbacks/{interaction_uuid}/` (path: interaction_uuid)
+
+## anonymous-chat-interactions
+Module: `waldur_api_client.api.anonymous_chat_interactions`
+
+- `anonymous_chat_interactions_list` GET `/api/anonymous-chat-interactions/` (8 query params)
+- `anonymous_chat_interactions_budget_retrieve` GET `/api/anonymous-chat-interactions/budget/` — Today's global tenant budget snapshot (no params)
+- `anonymous_chat_interactions_by_session_list` GET `/api/anonymous-chat-interactions/by-session/{session_id}/` — Full transcript for one anonymous session (path: session_id | 8 query params)
+- `anonymous_chat_interactions_by_user_aggregate` GET `/api/anonymous-chat-interactions/by-user/` — Aggregate user list (no slug) (8 query params)
+- `anonymous_chat_interactions_by_user_list` GET `/api/anonymous-chat-interactions/by-user/{user_slug}/` — All sessions for one pseudonymous user (path: user_slug | 8 query params)
+- `anonymous_chat_interactions_kpi_retrieve` GET `/api/anonymous-chat-interactions/kpi/` — Aggregate KPI roll-up (no params)
+- `anonymous_chat_interactions_retrieve` GET `/api/anonymous-chat-interactions/{uuid}/` (path: uuid)
+
 ## api-auth
 Module: `waldur_api_client.api.api_auth`
 
@@ -1120,6 +1137,13 @@ Module: `waldur_api_client.api.marketplace_category_help_articles`
 - `marketplace_category_help_articles_update` PUT `/api/marketplace-category-help-articles/{id}/` — Update a category help article (path: id | request body)
 - `marketplace_category_help_articles_partial_update` PATCH `/api/marketplace-category-help-articles/{id}/` — Partially update a category help article (path: id | request body)
 - `marketplace_category_help_articles_destroy` DELETE `/api/marketplace-category-help-articles/{id}/` — Delete a category help article (path: id)
+
+## marketplace-chat
+Module: `waldur_api_client.api.marketplace_chat`
+
+- `marketplace_chat_click` POST `/api/marketplace-chat/click/` (request body)
+- `marketplace_chat_feedback` POST `/api/marketplace-chat/feedback/` (request body)
+- `marketplace_chat_stream` POST `/api/marketplace-chat/stream/` — Anonymous chat streaming endpoint (request body)
 
 ## marketplace-component-usage-monthly
 Module: `waldur_api_client.api.marketplace_component_usage_monthly`
