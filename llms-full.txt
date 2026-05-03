@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.13-dev.20260502233338
+# Version: 8.0.8-rc.13-dev.20260503140318
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9193,6 +9193,22 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_resources_add_user
+POST /api/marketplace-provider-resources/{uuid}/add_user/
+Summary: Grant a role to a user
+Description: Assigns a specific role to a user within the current scope. An optional expiration time for the role can be set.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resources_delete_user
+POST /api/marketplace-provider-resources/{uuid}/delete_user/
+Summary: Revoke a role from a user
+Description: Removes a specific role from a user within the current scope. This effectively revokes their permissions associated with that role.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_resources_details_retrieve
 GET /api/marketplace-provider-resources/{uuid}/details/
 Summary: Get resource details
@@ -9269,6 +9285,24 @@ Path parameters:
   - uuid
 Query parameters (1):
   - timestamp (required) — ISO 8601 timestamp to query the object state at
+
+### marketplace_provider_resources_list_users_list
+GET /api/marketplace-provider-resources/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
 
 ### marketplace_provider_resources_move_resource
 POST /api/marketplace-provider-resources/{uuid}/move_resource/
@@ -9473,6 +9507,14 @@ Request body: yes
 POST /api/marketplace-provider-resources/{uuid}/update_options_direct/
 Summary: Update resource options directly
 Description: Allows a service provider to directly update the options of a resource without creating an order. This is typically used for administrative changes or backend synchronization.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resources_update_user
+POST /api/marketplace-provider-resources/{uuid}/update_user/
+Summary: Update a user's role expiration
+Description: Updates the expiration time for a user's existing role in the current scope. This is useful for extending or shortening the duration of a permission. To make a role permanent, set expiration_time to null.
 Path parameters:
   - uuid
 Request body: yes
@@ -14337,7 +14379,8 @@ Path parameters:
 GET /api/openstack-images/
 Summary: List images
 Description: Get a list of available VM instance images.
-Query parameters (8):
+Query parameters (9):
+  - is_rescue_image — Filter to images usable as Nova rescue images.
   - name — Name
   - name_exact — Name (exact)
   - offering_uuid — Offering UUID
@@ -14351,7 +14394,8 @@ Query parameters (8):
 HEAD /api/openstack-images/
 Summary: List images
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (8):
+Query parameters (9):
+  - is_rescue_image — Filter to images usable as Nova rescue images.
   - name — Name
   - name_exact — Name (exact)
   - offering_uuid — Offering UUID
@@ -14542,6 +14586,13 @@ Description: Get a list of instance floating IPs
 Path parameters:
   - uuid
 
+### openstack_instances_placement_allocations_list
+GET /api/openstack-instances/{uuid}/placement_allocations/
+Summary: Get Placement allocations for the instance
+Description: Return what the OpenStack Placement service records as currently allocated to this instance, broken down by resource provider. Useful for diagnostics — especially for non-classic resources (VGPU, PCI_DEVICE, custom classes) that the flavor alone does not describe. Returns an empty list when Place...
+Path parameters:
+  - uuid
+
 ### openstack_instances_ports_list
 GET /api/openstack-instances/{uuid}/ports/
 Summary: List instance ports
@@ -14555,6 +14606,14 @@ Summary: Synchronize resource state
 Description: Schedule an asynchronous pull operation to synchronize resource state from the backend. Returns 202 if the pull was scheduled successfully, or 409 if the pull operation is not implemented for this resource type.
 Path parameters:
   - uuid
+
+### openstack_instances_rescue
+POST /api/openstack-instances/{uuid}/rescue/
+Summary: Rescue instance
+Description: Boot the instance from a separate rescue image while keeping the original disk attached. Volume-backed instances require an explicit rescue_image with hw_rescue_device or hw_rescue_bus set.
+Path parameters:
+  - uuid
+Request body: yes
 
 ### openstack_instances_restart
 POST /api/openstack-instances/{uuid}/restart/
@@ -14598,6 +14657,13 @@ Summary: Unlink resource
 Description: Delete resource from the database without scheduling operations on backend
         and without checking current state of the resource. It is intended to be used
         for removing resource stuck in transitioning state.
+Path parameters:
+  - uuid
+
+### openstack_instances_unrescue
+POST /api/openstack-instances/{uuid}/unrescue/
+Summary: Unrescue instance
+Description: Restore the instance from rescue mode.
 Path parameters:
   - uuid
 

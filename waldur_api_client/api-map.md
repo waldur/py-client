@@ -1546,10 +1546,13 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_retrieve` GET `/api/marketplace-provider-resources/{uuid}/` — Retrieve a provider resource (path: uuid | 1 query param)
 - `marketplace_provider_resources_update` PUT `/api/marketplace-provider-resources/{uuid}/` — Update a provider resource (path: uuid | request body)
 - `marketplace_provider_resources_partial_update` PATCH `/api/marketplace-provider-resources/{uuid}/` — Partially update a provider resource (path: uuid | request body)
+- `marketplace_provider_resources_add_user` POST `/api/marketplace-provider-resources/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
+- `marketplace_provider_resources_delete_user` POST `/api/marketplace-provider-resources/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `marketplace_provider_resources_details_retrieve` GET `/api/marketplace-provider-resources/{uuid}/details/` — Get resource details (path: uuid)
 - `marketplace_provider_resources_glauth_users_config_retrieve` GET `/api/marketplace-provider-resources/{uuid}/glauth_users_config/` — Get GLauth user configuration for a resource (path: uuid)
 - `marketplace_provider_resources_history_list` GET `/api/marketplace-provider-resources/{uuid}/history/` — Get version history (path: uuid | 45 query params)
 - `marketplace_provider_resources_history_at_retrieve` GET `/api/marketplace-provider-resources/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
+- `marketplace_provider_resources_list_users_list` GET `/api/marketplace-provider-resources/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `marketplace_provider_resources_move_resource` POST `/api/marketplace-provider-resources/{uuid}/move_resource/` — Move a resource to another project (path: uuid | request body)
 - `marketplace_provider_resources_offering_retrieve` GET `/api/marketplace-provider-resources/{uuid}/offering/` — Get offering details (path: uuid)
 - `marketplace_provider_resources_offering_for_subresources_list` GET `/api/marketplace-provider-resources/{uuid}/offering_for_subresources/` — List offerings for sub-resources (path: uuid)
@@ -1577,6 +1580,7 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_unlink` POST `/api/marketplace-provider-resources/{uuid}/unlink/` — Unlink a resource (staff only) (path: uuid)
 - `marketplace_provider_resources_update_options` POST `/api/marketplace-provider-resources/{uuid}/update_options/` — Update resource options (path: uuid | request body)
 - `marketplace_provider_resources_update_options_direct` POST `/api/marketplace-provider-resources/{uuid}/update_options_direct/` — Update resource options directly (path: uuid | request body)
+- `marketplace_provider_resources_update_user` POST `/api/marketplace-provider-resources/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## marketplace-public-api
 Module: `waldur_api_client.api.marketplace_public_api`
@@ -2361,8 +2365,8 @@ Module: `waldur_api_client.api.openstack_hypervisors`
 ## openstack-images
 Module: `waldur_api_client.api.openstack_images`
 
-- `openstack_images_list` GET `/api/openstack-images/` — List images (8 query params)
-- `openstack_images_count` HEAD `/api/openstack-images/` — List images (8 query params)
+- `openstack_images_list` GET `/api/openstack-images/` — List images (9 query params)
+- `openstack_images_count` HEAD `/api/openstack-images/` — List images (9 query params)
 - `openstack_images_usage_stats_retrieve` GET `/api/openstack-images/usage_stats/` — Get image usage statistics (no params)
 - `openstack_images_usage_stats_count` HEAD `/api/openstack-images/usage_stats/` — Get image usage statistics (no params)
 - `openstack_images_retrieve` GET `/api/openstack-images/{uuid}/` — Get image details (path: uuid)
@@ -2387,14 +2391,17 @@ Module: `waldur_api_client.api.openstack_instances`
 - `openstack_instances_console_retrieve` GET `/api/openstack-instances/{uuid}/console/` — Get console URL (path: uuid)
 - `openstack_instances_console_log_retrieve` GET `/api/openstack-instances/{uuid}/console_log/` — Get console log (path: uuid | 1 query param)
 - `openstack_instances_floating_ips_list` GET `/api/openstack-instances/{uuid}/floating_ips/` — List instance floating IPs (path: uuid)
+- `openstack_instances_placement_allocations_list` GET `/api/openstack-instances/{uuid}/placement_allocations/` — Get Placement allocations for the instance (path: uuid)
 - `openstack_instances_ports_list` GET `/api/openstack-instances/{uuid}/ports/` — List instance ports (path: uuid)
 - `openstack_instances_pull` POST `/api/openstack-instances/{uuid}/pull/` — Synchronize resource state (path: uuid)
+- `openstack_instances_rescue` POST `/api/openstack-instances/{uuid}/rescue/` — Rescue instance (path: uuid | request body)
 - `openstack_instances_restart` POST `/api/openstack-instances/{uuid}/restart/` — Restart instance (path: uuid)
 - `openstack_instances_set_erred` POST `/api/openstack-instances/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
 - `openstack_instances_set_ok` POST `/api/openstack-instances/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `openstack_instances_start` POST `/api/openstack-instances/{uuid}/start/` — Start instance (path: uuid)
 - `openstack_instances_stop` POST `/api/openstack-instances/{uuid}/stop/` — Stop instance (path: uuid)
 - `openstack_instances_unlink` POST `/api/openstack-instances/{uuid}/unlink/` — Unlink resource (path: uuid)
+- `openstack_instances_unrescue` POST `/api/openstack-instances/{uuid}/unrescue/` — Unrescue instance (path: uuid)
 - `openstack_instances_update_allowed_address_pairs` POST `/api/openstack-instances/{uuid}/update_allowed_address_pairs/` — Update instance allowed address pairs (path: uuid | request body)
 - `openstack_instances_update_floating_ips` POST `/api/openstack-instances/{uuid}/update_floating_ips/` — Update instance floating IPs (path: uuid | request body)
 - `openstack_instances_update_ports` POST `/api/openstack-instances/{uuid}/update_ports/` — Update instance ports (path: uuid | request body)

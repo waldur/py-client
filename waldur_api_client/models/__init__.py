@@ -751,6 +751,9 @@ from .import_usage_response_errors_item import ImportUsageResponseErrorsItem
 from .importable_resource import ImportableResource
 from .injection_severity_enum import InjectionSeverityEnum
 from .instance_flavor_change_request import InstanceFlavorChangeRequest
+from .instance_placement_allocation import InstancePlacementAllocation
+from .instance_placement_allocation_resources import InstancePlacementAllocationResources
+from .instance_rescue_request import InstanceRescueRequest
 from .integration_status import IntegrationStatus
 from .integration_status_details import IntegrationStatusDetails
 from .integration_status_details_o_enum import IntegrationStatusDetailsOEnum
@@ -3115,6 +3118,9 @@ __all__ = (
     "ImportUsageResponseErrorsItem",
     "InjectionSeverityEnum",
     "InstanceFlavorChangeRequest",
+    "InstancePlacementAllocation",
+    "InstancePlacementAllocationResources",
+    "InstanceRescueRequest",
     "IntegrationStatus",
     "IntegrationStatusDetails",
     "IntegrationStatusDetailsOEnum",
