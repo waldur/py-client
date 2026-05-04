@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.13-dev.20260504045817
+# Version: 8.0.8-rc.13-dev.20260504105534
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3653,6 +3653,13 @@ Description: Assigns a specific role to a user within the current scope. An opti
 Path parameters:
   - uuid
 Request body: yes
+
+### customers_components_usage_retrieve
+GET /api/customers/{uuid}/components-usage/
+Summary: Get customer resource usage statistics broken down per offering
+Description: Returns one row per (offering, component type, billing type) for all non-terminated resources within the customer. Each row's `usage` and `limit_usage` are aggregated using the offering's own `limit_period`, so quarterly offerings report quarter-to-date, yearly report year-to-date, total report l...
+Path parameters:
+  - uuid
 
 ### customers_contact
 POST /api/customers/{uuid}/contact/
@@ -13744,6 +13751,13 @@ Description: Get checklist completion status.
 Path parameters:
   - uuid
 
+### openportal_unmanaged_projects_components_usage_retrieve
+GET /api/openportal-unmanaged-projects/{uuid}/components-usage/
+Summary: Get project resource usage statistics broken down per offering
+Description: Returns one row per (offering, component type, billing type) for all non-terminated resources within the project. Each row's `usage` and `limit_usage` are aggregated using the offering's own `limit_period`, so quarterly offerings report quarter-to-date, yearly report year-to-date, total report li...
+Path parameters:
+  - uuid
+
 ### openportal_unmanaged_projects_delete_user
 POST /api/openportal-unmanaged-projects/{uuid}/delete_user/
 Summary: Revoke a role from a user
@@ -17340,6 +17354,13 @@ Query parameters (1):
 GET /api/projects/{uuid}/completion_status/
 Summary: Get checklist completion status
 Description: Get checklist completion status.
+Path parameters:
+  - uuid
+
+### projects_components_usage_retrieve
+GET /api/projects/{uuid}/components-usage/
+Summary: Get project resource usage statistics broken down per offering
+Description: Returns one row per (offering, component type, billing type) for all non-terminated resources within the project. Each row's `usage` and `limit_usage` are aggregated using the offering's own `limit_period`, so quarterly offerings report quarter-to-date, yearly report year-to-date, total report li...
 Path parameters:
   - uuid
 

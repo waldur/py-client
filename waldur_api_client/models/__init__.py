@@ -403,6 +403,7 @@ from .compliance_overview import ComplianceOverview
 from .component_multiplier_config import ComponentMultiplierConfig
 from .component_multiplier_config_request import ComponentMultiplierConfigRequest
 from .component_stats import ComponentStats
+from .component_stats_per_offering import ComponentStatsPerOffering
 from .component_usage import ComponentUsage
 from .component_usage_create_request import ComponentUsageCreateRequest
 from .component_usage_field_enum import ComponentUsageFieldEnum
@@ -421,6 +422,7 @@ from .component_user_usage_limit import ComponentUserUsageLimit
 from .component_user_usage_limit_request import ComponentUserUsageLimitRequest
 from .component_user_usage_o_enum import ComponentUserUsageOEnum
 from .components_usage_stats import ComponentsUsageStats
+from .components_usage_stats_per_offering import ComponentsUsageStatsPerOffering
 from .compute_affinities_response import ComputeAffinitiesResponse
 from .configuration_retrieve_response_200 import ConfigurationRetrieveResponse200
 from .confirm_email_request_request import ConfirmEmailRequestRequest
@@ -2802,7 +2804,9 @@ __all__ = (
     "ComponentMultiplierConfig",
     "ComponentMultiplierConfigRequest",
     "ComponentStats",
+    "ComponentStatsPerOffering",
     "ComponentsUsageStats",
+    "ComponentsUsageStatsPerOffering",
     "ComponentUsage",
     "ComponentUsageCreateRequest",
     "ComponentUsageFieldEnum",
