@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_project import ResourceProject
-from ...models.resource_project_request import ResourceProjectRequest
+from ...models.resource_project_error_message import ResourceProjectErrorMessage
+from ...models.resource_project_error_message_request import ResourceProjectErrorMessageRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ResourceProjectRequest,
+    body: ResourceProjectErrorMessageRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,11 +31,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ResourceProject:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> ResourceProjectErrorMessage:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ResourceProject.from_dict(response.json())
+        response_200 = ResourceProjectErrorMessage.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -43,7 +45,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ResourceProject]:
+) -> Response[ResourceProjectErrorMessage]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,19 +58,19 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceProjectRequest,
-) -> Response[ResourceProject]:
+    body: ResourceProjectErrorMessageRequest,
+) -> Response[ResourceProjectErrorMessage]:
     """
     Args:
         uuid (UUID):
-        body (ResourceProjectRequest):
+        body (ResourceProjectErrorMessageRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceProject]
+        Response[ResourceProjectErrorMessage]
     """
 
     kwargs = _get_kwargs(
@@ -87,19 +89,19 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceProjectRequest,
-) -> ResourceProject:
+    body: ResourceProjectErrorMessageRequest,
+) -> ResourceProjectErrorMessage:
     """
     Args:
         uuid (UUID):
-        body (ResourceProjectRequest):
+        body (ResourceProjectErrorMessageRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceProject
+        ResourceProjectErrorMessage
     """
 
     return sync_detailed(
@@ -113,19 +115,19 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceProjectRequest,
-) -> Response[ResourceProject]:
+    body: ResourceProjectErrorMessageRequest,
+) -> Response[ResourceProjectErrorMessage]:
     """
     Args:
         uuid (UUID):
-        body (ResourceProjectRequest):
+        body (ResourceProjectErrorMessageRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceProject]
+        Response[ResourceProjectErrorMessage]
     """
 
     kwargs = _get_kwargs(
@@ -142,19 +144,19 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceProjectRequest,
-) -> ResourceProject:
+    body: ResourceProjectErrorMessageRequest,
+) -> ResourceProjectErrorMessage:
     """
     Args:
         uuid (UUID):
-        body (ResourceProjectRequest):
+        body (ResourceProjectErrorMessageRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceProject
+        ResourceProjectErrorMessage
     """
 
     return (

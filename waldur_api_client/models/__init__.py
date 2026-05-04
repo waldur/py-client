@@ -923,6 +923,9 @@ from .marketplace_provider_offerings_stats_retrieve_response_200 import (
     MarketplaceProviderOfferingsStatsRetrieveResponse200,
 )
 from .marketplace_provider_offerings_update_attributes_body import MarketplaceProviderOfferingsUpdateAttributesBody
+from .marketplace_provider_resource_projects_set_state_ok_response_200 import (
+    MarketplaceProviderResourceProjectsSetStateOkResponse200,
+)
 from .marketplace_provider_resources_details_retrieve_response_200 import (
     MarketplaceProviderResourcesDetailsRetrieveResponse200,
 )
@@ -1951,6 +1954,8 @@ from .resource_plan_period import ResourcePlanPeriod
 from .resource_project import ResourceProject
 from .resource_project_backend_id import ResourceProjectBackendId
 from .resource_project_backend_id_request import ResourceProjectBackendIdRequest
+from .resource_project_error_message import ResourceProjectErrorMessage
+from .resource_project_error_message_request import ResourceProjectErrorMessageRequest
 from .resource_project_request import ResourceProjectRequest
 from .resource_provisioning_stats import ResourceProvisioningStats
 from .resource_reallocate_limits_request import ResourceReallocateLimitsRequest
@@ -3299,6 +3304,7 @@ __all__ = (
     "MarketplaceProviderOfferingsHistoryAtRetrieveResponse404",
     "MarketplaceProviderOfferingsStatsRetrieveResponse200",
     "MarketplaceProviderOfferingsUpdateAttributesBody",
+    "MarketplaceProviderResourceProjectsSetStateOkResponse200",
     "MarketplaceProviderResourcesDetailsRetrieveResponse200",
     "MarketplaceProviderResourcesHistoryAtRetrieveResponse400",
     "MarketplaceProviderResourcesHistoryAtRetrieveResponse404",
@@ -4243,6 +4249,8 @@ __all__ = (
     "ResourceProject",
     "ResourceProjectBackendId",
     "ResourceProjectBackendIdRequest",
+    "ResourceProjectErrorMessage",
+    "ResourceProjectErrorMessageRequest",
     "ResourceProjectRequest",
     "ResourceProvisioningStats",
     "ResourceReallocateLimitsRequest",

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.13-dev.20260503233336
+# Version: 8.0.8-rc.13-dev.20260504045817
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9167,7 +9167,6 @@ Request body: yes
 POST /api/marketplace-provider-resource-projects/{uuid}/set_state_ok/
 Path parameters:
   - uuid
-Request body: yes
 
 ### marketplace_provider_resource_projects_update_user
 POST /api/marketplace-provider-resource-projects/{uuid}/update_user/

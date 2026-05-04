@@ -6,36 +6,30 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_project import ResourceProject
-from ...models.resource_project_request import ResourceProjectRequest
+from ...models.marketplace_provider_resource_projects_set_state_ok_response_200 import (
+    MarketplaceProviderResourceProjectsSetStateOkResponse200,
+)
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
-    *,
-    body: ResourceProjectRequest,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": f"/api/marketplace-provider-resource-projects/{uuid}/set_state_ok/",
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ResourceProject:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> MarketplaceProviderResourceProjectsSetStateOkResponse200:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ResourceProject.from_dict(response.json())
+        response_200 = MarketplaceProviderResourceProjectsSetStateOkResponse200.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -43,7 +37,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ResourceProject]:
+) -> Response[MarketplaceProviderResourceProjectsSetStateOkResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,24 +50,21 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceProjectRequest,
-) -> Response[ResourceProject]:
+) -> Response[MarketplaceProviderResourceProjectsSetStateOkResponse200]:
     """
     Args:
         uuid (UUID):
-        body (ResourceProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceProject]
+        Response[MarketplaceProviderResourceProjectsSetStateOkResponse200]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -87,25 +78,22 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceProjectRequest,
-) -> ResourceProject:
+) -> MarketplaceProviderResourceProjectsSetStateOkResponse200:
     """
     Args:
         uuid (UUID):
-        body (ResourceProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceProject
+        MarketplaceProviderResourceProjectsSetStateOkResponse200
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
-        body=body,
     ).parsed
 
 
@@ -113,24 +101,21 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceProjectRequest,
-) -> Response[ResourceProject]:
+) -> Response[MarketplaceProviderResourceProjectsSetStateOkResponse200]:
     """
     Args:
         uuid (UUID):
-        body (ResourceProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceProject]
+        Response[MarketplaceProviderResourceProjectsSetStateOkResponse200]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -142,25 +127,22 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceProjectRequest,
-) -> ResourceProject:
+) -> MarketplaceProviderResourceProjectsSetStateOkResponse200:
     """
     Args:
         uuid (UUID):
-        body (ResourceProjectRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceProject
+        MarketplaceProviderResourceProjectsSetStateOkResponse200
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            body=body,
         )
     ).parsed

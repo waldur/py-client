@@ -21,6 +21,7 @@ class ResourceProject:
         name (str):
         backend_id (str):
         state (str):
+        error_message (str):
         current_usages (Any): Dictionary mapping component types to current usage amounts. Populated by backend
             synchronization.
         resource_uuid (UUID):
@@ -36,6 +37,7 @@ class ResourceProject:
     name: str
     backend_id: str
     state: str
+    error_message: str
     current_usages: Any
     resource_uuid: UUID
     resource_name: str
@@ -55,6 +57,8 @@ class ResourceProject:
         backend_id = self.backend_id
 
         state = self.state
+
+        error_message = self.error_message
 
         current_usages = self.current_usages
 
@@ -79,6 +83,7 @@ class ResourceProject:
                 "name": name,
                 "backend_id": backend_id,
                 "state": state,
+                "error_message": error_message,
                 "current_usages": current_usages,
                 "resource_uuid": resource_uuid,
                 "resource_name": resource_name,
@@ -106,6 +111,8 @@ class ResourceProject:
 
         state = d.pop("state")
 
+        error_message = d.pop("error_message")
+
         current_usages = d.pop("current_usages")
 
         resource_uuid = UUID(d.pop("resource_uuid"))
@@ -126,6 +133,7 @@ class ResourceProject:
             name=name,
             backend_id=backend_id,
             state=state,
+            error_message=error_message,
             current_usages=current_usages,
             resource_uuid=resource_uuid,
             resource_name=resource_name,

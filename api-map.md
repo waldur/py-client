@@ -1559,7 +1559,7 @@ Module: `waldur_api_client.api.marketplace_provider_resource_projects`
 - `marketplace_provider_resource_projects_list_users_list` GET `/api/marketplace-provider-resource-projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `marketplace_provider_resource_projects_set_backend_id` POST `/api/marketplace-provider-resource-projects/{uuid}/set_backend_id/` (path: uuid | request body)
 - `marketplace_provider_resource_projects_set_state_erred` POST `/api/marketplace-provider-resource-projects/{uuid}/set_state_erred/` (path: uuid | request body)
-- `marketplace_provider_resource_projects_set_state_ok` POST `/api/marketplace-provider-resource-projects/{uuid}/set_state_ok/` (path: uuid | request body)
+- `marketplace_provider_resource_projects_set_state_ok` POST `/api/marketplace-provider-resource-projects/{uuid}/set_state_ok/` (path: uuid)
 - `marketplace_provider_resource_projects_update_user` POST `/api/marketplace-provider-resource-projects/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## marketplace-provider-resources
