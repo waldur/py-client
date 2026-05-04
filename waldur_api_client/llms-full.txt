@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-rc.13-dev.20260504105534
+# Version: 8.0.8-rc.13-dev.20260504165155
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2888,7 +2888,6 @@ Summary: Archive thread
 Description: Archive a thread (soft delete).
 Path parameters:
   - uuid
-Request body: yes
 
 ### chat_threads_cancel
 POST /api/chat-threads/{uuid}/cancel/
@@ -2904,7 +2903,6 @@ Summary: Unarchive thread
 Description: Restore an archived thread.
 Path parameters:
   - uuid
-Request body: yes
 
 ============================================================
 ## chat-tools  (module: waldur_api_client.api.chat_tools)
@@ -3362,13 +3360,11 @@ Path parameters:
 POST /api/customer-credits/{uuid}/apply_compensations/
 Path parameters:
   - uuid
-Request body: yes
 
 ### customer_credits_clear_compensations
 POST /api/customer-credits/{uuid}/clear_compensations/
 Path parameters:
   - uuid
-Request body: yes
 
 ### customer_credits_consumptions_list
 GET /api/customer-credits/{uuid}/consumptions/
@@ -11566,7 +11562,6 @@ Summary: Trigger async update for an existing catalog
 Description: Triggers a Celery task to update the given catalog from its upstream source. Returns 202 Accepted immediately. Staff only.
 Path parameters:
   - uuid
-Request body: yes
 
 ============================================================
 ## marketplace-software-packages  (module: waldur_api_client.api.marketplace_software_packages)
@@ -17924,7 +17919,6 @@ Summary: Compute affinity scores for all reviewer-proposal pairs
 Description: Compute affinity scores for all reviewer-proposal pairs.
 Path parameters:
   - uuid
-Request body: yes
 
 ### proposal_protected_calls_conflict_summary_retrieve
 GET /api/proposal-protected-calls/{uuid}/conflict-summary/
@@ -18791,7 +18785,6 @@ Path parameters:
 POST /api/rancher-catalogs/{uuid}/refresh/
 Path parameters:
   - uuid
-Request body: yes
 
 ============================================================
 ## rancher-cluster-security-groups  (module: waldur_api_client.api.rancher_cluster_security_groups)
@@ -21078,7 +21071,6 @@ Request body: yes
 POST /api/support-issues/{uuid}/sync/
 Path parameters:
   - uuid
-Request body: yes
 
 ============================================================
 ## support-jira-webhook  (module: waldur_api_client.api.support_jira_webhook)

@@ -506,7 +506,6 @@ from .customer_contact_update_request import CustomerContactUpdateRequest
 from .customer_credit import CustomerCredit
 from .customer_credit_consumption import CustomerCreditConsumption
 from .customer_credit_o_enum import CustomerCreditOEnum
-from .customer_credit_request import CustomerCreditRequest
 from .customer_details import CustomerDetails
 from .customer_estimated_cost_policy import CustomerEstimatedCostPolicy
 from .customer_estimated_cost_policy_request import CustomerEstimatedCostPolicyRequest
@@ -1022,7 +1021,6 @@ from .nested_price_estimate import NestedPriceEstimate
 from .nested_project import NestedProject
 from .nested_project_permission import NestedProjectPermission
 from .nested_provider_offering import NestedProviderOffering
-from .nested_provider_offering_request import NestedProviderOfferingRequest
 from .nested_public_offering import NestedPublicOffering
 from .nested_public_offering_request import NestedPublicOfferingRequest
 from .nested_remote_local_category import NestedRemoteLocalCategory
@@ -1816,7 +1814,6 @@ from .rancher_application_request_answers import RancherApplicationRequestAnswer
 from .rancher_catalog import RancherCatalog
 from .rancher_catalog_create import RancherCatalogCreate
 from .rancher_catalog_create_request import RancherCatalogCreateRequest
-from .rancher_catalog_request import RancherCatalogRequest
 from .rancher_catalog_scope_type import RancherCatalogScopeType
 from .rancher_catalog_update import RancherCatalogUpdate
 from .rancher_catalog_update_request import RancherCatalogUpdateRequest
@@ -2903,7 +2900,6 @@ __all__ = (
     "CustomerCredit",
     "CustomerCreditConsumption",
     "CustomerCreditOEnum",
-    "CustomerCreditRequest",
     "CustomerDetails",
     "CustomerEstimatedCostPolicy",
     "CustomerEstimatedCostPolicyRequest",
@@ -3389,7 +3385,6 @@ __all__ = (
     "NestedProject",
     "NestedProjectPermission",
     "NestedProviderOffering",
-    "NestedProviderOfferingRequest",
     "NestedPublicOffering",
     "NestedPublicOfferingRequest",
     "NestedRemoteLocalCategory",
@@ -4123,7 +4118,6 @@ __all__ = (
     "RancherCatalog",
     "RancherCatalogCreate",
     "RancherCatalogCreateRequest",
-    "RancherCatalogRequest",
     "RancherCatalogScopeType",
     "RancherCatalogUpdate",
     "RancherCatalogUpdateRequest",

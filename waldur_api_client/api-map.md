@@ -528,9 +528,9 @@ Module: `waldur_api_client.api.chat_threads`
 
 - `chat_threads_list` GET `/api/chat-threads/` (17 query params)
 - `chat_threads_retrieve` GET `/api/chat-threads/{uuid}/` (path: uuid | 1 query param)
-- `chat_threads_archive` POST `/api/chat-threads/{uuid}/archive/` — Archive thread (path: uuid | request body)
+- `chat_threads_archive` POST `/api/chat-threads/{uuid}/archive/` — Archive thread (path: uuid)
 - `chat_threads_cancel` POST `/api/chat-threads/{uuid}/cancel/` — Cancel active stream (path: uuid | request body)
-- `chat_threads_unarchive` POST `/api/chat-threads/{uuid}/unarchive/` — Unarchive thread (path: uuid | request body)
+- `chat_threads_unarchive` POST `/api/chat-threads/{uuid}/unarchive/` — Unarchive thread (path: uuid)
 
 ## chat-tools
 Module: `waldur_api_client.api.chat_tools`
@@ -635,8 +635,8 @@ Module: `waldur_api_client.api.customer_credits`
 - `customer_credits_update` PUT `/api/customer-credits/{uuid}/` (path: uuid | request body)
 - `customer_credits_partial_update` PATCH `/api/customer-credits/{uuid}/` (path: uuid | request body)
 - `customer_credits_destroy` DELETE `/api/customer-credits/{uuid}/` (path: uuid)
-- `customer_credits_apply_compensations` POST `/api/customer-credits/{uuid}/apply_compensations/` (path: uuid | request body)
-- `customer_credits_clear_compensations` POST `/api/customer-credits/{uuid}/clear_compensations/` (path: uuid | request body)
+- `customer_credits_apply_compensations` POST `/api/customer-credits/{uuid}/apply_compensations/` (path: uuid)
+- `customer_credits_clear_compensations` POST `/api/customer-credits/{uuid}/clear_compensations/` (path: uuid)
 - `customer_credits_consumptions_list` GET `/api/customer-credits/{uuid}/consumptions/` — Get credit consumption history grouped by month (path: uuid | 5 query params)
 
 ## customer-permissions-reviews
@@ -1878,7 +1878,7 @@ Module: `waldur_api_client.api.marketplace_software_catalogs`
 - `marketplace_software_catalogs_update` PUT `/api/marketplace-software-catalogs/{uuid}/` — Update a software catalog (path: uuid | request body)
 - `marketplace_software_catalogs_partial_update` PATCH `/api/marketplace-software-catalogs/{uuid}/` — Partially update a software catalog (path: uuid | request body)
 - `marketplace_software_catalogs_destroy` DELETE `/api/marketplace-software-catalogs/{uuid}/` — Delete a software catalog (path: uuid)
-- `marketplace_software_catalogs_update_catalog` POST `/api/marketplace-software-catalogs/{uuid}/update_catalog/` — Trigger async update for an existing catalog (path: uuid | request body)
+- `marketplace_software_catalogs_update_catalog` POST `/api/marketplace-software-catalogs/{uuid}/update_catalog/` — Trigger async update for an existing catalog (path: uuid)
 
 ## marketplace-software-packages
 Module: `waldur_api_client.api.marketplace_software_packages`
@@ -2882,7 +2882,7 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_coi_configuration_retrieve` GET `/api/proposal-protected-calls/{uuid}/coi-configuration/` — Get COI configuration for this call (path: uuid)
 - `proposal_protected_calls_coi_configuration_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/coi-configuration/` — Get COI configuration for this call (path: uuid | request body)
 - `proposal_protected_calls_compliance_overview_retrieve` GET `/api/proposal-protected-calls/{uuid}/compliance_overview/` — Get compliance overview for call manager showing all proposals and their compliance status (path: uuid)
-- `proposal_protected_calls_compute_affinities` POST `/api/proposal-protected-calls/{uuid}/compute-affinities/` — Compute affinity scores for all reviewer-proposal pairs (path: uuid | request body)
+- `proposal_protected_calls_compute_affinities` POST `/api/proposal-protected-calls/{uuid}/compute-affinities/` — Compute affinity scores for all reviewer-proposal pairs (path: uuid)
 - `proposal_protected_calls_conflict_summary_retrieve` GET `/api/proposal-protected-calls/{uuid}/conflict-summary/` — Get summary statistics of conflicts for this call (path: uuid)
 - `proposal_protected_calls_conflicts_list` GET `/api/proposal-protected-calls/{uuid}/conflicts/` — List all conflicts of interest detected for this call (path: uuid | 10 query params)
 - `proposal_protected_calls_create_manual_assignment` POST `/api/proposal-protected-calls/{uuid}/create-manual-assignment/` — Create a manual assignment batch for a specific reviewer (path: uuid | request body)
@@ -3026,7 +3026,7 @@ Module: `waldur_api_client.api.rancher_catalogs`
 - `rancher_catalogs_update` PUT `/api/rancher-catalogs/{uuid}/` (path: uuid | request body)
 - `rancher_catalogs_partial_update` PATCH `/api/rancher-catalogs/{uuid}/` (path: uuid | request body)
 - `rancher_catalogs_destroy` DELETE `/api/rancher-catalogs/{uuid}/` (path: uuid)
-- `rancher_catalogs_refresh` POST `/api/rancher-catalogs/{uuid}/refresh/` (path: uuid | request body)
+- `rancher_catalogs_refresh` POST `/api/rancher-catalogs/{uuid}/refresh/` (path: uuid)
 
 ## rancher-cluster-security-groups
 Module: `waldur_api_client.api.rancher_cluster_security_groups`
@@ -3467,7 +3467,7 @@ Module: `waldur_api_client.api.support_issues`
 - `support_issues_partial_update` PATCH `/api/support-issues/{uuid}/` (path: uuid | request body)
 - `support_issues_destroy` DELETE `/api/support-issues/{uuid}/` (path: uuid)
 - `support_issues_comment` POST `/api/support-issues/{uuid}/comment/` (path: uuid | request body)
-- `support_issues_sync` POST `/api/support-issues/{uuid}/sync/` (path: uuid | request body)
+- `support_issues_sync` POST `/api/support-issues/{uuid}/sync/` (path: uuid)
 
 ## support-jira-webhook
 Module: `waldur_api_client.api.support_jira_webhook`
