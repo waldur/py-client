@@ -15,7 +15,7 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/api/projects/{uuid}/components-usage/",
+        "url": f"/api/marketplace-customer-usage/{uuid}/components-usage/",
     }
 
     return _kwargs
@@ -49,13 +49,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ComponentsUsageStatsPerOffering]:
-    """Get project resource usage statistics broken down per offering
+    """Get resource usage statistics broken down per offering
 
      Returns one row per (offering, component type, billing type) for all non-terminated resources within
-    the project. Each row's `usage` and `limit_usage` are aggregated using the offering's own
-    `limit_period`, so quarterly offerings report quarter-to-date, yearly report year-to-date, total
-    report lifetime, and monthly report current month. Each row also includes the resolved current
-    period bounds (`current_period_label`, `current_period_start`, `current_period_end`).
+    the scope. Each row's `usage` and `limit_usage` are aggregated using the offering's own
+    `limit_period`.
 
     Args:
         uuid (UUID):
@@ -84,13 +82,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ComponentsUsageStatsPerOffering:
-    """Get project resource usage statistics broken down per offering
+    """Get resource usage statistics broken down per offering
 
      Returns one row per (offering, component type, billing type) for all non-terminated resources within
-    the project. Each row's `usage` and `limit_usage` are aggregated using the offering's own
-    `limit_period`, so quarterly offerings report quarter-to-date, yearly report year-to-date, total
-    report lifetime, and monthly report current month. Each row also includes the resolved current
-    period bounds (`current_period_label`, `current_period_start`, `current_period_end`).
+    the scope. Each row's `usage` and `limit_usage` are aggregated using the offering's own
+    `limit_period`.
 
     Args:
         uuid (UUID):
@@ -114,13 +110,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ComponentsUsageStatsPerOffering]:
-    """Get project resource usage statistics broken down per offering
+    """Get resource usage statistics broken down per offering
 
      Returns one row per (offering, component type, billing type) for all non-terminated resources within
-    the project. Each row's `usage` and `limit_usage` are aggregated using the offering's own
-    `limit_period`, so quarterly offerings report quarter-to-date, yearly report year-to-date, total
-    report lifetime, and monthly report current month. Each row also includes the resolved current
-    period bounds (`current_period_label`, `current_period_start`, `current_period_end`).
+    the scope. Each row's `usage` and `limit_usage` are aggregated using the offering's own
+    `limit_period`.
 
     Args:
         uuid (UUID):
@@ -147,13 +141,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ComponentsUsageStatsPerOffering:
-    """Get project resource usage statistics broken down per offering
+    """Get resource usage statistics broken down per offering
 
      Returns one row per (offering, component type, billing type) for all non-terminated resources within
-    the project. Each row's `usage` and `limit_usage` are aggregated using the offering's own
-    `limit_period`, so quarterly offerings report quarter-to-date, yearly report year-to-date, total
-    report lifetime, and monthly report current month. Each row also includes the resolved current
-    period bounds (`current_period_label`, `current_period_start`, `current_period_end`).
+    the scope. Each row's `usage` and `limit_usage` are aggregated using the offering's own
+    `limit_period`.
 
     Args:
         uuid (UUID):

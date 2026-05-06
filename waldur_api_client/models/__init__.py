@@ -1138,8 +1138,10 @@ from .offering_thumbnail_request import OfferingThumbnailRequest
 from .offering_thumbnail_request_form import OfferingThumbnailRequestForm
 from .offering_thumbnail_request_multipart import OfferingThumbnailRequestMultipart
 from .offering_type_enum import OfferingTypeEnum
+from .offering_usage_by_project import OfferingUsageByProject
 from .offering_usage_policy import OfferingUsagePolicy
 from .offering_usage_policy_request import OfferingUsagePolicyRequest
+from .offering_usage_timeseries import OfferingUsageTimeseries
 from .offering_user import OfferingUser
 from .offering_user_attribute_config import OfferingUserAttributeConfig
 from .offering_user_attribute_config_request import OfferingUserAttributeConfigRequest
@@ -1675,6 +1677,7 @@ from .project_template_request import ProjectTemplateRequest
 from .project_template_role_mapping_data import ProjectTemplateRoleMappingData
 from .project_template_role_mapping_data_additional_property import ProjectTemplateRoleMappingDataAdditionalProperty
 from .project_type import ProjectType
+from .project_usage_entry import ProjectUsageEntry
 from .project_usage_report import ProjectUsageReport
 from .project_usage_report_reports import ProjectUsageReportReports
 from .project_usage_report_users import ProjectUsageReportUsers
@@ -2290,6 +2293,7 @@ from .update_pool_member_request import UpdatePoolMemberRequest
 from .update_pool_request import UpdatePoolRequest
 from .urgency_enum import UrgencyEnum
 from .usage import Usage
+from .usage_timeseries_bucket import UsageTimeseriesBucket
 from .user import User
 from .user_action import UserAction
 from .user_action_execution import UserActionExecution
@@ -3502,8 +3506,10 @@ __all__ = (
     "OfferingThumbnailRequestForm",
     "OfferingThumbnailRequestMultipart",
     "OfferingTypeEnum",
+    "OfferingUsageByProject",
     "OfferingUsagePolicy",
     "OfferingUsagePolicyRequest",
+    "OfferingUsageTimeseries",
     "OfferingUser",
     "OfferingUserAttributeConfig",
     "OfferingUserAttributeConfigRequest",
@@ -4003,6 +4009,7 @@ __all__ = (
     "ProjectTemplateRoleMappingData",
     "ProjectTemplateRoleMappingDataAdditionalProperty",
     "ProjectType",
+    "ProjectUsageEntry",
     "ProjectUsageReport",
     "ProjectUsageReportReports",
     "ProjectUsageReportUsers",
@@ -4578,6 +4585,7 @@ __all__ = (
     "UpdatePoolRequest",
     "UrgencyEnum",
     "Usage",
+    "UsageTimeseriesBucket",
     "User",
     "UserAction",
     "UserActionExecution",

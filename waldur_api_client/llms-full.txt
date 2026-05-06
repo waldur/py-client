@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.8-dev.20260505233339
+# Version: 8.0.9-rc.1-dev.20260506192217
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3650,13 +3650,6 @@ Path parameters:
   - uuid
 Request body: yes
 
-### customers_components_usage_retrieve
-GET /api/customers/{uuid}/components-usage/
-Summary: Get customer resource usage statistics broken down per offering
-Description: Returns one row per (offering, component type, billing type) for all non-terminated resources within the customer. Each row's `usage` and `limit_usage` are aggregated using the offering's own `limit_period`, so quarterly offerings report quarter-to-date, yearly report year-to-date, total report l...
-Path parameters:
-  - uuid
-
 ### customers_contact
 POST /api/customers/{uuid}/contact/
 Summary: Update customer contact details
@@ -6596,6 +6589,39 @@ Path parameters:
   - uuid
 
 ============================================================
+## marketplace-customer-usage  (module: waldur_api_client.api.marketplace_customer_usage)
+============================================================
+
+### marketplace_customer_usage_components_usage_by_project_retrieve
+GET /api/marketplace-customer-usage/{uuid}/components-usage-by-project/
+Summary: Get per-project usage breakdown for a single offering
+Description: Returns the customer's usage of one offering broken down by project. Each project entry includes an in-period total `usage` and a monthly `buckets` array. Projects are sorted by usage descending.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - component_type
+  - offering_uuid (required)
+  - period_offset
+
+### marketplace_customer_usage_components_usage_timeseries_retrieve
+GET /api/marketplace-customer-usage/{uuid}/components-usage-timeseries/
+Summary: Get monthly usage buckets for a single offering
+Description: Returns a per-month timeseries of `ComponentUsage` for one offering, restricted to that offering's current `limit_period`. Buckets are keyed by `billing_period` (always month-start). `period_offset` shifts the window backward by N periods.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - component_type
+  - offering_uuid (required)
+  - period_offset
+
+### marketplace_customer_usage_components_usage_retrieve
+GET /api/marketplace-customer-usage/{uuid}/components-usage/
+Summary: Get resource usage statistics broken down per offering
+Description: Returns one row per (offering, component type, billing type) for all non-terminated resources within the scope. Each row's `usage` and `limit_usage` are aggregated using the offering's own `limit_period`.
+Path parameters:
+  - uuid
+
+============================================================
 ## marketplace-demo-presets  (module: waldur_api_client.api.marketplace_demo_presets)
 ============================================================
 
@@ -8006,6 +8032,28 @@ Summary: Reject project update request
 Path parameters:
   - uuid
 Request body: yes
+
+============================================================
+## marketplace-project-usage  (module: waldur_api_client.api.marketplace_project_usage)
+============================================================
+
+### marketplace_project_usage_components_usage_timeseries_retrieve
+GET /api/marketplace-project-usage/{uuid}/components-usage-timeseries/
+Summary: Get monthly usage buckets for a single offering
+Description: Returns a per-month timeseries of `ComponentUsage` for one offering, restricted to that offering's current `limit_period`. Buckets are keyed by `billing_period` (always month-start). `period_offset` shifts the window backward by N periods.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - component_type
+  - offering_uuid (required)
+  - period_offset
+
+### marketplace_project_usage_components_usage_retrieve
+GET /api/marketplace-project-usage/{uuid}/components-usage/
+Summary: Get resource usage statistics broken down per offering
+Description: Returns one row per (offering, component type, billing type) for all non-terminated resources within the scope. Each row's `usage` and `limit_usage` are aggregated using the offering's own `limit_period`.
+Path parameters:
+  - uuid
 
 ============================================================
 ## marketplace-provider-offerings  (module: waldur_api_client.api.marketplace_provider_offerings)
@@ -13746,13 +13794,6 @@ Description: Get checklist completion status.
 Path parameters:
   - uuid
 
-### openportal_unmanaged_projects_components_usage_retrieve
-GET /api/openportal-unmanaged-projects/{uuid}/components-usage/
-Summary: Get project resource usage statistics broken down per offering
-Description: Returns one row per (offering, component type, billing type) for all non-terminated resources within the project. Each row's `usage` and `limit_usage` are aggregated using the offering's own `limit_period`, so quarterly offerings report quarter-to-date, yearly report year-to-date, total report li...
-Path parameters:
-  - uuid
-
 ### openportal_unmanaged_projects_delete_user
 POST /api/openportal-unmanaged-projects/{uuid}/delete_user/
 Summary: Revoke a role from a user
@@ -17349,13 +17390,6 @@ Query parameters (1):
 GET /api/projects/{uuid}/completion_status/
 Summary: Get checklist completion status
 Description: Get checklist completion status.
-Path parameters:
-  - uuid
-
-### projects_components_usage_retrieve
-GET /api/projects/{uuid}/components-usage/
-Summary: Get project resource usage statistics broken down per offering
-Description: Returns one row per (offering, component type, billing type) for all non-terminated resources within the project. Each row's `usage` and `limit_usage` are aggregated using the offering's own `limit_period`, so quarterly offerings report quarter-to-date, yearly report year-to-date, total report li...
 Path parameters:
   - uuid
 
