@@ -8,6 +8,7 @@ class ChecklistTypeEnum(str, Enum):
     PROJECT_COMPLIANCE = "project_compliance"
     PROJECT_METADATA = "project_metadata"
     PROPOSAL_COMPLIANCE = "proposal_compliance"
+    WORKFLOW_STEP = "workflow_step"
 
     def __str__(self) -> str:
         return str(self.value)

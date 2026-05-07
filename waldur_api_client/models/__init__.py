@@ -22,6 +22,7 @@ from .admin_announcement_type_enum import AdminAnnouncementTypeEnum
 from .admin_user import AdminUser
 from .administrative_access import AdministrativeAccess
 from .affiliated_organization import AffiliatedOrganization
+from .affiliated_organization_field_enum import AffiliatedOrganizationFieldEnum
 from .affiliated_organization_report_row import AffiliatedOrganizationReportRow
 from .affiliated_organization_request import AffiliatedOrganizationRequest
 from .affiliated_organization_stats import AffiliatedOrganizationStats
@@ -298,6 +299,8 @@ from .call_reviewer_pool_o_enum import CallReviewerPoolOEnum
 from .call_reviewer_pool_update import CallReviewerPoolUpdate
 from .call_round import CallRound
 from .call_states import CallStates
+from .call_workflow_step import CallWorkflowStep
+from .call_workflow_step_request import CallWorkflowStepRequest
 from .campaign import Campaign
 from .campaign_o_enum import CampaignOEnum
 from .campaign_offering import CampaignOffering
@@ -399,6 +402,8 @@ from .coi_type_enum import CoiTypeEnum
 from .comment import Comment
 from .comment_o_enum import CommentOEnum
 from .comment_request import CommentRequest
+from .complete_workflow_step_request import CompleteWorkflowStepRequest
+from .complete_workflow_step_response import CompleteWorkflowStepResponse
 from .compliance_overview import ComplianceOverview
 from .component_multiplier_config import ComponentMultiplierConfig
 from .component_multiplier_config_request import ComponentMultiplierConfigRequest
@@ -1399,6 +1404,7 @@ from .organization_group_request import OrganizationGroupRequest
 from .organization_groups_request import OrganizationGroupsRequest
 from .organizational_access import OrganizationalAccess
 from .organizational_user import OrganizationalUser
+from .outcome_enum import OutcomeEnum
 from .paid_request import PaidRequest
 from .paid_request_form import PaidRequestForm
 from .paid_request_multipart import PaidRequestMultipart
@@ -1429,6 +1435,7 @@ from .patched_call_managing_organisation_request_form import PatchedCallManaging
 from .patched_call_managing_organisation_request_multipart import PatchedCallManagingOrganisationRequestMultipart
 from .patched_call_resource_template_request import PatchedCallResourceTemplateRequest
 from .patched_call_reviewer_pool_update_request import PatchedCallReviewerPoolUpdateRequest
+from .patched_call_workflow_step_request import PatchedCallWorkflowStepRequest
 from .patched_category_column_request import PatchedCategoryColumnRequest
 from .patched_category_components_request import PatchedCategoryComponentsRequest
 from .patched_category_group_request import PatchedCategoryGroupRequest
@@ -1726,6 +1733,8 @@ from .proposal_review_request import ProposalReviewRequest
 from .proposal_review_state_enum import ProposalReviewStateEnum
 from .proposal_states import ProposalStates
 from .proposal_update_project_details_request import ProposalUpdateProjectDetailsRequest
+from .proposal_workflow_step_instance import ProposalWorkflowStepInstance
+from .proposal_workflow_step_instance_status_enum import ProposalWorkflowStepInstanceStatusEnum
 from .proposed_assignment import ProposedAssignment
 from .protected_call import ProtectedCall
 from .protected_call_field_enum import ProtectedCallFieldEnum
@@ -1884,6 +1893,8 @@ from .reassign_item_request import ReassignItemRequest
 from .reassign_item_response import ReassignItemResponse
 from .reconcile_request_request import ReconcileRequestRequest
 from .reference_number_request import ReferenceNumberRequest
+from .reject_workflow_step_request import RejectWorkflowStepRequest
+from .reject_workflow_step_response import RejectWorkflowStepResponse
 from .relationship_type_enum import RelationshipTypeEnum
 from .remote_allocation import RemoteAllocation
 from .remote_allocation_field_enum import RemoteAllocationFieldEnum
@@ -2000,6 +2011,7 @@ from .resource_usage_by_customer_usages import ResourceUsageByCustomerUsages
 from .resource_usage_by_org_type import ResourceUsageByOrgType
 from .resources_geography_summary import ResourcesGeographySummary
 from .resources_limits import ResourcesLimits
+from .responsible_role_enum import ResponsibleRoleEnum
 from .restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
 from .review_comment_request import ReviewCommentRequest
 from .review_progress_stat import ReviewProgressStat
@@ -2203,6 +2215,7 @@ from .ssh_key_o_enum import SshKeyOEnum
 from .ssh_key_request import SshKeyRequest
 from .sshkeyallowedtypes_enum import SSHKEYALLOWEDTYPESEnum
 from .state_transition_error import StateTransitionError
+from .step_enum import StepEnum
 from .storage_data_type import StorageDataType
 from .storage_data_type_request import StorageDataTypeRequest
 from .storage_folder_config import StorageFolderConfig
@@ -2274,6 +2287,7 @@ from .top_queue import TopQueue
 from .top_service_provider_by_resources import TopServiceProviderByResources
 from .total_customer_cost import TotalCustomerCost
 from .transaction_stats import TransactionStats
+from .transition_mode_enum import TransitionModeEnum
 from .trigger_coi_detection_job_type_enum import TriggerCOIDetectionJobTypeEnum
 from .trigger_coi_detection_request import TriggerCOIDetectionRequest
 from .trigger_consumption_sync_request_request import TriggerConsumptionSyncRequestRequest
@@ -2412,6 +2426,8 @@ from .web_hook_receiver import WebHookReceiver
 from .web_hook_receiver_request import WebHookReceiverRequest
 from .web_hook_request import WebHookRequest
 from .widget_enum import WidgetEnum
+from .workflow_criterion import WorkflowCriterion
+from .workflow_criterion_request import WorkflowCriterionRequest
 from .zammadarticletype_enum import ZAMMADARTICLETYPEEnum
 
 __all__ = (
@@ -2437,6 +2453,7 @@ __all__ = (
     "AdministrativeAccess",
     "AdminUser",
     "AffiliatedOrganization",
+    "AffiliatedOrganizationFieldEnum",
     "AffiliatedOrganizationReportRow",
     "AffiliatedOrganizationRequest",
     "AffiliatedOrganizationStats",
@@ -2701,6 +2718,8 @@ __all__ = (
     "CallReviewerPoolUpdate",
     "CallRound",
     "CallStates",
+    "CallWorkflowStep",
+    "CallWorkflowStepRequest",
     "Campaign",
     "CampaignOEnum",
     "CampaignOffering",
@@ -2802,6 +2821,8 @@ __all__ = (
     "Comment",
     "CommentOEnum",
     "CommentRequest",
+    "CompleteWorkflowStepRequest",
+    "CompleteWorkflowStepResponse",
     "ComplianceOverview",
     "ComponentMultiplierConfig",
     "ComponentMultiplierConfigRequest",
@@ -3732,6 +3753,7 @@ __all__ = (
     "OrganizationGroup",
     "OrganizationGroupRequest",
     "OrganizationGroupsRequest",
+    "OutcomeEnum",
     "PaidRequest",
     "PaidRequestForm",
     "PaidRequestMultipart",
@@ -3762,6 +3784,7 @@ __all__ = (
     "PatchedCallManagingOrganisationRequestMultipart",
     "PatchedCallResourceTemplateRequest",
     "PatchedCallReviewerPoolUpdateRequest",
+    "PatchedCallWorkflowStepRequest",
     "PatchedCategoryColumnRequest",
     "PatchedCategoryComponentsRequest",
     "PatchedCategoryGroupRequest",
@@ -4037,6 +4060,8 @@ __all__ = (
     "ProposalReviewStateEnum",
     "ProposalStates",
     "ProposalUpdateProjectDetailsRequest",
+    "ProposalWorkflowStepInstance",
+    "ProposalWorkflowStepInstanceStatusEnum",
     "ProposedAssignment",
     "ProtectedCall",
     "ProtectedCallFieldEnum",
@@ -4185,6 +4210,8 @@ __all__ = (
     "ReassignItemResponse",
     "ReconcileRequestRequest",
     "ReferenceNumberRequest",
+    "RejectWorkflowStepRequest",
+    "RejectWorkflowStepResponse",
     "RelationshipTypeEnum",
     "RemoteAllocation",
     "RemoteAllocationFieldEnum",
@@ -4299,6 +4326,7 @@ __all__ = (
     "ResourceUsageByCustomerLimits",
     "ResourceUsageByCustomerUsages",
     "ResourceUsageByOrgType",
+    "ResponsibleRoleEnum",
     "RESTRICTEDOFFERINGVISIBILITYMODEEnum",
     "ReviewCommentRequest",
     "ReviewerAffiliation",
@@ -4500,6 +4528,7 @@ __all__ = (
     "SshKeyOEnum",
     "SshKeyRequest",
     "StateTransitionError",
+    "StepEnum",
     "StorageDataType",
     "StorageDataTypeRequest",
     "StorageFolderConfig",
@@ -4567,6 +4596,7 @@ __all__ = (
     "ToSConsentDashboard",
     "TotalCustomerCost",
     "TransactionStats",
+    "TransitionModeEnum",
     "TriggerCOIDetectionJobTypeEnum",
     "TriggerCOIDetectionRequest",
     "TriggerConsumptionSyncRequestRequest",
@@ -4697,5 +4727,7 @@ __all__ = (
     "WebHookReceiverRequest",
     "WebHookRequest",
     "WidgetEnum",
+    "WorkflowCriterion",
+    "WorkflowCriterionRequest",
     "ZAMMADARTICLETYPEEnum",
 )

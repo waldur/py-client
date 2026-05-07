@@ -7,6 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.affiliated_organization import AffiliatedOrganization
+from ...models.affiliated_organization_field_enum import AffiliatedOrganizationFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -17,6 +18,7 @@ def _get_kwargs(
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
     default_for_customer: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -36,6 +38,15 @@ def _get_kwargs(
     if not isinstance(default_for_customer, Unset):
         json_default_for_customer = str(default_for_customer)
     params["default_for_customer"] = json_default_for_customer
+
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
 
     params["name"] = name
 
@@ -95,6 +106,7 @@ def sync_detailed(
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
     default_for_customer: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -108,6 +120,7 @@ def sync_detailed(
         code (Union[Unset, str]):
         country (Union[Unset, str]):
         default_for_customer (Union[Unset, UUID]):
+        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -128,6 +141,7 @@ def sync_detailed(
         code=code,
         country=country,
         default_for_customer=default_for_customer,
+        field=field,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -150,6 +164,7 @@ def sync(
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
     default_for_customer: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -163,6 +178,7 @@ def sync(
         code (Union[Unset, str]):
         country (Union[Unset, str]):
         default_for_customer (Union[Unset, UUID]):
+        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -184,6 +200,7 @@ def sync(
         code=code,
         country=country,
         default_for_customer=default_for_customer,
+        field=field,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -200,6 +217,7 @@ async def asyncio_detailed(
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
     default_for_customer: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -213,6 +231,7 @@ async def asyncio_detailed(
         code (Union[Unset, str]):
         country (Union[Unset, str]):
         default_for_customer (Union[Unset, UUID]):
+        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -233,6 +252,7 @@ async def asyncio_detailed(
         code=code,
         country=country,
         default_for_customer=default_for_customer,
+        field=field,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -253,6 +273,7 @@ async def asyncio(
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
     default_for_customer: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -266,6 +287,7 @@ async def asyncio(
         code (Union[Unset, str]):
         country (Union[Unset, str]):
         default_for_customer (Union[Unset, UUID]):
+        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -288,6 +310,7 @@ async def asyncio(
             code=code,
             country=country,
             default_for_customer=default_for_customer,
+            field=field,
             name=name,
             name_exact=name_exact,
             o=o,
@@ -305,6 +328,7 @@ def sync_all(
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
     default_for_customer: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -322,6 +346,7 @@ def sync_all(
         code (Union[Unset, str]):
         country (Union[Unset, str]):
         default_for_customer (Union[Unset, UUID]):
+        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -344,6 +369,7 @@ def sync_all(
         code=code,
         country=country,
         default_for_customer=default_for_customer,
+        field=field,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -399,6 +425,7 @@ async def asyncio_all(
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
     default_for_customer: Union[Unset, UUID] = UNSET,
+    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -416,6 +443,7 @@ async def asyncio_all(
         code (Union[Unset, str]):
         country (Union[Unset, str]):
         default_for_customer (Union[Unset, UUID]):
+        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -438,6 +466,7 @@ async def asyncio_all(
         code=code,
         country=country,
         default_for_customer=default_for_customer,
+        field=field,
         name=name,
         name_exact=name_exact,
         o=o,

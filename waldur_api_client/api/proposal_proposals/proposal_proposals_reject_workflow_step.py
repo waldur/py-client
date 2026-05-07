@@ -6,43 +6,38 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.affiliated_organization import AffiliatedOrganization
-from ...models.affiliated_organization_field_enum import AffiliatedOrganizationFieldEnum
-from ...types import UNSET, Response, Unset
+from ...models.reject_workflow_step_request import RejectWorkflowStepRequest
+from ...models.reject_workflow_step_response import RejectWorkflowStepResponse
+from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
+    body: RejectWorkflowStepRequest,
 ) -> dict[str, Any]:
-    params: dict[str, Any] = {}
-
-    json_field: Union[Unset, list[str]] = UNSET
-    if not isinstance(field, Unset):
-        json_field = []
-        for field_item_data in field:
-            field_item = field_item_data.value
-            json_field.append(field_item)
-
-    params["field"] = json_field
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": f"/api/affiliated-organizations/{uuid}/",
-        "params": params,
+        "method": "post",
+        "url": f"/api/proposal-proposals/{uuid}/reject_workflow_step/",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> AffiliatedOrganization:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> RejectWorkflowStepResponse:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = AffiliatedOrganization.from_dict(response.json())
+        response_200 = RejectWorkflowStepResponse.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -50,7 +45,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[AffiliatedOrganization]:
+) -> Response[RejectWorkflowStepResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,24 +58,25 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
-) -> Response[AffiliatedOrganization]:
-    """
+    body: RejectWorkflowStepRequest,
+) -> Response[RejectWorkflowStepResponse]:
+    """Reject the proposal at the current workflow step.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
+        body (RejectWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AffiliatedOrganization]
+        Response[RejectWorkflowStepResponse]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        field=field,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -94,25 +90,26 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
-) -> AffiliatedOrganization:
-    """
+    body: RejectWorkflowStepRequest,
+) -> RejectWorkflowStepResponse:
+    """Reject the proposal at the current workflow step.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
+        body (RejectWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AffiliatedOrganization
+        RejectWorkflowStepResponse
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
-        field=field,
+        body=body,
     ).parsed
 
 
@@ -120,24 +117,25 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
-) -> Response[AffiliatedOrganization]:
-    """
+    body: RejectWorkflowStepRequest,
+) -> Response[RejectWorkflowStepResponse]:
+    """Reject the proposal at the current workflow step.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
+        body (RejectWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AffiliatedOrganization]
+        Response[RejectWorkflowStepResponse]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        field=field,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -149,25 +147,26 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
-) -> AffiliatedOrganization:
-    """
+    body: RejectWorkflowStepRequest,
+) -> RejectWorkflowStepResponse:
+    """Reject the proposal at the current workflow step.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
+        body (RejectWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AffiliatedOrganization
+        RejectWorkflowStepResponse
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            field=field,
+            body=body,
         )
     ).parsed

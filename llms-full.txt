@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.2-dev.20260507115207
+# Version: 8.0.9-rc.2-dev.20260507130232
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -589,11 +589,12 @@ Path parameters:
 
 ### affiliated_organizations_list
 GET /api/affiliated-organizations/
-Query parameters (8):
+Query parameters (9):
   - abbreviation — Abbreviation
   - code — Code
   - country — Country
   - default_for_customer — Limit to a customer's default affiliation list
+  - field
   - name — Name
   - name_exact — Name (exact)
   - o — Which field to use when ordering the results.
@@ -649,6 +650,8 @@ Query parameters (8):
 GET /api/affiliated-organizations/{uuid}/
 Path parameters:
   - uuid
+Query parameters (1):
+  - field
 
 ### affiliated_organizations_update
 PUT /api/affiliated-organizations/{uuid}/
@@ -17673,6 +17676,14 @@ Description: Get checklist with questions and existing answers including review 
 Path parameters:
   - uuid
 
+### proposal_proposals_complete_workflow_step
+POST /api/proposal-proposals/{uuid}/complete_workflow_step/
+Summary: Complete the current workflow step with an outcome
+Description: Complete the current workflow step with an outcome.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### proposal_proposals_completion_review_status_retrieve
 GET /api/proposal-proposals/{uuid}/completion_review_status/
 Summary: Get checklist completion status with review triggers (reviewers only)
@@ -17725,6 +17736,14 @@ Query parameters (10):
 POST /api/proposal-proposals/{uuid}/reject/
 Summary: Reject a proposal
 Description: Reject a proposal.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_reject_workflow_step
+POST /api/proposal-proposals/{uuid}/reject_workflow_step/
+Summary: Reject the proposal at the current workflow step
+Description: Reject the proposal at the current workflow step.
 Path parameters:
   - uuid
 Request body: yes
@@ -17800,6 +17819,24 @@ Description: Updates the expiration time for a user's existing role in the curre
 Path parameters:
   - uuid
 Request body: yes
+
+### proposal_proposals_workflow_states_list
+GET /api/proposal-proposals/{uuid}/workflow_states/
+Summary: List all workflow step instances for this proposal
+Description: List all workflow step instances for this proposal.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - call_uuid
+  - created_by_uuid
+  - my_proposals
+  - name
+  - o — Ordering
+  - organization_uuid
+  - round
+  - round_uuid
+  - slug — Slug
+  - state
 
 ============================================================
 ## proposal-protected-calls  (module: waldur_api_client.api.proposal_protected_calls)
@@ -18323,6 +18360,47 @@ Description: Updates the expiration time for a user's existing role in the curre
 Path parameters:
   - uuid
 Request body: yes
+
+### proposal_protected_calls_workflow_steps_list
+GET /api/proposal-protected-calls/{uuid}/workflow_steps/
+Summary: List workflow steps for a call
+Description: List workflow steps for a call.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_workflow_steps_set
+POST /api/proposal-protected-calls/{uuid}/workflow_steps/
+Summary: Create or update a workflow step for a call
+Description: Create or update a workflow step for a call.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_workflow_steps_retrieve
+GET /api/proposal-protected-calls/{uuid}/workflow_steps/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+
+### proposal_protected_calls_workflow_steps_update
+PUT /api/proposal-protected-calls/{uuid}/workflow_steps/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_workflow_steps_partial_update
+PATCH /api/proposal-protected-calls/{uuid}/workflow_steps/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_workflow_steps_destroy
+DELETE /api/proposal-protected-calls/{uuid}/workflow_steps/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
 
 ============================================================
 ## proposal-public-calls  (module: waldur_api_client.api.proposal_public_calls)

@@ -96,12 +96,12 @@ Module: `waldur_api_client.api.admin_announcements`
 ## affiliated-organizations
 Module: `waldur_api_client.api.affiliated_organizations`
 
-- `affiliated_organizations_list` GET `/api/affiliated-organizations/` (8 query params)
+- `affiliated_organizations_list` GET `/api/affiliated-organizations/` (9 query params)
 - `affiliated_organizations_count` HEAD `/api/affiliated-organizations/` — Get number of items in the collection matching the request parameters (8 query params)
 - `affiliated_organizations_create` POST `/api/affiliated-organizations/` (request body)
 - `affiliated_organizations_report_list` GET `/api/affiliated-organizations/report/` — Get affiliated organizations report (8 query params)
 - `affiliated_organizations_report_count` HEAD `/api/affiliated-organizations/report/` — Get affiliated organizations report (8 query params)
-- `affiliated_organizations_retrieve` GET `/api/affiliated-organizations/{uuid}/` (path: uuid)
+- `affiliated_organizations_retrieve` GET `/api/affiliated-organizations/{uuid}/` (path: uuid | 1 query param)
 - `affiliated_organizations_update` PUT `/api/affiliated-organizations/{uuid}/` (path: uuid | request body)
 - `affiliated_organizations_partial_update` PATCH `/api/affiliated-organizations/{uuid}/` (path: uuid | request body)
 - `affiliated_organizations_destroy` DELETE `/api/affiliated-organizations/{uuid}/` (path: uuid)
@@ -2856,12 +2856,14 @@ Module: `waldur_api_client.api.proposal_proposals`
 - `proposal_proposals_attach_document` POST `/api/proposal-proposals/{uuid}/attach_document/` — Attach document to proposal (path: uuid | request body)
 - `proposal_proposals_checklist_retrieve` GET `/api/proposal-proposals/{uuid}/checklist/` — Get checklist with questions and existing answers (path: uuid | 1 query param)
 - `proposal_proposals_checklist_review_retrieve` GET `/api/proposal-proposals/{uuid}/checklist_review/` — Get checklist with questions and existing answers including review logic (reviewers only) (path: uuid)
+- `proposal_proposals_complete_workflow_step` POST `/api/proposal-proposals/{uuid}/complete_workflow_step/` — Complete the current workflow step with an outcome (path: uuid | request body)
 - `proposal_proposals_completion_review_status_retrieve` GET `/api/proposal-proposals/{uuid}/completion_review_status/` — Get checklist completion status with review triggers (reviewers only) (path: uuid)
 - `proposal_proposals_completion_status_retrieve` GET `/api/proposal-proposals/{uuid}/completion_status/` — Get checklist completion status (path: uuid)
 - `proposal_proposals_delete_user` POST `/api/proposal-proposals/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `proposal_proposals_detach_documents` POST `/api/proposal-proposals/{uuid}/detach_documents/` — Detach documents from proposal (path: uuid | request body)
 - `proposal_proposals_list_users_list` GET `/api/proposal-proposals/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `proposal_proposals_reject` POST `/api/proposal-proposals/{uuid}/reject/` — Reject a proposal (path: uuid | request body)
+- `proposal_proposals_reject_workflow_step` POST `/api/proposal-proposals/{uuid}/reject_workflow_step/` — Reject the proposal at the current workflow step (path: uuid | request body)
 - `proposal_proposals_resources_list` GET `/api/proposal-proposals/{uuid}/resources/` — List resources for a proposal (path: uuid)
 - `proposal_proposals_resources_set` POST `/api/proposal-proposals/{uuid}/resources/` — Create resource for a proposal (path: uuid | request body)
 - `proposal_proposals_resources_retrieve` GET `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/` (path: obj_uuid, uuid)
@@ -2872,6 +2874,7 @@ Module: `waldur_api_client.api.proposal_proposals`
 - `proposal_proposals_submit_answers` POST `/api/proposal-proposals/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
 - `proposal_proposals_update_project_details` POST `/api/proposal-proposals/{uuid}/update_project_details/` — Update project details of a proposal (path: uuid | request body)
 - `proposal_proposals_update_user` POST `/api/proposal-proposals/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
+- `proposal_proposals_workflow_states_list` GET `/api/proposal-proposals/{uuid}/workflow_states/` — List all workflow step instances for this proposal (path: uuid | 10 query params)
 
 ## proposal-protected-calls
 Module: `waldur_api_client.api.proposal_protected_calls`
@@ -2934,6 +2937,12 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_send_invitations` POST `/api/proposal-protected-calls/{uuid}/send-invitations/` — Send invitations to all confirmed suggestions (path: uuid)
 - `proposal_protected_calls_suggestions_list` GET `/api/proposal-protected-calls/{uuid}/suggestions/` — List all reviewer suggestions for this call with affinity scores (path: uuid | 10 query params)
 - `proposal_protected_calls_update_user` POST `/api/proposal-protected-calls/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
+- `proposal_protected_calls_workflow_steps_list` GET `/api/proposal-protected-calls/{uuid}/workflow_steps/` — List workflow steps for a call (path: uuid)
+- `proposal_protected_calls_workflow_steps_set` POST `/api/proposal-protected-calls/{uuid}/workflow_steps/` — Create or update a workflow step for a call (path: uuid | request body)
+- `proposal_protected_calls_workflow_steps_retrieve` GET `/api/proposal-protected-calls/{uuid}/workflow_steps/{obj_uuid}/` (path: obj_uuid, uuid)
+- `proposal_protected_calls_workflow_steps_update` PUT `/api/proposal-protected-calls/{uuid}/workflow_steps/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_workflow_steps_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/workflow_steps/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_workflow_steps_destroy` DELETE `/api/proposal-protected-calls/{uuid}/workflow_steps/{obj_uuid}/` (path: obj_uuid, uuid)
 
 ## proposal-public-calls
 Module: `waldur_api_client.api.proposal_public_calls`

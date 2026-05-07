@@ -6,43 +6,36 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.affiliated_organization import AffiliatedOrganization
-from ...models.affiliated_organization_field_enum import AffiliatedOrganizationFieldEnum
-from ...types import UNSET, Response, Unset
+from ...models.call_workflow_step import CallWorkflowStep
+from ...models.call_workflow_step_request import CallWorkflowStepRequest
+from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
+    body: CallWorkflowStepRequest,
 ) -> dict[str, Any]:
-    params: dict[str, Any] = {}
-
-    json_field: Union[Unset, list[str]] = UNSET
-    if not isinstance(field, Unset):
-        json_field = []
-        for field_item_data in field:
-            field_item = field_item_data.value
-            json_field.append(field_item)
-
-    params["field"] = json_field
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+    headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": f"/api/affiliated-organizations/{uuid}/",
-        "params": params,
+        "method": "post",
+        "url": f"/api/proposal-protected-calls/{uuid}/workflow_steps/",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> AffiliatedOrganization:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> CallWorkflowStep:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = AffiliatedOrganization.from_dict(response.json())
+        response_200 = CallWorkflowStep.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -50,7 +43,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[AffiliatedOrganization]:
+) -> Response[CallWorkflowStep]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,24 +56,25 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
-) -> Response[AffiliatedOrganization]:
-    """
+    body: CallWorkflowStepRequest,
+) -> Response[CallWorkflowStep]:
+    """Create or update a workflow step for a call.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
+        body (CallWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AffiliatedOrganization]
+        Response[CallWorkflowStep]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        field=field,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -94,25 +88,26 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
-) -> AffiliatedOrganization:
-    """
+    body: CallWorkflowStepRequest,
+) -> CallWorkflowStep:
+    """Create or update a workflow step for a call.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
+        body (CallWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AffiliatedOrganization
+        CallWorkflowStep
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
-        field=field,
+        body=body,
     ).parsed
 
 
@@ -120,24 +115,25 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
-) -> Response[AffiliatedOrganization]:
-    """
+    body: CallWorkflowStepRequest,
+) -> Response[CallWorkflowStep]:
+    """Create or update a workflow step for a call.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
+        body (CallWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[AffiliatedOrganization]
+        Response[CallWorkflowStep]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        field=field,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -149,25 +145,26 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[AffiliatedOrganizationFieldEnum]] = UNSET,
-) -> AffiliatedOrganization:
-    """
+    body: CallWorkflowStepRequest,
+) -> CallWorkflowStep:
+    """Create or update a workflow step for a call.
+
     Args:
         uuid (UUID):
-        field (Union[Unset, list[AffiliatedOrganizationFieldEnum]]):
+        body (CallWorkflowStepRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        AffiliatedOrganization
+        CallWorkflowStep
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            field=field,
+            body=body,
         )
     ).parsed
