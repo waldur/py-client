@@ -2326,6 +2326,7 @@ from .user_auth_method_count import UserAuthMethodCount
 from .user_auth_token import UserAuthToken
 from .user_checklist_completion import UserChecklistCompletion
 from .user_checklist_completion_o_enum import UserChecklistCompletionOEnum
+from .user_checklist_completion_offering_user import UserChecklistCompletionOfferingUser
 from .user_consent_info import UserConsentInfo
 from .user_data_access import UserDataAccess
 from .user_data_access_log import UserDataAccessLog
@@ -4635,6 +4636,7 @@ __all__ = (
     "UserAuthToken",
     "UserChecklistCompletion",
     "UserChecklistCompletionOEnum",
+    "UserChecklistCompletionOfferingUser",
     "UserConsentInfo",
     "UserDataAccess",
     "UserDataAccessLog",

@@ -8,7 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 if TYPE_CHECKING:
-    from ..models.offering_user import OfferingUser
+    from ..models.user_checklist_completion_offering_user import UserChecklistCompletionOfferingUser
 
 
 T = TypeVar("T", bound="UserChecklistCompletion")
@@ -19,7 +19,7 @@ class UserChecklistCompletion:
     """
     Attributes:
         uuid (UUID):
-        offering_user (OfferingUser):
+        offering_user (Union['UserChecklistCompletionOfferingUser', None]):
         offering_user_uuid (Union[None, str]):
         offering_name (Union[None, str]):
         offering_uuid (Union[None, str]):
@@ -40,7 +40,7 @@ class UserChecklistCompletion:
     """
 
     uuid: UUID
-    offering_user: "OfferingUser"
+    offering_user: Union["UserChecklistCompletionOfferingUser", None]
     offering_user_uuid: Union[None, str]
     offering_name: Union[None, str]
     offering_uuid: Union[None, str]
@@ -61,9 +61,15 @@ class UserChecklistCompletion:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.user_checklist_completion_offering_user import UserChecklistCompletionOfferingUser
+
         uuid = str(self.uuid)
 
-        offering_user = self.offering_user.to_dict()
+        offering_user: Union[None, dict[str, Any]]
+        if isinstance(self.offering_user, UserChecklistCompletionOfferingUser):
+            offering_user = self.offering_user.to_dict()
+        else:
+            offering_user = self.offering_user
 
         offering_user_uuid: Union[None, str]
         offering_user_uuid = self.offering_user_uuid
@@ -139,12 +145,25 @@ class UserChecklistCompletion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.offering_user import OfferingUser
+        from ..models.user_checklist_completion_offering_user import UserChecklistCompletionOfferingUser
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
-        offering_user = OfferingUser.from_dict(d.pop("offering_user"))
+        def _parse_offering_user(data: object) -> Union["UserChecklistCompletionOfferingUser", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                offering_user_type_1 = UserChecklistCompletionOfferingUser.from_dict(data)
+
+                return offering_user_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["UserChecklistCompletionOfferingUser", None], data)
+
+        offering_user = _parse_offering_user(d.pop("offering_user"))
 
         def _parse_offering_user_uuid(data: object) -> Union[None, str]:
             if data is None:
