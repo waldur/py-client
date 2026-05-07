@@ -6,20 +6,20 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_affiliated_organizations_update_request import ProjectAffiliatedOrganizationsUpdateRequest
+from ...models.customer_default_affiliations_update_request import CustomerDefaultAffiliationsUpdateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ProjectAffiliatedOrganizationsUpdateRequest,
+    body: CustomerDefaultAffiliationsUpdateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/projects/{uuid}/update_affiliated_organizations/",
+        "url": f"/api/customers/{uuid}/update_default_affiliations/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -51,15 +51,16 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectAffiliatedOrganizationsUpdateRequest,
+    body: CustomerDefaultAffiliationsUpdateRequest,
 ) -> Response[Any]:
-    """Update affiliated organizations for a project
+    """Update default affiliations for an organization
 
-     Assigns a project to one or more affiliated organizations. Replaces the current set.
+     Replaces the organization's default affiliation list. Project creators in the organization will be
+    limited to choosing from this list when affiliating a project. Staff-only.
 
     Args:
         uuid (UUID):
-        body (ProjectAffiliatedOrganizationsUpdateRequest):
+        body (CustomerDefaultAffiliationsUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -85,15 +86,16 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectAffiliatedOrganizationsUpdateRequest,
+    body: CustomerDefaultAffiliationsUpdateRequest,
 ) -> Response[Any]:
-    """Update affiliated organizations for a project
+    """Update default affiliations for an organization
 
-     Assigns a project to one or more affiliated organizations. Replaces the current set.
+     Replaces the organization's default affiliation list. Project creators in the organization will be
+    limited to choosing from this list when affiliating a project. Staff-only.
 
     Args:
         uuid (UUID):
-        body (ProjectAffiliatedOrganizationsUpdateRequest):
+        body (CustomerDefaultAffiliationsUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

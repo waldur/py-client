@@ -12,6 +12,7 @@ from ..models.country_enum import CountryEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.affiliated_organization import AffiliatedOrganization
     from ..models.nested_price_estimate import NestedPriceEstimate
     from ..models.organization_group import OrganizationGroup
     from ..models.payment_profile import PaymentProfile
@@ -48,6 +49,8 @@ class Customer:
         user_email_patterns (Union[Unset, Any]):
         user_affiliations (Union[Unset, Any]):
         user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
+        default_affiliations (Union[Unset, list['AffiliatedOrganization']]): Affiliations offered to project creators of
+            this organization.
         name (Union[Unset, str]):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         native_name (Union[Unset, str]):
@@ -112,6 +115,7 @@ class Customer:
     user_email_patterns: Union[Unset, Any] = UNSET
     user_affiliations: Union[Unset, Any] = UNSET
     user_identity_sources: Union[Unset, Any] = UNSET
+    default_affiliations: Union[Unset, list["AffiliatedOrganization"]] = UNSET
     name: Union[Unset, str] = UNSET
     slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
@@ -229,6 +233,13 @@ class Customer:
         user_affiliations = self.user_affiliations
 
         user_identity_sources = self.user_identity_sources
+
+        default_affiliations: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.default_affiliations, Unset):
+            default_affiliations = []
+            for default_affiliations_item_data in self.default_affiliations:
+                default_affiliations_item = default_affiliations_item_data.to_dict()
+                default_affiliations.append(default_affiliations_item)
 
         name = self.name
 
@@ -400,6 +411,8 @@ class Customer:
             field_dict["user_affiliations"] = user_affiliations
         if user_identity_sources is not UNSET:
             field_dict["user_identity_sources"] = user_identity_sources
+        if default_affiliations is not UNSET:
+            field_dict["default_affiliations"] = default_affiliations
         if name is not UNSET:
             field_dict["name"] = name
         if slug is not UNSET:
@@ -481,6 +494,7 @@ class Customer:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.affiliated_organization import AffiliatedOrganization
         from ..models.nested_price_estimate import NestedPriceEstimate
         from ..models.organization_group import OrganizationGroup
         from ..models.payment_profile import PaymentProfile
@@ -592,6 +606,13 @@ class Customer:
         user_affiliations = d.pop("user_affiliations", UNSET)
 
         user_identity_sources = d.pop("user_identity_sources", UNSET)
+
+        default_affiliations = []
+        _default_affiliations = d.pop("default_affiliations", UNSET)
+        for default_affiliations_item_data in _default_affiliations or []:
+            default_affiliations_item = AffiliatedOrganization.from_dict(default_affiliations_item_data)
+
+            default_affiliations.append(default_affiliations_item)
 
         name = d.pop("name", UNSET)
 
@@ -785,6 +806,7 @@ class Customer:
             user_email_patterns=user_email_patterns,
             user_affiliations=user_affiliations,
             user_identity_sources=user_identity_sources,
+            default_affiliations=default_affiliations,
             name=name,
             slug=slug,
             native_name=native_name,

@@ -42,6 +42,7 @@ class ProjectRequest:
         user_email_patterns (Union[Unset, Any]):
         user_affiliations (Union[Unset, Any]):
         user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
+        affiliation_uuid (Union[None, UUID, Unset]):
         science_sub_domain (Union[None, UUID, Unset]):
     """
 
@@ -62,6 +63,7 @@ class ProjectRequest:
     user_email_patterns: Union[Unset, Any] = UNSET
     user_affiliations: Union[Unset, Any] = UNSET
     user_identity_sources: Union[Unset, Any] = UNSET
+    affiliation_uuid: Union[None, UUID, Unset] = UNSET
     science_sub_domain: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -137,6 +139,14 @@ class ProjectRequest:
 
         user_identity_sources = self.user_identity_sources
 
+        affiliation_uuid: Union[None, Unset, str]
+        if isinstance(self.affiliation_uuid, Unset):
+            affiliation_uuid = UNSET
+        elif isinstance(self.affiliation_uuid, UUID):
+            affiliation_uuid = str(self.affiliation_uuid)
+        else:
+            affiliation_uuid = self.affiliation_uuid
+
         science_sub_domain: Union[None, Unset, str]
         if isinstance(self.science_sub_domain, Unset):
             science_sub_domain = UNSET
@@ -183,6 +193,8 @@ class ProjectRequest:
             field_dict["user_affiliations"] = user_affiliations
         if user_identity_sources is not UNSET:
             field_dict["user_identity_sources"] = user_identity_sources
+        if affiliation_uuid is not UNSET:
+            field_dict["affiliation_uuid"] = affiliation_uuid
         if science_sub_domain is not UNSET:
             field_dict["science_sub_domain"] = science_sub_domain
 
@@ -312,6 +324,23 @@ class ProjectRequest:
 
         user_identity_sources = d.pop("user_identity_sources", UNSET)
 
+        def _parse_affiliation_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                affiliation_uuid_type_0 = UUID(data)
+
+                return affiliation_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        affiliation_uuid = _parse_affiliation_uuid(d.pop("affiliation_uuid", UNSET))
+
         def _parse_science_sub_domain(data: object) -> Union[None, UUID, Unset]:
             if data is None:
                 return data
@@ -347,6 +376,7 @@ class ProjectRequest:
             user_email_patterns=user_email_patterns,
             user_affiliations=user_affiliations,
             user_identity_sources=user_identity_sources,
+            affiliation_uuid=affiliation_uuid,
             science_sub_domain=science_sub_domain,
         )
 

@@ -506,6 +506,7 @@ from .customer_contact_update_request import CustomerContactUpdateRequest
 from .customer_credit import CustomerCredit
 from .customer_credit_consumption import CustomerCreditConsumption
 from .customer_credit_o_enum import CustomerCreditOEnum
+from .customer_default_affiliations_update_request import CustomerDefaultAffiliationsUpdateRequest
 from .customer_details import CustomerDetails
 from .customer_estimated_cost_policy import CustomerEstimatedCostPolicy
 from .customer_estimated_cost_policy_request import CustomerEstimatedCostPolicyRequest
@@ -1630,7 +1631,7 @@ from .proficiency_level_enum import ProficiencyLevelEnum
 from .profile_completeness import ProfileCompleteness
 from .project import Project
 from .project_accounting_summary import ProjectAccountingSummary
-from .project_affiliated_organizations_update_request import ProjectAffiliatedOrganizationsUpdateRequest
+from .project_affiliation_update_request import ProjectAffiliationUpdateRequest
 from .project_answer import ProjectAnswer
 from .project_attach_request import ProjectAttachRequest
 from .project_classification_summary import ProjectClassificationSummary
@@ -2904,6 +2905,7 @@ __all__ = (
     "CustomerCredit",
     "CustomerCreditConsumption",
     "CustomerCreditOEnum",
+    "CustomerDefaultAffiliationsUpdateRequest",
     "CustomerDetails",
     "CustomerEstimatedCostPolicy",
     "CustomerEstimatedCostPolicyRequest",
@@ -3950,7 +3952,7 @@ __all__ = (
     "ProfileCompleteness",
     "Project",
     "ProjectAccountingSummary",
-    "ProjectAffiliatedOrganizationsUpdateRequest",
+    "ProjectAffiliationUpdateRequest",
     "ProjectAnswer",
     "ProjectAttachRequest",
     "ProjectClassificationSummary",

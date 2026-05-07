@@ -6,20 +6,20 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_affiliated_organizations_update_request import ProjectAffiliatedOrganizationsUpdateRequest
+from ...models.project_affiliation_update_request import ProjectAffiliationUpdateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ProjectAffiliatedOrganizationsUpdateRequest,
+    body: ProjectAffiliationUpdateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/openportal-unmanaged-projects/{uuid}/update_affiliated_organizations/",
+        "url": f"/api/openportal-unmanaged-projects/{uuid}/update_affiliation/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -51,15 +51,15 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectAffiliatedOrganizationsUpdateRequest,
+    body: ProjectAffiliationUpdateRequest,
 ) -> Response[Any]:
-    """Update affiliated organizations for a project
+    """Update affiliation for a project
 
-     Assigns a project to one or more affiliated organizations. Replaces the current set.
+     Assigns the project to a single affiliation (or clears it when null).
 
     Args:
         uuid (UUID):
-        body (ProjectAffiliatedOrganizationsUpdateRequest):
+        body (ProjectAffiliationUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -85,15 +85,15 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectAffiliatedOrganizationsUpdateRequest,
+    body: ProjectAffiliationUpdateRequest,
 ) -> Response[Any]:
-    """Update affiliated organizations for a project
+    """Update affiliation for a project
 
-     Assigns a project to one or more affiliated organizations. Replaces the current set.
+     Assigns the project to a single affiliation (or clears it when null).
 
     Args:
         uuid (UUID):
-        body (ProjectAffiliatedOrganizationsUpdateRequest):
+        body (ProjectAffiliationUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

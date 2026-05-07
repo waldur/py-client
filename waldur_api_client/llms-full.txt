@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.1-dev.20260506233332
+# Version: 8.0.9-rc.2-dev.20260507115207
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -589,10 +589,11 @@ Path parameters:
 
 ### affiliated_organizations_list
 GET /api/affiliated-organizations/
-Query parameters (7):
+Query parameters (8):
   - abbreviation — Abbreviation
   - code — Code
   - country — Country
+  - default_for_customer — Limit to a customer's default affiliation list
   - name — Name
   - name_exact — Name (exact)
   - o — Which field to use when ordering the results.
@@ -602,10 +603,11 @@ Query parameters (7):
 HEAD /api/affiliated-organizations/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (8):
   - abbreviation — Abbreviation
   - code — Code
   - country — Country
+  - default_for_customer — Limit to a customer's default affiliation list
   - name — Name
   - name_exact — Name (exact)
   - o — Which field to use when ordering the results.
@@ -619,10 +621,11 @@ Request body: yes
 GET /api/affiliated-organizations/report/
 Summary: Get affiliated organizations report
 Description: Staff-only report showing aggregated data for all affiliated organizations plus an unaffiliated row.
-Query parameters (7):
+Query parameters (8):
   - abbreviation — Abbreviation
   - code — Code
   - country — Country
+  - default_for_customer — Limit to a customer's default affiliation list
   - name — Name
   - name_exact — Name (exact)
   - o — Which field to use when ordering the results.
@@ -632,10 +635,11 @@ Query parameters (7):
 HEAD /api/affiliated-organizations/report/
 Summary: Get affiliated organizations report
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (8):
   - abbreviation — Abbreviation
   - code — Code
   - country — Country
+  - default_for_customer — Limit to a customer's default affiliation list
   - name — Name
   - name_exact — Name (exact)
   - o — Which field to use when ordering the results.
@@ -3768,6 +3772,14 @@ Request body: yes
 PATCH /api/customers/{uuid}/update-project-digest-config/
 Summary: Update project digest configuration
 Description: Update the project digest email configuration for this organization.
+Path parameters:
+  - uuid
+Request body: yes
+
+### customers_update_default_affiliations
+POST /api/customers/{uuid}/update_default_affiliations/
+Summary: Update default affiliations for an organization
+Description: Replaces the organization's default affiliation list. Project creators in the organization will be limited to choosing from this list when affiliating a project. Staff-only.
 Path parameters:
   - uuid
 Request body: yes
@@ -10811,8 +10823,8 @@ Description: Returns a paginated list of projects belonging to a specific custom
 Path parameters:
   - service_provider_uuid
 Query parameters (27):
-  - affiliated_organization_name — Affiliated organization name
-  - affiliated_organization_uuid — Affiliated organization UUID
+  - affiliation_name — Affiliation name
+  - affiliation_uuid — Affiliation UUID
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -10825,7 +10837,7 @@ Query parameters (27):
   - customer_native_name — Customer native name
   - description — Description
   - field
-  - has_affiliated_organization — Filter projects that have at least one affiliated organization.
+  - has_affiliation — Filter projects that have an affiliation.
   - is_removed — Is removed
   - modified — Modified after
   - modified_before — Modified before
@@ -10982,8 +10994,8 @@ Description: Returns a paginated list of all projects that have consumed resourc
 Path parameters:
   - service_provider_uuid
 Query parameters (26):
-  - affiliated_organization_name — Affiliated organization name
-  - affiliated_organization_uuid — Affiliated organization UUID
+  - affiliation_name — Affiliation name
+  - affiliation_uuid — Affiliation UUID
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -10996,7 +11008,7 @@ Query parameters (26):
   - customer_native_name — Customer native name
   - description — Description
   - field
-  - has_affiliated_organization — Filter projects that have at least one affiliated organization.
+  - has_affiliation — Filter projects that have an affiliation.
   - is_removed — Is removed
   - modified — Modified after
   - modified_before — Modified before
@@ -13655,8 +13667,8 @@ Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
 Query parameters (29):
   - accounting_is_running — Filter by whether accounting is running.
-  - affiliated_organization_name — Affiliated organization name
-  - affiliated_organization_uuid — Affiliated organization UUID
+  - affiliation_name — Affiliation name
+  - affiliation_uuid — Affiliation UUID
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -13669,7 +13681,7 @@ Query parameters (29):
   - customer_native_name — Customer native name
   - description — Description
   - field
-  - has_affiliated_organization — Filter projects that have at least one affiliated organization.
+  - has_affiliation — Filter projects that have an affiliation.
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
@@ -13690,8 +13702,8 @@ Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
 Query parameters (28):
   - accounting_is_running — Filter by whether accounting is running.
-  - affiliated_organization_name — Affiliated organization name
-  - affiliated_organization_uuid — Affiliated organization UUID
+  - affiliation_name — Affiliation name
+  - affiliation_uuid — Affiliation UUID
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -13703,7 +13715,7 @@ Query parameters (28):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
-  - has_affiliated_organization — Filter projects that have at least one affiliated organization.
+  - has_affiliation — Filter projects that have an affiliation.
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
@@ -13853,10 +13865,10 @@ Path parameters:
   - uuid
 Request body: yes
 
-### openportal_unmanaged_projects_update_affiliated_organizations
-POST /api/openportal-unmanaged-projects/{uuid}/update_affiliated_organizations/
-Summary: Update affiliated organizations for a project
-Description: Assigns a project to one or more affiliated organizations. Replaces the current set.
+### openportal_unmanaged_projects_update_affiliation
+POST /api/openportal-unmanaged-projects/{uuid}/update_affiliation/
+Summary: Update affiliation for a project
+Description: Assigns the project to a single affiliation (or clears it when null).
 Path parameters:
   - uuid
 Request body: yes
@@ -17230,8 +17242,8 @@ Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
 Query parameters (29):
   - accounting_is_running — Filter by whether accounting is running.
-  - affiliated_organization_name — Affiliated organization name
-  - affiliated_organization_uuid — Affiliated organization UUID
+  - affiliation_name — Affiliation name
+  - affiliation_uuid — Affiliation UUID
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -17244,7 +17256,7 @@ Query parameters (29):
   - customer_native_name — Customer native name
   - description — Description
   - field
-  - has_affiliated_organization — Filter projects that have at least one affiliated organization.
+  - has_affiliation — Filter projects that have an affiliation.
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
@@ -17265,8 +17277,8 @@ Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
 Query parameters (28):
   - accounting_is_running — Filter by whether accounting is running.
-  - affiliated_organization_name — Affiliated organization name
-  - affiliated_organization_uuid — Affiliated organization UUID
+  - affiliation_name — Affiliation name
+  - affiliation_uuid — Affiliation UUID
   - backend_id
   - can_admin — Return a list of projects where current user is admin.
   - can_manage — Return a list of projects where current user is manager or a customer owner.
@@ -17278,7 +17290,7 @@ Query parameters (28):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
-  - has_affiliated_organization — Filter projects that have at least one affiliated organization.
+  - has_affiliation — Filter projects that have an affiliation.
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
@@ -17459,10 +17471,10 @@ Description: Trigger user role sync for this project. Sends a notification to Ra
 Path parameters:
   - uuid
 
-### projects_update_affiliated_organizations
-POST /api/projects/{uuid}/update_affiliated_organizations/
-Summary: Update affiliated organizations for a project
-Description: Assigns a project to one or more affiliated organizations. Replaces the current set.
+### projects_update_affiliation
+POST /api/projects/{uuid}/update_affiliation/
+Summary: Update affiliation for a project
+Description: Assigns the project to a single affiliation (or clears it when null).
 Path parameters:
   - uuid
 Request body: yes

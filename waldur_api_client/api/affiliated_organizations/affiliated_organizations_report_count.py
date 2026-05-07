@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -13,6 +14,7 @@ def _get_kwargs(
     abbreviation: Union[Unset, str] = UNSET,
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
+    default_for_customer: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -27,6 +29,11 @@ def _get_kwargs(
     params["code"] = code
 
     params["country"] = country
+
+    json_default_for_customer: Union[Unset, str] = UNSET
+    if not isinstance(default_for_customer, Unset):
+        json_default_for_customer = str(default_for_customer)
+    params["default_for_customer"] = json_default_for_customer
 
     params["name"] = name
 
@@ -83,6 +90,7 @@ def sync_detailed(
     abbreviation: Union[Unset, str] = UNSET,
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
+    default_for_customer: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -98,6 +106,7 @@ def sync_detailed(
         abbreviation (Union[Unset, str]):
         code (Union[Unset, str]):
         country (Union[Unset, str]):
+        default_for_customer (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -117,6 +126,7 @@ def sync_detailed(
         abbreviation=abbreviation,
         code=code,
         country=country,
+        default_for_customer=default_for_customer,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -138,6 +148,7 @@ def sync(
     abbreviation: Union[Unset, str] = UNSET,
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
+    default_for_customer: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -153,6 +164,7 @@ def sync(
         abbreviation (Union[Unset, str]):
         code (Union[Unset, str]):
         country (Union[Unset, str]):
+        default_for_customer (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -173,6 +185,7 @@ def sync(
         abbreviation=abbreviation,
         code=code,
         country=country,
+        default_for_customer=default_for_customer,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -188,6 +201,7 @@ async def asyncio_detailed(
     abbreviation: Union[Unset, str] = UNSET,
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
+    default_for_customer: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -203,6 +217,7 @@ async def asyncio_detailed(
         abbreviation (Union[Unset, str]):
         code (Union[Unset, str]):
         country (Union[Unset, str]):
+        default_for_customer (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -222,6 +237,7 @@ async def asyncio_detailed(
         abbreviation=abbreviation,
         code=code,
         country=country,
+        default_for_customer=default_for_customer,
         name=name,
         name_exact=name_exact,
         o=o,
@@ -241,6 +257,7 @@ async def asyncio(
     abbreviation: Union[Unset, str] = UNSET,
     code: Union[Unset, str] = UNSET,
     country: Union[Unset, str] = UNSET,
+    default_for_customer: Union[Unset, UUID] = UNSET,
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -256,6 +273,7 @@ async def asyncio(
         abbreviation (Union[Unset, str]):
         code (Union[Unset, str]):
         country (Union[Unset, str]):
+        default_for_customer (Union[Unset, UUID]):
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -277,6 +295,7 @@ async def asyncio(
             abbreviation=abbreviation,
             code=code,
             country=country,
+            default_for_customer=default_for_customer,
             name=name,
             name_exact=name_exact,
             o=o,

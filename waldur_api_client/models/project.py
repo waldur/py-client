@@ -70,7 +70,7 @@ class Project:
         user_email_patterns (Union[Unset, Any]):
         user_affiliations (Union[Unset, Any]):
         user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
-        affiliated_organizations (Union[Unset, list['AffiliatedOrganization']]):
+        affiliation (Union[Unset, AffiliatedOrganization]):
         science_sub_domain (Union[None, UUID, Unset]):
         science_sub_domain_name (Union[Unset, str]):
         science_sub_domain_code (Union[Unset, str]): Sub-domain code (e.g. '1.1'). Auto-derived from domain code if left
@@ -121,7 +121,7 @@ class Project:
     user_email_patterns: Union[Unset, Any] = UNSET
     user_affiliations: Union[Unset, Any] = UNSET
     user_identity_sources: Union[Unset, Any] = UNSET
-    affiliated_organizations: Union[Unset, list["AffiliatedOrganization"]] = UNSET
+    affiliation: Union[Unset, "AffiliatedOrganization"] = UNSET
     science_sub_domain: Union[None, UUID, Unset] = UNSET
     science_sub_domain_name: Union[Unset, str] = UNSET
     science_sub_domain_code: Union[Unset, str] = UNSET
@@ -284,12 +284,9 @@ class Project:
 
         user_identity_sources = self.user_identity_sources
 
-        affiliated_organizations: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.affiliated_organizations, Unset):
-            affiliated_organizations = []
-            for affiliated_organizations_item_data in self.affiliated_organizations:
-                affiliated_organizations_item = affiliated_organizations_item_data.to_dict()
-                affiliated_organizations.append(affiliated_organizations_item)
+        affiliation: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.affiliation, Unset):
+            affiliation = self.affiliation.to_dict()
 
         science_sub_domain: Union[None, Unset, str]
         if isinstance(self.science_sub_domain, Unset):
@@ -404,8 +401,8 @@ class Project:
             field_dict["user_affiliations"] = user_affiliations
         if user_identity_sources is not UNSET:
             field_dict["user_identity_sources"] = user_identity_sources
-        if affiliated_organizations is not UNSET:
-            field_dict["affiliated_organizations"] = affiliated_organizations
+        if affiliation is not UNSET:
+            field_dict["affiliation"] = affiliation
         if science_sub_domain is not UNSET:
             field_dict["science_sub_domain"] = science_sub_domain
         if science_sub_domain_name is not UNSET:
@@ -677,12 +674,12 @@ class Project:
 
         user_identity_sources = d.pop("user_identity_sources", UNSET)
 
-        affiliated_organizations = []
-        _affiliated_organizations = d.pop("affiliated_organizations", UNSET)
-        for affiliated_organizations_item_data in _affiliated_organizations or []:
-            affiliated_organizations_item = AffiliatedOrganization.from_dict(affiliated_organizations_item_data)
-
-            affiliated_organizations.append(affiliated_organizations_item)
+        _affiliation = d.pop("affiliation", UNSET)
+        affiliation: Union[Unset, AffiliatedOrganization]
+        if isinstance(_affiliation, Unset):
+            affiliation = UNSET
+        else:
+            affiliation = AffiliatedOrganization.from_dict(_affiliation)
 
         def _parse_science_sub_domain(data: object) -> Union[None, UUID, Unset]:
             if data is None:
@@ -778,7 +775,7 @@ class Project:
             user_email_patterns=user_email_patterns,
             user_affiliations=user_affiliations,
             user_identity_sources=user_identity_sources,
-            affiliated_organizations=affiliated_organizations,
+            affiliation=affiliation,
             science_sub_domain=science_sub_domain,
             science_sub_domain_name=science_sub_domain_name,
             science_sub_domain_code=science_sub_domain_code,

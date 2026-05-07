@@ -96,11 +96,11 @@ Module: `waldur_api_client.api.admin_announcements`
 ## affiliated-organizations
 Module: `waldur_api_client.api.affiliated_organizations`
 
-- `affiliated_organizations_list` GET `/api/affiliated-organizations/` (7 query params)
-- `affiliated_organizations_count` HEAD `/api/affiliated-organizations/` — Get number of items in the collection matching the request parameters (7 query params)
+- `affiliated_organizations_list` GET `/api/affiliated-organizations/` (8 query params)
+- `affiliated_organizations_count` HEAD `/api/affiliated-organizations/` — Get number of items in the collection matching the request parameters (8 query params)
 - `affiliated_organizations_create` POST `/api/affiliated-organizations/` (request body)
-- `affiliated_organizations_report_list` GET `/api/affiliated-organizations/report/` — Get affiliated organizations report (7 query params)
-- `affiliated_organizations_report_count` HEAD `/api/affiliated-organizations/report/` — Get affiliated organizations report (7 query params)
+- `affiliated_organizations_report_list` GET `/api/affiliated-organizations/report/` — Get affiliated organizations report (8 query params)
+- `affiliated_organizations_report_count` HEAD `/api/affiliated-organizations/report/` — Get affiliated organizations report (8 query params)
 - `affiliated_organizations_retrieve` GET `/api/affiliated-organizations/{uuid}/` (path: uuid)
 - `affiliated_organizations_update` PUT `/api/affiliated-organizations/{uuid}/` (path: uuid | request body)
 - `affiliated_organizations_partial_update` PATCH `/api/affiliated-organizations/{uuid}/` (path: uuid | request body)
@@ -682,6 +682,7 @@ Module: `waldur_api_client.api.customers`
 - `customers_stats_retrieve` GET `/api/customers/{uuid}/stats/` — Get customer resource usage statistics (path: uuid | 1 query param)
 - `customers_update_project_digest_config_update` PUT `/api/customers/{uuid}/update-project-digest-config/` — Update project digest configuration (path: uuid | request body)
 - `customers_update_project_digest_config_partial_update` PATCH `/api/customers/{uuid}/update-project-digest-config/` — Update project digest configuration (path: uuid | request body)
+- `customers_update_default_affiliations` POST `/api/customers/{uuid}/update_default_affiliations/` — Update default affiliations for an organization (path: uuid | request body)
 - `customers_update_organization_groups` POST `/api/customers/{uuid}/update_organization_groups/` — Update organization groups for a customer (path: uuid | request body)
 - `customers_update_user` POST `/api/customers/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
@@ -2289,7 +2290,7 @@ Module: `waldur_api_client.api.openportal_unmanaged_projects`
 - `openportal_unmanaged_projects_recover` POST `/api/openportal-unmanaged-projects/{uuid}/recover/` — Recover a soft-deleted project (path: uuid | request body)
 - `openportal_unmanaged_projects_stats_retrieve` GET `/api/openportal-unmanaged-projects/{uuid}/stats/` — Get project resource usage statistics (path: uuid | 1 query param)
 - `openportal_unmanaged_projects_submit_answers` POST `/api/openportal-unmanaged-projects/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
-- `openportal_unmanaged_projects_update_affiliated_organizations` POST `/api/openportal-unmanaged-projects/{uuid}/update_affiliated_organizations/` — Update affiliated organizations for a project (path: uuid | request body)
+- `openportal_unmanaged_projects_update_affiliation` POST `/api/openportal-unmanaged-projects/{uuid}/update_affiliation/` — Update affiliation for a project (path: uuid | request body)
 - `openportal_unmanaged_projects_update_user` POST `/api/openportal-unmanaged-projects/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## openportal-userinfo
@@ -2823,7 +2824,7 @@ Module: `waldur_api_client.api.projects`
 - `projects_stats_retrieve` GET `/api/projects/{uuid}/stats/` — Get project resource usage statistics (path: uuid | 1 query param)
 - `projects_submit_answers` POST `/api/projects/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
 - `projects_sync_user_roles` POST `/api/projects/{uuid}/sync_user_roles/` — Trigger user role sync for this project (path: uuid)
-- `projects_update_affiliated_organizations` POST `/api/projects/{uuid}/update_affiliated_organizations/` — Update affiliated organizations for a project (path: uuid | request body)
+- `projects_update_affiliation` POST `/api/projects/{uuid}/update_affiliation/` — Update affiliation for a project (path: uuid | request body)
 - `projects_update_user` POST `/api/projects/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## promotions-campaigns

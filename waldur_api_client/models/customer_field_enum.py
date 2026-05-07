@@ -22,6 +22,7 @@ class CustomerFieldEnum(str, Enum):
     CREATED = "created"
     CUSTOMER_CREDIT = "customer_credit"
     CUSTOMER_UNALLOCATED_CREDIT = "customer_unallocated_credit"
+    DEFAULT_AFFILIATIONS = "default_affiliations"
     DEFAULT_TAX_PERCENT = "default_tax_percent"
     DESCRIPTION = "description"
     DISPLAY_BILLING_INFO_IN_PROJECTS = "display_billing_info_in_projects"
