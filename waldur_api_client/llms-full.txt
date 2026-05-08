@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.3-dev.20260507233342
+# Version: 8.0.9-rc.5-dev.20260508233333
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -11303,6 +11303,42 @@ POST /api/marketplace-site-agent-identities/{uuid}/register_service/
 Summary: Register a new processor or get the existing one for the agent service
 Path parameters:
   - uuid
+Request body: yes
+
+============================================================
+## marketplace-site-agent-logs  (module: waldur_api_client.api.marketplace_site_agent_logs)
+============================================================
+
+### marketplace_site_agent_logs_list
+GET /api/marketplace-site-agent-logs/
+Query parameters (5):
+  - agent_identity_uuid
+  - level
+  - offering_uuid
+  - timestamp_from
+  - timestamp_to
+
+### marketplace_site_agent_logs_count
+HEAD /api/marketplace-site-agent-logs/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (5):
+  - agent_identity_uuid
+  - level
+  - offering_uuid
+  - timestamp_from
+  - timestamp_to
+
+### marketplace_site_agent_logs_create
+POST /api/marketplace-site-agent-logs/
+Summary: Push site agent logs
+Description: Receive a batch of log entries from a site agent. Send a list where each entry includes agent_identity_uuid.
+Query parameters (5):
+  - agent_identity_uuid
+  - level
+  - offering_uuid
+  - timestamp_from
+  - timestamp_to
 Request body: yes
 
 ============================================================

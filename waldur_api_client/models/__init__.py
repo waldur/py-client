@@ -859,6 +859,7 @@ from .keys_history_at_retrieve_response_404 import KeysHistoryAtRetrieveResponse
 from .keyword_search_mode_enum import KeywordSearchModeEnum
 from .kind_enum import KindEnum
 from .lb_algorithm_enum import LbAlgorithmEnum
+from .level_enum import LevelEnum
 from .lexis_link import LexisLink
 from .lexis_link_create_request import LexisLinkCreateRequest
 from .lexis_link_request import LexisLinkRequest
@@ -2158,6 +2159,8 @@ from .sidebarstyle_enum import SIDEBARSTYLEEnum
 from .silence_action_request import SilenceActionRequest
 from .silence_action_response import SilenceActionResponse
 from .site_agent_config_generation_request import SiteAgentConfigGenerationRequest
+from .site_agent_log import SiteAgentLog
+from .site_agent_log_create_request import SiteAgentLogCreateRequest
 from .slurm_allocation import SlurmAllocation
 from .slurm_allocation_field_enum import SlurmAllocationFieldEnum
 from .slurm_allocation_marketplace_offering_plugin_options_type_0 import (
@@ -3265,6 +3268,7 @@ __all__ = (
     "KeywordSearchModeEnum",
     "KindEnum",
     "LbAlgorithmEnum",
+    "LevelEnum",
     "LexisLink",
     "LexisLinkCreateRequest",
     "LexisLinkRequest",
@@ -4474,6 +4478,8 @@ __all__ = (
     "SilenceActionRequest",
     "SilenceActionResponse",
     "SiteAgentConfigGenerationRequest",
+    "SiteAgentLog",
+    "SiteAgentLogCreateRequest",
     "SlurmAllocation",
     "SlurmAllocationFieldEnum",
     "SlurmAllocationMarketplaceOfferingPluginOptionsType0",

@@ -298,6 +298,7 @@ class ConstanceSettings:
         ssh_key_allowed_types (Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]]):
         ssh_key_min_rsa_key_size (Union[Unset, int]):
         enabled_reporting_screens (Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]]):
+        site_agent_log_max_rows_per_identity (Union[Unset, int]):
         pat_enabled (Union[Unset, bool]):
         pat_max_lifetime_days (Union[Unset, int]):
         pat_max_tokens_per_user (Union[Unset, int]):
@@ -565,6 +566,7 @@ class ConstanceSettings:
     ssh_key_allowed_types: Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]] = UNSET
     ssh_key_min_rsa_key_size: Union[Unset, int] = UNSET
     enabled_reporting_screens: Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]] = UNSET
+    site_agent_log_max_rows_per_identity: Union[Unset, int] = UNSET
     pat_enabled: Union[Unset, bool] = UNSET
     pat_max_lifetime_days: Union[Unset, int] = UNSET
     pat_max_tokens_per_user: Union[Unset, int] = UNSET
@@ -1301,6 +1303,8 @@ class ConstanceSettings:
 
                 enabled_reporting_screens.append(enabled_reporting_screens_item)
 
+        site_agent_log_max_rows_per_identity = self.site_agent_log_max_rows_per_identity
+
         pat_enabled = self.pat_enabled
 
         pat_max_lifetime_days = self.pat_max_lifetime_days
@@ -1844,6 +1848,8 @@ class ConstanceSettings:
             field_dict["SSH_KEY_MIN_RSA_KEY_SIZE"] = ssh_key_min_rsa_key_size
         if enabled_reporting_screens is not UNSET:
             field_dict["ENABLED_REPORTING_SCREENS"] = enabled_reporting_screens
+        if site_agent_log_max_rows_per_identity is not UNSET:
+            field_dict["SITE_AGENT_LOG_MAX_ROWS_PER_IDENTITY"] = site_agent_log_max_rows_per_identity
         if pat_enabled is not UNSET:
             field_dict["PAT_ENABLED"] = pat_enabled
         if pat_max_lifetime_days is not UNSET:
@@ -2800,6 +2806,8 @@ class ConstanceSettings:
 
             enabled_reporting_screens.append(enabled_reporting_screens_item)
 
+        site_agent_log_max_rows_per_identity = d.pop("SITE_AGENT_LOG_MAX_ROWS_PER_IDENTITY", UNSET)
+
         pat_enabled = d.pop("PAT_ENABLED", UNSET)
 
         pat_max_lifetime_days = d.pop("PAT_MAX_LIFETIME_DAYS", UNSET)
@@ -3069,6 +3077,7 @@ class ConstanceSettings:
             ssh_key_allowed_types=ssh_key_allowed_types,
             ssh_key_min_rsa_key_size=ssh_key_min_rsa_key_size,
             enabled_reporting_screens=enabled_reporting_screens,
+            site_agent_log_max_rows_per_identity=site_agent_log_max_rows_per_identity,
             pat_enabled=pat_enabled,
             pat_max_lifetime_days=pat_max_lifetime_days,
             pat_max_tokens_per_user=pat_max_tokens_per_user,

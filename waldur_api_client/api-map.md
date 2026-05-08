@@ -1829,6 +1829,13 @@ Module: `waldur_api_client.api.marketplace_site_agent_identities`
 - `marketplace_site_agent_identities_register_event_subscription` POST `/api/marketplace-site-agent-identities/{uuid}/register_event_subscription/` — Register an event subscription for the specified agent identity and observable object type (path: uuid | request body)
 - `marketplace_site_agent_identities_register_service` POST `/api/marketplace-site-agent-identities/{uuid}/register_service/` — Register a new processor or get the existing one for the agent service (path: uuid | request body)
 
+## marketplace-site-agent-logs
+Module: `waldur_api_client.api.marketplace_site_agent_logs`
+
+- `marketplace_site_agent_logs_list` GET `/api/marketplace-site-agent-logs/` (5 query params)
+- `marketplace_site_agent_logs_count` HEAD `/api/marketplace-site-agent-logs/` — Get number of items in the collection matching the request parameters (5 query params)
+- `marketplace_site_agent_logs_create` POST `/api/marketplace-site-agent-logs/` — Push site agent logs (5 query params | request body)
+
 ## marketplace-site-agent-processors
 Module: `waldur_api_client.api.marketplace_site_agent_processors`
 

@@ -3,6 +3,8 @@ from enum import Enum
 
 class ProjectFieldEnum(str, Enum):
     AFFILIATION = "affiliation"
+    AFFILIATION_CODE = "affiliation_code"
+    AFFILIATION_NAME = "affiliation_name"
     AFFILIATION_UUID = "affiliation_uuid"
     BACKEND_ID = "backend_id"
     BILLING_PRICE_ESTIMATE = "billing_price_estimate"

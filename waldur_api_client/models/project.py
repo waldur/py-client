@@ -71,6 +71,9 @@ class Project:
         user_affiliations (Union[Unset, Any]):
         user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
         affiliation (Union[Unset, AffiliatedOrganization]):
+        affiliation_uuid (Union[None, UUID, Unset]):
+        affiliation_name (Union[Unset, str]):
+        affiliation_code (Union[Unset, str]): Unique short identifier, e.g. CERN, EMBL.
         science_sub_domain (Union[None, UUID, Unset]):
         science_sub_domain_name (Union[Unset, str]):
         science_sub_domain_code (Union[Unset, str]): Sub-domain code (e.g. '1.1'). Auto-derived from domain code if left
@@ -122,6 +125,9 @@ class Project:
     user_affiliations: Union[Unset, Any] = UNSET
     user_identity_sources: Union[Unset, Any] = UNSET
     affiliation: Union[Unset, "AffiliatedOrganization"] = UNSET
+    affiliation_uuid: Union[None, UUID, Unset] = UNSET
+    affiliation_name: Union[Unset, str] = UNSET
+    affiliation_code: Union[Unset, str] = UNSET
     science_sub_domain: Union[None, UUID, Unset] = UNSET
     science_sub_domain_name: Union[Unset, str] = UNSET
     science_sub_domain_code: Union[Unset, str] = UNSET
@@ -288,6 +294,18 @@ class Project:
         if not isinstance(self.affiliation, Unset):
             affiliation = self.affiliation.to_dict()
 
+        affiliation_uuid: Union[None, Unset, str]
+        if isinstance(self.affiliation_uuid, Unset):
+            affiliation_uuid = UNSET
+        elif isinstance(self.affiliation_uuid, UUID):
+            affiliation_uuid = str(self.affiliation_uuid)
+        else:
+            affiliation_uuid = self.affiliation_uuid
+
+        affiliation_name = self.affiliation_name
+
+        affiliation_code = self.affiliation_code
+
         science_sub_domain: Union[None, Unset, str]
         if isinstance(self.science_sub_domain, Unset):
             science_sub_domain = UNSET
@@ -403,6 +421,12 @@ class Project:
             field_dict["user_identity_sources"] = user_identity_sources
         if affiliation is not UNSET:
             field_dict["affiliation"] = affiliation
+        if affiliation_uuid is not UNSET:
+            field_dict["affiliation_uuid"] = affiliation_uuid
+        if affiliation_name is not UNSET:
+            field_dict["affiliation_name"] = affiliation_name
+        if affiliation_code is not UNSET:
+            field_dict["affiliation_code"] = affiliation_code
         if science_sub_domain is not UNSET:
             field_dict["science_sub_domain"] = science_sub_domain
         if science_sub_domain_name is not UNSET:
@@ -681,6 +705,27 @@ class Project:
         else:
             affiliation = AffiliatedOrganization.from_dict(_affiliation)
 
+        def _parse_affiliation_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                affiliation_uuid_type_0 = UUID(data)
+
+                return affiliation_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        affiliation_uuid = _parse_affiliation_uuid(d.pop("affiliation_uuid", UNSET))
+
+        affiliation_name = d.pop("affiliation_name", UNSET)
+
+        affiliation_code = d.pop("affiliation_code", UNSET)
+
         def _parse_science_sub_domain(data: object) -> Union[None, UUID, Unset]:
             if data is None:
                 return data
@@ -776,6 +821,9 @@ class Project:
             user_affiliations=user_affiliations,
             user_identity_sources=user_identity_sources,
             affiliation=affiliation,
+            affiliation_uuid=affiliation_uuid,
+            affiliation_name=affiliation_name,
+            affiliation_code=affiliation_code,
             science_sub_domain=science_sub_domain,
             science_sub_domain_name=science_sub_domain_name,
             science_sub_domain_code=science_sub_domain_code,
