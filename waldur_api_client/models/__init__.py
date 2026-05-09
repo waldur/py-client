@@ -13,6 +13,7 @@ from .account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
 from .action_taken_enum import ActionTakenEnum
 from .active_queries_stats import ActiveQueriesStats
 from .active_query import ActiveQuery
+from .adjust_resource_dates_request import AdjustResourceDatesRequest
 from .admin_announcement import AdminAnnouncement
 from .admin_announcement_field_enum import AdminAnnouncementFieldEnum
 from .admin_announcement_maintenance_affected_offerings_item import AdminAnnouncementMaintenanceAffectedOfferingsItem
@@ -2448,6 +2449,7 @@ __all__ = (
     "ActionTakenEnum",
     "ActiveQueriesStats",
     "ActiveQuery",
+    "AdjustResourceDatesRequest",
     "AdminAnnouncement",
     "AdminAnnouncementFieldEnum",
     "AdminAnnouncementMaintenanceAffectedOfferingsItem",

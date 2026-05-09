@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.5-dev.20260508233333
+# Version: 8.0.9-rc.5-dev.20260509064617
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9380,6 +9380,14 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_resources_adjust_dates
+POST /api/marketplace-provider-resources/{uuid}/adjust_dates/
+Summary: Adjust resource start and end dates (staff only)
+Description: Updates both the originating order's start_date and the resource's end_date in one atomic operation. Intended for helpdesk-style prepaid offerings where staff need to shift the service window forward. Does not regenerate invoices, issue credits, or send notifications.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_resources_delete_user
 POST /api/marketplace-provider-resources/{uuid}/delete_user/
 Summary: Revoke a role from a user
@@ -10136,6 +10144,14 @@ Request body: yes
 POST /api/marketplace-resources/{uuid}/add_user/
 Summary: Grant a role to a user
 Description: Assigns a specific role to a user within the current scope. An optional expiration time for the role can be set.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resources_adjust_dates
+POST /api/marketplace-resources/{uuid}/adjust_dates/
+Summary: Adjust resource start and end dates (staff only)
+Description: Updates both the originating order's start_date and the resource's end_date in one atomic operation. Intended for helpdesk-style prepaid offerings where staff need to shift the service window forward. Does not regenerate invoices, issue credits, or send notifications.
 Path parameters:
   - uuid
 Request body: yes
