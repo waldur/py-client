@@ -1972,6 +1972,7 @@ from .resource_project_backend_id import ResourceProjectBackendId
 from .resource_project_backend_id_request import ResourceProjectBackendIdRequest
 from .resource_project_error_message import ResourceProjectErrorMessage
 from .resource_project_error_message_request import ResourceProjectErrorMessageRequest
+from .resource_project_recovery_request import ResourceProjectRecoveryRequest
 from .resource_project_request import ResourceProjectRequest
 from .resource_provisioning_stats import ResourceProvisioningStats
 from .resource_reallocate_limits_request import ResourceReallocateLimitsRequest
@@ -4292,6 +4293,7 @@ __all__ = (
     "ResourceProjectBackendIdRequest",
     "ResourceProjectErrorMessage",
     "ResourceProjectErrorMessageRequest",
+    "ResourceProjectRecoveryRequest",
     "ResourceProjectRequest",
     "ResourceProvisioningStats",
     "ResourceReallocateLimitsRequest",

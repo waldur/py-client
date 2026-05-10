@@ -1667,10 +1667,11 @@ Module: `waldur_api_client.api.marketplace_resource_projects`
 - `marketplace_resource_projects_retrieve` GET `/api/marketplace-resource-projects/{uuid}/` (path: uuid)
 - `marketplace_resource_projects_update` PUT `/api/marketplace-resource-projects/{uuid}/` (path: uuid | request body)
 - `marketplace_resource_projects_partial_update` PATCH `/api/marketplace-resource-projects/{uuid}/` (path: uuid | request body)
-- `marketplace_resource_projects_destroy` DELETE `/api/marketplace-resource-projects/{uuid}/` (path: uuid)
+- `marketplace_resource_projects_destroy` DELETE `/api/marketplace-resource-projects/{uuid}/` (path: uuid | 1 query param)
 - `marketplace_resource_projects_add_user` POST `/api/marketplace-resource-projects/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `marketplace_resource_projects_delete_user` POST `/api/marketplace-resource-projects/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `marketplace_resource_projects_list_users_list` GET `/api/marketplace-resource-projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `marketplace_resource_projects_recover` POST `/api/marketplace-resource-projects/{uuid}/recover/` — Recover a soft-deleted resource project (path: uuid | request body)
 - `marketplace_resource_projects_update_user` POST `/api/marketplace-resource-projects/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## marketplace-resources

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.5-dev.20260509233334
+# Version: 8.0.9-rc.5-dev.20260510122237
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9961,6 +9961,8 @@ Request body: yes
 DELETE /api/marketplace-resource-projects/{uuid}/
 Path parameters:
   - uuid
+Query parameters (1):
+  - force — Staff-only: when true, hard-delete the resource project instead of soft-deleting it.
 
 ### marketplace_resource_projects_add_user
 POST /api/marketplace-resource-projects/{uuid}/add_user/
@@ -9995,6 +9997,14 @@ Query parameters (10):
   - user_slug — User slug
   - user_url — User URL
   - username — User username
+
+### marketplace_resource_projects_recover
+POST /api/marketplace-resource-projects/{uuid}/recover/
+Summary: Recover a soft-deleted resource project
+Description: Flips is_removed back to False on a previously soft-deleted resource project. Optionally restores the team members captured at soft-delete time, or sends them new invitations. Pass ?include_removed=true on the lookup so the soft-deleted row can be resolved.
+Path parameters:
+  - uuid
+Request body: yes
 
 ### marketplace_resource_projects_update_user
 POST /api/marketplace-resource-projects/{uuid}/update_user/

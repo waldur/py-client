@@ -6,15 +6,24 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
+    *,
+    force: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    params["force"] = force
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "delete",
         "url": f"/api/marketplace-resource-projects/{uuid}/",
+        "params": params,
     }
 
     return _kwargs
@@ -41,10 +50,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    force: Union[Unset, bool] = UNSET,
 ) -> Response[Any]:
     """
     Args:
         uuid (UUID):
+        force (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -56,6 +67,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        force=force,
     )
 
     response = client.get_httpx_client().request(
@@ -69,10 +81,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    force: Union[Unset, bool] = UNSET,
 ) -> Response[Any]:
     """
     Args:
         uuid (UUID):
+        force (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -84,6 +98,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        force=force,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)

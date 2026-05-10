@@ -50,6 +50,9 @@ class MergedPluginOptions:
         create_orders_on_resource_option_change (Union[Unset, bool]): If set to True, create orders when options of
             related resources are changed.
         enable_resource_projects (Union[Unset, bool]): Enable sub-project management within resources.
+        auto_ok_resource_projects (Union[Unset, bool]): If set to True, newly-created resource projects are immediately
+            transitioned from CREATING to OK on save, bypassing the provider/site-agent reconciliation callback. Use for
+            offerings that have no external backend to reconcile against.
         resource_projects_limits_required (Union[Unset, bool]): If set to True, every limit-billing component declared
             by the offering must have a value when creating or updating a resource project. Use this for backends that
             reject projects without resource quotas (e.g. the rancher-keycloak-operator's project-level resourceQuota.limit
@@ -158,6 +161,7 @@ class MergedPluginOptions:
     conceal_billing_data: Union[Unset, bool] = UNSET
     create_orders_on_resource_option_change: Union[Unset, bool] = UNSET
     enable_resource_projects: Union[Unset, bool] = UNSET
+    auto_ok_resource_projects: Union[Unset, bool] = UNSET
     resource_projects_limits_required: Union[Unset, bool] = UNSET
     create_orders_on_resource_project_change: Union[Unset, bool] = UNSET
     can_restore_resource: Union[Unset, bool] = UNSET
@@ -257,6 +261,8 @@ class MergedPluginOptions:
         create_orders_on_resource_option_change = self.create_orders_on_resource_option_change
 
         enable_resource_projects = self.enable_resource_projects
+
+        auto_ok_resource_projects = self.auto_ok_resource_projects
 
         resource_projects_limits_required = self.resource_projects_limits_required
 
@@ -427,6 +433,8 @@ class MergedPluginOptions:
             field_dict["create_orders_on_resource_option_change"] = create_orders_on_resource_option_change
         if enable_resource_projects is not UNSET:
             field_dict["enable_resource_projects"] = enable_resource_projects
+        if auto_ok_resource_projects is not UNSET:
+            field_dict["auto_ok_resource_projects"] = auto_ok_resource_projects
         if resource_projects_limits_required is not UNSET:
             field_dict["resource_projects_limits_required"] = resource_projects_limits_required
         if create_orders_on_resource_project_change is not UNSET:
@@ -594,6 +602,8 @@ class MergedPluginOptions:
         create_orders_on_resource_option_change = d.pop("create_orders_on_resource_option_change", UNSET)
 
         enable_resource_projects = d.pop("enable_resource_projects", UNSET)
+
+        auto_ok_resource_projects = d.pop("auto_ok_resource_projects", UNSET)
 
         resource_projects_limits_required = d.pop("resource_projects_limits_required", UNSET)
 
@@ -765,6 +775,7 @@ class MergedPluginOptions:
             conceal_billing_data=conceal_billing_data,
             create_orders_on_resource_option_change=create_orders_on_resource_option_change,
             enable_resource_projects=enable_resource_projects,
+            auto_ok_resource_projects=auto_ok_resource_projects,
             resource_projects_limits_required=resource_projects_limits_required,
             create_orders_on_resource_project_change=create_orders_on_resource_project_change,
             can_restore_resource=can_restore_resource,
