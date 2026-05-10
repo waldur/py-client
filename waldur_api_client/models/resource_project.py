@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -28,6 +28,11 @@ class ResourceProject:
         resource_name (str):
         created (datetime.datetime):
         modified (datetime.datetime):
+        is_removed (bool):
+        removed_date (Union[None, datetime.datetime]):
+        removed_by (Union[None, int]):
+        removed_by_username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
+            characters
         description (Union[Unset, str]):
         limits (Union[Unset, Any]): Dictionary mapping component types to quota values. Same format as Resource.limits.
     """
@@ -43,6 +48,10 @@ class ResourceProject:
     resource_name: str
     created: datetime.datetime
     modified: datetime.datetime
+    is_removed: bool
+    removed_date: Union[None, datetime.datetime]
+    removed_by: Union[None, int]
+    removed_by_username: str
     description: Union[Unset, str] = UNSET
     limits: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -70,6 +79,19 @@ class ResourceProject:
 
         modified = self.modified.isoformat()
 
+        is_removed = self.is_removed
+
+        removed_date: Union[None, str]
+        if isinstance(self.removed_date, datetime.datetime):
+            removed_date = self.removed_date.isoformat()
+        else:
+            removed_date = self.removed_date
+
+        removed_by: Union[None, int]
+        removed_by = self.removed_by
+
+        removed_by_username = self.removed_by_username
+
         description = self.description
 
         limits = self.limits
@@ -89,6 +111,10 @@ class ResourceProject:
                 "resource_name": resource_name,
                 "created": created,
                 "modified": modified,
+                "is_removed": is_removed,
+                "removed_date": removed_date,
+                "removed_by": removed_by,
+                "removed_by_username": removed_by_username,
             }
         )
         if description is not UNSET:
@@ -123,6 +149,32 @@ class ResourceProject:
 
         modified = isoparse(d.pop("modified"))
 
+        is_removed = d.pop("is_removed")
+
+        def _parse_removed_date(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                removed_date_type_0 = isoparse(data)
+
+                return removed_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        removed_date = _parse_removed_date(d.pop("removed_date"))
+
+        def _parse_removed_by(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        removed_by = _parse_removed_by(d.pop("removed_by"))
+
+        removed_by_username = d.pop("removed_by_username")
+
         description = d.pop("description", UNSET)
 
         limits = d.pop("limits", UNSET)
@@ -139,6 +191,10 @@ class ResourceProject:
             resource_name=resource_name,
             created=created,
             modified=modified,
+            is_removed=is_removed,
+            removed_date=removed_date,
+            removed_by=removed_by,
+            removed_by_username=removed_by_username,
             description=description,
             limits=limits,
         )
