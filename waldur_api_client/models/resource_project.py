@@ -33,6 +33,7 @@ class ResourceProject:
         removed_by (Union[None, int]):
         removed_by_username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
             characters
+        termination_metadata (Any):
         description (Union[Unset, str]):
         limits (Union[Unset, Any]): Dictionary mapping component types to quota values. Same format as Resource.limits.
     """
@@ -52,6 +53,7 @@ class ResourceProject:
     removed_date: Union[None, datetime.datetime]
     removed_by: Union[None, int]
     removed_by_username: str
+    termination_metadata: Any
     description: Union[Unset, str] = UNSET
     limits: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -92,6 +94,8 @@ class ResourceProject:
 
         removed_by_username = self.removed_by_username
 
+        termination_metadata = self.termination_metadata
+
         description = self.description
 
         limits = self.limits
@@ -115,6 +119,7 @@ class ResourceProject:
                 "removed_date": removed_date,
                 "removed_by": removed_by,
                 "removed_by_username": removed_by_username,
+                "termination_metadata": termination_metadata,
             }
         )
         if description is not UNSET:
@@ -175,6 +180,8 @@ class ResourceProject:
 
         removed_by_username = d.pop("removed_by_username")
 
+        termination_metadata = d.pop("termination_metadata")
+
         description = d.pop("description", UNSET)
 
         limits = d.pop("limits", UNSET)
@@ -195,6 +202,7 @@ class ResourceProject:
             removed_date=removed_date,
             removed_by=removed_by,
             removed_by_username=removed_by_username,
+            termination_metadata=termination_metadata,
             description=description,
             limits=limits,
         )
