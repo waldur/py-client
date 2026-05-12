@@ -37,6 +37,8 @@ class ProviderOffering:
         resource_options (Union[Unset, Any]): Fields describing resource report form.
         secret_options (Union[Unset, MergedSecretOptions]):
         thumbnail (Union[None, Unset, str]):
+        offering_group_uuid (Union[None, UUID, Unset]):
+        offering_group_title (Union[None, Unset, str]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -54,6 +56,8 @@ class ProviderOffering:
     resource_options: Union[Unset, Any] = UNSET
     secret_options: Union[Unset, "MergedSecretOptions"] = UNSET
     thumbnail: Union[None, Unset, str] = UNSET
+    offering_group_uuid: Union[None, UUID, Unset] = UNSET
+    offering_group_title: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -111,6 +115,20 @@ class ProviderOffering:
         else:
             thumbnail = self.thumbnail
 
+        offering_group_uuid: Union[None, Unset, str]
+        if isinstance(self.offering_group_uuid, Unset):
+            offering_group_uuid = UNSET
+        elif isinstance(self.offering_group_uuid, UUID):
+            offering_group_uuid = str(self.offering_group_uuid)
+        else:
+            offering_group_uuid = self.offering_group_uuid
+
+        offering_group_title: Union[None, Unset, str]
+        if isinstance(self.offering_group_title, Unset):
+            offering_group_title = UNSET
+        else:
+            offering_group_title = self.offering_group_title
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -144,6 +162,10 @@ class ProviderOffering:
             field_dict["secret_options"] = secret_options
         if thumbnail is not UNSET:
             field_dict["thumbnail"] = thumbnail
+        if offering_group_uuid is not UNSET:
+            field_dict["offering_group_uuid"] = offering_group_uuid
+        if offering_group_title is not UNSET:
+            field_dict["offering_group_title"] = offering_group_title
 
         return field_dict
 
@@ -227,6 +249,32 @@ class ProviderOffering:
 
         thumbnail = _parse_thumbnail(d.pop("thumbnail", UNSET))
 
+        def _parse_offering_group_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                offering_group_uuid_type_0 = UUID(data)
+
+                return offering_group_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        offering_group_uuid = _parse_offering_group_uuid(d.pop("offering_group_uuid", UNSET))
+
+        def _parse_offering_group_title(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        offering_group_title = _parse_offering_group_title(d.pop("offering_group_title", UNSET))
+
         provider_offering = cls(
             uuid=uuid,
             customer_uuid=customer_uuid,
@@ -243,6 +291,8 @@ class ProviderOffering:
             resource_options=resource_options,
             secret_options=secret_options,
             thumbnail=thumbnail,
+            offering_group_uuid=offering_group_uuid,
+            offering_group_title=offering_group_title,
         )
 
         provider_offering.additional_properties = d

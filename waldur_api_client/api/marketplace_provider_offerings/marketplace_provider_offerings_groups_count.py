@@ -34,6 +34,7 @@ def _get_kwargs(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
+    offering_group_uuid: Union[Unset, UUID] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -128,6 +129,11 @@ def _get_kwargs(
             json_o.append(o_item)
 
     params["o"] = json_o
+
+    json_offering_group_uuid: Union[Unset, str] = UNSET
+    if not isinstance(offering_group_uuid, Unset):
+        json_offering_group_uuid = str(offering_group_uuid)
+    params["offering_group_uuid"] = json_offering_group_uuid
 
     json_organization_group_uuid: Union[Unset, str] = UNSET
     if not isinstance(organization_group_uuid, Unset):
@@ -271,6 +277,7 @@ def sync_detailed(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
+    offering_group_uuid: Union[Unset, UUID] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -318,6 +325,7 @@ def sync_detailed(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
+        offering_group_uuid (Union[Unset, UUID]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -369,6 +377,7 @@ def sync_detailed(
         name=name,
         name_exact=name_exact,
         o=o,
+        offering_group_uuid=offering_group_uuid,
         organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
@@ -422,6 +431,7 @@ def sync(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
+    offering_group_uuid: Union[Unset, UUID] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -469,6 +479,7 @@ def sync(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
+        offering_group_uuid (Union[Unset, UUID]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -521,6 +532,7 @@ def sync(
         name=name,
         name_exact=name_exact,
         o=o,
+        offering_group_uuid=offering_group_uuid,
         organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
@@ -568,6 +580,7 @@ async def asyncio_detailed(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
+    offering_group_uuid: Union[Unset, UUID] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -615,6 +628,7 @@ async def asyncio_detailed(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
+        offering_group_uuid (Union[Unset, UUID]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -666,6 +680,7 @@ async def asyncio_detailed(
         name=name,
         name_exact=name_exact,
         o=o,
+        offering_group_uuid=offering_group_uuid,
         organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
@@ -717,6 +732,7 @@ async def asyncio(
     name: Union[Unset, str] = UNSET,
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
+    offering_group_uuid: Union[Unset, UUID] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -764,6 +780,7 @@ async def asyncio(
         name (Union[Unset, str]):
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
+        offering_group_uuid (Union[Unset, UUID]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -817,6 +834,7 @@ async def asyncio(
             name=name,
             name_exact=name_exact,
             o=o,
+            offering_group_uuid=offering_group_uuid,
             organization_group_uuid=organization_group_uuid,
             page=page,
             page_size=page_size,

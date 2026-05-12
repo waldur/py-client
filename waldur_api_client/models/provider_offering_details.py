@@ -113,6 +113,9 @@ class ProviderOfferingDetails:
         compliance_checklist (Union[None, Unset, str]):
         profile_uuid (Union[None, UUID, Unset]):
         profile_name (Union[None, Unset, str]):
+        offering_group (Union[None, Unset, str]):
+        offering_group_uuid (Union[None, UUID, Unset]):
+        offering_group_title (Union[None, Unset, str]):
         integration_status (Union[None, Unset, list['IntegrationStatus']]):
         google_calendar_is_public (Union[None, Unset, bool]):
         google_calendar_link (Union[None, Unset, str]): Get the Google Calendar link for an offering.
@@ -190,6 +193,9 @@ class ProviderOfferingDetails:
     compliance_checklist: Union[None, Unset, str] = UNSET
     profile_uuid: Union[None, UUID, Unset] = UNSET
     profile_name: Union[None, Unset, str] = UNSET
+    offering_group: Union[None, Unset, str] = UNSET
+    offering_group_uuid: Union[None, UUID, Unset] = UNSET
+    offering_group_title: Union[None, Unset, str] = UNSET
     integration_status: Union[None, Unset, list["IntegrationStatus"]] = UNSET
     google_calendar_is_public: Union[None, Unset, bool] = UNSET
     google_calendar_link: Union[None, Unset, str] = UNSET
@@ -522,6 +528,26 @@ class ProviderOfferingDetails:
         else:
             profile_name = self.profile_name
 
+        offering_group: Union[None, Unset, str]
+        if isinstance(self.offering_group, Unset):
+            offering_group = UNSET
+        else:
+            offering_group = self.offering_group
+
+        offering_group_uuid: Union[None, Unset, str]
+        if isinstance(self.offering_group_uuid, Unset):
+            offering_group_uuid = UNSET
+        elif isinstance(self.offering_group_uuid, UUID):
+            offering_group_uuid = str(self.offering_group_uuid)
+        else:
+            offering_group_uuid = self.offering_group_uuid
+
+        offering_group_title: Union[None, Unset, str]
+        if isinstance(self.offering_group_title, Unset):
+            offering_group_title = UNSET
+        else:
+            offering_group_title = self.offering_group_title
+
         integration_status: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.integration_status, Unset):
             integration_status = UNSET
@@ -693,6 +719,12 @@ class ProviderOfferingDetails:
             field_dict["profile_uuid"] = profile_uuid
         if profile_name is not UNSET:
             field_dict["profile_name"] = profile_name
+        if offering_group is not UNSET:
+            field_dict["offering_group"] = offering_group
+        if offering_group_uuid is not UNSET:
+            field_dict["offering_group_uuid"] = offering_group_uuid
+        if offering_group_title is not UNSET:
+            field_dict["offering_group_title"] = offering_group_title
         if integration_status is not UNSET:
             field_dict["integration_status"] = integration_status
         if google_calendar_is_public is not UNSET:
@@ -1192,6 +1224,41 @@ class ProviderOfferingDetails:
 
         profile_name = _parse_profile_name(d.pop("profile_name", UNSET))
 
+        def _parse_offering_group(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        offering_group = _parse_offering_group(d.pop("offering_group", UNSET))
+
+        def _parse_offering_group_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                offering_group_uuid_type_0 = UUID(data)
+
+                return offering_group_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        offering_group_uuid = _parse_offering_group_uuid(d.pop("offering_group_uuid", UNSET))
+
+        def _parse_offering_group_title(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        offering_group_title = _parse_offering_group_title(d.pop("offering_group_title", UNSET))
+
         def _parse_integration_status(data: object) -> Union[None, Unset, list["IntegrationStatus"]]:
             if data is None:
                 return data
@@ -1305,6 +1372,9 @@ class ProviderOfferingDetails:
             compliance_checklist=compliance_checklist,
             profile_uuid=profile_uuid,
             profile_name=profile_name,
+            offering_group=offering_group,
+            offering_group_uuid=offering_group_uuid,
+            offering_group_title=offering_group_title,
             integration_status=integration_status,
             google_calendar_is_public=google_calendar_is_public,
             google_calendar_link=google_calendar_link,

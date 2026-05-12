@@ -199,6 +199,12 @@ class ConstanceSettingsRequestMultipart:
         scim_api_url (Union[Unset, str]):
         scim_api_key (Union[Unset, str]):
         scim_urn_namespace (Union[Unset, str]):
+        scim_inbound_enabled (Union[Unset, bool]):
+        scim_inbound_source_name (Union[Unset, str]):
+        scim_inbound_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
+        scim_pull_api_url (Union[Unset, str]):
+        scim_pull_api_key (Union[Unset, str]):
+        scim_pull_source_name (Union[Unset, str]):
         keycloak_icon (Union[File, None, Unset]):
         countries (Union[Unset, list[str]]):
         oidc_auth_url (Union[Unset, str]):
@@ -467,6 +473,12 @@ class ConstanceSettingsRequestMultipart:
     scim_api_url: Union[Unset, str] = UNSET
     scim_api_key: Union[Unset, str] = UNSET
     scim_urn_namespace: Union[Unset, str] = UNSET
+    scim_inbound_enabled: Union[Unset, bool] = UNSET
+    scim_inbound_source_name: Union[Unset, str] = UNSET
+    scim_inbound_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
+    scim_pull_api_url: Union[Unset, str] = UNSET
+    scim_pull_api_key: Union[Unset, str] = UNSET
+    scim_pull_source_name: Union[Unset, str] = UNSET
     keycloak_icon: Union[File, None, Unset] = UNSET
     countries: Union[Unset, list[str]] = UNSET
     oidc_auth_url: Union[Unset, str] = UNSET
@@ -1004,6 +1016,28 @@ class ConstanceSettingsRequestMultipart:
         scim_api_key = self.scim_api_key
 
         scim_urn_namespace = self.scim_urn_namespace
+
+        scim_inbound_enabled = self.scim_inbound_enabled
+
+        scim_inbound_source_name = self.scim_inbound_source_name
+
+        scim_inbound_allowed_attributes: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.scim_inbound_allowed_attributes, Unset):
+            scim_inbound_allowed_attributes = []
+            for scim_inbound_allowed_attributes_item_data in self.scim_inbound_allowed_attributes:
+                scim_inbound_allowed_attributes_item: str
+                if isinstance(scim_inbound_allowed_attributes_item_data, UserAttributeEnum):
+                    scim_inbound_allowed_attributes_item = scim_inbound_allowed_attributes_item_data.value
+                else:
+                    scim_inbound_allowed_attributes_item = scim_inbound_allowed_attributes_item_data.value
+
+                scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
+
+        scim_pull_api_url = self.scim_pull_api_url
+
+        scim_pull_api_key = self.scim_pull_api_key
+
+        scim_pull_source_name = self.scim_pull_source_name
 
         keycloak_icon: Union[None, Unset, types.FileTypes]
         if isinstance(self.keycloak_icon, Unset):
@@ -1675,6 +1709,18 @@ class ConstanceSettingsRequestMultipart:
             field_dict["SCIM_API_KEY"] = scim_api_key
         if scim_urn_namespace is not UNSET:
             field_dict["SCIM_URN_NAMESPACE"] = scim_urn_namespace
+        if scim_inbound_enabled is not UNSET:
+            field_dict["SCIM_INBOUND_ENABLED"] = scim_inbound_enabled
+        if scim_inbound_source_name is not UNSET:
+            field_dict["SCIM_INBOUND_SOURCE_NAME"] = scim_inbound_source_name
+        if scim_inbound_allowed_attributes is not UNSET:
+            field_dict["SCIM_INBOUND_ALLOWED_ATTRIBUTES"] = scim_inbound_allowed_attributes
+        if scim_pull_api_url is not UNSET:
+            field_dict["SCIM_PULL_API_URL"] = scim_pull_api_url
+        if scim_pull_api_key is not UNSET:
+            field_dict["SCIM_PULL_API_KEY"] = scim_pull_api_key
+        if scim_pull_source_name is not UNSET:
+            field_dict["SCIM_PULL_SOURCE_NAME"] = scim_pull_source_name
         if keycloak_icon is not UNSET:
             field_dict["KEYCLOAK_ICON"] = keycloak_icon
         if countries is not UNSET:
@@ -2637,6 +2683,40 @@ class ConstanceSettingsRequestMultipart:
 
         if not isinstance(self.scim_urn_namespace, Unset):
             files.append(("SCIM_URN_NAMESPACE", (None, str(self.scim_urn_namespace).encode(), "text/plain")))
+
+        if not isinstance(self.scim_inbound_enabled, Unset):
+            files.append(("SCIM_INBOUND_ENABLED", (None, str(self.scim_inbound_enabled).encode(), "text/plain")))
+
+        if not isinstance(self.scim_inbound_source_name, Unset):
+            files.append(
+                ("SCIM_INBOUND_SOURCE_NAME", (None, str(self.scim_inbound_source_name).encode(), "text/plain"))
+            )
+
+        if not isinstance(self.scim_inbound_allowed_attributes, Unset):
+            for scim_inbound_allowed_attributes_item_element in self.scim_inbound_allowed_attributes:
+                if isinstance(scim_inbound_allowed_attributes_item_element, UserAttributeEnum):
+                    files.append(
+                        (
+                            "SCIM_INBOUND_ALLOWED_ATTRIBUTES",
+                            (None, str(scim_inbound_allowed_attributes_item_element.value).encode(), "text/plain"),
+                        )
+                    )
+                else:
+                    files.append(
+                        (
+                            "SCIM_INBOUND_ALLOWED_ATTRIBUTES",
+                            (None, str(scim_inbound_allowed_attributes_item_element.value).encode(), "text/plain"),
+                        )
+                    )
+
+        if not isinstance(self.scim_pull_api_url, Unset):
+            files.append(("SCIM_PULL_API_URL", (None, str(self.scim_pull_api_url).encode(), "text/plain")))
+
+        if not isinstance(self.scim_pull_api_key, Unset):
+            files.append(("SCIM_PULL_API_KEY", (None, str(self.scim_pull_api_key).encode(), "text/plain")))
+
+        if not isinstance(self.scim_pull_source_name, Unset):
+            files.append(("SCIM_PULL_SOURCE_NAME", (None, str(self.scim_pull_source_name).encode(), "text/plain")))
 
         if not isinstance(self.keycloak_icon, Unset):
             if isinstance(self.keycloak_icon, File):
@@ -4049,6 +4129,41 @@ class ConstanceSettingsRequestMultipart:
 
         scim_urn_namespace = d.pop("SCIM_URN_NAMESPACE", UNSET)
 
+        scim_inbound_enabled = d.pop("SCIM_INBOUND_ENABLED", UNSET)
+
+        scim_inbound_source_name = d.pop("SCIM_INBOUND_SOURCE_NAME", UNSET)
+
+        scim_inbound_allowed_attributes = []
+        _scim_inbound_allowed_attributes = d.pop("SCIM_INBOUND_ALLOWED_ATTRIBUTES", UNSET)
+        for scim_inbound_allowed_attributes_item_data in _scim_inbound_allowed_attributes or []:
+
+            def _parse_scim_inbound_allowed_attributes_item(data: object) -> Union[BlankEnum, UserAttributeEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    scim_inbound_allowed_attributes_item_type_0 = UserAttributeEnum(data)
+
+                    return scim_inbound_allowed_attributes_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                scim_inbound_allowed_attributes_item_type_1 = BlankEnum(data)
+
+                return scim_inbound_allowed_attributes_item_type_1
+
+            scim_inbound_allowed_attributes_item = _parse_scim_inbound_allowed_attributes_item(
+                scim_inbound_allowed_attributes_item_data
+            )
+
+            scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
+
+        scim_pull_api_url = d.pop("SCIM_PULL_API_URL", UNSET)
+
+        scim_pull_api_key = d.pop("SCIM_PULL_API_KEY", UNSET)
+
+        scim_pull_source_name = d.pop("SCIM_PULL_SOURCE_NAME", UNSET)
+
         def _parse_keycloak_icon(data: object) -> Union[File, None, Unset]:
             if data is None:
                 return data
@@ -4700,6 +4815,12 @@ class ConstanceSettingsRequestMultipart:
             scim_api_url=scim_api_url,
             scim_api_key=scim_api_key,
             scim_urn_namespace=scim_urn_namespace,
+            scim_inbound_enabled=scim_inbound_enabled,
+            scim_inbound_source_name=scim_inbound_source_name,
+            scim_inbound_allowed_attributes=scim_inbound_allowed_attributes,
+            scim_pull_api_url=scim_pull_api_url,
+            scim_pull_api_key=scim_pull_api_key,
+            scim_pull_source_name=scim_pull_source_name,
             keycloak_icon=keycloak_icon,
             countries=countries,
             oidc_auth_url=oidc_auth_url,

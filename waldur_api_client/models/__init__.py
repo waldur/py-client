@@ -1098,6 +1098,12 @@ from .offering_file_field_enum import OfferingFileFieldEnum
 from .offering_file_request import OfferingFileRequest
 from .offering_file_request_form import OfferingFileRequestForm
 from .offering_file_request_multipart import OfferingFileRequestMultipart
+from .offering_group import OfferingGroup
+from .offering_group_assign_request import OfferingGroupAssignRequest
+from .offering_group_field_enum import OfferingGroupFieldEnum
+from .offering_group_request import OfferingGroupRequest
+from .offering_group_request_form import OfferingGroupRequestForm
+from .offering_group_request_multipart import OfferingGroupRequestMultipart
 from .offering_groups import OfferingGroups
 from .offering_image_request import OfferingImageRequest
 from .offering_image_request_form import OfferingImageRequestForm
@@ -1488,6 +1494,9 @@ from .patched_notification_template_detail_serializers_request import (
     PatchedNotificationTemplateDetailSerializersRequest,
 )
 from .patched_offering_estimated_cost_policy_request import PatchedOfferingEstimatedCostPolicyRequest
+from .patched_offering_group_request import PatchedOfferingGroupRequest
+from .patched_offering_group_request_form import PatchedOfferingGroupRequestForm
+from .patched_offering_group_request_multipart import PatchedOfferingGroupRequestMultipart
 from .patched_offering_partition_update_request import PatchedOfferingPartitionUpdateRequest
 from .patched_offering_profile_request import PatchedOfferingProfileRequest
 from .patched_offering_role_request import PatchedOfferingRoleRequest
@@ -2107,6 +2116,7 @@ from .science_domain_request import ScienceDomainRequest
 from .science_sub_domain import ScienceSubDomain
 from .science_sub_domain_o_enum import ScienceSubDomainOEnum
 from .science_sub_domain_request import ScienceSubDomainRequest
+from .scim_pull_attributes_response import ScimPullAttributesResponse
 from .scim_sync_all_response import ScimSyncAllResponse
 from .screenshot import Screenshot
 from .screenshot_request import ScreenshotRequest
@@ -3489,6 +3499,12 @@ __all__ = (
     "OfferingFileRequest",
     "OfferingFileRequestForm",
     "OfferingFileRequestMultipart",
+    "OfferingGroup",
+    "OfferingGroupAssignRequest",
+    "OfferingGroupFieldEnum",
+    "OfferingGroupRequest",
+    "OfferingGroupRequestForm",
+    "OfferingGroupRequestMultipart",
     "OfferingGroups",
     "OfferingImageRequest",
     "OfferingImageRequestForm",
@@ -3839,6 +3855,9 @@ __all__ = (
     "PatchedNotificationRequest",
     "PatchedNotificationTemplateDetailSerializersRequest",
     "PatchedOfferingEstimatedCostPolicyRequest",
+    "PatchedOfferingGroupRequest",
+    "PatchedOfferingGroupRequestForm",
+    "PatchedOfferingGroupRequestMultipart",
     "PatchedOfferingPartitionUpdateRequest",
     "PatchedOfferingProfileRequest",
     "PatchedOfferingRoleRequest",
@@ -4428,6 +4447,7 @@ __all__ = (
     "ScienceSubDomain",
     "ScienceSubDomainOEnum",
     "ScienceSubDomainRequest",
+    "ScimPullAttributesResponse",
     "ScimSyncAllResponse",
     "Screenshot",
     "ScreenshotRequest",

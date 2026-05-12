@@ -1268,6 +1268,17 @@ Module: `waldur_api_client.api.marketplace_offering_files`
 - `marketplace_offering_files_retrieve` GET `/api/marketplace-offering-files/{uuid}/` (path: uuid | 1 query param)
 - `marketplace_offering_files_destroy` DELETE `/api/marketplace-offering-files/{uuid}/` (path: uuid)
 
+## marketplace-offering-groups
+Module: `waldur_api_client.api.marketplace_offering_groups`
+
+- `marketplace_offering_groups_list` GET `/api/marketplace-offering-groups/` (3 query params)
+- `marketplace_offering_groups_count` HEAD `/api/marketplace-offering-groups/` — Get number of items in the collection matching the request parameters (2 query params)
+- `marketplace_offering_groups_create` POST `/api/marketplace-offering-groups/` (request body)
+- `marketplace_offering_groups_retrieve` GET `/api/marketplace-offering-groups/{uuid}/` (path: uuid | 1 query param)
+- `marketplace_offering_groups_update` PUT `/api/marketplace-offering-groups/{uuid}/` (path: uuid | request body)
+- `marketplace_offering_groups_partial_update` PATCH `/api/marketplace-offering-groups/{uuid}/` (path: uuid | request body)
+- `marketplace_offering_groups_destroy` DELETE `/api/marketplace-offering-groups/{uuid}/` (path: uuid)
+
 ## marketplace-offering-permissions
 Module: `waldur_api_client.api.marketplace_offering_permissions`
 
@@ -1480,11 +1491,11 @@ Module: `waldur_api_client.api.marketplace_project_usage`
 ## marketplace-provider-offerings
 Module: `waldur_api_client.api.marketplace_provider_offerings`
 
-- `marketplace_provider_offerings_list` GET `/api/marketplace-provider-offerings/` — List provider offerings (41 query params)
-- `marketplace_provider_offerings_count` HEAD `/api/marketplace-provider-offerings/` — List provider offerings (40 query params)
+- `marketplace_provider_offerings_list` GET `/api/marketplace-provider-offerings/` — List provider offerings (42 query params)
+- `marketplace_provider_offerings_count` HEAD `/api/marketplace-provider-offerings/` — List provider offerings (41 query params)
 - `marketplace_provider_offerings_create` POST `/api/marketplace-provider-offerings/` — Create a provider offering (request body)
-- `marketplace_provider_offerings_groups_list` GET `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (39 query params)
-- `marketplace_provider_offerings_groups_count` HEAD `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (39 query params)
+- `marketplace_provider_offerings_groups_list` GET `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (40 query params)
+- `marketplace_provider_offerings_groups_count` HEAD `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (40 query params)
 - `marketplace_provider_offerings_import_offering` POST `/api/marketplace-provider-offerings/import_offering/` — Import offering data (request body)
 - `marketplace_provider_offerings_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/` — Retrieve a provider offering (path: uuid | 1 query param)
 - `marketplace_provider_offerings_destroy` DELETE `/api/marketplace-provider-offerings/{uuid}/` — Delete a provider offering (path: uuid)
@@ -1495,10 +1506,10 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_add_user` POST `/api/marketplace-provider-offerings/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `marketplace_provider_offerings_archive` POST `/api/marketplace-provider-offerings/{uuid}/archive/` — Archive an offering (path: uuid)
 - `marketplace_provider_offerings_check_unique_backend_id` POST `/api/marketplace-provider-offerings/{uuid}/check_unique_backend_id/` — Check if backend_id is unique (path: uuid | request body)
-- `marketplace_provider_offerings_component_stats_list` GET `/api/marketplace-provider-offerings/{uuid}/component_stats/` — Get statistics for offering components (path: uuid | 42 query params)
-- `marketplace_provider_offerings_costs_list` GET `/api/marketplace-provider-offerings/{uuid}/costs/` — Get costs for an offering (path: uuid | 43 query params)
+- `marketplace_provider_offerings_component_stats_list` GET `/api/marketplace-provider-offerings/{uuid}/component_stats/` — Get statistics for offering components (path: uuid | 43 query params)
+- `marketplace_provider_offerings_costs_list` GET `/api/marketplace-provider-offerings/{uuid}/costs/` — Get costs for an offering (path: uuid | 44 query params)
 - `marketplace_provider_offerings_create_offering_component` POST `/api/marketplace-provider-offerings/{uuid}/create_offering_component/` — Create an offering component (path: uuid | request body)
-- `marketplace_provider_offerings_customers_list` GET `/api/marketplace-provider-offerings/{uuid}/customers/` — Get customers for an offering (path: uuid | 41 query params)
+- `marketplace_provider_offerings_customers_list` GET `/api/marketplace-provider-offerings/{uuid}/customers/` — Get customers for an offering (path: uuid | 42 query params)
 - `marketplace_provider_offerings_delete_user_attribute_config_destroy` DELETE `/api/marketplace-provider-offerings/{uuid}/delete-user-attribute-config/` — Delete user attribute config (path: uuid)
 - `marketplace_provider_offerings_delete_endpoint` POST `/api/marketplace-provider-offerings/{uuid}/delete_endpoint/` — Delete an access endpoint from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_delete_image` POST `/api/marketplace-provider-offerings/{uuid}/delete_image/` — Delete offering image (path: uuid)
@@ -1509,15 +1520,15 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_draft` POST `/api/marketplace-provider-offerings/{uuid}/draft/` — Move an offering to draft (path: uuid)
 - `marketplace_provider_offerings_export_offering` POST `/api/marketplace-provider-offerings/{uuid}/export_offering/` — Export offering data (path: uuid | request body)
 - `marketplace_provider_offerings_glauth_users_config_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/glauth_users_config/` — Get GLauth user configuration (path: uuid)
-- `marketplace_provider_offerings_history_list` GET `/api/marketplace-provider-offerings/{uuid}/history/` — Get version history (path: uuid | 41 query params)
+- `marketplace_provider_offerings_history_list` GET `/api/marketplace-provider-offerings/{uuid}/history/` — Get version history (path: uuid | 42 query params)
 - `marketplace_provider_offerings_history_at_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `marketplace_provider_offerings_import_resource` POST `/api/marketplace-provider-offerings/{uuid}/import_resource/` — Import a resource (path: uuid | request body)
 - `marketplace_provider_offerings_importable_resources_list` GET `/api/marketplace-provider-offerings/{uuid}/importable_resources/` — List importable resources (path: uuid)
-- `marketplace_provider_offerings_list_course_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_course_accounts/` — List course accounts for an offering (path: uuid | 40 query params)
+- `marketplace_provider_offerings_list_course_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_course_accounts/` — List course accounts for an offering (path: uuid | 41 query params)
 - `marketplace_provider_offerings_list_customer_projects_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_projects/` — List customer projects for an offering (path: uuid | 1 query param)
-- `marketplace_provider_offerings_list_customer_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_service_accounts/` — List customer service accounts for an offering (path: uuid | 40 query params)
+- `marketplace_provider_offerings_list_customer_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_service_accounts/` — List customer service accounts for an offering (path: uuid | 41 query params)
 - `marketplace_provider_offerings_list_customer_users_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_users/` — List customer users for an offering (path: uuid | 1 query param)
-- `marketplace_provider_offerings_list_project_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_project_service_accounts/` — List project service accounts for an offering (path: uuid | 40 query params)
+- `marketplace_provider_offerings_list_project_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_project_service_accounts/` — List project service accounts for an offering (path: uuid | 41 query params)
 - `marketplace_provider_offerings_list_users_list` GET `/api/marketplace-provider-offerings/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `marketplace_provider_offerings_make_available` POST `/api/marketplace-provider-offerings/{uuid}/make_available/` — Mark an offering as available (path: uuid)
 - `marketplace_provider_offerings_make_unavailable` POST `/api/marketplace-provider-offerings/{uuid}/make_unavailable/` — Mark an offering as unavailable (path: uuid)
@@ -1530,6 +1541,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_remove_partition` POST `/api/marketplace-provider-offerings/{uuid}/remove_partition/` — Remove a partition from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_remove_software_catalog` POST `/api/marketplace-provider-offerings/{uuid}/remove_software_catalog/` — Remove a software catalog from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_set_backend_metadata` POST `/api/marketplace-provider-offerings/{uuid}/set_backend_metadata/` — Set offering backend metadata (path: uuid | request body)
+- `marketplace_provider_offerings_set_offering_group` POST `/api/marketplace-provider-offerings/{uuid}/set_offering_group/` — Assign or clear the offering group (path: uuid | request body)
 - `marketplace_provider_offerings_set_profile` POST `/api/marketplace-provider-offerings/{uuid}/set_profile/` — Bind / unbind offering to a service profile (path: uuid | request body)
 - `marketplace_provider_offerings_state_counters_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/state_counters/` — Get offering resource and user state counters (path: uuid)
 - `marketplace_provider_offerings_stats_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/stats/` — Get offering statistics (path: uuid)
@@ -1630,8 +1642,8 @@ Module: `waldur_api_client.api.marketplace_public_api`
 ## marketplace-public-offerings
 Module: `waldur_api_client.api.marketplace_public_offerings`
 
-- `marketplace_public_offerings_list` GET `/api/marketplace-public-offerings/` — List public offerings (40 query params)
-- `marketplace_public_offerings_count` HEAD `/api/marketplace-public-offerings/` — List public offerings (39 query params)
+- `marketplace_public_offerings_list` GET `/api/marketplace-public-offerings/` — List public offerings (41 query params)
+- `marketplace_public_offerings_count` HEAD `/api/marketplace-public-offerings/` — List public offerings (40 query params)
 - `marketplace_public_offerings_retrieve` GET `/api/marketplace-public-offerings/{uuid}/` — Retrieve a public offering (path: uuid | 1 query param)
 - `marketplace_public_offerings_plans_list` GET `/api/marketplace-public-offerings/{uuid}/plans/` — List plans for an offering (path: uuid)
 - `marketplace_public_offerings_plans_retrieve` GET `/api/marketplace-public-offerings/{uuid}/plans/{plan_uuid}/` — Retrieve a specific plan for an offering (path: plan_uuid, uuid)
@@ -1791,7 +1803,7 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 27 query params)
 - `marketplace_service_providers_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customers/` — List customers of a service provider (path: service_provider_uuid | 16 query params)
 - `marketplace_service_providers_keys_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 13 query params)
-- `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 40 query params)
+- `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 41 query params)
 - `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 18 query params)
 - `marketplace_service_providers_project_service_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/` — List project service accounts for a service provider (path: service_provider_uuid | 5 query params)
 - `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 26 query params)
@@ -3706,6 +3718,7 @@ Module: `waldur_api_client.api.users`
 - `users_history_at_retrieve` GET `/api/users/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `users_identity_bridge_status_retrieve` GET `/api/users/{uuid}/identity_bridge_status/` — Get identity bridge status for a user (path: uuid)
 - `users_pull_remote_user` POST `/api/users/{uuid}/pull_remote_user/` — Synchronize user details from eduTEAMS (path: uuid)
+- `users_pull_scim_attributes` POST `/api/users/{uuid}/pull_scim_attributes/` — Pull SCIM attributes from external IdP for this user (path: uuid)
 - `users_refresh_token` POST `/api/users/{uuid}/refresh_token/` — Refresh user auth token (path: uuid)
 - `users_remove_password` POST `/api/users/{uuid}/remove_password/` — Remove user password (path: uuid)
 - `users_send_notification` POST `/api/users/{uuid}/send_notification/` — Send action notification to a specific user (path: uuid)

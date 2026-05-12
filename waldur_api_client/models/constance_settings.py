@@ -194,6 +194,12 @@ class ConstanceSettings:
         scim_api_url (Union[Unset, str]):
         scim_api_key (Union[Unset, str]):
         scim_urn_namespace (Union[Unset, str]):
+        scim_inbound_enabled (Union[Unset, bool]):
+        scim_inbound_source_name (Union[Unset, str]):
+        scim_inbound_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
+        scim_pull_api_url (Union[Unset, str]):
+        scim_pull_api_key (Union[Unset, str]):
+        scim_pull_source_name (Union[Unset, str]):
         keycloak_icon (Union[None, Unset, str]):
         countries (Union[Unset, list[str]]):
         oidc_auth_url (Union[Unset, str]):
@@ -462,6 +468,12 @@ class ConstanceSettings:
     scim_api_url: Union[Unset, str] = UNSET
     scim_api_key: Union[Unset, str] = UNSET
     scim_urn_namespace: Union[Unset, str] = UNSET
+    scim_inbound_enabled: Union[Unset, bool] = UNSET
+    scim_inbound_source_name: Union[Unset, str] = UNSET
+    scim_inbound_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
+    scim_pull_api_url: Union[Unset, str] = UNSET
+    scim_pull_api_key: Union[Unset, str] = UNSET
+    scim_pull_source_name: Union[Unset, str] = UNSET
     keycloak_icon: Union[None, Unset, str] = UNSET
     countries: Union[Unset, list[str]] = UNSET
     oidc_auth_url: Union[Unset, str] = UNSET
@@ -966,6 +978,28 @@ class ConstanceSettings:
         scim_api_key = self.scim_api_key
 
         scim_urn_namespace = self.scim_urn_namespace
+
+        scim_inbound_enabled = self.scim_inbound_enabled
+
+        scim_inbound_source_name = self.scim_inbound_source_name
+
+        scim_inbound_allowed_attributes: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.scim_inbound_allowed_attributes, Unset):
+            scim_inbound_allowed_attributes = []
+            for scim_inbound_allowed_attributes_item_data in self.scim_inbound_allowed_attributes:
+                scim_inbound_allowed_attributes_item: str
+                if isinstance(scim_inbound_allowed_attributes_item_data, UserAttributeEnum):
+                    scim_inbound_allowed_attributes_item = scim_inbound_allowed_attributes_item_data.value
+                else:
+                    scim_inbound_allowed_attributes_item = scim_inbound_allowed_attributes_item_data.value
+
+                scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
+
+        scim_pull_api_url = self.scim_pull_api_url
+
+        scim_pull_api_key = self.scim_pull_api_key
+
+        scim_pull_source_name = self.scim_pull_source_name
 
         keycloak_icon: Union[None, Unset, str]
         if isinstance(self.keycloak_icon, Unset):
@@ -1634,6 +1668,18 @@ class ConstanceSettings:
             field_dict["SCIM_API_KEY"] = scim_api_key
         if scim_urn_namespace is not UNSET:
             field_dict["SCIM_URN_NAMESPACE"] = scim_urn_namespace
+        if scim_inbound_enabled is not UNSET:
+            field_dict["SCIM_INBOUND_ENABLED"] = scim_inbound_enabled
+        if scim_inbound_source_name is not UNSET:
+            field_dict["SCIM_INBOUND_SOURCE_NAME"] = scim_inbound_source_name
+        if scim_inbound_allowed_attributes is not UNSET:
+            field_dict["SCIM_INBOUND_ALLOWED_ATTRIBUTES"] = scim_inbound_allowed_attributes
+        if scim_pull_api_url is not UNSET:
+            field_dict["SCIM_PULL_API_URL"] = scim_pull_api_url
+        if scim_pull_api_key is not UNSET:
+            field_dict["SCIM_PULL_API_KEY"] = scim_pull_api_key
+        if scim_pull_source_name is not UNSET:
+            field_dict["SCIM_PULL_SOURCE_NAME"] = scim_pull_source_name
         if keycloak_icon is not UNSET:
             field_dict["KEYCLOAK_ICON"] = keycloak_icon
         if countries is not UNSET:
@@ -2330,6 +2376,41 @@ class ConstanceSettings:
 
         scim_urn_namespace = d.pop("SCIM_URN_NAMESPACE", UNSET)
 
+        scim_inbound_enabled = d.pop("SCIM_INBOUND_ENABLED", UNSET)
+
+        scim_inbound_source_name = d.pop("SCIM_INBOUND_SOURCE_NAME", UNSET)
+
+        scim_inbound_allowed_attributes = []
+        _scim_inbound_allowed_attributes = d.pop("SCIM_INBOUND_ALLOWED_ATTRIBUTES", UNSET)
+        for scim_inbound_allowed_attributes_item_data in _scim_inbound_allowed_attributes or []:
+
+            def _parse_scim_inbound_allowed_attributes_item(data: object) -> Union[BlankEnum, UserAttributeEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    scim_inbound_allowed_attributes_item_type_0 = UserAttributeEnum(data)
+
+                    return scim_inbound_allowed_attributes_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                scim_inbound_allowed_attributes_item_type_1 = BlankEnum(data)
+
+                return scim_inbound_allowed_attributes_item_type_1
+
+            scim_inbound_allowed_attributes_item = _parse_scim_inbound_allowed_attributes_item(
+                scim_inbound_allowed_attributes_item_data
+            )
+
+            scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
+
+        scim_pull_api_url = d.pop("SCIM_PULL_API_URL", UNSET)
+
+        scim_pull_api_key = d.pop("SCIM_PULL_API_KEY", UNSET)
+
+        scim_pull_source_name = d.pop("SCIM_PULL_SOURCE_NAME", UNSET)
+
         def _parse_keycloak_icon(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -2973,6 +3054,12 @@ class ConstanceSettings:
             scim_api_url=scim_api_url,
             scim_api_key=scim_api_key,
             scim_urn_namespace=scim_urn_namespace,
+            scim_inbound_enabled=scim_inbound_enabled,
+            scim_inbound_source_name=scim_inbound_source_name,
+            scim_inbound_allowed_attributes=scim_inbound_allowed_attributes,
+            scim_pull_api_url=scim_pull_api_url,
+            scim_pull_api_key=scim_pull_api_key,
+            scim_pull_source_name=scim_pull_source_name,
             keycloak_icon=keycloak_icon,
             countries=countries,
             oidc_auth_url=oidc_auth_url,

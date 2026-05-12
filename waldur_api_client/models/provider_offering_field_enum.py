@@ -7,6 +7,8 @@ class ProviderOfferingFieldEnum(str, Enum):
     COMPONENTS = "components"
     CUSTOMER_UUID = "customer_uuid"
     NAME = "name"
+    OFFERING_GROUP_TITLE = "offering_group_title"
+    OFFERING_GROUP_UUID = "offering_group_uuid"
     OPTIONS = "options"
     PLANS = "plans"
     RESOURCES_COUNT = "resources_count"

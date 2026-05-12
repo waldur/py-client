@@ -2,6 +2,7 @@ import json
 from collections.abc import Mapping
 from io import BytesIO
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -59,6 +60,7 @@ class OfferingCreateRequestMultipart:
         image (Union[File, None, Unset]):
         backend_metadata (Union[Unset, Any]):
         compliance_checklist (Union[None, Unset, str]):
+        offering_group (Union[None, UUID, Unset]):
         limits (Union[Unset, OfferingCreateRequestMultipartLimits]):
     """
 
@@ -94,6 +96,7 @@ class OfferingCreateRequestMultipart:
     image: Union[File, None, Unset] = UNSET
     backend_metadata: Union[Unset, Any] = UNSET
     compliance_checklist: Union[None, Unset, str] = UNSET
+    offering_group: Union[None, UUID, Unset] = UNSET
     limits: Union[Unset, "OfferingCreateRequestMultipartLimits"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -214,6 +217,14 @@ class OfferingCreateRequestMultipart:
         else:
             compliance_checklist = self.compliance_checklist
 
+        offering_group: Union[None, Unset, str]
+        if isinstance(self.offering_group, Unset):
+            offering_group = UNSET
+        elif isinstance(self.offering_group, UUID):
+            offering_group = str(self.offering_group)
+        else:
+            offering_group = self.offering_group
+
         limits: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.limits, Unset):
             limits = self.limits.to_dict()
@@ -285,6 +296,8 @@ class OfferingCreateRequestMultipart:
             field_dict["backend_metadata"] = backend_metadata
         if compliance_checklist is not UNSET:
             field_dict["compliance_checklist"] = compliance_checklist
+        if offering_group is not UNSET:
+            field_dict["offering_group"] = offering_group
         if limits is not UNSET:
             field_dict["limits"] = limits
 
@@ -414,6 +427,12 @@ class OfferingCreateRequestMultipart:
                 files.append(("compliance_checklist", (None, str(self.compliance_checklist).encode(), "text/plain")))
             else:
                 files.append(("compliance_checklist", (None, str(self.compliance_checklist).encode(), "text/plain")))
+
+        if not isinstance(self.offering_group, Unset):
+            if isinstance(self.offering_group, UUID):
+                files.append(("offering_group", (None, str(self.offering_group), "text/plain")))
+            else:
+                files.append(("offering_group", (None, str(self.offering_group).encode(), "text/plain")))
 
         if not isinstance(self.limits, Unset):
             files.append(("limits", (None, json.dumps(self.limits.to_dict()).encode(), "application/json")))
@@ -596,6 +615,23 @@ class OfferingCreateRequestMultipart:
 
         compliance_checklist = _parse_compliance_checklist(d.pop("compliance_checklist", UNSET))
 
+        def _parse_offering_group(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                offering_group_type_0 = UUID(data)
+
+                return offering_group_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        offering_group = _parse_offering_group(d.pop("offering_group", UNSET))
+
         _limits = d.pop("limits", UNSET)
         limits: Union[Unset, OfferingCreateRequestMultipartLimits]
         if isinstance(_limits, Unset):
@@ -636,6 +672,7 @@ class OfferingCreateRequestMultipart:
             image=image,
             backend_metadata=backend_metadata,
             compliance_checklist=compliance_checklist,
+            offering_group=offering_group,
             limits=limits,
         )
 
