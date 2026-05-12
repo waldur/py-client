@@ -51,7 +51,7 @@ def sync_detailed(
 ) -> Response[PersonalAccessTokenCreated]:
     """Rotate a personal access token
 
-     Atomically revoke the old token and create a new one with the same scopes.
+     Atomically revoke the old token and create a new one with the same scopes and bindings.
 
     Args:
         uuid (UUID):
@@ -82,7 +82,7 @@ def sync(
 ) -> PersonalAccessTokenCreated:
     """Rotate a personal access token
 
-     Atomically revoke the old token and create a new one with the same scopes.
+     Atomically revoke the old token and create a new one with the same scopes and bindings.
 
     Args:
         uuid (UUID):
@@ -108,7 +108,7 @@ async def asyncio_detailed(
 ) -> Response[PersonalAccessTokenCreated]:
     """Rotate a personal access token
 
-     Atomically revoke the old token and create a new one with the same scopes.
+     Atomically revoke the old token and create a new one with the same scopes and bindings.
 
     Args:
         uuid (UUID):
@@ -137,7 +137,7 @@ async def asyncio(
 ) -> PersonalAccessTokenCreated:
     """Rotate a personal access token
 
-     Atomically revoke the old token and create a new one with the same scopes.
+     Atomically revoke the old token and create a new one with the same scopes and bindings.
 
     Args:
         uuid (UUID):

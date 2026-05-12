@@ -2774,6 +2774,8 @@ Module: `waldur_api_client.api.personal_access_tokens`
 - `personal_access_tokens_list` GET `/api/personal-access-tokens/` (no params)
 - `personal_access_tokens_count` HEAD `/api/personal-access-tokens/` — Get number of items in the collection matching the request parameters (no params)
 - `personal_access_tokens_create` POST `/api/personal-access-tokens/` — Create a personal access token (request body)
+- `personal_access_tokens_available_binding_targets_list` GET `/api/personal-access-tokens/available_binding_targets/` — List entity types the caller can bind each permission to (no params)
+- `personal_access_tokens_available_binding_targets_count` HEAD `/api/personal-access-tokens/available_binding_targets/` — List entity types the caller can bind each permission to (no params)
 - `personal_access_tokens_available_scopes_list` GET `/api/personal-access-tokens/available_scopes/` — List available scopes for PAT creation (no params)
 - `personal_access_tokens_available_scopes_count` HEAD `/api/personal-access-tokens/available_scopes/` — List available scopes for PAT creation (no params)
 - `personal_access_tokens_retrieve` GET `/api/personal-access-tokens/{uuid}/` (path: uuid)

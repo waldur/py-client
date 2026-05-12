@@ -74,6 +74,8 @@ from .allocation_set_limits import AllocationSetLimits
 from .allocation_set_limits_request import AllocationSetLimitsRequest
 from .allocation_time_enum import AllocationTimeEnum
 from .allocation_user_usage import AllocationUserUsage
+from .allowed_scope_input_request import AllowedScopeInputRequest
+from .allowed_scope_output import AllowedScopeOutput
 from .amount_range_enum import AmountRangeEnum
 from .anonymous_chat_budget_snapshot import AnonymousChatBudgetSnapshot
 from .anonymous_chat_click_request_request import AnonymousChatClickRequestRequest
@@ -161,6 +163,7 @@ from .auth_token import AuthToken
 from .auth_type_enum import AuthTypeEnum
 from .availability_zone_response import AvailabilityZoneResponse
 from .available_arrow_customers_response import AvailableArrowCustomersResponse
+from .available_binding_target import AvailableBindingTarget
 from .available_checklist import AvailableChecklist
 from .available_checklists_response import AvailableChecklistsResponse
 from .available_checklists_response_checklist_type_enum import AvailableChecklistsResponseChecklistTypeEnum
@@ -2519,6 +2522,8 @@ __all__ = (
     "AllocationSetLimitsRequest",
     "AllocationTimeEnum",
     "AllocationUserUsage",
+    "AllowedScopeInputRequest",
+    "AllowedScopeOutput",
     "AmountRangeEnum",
     "AnonymousChatBudgetSnapshot",
     "AnonymousChatClickRequestRequest",
@@ -2606,6 +2611,7 @@ __all__ = (
     "AuthTypeEnum",
     "AvailabilityZoneResponse",
     "AvailableArrowCustomersResponse",
+    "AvailableBindingTarget",
     "AvailableChecklist",
     "AvailableChecklistsResponse",
     "AvailableChecklistsResponseChecklistTypeEnum",

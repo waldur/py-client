@@ -1,11 +1,15 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+if TYPE_CHECKING:
+    from ..models.allowed_scope_output import AllowedScopeOutput
+
 
 T = TypeVar("T", bound="PersonalAccessToken")
 
@@ -18,6 +22,7 @@ class PersonalAccessToken:
         name (str):
         token_prefix (str):
         scopes (list[str]):
+        allowed_scopes (list['AllowedScopeOutput']):
         expires_at (datetime.datetime):
         is_active (bool):
         last_used_at (datetime.datetime):
@@ -30,6 +35,7 @@ class PersonalAccessToken:
     name: str
     token_prefix: str
     scopes: list[str]
+    allowed_scopes: list["AllowedScopeOutput"]
     expires_at: datetime.datetime
     is_active: bool
     last_used_at: datetime.datetime
@@ -46,6 +52,11 @@ class PersonalAccessToken:
         token_prefix = self.token_prefix
 
         scopes = self.scopes
+
+        allowed_scopes = []
+        for allowed_scopes_item_data in self.allowed_scopes:
+            allowed_scopes_item = allowed_scopes_item_data.to_dict()
+            allowed_scopes.append(allowed_scopes_item)
 
         expires_at = self.expires_at.isoformat()
 
@@ -68,6 +79,7 @@ class PersonalAccessToken:
                 "name": name,
                 "token_prefix": token_prefix,
                 "scopes": scopes,
+                "allowed_scopes": allowed_scopes,
                 "expires_at": expires_at,
                 "is_active": is_active,
                 "last_used_at": last_used_at,
@@ -81,6 +93,8 @@ class PersonalAccessToken:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.allowed_scope_output import AllowedScopeOutput
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -89,6 +103,13 @@ class PersonalAccessToken:
         token_prefix = d.pop("token_prefix")
 
         scopes = cast(list[str], d.pop("scopes"))
+
+        allowed_scopes = []
+        _allowed_scopes = d.pop("allowed_scopes")
+        for allowed_scopes_item_data in _allowed_scopes:
+            allowed_scopes_item = AllowedScopeOutput.from_dict(allowed_scopes_item_data)
+
+            allowed_scopes.append(allowed_scopes_item)
 
         expires_at = isoparse(d.pop("expires_at"))
 
@@ -110,6 +131,7 @@ class PersonalAccessToken:
             name=name,
             token_prefix=token_prefix,
             scopes=scopes,
+            allowed_scopes=allowed_scopes,
             expires_at=expires_at,
             is_active=is_active,
             last_used_at=last_used_at,

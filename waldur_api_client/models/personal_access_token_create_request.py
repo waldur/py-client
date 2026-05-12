@@ -1,10 +1,16 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.allowed_scope_input_request import AllowedScopeInputRequest
+
 
 T = TypeVar("T", bound="PersonalAccessTokenCreateRequest")
 
@@ -16,11 +22,14 @@ class PersonalAccessTokenCreateRequest:
         name (str):
         scopes (list[str]):
         expires_at (datetime.datetime):
+        allowed_scopes (Union[Unset, list['AllowedScopeInputRequest']]): Optional list of entity bindings restricting
+            where this token can act. Empty list = no entity restriction.
     """
 
     name: str
     scopes: list[str]
     expires_at: datetime.datetime
+    allowed_scopes: Union[Unset, list["AllowedScopeInputRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,6 +38,13 @@ class PersonalAccessTokenCreateRequest:
         scopes = self.scopes
 
         expires_at = self.expires_at.isoformat()
+
+        allowed_scopes: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.allowed_scopes, Unset):
+            allowed_scopes = []
+            for allowed_scopes_item_data in self.allowed_scopes:
+                allowed_scopes_item = allowed_scopes_item_data.to_dict()
+                allowed_scopes.append(allowed_scopes_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -39,11 +55,15 @@ class PersonalAccessTokenCreateRequest:
                 "expires_at": expires_at,
             }
         )
+        if allowed_scopes is not UNSET:
+            field_dict["allowed_scopes"] = allowed_scopes
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.allowed_scope_input_request import AllowedScopeInputRequest
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -51,10 +71,18 @@ class PersonalAccessTokenCreateRequest:
 
         expires_at = isoparse(d.pop("expires_at"))
 
+        allowed_scopes = []
+        _allowed_scopes = d.pop("allowed_scopes", UNSET)
+        for allowed_scopes_item_data in _allowed_scopes or []:
+            allowed_scopes_item = AllowedScopeInputRequest.from_dict(allowed_scopes_item_data)
+
+            allowed_scopes.append(allowed_scopes_item)
+
         personal_access_token_create_request = cls(
             name=name,
             scopes=scopes,
             expires_at=expires_at,
+            allowed_scopes=allowed_scopes,
         )
 
         personal_access_token_create_request.additional_properties = d

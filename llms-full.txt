@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.8-dev.20260512130401
+# Version: 8.0.9-rc.9-dev.20260512174917
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -17151,6 +17151,21 @@ POST /api/personal-access-tokens/
 Summary: Create a personal access token
 Request body: yes
 
+### personal_access_tokens_available_binding_targets_list
+GET /api/personal-access-tokens/available_binding_targets/
+Summary: List entity types the caller can bind each permission to
+Description: For each permission, which TYPE_MAP keys the caller could bind a PAT to.
+
+Drives the create-PAT frontend's type picker. For staff users every
+type is offered for every permission (they bypass UserRole checks).
+For other users we return only types where they hold an active role
+granting the permis...
+
+### personal_access_tokens_available_binding_targets_count
+HEAD /api/personal-access-tokens/available_binding_targets/
+Summary: List entity types the caller can bind each permission to
+Description: Get number of items in the collection matching the request parameters.
+
 ### personal_access_tokens_available_scopes_list
 GET /api/personal-access-tokens/available_scopes/
 Summary: List available scopes for PAT creation
@@ -17175,7 +17190,7 @@ Path parameters:
 ### personal_access_tokens_rotate
 POST /api/personal-access-tokens/{uuid}/rotate/
 Summary: Rotate a personal access token
-Description: Atomically revoke the old token and create a new one with the same scopes.
+Description: Atomically revoke the old token and create a new one with the same scopes and bindings.
 Path parameters:
   - uuid
 
