@@ -1155,6 +1155,8 @@ from .offering_thumbnail_request import OfferingThumbnailRequest
 from .offering_thumbnail_request_form import OfferingThumbnailRequestForm
 from .offering_thumbnail_request_multipart import OfferingThumbnailRequestMultipart
 from .offering_type_enum import OfferingTypeEnum
+from .offering_type_update_request import OfferingTypeUpdateRequest
+from .offering_type_update_type_enum import OfferingTypeUpdateTypeEnum
 from .offering_usage_by_project import OfferingUsageByProject
 from .offering_usage_policy import OfferingUsagePolicy
 from .offering_usage_policy_request import OfferingUsagePolicyRequest
@@ -3559,6 +3561,8 @@ __all__ = (
     "OfferingThumbnailRequestForm",
     "OfferingThumbnailRequestMultipart",
     "OfferingTypeEnum",
+    "OfferingTypeUpdateRequest",
+    "OfferingTypeUpdateTypeEnum",
     "OfferingUsageByProject",
     "OfferingUsagePolicy",
     "OfferingUsagePolicyRequest",

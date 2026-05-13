@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.9-dev.20260512233336
+# Version: 8.0.9-rc.9-dev.20260513115732
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9183,6 +9183,14 @@ Request body: yes
 POST /api/marketplace-provider-offerings/{uuid}/update_thumbnail/
 Summary: Update offering thumbnail
 Description: Uploads or replaces the thumbnail image for an offering.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_offerings_update_type
+POST /api/marketplace-provider-offerings/{uuid}/update_type/
+Summary: Swap offering type
+Description: Changes the offering's `type` between Marketplace.Basic and the site-agent type (Marketplace.Slurm). Both plugins share the same data shape (the site-agent processors inherit from Basic and only delegate the send paths to the external agent), so the swap is safe in either direction. Refused if th...
 Path parameters:
   - uuid
 Request body: yes
