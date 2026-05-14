@@ -50,6 +50,7 @@ class UserFieldEnum(str, Enum):
     PREFERRED_LANGUAGE = "preferred_language"
     REGISTRATION_METHOD = "registration_method"
     REQUESTED_EMAIL = "requested_email"
+    SHOULD_PROTECT_USER_DETAILS = "should_protect_user_details"
     SLUG = "slug"
     TOKEN = "token"
     TOKEN_EXPIRES_AT = "token_expires_at"

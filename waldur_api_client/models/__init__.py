@@ -508,6 +508,7 @@ from .customer import Customer
 from .customer_billing_summary_billing_sync import CustomerBillingSummaryBillingSync
 from .customer_billing_summary_consumption_record import CustomerBillingSummaryConsumptionRecord
 from .customer_billing_summary_response import CustomerBillingSummaryResponse
+from .customer_candidate import CustomerCandidate
 from .customer_component_usage_policy import CustomerComponentUsagePolicy
 from .customer_component_usage_policy_request import CustomerComponentUsagePolicyRequest
 from .customer_contact_update import CustomerContactUpdate
@@ -703,6 +704,7 @@ from .fetch_customer_arrow_data_response import FetchCustomerArrowDataResponse
 from .fetch_license_info_request_request import FetchLicenseInfoRequestRequest
 from .fetch_license_info_response import FetchLicenseInfoResponse
 from .fetch_license_info_response_data import FetchLicenseInfoResponseData
+from .filter_check_result import FilterCheckResult
 from .financial_report import FinancialReport
 from .financial_report_email_request import FinancialReportEmailRequest
 from .fingerprint import Fingerprint
@@ -2104,6 +2106,8 @@ from .rule_plan_limits import RulePlanLimits
 from .rule_request import RuleRequest
 from .rule_request_plan_attributes import RuleRequestPlanAttributes
 from .rule_request_plan_limits import RuleRequestPlanLimits
+from .rule_test_match_request_request import RuleTestMatchRequestRequest
+from .rule_test_match_response import RuleTestMatchResponse
 from .runtime_states import RuntimeStates
 from .saml_2_login import Saml2Login
 from .saml_2_login_complete import Saml2LoginComplete
@@ -2945,6 +2949,7 @@ __all__ = (
     "CustomerBillingSummaryBillingSync",
     "CustomerBillingSummaryConsumptionRecord",
     "CustomerBillingSummaryResponse",
+    "CustomerCandidate",
     "CustomerComponentUsagePolicy",
     "CustomerComponentUsagePolicyRequest",
     "CustomerContactUpdate",
@@ -3132,6 +3137,7 @@ __all__ = (
     "FetchLicenseInfoRequestRequest",
     "FetchLicenseInfoResponse",
     "FetchLicenseInfoResponseData",
+    "FilterCheckResult",
     "FinancialReport",
     "FinancialReportEmailRequest",
     "Fingerprint",
@@ -4441,6 +4447,8 @@ __all__ = (
     "RuleRequest",
     "RuleRequestPlanAttributes",
     "RuleRequestPlanLimits",
+    "RuleTestMatchRequestRequest",
+    "RuleTestMatchResponse",
     "RuntimeStates",
     "Saml2Login",
     "Saml2LoginComplete",

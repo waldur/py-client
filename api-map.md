@@ -197,6 +197,7 @@ Module: `waldur_api_client.api.autoprovisioning_rules`
 - `autoprovisioning_rules_update` PUT `/api/autoprovisioning-rules/{uuid}/` — Manage autoprovisioning rules (path: uuid | request body)
 - `autoprovisioning_rules_partial_update` PATCH `/api/autoprovisioning-rules/{uuid}/` — Manage autoprovisioning rules (path: uuid | request body)
 - `autoprovisioning_rules_destroy` DELETE `/api/autoprovisioning-rules/{uuid}/` — Manage autoprovisioning rules (path: uuid)
+- `autoprovisioning_rules_test_match` POST `/api/autoprovisioning-rules/{uuid}/test-match/` — Dry-run rule evaluation against a target user. (path: uuid | request body)
 
 ## aws-images
 Module: `waldur_api_client.api.aws_images`

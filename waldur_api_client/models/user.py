@@ -60,6 +60,7 @@ class User:
         identity_provider_fields (Union[Unset, list[str]]):
         image (Union[None, Unset, str]):
         identity_source (Union[Unset, str]): Indicates what identity provider was used.
+        should_protect_user_details (Union[Unset, bool]):
         has_active_session (Union[Unset, bool]):
         has_usable_password (Union[Unset, bool]):
         ip_address (Union[None, Unset, str]):
@@ -120,6 +121,7 @@ class User:
     identity_provider_fields: Union[Unset, list[str]] = UNSET
     image: Union[None, Unset, str] = UNSET
     identity_source: Union[Unset, str] = UNSET
+    should_protect_user_details: Union[Unset, bool] = UNSET
     has_active_session: Union[Unset, bool] = UNSET
     has_usable_password: Union[Unset, bool] = UNSET
     ip_address: Union[None, Unset, str] = UNSET
@@ -257,6 +259,8 @@ class User:
 
         identity_source = self.identity_source
 
+        should_protect_user_details = self.should_protect_user_details
+
         has_active_session = self.has_active_session
 
         has_usable_password = self.has_usable_password
@@ -380,6 +384,8 @@ class User:
             field_dict["image"] = image
         if identity_source is not UNSET:
             field_dict["identity_source"] = identity_source
+        if should_protect_user_details is not UNSET:
+            field_dict["should_protect_user_details"] = should_protect_user_details
         if has_active_session is not UNSET:
             field_dict["has_active_session"] = has_active_session
         if has_usable_password is not UNSET:
@@ -584,6 +590,8 @@ class User:
 
         identity_source = d.pop("identity_source", UNSET)
 
+        should_protect_user_details = d.pop("should_protect_user_details", UNSET)
+
         has_active_session = d.pop("has_active_session", UNSET)
 
         has_usable_password = d.pop("has_usable_password", UNSET)
@@ -688,6 +696,7 @@ class User:
             identity_provider_fields=identity_provider_fields,
             image=image,
             identity_source=identity_source,
+            should_protect_user_details=should_protect_user_details,
             has_active_session=has_active_session,
             has_usable_password=has_usable_password,
             ip_address=ip_address,

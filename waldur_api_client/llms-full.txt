@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.9-dev.20260514093835
+# Version: 8.0.9-rc.9-dev.20260514204553
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -1108,6 +1108,14 @@ Summary: Manage autoprovisioning rules
 Description: Manage autoprovisioning rules.
 Path parameters:
   - uuid
+
+### autoprovisioning_rules_test_match
+POST /api/autoprovisioning-rules/{uuid}/test-match/
+Summary: Dry-run rule evaluation against a target user.
+Description: Evaluate this rule against the given user without provisioning. Returns per-filter outcomes, the customer-lookup verdict (when the rule uses use_user_organization_as_customer_name) and a top-line would_provision flag together with a human-readable block_reason.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## aws-images  (module: waldur_api_client.api.aws_images)
