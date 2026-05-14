@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.9-dev.20260514055639
+# Version: 8.0.9-rc.9-dev.20260514093835
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -12541,6 +12541,28 @@ HEAD /api/marketplace-stats/user_affiliation_count/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
 
+### marketplace_stats_user_affiliation_details_list
+GET /api/marketplace-stats/user_affiliation_details/
+Summary: Paginated affiliation rows with parsed organization, country, category and identifier fields
+Description: Paginated affiliation rows with parsed organization, country, category and identifier fields. Drives the affiliation details table; the unparsed aggregate counts remain available via user_affiliation_count.
+Query parameters (5):
+  - category — One of: home-organization, personal-identifier, organization-type, user-status, eduperson, other.
+  - country — ISO country code (case-insensitive).
+  - o — Ordering field; prefix with - for descending. Allowed: count, organization, country, category, affiliation. Defaults to -count.
+  - organization — Exact organization domain match.
+  - search — Substring match against raw URN or organization.
+
+### marketplace_stats_user_affiliation_details_count
+HEAD /api/marketplace-stats/user_affiliation_details/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (5):
+  - category — One of: home-organization, personal-identifier, organization-type, user-status, eduperson, other.
+  - country — ISO country code (case-insensitive).
+  - o — Ordering field; prefix with - for descending. Allowed: count, organization, country, category, affiliation. Defaults to -count.
+  - organization — Exact organization domain match.
+  - search — Substring match against raw URN or organization.
+
 ### marketplace_stats_user_auth_method_count_list
 GET /api/marketplace-stats/user_auth_method_count/
 Summary: Return user count grouped by authentication method
@@ -18839,7 +18861,7 @@ Path parameters:
 ### query
 POST /api/query/
 Summary: Execute read-only SQL query
-Description: Execute a given SQL query against a read-only database replica. This is a powerful tool for diagnostics and reporting, but should be used with caution. Requires support user permissions.
+Description: Execute a given SQL query against a read-only database replica. This is a powerful tool for diagnostics and reporting, but should be used with caution. Requires staff user permissions.
 Request body: yes
 
 ============================================================
@@ -20978,7 +21000,7 @@ Description: Retrieves comprehensive statistics about the PostgreSQL database in
 ### stats_query
 POST /api/stats/query/
 Summary: Execute read-only SQL query
-Description: Execute a given SQL query against a read-only database replica. This is a powerful tool for diagnostics and reporting, but should be used with caution. Requires support user permissions.
+Description: Execute a given SQL query against a read-only database replica. This is a powerful tool for diagnostics and reporting, but should be used with caution. Requires staff user permissions.
 Request body: yes
 
 ### stats_table_growth_retrieve

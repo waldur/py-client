@@ -60,7 +60,7 @@ def sync_detailed(
     """Execute read-only SQL query
 
      Execute a given SQL query against a read-only database replica. This is a powerful tool for
-    diagnostics and reporting, but should be used with caution. Requires support user permissions.
+    diagnostics and reporting, but should be used with caution. Requires staff user permissions.
 
     Args:
         body (QueryRequest):
@@ -92,7 +92,7 @@ def sync(
     """Execute read-only SQL query
 
      Execute a given SQL query against a read-only database replica. This is a powerful tool for
-    diagnostics and reporting, but should be used with caution. Requires support user permissions.
+    diagnostics and reporting, but should be used with caution. Requires staff user permissions.
 
     Args:
         body (QueryRequest):
@@ -119,7 +119,7 @@ async def asyncio_detailed(
     """Execute read-only SQL query
 
      Execute a given SQL query against a read-only database replica. This is a powerful tool for
-    diagnostics and reporting, but should be used with caution. Requires support user permissions.
+    diagnostics and reporting, but should be used with caution. Requires staff user permissions.
 
     Args:
         body (QueryRequest):
@@ -149,7 +149,7 @@ async def asyncio(
     """Execute read-only SQL query
 
      Execute a given SQL query against a read-only database replica. This is a powerful tool for
-    diagnostics and reporting, but should be used with caution. Requires support user permissions.
+    diagnostics and reporting, but should be used with caution. Requires staff user permissions.
 
     Args:
         body (QueryRequest):

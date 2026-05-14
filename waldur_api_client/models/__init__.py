@@ -2339,6 +2339,7 @@ from .user_action_summary_by_type import UserActionSummaryByType
 from .user_action_summary_by_urgency import UserActionSummaryByUrgency
 from .user_active_status_count import UserActiveStatusCount
 from .user_affiliation_count import UserAffiliationCount
+from .user_affiliation_detail import UserAffiliationDetail
 from .user_agreement import UserAgreement
 from .user_agreement_request import UserAgreementRequest
 from .user_attribute_enum import UserAttributeEnum
@@ -4669,6 +4670,7 @@ __all__ = (
     "UserActionSummaryByUrgency",
     "UserActiveStatusCount",
     "UserAffiliationCount",
+    "UserAffiliationDetail",
     "UserAgreement",
     "UserAgreementRequest",
     "UserAttributeEnum",

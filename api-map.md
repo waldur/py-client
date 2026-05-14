@@ -2036,6 +2036,8 @@ Module: `waldur_api_client.api.marketplace_stats`
 - `marketplace_stats_total_cost_of_active_resources_per_offering_count` HEAD `/api/marketplace-stats/total_cost_of_active_resources_per_offering/` — Get number of items in the collection matching the request parameters (no params)
 - `marketplace_stats_user_affiliation_count_list` GET `/api/marketplace-stats/user_affiliation_count/` — Return user count grouped by affiliation (no params)
 - `marketplace_stats_user_affiliation_count_count` HEAD `/api/marketplace-stats/user_affiliation_count/` — Get number of items in the collection matching the request parameters (no params)
+- `marketplace_stats_user_affiliation_details_list` GET `/api/marketplace-stats/user_affiliation_details/` — Paginated affiliation rows with parsed organization, country, category and identifier fields (5 query params)
+- `marketplace_stats_user_affiliation_details_count` HEAD `/api/marketplace-stats/user_affiliation_details/` — Get number of items in the collection matching the request parameters (5 query params)
 - `marketplace_stats_user_auth_method_count_list` GET `/api/marketplace-stats/user_auth_method_count/` — Return user count grouped by authentication method (no params)
 - `marketplace_stats_user_auth_method_count_count` HEAD `/api/marketplace-stats/user_auth_method_count/` — Get number of items in the collection matching the request parameters (no params)
 - `marketplace_stats_user_identity_source_count_list` GET `/api/marketplace-stats/user_identity_source_count/` — Return user count grouped by identity source (no params)
