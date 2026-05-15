@@ -1391,8 +1391,8 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 ## marketplace-orders
 Module: `waldur_api_client.api.marketplace_orders`
 
-- `marketplace_orders_list` GET `/api/marketplace-orders/` — List orders (25 query params)
-- `marketplace_orders_count` HEAD `/api/marketplace-orders/` — List orders (24 query params)
+- `marketplace_orders_list` GET `/api/marketplace-orders/` — List orders (26 query params)
+- `marketplace_orders_count` HEAD `/api/marketplace-orders/` — List orders (25 query params)
 - `marketplace_orders_create` POST `/api/marketplace-orders/` — Create an order (request body)
 - `marketplace_orders_retrieve` GET `/api/marketplace-orders/{uuid}/` — Retrieve an order (path: uuid | 1 query param)
 - `marketplace_orders_update` PUT `/api/marketplace-orders/{uuid}/` (path: uuid | request body)
@@ -1461,6 +1461,17 @@ Module: `waldur_api_client.api.marketplace_project_estimated_cost_policies`
 - `marketplace_project_estimated_cost_policies_update` PUT `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_project_estimated_cost_policies_partial_update` PATCH `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_project_estimated_cost_policies_destroy` DELETE `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid)
+
+## marketplace-project-order-auto-approvals
+Module: `waldur_api_client.api.marketplace_project_order_auto_approvals`
+
+- `marketplace_project_order_auto_approvals_list` GET `/api/marketplace-project-order-auto-approvals/` (3 query params)
+- `marketplace_project_order_auto_approvals_count` HEAD `/api/marketplace-project-order-auto-approvals/` — Get number of items in the collection matching the request parameters (3 query params)
+- `marketplace_project_order_auto_approvals_create` POST `/api/marketplace-project-order-auto-approvals/` (request body)
+- `marketplace_project_order_auto_approvals_retrieve` GET `/api/marketplace-project-order-auto-approvals/{uuid}/` (path: uuid)
+- `marketplace_project_order_auto_approvals_update` PUT `/api/marketplace-project-order-auto-approvals/{uuid}/` (path: uuid | request body)
+- `marketplace_project_order_auto_approvals_partial_update` PATCH `/api/marketplace-project-order-auto-approvals/{uuid}/` (path: uuid | request body)
+- `marketplace_project_order_auto_approvals_destroy` DELETE `/api/marketplace-project-order-auto-approvals/{uuid}/` (path: uuid)
 
 ## marketplace-project-service-accounts
 Module: `waldur_api_client.api.marketplace_project_service_accounts`
@@ -1806,6 +1817,7 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `marketplace_service_providers_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customers/` — List customers of a service provider (path: service_provider_uuid | 16 query params)
 - `marketplace_service_providers_keys_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 13 query params)
 - `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 41 query params)
+- `marketplace_service_providers_offerings_types_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/types/` — List distinct offering types for a service provider (path: service_provider_uuid | 40 query params)
 - `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 18 query params)
 - `marketplace_service_providers_project_service_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/` — List project service accounts for a service provider (path: service_provider_uuid | 5 query params)
 - `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 26 query params)

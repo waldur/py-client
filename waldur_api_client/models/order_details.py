@@ -117,6 +117,9 @@ class OrderDetails:
         consumer_message_attachment (Union[None, Unset, str]):
         consumer_rejection_comment (Union[Unset, str]):
         provider_rejection_comment (Union[Unset, str]):
+        auto_approved (Union[Unset, bool]):
+        auto_approved_by_rule_uuid (Union[None, UUID, Unset]):
+        auto_approved_cost_limit_snapshot (Union[None, Unset, str]):
         issue (Union['IssueReference', None, Unset]):
     """
 
@@ -206,6 +209,9 @@ class OrderDetails:
     consumer_message_attachment: Union[None, Unset, str] = UNSET
     consumer_rejection_comment: Union[Unset, str] = UNSET
     provider_rejection_comment: Union[Unset, str] = UNSET
+    auto_approved: Union[Unset, bool] = UNSET
+    auto_approved_by_rule_uuid: Union[None, UUID, Unset] = UNSET
+    auto_approved_cost_limit_snapshot: Union[None, Unset, str] = UNSET
     issue: Union["IssueReference", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -570,6 +576,22 @@ class OrderDetails:
 
         provider_rejection_comment = self.provider_rejection_comment
 
+        auto_approved = self.auto_approved
+
+        auto_approved_by_rule_uuid: Union[None, Unset, str]
+        if isinstance(self.auto_approved_by_rule_uuid, Unset):
+            auto_approved_by_rule_uuid = UNSET
+        elif isinstance(self.auto_approved_by_rule_uuid, UUID):
+            auto_approved_by_rule_uuid = str(self.auto_approved_by_rule_uuid)
+        else:
+            auto_approved_by_rule_uuid = self.auto_approved_by_rule_uuid
+
+        auto_approved_cost_limit_snapshot: Union[None, Unset, str]
+        if isinstance(self.auto_approved_cost_limit_snapshot, Unset):
+            auto_approved_cost_limit_snapshot = UNSET
+        else:
+            auto_approved_cost_limit_snapshot = self.auto_approved_cost_limit_snapshot
+
         issue: Union[None, Unset, dict[str, Any]]
         if isinstance(self.issue, Unset):
             issue = UNSET
@@ -753,6 +775,12 @@ class OrderDetails:
             field_dict["consumer_rejection_comment"] = consumer_rejection_comment
         if provider_rejection_comment is not UNSET:
             field_dict["provider_rejection_comment"] = provider_rejection_comment
+        if auto_approved is not UNSET:
+            field_dict["auto_approved"] = auto_approved
+        if auto_approved_by_rule_uuid is not UNSET:
+            field_dict["auto_approved_by_rule_uuid"] = auto_approved_by_rule_uuid
+        if auto_approved_cost_limit_snapshot is not UNSET:
+            field_dict["auto_approved_cost_limit_snapshot"] = auto_approved_cost_limit_snapshot
         if issue is not UNSET:
             field_dict["issue"] = issue
 
@@ -1339,6 +1367,36 @@ class OrderDetails:
 
         provider_rejection_comment = d.pop("provider_rejection_comment", UNSET)
 
+        auto_approved = d.pop("auto_approved", UNSET)
+
+        def _parse_auto_approved_by_rule_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                auto_approved_by_rule_uuid_type_0 = UUID(data)
+
+                return auto_approved_by_rule_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        auto_approved_by_rule_uuid = _parse_auto_approved_by_rule_uuid(d.pop("auto_approved_by_rule_uuid", UNSET))
+
+        def _parse_auto_approved_cost_limit_snapshot(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        auto_approved_cost_limit_snapshot = _parse_auto_approved_cost_limit_snapshot(
+            d.pop("auto_approved_cost_limit_snapshot", UNSET)
+        )
+
         def _parse_issue(data: object) -> Union["IssueReference", None, Unset]:
             if data is None:
                 return data
@@ -1443,6 +1501,9 @@ class OrderDetails:
             consumer_message_attachment=consumer_message_attachment,
             consumer_rejection_comment=consumer_rejection_comment,
             provider_rejection_comment=provider_rejection_comment,
+            auto_approved=auto_approved,
+            auto_approved_by_rule_uuid=auto_approved_by_rule_uuid,
+            auto_approved_cost_limit_snapshot=auto_approved_cost_limit_snapshot,
             issue=issue,
         )
 

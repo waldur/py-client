@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.9-dev.20260514233334
+# Version: 8.0.9-rc.9-dev.20260515203354
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7511,7 +7511,7 @@ Request body: yes
 GET /api/marketplace-orders/
 Summary: List orders
 Description: Returns a paginated list of orders accessible to the current user. Orders are visible to service consumers (project/customer members with appropriate permissions) and service providers.
-Query parameters (25):
+Query parameters (26):
   - can_approve_as_consumer — Can approve as consumer
   - can_approve_as_provider — Can approve as provider
   - category_uuid — Category UUID
@@ -7537,12 +7537,13 @@ Query parameters (25):
   - slug — Slug
   - state — Order state
   - type — Order type
+  - was_auto_approved — Auto-approved
 
 ### marketplace_orders_count
 HEAD /api/marketplace-orders/
 Summary: List orders
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (24):
+Query parameters (25):
   - can_approve_as_consumer — Can approve as consumer
   - can_approve_as_provider — Can approve as provider
   - category_uuid — Category UUID
@@ -7567,6 +7568,7 @@ Query parameters (24):
   - slug — Slug
   - state — Order state
   - type — Order type
+  - was_auto_approved — Auto-approved
 
 ### marketplace_orders_create
 POST /api/marketplace-orders/
@@ -7992,6 +7994,52 @@ Request body: yes
 
 ### marketplace_project_estimated_cost_policies_destroy
 DELETE /api/marketplace-project-estimated-cost-policies/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
+## marketplace-project-order-auto-approvals  (module: waldur_api_client.api.marketplace_project_order_auto_approvals)
+============================================================
+
+### marketplace_project_order_auto_approvals_list
+GET /api/marketplace-project-order-auto-approvals/
+Query parameters (3):
+  - customer_uuid — Customer UUID
+  - enabled
+  - project_uuid — Project UUID
+
+### marketplace_project_order_auto_approvals_count
+HEAD /api/marketplace-project-order-auto-approvals/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - customer_uuid — Customer UUID
+  - enabled
+  - project_uuid — Project UUID
+
+### marketplace_project_order_auto_approvals_create
+POST /api/marketplace-project-order-auto-approvals/
+Request body: yes
+
+### marketplace_project_order_auto_approvals_retrieve
+GET /api/marketplace-project-order-auto-approvals/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_project_order_auto_approvals_update
+PUT /api/marketplace-project-order-auto-approvals/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_project_order_auto_approvals_partial_update
+PATCH /api/marketplace-project-order-auto-approvals/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_project_order_auto_approvals_destroy
+DELETE /api/marketplace-project-order-auto-approvals/{uuid}/
 Path parameters:
   - uuid
 
@@ -11029,6 +11077,53 @@ Query parameters (41):
   - customer_uuid — Customer UUID
   - description — Description contains
   - field
+  - has_active_terms_of_service — Has Active Terms of Service
+  - has_terms_of_service — Has Terms of Service
+  - keyword — Keyword
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - offering_group_uuid — Offering group UUID
+  - organization_group_uuid — Organization group UUID
+  - parent_uuid — Parent offering UUID
+  - project_uuid — Project UUID
+  - query — Search by offering name, slug or description
+  - resource_customer_uuid — Resource customer UUID
+  - resource_project_uuid — Resource project UUID
+  - scope_uuid — Scope UUID
+  - service_manager_uuid — Service manager UUID
+  - shared — Shared
+  - slug — Slug
+  - state — Offering state
+  - tag — Tag UUID (OR logic)
+  - tag_name — Tag name (OR logic)
+  - tag_names_and — Tag names with AND logic (comma-separated)
+  - tags_and — Tag UUIDs with AND logic (comma-separated)
+  - type — Offering type
+  - user_has_consent — User Has Consent
+  - user_has_offering_user — User Has Offering User
+  - uuid_list — Comma-separated offering UUIDs
+
+### marketplace_service_providers_offerings_types_list
+GET /api/marketplace-service-providers/{service_provider_uuid}/offerings/types/
+Summary: List distinct offering types for a service provider
+Path parameters:
+  - service_provider_uuid
+Query parameters (40):
+  - accessible_via_calls — Accessible via calls
+  - allowed_customer_uuid — Allowed customer UUID
+  - attributes — Offering attributes (JSON)
+  - billable — Billable
+  - can_create_offering_user
+  - category_group_uuid — Category group UUID
+  - category_uuid — Category UUID
+  - created — Created after
+  - created_before — Created before
+  - customer — Customer URL
+  - customer_uuid — Customer UUID
+  - description — Description contains
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
   - keyword — Keyword

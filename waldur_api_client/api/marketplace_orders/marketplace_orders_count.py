@@ -41,6 +41,7 @@ def _get_kwargs(
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OrderState]] = UNSET,
     type_: Union[Unset, list[RequestTypes]] = UNSET,
+    was_auto_approved: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -161,6 +162,8 @@ def _get_kwargs(
 
     params["type"] = json_type_
 
+    params["was_auto_approved"] = was_auto_approved
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
@@ -227,6 +230,7 @@ def sync_detailed(
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OrderState]] = UNSET,
     type_: Union[Unset, list[RequestTypes]] = UNSET,
+    was_auto_approved: Union[Unset, bool] = UNSET,
 ) -> Response[int]:
     """List orders
 
@@ -259,6 +263,7 @@ def sync_detailed(
         slug (Union[Unset, str]):
         state (Union[Unset, list[OrderState]]):
         type_ (Union[Unset, list[RequestTypes]]):
+        was_auto_approved (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -295,6 +300,7 @@ def sync_detailed(
         slug=slug,
         state=state,
         type_=type_,
+        was_auto_approved=was_auto_approved,
     )
 
     response = client.get_httpx_client().request(
@@ -333,6 +339,7 @@ def sync(
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OrderState]] = UNSET,
     type_: Union[Unset, list[RequestTypes]] = UNSET,
+    was_auto_approved: Union[Unset, bool] = UNSET,
 ) -> int:
     """List orders
 
@@ -365,6 +372,7 @@ def sync(
         slug (Union[Unset, str]):
         state (Union[Unset, list[OrderState]]):
         type_ (Union[Unset, list[RequestTypes]]):
+        was_auto_approved (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -402,6 +410,7 @@ def sync(
         slug=slug,
         state=state,
         type_=type_,
+        was_auto_approved=was_auto_approved,
     ).parsed
 
 
@@ -434,6 +443,7 @@ async def asyncio_detailed(
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OrderState]] = UNSET,
     type_: Union[Unset, list[RequestTypes]] = UNSET,
+    was_auto_approved: Union[Unset, bool] = UNSET,
 ) -> Response[int]:
     """List orders
 
@@ -466,6 +476,7 @@ async def asyncio_detailed(
         slug (Union[Unset, str]):
         state (Union[Unset, list[OrderState]]):
         type_ (Union[Unset, list[RequestTypes]]):
+        was_auto_approved (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -502,6 +513,7 @@ async def asyncio_detailed(
         slug=slug,
         state=state,
         type_=type_,
+        was_auto_approved=was_auto_approved,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -538,6 +550,7 @@ async def asyncio(
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[OrderState]] = UNSET,
     type_: Union[Unset, list[RequestTypes]] = UNSET,
+    was_auto_approved: Union[Unset, bool] = UNSET,
 ) -> int:
     """List orders
 
@@ -570,6 +583,7 @@ async def asyncio(
         slug (Union[Unset, str]):
         state (Union[Unset, list[OrderState]]):
         type_ (Union[Unset, list[RequestTypes]]):
+        was_auto_approved (Union[Unset, bool]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -608,5 +622,6 @@ async def asyncio(
             slug=slug,
             state=state,
             type_=type_,
+            was_auto_approved=was_auto_approved,
         )
     ).parsed

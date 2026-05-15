@@ -1536,6 +1536,7 @@ from .patched_project_credit_request import PatchedProjectCreditRequest
 from .patched_project_digest_config_request import PatchedProjectDigestConfigRequest
 from .patched_project_estimated_cost_policy_request import PatchedProjectEstimatedCostPolicyRequest
 from .patched_project_info_request import PatchedProjectInfoRequest
+from .patched_project_order_auto_approval_request import PatchedProjectOrderAutoApprovalRequest
 from .patched_project_request import PatchedProjectRequest
 from .patched_project_request_form import PatchedProjectRequestForm
 from .patched_project_request_multipart import PatchedProjectRequestMultipart
@@ -1682,6 +1683,8 @@ from .project_info import ProjectInfo
 from .project_info_request import ProjectInfoRequest
 from .project_mapping_response import ProjectMappingResponse
 from .project_marketplace_resource_count import ProjectMarketplaceResourceCount
+from .project_order_auto_approval import ProjectOrderAutoApproval
+from .project_order_auto_approval_request import ProjectOrderAutoApprovalRequest
 from .project_permission_log import ProjectPermissionLog
 from .project_permission_log_field_enum import ProjectPermissionLogFieldEnum
 from .project_permission_review import ProjectPermissionReview
@@ -3907,6 +3910,7 @@ __all__ = (
     "PatchedProjectDigestConfigRequest",
     "PatchedProjectEstimatedCostPolicyRequest",
     "PatchedProjectInfoRequest",
+    "PatchedProjectOrderAutoApprovalRequest",
     "PatchedProjectRequest",
     "PatchedProjectRequestForm",
     "PatchedProjectRequestMultipart",
@@ -4045,6 +4049,8 @@ __all__ = (
     "ProjectInfoRequest",
     "ProjectMappingResponse",
     "ProjectMarketplaceResourceCount",
+    "ProjectOrderAutoApproval",
+    "ProjectOrderAutoApprovalRequest",
     "ProjectPermissionLog",
     "ProjectPermissionLogFieldEnum",
     "ProjectPermissionReview",
