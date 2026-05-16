@@ -32,6 +32,7 @@ class Permission:
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
         resource_uuid (Union[None, UUID, Unset]):
+        project_uuid (Union[None, UUID, Unset]):
     """
 
     user_uuid: Union[Unset, UUID] = UNSET
@@ -50,6 +51,7 @@ class Permission:
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
     resource_uuid: Union[None, UUID, Unset] = UNSET
+    project_uuid: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -111,6 +113,14 @@ class Permission:
         else:
             resource_uuid = self.resource_uuid
 
+        project_uuid: Union[None, Unset, str]
+        if isinstance(self.project_uuid, Unset):
+            project_uuid = UNSET
+        elif isinstance(self.project_uuid, UUID):
+            project_uuid = str(self.project_uuid)
+        else:
+            project_uuid = self.project_uuid
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -146,6 +156,8 @@ class Permission:
             field_dict["customer_name"] = customer_name
         if resource_uuid is not UNSET:
             field_dict["resource_uuid"] = resource_uuid
+        if project_uuid is not UNSET:
+            field_dict["project_uuid"] = project_uuid
 
         return field_dict
 
@@ -246,6 +258,23 @@ class Permission:
 
         resource_uuid = _parse_resource_uuid(d.pop("resource_uuid", UNSET))
 
+        def _parse_project_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                project_uuid_type_0 = UUID(data)
+
+                return project_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        project_uuid = _parse_project_uuid(d.pop("project_uuid", UNSET))
+
         permission = cls(
             user_uuid=user_uuid,
             user_name=user_name,
@@ -263,6 +292,7 @@ class Permission:
             customer_uuid=customer_uuid,
             customer_name=customer_name,
             resource_uuid=resource_uuid,
+            project_uuid=project_uuid,
         )
 
         permission.additional_properties = d
