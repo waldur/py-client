@@ -8,7 +8,9 @@ from attrs import field as _attrs_field
 from ..models.blank_enum import BlankEnum
 from ..models.checklist_operators import ChecklistOperators
 from ..models.dependency_logic_operator_enum import DependencyLogicOperatorEnum
+from ..models.likert_scale_length_enum import LikertScaleLengthEnum
 from ..models.question_type_enum import QuestionTypeEnum
+from ..models.rich_text_toolbar_level_enum import RichTextToolbarLevelEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -45,6 +47,17 @@ class QuestionAdmin:
             enforced.
         max_files_count (Union[None, Unset, int]): Maximum number of files allowed for MULTIPLE_FILES type questions. If
             not set, no count limit is enforced.
+        likert_scale_length (Union[LikertScaleLengthEnum, None, Unset]): Number of points on the Likert scale (3, 5, or
+            7). Required for LIKERT type questions.
+        likert_low_label (Union[Unset, str]): Label for the lowest point on the Likert scale (e.g. 'Strongly disagree').
+            Optional.
+        likert_high_label (Union[Unset, str]): Label for the highest point on the Likert scale (e.g. 'Strongly agree').
+            Optional.
+        likert_allow_na (Union[Unset, bool]): Allow respondents to choose 'N/A' as an answer for LIKERT type questions.
+        rich_text_char_limit (Union[None, Unset, int]): Maximum number of characters allowed in RICH_TEXT type answers.
+            If not set, no limit is enforced.
+        rich_text_toolbar_level (Union[BlankEnum, RichTextToolbarLevelEnum, Unset]): Toolbar level for the rich text
+            editor: 'minimal', 'standard', or 'extended'.
         operator (Union[BlankEnum, ChecklistOperators, Unset]):
         review_answer_value (Union[Unset, Any]): Answer value that trigger review.
         always_requires_review (Union[Unset, bool]): This question always requires review regardless of answer
@@ -74,6 +87,12 @@ class QuestionAdmin:
     allowed_mime_types: Union[Unset, Any] = UNSET
     max_file_size_mb: Union[None, Unset, int] = UNSET
     max_files_count: Union[None, Unset, int] = UNSET
+    likert_scale_length: Union[LikertScaleLengthEnum, None, Unset] = UNSET
+    likert_low_label: Union[Unset, str] = UNSET
+    likert_high_label: Union[Unset, str] = UNSET
+    likert_allow_na: Union[Unset, bool] = UNSET
+    rich_text_char_limit: Union[None, Unset, int] = UNSET
+    rich_text_toolbar_level: Union[BlankEnum, RichTextToolbarLevelEnum, Unset] = UNSET
     operator: Union[BlankEnum, ChecklistOperators, Unset] = UNSET
     review_answer_value: Union[Unset, Any] = UNSET
     always_requires_review: Union[Unset, bool] = UNSET
@@ -141,6 +160,34 @@ class QuestionAdmin:
         else:
             max_files_count = self.max_files_count
 
+        likert_scale_length: Union[None, Unset, int]
+        if isinstance(self.likert_scale_length, Unset):
+            likert_scale_length = UNSET
+        elif isinstance(self.likert_scale_length, LikertScaleLengthEnum):
+            likert_scale_length = self.likert_scale_length.value
+        else:
+            likert_scale_length = self.likert_scale_length
+
+        likert_low_label = self.likert_low_label
+
+        likert_high_label = self.likert_high_label
+
+        likert_allow_na = self.likert_allow_na
+
+        rich_text_char_limit: Union[None, Unset, int]
+        if isinstance(self.rich_text_char_limit, Unset):
+            rich_text_char_limit = UNSET
+        else:
+            rich_text_char_limit = self.rich_text_char_limit
+
+        rich_text_toolbar_level: Union[Unset, str]
+        if isinstance(self.rich_text_toolbar_level, Unset):
+            rich_text_toolbar_level = UNSET
+        elif isinstance(self.rich_text_toolbar_level, RichTextToolbarLevelEnum):
+            rich_text_toolbar_level = self.rich_text_toolbar_level.value
+        else:
+            rich_text_toolbar_level = self.rich_text_toolbar_level.value
+
         operator: Union[Unset, str]
         if isinstance(self.operator, Unset):
             operator = UNSET
@@ -204,6 +251,18 @@ class QuestionAdmin:
             field_dict["max_file_size_mb"] = max_file_size_mb
         if max_files_count is not UNSET:
             field_dict["max_files_count"] = max_files_count
+        if likert_scale_length is not UNSET:
+            field_dict["likert_scale_length"] = likert_scale_length
+        if likert_low_label is not UNSET:
+            field_dict["likert_low_label"] = likert_low_label
+        if likert_high_label is not UNSET:
+            field_dict["likert_high_label"] = likert_high_label
+        if likert_allow_na is not UNSET:
+            field_dict["likert_allow_na"] = likert_allow_na
+        if rich_text_char_limit is not UNSET:
+            field_dict["rich_text_char_limit"] = rich_text_char_limit
+        if rich_text_toolbar_level is not UNSET:
+            field_dict["rich_text_toolbar_level"] = rich_text_toolbar_level
         if operator is not UNSET:
             field_dict["operator"] = operator
         if review_answer_value is not UNSET:
@@ -300,6 +359,57 @@ class QuestionAdmin:
 
         max_files_count = _parse_max_files_count(d.pop("max_files_count", UNSET))
 
+        def _parse_likert_scale_length(data: object) -> Union[LikertScaleLengthEnum, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, int):
+                    raise TypeError()
+                likert_scale_length_type_0 = LikertScaleLengthEnum(data)
+
+                return likert_scale_length_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[LikertScaleLengthEnum, None, Unset], data)
+
+        likert_scale_length = _parse_likert_scale_length(d.pop("likert_scale_length", UNSET))
+
+        likert_low_label = d.pop("likert_low_label", UNSET)
+
+        likert_high_label = d.pop("likert_high_label", UNSET)
+
+        likert_allow_na = d.pop("likert_allow_na", UNSET)
+
+        def _parse_rich_text_char_limit(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        rich_text_char_limit = _parse_rich_text_char_limit(d.pop("rich_text_char_limit", UNSET))
+
+        def _parse_rich_text_toolbar_level(data: object) -> Union[BlankEnum, RichTextToolbarLevelEnum, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                rich_text_toolbar_level_type_0 = RichTextToolbarLevelEnum(data)
+
+                return rich_text_toolbar_level_type_0
+            except:  # noqa: E722
+                pass
+            if not isinstance(data, str):
+                raise TypeError()
+            rich_text_toolbar_level_type_1 = BlankEnum(data)
+
+            return rich_text_toolbar_level_type_1
+
+        rich_text_toolbar_level = _parse_rich_text_toolbar_level(d.pop("rich_text_toolbar_level", UNSET))
+
         def _parse_operator(data: object) -> Union[BlankEnum, ChecklistOperators, Unset]:
             if isinstance(data, Unset):
                 return data
@@ -372,6 +482,12 @@ class QuestionAdmin:
             allowed_mime_types=allowed_mime_types,
             max_file_size_mb=max_file_size_mb,
             max_files_count=max_files_count,
+            likert_scale_length=likert_scale_length,
+            likert_low_label=likert_low_label,
+            likert_high_label=likert_high_label,
+            likert_allow_na=likert_allow_na,
+            rich_text_char_limit=rich_text_char_limit,
+            rich_text_toolbar_level=rich_text_toolbar_level,
             operator=operator,
             review_answer_value=review_answer_value,
             always_requires_review=always_requires_review,

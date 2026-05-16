@@ -5,7 +5,9 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.likert_scale_length_enum import LikertScaleLengthEnum
 from ..models.question_type_enum import QuestionTypeEnum
+from ..models.rich_text_toolbar_level_enum import RichTextToolbarLevelEnum
 
 if TYPE_CHECKING:
     from ..models.question_with_answer_dependencies_info_type_0 import QuestionWithAnswerDependenciesInfoType0
@@ -37,6 +39,14 @@ class QuestionWithAnswer:
         max_file_size_mb (Union[None, int]): Maximum file size in megabytes. If not set, no size limit is enforced.
         max_files_count (Union[None, int]): Maximum number of files allowed for MULTIPLE_FILES type questions. If not
             set, no count limit is enforced.
+        likert_scale_length (Union[LikertScaleLengthEnum, None]): Number of points on the Likert scale (3, 5, or 7).
+            Required for LIKERT type questions.
+        likert_low_label (str): Label for the lowest point on the Likert scale (e.g. 'Strongly disagree'). Optional.
+        likert_high_label (str): Label for the highest point on the Likert scale (e.g. 'Strongly agree'). Optional.
+        likert_allow_na (bool): Allow respondents to choose 'N/A' as an answer for LIKERT type questions.
+        rich_text_char_limit (Union[None, int]): Maximum number of characters allowed in RICH_TEXT type answers. If not
+            set, no limit is enforced.
+        rich_text_toolbar_level (RichTextToolbarLevelEnum):
         dependencies_info (Union['QuestionWithAnswerDependenciesInfoType0', None]):
     """
 
@@ -54,6 +64,12 @@ class QuestionWithAnswer:
     allowed_mime_types: Any
     max_file_size_mb: Union[None, int]
     max_files_count: Union[None, int]
+    likert_scale_length: Union[LikertScaleLengthEnum, None]
+    likert_low_label: str
+    likert_high_label: str
+    likert_allow_na: bool
+    rich_text_char_limit: Union[None, int]
+    rich_text_toolbar_level: RichTextToolbarLevelEnum
     dependencies_info: Union["QuestionWithAnswerDependenciesInfoType0", None]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -103,6 +119,23 @@ class QuestionWithAnswer:
         max_files_count: Union[None, int]
         max_files_count = self.max_files_count
 
+        likert_scale_length: Union[None, int]
+        if isinstance(self.likert_scale_length, LikertScaleLengthEnum):
+            likert_scale_length = self.likert_scale_length.value
+        else:
+            likert_scale_length = self.likert_scale_length
+
+        likert_low_label = self.likert_low_label
+
+        likert_high_label = self.likert_high_label
+
+        likert_allow_na = self.likert_allow_na
+
+        rich_text_char_limit: Union[None, int]
+        rich_text_char_limit = self.rich_text_char_limit
+
+        rich_text_toolbar_level = self.rich_text_toolbar_level.value
+
         dependencies_info: Union[None, dict[str, Any]]
         if isinstance(self.dependencies_info, QuestionWithAnswerDependenciesInfoType0):
             dependencies_info = self.dependencies_info.to_dict()
@@ -127,6 +160,12 @@ class QuestionWithAnswer:
                 "allowed_mime_types": allowed_mime_types,
                 "max_file_size_mb": max_file_size_mb,
                 "max_files_count": max_files_count,
+                "likert_scale_length": likert_scale_length,
+                "likert_low_label": likert_low_label,
+                "likert_high_label": likert_high_label,
+                "likert_allow_na": likert_allow_na,
+                "rich_text_char_limit": rich_text_char_limit,
+                "rich_text_toolbar_level": rich_text_toolbar_level,
                 "dependencies_info": dependencies_info,
             }
         )
@@ -218,6 +257,36 @@ class QuestionWithAnswer:
 
         max_files_count = _parse_max_files_count(d.pop("max_files_count"))
 
+        def _parse_likert_scale_length(data: object) -> Union[LikertScaleLengthEnum, None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, int):
+                    raise TypeError()
+                likert_scale_length_type_0 = LikertScaleLengthEnum(data)
+
+                return likert_scale_length_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[LikertScaleLengthEnum, None], data)
+
+        likert_scale_length = _parse_likert_scale_length(d.pop("likert_scale_length"))
+
+        likert_low_label = d.pop("likert_low_label")
+
+        likert_high_label = d.pop("likert_high_label")
+
+        likert_allow_na = d.pop("likert_allow_na")
+
+        def _parse_rich_text_char_limit(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        rich_text_char_limit = _parse_rich_text_char_limit(d.pop("rich_text_char_limit"))
+
+        rich_text_toolbar_level = RichTextToolbarLevelEnum(d.pop("rich_text_toolbar_level"))
+
         def _parse_dependencies_info(data: object) -> Union["QuestionWithAnswerDependenciesInfoType0", None]:
             if data is None:
                 return data
@@ -248,6 +317,12 @@ class QuestionWithAnswer:
             allowed_mime_types=allowed_mime_types,
             max_file_size_mb=max_file_size_mb,
             max_files_count=max_files_count,
+            likert_scale_length=likert_scale_length,
+            likert_low_label=likert_low_label,
+            likert_high_label=likert_high_label,
+            likert_allow_na=likert_allow_na,
+            rich_text_char_limit=rich_text_char_limit,
+            rich_text_toolbar_level=rich_text_toolbar_level,
             dependencies_info=dependencies_info,
         )
 
