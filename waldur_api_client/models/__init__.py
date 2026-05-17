@@ -93,6 +93,7 @@ from .anonymous_chat_user_aggregate import AnonymousChatUserAggregate
 from .answer import Answer
 from .answer_submit_request import AnswerSubmitRequest
 from .answer_submit_response import AnswerSubmitResponse
+from .api_auth_token_exchange_response_400 import ApiAuthTokenExchangeResponse400
 from .arrow_billing_line import ArrowBillingLine
 from .arrow_billing_sync import ArrowBillingSync
 from .arrow_billing_sync_item import ArrowBillingSyncItem
@@ -2312,6 +2313,7 @@ from .thread_session_request import ThreadSessionRequest
 from .thread_session_scope_enum import ThreadSessionScopeEnum
 from .time_series_to_s_data import TimeSeriesToSData
 from .to_s_consent_dashboard import ToSConsentDashboard
+from .token_exchange_request import TokenExchangeRequest
 from .token_quota_usage_response import TokenQuotaUsageResponse
 from .token_request import TokenRequest
 from .tool_execute_request import ToolExecuteRequest
@@ -2556,6 +2558,7 @@ __all__ = (
     "Answer",
     "AnswerSubmitRequest",
     "AnswerSubmitResponse",
+    "ApiAuthTokenExchangeResponse400",
     "ArrowBillingLine",
     "ArrowBillingSync",
     "ArrowBillingSyncItem",
@@ -4654,6 +4657,7 @@ __all__ = (
     "ThreadSessionRequest",
     "ThreadSessionScopeEnum",
     "TimeSeriesToSData",
+    "TokenExchangeRequest",
     "TokenQuotaUsageResponse",
     "TokenRequest",
     "ToolExecuteRequest",

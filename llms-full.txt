@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.10-dev.20260517105637
+# Version: 8.0.9-rc.10-dev.20260517202020
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -842,6 +842,12 @@ Query parameters (2):
 ### api_auth_tara_init_retrieve
 GET /api-auth/tara/init/
 Summary: Redirect user to OIDC authorization endpoint
+
+### api_auth_token_exchange
+POST /api-auth/token-exchange/
+Summary: Exchange code for token
+Description: Exchanges a short-lived one-time code for an authentication token.
+Request body: yes
 
 ============================================================
 ## assignment-batches  (module: waldur_api_client.api.assignment_batches)

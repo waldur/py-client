@@ -141,6 +141,7 @@ Module: `waldur_api_client.api.api_auth`
 - `api_auth_saml2_providers_list` GET `/api-auth/saml2/providers/` (1 query param)
 - `api_auth_tara_complete_retrieve` GET `/api-auth/tara/complete/` (2 query params)
 - `api_auth_tara_init_retrieve` GET `/api-auth/tara/init/` — Redirect user to OIDC authorization endpoint (no params)
+- `api_auth_token_exchange` POST `/api-auth/token-exchange/` — Exchange code for token (request body)
 
 ## assignment-batches
 Module: `waldur_api_client.api.assignment_batches`
