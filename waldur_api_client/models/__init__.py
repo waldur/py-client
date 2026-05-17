@@ -272,10 +272,12 @@ from .broadcast_message_field_enum import BroadcastMessageFieldEnum
 from .broadcast_message_o_enum import BroadcastMessageOEnum
 from .broadcast_message_request import BroadcastMessageRequest
 from .broadcast_message_state_enum import BroadcastMessageStateEnum
+from .bulk_round_create_request_request import BulkRoundCreateRequestRequest
 from .bulk_silence_response import BulkSilenceResponse
 from .cache_performance import CachePerformance
 from .cached_project_storage_report import CachedProjectStorageReport
 from .cached_project_usage_report import CachedProjectUsageReport
+from .cadence_enum import CadenceEnum
 from .call_applicant_visibility_config import CallApplicantVisibilityConfig
 from .call_applicant_visibility_config_request import CallApplicantVisibilityConfigRequest
 from .call_assignment_configuration import CallAssignmentConfiguration
@@ -2723,10 +2725,12 @@ __all__ = (
     "BroadcastMessageOEnum",
     "BroadcastMessageRequest",
     "BroadcastMessageStateEnum",
+    "BulkRoundCreateRequestRequest",
     "BulkSilenceResponse",
     "CachedProjectStorageReport",
     "CachedProjectUsageReport",
     "CachePerformance",
+    "CadenceEnum",
     "CallApplicantVisibilityConfig",
     "CallApplicantVisibilityConfigRequest",
     "CallAssignmentConfiguration",

@@ -2967,6 +2967,7 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_review_proposal_compliance` POST `/api/proposal-protected-calls/{uuid}/review_proposal_compliance/` — Mark proposal compliance as reviewed by call manager (path: uuid | request body)
 - `proposal_protected_calls_reviewer_pool_list` GET `/api/proposal-protected-calls/{uuid}/reviewer-pool/` — List reviewer pool members for a call (path: uuid)
 - `proposal_protected_calls_invite_reviewers` POST `/api/proposal-protected-calls/{uuid}/reviewer-pool/` — Invite reviewers to join the call's reviewer pool (path: uuid | 10 query params | request body)
+- `proposal_protected_calls_rounds_bulk_set` POST `/api/proposal-protected-calls/{uuid}/rounds-bulk-set/` — Create multiple rounds on a call at a fixed cadence (path: uuid | 10 query params | request body)
 - `proposal_protected_calls_rounds_list` GET `/api/proposal-protected-calls/{uuid}/rounds/` — List rounds for a call (path: uuid)
 - `proposal_protected_calls_rounds_set` POST `/api/proposal-protected-calls/{uuid}/rounds/` — Create a round for a call (path: uuid | request body)
 - `proposal_protected_calls_rounds_retrieve` GET `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/` (path: obj_uuid, uuid)

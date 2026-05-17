@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.10-dev.20260517035903
+# Version: 8.0.9-rc.10-dev.20260517081239
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -18544,6 +18544,25 @@ Path parameters:
 POST /api/proposal-protected-calls/{uuid}/reviewer-pool/
 Summary: Invite reviewers to join the call's reviewer pool
 Description: Invite reviewers to join the call's reviewer pool.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - customer
+  - customer_keyword
+  - customer_uuid
+  - has_active_round
+  - name
+  - o — Ordering
+  - offering_uuid
+  - offerings_provider_uuid
+  - slug — Slug
+  - state
+Request body: yes
+
+### proposal_protected_calls_rounds_bulk_set
+POST /api/proposal-protected-calls/{uuid}/rounds-bulk-set/
+Summary: Create multiple rounds on a call at a fixed cadence
+Description: Create multiple rounds on a call at a fixed cadence. Spacing is controlled by ``cadence`` (monthly/quarterly/biannual/yearly/custom). Each round's ``cutoff_time`` is derived as ``start_time + submission_window_days``. Fixed-date allocation is not supported in bulk mode.
 Path parameters:
   - uuid
 Query parameters (10):
