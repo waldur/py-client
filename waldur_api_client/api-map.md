@@ -2943,6 +2943,7 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_delete_user` POST `/api/proposal-protected-calls/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `proposal_protected_calls_detach_documents` POST `/api/proposal-protected-calls/{uuid}/detach_documents/` — Detach documents from call (path: uuid | request body)
 - `proposal_protected_calls_detect_conflicts` POST `/api/proposal-protected-calls/{uuid}/detect-conflicts/` — Trigger automated COI detection for all reviewer-proposal pairs (path: uuid | request body)
+- `proposal_protected_calls_duplicate` POST `/api/proposal-protected-calls/{uuid}/duplicate/` — Duplicate a call (path: uuid | request body)
 - `proposal_protected_calls_generate_assignments` POST `/api/proposal-protected-calls/{uuid}/generate-assignments/` — Generate assignment batches for reviewers (path: uuid | request body)
 - `proposal_protected_calls_generate_suggestions` POST `/api/proposal-protected-calls/{uuid}/generate-suggestions/` — Generate reviewer suggestions with configurable matching source (path: uuid | request body)
 - `proposal_protected_calls_invite_by_email` POST `/api/proposal-protected-calls/{uuid}/invite-by-email/` — Invite a reviewer by email address (path: uuid | request body)

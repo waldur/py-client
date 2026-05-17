@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.10-dev.20260516233340
+# Version: 8.0.9-rc.10-dev.20260517035903
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -18335,6 +18335,14 @@ Request body: yes
 POST /api/proposal-protected-calls/{uuid}/detect-conflicts/
 Summary: Trigger automated COI detection for all reviewer-proposal pairs
 Description: Trigger automated COI detection for all reviewer-proposal pairs.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_duplicate
+POST /api/proposal-protected-calls/{uuid}/duplicate/
+Summary: Duplicate a call
+Description: Duplicate a call. The new call inherits the source call's configuration (offerings, rounds, workflow steps, resource templates, role mappings, documents, and COI/matching/assignment/applicant-visibility settings) and starts in draft state. Proposals, reviews, team permissions, and reviewer-pool m...
 Path parameters:
   - uuid
 Request body: yes
