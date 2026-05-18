@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.0.9-rc.10-dev.20260517233346).
+> Auto-generated Python SDK for the Waldur API (version 8.0.9-rc.10-dev.20260518135035).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -179,6 +179,7 @@ waldur_api_client/
 - **marketplace-public-offerings** (5 endpoints)
 - **marketplace-related-customers** (1 endpoint)
 - **marketplace-remote-synchronisations** (8 endpoints)
+- **marketplace-resource-limit-change-requests** (7 endpoints)
 - **marketplace-resource-offerings** (1 endpoint)
 - **marketplace-resource-projects** (12 endpoints)
 - **marketplace-resources** (37 endpoints)

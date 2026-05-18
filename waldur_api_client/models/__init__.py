@@ -1981,6 +1981,11 @@ from .resource_effective_id_request import ResourceEffectiveIDRequest
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
 from .resource_end_date_request import ResourceEndDateRequest
 from .resource_field_enum import ResourceFieldEnum
+from .resource_limit_change_request import ResourceLimitChangeRequest
+from .resource_limit_change_request_create import ResourceLimitChangeRequestCreate
+from .resource_limit_change_request_create_request import ResourceLimitChangeRequestCreateRequest
+from .resource_limit_change_request_current_limits import ResourceLimitChangeRequestCurrentLimits
+from .resource_limit_change_request_request import ResourceLimitChangeRequestRequest
 from .resource_limit_period import ResourceLimitPeriod
 from .resource_limit_usage import ResourceLimitUsage
 from .resource_limits import ResourceLimits
@@ -4332,6 +4337,11 @@ __all__ = (
     "ResourceEndDateByProviderRequest",
     "ResourceEndDateRequest",
     "ResourceFieldEnum",
+    "ResourceLimitChangeRequest",
+    "ResourceLimitChangeRequestCreate",
+    "ResourceLimitChangeRequestCreateRequest",
+    "ResourceLimitChangeRequestCurrentLimits",
+    "ResourceLimitChangeRequestRequest",
     "ResourceLimitPeriod",
     "ResourceLimits",
     "ResourceLimitUsage",

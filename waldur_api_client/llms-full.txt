@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.10-dev.20260517233346
+# Version: 8.0.9-rc.10-dev.20260518135035
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10041,6 +10041,63 @@ Path parameters:
 POST /api/marketplace-remote-synchronisations/{uuid}/run_synchronisation/
 Path parameters:
   - uuid
+
+============================================================
+## marketplace-resource-limit-change-requests  (module: waldur_api_client.api.marketplace_resource_limit_change_requests)
+============================================================
+
+### marketplace_resource_limit_change_requests_list
+GET /api/marketplace-resource-limit-change-requests/
+Query parameters (5):
+  - created_by_uuid — Created by UUID
+  - customer_uuid — Customer UUID
+  - project_uuid — Project UUID
+  - resource_uuid — Resource UUID
+  - state
+
+### marketplace_resource_limit_change_requests_count
+HEAD /api/marketplace-resource-limit-change-requests/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (5):
+  - created_by_uuid — Created by UUID
+  - customer_uuid — Customer UUID
+  - project_uuid — Project UUID
+  - resource_uuid — Resource UUID
+  - state
+
+### marketplace_resource_limit_change_requests_create
+POST /api/marketplace-resource-limit-change-requests/
+Request body: yes
+
+### marketplace_resource_limit_change_requests_retrieve
+GET /api/marketplace-resource-limit-change-requests/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_resource_limit_change_requests_approve
+POST /api/marketplace-resource-limit-change-requests/{uuid}/approve/
+Summary: Approve resource limit change request and apply limits via marketplace order
+Description: Approve resource limit change request and apply limits via marketplace order.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_limit_change_requests_cancel
+POST /api/marketplace-resource-limit-change-requests/{uuid}/cancel/
+Summary: Cancel resource limit change request
+Description: Cancel resource limit change request. Only the creator can cancel.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_limit_change_requests_reject
+POST /api/marketplace-resource-limit-change-requests/{uuid}/reject/
+Summary: Reject resource limit change request
+Description: Reject resource limit change request.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## marketplace-resource-offerings  (module: waldur_api_client.api.marketplace_resource_offerings)

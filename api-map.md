@@ -1679,6 +1679,17 @@ Module: `waldur_api_client.api.marketplace_remote_synchronisations`
 - `marketplace_remote_synchronisations_destroy` DELETE `/api/marketplace-remote-synchronisations/{uuid}/` (path: uuid)
 - `marketplace_remote_synchronisations_run_synchronisation` POST `/api/marketplace-remote-synchronisations/{uuid}/run_synchronisation/` (path: uuid)
 
+## marketplace-resource-limit-change-requests
+Module: `waldur_api_client.api.marketplace_resource_limit_change_requests`
+
+- `marketplace_resource_limit_change_requests_list` GET `/api/marketplace-resource-limit-change-requests/` (5 query params)
+- `marketplace_resource_limit_change_requests_count` HEAD `/api/marketplace-resource-limit-change-requests/` — Get number of items in the collection matching the request parameters (5 query params)
+- `marketplace_resource_limit_change_requests_create` POST `/api/marketplace-resource-limit-change-requests/` (request body)
+- `marketplace_resource_limit_change_requests_retrieve` GET `/api/marketplace-resource-limit-change-requests/{uuid}/` (path: uuid)
+- `marketplace_resource_limit_change_requests_approve` POST `/api/marketplace-resource-limit-change-requests/{uuid}/approve/` — Approve resource limit change request and apply limits via marketplace order (path: uuid | request body)
+- `marketplace_resource_limit_change_requests_cancel` POST `/api/marketplace-resource-limit-change-requests/{uuid}/cancel/` — Cancel resource limit change request (path: uuid | request body)
+- `marketplace_resource_limit_change_requests_reject` POST `/api/marketplace-resource-limit-change-requests/{uuid}/reject/` — Reject resource limit change request (path: uuid | request body)
+
 ## marketplace-resource-offerings
 Module: `waldur_api_client.api.marketplace_resource_offerings`
 
