@@ -39,6 +39,8 @@ class OpenStackInstanceCreateOrderAttributes:
         availability_zone (Union[None, Unset, str]): Availability zone where this instance is located
         connect_directly_to_external_network (Union[Unset, bool]): If True, instance will be connected directly to
             external network
+        config_drive (Union[None, Unset, bool]): Force config drive on or off for this instance. If null, the tenant-
+            wide default from service settings is used.
         data_volumes (Union[Unset, list['OpenStackDataVolumeRequest']]): Additional data volumes to attach to the
             instance
     """
@@ -59,6 +61,7 @@ class OpenStackInstanceCreateOrderAttributes:
     user_data: Union[Unset, str] = UNSET
     availability_zone: Union[None, Unset, str] = UNSET
     connect_directly_to_external_network: Union[Unset, bool] = UNSET
+    config_drive: Union[None, Unset, bool] = UNSET
     data_volumes: Union[Unset, list["OpenStackDataVolumeRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -122,6 +125,12 @@ class OpenStackInstanceCreateOrderAttributes:
 
         connect_directly_to_external_network = self.connect_directly_to_external_network
 
+        config_drive: Union[None, Unset, bool]
+        if isinstance(self.config_drive, Unset):
+            config_drive = UNSET
+        else:
+            config_drive = self.config_drive
+
         data_volumes: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.data_volumes, Unset):
             data_volumes = []
@@ -162,6 +171,8 @@ class OpenStackInstanceCreateOrderAttributes:
             field_dict["availability_zone"] = availability_zone
         if connect_directly_to_external_network is not UNSET:
             field_dict["connect_directly_to_external_network"] = connect_directly_to_external_network
+        if config_drive is not UNSET:
+            field_dict["config_drive"] = config_drive
         if data_volumes is not UNSET:
             field_dict["data_volumes"] = data_volumes
 
@@ -249,6 +260,15 @@ class OpenStackInstanceCreateOrderAttributes:
 
         connect_directly_to_external_network = d.pop("connect_directly_to_external_network", UNSET)
 
+        def _parse_config_drive(data: object) -> Union[None, Unset, bool]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, bool], data)
+
+        config_drive = _parse_config_drive(d.pop("config_drive", UNSET))
+
         data_volumes = []
         _data_volumes = d.pop("data_volumes", UNSET)
         for data_volumes_item_data in _data_volumes or []:
@@ -273,6 +293,7 @@ class OpenStackInstanceCreateOrderAttributes:
             user_data=user_data,
             availability_zone=availability_zone,
             connect_directly_to_external_network=connect_directly_to_external_network,
+            config_drive=config_drive,
             data_volumes=data_volumes,
         )
 

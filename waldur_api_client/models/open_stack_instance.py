@@ -79,6 +79,8 @@ class OpenStackInstance:
         availability_zone_name (Union[Unset, str]): Name of the availability zone where instance is located
         connect_directly_to_external_network (Union[Unset, bool]): If True, instance will be connected directly to
             external network
+        config_drive (Union[None, Unset, bool]): Force config drive on or off for this instance. If null, the tenant-
+            wide default from service settings is used.
         runtime_state (Union[Unset, str]):
         action (Union[Unset, str]):
         action_details (Union[Unset, Any]): Details about ongoing or completed actions
@@ -150,6 +152,7 @@ class OpenStackInstance:
     availability_zone: Union[None, Unset, str] = UNSET
     availability_zone_name: Union[Unset, str] = UNSET
     connect_directly_to_external_network: Union[Unset, bool] = UNSET
+    config_drive: Union[None, Unset, bool] = UNSET
     runtime_state: Union[Unset, str] = UNSET
     action: Union[Unset, str] = UNSET
     action_details: Union[Unset, Any] = UNSET
@@ -345,6 +348,12 @@ class OpenStackInstance:
         availability_zone_name = self.availability_zone_name
 
         connect_directly_to_external_network = self.connect_directly_to_external_network
+
+        config_drive: Union[None, Unset, bool]
+        if isinstance(self.config_drive, Unset):
+            config_drive = UNSET
+        else:
+            config_drive = self.config_drive
 
         runtime_state = self.runtime_state
 
@@ -543,6 +552,8 @@ class OpenStackInstance:
             field_dict["availability_zone_name"] = availability_zone_name
         if connect_directly_to_external_network is not UNSET:
             field_dict["connect_directly_to_external_network"] = connect_directly_to_external_network
+        if config_drive is not UNSET:
+            field_dict["config_drive"] = config_drive
         if runtime_state is not UNSET:
             field_dict["runtime_state"] = runtime_state
         if action is not UNSET:
@@ -813,6 +824,15 @@ class OpenStackInstance:
 
         connect_directly_to_external_network = d.pop("connect_directly_to_external_network", UNSET)
 
+        def _parse_config_drive(data: object) -> Union[None, Unset, bool]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, bool], data)
+
+        config_drive = _parse_config_drive(d.pop("config_drive", UNSET))
+
         runtime_state = d.pop("runtime_state", UNSET)
 
         action = d.pop("action", UNSET)
@@ -1012,6 +1032,7 @@ class OpenStackInstance:
             availability_zone=availability_zone,
             availability_zone_name=availability_zone_name,
             connect_directly_to_external_network=connect_directly_to_external_network,
+            config_drive=config_drive,
             runtime_state=runtime_state,
             action=action,
             action_details=action_details,

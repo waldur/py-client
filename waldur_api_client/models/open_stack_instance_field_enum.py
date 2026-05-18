@@ -8,6 +8,7 @@ class OpenStackInstanceFieldEnum(str, Enum):
     AVAILABILITY_ZONE = "availability_zone"
     AVAILABILITY_ZONE_NAME = "availability_zone_name"
     BACKEND_ID = "backend_id"
+    CONFIG_DRIVE = "config_drive"
     CONNECT_DIRECTLY_TO_EXTERNAL_NETWORK = "connect_directly_to_external_network"
     CORES = "cores"
     CREATED = "created"
