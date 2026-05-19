@@ -112,6 +112,7 @@ class PublicOfferingDetails:
         offering_group_title (Union[None, Unset, str]):
         user_has_consent (Union[Unset, bool]):
         is_accessible (Union[Unset, bool]):
+        config_drive_default (Union[Unset, bool]):
         google_calendar_is_public (Union[None, Unset, bool]):
         google_calendar_link (Union[None, Unset, str]): Get the Google Calendar link for an offering.
         promotion_campaigns (Union[Unset, list['NestedCampaign']]):
@@ -191,6 +192,7 @@ class PublicOfferingDetails:
     offering_group_title: Union[None, Unset, str] = UNSET
     user_has_consent: Union[Unset, bool] = UNSET
     is_accessible: Union[Unset, bool] = UNSET
+    config_drive_default: Union[Unset, bool] = UNSET
     google_calendar_is_public: Union[None, Unset, bool] = UNSET
     google_calendar_link: Union[None, Unset, str] = UNSET
     promotion_campaigns: Union[Unset, list["NestedCampaign"]] = UNSET
@@ -537,6 +539,8 @@ class PublicOfferingDetails:
 
         is_accessible = self.is_accessible
 
+        config_drive_default = self.config_drive_default
+
         google_calendar_is_public: Union[None, Unset, bool]
         if isinstance(self.google_calendar_is_public, Unset):
             google_calendar_is_public = UNSET
@@ -707,6 +711,8 @@ class PublicOfferingDetails:
             field_dict["user_has_consent"] = user_has_consent
         if is_accessible is not UNSET:
             field_dict["is_accessible"] = is_accessible
+        if config_drive_default is not UNSET:
+            field_dict["config_drive_default"] = config_drive_default
         if google_calendar_is_public is not UNSET:
             field_dict["google_calendar_is_public"] = google_calendar_is_public
         if google_calendar_link is not UNSET:
@@ -1227,6 +1233,8 @@ class PublicOfferingDetails:
 
         is_accessible = d.pop("is_accessible", UNSET)
 
+        config_drive_default = d.pop("config_drive_default", UNSET)
+
         def _parse_google_calendar_is_public(data: object) -> Union[None, Unset, bool]:
             if data is None:
                 return data
@@ -1327,6 +1335,7 @@ class PublicOfferingDetails:
             offering_group_title=offering_group_title,
             user_has_consent=user_has_consent,
             is_accessible=is_accessible,
+            config_drive_default=config_drive_default,
             google_calendar_is_public=google_calendar_is_public,
             google_calendar_link=google_calendar_link,
             promotion_campaigns=promotion_campaigns,

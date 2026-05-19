@@ -14,6 +14,7 @@ class PublicOfferingDetailsFieldEnum(str, Enum):
     CITATION_COUNT = "citation_count"
     COMPLIANCE_CHECKLIST = "compliance_checklist"
     COMPONENTS = "components"
+    CONFIG_DRIVE_DEFAULT = "config_drive_default"
     COUNTRY = "country"
     CREATED = "created"
     CUSTOMER = "customer"
