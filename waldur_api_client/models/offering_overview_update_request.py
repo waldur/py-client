@@ -23,6 +23,7 @@ class OfferingOverviewUpdateRequest:
         getting_started (Union[Unset, str]):
         integration_guide (Union[Unset, str]):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
+        backend_id (Union[Unset, str]):
     """
 
     name: str
@@ -35,6 +36,7 @@ class OfferingOverviewUpdateRequest:
     getting_started: Union[Unset, str] = UNSET
     integration_guide: Union[Unset, str] = UNSET
     slug: Union[Unset, str] = UNSET
+    backend_id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,6 +59,8 @@ class OfferingOverviewUpdateRequest:
         integration_guide = self.integration_guide
 
         slug = self.slug
+
+        backend_id = self.backend_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -83,6 +87,8 @@ class OfferingOverviewUpdateRequest:
             field_dict["integration_guide"] = integration_guide
         if slug is not UNSET:
             field_dict["slug"] = slug
+        if backend_id is not UNSET:
+            field_dict["backend_id"] = backend_id
 
         return field_dict
 
@@ -109,6 +115,8 @@ class OfferingOverviewUpdateRequest:
 
         slug = d.pop("slug", UNSET)
 
+        backend_id = d.pop("backend_id", UNSET)
+
         offering_overview_update_request = cls(
             name=name,
             description=description,
@@ -120,6 +128,7 @@ class OfferingOverviewUpdateRequest:
             getting_started=getting_started,
             integration_guide=integration_guide,
             slug=slug,
+            backend_id=backend_id,
         )
 
         offering_overview_update_request.additional_properties = d
