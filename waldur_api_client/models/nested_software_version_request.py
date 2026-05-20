@@ -16,15 +16,19 @@ class NestedSoftwareVersionRequest:
     """
     Attributes:
         version (str):
+        module_version (Union[Unset, str]): EESSI EasyBuild module version
         release_date (Union[None, Unset, datetime.date]):
     """
 
     version: str
+    module_version: Union[Unset, str] = UNSET
     release_date: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         version = self.version
+
+        module_version = self.module_version
 
         release_date: Union[None, Unset, str]
         if isinstance(self.release_date, Unset):
@@ -41,6 +45,8 @@ class NestedSoftwareVersionRequest:
                 "version": version,
             }
         )
+        if module_version is not UNSET:
+            field_dict["module_version"] = module_version
         if release_date is not UNSET:
             field_dict["release_date"] = release_date
 
@@ -50,6 +56,8 @@ class NestedSoftwareVersionRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         version = d.pop("version")
+
+        module_version = d.pop("module_version", UNSET)
 
         def _parse_release_date(data: object) -> Union[None, Unset, datetime.date]:
             if data is None:
@@ -70,6 +78,7 @@ class NestedSoftwareVersionRequest:
 
         nested_software_version_request = cls(
             version=version,
+            module_version=module_version,
             release_date=release_date,
         )
 

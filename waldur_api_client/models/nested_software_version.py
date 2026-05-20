@@ -30,6 +30,7 @@ class NestedSoftwareVersion:
         extensions (list[Any]):
         toolchain (NestedSoftwareVersionToolchain):
         toolchain_families_compatibility (list[Any]):
+        module_version (Union[Unset, str]): EESSI EasyBuild module version
         release_date (Union[None, Unset, datetime.date]):
     """
 
@@ -41,6 +42,7 @@ class NestedSoftwareVersion:
     extensions: list[Any]
     toolchain: "NestedSoftwareVersionToolchain"
     toolchain_families_compatibility: list[Any]
+    module_version: Union[Unset, str] = UNSET
     release_date: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -64,6 +66,8 @@ class NestedSoftwareVersion:
 
         toolchain_families_compatibility = self.toolchain_families_compatibility
 
+        module_version = self.module_version
+
         release_date: Union[None, Unset, str]
         if isinstance(self.release_date, Unset):
             release_date = UNSET
@@ -86,6 +90,8 @@ class NestedSoftwareVersion:
                 "toolchain_families_compatibility": toolchain_families_compatibility,
             }
         )
+        if module_version is not UNSET:
+            field_dict["module_version"] = module_version
         if release_date is not UNSET:
             field_dict["release_date"] = release_date
 
@@ -119,6 +125,8 @@ class NestedSoftwareVersion:
 
         toolchain_families_compatibility = cast(list[Any], d.pop("toolchain_families_compatibility"))
 
+        module_version = d.pop("module_version", UNSET)
+
         def _parse_release_date(data: object) -> Union[None, Unset, datetime.date]:
             if data is None:
                 return data
@@ -145,6 +153,7 @@ class NestedSoftwareVersion:
             extensions=extensions,
             toolchain=toolchain,
             toolchain_families_compatibility=toolchain_families_compatibility,
+            module_version=module_version,
             release_date=release_date,
         )
 

@@ -24,6 +24,7 @@ class SoftwareVersion:
         created (datetime.datetime):
         modified (datetime.datetime):
         version (str):
+        module_version (str): EESSI EasyBuild module version
         release_date (Union[None, datetime.date]):
         dependencies (Any): Package dependencies (format varies by catalog type)
         metadata (Any): Version-specific metadata (toolchains, build info, modules, etc.)
@@ -42,6 +43,7 @@ class SoftwareVersion:
     created: datetime.datetime
     modified: datetime.datetime
     version: str
+    module_version: str
     release_date: Union[None, datetime.date]
     dependencies: Any
     metadata: Any
@@ -65,6 +67,8 @@ class SoftwareVersion:
         modified = self.modified.isoformat()
 
         version = self.version
+
+        module_version = self.module_version
 
         release_date: Union[None, str]
         if isinstance(self.release_date, datetime.date):
@@ -101,6 +105,7 @@ class SoftwareVersion:
                 "created": created,
                 "modified": modified,
                 "version": version,
+                "module_version": module_version,
                 "release_date": release_date,
                 "dependencies": dependencies,
                 "metadata": metadata,
@@ -132,6 +137,8 @@ class SoftwareVersion:
         modified = isoparse(d.pop("modified"))
 
         version = d.pop("version")
+
+        module_version = d.pop("module_version")
 
         def _parse_release_date(data: object) -> Union[None, datetime.date]:
             if data is None:
@@ -174,6 +181,7 @@ class SoftwareVersion:
             created=created,
             modified=modified,
             version=version,
+            module_version=module_version,
             release_date=release_date,
             dependencies=dependencies,
             metadata=metadata,
