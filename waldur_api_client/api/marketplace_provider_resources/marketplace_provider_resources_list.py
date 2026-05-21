@@ -27,7 +27,9 @@ def _get_kwargs(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -105,7 +107,11 @@ def _get_kwargs(
 
     params["field"] = json_field
 
+    params["flavor_name"] = flavor_name
+
     params["has_terminate_date"] = has_terminate_date
+
+    params["image_name"] = image_name
 
     params["is_attached"] = is_attached
 
@@ -283,7 +289,9 @@ def sync_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -337,7 +345,9 @@ def sync_detailed(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[ResourceFieldEnum]]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -394,7 +404,9 @@ def sync_detailed(
         customer_uuid=customer_uuid,
         downscaled=downscaled,
         field=field,
+        flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
+        image_name=image_name,
         is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
@@ -453,7 +465,9 @@ def sync(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -507,7 +521,9 @@ def sync(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[ResourceFieldEnum]]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -565,7 +581,9 @@ def sync(
         customer_uuid=customer_uuid,
         downscaled=downscaled,
         field=field,
+        flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
+        image_name=image_name,
         is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
@@ -618,7 +636,9 @@ async def asyncio_detailed(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -672,7 +692,9 @@ async def asyncio_detailed(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[ResourceFieldEnum]]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -729,7 +751,9 @@ async def asyncio_detailed(
         customer_uuid=customer_uuid,
         downscaled=downscaled,
         field=field,
+        flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
+        image_name=image_name,
         is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
@@ -786,7 +810,9 @@ async def asyncio(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -840,7 +866,9 @@ async def asyncio(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[ResourceFieldEnum]]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -899,7 +927,9 @@ async def asyncio(
             customer_uuid=customer_uuid,
             downscaled=downscaled,
             field=field,
+            flavor_name=flavor_name,
             has_terminate_date=has_terminate_date,
+            image_name=image_name,
             is_attached=is_attached,
             lexis_links_supported=lexis_links_supported,
             limit_based=limit_based,
@@ -953,7 +983,9 @@ def sync_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -1007,7 +1039,9 @@ def sync_all(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[ResourceFieldEnum]]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -1066,7 +1100,9 @@ def sync_all(
         customer_uuid=customer_uuid,
         downscaled=downscaled,
         field=field,
+        flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
+        image_name=image_name,
         is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
@@ -1158,7 +1194,9 @@ async def asyncio_all(
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
     field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -1212,7 +1250,9 @@ async def asyncio_all(
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
         field (Union[Unset, list[ResourceFieldEnum]]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -1271,7 +1311,9 @@ async def asyncio_all(
         customer_uuid=customer_uuid,
         downscaled=downscaled,
         field=field,
+        flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
+        image_name=image_name,
         is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,

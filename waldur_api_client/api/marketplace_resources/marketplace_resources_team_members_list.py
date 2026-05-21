@@ -26,7 +26,9 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -95,7 +97,11 @@ def _get_kwargs(
 
     params["downscaled"] = downscaled
 
+    params["flavor_name"] = flavor_name
+
     params["has_terminate_date"] = has_terminate_date
+
+    params["image_name"] = image_name
 
     params["is_attached"] = is_attached
 
@@ -275,7 +281,9 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -330,7 +338,9 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -387,7 +397,9 @@ def sync_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
+        image_name=image_name,
         is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
@@ -446,7 +458,9 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -501,7 +515,9 @@ def sync(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -559,7 +575,9 @@ def sync(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
+        image_name=image_name,
         is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
@@ -612,7 +630,9 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -667,7 +687,9 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -724,7 +746,9 @@ async def asyncio_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
+        image_name=image_name,
         is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
@@ -781,7 +805,9 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -836,7 +862,9 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -895,7 +923,9 @@ async def asyncio(
             customer=customer,
             customer_uuid=customer_uuid,
             downscaled=downscaled,
+            flavor_name=flavor_name,
             has_terminate_date=has_terminate_date,
+            image_name=image_name,
             is_attached=is_attached,
             lexis_links_supported=lexis_links_supported,
             limit_based=limit_based,
@@ -949,7 +979,9 @@ def sync_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -1003,7 +1035,9 @@ def sync_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -1062,7 +1096,9 @@ def sync_all(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
+        image_name=image_name,
         is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
@@ -1154,7 +1190,9 @@ async def asyncio_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
+    image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
@@ -1208,7 +1246,9 @@ async def asyncio_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
+        image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
@@ -1267,7 +1307,9 @@ async def asyncio_all(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
+        image_name=image_name,
         is_attached=is_attached,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,

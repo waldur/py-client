@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.12-dev.20260520233340
+# Version: 8.0.9-rc.12-dev.20260521233352
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2185,7 +2185,7 @@ Path parameters:
 
 ### booking_resources_list
 GET /api/booking-resources/
-Query parameters (45):
+Query parameters (47):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -2196,7 +2196,9 @@ Query parameters (45):
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
   - field
+  - flavor_name — Flavor name
   - has_terminate_date — Has termination date
+  - image_name — Image name
   - is_attached — Filter by attached state
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
@@ -2236,7 +2238,7 @@ Query parameters (45):
 HEAD /api/booking-resources/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (44):
+Query parameters (46):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -2246,7 +2248,9 @@ Query parameters (44):
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
+  - flavor_name — Flavor name
   - has_terminate_date — Has termination date
+  - image_name — Image name
   - is_attached — Filter by attached state
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
@@ -9386,7 +9390,7 @@ Request body: yes
 GET /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Returns a paginated list of resources for offerings managed by the current user as a service provider.
-Query parameters (45):
+Query parameters (47):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9396,7 +9400,9 @@ Query parameters (45):
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
   - field
+  - flavor_name — Flavor name
   - has_terminate_date — Has termination date
+  - image_name — Image name
   - is_attached — Filter by attached state
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
@@ -9437,7 +9443,7 @@ Query parameters (45):
 HEAD /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (44):
+Query parameters (46):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9446,7 +9452,9 @@ Query parameters (44):
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
+  - flavor_name — Flavor name
   - has_terminate_date — Has termination date
+  - image_name — Image name
   - is_attached — Filter by attached state
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
@@ -9553,7 +9561,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (45):
+Query parameters (47):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -9563,7 +9571,9 @@ Query parameters (45):
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
+  - flavor_name — Flavor name
   - has_terminate_date — Has termination date
+  - image_name — Image name
   - is_attached — Filter by attached state
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
@@ -10217,7 +10227,7 @@ Request body: yes
 GET /api/marketplace-resources/
 Summary: List consumer resources
 Description: Returns a paginated list of resources accessible to the current user as a service consumer.
-Query parameters (45):
+Query parameters (47):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -10227,7 +10237,9 @@ Query parameters (45):
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
   - field
+  - flavor_name — Flavor name
   - has_terminate_date — Has termination date
+  - image_name — Image name
   - is_attached — Filter by attached state
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
@@ -10268,7 +10280,7 @@ Query parameters (45):
 HEAD /api/marketplace-resources/
 Summary: List consumer resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (44):
+Query parameters (46):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -10277,7 +10289,9 @@ Query parameters (44):
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
+  - flavor_name — Flavor name
   - has_terminate_date — Has termination date
+  - image_name — Image name
   - is_attached — Filter by attached state
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
@@ -10397,7 +10411,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (45):
+Query parameters (47):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -10407,7 +10421,9 @@ Query parameters (45):
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
+  - flavor_name — Flavor name
   - has_terminate_date — Has termination date
+  - image_name — Image name
   - is_attached — Filter by attached state
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
@@ -10600,7 +10616,7 @@ Summary: List team members of a resource
 Description: One row per user (deduplicated) with their direct Resource role and a nested `resource_projects[]` array of their per-ResourceProject grants under this resource. Mirrors the org-level `customers/{uuid}/users/` shape so the frontend can render an expandable per-user view.
 Path parameters:
   - uuid
-Query parameters (44):
+Query parameters (46):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -10609,7 +10625,9 @@ Query parameters (44):
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
+  - flavor_name — Flavor name
   - has_terminate_date — Has termination date
+  - image_name — Image name
   - is_attached — Filter by attached state
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
