@@ -1583,6 +1583,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_update_thumbnail` POST `/api/marketplace-provider-offerings/{uuid}/update_thumbnail/` — Update offering thumbnail (path: uuid | request body)
 - `marketplace_provider_offerings_update_type` POST `/api/marketplace-provider-offerings/{uuid}/update_type/` — Swap offering type (path: uuid | request body)
 - `marketplace_provider_offerings_update_user` POST `/api/marketplace-provider-offerings/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
+- `marketplace_provider_offerings_upload_markdown_image` POST `/api/marketplace-provider-offerings/{uuid}/upload_markdown_image/` — Upload markdown image (path: uuid | request body)
 - `marketplace_provider_offerings_user_attribute_config_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/user-attribute-config/` — Get user attribute config (path: uuid)
 - `marketplace_provider_offerings_user_has_resource_access_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/user_has_resource_access/` — Check user access to offering resources (path: uuid | 2 query params)
 

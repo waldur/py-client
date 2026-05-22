@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.12-dev.20260522044014
+# Version: 8.0.9-rc.12.dev.20260522135647
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9265,6 +9265,14 @@ Request body: yes
 POST /api/marketplace-provider-offerings/{uuid}/update_user/
 Summary: Update a user's role expiration
 Description: Updates the expiration time for a user's existing role in the current scope. This is useful for extending or shortening the duration of a permission. To make a role permanent, set expiration_time to null.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_offerings_upload_markdown_image
+POST /api/marketplace-provider-offerings/{uuid}/upload_markdown_image/
+Summary: Upload markdown image
+Description: Uploads an image for embedding in offering markdown descriptions. Requires ENABLE_MARKDOWN_IMAGE_UPLOAD Constance setting.
 Path parameters:
   - uuid
 Request body: yes

@@ -50,6 +50,8 @@ class ConstanceSettingsRequestForm:
         site_phone (Union[Unset, str]):
         currency_name (Union[Unset, str]):
         thumbnail_size (Union[Unset, str]):
+        enable_markdown_image_upload (Union[Unset, bool]):
+        markdown_image_max_size_mb (Union[Unset, int]):
         anonymous_user_can_view_offerings (Union[Unset, bool]):
         show_offering_cover_image (Union[Unset, bool]):
         anonymous_user_can_view_plans (Union[Unset, bool]):
@@ -324,6 +326,8 @@ class ConstanceSettingsRequestForm:
     site_phone: Union[Unset, str] = UNSET
     currency_name: Union[Unset, str] = UNSET
     thumbnail_size: Union[Unset, str] = UNSET
+    enable_markdown_image_upload: Union[Unset, bool] = UNSET
+    markdown_image_max_size_mb: Union[Unset, int] = UNSET
     anonymous_user_can_view_offerings: Union[Unset, bool] = UNSET
     show_offering_cover_image: Union[Unset, bool] = UNSET
     anonymous_user_can_view_plans: Union[Unset, bool] = UNSET
@@ -608,6 +612,10 @@ class ConstanceSettingsRequestForm:
         currency_name = self.currency_name
 
         thumbnail_size = self.thumbnail_size
+
+        enable_markdown_image_upload = self.enable_markdown_image_upload
+
+        markdown_image_max_size_mb = self.markdown_image_max_size_mb
 
         anonymous_user_can_view_offerings = self.anonymous_user_can_view_offerings
 
@@ -1408,6 +1416,10 @@ class ConstanceSettingsRequestForm:
             field_dict["CURRENCY_NAME"] = currency_name
         if thumbnail_size is not UNSET:
             field_dict["THUMBNAIL_SIZE"] = thumbnail_size
+        if enable_markdown_image_upload is not UNSET:
+            field_dict["ENABLE_MARKDOWN_IMAGE_UPLOAD"] = enable_markdown_image_upload
+        if markdown_image_max_size_mb is not UNSET:
+            field_dict["MARKDOWN_IMAGE_MAX_SIZE_MB"] = markdown_image_max_size_mb
         if anonymous_user_can_view_offerings is not UNSET:
             field_dict["ANONYMOUS_USER_CAN_VIEW_OFFERINGS"] = anonymous_user_can_view_offerings
         if show_offering_cover_image is not UNSET:
@@ -1971,6 +1983,10 @@ class ConstanceSettingsRequestForm:
         currency_name = d.pop("CURRENCY_NAME", UNSET)
 
         thumbnail_size = d.pop("THUMBNAIL_SIZE", UNSET)
+
+        enable_markdown_image_upload = d.pop("ENABLE_MARKDOWN_IMAGE_UPLOAD", UNSET)
+
+        markdown_image_max_size_mb = d.pop("MARKDOWN_IMAGE_MAX_SIZE_MB", UNSET)
 
         anonymous_user_can_view_offerings = d.pop("ANONYMOUS_USER_CAN_VIEW_OFFERINGS", UNSET)
 
@@ -3046,6 +3062,8 @@ class ConstanceSettingsRequestForm:
             site_phone=site_phone,
             currency_name=currency_name,
             thumbnail_size=thumbnail_size,
+            enable_markdown_image_upload=enable_markdown_image_upload,
+            markdown_image_max_size_mb=markdown_image_max_size_mb,
             anonymous_user_can_view_offerings=anonymous_user_can_view_offerings,
             show_offering_cover_image=show_offering_cover_image,
             anonymous_user_can_view_plans=anonymous_user_can_view_plans,

@@ -915,6 +915,10 @@ from .managed_project import ManagedProject
 from .managed_rancher_create_node_request import ManagedRancherCreateNodeRequest
 from .mapping import Mapping
 from .mapping_request import MappingRequest
+from .markdown_image_upload_request import MarkdownImageUploadRequest
+from .markdown_image_upload_request_form import MarkdownImageUploadRequestForm
+from .markdown_image_upload_request_multipart import MarkdownImageUploadRequestMultipart
+from .markdown_image_upload_response import MarkdownImageUploadResponse
 from .marketplace_category import MarketplaceCategory
 from .marketplace_category_field_enum import MarketplaceCategoryFieldEnum
 from .marketplace_category_request import MarketplaceCategoryRequest
@@ -3361,6 +3365,10 @@ __all__ = (
     "ManagedRancherCreateNodeRequest",
     "Mapping",
     "MappingRequest",
+    "MarkdownImageUploadRequest",
+    "MarkdownImageUploadRequestForm",
+    "MarkdownImageUploadRequestMultipart",
+    "MarkdownImageUploadResponse",
     "MARKETPLACECARDSTYLEEnum",
     "MarketplaceCategory",
     "MarketplaceCategoryFieldEnum",
