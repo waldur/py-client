@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.12.dev.20260524110213
+# Version: 8.0.9-rc.12.dev.20260524203406
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9761,6 +9761,14 @@ Request body: yes
 POST /api/marketplace-provider-resources/{uuid}/set_end_date_by_staff/
 Summary: Set end date of the resource by staff
 Description: Deprecated: Use set_end_date instead. Allows a staff user to set or update the end date for a resource.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resources_set_endpoints
+POST /api/marketplace-provider-resources/{uuid}/set_endpoints/
+Summary: Set resource access endpoints
+Description: Allows a service provider to replace the set of access endpoints (name + URL) reported for a resource. Used to surface dynamic per-resource endpoints (e.g. an inference API) in the UI.
 Path parameters:
   - uuid
 Request body: yes

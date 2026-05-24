@@ -1635,6 +1635,7 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_set_end_date` POST `/api/marketplace-provider-resources/{uuid}/set_end_date/` — Set end date of the resource (path: uuid | request body)
 - `marketplace_provider_resources_set_end_date_by_provider` POST `/api/marketplace-provider-resources/{uuid}/set_end_date_by_provider/` — Set end date by provider (path: uuid | request body)
 - `marketplace_provider_resources_set_end_date_by_staff` POST `/api/marketplace-provider-resources/{uuid}/set_end_date_by_staff/` — Set end date of the resource by staff (path: uuid | request body)
+- `marketplace_provider_resources_set_endpoints` POST `/api/marketplace-provider-resources/{uuid}/set_endpoints/` — Set resource access endpoints (path: uuid | request body)
 - `marketplace_provider_resources_set_limits` POST `/api/marketplace-provider-resources/{uuid}/set_limits/` — Set resource limits (path: uuid | request body)
 - `marketplace_provider_resources_set_paused` POST `/api/marketplace-provider-resources/{uuid}/set_paused/` — Set paused flag for resource (path: uuid | request body)
 - `marketplace_provider_resources_set_restrict_member_access` POST `/api/marketplace-provider-resources/{uuid}/set_restrict_member_access/` — Set restrict member access flag (path: uuid | request body)

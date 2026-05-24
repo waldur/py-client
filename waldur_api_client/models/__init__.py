@@ -1984,6 +1984,8 @@ from .resource_downscaled_request import ResourceDownscaledRequest
 from .resource_effective_id_request import ResourceEffectiveIDRequest
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
 from .resource_end_date_request import ResourceEndDateRequest
+from .resource_endpoint_request import ResourceEndpointRequest
+from .resource_endpoints_request import ResourceEndpointsRequest
 from .resource_field_enum import ResourceFieldEnum
 from .resource_limit_change_request import ResourceLimitChangeRequest
 from .resource_limit_change_request_create import ResourceLimitChangeRequestCreate
@@ -4344,6 +4346,8 @@ __all__ = (
     "ResourceEffectiveIDRequest",
     "ResourceEndDateByProviderRequest",
     "ResourceEndDateRequest",
+    "ResourceEndpointRequest",
+    "ResourceEndpointsRequest",
     "ResourceFieldEnum",
     "ResourceLimitChangeRequest",
     "ResourceLimitChangeRequestCreate",
