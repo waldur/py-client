@@ -186,6 +186,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     PROPOSAL_CANCELED = "proposal_canceled"
     PROPOSAL_DOCUMENT_ADDED = "proposal_document_added"
     PROPOSAL_DOCUMENT_REMOVED = "proposal_document_removed"
+    PROPOSAL_WORKFLOW_ADVANCED = "proposal_workflow_advanced"
     QUERY_EXECUTED = "query_executed"
     REDUCTION_OF_CUSTOMER_CREDIT = "reduction_of_customer_credit"
     REDUCTION_OF_CUSTOMER_CREDIT_DUE_TO_MINIMAL_CONSUMPTION = "reduction_of_customer_credit_due_to_minimal_consumption"

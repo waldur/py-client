@@ -1367,7 +1367,6 @@ from .open_stack_tenant_marketplace_offering_plugin_options_type_0 import (
     OpenStackTenantMarketplaceOfferingPluginOptionsType0,
 )
 from .open_stack_tenant_quota import OpenStackTenantQuota
-from .open_stack_tenant_quota_request import OpenStackTenantQuotaRequest
 from .open_stack_tenant_request import OpenStackTenantRequest
 from .open_stack_tenant_security_group import OpenStackTenantSecurityGroup
 from .open_stack_tenant_security_group_request import OpenStackTenantSecurityGroupRequest
@@ -1382,6 +1381,7 @@ from .open_stack_volume_marketplace_offering_plugin_options_type_0 import (
 from .open_stack_volume_request import OpenStackVolumeRequest
 from .open_stack_volume_retype_request import OpenStackVolumeRetypeRequest
 from .open_stack_volume_type import OpenStackVolumeType
+from .openstack_tenants_set_quotas_body import OpenstackTenantsSetQuotasBody
 from .option_field import OptionField
 from .option_field_request import OptionFieldRequest
 from .option_field_type_enum import OptionFieldTypeEnum
@@ -3763,10 +3763,10 @@ __all__ = (
     "OpenStackTenantFieldEnum",
     "OpenStackTenantMarketplaceOfferingPluginOptionsType0",
     "OpenStackTenantQuota",
-    "OpenStackTenantQuotaRequest",
     "OpenStackTenantRequest",
     "OpenStackTenantSecurityGroup",
     "OpenStackTenantSecurityGroupRequest",
+    "OpenstackTenantsSetQuotasBody",
     "OpenStackVolume",
     "OpenStackVolumeAvailabilityZone",
     "OpenStackVolumeCreateOrderAttributes",

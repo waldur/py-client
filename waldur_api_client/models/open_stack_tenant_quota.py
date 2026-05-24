@@ -21,6 +21,10 @@ class OpenStackTenantQuota:
         storage (Union[Unset, int]):
         security_group_count (Union[Unset, int]):
         security_group_rule_count (Union[Unset, int]):
+        floating_ip_count (Union[Unset, int]):
+        network_count (Union[Unset, int]):
+        subnet_count (Union[Unset, int]):
+        port_count (Union[Unset, int]):
     """
 
     instances: Union[Unset, int] = UNSET
@@ -31,6 +35,10 @@ class OpenStackTenantQuota:
     storage: Union[Unset, int] = UNSET
     security_group_count: Union[Unset, int] = UNSET
     security_group_rule_count: Union[Unset, int] = UNSET
+    floating_ip_count: Union[Unset, int] = UNSET
+    network_count: Union[Unset, int] = UNSET
+    subnet_count: Union[Unset, int] = UNSET
+    port_count: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,6 +57,14 @@ class OpenStackTenantQuota:
         security_group_count = self.security_group_count
 
         security_group_rule_count = self.security_group_rule_count
+
+        floating_ip_count = self.floating_ip_count
+
+        network_count = self.network_count
+
+        subnet_count = self.subnet_count
+
+        port_count = self.port_count
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -69,6 +85,14 @@ class OpenStackTenantQuota:
             field_dict["security_group_count"] = security_group_count
         if security_group_rule_count is not UNSET:
             field_dict["security_group_rule_count"] = security_group_rule_count
+        if floating_ip_count is not UNSET:
+            field_dict["floating_ip_count"] = floating_ip_count
+        if network_count is not UNSET:
+            field_dict["network_count"] = network_count
+        if subnet_count is not UNSET:
+            field_dict["subnet_count"] = subnet_count
+        if port_count is not UNSET:
+            field_dict["port_count"] = port_count
 
         return field_dict
 
@@ -91,6 +115,14 @@ class OpenStackTenantQuota:
 
         security_group_rule_count = d.pop("security_group_rule_count", UNSET)
 
+        floating_ip_count = d.pop("floating_ip_count", UNSET)
+
+        network_count = d.pop("network_count", UNSET)
+
+        subnet_count = d.pop("subnet_count", UNSET)
+
+        port_count = d.pop("port_count", UNSET)
+
         open_stack_tenant_quota = cls(
             instances=instances,
             volumes=volumes,
@@ -100,6 +132,10 @@ class OpenStackTenantQuota:
             storage=storage,
             security_group_count=security_group_count,
             security_group_rule_count=security_group_rule_count,
+            floating_ip_count=floating_ip_count,
+            network_count=network_count,
+            subnet_count=subnet_count,
+            port_count=port_count,
         )
 
         open_stack_tenant_quota.additional_properties = d

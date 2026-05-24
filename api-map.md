@@ -2905,6 +2905,7 @@ Module: `waldur_api_client.api.proposal_proposals`
 - `proposal_proposals_retrieve` GET `/api/proposal-proposals/{uuid}/` (path: uuid)
 - `proposal_proposals_destroy` DELETE `/api/proposal-proposals/{uuid}/` (path: uuid)
 - `proposal_proposals_add_user` POST `/api/proposal-proposals/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
+- `proposal_proposals_advance_workflow_step` POST `/api/proposal-proposals/{uuid}/advance_workflow_step/` — Manually advance a workflow that is awaiting call-manager confirmation (path: uuid)
 - `proposal_proposals_approve` POST `/api/proposal-proposals/{uuid}/approve/` — Approve a proposal (path: uuid | request body)
 - `proposal_proposals_attach_document` POST `/api/proposal-proposals/{uuid}/attach_document/` — Attach document to proposal (path: uuid | request body)
 - `proposal_proposals_checklist_retrieve` GET `/api/proposal-proposals/{uuid}/checklist/` — Get checklist with questions and existing answers (path: uuid | 1 query param)

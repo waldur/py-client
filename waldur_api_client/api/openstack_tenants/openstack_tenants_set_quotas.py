@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.open_stack_tenant_quota import OpenStackTenantQuota
-from ...models.open_stack_tenant_quota_request import OpenStackTenantQuotaRequest
+from ...models.openstack_tenants_set_quotas_body import OpenstackTenantsSetQuotasBody
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: OpenStackTenantQuotaRequest,
+    body: OpenstackTenantsSetQuotasBody,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,7 +56,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackTenantQuotaRequest,
+    body: OpenstackTenantsSetQuotasBody,
 ) -> Response[OpenStackTenantQuota]:
     """Set tenant quotas
 
@@ -75,6 +75,12 @@ def sync_detailed(
     - security_group_rule_count - maximal number of created security groups rules.
     - volumes - maximal number of created volumes.
     - snapshots - maximal number of created snapshots.
+    - floating_ip_count - maximal number of floating IPs. Use 0 to deny, -1 for unlimited.
+    - network_count - maximal number of networks. Use 0 to deny, -1 for unlimited.
+    - subnet_count - maximal number of subnets. Use 0 to deny, -1 for unlimited.
+    - port_count - maximal number of ports. Use 0 to deny, -1 for unlimited.
+    - gigabytes_<volume_type_name> - maximal storage for a specific Cinder volume type, in GB.
+      For example, gigabytes_ssd or gigabytes___DEFAULT__. Use -1 for unlimited.
 
     It is possible to update quotas by one or by submitting all the fields in one request.
     Waldur will attempt to update the provided quotas. Please note, that if provided quotas are
@@ -91,7 +97,7 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        body (OpenStackTenantQuotaRequest):
+        body (OpenstackTenantsSetQuotasBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -117,7 +123,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackTenantQuotaRequest,
+    body: OpenstackTenantsSetQuotasBody,
 ) -> OpenStackTenantQuota:
     """Set tenant quotas
 
@@ -136,6 +142,12 @@ def sync(
     - security_group_rule_count - maximal number of created security groups rules.
     - volumes - maximal number of created volumes.
     - snapshots - maximal number of created snapshots.
+    - floating_ip_count - maximal number of floating IPs. Use 0 to deny, -1 for unlimited.
+    - network_count - maximal number of networks. Use 0 to deny, -1 for unlimited.
+    - subnet_count - maximal number of subnets. Use 0 to deny, -1 for unlimited.
+    - port_count - maximal number of ports. Use 0 to deny, -1 for unlimited.
+    - gigabytes_<volume_type_name> - maximal storage for a specific Cinder volume type, in GB.
+      For example, gigabytes_ssd or gigabytes___DEFAULT__. Use -1 for unlimited.
 
     It is possible to update quotas by one or by submitting all the fields in one request.
     Waldur will attempt to update the provided quotas. Please note, that if provided quotas are
@@ -152,7 +164,7 @@ def sync(
 
     Args:
         uuid (UUID):
-        body (OpenStackTenantQuotaRequest):
+        body (OpenstackTenantsSetQuotasBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -173,7 +185,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackTenantQuotaRequest,
+    body: OpenstackTenantsSetQuotasBody,
 ) -> Response[OpenStackTenantQuota]:
     """Set tenant quotas
 
@@ -192,6 +204,12 @@ async def asyncio_detailed(
     - security_group_rule_count - maximal number of created security groups rules.
     - volumes - maximal number of created volumes.
     - snapshots - maximal number of created snapshots.
+    - floating_ip_count - maximal number of floating IPs. Use 0 to deny, -1 for unlimited.
+    - network_count - maximal number of networks. Use 0 to deny, -1 for unlimited.
+    - subnet_count - maximal number of subnets. Use 0 to deny, -1 for unlimited.
+    - port_count - maximal number of ports. Use 0 to deny, -1 for unlimited.
+    - gigabytes_<volume_type_name> - maximal storage for a specific Cinder volume type, in GB.
+      For example, gigabytes_ssd or gigabytes___DEFAULT__. Use -1 for unlimited.
 
     It is possible to update quotas by one or by submitting all the fields in one request.
     Waldur will attempt to update the provided quotas. Please note, that if provided quotas are
@@ -208,7 +226,7 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        body (OpenStackTenantQuotaRequest):
+        body (OpenstackTenantsSetQuotasBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -232,7 +250,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: OpenStackTenantQuotaRequest,
+    body: OpenstackTenantsSetQuotasBody,
 ) -> OpenStackTenantQuota:
     """Set tenant quotas
 
@@ -251,6 +269,12 @@ async def asyncio(
     - security_group_rule_count - maximal number of created security groups rules.
     - volumes - maximal number of created volumes.
     - snapshots - maximal number of created snapshots.
+    - floating_ip_count - maximal number of floating IPs. Use 0 to deny, -1 for unlimited.
+    - network_count - maximal number of networks. Use 0 to deny, -1 for unlimited.
+    - subnet_count - maximal number of subnets. Use 0 to deny, -1 for unlimited.
+    - port_count - maximal number of ports. Use 0 to deny, -1 for unlimited.
+    - gigabytes_<volume_type_name> - maximal storage for a specific Cinder volume type, in GB.
+      For example, gigabytes_ssd or gigabytes___DEFAULT__. Use -1 for unlimited.
 
     It is possible to update quotas by one or by submitting all the fields in one request.
     Waldur will attempt to update the provided quotas. Please note, that if provided quotas are
@@ -267,7 +291,7 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        body (OpenStackTenantQuotaRequest):
+        body (OpenstackTenantsSetQuotasBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

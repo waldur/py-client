@@ -6,21 +6,25 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="OpenStackTenantQuotaRequest")
+T = TypeVar("T", bound="OpenstackTenantsSetQuotasBody")
 
 
 @_attrs_define
-class OpenStackTenantQuotaRequest:
+class OpenstackTenantsSetQuotasBody:
     """
     Attributes:
         instances (Union[Unset, int]):
         volumes (Union[Unset, int]):
         snapshots (Union[Unset, int]):
-        ram (Union[Unset, int]):
+        ram (Union[Unset, int]): In MiB
         vcpu (Union[Unset, int]):
-        storage (Union[Unset, int]):
+        storage (Union[Unset, int]): In MiB
         security_group_count (Union[Unset, int]):
         security_group_rule_count (Union[Unset, int]):
+        floating_ip_count (Union[Unset, int]): Use 0 to deny, -1 for unlimited
+        network_count (Union[Unset, int]): Use 0 to deny, -1 for unlimited
+        subnet_count (Union[Unset, int]): Use 0 to deny, -1 for unlimited
+        port_count (Union[Unset, int]): Use 0 to deny, -1 for unlimited
     """
 
     instances: Union[Unset, int] = UNSET
@@ -31,7 +35,11 @@ class OpenStackTenantQuotaRequest:
     storage: Union[Unset, int] = UNSET
     security_group_count: Union[Unset, int] = UNSET
     security_group_rule_count: Union[Unset, int] = UNSET
-    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+    floating_ip_count: Union[Unset, int] = UNSET
+    network_count: Union[Unset, int] = UNSET
+    subnet_count: Union[Unset, int] = UNSET
+    port_count: Union[Unset, int] = UNSET
+    additional_properties: dict[str, int] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         instances = self.instances
@@ -49,6 +57,14 @@ class OpenStackTenantQuotaRequest:
         security_group_count = self.security_group_count
 
         security_group_rule_count = self.security_group_rule_count
+
+        floating_ip_count = self.floating_ip_count
+
+        network_count = self.network_count
+
+        subnet_count = self.subnet_count
+
+        port_count = self.port_count
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -69,6 +85,14 @@ class OpenStackTenantQuotaRequest:
             field_dict["security_group_count"] = security_group_count
         if security_group_rule_count is not UNSET:
             field_dict["security_group_rule_count"] = security_group_rule_count
+        if floating_ip_count is not UNSET:
+            field_dict["floating_ip_count"] = floating_ip_count
+        if network_count is not UNSET:
+            field_dict["network_count"] = network_count
+        if subnet_count is not UNSET:
+            field_dict["subnet_count"] = subnet_count
+        if port_count is not UNSET:
+            field_dict["port_count"] = port_count
 
         return field_dict
 
@@ -91,7 +115,15 @@ class OpenStackTenantQuotaRequest:
 
         security_group_rule_count = d.pop("security_group_rule_count", UNSET)
 
-        open_stack_tenant_quota_request = cls(
+        floating_ip_count = d.pop("floating_ip_count", UNSET)
+
+        network_count = d.pop("network_count", UNSET)
+
+        subnet_count = d.pop("subnet_count", UNSET)
+
+        port_count = d.pop("port_count", UNSET)
+
+        openstack_tenants_set_quotas_body = cls(
             instances=instances,
             volumes=volumes,
             snapshots=snapshots,
@@ -100,19 +132,23 @@ class OpenStackTenantQuotaRequest:
             storage=storage,
             security_group_count=security_group_count,
             security_group_rule_count=security_group_rule_count,
+            floating_ip_count=floating_ip_count,
+            network_count=network_count,
+            subnet_count=subnet_count,
+            port_count=port_count,
         )
 
-        open_stack_tenant_quota_request.additional_properties = d
-        return open_stack_tenant_quota_request
+        openstack_tenants_set_quotas_body.additional_properties = d
+        return openstack_tenants_set_quotas_body
 
     @property
     def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> Any:
+    def __getitem__(self, key: str) -> int:
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: Any) -> None:
+    def __setitem__(self, key: str, value: int) -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

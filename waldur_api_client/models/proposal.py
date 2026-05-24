@@ -77,6 +77,7 @@ class Proposal:
         created (datetime.datetime):
         compliance_status (Union['ProposalComplianceStatusType0', None]):
         can_submit (ProposalCanSubmit):
+        awaiting_manual_advance (bool):
         description (Union[Unset, str]):
         project_summary (Union[Unset, str]):
         project_is_confidential (Union[Unset, bool]):
@@ -135,6 +136,7 @@ class Proposal:
     created: datetime.datetime
     compliance_status: Union["ProposalComplianceStatusType0", None]
     can_submit: "ProposalCanSubmit"
+    awaiting_manual_advance: bool
     description: Union[Unset, str] = UNSET
     project_summary: Union[Unset, str] = UNSET
     project_is_confidential: Union[Unset, bool] = UNSET
@@ -267,6 +269,8 @@ class Proposal:
 
         can_submit = self.can_submit.to_dict()
 
+        awaiting_manual_advance = self.awaiting_manual_advance
+
         description = self.description
 
         project_summary = self.project_summary
@@ -352,6 +356,7 @@ class Proposal:
                 "created": created,
                 "compliance_status": compliance_status,
                 "can_submit": can_submit,
+                "awaiting_manual_advance": awaiting_manual_advance,
             }
         )
         if description is not UNSET:
@@ -554,6 +559,8 @@ class Proposal:
 
         can_submit = ProposalCanSubmit.from_dict(d.pop("can_submit"))
 
+        awaiting_manual_advance = d.pop("awaiting_manual_advance")
+
         description = d.pop("description", UNSET)
 
         project_summary = d.pop("project_summary", UNSET)
@@ -663,6 +670,7 @@ class Proposal:
             created=created,
             compliance_status=compliance_status,
             can_submit=can_submit,
+            awaiting_manual_advance=awaiting_manual_advance,
             description=description,
             project_summary=project_summary,
             project_is_confidential=project_is_confidential,
