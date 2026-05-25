@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.set_ok_response import SetOkResponse
+from ...models.detail import Detail
 from ...types import Response
 
 
@@ -21,17 +21,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> SetOkResponse:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Detail:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = SetOkResponse.from_dict(response.json())
+        response_200 = Detail.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[SetOkResponse]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Detail]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,7 +44,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[SetOkResponse]:
+) -> Response[Detail]:
     """Mark resource as OK
 
      Manually transition the resource to OK state and clear error fields. Staff-only operation.
@@ -57,7 +57,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SetOkResponse]
+        Response[Detail]
     """
 
     kwargs = _get_kwargs(
@@ -75,7 +75,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> SetOkResponse:
+) -> Detail:
     """Mark resource as OK
 
      Manually transition the resource to OK state and clear error fields. Staff-only operation.
@@ -88,7 +88,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SetOkResponse
+        Detail
     """
 
     return sync_detailed(
@@ -101,7 +101,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[SetOkResponse]:
+) -> Response[Detail]:
     """Mark resource as OK
 
      Manually transition the resource to OK state and clear error fields. Staff-only operation.
@@ -114,7 +114,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SetOkResponse]
+        Response[Detail]
     """
 
     kwargs = _get_kwargs(
@@ -130,7 +130,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> SetOkResponse:
+) -> Detail:
     """Mark resource as OK
 
      Manually transition the resource to OK state and clear error fields. Staff-only operation.
@@ -143,7 +143,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SetOkResponse
+        Detail
     """
 
     return (

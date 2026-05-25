@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.cleanup_response_items_item import CleanupResponseItemsItem
+    from ..models.cleanup_response_item import CleanupResponseItem
 
 
 T = TypeVar("T", bound="CleanupResponse")
@@ -17,12 +17,12 @@ class CleanupResponse:
     Attributes:
         deleted_count (int): Number of items deleted (or would be deleted in dry run)
         dry_run (bool): Whether this was a dry run
-        items (list['CleanupResponseItemsItem']): List of deleted (or to-be-deleted) items
+        items (list['CleanupResponseItem']): List of deleted (or to-be-deleted) items
     """
 
     deleted_count: int
     dry_run: bool
-    items: list["CleanupResponseItemsItem"]
+    items: list["CleanupResponseItem"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,7 +49,7 @@ class CleanupResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.cleanup_response_items_item import CleanupResponseItemsItem
+        from ..models.cleanup_response_item import CleanupResponseItem
 
         d = dict(src_dict)
         deleted_count = d.pop("deleted_count")
@@ -59,7 +59,7 @@ class CleanupResponse:
         items = []
         _items = d.pop("items")
         for items_item_data in _items:
-            items_item = CleanupResponseItemsItem.from_dict(items_item_data)
+            items_item = CleanupResponseItem.from_dict(items_item_data)
 
             items.append(items_item)
 

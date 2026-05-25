@@ -6,7 +6,7 @@ from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
     from ..models.checklist_completion_reviewer import ChecklistCompletionReviewer
-    from ..models.checklist_reviewer_response_checklist import ChecklistReviewerResponseChecklist
+    from ..models.checklist_short import ChecklistShort
     from ..models.question_with_answer_reviewer import QuestionWithAnswerReviewer
 
 
@@ -17,12 +17,12 @@ T = TypeVar("T", bound="ChecklistReviewerResponse")
 class ChecklistReviewerResponse:
     """
     Attributes:
-        checklist (ChecklistReviewerResponseChecklist):
+        checklist (ChecklistShort):
         completion (ChecklistCompletionReviewer):
         questions (list['QuestionWithAnswerReviewer']):
     """
 
-    checklist: "ChecklistReviewerResponseChecklist"
+    checklist: "ChecklistShort"
     completion: "ChecklistCompletionReviewer"
     questions: list["QuestionWithAnswerReviewer"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -52,11 +52,11 @@ class ChecklistReviewerResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.checklist_completion_reviewer import ChecklistCompletionReviewer
-        from ..models.checklist_reviewer_response_checklist import ChecklistReviewerResponseChecklist
+        from ..models.checklist_short import ChecklistShort
         from ..models.question_with_answer_reviewer import QuestionWithAnswerReviewer
 
         d = dict(src_dict)
-        checklist = ChecklistReviewerResponseChecklist.from_dict(d.pop("checklist"))
+        checklist = ChecklistShort.from_dict(d.pop("checklist"))
 
         completion = ChecklistCompletionReviewer.from_dict(d.pop("completion"))
 

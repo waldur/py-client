@@ -7,9 +7,9 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.agent_task_stats_response_active_tasks_item import AgentTaskStatsResponseActiveTasksItem
-    from ..models.agent_task_stats_response_reserved_tasks_item import AgentTaskStatsResponseReservedTasksItem
-    from ..models.agent_task_stats_response_scheduled_tasks_item import AgentTaskStatsResponseScheduledTasksItem
+    from ..models.active_agent_task import ActiveAgentTask
+    from ..models.reserved_agent_task import ReservedAgentTask
+    from ..models.scheduled_agent_task import ScheduledAgentTask
 
 
 T = TypeVar("T", bound="AgentTaskStatsResponse")
@@ -19,15 +19,15 @@ T = TypeVar("T", bound="AgentTaskStatsResponse")
 class AgentTaskStatsResponse:
     """
     Attributes:
-        active_tasks (list['AgentTaskStatsResponseActiveTasksItem']): Currently running agent-related tasks
-        scheduled_tasks (list['AgentTaskStatsResponseScheduledTasksItem']): Scheduled agent-related tasks
-        reserved_tasks (list['AgentTaskStatsResponseReservedTasksItem']): Reserved agent-related tasks
+        active_tasks (list['ActiveAgentTask']): Currently running agent-related tasks
+        scheduled_tasks (list['ScheduledAgentTask']): Scheduled agent-related tasks
+        reserved_tasks (list['ReservedAgentTask']): Reserved agent-related tasks
         error (Union[Unset, str]): Error message if task inspection failed
     """
 
-    active_tasks: list["AgentTaskStatsResponseActiveTasksItem"]
-    scheduled_tasks: list["AgentTaskStatsResponseScheduledTasksItem"]
-    reserved_tasks: list["AgentTaskStatsResponseReservedTasksItem"]
+    active_tasks: list["ActiveAgentTask"]
+    scheduled_tasks: list["ScheduledAgentTask"]
+    reserved_tasks: list["ReservedAgentTask"]
     error: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -65,29 +65,29 @@ class AgentTaskStatsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.agent_task_stats_response_active_tasks_item import AgentTaskStatsResponseActiveTasksItem
-        from ..models.agent_task_stats_response_reserved_tasks_item import AgentTaskStatsResponseReservedTasksItem
-        from ..models.agent_task_stats_response_scheduled_tasks_item import AgentTaskStatsResponseScheduledTasksItem
+        from ..models.active_agent_task import ActiveAgentTask
+        from ..models.reserved_agent_task import ReservedAgentTask
+        from ..models.scheduled_agent_task import ScheduledAgentTask
 
         d = dict(src_dict)
         active_tasks = []
         _active_tasks = d.pop("active_tasks")
         for active_tasks_item_data in _active_tasks:
-            active_tasks_item = AgentTaskStatsResponseActiveTasksItem.from_dict(active_tasks_item_data)
+            active_tasks_item = ActiveAgentTask.from_dict(active_tasks_item_data)
 
             active_tasks.append(active_tasks_item)
 
         scheduled_tasks = []
         _scheduled_tasks = d.pop("scheduled_tasks")
         for scheduled_tasks_item_data in _scheduled_tasks:
-            scheduled_tasks_item = AgentTaskStatsResponseScheduledTasksItem.from_dict(scheduled_tasks_item_data)
+            scheduled_tasks_item = ScheduledAgentTask.from_dict(scheduled_tasks_item_data)
 
             scheduled_tasks.append(scheduled_tasks_item)
 
         reserved_tasks = []
         _reserved_tasks = d.pop("reserved_tasks")
         for reserved_tasks_item_data in _reserved_tasks:
-            reserved_tasks_item = AgentTaskStatsResponseReservedTasksItem.from_dict(reserved_tasks_item_data)
+            reserved_tasks_item = ReservedAgentTask.from_dict(reserved_tasks_item_data)
 
             reserved_tasks.append(reserved_tasks_item)
 

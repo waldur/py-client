@@ -6,6 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.status import Status
 from ...models.tenant_security_group_update_request import TenantSecurityGroupUpdateRequest
 from ...types import Response
 
@@ -33,15 +34,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Status:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        return None
+    if response.status_code == 202:
+        response_202 = Status.from_dict(response.json())
+
+        return response_202
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Status]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,7 +58,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: list["TenantSecurityGroupUpdateRequest"],
-) -> Response[Any]:
+) -> Response[Status]:
     """Batch update security groups for a tenant.
 
 
@@ -75,7 +78,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -90,12 +93,12 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
     body: list["TenantSecurityGroupUpdateRequest"],
-) -> Response[Any]:
+) -> Status:
     """Batch update security groups for a tenant.
 
 
@@ -115,7 +118,42 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Status
+    """
+
+    return sync_detailed(
+        uuid=uuid,
+        client=client,
+        body=body,
+    ).parsed
+
+
+async def asyncio_detailed(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: list["TenantSecurityGroupUpdateRequest"],
+) -> Response[Status]:
+    """Batch update security groups for a tenant.
+
+
+            * Security groups with UUIDs are updated.
+            * Security groups without UUIDs are created.
+            * Security groups existing in the tenant but not present in the request are deleted.
+            * Rules for created/updated security groups are replaced.
+
+            To reference a remote group within a rule, use 'remote_group_name' field.
+
+    Args:
+        uuid (UUID):
+        body (list['TenantSecurityGroupUpdateRequest']):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -126,3 +164,40 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    body: list["TenantSecurityGroupUpdateRequest"],
+) -> Status:
+    """Batch update security groups for a tenant.
+
+
+            * Security groups with UUIDs are updated.
+            * Security groups without UUIDs are created.
+            * Security groups existing in the tenant but not present in the request are deleted.
+            * Rules for created/updated security groups are replaced.
+
+            To reference a remote group within a rule, use 'remote_group_name' field.
+
+    Args:
+        uuid (UUID):
+        body (list['TenantSecurityGroupUpdateRequest']):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Status
+    """
+
+    return (
+        await asyncio_detailed(
+            uuid=uuid,
+            client=client,
+            body=body,
+        )
+    ).parsed

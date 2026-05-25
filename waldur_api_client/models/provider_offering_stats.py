@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.provider_offering_stats_offerings_item import ProviderOfferingStatsOfferingsItem
+    from ..models.provider_offering_stats_item import ProviderOfferingStatsItem
 
 
 T = TypeVar("T", bound="ProviderOfferingStats")
@@ -15,11 +15,10 @@ T = TypeVar("T", bound="ProviderOfferingStats")
 class ProviderOfferingStats:
     """
     Attributes:
-        offerings (list['ProviderOfferingStatsOfferingsItem']): Offering statistics including resources, revenue, and
-            utilization
+        offerings (list['ProviderOfferingStatsItem']): Offering statistics including resources, revenue, and utilization
     """
 
-    offerings: list["ProviderOfferingStatsOfferingsItem"]
+    offerings: list["ProviderOfferingStatsItem"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,13 +39,13 @@ class ProviderOfferingStats:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.provider_offering_stats_offerings_item import ProviderOfferingStatsOfferingsItem
+        from ..models.provider_offering_stats_item import ProviderOfferingStatsItem
 
         d = dict(src_dict)
         offerings = []
         _offerings = d.pop("offerings")
         for offerings_item_data in _offerings:
-            offerings_item = ProviderOfferingStatsOfferingsItem.from_dict(offerings_item_data)
+            offerings_item = ProviderOfferingStatsItem.from_dict(offerings_item_data)
 
             offerings.append(offerings_item)
 

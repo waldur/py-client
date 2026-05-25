@@ -9,7 +9,7 @@ T = TypeVar("T", bound="ArrowCredentialsValidationResponsePartnerInfo")
 
 @_attrs_define
 class ArrowCredentialsValidationResponsePartnerInfo:
-    """ """
+    """Raw partner info data from Arrow API"""
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

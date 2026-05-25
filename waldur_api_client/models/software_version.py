@@ -8,8 +8,8 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 if TYPE_CHECKING:
-    from ..models.software_version_module import SoftwareVersionModule
-    from ..models.software_version_toolchain import SoftwareVersionToolchain
+    from ..models.software_module import SoftwareModule
+    from ..models.software_toolchain import SoftwareToolchain
 
 
 T = TypeVar("T", bound="SoftwareVersion")
@@ -31,10 +31,10 @@ class SoftwareVersion:
         package_name (str):
         catalog_type (str):
         target_count (int):
-        module (SoftwareVersionModule):
+        module (Union['SoftwareModule', None]):
         required_modules (list[Any]):
         extensions (list[Any]):
-        toolchain (SoftwareVersionToolchain):
+        toolchain (Union['SoftwareToolchain', None]):
         toolchain_families_compatibility (list[Any]):
     """
 
@@ -50,14 +50,17 @@ class SoftwareVersion:
     package_name: str
     catalog_type: str
     target_count: int
-    module: "SoftwareVersionModule"
+    module: Union["SoftwareModule", None]
     required_modules: list[Any]
     extensions: list[Any]
-    toolchain: "SoftwareVersionToolchain"
+    toolchain: Union["SoftwareToolchain", None]
     toolchain_families_compatibility: list[Any]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.software_module import SoftwareModule
+        from ..models.software_toolchain import SoftwareToolchain
+
         url = self.url
 
         uuid = str(self.uuid)
@@ -86,13 +89,21 @@ class SoftwareVersion:
 
         target_count = self.target_count
 
-        module = self.module.to_dict()
+        module: Union[None, dict[str, Any]]
+        if isinstance(self.module, SoftwareModule):
+            module = self.module.to_dict()
+        else:
+            module = self.module
 
         required_modules = self.required_modules
 
         extensions = self.extensions
 
-        toolchain = self.toolchain.to_dict()
+        toolchain: Union[None, dict[str, Any]]
+        if isinstance(self.toolchain, SoftwareToolchain):
+            toolchain = self.toolchain.to_dict()
+        else:
+            toolchain = self.toolchain
 
         toolchain_families_compatibility = self.toolchain_families_compatibility
 
@@ -124,8 +135,8 @@ class SoftwareVersion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.software_version_module import SoftwareVersionModule
-        from ..models.software_version_toolchain import SoftwareVersionToolchain
+        from ..models.software_module import SoftwareModule
+        from ..models.software_toolchain import SoftwareToolchain
 
         d = dict(src_dict)
         url = d.pop("url")
@@ -165,13 +176,39 @@ class SoftwareVersion:
 
         target_count = d.pop("target_count")
 
-        module = SoftwareVersionModule.from_dict(d.pop("module"))
+        def _parse_module(data: object) -> Union["SoftwareModule", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                module_type_1 = SoftwareModule.from_dict(data)
+
+                return module_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["SoftwareModule", None], data)
+
+        module = _parse_module(d.pop("module"))
 
         required_modules = cast(list[Any], d.pop("required_modules"))
 
         extensions = cast(list[Any], d.pop("extensions"))
 
-        toolchain = SoftwareVersionToolchain.from_dict(d.pop("toolchain"))
+        def _parse_toolchain(data: object) -> Union["SoftwareToolchain", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                toolchain_type_1 = SoftwareToolchain.from_dict(data)
+
+                return toolchain_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["SoftwareToolchain", None], data)
+
+        toolchain = _parse_toolchain(d.pop("toolchain"))
 
         toolchain_families_compatibility = cast(list[Any], d.pop("toolchain_families_compatibility"))
 

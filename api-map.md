@@ -3200,7 +3200,7 @@ Module: `waldur_api_client.api.rancher_projects`
 - `rancher_projects_list` GET `/api/rancher-projects/` (5 query params)
 - `rancher_projects_count` HEAD `/api/rancher-projects/` — Get number of items in the collection matching the request parameters (5 query params)
 - `rancher_projects_retrieve` GET `/api/rancher-projects/{uuid}/` (path: uuid)
-- `rancher_projects_secrets_retrieve` GET `/api/rancher-projects/{uuid}/secrets/` — Returns project's secrets (path: uuid)
+- `rancher_projects_secrets_list` GET `/api/rancher-projects/{uuid}/secrets/` — Returns project's secrets (path: uuid)
 
 ## rancher-role-templates
 Module: `waldur_api_client.api.rancher_role_templates`

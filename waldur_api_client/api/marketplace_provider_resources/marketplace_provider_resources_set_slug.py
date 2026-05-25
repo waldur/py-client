@@ -6,10 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.marketplace_provider_resources_set_slug_response_200 import (
-    MarketplaceProviderResourcesSetSlugResponse200,
-)
 from ...models.resource_slug_request import ResourceSlugRequest
+from ...models.status import Status
 from ...types import Response
 
 
@@ -33,21 +31,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> MarketplaceProviderResourcesSetSlugResponse200:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Status:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = MarketplaceProviderResourcesSetSlugResponse200.from_dict(response.json())
+        response_200 = Status.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[MarketplaceProviderResourcesSetSlugResponse200]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Status]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -61,7 +55,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceSlugRequest,
-) -> Response[MarketplaceProviderResourcesSetSlugResponse200]:
+) -> Response[Status]:
     """Set resource slug
 
      Updates the slug for a resource. Requires staff permissions.
@@ -75,7 +69,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MarketplaceProviderResourcesSetSlugResponse200]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -95,7 +89,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ResourceSlugRequest,
-) -> MarketplaceProviderResourcesSetSlugResponse200:
+) -> Status:
     """Set resource slug
 
      Updates the slug for a resource. Requires staff permissions.
@@ -109,7 +103,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MarketplaceProviderResourcesSetSlugResponse200
+        Status
     """
 
     return sync_detailed(
@@ -124,7 +118,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceSlugRequest,
-) -> Response[MarketplaceProviderResourcesSetSlugResponse200]:
+) -> Response[Status]:
     """Set resource slug
 
      Updates the slug for a resource. Requires staff permissions.
@@ -138,7 +132,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MarketplaceProviderResourcesSetSlugResponse200]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -156,7 +150,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ResourceSlugRequest,
-) -> MarketplaceProviderResourcesSetSlugResponse200:
+) -> Status:
     """Set resource slug
 
      Updates the slug for a resource. Requires staff permissions.
@@ -170,7 +164,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MarketplaceProviderResourcesSetSlugResponse200
+        Status
     """
 
     return (

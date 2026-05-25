@@ -136,6 +136,8 @@ class MergedPluginOptionsRequest:
             UI Default: False.
         backend_id_display_label (Union[Unset, str]): Label used by UI for showing value of the backend_id Default:
             'Backend ID'.
+        expose_inference_playground (Union[Unset, bool]): Show an in-browser inference playground action for resources
+            of this offering (for offerings whose resources expose an OpenAI-compatible endpoint). Default: False.
         disabled_resource_actions (Union[Unset, list[str]]): List of disabled marketplace resource actions for this
             offering.
     """
@@ -216,6 +218,7 @@ class MergedPluginOptionsRequest:
     auto_approve_marketplace_script: Union[Unset, bool] = True
     highlight_backend_id_display: Union[Unset, bool] = False
     backend_id_display_label: Union[Unset, str] = "Backend ID"
+    expose_inference_playground: Union[Unset, bool] = False
     disabled_resource_actions: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -383,6 +386,8 @@ class MergedPluginOptionsRequest:
         highlight_backend_id_display = self.highlight_backend_id_display
 
         backend_id_display_label = self.backend_id_display_label
+
+        expose_inference_playground = self.expose_inference_playground
 
         disabled_resource_actions: Union[Unset, list[str]] = UNSET
         if not isinstance(self.disabled_resource_actions, Unset):
@@ -553,6 +558,8 @@ class MergedPluginOptionsRequest:
             field_dict["highlight_backend_id_display"] = highlight_backend_id_display
         if backend_id_display_label is not UNSET:
             field_dict["backend_id_display_label"] = backend_id_display_label
+        if expose_inference_playground is not UNSET:
+            field_dict["expose_inference_playground"] = expose_inference_playground
         if disabled_resource_actions is not UNSET:
             field_dict["disabled_resource_actions"] = disabled_resource_actions
 
@@ -751,6 +758,8 @@ class MergedPluginOptionsRequest:
 
         backend_id_display_label = d.pop("backend_id_display_label", UNSET)
 
+        expose_inference_playground = d.pop("expose_inference_playground", UNSET)
+
         disabled_resource_actions = cast(list[str], d.pop("disabled_resource_actions", UNSET))
 
         merged_plugin_options_request = cls(
@@ -828,6 +837,7 @@ class MergedPluginOptionsRequest:
             auto_approve_marketplace_script=auto_approve_marketplace_script,
             highlight_backend_id_display=highlight_backend_id_display,
             backend_id_display_label=backend_id_display_label,
+            expose_inference_playground=expose_inference_playground,
             disabled_resource_actions=disabled_resource_actions,
         )
 

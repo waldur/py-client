@@ -17,8 +17,8 @@ class UserActionSummary:
     """
     Attributes:
         total (int):
-        by_urgency (UserActionSummaryByUrgency):
-        by_type (UserActionSummaryByType):
+        by_urgency (UserActionSummaryByUrgency): Map of urgency level to count of actions
+        by_type (UserActionSummaryByType): Map of action type string to count of actions
         overdue (int):
     """
 

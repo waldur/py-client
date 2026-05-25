@@ -11,8 +11,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_software_target import NestedSoftwareTarget
-    from ..models.nested_software_version_module import NestedSoftwareVersionModule
-    from ..models.nested_software_version_toolchain import NestedSoftwareVersionToolchain
+    from ..models.software_module import SoftwareModule
+    from ..models.software_toolchain import SoftwareToolchain
 
 
 T = TypeVar("T", bound="NestedSoftwareVersion")
@@ -25,10 +25,10 @@ class NestedSoftwareVersion:
         uuid (UUID):
         version (str):
         targets (list['NestedSoftwareTarget']):
-        module (NestedSoftwareVersionModule):
+        module (Union['SoftwareModule', None]):
         required_modules (list[Any]):
         extensions (list[Any]):
-        toolchain (NestedSoftwareVersionToolchain):
+        toolchain (Union['SoftwareToolchain', None]):
         toolchain_families_compatibility (list[Any]):
         module_version (Union[Unset, str]): EESSI EasyBuild module version
         release_date (Union[None, Unset, datetime.date]):
@@ -37,16 +37,19 @@ class NestedSoftwareVersion:
     uuid: UUID
     version: str
     targets: list["NestedSoftwareTarget"]
-    module: "NestedSoftwareVersionModule"
+    module: Union["SoftwareModule", None]
     required_modules: list[Any]
     extensions: list[Any]
-    toolchain: "NestedSoftwareVersionToolchain"
+    toolchain: Union["SoftwareToolchain", None]
     toolchain_families_compatibility: list[Any]
     module_version: Union[Unset, str] = UNSET
     release_date: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.software_module import SoftwareModule
+        from ..models.software_toolchain import SoftwareToolchain
+
         uuid = str(self.uuid)
 
         version = self.version
@@ -56,13 +59,21 @@ class NestedSoftwareVersion:
             targets_item = targets_item_data.to_dict()
             targets.append(targets_item)
 
-        module = self.module.to_dict()
+        module: Union[None, dict[str, Any]]
+        if isinstance(self.module, SoftwareModule):
+            module = self.module.to_dict()
+        else:
+            module = self.module
 
         required_modules = self.required_modules
 
         extensions = self.extensions
 
-        toolchain = self.toolchain.to_dict()
+        toolchain: Union[None, dict[str, Any]]
+        if isinstance(self.toolchain, SoftwareToolchain):
+            toolchain = self.toolchain.to_dict()
+        else:
+            toolchain = self.toolchain
 
         toolchain_families_compatibility = self.toolchain_families_compatibility
 
@@ -100,8 +111,8 @@ class NestedSoftwareVersion:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_software_target import NestedSoftwareTarget
-        from ..models.nested_software_version_module import NestedSoftwareVersionModule
-        from ..models.nested_software_version_toolchain import NestedSoftwareVersionToolchain
+        from ..models.software_module import SoftwareModule
+        from ..models.software_toolchain import SoftwareToolchain
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -115,13 +126,39 @@ class NestedSoftwareVersion:
 
             targets.append(targets_item)
 
-        module = NestedSoftwareVersionModule.from_dict(d.pop("module"))
+        def _parse_module(data: object) -> Union["SoftwareModule", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                module_type_1 = SoftwareModule.from_dict(data)
+
+                return module_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["SoftwareModule", None], data)
+
+        module = _parse_module(d.pop("module"))
 
         required_modules = cast(list[Any], d.pop("required_modules"))
 
         extensions = cast(list[Any], d.pop("extensions"))
 
-        toolchain = NestedSoftwareVersionToolchain.from_dict(d.pop("toolchain"))
+        def _parse_toolchain(data: object) -> Union["SoftwareToolchain", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                toolchain_type_1 = SoftwareToolchain.from_dict(data)
+
+                return toolchain_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["SoftwareToolchain", None], data)
+
+        toolchain = _parse_toolchain(d.pop("toolchain"))
 
         toolchain_families_compatibility = cast(list[Any], d.pop("toolchain_families_compatibility"))
 

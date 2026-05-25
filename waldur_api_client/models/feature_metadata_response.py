@@ -6,7 +6,7 @@ from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
     from ..models.feature_metadata_response_feature_enums import FeatureMetadataResponseFeatureEnums
-    from ..models.feature_metadata_response_features_item import FeatureMetadataResponseFeaturesItem
+    from ..models.feature_section import FeatureSection
 
 
 T = TypeVar("T", bound="FeatureMetadataResponse")
@@ -16,11 +16,11 @@ T = TypeVar("T", bound="FeatureMetadataResponse")
 class FeatureMetadataResponse:
     """
     Attributes:
-        features (list['FeatureMetadataResponseFeaturesItem']): List of feature sections with descriptions
+        features (list['FeatureSection']):
         feature_enums (FeatureMetadataResponseFeatureEnums): Nested feature enum values by section
     """
 
-    features: list["FeatureMetadataResponseFeaturesItem"]
+    features: list["FeatureSection"]
     feature_enums: "FeatureMetadataResponseFeatureEnums"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -46,13 +46,13 @@ class FeatureMetadataResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.feature_metadata_response_feature_enums import FeatureMetadataResponseFeatureEnums
-        from ..models.feature_metadata_response_features_item import FeatureMetadataResponseFeaturesItem
+        from ..models.feature_section import FeatureSection
 
         d = dict(src_dict)
         features = []
         _features = d.pop("features")
         for features_item_data in _features:
-            features_item = FeatureMetadataResponseFeaturesItem.from_dict(features_item_data)
+            features_item = FeatureSection.from_dict(features_item_data)
 
             features.append(features_item)
 

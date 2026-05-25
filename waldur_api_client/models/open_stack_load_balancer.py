@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from ..models.open_stack_load_balancer_marketplace_offering_plugin_options_type_0 import (
         OpenStackLoadBalancerMarketplaceOfferingPluginOptionsType0,
     )
-    from ..models.open_stack_load_balancer_vip_security_groups_item import OpenStackLoadBalancerVipSecurityGroupsItem
+    from ..models.open_stack_load_balancer_vip_security_group import OpenStackLoadBalancerVIPSecurityGroup
 
 
 T = TypeVar("T", bound="OpenStackLoadBalancer")
@@ -59,8 +59,8 @@ class OpenStackLoadBalancer:
         provider (Union[Unset, str]):
         provisioning_status (Union[Unset, str]):
         operating_status (Union[Unset, str]):
-        vip_security_groups (Union[Unset, list['OpenStackLoadBalancerVipSecurityGroupsItem']]): Security groups assigned
-            to the VIP port.
+        vip_security_groups (Union[Unset, list['OpenStackLoadBalancerVIPSecurityGroup']]): Security groups assigned to
+            the VIP port.
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_type (Union[None, Unset, str]):
@@ -110,7 +110,7 @@ class OpenStackLoadBalancer:
     provider: Union[Unset, str] = UNSET
     provisioning_status: Union[Unset, str] = UNSET
     operating_status: Union[Unset, str] = UNSET
-    vip_security_groups: Union[Unset, list["OpenStackLoadBalancerVipSecurityGroupsItem"]] = UNSET
+    vip_security_groups: Union[Unset, list["OpenStackLoadBalancerVIPSecurityGroup"]] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_type: Union[None, Unset, str] = UNSET
@@ -426,9 +426,7 @@ class OpenStackLoadBalancer:
         from ..models.open_stack_load_balancer_marketplace_offering_plugin_options_type_0 import (
             OpenStackLoadBalancerMarketplaceOfferingPluginOptionsType0,
         )
-        from ..models.open_stack_load_balancer_vip_security_groups_item import (
-            OpenStackLoadBalancerVipSecurityGroupsItem,
-        )
+        from ..models.open_stack_load_balancer_vip_security_group import OpenStackLoadBalancerVIPSecurityGroup
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -592,9 +590,7 @@ class OpenStackLoadBalancer:
         vip_security_groups = []
         _vip_security_groups = d.pop("vip_security_groups", UNSET)
         for vip_security_groups_item_data in _vip_security_groups or []:
-            vip_security_groups_item = OpenStackLoadBalancerVipSecurityGroupsItem.from_dict(
-                vip_security_groups_item_data
-            )
+            vip_security_groups_item = OpenStackLoadBalancerVIPSecurityGroup.from_dict(vip_security_groups_item_data)
 
             vip_security_groups.append(vip_security_groups_item)
 

@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.user_mapping_response import UserMappingResponse
+from ...models.openportal_user_mapping_retrieve_response_200 import OpenportalUserMappingRetrieveResponse200
 from ...types import UNSET, Response, Unset
 
 
@@ -32,11 +32,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> UserMappingResponse:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> OpenportalUserMappingRetrieveResponse200:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = UserMappingResponse.from_dict(response.json())
+        response_200 = OpenportalUserMappingRetrieveResponse200.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -44,7 +46,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[UserMappingResponse]:
+) -> Response[OpenportalUserMappingRetrieveResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +59,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> Response[UserMappingResponse]:
+) -> Response[OpenportalUserMappingRetrieveResponse200]:
     """Map OpenPortal UserIdentifier strings (or email addresses) to Waldur User objects. Pass each value
     as a repeated 'identifier' query parameter. If the values contain '@' they are treated as email
     addresses (used for cached reports from remote portals); otherwise they are treated as
@@ -73,7 +75,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[UserMappingResponse]
+        Response[OpenportalUserMappingRetrieveResponse200]
     """
 
     kwargs = _get_kwargs(
@@ -91,7 +93,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> UserMappingResponse:
+) -> OpenportalUserMappingRetrieveResponse200:
     """Map OpenPortal UserIdentifier strings (or email addresses) to Waldur User objects. Pass each value
     as a repeated 'identifier' query parameter. If the values contain '@' they are treated as email
     addresses (used for cached reports from remote portals); otherwise they are treated as
@@ -107,7 +109,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        UserMappingResponse
+        OpenportalUserMappingRetrieveResponse200
     """
 
     return sync_detailed(
@@ -120,7 +122,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> Response[UserMappingResponse]:
+) -> Response[OpenportalUserMappingRetrieveResponse200]:
     """Map OpenPortal UserIdentifier strings (or email addresses) to Waldur User objects. Pass each value
     as a repeated 'identifier' query parameter. If the values contain '@' they are treated as email
     addresses (used for cached reports from remote portals); otherwise they are treated as
@@ -136,7 +138,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[UserMappingResponse]
+        Response[OpenportalUserMappingRetrieveResponse200]
     """
 
     kwargs = _get_kwargs(
@@ -152,7 +154,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> UserMappingResponse:
+) -> OpenportalUserMappingRetrieveResponse200:
     """Map OpenPortal UserIdentifier strings (or email addresses) to Waldur User objects. Pass each value
     as a repeated 'identifier' query parameter. If the values contain '@' they are treated as email
     addresses (used for cached reports from remote portals); otherwise they are treated as
@@ -168,7 +170,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        UserMappingResponse
+        OpenportalUserMappingRetrieveResponse200
     """
 
     return (

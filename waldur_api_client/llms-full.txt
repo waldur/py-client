@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.12.dev.20260524233338
+# Version: 8.0.9-rc.12.dev.20260525193908
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -19864,7 +19864,7 @@ GET /api/rancher-projects/{uuid}/
 Path parameters:
   - uuid
 
-### rancher_projects_secrets_retrieve
+### rancher_projects_secrets_list
 GET /api/rancher-projects/{uuid}/secrets/
 Summary: Returns project's secrets
 Description: Returns project's secrets.

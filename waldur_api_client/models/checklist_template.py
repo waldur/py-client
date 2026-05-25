@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.checklist_template_checklist import ChecklistTemplateChecklist
+    from ..models.checklist_short import ChecklistShort
     from ..models.question import Question
 
 
@@ -16,12 +16,12 @@ T = TypeVar("T", bound="ChecklistTemplate")
 class ChecklistTemplate:
     """
     Attributes:
-        checklist (ChecklistTemplateChecklist):
+        checklist (ChecklistShort):
         questions (list['Question']):
         initial_visible_questions (list['Question']):
     """
 
-    checklist: "ChecklistTemplateChecklist"
+    checklist: "ChecklistShort"
     questions: list["Question"]
     initial_visible_questions: list["Question"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -53,11 +53,11 @@ class ChecklistTemplate:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.checklist_template_checklist import ChecklistTemplateChecklist
+        from ..models.checklist_short import ChecklistShort
         from ..models.question import Question
 
         d = dict(src_dict)
-        checklist = ChecklistTemplateChecklist.from_dict(d.pop("checklist"))
+        checklist = ChecklistShort.from_dict(d.pop("checklist"))
 
         questions = []
         _questions = d.pop("questions")

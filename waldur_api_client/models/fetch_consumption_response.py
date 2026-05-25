@@ -18,7 +18,7 @@ class FetchConsumptionResponse:
         license_reference (str):
         period (str):
         row_count (int):
-        data (list['FetchConsumptionResponseDataItem']):
+        data (list['FetchConsumptionResponseDataItem']): Raw consumption data from Arrow API
     """
 
     license_reference: str

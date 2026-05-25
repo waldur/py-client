@@ -8,12 +8,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.sync_resource_historical_consumption_response_errors_item import (
-        SyncResourceHistoricalConsumptionResponseErrorsItem,
-    )
-    from ..models.sync_resource_historical_consumption_response_preview_periods_item import (
-        SyncResourceHistoricalConsumptionResponsePreviewPeriodsItem,
-    )
+    from ..models.arrow_sync_error import ArrowSyncError
+    from ..models.preview_period import PreviewPeriod
 
 
 T = TypeVar("T", bound="SyncResourceHistoricalConsumptionResponse")
@@ -27,20 +23,20 @@ class SyncResourceHistoricalConsumptionResponse:
         resource_name (str):
         periods_synced (int):
         periods_skipped (int):
-        errors (list['SyncResourceHistoricalConsumptionResponseErrorsItem']):
         periods_no_data (Union[Unset, int]):  Default: 0.
+        errors (Union[Unset, list['ArrowSyncError']]):
         dry_run (Union[Unset, bool]):  Default: False.
-        preview_periods (Union[Unset, list['SyncResourceHistoricalConsumptionResponsePreviewPeriodsItem']]):
+        preview_periods (Union[Unset, list['PreviewPeriod']]):
     """
 
     resource_uuid: UUID
     resource_name: str
     periods_synced: int
     periods_skipped: int
-    errors: list["SyncResourceHistoricalConsumptionResponseErrorsItem"]
     periods_no_data: Union[Unset, int] = 0
+    errors: Union[Unset, list["ArrowSyncError"]] = UNSET
     dry_run: Union[Unset, bool] = False
-    preview_periods: Union[Unset, list["SyncResourceHistoricalConsumptionResponsePreviewPeriodsItem"]] = UNSET
+    preview_periods: Union[Unset, list["PreviewPeriod"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,12 +48,14 @@ class SyncResourceHistoricalConsumptionResponse:
 
         periods_skipped = self.periods_skipped
 
-        errors = []
-        for errors_item_data in self.errors:
-            errors_item = errors_item_data.to_dict()
-            errors.append(errors_item)
-
         periods_no_data = self.periods_no_data
+
+        errors: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.errors, Unset):
+            errors = []
+            for errors_item_data in self.errors:
+                errors_item = errors_item_data.to_dict()
+                errors.append(errors_item)
 
         dry_run = self.dry_run
 
@@ -76,11 +74,12 @@ class SyncResourceHistoricalConsumptionResponse:
                 "resource_name": resource_name,
                 "periods_synced": periods_synced,
                 "periods_skipped": periods_skipped,
-                "errors": errors,
             }
         )
         if periods_no_data is not UNSET:
             field_dict["periods_no_data"] = periods_no_data
+        if errors is not UNSET:
+            field_dict["errors"] = errors
         if dry_run is not UNSET:
             field_dict["dry_run"] = dry_run
         if preview_periods is not UNSET:
@@ -90,12 +89,8 @@ class SyncResourceHistoricalConsumptionResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.sync_resource_historical_consumption_response_errors_item import (
-            SyncResourceHistoricalConsumptionResponseErrorsItem,
-        )
-        from ..models.sync_resource_historical_consumption_response_preview_periods_item import (
-            SyncResourceHistoricalConsumptionResponsePreviewPeriodsItem,
-        )
+        from ..models.arrow_sync_error import ArrowSyncError
+        from ..models.preview_period import PreviewPeriod
 
         d = dict(src_dict)
         resource_uuid = UUID(d.pop("resource_uuid"))
@@ -106,23 +101,21 @@ class SyncResourceHistoricalConsumptionResponse:
 
         periods_skipped = d.pop("periods_skipped")
 
+        periods_no_data = d.pop("periods_no_data", UNSET)
+
         errors = []
-        _errors = d.pop("errors")
-        for errors_item_data in _errors:
-            errors_item = SyncResourceHistoricalConsumptionResponseErrorsItem.from_dict(errors_item_data)
+        _errors = d.pop("errors", UNSET)
+        for errors_item_data in _errors or []:
+            errors_item = ArrowSyncError.from_dict(errors_item_data)
 
             errors.append(errors_item)
-
-        periods_no_data = d.pop("periods_no_data", UNSET)
 
         dry_run = d.pop("dry_run", UNSET)
 
         preview_periods = []
         _preview_periods = d.pop("preview_periods", UNSET)
         for preview_periods_item_data in _preview_periods or []:
-            preview_periods_item = SyncResourceHistoricalConsumptionResponsePreviewPeriodsItem.from_dict(
-                preview_periods_item_data
-            )
+            preview_periods_item = PreviewPeriod.from_dict(preview_periods_item_data)
 
             preview_periods.append(preview_periods_item)
 
@@ -131,8 +124,8 @@ class SyncResourceHistoricalConsumptionResponse:
             resource_name=resource_name,
             periods_synced=periods_synced,
             periods_skipped=periods_skipped,
-            errors=errors,
             periods_no_data=periods_no_data,
+            errors=errors,
             dry_run=dry_run,
             preview_periods=preview_periods,
         )

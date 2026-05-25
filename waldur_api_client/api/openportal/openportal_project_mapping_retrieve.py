@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_mapping_response import ProjectMappingResponse
+from ...models.openportal_project_mapping_retrieve_response_200 import OpenportalProjectMappingRetrieveResponse200
 from ...types import UNSET, Response, Unset
 
 
@@ -32,11 +32,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ProjectMappingResponse:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> OpenportalProjectMappingRetrieveResponse200:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ProjectMappingResponse.from_dict(response.json())
+        response_200 = OpenportalProjectMappingRetrieveResponse200.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -44,7 +46,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ProjectMappingResponse]:
+) -> Response[OpenportalProjectMappingRetrieveResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +59,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> Response[ProjectMappingResponse]:
+) -> Response[OpenportalProjectMappingRetrieveResponse200]:
     """Map OpenPortal ProjectIdentifier strings to Waldur Project objects. Pass each identifier as a
     repeated 'identifier' query parameter. Returns a dict keyed by identifier; unknown identifiers map
     to null. Staff and support see all projects; regular users see only projects they are a member of.
@@ -70,7 +72,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectMappingResponse]
+        Response[OpenportalProjectMappingRetrieveResponse200]
     """
 
     kwargs = _get_kwargs(
@@ -88,7 +90,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> ProjectMappingResponse:
+) -> OpenportalProjectMappingRetrieveResponse200:
     """Map OpenPortal ProjectIdentifier strings to Waldur Project objects. Pass each identifier as a
     repeated 'identifier' query parameter. Returns a dict keyed by identifier; unknown identifiers map
     to null. Staff and support see all projects; regular users see only projects they are a member of.
@@ -101,7 +103,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectMappingResponse
+        OpenportalProjectMappingRetrieveResponse200
     """
 
     return sync_detailed(
@@ -114,7 +116,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> Response[ProjectMappingResponse]:
+) -> Response[OpenportalProjectMappingRetrieveResponse200]:
     """Map OpenPortal ProjectIdentifier strings to Waldur Project objects. Pass each identifier as a
     repeated 'identifier' query parameter. Returns a dict keyed by identifier; unknown identifiers map
     to null. Staff and support see all projects; regular users see only projects they are a member of.
@@ -127,7 +129,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectMappingResponse]
+        Response[OpenportalProjectMappingRetrieveResponse200]
     """
 
     kwargs = _get_kwargs(
@@ -143,7 +145,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> ProjectMappingResponse:
+) -> OpenportalProjectMappingRetrieveResponse200:
     """Map OpenPortal ProjectIdentifier strings to Waldur Project objects. Pass each identifier as a
     repeated 'identifier' query parameter. Returns a dict keyed by identifier; unknown identifiers map
     to null. Staff and support see all projects; regular users see only projects they are a member of.
@@ -156,7 +158,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectMappingResponse
+        OpenportalProjectMappingRetrieveResponse200
     """
 
     return (

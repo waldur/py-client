@@ -11,7 +11,7 @@ from ..models.frequency_enum import FrequencyEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.project_digest_config_available_sections_item import ProjectDigestConfigAvailableSectionsItem
+    from ..models.available_project_digest_section import AvailableProjectDigestSection
 
 
 T = TypeVar("T", bound="ProjectDigestConfig")
@@ -23,7 +23,7 @@ class ProjectDigestConfig:
     Attributes:
         uuid (UUID):
         last_sent_at (Union[None, datetime.datetime]):
-        available_sections (list['ProjectDigestConfigAvailableSectionsItem']):
+        available_sections (list['AvailableProjectDigestSection']):
         is_enabled (Union[Unset, bool]):
         frequency (Union[Unset, FrequencyEnum]):
         enabled_sections (Union[Unset, list[str]]):
@@ -33,7 +33,7 @@ class ProjectDigestConfig:
 
     uuid: UUID
     last_sent_at: Union[None, datetime.datetime]
-    available_sections: list["ProjectDigestConfigAvailableSectionsItem"]
+    available_sections: list["AvailableProjectDigestSection"]
     is_enabled: Union[Unset, bool] = UNSET
     frequency: Union[Unset, FrequencyEnum] = UNSET
     enabled_sections: Union[Unset, list[str]] = UNSET
@@ -93,7 +93,7 @@ class ProjectDigestConfig:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.project_digest_config_available_sections_item import ProjectDigestConfigAvailableSectionsItem
+        from ..models.available_project_digest_section import AvailableProjectDigestSection
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -116,7 +116,7 @@ class ProjectDigestConfig:
         available_sections = []
         _available_sections = d.pop("available_sections")
         for available_sections_item_data in _available_sections:
-            available_sections_item = ProjectDigestConfigAvailableSectionsItem.from_dict(available_sections_item_data)
+            available_sections_item = AvailableProjectDigestSection.from_dict(available_sections_item_data)
 
             available_sections.append(available_sections_item)
 

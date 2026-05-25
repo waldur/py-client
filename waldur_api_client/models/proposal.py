@@ -15,8 +15,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_round import NestedRound
-    from ..models.proposal_can_submit import ProposalCanSubmit
-    from ..models.proposal_compliance_status_type_0 import ProposalComplianceStatusType0
+    from ..models.proposal_can_submit_response import ProposalCanSubmitResponse
+    from ..models.proposal_compliance_status import ProposalComplianceStatus
     from ..models.proposal_documentation import ProposalDocumentation
 
 
@@ -75,8 +75,8 @@ class Proposal:
         science_domain_name (str):
         allocation_comment (Union[None, str]):
         created (datetime.datetime):
-        compliance_status (Union['ProposalComplianceStatusType0', None]):
-        can_submit (ProposalCanSubmit):
+        compliance_status (Union['ProposalComplianceStatus', None]):
+        can_submit (ProposalCanSubmitResponse):
         awaiting_manual_advance (bool):
         description (Union[Unset, str]):
         project_summary (Union[Unset, str]):
@@ -134,8 +134,8 @@ class Proposal:
     science_domain_name: str
     allocation_comment: Union[None, str]
     created: datetime.datetime
-    compliance_status: Union["ProposalComplianceStatusType0", None]
-    can_submit: "ProposalCanSubmit"
+    compliance_status: Union["ProposalComplianceStatus", None]
+    can_submit: "ProposalCanSubmitResponse"
     awaiting_manual_advance: bool
     description: Union[Unset, str] = UNSET
     project_summary: Union[Unset, str] = UNSET
@@ -147,7 +147,7 @@ class Proposal:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.proposal_compliance_status_type_0 import ProposalComplianceStatusType0
+        from ..models.proposal_compliance_status import ProposalComplianceStatus
 
         uuid = str(self.uuid)
 
@@ -262,7 +262,7 @@ class Proposal:
         created = self.created.isoformat()
 
         compliance_status: Union[None, dict[str, Any]]
-        if isinstance(self.compliance_status, ProposalComplianceStatusType0):
+        if isinstance(self.compliance_status, ProposalComplianceStatus):
             compliance_status = self.compliance_status.to_dict()
         else:
             compliance_status = self.compliance_status
@@ -379,8 +379,8 @@ class Proposal:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_round import NestedRound
-        from ..models.proposal_can_submit import ProposalCanSubmit
-        from ..models.proposal_compliance_status_type_0 import ProposalComplianceStatusType0
+        from ..models.proposal_can_submit_response import ProposalCanSubmitResponse
+        from ..models.proposal_compliance_status import ProposalComplianceStatus
         from ..models.proposal_documentation import ProposalDocumentation
 
         d = dict(src_dict)
@@ -542,22 +542,22 @@ class Proposal:
 
         created = isoparse(d.pop("created"))
 
-        def _parse_compliance_status(data: object) -> Union["ProposalComplianceStatusType0", None]:
+        def _parse_compliance_status(data: object) -> Union["ProposalComplianceStatus", None]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                compliance_status_type_0 = ProposalComplianceStatusType0.from_dict(data)
+                compliance_status_type_1 = ProposalComplianceStatus.from_dict(data)
 
-                return compliance_status_type_0
+                return compliance_status_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union["ProposalComplianceStatusType0", None], data)
+            return cast(Union["ProposalComplianceStatus", None], data)
 
         compliance_status = _parse_compliance_status(d.pop("compliance_status"))
 
-        can_submit = ProposalCanSubmit.from_dict(d.pop("can_submit"))
+        can_submit = ProposalCanSubmitResponse.from_dict(d.pop("can_submit"))
 
         awaiting_manual_advance = d.pop("awaiting_manual_advance")
 

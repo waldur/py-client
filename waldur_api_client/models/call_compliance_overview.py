@@ -5,7 +5,8 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.call_compliance_overview_checklist_type_0 import CallComplianceOverviewChecklistType0
+    from ..models.call_compliance_checklist_info import CallComplianceChecklistInfo
+    from ..models.call_compliance_overview_proposal import CallComplianceOverviewProposal
 
 
 T = TypeVar("T", bound="CallComplianceOverview")
@@ -15,24 +16,27 @@ T = TypeVar("T", bound="CallComplianceOverview")
 class CallComplianceOverview:
     """
     Attributes:
-        checklist (Union['CallComplianceOverviewChecklistType0', None]):
-        proposals (list[Any]):
+        checklist (Union['CallComplianceChecklistInfo', None]):
+        proposals (list['CallComplianceOverviewProposal']):
     """
 
-    checklist: Union["CallComplianceOverviewChecklistType0", None]
-    proposals: list[Any]
+    checklist: Union["CallComplianceChecklistInfo", None]
+    proposals: list["CallComplianceOverviewProposal"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.call_compliance_overview_checklist_type_0 import CallComplianceOverviewChecklistType0
+        from ..models.call_compliance_checklist_info import CallComplianceChecklistInfo
 
         checklist: Union[None, dict[str, Any]]
-        if isinstance(self.checklist, CallComplianceOverviewChecklistType0):
+        if isinstance(self.checklist, CallComplianceChecklistInfo):
             checklist = self.checklist.to_dict()
         else:
             checklist = self.checklist
 
-        proposals = self.proposals
+        proposals = []
+        for proposals_item_data in self.proposals:
+            proposals_item = proposals_item_data.to_dict()
+            proposals.append(proposals_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -47,26 +51,32 @@ class CallComplianceOverview:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.call_compliance_overview_checklist_type_0 import CallComplianceOverviewChecklistType0
+        from ..models.call_compliance_checklist_info import CallComplianceChecklistInfo
+        from ..models.call_compliance_overview_proposal import CallComplianceOverviewProposal
 
         d = dict(src_dict)
 
-        def _parse_checklist(data: object) -> Union["CallComplianceOverviewChecklistType0", None]:
+        def _parse_checklist(data: object) -> Union["CallComplianceChecklistInfo", None]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                checklist_type_0 = CallComplianceOverviewChecklistType0.from_dict(data)
+                checklist_type_1 = CallComplianceChecklistInfo.from_dict(data)
 
-                return checklist_type_0
+                return checklist_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union["CallComplianceOverviewChecklistType0", None], data)
+            return cast(Union["CallComplianceChecklistInfo", None], data)
 
         checklist = _parse_checklist(d.pop("checklist"))
 
-        proposals = cast(list[Any], d.pop("proposals"))
+        proposals = []
+        _proposals = d.pop("proposals")
+        for proposals_item_data in _proposals:
+            proposals_item = CallComplianceOverviewProposal.from_dict(proposals_item_data)
+
+            proposals.append(proposals_item)
 
         call_compliance_overview = cls(
             checklist=checklist,

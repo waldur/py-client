@@ -7,9 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.set_external_gateway_request_external_fixed_ips_item import (
-        SetExternalGatewayRequestExternalFixedIpsItem,
-    )
+    from ..models.set_external_gateway_fixed_ip_request import SetExternalGatewayFixedIPRequest
 
 
 T = TypeVar("T", bound="SetExternalGatewayRequest")
@@ -22,14 +20,13 @@ class SetExternalGatewayRequest:
         external_network_id (str): Backend ID (OpenStack UUID) of the external network.
         enable_snat (Union[None, Unset, bool]): Whether to enable SNAT on the gateway. None means use OpenStack default
             (True). Requires advanced permissions.
-        external_fixed_ips (Union[Unset, list['SetExternalGatewayRequestExternalFixedIpsItem']]): List of fixed IP
-            specifications for the gateway port. Each entry should have 'ip_address' and optionally 'subnet_id'. Requires
-            advanced permissions.
+        external_fixed_ips (Union[Unset, list['SetExternalGatewayFixedIPRequest']]): List of fixed IP specifications for
+            the gateway port. Each entry should have 'ip_address' and optionally 'subnet_id'. Requires advanced permissions.
     """
 
     external_network_id: str
     enable_snat: Union[None, Unset, bool] = UNSET
-    external_fixed_ips: Union[Unset, list["SetExternalGatewayRequestExternalFixedIpsItem"]] = UNSET
+    external_fixed_ips: Union[Unset, list["SetExternalGatewayFixedIPRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -64,9 +61,7 @@ class SetExternalGatewayRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.set_external_gateway_request_external_fixed_ips_item import (
-            SetExternalGatewayRequestExternalFixedIpsItem,
-        )
+        from ..models.set_external_gateway_fixed_ip_request import SetExternalGatewayFixedIPRequest
 
         d = dict(src_dict)
         external_network_id = d.pop("external_network_id")
@@ -83,9 +78,7 @@ class SetExternalGatewayRequest:
         external_fixed_ips = []
         _external_fixed_ips = d.pop("external_fixed_ips", UNSET)
         for external_fixed_ips_item_data in _external_fixed_ips or []:
-            external_fixed_ips_item = SetExternalGatewayRequestExternalFixedIpsItem.from_dict(
-                external_fixed_ips_item_data
-            )
+            external_fixed_ips_item = SetExternalGatewayFixedIPRequest.from_dict(external_fixed_ips_item_data)
 
             external_fixed_ips.append(external_fixed_ips_item)
 

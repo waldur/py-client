@@ -6,8 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.pull_conflict_response import PullConflictResponse
-from ...models.pull_response import PullResponse
+from ...models.detail import Detail
 from ...types import Response
 
 
@@ -22,25 +21,21 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[PullConflictResponse, PullResponse]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Detail:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 202:
-        response_202 = PullResponse.from_dict(response.json())
+        response_202 = Detail.from_dict(response.json())
 
         return response_202
     if response.status_code == 409:
-        response_409 = PullConflictResponse.from_dict(response.json())
+        response_409 = Detail.from_dict(response.json())
 
         return response_409
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[PullConflictResponse, PullResponse]]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Detail]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,7 +48,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[PullConflictResponse, PullResponse]]:
+) -> Response[Detail]:
     """Synchronize resource state
 
      Schedule an asynchronous pull operation to synchronize resource state from the backend. Returns 202
@@ -68,7 +63,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[PullConflictResponse, PullResponse]]
+        Response[Detail]
     """
 
     kwargs = _get_kwargs(
@@ -86,7 +81,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Union[PullConflictResponse, PullResponse]:
+) -> Detail:
     """Synchronize resource state
 
      Schedule an asynchronous pull operation to synchronize resource state from the backend. Returns 202
@@ -101,7 +96,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[PullConflictResponse, PullResponse]
+        Detail
     """
 
     return sync_detailed(
@@ -114,7 +109,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[PullConflictResponse, PullResponse]]:
+) -> Response[Detail]:
     """Synchronize resource state
 
      Schedule an asynchronous pull operation to synchronize resource state from the backend. Returns 202
@@ -129,7 +124,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[PullConflictResponse, PullResponse]]
+        Response[Detail]
     """
 
     kwargs = _get_kwargs(
@@ -145,7 +140,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Union[PullConflictResponse, PullResponse]:
+) -> Detail:
     """Synchronize resource state
 
      Schedule an asynchronous pull operation to synchronize resource state from the backend. Returns 202
@@ -160,7 +155,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[PullConflictResponse, PullResponse]
+        Detail
     """
 
     return (

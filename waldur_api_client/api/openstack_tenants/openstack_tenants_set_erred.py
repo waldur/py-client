@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.detail import Detail
 from ...models.set_erred_request import SetErredRequest
-from ...models.set_erred_response import SetErredResponse
 from ...types import Response
 
 
@@ -31,19 +31,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> SetErredResponse:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Detail:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = SetErredResponse.from_dict(response.json())
+        response_200 = Detail.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SetErredResponse]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Detail]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +55,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: SetErredRequest,
-) -> Response[SetErredResponse]:
+) -> Response[Detail]:
     """Mark resource as ERRED
 
      Manually transition the resource to ERRED state. This is useful for resources stuck in transitional
@@ -72,7 +70,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SetErredResponse]
+        Response[Detail]
     """
 
     kwargs = _get_kwargs(
@@ -92,7 +90,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: SetErredRequest,
-) -> SetErredResponse:
+) -> Detail:
     """Mark resource as ERRED
 
      Manually transition the resource to ERRED state. This is useful for resources stuck in transitional
@@ -107,7 +105,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SetErredResponse
+        Detail
     """
 
     return sync_detailed(
@@ -122,7 +120,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: SetErredRequest,
-) -> Response[SetErredResponse]:
+) -> Response[Detail]:
     """Mark resource as ERRED
 
      Manually transition the resource to ERRED state. This is useful for resources stuck in transitional
@@ -137,7 +135,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SetErredResponse]
+        Response[Detail]
     """
 
     kwargs = _get_kwargs(
@@ -155,7 +153,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: SetErredRequest,
-) -> SetErredResponse:
+) -> Detail:
     """Mark resource as ERRED
 
      Manually transition the resource to ERRED state. This is useful for resources stuck in transitional
@@ -170,7 +168,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SetErredResponse
+        Detail
     """
 
     return (

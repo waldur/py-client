@@ -5,9 +5,9 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.provider_resource_stats_by_offering_item import ProviderResourceStatsByOfferingItem
+    from ..models.provider_resource_monthly import ProviderResourceMonthly
     from ..models.provider_resource_stats_by_state import ProviderResourceStatsByState
-    from ..models.provider_resource_stats_monthly_item import ProviderResourceStatsMonthlyItem
+    from ..models.provider_resource_top_offering import ProviderResourceTopOffering
 
 
 T = TypeVar("T", bound="ProviderResourceStats")
@@ -19,14 +19,14 @@ class ProviderResourceStats:
     Attributes:
         total (int): Total number of resources
         by_state (ProviderResourceStatsByState): Resource counts grouped by state
-        by_offering (list['ProviderResourceStatsByOfferingItem']): Resource counts grouped by offering
-        monthly (list['ProviderResourceStatsMonthlyItem']): Monthly resource counts
+        by_offering (list['ProviderResourceTopOffering']): Resource counts grouped by offering
+        monthly (list['ProviderResourceMonthly']): Monthly resource counts
     """
 
     total: int
     by_state: "ProviderResourceStatsByState"
-    by_offering: list["ProviderResourceStatsByOfferingItem"]
-    monthly: list["ProviderResourceStatsMonthlyItem"]
+    by_offering: list["ProviderResourceTopOffering"]
+    monthly: list["ProviderResourceMonthly"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -59,9 +59,9 @@ class ProviderResourceStats:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.provider_resource_stats_by_offering_item import ProviderResourceStatsByOfferingItem
+        from ..models.provider_resource_monthly import ProviderResourceMonthly
         from ..models.provider_resource_stats_by_state import ProviderResourceStatsByState
-        from ..models.provider_resource_stats_monthly_item import ProviderResourceStatsMonthlyItem
+        from ..models.provider_resource_top_offering import ProviderResourceTopOffering
 
         d = dict(src_dict)
         total = d.pop("total")
@@ -71,14 +71,14 @@ class ProviderResourceStats:
         by_offering = []
         _by_offering = d.pop("by_offering")
         for by_offering_item_data in _by_offering:
-            by_offering_item = ProviderResourceStatsByOfferingItem.from_dict(by_offering_item_data)
+            by_offering_item = ProviderResourceTopOffering.from_dict(by_offering_item_data)
 
             by_offering.append(by_offering_item)
 
         monthly = []
         _monthly = d.pop("monthly")
         for monthly_item_data in _monthly:
-            monthly_item = ProviderResourceStatsMonthlyItem.from_dict(monthly_item_data)
+            monthly_item = ProviderResourceMonthly.from_dict(monthly_item_data)
 
             monthly.append(monthly_item)
 

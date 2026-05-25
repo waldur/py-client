@@ -7,7 +7,7 @@ from attrs import field as _attrs_field
 from ..models.available_external_network_source_enum import AvailableExternalNetworkSourceEnum
 
 if TYPE_CHECKING:
-    from ..models.available_external_network_subnets_item import AvailableExternalNetworkSubnetsItem
+    from ..models.available_external_network_subnet import AvailableExternalNetworkSubnet
 
 
 T = TypeVar("T", bound="AvailableExternalNetwork")
@@ -21,14 +21,14 @@ class AvailableExternalNetwork:
         name (str):
         description (str):
         source (AvailableExternalNetworkSourceEnum):
-        subnets (list['AvailableExternalNetworkSubnetsItem']):
+        subnets (list['AvailableExternalNetworkSubnet']):
     """
 
     backend_id: str
     name: str
     description: str
     source: AvailableExternalNetworkSourceEnum
-    subnets: list["AvailableExternalNetworkSubnetsItem"]
+    subnets: list["AvailableExternalNetworkSubnet"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -61,7 +61,7 @@ class AvailableExternalNetwork:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.available_external_network_subnets_item import AvailableExternalNetworkSubnetsItem
+        from ..models.available_external_network_subnet import AvailableExternalNetworkSubnet
 
         d = dict(src_dict)
         backend_id = d.pop("backend_id")
@@ -75,7 +75,7 @@ class AvailableExternalNetwork:
         subnets = []
         _subnets = d.pop("subnets")
         for subnets_item_data in _subnets:
-            subnets_item = AvailableExternalNetworkSubnetsItem.from_dict(subnets_item_data)
+            subnets_item = AvailableExternalNetworkSubnet.from_dict(subnets_item_data)
 
             subnets.append(subnets_item)
 

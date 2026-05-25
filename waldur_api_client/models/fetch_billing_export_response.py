@@ -19,7 +19,7 @@ class FetchBillingExportResponse:
         period_to (str):
         classification (str):
         row_count (int):
-        data (list['FetchBillingExportResponseDataItem']):
+        data (list['FetchBillingExportResponseDataItem']): Raw billing export data from Arrow API
     """
 
     period_from: str

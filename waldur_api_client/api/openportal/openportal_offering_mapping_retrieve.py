@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.offering_mapping_response import OfferingMappingResponse
+from ...models.openportal_offering_mapping_retrieve_response_200 import OpenportalOfferingMappingRetrieveResponse200
 from ...types import UNSET, Response, Unset
 
 
@@ -32,11 +32,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OfferingMappingResponse:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> OpenportalOfferingMappingRetrieveResponse200:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = OfferingMappingResponse.from_dict(response.json())
+        response_200 = OpenportalOfferingMappingRetrieveResponse200.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -44,7 +46,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[OfferingMappingResponse]:
+) -> Response[OpenportalOfferingMappingRetrieveResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +59,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> Response[OfferingMappingResponse]:
+) -> Response[OpenportalOfferingMappingRetrieveResponse200]:
     """Map OpenPortal destination strings to Waldur Offering objects. Pass each destination as a repeated
     'identifier' query parameter. Returns a dict keyed by identifier; unknown destinations map to null.
     Accessible to all authenticated users.
@@ -70,7 +72,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OfferingMappingResponse]
+        Response[OpenportalOfferingMappingRetrieveResponse200]
     """
 
     kwargs = _get_kwargs(
@@ -88,7 +90,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> OfferingMappingResponse:
+) -> OpenportalOfferingMappingRetrieveResponse200:
     """Map OpenPortal destination strings to Waldur Offering objects. Pass each destination as a repeated
     'identifier' query parameter. Returns a dict keyed by identifier; unknown destinations map to null.
     Accessible to all authenticated users.
@@ -101,7 +103,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OfferingMappingResponse
+        OpenportalOfferingMappingRetrieveResponse200
     """
 
     return sync_detailed(
@@ -114,7 +116,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> Response[OfferingMappingResponse]:
+) -> Response[OpenportalOfferingMappingRetrieveResponse200]:
     """Map OpenPortal destination strings to Waldur Offering objects. Pass each destination as a repeated
     'identifier' query parameter. Returns a dict keyed by identifier; unknown destinations map to null.
     Accessible to all authenticated users.
@@ -127,7 +129,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OfferingMappingResponse]
+        Response[OpenportalOfferingMappingRetrieveResponse200]
     """
 
     kwargs = _get_kwargs(
@@ -143,7 +145,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     identifier: Union[Unset, list[str]] = UNSET,
-) -> OfferingMappingResponse:
+) -> OpenportalOfferingMappingRetrieveResponse200:
     """Map OpenPortal destination strings to Waldur Offering objects. Pass each destination as a repeated
     'identifier' query parameter. Returns a dict keyed by identifier; unknown destinations map to null.
     Accessible to all authenticated users.
@@ -156,7 +158,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OfferingMappingResponse
+        OpenportalOfferingMappingRetrieveResponse200
     """
 
     return (

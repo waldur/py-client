@@ -6,7 +6,7 @@ from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
     from ..models.checklist_completion import ChecklistCompletion
-    from ..models.checklist_response_checklist import ChecklistResponseChecklist
+    from ..models.checklist_short import ChecklistShort
     from ..models.question_with_answer import QuestionWithAnswer
 
 
@@ -17,12 +17,12 @@ T = TypeVar("T", bound="ChecklistResponse")
 class ChecklistResponse:
     """
     Attributes:
-        checklist (ChecklistResponseChecklist):
+        checklist (ChecklistShort):
         completion (ChecklistCompletion):
         questions (list['QuestionWithAnswer']):
     """
 
-    checklist: "ChecklistResponseChecklist"
+    checklist: "ChecklistShort"
     completion: "ChecklistCompletion"
     questions: list["QuestionWithAnswer"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -52,11 +52,11 @@ class ChecklistResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.checklist_completion import ChecklistCompletion
-        from ..models.checklist_response_checklist import ChecklistResponseChecklist
+        from ..models.checklist_short import ChecklistShort
         from ..models.question_with_answer import QuestionWithAnswer
 
         d = dict(src_dict)
-        checklist = ChecklistResponseChecklist.from_dict(d.pop("checklist"))
+        checklist = ChecklistShort.from_dict(d.pop("checklist"))
 
         completion = ChecklistCompletion.from_dict(d.pop("completion"))
 

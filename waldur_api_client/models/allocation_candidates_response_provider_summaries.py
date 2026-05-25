@@ -5,9 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.allocation_candidates_response_provider_summaries_additional_property import (
-        AllocationCandidatesResponseProviderSummariesAdditionalProperty,
-    )
+    from ..models.provider_summary import ProviderSummary
 
 
 T = TypeVar("T", bound="AllocationCandidatesResponseProviderSummaries")
@@ -20,9 +18,7 @@ class AllocationCandidatesResponseProviderSummaries:
 
     """
 
-    additional_properties: dict[str, "AllocationCandidatesResponseProviderSummariesAdditionalProperty"] = _attrs_field(
-        init=False, factory=dict
-    )
+    additional_properties: dict[str, "ProviderSummary"] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         field_dict: dict[str, Any] = {}
@@ -33,16 +29,14 @@ class AllocationCandidatesResponseProviderSummaries:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.allocation_candidates_response_provider_summaries_additional_property import (
-            AllocationCandidatesResponseProviderSummariesAdditionalProperty,
-        )
+        from ..models.provider_summary import ProviderSummary
 
         d = dict(src_dict)
         allocation_candidates_response_provider_summaries = cls()
 
         additional_properties = {}
         for prop_name, prop_dict in d.items():
-            additional_property = AllocationCandidatesResponseProviderSummariesAdditionalProperty.from_dict(prop_dict)
+            additional_property = ProviderSummary.from_dict(prop_dict)
 
             additional_properties[prop_name] = additional_property
 
@@ -53,10 +47,10 @@ class AllocationCandidatesResponseProviderSummaries:
     def additional_keys(self) -> list[str]:
         return list(self.additional_properties.keys())
 
-    def __getitem__(self, key: str) -> "AllocationCandidatesResponseProviderSummariesAdditionalProperty":
+    def __getitem__(self, key: str) -> "ProviderSummary":
         return self.additional_properties[key]
 
-    def __setitem__(self, key: str, value: "AllocationCandidatesResponseProviderSummariesAdditionalProperty") -> None:
+    def __setitem__(self, key: str, value: "ProviderSummary") -> None:
         self.additional_properties[key] = value
 
     def __delitem__(self, key: str) -> None:

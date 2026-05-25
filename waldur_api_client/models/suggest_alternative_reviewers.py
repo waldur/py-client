@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.suggest_alternative_reviewers_suggestions_item import SuggestAlternativeReviewersSuggestionsItem
+    from ..models.reviewer_suggestion_item import ReviewerSuggestionItem
 
 
 T = TypeVar("T", bound="SuggestAlternativeReviewers")
@@ -15,11 +15,10 @@ T = TypeVar("T", bound="SuggestAlternativeReviewers")
 class SuggestAlternativeReviewers:
     """
     Attributes:
-        suggestions (list['SuggestAlternativeReviewersSuggestionsItem']): List of alternative reviewers with affinity
-            scores
+        suggestions (list['ReviewerSuggestionItem']): List of alternative reviewers with affinity scores
     """
 
-    suggestions: list["SuggestAlternativeReviewersSuggestionsItem"]
+    suggestions: list["ReviewerSuggestionItem"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,13 +39,13 @@ class SuggestAlternativeReviewers:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.suggest_alternative_reviewers_suggestions_item import SuggestAlternativeReviewersSuggestionsItem
+        from ..models.reviewer_suggestion_item import ReviewerSuggestionItem
 
         d = dict(src_dict)
         suggestions = []
         _suggestions = d.pop("suggestions")
         for suggestions_item_data in _suggestions:
-            suggestions_item = SuggestAlternativeReviewersSuggestionsItem.from_dict(suggestions_item_data)
+            suggestions_item = ReviewerSuggestionItem.from_dict(suggestions_item_data)
 
             suggestions.append(suggestions_item)
 

@@ -10,8 +10,8 @@ from ..models.question_type_enum import QuestionTypeEnum
 from ..models.rich_text_toolbar_level_enum import RichTextToolbarLevelEnum
 
 if TYPE_CHECKING:
-    from ..models.question_with_answer_dependencies_info_type_0 import QuestionWithAnswerDependenciesInfoType0
-    from ..models.question_with_answer_existing_answer_type_0 import QuestionWithAnswerExistingAnswerType0
+    from ..models.answer import Answer
+    from ..models.question_dependency_info import QuestionDependencyInfo
 
 
 T = TypeVar("T", bound="QuestionWithAnswer")
@@ -27,7 +27,7 @@ class QuestionWithAnswer:
         question_type (QuestionTypeEnum):
         required (bool):
         order (int):
-        existing_answer (Union['QuestionWithAnswerExistingAnswerType0', None]):
+        existing_answer (Union['Answer', None]):
         question_options (Union[None, list[Any]]):
         min_value (Union[None, str]): Minimum value allowed for NUMBER, YEAR, and RATING type questions
         max_value (Union[None, str]): Maximum value allowed for NUMBER, YEAR, and RATING type questions
@@ -47,7 +47,7 @@ class QuestionWithAnswer:
         rich_text_char_limit (Union[None, int]): Maximum number of characters allowed in RICH_TEXT type answers. If not
             set, no limit is enforced.
         rich_text_toolbar_level (RichTextToolbarLevelEnum):
-        dependencies_info (Union['QuestionWithAnswerDependenciesInfoType0', None]):
+        dependencies_info (Union['QuestionDependencyInfo', None]):
     """
 
     uuid: UUID
@@ -56,7 +56,7 @@ class QuestionWithAnswer:
     question_type: QuestionTypeEnum
     required: bool
     order: int
-    existing_answer: Union["QuestionWithAnswerExistingAnswerType0", None]
+    existing_answer: Union["Answer", None]
     question_options: Union[None, list[Any]]
     min_value: Union[None, str]
     max_value: Union[None, str]
@@ -70,12 +70,12 @@ class QuestionWithAnswer:
     likert_allow_na: bool
     rich_text_char_limit: Union[None, int]
     rich_text_toolbar_level: RichTextToolbarLevelEnum
-    dependencies_info: Union["QuestionWithAnswerDependenciesInfoType0", None]
+    dependencies_info: Union["QuestionDependencyInfo", None]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.question_with_answer_dependencies_info_type_0 import QuestionWithAnswerDependenciesInfoType0
-        from ..models.question_with_answer_existing_answer_type_0 import QuestionWithAnswerExistingAnswerType0
+        from ..models.answer import Answer
+        from ..models.question_dependency_info import QuestionDependencyInfo
 
         uuid = str(self.uuid)
 
@@ -91,7 +91,7 @@ class QuestionWithAnswer:
         order = self.order
 
         existing_answer: Union[None, dict[str, Any]]
-        if isinstance(self.existing_answer, QuestionWithAnswerExistingAnswerType0):
+        if isinstance(self.existing_answer, Answer):
             existing_answer = self.existing_answer.to_dict()
         else:
             existing_answer = self.existing_answer
@@ -137,7 +137,7 @@ class QuestionWithAnswer:
         rich_text_toolbar_level = self.rich_text_toolbar_level.value
 
         dependencies_info: Union[None, dict[str, Any]]
-        if isinstance(self.dependencies_info, QuestionWithAnswerDependenciesInfoType0):
+        if isinstance(self.dependencies_info, QuestionDependencyInfo):
             dependencies_info = self.dependencies_info.to_dict()
         else:
             dependencies_info = self.dependencies_info
@@ -174,8 +174,8 @@ class QuestionWithAnswer:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.question_with_answer_dependencies_info_type_0 import QuestionWithAnswerDependenciesInfoType0
-        from ..models.question_with_answer_existing_answer_type_0 import QuestionWithAnswerExistingAnswerType0
+        from ..models.answer import Answer
+        from ..models.question_dependency_info import QuestionDependencyInfo
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -195,18 +195,18 @@ class QuestionWithAnswer:
 
         order = d.pop("order")
 
-        def _parse_existing_answer(data: object) -> Union["QuestionWithAnswerExistingAnswerType0", None]:
+        def _parse_existing_answer(data: object) -> Union["Answer", None]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                existing_answer_type_0 = QuestionWithAnswerExistingAnswerType0.from_dict(data)
+                existing_answer_type_1 = Answer.from_dict(data)
 
-                return existing_answer_type_0
+                return existing_answer_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union["QuestionWithAnswerExistingAnswerType0", None], data)
+            return cast(Union["Answer", None], data)
 
         existing_answer = _parse_existing_answer(d.pop("existing_answer"))
 
@@ -287,18 +287,18 @@ class QuestionWithAnswer:
 
         rich_text_toolbar_level = RichTextToolbarLevelEnum(d.pop("rich_text_toolbar_level"))
 
-        def _parse_dependencies_info(data: object) -> Union["QuestionWithAnswerDependenciesInfoType0", None]:
+        def _parse_dependencies_info(data: object) -> Union["QuestionDependencyInfo", None]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                dependencies_info_type_0 = QuestionWithAnswerDependenciesInfoType0.from_dict(data)
+                dependencies_info_type_1 = QuestionDependencyInfo.from_dict(data)
 
-                return dependencies_info_type_0
+                return dependencies_info_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union["QuestionWithAnswerDependenciesInfoType0", None], data)
+            return cast(Union["QuestionDependencyInfo", None], data)
 
         dependencies_info = _parse_dependencies_info(d.pop("dependencies_info"))
 

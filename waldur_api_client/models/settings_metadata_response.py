@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.settings_metadata_response_settings_item import SettingsMetadataResponseSettingsItem
+    from ..models.settings_section import SettingsSection
 
 
 T = TypeVar("T", bound="SettingsMetadataResponse")
@@ -15,10 +15,10 @@ T = TypeVar("T", bound="SettingsMetadataResponse")
 class SettingsMetadataResponse:
     """
     Attributes:
-        settings (list['SettingsMetadataResponseSettingsItem']): List of settings sections with configuration items
+        settings (list['SettingsSection']):
     """
 
-    settings: list["SettingsMetadataResponseSettingsItem"]
+    settings: list["SettingsSection"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,13 +39,13 @@ class SettingsMetadataResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.settings_metadata_response_settings_item import SettingsMetadataResponseSettingsItem
+        from ..models.settings_section import SettingsSection
 
         d = dict(src_dict)
         settings = []
         _settings = d.pop("settings")
         for settings_item_data in _settings:
-            settings_item = SettingsMetadataResponseSettingsItem.from_dict(settings_item_data)
+            settings_item = SettingsSection.from_dict(settings_item_data)
 
             settings.append(settings_item)
 

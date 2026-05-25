@@ -6,9 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.backend_resource_requests_start_processing_response_200 import (
-    BackendResourceRequestsStartProcessingResponse200,
-)
+from ...models.status import Status
 from ...types import Response
 
 
@@ -23,21 +21,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> BackendResourceRequestsStartProcessingResponse200:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Status:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = BackendResourceRequestsStartProcessingResponse200.from_dict(response.json())
+        response_200 = Status.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[BackendResourceRequestsStartProcessingResponse200]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Status]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,7 +44,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[BackendResourceRequestsStartProcessingResponse200]:
+) -> Response[Status]:
     """Start processing a request
 
      Transitions the request state from 'Sent' to 'Processing'. This is used by a site agent to
@@ -64,7 +58,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BackendResourceRequestsStartProcessingResponse200]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -82,7 +76,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> BackendResourceRequestsStartProcessingResponse200:
+) -> Status:
     """Start processing a request
 
      Transitions the request state from 'Sent' to 'Processing'. This is used by a site agent to
@@ -96,7 +90,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BackendResourceRequestsStartProcessingResponse200
+        Status
     """
 
     return sync_detailed(
@@ -109,7 +103,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[BackendResourceRequestsStartProcessingResponse200]:
+) -> Response[Status]:
     """Start processing a request
 
      Transitions the request state from 'Sent' to 'Processing'. This is used by a site agent to
@@ -123,7 +117,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[BackendResourceRequestsStartProcessingResponse200]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -139,7 +133,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> BackendResourceRequestsStartProcessingResponse200:
+) -> Status:
     """Start processing a request
 
      Transitions the request state from 'Sent' to 'Processing'. This is used by a site agent to
@@ -153,7 +147,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        BackendResourceRequestsStartProcessingResponse200
+        Status
     """
 
     return (

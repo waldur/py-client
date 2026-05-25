@@ -6,9 +6,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.create_manual_assignment_response_skipped_proposals_item import (
-        CreateManualAssignmentResponseSkippedProposalsItem,
-    )
+    from ..models.skipped_proposal import SkippedProposal
 
 
 T = TypeVar("T", bound="CreateManualAssignmentResponse")
@@ -20,13 +18,12 @@ class CreateManualAssignmentResponse:
     Attributes:
         batch_uuid (UUID):
         items_created (int):
-        skipped_proposals (list['CreateManualAssignmentResponseSkippedProposalsItem']): Proposals that were skipped with
-            reasons
+        skipped_proposals (list['SkippedProposal']): Proposals that were skipped with reasons
     """
 
     batch_uuid: UUID
     items_created: int
-    skipped_proposals: list["CreateManualAssignmentResponseSkippedProposalsItem"]
+    skipped_proposals: list["SkippedProposal"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,9 +50,7 @@ class CreateManualAssignmentResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.create_manual_assignment_response_skipped_proposals_item import (
-            CreateManualAssignmentResponseSkippedProposalsItem,
-        )
+        from ..models.skipped_proposal import SkippedProposal
 
         d = dict(src_dict)
         batch_uuid = UUID(d.pop("batch_uuid"))
@@ -65,9 +60,7 @@ class CreateManualAssignmentResponse:
         skipped_proposals = []
         _skipped_proposals = d.pop("skipped_proposals")
         for skipped_proposals_item_data in _skipped_proposals:
-            skipped_proposals_item = CreateManualAssignmentResponseSkippedProposalsItem.from_dict(
-                skipped_proposals_item_data
-            )
+            skipped_proposals_item = SkippedProposal.from_dict(skipped_proposals_item_data)
 
             skipped_proposals.append(skipped_proposals_item)
 

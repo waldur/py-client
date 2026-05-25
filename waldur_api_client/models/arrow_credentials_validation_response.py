@@ -22,7 +22,7 @@ class ArrowCredentialsValidationResponse:
         valid (bool):
         message (Union[Unset, str]):
         error (Union[Unset, str]):
-        partner_info (Union[Unset, ArrowCredentialsValidationResponsePartnerInfo]):
+        partner_info (Union[Unset, ArrowCredentialsValidationResponsePartnerInfo]): Raw partner info data from Arrow API
     """
 
     valid: bool

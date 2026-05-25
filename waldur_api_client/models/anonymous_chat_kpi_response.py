@@ -7,11 +7,11 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.anonymous_chat_kpi_response_daily_volume_item import AnonymousChatKpiResponseDailyVolumeItem
     from ..models.anonymous_chat_kpi_response_llm_intent_distribution import (
         AnonymousChatKpiResponseLlmIntentDistribution,
     )
-    from ..models.anonymous_chat_kpi_response_severity_by_day import AnonymousChatKpiResponseSeverityByDay
+    from ..models.daily_volume import DailyVolume
+    from ..models.severity_by_day import SeverityByDay
 
 
 T = TypeVar("T", bound="AnonymousChatKpiResponse")
@@ -37,10 +37,8 @@ class AnonymousChatKpiResponse:
         hallucination_rate (Union[None, Unset, float]): Share of reviewed sessions flagged as hallucinating.
         review_coverage (Union[None, Unset, float]): Reviewed sessions / total reviewable sessions. Operations health
             signal — drops below ~90% if the review budget is too tight or the task is failing.
-        daily_volume (Union[Unset, list['AnonymousChatKpiResponseDailyVolumeItem']]): Per-day query counts across the
-            filter window.
-        severity_by_day (Union[Unset, AnonymousChatKpiResponseSeverityByDay]): Stacked-bar input. Shape: {labels: [iso-
-            date], series: {NONE: [...], LOW: [...], MEDIUM: [...], HIGH: [...], CRITICAL: [...]}}
+        daily_volume (Union[Unset, list['DailyVolume']]): Per-day query counts across the filter window.
+        severity_by_day (Union[Unset, SeverityByDay]):
     """
 
     interactions_total: int
@@ -56,8 +54,8 @@ class AnonymousChatKpiResponse:
     llm_intent_distribution: Union[Unset, "AnonymousChatKpiResponseLlmIntentDistribution"] = UNSET
     hallucination_rate: Union[None, Unset, float] = UNSET
     review_coverage: Union[None, Unset, float] = UNSET
-    daily_volume: Union[Unset, list["AnonymousChatKpiResponseDailyVolumeItem"]] = UNSET
-    severity_by_day: Union[Unset, "AnonymousChatKpiResponseSeverityByDay"] = UNSET
+    daily_volume: Union[Unset, list["DailyVolume"]] = UNSET
+    severity_by_day: Union[Unset, "SeverityByDay"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -144,11 +142,11 @@ class AnonymousChatKpiResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.anonymous_chat_kpi_response_daily_volume_item import AnonymousChatKpiResponseDailyVolumeItem
         from ..models.anonymous_chat_kpi_response_llm_intent_distribution import (
             AnonymousChatKpiResponseLlmIntentDistribution,
         )
-        from ..models.anonymous_chat_kpi_response_severity_by_day import AnonymousChatKpiResponseSeverityByDay
+        from ..models.daily_volume import DailyVolume
+        from ..models.severity_by_day import SeverityByDay
 
         d = dict(src_dict)
         interactions_total = d.pop("interactions_total")
@@ -206,16 +204,16 @@ class AnonymousChatKpiResponse:
         daily_volume = []
         _daily_volume = d.pop("daily_volume", UNSET)
         for daily_volume_item_data in _daily_volume or []:
-            daily_volume_item = AnonymousChatKpiResponseDailyVolumeItem.from_dict(daily_volume_item_data)
+            daily_volume_item = DailyVolume.from_dict(daily_volume_item_data)
 
             daily_volume.append(daily_volume_item)
 
         _severity_by_day = d.pop("severity_by_day", UNSET)
-        severity_by_day: Union[Unset, AnonymousChatKpiResponseSeverityByDay]
+        severity_by_day: Union[Unset, SeverityByDay]
         if isinstance(_severity_by_day, Unset):
             severity_by_day = UNSET
         else:
-            severity_by_day = AnonymousChatKpiResponseSeverityByDay.from_dict(_severity_by_day)
+            severity_by_day = SeverityByDay.from_dict(_severity_by_day)
 
         anonymous_chat_kpi_response = cls(
             interactions_total=interactions_total,

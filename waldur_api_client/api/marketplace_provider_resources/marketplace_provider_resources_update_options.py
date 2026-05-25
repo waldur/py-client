@@ -8,7 +8,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.order_uuid import OrderUUID
 from ...models.resource_options_request import ResourceOptionsRequest
-from ...models.resource_response_status import ResourceResponseStatus
+from ...models.status import Status
 from ...types import Response
 
 
@@ -34,11 +34,11 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[Any, OrderUUID, ResourceResponseStatus]:
+) -> Union[Any, OrderUUID, Status]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ResourceResponseStatus.from_dict(response.json())
+        response_200 = Status.from_dict(response.json())
 
         return response_200
     if response.status_code == 201:
@@ -53,7 +53,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, OrderUUID, ResourceResponseStatus]]:
+) -> Response[Union[Any, OrderUUID, Status]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,7 +67,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceOptionsRequest,
-) -> Response[Union[Any, OrderUUID, ResourceResponseStatus]]:
+) -> Response[Union[Any, OrderUUID, Status]]:
     """Update resource options
 
      Updates the options of a resource. If the offering is configured to create orders for option
@@ -82,7 +82,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, OrderUUID, ResourceResponseStatus]]
+        Response[Union[Any, OrderUUID, Status]]
     """
 
     kwargs = _get_kwargs(
@@ -102,7 +102,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ResourceOptionsRequest,
-) -> Union[Any, OrderUUID, ResourceResponseStatus]:
+) -> Union[Any, OrderUUID, Status]:
     """Update resource options
 
      Updates the options of a resource. If the offering is configured to create orders for option
@@ -117,7 +117,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, OrderUUID, ResourceResponseStatus]
+        Union[Any, OrderUUID, Status]
     """
 
     return sync_detailed(
@@ -132,7 +132,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceOptionsRequest,
-) -> Response[Union[Any, OrderUUID, ResourceResponseStatus]]:
+) -> Response[Union[Any, OrderUUID, Status]]:
     """Update resource options
 
      Updates the options of a resource. If the offering is configured to create orders for option
@@ -147,7 +147,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, OrderUUID, ResourceResponseStatus]]
+        Response[Union[Any, OrderUUID, Status]]
     """
 
     kwargs = _get_kwargs(
@@ -165,7 +165,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ResourceOptionsRequest,
-) -> Union[Any, OrderUUID, ResourceResponseStatus]:
+) -> Union[Any, OrderUUID, Status]:
     """Update resource options
 
      Updates the options of a resource. If the offering is configured to create orders for option
@@ -180,7 +180,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, OrderUUID, ResourceResponseStatus]
+        Union[Any, OrderUUID, Status]
     """
 
     return (

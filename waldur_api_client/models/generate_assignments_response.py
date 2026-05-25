@@ -5,9 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.generate_assignments_response_skipped_proposals_item import (
-        GenerateAssignmentsResponseSkippedProposalsItem,
-    )
+    from ..models.skipped_proposal import SkippedProposal
 
 
 T = TypeVar("T", bound="GenerateAssignmentsResponse")
@@ -20,14 +18,13 @@ class GenerateAssignmentsResponse:
         batches_created (int):
         items_created (int):
         proposals_processed (int):
-        skipped_proposals (list['GenerateAssignmentsResponseSkippedProposalsItem']): Proposals that were skipped with
-            reasons
+        skipped_proposals (list['SkippedProposal']): Proposals that were skipped with reasons
     """
 
     batches_created: int
     items_created: int
     proposals_processed: int
-    skipped_proposals: list["GenerateAssignmentsResponseSkippedProposalsItem"]
+    skipped_proposals: list["SkippedProposal"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,9 +54,7 @@ class GenerateAssignmentsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.generate_assignments_response_skipped_proposals_item import (
-            GenerateAssignmentsResponseSkippedProposalsItem,
-        )
+        from ..models.skipped_proposal import SkippedProposal
 
         d = dict(src_dict)
         batches_created = d.pop("batches_created")
@@ -71,9 +66,7 @@ class GenerateAssignmentsResponse:
         skipped_proposals = []
         _skipped_proposals = d.pop("skipped_proposals")
         for skipped_proposals_item_data in _skipped_proposals:
-            skipped_proposals_item = GenerateAssignmentsResponseSkippedProposalsItem.from_dict(
-                skipped_proposals_item_data
-            )
+            skipped_proposals_item = SkippedProposal.from_dict(skipped_proposals_item_data)
 
             skipped_proposals.append(skipped_proposals_item)
 

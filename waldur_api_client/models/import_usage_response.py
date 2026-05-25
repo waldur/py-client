@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.import_usage_response_errors_item import ImportUsageResponseErrorsItem
+    from ..models.import_usage_error import ImportUsageError
 
 
 T = TypeVar("T", bound="ImportUsageResponse")
@@ -17,12 +17,12 @@ class ImportUsageResponse:
     Attributes:
         created (int):
         skipped (int):
-        errors (list['ImportUsageResponseErrorsItem']):
+        errors (list['ImportUsageError']):
     """
 
     created: int
     skipped: int
-    errors: list["ImportUsageResponseErrorsItem"]
+    errors: list["ImportUsageError"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -49,7 +49,7 @@ class ImportUsageResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.import_usage_response_errors_item import ImportUsageResponseErrorsItem
+        from ..models.import_usage_error import ImportUsageError
 
         d = dict(src_dict)
         created = d.pop("created")
@@ -59,7 +59,7 @@ class ImportUsageResponse:
         errors = []
         _errors = d.pop("errors")
         for errors_item_data in _errors:
-            errors_item = ImportUsageResponseErrorsItem.from_dict(errors_item_data)
+            errors_item = ImportUsageError.from_dict(errors_item_data)
 
             errors.append(errors_item)
 

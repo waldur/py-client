@@ -5,9 +5,9 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.provider_customer_stats_monthly_item import ProviderCustomerStatsMonthlyItem
-    from ..models.provider_customer_stats_top_by_resources_item import ProviderCustomerStatsTopByResourcesItem
-    from ..models.provider_customer_stats_top_by_revenue_item import ProviderCustomerStatsTopByRevenueItem
+    from ..models.provider_customer_monthly import ProviderCustomerMonthly
+    from ..models.provider_customer_top_resource import ProviderCustomerTopResource
+    from ..models.provider_customer_top_revenue import ProviderCustomerTopRevenue
 
 
 T = TypeVar("T", bound="ProviderCustomerStats")
@@ -19,16 +19,16 @@ class ProviderCustomerStats:
     Attributes:
         total (int): Total number of customers
         new_this_month (int): New customers this month
-        top_by_revenue (list['ProviderCustomerStatsTopByRevenueItem']): Top customers by revenue
-        top_by_resources (list['ProviderCustomerStatsTopByResourcesItem']): Top customers by resource count
-        monthly (list['ProviderCustomerStatsMonthlyItem']): Monthly customer counts
+        top_by_revenue (list['ProviderCustomerTopRevenue']): Top customers by revenue
+        top_by_resources (list['ProviderCustomerTopResource']): Top customers by resource count
+        monthly (list['ProviderCustomerMonthly']): Monthly customer counts
     """
 
     total: int
     new_this_month: int
-    top_by_revenue: list["ProviderCustomerStatsTopByRevenueItem"]
-    top_by_resources: list["ProviderCustomerStatsTopByResourcesItem"]
-    monthly: list["ProviderCustomerStatsMonthlyItem"]
+    top_by_revenue: list["ProviderCustomerTopRevenue"]
+    top_by_resources: list["ProviderCustomerTopResource"]
+    monthly: list["ProviderCustomerMonthly"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -67,9 +67,9 @@ class ProviderCustomerStats:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.provider_customer_stats_monthly_item import ProviderCustomerStatsMonthlyItem
-        from ..models.provider_customer_stats_top_by_resources_item import ProviderCustomerStatsTopByResourcesItem
-        from ..models.provider_customer_stats_top_by_revenue_item import ProviderCustomerStatsTopByRevenueItem
+        from ..models.provider_customer_monthly import ProviderCustomerMonthly
+        from ..models.provider_customer_top_resource import ProviderCustomerTopResource
+        from ..models.provider_customer_top_revenue import ProviderCustomerTopRevenue
 
         d = dict(src_dict)
         total = d.pop("total")
@@ -79,21 +79,21 @@ class ProviderCustomerStats:
         top_by_revenue = []
         _top_by_revenue = d.pop("top_by_revenue")
         for top_by_revenue_item_data in _top_by_revenue:
-            top_by_revenue_item = ProviderCustomerStatsTopByRevenueItem.from_dict(top_by_revenue_item_data)
+            top_by_revenue_item = ProviderCustomerTopRevenue.from_dict(top_by_revenue_item_data)
 
             top_by_revenue.append(top_by_revenue_item)
 
         top_by_resources = []
         _top_by_resources = d.pop("top_by_resources")
         for top_by_resources_item_data in _top_by_resources:
-            top_by_resources_item = ProviderCustomerStatsTopByResourcesItem.from_dict(top_by_resources_item_data)
+            top_by_resources_item = ProviderCustomerTopResource.from_dict(top_by_resources_item_data)
 
             top_by_resources.append(top_by_resources_item)
 
         monthly = []
         _monthly = d.pop("monthly")
         for monthly_item_data in _monthly:
-            monthly_item = ProviderCustomerStatsMonthlyItem.from_dict(monthly_item_data)
+            monthly_item = ProviderCustomerMonthly.from_dict(monthly_item_data)
 
             monthly.append(monthly_item)
 

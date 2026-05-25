@@ -5,9 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.permission_metadata_response_permission_descriptions_item import (
-        PermissionMetadataResponsePermissionDescriptionsItem,
-    )
+    from ..models.permission_description import PermissionDescription
     from ..models.permission_metadata_response_permission_map import PermissionMetadataResponsePermissionMap
     from ..models.permission_metadata_response_permissions import PermissionMetadataResponsePermissions
     from ..models.permission_metadata_response_roles import PermissionMetadataResponseRoles
@@ -24,14 +22,13 @@ class PermissionMetadataResponse:
         permissions (PermissionMetadataResponsePermissions): Map of permission keys to permission enum values from
             PermissionEnum
         permission_map (PermissionMetadataResponsePermissionMap): Map of resource types to create permission enums
-        permission_descriptions (list['PermissionMetadataResponsePermissionDescriptionsItem']): Grouped permission
-            descriptions for UI
+        permission_descriptions (list['PermissionDescription']): Grouped permission descriptions for UI
     """
 
     roles: "PermissionMetadataResponseRoles"
     permissions: "PermissionMetadataResponsePermissions"
     permission_map: "PermissionMetadataResponsePermissionMap"
-    permission_descriptions: list["PermissionMetadataResponsePermissionDescriptionsItem"]
+    permission_descriptions: list["PermissionDescription"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -61,9 +58,7 @@ class PermissionMetadataResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.permission_metadata_response_permission_descriptions_item import (
-            PermissionMetadataResponsePermissionDescriptionsItem,
-        )
+        from ..models.permission_description import PermissionDescription
         from ..models.permission_metadata_response_permission_map import PermissionMetadataResponsePermissionMap
         from ..models.permission_metadata_response_permissions import PermissionMetadataResponsePermissions
         from ..models.permission_metadata_response_roles import PermissionMetadataResponseRoles
@@ -78,9 +73,7 @@ class PermissionMetadataResponse:
         permission_descriptions = []
         _permission_descriptions = d.pop("permission_descriptions")
         for permission_descriptions_item_data in _permission_descriptions:
-            permission_descriptions_item = PermissionMetadataResponsePermissionDescriptionsItem.from_dict(
-                permission_descriptions_item_data
-            )
+            permission_descriptions_item = PermissionDescription.from_dict(permission_descriptions_item_data)
 
             permission_descriptions.append(permission_descriptions_item)
 

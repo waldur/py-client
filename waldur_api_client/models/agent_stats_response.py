@@ -5,9 +5,9 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.agent_stats_response_identities import AgentStatsResponseIdentities
-    from ..models.agent_stats_response_processors import AgentStatsResponseProcessors
-    from ..models.agent_stats_response_services import AgentStatsResponseServices
+    from ..models.agent_stats_identities import AgentStatsIdentities
+    from ..models.agent_stats_processors import AgentStatsProcessors
+    from ..models.agent_stats_services import AgentStatsServices
 
 
 T = TypeVar("T", bound="AgentStatsResponse")
@@ -17,14 +17,14 @@ T = TypeVar("T", bound="AgentStatsResponse")
 class AgentStatsResponse:
     """
     Attributes:
-        identities (AgentStatsResponseIdentities): Statistics about agent identities
-        services (AgentStatsResponseServices): Statistics about agent services
-        processors (AgentStatsResponseProcessors): Statistics about agent processors
+        identities (AgentStatsIdentities):
+        services (AgentStatsServices):
+        processors (AgentStatsProcessors):
     """
 
-    identities: "AgentStatsResponseIdentities"
-    services: "AgentStatsResponseServices"
-    processors: "AgentStatsResponseProcessors"
+    identities: "AgentStatsIdentities"
+    services: "AgentStatsServices"
+    processors: "AgentStatsProcessors"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -48,16 +48,16 @@ class AgentStatsResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.agent_stats_response_identities import AgentStatsResponseIdentities
-        from ..models.agent_stats_response_processors import AgentStatsResponseProcessors
-        from ..models.agent_stats_response_services import AgentStatsResponseServices
+        from ..models.agent_stats_identities import AgentStatsIdentities
+        from ..models.agent_stats_processors import AgentStatsProcessors
+        from ..models.agent_stats_services import AgentStatsServices
 
         d = dict(src_dict)
-        identities = AgentStatsResponseIdentities.from_dict(d.pop("identities"))
+        identities = AgentStatsIdentities.from_dict(d.pop("identities"))
 
-        services = AgentStatsResponseServices.from_dict(d.pop("services"))
+        services = AgentStatsServices.from_dict(d.pop("services"))
 
-        processors = AgentStatsResponseProcessors.from_dict(d.pop("processors"))
+        processors = AgentStatsProcessors.from_dict(d.pop("processors"))
 
         agent_stats_response = cls(
             identities=identities,
