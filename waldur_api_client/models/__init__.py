@@ -176,12 +176,10 @@ from .aws_instance import AwsInstance
 from .aws_instance_field_enum import AwsInstanceFieldEnum
 from .aws_instance_marketplace_offering_plugin_options_type_0 import AwsInstanceMarketplaceOfferingPluginOptionsType0
 from .aws_instance_request import AwsInstanceRequest
-from .aws_instance_resize import AwsInstanceResize
 from .aws_instance_resize_request import AwsInstanceResizeRequest
 from .aws_region import AwsRegion
 from .aws_size import AwsSize
 from .aws_volume import AwsVolume
-from .aws_volume_attach import AwsVolumeAttach
 from .aws_volume_attach_request import AwsVolumeAttachRequest
 from .aws_volume_field_enum import AwsVolumeFieldEnum
 from .aws_volume_marketplace_offering_plugin_options_type_0 import AwsVolumeMarketplaceOfferingPluginOptionsType0
@@ -201,8 +199,8 @@ from .azure_resource_group_marketplace_offering_plugin_options_type_0 import (
 )
 from .azure_size import AzureSize
 from .azure_sql_database import AzureSqlDatabase
-from .azure_sql_database_create import AzureSqlDatabaseCreate
 from .azure_sql_database_create_request import AzureSqlDatabaseCreateRequest
+from .azure_sql_database_create_response import AzureSqlDatabaseCreateResponse
 from .azure_sql_database_field_enum import AzureSqlDatabaseFieldEnum
 from .azure_sql_database_marketplace_offering_plugin_options_type_0 import (
     AzureSqlDatabaseMarketplaceOfferingPluginOptionsType0,
@@ -253,6 +251,7 @@ from .billing_type_enum import BillingTypeEnum
 from .billing_unit import BillingUnit
 from .blank_enum import BlankEnum
 from .booking import Booking
+from .booking_order_uuid import BookingOrderUUID
 from .booking_resource import BookingResource
 from .booking_resource_attributes import BookingResourceAttributes
 from .booking_resource_current_usages import BookingResourceCurrentUsages
@@ -512,6 +511,7 @@ from .customer_contact_update import CustomerContactUpdate
 from .customer_contact_update_request import CustomerContactUpdateRequest
 from .customer_credit import CustomerCredit
 from .customer_credit_consumption import CustomerCreditConsumption
+from .customer_credit_consumption_by_month import CustomerCreditConsumptionByMonth
 from .customer_credit_o_enum import CustomerCreditOEnum
 from .customer_default_affiliations_update_request import CustomerDefaultAffiliationsUpdateRequest
 from .customer_details import CustomerDetails
@@ -587,7 +587,6 @@ from .digital_ocean_droplet_marketplace_offering_plugin_options_type_0 import (
     DigitalOceanDropletMarketplaceOfferingPluginOptionsType0,
 )
 from .digital_ocean_droplet_request import DigitalOceanDropletRequest
-from .digital_ocean_droplet_resize import DigitalOceanDropletResize
 from .digital_ocean_droplet_resize_request import DigitalOceanDropletResizeRequest
 from .digital_ocean_image import DigitalOceanImage
 from .digital_ocean_image_o_enum import DigitalOceanImageOEnum
@@ -631,6 +630,7 @@ from .endpoint_uuid_request import EndpointUUIDRequest
 from .entity_type_enum import EntityTypeEnum
 from .ethertype_enum import EthertypeEnum
 from .event import Event
+from .event_count import EventCount
 from .event_field_enum import EventFieldEnum
 from .event_groups_enum import EventGroupsEnum
 from .event_metadata_response import EventMetadataResponse
@@ -645,6 +645,7 @@ from .event_subscription_queue_create_request import EventSubscriptionQueueCreat
 from .event_subscription_queues_overview import EventSubscriptionQueuesOverview
 from .event_subscription_request import EventSubscriptionRequest
 from .event_types_enum import EventTypesEnum
+from .events_event_groups_retrieve_response_200 import EventsEventGroupsRetrieveResponse200
 from .execute_action_error_response import ExecuteActionErrorResponse
 from .execute_action_request import ExecuteActionRequest
 from .execute_action_response import ExecuteActionResponse
@@ -730,6 +731,7 @@ from .generic_order_attributes import GenericOrderAttributes
 from .global_user_data_access_log import GlobalUserDataAccessLog
 from .global_user_data_access_log_context import GlobalUserDataAccessLogContext
 from .global_user_data_access_log_o_enum import GlobalUserDataAccessLogOEnum
+from .google_auth_url import GoogleAuthUrl
 from .google_calendar import GoogleCalendar
 from .google_credentials import GoogleCredentials
 from .google_credentials_field_enum import GoogleCredentialsFieldEnum
@@ -812,17 +814,16 @@ from .invoice_field_enum import InvoiceFieldEnum
 from .invoice_growth import InvoiceGrowth
 from .invoice_growth_customer_period import InvoiceGrowthCustomerPeriod
 from .invoice_item import InvoiceItem
-from .invoice_item_compensation import InvoiceItemCompensation
 from .invoice_item_compensation_request import InvoiceItemCompensationRequest
 from .invoice_item_detail import InvoiceItemDetail
 from .invoice_item_details import InvoiceItemDetails
-from .invoice_item_migrate_to import InvoiceItemMigrateTo
 from .invoice_item_migrate_to_request import InvoiceItemMigrateToRequest
 from .invoice_item_o_enum import InvoiceItemOEnum
 from .invoice_item_o_enum_1 import InvoiceItemOEnum1
 from .invoice_item_total_price import InvoiceItemTotalPrice
 from .invoice_item_update import InvoiceItemUpdate
 from .invoice_item_update_request import InvoiceItemUpdateRequest
+from .invoice_item_uuid import InvoiceItemUUID
 from .invoice_o_enum import InvoiceOEnum
 from .invoice_price_source_enum import InvoicePriceSourceEnum
 from .invoice_state_enum import InvoiceStateEnum
@@ -875,9 +876,7 @@ from .limit_type_enum import LimitTypeEnum
 from .link_openstack_request import LinkOpenstackRequest
 from .link_resource_request_request import LinkResourceRequestRequest
 from .link_resource_response import LinkResourceResponse
-from .link_to_invoice import LinkToInvoice
 from .link_to_invoice_request import LinkToInvoiceRequest
-from .load_balancer_async_operation_response import LoadBalancerAsyncOperationResponse
 from .load_balancer_attach_floating_ip_request import LoadBalancerAttachFloatingIPRequest
 from .load_balancer_protocol_enum import LoadBalancerProtocolEnum
 from .load_balancer_set_security_groups_request import LoadBalancerSetSecurityGroupsRequest
@@ -940,9 +939,6 @@ from .marketplace_provider_offerings_stats_retrieve_response_200 import (
     MarketplaceProviderOfferingsStatsRetrieveResponse200,
 )
 from .marketplace_provider_offerings_update_attributes_body import MarketplaceProviderOfferingsUpdateAttributesBody
-from .marketplace_provider_resource_projects_set_state_ok_response_200 import (
-    MarketplaceProviderResourceProjectsSetStateOkResponse200,
-)
 from .marketplace_provider_resources_details_retrieve_response_200 import (
     MarketplaceProviderResourcesDetailsRetrieveResponse200,
 )
@@ -979,7 +975,6 @@ from .message_state_cache import MessageStateCache
 from .message_state_cache_filter import MessageStateCacheFilter
 from .message_template import MessageTemplate
 from .message_template_request import MessageTemplateRequest
-from .metrics_reset import MetricsReset
 from .migration_create import MigrationCreate
 from .migration_create_request import MigrationCreateRequest
 from .migration_details import MigrationDetails
@@ -1051,6 +1046,9 @@ from .network_rbac_policy_request import NetworkRBACPolicyRequest
 from .node_disk_driver_enum import NodeDiskDriverEnum
 from .notification import Notification
 from .notification_context_schema import NotificationContextSchema
+from .notification_recipient import NotificationRecipient
+from .notification_recipient_customer import NotificationRecipientCustomer
+from .notification_recipient_offering import NotificationRecipientOffering
 from .notification_request import NotificationRequest
 from .notification_template_detail_serializers import NotificationTemplateDetailSerializers
 from .notification_template_detail_serializers_request import NotificationTemplateDetailSerializersRequest
@@ -1104,6 +1102,8 @@ from .offering_import_parameters_request import OfferingImportParametersRequest
 from .offering_import_response import OfferingImportResponse
 from .offering_integration_update_request import OfferingIntegrationUpdateRequest
 from .offering_location_update_request import OfferingLocationUpdateRequest
+from .offering_mapping import OfferingMapping
+from .offering_mapping_map import OfferingMappingMap
 from .offering_options import OfferingOptions
 from .offering_options_options import OfferingOptionsOptions
 from .offering_options_request import OfferingOptionsRequest
@@ -1119,7 +1119,6 @@ from .offering_profile import OfferingProfile
 from .offering_profile_bind_request import OfferingProfileBindRequest
 from .offering_profile_request import OfferingProfileRequest
 from .offering_profile_role import OfferingProfileRole
-from .offering_profile_role_assign import OfferingProfileRoleAssign
 from .offering_profile_role_assign_request import OfferingProfileRoleAssignRequest
 from .offering_reference import OfferingReference
 from .offering_referral import OfferingReferral
@@ -1343,10 +1342,10 @@ from .open_stack_tenant_field_enum import OpenStackTenantFieldEnum
 from .open_stack_tenant_marketplace_offering_plugin_options_type_0 import (
     OpenStackTenantMarketplaceOfferingPluginOptionsType0,
 )
-from .open_stack_tenant_quota import OpenStackTenantQuota
 from .open_stack_tenant_request import OpenStackTenantRequest
 from .open_stack_tenant_security_group import OpenStackTenantSecurityGroup
 from .open_stack_tenant_security_group_request import OpenStackTenantSecurityGroupRequest
+from .open_stack_usage_stats_response import OpenStackUsageStatsResponse
 from .open_stack_volume import OpenStackVolume
 from .open_stack_volume_availability_zone import OpenStackVolumeAvailabilityZone
 from .open_stack_volume_create_order_attributes import OpenStackVolumeCreateOrderAttributes
@@ -1358,9 +1357,7 @@ from .open_stack_volume_marketplace_offering_plugin_options_type_0 import (
 from .open_stack_volume_request import OpenStackVolumeRequest
 from .open_stack_volume_retype_request import OpenStackVolumeRetypeRequest
 from .open_stack_volume_type import OpenStackVolumeType
-from .openportal_offering_mapping_retrieve_response_200 import OpenportalOfferingMappingRetrieveResponse200
-from .openportal_project_mapping_retrieve_response_200 import OpenportalProjectMappingRetrieveResponse200
-from .openportal_user_mapping_retrieve_response_200 import OpenportalUserMappingRetrieveResponse200
+from .openstack_flavors_usage_stats_retrieve_response_200 import OpenstackFlavorsUsageStatsRetrieveResponse200
 from .openstack_tenants_set_quotas_body import OpenstackTenantsSetQuotasBody
 from .option_field import OptionField
 from .option_field_request import OptionFieldRequest
@@ -1669,6 +1666,8 @@ from .project_field_enum import ProjectFieldEnum
 from .project_hyperlink_request import ProjectHyperlinkRequest
 from .project_info import ProjectInfo
 from .project_info_request import ProjectInfoRequest
+from .project_mapping import ProjectMapping
+from .project_mapping_map import ProjectMappingMap
 from .project_marketplace_resource_count import ProjectMarketplaceResourceCount
 from .project_order_auto_approval import ProjectOrderAutoApproval
 from .project_order_auto_approval_request import ProjectOrderAutoApprovalRequest
@@ -1848,11 +1847,11 @@ from .rancher_cluster_security_group_rule import RancherClusterSecurityGroupRule
 from .rancher_cluster_security_group_rule_request import RancherClusterSecurityGroupRuleRequest
 from .rancher_cluster_template import RancherClusterTemplate
 from .rancher_cluster_template_node import RancherClusterTemplateNode
+from .rancher_create_management_security_group_response import RancherCreateManagementSecurityGroupResponse
 from .rancher_create_node import RancherCreateNode
 from .rancher_create_node_request import RancherCreateNodeRequest
 from .rancher_hpa import RancherHPA
 from .rancher_hpa_request import RancherHPARequest
-from .rancher_import_yaml import RancherImportYaml
 from .rancher_import_yaml_request import RancherImportYamlRequest
 from .rancher_ingress import RancherIngress
 from .rancher_ingress_field_enum import RancherIngressFieldEnum
@@ -1981,9 +1980,7 @@ from .resource_options_request import ResourceOptionsRequest
 from .resource_paused_request import ResourcePausedRequest
 from .resource_plan_period import ResourcePlanPeriod
 from .resource_project import ResourceProject
-from .resource_project_backend_id import ResourceProjectBackendId
 from .resource_project_backend_id_request import ResourceProjectBackendIdRequest
-from .resource_project_error_message import ResourceProjectErrorMessage
 from .resource_project_error_message_request import ResourceProjectErrorMessageRequest
 from .resource_project_recovery_request import ResourceProjectRecoveryRequest
 from .resource_project_request import ResourceProjectRequest
@@ -2096,8 +2093,6 @@ from .role_template_o_enum import RoleTemplateOEnum
 from .role_type import RoleType
 from .round_reviewer import RoundReviewer
 from .round_status import RoundStatus
-from .router_set_erred_response import RouterSetErredResponse
-from .router_set_ok_response import RouterSetOkResponse
 from .rule import Rule
 from .rule_plan_attributes import RulePlanAttributes
 from .rule_plan_limits import RulePlanLimits
@@ -2130,6 +2125,8 @@ from .screenshot import Screenshot
 from .screenshot_request import ScreenshotRequest
 from .screenshot_request_form import ScreenshotRequestForm
 from .screenshot_request_multipart import ScreenshotRequestMultipart
+from .script_async_dry_run_response import ScriptAsyncDryRunResponse
+from .script_dry_run_response import ScriptDryRunResponse
 from .scriptrunmode_enum import SCRIPTRUNMODEEnum
 from .secret import Secret
 from .section import Section
@@ -2312,7 +2309,6 @@ from .trigger_coi_detection_job_type_enum import TriggerCOIDetectionJobTypeEnum
 from .trigger_coi_detection_request import TriggerCOIDetectionRequest
 from .trigger_consumption_sync_request_request import TriggerConsumptionSyncRequestRequest
 from .trigger_sync_request_request import TriggerSyncRequestRequest
-from .unsilence_action_response import UnsilenceActionResponse
 from .update_actions_request import UpdateActionsRequest
 from .update_actions_response import UpdateActionsResponse
 from .update_health_monitor import UpdateHealthMonitor
@@ -2354,11 +2350,15 @@ from .user_data_access_log import UserDataAccessLog
 from .user_data_access_log_context import UserDataAccessLogContext
 from .user_email_change_request import UserEmailChangeRequest
 from .user_field_enum import UserFieldEnum
+from .user_has_resource_access import UserHasResourceAccess
 from .user_identity_source_count import UserIdentitySourceCount
 from .user_info import UserInfo
 from .user_info_request import UserInfoRequest
 from .user_job_title_count import UserJobTitleCount
 from .user_language_count import UserLanguageCount
+from .user_mapping import UserMapping
+from .user_mapping_map import UserMappingMap
+from .user_me import UserMe
 from .user_nationality_stats import UserNationalityStats
 from .user_offering_consent import UserOfferingConsent
 from .user_offering_consent_create import UserOfferingConsentCreate
@@ -2407,7 +2407,6 @@ from .visible_invitation_details import VisibleInvitationDetails
 from .vmware_cluster import VmwareCluster
 from .vmware_datastore import VmwareDatastore
 from .vmware_disk import VmwareDisk
-from .vmware_disk_extend import VmwareDiskExtend
 from .vmware_disk_extend_request import VmwareDiskExtendRequest
 from .vmware_disk_field_enum import VmwareDiskFieldEnum
 from .vmware_disk_marketplace_offering_plugin_options_type_0 import VmwareDiskMarketplaceOfferingPluginOptionsType0
@@ -2629,12 +2628,10 @@ __all__ = (
     "AwsInstanceFieldEnum",
     "AwsInstanceMarketplaceOfferingPluginOptionsType0",
     "AwsInstanceRequest",
-    "AwsInstanceResize",
     "AwsInstanceResizeRequest",
     "AwsRegion",
     "AwsSize",
     "AwsVolume",
-    "AwsVolumeAttach",
     "AwsVolumeAttachRequest",
     "AwsVolumeFieldEnum",
     "AwsVolumeMarketplaceOfferingPluginOptionsType0",
@@ -2650,8 +2647,8 @@ __all__ = (
     "AzureResourceGroupMarketplaceOfferingPluginOptionsType0",
     "AzureSize",
     "AzureSqlDatabase",
-    "AzureSqlDatabaseCreate",
     "AzureSqlDatabaseCreateRequest",
+    "AzureSqlDatabaseCreateResponse",
     "AzureSqlDatabaseFieldEnum",
     "AzureSqlDatabaseMarketplaceOfferingPluginOptionsType0",
     "AzureSqlDatabaseRequest",
@@ -2696,6 +2693,7 @@ __all__ = (
     "BillingUnit",
     "BlankEnum",
     "Booking",
+    "BookingOrderUUID",
     "BookingResource",
     "BookingResourceAttributes",
     "BookingResourceCurrentUsages",
@@ -2951,6 +2949,7 @@ __all__ = (
     "CustomerContactUpdateRequest",
     "CustomerCredit",
     "CustomerCreditConsumption",
+    "CustomerCreditConsumptionByMonth",
     "CustomerCreditOEnum",
     "CustomerDefaultAffiliationsUpdateRequest",
     "CustomerDetails",
@@ -3022,7 +3021,6 @@ __all__ = (
     "DigitalOceanDropletFieldEnum",
     "DigitalOceanDropletMarketplaceOfferingPluginOptionsType0",
     "DigitalOceanDropletRequest",
-    "DigitalOceanDropletResize",
     "DigitalOceanDropletResizeRequest",
     "DigitalOceanImage",
     "DigitalOceanImageOEnum",
@@ -3066,11 +3064,13 @@ __all__ = (
     "EntityTypeEnum",
     "EthertypeEnum",
     "Event",
+    "EventCount",
     "EventFieldEnum",
     "EventGroupsEnum",
     "EventMetadataResponse",
     "EventMetadataResponseEventGroups",
     "EventMetadataResponseEventGroupsAdditionalPropertyItem",
+    "EventsEventGroupsRetrieveResponse200",
     "EventStats",
     "EventSubscription",
     "EventSubscriptionQueue",
@@ -3161,6 +3161,7 @@ __all__ = (
     "GlobalUserDataAccessLog",
     "GlobalUserDataAccessLogContext",
     "GlobalUserDataAccessLogOEnum",
+    "GoogleAuthUrl",
     "GoogleCalendar",
     "GoogleCredentials",
     "GoogleCredentialsFieldEnum",
@@ -3241,17 +3242,16 @@ __all__ = (
     "InvoiceGrowth",
     "InvoiceGrowthCustomerPeriod",
     "InvoiceItem",
-    "InvoiceItemCompensation",
     "InvoiceItemCompensationRequest",
     "InvoiceItemDetail",
     "InvoiceItemDetails",
-    "InvoiceItemMigrateTo",
     "InvoiceItemMigrateToRequest",
     "InvoiceItemOEnum",
     "InvoiceItemOEnum1",
     "InvoiceItemTotalPrice",
     "InvoiceItemUpdate",
     "InvoiceItemUpdateRequest",
+    "InvoiceItemUUID",
     "InvoiceOEnum",
     "InvoicePriceSourceEnum",
     "InvoicesHistoryAtRetrieveResponse400",
@@ -3304,9 +3304,7 @@ __all__ = (
     "LinkOpenstackRequest",
     "LinkResourceRequestRequest",
     "LinkResourceResponse",
-    "LinkToInvoice",
     "LinkToInvoiceRequest",
-    "LoadBalancerAsyncOperationResponse",
     "LoadBalancerAttachFloatingIPRequest",
     "LoadBalancerProtocolEnum",
     "LoadBalancerSetSecurityGroupsRequest",
@@ -3365,7 +3363,6 @@ __all__ = (
     "MarketplaceProviderOfferingsHistoryAtRetrieveResponse404",
     "MarketplaceProviderOfferingsStatsRetrieveResponse200",
     "MarketplaceProviderOfferingsUpdateAttributesBody",
-    "MarketplaceProviderResourceProjectsSetStateOkResponse200",
     "MarketplaceProviderResourcesDetailsRetrieveResponse200",
     "MarketplaceProviderResourcesHistoryAtRetrieveResponse400",
     "MarketplaceProviderResourcesHistoryAtRetrieveResponse404",
@@ -3394,7 +3391,6 @@ __all__ = (
     "MessageStateCacheFilter",
     "MessageTemplate",
     "MessageTemplateRequest",
-    "MetricsReset",
     "MigrationCreate",
     "MigrationCreateRequest",
     "MigrationDetails",
@@ -3466,6 +3462,9 @@ __all__ = (
     "NodeDiskDriverEnum",
     "Notification",
     "NotificationContextSchema",
+    "NotificationRecipient",
+    "NotificationRecipientCustomer",
+    "NotificationRecipientOffering",
     "NotificationRequest",
     "NotificationTemplateDetailSerializers",
     "NotificationTemplateDetailSerializersRequest",
@@ -3519,6 +3518,8 @@ __all__ = (
     "OfferingImportResponse",
     "OfferingIntegrationUpdateRequest",
     "OfferingLocationUpdateRequest",
+    "OfferingMapping",
+    "OfferingMappingMap",
     "OfferingOptions",
     "OfferingOptionsOptions",
     "OfferingOptionsRequest",
@@ -3534,7 +3535,6 @@ __all__ = (
     "OfferingProfileBindRequest",
     "OfferingProfileRequest",
     "OfferingProfileRole",
-    "OfferingProfileRoleAssign",
     "OfferingProfileRoleAssignRequest",
     "OfferingReference",
     "OfferingReferral",
@@ -3601,10 +3601,7 @@ __all__ = (
     "OnboardingVerificationStatusEnum1",
     "OnboardingVerificationUserSubmittedCustomerData",
     "OnboardingVerificationValidationMethodEnum",
-    "OpenportalOfferingMappingRetrieveResponse200",
-    "OpenportalProjectMappingRetrieveResponse200",
     "OpenPortalQuota",
-    "OpenportalUserMappingRetrieveResponse200",
     "OpenStackAllowedAddressPair",
     "OpenStackAllowedAddressPairRequest",
     "OpenStackBackendInstance",
@@ -3626,6 +3623,7 @@ __all__ = (
     "OpenStackFlavor",
     "OpenStackFlavorFieldEnum",
     "OpenStackFlavorOEnum",
+    "OpenstackFlavorsUsageStatsRetrieveResponse200",
     "OpenStackFloatingIP",
     "OpenStackFloatingIPAttachRequest",
     "OpenStackFloatingIPDescriptionUpdateRequest",
@@ -3727,11 +3725,11 @@ __all__ = (
     "OpenStackTenantCreateOrderAttributes",
     "OpenStackTenantFieldEnum",
     "OpenStackTenantMarketplaceOfferingPluginOptionsType0",
-    "OpenStackTenantQuota",
     "OpenStackTenantRequest",
     "OpenStackTenantSecurityGroup",
     "OpenStackTenantSecurityGroupRequest",
     "OpenstackTenantsSetQuotasBody",
+    "OpenStackUsageStatsResponse",
     "OpenStackVolume",
     "OpenStackVolumeAvailabilityZone",
     "OpenStackVolumeCreateOrderAttributes",
@@ -4038,6 +4036,8 @@ __all__ = (
     "ProjectHyperlinkRequest",
     "ProjectInfo",
     "ProjectInfoRequest",
+    "ProjectMapping",
+    "ProjectMappingMap",
     "ProjectMarketplaceResourceCount",
     "ProjectOrderAutoApproval",
     "ProjectOrderAutoApprovalRequest",
@@ -4203,11 +4203,11 @@ __all__ = (
     "RancherClusterSecurityGroupRuleRequest",
     "RancherClusterTemplate",
     "RancherClusterTemplateNode",
+    "RancherCreateManagementSecurityGroupResponse",
     "RancherCreateNode",
     "RancherCreateNodeRequest",
     "RancherHPA",
     "RancherHPARequest",
-    "RancherImportYaml",
     "RancherImportYamlRequest",
     "RancherIngress",
     "RancherIngressFieldEnum",
@@ -4328,9 +4328,7 @@ __all__ = (
     "ResourcePausedRequest",
     "ResourcePlanPeriod",
     "ResourceProject",
-    "ResourceProjectBackendId",
     "ResourceProjectBackendIdRequest",
-    "ResourceProjectErrorMessage",
     "ResourceProjectErrorMessageRequest",
     "ResourceProjectRecoveryRequest",
     "ResourceProjectRequest",
@@ -4443,8 +4441,6 @@ __all__ = (
     "RoleType",
     "RoundReviewer",
     "RoundStatus",
-    "RouterSetErredResponse",
-    "RouterSetOkResponse",
     "Rule",
     "RulePlanAttributes",
     "RulePlanLimits",
@@ -4477,6 +4473,8 @@ __all__ = (
     "ScreenshotRequest",
     "ScreenshotRequestForm",
     "ScreenshotRequestMultipart",
+    "ScriptAsyncDryRunResponse",
+    "ScriptDryRunResponse",
     "SCRIPTRUNMODEEnum",
     "Secret",
     "Section",
@@ -4657,7 +4655,6 @@ __all__ = (
     "TriggerCOIDetectionRequest",
     "TriggerConsumptionSyncRequestRequest",
     "TriggerSyncRequestRequest",
-    "UnsilenceActionResponse",
     "UpdateActionsRequest",
     "UpdateActionsResponse",
     "UpdateHealthMonitor",
@@ -4699,11 +4696,15 @@ __all__ = (
     "UserDataAccessLogContext",
     "UserEmailChangeRequest",
     "UserFieldEnum",
+    "UserHasResourceAccess",
     "UserIdentitySourceCount",
     "UserInfo",
     "UserInfoRequest",
     "UserJobTitleCount",
     "UserLanguageCount",
+    "UserMapping",
+    "UserMappingMap",
+    "UserMe",
     "UsernameGenerationPolicyEnum",
     "UserNationalityStats",
     "UserOfferingConsent",
@@ -4742,7 +4743,6 @@ __all__ = (
     "VmwareCluster",
     "VmwareDatastore",
     "VmwareDisk",
-    "VmwareDiskExtend",
     "VmwareDiskExtendRequest",
     "VmwareDiskFieldEnum",
     "VmwareDiskMarketplaceOfferingPluginOptionsType0",

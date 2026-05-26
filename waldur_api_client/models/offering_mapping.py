@@ -4,27 +4,42 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="MetricsReset")
+T = TypeVar("T", bound="OfferingMapping")
 
 
 @_attrs_define
-class MetricsReset:
+class OfferingMapping:
     """
     Attributes:
-        status (str): Operation status
+        uuid (str):
+        name (str):
+        description (str):
+        slug (str):
     """
 
-    status: str
+    uuid: str
+    name: str
+    description: str
+    slug: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        status = self.status
+        uuid = self.uuid
+
+        name = self.name
+
+        description = self.description
+
+        slug = self.slug
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "status": status,
+                "uuid": uuid,
+                "name": name,
+                "description": description,
+                "slug": slug,
             }
         )
 
@@ -33,14 +48,23 @@ class MetricsReset:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        status = d.pop("status")
+        uuid = d.pop("uuid")
 
-        metrics_reset = cls(
-            status=status,
+        name = d.pop("name")
+
+        description = d.pop("description")
+
+        slug = d.pop("slug")
+
+        offering_mapping = cls(
+            uuid=uuid,
+            name=name,
+            description=description,
+            slug=slug,
         )
 
-        metrics_reset.additional_properties = d
-        return metrics_reset
+        offering_mapping.additional_properties = d
+        return offering_mapping
 
     @property
     def additional_keys(self) -> list[str]:

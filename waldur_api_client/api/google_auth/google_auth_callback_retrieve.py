@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Union
+from typing import Any, Union, cast
 
 import httpx
 
@@ -30,15 +30,16 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> str:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        return None
+        response_200 = cast(str, response.json())
+        return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[str]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -52,7 +53,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     code: str,
     state: str,
-) -> Response[Any]:
+) -> Response[str]:
     """Callback endpoint for Google authorization.
 
     Args:
@@ -64,7 +65,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[str]
     """
 
     kwargs = _get_kwargs(
@@ -79,12 +80,12 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
     code: str,
     state: str,
-) -> Response[Any]:
+) -> str:
     """Callback endpoint for Google authorization.
 
     Args:
@@ -96,7 +97,34 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        str
+    """
+
+    return sync_detailed(
+        client=client,
+        code=code,
+        state=state,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    code: str,
+    state: str,
+) -> Response[str]:
+    """Callback endpoint for Google authorization.
+
+    Args:
+        code (str):
+        state (str):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[str]
     """
 
     kwargs = _get_kwargs(
@@ -107,3 +135,32 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    code: str,
+    state: str,
+) -> str:
+    """Callback endpoint for Google authorization.
+
+    Args:
+        code (str):
+        state (str):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        str
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            code=code,
+            state=state,
+        )
+    ).parsed

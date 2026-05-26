@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.open_stack_image import OpenStackImage
+from ...models.open_stack_usage_stats_response import OpenStackUsageStatsResponse
 from ...types import Response
 
 
@@ -18,11 +18,13 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OpenStackImage:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> OpenStackUsageStatsResponse:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = OpenStackImage.from_dict(response.json())
+        response_200 = OpenStackUsageStatsResponse.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -30,7 +32,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[OpenStackImage]:
+) -> Response[OpenStackUsageStatsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -42,7 +44,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[OpenStackImage]:
+) -> Response[OpenStackUsageStatsResponse]:
     """Get image usage statistics
 
      Retrieve usage statistics for VM instance images, showing running and created instance counts for
@@ -53,7 +55,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackImage]
+        Response[OpenStackUsageStatsResponse]
     """
 
     kwargs = _get_kwargs()
@@ -68,7 +70,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> OpenStackImage:
+) -> OpenStackUsageStatsResponse:
     """Get image usage statistics
 
      Retrieve usage statistics for VM instance images, showing running and created instance counts for
@@ -79,7 +81,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackImage
+        OpenStackUsageStatsResponse
     """
 
     return sync_detailed(
@@ -90,7 +92,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[OpenStackImage]:
+) -> Response[OpenStackUsageStatsResponse]:
     """Get image usage statistics
 
      Retrieve usage statistics for VM instance images, showing running and created instance counts for
@@ -101,7 +103,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackImage]
+        Response[OpenStackUsageStatsResponse]
     """
 
     kwargs = _get_kwargs()
@@ -114,7 +116,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> OpenStackImage:
+) -> OpenStackUsageStatsResponse:
     """Get image usage statistics
 
      Retrieve usage statistics for VM instance images, showing running and created instance counts for
@@ -125,7 +127,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackImage
+        OpenStackUsageStatsResponse
     """
 
     return (

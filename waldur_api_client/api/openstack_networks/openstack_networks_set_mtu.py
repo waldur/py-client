@@ -34,10 +34,10 @@ def _get_kwargs(
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> SetMtu:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        response_200 = SetMtu.from_dict(response.json())
+    if response.status_code == 202:
+        response_202 = SetMtu.from_dict(response.json())
 
-        return response_200
+        return response_202
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 

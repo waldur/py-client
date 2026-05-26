@@ -4,11 +4,11 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="OpenportalUserMappingRetrieveResponse200")
+T = TypeVar("T", bound="OpenstackFlavorsUsageStatsRetrieveResponse200")
 
 
 @_attrs_define
-class OpenportalUserMappingRetrieveResponse200:
+class OpenstackFlavorsUsageStatsRetrieveResponse200:
     """ """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -22,10 +22,10 @@ class OpenportalUserMappingRetrieveResponse200:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        openportal_user_mapping_retrieve_response_200 = cls()
+        openstack_flavors_usage_stats_retrieve_response_200 = cls()
 
-        openportal_user_mapping_retrieve_response_200.additional_properties = d
-        return openportal_user_mapping_retrieve_response_200
+        openstack_flavors_usage_stats_retrieve_response_200.additional_properties = d
+        return openstack_flavors_usage_stats_retrieve_response_200
 
     @property
     def additional_keys(self) -> list[str]:

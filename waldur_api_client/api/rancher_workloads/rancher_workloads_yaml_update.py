@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.rancher_workload import RancherWorkload
+from ...models.detail import Detail
 from ...models.rancher_workload_request import RancherWorkloadRequest
 from ...types import Response
 
@@ -31,19 +31,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> RancherWorkload:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Detail:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = RancherWorkload.from_dict(response.json())
+        response_200 = Detail.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[RancherWorkload]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Detail]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +55,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: RancherWorkloadRequest,
-) -> Response[RancherWorkload]:
+) -> Response[Detail]:
     """
     Args:
         uuid (UUID):
@@ -68,7 +66,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RancherWorkload]
+        Response[Detail]
     """
 
     kwargs = _get_kwargs(
@@ -88,7 +86,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: RancherWorkloadRequest,
-) -> RancherWorkload:
+) -> Detail:
     """
     Args:
         uuid (UUID):
@@ -99,7 +97,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RancherWorkload
+        Detail
     """
 
     return sync_detailed(
@@ -114,7 +112,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: RancherWorkloadRequest,
-) -> Response[RancherWorkload]:
+) -> Response[Detail]:
     """
     Args:
         uuid (UUID):
@@ -125,7 +123,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RancherWorkload]
+        Response[Detail]
     """
 
     kwargs = _get_kwargs(
@@ -143,7 +141,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: RancherWorkloadRequest,
-) -> RancherWorkload:
+) -> Detail:
     """
     Args:
         uuid (UUID):
@@ -154,7 +152,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RancherWorkload
+        Detail
     """
 
     return (

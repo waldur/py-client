@@ -4,27 +4,42 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="UnsilenceActionResponse")
+T = TypeVar("T", bound="UserMapping")
 
 
 @_attrs_define
-class UnsilenceActionResponse:
+class UserMapping:
     """
     Attributes:
-        status (str):
+        uuid (str):
+        full_name (str):
+        email (str):
+        username (str):
     """
 
-    status: str
+    uuid: str
+    full_name: str
+    email: str
+    username: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        status = self.status
+        uuid = self.uuid
+
+        full_name = self.full_name
+
+        email = self.email
+
+        username = self.username
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "status": status,
+                "uuid": uuid,
+                "full_name": full_name,
+                "email": email,
+                "username": username,
             }
         )
 
@@ -33,14 +48,23 @@ class UnsilenceActionResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        status = d.pop("status")
+        uuid = d.pop("uuid")
 
-        unsilence_action_response = cls(
-            status=status,
+        full_name = d.pop("full_name")
+
+        email = d.pop("email")
+
+        username = d.pop("username")
+
+        user_mapping = cls(
+            uuid=uuid,
+            full_name=full_name,
+            email=email,
+            username=username,
         )
 
-        unsilence_action_response.additional_properties = d
-        return unsilence_action_response
+        user_mapping.additional_properties = d
+        return user_mapping
 
     @property
     def additional_keys(self) -> list[str]:

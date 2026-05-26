@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.open_stack_tenant import OpenStackTenant
+from ...models.status import Status
 from ...types import Response
 
 
@@ -21,19 +21,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OpenStackTenant:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Status:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        response_200 = OpenStackTenant.from_dict(response.json())
+    if response.status_code == 202:
+        response_202 = Status.from_dict(response.json())
 
-        return response_200
+        return response_202
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[OpenStackTenant]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Status]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -46,7 +44,7 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[OpenStackTenant]:
+) -> Response[Status]:
     """Pull security groups
 
      Trigger job to pull security groups from remote VPC
@@ -59,7 +57,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackTenant]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -77,7 +75,7 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> OpenStackTenant:
+) -> Status:
     """Pull security groups
 
      Trigger job to pull security groups from remote VPC
@@ -90,7 +88,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackTenant
+        Status
     """
 
     return sync_detailed(
@@ -103,7 +101,7 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[OpenStackTenant]:
+) -> Response[Status]:
     """Pull security groups
 
      Trigger job to pull security groups from remote VPC
@@ -116,7 +114,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackTenant]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -132,7 +130,7 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> OpenStackTenant:
+) -> Status:
     """Pull security groups
 
      Trigger job to pull security groups from remote VPC
@@ -145,7 +143,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackTenant
+        Status
     """
 
     return (

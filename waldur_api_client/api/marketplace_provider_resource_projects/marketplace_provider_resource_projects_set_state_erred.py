@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_project_error_message import ResourceProjectErrorMessage
 from ...models.resource_project_error_message_request import ResourceProjectErrorMessageRequest
+from ...models.status import Status
 from ...types import Response
 
 
@@ -31,21 +31,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> ResourceProjectErrorMessage:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Status:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ResourceProjectErrorMessage.from_dict(response.json())
+        response_200 = Status.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ResourceProjectErrorMessage]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Status]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,7 +55,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceProjectErrorMessageRequest,
-) -> Response[ResourceProjectErrorMessage]:
+) -> Response[Status]:
     """
     Args:
         uuid (UUID):
@@ -70,7 +66,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceProjectErrorMessage]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -90,7 +86,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ResourceProjectErrorMessageRequest,
-) -> ResourceProjectErrorMessage:
+) -> Status:
     """
     Args:
         uuid (UUID):
@@ -101,7 +97,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceProjectErrorMessage
+        Status
     """
 
     return sync_detailed(
@@ -116,7 +112,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceProjectErrorMessageRequest,
-) -> Response[ResourceProjectErrorMessage]:
+) -> Response[Status]:
     """
     Args:
         uuid (UUID):
@@ -127,7 +123,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceProjectErrorMessage]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -145,7 +141,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ResourceProjectErrorMessageRequest,
-) -> ResourceProjectErrorMessage:
+) -> Status:
     """
     Args:
         uuid (UUID):
@@ -156,7 +152,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceProjectErrorMessage
+        Status
     """
 
     return (

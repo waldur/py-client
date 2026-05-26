@@ -4,32 +4,27 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="AwsVolumeAttach")
+T = TypeVar("T", bound="GoogleAuthUrl")
 
 
 @_attrs_define
-class AwsVolumeAttach:
+class GoogleAuthUrl:
     """
     Attributes:
-        instance (str):
-        device (str): The device name for attachment. For example, use /dev/sd[f-p] for Linux instances.
+        request_url (str):
     """
 
-    instance: str
-    device: str
+    request_url: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        instance = self.instance
-
-        device = self.device
+        request_url = self.request_url
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "instance": instance,
-                "device": device,
+                "request_url": request_url,
             }
         )
 
@@ -38,17 +33,14 @@ class AwsVolumeAttach:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        instance = d.pop("instance")
+        request_url = d.pop("request_url")
 
-        device = d.pop("device")
-
-        aws_volume_attach = cls(
-            instance=instance,
-            device=device,
+        google_auth_url = cls(
+            request_url=request_url,
         )
 
-        aws_volume_attach.additional_properties = d
-        return aws_volume_attach
+        google_auth_url.additional_properties = d
+        return google_auth_url
 
     @property
     def additional_keys(self) -> list[str]:

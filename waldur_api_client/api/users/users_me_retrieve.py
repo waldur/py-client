@@ -5,48 +5,30 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.user import User
-from ...models.user_field_enum import UserFieldEnum
-from ...types import UNSET, Response, Unset
+from ...models.user_me import UserMe
+from ...types import Response
 
 
-def _get_kwargs(
-    *,
-    field: Union[Unset, list[UserFieldEnum]] = UNSET,
-) -> dict[str, Any]:
-    params: dict[str, Any] = {}
-
-    json_field: Union[Unset, list[str]] = UNSET
-    if not isinstance(field, Unset):
-        json_field = []
-        for field_item_data in field:
-            field_item = field_item_data.value
-            json_field.append(field_item)
-
-    params["field"] = json_field
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
+def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/users/me/",
-        "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> User:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> UserMe:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = User.from_dict(response.json())
+        response_200 = UserMe.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[User]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[UserMe]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -58,26 +40,20 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[UserFieldEnum]] = UNSET,
-) -> Response[User]:
+) -> Response[UserMe]:
     """Get current user details
 
      Get current user details, including authentication token and profile completeness status.
-
-    Args:
-        field (Union[Unset, list[UserFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[User]
+        Response[UserMe]
     """
 
-    kwargs = _get_kwargs(
-        field=field,
-    )
+    kwargs = _get_kwargs()
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -89,52 +65,41 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[UserFieldEnum]] = UNSET,
-) -> User:
+) -> UserMe:
     """Get current user details
 
      Get current user details, including authentication token and profile completeness status.
-
-    Args:
-        field (Union[Unset, list[UserFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        User
+        UserMe
     """
 
     return sync_detailed(
         client=client,
-        field=field,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[UserFieldEnum]] = UNSET,
-) -> Response[User]:
+) -> Response[UserMe]:
     """Get current user details
 
      Get current user details, including authentication token and profile completeness status.
-
-    Args:
-        field (Union[Unset, list[UserFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[User]
+        Response[UserMe]
     """
 
-    kwargs = _get_kwargs(
-        field=field,
-    )
+    kwargs = _get_kwargs()
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -144,26 +109,21 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[UserFieldEnum]] = UNSET,
-) -> User:
+) -> UserMe:
     """Get current user details
 
      Get current user details, including authentication token and profile completeness status.
-
-    Args:
-        field (Union[Unset, list[UserFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        User
+        UserMe
     """
 
     return (
         await asyncio_detailed(
             client=client,
-            field=field,
         )
     ).parsed

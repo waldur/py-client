@@ -4,27 +4,27 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="InvoiceItemCompensation")
+T = TypeVar("T", bound="RancherCreateManagementSecurityGroupResponse")
 
 
 @_attrs_define
-class InvoiceItemCompensation:
+class RancherCreateManagementSecurityGroupResponse:
     """
     Attributes:
-        offering_component_name (str): Name of the offering component for compensation
+        security_group_uuid (str):
     """
 
-    offering_component_name: str
+    security_group_uuid: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        offering_component_name = self.offering_component_name
+        security_group_uuid = self.security_group_uuid
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "offering_component_name": offering_component_name,
+                "security_group_uuid": security_group_uuid,
             }
         )
 
@@ -33,14 +33,14 @@ class InvoiceItemCompensation:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        offering_component_name = d.pop("offering_component_name")
+        security_group_uuid = d.pop("security_group_uuid")
 
-        invoice_item_compensation = cls(
-            offering_component_name=offering_component_name,
+        rancher_create_management_security_group_response = cls(
+            security_group_uuid=security_group_uuid,
         )
 
-        invoice_item_compensation.additional_properties = d
-        return invoice_item_compensation
+        rancher_create_management_security_group_response.additional_properties = d
+        return rancher_create_management_security_group_response
 
     @property
     def additional_keys(self) -> list[str]:

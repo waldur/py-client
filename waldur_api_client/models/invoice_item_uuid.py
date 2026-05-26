@@ -1,31 +1,47 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="MarketplaceProviderResourceProjectsSetStateOkResponse200")
+T = TypeVar("T", bound="InvoiceItemUUID")
 
 
 @_attrs_define
-class MarketplaceProviderResourceProjectsSetStateOkResponse200:
-    """ """
+class InvoiceItemUUID:
+    """
+    Attributes:
+        invoice_item_uuid (UUID):
+    """
 
+    invoice_item_uuid: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        invoice_item_uuid = str(self.invoice_item_uuid)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "invoice_item_uuid": invoice_item_uuid,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        marketplace_provider_resource_projects_set_state_ok_response_200 = cls()
+        invoice_item_uuid = UUID(d.pop("invoice_item_uuid"))
 
-        marketplace_provider_resource_projects_set_state_ok_response_200.additional_properties = d
-        return marketplace_provider_resource_projects_set_state_ok_response_200
+        invoice_item_uuid = cls(
+            invoice_item_uuid=invoice_item_uuid,
+        )
+
+        invoice_item_uuid.additional_properties = d
+        return invoice_item_uuid
 
     @property
     def additional_keys(self) -> list[str]:

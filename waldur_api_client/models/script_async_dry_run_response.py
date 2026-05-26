@@ -1,30 +1,31 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="RouterSetErredResponse")
+T = TypeVar("T", bound="ScriptAsyncDryRunResponse")
 
 
 @_attrs_define
-class RouterSetErredResponse:
+class ScriptAsyncDryRunResponse:
     """
     Attributes:
-        detail (str):
+        uuid (UUID):
     """
 
-    detail: str
+    uuid: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        detail = self.detail
+        uuid = str(self.uuid)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "detail": detail,
+                "uuid": uuid,
             }
         )
 
@@ -33,14 +34,14 @@ class RouterSetErredResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        detail = d.pop("detail")
+        uuid = UUID(d.pop("uuid"))
 
-        router_set_erred_response = cls(
-            detail=detail,
+        script_async_dry_run_response = cls(
+            uuid=uuid,
         )
 
-        router_set_erred_response.additional_properties = d
-        return router_set_erred_response
+        script_async_dry_run_response.additional_properties = d
+        return script_async_dry_run_response
 
     @property
     def additional_keys(self) -> list[str]:

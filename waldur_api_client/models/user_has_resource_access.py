@@ -1,31 +1,30 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="OfferingProfileRoleAssign")
+T = TypeVar("T", bound="UserHasResourceAccess")
 
 
 @_attrs_define
-class OfferingProfileRoleAssign:
+class UserHasResourceAccess:
     """
     Attributes:
-        role (UUID): Role UUID to add or remove.
+        has_access (bool):
     """
 
-    role: UUID
+    has_access: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        role = str(self.role)
+        has_access = self.has_access
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "role": role,
+                "has_access": has_access,
             }
         )
 
@@ -34,14 +33,14 @@ class OfferingProfileRoleAssign:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        role = UUID(d.pop("role"))
+        has_access = d.pop("has_access")
 
-        offering_profile_role_assign = cls(
-            role=role,
+        user_has_resource_access = cls(
+            has_access=has_access,
         )
 
-        offering_profile_role_assign.additional_properties = d
-        return offering_profile_role_assign
+        user_has_resource_access.additional_properties = d
+        return user_has_resource_access
 
     @property
     def additional_keys(self) -> list[str]:

@@ -1,40 +1,42 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="AzureSqlDatabaseCreate")
+T = TypeVar("T", bound="OpenStackUsageStatsResponse")
 
 
 @_attrs_define
-class AzureSqlDatabaseCreate:
+class OpenStackUsageStatsResponse:
     """
     Attributes:
         name (str):
-        description (Union[Unset, str]):
+        running_instances_count (int):
+        created_instances_count (int):
     """
 
     name: str
-    description: Union[Unset, str] = UNSET
+    running_instances_count: int
+    created_instances_count: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        description = self.description
+        running_instances_count = self.running_instances_count
+
+        created_instances_count = self.created_instances_count
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "name": name,
+                "running_instances_count": running_instances_count,
+                "created_instances_count": created_instances_count,
             }
         )
-        if description is not UNSET:
-            field_dict["description"] = description
 
         return field_dict
 
@@ -43,15 +45,18 @@ class AzureSqlDatabaseCreate:
         d = dict(src_dict)
         name = d.pop("name")
 
-        description = d.pop("description", UNSET)
+        running_instances_count = d.pop("running_instances_count")
 
-        azure_sql_database_create = cls(
+        created_instances_count = d.pop("created_instances_count")
+
+        open_stack_usage_stats_response = cls(
             name=name,
-            description=description,
+            running_instances_count=running_instances_count,
+            created_instances_count=created_instances_count,
         )
 
-        azure_sql_database_create.additional_properties = d
-        return azure_sql_database_create
+        open_stack_usage_stats_response.additional_properties = d
+        return open_stack_usage_stats_response
 
     @property
     def additional_keys(self) -> list[str]:

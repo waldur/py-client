@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.invoice_item_compensation import InvoiceItemCompensation
 from ...models.invoice_item_compensation_request import InvoiceItemCompensationRequest
+from ...models.invoice_item_uuid import InvoiceItemUUID
 from ...types import Response
 
 
@@ -31,19 +31,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> InvoiceItemCompensation:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> InvoiceItemUUID:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        response_200 = InvoiceItemCompensation.from_dict(response.json())
+    if response.status_code == 201:
+        response_201 = InvoiceItemUUID.from_dict(response.json())
 
-        return response_200
+        return response_201
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[InvoiceItemCompensation]:
+) -> Response[InvoiceItemUUID]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +57,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: InvoiceItemCompensationRequest,
-) -> Response[InvoiceItemCompensation]:
+) -> Response[InvoiceItemUUID]:
     """Create compensation invoice item for selected invoice item.
 
     Args:
@@ -69,7 +69,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[InvoiceItemCompensation]
+        Response[InvoiceItemUUID]
     """
 
     kwargs = _get_kwargs(
@@ -89,7 +89,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: InvoiceItemCompensationRequest,
-) -> InvoiceItemCompensation:
+) -> InvoiceItemUUID:
     """Create compensation invoice item for selected invoice item.
 
     Args:
@@ -101,7 +101,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        InvoiceItemCompensation
+        InvoiceItemUUID
     """
 
     return sync_detailed(
@@ -116,7 +116,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: InvoiceItemCompensationRequest,
-) -> Response[InvoiceItemCompensation]:
+) -> Response[InvoiceItemUUID]:
     """Create compensation invoice item for selected invoice item.
 
     Args:
@@ -128,7 +128,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[InvoiceItemCompensation]
+        Response[InvoiceItemUUID]
     """
 
     kwargs = _get_kwargs(
@@ -146,7 +146,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: InvoiceItemCompensationRequest,
-) -> InvoiceItemCompensation:
+) -> InvoiceItemUUID:
     """Create compensation invoice item for selected invoice item.
 
     Args:
@@ -158,7 +158,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        InvoiceItemCompensation
+        InvoiceItemUUID
     """
 
     return (

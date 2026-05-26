@@ -1,11 +1,10 @@
 from http import HTTPStatus
-from typing import Any, Union
+from typing import Any, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_estimated_cost_policy import ProjectEstimatedCostPolicy
 from ...types import Response
 
 
@@ -18,21 +17,17 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> ProjectEstimatedCostPolicy:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> list[str]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ProjectEstimatedCostPolicy.from_dict(response.json())
+        response_200 = cast(list[str], response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ProjectEstimatedCostPolicy]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[list[str]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,14 +39,14 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[ProjectEstimatedCostPolicy]:
+) -> Response[list[str]]:
     """
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectEstimatedCostPolicy]
+        Response[list[str]]
     """
 
     kwargs = _get_kwargs()
@@ -66,14 +61,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> ProjectEstimatedCostPolicy:
+) -> list[str]:
     """
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectEstimatedCostPolicy
+        list[str]
     """
 
     return sync_detailed(
@@ -84,14 +79,14 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[ProjectEstimatedCostPolicy]:
+) -> Response[list[str]]:
     """
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectEstimatedCostPolicy]
+        Response[list[str]]
     """
 
     kwargs = _get_kwargs()
@@ -104,14 +99,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> ProjectEstimatedCostPolicy:
+) -> list[str]:
     """
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectEstimatedCostPolicy
+        list[str]
     """
 
     return (

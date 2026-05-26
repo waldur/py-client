@@ -1,30 +1,31 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="VmwareDiskExtend")
+T = TypeVar("T", bound="BookingOrderUUID")
 
 
 @_attrs_define
-class VmwareDiskExtend:
+class BookingOrderUUID:
     """
     Attributes:
-        size (int): Size in MiB
+        order_uuid (UUID):
     """
 
-    size: int
+    order_uuid: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        size = self.size
+        order_uuid = str(self.order_uuid)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "size": size,
+                "order_uuid": order_uuid,
             }
         )
 
@@ -33,14 +34,14 @@ class VmwareDiskExtend:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        size = d.pop("size")
+        order_uuid = UUID(d.pop("order_uuid"))
 
-        vmware_disk_extend = cls(
-            size=size,
+        booking_order_uuid = cls(
+            order_uuid=order_uuid,
         )
 
-        vmware_disk_extend.additional_properties = d
-        return vmware_disk_extend
+        booking_order_uuid.additional_properties = d
+        return booking_order_uuid
 
     @property
     def additional_keys(self) -> list[str]:

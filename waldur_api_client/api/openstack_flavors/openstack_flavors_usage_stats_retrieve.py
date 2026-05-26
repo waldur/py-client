@@ -5,42 +5,26 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.open_stack_flavor import OpenStackFlavor
-from ...models.open_stack_flavor_field_enum import OpenStackFlavorFieldEnum
-from ...types import UNSET, Response, Unset
+from ...models.openstack_flavors_usage_stats_retrieve_response_200 import OpenstackFlavorsUsageStatsRetrieveResponse200
+from ...types import Response
 
 
-def _get_kwargs(
-    *,
-    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
-) -> dict[str, Any]:
-    params: dict[str, Any] = {}
-
-    json_field: Union[Unset, list[str]] = UNSET
-    if not isinstance(field, Unset):
-        json_field = []
-        for field_item_data in field:
-            field_item = field_item_data.value
-            json_field.append(field_item)
-
-    params["field"] = json_field
-
-    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
-
+def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/openstack-flavors/usage_stats/",
-        "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OpenStackFlavor:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> OpenstackFlavorsUsageStatsRetrieveResponse200:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = OpenStackFlavor.from_dict(response.json())
+        response_200 = OpenstackFlavorsUsageStatsRetrieveResponse200.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -48,7 +32,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[OpenStackFlavor]:
+) -> Response[OpenstackFlavorsUsageStatsRetrieveResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,27 +44,21 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
-) -> Response[OpenStackFlavor]:
+) -> Response[OpenstackFlavorsUsageStatsRetrieveResponse200]:
     """Get flavor usage statistics
 
      Retrieve usage statistics for VM instance flavors, showing running and created instance counts for
     each flavor.
-
-    Args:
-        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackFlavor]
+        Response[OpenstackFlavorsUsageStatsRetrieveResponse200]
     """
 
-    kwargs = _get_kwargs(
-        field=field,
-    )
+    kwargs = _get_kwargs()
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -92,54 +70,43 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
-) -> OpenStackFlavor:
+) -> OpenstackFlavorsUsageStatsRetrieveResponse200:
     """Get flavor usage statistics
 
      Retrieve usage statistics for VM instance flavors, showing running and created instance counts for
     each flavor.
-
-    Args:
-        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackFlavor
+        OpenstackFlavorsUsageStatsRetrieveResponse200
     """
 
     return sync_detailed(
         client=client,
-        field=field,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
-) -> Response[OpenStackFlavor]:
+) -> Response[OpenstackFlavorsUsageStatsRetrieveResponse200]:
     """Get flavor usage statistics
 
      Retrieve usage statistics for VM instance flavors, showing running and created instance counts for
     each flavor.
-
-    Args:
-        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[OpenStackFlavor]
+        Response[OpenstackFlavorsUsageStatsRetrieveResponse200]
     """
 
-    kwargs = _get_kwargs(
-        field=field,
-    )
+    kwargs = _get_kwargs()
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -149,27 +116,22 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    field: Union[Unset, list[OpenStackFlavorFieldEnum]] = UNSET,
-) -> OpenStackFlavor:
+) -> OpenstackFlavorsUsageStatsRetrieveResponse200:
     """Get flavor usage statistics
 
      Retrieve usage statistics for VM instance flavors, showing running and created instance counts for
     each flavor.
-
-    Args:
-        field (Union[Unset, list[OpenStackFlavorFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        OpenStackFlavor
+        OpenstackFlavorsUsageStatsRetrieveResponse200
     """
 
     return (
         await asyncio_detailed(
             client=client,
-            field=field,
         )
     ).parsed

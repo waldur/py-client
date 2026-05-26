@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.link_to_invoice import LinkToInvoice
+from ...models.detail import Detail
 from ...models.link_to_invoice_request import LinkToInvoiceRequest
 from ...types import Response
 
@@ -31,17 +31,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> LinkToInvoice:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Detail:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = LinkToInvoice.from_dict(response.json())
+        response_200 = Detail.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[LinkToInvoice]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Detail]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,7 +55,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: LinkToInvoiceRequest,
-) -> Response[LinkToInvoice]:
+) -> Response[Detail]:
     """Link a payment to an invoice. Payment can be linked to an invoice only if they belong to the same
     customer.
 
@@ -68,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LinkToInvoice]
+        Response[Detail]
     """
 
     kwargs = _get_kwargs(
@@ -88,7 +88,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: LinkToInvoiceRequest,
-) -> LinkToInvoice:
+) -> Detail:
     """Link a payment to an invoice. Payment can be linked to an invoice only if they belong to the same
     customer.
 
@@ -101,7 +101,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LinkToInvoice
+        Detail
     """
 
     return sync_detailed(
@@ -116,7 +116,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: LinkToInvoiceRequest,
-) -> Response[LinkToInvoice]:
+) -> Response[Detail]:
     """Link a payment to an invoice. Payment can be linked to an invoice only if they belong to the same
     customer.
 
@@ -129,7 +129,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[LinkToInvoice]
+        Response[Detail]
     """
 
     kwargs = _get_kwargs(
@@ -147,7 +147,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: LinkToInvoiceRequest,
-) -> LinkToInvoice:
+) -> Detail:
     """Link a payment to an invoice. Payment can be linked to an invoice only if they belong to the same
     customer.
 
@@ -160,7 +160,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        LinkToInvoice
+        Detail
     """
 
     return (

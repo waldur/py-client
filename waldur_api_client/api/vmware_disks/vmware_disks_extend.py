@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.vmware_disk_extend import VmwareDiskExtend
+from ...models.status import Status
 from ...models.vmware_disk_extend_request import VmwareDiskExtendRequest
 from ...types import Response
 
@@ -31,19 +31,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> VmwareDiskExtend:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Status:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        response_200 = VmwareDiskExtend.from_dict(response.json())
+    if response.status_code == 202:
+        response_202 = Status.from_dict(response.json())
 
-        return response_200
+        return response_202
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[VmwareDiskExtend]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Status]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +55,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: VmwareDiskExtendRequest,
-) -> Response[VmwareDiskExtend]:
+) -> Response[Status]:
     """Increase disk capacity
 
     Args:
@@ -69,7 +67,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[VmwareDiskExtend]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -89,7 +87,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: VmwareDiskExtendRequest,
-) -> VmwareDiskExtend:
+) -> Status:
     """Increase disk capacity
 
     Args:
@@ -101,7 +99,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        VmwareDiskExtend
+        Status
     """
 
     return sync_detailed(
@@ -116,7 +114,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: VmwareDiskExtendRequest,
-) -> Response[VmwareDiskExtend]:
+) -> Response[Status]:
     """Increase disk capacity
 
     Args:
@@ -128,7 +126,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[VmwareDiskExtend]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -146,7 +144,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: VmwareDiskExtendRequest,
-) -> VmwareDiskExtend:
+) -> Status:
     """Increase disk capacity
 
     Args:
@@ -158,7 +156,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        VmwareDiskExtend
+        Status
     """
 
     return (

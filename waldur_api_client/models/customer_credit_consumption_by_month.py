@@ -4,27 +4,32 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="RouterSetOkResponse")
+T = TypeVar("T", bound="CustomerCreditConsumptionByMonth")
 
 
 @_attrs_define
-class RouterSetOkResponse:
+class CustomerCreditConsumptionByMonth:
     """
     Attributes:
-        detail (str):
+        month (str):
+        price (str):
     """
 
-    detail: str
+    month: str
+    price: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        detail = self.detail
+        month = self.month
+
+        price = self.price
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "detail": detail,
+                "month": month,
+                "price": price,
             }
         )
 
@@ -33,14 +38,17 @@ class RouterSetOkResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        detail = d.pop("detail")
+        month = d.pop("month")
 
-        router_set_ok_response = cls(
-            detail=detail,
+        price = d.pop("price")
+
+        customer_credit_consumption_by_month = cls(
+            month=month,
+            price=price,
         )
 
-        router_set_ok_response.additional_properties = d
-        return router_set_ok_response
+        customer_credit_consumption_by_month.additional_properties = d
+        return customer_credit_consumption_by_month
 
     @property
     def additional_keys(self) -> list[str]:

@@ -4,27 +4,42 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="DigitalOceanDropletResize")
+T = TypeVar("T", bound="ProjectMapping")
 
 
 @_attrs_define
-class DigitalOceanDropletResize:
+class ProjectMapping:
     """
     Attributes:
-        disk (bool):
+        uuid (str):
+        name (str):
+        customer_uuid (str):
+        customer_name (str):
     """
 
-    disk: bool
+    uuid: str
+    name: str
+    customer_uuid: str
+    customer_name: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        disk = self.disk
+        uuid = self.uuid
+
+        name = self.name
+
+        customer_uuid = self.customer_uuid
+
+        customer_name = self.customer_name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "disk": disk,
+                "uuid": uuid,
+                "name": name,
+                "customer_uuid": customer_uuid,
+                "customer_name": customer_name,
             }
         )
 
@@ -33,14 +48,23 @@ class DigitalOceanDropletResize:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        disk = d.pop("disk")
+        uuid = d.pop("uuid")
 
-        digital_ocean_droplet_resize = cls(
-            disk=disk,
+        name = d.pop("name")
+
+        customer_uuid = d.pop("customer_uuid")
+
+        customer_name = d.pop("customer_name")
+
+        project_mapping = cls(
+            uuid=uuid,
+            name=name,
+            customer_uuid=customer_uuid,
+            customer_name=customer_name,
         )
 
-        digital_ocean_droplet_resize.additional_properties = d
-        return digital_ocean_droplet_resize
+        project_mapping.additional_properties = d
+        return project_mapping
 
     @property
     def additional_keys(self) -> list[str]:

@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.digital_ocean_droplet_resize import DigitalOceanDropletResize
 from ...models.digital_ocean_droplet_resize_request import DigitalOceanDropletResizeRequest
+from ...models.status import Status
 from ...types import Response
 
 
@@ -31,21 +31,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> DigitalOceanDropletResize:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Status:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        response_200 = DigitalOceanDropletResize.from_dict(response.json())
+    if response.status_code == 202:
+        response_202 = Status.from_dict(response.json())
 
-        return response_200
+        return response_202
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[DigitalOceanDropletResize]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Status]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -59,7 +55,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: DigitalOceanDropletResizeRequest,
-) -> Response[DigitalOceanDropletResize]:
+) -> Response[Status]:
     """To resize droplet, submit a POST request to the instance URL, specifying URI of a target size.
 
     Pass {'disk': true} along with target size in order to perform permanent resizing,
@@ -80,7 +76,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DigitalOceanDropletResize]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -100,7 +96,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: DigitalOceanDropletResizeRequest,
-) -> DigitalOceanDropletResize:
+) -> Status:
     """To resize droplet, submit a POST request to the instance URL, specifying URI of a target size.
 
     Pass {'disk': true} along with target size in order to perform permanent resizing,
@@ -121,7 +117,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DigitalOceanDropletResize
+        Status
     """
 
     return sync_detailed(
@@ -136,7 +132,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: DigitalOceanDropletResizeRequest,
-) -> Response[DigitalOceanDropletResize]:
+) -> Response[Status]:
     """To resize droplet, submit a POST request to the instance URL, specifying URI of a target size.
 
     Pass {'disk': true} along with target size in order to perform permanent resizing,
@@ -157,7 +153,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DigitalOceanDropletResize]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
@@ -175,7 +171,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: DigitalOceanDropletResizeRequest,
-) -> DigitalOceanDropletResize:
+) -> Status:
     """To resize droplet, submit a POST request to the instance URL, specifying URI of a target size.
 
     Pass {'disk': true} along with target size in order to perform permanent resizing,
@@ -196,7 +192,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DigitalOceanDropletResize
+        Status
     """
 
     return (

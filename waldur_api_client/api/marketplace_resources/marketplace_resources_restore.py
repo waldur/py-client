@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource import Resource
+from ...models.order_uuid import OrderUUID
 from ...models.resource_request import ResourceRequest
 from ...types import Response
 
@@ -31,17 +31,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Resource:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OrderUUID:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = Resource.from_dict(response.json())
+        response_200 = OrderUUID.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Resource]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[OrderUUID]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,7 +55,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceRequest,
-) -> Response[Resource]:
+) -> Response[OrderUUID]:
     """
     Args:
         uuid (UUID):
@@ -66,7 +66,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Resource]
+        Response[OrderUUID]
     """
 
     kwargs = _get_kwargs(
@@ -86,7 +86,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ResourceRequest,
-) -> Resource:
+) -> OrderUUID:
     """
     Args:
         uuid (UUID):
@@ -97,7 +97,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Resource
+        OrderUUID
     """
 
     return sync_detailed(
@@ -112,7 +112,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ResourceRequest,
-) -> Response[Resource]:
+) -> Response[OrderUUID]:
     """
     Args:
         uuid (UUID):
@@ -123,7 +123,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Resource]
+        Response[OrderUUID]
     """
 
     kwargs = _get_kwargs(
@@ -141,7 +141,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ResourceRequest,
-) -> Resource:
+) -> OrderUUID:
     """
     Args:
         uuid (UUID):
@@ -152,7 +152,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Resource
+        OrderUUID
     """
 
     return (

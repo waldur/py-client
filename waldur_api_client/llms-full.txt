@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.12.dev.20260525233339
+# Version: 8.0.9-rc.12.dev.20260526091607
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2372,8 +2372,6 @@ Request body: yes
 
 ### broadcast_messages_recipients_retrieve
 GET /api/broadcast-messages/recipients/
-Query parameters (1):
-  - field
 
 ### broadcast_messages_recipients_count
 HEAD /api/broadcast-messages/recipients/
@@ -4331,8 +4329,6 @@ Query parameters (10):
 
 ### events_count_retrieve
 GET /api/events/count/
-Query parameters (1):
-  - field
 
 ### events_count_count
 HEAD /api/events/count/
@@ -4344,8 +4340,6 @@ GET /api/events/event_groups/
 Summary: Returns a list of groups with event types
 Description: Returns a list of groups with event types.
 Group is used in exclude_features query param.
-Query parameters (1):
-  - field
 
 ### events_event_groups_count
 HEAD /api/events/event_groups/
@@ -4356,8 +4350,6 @@ Description: Get number of items in the collection matching the request paramete
 GET /api/events/scope_types/
 Summary: Returns a list of scope types acceptable by events filter
 Description: Returns a list of scope types acceptable by events filter.
-Query parameters (1):
-  - field
 
 ### events_scope_types_count
 HEAD /api/events/scope_types/
@@ -4634,8 +4626,6 @@ Query parameters (1):
 GET /api/google-auth/{uuid}/authorize/
 Path parameters:
   - uuid
-Query parameters (1):
-  - field
 
 ============================================================
 ## hooks  (module: waldur_api_client.api.hooks)
@@ -5001,10 +4991,20 @@ DELETE /api/invoice-items/{uuid}/
 Path parameters:
   - uuid
 
-### invoice_items_consumptions_retrieve
+### invoice_items_consumptions_list
 GET /api/invoice-items/{uuid}/consumptions/
 Path parameters:
   - uuid
+Query parameters (9):
+  - credit_uuid
+  - customer_uuid
+  - month
+  - offering_uuid
+  - project_uuid
+  - resource_uuid
+  - start_month — Start month
+  - start_year — Start year
+  - year
 
 ### invoice_items_create_compensation
 POST /api/invoice-items/{uuid}/create_compensation/
@@ -9290,8 +9290,7 @@ Summary: Check user access to offering resources
 Description: Checks if a specified user has access to any non-terminated resource of this offering.
 Path parameters:
   - uuid
-Query parameters (2):
-  - field
+Query parameters (1):
   - username (required) — Username of the user to check.
 
 ============================================================
@@ -14595,8 +14594,6 @@ Query parameters (18):
 GET /api/openstack-flavors/usage_stats/
 Summary: Get flavor usage statistics
 Description: Retrieve usage statistics for VM instance flavors, showing running and created instance counts for each flavor.
-Query parameters (1):
-  - field
 
 ### openstack_flavors_usage_stats_count
 HEAD /api/openstack-flavors/usage_stats/
@@ -19701,8 +19698,6 @@ Path parameters:
 GET /api/rancher-ingresses/{uuid}/yaml/
 Path parameters:
   - uuid
-Query parameters (1):
-  - field
 
 ### rancher_ingresses_yaml_update
 PUT /api/rancher-ingresses/{uuid}/yaml/
@@ -20016,8 +20011,6 @@ Path parameters:
 GET /api/rancher-services/{uuid}/yaml/
 Path parameters:
   - uuid
-Query parameters (1):
-  - field
 
 ### rancher_services_yaml_update
 PUT /api/rancher-services/{uuid}/yaml/
@@ -22499,8 +22492,6 @@ Request body: yes
 GET /api/users/me/
 Summary: Get current user details
 Description: Get current user details, including authentication token and profile completeness status.
-Query parameters (1):
-  - field
 
 ### users_me_count
 HEAD /api/users/me/

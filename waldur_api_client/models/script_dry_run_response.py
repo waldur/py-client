@@ -4,27 +4,27 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="LoadBalancerAsyncOperationResponse")
+T = TypeVar("T", bound="ScriptDryRunResponse")
 
 
 @_attrs_define
-class LoadBalancerAsyncOperationResponse:
+class ScriptDryRunResponse:
     """
     Attributes:
-        status (str): Message that execution of the operation was scheduled.
+        output (str):
     """
 
-    status: str
+    output: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        status = self.status
+        output = self.output
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "status": status,
+                "output": output,
             }
         )
 
@@ -33,14 +33,14 @@ class LoadBalancerAsyncOperationResponse:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        status = d.pop("status")
+        output = d.pop("output")
 
-        load_balancer_async_operation_response = cls(
-            status=status,
+        script_dry_run_response = cls(
+            output=output,
         )
 
-        load_balancer_async_operation_response.additional_properties = d
-        return load_balancer_async_operation_response
+        script_dry_run_response.additional_properties = d
+        return script_dry_run_response
 
     @property
     def additional_keys(self) -> list[str]:

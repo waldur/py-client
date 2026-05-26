@@ -4,27 +4,27 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="InvoiceItemMigrateTo")
+T = TypeVar("T", bound="EventCount")
 
 
 @_attrs_define
-class InvoiceItemMigrateTo:
+class EventCount:
     """
     Attributes:
-        invoice (str):
+        count (int):
     """
 
-    invoice: str
+    count: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        invoice = self.invoice
+        count = self.count
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "invoice": invoice,
+                "count": count,
             }
         )
 
@@ -33,14 +33,14 @@ class InvoiceItemMigrateTo:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        invoice = d.pop("invoice")
+        count = d.pop("count")
 
-        invoice_item_migrate_to = cls(
-            invoice=invoice,
+        event_count = cls(
+            count=count,
         )
 
-        invoice_item_migrate_to.additional_properties = d
-        return invoice_item_migrate_to
+        event_count.additional_properties = d
+        return event_count
 
     @property
     def additional_keys(self) -> list[str]:

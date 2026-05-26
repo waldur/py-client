@@ -1,46 +1,55 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="ResourceProjectErrorMessage")
+T = TypeVar("T", bound="NotificationRecipientCustomer")
 
 
 @_attrs_define
-class ResourceProjectErrorMessage:
+class NotificationRecipientCustomer:
     """
     Attributes:
-        error_message (Union[Unset, str]): Free-form description of why the project transitioned to Erred. Default: ''.
+        uuid (UUID):
+        name (str):
     """
 
-    error_message: Union[Unset, str] = ""
+    uuid: UUID
+    name: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        error_message = self.error_message
+        uuid = str(self.uuid)
+
+        name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if error_message is not UNSET:
-            field_dict["error_message"] = error_message
+        field_dict.update(
+            {
+                "uuid": uuid,
+                "name": name,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        error_message = d.pop("error_message", UNSET)
+        uuid = UUID(d.pop("uuid"))
 
-        resource_project_error_message = cls(
-            error_message=error_message,
+        name = d.pop("name")
+
+        notification_recipient_customer = cls(
+            uuid=uuid,
+            name=name,
         )
 
-        resource_project_error_message.additional_properties = d
-        return resource_project_error_message
+        notification_recipient_customer.additional_properties = d
+        return notification_recipient_customer
 
     @property
     def additional_keys(self) -> list[str]:

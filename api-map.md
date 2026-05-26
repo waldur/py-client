@@ -411,7 +411,7 @@ Module: `waldur_api_client.api.broadcast_messages`
 - `broadcast_messages_list` GET `/api/broadcast-messages/` (4 query params)
 - `broadcast_messages_count` HEAD `/api/broadcast-messages/` — Get number of items in the collection matching the request parameters (3 query params)
 - `broadcast_messages_create` POST `/api/broadcast-messages/` (request body)
-- `broadcast_messages_recipients_retrieve` GET `/api/broadcast-messages/recipients/` (1 query param)
+- `broadcast_messages_recipients_retrieve` GET `/api/broadcast-messages/recipients/` (no params)
 - `broadcast_messages_recipients_count` HEAD `/api/broadcast-messages/recipients/` — Get number of items in the collection matching the request parameters (no params)
 - `broadcast_messages_retrieve` GET `/api/broadcast-messages/{uuid}/` (path: uuid | 1 query param)
 - `broadcast_messages_update` PUT `/api/broadcast-messages/{uuid}/` (path: uuid | request body)
@@ -788,11 +788,11 @@ Module: `waldur_api_client.api.events`
 
 - `events_list` GET `/api/events/` (11 query params)
 - `events_count` HEAD `/api/events/` — Get number of items in the collection matching the request parameters (10 query params)
-- `events_count_retrieve` GET `/api/events/count/` (1 query param)
+- `events_count_retrieve` GET `/api/events/count/` (no params)
 - `events_count_count` HEAD `/api/events/count/` — Get number of items in the collection matching the request parameters (no params)
-- `events_event_groups_retrieve` GET `/api/events/event_groups/` — Returns a list of groups with event types (1 query param)
+- `events_event_groups_retrieve` GET `/api/events/event_groups/` — Returns a list of groups with event types (no params)
 - `events_event_groups_count` HEAD `/api/events/event_groups/` — Get number of items in the collection matching the request parameters (no params)
-- `events_scope_types_retrieve` GET `/api/events/scope_types/` — Returns a list of scope types acceptable by events filter (1 query param)
+- `events_scope_types_retrieve` GET `/api/events/scope_types/` — Returns a list of scope types acceptable by events filter (no params)
 - `events_scope_types_count` HEAD `/api/events/scope_types/` — Get number of items in the collection matching the request parameters (no params)
 - `events_retrieve` GET `/api/events/{id}/` (path: id | 1 query param)
 
@@ -851,7 +851,7 @@ Module: `waldur_api_client.api.google_auth`
 - `google_auth_callback_retrieve` GET `/api/google-auth/callback/` — Callback endpoint for Google authorization (2 query params)
 - `google_auth_callback_count` HEAD `/api/google-auth/callback/` — Get number of items in the collection matching the request parameters (2 query params)
 - `google_auth_retrieve` GET `/api/google-auth/{uuid}/` (path: uuid | 1 query param)
-- `google_auth_authorize_retrieve` GET `/api/google-auth/{uuid}/authorize/` (path: uuid | 1 query param)
+- `google_auth_authorize_retrieve` GET `/api/google-auth/{uuid}/authorize/` (path: uuid)
 
 ## hooks
 Module: `waldur_api_client.api.hooks`
@@ -924,7 +924,7 @@ Module: `waldur_api_client.api.invoice_items`
 - `invoice_items_update` PUT `/api/invoice-items/{uuid}/` (path: uuid | request body)
 - `invoice_items_partial_update` PATCH `/api/invoice-items/{uuid}/` (path: uuid | request body)
 - `invoice_items_destroy` DELETE `/api/invoice-items/{uuid}/` (path: uuid)
-- `invoice_items_consumptions_retrieve` GET `/api/invoice-items/{uuid}/consumptions/` (path: uuid)
+- `invoice_items_consumptions_list` GET `/api/invoice-items/{uuid}/consumptions/` (path: uuid | 9 query params)
 - `invoice_items_create_compensation` POST `/api/invoice-items/{uuid}/create_compensation/` — Create compensation invoice item for selected invoice item (path: uuid | request body)
 - `invoice_items_migrate_to` POST `/api/invoice-items/{uuid}/migrate_to/` — Move invoice item from one invoice to another one (path: uuid | request body)
 
@@ -1585,7 +1585,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_update_user` POST `/api/marketplace-provider-offerings/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 - `marketplace_provider_offerings_upload_markdown_image` POST `/api/marketplace-provider-offerings/{uuid}/upload_markdown_image/` — Upload markdown image (path: uuid | request body)
 - `marketplace_provider_offerings_user_attribute_config_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/user-attribute-config/` — Get user attribute config (path: uuid)
-- `marketplace_provider_offerings_user_has_resource_access_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/user_has_resource_access/` — Check user access to offering resources (path: uuid | 2 query params)
+- `marketplace_provider_offerings_user_has_resource_access_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/user_has_resource_access/` — Check user access to offering resources (path: uuid | 1 query param)
 
 ## marketplace-provider-resource-projects
 Module: `waldur_api_client.api.marketplace_provider_resource_projects`
@@ -2403,7 +2403,7 @@ Module: `waldur_api_client.api.openstack_flavors`
 
 - `openstack_flavors_list` GET `/api/openstack-flavors/` — List flavors (19 query params)
 - `openstack_flavors_count` HEAD `/api/openstack-flavors/` — List flavors (18 query params)
-- `openstack_flavors_usage_stats_retrieve` GET `/api/openstack-flavors/usage_stats/` — Get flavor usage statistics (1 query param)
+- `openstack_flavors_usage_stats_retrieve` GET `/api/openstack-flavors/usage_stats/` — Get flavor usage statistics (no params)
 - `openstack_flavors_usage_stats_count` HEAD `/api/openstack-flavors/usage_stats/` — Get flavor usage statistics (no params)
 - `openstack_flavors_retrieve` GET `/api/openstack-flavors/{uuid}/` — Get flavor details (path: uuid | 1 query param)
 
@@ -3167,7 +3167,7 @@ Module: `waldur_api_client.api.rancher_ingresses`
 - `rancher_ingresses_set_erred` POST `/api/rancher-ingresses/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
 - `rancher_ingresses_set_ok` POST `/api/rancher-ingresses/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `rancher_ingresses_unlink` POST `/api/rancher-ingresses/{uuid}/unlink/` — Unlink resource (path: uuid)
-- `rancher_ingresses_yaml_retrieve` GET `/api/rancher-ingresses/{uuid}/yaml/` (path: uuid | 1 query param)
+- `rancher_ingresses_yaml_retrieve` GET `/api/rancher-ingresses/{uuid}/yaml/` (path: uuid)
 - `rancher_ingresses_yaml_update` PUT `/api/rancher-ingresses/{uuid}/yaml/` (path: uuid | request body)
 
 ## rancher-namespaces
@@ -3223,7 +3223,7 @@ Module: `waldur_api_client.api.rancher_services`
 - `rancher_services_set_erred` POST `/api/rancher-services/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
 - `rancher_services_set_ok` POST `/api/rancher-services/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `rancher_services_unlink` POST `/api/rancher-services/{uuid}/unlink/` — Unlink resource (path: uuid)
-- `rancher_services_yaml_retrieve` GET `/api/rancher-services/{uuid}/yaml/` (path: uuid | 1 query param)
+- `rancher_services_yaml_retrieve` GET `/api/rancher-services/{uuid}/yaml/` (path: uuid)
 - `rancher_services_yaml_update` PUT `/api/rancher-services/{uuid}/yaml/` (path: uuid | request body)
 
 ## rancher-template-versions
@@ -3729,7 +3729,7 @@ Module: `waldur_api_client.api.users`
 - `users_count` HEAD `/api/users/` — Get number of items in the collection matching the request parameters (24 query params)
 - `users_create` POST `/api/users/` (request body)
 - `users_confirm_email` POST `/api/users/confirm_email/` — Confirm email change (request body)
-- `users_me_retrieve` GET `/api/users/me/` — Get current user details (1 query param)
+- `users_me_retrieve` GET `/api/users/me/` — Get current user details (no params)
 - `users_me_count` HEAD `/api/users/me/` — Get current user details (no params)
 - `users_profile_completeness_retrieve` GET `/api/users/profile_completeness/` — Check profile completeness (no params)
 - `users_profile_completeness_count` HEAD `/api/users/profile_completeness/` — Check profile completeness (no params)

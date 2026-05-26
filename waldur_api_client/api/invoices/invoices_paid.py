@@ -6,7 +6,6 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.invoice import Invoice
 from ...models.paid_request import PaidRequest
 from ...models.paid_request_form import PaidRequestForm
 from ...models.paid_request_multipart import PaidRequestMultipart
@@ -44,17 +43,15 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Invoice:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = Invoice.from_dict(response.json())
-
-        return response_200
+        return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Invoice]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -72,7 +69,7 @@ def sync_detailed(
         PaidRequestForm,
         PaidRequestMultipart,
     ],
-) -> Response[Invoice]:
+) -> Response[Any]:
     """Mark invoice as paid and optionally create payment record with proof of payment.
 
     Args:
@@ -86,7 +83,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Invoice]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -101,39 +98,6 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    uuid: UUID,
-    *,
-    client: AuthenticatedClient,
-    body: Union[
-        PaidRequest,
-        PaidRequestForm,
-        PaidRequestMultipart,
-    ],
-) -> Invoice:
-    """Mark invoice as paid and optionally create payment record with proof of payment.
-
-    Args:
-        uuid (UUID):
-        body (PaidRequest):
-        body (PaidRequestForm):
-        body (PaidRequestMultipart):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Invoice
-    """
-
-    return sync_detailed(
-        uuid=uuid,
-        client=client,
-        body=body,
-    ).parsed
-
-
 async def asyncio_detailed(
     uuid: UUID,
     *,
@@ -143,7 +107,7 @@ async def asyncio_detailed(
         PaidRequestForm,
         PaidRequestMultipart,
     ],
-) -> Response[Invoice]:
+) -> Response[Any]:
     """Mark invoice as paid and optionally create payment record with proof of payment.
 
     Args:
@@ -157,7 +121,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Invoice]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -168,38 +132,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    uuid: UUID,
-    *,
-    client: AuthenticatedClient,
-    body: Union[
-        PaidRequest,
-        PaidRequestForm,
-        PaidRequestMultipart,
-    ],
-) -> Invoice:
-    """Mark invoice as paid and optionally create payment record with proof of payment.
-
-    Args:
-        uuid (UUID):
-        body (PaidRequest):
-        body (PaidRequestForm):
-        body (PaidRequestMultipart):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Invoice
-    """
-
-    return (
-        await asyncio_detailed(
-            uuid=uuid,
-            client=client,
-            body=body,
-        )
-    ).parsed

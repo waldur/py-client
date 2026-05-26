@@ -1,30 +1,36 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ResourceProjectBackendId")
+T = TypeVar("T", bound="AzureSqlDatabaseCreateResponse")
 
 
 @_attrs_define
-class ResourceProjectBackendId:
+class AzureSqlDatabaseCreateResponse:
     """
     Attributes:
-        backend_id (str):
+        status (str):
+        database_uuid (UUID):
     """
 
-    backend_id: str
+    status: str
+    database_uuid: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        backend_id = self.backend_id
+        status = self.status
+
+        database_uuid = str(self.database_uuid)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "backend_id": backend_id,
+                "status": status,
+                "database_uuid": database_uuid,
             }
         )
 
@@ -33,14 +39,17 @@ class ResourceProjectBackendId:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        backend_id = d.pop("backend_id")
+        status = d.pop("status")
 
-        resource_project_backend_id = cls(
-            backend_id=backend_id,
+        database_uuid = UUID(d.pop("database_uuid"))
+
+        azure_sql_database_create_response = cls(
+            status=status,
+            database_uuid=database_uuid,
         )
 
-        resource_project_backend_id.additional_properties = d
-        return resource_project_backend_id
+        azure_sql_database_create_response.additional_properties = d
+        return azure_sql_database_create_response
 
     @property
     def additional_keys(self) -> list[str]:
