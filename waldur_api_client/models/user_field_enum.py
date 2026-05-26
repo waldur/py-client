@@ -9,6 +9,7 @@ class UserFieldEnum(str, Enum):
     AGREE_WITH_POLICY = "agree_with_policy"
     ATTRIBUTE_SOURCES = "attribute_sources"
     BIRTH_DATE = "birth_date"
+    CAN_USE_PERSONAL_ACCESS_TOKENS = "can_use_personal_access_tokens"
     CIVIL_NUMBER = "civil_number"
     COUNTRY_OF_RESIDENCE = "country_of_residence"
     DATE_JOINED = "date_joined"

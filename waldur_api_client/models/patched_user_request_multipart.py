@@ -53,6 +53,8 @@ class PatchedUserRequestMultipart:
         eduperson_assurance (Union[Unset, Any]): REFEDS assurance profile URIs from identity provider
         is_identity_manager (Union[Unset, bool]): Designates whether the user is allowed to manage remote user
             identities.
+        can_use_personal_access_tokens (Union[Unset, bool]): Designates whether the user is allowed to create and use
+            personal access tokens.
         managed_isds (Union[Unset, Any]): List of ISD source identifiers this user can manage via Identity Bridge. E.g.,
             ['isd:puhuri', 'isd:fenix']. Non-empty list implies identity manager role.
         deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.
@@ -88,6 +90,7 @@ class PatchedUserRequestMultipart:
     organization_registry_code: Union[Unset, str] = UNSET
     eduperson_assurance: Union[Unset, Any] = UNSET
     is_identity_manager: Union[Unset, bool] = UNSET
+    can_use_personal_access_tokens: Union[Unset, bool] = UNSET
     managed_isds: Union[Unset, Any] = UNSET
     deactivation_reason: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -178,6 +181,8 @@ class PatchedUserRequestMultipart:
 
         is_identity_manager = self.is_identity_manager
 
+        can_use_personal_access_tokens = self.can_use_personal_access_tokens
+
         managed_isds = self.managed_isds
 
         deactivation_reason = self.deactivation_reason
@@ -245,6 +250,8 @@ class PatchedUserRequestMultipart:
             field_dict["eduperson_assurance"] = eduperson_assurance
         if is_identity_manager is not UNSET:
             field_dict["is_identity_manager"] = is_identity_manager
+        if can_use_personal_access_tokens is not UNSET:
+            field_dict["can_use_personal_access_tokens"] = can_use_personal_access_tokens
         if managed_isds is not UNSET:
             field_dict["managed_isds"] = managed_isds
         if deactivation_reason is not UNSET:
@@ -362,6 +369,14 @@ class PatchedUserRequestMultipart:
 
         if not isinstance(self.is_identity_manager, Unset):
             files.append(("is_identity_manager", (None, str(self.is_identity_manager).encode(), "text/plain")))
+
+        if not isinstance(self.can_use_personal_access_tokens, Unset):
+            files.append(
+                (
+                    "can_use_personal_access_tokens",
+                    (None, str(self.can_use_personal_access_tokens).encode(), "text/plain"),
+                )
+            )
 
         if not isinstance(self.managed_isds, Unset):
             files.append(("managed_isds", (None, str(self.managed_isds).encode(), "text/plain")))
@@ -497,6 +512,8 @@ class PatchedUserRequestMultipart:
 
         is_identity_manager = d.pop("is_identity_manager", UNSET)
 
+        can_use_personal_access_tokens = d.pop("can_use_personal_access_tokens", UNSET)
+
         managed_isds = d.pop("managed_isds", UNSET)
 
         deactivation_reason = d.pop("deactivation_reason", UNSET)
@@ -532,6 +549,7 @@ class PatchedUserRequestMultipart:
             organization_registry_code=organization_registry_code,
             eduperson_assurance=eduperson_assurance,
             is_identity_manager=is_identity_manager,
+            can_use_personal_access_tokens=can_use_personal_access_tokens,
             managed_isds=managed_isds,
             deactivation_reason=deactivation_reason,
         )

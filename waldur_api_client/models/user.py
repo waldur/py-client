@@ -77,6 +77,8 @@ class User:
         eduperson_assurance (Union[Unset, Any]): REFEDS assurance profile URIs from identity provider
         is_identity_manager (Union[Unset, bool]): Designates whether the user is allowed to manage remote user
             identities.
+        can_use_personal_access_tokens (Union[Unset, bool]): Designates whether the user is allowed to create and use
+            personal access tokens.
         attribute_sources (Union[Unset, Any]): Per-attribute source and freshness tracking. Format: {'field_name':
             {'source': 'isd:<name>', 'timestamp': 'ISO8601'}}.
         managed_isds (Union[Unset, Any]): List of ISD source identifiers this user can manage via Identity Bridge. E.g.,
@@ -137,6 +139,7 @@ class User:
     organization_registry_code: Union[Unset, str] = UNSET
     eduperson_assurance: Union[Unset, Any] = UNSET
     is_identity_manager: Union[Unset, bool] = UNSET
+    can_use_personal_access_tokens: Union[Unset, bool] = UNSET
     attribute_sources: Union[Unset, Any] = UNSET
     managed_isds: Union[Unset, Any] = UNSET
     active_isds: Union[Unset, Any] = UNSET
@@ -303,6 +306,8 @@ class User:
 
         is_identity_manager = self.is_identity_manager
 
+        can_use_personal_access_tokens = self.can_use_personal_access_tokens
+
         attribute_sources = self.attribute_sources
 
         managed_isds = self.managed_isds
@@ -416,6 +421,8 @@ class User:
             field_dict["eduperson_assurance"] = eduperson_assurance
         if is_identity_manager is not UNSET:
             field_dict["is_identity_manager"] = is_identity_manager
+        if can_use_personal_access_tokens is not UNSET:
+            field_dict["can_use_personal_access_tokens"] = can_use_personal_access_tokens
         if attribute_sources is not UNSET:
             field_dict["attribute_sources"] = attribute_sources
         if managed_isds is not UNSET:
@@ -652,6 +659,8 @@ class User:
 
         is_identity_manager = d.pop("is_identity_manager", UNSET)
 
+        can_use_personal_access_tokens = d.pop("can_use_personal_access_tokens", UNSET)
+
         attribute_sources = d.pop("attribute_sources", UNSET)
 
         managed_isds = d.pop("managed_isds", UNSET)
@@ -712,6 +721,7 @@ class User:
             organization_registry_code=organization_registry_code,
             eduperson_assurance=eduperson_assurance,
             is_identity_manager=is_identity_manager,
+            can_use_personal_access_tokens=can_use_personal_access_tokens,
             attribute_sources=attribute_sources,
             managed_isds=managed_isds,
             active_isds=active_isds,
