@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.12.dev.20260526233351
+# Version: 8.0.9-rc.12.dev.20260527233342
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9822,11 +9822,11 @@ Request body: yes
 ### marketplace_provider_resources_team_list
 GET /api/marketplace-provider-resources/{uuid}/team/
 Summary: Get resource team
-Description: Returns a list of users connected to the project of this resource, including their project roles and offering-specific usernames.
+Description: Returns project users for this resource from the service provider perspective. When ENFORCE_USER_CONSENT_FOR_OFFERINGS is enabled and the offering has active Terms of Service, only users with active consent are returned (staff and support still see the full team).
 Path parameters:
   - uuid
 Query parameters (1):
-  - has_consent — When true, return only users who have active consent for this offering.
+  - has_consent — When ENFORCE_USER_CONSENT_FOR_OFFERINGS is disabled, passing true returns only users who have active consent for this offering.
 
 ### marketplace_provider_resources_terminate
 POST /api/marketplace-provider-resources/{uuid}/terminate/
@@ -10619,7 +10619,7 @@ Request body: yes
 ### marketplace_resources_team_list
 GET /api/marketplace-resources/{uuid}/team/
 Summary: Get resource team
-Description: Returns a list of users connected to the project of this resource, including their project roles and offering-specific usernames.
+Description: Returns project users for this resource, including project roles and offering-specific usernames. Use has_consent=true to list only users with active Terms of Service consent for the offering.
 Path parameters:
   - uuid
 Query parameters (1):

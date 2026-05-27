@@ -65,8 +65,9 @@ def sync_detailed(
 ) -> Response[list["ProjectUser"]]:
     """Get resource team
 
-     Returns a list of users connected to the project of this resource, including their project roles and
-    offering-specific usernames.
+     Returns project users for this resource from the service provider perspective. When
+    ENFORCE_USER_CONSENT_FOR_OFFERINGS is enabled and the offering has active Terms of Service, only
+    users with active consent are returned (staff and support still see the full team).
 
     Args:
         uuid (UUID):
@@ -100,8 +101,9 @@ def sync(
 ) -> list["ProjectUser"]:
     """Get resource team
 
-     Returns a list of users connected to the project of this resource, including their project roles and
-    offering-specific usernames.
+     Returns project users for this resource from the service provider perspective. When
+    ENFORCE_USER_CONSENT_FOR_OFFERINGS is enabled and the offering has active Terms of Service, only
+    users with active consent are returned (staff and support still see the full team).
 
     Args:
         uuid (UUID):
@@ -130,8 +132,9 @@ async def asyncio_detailed(
 ) -> Response[list["ProjectUser"]]:
     """Get resource team
 
-     Returns a list of users connected to the project of this resource, including their project roles and
-    offering-specific usernames.
+     Returns project users for this resource from the service provider perspective. When
+    ENFORCE_USER_CONSENT_FOR_OFFERINGS is enabled and the offering has active Terms of Service, only
+    users with active consent are returned (staff and support still see the full team).
 
     Args:
         uuid (UUID):
@@ -163,8 +166,9 @@ async def asyncio(
 ) -> list["ProjectUser"]:
     """Get resource team
 
-     Returns a list of users connected to the project of this resource, including their project roles and
-    offering-specific usernames.
+     Returns project users for this resource from the service provider perspective. When
+    ENFORCE_USER_CONSENT_FOR_OFFERINGS is enabled and the offering has active Terms of Service, only
+    users with active consent are returned (staff and support still see the full team).
 
     Args:
         uuid (UUID):

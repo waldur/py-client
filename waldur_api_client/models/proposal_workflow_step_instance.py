@@ -25,10 +25,15 @@ class ProposalWorkflowStepInstance:
         status (ProposalWorkflowStepInstanceStatusEnum):
         outcome (Union[None, str]): Step-specific outcome (e.g., eligible, feasible, approved).
         outcome_reason (str): Explanation for the outcome (e.g., rejection reason).
+        rejection_reason (Union[None, str]):
+        internal_notes (Union[None, str]):
         started_at (Union[None, datetime.datetime]): When this step became active.
         completed_at (Union[None, datetime.datetime]):
         completed_by (Union[None, UUID]):
         deadline (Union[None, datetime.datetime]): Computed from started_at + step duration_in_days.
+        applicant_visible (bool):
+        duration_in_days (Union[None, int]):
+        is_required (bool):
     """
 
     uuid: UUID
@@ -39,10 +44,15 @@ class ProposalWorkflowStepInstance:
     status: ProposalWorkflowStepInstanceStatusEnum
     outcome: Union[None, str]
     outcome_reason: str
+    rejection_reason: Union[None, str]
+    internal_notes: Union[None, str]
     started_at: Union[None, datetime.datetime]
     completed_at: Union[None, datetime.datetime]
     completed_by: Union[None, UUID]
     deadline: Union[None, datetime.datetime]
+    applicant_visible: bool
+    duration_in_days: Union[None, int]
+    is_required: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -63,6 +73,12 @@ class ProposalWorkflowStepInstance:
         outcome = self.outcome
 
         outcome_reason = self.outcome_reason
+
+        rejection_reason: Union[None, str]
+        rejection_reason = self.rejection_reason
+
+        internal_notes: Union[None, str]
+        internal_notes = self.internal_notes
 
         started_at: Union[None, str]
         if isinstance(self.started_at, datetime.datetime):
@@ -88,6 +104,13 @@ class ProposalWorkflowStepInstance:
         else:
             deadline = self.deadline
 
+        applicant_visible = self.applicant_visible
+
+        duration_in_days: Union[None, int]
+        duration_in_days = self.duration_in_days
+
+        is_required = self.is_required
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -100,10 +123,15 @@ class ProposalWorkflowStepInstance:
                 "status": status,
                 "outcome": outcome,
                 "outcome_reason": outcome_reason,
+                "rejection_reason": rejection_reason,
+                "internal_notes": internal_notes,
                 "started_at": started_at,
                 "completed_at": completed_at,
                 "completed_by": completed_by,
                 "deadline": deadline,
+                "applicant_visible": applicant_visible,
+                "duration_in_days": duration_in_days,
+                "is_required": is_required,
             }
         )
 
@@ -137,6 +165,20 @@ class ProposalWorkflowStepInstance:
         outcome = _parse_outcome(d.pop("outcome"))
 
         outcome_reason = d.pop("outcome_reason")
+
+        def _parse_rejection_reason(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        rejection_reason = _parse_rejection_reason(d.pop("rejection_reason"))
+
+        def _parse_internal_notes(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        internal_notes = _parse_internal_notes(d.pop("internal_notes"))
 
         def _parse_started_at(data: object) -> Union[None, datetime.datetime]:
             if data is None:
@@ -198,6 +240,17 @@ class ProposalWorkflowStepInstance:
 
         deadline = _parse_deadline(d.pop("deadline"))
 
+        applicant_visible = d.pop("applicant_visible")
+
+        def _parse_duration_in_days(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        duration_in_days = _parse_duration_in_days(d.pop("duration_in_days"))
+
+        is_required = d.pop("is_required")
+
         proposal_workflow_step_instance = cls(
             uuid=uuid,
             step=step,
@@ -207,10 +260,15 @@ class ProposalWorkflowStepInstance:
             status=status,
             outcome=outcome,
             outcome_reason=outcome_reason,
+            rejection_reason=rejection_reason,
+            internal_notes=internal_notes,
             started_at=started_at,
             completed_at=completed_at,
             completed_by=completed_by,
             deadline=deadline,
+            applicant_visible=applicant_visible,
+            duration_in_days=duration_in_days,
+            is_required=is_required,
         )
 
         proposal_workflow_step_instance.additional_properties = d

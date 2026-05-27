@@ -1,9 +1,11 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RejectWorkflowStepRequest")
 
@@ -15,16 +17,21 @@ class RejectWorkflowStepRequest:
         step_uuid (UUID): UUID of the workflow step instance the client believes is active. Used to detect concurrent
             step transitions.
         reason (str): Reason for rejecting the proposal at this step.
+        internal_notes (Union[Unset, str]): Internal notes captured by the call-management team alongside the rejection.
+            Never returned to applicants. Default: ''.
     """
 
     step_uuid: UUID
     reason: str
+    internal_notes: Union[Unset, str] = ""
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         step_uuid = str(self.step_uuid)
 
         reason = self.reason
+
+        internal_notes = self.internal_notes
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -34,6 +41,8 @@ class RejectWorkflowStepRequest:
                 "reason": reason,
             }
         )
+        if internal_notes is not UNSET:
+            field_dict["internal_notes"] = internal_notes
 
         return field_dict
 
@@ -44,9 +53,12 @@ class RejectWorkflowStepRequest:
 
         reason = d.pop("reason")
 
+        internal_notes = d.pop("internal_notes", UNSET)
+
         reject_workflow_step_request = cls(
             step_uuid=step_uuid,
             reason=reason,
+            internal_notes=internal_notes,
         )
 
         reject_workflow_step_request.additional_properties = d

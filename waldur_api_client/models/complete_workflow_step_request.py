@@ -19,11 +19,14 @@ class CompleteWorkflowStepRequest:
             step transitions.
         outcome (OutcomeEnum):
         outcome_reason (Union[Unset, str]): Explanation for the outcome. Default: ''.
+        internal_notes (Union[Unset, str]): Internal notes captured by the call-management team. Stored on the step
+            instance and never returned to applicants. Default: ''.
     """
 
     step_uuid: UUID
     outcome: OutcomeEnum
     outcome_reason: Union[Unset, str] = ""
+    internal_notes: Union[Unset, str] = ""
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,6 +35,8 @@ class CompleteWorkflowStepRequest:
         outcome = self.outcome.value
 
         outcome_reason = self.outcome_reason
+
+        internal_notes = self.internal_notes
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -43,6 +48,8 @@ class CompleteWorkflowStepRequest:
         )
         if outcome_reason is not UNSET:
             field_dict["outcome_reason"] = outcome_reason
+        if internal_notes is not UNSET:
+            field_dict["internal_notes"] = internal_notes
 
         return field_dict
 
@@ -55,10 +62,13 @@ class CompleteWorkflowStepRequest:
 
         outcome_reason = d.pop("outcome_reason", UNSET)
 
+        internal_notes = d.pop("internal_notes", UNSET)
+
         complete_workflow_step_request = cls(
             step_uuid=step_uuid,
             outcome=outcome,
             outcome_reason=outcome_reason,
+            internal_notes=internal_notes,
         )
 
         complete_workflow_step_request.additional_properties = d
