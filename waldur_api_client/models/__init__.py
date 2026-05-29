@@ -2131,7 +2131,6 @@ from .scriptrunmode_enum import SCRIPTRUNMODEEnum
 from .secret import Secret
 from .section import Section
 from .section_request import SectionRequest
-from .security_group_rule_protocol_enum import SecurityGroupRuleProtocolEnum
 from .self_declared_conflict_request import SelfDeclaredConflictRequest
 from .send_all_assignment_batches_request import SendAllAssignmentBatchesRequest
 from .send_all_assignment_batches_response import SendAllAssignmentBatchesResponse
@@ -4479,7 +4478,6 @@ __all__ = (
     "Secret",
     "Section",
     "SectionRequest",
-    "SecurityGroupRuleProtocolEnum",
     "SelfDeclaredConflictRequest",
     "SendAllAssignmentBatchesRequest",
     "SendAllAssignmentBatchesResponse",
