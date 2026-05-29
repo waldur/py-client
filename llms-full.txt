@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.14.dev.20260529120343
+# Version: 8.0.9-rc.14.dev.20260529233357
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -16124,6 +16124,13 @@ Query parameters (5):
   - state — State
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
+
+### openstack_routers_effective_routes_retrieve
+GET /api/openstack-routers/{uuid}/effective_routes/
+Summary: Effective routes for this router
+Description: Compose the router's routing table from three sources: the default route inherited from the external gateway subnet, the on-link routes implied by each attached interface, and the user-set static routes. SNAT state is reported alongside.
+Path parameters:
+  - uuid
 
 ### openstack_routers_remove_external_gateway
 POST /api/openstack-routers/{uuid}/remove_external_gateway/

@@ -618,6 +618,9 @@ from .dry_run_request import DryRunRequest
 from .dry_run_state_enum import DryRunStateEnum
 from .dry_run_type_enum import DryRunTypeEnum
 from .duplicate_call_request_request import DuplicateCallRequestRequest
+from .effective_route import EffectiveRoute
+from .effective_route_source_enum import EffectiveRouteSourceEnum
+from .effective_routes_response import EffectiveRoutesResponse
 from .eligibility_check import EligibilityCheck
 from .email_hook import EmailHook
 from .email_hook_request import EmailHookRequest
@@ -3051,6 +3054,9 @@ __all__ = (
     "DryRunStateEnum",
     "DryRunTypeEnum",
     "DuplicateCallRequestRequest",
+    "EffectiveRoute",
+    "EffectiveRouteSourceEnum",
+    "EffectiveRoutesResponse",
     "EligibilityCheck",
     "EmailHook",
     "EmailHookRequest",
