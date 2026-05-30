@@ -10,8 +10,8 @@ from dateutil.parser import isoparse
 
 from .. import types
 from ..models.blank_enum import BlankEnum
-from ..models.kind_enum import KindEnum
 from ..models.oecd_fos_2007_code_enum import OecdFos2007CodeEnum
+from ..models.project_kind_enum import ProjectKindEnum
 from ..types import UNSET, File, Unset
 
 T = TypeVar("T", bound="ProjectRequestMultipart")
@@ -34,7 +34,7 @@ class ProjectRequestMultipart:
         oecd_fos_2007_code (Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]):
         is_industry (Union[Unset, bool]):
         image (Union[File, None, Unset]):
-        kind (Union[Unset, KindEnum]):
+        kind (Union[Unset, ProjectKindEnum]):
         staff_notes (Union[Unset, str]): Internal notes visible only to staff and support users (HTML content will be
             sanitized)
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
@@ -57,7 +57,7 @@ class ProjectRequestMultipart:
     oecd_fos_2007_code: Union[BlankEnum, None, OecdFos2007CodeEnum, Unset] = UNSET
     is_industry: Union[Unset, bool] = UNSET
     image: Union[File, None, Unset] = UNSET
-    kind: Union[Unset, KindEnum] = UNSET
+    kind: Union[Unset, ProjectKindEnum] = UNSET
     staff_notes: Union[Unset, str] = UNSET
     grace_period_days: Union[None, Unset, int] = UNSET
     user_email_patterns: Union[Unset, Any] = UNSET
@@ -392,11 +392,11 @@ class ProjectRequestMultipart:
         image = _parse_image(d.pop("image", UNSET))
 
         _kind = d.pop("kind", UNSET)
-        kind: Union[Unset, KindEnum]
+        kind: Union[Unset, ProjectKindEnum]
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
-            kind = KindEnum(_kind)
+            kind = ProjectKindEnum(_kind)
 
         staff_notes = d.pop("staff_notes", UNSET)
 

@@ -2721,6 +2721,7 @@ Module: `waldur_api_client.api.openstack_tenants`
 - `openstack_tenants_set_erred` POST `/api/openstack-tenants/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
 - `openstack_tenants_set_ok` POST `/api/openstack-tenants/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `openstack_tenants_set_quotas` POST `/api/openstack-tenants/{uuid}/set_quotas/` — Set tenant quotas (path: uuid | request body)
+- `openstack_tenants_topology_retrieve` GET `/api/openstack-tenants/{uuid}/topology/` — Tenant network topology (path: uuid)
 - `openstack_tenants_unlink` POST `/api/openstack-tenants/{uuid}/unlink/` — Unlink resource (path: uuid)
 
 ## openstack-volume-availability-zones

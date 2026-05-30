@@ -8,8 +8,8 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.blank_enum import BlankEnum
-from ..models.kind_enum import KindEnum
 from ..models.oecd_fos_2007_code_enum import OecdFos2007CodeEnum
+from ..models.project_kind_enum import ProjectKindEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -54,7 +54,7 @@ class Project:
         image (Union[None, Unset, str]):
         resources_count (Union[Unset, int]): Number of active resources in this project
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
-        kind (Union[Unset, KindEnum]):
+        kind (Union[Unset, ProjectKindEnum]):
         is_removed (Union[Unset, bool]):
         termination_metadata (Union[Unset, Any]): Metadata about project termination (read-only)
         staff_notes (Union[Unset, str]): Internal notes visible only to staff and support users (HTML content will be
@@ -113,7 +113,7 @@ class Project:
     image: Union[None, Unset, str] = UNSET
     resources_count: Union[Unset, int] = UNSET
     max_service_accounts: Union[None, Unset, int] = UNSET
-    kind: Union[Unset, KindEnum] = UNSET
+    kind: Union[Unset, ProjectKindEnum] = UNSET
     is_removed: Union[Unset, bool] = UNSET
     termination_metadata: Union[Unset, Any] = UNSET
     staff_notes: Union[Unset, str] = UNSET
@@ -643,11 +643,11 @@ class Project:
         max_service_accounts = _parse_max_service_accounts(d.pop("max_service_accounts", UNSET))
 
         _kind = d.pop("kind", UNSET)
-        kind: Union[Unset, KindEnum]
+        kind: Union[Unset, ProjectKindEnum]
         if isinstance(_kind, Unset):
             kind = UNSET
         else:
-            kind = KindEnum(_kind)
+            kind = ProjectKindEnum(_kind)
 
         is_removed = d.pop("is_removed", UNSET)
 

@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class KindEnum(str, Enum):
+class ProjectKindEnum(str, Enum):
     COURSE = "course"
     DEFAULT = "default"
     PUBLIC = "public"

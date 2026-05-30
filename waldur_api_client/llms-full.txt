@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.14.dev.20260529233357
+# Version: 8.0.9-rc.14.dev.20260530192237
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -16934,6 +16934,13 @@ The following quotas are supported. All values ar...
 Path parameters:
   - uuid
 Request body: yes
+
+### openstack_tenants_topology_retrieve
+GET /api/openstack-tenants/{uuid}/topology/
+Summary: Tenant network topology
+Description: Compose the tenant's network topology — routers, networks, subnets, ports, instances, floating IPs, external networks, and inbound RBAC shares — as a graph (nodes + edges). Read-only; all data comes from already-pulled state, no Neutron calls.
+Path parameters:
+  - uuid
 
 ### openstack_tenants_unlink
 POST /api/openstack-tenants/{uuid}/unlink/
