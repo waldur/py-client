@@ -71,6 +71,7 @@ from .allocation_request import AllocationRequest
 from .allocation_set_limits_request import AllocationSetLimitsRequest
 from .allocation_time_enum import AllocationTimeEnum
 from .allocation_user_usage import AllocationUserUsage
+from .allowed_address_pair_entry_request import AllowedAddressPairEntryRequest
 from .allowed_scope_input_request import AllowedScopeInputRequest
 from .allowed_scope_output import AllowedScopeOutput
 from .amount_range_enum import AmountRangeEnum
@@ -581,6 +582,10 @@ from .deprecated_network_rbac_policy_request import DeprecatedNetworkRBACPolicyR
 from .detail import Detail
 from .detail_state import DetailState
 from .detection_method_enum import DetectionMethodEnum
+from .diagnose_check import DiagnoseCheck
+from .diagnose_check_status_enum import DiagnoseCheckStatusEnum
+from .diagnose_connectivity_request_request import DiagnoseConnectivityRequestRequest
+from .diagnose_connectivity_response import DiagnoseConnectivityResponse
 from .digital_ocean_droplet import DigitalOceanDroplet
 from .digital_ocean_droplet_field_enum import DigitalOceanDropletFieldEnum
 from .digital_ocean_droplet_marketplace_offering_plugin_options_type_0 import (
@@ -592,7 +597,6 @@ from .digital_ocean_image import DigitalOceanImage
 from .digital_ocean_image_o_enum import DigitalOceanImageOEnum
 from .digital_ocean_region import DigitalOceanRegion
 from .digital_ocean_size import DigitalOceanSize
-from .direction_enum import DirectionEnum
 from .discount_config_request import DiscountConfigRequest
 from .discount_type_enum import DiscountTypeEnum
 from .discounts_update_request import DiscountsUpdateRequest
@@ -1044,6 +1048,7 @@ from .nested_software_version_request import NestedSoftwareVersionRequest
 from .nested_tag import NestedTag
 from .nested_tag_request import NestedTagRequest
 from .network_rbac_policy import NetworkRBACPolicy
+from .network_rbac_policy_direction_enum import NetworkRBACPolicyDirectionEnum
 from .network_rbac_policy_request import NetworkRBACPolicyRequest
 from .node_disk_driver_enum import NodeDiskDriverEnum
 from .notification import Notification
@@ -1898,6 +1903,7 @@ from .rancher_workload_create import RancherWorkloadCreate
 from .rancher_workload_create_request import RancherWorkloadCreateRequest
 from .rancher_workload_o_enum import RancherWorkloadOEnum
 from .rancher_workload_request import RancherWorkloadRequest
+from .rbac_policy_direction_enum import RbacPolicyDirectionEnum
 from .reassign_item_request import ReassignItemRequest
 from .reassign_item_response import ReassignItemResponse
 from .reconcile_request_request import ReconcileRequestRequest
@@ -2134,6 +2140,7 @@ from .scriptrunmode_enum import SCRIPTRUNMODEEnum
 from .secret import Secret
 from .section import Section
 from .section_request import SectionRequest
+from .security_group_rule_direction_enum import SecurityGroupRuleDirectionEnum
 from .self_declared_conflict_request import SelfDeclaredConflictRequest
 from .send_all_assignment_batches_request import SendAllAssignmentBatchesRequest
 from .send_all_assignment_batches_response import SendAllAssignmentBatchesResponse
@@ -2164,6 +2171,7 @@ from .service_settings import ServiceSettings
 from .service_settings_field_enum import ServiceSettingsFieldEnum
 from .service_settings_options import ServiceSettingsOptions
 from .service_settings_state_enum import ServiceSettingsStateEnum
+from .set_allowed_address_pairs_request import SetAllowedAddressPairsRequest
 from .set_erred_request import SetErredRequest
 from .set_external_gateway_fixed_ip_request import SetExternalGatewayFixedIPRequest
 from .set_external_gateway_request import SetExternalGatewayRequest
@@ -2531,6 +2539,7 @@ __all__ = (
     "AllocationSetLimitsRequest",
     "AllocationTimeEnum",
     "AllocationUserUsage",
+    "AllowedAddressPairEntryRequest",
     "AllowedScopeInputRequest",
     "AllowedScopeOutput",
     "AmountRangeEnum",
@@ -3025,6 +3034,10 @@ __all__ = (
     "Detail",
     "DetailState",
     "DetectionMethodEnum",
+    "DiagnoseCheck",
+    "DiagnoseCheckStatusEnum",
+    "DiagnoseConnectivityRequestRequest",
+    "DiagnoseConnectivityResponse",
     "DigitalOceanDroplet",
     "DigitalOceanDropletFieldEnum",
     "DigitalOceanDropletMarketplaceOfferingPluginOptionsType0",
@@ -3034,7 +3047,6 @@ __all__ = (
     "DigitalOceanImageOEnum",
     "DigitalOceanRegion",
     "DigitalOceanSize",
-    "DirectionEnum",
     "DiscountConfigRequest",
     "DiscountsUpdateRequest",
     "DiscountsUpdateRequestDiscounts",
@@ -3468,6 +3480,7 @@ __all__ = (
     "NestedTag",
     "NestedTagRequest",
     "NetworkRBACPolicy",
+    "NetworkRBACPolicyDirectionEnum",
     "NetworkRBACPolicyRequest",
     "NodeDiskDriverEnum",
     "Notification",
@@ -4256,6 +4269,7 @@ __all__ = (
     "RancherWorkloadCreateRequest",
     "RancherWorkloadOEnum",
     "RancherWorkloadRequest",
+    "RbacPolicyDirectionEnum",
     "ReassignItemRequest",
     "ReassignItemResponse",
     "ReconcileRequestRequest",
@@ -4490,6 +4504,7 @@ __all__ = (
     "Secret",
     "Section",
     "SectionRequest",
+    "SecurityGroupRuleDirectionEnum",
     "SelfDeclaredConflictRequest",
     "SendAllAssignmentBatchesRequest",
     "SendAllAssignmentBatchesResponse",
@@ -4520,6 +4535,7 @@ __all__ = (
     "ServiceSettingsFieldEnum",
     "ServiceSettingsOptions",
     "ServiceSettingsStateEnum",
+    "SetAllowedAddressPairsRequest",
     "SetErredRequest",
     "SetExternalGatewayFixedIPRequest",
     "SetExternalGatewayRequest",

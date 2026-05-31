@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.policy_type_enum import PolicyTypeEnum
+from ..models.rbac_policy_direction_enum import RbacPolicyDirectionEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="DeprecatedNetworkRBACPolicy")
@@ -21,8 +22,12 @@ class DeprecatedNetworkRBACPolicy:
         uuid (UUID):
         network (str):
         network_name (str):
+        source_tenant_uuid (UUID):
+        source_tenant_name (str):
         target_tenant (str):
         target_tenant_name (str):
+        target_label (str):
+        direction (RbacPolicyDirectionEnum):
         backend_id (str):
         created (datetime.datetime):
         policy_type (Union[Unset, PolicyTypeEnum]):  Default: PolicyTypeEnum.ACCESS_AS_SHARED.
@@ -32,8 +37,12 @@ class DeprecatedNetworkRBACPolicy:
     uuid: UUID
     network: str
     network_name: str
+    source_tenant_uuid: UUID
+    source_tenant_name: str
     target_tenant: str
     target_tenant_name: str
+    target_label: str
+    direction: RbacPolicyDirectionEnum
     backend_id: str
     created: datetime.datetime
     policy_type: Union[Unset, PolicyTypeEnum] = PolicyTypeEnum.ACCESS_AS_SHARED
@@ -48,9 +57,17 @@ class DeprecatedNetworkRBACPolicy:
 
         network_name = self.network_name
 
+        source_tenant_uuid = str(self.source_tenant_uuid)
+
+        source_tenant_name = self.source_tenant_name
+
         target_tenant = self.target_tenant
 
         target_tenant_name = self.target_tenant_name
+
+        target_label = self.target_label
+
+        direction = self.direction.value
 
         backend_id = self.backend_id
 
@@ -68,8 +85,12 @@ class DeprecatedNetworkRBACPolicy:
                 "uuid": uuid,
                 "network": network,
                 "network_name": network_name,
+                "source_tenant_uuid": source_tenant_uuid,
+                "source_tenant_name": source_tenant_name,
                 "target_tenant": target_tenant,
                 "target_tenant_name": target_tenant_name,
+                "target_label": target_label,
+                "direction": direction,
                 "backend_id": backend_id,
                 "created": created,
             }
@@ -90,9 +111,17 @@ class DeprecatedNetworkRBACPolicy:
 
         network_name = d.pop("network_name")
 
+        source_tenant_uuid = UUID(d.pop("source_tenant_uuid"))
+
+        source_tenant_name = d.pop("source_tenant_name")
+
         target_tenant = d.pop("target_tenant")
 
         target_tenant_name = d.pop("target_tenant_name")
+
+        target_label = d.pop("target_label")
+
+        direction = RbacPolicyDirectionEnum(d.pop("direction"))
 
         backend_id = d.pop("backend_id")
 
@@ -110,8 +139,12 @@ class DeprecatedNetworkRBACPolicy:
             uuid=uuid,
             network=network,
             network_name=network_name,
+            source_tenant_uuid=source_tenant_uuid,
+            source_tenant_name=source_tenant_name,
             target_tenant=target_tenant,
             target_tenant_name=target_tenant_name,
+            target_label=target_label,
+            direction=direction,
             backend_id=backend_id,
             created=created,
             policy_type=policy_type,

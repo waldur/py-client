@@ -7,6 +7,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.network_rbac_policy import NetworkRBACPolicy
+from ...models.network_rbac_policy_direction_enum import NetworkRBACPolicyDirectionEnum
 from ...models.policy_type_enum import PolicyTypeEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
@@ -14,6 +15,7 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
+    direction: Union[Unset, NetworkRBACPolicyDirectionEnum] = UNSET,
     network: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -25,6 +27,12 @@ def _get_kwargs(
     tenant_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_direction: Union[Unset, str] = UNSET
+    if not isinstance(direction, Unset):
+        json_direction = direction.value
+
+    params["direction"] = json_direction
 
     params["network"] = network
 
@@ -99,6 +107,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    direction: Union[Unset, NetworkRBACPolicyDirectionEnum] = UNSET,
     network: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -114,6 +123,7 @@ def sync_detailed(
      Get a list of network RBAC policies.
 
     Args:
+        direction (Union[Unset, NetworkRBACPolicyDirectionEnum]):
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -133,6 +143,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        direction=direction,
         network=network,
         network_uuid=network_uuid,
         page=page,
@@ -154,6 +165,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    direction: Union[Unset, NetworkRBACPolicyDirectionEnum] = UNSET,
     network: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -169,6 +181,7 @@ def sync(
      Get a list of network RBAC policies.
 
     Args:
+        direction (Union[Unset, NetworkRBACPolicyDirectionEnum]):
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -189,6 +202,7 @@ def sync(
 
     return sync_detailed(
         client=client,
+        direction=direction,
         network=network,
         network_uuid=network_uuid,
         page=page,
@@ -204,6 +218,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    direction: Union[Unset, NetworkRBACPolicyDirectionEnum] = UNSET,
     network: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -219,6 +234,7 @@ async def asyncio_detailed(
      Get a list of network RBAC policies.
 
     Args:
+        direction (Union[Unset, NetworkRBACPolicyDirectionEnum]):
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -238,6 +254,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        direction=direction,
         network=network,
         network_uuid=network_uuid,
         page=page,
@@ -257,6 +274,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    direction: Union[Unset, NetworkRBACPolicyDirectionEnum] = UNSET,
     network: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -272,6 +290,7 @@ async def asyncio(
      Get a list of network RBAC policies.
 
     Args:
+        direction (Union[Unset, NetworkRBACPolicyDirectionEnum]):
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
@@ -293,6 +312,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            direction=direction,
             network=network,
             network_uuid=network_uuid,
             page=page,
@@ -309,6 +329,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
+    direction: Union[Unset, NetworkRBACPolicyDirectionEnum] = UNSET,
     network: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
     policy_type: Union[Unset, PolicyTypeEnum] = UNSET,
@@ -325,6 +346,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        direction (Union[Unset, NetworkRBACPolicyDirectionEnum]):
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
         policy_type (Union[Unset, PolicyTypeEnum]):
@@ -346,6 +368,7 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        direction=direction,
         network=network,
         network_uuid=network_uuid,
         policy_type=policy_type,
@@ -400,6 +423,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
+    direction: Union[Unset, NetworkRBACPolicyDirectionEnum] = UNSET,
     network: Union[Unset, str] = UNSET,
     network_uuid: Union[Unset, UUID] = UNSET,
     policy_type: Union[Unset, PolicyTypeEnum] = UNSET,
@@ -416,6 +440,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        direction (Union[Unset, NetworkRBACPolicyDirectionEnum]):
         network (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
         policy_type (Union[Unset, PolicyTypeEnum]):
@@ -437,6 +462,7 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        direction=direction,
         network=network,
         network_uuid=network_uuid,
         policy_type=policy_type,

@@ -5,8 +5,8 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.direction_enum import DirectionEnum
 from ..models.ethertype_enum import EthertypeEnum
+from ..models.security_group_rule_direction_enum import SecurityGroupRuleDirectionEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RancherClusterSecurityGroupRule")
@@ -18,7 +18,7 @@ class RancherClusterSecurityGroupRule:
     Attributes:
         uuid (UUID):
         ethertype (Union[Unset, EthertypeEnum]):
-        direction (Union[Unset, DirectionEnum]):
+        direction (Union[Unset, SecurityGroupRuleDirectionEnum]):
         protocol (Union[Unset, str]): Network protocol: 'tcp', 'udp', 'icmp', empty (any) or an IANA protocol number
             0-255 (e.g. '112' for VRRP).
         from_port (Union[None, Unset, int]): Starting port number in the range (1-65535)
@@ -29,7 +29,7 @@ class RancherClusterSecurityGroupRule:
 
     uuid: UUID
     ethertype: Union[Unset, EthertypeEnum] = UNSET
-    direction: Union[Unset, DirectionEnum] = UNSET
+    direction: Union[Unset, SecurityGroupRuleDirectionEnum] = UNSET
     protocol: Union[Unset, str] = UNSET
     from_port: Union[None, Unset, int] = UNSET
     to_port: Union[None, Unset, int] = UNSET
@@ -107,11 +107,11 @@ class RancherClusterSecurityGroupRule:
             ethertype = EthertypeEnum(_ethertype)
 
         _direction = d.pop("direction", UNSET)
-        direction: Union[Unset, DirectionEnum]
+        direction: Union[Unset, SecurityGroupRuleDirectionEnum]
         if isinstance(_direction, Unset):
             direction = UNSET
         else:
-            direction = DirectionEnum(_direction)
+            direction = SecurityGroupRuleDirectionEnum(_direction)
 
         protocol = d.pop("protocol", UNSET)
 

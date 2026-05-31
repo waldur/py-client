@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class DirectionEnum(str, Enum):
+class SecurityGroupRuleDirectionEnum(str, Enum):
     EGRESS = "egress"
     INGRESS = "ingress"
 

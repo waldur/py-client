@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.14.dev.20260530233343
+# Version: 8.0.9-rc.14.dev.20260531122602
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -15115,6 +15115,14 @@ Path parameters:
 Query parameters (1):
   - length
 
+### openstack_instances_diagnose_connectivity
+POST /api/openstack-instances/{uuid}/diagnose_connectivity/
+Summary: Diagnose connectivity
+Description: Walks the wiring that connects this instance to the requested target (default 'external') and returns a per-check report computed from Waldur's already-pulled state — no live OpenStack call. Use to triage 'VM can't reach the internet' or 'VIP doesn't work' tickets in one click.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### openstack_instances_floating_ips_list
 GET /api/openstack-instances/{uuid}/floating_ips/
 Summary: List instance floating IPs
@@ -15529,7 +15537,8 @@ Path parameters:
 GET /api/openstack-network-rbac-policies/
 Summary: List network RBAC policies
 Description: Get a list of network RBAC policies.
-Query parameters (7):
+Query parameters (8):
+  - direction — Direction relative to the requesting user
   - network — Network URL
   - network_uuid — Network UUID
   - policy_type — Type of access granted - either shared access or external network access
@@ -15542,7 +15551,8 @@ Query parameters (7):
 HEAD /api/openstack-network-rbac-policies/
 Summary: List network RBAC policies
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (8):
+  - direction — Direction relative to the requesting user
   - network — Network URL
   - network_uuid — Network UUID
   - policy_type — Type of access granted - either shared access or external network access
@@ -16014,6 +16024,14 @@ Summary: Synchronize resource state
 Description: Schedule an asynchronous pull operation to synchronize resource state from the backend. Returns 202 if the pull was scheduled successfully, or 409 if the pull operation is not implemented for this resource type.
 Path parameters:
   - uuid
+
+### openstack_ports_set_allowed_address_pairs
+POST /api/openstack-ports/{uuid}/set_allowed_address_pairs/
+Summary: Set allowed address pairs
+Description: Replace the Port's allowed_address_pairs list. Cluster-VIP workloads (keepalived, MetalLB, OpenShift ingress, OVN router) need ports to permit additional IP/MAC pairs beyond their fixed IPs. Values are validated and pushed to Neutron.
+Path parameters:
+  - uuid
+Request body: yes
 
 ### openstack_ports_set_erred
 POST /api/openstack-ports/{uuid}/set_erred/

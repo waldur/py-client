@@ -2480,6 +2480,7 @@ Module: `waldur_api_client.api.openstack_instances`
 - `openstack_instances_change_flavor` POST `/api/openstack-instances/{uuid}/change_flavor/` — Change instance flavor (path: uuid | request body)
 - `openstack_instances_console_retrieve` GET `/api/openstack-instances/{uuid}/console/` — Get console URL (path: uuid)
 - `openstack_instances_console_log_retrieve` GET `/api/openstack-instances/{uuid}/console_log/` — Get console log (path: uuid | 1 query param)
+- `openstack_instances_diagnose_connectivity` POST `/api/openstack-instances/{uuid}/diagnose_connectivity/` — Diagnose connectivity (path: uuid | request body)
 - `openstack_instances_floating_ips_list` GET `/api/openstack-instances/{uuid}/floating_ips/` — List instance floating IPs (path: uuid)
 - `openstack_instances_placement_allocations_list` GET `/api/openstack-instances/{uuid}/placement_allocations/` — Get Placement allocations for the instance (path: uuid)
 - `openstack_instances_ports_list` GET `/api/openstack-instances/{uuid}/ports/` — List instance ports (path: uuid)
@@ -2548,8 +2549,8 @@ Module: `waldur_api_client.api.openstack_migrations`
 ## openstack-network-rbac-policies
 Module: `waldur_api_client.api.openstack_network_rbac_policies`
 
-- `openstack_network_rbac_policies_list` GET `/api/openstack-network-rbac-policies/` — List network RBAC policies (7 query params)
-- `openstack_network_rbac_policies_count` HEAD `/api/openstack-network-rbac-policies/` — List network RBAC policies (7 query params)
+- `openstack_network_rbac_policies_list` GET `/api/openstack-network-rbac-policies/` — List network RBAC policies (8 query params)
+- `openstack_network_rbac_policies_count` HEAD `/api/openstack-network-rbac-policies/` — List network RBAC policies (8 query params)
 - `openstack_network_rbac_policies_create` POST `/api/openstack-network-rbac-policies/` — Create RBAC policy (request body)
 - `openstack_network_rbac_policies_retrieve` GET `/api/openstack-network-rbac-policies/{uuid}/` — Get network RBAC policy details (path: uuid)
 - `openstack_network_rbac_policies_update` PUT `/api/openstack-network-rbac-policies/{uuid}/` (path: uuid | request body)
@@ -2613,6 +2614,7 @@ Module: `waldur_api_client.api.openstack_ports`
 - `openstack_ports_enable_port` POST `/api/openstack-ports/{uuid}/enable_port/` — Enable port (path: uuid)
 - `openstack_ports_enable_port_security` POST `/api/openstack-ports/{uuid}/enable_port_security/` — Enable port security (path: uuid)
 - `openstack_ports_pull` POST `/api/openstack-ports/{uuid}/pull/` — Synchronize resource state (path: uuid)
+- `openstack_ports_set_allowed_address_pairs` POST `/api/openstack-ports/{uuid}/set_allowed_address_pairs/` — Set allowed address pairs (path: uuid | request body)
 - `openstack_ports_set_erred` POST `/api/openstack-ports/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
 - `openstack_ports_set_ok` POST `/api/openstack-ports/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `openstack_ports_unlink` POST `/api/openstack-ports/{uuid}/unlink/` — Unlink resource (path: uuid)
