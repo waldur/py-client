@@ -1082,8 +1082,8 @@ Module: `waldur_api_client.api.marketplace_bookings`
 ## marketplace-categories
 Module: `waldur_api_client.api.marketplace_categories`
 
-- `marketplace_categories_list` GET `/api/marketplace-categories/` — List categories (9 query params)
-- `marketplace_categories_count` HEAD `/api/marketplace-categories/` — List categories (8 query params)
+- `marketplace_categories_list` GET `/api/marketplace-categories/` — List categories (10 query params)
+- `marketplace_categories_count` HEAD `/api/marketplace-categories/` — List categories (9 query params)
 - `marketplace_categories_create` POST `/api/marketplace-categories/` — Create a category (request body)
 - `marketplace_categories_retrieve` GET `/api/marketplace-categories/{uuid}/` — Retrieve a category (path: uuid | 1 query param)
 - `marketplace_categories_update` PUT `/api/marketplace-categories/{uuid}/` — Update a category (path: uuid | request body)

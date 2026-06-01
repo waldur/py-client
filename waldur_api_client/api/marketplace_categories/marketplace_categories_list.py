@@ -20,6 +20,7 @@ def _get_kwargs(
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -58,6 +59,8 @@ def _get_kwargs(
     params["group_uuid"] = json_group_uuid
 
     params["has_shared"] = has_shared
+
+    params["o"] = o
 
     params["offering_name"] = offering_name
 
@@ -124,6 +127,7 @@ def sync_detailed(
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -141,6 +145,7 @@ def sync_detailed(
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
+        o (Union[Unset, str]):
         offering_name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -162,6 +167,7 @@ def sync_detailed(
         field=field,
         group_uuid=group_uuid,
         has_shared=has_shared,
+        o=o,
         offering_name=offering_name,
         page=page,
         page_size=page_size,
@@ -185,6 +191,7 @@ def sync(
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -202,6 +209,7 @@ def sync(
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
+        o (Union[Unset, str]):
         offering_name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -224,6 +232,7 @@ def sync(
         field=field,
         group_uuid=group_uuid,
         has_shared=has_shared,
+        o=o,
         offering_name=offering_name,
         page=page,
         page_size=page_size,
@@ -241,6 +250,7 @@ async def asyncio_detailed(
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -258,6 +268,7 @@ async def asyncio_detailed(
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
+        o (Union[Unset, str]):
         offering_name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -279,6 +290,7 @@ async def asyncio_detailed(
         field=field,
         group_uuid=group_uuid,
         has_shared=has_shared,
+        o=o,
         offering_name=offering_name,
         page=page,
         page_size=page_size,
@@ -300,6 +312,7 @@ async def asyncio(
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -317,6 +330,7 @@ async def asyncio(
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
+        o (Union[Unset, str]):
         offering_name (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -340,6 +354,7 @@ async def asyncio(
             field=field,
             group_uuid=group_uuid,
             has_shared=has_shared,
+            o=o,
             offering_name=offering_name,
             page=page,
             page_size=page_size,
@@ -358,6 +373,7 @@ def sync_all(
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
@@ -376,6 +392,7 @@ def sync_all(
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
+        o (Union[Unset, str]):
         offering_name (Union[Unset, str]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
@@ -399,6 +416,7 @@ def sync_all(
         field=field,
         group_uuid=group_uuid,
         has_shared=has_shared,
+        o=o,
         offering_name=offering_name,
         resource_customer_uuid=resource_customer_uuid,
         resource_project_uuid=resource_project_uuid,
@@ -455,6 +473,7 @@ async def asyncio_all(
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
     has_shared: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
     offering_name: Union[Unset, str] = UNSET,
     resource_customer_uuid: Union[Unset, UUID] = UNSET,
     resource_project_uuid: Union[Unset, UUID] = UNSET,
@@ -473,6 +492,7 @@ async def asyncio_all(
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
         group_uuid (Union[Unset, UUID]):
         has_shared (Union[Unset, bool]):
+        o (Union[Unset, str]):
         offering_name (Union[Unset, str]):
         resource_customer_uuid (Union[Unset, UUID]):
         resource_project_uuid (Union[Unset, UUID]):
@@ -496,6 +516,7 @@ async def asyncio_all(
         field=field,
         group_uuid=group_uuid,
         has_shared=has_shared,
+        o=o,
         offering_name=offering_name,
         resource_customer_uuid=resource_customer_uuid,
         resource_project_uuid=resource_project_uuid,

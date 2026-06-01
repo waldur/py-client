@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.15.dev.20260531233344
+# Version: 8.0.9-rc.15.dev.20260601140600
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5864,12 +5864,13 @@ Path parameters:
 GET /api/marketplace-categories/
 Summary: List categories
 Description: Returns a paginated list of marketplace categories.
-Query parameters (9):
+Query parameters (10):
   - customer_uuid — Customer UUID
   - customers_offerings_state — Customers offerings state
   - field
   - group_uuid — Category group UUID
   - has_shared — Has shared
+  - o — Which field to use when ordering the results.
   - offering_name — Offering name contains
   - resource_customer_uuid — Resource customer UUID
   - resource_project_uuid — Resource project UUID
@@ -5879,11 +5880,12 @@ Query parameters (9):
 HEAD /api/marketplace-categories/
 Summary: List categories
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (8):
+Query parameters (9):
   - customer_uuid — Customer UUID
   - customers_offerings_state — Customers offerings state
   - group_uuid — Category group UUID
   - has_shared — Has shared
+  - o — Which field to use when ordering the results.
   - offering_name — Offering name contains
   - resource_customer_uuid — Resource customer UUID
   - resource_project_uuid — Resource project UUID
