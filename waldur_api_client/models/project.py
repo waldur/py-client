@@ -70,7 +70,7 @@ class Project:
         user_email_patterns (Union[Unset, Any]):
         user_affiliations (Union[Unset, Any]):
         user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
-        affiliation (Union[Unset, AffiliatedOrganization]):
+        affiliation (Union['AffiliatedOrganization', None, Unset]):
         affiliation_uuid (Union[None, UUID, Unset]):
         affiliation_name (Union[Unset, str]):
         affiliation_code (Union[Unset, str]): Unique short identifier, e.g. CERN, EMBL.
@@ -124,7 +124,7 @@ class Project:
     user_email_patterns: Union[Unset, Any] = UNSET
     user_affiliations: Union[Unset, Any] = UNSET
     user_identity_sources: Union[Unset, Any] = UNSET
-    affiliation: Union[Unset, "AffiliatedOrganization"] = UNSET
+    affiliation: Union["AffiliatedOrganization", None, Unset] = UNSET
     affiliation_uuid: Union[None, UUID, Unset] = UNSET
     affiliation_name: Union[Unset, str] = UNSET
     affiliation_code: Union[Unset, str] = UNSET
@@ -140,6 +140,8 @@ class Project:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.affiliated_organization import AffiliatedOrganization
+
         url = self.url
 
         uuid: Union[Unset, str] = UNSET
@@ -290,9 +292,13 @@ class Project:
 
         user_identity_sources = self.user_identity_sources
 
-        affiliation: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.affiliation, Unset):
+        affiliation: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.affiliation, Unset):
+            affiliation = UNSET
+        elif isinstance(self.affiliation, AffiliatedOrganization):
             affiliation = self.affiliation.to_dict()
+        else:
+            affiliation = self.affiliation
 
         affiliation_uuid: Union[None, Unset, str]
         if isinstance(self.affiliation_uuid, Unset):
@@ -698,12 +704,22 @@ class Project:
 
         user_identity_sources = d.pop("user_identity_sources", UNSET)
 
-        _affiliation = d.pop("affiliation", UNSET)
-        affiliation: Union[Unset, AffiliatedOrganization]
-        if isinstance(_affiliation, Unset):
-            affiliation = UNSET
-        else:
-            affiliation = AffiliatedOrganization.from_dict(_affiliation)
+        def _parse_affiliation(data: object) -> Union["AffiliatedOrganization", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                affiliation_type_1 = AffiliatedOrganization.from_dict(data)
+
+                return affiliation_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["AffiliatedOrganization", None, Unset], data)
+
+        affiliation = _parse_affiliation(d.pop("affiliation", UNSET))
 
         def _parse_affiliation_uuid(data: object) -> Union[None, UUID, Unset]:
             if data is None:
