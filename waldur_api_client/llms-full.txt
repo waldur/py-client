@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.16.dev.20260602124409
+# Version: 8.0.9-rc.17.dev.20260602204606
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -14848,7 +14848,7 @@ Path parameters:
 
 ### openstack_hypervisors_list
 GET /api/openstack-hypervisors/
-Query parameters (7):
+Query parameters (8):
   - hypervisor_type
   - name — Name
   - name_exact — Name (exact)
@@ -14856,12 +14856,13 @@ Query parameters (7):
   - settings_uuid — Settings UUID
   - state
   - status
+  - trait — Trait names with AND logic (comma-separated)
 
 ### openstack_hypervisors_count
 HEAD /api/openstack-hypervisors/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (8):
   - hypervisor_type
   - name — Name
   - name_exact — Name (exact)
@@ -14869,6 +14870,7 @@ Query parameters (7):
   - settings_uuid — Settings UUID
   - state
   - status
+  - trait — Trait names with AND logic (comma-separated)
 
 ### openstack_hypervisors_allocation_candidates_retrieve
 GET /api/openstack-hypervisors/allocation_candidates/

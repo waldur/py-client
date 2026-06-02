@@ -14,18 +14,18 @@ class IdentityProvider:
     """
     Attributes:
         provider (str):
-        client_id (str): ID of application used for OAuth authentication.
-        client_secret (str): Application secret key.
-        discovery_url (str): The endpoint for endpoint discovery.
-        userinfo_url (str): The endpoint for fetching user info.
-        token_url (str): The endpoint for obtaining auth token.
-        auth_url (str): The endpoint for authorization request flow.
-        logout_url (str): The endpoint used to redirect after sign-out.
         label (str): Human-readable identity provider is label.
         is_active (Union[Unset, bool]):
+        client_id (Union[Unset, str]): ID of application used for OAuth authentication.
+        client_secret (Union[Unset, str]): Application secret key.
         verify_ssl (Union[Unset, bool]):
         enable_post_logout_redirect (Union[Unset, bool]):
         enable_pkce (Union[Unset, bool]):
+        discovery_url (Union[Unset, str]): The endpoint for endpoint discovery.
+        userinfo_url (Union[Unset, str]): The endpoint for fetching user info.
+        token_url (Union[Unset, str]): The endpoint for obtaining auth token.
+        auth_url (Union[Unset, str]): The endpoint for authorization request flow.
+        logout_url (Union[Unset, str]): The endpoint used to redirect after sign-out.
         management_url (Union[Unset, str]): The endpoint for user details management.
         protected_fields (Union[Unset, Any]):
         extra_scope (Union[None, Unset, str]): Space-separated list of scopes to request during authentication.
@@ -42,18 +42,18 @@ class IdentityProvider:
     """
 
     provider: str
-    client_id: str
-    client_secret: str
-    discovery_url: str
-    userinfo_url: str
-    token_url: str
-    auth_url: str
-    logout_url: str
     label: str
     is_active: Union[Unset, bool] = UNSET
+    client_id: Union[Unset, str] = UNSET
+    client_secret: Union[Unset, str] = UNSET
     verify_ssl: Union[Unset, bool] = UNSET
     enable_post_logout_redirect: Union[Unset, bool] = UNSET
     enable_pkce: Union[Unset, bool] = UNSET
+    discovery_url: Union[Unset, str] = UNSET
+    userinfo_url: Union[Unset, str] = UNSET
+    token_url: Union[Unset, str] = UNSET
+    auth_url: Union[Unset, str] = UNSET
+    logout_url: Union[Unset, str] = UNSET
     management_url: Union[Unset, str] = UNSET
     protected_fields: Union[Unset, Any] = UNSET
     extra_scope: Union[None, Unset, str] = UNSET
@@ -67,9 +67,19 @@ class IdentityProvider:
     def to_dict(self) -> dict[str, Any]:
         provider = self.provider
 
+        label = self.label
+
+        is_active = self.is_active
+
         client_id = self.client_id
 
         client_secret = self.client_secret
+
+        verify_ssl = self.verify_ssl
+
+        enable_post_logout_redirect = self.enable_post_logout_redirect
+
+        enable_pkce = self.enable_pkce
 
         discovery_url = self.discovery_url
 
@@ -80,16 +90,6 @@ class IdentityProvider:
         auth_url = self.auth_url
 
         logout_url = self.logout_url
-
-        label = self.label
-
-        is_active = self.is_active
-
-        verify_ssl = self.verify_ssl
-
-        enable_post_logout_redirect = self.enable_post_logout_redirect
-
-        enable_pkce = self.enable_pkce
 
         management_url = self.management_url
 
@@ -120,24 +120,31 @@ class IdentityProvider:
         field_dict.update(
             {
                 "provider": provider,
-                "client_id": client_id,
-                "client_secret": client_secret,
-                "discovery_url": discovery_url,
-                "userinfo_url": userinfo_url,
-                "token_url": token_url,
-                "auth_url": auth_url,
-                "logout_url": logout_url,
                 "label": label,
             }
         )
         if is_active is not UNSET:
             field_dict["is_active"] = is_active
+        if client_id is not UNSET:
+            field_dict["client_id"] = client_id
+        if client_secret is not UNSET:
+            field_dict["client_secret"] = client_secret
         if verify_ssl is not UNSET:
             field_dict["verify_ssl"] = verify_ssl
         if enable_post_logout_redirect is not UNSET:
             field_dict["enable_post_logout_redirect"] = enable_post_logout_redirect
         if enable_pkce is not UNSET:
             field_dict["enable_pkce"] = enable_pkce
+        if discovery_url is not UNSET:
+            field_dict["discovery_url"] = discovery_url
+        if userinfo_url is not UNSET:
+            field_dict["userinfo_url"] = userinfo_url
+        if token_url is not UNSET:
+            field_dict["token_url"] = token_url
+        if auth_url is not UNSET:
+            field_dict["auth_url"] = auth_url
+        if logout_url is not UNSET:
+            field_dict["logout_url"] = logout_url
         if management_url is not UNSET:
             field_dict["management_url"] = management_url
         if protected_fields is not UNSET:
@@ -162,29 +169,29 @@ class IdentityProvider:
         d = dict(src_dict)
         provider = d.pop("provider")
 
-        client_id = d.pop("client_id")
-
-        client_secret = d.pop("client_secret")
-
-        discovery_url = d.pop("discovery_url")
-
-        userinfo_url = d.pop("userinfo_url")
-
-        token_url = d.pop("token_url")
-
-        auth_url = d.pop("auth_url")
-
-        logout_url = d.pop("logout_url")
-
         label = d.pop("label")
 
         is_active = d.pop("is_active", UNSET)
+
+        client_id = d.pop("client_id", UNSET)
+
+        client_secret = d.pop("client_secret", UNSET)
 
         verify_ssl = d.pop("verify_ssl", UNSET)
 
         enable_post_logout_redirect = d.pop("enable_post_logout_redirect", UNSET)
 
         enable_pkce = d.pop("enable_pkce", UNSET)
+
+        discovery_url = d.pop("discovery_url", UNSET)
+
+        userinfo_url = d.pop("userinfo_url", UNSET)
+
+        token_url = d.pop("token_url", UNSET)
+
+        auth_url = d.pop("auth_url", UNSET)
+
+        logout_url = d.pop("logout_url", UNSET)
 
         management_url = d.pop("management_url", UNSET)
 
@@ -218,18 +225,18 @@ class IdentityProvider:
 
         identity_provider = cls(
             provider=provider,
+            label=label,
+            is_active=is_active,
             client_id=client_id,
             client_secret=client_secret,
+            verify_ssl=verify_ssl,
+            enable_post_logout_redirect=enable_post_logout_redirect,
+            enable_pkce=enable_pkce,
             discovery_url=discovery_url,
             userinfo_url=userinfo_url,
             token_url=token_url,
             auth_url=auth_url,
             logout_url=logout_url,
-            label=label,
-            is_active=is_active,
-            verify_ssl=verify_ssl,
-            enable_post_logout_redirect=enable_post_logout_redirect,
-            enable_pkce=enable_pkce,
             management_url=management_url,
             protected_fields=protected_fields,
             extra_scope=extra_scope,

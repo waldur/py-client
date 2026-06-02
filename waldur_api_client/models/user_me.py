@@ -29,7 +29,6 @@ class UserMe:
         full_name (str):
         email (str):
         civil_number (Union[None, str]):
-        token (str):
         token_expires_at (Union[None, datetime.datetime]):
         registration_method (str): Indicates what registration method was used.
         date_joined (datetime.datetime):
@@ -43,13 +42,7 @@ class UserMe:
         identity_provider_fields (list[str]):
         identity_source (str): Indicates what identity provider was used.
         should_protect_user_details (bool):
-        has_active_session (bool):
-        has_usable_password (bool):
         ip_address (str):
-        attribute_sources (Any): Per-attribute source and freshness tracking. Format: {'field_name': {'source':
-            'isd:<name>', 'timestamp': 'ISO8601'}}.
-        active_isds (Any): List of ISDs that have asserted this user exists. User is deactivated when this becomes
-            empty.
         profile_completeness (ProfileCompleteness):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         native_name (Union[Unset, str]):
@@ -61,6 +54,7 @@ class UserMe:
         is_active (Union[Unset, bool]): Designates whether this user should be treated as active. Unselect this instead
             of deleting accounts.
         is_support (Union[Unset, bool]): Designates whether the user is a global support user.
+        token (Union[Unset, str]):
         token_lifetime (Union[None, Unset, int]): Token lifetime in seconds.
         notifications_enabled (Union[Unset, bool]): Designates whether the user is allowed to receive email
             notifications.
@@ -69,6 +63,8 @@ class UserMe:
         last_name (Union[Unset, str]):
         birth_date (Union[None, Unset, datetime.date]):
         image (Union[None, Unset, str]):
+        has_active_session (Union[Unset, bool]):
+        has_usable_password (Union[Unset, bool]):
         gender (Union[BlankEnum, GenderEnum, None, Unset]): User's gender (male, female, or unknown)
         personal_title (Union[Unset, str]): Honorific title (Mr, Ms, Dr, Prof, etc.)
         place_of_birth (Union[Unset, str]):
@@ -84,8 +80,12 @@ class UserMe:
             identities.
         can_use_personal_access_tokens (Union[Unset, bool]): Designates whether the user is allowed to create and use
             personal access tokens.
+        attribute_sources (Union[Unset, Any]): Per-attribute source and freshness tracking. Format: {'field_name':
+            {'source': 'isd:<name>', 'timestamp': 'ISO8601'}}.
         managed_isds (Union[Unset, Any]): List of ISD source identifiers this user can manage via Identity Bridge. E.g.,
             ['isd:puhuri', 'isd:fenix']. Non-empty list implies identity manager role.
+        active_isds (Union[Unset, Any]): List of ISDs that have asserted this user exists. User is deactivated when this
+            becomes empty.
         deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.
     """
 
@@ -95,7 +95,6 @@ class UserMe:
     full_name: str
     email: str
     civil_number: Union[None, str]
-    token: str
     token_expires_at: Union[None, datetime.datetime]
     registration_method: str
     date_joined: datetime.datetime
@@ -109,11 +108,7 @@ class UserMe:
     identity_provider_fields: list[str]
     identity_source: str
     should_protect_user_details: bool
-    has_active_session: bool
-    has_usable_password: bool
     ip_address: str
-    attribute_sources: Any
-    active_isds: Any
     profile_completeness: "ProfileCompleteness"
     slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
@@ -124,6 +119,7 @@ class UserMe:
     is_staff: Union[Unset, bool] = UNSET
     is_active: Union[Unset, bool] = UNSET
     is_support: Union[Unset, bool] = UNSET
+    token: Union[Unset, str] = UNSET
     token_lifetime: Union[None, Unset, int] = UNSET
     notifications_enabled: Union[Unset, bool] = UNSET
     preferred_language: Union[Unset, str] = UNSET
@@ -131,6 +127,8 @@ class UserMe:
     last_name: Union[Unset, str] = UNSET
     birth_date: Union[None, Unset, datetime.date] = UNSET
     image: Union[None, Unset, str] = UNSET
+    has_active_session: Union[Unset, bool] = UNSET
+    has_usable_password: Union[Unset, bool] = UNSET
     gender: Union[BlankEnum, GenderEnum, None, Unset] = UNSET
     personal_title: Union[Unset, str] = UNSET
     place_of_birth: Union[Unset, str] = UNSET
@@ -144,7 +142,9 @@ class UserMe:
     eduperson_assurance: Union[Unset, Any] = UNSET
     is_identity_manager: Union[Unset, bool] = UNSET
     can_use_personal_access_tokens: Union[Unset, bool] = UNSET
+    attribute_sources: Union[Unset, Any] = UNSET
     managed_isds: Union[Unset, Any] = UNSET
+    active_isds: Union[Unset, Any] = UNSET
     deactivation_reason: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -161,8 +161,6 @@ class UserMe:
 
         civil_number: Union[None, str]
         civil_number = self.civil_number
-
-        token = self.token
 
         token_expires_at: Union[None, str]
         if isinstance(self.token_expires_at, datetime.datetime):
@@ -202,15 +200,7 @@ class UserMe:
 
         should_protect_user_details = self.should_protect_user_details
 
-        has_active_session = self.has_active_session
-
-        has_usable_password = self.has_usable_password
-
         ip_address = self.ip_address
-
-        attribute_sources = self.attribute_sources
-
-        active_isds = self.active_isds
 
         profile_completeness = self.profile_completeness.to_dict()
 
@@ -231,6 +221,8 @@ class UserMe:
         is_active = self.is_active
 
         is_support = self.is_support
+
+        token = self.token
 
         token_lifetime: Union[None, Unset, int]
         if isinstance(self.token_lifetime, Unset):
@@ -259,6 +251,10 @@ class UserMe:
             image = UNSET
         else:
             image = self.image
+
+        has_active_session = self.has_active_session
+
+        has_usable_password = self.has_usable_password
 
         gender: Union[None, Unset, str]
         if isinstance(self.gender, Unset):
@@ -294,7 +290,11 @@ class UserMe:
 
         can_use_personal_access_tokens = self.can_use_personal_access_tokens
 
+        attribute_sources = self.attribute_sources
+
         managed_isds = self.managed_isds
+
+        active_isds = self.active_isds
 
         deactivation_reason = self.deactivation_reason
 
@@ -308,7 +308,6 @@ class UserMe:
                 "full_name": full_name,
                 "email": email,
                 "civil_number": civil_number,
-                "token": token,
                 "token_expires_at": token_expires_at,
                 "registration_method": registration_method,
                 "date_joined": date_joined,
@@ -322,11 +321,7 @@ class UserMe:
                 "identity_provider_fields": identity_provider_fields,
                 "identity_source": identity_source,
                 "should_protect_user_details": should_protect_user_details,
-                "has_active_session": has_active_session,
-                "has_usable_password": has_usable_password,
                 "ip_address": ip_address,
-                "attribute_sources": attribute_sources,
-                "active_isds": active_isds,
                 "profile_completeness": profile_completeness,
             }
         )
@@ -348,6 +343,8 @@ class UserMe:
             field_dict["is_active"] = is_active
         if is_support is not UNSET:
             field_dict["is_support"] = is_support
+        if token is not UNSET:
+            field_dict["token"] = token
         if token_lifetime is not UNSET:
             field_dict["token_lifetime"] = token_lifetime
         if notifications_enabled is not UNSET:
@@ -362,6 +359,10 @@ class UserMe:
             field_dict["birth_date"] = birth_date
         if image is not UNSET:
             field_dict["image"] = image
+        if has_active_session is not UNSET:
+            field_dict["has_active_session"] = has_active_session
+        if has_usable_password is not UNSET:
+            field_dict["has_usable_password"] = has_usable_password
         if gender is not UNSET:
             field_dict["gender"] = gender
         if personal_title is not UNSET:
@@ -388,8 +389,12 @@ class UserMe:
             field_dict["is_identity_manager"] = is_identity_manager
         if can_use_personal_access_tokens is not UNSET:
             field_dict["can_use_personal_access_tokens"] = can_use_personal_access_tokens
+        if attribute_sources is not UNSET:
+            field_dict["attribute_sources"] = attribute_sources
         if managed_isds is not UNSET:
             field_dict["managed_isds"] = managed_isds
+        if active_isds is not UNSET:
+            field_dict["active_isds"] = active_isds
         if deactivation_reason is not UNSET:
             field_dict["deactivation_reason"] = deactivation_reason
 
@@ -417,8 +422,6 @@ class UserMe:
             return cast(Union[None, str], data)
 
         civil_number = _parse_civil_number(d.pop("civil_number"))
-
-        token = d.pop("token")
 
         def _parse_token_expires_at(data: object) -> Union[None, datetime.datetime]:
             if data is None:
@@ -482,15 +485,7 @@ class UserMe:
 
         should_protect_user_details = d.pop("should_protect_user_details")
 
-        has_active_session = d.pop("has_active_session")
-
-        has_usable_password = d.pop("has_usable_password")
-
         ip_address = d.pop("ip_address")
-
-        attribute_sources = d.pop("attribute_sources")
-
-        active_isds = d.pop("active_isds")
 
         profile_completeness = ProfileCompleteness.from_dict(d.pop("profile_completeness"))
 
@@ -511,6 +506,8 @@ class UserMe:
         is_active = d.pop("is_active", UNSET)
 
         is_support = d.pop("is_support", UNSET)
+
+        token = d.pop("token", UNSET)
 
         def _parse_token_lifetime(data: object) -> Union[None, Unset, int]:
             if data is None:
@@ -554,6 +551,10 @@ class UserMe:
             return cast(Union[None, Unset, str], data)
 
         image = _parse_image(d.pop("image", UNSET))
+
+        has_active_session = d.pop("has_active_session", UNSET)
+
+        has_usable_password = d.pop("has_usable_password", UNSET)
 
         def _parse_gender(data: object) -> Union[BlankEnum, GenderEnum, None, Unset]:
             if data is None:
@@ -604,7 +605,11 @@ class UserMe:
 
         can_use_personal_access_tokens = d.pop("can_use_personal_access_tokens", UNSET)
 
+        attribute_sources = d.pop("attribute_sources", UNSET)
+
         managed_isds = d.pop("managed_isds", UNSET)
+
+        active_isds = d.pop("active_isds", UNSET)
 
         deactivation_reason = d.pop("deactivation_reason", UNSET)
 
@@ -615,7 +620,6 @@ class UserMe:
             full_name=full_name,
             email=email,
             civil_number=civil_number,
-            token=token,
             token_expires_at=token_expires_at,
             registration_method=registration_method,
             date_joined=date_joined,
@@ -629,11 +633,7 @@ class UserMe:
             identity_provider_fields=identity_provider_fields,
             identity_source=identity_source,
             should_protect_user_details=should_protect_user_details,
-            has_active_session=has_active_session,
-            has_usable_password=has_usable_password,
             ip_address=ip_address,
-            attribute_sources=attribute_sources,
-            active_isds=active_isds,
             profile_completeness=profile_completeness,
             slug=slug,
             native_name=native_name,
@@ -644,6 +644,7 @@ class UserMe:
             is_staff=is_staff,
             is_active=is_active,
             is_support=is_support,
+            token=token,
             token_lifetime=token_lifetime,
             notifications_enabled=notifications_enabled,
             preferred_language=preferred_language,
@@ -651,6 +652,8 @@ class UserMe:
             last_name=last_name,
             birth_date=birth_date,
             image=image,
+            has_active_session=has_active_session,
+            has_usable_password=has_usable_password,
             gender=gender,
             personal_title=personal_title,
             place_of_birth=place_of_birth,
@@ -664,7 +667,9 @@ class UserMe:
             eduperson_assurance=eduperson_assurance,
             is_identity_manager=is_identity_manager,
             can_use_personal_access_tokens=can_use_personal_access_tokens,
+            attribute_sources=attribute_sources,
             managed_isds=managed_isds,
+            active_isds=active_isds,
             deactivation_reason=deactivation_reason,
         )
 

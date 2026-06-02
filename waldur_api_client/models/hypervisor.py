@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -19,6 +19,7 @@ class Hypervisor:
         name (str):
         settings (str):
         backend_id (str):
+        traits (list[str]):
         hypervisor_type (Union[Unset, str]): Hypervisor type, e.g. KVM, QEMU, VMware
         vcpus (Union[Unset, int]): Total vCPUs
         vcpus_used (Union[Unset, int]): Used vCPUs
@@ -36,6 +37,7 @@ class Hypervisor:
     name: str
     settings: str
     backend_id: str
+    traits: list[str]
     hypervisor_type: Union[Unset, str] = UNSET
     vcpus: Union[Unset, int] = UNSET
     vcpus_used: Union[Unset, int] = UNSET
@@ -58,6 +60,8 @@ class Hypervisor:
         settings = self.settings
 
         backend_id = self.backend_id
+
+        traits = self.traits
 
         hypervisor_type = self.hypervisor_type
 
@@ -88,6 +92,7 @@ class Hypervisor:
                 "name": name,
                 "settings": settings,
                 "backend_id": backend_id,
+                "traits": traits,
             }
         )
         if hypervisor_type is not UNSET:
@@ -126,6 +131,8 @@ class Hypervisor:
 
         backend_id = d.pop("backend_id")
 
+        traits = cast(list[str], d.pop("traits"))
+
         hypervisor_type = d.pop("hypervisor_type", UNSET)
 
         vcpus = d.pop("vcpus", UNSET)
@@ -152,6 +159,7 @@ class Hypervisor:
             name=name,
             settings=settings,
             backend_id=backend_id,
+            traits=traits,
             hypervisor_type=hypervisor_type,
             vcpus=vcpus,
             vcpus_used=vcpus_used,

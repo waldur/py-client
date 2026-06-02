@@ -22,6 +22,7 @@ def _get_kwargs(
     settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, str] = UNSET,
     status: Union[Unset, str] = UNSET,
+    trait: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -45,6 +46,8 @@ def _get_kwargs(
     params["state"] = state
 
     params["status"] = status
+
+    params["trait"] = trait
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -95,6 +98,7 @@ def sync_detailed(
     settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, str] = UNSET,
     status: Union[Unset, str] = UNSET,
+    trait: Union[Unset, str] = UNSET,
 ) -> Response[list["Hypervisor"]]:
     """
     Args:
@@ -107,6 +111,7 @@ def sync_detailed(
         settings_uuid (Union[Unset, UUID]):
         state (Union[Unset, str]):
         status (Union[Unset, str]):
+        trait (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -126,6 +131,7 @@ def sync_detailed(
         settings_uuid=settings_uuid,
         state=state,
         status=status,
+        trait=trait,
     )
 
     response = client.get_httpx_client().request(
@@ -147,6 +153,7 @@ def sync(
     settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, str] = UNSET,
     status: Union[Unset, str] = UNSET,
+    trait: Union[Unset, str] = UNSET,
 ) -> list["Hypervisor"]:
     """
     Args:
@@ -159,6 +166,7 @@ def sync(
         settings_uuid (Union[Unset, UUID]):
         state (Union[Unset, str]):
         status (Union[Unset, str]):
+        trait (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -179,6 +187,7 @@ def sync(
         settings_uuid=settings_uuid,
         state=state,
         status=status,
+        trait=trait,
     ).parsed
 
 
@@ -194,6 +203,7 @@ async def asyncio_detailed(
     settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, str] = UNSET,
     status: Union[Unset, str] = UNSET,
+    trait: Union[Unset, str] = UNSET,
 ) -> Response[list["Hypervisor"]]:
     """
     Args:
@@ -206,6 +216,7 @@ async def asyncio_detailed(
         settings_uuid (Union[Unset, UUID]):
         state (Union[Unset, str]):
         status (Union[Unset, str]):
+        trait (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -225,6 +236,7 @@ async def asyncio_detailed(
         settings_uuid=settings_uuid,
         state=state,
         status=status,
+        trait=trait,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -244,6 +256,7 @@ async def asyncio(
     settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, str] = UNSET,
     status: Union[Unset, str] = UNSET,
+    trait: Union[Unset, str] = UNSET,
 ) -> list["Hypervisor"]:
     """
     Args:
@@ -256,6 +269,7 @@ async def asyncio(
         settings_uuid (Union[Unset, UUID]):
         state (Union[Unset, str]):
         status (Union[Unset, str]):
+        trait (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -277,6 +291,7 @@ async def asyncio(
             settings_uuid=settings_uuid,
             state=state,
             status=status,
+            trait=trait,
         )
     ).parsed
 
@@ -291,6 +306,7 @@ def sync_all(
     settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, str] = UNSET,
     status: Union[Unset, str] = UNSET,
+    trait: Union[Unset, str] = UNSET,
 ) -> list["Hypervisor"]:
     """Get All Pages
 
@@ -307,6 +323,7 @@ def sync_all(
         settings_uuid (Union[Unset, UUID]):
         state (Union[Unset, str]):
         status (Union[Unset, str]):
+        trait (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -328,6 +345,7 @@ def sync_all(
         settings_uuid=settings_uuid,
         state=state,
         status=status,
+        trait=trait,
     )
 
     # Set page_size to maximum
@@ -382,6 +400,7 @@ async def asyncio_all(
     settings_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, str] = UNSET,
     status: Union[Unset, str] = UNSET,
+    trait: Union[Unset, str] = UNSET,
 ) -> list["Hypervisor"]:
     """Get All Pages (Async)
 
@@ -398,6 +417,7 @@ async def asyncio_all(
         settings_uuid (Union[Unset, UUID]):
         state (Union[Unset, str]):
         status (Union[Unset, str]):
+        trait (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -419,6 +439,7 @@ async def asyncio_all(
         settings_uuid=settings_uuid,
         state=state,
         status=status,
+        trait=trait,
     )
 
     # Set page_size to maximum

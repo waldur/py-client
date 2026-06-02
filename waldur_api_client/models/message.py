@@ -11,6 +11,7 @@ from ..models.action_taken_enum import ActionTakenEnum
 from ..models.feedback_category_enum import FeedbackCategoryEnum
 from ..models.injection_severity_enum import InjectionSeverityEnum
 from ..models.message_role_enum import MessageRoleEnum
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.message_blocks_item import MessageBlocksItem
@@ -33,17 +34,17 @@ class Message:
         created (datetime.datetime):
         input_tokens (Union[None, int]):
         output_tokens (Union[None, int]):
-        is_flagged (bool):
-        severity (InjectionSeverityEnum):
-        injection_categories (Any):
-        pii_categories (Any):
-        action_taken (ActionTakenEnum):
         feedback_score (Union[None, bool]): User feedback: True=thumbs up, False=thumbs down, None=no feedback.
         feedback_comment (Union[None, str]): Optional user comment accompanying feedback.
         feedback_category (Union[FeedbackCategoryEnum, None]): Category tag when feedback_score is False (thumbs down);
             null otherwise.
         feedback_submitted_at (Union[None, datetime.datetime]): Timestamp of the most recent feedback submission;
             overwritten on resubmit.
+        is_flagged (Union[Unset, bool]):
+        severity (Union[Unset, InjectionSeverityEnum]):
+        injection_categories (Union[Unset, Any]):
+        pii_categories (Union[Unset, Any]):
+        action_taken (Union[Unset, ActionTakenEnum]):
     """
 
     uuid: UUID
@@ -56,15 +57,15 @@ class Message:
     created: datetime.datetime
     input_tokens: Union[None, int]
     output_tokens: Union[None, int]
-    is_flagged: bool
-    severity: InjectionSeverityEnum
-    injection_categories: Any
-    pii_categories: Any
-    action_taken: ActionTakenEnum
     feedback_score: Union[None, bool]
     feedback_comment: Union[None, str]
     feedback_category: Union[FeedbackCategoryEnum, None]
     feedback_submitted_at: Union[None, datetime.datetime]
+    is_flagged: Union[Unset, bool] = UNSET
+    severity: Union[Unset, InjectionSeverityEnum] = UNSET
+    injection_categories: Union[Unset, Any] = UNSET
+    pii_categories: Union[Unset, Any] = UNSET
+    action_taken: Union[Unset, ActionTakenEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -97,16 +98,6 @@ class Message:
         output_tokens: Union[None, int]
         output_tokens = self.output_tokens
 
-        is_flagged = self.is_flagged
-
-        severity = self.severity.value
-
-        injection_categories = self.injection_categories
-
-        pii_categories = self.pii_categories
-
-        action_taken = self.action_taken.value
-
         feedback_score: Union[None, bool]
         feedback_score = self.feedback_score
 
@@ -125,6 +116,20 @@ class Message:
         else:
             feedback_submitted_at = self.feedback_submitted_at
 
+        is_flagged = self.is_flagged
+
+        severity: Union[Unset, str] = UNSET
+        if not isinstance(self.severity, Unset):
+            severity = self.severity.value
+
+        injection_categories = self.injection_categories
+
+        pii_categories = self.pii_categories
+
+        action_taken: Union[Unset, str] = UNSET
+        if not isinstance(self.action_taken, Unset):
+            action_taken = self.action_taken.value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -139,17 +144,22 @@ class Message:
                 "created": created,
                 "input_tokens": input_tokens,
                 "output_tokens": output_tokens,
-                "is_flagged": is_flagged,
-                "severity": severity,
-                "injection_categories": injection_categories,
-                "pii_categories": pii_categories,
-                "action_taken": action_taken,
                 "feedback_score": feedback_score,
                 "feedback_comment": feedback_comment,
                 "feedback_category": feedback_category,
                 "feedback_submitted_at": feedback_submitted_at,
             }
         )
+        if is_flagged is not UNSET:
+            field_dict["is_flagged"] = is_flagged
+        if severity is not UNSET:
+            field_dict["severity"] = severity
+        if injection_categories is not UNSET:
+            field_dict["injection_categories"] = injection_categories
+        if pii_categories is not UNSET:
+            field_dict["pii_categories"] = pii_categories
+        if action_taken is not UNSET:
+            field_dict["action_taken"] = action_taken
 
         return field_dict
 
@@ -206,16 +216,6 @@ class Message:
 
         output_tokens = _parse_output_tokens(d.pop("output_tokens"))
 
-        is_flagged = d.pop("is_flagged")
-
-        severity = InjectionSeverityEnum(d.pop("severity"))
-
-        injection_categories = d.pop("injection_categories")
-
-        pii_categories = d.pop("pii_categories")
-
-        action_taken = ActionTakenEnum(d.pop("action_taken"))
-
         def _parse_feedback_score(data: object) -> Union[None, bool]:
             if data is None:
                 return data
@@ -260,6 +260,26 @@ class Message:
 
         feedback_submitted_at = _parse_feedback_submitted_at(d.pop("feedback_submitted_at"))
 
+        is_flagged = d.pop("is_flagged", UNSET)
+
+        _severity = d.pop("severity", UNSET)
+        severity: Union[Unset, InjectionSeverityEnum]
+        if isinstance(_severity, Unset):
+            severity = UNSET
+        else:
+            severity = InjectionSeverityEnum(_severity)
+
+        injection_categories = d.pop("injection_categories", UNSET)
+
+        pii_categories = d.pop("pii_categories", UNSET)
+
+        _action_taken = d.pop("action_taken", UNSET)
+        action_taken: Union[Unset, ActionTakenEnum]
+        if isinstance(_action_taken, Unset):
+            action_taken = UNSET
+        else:
+            action_taken = ActionTakenEnum(_action_taken)
+
         message = cls(
             uuid=uuid,
             thread=thread,
@@ -271,15 +291,15 @@ class Message:
             created=created,
             input_tokens=input_tokens,
             output_tokens=output_tokens,
+            feedback_score=feedback_score,
+            feedback_comment=feedback_comment,
+            feedback_category=feedback_category,
+            feedback_submitted_at=feedback_submitted_at,
             is_flagged=is_flagged,
             severity=severity,
             injection_categories=injection_categories,
             pii_categories=pii_categories,
             action_taken=action_taken,
-            feedback_score=feedback_score,
-            feedback_comment=feedback_comment,
-            feedback_category=feedback_category,
-            feedback_submitted_at=feedback_submitted_at,
         )
 
         message.additional_properties = d

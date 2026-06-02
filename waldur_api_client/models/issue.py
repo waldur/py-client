@@ -26,7 +26,6 @@ class Issue:
         key (str):
         backend_id (Union[None, str]):
         backend_name (Union[None, str]):
-        link (str): Link to issue in support system.
         summary (str):
         status (str):
         resolution (str):
@@ -51,12 +50,12 @@ class Issue:
         destroy_is_available (bool):
         add_comment_is_available (bool):
         add_attachment_is_available (bool):
-        processing_log (Any): Internal processing log for debugging order lifecycle events. Visible only to staff.
         order_uuid (Union[None, str]): Return order UUID if the issue's resource is an Order.
         order_project_uuid (Union[None, str]): Return order's project UUID if the issue's resource is an Order.
         order_customer_uuid (Union[None, str]): Return order's customer UUID if the issue's resource is an Order.
         order_resource_name (Union[None, str]): Return order's resource name if the issue's resource is an Order.
         remote_id (Union[None, Unset, str]):
+        link (Union[Unset, str]): Link to issue in support system.
         description (Union[Unset, str]):
         priority (Union[Unset, str]):
         caller (Union[None, Unset, str]):
@@ -65,6 +64,8 @@ class Issue:
         project (Union[None, Unset, str]):
         resource (Union[Unset, str]):
         template (Union[None, Unset, str]):
+        processing_log (Union[Unset, Any]): Internal processing log for debugging order lifecycle events. Visible only
+            to staff.
     """
 
     url: str
@@ -73,7 +74,6 @@ class Issue:
     key: str
     backend_id: Union[None, str]
     backend_name: Union[None, str]
-    link: str
     summary: str
     status: str
     resolution: str
@@ -98,12 +98,12 @@ class Issue:
     destroy_is_available: bool
     add_comment_is_available: bool
     add_attachment_is_available: bool
-    processing_log: Any
     order_uuid: Union[None, str]
     order_project_uuid: Union[None, str]
     order_customer_uuid: Union[None, str]
     order_resource_name: Union[None, str]
     remote_id: Union[None, Unset, str] = UNSET
+    link: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     priority: Union[Unset, str] = UNSET
     caller: Union[None, Unset, str] = UNSET
@@ -112,6 +112,7 @@ class Issue:
     project: Union[None, Unset, str] = UNSET
     resource: Union[Unset, str] = UNSET
     template: Union[None, Unset, str] = UNSET
+    processing_log: Union[Unset, Any] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -130,8 +131,6 @@ class Issue:
 
         backend_name: Union[None, str]
         backend_name = self.backend_name
-
-        link = self.link
 
         summary = self.summary
 
@@ -211,8 +210,6 @@ class Issue:
 
         add_attachment_is_available = self.add_attachment_is_available
 
-        processing_log = self.processing_log
-
         order_uuid: Union[None, str]
         order_uuid = self.order_uuid
 
@@ -230,6 +227,8 @@ class Issue:
             remote_id = UNSET
         else:
             remote_id = self.remote_id
+
+        link = self.link
 
         description = self.description
 
@@ -267,6 +266,8 @@ class Issue:
         else:
             template = self.template
 
+        processing_log = self.processing_log
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -277,7 +278,6 @@ class Issue:
                 "key": key,
                 "backend_id": backend_id,
                 "backend_name": backend_name,
-                "link": link,
                 "summary": summary,
                 "status": status,
                 "resolution": resolution,
@@ -302,7 +302,6 @@ class Issue:
                 "destroy_is_available": destroy_is_available,
                 "add_comment_is_available": add_comment_is_available,
                 "add_attachment_is_available": add_attachment_is_available,
-                "processing_log": processing_log,
                 "order_uuid": order_uuid,
                 "order_project_uuid": order_project_uuid,
                 "order_customer_uuid": order_customer_uuid,
@@ -311,6 +310,8 @@ class Issue:
         )
         if remote_id is not UNSET:
             field_dict["remote_id"] = remote_id
+        if link is not UNSET:
+            field_dict["link"] = link
         if description is not UNSET:
             field_dict["description"] = description
         if priority is not UNSET:
@@ -327,6 +328,8 @@ class Issue:
             field_dict["resource"] = resource
         if template is not UNSET:
             field_dict["template"] = template
+        if processing_log is not UNSET:
+            field_dict["processing_log"] = processing_log
 
         return field_dict
 
@@ -356,8 +359,6 @@ class Issue:
             return cast(Union[None, str], data)
 
         backend_name = _parse_backend_name(d.pop("backend_name"))
-
-        link = d.pop("link")
 
         summary = d.pop("summary")
 
@@ -515,8 +516,6 @@ class Issue:
 
         add_attachment_is_available = d.pop("add_attachment_is_available")
 
-        processing_log = d.pop("processing_log")
-
         def _parse_order_uuid(data: object) -> Union[None, str]:
             if data is None:
                 return data
@@ -553,6 +552,8 @@ class Issue:
             return cast(Union[None, Unset, str], data)
 
         remote_id = _parse_remote_id(d.pop("remote_id", UNSET))
+
+        link = d.pop("link", UNSET)
 
         description = d.pop("description", UNSET)
 
@@ -605,6 +606,8 @@ class Issue:
 
         template = _parse_template(d.pop("template", UNSET))
 
+        processing_log = d.pop("processing_log", UNSET)
+
         issue = cls(
             url=url,
             uuid=uuid,
@@ -612,7 +615,6 @@ class Issue:
             key=key,
             backend_id=backend_id,
             backend_name=backend_name,
-            link=link,
             summary=summary,
             status=status,
             resolution=resolution,
@@ -637,12 +639,12 @@ class Issue:
             destroy_is_available=destroy_is_available,
             add_comment_is_available=add_comment_is_available,
             add_attachment_is_available=add_attachment_is_available,
-            processing_log=processing_log,
             order_uuid=order_uuid,
             order_project_uuid=order_project_uuid,
             order_customer_uuid=order_customer_uuid,
             order_resource_name=order_resource_name,
             remote_id=remote_id,
+            link=link,
             description=description,
             priority=priority,
             caller=caller,
@@ -651,6 +653,7 @@ class Issue:
             project=project,
             resource=resource,
             template=template,
+            processing_log=processing_log,
         )
 
         issue.additional_properties = d
