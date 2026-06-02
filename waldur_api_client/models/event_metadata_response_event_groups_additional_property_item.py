@@ -52,6 +52,8 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     MARKETPLACE_OFFERING_COMPONENT_DELETED = "marketplace_offering_component_deleted"
     MARKETPLACE_OFFERING_COMPONENT_UPDATED = "marketplace_offering_component_updated"
     MARKETPLACE_OFFERING_CREATED = "marketplace_offering_created"
+    MARKETPLACE_OFFERING_OPTIONS_UPDATED = "marketplace_offering_options_updated"
+    MARKETPLACE_OFFERING_RESOURCE_OPTIONS_UPDATED = "marketplace_offering_resource_options_updated"
     MARKETPLACE_OFFERING_UPDATED = "marketplace_offering_updated"
     MARKETPLACE_OFFERING_USER_CREATED = "marketplace_offering_user_created"
     MARKETPLACE_OFFERING_USER_DELETED = "marketplace_offering_user_deleted"
