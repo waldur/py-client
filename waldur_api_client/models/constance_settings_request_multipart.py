@@ -294,6 +294,8 @@ class ConstanceSettingsRequestMultipart:
         user_actions_notification_threshold (Union[Unset, int]):
         user_actions_execution_retention_days (Union[Unset, int]):
         user_actions_default_expiration_reminders (Union[Unset, list[str]]):
+        openstack_log_calls_enabled (Union[Unset, bool]):
+        openstack_log_calls_threshold_ms (Union[Unset, int]):
         user_data_access_logging_enabled (Union[Unset, bool]):
         user_data_access_log_retention_days (Union[Unset, int]):
         user_data_access_log_self_access (Union[Unset, bool]):
@@ -570,6 +572,8 @@ class ConstanceSettingsRequestMultipart:
     user_actions_notification_threshold: Union[Unset, int] = UNSET
     user_actions_execution_retention_days: Union[Unset, int] = UNSET
     user_actions_default_expiration_reminders: Union[Unset, list[str]] = UNSET
+    openstack_log_calls_enabled: Union[Unset, bool] = UNSET
+    openstack_log_calls_threshold_ms: Union[Unset, int] = UNSET
     user_data_access_logging_enabled: Union[Unset, bool] = UNSET
     user_data_access_log_retention_days: Union[Unset, int] = UNSET
     user_data_access_log_self_access: Union[Unset, bool] = UNSET
@@ -1316,6 +1320,10 @@ class ConstanceSettingsRequestMultipart:
         if not isinstance(self.user_actions_default_expiration_reminders, Unset):
             user_actions_default_expiration_reminders = self.user_actions_default_expiration_reminders
 
+        openstack_log_calls_enabled = self.openstack_log_calls_enabled
+
+        openstack_log_calls_threshold_ms = self.openstack_log_calls_threshold_ms
+
         user_data_access_logging_enabled = self.user_data_access_logging_enabled
 
         user_data_access_log_retention_days = self.user_data_access_log_retention_days
@@ -1913,6 +1921,10 @@ class ConstanceSettingsRequestMultipart:
             field_dict["USER_ACTIONS_EXECUTION_RETENTION_DAYS"] = user_actions_execution_retention_days
         if user_actions_default_expiration_reminders is not UNSET:
             field_dict["USER_ACTIONS_DEFAULT_EXPIRATION_REMINDERS"] = user_actions_default_expiration_reminders
+        if openstack_log_calls_enabled is not UNSET:
+            field_dict["OPENSTACK_LOG_CALLS_ENABLED"] = openstack_log_calls_enabled
+        if openstack_log_calls_threshold_ms is not UNSET:
+            field_dict["OPENSTACK_LOG_CALLS_THRESHOLD_MS"] = openstack_log_calls_threshold_ms
         if user_data_access_logging_enabled is not UNSET:
             field_dict["USER_DATA_ACCESS_LOGGING_ENABLED"] = user_data_access_logging_enabled
         if user_data_access_log_retention_days is not UNSET:
@@ -3407,6 +3419,19 @@ class ConstanceSettingsRequestMultipart:
                     )
                 )
 
+        if not isinstance(self.openstack_log_calls_enabled, Unset):
+            files.append(
+                ("OPENSTACK_LOG_CALLS_ENABLED", (None, str(self.openstack_log_calls_enabled).encode(), "text/plain"))
+            )
+
+        if not isinstance(self.openstack_log_calls_threshold_ms, Unset):
+            files.append(
+                (
+                    "OPENSTACK_LOG_CALLS_THRESHOLD_MS",
+                    (None, str(self.openstack_log_calls_threshold_ms).encode(), "text/plain"),
+                )
+            )
+
         if not isinstance(self.user_data_access_logging_enabled, Unset):
             files.append(
                 (
@@ -4566,6 +4591,10 @@ class ConstanceSettingsRequestMultipart:
             list[str], d.pop("USER_ACTIONS_DEFAULT_EXPIRATION_REMINDERS", UNSET)
         )
 
+        openstack_log_calls_enabled = d.pop("OPENSTACK_LOG_CALLS_ENABLED", UNSET)
+
+        openstack_log_calls_threshold_ms = d.pop("OPENSTACK_LOG_CALLS_THRESHOLD_MS", UNSET)
+
         user_data_access_logging_enabled = d.pop("USER_DATA_ACCESS_LOGGING_ENABLED", UNSET)
 
         user_data_access_log_retention_days = d.pop("USER_DATA_ACCESS_LOG_RETENTION_DAYS", UNSET)
@@ -4936,6 +4965,8 @@ class ConstanceSettingsRequestMultipart:
             user_actions_notification_threshold=user_actions_notification_threshold,
             user_actions_execution_retention_days=user_actions_execution_retention_days,
             user_actions_default_expiration_reminders=user_actions_default_expiration_reminders,
+            openstack_log_calls_enabled=openstack_log_calls_enabled,
+            openstack_log_calls_threshold_ms=openstack_log_calls_threshold_ms,
             user_data_access_logging_enabled=user_data_access_logging_enabled,
             user_data_access_log_retention_days=user_data_access_log_retention_days,
             user_data_access_log_self_access=user_data_access_log_self_access,
