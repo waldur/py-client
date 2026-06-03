@@ -16,19 +16,19 @@ T = TypeVar("T", bound="NestedResourceProjectPermission")
 class NestedResourceProjectPermission:
     """
     Attributes:
-        url (str):
-        uuid (str):
-        name (str):
-        role_name (str):
-        role_uuid (UUID):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, str]):
+        name (Union[Unset, str]):
+        role_name (Union[Unset, str]):
+        role_uuid (Union[Unset, UUID]):
         expiration_time (Union[None, Unset, datetime.datetime]):
     """
 
-    url: str
-    uuid: str
-    name: str
-    role_name: str
-    role_uuid: UUID
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, str] = UNSET
+    name: Union[Unset, str] = UNSET
+    role_name: Union[Unset, str] = UNSET
+    role_uuid: Union[Unset, UUID] = UNSET
     expiration_time: Union[None, Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -41,7 +41,9 @@ class NestedResourceProjectPermission:
 
         role_name = self.role_name
 
-        role_uuid = str(self.role_uuid)
+        role_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.role_uuid, Unset):
+            role_uuid = str(self.role_uuid)
 
         expiration_time: Union[None, Unset, str]
         if isinstance(self.expiration_time, Unset):
@@ -53,15 +55,17 @@ class NestedResourceProjectPermission:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "name": name,
-                "role_name": role_name,
-                "role_uuid": role_uuid,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if name is not UNSET:
+            field_dict["name"] = name
+        if role_name is not UNSET:
+            field_dict["role_name"] = role_name
+        if role_uuid is not UNSET:
+            field_dict["role_uuid"] = role_uuid
         if expiration_time is not UNSET:
             field_dict["expiration_time"] = expiration_time
 
@@ -70,15 +74,20 @@ class NestedResourceProjectPermission:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = d.pop("uuid")
+        uuid = d.pop("uuid", UNSET)
 
-        name = d.pop("name")
+        name = d.pop("name", UNSET)
 
-        role_name = d.pop("role_name")
+        role_name = d.pop("role_name", UNSET)
 
-        role_uuid = UUID(d.pop("role_uuid"))
+        _role_uuid = d.pop("role_uuid", UNSET)
+        role_uuid: Union[Unset, UUID]
+        if isinstance(_role_uuid, Unset):
+            role_uuid = UNSET
+        else:
+            role_uuid = UUID(_role_uuid)
 
         def _parse_expiration_time(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:

@@ -2016,6 +2016,7 @@ from .resource_state import ResourceState
 from .resource_suggest_name_request import ResourceSuggestNameRequest
 from .resource_switch_plan_request import ResourceSwitchPlanRequest
 from .resource_team_member import ResourceTeamMember
+from .resource_team_member_field_enum import ResourceTeamMemberFieldEnum
 from .resource_terminate_request import ResourceTerminateRequest
 from .resource_update import ResourceUpdate
 from .resource_update_limits_request import ResourceUpdateLimitsRequest
@@ -2375,6 +2376,7 @@ from .user_language_count import UserLanguageCount
 from .user_mapping import UserMapping
 from .user_mapping_map import UserMappingMap
 from .user_me import UserMe
+from .user_me_field_enum import UserMeFieldEnum
 from .user_nationality_stats import UserNationalityStats
 from .user_offering_consent import UserOfferingConsent
 from .user_offering_consent_create import UserOfferingConsentCreate
@@ -4382,6 +4384,7 @@ __all__ = (
     "ResourceSuggestNameRequest",
     "ResourceSwitchPlanRequest",
     "ResourceTeamMember",
+    "ResourceTeamMemberFieldEnum",
     "ResourceTerminateRequest",
     "ResourceUpdate",
     "ResourceUpdateLimitsRequest",
@@ -4737,6 +4740,7 @@ __all__ = (
     "UserMapping",
     "UserMappingMap",
     "UserMe",
+    "UserMeFieldEnum",
     "UsernameGenerationPolicyEnum",
     "UserNationalityStats",
     "UserOfferingConsent",

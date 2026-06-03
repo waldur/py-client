@@ -6,16 +6,33 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.order_details import OrderDetails
-from ...types import Response
+from ...models.order_details_field_enum import OrderDetailsFieldEnum
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: str,
     order_uuid: str,
+    *,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": f"/api/marketplace-provider-offerings/{uuid}/orders/{order_uuid}/",
+        "params": params,
     }
 
     return _kwargs
@@ -45,6 +62,7 @@ def sync_detailed(
     order_uuid: str,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> Response[OrderDetails]:
     """Retrieve a specific order for an offering
 
@@ -53,6 +71,7 @@ def sync_detailed(
     Args:
         uuid (str):
         order_uuid (str):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -65,6 +84,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         uuid=uuid,
         order_uuid=order_uuid,
+        field=field,
     )
 
     response = client.get_httpx_client().request(
@@ -79,6 +99,7 @@ def sync(
     order_uuid: str,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> OrderDetails:
     """Retrieve a specific order for an offering
 
@@ -87,6 +108,7 @@ def sync(
     Args:
         uuid (str):
         order_uuid (str):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -100,6 +122,7 @@ def sync(
         uuid=uuid,
         order_uuid=order_uuid,
         client=client,
+        field=field,
     ).parsed
 
 
@@ -108,6 +131,7 @@ async def asyncio_detailed(
     order_uuid: str,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> Response[OrderDetails]:
     """Retrieve a specific order for an offering
 
@@ -116,6 +140,7 @@ async def asyncio_detailed(
     Args:
         uuid (str):
         order_uuid (str):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -128,6 +153,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         uuid=uuid,
         order_uuid=order_uuid,
+        field=field,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -140,6 +166,7 @@ async def asyncio(
     order_uuid: str,
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[OrderDetailsFieldEnum]] = UNSET,
 ) -> OrderDetails:
     """Retrieve a specific order for an offering
 
@@ -148,6 +175,7 @@ async def asyncio(
     Args:
         uuid (str):
         order_uuid (str):
+        field (Union[Unset, list[OrderDetailsFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -162,5 +190,6 @@ async def asyncio(
             uuid=uuid,
             order_uuid=order_uuid,
             client=client,
+            field=field,
         )
     ).parsed

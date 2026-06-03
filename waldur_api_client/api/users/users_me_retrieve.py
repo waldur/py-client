@@ -6,13 +6,31 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.user_me import UserMe
-from ...types import Response
+from ...models.user_me_field_enum import UserMeFieldEnum
+from ...types import UNSET, Response, Unset
 
 
-def _get_kwargs() -> dict[str, Any]:
+def _get_kwargs(
+    *,
+    field: Union[Unset, list[UserMeFieldEnum]] = UNSET,
+) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/users/me/",
+        "params": params,
     }
 
     return _kwargs
@@ -40,10 +58,14 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[UserMeFieldEnum]] = UNSET,
 ) -> Response[UserMe]:
     """Get current user details
 
      Get current user details, including authentication token and profile completeness status.
+
+    Args:
+        field (Union[Unset, list[UserMeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -53,7 +75,9 @@ def sync_detailed(
         Response[UserMe]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        field=field,
+    )
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -65,10 +89,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[UserMeFieldEnum]] = UNSET,
 ) -> UserMe:
     """Get current user details
 
      Get current user details, including authentication token and profile completeness status.
+
+    Args:
+        field (Union[Unset, list[UserMeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -80,16 +108,21 @@ def sync(
 
     return sync_detailed(
         client=client,
+        field=field,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[UserMeFieldEnum]] = UNSET,
 ) -> Response[UserMe]:
     """Get current user details
 
      Get current user details, including authentication token and profile completeness status.
+
+    Args:
+        field (Union[Unset, list[UserMeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -99,7 +132,9 @@ async def asyncio_detailed(
         Response[UserMe]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        field=field,
+    )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -109,10 +144,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    field: Union[Unset, list[UserMeFieldEnum]] = UNSET,
 ) -> UserMe:
     """Get current user details
 
      Get current user details, including authentication token and profile completeness status.
+
+    Args:
+        field (Union[Unset, list[UserMeFieldEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -125,5 +164,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            field=field,
         )
     ).parsed

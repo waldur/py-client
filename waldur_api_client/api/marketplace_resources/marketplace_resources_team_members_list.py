@@ -11,6 +11,7 @@ from ...models.order_state import OrderState
 from ...models.resource_o_enum import ResourceOEnum
 from ...models.resource_state import ResourceState
 from ...models.resource_team_member import ResourceTeamMember
+from ...models.resource_team_member_field_enum import ResourceTeamMemberFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -26,6 +27,7 @@ def _get_kwargs(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    field: Union[Unset, list[ResourceTeamMemberFieldEnum]] = UNSET,
     flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
@@ -96,6 +98,15 @@ def _get_kwargs(
     params["customer_uuid"] = json_customer_uuid
 
     params["downscaled"] = downscaled
+
+    json_field: Union[Unset, list[str]] = UNSET
+    if not isinstance(field, Unset):
+        json_field = []
+        for field_item_data in field:
+            field_item = field_item_data.value
+            json_field.append(field_item)
+
+    params["field"] = json_field
 
     params["flavor_name"] = flavor_name
 
@@ -281,6 +292,7 @@ def sync_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    field: Union[Unset, list[ResourceTeamMemberFieldEnum]] = UNSET,
     flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
@@ -338,6 +350,7 @@ def sync_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        field (Union[Unset, list[ResourceTeamMemberFieldEnum]]):
         flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
@@ -397,6 +410,7 @@ def sync_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        field=field,
         flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
         image_name=image_name,
@@ -458,6 +472,7 @@ def sync(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    field: Union[Unset, list[ResourceTeamMemberFieldEnum]] = UNSET,
     flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
@@ -515,6 +530,7 @@ def sync(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        field (Union[Unset, list[ResourceTeamMemberFieldEnum]]):
         flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
@@ -575,6 +591,7 @@ def sync(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        field=field,
         flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
         image_name=image_name,
@@ -630,6 +647,7 @@ async def asyncio_detailed(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    field: Union[Unset, list[ResourceTeamMemberFieldEnum]] = UNSET,
     flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
@@ -687,6 +705,7 @@ async def asyncio_detailed(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        field (Union[Unset, list[ResourceTeamMemberFieldEnum]]):
         flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
@@ -746,6 +765,7 @@ async def asyncio_detailed(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        field=field,
         flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
         image_name=image_name,
@@ -805,6 +825,7 @@ async def asyncio(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    field: Union[Unset, list[ResourceTeamMemberFieldEnum]] = UNSET,
     flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
@@ -862,6 +883,7 @@ async def asyncio(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        field (Union[Unset, list[ResourceTeamMemberFieldEnum]]):
         flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
@@ -923,6 +945,7 @@ async def asyncio(
             customer=customer,
             customer_uuid=customer_uuid,
             downscaled=downscaled,
+            field=field,
             flavor_name=flavor_name,
             has_terminate_date=has_terminate_date,
             image_name=image_name,
@@ -979,6 +1002,7 @@ def sync_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    field: Union[Unset, list[ResourceTeamMemberFieldEnum]] = UNSET,
     flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
@@ -1035,6 +1059,7 @@ def sync_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        field (Union[Unset, list[ResourceTeamMemberFieldEnum]]):
         flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
@@ -1096,6 +1121,7 @@ def sync_all(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        field=field,
         flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
         image_name=image_name,
@@ -1190,6 +1216,7 @@ async def asyncio_all(
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     downscaled: Union[Unset, bool] = UNSET,
+    field: Union[Unset, list[ResourceTeamMemberFieldEnum]] = UNSET,
     flavor_name: Union[Unset, str] = UNSET,
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
@@ -1246,6 +1273,7 @@ async def asyncio_all(
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         downscaled (Union[Unset, bool]):
+        field (Union[Unset, list[ResourceTeamMemberFieldEnum]]):
         flavor_name (Union[Unset, str]):
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
@@ -1307,6 +1335,7 @@ async def asyncio_all(
         customer=customer,
         customer_uuid=customer_uuid,
         downscaled=downscaled,
+        field=field,
         flavor_name=flavor_name,
         has_terminate_date=has_terminate_date,
         image_name=image_name,

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.18.dev.20260603043538
+# Version: 8.0.9-rc.18.dev.20260603095304
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2811,6 +2811,8 @@ Query parameters (1):
 GET /api/chat-sessions/current/
 Summary: Get or create current user's chat session
 Description: Returns the current user's chat session, creating it if it doesn't exist.
+Query parameters (1):
+  - field
 
 ### chat_sessions_retrieve
 GET /api/chat-sessions/{uuid}/
@@ -7651,6 +7653,8 @@ Summary: Get offering details
 Description: Returns details of the offering connected to the requested object.
 Path parameters:
   - uuid
+Query parameters (1):
+  - field
 
 ### marketplace_orders_reject_by_consumer
 POST /api/marketplace-orders/{uuid}/reject_by_consumer/
@@ -7674,6 +7678,8 @@ Summary: Get resource details
 Description: Returns details of the resource connected to the requested object.
 Path parameters:
   - uuid
+Query parameters (1):
+  - field
 
 ### marketplace_orders_retry
 POST /api/marketplace-orders/{uuid}/retry/
@@ -8996,6 +9002,8 @@ Description: Returns details of a specific order associated with an offering.
 Path parameters:
   - order_uuid
   - uuid
+Query parameters (1):
+  - field
 
 ### marketplace_provider_offerings_pause
 POST /api/marketplace-provider-offerings/{uuid}/pause/
@@ -9660,6 +9668,8 @@ Summary: Get offering details
 Description: Returns details of the offering connected to the requested object.
 Path parameters:
   - uuid
+Query parameters (1):
+  - field
 
 ### marketplace_provider_resources_offering_for_subresources_list
 GET /api/marketplace-provider-resources/{uuid}/offering_for_subresources/
@@ -10518,6 +10528,8 @@ Summary: Get offering details
 Description: Returns details of the offering connected to the requested object.
 Path parameters:
   - uuid
+Query parameters (1):
+  - field
 
 ### marketplace_resources_offering_for_subresources_list
 GET /api/marketplace-resources/{uuid}/offering_for_subresources/
@@ -10633,7 +10645,7 @@ Summary: List team members of a resource
 Description: One row per user (deduplicated) with their direct Resource role and a nested `resource_projects[]` array of their per-ResourceProject grants under this resource. Mirrors the org-level `customers/{uuid}/users/` shape so the frontend can render an expandable per-user view.
 Path parameters:
   - uuid
-Query parameters (46):
+Query parameters (47):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -10642,6 +10654,7 @@ Query parameters (46):
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
+  - field
   - flavor_name — Flavor name
   - has_terminate_date — Has termination date
   - image_name — Image name
@@ -22528,6 +22541,8 @@ Request body: yes
 GET /api/users/me/
 Summary: Get current user details
 Description: Get current user details, including authentication token and profile completeness status.
+Query parameters (1):
+  - field
 
 ### users_me_count
 HEAD /api/users/me/

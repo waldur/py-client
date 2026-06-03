@@ -20,55 +20,41 @@ T = TypeVar("T", bound="ResourceTeamMember")
 class ResourceTeamMember:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_ characters
-        full_name (str):
-        role_name (Union[None, str]):
-        role_uuid (Union[None, str]):
-        expiration_time (Union[None, datetime.datetime]):
-        resource_projects (list['NestedResourceProjectPermission']):
+        url (Union[Unset, str]):
+        uuid (Union[Unset, UUID]):
+        username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
+            characters
+        full_name (Union[Unset, str]):
         email (Union[Unset, str]):
         image (Union[None, Unset, str]):
+        role_name (Union[None, Unset, str]):
+        role_uuid (Union[None, Unset, str]):
+        expiration_time (Union[None, Unset, datetime.datetime]):
+        resource_projects (Union[Unset, list['NestedResourceProjectPermission']]):
     """
 
-    url: str
-    uuid: UUID
-    username: str
-    full_name: str
-    role_name: Union[None, str]
-    role_uuid: Union[None, str]
-    expiration_time: Union[None, datetime.datetime]
-    resource_projects: list["NestedResourceProjectPermission"]
+    url: Union[Unset, str] = UNSET
+    uuid: Union[Unset, UUID] = UNSET
+    username: Union[Unset, str] = UNSET
+    full_name: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
     image: Union[None, Unset, str] = UNSET
+    role_name: Union[None, Unset, str] = UNSET
+    role_uuid: Union[None, Unset, str] = UNSET
+    expiration_time: Union[None, Unset, datetime.datetime] = UNSET
+    resource_projects: Union[Unset, list["NestedResourceProjectPermission"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         url = self.url
 
-        uuid = str(self.uuid)
+        uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.uuid, Unset):
+            uuid = str(self.uuid)
 
         username = self.username
 
         full_name = self.full_name
-
-        role_name: Union[None, str]
-        role_name = self.role_name
-
-        role_uuid: Union[None, str]
-        role_uuid = self.role_uuid
-
-        expiration_time: Union[None, str]
-        if isinstance(self.expiration_time, datetime.datetime):
-            expiration_time = self.expiration_time.isoformat()
-        else:
-            expiration_time = self.expiration_time
-
-        resource_projects = []
-        for resource_projects_item_data in self.resource_projects:
-            resource_projects_item = resource_projects_item_data.to_dict()
-            resource_projects.append(resource_projects_item)
 
         email = self.email
 
@@ -78,24 +64,56 @@ class ResourceTeamMember:
         else:
             image = self.image
 
+        role_name: Union[None, Unset, str]
+        if isinstance(self.role_name, Unset):
+            role_name = UNSET
+        else:
+            role_name = self.role_name
+
+        role_uuid: Union[None, Unset, str]
+        if isinstance(self.role_uuid, Unset):
+            role_uuid = UNSET
+        else:
+            role_uuid = self.role_uuid
+
+        expiration_time: Union[None, Unset, str]
+        if isinstance(self.expiration_time, Unset):
+            expiration_time = UNSET
+        elif isinstance(self.expiration_time, datetime.datetime):
+            expiration_time = self.expiration_time.isoformat()
+        else:
+            expiration_time = self.expiration_time
+
+        resource_projects: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.resource_projects, Unset):
+            resource_projects = []
+            for resource_projects_item_data in self.resource_projects:
+                resource_projects_item = resource_projects_item_data.to_dict()
+                resource_projects.append(resource_projects_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "username": username,
-                "full_name": full_name,
-                "role_name": role_name,
-                "role_uuid": role_uuid,
-                "expiration_time": expiration_time,
-                "resource_projects": resource_projects,
-            }
-        )
+        field_dict.update({})
+        if url is not UNSET:
+            field_dict["url"] = url
+        if uuid is not UNSET:
+            field_dict["uuid"] = uuid
+        if username is not UNSET:
+            field_dict["username"] = username
+        if full_name is not UNSET:
+            field_dict["full_name"] = full_name
         if email is not UNSET:
             field_dict["email"] = email
         if image is not UNSET:
             field_dict["image"] = image
+        if role_name is not UNSET:
+            field_dict["role_name"] = role_name
+        if role_uuid is not UNSET:
+            field_dict["role_uuid"] = role_uuid
+        if expiration_time is not UNSET:
+            field_dict["expiration_time"] = expiration_time
+        if resource_projects is not UNSET:
+            field_dict["resource_projects"] = resource_projects
 
         return field_dict
 
@@ -104,49 +122,18 @@ class ResourceTeamMember:
         from ..models.nested_resource_project_permission import NestedResourceProjectPermission
 
         d = dict(src_dict)
-        url = d.pop("url")
+        url = d.pop("url", UNSET)
 
-        uuid = UUID(d.pop("uuid"))
+        _uuid = d.pop("uuid", UNSET)
+        uuid: Union[Unset, UUID]
+        if isinstance(_uuid, Unset):
+            uuid = UNSET
+        else:
+            uuid = UUID(_uuid)
 
-        username = d.pop("username")
+        username = d.pop("username", UNSET)
 
-        full_name = d.pop("full_name")
-
-        def _parse_role_name(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        role_name = _parse_role_name(d.pop("role_name"))
-
-        def _parse_role_uuid(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        role_uuid = _parse_role_uuid(d.pop("role_uuid"))
-
-        def _parse_expiration_time(data: object) -> Union[None, datetime.datetime]:
-            if data is None:
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                expiration_time_type_0 = isoparse(data)
-
-                return expiration_time_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, datetime.datetime], data)
-
-        expiration_time = _parse_expiration_time(d.pop("expiration_time"))
-
-        resource_projects = []
-        _resource_projects = d.pop("resource_projects")
-        for resource_projects_item_data in _resource_projects:
-            resource_projects_item = NestedResourceProjectPermission.from_dict(resource_projects_item_data)
-
-            resource_projects.append(resource_projects_item)
+        full_name = d.pop("full_name", UNSET)
 
         email = d.pop("email", UNSET)
 
@@ -159,17 +146,59 @@ class ResourceTeamMember:
 
         image = _parse_image(d.pop("image", UNSET))
 
+        def _parse_role_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        role_name = _parse_role_name(d.pop("role_name", UNSET))
+
+        def _parse_role_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        role_uuid = _parse_role_uuid(d.pop("role_uuid", UNSET))
+
+        def _parse_expiration_time(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                expiration_time_type_0 = isoparse(data)
+
+                return expiration_time_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        expiration_time = _parse_expiration_time(d.pop("expiration_time", UNSET))
+
+        resource_projects = []
+        _resource_projects = d.pop("resource_projects", UNSET)
+        for resource_projects_item_data in _resource_projects or []:
+            resource_projects_item = NestedResourceProjectPermission.from_dict(resource_projects_item_data)
+
+            resource_projects.append(resource_projects_item)
+
         resource_team_member = cls(
             url=url,
             uuid=uuid,
             username=username,
             full_name=full_name,
+            email=email,
+            image=image,
             role_name=role_name,
             role_uuid=role_uuid,
             expiration_time=expiration_time,
             resource_projects=resource_projects,
-            email=email,
-            image=image,
         )
 
         resource_team_member.additional_properties = d
