@@ -144,6 +144,7 @@ class ConstanceSettings:
         atlassian_request_feedback_field (Union[Unset, str]):
         atlassian_template_field (Union[Unset, str]):
         atlassian_waldur_backend_id_field (Union[Unset, str]):
+        jira_webhook_shared_secret (Union[Unset, str]):
         zammad_api_url (Union[Unset, str]):
         zammad_token (Union[Unset, str]):
         zammad_group (Union[Unset, str]):
@@ -151,6 +152,7 @@ class ConstanceSettings:
         zammad_comment_marker (Union[Unset, str]):
         zammad_comment_prefix (Union[Unset, str]):
         zammad_comment_cooldown_duration (Union[Unset, int]):
+        zammad_webhook_shared_secret (Union[Unset, str]):
         smax_api_url (Union[Unset, str]):
         smax_tenant_id (Union[Unset, str]):
         smax_login (Union[Unset, str]):
@@ -163,6 +165,7 @@ class ConstanceSettings:
         smax_creation_source_name (Union[Unset, str]):
         smax_requests_offering (Union[Unset, str]):
         smax_verify_ssl (Union[Unset, bool]):
+        smax_webhook_shared_secret (Union[Unset, str]):
         enable_mock_service_account_backend (Union[Unset, bool]):
         enable_mock_course_account_backend (Union[Unset, bool]):
         proposal_review_duration (Union[Unset, int]):
@@ -422,6 +425,7 @@ class ConstanceSettings:
     atlassian_request_feedback_field: Union[Unset, str] = UNSET
     atlassian_template_field: Union[Unset, str] = UNSET
     atlassian_waldur_backend_id_field: Union[Unset, str] = UNSET
+    jira_webhook_shared_secret: Union[Unset, str] = UNSET
     zammad_api_url: Union[Unset, str] = UNSET
     zammad_token: Union[Unset, str] = UNSET
     zammad_group: Union[Unset, str] = UNSET
@@ -429,6 +433,7 @@ class ConstanceSettings:
     zammad_comment_marker: Union[Unset, str] = UNSET
     zammad_comment_prefix: Union[Unset, str] = UNSET
     zammad_comment_cooldown_duration: Union[Unset, int] = UNSET
+    zammad_webhook_shared_secret: Union[Unset, str] = UNSET
     smax_api_url: Union[Unset, str] = UNSET
     smax_tenant_id: Union[Unset, str] = UNSET
     smax_login: Union[Unset, str] = UNSET
@@ -441,6 +446,7 @@ class ConstanceSettings:
     smax_creation_source_name: Union[Unset, str] = UNSET
     smax_requests_offering: Union[Unset, str] = UNSET
     smax_verify_ssl: Union[Unset, bool] = UNSET
+    smax_webhook_shared_secret: Union[Unset, str] = UNSET
     enable_mock_service_account_backend: Union[Unset, bool] = UNSET
     enable_mock_course_account_backend: Union[Unset, bool] = UNSET
     proposal_review_duration: Union[Unset, int] = UNSET
@@ -883,6 +889,8 @@ class ConstanceSettings:
 
         atlassian_waldur_backend_id_field = self.atlassian_waldur_backend_id_field
 
+        jira_webhook_shared_secret = self.jira_webhook_shared_secret
+
         zammad_api_url = self.zammad_api_url
 
         zammad_token = self.zammad_token
@@ -898,6 +906,8 @@ class ConstanceSettings:
         zammad_comment_prefix = self.zammad_comment_prefix
 
         zammad_comment_cooldown_duration = self.zammad_comment_cooldown_duration
+
+        zammad_webhook_shared_secret = self.zammad_webhook_shared_secret
 
         smax_api_url = self.smax_api_url
 
@@ -922,6 +932,8 @@ class ConstanceSettings:
         smax_requests_offering = self.smax_requests_offering
 
         smax_verify_ssl = self.smax_verify_ssl
+
+        smax_webhook_shared_secret = self.smax_webhook_shared_secret
 
         enable_mock_service_account_backend = self.enable_mock_service_account_backend
 
@@ -1584,6 +1596,8 @@ class ConstanceSettings:
             field_dict["ATLASSIAN_TEMPLATE_FIELD"] = atlassian_template_field
         if atlassian_waldur_backend_id_field is not UNSET:
             field_dict["ATLASSIAN_WALDUR_BACKEND_ID_FIELD"] = atlassian_waldur_backend_id_field
+        if jira_webhook_shared_secret is not UNSET:
+            field_dict["JIRA_WEBHOOK_SHARED_SECRET"] = jira_webhook_shared_secret
         if zammad_api_url is not UNSET:
             field_dict["ZAMMAD_API_URL"] = zammad_api_url
         if zammad_token is not UNSET:
@@ -1598,6 +1612,8 @@ class ConstanceSettings:
             field_dict["ZAMMAD_COMMENT_PREFIX"] = zammad_comment_prefix
         if zammad_comment_cooldown_duration is not UNSET:
             field_dict["ZAMMAD_COMMENT_COOLDOWN_DURATION"] = zammad_comment_cooldown_duration
+        if zammad_webhook_shared_secret is not UNSET:
+            field_dict["ZAMMAD_WEBHOOK_SHARED_SECRET"] = zammad_webhook_shared_secret
         if smax_api_url is not UNSET:
             field_dict["SMAX_API_URL"] = smax_api_url
         if smax_tenant_id is not UNSET:
@@ -1622,6 +1638,8 @@ class ConstanceSettings:
             field_dict["SMAX_REQUESTS_OFFERING"] = smax_requests_offering
         if smax_verify_ssl is not UNSET:
             field_dict["SMAX_VERIFY_SSL"] = smax_verify_ssl
+        if smax_webhook_shared_secret is not UNSET:
+            field_dict["SMAX_WEBHOOK_SHARED_SECRET"] = smax_webhook_shared_secret
         if enable_mock_service_account_backend is not UNSET:
             field_dict["ENABLE_MOCK_SERVICE_ACCOUNT_BACKEND"] = enable_mock_service_account_backend
         if enable_mock_course_account_backend is not UNSET:
@@ -2295,6 +2313,8 @@ class ConstanceSettings:
 
         atlassian_waldur_backend_id_field = d.pop("ATLASSIAN_WALDUR_BACKEND_ID_FIELD", UNSET)
 
+        jira_webhook_shared_secret = d.pop("JIRA_WEBHOOK_SHARED_SECRET", UNSET)
+
         zammad_api_url = d.pop("ZAMMAD_API_URL", UNSET)
 
         zammad_token = d.pop("ZAMMAD_TOKEN", UNSET)
@@ -2313,6 +2333,8 @@ class ConstanceSettings:
         zammad_comment_prefix = d.pop("ZAMMAD_COMMENT_PREFIX", UNSET)
 
         zammad_comment_cooldown_duration = d.pop("ZAMMAD_COMMENT_COOLDOWN_DURATION", UNSET)
+
+        zammad_webhook_shared_secret = d.pop("ZAMMAD_WEBHOOK_SHARED_SECRET", UNSET)
 
         smax_api_url = d.pop("SMAX_API_URL", UNSET)
 
@@ -2337,6 +2359,8 @@ class ConstanceSettings:
         smax_requests_offering = d.pop("SMAX_REQUESTS_OFFERING", UNSET)
 
         smax_verify_ssl = d.pop("SMAX_VERIFY_SSL", UNSET)
+
+        smax_webhook_shared_secret = d.pop("SMAX_WEBHOOK_SHARED_SECRET", UNSET)
 
         enable_mock_service_account_backend = d.pop("ENABLE_MOCK_SERVICE_ACCOUNT_BACKEND", UNSET)
 
@@ -3036,6 +3060,7 @@ class ConstanceSettings:
             atlassian_request_feedback_field=atlassian_request_feedback_field,
             atlassian_template_field=atlassian_template_field,
             atlassian_waldur_backend_id_field=atlassian_waldur_backend_id_field,
+            jira_webhook_shared_secret=jira_webhook_shared_secret,
             zammad_api_url=zammad_api_url,
             zammad_token=zammad_token,
             zammad_group=zammad_group,
@@ -3043,6 +3068,7 @@ class ConstanceSettings:
             zammad_comment_marker=zammad_comment_marker,
             zammad_comment_prefix=zammad_comment_prefix,
             zammad_comment_cooldown_duration=zammad_comment_cooldown_duration,
+            zammad_webhook_shared_secret=zammad_webhook_shared_secret,
             smax_api_url=smax_api_url,
             smax_tenant_id=smax_tenant_id,
             smax_login=smax_login,
@@ -3055,6 +3081,7 @@ class ConstanceSettings:
             smax_creation_source_name=smax_creation_source_name,
             smax_requests_offering=smax_requests_offering,
             smax_verify_ssl=smax_verify_ssl,
+            smax_webhook_shared_secret=smax_webhook_shared_secret,
             enable_mock_service_account_backend=enable_mock_service_account_backend,
             enable_mock_course_account_backend=enable_mock_course_account_backend,
             proposal_review_duration=proposal_review_duration,
