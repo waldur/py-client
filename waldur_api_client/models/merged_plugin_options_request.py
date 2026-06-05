@@ -136,6 +136,8 @@ class MergedPluginOptionsRequest:
             UI Default: False.
         backend_id_display_label (Union[Unset, str]): Label used by UI for showing value of the backend_id Default:
             'Backend ID'.
+        require_effective_id_for_highlighted_display (Union[Unset, bool]): If set to True, highlighted backend ID
+            display is only shown when the resource has an effective_id. Default: False.
         expose_inference_playground (Union[Unset, bool]): Show an in-browser inference playground action for resources
             of this offering (for offerings whose resources expose an OpenAI-compatible endpoint). Default: False.
         disabled_resource_actions (Union[Unset, list[str]]): List of disabled marketplace resource actions for this
@@ -218,6 +220,7 @@ class MergedPluginOptionsRequest:
     auto_approve_marketplace_script: Union[Unset, bool] = True
     highlight_backend_id_display: Union[Unset, bool] = False
     backend_id_display_label: Union[Unset, str] = "Backend ID"
+    require_effective_id_for_highlighted_display: Union[Unset, bool] = False
     expose_inference_playground: Union[Unset, bool] = False
     disabled_resource_actions: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -386,6 +389,8 @@ class MergedPluginOptionsRequest:
         highlight_backend_id_display = self.highlight_backend_id_display
 
         backend_id_display_label = self.backend_id_display_label
+
+        require_effective_id_for_highlighted_display = self.require_effective_id_for_highlighted_display
 
         expose_inference_playground = self.expose_inference_playground
 
@@ -558,6 +563,8 @@ class MergedPluginOptionsRequest:
             field_dict["highlight_backend_id_display"] = highlight_backend_id_display
         if backend_id_display_label is not UNSET:
             field_dict["backend_id_display_label"] = backend_id_display_label
+        if require_effective_id_for_highlighted_display is not UNSET:
+            field_dict["require_effective_id_for_highlighted_display"] = require_effective_id_for_highlighted_display
         if expose_inference_playground is not UNSET:
             field_dict["expose_inference_playground"] = expose_inference_playground
         if disabled_resource_actions is not UNSET:
@@ -758,6 +765,8 @@ class MergedPluginOptionsRequest:
 
         backend_id_display_label = d.pop("backend_id_display_label", UNSET)
 
+        require_effective_id_for_highlighted_display = d.pop("require_effective_id_for_highlighted_display", UNSET)
+
         expose_inference_playground = d.pop("expose_inference_playground", UNSET)
 
         disabled_resource_actions = cast(list[str], d.pop("disabled_resource_actions", UNSET))
@@ -837,6 +846,7 @@ class MergedPluginOptionsRequest:
             auto_approve_marketplace_script=auto_approve_marketplace_script,
             highlight_backend_id_display=highlight_backend_id_display,
             backend_id_display_label=backend_id_display_label,
+            require_effective_id_for_highlighted_display=require_effective_id_for_highlighted_display,
             expose_inference_playground=expose_inference_playground,
             disabled_resource_actions=disabled_resource_actions,
         )
