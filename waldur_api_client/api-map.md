@@ -5,6 +5,11 @@ Endpoints organized by domain. Each endpoint is available as:
 
 ---
 
+## _matrix
+Module: `waldur_api_client.api._matrix`
+
+- `_matrix_app_v1_transactions_update` PUT `/_matrix/app/v1/transactions/{txn_id}` — Matrix Application Service transaction webhook (path: txn_id)
+
 ## access-subnets
 Module: `waldur_api_client.api.access_subnets`
 
@@ -81,6 +86,10 @@ Module: `waldur_api_client.api.admin`
 - `admin_arrow_vendor_offering_mappings_update` PUT `/api/admin/arrow/vendor-offering-mappings/{uuid}/` (path: uuid | request body)
 - `admin_arrow_vendor_offering_mappings_partial_update` PATCH `/api/admin/arrow/vendor-offering-mappings/{uuid}/` (path: uuid | request body)
 - `admin_arrow_vendor_offering_mappings_destroy` DELETE `/api/admin/arrow/vendor-offering-mappings/{uuid}/` (path: uuid)
+- `admin_matrix_appservice_setup` POST `/api/admin/matrix-appservice/setup/` — Setup Matrix appservice registration (request body)
+- `admin_matrix_appservice_status_retrieve` GET `/api/admin/matrix-appservice/status/` — Get Matrix appservice status (no params)
+- `admin_matrix_diagnostics_retrieve` GET `/api/admin/matrix/diagnostics/` — Run Matrix connectivity diagnostics (no params)
+- `admin_matrix_reprovision` POST `/api/admin/matrix/reprovision/` — Reprovision all active Matrix rooms on a new homeserver (no params)
 
 ## admin-announcements
 Module: `waldur_api_client.api.admin_announcements`
@@ -2102,6 +2111,30 @@ Module: `waldur_api_client.api.marketplace_user_offering_consents`
 - `marketplace_user_offering_consents_partial_update` PATCH `/api/marketplace-user-offering-consents/{uuid}/` (path: uuid | request body)
 - `marketplace_user_offering_consents_destroy` DELETE `/api/marketplace-user-offering-consents/{uuid}/` (path: uuid)
 - `marketplace_user_offering_consents_revoke` POST `/api/marketplace-user-offering-consents/{uuid}/revoke/` — Revoke consent to Terms of Service (path: uuid)
+
+## matrix
+Module: `waldur_api_client.api.matrix`
+
+- `matrix_credentials_retrieve` GET `/api/matrix/credentials/` — Get Matrix login credentials (no params)
+- `matrix_exports_list` GET `/api/matrix/exports/` (3 query params)
+- `matrix_exports_count` HEAD `/api/matrix/exports/` — Get number of items in the collection matching the request parameters (3 query params)
+- `matrix_exports_retrieve` GET `/api/matrix/exports/{uuid}/` (path: uuid)
+- `matrix_exports_download_retrieve` GET `/api/matrix/exports/{uuid}/download/{kind}/` — Download a Matrix history export file (path: kind, uuid)
+- `matrix_rooms_list` GET `/api/matrix/rooms/` (3 query params)
+- `matrix_rooms_count` HEAD `/api/matrix/rooms/` — Get number of items in the collection matching the request parameters (3 query params)
+- `matrix_rooms_create` POST `/api/matrix/rooms/` — Create a Matrix room for a project (request body)
+- `matrix_rooms_eligible_projects_list` GET `/api/matrix/rooms/eligible_projects/` — List projects the caller can create a Matrix room for (4 query params)
+- `matrix_rooms_eligible_projects_count` HEAD `/api/matrix/rooms/eligible_projects/` — List projects the caller can create a Matrix room for (4 query params)
+- `matrix_rooms_retrieve` GET `/api/matrix/rooms/{uuid}/` (path: uuid)
+- `matrix_rooms_destroy` DELETE `/api/matrix/rooms/{uuid}/` (path: uuid)
+- `matrix_rooms_disable` POST `/api/matrix/rooms/{uuid}/disable/` — Disable an active chat room (path: uuid | request body)
+- `matrix_rooms_export_history` POST `/api/matrix/rooms/{uuid}/export_history/` — Trigger manual history export (path: uuid)
+- `matrix_rooms_join` POST `/api/matrix/rooms/{uuid}/join/` — Join a chat room as staff (path: uuid)
+- `matrix_rooms_leave` POST `/api/matrix/rooms/{uuid}/leave/` — Leave a chat room as staff (path: uuid)
+- `matrix_rooms_members_list` GET `/api/matrix/rooms/{uuid}/members/` — List room members (path: uuid | 3 query params)
+- `matrix_rooms_reactivate` POST `/api/matrix/rooms/{uuid}/reactivate/` — Re-enable an archived chat room (path: uuid)
+- `matrix_rooms_retry` POST `/api/matrix/rooms/{uuid}/retry/` — Retry a stuck or failed room operation (path: uuid)
+- `matrix_rooms_sync_members` POST `/api/matrix/rooms/{uuid}/sync_members/` — Force sync room membership with project members (path: uuid)
 
 ## media
 Module: `waldur_api_client.api.media`

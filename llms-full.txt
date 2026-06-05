@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.21.dev.20260604233348
+# Version: 8.0.9-rc.21.dev.20260605091137
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7,6 +7,17 @@
 #
 # Each endpoint provides: sync(), sync_detailed(), sync_all(),
 #   asyncio(), asyncio_detailed(), asyncio_all()
+
+============================================================
+## _matrix  (module: waldur_api_client.api._matrix)
+============================================================
+
+### _matrix_app_v1_transactions_update
+PUT /_matrix/app/v1/transactions/{txn_id}
+Summary: Matrix Application Service transaction webhook
+Description: Receives event transactions from the Matrix homeserver. Authenticated via hs_token in the Authorization header.
+Path parameters:
+  - txn_id
 
 ============================================================
 ## access-subnets  (module: waldur_api_client.api.access_subnets)
@@ -531,6 +542,27 @@ Request body: yes
 DELETE /api/admin/arrow/vendor-offering-mappings/{uuid}/
 Path parameters:
   - uuid
+
+### admin_matrix_appservice_setup
+POST /api/admin/matrix-appservice/setup/
+Summary: Setup Matrix appservice registration
+Description: Generates fresh appservice tokens (rotating any existing ones), enables the appservice, and returns registration YAML.
+Request body: yes
+
+### admin_matrix_appservice_status_retrieve
+GET /api/admin/matrix-appservice/status/
+Summary: Get Matrix appservice status
+Description: Returns the current appservice configuration state.
+
+### admin_matrix_diagnostics_retrieve
+GET /api/admin/matrix/diagnostics/
+Summary: Run Matrix connectivity diagnostics
+Description: Performs live connectivity checks against the configured Matrix homeserver and returns results for each check.
+
+### admin_matrix_reprovision
+POST /api/admin/matrix/reprovision/
+Summary: Reprovision all active Matrix rooms on a new homeserver
+Description: Resets all active rooms to 'creating' state and re-queues them for provisioning. Also resets all user profiles. Staff only.
 
 ============================================================
 ## admin-announcements  (module: waldur_api_client.api.admin_announcements)
@@ -12957,6 +12989,149 @@ Path parameters:
 POST /api/marketplace-user-offering-consents/{uuid}/revoke/
 Summary: Revoke consent to Terms of Service
 Description: Revokes a user's consent to the Terms of Service for an offering. The consent record is marked with a revocation date, and the user may lose access to related resources if consent is required.
+Path parameters:
+  - uuid
+
+============================================================
+## matrix  (module: waldur_api_client.api.matrix)
+============================================================
+
+### matrix_credentials_retrieve
+GET /api/matrix/credentials/
+Summary: Get Matrix login credentials
+Description: Returns Matrix login credentials for the authenticated user based on the configured login method.
+
+### matrix_exports_list
+GET /api/matrix/exports/
+Query parameters (3):
+  - export_type
+  - room_uuid — Room UUID
+  - state
+
+### matrix_exports_count
+HEAD /api/matrix/exports/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - export_type
+  - room_uuid — Room UUID
+  - state
+
+### matrix_exports_retrieve
+GET /api/matrix/exports/{uuid}/
+Path parameters:
+  - uuid
+
+### matrix_exports_download_retrieve
+GET /api/matrix/exports/{uuid}/download/{kind}/
+Summary: Download a Matrix history export file
+Path parameters:
+  - kind — Which artifact to stream.
+  - uuid
+
+### matrix_rooms_list
+GET /api/matrix/rooms/
+Query parameters (3):
+  - member — Only rooms the current user is a member of
+  - project_uuid — Project UUID
+  - state
+
+### matrix_rooms_count
+HEAD /api/matrix/rooms/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - member — Only rooms the current user is a member of
+  - project_uuid — Project UUID
+  - state
+
+### matrix_rooms_create
+POST /api/matrix/rooms/
+Summary: Create a Matrix room for a project
+Request body: yes
+
+### matrix_rooms_eligible_projects_list
+GET /api/matrix/rooms/eligible_projects/
+Summary: List projects the caller can create a Matrix room for
+Description: Returns projects where the caller is customer owner (staff sees all) and no MatrixRoom row exists yet. Existing archived rooms still block creation, so projects with any room are excluded.
+Query parameters (4):
+  - customer_uuid — Limit results to projects under this customer.
+  - member — Only rooms the current user is a member of
+  - project_uuid — Project UUID
+  - state
+
+### matrix_rooms_eligible_projects_count
+HEAD /api/matrix/rooms/eligible_projects/
+Summary: List projects the caller can create a Matrix room for
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - customer_uuid — Limit results to projects under this customer.
+  - member — Only rooms the current user is a member of
+  - project_uuid — Project UUID
+  - state
+
+### matrix_rooms_retrieve
+GET /api/matrix/rooms/{uuid}/
+Path parameters:
+  - uuid
+
+### matrix_rooms_destroy
+DELETE /api/matrix/rooms/{uuid}/
+Path parameters:
+  - uuid
+
+### matrix_rooms_disable
+POST /api/matrix/rooms/{uuid}/disable/
+Summary: Disable an active chat room
+Path parameters:
+  - uuid
+Request body: yes
+
+### matrix_rooms_export_history
+POST /api/matrix/rooms/{uuid}/export_history/
+Summary: Trigger manual history export
+Path parameters:
+  - uuid
+
+### matrix_rooms_join
+POST /api/matrix/rooms/{uuid}/join/
+Summary: Join a chat room as staff
+Description: Staff self-join: provisions the caller, adds them with a Moderator badge (power level 50), and posts a bot announcement.
+Path parameters:
+  - uuid
+
+### matrix_rooms_leave
+POST /api/matrix/rooms/{uuid}/leave/
+Summary: Leave a chat room as staff
+Description: Staff self-leave: posts a bot announcement and removes the caller from the room.
+Path parameters:
+  - uuid
+
+### matrix_rooms_members_list
+GET /api/matrix/rooms/{uuid}/members/
+Summary: List room members
+Path parameters:
+  - uuid
+Query parameters (3):
+  - member — Only rooms the current user is a member of
+  - project_uuid — Project UUID
+  - state
+
+### matrix_rooms_reactivate
+POST /api/matrix/rooms/{uuid}/reactivate/
+Summary: Re-enable an archived chat room
+Path parameters:
+  - uuid
+
+### matrix_rooms_retry
+POST /api/matrix/rooms/{uuid}/retry/
+Summary: Retry a stuck or failed room operation
+Path parameters:
+  - uuid
+
+### matrix_rooms_sync_members
+POST /api/matrix/rooms/{uuid}/sync_members/
+Summary: Force sync room membership with project members
 Path parameters:
   - uuid
 

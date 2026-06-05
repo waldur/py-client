@@ -626,6 +626,7 @@ from .effective_route import EffectiveRoute
 from .effective_route_source_enum import EffectiveRouteSourceEnum
 from .effective_routes_response import EffectiveRoutesResponse
 from .eligibility_check import EligibilityCheck
+from .eligible_project import EligibleProject
 from .email_hook import EmailHook
 from .email_hook_request import EmailHookRequest
 from .email_invitation_request import EmailInvitationRequest
@@ -680,6 +681,7 @@ from .export_screenshot_data_request import ExportScreenshotDataRequest
 from .export_terms_of_service_data import ExportTermsOfServiceData
 from .export_terms_of_service_data_request import ExportTermsOfServiceDataRequest
 from .export_type_compatibility import ExportTypeCompatibility
+from .export_type_enum import ExportTypeEnum
 from .extend_deadline_request_request import ExtendDeadlineRequestRequest
 from .extend_deadline_response import ExtendDeadlineResponse
 from .external_link import ExternalLink
@@ -967,6 +969,23 @@ from .marketplacecardstyle_enum import MARKETPLACECARDSTYLEEnum
 from .marketplacelayoutmode_enum import MARKETPLACELAYOUTMODEEnum
 from .matching_algorithm import MatchingAlgorithm
 from .matching_configuration import MatchingConfiguration
+from .matrix_appservice_setup_request import MatrixAppserviceSetupRequest
+from .matrix_appservice_setup_response import MatrixAppserviceSetupResponse
+from .matrix_appservice_status import MatrixAppserviceStatus
+from .matrix_credentials import MatrixCredentials
+from .matrix_diagnostic_check import MatrixDiagnosticCheck
+from .matrix_diagnostics_response import MatrixDiagnosticsResponse
+from .matrix_exports_download_retrieve_kind import MatrixExportsDownloadRetrieveKind
+from .matrix_history_export import MatrixHistoryExport
+from .matrix_history_export_state_enum import MatrixHistoryExportStateEnum
+from .matrix_reprovision_response import MatrixReprovisionResponse
+from .matrix_room import MatrixRoom
+from .matrix_room_create_request import MatrixRoomCreateRequest
+from .matrix_room_disable_request import MatrixRoomDisableRequest
+from .matrix_room_member import MatrixRoomMember
+from .matrix_room_member_summary import MatrixRoomMemberSummary
+from .matrix_room_state_enum import MatrixRoomStateEnum
+from .membership_state_enum import MembershipStateEnum
 from .merged_plugin_options import MergedPluginOptions
 from .merged_plugin_options_request import MergedPluginOptionsRequest
 from .merged_secret_options import MergedSecretOptions
@@ -3078,6 +3097,7 @@ __all__ = (
     "EffectiveRouteSourceEnum",
     "EffectiveRoutesResponse",
     "EligibilityCheck",
+    "EligibleProject",
     "EmailHook",
     "EmailHookRequest",
     "EmailInvitationRequest",
@@ -3130,6 +3150,7 @@ __all__ = (
     "ExportTermsOfServiceData",
     "ExportTermsOfServiceDataRequest",
     "ExportTypeCompatibility",
+    "ExportTypeEnum",
     "ExtendDeadlineRequestRequest",
     "ExtendDeadlineResponse",
     "ExternalLink",
@@ -3401,6 +3422,23 @@ __all__ = (
     "MarketplaceServiceProviderUserOEnum",
     "MatchingAlgorithm",
     "MatchingConfiguration",
+    "MatrixAppserviceSetupRequest",
+    "MatrixAppserviceSetupResponse",
+    "MatrixAppserviceStatus",
+    "MatrixCredentials",
+    "MatrixDiagnosticCheck",
+    "MatrixDiagnosticsResponse",
+    "MatrixExportsDownloadRetrieveKind",
+    "MatrixHistoryExport",
+    "MatrixHistoryExportStateEnum",
+    "MatrixReprovisionResponse",
+    "MatrixRoom",
+    "MatrixRoomCreateRequest",
+    "MatrixRoomDisableRequest",
+    "MatrixRoomMember",
+    "MatrixRoomMemberSummary",
+    "MatrixRoomStateEnum",
+    "MembershipStateEnum",
     "MergedPluginOptions",
     "MergedPluginOptionsRequest",
     "MergedSecretOptions",

@@ -311,6 +311,18 @@ class ConstanceSettings:
         ssh_key_allowed_types (Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]]):
         ssh_key_min_rsa_key_size (Union[Unset, int]):
         enabled_reporting_screens (Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]]):
+        matrix_enabled (Union[Unset, bool]):
+        matrix_homeserver_url (Union[Unset, str]):
+        matrix_homeserver_domain (Union[Unset, str]):
+        matrix_appservice_as_token (Union[Unset, str]):
+        matrix_appservice_hs_token (Union[Unset, str]):
+        matrix_appservice_sender_localpart (Union[Unset, str]):
+        matrix_history_export_enabled (Union[Unset, bool]):
+        matrix_export_media (Union[Unset, bool]):
+        matrix_user_registration_secret (Union[Unset, str]):
+        matrix_user_id_format (Union[Unset, str]):
+        matrix_login_method (Union[Unset, str]):
+        matrix_oidc_provider_url (Union[Unset, str]):
         site_agent_log_max_rows_per_identity (Union[Unset, int]):
         pat_enabled (Union[Unset, bool]):
         pat_max_lifetime_days (Union[Unset, int]):
@@ -592,6 +604,18 @@ class ConstanceSettings:
     ssh_key_allowed_types: Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]] = UNSET
     ssh_key_min_rsa_key_size: Union[Unset, int] = UNSET
     enabled_reporting_screens: Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]] = UNSET
+    matrix_enabled: Union[Unset, bool] = UNSET
+    matrix_homeserver_url: Union[Unset, str] = UNSET
+    matrix_homeserver_domain: Union[Unset, str] = UNSET
+    matrix_appservice_as_token: Union[Unset, str] = UNSET
+    matrix_appservice_hs_token: Union[Unset, str] = UNSET
+    matrix_appservice_sender_localpart: Union[Unset, str] = UNSET
+    matrix_history_export_enabled: Union[Unset, bool] = UNSET
+    matrix_export_media: Union[Unset, bool] = UNSET
+    matrix_user_registration_secret: Union[Unset, str] = UNSET
+    matrix_user_id_format: Union[Unset, str] = UNSET
+    matrix_login_method: Union[Unset, str] = UNSET
+    matrix_oidc_provider_url: Union[Unset, str] = UNSET
     site_agent_log_max_rows_per_identity: Union[Unset, int] = UNSET
     pat_enabled: Union[Unset, bool] = UNSET
     pat_max_lifetime_days: Union[Unset, int] = UNSET
@@ -1365,6 +1389,30 @@ class ConstanceSettings:
 
                 enabled_reporting_screens.append(enabled_reporting_screens_item)
 
+        matrix_enabled = self.matrix_enabled
+
+        matrix_homeserver_url = self.matrix_homeserver_url
+
+        matrix_homeserver_domain = self.matrix_homeserver_domain
+
+        matrix_appservice_as_token = self.matrix_appservice_as_token
+
+        matrix_appservice_hs_token = self.matrix_appservice_hs_token
+
+        matrix_appservice_sender_localpart = self.matrix_appservice_sender_localpart
+
+        matrix_history_export_enabled = self.matrix_history_export_enabled
+
+        matrix_export_media = self.matrix_export_media
+
+        matrix_user_registration_secret = self.matrix_user_registration_secret
+
+        matrix_user_id_format = self.matrix_user_id_format
+
+        matrix_login_method = self.matrix_login_method
+
+        matrix_oidc_provider_url = self.matrix_oidc_provider_url
+
         site_agent_log_max_rows_per_identity = self.site_agent_log_max_rows_per_identity
 
         pat_enabled = self.pat_enabled
@@ -1936,6 +1984,30 @@ class ConstanceSettings:
             field_dict["SSH_KEY_MIN_RSA_KEY_SIZE"] = ssh_key_min_rsa_key_size
         if enabled_reporting_screens is not UNSET:
             field_dict["ENABLED_REPORTING_SCREENS"] = enabled_reporting_screens
+        if matrix_enabled is not UNSET:
+            field_dict["MATRIX_ENABLED"] = matrix_enabled
+        if matrix_homeserver_url is not UNSET:
+            field_dict["MATRIX_HOMESERVER_URL"] = matrix_homeserver_url
+        if matrix_homeserver_domain is not UNSET:
+            field_dict["MATRIX_HOMESERVER_DOMAIN"] = matrix_homeserver_domain
+        if matrix_appservice_as_token is not UNSET:
+            field_dict["MATRIX_APPSERVICE_AS_TOKEN"] = matrix_appservice_as_token
+        if matrix_appservice_hs_token is not UNSET:
+            field_dict["MATRIX_APPSERVICE_HS_TOKEN"] = matrix_appservice_hs_token
+        if matrix_appservice_sender_localpart is not UNSET:
+            field_dict["MATRIX_APPSERVICE_SENDER_LOCALPART"] = matrix_appservice_sender_localpart
+        if matrix_history_export_enabled is not UNSET:
+            field_dict["MATRIX_HISTORY_EXPORT_ENABLED"] = matrix_history_export_enabled
+        if matrix_export_media is not UNSET:
+            field_dict["MATRIX_EXPORT_MEDIA"] = matrix_export_media
+        if matrix_user_registration_secret is not UNSET:
+            field_dict["MATRIX_USER_REGISTRATION_SECRET"] = matrix_user_registration_secret
+        if matrix_user_id_format is not UNSET:
+            field_dict["MATRIX_USER_ID_FORMAT"] = matrix_user_id_format
+        if matrix_login_method is not UNSET:
+            field_dict["MATRIX_LOGIN_METHOD"] = matrix_login_method
+        if matrix_oidc_provider_url is not UNSET:
+            field_dict["MATRIX_OIDC_PROVIDER_URL"] = matrix_oidc_provider_url
         if site_agent_log_max_rows_per_identity is not UNSET:
             field_dict["SITE_AGENT_LOG_MAX_ROWS_PER_IDENTITY"] = site_agent_log_max_rows_per_identity
         if pat_enabled is not UNSET:
@@ -2943,6 +3015,30 @@ class ConstanceSettings:
 
             enabled_reporting_screens.append(enabled_reporting_screens_item)
 
+        matrix_enabled = d.pop("MATRIX_ENABLED", UNSET)
+
+        matrix_homeserver_url = d.pop("MATRIX_HOMESERVER_URL", UNSET)
+
+        matrix_homeserver_domain = d.pop("MATRIX_HOMESERVER_DOMAIN", UNSET)
+
+        matrix_appservice_as_token = d.pop("MATRIX_APPSERVICE_AS_TOKEN", UNSET)
+
+        matrix_appservice_hs_token = d.pop("MATRIX_APPSERVICE_HS_TOKEN", UNSET)
+
+        matrix_appservice_sender_localpart = d.pop("MATRIX_APPSERVICE_SENDER_LOCALPART", UNSET)
+
+        matrix_history_export_enabled = d.pop("MATRIX_HISTORY_EXPORT_ENABLED", UNSET)
+
+        matrix_export_media = d.pop("MATRIX_EXPORT_MEDIA", UNSET)
+
+        matrix_user_registration_secret = d.pop("MATRIX_USER_REGISTRATION_SECRET", UNSET)
+
+        matrix_user_id_format = d.pop("MATRIX_USER_ID_FORMAT", UNSET)
+
+        matrix_login_method = d.pop("MATRIX_LOGIN_METHOD", UNSET)
+
+        matrix_oidc_provider_url = d.pop("MATRIX_OIDC_PROVIDER_URL", UNSET)
+
         site_agent_log_max_rows_per_identity = d.pop("SITE_AGENT_LOG_MAX_ROWS_PER_IDENTITY", UNSET)
 
         pat_enabled = d.pop("PAT_ENABLED", UNSET)
@@ -3227,6 +3323,18 @@ class ConstanceSettings:
             ssh_key_allowed_types=ssh_key_allowed_types,
             ssh_key_min_rsa_key_size=ssh_key_min_rsa_key_size,
             enabled_reporting_screens=enabled_reporting_screens,
+            matrix_enabled=matrix_enabled,
+            matrix_homeserver_url=matrix_homeserver_url,
+            matrix_homeserver_domain=matrix_homeserver_domain,
+            matrix_appservice_as_token=matrix_appservice_as_token,
+            matrix_appservice_hs_token=matrix_appservice_hs_token,
+            matrix_appservice_sender_localpart=matrix_appservice_sender_localpart,
+            matrix_history_export_enabled=matrix_history_export_enabled,
+            matrix_export_media=matrix_export_media,
+            matrix_user_registration_secret=matrix_user_registration_secret,
+            matrix_user_id_format=matrix_user_id_format,
+            matrix_login_method=matrix_login_method,
+            matrix_oidc_provider_url=matrix_oidc_provider_url,
             site_agent_log_max_rows_per_identity=site_agent_log_max_rows_per_identity,
             pat_enabled=pat_enabled,
             pat_max_lifetime_days=pat_max_lifetime_days,
