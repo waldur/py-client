@@ -313,6 +313,7 @@ class ConstanceSettings:
         enabled_reporting_screens (Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]]):
         matrix_enabled (Union[Unset, bool]):
         matrix_homeserver_url (Union[Unset, str]):
+        matrix_homeserver_public_url (Union[Unset, str]):
         matrix_homeserver_domain (Union[Unset, str]):
         matrix_appservice_as_token (Union[Unset, str]):
         matrix_appservice_hs_token (Union[Unset, str]):
@@ -606,6 +607,7 @@ class ConstanceSettings:
     enabled_reporting_screens: Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]] = UNSET
     matrix_enabled: Union[Unset, bool] = UNSET
     matrix_homeserver_url: Union[Unset, str] = UNSET
+    matrix_homeserver_public_url: Union[Unset, str] = UNSET
     matrix_homeserver_domain: Union[Unset, str] = UNSET
     matrix_appservice_as_token: Union[Unset, str] = UNSET
     matrix_appservice_hs_token: Union[Unset, str] = UNSET
@@ -1393,6 +1395,8 @@ class ConstanceSettings:
 
         matrix_homeserver_url = self.matrix_homeserver_url
 
+        matrix_homeserver_public_url = self.matrix_homeserver_public_url
+
         matrix_homeserver_domain = self.matrix_homeserver_domain
 
         matrix_appservice_as_token = self.matrix_appservice_as_token
@@ -1988,6 +1992,8 @@ class ConstanceSettings:
             field_dict["MATRIX_ENABLED"] = matrix_enabled
         if matrix_homeserver_url is not UNSET:
             field_dict["MATRIX_HOMESERVER_URL"] = matrix_homeserver_url
+        if matrix_homeserver_public_url is not UNSET:
+            field_dict["MATRIX_HOMESERVER_PUBLIC_URL"] = matrix_homeserver_public_url
         if matrix_homeserver_domain is not UNSET:
             field_dict["MATRIX_HOMESERVER_DOMAIN"] = matrix_homeserver_domain
         if matrix_appservice_as_token is not UNSET:
@@ -3019,6 +3025,8 @@ class ConstanceSettings:
 
         matrix_homeserver_url = d.pop("MATRIX_HOMESERVER_URL", UNSET)
 
+        matrix_homeserver_public_url = d.pop("MATRIX_HOMESERVER_PUBLIC_URL", UNSET)
+
         matrix_homeserver_domain = d.pop("MATRIX_HOMESERVER_DOMAIN", UNSET)
 
         matrix_appservice_as_token = d.pop("MATRIX_APPSERVICE_AS_TOKEN", UNSET)
@@ -3325,6 +3333,7 @@ class ConstanceSettings:
             enabled_reporting_screens=enabled_reporting_screens,
             matrix_enabled=matrix_enabled,
             matrix_homeserver_url=matrix_homeserver_url,
+            matrix_homeserver_public_url=matrix_homeserver_public_url,
             matrix_homeserver_domain=matrix_homeserver_domain,
             matrix_appservice_as_token=matrix_appservice_as_token,
             matrix_appservice_hs_token=matrix_appservice_hs_token,

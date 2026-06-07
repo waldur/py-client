@@ -17,6 +17,10 @@ class MatrixAppserviceSetupRequest:
         sender_localpart (Union[Unset, str]): Localpart for the appservice bot user, e.g. 'waldur-bot'
         homeserver_url (Union[Unset, str]): Matrix homeserver base URL. Only persisted if MATRIX_HOMESERVER_URL is not
             already configured.
+        homeserver_public_url (Union[Unset, str]): Optional. Matrix homeserver URL used by browser clients. Leave blank
+            when the homeserver URL above is reachable from both servers and browsers. Set this for deployments where the
+            two differ (e.g. Docker-internal vs. Caddy-proxied). Only persisted if MATRIX_HOMESERVER_PUBLIC_URL is not
+            already configured.
         homeserver_domain (Union[Unset, str]): Matrix homeserver server_name domain. Only persisted if
             MATRIX_HOMESERVER_DOMAIN is not already configured.
         user_registration_secret (Union[Unset, str]): Shared secret configured in the homeserver for user registration.
@@ -26,6 +30,7 @@ class MatrixAppserviceSetupRequest:
     url: Union[Unset, str] = UNSET
     sender_localpart: Union[Unset, str] = UNSET
     homeserver_url: Union[Unset, str] = UNSET
+    homeserver_public_url: Union[Unset, str] = UNSET
     homeserver_domain: Union[Unset, str] = UNSET
     user_registration_secret: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -36,6 +41,8 @@ class MatrixAppserviceSetupRequest:
         sender_localpart = self.sender_localpart
 
         homeserver_url = self.homeserver_url
+
+        homeserver_public_url = self.homeserver_public_url
 
         homeserver_domain = self.homeserver_domain
 
@@ -50,6 +57,8 @@ class MatrixAppserviceSetupRequest:
             field_dict["sender_localpart"] = sender_localpart
         if homeserver_url is not UNSET:
             field_dict["homeserver_url"] = homeserver_url
+        if homeserver_public_url is not UNSET:
+            field_dict["homeserver_public_url"] = homeserver_public_url
         if homeserver_domain is not UNSET:
             field_dict["homeserver_domain"] = homeserver_domain
         if user_registration_secret is not UNSET:
@@ -66,6 +75,8 @@ class MatrixAppserviceSetupRequest:
 
         homeserver_url = d.pop("homeserver_url", UNSET)
 
+        homeserver_public_url = d.pop("homeserver_public_url", UNSET)
+
         homeserver_domain = d.pop("homeserver_domain", UNSET)
 
         user_registration_secret = d.pop("user_registration_secret", UNSET)
@@ -74,6 +85,7 @@ class MatrixAppserviceSetupRequest:
             url=url,
             sender_localpart=sender_localpart,
             homeserver_url=homeserver_url,
+            homeserver_public_url=homeserver_public_url,
             homeserver_domain=homeserver_domain,
             user_registration_secret=user_registration_secret,
         )
