@@ -17,6 +17,7 @@ class OfferingUserFieldEnum(str, Enum):
     OFFERING_NAME = "offering_name"
     OFFERING_UUID = "offering_uuid"
     REQUIRES_RECONSENT = "requires_reconsent"
+    RUNTIME_STATE = "runtime_state"
     SERVICE_PROVIDER_COMMENT = "service_provider_comment"
     SERVICE_PROVIDER_COMMENT_URL = "service_provider_comment_url"
     STATE = "state"

@@ -1369,8 +1369,8 @@ Module: `waldur_api_client.api.marketplace_offering_user_checklist_completions`
 ## marketplace-offering-users
 Module: `waldur_api_client.api.marketplace_offering_users`
 
-- `marketplace_offering_users_list` GET `/api/marketplace-offering-users/` — List offering users (19 query params)
-- `marketplace_offering_users_count` HEAD `/api/marketplace-offering-users/` — List offering users (18 query params)
+- `marketplace_offering_users_list` GET `/api/marketplace-offering-users/` — List offering users (20 query params)
+- `marketplace_offering_users_count` HEAD `/api/marketplace-offering-users/` — List offering users (19 query params)
 - `marketplace_offering_users_create` POST `/api/marketplace-offering-users/` — Create an offering user (request body)
 - `marketplace_offering_users_checklist_template_retrieve` GET `/api/marketplace-offering-users/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `marketplace_offering_users_checklist_template_count` HEAD `/api/marketplace-offering-users/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -1397,6 +1397,7 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_submit_answers` POST `/api/marketplace-offering-users/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
 - `marketplace_offering_users_update_comments_partial_update` PATCH `/api/marketplace-offering-users/{uuid}/update_comments/` — Update service provider comments (path: uuid | request body)
 - `marketplace_offering_users_update_restricted` POST `/api/marketplace-offering-users/{uuid}/update_restricted/` — Update restriction status (path: uuid | request body)
+- `marketplace_offering_users_update_runtime_state` POST `/api/marketplace-offering-users/{uuid}/update_runtime_state/` — Update runtime state (path: uuid | request body)
 
 ## marketplace-orders
 Module: `waldur_api_client.api.marketplace_orders`

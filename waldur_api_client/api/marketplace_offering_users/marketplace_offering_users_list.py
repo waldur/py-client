@@ -11,6 +11,7 @@ from ...models.offering_user import OfferingUser
 from ...models.offering_user_field_enum import OfferingUserFieldEnum
 from ...models.offering_user_o_enum import OfferingUserOEnum
 from ...models.offering_user_state import OfferingUserState
+from ...models.runtime_state_enum import RuntimeStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -35,6 +36,7 @@ def _get_kwargs(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -120,6 +122,15 @@ def _get_kwargs(
 
     params["query"] = query
 
+    json_runtime_state: Union[Unset, list[str]] = UNSET
+    if not isinstance(runtime_state, Unset):
+        json_runtime_state = []
+        for runtime_state_item_data in runtime_state:
+            runtime_state_item = runtime_state_item_data.value
+            json_runtime_state.append(runtime_state_item)
+
+    params["runtime_state"] = json_runtime_state
+
     json_state: Union[Unset, list[str]] = UNSET
     if not isinstance(state, Unset):
         json_state = []
@@ -194,6 +205,7 @@ def sync_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -224,6 +236,7 @@ def sync_detailed(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        runtime_state (Union[Unset, list[RuntimeStateEnum]]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -255,6 +268,7 @@ def sync_detailed(
         parent_offering_uuid=parent_offering_uuid,
         provider_uuid=provider_uuid,
         query=query,
+        runtime_state=runtime_state,
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,
@@ -288,6 +302,7 @@ def sync(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -318,6 +333,7 @@ def sync(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        runtime_state (Union[Unset, list[RuntimeStateEnum]]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -350,6 +366,7 @@ def sync(
         parent_offering_uuid=parent_offering_uuid,
         provider_uuid=provider_uuid,
         query=query,
+        runtime_state=runtime_state,
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,
@@ -377,6 +394,7 @@ async def asyncio_detailed(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -407,6 +425,7 @@ async def asyncio_detailed(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        runtime_state (Union[Unset, list[RuntimeStateEnum]]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -438,6 +457,7 @@ async def asyncio_detailed(
         parent_offering_uuid=parent_offering_uuid,
         provider_uuid=provider_uuid,
         query=query,
+        runtime_state=runtime_state,
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,
@@ -469,6 +489,7 @@ async def asyncio(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -499,6 +520,7 @@ async def asyncio(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        runtime_state (Union[Unset, list[RuntimeStateEnum]]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -532,6 +554,7 @@ async def asyncio(
             parent_offering_uuid=parent_offering_uuid,
             provider_uuid=provider_uuid,
             query=query,
+            runtime_state=runtime_state,
             state=state,
             user_username=user_username,
             user_uuid=user_uuid,
@@ -558,6 +581,7 @@ def sync_all(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -586,6 +610,7 @@ def sync_all(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        runtime_state (Union[Unset, list[RuntimeStateEnum]]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -619,6 +644,7 @@ def sync_all(
         parent_offering_uuid=parent_offering_uuid,
         provider_uuid=provider_uuid,
         query=query,
+        runtime_state=runtime_state,
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,
@@ -685,6 +711,7 @@ async def asyncio_all(
     parent_offering_uuid: Union[Unset, UUID] = UNSET,
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -713,6 +740,7 @@ async def asyncio_all(
         parent_offering_uuid (Union[Unset, UUID]):
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        runtime_state (Union[Unset, list[RuntimeStateEnum]]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -746,6 +774,7 @@ async def asyncio_all(
         parent_offering_uuid=parent_offering_uuid,
         provider_uuid=provider_uuid,
         query=query,
+        runtime_state=runtime_state,
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,

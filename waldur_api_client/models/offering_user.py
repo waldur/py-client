@@ -10,6 +10,7 @@ from dateutil.parser import isoparse
 from ..models.blank_enum import BlankEnum
 from ..models.gender_enum import GenderEnum
 from ..models.offering_user_state import OfferingUserState
+from ..models.runtime_state_enum import RuntimeStateEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -64,6 +65,7 @@ class OfferingUser:
         customer_name (Union[Unset, str]):
         is_restricted (Union[Unset, bool]): Signal to service if the user account is restricted or not
         state (Union[Unset, OfferingUserState]):
+        runtime_state (Union[Unset, RuntimeStateEnum]):
         service_provider_comment (Union[Unset, str]): Additional comment for pending states like validation or account
             linking
         service_provider_comment_url (Union[Unset, str]): URL link for additional information or actions related to
@@ -117,6 +119,7 @@ class OfferingUser:
     customer_name: Union[Unset, str] = UNSET
     is_restricted: Union[Unset, bool] = UNSET
     state: Union[Unset, OfferingUserState] = UNSET
+    runtime_state: Union[Unset, RuntimeStateEnum] = UNSET
     service_provider_comment: Union[Unset, str] = UNSET
     service_provider_comment_url: Union[Unset, str] = UNSET
     has_consent: Union[Unset, bool] = UNSET
@@ -243,6 +246,10 @@ class OfferingUser:
         if not isinstance(self.state, Unset):
             state = self.state.value
 
+        runtime_state: Union[Unset, str] = UNSET
+        if not isinstance(self.runtime_state, Unset):
+            runtime_state = self.runtime_state.value
+
         service_provider_comment = self.service_provider_comment
 
         service_provider_comment_url = self.service_provider_comment_url
@@ -348,6 +355,8 @@ class OfferingUser:
             field_dict["is_restricted"] = is_restricted
         if state is not UNSET:
             field_dict["state"] = state
+        if runtime_state is not UNSET:
+            field_dict["runtime_state"] = runtime_state
         if service_provider_comment is not UNSET:
             field_dict["service_provider_comment"] = service_provider_comment
         if service_provider_comment_url is not UNSET:
@@ -537,6 +546,13 @@ class OfferingUser:
         else:
             state = OfferingUserState(_state)
 
+        _runtime_state = d.pop("runtime_state", UNSET)
+        runtime_state: Union[Unset, RuntimeStateEnum]
+        if isinstance(_runtime_state, Unset):
+            runtime_state = UNSET
+        else:
+            runtime_state = RuntimeStateEnum(_runtime_state)
+
         service_provider_comment = d.pop("service_provider_comment", UNSET)
 
         service_provider_comment_url = d.pop("service_provider_comment_url", UNSET)
@@ -609,6 +625,7 @@ class OfferingUser:
             customer_name=customer_name,
             is_restricted=is_restricted,
             state=state,
+            runtime_state=runtime_state,
             service_provider_comment=service_provider_comment,
             service_provider_comment_url=service_provider_comment_url,
             has_consent=has_consent,

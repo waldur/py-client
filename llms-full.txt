@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.22.dev.20260607233345
+# Version: 8.0.9-rc.23.dev.20260608233346
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7320,7 +7320,7 @@ Path parameters:
 GET /api/marketplace-offering-users/
 Summary: List offering users
 Description: Returns a paginated list of users associated with offerings. The visibility of users depends on the role of the authenticated user. Staff and support can see all users. Service providers can see users of their offerings if the user has consented. Regular users can only see their own offering-user...
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
   - field
@@ -7337,6 +7337,7 @@ Query parameters (19):
   - parent_offering_uuid
   - provider_uuid — Provider UUID
   - query — Search by offering name, username or user name
+  - runtime_state — Offering user runtime state
   - state — Offering user state
   - user_username — User username
   - user_uuid — User UUID
@@ -7345,7 +7346,7 @@ Query parameters (19):
 HEAD /api/marketplace-offering-users/
 Summary: List offering users
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (18):
+Query parameters (19):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
@@ -7361,6 +7362,7 @@ Query parameters (18):
   - parent_offering_uuid
   - provider_uuid — Provider UUID
   - query — Search by offering name, username or user name
+  - runtime_state — Offering user runtime state
   - state — Offering user state
   - user_username — User username
   - user_uuid — User UUID
@@ -7545,6 +7547,14 @@ Request body: yes
 POST /api/marketplace-offering-users/{uuid}/update_restricted/
 Summary: Update restriction status
 Description: Allows a service provider to mark an offering user as restricted or unrestricted. A restricted user may have limited access to the resource.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_users_update_runtime_state
+POST /api/marketplace-offering-users/{uuid}/update_runtime_state/
+Summary: Update runtime state
+Description: Allows a service provider to set the operational/access state of an offering user. Unlike the lifecycle state, this can be updated at any time (except when the account is Deleted). Use this to signal access blockers such as pending Terms of Use acceptance or pending account linking (e.g. MyAccess...
 Path parameters:
   - uuid
 Request body: yes
