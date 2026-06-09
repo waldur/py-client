@@ -737,6 +737,15 @@ from .generate_suggestions_request_request import GenerateSuggestionsRequestRequ
 from .generate_suggestions_request_source_enum import GenerateSuggestionsRequestSourceEnum
 from .generate_suggestions_response import GenerateSuggestionsResponse
 from .generic_order_attributes import GenericOrderAttributes
+from .glauth_group_kind import GlauthGroupKind
+from .glauth_tree import GlauthTree
+from .glauth_tree_group import GlauthTreeGroup
+from .glauth_tree_membership import GlauthTreeMembership
+from .glauth_tree_offering import GlauthTreeOffering
+from .glauth_tree_robot_account import GlauthTreeRobotAccount
+from .glauth_tree_scope import GlauthTreeScope
+from .glauth_tree_scope_type_enum import GlauthTreeScopeTypeEnum
+from .glauth_tree_user import GlauthTreeUser
 from .global_user_data_access_log import GlobalUserDataAccessLog
 from .global_user_data_access_log_context import GlobalUserDataAccessLogContext
 from .global_user_data_access_log_o_enum import GlobalUserDataAccessLogOEnum
@@ -988,6 +997,10 @@ from .matrix_room_state_enum import MatrixRoomStateEnum
 from .membership_state_enum import MembershipStateEnum
 from .merged_plugin_options import MergedPluginOptions
 from .merged_plugin_options_request import MergedPluginOptionsRequest
+from .merged_plugin_options_request_resource_project_role_map import MergedPluginOptionsRequestResourceProjectRoleMap
+from .merged_plugin_options_request_resource_role_map import MergedPluginOptionsRequestResourceRoleMap
+from .merged_plugin_options_resource_project_role_map import MergedPluginOptionsResourceProjectRoleMap
+from .merged_plugin_options_resource_role_map import MergedPluginOptionsResourceRoleMap
 from .merged_secret_options import MergedSecretOptions
 from .merged_secret_options_request import MergedSecretOptionsRequest
 from .message import Message
@@ -3206,6 +3219,15 @@ __all__ = (
     "GenerateSuggestionsRequestSourceEnum",
     "GenerateSuggestionsResponse",
     "GenericOrderAttributes",
+    "GlauthGroupKind",
+    "GlauthTree",
+    "GlauthTreeGroup",
+    "GlauthTreeMembership",
+    "GlauthTreeOffering",
+    "GlauthTreeRobotAccount",
+    "GlauthTreeScope",
+    "GlauthTreeScopeTypeEnum",
+    "GlauthTreeUser",
     "GlobalUserDataAccessLog",
     "GlobalUserDataAccessLogContext",
     "GlobalUserDataAccessLogOEnum",
@@ -3443,6 +3465,10 @@ __all__ = (
     "MembershipStateEnum",
     "MergedPluginOptions",
     "MergedPluginOptionsRequest",
+    "MergedPluginOptionsRequestResourceProjectRoleMap",
+    "MergedPluginOptionsRequestResourceRoleMap",
+    "MergedPluginOptionsResourceProjectRoleMap",
+    "MergedPluginOptionsResourceRoleMap",
     "MergedSecretOptions",
     "MergedSecretOptionsRequest",
     "Message",

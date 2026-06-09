@@ -28,6 +28,7 @@ class OpenStackNetworkFieldEnum(str, Enum):
     MODIFIED = "modified"
     MTU = "mtu"
     NAME = "name"
+    PORT_SECURITY_ENABLED = "port_security_enabled"
     PROJECT = "project"
     PROJECT_NAME = "project_name"
     PROJECT_UUID = "project_uuid"

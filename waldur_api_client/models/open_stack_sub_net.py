@@ -63,6 +63,7 @@ class OpenStackSubNet:
         dns_nameservers (Union[Unset, list[str]]):
         host_routes (Union[Unset, list['OpenStackStaticRoute']]):
         is_connected (Union[Unset, bool]): Is subnet connected to the default tenant router.
+        port_security_enabled (Union[Unset, bool]):
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_type (Union[None, Unset, str]):
@@ -115,6 +116,7 @@ class OpenStackSubNet:
     dns_nameservers: Union[Unset, list[str]] = UNSET
     host_routes: Union[Unset, list["OpenStackStaticRoute"]] = UNSET
     is_connected: Union[Unset, bool] = UNSET
+    port_security_enabled: Union[Unset, bool] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_type: Union[None, Unset, str] = UNSET
@@ -251,6 +253,8 @@ class OpenStackSubNet:
                 host_routes.append(host_routes_item)
 
         is_connected = self.is_connected
+
+        port_security_enabled = self.port_security_enabled
 
         marketplace_offering_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_offering_uuid, Unset):
@@ -399,6 +403,8 @@ class OpenStackSubNet:
             field_dict["host_routes"] = host_routes
         if is_connected is not UNSET:
             field_dict["is_connected"] = is_connected
+        if port_security_enabled is not UNSET:
+            field_dict["port_security_enabled"] = port_security_enabled
         if marketplace_offering_uuid is not UNSET:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
@@ -585,6 +591,8 @@ class OpenStackSubNet:
 
         is_connected = d.pop("is_connected", UNSET)
 
+        port_security_enabled = d.pop("port_security_enabled", UNSET)
+
         def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -737,6 +745,7 @@ class OpenStackSubNet:
             dns_nameservers=dns_nameservers,
             host_routes=host_routes,
             is_connected=is_connected,
+            port_security_enabled=port_security_enabled,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
             marketplace_offering_type=marketplace_offering_type,

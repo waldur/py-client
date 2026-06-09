@@ -26,6 +26,7 @@ class OpenStackNestedSubNet:
         allocation_pools (Union[Unset, list['OpenStackSubNetAllocationPool']]):
         ip_version (Union[Unset, int]): IP protocol version (4 or 6)
         enable_dhcp (Union[Unset, bool]): If True, DHCP service will be enabled on this subnet
+        port_security_enabled (Union[Unset, bool]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -36,6 +37,7 @@ class OpenStackNestedSubNet:
     allocation_pools: Union[Unset, list["OpenStackSubNetAllocationPool"]] = UNSET
     ip_version: Union[Unset, int] = UNSET
     enable_dhcp: Union[Unset, bool] = UNSET
+    port_security_enabled: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -66,6 +68,8 @@ class OpenStackNestedSubNet:
 
         enable_dhcp = self.enable_dhcp
 
+        port_security_enabled = self.port_security_enabled
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -85,6 +89,8 @@ class OpenStackNestedSubNet:
             field_dict["ip_version"] = ip_version
         if enable_dhcp is not UNSET:
             field_dict["enable_dhcp"] = enable_dhcp
+        if port_security_enabled is not UNSET:
+            field_dict["port_security_enabled"] = port_security_enabled
 
         return field_dict
 
@@ -126,6 +132,8 @@ class OpenStackNestedSubNet:
 
         enable_dhcp = d.pop("enable_dhcp", UNSET)
 
+        port_security_enabled = d.pop("port_security_enabled", UNSET)
+
         open_stack_nested_sub_net = cls(
             uuid=uuid,
             name=name,
@@ -135,6 +143,7 @@ class OpenStackNestedSubNet:
             allocation_pools=allocation_pools,
             ip_version=ip_version,
             enable_dhcp=enable_dhcp,
+            port_security_enabled=port_security_enabled,
         )
 
         open_stack_nested_sub_net.additional_properties = d

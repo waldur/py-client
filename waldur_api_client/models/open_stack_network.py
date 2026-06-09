@@ -59,6 +59,8 @@ class OpenStackNetwork:
         subnets (Union[Unset, list['OpenStackNestedSubNet']]):
         mtu (Union[None, Unset, int]): The maximum transmission unit (MTU) value to address fragmentation.
         rbac_policies (Union[Unset, list['NetworkRBACPolicy']]):
+        port_security_enabled (Union[Unset, bool]): Default port_security_enabled for ports on this network. When False,
+            ports created on this network inherit disabled port security unless explicitly overridden.
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_type (Union[None, Unset, str]):
@@ -107,6 +109,7 @@ class OpenStackNetwork:
     subnets: Union[Unset, list["OpenStackNestedSubNet"]] = UNSET
     mtu: Union[None, Unset, int] = UNSET
     rbac_policies: Union[Unset, list["NetworkRBACPolicy"]] = UNSET
+    port_security_enabled: Union[Unset, bool] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_type: Union[None, Unset, str] = UNSET
@@ -235,6 +238,8 @@ class OpenStackNetwork:
             for rbac_policies_item_data in self.rbac_policies:
                 rbac_policies_item = rbac_policies_item_data.to_dict()
                 rbac_policies.append(rbac_policies_item)
+
+        port_security_enabled = self.port_security_enabled
 
         marketplace_offering_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_offering_uuid, Unset):
@@ -377,6 +382,8 @@ class OpenStackNetwork:
             field_dict["mtu"] = mtu
         if rbac_policies is not UNSET:
             field_dict["rbac_policies"] = rbac_policies
+        if port_security_enabled is not UNSET:
+            field_dict["port_security_enabled"] = port_security_enabled
         if marketplace_offering_uuid is not UNSET:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
@@ -558,6 +565,8 @@ class OpenStackNetwork:
 
             rbac_policies.append(rbac_policies_item)
 
+        port_security_enabled = d.pop("port_security_enabled", UNSET)
+
         def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -706,6 +715,7 @@ class OpenStackNetwork:
             subnets=subnets,
             mtu=mtu,
             rbac_policies=rbac_policies,
+            port_security_enabled=port_security_enabled,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
             marketplace_offering_type=marketplace_offering_type,

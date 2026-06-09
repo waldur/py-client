@@ -37,6 +37,7 @@ class OpenStackSubNetFieldEnum(str, Enum):
     NAME = "name"
     NETWORK = "network"
     NETWORK_NAME = "network_name"
+    PORT_SECURITY_ENABLED = "port_security_enabled"
     PROJECT = "project"
     PROJECT_NAME = "project_name"
     PROJECT_UUID = "project_uuid"

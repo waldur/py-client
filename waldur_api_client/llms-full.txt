@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.23.dev.20260608233346
+# Version: 8.0.9-rc.23.dev.20260609200808
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8733,6 +8733,13 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_offerings_glauth_tree_retrieve
+GET /api/marketplace-provider-offerings/{uuid}/glauth_tree/
+Summary: Get structured GLauth tree for an offering
+Description: Returns the same set of users, groups and robot accounts as `glauth_users_config`, but as a structured JSON tree suitable for navigation in admin UIs. Source of truth for the TOML endpoint.
+Path parameters:
+  - uuid
+
 ### marketplace_provider_offerings_glauth_users_config_retrieve
 GET /api/marketplace-provider-offerings/{uuid}/glauth_users_config/
 Summary: Get GLauth user configuration
@@ -9606,6 +9613,13 @@ Description: Returns the detailed representation of the backend resource associa
 Path parameters:
   - uuid
 
+### marketplace_provider_resources_glauth_tree_retrieve
+GET /api/marketplace-provider-resources/{uuid}/glauth_tree/
+Summary: Get structured GLauth tree for a resource
+Description: Structured JSON tree (offering, groups, users, robot accounts) scoped to one resource's project. Source of truth for the `glauth_users_config` TOML on this viewset.
+Path parameters:
+  - uuid
+
 ### marketplace_provider_resources_glauth_users_config_retrieve
 GET /api/marketplace-provider-resources/{uuid}/glauth_users_config/
 Summary: Get GLauth user configuration for a resource
@@ -10465,6 +10479,13 @@ Summary: Estimate renewal cost breakdown
 Path parameters:
   - uuid
 Request body: yes
+
+### marketplace_resources_glauth_tree_retrieve
+GET /api/marketplace-resources/{uuid}/glauth_tree/
+Summary: Get structured GLauth tree for a resource
+Description: Structured JSON tree (offering, groups, users, robot accounts) scoped to one resource's project. Source of truth for the `glauth_users_config` TOML on this viewset.
+Path parameters:
+  - uuid
 
 ### marketplace_resources_glauth_users_config_retrieve
 GET /api/marketplace-resources/{uuid}/glauth_users_config/

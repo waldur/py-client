@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,6 +9,13 @@ from ..models.deployment_mode_enum import DeploymentModeEnum
 from ..models.storage_mode_enum import StorageModeEnum
 from ..models.username_generation_policy_enum import UsernameGenerationPolicyEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.merged_plugin_options_request_resource_project_role_map import (
+        MergedPluginOptionsRequestResourceProjectRoleMap,
+    )
+    from ..models.merged_plugin_options_request_resource_role_map import MergedPluginOptionsRequestResourceRoleMap
+
 
 T = TypeVar("T", bound="MergedPluginOptionsRequest")
 
@@ -41,8 +48,8 @@ class MergedPluginOptionsRequest:
         maximal_resource_count_per_project (Union[Unset, int]): Maximal number of offering resources allowed per project
         unique_resource_per_attribute (Union[Unset, str]): Attribute name to enforce uniqueness per value. E.g.,
             'storage_data_type' ensures only one resource per storage type per project.
-        required_team_role_for_provisioning (Union[Unset, str]): Required user role in a project for provisioning of
-            resources
+        required_team_role_for_provisioning (Union[None, Unset, str]): Required user role in a project for provisioning
+            of resources
         enable_purchase_order_upload (Union[Unset, bool]): If set to True, users will be able to upload purchase orders.
         require_purchase_order_upload (Union[Unset, bool]): If set to True, users will be required to upload purchase
             orders.
@@ -66,7 +73,7 @@ class MergedPluginOptionsRequest:
             providers or consumers exchange messages on pending orders.
         restrict_deletion_with_active_resources (Union[Unset, bool]): If set to True, offering cannot be deleted while
             it has non-terminated resources.
-        resource_name_pattern (Union[Unset, str]): Python format string for generating resource names. Available
+        resource_name_pattern (Union[None, Unset, str]): Python format string for generating resource names. Available
             variables: {customer_name}, {customer_slug}, {project_name}, {project_slug}, {offering_name}, {offering_slug},
             {plan_name}, {counter}, {attributes[KEY]}.
         default_internal_network_mtu (Union[Unset, int]): If set, it will be used as a default MTU for the first network
@@ -90,6 +97,20 @@ class MergedPluginOptionsRequest:
         initial_primarygroup_number (Union[Unset, int]): GLAuth initial primary group number Default: 5000.
         initial_uidnumber (Union[Unset, int]): GLAuth initial uidnumber Default: 5000.
         initial_usergroup_number (Union[Unset, int]): GLAuth initial usergroup number Default: 6000.
+        initial_rolegroup_number (Union[Unset, int]): GLAuth initial gid for role-aware groups (one per
+            (resource|resource-project, role) tuple). Must leave at least 50000 gids of headroom above
+            initial_usergroup_number to avoid collisions. Default: 60000.
+        resource_role_map (Union[Unset, MergedPluginOptionsRequestResourceRoleMap]): Mapping of Waldur role names (on
+            Resource scope) to emitted role tokens used in group name rendering. Roles outside the map are skipped. Example:
+            {"PI": "admin", "Member": "member"}.
+        resource_project_role_map (Union[Unset, MergedPluginOptionsRequestResourceProjectRoleMap]): Mapping of Waldur
+            role names (on ResourceProject scope) to emitted role tokens. Same semantics as resource_role_map.
+        resource_role_group_template (Union[Unset, str]): string.Template for resource-scope role group names.
+            Variables: ${role_name}, ${resource_slug}, ${customer_slug}, ${project_slug}. Default:
+            '${resource_slug}_${role_name}'.
+        resource_project_role_group_template (Union[Unset, str]): string.Template for resource-project-scope role group
+            names. Adds ${rp_uuid}, ${rp_uuid_short}, ${project_name} to the variables available for resource-scope
+            templates. Default: '${resource_slug}_${rp_uuid_short}_${role_name}'.
         username_anonymized_prefix (Union[Unset, str]): GLAuth prefix for anonymized usernames Default: 'waldur_'.
         username_generation_policy (Union[Unset, UsernameGenerationPolicyEnum]):  Default:
             UsernameGenerationPolicyEnum.SERVICE_PROVIDER.
@@ -159,7 +180,7 @@ class MergedPluginOptionsRequest:
     minimal_team_count_for_provisioning: Union[Unset, int] = UNSET
     maximal_resource_count_per_project: Union[Unset, int] = UNSET
     unique_resource_per_attribute: Union[Unset, str] = UNSET
-    required_team_role_for_provisioning: Union[Unset, str] = UNSET
+    required_team_role_for_provisioning: Union[None, Unset, str] = UNSET
     enable_purchase_order_upload: Union[Unset, bool] = UNSET
     require_purchase_order_upload: Union[Unset, bool] = UNSET
     conceal_billing_data: Union[Unset, bool] = UNSET
@@ -172,7 +193,7 @@ class MergedPluginOptionsRequest:
     enable_provider_consumer_messaging: Union[Unset, bool] = UNSET
     notify_about_provider_consumer_messages: Union[Unset, bool] = UNSET
     restrict_deletion_with_active_resources: Union[Unset, bool] = UNSET
-    resource_name_pattern: Union[Unset, str] = UNSET
+    resource_name_pattern: Union[None, Unset, str] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
     max_volumes: Union[Unset, int] = UNSET
@@ -191,6 +212,11 @@ class MergedPluginOptionsRequest:
     initial_primarygroup_number: Union[Unset, int] = 5000
     initial_uidnumber: Union[Unset, int] = 5000
     initial_usergroup_number: Union[Unset, int] = 6000
+    initial_rolegroup_number: Union[Unset, int] = 60000
+    resource_role_map: Union[Unset, "MergedPluginOptionsRequestResourceRoleMap"] = UNSET
+    resource_project_role_map: Union[Unset, "MergedPluginOptionsRequestResourceProjectRoleMap"] = UNSET
+    resource_role_group_template: Union[Unset, str] = "${resource_slug}_${role_name}"
+    resource_project_role_group_template: Union[Unset, str] = "${resource_slug}_${rp_uuid_short}_${role_name}"
     username_anonymized_prefix: Union[Unset, str] = "waldur_"
     username_generation_policy: Union[Unset, UsernameGenerationPolicyEnum] = (
         UsernameGenerationPolicyEnum.SERVICE_PROVIDER
@@ -256,7 +282,11 @@ class MergedPluginOptionsRequest:
 
         unique_resource_per_attribute = self.unique_resource_per_attribute
 
-        required_team_role_for_provisioning = self.required_team_role_for_provisioning
+        required_team_role_for_provisioning: Union[None, Unset, str]
+        if isinstance(self.required_team_role_for_provisioning, Unset):
+            required_team_role_for_provisioning = UNSET
+        else:
+            required_team_role_for_provisioning = self.required_team_role_for_provisioning
 
         enable_purchase_order_upload = self.enable_purchase_order_upload
 
@@ -282,7 +312,11 @@ class MergedPluginOptionsRequest:
 
         restrict_deletion_with_active_resources = self.restrict_deletion_with_active_resources
 
-        resource_name_pattern = self.resource_name_pattern
+        resource_name_pattern: Union[None, Unset, str]
+        if isinstance(self.resource_name_pattern, Unset):
+            resource_name_pattern = UNSET
+        else:
+            resource_name_pattern = self.resource_name_pattern
 
         default_internal_network_mtu = self.default_internal_network_mtu
 
@@ -321,6 +355,20 @@ class MergedPluginOptionsRequest:
         initial_uidnumber = self.initial_uidnumber
 
         initial_usergroup_number = self.initial_usergroup_number
+
+        initial_rolegroup_number = self.initial_rolegroup_number
+
+        resource_role_map: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.resource_role_map, Unset):
+            resource_role_map = self.resource_role_map.to_dict()
+
+        resource_project_role_map: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.resource_project_role_map, Unset):
+            resource_project_role_map = self.resource_project_role_map.to_dict()
+
+        resource_role_group_template = self.resource_role_group_template
+
+        resource_project_role_group_template = self.resource_project_role_group_template
 
         username_anonymized_prefix = self.username_anonymized_prefix
 
@@ -495,6 +543,16 @@ class MergedPluginOptionsRequest:
             field_dict["initial_uidnumber"] = initial_uidnumber
         if initial_usergroup_number is not UNSET:
             field_dict["initial_usergroup_number"] = initial_usergroup_number
+        if initial_rolegroup_number is not UNSET:
+            field_dict["initial_rolegroup_number"] = initial_rolegroup_number
+        if resource_role_map is not UNSET:
+            field_dict["resource_role_map"] = resource_role_map
+        if resource_project_role_map is not UNSET:
+            field_dict["resource_project_role_map"] = resource_project_role_map
+        if resource_role_group_template is not UNSET:
+            field_dict["resource_role_group_template"] = resource_role_group_template
+        if resource_project_role_group_template is not UNSET:
+            field_dict["resource_project_role_group_template"] = resource_project_role_group_template
         if username_anonymized_prefix is not UNSET:
             field_dict["username_anonymized_prefix"] = username_anonymized_prefix
         if username_generation_policy is not UNSET:
@@ -574,6 +632,11 @@ class MergedPluginOptionsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.merged_plugin_options_request_resource_project_role_map import (
+            MergedPluginOptionsRequestResourceProjectRoleMap,
+        )
+        from ..models.merged_plugin_options_request_resource_role_map import MergedPluginOptionsRequestResourceRoleMap
+
         d = dict(src_dict)
         auto_approve_remote_orders = d.pop("auto_approve_remote_orders", UNSET)
 
@@ -605,7 +668,16 @@ class MergedPluginOptionsRequest:
 
         unique_resource_per_attribute = d.pop("unique_resource_per_attribute", UNSET)
 
-        required_team_role_for_provisioning = d.pop("required_team_role_for_provisioning", UNSET)
+        def _parse_required_team_role_for_provisioning(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        required_team_role_for_provisioning = _parse_required_team_role_for_provisioning(
+            d.pop("required_team_role_for_provisioning", UNSET)
+        )
 
         enable_purchase_order_upload = d.pop("enable_purchase_order_upload", UNSET)
 
@@ -631,7 +703,14 @@ class MergedPluginOptionsRequest:
 
         restrict_deletion_with_active_resources = d.pop("restrict_deletion_with_active_resources", UNSET)
 
-        resource_name_pattern = d.pop("resource_name_pattern", UNSET)
+        def _parse_resource_name_pattern(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        resource_name_pattern = _parse_resource_name_pattern(d.pop("resource_name_pattern", UNSET))
 
         default_internal_network_mtu = d.pop("default_internal_network_mtu", UNSET)
 
@@ -673,6 +752,28 @@ class MergedPluginOptionsRequest:
         initial_uidnumber = d.pop("initial_uidnumber", UNSET)
 
         initial_usergroup_number = d.pop("initial_usergroup_number", UNSET)
+
+        initial_rolegroup_number = d.pop("initial_rolegroup_number", UNSET)
+
+        _resource_role_map = d.pop("resource_role_map", UNSET)
+        resource_role_map: Union[Unset, MergedPluginOptionsRequestResourceRoleMap]
+        if isinstance(_resource_role_map, Unset):
+            resource_role_map = UNSET
+        else:
+            resource_role_map = MergedPluginOptionsRequestResourceRoleMap.from_dict(_resource_role_map)
+
+        _resource_project_role_map = d.pop("resource_project_role_map", UNSET)
+        resource_project_role_map: Union[Unset, MergedPluginOptionsRequestResourceProjectRoleMap]
+        if isinstance(_resource_project_role_map, Unset):
+            resource_project_role_map = UNSET
+        else:
+            resource_project_role_map = MergedPluginOptionsRequestResourceProjectRoleMap.from_dict(
+                _resource_project_role_map
+            )
+
+        resource_role_group_template = d.pop("resource_role_group_template", UNSET)
+
+        resource_project_role_group_template = d.pop("resource_project_role_group_template", UNSET)
 
         username_anonymized_prefix = d.pop("username_anonymized_prefix", UNSET)
 
@@ -819,6 +920,11 @@ class MergedPluginOptionsRequest:
             initial_primarygroup_number=initial_primarygroup_number,
             initial_uidnumber=initial_uidnumber,
             initial_usergroup_number=initial_usergroup_number,
+            initial_rolegroup_number=initial_rolegroup_number,
+            resource_role_map=resource_role_map,
+            resource_project_role_map=resource_project_role_map,
+            resource_role_group_template=resource_role_group_template,
+            resource_project_role_group_template=resource_project_role_group_template,
             username_anonymized_prefix=username_anonymized_prefix,
             username_generation_policy=username_generation_policy,
             enable_issues_for_membership_changes=enable_issues_for_membership_changes,
