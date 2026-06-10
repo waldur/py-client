@@ -86,6 +86,8 @@ class User:
         active_isds (Union[Unset, Any]): List of ISDs that have asserted this user exists. User is deactivated when this
             becomes empty.
         deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.
+        is_admin_deactivated (Union[Unset, bool]): Designates that the user was deactivated by an administrator and must
+            not be reactivated automatically by the role-sync task. Visible to staff and support.
     """
 
     url: Union[Unset, str] = UNSET
@@ -144,6 +146,7 @@ class User:
     managed_isds: Union[Unset, Any] = UNSET
     active_isds: Union[Unset, Any] = UNSET
     deactivation_reason: Union[Unset, str] = UNSET
+    is_admin_deactivated: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -316,6 +319,8 @@ class User:
 
         deactivation_reason = self.deactivation_reason
 
+        is_admin_deactivated = self.is_admin_deactivated
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -431,6 +436,8 @@ class User:
             field_dict["active_isds"] = active_isds
         if deactivation_reason is not UNSET:
             field_dict["deactivation_reason"] = deactivation_reason
+        if is_admin_deactivated is not UNSET:
+            field_dict["is_admin_deactivated"] = is_admin_deactivated
 
         return field_dict
 
@@ -669,6 +676,8 @@ class User:
 
         deactivation_reason = d.pop("deactivation_reason", UNSET)
 
+        is_admin_deactivated = d.pop("is_admin_deactivated", UNSET)
+
         user = cls(
             url=url,
             uuid=uuid,
@@ -726,6 +735,7 @@ class User:
             managed_isds=managed_isds,
             active_isds=active_isds,
             deactivation_reason=deactivation_reason,
+            is_admin_deactivated=is_admin_deactivated,
         )
 
         user.additional_properties = d

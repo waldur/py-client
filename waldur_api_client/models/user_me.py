@@ -87,6 +87,8 @@ class UserMe:
         active_isds (Union[Unset, Any]): List of ISDs that have asserted this user exists. User is deactivated when this
             becomes empty.
         deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.
+        is_admin_deactivated (Union[Unset, bool]): Designates that the user was deactivated by an administrator and must
+            not be reactivated automatically by the role-sync task. Visible to staff and support.
         profile_completeness (Union[Unset, ProfileCompleteness]):
     """
 
@@ -146,6 +148,7 @@ class UserMe:
     managed_isds: Union[Unset, Any] = UNSET
     active_isds: Union[Unset, Any] = UNSET
     deactivation_reason: Union[Unset, str] = UNSET
+    is_admin_deactivated: Union[Unset, bool] = UNSET
     profile_completeness: Union[Unset, "ProfileCompleteness"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -315,6 +318,8 @@ class UserMe:
 
         deactivation_reason = self.deactivation_reason
 
+        is_admin_deactivated = self.is_admin_deactivated
+
         profile_completeness: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.profile_completeness, Unset):
             profile_completeness = self.profile_completeness.to_dict()
@@ -434,6 +439,8 @@ class UserMe:
             field_dict["active_isds"] = active_isds
         if deactivation_reason is not UNSET:
             field_dict["deactivation_reason"] = deactivation_reason
+        if is_admin_deactivated is not UNSET:
+            field_dict["is_admin_deactivated"] = is_admin_deactivated
         if profile_completeness is not UNSET:
             field_dict["profile_completeness"] = profile_completeness
 
@@ -668,6 +675,8 @@ class UserMe:
 
         deactivation_reason = d.pop("deactivation_reason", UNSET)
 
+        is_admin_deactivated = d.pop("is_admin_deactivated", UNSET)
+
         _profile_completeness = d.pop("profile_completeness", UNSET)
         profile_completeness: Union[Unset, ProfileCompleteness]
         if isinstance(_profile_completeness, Unset):
@@ -732,6 +741,7 @@ class UserMe:
             managed_isds=managed_isds,
             active_isds=active_isds,
             deactivation_reason=deactivation_reason,
+            is_admin_deactivated=is_admin_deactivated,
             profile_completeness=profile_completeness,
         )
 

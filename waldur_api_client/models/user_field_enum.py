@@ -30,6 +30,7 @@ class UserFieldEnum(str, Enum):
     IMAGE = "image"
     IP_ADDRESS = "ip_address"
     IS_ACTIVE = "is_active"
+    IS_ADMIN_DEACTIVATED = "is_admin_deactivated"
     IS_IDENTITY_MANAGER = "is_identity_manager"
     IS_STAFF = "is_staff"
     IS_SUPPORT = "is_support"
