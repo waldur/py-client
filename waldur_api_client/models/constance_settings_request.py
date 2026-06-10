@@ -77,6 +77,7 @@ class ConstanceSettingsRequest:
         k8s_job_timeout (Union[Unset, int]):
         enable_strict_check_accepting_invitation (Union[Unset, bool]):
         invitation_disable_multiple_roles (Union[Unset, bool]):
+        only_one_project_manager (Union[Unset, bool]):
         default_idp (Union[BlankEnum, DEFAULTIDPEnum, Unset]):
         docs_url (Union[Unset, str]):
         short_page_title (Union[Unset, str]):
@@ -371,6 +372,7 @@ class ConstanceSettingsRequest:
     k8s_job_timeout: Union[Unset, int] = UNSET
     enable_strict_check_accepting_invitation: Union[Unset, bool] = UNSET
     invitation_disable_multiple_roles: Union[Unset, bool] = UNSET
+    only_one_project_manager: Union[Unset, bool] = UNSET
     default_idp: Union[BlankEnum, DEFAULTIDPEnum, Unset] = UNSET
     docs_url: Union[Unset, str] = UNSET
     short_page_title: Union[Unset, str] = UNSET
@@ -712,6 +714,8 @@ class ConstanceSettingsRequest:
         enable_strict_check_accepting_invitation = self.enable_strict_check_accepting_invitation
 
         invitation_disable_multiple_roles = self.invitation_disable_multiple_roles
+
+        only_one_project_manager = self.only_one_project_manager
 
         default_idp: Union[Unset, str]
         if isinstance(self.default_idp, Unset):
@@ -1546,6 +1550,8 @@ class ConstanceSettingsRequest:
             field_dict["ENABLE_STRICT_CHECK_ACCEPTING_INVITATION"] = enable_strict_check_accepting_invitation
         if invitation_disable_multiple_roles is not UNSET:
             field_dict["INVITATION_DISABLE_MULTIPLE_ROLES"] = invitation_disable_multiple_roles
+        if only_one_project_manager is not UNSET:
+            field_dict["ONLY_ONE_PROJECT_MANAGER"] = only_one_project_manager
         if default_idp is not UNSET:
             field_dict["DEFAULT_IDP"] = default_idp
         if docs_url is not UNSET:
@@ -2171,6 +2177,8 @@ class ConstanceSettingsRequest:
         enable_strict_check_accepting_invitation = d.pop("ENABLE_STRICT_CHECK_ACCEPTING_INVITATION", UNSET)
 
         invitation_disable_multiple_roles = d.pop("INVITATION_DISABLE_MULTIPLE_ROLES", UNSET)
+
+        only_one_project_manager = d.pop("ONLY_ONE_PROJECT_MANAGER", UNSET)
 
         def _parse_default_idp(data: object) -> Union[BlankEnum, DEFAULTIDPEnum, Unset]:
             if isinstance(data, Unset):
@@ -3231,6 +3239,7 @@ class ConstanceSettingsRequest:
             k8s_job_timeout=k8s_job_timeout,
             enable_strict_check_accepting_invitation=enable_strict_check_accepting_invitation,
             invitation_disable_multiple_roles=invitation_disable_multiple_roles,
+            only_one_project_manager=only_one_project_manager,
             default_idp=default_idp,
             docs_url=docs_url,
             short_page_title=short_page_title,
