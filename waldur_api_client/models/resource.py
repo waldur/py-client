@@ -102,6 +102,7 @@ class Resource:
         end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, a resource will be scheduled
             for termination.
         end_date_requested_by (Union[None, Unset, str]):
+        end_date_updated_at (Union[None, Unset, datetime.datetime]): Timestamp of the last end_date change.
         username (Union[None, Unset, str]):
         limit_usage (Union[Unset, ResourceLimitUsage]): Dictionary mapping limit-based component types to their consumed
             usage. For monthly periods, maps from current_usages; for longer periods, aggregates historical usage.
@@ -188,6 +189,7 @@ class Resource:
     report: Union[Unset, list["ReportSection"]] = UNSET
     end_date: Union[None, Unset, datetime.date] = UNSET
     end_date_requested_by: Union[None, Unset, str] = UNSET
+    end_date_updated_at: Union[None, Unset, datetime.datetime] = UNSET
     username: Union[None, Unset, str] = UNSET
     limit_usage: Union[Unset, "ResourceLimitUsage"] = UNSET
     downscaled: Union[Unset, bool] = UNSET
@@ -429,6 +431,14 @@ class Resource:
         else:
             end_date_requested_by = self.end_date_requested_by
 
+        end_date_updated_at: Union[None, Unset, str]
+        if isinstance(self.end_date_updated_at, Unset):
+            end_date_updated_at = UNSET
+        elif isinstance(self.end_date_updated_at, datetime.datetime):
+            end_date_updated_at = self.end_date_updated_at.isoformat()
+        else:
+            end_date_updated_at = self.end_date_updated_at
+
         username: Union[None, Unset, str]
         if isinstance(self.username, Unset):
             username = UNSET
@@ -638,6 +648,8 @@ class Resource:
             field_dict["end_date"] = end_date
         if end_date_requested_by is not UNSET:
             field_dict["end_date_requested_by"] = end_date_requested_by
+        if end_date_updated_at is not UNSET:
+            field_dict["end_date_updated_at"] = end_date_updated_at
         if username is not UNSET:
             field_dict["username"] = username
         if limit_usage is not UNSET:
@@ -1026,6 +1038,23 @@ class Resource:
 
         end_date_requested_by = _parse_end_date_requested_by(d.pop("end_date_requested_by", UNSET))
 
+        def _parse_end_date_updated_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                end_date_updated_at_type_0 = isoparse(data)
+
+                return end_date_updated_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        end_date_updated_at = _parse_end_date_updated_at(d.pop("end_date_updated_at", UNSET))
+
         def _parse_username(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -1211,6 +1240,7 @@ class Resource:
             report=report,
             end_date=end_date,
             end_date_requested_by=end_date_requested_by,
+            end_date_updated_at=end_date_updated_at,
             username=username,
             limit_usage=limit_usage,
             downscaled=downscaled,

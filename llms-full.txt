@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.25.dev.20260610233347
+# Version: 8.0.9-rc.25.dev.20260611233346
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -17652,6 +17652,11 @@ Description: Get number of items in the collection matching the request paramete
 GET /api/personal-access-tokens/available_scopes/
 Summary: List available scopes for PAT creation
 Description: Return permissions the current user can delegate to a PAT.
+
+Staff users can delegate any permission (they bypass UserRole checks).
+For other users only the permissions granted by their active roles are
+offered, plus SUPPORT.ACCESS for support users — mirroring what the
+create serializer would acc...
 
 ### personal_access_tokens_available_scopes_count
 HEAD /api/personal-access-tokens/available_scopes/

@@ -28,6 +28,7 @@ class BookingResourceFieldEnum(str, Enum):
     ENDPOINTS = "endpoints"
     END_DATE = "end_date"
     END_DATE_REQUESTED_BY = "end_date_requested_by"
+    END_DATE_UPDATED_AT = "end_date_updated_at"
     ERROR_MESSAGE = "error_message"
     ERROR_TRACEBACK = "error_traceback"
     IS_LIMIT_BASED = "is_limit_based"
