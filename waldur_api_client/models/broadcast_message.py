@@ -12,7 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.broadcast_message_emails import BroadcastMessageEmails
-    from ..models.broadcast_message_query import BroadcastMessageQuery
+    from ..models.query_output import QueryOutput
 
 
 T = TypeVar("T", bound="BroadcastMessage")
@@ -26,7 +26,7 @@ class BroadcastMessage:
         created (Union[Unset, datetime.datetime]):
         subject (Union[Unset, str]):
         body (Union[Unset, str]):
-        query (Union[Unset, BroadcastMessageQuery]):
+        query (Union[Unset, QueryOutput]):
         author_full_name (Union[Unset, str]):
         emails (Union[Unset, BroadcastMessageEmails]):
         state (Union[Unset, BroadcastMessageStateEnum]):
@@ -37,7 +37,7 @@ class BroadcastMessage:
     created: Union[Unset, datetime.datetime] = UNSET
     subject: Union[Unset, str] = UNSET
     body: Union[Unset, str] = UNSET
-    query: Union[Unset, "BroadcastMessageQuery"] = UNSET
+    query: Union[Unset, "QueryOutput"] = UNSET
     author_full_name: Union[Unset, str] = UNSET
     emails: Union[Unset, "BroadcastMessageEmails"] = UNSET
     state: Union[Unset, BroadcastMessageStateEnum] = UNSET
@@ -106,7 +106,7 @@ class BroadcastMessage:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.broadcast_message_emails import BroadcastMessageEmails
-        from ..models.broadcast_message_query import BroadcastMessageQuery
+        from ..models.query_output import QueryOutput
 
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
@@ -128,11 +128,11 @@ class BroadcastMessage:
         body = d.pop("body", UNSET)
 
         _query = d.pop("query", UNSET)
-        query: Union[Unset, BroadcastMessageQuery]
+        query: Union[Unset, QueryOutput]
         if isinstance(_query, Unset):
             query = UNSET
         else:
-            query = BroadcastMessageQuery.from_dict(_query)
+            query = QueryOutput.from_dict(_query)
 
         author_full_name = d.pop("author_full_name", UNSET)
 

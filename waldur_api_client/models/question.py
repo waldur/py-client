@@ -14,8 +14,6 @@ from ..models.rich_text_toolbar_level_enum import RichTextToolbarLevelEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.question_allowed_file_types import QuestionAllowedFileTypes
-    from ..models.question_allowed_mime_types import QuestionAllowedMimeTypes
     from ..models.question_guidance_answer_value_type_0 import QuestionGuidanceAnswerValueType0
     from ..models.question_options import QuestionOptions
     from ..models.question_review_answer_value_type_0 import QuestionReviewAnswerValueType0
@@ -37,11 +35,8 @@ class Question:
         order (Union[Unset, int]):
         min_value (Union[None, Unset, str]): Minimum value allowed for NUMBER, YEAR, and RATING type questions
         max_value (Union[None, Unset, str]): Maximum value allowed for NUMBER, YEAR, and RATING type questions
-        allowed_file_types (Union[Unset, QuestionAllowedFileTypes]): List of allowed file extensions (e.g., ['.pdf',
-            '.doc', '.docx']). If empty, all file types are allowed.
-        allowed_mime_types (Union[Unset, QuestionAllowedMimeTypes]): List of allowed MIME types (e.g.,
-            ['application/pdf', 'application/msword']). If empty, MIME type validation is not enforced. When both extensions
-            and MIME types are specified, files must match both criteria for security.
+        allowed_file_types (Union[Unset, list[str]]):
+        allowed_mime_types (Union[Unset, list[str]]):
         max_file_size_mb (Union[None, Unset, int]): Maximum file size in megabytes. If not set, no size limit is
             enforced.
         max_files_count (Union[None, Unset, int]): Maximum number of files allowed for MULTIPLE_FILES type questions. If
@@ -78,8 +73,8 @@ class Question:
     order: Union[Unset, int] = UNSET
     min_value: Union[None, Unset, str] = UNSET
     max_value: Union[None, Unset, str] = UNSET
-    allowed_file_types: Union[Unset, "QuestionAllowedFileTypes"] = UNSET
-    allowed_mime_types: Union[Unset, "QuestionAllowedMimeTypes"] = UNSET
+    allowed_file_types: Union[Unset, list[str]] = UNSET
+    allowed_mime_types: Union[Unset, list[str]] = UNSET
     max_file_size_mb: Union[None, Unset, int] = UNSET
     max_files_count: Union[None, Unset, int] = UNSET
     likert_scale_length: Union[LikertScaleLengthEnum, None, Unset] = UNSET
@@ -132,13 +127,13 @@ class Question:
         else:
             max_value = self.max_value
 
-        allowed_file_types: Union[Unset, dict[str, Any]] = UNSET
+        allowed_file_types: Union[Unset, list[str]] = UNSET
         if not isinstance(self.allowed_file_types, Unset):
-            allowed_file_types = self.allowed_file_types.to_dict()
+            allowed_file_types = self.allowed_file_types
 
-        allowed_mime_types: Union[Unset, dict[str, Any]] = UNSET
+        allowed_mime_types: Union[Unset, list[str]] = UNSET
         if not isinstance(self.allowed_mime_types, Unset):
-            allowed_mime_types = self.allowed_mime_types.to_dict()
+            allowed_mime_types = self.allowed_mime_types
 
         max_file_size_mb: Union[None, Unset, int]
         if isinstance(self.max_file_size_mb, Unset):
@@ -281,8 +276,6 @@ class Question:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.question_allowed_file_types import QuestionAllowedFileTypes
-        from ..models.question_allowed_mime_types import QuestionAllowedMimeTypes
         from ..models.question_guidance_answer_value_type_0 import QuestionGuidanceAnswerValueType0
         from ..models.question_options import QuestionOptions
         from ..models.question_review_answer_value_type_0 import QuestionReviewAnswerValueType0
@@ -330,19 +323,9 @@ class Question:
 
         max_value = _parse_max_value(d.pop("max_value", UNSET))
 
-        _allowed_file_types = d.pop("allowed_file_types", UNSET)
-        allowed_file_types: Union[Unset, QuestionAllowedFileTypes]
-        if isinstance(_allowed_file_types, Unset):
-            allowed_file_types = UNSET
-        else:
-            allowed_file_types = QuestionAllowedFileTypes.from_dict(_allowed_file_types)
+        allowed_file_types = cast(list[str], d.pop("allowed_file_types", UNSET))
 
-        _allowed_mime_types = d.pop("allowed_mime_types", UNSET)
-        allowed_mime_types: Union[Unset, QuestionAllowedMimeTypes]
-        if isinstance(_allowed_mime_types, Unset):
-            allowed_mime_types = UNSET
-        else:
-            allowed_mime_types = QuestionAllowedMimeTypes.from_dict(_allowed_mime_types)
+        allowed_mime_types = cast(list[str], d.pop("allowed_mime_types", UNSET))
 
         def _parse_max_file_size_mb(data: object) -> Union[None, Unset, int]:
             if data is None:

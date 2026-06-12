@@ -6,13 +6,13 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.broadcast_message import BroadcastMessage
-from ...models.broadcast_message_request import BroadcastMessageRequest
+from ...models.broadcast_message_create_request import BroadcastMessageCreateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: BroadcastMessageRequest,
+    body: BroadcastMessageCreateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -53,11 +53,11 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: BroadcastMessageRequest,
+    body: BroadcastMessageCreateRequest,
 ) -> Response[BroadcastMessage]:
     """
     Args:
-        body (BroadcastMessageRequest):
+        body (BroadcastMessageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -81,11 +81,11 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: BroadcastMessageRequest,
+    body: BroadcastMessageCreateRequest,
 ) -> BroadcastMessage:
     """
     Args:
-        body (BroadcastMessageRequest):
+        body (BroadcastMessageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -104,11 +104,11 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: BroadcastMessageRequest,
+    body: BroadcastMessageCreateRequest,
 ) -> Response[BroadcastMessage]:
     """
     Args:
-        body (BroadcastMessageRequest):
+        body (BroadcastMessageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -130,11 +130,11 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: BroadcastMessageRequest,
+    body: BroadcastMessageCreateRequest,
 ) -> BroadcastMessage:
     """
     Args:
-        body (BroadcastMessageRequest):
+        body (BroadcastMessageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

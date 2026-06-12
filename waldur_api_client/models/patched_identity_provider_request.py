@@ -7,14 +7,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.patched_identity_provider_request_allowed_redirects import (
-        PatchedIdentityProviderRequestAllowedRedirects,
-    )
     from ..models.patched_identity_provider_request_attribute_mapping import (
         PatchedIdentityProviderRequestAttributeMapping,
-    )
-    from ..models.patched_identity_provider_request_protected_fields import (
-        PatchedIdentityProviderRequestProtectedFields,
     )
 
 
@@ -25,6 +19,8 @@ T = TypeVar("T", bound="PatchedIdentityProviderRequest")
 class PatchedIdentityProviderRequest:
     """
     Attributes:
+        protected_fields (Union[Unset, list[str]]):
+        allowed_redirects (Union[Unset, list[str]]):
         provider (Union[Unset, str]):
         is_active (Union[Unset, bool]):
         client_id (Union[Unset, str]): ID of application used for OAuth authentication.
@@ -35,7 +31,6 @@ class PatchedIdentityProviderRequest:
         discovery_url (Union[Unset, str]): The endpoint for endpoint discovery.
         label (Union[Unset, str]): Human-readable identity provider is label.
         management_url (Union[Unset, str]): The endpoint for user details management.
-        protected_fields (Union[Unset, PatchedIdentityProviderRequestProtectedFields]):
         extra_scope (Union[None, Unset, str]): Space-separated list of scopes to request during authentication.
         user_field (Union[Unset, str]): The field in Waldur User model to be used for looking up the user
         user_claim (Union[Unset, str]): The OIDC claim from the userinfo endpoint to be used as the value for the lookup
@@ -44,12 +39,10 @@ class PatchedIdentityProviderRequest:
             User model fields to OIDC claims. Example: {"first_name": "given_name", "last_name": "family_name", "email":
             "email"}
         extra_fields (Union[None, Unset, str]): Space-separated list of extra fields to persist.
-        allowed_redirects (Union[Unset, PatchedIdentityProviderRequestAllowedRedirects]): List of allowed redirect URLs
-            for OAuth authentication. URLs must be exact matches (origin only: scheme + domain + port). HTTPS required
-            except for localhost. No wildcards, paths, query params, or fragments. Example: ["https://portal1.example.com",
-            "https://portal2.example.com:8443"]. If empty, falls back to HOMEPORT_URL setting.
     """
 
+    protected_fields: Union[Unset, list[str]] = UNSET
+    allowed_redirects: Union[Unset, list[str]] = UNSET
     provider: Union[Unset, str] = UNSET
     is_active: Union[Unset, bool] = UNSET
     client_id: Union[Unset, str] = UNSET
@@ -60,16 +53,22 @@ class PatchedIdentityProviderRequest:
     discovery_url: Union[Unset, str] = UNSET
     label: Union[Unset, str] = UNSET
     management_url: Union[Unset, str] = UNSET
-    protected_fields: Union[Unset, "PatchedIdentityProviderRequestProtectedFields"] = UNSET
     extra_scope: Union[None, Unset, str] = UNSET
     user_field: Union[Unset, str] = UNSET
     user_claim: Union[Unset, str] = UNSET
     attribute_mapping: Union[Unset, "PatchedIdentityProviderRequestAttributeMapping"] = UNSET
     extra_fields: Union[None, Unset, str] = UNSET
-    allowed_redirects: Union[Unset, "PatchedIdentityProviderRequestAllowedRedirects"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        protected_fields: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.protected_fields, Unset):
+            protected_fields = self.protected_fields
+
+        allowed_redirects: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.allowed_redirects, Unset):
+            allowed_redirects = self.allowed_redirects
+
         provider = self.provider
 
         is_active = self.is_active
@@ -89,10 +88,6 @@ class PatchedIdentityProviderRequest:
         label = self.label
 
         management_url = self.management_url
-
-        protected_fields: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.protected_fields, Unset):
-            protected_fields = self.protected_fields.to_dict()
 
         extra_scope: Union[None, Unset, str]
         if isinstance(self.extra_scope, Unset):
@@ -114,13 +109,13 @@ class PatchedIdentityProviderRequest:
         else:
             extra_fields = self.extra_fields
 
-        allowed_redirects: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.allowed_redirects, Unset):
-            allowed_redirects = self.allowed_redirects.to_dict()
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if protected_fields is not UNSET:
+            field_dict["protected_fields"] = protected_fields
+        if allowed_redirects is not UNSET:
+            field_dict["allowed_redirects"] = allowed_redirects
         if provider is not UNSET:
             field_dict["provider"] = provider
         if is_active is not UNSET:
@@ -141,8 +136,6 @@ class PatchedIdentityProviderRequest:
             field_dict["label"] = label
         if management_url is not UNSET:
             field_dict["management_url"] = management_url
-        if protected_fields is not UNSET:
-            field_dict["protected_fields"] = protected_fields
         if extra_scope is not UNSET:
             field_dict["extra_scope"] = extra_scope
         if user_field is not UNSET:
@@ -153,24 +146,20 @@ class PatchedIdentityProviderRequest:
             field_dict["attribute_mapping"] = attribute_mapping
         if extra_fields is not UNSET:
             field_dict["extra_fields"] = extra_fields
-        if allowed_redirects is not UNSET:
-            field_dict["allowed_redirects"] = allowed_redirects
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.patched_identity_provider_request_allowed_redirects import (
-            PatchedIdentityProviderRequestAllowedRedirects,
-        )
         from ..models.patched_identity_provider_request_attribute_mapping import (
             PatchedIdentityProviderRequestAttributeMapping,
         )
-        from ..models.patched_identity_provider_request_protected_fields import (
-            PatchedIdentityProviderRequestProtectedFields,
-        )
 
         d = dict(src_dict)
+        protected_fields = cast(list[str], d.pop("protected_fields", UNSET))
+
+        allowed_redirects = cast(list[str], d.pop("allowed_redirects", UNSET))
+
         provider = d.pop("provider", UNSET)
 
         is_active = d.pop("is_active", UNSET)
@@ -190,13 +179,6 @@ class PatchedIdentityProviderRequest:
         label = d.pop("label", UNSET)
 
         management_url = d.pop("management_url", UNSET)
-
-        _protected_fields = d.pop("protected_fields", UNSET)
-        protected_fields: Union[Unset, PatchedIdentityProviderRequestProtectedFields]
-        if isinstance(_protected_fields, Unset):
-            protected_fields = UNSET
-        else:
-            protected_fields = PatchedIdentityProviderRequestProtectedFields.from_dict(_protected_fields)
 
         def _parse_extra_scope(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -227,14 +209,9 @@ class PatchedIdentityProviderRequest:
 
         extra_fields = _parse_extra_fields(d.pop("extra_fields", UNSET))
 
-        _allowed_redirects = d.pop("allowed_redirects", UNSET)
-        allowed_redirects: Union[Unset, PatchedIdentityProviderRequestAllowedRedirects]
-        if isinstance(_allowed_redirects, Unset):
-            allowed_redirects = UNSET
-        else:
-            allowed_redirects = PatchedIdentityProviderRequestAllowedRedirects.from_dict(_allowed_redirects)
-
         patched_identity_provider_request = cls(
+            protected_fields=protected_fields,
+            allowed_redirects=allowed_redirects,
             provider=provider,
             is_active=is_active,
             client_id=client_id,
@@ -245,13 +222,11 @@ class PatchedIdentityProviderRequest:
             discovery_url=discovery_url,
             label=label,
             management_url=management_url,
-            protected_fields=protected_fields,
             extra_scope=extra_scope,
             user_field=user_field,
             user_claim=user_claim,
             attribute_mapping=attribute_mapping,
             extra_fields=extra_fields,
-            allowed_redirects=allowed_redirects,
         )
 
         patched_identity_provider_request.additional_properties = d

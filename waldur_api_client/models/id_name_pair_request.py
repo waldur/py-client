@@ -1,31 +1,55 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="GroupInvitationUpdateRequestUserIdentitySources")
+T = TypeVar("T", bound="IdNamePairRequest")
 
 
 @_attrs_define
-class GroupInvitationUpdateRequestUserIdentitySources:
-    """List of allowed identity sources (identity providers)."""
+class IdNamePairRequest:
+    """
+    Attributes:
+        name (str):
+        uuid (UUID):
+    """
 
+    name: str
+    uuid: UUID
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        name = self.name
+
+        uuid = str(self.uuid)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "name": name,
+                "uuid": uuid,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        group_invitation_update_request_user_identity_sources = cls()
+        name = d.pop("name")
 
-        group_invitation_update_request_user_identity_sources.additional_properties = d
-        return group_invitation_update_request_user_identity_sources
+        uuid = UUID(d.pop("uuid"))
+
+        id_name_pair_request = cls(
+            name=name,
+            uuid=uuid,
+        )
+
+        id_name_pair_request.additional_properties = d
+        return id_name_pair_request
 
     @property
     def additional_keys(self) -> list[str]:

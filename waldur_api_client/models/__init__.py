@@ -283,12 +283,11 @@ from .booking_resource_options_type_0 import BookingResourceOptionsType0
 from .booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
 from .booking_slot import BookingSlot
 from .broadcast_message import BroadcastMessage
+from .broadcast_message_create_request import BroadcastMessageCreateRequest
 from .broadcast_message_emails import BroadcastMessageEmails
 from .broadcast_message_field_enum import BroadcastMessageFieldEnum
 from .broadcast_message_o_enum import BroadcastMessageOEnum
-from .broadcast_message_query import BroadcastMessageQuery
-from .broadcast_message_request import BroadcastMessageRequest
-from .broadcast_message_request_query import BroadcastMessageRequestQuery
+from .broadcast_message_query_request import BroadcastMessageQueryRequest
 from .broadcast_message_state_enum import BroadcastMessageStateEnum
 from .bulk_round_create_request_request import BulkRoundCreateRequestRequest
 from .bulk_silence_response import BulkSilenceResponse
@@ -825,26 +824,16 @@ from .google_credentials_allowed_domains import GoogleCredentialsAllowedDomains
 from .google_credentials_field_enum import GoogleCredentialsFieldEnum
 from .group_invitation import GroupInvitation
 from .group_invitation_request import GroupInvitationRequest
-from .group_invitation_request_user_affiliations import GroupInvitationRequestUserAffiliations
-from .group_invitation_request_user_email_patterns import GroupInvitationRequestUserEmailPatterns
-from .group_invitation_request_user_identity_sources import GroupInvitationRequestUserIdentitySources
 from .group_invitation_update import GroupInvitationUpdate
 from .group_invitation_update_request import GroupInvitationUpdateRequest
-from .group_invitation_update_request_user_affiliations import GroupInvitationUpdateRequestUserAffiliations
-from .group_invitation_update_request_user_email_patterns import GroupInvitationUpdateRequestUserEmailPatterns
-from .group_invitation_update_request_user_identity_sources import GroupInvitationUpdateRequestUserIdentitySources
-from .group_invitation_update_user_affiliations import GroupInvitationUpdateUserAffiliations
-from .group_invitation_update_user_email_patterns import GroupInvitationUpdateUserEmailPatterns
-from .group_invitation_update_user_identity_sources import GroupInvitationUpdateUserIdentitySources
-from .group_invitation_user_affiliations import GroupInvitationUserAffiliations
-from .group_invitation_user_email_patterns import GroupInvitationUserEmailPatterns
-from .group_invitation_user_identity_sources import GroupInvitationUserIdentitySources
 from .growth_period_enum import GrowthPeriodEnum
 from .guest_os_enum import GuestOsEnum
 from .guest_power_state_enum import GuestPowerStateEnum
 from .hypervisor import Hypervisor
 from .hypervisor_inventory import HypervisorInventory
 from .hypervisor_summary import HypervisorSummary
+from .id_name_pair import IdNamePair
+from .id_name_pair_request import IdNamePairRequest
 from .identity_bridge_allowed_fields import IdentityBridgeAllowedFields
 from .identity_bridge_remove_request import IdentityBridgeRemoveRequest
 from .identity_bridge_remove_result import IdentityBridgeRemoveResult
@@ -856,13 +845,9 @@ from .identity_bridge_user_status import IdentityBridgeUserStatus
 from .identity_bridge_user_status_attribute_sources import IdentityBridgeUserStatusAttributeSources
 from .identity_manager import IdentityManager
 from .identity_provider import IdentityProvider
-from .identity_provider_allowed_redirects import IdentityProviderAllowedRedirects
 from .identity_provider_attribute_mapping import IdentityProviderAttributeMapping
-from .identity_provider_protected_fields import IdentityProviderProtectedFields
 from .identity_provider_request import IdentityProviderRequest
-from .identity_provider_request_allowed_redirects import IdentityProviderRequestAllowedRedirects
 from .identity_provider_request_attribute_mapping import IdentityProviderRequestAttributeMapping
-from .identity_provider_request_protected_fields import IdentityProviderRequestProtectedFields
 from .identity_providers_generate_mapping_response_200 import IdentityProvidersGenerateMappingResponse200
 from .identity_providers_generate_mapping_response_200_attribute_mapping import (
     IdentityProvidersGenerateMappingResponse200AttributeMapping,
@@ -1635,7 +1620,6 @@ from .patched_azure_sql_database_request import PatchedAzureSqlDatabaseRequest
 from .patched_azure_sql_server_request import PatchedAzureSqlServerRequest
 from .patched_azure_virtual_machine_request import PatchedAzureVirtualMachineRequest
 from .patched_broadcast_message_request import PatchedBroadcastMessageRequest
-from .patched_broadcast_message_request_query import PatchedBroadcastMessageRequestQuery
 from .patched_call_assignment_configuration_request import PatchedCallAssignmentConfigurationRequest
 from .patched_call_coi_configuration_request import PatchedCallCOIConfigurationRequest
 from .patched_call_managing_organisation_request import PatchedCallManagingOrganisationRequest
@@ -1682,19 +1666,8 @@ from .patched_external_link_request_form import PatchedExternalLinkRequestForm
 from .patched_external_link_request_multipart import PatchedExternalLinkRequestMultipart
 from .patched_firecrest_job_request import PatchedFirecrestJobRequest
 from .patched_group_invitation_update_request import PatchedGroupInvitationUpdateRequest
-from .patched_group_invitation_update_request_user_affiliations import (
-    PatchedGroupInvitationUpdateRequestUserAffiliations,
-)
-from .patched_group_invitation_update_request_user_email_patterns import (
-    PatchedGroupInvitationUpdateRequestUserEmailPatterns,
-)
-from .patched_group_invitation_update_request_user_identity_sources import (
-    PatchedGroupInvitationUpdateRequestUserIdentitySources,
-)
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
-from .patched_identity_provider_request_allowed_redirects import PatchedIdentityProviderRequestAllowedRedirects
 from .patched_identity_provider_request_attribute_mapping import PatchedIdentityProviderRequestAttributeMapping
-from .patched_identity_provider_request_protected_fields import PatchedIdentityProviderRequestProtectedFields
 from .patched_invitation_update_request import PatchedInvitationUpdateRequest
 from .patched_invoice_item_update_request import PatchedInvoiceItemUpdateRequest
 from .patched_issue_request import PatchedIssueRequest
@@ -1796,8 +1769,6 @@ from .patched_protected_call_request_user_organization_types import PatchedProte
 from .patched_protected_round_request import PatchedProtectedRoundRequest
 from .patched_provider_plan_details_request import PatchedProviderPlanDetailsRequest
 from .patched_question_admin_request import PatchedQuestionAdminRequest
-from .patched_question_admin_request_allowed_file_types import PatchedQuestionAdminRequestAllowedFileTypes
-from .patched_question_admin_request_allowed_mime_types import PatchedQuestionAdminRequestAllowedMimeTypes
 from .patched_question_admin_request_guidance_answer_value_type_0 import (
     PatchedQuestionAdminRequestGuidanceAnswerValueType0,
 )
@@ -1842,7 +1813,6 @@ from .patched_reviewer_publication_request import PatchedReviewerPublicationRequ
 from .patched_reviewer_publication_request_coauthors import PatchedReviewerPublicationRequestCoauthors
 from .patched_reviewer_publication_request_external_ids import PatchedReviewerPublicationRequestExternalIds
 from .patched_robot_account_request import PatchedRobotAccountRequest
-from .patched_robot_account_request_keys import PatchedRobotAccountRequestKeys
 from .patched_role_details_request import PatchedRoleDetailsRequest
 from .patched_rule_request import PatchedRuleRequest
 from .patched_rule_request_plan_attributes import PatchedRuleRequestPlanAttributes
@@ -1883,17 +1853,8 @@ from .patched_user_agreement_request import PatchedUserAgreementRequest
 from .patched_user_info_request import PatchedUserInfoRequest
 from .patched_user_offering_consent_request import PatchedUserOfferingConsentRequest
 from .patched_user_request import PatchedUserRequest
-from .patched_user_request_eduperson_assurance import PatchedUserRequestEdupersonAssurance
 from .patched_user_request_form import PatchedUserRequestForm
-from .patched_user_request_form_eduperson_assurance import PatchedUserRequestFormEdupersonAssurance
-from .patched_user_request_form_managed_isds import PatchedUserRequestFormManagedIsds
-from .patched_user_request_form_nationalities import PatchedUserRequestFormNationalities
-from .patched_user_request_managed_isds import PatchedUserRequestManagedIsds
 from .patched_user_request_multipart import PatchedUserRequestMultipart
-from .patched_user_request_multipart_eduperson_assurance import PatchedUserRequestMultipartEdupersonAssurance
-from .patched_user_request_multipart_managed_isds import PatchedUserRequestMultipartManagedIsds
-from .patched_user_request_multipart_nationalities import PatchedUserRequestMultipartNationalities
-from .patched_user_request_nationalities import PatchedUserRequestNationalities
 from .patched_vmware_virtual_machine_request import PatchedVmwareVirtualMachineRequest
 from .patched_web_hook_request import PatchedWebHookRequest
 from .payment import Payment
@@ -2151,21 +2112,17 @@ from .pubsub_metrics_summary import PubsubMetricsSummary
 from .pubsub_overview import PubsubOverview
 from .pull_marketplace_script_resource_request import PullMarketplaceScriptResourceRequest
 from .qos_strategy_enum import QosStrategyEnum
+from .query_output import QueryOutput
+from .query_output_request import QueryOutputRequest
 from .query_performance import QueryPerformance
 from .query_request import QueryRequest
 from .question import Question
 from .question_admin import QuestionAdmin
-from .question_admin_allowed_file_types import QuestionAdminAllowedFileTypes
-from .question_admin_allowed_mime_types import QuestionAdminAllowedMimeTypes
 from .question_admin_guidance_answer_value_type_0 import QuestionAdminGuidanceAnswerValueType0
 from .question_admin_request import QuestionAdminRequest
-from .question_admin_request_allowed_file_types import QuestionAdminRequestAllowedFileTypes
-from .question_admin_request_allowed_mime_types import QuestionAdminRequestAllowedMimeTypes
 from .question_admin_request_guidance_answer_value_type_0 import QuestionAdminRequestGuidanceAnswerValueType0
 from .question_admin_request_review_answer_value_type_0 import QuestionAdminRequestReviewAnswerValueType0
 from .question_admin_review_answer_value_type_0 import QuestionAdminReviewAnswerValueType0
-from .question_allowed_file_types import QuestionAllowedFileTypes
-from .question_allowed_mime_types import QuestionAllowedMimeTypes
 from .question_answer import QuestionAnswer
 from .question_answer_project_answers_item import QuestionAnswerProjectAnswersItem
 from .question_answer_question_options_item import QuestionAnswerQuestionOptionsItem
@@ -2501,11 +2458,8 @@ from .rmq_waldur_user import RmqWaldurUser
 from .robot_account import RobotAccount
 from .robot_account_details import RobotAccountDetails
 from .robot_account_details_field_enum import RobotAccountDetailsFieldEnum
-from .robot_account_details_keys import RobotAccountDetailsKeys
 from .robot_account_error_request import RobotAccountErrorRequest
-from .robot_account_keys import RobotAccountKeys
 from .robot_account_request import RobotAccountRequest
-from .robot_account_request_keys import RobotAccountRequestKeys
 from .robot_account_states import RobotAccountStates
 from .role_availability_details import RoleAvailabilityDetails
 from .role_description import RoleDescription
@@ -2797,11 +2751,9 @@ from .user_action_route_params import UserActionRouteParams
 from .user_action_summary import UserActionSummary
 from .user_action_summary_by_type import UserActionSummaryByType
 from .user_action_summary_by_urgency import UserActionSummaryByUrgency
-from .user_active_isds import UserActiveIsds
 from .user_active_status_count import UserActiveStatusCount
 from .user_affiliation_count import UserAffiliationCount
 from .user_affiliation_detail import UserAffiliationDetail
-from .user_affiliations import UserAffiliations
 from .user_agreement import UserAgreement
 from .user_agreement_request import UserAgreementRequest
 from .user_attribute_enum import UserAttributeEnum
@@ -2815,7 +2767,6 @@ from .user_consent_info import UserConsentInfo
 from .user_data_access import UserDataAccess
 from .user_data_access_log import UserDataAccessLog
 from .user_data_access_log_context import UserDataAccessLogContext
-from .user_eduperson_assurance import UserEdupersonAssurance
 from .user_email_change_request import UserEmailChangeRequest
 from .user_field_enum import UserFieldEnum
 from .user_has_resource_access import UserHasResourceAccess
@@ -2824,18 +2775,11 @@ from .user_info import UserInfo
 from .user_info_request import UserInfoRequest
 from .user_job_title_count import UserJobTitleCount
 from .user_language_count import UserLanguageCount
-from .user_managed_isds import UserManagedIsds
 from .user_mapping import UserMapping
 from .user_mapping_map import UserMappingMap
 from .user_me import UserMe
-from .user_me_active_isds import UserMeActiveIsds
-from .user_me_affiliations import UserMeAffiliations
 from .user_me_attribute_sources import UserMeAttributeSources
-from .user_me_eduperson_assurance import UserMeEdupersonAssurance
 from .user_me_field_enum import UserMeFieldEnum
-from .user_me_managed_isds import UserMeManagedIsds
-from .user_me_nationalities import UserMeNationalities
-from .user_nationalities import UserNationalities
 from .user_nationality_stats import UserNationalityStats
 from .user_offering_consent import UserOfferingConsent
 from .user_offering_consent_create import UserOfferingConsentCreate
@@ -2846,17 +2790,8 @@ from .user_organization_count import UserOrganizationCount
 from .user_organization_type_count import UserOrganizationTypeCount
 from .user_registration_trend import UserRegistrationTrend
 from .user_request import UserRequest
-from .user_request_eduperson_assurance import UserRequestEdupersonAssurance
 from .user_request_form import UserRequestForm
-from .user_request_form_eduperson_assurance import UserRequestFormEdupersonAssurance
-from .user_request_form_managed_isds import UserRequestFormManagedIsds
-from .user_request_form_nationalities import UserRequestFormNationalities
-from .user_request_managed_isds import UserRequestManagedIsds
 from .user_request_multipart import UserRequestMultipart
-from .user_request_multipart_eduperson_assurance import UserRequestMultipartEdupersonAssurance
-from .user_request_multipart_managed_isds import UserRequestMultipartManagedIsds
-from .user_request_multipart_nationalities import UserRequestMultipartNationalities
-from .user_request_nationalities import UserRequestNationalities
 from .user_residence_country_stats import UserResidenceCountryStats
 from .user_role_create_request import UserRoleCreateRequest
 from .user_role_delete_request import UserRoleDeleteRequest
@@ -3209,12 +3144,11 @@ __all__ = (
     "BookingResourceRenewalDateType0",
     "BookingSlot",
     "BroadcastMessage",
+    "BroadcastMessageCreateRequest",
     "BroadcastMessageEmails",
     "BroadcastMessageFieldEnum",
     "BroadcastMessageOEnum",
-    "BroadcastMessageQuery",
-    "BroadcastMessageRequest",
-    "BroadcastMessageRequestQuery",
+    "BroadcastMessageQueryRequest",
     "BroadcastMessageStateEnum",
     "BulkRoundCreateRequestRequest",
     "BulkSilenceResponse",
@@ -3737,20 +3671,8 @@ __all__ = (
     "GoogleCredentialsFieldEnum",
     "GroupInvitation",
     "GroupInvitationRequest",
-    "GroupInvitationRequestUserAffiliations",
-    "GroupInvitationRequestUserEmailPatterns",
-    "GroupInvitationRequestUserIdentitySources",
     "GroupInvitationUpdate",
     "GroupInvitationUpdateRequest",
-    "GroupInvitationUpdateRequestUserAffiliations",
-    "GroupInvitationUpdateRequestUserEmailPatterns",
-    "GroupInvitationUpdateRequestUserIdentitySources",
-    "GroupInvitationUpdateUserAffiliations",
-    "GroupInvitationUpdateUserEmailPatterns",
-    "GroupInvitationUpdateUserIdentitySources",
-    "GroupInvitationUserAffiliations",
-    "GroupInvitationUserEmailPatterns",
-    "GroupInvitationUserIdentitySources",
     "GrowthPeriodEnum",
     "GuestOsEnum",
     "GuestPowerStateEnum",
@@ -3768,15 +3690,13 @@ __all__ = (
     "IdentityBridgeUserStatusAttributeSources",
     "IdentityManager",
     "IdentityProvider",
-    "IdentityProviderAllowedRedirects",
     "IdentityProviderAttributeMapping",
-    "IdentityProviderProtectedFields",
     "IdentityProviderRequest",
-    "IdentityProviderRequestAllowedRedirects",
     "IdentityProviderRequestAttributeMapping",
-    "IdentityProviderRequestProtectedFields",
     "IdentityProvidersGenerateMappingResponse200",
     "IdentityProvidersGenerateMappingResponse200AttributeMapping",
+    "IdNamePair",
+    "IdNamePairRequest",
     "ImageCreateRequest",
     "ImageCreateResponse",
     "ImageUploadResponse",
@@ -4491,7 +4411,6 @@ __all__ = (
     "PatchedAzureSqlServerRequest",
     "PatchedAzureVirtualMachineRequest",
     "PatchedBroadcastMessageRequest",
-    "PatchedBroadcastMessageRequestQuery",
     "PatchedCallAssignmentConfigurationRequest",
     "PatchedCallCOIConfigurationRequest",
     "PatchedCallManagingOrganisationRequest",
@@ -4538,13 +4457,8 @@ __all__ = (
     "PatchedExternalLinkRequestMultipart",
     "PatchedFirecrestJobRequest",
     "PatchedGroupInvitationUpdateRequest",
-    "PatchedGroupInvitationUpdateRequestUserAffiliations",
-    "PatchedGroupInvitationUpdateRequestUserEmailPatterns",
-    "PatchedGroupInvitationUpdateRequestUserIdentitySources",
     "PatchedIdentityProviderRequest",
-    "PatchedIdentityProviderRequestAllowedRedirects",
     "PatchedIdentityProviderRequestAttributeMapping",
-    "PatchedIdentityProviderRequestProtectedFields",
     "PatchedInvitationUpdateRequest",
     "PatchedInvoiceItemUpdateRequest",
     "PatchedIssueRequest",
@@ -4636,8 +4550,6 @@ __all__ = (
     "PatchedProtectedRoundRequest",
     "PatchedProviderPlanDetailsRequest",
     "PatchedQuestionAdminRequest",
-    "PatchedQuestionAdminRequestAllowedFileTypes",
-    "PatchedQuestionAdminRequestAllowedMimeTypes",
     "PatchedQuestionAdminRequestGuidanceAnswerValueType0",
     "PatchedQuestionAdminRequestReviewAnswerValueType0",
     "PatchedQuestionDependencyRequest",
@@ -4676,7 +4588,6 @@ __all__ = (
     "PatchedReviewerPublicationRequestCoauthors",
     "PatchedReviewerPublicationRequestExternalIds",
     "PatchedRobotAccountRequest",
-    "PatchedRobotAccountRequestKeys",
     "PatchedRoleDetailsRequest",
     "PatchedRuleRequest",
     "PatchedRuleRequestPlanAttributes",
@@ -4713,17 +4624,8 @@ __all__ = (
     "PatchedUserInfoRequest",
     "PatchedUserOfferingConsentRequest",
     "PatchedUserRequest",
-    "PatchedUserRequestEdupersonAssurance",
     "PatchedUserRequestForm",
-    "PatchedUserRequestFormEdupersonAssurance",
-    "PatchedUserRequestFormManagedIsds",
-    "PatchedUserRequestFormNationalities",
-    "PatchedUserRequestManagedIsds",
     "PatchedUserRequestMultipart",
-    "PatchedUserRequestMultipartEdupersonAssurance",
-    "PatchedUserRequestMultipartManagedIsds",
-    "PatchedUserRequestMultipartNationalities",
-    "PatchedUserRequestNationalities",
     "PatchedVmwareVirtualMachineRequest",
     "PatchedWebHookRequest",
     "Payment",
@@ -4965,21 +4867,17 @@ __all__ = (
     "PubsubOverview",
     "PullMarketplaceScriptResourceRequest",
     "QosStrategyEnum",
+    "QueryOutput",
+    "QueryOutputRequest",
     "QueryPerformance",
     "QueryRequest",
     "Question",
     "QuestionAdmin",
-    "QuestionAdminAllowedFileTypes",
-    "QuestionAdminAllowedMimeTypes",
     "QuestionAdminGuidanceAnswerValueType0",
     "QuestionAdminRequest",
-    "QuestionAdminRequestAllowedFileTypes",
-    "QuestionAdminRequestAllowedMimeTypes",
     "QuestionAdminRequestGuidanceAnswerValueType0",
     "QuestionAdminRequestReviewAnswerValueType0",
     "QuestionAdminReviewAnswerValueType0",
-    "QuestionAllowedFileTypes",
-    "QuestionAllowedMimeTypes",
     "QuestionAnswer",
     "QuestionAnswerProjectAnswersItem",
     "QuestionAnswerQuestionOptionsItem",
@@ -5301,11 +5199,8 @@ __all__ = (
     "RobotAccount",
     "RobotAccountDetails",
     "RobotAccountDetailsFieldEnum",
-    "RobotAccountDetailsKeys",
     "RobotAccountErrorRequest",
-    "RobotAccountKeys",
     "RobotAccountRequest",
-    "RobotAccountRequestKeys",
     "RobotAccountStates",
     "RoleAvailabilityDetails",
     "RoleDescription",
@@ -5595,11 +5490,9 @@ __all__ = (
     "UserActionSummary",
     "UserActionSummaryByType",
     "UserActionSummaryByUrgency",
-    "UserActiveIsds",
     "UserActiveStatusCount",
     "UserAffiliationCount",
     "UserAffiliationDetail",
-    "UserAffiliations",
     "UserAgreement",
     "UserAgreementRequest",
     "UserAttributeEnum",
@@ -5613,7 +5506,6 @@ __all__ = (
     "UserDataAccess",
     "UserDataAccessLog",
     "UserDataAccessLogContext",
-    "UserEdupersonAssurance",
     "UserEmailChangeRequest",
     "UserFieldEnum",
     "UserHasResourceAccess",
@@ -5622,19 +5514,12 @@ __all__ = (
     "UserInfoRequest",
     "UserJobTitleCount",
     "UserLanguageCount",
-    "UserManagedIsds",
     "UserMapping",
     "UserMappingMap",
     "UserMe",
-    "UserMeActiveIsds",
-    "UserMeAffiliations",
     "UserMeAttributeSources",
-    "UserMeEdupersonAssurance",
     "UserMeFieldEnum",
-    "UserMeManagedIsds",
-    "UserMeNationalities",
     "UsernameGenerationPolicyEnum",
-    "UserNationalities",
     "UserNationalityStats",
     "UserOfferingConsent",
     "UserOfferingConsentCreate",
@@ -5645,17 +5530,8 @@ __all__ = (
     "UserOrganizationTypeCount",
     "UserRegistrationTrend",
     "UserRequest",
-    "UserRequestEdupersonAssurance",
     "UserRequestForm",
-    "UserRequestFormEdupersonAssurance",
-    "UserRequestFormManagedIsds",
-    "UserRequestFormNationalities",
-    "UserRequestManagedIsds",
     "UserRequestMultipart",
-    "UserRequestMultipartEdupersonAssurance",
-    "UserRequestMultipartManagedIsds",
-    "UserRequestMultipartNationalities",
-    "UserRequestNationalities",
     "UserResidenceCountryStats",
     "UserRoleCreateRequest",
     "UserRoleDeleteRequest",

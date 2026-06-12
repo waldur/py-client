@@ -7,14 +7,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.broadcast_message import BroadcastMessage
-from ...models.broadcast_message_request import BroadcastMessageRequest
+from ...models.broadcast_message_create_request import BroadcastMessageCreateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: BroadcastMessageRequest,
+    body: BroadcastMessageCreateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -56,12 +56,12 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: BroadcastMessageRequest,
+    body: BroadcastMessageCreateRequest,
 ) -> Response[BroadcastMessage]:
     """
     Args:
         uuid (UUID):
-        body (BroadcastMessageRequest):
+        body (BroadcastMessageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -87,12 +87,12 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: BroadcastMessageRequest,
+    body: BroadcastMessageCreateRequest,
 ) -> BroadcastMessage:
     """
     Args:
         uuid (UUID):
-        body (BroadcastMessageRequest):
+        body (BroadcastMessageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -113,12 +113,12 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: BroadcastMessageRequest,
+    body: BroadcastMessageCreateRequest,
 ) -> Response[BroadcastMessage]:
     """
     Args:
         uuid (UUID):
-        body (BroadcastMessageRequest):
+        body (BroadcastMessageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -142,12 +142,12 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: BroadcastMessageRequest,
+    body: BroadcastMessageCreateRequest,
 ) -> BroadcastMessage:
     """
     Args:
         uuid (UUID):
-        body (BroadcastMessageRequest):
+        body (BroadcastMessageCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

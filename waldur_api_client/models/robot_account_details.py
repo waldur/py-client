@@ -14,7 +14,6 @@ if TYPE_CHECKING:
     from ..models.basic_user import BasicUser
     from ..models.fingerprint import Fingerprint
     from ..models.merged_plugin_options import MergedPluginOptions
-    from ..models.robot_account_details_keys import RobotAccountDetailsKeys
     from ..models.ssh_key import SshKey
 
 
@@ -37,7 +36,7 @@ class RobotAccountDetails:
         resource (Union[Unset, str]):
         type_ (Union[Unset, str]): Type of the robot account.
         users (Union[Unset, list['BasicUser']]):
-        keys (Union[Unset, RobotAccountDetailsKeys]):
+        keys (Union[Unset, list[str]]):
         backend_id (Union[Unset, str]):
         fingerprints (Union[Unset, list['Fingerprint']]):
         responsible_user (Union['BasicUser', None, Unset]):
@@ -65,7 +64,7 @@ class RobotAccountDetails:
     resource: Union[Unset, str] = UNSET
     type_: Union[Unset, str] = UNSET
     users: Union[Unset, list["BasicUser"]] = UNSET
-    keys: Union[Unset, "RobotAccountDetailsKeys"] = UNSET
+    keys: Union[Unset, list[str]] = UNSET
     backend_id: Union[Unset, str] = UNSET
     fingerprints: Union[Unset, list["Fingerprint"]] = UNSET
     responsible_user: Union["BasicUser", None, Unset] = UNSET
@@ -121,9 +120,9 @@ class RobotAccountDetails:
                 users_item = users_item_data.to_dict()
                 users.append(users_item)
 
-        keys: Union[Unset, dict[str, Any]] = UNSET
+        keys: Union[Unset, list[str]] = UNSET
         if not isinstance(self.keys, Unset):
-            keys = self.keys.to_dict()
+            keys = self.keys
 
         backend_id = self.backend_id
 
@@ -240,7 +239,6 @@ class RobotAccountDetails:
         from ..models.basic_user import BasicUser
         from ..models.fingerprint import Fingerprint
         from ..models.merged_plugin_options import MergedPluginOptions
-        from ..models.robot_account_details_keys import RobotAccountDetailsKeys
         from ..models.ssh_key import SshKey
 
         d = dict(src_dict)
@@ -293,12 +291,7 @@ class RobotAccountDetails:
 
             users.append(users_item)
 
-        _keys = d.pop("keys", UNSET)
-        keys: Union[Unset, RobotAccountDetailsKeys]
-        if isinstance(_keys, Unset):
-            keys = UNSET
-        else:
-            keys = RobotAccountDetailsKeys.from_dict(_keys)
+        keys = cast(list[str], d.pop("keys", UNSET))
 
         backend_id = d.pop("backend_id", UNSET)
 

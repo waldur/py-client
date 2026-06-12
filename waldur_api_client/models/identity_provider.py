@@ -7,9 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.identity_provider_allowed_redirects import IdentityProviderAllowedRedirects
     from ..models.identity_provider_attribute_mapping import IdentityProviderAttributeMapping
-    from ..models.identity_provider_protected_fields import IdentityProviderProtectedFields
 
 
 T = TypeVar("T", bound="IdentityProvider")
@@ -21,6 +19,8 @@ class IdentityProvider:
     Attributes:
         provider (str):
         label (str): Human-readable identity provider is label.
+        protected_fields (Union[Unset, list[str]]):
+        allowed_redirects (Union[Unset, list[str]]):
         is_active (Union[Unset, bool]):
         client_id (Union[Unset, str]): ID of application used for OAuth authentication.
         client_secret (Union[Unset, str]): Application secret key.
@@ -33,7 +33,6 @@ class IdentityProvider:
         auth_url (Union[Unset, str]): The endpoint for authorization request flow.
         logout_url (Union[Unset, str]): The endpoint used to redirect after sign-out.
         management_url (Union[Unset, str]): The endpoint for user details management.
-        protected_fields (Union[Unset, IdentityProviderProtectedFields]):
         extra_scope (Union[None, Unset, str]): Space-separated list of scopes to request during authentication.
         user_field (Union[Unset, str]): The field in Waldur User model to be used for looking up the user
         user_claim (Union[Unset, str]): The OIDC claim from the userinfo endpoint to be used as the value for the lookup
@@ -41,14 +40,12 @@ class IdentityProvider:
         attribute_mapping (Union[Unset, IdentityProviderAttributeMapping]): A JSON object mapping Waldur User model
             fields to OIDC claims. Example: {"first_name": "given_name", "last_name": "family_name", "email": "email"}
         extra_fields (Union[None, Unset, str]): Space-separated list of extra fields to persist.
-        allowed_redirects (Union[Unset, IdentityProviderAllowedRedirects]): List of allowed redirect URLs for OAuth
-            authentication. URLs must be exact matches (origin only: scheme + domain + port). HTTPS required except for
-            localhost. No wildcards, paths, query params, or fragments. Example: ["https://portal1.example.com",
-            "https://portal2.example.com:8443"]. If empty, falls back to HOMEPORT_URL setting.
     """
 
     provider: str
     label: str
+    protected_fields: Union[Unset, list[str]] = UNSET
+    allowed_redirects: Union[Unset, list[str]] = UNSET
     is_active: Union[Unset, bool] = UNSET
     client_id: Union[Unset, str] = UNSET
     client_secret: Union[Unset, str] = UNSET
@@ -61,19 +58,25 @@ class IdentityProvider:
     auth_url: Union[Unset, str] = UNSET
     logout_url: Union[Unset, str] = UNSET
     management_url: Union[Unset, str] = UNSET
-    protected_fields: Union[Unset, "IdentityProviderProtectedFields"] = UNSET
     extra_scope: Union[None, Unset, str] = UNSET
     user_field: Union[Unset, str] = UNSET
     user_claim: Union[Unset, str] = UNSET
     attribute_mapping: Union[Unset, "IdentityProviderAttributeMapping"] = UNSET
     extra_fields: Union[None, Unset, str] = UNSET
-    allowed_redirects: Union[Unset, "IdentityProviderAllowedRedirects"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         provider = self.provider
 
         label = self.label
+
+        protected_fields: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.protected_fields, Unset):
+            protected_fields = self.protected_fields
+
+        allowed_redirects: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.allowed_redirects, Unset):
+            allowed_redirects = self.allowed_redirects
 
         is_active = self.is_active
 
@@ -99,10 +102,6 @@ class IdentityProvider:
 
         management_url = self.management_url
 
-        protected_fields: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.protected_fields, Unset):
-            protected_fields = self.protected_fields.to_dict()
-
         extra_scope: Union[None, Unset, str]
         if isinstance(self.extra_scope, Unset):
             extra_scope = UNSET
@@ -123,10 +122,6 @@ class IdentityProvider:
         else:
             extra_fields = self.extra_fields
 
-        allowed_redirects: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.allowed_redirects, Unset):
-            allowed_redirects = self.allowed_redirects.to_dict()
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -135,6 +130,10 @@ class IdentityProvider:
                 "label": label,
             }
         )
+        if protected_fields is not UNSET:
+            field_dict["protected_fields"] = protected_fields
+        if allowed_redirects is not UNSET:
+            field_dict["allowed_redirects"] = allowed_redirects
         if is_active is not UNSET:
             field_dict["is_active"] = is_active
         if client_id is not UNSET:
@@ -159,8 +158,6 @@ class IdentityProvider:
             field_dict["logout_url"] = logout_url
         if management_url is not UNSET:
             field_dict["management_url"] = management_url
-        if protected_fields is not UNSET:
-            field_dict["protected_fields"] = protected_fields
         if extra_scope is not UNSET:
             field_dict["extra_scope"] = extra_scope
         if user_field is not UNSET:
@@ -171,21 +168,21 @@ class IdentityProvider:
             field_dict["attribute_mapping"] = attribute_mapping
         if extra_fields is not UNSET:
             field_dict["extra_fields"] = extra_fields
-        if allowed_redirects is not UNSET:
-            field_dict["allowed_redirects"] = allowed_redirects
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.identity_provider_allowed_redirects import IdentityProviderAllowedRedirects
         from ..models.identity_provider_attribute_mapping import IdentityProviderAttributeMapping
-        from ..models.identity_provider_protected_fields import IdentityProviderProtectedFields
 
         d = dict(src_dict)
         provider = d.pop("provider")
 
         label = d.pop("label")
+
+        protected_fields = cast(list[str], d.pop("protected_fields", UNSET))
+
+        allowed_redirects = cast(list[str], d.pop("allowed_redirects", UNSET))
 
         is_active = d.pop("is_active", UNSET)
 
@@ -210,13 +207,6 @@ class IdentityProvider:
         logout_url = d.pop("logout_url", UNSET)
 
         management_url = d.pop("management_url", UNSET)
-
-        _protected_fields = d.pop("protected_fields", UNSET)
-        protected_fields: Union[Unset, IdentityProviderProtectedFields]
-        if isinstance(_protected_fields, Unset):
-            protected_fields = UNSET
-        else:
-            protected_fields = IdentityProviderProtectedFields.from_dict(_protected_fields)
 
         def _parse_extra_scope(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -247,16 +237,11 @@ class IdentityProvider:
 
         extra_fields = _parse_extra_fields(d.pop("extra_fields", UNSET))
 
-        _allowed_redirects = d.pop("allowed_redirects", UNSET)
-        allowed_redirects: Union[Unset, IdentityProviderAllowedRedirects]
-        if isinstance(_allowed_redirects, Unset):
-            allowed_redirects = UNSET
-        else:
-            allowed_redirects = IdentityProviderAllowedRedirects.from_dict(_allowed_redirects)
-
         identity_provider = cls(
             provider=provider,
             label=label,
+            protected_fields=protected_fields,
+            allowed_redirects=allowed_redirects,
             is_active=is_active,
             client_id=client_id,
             client_secret=client_secret,
@@ -269,13 +254,11 @@ class IdentityProvider:
             auth_url=auth_url,
             logout_url=logout_url,
             management_url=management_url,
-            protected_fields=protected_fields,
             extra_scope=extra_scope,
             user_field=user_field,
             user_claim=user_claim,
             attribute_mapping=attribute_mapping,
             extra_fields=extra_fields,
-            allowed_redirects=allowed_redirects,
         )
 
         identity_provider.additional_properties = d

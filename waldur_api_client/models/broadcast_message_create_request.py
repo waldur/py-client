@@ -9,25 +9,25 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.broadcast_message_request_query import BroadcastMessageRequestQuery
+    from ..models.broadcast_message_query_request import BroadcastMessageQueryRequest
 
 
-T = TypeVar("T", bound="BroadcastMessageRequest")
+T = TypeVar("T", bound="BroadcastMessageCreateRequest")
 
 
 @_attrs_define
-class BroadcastMessageRequest:
+class BroadcastMessageCreateRequest:
     """
     Attributes:
         subject (str):
         body (str):
-        query (BroadcastMessageRequestQuery):
+        query (BroadcastMessageQueryRequest):
         send_at (Union[None, Unset, datetime.date]):
     """
 
     subject: str
     body: str
-    query: "BroadcastMessageRequestQuery"
+    query: "BroadcastMessageQueryRequest"
     send_at: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -62,14 +62,14 @@ class BroadcastMessageRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.broadcast_message_request_query import BroadcastMessageRequestQuery
+        from ..models.broadcast_message_query_request import BroadcastMessageQueryRequest
 
         d = dict(src_dict)
         subject = d.pop("subject")
 
         body = d.pop("body")
 
-        query = BroadcastMessageRequestQuery.from_dict(d.pop("query"))
+        query = BroadcastMessageQueryRequest.from_dict(d.pop("query"))
 
         def _parse_send_at(data: object) -> Union[None, Unset, datetime.date]:
             if data is None:
@@ -88,15 +88,15 @@ class BroadcastMessageRequest:
 
         send_at = _parse_send_at(d.pop("send_at", UNSET))
 
-        broadcast_message_request = cls(
+        broadcast_message_create_request = cls(
             subject=subject,
             body=body,
             query=query,
             send_at=send_at,
         )
 
-        broadcast_message_request.additional_properties = d
-        return broadcast_message_request
+        broadcast_message_create_request.additional_properties = d
+        return broadcast_message_create_request
 
     @property
     def additional_keys(self) -> list[str]:
