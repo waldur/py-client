@@ -15,7 +15,6 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.question_admin_guidance_answer_value_type_0 import QuestionAdminGuidanceAnswerValueType0
-    from ..models.question_admin_review_answer_value_type_0 import QuestionAdminReviewAnswerValueType0
     from ..models.question_options_admin import QuestionOptionsAdmin
 
 
@@ -58,8 +57,7 @@ class QuestionAdmin:
         rich_text_toolbar_level (Union[BlankEnum, RichTextToolbarLevelEnum, Unset]): Toolbar level for the rich text
             editor: 'minimal', 'standard', or 'extended'.
         operator (Union[BlankEnum, ChecklistOperators, Unset]):
-        review_answer_value (Union['QuestionAdminReviewAnswerValueType0', None, Unset]): Answer value that trigger
-            review.
+        review_answer_value (Union[Unset, Any]):
         always_requires_review (Union[Unset, bool]): This question always requires review regardless of answer
         guidance_answer_value (Union['QuestionAdminGuidanceAnswerValueType0', None, Unset]): Answer value that triggers
             display of user guidance.
@@ -95,7 +93,7 @@ class QuestionAdmin:
     rich_text_char_limit: Union[None, Unset, int] = UNSET
     rich_text_toolbar_level: Union[BlankEnum, RichTextToolbarLevelEnum, Unset] = UNSET
     operator: Union[BlankEnum, ChecklistOperators, Unset] = UNSET
-    review_answer_value: Union["QuestionAdminReviewAnswerValueType0", None, Unset] = UNSET
+    review_answer_value: Union[Unset, Any] = UNSET
     always_requires_review: Union[Unset, bool] = UNSET
     guidance_answer_value: Union["QuestionAdminGuidanceAnswerValueType0", None, Unset] = UNSET
     guidance_operator: Union[BlankEnum, ChecklistOperators, Unset] = UNSET
@@ -105,7 +103,6 @@ class QuestionAdmin:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.question_admin_guidance_answer_value_type_0 import QuestionAdminGuidanceAnswerValueType0
-        from ..models.question_admin_review_answer_value_type_0 import QuestionAdminReviewAnswerValueType0
 
         uuid = str(self.uuid)
 
@@ -204,13 +201,7 @@ class QuestionAdmin:
         else:
             operator = self.operator.value
 
-        review_answer_value: Union[None, Unset, dict[str, Any]]
-        if isinstance(self.review_answer_value, Unset):
-            review_answer_value = UNSET
-        elif isinstance(self.review_answer_value, QuestionAdminReviewAnswerValueType0):
-            review_answer_value = self.review_answer_value.to_dict()
-        else:
-            review_answer_value = self.review_answer_value
+        review_answer_value = self.review_answer_value
 
         always_requires_review = self.always_requires_review
 
@@ -303,7 +294,6 @@ class QuestionAdmin:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.question_admin_guidance_answer_value_type_0 import QuestionAdminGuidanceAnswerValueType0
-        from ..models.question_admin_review_answer_value_type_0 import QuestionAdminReviewAnswerValueType0
         from ..models.question_options_admin import QuestionOptionsAdmin
 
         d = dict(src_dict)
@@ -451,22 +441,7 @@ class QuestionAdmin:
 
         operator = _parse_operator(d.pop("operator", UNSET))
 
-        def _parse_review_answer_value(data: object) -> Union["QuestionAdminReviewAnswerValueType0", None, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                review_answer_value_type_0 = QuestionAdminReviewAnswerValueType0.from_dict(data)
-
-                return review_answer_value_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union["QuestionAdminReviewAnswerValueType0", None, Unset], data)
-
-        review_answer_value = _parse_review_answer_value(d.pop("review_answer_value", UNSET))
+        review_answer_value = d.pop("review_answer_value", UNSET)
 
         always_requires_review = d.pop("always_requires_review", UNSET)
 

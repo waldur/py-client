@@ -29,7 +29,7 @@ class ManagedProject:
         reviewed_by_uuid (UUID):
         identifier (str):
         destination (str): The destination used to send instructions from the remote portal.
-        details (ManagedProjectDetails): Details of the project as provided by the remote OpenPortal.
+        details (ManagedProjectDetails):
         project (str):
         project_data (BasicProject):
         project_template (str):

@@ -12,9 +12,6 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.nested_parent_software import NestedParentSoftware
     from ..models.nested_software_version import NestedSoftwareVersion
-    from ..models.software_package_categories import SoftwarePackageCategories
-    from ..models.software_package_licenses import SoftwarePackageLicenses
-    from ..models.software_package_maintainers import SoftwarePackageMaintainers
 
 
 T = TypeVar("T", bound="SoftwarePackage")
@@ -30,6 +27,9 @@ class SoftwarePackage:
         modified (datetime.datetime):
         catalog (str):
         name (str):
+        categories (list[str]):
+        licenses (list[str]):
+        maintainers (list[str]):
         parent_softwares (list['NestedParentSoftware']):
         extensions (list['NestedParentSoftware']):
         catalog_name (str):
@@ -41,9 +41,6 @@ class SoftwarePackage:
         versions (list['NestedSoftwareVersion']):
         description (Union[Unset, str]):
         homepage (Union[None, Unset, str]):
-        categories (Union[Unset, SoftwarePackageCategories]): Package categories (e.g., ['bio', 'hpc', 'build-tools'])
-        licenses (Union[Unset, SoftwarePackageLicenses]): Software licenses (e.g., ['GPL-3.0', 'MIT'])
-        maintainers (Union[Unset, SoftwarePackageMaintainers]): Package maintainers
         is_extension (Union[Unset, bool]): Whether this package is an extension of another package
     """
 
@@ -53,6 +50,9 @@ class SoftwarePackage:
     modified: datetime.datetime
     catalog: str
     name: str
+    categories: list[str]
+    licenses: list[str]
+    maintainers: list[str]
     parent_softwares: list["NestedParentSoftware"]
     extensions: list["NestedParentSoftware"]
     catalog_name: str
@@ -64,9 +64,6 @@ class SoftwarePackage:
     versions: list["NestedSoftwareVersion"]
     description: Union[Unset, str] = UNSET
     homepage: Union[None, Unset, str] = UNSET
-    categories: Union[Unset, "SoftwarePackageCategories"] = UNSET
-    licenses: Union[Unset, "SoftwarePackageLicenses"] = UNSET
-    maintainers: Union[Unset, "SoftwarePackageMaintainers"] = UNSET
     is_extension: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -82,6 +79,12 @@ class SoftwarePackage:
         catalog = self.catalog
 
         name = self.name
+
+        categories = self.categories
+
+        licenses = self.licenses
+
+        maintainers = self.maintainers
 
         parent_softwares = []
         for parent_softwares_item_data in self.parent_softwares:
@@ -118,18 +121,6 @@ class SoftwarePackage:
         else:
             homepage = self.homepage
 
-        categories: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.categories, Unset):
-            categories = self.categories.to_dict()
-
-        licenses: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.licenses, Unset):
-            licenses = self.licenses.to_dict()
-
-        maintainers: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.maintainers, Unset):
-            maintainers = self.maintainers.to_dict()
-
         is_extension = self.is_extension
 
         field_dict: dict[str, Any] = {}
@@ -142,6 +133,9 @@ class SoftwarePackage:
                 "modified": modified,
                 "catalog": catalog,
                 "name": name,
+                "categories": categories,
+                "licenses": licenses,
+                "maintainers": maintainers,
                 "parent_softwares": parent_softwares,
                 "extensions": extensions,
                 "catalog_name": catalog_name,
@@ -157,12 +151,6 @@ class SoftwarePackage:
             field_dict["description"] = description
         if homepage is not UNSET:
             field_dict["homepage"] = homepage
-        if categories is not UNSET:
-            field_dict["categories"] = categories
-        if licenses is not UNSET:
-            field_dict["licenses"] = licenses
-        if maintainers is not UNSET:
-            field_dict["maintainers"] = maintainers
         if is_extension is not UNSET:
             field_dict["is_extension"] = is_extension
 
@@ -172,9 +160,6 @@ class SoftwarePackage:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_parent_software import NestedParentSoftware
         from ..models.nested_software_version import NestedSoftwareVersion
-        from ..models.software_package_categories import SoftwarePackageCategories
-        from ..models.software_package_licenses import SoftwarePackageLicenses
-        from ..models.software_package_maintainers import SoftwarePackageMaintainers
 
         d = dict(src_dict)
         url = d.pop("url")
@@ -188,6 +173,12 @@ class SoftwarePackage:
         catalog = d.pop("catalog")
 
         name = d.pop("name")
+
+        categories = cast(list[str], d.pop("categories"))
+
+        licenses = cast(list[str], d.pop("licenses"))
+
+        maintainers = cast(list[str], d.pop("maintainers"))
 
         parent_softwares = []
         _parent_softwares = d.pop("parent_softwares")
@@ -233,27 +224,6 @@ class SoftwarePackage:
 
         homepage = _parse_homepage(d.pop("homepage", UNSET))
 
-        _categories = d.pop("categories", UNSET)
-        categories: Union[Unset, SoftwarePackageCategories]
-        if isinstance(_categories, Unset):
-            categories = UNSET
-        else:
-            categories = SoftwarePackageCategories.from_dict(_categories)
-
-        _licenses = d.pop("licenses", UNSET)
-        licenses: Union[Unset, SoftwarePackageLicenses]
-        if isinstance(_licenses, Unset):
-            licenses = UNSET
-        else:
-            licenses = SoftwarePackageLicenses.from_dict(_licenses)
-
-        _maintainers = d.pop("maintainers", UNSET)
-        maintainers: Union[Unset, SoftwarePackageMaintainers]
-        if isinstance(_maintainers, Unset):
-            maintainers = UNSET
-        else:
-            maintainers = SoftwarePackageMaintainers.from_dict(_maintainers)
-
         is_extension = d.pop("is_extension", UNSET)
 
         software_package = cls(
@@ -263,6 +233,9 @@ class SoftwarePackage:
             modified=modified,
             catalog=catalog,
             name=name,
+            categories=categories,
+            licenses=licenses,
+            maintainers=maintainers,
             parent_softwares=parent_softwares,
             extensions=extensions,
             catalog_name=catalog_name,
@@ -274,9 +247,6 @@ class SoftwarePackage:
             versions=versions,
             description=description,
             homepage=homepage,
-            categories=categories,
-            licenses=licenses,
-            maintainers=maintainers,
             is_extension=is_extension,
         )
 

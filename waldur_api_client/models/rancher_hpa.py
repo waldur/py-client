@@ -10,7 +10,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.rancher_hpa_metrics import RancherHPAMetrics
+    from ..models.rancher_hpa_metric import RancherHPAMetric
 
 
 T = TypeVar("T", bound="RancherHPA")
@@ -39,7 +39,7 @@ class RancherHPA:
         workload_name (str):
         current_replicas (int):
         desired_replicas (int):
-        metrics (RancherHPAMetrics):
+        metrics (list['RancherHPAMetric']):
         description (Union[Unset, str]):
         workload (Union[None, Unset, str]):
         min_replicas (Union[Unset, int]):
@@ -65,7 +65,7 @@ class RancherHPA:
     workload_name: str
     current_replicas: int
     desired_replicas: int
-    metrics: "RancherHPAMetrics"
+    metrics: list["RancherHPAMetric"]
     description: Union[Unset, str] = UNSET
     workload: Union[None, Unset, str] = UNSET
     min_replicas: Union[Unset, int] = UNSET
@@ -114,7 +114,10 @@ class RancherHPA:
 
         desired_replicas = self.desired_replicas
 
-        metrics = self.metrics.to_dict()
+        metrics = []
+        for metrics_item_data in self.metrics:
+            metrics_item = metrics_item_data.to_dict()
+            metrics.append(metrics_item)
 
         description = self.description
 
@@ -167,7 +170,7 @@ class RancherHPA:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.rancher_hpa_metrics import RancherHPAMetrics
+        from ..models.rancher_hpa_metric import RancherHPAMetric
 
         d = dict(src_dict)
         url = d.pop("url")
@@ -223,7 +226,12 @@ class RancherHPA:
 
         desired_replicas = d.pop("desired_replicas")
 
-        metrics = RancherHPAMetrics.from_dict(d.pop("metrics"))
+        metrics = []
+        _metrics = d.pop("metrics")
+        for metrics_item_data in _metrics:
+            metrics_item = RancherHPAMetric.from_dict(metrics_item_data)
+
+            metrics.append(metrics_item)
 
         description = d.pop("description", UNSET)
 

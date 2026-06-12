@@ -10,7 +10,6 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.slurm_policy_evaluation_log_actions_taken import SlurmPolicyEvaluationLogActionsTaken
     from ..models.slurm_policy_evaluation_log_new_state import SlurmPolicyEvaluationLogNewState
     from ..models.slurm_policy_evaluation_log_previous_state import SlurmPolicyEvaluationLogPreviousState
     from ..models.slurm_policy_evaluation_log_site_agent_response_type_0 import (
@@ -31,9 +30,8 @@ class SlurmPolicyEvaluationLog:
         billing_period (str): Billing period identifier, e.g. '2026-Q1'
         usage_percentage (float): Resource usage percentage at the time of evaluation
         grace_limit_percentage (float): Grace limit percentage threshold (e.g. 120 for 20% grace)
+        actions_taken (list[str]):
         evaluated_at (datetime.datetime): When this evaluation was performed
-        actions_taken (Union[Unset, SlurmPolicyEvaluationLogActionsTaken]): List of actions taken during this evaluation
-            (e.g. ['pause', 'notify'])
         previous_state (Union[Unset, SlurmPolicyEvaluationLogPreviousState]): Resource state before evaluation: {paused:
             bool, downscaled: bool}
         new_state (Union[Unset, SlurmPolicyEvaluationLogNewState]): Resource state after evaluation: {paused: bool,
@@ -51,8 +49,8 @@ class SlurmPolicyEvaluationLog:
     billing_period: str
     usage_percentage: float
     grace_limit_percentage: float
+    actions_taken: list[str]
     evaluated_at: datetime.datetime
-    actions_taken: Union[Unset, "SlurmPolicyEvaluationLogActionsTaken"] = UNSET
     previous_state: Union[Unset, "SlurmPolicyEvaluationLogPreviousState"] = UNSET
     new_state: Union[Unset, "SlurmPolicyEvaluationLogNewState"] = UNSET
     stomp_message_sent: Union[Unset, bool] = UNSET
@@ -77,11 +75,9 @@ class SlurmPolicyEvaluationLog:
 
         grace_limit_percentage = self.grace_limit_percentage
 
-        evaluated_at = self.evaluated_at.isoformat()
+        actions_taken = self.actions_taken
 
-        actions_taken: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.actions_taken, Unset):
-            actions_taken = self.actions_taken.to_dict()
+        evaluated_at = self.evaluated_at.isoformat()
 
         previous_state: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.previous_state, Unset):
@@ -117,11 +113,10 @@ class SlurmPolicyEvaluationLog:
                 "billing_period": billing_period,
                 "usage_percentage": usage_percentage,
                 "grace_limit_percentage": grace_limit_percentage,
+                "actions_taken": actions_taken,
                 "evaluated_at": evaluated_at,
             }
         )
-        if actions_taken is not UNSET:
-            field_dict["actions_taken"] = actions_taken
         if previous_state is not UNSET:
             field_dict["previous_state"] = previous_state
         if new_state is not UNSET:
@@ -137,7 +132,6 @@ class SlurmPolicyEvaluationLog:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.slurm_policy_evaluation_log_actions_taken import SlurmPolicyEvaluationLogActionsTaken
         from ..models.slurm_policy_evaluation_log_new_state import SlurmPolicyEvaluationLogNewState
         from ..models.slurm_policy_evaluation_log_previous_state import SlurmPolicyEvaluationLogPreviousState
         from ..models.slurm_policy_evaluation_log_site_agent_response_type_0 import (
@@ -157,14 +151,9 @@ class SlurmPolicyEvaluationLog:
 
         grace_limit_percentage = d.pop("grace_limit_percentage")
 
-        evaluated_at = isoparse(d.pop("evaluated_at"))
+        actions_taken = cast(list[str], d.pop("actions_taken"))
 
-        _actions_taken = d.pop("actions_taken", UNSET)
-        actions_taken: Union[Unset, SlurmPolicyEvaluationLogActionsTaken]
-        if isinstance(_actions_taken, Unset):
-            actions_taken = UNSET
-        else:
-            actions_taken = SlurmPolicyEvaluationLogActionsTaken.from_dict(_actions_taken)
+        evaluated_at = isoparse(d.pop("evaluated_at"))
 
         _previous_state = d.pop("previous_state", UNSET)
         previous_state: Union[Unset, SlurmPolicyEvaluationLogPreviousState]
@@ -217,8 +206,8 @@ class SlurmPolicyEvaluationLog:
             billing_period=billing_period,
             usage_percentage=usage_percentage,
             grace_limit_percentage=grace_limit_percentage,
-            evaluated_at=evaluated_at,
             actions_taken=actions_taken,
+            evaluated_at=evaluated_at,
             previous_state=previous_state,
             new_state=new_state,
             stomp_message_sent=stomp_message_sent,

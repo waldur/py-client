@@ -1,16 +1,10 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.patched_software_package_request_categories import PatchedSoftwarePackageRequestCategories
-    from ..models.patched_software_package_request_licenses import PatchedSoftwarePackageRequestLicenses
-    from ..models.patched_software_package_request_maintainers import PatchedSoftwarePackageRequestMaintainers
-
 
 T = TypeVar("T", bound="PatchedSoftwarePackageRequest")
 
@@ -23,10 +17,6 @@ class PatchedSoftwarePackageRequest:
         name (Union[Unset, str]):
         description (Union[Unset, str]):
         homepage (Union[None, Unset, str]):
-        categories (Union[Unset, PatchedSoftwarePackageRequestCategories]): Package categories (e.g., ['bio', 'hpc',
-            'build-tools'])
-        licenses (Union[Unset, PatchedSoftwarePackageRequestLicenses]): Software licenses (e.g., ['GPL-3.0', 'MIT'])
-        maintainers (Union[Unset, PatchedSoftwarePackageRequestMaintainers]): Package maintainers
         is_extension (Union[Unset, bool]): Whether this package is an extension of another package
     """
 
@@ -34,9 +24,6 @@ class PatchedSoftwarePackageRequest:
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     homepage: Union[None, Unset, str] = UNSET
-    categories: Union[Unset, "PatchedSoftwarePackageRequestCategories"] = UNSET
-    licenses: Union[Unset, "PatchedSoftwarePackageRequestLicenses"] = UNSET
-    maintainers: Union[Unset, "PatchedSoftwarePackageRequestMaintainers"] = UNSET
     is_extension: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -53,18 +40,6 @@ class PatchedSoftwarePackageRequest:
         else:
             homepage = self.homepage
 
-        categories: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.categories, Unset):
-            categories = self.categories.to_dict()
-
-        licenses: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.licenses, Unset):
-            licenses = self.licenses.to_dict()
-
-        maintainers: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.maintainers, Unset):
-            maintainers = self.maintainers.to_dict()
-
         is_extension = self.is_extension
 
         field_dict: dict[str, Any] = {}
@@ -78,12 +53,6 @@ class PatchedSoftwarePackageRequest:
             field_dict["description"] = description
         if homepage is not UNSET:
             field_dict["homepage"] = homepage
-        if categories is not UNSET:
-            field_dict["categories"] = categories
-        if licenses is not UNSET:
-            field_dict["licenses"] = licenses
-        if maintainers is not UNSET:
-            field_dict["maintainers"] = maintainers
         if is_extension is not UNSET:
             field_dict["is_extension"] = is_extension
 
@@ -91,10 +60,6 @@ class PatchedSoftwarePackageRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.patched_software_package_request_categories import PatchedSoftwarePackageRequestCategories
-        from ..models.patched_software_package_request_licenses import PatchedSoftwarePackageRequestLicenses
-        from ..models.patched_software_package_request_maintainers import PatchedSoftwarePackageRequestMaintainers
-
         d = dict(src_dict)
         catalog = d.pop("catalog", UNSET)
 
@@ -111,27 +76,6 @@ class PatchedSoftwarePackageRequest:
 
         homepage = _parse_homepage(d.pop("homepage", UNSET))
 
-        _categories = d.pop("categories", UNSET)
-        categories: Union[Unset, PatchedSoftwarePackageRequestCategories]
-        if isinstance(_categories, Unset):
-            categories = UNSET
-        else:
-            categories = PatchedSoftwarePackageRequestCategories.from_dict(_categories)
-
-        _licenses = d.pop("licenses", UNSET)
-        licenses: Union[Unset, PatchedSoftwarePackageRequestLicenses]
-        if isinstance(_licenses, Unset):
-            licenses = UNSET
-        else:
-            licenses = PatchedSoftwarePackageRequestLicenses.from_dict(_licenses)
-
-        _maintainers = d.pop("maintainers", UNSET)
-        maintainers: Union[Unset, PatchedSoftwarePackageRequestMaintainers]
-        if isinstance(_maintainers, Unset):
-            maintainers = UNSET
-        else:
-            maintainers = PatchedSoftwarePackageRequestMaintainers.from_dict(_maintainers)
-
         is_extension = d.pop("is_extension", UNSET)
 
         patched_software_package_request = cls(
@@ -139,9 +83,6 @@ class PatchedSoftwarePackageRequest:
             name=name,
             description=description,
             homepage=homepage,
-            categories=categories,
-            licenses=licenses,
-            maintainers=maintainers,
             is_extension=is_extension,
         )
 

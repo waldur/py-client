@@ -10,7 +10,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.agent_identity_dependencies import AgentIdentityDependencies
+    from ..models.agent_dependency import AgentDependency
     from ..models.nested_agent_service import NestedAgentService
 
 
@@ -26,11 +26,11 @@ class AgentIdentity:
         offering (UUID): UUID of an offering with a site-agent compatible type.
         created_by (Union[None, UUID]):
         name (str):
+        dependencies (list['AgentDependency']):
         created (datetime.datetime):
         modified (datetime.datetime):
         services (list['NestedAgentService']):
         version (Union[None, Unset, str]):
-        dependencies (Union[Unset, AgentIdentityDependencies]):
         config_file_path (Union[None, Unset, str]): Example: '/etc/waldur/agent.yaml'
         config_file_content (Union[None, Unset, str]):
         last_restarted (Union[Unset, datetime.datetime]):
@@ -41,11 +41,11 @@ class AgentIdentity:
     offering: UUID
     created_by: Union[None, UUID]
     name: str
+    dependencies: list["AgentDependency"]
     created: datetime.datetime
     modified: datetime.datetime
     services: list["NestedAgentService"]
     version: Union[None, Unset, str] = UNSET
-    dependencies: Union[Unset, "AgentIdentityDependencies"] = UNSET
     config_file_path: Union[None, Unset, str] = UNSET
     config_file_content: Union[None, Unset, str] = UNSET
     last_restarted: Union[Unset, datetime.datetime] = UNSET
@@ -66,6 +66,11 @@ class AgentIdentity:
 
         name = self.name
 
+        dependencies = []
+        for dependencies_item_data in self.dependencies:
+            dependencies_item = dependencies_item_data.to_dict()
+            dependencies.append(dependencies_item)
+
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
@@ -80,10 +85,6 @@ class AgentIdentity:
             version = UNSET
         else:
             version = self.version
-
-        dependencies: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.dependencies, Unset):
-            dependencies = self.dependencies.to_dict()
 
         config_file_path: Union[None, Unset, str]
         if isinstance(self.config_file_path, Unset):
@@ -110,6 +111,7 @@ class AgentIdentity:
                 "offering": offering,
                 "created_by": created_by,
                 "name": name,
+                "dependencies": dependencies,
                 "created": created,
                 "modified": modified,
                 "services": services,
@@ -117,8 +119,6 @@ class AgentIdentity:
         )
         if version is not UNSET:
             field_dict["version"] = version
-        if dependencies is not UNSET:
-            field_dict["dependencies"] = dependencies
         if config_file_path is not UNSET:
             field_dict["config_file_path"] = config_file_path
         if config_file_content is not UNSET:
@@ -130,7 +130,7 @@ class AgentIdentity:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.agent_identity_dependencies import AgentIdentityDependencies
+        from ..models.agent_dependency import AgentDependency
         from ..models.nested_agent_service import NestedAgentService
 
         d = dict(src_dict)
@@ -157,6 +157,13 @@ class AgentIdentity:
 
         name = d.pop("name")
 
+        dependencies = []
+        _dependencies = d.pop("dependencies")
+        for dependencies_item_data in _dependencies:
+            dependencies_item = AgentDependency.from_dict(dependencies_item_data)
+
+            dependencies.append(dependencies_item)
+
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
@@ -176,13 +183,6 @@ class AgentIdentity:
             return cast(Union[None, Unset, str], data)
 
         version = _parse_version(d.pop("version", UNSET))
-
-        _dependencies = d.pop("dependencies", UNSET)
-        dependencies: Union[Unset, AgentIdentityDependencies]
-        if isinstance(_dependencies, Unset):
-            dependencies = UNSET
-        else:
-            dependencies = AgentIdentityDependencies.from_dict(_dependencies)
 
         def _parse_config_file_path(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -215,11 +215,11 @@ class AgentIdentity:
             offering=offering,
             created_by=created_by,
             name=name,
+            dependencies=dependencies,
             created=created,
             modified=modified,
             services=services,
             version=version,
-            dependencies=dependencies,
             config_file_path=config_file_path,
             config_file_content=config_file_content,
             last_restarted=last_restarted,

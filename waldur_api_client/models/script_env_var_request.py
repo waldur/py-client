@@ -4,28 +4,51 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="QuestionDependencyRequestRequiredAnswerValue")
+T = TypeVar("T", bound="ScriptEnvVarRequest")
 
 
 @_attrs_define
-class QuestionDependencyRequestRequiredAnswerValue:
-    """The answer value(s) that make this question visible"""
+class ScriptEnvVarRequest:
+    """
+    Attributes:
+        name (str):
+        value (str):
+    """
 
+    name: str
+    value: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        name = self.name
+
+        value = self.value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "name": name,
+                "value": value,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        question_dependency_request_required_answer_value = cls()
+        name = d.pop("name")
 
-        question_dependency_request_required_answer_value.additional_properties = d
-        return question_dependency_request_required_answer_value
+        value = d.pop("value")
+
+        script_env_var_request = cls(
+            name=name,
+            value=value,
+        )
+
+        script_env_var_request.additional_properties = d
+        return script_env_var_request
 
     @property
     def additional_keys(self) -> list[str]:

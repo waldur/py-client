@@ -9,7 +9,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.ip_mapping_request import IPMappingRequest
-    from ..models.merged_secret_options_request_environ import MergedSecretOptionsRequestEnviron
+    from ..models.script_env_var_request import ScriptEnvVarRequest
 
 
 T = TypeVar("T", bound="MergedSecretOptionsRequest")
@@ -28,7 +28,7 @@ class MergedSecretOptionsRequest:
         shared_user_password (Union[Unset, str]): GLAuth shared user password
         template_confirmation_comment (Union[Unset, str]): Template confirmation comment
         language (Union[Unset, str]): Script language: Python or Bash
-        environ (Union[Unset, MergedSecretOptionsRequestEnviron]): Script environment variables
+        environ (Union[Unset, list['ScriptEnvVarRequest']]): Script environment variables
         create (Union[Unset, str]): Script for resource creation
         terminate (Union[Unset, str]): Script for resource termination
         update (Union[Unset, str]): Script for resource update
@@ -71,7 +71,7 @@ class MergedSecretOptionsRequest:
     shared_user_password: Union[Unset, str] = UNSET
     template_confirmation_comment: Union[Unset, str] = UNSET
     language: Union[Unset, str] = UNSET
-    environ: Union[Unset, "MergedSecretOptionsRequestEnviron"] = UNSET
+    environ: Union[Unset, list["ScriptEnvVarRequest"]] = UNSET
     create: Union[Unset, str] = UNSET
     terminate: Union[Unset, str] = UNSET
     update: Union[Unset, str] = UNSET
@@ -129,9 +129,12 @@ class MergedSecretOptionsRequest:
 
         language = self.language
 
-        environ: Union[Unset, dict[str, Any]] = UNSET
+        environ: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.environ, Unset):
-            environ = self.environ.to_dict()
+            environ = []
+            for environ_item_data in self.environ:
+                environ_item = environ_item_data.to_dict()
+                environ.append(environ_item)
 
         create = self.create
 
@@ -288,7 +291,7 @@ class MergedSecretOptionsRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.ip_mapping_request import IPMappingRequest
-        from ..models.merged_secret_options_request_environ import MergedSecretOptionsRequestEnviron
+        from ..models.script_env_var_request import ScriptEnvVarRequest
 
         d = dict(src_dict)
         heappe_cluster_password = d.pop("heappe_cluster_password", UNSET)
@@ -312,12 +315,12 @@ class MergedSecretOptionsRequest:
 
         language = d.pop("language", UNSET)
 
+        environ = []
         _environ = d.pop("environ", UNSET)
-        environ: Union[Unset, MergedSecretOptionsRequestEnviron]
-        if isinstance(_environ, Unset):
-            environ = UNSET
-        else:
-            environ = MergedSecretOptionsRequestEnviron.from_dict(_environ)
+        for environ_item_data in _environ or []:
+            environ_item = ScriptEnvVarRequest.from_dict(environ_item_data)
+
+            environ.append(environ_item)
 
         create = d.pop("create", UNSET)
 

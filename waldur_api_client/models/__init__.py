@@ -36,15 +36,15 @@ from .affinity_method_enum import AffinityMethodEnum
 from .agent_connection_info import AgentConnectionInfo
 from .agent_connection_stats_response import AgentConnectionStatsResponse
 from .agent_connection_summary import AgentConnectionSummary
+from .agent_dependency import AgentDependency
+from .agent_dependency_request import AgentDependencyRequest
 from .agent_event_subscription_create_request import AgentEventSubscriptionCreateRequest
 from .agent_event_subscription_with_connection import AgentEventSubscriptionWithConnection
 from .agent_event_subscription_with_connection_observable_objects import (
     AgentEventSubscriptionWithConnectionObservableObjects,
 )
 from .agent_identity import AgentIdentity
-from .agent_identity_dependencies import AgentIdentityDependencies
 from .agent_identity_request import AgentIdentityRequest
-from .agent_identity_request_dependencies import AgentIdentityRequestDependencies
 from .agent_processor import AgentProcessor
 from .agent_processor_create_request import AgentProcessorCreateRequest
 from .agent_queue_info import AgentQueueInfo
@@ -100,7 +100,6 @@ from .anonymous_chat_user_aggregate import AnonymousChatUserAggregate
 from .answer import Answer
 from .answer_answer_data import AnswerAnswerData
 from .answer_submit_request import AnswerSubmitRequest
-from .answer_submit_request_answer_data_type_0 import AnswerSubmitRequestAnswerDataType0
 from .answer_submit_response import AnswerSubmitResponse
 from .api_auth_token_exchange_response_400 import ApiAuthTokenExchangeResponse400
 from .arrow_billing_line import ArrowBillingLine
@@ -705,12 +704,12 @@ from .event_metadata_response_event_groups_additional_property_item import (
 )
 from .event_stats import EventStats
 from .event_subscription import EventSubscription
-from .event_subscription_observable_objects import EventSubscriptionObservableObjects
+from .event_subscription_observable_object import EventSubscriptionObservableObject
+from .event_subscription_observable_object_request import EventSubscriptionObservableObjectRequest
 from .event_subscription_queue import EventSubscriptionQueue
 from .event_subscription_queue_create_request import EventSubscriptionQueueCreateRequest
 from .event_subscription_queues_overview import EventSubscriptionQueuesOverview
 from .event_subscription_request import EventSubscriptionRequest
-from .event_subscription_request_observable_objects import EventSubscriptionRequestObservableObjects
 from .event_types_enum import EventTypesEnum
 from .events_event_groups_retrieve_response_200 import EventsEventGroupsRetrieveResponse200
 from .execute_action_error_response import ExecuteActionErrorResponse
@@ -1081,9 +1080,7 @@ from .merged_plugin_options_request_resource_role_map import MergedPluginOptions
 from .merged_plugin_options_resource_project_role_map import MergedPluginOptionsResourceProjectRoleMap
 from .merged_plugin_options_resource_role_map import MergedPluginOptionsResourceRoleMap
 from .merged_secret_options import MergedSecretOptions
-from .merged_secret_options_environ import MergedSecretOptionsEnviron
 from .merged_secret_options_request import MergedSecretOptionsRequest
-from .merged_secret_options_request_environ import MergedSecretOptionsRequestEnviron
 from .message import Message
 from .message_blocks_item import MessageBlocksItem
 from .message_blocks_item_key import MessageBlocksItemKey
@@ -1772,18 +1769,13 @@ from .patched_question_admin_request import PatchedQuestionAdminRequest
 from .patched_question_admin_request_guidance_answer_value_type_0 import (
     PatchedQuestionAdminRequestGuidanceAnswerValueType0,
 )
-from .patched_question_admin_request_review_answer_value_type_0 import PatchedQuestionAdminRequestReviewAnswerValueType0
 from .patched_question_dependency_request import PatchedQuestionDependencyRequest
-from .patched_question_dependency_request_required_answer_value import (
-    PatchedQuestionDependencyRequestRequiredAnswerValue,
-)
 from .patched_question_options_admin_request import PatchedQuestionOptionsAdminRequest
 from .patched_rancher_application_request import PatchedRancherApplicationRequest
 from .patched_rancher_application_request_answers import PatchedRancherApplicationRequestAnswers
 from .patched_rancher_catalog_request import PatchedRancherCatalogRequest
 from .patched_rancher_cluster_request import PatchedRancherClusterRequest
 from .patched_rancher_hpa_request import PatchedRancherHPARequest
-from .patched_rancher_hpa_request_metrics import PatchedRancherHPARequestMetrics
 from .patched_rancher_ingress_request import PatchedRancherIngressRequest
 from .patched_rancher_ingress_request_rules import PatchedRancherIngressRequestRules
 from .patched_rancher_service_request import PatchedRancherServiceRequest
@@ -1838,9 +1830,6 @@ from .patched_slurm_periodic_usage_policy_request_tres_billing_weights import (
 from .patched_software_catalog_request import PatchedSoftwareCatalogRequest
 from .patched_software_catalog_request_metadata import PatchedSoftwareCatalogRequestMetadata
 from .patched_software_package_request import PatchedSoftwarePackageRequest
-from .patched_software_package_request_categories import PatchedSoftwarePackageRequestCategories
-from .patched_software_package_request_licenses import PatchedSoftwarePackageRequestLicenses
-from .patched_software_package_request_maintainers import PatchedSoftwarePackageRequestMaintainers
 from .patched_system_prompt_request import PatchedSystemPromptRequest
 from .patched_tag_request import PatchedTagRequest
 from .patched_template_request import PatchedTemplateRequest
@@ -2121,8 +2110,6 @@ from .question_admin import QuestionAdmin
 from .question_admin_guidance_answer_value_type_0 import QuestionAdminGuidanceAnswerValueType0
 from .question_admin_request import QuestionAdminRequest
 from .question_admin_request_guidance_answer_value_type_0 import QuestionAdminRequestGuidanceAnswerValueType0
-from .question_admin_request_review_answer_value_type_0 import QuestionAdminRequestReviewAnswerValueType0
-from .question_admin_review_answer_value_type_0 import QuestionAdminReviewAnswerValueType0
 from .question_answer import QuestionAnswer
 from .question_answer_project_answers_item import QuestionAnswerProjectAnswersItem
 from .question_answer_question_options_item import QuestionAnswerQuestionOptionsItem
@@ -2131,13 +2118,10 @@ from .question_condition_required_value import QuestionConditionRequiredValue
 from .question_dependency import QuestionDependency
 from .question_dependency_info import QuestionDependencyInfo
 from .question_dependency_request import QuestionDependencyRequest
-from .question_dependency_request_required_answer_value import QuestionDependencyRequestRequiredAnswerValue
-from .question_dependency_required_answer_value import QuestionDependencyRequiredAnswerValue
 from .question_guidance_answer_value_type_0 import QuestionGuidanceAnswerValueType0
 from .question_options import QuestionOptions
 from .question_options_admin import QuestionOptionsAdmin
 from .question_options_admin_request import QuestionOptionsAdminRequest
-from .question_review_answer_value_type_0 import QuestionReviewAnswerValueType0
 from .question_type_enum import QuestionTypeEnum
 from .question_with_answer import QuestionWithAnswer
 from .question_with_answer_allowed_file_types import QuestionWithAnswerAllowedFileTypes
@@ -2145,7 +2129,6 @@ from .question_with_answer_allowed_mime_types import QuestionWithAnswerAllowedMi
 from .question_with_answer_reviewer import QuestionWithAnswerReviewer
 from .question_with_answer_reviewer_allowed_file_types import QuestionWithAnswerReviewerAllowedFileTypes
 from .question_with_answer_reviewer_allowed_mime_types import QuestionWithAnswerReviewerAllowedMimeTypes
-from .question_with_answer_reviewer_review_answer_value_type_0 import QuestionWithAnswerReviewerReviewAnswerValueType0
 from .quota import Quota
 from .quota_request import QuotaRequest
 from .quotas_update_request import QuotasUpdateRequest
@@ -2181,9 +2164,11 @@ from .rancher_create_management_security_group_response import RancherCreateMana
 from .rancher_create_node import RancherCreateNode
 from .rancher_create_node_request import RancherCreateNodeRequest
 from .rancher_hpa import RancherHPA
-from .rancher_hpa_metrics import RancherHPAMetrics
+from .rancher_hpa_metric import RancherHPAMetric
+from .rancher_hpa_metric_request import RancherHPAMetricRequest
+from .rancher_hpa_metric_target import RancherHPAMetricTarget
+from .rancher_hpa_metric_target_request import RancherHPAMetricTargetRequest
 from .rancher_hpa_request import RancherHPARequest
-from .rancher_hpa_request_metrics import RancherHPARequestMetrics
 from .rancher_import_yaml_request import RancherImportYamlRequest
 from .rancher_ingress import RancherIngress
 from .rancher_ingress_field_enum import RancherIngressFieldEnum
@@ -2431,11 +2416,11 @@ from .reviewer_publication_request_external_ids import ReviewerPublicationReques
 from .reviewer_stats import ReviewerStats
 from .reviewer_suggestion import ReviewerSuggestion
 from .reviewer_suggestion_item import ReviewerSuggestionItem
-from .reviewer_suggestion_matched_keywords import ReviewerSuggestionMatchedKeywords
 from .reviewer_suggestion_o_enum import ReviewerSuggestionOEnum
 from .reviewer_suggestion_request import ReviewerSuggestionRequest
 from .reviewer_suggestion_status_enum import ReviewerSuggestionStatusEnum
-from .reviewer_suggestion_top_matching_proposals import ReviewerSuggestionTopMatchingProposals
+from .reviewer_suggestion_top_matching_proposal import ReviewerSuggestionTopMatchingProposal
+from .reviewer_suggestion_top_matching_proposal_request import ReviewerSuggestionTopMatchingProposalRequest
 from .rich_text_toolbar_level_enum import RichTextToolbarLevelEnum
 from .rmq_client_properties import RmqClientProperties
 from .rmq_enriched_connection import RmqEnrichedConnection
@@ -2508,6 +2493,8 @@ from .screenshot_request_form import ScreenshotRequestForm
 from .screenshot_request_multipart import ScreenshotRequestMultipart
 from .script_async_dry_run_response import ScriptAsyncDryRunResponse
 from .script_dry_run_response import ScriptDryRunResponse
+from .script_env_var import ScriptEnvVar
+from .script_env_var_request import ScriptEnvVarRequest
 from .scriptrunmode_enum import SCRIPTRUNMODEEnum
 from .secret import Secret
 from .section import Section
@@ -2603,7 +2590,6 @@ from .slurm_policy_evaluate_resource_new_state import SlurmPolicyEvaluateResourc
 from .slurm_policy_evaluate_resource_previous_state import SlurmPolicyEvaluateResourcePreviousState
 from .slurm_policy_evaluate_response import SlurmPolicyEvaluateResponse
 from .slurm_policy_evaluation_log import SlurmPolicyEvaluationLog
-from .slurm_policy_evaluation_log_actions_taken import SlurmPolicyEvaluationLogActionsTaken
 from .slurm_policy_evaluation_log_new_state import SlurmPolicyEvaluationLogNewState
 from .slurm_policy_evaluation_log_previous_state import SlurmPolicyEvaluationLogPreviousState
 from .slurm_policy_evaluation_log_site_agent_response_type_0 import SlurmPolicyEvaluationLogSiteAgentResponseType0
@@ -2622,14 +2608,8 @@ from .software_catalog_request_metadata import SoftwareCatalogRequestMetadata
 from .software_catalog_uuid import SoftwareCatalogUUID
 from .software_module import SoftwareModule
 from .software_package import SoftwarePackage
-from .software_package_categories import SoftwarePackageCategories
-from .software_package_licenses import SoftwarePackageLicenses
-from .software_package_maintainers import SoftwarePackageMaintainers
 from .software_package_o_enum import SoftwarePackageOEnum
 from .software_package_request import SoftwarePackageRequest
-from .software_package_request_categories import SoftwarePackageRequestCategories
-from .software_package_request_licenses import SoftwarePackageRequestLicenses
-from .software_package_request_maintainers import SoftwarePackageRequestMaintainers
 from .software_target import SoftwareTarget
 from .software_target_gpu_architectures import SoftwareTargetGpuArchitectures
 from .software_target_metadata import SoftwareTargetMetadata
@@ -2909,13 +2889,13 @@ __all__ = (
     "AgentConnectionInfo",
     "AgentConnectionStatsResponse",
     "AgentConnectionSummary",
+    "AgentDependency",
+    "AgentDependencyRequest",
     "AgentEventSubscriptionCreateRequest",
     "AgentEventSubscriptionWithConnection",
     "AgentEventSubscriptionWithConnectionObservableObjects",
     "AgentIdentity",
-    "AgentIdentityDependencies",
     "AgentIdentityRequest",
-    "AgentIdentityRequestDependencies",
     "AgentProcessor",
     "AgentProcessorCreateRequest",
     "AgentQueueInfo",
@@ -2971,7 +2951,6 @@ __all__ = (
     "Answer",
     "AnswerAnswerData",
     "AnswerSubmitRequest",
-    "AnswerSubmitRequestAnswerDataType0",
     "AnswerSubmitResponse",
     "ApiAuthTokenExchangeResponse400",
     "ArrowBillingLine",
@@ -3555,12 +3534,12 @@ __all__ = (
     "EventsEventGroupsRetrieveResponse200",
     "EventStats",
     "EventSubscription",
-    "EventSubscriptionObservableObjects",
+    "EventSubscriptionObservableObject",
+    "EventSubscriptionObservableObjectRequest",
     "EventSubscriptionQueue",
     "EventSubscriptionQueueCreateRequest",
     "EventSubscriptionQueuesOverview",
     "EventSubscriptionRequest",
-    "EventSubscriptionRequestObservableObjects",
     "EventTypesEnum",
     "ExecuteActionErrorResponse",
     "ExecuteActionRequest",
@@ -3914,9 +3893,7 @@ __all__ = (
     "MergedPluginOptionsResourceProjectRoleMap",
     "MergedPluginOptionsResourceRoleMap",
     "MergedSecretOptions",
-    "MergedSecretOptionsEnviron",
     "MergedSecretOptionsRequest",
-    "MergedSecretOptionsRequestEnviron",
     "Message",
     "MessageBlocksItem",
     "MessageBlocksItemKey",
@@ -4551,16 +4528,13 @@ __all__ = (
     "PatchedProviderPlanDetailsRequest",
     "PatchedQuestionAdminRequest",
     "PatchedQuestionAdminRequestGuidanceAnswerValueType0",
-    "PatchedQuestionAdminRequestReviewAnswerValueType0",
     "PatchedQuestionDependencyRequest",
-    "PatchedQuestionDependencyRequestRequiredAnswerValue",
     "PatchedQuestionOptionsAdminRequest",
     "PatchedRancherApplicationRequest",
     "PatchedRancherApplicationRequestAnswers",
     "PatchedRancherCatalogRequest",
     "PatchedRancherClusterRequest",
     "PatchedRancherHPARequest",
-    "PatchedRancherHPARequestMetrics",
     "PatchedRancherIngressRequest",
     "PatchedRancherIngressRequestRules",
     "PatchedRancherServiceRequest",
@@ -4609,9 +4583,6 @@ __all__ = (
     "PatchedSoftwareCatalogRequest",
     "PatchedSoftwareCatalogRequestMetadata",
     "PatchedSoftwarePackageRequest",
-    "PatchedSoftwarePackageRequestCategories",
-    "PatchedSoftwarePackageRequestLicenses",
-    "PatchedSoftwarePackageRequestMaintainers",
     "PatchedSystemPromptRequest",
     "PatchedTagRequest",
     "PatchedTemplateRequest",
@@ -4876,8 +4847,6 @@ __all__ = (
     "QuestionAdminGuidanceAnswerValueType0",
     "QuestionAdminRequest",
     "QuestionAdminRequestGuidanceAnswerValueType0",
-    "QuestionAdminRequestReviewAnswerValueType0",
-    "QuestionAdminReviewAnswerValueType0",
     "QuestionAnswer",
     "QuestionAnswerProjectAnswersItem",
     "QuestionAnswerQuestionOptionsItem",
@@ -4886,13 +4855,10 @@ __all__ = (
     "QuestionDependency",
     "QuestionDependencyInfo",
     "QuestionDependencyRequest",
-    "QuestionDependencyRequestRequiredAnswerValue",
-    "QuestionDependencyRequiredAnswerValue",
     "QuestionGuidanceAnswerValueType0",
     "QuestionOptions",
     "QuestionOptionsAdmin",
     "QuestionOptionsAdminRequest",
-    "QuestionReviewAnswerValueType0",
     "QuestionTypeEnum",
     "QuestionWithAnswer",
     "QuestionWithAnswerAllowedFileTypes",
@@ -4900,7 +4866,6 @@ __all__ = (
     "QuestionWithAnswerReviewer",
     "QuestionWithAnswerReviewerAllowedFileTypes",
     "QuestionWithAnswerReviewerAllowedMimeTypes",
-    "QuestionWithAnswerReviewerReviewAnswerValueType0",
     "Quota",
     "QuotaRequest",
     "QuotasUpdateRequest",
@@ -4932,9 +4897,11 @@ __all__ = (
     "RancherCreateNode",
     "RancherCreateNodeRequest",
     "RancherHPA",
-    "RancherHPAMetrics",
+    "RancherHPAMetric",
+    "RancherHPAMetricRequest",
+    "RancherHPAMetricTarget",
+    "RancherHPAMetricTargetRequest",
     "RancherHPARequest",
-    "RancherHPARequestMetrics",
     "RancherImportYamlRequest",
     "RancherIngress",
     "RancherIngressFieldEnum",
@@ -5169,11 +5136,11 @@ __all__ = (
     "ReviewerStats",
     "ReviewerSuggestion",
     "ReviewerSuggestionItem",
-    "ReviewerSuggestionMatchedKeywords",
     "ReviewerSuggestionOEnum",
     "ReviewerSuggestionRequest",
     "ReviewerSuggestionStatusEnum",
-    "ReviewerSuggestionTopMatchingProposals",
+    "ReviewerSuggestionTopMatchingProposal",
+    "ReviewerSuggestionTopMatchingProposalRequest",
     "ReviewProgressStat",
     "ReviewStrategyEnum",
     "ReviewSubmitRequest",
@@ -5249,6 +5216,8 @@ __all__ = (
     "ScreenshotRequestMultipart",
     "ScriptAsyncDryRunResponse",
     "ScriptDryRunResponse",
+    "ScriptEnvVar",
+    "ScriptEnvVarRequest",
     "SCRIPTRUNMODEEnum",
     "Secret",
     "Section",
@@ -5342,7 +5311,6 @@ __all__ = (
     "SlurmPolicyEvaluateResourcePreviousState",
     "SlurmPolicyEvaluateResponse",
     "SlurmPolicyEvaluationLog",
-    "SlurmPolicyEvaluationLogActionsTaken",
     "SlurmPolicyEvaluationLogNewState",
     "SlurmPolicyEvaluationLogPreviousState",
     "SlurmPolicyEvaluationLogSiteAgentResponseType0",
@@ -5361,14 +5329,8 @@ __all__ = (
     "SoftwareCatalogUUID",
     "SoftwareModule",
     "SoftwarePackage",
-    "SoftwarePackageCategories",
-    "SoftwarePackageLicenses",
-    "SoftwarePackageMaintainers",
     "SoftwarePackageOEnum",
     "SoftwarePackageRequest",
-    "SoftwarePackageRequestCategories",
-    "SoftwarePackageRequestLicenses",
-    "SoftwarePackageRequestMaintainers",
     "SoftwareTarget",
     "SoftwareTargetGpuArchitectures",
     "SoftwareTargetMetadata",

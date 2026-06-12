@@ -61,10 +61,8 @@ class RancherCluster:
             cluster Default: False.
         management_security_group (Union[Unset, str]):
         public_ips (Union[Unset, list['RancherNestedPublicIP']]):
-        capacity (Union[Unset, RancherClusterCapacity]): Cluster capacity in the format {'cpu': '10', 'ram':
-            '49125240Ki', 'pods': '330'}
-        requested (Union[Unset, RancherClusterRequested]): Cluster requested resources in the format {'cpu': '1450m',
-            'memory': '884Mi', 'pods': '13'}
+        capacity (Union[Unset, RancherClusterCapacity]):
+        requested (Union[Unset, RancherClusterRequested]):
         kubernetes_version (Union[Unset, str]): Kubernetes version used in the cluster.
         router_ips (Union[Unset, list[Any]]):
         marketplace_offering_uuid (Union[None, Unset, str]):

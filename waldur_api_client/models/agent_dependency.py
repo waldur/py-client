@@ -4,28 +4,51 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="QuestionDependencyRequiredAnswerValue")
+T = TypeVar("T", bound="AgentDependency")
 
 
 @_attrs_define
-class QuestionDependencyRequiredAnswerValue:
-    """The answer value(s) that make this question visible"""
+class AgentDependency:
+    """
+    Attributes:
+        package (str):
+        version (str):
+    """
 
+    package: str
+    version: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        package = self.package
+
+        version = self.version
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "package": package,
+                "version": version,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        question_dependency_required_answer_value = cls()
+        package = d.pop("package")
 
-        question_dependency_required_answer_value.additional_properties = d
-        return question_dependency_required_answer_value
+        version = d.pop("version")
+
+        agent_dependency = cls(
+            package=package,
+            version=version,
+        )
+
+        agent_dependency.additional_properties = d
+        return agent_dependency
 
     @property
     def additional_keys(self) -> list[str]:

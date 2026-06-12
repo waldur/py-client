@@ -1,17 +1,11 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.checklist_operators import ChecklistOperators
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.patched_question_dependency_request_required_answer_value import (
-        PatchedQuestionDependencyRequestRequiredAnswerValue,
-    )
-
 
 T = TypeVar("T", bound="PatchedQuestionDependencyRequest")
 
@@ -22,14 +16,13 @@ class PatchedQuestionDependencyRequest:
     Attributes:
         question (Union[Unset, str]):
         depends_on_question (Union[Unset, str]):
-        required_answer_value (Union[Unset, PatchedQuestionDependencyRequestRequiredAnswerValue]): The answer value(s)
-            that make this question visible
+        required_answer_value (Union[Unset, Any]):
         operator (Union[Unset, ChecklistOperators]):
     """
 
     question: Union[Unset, str] = UNSET
     depends_on_question: Union[Unset, str] = UNSET
-    required_answer_value: Union[Unset, "PatchedQuestionDependencyRequestRequiredAnswerValue"] = UNSET
+    required_answer_value: Union[Unset, Any] = UNSET
     operator: Union[Unset, ChecklistOperators] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -38,9 +31,7 @@ class PatchedQuestionDependencyRequest:
 
         depends_on_question = self.depends_on_question
 
-        required_answer_value: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.required_answer_value, Unset):
-            required_answer_value = self.required_answer_value.to_dict()
+        required_answer_value = self.required_answer_value
 
         operator: Union[Unset, str] = UNSET
         if not isinstance(self.operator, Unset):
@@ -62,23 +53,12 @@ class PatchedQuestionDependencyRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.patched_question_dependency_request_required_answer_value import (
-            PatchedQuestionDependencyRequestRequiredAnswerValue,
-        )
-
         d = dict(src_dict)
         question = d.pop("question", UNSET)
 
         depends_on_question = d.pop("depends_on_question", UNSET)
 
-        _required_answer_value = d.pop("required_answer_value", UNSET)
-        required_answer_value: Union[Unset, PatchedQuestionDependencyRequestRequiredAnswerValue]
-        if isinstance(_required_answer_value, Unset):
-            required_answer_value = UNSET
-        else:
-            required_answer_value = PatchedQuestionDependencyRequestRequiredAnswerValue.from_dict(
-                _required_answer_value
-            )
+        required_answer_value = d.pop("required_answer_value", UNSET)
 
         _operator = d.pop("operator", UNSET)
         operator: Union[Unset, ChecklistOperators]

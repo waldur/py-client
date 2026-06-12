@@ -7,7 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.rancher_hpa_request_metrics import RancherHPARequestMetrics
+    from ..models.rancher_hpa_metric_request import RancherHPAMetricRequest
 
 
 T = TypeVar("T", bound="RancherHPARequest")
@@ -18,7 +18,7 @@ class RancherHPARequest:
     """
     Attributes:
         name (str):
-        metrics (RancherHPARequestMetrics):
+        metrics (list['RancherHPAMetricRequest']):
         description (Union[Unset, str]):
         workload (Union[None, Unset, str]):
         min_replicas (Union[Unset, int]):
@@ -26,7 +26,7 @@ class RancherHPARequest:
     """
 
     name: str
-    metrics: "RancherHPARequestMetrics"
+    metrics: list["RancherHPAMetricRequest"]
     description: Union[Unset, str] = UNSET
     workload: Union[None, Unset, str] = UNSET
     min_replicas: Union[Unset, int] = UNSET
@@ -36,7 +36,10 @@ class RancherHPARequest:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        metrics = self.metrics.to_dict()
+        metrics = []
+        for metrics_item_data in self.metrics:
+            metrics_item = metrics_item_data.to_dict()
+            metrics.append(metrics_item)
 
         description = self.description
 
@@ -71,12 +74,17 @@ class RancherHPARequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.rancher_hpa_request_metrics import RancherHPARequestMetrics
+        from ..models.rancher_hpa_metric_request import RancherHPAMetricRequest
 
         d = dict(src_dict)
         name = d.pop("name")
 
-        metrics = RancherHPARequestMetrics.from_dict(d.pop("metrics"))
+        metrics = []
+        _metrics = d.pop("metrics")
+        for metrics_item_data in _metrics:
+            metrics_item = RancherHPAMetricRequest.from_dict(metrics_item_data)
+
+            metrics.append(metrics_item)
 
         description = d.pop("description", UNSET)
 

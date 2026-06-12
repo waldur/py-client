@@ -1,36 +1,44 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
-from uuid import UUID
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="AnswerSubmitRequest")
+if TYPE_CHECKING:
+    from ..models.rancher_hpa_metric_target import RancherHPAMetricTarget
+
+
+T = TypeVar("T", bound="RancherHPAMetric")
 
 
 @_attrs_define
-class AnswerSubmitRequest:
+class RancherHPAMetric:
     """
     Attributes:
-        question_uuid (UUID):
-        answer_data (Any):
+        name (str):
+        type_ (str):
+        target (RancherHPAMetricTarget):
     """
 
-    question_uuid: UUID
-    answer_data: Any
+    name: str
+    type_: str
+    target: "RancherHPAMetricTarget"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        question_uuid = str(self.question_uuid)
+        name = self.name
 
-        answer_data = self.answer_data
+        type_ = self.type_
+
+        target = self.target.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "question_uuid": question_uuid,
-                "answer_data": answer_data,
+                "name": name,
+                "type": type_,
+                "target": target,
             }
         )
 
@@ -38,18 +46,23 @@ class AnswerSubmitRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.rancher_hpa_metric_target import RancherHPAMetricTarget
+
         d = dict(src_dict)
-        question_uuid = UUID(d.pop("question_uuid"))
+        name = d.pop("name")
 
-        answer_data = d.pop("answer_data")
+        type_ = d.pop("type")
 
-        answer_submit_request = cls(
-            question_uuid=question_uuid,
-            answer_data=answer_data,
+        target = RancherHPAMetricTarget.from_dict(d.pop("target"))
+
+        rancher_hpa_metric = cls(
+            name=name,
+            type_=type_,
+            target=target,
         )
 
-        answer_submit_request.additional_properties = d
-        return answer_submit_request
+        rancher_hpa_metric.additional_properties = d
+        return rancher_hpa_metric
 
     @property
     def additional_keys(self) -> list[str]:

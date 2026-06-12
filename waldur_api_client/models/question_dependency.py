@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -7,10 +7,6 @@ from attrs import field as _attrs_field
 
 from ..models.checklist_operators import ChecklistOperators
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.question_dependency_required_answer_value import QuestionDependencyRequiredAnswerValue
-
 
 T = TypeVar("T", bound="QuestionDependency")
 
@@ -25,8 +21,7 @@ class QuestionDependency:
         question_name (str):
         depends_on_question (str):
         depends_on_question_name (str):
-        required_answer_value (QuestionDependencyRequiredAnswerValue): The answer value(s) that make this question
-            visible
+        required_answer_value (Union[Unset, Any]):
         operator (Union[Unset, ChecklistOperators]):
     """
 
@@ -36,7 +31,7 @@ class QuestionDependency:
     question_name: str
     depends_on_question: str
     depends_on_question_name: str
-    required_answer_value: "QuestionDependencyRequiredAnswerValue"
+    required_answer_value: Union[Unset, Any] = UNSET
     operator: Union[Unset, ChecklistOperators] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -53,7 +48,7 @@ class QuestionDependency:
 
         depends_on_question_name = self.depends_on_question_name
 
-        required_answer_value = self.required_answer_value.to_dict()
+        required_answer_value = self.required_answer_value
 
         operator: Union[Unset, str] = UNSET
         if not isinstance(self.operator, Unset):
@@ -69,9 +64,10 @@ class QuestionDependency:
                 "question_name": question_name,
                 "depends_on_question": depends_on_question,
                 "depends_on_question_name": depends_on_question_name,
-                "required_answer_value": required_answer_value,
             }
         )
+        if required_answer_value is not UNSET:
+            field_dict["required_answer_value"] = required_answer_value
         if operator is not UNSET:
             field_dict["operator"] = operator
 
@@ -79,8 +75,6 @@ class QuestionDependency:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.question_dependency_required_answer_value import QuestionDependencyRequiredAnswerValue
-
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -94,7 +88,7 @@ class QuestionDependency:
 
         depends_on_question_name = d.pop("depends_on_question_name")
 
-        required_answer_value = QuestionDependencyRequiredAnswerValue.from_dict(d.pop("required_answer_value"))
+        required_answer_value = d.pop("required_answer_value", UNSET)
 
         _operator = d.pop("operator", UNSET)
         operator: Union[Unset, ChecklistOperators]

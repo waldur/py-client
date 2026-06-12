@@ -4,28 +4,51 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ReviewerSuggestionMatchedKeywords")
+T = TypeVar("T", bound="AgentDependencyRequest")
 
 
 @_attrs_define
-class ReviewerSuggestionMatchedKeywords:
-    """Keywords from reviewer's expertise that matched the source text"""
+class AgentDependencyRequest:
+    """
+    Attributes:
+        package (str):
+        version (str):
+    """
 
+    package: str
+    version: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        package = self.package
+
+        version = self.version
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "package": package,
+                "version": version,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        reviewer_suggestion_matched_keywords = cls()
+        package = d.pop("package")
 
-        reviewer_suggestion_matched_keywords.additional_properties = d
-        return reviewer_suggestion_matched_keywords
+        version = d.pop("version")
+
+        agent_dependency_request = cls(
+            package=package,
+            version=version,
+        )
+
+        agent_dependency_request.additional_properties = d
+        return agent_dependency_request
 
     @property
     def additional_keys(self) -> list[str]:

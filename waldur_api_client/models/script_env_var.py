@@ -1,31 +1,55 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="PatchedQuestionAdminRequestReviewAnswerValueType0")
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="ScriptEnvVar")
 
 
 @_attrs_define
-class PatchedQuestionAdminRequestReviewAnswerValueType0:
-    """Answer value that trigger review."""
+class ScriptEnvVar:
+    """
+    Attributes:
+        name (Union[Unset, str]):
+        value (Union[Unset, str]):
+    """
 
+    name: Union[Unset, str] = UNSET
+    value: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        name = self.name
+
+        value = self.value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if name is not UNSET:
+            field_dict["name"] = name
+        if value is not UNSET:
+            field_dict["value"] = value
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        patched_question_admin_request_review_answer_value_type_0 = cls()
+        name = d.pop("name", UNSET)
 
-        patched_question_admin_request_review_answer_value_type_0.additional_properties = d
-        return patched_question_admin_request_review_answer_value_type_0
+        value = d.pop("value", UNSET)
+
+        script_env_var = cls(
+            name=name,
+            value=value,
+        )
+
+        script_env_var.additional_properties = d
+        return script_env_var
 
     @property
     def additional_keys(self) -> list[str]:
