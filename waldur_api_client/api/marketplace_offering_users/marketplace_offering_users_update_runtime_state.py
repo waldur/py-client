@@ -58,7 +58,8 @@ def sync_detailed(
      Allows a service provider to set the operational/access state of an offering user. Unlike the
     lifecycle state, this can be updated at any time (except when the account is Deleted). Use this to
     signal access blockers such as pending Terms of Use acceptance or pending account linking (e.g.
-    MyAccessID).
+    MyAccessID). Optionally include service_provider_comment and service_provider_comment_url to explain
+    the change to the user in the same request.
 
     Args:
         uuid (UUID):
@@ -95,7 +96,8 @@ async def asyncio_detailed(
      Allows a service provider to set the operational/access state of an offering user. Unlike the
     lifecycle state, this can be updated at any time (except when the account is Deleted). Use this to
     signal access blockers such as pending Terms of Use acceptance or pending account linking (e.g.
-    MyAccessID).
+    MyAccessID). Optionally include service_provider_comment and service_provider_comment_url to explain
+    the change to the user in the same request.
 
     Args:
         uuid (UUID):
