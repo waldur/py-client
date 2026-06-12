@@ -1,12 +1,16 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.system_log_source_enum import SystemLogSourceEnum
+
+if TYPE_CHECKING:
+    from ..models.system_log_context import SystemLogContext
+
 
 T = TypeVar("T", bound="SystemLog")
 
@@ -23,7 +27,7 @@ class SystemLog:
         level_number (int):
         logger_name (str):
         message (str):
-        context (Any):
+        context (SystemLogContext):
     """
 
     id: int
@@ -34,7 +38,7 @@ class SystemLog:
     level_number: int
     logger_name: str
     message: str
-    context: Any
+    context: "SystemLogContext"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,7 +58,7 @@ class SystemLog:
 
         message = self.message
 
-        context = self.context
+        context = self.context.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -76,6 +80,8 @@ class SystemLog:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.system_log_context import SystemLogContext
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -93,7 +99,7 @@ class SystemLog:
 
         message = d.pop("message")
 
-        context = d.pop("context")
+        context = SystemLogContext.from_dict(d.pop("context"))
 
         system_log = cls(
             id=id,

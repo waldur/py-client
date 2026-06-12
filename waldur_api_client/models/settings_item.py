@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.settings_item_default import SettingsItemDefault
     from ..models.settings_item_option import SettingsItemOption
 
 
@@ -20,14 +21,14 @@ class SettingsItem:
         key (str):
         description (str):
         type_ (str):
-        default (Union[Unset, Any]):
+        default (Union[Unset, SettingsItemDefault]):
         options (Union[Unset, list['SettingsItemOption']]):
     """
 
     key: str
     description: str
     type_: str
-    default: Union[Unset, Any] = UNSET
+    default: Union[Unset, "SettingsItemDefault"] = UNSET
     options: Union[Unset, list["SettingsItemOption"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -38,7 +39,9 @@ class SettingsItem:
 
         type_ = self.type_
 
-        default = self.default
+        default: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.default, Unset):
+            default = self.default.to_dict()
 
         options: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.options, Unset):
@@ -65,6 +68,7 @@ class SettingsItem:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.settings_item_default import SettingsItemDefault
         from ..models.settings_item_option import SettingsItemOption
 
         d = dict(src_dict)
@@ -74,7 +78,12 @@ class SettingsItem:
 
         type_ = d.pop("type")
 
-        default = d.pop("default", UNSET)
+        _default = d.pop("default", UNSET)
+        default: Union[Unset, SettingsItemDefault]
+        if isinstance(_default, Unset):
+            default = UNSET
+        else:
+            default = SettingsItemDefault.from_dict(_default)
 
         options = []
         _options = d.pop("options", UNSET)

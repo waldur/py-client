@@ -1,11 +1,17 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.group_invitation_update_user_affiliations import GroupInvitationUpdateUserAffiliations
+    from ..models.group_invitation_update_user_email_patterns import GroupInvitationUpdateUserEmailPatterns
+    from ..models.group_invitation_update_user_identity_sources import GroupInvitationUpdateUserIdentitySources
+
 
 T = TypeVar("T", bound="GroupInvitationUpdate")
 
@@ -25,9 +31,10 @@ class GroupInvitationUpdate:
         project_name_template (Union[None, Unset, str]): Template for project name. Supports {username}, {email},
             {full_name} variables
         project_role (Union[None, UUID, Unset]): UUID of the project role to grant if auto_create_project is enabled
-        user_affiliations (Union[Unset, Any]):
-        user_email_patterns (Union[Unset, Any]):
-        user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
+        user_affiliations (Union[Unset, GroupInvitationUpdateUserAffiliations]):
+        user_email_patterns (Union[Unset, GroupInvitationUpdateUserEmailPatterns]):
+        user_identity_sources (Union[Unset, GroupInvitationUpdateUserIdentitySources]): List of allowed identity sources
+            (identity providers).
         custom_text (Union[Unset, str]): Custom description text displayed to users viewing this invitation.
         allow_multiple_requests (Union[Unset, bool]): Allow users to submit multiple permission requests for this
             invitation.
@@ -42,9 +49,9 @@ class GroupInvitationUpdate:
     auto_approve: Union[Unset, bool] = UNSET
     project_name_template: Union[None, Unset, str] = UNSET
     project_role: Union[None, UUID, Unset] = UNSET
-    user_affiliations: Union[Unset, Any] = UNSET
-    user_email_patterns: Union[Unset, Any] = UNSET
-    user_identity_sources: Union[Unset, Any] = UNSET
+    user_affiliations: Union[Unset, "GroupInvitationUpdateUserAffiliations"] = UNSET
+    user_email_patterns: Union[Unset, "GroupInvitationUpdateUserEmailPatterns"] = UNSET
+    user_identity_sources: Union[Unset, "GroupInvitationUpdateUserIdentitySources"] = UNSET
     custom_text: Union[Unset, str] = UNSET
     allow_multiple_requests: Union[Unset, bool] = UNSET
     allow_custom_project_details: Union[Unset, bool] = UNSET
@@ -77,11 +84,17 @@ class GroupInvitationUpdate:
         else:
             project_role = self.project_role
 
-        user_affiliations = self.user_affiliations
+        user_affiliations: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_affiliations, Unset):
+            user_affiliations = self.user_affiliations.to_dict()
 
-        user_email_patterns = self.user_email_patterns
+        user_email_patterns: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_email_patterns, Unset):
+            user_email_patterns = self.user_email_patterns.to_dict()
 
-        user_identity_sources = self.user_identity_sources
+        user_identity_sources: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_identity_sources, Unset):
+            user_identity_sources = self.user_identity_sources.to_dict()
 
         custom_text = self.custom_text
 
@@ -123,6 +136,10 @@ class GroupInvitationUpdate:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.group_invitation_update_user_affiliations import GroupInvitationUpdateUserAffiliations
+        from ..models.group_invitation_update_user_email_patterns import GroupInvitationUpdateUserEmailPatterns
+        from ..models.group_invitation_update_user_identity_sources import GroupInvitationUpdateUserIdentitySources
+
         d = dict(src_dict)
         is_public = d.pop("is_public", UNSET)
 
@@ -165,11 +182,26 @@ class GroupInvitationUpdate:
 
         project_role = _parse_project_role(d.pop("project_role", UNSET))
 
-        user_affiliations = d.pop("user_affiliations", UNSET)
+        _user_affiliations = d.pop("user_affiliations", UNSET)
+        user_affiliations: Union[Unset, GroupInvitationUpdateUserAffiliations]
+        if isinstance(_user_affiliations, Unset):
+            user_affiliations = UNSET
+        else:
+            user_affiliations = GroupInvitationUpdateUserAffiliations.from_dict(_user_affiliations)
 
-        user_email_patterns = d.pop("user_email_patterns", UNSET)
+        _user_email_patterns = d.pop("user_email_patterns", UNSET)
+        user_email_patterns: Union[Unset, GroupInvitationUpdateUserEmailPatterns]
+        if isinstance(_user_email_patterns, Unset):
+            user_email_patterns = UNSET
+        else:
+            user_email_patterns = GroupInvitationUpdateUserEmailPatterns.from_dict(_user_email_patterns)
 
-        user_identity_sources = d.pop("user_identity_sources", UNSET)
+        _user_identity_sources = d.pop("user_identity_sources", UNSET)
+        user_identity_sources: Union[Unset, GroupInvitationUpdateUserIdentitySources]
+        if isinstance(_user_identity_sources, Unset):
+            user_identity_sources = UNSET
+        else:
+            user_identity_sources = GroupInvitationUpdateUserIdentitySources.from_dict(_user_identity_sources)
 
         custom_text = d.pop("custom_text", UNSET)
 

@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.robot_account_request_keys import RobotAccountRequestKeys
+
 
 T = TypeVar("T", bound="RobotAccountRequest")
 
@@ -18,7 +22,7 @@ class RobotAccountRequest:
         username (Union[Unset, str]):
         description (Union[Unset, str]):
         users (Union[Unset, list[str]]): Users who have access to this robot account.
-        keys (Union[Unset, Any]):
+        keys (Union[Unset, RobotAccountRequestKeys]):
         responsible_user (Union[None, Unset, str]):
     """
 
@@ -27,7 +31,7 @@ class RobotAccountRequest:
     username: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     users: Union[Unset, list[str]] = UNSET
-    keys: Union[Unset, Any] = UNSET
+    keys: Union[Unset, "RobotAccountRequestKeys"] = UNSET
     responsible_user: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -44,7 +48,9 @@ class RobotAccountRequest:
         if not isinstance(self.users, Unset):
             users = self.users
 
-        keys = self.keys
+        keys: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.keys, Unset):
+            keys = self.keys.to_dict()
 
         responsible_user: Union[None, Unset, str]
         if isinstance(self.responsible_user, Unset):
@@ -75,6 +81,8 @@ class RobotAccountRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.robot_account_request_keys import RobotAccountRequestKeys
+
         d = dict(src_dict)
         resource = d.pop("resource")
 
@@ -86,7 +94,12 @@ class RobotAccountRequest:
 
         users = cast(list[str], d.pop("users", UNSET))
 
-        keys = d.pop("keys", UNSET)
+        _keys = d.pop("keys", UNSET)
+        keys: Union[Unset, RobotAccountRequestKeys]
+        if isinstance(_keys, Unset):
+            keys = UNSET
+        else:
+            keys = RobotAccountRequestKeys.from_dict(_keys)
 
         def _parse_responsible_user(data: object) -> Union[None, Unset, str]:
             if data is None:

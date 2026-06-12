@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from ..models.rancher_service_marketplace_offering_plugin_options_type_0 import (
         RancherServiceMarketplaceOfferingPluginOptionsType0,
     )
+    from ..models.rancher_service_selector_type_0 import RancherServiceSelectorType0
 
 
 T = TypeVar("T", bound="RancherService")
@@ -53,7 +54,7 @@ class RancherService:
         namespace (Union[Unset, str]):
         namespace_name (Union[Unset, str]):
         cluster_ip (Union[None, Unset, str]): An IPv4 or IPv6 address.
-        selector (Union[Unset, Any]):
+        selector (Union['RancherServiceSelectorType0', None, Unset]):
         target_workloads (Union[Unset, list['RancherNestedWorkload']]):
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
@@ -97,7 +98,7 @@ class RancherService:
     namespace: Union[Unset, str] = UNSET
     namespace_name: Union[Unset, str] = UNSET
     cluster_ip: Union[None, Unset, str] = UNSET
-    selector: Union[Unset, Any] = UNSET
+    selector: Union["RancherServiceSelectorType0", None, Unset] = UNSET
     target_workloads: Union[Unset, list["RancherNestedWorkload"]] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
@@ -118,6 +119,7 @@ class RancherService:
         from ..models.rancher_service_marketplace_offering_plugin_options_type_0 import (
             RancherServiceMarketplaceOfferingPluginOptionsType0,
         )
+        from ..models.rancher_service_selector_type_0 import RancherServiceSelectorType0
 
         url = self.url
 
@@ -202,7 +204,13 @@ class RancherService:
         else:
             cluster_ip = self.cluster_ip
 
-        selector = self.selector
+        selector: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.selector, Unset):
+            selector = UNSET
+        elif isinstance(self.selector, RancherServiceSelectorType0):
+            selector = self.selector.to_dict()
+        else:
+            selector = self.selector
 
         target_workloads: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.target_workloads, Unset):
@@ -375,6 +383,7 @@ class RancherService:
         from ..models.rancher_service_marketplace_offering_plugin_options_type_0 import (
             RancherServiceMarketplaceOfferingPluginOptionsType0,
         )
+        from ..models.rancher_service_selector_type_0 import RancherServiceSelectorType0
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -492,7 +501,22 @@ class RancherService:
 
         cluster_ip = _parse_cluster_ip(d.pop("cluster_ip", UNSET))
 
-        selector = d.pop("selector", UNSET)
+        def _parse_selector(data: object) -> Union["RancherServiceSelectorType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                selector_type_0 = RancherServiceSelectorType0.from_dict(data)
+
+                return selector_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["RancherServiceSelectorType0", None, Unset], data)
+
+        selector = _parse_selector(d.pop("selector", UNSET))
 
         target_workloads = []
         _target_workloads = d.pop("target_workloads", UNSET)

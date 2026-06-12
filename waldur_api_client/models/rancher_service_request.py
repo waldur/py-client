@@ -8,6 +8,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.rancher_nested_workload_request import RancherNestedWorkloadRequest
+    from ..models.rancher_service_request_selector_type_0 import RancherServiceRequestSelectorType0
 
 
 T = TypeVar("T", bound="RancherServiceRequest")
@@ -28,7 +29,7 @@ class RancherServiceRequest:
         runtime_state (Union[Unset, str]):
         namespace (Union[Unset, str]):
         cluster_ip (Union[None, Unset, str]): An IPv4 or IPv6 address.
-        selector (Union[Unset, Any]):
+        selector (Union['RancherServiceRequestSelectorType0', None, Unset]):
     """
 
     name: str
@@ -42,10 +43,12 @@ class RancherServiceRequest:
     runtime_state: Union[Unset, str] = UNSET
     namespace: Union[Unset, str] = UNSET
     cluster_ip: Union[None, Unset, str] = UNSET
-    selector: Union[Unset, Any] = UNSET
+    selector: Union["RancherServiceRequestSelectorType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.rancher_service_request_selector_type_0 import RancherServiceRequestSelectorType0
+
         name = self.name
 
         service_settings = self.service_settings
@@ -75,7 +78,13 @@ class RancherServiceRequest:
         else:
             cluster_ip = self.cluster_ip
 
-        selector = self.selector
+        selector: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.selector, Unset):
+            selector = UNSET
+        elif isinstance(self.selector, RancherServiceRequestSelectorType0):
+            selector = self.selector.to_dict()
+        else:
+            selector = self.selector
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -109,6 +118,7 @@ class RancherServiceRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.rancher_nested_workload_request import RancherNestedWorkloadRequest
+        from ..models.rancher_service_request_selector_type_0 import RancherServiceRequestSelectorType0
 
         d = dict(src_dict)
         name = d.pop("name")
@@ -145,7 +155,22 @@ class RancherServiceRequest:
 
         cluster_ip = _parse_cluster_ip(d.pop("cluster_ip", UNSET))
 
-        selector = d.pop("selector", UNSET)
+        def _parse_selector(data: object) -> Union["RancherServiceRequestSelectorType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                selector_type_0 = RancherServiceRequestSelectorType0.from_dict(data)
+
+                return selector_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["RancherServiceRequestSelectorType0", None, Unset], data)
+
+        selector = _parse_selector(d.pop("selector", UNSET))
 
         rancher_service_request = cls(
             name=name,

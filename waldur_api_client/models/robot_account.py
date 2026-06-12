@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.fingerprint import Fingerprint
+    from ..models.robot_account_keys import RobotAccountKeys
 
 
 T = TypeVar("T", bound="RobotAccount")
@@ -35,7 +36,7 @@ class RobotAccount:
         error_traceback (Union[Unset, str]):
         state (Union[Unset, RobotAccountStates]):
         users (Union[Unset, list[str]]): Users who have access to this robot account.
-        keys (Union[Unset, Any]):
+        keys (Union[Unset, RobotAccountKeys]):
         responsible_user (Union[None, Unset, str]):
     """
 
@@ -53,7 +54,7 @@ class RobotAccount:
     error_traceback: Union[Unset, str] = UNSET
     state: Union[Unset, RobotAccountStates] = UNSET
     users: Union[Unset, list[str]] = UNSET
-    keys: Union[Unset, Any] = UNSET
+    keys: Union[Unset, "RobotAccountKeys"] = UNSET
     responsible_user: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -93,7 +94,9 @@ class RobotAccount:
         if not isinstance(self.users, Unset):
             users = self.users
 
-        keys = self.keys
+        keys: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.keys, Unset):
+            keys = self.keys.to_dict()
 
         responsible_user: Union[None, Unset, str]
         if isinstance(self.responsible_user, Unset):
@@ -137,6 +140,7 @@ class RobotAccount:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.fingerprint import Fingerprint
+        from ..models.robot_account_keys import RobotAccountKeys
 
         d = dict(src_dict)
         url = d.pop("url")
@@ -177,7 +181,12 @@ class RobotAccount:
 
         users = cast(list[str], d.pop("users", UNSET))
 
-        keys = d.pop("keys", UNSET)
+        _keys = d.pop("keys", UNSET)
+        keys: Union[Unset, RobotAccountKeys]
+        if isinstance(_keys, Unset):
+            keys = UNSET
+        else:
+            keys = RobotAccountKeys.from_dict(_keys)
 
         def _parse_responsible_user(data: object) -> Union[None, Unset, str]:
             if data is None:

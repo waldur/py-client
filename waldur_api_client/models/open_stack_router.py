@@ -13,6 +13,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.open_stack_fixed_ip import OpenStackFixedIp
     from ..models.open_stack_nested_port import OpenStackNestedPort
+    from ..models.open_stack_router_external_fixed_ips import OpenStackRouterExternalFixedIps
     from ..models.open_stack_router_marketplace_offering_plugin_options_type_0 import (
         OpenStackRouterMarketplaceOfferingPluginOptionsType0,
     )
@@ -63,7 +64,7 @@ class OpenStackRouter:
         has_external_gateway (Union[Unset, bool]):
         enable_snat (Union[None, Unset, bool]): Whether SNAT is enabled on the external gateway. None means OpenStack
             default (True).
-        external_fixed_ips (Union[Unset, Any]):
+        external_fixed_ips (Union[Unset, OpenStackRouterExternalFixedIps]):
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_type (Union[None, Unset, str]):
@@ -115,7 +116,7 @@ class OpenStackRouter:
     external_network_name: Union[None, Unset, str] = UNSET
     has_external_gateway: Union[Unset, bool] = UNSET
     enable_snat: Union[None, Unset, bool] = UNSET
-    external_fixed_ips: Union[Unset, Any] = UNSET
+    external_fixed_ips: Union[Unset, "OpenStackRouterExternalFixedIps"] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_type: Union[None, Unset, str] = UNSET
@@ -265,7 +266,9 @@ class OpenStackRouter:
         else:
             enable_snat = self.enable_snat
 
-        external_fixed_ips = self.external_fixed_ips
+        external_fixed_ips: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.external_fixed_ips, Unset):
+            external_fixed_ips = self.external_fixed_ips.to_dict()
 
         marketplace_offering_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_offering_uuid, Unset):
@@ -452,6 +455,7 @@ class OpenStackRouter:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_fixed_ip import OpenStackFixedIp
         from ..models.open_stack_nested_port import OpenStackNestedPort
+        from ..models.open_stack_router_external_fixed_ips import OpenStackRouterExternalFixedIps
         from ..models.open_stack_router_marketplace_offering_plugin_options_type_0 import (
             OpenStackRouterMarketplaceOfferingPluginOptionsType0,
         )
@@ -636,7 +640,12 @@ class OpenStackRouter:
 
         enable_snat = _parse_enable_snat(d.pop("enable_snat", UNSET))
 
-        external_fixed_ips = d.pop("external_fixed_ips", UNSET)
+        _external_fixed_ips = d.pop("external_fixed_ips", UNSET)
+        external_fixed_ips: Union[Unset, OpenStackRouterExternalFixedIps]
+        if isinstance(_external_fixed_ips, Unset):
+            external_fixed_ips = UNSET
+        else:
+            external_fixed_ips = OpenStackRouterExternalFixedIps.from_dict(_external_fixed_ips)
 
         def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:

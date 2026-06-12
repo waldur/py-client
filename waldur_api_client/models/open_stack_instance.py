@@ -11,6 +11,7 @@ from ..models.core_states import CoreStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.open_stack_instance_action_details import OpenStackInstanceActionDetails
     from ..models.open_stack_instance_marketplace_offering_plugin_options_type_0 import (
         OpenStackInstanceMarketplaceOfferingPluginOptionsType0,
     )
@@ -83,7 +84,7 @@ class OpenStackInstance:
             wide default from service settings is used.
         runtime_state (Union[Unset, str]):
         action (Union[Unset, str]):
-        action_details (Union[Unset, Any]): Details about ongoing or completed actions
+        action_details (Union[Unset, OpenStackInstanceActionDetails]): Details about ongoing or completed actions
         tenant_uuid (Union[Unset, UUID]): UUID of the OpenStack tenant
         hypervisor_hostname (Union[Unset, str]): Name of the hypervisor hosting this instance
         tenant (Union[Unset, str]): The OpenStack tenant to create the instance in
@@ -155,7 +156,7 @@ class OpenStackInstance:
     config_drive: Union[None, Unset, bool] = UNSET
     runtime_state: Union[Unset, str] = UNSET
     action: Union[Unset, str] = UNSET
-    action_details: Union[Unset, Any] = UNSET
+    action_details: Union[Unset, "OpenStackInstanceActionDetails"] = UNSET
     tenant_uuid: Union[Unset, UUID] = UNSET
     hypervisor_hostname: Union[Unset, str] = UNSET
     tenant: Union[Unset, str] = UNSET
@@ -359,7 +360,9 @@ class OpenStackInstance:
 
         action = self.action
 
-        action_details = self.action_details
+        action_details: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.action_details, Unset):
+            action_details = self.action_details.to_dict()
 
         tenant_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.tenant_uuid, Unset):
@@ -597,6 +600,7 @@ class OpenStackInstance:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.open_stack_instance_action_details import OpenStackInstanceActionDetails
         from ..models.open_stack_instance_marketplace_offering_plugin_options_type_0 import (
             OpenStackInstanceMarketplaceOfferingPluginOptionsType0,
         )
@@ -837,7 +841,12 @@ class OpenStackInstance:
 
         action = d.pop("action", UNSET)
 
-        action_details = d.pop("action_details", UNSET)
+        _action_details = d.pop("action_details", UNSET)
+        action_details: Union[Unset, OpenStackInstanceActionDetails]
+        if isinstance(_action_details, Unset):
+            action_details = UNSET
+        else:
+            action_details = OpenStackInstanceActionDetails.from_dict(_action_details)
 
         _tenant_uuid = d.pop("tenant_uuid", UNSET)
         tenant_uuid: Union[Unset, UUID]

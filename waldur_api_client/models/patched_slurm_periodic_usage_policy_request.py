@@ -11,6 +11,12 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_offering_component_limit_request import NestedOfferingComponentLimitRequest
+    from ..models.patched_slurm_periodic_usage_policy_request_options import (
+        PatchedSlurmPeriodicUsagePolicyRequestOptions,
+    )
+    from ..models.patched_slurm_periodic_usage_policy_request_tres_billing_weights import (
+        PatchedSlurmPeriodicUsagePolicyRequestTresBillingWeights,
+    )
 
 
 T = TypeVar("T", bound="PatchedSlurmPeriodicUsagePolicyRequest")
@@ -22,7 +28,8 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
     Attributes:
         scope (Union[Unset, str]):
         actions (Union[Unset, str]):
-        options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
+        options (Union[Unset, PatchedSlurmPeriodicUsagePolicyRequestOptions]): Fields for saving actions extra data.
+            Keys are name of actions.
         organization_groups (Union[Unset, list[str]]):
         apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
             organization_groups.
@@ -30,8 +37,8 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
         period (Union[Unset, PolicyPeriodEnum]):
         limit_type (Union[Unset, LimitTypeEnum]):
         tres_billing_enabled (Union[Unset, bool]): Use TRES billing units instead of raw TRES values
-        tres_billing_weights (Union[Unset, Any]): TRES billing weights (e.g., {"CPU": 0.015625, "Mem": 0.001953125,
-            "GRES/gpu": 0.25})
+        tres_billing_weights (Union[Unset, PatchedSlurmPeriodicUsagePolicyRequestTresBillingWeights]): TRES billing
+            weights (e.g., {"CPU": 0.015625, "Mem": 0.001953125, "GRES/gpu": 0.25})
         carryover_factor (Union[Unset, int]): Maximum percentage of base allocation that can carry over from unused
             previous period (0-100)
         grace_ratio (Union[Unset, float]): Grace period ratio (0.2 = 20% overconsumption allowed)
@@ -42,14 +49,14 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
 
     scope: Union[Unset, str] = UNSET
     actions: Union[Unset, str] = UNSET
-    options: Union[Unset, Any] = UNSET
+    options: Union[Unset, "PatchedSlurmPeriodicUsagePolicyRequestOptions"] = UNSET
     organization_groups: Union[Unset, list[str]] = UNSET
     apply_to_all: Union[Unset, bool] = UNSET
     component_limits_set: Union[Unset, list["NestedOfferingComponentLimitRequest"]] = UNSET
     period: Union[Unset, PolicyPeriodEnum] = UNSET
     limit_type: Union[Unset, LimitTypeEnum] = UNSET
     tres_billing_enabled: Union[Unset, bool] = UNSET
-    tres_billing_weights: Union[Unset, Any] = UNSET
+    tres_billing_weights: Union[Unset, "PatchedSlurmPeriodicUsagePolicyRequestTresBillingWeights"] = UNSET
     carryover_factor: Union[Unset, int] = UNSET
     grace_ratio: Union[Unset, float] = UNSET
     carryover_enabled: Union[Unset, bool] = UNSET
@@ -62,7 +69,9 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
 
         actions = self.actions
 
-        options = self.options
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
         organization_groups: Union[Unset, list[str]] = UNSET
         if not isinstance(self.organization_groups, Unset):
@@ -87,7 +96,9 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
 
         tres_billing_enabled = self.tres_billing_enabled
 
-        tres_billing_weights = self.tres_billing_weights
+        tres_billing_weights: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.tres_billing_weights, Unset):
+            tres_billing_weights = self.tres_billing_weights.to_dict()
 
         carryover_factor = self.carryover_factor
 
@@ -140,13 +151,24 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_offering_component_limit_request import NestedOfferingComponentLimitRequest
+        from ..models.patched_slurm_periodic_usage_policy_request_options import (
+            PatchedSlurmPeriodicUsagePolicyRequestOptions,
+        )
+        from ..models.patched_slurm_periodic_usage_policy_request_tres_billing_weights import (
+            PatchedSlurmPeriodicUsagePolicyRequestTresBillingWeights,
+        )
 
         d = dict(src_dict)
         scope = d.pop("scope", UNSET)
 
         actions = d.pop("actions", UNSET)
 
-        options = d.pop("options", UNSET)
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, PatchedSlurmPeriodicUsagePolicyRequestOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = PatchedSlurmPeriodicUsagePolicyRequestOptions.from_dict(_options)
 
         organization_groups = cast(list[str], d.pop("organization_groups", UNSET))
 
@@ -175,7 +197,14 @@ class PatchedSlurmPeriodicUsagePolicyRequest:
 
         tres_billing_enabled = d.pop("tres_billing_enabled", UNSET)
 
-        tres_billing_weights = d.pop("tres_billing_weights", UNSET)
+        _tres_billing_weights = d.pop("tres_billing_weights", UNSET)
+        tres_billing_weights: Union[Unset, PatchedSlurmPeriodicUsagePolicyRequestTresBillingWeights]
+        if isinstance(_tres_billing_weights, Unset):
+            tres_billing_weights = UNSET
+        else:
+            tres_billing_weights = PatchedSlurmPeriodicUsagePolicyRequestTresBillingWeights.from_dict(
+                _tres_billing_weights
+            )
 
         carryover_factor = d.pop("carryover_factor", UNSET)
 

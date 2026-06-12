@@ -12,6 +12,8 @@ from ..models.rich_text_toolbar_level_enum import RichTextToolbarLevelEnum
 if TYPE_CHECKING:
     from ..models.answer import Answer
     from ..models.question_dependency_info import QuestionDependencyInfo
+    from ..models.question_with_answer_allowed_file_types import QuestionWithAnswerAllowedFileTypes
+    from ..models.question_with_answer_allowed_mime_types import QuestionWithAnswerAllowedMimeTypes
 
 
 T = TypeVar("T", bound="QuestionWithAnswer")
@@ -31,11 +33,11 @@ class QuestionWithAnswer:
         question_options (Union[None, list[Any]]):
         min_value (Union[None, str]): Minimum value allowed for NUMBER, YEAR, and RATING type questions
         max_value (Union[None, str]): Maximum value allowed for NUMBER, YEAR, and RATING type questions
-        allowed_file_types (Any): List of allowed file extensions (e.g., ['.pdf', '.doc', '.docx']). If empty, all file
-            types are allowed.
-        allowed_mime_types (Any): List of allowed MIME types (e.g., ['application/pdf', 'application/msword']). If
-            empty, MIME type validation is not enforced. When both extensions and MIME types are specified, files must match
-            both criteria for security.
+        allowed_file_types (QuestionWithAnswerAllowedFileTypes): List of allowed file extensions (e.g., ['.pdf', '.doc',
+            '.docx']). If empty, all file types are allowed.
+        allowed_mime_types (QuestionWithAnswerAllowedMimeTypes): List of allowed MIME types (e.g., ['application/pdf',
+            'application/msword']). If empty, MIME type validation is not enforced. When both extensions and MIME types are
+            specified, files must match both criteria for security.
         max_file_size_mb (Union[None, int]): Maximum file size in megabytes. If not set, no size limit is enforced.
         max_files_count (Union[None, int]): Maximum number of files allowed for MULTIPLE_FILES type questions. If not
             set, no count limit is enforced.
@@ -60,8 +62,8 @@ class QuestionWithAnswer:
     question_options: Union[None, list[Any]]
     min_value: Union[None, str]
     max_value: Union[None, str]
-    allowed_file_types: Any
-    allowed_mime_types: Any
+    allowed_file_types: "QuestionWithAnswerAllowedFileTypes"
+    allowed_mime_types: "QuestionWithAnswerAllowedMimeTypes"
     max_file_size_mb: Union[None, int]
     max_files_count: Union[None, int]
     likert_scale_length: Union[LikertScaleLengthEnum, None]
@@ -109,9 +111,9 @@ class QuestionWithAnswer:
         max_value: Union[None, str]
         max_value = self.max_value
 
-        allowed_file_types = self.allowed_file_types
+        allowed_file_types = self.allowed_file_types.to_dict()
 
-        allowed_mime_types = self.allowed_mime_types
+        allowed_mime_types = self.allowed_mime_types.to_dict()
 
         max_file_size_mb: Union[None, int]
         max_file_size_mb = self.max_file_size_mb
@@ -176,6 +178,8 @@ class QuestionWithAnswer:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.answer import Answer
         from ..models.question_dependency_info import QuestionDependencyInfo
+        from ..models.question_with_answer_allowed_file_types import QuestionWithAnswerAllowedFileTypes
+        from ..models.question_with_answer_allowed_mime_types import QuestionWithAnswerAllowedMimeTypes
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -239,9 +243,9 @@ class QuestionWithAnswer:
 
         max_value = _parse_max_value(d.pop("max_value"))
 
-        allowed_file_types = d.pop("allowed_file_types")
+        allowed_file_types = QuestionWithAnswerAllowedFileTypes.from_dict(d.pop("allowed_file_types"))
 
-        allowed_mime_types = d.pop("allowed_mime_types")
+        allowed_mime_types = QuestionWithAnswerAllowedMimeTypes.from_dict(d.pop("allowed_mime_types"))
 
         def _parse_max_file_size_mb(data: object) -> Union[None, int]:
             if data is None:

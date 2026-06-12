@@ -1,8 +1,12 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+if TYPE_CHECKING:
+    from ..models.question_condition_required_value import QuestionConditionRequiredValue
+
 
 T = TypeVar("T", bound="QuestionCondition")
 
@@ -13,12 +17,12 @@ class QuestionCondition:
     Attributes:
         question_description (str):
         operator (str):
-        required_value (Any):
+        required_value (QuestionConditionRequiredValue):
     """
 
     question_description: str
     operator: str
-    required_value: Any
+    required_value: "QuestionConditionRequiredValue"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -26,7 +30,7 @@ class QuestionCondition:
 
         operator = self.operator
 
-        required_value = self.required_value
+        required_value = self.required_value.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -42,12 +46,14 @@ class QuestionCondition:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.question_condition_required_value import QuestionConditionRequiredValue
+
         d = dict(src_dict)
         question_description = d.pop("question_description")
 
         operator = d.pop("operator")
 
-        required_value = d.pop("required_value")
+        required_value = QuestionConditionRequiredValue.from_dict(d.pop("required_value"))
 
         question_condition = cls(
             question_description=question_description,

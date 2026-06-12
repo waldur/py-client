@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,10 @@ from dateutil.parser import isoparse
 
 from ..models.execution_mode_enum import ExecutionModeEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.slurm_command_history_parameters import SlurmCommandHistoryParameters
+
 
 T = TypeVar("T", bound="SlurmCommandHistory")
 
@@ -22,7 +26,7 @@ class SlurmCommandHistory:
         description (str): Human-readable description of what the command does
         shell_command (str): Actual shell command that was/would be executed
         executed_at (datetime.datetime):
-        parameters (Union[Unset, Any]): Command parameters as key-value pairs
+        parameters (Union[Unset, SlurmCommandHistoryParameters]): Command parameters as key-value pairs
         execution_mode (Union[Unset, ExecutionModeEnum]):
         success (Union[Unset, bool]): Whether the command execution was successful
         error_message (Union[Unset, str]): Error message if command execution failed
@@ -33,7 +37,7 @@ class SlurmCommandHistory:
     description: str
     shell_command: str
     executed_at: datetime.datetime
-    parameters: Union[Unset, Any] = UNSET
+    parameters: Union[Unset, "SlurmCommandHistoryParameters"] = UNSET
     execution_mode: Union[Unset, ExecutionModeEnum] = UNSET
     success: Union[Unset, bool] = UNSET
     error_message: Union[Unset, str] = UNSET
@@ -50,7 +54,9 @@ class SlurmCommandHistory:
 
         executed_at = self.executed_at.isoformat()
 
-        parameters = self.parameters
+        parameters: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.parameters, Unset):
+            parameters = self.parameters.to_dict()
 
         execution_mode: Union[Unset, str] = UNSET
         if not isinstance(self.execution_mode, Unset):
@@ -84,6 +90,8 @@ class SlurmCommandHistory:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.slurm_command_history_parameters import SlurmCommandHistoryParameters
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -95,7 +103,12 @@ class SlurmCommandHistory:
 
         executed_at = isoparse(d.pop("executed_at"))
 
-        parameters = d.pop("parameters", UNSET)
+        _parameters = d.pop("parameters", UNSET)
+        parameters: Union[Unset, SlurmCommandHistoryParameters]
+        if isinstance(_parameters, Unset):
+            parameters = UNSET
+        else:
+            parameters = SlurmCommandHistoryParameters.from_dict(_parameters)
 
         _execution_mode = d.pop("execution_mode", UNSET)
         execution_mode: Union[Unset, ExecutionModeEnum]

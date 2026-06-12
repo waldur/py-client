@@ -9,6 +9,10 @@ from dateutil.parser import isoparse
 
 if TYPE_CHECKING:
     from ..models.anonymous_chat_feedback import AnonymousChatFeedback
+    from ..models.anonymous_chat_interaction_assistant_blocks import AnonymousChatInteractionAssistantBlocks
+    from ..models.anonymous_chat_interaction_injection_categories import AnonymousChatInteractionInjectionCategories
+    from ..models.anonymous_chat_interaction_offering_uuids import AnonymousChatInteractionOfferingUuids
+    from ..models.anonymous_chat_interaction_pii_categories import AnonymousChatInteractionPiiCategories
 
 
 T = TypeVar("T", bound="AnonymousChatInteraction")
@@ -21,13 +25,13 @@ class AnonymousChatInteraction:
         uuid (UUID):
         user_slug (str):
         user_input (str):
-        assistant_blocks (Any):
-        offering_uuids (Any):
+        assistant_blocks (AnonymousChatInteractionAssistantBlocks):
+        offering_uuids (AnonymousChatInteractionOfferingUuids):
         result_count (int):
         is_flagged (bool):
         severity (str):
-        injection_categories (Any):
-        pii_categories (Any):
+        injection_categories (AnonymousChatInteractionInjectionCategories):
+        pii_categories (AnonymousChatInteractionPiiCategories):
         action_taken (str):
         warning (str):
         ip_address (Union[None, str]): An IPv4 or IPv6 address.
@@ -40,13 +44,13 @@ class AnonymousChatInteraction:
     uuid: UUID
     user_slug: str
     user_input: str
-    assistant_blocks: Any
-    offering_uuids: Any
+    assistant_blocks: "AnonymousChatInteractionAssistantBlocks"
+    offering_uuids: "AnonymousChatInteractionOfferingUuids"
     result_count: int
     is_flagged: bool
     severity: str
-    injection_categories: Any
-    pii_categories: Any
+    injection_categories: "AnonymousChatInteractionInjectionCategories"
+    pii_categories: "AnonymousChatInteractionPiiCategories"
     action_taken: str
     warning: str
     ip_address: Union[None, str]
@@ -63,9 +67,9 @@ class AnonymousChatInteraction:
 
         user_input = self.user_input
 
-        assistant_blocks = self.assistant_blocks
+        assistant_blocks = self.assistant_blocks.to_dict()
 
-        offering_uuids = self.offering_uuids
+        offering_uuids = self.offering_uuids.to_dict()
 
         result_count = self.result_count
 
@@ -73,9 +77,9 @@ class AnonymousChatInteraction:
 
         severity = self.severity
 
-        injection_categories = self.injection_categories
+        injection_categories = self.injection_categories.to_dict()
 
-        pii_categories = self.pii_categories
+        pii_categories = self.pii_categories.to_dict()
 
         action_taken = self.action_taken
 
@@ -125,6 +129,10 @@ class AnonymousChatInteraction:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.anonymous_chat_feedback import AnonymousChatFeedback
+        from ..models.anonymous_chat_interaction_assistant_blocks import AnonymousChatInteractionAssistantBlocks
+        from ..models.anonymous_chat_interaction_injection_categories import AnonymousChatInteractionInjectionCategories
+        from ..models.anonymous_chat_interaction_offering_uuids import AnonymousChatInteractionOfferingUuids
+        from ..models.anonymous_chat_interaction_pii_categories import AnonymousChatInteractionPiiCategories
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -133,9 +141,9 @@ class AnonymousChatInteraction:
 
         user_input = d.pop("user_input")
 
-        assistant_blocks = d.pop("assistant_blocks")
+        assistant_blocks = AnonymousChatInteractionAssistantBlocks.from_dict(d.pop("assistant_blocks"))
 
-        offering_uuids = d.pop("offering_uuids")
+        offering_uuids = AnonymousChatInteractionOfferingUuids.from_dict(d.pop("offering_uuids"))
 
         result_count = d.pop("result_count")
 
@@ -143,9 +151,9 @@ class AnonymousChatInteraction:
 
         severity = d.pop("severity")
 
-        injection_categories = d.pop("injection_categories")
+        injection_categories = AnonymousChatInteractionInjectionCategories.from_dict(d.pop("injection_categories"))
 
-        pii_categories = d.pop("pii_categories")
+        pii_categories = AnonymousChatInteractionPiiCategories.from_dict(d.pop("pii_categories"))
 
         action_taken = d.pop("action_taken")
 

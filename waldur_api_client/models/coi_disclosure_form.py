@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.coi_disclosure_financial_interest import COIDisclosureFinancialInterest
+    from ..models.coi_disclosure_form_personal_relationships import COIDisclosureFormPersonalRelationships
 
 
 T = TypeVar("T", bound="COIDisclosureForm")
@@ -37,7 +38,7 @@ class COIDisclosureForm:
         certification_statement (Union[Unset, str]): Legal text they agreed to
         has_financial_interests (Union[Unset, bool]):
         has_personal_relationships (Union[Unset, bool]):
-        personal_relationships (Union[Unset, Any]):
+        personal_relationships (Union[Unset, COIDisclosureFormPersonalRelationships]):
         has_other_conflicts (Union[Unset, bool]):
         other_conflicts_description (Union[Unset, str]):
     """
@@ -59,7 +60,7 @@ class COIDisclosureForm:
     certification_statement: Union[Unset, str] = UNSET
     has_financial_interests: Union[Unset, bool] = UNSET
     has_personal_relationships: Union[Unset, bool] = UNSET
-    personal_relationships: Union[Unset, Any] = UNSET
+    personal_relationships: Union[Unset, "COIDisclosureFormPersonalRelationships"] = UNSET
     has_other_conflicts: Union[Unset, bool] = UNSET
     other_conflicts_description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -110,7 +111,9 @@ class COIDisclosureForm:
 
         has_personal_relationships = self.has_personal_relationships
 
-        personal_relationships = self.personal_relationships
+        personal_relationships: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.personal_relationships, Unset):
+            personal_relationships = self.personal_relationships.to_dict()
 
         has_other_conflicts = self.has_other_conflicts
 
@@ -156,6 +159,7 @@ class COIDisclosureForm:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.coi_disclosure_financial_interest import COIDisclosureFinancialInterest
+        from ..models.coi_disclosure_form_personal_relationships import COIDisclosureFormPersonalRelationships
 
         d = dict(src_dict)
         url = d.pop("url")
@@ -217,7 +221,12 @@ class COIDisclosureForm:
 
         has_personal_relationships = d.pop("has_personal_relationships", UNSET)
 
-        personal_relationships = d.pop("personal_relationships", UNSET)
+        _personal_relationships = d.pop("personal_relationships", UNSET)
+        personal_relationships: Union[Unset, COIDisclosureFormPersonalRelationships]
+        if isinstance(_personal_relationships, Unset):
+            personal_relationships = UNSET
+        else:
+            personal_relationships = COIDisclosureFormPersonalRelationships.from_dict(_personal_relationships)
 
         has_other_conflicts = d.pop("has_other_conflicts", UNSET)
 

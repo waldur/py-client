@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.rancher_hpa_request_metrics import RancherHPARequestMetrics
+
 
 T = TypeVar("T", bound="RancherHPARequest")
 
@@ -14,7 +18,7 @@ class RancherHPARequest:
     """
     Attributes:
         name (str):
-        metrics (Any):
+        metrics (RancherHPARequestMetrics):
         description (Union[Unset, str]):
         workload (Union[None, Unset, str]):
         min_replicas (Union[Unset, int]):
@@ -22,7 +26,7 @@ class RancherHPARequest:
     """
 
     name: str
-    metrics: Any
+    metrics: "RancherHPARequestMetrics"
     description: Union[Unset, str] = UNSET
     workload: Union[None, Unset, str] = UNSET
     min_replicas: Union[Unset, int] = UNSET
@@ -32,7 +36,7 @@ class RancherHPARequest:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        metrics = self.metrics
+        metrics = self.metrics.to_dict()
 
         description = self.description
 
@@ -67,10 +71,12 @@ class RancherHPARequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.rancher_hpa_request_metrics import RancherHPARequestMetrics
+
         d = dict(src_dict)
         name = d.pop("name")
 
-        metrics = d.pop("metrics")
+        metrics = RancherHPARequestMetrics.from_dict(d.pop("metrics"))
 
         description = d.pop("description", UNSET)
 

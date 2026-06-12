@@ -1,8 +1,17 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+if TYPE_CHECKING:
+    from ..models.call_compliance_overview_proposal_review_trigger_answer import (
+        CallComplianceOverviewProposalReviewTriggerAnswer,
+    )
+    from ..models.call_compliance_overview_proposal_review_trigger_trigger_value import (
+        CallComplianceOverviewProposalReviewTriggerTriggerValue,
+    )
+
 
 T = TypeVar("T", bound="CallComplianceOverviewProposalReviewTrigger")
 
@@ -12,23 +21,23 @@ class CallComplianceOverviewProposalReviewTrigger:
     """
     Attributes:
         question (str):
-        answer (Any):
-        trigger_value (Any):
+        answer (CallComplianceOverviewProposalReviewTriggerAnswer):
+        trigger_value (CallComplianceOverviewProposalReviewTriggerTriggerValue):
         operator (str):
     """
 
     question: str
-    answer: Any
-    trigger_value: Any
+    answer: "CallComplianceOverviewProposalReviewTriggerAnswer"
+    trigger_value: "CallComplianceOverviewProposalReviewTriggerTriggerValue"
     operator: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         question = self.question
 
-        answer = self.answer
+        answer = self.answer.to_dict()
 
-        trigger_value = self.trigger_value
+        trigger_value = self.trigger_value.to_dict()
 
         operator = self.operator
 
@@ -47,12 +56,19 @@ class CallComplianceOverviewProposalReviewTrigger:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.call_compliance_overview_proposal_review_trigger_answer import (
+            CallComplianceOverviewProposalReviewTriggerAnswer,
+        )
+        from ..models.call_compliance_overview_proposal_review_trigger_trigger_value import (
+            CallComplianceOverviewProposalReviewTriggerTriggerValue,
+        )
+
         d = dict(src_dict)
         question = d.pop("question")
 
-        answer = d.pop("answer")
+        answer = CallComplianceOverviewProposalReviewTriggerAnswer.from_dict(d.pop("answer"))
 
-        trigger_value = d.pop("trigger_value")
+        trigger_value = CallComplianceOverviewProposalReviewTriggerTriggerValue.from_dict(d.pop("trigger_value"))
 
         operator = d.pop("operator")
 

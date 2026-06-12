@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.answer_answer_data import AnswerAnswerData
+
 
 T = TypeVar("T", bound="Answer")
 
@@ -25,7 +29,7 @@ class Answer:
         user_name (str):
         created (datetime.datetime):
         modified (datetime.datetime):
-        answer_data (Union[Unset, Any]): Flexible answer storage for different question types
+        answer_data (Union[Unset, AnswerAnswerData]): Flexible answer storage for different question types
     """
 
     uuid: UUID
@@ -37,7 +41,7 @@ class Answer:
     user_name: str
     created: datetime.datetime
     modified: datetime.datetime
-    answer_data: Union[Unset, Any] = UNSET
+    answer_data: Union[Unset, "AnswerAnswerData"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -59,7 +63,9 @@ class Answer:
 
         modified = self.modified.isoformat()
 
-        answer_data = self.answer_data
+        answer_data: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.answer_data, Unset):
+            answer_data = self.answer_data.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -83,6 +89,8 @@ class Answer:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.answer_answer_data import AnswerAnswerData
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -102,7 +110,12 @@ class Answer:
 
         modified = isoparse(d.pop("modified"))
 
-        answer_data = d.pop("answer_data", UNSET)
+        _answer_data = d.pop("answer_data", UNSET)
+        answer_data: Union[Unset, AnswerAnswerData]
+        if isinstance(_answer_data, Unset):
+            answer_data = UNSET
+        else:
+            answer_data = AnswerAnswerData.from_dict(_answer_data)
 
         answer = cls(
             uuid=uuid,

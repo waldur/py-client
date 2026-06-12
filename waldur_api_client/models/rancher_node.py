@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,11 @@ from dateutil.parser import isoparse
 
 from ..models.core_states import CoreStates
 from ..models.rancher_node_role_enum import RancherNodeRoleEnum
+
+if TYPE_CHECKING:
+    from ..models.rancher_node_annotations import RancherNodeAnnotations
+    from ..models.rancher_node_labels import RancherNodeLabels
+
 
 T = TypeVar("T", bound="RancherNode")
 
@@ -44,8 +49,8 @@ class RancherNode:
         ram_total (Union[None, int]): Total RAM in Mi.
         pods_allocated (Union[None, int]):
         pods_total (Union[None, int]):
-        labels (Any):
-        annotations (Any):
+        labels (RancherNodeLabels):
+        annotations (RancherNodeAnnotations):
         runtime_state (str):
     """
 
@@ -76,8 +81,8 @@ class RancherNode:
     ram_total: Union[None, int]
     pods_allocated: Union[None, int]
     pods_total: Union[None, int]
-    labels: Any
-    annotations: Any
+    labels: "RancherNodeLabels"
+    annotations: "RancherNodeAnnotations"
     runtime_state: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -142,9 +147,9 @@ class RancherNode:
         pods_total: Union[None, int]
         pods_total = self.pods_total
 
-        labels = self.labels
+        labels = self.labels.to_dict()
 
-        annotations = self.annotations
+        annotations = self.annotations.to_dict()
 
         runtime_state = self.runtime_state
 
@@ -189,6 +194,9 @@ class RancherNode:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.rancher_node_annotations import RancherNodeAnnotations
+        from ..models.rancher_node_labels import RancherNodeLabels
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -274,9 +282,9 @@ class RancherNode:
 
         pods_total = _parse_pods_total(d.pop("pods_total"))
 
-        labels = d.pop("labels")
+        labels = RancherNodeLabels.from_dict(d.pop("labels"))
 
-        annotations = d.pop("annotations")
+        annotations = RancherNodeAnnotations.from_dict(d.pop("annotations"))
 
         runtime_state = d.pop("runtime_state")
 

@@ -11,9 +11,11 @@ from ..models.core_states import CoreStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.rancher_cluster_capacity import RancherClusterCapacity
     from ..models.rancher_cluster_marketplace_offering_plugin_options_type_0 import (
         RancherClusterMarketplaceOfferingPluginOptionsType0,
     )
+    from ..models.rancher_cluster_requested import RancherClusterRequested
     from ..models.rancher_nested_node import RancherNestedNode
     from ..models.rancher_nested_public_ip import RancherNestedPublicIP
 
@@ -59,9 +61,10 @@ class RancherCluster:
             cluster Default: False.
         management_security_group (Union[Unset, str]):
         public_ips (Union[Unset, list['RancherNestedPublicIP']]):
-        capacity (Union[Unset, Any]): Cluster capacity in the format {'cpu': '10', 'ram': '49125240Ki', 'pods': '330'}
-        requested (Union[Unset, Any]): Cluster requested resources in the format {'cpu': '1450m', 'memory': '884Mi',
-            'pods': '13'}
+        capacity (Union[Unset, RancherClusterCapacity]): Cluster capacity in the format {'cpu': '10', 'ram':
+            '49125240Ki', 'pods': '330'}
+        requested (Union[Unset, RancherClusterRequested]): Cluster requested resources in the format {'cpu': '1450m',
+            'memory': '884Mi', 'pods': '13'}
         kubernetes_version (Union[Unset, str]): Kubernetes version used in the cluster.
         router_ips (Union[Unset, list[Any]]):
         marketplace_offering_uuid (Union[None, Unset, str]):
@@ -110,8 +113,8 @@ class RancherCluster:
     install_longhorn: Union[Unset, bool] = False
     management_security_group: Union[Unset, str] = UNSET
     public_ips: Union[Unset, list["RancherNestedPublicIP"]] = UNSET
-    capacity: Union[Unset, Any] = UNSET
-    requested: Union[Unset, Any] = UNSET
+    capacity: Union[Unset, "RancherClusterCapacity"] = UNSET
+    requested: Union[Unset, "RancherClusterRequested"] = UNSET
     kubernetes_version: Union[Unset, str] = UNSET
     router_ips: Union[Unset, list[Any]] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
@@ -237,9 +240,13 @@ class RancherCluster:
                 public_ips_item = public_ips_item_data.to_dict()
                 public_ips.append(public_ips_item)
 
-        capacity = self.capacity
+        capacity: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.capacity, Unset):
+            capacity = self.capacity.to_dict()
 
-        requested = self.requested
+        requested: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.requested, Unset):
+            requested = self.requested.to_dict()
 
         kubernetes_version = self.kubernetes_version
 
@@ -419,9 +426,11 @@ class RancherCluster:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.rancher_cluster_capacity import RancherClusterCapacity
         from ..models.rancher_cluster_marketplace_offering_plugin_options_type_0 import (
             RancherClusterMarketplaceOfferingPluginOptionsType0,
         )
+        from ..models.rancher_cluster_requested import RancherClusterRequested
         from ..models.rancher_nested_node import RancherNestedNode
         from ..models.rancher_nested_public_ip import RancherNestedPublicIP
 
@@ -564,9 +573,19 @@ class RancherCluster:
 
             public_ips.append(public_ips_item)
 
-        capacity = d.pop("capacity", UNSET)
+        _capacity = d.pop("capacity", UNSET)
+        capacity: Union[Unset, RancherClusterCapacity]
+        if isinstance(_capacity, Unset):
+            capacity = UNSET
+        else:
+            capacity = RancherClusterCapacity.from_dict(_capacity)
 
-        requested = d.pop("requested", UNSET)
+        _requested = d.pop("requested", UNSET)
+        requested: Union[Unset, RancherClusterRequested]
+        if isinstance(_requested, Unset):
+            requested = UNSET
+        else:
+            requested = RancherClusterRequested.from_dict(_requested)
 
         kubernetes_version = d.pop("kubernetes_version", UNSET)
 

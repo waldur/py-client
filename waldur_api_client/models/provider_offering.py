@@ -13,6 +13,8 @@ if TYPE_CHECKING:
     from ..models.merged_secret_options import MergedSecretOptions
     from ..models.nested_price_estimate import NestedPriceEstimate
     from ..models.offering_component import OfferingComponent
+    from ..models.provider_offering_options import ProviderOfferingOptions
+    from ..models.provider_offering_resource_options import ProviderOfferingResourceOptions
 
 
 T = TypeVar("T", bound="ProviderOffering")
@@ -33,8 +35,8 @@ class ProviderOffering:
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
         components (Union[Unset, list['OfferingComponent']]):
         plans (Union[Unset, list['BaseProviderPlan']]):
-        options (Union[Unset, Any]): Fields describing resource provision form.
-        resource_options (Union[Unset, Any]): Fields describing resource report form.
+        options (Union[Unset, ProviderOfferingOptions]): Fields describing resource provision form.
+        resource_options (Union[Unset, ProviderOfferingResourceOptions]): Fields describing resource report form.
         secret_options (Union[Unset, MergedSecretOptions]):
         thumbnail (Union[None, Unset, str]):
         offering_group_uuid (Union[None, UUID, Unset]):
@@ -52,8 +54,8 @@ class ProviderOffering:
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
     components: Union[Unset, list["OfferingComponent"]] = UNSET
     plans: Union[Unset, list["BaseProviderPlan"]] = UNSET
-    options: Union[Unset, Any] = UNSET
-    resource_options: Union[Unset, Any] = UNSET
+    options: Union[Unset, "ProviderOfferingOptions"] = UNSET
+    resource_options: Union[Unset, "ProviderOfferingResourceOptions"] = UNSET
     secret_options: Union[Unset, "MergedSecretOptions"] = UNSET
     thumbnail: Union[None, Unset, str] = UNSET
     offering_group_uuid: Union[None, UUID, Unset] = UNSET
@@ -101,9 +103,13 @@ class ProviderOffering:
                 plans_item = plans_item_data.to_dict()
                 plans.append(plans_item)
 
-        options = self.options
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
-        resource_options = self.resource_options
+        resource_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.resource_options, Unset):
+            resource_options = self.resource_options.to_dict()
 
         secret_options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.secret_options, Unset):
@@ -175,6 +181,8 @@ class ProviderOffering:
         from ..models.merged_secret_options import MergedSecretOptions
         from ..models.nested_price_estimate import NestedPriceEstimate
         from ..models.offering_component import OfferingComponent
+        from ..models.provider_offering_options import ProviderOfferingOptions
+        from ..models.provider_offering_resource_options import ProviderOfferingResourceOptions
 
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
@@ -229,9 +237,19 @@ class ProviderOffering:
 
             plans.append(plans_item)
 
-        options = d.pop("options", UNSET)
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, ProviderOfferingOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = ProviderOfferingOptions.from_dict(_options)
 
-        resource_options = d.pop("resource_options", UNSET)
+        _resource_options = d.pop("resource_options", UNSET)
+        resource_options: Union[Unset, ProviderOfferingResourceOptions]
+        if isinstance(_resource_options, Unset):
+            resource_options = UNSET
+        else:
+            resource_options = ProviderOfferingResourceOptions.from_dict(_resource_options)
 
         _secret_options = d.pop("secret_options", UNSET)
         secret_options: Union[Unset, MergedSecretOptions]

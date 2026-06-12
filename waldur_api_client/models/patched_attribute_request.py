@@ -1,11 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.attribute_type_enum import AttributeTypeEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.patched_attribute_request_default_type_0 import PatchedAttributeRequestDefaultType0
+
 
 T = TypeVar("T", bound="PatchedAttributeRequest")
 
@@ -19,7 +23,7 @@ class PatchedAttributeRequest:
         section (Union[Unset, str]):
         type_ (Union[Unset, AttributeTypeEnum]):
         required (Union[Unset, bool]): A value must be provided for the attribute.
-        default (Union[Unset, Any]):
+        default (Union['PatchedAttributeRequestDefaultType0', None, Unset]):
     """
 
     key: Union[Unset, str] = UNSET
@@ -27,10 +31,12 @@ class PatchedAttributeRequest:
     section: Union[Unset, str] = UNSET
     type_: Union[Unset, AttributeTypeEnum] = UNSET
     required: Union[Unset, bool] = UNSET
-    default: Union[Unset, Any] = UNSET
+    default: Union["PatchedAttributeRequestDefaultType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.patched_attribute_request_default_type_0 import PatchedAttributeRequestDefaultType0
+
         key = self.key
 
         title = self.title
@@ -43,7 +49,13 @@ class PatchedAttributeRequest:
 
         required = self.required
 
-        default = self.default
+        default: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.default, Unset):
+            default = UNSET
+        elif isinstance(self.default, PatchedAttributeRequestDefaultType0):
+            default = self.default.to_dict()
+        else:
+            default = self.default
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -65,6 +77,8 @@ class PatchedAttributeRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.patched_attribute_request_default_type_0 import PatchedAttributeRequestDefaultType0
+
         d = dict(src_dict)
         key = d.pop("key", UNSET)
 
@@ -81,7 +95,22 @@ class PatchedAttributeRequest:
 
         required = d.pop("required", UNSET)
 
-        default = d.pop("default", UNSET)
+        def _parse_default(data: object) -> Union["PatchedAttributeRequestDefaultType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                default_type_0 = PatchedAttributeRequestDefaultType0.from_dict(data)
+
+                return default_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["PatchedAttributeRequestDefaultType0", None, Unset], data)
+
+        default = _parse_default(d.pop("default", UNSET))
 
         patched_attribute_request = cls(
             key=key,

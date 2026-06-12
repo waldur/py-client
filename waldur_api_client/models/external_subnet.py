@@ -1,11 +1,16 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.external_subnet_allocation_pools import ExternalSubnetAllocationPools
+    from ..models.external_subnet_dns_nameservers import ExternalSubnetDnsNameservers
+
 
 T = TypeVar("T", bound="ExternalSubnet")
 
@@ -21,8 +26,8 @@ class ExternalSubnet:
         gateway_ip (Union[None, Unset, str]): An IPv4 or IPv6 address.
         ip_version (Union[Unset, int]):
         enable_dhcp (Union[Unset, bool]):
-        allocation_pools (Union[Unset, Any]):
-        dns_nameservers (Union[Unset, Any]):
+        allocation_pools (Union[Unset, ExternalSubnetAllocationPools]):
+        dns_nameservers (Union[Unset, ExternalSubnetDnsNameservers]):
         public_ip_range (Union[Unset, str]): Public CIDR mapped to this subnet (for carrier-grade NAT overlay)
         description (Union[Unset, str]):
     """
@@ -34,8 +39,8 @@ class ExternalSubnet:
     gateway_ip: Union[None, Unset, str] = UNSET
     ip_version: Union[Unset, int] = UNSET
     enable_dhcp: Union[Unset, bool] = UNSET
-    allocation_pools: Union[Unset, Any] = UNSET
-    dns_nameservers: Union[Unset, Any] = UNSET
+    allocation_pools: Union[Unset, "ExternalSubnetAllocationPools"] = UNSET
+    dns_nameservers: Union[Unset, "ExternalSubnetDnsNameservers"] = UNSET
     public_ip_range: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -61,9 +66,13 @@ class ExternalSubnet:
 
         enable_dhcp = self.enable_dhcp
 
-        allocation_pools = self.allocation_pools
+        allocation_pools: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.allocation_pools, Unset):
+            allocation_pools = self.allocation_pools.to_dict()
 
-        dns_nameservers = self.dns_nameservers
+        dns_nameservers: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.dns_nameservers, Unset):
+            dns_nameservers = self.dns_nameservers.to_dict()
 
         public_ip_range = self.public_ip_range
 
@@ -99,6 +108,9 @@ class ExternalSubnet:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.external_subnet_allocation_pools import ExternalSubnetAllocationPools
+        from ..models.external_subnet_dns_nameservers import ExternalSubnetDnsNameservers
+
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
         uuid: Union[Unset, UUID]
@@ -126,9 +138,19 @@ class ExternalSubnet:
 
         enable_dhcp = d.pop("enable_dhcp", UNSET)
 
-        allocation_pools = d.pop("allocation_pools", UNSET)
+        _allocation_pools = d.pop("allocation_pools", UNSET)
+        allocation_pools: Union[Unset, ExternalSubnetAllocationPools]
+        if isinstance(_allocation_pools, Unset):
+            allocation_pools = UNSET
+        else:
+            allocation_pools = ExternalSubnetAllocationPools.from_dict(_allocation_pools)
 
-        dns_nameservers = d.pop("dns_nameservers", UNSET)
+        _dns_nameservers = d.pop("dns_nameservers", UNSET)
+        dns_nameservers: Union[Unset, ExternalSubnetDnsNameservers]
+        if isinstance(_dns_nameservers, Unset):
+            dns_nameservers = UNSET
+        else:
+            dns_nameservers = ExternalSubnetDnsNameservers.from_dict(_dns_nameservers)
 
         public_ip_range = d.pop("public_ip_range", UNSET)
 

@@ -9,6 +9,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_requested_offering import NestedRequestedOffering
+    from ..models.requested_resource_attributes import RequestedResourceAttributes
+    from ..models.requested_resource_limits import RequestedResourceLimits
 
 
 T = TypeVar("T", bound="RequestedResource")
@@ -27,8 +29,8 @@ class RequestedResource:
         call_resource_template_name (str):
         created_by (Union[None, str]):
         created_by_name (str):
-        attributes (Union[Unset, Any]):
-        limits (Union[Unset, Any]):
+        attributes (Union[Unset, RequestedResourceAttributes]):
+        limits (Union[Unset, RequestedResourceLimits]):
         description (Union[Unset, str]):
     """
 
@@ -41,8 +43,8 @@ class RequestedResource:
     call_resource_template_name: str
     created_by: Union[None, str]
     created_by_name: str
-    attributes: Union[Unset, Any] = UNSET
-    limits: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "RequestedResourceAttributes"] = UNSET
+    limits: Union[Unset, "RequestedResourceLimits"] = UNSET
     description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -67,9 +69,13 @@ class RequestedResource:
 
         created_by_name = self.created_by_name
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
-        limits = self.limits
+        limits: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.limits, Unset):
+            limits = self.limits.to_dict()
 
         description = self.description
 
@@ -100,6 +106,8 @@ class RequestedResource:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_requested_offering import NestedRequestedOffering
+        from ..models.requested_resource_attributes import RequestedResourceAttributes
+        from ..models.requested_resource_limits import RequestedResourceLimits
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -130,9 +138,19 @@ class RequestedResource:
 
         created_by_name = d.pop("created_by_name")
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, RequestedResourceAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = RequestedResourceAttributes.from_dict(_attributes)
 
-        limits = d.pop("limits", UNSET)
+        _limits = d.pop("limits", UNSET)
+        limits: Union[Unset, RequestedResourceLimits]
+        if isinstance(_limits, Unset):
+            limits = UNSET
+        else:
+            limits = RequestedResourceLimits.from_dict(_limits)
 
         description = d.pop("description", UNSET)
 

@@ -1,12 +1,16 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.patched_open_stack_snapshot_request_metadata import PatchedOpenStackSnapshotRequestMetadata
+
 
 T = TypeVar("T", bound="PatchedOpenStackSnapshotRequest")
 
@@ -17,14 +21,14 @@ class PatchedOpenStackSnapshotRequest:
     Attributes:
         name (Union[Unset, str]):
         description (Union[Unset, str]):
-        metadata (Union[Unset, Any]):
+        metadata (Union[Unset, PatchedOpenStackSnapshotRequestMetadata]):
         kept_until (Union[None, Unset, datetime.datetime]): Guaranteed time of snapshot retention. If null - keep
             forever.
     """
 
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
-    metadata: Union[Unset, Any] = UNSET
+    metadata: Union[Unset, "PatchedOpenStackSnapshotRequestMetadata"] = UNSET
     kept_until: Union[None, Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -33,7 +37,9 @@ class PatchedOpenStackSnapshotRequest:
 
         description = self.description
 
-        metadata = self.metadata
+        metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
 
         kept_until: Union[None, Unset, str]
         if isinstance(self.kept_until, Unset):
@@ -59,12 +65,19 @@ class PatchedOpenStackSnapshotRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.patched_open_stack_snapshot_request_metadata import PatchedOpenStackSnapshotRequestMetadata
+
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
 
-        metadata = d.pop("metadata", UNSET)
+        _metadata = d.pop("metadata", UNSET)
+        metadata: Union[Unset, PatchedOpenStackSnapshotRequestMetadata]
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = PatchedOpenStackSnapshotRequestMetadata.from_dict(_metadata)
 
         def _parse_kept_until(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:

@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.rancher_hpa_metrics import RancherHPAMetrics
+
 
 T = TypeVar("T", bound="RancherHPA")
 
@@ -35,7 +39,7 @@ class RancherHPA:
         workload_name (str):
         current_replicas (int):
         desired_replicas (int):
-        metrics (Any):
+        metrics (RancherHPAMetrics):
         description (Union[Unset, str]):
         workload (Union[None, Unset, str]):
         min_replicas (Union[Unset, int]):
@@ -61,7 +65,7 @@ class RancherHPA:
     workload_name: str
     current_replicas: int
     desired_replicas: int
-    metrics: Any
+    metrics: "RancherHPAMetrics"
     description: Union[Unset, str] = UNSET
     workload: Union[None, Unset, str] = UNSET
     min_replicas: Union[Unset, int] = UNSET
@@ -110,7 +114,7 @@ class RancherHPA:
 
         desired_replicas = self.desired_replicas
 
-        metrics = self.metrics
+        metrics = self.metrics.to_dict()
 
         description = self.description
 
@@ -163,6 +167,8 @@ class RancherHPA:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.rancher_hpa_metrics import RancherHPAMetrics
+
         d = dict(src_dict)
         url = d.pop("url")
 
@@ -217,7 +223,7 @@ class RancherHPA:
 
         desired_replicas = d.pop("desired_replicas")
 
-        metrics = d.pop("metrics")
+        metrics = RancherHPAMetrics.from_dict(d.pop("metrics"))
 
         description = d.pop("description", UNSET)
 

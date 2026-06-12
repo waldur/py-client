@@ -15,6 +15,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.message_blocks_item import MessageBlocksItem
+    from ..models.message_injection_categories import MessageInjectionCategories
+    from ..models.message_pii_categories import MessagePiiCategories
 
 
 T = TypeVar("T", bound="Message")
@@ -42,8 +44,8 @@ class Message:
             overwritten on resubmit.
         is_flagged (Union[Unset, bool]):
         severity (Union[Unset, InjectionSeverityEnum]):
-        injection_categories (Union[Unset, Any]):
-        pii_categories (Union[Unset, Any]):
+        injection_categories (Union[Unset, MessageInjectionCategories]):
+        pii_categories (Union[Unset, MessagePiiCategories]):
         action_taken (Union[Unset, ActionTakenEnum]):
     """
 
@@ -63,8 +65,8 @@ class Message:
     feedback_submitted_at: Union[None, datetime.datetime]
     is_flagged: Union[Unset, bool] = UNSET
     severity: Union[Unset, InjectionSeverityEnum] = UNSET
-    injection_categories: Union[Unset, Any] = UNSET
-    pii_categories: Union[Unset, Any] = UNSET
+    injection_categories: Union[Unset, "MessageInjectionCategories"] = UNSET
+    pii_categories: Union[Unset, "MessagePiiCategories"] = UNSET
     action_taken: Union[Unset, ActionTakenEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -122,9 +124,13 @@ class Message:
         if not isinstance(self.severity, Unset):
             severity = self.severity.value
 
-        injection_categories = self.injection_categories
+        injection_categories: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.injection_categories, Unset):
+            injection_categories = self.injection_categories.to_dict()
 
-        pii_categories = self.pii_categories
+        pii_categories: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.pii_categories, Unset):
+            pii_categories = self.pii_categories.to_dict()
 
         action_taken: Union[Unset, str] = UNSET
         if not isinstance(self.action_taken, Unset):
@@ -166,6 +172,8 @@ class Message:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.message_blocks_item import MessageBlocksItem
+        from ..models.message_injection_categories import MessageInjectionCategories
+        from ..models.message_pii_categories import MessagePiiCategories
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -269,9 +277,19 @@ class Message:
         else:
             severity = InjectionSeverityEnum(_severity)
 
-        injection_categories = d.pop("injection_categories", UNSET)
+        _injection_categories = d.pop("injection_categories", UNSET)
+        injection_categories: Union[Unset, MessageInjectionCategories]
+        if isinstance(_injection_categories, Unset):
+            injection_categories = UNSET
+        else:
+            injection_categories = MessageInjectionCategories.from_dict(_injection_categories)
 
-        pii_categories = d.pop("pii_categories", UNSET)
+        _pii_categories = d.pop("pii_categories", UNSET)
+        pii_categories: Union[Unset, MessagePiiCategories]
+        if isinstance(_pii_categories, Unset):
+            pii_categories = UNSET
+        else:
+            pii_categories = MessagePiiCategories.from_dict(_pii_categories)
 
         _action_taken = d.pop("action_taken", UNSET)
         action_taken: Union[Unset, ActionTakenEnum]

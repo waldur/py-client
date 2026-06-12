@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.organization_group import OrganizationGroup
+    from ..models.service_provider_allowed_domains import ServiceProviderAllowedDomains
 
 
 T = TypeVar("T", bound="ServiceProvider")
@@ -36,8 +37,8 @@ class ServiceProvider:
         image (Union[None, Unset, str]):
         organization_groups (Union[Unset, list['OrganizationGroup']]):
         offering_count (Union[Unset, int]):
-        allowed_domains (Union[Unset, Any]): List of allowed domains for offering endpoints. Only staff can modify this
-            field.
+        allowed_domains (Union[Unset, ServiceProviderAllowedDomains]): List of allowed domains for offering endpoints.
+            Only staff can modify this field.
     """
 
     url: Union[Unset, str] = UNSET
@@ -56,7 +57,7 @@ class ServiceProvider:
     image: Union[None, Unset, str] = UNSET
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     offering_count: Union[Unset, int] = UNSET
-    allowed_domains: Union[Unset, Any] = UNSET
+    allowed_domains: Union[Unset, "ServiceProviderAllowedDomains"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -107,7 +108,9 @@ class ServiceProvider:
 
         offering_count = self.offering_count
 
-        allowed_domains = self.allowed_domains
+        allowed_domains: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.allowed_domains, Unset):
+            allowed_domains = self.allowed_domains.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -152,6 +155,7 @@ class ServiceProvider:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.organization_group import OrganizationGroup
+        from ..models.service_provider_allowed_domains import ServiceProviderAllowedDomains
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -213,7 +217,12 @@ class ServiceProvider:
 
         offering_count = d.pop("offering_count", UNSET)
 
-        allowed_domains = d.pop("allowed_domains", UNSET)
+        _allowed_domains = d.pop("allowed_domains", UNSET)
+        allowed_domains: Union[Unset, ServiceProviderAllowedDomains]
+        if isinstance(_allowed_domains, Unset):
+            allowed_domains = UNSET
+        else:
+            allowed_domains = ServiceProviderAllowedDomains.from_dict(_allowed_domains)
 
         service_provider = cls(
             url=url,

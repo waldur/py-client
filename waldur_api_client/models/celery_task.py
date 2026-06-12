@@ -1,10 +1,11 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
+    from ..models.celery_task_args_item import CeleryTaskArgsItem
     from ..models.celery_task_delivery_info import CeleryTaskDeliveryInfo
     from ..models.celery_task_kwargs import CeleryTaskKwargs
 
@@ -18,7 +19,7 @@ class CeleryTask:
     Attributes:
         id (str): Unique task identifier
         name (str): Name of the task
-        args (list[Any]): Positional arguments passed to the task
+        args (list['CeleryTaskArgsItem']): Positional arguments passed to the task
         kwargs (CeleryTaskKwargs): Keyword arguments passed to the task
         type_ (str): Task type
         hostname (str): Worker hostname executing the task
@@ -30,7 +31,7 @@ class CeleryTask:
 
     id: str
     name: str
-    args: list[Any]
+    args: list["CeleryTaskArgsItem"]
     kwargs: "CeleryTaskKwargs"
     type_: str
     hostname: str
@@ -45,7 +46,10 @@ class CeleryTask:
 
         name = self.name
 
-        args = self.args
+        args = []
+        for args_item_data in self.args:
+            args_item = args_item_data.to_dict()
+            args.append(args_item)
 
         kwargs = self.kwargs.to_dict()
 
@@ -82,6 +86,7 @@ class CeleryTask:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.celery_task_args_item import CeleryTaskArgsItem
         from ..models.celery_task_delivery_info import CeleryTaskDeliveryInfo
         from ..models.celery_task_kwargs import CeleryTaskKwargs
 
@@ -90,7 +95,12 @@ class CeleryTask:
 
         name = d.pop("name")
 
-        args = cast(list[Any], d.pop("args"))
+        args = []
+        _args = d.pop("args")
+        for args_item_data in _args:
+            args_item = CeleryTaskArgsItem.from_dict(args_item_data)
+
+            args.append(args_item)
 
         kwargs = CeleryTaskKwargs.from_dict(d.pop("kwargs"))
 

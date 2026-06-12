@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -10,6 +10,11 @@ from dateutil.parser import isoparse
 from ..models.reviewer_suggestion_status_enum import ReviewerSuggestionStatusEnum
 from ..models.source_type_enum import SourceTypeEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.reviewer_suggestion_matched_keywords import ReviewerSuggestionMatchedKeywords
+    from ..models.reviewer_suggestion_top_matching_proposals import ReviewerSuggestionTopMatchingProposals
+
 
 T = TypeVar("T", bound="ReviewerSuggestion")
 
@@ -35,8 +40,10 @@ class ReviewerSuggestion:
         reviewed_by (Union[None, str]):
         reviewed_by_name (str):
         reviewed_at (Union[None, datetime.datetime]):
-        matched_keywords (Any): Keywords from reviewer's expertise that matched the source text
-        top_matching_proposals (Any): Top proposals with highest affinity: [{uuid, name, slug, affinity}, ...]
+        matched_keywords (ReviewerSuggestionMatchedKeywords): Keywords from reviewer's expertise that matched the source
+            text
+        top_matching_proposals (ReviewerSuggestionTopMatchingProposals): Top proposals with highest affinity: [{uuid,
+            name, slug, affinity}, ...]
         source_type (SourceTypeEnum):
         source_type_display (str):
         created (datetime.datetime):
@@ -61,8 +68,8 @@ class ReviewerSuggestion:
     reviewed_by: Union[None, str]
     reviewed_by_name: str
     reviewed_at: Union[None, datetime.datetime]
-    matched_keywords: Any
-    top_matching_proposals: Any
+    matched_keywords: "ReviewerSuggestionMatchedKeywords"
+    top_matching_proposals: "ReviewerSuggestionTopMatchingProposals"
     source_type: SourceTypeEnum
     source_type_display: str
     created: datetime.datetime
@@ -112,9 +119,9 @@ class ReviewerSuggestion:
         else:
             reviewed_at = self.reviewed_at
 
-        matched_keywords = self.matched_keywords
+        matched_keywords = self.matched_keywords.to_dict()
 
-        top_matching_proposals = self.top_matching_proposals
+        top_matching_proposals = self.top_matching_proposals.to_dict()
 
         source_type = self.source_type.value
 
@@ -165,6 +172,9 @@ class ReviewerSuggestion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.reviewer_suggestion_matched_keywords import ReviewerSuggestionMatchedKeywords
+        from ..models.reviewer_suggestion_top_matching_proposals import ReviewerSuggestionTopMatchingProposals
+
         d = dict(src_dict)
         url = d.pop("url")
 
@@ -228,9 +238,9 @@ class ReviewerSuggestion:
 
         reviewed_at = _parse_reviewed_at(d.pop("reviewed_at"))
 
-        matched_keywords = d.pop("matched_keywords")
+        matched_keywords = ReviewerSuggestionMatchedKeywords.from_dict(d.pop("matched_keywords"))
 
-        top_matching_proposals = d.pop("top_matching_proposals")
+        top_matching_proposals = ReviewerSuggestionTopMatchingProposals.from_dict(d.pop("top_matching_proposals"))
 
         source_type = SourceTypeEnum(d.pop("source_type"))
 

@@ -14,7 +14,11 @@ from ..models.rich_text_toolbar_level_enum import RichTextToolbarLevelEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.question_allowed_file_types import QuestionAllowedFileTypes
+    from ..models.question_allowed_mime_types import QuestionAllowedMimeTypes
+    from ..models.question_guidance_answer_value_type_0 import QuestionGuidanceAnswerValueType0
     from ..models.question_options import QuestionOptions
+    from ..models.question_review_answer_value_type_0 import QuestionReviewAnswerValueType0
 
 
 T = TypeVar("T", bound="Question")
@@ -33,11 +37,11 @@ class Question:
         order (Union[Unset, int]):
         min_value (Union[None, Unset, str]): Minimum value allowed for NUMBER, YEAR, and RATING type questions
         max_value (Union[None, Unset, str]): Maximum value allowed for NUMBER, YEAR, and RATING type questions
-        allowed_file_types (Union[Unset, Any]): List of allowed file extensions (e.g., ['.pdf', '.doc', '.docx']). If
-            empty, all file types are allowed.
-        allowed_mime_types (Union[Unset, Any]): List of allowed MIME types (e.g., ['application/pdf',
-            'application/msword']). If empty, MIME type validation is not enforced. When both extensions and MIME types are
-            specified, files must match both criteria for security.
+        allowed_file_types (Union[Unset, QuestionAllowedFileTypes]): List of allowed file extensions (e.g., ['.pdf',
+            '.doc', '.docx']). If empty, all file types are allowed.
+        allowed_mime_types (Union[Unset, QuestionAllowedMimeTypes]): List of allowed MIME types (e.g.,
+            ['application/pdf', 'application/msword']). If empty, MIME type validation is not enforced. When both extensions
+            and MIME types are specified, files must match both criteria for security.
         max_file_size_mb (Union[None, Unset, int]): Maximum file size in megabytes. If not set, no size limit is
             enforced.
         max_files_count (Union[None, Unset, int]): Maximum number of files allowed for MULTIPLE_FILES type questions. If
@@ -54,9 +58,10 @@ class Question:
         rich_text_toolbar_level (Union[BlankEnum, RichTextToolbarLevelEnum, Unset]): Toolbar level for the rich text
             editor: 'minimal', 'standard', or 'extended'.
         operator (Union[BlankEnum, ChecklistOperators, Unset]):
-        review_answer_value (Union[Unset, Any]): Answer value that trigger review.
+        review_answer_value (Union['QuestionReviewAnswerValueType0', None, Unset]): Answer value that trigger review.
         always_requires_review (Union[Unset, bool]): This question always requires review regardless of answer
-        guidance_answer_value (Union[Unset, Any]): Answer value that triggers display of user guidance.
+        guidance_answer_value (Union['QuestionGuidanceAnswerValueType0', None, Unset]): Answer value that triggers
+            display of user guidance.
         guidance_operator (Union[BlankEnum, ChecklistOperators, Unset]): Operator to use when comparing answer with
             guidance_answer_value
         always_show_guidance (Union[Unset, bool]): Show user guidance always, regardless of answer. If False, guidance
@@ -73,8 +78,8 @@ class Question:
     order: Union[Unset, int] = UNSET
     min_value: Union[None, Unset, str] = UNSET
     max_value: Union[None, Unset, str] = UNSET
-    allowed_file_types: Union[Unset, Any] = UNSET
-    allowed_mime_types: Union[Unset, Any] = UNSET
+    allowed_file_types: Union[Unset, "QuestionAllowedFileTypes"] = UNSET
+    allowed_mime_types: Union[Unset, "QuestionAllowedMimeTypes"] = UNSET
     max_file_size_mb: Union[None, Unset, int] = UNSET
     max_files_count: Union[None, Unset, int] = UNSET
     likert_scale_length: Union[LikertScaleLengthEnum, None, Unset] = UNSET
@@ -84,15 +89,18 @@ class Question:
     rich_text_char_limit: Union[None, Unset, int] = UNSET
     rich_text_toolbar_level: Union[BlankEnum, RichTextToolbarLevelEnum, Unset] = UNSET
     operator: Union[BlankEnum, ChecklistOperators, Unset] = UNSET
-    review_answer_value: Union[Unset, Any] = UNSET
+    review_answer_value: Union["QuestionReviewAnswerValueType0", None, Unset] = UNSET
     always_requires_review: Union[Unset, bool] = UNSET
-    guidance_answer_value: Union[Unset, Any] = UNSET
+    guidance_answer_value: Union["QuestionGuidanceAnswerValueType0", None, Unset] = UNSET
     guidance_operator: Union[BlankEnum, ChecklistOperators, Unset] = UNSET
     always_show_guidance: Union[Unset, bool] = UNSET
     dependency_logic_operator: Union[Unset, DependencyLogicOperatorEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.question_guidance_answer_value_type_0 import QuestionGuidanceAnswerValueType0
+        from ..models.question_review_answer_value_type_0 import QuestionReviewAnswerValueType0
+
         uuid = str(self.uuid)
 
         question_options = []
@@ -124,9 +132,13 @@ class Question:
         else:
             max_value = self.max_value
 
-        allowed_file_types = self.allowed_file_types
+        allowed_file_types: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.allowed_file_types, Unset):
+            allowed_file_types = self.allowed_file_types.to_dict()
 
-        allowed_mime_types = self.allowed_mime_types
+        allowed_mime_types: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.allowed_mime_types, Unset):
+            allowed_mime_types = self.allowed_mime_types.to_dict()
 
         max_file_size_mb: Union[None, Unset, int]
         if isinstance(self.max_file_size_mb, Unset):
@@ -176,11 +188,23 @@ class Question:
         else:
             operator = self.operator.value
 
-        review_answer_value = self.review_answer_value
+        review_answer_value: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.review_answer_value, Unset):
+            review_answer_value = UNSET
+        elif isinstance(self.review_answer_value, QuestionReviewAnswerValueType0):
+            review_answer_value = self.review_answer_value.to_dict()
+        else:
+            review_answer_value = self.review_answer_value
 
         always_requires_review = self.always_requires_review
 
-        guidance_answer_value = self.guidance_answer_value
+        guidance_answer_value: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.guidance_answer_value, Unset):
+            guidance_answer_value = UNSET
+        elif isinstance(self.guidance_answer_value, QuestionGuidanceAnswerValueType0):
+            guidance_answer_value = self.guidance_answer_value.to_dict()
+        else:
+            guidance_answer_value = self.guidance_answer_value
 
         guidance_operator: Union[Unset, str]
         if isinstance(self.guidance_operator, Unset):
@@ -257,7 +281,11 @@ class Question:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.question_allowed_file_types import QuestionAllowedFileTypes
+        from ..models.question_allowed_mime_types import QuestionAllowedMimeTypes
+        from ..models.question_guidance_answer_value_type_0 import QuestionGuidanceAnswerValueType0
         from ..models.question_options import QuestionOptions
+        from ..models.question_review_answer_value_type_0 import QuestionReviewAnswerValueType0
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -302,9 +330,19 @@ class Question:
 
         max_value = _parse_max_value(d.pop("max_value", UNSET))
 
-        allowed_file_types = d.pop("allowed_file_types", UNSET)
+        _allowed_file_types = d.pop("allowed_file_types", UNSET)
+        allowed_file_types: Union[Unset, QuestionAllowedFileTypes]
+        if isinstance(_allowed_file_types, Unset):
+            allowed_file_types = UNSET
+        else:
+            allowed_file_types = QuestionAllowedFileTypes.from_dict(_allowed_file_types)
 
-        allowed_mime_types = d.pop("allowed_mime_types", UNSET)
+        _allowed_mime_types = d.pop("allowed_mime_types", UNSET)
+        allowed_mime_types: Union[Unset, QuestionAllowedMimeTypes]
+        if isinstance(_allowed_mime_types, Unset):
+            allowed_mime_types = UNSET
+        else:
+            allowed_mime_types = QuestionAllowedMimeTypes.from_dict(_allowed_mime_types)
 
         def _parse_max_file_size_mb(data: object) -> Union[None, Unset, int]:
             if data is None:
@@ -394,11 +432,41 @@ class Question:
 
         operator = _parse_operator(d.pop("operator", UNSET))
 
-        review_answer_value = d.pop("review_answer_value", UNSET)
+        def _parse_review_answer_value(data: object) -> Union["QuestionReviewAnswerValueType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                review_answer_value_type_0 = QuestionReviewAnswerValueType0.from_dict(data)
+
+                return review_answer_value_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["QuestionReviewAnswerValueType0", None, Unset], data)
+
+        review_answer_value = _parse_review_answer_value(d.pop("review_answer_value", UNSET))
 
         always_requires_review = d.pop("always_requires_review", UNSET)
 
-        guidance_answer_value = d.pop("guidance_answer_value", UNSET)
+        def _parse_guidance_answer_value(data: object) -> Union["QuestionGuidanceAnswerValueType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                guidance_answer_value_type_0 = QuestionGuidanceAnswerValueType0.from_dict(data)
+
+                return guidance_answer_value_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["QuestionGuidanceAnswerValueType0", None, Unset], data)
+
+        guidance_answer_value = _parse_guidance_answer_value(d.pop("guidance_answer_value", UNSET))
 
         def _parse_guidance_operator(data: object) -> Union[BlankEnum, ChecklistOperators, Unset]:
             if isinstance(data, Unset):

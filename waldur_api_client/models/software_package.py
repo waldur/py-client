@@ -12,6 +12,9 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.nested_parent_software import NestedParentSoftware
     from ..models.nested_software_version import NestedSoftwareVersion
+    from ..models.software_package_categories import SoftwarePackageCategories
+    from ..models.software_package_licenses import SoftwarePackageLicenses
+    from ..models.software_package_maintainers import SoftwarePackageMaintainers
 
 
 T = TypeVar("T", bound="SoftwarePackage")
@@ -38,9 +41,9 @@ class SoftwarePackage:
         versions (list['NestedSoftwareVersion']):
         description (Union[Unset, str]):
         homepage (Union[None, Unset, str]):
-        categories (Union[Unset, Any]): Package categories (e.g., ['bio', 'hpc', 'build-tools'])
-        licenses (Union[Unset, Any]): Software licenses (e.g., ['GPL-3.0', 'MIT'])
-        maintainers (Union[Unset, Any]): Package maintainers
+        categories (Union[Unset, SoftwarePackageCategories]): Package categories (e.g., ['bio', 'hpc', 'build-tools'])
+        licenses (Union[Unset, SoftwarePackageLicenses]): Software licenses (e.g., ['GPL-3.0', 'MIT'])
+        maintainers (Union[Unset, SoftwarePackageMaintainers]): Package maintainers
         is_extension (Union[Unset, bool]): Whether this package is an extension of another package
     """
 
@@ -61,9 +64,9 @@ class SoftwarePackage:
     versions: list["NestedSoftwareVersion"]
     description: Union[Unset, str] = UNSET
     homepage: Union[None, Unset, str] = UNSET
-    categories: Union[Unset, Any] = UNSET
-    licenses: Union[Unset, Any] = UNSET
-    maintainers: Union[Unset, Any] = UNSET
+    categories: Union[Unset, "SoftwarePackageCategories"] = UNSET
+    licenses: Union[Unset, "SoftwarePackageLicenses"] = UNSET
+    maintainers: Union[Unset, "SoftwarePackageMaintainers"] = UNSET
     is_extension: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -115,11 +118,17 @@ class SoftwarePackage:
         else:
             homepage = self.homepage
 
-        categories = self.categories
+        categories: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.categories, Unset):
+            categories = self.categories.to_dict()
 
-        licenses = self.licenses
+        licenses: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.licenses, Unset):
+            licenses = self.licenses.to_dict()
 
-        maintainers = self.maintainers
+        maintainers: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.maintainers, Unset):
+            maintainers = self.maintainers.to_dict()
 
         is_extension = self.is_extension
 
@@ -163,6 +172,9 @@ class SoftwarePackage:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_parent_software import NestedParentSoftware
         from ..models.nested_software_version import NestedSoftwareVersion
+        from ..models.software_package_categories import SoftwarePackageCategories
+        from ..models.software_package_licenses import SoftwarePackageLicenses
+        from ..models.software_package_maintainers import SoftwarePackageMaintainers
 
         d = dict(src_dict)
         url = d.pop("url")
@@ -221,11 +233,26 @@ class SoftwarePackage:
 
         homepage = _parse_homepage(d.pop("homepage", UNSET))
 
-        categories = d.pop("categories", UNSET)
+        _categories = d.pop("categories", UNSET)
+        categories: Union[Unset, SoftwarePackageCategories]
+        if isinstance(_categories, Unset):
+            categories = UNSET
+        else:
+            categories = SoftwarePackageCategories.from_dict(_categories)
 
-        licenses = d.pop("licenses", UNSET)
+        _licenses = d.pop("licenses", UNSET)
+        licenses: Union[Unset, SoftwarePackageLicenses]
+        if isinstance(_licenses, Unset):
+            licenses = UNSET
+        else:
+            licenses = SoftwarePackageLicenses.from_dict(_licenses)
 
-        maintainers = d.pop("maintainers", UNSET)
+        _maintainers = d.pop("maintainers", UNSET)
+        maintainers: Union[Unset, SoftwarePackageMaintainers]
+        if isinstance(_maintainers, Unset):
+            maintainers = UNSET
+        else:
+            maintainers = SoftwarePackageMaintainers.from_dict(_maintainers)
 
         is_extension = d.pop("is_extension", UNSET)
 

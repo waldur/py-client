@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.event_subscription_observable_objects import EventSubscriptionObservableObjects
+
 
 T = TypeVar("T", bound="EventSubscription")
 
@@ -26,10 +30,10 @@ class EventSubscription:
         modified (datetime.datetime):
         source_ip (Union[None, str]): An IPv4 or IPv6 address.
         description (Union[Unset, str]):
-        observable_objects (Union[Unset, Any]): List of objects to observe. Each item must have 'object_type' (one of:
-            order, user_role, resource, offering_user, importable_resources, service_account, course_account,
-            resource_periodic_limits) and optionally 'object_id' (integer). Example: [{"object_type": "resource"},
-            {"object_type": "order", "object_id": 123}]
+        observable_objects (Union[Unset, EventSubscriptionObservableObjects]): List of objects to observe. Each item
+            must have 'object_type' (one of: order, user_role, resource, offering_user, importable_resources,
+            service_account, course_account, resource_periodic_limits) and optionally 'object_id' (integer). Example:
+            [{"object_type": "resource"}, {"object_type": "order", "object_id": 123}]
     """
 
     uuid: UUID
@@ -42,7 +46,7 @@ class EventSubscription:
     modified: datetime.datetime
     source_ip: Union[None, str]
     description: Union[Unset, str] = UNSET
-    observable_objects: Union[Unset, Any] = UNSET
+    observable_objects: Union[Unset, "EventSubscriptionObservableObjects"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -67,7 +71,9 @@ class EventSubscription:
 
         description = self.description
 
-        observable_objects = self.observable_objects
+        observable_objects: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.observable_objects, Unset):
+            observable_objects = self.observable_objects.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -93,6 +99,8 @@ class EventSubscription:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.event_subscription_observable_objects import EventSubscriptionObservableObjects
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -119,7 +127,12 @@ class EventSubscription:
 
         description = d.pop("description", UNSET)
 
-        observable_objects = d.pop("observable_objects", UNSET)
+        _observable_objects = d.pop("observable_objects", UNSET)
+        observable_objects: Union[Unset, EventSubscriptionObservableObjects]
+        if isinstance(_observable_objects, Unset):
+            observable_objects = UNSET
+        else:
+            observable_objects = EventSubscriptionObservableObjects.from_dict(_observable_objects)
 
         event_subscription = cls(
             uuid=uuid,

@@ -1,11 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.patched_resource_project_request_limits import PatchedResourceProjectRequestLimits
+
 
 T = TypeVar("T", bound="PatchedResourceProjectRequest")
 
@@ -17,13 +21,14 @@ class PatchedResourceProjectRequest:
         resource (Union[Unset, UUID]):
         name (Union[Unset, str]):
         description (Union[Unset, str]):
-        limits (Union[Unset, Any]): Dictionary mapping component types to quota values. Same format as Resource.limits.
+        limits (Union[Unset, PatchedResourceProjectRequestLimits]): Dictionary mapping component types to quota values.
+            Same format as Resource.limits.
     """
 
     resource: Union[Unset, UUID] = UNSET
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
-    limits: Union[Unset, Any] = UNSET
+    limits: Union[Unset, "PatchedResourceProjectRequestLimits"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -35,7 +40,9 @@ class PatchedResourceProjectRequest:
 
         description = self.description
 
-        limits = self.limits
+        limits: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.limits, Unset):
+            limits = self.limits.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -53,6 +60,8 @@ class PatchedResourceProjectRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.patched_resource_project_request_limits import PatchedResourceProjectRequestLimits
+
         d = dict(src_dict)
         _resource = d.pop("resource", UNSET)
         resource: Union[Unset, UUID]
@@ -65,7 +74,12 @@ class PatchedResourceProjectRequest:
 
         description = d.pop("description", UNSET)
 
-        limits = d.pop("limits", UNSET)
+        _limits = d.pop("limits", UNSET)
+        limits: Union[Unset, PatchedResourceProjectRequestLimits]
+        if isinstance(_limits, Unset):
+            limits = UNSET
+        else:
+            limits = PatchedResourceProjectRequestLimits.from_dict(_limits)
 
         patched_resource_project_request = cls(
             resource=resource,

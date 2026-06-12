@@ -1,11 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.checklist_operators import ChecklistOperators
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.question_dependency_request_required_answer_value import QuestionDependencyRequestRequiredAnswerValue
+
 
 T = TypeVar("T", bound="QuestionDependencyRequest")
 
@@ -16,13 +20,14 @@ class QuestionDependencyRequest:
     Attributes:
         question (str):
         depends_on_question (str):
-        required_answer_value (Any): The answer value(s) that make this question visible
+        required_answer_value (QuestionDependencyRequestRequiredAnswerValue): The answer value(s) that make this
+            question visible
         operator (Union[Unset, ChecklistOperators]):
     """
 
     question: str
     depends_on_question: str
-    required_answer_value: Any
+    required_answer_value: "QuestionDependencyRequestRequiredAnswerValue"
     operator: Union[Unset, ChecklistOperators] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -31,7 +36,7 @@ class QuestionDependencyRequest:
 
         depends_on_question = self.depends_on_question
 
-        required_answer_value = self.required_answer_value
+        required_answer_value = self.required_answer_value.to_dict()
 
         operator: Union[Unset, str] = UNSET
         if not isinstance(self.operator, Unset):
@@ -53,12 +58,16 @@ class QuestionDependencyRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.question_dependency_request_required_answer_value import (
+            QuestionDependencyRequestRequiredAnswerValue,
+        )
+
         d = dict(src_dict)
         question = d.pop("question")
 
         depends_on_question = d.pop("depends_on_question")
 
-        required_answer_value = d.pop("required_answer_value")
+        required_answer_value = QuestionDependencyRequestRequiredAnswerValue.from_dict(d.pop("required_answer_value"))
 
         _operator = d.pop("operator", UNSET)
         operator: Union[Unset, ChecklistOperators]

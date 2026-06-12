@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.resource_terminate_request_termination_attributes import ResourceTerminateRequestTerminationAttributes
+
 
 T = TypeVar("T", bound="ResourceTerminateRequest")
 
@@ -13,14 +17,17 @@ T = TypeVar("T", bound="ResourceTerminateRequest")
 class ResourceTerminateRequest:
     """
     Attributes:
-        attributes (Union[Unset, Any]): Optional attributes/parameters to pass to the termination operation
+        attributes (Union[Unset, ResourceTerminateRequestTerminationAttributes]): Optional attributes/parameters to pass
+            to the termination operation
     """
 
-    attributes: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "ResourceTerminateRequestTerminationAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -32,8 +39,17 @@ class ResourceTerminateRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.resource_terminate_request_termination_attributes import (
+            ResourceTerminateRequestTerminationAttributes,
+        )
+
         d = dict(src_dict)
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, ResourceTerminateRequestTerminationAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = ResourceTerminateRequestTerminationAttributes.from_dict(_attributes)
 
         resource_terminate_request = cls(
             attributes=attributes,

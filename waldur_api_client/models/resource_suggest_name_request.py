@@ -1,11 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.resource_suggest_name_request_attributes import ResourceSuggestNameRequestAttributes
+
 
 T = TypeVar("T", bound="ResourceSuggestNameRequest")
 
@@ -17,13 +21,13 @@ class ResourceSuggestNameRequest:
         project (UUID):
         offering (UUID):
         plan (Union[None, UUID, Unset]):
-        attributes (Union[Unset, Any]):
+        attributes (Union[Unset, ResourceSuggestNameRequestAttributes]):
     """
 
     project: UUID
     offering: UUID
     plan: Union[None, UUID, Unset] = UNSET
-    attributes: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "ResourceSuggestNameRequestAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,7 +43,9 @@ class ResourceSuggestNameRequest:
         else:
             plan = self.plan
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -58,6 +64,8 @@ class ResourceSuggestNameRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.resource_suggest_name_request_attributes import ResourceSuggestNameRequestAttributes
+
         d = dict(src_dict)
         project = UUID(d.pop("project"))
 
@@ -80,7 +88,12 @@ class ResourceSuggestNameRequest:
 
         plan = _parse_plan(d.pop("plan", UNSET))
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, ResourceSuggestNameRequestAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = ResourceSuggestNameRequestAttributes.from_dict(_attributes)
 
         resource_suggest_name_request = cls(
             project=project,

@@ -28,6 +28,8 @@ if TYPE_CHECKING:
     from ..models.offering_options import OfferingOptions
     from ..models.organization_group import OrganizationGroup
     from ..models.provider_offering_details_attributes import ProviderOfferingDetailsAttributes
+    from ..models.provider_offering_details_backend_id_rules import ProviderOfferingDetailsBackendIdRules
+    from ..models.provider_offering_details_backend_metadata import ProviderOfferingDetailsBackendMetadata
     from ..models.provider_offering_details_service_attributes import ProviderOfferingDetailsServiceAttributes
     from ..models.quota import Quota
 
@@ -94,8 +96,8 @@ class ProviderOfferingDetails:
         longitude (Union[None, Unset, float]):
         country (Union[BlankEnum, CountryEnum, Unset]): Country code (ISO 3166-1 alpha-2)
         backend_id (Union[Unset, str]):
-        backend_id_rules (Union[Unset, Any]): Validation rules for resource backend_id: format regex and uniqueness
-            scope.
+        backend_id_rules (Union[Unset, ProviderOfferingDetailsBackendIdRules]): Validation rules for resource
+            backend_id: format regex and uniqueness scope.
         organization_groups (Union[Unset, list['OrganizationGroup']]):
         tags (Union[Unset, list['NestedTag']]):
         image (Union[None, Unset, str]):
@@ -105,7 +107,7 @@ class ProviderOfferingDetails:
         parent_description (Union[None, Unset, str]):
         parent_uuid (Union[None, UUID, Unset]):
         parent_name (Union[None, Unset, str]):
-        backend_metadata (Union[Unset, Any]):
+        backend_metadata (Union[Unset, ProviderOfferingDetailsBackendMetadata]):
         has_compliance_requirements (Union[Unset, bool]):
         billing_type_classification (Union[Unset, str]): Classify offering components by billing type.
             Returns 'limit_only', 'usage_only', or 'mixed'.
@@ -176,7 +178,7 @@ class ProviderOfferingDetails:
     longitude: Union[None, Unset, float] = UNSET
     country: Union[BlankEnum, CountryEnum, Unset] = UNSET
     backend_id: Union[Unset, str] = UNSET
-    backend_id_rules: Union[Unset, Any] = UNSET
+    backend_id_rules: Union[Unset, "ProviderOfferingDetailsBackendIdRules"] = UNSET
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     tags: Union[Unset, list["NestedTag"]] = UNSET
     image: Union[None, Unset, str] = UNSET
@@ -186,7 +188,7 @@ class ProviderOfferingDetails:
     parent_description: Union[None, Unset, str] = UNSET
     parent_uuid: Union[None, UUID, Unset] = UNSET
     parent_name: Union[None, Unset, str] = UNSET
-    backend_metadata: Union[Unset, Any] = UNSET
+    backend_metadata: Union[Unset, "ProviderOfferingDetailsBackendMetadata"] = UNSET
     has_compliance_requirements: Union[Unset, bool] = UNSET
     billing_type_classification: Union[Unset, str] = UNSET
     effective_available_limits: Union[Unset, list[str]] = UNSET
@@ -438,7 +440,9 @@ class ProviderOfferingDetails:
 
         backend_id = self.backend_id
 
-        backend_id_rules = self.backend_id_rules
+        backend_id_rules: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_id_rules, Unset):
+            backend_id_rules = self.backend_id_rules.to_dict()
 
         organization_groups: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.organization_groups, Unset):
@@ -498,7 +502,9 @@ class ProviderOfferingDetails:
         else:
             parent_name = self.parent_name
 
-        backend_metadata = self.backend_metadata
+        backend_metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_metadata, Unset):
+            backend_metadata = self.backend_metadata.to_dict()
 
         has_compliance_requirements = self.has_compliance_requirements
 
@@ -750,6 +756,8 @@ class ProviderOfferingDetails:
         from ..models.offering_options import OfferingOptions
         from ..models.organization_group import OrganizationGroup
         from ..models.provider_offering_details_attributes import ProviderOfferingDetailsAttributes
+        from ..models.provider_offering_details_backend_id_rules import ProviderOfferingDetailsBackendIdRules
+        from ..models.provider_offering_details_backend_metadata import ProviderOfferingDetailsBackendMetadata
         from ..models.provider_offering_details_service_attributes import ProviderOfferingDetailsServiceAttributes
         from ..models.quota import Quota
 
@@ -1094,7 +1102,12 @@ class ProviderOfferingDetails:
 
         backend_id = d.pop("backend_id", UNSET)
 
-        backend_id_rules = d.pop("backend_id_rules", UNSET)
+        _backend_id_rules = d.pop("backend_id_rules", UNSET)
+        backend_id_rules: Union[Unset, ProviderOfferingDetailsBackendIdRules]
+        if isinstance(_backend_id_rules, Unset):
+            backend_id_rules = UNSET
+        else:
+            backend_id_rules = ProviderOfferingDetailsBackendIdRules.from_dict(_backend_id_rules)
 
         organization_groups = []
         _organization_groups = d.pop("organization_groups", UNSET)
@@ -1181,7 +1194,12 @@ class ProviderOfferingDetails:
 
         parent_name = _parse_parent_name(d.pop("parent_name", UNSET))
 
-        backend_metadata = d.pop("backend_metadata", UNSET)
+        _backend_metadata = d.pop("backend_metadata", UNSET)
+        backend_metadata: Union[Unset, ProviderOfferingDetailsBackendMetadata]
+        if isinstance(_backend_metadata, Unset):
+            backend_metadata = UNSET
+        else:
+            backend_metadata = ProviderOfferingDetailsBackendMetadata.from_dict(_backend_metadata)
 
         has_compliance_requirements = d.pop("has_compliance_requirements", UNSET)
 

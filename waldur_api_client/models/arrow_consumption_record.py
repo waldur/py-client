@@ -1,11 +1,15 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+if TYPE_CHECKING:
+    from ..models.arrow_consumption_record_raw_data import ArrowConsumptionRecordRawData
+
 
 T = TypeVar("T", bound="ArrowConsumptionRecord")
 
@@ -37,7 +41,7 @@ class ArrowConsumptionRecord:
         is_finalized (bool):
         is_reconciled (bool):
         adjustment_amount (Union[None, str]):
-        raw_data (Any): Raw consumption data for debugging
+        raw_data (ArrowConsumptionRecordRawData): Raw consumption data for debugging
         created (datetime.datetime):
         modified (datetime.datetime):
     """
@@ -65,7 +69,7 @@ class ArrowConsumptionRecord:
     is_finalized: bool
     is_reconciled: bool
     adjustment_amount: Union[None, str]
-    raw_data: Any
+    raw_data: "ArrowConsumptionRecordRawData"
     created: datetime.datetime
     modified: datetime.datetime
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -132,7 +136,7 @@ class ArrowConsumptionRecord:
         adjustment_amount: Union[None, str]
         adjustment_amount = self.adjustment_amount
 
-        raw_data = self.raw_data
+        raw_data = self.raw_data.to_dict()
 
         created = self.created.isoformat()
 
@@ -175,6 +179,8 @@ class ArrowConsumptionRecord:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.arrow_consumption_record_raw_data import ArrowConsumptionRecordRawData
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -276,7 +282,7 @@ class ArrowConsumptionRecord:
 
         adjustment_amount = _parse_adjustment_amount(d.pop("adjustment_amount"))
 
-        raw_data = d.pop("raw_data")
+        raw_data = ArrowConsumptionRecordRawData.from_dict(d.pop("raw_data"))
 
         created = isoparse(d.pop("created"))
 

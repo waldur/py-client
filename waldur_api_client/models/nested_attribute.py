@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,7 @@ from ..models.attribute_type_enum import AttributeTypeEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.nested_attribute_default_type_0 import NestedAttributeDefaultType0
     from ..models.nested_attribute_option import NestedAttributeOption
 
 
@@ -25,7 +26,7 @@ class NestedAttribute:
         type_ (Union[Unset, AttributeTypeEnum]):
         options (Union[Unset, list['NestedAttributeOption']]):
         required (Union[Unset, bool]): A value must be provided for the attribute.
-        default (Union[Unset, Any]):
+        default (Union['NestedAttributeDefaultType0', None, Unset]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -34,10 +35,12 @@ class NestedAttribute:
     type_: Union[Unset, AttributeTypeEnum] = UNSET
     options: Union[Unset, list["NestedAttributeOption"]] = UNSET
     required: Union[Unset, bool] = UNSET
-    default: Union[Unset, Any] = UNSET
+    default: Union["NestedAttributeDefaultType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.nested_attribute_default_type_0 import NestedAttributeDefaultType0
+
         uuid: Union[Unset, str] = UNSET
         if not isinstance(self.uuid, Unset):
             uuid = str(self.uuid)
@@ -59,7 +62,13 @@ class NestedAttribute:
 
         required = self.required
 
-        default = self.default
+        default: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.default, Unset):
+            default = UNSET
+        elif isinstance(self.default, NestedAttributeDefaultType0):
+            default = self.default.to_dict()
+        else:
+            default = self.default
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -83,6 +92,7 @@ class NestedAttribute:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.nested_attribute_default_type_0 import NestedAttributeDefaultType0
         from ..models.nested_attribute_option import NestedAttributeOption
 
         d = dict(src_dict)
@@ -113,7 +123,22 @@ class NestedAttribute:
 
         required = d.pop("required", UNSET)
 
-        default = d.pop("default", UNSET)
+        def _parse_default(data: object) -> Union["NestedAttributeDefaultType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                default_type_0 = NestedAttributeDefaultType0.from_dict(data)
+
+                return default_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["NestedAttributeDefaultType0", None, Unset], data)
+
+        default = _parse_default(d.pop("default", UNSET))
 
         nested_attribute = cls(
             uuid=uuid,

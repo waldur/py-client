@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.rancher_service_create_request_selector_type_0 import RancherServiceCreateRequestSelectorType0
     from ..models.rancher_workload_create_request import RancherWorkloadCreateRequest
 
 
@@ -27,7 +28,7 @@ class RancherServiceCreateRequest:
         runtime_state (Union[Unset, str]):
         namespace (Union[Unset, str]):
         cluster_ip (Union[None, Unset, str]): An IPv4 or IPv6 address.
-        selector (Union[Unset, Any]):
+        selector (Union['RancherServiceCreateRequestSelectorType0', None, Unset]):
         target_workloads (Union[Unset, list['RancherWorkloadCreateRequest']]):
     """
 
@@ -41,11 +42,13 @@ class RancherServiceCreateRequest:
     runtime_state: Union[Unset, str] = UNSET
     namespace: Union[Unset, str] = UNSET
     cluster_ip: Union[None, Unset, str] = UNSET
-    selector: Union[Unset, Any] = UNSET
+    selector: Union["RancherServiceCreateRequestSelectorType0", None, Unset] = UNSET
     target_workloads: Union[Unset, list["RancherWorkloadCreateRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.rancher_service_create_request_selector_type_0 import RancherServiceCreateRequestSelectorType0
+
         name = self.name
 
         service_settings = self.service_settings
@@ -70,7 +73,13 @@ class RancherServiceCreateRequest:
         else:
             cluster_ip = self.cluster_ip
 
-        selector = self.selector
+        selector: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.selector, Unset):
+            selector = UNSET
+        elif isinstance(self.selector, RancherServiceCreateRequestSelectorType0):
+            selector = self.selector.to_dict()
+        else:
+            selector = self.selector
 
         target_workloads: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.target_workloads, Unset):
@@ -111,6 +120,7 @@ class RancherServiceCreateRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.rancher_service_create_request_selector_type_0 import RancherServiceCreateRequestSelectorType0
         from ..models.rancher_workload_create_request import RancherWorkloadCreateRequest
 
         d = dict(src_dict)
@@ -141,7 +151,22 @@ class RancherServiceCreateRequest:
 
         cluster_ip = _parse_cluster_ip(d.pop("cluster_ip", UNSET))
 
-        selector = d.pop("selector", UNSET)
+        def _parse_selector(data: object) -> Union["RancherServiceCreateRequestSelectorType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                selector_type_0 = RancherServiceCreateRequestSelectorType0.from_dict(data)
+
+                return selector_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["RancherServiceCreateRequestSelectorType0", None, Unset], data)
+
+        selector = _parse_selector(d.pop("selector", UNSET))
 
         target_workloads = []
         _target_workloads = d.pop("target_workloads", UNSET)

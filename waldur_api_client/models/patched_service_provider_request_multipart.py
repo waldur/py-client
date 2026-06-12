@@ -1,12 +1,19 @@
+import json
 from collections.abc import Mapping
 from io import BytesIO
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from .. import types
 from ..types import UNSET, File, Unset
+
+if TYPE_CHECKING:
+    from ..models.patched_service_provider_request_multipart_allowed_domains import (
+        PatchedServiceProviderRequestMultipartAllowedDomains,
+    )
+
 
 T = TypeVar("T", bound="PatchedServiceProviderRequestMultipart")
 
@@ -18,14 +25,14 @@ class PatchedServiceProviderRequestMultipart:
         description (Union[Unset, str]):
         enable_notifications (Union[Unset, bool]):
         image (Union[File, None, Unset]):
-        allowed_domains (Union[Unset, Any]): List of allowed domains for offering endpoints. Only staff can modify this
-            field.
+        allowed_domains (Union[Unset, PatchedServiceProviderRequestMultipartAllowedDomains]): List of allowed domains
+            for offering endpoints. Only staff can modify this field.
     """
 
     description: Union[Unset, str] = UNSET
     enable_notifications: Union[Unset, bool] = UNSET
     image: Union[File, None, Unset] = UNSET
-    allowed_domains: Union[Unset, Any] = UNSET
+    allowed_domains: Union[Unset, "PatchedServiceProviderRequestMultipartAllowedDomains"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,7 +49,9 @@ class PatchedServiceProviderRequestMultipart:
         else:
             image = self.image
 
-        allowed_domains = self.allowed_domains
+        allowed_domains: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.allowed_domains, Unset):
+            allowed_domains = self.allowed_domains.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -74,7 +83,9 @@ class PatchedServiceProviderRequestMultipart:
                 files.append(("image", (None, str(self.image).encode(), "text/plain")))
 
         if not isinstance(self.allowed_domains, Unset):
-            files.append(("allowed_domains", (None, str(self.allowed_domains).encode(), "text/plain")))
+            files.append(
+                ("allowed_domains", (None, json.dumps(self.allowed_domains.to_dict()).encode(), "application/json"))
+            )
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -83,6 +94,10 @@ class PatchedServiceProviderRequestMultipart:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.patched_service_provider_request_multipart_allowed_domains import (
+            PatchedServiceProviderRequestMultipartAllowedDomains,
+        )
+
         d = dict(src_dict)
         description = d.pop("description", UNSET)
 
@@ -105,7 +120,12 @@ class PatchedServiceProviderRequestMultipart:
 
         image = _parse_image(d.pop("image", UNSET))
 
-        allowed_domains = d.pop("allowed_domains", UNSET)
+        _allowed_domains = d.pop("allowed_domains", UNSET)
+        allowed_domains: Union[Unset, PatchedServiceProviderRequestMultipartAllowedDomains]
+        if isinstance(_allowed_domains, Unset):
+            allowed_domains = UNSET
+        else:
+            allowed_domains = PatchedServiceProviderRequestMultipartAllowedDomains.from_dict(_allowed_domains)
 
         patched_service_provider_request_multipart = cls(
             description=description,

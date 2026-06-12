@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.event_context import EventContext
+
 
 T = TypeVar("T", bound="Event")
 
@@ -20,14 +24,14 @@ class Event:
         created (Union[Unset, datetime.datetime]):
         event_type (Union[Unset, str]):
         message (Union[Unset, str]):
-        context (Union[Unset, Any]):
+        context (Union[Unset, EventContext]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     event_type: Union[Unset, str] = UNSET
     message: Union[Unset, str] = UNSET
-    context: Union[Unset, Any] = UNSET
+    context: Union[Unset, "EventContext"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -43,7 +47,9 @@ class Event:
 
         message = self.message
 
-        context = self.context
+        context: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.context, Unset):
+            context = self.context.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -63,6 +69,8 @@ class Event:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.event_context import EventContext
+
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
         uuid: Union[Unset, UUID]
@@ -82,7 +90,12 @@ class Event:
 
         message = d.pop("message", UNSET)
 
-        context = d.pop("context", UNSET)
+        _context = d.pop("context", UNSET)
+        context: Union[Unset, EventContext]
+        if isinstance(_context, Unset):
+            context = UNSET
+        else:
+            context = EventContext.from_dict(_context)
 
         event = cls(
             uuid=uuid,

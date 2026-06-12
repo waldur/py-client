@@ -10,6 +10,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.customer_component_usage_policy_options import CustomerComponentUsagePolicyOptions
     from ..models.nested_customer_usage_policy_component import NestedCustomerUsagePolicyComponent
 
 
@@ -33,7 +34,8 @@ class CustomerComponentUsagePolicy:
         fired_datetime (datetime.datetime):
         affected_resources_count (int):
         component_limits_set (list['NestedCustomerUsagePolicyComponent']):
-        options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
+        options (Union[Unset, CustomerComponentUsagePolicyOptions]): Fields for saving actions extra data. Keys are name
+            of actions.
     """
 
     uuid: UUID
@@ -49,7 +51,7 @@ class CustomerComponentUsagePolicy:
     fired_datetime: datetime.datetime
     affected_resources_count: int
     component_limits_set: list["NestedCustomerUsagePolicyComponent"]
-    options: Union[Unset, Any] = UNSET
+    options: Union[Unset, "CustomerComponentUsagePolicyOptions"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -82,7 +84,9 @@ class CustomerComponentUsagePolicy:
             component_limits_set_item = component_limits_set_item_data.to_dict()
             component_limits_set.append(component_limits_set_item)
 
-        options = self.options
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -110,6 +114,7 @@ class CustomerComponentUsagePolicy:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.customer_component_usage_policy_options import CustomerComponentUsagePolicyOptions
         from ..models.nested_customer_usage_policy_component import NestedCustomerUsagePolicyComponent
 
         d = dict(src_dict)
@@ -144,7 +149,12 @@ class CustomerComponentUsagePolicy:
 
             component_limits_set.append(component_limits_set_item)
 
-        options = d.pop("options", UNSET)
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, CustomerComponentUsagePolicyOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = CustomerComponentUsagePolicyOptions.from_dict(_options)
 
         customer_component_usage_policy = cls(
             uuid=uuid,

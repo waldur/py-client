@@ -22,6 +22,8 @@ if TYPE_CHECKING:
     from ..models.resource_current_usages import ResourceCurrentUsages
     from ..models.resource_limit_usage import ResourceLimitUsage
     from ..models.resource_limits import ResourceLimits
+    from ..models.resource_offering_plugin_options import ResourceOfferingPluginOptions
+    from ..models.resource_options_type_0 import ResourceOptionsType0
     from ..models.resource_renewal_date_type_0 import ResourceRenewalDateType0
 
 
@@ -41,8 +43,8 @@ class Resource:
         offering_type (Union[Unset, str]):
         offering_shared (Union[Unset, bool]): Accessible to all customers.
         offering_billable (Union[Unset, bool]): Purchase and usage is invoiced.
-        offering_plugin_options (Union[Unset, Any]): Public data used by specific plugin, such as storage mode for
-            OpenStack.
+        offering_plugin_options (Union[Unset, ResourceOfferingPluginOptions]): Public data used by specific plugin, such
+            as storage mode for OpenStack.
         provider_name (Union[Unset, str]):
         provider_uuid (Union[Unset, UUID]):
         provider_slug (Union[Unset, str]):
@@ -112,7 +114,7 @@ class Resource:
         endpoints (Union[Unset, list['NestedEndpoint']]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
-        options (Union[Unset, Any]):
+        options (Union['ResourceOptionsType0', None, Unset]):
         available_actions (Union[Unset, list[str]]):
         last_sync (Union[Unset, datetime.datetime]):
         order_in_progress (Union['OrderDetails', None, Unset]):
@@ -136,7 +138,7 @@ class Resource:
     offering_type: Union[Unset, str] = UNSET
     offering_shared: Union[Unset, bool] = UNSET
     offering_billable: Union[Unset, bool] = UNSET
-    offering_plugin_options: Union[Unset, Any] = UNSET
+    offering_plugin_options: Union[Unset, "ResourceOfferingPluginOptions"] = UNSET
     provider_name: Union[Unset, str] = UNSET
     provider_uuid: Union[Unset, UUID] = UNSET
     provider_slug: Union[Unset, str] = UNSET
@@ -198,7 +200,7 @@ class Resource:
     endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
-    options: Union[Unset, Any] = UNSET
+    options: Union["ResourceOptionsType0", None, Unset] = UNSET
     available_actions: Union[Unset, list[str]] = UNSET
     last_sync: Union[Unset, datetime.datetime] = UNSET
     order_in_progress: Union["OrderDetails", None, Unset] = UNSET
@@ -214,6 +216,7 @@ class Resource:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.order_details import OrderDetails
+        from ..models.resource_options_type_0 import ResourceOptionsType0
         from ..models.resource_renewal_date_type_0 import ResourceRenewalDateType0
 
         offering = self.offering
@@ -236,7 +239,9 @@ class Resource:
 
         offering_billable = self.offering_billable
 
-        offering_plugin_options = self.offering_plugin_options
+        offering_plugin_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.offering_plugin_options, Unset):
+            offering_plugin_options = self.offering_plugin_options.to_dict()
 
         provider_name = self.provider_name
 
@@ -466,7 +471,13 @@ class Resource:
 
         error_traceback = self.error_traceback
 
-        options = self.options
+        options: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.options, Unset):
+            options = UNSET
+        elif isinstance(self.options, ResourceOptionsType0):
+            options = self.options.to_dict()
+        else:
+            options = self.options
 
         available_actions: Union[Unset, list[str]] = UNSET
         if not isinstance(self.available_actions, Unset):
@@ -704,6 +715,8 @@ class Resource:
         from ..models.resource_current_usages import ResourceCurrentUsages
         from ..models.resource_limit_usage import ResourceLimitUsage
         from ..models.resource_limits import ResourceLimits
+        from ..models.resource_offering_plugin_options import ResourceOfferingPluginOptions
+        from ..models.resource_options_type_0 import ResourceOptionsType0
         from ..models.resource_renewal_date_type_0 import ResourceRenewalDateType0
 
         d = dict(src_dict)
@@ -730,7 +743,12 @@ class Resource:
 
         offering_billable = d.pop("offering_billable", UNSET)
 
-        offering_plugin_options = d.pop("offering_plugin_options", UNSET)
+        _offering_plugin_options = d.pop("offering_plugin_options", UNSET)
+        offering_plugin_options: Union[Unset, ResourceOfferingPluginOptions]
+        if isinstance(_offering_plugin_options, Unset):
+            offering_plugin_options = UNSET
+        else:
+            offering_plugin_options = ResourceOfferingPluginOptions.from_dict(_offering_plugin_options)
 
         provider_name = d.pop("provider_name", UNSET)
 
@@ -1088,7 +1106,22 @@ class Resource:
 
         error_traceback = d.pop("error_traceback", UNSET)
 
-        options = d.pop("options", UNSET)
+        def _parse_options(data: object) -> Union["ResourceOptionsType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                options_type_0 = ResourceOptionsType0.from_dict(data)
+
+                return options_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["ResourceOptionsType0", None, Unset], data)
+
+        options = _parse_options(d.pop("options", UNSET))
 
         available_actions = cast(list[str], d.pop("available_actions", UNSET))
 

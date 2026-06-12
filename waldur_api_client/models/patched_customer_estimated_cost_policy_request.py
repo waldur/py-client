@@ -1,11 +1,17 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.policy_period_enum import PolicyPeriodEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.patched_customer_estimated_cost_policy_request_options import (
+        PatchedCustomerEstimatedCostPolicyRequestOptions,
+    )
+
 
 T = TypeVar("T", bound="PatchedCustomerEstimatedCostPolicyRequest")
 
@@ -16,14 +22,15 @@ class PatchedCustomerEstimatedCostPolicyRequest:
     Attributes:
         scope (Union[Unset, str]):
         actions (Union[Unset, str]):
-        options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
+        options (Union[Unset, PatchedCustomerEstimatedCostPolicyRequestOptions]): Fields for saving actions extra data.
+            Keys are name of actions.
         limit_cost (Union[Unset, int]):
         period (Union[Unset, PolicyPeriodEnum]):
     """
 
     scope: Union[Unset, str] = UNSET
     actions: Union[Unset, str] = UNSET
-    options: Union[Unset, Any] = UNSET
+    options: Union[Unset, "PatchedCustomerEstimatedCostPolicyRequestOptions"] = UNSET
     limit_cost: Union[Unset, int] = UNSET
     period: Union[Unset, PolicyPeriodEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -33,7 +40,9 @@ class PatchedCustomerEstimatedCostPolicyRequest:
 
         actions = self.actions
 
-        options = self.options
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
         limit_cost = self.limit_cost
 
@@ -59,12 +68,21 @@ class PatchedCustomerEstimatedCostPolicyRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.patched_customer_estimated_cost_policy_request_options import (
+            PatchedCustomerEstimatedCostPolicyRequestOptions,
+        )
+
         d = dict(src_dict)
         scope = d.pop("scope", UNSET)
 
         actions = d.pop("actions", UNSET)
 
-        options = d.pop("options", UNSET)
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, PatchedCustomerEstimatedCostPolicyRequestOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = PatchedCustomerEstimatedCostPolicyRequestOptions.from_dict(_options)
 
         limit_cost = d.pop("limit_cost", UNSET)
 

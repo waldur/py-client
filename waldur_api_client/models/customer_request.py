@@ -1,7 +1,7 @@
 import datetime
 from collections.abc import Mapping
 from io import BytesIO
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -12,6 +12,12 @@ from .. import types
 from ..models.blank_enum import BlankEnum
 from ..models.country_enum import CountryEnum
 from ..types import UNSET, File, Unset
+
+if TYPE_CHECKING:
+    from ..models.customer_request_user_affiliations import CustomerRequestUserAffiliations
+    from ..models.customer_request_user_email_patterns import CustomerRequestUserEmailPatterns
+    from ..models.customer_request_user_identity_sources import CustomerRequestUserIdentitySources
+
 
 T = TypeVar("T", bound="CustomerRequest")
 
@@ -34,9 +40,10 @@ class CustomerRequest:
             this organization
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated
-        user_email_patterns (Union[Unset, Any]):
-        user_affiliations (Union[Unset, Any]):
-        user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
+        user_email_patterns (Union[Unset, CustomerRequestUserEmailPatterns]):
+        user_affiliations (Union[Unset, CustomerRequestUserAffiliations]):
+        user_identity_sources (Union[Unset, CustomerRequestUserIdentitySources]): List of allowed identity sources
+            (identity providers).
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         native_name (Union[Unset, str]):
         abbreviation (Union[Unset, str]):
@@ -82,9 +89,9 @@ class CustomerRequest:
     max_service_accounts: Union[None, Unset, int] = UNSET
     project_metadata_checklist: Union[None, UUID, Unset] = UNSET
     grace_period_days: Union[None, Unset, int] = UNSET
-    user_email_patterns: Union[Unset, Any] = UNSET
-    user_affiliations: Union[Unset, Any] = UNSET
-    user_identity_sources: Union[Unset, Any] = UNSET
+    user_email_patterns: Union[Unset, "CustomerRequestUserEmailPatterns"] = UNSET
+    user_affiliations: Union[Unset, "CustomerRequestUserAffiliations"] = UNSET
+    user_identity_sources: Union[Unset, "CustomerRequestUserIdentitySources"] = UNSET
     slug: Union[Unset, str] = UNSET
     native_name: Union[Unset, str] = UNSET
     abbreviation: Union[Unset, str] = UNSET
@@ -168,11 +175,17 @@ class CustomerRequest:
         else:
             grace_period_days = self.grace_period_days
 
-        user_email_patterns = self.user_email_patterns
+        user_email_patterns: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_email_patterns, Unset):
+            user_email_patterns = self.user_email_patterns.to_dict()
 
-        user_affiliations = self.user_affiliations
+        user_affiliations: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_affiliations, Unset):
+            user_affiliations = self.user_affiliations.to_dict()
 
-        user_identity_sources = self.user_identity_sources
+        user_identity_sources: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_identity_sources, Unset):
+            user_identity_sources = self.user_identity_sources.to_dict()
 
         slug = self.slug
 
@@ -348,6 +361,10 @@ class CustomerRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.customer_request_user_affiliations import CustomerRequestUserAffiliations
+        from ..models.customer_request_user_email_patterns import CustomerRequestUserEmailPatterns
+        from ..models.customer_request_user_identity_sources import CustomerRequestUserIdentitySources
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -429,11 +446,26 @@ class CustomerRequest:
 
         grace_period_days = _parse_grace_period_days(d.pop("grace_period_days", UNSET))
 
-        user_email_patterns = d.pop("user_email_patterns", UNSET)
+        _user_email_patterns = d.pop("user_email_patterns", UNSET)
+        user_email_patterns: Union[Unset, CustomerRequestUserEmailPatterns]
+        if isinstance(_user_email_patterns, Unset):
+            user_email_patterns = UNSET
+        else:
+            user_email_patterns = CustomerRequestUserEmailPatterns.from_dict(_user_email_patterns)
 
-        user_affiliations = d.pop("user_affiliations", UNSET)
+        _user_affiliations = d.pop("user_affiliations", UNSET)
+        user_affiliations: Union[Unset, CustomerRequestUserAffiliations]
+        if isinstance(_user_affiliations, Unset):
+            user_affiliations = UNSET
+        else:
+            user_affiliations = CustomerRequestUserAffiliations.from_dict(_user_affiliations)
 
-        user_identity_sources = d.pop("user_identity_sources", UNSET)
+        _user_identity_sources = d.pop("user_identity_sources", UNSET)
+        user_identity_sources: Union[Unset, CustomerRequestUserIdentitySources]
+        if isinstance(_user_identity_sources, Unset):
+            user_identity_sources = UNSET
+        else:
+            user_identity_sources = CustomerRequestUserIdentitySources.from_dict(_user_identity_sources)
 
         slug = d.pop("slug", UNSET)
 

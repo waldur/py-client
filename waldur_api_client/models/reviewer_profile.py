@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.reviewer_affiliation import ReviewerAffiliation
     from ..models.reviewer_expertise import ReviewerExpertise
+    from ..models.reviewer_profile_alternative_names import ReviewerProfileAlternativeNames
     from ..models.reviewer_profile_profile_completeness import ReviewerProfileProfileCompleteness
     from ..models.reviewer_publication import ReviewerPublication
     from ..models.reviewer_stats import ReviewerStats
@@ -44,7 +45,7 @@ class ReviewerProfile:
         modified (datetime.datetime):
         orcid_id (Union[None, Unset, str]): ORCID identifier (format: 0000-0000-0000-0000)
         biography (Union[Unset, str]): Professional biography / summary
-        alternative_names (Union[Unset, Any]): List of name variants used in publications
+        alternative_names (Union[Unset, ReviewerProfileAlternativeNames]): List of name variants used in publications
         available_for_reviews (Union[Unset, bool]): Whether reviewer is currently accepting review requests
     """
 
@@ -67,7 +68,7 @@ class ReviewerProfile:
     modified: datetime.datetime
     orcid_id: Union[None, Unset, str] = UNSET
     biography: Union[Unset, str] = UNSET
-    alternative_names: Union[Unset, Any] = UNSET
+    alternative_names: Union[Unset, "ReviewerProfileAlternativeNames"] = UNSET
     available_for_reviews: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -131,7 +132,9 @@ class ReviewerProfile:
 
         biography = self.biography
 
-        alternative_names = self.alternative_names
+        alternative_names: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.alternative_names, Unset):
+            alternative_names = self.alternative_names.to_dict()
 
         available_for_reviews = self.available_for_reviews
 
@@ -173,6 +176,7 @@ class ReviewerProfile:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.reviewer_affiliation import ReviewerAffiliation
         from ..models.reviewer_expertise import ReviewerExpertise
+        from ..models.reviewer_profile_alternative_names import ReviewerProfileAlternativeNames
         from ..models.reviewer_profile_profile_completeness import ReviewerProfileProfileCompleteness
         from ..models.reviewer_publication import ReviewerPublication
         from ..models.reviewer_stats import ReviewerStats
@@ -264,7 +268,12 @@ class ReviewerProfile:
 
         biography = d.pop("biography", UNSET)
 
-        alternative_names = d.pop("alternative_names", UNSET)
+        _alternative_names = d.pop("alternative_names", UNSET)
+        alternative_names: Union[Unset, ReviewerProfileAlternativeNames]
+        if isinstance(_alternative_names, Unset):
+            alternative_names = UNSET
+        else:
+            alternative_names = ReviewerProfileAlternativeNames.from_dict(_alternative_names)
 
         available_for_reviews = d.pop("available_for_reviews", UNSET)
 

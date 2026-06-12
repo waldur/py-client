@@ -1,8 +1,12 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+if TYPE_CHECKING:
+    from ..models.resource_set_limits_request_limits import ResourceSetLimitsRequestLimits
+
 
 T = TypeVar("T", bound="ResourceSetLimitsRequest")
 
@@ -11,14 +15,14 @@ T = TypeVar("T", bound="ResourceSetLimitsRequest")
 class ResourceSetLimitsRequest:
     """
     Attributes:
-        limits (Any): Dictionary mapping component types to their new limit values
+        limits (ResourceSetLimitsRequestLimits): Dictionary mapping component types to their new limit values
     """
 
-    limits: Any
+    limits: "ResourceSetLimitsRequestLimits"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        limits = self.limits
+        limits = self.limits.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -32,8 +36,10 @@ class ResourceSetLimitsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.resource_set_limits_request_limits import ResourceSetLimitsRequestLimits
+
         d = dict(src_dict)
-        limits = d.pop("limits")
+        limits = ResourceSetLimitsRequestLimits.from_dict(d.pop("limits"))
 
         resource_set_limits_request = cls(
             limits=limits,

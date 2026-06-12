@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.patched_requested_offering_request_attributes import PatchedRequestedOfferingRequestAttributes
+
 
 T = TypeVar("T", bound="PatchedRequestedOfferingRequest")
 
@@ -13,18 +17,20 @@ T = TypeVar("T", bound="PatchedRequestedOfferingRequest")
 class PatchedRequestedOfferingRequest:
     """
     Attributes:
-        attributes (Union[Unset, Any]):
+        attributes (Union[Unset, PatchedRequestedOfferingRequestAttributes]):
         plan (Union[None, Unset, str]):
         description (Union[Unset, str]):
     """
 
-    attributes: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "PatchedRequestedOfferingRequestAttributes"] = UNSET
     plan: Union[None, Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
         plan: Union[None, Unset, str]
         if isinstance(self.plan, Unset):
@@ -48,8 +54,15 @@ class PatchedRequestedOfferingRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.patched_requested_offering_request_attributes import PatchedRequestedOfferingRequestAttributes
+
         d = dict(src_dict)
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, PatchedRequestedOfferingRequestAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = PatchedRequestedOfferingRequestAttributes.from_dict(_attributes)
 
         def _parse_plan(data: object) -> Union[None, Unset, str]:
             if data is None:

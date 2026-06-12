@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.patched_rancher_ingress_request_rules import PatchedRancherIngressRequestRules
+
 
 T = TypeVar("T", bound="PatchedRancherIngressRequest")
 
@@ -23,7 +27,7 @@ class PatchedRancherIngressRequest:
         runtime_state (Union[Unset, str]):
         rancher_project (Union[Unset, str]):
         namespace (Union[Unset, str]):
-        rules (Union[Unset, Any]):
+        rules (Union[Unset, PatchedRancherIngressRequestRules]):
     """
 
     name: Union[Unset, str] = UNSET
@@ -36,7 +40,7 @@ class PatchedRancherIngressRequest:
     runtime_state: Union[Unset, str] = UNSET
     rancher_project: Union[Unset, str] = UNSET
     namespace: Union[Unset, str] = UNSET
-    rules: Union[Unset, Any] = UNSET
+    rules: Union[Unset, "PatchedRancherIngressRequestRules"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,7 +64,9 @@ class PatchedRancherIngressRequest:
 
         namespace = self.namespace
 
-        rules = self.rules
+        rules: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.rules, Unset):
+            rules = self.rules.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -92,6 +98,8 @@ class PatchedRancherIngressRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.patched_rancher_ingress_request_rules import PatchedRancherIngressRequestRules
+
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
@@ -113,7 +121,12 @@ class PatchedRancherIngressRequest:
 
         namespace = d.pop("namespace", UNSET)
 
-        rules = d.pop("rules", UNSET)
+        _rules = d.pop("rules", UNSET)
+        rules: Union[Unset, PatchedRancherIngressRequestRules]
+        if isinstance(_rules, Unset):
+            rules = UNSET
+        else:
+            rules = PatchedRancherIngressRequestRules.from_dict(_rules)
 
         patched_rancher_ingress_request = cls(
             name=name,

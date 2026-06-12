@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,10 @@ from dateutil.parser import isoparse
 
 from ..models.injection_severity_enum import InjectionSeverityEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.thread_session_flags import ThreadSessionFlags
+
 
 T = TypeVar("T", bound="ThreadSession")
 
@@ -20,7 +24,7 @@ class ThreadSession:
         uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         chat_session (Union[Unset, UUID]):
-        flags (Union[Unset, Any]):
+        flags (Union[Unset, ThreadSessionFlags]):
         is_archived (Union[Unset, bool]):
         message_count (Union[Unset, int]):
         input_tokens (Union[None, Unset, int]):
@@ -40,7 +44,7 @@ class ThreadSession:
     uuid: Union[Unset, UUID] = UNSET
     name: Union[Unset, str] = UNSET
     chat_session: Union[Unset, UUID] = UNSET
-    flags: Union[Unset, Any] = UNSET
+    flags: Union[Unset, "ThreadSessionFlags"] = UNSET
     is_archived: Union[Unset, bool] = UNSET
     message_count: Union[Unset, int] = UNSET
     input_tokens: Union[None, Unset, int] = UNSET
@@ -68,7 +72,9 @@ class ThreadSession:
         if not isinstance(self.chat_session, Unset):
             chat_session = str(self.chat_session)
 
-        flags = self.flags
+        flags: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.flags, Unset):
+            flags = self.flags.to_dict()
 
         is_archived = self.is_archived
 
@@ -168,6 +174,8 @@ class ThreadSession:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.thread_session_flags import ThreadSessionFlags
+
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
         uuid: Union[Unset, UUID]
@@ -185,7 +193,12 @@ class ThreadSession:
         else:
             chat_session = UUID(_chat_session)
 
-        flags = d.pop("flags", UNSET)
+        _flags = d.pop("flags", UNSET)
+        flags: Union[Unset, ThreadSessionFlags]
+        if isinstance(_flags, Unset):
+            flags = UNSET
+        else:
+            flags = ThreadSessionFlags.from_dict(_flags)
 
         is_archived = d.pop("is_archived", UNSET)
 

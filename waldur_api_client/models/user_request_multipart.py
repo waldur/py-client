@@ -1,7 +1,8 @@
 import datetime
+import json
 from collections.abc import Mapping
 from io import BytesIO
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,6 +12,12 @@ from .. import types
 from ..models.blank_enum import BlankEnum
 from ..models.gender_enum import GenderEnum
 from ..types import UNSET, File, Unset
+
+if TYPE_CHECKING:
+    from ..models.user_request_multipart_eduperson_assurance import UserRequestMultipartEdupersonAssurance
+    from ..models.user_request_multipart_managed_isds import UserRequestMultipartManagedIsds
+    from ..models.user_request_multipart_nationalities import UserRequestMultipartNationalities
+
 
 T = TypeVar("T", bound="UserRequestMultipart")
 
@@ -46,17 +53,19 @@ class UserRequestMultipart:
         address (Union[Unset, str]):
         country_of_residence (Union[Unset, str]):
         nationality (Union[Unset, str]): Primary citizenship (ISO 3166-1 alpha-2 code)
-        nationalities (Union[Unset, Any]): List of all citizenships (ISO 3166-1 alpha-2 codes)
+        nationalities (Union[Unset, UserRequestMultipartNationalities]): List of all citizenships (ISO 3166-1 alpha-2
+            codes)
         organization_country (Union[Unset, str]):
         organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if known
-        eduperson_assurance (Union[Unset, Any]): REFEDS assurance profile URIs from identity provider
+        eduperson_assurance (Union[Unset, UserRequestMultipartEdupersonAssurance]): REFEDS assurance profile URIs from
+            identity provider
         is_identity_manager (Union[Unset, bool]): Designates whether the user is allowed to manage remote user
             identities.
         can_use_personal_access_tokens (Union[Unset, bool]): Designates whether the user is allowed to create and use
             personal access tokens.
-        managed_isds (Union[Unset, Any]): List of ISD source identifiers this user can manage via Identity Bridge. E.g.,
-            ['isd:puhuri', 'isd:fenix']. Non-empty list implies identity manager role.
+        managed_isds (Union[Unset, UserRequestMultipartManagedIsds]): List of ISD source identifiers this user can
+            manage via Identity Bridge. E.g., ['isd:puhuri', 'isd:fenix']. Non-empty list implies identity manager role.
         deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.
     """
 
@@ -85,14 +94,14 @@ class UserRequestMultipart:
     address: Union[Unset, str] = UNSET
     country_of_residence: Union[Unset, str] = UNSET
     nationality: Union[Unset, str] = UNSET
-    nationalities: Union[Unset, Any] = UNSET
+    nationalities: Union[Unset, "UserRequestMultipartNationalities"] = UNSET
     organization_country: Union[Unset, str] = UNSET
     organization_type: Union[Unset, str] = UNSET
     organization_registry_code: Union[Unset, str] = UNSET
-    eduperson_assurance: Union[Unset, Any] = UNSET
+    eduperson_assurance: Union[Unset, "UserRequestMultipartEdupersonAssurance"] = UNSET
     is_identity_manager: Union[Unset, bool] = UNSET
     can_use_personal_access_tokens: Union[Unset, bool] = UNSET
-    managed_isds: Union[Unset, Any] = UNSET
+    managed_isds: Union[Unset, "UserRequestMultipartManagedIsds"] = UNSET
     deactivation_reason: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -172,7 +181,9 @@ class UserRequestMultipart:
 
         nationality = self.nationality
 
-        nationalities = self.nationalities
+        nationalities: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.nationalities, Unset):
+            nationalities = self.nationalities.to_dict()
 
         organization_country = self.organization_country
 
@@ -180,13 +191,17 @@ class UserRequestMultipart:
 
         organization_registry_code = self.organization_registry_code
 
-        eduperson_assurance = self.eduperson_assurance
+        eduperson_assurance: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.eduperson_assurance, Unset):
+            eduperson_assurance = self.eduperson_assurance.to_dict()
 
         is_identity_manager = self.is_identity_manager
 
         can_use_personal_access_tokens = self.can_use_personal_access_tokens
 
-        managed_isds = self.managed_isds
+        managed_isds: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.managed_isds, Unset):
+            managed_isds = self.managed_isds.to_dict()
 
         deactivation_reason = self.deactivation_reason
 
@@ -358,7 +373,9 @@ class UserRequestMultipart:
             files.append(("nationality", (None, str(self.nationality).encode(), "text/plain")))
 
         if not isinstance(self.nationalities, Unset):
-            files.append(("nationalities", (None, str(self.nationalities).encode(), "text/plain")))
+            files.append(
+                ("nationalities", (None, json.dumps(self.nationalities.to_dict()).encode(), "application/json"))
+            )
 
         if not isinstance(self.organization_country, Unset):
             files.append(("organization_country", (None, str(self.organization_country).encode(), "text/plain")))
@@ -372,7 +389,12 @@ class UserRequestMultipart:
             )
 
         if not isinstance(self.eduperson_assurance, Unset):
-            files.append(("eduperson_assurance", (None, str(self.eduperson_assurance).encode(), "text/plain")))
+            files.append(
+                (
+                    "eduperson_assurance",
+                    (None, json.dumps(self.eduperson_assurance.to_dict()).encode(), "application/json"),
+                )
+            )
 
         if not isinstance(self.is_identity_manager, Unset):
             files.append(("is_identity_manager", (None, str(self.is_identity_manager).encode(), "text/plain")))
@@ -386,7 +408,7 @@ class UserRequestMultipart:
             )
 
         if not isinstance(self.managed_isds, Unset):
-            files.append(("managed_isds", (None, str(self.managed_isds).encode(), "text/plain")))
+            files.append(("managed_isds", (None, json.dumps(self.managed_isds.to_dict()).encode(), "application/json")))
 
         if not isinstance(self.deactivation_reason, Unset):
             files.append(("deactivation_reason", (None, str(self.deactivation_reason).encode(), "text/plain")))
@@ -398,6 +420,10 @@ class UserRequestMultipart:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.user_request_multipart_eduperson_assurance import UserRequestMultipartEdupersonAssurance
+        from ..models.user_request_multipart_managed_isds import UserRequestMultipartManagedIsds
+        from ..models.user_request_multipart_nationalities import UserRequestMultipartNationalities
+
         d = dict(src_dict)
         username = d.pop("username")
 
@@ -509,7 +535,12 @@ class UserRequestMultipart:
 
         nationality = d.pop("nationality", UNSET)
 
-        nationalities = d.pop("nationalities", UNSET)
+        _nationalities = d.pop("nationalities", UNSET)
+        nationalities: Union[Unset, UserRequestMultipartNationalities]
+        if isinstance(_nationalities, Unset):
+            nationalities = UNSET
+        else:
+            nationalities = UserRequestMultipartNationalities.from_dict(_nationalities)
 
         organization_country = d.pop("organization_country", UNSET)
 
@@ -517,13 +548,23 @@ class UserRequestMultipart:
 
         organization_registry_code = d.pop("organization_registry_code", UNSET)
 
-        eduperson_assurance = d.pop("eduperson_assurance", UNSET)
+        _eduperson_assurance = d.pop("eduperson_assurance", UNSET)
+        eduperson_assurance: Union[Unset, UserRequestMultipartEdupersonAssurance]
+        if isinstance(_eduperson_assurance, Unset):
+            eduperson_assurance = UNSET
+        else:
+            eduperson_assurance = UserRequestMultipartEdupersonAssurance.from_dict(_eduperson_assurance)
 
         is_identity_manager = d.pop("is_identity_manager", UNSET)
 
         can_use_personal_access_tokens = d.pop("can_use_personal_access_tokens", UNSET)
 
-        managed_isds = d.pop("managed_isds", UNSET)
+        _managed_isds = d.pop("managed_isds", UNSET)
+        managed_isds: Union[Unset, UserRequestMultipartManagedIsds]
+        if isinstance(_managed_isds, Unset):
+            managed_isds = UNSET
+        else:
+            managed_isds = UserRequestMultipartManagedIsds.from_dict(_managed_isds)
 
         deactivation_reason = d.pop("deactivation_reason", UNSET)
 

@@ -15,6 +15,10 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.offering_user_consent_data_type_0 import OfferingUserConsentDataType0
+    from ..models.offering_user_user_active_isds import OfferingUserUserActiveIsds
+    from ..models.offering_user_user_affiliations import OfferingUserUserAffiliations
+    from ..models.offering_user_user_eduperson_assurance import OfferingUserUserEdupersonAssurance
+    from ..models.offering_user_user_nationalities import OfferingUserUserNationalities
 
 
 T = TypeVar("T", bound="OfferingUser")
@@ -41,24 +45,27 @@ class OfferingUser:
         user_phone_number (Union[Unset, str]):
         user_organization (Union[Unset, str]):
         user_job_title (Union[Unset, str]):
-        user_affiliations (Union[Unset, Any]): Person's affiliation within organization such as student, faculty, staff.
+        user_affiliations (Union[Unset, OfferingUserUserAffiliations]): Person's affiliation within organization such as
+            student, faculty, staff.
         user_gender (Union[BlankEnum, GenderEnum, None, Unset]): User's gender (male, female, or unknown)
         user_personal_title (Union[Unset, str]): Honorific title (Mr, Ms, Dr, Prof, etc.)
         user_place_of_birth (Union[Unset, str]):
         user_address (Union[Unset, str]):
         user_country_of_residence (Union[Unset, str]):
         user_nationality (Union[Unset, str]): Primary citizenship (ISO 3166-1 alpha-2 code)
-        user_nationalities (Union[Unset, Any]): List of all citizenships (ISO 3166-1 alpha-2 codes)
+        user_nationalities (Union[Unset, OfferingUserUserNationalities]): List of all citizenships (ISO 3166-1 alpha-2
+            codes)
         user_organization_country (Union[Unset, str]):
         user_organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         user_organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if
             known
-        user_eduperson_assurance (Union[Unset, Any]): REFEDS assurance profile URIs from identity provider
+        user_eduperson_assurance (Union[Unset, OfferingUserUserEdupersonAssurance]): REFEDS assurance profile URIs from
+            identity provider
         user_civil_number (Union[None, Unset, str]):
         user_birth_date (Union[None, Unset, datetime.date]):
         user_identity_source (Union[Unset, str]): Indicates what identity provider was used.
-        user_active_isds (Union[Unset, Any]): List of ISDs that have asserted this user exists. User is deactivated when
-            this becomes empty.
+        user_active_isds (Union[Unset, OfferingUserUserActiveIsds]): List of ISDs that have asserted this user exists.
+            User is deactivated when this becomes empty.
         created (Union[Unset, datetime.datetime]):
         modified (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
@@ -97,22 +104,22 @@ class OfferingUser:
     user_phone_number: Union[Unset, str] = UNSET
     user_organization: Union[Unset, str] = UNSET
     user_job_title: Union[Unset, str] = UNSET
-    user_affiliations: Union[Unset, Any] = UNSET
+    user_affiliations: Union[Unset, "OfferingUserUserAffiliations"] = UNSET
     user_gender: Union[BlankEnum, GenderEnum, None, Unset] = UNSET
     user_personal_title: Union[Unset, str] = UNSET
     user_place_of_birth: Union[Unset, str] = UNSET
     user_address: Union[Unset, str] = UNSET
     user_country_of_residence: Union[Unset, str] = UNSET
     user_nationality: Union[Unset, str] = UNSET
-    user_nationalities: Union[Unset, Any] = UNSET
+    user_nationalities: Union[Unset, "OfferingUserUserNationalities"] = UNSET
     user_organization_country: Union[Unset, str] = UNSET
     user_organization_type: Union[Unset, str] = UNSET
     user_organization_registry_code: Union[Unset, str] = UNSET
-    user_eduperson_assurance: Union[Unset, Any] = UNSET
+    user_eduperson_assurance: Union[Unset, "OfferingUserUserEdupersonAssurance"] = UNSET
     user_civil_number: Union[None, Unset, str] = UNSET
     user_birth_date: Union[None, Unset, datetime.date] = UNSET
     user_identity_source: Union[Unset, str] = UNSET
-    user_active_isds: Union[Unset, Any] = UNSET
+    user_active_isds: Union[Unset, "OfferingUserUserActiveIsds"] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     modified: Union[Unset, datetime.datetime] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
@@ -176,7 +183,9 @@ class OfferingUser:
 
         user_job_title = self.user_job_title
 
-        user_affiliations = self.user_affiliations
+        user_affiliations: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_affiliations, Unset):
+            user_affiliations = self.user_affiliations.to_dict()
 
         user_gender: Union[None, Unset, str]
         if isinstance(self.user_gender, Unset):
@@ -198,7 +207,9 @@ class OfferingUser:
 
         user_nationality = self.user_nationality
 
-        user_nationalities = self.user_nationalities
+        user_nationalities: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_nationalities, Unset):
+            user_nationalities = self.user_nationalities.to_dict()
 
         user_organization_country = self.user_organization_country
 
@@ -206,7 +217,9 @@ class OfferingUser:
 
         user_organization_registry_code = self.user_organization_registry_code
 
-        user_eduperson_assurance = self.user_eduperson_assurance
+        user_eduperson_assurance: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_eduperson_assurance, Unset):
+            user_eduperson_assurance = self.user_eduperson_assurance.to_dict()
 
         user_civil_number: Union[None, Unset, str]
         if isinstance(self.user_civil_number, Unset):
@@ -224,7 +237,9 @@ class OfferingUser:
 
         user_identity_source = self.user_identity_source
 
-        user_active_isds = self.user_active_isds
+        user_active_isds: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_active_isds, Unset):
+            user_active_isds = self.user_active_isds.to_dict()
 
         created: Union[Unset, str] = UNSET
         if not isinstance(self.created, Unset):
@@ -381,6 +396,10 @@ class OfferingUser:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.offering_user_consent_data_type_0 import OfferingUserConsentDataType0
+        from ..models.offering_user_user_active_isds import OfferingUserUserActiveIsds
+        from ..models.offering_user_user_affiliations import OfferingUserUserAffiliations
+        from ..models.offering_user_user_eduperson_assurance import OfferingUserUserEdupersonAssurance
+        from ..models.offering_user_user_nationalities import OfferingUserUserNationalities
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -437,7 +456,12 @@ class OfferingUser:
 
         user_job_title = d.pop("user_job_title", UNSET)
 
-        user_affiliations = d.pop("user_affiliations", UNSET)
+        _user_affiliations = d.pop("user_affiliations", UNSET)
+        user_affiliations: Union[Unset, OfferingUserUserAffiliations]
+        if isinstance(_user_affiliations, Unset):
+            user_affiliations = UNSET
+        else:
+            user_affiliations = OfferingUserUserAffiliations.from_dict(_user_affiliations)
 
         def _parse_user_gender(data: object) -> Union[BlankEnum, GenderEnum, None, Unset]:
             if data is None:
@@ -474,7 +498,12 @@ class OfferingUser:
 
         user_nationality = d.pop("user_nationality", UNSET)
 
-        user_nationalities = d.pop("user_nationalities", UNSET)
+        _user_nationalities = d.pop("user_nationalities", UNSET)
+        user_nationalities: Union[Unset, OfferingUserUserNationalities]
+        if isinstance(_user_nationalities, Unset):
+            user_nationalities = UNSET
+        else:
+            user_nationalities = OfferingUserUserNationalities.from_dict(_user_nationalities)
 
         user_organization_country = d.pop("user_organization_country", UNSET)
 
@@ -482,7 +511,12 @@ class OfferingUser:
 
         user_organization_registry_code = d.pop("user_organization_registry_code", UNSET)
 
-        user_eduperson_assurance = d.pop("user_eduperson_assurance", UNSET)
+        _user_eduperson_assurance = d.pop("user_eduperson_assurance", UNSET)
+        user_eduperson_assurance: Union[Unset, OfferingUserUserEdupersonAssurance]
+        if isinstance(_user_eduperson_assurance, Unset):
+            user_eduperson_assurance = UNSET
+        else:
+            user_eduperson_assurance = OfferingUserUserEdupersonAssurance.from_dict(_user_eduperson_assurance)
 
         def _parse_user_civil_number(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -512,7 +546,12 @@ class OfferingUser:
 
         user_identity_source = d.pop("user_identity_source", UNSET)
 
-        user_active_isds = d.pop("user_active_isds", UNSET)
+        _user_active_isds = d.pop("user_active_isds", UNSET)
+        user_active_isds: Union[Unset, OfferingUserUserActiveIsds]
+        if isinstance(_user_active_isds, Unset):
+            user_active_isds = UNSET
+        else:
+            user_active_isds = OfferingUserUserActiveIsds.from_dict(_user_active_isds)
 
         _created = d.pop("created", UNSET)
         created: Union[Unset, datetime.datetime]

@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.backend_resource_backend_metadata import BackendResourceBackendMetadata
+
 
 T = TypeVar("T", bound="BackendResource")
 
@@ -28,7 +32,7 @@ class BackendResource:
         offering_name (str):
         offering_url (str):
         backend_id (Union[Unset, str]):
-        backend_metadata (Union[Unset, Any]):
+        backend_metadata (Union[Unset, BackendResourceBackendMetadata]):
     """
 
     url: str
@@ -43,7 +47,7 @@ class BackendResource:
     offering_name: str
     offering_url: str
     backend_id: Union[Unset, str] = UNSET
-    backend_metadata: Union[Unset, Any] = UNSET
+    backend_metadata: Union[Unset, "BackendResourceBackendMetadata"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -71,7 +75,9 @@ class BackendResource:
 
         backend_id = self.backend_id
 
-        backend_metadata = self.backend_metadata
+        backend_metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_metadata, Unset):
+            backend_metadata = self.backend_metadata.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -99,6 +105,8 @@ class BackendResource:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.backend_resource_backend_metadata import BackendResourceBackendMetadata
+
         d = dict(src_dict)
         url = d.pop("url")
 
@@ -124,7 +132,12 @@ class BackendResource:
 
         backend_id = d.pop("backend_id", UNSET)
 
-        backend_metadata = d.pop("backend_metadata", UNSET)
+        _backend_metadata = d.pop("backend_metadata", UNSET)
+        backend_metadata: Union[Unset, BackendResourceBackendMetadata]
+        if isinstance(_backend_metadata, Unset):
+            backend_metadata = UNSET
+        else:
+            backend_metadata = BackendResourceBackendMetadata.from_dict(_backend_metadata)
 
         backend_resource = cls(
             url=url,

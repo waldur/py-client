@@ -9,6 +9,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_offering_component_limit_request import NestedOfferingComponentLimitRequest
+    from ..models.offering_usage_policy_request_options import OfferingUsagePolicyRequestOptions
 
 
 T = TypeVar("T", bound="OfferingUsagePolicyRequest")
@@ -21,7 +22,8 @@ class OfferingUsagePolicyRequest:
         scope (str):
         actions (str):
         component_limits_set (list['NestedOfferingComponentLimitRequest']):
-        options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
+        options (Union[Unset, OfferingUsagePolicyRequestOptions]): Fields for saving actions extra data. Keys are name
+            of actions.
         organization_groups (Union[Unset, list[str]]):
         apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
             organization_groups.
@@ -31,7 +33,7 @@ class OfferingUsagePolicyRequest:
     scope: str
     actions: str
     component_limits_set: list["NestedOfferingComponentLimitRequest"]
-    options: Union[Unset, Any] = UNSET
+    options: Union[Unset, "OfferingUsagePolicyRequestOptions"] = UNSET
     organization_groups: Union[Unset, list[str]] = UNSET
     apply_to_all: Union[Unset, bool] = UNSET
     period: Union[Unset, PolicyPeriodEnum] = UNSET
@@ -47,7 +49,9 @@ class OfferingUsagePolicyRequest:
             component_limits_set_item = component_limits_set_item_data.to_dict()
             component_limits_set.append(component_limits_set_item)
 
-        options = self.options
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
         organization_groups: Union[Unset, list[str]] = UNSET
         if not isinstance(self.organization_groups, Unset):
@@ -82,6 +86,7 @@ class OfferingUsagePolicyRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_offering_component_limit_request import NestedOfferingComponentLimitRequest
+        from ..models.offering_usage_policy_request_options import OfferingUsagePolicyRequestOptions
 
         d = dict(src_dict)
         scope = d.pop("scope")
@@ -95,7 +100,12 @@ class OfferingUsagePolicyRequest:
 
             component_limits_set.append(component_limits_set_item)
 
-        options = d.pop("options", UNSET)
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, OfferingUsagePolicyRequestOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = OfferingUsagePolicyRequestOptions.from_dict(_options)
 
         organization_groups = cast(list[str], d.pop("organization_groups", UNSET))
 

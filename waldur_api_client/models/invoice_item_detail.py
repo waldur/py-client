@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,10 @@ from dateutil.parser import isoparse
 
 from ..models.billing_unit import BillingUnit
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.invoice_item_detail_details import InvoiceItemDetailDetails
+
 
 T = TypeVar("T", bound="InvoiceItemDetail")
 
@@ -36,7 +40,7 @@ class InvoiceItemDetail:
         name (Union[Unset, str]):
         start (Union[Unset, datetime.datetime]): Date and time when item usage has started.
         end (Union[Unset, datetime.datetime]): Date and time when item usage has ended.
-        details (Union[Unset, Any]): Stores data about scope
+        details (Union[Unset, InvoiceItemDetailDetails]): Stores data about scope
     """
 
     invoice: str
@@ -58,7 +62,7 @@ class InvoiceItemDetail:
     name: Union[Unset, str] = UNSET
     start: Union[Unset, datetime.datetime] = UNSET
     end: Union[Unset, datetime.datetime] = UNSET
-    details: Union[Unset, Any] = UNSET
+    details: Union[Unset, "InvoiceItemDetailDetails"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -116,7 +120,9 @@ class InvoiceItemDetail:
         if not isinstance(self.end, Unset):
             end = self.end.isoformat()
 
-        details = self.details
+        details: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.details, Unset):
+            details = self.details.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -159,6 +165,8 @@ class InvoiceItemDetail:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.invoice_item_detail_details import InvoiceItemDetailDetails
+
         d = dict(src_dict)
         invoice = d.pop("invoice")
 
@@ -243,7 +251,12 @@ class InvoiceItemDetail:
         else:
             end = isoparse(_end)
 
-        details = d.pop("details", UNSET)
+        _details = d.pop("details", UNSET)
+        details: Union[Unset, InvoiceItemDetailDetails]
+        if isinstance(_details, Unset):
+            details = UNSET
+        else:
+            details = InvoiceItemDetailDetails.from_dict(_details)
 
         invoice_item_detail = cls(
             invoice=invoice,

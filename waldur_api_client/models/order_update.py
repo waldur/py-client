@@ -9,6 +9,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.order_update_attributes import OrderUpdateAttributes
     from ..models.order_update_limits import OrderUpdateLimits
 
 
@@ -20,12 +21,12 @@ class OrderUpdate:
     """
     Attributes:
         limits (Union[Unset, OrderUpdateLimits]):
-        attributes (Union[Unset, Any]):
+        attributes (Union[Unset, OrderUpdateAttributes]):
         start_date (Union[None, Unset, datetime.date]): Enables delayed processing of resource provisioning order.
     """
 
     limits: Union[Unset, "OrderUpdateLimits"] = UNSET
-    attributes: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "OrderUpdateAttributes"] = UNSET
     start_date: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -34,7 +35,9 @@ class OrderUpdate:
         if not isinstance(self.limits, Unset):
             limits = self.limits.to_dict()
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
         start_date: Union[None, Unset, str]
         if isinstance(self.start_date, Unset):
@@ -58,6 +61,7 @@ class OrderUpdate:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.order_update_attributes import OrderUpdateAttributes
         from ..models.order_update_limits import OrderUpdateLimits
 
         d = dict(src_dict)
@@ -68,7 +72,12 @@ class OrderUpdate:
         else:
             limits = OrderUpdateLimits.from_dict(_limits)
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, OrderUpdateAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = OrderUpdateAttributes.from_dict(_attributes)
 
         def _parse_start_date(data: object) -> Union[None, Unset, datetime.date]:
             if data is None:

@@ -15,6 +15,11 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.answer import Answer
     from ..models.question_dependency_info import QuestionDependencyInfo
+    from ..models.question_with_answer_reviewer_allowed_file_types import QuestionWithAnswerReviewerAllowedFileTypes
+    from ..models.question_with_answer_reviewer_allowed_mime_types import QuestionWithAnswerReviewerAllowedMimeTypes
+    from ..models.question_with_answer_reviewer_review_answer_value_type_0 import (
+        QuestionWithAnswerReviewerReviewAnswerValueType0,
+    )
 
 
 T = TypeVar("T", bound="QuestionWithAnswerReviewer")
@@ -34,11 +39,11 @@ class QuestionWithAnswerReviewer:
         question_options (Union[None, list[Any]]):
         min_value (Union[None, str]): Minimum value allowed for NUMBER, YEAR, and RATING type questions
         max_value (Union[None, str]): Maximum value allowed for NUMBER, YEAR, and RATING type questions
-        allowed_file_types (Any): List of allowed file extensions (e.g., ['.pdf', '.doc', '.docx']). If empty, all file
-            types are allowed.
-        allowed_mime_types (Any): List of allowed MIME types (e.g., ['application/pdf', 'application/msword']). If
-            empty, MIME type validation is not enforced. When both extensions and MIME types are specified, files must match
-            both criteria for security.
+        allowed_file_types (QuestionWithAnswerReviewerAllowedFileTypes): List of allowed file extensions (e.g., ['.pdf',
+            '.doc', '.docx']). If empty, all file types are allowed.
+        allowed_mime_types (QuestionWithAnswerReviewerAllowedMimeTypes): List of allowed MIME types (e.g.,
+            ['application/pdf', 'application/msword']). If empty, MIME type validation is not enforced. When both extensions
+            and MIME types are specified, files must match both criteria for security.
         max_file_size_mb (Union[None, int]): Maximum file size in megabytes. If not set, no size limit is enforced.
         max_files_count (Union[None, int]): Maximum number of files allowed for MULTIPLE_FILES type questions. If not
             set, no count limit is enforced.
@@ -52,7 +57,8 @@ class QuestionWithAnswerReviewer:
         rich_text_toolbar_level (RichTextToolbarLevelEnum):
         dependencies_info (Union['QuestionDependencyInfo', None]):
         operator (Union[BlankEnum, ChecklistOperators, Unset]):
-        review_answer_value (Union[Unset, Any]): Answer value that trigger review.
+        review_answer_value (Union['QuestionWithAnswerReviewerReviewAnswerValueType0', None, Unset]): Answer value that
+            trigger review.
         always_requires_review (Union[Unset, bool]): This question always requires review regardless of answer
     """
 
@@ -66,8 +72,8 @@ class QuestionWithAnswerReviewer:
     question_options: Union[None, list[Any]]
     min_value: Union[None, str]
     max_value: Union[None, str]
-    allowed_file_types: Any
-    allowed_mime_types: Any
+    allowed_file_types: "QuestionWithAnswerReviewerAllowedFileTypes"
+    allowed_mime_types: "QuestionWithAnswerReviewerAllowedMimeTypes"
     max_file_size_mb: Union[None, int]
     max_files_count: Union[None, int]
     likert_scale_length: Union[LikertScaleLengthEnum, None]
@@ -78,13 +84,16 @@ class QuestionWithAnswerReviewer:
     rich_text_toolbar_level: RichTextToolbarLevelEnum
     dependencies_info: Union["QuestionDependencyInfo", None]
     operator: Union[BlankEnum, ChecklistOperators, Unset] = UNSET
-    review_answer_value: Union[Unset, Any] = UNSET
+    review_answer_value: Union["QuestionWithAnswerReviewerReviewAnswerValueType0", None, Unset] = UNSET
     always_requires_review: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.answer import Answer
         from ..models.question_dependency_info import QuestionDependencyInfo
+        from ..models.question_with_answer_reviewer_review_answer_value_type_0 import (
+            QuestionWithAnswerReviewerReviewAnswerValueType0,
+        )
 
         uuid = str(self.uuid)
 
@@ -118,9 +127,9 @@ class QuestionWithAnswerReviewer:
         max_value: Union[None, str]
         max_value = self.max_value
 
-        allowed_file_types = self.allowed_file_types
+        allowed_file_types = self.allowed_file_types.to_dict()
 
-        allowed_mime_types = self.allowed_mime_types
+        allowed_mime_types = self.allowed_mime_types.to_dict()
 
         max_file_size_mb: Union[None, int]
         max_file_size_mb = self.max_file_size_mb
@@ -159,7 +168,13 @@ class QuestionWithAnswerReviewer:
         else:
             operator = self.operator.value
 
-        review_answer_value = self.review_answer_value
+        review_answer_value: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.review_answer_value, Unset):
+            review_answer_value = UNSET
+        elif isinstance(self.review_answer_value, QuestionWithAnswerReviewerReviewAnswerValueType0):
+            review_answer_value = self.review_answer_value.to_dict()
+        else:
+            review_answer_value = self.review_answer_value
 
         always_requires_review = self.always_requires_review
 
@@ -203,6 +218,11 @@ class QuestionWithAnswerReviewer:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.answer import Answer
         from ..models.question_dependency_info import QuestionDependencyInfo
+        from ..models.question_with_answer_reviewer_allowed_file_types import QuestionWithAnswerReviewerAllowedFileTypes
+        from ..models.question_with_answer_reviewer_allowed_mime_types import QuestionWithAnswerReviewerAllowedMimeTypes
+        from ..models.question_with_answer_reviewer_review_answer_value_type_0 import (
+            QuestionWithAnswerReviewerReviewAnswerValueType0,
+        )
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -266,9 +286,9 @@ class QuestionWithAnswerReviewer:
 
         max_value = _parse_max_value(d.pop("max_value"))
 
-        allowed_file_types = d.pop("allowed_file_types")
+        allowed_file_types = QuestionWithAnswerReviewerAllowedFileTypes.from_dict(d.pop("allowed_file_types"))
 
-        allowed_mime_types = d.pop("allowed_mime_types")
+        allowed_mime_types = QuestionWithAnswerReviewerAllowedMimeTypes.from_dict(d.pop("allowed_mime_types"))
 
         def _parse_max_file_size_mb(data: object) -> Union[None, int]:
             if data is None:
@@ -348,7 +368,24 @@ class QuestionWithAnswerReviewer:
 
         operator = _parse_operator(d.pop("operator", UNSET))
 
-        review_answer_value = d.pop("review_answer_value", UNSET)
+        def _parse_review_answer_value(
+            data: object,
+        ) -> Union["QuestionWithAnswerReviewerReviewAnswerValueType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                review_answer_value_type_0 = QuestionWithAnswerReviewerReviewAnswerValueType0.from_dict(data)
+
+                return review_answer_value_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["QuestionWithAnswerReviewerReviewAnswerValueType0", None, Unset], data)
+
+        review_answer_value = _parse_review_answer_value(d.pop("review_answer_value", UNSET))
 
         always_requires_review = d.pop("always_requires_review", UNSET)
 

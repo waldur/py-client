@@ -1,10 +1,16 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.resource_limit_change_request_request_requested_limits import (
+        ResourceLimitChangeRequestRequestRequestedLimits,
+    )
+
 
 T = TypeVar("T", bound="ResourceLimitChangeRequestRequest")
 
@@ -14,19 +20,19 @@ class ResourceLimitChangeRequestRequest:
     """
     Attributes:
         resource (str):
-        requested_limits (Any):
+        requested_limits (ResourceLimitChangeRequestRequestRequestedLimits):
         review_comment (Union[None, Unset, str]): Optional comment provided during review
     """
 
     resource: str
-    requested_limits: Any
+    requested_limits: "ResourceLimitChangeRequestRequestRequestedLimits"
     review_comment: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         resource = self.resource
 
-        requested_limits = self.requested_limits
+        requested_limits = self.requested_limits.to_dict()
 
         review_comment: Union[None, Unset, str]
         if isinstance(self.review_comment, Unset):
@@ -49,10 +55,14 @@ class ResourceLimitChangeRequestRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.resource_limit_change_request_request_requested_limits import (
+            ResourceLimitChangeRequestRequestRequestedLimits,
+        )
+
         d = dict(src_dict)
         resource = d.pop("resource")
 
-        requested_limits = d.pop("requested_limits")
+        requested_limits = ResourceLimitChangeRequestRequestRequestedLimits.from_dict(d.pop("requested_limits"))
 
         def _parse_review_comment(data: object) -> Union[None, Unset, str]:
             if data is None:

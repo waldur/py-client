@@ -9,6 +9,10 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.catalog_summary import CatalogSummary
+    from ..models.nested_software_catalog_enabled_cpu_family import NestedSoftwareCatalogEnabledCpuFamily
+    from ..models.nested_software_catalog_enabled_cpu_microarchitectures import (
+        NestedSoftwareCatalogEnabledCpuMicroarchitectures,
+    )
     from ..models.partition_summary import PartitionSummary
 
 
@@ -21,16 +25,18 @@ class NestedSoftwareCatalog:
     Attributes:
         uuid (Union[Unset, UUID]):
         catalog (Union[Unset, CatalogSummary]):
-        enabled_cpu_family (Union[Unset, Any]): List of enabled CPU families: ['x86_64', 'aarch64']
-        enabled_cpu_microarchitectures (Union[Unset, Any]): List of enabled CPU microarchitectures: ['generic', 'zen3']
+        enabled_cpu_family (Union[Unset, NestedSoftwareCatalogEnabledCpuFamily]): List of enabled CPU families:
+            ['x86_64', 'aarch64']
+        enabled_cpu_microarchitectures (Union[Unset, NestedSoftwareCatalogEnabledCpuMicroarchitectures]): List of
+            enabled CPU microarchitectures: ['generic', 'zen3']
         package_count (Union[Unset, int]):
         partition (Union['PartitionSummary', None, Unset]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
     catalog: Union[Unset, "CatalogSummary"] = UNSET
-    enabled_cpu_family: Union[Unset, Any] = UNSET
-    enabled_cpu_microarchitectures: Union[Unset, Any] = UNSET
+    enabled_cpu_family: Union[Unset, "NestedSoftwareCatalogEnabledCpuFamily"] = UNSET
+    enabled_cpu_microarchitectures: Union[Unset, "NestedSoftwareCatalogEnabledCpuMicroarchitectures"] = UNSET
     package_count: Union[Unset, int] = UNSET
     partition: Union["PartitionSummary", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -46,9 +52,13 @@ class NestedSoftwareCatalog:
         if not isinstance(self.catalog, Unset):
             catalog = self.catalog.to_dict()
 
-        enabled_cpu_family = self.enabled_cpu_family
+        enabled_cpu_family: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.enabled_cpu_family, Unset):
+            enabled_cpu_family = self.enabled_cpu_family.to_dict()
 
-        enabled_cpu_microarchitectures = self.enabled_cpu_microarchitectures
+        enabled_cpu_microarchitectures: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.enabled_cpu_microarchitectures, Unset):
+            enabled_cpu_microarchitectures = self.enabled_cpu_microarchitectures.to_dict()
 
         package_count = self.package_count
 
@@ -81,6 +91,10 @@ class NestedSoftwareCatalog:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.catalog_summary import CatalogSummary
+        from ..models.nested_software_catalog_enabled_cpu_family import NestedSoftwareCatalogEnabledCpuFamily
+        from ..models.nested_software_catalog_enabled_cpu_microarchitectures import (
+            NestedSoftwareCatalogEnabledCpuMicroarchitectures,
+        )
         from ..models.partition_summary import PartitionSummary
 
         d = dict(src_dict)
@@ -98,9 +112,21 @@ class NestedSoftwareCatalog:
         else:
             catalog = CatalogSummary.from_dict(_catalog)
 
-        enabled_cpu_family = d.pop("enabled_cpu_family", UNSET)
+        _enabled_cpu_family = d.pop("enabled_cpu_family", UNSET)
+        enabled_cpu_family: Union[Unset, NestedSoftwareCatalogEnabledCpuFamily]
+        if isinstance(_enabled_cpu_family, Unset):
+            enabled_cpu_family = UNSET
+        else:
+            enabled_cpu_family = NestedSoftwareCatalogEnabledCpuFamily.from_dict(_enabled_cpu_family)
 
-        enabled_cpu_microarchitectures = d.pop("enabled_cpu_microarchitectures", UNSET)
+        _enabled_cpu_microarchitectures = d.pop("enabled_cpu_microarchitectures", UNSET)
+        enabled_cpu_microarchitectures: Union[Unset, NestedSoftwareCatalogEnabledCpuMicroarchitectures]
+        if isinstance(_enabled_cpu_microarchitectures, Unset):
+            enabled_cpu_microarchitectures = UNSET
+        else:
+            enabled_cpu_microarchitectures = NestedSoftwareCatalogEnabledCpuMicroarchitectures.from_dict(
+                _enabled_cpu_microarchitectures
+            )
 
         package_count = d.pop("package_count", UNSET)
 

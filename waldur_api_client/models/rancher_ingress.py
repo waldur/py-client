@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.rancher_ingress_marketplace_offering_plugin_options_type_0 import (
         RancherIngressMarketplaceOfferingPluginOptionsType0,
     )
+    from ..models.rancher_ingress_rules import RancherIngressRules
 
 
 T = TypeVar("T", bound="RancherIngress")
@@ -53,7 +54,7 @@ class RancherIngress:
         rancher_project_name (Union[Unset, str]):
         namespace (Union[Unset, str]):
         namespace_name (Union[Unset, str]):
-        rules (Union[Unset, Any]):
+        rules (Union[Unset, RancherIngressRules]):
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_type (Union[None, Unset, str]):
@@ -97,7 +98,7 @@ class RancherIngress:
     rancher_project_name: Union[Unset, str] = UNSET
     namespace: Union[Unset, str] = UNSET
     namespace_name: Union[Unset, str] = UNSET
-    rules: Union[Unset, Any] = UNSET
+    rules: Union[Unset, "RancherIngressRules"] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_type: Union[None, Unset, str] = UNSET
@@ -199,7 +200,9 @@ class RancherIngress:
 
         namespace_name = self.namespace_name
 
-        rules = self.rules
+        rules: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.rules, Unset):
+            rules = self.rules.to_dict()
 
         marketplace_offering_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_offering_uuid, Unset):
@@ -364,6 +367,7 @@ class RancherIngress:
         from ..models.rancher_ingress_marketplace_offering_plugin_options_type_0 import (
             RancherIngressMarketplaceOfferingPluginOptionsType0,
         )
+        from ..models.rancher_ingress_rules import RancherIngressRules
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -476,7 +480,12 @@ class RancherIngress:
 
         namespace_name = d.pop("namespace_name", UNSET)
 
-        rules = d.pop("rules", UNSET)
+        _rules = d.pop("rules", UNSET)
+        rules: Union[Unset, RancherIngressRules]
+        if isinstance(_rules, Unset):
+            rules = UNSET
+        else:
+            rules = RancherIngressRules.from_dict(_rules)
 
         def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:

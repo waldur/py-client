@@ -16,6 +16,10 @@ if TYPE_CHECKING:
     from ..models.affiliated_organization import AffiliatedOrganization
     from ..models.nested_price_estimate import NestedPriceEstimate
     from ..models.project_marketplace_resource_count import ProjectMarketplaceResourceCount
+    from ..models.project_termination_metadata_type_0 import ProjectTerminationMetadataType0
+    from ..models.project_user_affiliations import ProjectUserAffiliations
+    from ..models.project_user_email_patterns import ProjectUserEmailPatterns
+    from ..models.project_user_identity_sources import ProjectUserIdentitySources
 
 
 T = TypeVar("T", bound="Project")
@@ -56,7 +60,8 @@ class Project:
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
         kind (Union[Unset, ProjectKindEnum]):
         is_removed (Union[Unset, bool]):
-        termination_metadata (Union[Unset, Any]): Metadata about project termination (read-only)
+        termination_metadata (Union['ProjectTerminationMetadataType0', None, Unset]): Metadata about project termination
+            (read-only)
         staff_notes (Union[Unset, str]): Internal notes visible only to staff and support users (HTML content will be
             sanitized)
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
@@ -67,9 +72,10 @@ class Project:
             date, project resources will be terminated.
         is_in_grace_period (Union[Unset, bool]): True if the project is past its end date but still within the grace
             period.
-        user_email_patterns (Union[Unset, Any]):
-        user_affiliations (Union[Unset, Any]):
-        user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
+        user_email_patterns (Union[Unset, ProjectUserEmailPatterns]):
+        user_affiliations (Union[Unset, ProjectUserAffiliations]):
+        user_identity_sources (Union[Unset, ProjectUserIdentitySources]): List of allowed identity sources (identity
+            providers).
         affiliation (Union['AffiliatedOrganization', None, Unset]):
         affiliation_uuid (Union[None, UUID, Unset]):
         affiliation_name (Union[Unset, str]):
@@ -115,15 +121,15 @@ class Project:
     max_service_accounts: Union[None, Unset, int] = UNSET
     kind: Union[Unset, ProjectKindEnum] = UNSET
     is_removed: Union[Unset, bool] = UNSET
-    termination_metadata: Union[Unset, Any] = UNSET
+    termination_metadata: Union["ProjectTerminationMetadataType0", None, Unset] = UNSET
     staff_notes: Union[Unset, str] = UNSET
     grace_period_days: Union[None, Unset, int] = UNSET
     customer_grace_period_days: Union[None, Unset, int] = UNSET
     effective_end_date: Union[None, Unset, datetime.date] = UNSET
     is_in_grace_period: Union[Unset, bool] = UNSET
-    user_email_patterns: Union[Unset, Any] = UNSET
-    user_affiliations: Union[Unset, Any] = UNSET
-    user_identity_sources: Union[Unset, Any] = UNSET
+    user_email_patterns: Union[Unset, "ProjectUserEmailPatterns"] = UNSET
+    user_affiliations: Union[Unset, "ProjectUserAffiliations"] = UNSET
+    user_identity_sources: Union[Unset, "ProjectUserIdentitySources"] = UNSET
     affiliation: Union["AffiliatedOrganization", None, Unset] = UNSET
     affiliation_uuid: Union[None, UUID, Unset] = UNSET
     affiliation_name: Union[Unset, str] = UNSET
@@ -141,6 +147,7 @@ class Project:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.affiliated_organization import AffiliatedOrganization
+        from ..models.project_termination_metadata_type_0 import ProjectTerminationMetadataType0
 
         url = self.url
 
@@ -260,7 +267,13 @@ class Project:
 
         is_removed = self.is_removed
 
-        termination_metadata = self.termination_metadata
+        termination_metadata: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.termination_metadata, Unset):
+            termination_metadata = UNSET
+        elif isinstance(self.termination_metadata, ProjectTerminationMetadataType0):
+            termination_metadata = self.termination_metadata.to_dict()
+        else:
+            termination_metadata = self.termination_metadata
 
         staff_notes = self.staff_notes
 
@@ -286,11 +299,17 @@ class Project:
 
         is_in_grace_period = self.is_in_grace_period
 
-        user_email_patterns = self.user_email_patterns
+        user_email_patterns: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_email_patterns, Unset):
+            user_email_patterns = self.user_email_patterns.to_dict()
 
-        user_affiliations = self.user_affiliations
+        user_affiliations: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_affiliations, Unset):
+            user_affiliations = self.user_affiliations.to_dict()
 
-        user_identity_sources = self.user_identity_sources
+        user_identity_sources: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_identity_sources, Unset):
+            user_identity_sources = self.user_identity_sources.to_dict()
 
         affiliation: Union[None, Unset, dict[str, Any]]
         if isinstance(self.affiliation, Unset):
@@ -459,6 +478,10 @@ class Project:
         from ..models.affiliated_organization import AffiliatedOrganization
         from ..models.nested_price_estimate import NestedPriceEstimate
         from ..models.project_marketplace_resource_count import ProjectMarketplaceResourceCount
+        from ..models.project_termination_metadata_type_0 import ProjectTerminationMetadataType0
+        from ..models.project_user_affiliations import ProjectUserAffiliations
+        from ..models.project_user_email_patterns import ProjectUserEmailPatterns
+        from ..models.project_user_identity_sources import ProjectUserIdentitySources
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -657,7 +680,22 @@ class Project:
 
         is_removed = d.pop("is_removed", UNSET)
 
-        termination_metadata = d.pop("termination_metadata", UNSET)
+        def _parse_termination_metadata(data: object) -> Union["ProjectTerminationMetadataType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                termination_metadata_type_0 = ProjectTerminationMetadataType0.from_dict(data)
+
+                return termination_metadata_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["ProjectTerminationMetadataType0", None, Unset], data)
+
+        termination_metadata = _parse_termination_metadata(d.pop("termination_metadata", UNSET))
 
         staff_notes = d.pop("staff_notes", UNSET)
 
@@ -698,11 +736,26 @@ class Project:
 
         is_in_grace_period = d.pop("is_in_grace_period", UNSET)
 
-        user_email_patterns = d.pop("user_email_patterns", UNSET)
+        _user_email_patterns = d.pop("user_email_patterns", UNSET)
+        user_email_patterns: Union[Unset, ProjectUserEmailPatterns]
+        if isinstance(_user_email_patterns, Unset):
+            user_email_patterns = UNSET
+        else:
+            user_email_patterns = ProjectUserEmailPatterns.from_dict(_user_email_patterns)
 
-        user_affiliations = d.pop("user_affiliations", UNSET)
+        _user_affiliations = d.pop("user_affiliations", UNSET)
+        user_affiliations: Union[Unset, ProjectUserAffiliations]
+        if isinstance(_user_affiliations, Unset):
+            user_affiliations = UNSET
+        else:
+            user_affiliations = ProjectUserAffiliations.from_dict(_user_affiliations)
 
-        user_identity_sources = d.pop("user_identity_sources", UNSET)
+        _user_identity_sources = d.pop("user_identity_sources", UNSET)
+        user_identity_sources: Union[Unset, ProjectUserIdentitySources]
+        if isinstance(_user_identity_sources, Unset):
+            user_identity_sources = UNSET
+        else:
+            user_identity_sources = ProjectUserIdentitySources.from_dict(_user_identity_sources)
 
         def _parse_affiliation(data: object) -> Union["AffiliatedOrganization", None, Unset]:
             if data is None:

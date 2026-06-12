@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.agent_identity_request_dependencies import AgentIdentityRequestDependencies
+
 
 T = TypeVar("T", bound="AgentIdentityRequest")
 
@@ -19,7 +23,7 @@ class AgentIdentityRequest:
         offering (UUID): UUID of an offering with a site-agent compatible type.
         name (str):
         version (Union[None, Unset, str]):
-        dependencies (Union[Unset, Any]):
+        dependencies (Union[Unset, AgentIdentityRequestDependencies]):
         config_file_path (Union[None, Unset, str]): Example: '/etc/waldur/agent.yaml'
         config_file_content (Union[None, Unset, str]):
         last_restarted (Union[Unset, datetime.datetime]):
@@ -28,7 +32,7 @@ class AgentIdentityRequest:
     offering: UUID
     name: str
     version: Union[None, Unset, str] = UNSET
-    dependencies: Union[Unset, Any] = UNSET
+    dependencies: Union[Unset, "AgentIdentityRequestDependencies"] = UNSET
     config_file_path: Union[None, Unset, str] = UNSET
     config_file_content: Union[None, Unset, str] = UNSET
     last_restarted: Union[Unset, datetime.datetime] = UNSET
@@ -45,7 +49,9 @@ class AgentIdentityRequest:
         else:
             version = self.version
 
-        dependencies = self.dependencies
+        dependencies: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.dependencies, Unset):
+            dependencies = self.dependencies.to_dict()
 
         config_file_path: Union[None, Unset, str]
         if isinstance(self.config_file_path, Unset):
@@ -86,6 +92,8 @@ class AgentIdentityRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.agent_identity_request_dependencies import AgentIdentityRequestDependencies
+
         d = dict(src_dict)
         offering = UUID(d.pop("offering"))
 
@@ -100,7 +108,12 @@ class AgentIdentityRequest:
 
         version = _parse_version(d.pop("version", UNSET))
 
-        dependencies = d.pop("dependencies", UNSET)
+        _dependencies = d.pop("dependencies", UNSET)
+        dependencies: Union[Unset, AgentIdentityRequestDependencies]
+        if isinstance(_dependencies, Unset):
+            dependencies = UNSET
+        else:
+            dependencies = AgentIdentityRequestDependencies.from_dict(_dependencies)
 
         def _parse_config_file_path(data: object) -> Union[None, Unset, str]:
             if data is None:

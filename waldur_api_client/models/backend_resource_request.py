@@ -1,11 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.backend_resource_request_backend_metadata import BackendResourceRequestBackendMetadata
+
 
 T = TypeVar("T", bound="BackendResourceRequest")
 
@@ -18,14 +22,14 @@ class BackendResourceRequest:
         project (UUID):
         offering (UUID):
         backend_id (Union[Unset, str]):
-        backend_metadata (Union[Unset, Any]):
+        backend_metadata (Union[Unset, BackendResourceRequestBackendMetadata]):
     """
 
     name: str
     project: UUID
     offering: UUID
     backend_id: Union[Unset, str] = UNSET
-    backend_metadata: Union[Unset, Any] = UNSET
+    backend_metadata: Union[Unset, "BackendResourceRequestBackendMetadata"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -37,7 +41,9 @@ class BackendResourceRequest:
 
         backend_id = self.backend_id
 
-        backend_metadata = self.backend_metadata
+        backend_metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_metadata, Unset):
+            backend_metadata = self.backend_metadata.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -57,6 +63,8 @@ class BackendResourceRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.backend_resource_request_backend_metadata import BackendResourceRequestBackendMetadata
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -66,7 +74,12 @@ class BackendResourceRequest:
 
         backend_id = d.pop("backend_id", UNSET)
 
-        backend_metadata = d.pop("backend_metadata", UNSET)
+        _backend_metadata = d.pop("backend_metadata", UNSET)
+        backend_metadata: Union[Unset, BackendResourceRequestBackendMetadata]
+        if isinstance(_backend_metadata, Unset):
+            backend_metadata = UNSET
+        else:
+            backend_metadata = BackendResourceRequestBackendMetadata.from_dict(_backend_metadata)
 
         backend_resource_request = cls(
             name=name,

@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_offering_component_limit import NestedOfferingComponentLimit
+    from ..models.offering_usage_policy_options import OfferingUsagePolicyOptions
 
 
 T = TypeVar("T", bound="OfferingUsagePolicy")
@@ -35,7 +36,8 @@ class OfferingUsagePolicy:
         affected_resources_count (int):
         component_limits_set (list['NestedOfferingComponentLimit']):
         period_name (str):
-        options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
+        options (Union[Unset, OfferingUsagePolicyOptions]): Fields for saving actions extra data. Keys are name of
+            actions.
         organization_groups (Union[Unset, list[str]]):
         apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
             organization_groups.
@@ -56,7 +58,7 @@ class OfferingUsagePolicy:
     affected_resources_count: int
     component_limits_set: list["NestedOfferingComponentLimit"]
     period_name: str
-    options: Union[Unset, Any] = UNSET
+    options: Union[Unset, "OfferingUsagePolicyOptions"] = UNSET
     organization_groups: Union[Unset, list[str]] = UNSET
     apply_to_all: Union[Unset, bool] = UNSET
     period: Union[Unset, PolicyPeriodEnum] = UNSET
@@ -94,7 +96,9 @@ class OfferingUsagePolicy:
 
         period_name = self.period_name
 
-        options = self.options
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
         organization_groups: Union[Unset, list[str]] = UNSET
         if not isinstance(self.organization_groups, Unset):
@@ -140,6 +144,7 @@ class OfferingUsagePolicy:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_offering_component_limit import NestedOfferingComponentLimit
+        from ..models.offering_usage_policy_options import OfferingUsagePolicyOptions
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -175,7 +180,12 @@ class OfferingUsagePolicy:
 
         period_name = d.pop("period_name")
 
-        options = d.pop("options", UNSET)
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, OfferingUsagePolicyOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = OfferingUsagePolicyOptions.from_dict(_options)
 
         organization_groups = cast(list[str], d.pop("organization_groups", UNSET))
 

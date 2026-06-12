@@ -1,10 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.export_offering_data_request_attributes import ExportOfferingDataRequestAttributes
+    from ..models.export_offering_data_request_options import ExportOfferingDataRequestOptions
+
 
 T = TypeVar("T", bound="ExportOfferingDataRequest")
 
@@ -29,8 +34,8 @@ class ExportOfferingDataRequest:
         longitude (Union[None, float]):
         access_url (str):
         paused_reason (str):
-        attributes (Union[Unset, Any]):
-        options (Union[Unset, Any]):
+        attributes (Union[Unset, ExportOfferingDataRequestAttributes]):
+        options (Union[Unset, ExportOfferingDataRequestOptions]):
     """
 
     name: str
@@ -49,8 +54,8 @@ class ExportOfferingDataRequest:
     longitude: Union[None, float]
     access_url: str
     paused_reason: str
-    attributes: Union[Unset, Any] = UNSET
-    options: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "ExportOfferingDataRequestAttributes"] = UNSET
+    options: Union[Unset, "ExportOfferingDataRequestOptions"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -89,9 +94,13 @@ class ExportOfferingDataRequest:
 
         paused_reason = self.paused_reason
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
-        options = self.options
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -124,6 +133,9 @@ class ExportOfferingDataRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.export_offering_data_request_attributes import ExportOfferingDataRequestAttributes
+        from ..models.export_offering_data_request_options import ExportOfferingDataRequestOptions
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -172,9 +184,19 @@ class ExportOfferingDataRequest:
 
         paused_reason = d.pop("paused_reason")
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, ExportOfferingDataRequestAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = ExportOfferingDataRequestAttributes.from_dict(_attributes)
 
-        options = d.pop("options", UNSET)
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, ExportOfferingDataRequestOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = ExportOfferingDataRequestOptions.from_dict(_options)
 
         export_offering_data_request = cls(
             name=name,

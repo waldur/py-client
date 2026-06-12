@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.event_subscription_request_observable_objects import EventSubscriptionRequestObservableObjects
+
 
 T = TypeVar("T", bound="EventSubscriptionRequest")
 
@@ -14,20 +18,22 @@ class EventSubscriptionRequest:
     """
     Attributes:
         description (Union[Unset, str]):
-        observable_objects (Union[Unset, Any]): List of objects to observe. Each item must have 'object_type' (one of:
-            order, user_role, resource, offering_user, importable_resources, service_account, course_account,
-            resource_periodic_limits) and optionally 'object_id' (integer). Example: [{"object_type": "resource"},
-            {"object_type": "order", "object_id": 123}]
+        observable_objects (Union[Unset, EventSubscriptionRequestObservableObjects]): List of objects to observe. Each
+            item must have 'object_type' (one of: order, user_role, resource, offering_user, importable_resources,
+            service_account, course_account, resource_periodic_limits) and optionally 'object_id' (integer). Example:
+            [{"object_type": "resource"}, {"object_type": "order", "object_id": 123}]
     """
 
     description: Union[Unset, str] = UNSET
-    observable_objects: Union[Unset, Any] = UNSET
+    observable_objects: Union[Unset, "EventSubscriptionRequestObservableObjects"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         description = self.description
 
-        observable_objects = self.observable_objects
+        observable_objects: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.observable_objects, Unset):
+            observable_objects = self.observable_objects.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -41,10 +47,17 @@ class EventSubscriptionRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.event_subscription_request_observable_objects import EventSubscriptionRequestObservableObjects
+
         d = dict(src_dict)
         description = d.pop("description", UNSET)
 
-        observable_objects = d.pop("observable_objects", UNSET)
+        _observable_objects = d.pop("observable_objects", UNSET)
+        observable_objects: Union[Unset, EventSubscriptionRequestObservableObjects]
+        if isinstance(_observable_objects, Unset):
+            observable_objects = UNSET
+        else:
+            observable_objects = EventSubscriptionRequestObservableObjects.from_dict(_observable_objects)
 
         event_subscription_request = cls(
             description=description,

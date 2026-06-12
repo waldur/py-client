@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -12,6 +12,10 @@ from ..models.coi_type_enum import CoiTypeEnum
 from ..models.conflict_of_interest_status_enum import ConflictOfInterestStatusEnum
 from ..models.detection_method_enum import DetectionMethodEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.conflict_of_interest_evidence_data import ConflictOfInterestEvidenceData
+
 
 T = TypeVar("T", bound="ConflictOfInterest")
 
@@ -40,7 +44,8 @@ class ConflictOfInterest:
         detection_method (DetectionMethodEnum):
         detected_at (datetime.datetime):
         evidence_description (str):
-        evidence_data (Any): Structured evidence: {"papers": [...], "affiliation_overlap": {...}}
+        evidence_data (ConflictOfInterestEvidenceData): Structured evidence: {"papers": [...], "affiliation_overlap":
+            {...}}
         status_display (str):
         reviewed_by (Union[None, str]):
         reviewed_by_name (str):
@@ -75,7 +80,7 @@ class ConflictOfInterest:
     detection_method: DetectionMethodEnum
     detected_at: datetime.datetime
     evidence_description: str
-    evidence_data: Any
+    evidence_data: "ConflictOfInterestEvidenceData"
     status_display: str
     reviewed_by: Union[None, str]
     reviewed_by_name: str
@@ -132,7 +137,7 @@ class ConflictOfInterest:
 
         evidence_description = self.evidence_description
 
-        evidence_data = self.evidence_data
+        evidence_data = self.evidence_data.to_dict()
 
         status_display = self.status_display
 
@@ -214,6 +219,8 @@ class ConflictOfInterest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.conflict_of_interest_evidence_data import ConflictOfInterestEvidenceData
+
         d = dict(src_dict)
         url = d.pop("url")
 
@@ -260,7 +267,7 @@ class ConflictOfInterest:
 
         evidence_description = d.pop("evidence_description")
 
-        evidence_data = d.pop("evidence_data")
+        evidence_data = ConflictOfInterestEvidenceData.from_dict(d.pop("evidence_data"))
 
         status_display = d.pop("status_display")
 

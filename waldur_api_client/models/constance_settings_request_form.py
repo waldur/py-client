@@ -170,6 +170,7 @@ class ConstanceSettingsRequestForm:
         smax_creation_source_name (Union[Unset, str]):
         smax_requests_offering (Union[Unset, str]):
         smax_verify_ssl (Union[Unset, bool]):
+        smax_certificate (Union[Unset, str]):
         smax_webhook_shared_secret (Union[Unset, str]):
         enable_mock_service_account_backend (Union[Unset, bool]):
         enable_mock_course_account_backend (Union[Unset, bool]):
@@ -465,6 +466,7 @@ class ConstanceSettingsRequestForm:
     smax_creation_source_name: Union[Unset, str] = UNSET
     smax_requests_offering: Union[Unset, str] = UNSET
     smax_verify_ssl: Union[Unset, bool] = UNSET
+    smax_certificate: Union[Unset, str] = UNSET
     smax_webhook_shared_secret: Union[Unset, str] = UNSET
     enable_mock_service_account_backend: Union[Unset, bool] = UNSET
     enable_mock_course_account_backend: Union[Unset, bool] = UNSET
@@ -999,6 +1001,8 @@ class ConstanceSettingsRequestForm:
         smax_requests_offering = self.smax_requests_offering
 
         smax_verify_ssl = self.smax_verify_ssl
+
+        smax_certificate = self.smax_certificate
 
         smax_webhook_shared_secret = self.smax_webhook_shared_secret
 
@@ -1736,6 +1740,8 @@ class ConstanceSettingsRequestForm:
             field_dict["SMAX_REQUESTS_OFFERING"] = smax_requests_offering
         if smax_verify_ssl is not UNSET:
             field_dict["SMAX_VERIFY_SSL"] = smax_verify_ssl
+        if smax_certificate is not UNSET:
+            field_dict["SMAX_CERTIFICATE"] = smax_certificate
         if smax_webhook_shared_secret is not UNSET:
             field_dict["SMAX_WEBHOOK_SHARED_SECRET"] = smax_webhook_shared_secret
         if enable_mock_service_account_backend is not UNSET:
@@ -2578,6 +2584,8 @@ class ConstanceSettingsRequestForm:
 
         smax_verify_ssl = d.pop("SMAX_VERIFY_SSL", UNSET)
 
+        smax_certificate = d.pop("SMAX_CERTIFICATE", UNSET)
+
         smax_webhook_shared_secret = d.pop("SMAX_WEBHOOK_SHARED_SECRET", UNSET)
 
         enable_mock_service_account_backend = d.pop("ENABLE_MOCK_SERVICE_ACCOUNT_BACKEND", UNSET)
@@ -3334,6 +3342,7 @@ class ConstanceSettingsRequestForm:
             smax_creation_source_name=smax_creation_source_name,
             smax_requests_offering=smax_requests_offering,
             smax_verify_ssl=smax_verify_ssl,
+            smax_certificate=smax_certificate,
             smax_webhook_shared_secret=smax_webhook_shared_secret,
             enable_mock_service_account_backend=enable_mock_service_account_backend,
             enable_mock_course_account_backend=enable_mock_course_account_backend,

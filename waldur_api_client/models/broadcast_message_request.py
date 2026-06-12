@@ -1,12 +1,16 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.broadcast_message_request_query import BroadcastMessageRequestQuery
+
 
 T = TypeVar("T", bound="BroadcastMessageRequest")
 
@@ -17,13 +21,13 @@ class BroadcastMessageRequest:
     Attributes:
         subject (str):
         body (str):
-        query (Any):
+        query (BroadcastMessageRequestQuery):
         send_at (Union[None, Unset, datetime.date]):
     """
 
     subject: str
     body: str
-    query: Any
+    query: "BroadcastMessageRequestQuery"
     send_at: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -32,7 +36,7 @@ class BroadcastMessageRequest:
 
         body = self.body
 
-        query = self.query
+        query = self.query.to_dict()
 
         send_at: Union[None, Unset, str]
         if isinstance(self.send_at, Unset):
@@ -58,12 +62,14 @@ class BroadcastMessageRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.broadcast_message_request_query import BroadcastMessageRequestQuery
+
         d = dict(src_dict)
         subject = d.pop("subject")
 
         body = d.pop("body")
 
-        query = d.pop("query")
+        query = BroadcastMessageRequestQuery.from_dict(d.pop("query"))
 
         def _parse_send_at(data: object) -> Union[None, Unset, datetime.date]:
             if data is None:

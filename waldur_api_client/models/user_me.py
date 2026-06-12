@@ -14,6 +14,12 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.permission import Permission
     from ..models.profile_completeness import ProfileCompleteness
+    from ..models.user_me_active_isds import UserMeActiveIsds
+    from ..models.user_me_affiliations import UserMeAffiliations
+    from ..models.user_me_attribute_sources import UserMeAttributeSources
+    from ..models.user_me_eduperson_assurance import UserMeEdupersonAssurance
+    from ..models.user_me_managed_isds import UserMeManagedIsds
+    from ..models.user_me_nationalities import UserMeNationalities
 
 
 T = TypeVar("T", bound="UserMe")
@@ -51,7 +57,8 @@ class UserMe:
         preferred_language (Union[Unset, str]):
         permissions (Union[Unset, list['Permission']]):
         requested_email (Union[None, Unset, str]):
-        affiliations (Union[Unset, Any]): Person's affiliation within organization such as student, faculty, staff.
+        affiliations (Union[Unset, UserMeAffiliations]): Person's affiliation within organization such as student,
+            faculty, staff.
         first_name (Union[Unset, str]):
         last_name (Union[Unset, str]):
         birth_date (Union[None, Unset, datetime.date]):
@@ -71,21 +78,22 @@ class UserMe:
         address (Union[Unset, str]):
         country_of_residence (Union[Unset, str]):
         nationality (Union[Unset, str]): Primary citizenship (ISO 3166-1 alpha-2 code)
-        nationalities (Union[Unset, Any]): List of all citizenships (ISO 3166-1 alpha-2 codes)
+        nationalities (Union[Unset, UserMeNationalities]): List of all citizenships (ISO 3166-1 alpha-2 codes)
         organization_country (Union[Unset, str]):
         organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if known
-        eduperson_assurance (Union[Unset, Any]): REFEDS assurance profile URIs from identity provider
+        eduperson_assurance (Union[Unset, UserMeEdupersonAssurance]): REFEDS assurance profile URIs from identity
+            provider
         is_identity_manager (Union[Unset, bool]): Designates whether the user is allowed to manage remote user
             identities.
         can_use_personal_access_tokens (Union[Unset, bool]): Designates whether the user is allowed to create and use
             personal access tokens.
-        attribute_sources (Union[Unset, Any]): Per-attribute source and freshness tracking. Format: {'field_name':
-            {'source': 'isd:<name>', 'timestamp': 'ISO8601'}}.
-        managed_isds (Union[Unset, Any]): List of ISD source identifiers this user can manage via Identity Bridge. E.g.,
-            ['isd:puhuri', 'isd:fenix']. Non-empty list implies identity manager role.
-        active_isds (Union[Unset, Any]): List of ISDs that have asserted this user exists. User is deactivated when this
-            becomes empty.
+        attribute_sources (Union[Unset, UserMeAttributeSources]): Per-attribute source and freshness tracking. Format:
+            {'field_name': {'source': 'isd:<name>', 'timestamp': 'ISO8601'}}.
+        managed_isds (Union[Unset, UserMeManagedIsds]): List of ISD source identifiers this user can manage via Identity
+            Bridge. E.g., ['isd:puhuri', 'isd:fenix']. Non-empty list implies identity manager role.
+        active_isds (Union[Unset, UserMeActiveIsds]): List of ISDs that have asserted this user exists. User is
+            deactivated when this becomes empty.
         deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.
         is_admin_deactivated (Union[Unset, bool]): Designates that the user was deactivated by an administrator and must
             not be reactivated automatically by the role-sync task. Visible to staff and support.
@@ -117,7 +125,7 @@ class UserMe:
     preferred_language: Union[Unset, str] = UNSET
     permissions: Union[Unset, list["Permission"]] = UNSET
     requested_email: Union[None, Unset, str] = UNSET
-    affiliations: Union[Unset, Any] = UNSET
+    affiliations: Union[Unset, "UserMeAffiliations"] = UNSET
     first_name: Union[Unset, str] = UNSET
     last_name: Union[Unset, str] = UNSET
     birth_date: Union[None, Unset, datetime.date] = UNSET
@@ -137,16 +145,16 @@ class UserMe:
     address: Union[Unset, str] = UNSET
     country_of_residence: Union[Unset, str] = UNSET
     nationality: Union[Unset, str] = UNSET
-    nationalities: Union[Unset, Any] = UNSET
+    nationalities: Union[Unset, "UserMeNationalities"] = UNSET
     organization_country: Union[Unset, str] = UNSET
     organization_type: Union[Unset, str] = UNSET
     organization_registry_code: Union[Unset, str] = UNSET
-    eduperson_assurance: Union[Unset, Any] = UNSET
+    eduperson_assurance: Union[Unset, "UserMeEdupersonAssurance"] = UNSET
     is_identity_manager: Union[Unset, bool] = UNSET
     can_use_personal_access_tokens: Union[Unset, bool] = UNSET
-    attribute_sources: Union[Unset, Any] = UNSET
-    managed_isds: Union[Unset, Any] = UNSET
-    active_isds: Union[Unset, Any] = UNSET
+    attribute_sources: Union[Unset, "UserMeAttributeSources"] = UNSET
+    managed_isds: Union[Unset, "UserMeManagedIsds"] = UNSET
+    active_isds: Union[Unset, "UserMeActiveIsds"] = UNSET
     deactivation_reason: Union[Unset, str] = UNSET
     is_admin_deactivated: Union[Unset, bool] = UNSET
     profile_completeness: Union[Unset, "ProfileCompleteness"] = UNSET
@@ -236,7 +244,9 @@ class UserMe:
         else:
             requested_email = self.requested_email
 
-        affiliations = self.affiliations
+        affiliations: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.affiliations, Unset):
+            affiliations = self.affiliations.to_dict()
 
         first_name = self.first_name
 
@@ -296,7 +306,9 @@ class UserMe:
 
         nationality = self.nationality
 
-        nationalities = self.nationalities
+        nationalities: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.nationalities, Unset):
+            nationalities = self.nationalities.to_dict()
 
         organization_country = self.organization_country
 
@@ -304,17 +316,25 @@ class UserMe:
 
         organization_registry_code = self.organization_registry_code
 
-        eduperson_assurance = self.eduperson_assurance
+        eduperson_assurance: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.eduperson_assurance, Unset):
+            eduperson_assurance = self.eduperson_assurance.to_dict()
 
         is_identity_manager = self.is_identity_manager
 
         can_use_personal_access_tokens = self.can_use_personal_access_tokens
 
-        attribute_sources = self.attribute_sources
+        attribute_sources: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attribute_sources, Unset):
+            attribute_sources = self.attribute_sources.to_dict()
 
-        managed_isds = self.managed_isds
+        managed_isds: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.managed_isds, Unset):
+            managed_isds = self.managed_isds.to_dict()
 
-        active_isds = self.active_isds
+        active_isds: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.active_isds, Unset):
+            active_isds = self.active_isds.to_dict()
 
         deactivation_reason = self.deactivation_reason
 
@@ -450,6 +470,12 @@ class UserMe:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.permission import Permission
         from ..models.profile_completeness import ProfileCompleteness
+        from ..models.user_me_active_isds import UserMeActiveIsds
+        from ..models.user_me_affiliations import UserMeAffiliations
+        from ..models.user_me_attribute_sources import UserMeAttributeSources
+        from ..models.user_me_eduperson_assurance import UserMeEdupersonAssurance
+        from ..models.user_me_managed_isds import UserMeManagedIsds
+        from ..models.user_me_nationalities import UserMeNationalities
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -568,7 +594,12 @@ class UserMe:
 
         requested_email = _parse_requested_email(d.pop("requested_email", UNSET))
 
-        affiliations = d.pop("affiliations", UNSET)
+        _affiliations = d.pop("affiliations", UNSET)
+        affiliations: Union[Unset, UserMeAffiliations]
+        if isinstance(_affiliations, Unset):
+            affiliations = UNSET
+        else:
+            affiliations = UserMeAffiliations.from_dict(_affiliations)
 
         first_name = d.pop("first_name", UNSET)
 
@@ -653,7 +684,12 @@ class UserMe:
 
         nationality = d.pop("nationality", UNSET)
 
-        nationalities = d.pop("nationalities", UNSET)
+        _nationalities = d.pop("nationalities", UNSET)
+        nationalities: Union[Unset, UserMeNationalities]
+        if isinstance(_nationalities, Unset):
+            nationalities = UNSET
+        else:
+            nationalities = UserMeNationalities.from_dict(_nationalities)
 
         organization_country = d.pop("organization_country", UNSET)
 
@@ -661,17 +697,37 @@ class UserMe:
 
         organization_registry_code = d.pop("organization_registry_code", UNSET)
 
-        eduperson_assurance = d.pop("eduperson_assurance", UNSET)
+        _eduperson_assurance = d.pop("eduperson_assurance", UNSET)
+        eduperson_assurance: Union[Unset, UserMeEdupersonAssurance]
+        if isinstance(_eduperson_assurance, Unset):
+            eduperson_assurance = UNSET
+        else:
+            eduperson_assurance = UserMeEdupersonAssurance.from_dict(_eduperson_assurance)
 
         is_identity_manager = d.pop("is_identity_manager", UNSET)
 
         can_use_personal_access_tokens = d.pop("can_use_personal_access_tokens", UNSET)
 
-        attribute_sources = d.pop("attribute_sources", UNSET)
+        _attribute_sources = d.pop("attribute_sources", UNSET)
+        attribute_sources: Union[Unset, UserMeAttributeSources]
+        if isinstance(_attribute_sources, Unset):
+            attribute_sources = UNSET
+        else:
+            attribute_sources = UserMeAttributeSources.from_dict(_attribute_sources)
 
-        managed_isds = d.pop("managed_isds", UNSET)
+        _managed_isds = d.pop("managed_isds", UNSET)
+        managed_isds: Union[Unset, UserMeManagedIsds]
+        if isinstance(_managed_isds, Unset):
+            managed_isds = UNSET
+        else:
+            managed_isds = UserMeManagedIsds.from_dict(_managed_isds)
 
-        active_isds = d.pop("active_isds", UNSET)
+        _active_isds = d.pop("active_isds", UNSET)
+        active_isds: Union[Unset, UserMeActiveIsds]
+        if isinstance(_active_isds, Unset):
+            active_isds = UNSET
+        else:
+            active_isds = UserMeActiveIsds.from_dict(_active_isds)
 
         deactivation_reason = d.pop("deactivation_reason", UNSET)
 

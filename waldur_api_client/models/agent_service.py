@@ -11,6 +11,7 @@ from ..models.agent_service_state import AgentServiceState
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.agent_service_statistics import AgentServiceStatistics
     from ..models.nested_agent_processor import NestedAgentProcessor
 
 
@@ -31,7 +32,7 @@ class AgentService:
         modified (datetime.datetime):
         processors (list['NestedAgentProcessor']):
         mode (Union[None, Unset, str]):
-        statistics (Union[Unset, Any]):
+        statistics (Union[Unset, AgentServiceStatistics]):
     """
 
     uuid: UUID
@@ -44,7 +45,7 @@ class AgentService:
     modified: datetime.datetime
     processors: list["NestedAgentProcessor"]
     mode: Union[None, Unset, str] = UNSET
-    statistics: Union[Unset, Any] = UNSET
+    statistics: Union[Unset, "AgentServiceStatistics"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -75,7 +76,9 @@ class AgentService:
         else:
             mode = self.mode
 
-        statistics = self.statistics
+        statistics: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.statistics, Unset):
+            statistics = self.statistics.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -101,6 +104,7 @@ class AgentService:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.agent_service_statistics import AgentServiceStatistics
         from ..models.nested_agent_processor import NestedAgentProcessor
 
         d = dict(src_dict)
@@ -136,7 +140,12 @@ class AgentService:
 
         mode = _parse_mode(d.pop("mode", UNSET))
 
-        statistics = d.pop("statistics", UNSET)
+        _statistics = d.pop("statistics", UNSET)
+        statistics: Union[Unset, AgentServiceStatistics]
+        if isinstance(_statistics, Unset):
+            statistics = UNSET
+        else:
+            statistics = AgentServiceStatistics.from_dict(_statistics)
 
         agent_service = cls(
             uuid=uuid,

@@ -8,6 +8,9 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 if TYPE_CHECKING:
+    from ..models.agent_event_subscription_with_connection_observable_objects import (
+        AgentEventSubscriptionWithConnectionObservableObjects,
+    )
     from ..models.agent_rmq_connection import AgentRmqConnection
 
 
@@ -20,13 +23,14 @@ class AgentEventSubscriptionWithConnection:
     Attributes:
         uuid (UUID): Event subscription UUID
         created (datetime.datetime): When the subscription was created
-        observable_objects (Any): List of observable object configurations
+        observable_objects (AgentEventSubscriptionWithConnectionObservableObjects): List of observable object
+            configurations
         rmq_connection (Union['AgentRmqConnection', None]): RabbitMQ connection status for this subscription
     """
 
     uuid: UUID
     created: datetime.datetime
-    observable_objects: Any
+    observable_objects: "AgentEventSubscriptionWithConnectionObservableObjects"
     rmq_connection: Union["AgentRmqConnection", None]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -37,7 +41,7 @@ class AgentEventSubscriptionWithConnection:
 
         created = self.created.isoformat()
 
-        observable_objects = self.observable_objects
+        observable_objects = self.observable_objects.to_dict()
 
         rmq_connection: Union[None, dict[str, Any]]
         if isinstance(self.rmq_connection, AgentRmqConnection):
@@ -60,6 +64,9 @@ class AgentEventSubscriptionWithConnection:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.agent_event_subscription_with_connection_observable_objects import (
+            AgentEventSubscriptionWithConnectionObservableObjects,
+        )
         from ..models.agent_rmq_connection import AgentRmqConnection
 
         d = dict(src_dict)
@@ -67,7 +74,9 @@ class AgentEventSubscriptionWithConnection:
 
         created = isoparse(d.pop("created"))
 
-        observable_objects = d.pop("observable_objects")
+        observable_objects = AgentEventSubscriptionWithConnectionObservableObjects.from_dict(
+            d.pop("observable_objects")
+        )
 
         def _parse_rmq_connection(data: object) -> Union["AgentRmqConnection", None]:
             if data is None:

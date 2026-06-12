@@ -8,6 +8,9 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_customer_usage_policy_component_request import NestedCustomerUsagePolicyComponentRequest
+    from ..models.patched_customer_component_usage_policy_request_options import (
+        PatchedCustomerComponentUsagePolicyRequestOptions,
+    )
 
 
 T = TypeVar("T", bound="PatchedCustomerComponentUsagePolicyRequest")
@@ -19,13 +22,14 @@ class PatchedCustomerComponentUsagePolicyRequest:
     Attributes:
         scope (Union[Unset, str]):
         actions (Union[Unset, str]):
-        options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
+        options (Union[Unset, PatchedCustomerComponentUsagePolicyRequestOptions]): Fields for saving actions extra data.
+            Keys are name of actions.
         component_limits_set (Union[Unset, list['NestedCustomerUsagePolicyComponentRequest']]):
     """
 
     scope: Union[Unset, str] = UNSET
     actions: Union[Unset, str] = UNSET
-    options: Union[Unset, Any] = UNSET
+    options: Union[Unset, "PatchedCustomerComponentUsagePolicyRequestOptions"] = UNSET
     component_limits_set: Union[Unset, list["NestedCustomerUsagePolicyComponentRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -34,7 +38,9 @@ class PatchedCustomerComponentUsagePolicyRequest:
 
         actions = self.actions
 
-        options = self.options
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
         component_limits_set: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.component_limits_set, Unset):
@@ -60,13 +66,21 @@ class PatchedCustomerComponentUsagePolicyRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_customer_usage_policy_component_request import NestedCustomerUsagePolicyComponentRequest
+        from ..models.patched_customer_component_usage_policy_request_options import (
+            PatchedCustomerComponentUsagePolicyRequestOptions,
+        )
 
         d = dict(src_dict)
         scope = d.pop("scope", UNSET)
 
         actions = d.pop("actions", UNSET)
 
-        options = d.pop("options", UNSET)
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, PatchedCustomerComponentUsagePolicyRequestOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = PatchedCustomerComponentUsagePolicyRequestOptions.from_dict(_options)
 
         component_limits_set = []
         _component_limits_set = d.pop("component_limits_set", UNSET)

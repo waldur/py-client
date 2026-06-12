@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.base_public_plan import BasePublicPlan
+    from ..models.nested_requested_offering_attributes import NestedRequestedOfferingAttributes
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
 
@@ -32,7 +33,7 @@ class NestedRequestedOffering:
         category_uuid (Union[Unset, UUID]):
         category_name (Union[Unset, str]):
         call_managing_organisation (Union[Unset, str]):
-        attributes (Union[Unset, Any]):
+        attributes (Union[Unset, NestedRequestedOfferingAttributes]):
         plan (Union[None, Unset, str]):
         plan_details (Union[Unset, BasePublicPlan]):
         options (Union[Unset, OfferingOptions]):
@@ -49,7 +50,7 @@ class NestedRequestedOffering:
     category_uuid: Union[Unset, UUID] = UNSET
     category_name: Union[Unset, str] = UNSET
     call_managing_organisation: Union[Unset, str] = UNSET
-    attributes: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "NestedRequestedOfferingAttributes"] = UNSET
     plan: Union[None, Unset, str] = UNSET
     plan_details: Union[Unset, "BasePublicPlan"] = UNSET
     options: Union[Unset, "OfferingOptions"] = UNSET
@@ -84,7 +85,9 @@ class NestedRequestedOffering:
 
         call_managing_organisation = self.call_managing_organisation
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
         plan: Union[None, Unset, str]
         if isinstance(self.plan, Unset):
@@ -150,6 +153,7 @@ class NestedRequestedOffering:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.base_public_plan import BasePublicPlan
+        from ..models.nested_requested_offering_attributes import NestedRequestedOfferingAttributes
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
 
@@ -192,7 +196,12 @@ class NestedRequestedOffering:
 
         call_managing_organisation = d.pop("call_managing_organisation", UNSET)
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, NestedRequestedOfferingAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = NestedRequestedOfferingAttributes.from_dict(_attributes)
 
         def _parse_plan(data: object) -> Union[None, Unset, str]:
             if data is None:

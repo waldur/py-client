@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,10 @@ from dateutil.parser import isoparse
 
 from ..models.agent_service_state import AgentServiceState
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.nested_agent_service_statistics import NestedAgentServiceStatistics
+
 
 T = TypeVar("T", bound="NestedAgentService")
 
@@ -24,7 +28,7 @@ class NestedAgentService:
         created (datetime.datetime):
         modified (datetime.datetime):
         mode (Union[None, Unset, str]):
-        statistics (Union[Unset, Any]):
+        statistics (Union[Unset, NestedAgentServiceStatistics]):
     """
 
     uuid: UUID
@@ -34,7 +38,7 @@ class NestedAgentService:
     created: datetime.datetime
     modified: datetime.datetime
     mode: Union[None, Unset, str] = UNSET
-    statistics: Union[Unset, Any] = UNSET
+    statistics: Union[Unset, "NestedAgentServiceStatistics"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,7 +60,9 @@ class NestedAgentService:
         else:
             mode = self.mode
 
-        statistics = self.statistics
+        statistics: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.statistics, Unset):
+            statistics = self.statistics.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -79,6 +85,8 @@ class NestedAgentService:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.nested_agent_service_statistics import NestedAgentServiceStatistics
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -101,7 +109,12 @@ class NestedAgentService:
 
         mode = _parse_mode(d.pop("mode", UNSET))
 
-        statistics = d.pop("statistics", UNSET)
+        _statistics = d.pop("statistics", UNSET)
+        statistics: Union[Unset, NestedAgentServiceStatistics]
+        if isinstance(_statistics, Unset):
+            statistics = UNSET
+        else:
+            statistics = NestedAgentServiceStatistics.from_dict(_statistics)
 
         nested_agent_service = cls(
             uuid=uuid,

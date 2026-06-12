@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,10 @@ from dateutil.parser import isoparse
 
 from ..models.core_states import CoreStates
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.firecrest_job_job_output import FirecrestJobJobOutput
+
 
 T = TypeVar("T", bound="FirecrestJob")
 
@@ -48,7 +52,7 @@ class FirecrestJob:
         user_uuid (Union[None, UUID, Unset]):
         user_username (Union[None, Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
-        report (Union[Unset, Any]):
+        report (Union['FirecrestJobJobOutput', None, Unset]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -81,10 +85,12 @@ class FirecrestJob:
     user: Union[None, Unset, str] = UNSET
     user_uuid: Union[None, UUID, Unset] = UNSET
     user_username: Union[None, Unset, str] = UNSET
-    report: Union[Unset, Any] = UNSET
+    report: Union["FirecrestJobJobOutput", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.firecrest_job_job_output import FirecrestJobJobOutput
+
         url = self.url
 
         uuid: Union[Unset, str] = UNSET
@@ -180,7 +186,13 @@ class FirecrestJob:
         else:
             user_username = self.user_username
 
-        report = self.report
+        report: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.report, Unset):
+            report = UNSET
+        elif isinstance(self.report, FirecrestJobJobOutput):
+            report = self.report.to_dict()
+        else:
+            report = self.report
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -252,6 +264,8 @@ class FirecrestJob:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.firecrest_job_job_output import FirecrestJobJobOutput
+
         d = dict(src_dict)
         url = d.pop("url", UNSET)
 
@@ -392,7 +406,22 @@ class FirecrestJob:
 
         user_username = _parse_user_username(d.pop("user_username", UNSET))
 
-        report = d.pop("report", UNSET)
+        def _parse_report(data: object) -> Union["FirecrestJobJobOutput", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                report_type_0 = FirecrestJobJobOutput.from_dict(data)
+
+                return report_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["FirecrestJobJobOutput", None, Unset], data)
+
+        report = _parse_report(d.pop("report", UNSET))
 
         firecrest_job = cls(
             url=url,

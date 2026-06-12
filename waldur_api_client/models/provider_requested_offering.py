@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.base_public_plan import BasePublicPlan
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
+    from ..models.provider_requested_offering_attributes import ProviderRequestedOfferingAttributes
 
 
 T = TypeVar("T", bound="ProviderRequestedOffering")
@@ -43,7 +44,7 @@ class ProviderRequestedOffering:
         description (str):
         created_by_name (str):
         created_by_email (str):
-        attributes (Union[Unset, Any]):
+        attributes (Union[Unset, ProviderRequestedOfferingAttributes]):
     """
 
     uuid: UUID
@@ -66,7 +67,7 @@ class ProviderRequestedOffering:
     description: str
     created_by_name: str
     created_by_email: str
-    attributes: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "ProviderRequestedOfferingAttributes"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -114,7 +115,9 @@ class ProviderRequestedOffering:
 
         created_by_email = self.created_by_email
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -152,6 +155,7 @@ class ProviderRequestedOffering:
         from ..models.base_public_plan import BasePublicPlan
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
+        from ..models.provider_requested_offering_attributes import ProviderRequestedOfferingAttributes
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -204,7 +208,12 @@ class ProviderRequestedOffering:
 
         created_by_email = d.pop("created_by_email")
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, ProviderRequestedOfferingAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = ProviderRequestedOfferingAttributes.from_dict(_attributes)
 
         provider_requested_offering = cls(
             uuid=uuid,

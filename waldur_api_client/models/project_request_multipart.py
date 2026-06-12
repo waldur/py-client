@@ -1,7 +1,8 @@
 import datetime
+import json
 from collections.abc import Mapping
 from io import BytesIO
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -13,6 +14,12 @@ from ..models.blank_enum import BlankEnum
 from ..models.oecd_fos_2007_code_enum import OecdFos2007CodeEnum
 from ..models.project_kind_enum import ProjectKindEnum
 from ..types import UNSET, File, Unset
+
+if TYPE_CHECKING:
+    from ..models.project_request_multipart_user_affiliations import ProjectRequestMultipartUserAffiliations
+    from ..models.project_request_multipart_user_email_patterns import ProjectRequestMultipartUserEmailPatterns
+    from ..models.project_request_multipart_user_identity_sources import ProjectRequestMultipartUserIdentitySources
+
 
 T = TypeVar("T", bound="ProjectRequestMultipart")
 
@@ -39,9 +46,10 @@ class ProjectRequestMultipart:
             sanitized)
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated. Overrides customer-level setting.
-        user_email_patterns (Union[Unset, Any]):
-        user_affiliations (Union[Unset, Any]):
-        user_identity_sources (Union[Unset, Any]): List of allowed identity sources (identity providers).
+        user_email_patterns (Union[Unset, ProjectRequestMultipartUserEmailPatterns]):
+        user_affiliations (Union[Unset, ProjectRequestMultipartUserAffiliations]):
+        user_identity_sources (Union[Unset, ProjectRequestMultipartUserIdentitySources]): List of allowed identity
+            sources (identity providers).
         affiliation_uuid (Union[None, UUID, Unset]):
         science_sub_domain (Union[None, UUID, Unset]):
     """
@@ -60,9 +68,9 @@ class ProjectRequestMultipart:
     kind: Union[Unset, ProjectKindEnum] = UNSET
     staff_notes: Union[Unset, str] = UNSET
     grace_period_days: Union[None, Unset, int] = UNSET
-    user_email_patterns: Union[Unset, Any] = UNSET
-    user_affiliations: Union[Unset, Any] = UNSET
-    user_identity_sources: Union[Unset, Any] = UNSET
+    user_email_patterns: Union[Unset, "ProjectRequestMultipartUserEmailPatterns"] = UNSET
+    user_affiliations: Union[Unset, "ProjectRequestMultipartUserAffiliations"] = UNSET
+    user_identity_sources: Union[Unset, "ProjectRequestMultipartUserIdentitySources"] = UNSET
     affiliation_uuid: Union[None, UUID, Unset] = UNSET
     science_sub_domain: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -133,11 +141,17 @@ class ProjectRequestMultipart:
         else:
             grace_period_days = self.grace_period_days
 
-        user_email_patterns = self.user_email_patterns
+        user_email_patterns: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_email_patterns, Unset):
+            user_email_patterns = self.user_email_patterns.to_dict()
 
-        user_affiliations = self.user_affiliations
+        user_affiliations: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_affiliations, Unset):
+            user_affiliations = self.user_affiliations.to_dict()
 
-        user_identity_sources = self.user_identity_sources
+        user_identity_sources: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.user_identity_sources, Unset):
+            user_identity_sources = self.user_identity_sources.to_dict()
 
         affiliation_uuid: Union[None, Unset, str]
         if isinstance(self.affiliation_uuid, Unset):
@@ -266,13 +280,25 @@ class ProjectRequestMultipart:
                 files.append(("grace_period_days", (None, str(self.grace_period_days).encode(), "text/plain")))
 
         if not isinstance(self.user_email_patterns, Unset):
-            files.append(("user_email_patterns", (None, str(self.user_email_patterns).encode(), "text/plain")))
+            files.append(
+                (
+                    "user_email_patterns",
+                    (None, json.dumps(self.user_email_patterns.to_dict()).encode(), "application/json"),
+                )
+            )
 
         if not isinstance(self.user_affiliations, Unset):
-            files.append(("user_affiliations", (None, str(self.user_affiliations).encode(), "text/plain")))
+            files.append(
+                ("user_affiliations", (None, json.dumps(self.user_affiliations.to_dict()).encode(), "application/json"))
+            )
 
         if not isinstance(self.user_identity_sources, Unset):
-            files.append(("user_identity_sources", (None, str(self.user_identity_sources).encode(), "text/plain")))
+            files.append(
+                (
+                    "user_identity_sources",
+                    (None, json.dumps(self.user_identity_sources.to_dict()).encode(), "application/json"),
+                )
+            )
 
         if not isinstance(self.affiliation_uuid, Unset):
             if isinstance(self.affiliation_uuid, UUID):
@@ -293,6 +319,10 @@ class ProjectRequestMultipart:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.project_request_multipart_user_affiliations import ProjectRequestMultipartUserAffiliations
+        from ..models.project_request_multipart_user_email_patterns import ProjectRequestMultipartUserEmailPatterns
+        from ..models.project_request_multipart_user_identity_sources import ProjectRequestMultipartUserIdentitySources
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -409,11 +439,26 @@ class ProjectRequestMultipart:
 
         grace_period_days = _parse_grace_period_days(d.pop("grace_period_days", UNSET))
 
-        user_email_patterns = d.pop("user_email_patterns", UNSET)
+        _user_email_patterns = d.pop("user_email_patterns", UNSET)
+        user_email_patterns: Union[Unset, ProjectRequestMultipartUserEmailPatterns]
+        if isinstance(_user_email_patterns, Unset):
+            user_email_patterns = UNSET
+        else:
+            user_email_patterns = ProjectRequestMultipartUserEmailPatterns.from_dict(_user_email_patterns)
 
-        user_affiliations = d.pop("user_affiliations", UNSET)
+        _user_affiliations = d.pop("user_affiliations", UNSET)
+        user_affiliations: Union[Unset, ProjectRequestMultipartUserAffiliations]
+        if isinstance(_user_affiliations, Unset):
+            user_affiliations = UNSET
+        else:
+            user_affiliations = ProjectRequestMultipartUserAffiliations.from_dict(_user_affiliations)
 
-        user_identity_sources = d.pop("user_identity_sources", UNSET)
+        _user_identity_sources = d.pop("user_identity_sources", UNSET)
+        user_identity_sources: Union[Unset, ProjectRequestMultipartUserIdentitySources]
+        if isinstance(_user_identity_sources, Unset):
+            user_identity_sources = UNSET
+        else:
+            user_identity_sources = ProjectRequestMultipartUserIdentitySources.from_dict(_user_identity_sources)
 
         def _parse_affiliation_uuid(data: object) -> Union[None, UUID, Unset]:
             if data is None:

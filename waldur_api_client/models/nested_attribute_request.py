@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,6 +9,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_attribute_option_request import NestedAttributeOptionRequest
+    from ..models.nested_attribute_request_default_type_0 import NestedAttributeRequestDefaultType0
 
 
 T = TypeVar("T", bound="NestedAttributeRequest")
@@ -23,7 +24,7 @@ class NestedAttributeRequest:
         type_ (AttributeTypeEnum):
         options (list['NestedAttributeOptionRequest']):
         required (Union[Unset, bool]): A value must be provided for the attribute.
-        default (Union[Unset, Any]):
+        default (Union['NestedAttributeRequestDefaultType0', None, Unset]):
     """
 
     key: str
@@ -31,10 +32,12 @@ class NestedAttributeRequest:
     type_: AttributeTypeEnum
     options: list["NestedAttributeOptionRequest"]
     required: Union[Unset, bool] = UNSET
-    default: Union[Unset, Any] = UNSET
+    default: Union["NestedAttributeRequestDefaultType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.nested_attribute_request_default_type_0 import NestedAttributeRequestDefaultType0
+
         key = self.key
 
         title = self.title
@@ -48,7 +51,13 @@ class NestedAttributeRequest:
 
         required = self.required
 
-        default = self.default
+        default: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.default, Unset):
+            default = UNSET
+        elif isinstance(self.default, NestedAttributeRequestDefaultType0):
+            default = self.default.to_dict()
+        else:
+            default = self.default
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -70,6 +79,7 @@ class NestedAttributeRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_attribute_option_request import NestedAttributeOptionRequest
+        from ..models.nested_attribute_request_default_type_0 import NestedAttributeRequestDefaultType0
 
         d = dict(src_dict)
         key = d.pop("key")
@@ -87,7 +97,22 @@ class NestedAttributeRequest:
 
         required = d.pop("required", UNSET)
 
-        default = d.pop("default", UNSET)
+        def _parse_default(data: object) -> Union["NestedAttributeRequestDefaultType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                default_type_0 = NestedAttributeRequestDefaultType0.from_dict(data)
+
+                return default_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["NestedAttributeRequestDefaultType0", None, Unset], data)
+
+        default = _parse_default(d.pop("default", UNSET))
 
         nested_attribute_request = cls(
             key=key,

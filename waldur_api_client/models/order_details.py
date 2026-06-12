@@ -14,7 +14,9 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.issue_reference import IssueReference
+    from ..models.order_details_attributes import OrderDetailsAttributes
     from ..models.order_details_limits import OrderDetailsLimits
+    from ..models.order_details_offering_plugin_options import OrderDetailsOfferingPluginOptions
 
 
 T = TypeVar("T", bound="OrderDetails")
@@ -33,8 +35,8 @@ class OrderDetails:
         offering_type (Union[Unset, str]):
         offering_shared (Union[Unset, bool]): Accessible to all customers.
         offering_billable (Union[Unset, bool]): Purchase and usage is invoiced.
-        offering_plugin_options (Union[Unset, Any]): Public data used by specific plugin, such as storage mode for
-            OpenStack.
+        offering_plugin_options (Union[Unset, OrderDetailsOfferingPluginOptions]): Public data used by specific plugin,
+            such as storage mode for OpenStack.
         provider_name (Union[Unset, str]):
         provider_uuid (Union[Unset, UUID]):
         provider_slug (Union[Unset, str]):
@@ -47,7 +49,7 @@ class OrderDetails:
         plan_name (Union[None, Unset, str]):
         plan_uuid (Union[None, UUID, Unset]):
         plan_description (Union[None, Unset, str]):
-        attributes (Union[Unset, Any]):
+        attributes (Union[Unset, OrderDetailsAttributes]):
         limits (Union[Unset, OrderDetailsLimits]):
         uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
@@ -132,7 +134,7 @@ class OrderDetails:
     offering_type: Union[Unset, str] = UNSET
     offering_shared: Union[Unset, bool] = UNSET
     offering_billable: Union[Unset, bool] = UNSET
-    offering_plugin_options: Union[Unset, Any] = UNSET
+    offering_plugin_options: Union[Unset, "OrderDetailsOfferingPluginOptions"] = UNSET
     provider_name: Union[Unset, str] = UNSET
     provider_uuid: Union[Unset, UUID] = UNSET
     provider_slug: Union[Unset, str] = UNSET
@@ -145,7 +147,7 @@ class OrderDetails:
     plan_name: Union[None, Unset, str] = UNSET
     plan_uuid: Union[None, UUID, Unset] = UNSET
     plan_description: Union[None, Unset, str] = UNSET
-    attributes: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "OrderDetailsAttributes"] = UNSET
     limits: Union[Unset, "OrderDetailsLimits"] = UNSET
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
@@ -238,7 +240,9 @@ class OrderDetails:
 
         offering_billable = self.offering_billable
 
-        offering_plugin_options = self.offering_plugin_options
+        offering_plugin_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.offering_plugin_options, Unset):
+            offering_plugin_options = self.offering_plugin_options.to_dict()
 
         provider_name = self.provider_name
 
@@ -288,7 +292,9 @@ class OrderDetails:
         else:
             plan_description = self.plan_description
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
         limits: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.limits, Unset):
@@ -789,7 +795,9 @@ class OrderDetails:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.issue_reference import IssueReference
+        from ..models.order_details_attributes import OrderDetailsAttributes
         from ..models.order_details_limits import OrderDetailsLimits
+        from ..models.order_details_offering_plugin_options import OrderDetailsOfferingPluginOptions
 
         d = dict(src_dict)
         offering = d.pop("offering", UNSET)
@@ -815,7 +823,12 @@ class OrderDetails:
 
         offering_billable = d.pop("offering_billable", UNSET)
 
-        offering_plugin_options = d.pop("offering_plugin_options", UNSET)
+        _offering_plugin_options = d.pop("offering_plugin_options", UNSET)
+        offering_plugin_options: Union[Unset, OrderDetailsOfferingPluginOptions]
+        if isinstance(_offering_plugin_options, Unset):
+            offering_plugin_options = UNSET
+        else:
+            offering_plugin_options = OrderDetailsOfferingPluginOptions.from_dict(_offering_plugin_options)
 
         provider_name = d.pop("provider_name", UNSET)
 
@@ -895,7 +908,12 @@ class OrderDetails:
 
         plan_description = _parse_plan_description(d.pop("plan_description", UNSET))
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, OrderDetailsAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = OrderDetailsAttributes.from_dict(_attributes)
 
         _limits = d.pop("limits", UNSET)
         limits: Union[Unset, OrderDetailsLimits]

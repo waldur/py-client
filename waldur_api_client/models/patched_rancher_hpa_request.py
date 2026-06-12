@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.patched_rancher_hpa_request_metrics import PatchedRancherHPARequestMetrics
+
 
 T = TypeVar("T", bound="PatchedRancherHPARequest")
 
@@ -18,7 +22,7 @@ class PatchedRancherHPARequest:
         workload (Union[None, Unset, str]):
         min_replicas (Union[Unset, int]):
         max_replicas (Union[Unset, int]):
-        metrics (Union[Unset, Any]):
+        metrics (Union[Unset, PatchedRancherHPARequestMetrics]):
     """
 
     name: Union[Unset, str] = UNSET
@@ -26,7 +30,7 @@ class PatchedRancherHPARequest:
     workload: Union[None, Unset, str] = UNSET
     min_replicas: Union[Unset, int] = UNSET
     max_replicas: Union[Unset, int] = UNSET
-    metrics: Union[Unset, Any] = UNSET
+    metrics: Union[Unset, "PatchedRancherHPARequestMetrics"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -44,7 +48,9 @@ class PatchedRancherHPARequest:
 
         max_replicas = self.max_replicas
 
-        metrics = self.metrics
+        metrics: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.metrics, Unset):
+            metrics = self.metrics.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -66,6 +72,8 @@ class PatchedRancherHPARequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.patched_rancher_hpa_request_metrics import PatchedRancherHPARequestMetrics
+
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
@@ -84,7 +92,12 @@ class PatchedRancherHPARequest:
 
         max_replicas = d.pop("max_replicas", UNSET)
 
-        metrics = d.pop("metrics", UNSET)
+        _metrics = d.pop("metrics", UNSET)
+        metrics: Union[Unset, PatchedRancherHPARequestMetrics]
+        if isinstance(_metrics, Unset):
+            metrics = UNSET
+        else:
+            metrics = PatchedRancherHPARequestMetrics.from_dict(_metrics)
 
         patched_rancher_hpa_request = cls(
             name=name,

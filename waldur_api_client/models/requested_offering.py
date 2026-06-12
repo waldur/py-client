@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.base_public_plan import BasePublicPlan
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
+    from ..models.requested_offering_attributes import RequestedOfferingAttributes
 
 
 T = TypeVar("T", bound="RequestedOffering")
@@ -41,7 +42,7 @@ class RequestedOffering:
         created_by (Union[None, str]):
         created_by_name (str):
         approved_by_name (str):
-        attributes (Union[Unset, Any]):
+        attributes (Union[Unset, RequestedOfferingAttributes]):
         plan (Union[None, Unset, str]):
         description (Union[Unset, str]):
     """
@@ -64,7 +65,7 @@ class RequestedOffering:
     created_by: Union[None, str]
     created_by_name: str
     approved_by_name: str
-    attributes: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "RequestedOfferingAttributes"] = UNSET
     plan: Union[None, Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -111,7 +112,9 @@ class RequestedOffering:
 
         approved_by_name = self.approved_by_name
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
         plan: Union[None, Unset, str]
         if isinstance(self.plan, Unset):
@@ -159,6 +162,7 @@ class RequestedOffering:
         from ..models.base_public_plan import BasePublicPlan
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
+        from ..models.requested_offering_attributes import RequestedOfferingAttributes
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -212,7 +216,12 @@ class RequestedOffering:
 
         approved_by_name = d.pop("approved_by_name")
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, RequestedOfferingAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = RequestedOfferingAttributes.from_dict(_attributes)
 
         def _parse_plan(data: object) -> Union[None, Unset, str]:
             if data is None:

@@ -15,6 +15,9 @@ if TYPE_CHECKING:
     from ..models.export_plan_data import ExportPlanData
     from ..models.export_screenshot_data import ExportScreenshotData
     from ..models.export_terms_of_service_data import ExportTermsOfServiceData
+    from ..models.offering_export_data_plugin_options import OfferingExportDataPluginOptions
+    from ..models.offering_export_data_resource_options import OfferingExportDataResourceOptions
+    from ..models.offering_export_data_secret_options import OfferingExportDataSecretOptions
 
 
 T = TypeVar("T", bound="OfferingExportData")
@@ -32,9 +35,9 @@ class OfferingExportData:
         endpoints (Union[Unset, list['ExportEndpointData']]):
         organization_groups (Union[Unset, list['ExportOrganizationGroupData']]):
         terms_of_service (Union[Unset, list['ExportTermsOfServiceData']]):
-        plugin_options (Union[Unset, Any]):
-        secret_options (Union[Unset, Any]):
-        resource_options (Union[Unset, Any]):
+        plugin_options (Union[Unset, OfferingExportDataPluginOptions]):
+        secret_options (Union[Unset, OfferingExportDataSecretOptions]):
+        resource_options (Union[Unset, OfferingExportDataResourceOptions]):
     """
 
     offering: "ExportOfferingData"
@@ -45,9 +48,9 @@ class OfferingExportData:
     endpoints: Union[Unset, list["ExportEndpointData"]] = UNSET
     organization_groups: Union[Unset, list["ExportOrganizationGroupData"]] = UNSET
     terms_of_service: Union[Unset, list["ExportTermsOfServiceData"]] = UNSET
-    plugin_options: Union[Unset, Any] = UNSET
-    secret_options: Union[Unset, Any] = UNSET
-    resource_options: Union[Unset, Any] = UNSET
+    plugin_options: Union[Unset, "OfferingExportDataPluginOptions"] = UNSET
+    secret_options: Union[Unset, "OfferingExportDataSecretOptions"] = UNSET
+    resource_options: Union[Unset, "OfferingExportDataResourceOptions"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -102,11 +105,17 @@ class OfferingExportData:
                 terms_of_service_item = terms_of_service_item_data.to_dict()
                 terms_of_service.append(terms_of_service_item)
 
-        plugin_options = self.plugin_options
+        plugin_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.plugin_options, Unset):
+            plugin_options = self.plugin_options.to_dict()
 
-        secret_options = self.secret_options
+        secret_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.secret_options, Unset):
+            secret_options = self.secret_options.to_dict()
 
-        resource_options = self.resource_options
+        resource_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.resource_options, Unset):
+            resource_options = self.resource_options.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -148,6 +157,9 @@ class OfferingExportData:
         from ..models.export_plan_data import ExportPlanData
         from ..models.export_screenshot_data import ExportScreenshotData
         from ..models.export_terms_of_service_data import ExportTermsOfServiceData
+        from ..models.offering_export_data_plugin_options import OfferingExportDataPluginOptions
+        from ..models.offering_export_data_resource_options import OfferingExportDataResourceOptions
+        from ..models.offering_export_data_secret_options import OfferingExportDataSecretOptions
 
         d = dict(src_dict)
         offering = ExportOfferingData.from_dict(d.pop("offering"))
@@ -201,11 +213,26 @@ class OfferingExportData:
 
             terms_of_service.append(terms_of_service_item)
 
-        plugin_options = d.pop("plugin_options", UNSET)
+        _plugin_options = d.pop("plugin_options", UNSET)
+        plugin_options: Union[Unset, OfferingExportDataPluginOptions]
+        if isinstance(_plugin_options, Unset):
+            plugin_options = UNSET
+        else:
+            plugin_options = OfferingExportDataPluginOptions.from_dict(_plugin_options)
 
-        secret_options = d.pop("secret_options", UNSET)
+        _secret_options = d.pop("secret_options", UNSET)
+        secret_options: Union[Unset, OfferingExportDataSecretOptions]
+        if isinstance(_secret_options, Unset):
+            secret_options = UNSET
+        else:
+            secret_options = OfferingExportDataSecretOptions.from_dict(_secret_options)
 
-        resource_options = d.pop("resource_options", UNSET)
+        _resource_options = d.pop("resource_options", UNSET)
+        resource_options: Union[Unset, OfferingExportDataResourceOptions]
+        if isinstance(_resource_options, Unset):
+            resource_options = UNSET
+        else:
+            resource_options = OfferingExportDataResourceOptions.from_dict(_resource_options)
 
         offering_export_data = cls(
             offering=offering,

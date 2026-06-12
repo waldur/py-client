@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.basic_project import BasicProject
+    from ..models.managed_project_details import ManagedProjectDetails
     from ..models.project_template import ProjectTemplate
 
 
@@ -28,7 +29,7 @@ class ManagedProject:
         reviewed_by_uuid (UUID):
         identifier (str):
         destination (str): The destination used to send instructions from the remote portal.
-        details (Any): Details of the project as provided by the remote OpenPortal.
+        details (ManagedProjectDetails): Details of the project as provided by the remote OpenPortal.
         project (str):
         project_data (BasicProject):
         project_template (str):
@@ -44,7 +45,7 @@ class ManagedProject:
     reviewed_by_uuid: UUID
     identifier: str
     destination: str
-    details: Any
+    details: "ManagedProjectDetails"
     project: str
     project_data: "BasicProject"
     project_template: str
@@ -72,7 +73,7 @@ class ManagedProject:
 
         destination = self.destination
 
-        details = self.details
+        details = self.details.to_dict()
 
         project = self.project
 
@@ -122,6 +123,7 @@ class ManagedProject:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.basic_project import BasicProject
+        from ..models.managed_project_details import ManagedProjectDetails
         from ..models.project_template import ProjectTemplate
 
         d = dict(src_dict)
@@ -152,7 +154,7 @@ class ManagedProject:
 
         destination = d.pop("destination")
 
-        details = d.pop("details")
+        details = ManagedProjectDetails.from_dict(d.pop("details"))
 
         project = d.pop("project")
 

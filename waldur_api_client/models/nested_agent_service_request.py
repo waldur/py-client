@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.nested_agent_service_request_statistics import NestedAgentServiceRequestStatistics
+
 
 T = TypeVar("T", bound="NestedAgentServiceRequest")
 
@@ -15,12 +19,12 @@ class NestedAgentServiceRequest:
     Attributes:
         name (str):
         mode (Union[None, Unset, str]):
-        statistics (Union[Unset, Any]):
+        statistics (Union[Unset, NestedAgentServiceRequestStatistics]):
     """
 
     name: str
     mode: Union[None, Unset, str] = UNSET
-    statistics: Union[Unset, Any] = UNSET
+    statistics: Union[Unset, "NestedAgentServiceRequestStatistics"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,7 +36,9 @@ class NestedAgentServiceRequest:
         else:
             mode = self.mode
 
-        statistics = self.statistics
+        statistics: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.statistics, Unset):
+            statistics = self.statistics.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -50,6 +56,8 @@ class NestedAgentServiceRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.nested_agent_service_request_statistics import NestedAgentServiceRequestStatistics
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -62,7 +70,12 @@ class NestedAgentServiceRequest:
 
         mode = _parse_mode(d.pop("mode", UNSET))
 
-        statistics = d.pop("statistics", UNSET)
+        _statistics = d.pop("statistics", UNSET)
+        statistics: Union[Unset, NestedAgentServiceRequestStatistics]
+        if isinstance(_statistics, Unset):
+            statistics = UNSET
+        else:
+            statistics = NestedAgentServiceRequestStatistics.from_dict(_statistics)
 
         nested_agent_service_request = cls(
             name=name,

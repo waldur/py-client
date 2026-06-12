@@ -16,6 +16,11 @@ if TYPE_CHECKING:
     from ..models.base_provider_plan_request import BaseProviderPlanRequest
     from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
     from ..models.offering_component_request import OfferingComponentRequest
+    from ..models.offering_create_request_multipart_attributes import OfferingCreateRequestMultipartAttributes
+    from ..models.offering_create_request_multipart_backend_id_rules import OfferingCreateRequestMultipartBackendIdRules
+    from ..models.offering_create_request_multipart_backend_metadata import (
+        OfferingCreateRequestMultipartBackendMetadata,
+    )
     from ..models.offering_create_request_multipart_limits import OfferingCreateRequestMultipartLimits
     from ..models.offering_options_request import OfferingOptionsRequest
 
@@ -38,7 +43,7 @@ class OfferingCreateRequestMultipart:
         documentation_url (Union[Unset, str]):
         access_url (Union[Unset, str]): Publicly accessible offering access URL
         customer (Union[None, Unset, str]):
-        attributes (Union[Unset, Any]):
+        attributes (Union[Unset, OfferingCreateRequestMultipartAttributes]):
         options (Union[Unset, OfferingOptionsRequest]):
         resource_options (Union[Unset, OfferingOptionsRequest]):
         components (Union[Unset, list['OfferingComponentRequest']]):
@@ -55,10 +60,10 @@ class OfferingCreateRequestMultipart:
         longitude (Union[None, Unset, float]):
         country (Union[BlankEnum, CountryEnum, Unset]): Country code (ISO 3166-1 alpha-2)
         backend_id (Union[Unset, str]):
-        backend_id_rules (Union[Unset, Any]): Validation rules for resource backend_id: format regex and uniqueness
-            scope.
+        backend_id_rules (Union[Unset, OfferingCreateRequestMultipartBackendIdRules]): Validation rules for resource
+            backend_id: format regex and uniqueness scope.
         image (Union[File, None, Unset]):
-        backend_metadata (Union[Unset, Any]):
+        backend_metadata (Union[Unset, OfferingCreateRequestMultipartBackendMetadata]):
         compliance_checklist (Union[None, Unset, str]):
         offering_group (Union[None, UUID, Unset]):
         limits (Union[Unset, OfferingCreateRequestMultipartLimits]):
@@ -75,7 +80,7 @@ class OfferingCreateRequestMultipart:
     documentation_url: Union[Unset, str] = UNSET
     access_url: Union[Unset, str] = UNSET
     customer: Union[None, Unset, str] = UNSET
-    attributes: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "OfferingCreateRequestMultipartAttributes"] = UNSET
     options: Union[Unset, "OfferingOptionsRequest"] = UNSET
     resource_options: Union[Unset, "OfferingOptionsRequest"] = UNSET
     components: Union[Unset, list["OfferingComponentRequest"]] = UNSET
@@ -92,9 +97,9 @@ class OfferingCreateRequestMultipart:
     longitude: Union[None, Unset, float] = UNSET
     country: Union[BlankEnum, CountryEnum, Unset] = UNSET
     backend_id: Union[Unset, str] = UNSET
-    backend_id_rules: Union[Unset, Any] = UNSET
+    backend_id_rules: Union[Unset, "OfferingCreateRequestMultipartBackendIdRules"] = UNSET
     image: Union[File, None, Unset] = UNSET
-    backend_metadata: Union[Unset, Any] = UNSET
+    backend_metadata: Union[Unset, "OfferingCreateRequestMultipartBackendMetadata"] = UNSET
     compliance_checklist: Union[None, Unset, str] = UNSET
     offering_group: Union[None, UUID, Unset] = UNSET
     limits: Union[Unset, "OfferingCreateRequestMultipartLimits"] = UNSET
@@ -127,7 +132,9 @@ class OfferingCreateRequestMultipart:
         else:
             customer = self.customer
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
         options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.options, Unset):
@@ -198,7 +205,9 @@ class OfferingCreateRequestMultipart:
 
         backend_id = self.backend_id
 
-        backend_id_rules = self.backend_id_rules
+        backend_id_rules: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_id_rules, Unset):
+            backend_id_rules = self.backend_id_rules.to_dict()
 
         image: Union[None, Unset, types.FileTypes]
         if isinstance(self.image, Unset):
@@ -209,7 +218,9 @@ class OfferingCreateRequestMultipart:
         else:
             image = self.image
 
-        backend_metadata = self.backend_metadata
+        backend_metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_metadata, Unset):
+            backend_metadata = self.backend_metadata.to_dict()
 
         compliance_checklist: Union[None, Unset, str]
         if isinstance(self.compliance_checklist, Unset):
@@ -340,7 +351,7 @@ class OfferingCreateRequestMultipart:
                 files.append(("customer", (None, str(self.customer).encode(), "text/plain")))
 
         if not isinstance(self.attributes, Unset):
-            files.append(("attributes", (None, str(self.attributes).encode(), "text/plain")))
+            files.append(("attributes", (None, json.dumps(self.attributes.to_dict()).encode(), "application/json")))
 
         if not isinstance(self.options, Unset):
             files.append(("options", (None, json.dumps(self.options.to_dict()).encode(), "application/json")))
@@ -411,7 +422,9 @@ class OfferingCreateRequestMultipart:
             files.append(("backend_id", (None, str(self.backend_id).encode(), "text/plain")))
 
         if not isinstance(self.backend_id_rules, Unset):
-            files.append(("backend_id_rules", (None, str(self.backend_id_rules).encode(), "text/plain")))
+            files.append(
+                ("backend_id_rules", (None, json.dumps(self.backend_id_rules.to_dict()).encode(), "application/json"))
+            )
 
         if not isinstance(self.image, Unset):
             if isinstance(self.image, File):
@@ -420,7 +433,9 @@ class OfferingCreateRequestMultipart:
                 files.append(("image", (None, str(self.image).encode(), "text/plain")))
 
         if not isinstance(self.backend_metadata, Unset):
-            files.append(("backend_metadata", (None, str(self.backend_metadata).encode(), "text/plain")))
+            files.append(
+                ("backend_metadata", (None, json.dumps(self.backend_metadata.to_dict()).encode(), "application/json"))
+            )
 
         if not isinstance(self.compliance_checklist, Unset):
             if isinstance(self.compliance_checklist, str):
@@ -447,6 +462,13 @@ class OfferingCreateRequestMultipart:
         from ..models.base_provider_plan_request import BaseProviderPlanRequest
         from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
         from ..models.offering_component_request import OfferingComponentRequest
+        from ..models.offering_create_request_multipart_attributes import OfferingCreateRequestMultipartAttributes
+        from ..models.offering_create_request_multipart_backend_id_rules import (
+            OfferingCreateRequestMultipartBackendIdRules,
+        )
+        from ..models.offering_create_request_multipart_backend_metadata import (
+            OfferingCreateRequestMultipartBackendMetadata,
+        )
         from ..models.offering_create_request_multipart_limits import OfferingCreateRequestMultipartLimits
         from ..models.offering_options_request import OfferingOptionsRequest
 
@@ -480,7 +502,12 @@ class OfferingCreateRequestMultipart:
 
         customer = _parse_customer(d.pop("customer", UNSET))
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, OfferingCreateRequestMultipartAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = OfferingCreateRequestMultipartAttributes.from_dict(_attributes)
 
         _options = d.pop("options", UNSET)
         options: Union[Unset, OfferingOptionsRequest]
@@ -585,7 +612,12 @@ class OfferingCreateRequestMultipart:
 
         backend_id = d.pop("backend_id", UNSET)
 
-        backend_id_rules = d.pop("backend_id_rules", UNSET)
+        _backend_id_rules = d.pop("backend_id_rules", UNSET)
+        backend_id_rules: Union[Unset, OfferingCreateRequestMultipartBackendIdRules]
+        if isinstance(_backend_id_rules, Unset):
+            backend_id_rules = UNSET
+        else:
+            backend_id_rules = OfferingCreateRequestMultipartBackendIdRules.from_dict(_backend_id_rules)
 
         def _parse_image(data: object) -> Union[File, None, Unset]:
             if data is None:
@@ -604,7 +636,12 @@ class OfferingCreateRequestMultipart:
 
         image = _parse_image(d.pop("image", UNSET))
 
-        backend_metadata = d.pop("backend_metadata", UNSET)
+        _backend_metadata = d.pop("backend_metadata", UNSET)
+        backend_metadata: Union[Unset, OfferingCreateRequestMultipartBackendMetadata]
+        if isinstance(_backend_metadata, Unset):
+            backend_metadata = UNSET
+        else:
+            backend_metadata = OfferingCreateRequestMultipartBackendMetadata.from_dict(_backend_metadata)
 
         def _parse_compliance_checklist(data: object) -> Union[None, Unset, str]:
             if data is None:

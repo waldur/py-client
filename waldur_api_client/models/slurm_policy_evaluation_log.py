@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,15 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.slurm_policy_evaluation_log_actions_taken import SlurmPolicyEvaluationLogActionsTaken
+    from ..models.slurm_policy_evaluation_log_new_state import SlurmPolicyEvaluationLogNewState
+    from ..models.slurm_policy_evaluation_log_previous_state import SlurmPolicyEvaluationLogPreviousState
+    from ..models.slurm_policy_evaluation_log_site_agent_response_type_0 import (
+        SlurmPolicyEvaluationLogSiteAgentResponseType0,
+    )
+
 
 T = TypeVar("T", bound="SlurmPolicyEvaluationLog")
 
@@ -23,13 +32,17 @@ class SlurmPolicyEvaluationLog:
         usage_percentage (float): Resource usage percentage at the time of evaluation
         grace_limit_percentage (float): Grace limit percentage threshold (e.g. 120 for 20% grace)
         evaluated_at (datetime.datetime): When this evaluation was performed
-        actions_taken (Union[Unset, Any]): List of actions taken during this evaluation (e.g. ['pause', 'notify'])
-        previous_state (Union[Unset, Any]): Resource state before evaluation: {paused: bool, downscaled: bool}
-        new_state (Union[Unset, Any]): Resource state after evaluation: {paused: bool, downscaled: bool}
+        actions_taken (Union[Unset, SlurmPolicyEvaluationLogActionsTaken]): List of actions taken during this evaluation
+            (e.g. ['pause', 'notify'])
+        previous_state (Union[Unset, SlurmPolicyEvaluationLogPreviousState]): Resource state before evaluation: {paused:
+            bool, downscaled: bool}
+        new_state (Union[Unset, SlurmPolicyEvaluationLogNewState]): Resource state after evaluation: {paused: bool,
+            downscaled: bool}
         stomp_message_sent (Union[Unset, bool]): Whether a STOMP message was sent to the site agent
         site_agent_confirmed (Union[None, Unset, bool]): Whether the site agent confirmed command execution (null = no
             response yet)
-        site_agent_response (Union[Unset, Any]): Response payload from the site agent
+        site_agent_response (Union['SlurmPolicyEvaluationLogSiteAgentResponseType0', None, Unset]): Response payload
+            from the site agent
     """
 
     uuid: UUID
@@ -39,15 +52,19 @@ class SlurmPolicyEvaluationLog:
     usage_percentage: float
     grace_limit_percentage: float
     evaluated_at: datetime.datetime
-    actions_taken: Union[Unset, Any] = UNSET
-    previous_state: Union[Unset, Any] = UNSET
-    new_state: Union[Unset, Any] = UNSET
+    actions_taken: Union[Unset, "SlurmPolicyEvaluationLogActionsTaken"] = UNSET
+    previous_state: Union[Unset, "SlurmPolicyEvaluationLogPreviousState"] = UNSET
+    new_state: Union[Unset, "SlurmPolicyEvaluationLogNewState"] = UNSET
     stomp_message_sent: Union[Unset, bool] = UNSET
     site_agent_confirmed: Union[None, Unset, bool] = UNSET
-    site_agent_response: Union[Unset, Any] = UNSET
+    site_agent_response: Union["SlurmPolicyEvaluationLogSiteAgentResponseType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.slurm_policy_evaluation_log_site_agent_response_type_0 import (
+            SlurmPolicyEvaluationLogSiteAgentResponseType0,
+        )
+
         uuid = str(self.uuid)
 
         resource_uuid = str(self.resource_uuid)
@@ -62,11 +79,17 @@ class SlurmPolicyEvaluationLog:
 
         evaluated_at = self.evaluated_at.isoformat()
 
-        actions_taken = self.actions_taken
+        actions_taken: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.actions_taken, Unset):
+            actions_taken = self.actions_taken.to_dict()
 
-        previous_state = self.previous_state
+        previous_state: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.previous_state, Unset):
+            previous_state = self.previous_state.to_dict()
 
-        new_state = self.new_state
+        new_state: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.new_state, Unset):
+            new_state = self.new_state.to_dict()
 
         stomp_message_sent = self.stomp_message_sent
 
@@ -76,7 +99,13 @@ class SlurmPolicyEvaluationLog:
         else:
             site_agent_confirmed = self.site_agent_confirmed
 
-        site_agent_response = self.site_agent_response
+        site_agent_response: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.site_agent_response, Unset):
+            site_agent_response = UNSET
+        elif isinstance(self.site_agent_response, SlurmPolicyEvaluationLogSiteAgentResponseType0):
+            site_agent_response = self.site_agent_response.to_dict()
+        else:
+            site_agent_response = self.site_agent_response
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -108,6 +137,13 @@ class SlurmPolicyEvaluationLog:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.slurm_policy_evaluation_log_actions_taken import SlurmPolicyEvaluationLogActionsTaken
+        from ..models.slurm_policy_evaluation_log_new_state import SlurmPolicyEvaluationLogNewState
+        from ..models.slurm_policy_evaluation_log_previous_state import SlurmPolicyEvaluationLogPreviousState
+        from ..models.slurm_policy_evaluation_log_site_agent_response_type_0 import (
+            SlurmPolicyEvaluationLogSiteAgentResponseType0,
+        )
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -123,11 +159,26 @@ class SlurmPolicyEvaluationLog:
 
         evaluated_at = isoparse(d.pop("evaluated_at"))
 
-        actions_taken = d.pop("actions_taken", UNSET)
+        _actions_taken = d.pop("actions_taken", UNSET)
+        actions_taken: Union[Unset, SlurmPolicyEvaluationLogActionsTaken]
+        if isinstance(_actions_taken, Unset):
+            actions_taken = UNSET
+        else:
+            actions_taken = SlurmPolicyEvaluationLogActionsTaken.from_dict(_actions_taken)
 
-        previous_state = d.pop("previous_state", UNSET)
+        _previous_state = d.pop("previous_state", UNSET)
+        previous_state: Union[Unset, SlurmPolicyEvaluationLogPreviousState]
+        if isinstance(_previous_state, Unset):
+            previous_state = UNSET
+        else:
+            previous_state = SlurmPolicyEvaluationLogPreviousState.from_dict(_previous_state)
 
-        new_state = d.pop("new_state", UNSET)
+        _new_state = d.pop("new_state", UNSET)
+        new_state: Union[Unset, SlurmPolicyEvaluationLogNewState]
+        if isinstance(_new_state, Unset):
+            new_state = UNSET
+        else:
+            new_state = SlurmPolicyEvaluationLogNewState.from_dict(_new_state)
 
         stomp_message_sent = d.pop("stomp_message_sent", UNSET)
 
@@ -140,7 +191,24 @@ class SlurmPolicyEvaluationLog:
 
         site_agent_confirmed = _parse_site_agent_confirmed(d.pop("site_agent_confirmed", UNSET))
 
-        site_agent_response = d.pop("site_agent_response", UNSET)
+        def _parse_site_agent_response(
+            data: object,
+        ) -> Union["SlurmPolicyEvaluationLogSiteAgentResponseType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                site_agent_response_type_0 = SlurmPolicyEvaluationLogSiteAgentResponseType0.from_dict(data)
+
+                return site_agent_response_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["SlurmPolicyEvaluationLogSiteAgentResponseType0", None, Unset], data)
+
+        site_agent_response = _parse_site_agent_response(d.pop("site_agent_response", UNSET))
 
         slurm_policy_evaluation_log = cls(
             uuid=uuid,

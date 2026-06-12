@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,11 @@ from dateutil.parser import isoparse
 
 from ..models.broadcast_message_state_enum import BroadcastMessageStateEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.broadcast_message_emails import BroadcastMessageEmails
+    from ..models.broadcast_message_query import BroadcastMessageQuery
+
 
 T = TypeVar("T", bound="BroadcastMessage")
 
@@ -21,9 +26,9 @@ class BroadcastMessage:
         created (Union[Unset, datetime.datetime]):
         subject (Union[Unset, str]):
         body (Union[Unset, str]):
-        query (Union[Unset, Any]):
+        query (Union[Unset, BroadcastMessageQuery]):
         author_full_name (Union[Unset, str]):
-        emails (Union[Unset, Any]):
+        emails (Union[Unset, BroadcastMessageEmails]):
         state (Union[Unset, BroadcastMessageStateEnum]):
         send_at (Union[None, Unset, datetime.date]):
     """
@@ -32,9 +37,9 @@ class BroadcastMessage:
     created: Union[Unset, datetime.datetime] = UNSET
     subject: Union[Unset, str] = UNSET
     body: Union[Unset, str] = UNSET
-    query: Union[Unset, Any] = UNSET
+    query: Union[Unset, "BroadcastMessageQuery"] = UNSET
     author_full_name: Union[Unset, str] = UNSET
-    emails: Union[Unset, Any] = UNSET
+    emails: Union[Unset, "BroadcastMessageEmails"] = UNSET
     state: Union[Unset, BroadcastMessageStateEnum] = UNSET
     send_at: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -52,11 +57,15 @@ class BroadcastMessage:
 
         body = self.body
 
-        query = self.query
+        query: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.query, Unset):
+            query = self.query.to_dict()
 
         author_full_name = self.author_full_name
 
-        emails = self.emails
+        emails: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.emails, Unset):
+            emails = self.emails.to_dict()
 
         state: Union[Unset, str] = UNSET
         if not isinstance(self.state, Unset):
@@ -96,6 +105,9 @@ class BroadcastMessage:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.broadcast_message_emails import BroadcastMessageEmails
+        from ..models.broadcast_message_query import BroadcastMessageQuery
+
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
         uuid: Union[Unset, UUID]
@@ -115,11 +127,21 @@ class BroadcastMessage:
 
         body = d.pop("body", UNSET)
 
-        query = d.pop("query", UNSET)
+        _query = d.pop("query", UNSET)
+        query: Union[Unset, BroadcastMessageQuery]
+        if isinstance(_query, Unset):
+            query = UNSET
+        else:
+            query = BroadcastMessageQuery.from_dict(_query)
 
         author_full_name = d.pop("author_full_name", UNSET)
 
-        emails = d.pop("emails", UNSET)
+        _emails = d.pop("emails", UNSET)
+        emails: Union[Unset, BroadcastMessageEmails]
+        if isinstance(_emails, Unset):
+            emails = UNSET
+        else:
+            emails = BroadcastMessageEmails.from_dict(_emails)
 
         _state = d.pop("state", UNSET)
         state: Union[Unset, BroadcastMessageStateEnum]

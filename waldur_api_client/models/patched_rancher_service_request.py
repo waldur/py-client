@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.patched_rancher_service_request_selector_type_0 import PatchedRancherServiceRequestSelectorType0
     from ..models.rancher_nested_workload_request import RancherNestedWorkloadRequest
 
 
@@ -27,7 +28,7 @@ class PatchedRancherServiceRequest:
         runtime_state (Union[Unset, str]):
         namespace (Union[Unset, str]):
         cluster_ip (Union[None, Unset, str]): An IPv4 or IPv6 address.
-        selector (Union[Unset, Any]):
+        selector (Union['PatchedRancherServiceRequestSelectorType0', None, Unset]):
         target_workloads (Union[Unset, list['RancherNestedWorkloadRequest']]):
     """
 
@@ -41,11 +42,13 @@ class PatchedRancherServiceRequest:
     runtime_state: Union[Unset, str] = UNSET
     namespace: Union[Unset, str] = UNSET
     cluster_ip: Union[None, Unset, str] = UNSET
-    selector: Union[Unset, Any] = UNSET
+    selector: Union["PatchedRancherServiceRequestSelectorType0", None, Unset] = UNSET
     target_workloads: Union[Unset, list["RancherNestedWorkloadRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.patched_rancher_service_request_selector_type_0 import PatchedRancherServiceRequestSelectorType0
+
         name = self.name
 
         description = self.description
@@ -70,7 +73,13 @@ class PatchedRancherServiceRequest:
         else:
             cluster_ip = self.cluster_ip
 
-        selector = self.selector
+        selector: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.selector, Unset):
+            selector = UNSET
+        elif isinstance(self.selector, PatchedRancherServiceRequestSelectorType0):
+            selector = self.selector.to_dict()
+        else:
+            selector = self.selector
 
         target_workloads: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.target_workloads, Unset):
@@ -111,6 +120,7 @@ class PatchedRancherServiceRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.patched_rancher_service_request_selector_type_0 import PatchedRancherServiceRequestSelectorType0
         from ..models.rancher_nested_workload_request import RancherNestedWorkloadRequest
 
         d = dict(src_dict)
@@ -141,7 +151,22 @@ class PatchedRancherServiceRequest:
 
         cluster_ip = _parse_cluster_ip(d.pop("cluster_ip", UNSET))
 
-        selector = d.pop("selector", UNSET)
+        def _parse_selector(data: object) -> Union["PatchedRancherServiceRequestSelectorType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                selector_type_0 = PatchedRancherServiceRequestSelectorType0.from_dict(data)
+
+                return selector_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["PatchedRancherServiceRequestSelectorType0", None, Unset], data)
+
+        selector = _parse_selector(d.pop("selector", UNSET))
 
         target_workloads = []
         _target_workloads = d.pop("target_workloads", UNSET)

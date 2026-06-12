@@ -9,6 +9,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_requested_offering import NestedRequestedOffering
+    from ..models.provider_requested_resource_attributes import ProviderRequestedResourceAttributes
+    from ..models.provider_requested_resource_limits import ProviderRequestedResourceLimits
 
 
 T = TypeVar("T", bound="ProviderRequestedResource")
@@ -28,8 +30,8 @@ class ProviderRequestedResource:
         proposal_name (str):
         proposal (str):
         resource (Union[None, Unset, str]):
-        attributes (Union[Unset, Any]):
-        limits (Union[Unset, Any]):
+        attributes (Union[Unset, ProviderRequestedResourceAttributes]):
+        limits (Union[Unset, ProviderRequestedResourceLimits]):
         description (Union[Unset, str]):
         created_by (Union[None, Unset, str]):
     """
@@ -44,8 +46,8 @@ class ProviderRequestedResource:
     proposal_name: str
     proposal: str
     resource: Union[None, Unset, str] = UNSET
-    attributes: Union[Unset, Any] = UNSET
-    limits: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "ProviderRequestedResourceAttributes"] = UNSET
+    limits: Union[Unset, "ProviderRequestedResourceLimits"] = UNSET
     description: Union[Unset, str] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -75,9 +77,13 @@ class ProviderRequestedResource:
         else:
             resource = self.resource
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
-        limits = self.limits
+        limits: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.limits, Unset):
+            limits = self.limits.to_dict()
 
         description = self.description
 
@@ -118,6 +124,8 @@ class ProviderRequestedResource:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_requested_offering import NestedRequestedOffering
+        from ..models.provider_requested_resource_attributes import ProviderRequestedResourceAttributes
+        from ..models.provider_requested_resource_limits import ProviderRequestedResourceLimits
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -147,9 +155,19 @@ class ProviderRequestedResource:
 
         resource = _parse_resource(d.pop("resource", UNSET))
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, ProviderRequestedResourceAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = ProviderRequestedResourceAttributes.from_dict(_attributes)
 
-        limits = d.pop("limits", UNSET)
+        _limits = d.pop("limits", UNSET)
+        limits: Union[Unset, ProviderRequestedResourceLimits]
+        if isinstance(_limits, Unset):
+            limits = UNSET
+        else:
+            limits = ProviderRequestedResourceLimits.from_dict(_limits)
 
         description = d.pop("description", UNSET)
 

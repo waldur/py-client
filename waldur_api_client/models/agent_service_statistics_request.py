@@ -1,8 +1,12 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+if TYPE_CHECKING:
+    from ..models.agent_service_statistics_request_statistics import AgentServiceStatisticsRequestStatistics
+
 
 T = TypeVar("T", bound="AgentServiceStatisticsRequest")
 
@@ -11,14 +15,14 @@ T = TypeVar("T", bound="AgentServiceStatisticsRequest")
 class AgentServiceStatisticsRequest:
     """
     Attributes:
-        statistics (Any): Statistics data to be stored for the service
+        statistics (AgentServiceStatisticsRequestStatistics): Statistics data to be stored for the service
     """
 
-    statistics: Any
+    statistics: "AgentServiceStatisticsRequestStatistics"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        statistics = self.statistics
+        statistics = self.statistics.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -32,8 +36,10 @@ class AgentServiceStatisticsRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.agent_service_statistics_request_statistics import AgentServiceStatisticsRequestStatistics
+
         d = dict(src_dict)
-        statistics = d.pop("statistics")
+        statistics = AgentServiceStatisticsRequestStatistics.from_dict(d.pop("statistics"))
 
         agent_service_statistics_request = cls(
             statistics=statistics,

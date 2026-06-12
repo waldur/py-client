@@ -1,11 +1,16 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.cascade_step_type_enum import CascadeStepTypeEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.cascade_step_choices import CascadeStepChoices
+    from ..models.cascade_step_choices_map import CascadeStepChoicesMap
+
 
 T = TypeVar("T", bound="CascadeStep")
 
@@ -18,16 +23,16 @@ class CascadeStep:
         label (str):
         type_ (CascadeStepTypeEnum):
         depends_on (Union[Unset, str]):
-        choices (Union[Unset, Any]):
-        choices_map (Union[Unset, Any]):
+        choices (Union[Unset, CascadeStepChoices]):
+        choices_map (Union[Unset, CascadeStepChoicesMap]):
     """
 
     name: str
     label: str
     type_: CascadeStepTypeEnum
     depends_on: Union[Unset, str] = UNSET
-    choices: Union[Unset, Any] = UNSET
-    choices_map: Union[Unset, Any] = UNSET
+    choices: Union[Unset, "CascadeStepChoices"] = UNSET
+    choices_map: Union[Unset, "CascadeStepChoicesMap"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,9 +44,13 @@ class CascadeStep:
 
         depends_on = self.depends_on
 
-        choices = self.choices
+        choices: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.choices, Unset):
+            choices = self.choices.to_dict()
 
-        choices_map = self.choices_map
+        choices_map: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.choices_map, Unset):
+            choices_map = self.choices_map.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -63,6 +72,9 @@ class CascadeStep:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.cascade_step_choices import CascadeStepChoices
+        from ..models.cascade_step_choices_map import CascadeStepChoicesMap
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -72,9 +84,19 @@ class CascadeStep:
 
         depends_on = d.pop("depends_on", UNSET)
 
-        choices = d.pop("choices", UNSET)
+        _choices = d.pop("choices", UNSET)
+        choices: Union[Unset, CascadeStepChoices]
+        if isinstance(_choices, Unset):
+            choices = UNSET
+        else:
+            choices = CascadeStepChoices.from_dict(_choices)
 
-        choices_map = d.pop("choices_map", UNSET)
+        _choices_map = d.pop("choices_map", UNSET)
+        choices_map: Union[Unset, CascadeStepChoicesMap]
+        if isinstance(_choices_map, Unset):
+            choices_map = UNSET
+        else:
+            choices_map = CascadeStepChoicesMap.from_dict(_choices_map)
 
         cascade_step = cls(
             name=name,

@@ -9,6 +9,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.basic_customer import BasicCustomer
+    from ..models.project_template_allocation_units_mapping import ProjectTemplateAllocationUnitsMapping
+    from ..models.project_template_role_mapping import ProjectTemplateRoleMapping
     from ..models.project_template_role_mapping_data import ProjectTemplateRoleMappingData
     from ..models.resource_offering import ResourceOffering
 
@@ -40,10 +42,10 @@ class ProjectTemplate:
         max_credit_limit (Union[None, Unset, str]): The maximum credit limit for any projects created in this class. Any
             requests beyond this limit are automatically rejected. If this is None, then no maximum limit is set. If this is
             set to 0, then no projects can be created in this class.
-        allocation_units_mapping (Union[Unset, Any]): The mapping of credits to allocation units, i.e. how many
-            allocation units to award per credit allocated.
-        role_mapping (Union[Unset, Any]): The mapping of role names from the remote portal to role information in this
-            portal for users in projects created in this class.
+        allocation_units_mapping (Union[Unset, ProjectTemplateAllocationUnitsMapping]): The mapping of credits to
+            allocation units, i.e. how many allocation units to award per credit allocated.
+        role_mapping (Union[Unset, ProjectTemplateRoleMapping]): The mapping of role names from the remote portal to
+            role information in this portal for users in projects created in this class.
     """
 
     uuid: UUID
@@ -61,8 +63,8 @@ class ProjectTemplate:
     shortname: Union[None, Unset, str] = UNSET
     approval_limit: Union[None, Unset, str] = UNSET
     max_credit_limit: Union[None, Unset, str] = UNSET
-    allocation_units_mapping: Union[Unset, Any] = UNSET
-    role_mapping: Union[Unset, Any] = UNSET
+    allocation_units_mapping: Union[Unset, "ProjectTemplateAllocationUnitsMapping"] = UNSET
+    role_mapping: Union[Unset, "ProjectTemplateRoleMapping"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -119,9 +121,13 @@ class ProjectTemplate:
         else:
             max_credit_limit = self.max_credit_limit
 
-        allocation_units_mapping = self.allocation_units_mapping
+        allocation_units_mapping: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.allocation_units_mapping, Unset):
+            allocation_units_mapping = self.allocation_units_mapping.to_dict()
 
-        role_mapping = self.role_mapping
+        role_mapping: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.role_mapping, Unset):
+            role_mapping = self.role_mapping.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -159,6 +165,8 @@ class ProjectTemplate:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.basic_customer import BasicCustomer
+        from ..models.project_template_allocation_units_mapping import ProjectTemplateAllocationUnitsMapping
+        from ..models.project_template_role_mapping import ProjectTemplateRoleMapping
         from ..models.project_template_role_mapping_data import ProjectTemplateRoleMappingData
         from ..models.resource_offering import ResourceOffering
 
@@ -233,9 +241,19 @@ class ProjectTemplate:
 
         max_credit_limit = _parse_max_credit_limit(d.pop("max_credit_limit", UNSET))
 
-        allocation_units_mapping = d.pop("allocation_units_mapping", UNSET)
+        _allocation_units_mapping = d.pop("allocation_units_mapping", UNSET)
+        allocation_units_mapping: Union[Unset, ProjectTemplateAllocationUnitsMapping]
+        if isinstance(_allocation_units_mapping, Unset):
+            allocation_units_mapping = UNSET
+        else:
+            allocation_units_mapping = ProjectTemplateAllocationUnitsMapping.from_dict(_allocation_units_mapping)
 
-        role_mapping = d.pop("role_mapping", UNSET)
+        _role_mapping = d.pop("role_mapping", UNSET)
+        role_mapping: Union[Unset, ProjectTemplateRoleMapping]
+        if isinstance(_role_mapping, Unset):
+            role_mapping = UNSET
+        else:
+            role_mapping = ProjectTemplateRoleMapping.from_dict(_role_mapping)
 
         project_template = cls(
             uuid=uuid,

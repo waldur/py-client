@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,10 @@ from dateutil.parser import isoparse
 
 from ..models.policy_period_enum import PolicyPeriodEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.offering_estimated_cost_policy_options import OfferingEstimatedCostPolicyOptions
+
 
 T = TypeVar("T", bound="OfferingEstimatedCostPolicy")
 
@@ -31,7 +35,8 @@ class OfferingEstimatedCostPolicy:
         affected_resources_count (int):
         limit_cost (int):
         period_name (str):
-        options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
+        options (Union[Unset, OfferingEstimatedCostPolicyOptions]): Fields for saving actions extra data. Keys are name
+            of actions.
         period (Union[Unset, PolicyPeriodEnum]):
         organization_groups (Union[Unset, list[str]]):
         apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
@@ -52,7 +57,7 @@ class OfferingEstimatedCostPolicy:
     affected_resources_count: int
     limit_cost: int
     period_name: str
-    options: Union[Unset, Any] = UNSET
+    options: Union[Unset, "OfferingEstimatedCostPolicyOptions"] = UNSET
     period: Union[Unset, PolicyPeriodEnum] = UNSET
     organization_groups: Union[Unset, list[str]] = UNSET
     apply_to_all: Union[Unset, bool] = UNSET
@@ -87,7 +92,9 @@ class OfferingEstimatedCostPolicy:
 
         period_name = self.period_name
 
-        options = self.options
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
         period: Union[Unset, int] = UNSET
         if not isinstance(self.period, Unset):
@@ -132,6 +139,8 @@ class OfferingEstimatedCostPolicy:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.offering_estimated_cost_policy_options import OfferingEstimatedCostPolicyOptions
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -161,7 +170,12 @@ class OfferingEstimatedCostPolicy:
 
         period_name = d.pop("period_name")
 
-        options = d.pop("options", UNSET)
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, OfferingEstimatedCostPolicyOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = OfferingEstimatedCostPolicyOptions.from_dict(_options)
 
         _period = d.pop("period", UNSET)
         period: Union[Unset, PolicyPeriodEnum]

@@ -1,11 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.catalog_type_enum import CatalogTypeEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.software_catalog_request_metadata import SoftwareCatalogRequestMetadata
+
 
 T = TypeVar("T", bound="SoftwareCatalogRequest")
 
@@ -19,7 +23,8 @@ class SoftwareCatalogRequest:
         catalog_type (Union[Unset, CatalogTypeEnum]):  Default: CatalogTypeEnum.BINARY_RUNTIME.
         source_url (Union[Unset, str]): Catalog source URL
         description (Union[Unset, str]):
-        metadata (Union[Unset, Any]): Catalog-specific metadata (architecture maps, API endpoints, etc.)
+        metadata (Union[Unset, SoftwareCatalogRequestMetadata]): Catalog-specific metadata (architecture maps, API
+            endpoints, etc.)
         auto_update_enabled (Union[Unset, bool]): Whether to automatically update this catalog via scheduled tasks
         update_errors (Union[Unset, str]):
     """
@@ -29,7 +34,7 @@ class SoftwareCatalogRequest:
     catalog_type: Union[Unset, CatalogTypeEnum] = CatalogTypeEnum.BINARY_RUNTIME
     source_url: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
-    metadata: Union[Unset, Any] = UNSET
+    metadata: Union[Unset, "SoftwareCatalogRequestMetadata"] = UNSET
     auto_update_enabled: Union[Unset, bool] = UNSET
     update_errors: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -47,7 +52,9 @@ class SoftwareCatalogRequest:
 
         description = self.description
 
-        metadata = self.metadata
+        metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
 
         auto_update_enabled = self.auto_update_enabled
 
@@ -78,6 +85,8 @@ class SoftwareCatalogRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.software_catalog_request_metadata import SoftwareCatalogRequestMetadata
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -94,7 +103,12 @@ class SoftwareCatalogRequest:
 
         description = d.pop("description", UNSET)
 
-        metadata = d.pop("metadata", UNSET)
+        _metadata = d.pop("metadata", UNSET)
+        metadata: Union[Unset, SoftwareCatalogRequestMetadata]
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = SoftwareCatalogRequestMetadata.from_dict(_metadata)
 
         auto_update_enabled = d.pop("auto_update_enabled", UNSET)
 

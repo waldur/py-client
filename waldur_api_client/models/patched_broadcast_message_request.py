@@ -1,12 +1,16 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.patched_broadcast_message_request_query import PatchedBroadcastMessageRequestQuery
+
 
 T = TypeVar("T", bound="PatchedBroadcastMessageRequest")
 
@@ -17,13 +21,13 @@ class PatchedBroadcastMessageRequest:
     Attributes:
         subject (Union[Unset, str]):
         body (Union[Unset, str]):
-        query (Union[Unset, Any]):
+        query (Union[Unset, PatchedBroadcastMessageRequestQuery]):
         send_at (Union[None, Unset, datetime.date]):
     """
 
     subject: Union[Unset, str] = UNSET
     body: Union[Unset, str] = UNSET
-    query: Union[Unset, Any] = UNSET
+    query: Union[Unset, "PatchedBroadcastMessageRequestQuery"] = UNSET
     send_at: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -32,7 +36,9 @@ class PatchedBroadcastMessageRequest:
 
         body = self.body
 
-        query = self.query
+        query: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.query, Unset):
+            query = self.query.to_dict()
 
         send_at: Union[None, Unset, str]
         if isinstance(self.send_at, Unset):
@@ -58,12 +64,19 @@ class PatchedBroadcastMessageRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.patched_broadcast_message_request_query import PatchedBroadcastMessageRequestQuery
+
         d = dict(src_dict)
         subject = d.pop("subject", UNSET)
 
         body = d.pop("body", UNSET)
 
-        query = d.pop("query", UNSET)
+        _query = d.pop("query", UNSET)
+        query: Union[Unset, PatchedBroadcastMessageRequestQuery]
+        if isinstance(_query, Unset):
+            query = UNSET
+        else:
+            query = PatchedBroadcastMessageRequestQuery.from_dict(_query)
 
         def _parse_send_at(data: object) -> Union[None, Unset, datetime.date]:
             if data is None:

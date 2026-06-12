@@ -10,6 +10,8 @@ from dateutil.parser import isoparse
 if TYPE_CHECKING:
     from ..models.software_module import SoftwareModule
     from ..models.software_toolchain import SoftwareToolchain
+    from ..models.software_version_dependencies import SoftwareVersionDependencies
+    from ..models.software_version_metadata import SoftwareVersionMetadata
 
 
 T = TypeVar("T", bound="SoftwareVersion")
@@ -26,8 +28,8 @@ class SoftwareVersion:
         version (str):
         module_version (str): EESSI EasyBuild module version
         release_date (Union[None, datetime.date]):
-        dependencies (Any): Package dependencies (format varies by catalog type)
-        metadata (Any): Version-specific metadata (toolchains, build info, modules, etc.)
+        dependencies (SoftwareVersionDependencies): Package dependencies (format varies by catalog type)
+        metadata (SoftwareVersionMetadata): Version-specific metadata (toolchains, build info, modules, etc.)
         package_name (str):
         catalog_type (str):
         target_count (int):
@@ -45,8 +47,8 @@ class SoftwareVersion:
     version: str
     module_version: str
     release_date: Union[None, datetime.date]
-    dependencies: Any
-    metadata: Any
+    dependencies: "SoftwareVersionDependencies"
+    metadata: "SoftwareVersionMetadata"
     package_name: str
     catalog_type: str
     target_count: int
@@ -79,9 +81,9 @@ class SoftwareVersion:
         else:
             release_date = self.release_date
 
-        dependencies = self.dependencies
+        dependencies = self.dependencies.to_dict()
 
-        metadata = self.metadata
+        metadata = self.metadata.to_dict()
 
         package_name = self.package_name
 
@@ -137,6 +139,8 @@ class SoftwareVersion:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.software_module import SoftwareModule
         from ..models.software_toolchain import SoftwareToolchain
+        from ..models.software_version_dependencies import SoftwareVersionDependencies
+        from ..models.software_version_metadata import SoftwareVersionMetadata
 
         d = dict(src_dict)
         url = d.pop("url")
@@ -166,9 +170,9 @@ class SoftwareVersion:
 
         release_date = _parse_release_date(d.pop("release_date"))
 
-        dependencies = d.pop("dependencies")
+        dependencies = SoftwareVersionDependencies.from_dict(d.pop("dependencies"))
 
-        metadata = d.pop("metadata")
+        metadata = SoftwareVersionMetadata.from_dict(d.pop("metadata"))
 
         package_name = d.pop("package_name")
 

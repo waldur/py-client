@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,12 @@ from dateutil.parser import isoparse
 
 from ..models.rancher_node_role_enum import RancherNodeRoleEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.rancher_nested_node_annotations import RancherNestedNodeAnnotations
+    from ..models.rancher_nested_node_initial_data import RancherNestedNodeInitialData
+    from ..models.rancher_nested_node_labels import RancherNestedNodeLabels
+
 
 T = TypeVar("T", bound="RancherNestedNode")
 
@@ -26,7 +32,7 @@ class RancherNestedNode:
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
         backend_id (Union[Unset, str]):
-        initial_data (Union[Unset, Any]): Initial data for instance creating.
+        initial_data (Union[Unset, RancherNestedNodeInitialData]): Initial data for instance creating.
         runtime_state (Union[Unset, str]):
         k8s_version (Union[Unset, str]):
         docker_version (Union[Unset, str]):
@@ -36,8 +42,8 @@ class RancherNestedNode:
         ram_total (Union[None, Unset, int]): Total RAM in Mi.
         pods_allocated (Union[None, Unset, int]):
         pods_total (Union[None, Unset, int]):
-        labels (Union[Unset, Any]):
-        annotations (Union[Unset, Any]):
+        labels (Union[Unset, RancherNestedNodeLabels]):
+        annotations (Union[Unset, RancherNestedNodeAnnotations]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -49,7 +55,7 @@ class RancherNestedNode:
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
     backend_id: Union[Unset, str] = UNSET
-    initial_data: Union[Unset, Any] = UNSET
+    initial_data: Union[Unset, "RancherNestedNodeInitialData"] = UNSET
     runtime_state: Union[Unset, str] = UNSET
     k8s_version: Union[Unset, str] = UNSET
     docker_version: Union[Unset, str] = UNSET
@@ -59,8 +65,8 @@ class RancherNestedNode:
     ram_total: Union[None, Unset, int] = UNSET
     pods_allocated: Union[None, Unset, int] = UNSET
     pods_total: Union[None, Unset, int] = UNSET
-    labels: Union[Unset, Any] = UNSET
-    annotations: Union[Unset, Any] = UNSET
+    labels: Union[Unset, "RancherNestedNodeLabels"] = UNSET
+    annotations: Union[Unset, "RancherNestedNodeAnnotations"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -90,7 +96,9 @@ class RancherNestedNode:
 
         backend_id = self.backend_id
 
-        initial_data = self.initial_data
+        initial_data: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.initial_data, Unset):
+            initial_data = self.initial_data.to_dict()
 
         runtime_state = self.runtime_state
 
@@ -134,9 +142,13 @@ class RancherNestedNode:
         else:
             pods_total = self.pods_total
 
-        labels = self.labels
+        labels: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.labels, Unset):
+            labels = self.labels.to_dict()
 
-        annotations = self.annotations
+        annotations: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.annotations, Unset):
+            annotations = self.annotations.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -188,6 +200,10 @@ class RancherNestedNode:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.rancher_nested_node_annotations import RancherNestedNodeAnnotations
+        from ..models.rancher_nested_node_initial_data import RancherNestedNodeInitialData
+        from ..models.rancher_nested_node_labels import RancherNestedNodeLabels
+
         d = dict(src_dict)
         url = d.pop("url", UNSET)
 
@@ -227,7 +243,12 @@ class RancherNestedNode:
 
         backend_id = d.pop("backend_id", UNSET)
 
-        initial_data = d.pop("initial_data", UNSET)
+        _initial_data = d.pop("initial_data", UNSET)
+        initial_data: Union[Unset, RancherNestedNodeInitialData]
+        if isinstance(_initial_data, Unset):
+            initial_data = UNSET
+        else:
+            initial_data = RancherNestedNodeInitialData.from_dict(_initial_data)
 
         runtime_state = d.pop("runtime_state", UNSET)
 
@@ -289,9 +310,19 @@ class RancherNestedNode:
 
         pods_total = _parse_pods_total(d.pop("pods_total", UNSET))
 
-        labels = d.pop("labels", UNSET)
+        _labels = d.pop("labels", UNSET)
+        labels: Union[Unset, RancherNestedNodeLabels]
+        if isinstance(_labels, Unset):
+            labels = UNSET
+        else:
+            labels = RancherNestedNodeLabels.from_dict(_labels)
 
-        annotations = d.pop("annotations", UNSET)
+        _annotations = d.pop("annotations", UNSET)
+        annotations: Union[Unset, RancherNestedNodeAnnotations]
+        if isinstance(_annotations, Unset):
+            annotations = UNSET
+        else:
+            annotations = RancherNestedNodeAnnotations.from_dict(_annotations)
 
         rancher_nested_node = cls(
             url=url,

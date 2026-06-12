@@ -27,6 +27,7 @@ if TYPE_CHECKING:
     from ..models.offering_options import OfferingOptions
     from ..models.organization_group import OrganizationGroup
     from ..models.public_offering_details_attributes import PublicOfferingDetailsAttributes
+    from ..models.public_offering_details_backend_metadata import PublicOfferingDetailsBackendMetadata
     from ..models.quota import Quota
 
 
@@ -99,7 +100,7 @@ class PublicOfferingDetails:
         parent_description (Union[None, Unset, str]):
         parent_uuid (Union[None, UUID, Unset]):
         parent_name (Union[None, Unset, str]):
-        backend_metadata (Union[Unset, Any]):
+        backend_metadata (Union[Unset, PublicOfferingDetailsBackendMetadata]):
         has_compliance_requirements (Union[Unset, bool]):
         billing_type_classification (Union[Unset, str]): Classify offering components by billing type.
             Returns 'limit_only', 'usage_only', or 'mixed'.
@@ -180,7 +181,7 @@ class PublicOfferingDetails:
     parent_description: Union[None, Unset, str] = UNSET
     parent_uuid: Union[None, UUID, Unset] = UNSET
     parent_name: Union[None, Unset, str] = UNSET
-    backend_metadata: Union[Unset, Any] = UNSET
+    backend_metadata: Union[Unset, "PublicOfferingDetailsBackendMetadata"] = UNSET
     has_compliance_requirements: Union[Unset, bool] = UNSET
     billing_type_classification: Union[Unset, str] = UNSET
     effective_available_limits: Union[Unset, list[str]] = UNSET
@@ -485,7 +486,9 @@ class PublicOfferingDetails:
         else:
             parent_name = self.parent_name
 
-        backend_metadata = self.backend_metadata
+        backend_metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_metadata, Unset):
+            backend_metadata = self.backend_metadata.to_dict()
 
         has_compliance_requirements = self.has_compliance_requirements
 
@@ -737,6 +740,7 @@ class PublicOfferingDetails:
         from ..models.offering_options import OfferingOptions
         from ..models.organization_group import OrganizationGroup
         from ..models.public_offering_details_attributes import PublicOfferingDetailsAttributes
+        from ..models.public_offering_details_backend_metadata import PublicOfferingDetailsBackendMetadata
         from ..models.quota import Quota
 
         d = dict(src_dict)
@@ -1151,7 +1155,12 @@ class PublicOfferingDetails:
 
         parent_name = _parse_parent_name(d.pop("parent_name", UNSET))
 
-        backend_metadata = d.pop("backend_metadata", UNSET)
+        _backend_metadata = d.pop("backend_metadata", UNSET)
+        backend_metadata: Union[Unset, PublicOfferingDetailsBackendMetadata]
+        if isinstance(_backend_metadata, Unset):
+            backend_metadata = UNSET
+        else:
+            backend_metadata = PublicOfferingDetailsBackendMetadata.from_dict(_backend_metadata)
 
         has_compliance_requirements = d.pop("has_compliance_requirements", UNSET)
 

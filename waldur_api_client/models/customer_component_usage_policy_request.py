@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.customer_component_usage_policy_request_options import CustomerComponentUsagePolicyRequestOptions
     from ..models.nested_customer_usage_policy_component_request import NestedCustomerUsagePolicyComponentRequest
 
 
@@ -20,13 +21,14 @@ class CustomerComponentUsagePolicyRequest:
         scope (str):
         actions (str):
         component_limits_set (list['NestedCustomerUsagePolicyComponentRequest']):
-        options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
+        options (Union[Unset, CustomerComponentUsagePolicyRequestOptions]): Fields for saving actions extra data. Keys
+            are name of actions.
     """
 
     scope: str
     actions: str
     component_limits_set: list["NestedCustomerUsagePolicyComponentRequest"]
-    options: Union[Unset, Any] = UNSET
+    options: Union[Unset, "CustomerComponentUsagePolicyRequestOptions"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,7 +41,9 @@ class CustomerComponentUsagePolicyRequest:
             component_limits_set_item = component_limits_set_item_data.to_dict()
             component_limits_set.append(component_limits_set_item)
 
-        options = self.options
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -57,6 +61,7 @@ class CustomerComponentUsagePolicyRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.customer_component_usage_policy_request_options import CustomerComponentUsagePolicyRequestOptions
         from ..models.nested_customer_usage_policy_component_request import NestedCustomerUsagePolicyComponentRequest
 
         d = dict(src_dict)
@@ -73,7 +78,12 @@ class CustomerComponentUsagePolicyRequest:
 
             component_limits_set.append(component_limits_set_item)
 
-        options = d.pop("options", UNSET)
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, CustomerComponentUsagePolicyRequestOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = CustomerComponentUsagePolicyRequestOptions.from_dict(_options)
 
         customer_component_usage_policy_request = cls(
             scope=scope,

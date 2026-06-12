@@ -11,6 +11,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.base_public_plan import BasePublicPlan
+    from ..models.call_resource_template_attributes import CallResourceTemplateAttributes
+    from ..models.call_resource_template_limits import CallResourceTemplateLimits
 
 
 T = TypeVar("T", bound="CallResourceTemplate")
@@ -24,8 +26,8 @@ class CallResourceTemplate:
         url (Union[Unset, str]):
         name (Union[Unset, str]):
         description (Union[Unset, str]):
-        attributes (Union[Unset, Any]):
-        limits (Union[Unset, Any]):
+        attributes (Union[Unset, CallResourceTemplateAttributes]):
+        limits (Union[Unset, CallResourceTemplateLimits]):
         is_required (Union[Unset, bool]): If True, every proposal must include this resource type
         requested_offering (Union[Unset, str]):
         requested_offering_name (Union[Unset, str]):
@@ -40,8 +42,8 @@ class CallResourceTemplate:
     url: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
-    attributes: Union[Unset, Any] = UNSET
-    limits: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "CallResourceTemplateAttributes"] = UNSET
+    limits: Union[Unset, "CallResourceTemplateLimits"] = UNSET
     is_required: Union[Unset, bool] = UNSET
     requested_offering: Union[Unset, str] = UNSET
     requested_offering_name: Union[Unset, str] = UNSET
@@ -63,9 +65,13 @@ class CallResourceTemplate:
 
         description = self.description
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
-        limits = self.limits
+        limits: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.limits, Unset):
+            limits = self.limits.to_dict()
 
         is_required = self.is_required
 
@@ -130,6 +136,8 @@ class CallResourceTemplate:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.base_public_plan import BasePublicPlan
+        from ..models.call_resource_template_attributes import CallResourceTemplateAttributes
+        from ..models.call_resource_template_limits import CallResourceTemplateLimits
 
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
@@ -145,9 +153,19 @@ class CallResourceTemplate:
 
         description = d.pop("description", UNSET)
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, CallResourceTemplateAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = CallResourceTemplateAttributes.from_dict(_attributes)
 
-        limits = d.pop("limits", UNSET)
+        _limits = d.pop("limits", UNSET)
+        limits: Union[Unset, CallResourceTemplateLimits]
+        if isinstance(_limits, Unset):
+            limits = UNSET
+        else:
+            limits = CallResourceTemplateLimits.from_dict(_limits)
 
         is_required = d.pop("is_required", UNSET)
 

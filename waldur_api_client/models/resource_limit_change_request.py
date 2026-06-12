@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.resource_limit_change_request_current_limits import ResourceLimitChangeRequestCurrentLimits
+    from ..models.resource_limit_change_request_requested_limits import ResourceLimitChangeRequestRequestedLimits
 
 
 T = TypeVar("T", bound="ResourceLimitChangeRequest")
@@ -32,7 +33,7 @@ class ResourceLimitChangeRequest:
         customer_name (str):
         offering_uuid (UUID):
         offering_name (str):
-        requested_limits (Any):
+        requested_limits (ResourceLimitChangeRequestRequestedLimits):
         current_limits (ResourceLimitChangeRequestCurrentLimits):
         created (datetime.datetime):
         created_by_uuid (Union[None, UUID]):
@@ -55,7 +56,7 @@ class ResourceLimitChangeRequest:
     customer_name: str
     offering_uuid: UUID
     offering_name: str
-    requested_limits: Any
+    requested_limits: "ResourceLimitChangeRequestRequestedLimits"
     current_limits: "ResourceLimitChangeRequestCurrentLimits"
     created: datetime.datetime
     created_by_uuid: Union[None, UUID]
@@ -91,7 +92,7 @@ class ResourceLimitChangeRequest:
 
         offering_name = self.offering_name
 
-        requested_limits = self.requested_limits
+        requested_limits = self.requested_limits.to_dict()
 
         current_limits = self.current_limits.to_dict()
 
@@ -161,6 +162,7 @@ class ResourceLimitChangeRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.resource_limit_change_request_current_limits import ResourceLimitChangeRequestCurrentLimits
+        from ..models.resource_limit_change_request_requested_limits import ResourceLimitChangeRequestRequestedLimits
 
         d = dict(src_dict)
         url = d.pop("url")
@@ -187,7 +189,7 @@ class ResourceLimitChangeRequest:
 
         offering_name = d.pop("offering_name")
 
-        requested_limits = d.pop("requested_limits")
+        requested_limits = ResourceLimitChangeRequestRequestedLimits.from_dict(d.pop("requested_limits"))
 
         current_limits = ResourceLimitChangeRequestCurrentLimits.from_dict(d.pop("current_limits"))
 

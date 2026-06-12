@@ -1,10 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.filter_check_result_rule_value_type_0 import FilterCheckResultRuleValueType0
+    from ..models.filter_check_result_user_value_type_0 import FilterCheckResultUserValueType0
+
 
 T = TypeVar("T", bound="FilterCheckResult")
 
@@ -17,19 +22,22 @@ class FilterCheckResult:
         configured (bool):
         matched (bool):
         reason (str):
-        user_value (Union[Unset, Any]):
-        rule_value (Union[Unset, Any]):
+        user_value (Union['FilterCheckResultUserValueType0', None, Unset]):
+        rule_value (Union['FilterCheckResultRuleValueType0', None, Unset]):
     """
 
     name: str
     configured: bool
     matched: bool
     reason: str
-    user_value: Union[Unset, Any] = UNSET
-    rule_value: Union[Unset, Any] = UNSET
+    user_value: Union["FilterCheckResultUserValueType0", None, Unset] = UNSET
+    rule_value: Union["FilterCheckResultRuleValueType0", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.filter_check_result_rule_value_type_0 import FilterCheckResultRuleValueType0
+        from ..models.filter_check_result_user_value_type_0 import FilterCheckResultUserValueType0
+
         name = self.name
 
         configured = self.configured
@@ -38,9 +46,21 @@ class FilterCheckResult:
 
         reason = self.reason
 
-        user_value = self.user_value
+        user_value: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.user_value, Unset):
+            user_value = UNSET
+        elif isinstance(self.user_value, FilterCheckResultUserValueType0):
+            user_value = self.user_value.to_dict()
+        else:
+            user_value = self.user_value
 
-        rule_value = self.rule_value
+        rule_value: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.rule_value, Unset):
+            rule_value = UNSET
+        elif isinstance(self.rule_value, FilterCheckResultRuleValueType0):
+            rule_value = self.rule_value.to_dict()
+        else:
+            rule_value = self.rule_value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -61,6 +81,9 @@ class FilterCheckResult:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.filter_check_result_rule_value_type_0 import FilterCheckResultRuleValueType0
+        from ..models.filter_check_result_user_value_type_0 import FilterCheckResultUserValueType0
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -70,9 +93,39 @@ class FilterCheckResult:
 
         reason = d.pop("reason")
 
-        user_value = d.pop("user_value", UNSET)
+        def _parse_user_value(data: object) -> Union["FilterCheckResultUserValueType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                user_value_type_0 = FilterCheckResultUserValueType0.from_dict(data)
 
-        rule_value = d.pop("rule_value", UNSET)
+                return user_value_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["FilterCheckResultUserValueType0", None, Unset], data)
+
+        user_value = _parse_user_value(d.pop("user_value", UNSET))
+
+        def _parse_rule_value(data: object) -> Union["FilterCheckResultRuleValueType0", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                rule_value_type_0 = FilterCheckResultRuleValueType0.from_dict(data)
+
+                return rule_value_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["FilterCheckResultRuleValueType0", None, Unset], data)
+
+        rule_value = _parse_rule_value(d.pop("rule_value", UNSET))
 
         filter_check_result = cls(
             name=name,

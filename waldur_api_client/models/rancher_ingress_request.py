@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.rancher_ingress_request_rules import RancherIngressRequestRules
+
 
 T = TypeVar("T", bound="RancherIngressRequest")
 
@@ -23,7 +27,7 @@ class RancherIngressRequest:
         backend_id (Union[Unset, str]):
         runtime_state (Union[Unset, str]):
         namespace (Union[Unset, str]):
-        rules (Union[Unset, Any]):
+        rules (Union[Unset, RancherIngressRequestRules]):
     """
 
     name: str
@@ -36,7 +40,7 @@ class RancherIngressRequest:
     backend_id: Union[Unset, str] = UNSET
     runtime_state: Union[Unset, str] = UNSET
     namespace: Union[Unset, str] = UNSET
-    rules: Union[Unset, Any] = UNSET
+    rules: Union[Unset, "RancherIngressRequestRules"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,7 +64,9 @@ class RancherIngressRequest:
 
         namespace = self.namespace
 
-        rules = self.rules
+        rules: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.rules, Unset):
+            rules = self.rules.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -91,6 +97,8 @@ class RancherIngressRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.rancher_ingress_request_rules import RancherIngressRequestRules
+
         d = dict(src_dict)
         name = d.pop("name")
 
@@ -112,7 +120,12 @@ class RancherIngressRequest:
 
         namespace = d.pop("namespace", UNSET)
 
-        rules = d.pop("rules", UNSET)
+        _rules = d.pop("rules", UNSET)
+        rules: Union[Unset, RancherIngressRequestRules]
+        if isinstance(_rules, Unset):
+            rules = UNSET
+        else:
+            rules = RancherIngressRequestRules.from_dict(_rules)
 
         rancher_ingress_request = cls(
             name=name,

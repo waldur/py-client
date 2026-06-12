@@ -1,11 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.rancher_template_question_type import RancherTemplateQuestionType
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.rancher_template_base_question_validate import RancherTemplateBaseQuestionValidate
+
 
 T = TypeVar("T", bound="RancherTemplateBaseQuestion")
 
@@ -19,7 +23,7 @@ class RancherTemplateBaseQuestion:
         type_ (RancherTemplateQuestionType):
         description (Union[Unset, str]):
         required (Union[Unset, bool]):
-        validate (Union[Unset, Any]):
+        validate (Union[Unset, RancherTemplateBaseQuestionValidate]):
         default (Union[None, Unset, str]):
         group (Union[Unset, str]):
         show_if (Union[Unset, str]):
@@ -30,7 +34,7 @@ class RancherTemplateBaseQuestion:
     type_: RancherTemplateQuestionType
     description: Union[Unset, str] = UNSET
     required: Union[Unset, bool] = UNSET
-    validate: Union[Unset, Any] = UNSET
+    validate: Union[Unset, "RancherTemplateBaseQuestionValidate"] = UNSET
     default: Union[None, Unset, str] = UNSET
     group: Union[Unset, str] = UNSET
     show_if: Union[Unset, str] = UNSET
@@ -47,7 +51,9 @@ class RancherTemplateBaseQuestion:
 
         required = self.required
 
-        validate = self.validate
+        validate: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.validate, Unset):
+            validate = self.validate.to_dict()
 
         default: Union[None, Unset, str]
         if isinstance(self.default, Unset):
@@ -85,6 +91,8 @@ class RancherTemplateBaseQuestion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.rancher_template_base_question_validate import RancherTemplateBaseQuestionValidate
+
         d = dict(src_dict)
         label = d.pop("label")
 
@@ -96,7 +104,12 @@ class RancherTemplateBaseQuestion:
 
         required = d.pop("required", UNSET)
 
-        validate = d.pop("validate_", UNSET)
+        _validate = d.pop("validate_", UNSET)
+        validate: Union[Unset, RancherTemplateBaseQuestionValidate]
+        if isinstance(_validate, Unset):
+            validate = UNSET
+        else:
+            validate = RancherTemplateBaseQuestionValidate.from_dict(_validate)
 
         def _parse_default(data: object) -> Union[None, Unset, str]:
             if data is None:

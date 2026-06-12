@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,12 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.resource_project_current_usages import ResourceProjectCurrentUsages
+    from ..models.resource_project_limits import ResourceProjectLimits
+    from ..models.resource_project_termination_metadata import ResourceProjectTerminationMetadata
+
 
 T = TypeVar("T", bound="ResourceProject")
 
@@ -22,8 +28,8 @@ class ResourceProject:
         backend_id (str):
         state (str):
         error_message (str):
-        current_usages (Any): Dictionary mapping component types to current usage amounts. Populated by backend
-            synchronization.
+        current_usages (ResourceProjectCurrentUsages): Dictionary mapping component types to current usage amounts.
+            Populated by backend synchronization.
         resource_uuid (UUID):
         resource_name (str):
         created (datetime.datetime):
@@ -33,9 +39,10 @@ class ResourceProject:
         removed_by (Union[None, int]):
         removed_by_username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
             characters
-        termination_metadata (Any):
+        termination_metadata (ResourceProjectTerminationMetadata):
         description (Union[Unset, str]):
-        limits (Union[Unset, Any]): Dictionary mapping component types to quota values. Same format as Resource.limits.
+        limits (Union[Unset, ResourceProjectLimits]): Dictionary mapping component types to quota values. Same format as
+            Resource.limits.
     """
 
     uuid: UUID
@@ -44,7 +51,7 @@ class ResourceProject:
     backend_id: str
     state: str
     error_message: str
-    current_usages: Any
+    current_usages: "ResourceProjectCurrentUsages"
     resource_uuid: UUID
     resource_name: str
     created: datetime.datetime
@@ -53,9 +60,9 @@ class ResourceProject:
     removed_date: Union[None, datetime.datetime]
     removed_by: Union[None, int]
     removed_by_username: str
-    termination_metadata: Any
+    termination_metadata: "ResourceProjectTerminationMetadata"
     description: Union[Unset, str] = UNSET
-    limits: Union[Unset, Any] = UNSET
+    limits: Union[Unset, "ResourceProjectLimits"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -71,7 +78,7 @@ class ResourceProject:
 
         error_message = self.error_message
 
-        current_usages = self.current_usages
+        current_usages = self.current_usages.to_dict()
 
         resource_uuid = str(self.resource_uuid)
 
@@ -94,11 +101,13 @@ class ResourceProject:
 
         removed_by_username = self.removed_by_username
 
-        termination_metadata = self.termination_metadata
+        termination_metadata = self.termination_metadata.to_dict()
 
         description = self.description
 
-        limits = self.limits
+        limits: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.limits, Unset):
+            limits = self.limits.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -131,6 +140,10 @@ class ResourceProject:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.resource_project_current_usages import ResourceProjectCurrentUsages
+        from ..models.resource_project_limits import ResourceProjectLimits
+        from ..models.resource_project_termination_metadata import ResourceProjectTerminationMetadata
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -144,7 +157,7 @@ class ResourceProject:
 
         error_message = d.pop("error_message")
 
-        current_usages = d.pop("current_usages")
+        current_usages = ResourceProjectCurrentUsages.from_dict(d.pop("current_usages"))
 
         resource_uuid = UUID(d.pop("resource_uuid"))
 
@@ -180,11 +193,16 @@ class ResourceProject:
 
         removed_by_username = d.pop("removed_by_username")
 
-        termination_metadata = d.pop("termination_metadata")
+        termination_metadata = ResourceProjectTerminationMetadata.from_dict(d.pop("termination_metadata"))
 
         description = d.pop("description", UNSET)
 
-        limits = d.pop("limits", UNSET)
+        _limits = d.pop("limits", UNSET)
+        limits: Union[Unset, ResourceProjectLimits]
+        if isinstance(_limits, Unset):
+            limits = UNSET
+        else:
+            limits = ResourceProjectLimits.from_dict(_limits)
 
         resource_project = cls(
             uuid=uuid,

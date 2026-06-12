@@ -1,9 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+if TYPE_CHECKING:
+    from ..models.resource_limit_change_request_create_requested_limits import (
+        ResourceLimitChangeRequestCreateRequestedLimits,
+    )
+
 
 T = TypeVar("T", bound="ResourceLimitChangeRequestCreate")
 
@@ -13,13 +19,13 @@ class ResourceLimitChangeRequestCreate:
     """
     Attributes:
         resource (UUID):
-        requested_limits (Any):
+        requested_limits (ResourceLimitChangeRequestCreateRequestedLimits):
         uuid (UUID):
         state (str):
     """
 
     resource: UUID
-    requested_limits: Any
+    requested_limits: "ResourceLimitChangeRequestCreateRequestedLimits"
     uuid: UUID
     state: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -27,7 +33,7 @@ class ResourceLimitChangeRequestCreate:
     def to_dict(self) -> dict[str, Any]:
         resource = str(self.resource)
 
-        requested_limits = self.requested_limits
+        requested_limits = self.requested_limits.to_dict()
 
         uuid = str(self.uuid)
 
@@ -48,10 +54,14 @@ class ResourceLimitChangeRequestCreate:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.resource_limit_change_request_create_requested_limits import (
+            ResourceLimitChangeRequestCreateRequestedLimits,
+        )
+
         d = dict(src_dict)
         resource = UUID(d.pop("resource"))
 
-        requested_limits = d.pop("requested_limits")
+        requested_limits = ResourceLimitChangeRequestCreateRequestedLimits.from_dict(d.pop("requested_limits"))
 
         uuid = UUID(d.pop("uuid"))
 

@@ -11,6 +11,7 @@ from ..models.policy_period_enum import PolicyPeriodEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.customer_estimated_cost_policy_options import CustomerEstimatedCostPolicyOptions
     from ..models.nested_price_estimate import NestedPriceEstimate
 
 
@@ -37,7 +38,8 @@ class CustomerEstimatedCostPolicy:
         period_name (str):
         customer_credit (Union[None, str]):
         billing_price_estimate (NestedPriceEstimate):
-        options (Union[Unset, Any]): Fields for saving actions extra data. Keys are name of actions.
+        options (Union[Unset, CustomerEstimatedCostPolicyOptions]): Fields for saving actions extra data. Keys are name
+            of actions.
         period (Union[Unset, PolicyPeriodEnum]):
     """
 
@@ -57,7 +59,7 @@ class CustomerEstimatedCostPolicy:
     period_name: str
     customer_credit: Union[None, str]
     billing_price_estimate: "NestedPriceEstimate"
-    options: Union[Unset, Any] = UNSET
+    options: Union[Unset, "CustomerEstimatedCostPolicyOptions"] = UNSET
     period: Union[Unset, PolicyPeriodEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -95,7 +97,9 @@ class CustomerEstimatedCostPolicy:
 
         billing_price_estimate = self.billing_price_estimate.to_dict()
 
-        options = self.options
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
 
         period: Union[Unset, int] = UNSET
         if not isinstance(self.period, Unset):
@@ -132,6 +136,7 @@ class CustomerEstimatedCostPolicy:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.customer_estimated_cost_policy_options import CustomerEstimatedCostPolicyOptions
         from ..models.nested_price_estimate import NestedPriceEstimate
 
         d = dict(src_dict)
@@ -172,7 +177,12 @@ class CustomerEstimatedCostPolicy:
 
         billing_price_estimate = NestedPriceEstimate.from_dict(d.pop("billing_price_estimate"))
 
-        options = d.pop("options", UNSET)
+        _options = d.pop("options", UNSET)
+        options: Union[Unset, CustomerEstimatedCostPolicyOptions]
+        if isinstance(_options, Unset):
+            options = UNSET
+        else:
+            options = CustomerEstimatedCostPolicyOptions.from_dict(_options)
 
         _period = d.pop("period", UNSET)
         period: Union[Unset, PolicyPeriodEnum]

@@ -15,6 +15,9 @@ if TYPE_CHECKING:
     from ..models.base_provider_plan_request import BaseProviderPlanRequest
     from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
     from ..models.offering_component_request import OfferingComponentRequest
+    from ..models.offering_create_request_form_attributes import OfferingCreateRequestFormAttributes
+    from ..models.offering_create_request_form_backend_id_rules import OfferingCreateRequestFormBackendIdRules
+    from ..models.offering_create_request_form_backend_metadata import OfferingCreateRequestFormBackendMetadata
     from ..models.offering_create_request_form_limits import OfferingCreateRequestFormLimits
     from ..models.offering_options_request import OfferingOptionsRequest
 
@@ -37,7 +40,7 @@ class OfferingCreateRequestForm:
         documentation_url (Union[Unset, str]):
         access_url (Union[Unset, str]): Publicly accessible offering access URL
         customer (Union[None, Unset, str]):
-        attributes (Union[Unset, Any]):
+        attributes (Union[Unset, OfferingCreateRequestFormAttributes]):
         options (Union[Unset, OfferingOptionsRequest]):
         resource_options (Union[Unset, OfferingOptionsRequest]):
         components (Union[Unset, list['OfferingComponentRequest']]):
@@ -54,10 +57,10 @@ class OfferingCreateRequestForm:
         longitude (Union[None, Unset, float]):
         country (Union[BlankEnum, CountryEnum, Unset]): Country code (ISO 3166-1 alpha-2)
         backend_id (Union[Unset, str]):
-        backend_id_rules (Union[Unset, Any]): Validation rules for resource backend_id: format regex and uniqueness
-            scope.
+        backend_id_rules (Union[Unset, OfferingCreateRequestFormBackendIdRules]): Validation rules for resource
+            backend_id: format regex and uniqueness scope.
         image (Union[File, None, Unset]):
-        backend_metadata (Union[Unset, Any]):
+        backend_metadata (Union[Unset, OfferingCreateRequestFormBackendMetadata]):
         compliance_checklist (Union[None, Unset, str]):
         offering_group (Union[None, UUID, Unset]):
         limits (Union[Unset, OfferingCreateRequestFormLimits]):
@@ -74,7 +77,7 @@ class OfferingCreateRequestForm:
     documentation_url: Union[Unset, str] = UNSET
     access_url: Union[Unset, str] = UNSET
     customer: Union[None, Unset, str] = UNSET
-    attributes: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "OfferingCreateRequestFormAttributes"] = UNSET
     options: Union[Unset, "OfferingOptionsRequest"] = UNSET
     resource_options: Union[Unset, "OfferingOptionsRequest"] = UNSET
     components: Union[Unset, list["OfferingComponentRequest"]] = UNSET
@@ -91,9 +94,9 @@ class OfferingCreateRequestForm:
     longitude: Union[None, Unset, float] = UNSET
     country: Union[BlankEnum, CountryEnum, Unset] = UNSET
     backend_id: Union[Unset, str] = UNSET
-    backend_id_rules: Union[Unset, Any] = UNSET
+    backend_id_rules: Union[Unset, "OfferingCreateRequestFormBackendIdRules"] = UNSET
     image: Union[File, None, Unset] = UNSET
-    backend_metadata: Union[Unset, Any] = UNSET
+    backend_metadata: Union[Unset, "OfferingCreateRequestFormBackendMetadata"] = UNSET
     compliance_checklist: Union[None, Unset, str] = UNSET
     offering_group: Union[None, UUID, Unset] = UNSET
     limits: Union[Unset, "OfferingCreateRequestFormLimits"] = UNSET
@@ -126,7 +129,9 @@ class OfferingCreateRequestForm:
         else:
             customer = self.customer
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
         options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.options, Unset):
@@ -197,7 +202,9 @@ class OfferingCreateRequestForm:
 
         backend_id = self.backend_id
 
-        backend_id_rules = self.backend_id_rules
+        backend_id_rules: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_id_rules, Unset):
+            backend_id_rules = self.backend_id_rules.to_dict()
 
         image: Union[None, Unset, types.FileTypes]
         if isinstance(self.image, Unset):
@@ -208,7 +215,9 @@ class OfferingCreateRequestForm:
         else:
             image = self.image
 
-        backend_metadata = self.backend_metadata
+        backend_metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_metadata, Unset):
+            backend_metadata = self.backend_metadata.to_dict()
 
         compliance_checklist: Union[None, Unset, str]
         if isinstance(self.compliance_checklist, Unset):
@@ -307,6 +316,9 @@ class OfferingCreateRequestForm:
         from ..models.base_provider_plan_request import BaseProviderPlanRequest
         from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
         from ..models.offering_component_request import OfferingComponentRequest
+        from ..models.offering_create_request_form_attributes import OfferingCreateRequestFormAttributes
+        from ..models.offering_create_request_form_backend_id_rules import OfferingCreateRequestFormBackendIdRules
+        from ..models.offering_create_request_form_backend_metadata import OfferingCreateRequestFormBackendMetadata
         from ..models.offering_create_request_form_limits import OfferingCreateRequestFormLimits
         from ..models.offering_options_request import OfferingOptionsRequest
 
@@ -340,7 +352,12 @@ class OfferingCreateRequestForm:
 
         customer = _parse_customer(d.pop("customer", UNSET))
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, OfferingCreateRequestFormAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = OfferingCreateRequestFormAttributes.from_dict(_attributes)
 
         _options = d.pop("options", UNSET)
         options: Union[Unset, OfferingOptionsRequest]
@@ -445,7 +462,12 @@ class OfferingCreateRequestForm:
 
         backend_id = d.pop("backend_id", UNSET)
 
-        backend_id_rules = d.pop("backend_id_rules", UNSET)
+        _backend_id_rules = d.pop("backend_id_rules", UNSET)
+        backend_id_rules: Union[Unset, OfferingCreateRequestFormBackendIdRules]
+        if isinstance(_backend_id_rules, Unset):
+            backend_id_rules = UNSET
+        else:
+            backend_id_rules = OfferingCreateRequestFormBackendIdRules.from_dict(_backend_id_rules)
 
         def _parse_image(data: object) -> Union[File, None, Unset]:
             if data is None:
@@ -464,7 +486,12 @@ class OfferingCreateRequestForm:
 
         image = _parse_image(d.pop("image", UNSET))
 
-        backend_metadata = d.pop("backend_metadata", UNSET)
+        _backend_metadata = d.pop("backend_metadata", UNSET)
+        backend_metadata: Union[Unset, OfferingCreateRequestFormBackendMetadata]
+        if isinstance(_backend_metadata, Unset):
+            backend_metadata = UNSET
+        else:
+            backend_metadata = OfferingCreateRequestFormBackendMetadata.from_dict(_backend_metadata)
 
         def _parse_compliance_checklist(data: object) -> Union[None, Unset, str]:
             if data is None:

@@ -1,12 +1,18 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.coi_disclosure_form_request_personal_relationships import (
+        COIDisclosureFormRequestPersonalRelationships,
+    )
+
 
 T = TypeVar("T", bound="COIDisclosureFormRequest")
 
@@ -21,7 +27,7 @@ class COIDisclosureFormRequest:
         certification_statement (Union[Unset, str]): Legal text they agreed to
         has_financial_interests (Union[Unset, bool]):
         has_personal_relationships (Union[Unset, bool]):
-        personal_relationships (Union[Unset, Any]):
+        personal_relationships (Union[Unset, COIDisclosureFormRequestPersonalRelationships]):
         has_other_conflicts (Union[Unset, bool]):
         other_conflicts_description (Union[Unset, str]):
     """
@@ -32,7 +38,7 @@ class COIDisclosureFormRequest:
     certification_statement: Union[Unset, str] = UNSET
     has_financial_interests: Union[Unset, bool] = UNSET
     has_personal_relationships: Union[Unset, bool] = UNSET
-    personal_relationships: Union[Unset, Any] = UNSET
+    personal_relationships: Union[Unset, "COIDisclosureFormRequestPersonalRelationships"] = UNSET
     has_other_conflicts: Union[Unset, bool] = UNSET
     other_conflicts_description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -54,7 +60,9 @@ class COIDisclosureFormRequest:
 
         has_personal_relationships = self.has_personal_relationships
 
-        personal_relationships = self.personal_relationships
+        personal_relationships: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.personal_relationships, Unset):
+            personal_relationships = self.personal_relationships.to_dict()
 
         has_other_conflicts = self.has_other_conflicts
 
@@ -88,6 +96,10 @@ class COIDisclosureFormRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.coi_disclosure_form_request_personal_relationships import (
+            COIDisclosureFormRequestPersonalRelationships,
+        )
+
         d = dict(src_dict)
         valid_until = isoparse(d.pop("valid_until")).date()
 
@@ -108,7 +120,12 @@ class COIDisclosureFormRequest:
 
         has_personal_relationships = d.pop("has_personal_relationships", UNSET)
 
-        personal_relationships = d.pop("personal_relationships", UNSET)
+        _personal_relationships = d.pop("personal_relationships", UNSET)
+        personal_relationships: Union[Unset, COIDisclosureFormRequestPersonalRelationships]
+        if isinstance(_personal_relationships, Unset):
+            personal_relationships = UNSET
+        else:
+            personal_relationships = COIDisclosureFormRequestPersonalRelationships.from_dict(_personal_relationships)
 
         has_other_conflicts = d.pop("has_other_conflicts", UNSET)
 

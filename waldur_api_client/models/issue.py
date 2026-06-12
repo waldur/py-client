@@ -10,6 +10,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.issue_processing_log import IssueProcessingLog
     from ..models.nested_feedback import NestedFeedback
 
 
@@ -64,8 +65,8 @@ class Issue:
         project (Union[None, Unset, str]):
         resource (Union[Unset, str]):
         template (Union[None, Unset, str]):
-        processing_log (Union[Unset, Any]): Internal processing log for debugging order lifecycle events. Visible only
-            to staff.
+        processing_log (Union[Unset, IssueProcessingLog]): Internal processing log for debugging order lifecycle events.
+            Visible only to staff.
     """
 
     url: str
@@ -112,7 +113,7 @@ class Issue:
     project: Union[None, Unset, str] = UNSET
     resource: Union[Unset, str] = UNSET
     template: Union[None, Unset, str] = UNSET
-    processing_log: Union[Unset, Any] = UNSET
+    processing_log: Union[Unset, "IssueProcessingLog"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -266,7 +267,9 @@ class Issue:
         else:
             template = self.template
 
-        processing_log = self.processing_log
+        processing_log: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.processing_log, Unset):
+            processing_log = self.processing_log.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -335,6 +338,7 @@ class Issue:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.issue_processing_log import IssueProcessingLog
         from ..models.nested_feedback import NestedFeedback
 
         d = dict(src_dict)
@@ -606,7 +610,12 @@ class Issue:
 
         template = _parse_template(d.pop("template", UNSET))
 
-        processing_log = d.pop("processing_log", UNSET)
+        _processing_log = d.pop("processing_log", UNSET)
+        processing_log: Union[Unset, IssueProcessingLog]
+        if isinstance(_processing_log, Unset):
+            processing_log = UNSET
+        else:
+            processing_log = IssueProcessingLog.from_dict(_processing_log)
 
         issue = cls(
             url=url,

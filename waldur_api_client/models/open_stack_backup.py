@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.open_stack_backup_marketplace_offering_plugin_options_type_0 import (
         OpenStackBackupMarketplaceOfferingPluginOptionsType0,
     )
+    from ..models.open_stack_backup_metadata import OpenStackBackupMetadata
     from ..models.open_stack_backup_restoration import OpenStackBackupRestoration
     from ..models.open_stack_nested_floating_ip import OpenStackNestedFloatingIP
     from ..models.open_stack_nested_port import OpenStackNestedPort
@@ -53,7 +54,7 @@ class OpenStackBackup:
         backend_id (Union[Unset, str]):
         access_url (Union[None, Unset, list[str], str]):
         kept_until (Union[None, Unset, datetime.datetime]): Guaranteed time of backup retention. If null - keep forever.
-        metadata (Union[Unset, Any]):
+        metadata (Union[Unset, OpenStackBackupMetadata]):
         instance (Union[Unset, str]): Instance that this backup is created from
         instance_name (Union[Unset, str]):
         instance_marketplace_uuid (Union[Unset, UUID]):
@@ -102,7 +103,7 @@ class OpenStackBackup:
     backend_id: Union[Unset, str] = UNSET
     access_url: Union[None, Unset, list[str], str] = UNSET
     kept_until: Union[None, Unset, datetime.datetime] = UNSET
-    metadata: Union[Unset, Any] = UNSET
+    metadata: Union[Unset, "OpenStackBackupMetadata"] = UNSET
     instance: Union[Unset, str] = UNSET
     instance_name: Union[Unset, str] = UNSET
     instance_marketplace_uuid: Union[Unset, UUID] = UNSET
@@ -210,7 +211,9 @@ class OpenStackBackup:
         else:
             kept_until = self.kept_until
 
-        metadata = self.metadata
+        metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
 
         instance = self.instance
 
@@ -423,6 +426,7 @@ class OpenStackBackup:
         from ..models.open_stack_backup_marketplace_offering_plugin_options_type_0 import (
             OpenStackBackupMarketplaceOfferingPluginOptionsType0,
         )
+        from ..models.open_stack_backup_metadata import OpenStackBackupMetadata
         from ..models.open_stack_backup_restoration import OpenStackBackupRestoration
         from ..models.open_stack_nested_floating_ip import OpenStackNestedFloatingIP
         from ..models.open_stack_nested_port import OpenStackNestedPort
@@ -546,7 +550,12 @@ class OpenStackBackup:
 
         kept_until = _parse_kept_until(d.pop("kept_until", UNSET))
 
-        metadata = d.pop("metadata", UNSET)
+        _metadata = d.pop("metadata", UNSET)
+        metadata: Union[Unset, OpenStackBackupMetadata]
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = OpenStackBackupMetadata.from_dict(_metadata)
 
         instance = d.pop("instance", UNSET)
 

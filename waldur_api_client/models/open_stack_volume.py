@@ -11,9 +11,11 @@ from ..models.core_states import CoreStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.open_stack_volume_action_details import OpenStackVolumeActionDetails
     from ..models.open_stack_volume_marketplace_offering_plugin_options_type_0 import (
         OpenStackVolumeMarketplaceOfferingPluginOptionsType0,
     )
+    from ..models.open_stack_volume_metadata import OpenStackVolumeMetadata
 
 
 T = TypeVar("T", bound="OpenStackVolume")
@@ -51,7 +53,7 @@ class OpenStackVolume:
         source_snapshot (Union[None, Unset, str]): Snapshot that this volume was created from, if any
         size (Union[None, Unset, int]): Size in MiB
         bootable (Union[Unset, bool]): Indicates if this volume can be used to boot an instance
-        metadata (Union[Unset, Any]):
+        metadata (Union[Unset, OpenStackVolumeMetadata]):
         image (Union[None, Unset, str]): Image that this volume was created from, if any
         image_metadata (Union[Unset, str]): Metadata of the image this volume was created from
         image_name (Union[Unset, str]): Name of the image this volume was created from
@@ -62,7 +64,7 @@ class OpenStackVolume:
         availability_zone_name (Union[Unset, str]):
         device (Union[Unset, str]): Name of volume as instance device e.g. /dev/vdb.
         action (Union[Unset, str]):
-        action_details (Union[Unset, Any]):
+        action_details (Union[Unset, OpenStackVolumeActionDetails]):
         instance (Union[None, Unset, str]): Instance that this volume is attached to, if any
         instance_name (Union[Unset, str]):
         instance_marketplace_uuid (Union[Unset, UUID]):
@@ -111,7 +113,7 @@ class OpenStackVolume:
     source_snapshot: Union[None, Unset, str] = UNSET
     size: Union[None, Unset, int] = UNSET
     bootable: Union[Unset, bool] = UNSET
-    metadata: Union[Unset, Any] = UNSET
+    metadata: Union[Unset, "OpenStackVolumeMetadata"] = UNSET
     image: Union[None, Unset, str] = UNSET
     image_metadata: Union[Unset, str] = UNSET
     image_name: Union[Unset, str] = UNSET
@@ -122,7 +124,7 @@ class OpenStackVolume:
     availability_zone_name: Union[Unset, str] = UNSET
     device: Union[Unset, str] = UNSET
     action: Union[Unset, str] = UNSET
-    action_details: Union[Unset, Any] = UNSET
+    action_details: Union[Unset, "OpenStackVolumeActionDetails"] = UNSET
     instance: Union[None, Unset, str] = UNSET
     instance_name: Union[Unset, str] = UNSET
     instance_marketplace_uuid: Union[Unset, UUID] = UNSET
@@ -238,7 +240,9 @@ class OpenStackVolume:
 
         bootable = self.bootable
 
-        metadata = self.metadata
+        metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
 
         image: Union[None, Unset, str]
         if isinstance(self.image, Unset):
@@ -272,7 +276,9 @@ class OpenStackVolume:
 
         action = self.action
 
-        action_details = self.action_details
+        action_details: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.action_details, Unset):
+            action_details = self.action_details.to_dict()
 
         instance: Union[None, Unset, str]
         if isinstance(self.instance, Unset):
@@ -484,9 +490,11 @@ class OpenStackVolume:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.open_stack_volume_action_details import OpenStackVolumeActionDetails
         from ..models.open_stack_volume_marketplace_offering_plugin_options_type_0 import (
             OpenStackVolumeMarketplaceOfferingPluginOptionsType0,
         )
+        from ..models.open_stack_volume_metadata import OpenStackVolumeMetadata
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -616,7 +624,12 @@ class OpenStackVolume:
 
         bootable = d.pop("bootable", UNSET)
 
-        metadata = d.pop("metadata", UNSET)
+        _metadata = d.pop("metadata", UNSET)
+        metadata: Union[Unset, OpenStackVolumeMetadata]
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = OpenStackVolumeMetadata.from_dict(_metadata)
 
         def _parse_image(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -659,7 +672,12 @@ class OpenStackVolume:
 
         action = d.pop("action", UNSET)
 
-        action_details = d.pop("action_details", UNSET)
+        _action_details = d.pop("action_details", UNSET)
+        action_details: Union[Unset, OpenStackVolumeActionDetails]
+        if isinstance(_action_details, Unset):
+            action_details = UNSET
+        else:
+            action_details = OpenStackVolumeActionDetails.from_dict(_action_details)
 
         def _parse_instance(data: object) -> Union[None, Unset, str]:
             if data is None:

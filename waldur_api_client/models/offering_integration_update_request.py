@@ -9,6 +9,9 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
     from ..models.merged_secret_options_request import MergedSecretOptionsRequest
+    from ..models.offering_integration_update_request_service_attributes import (
+        OfferingIntegrationUpdateRequestServiceAttributes,
+    )
 
 
 T = TypeVar("T", bound="OfferingIntegrationUpdateRequest")
@@ -20,13 +23,13 @@ class OfferingIntegrationUpdateRequest:
     Attributes:
         secret_options (Union[Unset, MergedSecretOptionsRequest]):
         plugin_options (Union[Unset, MergedPluginOptionsRequest]):
-        service_attributes (Union[Unset, Any]):
+        service_attributes (Union[Unset, OfferingIntegrationUpdateRequestServiceAttributes]):
         backend_id (Union[Unset, str]):
     """
 
     secret_options: Union[Unset, "MergedSecretOptionsRequest"] = UNSET
     plugin_options: Union[Unset, "MergedPluginOptionsRequest"] = UNSET
-    service_attributes: Union[Unset, Any] = UNSET
+    service_attributes: Union[Unset, "OfferingIntegrationUpdateRequestServiceAttributes"] = UNSET
     backend_id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -39,7 +42,9 @@ class OfferingIntegrationUpdateRequest:
         if not isinstance(self.plugin_options, Unset):
             plugin_options = self.plugin_options.to_dict()
 
-        service_attributes = self.service_attributes
+        service_attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.service_attributes, Unset):
+            service_attributes = self.service_attributes.to_dict()
 
         backend_id = self.backend_id
 
@@ -61,6 +66,9 @@ class OfferingIntegrationUpdateRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
         from ..models.merged_secret_options_request import MergedSecretOptionsRequest
+        from ..models.offering_integration_update_request_service_attributes import (
+            OfferingIntegrationUpdateRequestServiceAttributes,
+        )
 
         d = dict(src_dict)
         _secret_options = d.pop("secret_options", UNSET)
@@ -77,7 +85,12 @@ class OfferingIntegrationUpdateRequest:
         else:
             plugin_options = MergedPluginOptionsRequest.from_dict(_plugin_options)
 
-        service_attributes = d.pop("service_attributes", UNSET)
+        _service_attributes = d.pop("service_attributes", UNSET)
+        service_attributes: Union[Unset, OfferingIntegrationUpdateRequestServiceAttributes]
+        if isinstance(_service_attributes, Unset):
+            service_attributes = UNSET
+        else:
+            service_attributes = OfferingIntegrationUpdateRequestServiceAttributes.from_dict(_service_attributes)
 
         backend_id = d.pop("backend_id", UNSET)
 

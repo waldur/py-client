@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.role_modify_request_permissions import RoleModifyRequestPermissions
+
 
 T = TypeVar("T", bound="RoleModifyRequest")
 
@@ -14,7 +18,7 @@ class RoleModifyRequest:
     """
     Attributes:
         name (str):
-        permissions (Any):
+        permissions (RoleModifyRequestPermissions):
         content_type (str):
         description (Union[Unset, str]):
         description_en (Union[None, Unset, str]):
@@ -35,7 +39,7 @@ class RoleModifyRequest:
     """
 
     name: str
-    permissions: Any
+    permissions: "RoleModifyRequestPermissions"
     content_type: str
     description: Union[Unset, str] = UNSET
     description_en: Union[None, Unset, str] = UNSET
@@ -58,7 +62,7 @@ class RoleModifyRequest:
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
-        permissions = self.permissions
+        permissions = self.permissions.to_dict()
 
         content_type = self.content_type
 
@@ -196,10 +200,12 @@ class RoleModifyRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.role_modify_request_permissions import RoleModifyRequestPermissions
+
         d = dict(src_dict)
         name = d.pop("name")
 
-        permissions = d.pop("permissions")
+        permissions = RoleModifyRequestPermissions.from_dict(d.pop("permissions"))
 
         content_type = d.pop("content_type")
 

@@ -1,11 +1,16 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.requested_resource_request_attributes import RequestedResourceRequestAttributes
+    from ..models.requested_resource_request_limits import RequestedResourceRequestLimits
+
 
 T = TypeVar("T", bound="RequestedResourceRequest")
 
@@ -14,24 +19,28 @@ T = TypeVar("T", bound="RequestedResourceRequest")
 class RequestedResourceRequest:
     """
     Attributes:
-        attributes (Union[Unset, Any]):
-        limits (Union[Unset, Any]):
+        attributes (Union[Unset, RequestedResourceRequestAttributes]):
+        limits (Union[Unset, RequestedResourceRequestLimits]):
         description (Union[Unset, str]):
         requested_offering_uuid (Union[Unset, UUID]):
         call_resource_template_uuid (Union[Unset, UUID]):
     """
 
-    attributes: Union[Unset, Any] = UNSET
-    limits: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "RequestedResourceRequestAttributes"] = UNSET
+    limits: Union[Unset, "RequestedResourceRequestLimits"] = UNSET
     description: Union[Unset, str] = UNSET
     requested_offering_uuid: Union[Unset, UUID] = UNSET
     call_resource_template_uuid: Union[Unset, UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
-        limits = self.limits
+        limits: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.limits, Unset):
+            limits = self.limits.to_dict()
 
         description = self.description
 
@@ -61,10 +70,23 @@ class RequestedResourceRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        d = dict(src_dict)
-        attributes = d.pop("attributes", UNSET)
+        from ..models.requested_resource_request_attributes import RequestedResourceRequestAttributes
+        from ..models.requested_resource_request_limits import RequestedResourceRequestLimits
 
-        limits = d.pop("limits", UNSET)
+        d = dict(src_dict)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, RequestedResourceRequestAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = RequestedResourceRequestAttributes.from_dict(_attributes)
+
+        _limits = d.pop("limits", UNSET)
+        limits: Union[Unset, RequestedResourceRequestLimits]
+        if isinstance(_limits, Unset):
+            limits = UNSET
+        else:
+            limits = RequestedResourceRequestLimits.from_dict(_limits)
 
         description = d.pop("description", UNSET)
 

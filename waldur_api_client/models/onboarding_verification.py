@@ -14,9 +14,12 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.onboarding_justification import OnboardingJustification
     from ..models.onboarding_verification_onboarding_metadata import OnboardingVerificationOnboardingMetadata
+    from ..models.onboarding_verification_raw_response import OnboardingVerificationRawResponse
     from ..models.onboarding_verification_user_submitted_customer_data import (
         OnboardingVerificationUserSubmittedCustomerData,
     )
+    from ..models.onboarding_verification_verified_company_data import OnboardingVerificationVerifiedCompanyData
+    from ..models.onboarding_verification_verified_user_roles import OnboardingVerificationVerifiedUserRoles
 
 
 T = TypeVar("T", bound="OnboardingVerification")
@@ -32,9 +35,10 @@ class OnboardingVerification:
         status (OnboardingVerificationStatusEnum):
         justifications (list['OnboardingJustification']):
         validation_method (ValidationMethodEnum):
-        verified_user_roles (Any): Roles the user has in the company
-        verified_company_data (Any): Company information retrieved during validation
-        raw_response (Any): Raw API response for debugging and auditing
+        verified_user_roles (OnboardingVerificationVerifiedUserRoles): Roles the user has in the company
+        verified_company_data (OnboardingVerificationVerifiedCompanyData): Company information retrieved during
+            validation
+        raw_response (OnboardingVerificationRawResponse): Raw API response for debugging and auditing
         error_traceback (str):
         error_message (str):
         validated_at (Union[None, datetime.datetime]): When validation was completed
@@ -62,9 +66,9 @@ class OnboardingVerification:
     status: OnboardingVerificationStatusEnum
     justifications: list["OnboardingJustification"]
     validation_method: ValidationMethodEnum
-    verified_user_roles: Any
-    verified_company_data: Any
-    raw_response: Any
+    verified_user_roles: "OnboardingVerificationVerifiedUserRoles"
+    verified_company_data: "OnboardingVerificationVerifiedCompanyData"
+    raw_response: "OnboardingVerificationRawResponse"
     error_traceback: str
     error_message: str
     validated_at: Union[None, datetime.datetime]
@@ -97,11 +101,11 @@ class OnboardingVerification:
 
         validation_method = self.validation_method.value
 
-        verified_user_roles = self.verified_user_roles
+        verified_user_roles = self.verified_user_roles.to_dict()
 
-        verified_company_data = self.verified_company_data
+        verified_company_data = self.verified_company_data.to_dict()
 
-        raw_response = self.raw_response
+        raw_response = self.raw_response.to_dict()
 
         error_traceback = self.error_traceback
 
@@ -183,9 +187,12 @@ class OnboardingVerification:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.onboarding_justification import OnboardingJustification
         from ..models.onboarding_verification_onboarding_metadata import OnboardingVerificationOnboardingMetadata
+        from ..models.onboarding_verification_raw_response import OnboardingVerificationRawResponse
         from ..models.onboarding_verification_user_submitted_customer_data import (
             OnboardingVerificationUserSubmittedCustomerData,
         )
+        from ..models.onboarding_verification_verified_company_data import OnboardingVerificationVerifiedCompanyData
+        from ..models.onboarding_verification_verified_user_roles import OnboardingVerificationVerifiedUserRoles
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -205,11 +212,11 @@ class OnboardingVerification:
 
         validation_method = ValidationMethodEnum(d.pop("validation_method"))
 
-        verified_user_roles = d.pop("verified_user_roles")
+        verified_user_roles = OnboardingVerificationVerifiedUserRoles.from_dict(d.pop("verified_user_roles"))
 
-        verified_company_data = d.pop("verified_company_data")
+        verified_company_data = OnboardingVerificationVerifiedCompanyData.from_dict(d.pop("verified_company_data"))
 
-        raw_response = d.pop("raw_response")
+        raw_response = OnboardingVerificationRawResponse.from_dict(d.pop("raw_response"))
 
         error_traceback = d.pop("error_traceback")
 

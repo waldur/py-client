@@ -11,10 +11,12 @@ from ..models.core_states import CoreStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.open_stack_snapshot_action_details import OpenStackSnapshotActionDetails
     from ..models.open_stack_snapshot_backup import OpenStackSnapshotBackup
     from ..models.open_stack_snapshot_marketplace_offering_plugin_options_type_0 import (
         OpenStackSnapshotMarketplaceOfferingPluginOptionsType0,
     )
+    from ..models.open_stack_snapshot_metadata import OpenStackSnapshotMetadata
     from ..models.open_stack_snapshot_restoration import OpenStackSnapshotRestoration
 
 
@@ -52,12 +54,12 @@ class OpenStackSnapshot:
         access_url (Union[None, Unset, list[str], str]):
         source_volume (Union[None, Unset, str]): Volume from which this snapshot was created
         size (Union[Unset, int]): Size in MiB
-        metadata (Union[Unset, Any]):
+        metadata (Union[Unset, OpenStackSnapshotMetadata]):
         runtime_state (Union[Unset, str]):
         source_volume_name (Union[Unset, str]):
         source_volume_marketplace_uuid (Union[Unset, UUID]):
         action (Union[Unset, str]):
-        action_details (Union[Unset, Any]):
+        action_details (Union[Unset, OpenStackSnapshotActionDetails]):
         restorations (Union[Unset, list['OpenStackSnapshotRestoration']]):
         backups (Union[Unset, list['OpenStackSnapshotBackup']]):
         kept_until (Union[None, Unset, datetime.datetime]): Guaranteed time of snapshot retention. If null - keep
@@ -103,12 +105,12 @@ class OpenStackSnapshot:
     access_url: Union[None, Unset, list[str], str] = UNSET
     source_volume: Union[None, Unset, str] = UNSET
     size: Union[Unset, int] = UNSET
-    metadata: Union[Unset, Any] = UNSET
+    metadata: Union[Unset, "OpenStackSnapshotMetadata"] = UNSET
     runtime_state: Union[Unset, str] = UNSET
     source_volume_name: Union[Unset, str] = UNSET
     source_volume_marketplace_uuid: Union[Unset, UUID] = UNSET
     action: Union[Unset, str] = UNSET
-    action_details: Union[Unset, Any] = UNSET
+    action_details: Union[Unset, "OpenStackSnapshotActionDetails"] = UNSET
     restorations: Union[Unset, list["OpenStackSnapshotRestoration"]] = UNSET
     backups: Union[Unset, list["OpenStackSnapshotBackup"]] = UNSET
     kept_until: Union[None, Unset, datetime.datetime] = UNSET
@@ -215,7 +217,9 @@ class OpenStackSnapshot:
 
         size = self.size
 
-        metadata = self.metadata
+        metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.metadata, Unset):
+            metadata = self.metadata.to_dict()
 
         runtime_state = self.runtime_state
 
@@ -227,7 +231,9 @@ class OpenStackSnapshot:
 
         action = self.action
 
-        action_details = self.action_details
+        action_details: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.action_details, Unset):
+            action_details = self.action_details.to_dict()
 
         restorations: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.restorations, Unset):
@@ -423,10 +429,12 @@ class OpenStackSnapshot:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.open_stack_snapshot_action_details import OpenStackSnapshotActionDetails
         from ..models.open_stack_snapshot_backup import OpenStackSnapshotBackup
         from ..models.open_stack_snapshot_marketplace_offering_plugin_options_type_0 import (
             OpenStackSnapshotMarketplaceOfferingPluginOptionsType0,
         )
+        from ..models.open_stack_snapshot_metadata import OpenStackSnapshotMetadata
         from ..models.open_stack_snapshot_restoration import OpenStackSnapshotRestoration
 
         d = dict(src_dict)
@@ -548,7 +556,12 @@ class OpenStackSnapshot:
 
         size = d.pop("size", UNSET)
 
-        metadata = d.pop("metadata", UNSET)
+        _metadata = d.pop("metadata", UNSET)
+        metadata: Union[Unset, OpenStackSnapshotMetadata]
+        if isinstance(_metadata, Unset):
+            metadata = UNSET
+        else:
+            metadata = OpenStackSnapshotMetadata.from_dict(_metadata)
 
         runtime_state = d.pop("runtime_state", UNSET)
 
@@ -563,7 +576,12 @@ class OpenStackSnapshot:
 
         action = d.pop("action", UNSET)
 
-        action_details = d.pop("action_details", UNSET)
+        _action_details = d.pop("action_details", UNSET)
+        action_details: Union[Unset, OpenStackSnapshotActionDetails]
+        if isinstance(_action_details, Unset):
+            action_details = UNSET
+        else:
+            action_details = OpenStackSnapshotActionDetails.from_dict(_action_details)
 
         restorations = []
         _restorations = d.pop("restorations", UNSET)

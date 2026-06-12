@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,6 +9,10 @@ from dateutil.parser import isoparse
 
 from ..models.dry_run_state_enum import DryRunStateEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.dry_run_order_attributes import DryRunOrderAttributes
+
 
 T = TypeVar("T", bound="DryRun")
 
@@ -19,7 +23,7 @@ class DryRun:
     Attributes:
         url (str):
         uuid (UUID):
-        order_attributes (Any):
+        order_attributes (DryRunOrderAttributes):
         order_type (str):
         state (DryRunStateEnum):
         get_state_display (str):
@@ -30,7 +34,7 @@ class DryRun:
 
     url: str
     uuid: UUID
-    order_attributes: Any
+    order_attributes: "DryRunOrderAttributes"
     order_type: str
     state: DryRunStateEnum
     get_state_display: str
@@ -44,7 +48,7 @@ class DryRun:
 
         uuid = str(self.uuid)
 
-        order_attributes = self.order_attributes
+        order_attributes = self.order_attributes.to_dict()
 
         order_type = self.order_type
 
@@ -83,12 +87,14 @@ class DryRun:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.dry_run_order_attributes import DryRunOrderAttributes
+
         d = dict(src_dict)
         url = d.pop("url")
 
         uuid = UUID(d.pop("uuid"))
 
-        order_attributes = d.pop("order_attributes")
+        order_attributes = DryRunOrderAttributes.from_dict(d.pop("order_attributes"))
 
         order_type = d.pop("order_type")
 

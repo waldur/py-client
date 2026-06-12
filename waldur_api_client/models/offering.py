@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from ..models.nested_software_catalog import NestedSoftwareCatalog
     from ..models.nested_tag import NestedTag
     from ..models.offering_attributes import OfferingAttributes
+    from ..models.offering_backend_metadata import OfferingBackendMetadata
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
     from ..models.organization_group import OrganizationGroup
@@ -99,7 +100,7 @@ class Offering:
         parent_description (Union[None, Unset, str]):
         parent_uuid (Union[None, UUID, Unset]):
         parent_name (Union[None, Unset, str]):
-        backend_metadata (Union[Unset, Any]):
+        backend_metadata (Union[Unset, OfferingBackendMetadata]):
         has_compliance_requirements (Union[Unset, bool]):
         billing_type_classification (Union[Unset, str]): Classify offering components by billing type.
             Returns 'limit_only', 'usage_only', or 'mixed'.
@@ -177,7 +178,7 @@ class Offering:
     parent_description: Union[None, Unset, str] = UNSET
     parent_uuid: Union[None, UUID, Unset] = UNSET
     parent_name: Union[None, Unset, str] = UNSET
-    backend_metadata: Union[Unset, Any] = UNSET
+    backend_metadata: Union[Unset, "OfferingBackendMetadata"] = UNSET
     has_compliance_requirements: Union[Unset, bool] = UNSET
     billing_type_classification: Union[Unset, str] = UNSET
     effective_available_limits: Union[Unset, list[str]] = UNSET
@@ -479,7 +480,9 @@ class Offering:
         else:
             parent_name = self.parent_name
 
-        backend_metadata = self.backend_metadata
+        backend_metadata: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_metadata, Unset):
+            backend_metadata = self.backend_metadata.to_dict()
 
         has_compliance_requirements = self.has_compliance_requirements
 
@@ -705,6 +708,7 @@ class Offering:
         from ..models.nested_software_catalog import NestedSoftwareCatalog
         from ..models.nested_tag import NestedTag
         from ..models.offering_attributes import OfferingAttributes
+        from ..models.offering_backend_metadata import OfferingBackendMetadata
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
         from ..models.organization_group import OrganizationGroup
@@ -1122,7 +1126,12 @@ class Offering:
 
         parent_name = _parse_parent_name(d.pop("parent_name", UNSET))
 
-        backend_metadata = d.pop("backend_metadata", UNSET)
+        _backend_metadata = d.pop("backend_metadata", UNSET)
+        backend_metadata: Union[Unset, OfferingBackendMetadata]
+        if isinstance(_backend_metadata, Unset):
+            backend_metadata = UNSET
+        else:
+            backend_metadata = OfferingBackendMetadata.from_dict(_backend_metadata)
 
         has_compliance_requirements = d.pop("has_compliance_requirements", UNSET)
 

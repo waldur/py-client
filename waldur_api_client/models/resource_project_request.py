@@ -1,11 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.resource_project_request_limits import ResourceProjectRequestLimits
+
 
 T = TypeVar("T", bound="ResourceProjectRequest")
 
@@ -17,13 +21,14 @@ class ResourceProjectRequest:
         resource (UUID):
         name (str):
         description (Union[Unset, str]):
-        limits (Union[Unset, Any]): Dictionary mapping component types to quota values. Same format as Resource.limits.
+        limits (Union[Unset, ResourceProjectRequestLimits]): Dictionary mapping component types to quota values. Same
+            format as Resource.limits.
     """
 
     resource: UUID
     name: str
     description: Union[Unset, str] = UNSET
-    limits: Union[Unset, Any] = UNSET
+    limits: Union[Unset, "ResourceProjectRequestLimits"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -33,7 +38,9 @@ class ResourceProjectRequest:
 
         description = self.description
 
-        limits = self.limits
+        limits: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.limits, Unset):
+            limits = self.limits.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -52,6 +59,8 @@ class ResourceProjectRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.resource_project_request_limits import ResourceProjectRequestLimits
+
         d = dict(src_dict)
         resource = UUID(d.pop("resource"))
 
@@ -59,7 +68,12 @@ class ResourceProjectRequest:
 
         description = d.pop("description", UNSET)
 
-        limits = d.pop("limits", UNSET)
+        _limits = d.pop("limits", UNSET)
+        limits: Union[Unset, ResourceProjectRequestLimits]
+        if isinstance(_limits, Unset):
+            limits = UNSET
+        else:
+            limits = ResourceProjectRequestLimits.from_dict(_limits)
 
         resource_project_request = cls(
             resource=resource,

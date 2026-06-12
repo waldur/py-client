@@ -1,11 +1,15 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.dry_run_type_enum import DryRunTypeEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.dry_run_request_attributes import DryRunRequestAttributes
+
 
 T = TypeVar("T", bound="DryRunRequest")
 
@@ -16,13 +20,13 @@ class DryRunRequest:
     Attributes:
         plan (Union[None, Unset, str]):
         type_ (Union[Unset, DryRunTypeEnum]):  Default: DryRunTypeEnum.CREATE.
-        attributes (Union[Unset, Any]):
+        attributes (Union[Unset, DryRunRequestAttributes]):
         order_offering (Union[None, Unset, str]):
     """
 
     plan: Union[None, Unset, str] = UNSET
     type_: Union[Unset, DryRunTypeEnum] = DryRunTypeEnum.CREATE
-    attributes: Union[Unset, Any] = UNSET
+    attributes: Union[Unset, "DryRunRequestAttributes"] = UNSET
     order_offering: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -37,7 +41,9 @@ class DryRunRequest:
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
-        attributes = self.attributes
+        attributes: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.attributes, Unset):
+            attributes = self.attributes.to_dict()
 
         order_offering: Union[None, Unset, str]
         if isinstance(self.order_offering, Unset):
@@ -61,6 +67,8 @@ class DryRunRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.dry_run_request_attributes import DryRunRequestAttributes
+
         d = dict(src_dict)
 
         def _parse_plan(data: object) -> Union[None, Unset, str]:
@@ -79,7 +87,12 @@ class DryRunRequest:
         else:
             type_ = DryRunTypeEnum(_type_)
 
-        attributes = d.pop("attributes", UNSET)
+        _attributes = d.pop("attributes", UNSET)
+        attributes: Union[Unset, DryRunRequestAttributes]
+        if isinstance(_attributes, Unset):
+            attributes = UNSET
+        else:
+            attributes = DryRunRequestAttributes.from_dict(_attributes)
 
         def _parse_order_offering(data: object) -> Union[None, Unset, str]:
             if data is None:
