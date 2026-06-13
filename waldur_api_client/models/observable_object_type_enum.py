@@ -4,6 +4,7 @@ from enum import Enum
 class ObservableObjectTypeEnum(str, Enum):
     COURSE_ACCOUNT = "course_account"
     IMPORTABLE_RESOURCES = "importable_resources"
+    OFFERING_RESOURCES_SYNC = "offering_resources_sync"
     OFFERING_USER = "offering_user"
     ORDER = "order"
     RESOURCE = "resource"

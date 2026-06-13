@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.25.dev.20260612233350
+# Version: 8.0.9-rc.25.dev.20260613233423
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9143,6 +9143,13 @@ Request body: yes
 POST /api/marketplace-provider-offerings/{uuid}/sync/
 Summary: Synchronize offering service settings
 Description: Schedules a synchronization task to pull the latest data for the offering's service settings from the backend.
+Path parameters:
+  - uuid
+
+### marketplace_provider_offerings_sync_resources
+POST /api/marketplace-provider-offerings/{uuid}/sync_resources/
+Summary: Synchronize offering resources
+Description: Requests connected site agents to run a full reconciliation of all resources belonging to this offering: recreate missing backend accounts, restore user associations and re-apply resource limits. Useful when the provider backend has lost state, e.g. a wiped SLURM database.
 Path parameters:
   - uuid
 

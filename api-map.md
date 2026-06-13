@@ -1571,6 +1571,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_stats_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/stats/` — Get offering statistics (path: uuid)
 - `marketplace_provider_offerings_switch_billing_mode` POST `/api/marketplace-provider-offerings/{uuid}/switch_billing_mode/` — Switch billing mode for builtin components (path: uuid | request body)
 - `marketplace_provider_offerings_sync` POST `/api/marketplace-provider-offerings/{uuid}/sync/` — Synchronize offering service settings (path: uuid)
+- `marketplace_provider_offerings_sync_resources` POST `/api/marketplace-provider-offerings/{uuid}/sync_resources/` — Synchronize offering resources (path: uuid)
 - `marketplace_provider_offerings_tos_stats_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/tos_stats/` — Get Terms of Service consent statistics (path: uuid)
 - `marketplace_provider_offerings_unpause` POST `/api/marketplace-provider-offerings/{uuid}/unpause/` — Unpause an offering (path: uuid)
 - `marketplace_provider_offerings_update_user_attribute_config` POST `/api/marketplace-provider-offerings/{uuid}/update-user-attribute-config/` — Update user attribute config (path: uuid | request body)
