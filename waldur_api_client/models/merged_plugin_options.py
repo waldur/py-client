@@ -74,6 +74,13 @@ class MergedPluginOptions:
         resource_name_pattern (Union[None, Unset, str]): Python format string for generating resource names. Available
             variables: {customer_name}, {customer_slug}, {project_name}, {project_slug}, {offering_name}, {offering_slug},
             {plan_name}, {counter}, {attributes[KEY]}.
+        resource_slug_template (Union[None, Unset, str]): Template for resource slugs, overriding the default
+            10-character slugified name. Available variables: {customer_slug}, {project_slug}, {project_name},
+            {offering_slug}, {year}, {month}, {counter}, {counter_padded}. Default: slugified resource name (max 10
+            characters).
+        resource_slug_max_length (Union[None, Unset, int]): Maximum length of auto-generated resource slugs derived from
+            the resource name, overriding the default of 10 characters (up to 40). Ignored when a resource slug template is
+            set.
         default_internal_network_mtu (Union[Unset, int]): If set, it will be used as a default MTU for the first network
             in a tenant
         max_instances (Union[Unset, int]): Default limit for number of instances in OpenStack tenant
@@ -192,6 +199,8 @@ class MergedPluginOptions:
     notify_about_provider_consumer_messages: Union[Unset, bool] = UNSET
     restrict_deletion_with_active_resources: Union[Unset, bool] = UNSET
     resource_name_pattern: Union[None, Unset, str] = UNSET
+    resource_slug_template: Union[None, Unset, str] = UNSET
+    resource_slug_max_length: Union[None, Unset, int] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
     max_volumes: Union[Unset, int] = UNSET
@@ -315,6 +324,18 @@ class MergedPluginOptions:
             resource_name_pattern = UNSET
         else:
             resource_name_pattern = self.resource_name_pattern
+
+        resource_slug_template: Union[None, Unset, str]
+        if isinstance(self.resource_slug_template, Unset):
+            resource_slug_template = UNSET
+        else:
+            resource_slug_template = self.resource_slug_template
+
+        resource_slug_max_length: Union[None, Unset, int]
+        if isinstance(self.resource_slug_max_length, Unset):
+            resource_slug_max_length = UNSET
+        else:
+            resource_slug_max_length = self.resource_slug_max_length
 
         default_internal_network_mtu = self.default_internal_network_mtu
 
@@ -505,6 +526,10 @@ class MergedPluginOptions:
             field_dict["restrict_deletion_with_active_resources"] = restrict_deletion_with_active_resources
         if resource_name_pattern is not UNSET:
             field_dict["resource_name_pattern"] = resource_name_pattern
+        if resource_slug_template is not UNSET:
+            field_dict["resource_slug_template"] = resource_slug_template
+        if resource_slug_max_length is not UNSET:
+            field_dict["resource_slug_max_length"] = resource_slug_max_length
         if default_internal_network_mtu is not UNSET:
             field_dict["default_internal_network_mtu"] = default_internal_network_mtu
         if max_instances is not UNSET:
@@ -708,6 +733,24 @@ class MergedPluginOptions:
 
         resource_name_pattern = _parse_resource_name_pattern(d.pop("resource_name_pattern", UNSET))
 
+        def _parse_resource_slug_template(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        resource_slug_template = _parse_resource_slug_template(d.pop("resource_slug_template", UNSET))
+
+        def _parse_resource_slug_max_length(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        resource_slug_max_length = _parse_resource_slug_max_length(d.pop("resource_slug_max_length", UNSET))
+
         default_internal_network_mtu = d.pop("default_internal_network_mtu", UNSET)
 
         max_instances = d.pop("max_instances", UNSET)
@@ -896,6 +939,8 @@ class MergedPluginOptions:
             notify_about_provider_consumer_messages=notify_about_provider_consumer_messages,
             restrict_deletion_with_active_resources=restrict_deletion_with_active_resources,
             resource_name_pattern=resource_name_pattern,
+            resource_slug_template=resource_slug_template,
+            resource_slug_max_length=resource_slug_max_length,
             default_internal_network_mtu=default_internal_network_mtu,
             max_instances=max_instances,
             max_volumes=max_volumes,
