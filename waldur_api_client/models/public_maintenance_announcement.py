@@ -9,9 +9,13 @@ from dateutil.parser import isoparse
 
 from ..models.maintenance_type_enum import MaintenanceTypeEnum
 from ..models.public_maintenance_announcement_state_enum import PublicMaintenanceAnnouncementStateEnum
+from ..models.public_maintenance_announcement_type_enum import PublicMaintenanceAnnouncementTypeEnum
 
 if TYPE_CHECKING:
     from ..models.maintenance_announcement_offering import MaintenanceAnnouncementOffering
+    from ..models.public_maintenance_announcement_maintenance_affected_offerings_item import (
+        PublicMaintenanceAnnouncementMaintenanceAffectedOfferingsItem,
+    )
 
 
 T = TypeVar("T", bound="PublicMaintenanceAnnouncement")
@@ -35,6 +39,14 @@ class PublicMaintenanceAnnouncement:
         actual_end (Union[None, datetime.datetime]): When the maintenance actually completed
         affected_offerings (list['MaintenanceAnnouncementOffering']):
         service_provider_name (str):
+        description (str):
+        type_ (PublicMaintenanceAnnouncementTypeEnum):
+        maintenance_uuid (UUID):
+        maintenance_name (str):
+        maintenance_service_provider (str):
+        maintenance_scheduled_start (datetime.datetime):
+        maintenance_scheduled_end (datetime.datetime):
+        maintenance_affected_offerings (list['PublicMaintenanceAnnouncementMaintenanceAffectedOfferingsItem']):
     """
 
     url: str
@@ -51,6 +63,14 @@ class PublicMaintenanceAnnouncement:
     actual_end: Union[None, datetime.datetime]
     affected_offerings: list["MaintenanceAnnouncementOffering"]
     service_provider_name: str
+    description: str
+    type_: PublicMaintenanceAnnouncementTypeEnum
+    maintenance_uuid: UUID
+    maintenance_name: str
+    maintenance_service_provider: str
+    maintenance_scheduled_start: datetime.datetime
+    maintenance_scheduled_end: datetime.datetime
+    maintenance_affected_offerings: list["PublicMaintenanceAnnouncementMaintenanceAffectedOfferingsItem"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -93,6 +113,25 @@ class PublicMaintenanceAnnouncement:
 
         service_provider_name = self.service_provider_name
 
+        description = self.description
+
+        type_ = self.type_.value
+
+        maintenance_uuid = str(self.maintenance_uuid)
+
+        maintenance_name = self.maintenance_name
+
+        maintenance_service_provider = self.maintenance_service_provider
+
+        maintenance_scheduled_start = self.maintenance_scheduled_start.isoformat()
+
+        maintenance_scheduled_end = self.maintenance_scheduled_end.isoformat()
+
+        maintenance_affected_offerings = []
+        for maintenance_affected_offerings_item_data in self.maintenance_affected_offerings:
+            maintenance_affected_offerings_item = maintenance_affected_offerings_item_data.to_dict()
+            maintenance_affected_offerings.append(maintenance_affected_offerings_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -111,6 +150,14 @@ class PublicMaintenanceAnnouncement:
                 "actual_end": actual_end,
                 "affected_offerings": affected_offerings,
                 "service_provider_name": service_provider_name,
+                "description": description,
+                "type": type_,
+                "maintenance_uuid": maintenance_uuid,
+                "maintenance_name": maintenance_name,
+                "maintenance_service_provider": maintenance_service_provider,
+                "maintenance_scheduled_start": maintenance_scheduled_start,
+                "maintenance_scheduled_end": maintenance_scheduled_end,
+                "maintenance_affected_offerings": maintenance_affected_offerings,
             }
         )
 
@@ -119,6 +166,9 @@ class PublicMaintenanceAnnouncement:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.maintenance_announcement_offering import MaintenanceAnnouncementOffering
+        from ..models.public_maintenance_announcement_maintenance_affected_offerings_item import (
+            PublicMaintenanceAnnouncementMaintenanceAffectedOfferingsItem,
+        )
 
         d = dict(src_dict)
         url = d.pop("url")
@@ -180,6 +230,31 @@ class PublicMaintenanceAnnouncement:
 
         service_provider_name = d.pop("service_provider_name")
 
+        description = d.pop("description")
+
+        type_ = PublicMaintenanceAnnouncementTypeEnum(d.pop("type"))
+
+        maintenance_uuid = UUID(d.pop("maintenance_uuid"))
+
+        maintenance_name = d.pop("maintenance_name")
+
+        maintenance_service_provider = d.pop("maintenance_service_provider")
+
+        maintenance_scheduled_start = isoparse(d.pop("maintenance_scheduled_start"))
+
+        maintenance_scheduled_end = isoparse(d.pop("maintenance_scheduled_end"))
+
+        maintenance_affected_offerings = []
+        _maintenance_affected_offerings = d.pop("maintenance_affected_offerings")
+        for maintenance_affected_offerings_item_data in _maintenance_affected_offerings:
+            maintenance_affected_offerings_item = (
+                PublicMaintenanceAnnouncementMaintenanceAffectedOfferingsItem.from_dict(
+                    maintenance_affected_offerings_item_data
+                )
+            )
+
+            maintenance_affected_offerings.append(maintenance_affected_offerings_item)
+
         public_maintenance_announcement = cls(
             url=url,
             uuid=uuid,
@@ -195,6 +270,14 @@ class PublicMaintenanceAnnouncement:
             actual_end=actual_end,
             affected_offerings=affected_offerings,
             service_provider_name=service_provider_name,
+            description=description,
+            type_=type_,
+            maintenance_uuid=maintenance_uuid,
+            maintenance_name=maintenance_name,
+            maintenance_service_provider=maintenance_service_provider,
+            maintenance_scheduled_start=maintenance_scheduled_start,
+            maintenance_scheduled_end=maintenance_scheduled_end,
+            maintenance_affected_offerings=maintenance_affected_offerings,
         )
 
         public_maintenance_announcement.additional_properties = d
