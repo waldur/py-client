@@ -2090,11 +2090,7 @@ from .public_call import PublicCall
 from .public_call_field_enum import PublicCallFieldEnum
 from .public_invitation import PublicInvitation
 from .public_maintenance_announcement import PublicMaintenanceAnnouncement
-from .public_maintenance_announcement_maintenance_affected_offerings_item import (
-    PublicMaintenanceAnnouncementMaintenanceAffectedOfferingsItem,
-)
 from .public_maintenance_announcement_state_enum import PublicMaintenanceAnnouncementStateEnum
-from .public_maintenance_announcement_type_enum import PublicMaintenanceAnnouncementTypeEnum
 from .public_offering_details import PublicOfferingDetails
 from .public_offering_details_attributes import PublicOfferingDetailsAttributes
 from .public_offering_details_backend_metadata import PublicOfferingDetailsBackendMetadata
@@ -4831,9 +4827,7 @@ __all__ = (
     "PublicCallFieldEnum",
     "PublicInvitation",
     "PublicMaintenanceAnnouncement",
-    "PublicMaintenanceAnnouncementMaintenanceAffectedOfferingsItem",
     "PublicMaintenanceAnnouncementStateEnum",
-    "PublicMaintenanceAnnouncementTypeEnum",
     "PublicOfferingDetails",
     "PublicOfferingDetailsAttributes",
     "PublicOfferingDetailsBackendMetadata",
