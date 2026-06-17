@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.agent_dependency_request import AgentDependencyRequest
+
 
 T = TypeVar("T", bound="AgentIdentityRequest")
 
@@ -19,6 +23,7 @@ class AgentIdentityRequest:
         offering (UUID): UUID of an offering with a site-agent compatible type.
         name (str):
         version (Union[None, Unset, str]):
+        dependencies (Union[Unset, list['AgentDependencyRequest']]):
         config_file_path (Union[None, Unset, str]): Example: '/etc/waldur/agent.yaml'
         config_file_content (Union[None, Unset, str]):
         last_restarted (Union[Unset, datetime.datetime]):
@@ -27,6 +32,7 @@ class AgentIdentityRequest:
     offering: UUID
     name: str
     version: Union[None, Unset, str] = UNSET
+    dependencies: Union[Unset, list["AgentDependencyRequest"]] = UNSET
     config_file_path: Union[None, Unset, str] = UNSET
     config_file_content: Union[None, Unset, str] = UNSET
     last_restarted: Union[Unset, datetime.datetime] = UNSET
@@ -42,6 +48,13 @@ class AgentIdentityRequest:
             version = UNSET
         else:
             version = self.version
+
+        dependencies: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.dependencies, Unset):
+            dependencies = []
+            for dependencies_item_data in self.dependencies:
+                dependencies_item = dependencies_item_data.to_dict()
+                dependencies.append(dependencies_item)
 
         config_file_path: Union[None, Unset, str]
         if isinstance(self.config_file_path, Unset):
@@ -69,6 +82,8 @@ class AgentIdentityRequest:
         )
         if version is not UNSET:
             field_dict["version"] = version
+        if dependencies is not UNSET:
+            field_dict["dependencies"] = dependencies
         if config_file_path is not UNSET:
             field_dict["config_file_path"] = config_file_path
         if config_file_content is not UNSET:
@@ -80,6 +95,8 @@ class AgentIdentityRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.agent_dependency_request import AgentDependencyRequest
+
         d = dict(src_dict)
         offering = UUID(d.pop("offering"))
 
@@ -93,6 +110,13 @@ class AgentIdentityRequest:
             return cast(Union[None, Unset, str], data)
 
         version = _parse_version(d.pop("version", UNSET))
+
+        dependencies = []
+        _dependencies = d.pop("dependencies", UNSET)
+        for dependencies_item_data in _dependencies or []:
+            dependencies_item = AgentDependencyRequest.from_dict(dependencies_item_data)
+
+            dependencies.append(dependencies_item)
 
         def _parse_config_file_path(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -123,6 +147,7 @@ class AgentIdentityRequest:
             offering=offering,
             name=name,
             version=version,
+            dependencies=dependencies,
             config_file_path=config_file_path,
             config_file_content=config_file_content,
             last_restarted=last_restarted,
