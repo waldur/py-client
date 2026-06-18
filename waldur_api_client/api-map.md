@@ -89,6 +89,8 @@ Module: `waldur_api_client.api.admin`
 - `admin_matrix_appservice_setup` POST `/api/admin/matrix-appservice/setup/` — Setup Matrix appservice registration (request body)
 - `admin_matrix_appservice_status_retrieve` GET `/api/admin/matrix-appservice/status/` — Get Matrix appservice status (no params)
 - `admin_matrix_diagnostics_retrieve` GET `/api/admin/matrix/diagnostics/` — Run Matrix connectivity diagnostics (no params)
+- `admin_matrix_livekit_overview_retrieve` GET `/api/admin/matrix/livekit/overview/` — Get LiveKit calls overview (no params)
+- `admin_matrix_livekit_participants_list` GET `/api/admin/matrix/livekit/participants/` — List participants in a LiveKit room (1 query param)
 - `admin_matrix_reprovision` POST `/api/admin/matrix/reprovision/` — Reprovision all active Matrix rooms on a new homeserver (no params)
 
 ## admin-announcements

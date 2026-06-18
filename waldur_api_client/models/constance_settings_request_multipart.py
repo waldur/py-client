@@ -331,6 +331,9 @@ class ConstanceSettingsRequestMultipart:
         matrix_user_id_format (Union[Unset, str]):
         matrix_login_method (Union[Unset, str]):
         matrix_oidc_provider_url (Union[Unset, str]):
+        matrix_livekit_key (Union[Unset, str]):
+        matrix_livekit_secret (Union[Unset, str]):
+        matrix_livekit_url (Union[Unset, str]):
         site_agent_log_max_rows_per_identity (Union[Unset, int]):
         pat_enabled (Union[Unset, bool]):
         pat_max_lifetime_days (Union[Unset, int]):
@@ -627,6 +630,9 @@ class ConstanceSettingsRequestMultipart:
     matrix_user_id_format: Union[Unset, str] = UNSET
     matrix_login_method: Union[Unset, str] = UNSET
     matrix_oidc_provider_url: Union[Unset, str] = UNSET
+    matrix_livekit_key: Union[Unset, str] = UNSET
+    matrix_livekit_secret: Union[Unset, str] = UNSET
+    matrix_livekit_url: Union[Unset, str] = UNSET
     site_agent_log_max_rows_per_identity: Union[Unset, int] = UNSET
     pat_enabled: Union[Unset, bool] = UNSET
     pat_max_lifetime_days: Union[Unset, int] = UNSET
@@ -1466,6 +1472,12 @@ class ConstanceSettingsRequestMultipart:
 
         matrix_oidc_provider_url = self.matrix_oidc_provider_url
 
+        matrix_livekit_key = self.matrix_livekit_key
+
+        matrix_livekit_secret = self.matrix_livekit_secret
+
+        matrix_livekit_url = self.matrix_livekit_url
+
         site_agent_log_max_rows_per_identity = self.site_agent_log_max_rows_per_identity
 
         pat_enabled = self.pat_enabled
@@ -2067,6 +2079,12 @@ class ConstanceSettingsRequestMultipart:
             field_dict["MATRIX_LOGIN_METHOD"] = matrix_login_method
         if matrix_oidc_provider_url is not UNSET:
             field_dict["MATRIX_OIDC_PROVIDER_URL"] = matrix_oidc_provider_url
+        if matrix_livekit_key is not UNSET:
+            field_dict["MATRIX_LIVEKIT_KEY"] = matrix_livekit_key
+        if matrix_livekit_secret is not UNSET:
+            field_dict["MATRIX_LIVEKIT_SECRET"] = matrix_livekit_secret
+        if matrix_livekit_url is not UNSET:
+            field_dict["MATRIX_LIVEKIT_URL"] = matrix_livekit_url
         if site_agent_log_max_rows_per_identity is not UNSET:
             field_dict["SITE_AGENT_LOG_MAX_ROWS_PER_IDENTITY"] = site_agent_log_max_rows_per_identity
         if pat_enabled is not UNSET:
@@ -3786,6 +3804,15 @@ class ConstanceSettingsRequestMultipart:
                 ("MATRIX_OIDC_PROVIDER_URL", (None, str(self.matrix_oidc_provider_url).encode(), "text/plain"))
             )
 
+        if not isinstance(self.matrix_livekit_key, Unset):
+            files.append(("MATRIX_LIVEKIT_KEY", (None, str(self.matrix_livekit_key).encode(), "text/plain")))
+
+        if not isinstance(self.matrix_livekit_secret, Unset):
+            files.append(("MATRIX_LIVEKIT_SECRET", (None, str(self.matrix_livekit_secret).encode(), "text/plain")))
+
+        if not isinstance(self.matrix_livekit_url, Unset):
+            files.append(("MATRIX_LIVEKIT_URL", (None, str(self.matrix_livekit_url).encode(), "text/plain")))
+
         if not isinstance(self.site_agent_log_max_rows_per_identity, Unset):
             files.append(
                 (
@@ -4934,6 +4961,12 @@ class ConstanceSettingsRequestMultipart:
 
         matrix_oidc_provider_url = d.pop("MATRIX_OIDC_PROVIDER_URL", UNSET)
 
+        matrix_livekit_key = d.pop("MATRIX_LIVEKIT_KEY", UNSET)
+
+        matrix_livekit_secret = d.pop("MATRIX_LIVEKIT_SECRET", UNSET)
+
+        matrix_livekit_url = d.pop("MATRIX_LIVEKIT_URL", UNSET)
+
         site_agent_log_max_rows_per_identity = d.pop("SITE_AGENT_LOG_MAX_ROWS_PER_IDENTITY", UNSET)
 
         pat_enabled = d.pop("PAT_ENABLED", UNSET)
@@ -5233,6 +5266,9 @@ class ConstanceSettingsRequestMultipart:
             matrix_user_id_format=matrix_user_id_format,
             matrix_login_method=matrix_login_method,
             matrix_oidc_provider_url=matrix_oidc_provider_url,
+            matrix_livekit_key=matrix_livekit_key,
+            matrix_livekit_secret=matrix_livekit_secret,
+            matrix_livekit_url=matrix_livekit_url,
             site_agent_log_max_rows_per_identity=site_agent_log_max_rows_per_identity,
             pat_enabled=pat_enabled,
             pat_max_lifetime_days=pat_max_lifetime_days,

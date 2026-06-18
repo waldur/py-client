@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.27.dev.20260618104404
+# Version: 8.0.9-rc.27.dev.20260618233345
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -558,6 +558,18 @@ Description: Returns the current appservice configuration state.
 GET /api/admin/matrix/diagnostics/
 Summary: Run Matrix connectivity diagnostics
 Description: Performs live connectivity checks against the configured Matrix homeserver and returns results for each check.
+
+### admin_matrix_livekit_overview_retrieve
+GET /api/admin/matrix/livekit/overview/
+Summary: Get LiveKit calls overview
+Description: Point-in-time snapshot of active LiveKit rooms with participant/publisher totals. Staff only. Returns 503 when LiveKit credentials are not configured and 502 when LiveKit is unreachable or rejects the configured credentials.
+
+### admin_matrix_livekit_participants_list
+GET /api/admin/matrix/livekit/participants/
+Summary: List participants in a LiveKit room
+Description: Participants and their tracks for a single LiveKit room. Staff only. An unknown or empty room returns 200 with an empty list. Returns 503 when LiveKit credentials are not configured and 502 when LiveKit is unreachable or rejects the configured credentials.
+Query parameters (1):
+  - room (required) — LiveKit room name. A query parameter rather than a path segment because Element Call room names are base64 and routinely contain '/'.
 
 ### admin_matrix_reprovision
 POST /api/admin/matrix/reprovision/
