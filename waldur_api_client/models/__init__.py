@@ -1326,10 +1326,6 @@ from .offering_user_state import OfferingUserState
 from .offering_user_state_transition_request import OfferingUserStateTransitionRequest
 from .offering_user_update_restriction_request import OfferingUserUpdateRestrictionRequest
 from .offering_user_update_runtime_state_request import OfferingUserUpdateRuntimeStateRequest
-from .offering_user_user_active_isds import OfferingUserUserActiveIsds
-from .offering_user_user_affiliations import OfferingUserUserAffiliations
-from .offering_user_user_eduperson_assurance import OfferingUserUserEdupersonAssurance
-from .offering_user_user_nationalities import OfferingUserUserNationalities
 from .oidc_endpoints import OidcEndpoints
 from .onboarding_company_validation_request_request import OnboardingCompanyValidationRequestRequest
 from .onboarding_justification import OnboardingJustification
@@ -4133,10 +4129,6 @@ __all__ = (
     "OfferingUserStateTransitionRequest",
     "OfferingUserUpdateRestrictionRequest",
     "OfferingUserUpdateRuntimeStateRequest",
-    "OfferingUserUserActiveIsds",
-    "OfferingUserUserAffiliations",
-    "OfferingUserUserEdupersonAssurance",
-    "OfferingUserUserNationalities",
     "OidcEndpoints",
     "OnboardingCompanyValidationRequestRequest",
     "OnboardingJustification",
