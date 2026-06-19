@@ -34,6 +34,7 @@ class ProjectFieldEnum(str, Enum):
     OECD_FOS_2007_CODE = "oecd_fos_2007_code"
     OECD_FOS_2007_LABEL = "oecd_fos_2007_label"
     PROJECT_CREDIT = "project_credit"
+    PROJECT_METADATA = "project_metadata"
     RESOURCES_COUNT = "resources_count"
     SCIENCE_DOMAIN_CODE = "science_domain_code"
     SCIENCE_DOMAIN_NAME = "science_domain_name"

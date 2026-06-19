@@ -23,6 +23,7 @@ class ProposalReview:
         proposal_name (str):
         proposal_uuid (UUID):
         proposal_slug (str):
+        reviewer_image (str):
         state (ProposalReviewStateEnum):
         review_end_date (datetime.datetime):
         round_uuid (UUID):
@@ -62,6 +63,7 @@ class ProposalReview:
     proposal_name: str
     proposal_uuid: UUID
     proposal_slug: str
+    reviewer_image: str
     state: ProposalReviewStateEnum
     review_end_date: datetime.datetime
     round_uuid: UUID
@@ -105,6 +107,8 @@ class ProposalReview:
         proposal_uuid = str(self.proposal_uuid)
 
         proposal_slug = self.proposal_slug
+
+        reviewer_image = self.reviewer_image
 
         state = self.state.value
 
@@ -216,6 +220,7 @@ class ProposalReview:
                 "proposal_name": proposal_name,
                 "proposal_uuid": proposal_uuid,
                 "proposal_slug": proposal_slug,
+                "reviewer_image": reviewer_image,
                 "state": state,
                 "review_end_date": review_end_date,
                 "round_uuid": round_uuid,
@@ -280,6 +285,8 @@ class ProposalReview:
         proposal_uuid = UUID(d.pop("proposal_uuid"))
 
         proposal_slug = d.pop("proposal_slug")
+
+        reviewer_image = d.pop("reviewer_image")
 
         state = ProposalReviewStateEnum(d.pop("state"))
 
@@ -427,6 +434,7 @@ class ProposalReview:
             proposal_name=proposal_name,
             proposal_uuid=proposal_uuid,
             proposal_slug=proposal_slug,
+            reviewer_image=reviewer_image,
             state=state,
             review_end_date=review_end_date,
             round_uuid=round_uuid,

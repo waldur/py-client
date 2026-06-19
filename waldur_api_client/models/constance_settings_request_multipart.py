@@ -235,6 +235,7 @@ class ConstanceSettingsRequestMultipart:
         mandatory_user_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         enforce_mandatory_user_attributes (Union[Unset, bool]):
         maintenance_announcement_notify_before_minutes (Union[Unset, int]):
+        maintenance_announcement_trailing_buffer_minutes (Union[Unset, int]):
         maintenance_announcement_notify_system (Union[Unset, list[Union[BlankEnum, NotifySystemEnum]]]):
         enforce_user_consent_for_offerings (Union[Unset, bool]):
         enforce_offering_user_profile_completeness (Union[Unset, bool]):
@@ -534,6 +535,7 @@ class ConstanceSettingsRequestMultipart:
     mandatory_user_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     enforce_mandatory_user_attributes: Union[Unset, bool] = UNSET
     maintenance_announcement_notify_before_minutes: Union[Unset, int] = UNSET
+    maintenance_announcement_trailing_buffer_minutes: Union[Unset, int] = UNSET
     maintenance_announcement_notify_system: Union[Unset, list[Union[BlankEnum, NotifySystemEnum]]] = UNSET
     enforce_user_consent_for_offerings: Union[Unset, bool] = UNSET
     enforce_offering_user_profile_completeness: Union[Unset, bool] = UNSET
@@ -1210,6 +1212,8 @@ class ConstanceSettingsRequestMultipart:
 
         maintenance_announcement_notify_before_minutes = self.maintenance_announcement_notify_before_minutes
 
+        maintenance_announcement_trailing_buffer_minutes = self.maintenance_announcement_trailing_buffer_minutes
+
         maintenance_announcement_notify_system: Union[Unset, list[str]] = UNSET
         if not isinstance(self.maintenance_announcement_notify_system, Unset):
             maintenance_announcement_notify_system = []
@@ -1884,6 +1888,10 @@ class ConstanceSettingsRequestMultipart:
         if maintenance_announcement_notify_before_minutes is not UNSET:
             field_dict["MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES"] = (
                 maintenance_announcement_notify_before_minutes
+            )
+        if maintenance_announcement_trailing_buffer_minutes is not UNSET:
+            field_dict["MAINTENANCE_ANNOUNCEMENT_TRAILING_BUFFER_MINUTES"] = (
+                maintenance_announcement_trailing_buffer_minutes
             )
         if maintenance_announcement_notify_system is not UNSET:
             field_dict["MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM"] = maintenance_announcement_notify_system
@@ -3077,6 +3085,14 @@ class ConstanceSettingsRequestMultipart:
                 (
                     "MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES",
                     (None, str(self.maintenance_announcement_notify_before_minutes).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.maintenance_announcement_trailing_buffer_minutes, Unset):
+            files.append(
+                (
+                    "MAINTENANCE_ANNOUNCEMENT_TRAILING_BUFFER_MINUTES",
+                    (None, str(self.maintenance_announcement_trailing_buffer_minutes).encode(), "text/plain"),
                 )
             )
 
@@ -4621,6 +4637,10 @@ class ConstanceSettingsRequestMultipart:
 
         maintenance_announcement_notify_before_minutes = d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_BEFORE_MINUTES", UNSET)
 
+        maintenance_announcement_trailing_buffer_minutes = d.pop(
+            "MAINTENANCE_ANNOUNCEMENT_TRAILING_BUFFER_MINUTES", UNSET
+        )
+
         maintenance_announcement_notify_system = []
         _maintenance_announcement_notify_system = d.pop("MAINTENANCE_ANNOUNCEMENT_NOTIFY_SYSTEM", UNSET)
         for maintenance_announcement_notify_system_item_data in _maintenance_announcement_notify_system or []:
@@ -5170,6 +5190,7 @@ class ConstanceSettingsRequestMultipart:
             mandatory_user_attributes=mandatory_user_attributes,
             enforce_mandatory_user_attributes=enforce_mandatory_user_attributes,
             maintenance_announcement_notify_before_minutes=maintenance_announcement_notify_before_minutes,
+            maintenance_announcement_trailing_buffer_minutes=maintenance_announcement_trailing_buffer_minutes,
             maintenance_announcement_notify_system=maintenance_announcement_notify_system,
             enforce_user_consent_for_offerings=enforce_user_consent_for_offerings,
             enforce_offering_user_profile_completeness=enforce_offering_user_profile_completeness,

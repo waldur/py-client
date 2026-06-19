@@ -19,6 +19,7 @@ class MatrixRoomMember:
         uuid (UUID):
         user_uuid (UUID):
         user_full_name (str):
+        user_image (str):
         matrix_user_id (str):
         power_level (int):
         membership_state (MembershipStateEnum):
@@ -29,6 +30,7 @@ class MatrixRoomMember:
     uuid: UUID
     user_uuid: UUID
     user_full_name: str
+    user_image: str
     matrix_user_id: str
     power_level: int
     membership_state: MembershipStateEnum
@@ -42,6 +44,8 @@ class MatrixRoomMember:
         user_uuid = str(self.user_uuid)
 
         user_full_name = self.user_full_name
+
+        user_image = self.user_image
 
         matrix_user_id = self.matrix_user_id
 
@@ -60,6 +64,7 @@ class MatrixRoomMember:
                 "uuid": uuid,
                 "user_uuid": user_uuid,
                 "user_full_name": user_full_name,
+                "user_image": user_image,
                 "matrix_user_id": matrix_user_id,
                 "power_level": power_level,
                 "membership_state": membership_state,
@@ -79,6 +84,8 @@ class MatrixRoomMember:
 
         user_full_name = d.pop("user_full_name")
 
+        user_image = d.pop("user_image")
+
         matrix_user_id = d.pop("matrix_user_id")
 
         power_level = d.pop("power_level")
@@ -93,6 +100,7 @@ class MatrixRoomMember:
             uuid=uuid,
             user_uuid=user_uuid,
             user_full_name=user_full_name,
+            user_image=user_image,
             matrix_user_id=matrix_user_id,
             power_level=power_level,
             membership_state=membership_state,

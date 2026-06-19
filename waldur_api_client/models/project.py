@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.affiliated_organization import AffiliatedOrganization
     from ..models.nested_price_estimate import NestedPriceEstimate
     from ..models.project_marketplace_resource_count import ProjectMarketplaceResourceCount
+    from ..models.project_metadata_answer import ProjectMetadataAnswer
     from ..models.project_termination_metadata_type_0 import ProjectTerminationMetadataType0
     from ..models.project_user_affiliations import ProjectUserAffiliations
     from ..models.project_user_email_patterns import ProjectUserEmailPatterns
@@ -57,6 +58,8 @@ class Project:
         is_industry (Union[Unset, bool]):
         image (Union[None, Unset, str]):
         resources_count (Union[Unset, int]): Number of active resources in this project
+        project_metadata (Union[Unset, list['ProjectMetadataAnswer']]): Answers to the customer's project-metadata
+            checklist (read-only).
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
         kind (Union[Unset, ProjectKindEnum]):
         is_removed (Union[Unset, bool]):
@@ -118,6 +121,7 @@ class Project:
     is_industry: Union[Unset, bool] = UNSET
     image: Union[None, Unset, str] = UNSET
     resources_count: Union[Unset, int] = UNSET
+    project_metadata: Union[Unset, list["ProjectMetadataAnswer"]] = UNSET
     max_service_accounts: Union[None, Unset, int] = UNSET
     kind: Union[Unset, ProjectKindEnum] = UNSET
     is_removed: Union[Unset, bool] = UNSET
@@ -254,6 +258,13 @@ class Project:
             image = self.image
 
         resources_count = self.resources_count
+
+        project_metadata: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.project_metadata, Unset):
+            project_metadata = []
+            for project_metadata_item_data in self.project_metadata:
+                project_metadata_item = project_metadata_item_data.to_dict()
+                project_metadata.append(project_metadata_item)
 
         max_service_accounts: Union[None, Unset, int]
         if isinstance(self.max_service_accounts, Unset):
@@ -420,6 +431,8 @@ class Project:
             field_dict["image"] = image
         if resources_count is not UNSET:
             field_dict["resources_count"] = resources_count
+        if project_metadata is not UNSET:
+            field_dict["project_metadata"] = project_metadata
         if max_service_accounts is not UNSET:
             field_dict["max_service_accounts"] = max_service_accounts
         if kind is not UNSET:
@@ -478,6 +491,7 @@ class Project:
         from ..models.affiliated_organization import AffiliatedOrganization
         from ..models.nested_price_estimate import NestedPriceEstimate
         from ..models.project_marketplace_resource_count import ProjectMarketplaceResourceCount
+        from ..models.project_metadata_answer import ProjectMetadataAnswer
         from ..models.project_termination_metadata_type_0 import ProjectTerminationMetadataType0
         from ..models.project_user_affiliations import ProjectUserAffiliations
         from ..models.project_user_email_patterns import ProjectUserEmailPatterns
@@ -661,6 +675,13 @@ class Project:
         image = _parse_image(d.pop("image", UNSET))
 
         resources_count = d.pop("resources_count", UNSET)
+
+        project_metadata = []
+        _project_metadata = d.pop("project_metadata", UNSET)
+        for project_metadata_item_data in _project_metadata or []:
+            project_metadata_item = ProjectMetadataAnswer.from_dict(project_metadata_item_data)
+
+            project_metadata.append(project_metadata_item)
 
         def _parse_max_service_accounts(data: object) -> Union[None, Unset, int]:
             if data is None:
@@ -877,6 +898,7 @@ class Project:
             is_industry=is_industry,
             image=image,
             resources_count=resources_count,
+            project_metadata=project_metadata,
             max_service_accounts=max_service_accounts,
             kind=kind,
             is_removed=is_removed,

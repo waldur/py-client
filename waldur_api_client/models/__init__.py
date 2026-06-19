@@ -1930,6 +1930,8 @@ from .project_kind_enum import ProjectKindEnum
 from .project_mapping import ProjectMapping
 from .project_mapping_map import ProjectMappingMap
 from .project_marketplace_resource_count import ProjectMarketplaceResourceCount
+from .project_metadata_answer import ProjectMetadataAnswer
+from .project_metadata_answer_answer import ProjectMetadataAnswerAnswer
 from .project_order_auto_approval import ProjectOrderAutoApproval
 from .project_order_auto_approval_request import ProjectOrderAutoApprovalRequest
 from .project_permission_log import ProjectPermissionLog
@@ -4678,6 +4680,8 @@ __all__ = (
     "ProjectMapping",
     "ProjectMappingMap",
     "ProjectMarketplaceResourceCount",
+    "ProjectMetadataAnswer",
+    "ProjectMetadataAnswerAnswer",
     "ProjectOrderAutoApproval",
     "ProjectOrderAutoApprovalRequest",
     "ProjectPermissionLog",

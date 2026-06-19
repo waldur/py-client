@@ -25,6 +25,7 @@ class Comment:
         author_uuid (UUID):
         author_user (str):
         author_email (str):
+        author_image (str):
         backend_id (Union[None, str]):
         created (datetime.datetime):
         update_is_available (bool):
@@ -42,6 +43,7 @@ class Comment:
     author_uuid: UUID
     author_user: str
     author_email: str
+    author_image: str
     backend_id: Union[None, str]
     created: datetime.datetime
     update_is_available: bool
@@ -68,6 +70,8 @@ class Comment:
         author_user = self.author_user
 
         author_email = self.author_email
+
+        author_image = self.author_image
 
         backend_id: Union[None, str]
         backend_id = self.backend_id
@@ -99,6 +103,7 @@ class Comment:
                 "author_uuid": author_uuid,
                 "author_user": author_user,
                 "author_email": author_email,
+                "author_image": author_image,
                 "backend_id": backend_id,
                 "created": created,
                 "update_is_available": update_is_available,
@@ -132,6 +137,8 @@ class Comment:
         author_user = d.pop("author_user")
 
         author_email = d.pop("author_email")
+
+        author_image = d.pop("author_image")
 
         def _parse_backend_id(data: object) -> Union[None, str]:
             if data is None:
@@ -167,6 +174,7 @@ class Comment:
             author_uuid=author_uuid,
             author_user=author_user,
             author_email=author_email,
+            author_image=author_image,
             backend_id=backend_id,
             created=created,
             update_is_available=update_is_available,
