@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.0.9-rc.28.dev.20260619125150
+# Version: 8.0.9-rc.28.dev.20260619233338
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
