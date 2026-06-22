@@ -53,6 +53,7 @@ class Proposal:
         applicant_organization_country (str):
         applicant_organization_type (str): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         applicant_organization_registry_code (str): Company registration code of the user's organization, if known
+        applicant_organization_vat_code (str): VAT code of the user's organization
         applicant_job_title (str):
         applicant_affiliations (ProposalApplicantAffiliations): Person's affiliation within organization such as
             student, faculty, staff.
@@ -115,6 +116,7 @@ class Proposal:
     applicant_organization_country: str
     applicant_organization_type: str
     applicant_organization_registry_code: str
+    applicant_organization_vat_code: str
     applicant_job_title: str
     applicant_affiliations: "ProposalApplicantAffiliations"
     applicant_gender: Union[BlankEnum, GenderEnum, None]
@@ -203,6 +205,8 @@ class Proposal:
         applicant_organization_type = self.applicant_organization_type
 
         applicant_organization_registry_code = self.applicant_organization_registry_code
+
+        applicant_organization_vat_code = self.applicant_organization_vat_code
 
         applicant_job_title = self.applicant_job_title
 
@@ -335,6 +339,7 @@ class Proposal:
                 "applicant_organization_country": applicant_organization_country,
                 "applicant_organization_type": applicant_organization_type,
                 "applicant_organization_registry_code": applicant_organization_registry_code,
+                "applicant_organization_vat_code": applicant_organization_vat_code,
                 "applicant_job_title": applicant_job_title,
                 "applicant_affiliations": applicant_affiliations,
                 "applicant_gender": applicant_gender,
@@ -452,6 +457,8 @@ class Proposal:
         applicant_organization_type = d.pop("applicant_organization_type")
 
         applicant_organization_registry_code = d.pop("applicant_organization_registry_code")
+
+        applicant_organization_vat_code = d.pop("applicant_organization_vat_code")
 
         applicant_job_title = d.pop("applicant_job_title")
 
@@ -655,6 +662,7 @@ class Proposal:
             applicant_organization_country=applicant_organization_country,
             applicant_organization_type=applicant_organization_type,
             applicant_organization_registry_code=applicant_organization_registry_code,
+            applicant_organization_vat_code=applicant_organization_vat_code,
             applicant_job_title=applicant_job_title,
             applicant_affiliations=applicant_affiliations,
             applicant_gender=applicant_gender,

@@ -51,6 +51,7 @@ class PatchedUserRequestMultipart:
         organization_country (Union[Unset, str]):
         organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if known
+        organization_vat_code (Union[Unset, str]): VAT code of the user's organization
         eduperson_assurance (Union[Unset, list[str]]):
         is_identity_manager (Union[Unset, bool]): Designates whether the user is allowed to manage remote user
             identities.
@@ -90,6 +91,7 @@ class PatchedUserRequestMultipart:
     organization_country: Union[Unset, str] = UNSET
     organization_type: Union[Unset, str] = UNSET
     organization_registry_code: Union[Unset, str] = UNSET
+    organization_vat_code: Union[Unset, str] = UNSET
     eduperson_assurance: Union[Unset, list[str]] = UNSET
     is_identity_manager: Union[Unset, bool] = UNSET
     can_use_personal_access_tokens: Union[Unset, bool] = UNSET
@@ -186,6 +188,8 @@ class PatchedUserRequestMultipart:
 
         organization_registry_code = self.organization_registry_code
 
+        organization_vat_code = self.organization_vat_code
+
         eduperson_assurance: Union[Unset, list[str]] = UNSET
         if not isinstance(self.eduperson_assurance, Unset):
             eduperson_assurance = self.eduperson_assurance
@@ -265,6 +269,8 @@ class PatchedUserRequestMultipart:
             field_dict["organization_type"] = organization_type
         if organization_registry_code is not UNSET:
             field_dict["organization_registry_code"] = organization_registry_code
+        if organization_vat_code is not UNSET:
+            field_dict["organization_vat_code"] = organization_vat_code
         if eduperson_assurance is not UNSET:
             field_dict["eduperson_assurance"] = eduperson_assurance
         if is_identity_manager is not UNSET:
@@ -389,6 +395,9 @@ class PatchedUserRequestMultipart:
             files.append(
                 ("organization_registry_code", (None, str(self.organization_registry_code).encode(), "text/plain"))
             )
+
+        if not isinstance(self.organization_vat_code, Unset):
+            files.append(("organization_vat_code", (None, str(self.organization_vat_code).encode(), "text/plain")))
 
         if not isinstance(self.eduperson_assurance, Unset):
             for eduperson_assurance_item_element in self.eduperson_assurance:
@@ -544,6 +553,8 @@ class PatchedUserRequestMultipart:
 
         organization_registry_code = d.pop("organization_registry_code", UNSET)
 
+        organization_vat_code = d.pop("organization_vat_code", UNSET)
+
         eduperson_assurance = cast(list[str], d.pop("eduperson_assurance", UNSET))
 
         is_identity_manager = d.pop("is_identity_manager", UNSET)
@@ -586,6 +597,7 @@ class PatchedUserRequestMultipart:
             organization_country=organization_country,
             organization_type=organization_type,
             organization_registry_code=organization_registry_code,
+            organization_vat_code=organization_vat_code,
             eduperson_assurance=eduperson_assurance,
             is_identity_manager=is_identity_manager,
             can_use_personal_access_tokens=can_use_personal_access_tokens,

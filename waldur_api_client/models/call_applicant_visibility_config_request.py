@@ -21,6 +21,7 @@ class CallApplicantVisibilityConfigRequest:
         expose_organization_country (Union[Unset, bool]):
         expose_organization_type (Union[Unset, bool]):
         expose_organization_registry_code (Union[Unset, bool]):
+        expose_organization_vat_code (Union[Unset, bool]):
         expose_affiliations (Union[Unset, bool]):
         expose_phone_number (Union[Unset, bool]):
         expose_job_title (Union[Unset, bool]):
@@ -46,6 +47,7 @@ class CallApplicantVisibilityConfigRequest:
     expose_organization_country: Union[Unset, bool] = UNSET
     expose_organization_type: Union[Unset, bool] = UNSET
     expose_organization_registry_code: Union[Unset, bool] = UNSET
+    expose_organization_vat_code: Union[Unset, bool] = UNSET
     expose_affiliations: Union[Unset, bool] = UNSET
     expose_phone_number: Union[Unset, bool] = UNSET
     expose_job_title: Union[Unset, bool] = UNSET
@@ -79,6 +81,8 @@ class CallApplicantVisibilityConfigRequest:
         expose_organization_type = self.expose_organization_type
 
         expose_organization_registry_code = self.expose_organization_registry_code
+
+        expose_organization_vat_code = self.expose_organization_vat_code
 
         expose_affiliations = self.expose_affiliations
 
@@ -129,6 +133,8 @@ class CallApplicantVisibilityConfigRequest:
             field_dict["expose_organization_type"] = expose_organization_type
         if expose_organization_registry_code is not UNSET:
             field_dict["expose_organization_registry_code"] = expose_organization_registry_code
+        if expose_organization_vat_code is not UNSET:
+            field_dict["expose_organization_vat_code"] = expose_organization_vat_code
         if expose_affiliations is not UNSET:
             field_dict["expose_affiliations"] = expose_affiliations
         if expose_phone_number is not UNSET:
@@ -181,6 +187,8 @@ class CallApplicantVisibilityConfigRequest:
 
         expose_organization_registry_code = d.pop("expose_organization_registry_code", UNSET)
 
+        expose_organization_vat_code = d.pop("expose_organization_vat_code", UNSET)
+
         expose_affiliations = d.pop("expose_affiliations", UNSET)
 
         expose_phone_number = d.pop("expose_phone_number", UNSET)
@@ -220,6 +228,7 @@ class CallApplicantVisibilityConfigRequest:
             expose_organization_country=expose_organization_country,
             expose_organization_type=expose_organization_type,
             expose_organization_registry_code=expose_organization_registry_code,
+            expose_organization_vat_code=expose_organization_vat_code,
             expose_affiliations=expose_affiliations,
             expose_phone_number=expose_phone_number,
             expose_job_title=expose_job_title,

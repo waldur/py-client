@@ -20,6 +20,7 @@ class UserAttributeEnum(str, Enum):
     ORGANIZATION_COUNTRY = "organization_country"
     ORGANIZATION_REGISTRY_CODE = "organization_registry_code"
     ORGANIZATION_TYPE = "organization_type"
+    ORGANIZATION_VAT_CODE = "organization_vat_code"
     PERSONAL_TITLE = "personal_title"
     PHONE_NUMBER = "phone_number"
     PLACE_OF_BIRTH = "place_of_birth"

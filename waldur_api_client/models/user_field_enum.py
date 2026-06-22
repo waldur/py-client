@@ -45,6 +45,7 @@ class UserFieldEnum(str, Enum):
     ORGANIZATION_COUNTRY = "organization_country"
     ORGANIZATION_REGISTRY_CODE = "organization_registry_code"
     ORGANIZATION_TYPE = "organization_type"
+    ORGANIZATION_VAT_CODE = "organization_vat_code"
     PERMISSIONS = "permissions"
     PERSONAL_TITLE = "personal_title"
     PHONE_NUMBER = "phone_number"

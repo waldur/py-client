@@ -44,6 +44,7 @@ class OfferingUserFieldEnum(str, Enum):
     USER_ORGANIZATION_COUNTRY = "user_organization_country"
     USER_ORGANIZATION_REGISTRY_CODE = "user_organization_registry_code"
     USER_ORGANIZATION_TYPE = "user_organization_type"
+    USER_ORGANIZATION_VAT_CODE = "user_organization_vat_code"
     USER_PERSONAL_TITLE = "user_personal_title"
     USER_PHONE_NUMBER = "user_phone_number"
     USER_PLACE_OF_BIRTH = "user_place_of_birth"
