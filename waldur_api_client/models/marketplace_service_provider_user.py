@@ -54,6 +54,7 @@ class MarketplaceServiceProviderUser:
         organization_country (Union[Unset, str]):
         organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if known
+        organization_vat_code (Union[Unset, str]): VAT code of the user's organization
         eduperson_assurance (Union[Unset, MarketplaceServiceProviderUserEdupersonAssurance]): REFEDS assurance profile
             URIs from identity provider
         civil_number (Union[None, Unset, str]):
@@ -86,6 +87,7 @@ class MarketplaceServiceProviderUser:
     organization_country: Union[Unset, str] = UNSET
     organization_type: Union[Unset, str] = UNSET
     organization_registry_code: Union[Unset, str] = UNSET
+    organization_vat_code: Union[Unset, str] = UNSET
     eduperson_assurance: Union[Unset, "MarketplaceServiceProviderUserEdupersonAssurance"] = UNSET
     civil_number: Union[None, Unset, str] = UNSET
     birth_date: Union[None, Unset, datetime.date] = UNSET
@@ -153,6 +155,8 @@ class MarketplaceServiceProviderUser:
         organization_type = self.organization_type
 
         organization_registry_code = self.organization_registry_code
+
+        organization_vat_code = self.organization_vat_code
 
         eduperson_assurance: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.eduperson_assurance, Unset):
@@ -227,6 +231,8 @@ class MarketplaceServiceProviderUser:
             field_dict["organization_type"] = organization_type
         if organization_registry_code is not UNSET:
             field_dict["organization_registry_code"] = organization_registry_code
+        if organization_vat_code is not UNSET:
+            field_dict["organization_vat_code"] = organization_vat_code
         if eduperson_assurance is not UNSET:
             field_dict["eduperson_assurance"] = eduperson_assurance
         if civil_number is not UNSET:
@@ -334,6 +340,8 @@ class MarketplaceServiceProviderUser:
 
         organization_registry_code = d.pop("organization_registry_code", UNSET)
 
+        organization_vat_code = d.pop("organization_vat_code", UNSET)
+
         _eduperson_assurance = d.pop("eduperson_assurance", UNSET)
         eduperson_assurance: Union[Unset, MarketplaceServiceProviderUserEdupersonAssurance]
         if isinstance(_eduperson_assurance, Unset):
@@ -400,6 +408,7 @@ class MarketplaceServiceProviderUser:
             organization_country=organization_country,
             organization_type=organization_type,
             organization_registry_code=organization_registry_code,
+            organization_vat_code=organization_vat_code,
             eduperson_assurance=eduperson_assurance,
             civil_number=civil_number,
             birth_date=birth_date,
