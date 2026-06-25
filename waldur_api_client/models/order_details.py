@@ -95,6 +95,7 @@ class OrderDetails:
         created_by_organization_registry_code (Union[None, Unset, str]): Company registration code of the user's
             organization, if known
         created_by_organization_vat_code (Union[None, Unset, str]): VAT code of the user's organization
+        created_by_organization_address (Union[None, Unset, str]): Postal address of the user's organization
         customer_name (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         customer_slug (Union[Unset, str]):
@@ -189,6 +190,7 @@ class OrderDetails:
     created_by_organization_country: Union[None, Unset, str] = UNSET
     created_by_organization_registry_code: Union[None, Unset, str] = UNSET
     created_by_organization_vat_code: Union[None, Unset, str] = UNSET
+    created_by_organization_address: Union[None, Unset, str] = UNSET
     customer_name: Union[Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_slug: Union[Unset, str] = UNSET
@@ -502,6 +504,12 @@ class OrderDetails:
         else:
             created_by_organization_vat_code = self.created_by_organization_vat_code
 
+        created_by_organization_address: Union[None, Unset, str]
+        if isinstance(self.created_by_organization_address, Unset):
+            created_by_organization_address = UNSET
+        else:
+            created_by_organization_address = self.created_by_organization_address
+
         customer_name = self.customer_name
 
         customer_uuid: Union[Unset, str] = UNSET
@@ -749,6 +757,8 @@ class OrderDetails:
             field_dict["created_by_organization_registry_code"] = created_by_organization_registry_code
         if created_by_organization_vat_code is not UNSET:
             field_dict["created_by_organization_vat_code"] = created_by_organization_vat_code
+        if created_by_organization_address is not UNSET:
+            field_dict["created_by_organization_address"] = created_by_organization_address
         if customer_name is not UNSET:
             field_dict["customer_name"] = customer_name
         if customer_uuid is not UNSET:
@@ -1286,6 +1296,17 @@ class OrderDetails:
             d.pop("created_by_organization_vat_code", UNSET)
         )
 
+        def _parse_created_by_organization_address(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        created_by_organization_address = _parse_created_by_organization_address(
+            d.pop("created_by_organization_address", UNSET)
+        )
+
         customer_name = d.pop("customer_name", UNSET)
 
         _customer_uuid = d.pop("customer_uuid", UNSET)
@@ -1537,6 +1558,7 @@ class OrderDetails:
             created_by_organization_country=created_by_organization_country,
             created_by_organization_registry_code=created_by_organization_registry_code,
             created_by_organization_vat_code=created_by_organization_vat_code,
+            created_by_organization_address=created_by_organization_address,
             customer_name=customer_name,
             customer_uuid=customer_uuid,
             customer_slug=customer_slug,

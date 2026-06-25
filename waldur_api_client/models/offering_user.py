@@ -55,6 +55,7 @@ class OfferingUser:
         user_organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if
             known
         user_organization_vat_code (Union[Unset, str]): VAT code of the user's organization
+        user_organization_address (Union[Unset, str]): Postal address of the user's organization
         user_eduperson_assurance (Union[Unset, list[str]]): REFEDS assurance profile URIs from identity provider
         user_civil_number (Union[None, Unset, str]):
         user_birth_date (Union[None, Unset, datetime.date]):
@@ -111,6 +112,7 @@ class OfferingUser:
     user_organization_type: Union[Unset, str] = UNSET
     user_organization_registry_code: Union[Unset, str] = UNSET
     user_organization_vat_code: Union[Unset, str] = UNSET
+    user_organization_address: Union[Unset, str] = UNSET
     user_eduperson_assurance: Union[Unset, list[str]] = UNSET
     user_civil_number: Union[None, Unset, str] = UNSET
     user_birth_date: Union[None, Unset, datetime.date] = UNSET
@@ -214,6 +216,8 @@ class OfferingUser:
         user_organization_registry_code = self.user_organization_registry_code
 
         user_organization_vat_code = self.user_organization_vat_code
+
+        user_organization_address = self.user_organization_address
 
         user_eduperson_assurance: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_eduperson_assurance, Unset):
@@ -348,6 +352,8 @@ class OfferingUser:
             field_dict["user_organization_registry_code"] = user_organization_registry_code
         if user_organization_vat_code is not UNSET:
             field_dict["user_organization_vat_code"] = user_organization_vat_code
+        if user_organization_address is not UNSET:
+            field_dict["user_organization_address"] = user_organization_address
         if user_eduperson_assurance is not UNSET:
             field_dict["user_eduperson_assurance"] = user_eduperson_assurance
         if user_civil_number is not UNSET:
@@ -499,6 +505,8 @@ class OfferingUser:
 
         user_organization_vat_code = d.pop("user_organization_vat_code", UNSET)
 
+        user_organization_address = d.pop("user_organization_address", UNSET)
+
         user_eduperson_assurance = cast(list[str], d.pop("user_eduperson_assurance", UNSET))
 
         def _parse_user_civil_number(data: object) -> Union[None, Unset, str]:
@@ -632,6 +640,7 @@ class OfferingUser:
             user_organization_type=user_organization_type,
             user_organization_registry_code=user_organization_registry_code,
             user_organization_vat_code=user_organization_vat_code,
+            user_organization_address=user_organization_address,
             user_eduperson_assurance=user_eduperson_assurance,
             user_civil_number=user_civil_number,
             user_birth_date=user_birth_date,

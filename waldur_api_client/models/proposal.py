@@ -54,6 +54,7 @@ class Proposal:
         applicant_organization_type (str): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         applicant_organization_registry_code (str): Company registration code of the user's organization, if known
         applicant_organization_vat_code (str): VAT code of the user's organization
+        applicant_organization_address (Union[None, str]): Postal address of the user's organization
         applicant_job_title (str):
         applicant_affiliations (ProposalApplicantAffiliations): Person's affiliation within organization such as
             student, faculty, staff.
@@ -117,6 +118,7 @@ class Proposal:
     applicant_organization_type: str
     applicant_organization_registry_code: str
     applicant_organization_vat_code: str
+    applicant_organization_address: Union[None, str]
     applicant_job_title: str
     applicant_affiliations: "ProposalApplicantAffiliations"
     applicant_gender: Union[BlankEnum, GenderEnum, None]
@@ -207,6 +209,9 @@ class Proposal:
         applicant_organization_registry_code = self.applicant_organization_registry_code
 
         applicant_organization_vat_code = self.applicant_organization_vat_code
+
+        applicant_organization_address: Union[None, str]
+        applicant_organization_address = self.applicant_organization_address
 
         applicant_job_title = self.applicant_job_title
 
@@ -340,6 +345,7 @@ class Proposal:
                 "applicant_organization_type": applicant_organization_type,
                 "applicant_organization_registry_code": applicant_organization_registry_code,
                 "applicant_organization_vat_code": applicant_organization_vat_code,
+                "applicant_organization_address": applicant_organization_address,
                 "applicant_job_title": applicant_job_title,
                 "applicant_affiliations": applicant_affiliations,
                 "applicant_gender": applicant_gender,
@@ -459,6 +465,13 @@ class Proposal:
         applicant_organization_registry_code = d.pop("applicant_organization_registry_code")
 
         applicant_organization_vat_code = d.pop("applicant_organization_vat_code")
+
+        def _parse_applicant_organization_address(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        applicant_organization_address = _parse_applicant_organization_address(d.pop("applicant_organization_address"))
 
         applicant_job_title = d.pop("applicant_job_title")
 
@@ -663,6 +676,7 @@ class Proposal:
             applicant_organization_type=applicant_organization_type,
             applicant_organization_registry_code=applicant_organization_registry_code,
             applicant_organization_vat_code=applicant_organization_vat_code,
+            applicant_organization_address=applicant_organization_address,
             applicant_job_title=applicant_job_title,
             applicant_affiliations=applicant_affiliations,
             applicant_gender=applicant_gender,

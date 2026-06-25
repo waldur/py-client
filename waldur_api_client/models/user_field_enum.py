@@ -42,6 +42,7 @@ class UserFieldEnum(str, Enum):
     NATIVE_NAME = "native_name"
     NOTIFICATIONS_ENABLED = "notifications_enabled"
     ORGANIZATION = "organization"
+    ORGANIZATION_ADDRESS = "organization_address"
     ORGANIZATION_COUNTRY = "organization_country"
     ORGANIZATION_REGISTRY_CODE = "organization_registry_code"
     ORGANIZATION_TYPE = "organization_type"

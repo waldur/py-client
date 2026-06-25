@@ -29,6 +29,7 @@ class OrderDetailsFieldEnum(str, Enum):
     CREATED_BY_EMAIL = "created_by_email"
     CREATED_BY_FULL_NAME = "created_by_full_name"
     CREATED_BY_ORGANIZATION = "created_by_organization"
+    CREATED_BY_ORGANIZATION_ADDRESS = "created_by_organization_address"
     CREATED_BY_ORGANIZATION_COUNTRY = "created_by_organization_country"
     CREATED_BY_ORGANIZATION_REGISTRY_CODE = "created_by_organization_registry_code"
     CREATED_BY_ORGANIZATION_VAT_CODE = "created_by_organization_vat_code"
