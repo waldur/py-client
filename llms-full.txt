@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.1.dev.20260627233343
+# Version: 8.1.0-rc.1.dev.20260628152139
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3509,7 +3509,7 @@ Query parameters (1):
 GET /api/customers/
 Summary: List customers
 Description: Retrieve a list of customers. The list is filtered based on the user's permissions.
-Query parameters (23):
+Query parameters (24):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -3517,6 +3517,7 @@ Query parameters (23):
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
   - field
   - has_resources — Filter by customers with resources.
   - is_call_managing_organization — Filter by customers that are call managing organizations.
@@ -3538,7 +3539,7 @@ Query parameters (23):
 HEAD /api/customers/
 Summary: List customers
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (22):
+Query parameters (23):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -3546,6 +3547,7 @@ Query parameters (22):
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
   - has_resources — Filter by customers with resources.
   - is_call_managing_organization — Filter by customers that are call managing organizations.
   - is_service_provider — Filter by customers that are service providers.
@@ -3572,7 +3574,7 @@ Request body: yes
 GET /api/customers/countries/
 Summary: Get list of available countries
 Description: Returns a list of countries that can be used when creating or updating a customer. The list can be configured by the service provider.
-Query parameters (22):
+Query parameters (23):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -3580,6 +3582,7 @@ Query parameters (22):
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
   - has_resources — Filter by customers with resources.
   - is_call_managing_organization — Filter by customers that are call managing organizations.
   - is_service_provider — Filter by customers that are service providers.
@@ -3600,7 +3603,7 @@ Query parameters (22):
 HEAD /api/customers/countries/
 Summary: Get list of available countries
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (22):
+Query parameters (23):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -3608,6 +3611,7 @@ Query parameters (22):
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
   - has_resources — Filter by customers with resources.
   - is_call_managing_organization — Filter by customers that are call managing organizations.
   - is_service_provider — Filter by customers that are service providers.
@@ -3741,7 +3745,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (24):
+Query parameters (25):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -3751,6 +3755,7 @@ Query parameters (24):
   - created_after — Filter versions created after this timestamp (ISO 8601)
   - created_before — Filter versions created before this timestamp (ISO 8601)
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
   - has_resources — Filter by customers with resources.
   - is_call_managing_organization — Filter by customers that are call managing organizations.
   - is_service_provider — Filter by customers that are service providers.
@@ -4530,7 +4535,7 @@ Request body: yes
 
 ### financial_reports_list
 GET /api/financial-reports/
-Query parameters (20):
+Query parameters (21):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -4538,6 +4543,7 @@ Query parameters (20):
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
   - customer_uuid — Filter by customer UUID.
   - month — Filter by month.
   - name — Name
@@ -4556,7 +4562,7 @@ Query parameters (20):
 HEAD /api/financial-reports/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (20):
+Query parameters (21):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
   - agreement_number
@@ -4564,6 +4570,7 @@ Query parameters (20):
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
   - customer_uuid — Filter by customer UUID.
   - month — Filter by month.
   - name — Name
@@ -11176,7 +11183,7 @@ Summary: List customer projects of a service provider
 Description: Returns a paginated list of projects belonging to a specific customer that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (27):
+Query parameters (28):
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -11185,6 +11192,7 @@ Query parameters (27):
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
   - created_before — Created before
+  - current_user_has_role — Multiple values may be separated by commas.
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name
@@ -11211,13 +11219,14 @@ Summary: List customers of a service provider
 Description: Returns a paginated list of customers who have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (16):
+Query parameters (17):
   - abbreviation — Abbreviation
   - agreement_number
   - archived
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
   - field
   - name — Name
   - name_exact — Name (exact)
@@ -11395,7 +11404,7 @@ Summary: List projects of a service provider
 Description: Returns a paginated list of all projects that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (26):
+Query parameters (27):
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -11404,6 +11413,7 @@ Query parameters (26):
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
   - created_before — Created before
+  - current_user_has_role — Multiple values may be separated by commas.
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name
@@ -11434,13 +11444,14 @@ Description: Returns a paginated list of customers that a specified user has acc
         - Customers related to t...
 Path parameters:
   - service_provider_uuid
-Query parameters (17):
+Query parameters (18):
   - abbreviation — Abbreviation
   - agreement_number
   - archived
   - backend_id
   - contact_details — Contact details
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
   - field
   - name — Name
   - name_exact — Name (exact)
@@ -14268,7 +14279,7 @@ Path parameters:
 GET /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (29):
+Query parameters (30):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
@@ -14278,6 +14289,7 @@ Query parameters (29):
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
   - created_before — Created before
+  - current_user_has_role — Multiple values may be separated by commas.
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name
@@ -14303,7 +14315,7 @@ Query parameters (29):
 HEAD /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (28):
+Query parameters (29):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
@@ -14313,6 +14325,7 @@ Query parameters (28):
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
   - created_before — Created before
+  - current_user_has_role — Multiple values may be separated by commas.
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name
@@ -17895,7 +17908,7 @@ Path parameters:
 GET /api/projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (29):
+Query parameters (30):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
@@ -17905,6 +17918,7 @@ Query parameters (29):
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
   - created_before — Created before
+  - current_user_has_role — Multiple values may be separated by commas.
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name
@@ -17930,7 +17944,7 @@ Query parameters (29):
 HEAD /api/projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (28):
+Query parameters (29):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
@@ -17940,6 +17954,7 @@ Query parameters (28):
   - conceal_finished_projects — Conceal finished projects
   - created — Created after
   - created_before — Created before
+  - current_user_has_role — Multiple values may be separated by commas.
   - customer — Multiple values may be separated by commas.
   - customer_abbreviation — Customer abbreviation
   - customer_name — Customer name

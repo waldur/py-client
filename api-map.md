@@ -669,11 +669,11 @@ Module: `waldur_api_client.api.customer_quotas`
 ## customers
 Module: `waldur_api_client.api.customers`
 
-- `customers_list` GET `/api/customers/` — List customers (23 query params)
-- `customers_count` HEAD `/api/customers/` — List customers (22 query params)
+- `customers_list` GET `/api/customers/` — List customers (24 query params)
+- `customers_count` HEAD `/api/customers/` — List customers (23 query params)
 - `customers_create` POST `/api/customers/` — Create a new customer (request body)
-- `customers_countries_list` GET `/api/customers/countries/` — Get list of available countries (22 query params)
-- `customers_countries_count` HEAD `/api/customers/countries/` — Get list of available countries (22 query params)
+- `customers_countries_list` GET `/api/customers/countries/` — Get list of available countries (23 query params)
+- `customers_countries_count` HEAD `/api/customers/countries/` — Get list of available countries (23 query params)
 - `customers_project_metadata_compliance_details_list` GET `/api/customers/{customer_uuid}/project-metadata-compliance-details/` — Get detailed project metadata compliance (path: customer_uuid)
 - `customers_project_metadata_compliance_overview_list` GET `/api/customers/{customer_uuid}/project-metadata-compliance-overview/` — Get project metadata compliance overview (path: customer_uuid)
 - `customers_project_metadata_compliance_projects_list` GET `/api/customers/{customer_uuid}/project-metadata-compliance-projects/` — List projects with compliance data (path: customer_uuid)
@@ -686,7 +686,7 @@ Module: `waldur_api_client.api.customers`
 - `customers_add_user` POST `/api/customers/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `customers_contact` POST `/api/customers/{uuid}/contact/` — Update customer contact details (path: uuid | request body)
 - `customers_delete_user` POST `/api/customers/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
-- `customers_history_list` GET `/api/customers/{uuid}/history/` — Get version history (path: uuid | 24 query params)
+- `customers_history_list` GET `/api/customers/{uuid}/history/` — Get version history (path: uuid | 25 query params)
 - `customers_history_at_retrieve` GET `/api/customers/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `customers_list_users_list` GET `/api/customers/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `customers_project_digest_config_retrieve` GET `/api/customers/{uuid}/project-digest-config/` — Get project digest configuration (path: uuid)
@@ -839,8 +839,8 @@ Module: `waldur_api_client.api.feature_values`
 ## financial-reports
 Module: `waldur_api_client.api.financial_reports`
 
-- `financial_reports_list` GET `/api/financial-reports/` (20 query params)
-- `financial_reports_count` HEAD `/api/financial-reports/` — Get number of items in the collection matching the request parameters (20 query params)
+- `financial_reports_list` GET `/api/financial-reports/` (21 query params)
+- `financial_reports_count` HEAD `/api/financial-reports/` — Get number of items in the collection matching the request parameters (21 query params)
 - `financial_reports_retrieve` GET `/api/financial-reports/{uuid}/` (path: uuid)
 
 ## freeipa-profiles
@@ -1843,15 +1843,15 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `service_provider_compliance_overview` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/compliance_overview/` — Get compliance overview for a service provider (path: service_provider_uuid)
 - `service_provider_offering_users_compliance` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/offering_users/` — List offering users' compliance status (path: service_provider_uuid | 2 query params)
 - `marketplace_service_providers_course_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/course_accounts/` — List course project accounts for a service provider (path: service_provider_uuid | 9 query params)
-- `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 27 query params)
-- `marketplace_service_providers_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customers/` — List customers of a service provider (path: service_provider_uuid | 16 query params)
+- `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 28 query params)
+- `marketplace_service_providers_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customers/` — List customers of a service provider (path: service_provider_uuid | 17 query params)
 - `marketplace_service_providers_keys_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 13 query params)
 - `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 41 query params)
 - `marketplace_service_providers_offerings_types_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/types/` — List distinct offering types for a service provider (path: service_provider_uuid | 40 query params)
 - `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 18 query params)
 - `marketplace_service_providers_project_service_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/` — List project service accounts for a service provider (path: service_provider_uuid | 5 query params)
-- `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 26 query params)
-- `marketplace_service_providers_user_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/user_customers/` — List customers of a specific user within a service provider's scope (path: service_provider_uuid | 17 query params)
+- `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 27 query params)
+- `marketplace_service_providers_user_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/user_customers/` — List customers of a specific user within a service provider's scope (path: service_provider_uuid | 18 query params)
 - `marketplace_service_providers_users_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/users/` — List users of a service provider (path: service_provider_uuid | 25 query params)
 - `marketplace_service_providers_retrieve` GET `/api/marketplace-service-providers/{uuid}/` — Retrieve a service provider (path: uuid | 1 query param)
 - `marketplace_service_providers_update` PUT `/api/marketplace-service-providers/{uuid}/` — Update a service provider (path: uuid | request body)
@@ -2364,8 +2364,8 @@ Module: `waldur_api_client.api.openportal_remote_associations`
 ## openportal-unmanaged-projects
 Module: `waldur_api_client.api.openportal_unmanaged_projects`
 
-- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (29 query params)
-- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (28 query params)
+- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (30 query params)
+- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (29 query params)
 - `openportal_unmanaged_projects_create` POST `/api/openportal-unmanaged-projects/` — Create a new project (request body)
 - `openportal_unmanaged_projects_checklist_template_retrieve` GET `/api/openportal-unmanaged-projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `openportal_unmanaged_projects_checklist_template_count` HEAD `/api/openportal-unmanaged-projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -2902,8 +2902,8 @@ Module: `waldur_api_client.api.project_types`
 ## projects
 Module: `waldur_api_client.api.projects`
 
-- `projects_list` GET `/api/projects/` — List projects (29 query params)
-- `projects_count` HEAD `/api/projects/` — List projects (28 query params)
+- `projects_list` GET `/api/projects/` — List projects (30 query params)
+- `projects_count` HEAD `/api/projects/` — List projects (29 query params)
 - `projects_create` POST `/api/projects/` — Create a new project (request body)
 - `projects_checklist_template_retrieve` GET `/api/projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `projects_checklist_template_count` HEAD `/api/projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)

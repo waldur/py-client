@@ -50,6 +50,10 @@ class MergedPluginOptionsRequest:
             'storage_data_type' ensures only one resource per storage type per project.
         required_team_role_for_provisioning (Union[None, Unset, str]): Required user role in a project for provisioning
             of resources
+        restricted_to_roles (Union[Unset, list[str]]): List of project or organization role names (e.g.
+            'PROJECT.MANAGER') allowed to view and order this offering. When set, the offering is hidden from the catalog
+            for other users and they cannot create orders for it. Whether their orders skip consumer review still depends on
+            the role having the order-approval permission.
         enable_purchase_order_upload (Union[Unset, bool]): If set to True, users will be able to upload purchase orders.
         require_purchase_order_upload (Union[Unset, bool]): If set to True, users will be required to upload purchase
             orders.
@@ -188,6 +192,7 @@ class MergedPluginOptionsRequest:
     maximal_resource_count_per_project: Union[Unset, int] = UNSET
     unique_resource_per_attribute: Union[Unset, str] = UNSET
     required_team_role_for_provisioning: Union[None, Unset, str] = UNSET
+    restricted_to_roles: Union[Unset, list[str]] = UNSET
     enable_purchase_order_upload: Union[Unset, bool] = UNSET
     require_purchase_order_upload: Union[Unset, bool] = UNSET
     conceal_billing_data: Union[Unset, bool] = UNSET
@@ -296,6 +301,10 @@ class MergedPluginOptionsRequest:
             required_team_role_for_provisioning = UNSET
         else:
             required_team_role_for_provisioning = self.required_team_role_for_provisioning
+
+        restricted_to_roles: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.restricted_to_roles, Unset):
+            restricted_to_roles = self.restricted_to_roles
 
         enable_purchase_order_upload = self.enable_purchase_order_upload
 
@@ -502,6 +511,8 @@ class MergedPluginOptionsRequest:
             field_dict["unique_resource_per_attribute"] = unique_resource_per_attribute
         if required_team_role_for_provisioning is not UNSET:
             field_dict["required_team_role_for_provisioning"] = required_team_role_for_provisioning
+        if restricted_to_roles is not UNSET:
+            field_dict["restricted_to_roles"] = restricted_to_roles
         if enable_purchase_order_upload is not UNSET:
             field_dict["enable_purchase_order_upload"] = enable_purchase_order_upload
         if require_purchase_order_upload is not UNSET:
@@ -703,6 +714,8 @@ class MergedPluginOptionsRequest:
         required_team_role_for_provisioning = _parse_required_team_role_for_provisioning(
             d.pop("required_team_role_for_provisioning", UNSET)
         )
+
+        restricted_to_roles = cast(list[str], d.pop("restricted_to_roles", UNSET))
 
         enable_purchase_order_upload = d.pop("enable_purchase_order_upload", UNSET)
 
@@ -932,6 +945,7 @@ class MergedPluginOptionsRequest:
             maximal_resource_count_per_project=maximal_resource_count_per_project,
             unique_resource_per_attribute=unique_resource_per_attribute,
             required_team_role_for_provisioning=required_team_role_for_provisioning,
+            restricted_to_roles=restricted_to_roles,
             enable_purchase_order_upload=enable_purchase_order_upload,
             require_purchase_order_upload=require_purchase_order_upload,
             conceal_billing_data=conceal_billing_data,
